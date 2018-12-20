@@ -22,19 +22,18 @@ using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
     /// Imports a certificate to the key vault. The certificate can be created by 
     /// adding the certificate after getting the CSR from 
-    /// Add-AzureKeyVaultCertificate issued by a Certificate Authority or by 
+    /// Add-AzKeyVaultCertificate issued by a Certificate Authority or by 
     /// importing an existing certificate package file that contains both the 
     /// certificate and private key (example: PFX or P12 files).
     /// </summary>
-    [Cmdlet(VerbsData.Import, CmdletNoun.AzureKeyVaultCertificate,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = ImportCertificateFromFileParameterSet)]
+    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificate",SupportsShouldProcess = true,DefaultParameterSetName = ImportCertificateFromFileParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificate))]
     public class ImportAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
@@ -55,6 +54,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    Position = 0,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         internal X509Certificate2Collection InitializeCertificateCollection()
         {
-            FileInfo certFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.FilePath));
+            FileInfo certFile = new FileInfo(ResolveUserPath(this.FilePath));
             if (!certFile.Exists)
             {
                 throw new FileNotFoundException(string.Format(KeyVaultProperties.Resources.CertificateFileNotFound, this.FilePath));

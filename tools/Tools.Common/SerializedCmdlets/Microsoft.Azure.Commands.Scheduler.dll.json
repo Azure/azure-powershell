@@ -2,14 +2,30 @@
   "Cmdlets": [
     {
       "VerbName": "Disable",
-      "NounName": "AzureRmSchedulerJobCollection",
-      "Name": "Disable-AzureRmSchedulerJobCollection",
+      "NounName": "AzSchedulerJobCollection",
+      "Name": "Disable-AzSchedulerJobCollection",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.DisableAzureSchedulerJobCollectionCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -76,8 +92,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -189,8 +205,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -225,14 +241,30 @@
     },
     {
       "VerbName": "Enable",
-      "NounName": "AzureRmSchedulerJobCollection",
-      "Name": "Enable-AzureRmSchedulerJobCollection",
+      "NounName": "AzSchedulerJobCollection",
+      "Name": "Enable-AzSchedulerJobCollection",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.EnableAzureSchedulerJobCollectionCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -299,8 +331,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -412,8 +444,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -448,8 +480,8 @@
     },
     {
       "VerbName": "Get",
-      "NounName": "AzureRmSchedulerJobCollection",
-      "Name": "Get-AzureRmSchedulerJobCollection",
+      "NounName": "AzSchedulerJobCollection",
+      "Name": "Get-AzSchedulerJobCollection",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.GetAzureSchedulerJobCollectionCommand",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
@@ -458,14 +490,55 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System",
-            "Name": "System.Object",
-            "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
+            "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.10.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "ResourceGroupName": "System.String",
+              "JobCollectionName": "System.String",
+              "Location": "System.String",
+              "Plan": "System.String",
+              "State": "System.String",
+              "MaxJobCount": "System.String",
+              "MaxRecurrence": "System.String",
+              "Uri": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -520,8 +593,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -609,8 +682,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -645,8 +718,8 @@
     },
     {
       "VerbName": "Get",
-      "NounName": "AzureRmSchedulerJob",
-      "Name": "Get-AzureRmSchedulerJob",
+      "NounName": "AzSchedulerJob",
+      "Name": "Get-AzSchedulerJob",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.GetAzureSchedulerJobCommand",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
@@ -657,7 +730,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.10.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -805,8 +878,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -947,8 +1020,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -983,8 +1056,8 @@
     },
     {
       "VerbName": "Get",
-      "NounName": "AzureRmSchedulerJobHistory",
-      "Name": "Get-AzureRmSchedulerJobHistory",
+      "NounName": "AzSchedulerJobHistory",
+      "Name": "Get-AzSchedulerJobHistory",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.GetAzureSchedulerJobHistoryCommand",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
@@ -995,7 +1068,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobHistory",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobHistory, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobHistory, Microsoft.Azure.Commands.Scheduler, Version=0.16.10.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActionHistory": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionHistory",
               "StartTime": "System.Nullable`1[System.DateTime]",
@@ -1135,8 +1208,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -1276,8 +1349,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -1312,8 +1385,8 @@
     },
     {
       "VerbName": "New",
-      "NounName": "AzureRmSchedulerJobCollection",
-      "Name": "New-AzureRmSchedulerJobCollection",
+      "NounName": "AzSchedulerJobCollection",
+      "Name": "New-AzSchedulerJobCollection",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.NewAzureSchedulerJobCollectionCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
@@ -1324,7 +1397,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.10.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "JobCollectionName": "System.String",
@@ -1530,8 +1603,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -1754,8 +1827,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -1790,8 +1863,8 @@
     },
     {
       "VerbName": "New",
-      "NounName": "AzureRmSchedulerHttpJob",
-      "Name": "New-AzureRmSchedulerHttpJob",
+      "NounName": "AzSchedulerHttpJob",
+      "Name": "New-AzSchedulerHttpJob",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.NewAzureSchedulerHttpJobCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
@@ -1802,7 +1875,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.10.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -2176,8 +2249,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -2610,8 +2683,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -2646,8 +2719,8 @@
     },
     {
       "VerbName": "New",
-      "NounName": "AzureRmSchedulerServiceBusQueueJob",
-      "Name": "New-AzureRmSchedulerServiceBusQueueJob",
+      "NounName": "AzSchedulerServiceBusQueueJob",
+      "Name": "New-AzSchedulerServiceBusQueueJob",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.NewAzureSchedulerServiceBusQueueCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
@@ -2658,7 +2731,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.10.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -3043,8 +3116,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -3494,8 +3567,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -3530,8 +3603,8 @@
     },
     {
       "VerbName": "New",
-      "NounName": "AzureRmSchedulerServiceBusTopicJob",
-      "Name": "New-AzureRmSchedulerServiceBusTopicJob",
+      "NounName": "AzSchedulerServiceBusTopicJob",
+      "Name": "New-AzSchedulerServiceBusTopicJob",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.NewAzureSchedulerServiceBusTopicJobCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
@@ -3542,7 +3615,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.10.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -3927,8 +4000,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -4378,8 +4451,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -4414,8 +4487,8 @@
     },
     {
       "VerbName": "New",
-      "NounName": "AzureRmSchedulerStorageQueueJob",
-      "Name": "New-AzureRmSchedulerStorageQueueJob",
+      "NounName": "AzSchedulerStorageQueueJob",
+      "Name": "New-AzSchedulerStorageQueueJob",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.NewAzureSchedulerStorageQueueJobCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
@@ -4426,7 +4499,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.10.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -4772,8 +4845,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -5172,8 +5245,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -5208,14 +5281,30 @@
     },
     {
       "VerbName": "Remove",
-      "NounName": "AzureRmSchedulerJobCollection",
-      "Name": "Remove-AzureRmSchedulerJobCollection",
+      "NounName": "AzSchedulerJobCollection",
+      "Name": "Remove-AzSchedulerJobCollection",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.RemoveAzureSchedulerJobCollectionCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -5282,8 +5371,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -5395,8 +5484,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -5431,14 +5520,30 @@
     },
     {
       "VerbName": "Remove",
-      "NounName": "AzureRmSchedulerJob",
-      "Name": "Remove-AzureRmSchedulerJob",
+      "NounName": "AzSchedulerJob",
+      "Name": "Remove-AzSchedulerJob",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.RemoveAzureSchedulerJobCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -5523,8 +5628,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -5660,8 +5765,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -5696,8 +5801,8 @@
     },
     {
       "VerbName": "Set",
-      "NounName": "AzureRmSchedulerHttpJob",
-      "Name": "Set-AzureRmSchedulerHttpJob",
+      "NounName": "AzSchedulerHttpJob",
+      "Name": "Set-AzSchedulerHttpJob",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.UpdateAzureSchedulerHttpJobCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
@@ -5708,7 +5813,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.10.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -6082,8 +6187,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -6516,8 +6621,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -6552,8 +6657,8 @@
     },
     {
       "VerbName": "Set",
-      "NounName": "AzureRmSchedulerJobCollection",
-      "Name": "Set-AzureRmSchedulerJobCollection",
+      "NounName": "AzSchedulerJobCollection",
+      "Name": "Set-AzSchedulerJobCollection",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.UpdateAzureSchedulerJobCollectionCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
@@ -6564,7 +6669,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.10.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "JobCollectionName": "System.String",
@@ -6770,8 +6875,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -6994,8 +7099,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -7030,8 +7135,8 @@
     },
     {
       "VerbName": "Set",
-      "NounName": "AzureRmSchedulerServiceBusQueueJob",
-      "Name": "Set-AzureRmSchedulerServiceBusQueueJob",
+      "NounName": "AzSchedulerServiceBusQueueJob",
+      "Name": "Set-AzSchedulerServiceBusQueueJob",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.UpdateAzureSchedulerServiceBusQueueJobCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
@@ -7042,7 +7147,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.10.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -7427,8 +7532,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -7878,8 +7983,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -7914,8 +8019,8 @@
     },
     {
       "VerbName": "Set",
-      "NounName": "AzureRmSchedulerServiceBusTopicJob",
-      "Name": "Set-AzureRmSchedulerServiceBusTopicJob",
+      "NounName": "AzSchedulerServiceBusTopicJob",
+      "Name": "Set-AzSchedulerServiceBusTopicJob",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.UpdateAzureSchedulerServiceBusTopicJobCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
@@ -7926,7 +8031,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.10.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -8311,8 +8416,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -8762,8 +8867,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -8798,8 +8903,8 @@
     },
     {
       "VerbName": "Set",
-      "NounName": "AzureRmSchedulerStorageQueueJob",
-      "Name": "Set-AzureRmSchedulerStorageQueueJob",
+      "NounName": "AzSchedulerStorageQueueJob",
+      "Name": "Set-AzSchedulerStorageQueueJob",
       "ClassName": "Microsoft.Azure.Commands.Scheduler.Cmdlets.UpdateAzureSchedulerStorageQueueJobCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
@@ -8810,7 +8915,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.10.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -9156,8 +9261,8 @@
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -9556,8 +9661,8 @@
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -9923,10 +10028,20 @@
       "Methods": [],
       "Constructors": []
     },
+    "System.Type": {
+      "Namespace": "System",
+      "Name": "System.Type",
+      "AssemblyQualifiedName": "System.Type, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
     "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails": {
       "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
       "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails, Microsoft.Azure.Commands.Scheduler, Version=0.16.10.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "JobActionType": "System.Nullable`1[Microsoft.Azure.Management.Scheduler.Models.JobActionType]"
       },
@@ -10078,16 +10193,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "System.Type": {
-      "Namespace": "System",
-      "Name": "System.Type",
-      "AssemblyQualifiedName": "System.Type, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
-    },
     "System.Nullable`1[System.DateTime]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[System.DateTime]",
@@ -10125,7 +10230,7 @@
     "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionHistory": {
       "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
       "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionHistory",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionHistory, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionHistory, Microsoft.Azure.Commands.Scheduler, Version=0.16.10.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "JobActionType": "System.String",
         "JobHistoryActionName": "System.String",

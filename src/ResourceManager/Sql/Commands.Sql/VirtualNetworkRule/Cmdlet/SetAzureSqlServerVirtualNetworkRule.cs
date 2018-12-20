@@ -19,10 +19,9 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
 {
     /// <summary>
-    /// Defines the Set-AzureRmSqlServerVirtualNetworkRule cmdlet
+    /// Defines the Set-AzSqlServerVirtualNetworkRule cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerVirtualNetworkRule", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium),
-        OutputType(typeof(Model.AzureSqlServerVirtualNetworkRuleModel))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerVirtualNetworkRule", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium),OutputType(typeof(Model.AzureSqlServerVirtualNetworkRuleModel))]
     public class SetAzureSqlServerVirtualNetworkRule : AzureSqlServerVirtualNetworkRuleCmdletBase
     {
         /// <summary>

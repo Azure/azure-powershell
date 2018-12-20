@@ -35,14 +35,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     /// <summary>
     /// Cmdlet to log into an Analysis Services environment
     /// </summary>
-    [Cmdlet(VerbsData.Sync, "AzureAnalysisServicesInstance", SupportsShouldProcess = true)]
-    [Alias("Sync-AzureAsInstance")]
-    [OutputType(typeof(ScaleOutServerDatabaseSyncDetails[]))]
+    [Cmdlet("Sync", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AnalysisServicesInstance", SupportsShouldProcess = true)]
+    [Alias("Sync-AzureAsInstance", "Sync-AzAsInstance")]
+    [OutputType(typeof(ScaleOutServerDatabaseSyncDetails))]
     public class SynchronizeAzureAzureAnalysisServer : AzurePSCmdlet
     {
         private static TimeSpan DefaultPollingInterval = TimeSpan.FromSeconds(30);
 
-        private static TimeSpan DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(10);
+        public static TimeSpan DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(10);
 
         private static string RootActivityIdHeaderName = "x-ms-root-activity-id";
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 WriteObject(string.Format("Sending sync request for database '{0}' to server '{1}'. Correlation Id: '{2}'.", Database, Instance, correlationId.ToString()));
                 var context = AsAzureClientSession.Instance.Profile.Context;
                 AsAzureClientSession.Instance.Login(context);
-                WriteProgress(new ProgressRecord(0, "Sync-AzureAnalysisServicesInstance.", string.Format("Authenticating user for '{0}' environment.", context.Environment.Name)));
+                WriteProgress(new ProgressRecord(0, "Sync-AzAnalysisServicesInstance.", string.Format("Authenticating user for '{0}' environment.", context.Environment.Name)));
                 var clusterResolveResult = ClusterResolve(context, serverName);
                 var virtualServerName = clusterResolveResult.CoreServerName.Split(":".ToCharArray())[0];
                 if (!serverName.Equals(virtualServerName) && !clusterResolveResult.CoreServerName.EndsWith(":rw"))
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 ScaleOutServerDatabaseSyncDetails syncResult = null;
                 try
                 {
-                    WriteProgress(new ProgressRecord(0, "Sync-AzureAnalysisServicesInstance.", string.Format("Successfully authenticated for '{0}' environment.", context.Environment.Name)));
+                    WriteProgress(new ProgressRecord(0, "Sync-AzAnalysisServicesInstance.", string.Format("Successfully authenticated for '{0}' environment.", context.Environment.Name)));
                     syncResult = SynchronizeDatabaseAsync(context, clusterBaseUri, Database, accessToken).GetAwaiter().GetResult();
                 }
                 catch (AggregateException aex)

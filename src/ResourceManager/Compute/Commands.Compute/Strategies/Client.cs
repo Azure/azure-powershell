@@ -15,7 +15,9 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Compute.Properties;
 using Microsoft.Rest;
+using System;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies
 {
@@ -27,6 +29,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
 
         public Client(IAzureContext context)
         {
+            if (context == null)
+            {
+                throw new ApplicationException(Resources.NoSubscriptionInContext);
+            }
+
             Context = context;
             SubscriptionId = Context.Subscription.Id;
         }

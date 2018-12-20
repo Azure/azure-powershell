@@ -21,8 +21,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.New, Constants.LinkedServiceEncryptedCredential, DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true),
-        OutputType(typeof(string))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2LinkedServiceEncryptedCredential", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true),OutputType(typeof(string))]
     public class NewAzureDataFactoryLinkedServiceEncryptedCredentialCommand : DataFactoryContextBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
         public SwitchParameter Force { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             ByFactoryObject();

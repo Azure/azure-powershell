@@ -13,15 +13,15 @@
           "2"
         ],
         "x-ms-client-request-id": [
-          "488e8925-0dd5-4119-b3f6-23e007cef4d2"
+          "5f804765-04af-485b-9ac7-0d6c890b1355"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
+          "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.Batch.BatchManagementClient/4.2.0.0"
         ]
       },
@@ -40,10 +40,10 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1199"
         ],
         "x-ms-request-id": [
-          "ba045387-8a14-4dea-a71b-a3447aa9a35b"
+          "f72a7f53-6324-4457-94ff-ef698df9c0c1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -52,16 +52,16 @@
           "nosniff"
         ],
         "x-ms-correlation-request-id": [
-          "b9b09103-1d4f-41a6-9e6a-8fc2eb066efd"
+          "293a8485-8517-4667-b642-c6927c005b54"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20171006T031001Z:b9b09103-1d4f-41a6-9e6a-8fc2eb066efd"
+          "WESTUS2:20180924T220442Z:293a8485-8517-4667-b642-c6927c005b54"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:10:01 GMT"
+          "Mon, 24 Sep 2018 22:04:41 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -76,15 +76,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dc637685-0b0d-46eb-a6ef-88488c2fc6e6"
+          "882b3844-468a-47d4-8d00-37f10de64726"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
+          "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.Batch.BatchManagementClient/4.2.0.0"
         ]
       },
@@ -100,16 +100,16 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:10:01 GMT"
+          "Mon, 24 Sep 2018 22:04:42 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14995"
+          "11999"
         ],
         "x-ms-request-id": [
-          "ce0936d9-cb35-4742-9631-22b53d5f6bb5"
+          "9563a057-6a92-4048-892c-503f94f7a99c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -118,19 +118,19 @@
           "nosniff"
         ],
         "x-ms-correlation-request-id": [
-          "8b9e8711-2779-4d32-a593-263c93dfc76d"
+          "c5515986-0d93-4946-8077-f02b1eb5a9b2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20171006T031001Z:8b9e8711-2779-4d32-a593-263c93dfc76d"
+          "WESTUS2:20180924T220442Z:c5515986-0d93-4946-8077-f02b1eb5a9b2"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:10:01 GMT"
+          "Mon, 24 Sep 2018 22:04:42 GMT"
         ],
         "ETag": [
-          "0x8D50C67BBEC5E13"
+          "0x8D62269BAD0D2FC"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -145,15 +145,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9ea652e6-db4d-45ff-89e3-d6e59a72c5d5"
+          "599a02cd-477f-4750-a3a3-71c2d6546a4b"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
+          "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.Batch.BatchManagementClient/4.2.0.0"
         ]
       },
@@ -166,7 +166,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "47949d5a-90ec-4be0-b645-353883b51c2e"
+          "2096b2be-17d5-423b-8410-a5c4cd4652e4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -174,20 +174,20 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "f38c2c32-4b31-4de5-8466-00f12a6d957c"
+          "d7940bdd-fdfb-4fc9-8a16-02f6bd746dfd"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20171006T031001Z:f38c2c32-4b31-4de5-8466-00f12a6d957c"
+          "WESTUS2:20180924T220442Z:d7940bdd-fdfb-4fc9-8a16-02f6bd746dfd"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:10:01 GMT"
+          "Mon, 24 Sep 2018 22:04:42 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"

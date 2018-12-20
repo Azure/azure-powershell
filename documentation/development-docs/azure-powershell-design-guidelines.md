@@ -40,6 +40,11 @@
     - [ResourceId](#resourceid)
     - [InputObject](#inputobject)
 - [AsJob Parameter](#asjob-parameter)
+- [Argument Completers](#argument-completers)
+
+## Expected Patterns for Standard Cmdlets
+
+For information and examples on standard cmdlet implementation (`Get-*`, `New-*`, `Remove-*` and `Set/Update-*`) for resources and child resources, please see our [Expected Patterns for Standard Cmdlets](./patterns-for-standard-cmdlets.md) document.
 
 ## Cmdlet Guidelines
 
@@ -59,7 +64,7 @@ From the [Strongly Encouraged Development Guidelines](https://msdn.microsoft.com
 
 #### Noun Prefix
 
-For ARM cmdlets, the noun must be prefixed with `AzureRm`. For RDFE and data plane cmdlets, the noun must be prefixed with `Azure`.
+For ARM cmdlets, the noun must be prefixed with `Az`. For RDFE and data plane cmdlets, the noun must be prefixed with `Azure`.
 
 #### Specific Noun
 
@@ -93,7 +98,7 @@ Specified by the `OutputType` attribute, this piece of metadata lets the user kn
 
 In most cases, cmdlets will be returning an object corresponding to a resource(s) that a user is performing an action on. Rather than returning the .NET SDK type for that resource (exposing .NET SDK types in PowerShell cmdlets is _strongly_ discouraged), we suggest creating a new class that wraps this .NET SDK type, allowing for breaking changes in the underlying type while avoiding breaking changes in the PowerShell type.
 
-For example, the `Get-AzureRmVM` cmdlet uses the .NET SDK to retrieve objects of the `VirtualMachine` type, but a new class, `PSVirtualMachine`, was created to wrap the type from the .NET SDK, and is returned by the cmdlet. If, in the future, the `VirtualMachine` type in the .NET SDK has a property removed, that property can still be maintained in PowerShell by adding it to the `PSVirtualMachine` and recreating the value, thus avoiding a breaking change in the cmdlet(s).
+For example, the `Get-AzVM` cmdlet uses the .NET SDK to retrieve objects of the `VirtualMachine` type, but a new class, `PSVirtualMachine`, was created to wrap the type from the .NET SDK, and is returned by the cmdlet. If, in the future, the `VirtualMachine` type in the .NET SDK has a property removed, that property can still be maintained in PowerShell by adding it to the `PSVirtualMachine` and recreating the value, thus avoiding a breaking change in the cmdlet(s).
 
 #### Returning No Output
 
@@ -154,7 +159,7 @@ Parameters of type `bool` are _strongly_ discouraged in PowerShell. The `SwitchP
 If there is a closed set of values applicable for a given parameter, use either a `ValidateSet`, enumeration type, or an `ArgumentCompleter`. This functionality allows users to tab through the different values they can provide. From the [Strongly Encouraged Development Guidelines](https://msdn.microsoft.com/en-us/library/dd878270(v=vs.85).aspx):
 
 > _There are two ways to create a parameter whose value can be selected from a set of options._
-> 
+>
 > - _Define an enumeration type (or use an existing type) that specifies the valid values. Then, use the enumeration type to create a parameter of that type._
 > - _Add the **ValidateSet** attribute to the parameter declaration._
 
@@ -192,7 +197,7 @@ For PowerShell to determine which parameter set a user is intending to use with 
 
 It is possibile to call a PowerShell cmdlet without providing the parameter names, but just the values you would like to pass through. This is done by specifying the position at which the value of each parameter should be provided by using the `Position` property for a parameter.  However, when there are too many positional parameters in a single parameter set, it can be difficult for the user to remember the exact ordering in which the parameter values should be provided. From the remarks section of [Parameter Attribute Declaration](https://msdn.microsoft.com/en-us/library/ms714348(v=vs.85).aspx):
 
-> _When you specify positional parameters, limit the number of positional parameters in a parameter set to less than five. And, positional parameters do not have to be contiguous. Positions 5, 100, and 250 work the same as positions 0, 1, and 2._ 
+> _When you specify positional parameters, limit the number of positional parameters in a parameter set to less than five. And, positional parameters do not have to be contiguous. Positions 5, 100, and 250 work the same as positions 0, 1, and 2._
 
 In addition, there should be no two parameters with the same position in the same parameter set. From the remarks section of [Parameter Attribute Declaration](https://msdn.microsoft.com/en-us/library/ms714348(v=vs.85).aspx):
 
@@ -218,7 +223,7 @@ The interactive parameter set **will always be the default parameter set** for a
 
 This parameter set should be implemented by _every_ cmdlet - the user is able to provide a `ResourceId` string or GUID from the Azure Portal, or from one of the generic resources cmdlets (more information about that below in the piping section), and act upon the given resource associated with the id. The typical `Name` and `ResourceGroupName` parameters are replaced by a single `ResourceId` parameter of type string.
 
-#### InputObject Parameter Set 
+#### InputObject Parameter Set
 
 This parameter should be implemented by _most_ cmdlets - the user is able to take the object returned from the `Get`, `New`, or `Set` cmdlets (or other cmdlets that return the common resource) and provide it to the `InputObject` parameter for a cmdlet that acts upon the same resource. The typical `Name` and `ResourceGroupName` parameters are retrieved from the `InputObject` that the user is passing through.
 
@@ -230,20 +235,20 @@ Below are the two main piping scenarios that should be applied in the cmdlets wi
 
 ### ResourceId
 
-In this scenario, the user is able to pipe the result of a generic resources cmdlet into a cmdlet that accepts `ResourceId`. The below example shows how a user can use the generic resources cmdlet `Find-AzureRmResource` to get all resources of type `Foo` and remove them:
+In this scenario, the user is able to pipe the result of a generic resources cmdlet into a cmdlet that accepts `ResourceId`. The below example shows how a user can use the generic resources cmdlet `Find-AzResource` to get all resources of type `Foo` and remove them:
 
 ```powershell
-Find-AzureRmResource -ResourceType Microsoft.Foo/foo | Remove-AzureRmFoo
+Find-AzResource -ResourceType Microsoft.Foo/foo | Remove-AzFoo
 ```
 
-For more information on enabling the `ResourceId` piping scenario and more examples, please see the ["Using the `ResourceId` parameter"](./piping-in-powershell.md#using-the-resourceid-parameter) section of the _Piping in PowerShell_ document. 
+For more information on enabling the `ResourceId` piping scenario and more examples, please see the ["Using the `ResourceId` parameter"](./piping-in-powershell.md#using-the-resourceid-parameter) section of the _Piping in PowerShell_ document.
 
 ### InputObject
 
 In this scenario, the user is able to pipe the result of a cmdlet that returns a resource into a cmdlet that accepts that resource as an `InputObject`. The below example shows how a user can get a `Foo` object from one cmdlet and pipe it to a cmdlet that removes it:
 
 ```powershell
-Get-AzureRmFoo -Name "FooName" -ResourceGroupName "RG" | Remove-AzureRmFoo
+Get-AzFoo -Name "FooName" -ResourceGroupName "RG" | Remove-AzFoo
 ```
 
 For more information on enabling the `InputObject` piping scenario and more examples, please see the ["Using the `InputObject` parameter"](./piping-in-powershell.md#using-the-inputobject-parameter) section of the _Piping in PowerShell_ document.
@@ -264,10 +269,12 @@ Once you add the parameter, please manually test that the job is created and suc
 To ensure that `-AsJob` is not broken in future changes, please add a test for this parameter. To update tests to include this parameter, use the following pattern:
 
 ````powershell
-$job = Get-AzureRmSubscription
+$job = Get-AzSubscription
 $job | Wait-Job
 $subcriptions = $job | Receive-Job
 ````
+
+To set a custom job name, please use [SetBackgroupJobDescription(string name)](https://github.com/Azure/azure-powershell-common/blob/master/src/Common/AzurePSCmdlet.cs#L810).  The default job description is: "Long Running Operation for '{cmdlet name}' on resource '{resource name}'"
 
 ## Argument Completers
 
@@ -283,6 +290,22 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 [Parameter(Mandatory = false, HelpMessage = "The resource group name")]
 [ResourceGroupCompleter]
 public string ResourceGroupName { get; set; }
+```
+
+### Resource Name Completer
+
+For any parameter that takes a resource name, the `ResourceNameCompleter` should be applied as an attribute.  This will allow the user to tab through all resource names for the ResourceType in the current subscription.  This completer will filter based upon the current parent resources provided (for instance, if ResourceGroupName is provided, only the resources in that particular resource group will be returned).  For this completer, please provide the ResourceType as the first argument, followed by the parameter name for all parent resources starting at the top level.
+
+```cs
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+...
+[Parameter(Mandatory = false, HelpMessage = "The parent server name")]
+[ResourceNameCompleter("Microsoft.Sql/servers", nameof(ResourceGroupName))]
+public string ServerName { get; set; }
+
+[Parameter(Mandatory = false, HelpMessage = "The database name")]
+[ResourceNameCompleter("Microsoft.Sql/servers/databases", nameof(ResourceGroupName), nameof(ServerName))]
+public string Name { get; set; }
 ```
 
 ### Location Completer

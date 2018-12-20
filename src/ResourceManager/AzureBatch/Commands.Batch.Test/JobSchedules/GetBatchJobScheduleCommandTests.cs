@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
 
         public GetBatchJobScheduleCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchJobScheduleCommand()
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the job schedule returned from the OM to the pipeline
-            Assert.Equal(1, pipeline.Count);
+            Assert.Single(pipeline);
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
         }
 
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             int jobScheduleCount = 0;
             foreach (PSCloudJobSchedule j in pipeline)
             {
-                Assert.True(idsOfConstructedJobSchedules.Contains(j.Id));
+                Assert.Contains(j.Id, idsOfConstructedJobSchedules);
                 jobScheduleCount++;
             }
             Assert.Equal(idsOfConstructedJobSchedules.Length, jobScheduleCount);

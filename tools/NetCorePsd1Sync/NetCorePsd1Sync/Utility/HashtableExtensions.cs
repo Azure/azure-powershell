@@ -21,19 +21,34 @@ namespace NetCorePsd1Sync.Utility
 {
     internal static class HashtableExtensions
     {
-        public static string GetValueAsString(this Hashtable hashtable, string key) => hashtable[key]?.ToString() ?? String.Empty;
+        public static string GetValueAsString(this Hashtable hashtable, string key) => GetValueAsStringOrDefault(hashtable, key) ?? String.Empty;
 
-        public static object[] GetValueAsArray(this Hashtable hashtable, string key) => hashtable[key] as object[] ?? new object[]{};
+        public static string GetValueAsStringOrDefault(this Hashtable hashtable, string key) => hashtable[key]?.ToString();
+
+        public static Version GetValueAsVersion(this Hashtable hashtable, string key) => GetValueAsVersionOrDefault(hashtable, key) ?? new Version();
+
+        public static Version GetValueAsVersionOrDefault(this Hashtable hashtable, string key)
+        {
+            var valueAsString = GetValueAsStringOrDefault(hashtable, key);
+            if (valueAsString == null || !Version.TryParse(valueAsString, out var version)) return null;
+            return version;
+        }
+
+        public static object[] GetValueAsArray(this Hashtable hashtable, string key) => GetValueAsArrayOrDefault(hashtable, key) ?? new object[]{};
+
+        public static object[] GetValueAsArrayOrDefault(this Hashtable hashtable, string key) => hashtable[key] as object[];
 
         public static Hashtable GetValueAsHashtable(this Hashtable hashtable, string key) => hashtable[key] as Hashtable ?? new Hashtable();
 
-        public static List<string> GetValueAsStringList(this Hashtable hashtable, string key)
+        public static List<string> GetValueAsStringList(this Hashtable hashtable, string key) => GetValueAsStringListOrDefault(hashtable, key) ?? new List<string>();
+
+        public static List<string> GetValueAsStringListOrDefault(this Hashtable hashtable, string key)
         {
             if (hashtable[key] is string stringValue)
             {
-                return new List<string>{stringValue};
+                return new List<string> { stringValue };
             }
-            return hashtable.GetValueAsArray(key).OfType<string>().ToList();
+            return hashtable.GetValueAsArrayOrDefault(key)?.OfType<string>().ToList();
         }
 
         public static bool Any(this Hashtable hashtable) => hashtable.Count > 0;

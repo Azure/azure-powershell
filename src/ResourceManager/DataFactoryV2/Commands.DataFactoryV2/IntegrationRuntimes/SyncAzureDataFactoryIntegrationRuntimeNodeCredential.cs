@@ -19,11 +19,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(
-        VerbsData.Sync,
-        Constants.IntegrationRuntimeCredential,
-        DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Sync", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntimeCredential",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true), OutputType(typeof(void))]
     public class SyncAzureDataFactoryIntegrationRuntimeNodeCredential : IntegrationRuntimeContextBaseCmdlet
     {
         [Parameter(
@@ -31,7 +27,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpDontAskConfirmation)]
         public SwitchParameter Force { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             this.ByResourceId();

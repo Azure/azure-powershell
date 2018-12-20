@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Management.CognitiveServices.ArgumentCompleters;
 using Microsoft.Azure.Commands.Management.CognitiveServices.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Create a new Cognitive Services Account, specify it's type (resource kind)
     /// </summary>
-    [Cmdlet(VerbsCommon.New, CognitiveServicesAccountNounStr, SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.PSCognitiveServicesAccount))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccount", SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.PSCognitiveServicesAccount))]
     public class NewAzureCognitiveServicesAccountCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(
@@ -55,6 +56,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Type.")]
         [Alias(CognitiveServicesAccountTypeAlias, AccountTypeAlias, KindAlias)]
+        [AccountTypeCompleter()]
         public string Type { get; set; }
 
         [Parameter(
@@ -62,6 +64,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Sku Name.")]
+        [AccountSkuCompleter()]
         public string SkuName { get; set; }
 
         [Parameter(

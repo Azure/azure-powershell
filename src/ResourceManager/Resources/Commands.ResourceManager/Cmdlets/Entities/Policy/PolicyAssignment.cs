@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -34,9 +35,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         public string Name { get; set; }
 
         /// <summary>
-        /// The policy sku.
+        /// The resource identity assigned to the policy assignment.
         /// </summary>
-        [JsonProperty(Required = Required.Always)]
-        public PolicySku Sku { get; set; }
+        [JsonProperty(Required = Required.Default)]
+        public ResourceIdentity Identity { get; set; }
+
+        /// <summary>
+        /// The policy assignment's location.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string Location { get; set; }
     }
 }

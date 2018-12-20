@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
         public GetBatchJobPreparationAndReleaseTaskStatusTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchJobPreparationAndReleaseTaskStatusCommand()
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the constructed jobs to the pipeline
-            Assert.Equal(1, pipeline.Count);
+            Assert.Single(pipeline);
             foreach (PSJobPreparationAndReleaseTaskExecutionInformation j in pipeline)
             {
                 Assert.Equal(poolId, j.PoolId);

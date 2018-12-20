@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,9 +25,10 @@ using System.Reflection;
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRmSqlServer cmdlet
+    /// Defines the Get-AzSqlServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServer", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServer", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureSqlServerModel))]
     public class GetAzureSqlServer : AzureSqlServerCmdletBase
     {
         /// <summary>
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "SQL Database server name.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }

@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Profile.Models",
             "Name": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureEnvironment",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.WindowsAzure.Commands.Profile, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.WindowsAzure.Commands.Profile, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnableAdfsAuthentication": "System.Boolean",
               "Name": "System.String",
@@ -400,7 +400,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -903,7 +903,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -1014,7 +1014,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Profile.Models",
             "Name": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureEnvironment",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.WindowsAzure.Commands.Profile, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.WindowsAzure.Commands.Profile, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnableAdfsAuthentication": "System.Boolean",
               "Name": "System.String",
@@ -1128,7 +1128,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -1275,7 +1275,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -1386,7 +1386,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Profile.Models",
             "Name": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureEnvironment",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.WindowsAzure.Commands.Profile, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.WindowsAzure.Commands.Profile, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnableAdfsAuthentication": "System.Boolean",
               "Name": "System.String",
@@ -1772,7 +1772,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -2275,7 +2275,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -2386,7 +2386,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Profile.Models",
             "Name": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureEnvironment",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.WindowsAzure.Commands.Profile, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.WindowsAzure.Commands.Profile, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnableAdfsAuthentication": "System.Boolean",
               "Name": "System.String",
@@ -2482,7 +2482,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -2605,7 +2605,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -2719,7 +2719,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -2818,7 +2818,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -2932,7 +2932,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -3031,7 +3031,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -3142,7 +3142,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -3236,7 +3236,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -3353,7 +3353,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -3497,7 +3497,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -4905,7 +4905,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -5028,7 +5028,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -5270,7 +5270,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -5393,7 +5393,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -5571,7 +5571,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -5773,7 +5773,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -6016,7 +6016,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -6189,7 +6189,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -6367,7 +6367,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -6519,7 +6519,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -6705,7 +6705,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -6828,7 +6828,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -7050,7 +7050,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -7221,7 +7221,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -7405,7 +7405,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -7576,7 +7576,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -7687,7 +7687,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Profile.Models",
             "Name": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureSubscription",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureSubscription, Microsoft.WindowsAzure.Commands.Profile, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureSubscription, Microsoft.WindowsAzure.Commands.Profile, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Accounts": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount[]",
               "IsDefault": "System.Boolean",
@@ -7861,7 +7861,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -8010,7 +8010,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -8164,7 +8164,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -8316,7 +8316,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -8468,7 +8468,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -8596,7 +8596,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -8799,7 +8799,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -8922,7 +8922,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -9074,7 +9074,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -9185,7 +9185,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Profile.Models",
             "Name": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureSubscription",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureSubscription, Microsoft.WindowsAzure.Commands.Profile, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureSubscription, Microsoft.WindowsAzure.Commands.Profile, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Accounts": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount[]",
               "IsDefault": "System.Boolean",
@@ -9413,7 +9413,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -9610,7 +9610,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -9812,7 +9812,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -10014,7 +10014,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -10216,7 +10216,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -10368,7 +10368,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -10544,7 +10544,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -10720,7 +10720,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -11059,7 +11059,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -11360,7 +11360,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -11690,7 +11690,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -11996,7 +11996,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -12254,7 +12254,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",

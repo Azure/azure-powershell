@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
         public const string Dynamic = "Dynamic";
         public const string Static = "Static";
 
+        public static bool IgnorePreExistingConfigCheck { get; set; }
+
         public static ResourceStrategy<LoadBalancer> Strategy { get; }
             = NetworkStrategy.Create(
                 "loadBalancers",
@@ -33,12 +35,27 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),
                 (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
-                _ => 30);
+                _ => 30,
+                EvaluatePreExistingConfig);
 
         public enum Sku
         {
             Basic,
             Standard,
+        }
+
+        static bool EvaluatePreExistingConfig(LoadBalancer configToCompare)
+        {
+            if (IgnorePreExistingConfigCheck)
+            {
+                return true;
+            }
+
+            // TODO: Figure out the differences in the two configs n see if we can work with the existing resource.
+            // If we can use the resource return true, otherwise return false
+
+            //Throw in case the config for the existing LB is not cvompatible with the one expected by the cmdlet
+            throw new System.ArgumentException("Existing loadbalancer config is not compatible with what is required by the cmdlet. Kindly rerun the cmdlet after deleting the existing LB with name : " + configToCompare.Name + " and ID : " + configToCompare.Id);
         }
 
         public static ResourceConfig<LoadBalancer> CreateLoadBalancerConfig(

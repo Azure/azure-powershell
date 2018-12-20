@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
 
         public GetBatchCertificateCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchCertificateCommand()
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the cert returned from the OM to the pipeline
-            Assert.Equal(1, pipeline.Count);
+            Assert.Single(pipeline);
             Assert.Equal(cmdlet.Thumbprint, pipeline[0].Thumbprint);
         }
 
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             int poolCount = 0;
             foreach (PSCertificate c in pipeline)
             {
-                Assert.True(thumbprintsOfConstructedCerts.Contains(c.Thumbprint));
+                Assert.Contains(c.Thumbprint, thumbprintsOfConstructedCerts);
                 poolCount++;
             }
             Assert.Equal(thumbprintsOfConstructedCerts.Length, poolCount);

@@ -17,7 +17,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccounts;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.KeyVault.WebKey;
 
@@ -85,9 +84,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSDeletedKeyVaultCertificate GetDeletedCertificate( string vaultName, string certName );
 
-        IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificates(KeyVaultCertificateFilterOptions options);
 
-        IEnumerable<PSDeletedKeyVaultCertificateIdentityItem> GetDeletedCertificates( KeyVaultObjectFilterOptions options );
+        IEnumerable<PSDeletedKeyVaultCertificateIdentityItem> GetDeletedCertificates( KeyVaultCertificateFilterOptions options );
 
         IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options);
 

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
     [TestClass]
     public class RegisterAzureAutomationScheduledJobTest : RMTestBase
     {
-        private Mock<IAutomationClient> mockAutomationClient;
+        private Mock<IAutomationPSClient> mockAutomationClient;
 
         private MockCommandRuntime mockCommandRuntime;
 
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
         [TestInitialize]
         public void SetupTest()
         {
-            this.mockAutomationClient = new Mock<IAutomationClient>();
+            this.mockAutomationClient = new Mock<IAutomationPSClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
             this.cmdlet = new RegisterAzureAutomationScheduledRunbook
             {
@@ -50,7 +50,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string accountName = "automation";
             string runbookName = "runbook";
             string scheduleName = "schedule";
-            string runOn = "hybridWorkerGroup";
 
             this.mockAutomationClient.Setup(
                 f => f.RegisterScheduledRunbook(resourceGroupName, accountName, runbookName, scheduleName, null, null));

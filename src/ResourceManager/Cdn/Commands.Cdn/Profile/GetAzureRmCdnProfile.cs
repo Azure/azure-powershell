@@ -27,9 +27,9 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
     /// <summary>
-    /// Defines the New-AzureRMCdnProfile cmdlet.
+    /// Defines the New-AzCdnProfile cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnProfile"), OutputType(typeof(PSProfile))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnProfile"), OutputType(typeof(PSProfile))]
     public class GetAzureRmCdnProfile : AzureCdnCmdletBase
     {
         /// <summary>

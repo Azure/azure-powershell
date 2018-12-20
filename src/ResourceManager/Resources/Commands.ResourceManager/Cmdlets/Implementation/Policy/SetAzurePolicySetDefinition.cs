@@ -20,32 +20,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
+    using Policy;
+    using System;
     using System.IO;
     using System.Management.Automation;
-    using System.Threading.Tasks;
-    using WindowsAzure.Commands.Common;
 
     /// <summary>
     /// Sets the policy definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmPolicySetDefinition", DefaultParameterSetName = SetAzurePolicySetDefinitionCmdlet.PolicySetDefinitionNameParameterSet, SupportsShouldProcess = true), 
-        OutputType(typeof(PSObject))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicySetDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public class SetAzurePolicySetDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
-        /// The policy Id parameter set.
-        /// </summary>
-        internal const string PolicySetDefinitionIdParameterSet = "SetById";
-
-        /// <summary>
-        /// The policy name parameter set.
-        /// </summary>
-        internal const string PolicySetDefinitionNameParameterSet = "SetByNameAndResourceGroup";
-
-        /// <summary>
         /// Gets or sets the policy set definition name parameter.
         /// </summary>
-        [Parameter(ParameterSetName = SetAzurePolicySetDefinitionCmdlet.PolicySetDefinitionNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy set definition name.")]
+        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicySetDefinitionNameHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.ManagementGroupNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicySetDefinitionNameHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.SubscriptionIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicySetDefinitionNameHelp)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -53,30 +44,58 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the policy set definition id parameter
         /// </summary>
         [Alias("ResourceId")]
-        [Parameter(ParameterSetName = SetAzurePolicySetDefinitionCmdlet.PolicySetDefinitionIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The fully qualified policy set definition Id, including the subscription. e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}")]
+        [Parameter(ParameterSetName = PolicyCmdletBase.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicySetDefinitionIdHelp)]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets the policy set definition display name parameter
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The display name for policy set definition.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicySetDefinitionDisplayNameHelp)]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
         /// <summary>
         /// Gets or sets the policy set definition description parameter
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description for policy set definition.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicySetDefinitionDescriptionHelp)]
         [ValidateNotNullOrEmpty]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or sets the policy definition parameter
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy set definition. This can either be a path to a file name containing the policy definitions, or the policy set definition as string.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicySetDefinitionPolicyDefinitionHelp)]
         [ValidateNotNullOrEmpty]
         public string PolicyDefinition { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy definition metadata parameter
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicySetDefinitionMetadataHelp)]
+        [ValidateNotNullOrEmpty]
+        public string Metadata { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy definition parameters parameter
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicySetDefinitionParameterHelp)]
+        [ValidateNotNullOrEmpty]
+        public string Parameter { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy set definition management group name parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyCmdletBase.ManagementGroupNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicySetDefinitionManagementGroupHelp)]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy set definition subscription id parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyCmdletBase.SubscriptionIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicySetDefinitionSubscriptionIdHelp)]
+        [ValidateNotNullOrEmpty]
+        public Guid? SubscriptionId { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -86,7 +105,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             base.OnProcessRecord();
             if (this.ShouldProcess(this.Name, "Update Policy Set Definition"))
             {
-                string resourceId = this.Id ?? this.GetResourceId();
+                string resourceId = this.GetResourceId();
                 var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicySetDefintionApiVersion : this.ApiVersion;
 
                 var operationResult = this.GetResourcesClient()
@@ -119,55 +138,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
 
+            var metaDataJson = string.IsNullOrEmpty(this.Metadata) ? resource.Properties["metadata"]?.ToString() : GetObjectFromParameter(this.Metadata).ToString();
+            var parameterJson = string.IsNullOrEmpty(this.Parameter) ? resource.Properties["parameters"]?.ToString() : GetObjectFromParameter(this.Parameter).ToString();
+
             var policySetDefinitionObject = new PolicySetDefinition
             {
-                Name = this.Name ?? ResourceIdUtility.GetResourceName(this.Id),
+                Name = this.Name ?? resource.Name,
                 Properties = new PolicySetDefinitionProperties
                 {
-                    Description = this.Description ?? (resource.Properties["description"] != null
-                        ? resource.Properties["description"].ToString()
-                        : null),
-                    DisplayName = this.DisplayName ?? (resource.Properties["displayName"] != null
-                        ? resource.Properties["displayName"].ToString()
-                        : null)
+                    Description = this.Description ?? resource.Properties["description"]?.ToString(),
+                    DisplayName = this.DisplayName ?? resource.Properties["displayName"]?.ToString(),
+                    PolicyDefinitions = string.IsNullOrEmpty(this.PolicyDefinition) ? JArray.Parse(resource.Properties["policyDefinitions"].ToString()) : GetPolicyDefinitionsObject(),
+                    Metadata = string.IsNullOrEmpty(metaDataJson) ?  null : JObject.Parse(metaDataJson),
+                    Parameters = string.IsNullOrEmpty(parameterJson) ? null : JObject.Parse(parameterJson)
                 }
             };
-            if (!string.IsNullOrEmpty(this.PolicyDefinition))
-            {
-                policySetDefinitionObject.Properties.PolicyDefinitions = GetPolicyDefinitionsObject();
-            }
-            else
-            {
-                policySetDefinitionObject.Properties.PolicyDefinitions = JArray.Parse(resource.Properties["policyDefinitions"].ToString());
-            }
 
             return policySetDefinitionObject.ToJToken();
-        }
-
-        /// <summary>
-        /// Gets a resource.
-        /// </summary>
-        private async Task<JObject> GetExistingResource(string resourceId, string apiVersion)
-        {
-            return await this
-                .GetResourcesClient()
-                .GetResource<JObject>(
-                    resourceId: resourceId,
-                    apiVersion: apiVersion,
-                    cancellationToken: this.CancellationToken.Value)
-                .ConfigureAwait(continueOnCapturedContext: false);
-        }
-
-        /// <summary>
-        /// Gets the resource Id from the supplied PowerShell parameters.
-        /// </summary>
-        protected string GetResourceId()
-        {
-            var subscriptionId = DefaultContext.Subscription.Id;
-            return string.Format("/subscriptions/{0}/providers/{1}/{2}",
-                subscriptionId.ToString(),
-                Constants.MicrosoftAuthorizationPolicySetDefinitionType,
-                this.Name);
         }
 
         /// <summary>
@@ -180,6 +167,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             return File.Exists(policyFilePath)
                 ? JArray.Parse(FileUtilities.DataStore.ReadFileAsText(policyFilePath))
                 : JArray.Parse(this.PolicyDefinition);
+        }
+
+        /// <summary>
+        /// Gets the resource Id from the supplied PowerShell parameters.
+        /// </summary>
+        private string GetResourceId()
+        {
+            return this.Id ?? this.MakePolicySetDefinitionId(this.ManagementGroupName, this.SubscriptionId, this.Name);
         }
     }
 }

@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Get, ContainerRegistryCredentialNoun, DefaultParameterSetName = NameResourceGroupParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistryCredential", DefaultParameterSetName = NameResourceGroupParameterSet)]
     [OutputType(typeof(PSContainerRegistryCredential))]
     public class GetAzureContainerRegistryCredential : ContainerRegistryCmdletBase
     {

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
         public GetBatchPoolUsageMetricsCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchPoolUsageMetrics()
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             int poolUsageCount = 0;
             foreach (PSPoolUsageMetrics p in pipeline)
             {
-                Assert.True(poolIds.Contains(p.PoolId));
+                Assert.Contains(p.PoolId, poolIds);
                 poolUsageCount++;
             }
 

@@ -15,45 +15,50 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
+using Microsoft.Azure.Commands.Management.CognitiveServices.Models;
+using System;
+using System.Linq;
 using System.Management.Automation;
-using CognitiveServicesModels = Microsoft.Azure.Commands.Management.CognitiveServices.Models;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices
 {
     /// <summary>
     /// Get Available Skus for Cognitive Services Account
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CognitiveServicesAccountSkusNounStr), OutputType(typeof(CognitiveServicesModels.PSCognitiveServicesSkus))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountSkus", DefaultParameterSetName = GetSkusWithFilterParamSetName),
+        OutputType(typeof(ResourceSku))]
     public class GetAzureCognitiveServicesAccountSkusCommand : CognitiveServicesAccountBaseCmdlet
     {
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name.")]
-        [ResourceGroupCompleter()]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        protected const string GetSkusWithFilterParamSetName = "GetSkusWithFilter";
 
         [Parameter(
-            Position = 1,
-            Mandatory = true,
+            ParameterSetName = GetSkusWithFilterParamSetName,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Cognitive Services Account Name.")]
-        [Alias(CognitiveServicesAccountNameAlias, AccountNameAlias)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+            HelpMessage = "Cognitive Services Account Type.")]
+        [Alias(CognitiveServicesAccountTypeAlias, AccountTypeAlias, KindAlias)]
+        public string Type { get; set; }
+
+        [Parameter(
+            ParameterSetName = GetSkusWithFilterParamSetName,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Cognitive Services Account Location.")]
+        [LocationCompleter("Microsoft.CognitiveServices/accounts")]
+        public string Location { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             RunCmdLet(() =>
             {
-                var cognitiveServicesKeys = this.CognitiveServicesClient.Accounts.ListSkus(
-                     this.ResourceGroupName,
-                     this.Name);
+                var resourceSkus = this.CognitiveServicesClient.ResourceSkus.List().Where(
+                    resourceSku =>
+                    (string.IsNullOrWhiteSpace(this.Type) || resourceSku.Kind == this.Type)
+                    && (string.IsNullOrWhiteSpace(this.Location) || resourceSku.Locations.Any(x => string.Compare(x, this.Location, StringComparison.OrdinalIgnoreCase) == 0))
+                );
 
-                WriteObject(cognitiveServicesKeys);
+                WriteObject(resourceSkus, true);
             });
         }
     }

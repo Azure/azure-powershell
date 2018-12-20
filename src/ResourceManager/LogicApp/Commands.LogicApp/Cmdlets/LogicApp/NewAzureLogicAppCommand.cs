@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Creates a new LogicApp workflow 
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmLogicApp", SupportsShouldProcess = true), OutputType(typeof(object))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogicApp", SupportsShouldProcess = true), OutputType(typeof(object))]
     public class NewAzureLogicAppCommand : LogicAppBaseCmdlet
     {
         #region private Variables
@@ -65,12 +65,12 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             set { this._status = value; }
         }
 
-        [Parameter(Mandatory = false, HelpMessage = "The definition of the workflow.",
+        [Parameter(Mandatory = true, HelpMessage = "The definition of the workflow.",
             ParameterSetName = ParameterSet.LogicAppWithDefinition)]
         [ValidateNotNullOrEmpty]
         public object Definition { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The physical file path of the workflow definition.",
+        [Parameter(Mandatory = true, HelpMessage = "The physical file path of the workflow definition.",
             ParameterSetName = ParameterSet.LogicAppWithDefinitionFile)]
         [ValidateNotNullOrEmpty]
         public string DefinitionFilePath { get; set; }

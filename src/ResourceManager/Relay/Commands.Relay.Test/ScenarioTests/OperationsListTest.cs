@@ -16,21 +16,24 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagemenet.Common.Models;
+    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
     public class OperationsListTest : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public OperationsListTest(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Operations()
         {
-            RelayController.NewInstance.RunPsTest("OperationsListTest");
+            RelayController.NewInstance.RunPsTest(_logger, "OperationsListTest");
         }
     }
 }

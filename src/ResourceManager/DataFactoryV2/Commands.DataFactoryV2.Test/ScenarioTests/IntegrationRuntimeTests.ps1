@@ -32,14 +32,13 @@ function Test-SelfHosted-IntegrationRuntime
             -Location $dflocation `
             -Force
      
-        $irname = "selfhosted-test-integrationruntime"
-        $description = "description"
-   
+        $irname = "selfhosted-test-integrationruntime"   
         $actual = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname `
             -Type 'SelfHosted' `
             -Force
+        Assert-AreEqual $actual.Name $irname
 
         $expected = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
@@ -49,11 +48,15 @@ function Test-SelfHosted-IntegrationRuntime
         $expected = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id
         Assert-AreEqual $actual.Name $expected.Name
 
+        $status = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Status
+        Assert-NotNull $status
+
         $metric = Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname
         Assert-NotNull $metric
 
+        $description = "description"
         $result = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname `
@@ -61,18 +64,6 @@ function Test-SelfHosted-IntegrationRuntime
             -Force
         Assert-AreEqual $result.Description $description
 
-        $linkedIrName = 'LinkedIntegrationRuntime'
-        $authKeys = Get-AzureRmDataFactoryV2IntegrationRuntimeKey -InputObject $actual
-        $authKey = ConvertTo-SecureString $authKeys.AuthKey1 -AsPlainText -Force
-        $actualShared = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
-            -DataFactoryName $dfname `
-            -Name $linkedIrName `
-            -Type 'SelfHosted' `
-            -AuthKey $authKey `
-            -Force
-        Assert-AreEqual $actualShared.Name $linkedIrName
-
-        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actualShared.Id -Force
         Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Force
     }
     finally
@@ -85,6 +76,18 @@ function Test-SelfHosted-IntegrationRuntime
 .SYNOPSIS
 Creates a SSIS-Azure integration runtime and then does operations.
 Deletes the created integration runtime at the end.
+
+To record this test,
+1. Prepare a Azure SQL Server, which will be used to create SSISDB during provisionning the SSIS-IR.
+2. If you are using a existing Azure SQL Server, make sure there is no existed database with name 'SSISDB'.
+3. Configure the Azure SQL Server with either way below:
+    a. Set following environment variables:
+        CatalogServerEndpoint: The catalog server endpoint for catalog database (SSISDB)
+        CatalogAdminUsername: The admin user name on this server
+        CatalogAdminPassword: The password of the admin user.
+    b. Set the variables directly in script.
+
+NOTE: this test will be running for 25 minutes to finish the SSIS-IR provision.
 #>
 function Test-SsisAzure-IntegrationRuntime
 {
@@ -106,14 +109,26 @@ function Test-SsisAzure-IntegrationRuntime
         $description = "SSIS-Azure integration runtime"
 
         # Replace the following three variables to real values in record mode
-        $catalogServerEndpoint = 'fakeserver'
-        $catalogAdminUsername = 'fakeuser'
-        $catalogAdminPassword = 'fakepassord'
+        $catalogServerEndpoint = $Env:CatalogServerEndpoint
+        $catalogAdminUsername = $Env:CatalogAdminUsername
+        $catalogAdminPassword = $Env:CatalogAdminPassword
+
+        if ($catalogServerEndpoint -eq $null){
+            $catalogServerEndpoint = 'fakeserver'
+        }
+
+        if ($catalogAdminUsername -eq $null){
+            $catalogAdminUsername = 'fakeuser'
+        }
+
+        if ($catalogAdminPassword -eq $null){
+		    <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Fake password to resource that has been deleted.")]#>
+            $catalogAdminPassword = 'fakepassord'
+        }
 
         $secpasswd = ConvertTo-SecureString $catalogAdminPassword -AsPlainText -Force
         $mycreds = New-Object System.Management.Automation.PSCredential($catalogAdminUsername, $secpasswd)
-        $sasuri = "https://ssisazurefileshare.blob.core.windows.net/privatepreview?st=2018-02-04T05%3A08%3A00Z&se=2020-02-05T05%3A08%3A00Z&sp=rwl&sv=2017-04-17&sr=c&sig=*******"
-   
+
         $actual = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname `
@@ -124,11 +139,10 @@ function Test-SsisAzure-IntegrationRuntime
             -NodeCount 1 `
             -CatalogServerEndpoint $catalogServerEndpoint `
             -CatalogAdminCredential $mycreds `
-            -CatalogPricingTier 'S1' `
+            -CatalogPricingTier 'Basic' `
             -MaxParallelExecutionsPerNode 1 `
             -LicenseType LicenseIncluded `
             -Edition Enterprise `
-            -SetupScriptContainerSasUri $sasuri `
             -Force
 
         $expected = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
@@ -140,7 +154,7 @@ function Test-SsisAzure-IntegrationRuntime
         $status = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Status
         Stop-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Force
 
-        Start-Sleep -Seconds 15
+        Wait-Seconds 15
         Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname -DataFactoryName $dfname -Name $irname -Force
     }
     finally
@@ -194,7 +208,6 @@ function Test-Azure-IntegrationRuntime
     }
 }
 
-
 <#
 .SYNOPSIS
 Creates a self-hosted integration runtime and then does piping operations.
@@ -228,6 +241,88 @@ function Test-IntegrationRuntime-Piping
         $result | New-AzureRmDataFactoryV2IntegrationRuntimeKey -KeyName AuthKey1 -Force
         $result | Get-AzureRmDataFactoryV2IntegrationRuntimeMetric
         $result | Remove-AzureRmDataFactoryV2IntegrationRuntime -Force
+    }
+    finally
+    {
+        CleanUp $rgname $dfname
+    }
+}
+
+<#
+.SYNOPSIS
+Creates a self-hosted integration runtime and shares it with another data factory and does operations.
+Deletes the created integration runtime at the end.
+#>
+function Test-Shared-IntegrationRuntime
+{
+    $dfname = Get-DataFactoryName
+    $linkeddfname = $dfname + '-linked'
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+        
+    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname `
+            -Name $dfname `
+            -Location $dflocation `
+            -Force
+     
+        $linkeddf = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname `
+            -Name $linkeddfname `
+            -Location $dflocation `
+            -Force
+
+        Wait-Seconds 10
+        
+        $irname = "selfhosted-test-integrationruntime"
+        $description = "description"
+   
+        $shared = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
+            -DataFactoryName $dfname `
+            -Name $irname `
+            -Type 'SelfHosted' `
+            -Force
+
+        New-AzureRMRoleAssignmentWithId `
+            -ObjectId $linkeddf.Identity.PrincipalId `
+            -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' `
+            -Scope $shared.Id `
+            -RoleAssignmentId 6558f9a7-689c-41d3-93bd-3281fbe3d26f
+
+        Wait-Seconds 20
+
+        $linkedIrName = 'LinkedIntegrationRuntime'
+        $linked = Set-AzureRmDataFactoryV2IntegrationRuntime `
+            -ResourceGroupName $rgname `
+            -DataFactoryName $linkeddfname `
+            -Name $linkedIrName `
+            -Type SelfHosted `
+            -Description 'This is a linked integration runtime' `
+            -SharedIntegrationRuntimeResourceId $shared.Id `
+            -Force
+
+        $metric = Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -ResourceGroupName $rgname `
+            -DataFactoryName $linkeddfname `
+            -Name $linkedIrName
+        Assert-NotNull $metric
+
+        $status = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $linked.Id -Status
+        Assert-NotNull $status
+
+        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $shared.Id -LinkedDataFactoryName $linkeddfname -Force
+
+        Remove-AzureRmRoleAssignment `
+            -ObjectId $linkeddf.Identity.PrincipalId `
+            -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' `
+            -Scope $shared.Id
+
+        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $linked.Id -Force
+        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $shared.Id -Force
+
+        Remove-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $linkeddfname -Force
     }
     finally
     {

@@ -400,3 +400,37 @@ function Test-NewDeploymentWithInvalidParameters
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests deployment via template file with KeyVault reference in TemplateParameterObject.
+#>
+function Test-NewDeploymentWithKeyVaultReferenceInParameterObject
+{
+	# Setup
+	$location = "West US"
+
+	$vaultId = "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/powershelltest-keyvaultrg/providers/Microsoft.KeyVault/vaults/saname"
+	$secretName = "examplesecret"
+
+	try
+	{
+		$deploymentRG = Get-ResourceGroupName
+		$deploymentName = Get-ResourceName
+
+		New-AzureRmResourceGroup -Name $deploymentRG -Location $location
+
+		# Test
+		$parameters = @{"storageAccountName"= @{"reference"= @{"keyVault"= @{"id"= $vaultId};"secretName"= $secretName}}}
+		$deployment = New-AzureRmResourceGroupDeployment -Name $deploymentName -ResourceGroupName $deploymentRG -TemplateFile StorageAccountTemplate.json -TemplateParameterObject $parameters
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+	}
+	
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $deploymentRG
+    }
+}

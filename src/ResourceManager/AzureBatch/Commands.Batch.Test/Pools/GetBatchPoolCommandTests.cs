@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
         public GetBatchPoolCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchPoolCommand()
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the pool returned from the OM to the pipeline
-            Assert.Equal(1, pipeline.Count);
+            Assert.Single(pipeline);
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
         }
 
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             int poolCount = 0;
             foreach (PSCloudPool p in pipeline)
             {
-                Assert.True(idsOfConstructedPools.Contains(p.Id));
+                Assert.Contains(p.Id, idsOfConstructedPools);
                 poolCount++;
             }
             Assert.Equal(idsOfConstructedPools.Length, poolCount);

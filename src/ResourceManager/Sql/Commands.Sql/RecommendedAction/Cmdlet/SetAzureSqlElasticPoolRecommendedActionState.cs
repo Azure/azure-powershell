@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,10 +22,9 @@ using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
 {
     /// <summary>
-    /// Defines the Set-AzureRmSqlElasticPoolRecommendedActionState cmdlet
+    /// Defines the Set-AzSqlElasticPoolRecommendedActionState cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlElasticPoolRecommendedActionState",
-        SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlElasticPoolRecommendedActionState",SupportsShouldProcess = true), OutputType(typeof(AzureSqlElasticPoolRecommendedActionModel))]
     public class SetAzureSqlElasticPoolRecommendedActionState : AzureSqlElasticPoolRecommendedActionCmdletBase
     {
         /// <summary>

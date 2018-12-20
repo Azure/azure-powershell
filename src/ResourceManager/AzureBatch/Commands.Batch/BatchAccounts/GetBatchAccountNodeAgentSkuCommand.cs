@@ -19,8 +19,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchNodeAgentSku),
-        OutputType(typeof(PSNodeAgentSku))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchNodeAgentSku"),OutputType(typeof(PSNodeAgentSku))]
     public class GetBatchAccountNodeAgentSkuCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;

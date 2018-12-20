@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$location = 'centraluseuap'
+$location = 'southeastasia'
 
 <#
 	.SYNOPSIS
@@ -74,6 +74,8 @@ function Test-GetTransparentDataEncryption
 		$tde3 = Set-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName `
 			-DatabaseName $db.DatabaseName -State Disabled
 		Assert-AreEqual $tde3.State Disabled
+
+		Start-Sleep -s 1
 
 		$tdeActivity = Get-AzureRmSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName $server.ResourceGroupname `
 			-ServerName $server.ServerName -DatabaseName $db.DatabaseName

@@ -82,8 +82,10 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.MultiInstanceSettings", "PSMultiInstanceSettings"},
             {"Microsoft.Azure.Batch.NameValuePair", "PSNameValuePair"},
             {"Microsoft.Azure.Batch.NetworkConfiguration", "PSNetworkConfiguration"},
+            {"Microsoft.Azure.Batch.NodeAgentInformation", "PSNodeAgentInformation"},
             {"Microsoft.Azure.Batch.NetworkSecurityGroupRule", "PSNetworkSecurityGroupRule"},
             {"Microsoft.Azure.Batch.NodeAgentSku", "PSNodeAgentSku"},
+            {"Microsoft.Azure.Batch.NodeCounts", "PSNodeCounts"},
             {"Microsoft.Azure.Batch.NodeFile", "PSNodeFile"},
             {"Microsoft.Azure.Batch.OSDisk", "PSOSDisk"},
             {"Microsoft.Azure.Batch.OutputFile", "PSOutputFile"},
@@ -92,6 +94,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.OutputFileBlobContainerDestination", "PSOutputFileBlobContainerDestination"},
             {"Microsoft.Azure.Batch.PoolEndpointConfiguration", "PSPoolEndpointConfiguration"},
             {"Microsoft.Azure.Batch.PoolInformation", "PSPoolInformation"},
+            {"Microsoft.Azure.Batch.PoolNodeCounts", "PSPoolNodeCounts"},
             {"Microsoft.Azure.Batch.PoolSpecification", "PSPoolSpecification"},
             {"Microsoft.Azure.Batch.PoolStatistics", "PSPoolStatistics"},
             {"Microsoft.Azure.Batch.PoolUsageMetrics", "PSPoolUsageMetrics"},
@@ -114,6 +117,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.TaskFailureInformation", "PSTaskFailureInformation"},
             {"Microsoft.Azure.Batch.TaskSchedulingPolicy", "PSTaskSchedulingPolicy"},
             {"Microsoft.Azure.Batch.TaskStatistics", "PSTaskStatistics"},
+            {"Microsoft.Azure.Batch.UploadBatchServiceLogsResult", "PSStartComputeNodeServiceLogUploadResult"},
             {"Microsoft.Azure.Batch.UsageStatistics", "PSUsageStatistics"},
             {"Microsoft.Azure.Batch.UserAccount", "PSUserAccount"},
             {"Microsoft.Azure.Batch.UserIdentity", "PSUserIdentity"},
@@ -234,8 +238,6 @@ namespace PSModelGenerator
 
             ConstructorInfo[] constructors = t.GetConstructors();
             ConstructorInfo publicParameterless = null;
-            ConstructorInfo publicSystemParams = null;
-            ConstructorInfo publicEnumParams = null;
             List<ConstructorInfo> publicGeneralParams = new List<ConstructorInfo>();
             foreach (ConstructorInfo con in constructors.Where(c => c.IsPublic || c.IsStatic))
             {

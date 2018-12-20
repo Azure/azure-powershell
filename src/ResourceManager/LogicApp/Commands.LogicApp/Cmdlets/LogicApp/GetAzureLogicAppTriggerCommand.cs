@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Gets the trigger in the workflow
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmLogicAppTrigger"), OutputType(typeof(object))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogicAppTrigger"), OutputType(typeof(WorkflowTrigger))]
     public class GetAzureLogicAppTriggerCommand : LogicAppBaseCmdlet
     {
 

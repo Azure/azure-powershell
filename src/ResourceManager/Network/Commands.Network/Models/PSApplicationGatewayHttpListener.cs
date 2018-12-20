@@ -13,7 +13,9 @@
 // limitations under the License.
 //
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
@@ -21,12 +23,17 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public PSResourceId FrontendIpConfiguration { get; set; }
         public PSResourceId FrontendPort { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Protocol { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string HostName { get; set; }
         public PSResourceId SslCertificate { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool RequireServerNameIndication { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         public string Type { get; set; }
+        public List<PSApplicationGatewayCustomError> CustomErrorConfigurations { get; set; }
 
         [JsonIgnore]
         public string FrontendIpConfigurationText

@@ -25,12 +25,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     /// <summary>
     /// Cmdlet to log into an Analysis Services environment
     /// </summary>
-    [Cmdlet("Restart", "AzureAnalysisServicesInstance", SupportsShouldProcess=true)]
-    [Alias("Restart-AzureAsInstance")]
+    [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AnalysisServicesInstance", SupportsShouldProcess=true)]
+    [Alias("Restart-AzureAsInstance", "Restart-AzAsInstance")]
     [OutputType(typeof(bool))]
-    public class RestartAzureAnalysisServer: AzurePSCmdlet
+    public class RestartAzureAnalysisServer : AzurePSCmdlet
     {
-        private string serverName;
+        private string _serverName;
 
         [Parameter(Mandatory = true, HelpMessage = "Name of the Azure Analysis Services server to restart")]
         [ValidateNotNullOrEmpty]
@@ -45,22 +45,22 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public RestartAzureAnalysisServer()
         {
-            this.AsAzureHttpClient = new AsAzureHttpClient(() => new HttpClient());
-            this.TokenCacheItemProvider = new TokenCacheItemProvider();
+            AsAzureHttpClient = new AsAzureHttpClient(() => new HttpClient());
+            TokenCacheItemProvider = new TokenCacheItemProvider();
 
         }
 
-        public RestartAzureAnalysisServer(IAsAzureHttpClient AsAzureHttpClient, ITokenCacheItemProvider TokenCacheItemProvider)
+        public RestartAzureAnalysisServer(IAsAzureHttpClient asAzureHttpClient, ITokenCacheItemProvider tokenCacheItemProvider)
         {
-            this.AsAzureHttpClient = AsAzureHttpClient;
-            this.TokenCacheItemProvider = TokenCacheItemProvider;
+            AsAzureHttpClient = asAzureHttpClient;
+            TokenCacheItemProvider = tokenCacheItemProvider;
         }
 
         protected override IAzureContext DefaultContext
         {
             get
             {
-                // Nothing to do with Azure Resource Managment context
+                // Nothing to do with Azure Resource Management context
                 return null;
             }
         }
@@ -82,14 +82,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 throw new PSInvalidOperationException(string.Format(Resources.NotLoggedInMessage, ""));
             }
 
-            serverName = Instance;
+            _serverName = Instance;
             Uri uriResult;
 
-            // if the user specifies the FQN of the server, then extract the servername out of that.
+            // if the user specifies the FQN of the server, then extract the server name out of that.
             // and set the current context
             if (Uri.TryCreate(Instance, UriKind.Absolute, out uriResult) && uriResult.Scheme == "asazure")
             {
-                serverName = uriResult.PathAndQuery.Trim('/');
+                _serverName = uriResult.PathAndQuery.Trim('/');
                 if (string.Compare(AsAzureClientSession.Instance.Profile.Context.Environment.Name, uriResult.DnsSafeHost, StringComparison.InvariantCultureIgnoreCase) != 0)
                 {
                     AsAzureClientSession.Instance.SetCurrentContext(
@@ -103,21 +103,18 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 if (currentContext != null 
                     && AsAzureClientSession.AsAzureRolloutEnvironmentMapping.ContainsKey(currentContext.Environment.Name))
                 {
-                    throw new PSInvalidOperationException(string.Format(Resources.InvalidServerName, serverName));
+                    throw new PSInvalidOperationException(string.Format(Resources.InvalidServerName, _serverName));
                 }
             }
 
-            if (this.AsAzureHttpClient == null)
+            if (AsAzureHttpClient == null)
             {
-                this.AsAzureHttpClient = new AsAzureHttpClient(() =>
-                {
-                    return new HttpClient();
-                });
+                AsAzureHttpClient = new AsAzureHttpClient(() => new HttpClient());
             }
 
-            if (this.TokenCacheItemProvider == null)
+            if (TokenCacheItemProvider == null)
             {
-                this.TokenCacheItemProvider = new TokenCacheItemProvider();
+                TokenCacheItemProvider = new TokenCacheItemProvider();
             }
         }
 
@@ -131,18 +128,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             if (ShouldProcess(Instance, Resources.RestartingAnalysisServicesServer))
             {
                 var context = AsAzureClientSession.Instance.Profile.Context;
-#if NETSTANDARD
-                AsAzureClientSession.Instance.Login(context, null, null);
-#else
                 AsAzureClientSession.Instance.Login(context, null);
-#endif
-                string accessToken = this.TokenCacheItemProvider.GetTokenFromTokenCache(AsAzureClientSession.TokenCache, context.Account.UniqueId);
 
-                Uri restartBaseUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, context.Environment.Name));
+                var accessToken = TokenCacheItemProvider.GetTokenFromTokenCache(AsAzureClientSession.TokenCache, context.Account.UniqueId);
 
-                var restartEndpoint = string.Format((string)context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.RestartEndpointFormat], serverName);
+                var restartBaseUri = new Uri($"{Uri.UriSchemeHttps}{Uri.SchemeDelimiter}{context.Environment.Name}");
 
-                using (HttpResponseMessage message = AsAzureHttpClient.CallPostAsync(
+                var restartEndpoint = string.Format((string)context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.RestartEndpointFormat], _serverName);
+
+                using (var message = AsAzureHttpClient.CallPostAsync(
                     restartBaseUri,
                     restartEndpoint,
                     accessToken).Result)

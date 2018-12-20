@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
@@ -22,7 +23,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseUpgradeHint", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseUpgradeHint", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [OutputType(typeof(RecommendedDatabaseProperties))]
     public class GetAzureSqlDatabaseUpgradeHint : AzureSqlCmdletBase<IEnumerable<RecommendedDatabaseProperties>, AzureSqlServiceTierAdvisorAdapter>
     {
         /// <summary>
@@ -32,6 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The name of the Azure SQL Server.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
@@ -41,6 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Azure SQL Database.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 

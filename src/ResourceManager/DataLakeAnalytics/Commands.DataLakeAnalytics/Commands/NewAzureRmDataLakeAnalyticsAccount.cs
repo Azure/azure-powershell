@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeAnalyticsAccount"), OutputType(typeof(PSDataLakeAnalyticsAccount))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeAnalyticsAccount"), OutputType(typeof(PSDataLakeAnalyticsAccount))]
     [Alias("New-AdlAnalyticsAccount")]
     public class NewAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 }
             }
 
-            var defaultStorage = new DataLakeStoreAccountInfo
+            var defaultStorage = new AddDataLakeStoreWithAccountParameters
             {
                 Name = DefaultDataLakeStore
             };

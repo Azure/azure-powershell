@@ -15,28 +15,31 @@
 namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagemenet.Common.Models;
+    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
     public class NestedEndpointsTests
     {
+        public XunitTracingInterceptor _logger;
+
         public NestedEndpointsTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNestedEndpointsCreateUpdate()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-NestedEndpointsCreateUpdate");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NestedEndpointsCreateUpdate");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileWithNestedEndpointsGetPut()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ProfileWithNestedEndpointsGetPut");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileWithNestedEndpointsGetPut");
         }
     }
 }

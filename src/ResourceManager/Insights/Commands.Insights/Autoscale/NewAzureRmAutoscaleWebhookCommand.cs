@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// <summary>
     /// Create an WebhookNotification
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAutoscaleWebhook"), OutputType(typeof(WebhookNotification))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutoscaleWebhook"), OutputType(typeof(Management.Monitor.Management.Models.WebhookNotification))]
     public class NewAzureRmAutoscaleWebhookCommand : MonitorCmdletBase
     {
         /// <summary>

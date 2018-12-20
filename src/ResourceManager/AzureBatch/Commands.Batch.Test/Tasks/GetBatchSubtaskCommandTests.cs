@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
 
         public GetBatchSubtaskCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchSubtaskCommand()
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
             int SubtaskCount = 0;
             foreach (PSSubtaskInformation s in pipeline)
             {
-                Assert.True(idsOfConstructedSubtasks.Contains(s.Id.Value));
+                Assert.Contains(s.Id.Value, idsOfConstructedSubtasks);
                 SubtaskCount++;
             }
             Assert.Equal(idsOfConstructedSubtasks.Length, SubtaskCount);

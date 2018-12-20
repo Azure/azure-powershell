@@ -19,10 +19,9 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRmSqlServerVirtualNetworkRule cmdlet
+    /// Defines the Get-AzSqlServerVirtualNetworkRule cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerVirtualNetworkRule"),
-        OutputType(typeof(Model.AzureSqlServerVirtualNetworkRuleModel))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerVirtualNetworkRule"),OutputType(typeof(Model.AzureSqlServerVirtualNetworkRuleModel))]
     public class GetAzureSqlServerVirtualNetworkRule : AzureSqlServerVirtualNetworkRuleCmdletBase
     {
         /// <summary>

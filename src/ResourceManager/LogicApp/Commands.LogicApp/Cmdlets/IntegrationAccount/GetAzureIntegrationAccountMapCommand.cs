@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Gets the integration account map by name 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountMap")]
-    [OutputType(typeof(IntegrationAccountMap), typeof(IPage<IntegrationAccountMap>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IntegrationAccountMap")]
+    [OutputType(typeof(IntegrationAccountMap))]
     public class GetAzureIntegrationAccountMapCommand : LogicAppBaseCmdlet
     {
 

@@ -21,6 +21,8 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Management.EventHub.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System.Management.Automation;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Eventhub
 {
@@ -64,7 +66,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             return resourceList;
         }
 
-        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool? isAutoInflateEnabled, int? maximumThroughputUnits)
+        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool? isAutoInflateEnabled, int? maximumThroughputUnits, bool? isKafkaEnabled)
         {
             EHNamespace parameter = new EHNamespace();
             parameter.Location = location;
@@ -93,6 +95,9 @@ namespace Microsoft.Azure.Commands.Eventhub
 
             if (maximumThroughputUnits.HasValue)
                 parameter.MaximumThroughputUnits = maximumThroughputUnits;
+
+            if (isKafkaEnabled.HasValue)
+                parameter.KafkaEnabled = isKafkaEnabled;
 
             var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new PSNamespaceAttributes(response);
@@ -182,13 +187,19 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new PSListKeysAttributes(listKeys);
         }
 
-        public PSListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys)
+        public PSListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys, string keyValue=null)
         {
             AccessKeys regenerateKeyslistKeys;
+            RegenerateAccessKeyParameters regenParam = new RegenerateAccessKeyParameters();
+
             if (regenerateKeys == "PrimaryKey")
-                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey));
+                regenParam.KeyType = KeyType.PrimaryKey;
             else
-                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));
+                regenParam.KeyType = KeyType.SecondaryKey;
+
+            regenParam.Key = keyValue;
+
+            regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, regenParam);
 
             return new PSListKeysAttributes(regenerateKeyslistKeys);
         }
@@ -202,10 +213,33 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new PSEventHubAttributes(response);
         }
 
-        public IEnumerable<PSEventHubAttributes> ListAllEventHubs(string resourceGroupName, string namespaceName)
+        public IEnumerable<PSEventHubAttributes> ListAllEventHubs(string resourceGroupName, string namespaceName, int? maxCount = null)
         {
-            var response = Client.EventHubs.ListByNamespace(resourceGroupName, namespaceName);
-            var resourceList = response.Select(resource => new PSEventHubAttributes(resource));
+
+            IEnumerable<PSEventHubAttributes> resourceList = Enumerable.Empty<PSEventHubAttributes>();
+            int? skip = 0;
+            switch (ReturnmaxCountvalueForSwtich(maxCount))
+            {
+
+                case 0:
+                    var response = Client.EventHubs.ListByNamespace(resourceGroupName, namespaceName, skip: 0, top: maxCount);
+                    resourceList = response.Select(resource => new PSEventHubAttributes(resource));
+                    break;
+                case 1:
+                    while (maxCount > 0)
+                    {
+                        var response1 = Client.EventHubs.ListByNamespace(resourceGroupName, namespaceName, skip: skip, top: maxCount);
+                        resourceList = resourceList.Concat<PSEventHubAttributes>(response1.Select(resource => new PSEventHubAttributes(resource)));
+                        skip += maxCount > 100 ? 100 : maxCount;
+                        maxCount = maxCount - 100;
+                    }
+                    break;
+                default:
+                    var response2 = Client.EventHubs.ListByNamespace(resourceGroupName, namespaceName);
+                    resourceList = response2.Select(resource => new PSEventHubAttributes(resource));
+                    break;
+
+            }
             return resourceList;
         }
 
@@ -287,13 +321,20 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new PSListKeysAttributes(listKeys);
         }
 
-        public PSListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string eventHubName, string authRuleName, string regenerateKeys)
+        public PSListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string eventHubName, string authRuleName, string regenerateKeys, string keyValue = null)
         {
+
             AccessKeys regenerateKeyslistKeys;
+            RegenerateAccessKeyParameters regenParam = new RegenerateAccessKeyParameters();
+
             if (regenerateKeys == "PrimaryKey")
-                regenerateKeyslistKeys = Client.EventHubs.RegenerateKeys(resourceGroupName, namespaceName, eventHubName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey));
+                regenParam.KeyType = KeyType.PrimaryKey;
             else
-                regenerateKeyslistKeys = Client.EventHubs.RegenerateKeys(resourceGroupName, namespaceName, eventHubName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));
+                regenParam.KeyType = KeyType.SecondaryKey;
+
+            regenParam.Key = keyValue;
+
+            regenerateKeyslistKeys = Client.EventHubs.RegenerateKeys(resourceGroupName, namespaceName, eventHubName, authRuleName, regenParam);
 
             return new PSListKeysAttributes(regenerateKeyslistKeys);
 
@@ -385,10 +426,33 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new PSConsumerGroupAttributes(response);
         }
 
-        public IEnumerable<PSConsumerGroupAttributes> ListAllConsumerGroup(string resourceGroupName, string namespaceName, string eventHubName)
+        public IEnumerable<PSConsumerGroupAttributes> ListAllConsumerGroup(string resourceGroupName, string namespaceName, string eventHubName, int? maxCount = null)
         {
-            var response = Client.ConsumerGroups.ListByEventHub(resourceGroupName, namespaceName, eventHubName);
-            var resourceList = response.Select(resource => new PSConsumerGroupAttributes(resource));
+
+            IEnumerable<PSConsumerGroupAttributes> resourceList = Enumerable.Empty<PSConsumerGroupAttributes>();
+            int? skip = 0;
+            switch (ReturnmaxCountvalueForSwtich(maxCount))
+            {
+
+                case 0:
+                    var response = Client.ConsumerGroups.ListByEventHub(resourceGroupName, namespaceName, eventHubName, skip: 0, top: maxCount);
+                    resourceList = response.Select(resource => new PSConsumerGroupAttributes(resource));
+                    break;
+                case 1:
+                    while (maxCount > 0)
+                    {
+                        var response1 = Client.ConsumerGroups.ListByEventHub(resourceGroupName, namespaceName, eventHubName, skip: skip, top: maxCount);
+                        resourceList = resourceList.Concat<PSConsumerGroupAttributes>(response1.Select(resource => new PSConsumerGroupAttributes(resource)));
+                        skip += maxCount > 100 ? 100 : maxCount;
+                        maxCount = maxCount - 100;
+                    }
+                    break;
+                default:
+                    var response2 = Client.ConsumerGroups.ListByEventHub(resourceGroupName, namespaceName, eventHubName);
+                    resourceList = response2.Select(resource => new PSConsumerGroupAttributes(resource));
+                    break;
+
+            }
             return resourceList;
         }
 
@@ -422,5 +486,39 @@ namespace Microsoft.Azure.Commands.Eventhub
         }
 
         #endregion
+
+        public static int ReturnmaxCountvalueForSwtich(int? maxcount)
+        {
+            int returnvalue = -1;
+
+            if (maxcount != null && maxcount <= 100)
+                returnvalue = 0;
+            if (maxcount != null && maxcount > 100)
+                returnvalue = 1;
+
+            return returnvalue;
+        }
+
+        public static ErrorRecord WriteErrorforBadrequest(ErrorResponseException ex)
+        {
+            if (ex != null && !string.IsNullOrEmpty(ex.Response.Content))
+            {
+                ErrorResponseContent errorExtract = new ErrorResponseContent();
+                errorExtract = JsonConvert.DeserializeObject<ErrorResponseContent>(ex.Response.Content);
+                if (!string.IsNullOrEmpty(errorExtract.error.message))
+                {
+                    return new ErrorRecord(ex, errorExtract.error.message, ErrorCategory.OpenError, ex);
+                }
+                else
+                {
+                    return new ErrorRecord(ex, ex.Response.Content, ErrorCategory.OpenError, ex);
+                }
+            }
+            else
+            {
+                Exception emptyEx = new Exception("Response object empty");
+                return new ErrorRecord(emptyEx, "Response object was empty", ErrorCategory.OpenError, emptyEx);
+            }
+        }
     }
 }

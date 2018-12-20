@@ -19,9 +19,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementProperty, DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementProperty>), ParameterSetName = new[] { GetAll, FindByName, FindByTag })]
-    [OutputType(typeof(PsApiManagementProperty), ParameterSetName = new[] { GetById })]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementProperty", DefaultParameterSetName = GetAll)]
+    [OutputType(typeof(PsApiManagementProperty))]
     public class GetAzureApiManagementProperty : AzureApiManagementCmdletBase
     {
         private const string GetAll = "GetAllProperties";

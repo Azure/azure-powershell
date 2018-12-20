@@ -21,8 +21,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.Dataset, DefaultParameterSetName = ParameterSetNames.ByFactoryName,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2Dataset", DefaultParameterSetName = ParameterSetNames.ByFactoryName,SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureDataFactoryDatasetCommand : DataFactoryContextActionBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true,
@@ -36,7 +35,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [ValidateNotNull]
         public PSDataset InputObject { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             ByInputObject(InputObject);

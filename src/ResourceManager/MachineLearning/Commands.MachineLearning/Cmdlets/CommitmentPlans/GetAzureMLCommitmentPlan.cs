@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Commands.MachineLearning
     using ResourceManager.Common.ArgumentCompleters;
     using Rest.Azure;
 
-    [Cmdlet(VerbsCommon.Get, CommitmentPlansCmdletBase.CommitmentPlanCommandletSuffix)]
-    [OutputType(typeof(CommitmentPlan), typeof(CommitmentPlan[]))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MlCommitmentPlan")]
+    [OutputType(typeof(CommitmentPlan))]
     public class GetAzureMLCommitmentPlan : CommitmentPlansCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "The name of the resource group for the Azure ML commitment plan.")]

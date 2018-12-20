@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmContextAutosaveSetting")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContextAutosaveSetting")]
     [OutputType(typeof(ContextAutosaveSettings))]
     public class GetzureRmContextAutosaveSetting : AzureContextModificationCmdlet
     {

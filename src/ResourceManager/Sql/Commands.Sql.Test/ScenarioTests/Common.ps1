@@ -169,6 +169,7 @@ function Create-BasicTestEnvironmentWithParams ($params, $location, $serverVersi
 	New-AzureRmResourceGroup -Name $params.rgname -Location $location
 	$serverName = $params.serverName
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!Sec"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	New-AzureRmSqlServer -ResourceGroupName $params.rgname -ServerName $params.serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
@@ -189,65 +190,69 @@ function Create-DataMaskingTestEnvironment ($testSuffix)
     New-AzureRmSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -ServerVersion "12.0" -Location "West Central US" -SqlAdministratorCredentials $credentials
 	New-AzureRmSqlServerFirewallRule -ResourceGroupName  $params.rgname -ServerName $params.serverName -StartIpAddress 0.0.0.0 -EndIpAddress 255.255.255.255 -FirewallRuleName "ddmRule"
 	New-AzureRmSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-	$fullServerName = $params.serverName + ".database.windows.net"
-
-	$uid = $params.userName
-	$login = $params.loginName
-	$pwd = $params.pwd
-
-	# create new login and user
-	$connectionString = "Server=$fullServerName;uid=$login;pwd=$pwd;Database=master;Integrated Security=False;"
-
-	$connection = New-Object System.Data.SqlClient.SqlConnection
-	$connection.ConnectionString = $connectionString
-	try
+	
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record")
 	{
-		$connection.Open()
+		$fullServerName = $params.serverName + ".database.windows.net"
 
-		$query = "CREATE LOGIN $uid WITH PASSWORD = '$pwd';"
-		$command = $connection.CreateCommand()
-		$command.CommandText = $query
-		$command.ExecuteReader()
-	}
-	catch
-	{
-		# We catch the exceptions not to fail the tests in playback mode
-	}
-	finally
-	{
-		$connection.Close()
-	}
+		$uid = $params.userName
+		$login = $params.loginName
+		$pwd = $params.pwd
 
-	# create new user and create table in the database
-	$databaseName=$params.databaseName
-	$connectionString = "Server=$fullServerName;uid=$login;pwd=$pwd;Database=$databaseName;Integrated Security=False;"
+		# create new login and user
+		$connectionString = "Server=$fullServerName;uid=$login;pwd=$pwd;Database=master;Integrated Security=False;"
 
-	$connection = New-Object System.Data.SqlClient.SqlConnection
-	$connection.ConnectionString = $connectionString
-	try
-	{
-		$connection.Open()
+		$connection = New-Object System.Data.SqlClient.SqlConnection
+		$connection.ConnectionString = $connectionString
+		try
+		{
+			$connection.Open()
 
-		$table1 = $params.table1
-		$column1 = $params.column1
-		$columnInt = $params.columnInt
+			$query = "CREATE LOGIN $uid WITH PASSWORD = '$pwd';"
+			$command = $connection.CreateCommand()
+			$command.CommandText = $query
+			$command.ExecuteReader()
+		}
+		catch
+		{
+			# We catch the exceptions not to fail the tests in playback mode
+		}
+		finally
+		{
+			$connection.Close()
+		}
 
-		$table2 = $params.table2
-		$column2 = $params.column2
-		$columnFloat = $params.columnFloat
+		# create new user and create table in the database
+		$databaseName=$params.databaseName
+		$connectionString = "Server=$fullServerName;uid=$login;pwd=$pwd;Database=$databaseName;Integrated Security=False;"
 
-		$query = "CREATE TABLE $table1 ($column1 NVARCHAR(20)NOT NULL, $columnInt INT);CREATE TABLE $table2 ($column2 NVARCHAR(20)NOT NULL, $columnFloat DECIMAL(6,3));CREATE USER $uid FOR LOGIN $uid;"
-		$command = $connection.CreateCommand()
-		$command.CommandText = $query
-		$command.ExecuteReader()
-	}
-	catch
-	{
-		# We catch the exceptions not to fail the tests in playback mode
-	}
-	finally
-	{
-		$connection.Close()
+		$connection = New-Object System.Data.SqlClient.SqlConnection
+		$connection.ConnectionString = $connectionString
+		try
+		{
+			$connection.Open()
+
+			$table1 = $params.table1
+			$column1 = $params.column1
+			$columnInt = $params.columnInt
+
+			$table2 = $params.table2
+			$column2 = $params.column2
+			$columnFloat = $params.columnFloat
+
+			$query = "CREATE TABLE $table1 ($column1 NVARCHAR(20)NOT NULL, $columnInt INT);CREATE TABLE $table2 ($column2 NVARCHAR(20)NOT NULL, $columnFloat DECIMAL(6,3));CREATE USER $uid FOR LOGIN $uid;"
+			$command = $connection.CreateCommand()
+			$command.CommandText = $query
+			$command.ExecuteReader()
+		}
+		catch
+		{
+			# We catch the exceptions not to fail the tests in playback mode
+		}
+		finally
+		{
+			$connection.Close()
+		}
 	}
 }
 
@@ -264,7 +269,7 @@ function Get-SqlServerKeyVaultKeyTestEnvironmentParameters ()
 			  serverKeyName = "akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106";
 			  vaultName = "akvtdekeyvault";
 			  keyName = "key1"
-			  location = "centraluseuap";
+			  location = "southeastasia";
 			  }
 }
 
@@ -279,6 +284,7 @@ function Create-ServerKeyVaultKeyTestEnvironment ($params)
 
 	# Create Server
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	$server = New-AzureRmSqlServer -ResourceGroupName  $rg.ResourceGroupName -ServerName $params.serverName -Location $params.location -ServerVersion "12.0" -SqlAdministratorCredentials $credentials
@@ -351,6 +357,33 @@ function Get-VirtualNetworkRuleName
 Gets valid server dns alias name
 #>
 function Get-ServerDnsAliasName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid managed instance name
+#>
+function Get-ManagedInstanceName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid managed database name
+#>
+function Get-ManagedDatabaseName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid vnet name
+#>
+function Get-VNetName
 {
     return getAssetName
 }
@@ -433,6 +466,7 @@ function Remove-ResourceGroupForTest ($rg)
 function Get-ServerCredential
 {
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
 	return $credentials
@@ -507,7 +541,8 @@ Gets the parameters for import/export tests
 function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
 {
     $databaseName = "sql-ie-cmdlet-db" + $testSuffix;
-    $password = [Microsoft.Azure.Test.TestUtilities]::GenerateName("IEp@ssw0rd");
+    # TODO: Remove "CallSite.Target" when re-recording ImportExportTests
+    $password = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateName("IEp@ssw0rd", "CallSite.Target");
     #Fake storage account data. Used for playback mode
     $exportBacpacUri = "http://test.blob.core.windows.net/bacpacs"
     $importBacpacUri = "http://test.blob.core.windows.net/bacpacs/test.bacpac"
@@ -606,10 +641,78 @@ Gets dns name according to environment
 function Get-DNSNameBasedOnEnvironment ()
 {
      $connectingString = [System.Environment]::GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION")
-     $parsedString = [Microsoft.Azure.Test.TestUtilities]::ParseConnectionString($connectingString)
-     $environment = $parsedString[[Microsoft.Azure.Test.TestEnvironment]::EnvironmentKey]
+     $parsedString = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::ParseConnectionString($connectingString)
+     $environment = $parsedString[[Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringKeys]::EnvironmentKey]
      if ($environment -eq "Dogfood"){
          return ".sqltest-eg1.mscds.com"
      }
      return ".database.windows.net"
+}
+
+<#
+	.SYNOPSIS
+	Creates the test environment needed to perform the Sql managed instance CRUD tests
+#>
+function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
+{
+	$managedInstanceName = Get-ManagedInstanceName
+	$credentials = Get-ServerCredential
+ 	$licenseType = "BasePrice"
+  	$storageSizeInGB = 32
+ 	$vCore = 16
+ 	$skuName = "GP_Gen4"
+
+	$managedInstance = New-AzureRmSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstanceName `
+ 			-Location $resourceGroup.Location -AdministratorCredential $credentials -SubnetId $subnetId `
+  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName
+
+	return $managedInstance
+}
+
+<#
+	.SYNOPSIS
+	Create a virtual network
+#>
+function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $location = "westcentralus")
+{
+	$vNetAddressPrefix = "10.0.0.0/16"
+	$defaultResourceGroupName = "cl_one"
+	$defaultSubnetAddressPrefix = "10.0.0.0/24"
+
+	try {
+		$getVnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $defaultResourceGroupName
+		return $getVnet
+	} catch {
+		$virtualNetwork = New-AzureRmVirtualNetwork `
+							-ResourceGroupName $defaultResourceGroupName `
+							-Location $location `
+							-Name $vNetName `
+							-AddressPrefix $vNetAddressPrefix
+ 		$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
+								-Name $subnetName `
+								-AddressPrefix $defaultSubnetAddressPrefix `
+								-VirtualNetwork $virtualNetwork
+ 		$virtualNetwork | Set-AzureRmVirtualNetwork
+ 		$routeTableMiManagementService = New-AzureRmRouteTable `
+								-Name 'myRouteTableMiManagementService' `
+								-ResourceGroupName $defaultResourceGroupName `
+								-location $location
+ 		Set-AzureRmVirtualNetworkSubnetConfig `
+								-VirtualNetwork $virtualNetwork `
+								-Name $subnetName `
+								-AddressPrefix $defaultSubnetAddressPrefix `
+								-RouteTable $routeTableMiManagementService | `
+							Set-AzureRmVirtualNetwork
+ 		Get-AzureRmRouteTable `
+								-ResourceGroupName $defaultResourceGroupName `
+								-Name "myRouteTableMiManagementService" `
+								| Add-AzureRmRouteConfig `
+								-Name "ToManagedInstanceManagementService" `
+								-AddressPrefix 0.0.0.0/0 `
+								-NextHopType "Internet" `
+								| Set-AzureRmRouteTable
+
+		$getVnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $defaultResourceGroupName
+		return $getVnet
+	}
 }

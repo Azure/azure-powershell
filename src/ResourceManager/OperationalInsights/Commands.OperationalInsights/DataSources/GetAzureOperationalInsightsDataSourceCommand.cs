@@ -20,7 +20,7 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Get, Constants.DataSource, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(List<PSDataSource>), typeof(PSDataSource))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsDataSource", DefaultParameterSetName = ByWorkspaceNameByKind), OutputType(typeof(PSDataSource))]
     public class GetAzureOperationalInsightsDataSourceCommand : OperationalInsightsBaseCmdlet
     {
         const string ByWorkspaceObjectByName = "ByWorkspaceObjectByName";
@@ -70,11 +70,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName == ByWorkspaceName)
-            {
-                WriteWarning(Properties.Resources.GetWorkspaceDataSourceParameterSetWarning);
-                return;
-            }
             if (ParameterSetName == ByWorkspaceObjectByName || ParameterSetName == ByWorkspaceObjectByKind)
             {
                 ResourceGroupName = Workspace.ResourceGroupName;

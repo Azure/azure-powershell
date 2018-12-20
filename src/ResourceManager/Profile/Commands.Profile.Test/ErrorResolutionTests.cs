@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.True(output == null || output.Count == 0);
             output = cmdlet.ExecuteCmdletInPipeline<AzureErrorRecord>("Resolve-Error", new ErrorRecord[] { null, new ErrorRecord(new Exception(null), null, ErrorCategory.AuthenticationError, null) });
             Assert.NotNull(output);
-            Assert.Equal(1, output.Count);
+            Assert.Single(output);
             var record = output[0] as AzureExceptionRecord;
             Assert.NotNull(record);
             Assert.Equal(ErrorCategory.AuthenticationError, record.ErrorCategory.Category);
@@ -95,13 +95,13 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(errorResult);
             Assert.Equal(ErrorCategory.AuthenticationError, errorResult.ErrorCategory.Category);
             Assert.NotNull(errorResult.Exception);
-            Assert.Equal(errorResult.Exception.GetType(), typeof(Exception));
+            Assert.Equal(typeof(Exception), errorResult.Exception.GetType());
             Assert.Equal("exception message", errorResult.Exception.Message);
             var hyakResult = runtime.OutputPipeline[1] as AzureRestExceptionRecord;
             Assert.NotNull(hyakResult);
             Assert.Equal(ErrorCategory.ConnectionError, hyakResult.ErrorCategory.Category);
             Assert.NotNull(errorResult.Exception);
-            Assert.Equal(hyakResult.Exception.GetType(), typeof(TestHyakException));
+            Assert.Equal(typeof(TestHyakException), hyakResult.Exception.GetType());
             Assert.Equal("exception message", hyakResult.Exception.Message);
             Assert.NotNull(hyakResult.RequestMessage);
             Assert.Equal(HttpMethod.Get.ToString(), hyakResult.RequestMessage.Verb);
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(autorestResult);
             Assert.Equal(ErrorCategory.InvalidOperation, autorestResult.ErrorCategory.Category);
             Assert.NotNull(autorestResult.Exception);
-            Assert.Equal(autorestResult.Exception.GetType(), typeof(Microsoft.Rest.Azure.CloudException));
+            Assert.Equal(typeof(Microsoft.Rest.Azure.CloudException), autorestResult.Exception.GetType());
             Assert.Equal("exception message", autorestResult.Exception.Message);
             Assert.NotNull(autorestResult.RequestMessage);
             Assert.Equal(HttpMethod.Get.ToString(), autorestResult.RequestMessage.Verb);
@@ -151,17 +151,17 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(errorResult);
             Assert.Equal(ErrorCategory.AuthenticationError, errorResult.ErrorCategory.Category);
             Assert.NotNull(errorResult.Exception);
-            Assert.Equal(errorResult.Exception.GetType(), typeof(Exception));
+            Assert.Equal(typeof(Exception), errorResult.Exception.GetType());
             var hyakResult = runtime.OutputPipeline[1] as AzureRestExceptionRecord;
             Assert.NotNull(hyakResult);
             Assert.Equal(ErrorCategory.ConnectionError, hyakResult.ErrorCategory.Category);
             Assert.NotNull(errorResult.Exception);
-            Assert.Equal(hyakResult.Exception.GetType(), typeof(TestHyakException));
+            Assert.Equal(typeof(TestHyakException), hyakResult.Exception.GetType());
             var autorestResult = runtime.OutputPipeline[2] as AzureRestExceptionRecord;
             Assert.NotNull(autorestResult);
             Assert.Equal(ErrorCategory.InvalidOperation, autorestResult.ErrorCategory.Category);
             Assert.NotNull(autorestResult.Exception);
-            Assert.Equal(autorestResult.Exception.GetType(), typeof(Microsoft.Rest.Azure.CloudException));
+            Assert.Equal(typeof(Microsoft.Rest.Azure.CloudException), autorestResult.Exception.GetType());
         }
 
         [Fact]
@@ -175,9 +175,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var exception = new Exception(message);
             cmdlet.ExecuteCmdletWithExceptionInPipeline<AzureErrorRecord>("Resolve-AzureRmError", exception, new KeyValuePair<string, object>("Last", null ) );
             Assert.NotNull(mock.ErrorStream);
-            Assert.Equal(1, mock.ErrorStream.Count);
+            Assert.Single(mock.ErrorStream);
             Assert.NotNull(mock.OutputPipeline);
-            Assert.Equal(1, mock.OutputPipeline.Count);
+            Assert.Single(mock.OutputPipeline);
             var record = mock.OutputPipeline[0] as AzureExceptionRecord;
             Assert.NotNull(record);
             Assert.NotNull(record.Exception);

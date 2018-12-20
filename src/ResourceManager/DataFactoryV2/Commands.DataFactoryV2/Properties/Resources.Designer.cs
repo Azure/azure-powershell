@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The data factory object provided is invalid. Use Get-AzureRmDataFactory to retrieve a specific data factory object, or use New-AzureRmDataFactory to create a new data factory object..
+        ///   Looks up a localized string similar to The data factory object provided is invalid. Use Get-AzDataFactory to retrieve a specific data factory object, or use New-AzDataFactory to create a new data factory object..
         /// </summary>
         internal static string DataFactoryArgumentInvalid {
             get {
@@ -134,29 +134,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
                 return ResourceManager.GetString("DataFactoryRemoving", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to update properties of the data factory &apos;{0}&apos; in resource group &apos;{1}&apos;?.
-        /// </summary>
-        internal static string DataFactoryUpdateConfirm
-        {
-            get
-            {
-                return ResourceManager.GetString("DataFactoryUpdateConfirm", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Updating properties of the data factory &apos;{0}&apos; in resource group &apos;{1}&apos;..
-        /// </summary>
-        internal static string DataFactoryUpdating
-        {
-            get
-            {
-                return ResourceManager.GetString("DataFactoryUpdating", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove dataset &apos;{0}&apos; in data factory &apos;{1}&apos;?.
         /// </summary>
@@ -250,7 +228,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Get-AzureRmDataFactorySlice command if you want to specify EndDateTime..
+        ///   Looks up a localized string similar to EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Get-AzDataFactorySlice command if you want to specify EndDateTime..
         /// </summary>
         internal static string EndDateTimeNotSpecifiedForGetSlice {
             get {
@@ -259,7 +237,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Set-AzureRmDataFactorySliceStatus command if you want to specify EndDateTime..
+        ///   Looks up a localized string similar to EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Set-AzDataFactorySliceStatus command if you want to specify EndDateTime..
         /// </summary>
         internal static string EndDateTimeNotSpecifiedForSetSliceStatus {
             get {
@@ -556,11 +534,38 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only self-hosted integration runtime can be shared..
+        /// </summary>
+        internal static string InvalidIntegrationRuntimeSharing {
+            get {
+                return ResourceManager.GetString("InvalidIntegrationRuntimeSharing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;AuthKey&apos; can not be used together with &apos;SharedIntegrationRuntimeResourceId&apos;..
+        /// </summary>
+        internal static string InvalidIntegrationRuntimeSharingParameters {
+            get {
+                return ResourceManager.GetString("InvalidIntegrationRuntimeSharingParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to parse input JSON file. {0}. Please correct the error in the JSON file and re-deploy {1} again..
         /// </summary>
         internal static string InvalidJson {
             get {
                 return ResourceManager.GetString("InvalidJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The linked data factory name is invlaid..
+        /// </summary>
+        internal static string InvalidLinkedDataFactoryName {
+            get {
+                return ResourceManager.GetString("InvalidLinkedDataFactoryName", resourceCulture);
             }
         }
         
@@ -621,7 +626,16 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while requesting the status of Integration Runtime, but you can manually execute the following command: Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyIR -Status.
+        ///   Looks up a localized string similar to LinkedDataFactoryName parameter is working together with &apos;-Links&apos; switch parameter..
+        /// </summary>
+        internal static string LinksSwitchMissing {
+            get {
+                return ResourceManager.GetString("LinksSwitchMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while requesting the status of Integration Runtime, but you can manually execute the following command: Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyIR -Status.
         /// </summary>
         internal static string LongRunningStatusError {
             get {
@@ -700,24 +714,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         internal static string PipelineRemoving {
             get {
                 return ResourceManager.GetString("PipelineRemoving", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to stop pipeline run &apos;{0}&apos; in data factory &apos;{1}&apos;?.
-        /// </summary>
-        internal static string PipelineRunStopConfirmation {
-            get {
-                return ResourceManager.GetString("PipelineRunStopConfirmation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stopping pipeline run &apos;{0}&apos; in data factory &apos;{1}&apos;.
-        /// </summary>
-        internal static string PipelineRunStopping {
-            get {
-                return ResourceManager.GetString("PipelineRunStopping", resourceCulture);
             }
         }
         
@@ -819,6 +815,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         internal static string TriggerStopping {
             get {
                 return ResourceManager.GetString("TriggerStopping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating the authentication key of linked integration runtime &apos;{0}&apos; is not allowed..
+        /// </summary>
+        internal static string UpdateAuthKeyNotAllowed {
+            get {
+                return ResourceManager.GetString("UpdateAuthKeyNotAllowed", resourceCulture);
             }
         }
     }

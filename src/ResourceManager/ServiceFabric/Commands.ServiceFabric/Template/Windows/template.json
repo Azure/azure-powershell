@@ -4,7 +4,7 @@
   "parameters": {
     "clusterLocation": {
       "type": "string",
-      "defaultValue": "westus",
+      "defaultValue": "southcentralus",
       "metadata": {
         "description": "Location of the Cluster"
       }

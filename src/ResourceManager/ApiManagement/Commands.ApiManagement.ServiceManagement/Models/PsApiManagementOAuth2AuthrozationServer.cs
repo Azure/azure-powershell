@@ -16,7 +16,7 @@ using System.Collections;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    public class PsApiManagementOAuth2AuthrozationServer
+    public class PsApiManagementOAuth2AuthrozationServer : PsApiManagementArmResource
     {
         public string ServerId { get; internal set; }
 

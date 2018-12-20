@@ -20,10 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachineBgInfoExtension,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMBginfoExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMBGInfoExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {

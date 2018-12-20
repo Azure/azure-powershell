@@ -28,32 +28,45 @@ namespace StaticAnalysis.SignatureVerifier
 {
     public class SignatureVerifier : IStaticAnalyzer
     {
+// TODO: Remove IfDef code
+#if !NETSTANDARD
         private AppDomain _appDomain;
-        AnalysisLogger _logger;
-        string signatureIssueReportLoggerName;
+#endif
+        private readonly string _signatureIssueReportLoggerName;
         public SignatureVerifier()
         {
             Name = "Signature Verifier";
-            signatureIssueReportLoggerName = "SignatureIssues.csv";
+            _signatureIssueReportLoggerName = "SignatureIssues.csv";
         }
         public AnalysisLogger Logger { get; set; }
 
         public string Name { get; private set; }
 
-        public void Analyze(IEnumerable<string> cmdletProbingDirs)
+        public void Analyze(IEnumerable<string> scopes)
         {
-            Analyze(cmdletProbingDirs, null, null);
+            Analyze(scopes, null);
+        }
+
+        public void Analyze(IEnumerable<string> cmdletProbingDirs, IEnumerable<string> modulesToAnalyze)
+        {
+            Analyze(cmdletProbingDirs, null, null, modulesToAnalyze);
+        }
+
+        public void Analyze(IEnumerable<string> cmdletProbingDirs, Func<IEnumerable<string>, IEnumerable<string>> directoryFilter, Func<string, bool> cmdletFilter)
+        {
+            Analyze(cmdletProbingDirs, directoryFilter, cmdletFilter, null);
         }
 
         public void Analyze(IEnumerable<string> cmdletProbingDirs,
                             Func<IEnumerable<string>, IEnumerable<string>> directoryFilter,
-                            Func<string, bool> cmdletFilter)
+                            Func<string, bool> cmdletFilter,
+                            IEnumerable<string> modulesToAnalyze)
         {
             var savedDirectory = Directory.GetCurrentDirectory();
             var processedHelpFiles = new List<string>();
-            var issueLogger = Logger.CreateLogger<SignatureIssue>(signatureIssueReportLoggerName);
+            var issueLogger = Logger.CreateLogger<SignatureIssue>(_signatureIssueReportLoggerName);
 
-            List<string> probingDirectories = new List<string>();
+            var probingDirectories = new List<string>();
 
             if (directoryFilter != null)
             {
@@ -69,6 +82,13 @@ namespace StaticAnalysis.SignatureVerifier
 
                 foreach(var directory in probingDirectories)
                 {
+                    if (modulesToAnalyze != null &&
+                        modulesToAnalyze.Any() &&
+                        !modulesToAnalyze.Any(m => directory.EndsWith(m)))
+                    {
+                        continue;
+                    }
+
                     var service = Path.GetFileName(directory);
                     var manifestFiles = Directory.EnumerateFiles(directory, "*.psd1").ToList();
                     if (manifestFiles.Count > 1)
@@ -86,7 +106,7 @@ namespace StaticAnalysis.SignatureVerifier
                     var psd1FileName = Path.GetFileName(psd1);
                     IEnumerable<string> nestedModules = null;
                     List<string> requiredModules = null;
-                    PowerShell powershell = PowerShell.Create();
+                    var powershell = PowerShell.Create(RunspaceMode.NewRunspace);
                     powershell.AddScript("Import-LocalizedData -BaseDirectory " + parentDirectory +
                                          " -FileName " + psd1FileName +
                                          " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules; $ModuleMetadata.RequiredModules | % { $_[\"ModuleName\"] };");
@@ -94,137 +114,201 @@ namespace StaticAnalysis.SignatureVerifier
                     nestedModules = cmdletResult.Where(c => c.ToString().StartsWith(".")).Select(c => c.ToString().Substring(2));
                     requiredModules = cmdletResult.Where(c => !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
 
-                    if (nestedModules.Any())
+                    if (!nestedModules.Any()) continue;
+
+                    Directory.SetCurrentDirectory(directory);
+
+                    requiredModules = requiredModules.Join(cmdletProbingDirs,
+                            module => 1,
+                            dir => 1,
+                            (module, dir) => Path.Combine(dir, module))
+                        .Where(Directory.Exists)
+                        .ToList();
+
+                    requiredModules.Add(directory);
+
+                    foreach (var nestedModule in nestedModules)
                     {
-                        Directory.SetCurrentDirectory(directory);
+                        var assemblyFile = Directory.GetFiles(parentDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
+                        if (!File.Exists(assemblyFile)) continue;
 
-                        requiredModules = requiredModules.Join(cmdletProbingDirs,
-                                                               module => 1,
-                                                               dir => 1,
-                                                               (module, dir) => Path.Combine(dir, module))
-                                                          .Where(f => Directory.Exists(f))
-                                                          .ToList();
+                        issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = assemblyFile, "AssemblyFileName");
+                        processedHelpFiles.Add(assemblyFile);
+// TODO: Remove IfDef
+#if NETSTANDARD
+                        var proxy = new CmdletLoader();
+#else
+                        var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+#endif
+                        var module = proxy.GetModuleMetadata(assemblyFile, requiredModules);
+                        var cmdlets = module.Cmdlets;
 
-                        requiredModules.Add(directory);
-
-                        foreach (var nestedModule in nestedModules)
+                        if (cmdletFilter != null)
                         {
-                            var assemblyFile = Directory.GetFiles(parentDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
-                            if (File.Exists(assemblyFile))
+                            cmdlets = cmdlets.Where(cmdlet => cmdletFilter(cmdlet.Name)).ToList();
+                        }
+
+                        foreach (var cmdlet in cmdlets)
+                        {
+                            Logger.WriteMessage("Processing cmdlet '{0}'", cmdlet.ClassName);
+                            const string defaultRemediation = "Determine if the cmdlet should implement ShouldProcess and " +
+                                                              "if so determine if it should implement Force / ShouldContinue";
+                            if (!cmdlet.SupportsShouldProcess && cmdlet.HasForceSwitch)
                             {
-                                issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = assemblyFile, "AssemblyFileName");
-                                processedHelpFiles.Add(assemblyFile);
-                                var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
-                                var module = proxy.GetModuleMetadata(assemblyFile, requiredModules);
-                                var cmdlets = module.Cmdlets;
+                                issueLogger.LogSignatureIssue(
+                                    cmdlet: cmdlet,
+                                    severity: 0,
+                                    problemId: SignatureProblemId.ForceWithoutShouldProcessAttribute,
+                                    description: string.Format("{0} Has  -Force parameter but does not set the SupportsShouldProcess " +
+                                                               "property to true in the Cmdlet attribute.", cmdlet.Name),
+                                    remediation: defaultRemediation);
+                            }
+                            if (!cmdlet.SupportsShouldProcess && cmdlet.ConfirmImpact != ConfirmImpact.Medium)
+                            {
+                                issueLogger.LogSignatureIssue(
+                                    cmdlet: cmdlet,
+                                    severity: 2,
+                                    problemId: SignatureProblemId.ConfirmLeveleWithNoShouldProcess,
+                                    description:
+                                    string.Format("{0} Changes the ConfirmImpact but does not set the " +
+                                                  "SupportsShouldProcess property to true in the cmdlet attribute.",
+                                        cmdlet.Name),
+                                    remediation: defaultRemediation);
+                            }
+                            if (!cmdlet.SupportsShouldProcess && cmdlet.IsShouldProcessVerb)
+                            {
+                                issueLogger.LogSignatureIssue(
+                                    cmdlet: cmdlet,
+                                    severity: 1,
+                                    problemId: SignatureProblemId.ActionIndicatesShouldProcess,
+                                    description:
+                                    string.Format(
+                                        "{0} Does not support ShouldProcess but the cmdlet verb {1} indicates that it should.",
+                                        cmdlet.Name, cmdlet.VerbName),
+                                    remediation: defaultRemediation);
+                            }
+                            if (cmdlet.ConfirmImpact != ConfirmImpact.Medium)
+                            {
+                                issueLogger.LogSignatureIssue(
+                                    cmdlet: cmdlet,
+                                    severity: 2,
+                                    problemId: SignatureProblemId.ConfirmLevelChange,
+                                    description:
+                                    string.Format("{0} changes the confirm impact.  Please ensure that the " +
+                                                  "change in ConfirmImpact is justified", cmdlet.Name),
+                                    remediation:
+                                    "Verify that ConfirmImpact is changed appropriately by the cmdlet. " +
+                                    "It is very rare for a cmdlet to change the ConfirmImpact.");
+                            }
+                            if (!cmdlet.IsApprovedVerb)
+                            {
+                                issueLogger.LogSignatureIssue(
+                                    cmdlet: cmdlet,
+                                    severity: 1,
+                                    problemId: SignatureProblemId.CmdletWithUnapprovedVerb,
+                                    description:
+                                    string.Format(
+                                        "{0} uses the verb '{1}', which is not on the list of approved " +
+                                        "verbs for PowerShell commands. Use the cmdlet 'Get-Verb' to see " +
+                                        "the full list of approved verbs and consider renaming the cmdlet.",
+                                        cmdlet.Name, cmdlet.VerbName),
+                                    remediation: "Consider renaming the cmdlet to use an approved verb for PowerShell.");
+                            }
 
-                                if (cmdletFilter != null)
+                            if (!cmdlet.HasSingularNoun)
+                            {
+                                issueLogger.LogSignatureIssue(
+                                    cmdlet: cmdlet,
+                                    severity: 1,
+                                    problemId: SignatureProblemId.CmdletWithPluralNoun,
+                                    description:
+                                    string.Format(
+                                        "{0} uses the noun '{1}', which does not follow the enforced " +
+                                        "naming convention of using a singular noun for a cmdlet name.",
+                                        cmdlet.Name, cmdlet.NounName),
+                                    remediation: "Consider using a singular noun for the cmdlet name.");
+                            }
+
+                            if (!cmdlet.OutputTypes.Any())
+                            {
+                                issueLogger.LogSignatureIssue(
+                                    cmdlet: cmdlet,
+                                    severity: 1,
+                                    problemId: SignatureProblemId.CmdletWithNoOutputType,
+                                    description:
+                                    string.Format(
+                                        "Cmdlet '{0}' has no defined output type.", cmdlet.Name),
+                                    remediation: "Add an OutputType attribute that declares the type of the object(s) returned " +
+                                                 "by this cmdlet. If this cmdlet returns no output, please set the output " +
+                                                 "type to 'bool' and make sure to implement the 'PassThru' parameter.");
+                            }
+
+                            foreach (var parameter in cmdlet.GetParametersWithPluralNoun())
+                            {
+                                issueLogger.LogSignatureIssue(
+                                    cmdlet: cmdlet,
+                                    severity: 1,
+                                    problemId: SignatureProblemId.ParameterWithPluralNoun,
+                                    description:
+                                    string.Format(
+                                        "Parameter {0} of cmdlet {1} does not follow the enforced " +
+                                        "naming convention of using a singular noun for a parameter name.",
+                                        parameter.Name, cmdlet.Name),
+                                    remediation: "Consider using a singular noun for the parameter name.");
+                            }
+
+                            foreach (var parameterSet in cmdlet.ParameterSets)
+                            {
+                                if (parameterSet.Name.Contains(" "))
                                 {
-                                    cmdlets = cmdlets.Where<CmdletMetadata>((cmdlet) => cmdletFilter(cmdlet.Name)).ToList<CmdletMetadata>();
+                                    issueLogger.LogSignatureIssue(
+                                        cmdlet: cmdlet,
+                                        severity: 1,
+                                        problemId: SignatureProblemId.ParameterSetWithSpace,
+                                        description:
+                                        string.Format(
+                                            "Parameter set '{0}' of cmdlet '{1}' contains a space, which " +
+                                            "is discouraged for PowerShell parameter sets.",
+                                            parameterSet.Name, cmdlet.Name),
+                                        remediation: "Remove the space(s) in the parameter set name.");
                                 }
 
-                                foreach (var cmdlet in cmdlets)
+                                if (parameterSet.Parameters.Any(p => p.Position >= 4))
                                 {
-                                    Logger.WriteMessage("Processing cmdlet '{0}'", cmdlet.ClassName);
-                                    string defaultRemediation = "Determine if the cmdlet should implement ShouldProcess and " +
-                                                          "if so determine if it should implement Force / ShouldContinue";
-                                    if (!cmdlet.SupportsShouldProcess && cmdlet.HasForceSwitch)
-                                    {
-                                        issueLogger.LogSignatureIssue(
-                                           cmdlet: cmdlet,
-                                           severity: 0,
-                                        problemId: SignatureProblemId.ForceWithoutShouldProcessAttribute,
-                                        description: string.Format("{0} Has  -Force parameter but does not set the SupportsShouldProcess " +
-                                                                    "property to true in the Cmdlet attribute.", cmdlet.Name),
-                                        remediation: defaultRemediation);
-                                    }
-                                    if (!cmdlet.SupportsShouldProcess && cmdlet.ConfirmImpact != ConfirmImpact.Medium)
-                                    {
-                                        issueLogger.LogSignatureIssue(
-                                           cmdlet: cmdlet,
-                                           severity: 2,
-                                        problemId: SignatureProblemId.ConfirmLeveleWithNoShouldProcess,
+                                    issueLogger.LogSignatureIssue(
+                                        cmdlet: cmdlet,
+                                        severity: 1,
+                                        problemId: SignatureProblemId.ParameterWithOutOfRangePosition,
                                         description:
-                                            string.Format("{0} Changes the ConfirmImpact but does not set the " +
-                                                "SupportsShouldProcess property to true in the cmdlet attribute.",
-                                                cmdlet.Name),
-                                        remediation: defaultRemediation);
-                                    }
-                                    if (!cmdlet.SupportsShouldProcess && cmdlet.IsShouldProcessVerb)
-                                    {
-                                        issueLogger.LogSignatureIssue(
-                                            cmdlet: cmdlet,
-                                            severity: 1,
-                                            problemId: SignatureProblemId.ActionIndicatesShouldProcess,
-                                            description:
-                                                string.Format(
-                                                    "{0} Does not support ShouldProcess but the cmdlet verb {1} indicates that it should.",
-                                                    cmdlet.Name, cmdlet.VerbName),
-                                            remediation: defaultRemediation);
-                                    }
-                                    if (cmdlet.ConfirmImpact != ConfirmImpact.Medium)
-                                    {
-                                        issueLogger.LogSignatureIssue(
-                                           cmdlet: cmdlet,
-                                           severity: 2,
-                                        problemId: SignatureProblemId.ConfirmLevelChange,
-                                        description:
-                                        string.Format("{0} changes the confirm impact.  Please ensure that the " +
-                                            "change in ConfirmImpact is justified", cmdlet.Name),
-                                        remediation:
-                                            "Verify that ConfirmImpact is changed appropriately by the cmdlet. " +
-                                            "It is very rare for a cmdlet to change the ConfirmImpact.");
-                                    }
-                                    if (!cmdlet.IsApprovedVerb)
-                                    {
-                                        issueLogger.LogSignatureIssue(
-                                            cmdlet: cmdlet,
-                                            severity: 1,
-                                        problemId: SignatureProblemId.CmdletWithUnapprovedVerb,
-                                        description:
-                                            string.Format(
-                                                "{0} uses the verb '{1}', which is not on the list of approved " +
-                                                "verbs for PowerShell commands. Use the cmdlet 'Get-Verb' to see " +
-                                                "the full list of approved verbs and consider renaming the cmdlet.",
-                                                cmdlet.Name, cmdlet.VerbName),
-                                        remediation: "Consider renaming the cmdlet to use an approved verb for PowerShell.");
-                                    }
-
-                                    if (!cmdlet.HasSingularNoun)
-                                    {
-                                        issueLogger.LogSignatureIssue(
-                                            cmdlet: cmdlet,
-                                            severity: 1,
-                                        problemId: SignatureProblemId.CmdletWithPluralNoun,
-                                        description:
-                                            string.Format(
-                                                "{0} uses the noun '{1}', which does not follow the enforced " +
-                                                "naming convention of using a singular noun for a cmdlet name.",
-                                                cmdlet.Name, cmdlet.NounName),
-                                        remediation: "Consider using a singular noun for the cmdlet name.");
-                                    }
-
-                                    foreach (var parameter in cmdlet.GetParametersWithPluralNoun())
-                                    {
-                                        issueLogger.LogSignatureIssue(
-                                            cmdlet: cmdlet,
-                                            severity: 1,
-                                        problemId: SignatureProblemId.ParameterWithPluralNoun,
-                                        description:
-                                            string.Format(
-                                                "Parameter {0} of cmdlet {1} does not follow the enforced " +
-                                                "naming convention of using a singular noun for a parameter name.",
-                                                parameter.Name, cmdlet.Name),
-                                        remediation: "Consider using a singular noun for the parameter name.");
-                                    }
+                                        string.Format(
+                                            "Parameter set '{0}' of cmdlet '{1}' contains at least one parameter " +
+                                            "with a position larger than four, which is discouraged.",
+                                            parameterSet.Name, cmdlet.Name),
+                                        remediation: "Limit the number of positional parameters in a single parameter set to " +
+                                                     "four or fewer.");
                                 }
+                            }
 
-                                AppDomain.Unload(_appDomain);
-                                issueLogger.Decorator.Remove("AssemblyFileName");
+                            if (cmdlet.ParameterSets.Count > 2 && cmdlet.DefaultParameterSetName == "__AllParameterSets")
+                            {
+                                issueLogger.LogSignatureIssue(
+                                    cmdlet: cmdlet,
+                                    severity: 1,
+                                    problemId: SignatureProblemId.MultipleParameterSetsWithNoDefault,
+                                    description:
+                                    string.Format(
+                                        "Cmdlet '{0}' has multiple parameter sets, but no defined default parameter set.",
+                                        cmdlet.Name),
+                                    remediation: "Define a default parameter set in the cmdlet attribute.");
                             }
                         }
-                        Directory.SetCurrentDirectory(savedDirectory);
+// TODO: Remove IfDef code
+#if !NETSTANDARD
+                        AppDomain.Unload(_appDomain);
+#endif
+                        issueLogger.Decorator.Remove("AssemblyFileName");
                     }
+                    Directory.SetCurrentDirectory(savedDirectory);
                 }
             }
         }
@@ -238,11 +322,11 @@ namespace StaticAnalysis.SignatureVerifier
             //TODO: in next sprint, more work is scheduled to add more enhancements to this tool.
             // this report is necessary when tests needs more informaiton on results of static analysis
             // more information will be added to this report
-            AnalysisReport analysisReport = new AnalysisReport();
-            ReportLogger reportLog = Logger.GetReportLogger(signatureIssueReportLoggerName);
+            var analysisReport = new AnalysisReport();
+            var reportLog = Logger.GetReportLogger(_signatureIssueReportLoggerName);
             if(reportLog.Records.Any())
             {
-                foreach(IReportRecord rec in reportLog.Records)
+                foreach(var rec in reportLog.Records)
                 {
                     analysisReport.ProblemIdList.Add(rec.ProblemId);
                 }

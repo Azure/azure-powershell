@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -52,7 +52,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         public void SelectAzureProfileInMemory()
         {
             var profile = new AzureRmProfile { DefaultContext = new AzureContext() };
-            profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
+            var env = new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            env.Name = "foo";
+            profile.EnvironmentTable.Add("foo", env);
             ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
             // Setup
             cmdlt.AzureContext = profile;
@@ -103,7 +105,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(AzureRmProfileProvider.Instance.Profile.Environments.Any((e) => string.Equals(e.Name, "foo")));
+            Assert.Contains(AzureRmProfileProvider.Instance.Profile.Environments, (e) => string.Equals(e.Name, "foo"));
         }
 
         [Fact]
@@ -127,7 +129,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             // Verify
             Assert.True(AzureSession.Instance.DataStore.FileExists("X:\\foo.json"));
             var profile2 = new AzureRmProfile("X:\\foo.json");
-            Assert.True(profile2.Environments.Any((e) => string.Equals(e.Name, "foo")));
+            Assert.Contains(profile2.Environments, (e) => string.Equals(e.Name, "foo"));
         }
 
         [Fact]

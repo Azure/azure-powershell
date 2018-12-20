@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More than one Active Directory group with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct group. To get the object id use Get-AzureRmADGroup -SearchString &quot;{0}&quot;.
+        ///   Looks up a localized string similar to More than one Active Directory group with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct group. To get the object id use Get-AzADGroup -SearchString &quot;{0}&quot;.
         /// </summary>
         internal static string ADGroupMoreThanOneFound {
             get {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find the Azure Active Directory object &apos;{0}&apos;. Please make sure that the user or group you are authorizing is registered in the current subscription&apos;s Azure Active directory. To get a list of Azure Active Directory groups use Get-AzureRmADGroup, or to get a list of Azure Active Directory users use Get-AzureRmADUser..
+        ///   Looks up a localized string similar to Cannot find the Azure Active Directory object &apos;{0}&apos;. Please make sure that the user or group you are authorizing is registered in the current subscription&apos;s Azure Active directory. To get a list of Azure Active Directory groups use Get-AzADGroup, or to get a list of Azure Active Directory users use Get-AzADUser..
         /// </summary>
         internal static string ADObjectNotFound {
             get {
@@ -79,20 +79,11 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More than one Azure Active Directory user with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct user. To get the object id use Get-AzureRmADUser -SearchString &quot;{0}&quot;.
+        ///   Looks up a localized string similar to More than one Azure Active Directory user with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct user. To get the object id use Get-AzADUser -SearchString &quot;{0}&quot;.
         /// </summary>
         internal static string ADUserMoreThanOneFound {
             get {
                 return ResourceManager.GetString("ADUserMoreThanOneFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The action group &apos;AUDIT_CHANGE_GROUP&apos; is not supported. It will be removed in a future release..
-        /// </summary>
-        internal static string auditChangeGroupDeprecationMessage {
-            get {
-                return ResourceManager.GetString("auditChangeGroupDeprecationMessage", resourceCulture);
             }
         }
         
@@ -268,6 +259,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?st=XXXXXX.&quot;.
+        /// </summary>
+        internal static string InvalidBlobStorageSasUri {
+            get {
+                return ResourceManager.GetString("InvalidBlobStorageSasUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot use the &apos;None&apos; option with other detection types.
         /// </summary>
         internal static string InvalidDetectionTypeList {
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please use Set-AzureRmEnvironment to set a valid GraphEndpoint for the current AzureEnvironment..
+        ///   Looks up a localized string similar to Please use Set-AzEnvironment to set a valid GraphEndpoint for the current AzureEnvironment..
         /// </summary>
         internal static string InvalidGraphEndpoint {
             get {
@@ -336,6 +336,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string NewDataMaskingRuleIdAlreadyExistError {
             get {
                 return ResourceManager.GetString("NewDataMaskingRuleIdAlreadyExistError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide valid value for StorageAccountName or BlobStorageSasUri parameter..
+        /// </summary>
+        internal static string NoStorageAccountSpecified {
+            get {
+                return ResourceManager.GetString("NoStorageAccountSpecified", resourceCulture);
             }
         }
         
@@ -673,6 +682,51 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed retrieving id of storage account &apos;{0}&apos; under subscription &apos;{1}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountIdUnderSubscriptionFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountIdUnderSubscriptionFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed retrieving keys of storage &apos;{0}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountKeysFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountKeysFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlDatabaseVulnerabilityAssessmentSettings first..
+        /// </summary>
+        internal static string RunSetVulnerabilityAssemenSettings {
+            get {
+                return ResourceManager.GetString("RunSetVulnerabilityAssemenSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzSqlDatabaseVulnerabilityAssessmentScanRecord output via pipe..
+        /// </summary>
+        internal static string ScanIdParameterIsRequired {
+            get {
+                return ResourceManager.GetString("ScanIdParameterIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server Advanced Threat Protection is not defined. Please run Enable-AzSqlServerAdvancedThreatProtection first..
+        /// </summary>
+        internal static string ServerAdvancedThreatProtectionIsNotDefined {
+            get {
+                return ResourceManager.GetString("ServerAdvancedThreatProtectionIsNotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Server communication link with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string ServerCommunicationLinkNameExists {
@@ -768,6 +822,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string SetAdvisorAutoExecuteStatusWarning {
             get {
                 return ResourceManager.GetString("SetAdvisorAutoExecuteStatusWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting Azure Sql Database Managed Instance &apos;{0}&apos;..
+        /// </summary>
+        internal static string SetAzureSqlInstanceDescription {
+            get {
+                return ResourceManager.GetString("SetAzureSqlInstanceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to set the Azure Sql Database Managed Instance &apos;{0}&apos;?.
+        /// </summary>
+        internal static string SetAzureSqlInstanceWarning {
+            get {
+                return ResourceManager.GetString("SetAzureSqlInstanceWarning", resourceCulture);
             }
         }
         
@@ -930,6 +1002,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string UseServerWithoutStorageAccount {
             get {
                 return ResourceManager.GetString("UseServerWithoutStorageAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vulnerability Assessment operation is not available on master database. Skipping....
+        /// </summary>
+        internal static string VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase", resourceCulture);
             }
         }
     }

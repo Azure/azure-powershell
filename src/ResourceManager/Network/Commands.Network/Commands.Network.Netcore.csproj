@@ -1,49 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
+  <PropertyGroup>
+    <PsModuleName>Network</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\Az.props" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Network</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Commands.Network</RootNamespace>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Network.Netcore\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
-    <DelaySign>false</DelaySign>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Network.Netcore\</OutputPath>
-    <DocumentationFile></DocumentationFile>
-    <SignAssembly>true</SignAssembly>
-    <DelaySign>true</DelaySign>
-    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
-    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
-  </PropertyGroup>
-
-  <ItemGroup >
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="18.0.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.7.0-preview" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.Network.Netcore.psd1" Link="AzureRM.Network.Netcore.psd1">
+    <None Include="Az.Network.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Common.Network.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
-    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
-    <ProjectReference Include="..\..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.Netcore.csproj" />
-    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -76,5 +51,4 @@
   <ItemGroup>
     <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
-
 </Project>

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -21,16 +21,20 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class NetworkWatcherTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        public NetworkWatcherTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public NetworkWatcherTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestNetworkWatcherCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkWatcherCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkWatcherCRUD");
         }
 
     }

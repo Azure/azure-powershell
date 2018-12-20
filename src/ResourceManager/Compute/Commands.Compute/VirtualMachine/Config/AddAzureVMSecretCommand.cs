@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -23,11 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
     /// <summary>
     /// Add a Vault Secret Group object to VM
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Add,
-        ProfileNouns.VaultSecretGroup),
-    OutputType(
-        typeof(PSVirtualMachine))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMSecret"),OutputType(typeof(PSVirtualMachine))]
     public class NewAzureVaultSecretGroupCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]

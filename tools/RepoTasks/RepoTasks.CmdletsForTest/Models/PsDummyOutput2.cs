@@ -18,9 +18,11 @@ namespace RepoTasks.CmdletsForTest.Models
 
     public class PsDummyOutput2
     {
-        [Ps1Xml]
+        [Ps1Xml(TableColumnWidth = 15)]
         public string Location { get; set; }
 
         public string LicenseType { get; set; }
+
+        public string Name { get; set; }
     }
 }

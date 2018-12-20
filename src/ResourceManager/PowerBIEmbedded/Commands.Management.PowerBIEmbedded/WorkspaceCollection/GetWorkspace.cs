@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
-    [Cmdlet(VerbsCommon.Get, Nouns.Workspace), OutputType(typeof(PSWorkspace))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIWorkspace"), OutputType(typeof(PSWorkspace))]
     public class GetWorkspace : WorkspaceCollectionBaseCmdlet
     {
         [Parameter(

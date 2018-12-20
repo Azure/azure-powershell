@@ -19,8 +19,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchJobPrepAndReleaseStatus, DefaultParameterSetName = Constants.IdParameterSet),
-        OutputType(typeof(PSJobPreparationAndReleaseTaskExecutionInformation))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchJobPreparationAndReleaseTaskStatus", DefaultParameterSetName = Constants.IdParameterSet),OutputType(typeof(PSJobPreparationAndReleaseTaskExecutionInformation))]
     public class GetBatchJobPreparationAndReleaseTaskStatusCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0,
@@ -35,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch
             ParameterSetName = Constants.InputObjectParameterSet,
             ValueFromPipeline = true,
             Mandatory = true,
-            HelpMessage = "Specifies a PSCloudJob object that represents the job to get the preparation and release task status from. To obtain a PSCloudJob object, use the Get-AzureBatchJob cmdlet.")]
+            HelpMessage = "Specifies a PSCloudJob object that represents the job to get the preparation and release task status from. To obtain a PSCloudJob object, use the Get-AzBatchJob cmdlet.")]
         [ValidateNotNullOrEmpty]
         public PSCloudJob InputObject { get; set; }
         

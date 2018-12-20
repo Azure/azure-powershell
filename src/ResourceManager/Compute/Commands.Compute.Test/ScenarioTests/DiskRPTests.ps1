@@ -33,6 +33,11 @@ function Test-Disk
         $access = 'Read';
 
         # Config create test
+        $diskconfig = New-AzureRmDiskConfig -Location $loc -DiskSizeGB 500 -SkuName UltraSSD_LRS -OsType Windows -CreateOption Empty -DiskMBpsReadWrite 8 -DiskIOPSReadWrite 500;
+        Assert-AreEqual "UltraSSD_LRS" $diskconfig.Sku.Name;
+        Assert-AreEqual 500 $diskconfig.DiskIOPSReadWrite;
+        Assert-AreEqual 8 $diskconfig.DiskMBpsReadWrite
+
         $diskconfig = New-AzureRmDiskConfig -Location $loc -Zone "1" -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
         # Encryption test
         $diskconfig = Set-AzureRmDiskDiskEncryptionKey -Disk $diskconfig -SecretUrl $mockkey -SourceVaultId $mocksourcevault;
@@ -73,11 +78,21 @@ function Test-Disk
         $job = Grant-AzureRmDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access $access -DurationInSecond 5 -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Assert-NotNull $st.AccessSAS;
+
         $job = Revoke-AzureRmDiskAccess -ResourceGroupName $rgname -DiskName $diskname -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSOperationStatusResponse $st;
 
         # Config update test
+        $updateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType UltraSSD_LRS -OsType Windows -DiskMBpsReadWrite 8 -DiskIOPSReadWrite 500;
+        Assert-AreEqual "UltraSSD_LRS" $updateconfig.Sku.Name;
+        Assert-AreEqual 500 $updateconfig.DiskIOPSReadWrite;
+        Assert-AreEqual 8 $updateconfig.DiskMBpsReadWrite
+
         $updateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType Premium_LRS -OsType Windows;
         $job = Update-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig -AsJob;
         $result = $job | Wait-Job;
@@ -87,6 +102,8 @@ function Test-Disk
         $job = Remove-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Force -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSOperationStatusResponse $st;
     }
     finally
     {
@@ -148,9 +165,14 @@ function Test-Snapshot
         $job = Grant-AzureRmSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname -Access $access -DurationInSecond 5 -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
-        Revoke-AzureRmSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname -AsJob;
+        $st = $job | Receive-Job;
+        Assert-NotNull $st.AccessSAS;
+
+        $job = Revoke-AzureRmSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSOperationStatusResponse $st;
 
         # Config update test
         $updateconfig = New-AzureRmSnapshotUpdateConfig -DiskSizeGB 10 -AccountType Premium_LRS -OsType Windows;
@@ -162,6 +184,8 @@ function Test-Snapshot
         $job = Remove-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Force -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSOperationStatusResponse $st;
     }
     finally
     {

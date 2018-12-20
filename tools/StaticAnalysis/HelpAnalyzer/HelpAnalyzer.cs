@@ -31,8 +31,8 @@ namespace StaticAnalysis.HelpAnalyzer
     /// </summary>
     public class HelpAnalyzer : IStaticAnalyzer
     {
-        const int MissingHelp = 6050;
-        const int MissingHelpFile = 6000;
+        private const int MissingHelp = 6050;
+        private const int MissingHelpFile = 6000;
         public HelpAnalyzer()
         {
             Name = "Help Analyzer";
@@ -40,13 +40,16 @@ namespace StaticAnalysis.HelpAnalyzer
         public AnalysisLogger Logger { get; set; }
         public string Name { get; private set; }
 
+// TODO: Remove IfDef code
+#if !NETSTANDARD
         private AppDomain _appDomain;
+#endif
 
         private static bool IsAssemblyFile(string path)
         {
             var assemblyRegexes = new[]
             {
-                new Regex("Microsoft.Azure.Commands.[^.]+.dll$"),
+                new Regex("Microsoft.Azure.PowerShell.Cmdlets.[^.]+.dll$"),
                 new Regex("Microsoft.WindowsAzure.Commands.[^.]+.dll$"),
                 new Regex(".Cmdlets.dll$")
             };
@@ -71,12 +74,18 @@ namespace StaticAnalysis.HelpAnalyzer
 
             return result;
         }
+
+        public void Analyze(IEnumerable<string> scopes)
+        {
+            Analyze(scopes, null);
+        }
+
         /// <summary>
         /// Given a set of directory paths containing PowerShell module folders, analyze the help
         /// in the module folders and report any issues
         /// </summary>
         /// <param name="scopes"></param>
-        public void Analyze(IEnumerable<string> scopes)
+        public void Analyze(IEnumerable<string> scopes, IEnumerable<string> modulesToAnalyze)
         {
             var savedDirectory = Directory.GetCurrentDirectory();
             var processedHelpFiles = new List<string>();
@@ -85,8 +94,15 @@ namespace StaticAnalysis.HelpAnalyzer
             {
                 foreach (var directory in Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)))
                 {
+                    if (modulesToAnalyze != null &&
+                        modulesToAnalyze.Any() &&
+                        !modulesToAnalyze.Any(m => directory.EndsWith(m)))
+                    {
+                        continue;
+                    }
+
                     var dirs = Directory.EnumerateDirectories(directory);
-                    if (dirs != null && dirs.Any((d) => string.Equals(Path.GetFileName(d), "help", StringComparison.OrdinalIgnoreCase)))
+                    if (dirs != null && dirs.Any(d => string.Equals(Path.GetFileName(d), "help", StringComparison.OrdinalIgnoreCase)))
                     {
                         AnalyzeMarkdownHelp(scopes, directory, helpLogger, processedHelpFiles, savedDirectory);
                     }
@@ -121,34 +137,41 @@ namespace StaticAnalysis.HelpAnalyzer
             var helpFiles = Directory.EnumerateFiles(directory, "*.dll-Help.xml")
                 .Where(f => !processedHelpFiles.Contains(Path.GetFileName(f),
                     StringComparer.OrdinalIgnoreCase)).ToList();
-            if (helpFiles.Any())
-            {
-                Directory.SetCurrentDirectory(directory);
-                foreach (var helpFile in helpFiles)
-                {
-                    var cmdletFile = helpFile.Substring(0, helpFile.Length - "-Help.xml".Length);
-                    var helpFileName = Path.GetFileName(helpFile);
-                    var cmdletFileName = Path.GetFileName(cmdletFile);
-                    if (File.Exists(cmdletFile))
-                    {
-                        processedHelpFiles.Add(helpFileName);
-                        helpLogger.Decorator.AddDecorator((h) =>
-                        {
-                            h.HelpFile = helpFileName;
-                            h.Assembly = cmdletFileName;
-                        }, "Cmdlet");
-                        var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
-                        var module = proxy.GetModuleMetadata(cmdletFile);
-                        var cmdlets = module.Cmdlets;
-                        var helpRecords = CmdletHelpParser.GetHelpTopics(helpFile, helpLogger);
-                        ValidateHelpRecords(cmdlets, helpRecords, helpLogger);
-                        helpLogger.Decorator.Remove("Cmdlet");
-                        AppDomain.Unload(_appDomain);
-                    }
-                }
+            if (!helpFiles.Any()) return;
 
-                Directory.SetCurrentDirectory(savedDirectory);
+            Directory.SetCurrentDirectory(directory);
+            foreach (var helpFile in helpFiles)
+            {
+                var cmdletFile = helpFile.Substring(0, helpFile.Length - "-Help.xml".Length);
+                var helpFileName = Path.GetFileName(helpFile);
+                var cmdletFileName = Path.GetFileName(cmdletFile);
+                if (!File.Exists(cmdletFile)) continue;
+
+                processedHelpFiles.Add(helpFileName);
+                helpLogger.Decorator.AddDecorator(h =>
+                {
+                    h.HelpFile = helpFileName;
+                    h.Assembly = cmdletFileName;
+                }, "Cmdlet");
+
+// TODO: Remove IfDef
+#if NETSTANDARD
+                var proxy = new CmdletLoader();
+#else
+                var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+#endif
+                var module = proxy.GetModuleMetadata(cmdletFile);
+                var cmdlets = module.Cmdlets;
+                var helpRecords = CmdletHelpParser.GetHelpTopics(helpFile, helpLogger);
+                ValidateHelpRecords(cmdlets, helpRecords, helpLogger);
+                helpLogger.Decorator.Remove("Cmdlet");
+// TODO: Remove IfDef code
+#if !NETSTANDARD
+                AppDomain.Unload(_appDomain);
+#endif
             }
+
+            Directory.SetCurrentDirectory(savedDirectory);
         }
 
         private void AnalyzeMarkdownHelp(
@@ -177,72 +200,77 @@ namespace StaticAnalysis.HelpAnalyzer
                 return;
             }
 
-            var helpFiles = Directory.EnumerateFiles(helpFolder, "*.md").Select(f => Path.GetFileNameWithoutExtension(f)).ToList();
-            if (helpFiles.Any())
+            var helpFiles = Directory.EnumerateFiles(helpFolder, "*.md").Select(Path.GetFileNameWithoutExtension).ToList();
+            if (!helpFiles.Any()) return;
+
+            Directory.SetCurrentDirectory(directory);
+            var manifestFiles = Directory.EnumerateFiles(directory, "*.psd1").ToList();
+            if (manifestFiles.Count > 1)
+            {
+                manifestFiles = manifestFiles.Where(f => Path.GetFileName(f).IndexOf(service) >= 0).ToList();
+            }
+
+            if (manifestFiles.Count == 0)
+            {
+                return;
+            }
+
+            var psd1 = manifestFiles.FirstOrDefault();
+            var parentDirectory = Directory.GetParent(psd1).FullName;
+            var psd1FileName = Path.GetFileName(psd1);
+            var powershell = PowerShell.Create();
+            powershell.AddScript("Import-LocalizedData -BaseDirectory " + parentDirectory +
+                                 " -FileName " + psd1FileName +
+                                 " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules; $ModuleMetadata.RequiredModules | % { $_[\"ModuleName\"] };");
+            var cmdletResult = powershell.Invoke();
+            var nestedModules = cmdletResult.Where(c => c.ToString().StartsWith(".")).Select(c => c.ToString().Substring(2));
+            var requiredModules = cmdletResult.Where(c => !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
+            if (nestedModules.Any())
             {
                 Directory.SetCurrentDirectory(directory);
-                var manifestFiles = Directory.EnumerateFiles(directory, "*.psd1").ToList();
-                if (manifestFiles.Count > 1)
+
+                requiredModules = requiredModules.Join(scopes,
+                        module => 1,
+                        dir => 1,
+                        (module, dir) => Path.Combine(dir, module))
+                    .Where(Directory.Exists)
+                    .ToList();
+
+                requiredModules.Add(directory);
+                var allCmdlets = new List<CmdletMetadata>();
+                foreach (var nestedModule in nestedModules)
                 {
-                    manifestFiles = manifestFiles.Where(f => Path.GetFileName(f).IndexOf(service) >= 0).ToList();
-                }
+                    var assemblyFile = Directory.GetFiles(parentDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
+                    if (!File.Exists(assemblyFile)) continue;
 
-                if (manifestFiles.Count == 0)
-                {
-                    return;
-                }
-
-                var psd1 = manifestFiles.FirstOrDefault();
-                var parentDirectory = Directory.GetParent(psd1).FullName;
-                var psd1FileName = Path.GetFileName(psd1);
-                IEnumerable<string> nestedModules = null;
-                List<string> requiredModules = null;
-                PowerShell powershell = PowerShell.Create();
-                powershell.AddScript("Import-LocalizedData -BaseDirectory " + parentDirectory +
-                                     " -FileName " + psd1FileName +
-                                     " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules; $ModuleMetadata.RequiredModules | % { $_[\"ModuleName\"] };");
-                var cmdletResult = powershell.Invoke();
-                nestedModules = cmdletResult.Where(c => c.ToString().StartsWith(".")).Select(c => c.ToString().Substring(2));
-                requiredModules = cmdletResult.Where(c => !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
-                if (nestedModules.Any())
-                {
-                    Directory.SetCurrentDirectory(directory);
-
-                    requiredModules = requiredModules.Join(scopes,
-                                                           module => 1,
-                                                           dir => 1,
-                                                           (module, dir) => Path.Combine(dir, module))
-                                                      .Where(f => Directory.Exists(f))
-                                                      .ToList();
-
-                    requiredModules.Add(directory);
-                    List<CmdletMetadata> allCmdlets = new List<CmdletMetadata>();
-                    foreach (var nestedModule in nestedModules)
+                    var assemblyFileName = Path.GetFileName(assemblyFile);
+                    helpLogger.Decorator.AddDecorator(h =>
                     {
-                        var assemblyFile = Directory.GetFiles(parentDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
-                        if (File.Exists(assemblyFile))
-                        {
-                            var assemblyFileName = Path.GetFileName(assemblyFile);
-                            helpLogger.Decorator.AddDecorator((h) =>
-                            {
-                                h.HelpFile = assemblyFileName;
-                                h.Assembly = assemblyFileName;
-                            }, "Cmdlet");
-                            processedHelpFiles.Add(assemblyFileName);
-                            var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
-                            var module = proxy.GetModuleMetadata(assemblyFile, requiredModules);
-                            var cmdlets = module.Cmdlets;
-                            allCmdlets.AddRange(cmdlets);
-                            helpLogger.Decorator.Remove("Cmdlet");
-                            AppDomain.Unload(_appDomain);
-                        }
-                    }
-
-                    ValidateHelpRecords(allCmdlets, helpFiles, helpLogger);
+                        h.HelpFile = assemblyFileName;
+                        h.Assembly = assemblyFileName;
+                    }, "Cmdlet");
+                    processedHelpFiles.Add(assemblyFileName);
+// TODO: Remove IfDef
+#if NETSTANDARD
+                    var proxy = new CmdletLoader();
+#else
+                    var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+#endif
+                    var module = proxy.GetModuleMetadata(assemblyFile, requiredModules);
+                    var cmdlets = module.Cmdlets;
+                    allCmdlets.AddRange(cmdlets);
+                    helpLogger.Decorator.Remove("Cmdlet");
+// TODO: Remove IfDef code
+#if !NETSTANDARD
+                    AppDomain.Unload(_appDomain);
+#endif
                 }
 
-                Directory.SetCurrentDirectory(savedDirectory);
+                ValidateHelpRecords(allCmdlets, helpFiles, helpLogger);
             }
+
+            Directory.SetCurrentDirectory(savedDirectory);
+            
         }
 
         private void ValidateHelpRecords(IList<CmdletMetadata> cmdlets, IList<string> helpRecords,
@@ -281,6 +309,11 @@ namespace StaticAnalysis.HelpAnalyzer
         /// </summary>
         /// <returns></returns>
         public AnalysisReport GetAnalysisReport()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Analyze(IEnumerable<string> cmdletProbingDirs, Func<IEnumerable<string>, IEnumerable<string>> directoryFilter, Func<string, bool> cmdletFilter, IEnumerable<string> modulesToAnalyze)
         {
             throw new NotImplementedException();
         }

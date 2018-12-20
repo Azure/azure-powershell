@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         public RedisCacheClient(IAzureContext context)
         {
             _client = AzureSession.Instance.ClientFactory.CreateArmClient<RedisManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-            _insightsClient = AzureSession.Instance.ClientFactory.CreateClient<InsightsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            _insightsClient = AzureSession.Instance.ClientFactory.CreateArmClient<InsightsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
             _resourceManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
         public RedisCacheClient() { }
@@ -239,16 +239,13 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        internal void SetDiagnostics(string cacheId, string storageAccountName)
+        internal void SetDiagnostics(string cacheId, string storageAccountId)
         {
-            _insightsClient.ServiceDiagnosticSettingsOperations.Put(
+            _insightsClient.ServiceDiagnosticSettings.CreateOrUpdateWithHttpMessagesAsync(
                 resourceUri: cacheId,
-                parameters: new ServiceDiagnosticSettingsPutParameters
+                parameters: new ServiceDiagnosticSettingsResource
                 {
-                    Properties = new ServiceDiagnosticSettings
-                    {
-                        StorageAccountName = storageAccountName
-                    }
+                    StorageAccountId = storageAccountId
                 }
             );
         }

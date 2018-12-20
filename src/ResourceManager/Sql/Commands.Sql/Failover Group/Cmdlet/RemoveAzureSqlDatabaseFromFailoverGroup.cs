@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
 using System;
@@ -26,9 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// <summary>
     /// Cmdlet to remove Azure Sql Databases from a Failover Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseFromFailoverGroup",
-        ConfirmImpact = ConfirmImpact.Medium,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseFromFailoverGroup",ConfirmImpact = ConfirmImpact.Medium,SupportsShouldProcess = true), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class RemoveAzureSqlDatabaseFromFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
@@ -38,6 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The name of the primary Azure SQL Database Server of the Failover Group.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 

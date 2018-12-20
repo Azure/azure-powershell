@@ -23,17 +23,20 @@
                 <PropertyName>Location</PropertyName>
               </ListItem>
               <ListItem>
-                <PropertyName>Tags</PropertyName>
+                <Label>Tags</Label>
+                <ScriptBlock>
+                  if($_.Tags -ne $null)
+                  {
+                    $_.Tags.GetEnumerator() | ForEach-Object{ $_.Key, $_.Value }
+                  }
+                </ScriptBlock>              
               </ListItem>
               <ListItem>
                 <Label>Sku </Label>
-                <ScriptBlock>"Name : " + $_.Sku.Name.ToString()  + " , Capacity : " +  $_.Sku.Capacity.ToString() + " , Tier : " +  $_.Sku.Tier.ToString() </ScriptBlock>
+                <ScriptBlock>"Name : " + $_.Sku.Name  + " , Tier : " +  $_.Sku.Tier + ", Capacity : " +  $_.Sku.Capacity </ScriptBlock>
               </ListItem>
               <ListItem>
                 <PropertyName>ProvisioningState</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>Status</PropertyName>
               </ListItem>
               <ListItem>
                 <PropertyName>CreatedAt</PropertyName>
@@ -115,6 +118,29 @@
                   $results
                   }
                 </ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Rights</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

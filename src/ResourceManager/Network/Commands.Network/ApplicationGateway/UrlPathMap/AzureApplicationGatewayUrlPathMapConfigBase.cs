@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
                Mandatory = true,
                HelpMessage = "List of path rules")]
         [ValidateNotNullOrEmpty]
-        public List<PSApplicationGatewayPathRule> PathRules { get; set; }
+        public PSApplicationGatewayPathRule[] PathRules { get; set; }
 
         [Parameter(
                 ParameterSetName = "SetByResourceId",
@@ -55,6 +56,16 @@ namespace Microsoft.Azure.Commands.Network
                 HelpMessage = "Application gateway BackendHttpSettings")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayBackendHttpSettings DefaultBackendHttpSettings { get; set; }
+
+        [Parameter(
+                ParameterSetName = "SetByResource",
+                HelpMessage = "Application gateway default rewrite rule set")]
+        public PSApplicationGatewayRewriteRuleSet DefaultRewriteRuleSet { get; set; }
+
+        [Parameter(
+                ParameterSetName = "SetByResourceId",
+                HelpMessage = "ID of the application gateway default rewrite rule set")]
+        public string DefaultRewriteRuleSetId { get; set; }
 
         [Parameter(
                 ParameterSetName = "SetByResourceId",
@@ -86,6 +97,10 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.DefaultRedirectConfigurationId = this.DefaultRedirectConfiguration.Id;
                 }
+                if (DefaultRewriteRuleSet != null)
+                {
+                    this.DefaultRewriteRuleSetId = this.DefaultRewriteRuleSet.Id;
+                }
             }
         }
 
@@ -94,7 +109,7 @@ namespace Microsoft.Azure.Commands.Network
             var urlPathMap = new PSApplicationGatewayUrlPathMap();
 
             urlPathMap.Name = this.Name;
-            urlPathMap.PathRules = this.PathRules;
+            urlPathMap.PathRules = this.PathRules?.ToList();
 
             if (!string.IsNullOrEmpty(this.DefaultBackendAddressPoolId))
             {
@@ -112,6 +127,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 urlPathMap.DefaultRedirectConfiguration = new PSResourceId();
                 urlPathMap.DefaultRedirectConfiguration.Id = this.DefaultRedirectConfigurationId;
+            }
+
+            if (!string.IsNullOrEmpty(this.DefaultRewriteRuleSetId))
+            {
+                urlPathMap.DefaultRewriteRuleSet = new PSResourceId();
+                urlPathMap.DefaultRewriteRuleSet.Id = this.DefaultRewriteRuleSetId;
             }
 
             urlPathMap.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(

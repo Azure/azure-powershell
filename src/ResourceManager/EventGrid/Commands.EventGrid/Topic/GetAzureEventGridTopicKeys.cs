@@ -21,10 +21,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
-        VerbsCommon.Get,
-        EventGridTopicKeyVerb,
+        "Get",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridTopicKey",
         DefaultParameterSetName = TopicNameParameterSet),
-     OutputType(typeof(TopicSharedAccessKeys))]
+    OutputType(typeof(TopicSharedAccessKeys))]
+
     public class GetAzureRmEventGridTopicKeys : AzureEventGridCmdletBase
     {
         [Parameter(Mandatory = true,

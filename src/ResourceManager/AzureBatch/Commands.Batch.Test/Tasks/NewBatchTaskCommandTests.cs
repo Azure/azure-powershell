@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         public NewBatchTaskCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new NewBatchTaskCommand()
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.ExecuteCmdlet();
         }
 
-        public void ExitConditionsAreSentToService()
+        private void ExitConditionsAreSentToService()
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             Assert.Equal(2, requestCollection.Count);
             foreach (var task in requestCollection)
             {
-                Assert.True(taskIds.Contains(task.Id));
+                Assert.Contains(task.Id, taskIds);
             }
         }
 

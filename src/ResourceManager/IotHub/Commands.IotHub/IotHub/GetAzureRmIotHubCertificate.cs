@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmIotHubCertificate", DefaultParameterSetName = ResourceParameterSet)]
-    [OutputType(typeof(PSCertificateDescription), typeof(List<PSCertificate>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubCertificate", DefaultParameterSetName = ResourceParameterSet)]
+    [OutputType(typeof(PSCertificateDescription))]
     public class GetAzureRmIotHubCertificate : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
@@ -106,4 +106,3 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
-

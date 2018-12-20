@@ -22,8 +22,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsLifecycle.Start, Constants.Trigger, DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true),
-        OutputType(typeof(List<PSTrigger>), typeof(PSTrigger))]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2Trigger", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true),OutputType(typeof(PSTrigger))]
     public class StartAzureDataFactoryTriggerCommand : DataFactoryContextActionBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -37,7 +36,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [ValidateNotNull]
         public PSTrigger InputObject { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             ByInputObject(InputObject);

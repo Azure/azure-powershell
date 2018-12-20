@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
@@ -69,18 +67,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 RunPowerShellTest("Test-RestorePointInTimeBackup");
             }
         }
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestServerBackupLongTermRetentionVault()
-        {
-            // TODO Rewrite SQL backup tests to be recordable
-            // TODO https://github.com/Azure/azure-powershell/issues/4155
-            if (TestMockSupport.RunningMocked)
-            {
-                RunPowerShellTest("Test-ServerBackupLongTermRetentionVault");
-            }
-        }
-        [Fact]
+
+        [Fact(Skip = "LTR-V1 restore service is retiring in Prod.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreLongTermRetentionBackup()
         {

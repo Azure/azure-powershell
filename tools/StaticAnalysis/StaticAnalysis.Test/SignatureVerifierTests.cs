@@ -208,7 +208,54 @@ namespace StaticAnalysis.Test
         }
         #endregion
 
-        #region ParameterWithPluralNoun
+        #region OutputChecks
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CmdletWithNoOutput()
+        {
+            cmdletSignatureVerifier.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Get-CmdletWithNoOutput", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.CmdletWithNoOutputType)).SingleOrDefault<int>().Equals(SignatureProblemId.CmdletWithNoOutputType));
+        }
+
+        #endregion
+
+        #region ParameterSetChecks
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ParameterSetNameWithSpace()
+        {
+            cmdletSignatureVerifier.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Get-ParameterSetNameWithSpace", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.ParameterSetWithSpace)).SingleOrDefault<int>().Equals(SignatureProblemId.ParameterSetWithSpace));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void MultipleParameterSetsWithNoDefault()
+        {
+            cmdletSignatureVerifier.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Get-MultipleParameterSetsWithNoDefault", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.MultipleParameterSetsWithNoDefault)).SingleOrDefault<int>().Equals(SignatureProblemId.MultipleParameterSetsWithNoDefault));
+        }
+        #endregion
+
+        #region ParameterChecks
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ParameterWithSingularNoun()
@@ -247,6 +294,20 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
             Assert.Equal(0, testReport.ProblemIdList.Count);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ParameterWithOutOfRangePosition()
+        {
+            cmdletSignatureVerifier.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Get-ParameterWithOutOfRangePosition", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.ParameterWithOutOfRangePosition)).SingleOrDefault<int>().Equals(SignatureProblemId.ParameterWithOutOfRangePosition));
         }
         #endregion
     }

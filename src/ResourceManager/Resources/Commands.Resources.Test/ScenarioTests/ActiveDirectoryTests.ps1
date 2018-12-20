@@ -33,10 +33,10 @@ function Test-GetAllADGroups
 .SYNOPSIS
 Tests getting Active Directory groups.
 #>
-function Test-GetADGroupWithSearchString 
+function Test-GetADGroupWithSearchString
 {
     param([string]$displayName)
-    
+
     # Test
     # Select at most 10 groups. Groups are restricted to contain "test" to fasten the test
     $groups = Get-AzureRmADGroup -SearchString $displayName
@@ -68,7 +68,7 @@ Tests getting Active Directory groups.
 function Test-GetADGroupWithObjectId
 {
     param([string]$objectId)
-    
+
     # Test
     $groups = Get-AzureRmADGroup -ObjectId $objectId
 
@@ -85,7 +85,7 @@ Tests getting Active Directory group with security enabled .
 function Test-GetADGroupSecurityEnabled
 {
     param([string]$objectId, [string]$securityEnabled)
-    
+
     # Test
     $groups = Get-AzureRmADGroup -ObjectId $objectId
 
@@ -134,8 +134,8 @@ function Test-GetADGroupMemberWithGroupObjectId
 
     # Test
     $members = Get-AzureRmADGroupMember -GroupObjectId $groupObjectId
-    
-    # Assert 
+
+    # Assert
     Assert-AreEqual $members.Count 1
     Assert-AreEqual $members[0].Id $userObjectId
     Assert-AreEqual $members[0].DisplayName $userName
@@ -148,7 +148,7 @@ Tests getting members from an Active Directory group.
 function Test-GetADGroupMemberWithBadGroupObjectId
 {
     # Test
-    Assert-Throws { Get-AzureRmADGroupMember -GroupObjectId "baadc0de-baad-c0de-baad-c0debaadc0de" }    
+    Assert-Throws { Get-AzureRmADGroupMember -GroupObjectId "baadc0de-baad-c0de-baad-c0debaadc0de" }
 }
 
 <#
@@ -160,7 +160,7 @@ function Test-GetADGroupMemberWithUserObjectId
     param([string]$objectId)
 
     # Test
-    Assert-Throws { Get-AzureRmADGroupMember -GroupObjectId $objectId }    
+    Assert-Throws { Get-AzureRmADGroupMember -GroupObjectId $objectId }
 }
 
 <#
@@ -173,8 +173,8 @@ function Test-GetADGroupMemberFromEmptyGroup
 
     # Test
     $members = Get-AzureRmADGroupMember -GroupObjectId $objectId
-    
-    # Assert 
+
+    # Assert
     Assert-Null($members)
 }
 
@@ -462,7 +462,7 @@ function Test-NewADApplication
 
     # Assert
     Assert-NotNull $application
-    $apps =  Get-AzureRmADApplication 
+    $apps =  Get-AzureRmADApplication
     Assert-NotNull $apps
     Assert-True { $apps.Count -ge 0 }
 
@@ -489,13 +489,13 @@ function Test-NewADApplication
     $newDisplayName = getAssetName
     $newHomePage = "http://" + $newDisplayName + ".com"
     $newIdentifierUri = "http://" + $newDisplayName
-    
+
     # Update displayName and HomePage
     Set-AzureRmADApplication -ObjectId $application.ObjectId -DisplayName $newDisplayName -HomePage $newHomePage
 
-    # Update identifierUri 
+    # Update identifierUri
     Set-AzureRmADApplication -ApplicationId $application.ApplicationId -IdentifierUris $newIdentifierUri
-    
+
     # Get application and verify updated properties
     $app1 =  Get-AzureRmADApplication -ObjectId $application.ObjectId
     Assert-NotNull $app1
@@ -504,7 +504,7 @@ function Test-NewADApplication
     Assert-AreEqual $app1.HomePage $newHomePage
     Assert-AreEqual $app1.IdentifierUris[0] $newIdentifierUri
 
-    # Delete 
+    # Delete
     Remove-AzureRmADApplication -ObjectId $application.ObjectId -Force
 }
 
@@ -543,16 +543,18 @@ function Test-NewADServicePrincipal
 Tests Creating and deleting service principal without an exisitng application.
 #>
 function Test-NewADServicePrincipalWithoutApp
-{   
+{
     # Setup
     $displayName = getAssetName
 
     # Test
     $servicePrincipal = New-AzureRmADServicePrincipal -DisplayName $displayName
+	$role = Get-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id
 
     # Assert
     Assert-NotNull $servicePrincipal
     Assert-AreEqual $servicePrincipal.DisplayName $displayName
+	Assert-Null $role
 
     # GetServicePrincipal by ObjectId
     $sp1 = Get-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id
@@ -573,7 +575,7 @@ function Test-NewADServicePrincipalWithoutApp
 
     # update SP displayName
     $newDisplayName = getAssetName
-    
+
     Set-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id -DisplayName $newDisplayName
 
     # Get SP and verify updated name
@@ -590,10 +592,76 @@ function Test-NewADServicePrincipalWithoutApp
 
 <#
 .SYNOPSIS
+Tests creating a service principal with reader permissions
+#>
+function Test-NewADServicePrincipalWithReaderRole
+{
+	# Setup
+	$displayName = getAssetName
+	$roleDefinitionName = "Reader"
+
+	# Test
+	$servicePrincipal = New-AzureRmADServicePrincipal -DisplayName $displayName -Role $roleDefinitionName
+	Assert-NotNull $servicePrincipal
+	Assert-AreEqual $servicePrincipal.DisplayName $displayName
+
+	try
+	{
+		$role = Get-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id
+		Assert-AreEqual $role.Count 1
+		Assert-AreEqual $role.DisplayName $servicePrincipal.DisplayName
+		Assert-AreEqual $role.ObjectId $servicePrincipal.Id
+		Assert-AreEqual $role.RoleDefinitionName $roleDefinitionName
+		Assert-AreEqual $role.ObjectType "ServicePrincipal"
+	}
+	finally
+	{
+		Remove-AzureRmADApplication -ApplicationId $servicePrincipal.ApplicationId -Force
+		Remove-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id -RoleDefinitionName $roleDefinitionName
+	}
+}
+
+<#
+.SYNOPSIS
+Tests creating a service principal with permissions over a custom scope
+#>
+function Test-NewADServicePrincipalWithCustomScope
+{
+	# Setup
+	$displayName = getAssetName
+	$defaultRoleDefinitionName = "Contributor"
+	$subscription = Get-AzureRmSubscription | Select -Last 1 -Wait
+	$resourceGroup = Get-AzureRmResourceGroup | Select -Last 1 -Wait
+	$scope = "/subscriptions/" + $subscription.Id + "/resourceGroups/" + $resourceGroup.ResourceGroupName
+
+	# Test
+	$servicePrincipal = New-AzureRmADServicePrincipal -DisplayName $displayName -Scope $scope
+	Assert-NotNull $servicePrincipal
+	Assert-AreEqual $servicePrincipal.DisplayName $displayName
+
+	try
+	{
+		$role = Get-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id
+		Assert-AreEqual $role.Count 1
+		Assert-AreEqual $role.DisplayName $servicePrincipal.DisplayName
+		Assert-AreEqual $role.ObjectId $servicePrincipal.Id
+		Assert-AreEqual $role.RoleDefinitionName $defaultRoleDefinitionName
+		Assert-AreEqual $role.Scope $scope
+		Assert-AreEqual $role.ObjectType "ServicePrincipal"
+	}
+	finally
+	{
+		Remove-AzureRmADApplication -ApplicationId $servicePrincipal.ApplicationId -Force
+		Remove-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id -Scope $scope -RoleDefinitionName $defaultRoleDefinitionName
+	}
+}
+
+<#
+.SYNOPSIS
 Tests Creating and deleting application using Password Credentials.
 #>
 function Test-CreateDeleteAppPasswordCredentials
-{   
+{
     # Setup
     $displayName = getAssetName
     $identifierUri = "http://" + $displayName
@@ -629,7 +697,7 @@ function Test-CreateDeleteAppPasswordCredentials
 
     # Remove cred by KeyId
     Remove-AzureRmADAppCredential -ApplicationId $application.ApplicationId -KeyId $cred.KeyId -Force
-    $cred3 = Get-AzureRmADAppCredential -ApplicationId $application.ApplicationId 
+    $cred3 = Get-AzureRmADAppCredential -ApplicationId $application.ApplicationId
     Assert-NotNull $cred3
     Assert-AreEqual $cred3.Count 1
     Assert-AreEqual $cred3[0].KeyId $cred1.KeyId
@@ -642,7 +710,7 @@ function Test-CreateDeleteAppPasswordCredentials
     $newApplication = Get-AzureRmADApplication -DisplayNameStartWith "PowershellTestingApp"
     Assert-Throws { New-AzureRmADAppCredential -ApplicationId $newApplication.ApplicationId -Password "Somedummypwd"}
 
-    # Remove App 
+    # Remove App
     Remove-AzureRmADApplication -ObjectId $application.ObjectId -Force
 }
 
@@ -652,7 +720,7 @@ function Test-CreateDeleteAppPasswordCredentials
 Tests Creating and deleting application using Service Principal Credentials.
 #>
 function Test-CreateDeleteSpPasswordCredentials
-{   
+{
     # Setup
     $displayName = getAssetName
     $password = getAssetName
@@ -689,7 +757,7 @@ function Test-CreateDeleteSpPasswordCredentials
 
     # Remove cred by KeyId
     Remove-AzureRmADSpCredential -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0] -KeyId $cred.KeyId -Force
-    $cred3 = Get-AzureRmADSpCredential -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0] 
+    $cred3 = Get-AzureRmADSpCredential -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0]
     Assert-NotNull $cred3
     Assert-AreEqual $cred3.Count 1
     Assert-AreEqual $cred3[0].KeyId $cred1.KeyId
@@ -701,7 +769,7 @@ function Test-CreateDeleteSpPasswordCredentials
     }
     Finally
     {
-      # Remove App 
+      # Remove App
       $app =  Get-AzureRmADApplication -ApplicationId $servicePrincipal.ApplicationId
       Remove-AzureRmADApplication -ObjectId $app.ObjectId -Force
     }

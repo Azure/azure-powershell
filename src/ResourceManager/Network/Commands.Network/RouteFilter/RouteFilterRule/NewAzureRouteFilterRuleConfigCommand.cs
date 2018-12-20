@@ -15,10 +15,10 @@
 namespace Microsoft.Azure.Commands.Network
 {
     using System.Management.Automation;
-
+    using System.Linq;
     using Microsoft.Azure.Commands.Network.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmRouteFilterRuleConfig", SupportsShouldProcess = true), OutputType(typeof(PSRouteFilterRule))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteFilterRuleConfig", SupportsShouldProcess = true), OutputType(typeof(PSRouteFilterRule))]
     public class NewAzureRouteFilterRuleConfigCommand : AzureRouteFilterRuleConfigBase
     {
         [Parameter(
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
                    rule.Name = this.Name;
                    rule.Access = this.Access;
                    rule.RouteFilterRuleType = this.RouteFilterRuleType;
-                   rule.Communities = this.CommunityList;
+                   rule.Communities = this.CommunityList?.ToList();
 
                    WriteObject(rule);
                });

@@ -67,6 +67,11 @@ namespace Tools.Common.Models
             paramsSetEqual &= this.Parameters.Count == other.Parameters.Count;
             return paramsSetEqual;
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 
     [Serializable]
@@ -122,6 +127,11 @@ namespace Tools.Common.Models
                            this.ValueFromPipelineByPropertyName == other.ValueFromPipelineByPropertyName &&
                            this.ParameterMetadata.Equals(other.ParameterMetadata);
             return paramsEqual;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

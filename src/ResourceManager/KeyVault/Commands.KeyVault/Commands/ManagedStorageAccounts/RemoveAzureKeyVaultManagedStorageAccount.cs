@@ -16,13 +16,12 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using System.Globalization;
 using System.Management.Automation;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccounts;
 using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet( VerbsCommon.Remove, CmdletNoun.AzureKeyVaultManagedStorageAccount, DefaultParameterSetName = ByDefinitionNameParameterSet,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultManagedStorageAccount", DefaultParameterSetName = ByDefinitionNameParameterSet,SupportsShouldProcess = true)]
     [OutputType( typeof( PSDeletedKeyVaultManagedStorageAccount ) )]
     public class RemoveAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
@@ -38,6 +37,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 0,
             ParameterSetName = ByDefinitionNameParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
+        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 

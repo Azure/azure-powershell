@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Deletes a given role definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRoleDefinition", SupportsShouldProcess = true,
-        DefaultParameterSetName = ParameterSet.RoleDefinitionId), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleDefinition", SupportsShouldProcess = true,DefaultParameterSetName = ParameterSet.RoleDefinitionId), OutputType(typeof(bool))]
     public class RemoveAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionId,

@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -23,30 +23,36 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class DdosProtectionPlanTests : RMTestBase
     {
-        public DdosProtectionPlanTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public DdosProtectionPlanTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestDdosProtectionPlanCrud()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-DdosProtectionPlanCRUD"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-DdosProtectionPlanCRUD"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestDdosProtectionPlanCrudWithVirtualNetwork()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-DdosProtectionPlanCRUDWithVirtualNetwork"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-DdosProtectionPlanCRUDWithVirtualNetwork"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestDdosProtectionPlanCollections()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-DdosProtectionPlanCollections"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-DdosProtectionPlanCollections"));
         }
     }
 }

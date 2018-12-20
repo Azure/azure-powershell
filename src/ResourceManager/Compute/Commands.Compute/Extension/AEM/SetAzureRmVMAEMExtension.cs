@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
@@ -34,12 +34,11 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachineAEMExtension)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMAEMExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureRmVMAEMExtension : VirtualMachineExtensionBaseCmdlet
     {
+        private string _StorageEndpoint;
         private AEMHelper _Helper = null;
 
         [Parameter(
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Position = 0,
                 ValueFromPipelineByPropertyName = true,
                 HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -57,6 +56,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -93,8 +93,13 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            this._StorageEndpoint = this.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
             this._Helper = new AEMHelper((err) => this.WriteError(err), (msg) => this.WriteVerbose(msg), (msg) => this.WriteWarning(msg),
-                this.CommandRuntime.Host.UI, AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager), this.DefaultContext.Subscription);
+                this.CommandRuntime.Host.UI, 
+                AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
+                    DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager), 
+                this.DefaultContext.Subscription,
+                this._StorageEndpoint);
 
             base.ExecuteCmdlet();
 
@@ -397,7 +402,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }).GetAwaiter().GetResult();
 
                 this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
-                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzureRmVMAEMExtension commandlet.");
+                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
 
                 var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);
@@ -523,7 +528,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var key = this._Helper.GetAzureStorageKeyFromCache(storageAccountName);
             var credentials = new StorageCredentials(storageAccountName, key);
-            var cloudStorageAccount = new CloudStorageAccount(credentials, true);
+            var cloudStorageAccount = new CloudStorageAccount(credentials,  this._StorageEndpoint, true);
 
             cloudStorageAccount.CreateCloudBlobClient().SetServicePropertiesAsync(props)
                                                        .ConfigureAwait(false).GetAwaiter().GetResult();

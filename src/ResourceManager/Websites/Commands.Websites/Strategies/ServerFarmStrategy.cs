@@ -31,13 +31,17 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
         public static ResourceConfig<AppServicePlan> CreateServerFarmConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string resourceGroupName,
-            string name) => Strategy.CreateResourceConfig(
+            string name, bool isXenon = false ) => Strategy.CreateResourceConfig(
                 resourceGroup,
                 name,
-                createModel: _ =>
-                    new AppServicePlan(location: null, name: name)
-                    {
-                        Sku = new SkuDescription { Tier = "Basic", Capacity = 1, Name = CmdletHelpers.GetSkuName("Basic", 1) }
-                    });
+                createModel: _ => 
+				{
+					string tier = isXenon ? "PremiumContainer" : "Basic";
+					return new AppServicePlan(location: null, name: name)
+					{
+						Sku = new SkuDescription { Tier = tier, Capacity = 1, Name = CmdletHelpers.GetSkuName(tier, 1) },
+						IsXenon = isXenon
+					};
+				});
     }
 }

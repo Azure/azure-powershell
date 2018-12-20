@@ -20,8 +20,6 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
@@ -32,7 +30,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmSnapshotConfig", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshot))]
     public partial class NewAzureRmSnapshotConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -60,7 +58,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceManager.Common.ArgumentCompleters.LocationCompleter("Microsoft.Compute/snapshots")]
+        [LocationCompleter("Microsoft.Compute/snapshots")]
         public string Location { get; set; }
 
         [Parameter(
@@ -119,19 +117,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private void Run()
         {
             // Sku
-            Microsoft.Azure.Management.Compute.Models.SnapshotSku vSku = null;
+            SnapshotSku vSku = null;
 
             // CreationData
-            Microsoft.Azure.Management.Compute.Models.CreationData vCreationData = null;
+            CreationData vCreationData = null;
 
             // EncryptionSettings
-            Microsoft.Azure.Management.Compute.Models.EncryptionSettings vEncryptionSettings = null;
+            EncryptionSettings vEncryptionSettings = null;
 
             if (this.MyInvocation.BoundParameters.ContainsKey("SkuName"))
             {
                 if (vSku == null)
                 {
-                    vSku = new Microsoft.Azure.Management.Compute.Models.SnapshotSku();
+                    vSku = new SnapshotSku();
                 }
                 vSku.Name = this.SkuName;
             }
@@ -140,7 +138,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vCreationData == null)
                 {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
+                    vCreationData = new CreationData();
                 }
                 vCreationData.CreateOption = this.CreateOption;
             }
@@ -149,7 +147,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vCreationData == null)
                 {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
+                    vCreationData = new CreationData();
                 }
                 vCreationData.StorageAccountId = this.StorageAccountId;
             }
@@ -158,7 +156,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vCreationData == null)
                 {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
+                    vCreationData = new CreationData();
                 }
                 vCreationData.ImageReference = this.ImageReference;
             }
@@ -167,7 +165,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vCreationData == null)
                 {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
+                    vCreationData = new CreationData();
                 }
                 vCreationData.SourceUri = this.SourceUri;
             }
@@ -176,7 +174,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vCreationData == null)
                 {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
+                    vCreationData = new CreationData();
                 }
                 vCreationData.SourceResourceId = this.SourceResourceId;
             }
@@ -185,7 +183,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vEncryptionSettings == null)
                 {
-                    vEncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    vEncryptionSettings = new EncryptionSettings();
                 }
                 vEncryptionSettings.Enabled = this.EncryptionSettingsEnabled;
             }
@@ -194,7 +192,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vEncryptionSettings == null)
                 {
-                    vEncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    vEncryptionSettings = new EncryptionSettings();
                 }
                 vEncryptionSettings.DiskEncryptionKey = this.DiskEncryptionKey;
             }
@@ -203,15 +201,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vEncryptionSettings == null)
                 {
-                    vEncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    vEncryptionSettings = new EncryptionSettings();
                 }
                 vEncryptionSettings.KeyEncryptionKey = this.KeyEncryptionKey;
             }
 
             var vSnapshot = new PSSnapshot
             {
-                OsType = this.MyInvocation.BoundParameters.ContainsKey("OsType") ? this.OsType : (OperatingSystemTypes?) null,
-                DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?) null,
+                OsType = this.MyInvocation.BoundParameters.ContainsKey("OsType") ? this.OsType : (OperatingSystemTypes?)null,
+                DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?)null,
                 Location = this.MyInvocation.BoundParameters.ContainsKey("Location") ? this.Location : null,
                 Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 Sku = vSku,
@@ -223,4 +221,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

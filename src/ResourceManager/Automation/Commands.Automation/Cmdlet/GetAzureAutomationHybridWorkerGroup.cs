@@ -8,11 +8,11 @@ using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMAutomationHybridWorkerGroup", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridWorkerGroup", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(HybridRunbookWorkerGroup))]
     public class GetAzureAutomationHybridWorkerGroup : AzureAutomationBaseCmdlet
     {
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName,Position = 2,  Mandatory = false, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker Group name")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2,  Mandatory = false, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker Group name")]
         [Alias("Group")]
         public string Name { get; set; }
 

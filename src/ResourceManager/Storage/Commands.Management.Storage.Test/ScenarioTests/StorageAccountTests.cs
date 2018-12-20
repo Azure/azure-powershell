@@ -12,111 +12,120 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 {
-    public class StorageAccountTests : RMTestBase
+    public class StorageAccountTests : StorageTestRunner
     {
         public StorageAccountTests(ITestOutputHelper output)
+            : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestStorageAccount()
-        {
-            TestController.NewInstance.RunPsTest("Test-StorageAccount");
-        }
+        public void TestStorageAccount() =>
+            TestRunner.RunTestScript("Test-StorageAccount");
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureStorageAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-NewAzureStorageAccount");
+            TestRunner.RunTestScript("Test-NewAzureStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureStorageAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-GetAzureStorageAccount");
+            TestRunner.RunTestScript("Test-GetAzureStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureStorageAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-SetAzureStorageAccount");
+            TestRunner.RunTestScript("Test-SetAzureStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureStorageAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-RemoveAzureStorageAccount");
+            TestRunner.RunTestScript("Test-RemoveAzureStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureStorageAccountKey()
         {
-            TestController.NewInstance.RunPsTest("Test-GetAzureStorageAccountKey");
+            TestRunner.RunTestScript("Test-GetAzureStorageAccountKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureStorageAccountKey()
         {
-            TestController.NewInstance.RunPsTest("Test-NewAzureStorageAccountKey");
+            TestRunner.RunTestScript("Test-NewAzureStorageAccountKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingGetAccountToGetKey()
         {
-            TestController.NewInstance.RunPsTest("Test-PipingGetAccountToGetKey");
+            TestRunner.RunTestScript("Test-PipingGetAccountToGetKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingSetStorageAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-PipingToSetAzureRmCurrentStorageAccount");
+            TestRunner.RunTestScript("Test-PipingToSetAzureRmCurrentStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetCurrentStorageAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-SetAzureRmCurrentStorageAccount");
+            TestRunner.RunTestScript("Test-SetAzureRmCurrentStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmStorageAccountKeySource()
         {
-            TestController.NewInstance.RunPsTest("Test-SetAzureRmStorageAccountKeySource");
+            TestRunner.RunTestScript("Test-SetAzureRmStorageAccountKeySource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkRule()
         {
-            TestController.NewInstance.RunPsTest("Test-NetworkRule");
+            TestRunner.RunTestScript("Test-NetworkRule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureStorageAccountStorageV2()
         {
-            TestController.NewInstance.RunPsTest("Test-SetAzureStorageAccountStorageV2");
+            TestRunner.RunTestScript("Test-SetAzureStorageAccountStorageV2");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureStorageLocationUsage()
+        {
+            TestRunner.RunTestScript("Test-GetAzureStorageLocationUsage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPipingNewUpdateAccount()
+        {
+            TestRunner.RunTestScript("Test-PipingNewUpdateAccount");
         }
     }
 }

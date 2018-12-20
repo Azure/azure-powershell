@@ -5,9 +5,14 @@ Tests DataLakeStore Account trusted identity provider Lifecycle (Create, Update,
 function Test-DataLakeStoreTrustedIdProvider
 {
     param
-	(
-		$location = "West US"
-	)
+    (
+        $location
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
 	
 	try
 	{
@@ -87,9 +92,14 @@ Tests DataLakeStore Account firewall rules Lifecycle (Create, Update, Get, List,
 function Test-DataLakeStoreFirewall
 {
     param
-	(
-		$location = "West US"
-	)
+    (
+        $location
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
 	
 	try
 	{
@@ -172,14 +182,114 @@ function Test-DataLakeStoreFirewall
 
 <#
 .SYNOPSIS
+Tests DataLakeStore Account virtual network rules Lifecycle (Create, Update, Get, List, Delete).
+#>
+function Test-DataLakeStoreVirtualNetwork
+{
+    param
+    (
+        $location
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
+
+	try
+	{
+		# Creating Account
+		$resourceGroupName = Get-ResourceGroupName
+		$accountName = Get-DataLakeStoreAccountName
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		# Test to make sure the account doesn't exist
+		Assert-False {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-False {Test-AzureRMDataLakeStoreAccount -Name $accountName}
+
+		$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -Encryption ServiceManaged
+
+		Assert-AreEqual $accountName $accountCreated.Name
+		Assert-AreEqual $location $accountCreated.Location
+		Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
+		Assert-True {$accountCreated.Id -like "*$resourceGroupName*"}
+
+		# In loop to check if account exists
+		for ($i = 0; $i -le 60; $i++)
+		{
+			[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
+			{
+				Assert-AreEqual $accountName $accountGet[0].Name
+				Assert-AreEqual $location $accountGet[0].Location
+				Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountGet[0].Type
+				Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
+				break
+			}
+
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
+			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
+		}
+
+		# Test to make sure the account does exist
+		Assert-True {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+
+		# Enable the firewall state and azure IPs
+		Assert-AreEqual "Disabled" $accountCreated.FirewallState
+
+		$accountSet = Set-AzureRMDataLakeStoreAccount -Name $accountName -FirewallState "Enabled" -AllowAzureIpState "Enabled"
+
+		Assert-AreEqual "Enabled" $accountSet.FirewallState
+
+		$virtualNetworkRuleName = getAssetName
+
+		$vnetName1 = "vnet1"
+		$virtualNetwork1 = CreateAndGetVirtualNetwork $resourceGroupName $vnetName1 $location
+		$virtualNetworkSubnetId1 = $virtualNetwork1.Subnets[0].Id
+
+		$vnetName2 = "vnet2"
+		$virtualNetwork2 = CreateAndGetVirtualNetwork $resourceGroupName $vnetName2 $location
+		$virtualNetworkSubnetId2 = $virtualNetwork2.Subnets[0].Id
+
+		# Add a virtual network rule
+		Add-AzureRmDataLakeStoreVirtualNetworkRule -Account $accountName -Name $vnetName1 -SubnetId $virtualNetworkSubnetId1
+
+		# Get the virtual network rule
+		$result = Get-AzureRmDataLakeStoreVirtualNetworkRule -Account $accountName -Name $vnetName1
+		Assert-AreEqual $vnetName1 $result.VirtualNetworkRuleName
+		Assert-AreEqual $virtualNetworkSubnetId1 $result.VirtualNetworkSubnetId
+
+		# remove the virtual network rule
+		Remove-AzureRmDataLakeStoreVirtualNetworkRule -Account $accountName -Name $vnetName1
+
+		# Make sure get throws.
+		Assert-Throws {Get-AzureRmDataLakeStoreVirtualNetworkRule -Account $accountName -Name $vnetName1}
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+
+<#
+.SYNOPSIS
 Tests DataLakeStore Account Commitment tiers (in Create and Update).
 #>
 function Test-DataLakeStoreAccountTiers
 {
     param
-	(
-		$location = "West US"
-	)
+    (
+        $location
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
 	
 	try
 	{
@@ -232,9 +342,14 @@ Tests DataLakeStore Account Lifecycle (Create, Update, Get, List, Delete).
 function Test-DataLakeStoreAccount
 {
     param
-	(
-		$location = "West US"
-	)
+    (
+        $location
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
 	
 	try
 	{
@@ -282,7 +397,7 @@ function Test-DataLakeStoreAccount
 
 		# Updating Account
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
-		$accountUpdated = Set-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tags $tagsToUpdate
+		$accountUpdated = Set-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tag $tagsToUpdate
     
 		Assert-AreEqual $accountName $accountUpdated.Name
 		Assert-AreEqual $location $accountUpdated.Location
@@ -370,10 +485,15 @@ Tests DataLakeStore filesystem operations (Create, append, get, delete, read, et
 function Test-DataLakeStoreFileSystem
 {
 	param
-	(
-		$fileToCopy,
-		$location = "West US"
-	)
+    (
+        $fileToCopy,
+		$location
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
 
 	try
 	{
@@ -407,15 +527,23 @@ function Test-DataLakeStoreFileSystem
 		}
 
 		# define all the files and folders to create
+		$encodingFolder="/encodingFolder"
 		$folderToCreate = "/adlspstestfolder"
 		$emptyFilePath = "$folderToCreate\emptyfile.txt" # have one where the slash is in the wrong direction to make sure they get fixed.
 		$contentFilePath = "$folderToCreate/contentfile.txt"
+		$unicodeContentFilePath="$encodingFolder/unicodecontentfile.txt"
+		$unicodetext="I am unicode text"
+		$utf32ContentFilePath="$encodingFolder/utf32contentfile.txt"
+		$utf32text="I am utf32 text"
 		$concatFile = "$folderToCreate/concatfile.txt"
 		$moveFile = "$folderToCreate/movefile.txt"
 		$movefolder = "/adlspstestmovefolder"
 		$importFile = "$folderToCreate/importfile.txt"
 		$content = "Test file content! @ Azure PsTest01?"
-	
+		$summaryFolder="/adlspstestsummaryfolder"
+		$subFolderToCreate = "$summaryFolder/Folder0"
+		$subSubFolderToCreate = "$summaryFolder/Folder0/SubFolder0"
+		$subFileToCreate = "$summaryFolder/File0"
 
 		# Create and get Empty folder
 		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate -Folder
@@ -441,6 +569,19 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual "File" $result.Type
 		Assert-AreEqual $content.length $result.Length
 		
+		#Create empty file and add unicode content
+		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $unicodeContentFilePath
+		Assert-NotNull $result "No value was returned on content file creation"
+		Add-AzureRmDataLakeStoreItemContent -Account $accountName -Path $unicodeContentFilePath -Value $unicodetext -Encoding Unicode
+		$retrievedContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $unicodeContentFilePath -Encoding Unicode
+		Assert-AreEqual $unicodetext $retrievedContent
+
+		#Create utf32 file with content
+		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $utf32ContentFilePath -Value $utf32text -Encoding UTF32
+		Assert-NotNull $result "No value was returned on content file creation"
+		$retrievedContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $utf32ContentFilePath -Encoding UTF32
+		Assert-AreEqual $utf32text $retrievedContent
+
 		# set absolute expiration for content file
 		Assert-True {253402300800000 -ge $result.ExpirationTime -or 0 -le $result.ExpirationTime} # validate that expiration is currently max value
 		[DateTimeOffset]$timeToUse = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("absoluteTime", [DateTimeOffset]::UtcNow.AddSeconds(120))
@@ -525,7 +666,6 @@ function Test-DataLakeStoreFileSystem
 		Export-AzureRMDataLakeStoreItem -Account $accountName -Path $concatFile -Destination $targetFile
 		$downloadedFileInfo = Get-ChildItem $targetFile
 		Assert-AreEqual $($content.length*2) $downloadedFileInfo.length
-		Remove-Item -path $targetFile -force -confirm:$false
 		
 		# move a file
 		$result = Move-AzureRMDataLakeStoreItem -Account $accountName -Path $concatFile -Destination $moveFile
@@ -544,14 +684,38 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual "Directory" $result.Type
 		Assert-AreEqual 0 $result.Length
 		Assert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate}
-		
+
+		# getcontentsummary
+		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $summaryFolder -Folder
+		Assert-NotNull $result "No value was returned on folder creation"
+		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $subFolderToCreate -Folder
+		Assert-NotNull $result "No value was returned on folder creation"
+		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $subSubFolderToCreate -Folder
+		Assert-NotNull $result "No value was returned on folder creation"
+		New-AzureRMDataLakeStoreItem -Account $accountName -Path $subFileToCreate -Force -Value $content
+		$result = Get-AzureRmDataLakeStoreChildItemSummary -Account $accountName -Path $summaryFolder
+		Assert-AreEqual $result.Length $content.Length
+		# Files will be the test file and the above moved file
+		Assert-AreEqual $result.FileCount 1
+
+		# Export DiskUsage
+		$targetFile = "/DuOutputFile"
+		Export-AdlStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile -SaveToAdl
+		$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $targetFile
+		Assert-NotNull $result "No file was created on export properties"
+
 		# delete a file
-		Assert-True {Remove-AzureRMDataLakeStoreItem -Account $accountName -paths "$moveFolder/movefile.txt" -force -passthru } "Remove File Failed"
-		Assert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFile}
+		Assert-True {Remove-AdlStoreItem -Account $accountName -paths "$moveFolder/movefile.txt" -force -passthru } "Remove File Failed"
+		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $moveFile}
+		Assert-True {Remove-AdlStoreItem -Account $accountName -paths $targetFile -force -passthru } "Remove File Failed"
+		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $targetFile}
 		
 		# delete a folder
 		Assert-True {Remove-AzureRMDataLakeStoreItem -Account $accountName -paths $moveFolder -force -recurse -passthru} "Remove folder failed"
 		Assert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFolder}
+		Assert-True {Remove-AzureRMDataLakeStoreItem -Account $accountName -paths $summaryFolder -force -recurse -passthru} "Remove folder failed"
+		Assert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $summaryFolder}
+		Assert-True {Remove-AzureRMDataLakeStoreItem -Account $accountName -paths $encodingFolder -force -recurse -passthru} "Remove folder failed"
     
 		# Delete Data Lake account
 		Assert-True {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
@@ -574,9 +738,14 @@ Tests DataLakeStore filesystem permissions operations (Create, Update, Get, List
 function Test-DataLakeStoreFileSystemPermissions
 {
 	param
-	(
-		$location = "West US"
-	)
+    (
+        $location
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
 
 	try
 	{
@@ -608,6 +777,9 @@ function Test-DataLakeStoreFileSystemPermissions
 			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
 			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
 		}
+
+		#define folder name to create for recursive Acl
+		$folderToCreate = "/aclRecurseFolder"
 
 		# define the permissions to add/remove
 		$aceUserId = "027c28d5-c91d-49f0-98c5-d10134b169b3"
@@ -675,6 +847,26 @@ function Test-DataLakeStoreFileSystemPermissions
 		$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/"
 		Assert-AreEqual $($currentCount) $result.Count
 
+		# Create file/folder for recursive Acl
+		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate -Folder
+		Assert-NotNull $result "No value was returned on folder creation"
+		
+		#Recursive Acl Modify
+		Set-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Permissions All -Id $aceUserId -Recurse
+		$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/"
+		Assert-AreEqual $($currentCount+1) $result.Count
+
+		# Export Acl
+		$targetFile = "/aclOutputFile"
+		Export-AzureRmDataLakeStoreChildItemProperties -Account $accountName -Path "/" -OutputPath $targetFile -GetAcl -IncludeFile -SaveToAdl
+		$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $targetFile
+		Assert-NotNull $result "No file was created on export properties"
+
+		#Recursive Acl remove
+		Remove-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Recurse
+		$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/"
+		Assert-AreEqual $($currentCount) $result.Count
+
 		# Validate full ACL removal
 		Remove-AzureRMDataLakeStoreItemAcl -Account $accountName -Path "/" -Force -Default
 		$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/"
@@ -711,10 +903,15 @@ Tests DataLakeStore Account Lifecycle Failure scenarios (Create, Update, Get, De
 function Test-NegativeDataLakeStoreAccount
 {
     param
-	(
-		$location = "West US",
+    (
+        $location,
 		$fakeaccountName = "psfakedataLakeaccounttest"
-	)
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
 	
 	try
 	{
@@ -753,7 +950,7 @@ function Test-NegativeDataLakeStoreAccount
 
 		# attempt to update a non-existent account
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
-		Assert-Throws {Set-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tags $tagsToUpdate}
+		Assert-Throws {Set-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tag $tagsToUpdate}
 
 		# attempt to get a non-existent account
 		Assert-Throws {Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName}
@@ -773,4 +970,23 @@ function Test-NegativeDataLakeStoreAccount
 		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
+}
+
+<#
+	.SYNOPSIS
+	Create a virtual network
+#>
+function CreateAndGetVirtualNetwork ($resourceGroupName, $vnetName, $location = "westcentralus")
+{
+	$subnetName = "Public"
+
+	$addressPrefix = "10.0.0.0/24"
+	$serviceEndpoint = "Microsoft.AzureActiveDirectory"
+
+	$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $addressPrefix -ServiceEndpoint $serviceEndpoint
+	$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+	$getVnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+
+	return $getVnet
 }

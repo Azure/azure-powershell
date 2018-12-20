@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,18 +18,18 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
     /// <summary>
     /// Cmdlet to create or update a new Azure Sql Database backup archival policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy",
-        DefaultParameterSetName = WeeklyRetentionRequiredSet,
-        SupportsShouldProcess = true,
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseBackupLongTermRetentionPolicy",
+        DefaultParameterSetName = WeeklyRetentionRequiredSet,SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low),
         OutputType(typeof(AzureSqlDatabaseBackupLongTermRetentionPolicyModel))]
-    [Alias("Set-AzureRmSqlDatabaseLongTermRetentionPolicy")]
+    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseLongTermRetentionPolicy")]
     public class SetAzureSqlDatabaseBackupLongTermRetentionPolicy : AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase
     {
         /// <summary>
@@ -51,31 +51,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Parameter set for clearing the long term retention V2 policy.
         /// </summary>
         private const string RemovePolicySet = "RemovePolicy";
-
-        /// <summary>
-        /// Parameter set for setting the legacy long term retention policy.
-        /// </summary>
-        private const string LegacySet = "Legacy";
-
-        /// <summary>
-        /// Gets or sets the backup long term retention state
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ParameterSetName = LegacySet,
-            HelpMessage = "The state of the long term retention backup policy, 'Enabled' or 'Disabled'")]
-        [ValidateNotNullOrEmpty]
-        public string State { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the backup long term retention policy
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ParameterSetName = LegacySet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Resource ID of the backup long term retention policy.")]
-        [ValidateNotNullOrEmpty]
-        [Alias("Id")]
-        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to clear the Long Term Retention V2 policy.
@@ -148,8 +123,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 ModelAdapter.GetDatabaseBackupLongTermRetentionPolicy(
                     this.ResourceGroupName,
                     this.ServerName,
-                    this.DatabaseName,
-                    ParameterSetName.Equals(LegacySet))
+                    this.DatabaseName)
             };
         }
 
@@ -192,8 +166,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     ResourceGroupName = ResourceGroupName,
                     ServerName = ServerName,
                     DatabaseName = DatabaseName,
-                    State = State,
-                    RecoveryServicesBackupPolicyResourceId = ResourceId,
                     Location = model.FirstOrDefault().Location,
                     WeeklyRetention = WeeklyRetention,
                     MonthlyRetention = MonthlyRetention,

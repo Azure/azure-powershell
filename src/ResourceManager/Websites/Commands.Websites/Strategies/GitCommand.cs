@@ -13,14 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Permissions;
-using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using Microsoft.Azure.Commands.WebApps.Properties;
 
 namespace Microsoft.Azure.Commands.WebApps.Strategies
 {

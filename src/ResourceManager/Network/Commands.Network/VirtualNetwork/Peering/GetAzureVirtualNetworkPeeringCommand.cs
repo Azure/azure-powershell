@@ -20,13 +20,14 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkPeering"), OutputType(typeof(PSVirtualNetworkPeering))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkPeering"), OutputType(typeof(PSVirtualNetworkPeering))]
     public class GetAzureVirtualNetworkPeeringCommand : VirtualNetworkPeeringBase
     {
         [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The virtual network name.")]
+        [ResourceNameCompleter("Microsoft.Network/virtualNetworks", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
 
@@ -42,6 +43,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network peering name.")]
+        [ResourceNameCompleter("Microsoft.Network/virtualNetworks/virtualNetworkPeerings", "ResourceGroupName", "VirtualNetworkName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

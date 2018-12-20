@@ -11,7 +11,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Management.WebSites;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
@@ -29,7 +28,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
             compulsoryLocation: true);
 
         public static ResourceConfig<Site> CreateSiteConfig(this ResourceConfig<ResourceGroup> resourceGroup,
-            ResourceConfig<AppServicePlan> plan, string siteName) =>
+            ResourceConfig<AppServicePlan> plan, string siteName, SiteConfig siteConfig = null) =>
             Strategy.CreateResourceConfig(
                 resourceGroup,
                 siteName,
@@ -37,6 +36,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
                     new Site(location: null, name: siteName)
                     {
                         //Name = siteName,
+                        SiteConfig = siteConfig,
                         ServerFarmId = engine.GetId(plan)
                     });
     }

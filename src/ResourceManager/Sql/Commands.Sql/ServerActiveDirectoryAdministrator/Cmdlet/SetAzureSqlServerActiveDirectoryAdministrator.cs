@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure SQL Server Active Directory administrator
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerActiveDirectoryAdministrator",
-        ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerActiveDirectoryAdministrator",ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerActiveDirectoryAdministratorModel))]
     public class SetAzureSqlServerActiveDirectoryAdministrator : AzureSqlServerActiveDirectoryAdministratorCmdletBase
     {
         /// <summary>

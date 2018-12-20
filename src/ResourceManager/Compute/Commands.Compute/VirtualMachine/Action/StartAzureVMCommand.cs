@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
+using System;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsLifecycle.Start, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", DefaultParameterSetName = ResourceGroupNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
     public class StartAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 1,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -37,13 +38,14 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.ShouldProcess(Name, VerbsLifecycle.Start))
             {
                 base.ExecuteCmdlet();
-
                 ExecuteClientAction(() =>
                 {
                     var op = this.VirtualMachineClient.StartWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.Name).GetAwaiter().GetResult();
                     var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                    result.StartTime = this.StartTime;
+                    result.EndTime = DateTime.Now;
                     WriteObject(result);
                 });
             }

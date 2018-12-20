@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,9 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRmSqlDatabaseServer cmdlet
+    /// Defines the Get-AzSqlDatabaseServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerServiceObjective", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerServiceObjective", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureSqlServerServiceObjectiveModel))]
     public class GetAzureSqlServerServiceObjective : AzureSqlServerServiceObjectiveCmdletBase
     {
         /// <summary>

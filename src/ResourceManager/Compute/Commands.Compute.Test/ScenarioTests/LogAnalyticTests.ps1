@@ -69,8 +69,8 @@ function Test-ExportLogAnalytics
 
     try
     {
-        $from = Get-Date -Year 2018 -Month 2 -Day 27 -Hour 9;
-        $to = Get-Date -Year 2018 -Month 2 -Day 28 -Hour 9;
+        $from = Get-Date -Year 2018 -Month 5 -Day 27 -Hour 9;
+        $to = Get-Date -Year 2018 -Month 5 -Day 28 -Hour 9;
         $sasuri = "https://$stoname.blob.core.windows.net/$container$sastoken";
         $interval = "FiveMins";
         $result = Export-AzureRmLogAnalyticRequestRateByInterval -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -IntervalLength $interval -GroupByThrottlePolicy -GroupByOperationName -GroupByResourceName;

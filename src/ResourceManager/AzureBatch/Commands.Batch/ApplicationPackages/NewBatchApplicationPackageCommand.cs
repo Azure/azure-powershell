@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, Constants.AzureRmBatchApplicationPackage, DefaultParameterSetName = UploadAndActivateSet), OutputType(typeof(PSApplicationPackage))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchApplicationPackage", DefaultParameterSetName = UploadAndActivateSet), OutputType(typeof(PSApplicationPackage))]
     public class NewBatchApplicationPackageCommand : BatchCmdletBase
     {
         internal const string ActivateOnlySet = "ActivateOnly";

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 
         public GetBatchNodeAgentSkusCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchAccountNodeAgentSkuCommand()
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             int nodeAgentCount = 0;
             foreach (PSNodeAgentSku p in pipeline)
             {
-                Assert.True(idsOfNodeAgentSkus.Contains(p.Id));
+                Assert.Contains(p.Id, idsOfNodeAgentSkus);
                 nodeAgentCount++;
             }
             Assert.Equal(idsOfNodeAgentSkus.Length, nodeAgentCount);

@@ -13,152 +13,161 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Graph.RBAC.Version1_6;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Test;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Linq;
+using System.Reflection;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class RoleAssignmentTests : RMTestBase
+    public class RoleAssignmentTests : ResourceTestRunner
     {
-        public RoleAssignmentTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public RoleAssignmentTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaClassicAdmins()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaClassicAdmins");
+            TestRunner.RunTestScript("Test-RaClassicAdmins");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaClassicAdminsWithScope()
+        {
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RaClassicAdminsWithScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeletedPrincipals()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaDeletedPrincipals");
+            TestRunner.RunTestScript("Test-RaDeletedPrincipals");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Fact(Skip = "Test fails during parallelization. Test uses RoleDefinitionNames statically.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaPropertiesValidation() {
-            ResourcesController.NewInstance.RunPsTest("Test-RaPropertiesValidation");
+            TestRunner.RunTestScript("Test-RaPropertiesValidation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaNegativeScenarios()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaNegativeScenarios");
+            TestRunner.RunTestScript("Test-RaNegativeScenarios");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByScope()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaByScope");
+            TestRunner.RunTestScript("Test-RaByScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeleteByPSRoleAssignment()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaDeleteByPSRoleAssignment");
+            TestRunner.RunTestScript("Test-RaDeleteByPSRoleAssignment");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResourceGroup()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaByResourceGroup");
+            TestRunner.RunTestScript("Test-RaByResourceGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResource()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaByResource");
+            TestRunner.RunTestScript("Test-RaByResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaValidateInputParameters()
         {
-            var instance = ResourcesController.NewInstance;
-            instance.RunPsTest("Test-RaValidateInputParameters Get-AzureRmRoleAssignment");
-            instance.RunPsTest("Test-RaValidateInputParameters New-AzureRmRoleAssignment");
-            instance.RunPsTest("Test-RaValidateInputParameters Remove-AzureRmRoleAssignment");
+            TestRunner.RunTestScript("Test-RaValidateInputParameters Get-AzureRmRoleAssignment");
+            TestRunner.RunTestScript("Test-RaValidateInputParameters New-AzureRmRoleAssignment");
+            TestRunner.RunTestScript("Test-RaValidateInputParameters Remove-AzureRmRoleAssignment");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByServicePrincipal()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaByServicePrincipal");
+            TestRunner.RunTestScript("Test-RaByServicePrincipal");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaById()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaById");
+            TestRunner.RunTestScript("Test-RaById");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeletionByScope()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScope");
+            TestRunner.RunTestScript("Test-RaDeletionByScope");
         }
 
         [Fact(Skip = "Need AD team to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeletionByScopeAtRootScope()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScopeAtRootScope");
+            TestRunner.RunTestScript("Test-RaDeletionByScopeAtRootScope");
         }
 
         [Fact(Skip = "Need AD team to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDelegation()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaDelegation");
+            TestRunner.RunTestScript("Test-RaDelegation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByUpn()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaByUpn");
+            TestRunner.RunTestScript("Test-RaByUpn");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaGetByScope()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaGetByScope");
+            TestRunner.RunTestScript("Test-RaGetByScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaGetByUPNWithExpandPrincipalGroups()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaGetByUPNWithExpandPrincipalGroups");
+            TestRunner.RunTestScript("Test-RaGetByUPNWithExpandPrincipalGroups");
         }
 
         [Fact(Skip = "Fix the flaky test and token error and then re-record the test. Token from admin user is being used even when trying to use newly created user.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaUserPermissions()
         {
             User newUser = null;
@@ -176,6 +185,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             {
                 // Generate new user under admin account
                 controllerAdmin.RunPsTestWorkflow(
+                    _logger,
                     // scriptBuilder
                     () =>
                     {
@@ -217,16 +227,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                                 resourceGroup.Name)
                         };
                     },
-                    // initialize
-                    null,
                     // cleanup
                     null,
-                    TestUtilities.GetCallingClass(),
-                    TestUtilities.GetCurrentMethodName() + "_Setup");
+                    MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                    MethodBase.GetCurrentMethod().Name + "_Setup");
 
                 // login as different user and run the test
                 var controllerUser = ResourcesController.NewInstance;
                 controllerUser.RunPsTestWorkflow(
+                    _logger,
                     // scriptBuilder
                     () =>
                     {
@@ -241,19 +250,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                             userPermission)
                         };
                     },
-                    // initialize
-                    (testFactory) =>
-                    {
-                        if (newUser != null)
-                        {
-                            testFactory.CustomEnvValues[TestEnvironment.UserIdKey] = userName + "@" + controllerAdmin.UserDomain;
-                            testFactory.CustomEnvValues[TestEnvironment.AADPasswordKey] = userPass;
-                        }
-                    },
                     // cleanup
                     null,
-                    TestUtilities.GetCallingClass(),
-                    TestUtilities.GetCurrentMethodName() + "_Test");
+                    MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                    MethodBase.GetCurrentMethod().Name + "_Test");
             }
             finally
             {
@@ -277,8 +277,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                             controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, roleAssignmentId).ToString();
                         }
                     },
-                    TestUtilities.GetCallingClass(),
-                    TestUtilities.GetCurrentMethodName() + "_Cleanup");
+                    MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                    MethodBase.GetCurrentMethod().Name + "_Cleanup");
             }
         }
     }

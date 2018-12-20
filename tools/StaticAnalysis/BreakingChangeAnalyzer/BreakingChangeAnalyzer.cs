@@ -37,7 +37,10 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         public string Name { get; set; }
         public string BreakingChangeIssueReportLoggerName { get; set; }
 
+// TODO: Remove IfDef code
+#if !NETSTANDARD
         private AppDomain _appDomain;
+#endif
 
         public BreakingChangeAnalyzer()
         {
@@ -55,6 +58,19 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             Analyze(cmdletProbingDirs, null, null);
         }
 
+        public void Analyze(IEnumerable<string> cmdletProbingDirs, IEnumerable<string> modulesToAnalyze)
+        {
+            Analyze(cmdletProbingDirs, null, null, modulesToAnalyze);
+        }
+
+        public void Analyze(
+            IEnumerable<string> cmdletProbingDirs,
+            Func<IEnumerable<string>, IEnumerable<string>> directoryFilter,
+            Func<string, bool> cmdletFilter)
+        {
+            Analyze(cmdletProbingDirs, directoryFilter, cmdletFilter, null);
+        }
+
         /// <summary>
         /// Given a set of directory paths containing PowerShell module folders,
         /// analyze the breaking changes in the modules and report any issues
@@ -67,9 +83,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         public void Analyze(
             IEnumerable<string> cmdletProbingDirs,
             Func<IEnumerable<string>, IEnumerable<string>> directoryFilter,
-            Func<string, bool> cmdletFilter)
+            Func<string, bool> cmdletFilter,
+            IEnumerable<string> modulesToAnalyze)
         {
-            var savedDirectory = Directory.GetCurrentDirectory();
             var processedHelpFiles = new List<string>();
             var issueLogger = Logger.CreateLogger<BreakingChangeIssue>("BreakingChangeIssues.csv");
 
@@ -81,14 +97,20 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") &&
                                                                         !s.Contains("Stack") && Directory.Exists(Path.GetFullPath(s))))
             {
-                List<string> probingDirectories = new List<string>();
+                var probingDirectories = new List<string> {baseDirectory};
 
                 // Add current directory for probing
-                probingDirectories.Add(baseDirectory);
                 probingDirectories.AddRange(Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)));
 
                 foreach (var directory in probingDirectories)
                 {
+                    if (modulesToAnalyze != null &&
+                        modulesToAnalyze.Any() &&
+                        !modulesToAnalyze.Any(m => directory.EndsWith(m)))
+                    {
+                        continue;
+                    }
+
                     var service = Path.GetFileName(directory);
 
                     var manifestFiles = Directory.EnumerateFiles(directory, "*.psd1").ToList();
@@ -106,92 +128,86 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     var psd1 = manifestFiles.FirstOrDefault();
                     var parentDirectory = Directory.GetParent(psd1).FullName;
                     var psd1FileName = Path.GetFileName(psd1);
-                    IEnumerable<string> nestedModules = null;
-                    List<string> requiredModules = null;
-                    PowerShell powershell = PowerShell.Create();
+                    var powershell = PowerShell.Create();
                     powershell.AddScript("Import-LocalizedData -BaseDirectory " + parentDirectory +
                                          " -FileName " + psd1FileName +
                                          " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules; $ModuleMetadata.RequiredModules | % { $_[\"ModuleName\"] };");
                     var cmdletResult = powershell.Invoke();
-                    nestedModules = cmdletResult.Where(c => c.ToString().StartsWith(".")).Select(c => c.ToString().Substring(2));
-                    requiredModules = cmdletResult.Where(c => !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
+                    var nestedModules = cmdletResult.Where(c => c.ToString().StartsWith(".")).Select(c => c.ToString().Substring(2));
+                    var requiredModules = cmdletResult.Where(c => !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
 
-                    if (nestedModules.Any())
+                    if (!nestedModules.Any()) continue;
+
+                    Directory.SetCurrentDirectory(directory);
+
+                    requiredModules = requiredModules.Join(cmdletProbingDirs,
+                            module => 1,
+                            dir => 1,
+                            (module, dir) => Path.Combine(dir, module))
+                        .Where(Directory.Exists)
+                        .ToList();
+
+                    requiredModules.Add(directory);
+
+                    foreach (var nestedModule in nestedModules)
                     {
-                        Directory.SetCurrentDirectory(directory);
+                        var assemblyFile = Directory.GetFiles(parentDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
+                        var assemblyFileName = Path.GetFileName(assemblyFile);
+                        if (!File.Exists(assemblyFile)) continue;
 
-                        requiredModules = requiredModules.Join(cmdletProbingDirs,
-                                                               module => 1,
-                                                               dir => 1,
-                                                               (module, dir) => Path.Combine(dir, module))
-                                                          .Where(f => Directory.Exists(f))
-                                                          .ToList();
+                        issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = assemblyFileName, "AssemblyFileName");
+                        processedHelpFiles.Add(assemblyFileName);
+// TODO: Remove IfDef
+#if NETSTANDARD
+                        var proxy = new CmdletLoader();
+#else
+                        var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+#endif
+                        var newModuleMetadata = proxy.GetModuleMetadata(assemblyFile, requiredModules);
 
-                        requiredModules.Add(directory);
+                        var fileName = assemblyFileName + ".json";
+                        var executingPath =
+                            Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
 
-                        foreach (var nestedModule in nestedModules)
+                        var filePath = executingPath + "\\SerializedCmdlets\\" + fileName;
+                        if (!File.Exists(filePath))
                         {
-                            var assemblyFile = Directory.GetFiles(parentDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
-                            var assemblyFileName = Path.GetFileName(assemblyFile);
-                            if (File.Exists(assemblyFile))
-                            {
-                                issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = assemblyFileName, "AssemblyFileName");
-                                processedHelpFiles.Add(assemblyFileName);
-                                var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
-                                var newModuleMetadata = proxy.GetModuleMetadata(assemblyFile, requiredModules);
-
-                                string fileName = assemblyFileName + ".json";
-                                string executingPath =
-                                    Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
-
-                                string filePath = executingPath + "\\SerializedCmdlets\\" + fileName;
-                                bool serialize = false;
-
-                                if (serialize)
-                                {
-                                    SerializeCmdlets(filePath, newModuleMetadata);
-                                }
-                                else
-                                {
-                                    if (!File.Exists(filePath))
-                                    {
-                                        continue;
-                                    }
-
-                                    var oldModuleMetadata = DeserializeCmdlets(filePath);
-
-                                    if (cmdletFilter != null)
-                                    {
-                                        string output = string.Format("Before filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
-                                            oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
-
-                                        output += string.Format("\nCmdlet file: {0}", assemblyFileName);
-
-                                        oldModuleMetadata.FilterCmdlets(cmdletFilter);
-                                        newModuleMetadata.FilterCmdlets(cmdletFilter);
-
-                                        output += string.Format("After filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
-                                            oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
-
-                                        foreach (var cmdlet in oldModuleMetadata.Cmdlets)
-                                        {
-                                            output += string.Format("\n\tOld cmdlet - {0}", cmdlet.Name);
-                                        }
-
-                                        foreach (var cmdlet in newModuleMetadata.Cmdlets)
-                                        {
-                                            output += string.Format("\n\tNew cmdlet - {0}", cmdlet.Name);
-                                        }
-
-                                        issueLogger.WriteMessage(output + Environment.NewLine);
-                                    }
-
-                                    RunBreakingChangeChecks(oldModuleMetadata, newModuleMetadata, issueLogger);
-                                }
-
-                                AppDomain.Unload(_appDomain);
-                            }
+                            continue;
                         }
+
+                        var oldModuleMetadata = DeserializeCmdlets(filePath);
+
+                        if (cmdletFilter != null)
+                        {
+                            var output = string.Format("Before filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
+                                oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
+
+                            output += string.Format("\nCmdlet file: {0}", assemblyFileName);
+
+                            oldModuleMetadata.FilterCmdlets(cmdletFilter);
+                            newModuleMetadata.FilterCmdlets(cmdletFilter);
+
+                            output += string.Format("After filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
+                                oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
+
+                            foreach (var cmdlet in oldModuleMetadata.Cmdlets)
+                            {
+                                output += string.Format("\n\tOld cmdlet - {0}", cmdlet.Name);
+                            }
+
+                            foreach (var cmdlet in newModuleMetadata.Cmdlets)
+                            {
+                                output += string.Format("\n\tNew cmdlet - {0}", cmdlet.Name);
+                            }
+
+                            issueLogger.WriteMessage(output + Environment.NewLine);
+                        }
+
+                        RunBreakingChangeChecks(oldModuleMetadata, newModuleMetadata, issueLogger);
+// TODO: Remove IfDef code
+#if !NETSTANDARD
+                        AppDomain.Unload(_appDomain);
+#endif
                     }
                 }
             }
@@ -204,7 +220,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="cmdlets">List of cmdlets that are to be serialized.</param>
         private void SerializeCmdlets(string fileName, ModuleMetadata moduleMetadata)
         {
-            string json = JsonConvert.SerializeObject(moduleMetadata, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(moduleMetadata, Formatting.Indented);
             File.WriteAllText(fileName, json);
         }
 
@@ -213,7 +229,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// </summary>
         /// <param name="fileName">Name of the file we are to deserialize the cmdlets from.</param>
         /// <returns></returns>
-        private ModuleMetadata DeserializeCmdlets(string fileName)
+        private static ModuleMetadata DeserializeCmdlets(string fileName)
         {
            return JsonConvert.DeserializeObject<ModuleMetadata>(File.ReadAllText(fileName));
         }
@@ -238,10 +254,10 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             var newTypeDictionary = newModuleMetadata.TypeDictionary;
 
             // Initialize a TypeMetadataHelper object that knows how to compare types
-            TypeMetadataHelper typeMetadataHelper = new TypeMetadataHelper(oldTypeDictionary, newTypeDictionary);
+            var typeMetadataHelper = new TypeMetadataHelper(oldTypeDictionary, newTypeDictionary);
 
             // Initialize a CmdletMetadataHelper object that knows how to compare cmdlets
-            CmdletMetadataHelper cmdletMetadataHelper = new CmdletMetadataHelper(typeMetadataHelper);
+            var cmdletMetadataHelper = new CmdletMetadataHelper(typeMetadataHelper);
 
             // Compare the cmdlet metadata
             cmdletMetadataHelper.CompareCmdletMetadata(oldCmdlets, newCmdlets, issueLogger);
@@ -249,14 +265,13 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
         public AnalysisReport GetAnalysisReport()
         {
-            AnalysisReport analysisReport = new AnalysisReport();
-            ReportLogger reportLog = Logger.GetReportLogger(BreakingChangeIssueReportLoggerName);
-            if (reportLog.Records.Any())
+            var analysisReport = new AnalysisReport();
+            var reportLog = Logger.GetReportLogger(BreakingChangeIssueReportLoggerName);
+            if (!reportLog.Records.Any()) return analysisReport;
+
+            foreach (var rec in reportLog.Records)
             {
-                foreach (IReportRecord rec in reportLog.Records)
-                {
-                    analysisReport.ProblemIdList.Add(rec.ProblemId);
-                }
+                analysisReport.ProblemIdList.Add(rec.ProblemId);
             }
 
             return analysisReport;

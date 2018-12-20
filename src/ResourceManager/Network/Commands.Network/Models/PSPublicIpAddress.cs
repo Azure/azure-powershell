@@ -16,9 +16,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSPublicIpAddress : PSTopLevelResource
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PublicIpAllocationMethod { get; set; }
 
         public PSPublicIpAddressSku Sku { get; set; }
@@ -29,15 +31,21 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSPublicIpTag> IpTags {get; set;}
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string IpAddress { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PublicIpAddressVersion { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? IdleTimeoutInMinutes { get; set; }
 
         public List<string> Zones { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+
+        public PSResourceId PublicIpPrefix { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationText
@@ -61,6 +69,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string SkuText
         {
             get { return JsonConvert.SerializeObject(Sku, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string PublicIpPrefixText
+        {
+            get { return JsonConvert.SerializeObject(PublicIpPrefix, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

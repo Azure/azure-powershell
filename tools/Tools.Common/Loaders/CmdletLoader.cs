@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,11 +23,14 @@ using System.IO;
 
 namespace Tools.Common.Loaders
 {
+// TODO: Remove IfDef
+#if NETSTANDARD
+    public class CmdletLoader
+#else
     public class CmdletLoader : MarshalByRefObject
+#endif
     {
         public static ModuleMetadata ModuleMetadata;
-
-        private static IDictionary<string, Assembly> _assemblyDictionary = null;
 
         public ModuleMetadata GetModuleMetadata(string assemblyPath, List<string> commonOutputFolders)
         {
@@ -37,7 +39,7 @@ namespace Tools.Common.Loaders
                 foreach (var commonOutputFolder in commonOutputFolders)
                 {
                     var assemblyName = args.Name.Substring(0, args.Name.IndexOf(","));
-                    var dll = Directory.GetFiles(commonOutputFolder, "*.dll").Where(f => Path.GetFileNameWithoutExtension(f) == assemblyName).FirstOrDefault();
+                    var dll = Directory.GetFiles(commonOutputFolder, "*.dll").FirstOrDefault(f => Path.GetFileNameWithoutExtension(f) == assemblyName);
                     if (dll == null)
                     {
                         continue;
@@ -59,7 +61,7 @@ namespace Tools.Common.Loaders
         /// <returns>ModuleMetadata containing information about the cmdlets found in the given assembly.</returns>
         public ModuleMetadata GetModuleMetadata(string assemblyPath)
         {
-            List<CmdletMetadata> results = new List<CmdletMetadata>();
+            var results = new List<CmdletMetadata>();
 
             ModuleMetadata = new ModuleMetadata();
             try
@@ -102,7 +104,7 @@ namespace Tools.Common.Loaders
                         }
                     }
 
-                    List<Parameter> globalParameters = new List<Parameter>();
+                    var globalParameters = new List<Parameter>();
 
                     foreach (var parameter in parameters)
                     {
@@ -143,17 +145,14 @@ namespace Tools.Common.Loaders
 
                         foreach (var parameterSet in parameter.GetAttributes<ParameterAttribute>())
                         {
-                            var parameterSetMetadata = cmdletMetadata.ParameterSets.FirstOrDefault(s => s.Name.Equals(parameterSet.ParameterSetName));
-
-                            if (parameterSetMetadata == null)
-                            {
-                                parameterSetMetadata = new Models.ParameterSetMetadata()
+                            var parameterSetMetadata = 
+                                cmdletMetadata.ParameterSets.FirstOrDefault(s => s.Name.Equals(parameterSet.ParameterSetName))
+                                ?? new Models.ParameterSetMetadata
                                 {
                                     Name = parameterSet.ParameterSetName ?? "__AllParameterSets"
                                 };
-                            }
 
-                            Parameter param = new Parameter
+                            var param = new Parameter
                             {
                                 ParameterMetadata = parameterData,
                                 Mandatory = parameterSet.Mandatory,
@@ -193,11 +192,9 @@ namespace Tools.Common.Loaders
                         }
                     }
 
-                    if (!cmdletMetadata.ParameterSets
-                                        .Where(p => p.Name.Equals(cmdletMetadata.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase))
-                                        .Any())
+                    if (!cmdletMetadata.ParameterSets.Any(p => p.Name.Equals(cmdletMetadata.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase)))
                     {
-                        var defaultSet = new Models.ParameterSetMetadata()
+                        var defaultSet = new Models.ParameterSetMetadata
                         {
                             Name = cmdletMetadata.DefaultParameterSetName
                         };

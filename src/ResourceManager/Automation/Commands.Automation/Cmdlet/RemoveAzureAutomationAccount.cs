@@ -25,23 +25,23 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes azure automation accounts, filterd by automation account name and location.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationAccount", SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationAccount", SupportsShouldProcess = true)]
     [OutputType(typeof(AutomationAccount))]
     public class RemoveAzureAutomationAccount : ResourceManager.Common.AzureRMCmdlet
     {
         /// <summary>
         /// The automation client.
         /// </summary>
-        private IAutomationClient automationClient;
+        private IAutomationPSClient automationClient;
 
         /// <summary>
         /// Gets or sets the automation client base.
         /// </summary>
-        public IAutomationClient AutomationClient
+        public IAutomationPSClient AutomationClient
         {
             get
             {
-                return this.automationClient = this.automationClient ?? new AutomationClient(DefaultProfile.DefaultContext);
+                return this.automationClient = this.automationClient ?? new AutomationPSClient(DefaultProfile.DefaultContext);
             }
 
             set

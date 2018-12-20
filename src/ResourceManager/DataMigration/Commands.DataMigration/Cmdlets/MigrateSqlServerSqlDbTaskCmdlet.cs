@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public class MigrateSqlServerSqlDbTaskCmdlet : TaskCmdlet
+    public class MigrateSqlServerSqlDbTaskCmdlet : TaskCmdlet<ConnectionInfo>
     {
         private readonly string SchemaValidation = "SchemaValidation";
         private readonly string DataIntegrityValidation = "DataIntegrityValidation";
@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             this.SimpleParam(SchemaValidation, typeof(SwitchParameter), "Allows to compare the schema information between source and target.");
             this.SimpleParam(DataIntegrityValidation, typeof(SwitchParameter), "Allows to perform a checksum based data integrity validation between source and target.");
             this.SimpleParam(QueryAnalysisValidation, typeof(SwitchParameter), "Allows to perform a quick and intelligent query analysis by retrieving queries from the source database and executes them in the target.");
-            this.SimpleParam(SelectedDatabase, typeof(MigrateSqlServerSqlDbDatabaseInput[]), "Selected database to migrate", true);
+            this.SimpleParam(SelectedDatabase, typeof(MigrateSqlServerSqlDbDatabaseInput[]), "Selected database to migrate", true, true);
         }
 
         public override ProjectTaskProperties ProcessTaskCmdlet()
         {
             MigrateSqlServerSqlDbTaskProperties properties = new MigrateSqlServerSqlDbTaskProperties();
-
+ 
             SqlConnectionInfo source = new SqlConnectionInfo();
             SqlConnectionInfo target = new SqlConnectionInfo();
 

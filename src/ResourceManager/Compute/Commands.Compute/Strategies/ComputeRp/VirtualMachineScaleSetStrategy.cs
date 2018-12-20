@@ -48,9 +48,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string vmSize,
             int instanceCount,
             VirtualMachineScaleSetIdentity identity,
+            Boolean singlePlacementGroup,
             UpgradeMode? upgradeMode,
             IEnumerable<int> dataDisks,
-            IList<string> zones)
+            IList<string> zones,
+            bool ultraSSDEnabled)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -67,8 +69,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         Name = vmSize,
                     },
                     Identity = identity,
+                    SinglePlacementGroup = singlePlacementGroup,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                     {
+                        AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
                         OsProfile = new VirtualMachineScaleSetOSProfile
                         {
                             ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),

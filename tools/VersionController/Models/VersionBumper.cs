@@ -131,6 +131,10 @@ namespace VersionController.Models
             {
                 var serializedCmdletName = nestedModule + ".dll.json";
                 var serializedCmdletFile = Directory.GetFiles(serializedCmdletsDirectory, serializedCmdletName).FirstOrDefault();
+                if (serializedCmdletFile == null)
+                {
+                    continue;
+                }
                 var file = File.ReadAllLines(serializedCmdletFile);
                 var pattern = nestedModule + @"(\s*),(\s*)Version(\s*)=(\s*)" + _oldVersion;
                 var updatedFile = file.Select(l => Regex.Replace(l, pattern, nestedModule + ", Version=" + _newVersion));
@@ -178,7 +182,7 @@ namespace VersionController.Models
         }
 
         /// <summary>
-        /// Get the releases notes for the current release from a change log.
+        /// Get the releases notes for the upcoming release from a change log.
         /// </summary>
         /// <returns>List of non-empty strings representing the lines of the release notes.</returns>
         private List<string> GetReleaseNotes()
@@ -197,13 +201,15 @@ namespace VersionController.Models
                 releaseNotes.Add(file[idx]);
             }
 
-            return releaseNotes.Where(l => !string.IsNullOrWhiteSpace(l)).Select(l => l.Replace("`", "'")).ToList();
+            return releaseNotes.Where(l => !string.IsNullOrWhiteSpace(l))
+                                                .Select(l => l.Replace("`", "'"))
+                                                .Select(l => l.Replace("\"", "'")).ToList();
         }
 
         /// <summary>
         /// Update the module version and release notes for a module manifest file.
         /// </summary>
-        /// <param name="releaseNotes">Release notes for the current release from the change log.</param>
+        /// <param name="releaseNotes">Release notes for the upcoming release from the change log.</param>
         private void UpdateOutputModuleManifest(List<string> releaseNotes)
         {
             var moduleName = _fileHelper.ModuleName;
@@ -214,11 +220,16 @@ namespace VersionController.Models
             File.Copy(outputModuleManifestPath, tempModuleManifestPath);
             var script = "$releaseNotes = @();";
             releaseNotes.ForEach(l => script += "$releaseNotes += \"" + l + "\";");
+            script += $"$env:PSModulePath+=\";{_fileHelper.OutputResourceManagerDirectory};{_fileHelper.SrcDirectory}\\Package\\Debug\\Storage\";";
             script += "Update-ModuleManifest -Path " + tempModuleManifestPath + " -ModuleVersion " + _newVersion + " -ReleaseNotes $releaseNotes";
             using (PowerShell powershell = PowerShell.Create())
             {
                 powershell.AddScript(script);
                 var result = powershell.Invoke();
+                if (powershell.Streams.Error.Any())
+                {
+                    Console.WriteLine($"Found error in updating module {_fileHelper.ModuleName}: {powershell.Streams.Error.First().ToString()}");
+                }
             }
 
             var tempModuleContent = File.ReadAllLines(tempModuleManifestPath);
@@ -230,7 +241,7 @@ namespace VersionController.Models
         }
 
         /// <summary>
-        /// Creates a new header for the current release based on the new version.
+        /// Creates a new header for the upcoming release based on the new version.
         /// </summary>
         private void UpdateChangeLog()
         {
@@ -238,7 +249,7 @@ namespace VersionController.Models
             var file = File.ReadAllLines(changeLogPath);
             var newFile = new string[file.Length + 2];
             var idx = 0;
-            while (idx < file.Length && !file[idx].Equals("## Current Release"))
+            while (idx < file.Length && !file[idx].Equals("## Upcoming Release"))
             {
                 newFile[idx] = file[idx];
                 idx++;
@@ -310,7 +321,7 @@ namespace VersionController.Models
             var changeLogPath = _fileHelper.ChangeLogPath;
             var file = File.ReadAllLines(changeLogPath);
             var idx = 0;
-            while (idx < file.Length && !file[idx].Equals("## Current Release"))
+            while (idx < file.Length && !file[idx].Equals("## Upcoming Release"))
             {
                 idx++;
             }

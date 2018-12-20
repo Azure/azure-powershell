@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.MarketplaceOrdering;
 
 namespace Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmMarketplaceTerms", DefaultParameterSetName = Constants.ParameterSetNames.AgreementAcceptParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAgreementTerms))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MarketplaceTerms", DefaultParameterSetName = Constants.ParameterSetNames.AgreementAcceptParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAgreementTerms))]
     public class SetAzureRmMarketplaceTerms : AzureMarketplaceOrderingCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Publisher identifier string of image being deployed.", ParameterSetName = Constants.ParameterSetNames.AgreementAcceptParameterSet)]
@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements
         [ValidateNotNullOrEmpty]
         public SwitchParameter Reject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Terms object returned in Get-AzureRmMarketplaceTerms cmdlet. This is a mandatory parameter if you accept the legal terms.", ParameterSetName = Constants.ParameterSetNames.AgreementAcceptParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "Terms object returned in Get-AzureRmMarketplaceTerms cmdlet. This is a mandatory parameter if you accept the legal terms.", ParameterSetName = Constants.ParameterSetNames.AgreementRejectParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if you accept the legal terms.", ParameterSetName = Constants.ParameterSetNames.AgreementAcceptParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if you accept the legal terms.", ParameterSetName = Constants.ParameterSetNames.AgreementRejectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSAgreementTerms Terms { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "Terms object returned in Get-AzureRmMarketplaceTerms cmdlet. This is a mandatory parameter if Accept paramter is true.", ParameterSetName = Constants.ParameterSetNames.InputObjectAcceptParametrSet)]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "Terms object returned in Get-AzureRmMarketplaceTerms cmdlet. This is a mandatory parameter if Accept paramter is true.", ParameterSetName = Constants.ParameterSetNames.InputObjectRejectParametrSet)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if Accept paramter is true.", ParameterSetName = Constants.ParameterSetNames.InputObjectAcceptParametrSet)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if Accept paramter is true.", ParameterSetName = Constants.ParameterSetNames.InputObjectRejectParametrSet)]
         [ValidateNotNullOrEmpty]
         public PSAgreementTerms InputObject { get; set; }
 

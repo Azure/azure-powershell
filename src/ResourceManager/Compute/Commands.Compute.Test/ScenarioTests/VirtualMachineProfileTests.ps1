@@ -66,7 +66,11 @@ function Test-VirtualMachineProfile
     $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
 
     # Managed data disk setting
-    $managedDataDiskId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rggroup/providers/Microsoft.Compute/disks/dataDisk";
+    $managedDataDiskId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rggroup/providers/Microsoft.Compute/disks/testDataDisk3";
+    Assert-ThrowsContains `
+        { Add-AzureRmVMDataDisk -VM $p -Name 'dataDisk' -Caching 'ReadOnly' -DiskSizeInGB $null -Lun 2 -CreateOption Empty -ManagedDiskId $managedDataDiskId -StorageAccountType Standard_LRS; } `
+        "does not match with given managed disk ID";
+
     $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB $null -Lun 2 -CreateOption Empty -ManagedDiskId $managedDataDiskId -StorageAccountType Standard_LRS;
     Assert-AreEqual $managedDataDiskId $p.StorageProfile.DataDisks[2].ManagedDisk.Id;
     Assert-AreEqual "Standard_LRS" $p.StorageProfile.DataDisks[2].ManagedDisk.StorageAccountType;
@@ -88,13 +92,13 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 0;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
-    Assert-AreEqual $false $p.StorageProfile.DataDisks[0].WriteAcceleratorEnabled;
+    Assert-Null $p.StorageProfile.DataDisks[0].WriteAcceleratorEnabled;
 
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
-    Assert-AreEqual $false $p.StorageProfile.DataDisks[1].WriteAcceleratorEnabled;
+    Assert-Null $p.StorageProfile.DataDisks[1].WriteAcceleratorEnabled;
 
     # Remove all data disks
     $p = $p | Remove-AzureRmVMDataDisk;
@@ -123,14 +127,16 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $managedOsDiskId_0 $p.StorageProfile.OSDisk.ManagedDisk.Id;
     Assert-AreEqual "Standard_LRS" $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
     Assert-AreEqual $true $p.StorageProfile.OSDisk.WriteAcceleratorEnabled;
+    Assert-Null $p.StorageProfile.OSDisk.DiffDiskSettings;
 
-    $p = Set-AzureRmVMOsDisk -VM $p -ManagedDiskId $managedOsDiskId_1;
+    $p = Set-AzureRmVMOsDisk -VM $p -ManagedDiskId $managedOsDiskId_1 -DiffDiskSetting "Local";
     Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
     Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
     Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
     Assert-AreEqual $managedOsDiskId_1 $p.StorageProfile.OSDisk.ManagedDisk.Id;
-    Assert-AreEqual "Standard_LRS" $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
+    Assert-Null $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
     Assert-AreEqual $false $p.StorageProfile.OSDisk.WriteAcceleratorEnabled;
+    Assert-AreEqual "Local" $p.StorageProfile.OSDisk.DiffDiskSettings.Option;
 
     # Windows OS
     $user = "Foo12";
@@ -266,7 +272,10 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $sshPath $p.OSProfile.LinuxConfiguration.Ssh.PublicKeys[0].Path;
     Assert-AreEqual $sshPublicKey $p.OSProfile.LinuxConfiguration.Ssh.PublicKeys[1].KeyData;
     Assert-AreEqual $sshPath $p.OSProfile.LinuxConfiguration.Ssh.PublicKeys[1].Path;
-    Assert-AreEqual $true $p.OSProfile.LinuxConfiguration.DisablePasswordAuthentication
+    Assert-AreEqual $true $p.OSProfile.LinuxConfiguration.DisablePasswordAuthentication;
+
+    # AdditionalCapabilities
+    Assert-Null $p.AdditionalCapabilities;
 }
 
 <#
@@ -278,8 +287,9 @@ function Test-VirtualMachineProfileWithoutAUC
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
     $vmname = 'pstestvm' + ((Get-Random) % 10000);
-    $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
+    $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize -EnableUltraSSD;
     Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+    Assert-True { $p.AdditionalCapabilities.UltraSSDEnabled };
 
     # Network
     $ipname = 'hpfip' + ((Get-Random) % 10000);

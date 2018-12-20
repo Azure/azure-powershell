@@ -79,7 +79,7 @@ function TestSetup-CreateProfile($profileName, $resourceGroupName, $routingMetho
 {
 	$relativeName = getAssetName
 
-	$profile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod $routingMethod -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+	$profile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod $routingMethod -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" -ProfileStatus "Enabled"
 
 	return $profile
 }

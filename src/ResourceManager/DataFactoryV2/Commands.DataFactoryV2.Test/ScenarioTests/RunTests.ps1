@@ -77,7 +77,7 @@ function Test-CancelRunNegative
         Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
         
         $Run = "someGuid"
-        Assert-ThrowsContains { Stop-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $rgname -DataFactoryName $dfname -PipelineRunId $Run } "Pipeline run does not exist" 
+        Assert-ThrowsContains { Stop-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $rgname -DataFactoryName $dfname -PipelineRunId $Run } "ReferencedPipelineRunNotFound" 
     }
     finally
     {

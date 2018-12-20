@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkWatcherConnectionMonitorReport", DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorQueryResult))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorReport", DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorQueryResult))]
 
     public class GetAzureNetworkWatcherConnectionMonitorReportCommand : ConnectionMonitorBaseCmdlet
     {
@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
+        [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
@@ -87,6 +88,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The connection monitor name.",
             ParameterSetName = "SetByLocation")]
+        [ResourceNameCompleter("Microsoft.Network/networkWatchers/connectionMonitors", "ResourceGroupName", "NetworkWatcherName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

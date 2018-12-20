@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0wOC0wMS43LjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"taskCrudJob\",\r\n  \"priority\": 0,\r\n  \"poolInfo\": {\r\n    \"poolId\": \"testPool\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -13,32 +13,32 @@
           "94"
         ],
         "client-request-id": [
-          "6afd82e6-83b2-460b-94c8-50e39aa345f1"
+          "d22f4a6e-b420-4cf1-8439-b783c2c62011"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:10:36 GMT"
+          "Mon, 24 Sep 2018 22:04:24 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:10:36 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "a0c23b0e-c84b-4ad6-9972-32f716fcf5b3"
+          "bc727045-e668-4c25-a46d-630efc4b040e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -53,10 +53,10 @@
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/job-1"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:10:36 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "ETag": [
-          "0x8D50C67D0F7041B"
+          "0x8D62269B0C2E90D"
         ],
         "Location": [
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/job-1"
@@ -68,8 +68,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3M/YXBpLXZlcnNpb249MjAxOC0wOC0wMS43LjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"task1\",\r\n  \"commandLine\": \"cmd /c echo task1\"\r\n}",
       "RequestHeaders": {
@@ -80,32 +80,32 @@
           "60"
         ],
         "client-request-id": [
-          "155af7ea-e58a-43dd-af4f-b88765c16ff5"
+          "b2339cbd-18f8-4b6e-9cc9-73c8df4a14f6"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:10:36 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:10:37 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "df49d1ce-4573-466b-93cc-2b24041e1bca"
+          "78c5bf48-6e57-45e8-ac64-993b5fae4d57"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -120,10 +120,10 @@
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/taskCrudJob/tasks/task1"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:10:36 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "ETag": [
-          "0x8D50C67D104D823"
+          "0x8D62269B0F930B5"
         ],
         "Location": [
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/taskCrudJob/tasks/task1"
@@ -135,8 +135,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3M/YXBpLXZlcnNpb249MjAxOC0wOC0wMS43LjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"task2\",\r\n  \"commandLine\": \"cmd /c echo task2\"\r\n}",
       "RequestHeaders": {
@@ -147,32 +147,32 @@
           "60"
         ],
         "client-request-id": [
-          "252f6f5e-d3f4-4e11-aa41-5f00d4267cd8"
+          "b73cadcb-97b6-4240-87f0-9aa6480c9c3a"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:10:37 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:10:37 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "08b9f842-1c9f-4a4c-b6d8-4a891adcaadc"
+          "c838edce-387d-4cad-be23-5016304fdca7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -187,10 +187,10 @@
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/taskCrudJob/tasks/task2"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:10:36 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "ETag": [
-          "0x8D50C67D1152A0E"
+          "0x8D62269B105969A"
         ],
         "Location": [
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/taskCrudJob/tasks/task2"
@@ -202,29 +202,29 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2017-09-01.6.0&$filter=id%20eq%20'task1'%20or%20id%20eq%20'task2'",
-      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3dGFzazElMjclMjBvciUyMGlkJTIwZXElMjAlMjd0YXNrMiUyNw==",
+      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2018-08-01.7.0&$filter=id%20eq%20'task1'%20or%20id%20eq%20'task2'",
+      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3M/YXBpLXZlcnNpb249MjAxOC0wOC0wMS43LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3dGFzazElMjclMjBvciUyMGlkJTIwZXElMjAlMjd0YXNrMiUyNw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "cdf381c3-6864-4324-8a53-c5ac1c645381"
+          "3d62a7a5-aec8-43e8-9dcf-976417c85316"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:10:37 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"task1\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/taskCrudJob/tasks/task1\",\r\n      \"eTag\": \"0x8D50C67D104D823\",\r\n      \"creationTime\": \"2017-10-06T03:10:37.0713635Z\",\r\n      \"lastModified\": \"2017-10-06T03:10:37.0713635Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:10:37.0713635Z\",\r\n      \"commandLine\": \"cmd /c echo task1\",\r\n      \"userIdentity\": {\r\n        \"autoUser\": {\r\n          \"elevationLevel\": \"nonadmin\"\r\n        }\r\n      },\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"executionInfo\": {\r\n        \"retryCount\": 0,\r\n        \"requeueCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"task2\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/taskCrudJob/tasks/task2\",\r\n      \"eTag\": \"0x8D50C67D1152A0E\",\r\n      \"creationTime\": \"2017-10-06T03:10:37.1783182Z\",\r\n      \"lastModified\": \"2017-10-06T03:10:37.1783182Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:10:37.1783182Z\",\r\n      \"commandLine\": \"cmd /c echo task2\",\r\n      \"userIdentity\": {\r\n        \"autoUser\": {\r\n          \"elevationLevel\": \"nonadmin\"\r\n        }\r\n      },\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"executionInfo\": {\r\n        \"retryCount\": 0,\r\n        \"requeueCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"task1\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/taskCrudJob/tasks/task1\",\r\n      \"eTag\": \"0x8D62269B0F930B5\",\r\n      \"creationTime\": \"2018-09-24T22:04:25.5535285Z\",\r\n      \"lastModified\": \"2018-09-24T22:04:25.5535285Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-09-24T22:04:25.5535285Z\",\r\n      \"commandLine\": \"cmd /c echo task1\",\r\n      \"userIdentity\": {\r\n        \"autoUser\": {\r\n          \"elevationLevel\": \"nonadmin\"\r\n        }\r\n      },\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"executionInfo\": {\r\n        \"retryCount\": 0,\r\n        \"requeueCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"task2\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/taskCrudJob/tasks/task2\",\r\n      \"eTag\": \"0x8D62269B105969A\",\r\n      \"creationTime\": \"2018-09-24T22:04:25.6347802Z\",\r\n      \"lastModified\": \"2018-09-24T22:04:25.6347802Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-09-24T22:04:25.6347802Z\",\r\n      \"commandLine\": \"cmd /c echo task2\",\r\n      \"userIdentity\": {\r\n        \"autoUser\": {\r\n          \"elevationLevel\": \"nonadmin\"\r\n        }\r\n      },\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"executionInfo\": {\r\n        \"retryCount\": 0,\r\n        \"requeueCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -233,7 +233,7 @@
           "chunked"
         ],
         "request-id": [
-          "c0d098e4-d05e-4514-80df-7a672e42cbcf"
+          "a2d3238b-6b5d-485f-bb5f-6c8524fc4859"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -245,7 +245,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:10:36 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -254,8 +254,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks/task2?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3MvdGFzazI/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs/taskCrudJob/tasks/task2?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3MvdGFzazI/YXBpLXZlcnNpb249MjAxOC0wOC0wMS43LjA=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"constraints\": {\r\n    \"maxTaskRetryCount\": 3\r\n  }\r\n}",
       "RequestHeaders": {
@@ -266,32 +266,32 @@
           "57"
         ],
         "client-request-id": [
-          "14e2f3e5-7de1-45d3-9f1e-c2c5a4137e5e"
+          "0161918b-fa60-4081-b722-ccb323b4b59f"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:10:37 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:10:37 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "12b2d7f0-c8bd-45d6-a119-ce6ee76580a9"
+          "6e0628ae-a974-4d4b-8b78-2de7f0745e56"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -306,10 +306,10 @@
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/taskCrudJob/tasks/task2"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:10:36 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "ETag": [
-          "0x8D50C67D14A1F37"
+          "0x8D62269B1287272"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -318,41 +318,41 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks/task2?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3MvdGFzazI/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs/taskCrudJob/tasks/task2?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3MvdGFzazI/YXBpLXZlcnNpb249MjAxOC0wOC0wMS43LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "9569ab02-fc69-4b4f-b968-ec7f2d56f940"
+          "532469a9-105d-4e9a-8dae-2c4fcdde337c"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:10:37 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"task2\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/taskCrudJob/tasks/task2\",\r\n  \"eTag\": \"0x8D50C67D14A1F37\",\r\n  \"creationTime\": \"2017-10-06T03:10:37.1783182Z\",\r\n  \"lastModified\": \"2017-10-06T03:10:37.5253815Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:10:37.1783182Z\",\r\n  \"commandLine\": \"cmd /c echo task2\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"elevationLevel\": \"nonadmin\"\r\n    }\r\n  },\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 3\r\n  },\r\n  \"executionInfo\": {\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"task2\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/taskCrudJob/tasks/task2\",\r\n  \"eTag\": \"0x8D62269B1287272\",\r\n  \"creationTime\": \"2018-09-24T22:04:25.6347802Z\",\r\n  \"lastModified\": \"2018-09-24T22:04:25.8632306Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2018-09-24T22:04:25.6347802Z\",\r\n  \"commandLine\": \"cmd /c echo task2\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"elevationLevel\": \"nonadmin\"\r\n    }\r\n  },\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 3\r\n  },\r\n  \"executionInfo\": {\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:10:37 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "d6aa0c10-5ad9-42d8-9d63-4d358b546686"
+          "40d4a352-ff90-496f-a003-c5cbfd111a25"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -364,10 +364,10 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:10:36 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "ETag": [
-          "0x8D50C67D14A1F37"
+          "0x8D62269B1287272"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -376,29 +376,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3M/YXBpLXZlcnNpb249MjAxOC0wOC0wMS43LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "6b1949bb-be22-44be-a65f-d6aa6dd27c68"
+          "f76227c8-33b0-408c-ae84-bb7a670127df"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:10:37 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"task1\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/taskCrudJob/tasks/task1\",\r\n      \"eTag\": \"0x8D50C67D104D823\",\r\n      \"creationTime\": \"2017-10-06T03:10:37.0713635Z\",\r\n      \"lastModified\": \"2017-10-06T03:10:37.0713635Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:10:37.0713635Z\",\r\n      \"commandLine\": \"cmd /c echo task1\",\r\n      \"userIdentity\": {\r\n        \"autoUser\": {\r\n          \"elevationLevel\": \"nonadmin\"\r\n        }\r\n      },\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"executionInfo\": {\r\n        \"retryCount\": 0,\r\n        \"requeueCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"task2\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/taskCrudJob/tasks/task2\",\r\n      \"eTag\": \"0x8D50C67D14A1F37\",\r\n      \"creationTime\": \"2017-10-06T03:10:37.1783182Z\",\r\n      \"lastModified\": \"2017-10-06T03:10:37.5253815Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:10:37.1783182Z\",\r\n      \"commandLine\": \"cmd /c echo task2\",\r\n      \"userIdentity\": {\r\n        \"autoUser\": {\r\n          \"elevationLevel\": \"nonadmin\"\r\n        }\r\n      },\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 3\r\n      },\r\n      \"executionInfo\": {\r\n        \"retryCount\": 0,\r\n        \"requeueCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"task1\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/taskCrudJob/tasks/task1\",\r\n      \"eTag\": \"0x8D62269B0F930B5\",\r\n      \"creationTime\": \"2018-09-24T22:04:25.5535285Z\",\r\n      \"lastModified\": \"2018-09-24T22:04:25.5535285Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-09-24T22:04:25.5535285Z\",\r\n      \"commandLine\": \"cmd /c echo task1\",\r\n      \"userIdentity\": {\r\n        \"autoUser\": {\r\n          \"elevationLevel\": \"nonadmin\"\r\n        }\r\n      },\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 0\r\n      },\r\n      \"executionInfo\": {\r\n        \"retryCount\": 0,\r\n        \"requeueCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"task2\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/taskCrudJob/tasks/task2\",\r\n      \"eTag\": \"0x8D62269B1287272\",\r\n      \"creationTime\": \"2018-09-24T22:04:25.6347802Z\",\r\n      \"lastModified\": \"2018-09-24T22:04:25.8632306Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-09-24T22:04:25.6347802Z\",\r\n      \"commandLine\": \"cmd /c echo task2\",\r\n      \"userIdentity\": {\r\n        \"autoUser\": {\r\n          \"elevationLevel\": \"nonadmin\"\r\n        }\r\n      },\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n        \"maxTaskRetryCount\": 3\r\n      },\r\n      \"executionInfo\": {\r\n        \"retryCount\": 0,\r\n        \"requeueCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -407,7 +407,7 @@
           "chunked"
         ],
         "request-id": [
-          "0112bf7f-c593-4b87-b159-ae88c0994adc"
+          "ee49de19-bc15-4613-8088-53641b5200b7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -419,7 +419,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:10:36 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -428,26 +428,26 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3M/YXBpLXZlcnNpb249MjAxOC0wOC0wMS43LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "51895045-8667-442b-bfa5-b60799aaca83"
+          "998d47db-31bc-417b-a54a-31881b82b561"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:10:37 GMT"
+          "Mon, 24 Sep 2018 22:04:26 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
         ]
       },
       "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": []\r\n}",
@@ -459,7 +459,7 @@
           "chunked"
         ],
         "request-id": [
-          "6bdae69e-a119-424d-9ae1-0bbb3fb310ac"
+          "9a40d82f-13bf-4ea9-97ff-b140dd898fff"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -471,7 +471,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:10:36 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -480,26 +480,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks/task1?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3MvdGFzazE/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs/taskCrudJob/tasks/task1?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3MvdGFzazE/YXBpLXZlcnNpb249MjAxOC0wOC0wMS43LjA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
+        "Content-Length": [
+          "0"
+        ],
         "client-request-id": [
-          "a730321d-135d-4cce-be15-995877d09b09"
+          "06efd886-2f36-4007-8b9e-7d26ea4dde11"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:10:37 GMT"
+          "Mon, 24 Sep 2018 22:04:26 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
         ]
       },
       "ResponseBody": "",
@@ -508,7 +511,7 @@
           "chunked"
         ],
         "request-id": [
-          "84464da5-1d26-4e19-8125-e3e484d2d7d8"
+          "9d985864-6c5f-4474-bf00-f8a69f957081"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -520,7 +523,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:10:36 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -529,26 +532,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks/task2?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3MvdGFzazI/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs/taskCrudJob/tasks/task2?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3MvdGFzazI/YXBpLXZlcnNpb249MjAxOC0wOC0wMS43LjA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
+        "Content-Length": [
+          "0"
+        ],
         "client-request-id": [
-          "ae385b3b-bea8-465a-af77-379d0bd893f4"
+          "ff498fc3-44da-420e-8671-7c8d664d2986"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:10:37 GMT"
+          "Mon, 24 Sep 2018 22:04:26 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
         ]
       },
       "ResponseBody": "",
@@ -557,7 +563,7 @@
           "chunked"
         ],
         "request-id": [
-          "131ceb63-76a4-44c4-87d4-339b9da467fb"
+          "c327bdfa-9703-4157-bc8f-58ba4a678a5c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -569,7 +575,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:10:36 GMT"
+          "Mon, 24 Sep 2018 22:04:25 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -578,26 +584,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/taskCrudJob?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2I/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobs/taskCrudJob?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2I/YXBpLXZlcnNpb249MjAxOC0wOC0wMS43LjA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
+        "Content-Length": [
+          "0"
+        ],
         "client-request-id": [
-          "4b4dfb0f-73ce-49d0-a19a-aa33ca60ee49"
+          "2960c821-07ea-4cde-94cc-7b3890f451ff"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:10:37 GMT"
+          "Mon, 24 Sep 2018 22:04:26 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
         ]
       },
       "ResponseBody": "",
@@ -606,7 +615,7 @@
           "chunked"
         ],
         "request-id": [
-          "83edeccb-8dca-4447-a051-0994b1612ddb"
+          "c6233b23-b5d1-47b4-b819-f63321e6c4ec"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -618,7 +627,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:10:38 GMT"
+          "Mon, 24 Sep 2018 22:04:26 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"

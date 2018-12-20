@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreFirewallRule"), OutputType(typeof(DataLakeStoreFirewallRule), typeof(IList<DataLakeStoreFirewallRule>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreFirewallRule"), OutputType(typeof(DataLakeStoreFirewallRule))]
     [Alias("Get-AdlStoreFirewallRule")]
     public class GetAzureRmDataLakeStoreFirewallRule : DataLakeStoreCmdletBase
     {

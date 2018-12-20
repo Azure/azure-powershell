@@ -18,7 +18,7 @@ Test New-AzureRmIntegrationAccountSchema command
 #>
 function Test-CreateIntegrationAccountSchema
 {
-	$schemaFilePath = "$TestOutputRoot\Resources\OrderFile.xsd"
+	$schemaFilePath = Join-Path $TestOutputRoot "\Resources\OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 	
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
@@ -48,7 +48,7 @@ Test Get-AzureRmIntegrationAccountSchema command
 #>
 function Test-GetIntegrationAccountSchema
 {
-	$schemaFilePath = "$TestOutputRoot\Resources\OrderFile.xsd"
+	$schemaFilePath = Join-Path $TestOutputRoot "\Resources\OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
@@ -77,7 +77,7 @@ Test Remove-AzureRmIntegrationAccountSchema command
 #>
 function Test-RemoveIntegrationAccountSchema
 {
-	$schemaFilePath = "$TestOutputRoot\Resources\OrderFile.xsd"
+	$schemaFilePath = Join-Path $TestOutputRoot "\Resources\OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 	
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
@@ -101,7 +101,7 @@ Test Set-AzureRmIntegrationAccountSchema command
 #>
 function Test-UpdateIntegrationAccountSchema
 {
-	$schemaFilePath = "$TestOutputRoot\Resources\OrderFile.xsd"
+	$schemaFilePath = Join-Path $TestOutputRoot "\Resources\OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 	
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
@@ -129,7 +129,7 @@ Test Get-AzureRmIntegrationAccountSchema command : Paging test
 #>
 function Test-ListIntegrationAccountSchema
 {
-	$schemaFilePath = "$TestOutputRoot\Resources\OrderFile.xsd"
+	$schemaFilePath = Join-Path $TestOutputRoot "\Resources\OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"

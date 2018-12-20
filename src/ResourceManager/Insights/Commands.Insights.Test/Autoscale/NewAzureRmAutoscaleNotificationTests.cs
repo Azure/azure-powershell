@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.Autoscale;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
         public NewAzureRmAutoscaleNotificationTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             Cmdlet = new NewAzureRmAutoscaleNotificationCommand()
             {
@@ -62,16 +62,16 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Cmdlet.ExecuteCmdlet();
 
             Cmdlet.CustomEmail = null;
-            Cmdlet.Webhook = new WebhookNotification[0];
+            Cmdlet.Webhook = new Management.Monitor.Management.Models.WebhookNotification[0];
             Assert.Throws<ArgumentException>(() => Cmdlet.ExecuteCmdlet());
 
-            var notification = new WebhookNotification
+            var notification = new Management.Monitor.Management.Models.WebhookNotification
             {
                 ServiceUri = "http://hello.com",
                 Properties = null
             };
 
-            Cmdlet.Webhook = new WebhookNotification[] { notification };
+            Cmdlet.Webhook = new Management.Monitor.Management.Models.WebhookNotification[] { notification };
             Cmdlet.ExecuteCmdlet();
 
             Cmdlet.SendEmailToSubscriptionAdministrator = true;

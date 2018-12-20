@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// <summary>
     /// Class that creates a new instance of the Sql Server Connection Info.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationConnectionInfo"), OutputType(typeof(ConnectionInfo))]
-    [Alias("New-AzureRmDmsConnInfo")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationConnectionInfo"), OutputType(typeof(ConnectionInfo))]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsConnInfo")]
     public class NewConnectionInfoCmdlet : DataMigrationCmdlet, IDynamicParameters
     {
         [Parameter(
@@ -73,6 +73,9 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                 {
                     case ServerTypeEnum.SQL:
                         this.connCmdlet = new SqlConnectionInfoCmdlet(this.MyInvocation);
+                        break;
+                    case ServerTypeEnum.MongoDb:
+                        this.connCmdlet = new MongoDbConnectionInfoCmdlet(this.MyInvocation);
                         break;
                     default:
                         throw new PSArgumentException();

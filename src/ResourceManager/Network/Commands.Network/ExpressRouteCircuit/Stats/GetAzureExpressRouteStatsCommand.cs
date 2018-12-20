@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network		
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitStats"), OutputType(typeof(PSExpressRouteCircuitStats))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitStats"), OutputType(typeof(PSExpressRouteCircuitStats))]
     public class GetAzureExpressRouteCircuitStatsCommand : NetworkBaseCmdlet		
     {	
         [Parameter(		
@@ -35,7 +35,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(		
             Mandatory = true,		
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Name of ExpressRoute Circuit")]		
+            HelpMessage = "The Name of ExpressRoute Circuit")]
+        [ResourceNameCompleter("Microsoft.Network/expressRouteCircuits", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]		
         public string ExpressRouteCircuitName { get; set; }		
 		

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Register the previewed features of a certain azure resource provider.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, "AzureRmProviderFeature", SupportsShouldProcess = true), OutputType(typeof(List<PSProviderFeature>))]
+    [Cmdlet("Register", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ProviderFeature", SupportsShouldProcess = true), OutputType(typeof(PSProviderFeature))]
     public class RegisterAzureProviderFeatureCmdlet : ProviderFeatureCmdletBase
     {
         /// <summary>

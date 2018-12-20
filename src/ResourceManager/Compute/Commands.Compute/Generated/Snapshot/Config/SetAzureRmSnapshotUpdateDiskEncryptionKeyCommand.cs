@@ -21,6 +21,7 @@
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmSnapshotUpdateDiskEncryptionKey", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotUpdateDiskEncryptionKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshotUpdate))]
     public partial class SetAzureRmSnapshotUpdateDiskEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -67,12 +68,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // EncryptionSettings
                 if (this.SnapshotUpdate.EncryptionSettings == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    this.SnapshotUpdate.EncryptionSettings = new EncryptionSettings();
                 }
                 // DiskEncryptionKey
                 if (this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey = new Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference();
+                    this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey = new KeyVaultAndSecretReference();
                 }
                 this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey.SecretUrl = this.SecretUrl;
             }
@@ -82,17 +83,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // EncryptionSettings
                 if (this.SnapshotUpdate.EncryptionSettings == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    this.SnapshotUpdate.EncryptionSettings = new EncryptionSettings();
                 }
                 // DiskEncryptionKey
                 if (this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey = new Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference();
+                    this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey = new KeyVaultAndSecretReference();
                 }
                 // SourceVault
                 if (this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey.SourceVault == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey.SourceVault = new Microsoft.Azure.Management.Compute.Models.SourceVault();
+                    this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey.SourceVault = new SourceVault();
                 }
                 this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey.SourceVault.Id = this.SourceVaultId;
             }
@@ -101,4 +102,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

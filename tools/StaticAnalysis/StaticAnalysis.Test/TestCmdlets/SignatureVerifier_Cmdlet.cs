@@ -13,6 +13,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.AddVerbWithoutSupportsShouldP
     /// Check if a cmdlet that has Verbs that require ShouldProcess has ShouldProcess parameter
     /// </summary>
     [Cmdlet(VerbsCommon.Add, "AddVerbWithoutSupportsShouldProcessParameter")]
+    [OutputType(typeof(bool))]
     public class AddVerbWithoutSupportsShouldProcessParameter : Cmdlet
     {
         /// <summary>
@@ -42,6 +43,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.AddVerbWithSupportsShouldProc
     /// Check if a cmdlet that has Verbs that require ShouldProcess has ShouldProcess parameter
     /// </summary>
     [Cmdlet(VerbsCommon.Add, "AddVerbWithSupportsShouldProcessParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
     public class AddVerbWithSupportsShouldProcessParameter : Cmdlet
     {
         /// <summary>
@@ -73,6 +75,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.ForceParameterWithoutSupports
     /// Verify if cmdlet that has Force parameter should also define SupportsShouldProcess parameter
     /// </summary>
     [Cmdlet(VerbsDiagnostic.Test, "ForceParameterWithoutSupportsShouldProcess")]
+    [OutputType(typeof(bool))]
     public class ForceParameterWithoutSupportsShouldProcess : Cmdlet
     {
         /// <summary>
@@ -108,6 +111,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.ForceParameterWithSupportsSho
     /// Verify if cmdlet that has Force parameter should also define SupportsShouldProcess parameter
     /// </summary>
     [Cmdlet(VerbsDiagnostic.Test, "ForceParameterWithSupportsShouldProcess", SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
     public class ForceParameterWithSupportsShouldProcess : Cmdlet
     {
         /// <summary>
@@ -137,6 +141,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.ConfirmImpactWithoutSupportsS
     /// Verify if cmdlet that has Force parameter should also define SupportsShouldProcess parameter
     /// </summary>
     [Cmdlet(VerbsDiagnostic.Test, "ConfirmImpactWithoutSupportsShouldProcess", ConfirmImpact = ConfirmImpact.High)]
+    [OutputType(typeof(bool))]
     public class ConfirmImpactWithoutSupportsShouldProcess : Cmdlet
     {
         /// <summary>
@@ -158,6 +163,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.ConfirmImpactWithSupportsShou
     /// Verify if cmdlet that has Force parameter should also define SupportsShouldProcess parameter
     /// </summary>
     [Cmdlet(VerbsDiagnostic.Test, "ConfirmImpactWithSupportsShouldProcess", ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
     public class ConfirmImpactWithSupportsShouldProcess : Cmdlet
     {
         /// <summary>
@@ -187,6 +193,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.ShouldContinueVerbWithForceSw
     /// Verify if cmdlet that has Force parameter should also define SupportsShouldProcess parameter
     /// </summary>
     [Cmdlet(VerbsCommon.Copy, "ShouldContinueVerbWithForceSwitch", SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
     public class ShouldContinueVerbWithForceSwitch : Cmdlet
     {
         /// <summary>
@@ -216,6 +223,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletWithApprovedVerb
     /// Verify if a cmdlet has an approved verb in its name.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "SampleCmdlet")]
+    [OutputType(typeof(bool))]
     public class CmdletWithApprovedVerb : Cmdlet
     {
         /// <summary>
@@ -237,6 +245,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletWithUnapprovedVerb
     /// Verify if a cmdlet has an approved verb in its name.
     /// </summary>
     [Cmdlet("Prepare", "SampleCmdlet")]
+    [OutputType(typeof(bool))]
     public class CmdletWithUnapprovedVerb : Cmdlet
     {
         /// <summary>
@@ -260,6 +269,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletWithSingularNoun
     /// Verify if a cmdlet has a singular noun in its name.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "SampleKey")]
+    [OutputType(typeof(bool))]
     public class CmdletGetSampleKey : Cmdlet
     {
         /// <summary>
@@ -281,6 +291,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletWithPluralNoun
     /// Verify if a cmdlet has a plural noun in its name.
     /// </summary>
     [Cmdlet("Get", "SampleKeys")]
+    [OutputType(typeof(bool))]
     public class CmdletGetSampleKeys : Cmdlet
     {
         /// <summary>
@@ -295,7 +306,72 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletWithPluralNoun
 }
 #endregion
 
-#region ParameterWithPluralNoun
+#region OutputChecks
+namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletWithNoOutput
+{
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsCommon.Get, "CmdletWithNoOutput")]
+    public class CmdletGetCmdletWithNoOutput : Cmdlet
+    {
+        protected override void BeginProcessing()
+        {
+            WriteObject("Get-CmdletWithNoOutput BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+#endregion
+
+#region ParameterSetChecks
+namespace StaticAnalysis.Test.CmdletTest.Signature.ParameterSetNameWithSpace
+{
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsCommon.Get, "ParameterSetNameWithSpace", DefaultParameterSetName = "GetFoo")]
+    [OutputType(typeof(bool))]
+    public class CmdletGetParameterSetNameWithSpace : Cmdlet
+    {
+        [Parameter(ParameterSetName = "GetFoo")]
+        public string Foo { get; set; }
+
+        [Parameter(ParameterSetName = "Get Bar")]
+        public string Bar { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Get-ParameterSetNameWithSpace BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.Signature.MultipleParameterSetsWithNoDefault
+{
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsCommon.Get, "MultipleParameterSetsWithNoDefault")]
+    [OutputType(typeof(bool))]
+    public class CmdletGetMultipleParameterSetsWithNoDefault : Cmdlet
+    {
+        [Parameter(ParameterSetName = "GetFoo")]
+        public string Foo { get; set; }
+
+        [Parameter(ParameterSetName = "GetBar")]
+        public string Bar { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Get-MultipleParameterSetsWithNoDefault BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+#endregion
+
+#region ParameterChecks
 namespace StaticAnalysis.Test.CmdletTest.Signature.ParameterWithSingularNoun
 {
     using System.Management.Automation;
@@ -304,6 +380,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.ParameterWithSingularNoun
     /// Verify if a parameter has a singular noun in its name.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "SampleFoo")]
+    [OutputType(typeof(bool))]
     public class CmdletGetSampleFoo : Cmdlet
     {
         [Parameter(Mandatory = false)]
@@ -328,6 +405,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.ParameterWithPluralNoun
     /// Verify if a parameter has a plural noun in its name.
     /// </summary>
     [Cmdlet("Get", "SampleBar")]
+    [OutputType(typeof(bool))]
     public class CmdletGetSampleBar : Cmdlet
     {
         [Parameter(Mandatory = false)]
@@ -353,6 +431,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletAndParameterWithSingula
     /// accepted nouns ending with "s".
     /// </summary>
     [Cmdlet("Get", "SampleAddress")]
+    [OutputType(typeof(bool))]
     public class CmdletGetSampleAddress : Cmdlet
     {
         [Parameter(Mandatory = false)]
@@ -368,4 +447,36 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletAndParameterWithSingula
         }
     }
 }
+
+namespace StaticAnalysis.Test.CmdletTest.Signature.ParameterWithOutOfRangePosition
+{
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsCommon.Get, "ParameterWithOutOfRangePosition")]
+    [OutputType(typeof(bool))]
+    public class CmdletGetParameterWithOutOfRangePosition : Cmdlet
+    {
+        [Parameter(Position = 0)]
+        public string FirstParameter { get; set; }
+
+        [Parameter(Position = 1)]
+        public string SecondParameter { get; set; }
+
+        [Parameter(Position = 2)]
+        public string ThirdParameter { get; set; }
+
+        [Parameter(Position = 3)]
+        public string FourthParameter { get; set; }
+
+        [Parameter(Position = 4)]
+        public string FifthParameter { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Get-ParameterWithOutOfRangePosition BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
 #endregion

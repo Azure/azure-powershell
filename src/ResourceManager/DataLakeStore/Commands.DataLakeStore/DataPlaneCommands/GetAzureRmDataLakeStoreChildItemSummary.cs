@@ -3,7 +3,7 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreChildItemSummary", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreChildItemSummary))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreChildItemSummary", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreChildItemSummary))]
     [Alias("Get-AdlStoreChildItemSummary")]
     public class GetAzureRmDataLakeStoreChildItemSummary : DataLakeStoreFileSystemCmdletBase
     {

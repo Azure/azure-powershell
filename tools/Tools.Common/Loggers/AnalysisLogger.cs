@@ -27,8 +27,8 @@ namespace Tools.Common.Loggers
     /// </summary>
     public class AnalysisLogger
     {
-        string _baseDirectory;
-        string _exceptionsDirectory;
+        private readonly string _baseDirectory;
+        private readonly string _exceptionsDirectory;
         private static string _defaultLogName;
         private static Dictionary<string, AnalysisLogger> _logDictionary;
 
@@ -36,15 +36,7 @@ namespace Tools.Common.Loggers
 
         private static Dictionary<string, AnalysisLogger> LogDictionary
         {
-            get
-            {
-                if(_logDictionary == null)
-                {
-                    _logDictionary = new Dictionary<string, AnalysisLogger>();
-                }
-
-                return _logDictionary;
-            }
+            get { return _logDictionary ?? (_logDictionary = new Dictionary<string, AnalysisLogger>()); }
         }
 
         /// <summary>
@@ -58,12 +50,11 @@ namespace Tools.Common.Loggers
             AnalysisLogger log;
             if (!string.IsNullOrEmpty(loggerName))
             {
-                if (!LogDictionary.TryGetValue(loggerName, out log))
-                {
-                    _defaultLogName = loggerName;
-                    log = new AnalysisLogger(Assembly.GetEntryAssembly().Location);
-                    LogDictionary.Add(loggerName, log);
-                }
+                if (LogDictionary.TryGetValue(loggerName, out log)) return log;
+
+                _defaultLogName = loggerName;
+                log = new AnalysisLogger(Assembly.GetEntryAssembly().Location);
+                LogDictionary.Add(loggerName, log);
             }
             else
             {
@@ -83,8 +74,15 @@ namespace Tools.Common.Loggers
         {
             _baseDirectory = baseDirectory;
             _exceptionsDirectory = exceptionsDirectory;
-            _defaultLogName = Assembly.GetExecutingAssembly().GetName().Name;
+            var assembly = Assembly.GetExecutingAssembly();
+            var assemblyType = assembly.GetType();
+            _defaultLogName = assembly.GetName().Name;
+// TODO: Remove IfDef
+#if NETSTANDARD
+            Log4NetLogger = log4net.LogManager.GetLogger(assemblyType);
+#else
             Log4NetLogger = log4net.LogManager.GetLogger(_defaultLogName);
+#endif
         }
 
         /// <summary>
@@ -94,7 +92,7 @@ namespace Tools.Common.Loggers
         public AnalysisLogger(string baseDirectory) : this(baseDirectory, null)
         { }
 
-        IList<ReportLogger> _loggers = new List<ReportLogger>();
+        private readonly IList<ReportLogger> _loggers = new List<ReportLogger>();
         protected virtual IList<ReportLogger> Loggers { get { return _loggers; } }
 
 
@@ -142,7 +140,7 @@ namespace Tools.Common.Loggers
 
         public ReportLogger GetReportLogger(string loggerFileName)
         {
-            return Loggers.Where<ReportLogger>((log) => Path.GetFileName(log.FileName).Equals(loggerFileName, StringComparison.OrdinalIgnoreCase)).SingleOrDefault<ReportLogger>();
+            return Loggers.SingleOrDefault(log => Path.GetFileName(log.FileName).Equals(loggerFileName, StringComparison.OrdinalIgnoreCase));
         }
 
         /// <summary>
@@ -152,7 +150,7 @@ namespace Tools.Common.Loggers
         {
             foreach (var logger in Loggers.Where(l => l.Records.Any()))
             {
-                StringBuilder reportText = new StringBuilder();
+                var reportText = new StringBuilder();
                 reportText.AppendLine(logger.Records.First().PrintHeaders());
                 foreach (var reportRecord in logger.Records)
                 {
@@ -169,7 +167,7 @@ namespace Tools.Common.Loggers
             foreach (var logger in Loggers.Where(l => l.Records.Any(r => r.Severity < maxSeverity)))
             {
                 hasErrors = true;
-                StringBuilder errorText = new StringBuilder();
+                var errorText = new StringBuilder();
                 errorText.AppendLine(logger.Records.First().PrintHeaders());
                 foreach (var reportRecord in logger.Records)
                 {
@@ -184,7 +182,7 @@ namespace Tools.Common.Loggers
             if (hasErrors)
             {
                 throw new InvalidOperationException(string.Format("One or more errors occurred in validation. " +
-                                                                  "See the analysis repots at {0} for details",
+                                                                  "See the analysis reports at {0} for details",
                     _baseDirectory));
             }
         }
@@ -241,7 +239,7 @@ namespace Tools.Common.Loggers
 
         public void Info<T>(string info, IEnumerable<T> infoCollection)
         {
-            Info(info, infoCollection, (t) => t.ToString());
+            Info(info, infoCollection, t => t.ToString());
         }
 
         public void Info<T>(string info, IEnumerable<T> infoCollection, Func<T, string> infoItemPrintDelegate)
@@ -251,14 +249,14 @@ namespace Tools.Common.Loggers
 
         public void Info<T>(string info, string infoFormat, IEnumerable<T> infoCollection)
         {
-            Info(info, infoFormat, infoCollection, (t) => t.ToString());
+            Info(info, infoFormat, infoCollection, t => t.ToString());
         }
 
         public void Info<T>(string info, string infoFormat, IEnumerable<T> infoCollection, Func<T, string> infoItemPrintDelegate)
         {
             Info(info);
-            StringBuilder sb = new StringBuilder();
-            foreach (T t in infoCollection)
+            var sb = new StringBuilder();
+            foreach (var t in infoCollection)
             {
                 sb.AppendLine(string.Format(infoFormat, infoItemPrintDelegate(t)));
             }
