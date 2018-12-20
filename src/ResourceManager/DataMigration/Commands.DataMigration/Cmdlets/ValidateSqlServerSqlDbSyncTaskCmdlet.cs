@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public class ValidateSqlServerSqlDbSyncTaskCmdlet : TaskCmdlet
+    public class ValidateSqlServerSqlDbSyncTaskCmdlet : TaskCmdlet<ConnectionInfo>
     {
         private readonly string SelectedDatabase = "SelectedDatabase";
 

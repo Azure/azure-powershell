@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 new PSAzureDeletedWebApp()
                 {
                     DeletedSiteId = ds.DeletedSiteId.Value,
-                    DeletionTime = DateTime.Parse(ds.DeletedTimestamp),
+                    DeletionTime = DateTime.Parse(ds.DeletedTimestamp, System.Globalization.CultureInfo.InvariantCulture),
                     SubscriptionId = DefaultContext.Subscription.Id,
                     ResourceGroupName = ds.ResourceGroup,
                     Name = ds.DeletedSiteName,

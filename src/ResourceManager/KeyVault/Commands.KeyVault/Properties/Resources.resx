@@ -124,10 +124,10 @@ Please provide object ID for the user or service principle to set a vault access
 You can find the object ID using Azure Active Directory Module for Windows PowerShell.</value>
   </data>
   <data name="ADObjectNotFound" xml:space="preserve">
-    <value>Cannot find the Active Directory object '{0}' in tenant '{1}'. Please make sure that the user or application service principal you are authorizing is registered in the current subscription's Azure Active directory. The TenantID displayed by the cmdlet 'Get-AzureRmContext' is the current subscription's Azure Active directory.</value>
+    <value>Cannot find the Active Directory object '{0}' in tenant '{1}'. Please make sure that the user or application service principal you are authorizing is registered in the current subscription's Azure Active directory. The TenantID displayed by the cmdlet 'Get-AzContext' is the current subscription's Azure Active directory.</value>
   </data>
   <data name="ArmAccountNotFound" xml:space="preserve">
-    <value>No account found in the context. Please login using Connect-AzureRMAccount.</value>
+    <value>No account found in the context. Please login using Connect-AzAccount.</value>
   </data>
   <data name="BackupKeyFileAlreadyExists" xml:space="preserve">
     <value>The backup key file '{0}' already exists.</value>
@@ -160,7 +160,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>Invalid AzureEnvironment.</value>
   </data>
   <data name="InvalidCurrentSubscription" xml:space="preserve">
-    <value>No current subscription has been designated. Use Set-AzureRmContext -SubscriptionName &lt;subscriptionName&gt; to set the current subscription.</value>
+    <value>No current subscription has been designated. Use Set-AzContext -SubscriptionName &lt;subscriptionName&gt; to set the current subscription.</value>
   </data>
   <data name="InvalidKeyAttributes" xml:space="preserve">
     <value>Invalid key attributes</value>
@@ -199,10 +199,10 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>Invalid secret uri '{0}'.</value>
   </data>
   <data name="InvalidSelectedSubscription" xml:space="preserve">
-    <value>No subscription is currently selected. Use Set-AzureRmContext to activate a subscription.</value>
+    <value>No subscription is currently selected. Use Set-AzContext to activate a subscription.</value>
   </data>
   <data name="InvalidSubscriptionState" xml:space="preserve">
-    <value>Your Azure credentials have not been set up or have expired, please run Connect-AzureRmAccount to set up your Azure credentials.</value>
+    <value>Your Azure credentials have not been set up or have expired, please run Connect-AzAccount to set up your Azure credentials.</value>
   </data>
   <data name="InvalidTagFormat" xml:space="preserve">
     <value>Invalid tag format. Expect @{Name = "tagName"} or @{Name = "tagName"; Value = "tagValue"}</value>
@@ -223,7 +223,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>There is no default user account associated with this subscription. Certificate accounts are not supported with Azure Key Vault.</value>
   </data>
   <data name="NoTenantInContext" xml:space="preserve">
-    <value>No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRMAccount to login.</value>
+    <value>No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login.</value>
   </data>
   <data name="PermissionSetIncludesAllPlusOthers" xml:space="preserve">
     <value>Invalid permissions to {0}. The list contains "all" along with other permissions. Please remove "all" from the list or include only "all" in the list.</value>
@@ -283,7 +283,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>The specified vault already exists.</value>
   </data>
   <data name="VaultNoAccessPolicyWarning" xml:space="preserve">
-    <value>Access policy is not set. No user or application have access permission to use this vault. This can happen if the vault was created by a service principal. Please use Set-AzureRmKeyVaultAccessPolicy to set access policies.</value>
+    <value>Access policy is not set. No user or application have access permission to use this vault. This can happen if the vault was created by a service principal. Please use Set-AzKeyVaultAccessPolicy to set access policies.</value>
   </data>
   <data name="VaultNotFound" xml:space="preserve">
     <value>Cannot find vault '{0}' in resource group '{1}'.</value>
@@ -415,7 +415,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>Invalid Sas permission '{0}'.</value>
   </data>
   <data name="ADObjectAmbiguous" xml:space="preserve">
-    <value>The Email argument specified, '{1}', matches multiple objects in the Azure Active Directory tenant '{2}'. Please use -UserPrincipalName to narrow down the filter to a single object. The TenantID displayed by the cmdlet 'Get-AzureRmContext' is the current subscription's Azure Active Directory.</value>
+    <value>The Email argument specified, '{1}', matches multiple objects in the Azure Active Directory tenant '{2}'. Please use -UserPrincipalName to narrow down the filter to a single object. The TenantID displayed by the cmdlet 'Get-AzContext' is the current subscription's Azure Active Directory.</value>
   </data>
   <data name="RecoverCertificate" xml:space="preserve">
     <value>Recover certificate</value>

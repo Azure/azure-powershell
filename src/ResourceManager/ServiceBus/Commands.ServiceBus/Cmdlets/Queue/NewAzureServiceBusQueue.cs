@@ -21,7 +21,7 @@ using System.Xml;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 {
     /// <summary>
-    /// 'New-AzureRmServiceBusQueue' Cmdlet creates a new Queue
+    /// 'New-AzServiceBusQueue' Cmdlet creates a new Queue
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusQueue", SupportsShouldProcess = true), OutputType(typeof(PSQueueAttributes))]
     public class NewAzureRmServiceBusQueue : AzureServiceBusCmdletBase

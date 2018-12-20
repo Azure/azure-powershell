@@ -1,15 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
+  <PropertyGroup>
+    <PsModuleName>TrafficManager</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\Az.Test.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
-    <AssemblyName>Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests</RootNamespace>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
-    <IsPackable>false</IsPackable>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix).ScenarioTests</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,14 +22,12 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.TrafficManager" Version="2.5.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.TrafficManager">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.TrafficManager\Microsoft.Azure.Commands.TrafficManager.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.TrafficManager2\Commands.TrafficManager.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

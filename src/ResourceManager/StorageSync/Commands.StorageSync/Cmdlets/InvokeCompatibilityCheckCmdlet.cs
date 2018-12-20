@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
     using Models;
 
     [Cmdlet("Invoke", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageSyncCompatibilityCheck",DefaultParameterSetName="PathBased")]
-    [OutputType(typeof(PSValidationResult))]
+    [OutputType(typeof(PSStorageSyncValidation))]
     public class InvokeCompatibilityCheckCmdlet : Cmdlet, ICmdlet
     {
         #region Fields and Properties
@@ -94,9 +94,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         [Parameter(ParameterSetName = "PathBased")]
         public SwitchParameter SkipNamespaceChecks { get; set; }
 
-        [Parameter]
-        public SwitchParameter Quiet { get; set; }
-
         private bool CanRunNamespaceChecks => !string.IsNullOrEmpty(this.Path);
         private bool CanRunEstimation => this.CanRunNamespaceChecks;
         private bool CanRunSystemChecks => !string.IsNullOrEmpty(this.ComputerNameValue.Value);
@@ -111,36 +108,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             Configuration configuration = new Configuration();
 
             // prepare namespace validations
-            var namespaceValidations = new List<INamespaceValidation>()
-            {
-                new InvalidFilenameValidation(configuration),
-                new FilenamesCharactersValidation(configuration),
-                new MaximumFileSizeValidation(configuration),
-                new MaximumPathLengthValidation(configuration),
-                new MaximumFilenameLengthValidation(configuration),
-                new MaximumTreeDepthValidation(configuration),
-                new MaximumDatasetSizeValidation(configuration),
-            };
+            IList<INamespaceValidation> namespaceValidations = ValidationsFactory.GetNamespaceValidations(configuration);
 
             // prepare system validations
-            var systemValidations = new List<ISystemValidation>
-            {
-                new OSVersionValidation(configuration),
-            };
-
-            if (this.CanRunNamespaceChecks)
-            {
-                systemValidations.Add(new FileSystemValidation(configuration, this.Path));
-            }
-
-            // construct validation descriptions
-            List<IValidationDescription> validationDescriptions = new List<IValidationDescription>();
-            namespaceValidations.ForEach(o => validationDescriptions.Add((IValidationDescription)o));
-            systemValidations.ForEach(o => validationDescriptions.Add((IValidationDescription)o));
+            IList<ISystemValidation> systemValidations = ValidationsFactory.GetSystemValidations(configuration, this.Path);
 
             // output writers
-            TextSummaryOutputWriter summaryWriter = new TextSummaryOutputWriter(new AfsConsoleWriter(), validationDescriptions);
-            PsObjectsOutputWriter psObjectsWriter = new PsObjectsOutputWriter(this);
+            var validationResultWriter = new PSValidationResultOutputWriter();
+            var outputWriters = new List<IOutputWriter>
+            {
+                validationResultWriter
+            };
 
             this.WriteVerbose($"Path = {this.Path}");
             this.WriteVerbose($"ComputerName = {this.ComputerName}");
@@ -150,7 +128,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             this.WriteVerbose($"CanRunEstimation = {this.CanRunEstimation}");
             this.WriteVerbose($"SkipNamespaceChecks = {this.SkipNamespaceChecks}");
             this.WriteVerbose($"SkipSystemChecks = {this.SkipSystemChecks}");
-            this.WriteVerbose($"Quiet = {this.Quiet}");
             this.WriteVerbose($"NumberOfSystemChecks = {systemValidations.Count}");
             this.WriteVerbose($"NumberOfNamespaceChecks = {namespaceValidations.Count}");
 
@@ -202,7 +179,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 
                 progressReporter.AddSteps(systemValidations.Count);
                 Stopwatch stopwatch = Stopwatch.StartNew();
-                this.PerformSystemChecks(systemValidations, progressReporter, this, summaryWriter, psObjectsWriter);
+                this.PerformSystemChecks(systemValidations, progressReporter, this, outputWriters);
                 stopwatch.Stop();
                 progressReporter.Complete();
                 TimeSpan duration = stopwatch.Elapsed;
@@ -223,7 +200,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
                 namespaceInfo = this.RunActionWithUncConnectionIfNeeded<INamespaceInfo>(
-                    () => this.StorageEval(namespaceValidations, progressReporter, this, summaryWriter, psObjectsWriter));
+                    () => this.StorageEval(namespaceValidations, progressReporter, this, outputWriters));
                 stopwatch.Stop();
                 progressReporter.Complete();
 
@@ -237,19 +214,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
                 this.WriteVerbose("Skipping namespace checks.");
             }
 
-            if (!this.Quiet.ToBool())
+            var validationModel = validationResultWriter.Validation;
+            validationModel.ComputerName = this.ComputerNameValue.Value;
+            if (namespaceInfo != null)
             {
-                summaryWriter.WriteReport(this.ComputerNameValue.Value, namespaceInfo);
+                validationModel.NamespacePath = namespaceInfo.Path;
+                validationModel.NamespaceDirectoryCount = namespaceInfo.NumberOfDirectories;
+                validationModel.NamespaceFileCount = namespaceInfo.NumberOfFiles;
             }
-            else
-            {
-                this.WriteVerbose("Skipping report.");
-            }
+            this.WriteObject(validationModel);
         }
         #endregion
 
         #region Private methods
-        private void PerformSystemChecks(IList<ISystemValidation> validations, IProgressReporter progressReporter, ICmdlet cmdlet, TextSummaryOutputWriter summaryWriter, PsObjectsOutputWriter psObjectsWriter)
+        private void PerformSystemChecks(IList<ISystemValidation> validations, IProgressReporter progressReporter, ICmdlet cmdlet, IList<IOutputWriter> outputWriters)
         {
             PowerShellCommandRunner commandRunner = null;
 
@@ -265,12 +243,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
                     $"You can also use -SkipSystemChecks switch to skip system requirements checks.");
                 throw;
             }
-
-            var outputWriters = new List<IOutputWriter>
-            {
-                summaryWriter,
-                psObjectsWriter
-            };
 
             SystemValidationsProcessor systemChecksProcessor = new SystemValidationsProcessor(commandRunner, validations, outputWriters, progressReporter);
 
@@ -305,15 +277,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             return result;
         }
 
-        private INamespaceInfo StorageEval(IList<INamespaceValidation> validations, IProgressReporter progressReporter, ICmdlet cmdlet, TextSummaryOutputWriter summaryWriter, PsObjectsOutputWriter psObjectsWriter)
+        private INamespaceInfo StorageEval(IList<INamespaceValidation> validations, IProgressReporter progressReporter, ICmdlet cmdlet, IList<IOutputWriter> outputWriters)
         {
             IDirectoryInfo root = new AfsDirectoryInfo(this.Path);
-
-            var outputWriters = new List<IOutputWriter>
-            {
-                psObjectsWriter,
-                summaryWriter
-            };
 
             NamespaceValidationsProcessor validationsProcessor = new NamespaceValidationsProcessor(validations, outputWriters, progressReporter);
 

@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Sql.DataSync.Cmdlet;
 using Microsoft.Azure.Commands.Sql.DataSync.Model;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Newtonsoft.Json.Linq;
 using Xunit;

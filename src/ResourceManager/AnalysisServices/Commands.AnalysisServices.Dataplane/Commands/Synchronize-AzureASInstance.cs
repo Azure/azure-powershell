@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     /// Cmdlet to log into an Analysis Services environment
     /// </summary>
     [Cmdlet("Sync", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AnalysisServicesInstance", SupportsShouldProcess = true)]
-    [Alias("Sync-AzureAsInstance")]
+    [Alias("Sync-AzureAsInstance", "Sync-AzAsInstance")]
     [OutputType(typeof(ScaleOutServerDatabaseSyncDetails))]
     public class SynchronizeAzureAzureAnalysisServer : AzurePSCmdlet
     {
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 WriteObject(string.Format("Sending sync request for database '{0}' to server '{1}'. Correlation Id: '{2}'.", Database, Instance, correlationId.ToString()));
                 var context = AsAzureClientSession.Instance.Profile.Context;
                 AsAzureClientSession.Instance.Login(context);
-                WriteProgress(new ProgressRecord(0, "Sync-AzureAnalysisServicesInstance.", string.Format("Authenticating user for '{0}' environment.", context.Environment.Name)));
+                WriteProgress(new ProgressRecord(0, "Sync-AzAnalysisServicesInstance.", string.Format("Authenticating user for '{0}' environment.", context.Environment.Name)));
                 var clusterResolveResult = ClusterResolve(context, serverName);
                 var virtualServerName = clusterResolveResult.CoreServerName.Split(":".ToCharArray())[0];
                 if (!serverName.Equals(virtualServerName) && !clusterResolveResult.CoreServerName.EndsWith(":rw"))
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 ScaleOutServerDatabaseSyncDetails syncResult = null;
                 try
                 {
-                    WriteProgress(new ProgressRecord(0, "Sync-AzureAnalysisServicesInstance.", string.Format("Successfully authenticated for '{0}' environment.", context.Environment.Name)));
+                    WriteProgress(new ProgressRecord(0, "Sync-AzAnalysisServicesInstance.", string.Format("Successfully authenticated for '{0}' environment.", context.Environment.Name)));
                     syncResult = SynchronizeDatabaseAsync(context, clusterBaseUri, Database, accessToken).GetAwaiter().GetResult();
                 }
                 catch (AggregateException aex)

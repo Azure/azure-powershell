@@ -26,11 +26,11 @@ All top-level resources should have a `Get-*` cmdlet that allows users to list t
 To enable the scenarios mentioned previously, the cmdlet will need three parameter sets:
 
 ```
-Get-AzureRmFoo [-ResourceGroupName <String>]
+Get-AzFoo [-ResourceGroupName <String>]
 
-Get-AzureRmFoo -ResourceGroupName <String> -Name <String>
+Get-AzFoo -ResourceGroupName <String> -Name <String>
 
-Get-AzureRmFoo -ResourceId <String>
+Get-AzFoo -ResourceId <String>
 ```
 
 The first parameter set has an optional `-ResourceGroupName` parameter, which allows the user to list all resources in a subscription or in a resource group. The second parameter set has required `-ResourceGroupName` and `-Name` parameters, which allows the user to get a specific resource. The third parameter set has a required `-ResourceId` parameter, which allows the user to get a specific resource by resource id.
@@ -43,7 +43,7 @@ The first parameter set has an optional `-ResourceGroupName` parameter, which al
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmFoo", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSFoo))]
+    [Cmdlet(VerbsCommon.Get, "AzFoo", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSFoo))]
     public class GetFooCommand : FooBaseCmdlet
     {
         private const string ListParameterSet = "ListParameterSet";
@@ -107,7 +107,7 @@ _Note_: for long-running operations (~15s or longer), it is advised to add the [
 To enable the above scenario, only one parameter set is needed:
 
 ```
-New-AzureRmFoo -ResourceGroupName <String> -Name <String> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
+New-AzFoo -ResourceGroupName <String> -Name <String> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
 ```
 
 This parameter set has required `-ResourceGroupName` and `-Name` parameters to satisfy the identity properties of the resource, as well as a few optional `-PropertyX` parameters that allows the user to set values for properties. The parameter set also has optional `-WhatIf` and `-Confirm` parameters that are automatically included from the implementation of `SupportsShouldProcess`.
@@ -120,7 +120,7 @@ This parameter set has required `-ResourceGroupName` and `-Name` parameters to s
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmFoo", DefaultParameterSetName = CreateParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFoo))]
+    [Cmdlet(VerbsCommon.New, "AzFoo", DefaultParameterSetName = CreateParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFoo))]
     public class NewFooCommand : FooBaseCmdlet
     {
         private const string CreateParameterSet = "CreateParameterSet";
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Foo
 
             if (existingFoo != null)
             {
-                throw new Exception(string.Format("A Foo with name '{0}' in resource group '{1}' already exists. Please use Set/Update-AzureRmFoo to update an existing Foo.", this.Name, this.ResourceGroupName));
+                throw new Exception(string.Format("A Foo with name '{0}' in resource group '{1}' already exists. Please use Set/Update-AzFoo to update an existing Foo.", this.Name, this.ResourceGroupName));
             }
 
             existingFoo = new Foo()
@@ -190,11 +190,11 @@ All top-level resources should have a `Remove-*` cmdlet that allows users to del
 To enable the scenarios mentioned previously, the cmdlet will need three parameter sets:
 
 ```
-Remove-AzureRmFoo -ResourceGroupName <String> -Name <String> [-PassThru] [-WhatIf] [-Confirm]
+Remove-AzFoo -ResourceGroupName <String> -Name <String> [-PassThru] [-WhatIf] [-Confirm]
 
-Remove-AzureRmFoo -InputObject <PSFoo> [-PassThru] [-WhatIf] [-Confirm]
+Remove-AzFoo -InputObject <PSFoo> [-PassThru] [-WhatIf] [-Confirm]
 
-Remove-AzureRmFoo -ResourceId <String> [-PassThru] [-WhatIf] [-Confirm]
+Remove-AzFoo -ResourceId <String> [-PassThru] [-WhatIf] [-Confirm]
 ```
 
 The first parameter set has required `-ResourceGroupName` and `-Name` parameters, which allows the user to explicitly provide the identity properties of the resource that they want to delete. The second parameter has a required `-InputObject` parameter, which allows the user to pipe the result of the `Get-*` and `Set/Update-*` cmdlets to this cmdlet and delete the corresponding resource. The third parameter has a required `-ResourceId` parameter, which allows the user to delete a specific resource by resource id.
@@ -207,7 +207,7 @@ The first parameter set has required `-ResourceGroupName` and `-Name` parameters
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmFoo", DefaultParameterSetName = DeleteByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzFoo", DefaultParameterSetName = DeleteByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveFooCommand : FooBaseCmdlet
     {
         private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
@@ -274,11 +274,11 @@ All top-level resources should have a `Set-*` cmdlet that allows users to update
 To enable the scenarios mentioned previously, the cmdlet will need three parameter sets:
 
 ```
-Set-AzureRmFoo -ResourceGroupName <String> -Name <String> -Property1 <Type1> -Property2 <Type2> ... [-WhatIf] [-Confirm]
+Set-AzFoo -ResourceGroupName <String> -Name <String> -Property1 <Type1> -Property2 <Type2> ... [-WhatIf] [-Confirm]
 
-Set-AzureRmFoo -InputObject <PSFoo> [-Property1 <Type1>] -[Property2 <Type2>] ... [-WhatIf] [-Confirm]
+Set-AzFoo -InputObject <PSFoo> [-Property1 <Type1>] -[Property2 <Type2>] ... [-WhatIf] [-Confirm]
 
-Set-AzureRmFoo -ResourceId <String> -Property1 <Type1> -Property2 <Type2> ... [-WhatIf] [-Confirm]
+Set-AzFoo -ResourceId <String> -Property1 <Type1> -Property2 <Type2> ... [-WhatIf] [-Confirm]
 ```
 
 The first parameter set has required `-ResourceGroupName` and `-Name` parameters, as well as required property parameters to set their values on the resource. The second parameter has a required `-InputObject` parameter, as well as optional property parameters that override the value of the property on the given object if provided. The third parameter has a required `-ResourceId` parameter, as well as required property parameters to set their values on the resource.
@@ -291,7 +291,7 @@ The first parameter set has required `-ResourceGroupName` and `-Name` parameters
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmFoo", DefaultParameterSet = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFoo))]
+    [Cmdlet(VerbsCommon.Set, "AzFoo", DefaultParameterSet = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFoo))]
     public class SetFooCommand : FooBaseCmdlet
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Commands.Foo
 
             if (foo == null)
             {
-                throw new Exception(string.Format("A Foo with name '{0}' in resource group '{1}' does not exist. Please use New-AzureRmFoo to create a Foo with these properties.", this.Name, this.ResourceGroupName));
+                throw new Exception(string.Format("A Foo with name '{0}' in resource group '{1}' does not exist. Please use New-AzFoo to create a Foo with these properties.", this.Name, this.ResourceGroupName));
             }
 
             foo.Property1 = this.Property1;
@@ -388,11 +388,11 @@ _Note_: if the only property that a user is able to update through the `PATCH` A
 To enable the scenarios mentioned previously, the cmdlet will need three parameter sets:
 
 ```
-Update-AzureRmFoo -ResourceGroupName <String> -Name <String> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
+Update-AzFoo -ResourceGroupName <String> -Name <String> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
 
-Update-AzureRmFoo -InputObject <PSFoo> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
+Update-AzFoo -InputObject <PSFoo> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
 
-Update-AzureRmFoo -ResourceId <String> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
+Update-AzFoo -ResourceId <String> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
 ```
 
 The first parameter set has required `-ResourceGroupName` and `-Name` parameters, the second parameter set has a required `-InputObject` parameter, and the third parameter set has a required `-ResourceId` parameter. All three parameter sets have optional property parameters that can be used to override the value of the property set on the retrieved/provided resource.
@@ -405,7 +405,7 @@ The first parameter set has required `-ResourceGroupName` and `-Name` parameters
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsData.Update, "AzureRmFoo", DefaultParameterSet = UpdateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFoo))]
+    [Cmdlet(VerbsData.Update, "AzFoo", DefaultParameterSet = UpdateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFoo))]
     public class UpdateFooCommand : FooBaseCmdlet
     {
         private const string UpdateByNameParameterSet = "UpdateByNameParameterSet";
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Commands.Foo
 
             if (foo == null)
             {
-                throw new Exception(string.Format("A Foo with name '{0}' in resource group '{1}' does not exist. Please use New-AzureRmFoo to create a Foo with these properties.", this.Name, this.ResourceGroupName));
+                throw new Exception(string.Format("A Foo with name '{0}' in resource group '{1}' does not exist. Please use New-AzFoo to create a Foo with these properties.", this.Name, this.ResourceGroupName));
             }
 
             foo.Property1 = this.IsParameterBound(c => c.Property1) ? this.Property1 : foo.Property1;
@@ -495,11 +495,11 @@ All child resources should have a `Get-*` cmdlet that allows users to list the c
 To enable the scenarios mentioned previously, the cmdlet will need three parameter sets:
 
 ```
-Get-AzureRmChildFoo -ResourceGroupName <String> -FooName <String> [-Name <String>]
+Get-AzChildFoo -ResourceGroupName <String> -FooName <String> [-Name <String>]
 
-Get-AzureRmChildFoo -FooObject <PSFoo> [-Name <String>]
+Get-AzChildFoo -FooObject <PSFoo> [-Name <String>]
 
-Get-AzureRmChildFoo -ResourceId <String>
+Get-AzChildFoo -ResourceId <String>
 ```
 
 The first parameter set has mandatory `-ResourceGroupName` and `-FooName` parameters to get the identity information about the parent resource, and then an optional `-Name` parameter to allow the user to either list all child resources contained in the given parent or get the specific child resource. The second parameter set has required `-FooObject` parameter, which can be piped from the parent `Get-*` or `Set/Update-*` cmdlet, and an optional `-Name` parameter. The third parameter set has a required `-ResourceId` parameter, which allows the user to get a specific child resource by resource id.
@@ -512,7 +512,7 @@ The first parameter set has mandatory `-ResourceGroupName` and `-FooName` parame
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmChildFoo", DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(PSChildFoo))]
+    [Cmdlet(VerbsCommon.Get, "AzChildFoo", DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(PSChildFoo))]
     public class GetChildFooCommand : FooBaseCmdlet
     {
         private const string GetByNameParameterSet = "GetByNameParameterSet";
@@ -586,9 +586,9 @@ _Note_: for long-running operations (~15s or longer), it is advised to add the [
 To enable the above scenario, the cmdlet will need two parameter sets:
 
 ```
-New-AzureRmChildFoo -ResourceGroupName <String> -FooName <String> -Name <String> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
+New-AzChildFoo -ResourceGroupName <String> -FooName <String> -Name <String> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
 
-New-AzureRmChildFoo -FooObject <PSFoo> -Name <String> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
+New-AzChildFoo -FooObject <PSFoo> -Name <String> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
 ```
 
 The first parameter set has required `-ResourceGroupName`, `-FooName` and `-Name` parameters to satisfy the identity properties of the child resource, as well as a few optional `-PropertyX` parameters that allows the user to set values for the properties. The second parameter set has a required `-FooObject` parameter that can be piped from the parent resource's `Get-*` and `Set/Update-*` cmdlets.
@@ -601,7 +601,7 @@ The first parameter set has required `-ResourceGroupName`, `-FooName` and `-Name
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmChildFoo", DefaultParameterSetName = CreateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSChildFoo))]
+    [Cmdlet(VerbsCommon.New, "AzChildFoo", DefaultParameterSetName = CreateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSChildFoo))]
     public class NewChildFooCommand : FooBaseCmdlet
     {
         private const string CreateByNameParameterSet = "CreateByNameParameterSet";
@@ -652,7 +652,7 @@ namespace Microsoft.Azure.Commands.Foo
 
             if (existingChildFoo != null)
             {
-                throw new Exception(string.Format("A ChildFoo with name '{0}' in resource group '{1}' under parent Foo '{2}' already exists. Please use Set/Update-AzureRmChildFoo to update an existing ChildFoo.", this.Name, this.ResourceGroupName, this.FooName));
+                throw new Exception(string.Format("A ChildFoo with name '{0}' in resource group '{1}' under parent Foo '{2}' already exists. Please use Set/Update-AzChildFoo to update an existing ChildFoo.", this.Name, this.ResourceGroupName, this.FooName));
             }
 
             existingChildFoo = new ChildFoo()
@@ -687,13 +687,13 @@ All child resources should have a `Remove-*` cmdlet that allows users to delete 
 To enable the scenarios mentioned previously, the cmdlet will need four parameter sets:
 
 ```
-Remove-AzureRmChildFoo -ResourceGroupName <String> -FooName <String> -Name <String> [-PassThru] [-WhatIf] [-Confirm]
+Remove-AzChildFoo -ResourceGroupName <String> -FooName <String> -Name <String> [-PassThru] [-WhatIf] [-Confirm]
 
-Remove-AzureRmChildFoo -FooObject <PSFoo> -Name <String> [-PassThru] [-WhatIf] [-Confirm]
+Remove-AzChildFoo -FooObject <PSFoo> -Name <String> [-PassThru] [-WhatIf] [-Confirm]
 
-Remove-AzureRmChildFoo -InputObject <PSChildFoo> [-PassThru] [-WhatIf] [-Confirm]
+Remove-AzChildFoo -InputObject <PSChildFoo> [-PassThru] [-WhatIf] [-Confirm]
 
-Remove-AzureRmChildFoo -ResourceId <String> [-PassThru] [-WhatIf] [-Confirm]
+Remove-AzChildFoo -ResourceId <String> [-PassThru] [-WhatIf] [-Confirm]
 ```
 
 The first parameter set has required `-ResourceGroupName`, `-FooName` and `-Name` parameters, which allows the user to explicitly provide the identity properties of the child resource that they want to delete. The second parameter has a required `-FooObject` parameter, which allows the user to pipe the result of the parent resource's `Get-*` and `Set/Update-*` cmdlets to this cmdlet, as well as a required `-Name` parameter. The third parameter has a required `-InputObject` parameter, which allows the user to pipe the result of the `Get-*` and `Set/Update-*` cmdlets to this cmdlet and delete the corresponding child resource. The fourth parameter has a required `-ResourceId` parameter, which allows the user to delete the specific child resource by resource id.
@@ -706,7 +706,7 @@ The first parameter set has required `-ResourceGroupName`, `-FooName` and `-Name
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmChildFoo", DefaultParameterSetName = DeleteByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzChildFoo", DefaultParameterSetName = DeleteByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveChildFooCommand : FooBaseCmdlet
     {
         private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
@@ -791,13 +791,13 @@ All child resources should have a `Set-*` cmdlet that allows users to update an 
 To enable the scenarios mentioned previously, the cmdlet will need four parameter sets:
 
 ```
-Set-AzureRmChildFoo -ResourceGroupName <String> -FooName <String> -Name <String> -Property1 <Type1> -Property2 <Type2> ... [-WhatIf] [-Confirm]
+Set-AzChildFoo -ResourceGroupName <String> -FooName <String> -Name <String> -Property1 <Type1> -Property2 <Type2> ... [-WhatIf] [-Confirm]
 
-Set-AzureRmChildFoo -FooObject <PSFoo> -Name <String> -Property1 <Type1> -Property2 <Type2> ... [-WhatIf] [-Confirm]
+Set-AzChildFoo -FooObject <PSFoo> -Name <String> -Property1 <Type1> -Property2 <Type2> ... [-WhatIf] [-Confirm]
 
-Set-AzureRmChildFoo -InputObject <PSChildFoo> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
+Set-AzChildFoo -InputObject <PSChildFoo> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
 
-Set-AzureRmChildFoo -ResourceId <String> -Property1 <Type1> -Property2 <Type2> ... [-WhatIf] [-Confirm]
+Set-AzChildFoo -ResourceId <String> -Property1 <Type1> -Property2 <Type2> ... [-WhatIf] [-Confirm]
 ```
 
 The first parameter set has required `-ResourceGroupName`, `-FooName` and `-Name` parameters, as well as required property parameters to set their values on the child resource. The second parameter set has a required `-FooObject` parameter, which allows the user to pipe the result of the parent resource's `Get-*` and `Set/Update-*` cmdlets to this cmdlet, as well as required property parameters. The third parameter set has a required `-InputObject` parameter, as well as optional property parameters that override the value of the property on the given object if provided. The fourth parameter set has a required `-ResourceIid` parameter, as well as required property parameters to set their values on the child resource.
@@ -810,7 +810,7 @@ The first parameter set has required `-ResourceGroupName`, `-FooName` and `-Name
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmChildFoo", DefaultParameterSet = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSChildFoo))]
+    [Cmdlet(VerbsCommon.Set, "AzChildFoo", DefaultParameterSet = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSChildFoo))]
     public class SetChildFooCommand : FooBaseCmdlet
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";
@@ -896,7 +896,7 @@ namespace Microsoft.Azure.Commands.Foo
 
             if (childFoo == null)
             {
-                throw new Exception(string.Format("A ChildFoo with name '{0}' in resource group '{1}' under parent Foo '{2}' does not exist. Please use New-AzureRmChildFoo to create a ChildFoo with these properties.", this.Name, this.ResourceGroupName, this.FooName));
+                throw new Exception(string.Format("A ChildFoo with name '{0}' in resource group '{1}' under parent Foo '{2}' does not exist. Please use New-AzChildFoo to create a ChildFoo with these properties.", this.Name, this.ResourceGroupName, this.FooName));
             }
 
             childFoo.Property1 = this.Property1;
@@ -925,13 +925,13 @@ All child resources should have an `Update-*` cmdlet that allows users to update
 To enable the scenarios mentioned previously, the cmdlet will need four parameter sets:
 
 ```
-Update-AzureRmChildFoo -ResourceGroupName <String> -FooName <String> -Name <String> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
+Update-AzChildFoo -ResourceGroupName <String> -FooName <String> -Name <String> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
 
-Update-AzureRmChildFoo -FooObject <PSFoo> -Name <String> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
+Update-AzChildFoo -FooObject <PSFoo> -Name <String> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
 
-Update-AzureRmChildFoo -InputObject <PSChildFoo> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
+Update-AzChildFoo -InputObject <PSChildFoo> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
 
-Update-AzureRmChildFoo -ResourceId <String> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
+Update-AzChildFoo -ResourceId <String> [-Property1 <Type1>] [-Property2 <Type2>] ... [-WhatIf] [-Confirm]
 ```
 
 The first parameter set has required `-ResourceGroupName`, `-FooName` and `-Name` parameters, the second parameter set has required `-FooObject` and `-Name` parameters, the third parameter set has a required `-InputObject` parameter, and the fourth parameter set has a required `-ResourceId` parameter. All four parameter sets have optional property parameters that can be used to override the value of the property set on the retrieved/provided resource.
@@ -944,7 +944,7 @@ The first parameter set has required `-ResourceGroupName`, `-FooName` and `-Name
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsData.Update, "AzureRmChildFoo", DefaultParameterSet = UpdateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSChildFoo))]
+    [Cmdlet(VerbsData.Update, "AzChildFoo", DefaultParameterSet = UpdateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSChildFoo))]
     public class UpdateChildFooCommand : FooBaseCmdlet
     {
         private const string UpdateByNameParameterSet = "UpdateByNameParameterSet";
@@ -1021,7 +1021,7 @@ namespace Microsoft.Azure.Commands.Foo
 
             if (childFoo == null)
             {
-                throw new Exception(string.Format("A ChildFoo with name '{0}' in resource group '{1}' under parent Foo '{2}' does not exist. Please use New-AzureRmChildFoo to create a ChildFoo with these properties.", this.Name, this.ResourceGroupName, this.FooName));
+                throw new Exception(string.Format("A ChildFoo with name '{0}' in resource group '{1}' under parent Foo '{2}' does not exist. Please use New-AzChildFoo to create a ChildFoo with these properties.", this.Name, this.ResourceGroupName, this.FooName));
             }
 
             childFoo.Property1 = this.IsParameterBound(c => c.Property1) ? this.Property1 : childFoo.Property1;

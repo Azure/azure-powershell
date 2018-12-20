@@ -1,30 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
+  <PropertyGroup>
+    <PsModuleName>Websites</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\Az.props" />
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Websites</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Commands.WebApps</RootNamespace>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>$(ProjectDir)..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Websites\</OutputPath>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DelaySign>false</DelaySign>
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile></DocumentationFile>
-    <SignAssembly>true</SignAssembly>
-    <DelaySign>true</DelaySign>
-    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
-    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+    <RootNamespace>$(LegacyAssemblyPrefix)WebApps</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,10 +19,6 @@
     <None Include="Az.Websites.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

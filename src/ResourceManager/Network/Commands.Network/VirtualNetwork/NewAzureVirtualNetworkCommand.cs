@@ -22,10 +22,10 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletOutputBreakingChange(typeof(PSVirtualNetwork), DeprecatedOutputProperties = new[] { "EnableVmProtection" })]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetwork", SupportsShouldProcess = true),OutputType(typeof(PSVirtualNetwork))]
     public class NewAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
     {
@@ -58,19 +58,19 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefixes of the virtual network")]
         [ValidateNotNullOrEmpty]
-        public List<string> AddressPrefix { get; set; }
+        public string[] AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of Dns Servers")]
-        public List<string> DnsServer { get; set; }
+        public string[] DnsServer { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of subnets")]
-        public List<PSSubnet> Subnet { get; set; }
+        public PSSubnet[] Subnet { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -88,16 +88,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Reference to the DDoS protection plan resource associated with the virtual network.")]
         public string DdosProtectionPlanId { get; set; }
-
-// TODO: Remove IfDef code
-#if !NETSTANDARD
-        [CmdletParameterBreakingChange("EnableVmProtection", ChangeDescription = "The EnableVMProtection setting is no longer supported. Setting this parameter has no impact. This parameter will be removed in a future release. Please remove it from your scripts")]
-        [Parameter(
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "A switch parameter which represents if Vm protection is enabled or not.")]
-        public SwitchParameter EnableVmProtection { get; set; }
-#endif
 
         [Parameter(
             Mandatory = false,
@@ -131,15 +121,15 @@ namespace Microsoft.Azure.Commands.Network
                 Name = Name,
                 ResourceGroupName = ResourceGroupName,
                 Location = Location,
-                AddressSpace = new PSAddressSpace {AddressPrefixes = AddressPrefix}
+                AddressSpace = new PSAddressSpace {AddressPrefixes = AddressPrefix?.ToList()}
             };
 
             if (DnsServer != null)
             {
-                vnet.DhcpOptions = new PSDhcpOptions {DnsServers = DnsServer};
+                vnet.DhcpOptions = new PSDhcpOptions {DnsServers = DnsServer?.ToList()};
             }
 
-            vnet.Subnets = Subnet;
+            vnet.Subnets = this.Subnet?.ToList();
             vnet.EnableDdosProtection = EnableDdosProtection;
             
             if (!string.IsNullOrEmpty(DdosProtectionPlanId))

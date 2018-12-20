@@ -246,6 +246,12 @@ namespace StaticAnalysis.DependencyAnalyzer
                 || FrameworkAssemblies.Contains(name.Name);
         }
 
+        private static bool IsFrameworkAssembly(string name)
+        {
+            return name.StartsWith("System") || name.Equals("mscorlib") || name.Equals("netstandard")
+                || FrameworkAssemblies.Contains(name);
+        }
+
         private void ProcessDirectory(string directoryPath)
         {
             var savedDirectory = Directory.GetCurrentDirectory();
@@ -284,17 +290,20 @@ namespace StaticAnalysis.DependencyAnalyzer
 
             foreach (var assembly in _assemblies.Values)
             {
-                foreach (var parent in assembly.ReferencingAssembly)
+                if (!assembly.Name.Contains("Microsoft.IdentityModel") && !assembly.Name.Equals("Newtonsoft.Json") && !IsFrameworkAssembly(assembly.Name))
                 {
-                    _dependencyMapLogger.LogRecord(
-                        new DependencyMap
-                        {
-                            AssemblyName = assembly.Name,
-                            AssemblyVersion = assembly.Version.ToString(),
-                            ReferencingAssembly = parent.Name,
-                            ReferencingAssemblyVersion = parent.Version.ToString(),
-                            Severity = 3
-                        });
+                    foreach (var parent in assembly.ReferencingAssembly)
+                    {
+                        _dependencyMapLogger.LogRecord(
+                            new DependencyMap
+                            {
+                                AssemblyName = assembly.Name,
+                                AssemblyVersion = assembly.Version.ToString(),
+                                ReferencingAssembly = parent.Name,
+                                ReferencingAssemblyVersion = parent.Version.ToString(),
+                                Severity = 3
+                            });
+                    }
                 }
 
             }
@@ -323,7 +332,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             {
                 return;
             }
- 
+
             foreach (var assembly in _assemblies.Values.Where(a => 
                 !IsCommandAssembly(a)
                 && (a.ReferencingAssembly == null

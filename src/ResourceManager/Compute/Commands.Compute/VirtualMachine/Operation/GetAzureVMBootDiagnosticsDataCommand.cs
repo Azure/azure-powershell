@@ -31,9 +31,6 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(PSVirtualMachineIdentity), DeprecatedOutputProperties = new string[] { "IdentityIds" })]
-#endif
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMBootDiagnosticsData", DefaultParameterSetName = WindowsParamSet)]
     [OutputType(typeof(PSVirtualMachine), typeof(PSVirtualMachineInstanceView))]
     public class GetAzureVMBootDiagnosticsDataCommand : VirtualMachineBaseCmdlet

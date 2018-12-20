@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The address prefixes of the subnet")]
         [ValidateNotNullOrEmpty]
-        public List<string> AddressPrefix { get; set; }
+        public string[] AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -76,18 +76,18 @@ namespace Microsoft.Azure.Commands.Network
             "Microsoft.EventHub",
             "Microsoft.ServiceBus"
         )]
-        public List<string> ServiceEndpoint { get; set; }
+        public string[] ServiceEndpoint { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Endpoint Policies")]
-        public List<PSServiceEndpointPolicy> ServiceEndpointPolicy { get; set; }
+        public PSServiceEndpointPolicy[] ServiceEndpointPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Delegations")]
-        public List<PSDelegation> Delegation { get; set; }
+        public PSDelegation[] Delegation { get; set; }
     }
 }
