@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maps.Models",
             "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.PowerShell.Cmdlets.Maps, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -142,6 +142,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -204,6 +205,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -298,6 +300,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -365,6 +368,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -408,6 +412,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -461,7 +466,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maps.Models",
             "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountKeys, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountKeys, Microsoft.Azure.PowerShell.Cmdlets.Maps, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimaryKey": "System.String",
               "SecondaryKey": "System.String"
@@ -559,7 +564,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maps.Models",
             "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.PowerShell.Cmdlets.Maps, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -647,6 +652,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -736,6 +742,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -782,7 +789,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Maps.Models",
                   "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.PowerShell.Cmdlets.Maps, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -858,6 +865,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -925,6 +933,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -968,6 +977,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1021,7 +1031,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maps.Models",
             "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.PowerShell.Cmdlets.Maps, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1141,9 +1151,7 @@
             "Methods": [],
             "Constructors": []
           },
-          "ValidateSet": [
-            "S0"
-          ],
+          "ValidateSet": [],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
@@ -1189,6 +1197,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1288,9 +1297,7 @@
                   "Methods": [],
                   "Constructors": []
                 },
-                "ValidateSet": [
-                  "S0"
-                ],
+                "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
@@ -1354,6 +1361,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1540,7 +1548,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maps.Models",
             "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.PowerShell.Cmdlets.Maps, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1628,6 +1636,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1744,6 +1753,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1814,6 +1824,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1860,7 +1871,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Maps.Models",
                   "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.PowerShell.Cmdlets.Maps, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1963,6 +1974,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2057,6 +2069,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2168,7 +2181,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maps.Models",
             "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.PowerShell.Cmdlets.Maps, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2274,6 +2287,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2387,6 +2401,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2433,7 +2448,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Maps.Models",
                   "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.PowerShell.Cmdlets.Maps, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2533,6 +2548,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2624,6 +2640,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2691,6 +2708,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2875,7 +2893,7 @@
     "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku": {
       "Namespace": "Microsoft.Azure.Commands.Maps.Models",
       "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku, Microsoft.Azure.PowerShell.Cmdlets.Maps, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Tier": "System.String"
@@ -2948,7 +2966,7 @@
     "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount": {
       "Namespace": "Microsoft.Azure.Commands.Maps.Models",
       "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.PowerShell.Cmdlets.Maps, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -3106,8 +3124,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],

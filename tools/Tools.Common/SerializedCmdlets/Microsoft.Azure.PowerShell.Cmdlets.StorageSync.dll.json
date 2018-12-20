@@ -13,15 +13,9 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models",
-            "Name": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationResult",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationResult, Microsoft.Azure.Commands.StorageSync, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
-            "Properties": {
-              "Level": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSResultLevel",
-              "Type": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationType",
-              "Positions": "System.Collections.Generic.List`1[System.Int32]",
-              "Description": "System.String",
-              "Path": "System.String"
-            },
+            "Name": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSStorageSyncValidation",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSStorageSyncValidation, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
@@ -55,12 +49,7 @@
               {
                 "Name": "",
                 "ReturnType": null,
-                "Parameters": [
-                  {
-                    "Name": "result",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ]
+                "Parameters": []
               }
             ]
           },
@@ -144,24 +133,6 @@
         },
         {
           "Name": "SkipNamespaceChecks",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Quiet",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -278,30 +249,6 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Quiet",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -335,30 +282,6 @@
             {
               "ParameterMetadata": {
                 "Name": "SkipSystemChecks",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Quiet",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -436,30 +359,6 @@
             {
               "ParameterMetadata": {
                 "Name": "SkipSystemChecks",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Quiet",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -628,111 +527,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSResultLevel": {
-      "Namespace": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models",
-      "Name": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSResultLevel",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSResultLevel, Microsoft.Azure.Commands.StorageSync, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "CompareTo",
-          "Parameters": [
-            {
-              "Name": "target",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "HasFlag",
-          "Parameters": [
-            {
-              "Name": "flag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetTypeCode",
-          "Parameters": [],
-          "ReturnType": "System.TypeCode"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": []
-    },
-    "System.TypeCode": {
-      "Namespace": "System",
-      "Name": "System.TypeCode",
-      "AssemblyQualifiedName": "System.TypeCode, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
-    },
     "System.Type": {
       "Namespace": "System",
       "Name": "System.Type",
@@ -740,113 +534,6 @@
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationType": {
-      "Namespace": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models",
-      "Name": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationType, Microsoft.Azure.Commands.StorageSync, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "CompareTo",
-          "Parameters": [
-            {
-              "Name": "target",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "HasFlag",
-          "Parameters": [
-            {
-              "Name": "flag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetTypeCode",
-          "Parameters": [],
-          "ReturnType": "System.TypeCode"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": []
-    },
-    "System.Collections.Generic.List`1[System.Int32]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.List`1[System.Int32]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.Int32"
-      ],
       "Methods": [],
       "Constructors": []
     }

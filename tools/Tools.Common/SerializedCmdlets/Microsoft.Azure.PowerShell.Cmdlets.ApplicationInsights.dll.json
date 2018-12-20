@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -175,6 +175,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -237,6 +238,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -359,6 +361,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -454,6 +457,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -497,6 +501,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -550,7 +555,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApiKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApiKey, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApiKey, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApiKey": "System.String",
               "CreatedDate": "System.String",
@@ -612,7 +617,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -768,6 +773,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -809,7 +815,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -920,6 +926,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1011,6 +1018,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1129,6 +1137,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1196,6 +1205,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1249,7 +1259,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExportId": "System.String",
               "StorageName": "System.String",
@@ -1316,7 +1326,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -1472,6 +1482,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1513,7 +1524,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -1624,6 +1635,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1715,6 +1727,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1833,6 +1846,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1900,6 +1914,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1953,7 +1968,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -2137,6 +2152,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2307,6 +2323,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2360,7 +2377,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApiKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApiKey, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApiKey, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApiKey": "System.String",
               "CreatedDate": "System.String",
@@ -2422,7 +2439,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -2600,6 +2617,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2641,7 +2659,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -2780,6 +2798,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2899,6 +2918,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3045,6 +3065,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3140,6 +3161,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3193,7 +3215,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExportId": "System.String",
               "StorageName": "System.String",
@@ -3260,7 +3282,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -3481,6 +3503,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -3522,7 +3545,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -3716,6 +3739,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3890,6 +3914,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4091,6 +4116,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4241,6 +4267,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4313,7 +4340,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -4469,6 +4496,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -4510,7 +4538,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -4621,6 +4649,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4712,6 +4741,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4830,6 +4860,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4897,6 +4928,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4969,7 +5001,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -5143,6 +5175,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -5184,7 +5217,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -5319,6 +5352,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5434,6 +5468,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5576,6 +5611,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5667,6 +5703,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5739,7 +5776,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -5913,6 +5950,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -5954,7 +5992,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -6089,6 +6127,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6204,6 +6243,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6346,6 +6386,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6437,6 +6478,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6490,7 +6532,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExportId": "System.String",
               "StorageName": "System.String",
@@ -6557,7 +6599,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -6814,6 +6856,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -6855,7 +6898,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -7097,6 +7140,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7319,6 +7363,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7568,6 +7613,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7766,6 +7812,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7819,7 +7866,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StopSendNotificationWhenHitCap": "System.Boolean",
               "Cap": "System.Nullable`1[System.Double]",
@@ -7889,7 +7936,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -8065,6 +8112,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -8106,7 +8154,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -8243,6 +8291,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8360,6 +8409,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8504,6 +8554,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8597,6 +8648,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8650,7 +8702,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StopSendNotificationWhenHitCap": "System.Boolean",
               "Cap": "System.Nullable`1[System.Double]",
@@ -8720,7 +8772,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -8918,6 +8970,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -8959,7 +9012,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -9124,6 +9177,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9269,6 +9323,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9441,6 +9496,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9562,6 +9618,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9793,7 +9850,7 @@
     "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent": {
       "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
       "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -9972,8 +10029,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -10079,7 +10135,7 @@
     "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan": {
       "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
       "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "StopSendNotificationWhenHitCap": "System.Boolean",
         "Cap": "System.Nullable`1[System.Double]",

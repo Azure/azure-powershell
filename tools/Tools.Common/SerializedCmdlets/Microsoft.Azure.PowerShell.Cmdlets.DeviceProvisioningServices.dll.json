@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -73,7 +73,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -236,6 +236,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -277,7 +278,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
                     "ResourceGroupName": "System.String",
@@ -410,6 +411,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -549,6 +551,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -712,6 +715,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -779,6 +783,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -834,7 +839,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -893,7 +898,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -1022,6 +1027,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1063,7 +1069,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
                     "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -1150,6 +1156,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1241,6 +1248,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1356,6 +1364,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1423,6 +1432,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1478,7 +1488,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponse, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponseProperties",
               "ResourceGroupName": "System.String",
@@ -1537,7 +1547,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -1682,6 +1692,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1723,7 +1734,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
                     "ResourceGroupName": "System.String",
@@ -1784,6 +1795,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1875,6 +1887,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2014,6 +2027,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2057,6 +2071,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2131,7 +2146,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -2294,6 +2309,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2335,7 +2351,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
                     "ResourceGroupName": "System.String",
@@ -2420,6 +2436,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2535,6 +2552,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2698,6 +2716,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2765,6 +2784,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2820,7 +2840,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -2879,7 +2899,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -3042,6 +3062,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -3083,7 +3104,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
                     "ResourceGroupName": "System.String",
@@ -3168,6 +3189,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3283,6 +3305,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3446,6 +3469,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3489,6 +3513,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3544,7 +3569,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
               "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -3599,7 +3624,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
               "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -3658,7 +3683,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -3843,6 +3868,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -3884,7 +3910,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
                     "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -4045,6 +4071,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4210,6 +4237,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4399,6 +4427,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4492,6 +4521,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4547,7 +4577,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
               "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -4602,7 +4632,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
               "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -4661,7 +4691,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -4790,6 +4820,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -4831,7 +4862,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
                     "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -4918,6 +4949,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5009,6 +5041,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5124,6 +5157,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5191,6 +5225,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5265,7 +5300,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
               "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -5410,6 +5445,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -5451,7 +5487,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
                     "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -5536,6 +5572,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5651,6 +5688,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5790,6 +5828,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5857,6 +5896,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5912,7 +5952,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
               "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -5971,7 +6011,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
               "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -6136,6 +6176,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -6177,7 +6218,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
                     "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -6288,6 +6329,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6429,6 +6471,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6594,6 +6637,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6687,6 +6731,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6742,7 +6787,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "Name": "System.String",
@@ -6800,7 +6845,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -6954,6 +6999,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -6995,7 +7041,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
                     "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -7113,6 +7159,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7235,6 +7282,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7381,6 +7429,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7424,6 +7473,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7479,7 +7529,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "Name": "System.String",
@@ -7537,7 +7587,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -7666,6 +7716,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -7707,7 +7758,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
                     "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -7794,6 +7845,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7885,6 +7937,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8000,6 +8053,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8067,6 +8121,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8141,7 +8196,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "Name": "System.String",
@@ -8285,6 +8340,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -8326,7 +8382,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceGroupName": "System.String",
                     "Name": "System.String",
@@ -8410,6 +8466,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8525,6 +8582,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8664,6 +8722,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8731,6 +8790,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8786,7 +8846,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "Name": "System.String",
@@ -8844,7 +8904,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "Name": "System.String",
@@ -8995,6 +9055,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -9036,7 +9097,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceGroupName": "System.String",
                     "Name": "System.String",
@@ -9127,6 +9188,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9249,6 +9311,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9395,6 +9458,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9438,6 +9502,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9493,7 +9558,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -9587,6 +9652,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -9649,6 +9715,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9740,6 +9807,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9783,6 +9851,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9838,7 +9907,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -9992,6 +10061,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -10156,6 +10226,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10277,6 +10348,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10351,7 +10423,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -10480,6 +10552,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -10521,7 +10594,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
                     "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -10608,6 +10681,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10699,6 +10773,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10814,6 +10889,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10881,6 +10957,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10936,7 +11013,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -10997,7 +11074,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
               "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -11166,6 +11243,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -11207,7 +11285,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
                     "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -11318,6 +11396,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11364,7 +11443,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
                     "Sku": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
@@ -11455,6 +11534,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11570,6 +11650,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11665,6 +11746,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11804,6 +11886,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11923,6 +12006,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11966,6 +12050,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -12152,7 +12237,7 @@
     "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateProperties, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IsVerified": "System.Nullable`1[System.Boolean]",
         "Expiry": "System.Nullable`1[System.DateTime]",
@@ -12351,8 +12436,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -12436,7 +12520,7 @@
     "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription": {
       "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsPropertiesDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IotHubs": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription]",
         "AuthorizationPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription]",
@@ -12487,7 +12571,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -12499,7 +12583,7 @@
     "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription": {
       "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ApplyAllocationPolicy": "System.Nullable`1[System.Boolean]",
         "AllocationWeight": "System.Nullable`1[System.Int32]",
@@ -12561,7 +12645,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -12573,7 +12657,7 @@
     "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription": {
       "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ResourceGroupName": "System.String",
         "Name": "System.String",
@@ -12622,7 +12706,7 @@
     "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo": {
       "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotDpsSkuInfo, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Capacity": "System.Nullable`1[System.Int64]",
         "Tier": "System.String",
@@ -12680,7 +12764,7 @@
     "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponseProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponseProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponseProperties, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponseProperties, Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IsVerified": "System.Nullable`1[System.Boolean]",
         "Expiry": "System.Nullable`1[System.DateTime]",

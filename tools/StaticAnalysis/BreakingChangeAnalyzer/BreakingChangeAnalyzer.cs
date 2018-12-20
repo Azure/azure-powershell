@@ -171,7 +171,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                         var filePath = executingPath + "\\SerializedCmdlets\\" + fileName;
 
-                        var serialize = false;
+                        var serialize = true;
                         if (serialize)
                         {
                             SerializeCmdlets(filePath, newModuleMetadata);
