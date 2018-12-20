@@ -65,12 +65,12 @@ RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.PowerShell.Strategie
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = '.\Microsoft.Azure.Commands.Compute.Types.ps1xml'
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.Compute.format.ps1xml', 
-               '.\Microsoft.Azure.Commands.Compute.format.generated.ps1xml', 
-               '.\Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml'
+FormatsToProcess = '.\Compute.format.ps1xml', 
+               '.\Compute.generated.format.ps1xml', 
+               '.\Generated\Compute.Automation.generated.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Compute.dll')

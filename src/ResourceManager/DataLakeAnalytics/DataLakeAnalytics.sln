@@ -2,15 +2,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataLakeAnalytics.Netcore", "Commands.DataLakeAnalytics\Commands.DataLakeAnalytics.Netcore.csproj", "{8A397A61-6DC3-4244-9A40-D44A22152AAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLakeAnalytics", "Commands.DataLakeAnalytics\DataLakeAnalytics.csproj", "{8A397A61-6DC3-4244-9A40-D44A22152AAE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataLakeAnalytics.Test.Netcore", "Commands.DataLakeAnalytics.Test\Commands.DataLakeAnalytics.Test.Netcore.csproj", "{E6122DB1-1466-47EE-8BA0-73F9CA90F826}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLakeAnalytics.Test", "Commands.DataLakeAnalytics.Test\DataLakeAnalytics.Test.csproj", "{E6122DB1-1466-47EE-8BA0-73F9CA90F826}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Profile\Commands.Profile\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataLakeStore.Netcore", "..\DataLakeStore\Commands.DataLakeStore\Commands.DataLakeStore.Netcore.csproj", "{8AAB43E6-E8F6-4F91-AF8A-6A63CD78EF1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLakeStore", "..\DataLakeStore\DataLakeStore\DataLakeStore.csproj", "{8AAB43E6-E8F6-4F91-AF8A-6A63CD78EF1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

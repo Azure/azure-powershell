@@ -67,7 +67,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.Sql.dll',
 TypesToProcess = '.\Microsoft.Azure.Commands.Sql.Types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.Sql.format.ps1xml'
+FormatsToProcess = '.\Sql.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Sql.dll')
