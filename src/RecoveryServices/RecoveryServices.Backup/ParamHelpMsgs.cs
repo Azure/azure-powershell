@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string AzureVMServiceName = "Cloud Service Name for Azure Classic Compute VM.";
             public const string AzureVMResourceGroupName = "Resource Group Name for Azure Compute VM .";
             public const string ProtectedItem = "Filter value for status of job.";
+            public const string ProtectableItem = "Protectabe item";
             public const string ProtectionStatus = "Protection status of Item";
             public const string Status = "Status of the data source";
             public const string Container = "Container where the item resides";
@@ -84,6 +85,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string AzureFileShareName = "Azure FileShare Name.";
             public const string AzureFileStorageAccountName = "Azure file share storage account name";
             public const string AzureFileStorageAccountResourceGroupName = "Azure file share storage account resource group name";
+        }
+
+        internal static class ProtectableItem
+        {
+            public const string ItemType = "Protectable Item type.";
         }
 
         internal static class RecoveryPoint

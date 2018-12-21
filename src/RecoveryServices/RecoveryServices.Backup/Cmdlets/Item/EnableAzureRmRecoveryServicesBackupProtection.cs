@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string AzureVMClassicComputeParameterSet = "AzureVMClassicComputeEnableProtection";
         internal const string AzureVMComputeParameterSet = "AzureVMComputeEnableProtection";
         internal const string AzureFileShareParameterSet = "AzureFileShareEnableProtection";
+        internal const string AzureWorkloadParameterSet = "AzureWorkloadEnableProtection";
         internal const string ModifyProtectionParameterSet = "ModifyProtection";
 
         /// <summary>
@@ -52,6 +53,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureFileShareParameterSet, HelpMessage = ParamHelpMsgs.Item.ItemName)]
         public string Name { get; set; }
+
+        [Parameter(Position = 2, Mandatory = true, ParameterSetName = AzureWorkloadParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.ProtectedItem, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public ProtectableItemBase ProtectableItem { get; set; }
 
         /// <summary>
         /// Service name of the classic Azure VM whose representative item needs to be protected.
@@ -116,6 +122,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             { ItemParams.AzureVMResourceGroupName, ResourceGroupName },
                             { ItemParams.Policy, Policy },
                             { ItemParams.Item, Item },
+                            { ItemParams.ProtectableItem, ProtectableItem },
                             { ItemParams.ParameterSetName, this.ParameterSetName },
                         }, ServiceClientAdapter);
 

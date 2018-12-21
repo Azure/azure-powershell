@@ -350,4 +350,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         File,
         Directory
     }
+
+    /// <summary>
+    /// Options to select the protectable type
+    /// </summary>
+    public enum ProtectableItemType
+    {
+        SQLDataBase,
+        SQLInstance,
+        SQLAvailabilityGroupContainer,
+    }
 }
