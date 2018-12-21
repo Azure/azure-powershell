@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     PolicyRule = JObject.Parse(this.GetObjectFromParameter(this.Policy).ToString()),
                     Metadata = this.Metadata == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Metadata).ToString()),
                     Parameters = this.Parameter == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Parameter).ToString()),
-                    Mode = this.Mode != PolicyDefinitionMode.NotSpecified ? this.Mode : PolicyDefinitionMode.All
+                    Mode = this.Mode == PolicyDefinitionMode.NotSpecified ? PolicyDefinitionMode.All : this.Mode
                 }
             };
 

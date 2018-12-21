@@ -151,9 +151,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var metaDataJson = string.IsNullOrEmpty(this.Metadata) ? resource.Properties["metadata"]?.ToString() : GetObjectFromParameter(this.Metadata).ToString();
             var parameterJson = string.IsNullOrEmpty(this.Parameter) ? resource.Properties["parameters"]?.ToString() : GetObjectFromParameter(this.Parameter).ToString();
 
-            PolicyDefinitionMode tempMode;
             PolicyDefinitionMode? existingMode = null;
-            if (Enum.TryParse(resource.Properties["mode"]?.ToString(), true, out tempMode))
+            if (Enum.TryParse(resource.Properties["mode"]?.ToString(), true, out PolicyDefinitionMode tempMode))
             {
                 existingMode = tempMode;
             }
@@ -168,7 +167,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     PolicyRule = string.IsNullOrEmpty(policyRuleJson) ? null : JObject.Parse(policyRuleJson),
                     Metadata = string.IsNullOrEmpty(metaDataJson) ? null : JObject.Parse(metaDataJson),
                     Parameters = string.IsNullOrEmpty(parameterJson) ? null : JObject.Parse(parameterJson),
-                    Mode = this.Mode != PolicyDefinitionMode.NotSpecified ? this.Mode : existingMode
+                    Mode = this.Mode == PolicyDefinitionMode.NotSpecified ? existingMode : this.Mode
                 }
             };
 
