@@ -18,37 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>true</DesignTime>
-      <AutoGen>true</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Microsoft.WindowsAzure.Commands.Storage.format.ps1xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Microsoft.WindowsAzure.Commands.Storage.generated.format.ps1xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Microsoft.WindowsAzure.Commands.Storage.types.ps1xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\AzureContextAdapterExtensions.cs" Link="Common\Cmdlet\AzureContextAdapterExtensions.cs" />
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageBlob.cs" Link="Common\AzureStorageBlob.cs" />
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageContainer.cs" Link="Common\AzureStorageContainer.cs" />

@@ -6,7 +6,7 @@
     <LegacyAssemblyPrefix>Microsoft.Azure.Commands.</LegacyAssemblyPrefix>
   </PropertyGroup>
 
-  <!-- CsProj -->
+  <!-- Build -->
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>

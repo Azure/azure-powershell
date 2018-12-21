@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Profile\Commands.Profile.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.Profile\Accounts.csproj" />
   </ItemGroup>
 
   <ItemGroup>

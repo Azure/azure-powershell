@@ -18,7 +18,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Automation\Commands.Automation.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.Automation\Automation.csproj" />
   </ItemGroup>
 
   <ItemGroup>

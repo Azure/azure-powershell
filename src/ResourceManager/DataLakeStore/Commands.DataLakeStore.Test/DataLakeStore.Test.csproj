@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.DataLakeStore\Commands.DataLakeStore.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.DataLakeStore\DataLakeStore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Compute\Commands.Compute.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.Compute\Compute.csproj" />
   </ItemGroup>
 
   <ItemGroup>

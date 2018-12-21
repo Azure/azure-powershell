@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.KeyVault\Commands.KeyVault.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.KeyVault\KeyVault.csproj" />
   </ItemGroup>
 
   <ItemGroup>

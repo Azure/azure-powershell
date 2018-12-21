@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Models\Commands.RecoveryServices.Backup.Models.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Models\RecoveryServices.Backup.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>

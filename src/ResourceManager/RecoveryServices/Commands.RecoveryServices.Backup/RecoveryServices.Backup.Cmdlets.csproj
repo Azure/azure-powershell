@@ -16,36 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Helpers\Commands.RecoveryServices.Backup.Helpers.Netcore.csproj" />
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Logger\Commands.RecoveryServices.Backup.Logger.Netcore.csproj" />
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Models\Commands.RecoveryServices.Backup.Models.Netcore.csproj" />
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Providers\Commands.RecoveryServices.Backup.Providers.Netcore.csproj" />
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.ServiceClientAdapter\Commands.RecoveryServices.Backup.ServiceClientAdapter.Netcore.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>true</DesignTime>
-      <AutoGen>true</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Microsoft.Azure.Commands.RecoveryServices.Backup.format.ps1xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Helpers\RecoveryServices.Backup.Helpers.csproj" />
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Logger\RecoveryServices.Backup.Logger.csproj" />
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Models\RecoveryServices.Backup.Models.csproj" />
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Providers\RecoveryServices.Backup.Providers.csproj" />
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.ServiceClientAdapter\RecoveryServices.Backup.ServiceClientAdapter.csproj" />
   </ItemGroup>
 
 </Project>

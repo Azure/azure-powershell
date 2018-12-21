@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Resources\Commands.Resources.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.Resources\Resources.csproj" />
   </ItemGroup>
 
   <ItemGroup>
