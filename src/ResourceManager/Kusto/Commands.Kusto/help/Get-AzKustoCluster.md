@@ -30,16 +30,48 @@ List all Kusto clusters in a resource group or get a specific Kusto cluster.
 
 ### Example 1 - List all Kusto clusters in a resource group
 
+Type              : Microsoft.Kusto/Clusters
+Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/mykustocluster1
+ResourceGroup     : testrg
+Name              : mykustocluster1
+Location          : Central US
+Sku               : D13_v2
+ProvisioningState : Succeeded
+State             : Running
+Tag               : {}
+
+Type              : Microsoft.Kusto/Clusters
+Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/mykustocluster2
+ResourceGroup     : testrg
+Name              : mykustocluster2
+Location          : Central US
+Sku               : D13_v2
+ProvisioningState : Succeeded
+State             : Running
+Tag               : {}
 ```
 PS C:\> Get-AzKustoCluster -ResourceGroupName testrg
 ```
 
 The above command lists all Kusto clusters in the resource group "testrg".
 
+
+
 ### Example 2 - Get a specific Kusto cluster by name
 
 ```
 PS C:\> Get-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster
+
+Type              : Microsoft.Kusto/Clusters
+Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/mykustocluster
+ResourceGroup     : testrg
+Name              : mykustocluster
+Location          : Central US
+Sku               : D13_v2
+ProvisioningState : Succeeded
+State             : Running
+Tag               : {}
+
 ```
 
 The above command returns the Kusto cluster named "mykustocluster" in the resource group "testrg".
@@ -48,6 +80,15 @@ The above command returns the Kusto cluster named "mykustocluster" in the resour
 
 ```
 PS C:\> Get-AzKustoCluster -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/clusters/mykustocluster
+Type              : Microsoft.Kusto/Clusters
+Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/mykustocluster
+ResourceGroup     : testrg
+Name              : mykustocluster
+Location          : Central US
+Sku               : D13_v2
+ProvisioningState : Succeeded
+State             : Running
+Tag               : {}
 ```
 
 The above command returns the Kusto cluster named "mykustocluster" in the resource group "testrg".
