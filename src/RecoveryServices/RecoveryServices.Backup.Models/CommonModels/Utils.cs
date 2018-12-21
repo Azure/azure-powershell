@@ -284,6 +284,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return WorkloadType.MSSQL;
             }
+            else if (workloadType == "SQL")
+            {
+                return WorkloadType.MSSQL;
+            }
             else
             {
                 throw new Exception("Unsupported WorkloadType: " + workloadType);

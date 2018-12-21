@@ -12,32 +12,41 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Test-AzureWorkloadGetRPs
+function Test-AzureVmWorkloadProtectableItem
 {
 	try
 	{
-		# Test 1: Get latest recovery point; should be only one
 		Get-AzureRmRecoveryServicesVault -ResourceGroupName 'shracrg' -Name 'shracsql' | Set-AzureRmRecoveryServicesVaultContext
-
-		$recoveryPoint = Get-AzureRmRecoveryServicesBackupRecoveryPoint
+		$items = Get-AzRecoveryServicesBackupProtectableItem -ProtectableItemType "SQLDataBase"
 	}
 	finally
 	{
-
+	
 	}
 }
 
-function Test-AzureWorkloadGetLogChains
+function Test-AzureVmWorkloadProtectedItem
 {
 	try
 	{
-		# Test 1: Get latest recovery point; should be only one
 		Get-AzureRmRecoveryServicesVault -ResourceGroupName 'shracrg' -Name 'shracsql' | Set-AzureRmRecoveryServicesVaultContext
-
-		$recoveryPoint = Get-AzRecoveryServicesBackupRecoveryLogChain
+		$items = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureWorkload" -WorkloadType MSSQL
 	}
 	finally
 	{
+	
+	}
+}
 
+function Test-AzureVmWorkloadNewProtectableItem
+{
+	try
+	{
+		Get-AzureRmRecoveryServicesVault -ResourceGroupName 'shracrg' -Name 'shracsql' | Set-AzureRmRecoveryServicesVaultContext
+		$items = New-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL
+	}
+	finally
+	{
+	
 	}
 }

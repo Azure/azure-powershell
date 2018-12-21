@@ -161,6 +161,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
+    /// Represents Azure Backup Item Context Class
+    /// </summary>
+    public class ProtectableItemContext : ContainerContext
+    {
+        /// <summary>
+        /// Workload Type of Item
+        /// </summary>
+        public WorkloadType WorkloadType { get; set; }
+
+        /// <summary>
+        /// Unique name of the Container
+        /// </summary>
+        public string ContainerName { get; set; }
+
+        public ProtectableItemContext()
+            : base()
+        {
+
+        }
+
+        public ProtectableItemContext(ServiceClientModel.WorkloadProtectableItem protectableItem,
+            string containerName, ContainerType containerType)
+            : base(containerType, protectableItem.BackupManagementType)
+        {
+            WorkloadType = ConversionUtils.GetPsWorkloadType(
+                protectableItem.WorkloadType.ToString());
+            ContainerName = containerName;
+        }
+    }
+
+    /// <summary>
     /// Represents Azure Backup Item Base Class
     /// </summary>
     public class ItemBase : ItemContext
@@ -194,6 +225,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             Id = protectedItemResource.Id;
             LatestRecoveryPoint = protectedItem.LastRecoveryPoint;
             SourceResourceId = protectedItem.SourceResourceId;
+        }
+    }
+
+    /// <summary>
+    /// Represents Azure Backup Protectable Item Base Class
+    /// </summary>
+    public class ProtectableItemBase : ProtectableItemContext
+    {
+        /// <summary>
+        /// Name of the item
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Id of the item
+        /// </summary>
+        public string Id { get; set; }
+
+        public ProtectableItemBase(ServiceClientModel.WorkloadProtectableItemResource workloadProtectableItemResource,
+            string containerName, ContainerType containerType)
+            : base(workloadProtectableItemResource.Properties, containerName, containerType)
+        {
+            ServiceClientModel.WorkloadProtectableItem protectableItem = workloadProtectableItemResource.Properties;
+            Name = workloadProtectableItemResource.Name;
+            Id = workloadProtectableItemResource.Id;
         }
     }
 
@@ -408,7 +464,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Recovery point for full/differential backup.
         /// </summary>
-        public AzureRecoveryPoint RecoveryPoint { get; set; }
+        public RecoveryPointBase RecoveryPoint { get; set; }
 
         /// <summary>
         /// PointInTime for Log backup.

@@ -26,7 +26,6 @@ using System.Management.Automation;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using SystemNet = System.Net;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -475,7 +474,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             //inquiry
-            TriggerInquiry(vaultName, vaultResourceGroupName, storageContainerName);
+            AzureWorkloadProviderHelper.TriggerInquiry(vaultName, vaultResourceGroupName,
+                storageContainerName, ServiceClientModel.WorkloadType.AzureFileShare);
 
             //get protectable item
             WorkloadProtectableItemResource protectableObjectResource = null;
@@ -529,37 +529,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
             }
             return protectableObjectResource;
-        }
-
-        private void TriggerInquiry(string vaultName, string vaultResourceGroupName,
-            string storageContainerName)
-        {
-            ODataQuery<BMSContainersInquiryQueryObject> queryParams = new ODataQuery<BMSContainersInquiryQueryObject>(
-                q => q.WorkloadType
-                     == ServiceClientModel.WorkloadType.AzureFileShare);
-            string errorMessage = string.Empty;
-            var inquiryResponse = ServiceClientAdapter.InquireContainer(
-               storageContainerName,
-               queryParams,
-               vaultName,
-               vaultResourceGroupName);
-
-            var operationStatus = TrackingHelpers.GetOperationResult(
-                inquiryResponse,
-                operationId =>
-                    ServiceClientAdapter.GetContainerRefreshOrInquiryOperationResult(
-                        operationId,
-                        vaultName: vaultName,
-                        resourceGroupName: vaultResourceGroupName));
-
-            //Now wait for the operation to Complete
-            if (inquiryResponse.Response.StatusCode
-                    != SystemNet.HttpStatusCode.NoContent)
-            {
-                errorMessage = string.Format(Resources.TriggerEnquiryFailureErrorCode,
-                    inquiryResponse.Response.StatusCode);
-                Logger.Instance.WriteDebug(errorMessage);
-            }
         }
 
         private List<ContainerBase> GetRegisteredStorageAccounts(string vaultName = null,

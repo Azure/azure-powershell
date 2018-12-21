@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using System;
+using System.Collections.Generic;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
@@ -427,8 +427,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     itemModel = GetAzureFileShareItemModel(protectedItem);
                 }
+
+                if (protectedItem.Properties.GetType() ==
+                    typeof(ServiceClientModel.AzureVmWorkloadSQLDatabaseProtectedItem))
+                {
+                    itemModel = GetAzureVmWorkloadItemModel(protectedItem);
+                }
             }
 
+            return itemModel;
+        }
+
+        private static ItemBase GetAzureVmWorkloadItemModel(ServiceClientModel.ProtectedItemResource protectedItem)
+        {
+            ItemBase itemModel;
+            string policyName = null;
+            string policyId = ((ServiceClientModel.AzureVmWorkloadSQLDatabaseProtectedItem)protectedItem.Properties).PolicyId;
+            if (!string.IsNullOrEmpty(policyId))
+            {
+                Dictionary<UriEnums, string> keyValueDict =
+                HelperUtils.ParseUri(policyId);
+                policyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, policyId);
+            }
+
+            string containerUri = HelperUtils.GetContainerUri(
+                HelperUtils.ParseUri(protectedItem.Id),
+                protectedItem.Id);
+
+            itemModel = new AzureWorkloadSQLDatabaseProtectedItem(
+                protectedItem,
+                IdUtils.GetNameFromUri(containerUri),
+                ContainerType.AzureWorkload,
+                policyName);
             return itemModel;
         }
 
@@ -507,7 +537,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         /// <summary>
-        /// Helper function to convert ps backup policy item list from service response.
+        /// Helper function to convert ps protectable item from service response.
+        /// </summary>
+        public static ProtectableItemBase GetProtectableItemModel(ServiceClientModel.WorkloadProtectableItemResource protectableItem)
+        {
+            ProtectableItemBase itemModel = null;
+
+            if (protectableItem != null &&
+                protectableItem.Properties != null)
+            {
+                if (protectableItem.Properties.GetType().IsSubclassOf(typeof(ServiceClientModel.AzureVmWorkloadProtectableItem)))
+                {
+                    itemModel = GetAzureWorkloadProtectableItemModel(protectableItem);
+                }
+            }
+
+            return itemModel;
+        }
+
+        private static ProtectableItemBase GetAzureWorkloadProtectableItemModel(ServiceClientModel.WorkloadProtectableItemResource protectableItem)
+        {
+            ProtectableItemBase itemModel;
+
+            string containerUri = HelperUtils.GetContainerUri(
+                HelperUtils.ParseUri(protectableItem.Id),
+                protectableItem.Id);
+
+            itemModel = new AzureWorkloadProtectableItem(
+                protectableItem,
+                IdUtils.GetNameFromUri(containerUri),
+                ContainerType.AzureWorkload);
+
+            return itemModel;
+        }
+
+        /// <summary>
+        /// Helper function to convert ps item list from service response.
         /// </summary>
         public static List<ItemBase> GetItemModelList(IEnumerable<ServiceClientModel.ProtectedItemResource> protectedItems)
         {
@@ -566,6 +631,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone, "AzureWorkload");
                 }
             }
+        }
+
+        /// <summary>
+        /// Helper function to convert ps protectable item list from service response.
+        /// </summary>
+        public static List<ProtectableItemBase> GetProtectableItemModelList(IEnumerable<ServiceClientModel.WorkloadProtectableItemResource> protectableItems)
+        {
+            List<ProtectableItemBase> itemModels = new List<ProtectableItemBase>();
+
+            foreach (var protectableItem in protectableItems)
+            {
+                itemModels.Add(GetProtectableItemModel(protectableItem));
+            }
+
+            return itemModels;
         }
         #endregion
     }

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -347,24 +347,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string InvalidRecoveryAzureStorageAccountIdDiskInput {
             get {
                 return ResourceManager.GetString("InvalidRecoveryAzureStorageAccountIdDiskInput", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please pass a valid RecoveryResourceGroupId as input for disk URI &quot;{0}&quot;.
-        /// </summary>
-        internal static string InvalidRecoveryDiskResourceGroup {
-            get {
-                return ResourceManager.GetString("InvalidRecoveryDiskResourceGroup", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please pass a valid RecoveryTargetDiskAccountType as input for disk URI &quot;{0}&quot;.
-        /// </summary>
-        internal static string InvalidRecoveryTargetDiskAccountType {
-            get {
-                return ResourceManager.GetString("InvalidRecoveryTargetDiskAccountType", resourceCulture);
             }
         }
         
@@ -873,6 +855,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
             get {
                 return ResourceManager.GetString("SubscriptionIsNotAssociatedWithTheAccount", resourceCulture);
             }
+        }
+
+        /// <summary>   
+        ///   Looks up a localized string similar to Message: For newly created vault download vault creds file and retry.  
+        ///Recommended Action: Install module AzureRm.RecoveryServices if not installed. And execute below cmdlets  
+        ///$path = Get-AzRecoveryServicesVaultSettingsFile -Vault $Vault    
+        ///Import-AzRecoveryServicesAsrVaultSettingsFile -Path $path.filepath.  
+        /// </summary>  
+        internal static string TryDownloadingVaultFile {    
+            get {   
+                return ResourceManager.GetString("TryDownloadingVaultFile", resourceCulture);   
+            }   
         }
         
         /// <summary>
