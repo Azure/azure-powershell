@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network
     public class GetAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ParameterSetName = "GetByNameParameterSet",
             HelpMessage = "The name of the service endpoint policy")]
         [ResourceNameCompleter("Microsoft.Network/serviceEndpointPolicies", "ResourceGroupName")]

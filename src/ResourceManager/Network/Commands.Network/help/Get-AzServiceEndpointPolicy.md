@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azserviceendpointpolicy
@@ -20,7 +20,7 @@ Get-AzServiceEndpointPolicy [-ResourceGroupName <String>] [-DefaultProfile <IAzu
 
 ### GetByNameParameterSet
 ```
-Get-AzServiceEndpointPolicy [-Name <String>] -ResourceGroupName <String>
+Get-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -74,7 +74,7 @@ Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
