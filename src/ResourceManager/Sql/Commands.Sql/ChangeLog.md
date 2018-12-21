@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Converted the Storage management client dependency to the common SDK implementation.
 
 ## Version 1.0.0
 * General availability of `Az.Sql` module
