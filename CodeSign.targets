@@ -50,14 +50,16 @@
         </ItemGroup>
 
         <ESRPSignTask
-            CopyBackSignedFilesToOriginalLocation="true"
+        	CopyBackSignedFilesToOriginalLocation="true"
             UnsignedFileList="@(ScriptsToSign)"
             SignLogDirPath="$(LibraryRoot)scripts-signing.log" 
             Condition="!$(DelaySign) and '@(ScriptsToSign)' != ''"/>            
 
         <!-- RemoveCodeSignArtifacts.ps1 -->
         <Message Text="----> Remove artifacts section" Importance="high"/>
-        <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path $(PackageDirectory)\$(Configuration)\Signed,$(PackageDirectory)\$(Configuration)\Unsigned -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" ContinueOnError="WarnAndContinue" IgnoreExitCode="true" />
+        <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(PackageDirectory) -Recurse -Include 'Signed','Unsigned' | Remove-Item -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" 
+       	  	ContinueOnError="WarnAndContinue" 
+          	IgnoreExitCode="true" />
         
         <!-- CheckSignature.ps1 -->    
         <Message Text="----> CheckSignature section" Importance="high"/>        
