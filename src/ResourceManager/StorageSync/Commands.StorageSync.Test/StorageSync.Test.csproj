@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.StorageSync\Commands.StorageSync.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.StorageSync\StorageSync.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.LogicApp\Commands.LogicApp.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.LogicApp\LogicApp.csproj" />
   </ItemGroup>
 
   <ItemGroup>

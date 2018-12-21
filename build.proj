@@ -221,7 +221,7 @@
     <Exec Command="dotnet --version" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <ItemGroup>
-      <ModuleCsprojFiles Include="$(LibraryRoot)src/ResourceManager/**/*.csproj" Exclude="$(LibraryRoot)src/ResourceManager/**/*.Test.Netcore.csproj" />
+      <ModuleCsprojFiles Include="$(LibraryRoot)src/ResourceManager/**/*.csproj" Exclude="$(LibraryRoot)src/ResourceManager/**/*.Test.csproj" />
     </ItemGroup>
     <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFiles->'%(FullPath)', ' ')" />
     <Exec Command="dotnet sln Azure.PowerShell.sln add $(LibraryRoot)tools/Tools.Common/Tools.Common.Netcore.csproj $(LibraryRoot)tools/StaticAnalysis/StaticAnalysis.Netcore.csproj" />

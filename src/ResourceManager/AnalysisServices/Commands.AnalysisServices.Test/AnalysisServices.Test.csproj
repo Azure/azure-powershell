@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.AnalysisServices.Dataplane\Commands.AnalysisServices.Dataplane.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.AnalysisServices.Dataplane\AnalysisServices.Dataplane.csproj" />
   </ItemGroup>
 
   <ItemGroup>

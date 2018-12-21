@@ -8,9 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources.Test", "Commands.Resources.Test\Resources.Test.csproj", "{4C2FE49A-09E1-4979-AD46-CD64FD04C8F7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources.Rest", "Commands.ResourceManager\Cmdlets\Resources.Rest.csproj", "{8058D403-06E3-4BED-8924-D166CE303961}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManager", "Commands.ResourceManager\Cmdlets\ResourceManager.csproj", "{8058D403-06E3-4BED-8924-D166CE303961}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Insights", "..\Insights\Insights\Insights.csproj", "{DEA446A1-84E2-46CC-B780-EB4AFDE2460E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitor", "..\Insights\Commands.Insights\Monitor.csproj", "{DEA446A1-84E2-46CC-B780-EB4AFDE2460E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Profile\Commands.Profile\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject

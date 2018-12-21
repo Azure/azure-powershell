@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Storage\Commands.Storage.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.Storage\Storage.csproj" />
   </ItemGroup>
 
 </Project>

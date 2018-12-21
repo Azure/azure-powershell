@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Insights\Commands.Insights.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.Insights\Monitor.csproj" />
   </ItemGroup>
 
   <ItemGroup>

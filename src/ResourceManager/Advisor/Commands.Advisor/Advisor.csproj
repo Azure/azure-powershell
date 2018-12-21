@@ -15,20 +15,4 @@
     <PackageReference Include="Microsoft.Azure.Management.Advisor" Version="0.9.5-preview" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="Az.Advisor.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Microsoft.Azure.Commands.Advisor.format.ps1xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
-
 </Project>

@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.RecoveryServices.SiteRecovery\Commands.RecoveryServices.SiteRecovery.Netcore.csproj" />
-    <ProjectReference Include="..\Commands.RecoveryServices\Commands.RecoveryServices.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.RecoveryServices.SiteRecovery\RecoveryServices.SiteRecovery.csproj" />
+    <ProjectReference Include="..\Commands.RecoveryServices\RecoveryServices.csproj" />
   </ItemGroup>
 
   <ItemGroup>

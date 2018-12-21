@@ -14,9 +14,9 @@
     <PackageReference Include="Microsoft.Azure.Management.Advisor" Version="0.9.5-preview" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!-- <ItemGroup>
     <ProjectReference Include="..\Commands.Advisor\Commands.Advisor.Netcore.csproj" />
-  </ItemGroup>
+  </ItemGroup> -->
   
   <ItemGroup>
     <None Update="SessionRecords\**\*.json">

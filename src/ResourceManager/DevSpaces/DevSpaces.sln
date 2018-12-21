@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Profile\Comm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tags", "..\Resources\Tags\Tags.csproj", "{E79AB789-347D-4A77-BAF8-60FD18E7ED9E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources.Rest", "..\Resources\Commands.ResourceManager\Cmdlets\Resources.Rest.csproj", "{CDDDAF15-0CE2-44E8-9F3B-3FF9D723DD0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManager", "..\Resources\Commands.ResourceManager\Cmdlets\ResourceManager.csproj", "{CDDDAF15-0CE2-44E8-9F3B-3FF9D723DD0E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "..\Resources\Commands.Resources\Resources.csproj", "{259032F4-732B-4DF6-9E24-23985D52F253}"
 EndProject

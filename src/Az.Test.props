@@ -9,7 +9,7 @@
     <AzTestAssemblySuffix>.Test</AzTestAssemblySuffix>
   </PropertyGroup>
 
-  <!-- CsProj -->
+  <!-- Build -->
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
     <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</AssemblyName>
