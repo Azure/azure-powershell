@@ -225,6 +225,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
             }
+            if (enableAzureFilesAadIntegrationForSMB != null)
+            {
+                createParameters.EnableAzureFilesAadIntegration = enableAzureFilesAadIntegrationForSMB;
+            }
             if (enableHierarchicalNamespace != null)
             {
                 createParameters.IsHnsEnabled = enableHierarchicalNamespace;
