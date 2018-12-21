@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="All" InitialTargets="CheckSigningToolsPath" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="All" InitialTargets="CheckSigningPaths" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Root>$(MSBuildThisFileDirectory)..\</Root>
     <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
     <Artifacts>$(Root)artifacts\</Artifacts>
     <OutputDir>$(Artifacts)$(Configuration)\</OutputDir>
-    <!-- CISignRepo is an environment variable that points to ci-signing repo clone -->
-    <CISignRepoPath>$(CISignRepo)</CISignRepoPath>
-    <PowerShellCommand Condition=" '$(PowerShellCommand)' == '' ">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellCommand>
-    <PowerShellCommandPrefix>&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command</PowerShellCommandPrefix>
+    <PowerShell>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShell>
   </PropertyGroup>
 
-  <Target Name="CheckSigningToolsPath">
+  <Target Name="CheckSigningPaths">
+    <Error Text="SigningToolsPath is not assigned a file path!" Condition="'$(SigningToolsPath)' == ''" />
+    <Error Text="The SigningToolsPath directory does not exist!" Condition="!Exists($(SigningToolsPath))" />
     <Error Text="CISignRepoPath is not assigned a file path!" Condition="'$(CISignRepoPath)' == ''" />
     <Error Text="The CISignRepoPath directory does not exist!" Condition="!Exists($(CISignRepoPath))" />
   </Target>
@@ -41,9 +40,10 @@
       CopyBackSignedFilesToOriginalLocation="true"
       UnsignedFileList="@(UnsignedFiles)"
       SignLogDirPath="$(OutputDir)Signing.log" />
-    <Exec Command="$(PowerShellCommandPrefix) &quot;Get-ChildItem -Path $(OutputDir) -Recurse -Include 'Signed','Unsigned' | Remove-Item -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" 
-      ContinueOnError="WarnAndContinue" 
-      IgnoreExitCode="true" />
+    <PropertyGroup>
+      <RemoveSignedUnsignedFolders>Get-ChildItem -Path $(OutputDir) -Recurse -Include 'Signed','Unsigned' | Remove-Item -Recurse -Force -Confirm:$false -ErrorAction Ignore</RemoveSignedUnsignedFolders>
+    </PropertyGroup>
+    <Exec Command="$(PowerShell) -NonInteractive -NoLogo -NoProfile -Command &quot;$(RemoveSignedUnsignedFolders)&quot;" ContinueOnError="WarnAndContinue" IgnoreExitCode="true" />
   </Target>
 
   <Target Name="BeforeAll">
