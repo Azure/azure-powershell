@@ -143,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetListener
-HTTPListener to redirect the request to
+HTTP listener to redirect the request to
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetListenerID
-ID of  listener to redirect the request to
+ID of HTTP listener to redirect the request to
 
 ```yaml
 Type: System.String
