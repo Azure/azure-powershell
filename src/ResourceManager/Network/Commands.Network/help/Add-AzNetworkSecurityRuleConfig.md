@@ -40,7 +40,7 @@ The **Add-AzNetworkSecurityRuleConfig** cmdlet adds a network security rule conf
 
 ### 1: Adding a network security group
 ```
-Get-AzNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 | 
+Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName rg1 | 
 Add-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access 
     Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet 
     -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 | 
@@ -54,7 +54,7 @@ The first command retrieves an Azure network security group named "nsg1" from re
 $srcAsg = New-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name srcAsg -Location "West US"
 $destAsg = New-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name destAsg -Location "West US"
 
-Get-AzNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 |
+Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName rg1 |
 Add-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access
     Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceApplicationSecurityGroup
     $srcAsg -SourcePortRange * -DestinationApplicationSecurityGroup $destAsg -DestinationPortRange 3389 |
