@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="All" InitialTargets="CheckSigningToolsPath" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="All" InitialTargets="CheckCISignRepo" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Root>$(MSBuildThisFileDirectory)..\</Root>
     <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
     <Artifacts>$(Root)artifacts\</Artifacts>
-    <Description>Microsoft Azure PowerShell Common</Description>
-    <Keywords>Microsoft Azure PowerShell Common</Keywords>
-    <Certificates>72, 400</Certificates>
     <OutputDir>$(Artifacts)$(Configuration)\</OutputDir>
+    <PowerShell>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShell>
   </PropertyGroup>
 
-  <Target Name="CheckSigningToolsPath">
-    <Error Text="SigningToolsPath is not assigned a file path!" Condition="'$(SigningToolsPath)' == ''" />
-    <Error Text="The SigningToolsPath directory does not exist!" Condition="!Exists($(SigningToolsPath))" />
+  <Target Name="CheckCISignRepo">
+    <Error Text="CISignRepo is not assigned a file path!" Condition="'$(CISignRepo)' == ''" />
+    <Error Text="The CISignRepo directory does not exist!" Condition="!Exists($(CISignRepo))" />
   </Target>
 
-  <UsingTask TaskName="CodeSigningTask" AssemblyFile="$(SigningToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
-  <Import Project="$(SigningToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
+  <UsingTask TaskName="ESRPSignTask" AssemblyFile="$(CISignRepo)\tools\sdkbuildtools\tasks\MS.Az.Sdk.OnPremise.Build.Tasks.dll" />
 
   <Target Name="net452">
     <Message Importance="high" Text="Sign: net452 started" />
@@ -36,15 +33,14 @@
 
   <Target Name="SignFiles" AfterTargets="net452;netstandard20;All" Condition="'$(DisableSigning)' != 'true'">
     <Message Importance="high" Text="Sign: task started" />
-    <CodeSigningTask
-      Description="$(Description)"
-      Keywords="$(Keywords)"
-      UnsignedFiles="@(UnsignedFiles)"
-      DestinationPath="$(OutputDir)"
-      BasePath="$(OutputDir)"
-      Certificates="$(Certificates)"
-      SigningLogPath="$(OutputDir)Signing.log"
-      ToolsPath="$(SigningToolsPath)" />
+    <ESRPSignTask
+      CopyBackSignedFilesToOriginalLocation="true"
+      UnsignedFileList="@(UnsignedFiles)"
+      SignLogDirPath="$(OutputDir)Signing.log" />
+    <PropertyGroup>
+      <RemoveSignedUnsignedFolders>Get-ChildItem -Path $(OutputDir) -Recurse -Include 'Signed','Unsigned' | Remove-Item -Recurse -Force -Confirm:$false -ErrorAction Ignore</RemoveSignedUnsignedFolders>
+    </PropertyGroup>
+    <Exec Command="$(PowerShell) -NonInteractive -NoLogo -NoProfile -Command &quot;$(RemoveSignedUnsignedFolders)&quot;" ContinueOnError="WarnAndContinue" IgnoreExitCode="true" />
   </Target>
 
   <Target Name="BeforeAll">
