@@ -6,7 +6,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sql", "Commands.Sql\Sql.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlManagement", "LegacySdk\SqlManagement.csproj", "{04B53727-16E6-4EF0-9116-04C7F1C33842}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sql.LegacySdk", "LegacySdk\Sql.LegacySdk.csproj", "{04B53727-16E6-4EF0-9116-04C7F1C33842}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sql.Test", "Commands.Sql.Test\Sql.Test.csproj", "{56ED8C97-53B9-4DF6-ACB5-7E6800105BF8}"
 EndProject

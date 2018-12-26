@@ -14,7 +14,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute", "..\Compute\Comma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Commands.Network\Network.csproj", "{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecoveryServices.Backup.Cmdlets", "Commands.RecoveryServices.Backup\RecoveryServices.Backup.Cmdlets.csproj", "{3B3E879A-F856-46BF-AFF9-8AD6760CF7B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecoveryServices.Backup", "Commands.RecoveryServices.Backup\RecoveryServices.Backup.csproj", "{3B3E879A-F856-46BF-AFF9-8AD6760CF7B9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecoveryServices.Backup.Helpers", "Commands.RecoveryServices.Backup.Helpers\RecoveryServices.Backup.Helpers.csproj", "{0E1D3F36-E6C8-4764-8C7D-6F9EE537490C}"
 EndProject
