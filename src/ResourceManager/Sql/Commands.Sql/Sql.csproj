@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LegacySdk\SqlManagement.csproj" />
+    <ProjectReference Include="..\LegacySdk\Sql.LegacySdk.csproj" />
   </ItemGroup>
 
 </Project>

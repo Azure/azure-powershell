@@ -10,4 +10,8 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="Config.json" />
+  </ItemGroup>
+
 </Project>
