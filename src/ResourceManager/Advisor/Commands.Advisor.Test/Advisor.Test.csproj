@@ -14,17 +14,4 @@
     <PackageReference Include="Microsoft.Azure.Management.Advisor" Version="0.9.5-preview" />
   </ItemGroup>
 
-  <!-- <ItemGroup>
-    <ProjectReference Include="..\Commands.Advisor\Commands.Advisor.Netcore.csproj" />
-  </ItemGroup> -->
-  
-  <ItemGroup>
-    <None Update="SessionRecords\**\*.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ScenarioTests\*.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

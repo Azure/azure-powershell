@@ -18,13 +18,4 @@
     <ProjectReference Include="..\Commands.AnalysisServices.Dataplane\AnalysisServices.Dataplane.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="SessionRecords\**\*.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ScenarioTests\*.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

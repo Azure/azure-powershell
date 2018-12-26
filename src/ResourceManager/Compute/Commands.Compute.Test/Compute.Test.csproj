@@ -22,33 +22,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="SessionRecords\**\*.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ScenarioTests\*.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ConfigFiles\*.*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Templates\*.*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="VhdFiles\*.*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Update="ConfigFiles\*.*" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Templates\*.*" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="VhdFiles\*.*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="$(ScenarioTestToolsPath)Assert.ps1" Link="ScenarioTests\Assert.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="$(ScenarioTestToolsPath)AzureRM.Resources.ps1" Link="ScenarioTests\AzureRM.Resources.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\Resources\Commands.Resources.Test\ScenarioTests\Common.ps1" Link="ScenarioTests\Common.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="$(ScenarioTestToolsPath)Assert.ps1" Link="ScenarioTests\Assert.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="$(ScenarioTestToolsPath)AzureRM.Resources.ps1" Link="ScenarioTests\AzureRM.Resources.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\Resources\Commands.Resources.Test\ScenarioTests\Common.ps1" Link="ScenarioTests\Common.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

@@ -14,13 +14,4 @@
     <PackageReference Include="Microsoft.Azure.Commerce.UsageAggregates" Version="1.5.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="SessionRecords\**\*.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ScenarioTests\*.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
