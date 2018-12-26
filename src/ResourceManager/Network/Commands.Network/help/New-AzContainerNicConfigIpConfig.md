@@ -35,7 +35,7 @@ $containerNicConfig = New-AzContainerNicConfig -Name cnic -IpConfiguration conta
 $networkProfile = New-AzNetworkProfile -Name np1 -Location "West US" -ResourceGroupName rg1 -ContainerNetworkInterfaceConfiguration $containerNicConfig
 ```
 
-The first two commands create and initialize a vnet and a subnet. The third command creates a container nic ip configuration profile referencing the created subnet.  The fourth command creates a container network interface configuration supplying the ip configuration profile created in the previous command. Finally, the fifth command creates a network profile initialized with the container network interface configuration stored in $containerNicConfig.
+The first two commands create and initialize a vnet and a subnet. The third command creates a container nic ip configuration profile referencing the created subnet. The fourth command creates a container network interface configuration supplying the ip configuration profile created in the previous command. Finally, the fifth command creates a network profile initialized with the container network interface configuration stored in $containerNicConfig.
 
 ## PARAMETERS
 

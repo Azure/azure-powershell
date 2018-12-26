@@ -227,11 +227,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Create custom probe for Application Gateway using PowerShell for Azure Resource Manager](https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#)
 
-[Add-AzApplicationGatewayProbeConfig]()
+[Add-AzApplicationGatewayProbeConfig](./Add-AzApplicationGatewayProbeConfig.md)
 
-[Get-AzApplicationGatewayProbeConfig]()
+[Get-AzApplicationGatewayProbeConfig](./Get-AzApplicationGatewayProbeConfig.md)
 
-[Remove-AzApplicationGatewayProbeConfig]()
+[Remove-AzApplicationGatewayProbeConfig](./Remove-AzApplicationGatewayProbeConfig.md)
 
-[Set-AzApplicationGatewayProbeConfig]()
+[Set-AzApplicationGatewayProbeConfig](./Set-AzApplicationGatewayProbeConfig.md)
 
