@@ -19,9 +19,6 @@ using System;
 using System.Collections.Generic;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using RestAzureNS = Microsoft.Rest.Azure;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -87,7 +84,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public RecoveryPointBase GetRecoveryPointDetails()
         {
-            throw new NotImplementedException();
+            return AzureWorkloadProviderHelper.GetRecoveryPointDetails(ProviderData);
         }
 
         public List<CmdletModel.BackupEngineBase> ListBackupManagementServers()
@@ -107,7 +104,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public List<RecoveryPointBase> ListRecoveryPoints()
         {
-            throw new NotImplementedException();
+            return AzureWorkloadProviderHelper.ListRecoveryPoints(ProviderData);
         }
 
         public RestAzureNS.AzureOperationResponse<ProtectionPolicyResource> ModifyPolicy()
@@ -133,6 +130,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public RestAzureNS.AzureOperationResponse TriggerRestore()
         {
             throw new NotImplementedException();
+        }
+
+        public List<PointInTimeRange> GetLogChains()
+        {
+            return AzureWorkloadProviderHelper.ListLogChains(ProviderData);
         }
     }
 }

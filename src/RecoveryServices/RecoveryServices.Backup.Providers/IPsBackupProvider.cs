@@ -62,5 +62,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         void RevokeItemLevelRecoveryAccess();
 
         void RegisterContainer();
+
+        List<PointInTimeRange> GetLogChains();
     }
 }

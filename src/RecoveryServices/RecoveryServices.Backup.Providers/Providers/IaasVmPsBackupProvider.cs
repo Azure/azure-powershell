@@ -1239,6 +1239,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return useOsa;
         }
 
+        public List<PointInTimeRange> GetLogChains()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

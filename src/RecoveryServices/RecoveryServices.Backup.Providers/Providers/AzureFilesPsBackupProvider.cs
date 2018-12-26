@@ -918,5 +918,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new ArgumentException(string.Format(Resources.AzureFileTargetSANameMissingException));
             }
         }
+
+        public List<PointInTimeRange> GetLogChains()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
