@@ -1725,4 +1725,7 @@ Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can
   <data name="BreakingChangeAttributeParameterTypeChange" xml:space="preserve">
     <value>	The type of the parameter is changing from '{0}' to '{1}'.</value>
   </data>
+  <data name="BreakingChangesAttributesFooterMessage" xml:space="preserve">
+    <value>NOTE : Go to {0} for steps to suppress this breaking change warning, and other information on breaking changes in Azure PowerShell.</value>
+  </data> 
 </root>
