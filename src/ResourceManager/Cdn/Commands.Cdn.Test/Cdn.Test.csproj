@@ -14,13 +14,4 @@
     <PackageReference Include="Microsoft.Azure.Management.Cdn" Version="4.0.2-preview" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="SessionRecords\**\*.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ScenarioTests\*.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

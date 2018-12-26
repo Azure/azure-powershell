@@ -101,14 +101,14 @@
   <UsingTask TaskName="FilesChangedTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="FilterTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="SetEnvVar" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll" >
-      <ParameterGroup>
-        <EnvName ParameterType="System.String" Required="true" />
-          <EnvValue ParameterType="System.String" Required="true" />
+    <ParameterGroup>
+      <EnvName ParameterType="System.String" Required="true" />
+      <EnvValue ParameterType="System.String" Required="true" />
     </ParameterGroup>
     <Task>
-          <Using Namespace="System" />
+      <Using Namespace="System" />
       <Code Type="Fragment" Language="cs">
-            <![CDATA[System.Environment.SetEnvironmentVariable(EnvName, EnvValue);]]>
+        <![CDATA[System.Environment.SetEnvironmentVariable(EnvName, EnvValue);]]>
       </Code>
     </Task>
   </UsingTask>
@@ -170,7 +170,7 @@
 
     <!-- Get all of the files changed in the given pull request -->
     <FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)">
-        <Output TaskParameter="FilesChanged" ItemName="FilesChanged" />
+      <Output TaskParameter="FilesChanged" ItemName="FilesChanged" />
     </FilesChangedTask>
 
     <!-- Get the list of modules changed -->
@@ -184,7 +184,7 @@
 
     <!-- Get the list of solutions to build -->
     <FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\SolutionMappings.json">
-        <Output TaskParameter="Output" ItemName="CmdletSolutionsToBuild" />
+      <Output TaskParameter="Output" ItemName="CmdletSolutionsToBuild" />
     </FilterTask>
     <Message Text="Filtering solutions to build by the following:" />
     <Message Text="%(CmdletSolutionsToBuild.Identity)" />
@@ -193,7 +193,7 @@
 
     <!--Get the list of tests to be run based on files changed from a specified PullRequestNumber. Mapping between paths and test DLLs is used to produce the list.-->
     <FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\TestMappings.json">
-        <Output TaskParameter="Output" ItemName="XUnitTests" />
+      <Output TaskParameter="Output" ItemName="XUnitTests" />
     </FilterTask>
     <Message Text="Using these test assemblies:" />
     <Message Text="%(XUnitTests.Identity)" />
@@ -285,13 +285,13 @@
     <Exec ContinueOnError="false"
           Command="$(PowerShellCoreCommandPrefix) &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;" 
           Condition="'$(CodeSign)' == 'true'"/>
-    
+
     <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
 
     <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
-    
+
     <CallTarget Targets="CodeSignBinaries" Condition="'$(CodeSign)' == 'true'" />
-	
+
     <Exec ContinueOnError="false" Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration)&quot;" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSign) == 'true'" />
 
     <Message Importance="high" Text="Running Static Analyser" />
@@ -322,7 +322,7 @@
     <Message Importance="high" Text="Running dependency analysis..." />
 
     <PropertyGroup>
-        <SkipHelpValue Condition=" '$(SkipHelp)' == 'true' ">-s</SkipHelpValue>
+      <SkipHelpValue Condition=" '$(SkipHelp)' == 'true' ">-s</SkipHelpValue>
     </PropertyGroup>
     <!-- TODO: Use '-m @(ModulesChanged)' in command when FilterBuild is fixed. -->
     <!-- <Exec Command="dotnet $(MSBuildThisFileDirectory)src/Package/StaticAnalysis/StaticAnalysis.Netcore.dll -p $(MSBuildThisFileDirectory)src/Package/$(Configuration) -r $(MSBuildThisFileDirectory)src/Package/StaticAnalysis $(SkipHelpValue) -u" /> -->

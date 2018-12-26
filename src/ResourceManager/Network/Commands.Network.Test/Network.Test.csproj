@@ -23,23 +23,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="SessionRecords\**\*.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ScenarioTests\*.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ScenarioTests\Data\*.*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ScenarioTests\Generated\*.*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ScenarioTests\Utils\*.*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\*.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Update="ScenarioTests\Data\*.*" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="ScenarioTests\Generated\*.*" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="ScenarioTests\Utils\*.*" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="TestData\*.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
+
 </Project>
