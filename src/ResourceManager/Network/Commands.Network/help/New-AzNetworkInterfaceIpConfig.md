@@ -68,7 +68,7 @@ $nic = New-AzNetworkInterface -Name mynic1 -ResourceGroupName myrg -Location wes
 ```
 
 The first two commands get a virtual network called myvnet and a subnet called mysubnet respectively that were
-    previously created. These are stored in $vnet and $Subnet respectively.  The third command creates a new IP
+    previously created. These are stored in $vnet and $Subnet respectively. The third command creates a new IP
     configuration called "IPConfig-2" with a private IP address 10.0.0.5 associated with it.
     The last command then creates a network interface called mynic1 using this IP configuration.
 
