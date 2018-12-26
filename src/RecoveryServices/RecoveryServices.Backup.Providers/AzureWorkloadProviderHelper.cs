@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
@@ -317,17 +318,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        public List<CmdletModel.RecoveryPointBase> ListRecoveryPoints(Dictionary<Enum, object> ProviderData)
+        public List<RecoveryPointBase> ListRecoveryPoints(Dictionary<Enum, object> ProviderData)
         {
-            string vaultName = (string)ProviderData[CmdletModel.VaultParams.VaultName];
-            string resourceGroupName = (string)ProviderData[CmdletModel.VaultParams.ResourceGroupName];
-            DateTime startDate = (DateTime)(ProviderData[CmdletModel.RecoveryPointParams.StartDate]);
-            DateTime endDate = (DateTime)(ProviderData[CmdletModel.RecoveryPointParams.EndDate]);
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            DateTime startDate = (DateTime)(ProviderData[RecoveryPointParams.StartDate]);
+            DateTime endDate = (DateTime)(ProviderData[RecoveryPointParams.EndDate]);
+            string restorePointQueryType = ProviderData.ContainsKey(RecoveryPointParams.RestorePointQueryType) ?
+                (string)ProviderData[RecoveryPointParams.RestorePointQueryType] : "All";
 
-            CmdletModel.ItemBase item = ProviderData[CmdletModel.RecoveryPointParams.Item]
-                as CmdletModel.ItemBase;
+            ItemBase item = ProviderData[RecoveryPointParams.Item] as ItemBase;
 
-            Dictionary<CmdletModel.UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
@@ -341,7 +343,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             var queryFilterString = QueryBuilder.Instance.GetQueryString(new BMSRPQueryObject()
             {
                 StartDate = startDate,
-                EndDate = endDate
+                EndDate = endDate,
+                RestorePointQueryType = restorePointQueryType
             });
 
             ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
@@ -356,16 +359,70 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
         }
 
-        public CmdletModel.RecoveryPointBase GetRecoveryPointDetails(Dictionary<Enum, object> ProviderData)
+        public List<PointInTimeRange> ListLogChains(Dictionary<Enum, object> ProviderData)
         {
-            string vaultName = (string)ProviderData[CmdletModel.VaultParams.VaultName];
-            string resourceGroupName = (string)ProviderData[CmdletModel.VaultParams.ResourceGroupName];
-            CmdletModel.ItemBase item = ProviderData[CmdletModel.RecoveryPointParams.Item]
-                as CmdletModel.ItemBase;
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            DateTime startDate = (DateTime)(ProviderData[RecoveryPointParams.StartDate]);
+            DateTime endDate = (DateTime)(ProviderData[RecoveryPointParams.EndDate]);
+            string restorePointQueryType = (string)ProviderData[RecoveryPointParams.RestorePointQueryType];
 
-            string recoveryPointId = ProviderData[CmdletModel.RecoveryPointParams.RecoveryPointId].ToString();
+            ItemBase item = ProviderData[RecoveryPointParams.Item] as ItemBase;
 
-            Dictionary<CmdletModel.UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
+            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
+
+            TimeSpan duration = endDate - startDate;
+            if (duration.TotalDays > 30)
+            {
+                throw new Exception(Resources.RestoreDiskTimeRangeError);
+            }
+
+            //we need to fetch the list of RPs
+            var queryFilterString = QueryBuilder.Instance.GetQueryString(new BMSRPQueryObject()
+            {
+                StartDate = startDate,
+                EndDate = endDate,
+                RestorePointQueryType = restorePointQueryType
+            });
+
+            ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
+            queryFilter.Filter = queryFilterString;
+
+            List<RecoveryPointResource> rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
+                containerUri,
+                protectedItemName,
+                queryFilter,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+
+            List<PointInTimeRange> timeRanges = new List<PointInTimeRange>();
+            foreach (RecoveryPointResource rp in rpListResponse)
+            {
+                if (rp.Properties.GetType() == typeof(AzureWorkloadSQLPointInTimeRecoveryPoint))
+                {
+                    AzureWorkloadSQLPointInTimeRecoveryPoint recoveryPoint =
+                       rp.Properties as AzureWorkloadSQLPointInTimeRecoveryPoint;
+                    foreach (PointInTimeRange timeRange in recoveryPoint.TimeRanges)
+                    {
+                        timeRanges.Add(timeRange);
+                    }
+                }
+
+            }
+            return timeRanges;
+        }
+
+        public RecoveryPointBase GetRecoveryPointDetails(Dictionary<Enum, object> ProviderData)
+        {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            ItemBase item = ProviderData[RecoveryPointParams.Item] as ItemBase;
+
+            string recoveryPointId = ProviderData[RecoveryPointParams.RecoveryPointId].ToString();
+
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 

@@ -162,5 +162,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             throw new NotImplementedException();
         }
+
+        public List<PointInTimeRange> GetLogChains()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
