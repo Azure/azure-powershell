@@ -21,3 +21,4 @@
 
 ## Version 1.0.0
 * General availability of `Az.IotHub` module
+* Updated to the latest version of the IotHub SDK
