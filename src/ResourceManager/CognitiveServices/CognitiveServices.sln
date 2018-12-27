@@ -2,13 +2,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Management.CognitiveServices", "Commands.Management.CognitiveServices\Management.CognitiveServices.csproj", "{442B597E-BFDC-4711-B196-82C0EF852966}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CognitiveServices", "CognitiveServices\CognitiveServices.csproj", "{442B597E-BFDC-4711-B196-82C0EF852966}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{13BB1C60-A70E-4780-ABEF-D5EE36754085}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Management.CognitiveServices.Test", "CognitiveServices.Test\Management.CognitiveServices.Test.csproj", "{F6F8A360-F203-4161-98A7-60097AB94193}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CognitiveServices.Test", "CognitiveServices.Test\CognitiveServices.Test.csproj", "{F6F8A360-F203-4161-98A7-60097AB94193}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Profile\Commands.Profile\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
