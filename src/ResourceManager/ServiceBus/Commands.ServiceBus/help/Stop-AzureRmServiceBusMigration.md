@@ -31,7 +31,7 @@ Stop-AzureRmServiceBusMigration [-ResourceId] <String> [-PassThru] [-DefaultProf
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmServiceBusMigration** cmdlets  tremitates the Migration between Standard to premium namespace
+The **Stop-AzureRmServiceBusMigration** cmdlets terminates the Migration between Standard to premium namespace
 
 ## EXAMPLES
 
@@ -40,7 +40,7 @@ The **Stop-AzureRmServiceBusMigration** cmdlets  tremitates the Migration betwee
 PS C:\> Stop-AzureRmServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMirgation
 ```
 
-cmdlet termitates the migration between Standard namespace and Premium namespace provided while creating the migration configuration.
+cmdlet terminates the migration between Standard namespace and Premium namespace provided while creating the migration configuration.
 
 ## PARAMETERS
 
