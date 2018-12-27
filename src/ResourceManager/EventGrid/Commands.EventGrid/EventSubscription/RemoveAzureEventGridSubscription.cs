@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.TopicInputObjectHelp,
             ParameterSetName = EventSubscriptionCustomTopicInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public PSTopic CustomTopicInputObject { get; set; }
+        public PSTopic InputObject { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -113,9 +113,9 @@ namespace Microsoft.Azure.Commands.EventGrid
                 {
                     scope = this.ResourceId;
                 }
-                else if (this.CustomTopicInputObject != null)
+                else if (this.InputObject != null)
                 {
-                    scope = this.CustomTopicInputObject.Id;
+                    scope = this.InputObject.Id;
                 }
                 else
                 {

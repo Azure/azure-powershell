@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.TopicInputObjectHelp,
             ParameterSetName = EventSubscriptionCustomTopicInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public PSTopic CustomTopicInputObject { get; set; }
+        public PSTopic InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -122,10 +122,10 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 // Since an EventSubscription name is specified, we need to retrieve
                 // only the particular event subscription corresponding to this name.
-                if (this.CustomTopicInputObject != null)
+                if (this.InputObject != null)
                 {
                     // Retrieve the event subscription for the specified topic
-                    scope = this.CustomTopicInputObject.Id;
+                    scope = this.InputObject.Id;
                 }
                 else if (string.IsNullOrEmpty(this.ResourceId))
                 {
@@ -149,10 +149,10 @@ namespace Microsoft.Azure.Commands.EventGrid
                 // event subscriptions based on the provided parameters.
                 IEnumerable<EventSubscription> eventSubscriptionsList = null;
 
-                if (this.CustomTopicInputObject != null)
+                if (this.InputObject != null)
                 {
                     // Retrieve all the event subscriptions based on the ID of the specified topic object
-                    eventSubscriptionsList = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.CustomTopicInputObject.Id);
+                    eventSubscriptionsList = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.InputObject.Id);
                 }
                 else if (!string.IsNullOrEmpty(this.ResourceId))
                 {
