@@ -2,13 +2,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "Commands.KeyVault\KeyVault.csproj", "{9FFC40CC-A341-4D0C-A25D-DC6B78EF6C94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "KeyVault\KeyVault.csproj", "{9FFC40CC-A341-4D0C-A25D-DC6B78EF6C94}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault.Test", "Commands.KeyVault.Test\KeyVault.Test.csproj", "{080B0477-7E52-4455-90AB-23BD13D1B1CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault.Test", "KeyVault.Test\KeyVault.Test.csproj", "{080B0477-7E52-4455-90AB-23BD13D1B1CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Profile\Commands.Profile\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
