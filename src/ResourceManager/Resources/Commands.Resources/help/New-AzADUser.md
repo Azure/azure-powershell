@@ -14,8 +14,7 @@ Creates a new active directory user.
 ## SYNTAX
 
 ```
-New-AzADUser -DisplayName <String> -UserPrincipalName <String> -Password <SecureString> [-ImmutableId <String>]
- [-MailNickname <String>] [-ForceChangePasswordNextLogin] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+New-AzADUser -DisplayName <String> -UserPrincipalName <String> -Password <SecureString> -MailNickname <String> [-ImmutableId <String>] [-ForceChangePasswordNextLogin] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +30,7 @@ PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPla
 PS C:\> New-AzADUser -DisplayName "MyDisplayName" -UserPrincipalName "myemail@domain.com" -Password $SecureStringPassword -MailNickname "MyMailNickName"
 ```
 
-Creates a new AD user with the name "MyDisplayName" and user principal name "myemail@domain.com" in a tenant.
+Creates a new AD user with the name "MyDisplayName" and user principal name "MyMailNickName" in a tenant.
 
 ## PARAMETERS
 
@@ -98,14 +97,14 @@ Accept wildcard characters: False
 ```
 
 ### -MailNickname
-The mail alias for the user.
+The mail alias for the user. Cannot contain the @ sign.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
