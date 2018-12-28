@@ -121,7 +121,7 @@ function Get-ReleaseNotes
         [string]$RootPath
     )
 
-    $ProjectPaths = @( "$RootPath\src\ResourceManager", "$RootPath\src\ServiceManagement", "$RootPath\src\Storage" )
+    $ProjectPaths = @( "$RootPath\src" )
     $ModuleManifestFile = $ProjectPaths | % { Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | where { $_.Name.Replace(".psd1", "") -eq $Module -and `
                                                                                                           $_.FullName -notlike "*Debug*" -and `
                                                                                                           $_.FullName -notlike "*Netcore*" -and `

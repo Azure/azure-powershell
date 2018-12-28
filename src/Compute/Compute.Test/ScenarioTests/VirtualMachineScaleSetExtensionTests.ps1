@@ -25,7 +25,7 @@ From the list of regions available in your subscription, select a region and pin
 use in the following operations. 
 
 In chosen region, create key vault prerequisites from an account with the proper permissions 
-https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1
+https://github.com/Azure/azure-powershell/blob/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1
 
 Note, the above steps will not work by default for service principal accounts.  
 For an example of steps required for service principals, refer to the "Assigning Permissions" 

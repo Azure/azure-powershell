@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
         const string INSTANCE_NAME_STRING = "Images";
         const string VERSION_STRING = "Versions";
 
-        //Added the following two fuinctions from https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Compute/Commands.Compute/Generated/ComputeAutomationBaseCmdlet.cs#L319
+        //Added the following two fuinctions from https://github.com/Azure/azure-powershell/blob/master/src/Compute/Compute/Generated/ComputeAutomationBaseCmdlet.cs#L319
         //To be able to get the gallery name and gallery image name from the provided gallery image reaource ID.
         static string GetGaleryName(string resourceId)
         {

@@ -26,7 +26,7 @@
       'ServiceManagement': service management
       'AzureStorage': storage data plane cmdlets
       'Stack': Azure Stack cmdlets
-      'Subfolder under src\ResourceManager': An individual cmdlet module
+      'Subfolder under src': An individual cmdlet module
       By default, it builds everything
 
     /p:SkipHelp=True
@@ -221,7 +221,7 @@
     <Exec Command="dotnet --version" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <ItemGroup>
-      <ModuleCsprojFiles Include="$(LibraryRoot)src/ResourceManager/**/*.csproj" Exclude="$(LibraryRoot)src/ResourceManager/**/*.Test.csproj" />
+      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(LibraryRoot)src/**/*.Test.csproj" />
     </ItemGroup>
     <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFiles->'%(FullPath)', ' ')" />
     <Exec Command="dotnet sln Azure.PowerShell.sln add $(LibraryRoot)tools/Tools.Common/Tools.Common.Netcore.csproj $(LibraryRoot)tools/StaticAnalysis/StaticAnalysis.Netcore.csproj" />
@@ -384,7 +384,7 @@
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <ItemGroup>
-      <ModuleCsprojFiles Include="$(LibraryRoot)src/ResourceManager/**/*.csproj" />
+      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" />
     </ItemGroup>
     <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFiles->'%(FullPath)', ' ')" />
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
@@ -392,7 +392,7 @@
     <Exec Command="dotnet test Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework netcoreapp2.0 --logger trx" />
 
     <ItemGroup>
-      <TestResults Include="$(LibraryRoot)src/ResourceManager/**/TestResults/*.trx" />
+      <TestResults Include="$(LibraryRoot)src/**/TestResults/*.trx" />
     </ItemGroup>
     <Copy SourceFiles="@(TestResults)" DestinationFolder="$(TestOutputDirectory)" />
 

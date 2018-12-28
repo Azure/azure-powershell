@@ -208,7 +208,7 @@ if (!$PathToRepo)
 #Requires -Module PowerShellGet
 
 # Update all of the ResourceManager breaking change docs
-$ResourceManagerChanges = UpdateARMBreakingChangeDocs -PathToServices $PathToRepo\src\ResourceManager
+$ResourceManagerChanges = UpdateARMBreakingChangeDocs -PathToServices $PathToRepo\src
 
 # Update the ServiceManagement breaking change doc
 $PathToCurrentDoc = "$PathToRepo\src\ServiceManagement\Services\Commands.Utilities\documentation\current-breaking-changes.md"
@@ -227,7 +227,7 @@ $allChanges = @()
 # If there were any ARM breaking changes, add them to the list
 if ($ResourceManagerChanges.Length -gt 0)
 {
-    $allChanges += $ResourceManagerChanges    
+    $allChanges += $ResourceManagerChanges
 }
 
 # If there were any RDFE breaking changes, add them to the list

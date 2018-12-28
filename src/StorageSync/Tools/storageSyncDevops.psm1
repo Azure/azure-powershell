@@ -103,7 +103,7 @@ function Update-StorageSyncHelp
         }
         Import-Module platyPS
 
-        $PathToHelpFolder = Join-Path (Get-RepositoryRootDirectory) "src\ResourceManager\StorageSync\Commands.StorageSync\help"
+        $PathToHelpFolder = Join-Path (Get-RepositoryRootDirectory) "src\StorageSync\StorageSync\help"
         Write-Verbose "Updating help: $PathToHelpFolder"
         $status = Update-MarkdownHelpModule -Path $PathToHelpFolder -RefreshModulePage -AlphabeticParamsOrder
     }
