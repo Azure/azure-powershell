@@ -1321,6 +1321,68 @@ function Test-WebAppPublishingProfile
 	}
 }
 
+function Test-PublishAzureWebAppFromZip
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$appName = Get-WebsiteName
+	$location = Get-WebLocation
+	$planName = Get-WebHostPlanName
+	$tier = "Shared"
+
+	try
+	{
+		#Setup
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Location  $location -Tier $tier
+		
+		# Create new web app
+		$webapp = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Location $location -AppServicePlan $planName 
+		
+		$publishedApp = Publish-AzWebApp -ResourceGroupName $rgname -Name $appName -ArchivePath ".\ScenarioTests\Resources\nodejs-sample.zip"
+
+		Assert-NotNull $publishedApp
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Force
+		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Force
+	}
+}
+
+function Test-PublishAzureWebAppFromWar
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$appName = Get-WebsiteName
+	$location = Get-WebLocation
+	$planName = Get-WebHostPlanName
+	$tier = "Shared"
+
+	try
+	{
+		#Setup
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Location  $location -Tier $tier
+		
+		# Create new web app
+		$webapp = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Location $location -AppServicePlan $planName 
+		
+		$publishedApp = Publish-AzWebApp -ResourceGroupName $rgname -Name $appName -ArchivePath ".\ScenarioTests\Resources\HelloJava.war"
+
+		Assert-NotNull $publishedApp
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Force
+		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Force
+	}
+}
+
 <#
 .SYNOPSIS
 Tests creating a web app with a simple parameterset.
