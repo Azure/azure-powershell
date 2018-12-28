@@ -189,8 +189,8 @@ Please check out the [PowerShell Cmdlet Design Guidelines](azure-powershell-desi
   - Right click on your project in the **Solution Explorer** and select **Set as StartUp project**
 - Right-click on the project and select **Properties**
 - Go to the **Debug** tab
-- Under **Start Action**, pick _Start external program_ and type the PowerShell directory
-  - For example, `C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe`
+- Under **Start Action**, pick _Start external program_ and type the PowerShell 6.0 directory 
+  - For example, `C:\Program Files\PowerShell\6\pwsh.exe`
 
 ### Importing Modules
 
