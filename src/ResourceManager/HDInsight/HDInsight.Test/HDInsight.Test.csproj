@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.HDInsight\HDInsight.csproj" />
+    <ProjectReference Include="..\HDInsight\HDInsight.csproj" />
   </ItemGroup>
 
 </Project>

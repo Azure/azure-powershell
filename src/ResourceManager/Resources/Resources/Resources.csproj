@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.ResourceManager\Cmdlets\ResourceManager.csproj" />
+    <ProjectReference Include="..\ResourceManager\ResourceManager.csproj" />
   </ItemGroup>
 
 </Project>

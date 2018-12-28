@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Compute\Compute.csproj" />
+    <ProjectReference Include="..\Compute\Compute.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,7 +30,7 @@
   <ItemGroup>
     <None Include="$(ScenarioTestToolsPath)Assert.ps1" Link="ScenarioTests\Assert.ps1" CopyToOutputDirectory="PreserveNewest" />
     <None Include="$(ScenarioTestToolsPath)AzureRM.Resources.ps1" Link="ScenarioTests\AzureRM.Resources.ps1" CopyToOutputDirectory="PreserveNewest" />
-    <None Include="..\..\Resources\Commands.Resources.Test\ScenarioTests\Common.ps1" Link="ScenarioTests\Common.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\Resources\Resources.Test\ScenarioTests\Common.ps1" Link="ScenarioTests\Common.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

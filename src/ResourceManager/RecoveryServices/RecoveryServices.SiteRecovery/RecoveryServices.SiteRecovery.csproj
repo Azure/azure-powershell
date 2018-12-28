@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.RecoveryServices\RecoveryServices.csproj" />
+    <ProjectReference Include="..\RecoveryServices\RecoveryServices.csproj" />
   </ItemGroup>
 
 </Project>

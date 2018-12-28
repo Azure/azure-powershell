@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RecoveryServices\Commands.RecoveryServices\RecoveryServices.csproj" />
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Helpers\RecoveryServices.Backup.Helpers.csproj" />
+    <ProjectReference Include="..\RecoveryServices\RecoveryServices.csproj" />
+    <ProjectReference Include="..\RecoveryServices.Backup.Helpers\RecoveryServices.Backup.Helpers.csproj" />
   </ItemGroup>
 
 </Project>

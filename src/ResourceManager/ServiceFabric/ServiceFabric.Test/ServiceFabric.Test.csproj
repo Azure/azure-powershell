@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.ServiceFabric\ServiceFabric.csproj" />
+    <ProjectReference Include="..\ServiceFabric\ServiceFabric.csproj" />
   </ItemGroup>
 
   <ItemGroup>

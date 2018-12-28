@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.DataFactories\DataFactories.csproj" />
+    <ProjectReference Include="..\DataFactories\DataFactories.csproj" />
   </ItemGroup>
 
 </Project>

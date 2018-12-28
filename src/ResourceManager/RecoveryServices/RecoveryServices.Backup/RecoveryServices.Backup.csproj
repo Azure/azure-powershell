@@ -16,11 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Helpers\RecoveryServices.Backup.Helpers.csproj" />
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Logger\RecoveryServices.Backup.Logger.csproj" />
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Models\RecoveryServices.Backup.Models.csproj" />
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Providers\RecoveryServices.Backup.Providers.csproj" />
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.ServiceClientAdapter\RecoveryServices.Backup.ServiceClientAdapter.csproj" />
+    <ProjectReference Include="..\RecoveryServices.Backup.Helpers\RecoveryServices.Backup.Helpers.csproj" />
+    <ProjectReference Include="..\RecoveryServices.Backup.Logger\RecoveryServices.Backup.Logger.csproj" />
+    <ProjectReference Include="..\RecoveryServices.Backup.Models\RecoveryServices.Backup.Models.csproj" />
+    <ProjectReference Include="..\RecoveryServices.Backup.Providers\RecoveryServices.Backup.Providers.csproj" />
+    <ProjectReference Include="..\RecoveryServices.Backup.ServiceClientAdapter\RecoveryServices.Backup.ServiceClientAdapter.csproj" />
   </ItemGroup>
 
 </Project>
