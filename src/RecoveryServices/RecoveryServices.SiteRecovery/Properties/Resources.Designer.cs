@@ -856,17 +856,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
                 return ResourceManager.GetString("SubscriptionIsNotAssociatedWithTheAccount", resourceCulture);
             }
         }
-
-        /// <summary>   
-        ///   Looks up a localized string similar to Message: For newly created vault download vault creds file and retry.  
-        ///Recommended Action: Install module AzureRm.RecoveryServices if not installed. And execute below cmdlets  
-        ///$path = Get-AzRecoveryServicesVaultSettingsFile -Vault $Vault    
-        ///Import-AzRecoveryServicesAsrVaultSettingsFile -Path $path.filepath.  
-        /// </summary>  
-        internal static string TryDownloadingVaultFile {    
-            get {   
-                return ResourceManager.GetString("TryDownloadingVaultFile", resourceCulture);   
-            }   
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message: For newly created vault download vault creds file and retry.
+        ///Recommended Action: Install module AzureRm.RecoveryServices if not installed. And execute below cmdlets
+        ///$path = Get-AzRecoveryServicesVaultSettingsFile -Vault $Vault
+        ///Import-AzRecoveryServicesAsrVaultSettingsFile -Path $path.filepath.
+        /// </summary>
+        internal static string TryDownloadingVaultFile {
+            get {
+                return ResourceManager.GetString("TryDownloadingVaultFile", resourceCulture);
+            }
         }
         
         /// <summary>

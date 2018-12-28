@@ -223,8 +223,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             string containerName = IdUtils.GetNameFromUri(containerUri);
             string protectedItemName = IdUtils.GetNameFromUri(protectedItemUri);
 
-            ServiceClientModel.AzureWorkloadRecoveryPoint recoveryPoint =
-                        rp.Properties as ServiceClientModel.AzureWorkloadRecoveryPoint;
+            ServiceClientModel.AzureWorkloadSQLRecoveryPoint recoveryPoint =
+                        rp.Properties as ServiceClientModel.AzureWorkloadSQLRecoveryPoint;
 
             DateTime recoveryPointTime = DateTime.MinValue;
 
@@ -248,6 +248,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 RecoveryPointType = recoveryPoint.Type,
                 Id = rp.Id,
                 WorkloadType = item.WorkloadType,
+                DataDirectoryPaths = recoveryPoint.ExtendedInfo != null ? recoveryPoint.ExtendedInfo.DataDirectoryPaths : null
             };
             return rpBase;
         }

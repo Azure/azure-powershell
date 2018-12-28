@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.ProtectionCheck.Type)]
         [Parameter(ParameterSetName = IdWorkloadParamSet, Mandatory = true,
             HelpMessage = ParamHelpMsgs.ProtectionCheck.Type),]
-        [ValidateSet("AzureVM", "AzureFiles")]
+        [ValidateSet("AzureVM", "AzureFiles", "SQLDataBase")]
         public string Type { get; set; }
 
         [Parameter(ParameterSetName = IdParamSet, ValueFromPipelineByPropertyName = true,

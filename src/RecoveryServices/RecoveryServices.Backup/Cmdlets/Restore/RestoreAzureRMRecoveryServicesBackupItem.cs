@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Recovery point of the item to be restored
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0,
-            ParameterSetName = AzureWorkloadParameterSet, HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
+            ParameterSetName = AzureWorkloadParameterSet, HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryConfig)]
         [ValidateNotNullOrEmpty]
         public RecoveryConfigBase WLRecoveryConfig { get; set; }
 
@@ -162,6 +162,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(RestoreFSBackupItemParams.TargetFileShareName, TargetFileShareName);
                 providerParameters.Add(RestoreFSBackupItemParams.TargetFolder, TargetFolder);
                 providerParameters.Add(RestoreWLBackupItemParams.WLRecoveryConfig, WLRecoveryConfig);
+
                 if (StorageAccountName != null)
                 {
                     providerParameters.Add(RestoreBackupItemParams.StorageAccountName, StorageAccountName);
@@ -202,7 +203,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     Resources.RestoreOperation,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName);
-            }, ShouldProcess(RecoveryPoint.ItemName, VerbsData.Restore));
+            }, ShouldProcess(RecoveryPoint != null ? RecoveryPoint.ItemName : WLRecoveryConfig.ToString(), VerbsData.Restore));
         }
     }
 }

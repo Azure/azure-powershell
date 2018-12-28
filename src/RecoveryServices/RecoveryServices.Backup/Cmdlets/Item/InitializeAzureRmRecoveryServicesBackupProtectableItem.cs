@@ -27,9 +27,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Get list of items associated with the recovery services vault 
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtectableItem"), OutputType(typeof(ItemBase))]
-    public class NewAzureRmRecoveryServicesBackupProtectableItem : RSBackupVaultCmdletBase
+    [Cmdlet("Initialize", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtectableItem"), OutputType(typeof(ItemBase))]
+    public class InitializeAzureRmRecoveryServicesBackupProtectableItem : RSBackupVaultCmdletBase
     {
+        /// <summary>
+        /// Container base
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 0, HelpMessage = ParamHelpMsgs.Item.Container,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public ContainerBase Container { get; set; }
+
         /// <summary>
         /// Workload type of the item to be returned.
         /// </summary>
@@ -37,17 +45,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
         [ValidateNotNullOrEmpty]
         public Models.WorkloadType WorkloadType { get; set; }
-
-
-        ///// <summary>
-        ///// Container base
-        ///// </summary>
-        //[Parameter(
-        //    Mandatory = true, Position = 2,
-        //    HelpMessage = ParamHelpMsgs.Item.Container,
-        //    ValueFromPipelineByPropertyName = true)]
-        //[ValidateNotNullOrEmpty]
-        //public ContainerBase Container { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -59,16 +56,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string vaultResourceGroupName = resourceIdentifier.ResourceGroupName;
                 string workloadType = ConversionUtils.GetServiceClientWorkloadType(WorkloadType.ToString());
-
+                string backupManagementType = Container.BackupManagementType.ToString();
                 ODataQuery<BMSContainersInquiryQueryObject> queryParams = new ODataQuery<BMSContainersInquiryQueryObject>(
-               q => q.WorkloadType
-                    == workloadType);
+                    q => q.WorkloadType == workloadType && q.BackupManagementType == backupManagementType);
                 string errorMessage = string.Empty;
                 var inquiryResponse = ServiceClientAdapter.InquireContainer(
-                   "compute;shracrg;shrac3",
-                   queryParams,
-                   vaultName,
-                   vaultResourceGroupName);
+                "VMAppContainer;" + Container.Name,
+                queryParams,
+                vaultName,
+                vaultResourceGroupName);
 
                 var operationStatus = TrackingHelpers.GetOperationResult(
                inquiryResponse,
@@ -83,6 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     Logger.Instance.WriteDebug(errorMessage);
                 }
+
                 //Now wait for the operation to Complete
                 if (inquiryResponse.Response.StatusCode
                         != SystemNet.HttpStatusCode.NoContent)
@@ -91,8 +88,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         inquiryResponse.Response.StatusCode);
                     Logger.Instance.WriteDebug(errorMessage);
                 }
-
-                // WriteObject(itemModels, enumerateCollection: true);
             });
         }
     }
