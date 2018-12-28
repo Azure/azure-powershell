@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
@@ -388,5 +388,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Status of the sub task
         /// </summary>
         public string Status { get; set; }
+    }
+
+    /// <summary>
+    /// This class contains recovery config detail.
+    /// </summary>
+    public class RecoveryConfigBase
+    {
+        /// <summary>
+        /// source resource id.
+        /// </summary>
+        public string SourceResourceId { get; set; }
+
+        /// <summary>
+        /// Original WL Restore, Alternate WL restore, Alternate WL restore to diff item.
+        /// </summary>
+        public string RestoreRequestType { get; set; }
+
+        /// <summary>
+        /// Recovery point for full/differential backup.
+        /// </summary>
+        public AzureRecoveryPoint RecoveryPoint { get; set; }
+
+        /// <summary>
+        /// PointInTime for Log backup.
+        /// </summary>
+        public DateTime PointInTime { get; set; }
     }
 }
