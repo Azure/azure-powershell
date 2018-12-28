@@ -11,7 +11,7 @@ Param(
     [string]$FilteredModules
 )
 
-$ResourceManagerFolders = Get-ChildItem -Path "$PSScriptRoot\..\src\ResourceManager"
+$ResourceManagerFolders = Get-ChildItem -Path "$PSScriptRoot\..\src"
 Import-Module "$PSScriptRoot\HelpGeneration\HelpGeneration.psm1"
 $UnfilteredHelpFolders = Get-ChildItem "help" -Recurse -Directory | where { $_.FullName -like "*$BuildConfig*" -and $_.FullName -notlike "*Stack*" }
 $FilteredHelpFolders = $UnfilteredHelpFolders

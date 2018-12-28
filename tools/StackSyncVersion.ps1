@@ -30,7 +30,7 @@ function SyncVersion([string]$FilePath)
 
 if (!$Folder) 
 {
-    $Folder = "$PSScriptRoot\..\src\ResourceManager"
+    $Folder = "$PSScriptRoot\..\src"
 }
 $modules = Get-ChildItem -Path $Folder -Filter *.psd1 -Recurse -Exclude *.dll-help.psd1 | Where {$_.FullName.Contains("Stack") -and !$_.Directory.FullName.Contains("Test\")}
 ForEach ($module in $modules)

@@ -150,13 +150,13 @@ Also, members of your team (who are involved with the SDKs) are advised to join 
 
 ## Getting Started
 
-When adding a new ResourceManager project, please follow these guidelines:
+When adding a new project, please follow these guidelines:
 
 ### Creating the Project
 
-Add a new folder under `src/ResourceManager` with your service specific name (_e.g.,_ `Compute`, `Sql`, `Websites`).
+Add a new folder under `src` with your service specific name (_e.g.,_ `Compute`, `Sql`, `Websites`).
 
-We recommend copying an existing module. For example, go to `src/ResourceManager/Media` and copy the contents of this folder. Paste these to your service folder you just created. **Rename** the following:
+We recommend copying an existing module. For example, go to `src/Media` and copy the contents of this folder. Paste these to your service folder you just created. **Rename** the following:
 - The folders to `Commands.<SERVICE>` and `Commands.<SERVICE>.Test`
 - The solution to `<SERVICE>.sln`
 - The projects (within each folder) to `Commands.<SERVICE>.csproj` and `Commands.<SERVICE>.Test.csproj`
@@ -226,7 +226,7 @@ Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-
 ### Adding Scenario Tests
 
 - Create a new class in `Commands.<SERVICE>.Test`
-- Create a ps1 file in the same folder that contains the actual tests ([see sample](../../src/ResourceManager/Media/Commands.Media.Test/ScenarioTests))
+- Create a ps1 file in the same folder that contains the actual tests ([see sample](../../src/Media/Commands.Media.Test/ScenarioTests))
     - Use `Assert-AreEqual x y` to verify that values are the same
     - Use `Assert-AreNotEqual x y` to verify that values are not the same
     - Use `Assert-Throws scriptblock message` to verify an exception is being thrown

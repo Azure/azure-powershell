@@ -255,7 +255,7 @@ if (!$PathToRepo)
 Import-Module PowerShellGet
 
 # Update all of the ResourceManager change logs
-$ResourceManagerResult = UpdateARMLogs -PathToServices $PathToRepo\src\ResourceManager
+$ResourceManagerResult = UpdateARMLogs -PathToServices $PathToRepo\src
 
 # Update the ServiceManagement change log
 $PathToChangeLog = "$PathToRepo\src\ServiceManagement\Services\Commands.Utilities\ChangeLog.md"
