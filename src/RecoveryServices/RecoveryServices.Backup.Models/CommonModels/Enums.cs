@@ -352,12 +352,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
+    /// Type of the backup.
+    /// </summary>
+    public enum BackupType
+    {
+        Full,
+        Differential,
+        Log,
+        CopyOnlyFull
+    }
+
+    /// <summary>
     /// Options to select the protectable type
     /// </summary>
     public enum ProtectableItemType
     {
         SQLDataBase,
         SQLInstance,
-        SQLAvailabilityGroupContainer,
+        SQLAvailabilityGroup
     }
 }

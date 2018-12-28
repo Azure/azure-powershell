@@ -12,38 +12,323 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$containerName = "pstestwlvm1bca8"
+$resourceGroupName = "pstestwlRG1bca8"
+$vaultName = "pstestwlRSV1bca8"
+$resourceId = "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestwlRG1bca8/providers/Microsoft.Compute/virtualMachines/pstestwlvm1bca8"
+$policyName = "HourlyLogBackup"
+
 function Test-AzureVmWorkloadProtectableItem
 {
 	try
 	{
-		Get-AzureRmRecoveryServicesVault -ResourceGroupName 'shracrg' -Name 'shracsql' | Set-AzureRmRecoveryServicesVaultContext
-		$items = Get-AzRecoveryServicesBackupProtectableItem -ProtectableItemType "SQLDataBase"
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		
+		$container = Get-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType AzureWorkload `
+			-Status Registered `
+			-FriendlyName $containerName `
+			-ResourceGroupName $resourceGroupName;
+		
+		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "MSSQL";
+		Assert-True { $protectableItems.ServerName -contains $containerName }
+
+		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "MSSQL" `
+			-ItemType "SQLInstance";
+		Assert-True { $protectableItems.ProtectableItemType -contains "SQLInstance" }
+		Assert-False { $protectableItems.ProtectableItemType -contains "SQLDataBase" }
+		
+		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "MSSQL" `
+			-ItemType "SQLDataBase";
+		Assert-True { $protectableItems.ProtectableItemType -contains "SQLDataBase" }
+		Assert-False { $protectableItems.ProtectableItemType -contains "SQLInstance" }
+	}
+	finally
+	{
+ 
+	}
+}
+function Test-AzureVmWorkloadInitializeProtectableItem
+{
+	try
+	{
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		
+		$container = Get-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType AzureWorkload `
+			-Status Registered `
+			-FriendlyName $containerName `
+			-ResourceGroupName $resourceGroupName;
+
+		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "MSSQL";
+		Assert-True { $protectableItems.ServerName -contains $containerName }
+
+		Initialize-AzRecoveryServicesBackupProtectableItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "MSSQL";
+
+		$newprotectableItems = Get-AzRecoveryServicesBackupProtectableItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "MSSQL";
+		Assert-True { $newprotectableItems.count -eq $protectableItems.count + 1 }
 	}
 	finally
 	{
 	
 	}
 }
-
-function Test-AzureVmWorkloadProtectedItem
+function Test-AzureVmWorkloadEnableProtectableItem
 {
 	try
 	{
-		Get-AzureRmRecoveryServicesVault -ResourceGroupName 'shracrg' -Name 'shracsql' | Set-AzureRmRecoveryServicesVaultContext
-		$items = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureWorkload" -WorkloadType MSSQL
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName
+		
+		$container = Get-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType AzureWorkload `
+			-Status Registered `
+			-FriendlyName $containerName `
+			-ResourceGroupName $resourceGroupName;
+
+		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "MSSQL";
+
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-ProtectableItem $protectableItems[1]
 	}
 	finally
 	{
 	
 	}
 }
-
-function Test-AzureVmWorkloadNewProtectableItem
+function Test-AzureVmWorkloadBackupProtectionItem
 {
 	try
 	{
-		Get-AzureRmRecoveryServicesVault -ResourceGroupName 'shracrg' -Name 'shracsql' | Set-AzureRmRecoveryServicesVaultContext
-		$items = New-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName
+		
+		$container = Get-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType AzureWorkload `
+			-Status Registered `
+			-FriendlyName $containerName `
+			-ResourceGroupName $resourceGroupName;
+		
+		$items = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType MSSQL;
+
+		Backup-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Item $items[0] `
+			-BackupType "Log"
+	}
+	finally
+	{
+	
+	}
+}
+function Test-AzureVmWorkloadGetRPs
+{
+	try
+	{
+		# Test 1: Get latest recovery point; should be only one
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName
+		
+		$container = Get-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType AzureWorkload `
+			-Status Registered `
+			-FriendlyName $containerName `
+			-ResourceGroupName $resourceGroupName;
+		
+		$items = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType MSSQL;
+
+		$recoveryPoint = Get-AzRecoveryServicesBackupRecoveryPoint `
+			-VaultId $vault.ID `
+			-Item $items[0];
+	
+		Assert-NotNull $recoveryPoint[0];
+		Assert-True { $recoveryPoint[0].Id -match $item.Id };
+
+		# Test 2: Get Recovery point detail
+		$recoveryPointDetail = Get-AzRecoveryServicesBackupRecoveryPoint `
+			-VaultId $vault.ID `
+			-RecoveryPointId $recoveryPoint[0].RecoveryPointId `
+			-Item $items[0];
+	
+		Assert-NotNull $recoveryPointDetail;
+	}
+	finally
+	{
+
+	}
+}
+function Test-AzureVmWorkloadGetLogChains
+{
+	try
+	{
+		# Test 1: Get latest recovery point; should be only one
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName
+		
+		$container = Get-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType AzureWorkload `
+			-Status Registered `
+			-FriendlyName $containerName `
+			-ResourceGroupName $resourceGroupName;
+		
+		$items = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType MSSQL;
+
+		$recoveryLogChain = Get-AzRecoveryServicesBackupRecoveryLogChain `
+			-VaultId $vault.ID `
+			-Item $items[0];
+	
+		Assert-NotNull $recoveryLogChain[0];
+	}
+	finally
+	{
+
+	}
+}
+function Test-AzureVmWorkloadDisableProtection
+{
+	try
+	{
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName
+		
+		$container = Get-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType AzureWorkload `
+			-Status Registered `
+			-FriendlyName $containerName `
+			-ResourceGroupName $resourceGroupName;
+		
+		$items = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType MSSQL;
+
+		Disable-AzureRmRecoveryServicesBackupProtection `
+		-VaultId $vault.ID `
+		-Item $items[0] `
+		-Force;	
+	}
+	finally
+	{
+	
+	}
+}
+function Test-AzureVmWorkloadAutoProtection
+{
+	try
+	{
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		
+		$container = Get-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType AzureWorkload `
+			-Status Registered `
+			-FriendlyName $containerName `
+			-ResourceGroupName $resourceGroupName;
+
+		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "MSSQL" `
+			-ItemType "SQLInstance";
+
+		Enable-AzRecoveryServicesBackupAutoProtection `
+			-VaultId $vault.ID `
+			-InputItem $protectableItems[0].Id `
+			-BackupManagementType "AzureWorkload" `
+			-WorkloadType "MSSQL"
+	}
+	finally
+	{
+	
+	}
+}
+function Test-AzureVmWorkloadFullRestore
+{
+	try
+	{
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName
+		
+		$container = Get-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType AzureWorkload `
+			-Status Registered `
+			-FriendlyName $containerName `
+			-ResourceGroupName $resourceGroupName;
+		
+		$items = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType MSSQL;
+
+		$recoveryPoint = Get-AzRecoveryServicesBackupRecoveryPoint `
+			-VaultId $vault.ID `
+			-Item $items[1];
+
+		$restoreConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
+			-VaultId $vault.ID `
+			-RecoveryPoint $recoveryPoint[0] `
+			-TargetItem $items[0] `
+			–AlternateWorkloadRestore;
+
+		Assert-NotNull $restoreConfig
+
+		Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-WLRecoveryConfig $restoreConfig
 	}
 	finally
 	{

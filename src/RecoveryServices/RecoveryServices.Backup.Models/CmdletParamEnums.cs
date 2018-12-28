@@ -114,6 +114,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         BackupManagementType,
         ExpiryDateTimeUTC,
         StorageAccountName,
+        BackupType,
+        EnableCompression
     }
 
     public enum ProtectionCheckParams

@@ -24,19 +24,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
-        public void GetAzureWorkloadContainer()
+        public void GetAzureVmWorkloadContainer()
         {
             TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureWorkload, "Get-AzureWorkloadContainer");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
-        public void RegisterAzureWorkloadContainer()
-        {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureWorkload, "Register-AzureWorkloadContainer");
+                _logger, PsBackupProviderTypes.AzureWorkload, "Get-AzureVmWorkloadContainer");
         }
 
         [Fact]

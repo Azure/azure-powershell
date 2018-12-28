@@ -12,56 +12,87 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Get-AzureWorkloadContainer
-{
-	try
-	{
-		Get-AzureRmRecoveryServicesVault -ResourceGroupName 'sisi-RSV' -Name 'sisi-RSV-29-6' | Set-AzureRmRecoveryServicesVaultContext
-		
-		# VARIATION-1: Get All Containers with only mandatory parameters
-		$containers = Get-AzureRmRecoveryServicesBackupContainer `
-			-ContainerType AzureWorkload
-	}
-	finally
-	{
-		
-	}
-}
+$containerName = "pstestwlvm1bca8"
+$resourceGroupName = "pstestwlRG1bca8"
+$vaultName = "pstestwlRSV1bca8"
+$resourceId = "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestwlRG1bca8/providers/Microsoft.Compute/virtualMachines/pstestwlvm1bca8"
 
-function Register-AzureWorkloadContainer
+function Get-AzureVmWorkloadContainer
 {
-	try
-	{
-		Get-AzureRmRecoveryServicesVault -ResourceGroupName 'sisi-RSV' -Name 'sisi-RSV-29-6' | Set-AzureRmRecoveryServicesVaultContext
-		
-		# VARIATION-1: Get All Containers with only mandatory parameters
-		$containers = Register-AzRecoveryServicesBackupContainer `
-			-ResourceId "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/sisi-RSV/providers/Microsoft.Compute/virtualMachines/sisi-vm" `
-			-BackupManagementType AzureWorkload `
-			-WorkloadType MSSQL
-	}
-	finally
-	{
-		
-	}
+   try
+   {
+      $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+      
+	  #Register container
+      $container = Register-AzRecoveryServicesBackupContainer `
+         -ResourceId $resourceId `
+         -BackupManagementType AzureWorkload `
+         -WorkloadType MSSQL `
+         -VaultId $vault.ID
+	  Assert-AreEqual $container.Status "Registered"
+
+      # VARIATION-1: Get All Containers with only mandatory parameters
+      $containers = Get-AzRecoveryServicesBackupContainer `
+         -VaultId $vault.ID `
+         -ContainerType AzureWorkload `
+         -Status Registered;
+      Assert-True { $containers.FriendlyName -contains $containerName }
+
+      # VARIATION-2: Get Containers with friendly name filter
+      $containers = Get-AzRecoveryServicesBackupContainer `
+         -VaultId $vault.ID `
+         -ContainerType AzureWorkload `
+         -Status Registered `
+         -FriendlyName $containerName;
+      Assert-True { $containers.FriendlyName -contains $containerName }
+
+      # VARIATION-3: Get Containers with resource group filter
+      $containers = Get-AzRecoveryServicesBackupContainer `
+         -VaultId $vault.ID `
+         -ContainerType AzureWorkload `
+         -Status Registered `
+         -ResourceGroupName $resourceGroupName;
+      Assert-True { $containers.FriendlyName -contains $containerName }
+   
+      # VARIATION-4: Get Containers with friendly name and resource group filters
+      $containers = Get-AzRecoveryServicesBackupContainer `
+         -VaultId $vault.ID `
+         -ContainerType AzureWorkload `
+         -Status Registered `
+         -FriendlyName $containerName `
+         -ResourceGroupName $resourceGroupName;
+      Assert-True { $containers.FriendlyName -contains $containerName }
+   }
+   finally
+   {
+	  #Unregister container
+      Unregister-AzRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
+		-Container $containers
+   }
 }
 
 function Unregister-AzureWorkloadContainer
 {
-	try
-	{
-		Get-AzureRmRecoveryServicesVault -ResourceGroupName 'sisi-RSV' -Name 'sisi-RSV-29-6' | Set-AzureRmRecoveryServicesVaultContext
-		
-		$containers = Get-AzureRmRecoveryServicesBackupContainer `
-			-ContainerType AzureWorkload
-		
-		Unregister-AzureRmRecoveryServicesBackupContainer `
-		-Container $containers[0]
+      $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 
+	  #Register Container
+      $container = Register-AzRecoveryServicesBackupContainer `
+         -ResourceId $resourceId `
+         -BackupManagementType AzureWorkload `
+         -WorkloadType MSSQL `
+         -VaultId $vault.ID
+	  Assert-AreEqual $container.Status "Registered"
 
-	}
-	finally
-	{
-		
-	}
+	  #Unregister container
+      Unregister-AzRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
+		-Container $container
+
+	  $container = Get-AzRecoveryServicesBackupContainer `
+         -VaultId $vault.ID `
+         -ContainerType AzureWorkload `
+         -Status Registered `
+         -FriendlyName $containerName
+      Assert-Null $container
 }

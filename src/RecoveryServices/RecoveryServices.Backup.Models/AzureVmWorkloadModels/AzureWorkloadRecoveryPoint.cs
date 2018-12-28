@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>
@@ -19,6 +22,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class AzureWorkloadRecoveryPoint : AzureRecoveryPoint
     {
+        public IList<SQLDataDirectory> DataDirectoryPaths { get; set; }
         public AzureWorkloadRecoveryPoint()
         {
 

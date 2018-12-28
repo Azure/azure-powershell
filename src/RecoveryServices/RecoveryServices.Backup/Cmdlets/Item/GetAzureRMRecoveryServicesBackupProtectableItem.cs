@@ -18,8 +18,8 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
-using BackupManagementType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -27,35 +27,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Get list of items associated with the recovery services vault 
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtectableItem"), OutputType(typeof(ProtectableItemBase))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtectableItem",
+        DefaultParameterSetName = NoFilterParamSet), OutputType(typeof(ProtectableItemBase))]
     public class GetAzureRmRecoveryServicesBackupProtectableItem : RSBackupVaultCmdletBase
     {
+        internal const string NoFilterParamSet = "NoFilterParamSet";
+        internal const string FilterParamSet = "FilterParamSet";
+
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = NoFilterParamSet,
+            HelpMessage = ParamHelpMsgs.Item.Container, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = FilterParamSet,
+            HelpMessage = ParamHelpMsgs.Item.Container, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public ContainerBase Container { get; set; }
+
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = NoFilterParamSet,
+            HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = FilterParamSet,
+            HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
+        [ValidateNotNullOrEmpty]
+        public Models.WorkloadType WorkloadType { get; set; }
 
         /// <summary>
         /// When this option is specified, only those items which belong to this container will be returned.
         /// </summary>
-        [Parameter(
-            Mandatory = true,
-            Position = 1,
-            HelpMessage = ParamHelpMsgs.ProtectableItem.ItemType,
-            ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public ProtectableItemType ProtectableItemType { get; set; }
-
-        ///// <summary>
-        ///// Backup management type of the items to be returned.
-        ///// </summary>
-        //[Parameter(Mandatory = true, Position = 2, HelpMessage = ParamHelpMsgs.Common.BackupManagementType)]
-        //[ValidateNotNullOrEmpty]
-        //public BackupManagementType BackupManagementType { get; set; }
-
-        //[Parameter(
-        //    Mandatory = true,
-        //    Position = 2,
-        //    HelpMessage = ParamHelpMsgs.Item.Container,
-        //    ValueFromPipelineByPropertyName = true)]
-        //[ValidateNotNullOrEmpty]
-        //public ContainerBase Container { get; set; }
+        [Parameter(Mandatory = false, Position = 2, ParameterSetName = FilterParamSet,
+            HelpMessage = ParamHelpMsgs.ProtectableItem.ItemType, ValueFromPipelineByPropertyName = false)]
+        public ProtectableItemType ItemType { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -67,8 +65,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
-                string backupManagementType = BackupManagementType.AzureWorkload.ToString();
-                string workloadType = ProtectableItemType.ToString();
+                string backupManagementType = Container.BackupManagementType.ToString();
+                string workloadType = ConversionUtils.GetServiceClientWorkloadType(WorkloadType.ToString());
                 ODataQuery<BMSPOQueryObject> queryParam = new ODataQuery<BMSPOQueryObject>(
                 q => q.BackupManagementType
                      == backupManagementType &&
@@ -83,6 +81,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 WriteDebug("Successfully got response from service");
                 List<ProtectableItemBase> itemModels = ConversionHelpers.GetProtectableItemModelList(protectableItems);
 
+                if (ParameterSetName == FilterParamSet)
+                {
+                    string protectableItemType = ItemType.ToString();
+                    itemModels = itemModels.Where(itemModel =>
+                    {
+                        return ((AzureWorkloadProtectableItem)itemModel).ProtectableItemType == protectableItemType;
+                    }).ToList();
+                }
                 WriteObject(itemModels, enumerateCollection: true);
             });
         }

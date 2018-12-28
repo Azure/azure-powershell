@@ -45,10 +45,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string protectedItemUri = HelperUtils.GetProtectedItemUri(uriDict, rp.Id);
             string recoveryPointId = rp.RecoveryPointId;
             //validtion block
-            if (storageAccountLocation != vaultLocation)
-            {
-                throw new Exception(Resources.TriggerRestoreIncorrectRegion);
-            }
+            //if (storageAccountLocation != vaultLocation)
+            //{
+             //   throw new Exception(Resources.TriggerRestoreIncorrectRegion);
+            //}
 
             var response = BmsAdapter.Client.Restores.TriggerWithHttpMessagesAsync(
                 vaultName ?? BmsAdapter.GetResourceName(),

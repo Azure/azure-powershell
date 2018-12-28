@@ -314,9 +314,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             azureVmWorkloadPolicyModel.BackupManagementType = BackupManagementType.AzureWorkload;
             azureVmWorkloadPolicyModel.IsCompression =
                 ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.IsCompression;
+            azureVmWorkloadPolicyModel.IsDifferentialBackupEnabled = false;
+            azureVmWorkloadPolicyModel.IsLogBackupEnabled = false;
             GetPSSubProtectionPolicy(azureVmWorkloadPolicyModel, serviceClientResponse,
                 ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);
-
             return policyModel;
         }
 
@@ -620,6 +621,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     azureVmWorkloadPolicyModel.DifferentialBackupRetentionPolicy = PolicyHelpers.GetPSSimpleRetentionPolicy(
                         (ServiceClientModel.SimpleRetentionPolicy)subProtectionPolicy.RetentionPolicy,
                         ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone, "AzureWorkload");
+                    azureVmWorkloadPolicyModel.IsDifferentialBackupEnabled = true;
                 }
                 else if (string.Compare(subProtectionPolicy.PolicyType, "Log") == 0)
                 {
@@ -629,6 +631,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     azureVmWorkloadPolicyModel.LogBackupRetentionPolicy = PolicyHelpers.GetPSSimpleRetentionPolicy((ServiceClientModel.SimpleRetentionPolicy)
                     subProtectionPolicy.RetentionPolicy,
                     ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone, "AzureWorkload");
+                    azureVmWorkloadPolicyModel.IsLogBackupEnabled = true;
                 }
             }
         }

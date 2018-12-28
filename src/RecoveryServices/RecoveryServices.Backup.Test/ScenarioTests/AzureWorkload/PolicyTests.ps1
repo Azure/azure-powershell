@@ -13,22 +13,22 @@
 # ----------------------------------------------------------------------------------
 
 $location = "westus"
-$resourceGroupName = "sisi-RSV"
-$vaultName = "sisi-RSV-29-6"
-$newPolicyName = "newSqlPolicy"
+$resourceGroupName = "pstestwlRG1bca8"
+$vaultName = "pstestwlRSV1bca8"
+$newPolicyName = "testSqlPolicy"
 
 function Test-AzureVmWorkloadPolicy
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 		
 	# Get default policy objects
-	$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType MSSQL
+	$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType MSSQL
 	Assert-NotNull $schedulePolicy
-	$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType MSSQL
+	$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType MSSQL
 	Assert-NotNull $retentionPolicy
 
 	# Create policy
-	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy `
+	$policy = New-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-Name $newPolicyName `
 		-WorkloadType MSSQL `
@@ -38,43 +38,45 @@ function Test-AzureVmWorkloadPolicy
 	Assert-AreEqual $policy.Name $newPolicyName
 
 	# Get policy
-	$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+	$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-Name $newPolicyName
 	Assert-NotNull $policy
 	Assert-AreEqual $policy.Name $newPolicyName
 
-  # Get default policy objects (this data is generated partially at random. So, running this again gives different values)
-  $schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType MSSQL
-  $schedulePolicy.FullBackupSchedulePolicy.ScheduleRunFrequency = "Weekly"
-  $schedulePolicy.IsDifferentialBackupEnabled = $true
-  $schedulePolicy.IsCompression = $true
-  Assert-NotNull $schedulePolicy
+	# Get default policy objects (this data is generated partially at random. So, running this again gives different values)
+	$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType MSSQL
+	$schedulePolicy.FullBackupSchedulePolicy.ScheduleRunFrequency = "Weekly"
+	$schedulePolicy.IsDifferentialBackupEnabled = $true
+	$schedulePolicy.IsCompression = $true
+	Assert-NotNull $schedulePolicy
   
-  $retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType MSSQL
-  $retentionPolicy.FullBackupRetentionPolicy.IsDailyScheduleEnabled = $false
-  $retentionPolicy.DifferentialBackupRetentionPolicy.RetentionCount = 31
-  Assert-NotNull $retentionPolicy
+	$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType MSSQL
+	$retentionPolicy.FullBackupRetentionPolicy.IsDailyScheduleEnabled = $false
+	$retentionPolicy.DifferentialBackupRetentionPolicy.RetentionCount = 31
+	Assert-NotNull $retentionPolicy
 
 	# Update policy
-	Set-AzureRmRecoveryServicesBackupProtectionPolicy `
+	Set-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-RetentionPolicy $retentionPolicy `
 		-SchedulePolicy $schedulePolicy `
 		-Policy $policy
-	$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+	$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-Name $newPolicyName
 	Assert-AreEqual $policy.DifferentialBackupRetentionPolicy.RetentionCount $retentionPolicy.DifferentialBackupRetentionPolicy.RetentionCount
-  Assert-AreEqual $policy.IsCompression $schedulePolicy.IsCompression
+	Assert-AreEqual $policy.IsCompression $schedulePolicy.IsCompression
+	Assert-AreEqual $schedulePolicy.IsDifferentialBackupEnabled $true
+	Assert-AreEqual $schedulePolicy.IsLogBackupEnabled $true
 
-  # Delete policy
-  Remove-AzureRmRecoveryServicesBackupProtectionPolicy `
-	  -VaultId $vault.ID `
-	  -Policy $policy `
-	  -Force
-  $policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
-	  -VaultId $vault.ID `
-	  -WorkloadType MSSQL
-  Assert-False { $policy.Name -contains $newPolicyName }
+	# Delete policy
+	Remove-AzRecoveryServicesBackupProtectionPolicy `
+		-VaultId $vault.ID `
+		-Policy $policy `
+		-Force
+	$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+		-VaultId $vault.ID `
+		-WorkloadType MSSQL
+	Assert-False { $policy.Name -contains $newPolicyName }
 }
