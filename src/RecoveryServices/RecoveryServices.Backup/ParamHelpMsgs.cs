@@ -111,6 +111,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RecoveryPoint = "Recovery point object to be restored";
             public const string StorageAccountName = "Storage account name where the disks need to be recovered";
             public const string StorageAccountResourceGroupName = "Resource group name of Storage account name where the disks need to be recovered";
+            public const string RecoveryConfig = "Recovery config";
         }
 
         internal static class RestoreVM
@@ -137,6 +138,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string Type = "Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.";
             public const string ResourceId = "ID of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.";
             public const string ProtectableObjName = "Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.";
+        }
+
+        internal static class RecoveryPointConfig
+        {
+            public const string Item = "Item";
+            public const string TargetItem = "TargetItem";
+            public const string OriginalWorkloadRestore = "OriginalWorkloadRestore";
+            public const string AlternateWorkloadRestore = "AlternateWorkloadRestore";
         }
     }
 }
