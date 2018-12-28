@@ -4,7 +4,7 @@
     <PsModuleName>RecoveryServices.SiteRecovery</PsModuleName>
   </PropertyGroup>
 
-  <Import Project="$(MSBuildThisFileDirectory)..\..\..\Az.Test.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
 
   <PropertyGroup>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>

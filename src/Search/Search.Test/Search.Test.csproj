@@ -4,7 +4,7 @@
     <PsModuleName>Search</PsModuleName>
   </PropertyGroup>
 
-  <Import Project="$(MSBuildThisFileDirectory)..\..\..\Az.Test.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
 
   <PropertyGroup>
     <RootNamespace>$(LegacyAssemblyPrefix)Management.Search$(AzTestAssemblySuffix)</RootNamespace>

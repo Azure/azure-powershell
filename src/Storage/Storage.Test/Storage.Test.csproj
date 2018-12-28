@@ -5,7 +5,7 @@
     <UseStorageDataPlane>true</UseStorageDataPlane>
   </PropertyGroup>
 
-  <Import Project="$(MSBuildThisFileDirectory)..\..\..\Az.Test.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
 
   <PropertyGroup>
     <RootNamespace>Microsoft.WindowsAzure.Management.$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
