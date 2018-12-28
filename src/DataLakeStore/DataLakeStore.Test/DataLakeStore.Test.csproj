@@ -4,7 +4,7 @@
     <PsModuleName>DataLakeStore</PsModuleName>
   </PropertyGroup>
 
-  <Import Project="$(MSBuildThisFileDirectory)..\..\..\Az.Test.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
 
   <PropertyGroup>
     <RootNamespace>$(LegacyAssemblyPrefix)DataLake$(AzTestAssemblySuffix)</RootNamespace>

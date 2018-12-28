@@ -5,7 +5,7 @@
     <OmitJsonPackage>true</OmitJsonPackage>
   </PropertyGroup>
 
-  <Import Project="$(MSBuildThisFileDirectory)..\..\..\Az.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <PropertyGroup>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
