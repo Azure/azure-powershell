@@ -165,7 +165,7 @@ Accept wildcard characters: False
 The time in minutes for the event delivery. This value must be between 1 and 1440
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -225,7 +225,7 @@ Accept wildcard characters: False
 The maximum number of attempts to deliver the event. This value must be between 1 and 30
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -372,4 +372,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

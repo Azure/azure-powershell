@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -228,7 +229,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.EventTtlHelp,
             ParameterSetName = EventSubscriptionCustomTopicInputObjectParameterSet)]
         [ValidateRange(1, 1440)]
-        public int? EventTtl { get; set; }
+        public int EventTtl { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -251,7 +252,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.MaxDeliveryAttemptHelp,
             ParameterSetName = EventSubscriptionCustomTopicInputObjectParameterSet)]
         [ValidateRange(1, 30)]
-        public int? MaxDeliveryAttempt { get; set; }
+        public int MaxDeliveryAttempt { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -318,17 +319,17 @@ namespace Microsoft.Azure.Commands.EventGrid
                     throw new Exception($"Cannot find an existing event subscription with name {this.EventSubscriptionName}.");
                 }
 
-                if (this.MaxDeliveryAttempt.HasValue || this.EventTtl.HasValue)
+                if (this.IsParameterBound(c => c.MaxDeliveryAttempt) || this.IsParameterBound(c => c.EventTtl))
                 {
                     retryPolicy = new RetryPolicy(existingEventSubscription.RetryPolicy?.MaxDeliveryAttempts, existingEventSubscription.RetryPolicy?.EventTimeToLiveInMinutes);
 
                     // Only override the new values if any.
-                    if (this.MaxDeliveryAttempt.HasValue)
+                    if (this.IsParameterBound(c => c.MaxDeliveryAttempt))
                     {
                         retryPolicy.MaxDeliveryAttempts = this.MaxDeliveryAttempt;
                     }
 
-                    if (this.EventTtl.HasValue)
+                    if (this.IsParameterBound(c => c.EventTtl))
                     {
                         retryPolicy.EventTimeToLiveInMinutes = this.EventTtl;
                     }

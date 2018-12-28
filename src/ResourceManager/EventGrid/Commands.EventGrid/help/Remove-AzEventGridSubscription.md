@@ -26,8 +26,8 @@ Remove-AzEventGridSubscription [-ResourceId] <String> [-EventSubscriptionName] <
 
 ### EventSubscriptionCustomTopicInputObjectParameterSet
 ```
-Remove-AzEventGridSubscription [-CustomTopicInputObject] <PSTopic> [-EventSubscriptionName] <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzEventGridSubscription [-InputObject] <PSTopic> [-EventSubscriptionName] <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TopicNameParameterSet
@@ -79,21 +79,6 @@ Removes the event subscription \`EventSubscription1\` to an Event Grid Topic.
 
 ## PARAMETERS
 
-### -CustomTopicInputObject
-EventGrid Topic object.
-
-```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSTopic
-Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
@@ -133,6 +118,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+EventGrid Topic object.
+
+```yaml
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSTopic
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -255,4 +255,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
