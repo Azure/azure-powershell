@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.ServiceClientAdapter\RecoveryServices.Backup.ServiceClientAdapter.csproj" />
+    <ProjectReference Include="..\RecoveryServices.Backup.ServiceClientAdapter\RecoveryServices.Backup.ServiceClientAdapter.csproj" />
   </ItemGroup>
 
 </Project>

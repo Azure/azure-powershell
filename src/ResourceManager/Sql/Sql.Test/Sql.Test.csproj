@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Sql\Sql.csproj" />
+    <ProjectReference Include="..\Sql\Sql.csproj" />
   </ItemGroup>
 
 </Project>

@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Logger\RecoveryServices.Backup.Logger.csproj" />
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Models\RecoveryServices.Backup.Models.csproj" />
+    <ProjectReference Include="..\RecoveryServices.Backup.Logger\RecoveryServices.Backup.Logger.csproj" />
+    <ProjectReference Include="..\RecoveryServices.Backup.Models\RecoveryServices.Backup.Models.csproj" />
   </ItemGroup>
 
 </Project>

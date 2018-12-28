@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Batch\Batch.csproj" />
+    <ProjectReference Include="..\Batch\Batch.csproj" />
   </ItemGroup>
 
   <ItemGroup>

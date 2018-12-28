@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.RedisCache\RedisCache.csproj" />
+    <ProjectReference Include="..\RedisCache\RedisCache.csproj" />
   </ItemGroup>
 
 </Project>

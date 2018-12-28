@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Management.PowerBIEmbedded\PowerBIEmbedded.csproj" />
+    <ProjectReference Include="..\PowerBIEmbedded\PowerBIEmbedded.csproj" />
   </ItemGroup>
 
 </Project>

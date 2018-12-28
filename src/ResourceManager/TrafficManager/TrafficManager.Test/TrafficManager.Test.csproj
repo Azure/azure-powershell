@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.TrafficManager2\TrafficManager.csproj" />
+    <ProjectReference Include="..\TrafficManager\TrafficManager.csproj" />
   </ItemGroup>
 
 </Project>
