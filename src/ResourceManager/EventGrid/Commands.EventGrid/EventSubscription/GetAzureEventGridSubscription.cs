@@ -33,11 +33,13 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            Position = 0,
             HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = EventSubscriptionTopicNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            Position = 0,
             HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -46,11 +48,13 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            Position = 1,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = EventSubscriptionTopicNameParameterSet)]
         [ResourceGroupCompleter]
@@ -69,6 +73,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            Position = 2,
             HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = EventSubscriptionTopicNameParameterSet)]
         public string TopicName { get; set; }
@@ -76,6 +81,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            Position = 1,
             HelpMessage = EventGridConstants.TopicTypeNameHelp,
             ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -84,6 +90,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            Position = 2,
             HelpMessage = "Location",
             ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
         [LocationCompleter("Microsoft.EventGrid/eventSubscriptions")]
