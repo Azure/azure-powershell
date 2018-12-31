@@ -93,11 +93,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzApplicationGatewayBackendHttpSettings]()
+[Add-AzApplicationGatewayBackendHttpSettings](./Add-AzApplicationGatewayBackendHttpSettings.md)
 
-[New-AzApplicationGatewayBackendHttpSettings]()
+[New-AzApplicationGatewayBackendHttpSettings](./New-AzApplicationGatewayBackendHttpSettings.md)
 
-[Get-AzApplicationGatewayBackendHttpSettings]()
+[Get-AzApplicationGatewayBackendHttpSettings](./Get-AzApplicationGatewayBackendHttpSettings.md)
 
-[Set-AzApplicationGatewayBackendHttpSettings]()
+[Set-AzApplicationGatewayBackendHttpSettings](./Set-AzApplicationGatewayBackendHttpSettings.md)
 
