@@ -182,7 +182,7 @@ namespace VersionController.Models
         }
 
         /// <summary>
-        /// Get the releases notes for the current release from a change log.
+        /// Get the releases notes for the upcoming release from a change log.
         /// </summary>
         /// <returns>List of non-empty strings representing the lines of the release notes.</returns>
         private List<string> GetReleaseNotes()
@@ -209,7 +209,7 @@ namespace VersionController.Models
         /// <summary>
         /// Update the module version and release notes for a module manifest file.
         /// </summary>
-        /// <param name="releaseNotes">Release notes for the current release from the change log.</param>
+        /// <param name="releaseNotes">Release notes for the upcoming release from the change log.</param>
         private void UpdateOutputModuleManifest(List<string> releaseNotes)
         {
             var moduleName = _fileHelper.ModuleName;
@@ -241,7 +241,7 @@ namespace VersionController.Models
         }
 
         /// <summary>
-        /// Creates a new header for the current release based on the new version.
+        /// Creates a new header for the upcoming release based on the new version.
         /// </summary>
         private void UpdateChangeLog()
         {
@@ -249,7 +249,7 @@ namespace VersionController.Models
             var file = File.ReadAllLines(changeLogPath);
             var newFile = new string[file.Length + 2];
             var idx = 0;
-            while (idx < file.Length && !file[idx].Equals("## Current Release"))
+            while (idx < file.Length && !file[idx].Equals("## Upcoming Release"))
             {
                 newFile[idx] = file[idx];
                 idx++;
@@ -321,7 +321,7 @@ namespace VersionController.Models
             var changeLogPath = _fileHelper.ChangeLogPath;
             var file = File.ReadAllLines(changeLogPath);
             var idx = 0;
-            while (idx < file.Length && !file[idx].Equals("## Current Release"))
+            while (idx < file.Length && !file[idx].Equals("## Upcoming Release"))
             {
                 idx++;
             }
