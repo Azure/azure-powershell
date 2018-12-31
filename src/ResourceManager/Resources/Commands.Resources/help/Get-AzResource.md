@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: C2C608E5-3351-4D01-8533-9668B2E9F1D1
@@ -23,7 +23,7 @@ Get-AzResource [-Name <String>] [-ResourceType <String>] [-ODataQuery <String>] 
 
 ### ByResourceId
 ```
-Get-AzResource -ResourceId <String> [-ExpandProperties] [-ApiVersion <String>] [-Pre]
+Get-AzResource -ResourceId <String> [-ODataQuery <String>] [-ExpandProperties] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -211,7 +211,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTagNameValueParameterSet, ByTagObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
