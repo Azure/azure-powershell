@@ -205,7 +205,7 @@ Accept wildcard characters: False
 ```
 
 ### -SslCertificate
-Specifies the SSL certificate object for  the HTTP listener.
+Specifies the SSL certificate object for the HTTP listener.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslCertificate
