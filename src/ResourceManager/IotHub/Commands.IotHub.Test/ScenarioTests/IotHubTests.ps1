@@ -282,9 +282,9 @@ function Test-AzureRmIotHubCertificateLifecycle
 	# Constant variable
 	$certificatePath = "$TestOutputRoot\rootCertificate.cer"
 	$verifyCertificatePath = "$TestOutputRoot\verifyCertificate.cer"
-	$certificateSubject = "CN=TestCertificate"
+	$certificateSubject = "TestCertificate"
 	$certificateType = "Microsoft.Devices/IotHubs/Certificates"
-	$certificateName = "TestCertificate"
+	$certificateName = "Certificate1"
 
 	# Add Certificate
 	New-CARootCert $certificateSubject $certificatePath
@@ -338,8 +338,9 @@ Get a certificate from the cert store
 #>
 function Get-CACertBySubjectName([string]$subjectName)
 {
+	$cnsubjectName = ("CN={0}" -f $subjectName)
     $certificates = gci -Recurse Cert:\LocalMachine\ |? { $_.gettype().name -eq "X509Certificate2" }
-    $cert = $certificates |? { $_.subject -eq $subjectName -and $_.PSParentPath -eq "Microsoft.PowerShell.Security\Certificate::LocalMachine\My" }
+    $cert = $certificates |? { $_.subject -eq $cnsubjectName -and $_.PSParentPath -eq "Microsoft.PowerShell.Security\Certificate::LocalMachine\My" }
     if ($NULL -eq $cert)
     {
         throw ("Unable to find certificate with subjectName {0}" -f $subjectName)
@@ -404,9 +405,8 @@ Creates a child certificate signed by a root certificate
 #>
 function New-CAVerificationCert([string]$requestedSubjectName, [string]$_rootCertSubject, [string]$verifyRequestedFileName)
 {
-    $cnRequestedSubjectName = ("CN={0}" -f $requestedSubjectName)
     $rootCACert = Get-CACertBySubjectName $_rootCertSubject
-	$verifyCert = New-CASelfsignedCertificate $cnRequestedSubjectName $rootCACert $false
+	$verifyCert = New-CASelfsignedCertificate $requestedSubjectName $rootCACert $false
 	Export-Certificate -cert $verifyCert -filePath $verifyRequestedFileName -Type Cert
     if (-not (Test-Path $verifyRequestedFileName))
     {
