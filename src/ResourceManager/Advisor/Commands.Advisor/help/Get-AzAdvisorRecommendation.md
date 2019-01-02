@@ -14,13 +14,13 @@ Gets a list of Azure Advisor recommendations.
 
 ### IdParameterSet
 ```
-Get-AzAdvisorRecommendation [-ResourceId] <String> [-Category <String>] [-Refresh]
+Get-AzAdvisorRecommendation [-ResourceId] <String> [-Category <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NameParameterSet (Default)
 ```
-Get-AzAdvisorRecommendation [-Category <String>] [-ResourceGroupName <String>] [-Refresh]
+Get-AzAdvisorRecommendation [-Category <String>] [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -96,21 +96,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Refresh
-Regenerates the recommendations.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
