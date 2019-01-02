@@ -30,4 +30,4 @@ Here is a [link to our milestones](https://github.com/Azure/azure-powershell/mil
 
 ### Send us feedback
 * Generic feedback : Use the [`Send-Feedback`](https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/send-feedback?view=azurermps-6.11.0) cmdlet
-* A bug : Report issues here [here](https://github.com/Azure/azure-powershell/issues) 
+* A bug : Report issues in the [azure-powershell repository issue list](https://github.com/Azure/azure-powershell/issues) 
