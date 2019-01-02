@@ -55,8 +55,8 @@ Properties       : {
                      "Format"         : {
                        "Type ": "Json",
                        "Version": 1
-                      }
-				   }
+                     }
+                   }
 ```
 
 In this example we get the flow logging status for a Network Security Group. The specified NSG has flow logging enabled, default format, and no retention policy set.

@@ -115,14 +115,13 @@ Get existing Network Watcher.
 function Get-CreateTestNetworkWatcher($location, $nwName, $nwRgName)
 {
     $nw = $null
-    # TODO: replace with Normalize-Location after PR is merged: https://github.com/Azure/azure-powershell-common/pull/90
-    $testLocation = $location.ToLower() -replace '[^a-z0-9]'
+    $canonicalLocation = Normalize-Location $location
 
     # Get Network Watcher
     $nwlist = Get-AzureRmNetworkWatcher
     foreach ($i in $nwlist)
     {
-        if($i.Location -eq $testLocation)
+        if($i.Location -eq $canonicalLocation)
         {
             $nw = $i
             break
