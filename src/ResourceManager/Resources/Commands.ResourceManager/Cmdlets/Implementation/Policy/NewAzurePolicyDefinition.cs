@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Newtonsoft.Json.Linq;
     using Policy;
     using System;
@@ -74,8 +75,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the new policy definition mode parameter.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyDefinitionModeHelp)]
+        [PSArgumentCompleter(PolicyDefinitionMode.All, PolicyDefinitionMode.Indexed)]
         [ValidateNotNullOrEmpty]
-        public PolicyDefinitionMode Mode { get; set; }
+        public string Mode { get; set; }
 
         /// <summary>
         /// Gets or sets the new policy definition management group name parameter.
@@ -90,14 +92,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = PolicyCmdletBase.SubscriptionIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyDefinitionSubscriptionIdHelp)]
         [ValidateNotNullOrEmpty]
         public Guid? SubscriptionId { get; set; }
-
-        /// <summary>
-        /// Instantiates a new instance of the NewAzurePolicyDefinition cmdlet
-        /// </summary>
-        public NewAzurePolicyDefinitionCmdlet()
-        {
-            this.Mode = PolicyDefinitionMode.NotSpecified;
-        }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -154,7 +148,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     PolicyRule = JObject.Parse(this.GetObjectFromParameter(this.Policy).ToString()),
                     Metadata = this.Metadata == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Metadata).ToString()),
                     Parameters = this.Parameter == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Parameter).ToString()),
-                    Mode = this.Mode == PolicyDefinitionMode.NotSpecified ? PolicyDefinitionMode.All : this.Mode
+                    Mode = string.IsNullOrEmpty(this.Mode) ? PolicyDefinitionMode.All : this.Mode
                 }
             };
 
