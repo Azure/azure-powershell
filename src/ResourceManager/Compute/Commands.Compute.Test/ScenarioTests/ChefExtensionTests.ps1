@@ -25,12 +25,11 @@ function Test-SetChefExtensionBasic
 {
     $rgname = Get-ComputeTestResourceName
     $loc = Get-ComputeVMLocation
-	$TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
 
     try
     {
-	############ Create Virtual Machine #############
-	# Common
+        ############ Create Virtual Machine #############
+        # Common
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
@@ -67,9 +66,9 @@ function Test-SetChefExtensionBasic
         $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
-	$p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
 
-	# OS & Image
+        # OS & Image
         $user = "localadmin";
         $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
@@ -83,23 +82,23 @@ function Test-SetChefExtensionBasic
         # Virtual Machine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
-	############ Created Virtual Machine #############
+        ############ Created Virtual Machine #############
 
-	############ Test Chef Extension #################
-	$version = "1210.12"
-	$client_rb = "$TestOutputRoot\Templates\client.rb";
-	$validationPemFile = "$TestOutputRoot\Templates\tstorgnztn-validator.pem";
+        ############ Test Chef Extension #################
+        $version = "1210.12"
+        $client_rb = Join-Path $TemplatesPath "client.rb";
+        $validationPemFile = Join-Path $TemplatesPath "tstorgnztn-validator.pem";
 
-	# Set Chef extension
+        # Set Chef extension
         Set-AzureRmVMChefExtension -ResourceGroupName $rgname -VMName $vmname -TypeHandlerVersion $version -ClientRb $client_rb -ValidationPem $validationPemFile -Windows
-	$extension = Get-AzureRmVMChefExtension -ResourceGroupName $rgname -VMName $vmname -Windows
+        $extension = Get-AzureRmVMChefExtension -ResourceGroupName $rgname -VMName $vmname -Windows
 
         Assert-NotNull $extension
         Assert-AreEqual $extension.Publisher 'Chef.Bootstrap.WindowsAzure'
         Assert-AreEqual $extension.ExtensionType 'ChefClient'
         Assert-AreEqual $extension.Name 'ChefClient'
 
-	# Test Remove command.
+        # Test Remove command.
         Remove-AzureRmVMChefExtension -ResourceGroupName $rgname -VMName $vmname -Windows
     }
     finally
