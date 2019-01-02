@@ -210,7 +210,7 @@ Accept wildcard characters: False
 ```
 
 ### -Zone
-Specifies the availability zone list for the virtual machine. The allowed values are dependend on the capabilities of the region. Allowed values will normally be 1,2,3.
+Specifies the availability zone list for the virtual machine. The allowed values depend on the capabilities of the region. Allowed values will normally be 1,2,3.
 
 ```yaml
 Type: System.String[]
