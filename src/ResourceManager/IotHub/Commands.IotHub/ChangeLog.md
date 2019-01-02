@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.0.1
 * Updated to the latest version of the IotHub SDK
 
 ## Version 1.0.0
