@@ -306,6 +306,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 case AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId:
                     resource = AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId;
                     break;
+                case AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix:
+                    resource = AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix;
+                    break;
                 default:
                     resource = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
                     break;
