@@ -1,6 +1,6 @@
-#Requires -modules AzureRM
+#Requires -modules Az
 
-# .\UpdateAzureRM.ps1 -Release "December 2017"
+# .\UpdateAz.ps1 -Release "December 2017"
 [CmdletBinding()]
 Param(
     [Parameter(Mandatory = $true)]
@@ -35,7 +35,7 @@ function Get-VersionBump
     {
         return [PSVersion]::MINOR
     }
-    elseif ($gallerySplit[2] -ne $localSplit[1])
+    elseif ($gallerySplit[2] -ne $localSplit[2])
     {
         return [PSVersion]::PATCH
     }
@@ -121,7 +121,7 @@ function Get-ReleaseNotes
         [string]$RootPath
     )
 
-    $ProjectPaths = @( "$RootPath\src\ResourceManager", "$RootPath\src\ServiceManagement", "$RootPath\src\Storage" )
+    $ProjectPaths = @( "$RootPath\src\ResourceManager" )
     $ModuleManifestFile = $ProjectPaths | % { Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | where { $_.Name.Replace(".psd1", "") -eq $Module -and `
                                                                                                           $_.FullName -notlike "*Debug*" -and `
                                                                                                           $_.FullName -notlike "*Netcore*" -and `
@@ -146,38 +146,42 @@ function Update-ChangeLog
     ($Content + $ChangeLogContent) | Set-Content -Path $ChangeLogFile.FullName -Encoding UTF8
 }
 
-Write-Host "Getting local AzureRM information..." -ForegroundColor Yellow
-$localAzureRM = Test-ModuleManifest -Path "$PSScriptRoot\AzureRM\AzureRM.psd1"
+Write-Host "Getting local Az information..." -ForegroundColor Yellow
+$localAz = Test-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1"
 
-Write-Host "Getting gallery AzureRM information..." -ForegroundColor Yellow
-$galleryAzureRM = Find-Module -Name AzureRM -Repository PSGallery
+Write-Host "Getting gallery Az information..." -ForegroundColor Yellow
+$galleryAz = Find-Module -Name Az -Repository PSGallery
 
 $versionBump = [PSVersion]::NONE
 $updatedModules = @()
-foreach ($galleryDependency in $galleryAzureRM.Dependencies)
+foreach ($galleryDependency in $galleryAz.Dependencies)
 {
-    $localDependency = $localAzureRM.RequiredModules | where { $_.Name -eq $galleryDependency.Name }
+    $localDependency = $localAz.RequiredModules | where { $_.Name -eq $galleryDependency.Name }
     if ($localDependency -eq $null)
     {
         Write-Error "Could not find matching dependency for $($galleryDependency.Name)"
     }
 
-    $galleryVersion = $galleryDependency.RequiredVersion.ToString()
+    $galleryVersion = $galleryDependency.RequiredVersion
+    if ([string]::IsNullOrEmpty($galleryVersion))
+    {
+        $galleryVersion = $galleryDependency.MinimumVersion
+    }
     $localVersion = $localDependency.Version.ToString()
-    if ($galleryVersion -ne $localVersion)
+    if ($galleryVersion.ToString() -ne $localVersion)
     {
         $updatedModules += $galleryDependency.Name
-        $currBump = Get-VersionBump -GalleryVersion $galleryVersion -LocalVersion $localVersion
+        $currBump = Get-VersionBump -GalleryVersion $galleryVersion.ToString() -LocalVersion $localVersion
         Write-Host "Found $currBump version bump for $($localDependency.NAME)"
         if ($currBump -eq [PSVersion]::MAJOR)
         {
             $versionBump = [PSVersion]::MAJOR
         }
-        elseif ($currBump -eq [PSVersion]::MINOR -and $versionBump -ne [Version]::MAJOR)
+        elseif ($currBump -eq [PSVersion]::MINOR -and $versionBump -ne [PSVersion]::MAJOR)
         {
             $versionBump = [PSVersion]::MINOR
         }
-        elseif ($currBump -eq [PSVersion]::PATCH -and $versionBump -eq [Version]::NONE)
+        elseif ($currBump -eq [PSVersion]::PATCH -and $versionBump -eq [PSVersion]::NONE)
         {
             $versionBump = [PSVersion]::PATCH
         }
@@ -186,19 +190,21 @@ foreach ($galleryDependency in $galleryAzureRM.Dependencies)
 
 if ($versionBump -eq [PSVersion]::NONE)
 {
-    Write-Host "No changes found in AzureRM." -ForegroundColor Green
+    Write-Host "No changes found in Az." -ForegroundColor Green
     return
 }
 
-$newVersion = Get-BumpedVersion -Version $localAzureRM.Version -VersionBump $versionBump
+$newVersion = Get-BumpedVersion -Version $localAz.Version -VersionBump $versionBump
 
-Write-Host "New version of AzureRM: $newVersion" -ForegroundColor Green
+Write-Host "New version of Az: $newVersion" -ForegroundColor Green
 
 $rootPath = "$PSScriptRoot\.."
-$oldVersion = $galleryAzureRM.Version
+$oldVersion = $galleryAz.Version
 
 Update-AzurecmdFile -OldVersion $oldVersion -NewVersion $newVersion -Release $Release -RootPath $rootPath
-Update-AzurePowerShellFile -OldVersion $oldVersion -NewVersion $newVersion -RootPath $rootPath
+
+# This was moved to the common repo
+# Update-AzurePowerShellFile -OldVersion $oldVersion -NewVersion $newVersion -RootPath $rootPath
 
 $releaseNotes = @()
 $releaseNotes += "$newVersion - $Release"
@@ -214,5 +220,5 @@ foreach ($updatedModule in $updatedModules)
     $changeLog += $(Get-ReleaseNotes -Module $updatedModule -RootPath $rootPath) + "`n"
 }
 
-Update-ModuleManifest -Path "$PSScriptRoot\AzureRM\AzureRM.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
+Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
 Update-ChangeLog -Content $changeLog -RootPath $rootPath
