@@ -39,6 +39,14 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.pgtm)]
+        public void TestCortexExpressRouteCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexExpressRouteCRUD");
+        }
+
+        [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestCortexDownloadConfig()

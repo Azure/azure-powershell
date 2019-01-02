@@ -14,8 +14,9 @@ Gets an ExpressRoute cross connection peering configuration.
 ## SYNTAX
 
 ```
-Get-AzExpressRouteCrossConnectionPeering [-Name <String>] -ExpressRouteCrossConnection <PSExpressRouteCrossConnection>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzExpressRouteCrossConnectionPeering [-Name <String>]
+ -ExpressRouteCrossConnection <PSExpressRouteCrossConnection> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,9 +37,9 @@ Get-AzExpressRouteCrossConnectionPeering -Name "AzurePrivatePeering" -ExpressRou
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -51,9 +52,9 @@ Accept wildcard characters: False
 The ExpressRoute cross connection object containing the peering configuration.
 
 ```yaml
-Type: PSExpressRouteCrossConnection
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCrossConnection
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -66,14 +67,14 @@ Accept wildcard characters: False
 The name of the peering configuration to be retrieved.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -95,8 +96,8 @@ Parameter 'ExpressRouteCrossConnection' accepts value of type 'PSExpressRouteCro
 
 [Add-AzExpressRouteCrossConnectionPeering](Add-AzExpressRouteCrossConnectionPeering.md)
 
-[New-AzExpressRouteCrossConnectionPeering](New-AzExpressRouteCrossConnectionPeering.md)
-
 [Remove-AzExpressRouteCrossConnectionPeering](Remove-AzExpressRouteCrossConnectionPeering.md)
+
+[Get-AzExpressRouteCrossConnection](Get-AzExpressRouteCrossConnection.md)
 
 [Set-AzExpressRouteCrossConnection](Set-AzExpressRouteCrossConnection.md)
