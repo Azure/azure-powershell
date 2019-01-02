@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         /// </summary>
         /// <param name="configData">Configuration Properties</param>
         /// <returns>List of PsAzureAdvisorConfigurationData</returns>
-        public List<PsAzureAdvisorConfigurationData> CreateConfigurationBySubscription(ConfigData configData)
+        internal List<PsAzureAdvisorConfigurationData> CreateConfigurationBySubscription(ConfigData configData)
         {
             List<PsAzureAdvisorConfigurationData> results = new List<PsAzureAdvisorConfigurationData>();
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         /// <param name="configData">Configuration Properties</param>
         /// <param name="resourceGroupName">Name of the resourceGroup</param>
         /// <returns>List of PsAzureAdvisorConfigurationData</returns>
-        public List<PsAzureAdvisorConfigurationData> CreateConfigurationByResourceGroup(ConfigData configData, string resourceGroupName)
+        internal List<PsAzureAdvisorConfigurationData> CreateConfigurationByResourceGroup(ConfigData configData, string resourceGroupName)
         {
             List<PsAzureAdvisorConfigurationData> results = new List<PsAzureAdvisorConfigurationData>();
 

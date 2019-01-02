@@ -62,13 +62,43 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         public string ResourceGroupName { get; set; }
 
         /// <summary>
+        /// Gets the list of recommendations associated with the subscription-Id.
+        /// </summary>
+        /// <returns></returns>
+        internal List<PsAzureAdvisorResourceRecommendationBase> GetRecommendations()
+        {
+            AzureOperationResponse<IPage<ResourceRecommendationBase>> operationResponseRecommendation = null;
+            List<ResourceRecommendationBase> entirePageLinkRecommendationData = new List<ResourceRecommendationBase>();
+            string nextPagelink = string.Empty;
+
+            do
+            {
+                if (string.IsNullOrEmpty(nextPagelink))
+                {
+                    operationResponseRecommendation = this.ResourceAdvisorClient.Recommendations.ListWithHttpMessagesAsync().Result;
+                }
+                else
+                {
+                    operationResponseRecommendation = this.ResourceAdvisorClient.Recommendations.ListNextWithHttpMessagesAsync(nextPagelink).Result;
+                }
+                nextPagelink = operationResponseRecommendation.Body.NextPageLink;
+
+                // Add current page items to the List 
+                entirePageLinkRecommendationData.AddRange(operationResponseRecommendation.Body.ToList());
+            }
+            while (!string.IsNullOrEmpty(nextPagelink));
+
+            // Convert to PsAzureAdvisorResourceRecommendationBase list and return 
+            return PsAzureAdvisorResourceRecommendationBase.GetFromResourceRecommendationBase(entirePageLinkRecommendationData);
+        }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         public override void ExecuteCmdlet()
         {
             List<PsAzureAdvisorResourceRecommendationBase> results = new List<PsAzureAdvisorResourceRecommendationBase>();
-
-            AzureOperationResponse<IPage<ResourceRecommendationBase>> operationResponseRecommendation = null;
+            //AzureOperationResponse<IPage<ResourceRecommendationBase>> operationResponseRecommendation = null;
             List<ResourceRecommendationBase> entirePageLinkRecommendationData = new List<ResourceRecommendationBase>();
             AzureOperationResponse<ResourceRecommendationBase> recommendation = null;
 
@@ -82,35 +112,13 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                     break;
 
                 case NameParameterSet:
-                    string nextPagelink = string.Empty;
-                    
-                    // Iterate the page-link if exists, if the first iteration retreives the data.
-                    do
-                    {
-                        if (string.IsNullOrEmpty(nextPagelink))
-                        {
-                            operationResponseRecommendation = this.ResourceAdvisorClient.Recommendations.ListWithHttpMessagesAsync().Result;
-                        }
-                        else
-                        {
-                            operationResponseRecommendation = this.ResourceAdvisorClient.Recommendations.ListNextWithHttpMessagesAsync(nextPagelink).Result;
-                        }
-                        nextPagelink = operationResponseRecommendation.Body.NextPageLink;
-
-                        // Add current page items to the List 
-                        entirePageLinkRecommendationData.AddRange(operationResponseRecommendation.Body.ToList());
-                    }
-                    while (!string.IsNullOrEmpty(nextPagelink));
-
-                    // Convert to PsAzureAdvisorResourceRecommendationBase list
-                    results = PsAzureAdvisorResourceRecommendationBase.GetFromResourceRecommendationBase(entirePageLinkRecommendationData);
+                    results = GetRecommendations();
 
                     // Filter out the resourcegroupname recommendations
                     if (!string.IsNullOrEmpty(this.ResourceGroupName))
                     {
-                        results = RecommendationHelper.RecommendationFilterByCategoryAndResource(results, string.Empty, this.ResourceGroupName);                    
+                        results = RecommendationHelper.RecommendationFilterByCategoryAndResource(results, string.Empty, this.ResourceGroupName);
                     }
-
                     break;
             }
 

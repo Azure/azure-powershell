@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         /// <summary>
         /// Gets or sets the Resource Id.
         /// </summary>
-        [Parameter(ParameterSetName = IdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "ResourceID of the recommendation to be suppressed.")]
+        [Parameter(ParameterSetName = IdParameterSet, Position = 0, Mandatory = true, HelpMessage = "ResourceID of the recommendation to be suppressed.")]
         public string ResourceId { get; set; }
 
         /// <summary>
@@ -61,15 +61,14 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         /// </summary>
         [Parameter(ParameterSetName = IdParameterSet, Mandatory = false, Position = 1, HelpMessage = "Days to disable.")]
         [Parameter(ParameterSetName = NameParameterSet, Mandatory = false, Position = 1, HelpMessage = "Days to disable.")]
-        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = false, Position = 1, HelpMessage = "Days to disable.")]
+        // [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = false, Position = 1, HelpMessage = "Days to disable.")]
         [ValidateRange(1, int.MaxValue)]
         public int Days { get; set; }
 
         /// <summary>
         /// Gets or sets the object passed from the PowerShell piping
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, ParameterSetName = InputObjectParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzAdvisorRecommendation call.")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzAdvisorRecommendation call.")]
         public PsAzureAdvisorResourceRecommendationBase InputObject { get; set; }
 
         /// <summary>
@@ -98,7 +97,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
             var returnSuppressionContract = new List<PsAzureAdvisorSuppressionContract>();
 
             // Create the suppression contract           
-            suppressionContract = new SuppressionContract(null, DefaultSuppressionName, null, null, string.IsNullOrEmpty(this.Days.ToString()) ? string.Empty : this.Days.ToString());
+            suppressionContract = new SuppressionContract(null, DefaultSuppressionName, null, null, this.Days == 0 ? string.Empty : this.Days.ToString());
 
             switch (this.ParameterSetName)
             {
