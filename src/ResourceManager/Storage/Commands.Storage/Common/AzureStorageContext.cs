@@ -130,7 +130,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// Create a storage context usign cloud storage account
         /// </summary>
         /// <param name="account">cloud storage account</param>
-        public AzureStorageContext(CloudStorageAccount account)
+        public AzureStorageContext(CloudStorageAccount account, string accountName = null)
         {
             StorageAccount = account;
 
@@ -154,7 +154,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 FileEndPoint = account.FileEndpoint.ToString();
             }
 
-            StorageAccountName = account.Credentials.AccountName;
+            StorageAccountName = string.IsNullOrEmpty(accountName) ? account.Credentials.AccountName : accountName;
             Context = this;
             Name = String.Empty;
 
