@@ -374,7 +374,6 @@ namespace Microsoft.Azure.Commands.EventGrid
                 {
                     // ResourceID not specified, build the scope for the event subscription for either the
                     // subscription, or resource group, or custom topic depending on which of the parameters are provided.
-
                     scope = EventGridUtils.GetScope(this.DefaultContext.Subscription.Id, this.ResourceGroupName, this.TopicName);
                 }
 
