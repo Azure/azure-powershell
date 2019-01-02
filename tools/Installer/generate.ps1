@@ -34,13 +34,12 @@ Write-Host $env:AzurePSRoot
 
 Write-Verbose "Build configuration is set to $buildConfig"
 
-$output = Join-Path $env:AzurePSRoot "src\Package\$buildConfig"
+$output = Join-Path $env:AzurePSRoot "artifacts\$buildConfig"
 Write-Verbose "The output folder is set to $output"
 $serviceManagementPath = Join-Path $output "ServiceManagement\Azure"
-$resourceManagerPath = Join-Path $output "ResourceManager\AzureResourceManager"
+$resourceManagerPath = $output
 
 Write-Verbose "Removing unneeded psd1 and other files"
-Remove-Item -Force $resourceManagerPath\AzureResourceManager.psd1 -ErrorAction SilentlyContinue
 Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeAnalytics\AzureRM.Tags.psd1 -ErrorAction SilentlyContinue
 Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeAnalytics\Microsoft.Azure.Commands.Tags.dll-Help.xml -ErrorAction SilentlyContinue
 Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeAnalytics\Microsoft.Azure.Commands.Tags.format.ps1xml -ErrorAction SilentlyContinue

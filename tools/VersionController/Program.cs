@@ -35,19 +35,9 @@ namespace VersionController
 
              _rootDirectory = Directory.GetParent(srcDirectory).FullName;
 
-            _projectDirectories = new List<string>
-            {
-                Path.Combine(srcDirectory, @"ResourceManager\"),
-                Path.Combine(srcDirectory, @"ServiceManagement\"),
-                Path.Combine(srcDirectory, @"Storage\")
-            }.Where((d) => Directory.Exists(d)).ToList();
+            _projectDirectories = new List<string>{ Path.Combine(_rootDirectory, @"src\ResourceManager\") }.Where((d) => Directory.Exists(d)).ToList();
 
-            _outputDirectories = new List<string>
-            {
-                Path.Combine(srcDirectory, @"Package\Debug\ResourceManager\AzureResourceManager\"),
-                Path.Combine(srcDirectory, @"Package\Debug\ServiceManagement\"),
-                Path.Combine(srcDirectory, @"Package\Debug\Storage\")
-            }.Where((d) => Directory.Exists(d)).ToList();
+            _outputDirectories = new List<string>{ Path.Combine(_rootDirectory, @"artifacts\Debug\") }.Where((d) => Directory.Exists(d)).ToList();
 
             var exceptionsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Exceptions");
             if (args != null && args.Length > 0)
@@ -57,7 +47,7 @@ namespace VersionController
 
             if (!Directory.Exists(exceptionsDirectory))
             {
-                throw new ArgumentException("Please provide a path to the Exceptions folder in the output directory (src/Package/Exceptions).");
+                throw new ArgumentException("Please provide a path to the Exceptions folder in the output directory (artifacts/Exceptions).");
             }
 
             _moduleNameFilter = string.Empty;
