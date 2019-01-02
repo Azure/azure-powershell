@@ -2,6 +2,6 @@
 **/*
 
 # Include the build.
-!src/Package/Release/ResourceManager/**/*
-!src/Package/Debug/ResourceManager/**/*
+!artifacts/Release/**/*
+!artifacts/Debug/**/*
 !tools/InstallationTests/NetcoreTests/**/*

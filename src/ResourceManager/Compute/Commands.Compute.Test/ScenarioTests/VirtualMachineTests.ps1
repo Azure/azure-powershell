@@ -407,7 +407,7 @@ function Test-VirtualMachinePiping
         Get-AzureRmVM -ResourceGroupName $rgname | Set-AzureRmVM -Generalize;
 
         $dest = Get-ComputeTestResourceName;
-        $templatePath = "$TestOutputRoot\template.txt";
+        $templatePath = Join-Path $TestOutputRoot "template.txt";
         $job = Get-AzureRmVM -ResourceGroupName $rgname | Save-AzureRmVMImage -DestinationContainerName $dest -VHDNamePrefix 'pslib' -Overwrite -Path $templatePath -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
@@ -1083,7 +1083,7 @@ function Test-VirtualMachineCapture
         Set-AzureRmVM -Generalize -ResourceGroupName $rgname -Name $vmname;
 
         $dest = Get-ComputeTestResourceName;
-        $templatePath = "$TestOutputRoot\template.txt";
+        $templatePath = Join-Path $TestOutputRoot "template.txt";
         $st = Save-AzureRmVMImage -ResourceGroupName $rgname -VMName $vmname -DestinationContainerName $dest -VHDNamePrefix 'pslib' -Overwrite -Path $templatePath;
         $template = Get-Content $templatePath;
         Assert-True { $template[1].Contains("$schema"); }
@@ -1968,9 +1968,9 @@ function Test-VMImageCmdletOutputFormat
 
     Assert-OutputContains " Get-AzureRmVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureRmVMImageOffer " @('Id', 'Location', 'PublisherName', 'Offer');
 
-    Assert-OutputContains " Get-AzureRmVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku');
+    Assert-OutputContains " Get-AzureRmVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku " @('Publisher', 'Offer', 'Skus');
 
-    Assert-OutputContains " Get-AzureRmVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage " @('Version', 'FilterExpression', 'Skus', 'Offer', 'PublisherName');
+    Assert-OutputContains " Get-AzureRmVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage " @('Version', 'FilterExpression', 'Skus');
 
     Assert-OutputContains " Get-AzureRmVMImage -Location '$locStr' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'FilterExpression', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 
@@ -2859,12 +2859,10 @@ function Test-VirtualMachineGetStatus
         $vms = Get-AzureRmVM -ResourceGroupName $rgname -Status;
         $a = $vms | Out-String;
         Write-Verbose($a);
-        Assert-True {$a.Contains("PowerState");}
 
         $vms = Get-AzureRmVM -Status;
         $a = $vms | Out-String;
         Write-Verbose($a);
-        Assert-True {$a.Contains("PowerState");}
 
         # VM Compact output
         $a = $vms[0] | Format-Custom | Out-String;

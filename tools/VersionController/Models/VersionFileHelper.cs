@@ -15,22 +15,16 @@ namespace VersionController.Models
             OutputModuleManifestPath = outputModuleManifestPath;
             ProjectModuleManifestPath = projectModuleManifestPath;
 
-            _outputDirectories = new List<string>
-            {
-                Path.Combine(DebugDirectory, @"ResourceManager\AzureResourceManager\")
-            };
+            _outputDirectories = new List<string>{ DebugDirectory };
 
-            _projectDirectories = new List<string>
-            {
-                Path.Combine(SrcDirectory, @"ResourceManager\")
-            };
+            _projectDirectories = new List<string>{ Path.Combine(SrcDirectory, @"ResourceManager\") };
         }
 
         public string RootDirectory { get; set; }
 
         public string SrcDirectory => Path.Combine(RootDirectory, @"src");
 
-        public string PackageDirectory => Path.Combine(SrcDirectory, @"Package");
+        public string PackageDirectory => Path.Combine(RootDirectory, @"artifacts");
 
         public string DebugDirectory => Path.Combine(PackageDirectory, @"Debug");
 

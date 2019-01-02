@@ -28,12 +28,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGallery()
         {
