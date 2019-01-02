@@ -19,8 +19,7 @@ Tests checking API to list available delegations.
 function Test-GetAvailableDelegationsList
 {
     $location = Get-ProviderLocation ResourceManagement
-    # TODO: replace with Normalize-Location after PR is merged: https://github.com/Azure/azure-powershell-common/pull/90
-    $location = $location.ToLower() -replace '[^a-z0-9]'
+
     try
     {
         $results = Get-AzureRmAvailableServiceDelegation -Location $location;
