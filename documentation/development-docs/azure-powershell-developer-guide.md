@@ -168,7 +168,6 @@ Now, you'll need to edit the solution file. Open the `<SERVICE>.sln` in your tex
 
 After the solution file is updated, save and close it. Now, open the solution file in Visual Studio. Right click on the `Commands.<SERVICE>` project in the `Solution Explorer` and select `Unload project`. Right click on the unloaded project and select `Edit Commands.<SERVICE>.csproj`. Once opened, ensure that the following things are changed:
 - The `AssemblyNamespace` and `RootNamespace` attributes of the project _must_ be changed to `Microsoft.Azure.PowerShell.Cmdlets.<SERVICE>`. If these changes are not made, then the assembly produced from this project is not be signed and results in errors when users try to use your module.
-- Change the `OutputPath` attribute to `$(ProjectDir)..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.<SERVICE>\`
 - Change the particular `<ItemGroup>` containing `<None Include="Az.<SERVICE>.psd1">`
 
 Right click on the project and select `Reload project`, and then build the solution by either right clicking on the solution and selecting `Rebuild Solution` or, from the top of Visual Studio, selecting `Build > Rebuild Solution`. If the build does not succeed, open the `.csproj` file and ensure there are no errors.
@@ -198,7 +197,7 @@ To import modules automatically when debug has started, follow the below steps:
 
 - In the **Debug** tab mentioned previously, go to **Start Options**
 - Import the Profile module, along with the module you are testing, by pasting the following in the **Command line arguments** box (_note_: you have to update the <PATH_TO_REPO> and <SERVICE> values provided below):
-  - `-NoExit -Command "Import-Module <PATH_TO_REPO>/src/Package/Debug/ResourceManager/AzureResourceManager/Az.Accounts/Az.Accounts.psd1;Import-Module <PATH_TO_REPO>/src/Package/Debug/ResourceManager/AzureResourceManager/Az.<SERVICE>/Az.<SERVICE>.psd1;$VerbosePreference='Continue'"`
+  - `-NoExit -Command "Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1;Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.<SERVICE>/Az.<SERVICE>.psd1;$VerbosePreference='Continue'"`
 - **Note**: if you do not see all of the changes you made to the cmdlets when importing your module in a PowerShell session (_e.g.,_ a cmdlet you added is not recognized as a cmdlet), you may need to delete any existing Azure PowerShell modules that you have on your machine (installed through the PowerShell Gallery) before you import your module.
 
 ## Adding Help Content
@@ -307,7 +306,7 @@ $subcriptions = $job | Receive-Job
 
 ## Argument Completers
 
-PowerShell uses Argument Completers to provide tab completion for users. At the moment, Azure PowerShell has two specific argument completers that should be applied to relevant parameters, and one generic argument completer that can be used to tab complete with a given list of values. To test the completers, run a complete build after you have added the completers (`msbuild build.proj`) and ensure that the psm1 file (`Az.<Service>.psm1`) has been added to the psd1 file found in `src/Package/Debug/ResourceManager/AzureResourceManager/AzureRM.<Service>/AzureRM.<Service>.psd1` under "Root Module".
+PowerShell uses Argument Completers to provide tab completion for users. At the moment, Azure PowerShell has two specific argument completers that should be applied to relevant parameters, and one generic argument completer that can be used to tab complete with a given list of values. To test the completers, run a complete build after you have added the completers (`msbuild build.proj`) and ensure that the psm1 file (`Az.<Service>.psm1`) has been added to the psd1 file found in `artifacts/Debug/Az.<Service>/Az.<Service>.psd1` under "Root Module".
 
 ### Resource Group Completer
 

@@ -28,36 +28,21 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineGetRunCommand()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineGetRunCommand");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Get-Location in Common.ps1 is not working correctly for NETSTANDARD")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineSetRunCommand()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineSetRunCommand");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Get-Location in Common.ps1 is not working correctly for NETSTANDARD")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetVMRunCommand()
         {
