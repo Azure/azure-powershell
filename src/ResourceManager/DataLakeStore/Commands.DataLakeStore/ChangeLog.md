@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update the sdk version of dataplane to 1.1.14. Please refer https://github.com/Azure/azure-data-lake-store-net/blob/master/CHANGELOG.md#version-1114 for SDK fixes.
+* Update the sdk version of dataplane to 1.1.14 for SDK fixes.
+    - Fix handling of negative acesstime and modificationtime for getfilestatus and liststatus, Fix async cancellation token
 ## Version 1.0.0
 * General availability of `Az.DataLakeStore` module
 * Update the sdk version of dataplane to 1.1.13
