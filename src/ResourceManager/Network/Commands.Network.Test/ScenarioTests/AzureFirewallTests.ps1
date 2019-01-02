@@ -168,7 +168,7 @@ function Test-AzureFirewallCRUD
         $netRc = New-AzureRmFirewallNetworkRuleCollection -Name $networkRcName -Priority $networkRcPriority -Rule $networkRule -ActionType $networkRcActionType
 
         # Create a NAT rule
-        $natRule = New-AzureRmFirewallNatRule -Name $natRule1Name -Description $natRule1Desc -Protocol $natRule1Protocol1 -SourceAddress $natRule1SourceAddress1, $natRule1SourceAddress2 -DestinationAddress $natRule1DestinationAddress1 -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
+        $natRule = New-AzureRmFirewallNatRule -Name $natRule1Name -Description $natRule1Desc -Protocol $natRule1Protocol1 -SourceAddress $natRule1SourceAddress1, $natRule1SourceAddress2 -DestinationAddress $publicip.IpAddress -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
         $natRule.AddProtocol($natRule1Protocol2)
 
         # Test handling of incorrect values
@@ -304,7 +304,7 @@ function Test-AzureFirewallCRUD
         Assert-AreEqual $natRule1SourceAddress2 $natRule.SourceAddresses[1]
 
         Assert-AreEqual 1 $natRule.DestinationAddresses.Count 
-        Assert-AreEqual $natRule1DestinationAddress1 $natRule.DestinationAddresses[0]
+        Assert-AreEqual $publicip.IpAddress $natRule.DestinationAddresses[0]
 
         Assert-AreEqual 2 $natRule.Protocols.Count 
         Assert-AreEqual $natRule1Protocol1 $natRule.Protocols[0]
