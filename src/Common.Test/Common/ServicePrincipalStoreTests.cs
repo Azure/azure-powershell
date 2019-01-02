@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.ServiceManagement.Common.Models;
 using System;
 using System.Runtime.InteropServices;
 using System.Security;

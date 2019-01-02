@@ -27,7 +27,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 
-namespace Microsoft.Azure.ServiceManagemenet.Common.Models
+namespace Microsoft.Azure.ServiceManagement.Common.Models
 {
     public class RPRegistrationAction : IClientAction
     {

@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.ServiceManagemenet.Common.Models
+namespace Microsoft.Azure.ServiceManagement.Common.Models
 {
     public class PSAzureAccount
     {

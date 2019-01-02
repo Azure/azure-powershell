@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit.Abstractions;
-using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common

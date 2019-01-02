@@ -142,16 +142,16 @@
     <value>KeyCredential object is not valid.</value>
   </data>
   <data name="MultipleApplicationsWithDisplayNameFound" xml:space="preserve">
-    <value>More than one application found with display name '{0}'. Please use the Get-AzureRmADApplication cmdlet to get the object id of the desired application.</value>
+    <value>More than one application found with display name '{0}'. Please use the Get-AzADApplication cmdlet to get the object id of the desired application.</value>
   </data>
   <data name="MultipleGroupsWithDisplayNameFound" xml:space="preserve">
-    <value>More than one group found with the display name '{0}'. Please use the Get-AzureRmADGroup cmdlet to get the object id of the desired group.</value>
+    <value>More than one group found with the display name '{0}'. Please use the Get-AzADGroup cmdlet to get the object id of the desired group.</value>
   </data>
   <data name="MultipleServicePrincipalsWithDisplayNameFound" xml:space="preserve">
-    <value>More than one service principal found with display name '{0}'. Please use the Get-AzureRmADServicePrincipal cmdlet to get the object id of the desired service principal.</value>
+    <value>More than one service principal found with display name '{0}'. Please use the Get-AzADServicePrincipal cmdlet to get the object id of the desired service principal.</value>
   </data>
   <data name="MultipleUsersWithDisplayNameFound" xml:space="preserve">
-    <value>More than one user found with display name '{0}'. Please use the Get-AzureRmADUser cmdlet to get the object id of the desired user.</value>
+    <value>More than one user found with display name '{0}'. Please use the Get-AzADUser cmdlet to get the object id of the desired user.</value>
   </data>
   <data name="PasswordCredentialNotValid" xml:space="preserve">
     <value>PasswordCredential object is not valid.</value>

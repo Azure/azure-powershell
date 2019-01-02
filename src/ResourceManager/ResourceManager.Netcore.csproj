@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.ResourceManager</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Clients.ResourceManager</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ResourceManager.Common</RootNamespace>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Title>Microsoft Azure PowerShell ResourceManager</Title>
-    <Description>Microsoft Azure PowerShell ResourceManager library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
-    <PackageTags>azure;powershell;resourcemanager</PackageTags>
+    <Title>Microsoft Azure PowerShell Clients ResourceManager</Title>
+    <Description>Microsoft Azure PowerShell Clients ResourceManager library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
+    <PackageTags>azure;powershell;clients;resourcemanager</PackageTags>
     <Authors>Microsoft Corporation</Authors>
     <Copyright>Copyright © Microsoft Corporation</Copyright>
     <PackageLicenseUrl>https://aka.ms/azps-common-license</PackageLicenseUrl>

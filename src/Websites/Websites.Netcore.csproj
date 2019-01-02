@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.Websites</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Clients.Websites</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Websites</RootNamespace>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Title>Microsoft Azure PowerShell Websites</Title>
-    <Description>Microsoft Azure PowerShell Websites library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
-    <PackageTags>azure;powershell;websites</PackageTags>
+    <Title>Microsoft Azure PowerShell Clients Websites</Title>
+    <Description>Microsoft Azure PowerShell Clients Websites library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
+    <PackageTags>azure;powershell;clients;websites</PackageTags>
     <Authors>Microsoft Corporation</Authors>
     <Copyright>Copyright © Microsoft Corporation</Copyright>
     <PackageLicenseUrl>https://aka.ms/azps-common-license</PackageLicenseUrl>

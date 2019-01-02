@@ -82,7 +82,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
 
             this.Id = other.GetProperty<string>(nameof(Id));
-            this.Directory = other.GetProperty<string>(nameof(Directory));
             this.PopulateExtensions(other);
         }
         /// <summary>
@@ -90,12 +89,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// </summary>
         [Ps1Xml(Label = "Id", Target = ViewControl.Table, Position = 0)]
         public string Id { get; set; }
-
-        /// <summary>
-        /// The name of the subscription.
-        /// </summary>
-        [Ps1Xml(Label = "Directory", Target = ViewControl.Table, Position = 1)]
-        public string Directory { get; set; }
 
         /// <summary>
         /// For legacy support - the tenant id
@@ -110,7 +103,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
         public override string ToString()
         {
-            return (this.Id == Guid.Empty.ToString()) ? this.Directory : this.Id;
+            return this.Id;
         }
     }
 }

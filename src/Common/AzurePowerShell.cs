@@ -26,9 +26,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public const string AssemblyCopyright = "Copyright © Microsoft";
 
-        public const string AssemblyVersion = "6.9.0";
+        public const string AssemblyVersion = "1.0.0";
 
-        public const string AssemblyFileVersion = "6.9.0";
+        public const string AssemblyFileVersion = "1.0.0";
 
         public const string ProfileFile = "AzureProfile.json";
 
@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public static ProductInfoHeaderValue UserAgentValue = new ProductInfoHeaderValue(
             "AzurePowershell",
-            string.Format("v{0}", AzurePowerShell.AssemblyVersion));
+            string.Format("Az{0}", AzurePowerShell.AssemblyVersion));
 
         public static string ProfileDirectory = Path.Combine(
 #if NETSTANDARD

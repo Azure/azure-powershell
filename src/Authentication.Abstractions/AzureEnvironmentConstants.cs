@@ -20,6 +20,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     public static class AzureEnvironmentConstants
     {
         /// <summary>
+        /// The default AD Tenant value
+        /// </summary>
+        public const string CommonAdTenant = "Common";
+
+        /// <summary>
         /// RDFE endpoints
         /// </summary>
         public const string AzureServiceEndpoint = "https://management.core.windows.net/";

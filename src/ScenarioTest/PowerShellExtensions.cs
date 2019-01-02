@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.ServiceManagement.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

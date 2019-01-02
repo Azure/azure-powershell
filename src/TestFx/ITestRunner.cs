@@ -12,10 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.TestFx
 {
     public interface ITestRunner
     {
         void RunTestScript(params string[] scripts);
+        void RunTestScript(Action setUp, Action tearDown, params string[] scripts);
     }
 }

@@ -29,7 +29,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure;
 using System.IO;
-using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagement.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 #if NETSTANDARD
