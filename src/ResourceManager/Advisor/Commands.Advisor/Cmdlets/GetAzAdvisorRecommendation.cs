@@ -62,13 +62,6 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the Refresh.
-        /// </summary>
-        [Parameter(ParameterSetName = "IdParameterSet", Mandatory = false, HelpMessage = "Regenerates the recommendations.")]
-        [Parameter(ParameterSetName = "NameParameterSet", Mandatory = false, HelpMessage = "Regenerates the recommendations.")]
-        public SwitchParameter Refresh { get; set; }
-
-        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         public override void ExecuteCmdlet()
@@ -100,10 +93,9 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                         }
                         else
                         {
-                            operationResponseRecommendation = this.ResourceAdvisorClient.Recommendations.ListWithHttpMessagesAsync(nextPagelink).Result;
+                            operationResponseRecommendation = this.ResourceAdvisorClient.Recommendations.ListNextWithHttpMessagesAsync(nextPagelink).Result;
                         }
-                        // Advisor .net SDK is broken for the paging capability. So we will not use the paging until SDK is fixed.
-                        // nextPagelink = operationResponseRecommendation.Body.NextPageLink;
+                        nextPagelink = operationResponseRecommendation.Body.NextPageLink;
 
                         // Add current page items to the List 
                         entirePageLinkRecommendationData.AddRange(operationResponseRecommendation.Body.ToList());
@@ -125,11 +117,6 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
             if (!string.IsNullOrEmpty(this.Category))
             {
                 results = RecommendationHelper.RecommendationFilterByCategoryAndResource(results, this.Category, string.Empty);
-            }
-
-            if (Refresh)
-            {
-                this.ResourceAdvisorClient.Recommendations.GenerateWithHttpMessagesAsync();
             }
 
             this.WriteObject(results, true);
