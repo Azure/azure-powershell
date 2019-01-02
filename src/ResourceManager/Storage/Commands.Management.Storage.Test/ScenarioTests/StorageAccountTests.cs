@@ -12,9 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.Azure.Commands.TestFx;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -128,9 +125,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingNewUpdateAccount()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-PipingNewUpdateAccount");
+            TestRunner.RunTestScript("Test-PipingNewUpdateAccount");
         }
-
-        
     }
 }

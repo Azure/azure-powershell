@@ -46,7 +46,7 @@ The following prerequisites should be completed before contributing to the Azure
 
 - Install [Visual Studio 2017](https://www.visualstudio.com/downloads/)
 - Install the latest version of [Git](https://git-scm.com/downloads)
-- Install the [`platyPS` module](documentation/development-docs/help-generation.md#installing-platyps)
+- Install the [`platyPS` module](help-generation.md#Installing-platyPS)
 - Install the latest [**.NET Core SDK** and **.NET Framework Dev Pack 4.7.2**](https://dotnet.microsoft.com/download) or greater
 - Install [PowerShell Core](https://github.com/PowerShell/PowerShell/releases/latest)
 - Set the PowerShell [execution policy](https://technet.microsoft.com/en-us/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:
@@ -189,8 +189,8 @@ Please check out the [PowerShell Cmdlet Design Guidelines](azure-powershell-desi
   - Right click on your project in the **Solution Explorer** and select **Set as StartUp project**
 - Right-click on the project and select **Properties**
 - Go to the **Debug** tab
-- Under **Start Action**, pick _Start external program_ and type the PowerShell directory
-  - For example, `C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe`
+- Under **Start Action**, pick _Start external program_ and type the PowerShell 6.0 directory 
+  - For example, `C:\Program Files\PowerShell\6\pwsh.exe`
 
 ### Importing Modules
 

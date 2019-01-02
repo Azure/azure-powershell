@@ -7,9 +7,9 @@ This document describes the changes between the 6.x versions of AzureRM and Az v
   - [Cmdlet Noun Prefix Changes](#cmdlet-noun-prefix-changes)
   - [Module name changes](#module-name-changes)
   - [Removed modules](#removed-modules)
-  - [Windows PowerShell 5.1 and .NET 4.7.2](#windows-powershell-51-and-net-472)
+  - [Windows PowerShell 5.1 and .NET 4.7.2](#windows-powershell-51-and-net-framework-472)
   - [Temporary removal of User login using PSCredential](#temporary-removal-of-user-login-using-pscredential)
-  - [Default Device Code login instead of Web Browser prompt](#temporary-default-device-code-login-instead-of-web-browser-prompt)
+  - [Default Device Code login instead of Web Browser prompt](#default-device-code-login-instead-of-web-browser-prompt)
 - [Module breaking changes](#module-breaking-changes)
   - [Az.ApiManagement (previously AzureRM.ApiManagement)](#azapimanagement-previously-azurermapimanagement)
   - [Az.Billing (previously AzureRM.Billing, AzureRM.Consumption, and AzureRM.UsageAggregates)](#azbilling-previously-azurermbilling-azurermconsumption-and-azurermusageaggregates)
@@ -256,7 +256,7 @@ Scripts should no longer make processing decisions based on the values for these
 ### Az.RecoveryServices (previously AzureRM.RecoveryServices, AzureRM.RecoveryServices.Backup, and AzureRM.RecoveryServices.SiteRecovery)
 - Removed `Encryption` parameter from `New/Set-AzRecoveryServicesAsrPolicy` cmdlets
 - `TargetStorageAccountName` parameter is now mandatory for managed disk restores in `Restore-AzRecoveryServicesBackupItem` cmdlet
-- Removed `StorageAccountName` and `StorageAccountResourceGroupName` parameters in `Restore-AzRecoveryServicesBackupItem` cmdlet
+- Removed `StorageAccountName` and `StorageAccountResourceGroupName` parameters in `Restore-AzRecoveryServicesBackupItem` cmdlet for Azure File Share restore
 - Removed `Name`parameter in `Get-AzRecoveryServicesBackupContainer` cmdlet
 
 ### Az.Resources (previously AzureRM.Resources)

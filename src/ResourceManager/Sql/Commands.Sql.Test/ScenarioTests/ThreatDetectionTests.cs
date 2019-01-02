@@ -25,9 +25,10 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
             var sqlClient = GetSqlClient(context);
-            var storageV2Client = GetStorageV2Client(context);
+            var publicstorageV2Client = GetPublicStorageManagementClient(context);
+            var storageV2Client = GetStorageManagementClient(context);
             var newResourcesClient = GetResourcesClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, storageV2Client, newResourcesClient);
+            Helper.SetupSomeOfManagementClients(sqlClient, publicstorageV2Client, storageV2Client, newResourcesClient);
         }
 
         public ThreatDetectionTests(ITestOutputHelper output) : base(output)
@@ -41,37 +42,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-ThreatDetectionGetDefualtPolicy");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThreatDetectionDatabaseUpdatePolicy()
         {
             RunPowerShellTest("Test-ThreatDetectionDatabaseUpdatePolicy");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThreatDetectionServerUpdatePolicy()
         {
             RunPowerShellTest("Test-ThreatDetectionServerUpdatePolicy");
         }
 
-
-#if NETSTANDARD
-        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisablingThreatDetection()
         {
