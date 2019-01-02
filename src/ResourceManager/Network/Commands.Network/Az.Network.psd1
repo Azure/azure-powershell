@@ -367,7 +367,23 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Set-AzNetworkInterfaceTapConfig', 
                'Remove-AzNetworkInterfaceTapConfig', 'Get-AzVirtualNetworkTap', 
                'New-AzVirtualNetworkTap', 'Remove-AzVirtualNetworkTap', 
-               'Set-AzVirtualNetworkTap'
+               'Set-AzVirtualNetworkTap',
+               'Get-AzExpressRouteGateway',
+               'New-AzExpressRouteGateway',
+               'Remove-AzExpressRouteGateway',
+               'Set-AzExpressRouteGateway',
+               'Get-AzExpressRouteConnection',
+               'New-AzExpressRouteConnection',
+               'Remove-AzExpressRouteConnection',
+               'Set-AzExpressRouteConnection',
+               'Get-AzExpressRouteCrossConnection',
+               'Set-AzExpressRouteCrossConnection',
+               'Add-AzExpressRouteCrossConnectionPeering',
+               'Get-AzExpressRouteCrossConnectionPeering',
+               'Remove-AzExpressRouteCrossConnectionPeering',
+               'Get-AzExpressRouteCrossConnectionArpTable',
+               'Get-AzExpressRouteCrossConnectionRouteTable',
+               'Get-AzExpressRouteCrossConnectionRouteTableSummary'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -426,4 +442,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-
