@@ -914,6 +914,9 @@ function Test-VirtualNetworkSubnetServiceEndpointPolicies
         $getserviceEndpointPolicyList = Get-AzureRmServiceEndpointPolicy -ResourceGroupName $rgname;
         Assert-NotNull $getserviceEndpointPolicyList;
 
+        $getserviceEndpointPolicyListAll = Get-AzureRmServiceEndpointPolicy;
+        Assert-NotNull $getserviceEndpointPolicyListAll;
+
         $getserviceEndpointPolicy = Get-AzureRmServiceEndpointPolicy -ResourceId $serviceEndpointPolicy.Id;
         Assert-AreEqual $getserviceEndpointPolicy[0].Name $serviceEndpointPolicyName;
         Assert-AreEqual $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions[0].Service $serviceEndpoint;
