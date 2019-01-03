@@ -1661,7 +1661,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             IEnumerable<KeyValuePair<string, RunbookParameter>> runbookParameters = null;
             parameters = parameters ?? new Dictionary<string, string>();
             var filteredParameters = new Dictionary<string, string>();
-
+            
             try
             {
                 runbook = this.GetRunbook(resourceGroupName, automationAccountName, runbookName);
@@ -1671,15 +1671,14 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 // Ignore if runbook does not exists in the account. This is to start global runbooks by name
                 runbookParameters = new Dictionary<string, RunbookParameter>();
             }
-
-            if (0 == String.Compare(runbook.State, RunbookState.New, CultureInfo.InvariantCulture,
-                CompareOptions.IgnoreCase))
+            
+            if (runbook != null && 0 == String.Compare(runbook.State, RunbookState.New, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase))
             {
                 throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture,
                     Resources.RunbookHasNoPublishedVersion, runbookName));
             }
-
-            if (runbook.RunbookType == "Python2") {
+            
+            if (runbook != null && runbook.RunbookType == "Python2") {
                 int i = 1;
 
                 foreach (var key in parameters.Keys) {
@@ -1728,7 +1727,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         string.Format(CultureInfo.CurrentCulture, Resources.InvalidRunbookParameters));
                 }
             }
-
+            
             return filteredParameters;
         }
 
