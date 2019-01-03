@@ -21,7 +21,8 @@ function Test-CreateIntegrationAccountMap
 	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 	
 	$integrationAccountMapName1 = getAssetname
@@ -51,7 +52,8 @@ function Test-GetIntegrationAccountMap
 	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 	
 	$integrationAccountMapName = getAssetname
@@ -80,7 +82,8 @@ function Test-RemoveIntegrationAccountMap
 	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 	
 	$integrationAccountMapName = getAssetname
@@ -104,7 +107,8 @@ function Test-UpdateIntegrationAccountMap
 	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 	
 	$integrationAccountMapName = getAssetname
@@ -132,7 +136,8 @@ function Test-ListIntegrationAccountMap
 	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName

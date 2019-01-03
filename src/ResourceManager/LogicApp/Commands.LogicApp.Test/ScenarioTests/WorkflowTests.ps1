@@ -204,7 +204,22 @@ function Test-CreateAndGetLogicAppUsingDefinitionWithActions
 	$workflow3 = Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Version $workflow1.Version
 	Assert-NotNull $workflow3
 
-	# Test 4: Get non-existing logic app using get cmdlet
+	# Test 4: Get all workflows in ResourceGroup
+	$workflow4 = Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName
+	Assert-NotNull $workflow4
+	Assert-True { $workflow4.Length -ge 1 }
+	
+	# Test 5: Get all workflows in Subscription
+	$workflow5 = Get-AzureRmLogicApp
+	Assert-NotNull $workflow5
+	Assert-True { $workflow5.Length -ge 1 }
+
+	# Test 6: Get workflow with just name parameter
+	$workflow6 = Get-AzureRmLogicApp -Name $workflowName
+	Assert-NotNull $workflow6
+	Assert-True { $workflow6.Length -ge 1 }
+
+	# Test 7: Get non-existing logic app using get cmdlet
 	try
 	{
 		Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name "InvalidWorkflow"
