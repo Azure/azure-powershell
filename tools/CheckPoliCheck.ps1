@@ -8,10 +8,10 @@ param(
     [string] $CIToolsPath
 )
 
-& "$CIToolsPath\tools\PoliCheck\PoliCheck5.8.1\PoliCheck.exe" /F:"$PSScriptRoot\..\src\Package" /T:"9" /O:"$PSScriptRoot\..\src\Package\PoliCheck-Scan.xml"
+& "$CIToolsPath\tools\PoliCheck\PoliCheck5.8.1\PoliCheck.exe" /F:"$PSScriptRoot\..\artifacts" /T:"9" /O:"$PSScriptRoot\..\artifacts\PoliCheck-Scan.xml"
 
-$poliCheckReport = Get-Content $PSScriptRoot\..\src\Package\PoliCheck-Scan.xml
+$poliCheckReport = Get-Content $PSScriptRoot\..\artifacts\PoliCheck-Scan.xml
 if ($poliCheckReport -like "*Severity=`"1`"*")
 {
-    throw "PoliCheck failed with a Severity 1 issue, please check the report at in src/Package/PoliCheck-Scan.html"
+    throw "PoliCheck failed with a Severity 1 issue, please check the report at in artifacts/PoliCheck-Scan.html"
 }

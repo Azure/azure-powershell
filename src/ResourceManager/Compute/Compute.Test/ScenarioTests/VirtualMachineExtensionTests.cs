@@ -28,96 +28,56 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineExtension()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineExtension");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineExtensionUsingHashTable()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineExtensionUsingHashTable");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtension()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineCustomScriptExtension");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtensionWrongStorage()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineCustomScriptExtensionWrongStorage");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtensionSecureExecution()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineCustomScriptExtensionSecureExecution");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtensionFileUri()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineCustomScriptExtensionFileUri");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineAccessExtension()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineAccessExtension");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact(Skip = "TODO: only works for live mode")]
-#endif
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAzureDiskEncryptionExtension()
         {
@@ -160,48 +120,28 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBginfoExtension()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineBginfoExtension");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineExtensionWithSwitch()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineExtensionWithSwitch");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineADDomainExtension()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineADDomainExtension");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineADDomainExtensionDomainJoin()
         {

@@ -12,10 +12,10 @@ if (gcm Invoke-AzureRmStorageSyncCompatibilityCheck -ErrorAction SilentlyContinu
     throw "Invoke-AzureRmStorageSyncCompatibilityCheck is already available. Cannot continue with module debugging."
 }
 
-$azProfilePath = Join-Path $scriptDirectory "..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\Az.Profile\Az.Profile.psd1"
+$azProfilePath = Join-Path $scriptDirectory "..\..\..\..\artifacts\$Configuraton\Az.Accounts\Az.Accounts.psd1"
 Import-Module $azProfilePath -Verbose
 
-$azStorageSyncPath = Join-Path $scriptDirectory "..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\Az.StorageSync\Az.StorageSync.psd1"
+$azStorageSyncPath = Join-Path $scriptDirectory "..\..\..\..\artifacts\$Configuraton\Az.StorageSync\Az.StorageSync.psd1"
 Import-Module $azStorageSyncPath -Verbose
 
 $VerbosePreference='Continue'

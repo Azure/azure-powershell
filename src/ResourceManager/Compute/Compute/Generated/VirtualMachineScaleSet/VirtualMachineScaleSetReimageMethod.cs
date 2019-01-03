@@ -61,7 +61,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     else
                     {
-                        result = VirtualMachineScaleSetsClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
+                        var vmScaleSetReimageInput = new VirtualMachineScaleSetReimageParameters();
+                        vmScaleSetReimageInput.InstanceIds = instanceIds;
+                        result = VirtualMachineScaleSetsClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, vmScaleSetReimageInput).GetAwaiter().GetResult();
                     }
 
                     PSOperationStatusResponse output = new PSOperationStatusResponse
