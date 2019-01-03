@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+//#define SERIALIZE
+
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -171,12 +173,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                         var filePath = executingPath + "\\SerializedCmdlets\\" + fileName;
 
-                        var serialize = false;
-                        if (serialize)
-                        {
-                            SerializeCmdlets(filePath, newModuleMetadata);
-                            continue;
-                        }
+#if SERIALIZE
+                        SerializeCmdlets(filePath, newModuleMetadata);
+#endif
 
                         if (!File.Exists(filePath))
                         {
