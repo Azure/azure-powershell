@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Advisor.Cmdlets.Models;
     using Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities;
+    using Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities.Client;
     using Microsoft.Azure.Commands.Advisor.Properties;
     using Microsoft.Azure.Commands.Advisor.Utilities;
     using Microsoft.Azure.Management.Advisor.Models;
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         /// <summary>
         /// Gets or sets the Resource Id.
         /// </summary>
-        [Parameter(ParameterSetName = "IdParameterSet", Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Resource Id of the recommendation to be suppressed.")]
+        [Parameter(ParameterSetName = IdParameterSet, Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Resource Id of the recommendation to be suppressed.")]
         public string ResourceId { get; set; }
 
         /// <summary>
@@ -81,6 +82,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
             IList<PsAzureAdvisorResourceRecommendationBase> responseRecommendationList = new List<PsAzureAdvisorResourceRecommendationBase>();
             List<PsAzureAdvisorResourceRecommendationBase> responseRecommendation = new List<PsAzureAdvisorResourceRecommendationBase>();
             List<AzureOperationResponse> response = new List<AzureOperationResponse>();
+            RecommendationResource recommendationResourceUtil = new RecommendationResource();
 
             // Get the list of all suppressions
             suppressionList = this.ResourceAdvisorClient.Suppressions.ListWithHttpMessagesAsync().Result;
@@ -97,7 +99,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
             }
 
             // Get all the recommendation and convert to its corresponding psobject
-            responseRecommendationList = new GetAzAdvisorRecommendation().GetRecommendations();
+            responseRecommendationList = recommendationResourceUtil.GetAllRecommendationsFromClient(this.ResourceAdvisorClient);
 
             // Add the particular recommendation to the response of cmdlet
             responseRecommendation.Add(RecommendationHelper.RecommendationFilterByRecommendation(responseRecommendationList, recommendationId));
@@ -152,8 +154,8 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
 
                 case InputObjectParameterSet:
                     // Parse out the Subscription-ID, Recommendation-ID from the ResourceId parameter.
-                    resourceUri = RecommendationHelper.GetFullResourceUriFromResourceID(this.InputObject.Id);
-                    recommendationId = RecommendationHelper.GetRecommendationIdFromResourceID(this.InputObject.Id);
+                    resourceUri = RecommendationHelper.GetFullResourceUriFromResourceID(this.InputObject.ResourceId);
+                    recommendationId = RecommendationHelper.GetRecommendationIdFromResourceID(this.InputObject.ResourceId);
                     if (ShouldProcess(recommendationId, string.Format(Resources.EnableRecommendationWarningMessage, recommendationId)))
                     {
                         responseRecommendation.AddRange(this.SuppressionDelete(resourceUri, recommendationId));
