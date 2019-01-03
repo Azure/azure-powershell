@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OmitJsonPackage>true</OmitJsonPackage>
   </PropertyGroup>
-  <Import Project="$(MSBuildThisFileDirectory)\Dependencies.targets" />
+  <Import Project="$(MSBuildThisFileDirectory)\Dependencies.Client.targets" />
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" />
     <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.14.1" />

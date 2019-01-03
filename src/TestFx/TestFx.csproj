@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <IsTestProject>false</IsTestProject>
+    <IsCmdletProject>true</IsCmdletProject>
   </PropertyGroup>
 
   <Import Project="$(ProjectDir)..\Dependencies.Test.targets" />

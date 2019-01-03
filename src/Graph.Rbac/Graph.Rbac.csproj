@@ -1,6 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="$(ProjectDir)..\Dependencies.targets" />
+  <PropertyGroup>
+    <IsCmdletProject>true</IsCmdletProject>
+  </PropertyGroup>
+  <Import Project="$(ProjectDir)..\Dependencies.Client.targets" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>

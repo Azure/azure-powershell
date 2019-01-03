@@ -34,12 +34,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Text;
-
-#if !NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Utilities;
-#else
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-#endif
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -67,9 +62,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         protected List<string> modules;
 
         public XunitTracingInterceptor TracingInterceptor { get; set; }
-#if !NETSTANDARD
-        protected ProfileClient ProfileClient { get; set; }
-#endif
         public EnvironmentSetupHelper()
         {
             var module = GetModuleManifest(RmDirectory, "AzureRM.Accounts");
@@ -134,12 +126,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
 
-#if !NETSTANDARD
-            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
-            var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
-            ProfileClient = new ProfileClient(profile);
-            AdalTokenCache.ClearCookies();
-#endif
             // Set RunningMocked
             TestMockSupport.RunningMocked = HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback;
 
@@ -235,13 +221,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 return null;
             }
 
-#if NETSTANDARD
-            string module = Path.Combine(baseDirectory, desktopModuleName.Replace("AzureRM", "Az"), $"{desktopModuleName.Replace("AzureRM", "Az")}.psd1");
-#else
-            string module = Path.Combine(baseDirectory, desktopModuleName, $"{desktopModuleName}.psd1");
-#endif
-            return module;
-
+            return Path.Combine(baseDirectory, desktopModuleName.Replace("AzureRM", "Az"), $"{desktopModuleName.Replace("AzureRM", "Az")}.psd1");
         }
 
         /// <summary>
@@ -308,9 +288,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public void SetupEnvironment(AzureModule mode)
         {
             SetupAzureEnvironmentFromEnvironmentVariables(mode);
-#if !NETSTANDARD
-            ProfileClient.Profile.Save();
-#endif
         }
 
         public void SetEnvironmentVariableFromCredentialFile()
@@ -413,19 +390,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             TestEnvironment currentEnvironment = null;
             if (mode == AzureModule.AzureResourceManager)
             {
-#if !NETSTANDARD
-                currentEnvironment = new CSMTestEnvironmentFactory().GetTestEnvironment();
-#else
                 currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
-#endif
             }
             else
             {
-#if !NETSTANDARD
-                currentEnvironment = new RDFETestEnvironmentFactory().GetTestEnvironment();
-#else
                 throw new NotSupportedException("RDFE environment is not supported in .Net Core");
-#endif
             }
 
             if (currentEnvironment.UserName == null)
@@ -434,9 +403,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
 
             SetAuthenticationFactory(mode, currentEnvironment);
-
             AzureEnvironment environment = new AzureEnvironment { Name = testEnvironmentName };
-
             Debug.Assert(currentEnvironment != null);
             environment.ActiveDirectoryAuthority = currentEnvironment.Endpoints.AADAuthUri.AbsoluteUri;
             environment.GalleryUrl = currentEnvironment.Endpoints.GalleryUri.AbsoluteUri;
@@ -446,13 +413,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
             environment.AzureDataLakeStoreFileSystemEndpointSuffix = currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
             environment.StorageEndpointSuffix = AzureEnvironmentConstants.AzureStorageEndpointSuffix;
-
-#if !NETSTANDARD
-            if (!ProfileClient.Profile.EnvironmentTable.ContainsKey(testEnvironmentName))
-            {
-                ProfileClient.AddOrSetEnvironment(environment);
-            }
-#endif
             if (!AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable.ContainsKey(testEnvironmentName))
             {
                 AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable[testEnvironmentName] = environment;
@@ -478,11 +438,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 };
 
                 testAccount.SetSubscriptions(currentEnvironment.SubscriptionId);
-#if !NETSTANDARD
-                ProfileClient.Profile.SubscriptionTable[testSubscription.GetId()] = testSubscription;
-                ProfileClient.Profile.AccountTable[testAccount.Id] = testAccount;
-                ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.GetAccount());
-#endif
                 var testTenant = new AzureTenant() { Id = Guid.NewGuid().ToString() };
                 if (!string.IsNullOrEmpty(currentEnvironment.Tenant))
                 {
@@ -498,26 +453,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private void SetAuthenticationFactory(AzureModule mode, TestEnvironment environment)
         {
-#if !NETSTANDARD
-            if (environment.AuthorizationContext.Certificate != null)
-            {
-                AzureSession.Instance.AuthenticationFactory = new MockCertificateAuthenticationFactory(environment.UserName,
-                    environment.AuthorizationContext.Certificate);
-            }
-            else if (environment.AuthorizationContext.TokenCredentials.ContainsKey(TokenAudience.Management))
-            {
-                var httpMessage = new HttpRequestMessage();
-                environment.AuthorizationContext.TokenCredentials[TokenAudience.Management]
-                    .ProcessHttpRequestAsync(httpMessage, CancellationToken.None)
-                    .ConfigureAwait(false)
-                    .GetAwaiter()
-                    .GetResult();
-
-                AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory(
-                    environment.UserName,
-                    httpMessage.Headers.Authorization.Parameter);
-            }
-#else
             if(environment.TokenInfo.ContainsKey(TokenAudience.Management))
             {
                 var httpMessage = new HttpRequestMessage();
@@ -531,7 +466,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     environment.UserName,
                     httpMessage.Headers.Authorization.Parameter);
             }
-#endif
         }
 
         public void SetupModules(AzureModule mode, params string[] modules)
@@ -647,12 +581,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private void SetupPowerShellModules(System.Management.Automation.PowerShell powershell)
         {
-#if NETSTANDARD
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 powershell.AddScript("Set-ExecutionPolicy Unrestricted -Scope Process -ErrorAction Ignore");
             }
-#endif
             powershell.AddScript("$error.clear()");
             powershell.AddScript($"Write-Debug \"current directory: {System.AppDomain.CurrentDomain.BaseDirectory}\"");
             powershell.AddScript(
@@ -664,14 +596,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 powershell.AddScript($"Import-Module \"{moduleName.AsAbsoluteLocation()}\"");
                 if (moduleName.EndsWith(".psd1"))
                 {
-#if NETSTANDARD
                     var moduleShortName = moduleName.Split(new string[] { "\\" }, StringSplitOptions.None).Last().Split(new string[] { "/" }, StringSplitOptions.None).Last();
                     powershell.AddScript("Enable-AzureRmAlias -Module " + moduleShortName.Substring(0, moduleShortName.Length - 5));
                     if (moduleShortName.Equals("Az.Storage.psd1") && modules.Any(s => s.EndsWith("AzureRM.Storage.ps1")))
                     {
                         powershell.AddScript("Get-Alias | Where-Object {$_.Name -like '*-AzureRmStorage*'} | ForEach-Object { Remove-Item \"alias:\\$_\" }");
                     }
-#endif
                 }
             }
 

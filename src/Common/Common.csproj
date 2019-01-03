@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <IncludeHyak>true</IncludeHyak>
+    <IsCmdletProject>true</IsCmdletProject>
   </PropertyGroup>
-  <Import Project="$(ProjectDir)..\Dependencies.targets" />
+  <Import Project="$(ProjectDir)..\Dependencies.Client.targets" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -62,6 +63,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Authentication.Abstractions\Authentication.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.4.0" />
   </ItemGroup>
 
 </Project>

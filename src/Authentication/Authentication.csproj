@@ -4,7 +4,7 @@
     <IncludeHyak>true</IncludeHyak>
   </PropertyGroup>
   
-  <Import Project="$(ProjectDir)..\Dependencies.targets" />
+  <Import Project="$(ProjectDir)..\Dependencies.Client.targets" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
