@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         /// </summary>
         [Parameter(ParameterSetName = IdParameterSet, Mandatory = false, Position = 1, HelpMessage = "Days to disable.")]
         [Parameter(ParameterSetName = NameParameterSet, Mandatory = false, Position = 1, HelpMessage = "Days to disable.")]
-        // [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = false, Position = 1, HelpMessage = "Days to disable.")]
+        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = false, Position = 1, HelpMessage = "Days to disable.")]
         [ValidateRange(1, int.MaxValue)]
         public int Days { get; set; }
 
