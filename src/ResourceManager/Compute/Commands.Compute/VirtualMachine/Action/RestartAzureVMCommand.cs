@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -65,6 +66,25 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = true,
            Position = 1,
+           ParameterSetName = RestartResourceGroupNameParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The virtual machine name.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 1,
+           ParameterSetName = PerformMaintenanceResourceGroupNameParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The virtual machine name.")]
+        [Parameter(
+           Mandatory = false,
+           Position = 1,
+           ParameterSetName = RestartIdParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The virtual machine name.")]
+        [Parameter(
+           Mandatory = false,
+           Position = 1,
+           ParameterSetName = PerformMaintenanceIdParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
@@ -94,6 +114,12 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.ShouldProcess(Name, VerbsLifecycle.Restart))
             {
                 base.ExecuteCmdlet();
+
+                if (!string.IsNullOrEmpty(Id) && string.IsNullOrEmpty(Name))
+                {
+                    ResourceIdentifier parsedId = new ResourceIdentifier(Id);
+                    this.Name = parsedId.ResourceName;
+                }
 
                 if (this.ParameterSetName.Equals(RestartIdParameterSet) || this.ParameterSetName.Equals(PerformMaintenanceIdParameterSet))
                 {

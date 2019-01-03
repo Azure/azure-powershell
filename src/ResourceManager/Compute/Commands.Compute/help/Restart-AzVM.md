@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: EF155949-5766-4BC4-9C8A-2B97E8EA032D
@@ -27,13 +27,13 @@ Restart-AzVM [-ResourceGroupName] <String> [-Name] <String> [-PerformMaintenance
 
 ### RestartIdParameterSetName
 ```
-Restart-AzVM [-Id] <String> [-Name] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Restart-AzVM [-Id] <String> [[-Name] <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### PerformMaintenanceIdParameterSetName
 ```
-Restart-AzVM [-Id] <String> [-Name] <String> [-PerformMaintenance] [-AsJob]
+Restart-AzVM [-Id] <String> [[-Name] <String>] [-PerformMaintenance] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -101,10 +101,22 @@ The virtual machine name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RestartResourceGroupNameParameterSetName, PerformMaintenanceResourceGroupNameParameterSetName
 Aliases:
 
 Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: RestartIdParameterSetName, PerformMaintenanceIdParameterSetName
+Aliases:
+
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)

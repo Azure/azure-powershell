@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: D2B5BC27-6D51-45BC-AE6A-F7FED11B8651
@@ -22,7 +22,7 @@ Save-AzVMImage [-Name] <String> [-DestinationContainerName] <String> [-VHDNamePr
 
 ### IdParameterSetName
 ```
-Save-AzVMImage [-Name] <String> [-DestinationContainerName] <String> [-VHDNamePrefix] <String> [-Overwrite]
+Save-AzVMImage [[-Name] <String>] [-DestinationContainerName] <String> [-VHDNamePrefix] <String> [-Overwrite]
  [[-Path] <String>] [-Id] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -116,10 +116,22 @@ Specifies a name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceGroupNameParameterSetName
 Aliases: VMName
 
 Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: IdParameterSetName
+Aliases: VMName
+
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)

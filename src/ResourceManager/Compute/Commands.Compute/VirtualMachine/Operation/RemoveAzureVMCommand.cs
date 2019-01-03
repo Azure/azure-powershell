@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -28,6 +29,13 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = true,
             Position = 1,
+            ParameterSetName = ResourceGroupNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.")]
+        [Parameter(
+            Mandatory = false,
+            Position = 1,
+            ParameterSetName = IdParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
@@ -45,6 +53,12 @@ namespace Microsoft.Azure.Commands.Compute
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
+                if (!string.IsNullOrEmpty(Id) && string.IsNullOrEmpty(Name))
+                {
+                    ResourceIdentifier parsedId = new ResourceIdentifier(Id);
+                    this.Name = parsedId.ResourceName;
+                }
+
                 if (this.ShouldProcess(Name, VerbsCommon.Remove)
                     && (this.Force.IsPresent || 
                         this.ShouldContinue(Properties.Resources.VirtualMachineRemovalConfirmation, 
