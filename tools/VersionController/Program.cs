@@ -30,10 +30,9 @@ namespace VersionController
         public static void Main(string[] args)
         {
             var executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
-            var packageDirectory = Directory.GetParent(executingAssemblyPath).FullName;
-            var srcDirectory = Directory.GetParent(packageDirectory).FullName;
+            var artifactsDirectory = Directory.GetParent(executingAssemblyPath).FullName;
 
-             _rootDirectory = Directory.GetParent(srcDirectory).FullName;
+             _rootDirectory = Directory.GetParent(artifactsDirectory).FullName;
 
             _projectDirectories = new List<string>{ Path.Combine(_rootDirectory, @"src\ResourceManager\") }.Where((d) => Directory.Exists(d)).ToList();
 
@@ -193,7 +192,7 @@ namespace VersionController
         /// <returns>The path to the module manifest file.</returns>
         private static string GetModuleManifestPath(string parentFolder)
         {
-            var moduleManifest = Directory.GetFiles(parentFolder, "*.psd1").Where(f => !f.Contains("Az.")).ToList();
+            var moduleManifest = Directory.GetFiles(parentFolder, "*.psd1").ToList();
             if (moduleManifest.Count == 0)
             {
                 throw new FileNotFoundException("No module manifest file found in directory " + parentFolder);
