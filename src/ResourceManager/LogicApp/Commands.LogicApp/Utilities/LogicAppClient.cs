@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Management.Logic.Models;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
 
@@ -110,6 +111,25 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public Workflow GetWorkflow(string resourceGroupName, string workflowName)
         {
             return this.LogicManagementClient.Workflows.Get(resourceGroupName, workflowName);
+        }
+
+        /// <summary>
+        /// Gets the workflows from given resource group.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <returns>Workflow object</returns>
+        public IEnumerable<Workflow> ListWorkFlowByResourceGroupName(string resourceGroupName)
+        {
+            return this.LogicManagementClient.Workflows.ListByResourceGroup(resourceGroupName);
+        }
+
+        /// <summary>
+        /// Gets the workflows in current subscription.
+        /// </summary>
+        /// <returns>Workflow object</returns>
+        public IEnumerable<Workflow> ListWorkFlowBySubscription()
+        {
+            return this.LogicManagementClient.Workflows.ListBySubscription();
         }
 
         /// <summary>
