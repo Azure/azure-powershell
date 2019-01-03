@@ -12,15 +12,15 @@ Gets a list of Azure Advisor recommendations.
 
 ## SYNTAX
 
-### IdParameterSet
-```
-Get-AzAdvisorRecommendation [-ResourceId] <String> [-Category <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ### NameParameterSet (Default)
 ```
 Get-AzAdvisorRecommendation [-Category <String>] [-ResourceGroupName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### IdParameterSet
+```
+Get-AzAdvisorRecommendation [-ResourceId] <String> [-Category <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Obtains the list of Azure Advisor recommendations. Can be filtered by Category, 
 ### Example 1
 ```powershell
 PS C:\> Get-AzAdvisorRecommendation
-Id                   : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommen
+ResourceId                   : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommen
                        dations/{recommendation-Id}
 Category             : Performance
 ExtendedProperties   : {}
@@ -53,7 +53,7 @@ Gets the list of all recommendations.
 ### Example 2
 ```powershell
 PS C:\> Get-AzAdvisorRecommendation -Category Performance
-Id                   : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommen
+ResourceId                   : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommen
                        dations/{recommendation-Id}
 Category             : Performance
 ExtendedProperties   : {}
