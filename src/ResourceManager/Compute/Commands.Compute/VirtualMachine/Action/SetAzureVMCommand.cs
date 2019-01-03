@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -64,6 +65,25 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = true,
            Position = 1,
+           ParameterSetName = GeneralizeResourceGroupNameParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The virtual machine name.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 1,
+           ParameterSetName = RedeployResourceGroupNameParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The virtual machine name.")]
+        [Parameter(
+           Mandatory = false,
+           Position = 1,
+           ParameterSetName = GeneralizeIdParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The virtual machine name.")]
+        [Parameter(
+           Mandatory = false,
+           Position = 1,
+           ParameterSetName = RedeployIdParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
@@ -98,6 +118,12 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (!string.IsNullOrEmpty(Id) && string.IsNullOrEmpty(Name))
+            {
+                ResourceIdentifier parsedId = new ResourceIdentifier(Id);
+                this.Name = parsedId.ResourceName;
+            }
 
             if (this.ParameterSetName.Equals(GeneralizeIdParameterSet) || this.ParameterSetName.Equals(RedeployIdParameterSet))
             {

@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -30,6 +31,13 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = true,
            Position = 1,
+           ParameterSetName = ResourceGroupNameParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The virtual machine name.")]
+        [Parameter(
+           Mandatory = false,
+           Position = 1,
+           ParameterSetName = IdParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
@@ -73,6 +81,12 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
+                if (!string.IsNullOrEmpty(Id) && string.IsNullOrEmpty(Name))
+                {
+                    ResourceIdentifier parsedId = new ResourceIdentifier(Id);
+                    this.Name = parsedId.ResourceName;
+                }
+
                 var parameters = new VirtualMachineCaptureParameters
                 {
                     DestinationContainerName = DestinationContainerName,
