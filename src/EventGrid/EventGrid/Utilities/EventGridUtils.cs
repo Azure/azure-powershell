@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using Microsoft.Azure.Management.EventGrid.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid.Utilities
 {
@@ -30,7 +32,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
 
             // ResourceID should be in the following format:
             // /subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.EventGrid/topics/topic1
-            string[] tokens = resourceId.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
+            string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
             if (tokens.Length != 8)
             {
                 throw new Exception($"ResourceId {resourceId} not in the expected format");
@@ -47,7 +49,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
                 throw new ArgumentNullException(nameof(subscriptionId));
             }
 
-            string scope;
+            string scope = null;
 
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -79,6 +81,25 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
             }
 
             return null;
+        }
+
+        public static bool ShouldShowEventSubscriptionWarningMessage(string Endpoint, string EndpointType)
+        {
+            if (string.IsNullOrWhiteSpace(Endpoint) || string.IsNullOrWhiteSpace(EndpointType))
+            {
+                return false;
+            }
+
+            // If the endpoint belongs to a service that we know implements the subscription validation
+            // handshake, there's no need to show this message, hence we check for those services
+            // before showing this message. This list includes Azure Automation, EventGrid Trigger based
+            // Azure functions, and Azure Logic Apps.
+
+            return (string.Equals(EndpointType, "webhook", System.StringComparison.OrdinalIgnoreCase) &&
+                !Endpoint.ToLowerInvariant().Contains("eventgridextension") &&
+                !Endpoint.ToLowerInvariant().Contains("logic.azure.com") &&
+                !Endpoint.ToLowerInvariant().Contains("hookbin") &&
+                !Endpoint.ToLowerInvariant().Contains("azure-automation"));
         }
     }
 }

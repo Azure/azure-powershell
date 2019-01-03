@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
 online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/remove-azeventgridsubscription
@@ -24,7 +24,7 @@ Remove-AzEventGridSubscription [-ResourceId] <String> [-EventSubscriptionName] <
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### EventSubscriptionInputObjectSet
+### EventSubscriptionCustomTopicInputObjectParameterSet
 ```
 Remove-AzEventGridSubscription [-InputObject] <PSTopic> [-EventSubscriptionName] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: EventSubscriptionInputObjectSet
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -122,11 +122,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-EventGrid EventSubscription object.
+EventGrid Topic object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.EventGrid.Models.PSTopic
-Parameter Sets: EventSubscriptionInputObjectSet
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
 Aliases:
 
 Required: True

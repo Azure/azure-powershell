@@ -42,6 +42,51 @@ function Get-EventSubscriptionName
 
 <#
 .SYNOPSIS
+Get EventSubscription Webhook Endpoint
+#>
+function Get-EventSubscriptionWebhookEndpoint
+{
+    return "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
+}
+
+<#
+.SYNOPSIS
+Get Hybrid Connection ResourceId
+#>
+function Get-HybridConnectionResourceId
+{
+    return "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/Microsoft.Relay/namespaces/<NameSpace>/hybridConnections/<HybridConnectionName>"
+}
+
+<#
+.SYNOPSIS
+Get Storage Destination ResourceId
+#>
+function Get-StorageDestinationResourceId
+{
+    return "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>/queueServices/default/queues/<QueueName>"
+}
+
+<#
+.SYNOPSIS
+Get EventSubscription Webhook Endpoint
+#>
+function Get-EventSubscriptionWebhookBaseEndpoint
+{
+    return "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1"
+}
+
+<#
+.SYNOPSIS
+Get Deadletter ResourceId
+#>
+function Get-DeadletterResourceId
+{
+    return "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/microsoft.Storage/storageAccounts/<StorageAccountName>/blobServices/default/containers/<ContainerName>"
+}
+
+<#
+.SYNOPSIS
 Get topic name
 #>
 function Get-TopicName
