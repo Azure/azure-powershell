@@ -49,8 +49,8 @@ function Test-DiagnosticsExtensionBasic
             Assert-Null $extension
         }
 
-        $configTemplate = "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.xml";
-        $configFilePath = "$TestOutputRoot\ConfigFiles\config-$rgname.xml";
+        $configTemplate = Join-Path $ConfigFilesPath "DiagnosticsExtensionConfig.xml";
+        $configFilePath = Join-Path $ConfigFilesPath "config-$rgname.xml";
 
         New-WADConfigFromTemplate $configTemplate $configFilePath $storagename;
 
@@ -111,7 +111,7 @@ function Test-DiagnosticsExtensionSepcifyStorageAccountName
             Assert-Null $extension
         }
 
-        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.xml" -StorageAccountName $storagename
+        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath (Join-Path $ConfigFilesPath "DiagnosticsExtensionConfig.xml") -StorageAccountName $storagename
         $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
 
         Assert-NotNull $extension
@@ -154,7 +154,7 @@ function Test-DiagnosticsExtensionCantListSepcifyStorageAccountKey
         # Get a random storage account name, which we can't list the key
         $storagename = 'notexiststorage'
         Assert-ThrowsContains `
-            { Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.xml" -StorageAccountName $storagename } `
+            { Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath (Join-Path $ConfigFilesPath "DiagnosticsExtensionConfig.xml") -StorageAccountName $storagename } `
             'Storage account key'
     }
     finally
@@ -190,7 +190,7 @@ function Test-DiagnosticsExtensionSupportJsonConfig
             Assert-Null $extension
         }
 
-        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.json" -StorageAccountName $storagename
+        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath (Join-Path $ConfigFilesPath "DiagnosticsExtensionConfig.json") -StorageAccountName $storagename
         $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
 
         Assert-NotNull $extension
@@ -261,11 +261,11 @@ function Test-VmssDiagnosticsExtension
 
         # Full parameter test
         $version = '1.5';
-        $publicSettingTemplate = "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionPublicConfig.json";
-        $privateSettingTemplate = "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionPrivateConfig.json";
+        $publicSettingTemplate = Join-Path $ConfigFilesPath "DiagnosticsExtensionPublicConfig.json";
+        $privateSettingTemplate = Join-Path $ConfigFilesPath "DiagnosticsExtensionPrivateConfig.json";
 
-        $publicSettingFilePath = "$TestOutputRoot\ConfigFiles\publicconfig-$rgname.json";
-        $privateSettingFilePath = "$TestOutputRoot\ConfigFiles\privateconfig-$rgname.json";
+        $publicSettingFilePath = Join-Path $ConfigFilesPath "publicconfig-$rgname.json";
+        $privateSettingFilePath = Join-Path $ConfigFilesPath "privateconfig-$rgname.json";
 
         New-WADConfigFromTemplate $publicSettingTemplate $publicSettingFilePath $storagename
         New-WADConfigFromTemplate $privateSettingTemplate $privateSettingFilePath $storagename
