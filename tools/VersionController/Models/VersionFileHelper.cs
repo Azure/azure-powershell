@@ -40,7 +40,7 @@ namespace VersionController.Models
 
         public string SerializedCmdletsDirectory => Path.Combine(CommonToolsDirectory, @"SerializedCmdlets");
 
-        public string RollupModuleManifestPath => Path.Combine(ToolsDirectory, @"AzureRM\AzureRM.psd1");
+        public string RollupModuleManifestPath => Path.Combine(ToolsDirectory, @"Az\Az.psd1");
 
         public string VersionControllerDirectory => Path.Combine(ToolsDirectory, @"VersionController");
 
