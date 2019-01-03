@@ -30,11 +30,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Needs re-recorded")]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestAzureIotHubLifeCycle()
