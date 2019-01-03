@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmDeployment
 
 ## SYNOPSIS
-Creat a deployment
+Create a deployment
 
 ## SYNTAX
 
