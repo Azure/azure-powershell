@@ -25,9 +25,9 @@ Register-PSRepository -Name PSGallery -SourceLocation https://www.powershellgall
 
 ### Importing your module
 
-Before you run the `platyPS` cmdlets to update your markdown help files, you will need to first import the module containing the changes that you have made to your cmdlets into your current PowerShell session. Once you have built your project (either through Visual Studio or with `msbuild`), you can locate the module manifest that you will need to import in the `src/Package/Debug` folder of your local repository.
+Before you run the `platyPS` cmdlets to update your markdown help files, you will need to first import the module containing the changes that you have made to your cmdlets into your current PowerShell session. Once you have built your project (either through Visual Studio or with `msbuild`), you can locate the module manifest that you will need to import in the `artifacts/Debug` folder of your local repository.
 
-For example, if you have made changes to the `Accounts` module, you will find the corresponding module manifest in `src/Package/Debug/ResourceManager/AzureResourceManager/Az.Accounts/Az.Accounts.psd1`.
+For example, if you have made changes to the `Accounts` module, you will find the corresponding module manifest in `artifacts/Debug/Az.Accounts/Az.Accounts.psd1`.
 
 Once you have located the module manifest, you can import it in your current PowerShell session by running the following command:
 
@@ -69,7 +69,7 @@ If you would like to update the inputs/outputs for a markdown file, please run t
 
 This will update all of the markdown files with public interface changes made to corresponding cmdlets, add markdown files for any new cmdlets, remove markdown files for any deleted cmdlets, and update the module page (_e.g.,_ `Az.Accounts.md`) with any added or removed cmdlets.
 
-_This seems to work better when run from within the `help` folder itself (For e.g. to generate the help files for the [`Network`](src/Network) module run the cmd from under [`Commands.Network/help`](src/Network/Network/help)). Also, you will have to import the profile module from under <Repo base path>/src/Package/Debug/ResourceManager/AzureResourceManager/Az.Accounts/Az.Accounts.psd1_
+_This seems to work better when run from within the `help` folder itself (For e.g. to generate the help files for the [`Network`](src/Network) module run the cmd from under [`Commands.Network/help`](src/Network/Network/help)). Also, you will have to import the profile module from under <Repo base path>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1_
 
 #### Updating a single markdown file
 
