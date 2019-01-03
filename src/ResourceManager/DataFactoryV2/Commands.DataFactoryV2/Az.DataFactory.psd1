@@ -58,8 +58,8 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.0.0'; })
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DataFactory.dll', 
                '.\Microsoft.DataTransfer.Gateway.Encryption.dll', 
+               '.\System.IO.FileSystem.AccessControl.dll',
                '.\Microsoft.Azure.Management.DataFactories.dll', 
-               '.\System.IO.FileSystem.AccessControl.dll', 
                '.\Microsoft.WindowsAzure.Storage.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.

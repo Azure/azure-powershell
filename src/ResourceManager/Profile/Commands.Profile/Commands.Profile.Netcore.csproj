@@ -18,6 +18,8 @@
 
   <ItemGroup>
     <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Newtonsoft.Json.10.dll" />
+    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\System.ServiceModel.Primitives.dll" />
+    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\System.Private.ServiceModel.dll" />
     <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.14.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
     <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.14.0\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
   </ItemGroup>
@@ -30,6 +32,10 @@
   <ItemGroup>
     <StorageDependencies Include="$(ProjectDir)..\..\..\lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />
     <StorageDependencies Include="$(ProjectDir)..\..\..\lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.DataMovement.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include ="System.Security.Permissions" Version ="4.5.0"/>
   </ItemGroup>
 
   <ItemGroup>
