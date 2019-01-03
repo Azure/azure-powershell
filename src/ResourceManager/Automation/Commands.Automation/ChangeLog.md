@@ -19,5 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.1
+* Added support for starting Python 2 runbooks
+
 ## Version 1.0.0
 * General availability of `Az.Automation` module
