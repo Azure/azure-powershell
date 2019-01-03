@@ -1657,40 +1657,76 @@ namespace Microsoft.Azure.Commands.Automation.Common
         private IDictionary<string, string> ProcessRunbookParameters(string resourceGroupName, string automationAccountName, string runbookName,
             IDictionary parameters)
         {
+            Runbook runbook = null;
+            IEnumerable<KeyValuePair<string, RunbookParameter>> runbookParameters = null;
             parameters = parameters ?? new Dictionary<string, string>();
-            IEnumerable<KeyValuePair<string, RunbookParameter>> runbookParameters =
-                this.ListRunbookParameters(resourceGroupName, automationAccountName, runbookName);
             var filteredParameters = new Dictionary<string, string>();
 
-            foreach (var runbookParameter in runbookParameters)
+            try
             {
-                if (parameters.Contains(runbookParameter.Key))
-                {
-                    object paramValue = parameters[runbookParameter.Key];
-                    try
-                    {
-                        filteredParameters.Add(runbookParameter.Key, PowerShellJsonConverter.Serialize(paramValue));
+                runbook = this.GetRunbook(resourceGroupName, automationAccountName, runbookName);
+            }
+            catch (ResourceCommonException)
+            {
+                // Ignore if runbook does not exists in the account. This is to start global runbooks by name
+                runbookParameters = new Dictionary<string, RunbookParameter>();
+            }
+
+            if (0 == String.Compare(runbook.State, RunbookState.New, CultureInfo.InvariantCulture,
+                CompareOptions.IgnoreCase))
+            {
+                throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture,
+                    Resources.RunbookHasNoPublishedVersion, runbookName));
+            }
+
+            if (runbook.RunbookType == "Python2") {
+                int i = 1;
+
+                foreach (var key in parameters.Keys) {
+                    object paramValue = parameters[key];
+                    try {
+                        filteredParameters.Add("[Parameter " + i.ToString() + "]", PowerShellJsonConverter.Serialize(paramValue));
                     }
-                    catch (JsonSerializationException)
+                    catch(JsonSerializationException)
+                    {
+                        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.RunbookParameterCannotBeSerializedToJson, key));
+                    }
+                    i++;
+                }
+            }
+            else {
+                runbookParameters = runbook.Parameters.Cast<DictionaryEntry>().ToDictionary(k => k.Key.ToString(), k => (RunbookParameter)k.Value);
+
+                foreach (var runbookParameter in runbookParameters)
+                {
+                    if (parameters.Contains(runbookParameter.Key))
+                    {
+                        object paramValue = parameters[runbookParameter.Key];
+                        try
+                        {
+                            filteredParameters.Add(runbookParameter.Key, PowerShellJsonConverter.Serialize(paramValue));
+                        }
+                        catch (JsonSerializationException)
+                        {
+                            throw new ArgumentException(
+                                string.Format(
+                                    CultureInfo.CurrentCulture, Resources.RunbookParameterCannotBeSerializedToJson,
+                                    runbookParameter.Key));
+                        }
+                    }
+                    else if (runbookParameter.Value.IsMandatory.HasValue && runbookParameter.Value.IsMandatory.Value)
                     {
                         throw new ArgumentException(
                             string.Format(
-                                CultureInfo.CurrentCulture, Resources.RunbookParameterCannotBeSerializedToJson,
-                                runbookParameter.Key));
+                                CultureInfo.CurrentCulture, Resources.RunbookParameterValueRequired, runbookParameter.Key));
                     }
                 }
-                else if (runbookParameter.Value.IsMandatory.HasValue && runbookParameter.Value.IsMandatory.Value)
+
+                if (filteredParameters.Count != parameters.Count)
                 {
                     throw new ArgumentException(
-                        string.Format(
-                            CultureInfo.CurrentCulture, Resources.RunbookParameterValueRequired, runbookParameter.Key));
+                        string.Format(CultureInfo.CurrentCulture, Resources.InvalidRunbookParameters));
                 }
-            }
-
-            if (filteredParameters.Count != parameters.Count)
-            {
-                throw new ArgumentException(
-                    string.Format(CultureInfo.CurrentCulture, Resources.InvalidRunbookParameters));
             }
 
             return filteredParameters;
