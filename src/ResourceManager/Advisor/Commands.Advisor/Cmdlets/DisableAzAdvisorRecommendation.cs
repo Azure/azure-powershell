@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         /// <summary>
         /// Gets or sets the Resource Id.
         /// </summary>
-        [Parameter(ParameterSetName = IdParameterSet, Position = 0, Mandatory = true, HelpMessage = "ResourceID of the recommendation to be suppressed.")]
+        [Parameter(ParameterSetName = IdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "ResourceID of the recommendation to be suppressed.")]
         public string ResourceId { get; set; }
 
         /// <summary>
@@ -127,8 +127,8 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                 case InputObjectParameterSet:
 
                     // Parse out the Subscription-ID, Recommendation-ID from the ResourceId parameter.
-                    resourceUri = RecommendationHelper.GetFullResourceUriFromResourceID(this.InputObject.Id);
-                    recommendationId = RecommendationHelper.GetRecommendationIdFromResourceID(this.InputObject.Id);
+                    resourceUri = RecommendationHelper.GetFullResourceUriFromResourceID(this.InputObject.ResourceId);
+                    recommendationId = RecommendationHelper.GetRecommendationIdFromResourceID(this.InputObject.ResourceId);
 
                     if (ShouldProcess(recommendationId, string.Format(Resources.DisableRecommendationWarningMessage, recommendationId)))
                     {

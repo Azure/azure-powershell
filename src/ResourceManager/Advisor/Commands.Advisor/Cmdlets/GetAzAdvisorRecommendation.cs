@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Advisor.Cmdlets.Models;
     using Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities;
+    using Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities.Client;
     using Microsoft.Azure.Commands.Advisor.Utilities;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Advisor.Models;
@@ -62,43 +63,12 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets the list of recommendations associated with the subscription-Id.
-        /// </summary>
-        /// <returns></returns>
-        internal List<PsAzureAdvisorResourceRecommendationBase> GetRecommendations()
-        {
-            AzureOperationResponse<IPage<ResourceRecommendationBase>> operationResponseRecommendation = null;
-            List<ResourceRecommendationBase> entirePageLinkRecommendationData = new List<ResourceRecommendationBase>();
-            string nextPagelink = string.Empty;
-
-            do
-            {
-                if (string.IsNullOrEmpty(nextPagelink))
-                {
-                    operationResponseRecommendation = this.ResourceAdvisorClient.Recommendations.ListWithHttpMessagesAsync().Result;
-                }
-                else
-                {
-                    operationResponseRecommendation = this.ResourceAdvisorClient.Recommendations.ListNextWithHttpMessagesAsync(nextPagelink).Result;
-                }
-                nextPagelink = operationResponseRecommendation.Body.NextPageLink;
-
-                // Add current page items to the List 
-                entirePageLinkRecommendationData.AddRange(operationResponseRecommendation.Body.ToList());
-            }
-            while (!string.IsNullOrEmpty(nextPagelink));
-
-            // Convert to PsAzureAdvisorResourceRecommendationBase list and return 
-            return PsAzureAdvisorResourceRecommendationBase.GetFromResourceRecommendationBase(entirePageLinkRecommendationData);
-        }
-
-        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            RecommendationResource recommendationResourceUtil = new RecommendationResource();
             List<PsAzureAdvisorResourceRecommendationBase> results = new List<PsAzureAdvisorResourceRecommendationBase>();
-            //AzureOperationResponse<IPage<ResourceRecommendationBase>> operationResponseRecommendation = null;
             List<ResourceRecommendationBase> entirePageLinkRecommendationData = new List<ResourceRecommendationBase>();
             AzureOperationResponse<ResourceRecommendationBase> recommendation = null;
 
@@ -112,7 +82,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                     break;
 
                 case NameParameterSet:
-                    results = GetRecommendations();
+                    results = recommendationResourceUtil.GetAllRecommendationsFromClient(this.ResourceAdvisorClient);
 
                     // Filter out the resourcegroupname recommendations
                     if (!string.IsNullOrEmpty(this.ResourceGroupName))

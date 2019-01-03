@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Advisor.Cmdlets.Models;
     using Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities;
+    using Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities.Client;
     using Microsoft.Azure.Commands.Advisor.Properties;
     using Microsoft.Azure.Commands.Advisor.Utilities;
     using Microsoft.Azure.Management.Advisor.Models;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     /// <summary>
     /// Set-AzAdvisorConfiguration cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorConfiguration", DefaultParameterSetName = InputObjectLowCpuExcludeParameterSet, SupportsShouldProcess = true), OutputType(typeof(PsAzureAdvisorConfigurationData))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorConfiguration", DefaultParameterSetName = InputObjectRgExcludeParameterSet, SupportsShouldProcess = true), OutputType(typeof(PsAzureAdvisorConfigurationData))]
     public class SetAzAdvisorConfiguration : ResourceAdvisorBaseCmdlet
     {
         /// <summary>
@@ -79,18 +80,18 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         internal List<PsAzureAdvisorConfigurationData> CreateConfigurationBySubscription(ConfigData configData)
         {
             List<PsAzureAdvisorConfigurationData> results = new List<PsAzureAdvisorConfigurationData>();
-
+            ConfigurationResource configResourceClient = new ConfigurationResource();
             AzureOperationResponse<ARMErrorResponseBody> response = null;
-            AzureOperationResponse<IPage<ConfigData>> azureOperationResponseBySubscription = null;
+            List<PsAzureAdvisorConfigurationData> psConfigDataList = null;
 
             response = this.ResourceAdvisorClient.Configurations.CreateInSubscriptionWithHttpMessagesAsync(configData).Result;
-            azureOperationResponseBySubscription = this.ResourceAdvisorClient.Configurations.ListBySubscriptionWithHttpMessagesAsync().Result;
+            psConfigDataList = configResourceClient.GetAllConfiguratioFromClient(this.ResourceAdvisorClient);
 
-            foreach (ConfigData entry in azureOperationResponseBySubscription.Body)
+            foreach (PsAzureAdvisorConfigurationData entry in psConfigDataList)
             {
                 if (entry.Name.Equals(this.ResourceAdvisorClient.SubscriptionId))
                 {
-                    results.Add(PsAzureAdvisorConfigurationData.GetFromConfigurationData(entry));
+                    results.Add(entry);
                 }
             }
 
@@ -153,13 +154,14 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         private PsAzureAdvisorConfigurationData GetConfigurationDataForCurrentSubscription()
         {
             PsAzureAdvisorConfigurationData returnConfigurationData = null;
-            AzureOperationResponse<IPage<ConfigData>> azureOperationResponse = this.ResourceAdvisorClient.Configurations.ListBySubscriptionWithHttpMessagesAsync().Result;
+            ConfigurationResource configResourceClient = new ConfigurationResource();
+            List<PsAzureAdvisorConfigurationData> psConfigDataList = configResourceClient.GetAllConfiguratioFromClient(this.ResourceAdvisorClient);
 
-            foreach (ConfigData entry in azureOperationResponse.Body)
+            foreach (PsAzureAdvisorConfigurationData entry in psConfigDataList)
             {
                 if (entry.Name.Equals(this.ResourceAdvisorClient.SubscriptionId))
                 {
-                    returnConfigurationData = PsAzureAdvisorConfigurationData.GetFromConfigurationData(entry);
+                    returnConfigurationData = entry;
                 }
             }
 
@@ -215,8 +217,6 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                         {
                             results = this.CreateConfigurationBySubscription(configData);
                         }
-
-
                     }
                     break;
 
@@ -242,6 +242,14 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                             if (ShouldProcess(resourceGroup, string.Format(Resources.ConfigurationUpdateResourceGroupLevel, this.ResourceAdvisorClient.SubscriptionId, resourceGroup)))
                             {
                                 results = this.CreateConfigurationByResourceGroup(configData, resourceGroup);
+                            }
+                        }
+                        else
+                        {
+                            configData.Properties.LowCpuThreshold = InputObject.Properties.LowCpuThreshold;
+                            if (ShouldProcess(this.ResourceAdvisorClient.SubscriptionId, string.Format(Resources.ConfigurationUpdateSubscriptionLevel, this.ResourceAdvisorClient.SubscriptionId)))
+                            {
+                                results = this.CreateConfigurationBySubscription(configData);
                             }
                         }
                     }
