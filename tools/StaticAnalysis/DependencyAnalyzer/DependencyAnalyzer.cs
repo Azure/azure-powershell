@@ -376,7 +376,7 @@ namespace StaticAnalysis.DependencyAnalyzer
         {
             var savedDirectory = Directory.GetCurrentDirectory();
             Directory.SetCurrentDirectory(directoryPath);
-            _loader = EnvironmentHelpers.CreateProxy<AssemblyLoader>(directoryPath, out _testDomain);
+            _loader = new AssemblyLoader();
             foreach (var file in Directory.GetFiles(directoryPath).Where(file => file.EndsWith(".dll")))
             {
                 var assembly = CreateAssemblyRecord(file);
