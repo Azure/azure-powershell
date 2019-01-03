@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Newtonsoft.Json.Linq;
     using Policy;
     using System;
@@ -81,11 +82,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Parameter { get; set; }
 
         /// <summary>
-        /// Gets or sets the new policy definition mode parameter.
+        /// Gets or sets the policy definition mode parameter.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyDefinitionModeHelp)]
+        [PSArgumentCompleter(PolicyDefinitionMode.All, PolicyDefinitionMode.Indexed)]
         [ValidateNotNullOrEmpty]
-        public PolicyDefinitionMode? Mode { get; set; }
+        public string Mode { get; set; }
 
         /// <summary>
         /// Gets or sets the policy definition management group name parameter.
@@ -142,14 +144,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var policyRuleJson = string.IsNullOrEmpty(this.Policy) ? resource.Properties["policyRule"]?.ToString() : GetObjectFromParameter(this.Policy).ToString();
             var metaDataJson = string.IsNullOrEmpty(this.Metadata) ? resource.Properties["metadata"]?.ToString() : GetObjectFromParameter(this.Metadata).ToString();
             var parameterJson = string.IsNullOrEmpty(this.Parameter) ? resource.Properties["parameters"]?.ToString() : GetObjectFromParameter(this.Parameter).ToString();
-
-            PolicyDefinitionMode tempMode;
-            PolicyDefinitionMode? existingMode = null;
-            if (Enum.TryParse(resource.Properties["mode"]?.ToString(), true, out tempMode))
-            {
-                existingMode = tempMode;
-            }
-
+            
             var policyDefinitionObject = new PolicyDefinition
             {
                 Name = this.Name ?? resource.Name,
@@ -160,7 +155,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     PolicyRule = string.IsNullOrEmpty(policyRuleJson) ? null : JObject.Parse(policyRuleJson),
                     Metadata = string.IsNullOrEmpty(metaDataJson) ? null : JObject.Parse(metaDataJson),
                     Parameters = string.IsNullOrEmpty(parameterJson) ? null : JObject.Parse(parameterJson),
-                    Mode = this.Mode ?? existingMode
+                    Mode = string.IsNullOrEmpty(this.Mode) ? resource.Properties["mode"]?.ToString() : this.Mode
                 }
             };
 
