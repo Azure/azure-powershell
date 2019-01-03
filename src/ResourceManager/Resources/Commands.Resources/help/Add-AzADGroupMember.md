@@ -69,6 +69,15 @@ PS C:\> Get-AzADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE | Add-AzADG
 
 Gets the group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE' and pipes it to the Add-AzADGroupMember cmdlet to add the user to that group.
 
+### Example 3 - Add a user to a group by principal name
+
+```
+PS C:\> Add-AzADGroupMember -MemberUserPrincipalName "myemail@domain.com" -TargetGroupDisplayName "MyGroupDisplayName" 
+PS C:\> Get-AzADGroupMember -GroupDisplayName "MyGroupDisplayName"
+```
+
+Adds an user to a group and list the members of the group.
+
 ## PARAMETERS
 
 ### -DefaultProfile
