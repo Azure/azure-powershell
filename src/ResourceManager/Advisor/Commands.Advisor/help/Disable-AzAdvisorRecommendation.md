@@ -65,7 +65,7 @@ A suppression is created for the given recommendation-Id.
 
 ### Example 3
 ```powershell
-PS C:\>  Get-AzAdvisorRecommendation -Id "/subscriptions/user_subscription/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}" | Disable-A
+PS C:\>  Get-AzAdvisorRecommendation -ResourceId "/subscriptions/user_subscription/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}" | Disable-A
 zAdvisorRecommendation
 
 SuppressionId : daf24e78-af2d-e8d3-9c50-fa970edc2937

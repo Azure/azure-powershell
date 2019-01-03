@@ -37,9 +37,9 @@ This cmdlet enables a previously suppressed recommendation. You can remove all t
 
 ### Example 1
 ```powershell
-PS C:\> Enable-AzAdvisorRecommendation -Id c3621337-f131-4bf4-92f2-3fb9c8cfa0d8 
+PS C:\> Enable-AzAdvisorRecommendation -ResourceId c3621337-f131-4bf4-92f2-3fb9c8cfa0d8 
 
-Id                   : subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/c3621337-f131-4bf4-92f2-3fb9c8cfa0d8
+ResourceId			 : subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/c3621337-f131-4bf4-92f2-3fb9c8cfa0d8
 Category             : Performance
 ExtendedProperties   : {}
 Impact               : Medium
@@ -61,10 +61,10 @@ Removes all the suppressions for the given recommendation with name "recommendat
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzAdvisorRecommendation -Id "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}" 
+PS C:\> Get-AzAdvisorRecommendation -ResourceId "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}" 
 | Enable-AzAdvisorRecommendation
 
-Id                   : subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}
+ResourceId           : subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}
 Category             : Performance
 ExtendedProperties   : {}
 Impact               : Medium
