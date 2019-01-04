@@ -21,7 +21,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Internal.Subscriptions;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
@@ -30,8 +34,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
     public class TestController : RMTestBase
     {
         private readonly EnvironmentSetupHelper _helper;
-
-        public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public static TestController NewInstance => new TestController();
 
@@ -111,14 +113,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient(context);
+            var rmClient = context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            var subClient = context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
+            var storageSyncClient = context.GetServiceClient<StorageSyncManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            var rbacClient = context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            var authClient = context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
 
-            _helper.SetupManagementClients(ResourceManagementClient);
-        }
-
-        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            _helper.SetupManagementClients(rmClient, subClient, storageSyncClient, rbacClient, authClient);
         }
     }
 }
