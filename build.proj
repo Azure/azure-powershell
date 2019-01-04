@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  Available Targets:
+
+  /t:Clean
+    Removes temporary build outputs.
+
+  /t:Build
+    Builds assemblies.
+
+  /t:Test
+    Runs tests
+
+  /t:Publish
+    Creates local nuget packages and MSI
+
+  /p:CodeSign=True
+    Code sign binaries, mainly for official release. Default is false.
+
+  /p:CodeSign=True;DelaySign=True
+    Test the code sign workflow locally.
+
+  /p:Scope
+    'ServiceManagement': service management
+    'AzureStorage': storage data plane cmdlets
+    'Stack': Azure Stack cmdlets
+    'Subfolder under src\ResourceManager': An individual cmdlet module
+    By default, it builds everything
+
+  /p:SkipHelp=True
+    Skips help generation, mainly for local builds to save time.
+
+  /p:SkipNugetRestore=True
+    Skips nuget restore, mainly for local builds to save time when you have already restored nugets.
+
+  /p:SkipDependencyAnalysis=True
+    Skips build validation, mainly for local builds to save time.
+
+  /p:QuickBuild=true
+    Same thing as doing SkipHelp, SkipNugetRestore, and SkipDependencyAnalysis
+-->
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <!--
-    Available Targets:
-
-    /t:Clean
-      Removes temporary build outputs.
-
-    /t:Build
-      Builds assemblies.
-
-    /t:Test
-      Runs tests
-
-    /t:Publish
-      Creates local nuget packages and MSI
-
-    /p:CodeSign=True
-      Code sign binaries, mainly for official release. Default is false.
-
-    /p:CodeSign=True;DelaySign=True
-      Test the code sign workflow locally.
-
-    /p:Scope
-      'ServiceManagement': service management
-      'AzureStorage': storage data plane cmdlets
-      'Stack': Azure Stack cmdlets
-      'Subfolder under src\ResourceManager': An individual cmdlet module
-      By default, it builds everything
-
-    /p:SkipHelp=True
-      Skips help generation, mainly for local builds to save time.
-
-    /p:SkipNugetRestore=True
-      Skips nuget restore, mainly for local builds to save time when you have already restored nugets.
-
-    /p:SkipDependencyAnalysis=True
-      Skips build validation, mainly for local builds to save time.
-
-    /p:QuickBuild=true
-      Same thing as doing SkipHelp, SkipNugetRestore, and SkipDependencyAnalysis
-
-  -->
+  <Import Project="$(MSBuildThisFileDirectory)Repo.props" />
 
   <!-- Define default build properties -->
   <PropertyGroup>
@@ -49,19 +49,17 @@
     <LibrarySourceFolder>$(LibraryRoot)src</LibrarySourceFolder>
     <LibraryToolsFolder>$(LibraryRoot)tools</LibraryToolsFolder>
     <LocalFeedFolder>$(LibraryToolsFolder)\LocalFeed</LocalFeedFolder>
-    <PublishDirectory>$(LibrarySourceFolder)\Publish</PublishDirectory>
     <Configuration Condition=" '$(Configuration)' != 'Release'">Debug</Configuration>
-    <CodeSign Condition=" '$(CodeSign)' == '' ">false</CodeSign>
+    <CodeSign>false</CodeSign>
     <!--Set this true only if you want to test the code sign workflow locally-->
     <DelaySign Condition =" '$(DelaySign)' == '' ">false</DelaySign>
     <SignedOutputRootDir>$(LibraryRoot)signed</SignedOutputRootDir>
-    <BuildOutputDirectory>$(PublishDirectory)\Build</BuildOutputDirectory>
-    <TestOutputDirectory>$(PublishDirectory)\TestResults</TestOutputDirectory>
+    <PackageDirectory>$(LibraryRoot)\artifacts</PackageDirectory>
+    <TestOutputDirectory>$(PackageDirectory)\Test</TestOutputDirectory>
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">$(LibrarySourceFolder)</NuGetPublishingSource>
     <Scope Condition="$(Scope) == ''" >All</Scope>
     <BuildTasksPath>$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks\bin\$(Configuration)</BuildTasksPath>
-    <PackageDirectory>$(LibrarySourceFolder)\Package</PackageDirectory>
     <StackPackageFolder>$(LibrarySourceFolder)\Stack</StackPackageFolder>
     <NetCore Condition="'$(NetCore)' != 'true'">false</NetCore>
   </PropertyGroup>
@@ -121,9 +119,9 @@
     <OnPremiseBuild Condition=" ! Exists($(OnPremiseBuildTasks)) ">false</OnPremiseBuild>
   </PropertyGroup>
 
-  <UsingTask Condition=" $(OnPremiseBuild) " TaskName="CodeSigningTask" AssemblyFile="$(CIToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
   <UsingTask Condition=" $(OnPremiseBuild) " TaskName="CorporateValidation" AssemblyFile="$(CIToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
   <Import Condition=" $(OnPremiseBuild) " Project="$(CIToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
+  <Import Project="CodeSign.targets"/>
 
   <UsingTask AssemblyFile="$(MSBuildProjectDirectory)\packages\xunit.runner.msbuild.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.runner.msbuild.dll" TaskName="Xunit.Runner.MSBuild.xunit" />
 
@@ -135,7 +133,7 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path (Join-Path ($env:USERPROFILE) .nuget packages) -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" ContinueOnError="WarnAndContinue" IgnoreExitCode="true" />
 
     <!-- Remove Package, Publish, bin, obj, and TestResults directories -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path $(PackageDirectory),$(PublishDirectory) -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" ContinueOnError="WarnAndContinue" IgnoreExitCode="true" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path $(PackageDirectory) -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" ContinueOnError="WarnAndContinue" IgnoreExitCode="true" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(MSBuildThisFileDirectory) -Recurse -Include 'bin','obj','TestResults' | Remove-Item -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" ContinueOnError="WarnAndContinue" IgnoreExitCode="true" />
   </Target>
 
@@ -255,15 +253,6 @@
       <Artifacts Include="@(GetAllFiles->'%(RootDir)%(Directory)'->Distinct())" />
     </ItemGroup>
     <RemoveDir Directories="%(Artifacts.Identity)" ContinueOnError="true" />
-
-    <ItemGroup>
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\Az.Resources\Az.Tags.psd1" />
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\Az.Websites\Az.Resources.psd1" />
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\Az.Websites\Az.Tags.psd1" />
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\Az.Network\Az.Resources.psd1" />
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\Az.Network\Az.Tags.psd1" />
-    </ItemGroup>
-    <Delete Files="@(ExtraPsdFiles->'%(FullPath)')" />
     <!-- TODO: </REMOVE THIS SECTION> -->
 
 
@@ -291,7 +280,7 @@
     <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
     
     <CallTarget Targets="CodeSignBinaries" Condition="'$(CodeSign)' == 'true'" />
-
+	
     <Exec ContinueOnError="false" Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration)&quot;" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSign) == 'true'" />
 
     <Message Importance="high" Text="Running Static Analyser" />
@@ -310,116 +299,11 @@
     <MSBuild Projects="@(LocalBuildTasks)" Targets="Build" Properties="Configuration=$(Configuration);Platform=Any CPU" />
   </Target>
 
-  <Target Name="CodeSignBinaries" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
-    <PropertyGroup>
-      <!--public token associated with MSSharedLibKey.snk-->
-      <StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
-    </PropertyGroup>
-    <GetFrameworkSdkPath>
-      <Output TaskParameter="Path" PropertyName="WindowsSdkPath" />
-    </GetFrameworkSdkPath>
-
-    <!-- Azure -->
-    <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
-      <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*PowerShell*Cmdlets*.dll" />
-      <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft.Azure.Management.Sql.Legacy.dll" />
-    </ItemGroup>
-
-    <Message Importance="high" Text="$(PackageDirectory)\$(Configuration) does not contains any files to sign. Code sign will skip." Condition="'@(DelaySignedAssembliesToSign)' == ''" />
-
-    <ValidateStrongNameSignatureTask
-      WindowsSdkPath="$(WindowsSdkPath)"
-      Assembly="%(DelaySignedAssembliesToSign.Identity)"
-      ExpectedTokenSignature="$(StrongNameToken)"
-      ExpectedDelaySigned="true"
-      ContinueOnError="false"
-      Condition="'@(DelaySignedAssembliesToSign)' != ''" />
-
-    <CodeSigningTask
-      Description="Microsoft Azure PowerShell"
-      Keywords="Microsoft Azure PowerShell"
-      UnsignedFiles="@(DelaySignedAssembliesToSign)"
-      DestinationPath="$(LibrarySourceFolder)"
-      BasePath="$(LibrarySourceFolder)"
-      Certificates="72, 400"
-      SigningLogPath="$(LibraryRoot)\signing.log"
-      ToolsPath="$(CIToolsPath)"
-      Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''" />
-
-    <ValidateStrongNameSignatureTask
-        WindowsSdkPath="$(WindowsSdkPath)"
-        Assembly="%(DelaySignedAssembliesToSign.Identity)"
-        ExpectedTokenSignature="$(StrongNameToken)"
-        ExpectedDelaySigned="false"
-        ContinueOnError="false"
-        Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''" />
-
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;" />
-
-    <!-- Copying shortcut to be signed -->
-    <Copy SourceFiles="$(LibraryRoot)tools\Az\Az.psm1" DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition="'$(Scope)' == 'Netcore'" />
-
-    <!-- Azure -->
-    <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
-      <ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.ps1" />
-      <ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.psm1" />
-      <ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.ps1xml" />
-      <ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.js" />
-    </ItemGroup>
-
-    <CodeSigningTask
-      Description="Microsoft Azure PowerShell"
-      Keywords="Microsoft Azure PowerShell"
-      UnsignedFiles="@(ScriptsToSign)"
-      DestinationPath="$(LibrarySourceFolder)"
-      BasePath="$(LibrarySourceFolder)"
-      Certificates="400"
-      SigningLogPath="$(LibraryRoot)\signing-scripts.log"
-      ToolsPath="$(CIToolsPath)"
-      Condition="!$(DelaySign) and '@(ScriptsToSign)' != ''" />
-
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckSignature.ps1 -CustomPath $(PackageDirectory)\$(Configuration) &quot;" Condition="'$(Scope)' != 'Stack'" ContinueOnError="ErrorAndContinue" />
-
-    <!-- Copy files back after signing -->
-    <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\Az.psm1" DestinationFolder="$(LibraryRoot)tools\Az" Condition="'$(Scope)' == 'Netcore'" />
-  </Target>
-
-  <Target Name="BuildInstaller" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'">
+  <Target Name="BuildInstaller" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
     <Exec Command="$(PowerShellCommandPrefix) &quot;. Register-PSRepository -Name MSIcreationrepository -SourceLocation $(PackageDirectory) -InstallationPolicy Trusted &quot; " />
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryRoot)\setup\generate.ps1 -repository MSIcreationrepository &quot; " />
     <Exec Command="$(PowerShellCommandPrefix) &quot;. Unregister-PSRepository -Name MSIcreationrepository &quot; " />
     <CallTarget Targets="CodeSignInstaller" Condition=" '$(CodeSign)' == 'true'" />
-  </Target>
-
-  <Target Name="CodeSignInstaller">
-    <PropertyGroup>
-      <!--public token associated with MSSharedLibKey.snk-->
-      <StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
-    </PropertyGroup>
-    <GetFrameworkSdkPath>
-      <Output TaskParameter="Path" PropertyName="WindowsSdkPath" />
-    </GetFrameworkSdkPath>
-
-    <ItemGroup>
-      <InstallersToSign Include="$(LibraryRoot)\setup\*.msi" />
-    </ItemGroup>
-
-    <Message Importance="high" Text="$(LibraryRoot)\setup does not contain any installers to sign. Code sign will skip."
-             Condition="'@(InstallersToSign)' == ''" />
-
-    <CodeSigningTask
-      Description="Microsoft Azure PowerShell"
-      Keywords="Microsoft Azure PowerShell"
-      UnsignedFiles="@(InstallersToSign)"
-      DestinationPath="$(SignedOutputRootDir)"
-      SigningLogPath="$(LibraryRoot)\msi-signing.log"
-      Certificates="402"
-      ToolsPath="$(CIToolsPath)"
-      Condition="!$(DelaySign) and '@(InstallersToSign)' != ''" />
-
-    <!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
-    <Copy SourceFiles="@(InstallersToSign)" DestinationFolder="signed" Condition="$(DelaySign)" />
-    <SetEnvVar EnvName="SignedMsiDir" EnvValue="$(SignedOutputRootDir)" />
   </Target>
 
   <!-- Run Validation -->
@@ -430,7 +314,7 @@
         <SkipHelpValue Condition=" '$(SkipHelp)' == 'true' ">-s</SkipHelpValue>
     </PropertyGroup>
     <!-- TODO: Use '-m @(ModulesChanged)' in command when FilterBuild is fixed. -->
-    <!-- <Exec Command="dotnet $(MSBuildThisFileDirectory)src/Package/StaticAnalysis/StaticAnalysis.Netcore.dll -p $(MSBuildThisFileDirectory)src/Package/$(Configuration) -r $(MSBuildThisFileDirectory)src/Package/StaticAnalysis $(SkipHelpValue) -u" /> -->
+    <!-- <Exec Command="dotnet $(MSBuildThisFileDirectory)artifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $(MSBuildThisFileDirectory)artifacts/$(Configuration) -r $(MSBuildThisFileDirectory)artifacts/StaticAnalysis $(SkipHelpValue) -u" /> -->
 
     <OnError ExecuteTargets="StaticAnalysisErrorMessage" />
   </Target>
@@ -449,7 +333,7 @@
     <PropertyGroup>
         <SkipHelpValue Condition=" '$(SkipHelp)' == 'true' ">-s</SkipHelpValue>
     </PropertyGroup>
-    <Exec Command="dotnet $(MSBuildProjectDirectory)\src\Package\StaticAnalysis.Netcore.dll -p $(MSBuildProjectDirectory)\src\Package\$(Configuration) -r $(MSBuildProjectDirectory)\src\Package $(SkipHelpValue) -u -m @(ModulesChanged)" />
+    <Exec Command="dotnet $(MSBuildProjectDirectory)\artifacts\StaticAnalysis.Netcore.dll -p $(MSBuildProjectDirectory)\artifacts\$(Configuration) -r $(MSBuildProjectDirectory)\artifacts $(SkipHelpValue) -u -m @(ModulesChanged)" />
 
     <OnError ExecuteTargets="StaticAnalysisErrorMessage"/>
   </Target>
@@ -477,7 +361,7 @@
           Condition="'$(Scope)' != 'Stack'"
           ContinueOnError="false" />
 
-    <CallTarget Targets="BuildInstaller" Condition="'$(Scope)' =='All'" />
+    <CallTarget Targets="BuildInstaller" Condition="'$(Scope)' =='All' or '$(Scope)' == 'Netcore'" />
   </Target>
 
   <Target Name="Test">
@@ -505,7 +389,7 @@
   </Target>
 
   <Target Name="TestFailureErrorMessage">
-    <Error Text="Test failures occured, check the files in src/Publish/TestResults." />
+    <Error Text="Test failures occured, check the files in artifacts/Test" />
   </Target>
 
   <Target Name="BinScopeCheck">
@@ -514,7 +398,7 @@
   </Target>
 
   <Target Name="BinScopeErrorMessage">
-    <Error Text="Binscope failed, please check the files in src/Package/BinScope" />
+    <Error Text="Binscope failed, please check the files in artifacts/BinScope" />
   </Target>
 
   <Target Name="RunPoliCheck">
@@ -523,7 +407,7 @@
   </Target>
 
   <Target Name="PoliCheckErrorMessage">
-    <Error Text="PoliCheck failed with a Severity 1 issue, please check the report at in src/Package/PoliCheck-Scan.html" />
+    <Error Text="PoliCheck failed with a Severity 1 issue, please check the report at in artifacts/PoliCheck-Scan.html" />
   </Target>
 
 </Project>

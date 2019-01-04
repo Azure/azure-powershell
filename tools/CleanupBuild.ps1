@@ -5,17 +5,12 @@ Param
     [string]$BuildConfig ="Debug"
 )
 
-$output = Join-Path (Get-Item $PSScriptRoot).Parent.FullName "src\Package\$BuildConfig"
+$output = Join-Path (Get-Item $PSScriptRoot).Parent.FullName "artifacts\$BuildConfig"
 Write-Verbose "The output folder is set to $output"
-$resourceManagerPath = Join-Path $output "ResourceManager\AzureResourceManager"
-$outputStack = Join-Path (Get-Item $PSScriptRoot).Parent.FullName "src\Stack\$BuildConfig"
-$stackPath = Join-Path $outputStack "ResourceManager\AzureResourceManager"
+$resourceManagerPath = $output
 
 $outputPaths = @($output)
-if(Test-Path $outputStack)
-{
-    $outputPaths += $outputStack
-}
+
 foreach ($path in $outputPaths)
 {
     Write-Verbose "Removing generated NuGet folders from $path"
@@ -38,10 +33,6 @@ foreach ($path in $outputPaths)
 }
 
 $resourceManagerPaths = @($resourceManagerPath)
-if (Test-Path $stackPath)
-{
-    $resourceManagerPaths += $stackPath
-}
 
 foreach($RMPath in $resourceManagerPaths)
 {

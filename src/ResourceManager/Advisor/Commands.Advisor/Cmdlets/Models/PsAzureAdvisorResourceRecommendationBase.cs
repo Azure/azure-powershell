@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Models
         /// <summary>
         ///  Gets or sets the Id of the recommendation.
         /// </summary>
-        public string Id { get; set; }
+        public string ResourceId { get; set; }
 
         /// <summary>
         ///  Gets or sets the category of the recommendation. Possible values include: 'HighAvailability','Security', 'Performance', 'Cost'
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Models
 
             return new PsAzureAdvisorResourceRecommendationBase()
             {
-                Id = recommendationBase.Id,
+                ResourceId = recommendationBase.Id,
                 Category = recommendationBase.Category,
                 ExtendedProperties = recommendationBase.ExtendedProperties != null ? new Dictionary<string, string>(recommendationBase.ExtendedProperties) : new Dictionary<string, string>(),
                 Impact = recommendationBase.Impact,

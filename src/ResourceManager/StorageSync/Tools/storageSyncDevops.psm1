@@ -5,7 +5,7 @@ function Get-RepositoryRootDirectory
 
 function Get-BuildOutputDirectory
 {
-    return (Join-Path (Get-RepositoryRootDirectory) "src\Package")
+    return (Join-Path (Get-RepositoryRootDirectory) "artifacts")
 }
 
 function Build-StorageSync
@@ -85,11 +85,11 @@ function Update-StorageSyncHelp
         [ValidateSet("DEBUG", "RELEASE")]
         [string]$BuildConfig)
 
-    $PathToModuleManifest = Join-Path (Get-BuildOutputDirectory) "$($BuildConfig)\ResourceManager\AzureResourceManager\AzureRM.StorageSync\AzureRM.Profile.psd1"
+    $PathToModuleManifest = Join-Path (Get-BuildOutputDirectory) "$($BuildConfig)\Az.Accounts\Az.Accounts.psd1"
     Write-Verbose "Loading manifest: $PathToModuleManifest"
     Import-Module $PathToModuleManifest -Scope Global
 
-    $PathToModuleManifest = Join-Path (Get-BuildOutputDirectory) "$($BuildConfig)\ResourceManager\AzureResourceManager\AzureRM.StorageSync\AzureRM.StorageSync.psd1"
+    $PathToModuleManifest = Join-Path (Get-BuildOutputDirectory) "$($BuildConfig)\Az.StorageSync\Az.StorageSync.psd1"
     Write-Verbose "Loading manifest: $PathToModuleManifest"
     Import-Module $PathToModuleManifest -Scope Global
 
@@ -109,8 +109,8 @@ function Update-StorageSyncHelp
     }
     finally
     {
-        Write-Verbose "Removing module: AzureRm.StorageSync"
-        Remove-Module -Name AzureRm.StorageSync
+        Write-Verbose "Removing module: Az.StorageSync"
+        Remove-Module -Name Az.StorageSync
     }
 
     return $status

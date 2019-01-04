@@ -25,10 +25,10 @@ Creates a new active directory group.
 ### Example 1 - Create a new AD group
 
 ```
-PS C:\> New-AzADGroup -DisplayName "MyGroupDisplayName" -MailNickname "myemail@domain.com"
+PS C:\> New-AzADGroup -DisplayName "MyGroupDisplayName" -MailNickname "MyGroupNick"
 ```
 
-Creates a new AD group with the name "MyGroupDisplayName" and the mail nickname "myemail@domain.com".
+Creates a new AD group with the name "MyGroupDisplayName" and the mail nickname "MyGroupNick".
 
 ## PARAMETERS
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -MailNickname
-The mail nickname for the group.
+The mail nickname for the group. Cannot contain the @ sign.
 
 ```yaml
 Type: System.String

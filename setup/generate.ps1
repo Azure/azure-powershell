@@ -8,7 +8,7 @@
 .PARAMETER Version
     The version number for the generated MSI.
 .PARAMETER Force
-    Forces a fresh installation of the Azure and AzureRm cmdlets from the gallery
+    Forces a fresh installation of the Az cmdlets from the gallery
 .PARAMETER noBuildNumber
     Prevent a build number from being tacked on the end of the version number.
 .PARAMETER repository
@@ -16,7 +16,7 @@
 #>
 
 param(
-    [Parameter(HelpMessage="The version number for the generated MSI.  This will be obtained from the AzureRM module if not specified.")]
+    [Parameter(HelpMessage="The version number for the generated MSI.  This will be obtained from the Az module if not specified.")]
     [string]$version="0",
     
     [Parameter(HelpMessage="Prevent a build number from being tacked on the end of the version number.")]
@@ -34,7 +34,7 @@ if( (-not (get-command -ea 0 light)) -or (-not (get-command -ea 0 heat)) -or (-n
 # variables 
 
 # output filename (plus '-$version-$arch.msi' )
-$outputName ="Azure-Cmdlets"
+$outputName ="Az-Cmdlets"
 
 # generate the product name from the current month/year.
 $productName = "Microsoft Azure PowerShell - $((Get-Culture).DateTimeFormat.GetMonthName((get-date).month)) $((get-date).year)"
@@ -68,12 +68,11 @@ if ( -not (test-path $modulesDir))  {
     $shh= mkdir -ea 0 $modulesDir 
 
     # First install the modules locally
-    save-module azure -path $modulesDir -Repository $repository
-    save-module azurerm -path $modulesDir -Repository $repository
+    save-module az -path $modulesDir -Repository $repository
 
     if ($version -eq "0")
     {
-        $version = (Get-ChildItem -Path $modulesDir\AzureRM).Name
+        $version = (Get-ChildItem -Path $modulesDir\Az).Name
     }
 
     Write-Host -fore green "Tweaking Modules"
