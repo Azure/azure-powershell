@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
                 {
                     foreach (PsAzureAdvisorResourceRecommendationBase entry in recListTobeFiltered)
                     {
-                        if (entry.Category.Equals(category) && entry.Id.Contains(resourceGroup))
+                        if (entry.Category.Equals(category) && entry.ResourceId.Contains(resourceGroup))
                         {
                             filteredList.Add(entry);
                         }
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
                 {
                     foreach (PsAzureAdvisorResourceRecommendationBase entry in recListTobeFiltered)
                     {
-                        if (entry.Id.Contains(resourceGroup))
+                        if (entry.ResourceId.Contains(resourceGroup))
                         {
                             filteredList.Add(entry);
                         }
