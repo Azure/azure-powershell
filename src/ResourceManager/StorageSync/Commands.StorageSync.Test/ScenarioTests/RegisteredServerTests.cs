@@ -17,15 +17,14 @@ using Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace StorageSync.Test.ScenarioTests
 {
-    public class RegisteredServerTests : RMTestBase
+    public class RegisteredServerTests
     {
-        public XunitTracingInterceptor _logger;
+        private readonly XunitTracingInterceptor _logger;
 
         public RegisteredServerTests(ITestOutputHelper output)
         {
