@@ -12,16 +12,16 @@ Updates or creates the Azure Advisor Configuration.
 
 ## SYNTAX
 
-### InputObjectLowCpuExcludeParameterSet (Default)
+### InputObjectRgExcludeParameterSet (Default)
 ```
-Set-AzAdvisorConfiguration [-Exclude] [-LowCpuThreshold] <Int32>
+Set-AzAdvisorConfiguration [-Exclude] [[-ResourceGroupName] <String>]
  [[-InputObject] <PsAzureAdvisorConfigurationData>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### InputObjectRgExcludeParameterSet
+### InputObjectLowCpuExcludeParameterSet 
 ```
-Set-AzAdvisorConfiguration [-Exclude] [[-ResourceGroupName] <String>]
+Set-AzAdvisorConfiguration [-Exclude] [-LowCpuThreshold] <Int32>
  [[-InputObject] <PsAzureAdvisorConfigurationData>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
