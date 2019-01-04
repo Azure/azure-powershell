@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "56abc793-f5d9-424a-bf0b-79d2d7027c74"
+          "151b2c85-da42-4a77-b7ab-2dfe12a1ec4e"
         ],
         "Accept-Language": [
           "en-US"
@@ -15,7 +15,7 @@
         "User-Agent": [
           "FxVersion/4.6.27019.06",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17134.",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Advisor.AdvisorManagementClient/0.9.5.0"
         ]
       },
@@ -33,7 +33,7 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "56abc793-f5d9-424a-bf0b-79d2d7027c74"
+          "151b2c85-da42-4a77-b7ab-2dfe12a1ec4e"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -42,13 +42,13 @@
           "599"
         ],
         "x-ms-correlation-request-id": [
-          "b7f63ba6-c498-4b29-b28a-0f26fe4203ff"
+          "e27ffb44-35c4-4838-98ed-8439edca920c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181213T170618Z:b7f63ba6-c498-4b29-b28a-0f26fe4203ff"
+          "WESTUS2:20190103T192346Z:e27ffb44-35c4-4838-98ed-8439edca920c"
         ],
         "Date": [
-          "Thu, 13 Dec 2018 17:06:18 GMT"
+          "Thu, 03 Jan 2019 19:23:46 GMT"
         ],
         "Content-Length": [
           "296"
