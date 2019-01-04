@@ -12,15 +12,15 @@ Gets a list of Azure Advisor recommendations.
 
 ## SYNTAX
 
-### IdParameterSet
+### NameParameterSet (Default)
 ```
-Get-AzAdvisorRecommendation [-ResourceId] <String> [-Category <String>] [-Refresh]
+Get-AzAdvisorRecommendation [-Category <String>] [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### NameParameterSet (Default)
+### IdParameterSet
 ```
-Get-AzAdvisorRecommendation [-Category <String>] [-ResourceGroupName <String>] [-Refresh]
+Get-AzAdvisorRecommendation [-ResourceId] <String> [-Category <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Obtains the list of Azure Advisor recommendations. Can be filtered by Category, 
 ### Example 1
 ```powershell
 PS C:\> Get-AzAdvisorRecommendation
-Id                   : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommen
+ResourceId                   : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommen
                        dations/{recommendation-Id}
 Category             : Performance
 ExtendedProperties   : {}
@@ -53,7 +53,7 @@ Gets the list of all recommendations.
 ### Example 2
 ```powershell
 PS C:\> Get-AzAdvisorRecommendation -Category Performance
-Id                   : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommen
+ResourceId                   : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommen
                        dations/{recommendation-Id}
 Category             : Performance
 ExtendedProperties   : {}
@@ -96,21 +96,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Refresh
-Regenerates the recommendations.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
