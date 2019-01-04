@@ -155,6 +155,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             "System.Private.CoreLib",
             "System.Private.ServiceModel",
             "System.Private.Xml.Linq",
+            "System.Net.Http.WinHttpHandler",
             "System.Net.Mail",
             "System.Security.Permissions",
             "System.Runtime.Loader",
