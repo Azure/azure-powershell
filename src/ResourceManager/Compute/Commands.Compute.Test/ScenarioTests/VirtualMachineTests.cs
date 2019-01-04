@@ -28,84 +28,49 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, @"Test-VirtualMachine $null");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine_Managed()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, @"Test-VirtualMachine $null $true");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Get-Location in Common.ps1 is not working correctly for NETSTANDARD")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePiping()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachinePiping");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineUpdateWithoutNic()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineUpdateWithoutNic");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinuxVirtualMachine()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-LinuxVirtualMachine");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithVMAgentAutoUpdate()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineWithVMAgentAutoUpdate");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineImageList()
         {
@@ -119,120 +84,70 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineList");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineSizeAndUsage()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineSizeAndUsage");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Get-Location in Common.ps1 is not working correctly for NETSTANDARD")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCapture()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineCapture");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCaptureNegative()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineCaptureNegative");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineDataDisk()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineDataDisk");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineDataDiskNegative()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineDataDiskNegative");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePIRv2()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachinePIRv2");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePlan()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachinePlan");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePlan2()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachinePlan2");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineTags()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineTags");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMImageCmdletOutputFormat()
         {
@@ -253,36 +168,21 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineListWithPaging");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithDifferentStorageResource()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineWithDifferentStorageResource");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithPremiumStorageAccount()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineWithPremiumStorageAccount");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithEmptyAuc()
         {
@@ -301,96 +201,56 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineWithBYOL");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineRedeploy()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineRedeploy");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineGetStatus()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineGetStatus");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineManagedDiskConversion()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineManagedDiskConversion");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePerformanceMaintenance()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachinePerformanceMaintenance");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineIdentity()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineIdentity");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineIdentityUpdate()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineIdentityUpdate");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWriteAcceleratorUpdate()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineWriteAcceleratorUpdate");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineManagedDisk()
         {

@@ -17,7 +17,7 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Current Release
+## Upcoming Release
 
-## Version 1.0.0
-* First version of the Kusto powershell
+## Version 0.1.0
+* Initial version of the Kusto PowerShell interface

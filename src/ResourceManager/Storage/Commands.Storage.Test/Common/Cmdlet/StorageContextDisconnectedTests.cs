@@ -384,7 +384,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 Assert.NotNull(output);
                 var storageContext = output.First() as AzureStorageContext;
                 Assert.NotNull(storageContext);
-                Assert.Equal("[SasToken]", storageContext.StorageAccountName);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
             }
             finally
             {
@@ -417,7 +417,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 Assert.NotNull(output);
                 var storageContext = output.First() as AzureStorageContext;
                 Assert.NotNull(storageContext);
-                Assert.Equal("[SasToken]", storageContext.StorageAccountName);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
             }
             finally
             {
@@ -451,7 +451,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 Assert.NotNull(output);
                 var storageContext = output.First() as AzureStorageContext;
                 Assert.NotNull(storageContext);
-                Assert.Equal("[SasToken]", storageContext.StorageAccountName);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
             }
             finally
             {
@@ -485,7 +485,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 Assert.NotNull(output);
                 var storageContext = output.First() as AzureStorageContext;
                 Assert.NotNull(storageContext);
-                Assert.Equal("[SasToken]", storageContext.StorageAccountName);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
             }
             finally
             {
@@ -518,7 +518,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 Assert.NotNull(output);
                 var storageContext = output.First() as AzureStorageContext;
                 Assert.NotNull(storageContext);
-                Assert.Equal("[Anonymous]", storageContext.StorageAccountName);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
             }
             finally
             {
@@ -551,7 +551,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 Assert.NotNull(output);
                 var storageContext = output.First() as AzureStorageContext;
                 Assert.NotNull(storageContext);
-                Assert.Equal("[Anonymous]", storageContext.StorageAccountName);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
             }
             finally
             {
@@ -585,7 +585,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 Assert.NotNull(output);
                 var storageContext = output.First() as AzureStorageContext;
                 Assert.NotNull(storageContext);
-                Assert.Equal("[Anonymous]", storageContext.StorageAccountName);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
             }
             finally
             {
@@ -619,7 +619,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 Assert.NotNull(output);
                 var storageContext = output.First() as AzureStorageContext;
                 Assert.NotNull(storageContext);
-                Assert.Equal("[Anonymous]", storageContext.StorageAccountName);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
             }
             finally
             {
