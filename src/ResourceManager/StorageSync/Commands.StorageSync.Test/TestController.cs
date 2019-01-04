@@ -28,11 +28,20 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.StorageSync;
+using Microsoft.Azure.Management.Authorization;
 
 namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
 {
     public class TestController : RMTestBase
     {
+        private const string TenantIdKey = "TenantId";
+        private const string DomainKey = "Domain";
+        private const string SubscriptionIdKey = "SubscriptionId";
+
         private readonly EnvironmentSetupHelper _helper;
 
         public static TestController NewInstance => new TestController();
