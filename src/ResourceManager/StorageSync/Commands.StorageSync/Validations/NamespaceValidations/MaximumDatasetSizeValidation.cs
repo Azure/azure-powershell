@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 {
     using Interfaces;
 
-    public class MaximumDatasetSizeValidation : BaseNamespaceValidation
+    public class MaximumDatasetSizeValidation : NamespaceValidationBase
     {
         #region Fields and Properties
         private readonly long _maxDataSetSize;

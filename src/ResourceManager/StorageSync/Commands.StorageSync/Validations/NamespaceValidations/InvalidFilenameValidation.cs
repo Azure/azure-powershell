@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
     using System.Collections.Generic;
     using System.Linq;
 
-    public class InvalidFilenameValidation : BaseNamespaceValidation
+    public class InvalidFilenameValidation : NamespaceValidationBase
     {
         #region Fields and Properties
         private readonly HashSet<string> _invalidFileNames;

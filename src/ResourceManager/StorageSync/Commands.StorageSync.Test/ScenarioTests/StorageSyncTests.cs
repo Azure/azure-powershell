@@ -23,16 +23,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
 {
     public class StorageSyncTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public StorageSyncTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageSync()
         {
-            TestController.NewInstance.RunPsTest("Test-StorageSync");
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageSync");
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 {
     using Interfaces;
 
-    public class MaximumPathLengthValidation : BaseNamespaceValidation
+    public class MaximumPathLengthValidation : NamespaceValidationBase
     {
         #region Fields and Properties
         private readonly int _maxPathLength;

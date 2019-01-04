@@ -16,14 +16,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemVali
 {
     using Interfaces;
 
-    public abstract class BaseSystemValidation : BaseValidation, ISystemValidation
+    public abstract class SystemValidationBase : ValidationBase, ISystemValidation
     {
         #region Fields and Properties
         protected IConfiguration Configuration { get; }
         #endregion
 
         #region Constructors
-        public BaseSystemValidation(
+        public SystemValidationBase(
             IConfiguration configuration,
             string validationName,
             ValidationType validationType) : base(validationName, validationType, ValidationKind.SystemValidation)
