@@ -68,8 +68,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         /// <summary>
         /// Gets or sets the object passed from the PowerShell piping
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, ParameterSetName = InputObjectParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzAdvisorRecommendation call.")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzAdvisorRecommendation call.")]
         public PsAzureAdvisorResourceRecommendationBase InputObject { get; set; }
 
         /// <summary>
@@ -98,7 +97,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
             var returnSuppressionContract = new List<PsAzureAdvisorSuppressionContract>();
 
             // Create the suppression contract           
-            suppressionContract = new SuppressionContract(null, DefaultSuppressionName, null, null, string.IsNullOrEmpty(this.Days.ToString()) ? string.Empty : this.Days.ToString());
+            suppressionContract = new SuppressionContract(null, DefaultSuppressionName, null, null, this.Days == 0 ? string.Empty : this.Days.ToString());
 
             switch (this.ParameterSetName)
             {
@@ -128,8 +127,8 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                 case InputObjectParameterSet:
 
                     // Parse out the Subscription-ID, Recommendation-ID from the ResourceId parameter.
-                    resourceUri = RecommendationHelper.GetFullResourceUriFromResourceID(this.InputObject.Id);
-                    recommendationId = RecommendationHelper.GetRecommendationIdFromResourceID(this.InputObject.Id);
+                    resourceUri = RecommendationHelper.GetFullResourceUriFromResourceID(this.InputObject.ResourceId);
+                    recommendationId = RecommendationHelper.GetRecommendationIdFromResourceID(this.InputObject.ResourceId);
 
                     if (ShouldProcess(recommendationId, string.Format(Resources.DisableRecommendationWarningMessage, recommendationId)))
                     {
