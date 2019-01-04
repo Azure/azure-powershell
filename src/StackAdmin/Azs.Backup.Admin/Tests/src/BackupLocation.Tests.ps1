@@ -73,7 +73,7 @@ InModuleScope Azs.Backup.Admin {
 
                 # Subscriber Usage Aggregate
                 $BackupLocation.Password    			| Should -BeNullOrEmpty
-                $BackupLocation.EncryptionKeyBase64     | Should -BeNullOrEmpty
+                $BackupLocation.EncryptionCertBase64     | Should -BeNullOrEmpty
             }
 
             function AssertAreEqual {
@@ -96,7 +96,7 @@ InModuleScope Azs.Backup.Admin {
                     $expected.Location						| Should Be $found.Location
                     $expected.AvailableCapacity				| Should Be $found.AvailableCapacity
                     $expected.BackupFrequencyInHours		| Should Be $found.BackupFrequencyInHours
-                    $expected.EncryptionKeyBase64			| Should Be $found.EncryptionKeyBase64
+                    $expected.EncryptionCertBase64			| Should Be $found.EncryptionCertBase64
                     $expected.IsBackupSchedulerEnabled		| Should Be $found.IsBackupSchedulerEnabled
                     $expected.LastBackupTime				| Should Be $found.LastBackupTime
                     $expected.NextBackupTime				| Should Be $found.NextBackupTime
@@ -115,7 +115,7 @@ InModuleScope Azs.Backup.Admin {
         It "TestListBackupLocation" -Skip:$('TestListBackupLocation' -in $global:SkippedTests) {
             $global:TestName = 'TestListBackupLocations'
 
-            $backupLocations = Get-AzsBackupConfiguration -Location $global:Location
+            $backupLocations = Get-AzsBackupConfiguration -ResourceGroupName $global:ResourceGroupName
             $backupLocations  | Should Not Be $null
             foreach ($backupLocation in $backupLocations) {
                 ValidateBackupLocation -BackupLocation $backupLocation
@@ -125,7 +125,7 @@ InModuleScope Azs.Backup.Admin {
         It "TestGetBackupLocation" -Skip:$('TestGetBackupLocation' -in $global:SkippedTests) {
             $global:TestName = 'TestGetBackupLocation'
 
-            $backupLocations = Get-AzsBackupConfiguration -Location $global:Location
+            $backupLocations = Get-AzsBackupConfiguration -ResourceGroupName $global:ResourceGroupName
             $backupLocations  | Should Not Be $null
             foreach ($backupLocation in $backupLocations) {
                 $result = Get-AzsBackupConfiguration -Location $backupLocation.Name
@@ -149,19 +149,29 @@ InModuleScope Azs.Backup.Admin {
         It "TestUpdateBackupLocation" -Skip:$('TestUpdateBackupLocation' -in $global:SkippedTests) {
             $global:TestName = 'TestUpdateBackupLocation'
 
-            $backup = Set-AzsBackupConfiguration -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Username $global:username -Password $global:password -Path $global:path -EncryptionKey $global:encryptionKey -IsBackupSchedulerEnabled $global:isBackupSchedulerEnabled -BackupFrequencyInHours $global:backupFrequencyInHours -BackupRetentionPeriodInDays $global:backupRetentionPeriodInDays
+            try
+            {
+                [System.IO.File]::WriteAllBytes($global:encryptionCertPath, [System.Convert]::FromBase64String($global:encryptionCertBase64))
+                $backup = Set-AzsBackupConfiguration -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Username $global:username -Password $global:password -Path $global:path -EncryptionCertPath $global:encryptionCertPath -IsBackupSchedulerEnabled $global:isBackupSchedulerEnabled -BackupFrequencyInHours $global:backupFrequencyInHours -BackupRetentionPeriodInDays $global:backupRetentionPeriodInDays
 
-            $backup                             | Should Not Be $Null
-            $backup.Path                        | Should Be $global:path
-            $backup.Username                    | Should be $global:username
-            $backup.Password 			        | Should -BeNullOrEmpty
-            $backup.EncryptionKeyBase64         | Should -BeNullOrEmpty
-            $backup.IsBackupSchedulerEnabled    | Should be $global:isBackupSchedulerEnabled
-            $backup.BackupFrequencyInHours      | Should be $global:backupFrequencyInHours
-            $backup.BackupRetentionPeriodInDays | Should be $global:backupRetentionPeriodInDays
+                $backup                             | Should Not Be $Null
+                $backup.Path                        | Should Be $global:path
+                $backup.Username                    | Should be $global:username
+                $backup.Password 			        | Should -BeNullOrEmpty
+                $backup.EncryptionCertBase64        | Should -BeNullOrEmpty
+                $backup.IsBackupSchedulerEnabled    | Should be $global:isBackupSchedulerEnabled
+                $backup.BackupFrequencyInHours      | Should be $global:backupFrequencyInHours
+                $backup.BackupRetentionPeriodInDays | Should be $global:backupRetentionPeriodInDays
+            }
+            finally
+            {
+                if (Test-Path -Path $global:encryptionCertPath -PathType Leaf)
+                {
+                    Remove-Item -Path $global:encryptionCertPath -Force -ErrorAction Continue
+                }
+            }
         }
 
-        # Need to record new tests.
         It "TestCreateBackup" -Skip:$('TestCreateBackup' -in $global:SkippedTests) {
             $global:TestName = 'TestCreateBackup'
 
@@ -175,7 +185,19 @@ InModuleScope Azs.Backup.Admin {
 
             $backup = Start-AzsBackup -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Force
             $backup 					| Should Not Be $Null
-            Restore-AzsBackup -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Name $backup.Name -Force
+
+            try
+            {
+                [System.IO.File]::WriteAllBytes($global:decryptionCertPath, [System.Convert]::FromBase64String($global:decryptionCertBase64))
+                Restore-AzsBackup -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Name $backup.Name -DecryptionCertPath $global:decryptionCertPath -DecryptionCertPassword $global:decryptionCertPassword -Force
+            }
+            finally
+            {
+                if (Test-Path -Path $global:decryptionCertPath -PathType Leaf)
+                {
+                    Remove-Item -Path $global:decryptionCertPath -Force -ErrorAction Continue
+                }
+            }
         }
     }
 }

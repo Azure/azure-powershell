@@ -22,10 +22,14 @@ $global:ResourceGroupName = "System.local"
 $global:username = "azurestack\AzureStackAdmin"
 [SecureString]$global:password = ConvertTo-SecureString -String "password" -AsPlainText -Force
 $global:path = "\\su1fileserver\SU1_Infrastructure_2\BackupStore"
-[SecureString]$global:encryptionKey = ConvertTo-SecureString -String "Q09WR3dOUEtia0VFeFZFbGdqVXFySm9TbEtxaHNNZ2VxQkdzUUZaVGRCbWtpbHplR2N3Z2hmR05wY2lqTElIbw==" -AsPlainText -Force
+$global:encryptionCertBase64 = "ZW5jcnlwdGlvbkNlcnQ="
+$global:encryptionCertPath = "$env:temp\encryptionCert.cer"
 $global:isBackupSchedulerEnabled = $false
 $global:backupFrequencyInHours = 10
 $global:backupRetentionPeriodInDays = 6
+$global:decryptionCertBase64 = "ZGVjcnlwdGlvbkNlcnQ="
+$global:decryptionCertPath = "$env:temp\decryptionCert.pfx"
+$global:decryptionCertPassword = ConvertTo-SecureString -String "decryptionCertPassword" -AsPlainText -Force
 
 $global:Client = $null
 

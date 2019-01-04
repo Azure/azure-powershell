@@ -31,7 +31,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     RootModule           = 'Azs.Backup.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion        = '0.2.0'
+    ModuleVersion        = '0.3.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -131,20 +131,10 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.9.10
-            * Module dependencies updated
-                * AzureRM.Profile
-                * AzureRM.Resources
-            * Support handling names of nested resources
-                * Get-AzsBackup
-                * Restore-AzsBackup
-                * Start-AzsBackup
-            * Deprecations
-                * Set-AzsBackupShare is an alias now to the cmdlet Set-AzsBackupConfiguration
-                * Get-AzsBackupLocation is an alias now to the cmdlet Get-AzsBackupConfiguration
-                * Set-AzsBackupConfiguration, the parameter BackupShare is an alias now for the parameter path
-            * Bug fixes
-                * Handle ErrrorAction correctly now
+            ReleaseNotes = '## 2019.01.04
+            * Backup changes to cert-based encryption mode
+                * Set-AzsBackupConfiguration now accepts parameter EncryptionCertPath instead of EncryptionKey
+                * Restore-AzsBackup now requires parameter DecryptionCertPath and DecryptionCertPassword
             '
 
         } # End of PSData hashtable

@@ -82,10 +82,9 @@ InModuleScope Azs.Backup.Admin {
         It "TestListBackups" -Skip:$('TestListBackups' -in $global:SkippedTests) {
             $global:TestName = 'TestListBackups'
 
-            $backups = Get-AzsBackup -Location $global:Location
-            $backups  | Should Not Be $null
-            foreach ($backup in $backups) {
-                $result = Get-AzsBackup -Location $global:Location -Name $backup.Name
+            $backupLocations = Get-AzsBackupConfiguration -ResourceGroupName $global:ResourceGroupName
+            foreach ($backupLocation in $backupLocations) {
+                $result = Get-AzsBackup -ResourceGroupName $global:ResourceGroupName -Location $backupLocation.Name
                 ValidateBackup -Backup $result
             }
         }
@@ -93,11 +92,14 @@ InModuleScope Azs.Backup.Admin {
         It "TestGetBackup" -Skip:$('TestGetBackup' -in $global:SkippedTests) {
             $global:TestName = 'TestGetBackup'
 
-            $backups = Get-AzsBackup -Location $global:Location
-            $backups  | Should Not Be $null
-            foreach ($backup in $backups) {
-                $result = Get-AzsBackup -Location $global:Location -Name $backup.Name
-                ValidateBackup -Backup $result
+            $backupLocations = Get-AzsBackupConfiguration -ResourceGroupName $global:ResourceGroupName
+            foreach ($backupLocation in $backupLocations) {
+                $backups = Get-AzsBackup -ResourceGroupName $global:ResourceGroupName -Location $backupLocation.Name
+                $backups  | Should Not Be $null
+                foreach ($backup in $backups) {
+                    $result = Get-AzsBackup -ResourceGroupName $global:ResourceGroupName -Location $backupLocation.Name -Name $backup.Name
+                    ValidateBackup -Backup $result
+                }
             }
         }
     }

@@ -14,13 +14,13 @@ Restore a backup.
 
 ### Backups_Restore (Default)
 ```
-Restore-AzsBackup [-ResourceGroupName <String>] -Name <String> [-Location <String>] [-AsJob] [-Force] [-WhatIf]
+Restore-AzsBackup [-ResourceGroupName <String>] -Name <String> [-Location <String>] -DecryptionCertPath <String> -DecryptionCertPassword <SecureString> [-AsJob] [-Force] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Restore-AzsBackup -ResourceId <String> [-AsJob] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzsBackup -ResourceId <String> -DecryptionCertPath <String> -DecryptionCertPassword <SecureString> [-AsJob] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ Restore a backup.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Restore-AzsBackup -Backup 4e90bd2f-c7ab-47a3-a3c7-908cddd1ad0e
+Restore-AzsBackup -Backup 4e90bd2f-c7ab-47a3-a3c7-908cddd1ad0e -DecryptionCertPath $decryptionCertPath -DecryptionCertPassword $decryptionCertPassword
 ```
 
 Restore from an Azure Stack backup.
@@ -88,6 +88,36 @@ Name of the backup.
 ```yaml
 Type: String
 Parameter Sets: Backups_Restore
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DecryptionCertPath
+Path to the decryption cert file with public key (.pfx).
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DecryptionCertPassword
+Password the decryption cert.
+
+```yaml
+Type: SecureString
+Parameter Sets: (All)
 Aliases: 
 
 Required: True

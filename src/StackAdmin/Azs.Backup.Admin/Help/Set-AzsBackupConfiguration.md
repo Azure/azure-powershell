@@ -15,7 +15,7 @@ Set the backup configuration at the specified location.
 ### Update (Default)
 ```
 Set-AzsBackupConfiguration [-ResourceGroupName <String>] [-Location <String>] [-Path <String>]
- [-Username <String>] [-Password <SecureString>] [-EncryptionKey <SecureString>]
+ [-Username <String>] [-Password <SecureString>] [-EncryptionCertPath <String>]
  [-IsBackupSchedulerEnabled <Boolean>] [-BackupFrequencyInHours <Int32>] [-BackupRetentionPeriodInDays <Int32>]
  [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Set-AzsBackupConfiguration [-ResourceGroupName <String>] [-Location <String>] [-
 ### InputObject
 ```
 Set-AzsBackupConfiguration -InputObject <BackupLocation> [-Path <String>] [-Username <String>]
- [-Password <SecureString>] [-EncryptionKey <SecureString>] [-IsBackupSchedulerEnabled <Boolean>]
+ [-Password <SecureString>] [-EncryptionCertPath <String>] [-IsBackupSchedulerEnabled <Boolean>]
  [-BackupFrequencyInHours <Int32>] [-BackupRetentionPeriodInDays <Int32>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ Set-AzsBackupConfiguration -InputObject <BackupLocation> [-Path <String>] [-User
 ### ResourceId
 ```
 Set-AzsBackupConfiguration -ResourceId <String> [-Path <String>] [-Username <String>]
- [-Password <SecureString>] [-EncryptionKey <SecureString>] [-IsBackupSchedulerEnabled <Boolean>]
+ [-Password <SecureString>] [-EncryptionCertPath <String>] [-IsBackupSchedulerEnabled <Boolean>]
  [-BackupFrequencyInHours <Int32>] [-BackupRetentionPeriodInDays <Int32>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -43,7 +43,7 @@ Set the backup configuration at the specified location.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Set-AzsBackupConfiguration -Path "\\***.***.***.***\Share" -Username "asdomain1\azurestackadmin" -Password $password  -EncryptionKey $encryptionKey
+Set-AzsBackupConfiguration -Path "\\***.***.***.***\Share" -Username "asdomain1\azurestackadmin" -Password $password  -EncryptionCertPath $encryptionCertPath
 ```
 
 Set Azure Stack backup configuration.
@@ -95,11 +95,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EncryptionKey
-Encryption key used to encrypt backups.
+### -EncryptionCertPath
+Path to the encryption cert file with public key (.cer).
 
 ```yaml
-Type: SecureString
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
