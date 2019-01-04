@@ -12,7 +12,7 @@
             <ListItems>
               <ListItem>
                 <Label>Id</Label>
-                <PropertyName>Id</PropertyName>
+                <PropertyName>ResourceId</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Category</Label>
