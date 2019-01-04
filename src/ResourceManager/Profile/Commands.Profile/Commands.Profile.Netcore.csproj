@@ -20,6 +20,7 @@
     <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Newtonsoft.Json.10.dll" />
     <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\System.ServiceModel.Primitives.dll" />
     <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\System.Private.ServiceModel.dll" />
+    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\System.Net.Http.WinHttpHandler.dll" />
     <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.14.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
     <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.14.0\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
   </ItemGroup>
