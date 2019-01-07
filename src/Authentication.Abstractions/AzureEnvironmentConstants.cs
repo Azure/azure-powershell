@@ -162,7 +162,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// The token audience for authorizing Analysis Service requests
         /// </summary>
-        public const string AnalysisServicesEndpointResourceId = "https://*.asazure.windows.net";
+        /// <remarks>
+        /// Analysis Service expects a token audience which matches "https://*.asazure.windows.net".
+        /// The wildcard takes place of the region, however the region cannot be calculated here.
+        /// A "-" can take place of the region, since "*" is an invalid character for Uris.
+        /// </remarks>
+        public const string AnalysisServicesEndpointResourceId = "https://-.asazure.windows.net";
 
     }
 }
