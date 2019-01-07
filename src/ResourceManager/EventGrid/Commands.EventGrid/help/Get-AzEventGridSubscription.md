@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
 online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/get-azeventgridsubscription
@@ -31,7 +31,7 @@ Get-AzEventGridSubscription [[-ResourceGroupName] <String>] [[-TopicTypeName] <S
  [-IncludeFullEndpointUrl] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### EventSubscriptionInputObjectSet
+### EventSubscriptionCustomTopicInputObjectParameterSet
 ```
 Get-AzEventGridSubscription [-InputObject] <PSTopic> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -169,11 +169,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-EventGrid Event Subscription object.
+EventGrid Topic object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.EventGrid.Models.PSTopic
-Parameter Sets: EventSubscriptionInputObjectSet
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
 Aliases:
 
 Required: True

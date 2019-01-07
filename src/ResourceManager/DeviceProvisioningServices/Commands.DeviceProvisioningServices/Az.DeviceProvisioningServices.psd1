@@ -65,8 +65,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.DeviceProvisioningServices.dl
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 
-               '.\Microsoft.Azure.Commands.DeviceProvisioningServices.format.ps1xml'
+FormatsToProcess = '.\DeviceProvisioningServices.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices.dll')
