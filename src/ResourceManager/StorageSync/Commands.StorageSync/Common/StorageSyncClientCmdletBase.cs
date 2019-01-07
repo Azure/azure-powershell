@@ -97,14 +97,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 
         public override void ExecuteCmdlet()
         {
-            try
-            {
-                PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
-            }
-            catch(Exception e)
-            {
-                this.WriteExceptionError(e);
-            }
+            PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
             StartTime = DateTime.Now;
             base.ExecuteCmdlet();
         }
