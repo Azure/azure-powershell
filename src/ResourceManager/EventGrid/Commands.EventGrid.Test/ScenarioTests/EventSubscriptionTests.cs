@@ -79,6 +79,13 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
         {
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Resource");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EventGrid_EventSubscription_Deadletter()
+        {
+            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Deadletter");
+        }
     }
 }
 

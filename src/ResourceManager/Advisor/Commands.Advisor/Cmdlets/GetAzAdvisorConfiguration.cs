@@ -21,6 +21,8 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     using Microsoft.Azure.Commands.Advisor.Utilities;
     using Microsoft.Azure.Management.Advisor.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Rest.Azure;
+    using Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities.Client;
 
     /// <summary>
     /// Get-AzAdvisorConfiguration cmdlet
@@ -47,22 +49,23 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            ConfigurationResource configResourceClient = new ConfigurationResource();
             IEnumerable<ConfigData> responseData = null;
             List<PsAzureAdvisorConfigurationData> returnPsConfigData = new List<PsAzureAdvisorConfigurationData>();
 
             if (string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                responseData = this.ResourceAdvisorClient.Configurations.ListBySubscriptionWithHttpMessagesAsync().Result.Body.AsEnumerable();
+                returnPsConfigData = configResourceClient.GetAllConfiguratioFromClient(this.ResourceAdvisorClient);
             }
             else
             {
                 responseData = this.ResourceAdvisorClient.Configurations.ListByResourceGroupWithHttpMessagesAsync(this.ResourceGroupName).Result.Body;
-            }
 
-            // Parse the response data from the API to PS object
-            foreach (ConfigData configData in responseData)
-            {
-                returnPsConfigData.Add(PsAzureAdvisorConfigurationData.GetFromConfigurationData(configData));
+                // Parse the response data from the API to PS object
+                foreach (ConfigData configData in responseData)
+                {
+                    returnPsConfigData.Add(PsAzureAdvisorConfigurationData.GetFromConfigurationData(configData));
+                }
             }
 
             this.WriteObject(returnPsConfigData, true);

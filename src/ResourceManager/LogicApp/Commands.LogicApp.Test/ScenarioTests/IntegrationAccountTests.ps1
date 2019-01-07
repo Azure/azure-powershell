@@ -18,7 +18,8 @@ Test New-AzureRmIntegrationAccount command
 #>
 function Test-CreateIntegrationAccount
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname	
 
 	$location = Get-LocationName
@@ -34,7 +35,8 @@ Test Get-AzureRmIntegrationAccount command
 #>
 function Test-CreateAndGetIntegrationAccount
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 	$location = Get-LocationName
 
@@ -56,7 +58,8 @@ Test Remove-AzureRmIntegrationAccount command
 #>
 function Test-RemoveIntegrationAccount
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 	$location = Get-LocationName
 
@@ -73,7 +76,8 @@ Test Update-AzureRmIntegrationAccount command
 #>
 function Test-UpdateIntegrationAccount
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 	$location = Get-LocationName
 
@@ -101,7 +105,8 @@ Test Get-AzureRmIntegrationAccountCallbackUrl command
 #>
 function Test-GetIntegrationAccountCallbackUrl
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 	$location = Get-LocationName
 

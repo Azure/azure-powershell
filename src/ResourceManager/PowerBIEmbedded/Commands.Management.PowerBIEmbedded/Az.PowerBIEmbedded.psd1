@@ -69,7 +69,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.PowerBIEmbedded.dll',
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Management.PowerBIEmbedded.dll', 
+NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded.dll', 
     '.\Microsoft.Azure.PowerShell.Cmdlets.PowerBI.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
