@@ -21,7 +21,8 @@ function Test-CreateIntegrationAccountAgreementX12
 	$agreementX12FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
 	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 	
 	$integrationAccountX12AgreementName = getAssetname
@@ -68,7 +69,8 @@ function Test-CreateIntegrationAccountAgreementAS2
 	$agreementAS2FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountAS2AgreementContent.json"
 	$agreementAS2Content = [IO.File]::ReadAllText($agreementAS2FilePath)
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname	
 	
 	$integrationAccountAS2AgreementName = getAssetname
@@ -101,7 +103,8 @@ function Test-CreateIntegrationAccountAgreementEdifact
 	$agreementEdifactFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountEdifactAgreementContent.json"
 	$agreementEdifactContent = [IO.File]::ReadAllText($agreementEdifactFilePath)
 	
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname	
 	
 	$integrationAccountEdifactAgreementName = getAssetname
@@ -135,7 +138,8 @@ function Test-CreateIntegrationAccountAgreementWithFailure
 	$agreementX12FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
 	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname	
 	
 	$integrationAccountX12AgreementName = getAssetname
@@ -171,7 +175,8 @@ function Test-GetIntegrationAccountAgreement
 
 	Assert-ThrowsContains { Get-AzureRmIntegrationAccountAgreement -ResourceGroupName "Random83da135" -IntegrationAccountName "DoesNotMatter" -AgreementName "DoesNotMatter" } "Resource group 'Random83da135' could not be found."
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 	
 	$integrationAccountX12AgreementName = getAssetname
@@ -205,7 +210,8 @@ function Test-RemoveIntegrationAccountAgreement
 	$agreementX12FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
 	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname	
 	
 	$integrationAccountX12AgreementName = getAssetname	
@@ -238,7 +244,8 @@ function Test-UpdateIntegrationAccountAgreement
 	$agreementAS2FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountAS2AgreementContent.json"
 	$agreementAS2Content = [IO.File]::ReadAllText($agreementAS2FilePath)
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname	
 	
 	$integrationAccountAgreementName = getAssetname
@@ -320,7 +327,8 @@ function Test-ListIntegrationAccountAgreement
 	$agreementX12FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
 	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName

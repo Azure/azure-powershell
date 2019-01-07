@@ -21,7 +21,8 @@ function Test-CreateIntegrationAccountSchema
 	$schemaFilePath = Join-Path $TestOutputRoot "\Resources\OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 	
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname	
 	
 	$integrationAccountSchemaName1 = getAssetname	
@@ -51,7 +52,8 @@ function Test-GetIntegrationAccountSchema
 	$schemaFilePath = Join-Path $TestOutputRoot "\Resources\OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname	
 	
 	$integrationAccountSchemaName = getAssetname	
@@ -80,7 +82,8 @@ function Test-RemoveIntegrationAccountSchema
 	$schemaFilePath = Join-Path $TestOutputRoot "\Resources\OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 	
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname	
 	
 	$integrationAccountSchemaName = getAssetname	
@@ -104,7 +107,8 @@ function Test-UpdateIntegrationAccountSchema
 	$schemaFilePath = Join-Path $TestOutputRoot "\Resources\OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 	
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname	
 	
 	$integrationAccountSchemaName = getAssetname	
@@ -132,7 +136,8 @@ function Test-ListIntegrationAccountSchema
 	$schemaFilePath = Join-Path $TestOutputRoot "\Resources\OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
