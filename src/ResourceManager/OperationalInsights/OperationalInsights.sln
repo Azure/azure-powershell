@@ -2,13 +2,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.OperationalInsights.Netcore", "Commands.OperationalInsights\Commands.OperationalInsights.Netcore.csproj", "{5BE35A94-C20F-4659-AA29-9B9AEBCFAF36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationalInsights", "Commands.OperationalInsights\OperationalInsights.csproj", "{5BE35A94-C20F-4659-AA29-9B9AEBCFAF36}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.OperationalInsights.Test.Netcore", "Commands.OperationalInsights.Test\Commands.OperationalInsights.Test.Netcore.csproj", "{11387E0A-4DB6-49B8-BDBC-EE020D85D10F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationalInsights.Test", "Commands.OperationalInsights.Test\OperationalInsights.Test.csproj", "{11387E0A-4DB6-49B8-BDBC-EE020D85D10F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Profile\Commands.Profile\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

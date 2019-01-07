@@ -57,16 +57,16 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Sql.dll', 
-               '.\Microsoft.Azure.Management.Sql.Legacy.dll'
+               '.\Microsoft.Azure.PowerShell.Cmdlets.Sql.LegacySdk.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = '.\Microsoft.Azure.Commands.Sql.Types.ps1xml'
+TypesToProcess = '.\Sql.types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.Sql.format.ps1xml'
+FormatsToProcess = '.\Sql.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Sql.dll')

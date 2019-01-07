@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         protected const string TopicInputObjectParameterSet = "TopicInputObjectParameterSet";
         protected const string TopicKeyInputObjectParameterSet = "TopicKeyInputObjectParameterSet";
-        protected const string EventSubscriptionInputObjectParameterSet = "EventSubscriptionInputObjectSet";
+
+        protected const string EventSubscriptionCustomTopicInputObjectParameterSet = "EventSubscriptionCustomTopicInputObjectParameterSet";
 
         protected const string TopicNameParameterSet = "TopicNameParameterSet";
         protected const string ResourceGroupNameParameterSet = "ResourceGroupNameParameterSet";
@@ -37,6 +38,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         protected const string EventSubscriptionTopicNameParameterSet = "EventSubscriptionTopicNameParameterSet";
         protected const string EventSubscriptionTopicTypeNameParameterSet = "EventSubscriptionTopicTypeNameParameterSet";
+        protected const string EventSubscriptionFullUrlInResponseHelp = "If specified, include the full endpoint URL of the event subscription destination in the response.";
 
         protected const string AliasResourceGroup = "ResourceGroup";
 

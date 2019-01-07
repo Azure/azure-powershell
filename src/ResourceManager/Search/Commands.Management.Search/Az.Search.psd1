@@ -65,11 +65,10 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.Search.dll'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 
-               '.\Microsoft.Azure.Commands.Management.Search.generated.format.ps1xml'
+FormatsToProcess = '.\Search.generated.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Management.Search.dll')
+NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Search.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()

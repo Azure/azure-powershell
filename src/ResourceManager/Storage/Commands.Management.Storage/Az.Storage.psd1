@@ -63,15 +63,16 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.Storage.dll',
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = '.\Microsoft.WindowsAzure.Commands.Storage.types.ps1xml'
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.Management.Storage.format.ps1xml', 
-               '.\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml', 
-               '.\Microsoft.WindowsAzure.Commands.Storage.generated.format.ps1xml'
+FormatsToProcess = '.\Storage.Management.format.ps1xml', 
+               '.\Storage.format.ps1xml', 
+               '.\Storage.generated.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Management.Storage.dll', '.\Microsoft.Azure.PowerShell.Cmdlets.Storage.dll')
+NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll', 
+    '.\Microsoft.Azure.PowerShell.Cmdlets.Storage.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()

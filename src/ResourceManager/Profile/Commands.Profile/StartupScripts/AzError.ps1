@@ -61,4 +61,4 @@ if (Get-Module AzureRM.profile -ErrorAction Ignore)
         "If you are running in Azure Automation, take care that none of your runbooks import both Az and AzureRM modules. More information can be found here: https://aka.ms/azps-migration-guide.")
 }
 
-Update-TypeData -AppendPath (Join-Path (Get-Item $PSScriptRoot).Parent.FullName Microsoft.Azure.Commands.Profile.types.ps1xml) -ErrorAction Ignore
+Update-TypeData -AppendPath (Join-Path (Get-Item $PSScriptRoot).Parent.FullName Accounts.types.ps1xml) -ErrorAction Ignore
