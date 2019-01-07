@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>Accounts</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\Az.props" />
+
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)Profile</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PreLoadAssemblies Include="$(RepoSrc)lib\Newtonsoft.Json.10.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.14.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.14.0\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
+    <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.19.2\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+    <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.19.2\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
+    <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />
+    <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.DataMovement.dll" />
+  </ItemGroup>
+
+  <Target Name="CopyFiles" AfterTargets="Build">
+    <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
+    <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)\NetCoreAssemblies" />
+    <Copy SourceFiles="@(StorageDependencies)" DestinationFolder="$(TargetDir)" />
+  </Target>
+
+  <ItemGroup>
+    <None Update="StartupScripts\AzError.ps1" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="AzureRmAlias\Mappings.json" />
+  </ItemGroup>
+
+</Project>
