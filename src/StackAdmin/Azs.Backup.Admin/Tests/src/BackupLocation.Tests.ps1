@@ -18,7 +18,7 @@
 
 .DESCRIPTION
     Run AzureStack Backup admin backup location tests using either mock client or our client.
-	The mock client allows for recording and playback.  This allows for offline tests.
+    The mock client allows for recording and playback.  This allows for offline tests.
 
 .PARAMETER RunRaw
     Run using our client creation path.
@@ -26,16 +26,16 @@
 .EXAMPLE
     PS C:\> .\src\BackupLocation.Tests.ps1
     Describing BackupLocations
-  		[+] TestListBackupLocations 630ms
-  		[+] TestGetBackupLocation 11ms
-  		[+] TestGetAllBackupLocation 630ms
-  		[+] TestUpdateBackupLocation 11ms
-		[+] TestCreateBackup
-		[+] TestRestoreBackup
+        [+] TestListBackupLocations 630ms
+        [+] TestGetBackupLocation 11ms
+        [+] TestGetAllBackupLocation 630ms
+        [+] TestUpdateBackupLocation 11ms
+        [+] TestCreateBackup
+        [+] TestRestoreBackup
 
 .NOTES
     Author: Microsoft
-	Copyright: Microsoft
+    Copyright: Microsoft
     Date:   August 24, 2017
 #>
 param(
@@ -66,13 +66,13 @@ InModuleScope Azs.Backup.Admin {
                 $BackupLocation          | Should Not Be $null
 
                 # Resource
-                $BackupLocation.Id			| Should Not Be $null
-                $BackupLocation.Name		| Should Not Be $null
-                $BackupLocation.Type		| Should Not Be $null
+                $BackupLocation.Id          | Should Not Be $null
+                $BackupLocation.Name        | Should Not Be $null
+                $BackupLocation.Type        | Should Not Be $null
                 $BackupLocation.Location    | Should Not Be $null
 
                 # Subscriber Usage Aggregate
-                $BackupLocation.Password    			| Should -BeNullOrEmpty
+                $BackupLocation.Password                 | Should -BeNullOrEmpty
                 $BackupLocation.EncryptionCertBase64     | Should -BeNullOrEmpty
             }
 
@@ -85,25 +85,25 @@ InModuleScope Azs.Backup.Admin {
                 )
                 # Resource
                 if ($null -eq $expected) {
-                    $found												    | Should Be $null
+                    $found                                                    | Should Be $null
                 }
                 else {
-                    $found												    | Should Not Be $null
+                    $found                                                    | Should Not Be $null
                     # Validate Farm properties
-                    $expected.Id							| Should Be $found.Id
-                    $expected.Type							| Should Be $found.Type
-                    $expected.Name							| Should Be $found.Name
-                    $expected.Location						| Should Be $found.Location
-                    $expected.AvailableCapacity				| Should Be $found.AvailableCapacity
-                    $expected.BackupFrequencyInHours		| Should Be $found.BackupFrequencyInHours
-                    $expected.EncryptionCertBase64			| Should Be $found.EncryptionCertBase64
-                    $expected.IsBackupSchedulerEnabled		| Should Be $found.IsBackupSchedulerEnabled
-                    $expected.LastBackupTime				| Should Be $found.LastBackupTime
-                    $expected.NextBackupTime				| Should Be $found.NextBackupTime
-                    $expected.LastBackupTime				| Should Be $found.LastBackupTime
-                    $expected.Password						| Should Be $found.Password
-                    $expected.Path							| Should Be $found.Path
-                    $expected.UserName						| Should Be $found.UserName
+                    $expected.Id                              | Should Be $found.Id
+                    $expected.Type                            | Should Be $found.Type
+                    $expected.Name                            | Should Be $found.Name
+                    $expected.Location                        | Should Be $found.Location
+                    $expected.AvailableCapacity               | Should Be $found.AvailableCapacity
+                    $expected.BackupFrequencyInHours          | Should Be $found.BackupFrequencyInHours
+                    $expected.EncryptionCertBase64            | Should Be $found.EncryptionCertBase64
+                    $expected.IsBackupSchedulerEnabled        | Should Be $found.IsBackupSchedulerEnabled
+                    $expected.LastBackupTime                  | Should Be $found.LastBackupTime
+                    $expected.NextBackupTime                  | Should Be $found.NextBackupTime
+                    $expected.LastBackupTime                  | Should Be $found.LastBackupTime
+                    $expected.Password                        | Should Be $found.Password
+                    $expected.Path                            | Should Be $found.Path
+                    $expected.UserName                        | Should Be $found.UserName
                 }
             }
         }
@@ -157,7 +157,7 @@ InModuleScope Azs.Backup.Admin {
                 $backup                             | Should Not Be $Null
                 $backup.Path                        | Should Be $global:path
                 $backup.Username                    | Should be $global:username
-                $backup.Password 			        | Should -BeNullOrEmpty
+                $backup.Password                    | Should -BeNullOrEmpty
                 $backup.EncryptionCertBase64        | Should -BeNullOrEmpty
                 $backup.IsBackupSchedulerEnabled    | Should be $global:isBackupSchedulerEnabled
                 $backup.BackupFrequencyInHours      | Should be $global:backupFrequencyInHours
@@ -176,7 +176,7 @@ InModuleScope Azs.Backup.Admin {
             $global:TestName = 'TestCreateBackup'
 
             $backup = Start-AzsBackup -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Force
-            $backup 					| Should Not Be $Null
+            $backup                     | Should Not Be $Null
 
         }
 
@@ -184,7 +184,7 @@ InModuleScope Azs.Backup.Admin {
             $global:TestName = 'TestRestoreBackup'
 
             $backup = Start-AzsBackup -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Force
-            $backup 					| Should Not Be $Null
+            $backup                     | Should Not Be $Null
 
             try
             {

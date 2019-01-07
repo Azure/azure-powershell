@@ -18,7 +18,7 @@
 
 .DESCRIPTION
     Run AzureStack Backup admin backup location tests using either mock client or our client.
-	The mock client allows for recording and playback.  This allows for offline tests.
+    The mock client allows for recording and playback.  This allows for offline tests.
 
 .PARAMETER RunRaw
     Run using our client creation path.
@@ -26,12 +26,12 @@
 .EXAMPLE
     PS C:\> .\src\Backup.Tests.ps1
     Describing Backups
-	 [+] TestListBackups 81ms
-	 [+] TestGetBackup 73ms
+     [+] TestListBackups 81ms
+     [+] TestGetBackup 73ms
 
 .NOTES
     Author: Microsoft
-	Copyright: Microsoft
+    Copyright: Microsoft
     Date:   August 24, 2017
 #>
 param(

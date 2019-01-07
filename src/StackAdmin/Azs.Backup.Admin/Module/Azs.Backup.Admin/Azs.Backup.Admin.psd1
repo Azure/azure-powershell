@@ -31,7 +31,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     RootModule           = 'Azs.Backup.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion        = '0.3.0'
+    ModuleVersion        = '1.0.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -131,10 +131,14 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2019.01.04
-            * Backup changes to cert-based encryption mode
-                * Set-AzsBackupConfiguration now accepts parameter EncryptionCertPath instead of EncryptionKey
-                * Restore-AzsBackup now requires parameter DecryptionCertPath and DecryptionCertPassword
+            ReleaseNotes = '## 2019.MM.DD
+            * Breaking change: Backup changes to cert-based encryption mode. Support for symmetric keys is deprecated.
+                * Set-AzsBackupConfiguration now accepts parameter EncryptionCertPath instead of EncryptionKey:
+                    Before: Set-AzsBackupConfiguration -EncryptionKey $symmetricKey
+                    After: Set-AzsBackupConfiguration -EncryptionCertPath $pathToEncryptionCert
+                * Restore-AzsBackup now requires parameter DecryptionCertPath and DecryptionCertPassword:
+                    Before: Restore-AzsBackup -Name $backupResourceName
+                    After: Restore-AzsBackup -Name $backupResourceName -DecryptionCertPath $decryptionCertPath -DecryptionCertPassword $decryptionCertPassword
             '
 
         } # End of PSData hashtable
