@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
+        public Management.ResourceManager.ResourceManagementClient OldResourceManagementClient { get; private set; }
+
         public LogicManagementClient LogicManagementClient { get; private set; }
 
         public static WorkflowController NewInstance => new WorkflowController();
@@ -89,6 +91,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.LogicApp.psd1"),
+                    _helper.GetRMModulePath(@"AzureRM.Resources.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try
@@ -110,7 +113,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         {
             ResourceManagementClient = GetResourceManagementClient(context);
             LogicManagementClient = GetLogicManagementClient(context);
-            _helper.SetupManagementClients(ResourceManagementClient, LogicManagementClient);
+            OldResourceManagementClient = GetOldResourceManagementClient(context);
+            _helper.SetupManagementClients(OldResourceManagementClient, ResourceManagementClient, LogicManagementClient);
+        }
+
+        private static Management.ResourceManager.ResourceManagementClient GetOldResourceManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<Management.ResourceManager.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static ResourceManagementClient GetResourceManagementClient(MockContext context)
