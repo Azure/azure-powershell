@@ -75,11 +75,10 @@ RequiredAssemblies = '.\AutoMapper.dll',
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 
-               '.\Microsoft.Azure.Commands.RecoveryServices.Backup.format.ps1xml'
+FormatsToProcess = '.\RecoveryServices.Backup.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.ARM.dll',
+NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll',
     '.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll',
     '.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll')
 

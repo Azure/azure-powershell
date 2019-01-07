@@ -13,12 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.EventGrid;
 using Microsoft.Azure.Management.EventGrid.Models;
+using Microsoft.Azure.Commands.EventGrid.Utilities;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -72,7 +74,11 @@ namespace Microsoft.Azure.Commands.EventGrid
             return this.Client.Topics.ListBySubscription();
         }
 
-        public Topic CreateTopic(string resourceGroupName, string topicName, string location, Dictionary<string, string> tags)
+        public Topic CreateTopic(
+            string resourceGroupName,
+            string topicName,
+            string location,
+            Dictionary<string, string> tags)
         {
             Topic topic = new Topic();
             topic.Location = location;
@@ -129,31 +135,42 @@ namespace Microsoft.Azure.Commands.EventGrid
             string subjectEndsWith,
             bool isSubjectCaseSensitive,
             string[] includedEventTypes,
-            string[] labels)
+            string[] labels,
+            RetryPolicy retryPolicy,
+            string deadLetterEndpoint)
         {
             EventSubscription eventSubscription = new EventSubscription();
             EventSubscriptionDestination destination = null;
-            const string WebHookEventSubscriptionDestination = "webhook";
-            const string EventHubEventSubscriptionDestination = "eventhub";
 
             if (string.IsNullOrEmpty(endpointType) ||
-                string.Equals(endpointType, WebHookEventSubscriptionDestination, StringComparison.OrdinalIgnoreCase))
+                string.Equals(endpointType, EventGridConstants.Webhook, StringComparison.OrdinalIgnoreCase))
             {
                 destination = new WebHookEventSubscriptionDestination()
                 {
                     EndpointUrl = endpoint
                 };
             }
-            else if (string.Equals(endpointType, EventHubEventSubscriptionDestination, StringComparison.OrdinalIgnoreCase))
+            else if (string.Equals(endpointType, EventGridConstants.EventHub, StringComparison.OrdinalIgnoreCase))
             {
                 destination = new EventHubEventSubscriptionDestination()
                 {
                     ResourceId = endpoint
                 };
             }
+            else if (string.Equals(endpointType, EventGridConstants.StorageQueue, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = this.GetStorageQueueEventSubscriptionDestinationFromEndpoint(endpoint);
+            }
+            else if (string.Equals(endpointType, EventGridConstants.HybridConnection, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = new HybridConnectionEventSubscriptionDestination()
+                {
+                    ResourceId = endpoint
+                };
+            }
             else
             {
-                throw new ArgumentNullException(nameof(endpointType), "EndpointType should be WebHook or EventHub");
+                throw new ArgumentNullException(nameof(endpointType), "Invalid EndpointType. Allowed values are WebHook, EventHub, StorageQueue or HybridConnection");
             }
 
             if (includedEventTypes == null)
@@ -161,6 +178,8 @@ namespace Microsoft.Azure.Commands.EventGrid
                 includedEventTypes = new string[1];
                 includedEventTypes[0] = "All";
             }
+
+            eventSubscription.Destination = destination;
 
             var filter = new EventSubscriptionFilter()
             {
@@ -170,12 +189,21 @@ namespace Microsoft.Azure.Commands.EventGrid
                 IncludedEventTypes = new List<string>(includedEventTypes)
             };
 
-            eventSubscription.Destination = destination;
             eventSubscription.Filter = filter;
 
             if (labels != null)
             {
                 eventSubscription.Labels = new List<string>(labels);
+            }
+
+            if (retryPolicy != null)
+            {
+                eventSubscription.RetryPolicy = retryPolicy;
+            }
+
+            if (!string.IsNullOrEmpty(deadLetterEndpoint))
+            {
+                eventSubscription.DeadLetterDestination = this.GetStorageBlobDeadLetterDestinationFromEndPoint(deadLetterEndpoint);
             }
 
             return this.Client.EventSubscriptions.CreateOrUpdate(scope, eventSubscriptionName, eventSubscription);
@@ -190,34 +218,45 @@ namespace Microsoft.Azure.Commands.EventGrid
             string subjectEndsWith,
             bool? isSubjectCaseSensitive,
             string[] includedEventTypes,
-            string[] labels)
+            string[] labels,
+            RetryPolicy retryPolicy,
+            string deadLetterEndpoint)
         {
             EventSubscriptionUpdateParameters eventSubscriptionUpdateParameters = new EventSubscriptionUpdateParameters();
-            const string WebHookEventSubscriptionDestination = "webhook";
-            const string EventHubEventSubscriptionDestination = "eventhub";
 
             if (!string.IsNullOrEmpty(endpoint))
             {
                 // An endpoint was specified, so it needs to be included as part of the update parameters
                 // Defaulting to webhook if endpoint type was not specified
                 if (string.IsNullOrEmpty(endpointType) ||
-                    string.Equals(endpointType, WebHookEventSubscriptionDestination, StringComparison.OrdinalIgnoreCase))
+                    string.Equals(endpointType, EventGridConstants.Webhook, StringComparison.OrdinalIgnoreCase))
                 {
                     eventSubscriptionUpdateParameters.Destination = new WebHookEventSubscriptionDestination()
                     {
                         EndpointUrl = endpoint
                     };
                 }
-                else if (string.Equals(endpointType, EventHubEventSubscriptionDestination, StringComparison.OrdinalIgnoreCase))
+                else if (string.Equals(endpointType, EventGridConstants.EventHub, StringComparison.OrdinalIgnoreCase))
                 {
                     eventSubscriptionUpdateParameters.Destination = new EventHubEventSubscriptionDestination()
                     {
                         ResourceId = endpoint
                     };
                 }
+                else if (string.Equals(endpointType, EventGridConstants.StorageQueue, StringComparison.OrdinalIgnoreCase))
+                {
+                    eventSubscriptionUpdateParameters.Destination = this.GetStorageQueueEventSubscriptionDestinationFromEndpoint(endpoint);
+                }
+                else if (string.Equals(endpointType, EventGridConstants.HybridConnection, StringComparison.OrdinalIgnoreCase))
+                {
+                    eventSubscriptionUpdateParameters.Destination = new HybridConnectionEventSubscriptionDestination()
+                    {
+                        ResourceId = endpoint
+                    };
+                }
                 else
                 {
-                    throw new ArgumentNullException(nameof(endpointType), "EndpointType should be WebHook or EventHub");
+                    throw new ArgumentNullException(nameof(endpointType), "EndpointType should be WebHook, EventHub, storage queue, or hybrid connection");
                 }
             }
 
@@ -238,6 +277,16 @@ namespace Microsoft.Azure.Commands.EventGrid
             if (labels != null)
             {
                 eventSubscriptionUpdateParameters.Labels = new List<string>(labels);
+            }
+
+            if (retryPolicy != null)
+            {
+                eventSubscriptionUpdateParameters.RetryPolicy = retryPolicy;
+            }
+
+            if (!string.IsNullOrEmpty(deadLetterEndpoint))
+            {
+                eventSubscriptionUpdateParameters.DeadLetterDestination = this.GetStorageBlobDeadLetterDestinationFromEndPoint(deadLetterEndpoint);
             }
 
             return this.Client.EventSubscriptions.Update(scope, eventSubscriptionName, eventSubscriptionUpdateParameters);
@@ -347,6 +396,59 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 throw new Exception("SubscriptionID from resource is different than the default subscription set in the context. Please retry after setting this subscription ID as the default subscription.");
             }
+        }
+
+        StorageQueueEventSubscriptionDestination GetStorageQueueEventSubscriptionDestinationFromEndpoint(string endpoint)
+        {
+            int strIndex = endpoint.IndexOf("/queueServices/default/queues/", StringComparison.OrdinalIgnoreCase);
+            string[] tokens = endpoint.Split('/');
+
+            if (!this.IsValidStorageAccountResourceId(strIndex, tokens))
+            {
+                throw new Exception(
+                    $"The provided endpoint value {endpoint} is invalid.The expected format is /subscriptions/[AzureSubscriptionID]/resourceGroups/" +
+                    "[ResourceGroupName]/providers/Microsoft.Storage/storageAccounts/[StorageAccountName]/queueServices/default/queues/[QueueName].");
+            }
+
+            return new StorageQueueEventSubscriptionDestination()
+            {
+                ResourceId = endpoint.Substring(0, strIndex),
+                QueueName = tokens[tokens.Length - 1]
+            };
+        }
+
+        StorageBlobDeadLetterDestination GetStorageBlobDeadLetterDestinationFromEndPoint(string endpoint)
+        {
+            int strIndex = endpoint.IndexOf("/blobServices/default/containers/", StringComparison.OrdinalIgnoreCase);
+            string[] tokens = endpoint.Split('/');
+
+            if (!this.IsValidStorageAccountResourceId(strIndex, tokens))
+            {
+                throw new Exception(
+                    $"The provided endpoint value {endpoint} is invalid.The expected format is /subscriptions/[AzureSubscriptionID]/resourceGroups/" +
+                    "[ResourceGroupName]/providers/Microsoft.Storage/storageAccounts/[StorageAccountName]/blobServices/default/containers/[ContainerName].");
+            }
+
+            return new StorageBlobDeadLetterDestination
+            {
+                ResourceId = endpoint.Substring(0, strIndex),
+                BlobContainerName = tokens[tokens.Length - 1]
+            };
+        }
+
+        bool IsValidStorageAccountResourceId(int strIndex, string[] tokens)
+        {
+            Guid parsedGuid = Guid.Empty;
+
+            // Basic validation of the endpoint.
+            return (strIndex > 0 &&
+                tokens.Length == 13 &&
+                string.Equals(tokens[1], "subscriptions", StringComparison.OrdinalIgnoreCase) &&
+                Guid.TryParse(tokens[2], out parsedGuid) &&
+                string.Equals(tokens[3], "resourceGroups", StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(tokens[5], "providers", StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(tokens[6], "Microsoft.Storage", StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(tokens[7], "storageAccounts", StringComparison.OrdinalIgnoreCase));
         }
     }
 }

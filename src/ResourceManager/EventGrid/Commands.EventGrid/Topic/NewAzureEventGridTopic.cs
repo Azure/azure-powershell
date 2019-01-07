@@ -22,7 +22,13 @@ using Microsoft.Azure.Management.EventGrid.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridTopic",SupportsShouldProcess = true,DefaultParameterSetName = TopicNameParameterSet),OutputType(typeof(PSTopic))]
+    [Cmdlet(
+        "New",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridTopic",
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = TopicNameParameterSet),
+    OutputType(typeof(PSTopic))]
+
     public class NewAzureEventGridTopic : AzureEventGridCmdletBase
     {
         [Parameter(
