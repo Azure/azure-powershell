@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 7BFCD982-EC80-418B-BB52-C9941D028F76
@@ -13,8 +13,15 @@ Gets a logic app from a resource group.
 
 ## SYNTAX
 
+### ListWorkflows (Default)
 ```
-Get-AzLogicApp -ResourceGroupName <String> -Name <String> [-Version <String>]
+Get-AzLogicApp [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### GetByVersion
+```
+Get-AzLogicApp -ResourceGroupName <String> -Name <String> -Version <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -76,7 +83,19 @@ Specifies the name of the logic app that this cmdlet gets.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ListWorkflows
+Aliases: ResourceName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: GetByVersion
 Aliases: ResourceName
 
 Required: True
@@ -91,7 +110,19 @@ Specifies the name for a resource group in which this cmdlet gets a logic app.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ListWorkflows
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: GetByVersion
 Aliases:
 
 Required: True
@@ -106,10 +137,10 @@ Specifies the version of a logic app.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetByVersion
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

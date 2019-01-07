@@ -18,7 +18,8 @@ Test New-AzureRmIntegrationAccountCertificate command
 #>
 function Test-CreateIntegrationAccountCertificate
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname		
 	$integrationAccountCertificateName = getAssetname	
 
@@ -26,7 +27,7 @@ function Test-CreateIntegrationAccountCertificate
 
 	$certFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountCertificate.cer"
 
-	$integrationAccountCertificate =  New-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyName "PRIVATEKEY" -KeyVersion "38e880c2b0444699b9bb044481574453" -KeyVaultId "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourcegroups/IntegrationAccountPsCmdletTest/providers/microsoft.keyvault/vaults/IntegrationAccountVault1" -PublicCertificateFilePath $certFilePath
+	$integrationAccountCertificate =  New-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyName "PRIVATEKEY" -KeyVersion "b8f8974776c7430b9f9f33ddc031b7e4" -KeyVaultId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maddie1/providers/Microsoft.KeyVault/vaults/mvault4" -PublicCertificateFilePath $certFilePath
 	Assert-AreEqual $integrationAccountCertificateName $integrationAccountCertificate.Name
 
 	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
@@ -38,13 +39,14 @@ Test New-AzureRmIntegrationAccountCertificate command
 #>
 function Test-CreateIntegrationAccountCertificatePrivateKey
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 	$integrationAccountCertificateName = getAssetname
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
-	$integrationAccountCertificate =  New-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyName "PRIVATEKEY" -KeyVersion "38e880c2b0444699b9bb044481574453" -KeyVaultId "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourcegroups/IntegrationAccountPsCmdletTest/providers/microsoft.keyvault/vaults/IntegrationAccountVault1"
+	$integrationAccountCertificate =  New-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyName "PRIVATEKEY" -KeyVersion "b8f8974776c7430b9f9f33ddc031b7e4" -KeyVaultId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maddie1/providers/Microsoft.KeyVault/vaults/mvault4"
 	Assert-AreEqual $integrationAccountCertificateName $integrationAccountCertificate.Name
 
 	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
@@ -56,7 +58,8 @@ Test New-AzureRmIntegrationAccountCertificate command
 #>
 function Test-CreateIntegrationAccountCertificatePublicKey
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 	$integrationAccountCertificateName = getAssetname
 
@@ -76,7 +79,8 @@ Test Set-AzureRmIntegrationAccountCertificate command
 #>
 function Test-UpdateIntegrationAccountCertificate
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname	
 	
 	$integrationAccountCertificateName = getAssetname	
@@ -85,20 +89,20 @@ function Test-UpdateIntegrationAccountCertificate
 
 	$certFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountCertificate.cer"
 
-	$integrationAccountCertificate =  New-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyName "PRIVATEKEY" -KeyVersion "38e880c2b0444699b9bb044481574453" -KeyVaultId "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourcegroups/IntegrationAccountPsCmdletTest/providers/microsoft.keyvault/vaults/IntegrationAccountVault1" -PublicCertificateFilePath $certFilePath
+	$integrationAccountCertificate =  New-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyName "PRIVATEKEY" -KeyVersion "b8f8974776c7430b9f9f33ddc031b7e4" -KeyVaultId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maddie1/providers/Microsoft.KeyVault/vaults/mvault4" -PublicCertificateFilePath $certFilePath
 	Assert-AreEqual $integrationAccountCertificateName $integrationAccountCertificate.Name
 
 	$integrationAccountCertificateUpdated = Set-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyName "PRIVATEKEY" -Force
 	Assert-AreEqual $integrationAccountCertificateName $integrationAccountCertificateUpdated.Name
 	Assert-AreEqual "PRIVATEKEY" $integrationAccountCertificateUpdated.Key.KeyName
 
-	$integrationAccountCertificateUpdated = Set-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyVersion "38e880c2b0444699b9bb044481574453" -Force
+	$integrationAccountCertificateUpdated = Set-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyVersion "b8f8974776c7430b9f9f33ddc031b7e4" -Force
 	Assert-AreEqual $integrationAccountCertificateName $integrationAccountCertificateUpdated.Name
-	Assert-AreEqual "38e880c2b0444699b9bb044481574453" $integrationAccountCertificateUpdated.Key.KeyVersion
+	Assert-AreEqual "b8f8974776c7430b9f9f33ddc031b7e4" $integrationAccountCertificateUpdated.Key.KeyVersion
 
-	$integrationAccountCertificateUpdated = Set-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyVaultId "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourcegroups/IntegrationAccountPsCmdletTest/providers/microsoft.keyvault/vaults/IntegrationAccountVault1" -Force
+	$integrationAccountCertificateUpdated = Set-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyVaultId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maddie1/providers/Microsoft.KeyVault/vaults/mvault4" -Force
 	Assert-AreEqual $integrationAccountCertificateName $integrationAccountCertificateUpdated.Name
-	Assert-AreEqual "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourcegroups/IntegrationAccountPsCmdletTest/providers/microsoft.keyvault/vaults/IntegrationAccountVault1" $integrationAccountCertificateUpdated.Key.KeyVault.Id
+	Assert-AreEqual "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maddie1/providers/Microsoft.KeyVault/vaults/mvault4" $integrationAccountCertificateUpdated.Key.KeyVault.Id
 	
 	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
@@ -109,7 +113,8 @@ Test Get-AzureRmIntegrationAccountCertificate command
 #>
 function Test-GetIntegrationAccountCertificate
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname	
 	
 	$integrationAccountCertificateName = getAssetname	
@@ -118,7 +123,7 @@ function Test-GetIntegrationAccountCertificate
 
 	$certFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountCertificate.cer"
 
-	New-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyName "PRIVATEKEY" -KeyVersion "38e880c2b0444699b9bb044481574453" -KeyVaultId "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourcegroups/IntegrationAccountPsCmdletTest/providers/microsoft.keyvault/vaults/IntegrationAccountVault1" -PublicCertificateFilePath $certFilePath
+	New-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyName "PRIVATEKEY" -KeyVersion "b8f8974776c7430b9f9f33ddc031b7e4" -KeyVaultId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maddie1/providers/Microsoft.KeyVault/vaults/mvault4" -PublicCertificateFilePath $certFilePath
 
 	$result =  Get-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName
 	Assert-AreEqual $integrationAccountCertificateName $result.Name
@@ -135,7 +140,8 @@ Test Remove-AzureRmIntegrationAccountCertificate command
 #>
 function Test-RemoveIntegrationAccountCertificate
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname	
 	
 	$integrationAccountCertificateName = getAssetname	
@@ -144,7 +150,7 @@ function Test-RemoveIntegrationAccountCertificate
 
 	$certFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountCertificate.cer"
 
-	New-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyName "PRIVATEKEY" -KeyVersion "38e880c2b0444699b9bb044481574453" -KeyVaultId "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourcegroups/IntegrationAccountPsCmdletTest/providers/microsoft.keyvault/vaults/IntegrationAccountVault1" -PublicCertificateFilePath $certFilePath
+	New-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyName "PRIVATEKEY" -KeyVersion "b8f8974776c7430b9f9f33ddc031b7e4" -KeyVaultId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maddie1/providers/Microsoft.KeyVault/vaults/mvault4" -PublicCertificateFilePath $certFilePath
 
 	Remove-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -CertificateName $integrationAccountCertificateName -Force	
 
