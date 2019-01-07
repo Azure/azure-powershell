@@ -6,25 +6,51 @@
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"name\": \"someName\",\r\n  \"properties\": {\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"someThing\": \"someOtherThing\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "143"
-        ],
         "User-Agent": [
-          "AzurePowershell/v6.6.0",
-          "PSVersion/v5.1.17134.228"
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
         ],
         "CommandName": [
-          "New-AzureRmPolicySetDefinition"
+          "New-AzPolicySetDefinition"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "143"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidRequestContent\",\r\n    \"message\": \"The request content was invalid and could not be deserialized: 'Could not find member 'someThing' on object of type 'PolicyDefinitionReference'. Path 'properties.policyDefinitions[0].someThing', line 6, position 20.'.\"\r\n  }\r\n}",
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus2:b7b75f6e-0605-40d2-89e6-fca8564e1877"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1187"
+        ],
+        "x-ms-correlation-request-id": [
+          "99ae0a00-a3b5-4a66-b64e-0e73cb4f57a3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181220T213918Z:99ae0a00-a3b5-4a66-b64e-0e73cb4f57a3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 20 Dec 2018 21:39:18 GMT"
+        ],
         "Content-Length": [
           "272"
         ],
@@ -34,37 +60,11 @@
         "Expires": [
           "-1"
         ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "westus2:f1b2b494-afdc-4f88-8986-64c2fb8aca79"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
-        ],
-        "x-ms-correlation-request-id": [
-          "129bc68f-318b-4037-b7a9-2c74d97e37d0"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180831T183213Z:129bc68f-318b-4037-b7a9-2c74d97e37d0"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 31 Aug 2018 18:32:13 GMT"
-        ],
         "Retry-After": [
           "0"
         ]
       },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidRequestContent\",\r\n    \"message\": \"The request content was invalid and could not be deserialized: 'Could not find member 'someThing' on object of type 'PolicyDefinitionReference'. Path 'properties.policyDefinitions[0].someThing', line 6, position 20.'.\"\r\n  }\r\n}",
       "StatusCode": 400
     },
     {
@@ -73,25 +73,51 @@
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"name\": \"someName\",\r\n  \"properties\": {\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"someThing\": \"someOtherThing\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "143"
-        ],
         "User-Agent": [
-          "AzurePowershell/v6.6.0",
-          "PSVersion/v5.1.17134.228"
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
         ],
         "ParameterSetName": [
           "SubscriptionIdParameterSet"
         ],
         "CommandName": [
-          "New-AzureRmPolicySetDefinition"
+          "New-AzPolicySetDefinition"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "143"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidRequestContent\",\r\n    \"message\": \"The request content was invalid and could not be deserialized: 'Could not find member 'someThing' on object of type 'PolicyDefinitionReference'. Path 'properties.policyDefinitions[0].someThing', line 6, position 20.'.\"\r\n  }\r\n}",
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus2:3065172b-5a83-4a01-bcf9-6ff149251cdd"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "7aa56c2a-e7af-4566-a795-a0085a9e3b5a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181220T213918Z:7aa56c2a-e7af-4566-a795-a0085a9e3b5a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 20 Dec 2018 21:39:18 GMT"
+        ],
         "Content-Length": [
           "272"
         ],
@@ -101,37 +127,11 @@
         "Expires": [
           "-1"
         ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "westus2:8e768b5f-59e4-42e3-b428-f0857fecbe2d"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
-        ],
-        "x-ms-correlation-request-id": [
-          "393a2bed-eea5-4dcc-a3a0-9779548b8fa1"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180831T183215Z:393a2bed-eea5-4dcc-a3a0-9779548b8fa1"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 31 Aug 2018 18:32:15 GMT"
-        ],
         "Retry-After": [
           "0"
         ]
       },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidRequestContent\",\r\n    \"message\": \"The request content was invalid and could not be deserialized: 'Could not find member 'someThing' on object of type 'PolicyDefinitionReference'. Path 'properties.policyDefinitions[0].someThing', line 6, position 20.'.\"\r\n  }\r\n}",
       "StatusCode": 400
     },
     {
@@ -140,33 +140,26 @@
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"name\": \"someName\",\r\n  \"properties\": {\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"someThing\": \"someOtherThing\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "143"
-        ],
         "User-Agent": [
-          "AzurePowershell/v6.6.0",
-          "PSVersion/v5.1.17134.228"
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
         ],
         "ParameterSetName": [
           "ManagementGroupNameParameterSet"
         ],
         "CommandName": [
-          "New-AzureRmPolicySetDefinition"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AuthorizationFailed\",\r\n    \"message\": \"The client '5d7fb743-b335-4f27-ba6e-f8bc2444f333' with object id '5d7fb743-b335-4f27-ba6e-f8bc2444f333' does not have authorization to perform action 'Microsoft.Authorization/policysetdefinitions/write' over scope '/providers/Microsoft.Management/managementgroups/someManagementGroup/providers/Microsoft.Authorization/policysetdefinitions/someName'.\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "402"
+          "New-AzPolicySetDefinition"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
-        "Expires": [
-          "-1"
+        "Content-Length": [
+          "143"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
@@ -175,13 +168,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "26307e52-69ed-480d-bf84-b3bf76679d90"
+          "440ecea9-55b0-425e-8b69-a9cd59359cfe"
         ],
         "x-ms-correlation-request-id": [
-          "26307e52-69ed-480d-bf84-b3bf76679d90"
+          "440ecea9-55b0-425e-8b69-a9cd59359cfe"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180831T183214Z:26307e52-69ed-480d-bf84-b3bf76679d90"
+          "WESTUS2:20181220T213918Z:440ecea9-55b0-425e-8b69-a9cd59359cfe"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -189,26 +182,31 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "Date": [
+          "Thu, 20 Dec 2018 21:39:17 GMT"
+        ],
         "Connection": [
           "close"
         ],
-        "Cache-Control": [
-          "no-cache"
+        "Content-Type": [
+          "application/json; charset=utf-8"
         ],
-        "Date": [
-          "Fri, 31 Aug 2018 18:32:14 GMT"
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "402"
         ],
         "Retry-After": [
           "0"
         ]
       },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AuthorizationFailed\",\r\n    \"message\": \"The client '5d7fb743-b335-4f27-ba6e-f8bc2444f333' with object id '5d7fb743-b335-4f27-ba6e-f8bc2444f333' does not have authorization to perform action 'Microsoft.Authorization/policysetdefinitions/write' over scope '/providers/Microsoft.Management/managementgroups/someManagementGroup/providers/Microsoft.Authorization/policysetdefinitions/someName'.\"\r\n  }\r\n}",
       "StatusCode": 403
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "d0610b27-9663-4c05-89f8-5b4be01e86a5",
-    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "Domain": ""
+    "SubscriptionId": "d0610b27-9663-4c05-89f8-5b4be01e86a5"
   }
 }

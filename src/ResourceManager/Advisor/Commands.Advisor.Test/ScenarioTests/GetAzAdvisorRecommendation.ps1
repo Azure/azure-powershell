@@ -30,7 +30,7 @@ function Get-AzAdvisorRecommendationNoParameter
 	{
 		Assert-IsInstance $queryResult[$i] $cmdletReturnType
 		Assert-PropertiesCount $queryResult[$i] $propertiesCount
-		Assert-IsInstance $queryResult[$i].id String
+		Assert-IsInstance $queryResult[$i].ResourceId String
 		Assert-IsInstance $queryResult[$i].Name String
 		Assert-PropertiesCount $queryResult[$i].ShortDescription $shortDescriptionPropertiesCount
 	}
@@ -54,7 +54,7 @@ function Get-AzAdvisorRecommendationByIdParameterSet
 	for ($i = 0; $i -lt $queryResult.Count; $i++){
 		Assert-IsInstance $queryResult[$i] $cmdletReturnType
 		Assert-PropertiesCount $queryResult[$i] $propertiesCount
-		Assert-AreEqual $queryResult[$i].Id $RecommendationId
+		Assert-AreEqual $queryResult[$i].ResourceId $RecommendationId
 		Assert-AreEqual $queryResult[$i].Name $RecommendationName
 		Assert-PropertiesCount $queryResult[$i].ShortDescription $shortDescriptionPropertiesCount
 	}	
@@ -102,7 +102,7 @@ function Get-AzAdvisorRecommendationByNameParameterSet
 	for ($i = 0; $i -lt $queryResult.Count; $i++){
 		Assert-IsInstance $queryResult[$i] $cmdletReturnType
 		Assert-PropertiesCount $queryResult[$i] 14
-		Assert-IsInstance $queryResult[$i].id String
+		Assert-IsInstance $queryResult[$i].ResourceId String
 		Assert-IsInstance $queryResult[$i].Name String
 		Assert-PropertiesCount $queryResult[$i].ShortDescription 2 
 	}

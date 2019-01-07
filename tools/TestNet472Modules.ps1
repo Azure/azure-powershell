@@ -29,7 +29,7 @@ $rmItems | %{`
   Write-Host "Testing $_.FullName"
   Start-Process -FilePath $TestExecPath `
     -Wait `
-    -WorkingDirectory $PSScriptRoot\..\src\Package `
+    -WorkingDirectory $PSScriptRoot\..\artifacts `
     -NoNewWindow `
     -ArgumentList $_.FullName, $testConfig, '-trait "AcceptanceType=CheckIn"', '-notrait "Runtype=DesktopOnly"'`
 }
@@ -38,7 +38,7 @@ $storageItems | %{`
   Write-Host "Testing $_.FullName"
   Start-Process -FilePath $TestExecPath `
     -Wait `
-    -WorkingDirectory $PSScriptRoot\..\src\Package `
+    -WorkingDirectory $PSScriptRoot\..\artifacts `
     -NoNewWindow `
     -ArgumentList $_.FullName, $testStorageConfig, '-trait "AcceptanceType=CheckIn"'`
 }

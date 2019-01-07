@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.SignalR.Netcore", "Commands.SignalR\Commands.SignalR.Netcore.csproj", "{7AA1B2C0-72CB-448A-9C12-C45BDF3E088D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR", "Commands.SignalR\SignalR.csproj", "{7AA1B2C0-72CB-448A-9C12-C45BDF3E088D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{90CF259C-905B-4B30-AD38-78510A32EC26}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.SignalR.Test.Netcore", "Commands.SignalR.Test\Commands.SignalR.Test.Netcore.csproj", "{3BFE35EB-75A6-4370-8E49-4D8C9A359884}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR.Test", "Commands.SignalR.Test\SignalR.Test.csproj", "{3BFE35EB-75A6-4370-8E49-4D8C9A359884}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Profile\Commands.Profile\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
