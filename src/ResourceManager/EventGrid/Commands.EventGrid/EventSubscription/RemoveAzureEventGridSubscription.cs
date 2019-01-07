@@ -19,10 +19,17 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSubscription",DefaultParameterSetName = ResourceGroupNameParameterSet,SupportsShouldProcess = true),OutputType(typeof(bool))]
+    [Cmdlet(
+        "Remove",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSubscription",
+        DefaultParameterSetName = ResourceGroupNameParameterSet,
+        SupportsShouldProcess = true),
+    OutputType(typeof(bool))]
+
     public class RemoveAzureRmEventGridSubscription : AzureEventGridCmdletBase
     {
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Identifier of the resource whose event subscription needs to be removed.",
@@ -30,61 +37,70 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = EventGridConstants.TopicInputObject,
-            ParameterSetName = EventSubscriptionInputObjectParameterSet)]
+            HelpMessage = EventGridConstants.TopicInputObjectHelp,
+            ParameterSetName = EventSubscriptionCustomTopicInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSTopic InputObject { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = EventGridConstants.EventSubscriptionName,
+            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = TopicNameParameterSet)]
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = EventGridConstants.EventSubscriptionName,
+            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = EventGridConstants.EventSubscriptionName,
+            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = false,
             Position = 1,
-            HelpMessage = EventGridConstants.EventSubscriptionName,
-            ParameterSetName = EventSubscriptionInputObjectParameterSet)]
+            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
+            ParameterSetName = EventSubscriptionCustomTopicInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public string EventSubscriptionName { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = EventGridConstants.ResourceGroupName,
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = TopicNameParameterSet)]
-        [Parameter(Mandatory = false,
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = EventGridConstants.ResourceGroupName,
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = EventGridConstants.TopicName,
+            HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = TopicNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string TopicName { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(
+            Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
@@ -105,6 +121,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 {
                     // ResourceID not specified, build the scope for the event subscription for either the 
                     // subscription, or resource group, or custom topic depending on which of the parameters are provided.
+
                     scope = EventGridUtils.GetScope(this.DefaultContext.Subscription.Id, this.ResourceGroupName, this.TopicName);
                 }
 
