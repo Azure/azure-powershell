@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ActiveDirectory;
 using System;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         public string ObjectType { get; set; }
 
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         public override string ToString()
         {

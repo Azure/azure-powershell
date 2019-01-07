@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ParameterSetName = ParameterSet.SignInName,
             HelpMessage = "If specified, returns deny assignments directly assigned to the principal as well as assignments to the principal's groups (transitive). Supported only for User Principals.")]
         public SwitchParameter ExpandPrincipalGroups { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             var options = new FilterDenyAssignmentsOptions()
