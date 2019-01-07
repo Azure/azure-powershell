@@ -21,7 +21,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Internal.Subscriptions;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
@@ -39,18 +43,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
         private const string SubscriptionIdKey = "SubscriptionId";
 
         private readonly EnvironmentSetupHelper _helper;
-
-        public ResourceManagementClient ResourceManagementClient { get; private set; }
-
-        public GraphRbacManagementClient GraphRbacManagementClient { get; private set; }
-
-        public StorageSyncManagementClient StorageSyncClient { get; private set; }
-
-        //public Internal.Subscriptions.SubscriptionClient SubscriptionClient { get; private set; }
-
-        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
-
-        public string UserDomain { get; private set; }
 
         public static TestController NewInstance => new TestController();
 
@@ -130,96 +122,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient(context);
-            //InternalResourceManagementClient = GetInternalResourceManagementClient(context);
-            //SubscriptionClient = GetSubscriptionClient(context);
-            AuthorizationManagementClient = GetAuthorizationManagementClient(context);
-            //StorageClient = GetStorageManagementClient(context);
-            StorageSyncClient = GetStorageSyncManagementClient(context);
-            GraphRbacManagementClient = GetGraphRbacManagementClient(context);
+            var rmClient = context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            var subClient = context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
+            var storageSyncClient = context.GetServiceClient<StorageSyncManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            var rbacClient = context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            var authClient = context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
 
-            _helper.SetupManagementClients(
-                ResourceManagementClient,
-                //InternalResourceManagementClient,
-                //SubscriptionClient,
-                AuthorizationManagementClient,
-                //StorageClient,
-                StorageSyncClient,
-                GraphRbacManagementClient
-                );
-        }
-
-        private AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<AuthorizationManagementClient>();
-        }
-        private StorageManagementClient GetStorageManagementClient(MockContext context) => context.GetServiceClient<StorageManagementClient>();
-
-        private StorageSyncManagementClient GetStorageSyncManagementClient(MockContext context) => context.GetServiceClient<StorageSyncManagementClient>();
-
-        private Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient GetInternalResourceManagementClient(MockContext context) => context.GetServiceClient<Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient>();
-
-
-        private GraphRbacManagementClient GetGraphRbacManagementClient(MockContext context)
-        {
-            var environment = TestEnvironmentFactory.GetTestEnvironment();
-            string tenantId = null;
-
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                tenantId = environment.Tenant;
-                UserDomain = String.IsNullOrEmpty(environment.UserName) ? String.Empty : environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
-
-                HttpMockServer.Variables[TenantIdKey] = tenantId;
-                HttpMockServer.Variables[DomainKey] = UserDomain;
-            }
-            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
-                {
-                    tenantId = HttpMockServer.Variables[TenantIdKey];
-                }
-                if (HttpMockServer.Variables.ContainsKey(DomainKey))
-                {
-                    UserDomain = HttpMockServer.Variables[DomainKey];
-                }
-                if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
-                {
-                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.Id = HttpMockServer.Variables[SubscriptionIdKey];
-                }
-            }
-
-            var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
-            client.TenantID = tenantId;
-            if (AzureRmProfileProvider.Instance != null &&
-                AzureRmProfileProvider.Instance.Profile != null &&
-                AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
-                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant != null)
-            {
-                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = client.TenantID;
-            }
-
-            #region Test Code starts
-
-            try
-            {
-
-                var value = client.ServicePrincipals.List();
-                value.Count();
-            }
-
-            catch (Exception e)
-            {
-                Console.Write(e);
-            }
-
-            #endregion Test Code ends
-
-            return client;
-        }
-        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            _helper.SetupManagementClients(rmClient, subClient, storageSyncClient, rbacClient, authClient);
         }
     }
 }
