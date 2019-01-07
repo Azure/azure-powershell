@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Bug Fix for TokenCache initialization when importing a context
 
 ## Version 5.8.1
 * Update common code to use latest version of ClientRuntime
