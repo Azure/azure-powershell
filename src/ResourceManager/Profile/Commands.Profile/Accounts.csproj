@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PreLoadAssemblies Include="$(RepoSrc)lib\Newtonsoft.Json.10.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Buffers.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.ServiceModel.Primitives.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Private.ServiceModel.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Net.Http.WinHttpHandler.dll" />
