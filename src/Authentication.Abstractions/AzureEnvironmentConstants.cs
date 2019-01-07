@@ -158,5 +158,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public const string ChinaAnalysisServicesEndpointSuffix = "asazure.chinacloudapi.cn";
         public const string USGovernmentAnalysisServicesEndpointSuffix = "asazure.usgovcloudapi.net";
         public const string GermanAnalysisServicesEndpointSuffix = "asazure.cloudapi.de";
+
+        /// <summary>
+        /// The token audience for authorizing Analysis Service requests
+        /// </summary>
+        public const string AnalysisServicesEndpointResourceId = "https://*.asazure.windows.net";
+
     }
 }
