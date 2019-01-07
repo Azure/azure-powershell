@@ -274,7 +274,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     case AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix:
                         environment.SetProperty(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix, propertyValue);
                         break;
-
+                    case AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId:
+                        environment.SetProperty(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId);
+                        break;
                 }
             }
         }
