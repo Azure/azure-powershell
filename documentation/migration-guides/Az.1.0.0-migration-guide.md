@@ -145,7 +145,7 @@ The tooling for these services are no longer actively supported.  Customers are 
 - Using Az with Windows PowerShell 5.1 requires the installation of .NET Framework 4.7.2. However, using Az with PowerShell Core does not require .NET Framework 4.7.2. 
 
 ### Temporary removal of User login using PSCredential
-- Due to changes in the authentication flow for .NET Standard, we are temporarily removing user login via PSCredential. This capability will be re-introduced in the 1/15/2019 release for Windows PowerShell 5.1. This is duscussed in detail in [this issue.](https://github.com/Azure/azure-powershell/issues/7430)
+- Due to changes in the authentication flow for .NET Standard, we are temporarily removing user login via PSCredential. This capability will be re-introduced in the 1/15/2019 release for Windows PowerShell 5.1. This is discussed in detail in [this issue.](https://github.com/Azure/azure-powershell/issues/7430)
 
 ### Default Device Code login instead of Web Browser prompt
 - Due to changes in the authentication flow for .NET Standard, we are using device login as the default login flow during interactive login. Web browser based login will be re-introduced for Windows PowerShell 5.1 as the default in the 1/15/2019 release. At that time, users will be able to choose device login using a switch parameter.
