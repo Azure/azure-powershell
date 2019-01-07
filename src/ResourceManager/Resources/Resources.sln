@@ -2,19 +2,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "Commands.Resources\Resources.csproj", "{E1F5201D-6067-430E-B303-4E367652991B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "Resources\Resources.csproj", "{E1F5201D-6067-430E-B303-4E367652991B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources.Test", "Commands.Resources.Test\Resources.Test.csproj", "{4C2FE49A-09E1-4979-AD46-CD64FD04C8F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources.Test", "Resources.Test\Resources.Test.csproj", "{4C2FE49A-09E1-4979-AD46-CD64FD04C8F7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManager", "Commands.ResourceManager\Cmdlets\ResourceManager.csproj", "{8058D403-06E3-4BED-8924-D166CE303961}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManager", "ResourceManager\ResourceManager.csproj", "{8058D403-06E3-4BED-8924-D166CE303961}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitor", "..\Insights\Commands.Insights\Monitor.csproj", "{DEA446A1-84E2-46CC-B780-EB4AFDE2460E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitor", "..\Monitor\Monitor\Monitor.csproj", "{DEA446A1-84E2-46CC-B780-EB4AFDE2460E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Profile\Commands.Profile\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tags", "Commands.Tags\Tags.csproj", "{6BD4D521-DAFB-472B-A803-81F053AB1396}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tags", "Tags\Tags.csproj", "{6BD4D521-DAFB-472B-A803-81F053AB1396}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
