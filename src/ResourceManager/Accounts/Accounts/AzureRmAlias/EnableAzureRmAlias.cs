@@ -65,7 +65,6 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
 
         public void EnableLocalAliases(string[] modulesToEnable, Dictionary<string, object> mapping)
         {
-            var powershell = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
             foreach (var module in modulesToEnable)
             {
                 if (ShouldProcess(module, Resources.AddAlias))
@@ -77,9 +76,9 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                         foreach (var name in modulemapping.Keys)
                         {
                             // For every alias, add a pairing in the Alias provider
-                            if (Scope != null && Scope.Equals("Process"))
+                            if (Scope != null && string.Equals(Scope, "Process", StringComparison.OrdinalIgnoreCase))
                             {
-                                powershell.AddScript("Set-Alias -Scope Global -Name " + modulemapping[name] + " -Value " + name);
+                                this.InvokeCommand.InvokeScript("Set-Alias -Scope Global -Name " + modulemapping[name] + " -Value " + name);
                             }
                             else
                             {
@@ -97,10 +96,6 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                         WriteWarning("Module '" + module + "' is not a valid Az module.");
                     }
                 }
-            }
-            if (Scope != null && Scope.Equals("Process"))
-            {
-                powershell.Invoke();
             }
         }
     }
