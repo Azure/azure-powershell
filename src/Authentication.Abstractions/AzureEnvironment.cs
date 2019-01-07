@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             azureCloud.SetProperty(ExtendedEndpoint.OperationalInsightsEndpoint, AzureEnvironmentConstants.AzureOperationalInsightsEndpoint);
             azureCloud.SetProperty(ExtendedEndpoint.OperationalInsightsEndpointResourceId, AzureEnvironmentConstants.AzureOperationalInsightsEndpointResourceId);
             azureCloud.SetProperty(ExtendedEndpoint.AnalysisServicesEndpointSuffix, AzureEnvironmentConstants.AzureAnalysisServicesEndpointSuffix);
+            azureCloud.SetProperty(ExtendedEndpoint.AnalysisServicesEndpointResourceId, AzureEnvironmentConstants.AnalysisServicesEndpointResourceId);
             var azureChina = new AzureEnvironment
             {
                 Name = EnvironmentName.AzureChinaCloud,
