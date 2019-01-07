@@ -2,13 +2,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ContainerRegistry.Netcore", "Commands.ContainerRegistry\Commands.ContainerRegistry.Netcore.csproj", "{FE330703-623A-4C08-9DA7-1C63B4058034}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContainerRegistry", "Commands.ContainerRegistry\ContainerRegistry.csproj", "{FE330703-623A-4C08-9DA7-1C63B4058034}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ContainerRegistry.Test.Netcore", "Commands.ContainerRegistry.Test\Commands.ContainerRegistry.Test.Netcore.csproj", "{094709D1-0301-44F4-8BB2-203162006A3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContainerRegistry.Test", "Commands.ContainerRegistry.Test\ContainerRegistry.Test.csproj", "{094709D1-0301-44F4-8BB2-203162006A3D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Profile\Commands.Profile\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

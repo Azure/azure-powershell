@@ -28,7 +28,7 @@ function Enable-AzAdvisorRecommendationByNameParameterSet
 	for ($i = 0; $i -lt $queryResult.Count; $i++)
 	{
 		Assert-PropertiesCount $queryResult[$i] 14	
-		Assert-IsInstance $queryResult[$i].id String
+		Assert-IsInstance $queryResult[$i].ResourceId String
 		Assert-IsInstance $queryResult[$i].Name String
 		Assert-PropertiesCount $queryResult[$i].ShortDescription 2
 	}
@@ -51,7 +51,7 @@ function Enable-AzAdvisorRecommendationByIdParameterSet
 	for ($i = 0; $i -lt $queryResult.Count; $i++)
     {
 		Assert-PropertiesCount $queryResult[$i] 14	
-		Assert-IsInstance $queryResult[$i].id String
+		Assert-IsInstance $queryResult[$i].ResourceId String
 		Assert-IsInstance $queryResult[$i].Name String
 		Assert-PropertiesCount $queryResult[$i].ShortDescription 2
 	}
@@ -74,7 +74,7 @@ function Enable-AzAdvisorRecommendationPipeline
 	for ($i = 0; $i -lt $queryResult.Count; $i++)
     {
 		Assert-PropertiesCount $queryResult[$i] 14	
-		Assert-IsInstance $queryResult[$i].id String
+		Assert-IsInstance $queryResult[$i].ResourceId String
 		Assert-IsInstance $queryResult[$i].Name String
 		Assert-PropertiesCount $queryResult[$i].ShortDescription 2
 	}

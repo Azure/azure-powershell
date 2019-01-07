@@ -17,29 +17,37 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using Management.Logic.Models;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using ResourceManager.Common.ArgumentCompleters;
+    using System;
+    using System.Linq;
     using System.Management.Automation;
 
     /// <summary>
     /// Creates a new LogicApp workflow 
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogicApp"), OutputType(typeof(Workflow), typeof(WorkflowVersion))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogicApp", DefaultParameterSetName = DefaultParameterSet)]
+    [OutputType(typeof(Workflow), typeof(WorkflowVersion))]
     public class GetAzureLogicAppCommand : LogicAppBaseCmdlet
     {
+        public const string VersionParameterSet = "GetByVersion";
+        public const string DefaultParameterSet = "ListWorkflows";
 
-        #region Input Paramters
+        #region Input Parameters
 
+        [Parameter(Mandatory = false, HelpMessage = "The targeted resource group for the workflow.",
+            ValueFromPipelineByPropertyName = true, ParameterSetName = DefaultParameterSet)]
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true, ParameterSetName = VersionParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.")]
+        [Parameter(Mandatory = false, HelpMessage = "The name of the workflow.", ParameterSetName = DefaultParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.", ParameterSetName = VersionParameterSet)]
         [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The version of the workflow.")]
+        [Parameter(Mandatory = true, HelpMessage = "The version of the workflow.", ParameterSetName = VersionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
 
@@ -51,13 +59,29 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (string.IsNullOrWhiteSpace(this.Version))
+            if (!string.IsNullOrWhiteSpace(Version))
             {
-                this.WriteObject(LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name), true);
+                this.WriteObject(LogicAppClient.GetWorkflowVersion(this.ResourceGroupName, this.Name, this.Version), true);
+            }
+            else if (string.IsNullOrEmpty(ResourceGroupName))
+            {
+                var allWorkflows = LogicAppClient.ListWorkFlowBySubscription();
+                if (string.IsNullOrEmpty(Name))
+                {
+                    this.WriteObject(allWorkflows.ToArray(), true);
+                }
+                else
+                {
+                    this.WriteObject(allWorkflows.Where(a => a.Name.Equals(Name, StringComparison.CurrentCultureIgnoreCase)).ToArray(), true);
+                }
+            }
+            else if (string.IsNullOrEmpty(Name))
+            {
+                this.WriteObject(LogicAppClient.ListWorkFlowByResourceGroupName(ResourceGroupName).ToArray());
             }
             else
             {
-                this.WriteObject(LogicAppClient.GetWorkflowVersion(this.ResourceGroupName, this.Name, this.Version), true);
+                this.WriteObject(LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name), true);
             }
         }
     }

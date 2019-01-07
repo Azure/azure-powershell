@@ -23,16 +23,15 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using NewResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using StorageManagementClient = Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.IO;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
 using Microsoft.Azure.ServiceManagement.Common.Models;
-using Action = System.Action;
 using Sku = Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku;
+using SkuName = Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName;
+using StorageAccountCreateParameters = Microsoft.Azure.Management.Storage.Version2017_10_01.Models.StorageAccountCreateParameters;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 {
@@ -105,18 +104,23 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
                 // register the namespace.
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
-                _helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + callingClassName + ".ps1",
-                _helper.RMProfileModule, _helper.GetRMModulePath(@"AzureRM.DataLakeAnalytics.psd1"), _helper.GetRMModulePath(@"AzureRM.DataLakeStore.psd1"), "AzureRM.Resources.ps1");
+                _helper.SetupModules(
+                    AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    _helper.RMProfileModule,
+                    _helper.GetRMModulePath(@"AzureRM.DataLakeAnalytics.psd1"),
+                    _helper.GetRMModulePath(@"AzureRM.DataLakeStore.psd1"),
+                    "AzureRM.Resources.ps1");
 
                 if (createWasbAccount)
                 {
                     ResourceGroupName = TestUtilities.GenerateName("abarg1");
                     TryCreateResourceGroup(ResourceGroupName, ResourceGroupLocation);
                     AzureBlobStoreName = TestUtilities.GenerateName("azureblob01");
-                    string storageSuffix;
                     AzureBlobStoreAccessKey = TryCreateStorageAccount(ResourceGroupName,
                         AzureBlobStoreName,
-                        "DataLakeAnalyticsTestStorage", "DataLakeAnalyticsTestStorageDescription", ResourceGroupLocation, out storageSuffix);
+                        "DataLakeAnalyticsTestStorage", "DataLakeAnalyticsTestStorageDescription", ResourceGroupLocation, out _);
                 }
 
                 try

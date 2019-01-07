@@ -2,13 +2,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Websites.Netcore", "Commands.Websites\Commands.Websites.Netcore.csproj", "{80A92297-7C92-456B-8EE7-9FB6CE30149D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Websites", "Commands.Websites\Websites.csproj", "{80A92297-7C92-456B-8EE7-9FB6CE30149D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Websites.Test.Netcore", "Commands.Websites.Test\Commands.Websites.Test.Netcore.csproj", "{13E031E4-8A43-4B87-9D72-D70180C31C11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Websites.Test", "Commands.Websites.Test\Websites.Test.csproj", "{13E031E4-8A43-4B87-9D72-D70180C31C11}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Profile\Commands.Profile\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

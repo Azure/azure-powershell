@@ -65,7 +65,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.ResourceGraph.dll'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.ResourceGraph.format.ps1xml'
+FormatsToProcess = '.\ResourceGraph.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.dll')
