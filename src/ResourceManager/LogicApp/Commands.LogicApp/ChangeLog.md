@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Get-AzureRmLogicApp lists all without specified Name
+* Get-AzLogicApp lists all without specified Name
 
 ## Version 1.0.0
 * General availability of `Az.LogicApp` module
