@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
            ParameterSetName = IdParameterSet,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
+           HelpMessage = "The ID of the virtual machine.")]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.Compute/virtualMachines")]
         public string Id { get; set; }

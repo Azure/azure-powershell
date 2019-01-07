@@ -13,6 +13,9 @@
 # ----------------------------------------------------------------------------------
 
 $PLACEHOLDER = "PLACEHOLDER1@"
+$TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
+$TemplatesPath = Join-Path $TestOutputRoot "Templates";
+$ConfigFilesPath = Join-Path $TestOutputRoot "ConfigFiles";
 
 <#
 .SYNOPSIS
@@ -29,7 +32,7 @@ function Get-ComputeTestResourceName
             $testName = $frame.Command;
         }
     }
-    
+
     try
     {
         $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "crptestps");
@@ -48,7 +51,6 @@ function Get-ComputeTestResourceName
 
     return $assetName
 }
-
 
 <#
 .SYNOPSIS
@@ -559,14 +561,14 @@ function Get-MarketplaceImage
 
 function Get-FirstMarketPlaceImage
 {
-	$img = Get-AzureRmVMImagePublisher -Location westus | where { $_.PublisherName -eq "1e" } | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage | Get-AzureRmVMImage | where {$_.PurchasePlan -ne $null }
-	
-	if ($img -eq $null)
-	{
-		$img = Get-MarketplaceImage[0]
-	}
+    $img = Get-AzureRmVMImagePublisher -Location westus | where { $_.PublisherName -eq "1e" } | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage | Get-AzureRmVMImage | where {$_.PurchasePlan -ne $null }
+    
+    if ($img -eq $null)
+    {
+        $img = Get-MarketplaceImage[0]
+    }
 
-	return $img
+    return $img
 }
 
 <#
@@ -606,11 +608,21 @@ function Assert-OutputContains
     }
 
     $index = 1;
-    foreach ($str in $sstr)
+
+    try
     {
-        $st = Write-Verbose ('Search String ' + $index++ + " : `'" + $str + "`'");
-        Assert-True { $output.Contains($str) }
-        $st = Write-Verbose "Found.";
+        foreach ($str in $sstr)
+        {
+            $st = Write-Verbose ('Search String ' + $index++ + " : `'" + $str + "`'");
+            Assert-True { $output.Contains($str) }
+            $st = Write-Verbose "Found.";
+        }
+    }
+    catch
+    {
+        Write-Verbose ("output: " + $output);
+        Write-Verbose ("str: " + $str);
+        throw;
     }
 }
 
@@ -709,11 +721,11 @@ function Get-SubscriptionIdFromResourceGroup
 
     $rgid = $rg.ResourceId;
 
-	if ([string]::IsNullOrEmpty($rgid)) {
-	    #Get the subscription from the current context
-	    $context = get-azurermcontext
-		return $context.Subscription.SubscriptionId
-	}
+    if ([string]::IsNullOrEmpty($rgid)) {
+        #Get the subscription from the current context
+        $context = get-azurermcontext
+        return $context.Subscription.SubscriptionId
+    }
 
     # ResouceId is a form of "/subscriptions/<subId>/resourceGroups/<resourgGroupName>"
     # So return the second part to get subscription Id

@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                 {
                     // Add modules currently in the profile to the list of modules to enable.
                     var regex = new Regex(@"Az\.[a-zA-Z0-9\.]+(,\s|\s-)");
-                    Match match = regex.Match(splitOriginalText[1].Split(new string[] { "Import-Module Az.Profile" }, StringSplitOptions.None)[1]);
+                    Match match = regex.Match(splitOriginalText[1].Split(new string[] { "Import-Module Az.Accounts" }, StringSplitOptions.None)[1]);
                     while (match.Success)
                     {
                         if (add)
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
         {
             if (modulesToKeep.Count > 0)
             {
-                filecontent += STARTALIASIMPORTMARKER + Environment.NewLine + "Import-Module Az.Profile -ErrorAction SilentlyContinue -ErrorVariable importError" + 
+                filecontent += STARTALIASIMPORTMARKER + Environment.NewLine + "Import-Module Az.Accounts -ErrorAction SilentlyContinue -ErrorVariable importError" + 
                     Environment.NewLine + "if ($importerror.Count -eq 0) { " + Environment.NewLine;
 
                 var validModules = new List<string>();

@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Models
 {
+    using System.Collections.Generic;
     using Microsoft.Azure.Management.Advisor.Models;
 
     /// <summary>
@@ -60,6 +61,23 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Models
                 Properties = PsAzureAdvisorConfigurationProperties.GetFromConfigurationProperties(configData.Properties),
                 Type = configData.Type,
             };
+        }
+
+        /// <summary>
+        /// Parse a list of configData to a list of equivalent PSObject.
+        /// </summary>
+        /// <param name="configDataList">List of ConfigData to be converted.</param>
+        /// <returns>List of PsAzureAdvisorConfigurationData generated.</returns>
+        internal static List<PsAzureAdvisorConfigurationData> GetFromConfigurationData(IEnumerable<ConfigData> configDataList)
+        {
+            List<PsAzureAdvisorConfigurationData> returnList = new List<PsAzureAdvisorConfigurationData>();
+
+            foreach (ConfigData configDataEntry in configDataList)
+            {
+                returnList.Add(GetFromConfigurationData(configDataEntry));
+            }
+
+            return returnList;
         }
     }
 }
