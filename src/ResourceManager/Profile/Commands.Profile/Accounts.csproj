@@ -13,7 +13,9 @@
   <ItemGroup>
     <PreLoadAssemblies Include="$(RepoSrc)lib\Newtonsoft.Json.10.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Buffers.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Reflection.DispatchProxy.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.ServiceModel.Primitives.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Permissions.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Private.ServiceModel.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Net.Http.WinHttpHandler.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.14.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
