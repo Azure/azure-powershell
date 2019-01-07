@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
-        [CmdletParameterBreakingChange("Name", ChangeDescription = "Name will be removed from the Id parameter sets in an upcoming breaking change release.")]
+        [CmdletParameterBreakingChange("Name", ChangeDescription = "Name will be removed from the Id parameter set in an upcoming breaking change release.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
