@@ -67,9 +67,9 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.Billing.dll',
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.Billing.Format.ps1xml', 
-               '.\Microsoft.Azure.Commands.Consumption.Format.ps1xml', 
-               '.\Microsoft.Azure.Commands.UsageAggregates.Format.ps1xml'
+FormatsToProcess = '.\Billing.format.ps1xml', 
+               '.\Consumption.format.ps1xml', 
+               '.\UsageAggregates.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Billing.dll',
