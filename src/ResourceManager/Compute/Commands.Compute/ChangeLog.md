@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the description of ID in help files
 
 ## Version 1.0.0
 * General availability of `Az.Compute` module
