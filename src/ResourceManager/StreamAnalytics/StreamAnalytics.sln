@@ -2,13 +2,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StreamAnalytics", "StreamAnalytics\StreamAnalytics.csproj", "{F49A314A-A235-47D3-A654-1EC19ACA366C}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.StreamAnalytics", "Commands.StreamAnalytics\Commands.StreamAnalytics.csproj", "{F49A314A-A235-47D3-A654-1EC19ACA366C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StreamAnalytics.Test", "StreamAnalytics.Test\StreamAnalytics.Test.csproj", "{7E6683BE-ECFF-4709-89EB-1325E9E70512}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.StreamAnalytics.Test", "Commands.StreamAnalytics.Test\Commands.StreamAnalytics.Test.csproj", "{7E6683BE-ECFF-4709-89EB-1325E9E70512}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

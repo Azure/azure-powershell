@@ -2,13 +2,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficManager", "TrafficManager\TrafficManager.csproj", "{270CBB5F-BB8A-4E33-B35B-95698E607D97}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.TrafficManager", "Commands.TrafficManager2\Commands.TrafficManager.csproj", "{270CBB5F-BB8A-4E33-B35B-95698E607D97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficManager.Test", "TrafficManager.Test\TrafficManager.Test.csproj", "{5764A3A4-586C-4536-8481-13007CAC111B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.TrafficManager.Test", "Commands.TrafficManager2.Test\Commands.TrafficManager.Test.csproj", "{5764A3A4-586C-4536-8481-13007CAC111B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
