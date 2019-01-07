@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.PolicyInsights.Netcore", "Commands.PolicyInsights\Commands.PolicyInsights.Netcore.csproj", "{D28548D3-2673-4508-A28B-A69E0470FAF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolicyInsights", "PolicyInsights\PolicyInsights.csproj", "{D28548D3-2673-4508-A28B-A69E0470FAF7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7558612C-29CF-4C4A-8BAE-114FC14B682D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.PolicyInsights.Test.Netcore", "Commands.PolicyInsights.Test\Commands.PolicyInsights.Test.Netcore.csproj", "{FA1B708E-8875-4E75-AF94-4CCCCAC6FF0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolicyInsights.Test", "PolicyInsights.Test\PolicyInsights.Test.csproj", "{FA1B708E-8875-4E75-AF94-4CCCCAC6FF0F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

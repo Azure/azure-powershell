@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Advisor.Netcore", "Commands.Advisor\Commands.Advisor.Netcore.csproj", "{860B550A-20CE-4FB1-BAE7-EF10E9221BCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advisor", "Advisor\Advisor.csproj", "{860B550A-20CE-4FB1-BAE7-EF10E9221BCE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3CBF88D6-8961-439C-9936-33F5732B73E2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Advisor.Test.Netcore", "Commands.Advisor.Test\Commands.Advisor.Test.Netcore.csproj", "{55B4F1B2-AD1A-461F-927D-6CFEBF06EFF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advisor.Test", "Advisor.Test\Advisor.Test.csproj", "{55B4F1B2-AD1A-461F-927D-6CFEBF06EFF2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

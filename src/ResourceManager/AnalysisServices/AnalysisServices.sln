@@ -2,15 +2,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.AnalysisServices.Netcore", "Commands.AnalysisServices\Commands.AnalysisServices.Netcore.csproj", "{14FAC1BF-F007-4F56-80FA-75F2F303374B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnalysisServices", "AnalysisServices\AnalysisServices.csproj", "{14FAC1BF-F007-4F56-80FA-75F2F303374B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.AnalysisServices.Test.Netcore", "Commands.AnalysisServices.Test\Commands.AnalysisServices.Test.Netcore.csproj", "{9056F1E3-0B1D-46CA-A435-F1E9AAE6DCC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnalysisServices.Test", "AnalysisServices.Test\AnalysisServices.Test.csproj", "{9056F1E3-0B1D-46CA-A435-F1E9AAE6DCC0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.AnalysisServices.Dataplane.Netcore", "Commands.AnalysisServices.Dataplane\Commands.AnalysisServices.Dataplane.Netcore.csproj", "{4944B213-4F12-4815-B416-3FF1853ADCC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnalysisServices.Dataplane", "AnalysisServices.Dataplane\AnalysisServices.Dataplane.csproj", "{4944B213-4F12-4815-B416-3FF1853ADCC1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
