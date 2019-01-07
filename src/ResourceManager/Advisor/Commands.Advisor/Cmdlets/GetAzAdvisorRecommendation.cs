@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Advisor.Cmdlets.Models;
     using Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities;
+    using Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities.Client;
     using Microsoft.Azure.Commands.Advisor.Utilities;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Advisor.Models;
@@ -62,20 +63,12 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the Refresh.
-        /// </summary>
-        [Parameter(ParameterSetName = "IdParameterSet", Mandatory = false, HelpMessage = "Regenerates the recommendations.")]
-        [Parameter(ParameterSetName = "NameParameterSet", Mandatory = false, HelpMessage = "Regenerates the recommendations.")]
-        public SwitchParameter Refresh { get; set; }
-
-        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            RecommendationResource recommendationResourceUtil = new RecommendationResource();
             List<PsAzureAdvisorResourceRecommendationBase> results = new List<PsAzureAdvisorResourceRecommendationBase>();
-
-            AzureOperationResponse<IPage<ResourceRecommendationBase>> operationResponseRecommendation = null;
             List<ResourceRecommendationBase> entirePageLinkRecommendationData = new List<ResourceRecommendationBase>();
             AzureOperationResponse<ResourceRecommendationBase> recommendation = null;
 
@@ -89,47 +82,19 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                     break;
 
                 case NameParameterSet:
-                    string nextPagelink = string.Empty;
-                    
-                    // Iterate the page-link if exists, if the first iteration retreives the data.
-                    do
-                    {
-                        if (string.IsNullOrEmpty(nextPagelink))
-                        {
-                            operationResponseRecommendation = this.ResourceAdvisorClient.Recommendations.ListWithHttpMessagesAsync().Result;
-                        }
-                        else
-                        {
-                            operationResponseRecommendation = this.ResourceAdvisorClient.Recommendations.ListWithHttpMessagesAsync(nextPagelink).Result;
-                        }
-                        // Advisor .net SDK is broken for the paging capability. So we will not use the paging until SDK is fixed.
-                        // nextPagelink = operationResponseRecommendation.Body.NextPageLink;
-
-                        // Add current page items to the List 
-                        entirePageLinkRecommendationData.AddRange(operationResponseRecommendation.Body.ToList());
-                    }
-                    while (!string.IsNullOrEmpty(nextPagelink));
-
-                    // Convert to PsAzureAdvisorResourceRecommendationBase list
-                    results = PsAzureAdvisorResourceRecommendationBase.GetFromResourceRecommendationBase(entirePageLinkRecommendationData);
+                    results = recommendationResourceUtil.GetAllRecommendationsFromClient(this.ResourceAdvisorClient);
 
                     // Filter out the resourcegroupname recommendations
                     if (!string.IsNullOrEmpty(this.ResourceGroupName))
                     {
-                        results = RecommendationHelper.RecommendationFilterByCategoryAndResource(results, string.Empty, this.ResourceGroupName);                    
+                        results = RecommendationHelper.RecommendationFilterByCategoryAndResource(results, string.Empty, this.ResourceGroupName);
                     }
-
                     break;
             }
 
             if (!string.IsNullOrEmpty(this.Category))
             {
                 results = RecommendationHelper.RecommendationFilterByCategoryAndResource(results, this.Category, string.Empty);
-            }
-
-            if (Refresh)
-            {
-                this.ResourceAdvisorClient.Recommendations.GenerateWithHttpMessagesAsync();
             }
 
             this.WriteObject(results, true);
