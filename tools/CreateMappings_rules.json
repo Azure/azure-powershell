@@ -109,7 +109,7 @@
     { "regex": "Consumption", "group": "Billing", "alias": "Billing" },
     { "regex": "Billing", "group": "Billing", "alias": "Billing" },
 
-    { "regex": "Insights", "alias": "Monitor" },
+    { "regex": "Monitor", "alias": "Monitor" },
 
     { "regex": "Media", "alias": "Media Services" },
 
@@ -121,7 +121,7 @@
 
     { "regex": "Tags", "alias": "Tags" },
 
-    { "regex": "Profile", "alias": "Profile" },
+    { "regex": "Accounts", "alias": "Accounts" },
 
     { "regex": "Reservations", "alias": "Reservations" },
 
@@ -131,7 +131,7 @@
     { "regex": "AD", "group": "Resources", "alias": "Active Directory" },
     { "regex": "Resources", "group": "Resources", "alias": "Resources" },
 
-    { "regex":  "Maps", "alias":  "Maps"  },
+    { "regex": "Maps", "alias":  "Maps"  },
     { "regex": "Aks", "group": "Aks", "alias": "Aks" },
 
     { "regex": "ManagedServiceIdentity", "group": "Managed Service Identity", "alias": "Managed Service Identity" },
