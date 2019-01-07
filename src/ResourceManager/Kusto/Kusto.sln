@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Kusto.Netcore", "Commands.Kusto\Commands.Kusto.Netcore.csproj", "{D2A8F744-8DCB-4A13-BA80-EB181FF365AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kusto", "Kusto\Kusto.csproj", "{D2A8F744-8DCB-4A13-BA80-EB181FF365AD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Kusto.Test.Netcore", "Commands.Kusto.Test\Commands.Kusto.Test.Netcore.csproj", "{05E8F0BD-C388-4FD7-B3E9-B06049FE8131}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kusto.Test", "Kusto.Test\Kusto.Test.csproj", "{05E8F0BD-C388-4FD7-B3E9-B06049FE8131}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E5776483-88B8-4577-B498-4D8C87784E7D}"
 EndProject

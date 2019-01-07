@@ -2,17 +2,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ApiManagement.Netcore", "Commands.ApiManagement\Commands.ApiManagement.Netcore.csproj", "{DC0A9742-DF36-48C9-BD2F-68D01AED6257}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiManagement", "ApiManagement\Apicsproj", "{DC0A9742-DF36-48C9-BD2F-68D01AED6257}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ApiManagement.Test.Netcore", "Commands.ApiManagement.Test\Commands.ApiManagement.Test.Netcore.csproj", "{BEC9ECE9-A3D6-4B24-A682-1FA890647D9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiTest", "ApiTest\ApiTest.csproj", "{BEC9ECE9-A3D6-4B24-A682-1FA890647D9D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ApiManagement.ServiceManagement.Netcore", "Commands.ApiManagement.ServiceManagement\Commands.ApiManagement.ServiceManagement.Netcore.csproj", "{ED8BA708-AF42-4C08-9F4E-DAA1037797D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiServiceManagement", "ApiServiceManagement\ApiServicecsproj", "{ED8BA708-AF42-4C08-9F4E-DAA1037797D5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ApiManagement.ServiceManagement.Test.Netcore", "Commands.SMAPI.Test\Commands.ApiManagement.ServiceManagement.Test.Netcore.csproj", "{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiServiceTest", "ApiServiceTest\ApiServiceTest.csproj", "{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
