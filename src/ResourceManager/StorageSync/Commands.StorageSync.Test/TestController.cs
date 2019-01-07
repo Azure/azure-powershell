@@ -123,6 +123,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
             var rbacClient = context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
             var authClient = context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
 
+            rbacClient.ServicePrincipals.List();
+
             _helper.SetupManagementClients(rmClient, subClient, storageSyncClient, rbacClient, authClient);
         }
     }
