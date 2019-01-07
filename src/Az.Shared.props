@@ -1,0 +1,16 @@
+<Project>
+
+  <!-- Custom -->
+  <PropertyGroup>
+    <AzAssemblyPrefix>Microsoft.Azure.PowerShell.Cmdlets.</AzAssemblyPrefix>
+    <LegacyAssemblyPrefix>Microsoft.Azure.Commands.</LegacyAssemblyPrefix>
+  </PropertyGroup>
+
+  <!-- Build -->
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+  </PropertyGroup>
+
+</Project>

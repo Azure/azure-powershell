@@ -19,7 +19,10 @@
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="xunit" Version="2.4.0" />
-    <PackageReference Include="Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager" Version="1.1.8-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager" Version="1.1.12-preview" >
+      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Azure.PowerShell.TestFx" Version="1.1.12-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
@@ -28,13 +31,11 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
     <PackageReference Include="xunit.runner.console" Version="2.4.0" />
     <PackageReference Include="System.Reflection.TypeExtensions" Version="4.0.0" />
-    <PackageReference Include="Microsoft.Azure.PowerShell.TestPrerequisites" Version="*" IncludeAssets="All" PrivateAssets="none"/>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Management.Automation">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(windir)\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
     </Reference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Storage.TestPrerequisites" Version="*" IncludeAssets="All" PrivateAssets="none" Condition="'$(UseStorageDataPlane)' == 'true'"/>
     <PackageReference Include="Newtonsoft.Json" version="10.0.3" />
   </ItemGroup>
   
@@ -51,13 +52,13 @@
  </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="8.1.0-preview" />
+    <PackageReference Condition="'$(IncludeManagementStorage)' != 'false'" Include="Microsoft.Azure.Management.Storage" Version="8.1.1-preview" />
     <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="3.19.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
   </ItemGroup>
 
   <PropertyGroup>
-    <ScenarioTestToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.scenariotest.resourcemanager\1.1.8-preview\tools\</ScenarioTestToolsPath>
+    <ScenarioTestToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.scenariotest.resourcemanager\1.1.12-preview\tools\</ScenarioTestToolsPath>
   </PropertyGroup>
 
   <ItemGroup>

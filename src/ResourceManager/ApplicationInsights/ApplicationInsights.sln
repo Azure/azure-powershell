@@ -2,13 +2,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationInsights", "ApplicationInsights\ApplicationInsights.csproj", "{87A51B59-9020-4874-A39B-838C78468E08}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{13BB1C60-A70E-4780-ABEF-D5EE36754085}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ApplicationInsights", "Commands.ApplicationInsights\Commands.ApplicationInsights.csproj", "{87A51B59-9020-4874-A39B-838C78468E08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationInsights.Test", "ApplicationInsights.Test\ApplicationInsights.Test.csproj", "{D77378FE-D936-4DD8-A82A-3C89A3994A9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ApplicationInsights.Test", "Commands.ApplicationInsights.Test\Commands.ApplicationInsights.Test.csproj", "{D77378FE-D936-4DD8-A82A-3C89A3994A9D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

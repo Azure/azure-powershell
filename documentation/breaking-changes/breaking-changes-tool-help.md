@@ -59,8 +59,8 @@ To add an alias to the original cmdlet name, use the `Alias` attribute for the c
 If you need to, you can add multiple aliases for cmdlets that need to be renamed twice.
 
 ```cs
-[Cmdlet(VerbsCommunications.Connect, "AzureRmAccount")]
-[Alias("Login-AzureRmAccount", "Login-AzAccount", "Add-AzureRmAccount")]
+[Cmdlet(VerbsCommunications.Connect, "AzAccount")]
+[Alias("Login-AzAccount", "Add-AzAccount")]
 public class ConnectAzureRmAccount : Cmdlet
 {
     protected override void BeginProcessing()
@@ -385,7 +385,7 @@ _Add the parameter '`<parameter>`' back to the cmdlet '`<cmdlet>`', or add an al
 To add an alias to the original parameter name, use the `Alias` attribute for the parameter.
 
 ```cs
-[Cmdlet(VerbsCommunications.Connect, "AzureRmAccount")]
+[Cmdlet(VerbsCommunications.Connect, "AzAccount")]
 public class ConnectAzureRmAccount : Cmdlet
 {
     [Alias("Domain")]
