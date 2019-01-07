@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Management.Search.Netcore", "Commands.Management.Search\Commands.Management.Search.Netcore.csproj", "{F5758273-CD1F-446F-9E9D-3340ECB7DDA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Management.Search", "Commands.Management.Search\Management.Search.csproj", "{F5758273-CD1F-446F-9E9D-3340ECB7DDA0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0818D31D-3370-44ED-9FBB-DCA2FCB10295}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Management.Search.Test.Netcore", "Commands.Management.Search.Test\Commands.Management.Search.Test.Netcore.csproj", "{6F17C402-50FD-4F4A-BE50-BD684243D370}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Management.Search.Test", "Commands.Management.Search.Test\Management.Search.Test.csproj", "{6F17C402-50FD-4F4A-BE50-BD684243D370}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Profile\Commands.Profile\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
