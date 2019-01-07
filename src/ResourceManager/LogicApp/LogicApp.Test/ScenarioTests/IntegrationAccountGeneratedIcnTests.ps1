@@ -63,9 +63,10 @@ function Test-GetIntegrationAccountGeneratedControlNumber-NoAgreementType()
 	# This error string is less than ideal due to AutoRest bug https://github.com/Azure/autorest/issues/2022
 	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName "Random83da135" -Name "DoesNotMatter" -AgreementName "DoesNotMatter" } "Operation returned an invalid status code 'NotFound'"
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
-	$integrationAccountAgreementName = getAssetname + "X12"
+	$integrationAccountAgreementName = getAssetname "X12"
 
 	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name "Random83da135" -AgreementName "DoesNotMatter" } "Operation returned an invalid status code 'NotFound'"
 
@@ -131,9 +132,10 @@ function Test-GetIntegrationAccountGeneratedControlNumberInternal([String] $agre
 	# This error string is less than ideal due to AutoRest bug https://github.com/Azure/autorest/issues/2022
 	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -AgreementType $agreementType -ResourceGroupName "Random83da135" -Name "DoesNotMatter" -AgreementName "DoesNotMatter" } "Operation returned an invalid status code 'NotFound'"
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
-	$integrationAccountAgreementName = getAssetname + $agreementType
+	$integrationAccountAgreementName = getAssetname $agreementType
 
 	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -AgreementType $agreementType -ResourceGroupName $resourceGroup.ResourceGroupName -Name "Random83da135" -AgreementName "DoesNotMatter" } "Operation returned an invalid status code 'NotFound'"
 
@@ -196,10 +198,11 @@ function Test-UpdateIntegrationAccountGenCNInternal([String] $agreementType)
 	$agreementFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccount${agreementType}AgreementContent.json"
 	$agreementContent = [IO.File]::ReadAllText($agreementFilePath)
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 	
-	$integrationAccountAgreementName = getAssetname + $agreementType
+	$integrationAccountAgreementName = getAssetname $agreementType
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
@@ -259,7 +262,8 @@ function Test-ListIntegrationAccountGenCNInternal([String] $agreementType)
 	$agreementAS2Content = [IO.File]::ReadAllText($agreementAS2FilePath)
 	$integrationAccountAS2AgreementName = getAssetname
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
@@ -279,14 +283,14 @@ function Test-ListIntegrationAccountGenCNInternal([String] $agreementType)
 	while($val -ne 2)
 	{
 		$val++ ;
-		$integrationAccountAgreementName = getAssetname + $agreementType
+		$integrationAccountAgreementName = getAssetname $agreementType
 		New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType $agreementType -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementContent
 
 		InitializeGeneratedControlNumberSession -agreementType $agreementType -resourceGroup $resourceGroup -integrationAccountName $integrationAccountName -integrationAccountAgreementName $integrationAccountAgreementName -oldformat $false
 	}
 
 	# Add one more X12/Edifact agreement with no generated ICN for which the ICN listing should catch and handle not found exception.
-	$integrationAccountAgreementName = getAssetname + $agreementType
+	$integrationAccountAgreementName = getAssetname $agreementType
 	New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType $agreementType -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementContent
 
 	$result =  Get-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName

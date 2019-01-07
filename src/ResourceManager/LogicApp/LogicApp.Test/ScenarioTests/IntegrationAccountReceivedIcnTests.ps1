@@ -64,9 +64,10 @@ function Test-GetIntegrationAccountReceivedIcn-NoAgreementType()
 	# This error string is less than ideal due to AutoRest bug https://github.com/Azure/autorest/issues/2022
 	Assert-ThrowsContains { Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName "Random83da135" -Name "DoesNotMatter" -AgreementName "DoesNotMatter" -controlNumberValue "DoesNotMatter" } "Operation returned an invalid status code 'NotFound'"
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
-	$integrationAccountAgreementName = getAssetname + "X12"
+	$integrationAccountAgreementName = getAssetname "X12"
 
 	Assert-ThrowsContains { Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name "Random83da135" -AgreementName "DoesNotMatter" -ControlNumberValue "DoesNotMatter" } "Operation returned an invalid status code 'NotFound'"
 
@@ -129,9 +130,10 @@ function Test-GetIntegrationAccountReceivedIcnInternal([String] $agreementType)
 	# This error string is less than ideal due to AutoRest bug https://github.com/Azure/autorest/issues/2022
 	Assert-ThrowsContains { Get-AzureRmIntegrationAccountReceivedIcn -AgreementType $agreementType -ResourceGroupName "Random83da135" -Name "DoesNotMatter" -AgreementName "DoesNotMatter" -controlNumberValue "DoesNotMatter" } "Operation returned an invalid status code 'NotFound'"
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
-	$integrationAccountAgreementName = getAssetname + $agreementType
+	$integrationAccountAgreementName = getAssetname $agreementType
 
 	Assert-ThrowsContains { Get-AzureRmIntegrationAccountReceivedIcn -AgreementType $agreementType -ResourceGroupName $resourceGroup.ResourceGroupName -Name "Random83da135" -AgreementName "DoesNotMatter" -ControlNumberValue "DoesNotMatter" } "Operation returned an invalid status code 'NotFound'"
 
@@ -191,10 +193,11 @@ function Test-RemoveIntegrationAccountReceivedIcnInternal([String] $agreementTyp
 	$agreementFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccount${agreementType}AgreementContent.json"
 	$agreementContent = [IO.File]::ReadAllText($agreementFilePath)
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 	
-	$integrationAccountAgreementName = getAssetname + $agreementType
+	$integrationAccountAgreementName = getAssetname $agreementType
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
@@ -248,10 +251,11 @@ function Test-UpdateIntegrationAccountReceivedIcnInternal([String] $agreementTyp
 	$agreementFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccount${agreementType}AgreementContent.json"
 	$agreementContent = [IO.File]::ReadAllText($agreementFilePath)
 
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$resourceGroupName = getAssetname
+	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
 	$integrationAccountName = getAssetname
 	
-	$integrationAccountAgreementName = getAssetname + $agreementType
+	$integrationAccountAgreementName = getAssetname $agreementType
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
