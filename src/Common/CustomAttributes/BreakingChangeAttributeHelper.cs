@@ -27,6 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 {
     public class BreakingChangeAttributeHelper
     {
+        public const string BREAKING_CHANGE_ATTRIBUTE_INFORMATION_LINK = "https://aka.ms/azps-changewarnings";
         public const string SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME = "SuppressAzurePowerShellBreakingChangeWarnings";
 
         public const string BREAKING_CHANGE_DOCUMENTATION_HEADER = @"<!--
@@ -107,6 +108,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
                     attribute.PrintCustomAttributeInfo(type, false, writeOutput);
                 }
             }
+            
+            writeOutput(string.Format(Resources.BreakingChangesAttributesFooterMessage, BREAKING_CHANGE_ATTRIBUTE_INFORMATION_LINK));
         }
 
         /**
