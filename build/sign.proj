@@ -15,15 +15,11 @@
 
   <UsingTask TaskName="ESRPSignTask" AssemblyFile="$(CISignRepo)\tools\sdkbuildtools\tasks\MS.Az.Sdk.OnPremise.Build.Tasks.dll" />
 
-  <Target Name="netstandard20">
+  <Target Name="netstandard20" Condition="'$(DisableSigning)' != 'true'">
     <Message Importance="high" Text="Sign: netstandard20 started" />
     <ItemGroup>
       <UnsignedFiles Include="$(OutputDir)netstandard2.0\Microsoft.Azure.PowerShell*.dll" Exclude="$(OutputDir)netstandard2.0\Microsoft.Azure.PowerShell*.Test.dll" />
     </ItemGroup>
-  </Target>
-
-  <Target Name="SignFiles" AfterTargets="netstandard20;All" Condition="'$(DisableSigning)' != 'true'">
-    <Message Importance="high" Text="Sign: task started" />
     <ESRPSignTask
       CopyBackSignedFilesToOriginalLocation="true"
       UnsignedFileList="@(UnsignedFiles)"
@@ -34,14 +30,7 @@
     <Exec Command="$(PowerShell) -NonInteractive -NoLogo -NoProfile -Command &quot;$(RemoveSignedUnsignedFolders)&quot;" ContinueOnError="WarnAndContinue" IgnoreExitCode="true" />
   </Target>
 
-  <Target Name="BeforeAll">
-    <Message Importance="high" Text="Sign: BeforeAll started" />
-    <PropertyGroup>
-      <DisableSigning>true</DisableSigning>
-    </PropertyGroup>
-  </Target>
-
-  <Target Name="All" DependsOnTargets="BeforeAll;netstandard20">
+  <Target Name="All" DependsOnTargets="netstandard20">
     <Message Importance="high" Text="Sign: All started" />
     <PropertyGroup>
       <DisableSigning>false</DisableSigning>

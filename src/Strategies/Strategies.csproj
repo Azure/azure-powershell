@@ -35,11 +35,4 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Remove="Properties\AssemblyInfo.cs" />
-    <None Remove="Properties\AssemblyInfo.cs" />
-    <Content Remove="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-
 </Project>

@@ -21,6 +21,7 @@ using System;
 using System.Linq;
 using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
@@ -42,6 +43,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
                 return keyStore;
             };
+
+            _getAuthenticator = () =>
+            {
+                IAuthenticatorBuilder builder = null;
+                if (!AzureSession.Instance.TryGetComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, out builder))
+                {
+                    builder = new AuthenticatorBuilder();
+                }
+
+                return builder;
+            };
+
             TokenProvider = new AdalTokenProvider(_getKeyStore);
         }
 
@@ -64,6 +77,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
         }
 
+        private Func<IAuthenticatorBuilder> _getAuthenticator;
+        internal IAuthenticatorBuilder Builder => _getAuthenticator();
+       
         public ITokenProvider TokenProvider { get; set; }
 
 
@@ -82,6 +98,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             if (cache == null)
             {
                 cache = TokenCache.DefaultShared;
+            }
+
+            Task<IAccessToken> authToken;
+            if (Builder.Authenticator.TryAuthenticate(account, environment, tenant, password, promptBehavior, Task.FromResult(promptAction), tokenCache, resourceId, out authToken))
+            {
+                return authToken.ConfigureAwait(false).GetAwaiter().GetResult();
             }
 
             var configuration = GetAdalConfiguration(environment, tenant, resourceId, cache);

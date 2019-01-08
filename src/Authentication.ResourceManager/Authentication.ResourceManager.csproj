@@ -58,14 +58,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="AzureRmServicePrincipalKeyStore.cs" />
-    <Compile Remove="CredStore.cs" />
-    <Compile Remove="Properties\AssemblyInfo.cs" />
-    <Compile Remove="ServicePrincipalKeyStore.cs" />
-    <EmbeddedResource Remove="Properties\AssemblyInfo.cs" />
-    <None Remove="Properties\AssemblyInfo.cs" />
-    <Content Remove="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-
 </Project>

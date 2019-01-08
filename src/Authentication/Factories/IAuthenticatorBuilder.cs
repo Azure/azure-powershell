@@ -13,17 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
-using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
-[assembly: AssemblyTitle("Microsoft Azure PowerShell Storage")]
-[assembly: AssemblyDescription("Microsoft Azure PowerShell Storage library. Only for use with the Azure PowerShell runtime. Not intended for general development use.")]
-[assembly: AssemblyProduct("Microsoft Azure PowerShell")]
-[assembly: AssemblyCompany("Microsoft Corporation")]
-[assembly: AssemblyCopyright("Copyright © Microsoft Corporation")]
-
-[assembly: ComVisible(false)]
-[assembly: CLSCompliant(false)]
-[assembly: Guid("c565107e-98a9-4703-85cd-a7efc3d8da7b")]
-[assembly: AssemblyVersion("4.0.0")]
-[assembly: AssemblyFileVersion("4.0.0")]
+namespace Microsoft.Azure.Commands.Common.Authentication
+{
+    public interface IAuthenticatorBuilder
+    {
+        IAuthenticator Authenticator { get; }
+        bool AppendAuthenticator(Func<IAuthenticator> constructor);
+    }
+}
