@@ -207,9 +207,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             var psPrincipals = new List<PSPrincipal>();
             foreach (var p in principals)
             {
-                if (string.IsNullOrEmpty(p.Id))
+                var pid = Guid.Parse(p.Id);
+                if (pid == Guid.Empty)
                 {
-                    psPrincipals.Add(new PSPrincipal { DisplayName = AllPrincipals, ObjectType = SystemDefined, ObjectId = p.Id });
+                    psPrincipals.Add(new PSPrincipal { DisplayName = AllPrincipals, ObjectType = SystemDefined, ObjectId = new Guid(p.Id) });
                 }
                 else
                 {
@@ -220,7 +221,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         || (adObject is PSADServicePrincipal)
                         || !excludeAssignmentsForDeletedPrincipals)
                     {
-                        psPrincipals.Add(new PSPrincipal { DisplayName = adObject.DisplayName, ObjectType = p.Type, ObjectId = p.Id });
+                        psPrincipals.Add(new PSPrincipal { DisplayName = adObject.DisplayName, ObjectType = p.Type, ObjectId = new Guid(p.Id) });
                     }
                 }
             }

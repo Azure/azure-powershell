@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -20,11 +20,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class DenyAssignmentTests : RMTestBase
+    public class DenyAssignmentTests : ResourceTestRunner
     {
         public XunitTracingInterceptor _logger;
 
-        public DenyAssignmentTests(ITestOutputHelper output)
+        public DenyAssignmentTests(ITestOutputHelper output) : base(output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -34,168 +34,168 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDa()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDa");
+            TestRunner.RunTestScript("Test-GetDa");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaById()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaById");
+            TestRunner.RunTestScript("Test-GetDaById");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaByIdAndSpecifiedScope()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaByIdAndSpecifiedScope");
+            TestRunner.RunTestScript("Test-GetDaByIdAndSpecifiedScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaByName()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaByName");
+            TestRunner.RunTestScript("Test-GetDaByName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaByNameAndSpecifiedScope()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaByNameAndSpecifiedScope");
+            TestRunner.RunTestScript("Test-GetDaByNameAndSpecifiedScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaByObjectId()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaByObjectId");
+            TestRunner.RunTestScript("Test-GetDaByObjectId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaByObjectIdAndGroupExpansion()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaByObjectIdAndGroupExpansion");
+            TestRunner.RunTestScript("Test-GetDaByObjectIdAndGroupExpansion");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaByObjectIdAndRGName()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaByObjectIdAndRGName");
+            TestRunner.RunTestScript("Test-GetDaByObjectIdAndRGName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaByObjectIdAndRGNameResourceNameResourceType()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaByObjectIdAndRGNameResourceNameResourceType");
+            TestRunner.RunTestScript("Test-GetDaByObjectIdAndRGNameResourceNameResourceType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaByObjectIdAndScope()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaByObjectIdAndScope");
+            TestRunner.RunTestScript("Test-GetDaByObjectIdAndScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaBySignInNameAndRGName()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaBySignInNameAndRGName");
+            TestRunner.RunTestScript("Test-GetDaBySignInNameAndRGName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaBySignInNameAndRGNameResourceNameResourceType()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaBySignInNameAndRGNameResourceNameResourceType");
+            TestRunner.RunTestScript("Test-GetDaBySignInNameAndRGNameResourceNameResourceType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaBySignInNameAndScope()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaBySignInNameAndScope");
+            TestRunner.RunTestScript("Test-GetDaBySignInNameAndScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaBySignInName()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaBySignInName");
+            TestRunner.RunTestScript("Test-GetDaBySignInName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaBySignInNameAndGroupExpansion()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaBySignInNameAndGroupExpansion");
+            TestRunner.RunTestScript("Test-GetDaBySignInNameAndGroupExpansion");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaByServicePrincipalName()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaByServicePrincipalName");
+            TestRunner.RunTestScript("Test-GetDaByServicePrincipalName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaByServicePrincipalNameAndRGName()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaByServicePrincipalNameAndRGName");
+            TestRunner.RunTestScript("Test-GetDaByServicePrincipalNameAndRGName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaByServicePrincipalNameAndRGNameResourceNameResourceType()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaByServicePrincipalNameAndRGNameResourceNameResourceType");
+            TestRunner.RunTestScript("Test-GetDaByServicePrincipalNameAndRGNameResourceNameResourceType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaByServicePrincipalNameAndScope()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaByServicePrincipalNameAndScope");
+            TestRunner.RunTestScript("Test-GetDaByServicePrincipalNameAndScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaByScope()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaByScope");
+            TestRunner.RunTestScript("Test-GetDaByScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaByRG()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaByRG");
+            TestRunner.RunTestScript("Test-GetDaByRG");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaByRGNameResourceNameResourceType()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaByRGNameResourceNameResourceType");
+            TestRunner.RunTestScript("Test-GetDaByRGNameResourceNameResourceType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaForEveryoneHasExpectedNameAndType()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaForEveryoneHasExpectedNameAndType");
+            TestRunner.RunTestScript("Test-GetDaForEveryoneHasExpectedNameAndType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDaByEveryoneObjectId()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetDaByEveryoneObjectId");
+            TestRunner.RunTestScript("Test-GetDaByEveryoneObjectId");
         }
     }
 }
