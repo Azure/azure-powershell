@@ -41,7 +41,7 @@ namespace NetCorePsd1Sync
 
         public static void Main(string[] args)
         {
-            var rmPath = args.FirstOrDefault(a => !ModeMap.ContainsKey(a.ToLower()) && !Version.TryParse(a, out var _)) ?? @"..\..\..\src\ResourceManager";
+            var rmPath = args.FirstOrDefault(a => !ModeMap.ContainsKey(a.ToLower()) && !Version.TryParse(a, out var _)) ?? @"..\..\..\src";
             if (!Directory.Exists(rmPath))
             {
                 throw new ArgumentException($"Directory [{rmPath}] does not exist");
