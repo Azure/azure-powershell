@@ -163,6 +163,7 @@ Valid values are:
 - PowerShellWorkflow
 - GraphicalPowerShellWorkflow
 - Graph
+- Python2
 The value Graph is obsolete.
 It is equivalent to GraphicalPowerShellWorkflow.
 
