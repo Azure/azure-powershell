@@ -27,7 +27,7 @@ Regenerate MD help files [this way](documentation/development-docs/help-generati
 
 ### Message
 
-> c:\workspace\powershell\build.proj(597,5): error MSB3073: The command "c:\workspace\powershell\src\Package\\**StaticAnalysis.exe** -p c:\workspace\powershell\src\Package\Debug -r c:\workspace\powershell\src\Package -m Az.Network" exited with code 255.c:\workspace\powershell\build.proj(609,5): error : StaticAnalysis has failed. Please follow the instructions on this doc: [https://github.com/Azure/azure-powershell/blob/master/documentation/Debugging-StaticAnalysis-Errors.md](documentation/Debugging-StaticAnalysis-Errors.md)
+> c:\workspace\powershell\build.proj(597,5): error MSB3073: The command "c:\workspace\powershell\artifacts\\**StaticAnalysis.exe** -p c:\workspace\powershell\artifacts\Debug -r c:\workspace\powershell\artifacts -m Az.Network" exited with code 255.c:\workspace\powershell\build.proj(609,5): error : StaticAnalysis has failed. Please follow the instructions on this doc: [https://github.com/Azure/azure-powershell/blob/master/documentation/Debugging-StaticAnalysis-Errors.md](documentation/Debugging-StaticAnalysis-Errors.md)
 
 ### Reasons
 
@@ -55,7 +55,7 @@ If collected Breaking Changes issues are expected (e.g. cmdlet was really change
 
 ### Message
 
-> c:\workspace\powershell\build.proj(683,5): error MSB3073: The command ""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -NonInteractive -NoLogo -NoProfile -Command "if ((Get-ChildItem c:\workspace\powershell\src\Publish\TestResults/FailingTests).Count -ge 1) { throw "Failing tests, please check files in src/TestResults/FailingTests" } "" exited with code 1.c:\workspace\powershell\build.proj(689,5): error : **Test failures occurred, check the files in src/Publish/TestResults.**
+> **Test failures occured, check the files in artifacts/Test**
 
 ### Reasons
 
@@ -63,6 +63,6 @@ One or more tests failed
 
 ### Solution
 
-See test run report in src/Publish/TestResults and fix failures related to your changes.
+See test reports in artifacts/Test and fix failures related to your changes.
 
 In case you see more failures, please contact test owning team. Common way is to find a person who edited the cmdlet or test last. Networking tests are also marked with header like this to simplify team search: `[Trait(Category.Owner, Category.TeamAlias)]`
