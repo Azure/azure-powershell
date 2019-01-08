@@ -22,6 +22,8 @@
     - More information here: https://github.com/Azure/azure-powershell/issues/7875
 * Fix handling of the -Custom parameter in New/Set-AzPolicyDefinition
 * Fix typo in New-AzDeployment documentation
+
+## Version 1.0.1-preview
 * Add new cmdlet Get-AzureRmDenyAssignment for retrieving deny assignments
 
 ## Version 1.0.0
