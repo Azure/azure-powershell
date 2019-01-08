@@ -40,4 +40,4 @@ $psd1s | ForEach-Object {
     }
 }
 
-ConvertTo-Json $mapping | Set-Content -Path $PSScriptRoot/../src/ResourceManager/Profile/Commands.Profile/AzureRmAlias/Mappings.json
+ConvertTo-Json $mapping | Set-Content -Path $PSScriptRoot/../src/Accounts/Accounts/AzureRmAlias/Mappings.json
