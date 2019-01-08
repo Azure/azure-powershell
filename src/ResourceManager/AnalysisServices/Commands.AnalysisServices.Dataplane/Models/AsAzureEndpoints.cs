@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
     class AsAzureEndpoints
     {
         public const string RestartEndpointPathFormat = "/webapi/servers/{0}/restart?api-version=2016-10-01";
-        public const string LogfileEndpointPathFormat = "/webapi/servers/{0}/logfileHere";
+        public const string LogfileEndpointPathFormat = "/webapi/servers/{0}/logfile";
         public const string SynchronizeEndpointPathFormat = "/servers/{0}/models/{1}/sync";
 
         public const string ClusterResolveEndpoint = "/webapi/clusterResolve";
