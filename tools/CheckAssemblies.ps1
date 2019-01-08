@@ -17,8 +17,8 @@ param(
     [System.String]$BuildConfig
 )
 
-$ProjectPaths = @( "$PSScriptRoot\..\src\ResourceManager" )
-$DependencyMapPath = "$PSScriptRoot\..\src\Package\DependencyMap.csv"
+$ProjectPaths = @( "$PSScriptRoot\..\artifacts\$BuildConfig" )
+$DependencyMapPath = "$PSScriptRoot\..\artifacts\DependencyMap.csv"
 
 $DependencyMap = Import-Csv -Path $DependencyMapPath
 

@@ -1,0 +1,517 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps1200?api-version=2018-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzMTIwMD9hcGktdmVyc2lvbj0yMDE4LTA1LTAx",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "88b5ddd8-3b85-43fe-a8c0-9dc200e4efd2"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.9.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "b53886ea-c971-44a8-89ff-d2df4c651bd4"
+        ],
+        "x-ms-correlation-request-id": [
+          "b53886ea-c971-44a8-89ff-d2df4c651bd4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T002311Z:b53886ea-c971-44a8-89ff-d2df4c651bd4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:23:11 GMT"
+        ],
+        "Content-Length": [
+          "98"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps1200?api-version=2018-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzMTIwMD9hcGktdmVyc2lvbj0yMDE4LTA1LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "87b1996c-5b46-4050-89b2-c6a040e8ab0d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.9.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "dae033ce-291e-4e98-8cdf-0fd626070bb3"
+        ],
+        "x-ms-correlation-request-id": [
+          "dae033ce-291e-4e98-8cdf-0fd626070bb3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T002312Z:dae033ce-291e-4e98-8cdf-0fd626070bb3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:23:12 GMT"
+        ],
+        "Content-Length": [
+          "165"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1200\",\r\n  \"name\": \"ps1200\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1200/providers/Microsoft.Logic/workflows/ps5926?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMTIwMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL3dvcmtmbG93cy9wczU5MjY/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "50aa68e8-45b1-4a7a-98e1-2a6dd9b56dbc"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "cd1cfafc-e09a-4bd0-a9f9-3a0886675ec7"
+        ],
+        "x-ms-correlation-request-id": [
+          "cd1cfafc-e09a-4bd0-a9f9-3a0886675ec7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T002336Z:cd1cfafc-e09a-4bd0-a9f9-3a0886675ec7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:23:36 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "142"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Logic/workflows/ps5926' under resource group 'ps1200' was not found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1200/providers/Microsoft.Logic/workflows/ps5926?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMTIwMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL3dvcmtmbG93cy9wczU5MjY/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"definition\": {\r\n      \"$schema\": \"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {\r\n        \"runworkflowmanually\": {\r\n          \"type\": \"bool\",\r\n          \"defaultValue\": true\r\n        },\r\n        \"destinationUri\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"http://tempuri.org\"\r\n        }\r\n      },\r\n      \"triggers\": {\r\n        \"manualTrigger\": {\r\n          \"type\": \"Manual\"\r\n        }\r\n      },\r\n      \"actions\": {\r\n        \"http\": {\r\n          \"type\": \"Http\",\r\n          \"inputs\": {\r\n            \"method\": \"POST\",\r\n            \"uri\": \"@parameters('destinationUri')\",\r\n            \"body\": \"Test\"\r\n          },\r\n          \"conditions\": []\r\n        }\r\n      },\r\n      \"outputs\": {}\r\n    },\r\n    \"parameters\": {\r\n      \"destinationUri\": {\r\n        \"value\": \"http://requestb.in/1kj7g8e1\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"westus\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "efc2e6a8-bca5-449b-9bb0-b216381c7ee5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1028"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:dcb02070-d6f5-4a16-8f78-198df5c1a2a7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "88ca2e97-2626-45b4-8c2f-3b2edea66e43"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T002338Z:88ca2e97-2626-45b4-8c2f-3b2edea66e43"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:23:37 GMT"
+        ],
+        "Content-Length": [
+          "1561"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"createdTime\": \"2019-01-03T00:23:37.5062817Z\",\r\n    \"changedTime\": \"2019-01-03T00:23:37.49506Z\",\r\n    \"state\": \"Enabled\",\r\n    \"version\": \"08586551318680760186\",\r\n    \"accessEndpoint\": \"https://prod-08.westus.logic.azure.com:443/workflows/538bd0bbff4c4b218eb6f654ff5f5fe7\",\r\n    \"definition\": {\r\n      \"$schema\": \"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {\r\n        \"runworkflowmanually\": {\r\n          \"defaultValue\": true,\r\n          \"type\": \"Bool\"\r\n        },\r\n        \"destinationUri\": {\r\n          \"defaultValue\": \"http://tempuri.org\",\r\n          \"type\": \"String\"\r\n        }\r\n      },\r\n      \"triggers\": {\r\n        \"manualTrigger\": {\r\n          \"type\": \"Manual\"\r\n        }\r\n      },\r\n      \"actions\": {\r\n        \"http\": {\r\n          \"type\": \"Http\",\r\n          \"inputs\": {\r\n            \"method\": \"POST\",\r\n            \"uri\": \"@parameters('destinationUri')\",\r\n            \"body\": \"Test\"\r\n          },\r\n          \"conditions\": []\r\n        }\r\n      },\r\n      \"outputs\": {}\r\n    },\r\n    \"parameters\": {\r\n      \"destinationUri\": {\r\n        \"value\": \"http://requestb.in/1kj7g8e1\"\r\n      }\r\n    },\r\n    \"endpointsConfiguration\": {\r\n      \"workflow\": {\r\n        \"outgoingIpAddresses\": [\r\n          {\r\n            \"address\": \"52.160.92.112\"\r\n          },\r\n          {\r\n            \"address\": \"40.118.244.241\"\r\n          },\r\n          {\r\n            \"address\": \"40.118.241.243\"\r\n          },\r\n          {\r\n            \"address\": \"157.56.162.53\"\r\n          },\r\n          {\r\n            \"address\": \"157.56.167.147\"\r\n          },\r\n          {\r\n            \"address\": \"104.42.49.145\"\r\n          },\r\n          {\r\n            \"address\": \"40.83.164.80\"\r\n          },\r\n          {\r\n            \"address\": \"104.42.38.32\"\r\n          }\r\n        ],\r\n        \"accessEndpointIpAddresses\": [\r\n          {\r\n            \"address\": \"52.160.90.237\"\r\n          },\r\n          {\r\n            \"address\": \"138.91.188.137\"\r\n          },\r\n          {\r\n            \"address\": \"13.91.252.184\"\r\n          },\r\n          {\r\n            \"address\": \"157.56.160.212 \"\r\n          }\r\n        ]\r\n      },\r\n      \"connector\": {\r\n        \"outgoingIpAddresses\": [\r\n          {\r\n            \"address\": \"104.40.51.248\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1200/providers/Microsoft.Logic/workflows/ps5926\",\r\n  \"name\": \"ps5926\",\r\n  \"type\": \"Microsoft.Logic/workflows\",\r\n  \"location\": \"westus\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1200/providers/Microsoft.Logic/locations/northeurope/workflows/ps5926/validate?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMTIwMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2xvY2F0aW9ucy9ub3J0aGV1cm9wZS93b3JrZmxvd3MvcHM1OTI2L3ZhbGlkYXRlP2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"definition\": {\r\n      \"$schema\": \"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {\r\n        \"runworkflowmanually\": {\r\n          \"type\": \"bool\",\r\n          \"defaultValue\": true\r\n        },\r\n        \"destinationUri\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"http://tempuri.org\"\r\n        }\r\n      },\r\n      \"triggers\": {\r\n        \"manualTrigger\": {\r\n          \"type\": \"Manual\"\r\n        }\r\n      },\r\n      \"actions\": {\r\n        \"http\": {\r\n          \"type\": \"Http\",\r\n          \"inputs\": {\r\n            \"method\": \"POST\",\r\n            \"uri\": \"@parameters('destinationUri')\",\r\n            \"body\": \"Test\"\r\n          },\r\n          \"conditions\": []\r\n        }\r\n      },\r\n      \"outputs\": {}\r\n    },\r\n    \"parameters\": {\r\n      \"destinationUri\": {\r\n        \"value\": \"http://requestb.in/1kj7g8e1\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"northeurope\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "24f51e39-d028-4601-9dc5-53a3dffd7a42"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1033"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "northeurope:e8216ba1-dec0-4eae-8761-4dd60c7236fa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "9734e424-af65-4b52-bebe-26311121f713"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T002339Z:9734e424-af65-4b52-bebe-26311121f713"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:23:38 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1200/providers/Microsoft.Logic/locations/northeurope/workflows/ps5926/validate?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMTIwMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2xvY2F0aW9ucy9ub3J0aGV1cm9wZS93b3JrZmxvd3MvcHM1OTI2L3ZhbGlkYXRlP2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"definition\": {\r\n      \"$schema\": \"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {\r\n        \"runworkflowmanually\": {\r\n          \"type\": \"bool\",\r\n          \"defaultValue\": true\r\n        },\r\n        \"destinationUri\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"http://tempuri.org\"\r\n        }\r\n      },\r\n      \"triggers\": {\r\n        \"manualTrigger\": {\r\n          \"type\": \"Manual\"\r\n        }\r\n      },\r\n      \"actions\": {\r\n        \"http\": {\r\n          \"type\": \"Http\",\r\n          \"inputs\": {\r\n            \"method\": \"POST\",\r\n            \"uri\": \"@parameters('destinationUri')\",\r\n            \"body\": \"Test\"\r\n          },\r\n          \"conditions\": []\r\n        }\r\n      },\r\n      \"outputs\": {}\r\n    },\r\n    \"parameters\": {\r\n      \"destinationUri\": {\r\n        \"value\": \"http://requestb.in/1kj7g8e1\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"northeurope\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "695a12e9-2e60-4aa1-9f53-b84fa9307117"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1033"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "northeurope:2e36a021-79ed-4c85-b384-028568c18b49"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "157f235e-f02b-4844-9db2-41f5ac76577f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T002339Z:157f235e-f02b-4844-9db2-41f5ac76577f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:23:38 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1200/providers/Microsoft.Logic/locations/northeurope/workflows/ps5926/validate?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMTIwMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2xvY2F0aW9ucy9ub3J0aGV1cm9wZS93b3JrZmxvd3MvcHM1OTI2L3ZhbGlkYXRlP2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"definition\": {}\r\n  },\r\n  \"location\": \"northeurope\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "58a95d32-8a82-4d43-9075-8f16f87ba980"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "105"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "northeurope:6e7c0ee7-358b-4546-baae-e63a7a9317fe"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "d2bb15d6-f39f-49b7-bbda-6eb1fdbe12d5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T002339Z:d2bb15d6-f39f-49b7-bbda-6eb1fdbe12d5"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:23:39 GMT"
+        ],
+        "Content-Length": [
+          "219"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidRequestContent\",\r\n    \"message\": \"The request content is not valid and could not be deserialized: 'Required property '$schema' not found in JSON. Path 'properties.definition', line 4, position 20.'.\"\r\n  }\r\n}",
+      "StatusCode": 400
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1200/providers/Microsoft.Logic/workflows/ps5926?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMTIwMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL3dvcmtmbG93cy9wczU5MjY/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "11380825-5014-4f16-8035-794897781c7b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:f66712ec-2b72-4316-8057-1b51f4b62616"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "e37b4549-756e-48c5-b08a-39b189828e16"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T002340Z:e37b4549-756e-48c5-b08a-39b189828e16"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:23:39 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-ValidateLogicApp": [
+      "ps1200",
+      "ps5926"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "9e223dbe-3399-4e19-88eb-0975f02ac87f"
+  }
+}
