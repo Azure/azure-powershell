@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>Sql</PsModuleName>
+    <OmitJsonPackage>true</OmitJsonPackage>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+
+  <PropertyGroup>
+    <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName).LegacySdk</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Management.$(PsModuleName).Legacy</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" PrivateAssets="all"/>
+  </ItemGroup>
+
+</Project>

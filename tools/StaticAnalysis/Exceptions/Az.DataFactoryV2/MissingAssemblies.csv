@@ -1,1 +1,4 @@
 "Directory","Assembly Name","Assembly Version","Referencing Assembly","Severity","ProblemId","Description","Remediation"
+"Az.DataFactory","Microsoft.Win32.Registry","4.1.1.0","System.Management.Automation","0","3000","Missing assembly Microsoft.Win32.Registry referenced from System.Management.Automation","Ensure that the assembly is included in the Wix file or directory"
+"Az.DataFactory","Microsoft.PowerShell.CoreCLR.Eventing","6.1.0.0","System.Management.Automation","0","3000","Missing assembly Microsoft.PowerShell.CoreCLR.Eventing referenced from System.Management.Automation","Ensure that the assembly is included in the Wix file or directory"
+"Az.DataFactory","System.ServiceModel.Primitives","4.2.0.0","Microsoft.DataTransfer.Gateway.Encryption","0","3000","Missing assembly System.ServiceModel.Primitives referenced from Microsoft.DataTransfer.Gateway.Encryption","Ensure that the assembly is included in the Wix file or directory"
