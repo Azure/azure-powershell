@@ -10,12 +10,9 @@ This will enable to execute Start-RepoBuild <scope>
 #>
 
     Write-Host "Below are available scopes you can specify for building specific projects"
-    Write-Host ""    
-    Get-ChildItem -path "$env:repoRoot\src\ResourceManager" -dir | Format-Wide -Column 5 | Format-Table -Property Name
-    Write-Host "e.g of a scope would be 'ResourceManager\Compute'" -ForegroundColor Yellow
-    
-    Get-ChildItem -path "$env:repoRoot\src\ServiceManagement" -dir -Exclude "ResourceManager" | Format-Wide -Column 5 | Format-Table -Property Name
-    Write-Host "e.g of a scope would be 'ServiceManagement\ExpressRoute'" -ForegroundColor Yellow
+    Write-Host ""
+    Get-ChildItem -path "$env:repoRoot\src" -dir | Format-Wide -Column 5 | Format-Table -Property Name
+    Write-Host "e.g of a scope would be 'Compute'" -ForegroundColor Yellow
 }
 
 [CmdletBinding]
