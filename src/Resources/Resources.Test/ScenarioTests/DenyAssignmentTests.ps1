@@ -21,7 +21,7 @@ As a result for testing purposes we are using some specific subscription, resour
 
 function Test-GetDa
 {
-    $assignments = Get-AzureRmDenyAssignment
+    $assignments = Get-AzDenyAssignment
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -30,7 +30,7 @@ function Test-GetDa
 function Test-GetDaById
 {
     $id = '22704996-fbd0-4ab1-8625-722d897825d2'
-    $assignments = Get-AzureRmDenyAssignment -Id $id
+    $assignments = Get-AzDenyAssignment -Id $id
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -eq 1 }
@@ -41,7 +41,7 @@ function Test-GetDaByIdAndSpecifiedScope
 {
     $id = '43AF7D0C-0BF8-407F-96C0-96A29D076431'
     $scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/AzureAuthzSDK'
-    $assignments = Get-AzureRmDenyAssignment -Id $id -Scope $scope
+    $assignments = Get-AzDenyAssignment -Id $id -Scope $scope
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -eq 1 }
@@ -51,7 +51,7 @@ function Test-GetDaByIdAndSpecifiedScope
 function Test-GetDaByName
 {
     $daName = 'AzureAuthzSDK_22704996-FBD0-4AB1-8625-722D897825D2'
-    $assignments = Get-AzureRmDenyAssignment -DenyAssignmentName $daName
+    $assignments = Get-AzDenyAssignment -DenyAssignmentName $daName
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -eq 1 }
@@ -62,7 +62,7 @@ function Test-GetDaByNameAndSpecifiedScope
 {
     $daName = 'AzureAuthzSDK_43AF7D0C-0BF8-407F-96C0-96A29D076431'
     $daScope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/AzureAuthzSDK'
-    $assignments = Get-AzureRmDenyAssignment -DenyAssignmentName $daName -Scope $daScope
+    $assignments = Get-AzDenyAssignment -DenyAssignmentName $daName -Scope $daScope
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -eq 1 }
@@ -73,7 +73,7 @@ function Test-GetDaByNameAndSpecifiedScope
 function Test-GetDaByObjectId
 {
     $objectId = 'f8d526a054eb4941ae69ebf4a334d0f0'
-    $assignments = Get-AzureRmDenyAssignment -ObjectId $objectId
+    $assignments = Get-AzDenyAssignment -ObjectId $objectId
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -82,7 +82,7 @@ function Test-GetDaByObjectId
 function Test-GetDaByObjectIdAndGroupExpansion
 {
     $objectId = 'f8d526a054eb4941ae69ebf4a334d0f0'
-    $assignments = Get-AzureRmDenyAssignment -ObjectId $objectId -ExpandPrincipalGroups
+    $assignments = Get-AzDenyAssignment -ObjectId $objectId -ExpandPrincipalGroups
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 2 }
@@ -92,7 +92,7 @@ function Test-GetDaByObjectIdAndRGName
 {
     $objectId = 'f8d526a054eb4941ae69ebf4a334d0f0'
     $resourceGroupName = 'AzureAuthzSDK'
-    $assignments = Get-AzureRmDenyAssignment -ObjectId $objectId -ResourceGroupName $resourceGroupName 
+    $assignments = Get-AzDenyAssignment -ObjectId $objectId -ResourceGroupName $resourceGroupName 
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -104,7 +104,7 @@ function Test-GetDaByObjectIdAndRGNameResourceNameResourceType
     $resourceGroupName = 'AzureAuthzSDK'
     $resourceName ='authzsdktestresource'
     $resourceType = 'Microsoft.Storage/storageAccounts'
-    $assignments = Get-AzureRmDenyAssignment -ObjectId $objectId -ResourceGroupName $resourceGroupName -ResourceName  $resourceName -ResourceType  $resourceType 
+    $assignments = Get-AzDenyAssignment -ObjectId $objectId -ResourceGroupName $resourceGroupName -ResourceName  $resourceName -ResourceType  $resourceType 
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -114,7 +114,7 @@ function Test-GetDaByObjectIdAndScope
 {
     $objectId = 'f8d526a054eb4941ae69ebf4a334d0f0'
     $scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/AzureAuthzSDK'
-    $assignments = Get-AzureRmDenyAssignment -ObjectId $objectId -Scope $scope
+    $assignments = Get-AzDenyAssignment -ObjectId $objectId -Scope $scope
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -123,7 +123,7 @@ function Test-GetDaByObjectIdAndScope
 function Test-GetDaBySignInName
 {
     $signInName = 'test2@rbacCliTest.onmicrosoft.com'
-    $assignments = Get-AzureRmDenyAssignment -SignInName $signInName
+    $assignments = Get-AzDenyAssignment -SignInName $signInName
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -132,7 +132,7 @@ function Test-GetDaBySignInName
 function Test-GetDaBySignInNameAndGroupExpansion
 {
     $signInName = 'test2@rbacCliTest.onmicrosoft.com'
-    $assignments = Get-AzureRmDenyAssignment -SignInName $signInName -ExpandPrincipalGroups
+    $assignments = Get-AzDenyAssignment -SignInName $signInName -ExpandPrincipalGroups
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 2 }
@@ -142,7 +142,7 @@ function Test-GetDaBySignInNameAndRGName
 {
     $signInName = 'test2@rbacCliTest.onmicrosoft.com'
     $resourceGroupName = 'AzureAuthzSDK'
-    $assignments = Get-AzureRmDenyAssignment -SignInName $signInName -ResourceGroupName $resourceGroupName 
+    $assignments = Get-AzDenyAssignment -SignInName $signInName -ResourceGroupName $resourceGroupName 
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -154,7 +154,7 @@ function Test-GetDaBySignInNameAndRGNameResourceNameResourceType
     $resourceGroupName = 'AzureAuthzSDK'
     $resourceName ='authzsdktestresource'
     $resourceType = 'Microsoft.Storage/storageAccounts'
-    $assignments = Get-AzureRmDenyAssignment -SignInName $signInName -ResourceGroupName $resourceGroupName -ResourceName  $resourceName -ResourceType  $resourceType 
+    $assignments = Get-AzDenyAssignment -SignInName $signInName -ResourceGroupName $resourceGroupName -ResourceName  $resourceName -ResourceType  $resourceType 
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -164,7 +164,7 @@ function Test-GetDaBySignInNameAndScope
 {
     $signInName = 'test2@rbacCliTest.onmicrosoft.com'
     $scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/AzureAuthzSDK'
-    $assignments = Get-AzureRmDenyAssignment -SignInName $signInName -Scope $scope
+    $assignments = Get-AzDenyAssignment -SignInName $signInName -Scope $scope
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -173,7 +173,7 @@ function Test-GetDaBySignInNameAndScope
 function Test-GetDaByServicePrincipalName
 {
     $servicePrincipalName = 'https://rbacCliTest.onmicrosoft.com/722c28d1-3e5c-472a-ab3e-0ff6827aeedc'
-    $assignments = Get-AzureRmDenyAssignment -ServicePrincipalName $servicePrincipalName
+    $assignments = Get-AzDenyAssignment -ServicePrincipalName $servicePrincipalName
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -183,7 +183,7 @@ function Test-GetDaByServicePrincipalNameAndRGName
 {
     $servicePrincipalName = 'https://rbacCliTest.onmicrosoft.com/722c28d1-3e5c-472a-ab3e-0ff6827aeedc'
     $resourceGroupName = 'AzureAuthzSDK'
-    $assignments = Get-AzureRmDenyAssignment -ServicePrincipalName $servicePrincipalName -ResourceGroupName $resourceGroupName 
+    $assignments = Get-AzDenyAssignment -ServicePrincipalName $servicePrincipalName -ResourceGroupName $resourceGroupName 
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -195,7 +195,7 @@ function Test-GetDaByServicePrincipalNameAndRGNameResourceNameResourceType
     $resourceGroupName = 'AzureAuthzSDK'
     $resourceName ='authzsdktestresource'
     $resourceType = 'Microsoft.Storage/storageAccounts'
-    $assignments = Get-AzureRmDenyAssignment -ServicePrincipalName $servicePrincipalName -ResourceGroupName $resourceGroupName -ResourceName  $resourceName -ResourceType  $resourceType 
+    $assignments = Get-AzDenyAssignment -ServicePrincipalName $servicePrincipalName -ResourceGroupName $resourceGroupName -ResourceName  $resourceName -ResourceType  $resourceType 
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -205,7 +205,7 @@ function Test-GetDaByServicePrincipalNameAndScope
 {
     $servicePrincipalName = 'https://rbacCliTest.onmicrosoft.com/722c28d1-3e5c-472a-ab3e-0ff6827aeedc'
     $scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/AzureAuthzSDK'
-    $assignments = Get-AzureRmDenyAssignment -ServicePrincipalName $servicePrincipalName -Scope $scope
+    $assignments = Get-AzDenyAssignment -ServicePrincipalName $servicePrincipalName -Scope $scope
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -214,7 +214,7 @@ function Test-GetDaByServicePrincipalNameAndScope
 function Test-GetDaByScope
 {
     $scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/AzureAuthzSDK'
-    $assignments = Get-AzureRmDenyAssignment -Scope $scope
+    $assignments = Get-AzDenyAssignment -Scope $scope
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -223,7 +223,7 @@ function Test-GetDaByScope
 function Test-GetDaByRG
 {
     $resourceGroupName = 'AzureAuthzSDK'
-    $assignments = Get-AzureRmDenyAssignment -ResourceGroupName $resourceGroupName
+    $assignments = Get-AzDenyAssignment -ResourceGroupName $resourceGroupName
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -234,7 +234,7 @@ function Test-GetDaByRGNameResourceNameResourceType
     $resourceGroupName = 'AzureAuthzSDK'
     $resourceName ='authzsdktestresource'
     $resourceType = 'Microsoft.Storage/storageAccounts'
-    $assignments = Get-AzureRmDenyAssignment -ResourceGroupName $resourceGroupName -ResourceName  $resourceName -ResourceType  $resourceType 
+    $assignments = Get-AzDenyAssignment -ResourceGroupName $resourceGroupName -ResourceName  $resourceName -ResourceType  $resourceType 
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -243,7 +243,7 @@ function Test-GetDaByRGNameResourceNameResourceType
 function Test-GetDaByEveryoneObjectId
 {
     $objectId = '00000000000000000000000000000000'
-    $assignments = Get-AzureRmDenyAssignment -ObjectId $objectId
+    $assignments = Get-AzDenyAssignment -ObjectId $objectId
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -ge 1 }
@@ -253,7 +253,7 @@ function Test-GetDaForEveryoneHasExpectedNameAndType
 {
     $daName = 'AzureAuthzSDK_C807D002-6D77-452F-A837-4692929D12FD'
     $daScope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/AzureAuthzSDK'
-    $assignments = Get-AzureRmDenyAssignment -DenyAssignmentName $daName -Scope $daScope
+    $assignments = Get-AzDenyAssignment -DenyAssignmentName $daName -Scope $daScope
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -eq 1 }
