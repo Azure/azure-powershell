@@ -164,19 +164,19 @@ function Test-VirtualMachine
         Assert-AreEqual "BGInfo" $vm1.Extensions[0].VirtualMachineExtensionType
         Assert-AreEqual "Microsoft.Compute" $vm1.Extensions[0].Publisher
 
-        $job = Start-AzureRmVM -Name $vmname -ResourceGroupName $rgname -AsJob;
+        $job = Start-AzureRmVM -Id $vm1.Id -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
         $st = $job | Receive-Job;
         Verify-PSComputeLongRunningOperation $st;
 
-        $job = Restart-AzureRmVM -Name $vmname -ResourceGroupName $rgname -AsJob;
+        $job = Restart-AzureRmVM -Id $vm1.Id -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
         $st = $job | Receive-Job;
         Verify-PSComputeLongRunningOperation $st;
 
-        $job = Stop-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force -StayProvisioned -AsJob;
+        $job = Stop-AzureRmVM -Id $vm1.Id -Force -StayProvisioned -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
         $st = $job | Receive-Job;
@@ -283,7 +283,7 @@ function Test-VirtualMachine
         Assert-True { $vm2.ResourceGroupName -eq $rgname }
 
         # Remove
-        $st = Remove-AzureRmVM -Name $vmname2 -ResourceGroupName $rgname -Force;
+        $st = Remove-AzureRmVM -Id $vm2.Id -Force;
         Verify-PSComputeLongRunningOperation $st;
     }
     finally
@@ -2721,7 +2721,7 @@ function Test-VirtualMachineRedeploy
         Assert-NotNull $vm2.Location;
 
         # Redeploy the VM
-        $job = Set-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Redeploy -AsJob;
+        $job = Set-AzureRmVM -Id $vm2.Id -Redeploy -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
 
