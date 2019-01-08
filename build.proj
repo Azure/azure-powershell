@@ -219,9 +219,15 @@
     <Exec Command="dotnet --version" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <ItemGroup>
-      <ModuleCsprojFiles Include="$(LibraryRoot)src/ResourceManager/**/*.csproj" Exclude="$(LibraryRoot)src/ResourceManager/**/*.Test.csproj" />
+      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(LibraryRoot)src/**/*.Test.csproj" />
     </ItemGroup>
-    <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFiles->'%(FullPath)', ' ')" />
+    <!-- https://stackoverflow.com/a/35477012/294804 -->
+    <ItemGroup>
+      <ModuleCsprojFilesRelative Include="@(ModuleCsprojFiles)">
+        <RelativePath>$([MSBuild]::MakeRelative($(LibraryRoot), %(ModuleCsprojFiles.FullPath)))</RelativePath>
+      </ModuleCsprojFilesRelative>
+    </ItemGroup>
+    <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFilesRelative->'%(RelativePath)', ' ')" />
     <Exec Command="dotnet sln Azure.PowerShell.sln add $(LibraryRoot)tools/Tools.Common/Tools.Common.Netcore.csproj $(LibraryRoot)tools/StaticAnalysis/StaticAnalysis.Netcore.csproj" />
     <Exec Command="dotnet publish Azure.PowerShell.sln -c $(Configuration)" />
 
@@ -373,15 +379,21 @@
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <ItemGroup>
-      <ModuleCsprojFiles Include="$(LibraryRoot)src/ResourceManager/**/*.csproj" />
+      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" />
     </ItemGroup>
-    <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFiles->'%(FullPath)', ' ')" />
+    <!-- https://stackoverflow.com/a/35477012/294804 -->
+    <ItemGroup>
+      <ModuleCsprojFilesRelative Include="@(ModuleCsprojFiles)">
+        <RelativePath>$([MSBuild]::MakeRelative($(LibraryRoot), %(ModuleCsprojFiles.FullPath)))</RelativePath>
+      </ModuleCsprojFilesRelative>
+    </ItemGroup>
+    <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFilesRelative->'%(RelativePath)', ' ')" />
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
     <Exec Command="dotnet test Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework netcoreapp2.0 --logger trx" />
 
     <ItemGroup>
-      <TestResults Include="$(LibraryRoot)src/ResourceManager/**/TestResults/*.trx" />
+      <TestResults Include="$(LibraryRoot)src/**/TestResults/*.trx" />
     </ItemGroup>
     <Copy SourceFiles="@(TestResults)" DestinationFolder="$(TestOutputDirectory)" />
 
