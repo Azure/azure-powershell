@@ -218,8 +218,11 @@
     <!-- Build and create package content -->
     <Exec Command="dotnet --version" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
+    <PropertyGroup Condition="'$(ExcludeNetFx)' == 'true'">
+      <NetFxExclusions>$(LibraryRoot)src/**/*.NetFx.csproj;</NetFxExclusions>
+    </PropertyGroup>
     <ItemGroup>
-      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(LibraryRoot)src/**/*.Test.csproj" />
+      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(NetFxExclusions)$(LibraryRoot)src/**/*.Test.csproj" />
     </ItemGroup>
     <!-- https://stackoverflow.com/a/35477012/294804 -->
     <ItemGroup>
@@ -372,6 +375,9 @@
 
   <Target Name="Test">
     <Message Importance="high" Text="Running check in tests..." />
+    <PropertyGroup Condition="'$(ExcludeNetFx)' == 'true'">
+      <NetFxExclusions>$(LibraryRoot)src/**/*.NetFx.csproj;</NetFxExclusions>
+    </PropertyGroup>
 
     <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
     <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
@@ -379,7 +385,7 @@
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <ItemGroup>
-      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" />
+      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(NetFxExclusions)"/>
     </ItemGroup>
     <!-- https://stackoverflow.com/a/35477012/294804 -->
     <ItemGroup>
