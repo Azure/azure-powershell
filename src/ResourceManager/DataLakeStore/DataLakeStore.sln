@@ -2,15 +2,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLakeStore", "Commands.DataLakeStore\DataLakeStore.csproj", "{8AAB43E6-E8F6-4F91-AF8A-6A63CD78EF1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLakeStore", "DataLakeStore\DataLakeStore.csproj", "{8AAB43E6-E8F6-4F91-AF8A-6A63CD78EF1E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLakeStore.Test", "Commands.DataLakeStore.Test\DataLakeStore.Test.csproj", "{B0D03ECF-9F25-499A-BE25-D668E0D208AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLakeStore.Test", "DataLakeStore.Test\DataLakeStore.Test.csproj", "{B0D03ECF-9F25-499A-BE25-D668E0D208AA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Profile\Commands.Profile\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Commands.Network\Network.csproj", "{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
