@@ -208,7 +208,7 @@ if (!$PathToRepo)
 #Requires -Module PowerShellGet
 
 # Update all of the ResourceManager breaking change docs
-$ResourceManagerChanges = UpdateARMBreakingChangeDocs -PathToServices $PathToRepo\src\ResourceManager
+$ResourceManagerChanges = UpdateARMBreakingChangeDocs -PathToServices $PathToRepo\src
 
 $allChanges = @()
 

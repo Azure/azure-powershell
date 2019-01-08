@@ -75,7 +75,7 @@ function IncrementVersion([string]$FilePath)
 
 if (!$Folder) 
 {
-    $Folder = "$PSScriptRoot\..\src\ResourceManager"
+    $Folder = "$PSScriptRoot\..\src"
 }
 
 $modules = Get-ChildItem -Path $Folder -Filter *.psd1 -Recurse -Exclude *.dll-help.psd1
