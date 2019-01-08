@@ -109,6 +109,7 @@
     { "regex": "Consumption", "group": "Billing", "alias": "Billing" },
     { "regex": "Billing", "group": "Billing", "alias": "Billing" },
 
+    { "regex": "ApplicationInsights", "alias": "Monitor" },
     { "regex": "Monitor", "alias": "Monitor" },
 
     { "regex": "Media", "alias": "Media Services" },
