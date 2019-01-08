@@ -4,7 +4,7 @@
   <PropertyGroup>
     <RepoRoot>$(MSBuildThisFileDirectory)</RepoRoot>
     <RepoSrc>$(RepoRoot)src\</RepoSrc>
-    <RepoArtifacts>$(RepoSrc)Package\</RepoArtifacts>
+    <RepoArtifacts>$(RepoRoot)artifacts\</RepoArtifacts>
     <RepoTools>$(RepoRoot)tools\</RepoTools>
   </PropertyGroup>
 
