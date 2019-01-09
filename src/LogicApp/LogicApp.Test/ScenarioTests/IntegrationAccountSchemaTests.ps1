@@ -21,9 +21,8 @@ function Test-CreateIntegrationAccountSchema
 	$schemaFilePath = Join-Path $TestOutputRoot "\Resources\OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 	
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname	
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccountSchemaName1 = getAssetname	
 	$integrationAccountSchemaName2 = getAssetname	
@@ -52,9 +51,8 @@ function Test-GetIntegrationAccountSchema
 	$schemaFilePath = Join-Path $TestOutputRoot "\Resources\OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname	
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccountSchemaName = getAssetname	
 
@@ -82,9 +80,8 @@ function Test-RemoveIntegrationAccountSchema
 	$schemaFilePath = Join-Path $TestOutputRoot "\Resources\OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 	
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname	
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)	
 	
 	$integrationAccountSchemaName = getAssetname	
 
@@ -107,9 +104,8 @@ function Test-UpdateIntegrationAccountSchema
 	$schemaFilePath = Join-Path $TestOutputRoot "\Resources\OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 	
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname	
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccountSchemaName = getAssetname	
 
@@ -136,9 +132,8 @@ function Test-ListIntegrationAccountSchema
 	$schemaFilePath = Join-Path $TestOutputRoot "\Resources\OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 

@@ -11,75 +11,63 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
 namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
+    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
 
     /// <summary>
-    /// Scenario tests for integration account partner commands.
+    /// Scenario tests for integration account assembly commands.
     /// </summary>
-    public class IntegrationAccountPartnerTests : RMTestBase
+    public class IntegrationAccountAssemblyTests : RMTestBase
     {
         public XunitTracingInterceptor _logger;
-
-        public IntegrationAccountPartnerTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IntegrationAccountAssemblyTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             this._logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(this._logger);
         }
 
         /// <summary>
-        /// Test New-AzIntegrationAccountPartner command to create a new integration account partner.
+        /// Test New-AzIntegrationAccountAssembly command to create a new integration account assembly.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatePartner()
+        public void TestCreateAssembly()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-CreateIntegrationAccountPartner");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-CreateIntegrationAccountAssembly");
         }
 
         /// <summary>
-        /// Test Get-AzIntegrationAccountPartner command to get the integration account partner.
+        /// Test Get-AzIntegrationAccountAssembly command to get the integration account assembly.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetPartner()
+        public void TestGetAssembly()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-GetIntegrationAccountPartner");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-GetIntegrationAccountAssembly");
         }
 
         /// <summary>
-        /// Test Remove-AzIntegrationAccountPartner command to remove the integration account partner.
+        /// Test Remove-AzIntegrationAccountAssembly command to remove the integration account assembly.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemovePartner()
+        public void TestRemoveAssembly()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-RemoveIntegrationAccountPartner");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-RemoveIntegrationAccountAssembly");
         }
 
         /// <summary>
-        /// Test Set-AzIntegrationAccountPartner command to update the integration account partner.
+        /// Test Set-AzIntegrationAccountAssembly command to update the integration account assembly.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdatePartner()
+        public void TestUpdateAssembly()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-UpdateIntegrationAccountPartner");
-        }
-
-        /// <summary>
-        /// Test Get-AzIntegrationAccountPartner command to get all the integration account partners.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListPartner()
-        {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-ListIntegrationAccountPartner");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-UpdateIntegrationAccountAssembly");
         }
     }
 }

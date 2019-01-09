@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Logic" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Logic" Version="4.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +20,10 @@
 
   <ItemGroup>
     <None Update="Resources\*.*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Update="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
 </Project>

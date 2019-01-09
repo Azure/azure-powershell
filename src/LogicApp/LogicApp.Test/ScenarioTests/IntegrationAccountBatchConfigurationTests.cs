@@ -14,72 +14,61 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
+    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
 
     /// <summary>
-    /// Scenario tests for integration account partner commands.
+    /// Scenario tests for integration account batch configuration commands.
     /// </summary>
-    public class IntegrationAccountPartnerTests : RMTestBase
+    public class IntegrationAccountBatchConfigurationTests : RMTestBase
     {
         public XunitTracingInterceptor _logger;
-
-        public IntegrationAccountPartnerTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IntegrationAccountBatchConfigurationTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             this._logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(this._logger);
         }
 
         /// <summary>
-        /// Test New-AzIntegrationAccountPartner command to create a new integration account partner.
+        /// Test New-AzIntegrationAccountBatchConfiguration command to create a new integration account batch configuration.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatePartner()
+        public void TestCreateBatchConfiguration()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-CreateIntegrationAccountPartner");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-CreateIntegrationAccountBatchConfiguration");
         }
 
         /// <summary>
-        /// Test Get-AzIntegrationAccountPartner command to get the integration account partner.
+        /// Test Get-AzIntegrationAccountBatchConfiguration command to get the integration account batch configuration.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetPartner()
+        public void TestGetBatchConfiguration()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-GetIntegrationAccountPartner");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-GetIntegrationAccountBatchConfiguration");
         }
 
         /// <summary>
-        /// Test Remove-AzIntegrationAccountPartner command to remove the integration account partner.
+        /// Test Remove-AzIntegrationAccountBatchConfiguration command to remove the integration account batch configuration.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemovePartner()
+        public void TestRemoveBatchConfiguration()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-RemoveIntegrationAccountPartner");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-RemoveIntegrationAccountBatchConfiguration");
         }
 
         /// <summary>
-        /// Test Set-AzIntegrationAccountPartner command to update the integration account partner.
+        /// Test Set-AzIntegrationAccountBatchConfiguration command to update the integration account batch configuration.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdatePartner()
+        public void TestUpdateBatchConfiguration()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-UpdateIntegrationAccountPartner");
-        }
-
-        /// <summary>
-        /// Test Get-AzIntegrationAccountPartner command to get all the integration account partners.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListPartner()
-        {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-ListIntegrationAccountPartner");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-UpdateIntegrationAccountBatchConfiguration");
         }
     }
 }
