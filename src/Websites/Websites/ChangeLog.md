@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.1
 * Fixed a date parsing bug in `Get-AzDeletedWebApp`
 
 ## Version 1.0.0
