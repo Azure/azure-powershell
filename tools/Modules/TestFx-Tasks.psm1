@@ -106,6 +106,10 @@
         
         else
         {
+            if ([string]::IsNullOrEmpty($ServicePrincipalSecret))
+            {
+                throw "Service Principal secret required for existing Service Principal."
+            }
             $credentials.ServicePrincipal = $existingServicePrincipal.ApplicationId
             $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($ServicePrincipalSecret)
             $UnsecurePassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
