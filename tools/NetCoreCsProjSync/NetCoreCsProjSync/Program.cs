@@ -40,7 +40,7 @@ namespace NetCoreCsProjSync
 
         public static void Main(string[] args)
         {
-            var rmPath = args.FirstOrDefault(a => !ModeMap.ContainsKey(a.ToLower())) ?? @"..\..\..\src\ResourceManager";
+            var rmPath = args.FirstOrDefault(a => !ModeMap.ContainsKey(a.ToLower())) ?? @"..\..\..\src";
             if (!Directory.Exists(rmPath))
             {
                 throw new ArgumentException($"Directory [{rmPath}] does not exist");
