@@ -53,14 +53,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Name of the Azure Analysis Services server to synchronize. E.x. asazure://westus.asazure.windows.net/contososerver:rw",
-            Position = 0,
-            ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public string Instance { get; set; }
-
-        [Parameter(
-            Mandatory = true,
             HelpMessage = "Identity of the database need to be synchronized",
             Position = 1,
             ValueFromPipeline = true)]
@@ -98,7 +90,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         {
             this._dataCollectionProfile = new AzurePSDataCollectionProfile(false);
             base.BeginProcessing();
-            this.CommonBeginProcessing(Instance);
         }
 
         protected override void SetupDebuggingTraces()

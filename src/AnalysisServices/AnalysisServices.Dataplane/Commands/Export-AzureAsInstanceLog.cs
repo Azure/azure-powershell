@@ -30,10 +30,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     [OutputType(typeof(void))]
     public class ExportAzureAnalysisServerLog : AsAzureDataplaneCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "Name of the Azure Analysis Services which log will be fetched")]
-        [ValidateNotNullOrEmpty]
-        public string Instance { get; set; }
-
         [Parameter(Mandatory = true, HelpMessage = "Path to file to write Azure Analysis Services log")]
         [ValidateNotNullOrEmpty]
         public string OutputPath { get; set; }
@@ -61,12 +57,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             {
                 return Resources.ARMDataCollectionMessage;
             }
-        }
-
-        protected override void BeginProcessing()
-        {
-            base.BeginProcessing();
-            this.CommonBeginProcessing(Instance);
         }
 
         protected override void InitializeQosEvent()
