@@ -121,5 +121,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ConnectionMonitor");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestNetworkConfigurationDiagnostic()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkConfigurationDiagnostic");
+        }
     }
 }

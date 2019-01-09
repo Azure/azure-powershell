@@ -16,7 +16,7 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSNetworkWatcherNetworkConfigurationDiagnosticProfile
+    public class PSNetworkConfigurationDiagnosticProfile
     {
         [JsonProperty(Order = 2)]
         public string Direction { get; set; }

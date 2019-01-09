@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSNetworkConfigurationDiagnosticResult
     {
         [JsonProperty(Order = 2)]
-        public PSNetworkWatcherNetworkConfigurationDiagnosticProfile Profile { get; set; }
+        public PSNetworkConfigurationDiagnosticProfile Profile { get; set; }
 
         [JsonProperty(Order = 2)]
         public PSNetworkSecurityGroupResult NetworkSecurityGroupResult { get; set; }

@@ -384,6 +384,62 @@ function Test-VerifyIPFlow
 
 <#
 .SYNOPSIS
+Test NetworkConfigurationDiagnostic NetworkWatcher API.
+#>
+function Test-NetworkConfigurationDiagnostic
+{
+    # Setup
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
+    $nwRgName = Get-NrpResourceGroupName
+    $securityGroupName = Get-NrpResourceName
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US"
+    
+    try 
+    {
+        . ".\AzureRM.Resources.ps1"
+
+        # Create Resource group
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
+
+        # Deploy resources
+        Get-TestResourcesDeployment -rgn "$resourceGroupName"
+        
+        # Create Resource group for Network Watcher
+        New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
+        
+        # Get Network Watcher
+        $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
+        
+        #Get network security group
+        $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroupName
+
+        #Get Vm
+        $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
+
+        #Invoke network configuration diagnostic
+        $profile = New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile -Direction Inbound -Protocol Tcp -Source 10.1.1.4 -Destination * -DestinationPort 50 
+        $result1 = Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcher $nw -TargetResourceId $vm.Id -Profiles $profile
+        $result2 = Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcher $nw -TargetResourceId $vm.Id -Profiles $profile -VerbosityLevel Full
+
+        #Verification
+        Assert-AreEqual $result1.results[0].profile.direction Inbound
+        Assert-AreEqual $result1.results[0].profile.protocol Tcp
+        Assert-AreEqual $result1.results[0].profile.source 10.1.1.4
+        Assert-AreEqual $result1.results[0].profile.destinationPort 50
+        Assert-AreEqual $result1.results[0].networkSecurityGroupResult.securityRuleAccessResult Deny
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+        Clean-ResourceGroup $nwRgName
+    }
+}
+
+<#
+.SYNOPSIS
 Test PacketCapture API.
 #>
 function Test-PacketCapture

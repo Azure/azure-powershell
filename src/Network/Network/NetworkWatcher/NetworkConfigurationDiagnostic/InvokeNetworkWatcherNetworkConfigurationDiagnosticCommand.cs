@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "List of network configuration diagnostic profiles.")]
         [ValidateNotNullOrEmpty]
-        public List<PSNetworkWatcherNetworkConfigurationDiagnosticProfile> Profiles { get; set; }
+        public List<PSNetworkConfigurationDiagnosticProfile> Profiles { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Network
             parameters.VerbosityLevel = this.VerbosityLevel;
 
             parameters.Profiles = new List<MNM.NetworkConfigurationDiagnosticProfile>();
-            foreach (PSNetworkWatcherNetworkConfigurationDiagnosticProfile profile in this.Profiles)
+            foreach (PSNetworkConfigurationDiagnosticProfile profile in this.Profiles)
             {
                 MNM.NetworkConfigurationDiagnosticProfile profileMNM = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkConfigurationDiagnosticProfile>(profile);
                 parameters.Profiles.Add(profileMNM);

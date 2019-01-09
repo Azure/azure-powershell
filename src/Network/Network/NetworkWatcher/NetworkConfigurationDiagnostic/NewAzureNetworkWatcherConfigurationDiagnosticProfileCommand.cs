@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherNetworkConfigurationDiagnosticProfile"), OutputType(typeof(PSNetworkWatcherNetworkConfigurationDiagnosticProfile))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherNetworkConfigurationDiagnosticProfile"), OutputType(typeof(PSNetworkConfigurationDiagnosticProfile))]
     public class NewNetworkWatcherNetworkConfigurationDiagnosticProfileCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            var ncdPofile = new PSNetworkWatcherNetworkConfigurationDiagnosticProfile
+            var ncdPofile = new PSNetworkConfigurationDiagnosticProfile
             {
                 Direction = this.Direction,
                 Protocol = this.Protocol,
