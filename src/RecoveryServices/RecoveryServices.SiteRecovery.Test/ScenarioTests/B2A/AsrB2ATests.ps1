@@ -57,7 +57,7 @@ function WaitForJobCompletion
         $isJobLeftForProcessing = $true;
         do
         {
-            $Job = Get-AzureRmRecoveryServicesAsrJob -Name $JobId
+            $Job = Get-AzRecoveryServicesAsrJob -Name $JobId
             Write-Host $("Job Status:") -ForegroundColor Green
             $Job
 
@@ -105,7 +105,7 @@ Function WaitForIRCompletion
         Write-Host $("IR in Progress...") -ForegroundColor Yellow
         do
         {
-            $IRjobs = Get-AzureRmRecoveryServicesAsrJob -TargetObjectId $VM.Name | Sort-Object StartTime -Descending | select -First 5 | Where-Object{$_.JobType -eq "IrCompletion"}
+            $IRjobs = Get-AzRecoveryServicesAsrJob -TargetObjectId $VM.Name | Sort-Object StartTime -Descending | select -First 5 | Where-Object{$_.JobType -eq "IrCompletion"}
             if($IRjobs -eq $null -or $IRjobs.Count -ne 1)
             {
                 $isProcessingLeft = $true
@@ -137,9 +137,9 @@ function Test-CreateFabric
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
-    $currentJob = New-AzureRmRecoveryServicesAsrFabric -Name $PrimaryCloudName
+    $currentJob = New-AzRecoveryServicesAsrFabric -Name $PrimaryCloudName
 	$currentJob
 	WaitForJobCompletion -JobId $currentJob.Name
 }
@@ -153,13 +153,13 @@ function Test-CreatePolicy
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
-    $currentJob = New-AzureRmRecoveryServicesAsrPolicy -Name $ProtectionProfileName -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -RecoveryAzureStorageAccountId $StorageAccountID
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $currentJob = New-AzRecoveryServicesAsrPolicy -Name $ProtectionProfileName -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -RecoveryAzureStorageAccountId $StorageAccountID
     WaitForJobCompletion -JobId $currentJob.Name
-    $ProtectionProfile = Get-AzureRmRecoveryServicesAsrPolicy -Name $ProtectionProfileName
+    $ProtectionProfile = Get-AzRecoveryServicesAsrPolicy -Name $ProtectionProfileName
     $ProtectionProfile
     
-    $Policy = Get-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName
+    $Policy = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName
     Assert-True { $Policy.Count -gt 0 }
     Assert-NotNull($Policy)
 }
@@ -173,15 +173,15 @@ function Test-SiteRecoveryRemovePolicy
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     # Get a policy created in previous test
-    $Policy = Get-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName
+    $Policy = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName
     Assert-True { $Policy.Count -gt 0 }
     Assert-NotNull($Policy)
 
     # Delete the profile
-    $Job = Remove-AzureRmRecoveryServicesAsrPolicy -Policy $Policy
+    $Job = Remove-AzRecoveryServicesAsrPolicy -Policy $Policy
     #WaitForJobCompletion -JobId $Job.Name
 }
 
@@ -194,14 +194,14 @@ function Test-RemoveFabric
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     # Get a policy created in previous test
-    $fabric = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName 
+    $fabric = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName 
     $job = Remove-ASRFabric -InputObject $fabric
     WaitForJobCompletion -JobId $job.Name
 
-    Get-AzureRmRecoveryServicesAsrFabric|Remove-ASRFabric
+    Get-AzRecoveryServicesAsrFabric|Remove-ASRFabric
     #WaitForJobCompletion -JobId $Job.Name
 }
 <#
@@ -213,16 +213,16 @@ function Test-CreatePCMap
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
-    $Policy = Get-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName
-    $PrimaryProtectionContainer = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName| Get-AzureRmRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $Policy = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName
+    $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName| Get-AzRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
     
-	$currentJob = New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $ProtectionContainerMappingName -Policy $Policy -PrimaryProtectionContainer  $PrimaryProtectionContainer
+	$currentJob = New-AzRecoveryServicesAsrProtectionContainerMapping -Name $ProtectionContainerMappingName -Policy $Policy -PrimaryProtectionContainer  $PrimaryProtectionContainer
     $currentJob
     WaitForJobCompletion -JobId $currentJob.Name 
    
     # Get protection conatiner mapping
-    $ProtectionContainerMapping = Get-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $ProtectionContainerMappingName -ProtectionContainer $PrimaryProtectionContainer
+    $ProtectionContainerMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $ProtectionContainerMappingName -ProtectionContainer $PrimaryProtectionContainer
     Assert-NotNull($ProtectionContainerMapping)
 }
 
@@ -235,18 +235,18 @@ function Test-SiteRecoveryEnableDR
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
-    $Policy = Get-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName
-    $PrimaryProtectionContainer = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName| Get-AzureRmRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
-    $ProtectionContainerMapping = Get-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $ProtectionContainerMappingName -ProtectionContainer $PrimaryProtectionContainer
+    $Policy = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName
+    $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName| Get-AzRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
+    $ProtectionContainerMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $ProtectionContainerMappingName -ProtectionContainer $PrimaryProtectionContainer
 
     foreach($EnableVMName in $VmList.Split(','))
     {
         # Get protectable item
-        $VM = Get-AzureRmRecoveryServicesAsrProtectableItem -FriendlyName $EnableVMName -ProtectionContainer $PrimaryProtectionContainer  
+        $VM = Get-AzRecoveryServicesAsrProtectableItem -FriendlyName $EnableVMName -ProtectionContainer $PrimaryProtectionContainer  
         # EnableDR
-        $Job = New-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $StorageAccountID -OSDiskName $($EnableVMName+"disk") -OS Windows -RecoveryResourceGroupId $RecoveryResourceGroupId
+        $Job = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $StorageAccountID -OSDiskName $($EnableVMName+"disk") -OS Windows -RecoveryResourceGroupId $RecoveryResourceGroupId
     }
 }
 
@@ -259,16 +259,16 @@ function Test-UpdateRPI
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
-    $Policy = Get-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName
-    $PrimaryProtectionContainer = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName| Get-AzureRmRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
+    $Policy = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName
+    $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName| Get-AzRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
     
     foreach($EnableVMName in $VmList.Split(','))
     {
         # Get protectable item
-        $v = Get-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtectionContainer -FriendlyName $EnableVMName
-        $currentJob = Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $v -PrimaryNic $v.NicDetailsList[0].NicId -RecoveryNetworkId $AzureNetworkID -RecoveryNicSubnetName $subnet
+        $v = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtectionContainer -FriendlyName $EnableVMName
+        $currentJob = Set-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $v -PrimaryNic $v.NicDetailsList[0].NicId -RecoveryNetworkId $AzureNetworkID -RecoveryNicSubnetName $subnet
     }
 }
 
@@ -279,40 +279,40 @@ Site Recovery Network Mapping
 function Test-MapNetwork
 {
     param([string] $vaultSettingsFilePath)
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     # Get the primary container
-    $PrimaryFabric = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName
-    $RecoveryFabric = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $RecoveryFabricName
+    $PrimaryFabric = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName
+    $RecoveryFabric = Get-AzRecoveryServicesAsrFabric -FriendlyName $RecoveryFabricName
 
     # Get primary network
-    $PrimaryNetwork = Get-AzureRmRecoveryServicesAsrNetwork -Fabric $PrimaryFabric | where { $_.FriendlyName -eq $PrimaryNetworkFriendlyName}
-    $RecoveryNetwork = Get-AzureRmRecoveryServicesAsrNetwork -Fabric $RecoveryFabric | where { $_.FriendlyName -eq $RecoveryNetworkFriendlyName}
+    $PrimaryNetwork = Get-AzRecoveryServicesAsrNetwork -Fabric $PrimaryFabric | where { $_.FriendlyName -eq $PrimaryNetworkFriendlyName}
+    $RecoveryNetwork = Get-AzRecoveryServicesAsrNetwork -Fabric $RecoveryFabric | where { $_.FriendlyName -eq $RecoveryNetworkFriendlyName}
 
     # Create network mapping
-    $Job = New-AzureRmRecoveryServicesAsrNetworkMapping -Name $NetworkMappingName -PrimaryNetwork $PrimaryNetwork -RecoveryNetwork $RecoveryNetwork
+    $Job = New-AzRecoveryServicesAsrNetworkMapping -Name $NetworkMappingName -PrimaryNetwork $PrimaryNetwork -RecoveryNetwork $RecoveryNetwork
     WaitForJobCompletion -JobId $Job.Name
 
     # Get network mapping
-    $NetworkMapping = Get-AzureRmRecoveryServicesAsrNetworkMapping -Name $NetworkMappingName -Network $PrimaryNetwork
+    $NetworkMapping = Get-AzRecoveryServicesAsrNetworkMapping -Name $NetworkMappingName -Network $PrimaryNetwork
 
     }
 
     function Test-RemoveNetworkPairing
     {
         param([string] $vaultSettingsFilePath)
-        Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+        Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
         # Get the primary container
-        $PrimaryFabric = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName
-        $RecoveryFabric = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $RecoveryFabricName
+        $PrimaryFabric = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName
+        $RecoveryFabric = Get-AzRecoveryServicesAsrFabric -FriendlyName $RecoveryFabricName
 
         # Get primary network
-        $PrimaryNetwork = Get-AzureRmRecoveryServicesAsrNetwork -Fabric $PrimaryFabric | where { $_.FriendlyName -eq $PrimaryNetworkFriendlyName}
-        $RecoveryNetwork = Get-AzureRmRecoveryServicesAsrNetwork -Fabric $RecoveryFabric | where { $_.FriendlyName -eq $RecoveryNetworkFriendlyName}
+        $PrimaryNetwork = Get-AzRecoveryServicesAsrNetwork -Fabric $PrimaryFabric | where { $_.FriendlyName -eq $PrimaryNetworkFriendlyName}
+        $RecoveryNetwork = Get-AzRecoveryServicesAsrNetwork -Fabric $RecoveryFabric | where { $_.FriendlyName -eq $RecoveryNetworkFriendlyName}
 
         # Get network mapping
-        $job = Get-AzureRmRecoveryServicesAsrNetworkMapping -Name $NetworkMappingName -Network $PrimaryNetwork |Remove-ASRNetworkMapping
+        $job = Get-AzRecoveryServicesAsrNetworkMapping -Name $NetworkMappingName -Network $PrimaryNetwork |Remove-ASRNetworkMapping
         WaitForJobCompletion -JobId $Job.Name
     }
 <#
@@ -324,12 +324,12 @@ function Test-TFO
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     # Get the primary container
-    $PrimaryProtectionContainer = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName | Get-AzureRmRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
+    $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName | Get-AzRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
     
-    $rpi = Get-AzureRmRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
+    $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
 
 	$job = Start-ASRTestFailoverJob -ReplicationProtectedItem $rpi -Direction PrimaryToRecovery -AzureVMNetworkId $AzureNetworkID
     WaitForJobCompletion -JobId $Job.Name
@@ -347,14 +347,14 @@ function Test-PlannedFailover
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     # Get the primary container
-    $PrimaryProtectionContainer = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName | Get-AzureRmRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
+    $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName | Get-AzRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
 
-    $rpi = Get-AzureRmRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
+    $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
  
-    $job = Start-AzureRmRecoveryServicesAsrPlannedFailoverJob -ReplicationProtectedItem $rpi -Direction PrimaryToRecovery
+    $job = Start-AzRecoveryServicesAsrPlannedFailoverJob -ReplicationProtectedItem $rpi -Direction PrimaryToRecovery
 
     WaitForJobCompletion -JobId $Job.Name
 }
@@ -368,12 +368,12 @@ function Test-Reprotect
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     # Get the primary container
-    $PrimaryProtectionContainer = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName | Get-AzureRmRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
+    $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName | Get-AzRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
 
-    $rpi = Get-AzureRmRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
+    $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
     $currentJob = Update-ASRProtectionDirection -ReplicationProtectedItem $rpi -Direction RecoveryToPrimary
     WaitForJobCompletion -JobId $currentJob.Name 
 }
@@ -387,23 +387,23 @@ function Test-FailbackReprotect
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     # Get the primary container
-    $PrimaryProtectionContainer = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName | Get-AzureRmRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
+    $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName | Get-AzRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
 
-    $rpi = Get-AzureRmRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
+    $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
 
-    $job =  Start-AzureRmRecoveryServicesAsrPlannedFailoverJob -ReplicationProtectedItem $rpi -Direction RecoveryToPrimary
+    $job =  Start-AzRecoveryServicesAsrPlannedFailoverJob -ReplicationProtectedItem $rpi -Direction RecoveryToPrimary
 
     WaitForJobCompletion -JobId $Job.Name
 
-    $rpi = Get-AzureRmRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
+    $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
 
     $job = Start-ASRCommitFailoverJob -ReplicationProtectedItem $rpi 
     WaitForJobCompletion -JobId $Job.Name
 
-    $rpi = Get-AzureRmRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
+    $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
     $currentJob = Update-ASRProtectionDirection -ReplicationProtectedItem $rpi -Direction PrimaryToRecovery
 
     WaitForJobCompletion -JobId $currentJob.Name 
@@ -418,10 +418,10 @@ function Test-UFOandFailback
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     # Get the primary container
-    $PrimaryProtectionContainer = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName | Get-AzureRmRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
+    $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName | Get-AzRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
 
     $rpi = Get-ASRReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
 
@@ -434,10 +434,10 @@ function Test-UFOandFailback
     WaitForIRCompletion -VM $rpi 
     #timeout 120
 
-    $rpi = Get-AzureRmRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
-    $job =  Start-AzureRmRecoveryServicesAsrUnPlannedFailoverJob -ReplicationProtectedItem $rpi -Direction RecoveryToPrimary
+    $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
+    $job =  Start-AzRecoveryServicesAsrUnPlannedFailoverJob -ReplicationProtectedItem $rpi -Direction RecoveryToPrimary
     WaitForJobCompletion -JobId $Job.Name
-    $rpi = Get-AzureRmRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
+    $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
     $currentJob = Update-ASRProtectionDirection -ReplicationProtectedItem $rpi -Direction PrimaryToRecovery
     WaitForJobCompletion -JobId $currentJob.Name  
 }
@@ -451,16 +451,16 @@ function Test-RemovePCMap
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     # Get the primary container
-    $PrimaryProtectionContainer = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName| Get-AzureRmRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
+    $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName| Get-AzRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
 
     # Get protection conatiner mapping
-    $ProtectionContainerMapping = Get-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $ProtectionContainerMappingName -ProtectionContainer $PrimaryProtectionContainer
+    $ProtectionContainerMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $ProtectionContainerMappingName -ProtectionContainer $PrimaryProtectionContainer
 
     # Remove protection conatiner mapping
-    $Job = Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping -ProtectionContainerMapping $ProtectionContainerMapping
+    $Job = Remove-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainerMapping $ProtectionContainerMapping
     #WaitForJobCompletion -JobId $Job.Name
 }
 
@@ -476,20 +476,20 @@ function Test-SiteRecoveryDisableDR
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     # Get the primary container
-    $PrimaryProtectionContainer = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName | Get-AzureRmRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
+    $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName | Get-AzRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
 
     # Get protected item
-    $VM = Get-AzureRmRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer  
+    $VM = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer  
 
     # DisableDR
-    $Job = Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $VM
+    $Job = Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $VM
 
     WaitForJobCompletion -JobId $Job.Name
 
-    Get-ASRReplicationProtectedItem -ProtectionContainer $PrimaryProtectionContainer  | Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem
+    Get-ASRReplicationProtectedItem -ProtectionContainer $PrimaryProtectionContainer  | Remove-AzRecoveryServicesAsrReplicationProtectedItem
     #WaitForJobCompletion -JobId $Job.Name
 }
 
@@ -502,15 +502,15 @@ function Test-SiteRecoveryCreateRecoveryPlan
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     # Get the fabric and container
-    $PrimaryFabric = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName
-    $RecoveryFabric = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $RecoveryFabricName
-    $PrimaryProtectionContainer = Get-AzureRmRecoveryServicesAsrProtectionContainer -FriendlyName $PrimaryProtectionContainerName -Fabric $PrimaryFabric
-    $VM = Get-AzureRmRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer
+    $PrimaryFabric = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName
+    $RecoveryFabric = Get-AzRecoveryServicesAsrFabric -FriendlyName $RecoveryFabricName
+    $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -FriendlyName $PrimaryProtectionContainerName -Fabric $PrimaryFabric
+    $VM = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer
 
-    $Job = New-AzureRmRecoveryServicesAsrRecoveryPlan -Name $RecoveryPlanName -PrimaryFabric $PrimaryFabric -RecoveryFabric $RecoveryFabric -ReplicationProtectedItem $VM
+    $Job = New-AzRecoveryServicesAsrRecoveryPlan -Name $RecoveryPlanName -PrimaryFabric $PrimaryFabric -RecoveryFabric $RecoveryFabric -ReplicationProtectedItem $VM
     #WaitForJobCompletion -JobId $Job.Name
 }
 
@@ -523,9 +523,9 @@ function Test-SiteRecoveryEnumerateRecoveryPlan
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
-    $RP = Get-AzureRmRecoveryServicesAsrRecoveryPlan -Name $RecoveryPlanName
+    $RP = Get-AzRecoveryServicesAsrRecoveryPlan -Name $RecoveryPlanName
     Assert-NotNull($RP)
     Assert-True { $RP.Count -gt 0 }
 }
@@ -539,14 +539,14 @@ function Test-EditRecoveryPlan
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     $RP = Get-AsrRecoveryPlan -Name $RecoveryPlanName
     $RP = Edit-ASRRecoveryPlan -RecoveryPlan $RP -AppendGroup
 
     $VMNameList = $VMList.split(',')
-    $PrimaryFabric = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName
-    $PrimaryProtectionContainer = Get-AzureRmRecoveryServicesAsrProtectionContainer -FriendlyName $PrimaryProtectionContainerName -Fabric $PrimaryFabric
+    $PrimaryFabric = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName
+    $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -FriendlyName $PrimaryProtectionContainerName -Fabric $PrimaryFabric
     
     $VMList = Get-ASRReplicationProtectedItem -ProtectionContainer $PrimaryProtectionContainer
     $VM = $VMList | where { $_.FriendlyName -eq $VMNameList[1] }
@@ -570,12 +570,12 @@ function Test-RecoveryPlanJob
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     $RP = Get-AsrRecoveryPlan -Name $RecoveryPlanName
-    $RecoveryFabric = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $RecoveryFabricName
+    $RecoveryFabric = Get-AzRecoveryServicesAsrFabric -FriendlyName $RecoveryFabricName
 
-    $RecoveryNetwork = Get-AzureRmRecoveryServicesAsrNetwork -Fabric $RecoveryFabric | where { $_.FriendlyName -eq $RecoveryNetworkFriendlyName}
+    $RecoveryNetwork = Get-AzRecoveryServicesAsrNetwork -Fabric $RecoveryFabric | where { $_.FriendlyName -eq $RecoveryNetworkFriendlyName}
 
     $currentJob = Start-ASRTestFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery -VMNetwork $RecoveryNetwork
     WaitForJobCompletion -JobId $currentJob.Name
@@ -618,10 +618,10 @@ function Test-SiteRecoveryRemoveRecoveryPlan
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
-    $RP = Get-AzureRmRecoveryServicesAsrRecoveryPlan -Name $RecoveryPlanName
-    $Job = Remove-AzureRmRecoveryServicesAsrRecoveryPlan -RecoveryPlan $RP
+    $RP = Get-AzRecoveryServicesAsrRecoveryPlan -Name $RecoveryPlanName
+    $Job = Remove-AzRecoveryServicesAsrRecoveryPlan -RecoveryPlan $RP
     #WaitForJobCompletion -JobId $Job.Name
 }
 
@@ -634,16 +634,16 @@ function Test-SiteRecoveryFabricTest
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     # Create Fabric
-    $Job = New-AzureRmRecoveryServicesAsrFabric -Name $FabricNameToBeCreated -Type HyperVSite
+    $Job = New-AzRecoveryServicesAsrFabric -Name $FabricNameToBeCreated -Type HyperVSite
     #WaitForJobCompletion -JobId $Job.Name -JobQueryWaitTimeInSeconds $JobQueryWaitTimeInSeconds
     Assert-NotNull($Job)
     WaitForJobCompletion -JobId $job.name
 
     # Enumerate Fabrics
-    $fabrics =  Get-AzureRmRecoveryServicesAsrFabric 
+    $fabrics =  Get-AzRecoveryServicesAsrFabric 
     Assert-True { $fabrics.Count -gt 0 }
     Assert-NotNull($fabrics)
     foreach($fabric in $fabrics)
@@ -653,16 +653,16 @@ function Test-SiteRecoveryFabricTest
     }
 
     # Enumerate specific Fabric
-    $fabric =  Get-AzureRmRecoveryServicesAsrFabric -Name $FabricNameToBeCreated
+    $fabric =  Get-AzRecoveryServicesAsrFabric -Name $FabricNameToBeCreated
     Assert-NotNull($fabric)
     Assert-NotNull($fabrics.Name)
     Assert-NotNull($fabrics.ID)
 
     # Remove specific fabric
-    $Job = Remove-AzureRmRecoveryServicesAsrFabric -Fabric $fabric
+    $Job = Remove-AzRecoveryServicesAsrFabric -Fabric $fabric
     Assert-NotNull($Job)
     #WaitForJobCompletion -JobId $Job.Name -JobQueryWaitTimeInSeconds $JobQueryWaitTimeInSeconds
-    $fabric =  Get-AzureRmRecoveryServicesAsrFabric | Where-Object {$_.Name -eq $FabricNameToBeCreated }
+    $fabric =  Get-AzRecoveryServicesAsrFabric | Where-Object {$_.Name -eq $FabricNameToBeCreated }
     Assert-Null($fabric)
 }
 
@@ -676,10 +676,10 @@ function Test-SiteRecoveryNewModelE2ETest
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     # Enumerate Fabrics
-    $Fabrics =  Get-AzureRmRecoveryServicesAsrFabric 
+    $Fabrics =  Get-AzRecoveryServicesAsrFabric 
     Assert-True { $fabrics.Count -gt 0 }
     Assert-NotNull($fabrics)
     foreach($fabric in $fabrics)
@@ -691,7 +691,7 @@ function Test-SiteRecoveryNewModelE2ETest
     $RecoveryFabric = $Fabrics | Where-Object { $_.FriendlyName -eq $RecoveryFabricName}
 
     # Enumerate RSPs
-    $rsps = Get-AzureRmRecoveryServicesAsrFabric | Get-AzureRmRecoveryServicesAsrServicesProvider
+    $rsps = Get-AzRecoveryServicesAsrFabric | Get-AzRecoveryServicesAsrServicesProvider
     Assert-True { $rsps.Count -gt 0 }
     Assert-NotNull($rsps)
     foreach($rsp in $rsps)
@@ -700,76 +700,76 @@ function Test-SiteRecoveryNewModelE2ETest
     }
 
     # Create Policy
-    $Job = New-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName -ReplicationProvider HyperVReplica2012R2 -ReplicationMethod Online -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -ReplicationPort 8083 -Authentication Kerberos -ReplicaDeletion Required
+    $Job = New-AzRecoveryServicesAsrPolicy -Name $PolicyName -ReplicationProvider HyperVReplica2012R2 -ReplicationMethod Online -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -ReplicationPort 8083 -Authentication Kerberos -ReplicaDeletion Required
     #WaitForJobCompletion -JobId $Job.Name
 
-    $Policy = Get-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName
+    $Policy = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName
     Assert-NotNull($Policy)
     Assert-NotNull($Policy.Name)
 
     # Get conatiners
-    $PrimaryProtectionContainer = Get-AzureRmRecoveryServicesAsrFabric | Get-AzureRmRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
+    $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrFabric | Get-AzRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
     Assert-NotNull($PrimaryProtectionContainer)
     Assert-NotNull($PrimaryProtectionContainer.Name)
-    $RecoveryProtectionContainer = Get-AzureRmRecoveryServicesAsrFabric | Get-AzureRmRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $RecoveryProtectionContainerName }
+    $RecoveryProtectionContainer = Get-AzRecoveryServicesAsrFabric | Get-AzRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $RecoveryProtectionContainerName }
     Assert-NotNull($RecoveryProtectionContainer)
     Assert-NotNull($RecoveryProtectionContainer.Name)
 
     # Create new Conatiner mapping 
-    $Job = New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $ProtectionContainerMappingName -Policy $Policy -PrimaryProtectionContainer $PrimaryProtectionContainer -RecoveryProtectionContainer $RecoveryProtectionContainer
+    $Job = New-AzRecoveryServicesAsrProtectionContainerMapping -Name $ProtectionContainerMappingName -Policy $Policy -PrimaryProtectionContainer $PrimaryProtectionContainer -RecoveryProtectionContainer $RecoveryProtectionContainer
     #WaitForJobCompletion -JobId $Job.Name
 
     # Get container mapping
-    $ProtectionContainerMapping = Get-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $ProtectionContainerMappingName -ProtectionContainer $PrimaryProtectionContainer
+    $ProtectionContainerMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $ProtectionContainerMappingName -ProtectionContainer $PrimaryProtectionContainer
     Assert-NotNull($ProtectionContainerMapping)
     Assert-NotNull($ProtectionContainerMapping.Name)
 
     # Get primary network
-    $PrimaryNetwork = Get-AzureRmRecoveryServicesAsrNetwork -Fabric $PrimaryFabric | where { $_.FriendlyName -eq $PrimaryNetworkFriendlyName}
-    $RecoveryNetwork = Get-AzureRmRecoveryServicesAsrNetwork -Fabric $RecoveryFabric | where { $_.FriendlyName -eq $RecoveryNetworkFriendlyName}
+    $PrimaryNetwork = Get-AzRecoveryServicesAsrNetwork -Fabric $PrimaryFabric | where { $_.FriendlyName -eq $PrimaryNetworkFriendlyName}
+    $RecoveryNetwork = Get-AzRecoveryServicesAsrNetwork -Fabric $RecoveryFabric | where { $_.FriendlyName -eq $RecoveryNetworkFriendlyName}
 
     # Create network mapping
-    $Job = New-AzureRmRecoveryServicesAsrNetworkMapping -Name $NetworkMappingName -PrimaryNetwork $PrimaryNetwork -RecoveryNetwork $RecoveryNetwork
+    $Job = New-AzRecoveryServicesAsrNetworkMapping -Name $NetworkMappingName -PrimaryNetwork $PrimaryNetwork -RecoveryNetwork $RecoveryNetwork
     #WaitForJobCompletion -JobId $Job.Name
 
     # Get network mapping
-    $NetworkMapping = Get-AzureRmRecoveryServicesAsrNetworkMapping -Name $NetworkMappingName -Network $PrimaryNetwork
+    $NetworkMapping = Get-AzRecoveryServicesAsrNetworkMapping -Name $NetworkMappingName -Network $PrimaryNetwork
 
     # Get protectable item
-    $protectable = Get-AzureRmRecoveryServicesAsrProtectableItem -ProtectionContainer $PrimaryProtectionContainer -FriendlyName $VMName
+    $protectable = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $PrimaryProtectionContainer -FriendlyName $VMName
     Assert-NotNull($protectable)
     Assert-NotNull($protectable.Name)
 
     # New replication protected item
-    $Job = New-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $protectable -Name $protectable.Name -ProtectionContainerMapping $ProtectionContainerMapping
+    $Job = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $protectable -Name $protectable.Name -ProtectionContainerMapping $ProtectionContainerMapping
     #WaitForJobCompletion -JobId $Job.Name
     #WaitForIRCompletion -VM $protectable 
     Assert-NotNull($Job)
 
     # Get replication protected item
-    $protected = Get-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtectionContainer -Name $protectable.Name
+    $protected = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtectionContainer -Name $protectable.Name
     Assert-NotNull($protected)
     Assert-NotNull($protected.Name)
 
     # Remove protected item
-    $Job = Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $protected
+    $Job = Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $protected
     #WaitForJobCompletion -JobId $Job.Name
-    $protected = Get-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtectionContainer | Where-Object {$_.Name -eq $protectable.Name} 
+    $protected = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtectionContainer | Where-Object {$_.Name -eq $protectable.Name} 
     Assert-Null($protected)
 
     # Remove network mapping
-    $Job = Remove-AzureRmRecoveryServicesAsrNetworkMapping -NetworkMapping $NetworkMapping
+    $Job = Remove-AzRecoveryServicesAsrNetworkMapping -NetworkMapping $NetworkMapping
     #WaitForJobCompletion -JobId $Job.Name
 
     # Remove conatiner mapping
-    $Job = Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping -ProtectionContainerMapping $ProtectionContainerMapping
+    $Job = Remove-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainerMapping $ProtectionContainerMapping
     #WaitForJobCompletion -JobId $Job.Name
-    $ProtectionContainerMapping = Get-AzureRmRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $PrimaryProtectionContainer | Where-Object {$_.Name -eq $ProtectionContainerMappingName}
+    $ProtectionContainerMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $PrimaryProtectionContainer | Where-Object {$_.Name -eq $ProtectionContainerMappingName}
     Assert-Null($ProtectionContainerMapping)
 
     # Remove Policy
-    $Job = Remove-AzureRmRecoveryServicesAsrPolicy -Policy $Policy
+    $Job = Remove-AzRecoveryServicesAsrPolicy -Policy $Policy
     #WaitForJobCompletion -JobId $Job.Name
-    $Policy = Get-AzureRmRecoveryServicesAsrPolicy | Where-Object {$_.Name -eq $PolicyName}
+    $Policy = Get-AzRecoveryServicesAsrPolicy | Where-Object {$_.Name -eq $PolicyName}
     Assert-Null($Policy)
 }

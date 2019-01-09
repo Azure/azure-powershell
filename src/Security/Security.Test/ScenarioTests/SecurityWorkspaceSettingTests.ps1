@@ -16,11 +16,11 @@
 .SYNOPSIS
 Get security workspace settings on a subscription scope
 #>
-function Get-AzureRmSecurityWorkspaceSetting-SubscriptionScope
+function Get-AzSecurityWorkspaceSetting-SubscriptionScope
 {
-	Set-AzureRmSecurityWorkspaceSetting-SubscriptionLevelResource
+	Set-AzSecurityWorkspaceSetting-SubscriptionLevelResource
 
-    $workspaceSettings = Get-AzureRmSecurityWorkspaceSetting
+    $workspaceSettings = Get-AzSecurityWorkspaceSetting
 	Validate-WorkspaceSettings $workspaceSettings
 }
 
@@ -28,11 +28,11 @@ function Get-AzureRmSecurityWorkspaceSetting-SubscriptionScope
 .SYNOPSIS
 Get a security workspace setting on a subscription
 #>
-function Get-AzureRmSecurityWorkspaceSetting-SubscriptionLevelResource
+function Get-AzSecurityWorkspaceSetting-SubscriptionLevelResource
 {
-	Set-AzureRmSecurityWorkspaceSetting-SubscriptionLevelResource
+	Set-AzSecurityWorkspaceSetting-SubscriptionLevelResource
 
-    $workspaceSettings = Get-AzureRmSecurityWorkspaceSetting -Name "default"
+    $workspaceSettings = Get-AzSecurityWorkspaceSetting -Name "default"
 	Validate-WorkspaceSettings $workspaceSettings
 }
 
@@ -40,10 +40,10 @@ function Get-AzureRmSecurityWorkspaceSetting-SubscriptionLevelResource
 .SYNOPSIS
 Get a security workspace setting by a resource ID
 #>
-function Get-AzureRmSecurityWorkspaceSetting-ResourceId
+function Get-AzSecurityWorkspaceSetting-ResourceId
 {
-	$workspaceSetting = Set-AzureRmSecurityWorkspaceSetting-SubscriptionLevelResource
-    $fetchedWorkspaceSettings = Get-AzureRmSecurityWorkspaceSetting -ResourceId $workspaceSetting.Id
+	$workspaceSetting = Set-AzSecurityWorkspaceSetting-SubscriptionLevelResource
+    $fetchedWorkspaceSettings = Get-AzSecurityWorkspaceSetting -ResourceId $workspaceSetting.Id
 	Validate-WorkspaceSetting $fetchedWorkspaceSettings
 }
 
@@ -51,23 +51,23 @@ function Get-AzureRmSecurityWorkspaceSetting-ResourceId
 .SYNOPSIS
 Set a security workspace setting on a subscription
 #>
-function Set-AzureRmSecurityWorkspaceSetting-SubscriptionLevelResource
+function Set-AzSecurityWorkspaceSetting-SubscriptionLevelResource
 {
 	$rgName = Get-TestResourceGroupName
 	$wsName = "securityuserws"
 
-	return Set-AzureRmSecurityWorkspaceSetting -Name "default" -Scope "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869" -WorkspaceId  "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/mainws/providers/microsoft.operationalinsights/workspaces/securityuserws"
+	return Set-AzSecurityWorkspaceSetting -Name "default" -Scope "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869" -WorkspaceId  "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/mainws/providers/microsoft.operationalinsights/workspaces/securityuserws"
 }
 
 <#
 .SYNOPSIS
 Delete a security workspace setting on a subscription
 #>
-function Remove-AzureRmSecurityWorkspaceSetting-SubscriptionLevelResource
+function Remove-AzSecurityWorkspaceSetting-SubscriptionLevelResource
 {
-	Set-AzureRmSecurityWorkspaceSetting-SubscriptionLevelResource
+	Set-AzSecurityWorkspaceSetting-SubscriptionLevelResource
 
-    Remove-AzureRmSecurityWorkspaceSetting -Name "default"
+    Remove-AzSecurityWorkspaceSetting -Name "default"
 }
 
 <#

@@ -22,7 +22,7 @@ function Remediation-SubscriptionScope-Crud
    $remediationName = "PSTestRemediation"
 
    # Create a new remediation
-   $remediation = Start-AzureRmPolicyRemediation -PolicyAssignmentId $assignmentId -Name $remediationName -LocationFilter "westus2","west central us"
+   $remediation = Start-AzPolicyRemediation -PolicyAssignmentId $assignmentId -Name $remediationName -LocationFilter "westus2","west central us"
    Validate-Remediation $remediation
    Assert-AreEqual $assignmentId $remediation.PolicyAssignmentId
    Assert-Null $remediation.PolicyDefinitionReferenceId
@@ -32,11 +32,11 @@ function Remediation-SubscriptionScope-Crud
    Assert-AreEqual 3 $remediation.DeploymentSummary.TotalDeployments
 
    # Cancel the remediation as a job so that we wait for cancellation to complete
-   $job = ($remediation | Stop-AzureRmPolicyRemediation -AsJob)
+   $job = ($remediation | Stop-AzPolicyRemediation -AsJob)
    $job | Wait-Job
 
    # Get the remediation that was just cancelled
-   $remediation = Get-AzureRmPolicyRemediation -Name $remediationName
+   $remediation = Get-AzPolicyRemediation -Name $remediationName
    Validate-Remediation $remediation
    Assert-AreEqual $remediationName $remediation.Name
    Assert-AreEqual $assignmentId $remediation.PolicyAssignmentId
@@ -47,7 +47,7 @@ function Remediation-SubscriptionScope-Crud
    Assert-AreEqual 0 $remediation.DeploymentSummary.FailedDeployments
 
    # Get the deployments for the remediation
-   $remediation = Get-AzureRmPolicyRemediation -Name $remediationName -IncludeDetail
+   $remediation = Get-AzPolicyRemediation -Name $remediationName -IncludeDetail
    Assert-AreEqual 3 $remediation.Deployments.Count
    $remediation.Deployments | ForEach-Object {
       Validate-RemediationDeployment $_
@@ -55,7 +55,7 @@ function Remediation-SubscriptionScope-Crud
    }
 
    # Get the deployments for the remediation with a Top filter
-   $remediation = Get-AzureRmPolicyRemediation -Name $remediationName -IncludeDetail -Top 2
+   $remediation = Get-AzPolicyRemediation -Name $remediationName -IncludeDetail -Top 2
    Assert-AreEqual 2 $remediation.Deployments.Count
    $remediation.Deployments | ForEach-Object {
       Validate-RemediationDeployment $_
@@ -63,17 +63,17 @@ function Remediation-SubscriptionScope-Crud
    }
 
    # Get all remediations in the subscription
-   $remediations = Get-AzureRmPolicyRemediation
+   $remediations = Get-AzPolicyRemediation
    Assert-AreEqual 72 $remediations.Count
    Validate-Remediation $remediations[10]
 
    # Get a limited number of remediations
-   $remediations = Get-AzureRmPolicyRemediation -Top 5
+   $remediations = Get-AzPolicyRemediation -Top 5
    Assert-AreEqual 5 $remediations.Count
    Validate-Remediation $remediations[0]
 
    # Get all remediations for a specific assignment
-   $remediations = Get-AzureRmPolicyRemediation -Filter "PolicyAssignmentId eq '$assignmentId'"
+   $remediations = Get-AzPolicyRemediation -Filter "PolicyAssignmentId eq '$assignmentId'"
    Assert-AreEqual 2 $remediations.Count
    $remediations | ForEach-Object {
       Validate-Remediation $_
@@ -81,7 +81,7 @@ function Remediation-SubscriptionScope-Crud
    }
 
    # Delete the remediation that was created initially
-   $result = ($remediation | Remove-AzureRmPolicyRemediation -PassThru)
+   $result = ($remediation | Remove-AzPolicyRemediation -PassThru)
    Assert-AreEqual $true $result
 }
 
@@ -96,7 +96,7 @@ function Remediation-ResourceGroupScope-Crud
    $resourceGroupName = "elpere"
 
    # Create a new remediation
-   $remediation = Start-AzureRmPolicyRemediation -ResourceGroupName $resourceGroupName -PolicyAssignmentId $assignmentId -Name $remediationName
+   $remediation = Start-AzPolicyRemediation -ResourceGroupName $resourceGroupName -PolicyAssignmentId $assignmentId -Name $remediationName
    Validate-Remediation $remediation
    Assert-AreEqual $assignmentId $remediation.PolicyAssignmentId
    Assert-Null $remediation.PolicyDefinitionReferenceId
@@ -105,10 +105,10 @@ function Remediation-ResourceGroupScope-Crud
    Assert-AreEqual 5 $remediation.DeploymentSummary.TotalDeployments
 
    # Cancel the remediation
-  Stop-AzureRmPolicyRemediation -ResourceId $remediation.Id
+  Stop-AzPolicyRemediation -ResourceId $remediation.Id
 
    # Get the remediation that was just cancelled
-   $remediation = Get-AzureRmPolicyRemediation -ResourceGroupName $resourceGroupName -Name $remediationName
+   $remediation = Get-AzPolicyRemediation -ResourceGroupName $resourceGroupName -Name $remediationName
    Validate-Remediation $remediation
    Assert-AreEqual $remediationName $remediation.Name
    Assert-AreEqual $assignmentId $remediation.PolicyAssignmentId
@@ -118,7 +118,7 @@ function Remediation-ResourceGroupScope-Crud
    Assert-AreEqual 0 $remediation.DeploymentSummary.FailedDeployments
 
    # Get the deployments for the remediation
-   $remediation = Get-AzureRmPolicyRemediation -ResourceGroupName $resourceGroupName -Name $remediationName -IncludeDetail
+   $remediation = Get-AzPolicyRemediation -ResourceGroupName $resourceGroupName -Name $remediationName -IncludeDetail
    Assert-AreEqual 5 $remediation.Deployments.Count
    $remediation.Deployments | ForEach-Object {
       Validate-RemediationDeployment $_
@@ -126,7 +126,7 @@ function Remediation-ResourceGroupScope-Crud
    }
 
    # Get the deployments for the remediation (+ top filter)
-   $remediation = Get-AzureRmPolicyRemediation -ResourceGroupName $resourceGroupName -Name $remediationName -IncludeDetail -Top 2
+   $remediation = Get-AzPolicyRemediation -ResourceGroupName $resourceGroupName -Name $remediationName -IncludeDetail -Top 2
    Assert-AreEqual 2 $remediation.Deployments.Count
    $remediation.Deployments | ForEach-Object {
       Validate-RemediationDeployment $_
@@ -134,17 +134,17 @@ function Remediation-ResourceGroupScope-Crud
    }
 
    # Get all remediations in the resource group
-   $remediations = Get-AzureRmPolicyRemediation -ResourceGroupName $resourceGroupName
+   $remediations = Get-AzPolicyRemediation -ResourceGroupName $resourceGroupName
    Assert-AreEqual 11 $remediations.Count
    Validate-Remediation $remediations[5]
 
    # Get a limited number of remediations
-   $remediations = Get-AzureRmPolicyRemediation -ResourceGroupName $resourceGroupName -Top 5
+   $remediations = Get-AzPolicyRemediation -ResourceGroupName $resourceGroupName -Top 5
    Assert-AreEqual 5 $remediations.Count
    Validate-Remediation $remediations[0]
 
    # Get all remediations for a specific assignment
-   $remediations = Get-AzureRmPolicyRemediation -ResourceGroupName $resourceGroupName -Filter "PolicyAssignmentId eq '$assignmentId'"
+   $remediations = Get-AzPolicyRemediation -ResourceGroupName $resourceGroupName -Filter "PolicyAssignmentId eq '$assignmentId'"
    Assert-AreEqual 1 $remediations.Count
    $remediations | ForEach-Object {
       Validate-Remediation $_
@@ -152,7 +152,7 @@ function Remediation-ResourceGroupScope-Crud
    }
 
    # Delete the remediation that was created initially
-   $result = (Remove-AzureRmPolicyRemediation -ResourceGroupName $resourceGroupName -Name $remediationName -PassThru)
+   $result = (Remove-AzPolicyRemediation -ResourceGroupName $resourceGroupName -Name $remediationName -PassThru)
    Assert-AreEqual $true $result
 }
 
@@ -167,7 +167,7 @@ function Remediation-ResourceScope-Crud
    $scope = "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourceGroups/elpere/providers/Microsoft.KeyVault/vaults/elpereKv"
 
    # Create a new remediation
-   $remediation = Start-AzureRmPolicyRemediation -Scope $scope -PolicyAssignmentId $assignmentId -Name $remediationName
+   $remediation = Start-AzPolicyRemediation -Scope $scope -PolicyAssignmentId $assignmentId -Name $remediationName
    Validate-Remediation $remediation
    Assert-AreEqual $assignmentId $remediation.PolicyAssignmentId
    Assert-Null $remediation.PolicyDefinitionReferenceId
@@ -176,11 +176,11 @@ function Remediation-ResourceScope-Crud
    Assert-AreEqual 1 $remediation.DeploymentSummary.TotalDeployments
 
    # Cancel the remediation as a job so that we wait for cancellation to complete
-   $job = Stop-AzureRmPolicyRemediation -Scope $scope -Name $remediationName -AsJob
+   $job = Stop-AzPolicyRemediation -Scope $scope -Name $remediationName -AsJob
    $job | Wait-Job
 
    # Get the remediation that was just cancelled
-   $remediation = Get-AzureRmPolicyRemediation -Scope $scope -Name $remediationName
+   $remediation = Get-AzPolicyRemediation -Scope $scope -Name $remediationName
    Validate-Remediation $remediation
    Assert-AreEqual $remediationName $remediation.Name
    Assert-AreEqual $assignmentId $remediation.PolicyAssignmentId
@@ -190,7 +190,7 @@ function Remediation-ResourceScope-Crud
    Assert-AreEqual 0 $remediation.DeploymentSummary.FailedDeployments
 
    # Get the deployments for the remediation
-   $remediation = Get-AzureRmPolicyRemediation -Scope $scope -Name $remediationName -IncludeDetail
+   $remediation = Get-AzPolicyRemediation -Scope $scope -Name $remediationName -IncludeDetail
    Assert-AreEqual 1 $remediation.Deployments.Count
    $remediation.Deployments | ForEach-Object {
       Validate-RemediationDeployment $_
@@ -198,7 +198,7 @@ function Remediation-ResourceScope-Crud
    }
 
    # Get the deployments for the remediation (+ top filter)
-   $remediation = Get-AzureRmPolicyRemediation -Scope $scope -Name $remediationName -IncludeDetail -Top 2
+   $remediation = Get-AzPolicyRemediation -Scope $scope -Name $remediationName -IncludeDetail -Top 2
    Assert-AreEqual 1 $remediation.Deployments.Count
    $remediation.Deployments | ForEach-Object {
       Validate-RemediationDeployment $_
@@ -206,12 +206,12 @@ function Remediation-ResourceScope-Crud
    }
 
    # Get all remediations underneath the resource
-   $remediations = Get-AzureRmPolicyRemediation -Scope $scope
+   $remediations = Get-AzPolicyRemediation -Scope $scope
    Assert-AreEqual 1 $remediations.Count
    Validate-Remediation $remediations[0]
 
    # Get all remediations for a specific assignment
-   $remediations = Get-AzureRmPolicyRemediation -Scope $scope -Filter "PolicyAssignmentId eq '$assignmentId'"
+   $remediations = Get-AzPolicyRemediation -Scope $scope -Filter "PolicyAssignmentId eq '$assignmentId'"
    Assert-AreEqual 1 $remediations.Count
    $remediations | ForEach-Object {
       Validate-Remediation $_
@@ -219,7 +219,7 @@ function Remediation-ResourceScope-Crud
    }
 
    # Delete the remediation that was created initially
-   $result = (Remove-AzureRmPolicyRemediation -Scope $scope -Name $remediationName -PassThru)
+   $result = (Remove-AzPolicyRemediation -Scope $scope -Name $remediationName -PassThru)
    Assert-AreEqual $true $result
 }
 
@@ -234,7 +234,7 @@ function Remediation-ManagementGroupScope-Crud
    $managementGroupId = "PolicyUIMG"
 
    # Create a new remediation
-   $remediation = Start-AzureRmPolicyRemediation -ManagementGroupName $managementGroupId -PolicyAssignmentId $assignmentId -Name $remediationName
+   $remediation = Start-AzPolicyRemediation -ManagementGroupName $managementGroupId -PolicyAssignmentId $assignmentId -Name $remediationName
    Validate-Remediation $remediation
    Assert-AreEqual $assignmentId $remediation.PolicyAssignmentId
    Assert-Null $remediation.PolicyDefinitionReferenceId
@@ -243,10 +243,10 @@ function Remediation-ManagementGroupScope-Crud
    Assert-AreEqual 1 $remediation.DeploymentSummary.TotalDeployments
 
    # Cancel the remediation
-   Stop-AzureRmPolicyRemediation -ManagementGroupName $managementGroupId -Name $remediationName
+   Stop-AzPolicyRemediation -ManagementGroupName $managementGroupId -Name $remediationName
 
    # Get the remediation that was just cancelled
-   $remediation = Get-AzureRmPolicyRemediation -ManagementGroupName $managementGroupId -Name $remediationName
+   $remediation = Get-AzPolicyRemediation -ManagementGroupName $managementGroupId -Name $remediationName
    Validate-Remediation $remediation
    Assert-AreEqual $remediationName $remediation.Name
    Assert-AreEqual $assignmentId $remediation.PolicyAssignmentId
@@ -256,7 +256,7 @@ function Remediation-ManagementGroupScope-Crud
    Assert-AreEqual 0 $remediation.DeploymentSummary.FailedDeployments
 
    # Get the deployments for the remediation
-   $remediation = Get-AzureRmPolicyRemediation -ManagementGroupName $managementGroupId -Name $remediationName -IncludeDetail
+   $remediation = Get-AzPolicyRemediation -ManagementGroupName $managementGroupId -Name $remediationName -IncludeDetail
    Assert-AreEqual 1 $remediation.Deployments.Count
    $remediation.Deployments | ForEach-Object {
       Validate-RemediationDeployment $_
@@ -264,7 +264,7 @@ function Remediation-ManagementGroupScope-Crud
    }
 
    # Get the deployments for the remediation (+ top filter)
-   $remediation = Get-AzureRmPolicyRemediation -ManagementGroupName $managementGroupId -Name $remediationName -IncludeDetail -Top 2
+   $remediation = Get-AzPolicyRemediation -ManagementGroupName $managementGroupId -Name $remediationName -IncludeDetail -Top 2
    Assert-AreEqual 1 $remediation.Deployments.Count
    $remediation.Deployments | ForEach-Object {
       Validate-RemediationDeployment $_
@@ -272,17 +272,17 @@ function Remediation-ManagementGroupScope-Crud
    }
 
    # Get all remediations in the management group
-   $remediations = Get-AzureRmPolicyRemediation -ManagementGroupName $managementGroupId
+   $remediations = Get-AzPolicyRemediation -ManagementGroupName $managementGroupId
    Assert-AreEqual 3 $remediations.Count
    Validate-Remediation $remediations[2]
 
    # Get a limited number of remediations
-   $remediations = Get-AzureRmPolicyRemediation -Top 2
+   $remediations = Get-AzPolicyRemediation -Top 2
    Assert-AreEqual 2 $remediations.Count
    Validate-Remediation $remediations[1]
 
    # Get all remediations for a specific assignment
-   $remediations = Get-AzureRmPolicyRemediation -ManagementGroupName $managementGroupId -Filter "PolicyAssignmentId eq '$assignmentId'"
+   $remediations = Get-AzPolicyRemediation -ManagementGroupName $managementGroupId -Filter "PolicyAssignmentId eq '$assignmentId'"
    Assert-AreEqual 1 $remediations.Count
    $remediations | ForEach-Object {
       Validate-Remediation $_
@@ -290,7 +290,7 @@ function Remediation-ManagementGroupScope-Crud
    }
 
    # Delete the remediation that was created initially
-   $result = (Remove-AzureRmPolicyRemediation -ResourceId $remediation.Id -PassThru)
+   $result = (Remove-AzPolicyRemediation -ResourceId $remediation.Id -PassThru)
    Assert-AreEqual $true $result
 }
 
@@ -303,7 +303,7 @@ function Remediation-BackgroundJobs {
    $remediationName = "PSTestRemediation"
 
    # Create a new remediation as a job which will wait for it to complete
-   $job = Start-AzureRmPolicyRemediation -PolicyAssignmentId $assignmentId -Name $remediationName -LocationFilter "eastus2" -AsJob
+   $job = Start-AzPolicyRemediation -PolicyAssignmentId $assignmentId -Name $remediationName -LocationFilter "eastus2" -AsJob
    $job | Wait-Job
    Assert-AreEqual "Completed" $job.State
    $remediation = $job | Receive-Job
@@ -319,10 +319,10 @@ function Remediation-BackgroundJobs {
    Assert-AreEqual 0 $remediation.DeploymentSummary.FailedDeployments
 
    # Create the remediation again so we can remove/stop it in a job
-   $remediation = Start-AzureRmPolicyRemediation -PolicyAssignmentId $assignmentId -Name $remediationName -LocationFilter "eastus2"
+   $remediation = Start-AzPolicyRemediation -PolicyAssignmentId $assignmentId -Name $remediationName -LocationFilter "eastus2"
 
    # Remove and stop the remediation in one action as a background job
-   $job = ($remediation | Remove-AzureRmPolicyRemediation -AllowStop -PassThru -AsJob)
+   $job = ($remediation | Remove-AzPolicyRemediation -AllowStop -PassThru -AsJob)
    $job | Wait-Job
    Assert-AreEqual "Completed" $job.State
    $result = $job | Receive-Job

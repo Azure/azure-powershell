@@ -40,39 +40,39 @@ function Test-AzureIotDpsLifeCycle
 	$Tag2Value = "value2"
 
 	# Get all Iot hubs in the subscription
-	$allIotDps = Get-AzureRmIotDps
+	$allIotDps = Get-AzIotDps
 	
 	If ($allIotDps.Count -gt 1) {
 		Assert-True { $allIotDps[0].Type -eq $global:resourceType }
 	}
 
 	# Create or Update Resource Group
-	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
+	$resourceGroup = New-AzResourceGroup -Name $ResourceGroupName -Location $Location 
 
 	# Create Iot Hub Device Provisioning Service
-	$newIotDps1 = New-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Location $Location
+	$newIotDps1 = New-AzIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Location $Location
 
 	# Get Iot Hub Device Provisioning Service
-	$iotDps = Get-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName 
+	$iotDps = Get-AzIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName 
 	Assert-True { $iotDps.Name -eq $IotDpsName }
 	Assert-True { $iotDps.Properties.AllocationPolicy -eq $CurrentAllocationPolicy }
 	Assert-True { $iotDps.Sku.Name -eq $Sku }
 
 	# Update Iot Hub Device Provisioning Service Allocation Policy
-	$updatedIotDps1 = Get-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName | Update-AzureRmIotDps -AllocationPolicy $NewAllocationPolicy
+	$updatedIotDps1 = Get-AzIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName | Update-AzIotDps -AllocationPolicy $NewAllocationPolicy
 	Assert-True { $updatedIotDps1.Properties.AllocationPolicy -eq $NewAllocationPolicy }
 
 	# Add Tags to Iot Hub Device Provisioning Service
 	$tags = @{}
 	$tags.Add($Tag1Key, $Tag1Value)
-	$updatedIotDps2 = Update-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Tag $tags
+	$updatedIotDps2 = Update-AzIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Tag $tags
 	Assert-True { $updatedIotDps2.Tags.Count -eq 1 }
 	Assert-True { $updatedIotDps2.Tags.Item($Tag1Key) -eq $Tag1Value }
 	
 	# Add more Tags to Iot Hub Device Provisioning Service
 	$tags.Clear()
 	$tags.Add($Tag2Key, $Tag2Value)
-	$updatedIotDps3 = Update-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Tag $tags
+	$updatedIotDps3 = Update-AzIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Tag $tags
 	Assert-True { $updatedIotDps3.Tags.Count -eq 2 }
 	Assert-True { $updatedIotDps3.Tags.Item($Tag1Key) -eq $Tag1Value }
 	Assert-True { $updatedIotDps3.Tags.Item($Tag2Key) -eq $Tag2Value }
@@ -80,14 +80,14 @@ function Test-AzureIotDpsLifeCycle
 	# Add Tags to Iot Hub Device Provisioning Service with Reset option
 	$tags.Clear()
 	$tags.Add($Tag1Key, $Tag1Value)
-	$updatedIotDps4 = Update-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Tag $tags -Reset
+	$updatedIotDps4 = Update-AzIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Tag $tags -Reset
 	Assert-True { $updatedIotDps4.Tags.Count -eq 1 }
 	Assert-True { $updatedIotDps4.Tags.Item($Tag1Key) -eq $Tag1Value }
 
 	# Remove Iot Hub Device Provisioning Service
-	$result = Remove-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -PassThru
+	$result = Remove-AzIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -PassThru
 	Assert-True { $result }
 
 	# Remove Resource Group
-	Remove-AzureRmResourceGroup -Name $ResourceGroupName -force
+	Remove-AzResourceGroup -Name $ResourceGroupName -force
 }

@@ -20,52 +20,52 @@ function Test-DefaultResourceGroup
 {
 	# Setup
 	$rgname = Get-ResourceGroupName
-	Clear-AzureRmDefault -ResourceGroup
+	Clear-AzDefault -ResourceGroup
 
 	try
 	{
 		# Test GetDefault when default not set
-		$output = Get-AzureRmDefault
+		$output = Get-AzDefault
 		Assert-Null($output)
-		$output = Get-AzureRmDefault -ResourceGroup
+		$output = Get-AzDefault -ResourceGroup
 		Assert-Null($output)
-		$storedValue = (Get-AzureRmContext).ExtendedProperties["Default Resource Group"]
+		$storedValue = (Get-AzContext).ExtendedProperties["Default Resource Group"]
 		Assert-Null($storedValue)
 
 		# Test Resoure Group created when it doesn't exist
-		$output = Set-AzureRmDefault -ResourceGroupName $rgname -Force
-		$resourcegroup = Get-AzureRmResourceGroup -Name $rgname
+		$output = Set-AzDefault -ResourceGroupName $rgname -Force
+		$resourcegroup = Get-AzResourceGroup -Name $rgname
 		Assert-AreEqual $output.Name $resourcegroup.ResourceGroupName
-		$context = Get-AzureRmContext
+		$context = Get-AzContext
 		$storedValue = $context.ExtendedProperties["Default Resource Group"]
 		Assert-AreEqual $storedValue $output.Name
 
 		# Test GetDefault when default is set
-		$output = Get-AzureRmDefault
+		$output = Get-AzDefault
 		Assert-AreEqual $output.Name $resourceGroup.ResourceGroupName
-		$output = Get-AzureRmDefault -ResourceGroup
+		$output = Get-AzDefault -ResourceGroup
 		Assert-AreEqual $output.Name $resourceGroup.ResourceGroupName
 
-		# Test Clear-AzureRmDefault (no parameters shown)
-		Clear-AzureRmDefault -Force
-		$output = Get-AzureRmDefault
+		# Test Clear-AzDefault (no parameters shown)
+		Clear-AzDefault -Force
+		$output = Get-AzDefault
 		Assert-Null($output)
-		$context = Get-AzureRmContext
+		$context = Get-AzContext
 		$storedValue = $context.ExtendedProperties["Default Resource Group"]
 		Assert-Null($storedValue)
 
 		# Test SetDefault when resource group exists
-		$output = Set-AzureRmDefault -ResourceGroupName $rgname
+		$output = Set-AzDefault -ResourceGroupName $rgname
 		Assert-AreEqual $output.Name $resourcegroup.ResourceGroupName
-		$context = Get-AzureRmContext
+		$context = Get-AzContext
 		$storedValue = $context.ExtendedProperties["Default Resource Group"]
 		Assert-AreEqual $storedValue $output.Name
 
-		# Test Clear-AzureRmDefault (no parameters shown)
-		Clear-AzureRmDefault -ResourceGroup
-		$output = Get-AzureRmDefault
+		# Test Clear-AzDefault (no parameters shown)
+		Clear-AzDefault -ResourceGroup
+		$output = Get-AzDefault
 		Assert-Null($output)
-		$context = Get-AzureRmContext
+		$context = Get-AzContext
 		$storedValue = $context.ExtendedProperties["Default Resource Group"]
 		Assert-Null($storedValue)
 	}
@@ -91,6 +91,6 @@ Cleans the created resource groups
 function Clean-ResourceGroup($rgname)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzureRmResourceGroup -Name $rgname -Force
+        Remove-AzResourceGroup -Name $rgname -Force
     }
 }

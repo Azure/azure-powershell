@@ -65,7 +65,7 @@ function Get-BatchAccountProviderLocation($index)
     {
         $namespace = "Microsoft.Batch"
         $type = "batchAccounts"
-        $r = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+        $r = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
         $location = $r.Locations
   
         if ($location -eq $null)

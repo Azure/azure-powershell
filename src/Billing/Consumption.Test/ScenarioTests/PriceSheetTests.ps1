@@ -24,7 +24,7 @@ List price sheets
 #>
 function Test-ListPriceSheets
 {
-    $priceSheets = Get-AzureRmConsumptionPriceSheet -Top 5
+    $priceSheets = Get-AzConsumptionPriceSheet -Top 5
 	Assert-NotNull $priceSheets
 	Assert-NotNull $priceSheets.Id
 	Assert-NotNull $priceSheets.Name
@@ -52,7 +52,7 @@ List price sheets with Expand on Meter Details
 #>
 function Test-ListPriceSheetsWithMeterDetailsExpand
 {
-    $priceSheets = Get-AzureRmConsumptionPriceSheet -ExpandMeterDetail -Top 5
+    $priceSheets = Get-AzConsumptionPriceSheet -ExpandMeterDetail -Top 5
 	Assert-NotNull $priceSheets
 	Assert-NotNull $priceSheets.Id
 	Assert-NotNull $priceSheets.Name
@@ -80,7 +80,7 @@ List price sheets in Billing Period
 #>
 function Test-ListBillingPeriodPriceSheets
 {
-    $priceSheets = Get-AzureRmConsumptionPriceSheet -BillingPeriodName 201712 -Top 5
+    $priceSheets = Get-AzConsumptionPriceSheet -BillingPeriodName 201712 -Top 5
 	Assert-NotNull $priceSheets
 	Assert-NotNull $priceSheets.Id
 	Assert-NotNull $priceSheets.Name

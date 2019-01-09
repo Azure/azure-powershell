@@ -57,7 +57,7 @@ function Get-ProviderLocation([string]$provider)
 		if($provider.Contains("/"))
 		{
 			$type = $provider.Substring($namespace.Length + 1)
-			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+			$location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
 
 			if ($location -eq $null)
 			{

@@ -22,13 +22,13 @@ function Test-PolicyCrud
     $resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
 	$tags = @{"tag1" = "value1"; "tag2" = "value2"}
-	$matchCondition1 = New-AzureRmFrontDoorMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "Windows"
-	$customRule1 = New-AzureRmFrontDoorCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
-	$override1 = New-AzureRmFrontDoorRuleGroupOverrideObject -Override SqlInjection -Action Block
-	$managedRule1 = New-AzureRmFrontDoorManagedRuleObject -Priority 1 -Version 0 -RuleGroupOverride $override1
-	New-AzureRmFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1 -EnabledState Enabled -Mode Prevention
+	$matchCondition1 = New-AzFrontDoorMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "Windows"
+	$customRule1 = New-AzFrontDoorCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
+	$override1 = New-AzFrontDoorRuleGroupOverrideObject -Override SqlInjection -Action Block
+	$managedRule1 = New-AzFrontDoorManagedRuleObject -Priority 1 -Version 0 -RuleGroupOverride $override1
+	New-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1 -EnabledState Enabled -Mode Prevention
 	
-	$retrievedPolicy = Get-AzureRmFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName 
+	$retrievedPolicy = Get-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName 
 	Assert-NotNull $retrievedPolicy
 	Assert-AreEqual $Name $retrievedPolicy.Name
 	Assert-AreEqual $customRule1.Name $retrievedPolicy.CustomRules[0].Name
@@ -37,8 +37,8 @@ function Test-PolicyCrud
 	Assert-AreEqual $customRule1.Priority $retrievedPolicy.CustomRules[0].Priority
 	Assert-AreEqual $managedRule1.RuleGroupOverrides[0].Action $retrievedPolicy.ManagedRules[0].RuleGroupOverrides[0].Action
 
-	$customRule2 = New-AzureRmFrontDoorCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
-	$updatedPolicy = Set-AzureRmFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule2
+	$customRule2 = New-AzFrontDoorCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
+	$updatedPolicy = Set-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule2
 	Assert-NotNull $updatedPolicy
 	Assert-AreEqual $Name $updatedPolicy.Name
 	Assert-AreEqual $customRule2.Name $updatedPolicy.CustomRules[0].Name
@@ -46,9 +46,9 @@ function Test-PolicyCrud
 	Assert-AreEqual $customRule2.Priority $updatedPolicy.CustomRules[0].Priority
 	Assert-AreEqual $managedRule1.RuleGroupOverrides[0].Action $updatedPolicy.ManagedRules[0].RuleGroupOverrides[0].Action
 
-	$removed = Remove-AzureRmFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -PassThru
+	$removed = Remove-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -PassThru
 	Assert-True { $removed }
-	Assert-ThrowsContains { Get-AzureRmFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName } "does not exist."
+	Assert-ThrowsContains { Get-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName } "does not exist."
 }
 
 <#
@@ -61,15 +61,15 @@ function Test-PolicyCrudWithPiping
     $resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
 	$tag = @{"tag1" = "value1"; "tag2" = "value2"}
-	$matchCondition1 = New-AzureRmFrontDoorMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "Windows"
-	$customRule1 = New-AzureRmFrontDoorCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
-	$override1 = New-AzureRmFrontDoorRuleGroupOverrideObject -Override SqlInjection -Action Block
-	$managedRule1 = New-AzureRmFrontDoorManagedRuleObject -Priority 1 -Version 0 -RuleGroupOverrid $override1
-	New-AzureRmFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1 -EnabledState Enabled -Mode Prevention
+	$matchCondition1 = New-AzFrontDoorMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "Windows"
+	$customRule1 = New-AzFrontDoorCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
+	$override1 = New-AzFrontDoorRuleGroupOverrideObject -Override SqlInjection -Action Block
+	$managedRule1 = New-AzFrontDoorManagedRuleObject -Priority 1 -Version 0 -RuleGroupOverrid $override1
+	New-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1 -EnabledState Enabled -Mode Prevention
 
 
-	$customRule2 = New-AzureRmFrontDoorCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
-	$updatedPolicy = Get-AzureRmFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName | Set-AzureRmFrontDoorFireWallPolicy -Customrule $customRule2
+	$customRule2 = New-AzFrontDoorCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
+	$updatedPolicy = Get-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName | Set-AzFrontDoorFireWallPolicy -Customrule $customRule2
 	Assert-NotNull $updatedPolicy
 	Assert-AreEqual $Name $updatedPolicy.Name
 	Assert-AreEqual $customRule2.Name $updatedPolicy.CustomRules[0].Name
@@ -77,7 +77,7 @@ function Test-PolicyCrudWithPiping
 	Assert-AreEqual $customRule2.Priority $updatedPolicy.CustomRules[0].Priority
 	Assert-AreEqual $managedRule1.RuleGroupOverrides[0].Action $updatedPolicy.ManagedRules[0].RuleGroupOverrides[0].Action
 
-	$removed = Get-AzureRmFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName | Remove-AzureRmFrontDoorFireWallPolicy -PassThru
+	$removed = Get-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName | Remove-AzFrontDoorFireWallPolicy -PassThru
 	Assert-True { $removed }
-	Assert-ThrowsContains { Get-AzureRmFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName } "does not exist."
+	Assert-ThrowsContains { Get-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName } "does not exist."
 }

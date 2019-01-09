@@ -35,38 +35,38 @@ function Test-AzureIotDpsAccessPolicyLifeCycle
 	$NewAccessPolicyRights = "ServiceConfig"
 
 	# Create or Update Resource Group
-	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
+	$resourceGroup = New-AzResourceGroup -Name $ResourceGroupName -Location $Location 
 
 	# Create Iot Hub Device Provisioning Service
-	$iotDps = New-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Location $Location
+	$iotDps = New-AzIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Location $Location
 	Assert-True { $iotDps.Name -eq $IotDpsName }
 
 	# Get Iot Hub Device Provisioning Service Access Policy
-	$iotDpsAccessPolicy1 = Get-AzureRmIoTDpsAccessPolicy -ResourceGroupName $ResourceGroupName -Name $IotDpsName
+	$iotDpsAccessPolicy1 = Get-AzIoTDpsAccessPolicy -ResourceGroupName $ResourceGroupName -Name $IotDpsName
 	Assert-True { $iotDpsAccessPolicy1.Count -eq 1 }
 	Assert-True { $iotDpsAccessPolicy1.KeyName -eq $AccessPolicyDefaultKeyName }
 	Assert-True { $iotDpsAccessPolicy1.Rights -eq $AccessPolicyDefaultRights }
 
 	# Add Iot Hub Device Provisioning Service Access Policy
-	$iotDpsAccessPolicy2 = Add-AzureRmIoTDpsAccessPolicy -ResourceGroupName $ResourceGroupName -Name $IotDpsName -KeyName $NewAccessPolicyKeyName -Permissions $NewAccessPolicyRights
+	$iotDpsAccessPolicy2 = Add-AzIoTDpsAccessPolicy -ResourceGroupName $ResourceGroupName -Name $IotDpsName -KeyName $NewAccessPolicyKeyName -Permissions $NewAccessPolicyRights
 	Assert-True { $iotDpsAccessPolicy2.Count -eq 2 }
 	Assert-True { $iotDpsAccessPolicy2[1].KeyName -eq $NewAccessPolicyKeyName }
 	Assert-True { $iotDpsAccessPolicy2[1].Rights -eq $NewAccessPolicyRights }
 
 	# Delete Iot Hub Device Provisioning Service Access Policy
-	$result = Remove-AzureRmIoTDpsAccessPolicy -ResourceGroupName $ResourceGroupName -Name $IotDpsName -KeyName $NewAccessPolicyKeyName -PassThru
+	$result = Remove-AzIoTDpsAccessPolicy -ResourceGroupName $ResourceGroupName -Name $IotDpsName -KeyName $NewAccessPolicyKeyName -PassThru
 	Assert-True { $result }
 
 	# Update Iot Hub Device Provisioning Service Access Policy
-	$iotDpsAccessPolicy3 = Update-AzureRmIoTDpsAccessPolicy -ResourceGroupName $ResourceGroupName -Name $IotDpsName -KeyName $AccessPolicyDefaultKeyName -Permissions $NewAccessPolicyRights
+	$iotDpsAccessPolicy3 = Update-AzIoTDpsAccessPolicy -ResourceGroupName $ResourceGroupName -Name $IotDpsName -KeyName $AccessPolicyDefaultKeyName -Permissions $NewAccessPolicyRights
 	Assert-True { $iotDpsAccessPolicy3.Count -eq 1 }
 	Assert-True { $iotDpsAccessPolicy3.KeyName -eq $AccessPolicyDefaultKeyName }
 	Assert-True { $iotDpsAccessPolicy3.Rights -eq $NewAccessPolicyRights }
 
 	# Remove Iot Hub Device Provisioning Service
-	$result = Remove-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -PassThru
+	$result = Remove-AzIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -PassThru
 	Assert-True { $result }
 
 	# Remove Resource Group
-	Remove-AzureRmResourceGroup -Name $ResourceGroupName -force
+	Remove-AzResourceGroup -Name $ResourceGroupName -force
 }

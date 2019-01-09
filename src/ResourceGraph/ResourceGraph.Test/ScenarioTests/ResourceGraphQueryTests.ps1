@@ -16,9 +16,9 @@
 .SYNOPSIS
 Run simple query
 #>
-function Search-AzureRmGraph-Query
+function Search-AzGraph-Query
 {
-	$queryResult = Search-AzureRmGraph "project id, tags, properties | limit 2"
+	$queryResult = Search-AzGraph "project id, tags, properties | limit 2"
 
 	Assert-IsInstance $queryResult Object[]
 	Assert-AreEqual $queryResult.Count 2
@@ -48,10 +48,10 @@ function Search-AzureRmGraph-Query
 .SYNOPSIS
 Run paged query
 #>
-function Search-AzureRmGraph-PagedQuery
+function Search-AzGraph-PagedQuery
 {
 	# Page size was artificially set to 2 rows
-	$queryResult = Search-AzureRmGraph "project id" -First 3 -Skip 2
+	$queryResult = Search-AzGraph "project id" -First 3 -Skip 2
 
 	Assert-IsInstance $queryResult Object[]
 	Assert-AreEqual $queryResult.Count 3
@@ -81,16 +81,16 @@ function Search-AzureRmGraph-PagedQuery
 .SYNOPSIS
 Run query with subscriptions explicitly passed
 #>
-function Search-AzureRmGraph-Subscriptions
+function Search-AzGraph-Subscriptions
 {
 	$testSubId1 = "11111111-1111-1111-1111-111111111111"
 	$testSubId2 = "22222222-2222-2222-2222-222222222222"
 	$mockedSubscriptionId = "00000000-0000-0000-0000-000000000000"
 	$query = "distinct subscriptionId | order by subscriptionId asc"
 
-	$queryResultNoSubs = Search-AzureRmGraph $query
-	$queryResultOneSub = Search-AzureRmGraph $query -Subscription $testSubId1
-	$queryResultMultipleSubs = Search-AzureRmGraph $query -Subscription @($testSubId1, $testSubId2)
+	$queryResultNoSubs = Search-AzGraph $query
+	$queryResultOneSub = Search-AzGraph $query -Subscription $testSubId1
+	$queryResultMultipleSubs = Search-AzGraph $query -Subscription @($testSubId1, $testSubId2)
 
 	Assert-IsInstance $queryResultNoSubs System.Management.Automation.PSCustomObject
 	Assert-AreEqual $queryResultNoSubs.subscriptionId $mockedSubscriptionId
@@ -108,7 +108,7 @@ function Search-AzureRmGraph-Subscriptions
 .SYNOPSIS
 Run malformed query
 #>
-function Search-AzureRmGraph-QueryError
+function Search-AzGraph-QueryError
 {
 	$expectedErrorId = 'InvalidQuery,' + [Microsoft.Azure.Commands.ResourceGraph.Cmdlets.SearchAzureRmGraph].FullName
 	$expectedErrorDetails = '{
@@ -130,7 +130,7 @@ function Search-AzureRmGraph-QueryError
 
 	try
 	{
-		Search-AzureRmGraph "where where"
+		Search-AzGraph "where where"
 		Assert-True $false  # Expecting an error
 	}
 	catch [Exception]

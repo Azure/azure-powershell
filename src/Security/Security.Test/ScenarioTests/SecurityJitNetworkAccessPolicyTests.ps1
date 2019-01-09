@@ -16,11 +16,11 @@
 .SYNOPSIS
 Get JIT network access policies on a subscription
 #>
-function Get-AzureRmJitNetworkAccessPolicy-SubscriptionScope
+function Get-AzJitNetworkAccessPolicy-SubscriptionScope
 {
-	Set-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
+	Set-AzJitNetworkAccessPolicy-ResourceGroupLevelResource
 
-    $jitNetworkAccessPolicies = Get-AzureRmJitNetworkAccessPolicy
+    $jitNetworkAccessPolicies = Get-AzJitNetworkAccessPolicy
 	Validate-JitNetworkAccessPolicies $jitNetworkAccessPolicies
 }
 
@@ -28,13 +28,13 @@ function Get-AzureRmJitNetworkAccessPolicy-SubscriptionScope
 .SYNOPSIS
 Get JIT network access policies on a resource group
 #>
-function Get-AzureRmJitNetworkAccessPolicy-ResourceGroupScope
+function Get-AzJitNetworkAccessPolicy-ResourceGroupScope
 {
-	Set-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
+	Set-AzJitNetworkAccessPolicy-ResourceGroupLevelResource
 
 	$rgName = Get-TestResourceGroupName
 
-    $jitNetworkAccessPolicies = Get-AzureRmJitNetworkAccessPolicy -ResourceGroupName $rgName
+    $jitNetworkAccessPolicies = Get-AzJitNetworkAccessPolicy -ResourceGroupName $rgName
 	Validate-JitNetworkAccessPolicies $jitNetworkAccessPolicies
 }
 
@@ -42,14 +42,14 @@ function Get-AzureRmJitNetworkAccessPolicy-ResourceGroupScope
 .SYNOPSIS
 Get JIT network access policy
 #>
-function Get-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
+function Get-AzJitNetworkAccessPolicy-ResourceGroupLevelResource
 {
-	$jitNetworkAccessPolicy = Set-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
+	$jitNetworkAccessPolicy = Set-AzJitNetworkAccessPolicy-ResourceGroupLevelResource
 
 	$rgName = Extract-ResourceGroup -ResourceId $jitNetworkAccessPolicy.Id
 	$location = Extract-ResourceLocation -ResourceId $jitNetworkAccessPolicy.Id
 
-    $fetchedJitNetworkAccessPolicy = Get-AzureRmJitNetworkAccessPolicy -ResourceGroupName $rgName -Location $location -Name $jitNetworkAccessPolicy.Name
+    $fetchedJitNetworkAccessPolicy = Get-AzJitNetworkAccessPolicy -ResourceGroupName $rgName -Location $location -Name $jitNetworkAccessPolicy.Name
 	Validate-JitNetworkAccessPolicy $fetchedJitNetworkAccessPolicy
 }
 
@@ -57,11 +57,11 @@ function Get-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
 .SYNOPSIS
 Get JIT network access policy by Resource ID
 #>
-function Get-AzureRmJitNetworkAccessPolicy-ResourceId
+function Get-AzJitNetworkAccessPolicy-ResourceId
 {
-	$jitNetworkAccessPolicy = Set-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
+	$jitNetworkAccessPolicy = Set-AzJitNetworkAccessPolicy-ResourceGroupLevelResource
 
-    $fetchedJitNetworkAccessPolicy = Get-AzureRmJitNetworkAccessPolicy -ResourceId $jitNetworkAccessPolicy.Id
+    $fetchedJitNetworkAccessPolicy = Get-AzJitNetworkAccessPolicy -ResourceId $jitNetworkAccessPolicy.Id
 	Validate-JitNetworkAccessPolicy $fetchedJitNetworkAccessPolicy
 }
 
@@ -69,9 +69,9 @@ function Get-AzureRmJitNetworkAccessPolicy-ResourceId
 .SYNOPSIS
 Set a JIT network access policy
 #>
-function Set-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
+function Set-AzJitNetworkAccessPolicy-ResourceGroupLevelResource
 {
-	Set-AzureRmSecurityPricing -Name "default" -PricingTier "Standard" | Out-Null
+	Set-AzSecurityPricing -Name "default" -PricingTier "Standard" | Out-Null
 
 	$rgName = Get-TestResourceGroupName
 
@@ -86,42 +86,42 @@ function Set-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
 
 	[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine[]]$vms = (,$vm)
 
-    return Set-AzureRmJitNetworkAccessPolicy -ResourceGroupName $rgName -Location "centralus" -Name "default" -Kind "Basic" -VirtualMachine $vms
+    return Set-AzJitNetworkAccessPolicy -ResourceGroupName $rgName -Location "centralus" -Name "default" -Kind "Basic" -VirtualMachine $vms
 }
 
 <#
 .SYNOPSIS
 Delete JIT network access policy
 #>
-function Remove-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
+function Remove-AzJitNetworkAccessPolicy-ResourceGroupLevelResource
 {
-	Set-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
+	Set-AzJitNetworkAccessPolicy-ResourceGroupLevelResource
 
 	$rgName = Get-TestResourceGroupName
 
-    Remove-AzureRmJitNetworkAccessPolicy -ResourceGroupName $rgName -Location "centralus" -Name "default"
+    Remove-AzJitNetworkAccessPolicy -ResourceGroupName $rgName -Location "centralus" -Name "default"
 }
 
 <#
 .SYNOPSIS
 Delete JIT network access policy by resource ID
 #>
-function Remove-AzureRmJitNetworkAccessPolicy-ResourceId
+function Remove-AzJitNetworkAccessPolicy-ResourceId
 {
-	$jitNetworkAccessPolicy = Set-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
+	$jitNetworkAccessPolicy = Set-AzJitNetworkAccessPolicy-ResourceGroupLevelResource
 
 	$rgName = Get-TestResourceGroupName
 
-    Remove-AzureRmJitNetworkAccessPolicy -ResourceId $jitNetworkAccessPolicy.Id
+    Remove-AzJitNetworkAccessPolicy -ResourceId $jitNetworkAccessPolicy.Id
 }
 
 <#
 .SYNOPSIS
 Initiate JIT network access policy request
 #>
-function Start-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
+function Start-AzJitNetworkAccessPolicy-ResourceGroupLevelResource
 {
-	$jitNetworkAccessPolicy = Set-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
+	$jitNetworkAccessPolicy = Set-AzJitNetworkAccessPolicy-ResourceGroupLevelResource
 
 	$rgName = Get-TestResourceGroupName
 
@@ -133,7 +133,7 @@ function Start-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
 	$port.Number = 22
 	$vm.Ports = (,$port)
 
-    Start-AzureRmJitNetworkAccessPolicy -ResourceGroupName $rgName -Location "centralus" -Name "default" -VirtualMachine (,$vm)
+    Start-AzJitNetworkAccessPolicy -ResourceGroupName $rgName -Location "centralus" -Name "default" -VirtualMachine (,$vm)
 }
 
 <#

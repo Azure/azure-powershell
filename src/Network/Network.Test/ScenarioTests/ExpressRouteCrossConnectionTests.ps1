@@ -28,11 +28,11 @@ function Test-ExpressRouteCrossConnectionApis
     try 
     {
       # Create the resource group
-      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
       # Create the ExpressRouteCircuit
-      $circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 500;
+      $circuit = New-AzExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 500;
       
-      $circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+      $circuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
 
       # Verify that an associated cross connection is created
       $crossConnectionName = $circuit.ServiceKey
@@ -42,7 +42,7 @@ function Test-ExpressRouteCrossConnectionApis
     {
       # Cleanup
       # Delete Circuit
-      $job = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force -AsJob
+      $job = Remove-AzExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force -AsJob
       $job | Wait-Job
       $delete = $job | Receive-Job
       Assert-AreEqual true $delete

@@ -53,41 +53,41 @@ function Test-RouteTableCRUDMinimalParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create required dependencies
-        $Route = New-AzureRmRouteConfig -Name $RouteName -AddressPrefix $RouteAddressPrefix;
+        $Route = New-AzRouteConfig -Name $RouteName -AddressPrefix $RouteAddressPrefix;
 
         # Create RouteTable
-        $vRouteTable = New-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname -Location $location -Route $Route;
+        $vRouteTable = New-AzRouteTable -ResourceGroupName $rgname -Name $rname -Location $location -Route $Route;
         Assert-NotNull $vRouteTable;
-        Assert-True { Check-CmdletReturnType "New-AzureRmRouteTable" $vRouteTable };
+        Assert-True { Check-CmdletReturnType "New-AzRouteTable" $vRouteTable };
         Assert-NotNull $vRouteTable.Routes;
         Assert-True { $vRouteTable.Routes.Length -gt 0 };
         Assert-AreEqual $rname $vRouteTable.Name;
 
         # Get RouteTable
-        $vRouteTable = Get-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname;
+        $vRouteTable = Get-AzRouteTable -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vRouteTable;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmRouteTable" $vRouteTable };
+        Assert-True { Check-CmdletReturnType "Get-AzRouteTable" $vRouteTable };
         Assert-AreEqual $rname $vRouteTable.Name;
 
         # Get all RouteTables in resource group
-        $listRouteTable = Get-AzureRmRouteTable -ResourceGroupName $rgname;
+        $listRouteTable = Get-AzRouteTable -ResourceGroupName $rgname;
         Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all RouteTables in subscription
-        $listRouteTable = Get-AzureRmRouteTable;
+        $listRouteTable = Get-AzRouteTable;
         Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove RouteTable
-        $job = Remove-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job = Remove-AzRouteTable -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeRouteTable = $job | Receive-Job;
         Assert-AreEqual $true $removeRouteTable;
 
         # Get RouteTable should fail
-        Assert-ThrowsContains { Get-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname } "not found";
+        Assert-ThrowsContains { Get-AzRouteTable -ResourceGroupName $rgname -Name $rname } "not found";
     }
     finally
     {
@@ -117,69 +117,69 @@ function Test-RouteTableCRUDAllParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create required dependencies
-        $Route = New-AzureRmRouteConfig -Name $RouteName -AddressPrefix $RouteAddressPrefix;
+        $Route = New-AzRouteConfig -Name $RouteName -AddressPrefix $RouteAddressPrefix;
 
         # Create RouteTable
-        $vRouteTable = New-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname -Location $location -Route $Route -Tag $Tag;
+        $vRouteTable = New-AzRouteTable -ResourceGroupName $rgname -Name $rname -Location $location -Route $Route -Tag $Tag;
         Assert-NotNull $vRouteTable;
-        Assert-True { Check-CmdletReturnType "New-AzureRmRouteTable" $vRouteTable };
+        Assert-True { Check-CmdletReturnType "New-AzRouteTable" $vRouteTable };
         Assert-NotNull $vRouteTable.Routes;
         Assert-True { $vRouteTable.Routes.Length -gt 0 };
         Assert-AreEqual $rname $vRouteTable.Name;
         Assert-AreEqualObjectProperties $Tag $vRouteTable.Tag;
 
         # Get RouteTable
-        $vRouteTable = Get-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname;
+        $vRouteTable = Get-AzRouteTable -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vRouteTable;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmRouteTable" $vRouteTable };
+        Assert-True { Check-CmdletReturnType "Get-AzRouteTable" $vRouteTable };
         Assert-AreEqual $rname $vRouteTable.Name;
         Assert-AreEqualObjectProperties $Tag $vRouteTable.Tag;
 
         # Get all RouteTables in resource group
-        $listRouteTable = Get-AzureRmRouteTable -ResourceGroupName $rgname;
+        $listRouteTable = Get-AzRouteTable -ResourceGroupName $rgname;
         Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all RouteTables in subscription
-        $listRouteTable = Get-AzureRmRouteTable;
+        $listRouteTable = Get-AzRouteTable;
         Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Set RouteTable
         $vRouteTable.Tag = $TagSet;
-        $vRouteTable = Set-AzureRmRouteTable -RouteTable $vRouteTable;
+        $vRouteTable = Set-AzRouteTable -RouteTable $vRouteTable;
         Assert-NotNull $vRouteTable;
-        Assert-True { Check-CmdletReturnType "Set-AzureRmRouteTable" $vRouteTable };
+        Assert-True { Check-CmdletReturnType "Set-AzRouteTable" $vRouteTable };
         Assert-AreEqual $rname $vRouteTable.Name;
         Assert-AreEqualObjectProperties $TagSet $vRouteTable.Tag;
 
         # Get RouteTable
-        $vRouteTable = Get-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname;
+        $vRouteTable = Get-AzRouteTable -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vRouteTable;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmRouteTable" $vRouteTable };
+        Assert-True { Check-CmdletReturnType "Get-AzRouteTable" $vRouteTable };
         Assert-AreEqual $rname $vRouteTable.Name;
         Assert-AreEqualObjectProperties $TagSet $vRouteTable.Tag;
 
         # Get all RouteTables in resource group
-        $listRouteTable = Get-AzureRmRouteTable -ResourceGroupName $rgname;
+        $listRouteTable = Get-AzRouteTable -ResourceGroupName $rgname;
         Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all RouteTables in subscription
-        $listRouteTable = Get-AzureRmRouteTable;
+        $listRouteTable = Get-AzRouteTable;
         Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove RouteTable
-        $job = Remove-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job = Remove-AzRouteTable -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeRouteTable = $job | Receive-Job;
         Assert-AreEqual $true $removeRouteTable;
 
         # Get RouteTable should fail
-        Assert-ThrowsContains { Get-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname } "not found";
+        Assert-ThrowsContains { Get-AzRouteTable -ResourceGroupName $rgname -Name $rname } "not found";
 
         # Set RouteTable should fail
-        Assert-ThrowsContains { Set-AzureRmRouteTable -RouteTable $vRouteTable } "not found";
+        Assert-ThrowsContains { Set-AzRouteTable -RouteTable $vRouteTable } "not found";
     }
     finally
     {
@@ -209,79 +209,79 @@ function Test-RouteCRUDMinimalParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create Route
-        $vRoute = New-AzureRmRouteConfig -Name $rname -AddressPrefix $AddressPrefix;
+        $vRoute = New-AzRouteConfig -Name $rname -AddressPrefix $AddressPrefix;
         Assert-NotNull $vRoute;
-        Assert-True { Check-CmdletReturnType "New-AzureRmRouteConfig" $vRoute };
-        $vRouteTable = New-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname -Route $vRoute -Location $location;
+        Assert-True { Check-CmdletReturnType "New-AzRouteConfig" $vRoute };
+        $vRouteTable = New-AzRouteTable -ResourceGroupName $rgname -Name $rname -Route $vRoute -Location $location;
         Assert-NotNull $vRouteTable;
         Assert-AreEqual $rname $vRoute.Name;
         Assert-AreEqual $AddressPrefix $vRoute.AddressPrefix;
 
         # Get Route
-        $vRoute = Get-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rname;
+        $vRoute = Get-AzRouteConfig -RouteTable $vRouteTable -Name $rname;
         Assert-NotNull $vRoute;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmRouteConfig" $vRoute };
+        Assert-True { Check-CmdletReturnType "Get-AzRouteConfig" $vRoute };
         Assert-AreEqual $rname $vRoute.Name;
         Assert-AreEqual $AddressPrefix $vRoute.AddressPrefix;
 
         # Get all RouteTable's Routes
-        $listRoute = Get-AzureRmRouteConfig -RouteTable $vRouteTable;
+        $listRoute = Get-AzRouteConfig -RouteTable $vRouteTable;
         Assert-NotNull ($listRoute | Where-Object { $_.Name -eq $rname });
 
         # Set Route
-        $vRouteTable = Set-AzureRmRouteConfig -Name $rname -RouteTable $vRouteTable -AddressPrefix $AddressPrefixSet;
+        $vRouteTable = Set-AzRouteConfig -Name $rname -RouteTable $vRouteTable -AddressPrefix $AddressPrefixSet;
         Assert-NotNull $vRouteTable;
-        $vRouteTable = Set-AzureRmRouteTable -RouteTable $vRouteTable;
+        $vRouteTable = Set-AzRouteTable -RouteTable $vRouteTable;
         Assert-NotNull $vRouteTable;
 
         # Get Route
-        $vRoute = Get-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rname;
+        $vRoute = Get-AzRouteConfig -RouteTable $vRouteTable -Name $rname;
         Assert-NotNull $vRoute;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmRouteConfig" $vRoute };
+        Assert-True { Check-CmdletReturnType "Get-AzRouteConfig" $vRoute };
         Assert-AreEqual $rname $vRoute.Name;
         Assert-AreEqual $AddressPrefixSet $vRoute.AddressPrefix;
 
         # Get all RouteTable's Routes
-        $listRoute = Get-AzureRmRouteConfig -RouteTable $vRouteTable;
+        $listRoute = Get-AzRouteConfig -RouteTable $vRouteTable;
         Assert-NotNull ($listRoute | Where-Object { $_.Name -eq $rname });
 
         # Add Route
-        $vRouteTable = Add-AzureRmRouteConfig -Name $rnameAdd -RouteTable $vRouteTable -AddressPrefix $AddressPrefixAdd;
+        $vRouteTable = Add-AzRouteConfig -Name $rnameAdd -RouteTable $vRouteTable -AddressPrefix $AddressPrefixAdd;
         Assert-NotNull $vRouteTable;
-        $vRouteTable = Set-AzureRmRouteTable -RouteTable $vRouteTable;
+        $vRouteTable = Set-AzRouteTable -RouteTable $vRouteTable;
         Assert-NotNull $vRouteTable;
 
         # Get Route
-        $vRoute = Get-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
+        $vRoute = Get-AzRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
         Assert-NotNull $vRoute;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmRouteConfig" $vRoute };
+        Assert-True { Check-CmdletReturnType "Get-AzRouteConfig" $vRoute };
         Assert-AreEqual $rnameAdd $vRoute.Name;
         Assert-AreEqual $AddressPrefixAdd $vRoute.AddressPrefix;
 
         # Get all RouteTable's Routes
-        $listRoute = Get-AzureRmRouteConfig -RouteTable $vRouteTable;
+        $listRoute = Get-AzRouteConfig -RouteTable $vRouteTable;
         Assert-NotNull ($listRoute | Where-Object { $_.Name -eq $rnameAdd });
 
         # Try Add again
-        Assert-ThrowsContains { Add-AzureRmRouteConfig -Name $rnameAdd -RouteTable $vRouteTable -AddressPrefix $AddressPrefixAdd } "already exists";
+        Assert-ThrowsContains { Add-AzRouteConfig -Name $rnameAdd -RouteTable $vRouteTable -AddressPrefix $AddressPrefixAdd } "already exists";
 
         # Remove Route
-        $vRouteTable = Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
-        $vRouteTable = Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rname;
+        $vRouteTable = Remove-AzRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
+        $vRouteTable = Remove-AzRouteConfig -RouteTable $vRouteTable -Name $rname;
         # Additional call to test handling of already deleted subresource
-        $vRouteTable = Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rname;
+        $vRouteTable = Remove-AzRouteConfig -RouteTable $vRouteTable -Name $rname;
         # Update parent resource
-        $vRouteTable = Set-AzureRmRouteTable -RouteTable $vRouteTable;
+        $vRouteTable = Set-AzRouteTable -RouteTable $vRouteTable;
         Assert-NotNull $vRouteTable;
 
         # Get Route should fail
-        Assert-ThrowsContains { Get-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rname } "Sequence contains no matching element";
+        Assert-ThrowsContains { Get-AzRouteConfig -RouteTable $vRouteTable -Name $rname } "Sequence contains no matching element";
 
         # Set Route should fail
-        Assert-ThrowsContains { Set-AzureRmRouteConfig -Name $rname -RouteTable $vRouteTable -AddressPrefix $AddressPrefixSet } "does not exist";
+        Assert-ThrowsContains { Set-AzRouteConfig -Name $rname -RouteTable $vRouteTable -AddressPrefix $AddressPrefixSet } "does not exist";
     }
     finally
     {
@@ -314,83 +314,83 @@ function Test-RouteCRUDAllParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create Route
-        $vRoute = New-AzureRmRouteConfig -Name $rname -AddressPrefix $AddressPrefix -NextHopType $NextHopType;
+        $vRoute = New-AzRouteConfig -Name $rname -AddressPrefix $AddressPrefix -NextHopType $NextHopType;
         Assert-NotNull $vRoute;
-        Assert-True { Check-CmdletReturnType "New-AzureRmRouteConfig" $vRoute };
-        $vRouteTable = New-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname -Route $vRoute -Location $location;
+        Assert-True { Check-CmdletReturnType "New-AzRouteConfig" $vRoute };
+        $vRouteTable = New-AzRouteTable -ResourceGroupName $rgname -Name $rname -Route $vRoute -Location $location;
         Assert-NotNull $vRouteTable;
         Assert-AreEqual $rname $vRoute.Name;
         Assert-AreEqual $AddressPrefix $vRoute.AddressPrefix;
         Assert-AreEqual $NextHopType $vRoute.NextHopType;
 
         # Get Route
-        $vRoute = Get-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rname;
+        $vRoute = Get-AzRouteConfig -RouteTable $vRouteTable -Name $rname;
         Assert-NotNull $vRoute;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmRouteConfig" $vRoute };
+        Assert-True { Check-CmdletReturnType "Get-AzRouteConfig" $vRoute };
         Assert-AreEqual $rname $vRoute.Name;
         Assert-AreEqual $AddressPrefix $vRoute.AddressPrefix;
         Assert-AreEqual $NextHopType $vRoute.NextHopType;
 
         # Get all RouteTable's Routes
-        $listRoute = Get-AzureRmRouteConfig -RouteTable $vRouteTable;
+        $listRoute = Get-AzRouteConfig -RouteTable $vRouteTable;
         Assert-NotNull ($listRoute | Where-Object { $_.Name -eq $rname });
 
         # Set Route
-        $vRouteTable = Set-AzureRmRouteConfig -Name $rname -RouteTable $vRouteTable -AddressPrefix $AddressPrefixSet -NextHopType $NextHopTypeSet;
+        $vRouteTable = Set-AzRouteConfig -Name $rname -RouteTable $vRouteTable -AddressPrefix $AddressPrefixSet -NextHopType $NextHopTypeSet;
         Assert-NotNull $vRouteTable;
-        $vRouteTable = Set-AzureRmRouteTable -RouteTable $vRouteTable;
+        $vRouteTable = Set-AzRouteTable -RouteTable $vRouteTable;
         Assert-NotNull $vRouteTable;
 
         # Get Route
-        $vRoute = Get-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rname;
+        $vRoute = Get-AzRouteConfig -RouteTable $vRouteTable -Name $rname;
         Assert-NotNull $vRoute;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmRouteConfig" $vRoute };
+        Assert-True { Check-CmdletReturnType "Get-AzRouteConfig" $vRoute };
         Assert-AreEqual $rname $vRoute.Name;
         Assert-AreEqual $AddressPrefixSet $vRoute.AddressPrefix;
         Assert-AreEqual $NextHopTypeSet $vRoute.NextHopType;
 
         # Get all RouteTable's Routes
-        $listRoute = Get-AzureRmRouteConfig -RouteTable $vRouteTable;
+        $listRoute = Get-AzRouteConfig -RouteTable $vRouteTable;
         Assert-NotNull ($listRoute | Where-Object { $_.Name -eq $rname });
 
         # Add Route
-        $vRouteTable = Add-AzureRmRouteConfig -Name $rnameAdd -RouteTable $vRouteTable -AddressPrefix $AddressPrefixAdd -NextHopType $NextHopTypeAdd;
+        $vRouteTable = Add-AzRouteConfig -Name $rnameAdd -RouteTable $vRouteTable -AddressPrefix $AddressPrefixAdd -NextHopType $NextHopTypeAdd;
         Assert-NotNull $vRouteTable;
-        $vRouteTable = Set-AzureRmRouteTable -RouteTable $vRouteTable;
+        $vRouteTable = Set-AzRouteTable -RouteTable $vRouteTable;
         Assert-NotNull $vRouteTable;
 
         # Get Route
-        $vRoute = Get-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
+        $vRoute = Get-AzRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
         Assert-NotNull $vRoute;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmRouteConfig" $vRoute };
+        Assert-True { Check-CmdletReturnType "Get-AzRouteConfig" $vRoute };
         Assert-AreEqual $rnameAdd $vRoute.Name;
         Assert-AreEqual $AddressPrefixAdd $vRoute.AddressPrefix;
         Assert-AreEqual $NextHopTypeAdd $vRoute.NextHopType;
 
         # Get all RouteTable's Routes
-        $listRoute = Get-AzureRmRouteConfig -RouteTable $vRouteTable;
+        $listRoute = Get-AzRouteConfig -RouteTable $vRouteTable;
         Assert-NotNull ($listRoute | Where-Object { $_.Name -eq $rnameAdd });
 
         # Try Add again
-        Assert-ThrowsContains { Add-AzureRmRouteConfig -Name $rnameAdd -RouteTable $vRouteTable -AddressPrefix $AddressPrefixAdd -NextHopType $NextHopTypeAdd } "already exists";
+        Assert-ThrowsContains { Add-AzRouteConfig -Name $rnameAdd -RouteTable $vRouteTable -AddressPrefix $AddressPrefixAdd -NextHopType $NextHopTypeAdd } "already exists";
 
         # Remove Route
-        $vRouteTable = Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
-        $vRouteTable = Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rname;
+        $vRouteTable = Remove-AzRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
+        $vRouteTable = Remove-AzRouteConfig -RouteTable $vRouteTable -Name $rname;
         # Additional call to test handling of already deleted subresource
-        $vRouteTable = Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rname;
+        $vRouteTable = Remove-AzRouteConfig -RouteTable $vRouteTable -Name $rname;
         # Update parent resource
-        $vRouteTable = Set-AzureRmRouteTable -RouteTable $vRouteTable;
+        $vRouteTable = Set-AzRouteTable -RouteTable $vRouteTable;
         Assert-NotNull $vRouteTable;
 
         # Get Route should fail
-        Assert-ThrowsContains { Get-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rname } "Sequence contains no matching element";
+        Assert-ThrowsContains { Get-AzRouteConfig -RouteTable $vRouteTable -Name $rname } "Sequence contains no matching element";
 
         # Set Route should fail
-        Assert-ThrowsContains { Set-AzureRmRouteConfig -Name $rname -RouteTable $vRouteTable -AddressPrefix $AddressPrefixSet -NextHopType $NextHopTypeSet } "does not exist";
+        Assert-ThrowsContains { Set-AzRouteConfig -Name $rname -RouteTable $vRouteTable -AddressPrefix $AddressPrefixSet -NextHopType $NextHopTypeSet } "does not exist";
     }
     finally
     {

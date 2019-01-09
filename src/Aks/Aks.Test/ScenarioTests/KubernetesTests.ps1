@@ -2,7 +2,7 @@
 .SYNOPSIS
 Test Kubernetes stuff
 #>
-function Test-AzureRmKubernetes
+function Test-AzKubernetes
 {
     # Setup
     $resourceGroupName = Get-RandomResourceGroupName
@@ -11,27 +11,27 @@ function Test-AzureRmKubernetes
 
     try
     {
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		if (isLive) {
 			$cred = $(createTestCredential "Unicorns" "Puppies")
-			New-AzureRmAks -ResourceGroupName $resourceGroupName -Name $kubeClusterName -ClientIdAndSecret $cred
+			New-AzAks -ResourceGroupName $resourceGroupName -Name $kubeClusterName -ClientIdAndSecret $cred
 		} else {
-			New-AzureRmAks -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+			New-AzAks -ResourceGroupName $resourceGroupName -Name $kubeClusterName
 		}
-		$cluster = Get-AzureRmAks -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+		$cluster = Get-AzAks -ResourceGroupName $resourceGroupName -Name $kubeClusterName
 		Assert-NotNull $cluster.Fqdn
 		Assert-NotNull $cluster.DnsPrefix
 		Assert-AreEqual 1 $cluster.AgentPoolProfiles.Length
 		Assert-AreEqual "1.8.1" $cluster.KubernetesVersion
 		Assert-AreEqual 3 $cluster.AgentPoolProfiles[0].Count;
-		$cluster = $cluster | Set-AzureRmAks -NodeCount 2
+		$cluster = $cluster | Set-AzAks -NodeCount 2
 		Assert-AreEqual 2 $cluster.AgentPoolProfiles[0].Count;
-		$cluster | Import-AzureRmAksCredential -Force
-		$cluster | Remove-AzureRmAks -Force
+		$cluster | Import-AzAksCredential -Force
+		$cluster | Remove-AzAks -Force
     }
     finally
     {
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }

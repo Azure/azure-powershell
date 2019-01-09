@@ -19,13 +19,13 @@ ManagementGroupsTests
 
 function Test-GetManagementGroup
 {
-	New-AzureRmManagementGroup -GroupName TestPSGetGroup1
-	New-AzureRmManagementGroup -GroupName TestPSGetGroup2 -ParentId "/providers/Microsoft.Management/managementGroups/TestPSGetGroup1"
+	New-AzManagementGroup -GroupName TestPSGetGroup1
+	New-AzManagementGroup -GroupName TestPSGetGroup2 -ParentId "/providers/Microsoft.Management/managementGroups/TestPSGetGroup1"
 
-	$response = Get-AzureRmManagementGroup -GroupName TestPSGetGroup2
+	$response = Get-AzManagementGroup -GroupName TestPSGetGroup2
 
-	Remove-AzureRmManagementGroup -GroupName TestPSGetGroup2
-	Remove-AzureRmManagementGroup -GroupName TestPSGetGroup1
+	Remove-AzManagementGroup -GroupName TestPSGetGroup2
+	Remove-AzManagementGroup -GroupName TestPSGetGroup1
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSGetGroup2"
@@ -48,15 +48,15 @@ function Test-GetManagementGroup
 
 function Test-GetManagementGroupWithExpand
 {
-	New-AzureRmManagementGroup -GroupName TestPSGetGroup1
-	New-AzureRmManagementGroup -GroupName TestPSGetGroup2 -ParentId "/providers/Microsoft.Management/managementGroups/TestPSGetGroup1"
-	New-AzureRmManagementGroup -GroupName TestPSGetGroup3 -ParentId "/providers/Microsoft.Management/managementGroups/TestPSGetGroup2"
+	New-AzManagementGroup -GroupName TestPSGetGroup1
+	New-AzManagementGroup -GroupName TestPSGetGroup2 -ParentId "/providers/Microsoft.Management/managementGroups/TestPSGetGroup1"
+	New-AzManagementGroup -GroupName TestPSGetGroup3 -ParentId "/providers/Microsoft.Management/managementGroups/TestPSGetGroup2"
 
-	$response = Get-AzureRmManagementGroup -GroupName TestPSGetGroup2 -Expand
+	$response = Get-AzManagementGroup -GroupName TestPSGetGroup2 -Expand
 
-	Remove-AzureRmManagementGroup -GroupName TestPSGetGroup3
-	Remove-AzureRmManagementGroup -GroupName TestPSGetGroup2
-	Remove-AzureRmManagementGroup -GroupName TestPSGetGroup1
+	Remove-AzManagementGroup -GroupName TestPSGetGroup3
+	Remove-AzManagementGroup -GroupName TestPSGetGroup2
+	Remove-AzManagementGroup -GroupName TestPSGetGroup1
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSGetGroup2"
@@ -89,17 +89,17 @@ function Test-GetManagementGroupWithExpand
 
 function Test-GetManagementGroupWithExpandAndRecurse
 {
-	New-AzureRmManagementGroup -GroupName TestPSGetGroup1
-	New-AzureRmManagementGroup -GroupName TestPSGetGroup2 -ParentId "/providers/Microsoft.Management/managementGroups/TestPSGetGroup1"
-	New-AzureRmManagementGroup -GroupName TestPSGetGroup3 -ParentId "/providers/Microsoft.Management/managementGroups/TestPSGetGroup2"
-	New-AzureRmManagementGroup -GroupName TestPSGetGroup4 -ParentId "/providers/Microsoft.Management/managementGroups/TestPSGetGroup3"
+	New-AzManagementGroup -GroupName TestPSGetGroup1
+	New-AzManagementGroup -GroupName TestPSGetGroup2 -ParentId "/providers/Microsoft.Management/managementGroups/TestPSGetGroup1"
+	New-AzManagementGroup -GroupName TestPSGetGroup3 -ParentId "/providers/Microsoft.Management/managementGroups/TestPSGetGroup2"
+	New-AzManagementGroup -GroupName TestPSGetGroup4 -ParentId "/providers/Microsoft.Management/managementGroups/TestPSGetGroup3"
 
-	$response = Get-AzureRmManagementGroup -GroupName TestPSGetGroup2 -Expand -Recurse
+	$response = Get-AzManagementGroup -GroupName TestPSGetGroup2 -Expand -Recurse
 
-	Remove-AzureRmManagementGroup -GroupName TestPSGetGroup4
-	Remove-AzureRmManagementGroup -GroupName TestPSGetGroup3
-	Remove-AzureRmManagementGroup -GroupName TestPSGetGroup2
-	Remove-AzureRmManagementGroup -GroupName TestPSGetGroup1
+	Remove-AzManagementGroup -GroupName TestPSGetGroup4
+	Remove-AzManagementGroup -GroupName TestPSGetGroup3
+	Remove-AzManagementGroup -GroupName TestPSGetGroup2
+	Remove-AzManagementGroup -GroupName TestPSGetGroup1
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSGetGroup2"
@@ -141,8 +141,8 @@ function Test-GetManagementGroupWithExpandAndRecurse
 
 function Test-NewManagementGroup
 {
-    $response = New-AzureRmManagementGroup -GroupName TestPSNewGroup
-	Remove-AzureRmManagementGroup -GroupName TestPSNewGroup
+    $response = New-AzManagementGroup -GroupName TestPSNewGroup
+	Remove-AzManagementGroup -GroupName TestPSNewGroup
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSNewGroup"
@@ -160,8 +160,8 @@ function Test-NewManagementGroup
 
 function Test-NewManagementGroupWithDisplayName
 {
-    $response = New-AzureRmManagementGroup -GroupName TestPSNewGroup2 -DisplayName TestDisplayName
-	Remove-AzureRmManagementGroup -GroupName TestPSNewGroup2
+    $response = New-AzManagementGroup -GroupName TestPSNewGroup2 -DisplayName TestDisplayName
+	Remove-AzManagementGroup -GroupName TestPSNewGroup2
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSNewGroup2"
@@ -178,10 +178,10 @@ function Test-NewManagementGroupWithDisplayName
 
 function Test-NewManagementGroupWithParentId
 {
-	New-AzureRmManagementGroup -GroupName TestParent5
-    $response = New-AzureRmManagementGroup -GroupName TestPSNewGroup5 -ParentId /providers/Microsoft.Management/managementGroups/TestParent5
-	Remove-AzureRmManagementGroup -GroupName TestPSNewGroup5
-	Remove-AzureRmManagementGroup -GroupName TestParent5
+	New-AzManagementGroup -GroupName TestParent5
+    $response = New-AzManagementGroup -GroupName TestPSNewGroup5 -ParentId /providers/Microsoft.Management/managementGroups/TestParent5
+	Remove-AzManagementGroup -GroupName TestPSNewGroup5
+	Remove-AzManagementGroup -GroupName TestParent5
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSNewGroup5"
@@ -200,10 +200,10 @@ function Test-NewManagementGroupWithParentId
 
 function Test-NewManagementGroupWithDisplayNameAndParentId
 {
-	New-AzureRmManagementGroup -GroupName TestParent4
-    $response = New-AzureRmManagementGroup -GroupName TestPSGroup4 -DisplayName TestDisplayName -ParentId /providers/Microsoft.Management/managementGroups/TestParent4
-	Remove-AzureRmManagementGroup -GroupName TestPSGroup4
-	Remove-AzureRmManagementGroup -GroupName TestParent4
+	New-AzManagementGroup -GroupName TestParent4
+    $response = New-AzManagementGroup -GroupName TestPSGroup4 -DisplayName TestDisplayName -ParentId /providers/Microsoft.Management/managementGroups/TestParent4
+	Remove-AzManagementGroup -GroupName TestPSGroup4
+	Remove-AzManagementGroup -GroupName TestParent4
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSGroup4"
@@ -222,9 +222,9 @@ function Test-NewManagementGroupWithDisplayNameAndParentId
 
 function Test-UpdateManagementGroupWithDisplayName
 {
-	New-AzureRmManagementGroup -GroupName TestPSUpdateGroup1
-    $response = Update-AzureRmManagementGroup -GroupName TestPSUpdateGroup1 -DisplayName TestDisplayName
-	Remove-AzureRmManagementGroup -GroupName TestPSUpdateGroup1
+	New-AzManagementGroup -GroupName TestPSUpdateGroup1
+    $response = Update-AzManagementGroup -GroupName TestPSUpdateGroup1 -DisplayName TestDisplayName
+	Remove-AzManagementGroup -GroupName TestPSUpdateGroup1
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSUpdateGroup1"
@@ -239,11 +239,11 @@ function Test-UpdateManagementGroupWithDisplayName
 
 function Test-UpdateManagementGroupWithParentId
 {
-	New-AzureRmManagementGroup -GroupName TestPSUpdateGroupParent2
-	New-AzureRmManagementGroup -GroupName TestPSUpdateGroup2
-    $response = Update-AzureRmManagementGroup -GroupName TestPSUpdateGroup2 -ParentId /providers/Microsoft.Management/managementGroups/TestPSUpdateGroupParent2
-	Remove-AzureRmManagementGroup -GroupName TestPSUpdateGroup2
-	Remove-AzureRmManagementGroup -GroupName TestPSUpdateGroupParent2
+	New-AzManagementGroup -GroupName TestPSUpdateGroupParent2
+	New-AzManagementGroup -GroupName TestPSUpdateGroup2
+    $response = Update-AzManagementGroup -GroupName TestPSUpdateGroup2 -ParentId /providers/Microsoft.Management/managementGroups/TestPSUpdateGroupParent2
+	Remove-AzManagementGroup -GroupName TestPSUpdateGroup2
+	Remove-AzManagementGroup -GroupName TestPSUpdateGroupParent2
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSUpdateGroup2"
@@ -262,11 +262,11 @@ function Test-UpdateManagementGroupWithParentId
 
 function Test-UpdateManagementGroupWithDisplayNameAndParentId
 {
-	New-AzureRmManagementGroup -GroupName TestPSUpdateGroupParent3
-	New-AzureRmManagementGroup -GroupName TestPSUpdateGroup3
-    $response = Update-AzureRmManagementGroup -GroupName TestPSUpdateGroup3 -DisplayName TestDisplayName -ParentId /providers/Microsoft.Management/managementGroups/TestPSUpdateGroupParent3
-	Remove-AzureRmManagementGroup -GroupName TestPSUpdateGroup3
-	Remove-AzureRmManagementGroup -GroupName TestPSUpdateGroupParent3
+	New-AzManagementGroup -GroupName TestPSUpdateGroupParent3
+	New-AzManagementGroup -GroupName TestPSUpdateGroup3
+    $response = Update-AzManagementGroup -GroupName TestPSUpdateGroup3 -DisplayName TestDisplayName -ParentId /providers/Microsoft.Management/managementGroups/TestPSUpdateGroupParent3
+	Remove-AzManagementGroup -GroupName TestPSUpdateGroup3
+	Remove-AzManagementGroup -GroupName TestPSUpdateGroupParent3
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSUpdateGroup3"
@@ -285,13 +285,13 @@ function Test-UpdateManagementGroupWithDisplayNameAndParentId
 
 function Test-RemoveManagementGroup
 {
-	New-AzureRmManagementGroup -GroupName TestPSRemoveGroup
+	New-AzManagementGroup -GroupName TestPSRemoveGroup
 	
-	$getresponse = Get-AzureRmManagementGroup -GroupName TestPSRemoveGroup
+	$getresponse = Get-AzManagementGroup -GroupName TestPSRemoveGroup
 
-    $response = Remove-AzureRmManagementGroup -GroupName TestPSRemoveGroup
+    $response = Remove-AzManagementGroup -GroupName TestPSRemoveGroup
 
-	$getresponse2 = Get-AzureRmManagementGroup -GroupName TestPSRemoveGroup
+	$getresponse2 = Get-AzManagementGroup -GroupName TestPSRemoveGroup
 
 	Assert-NotNull $getresponse
 	Assert-Null $getresponse2
@@ -300,17 +300,17 @@ function Test-RemoveManagementGroup
 
 function Test-NewRemoveManagementGroupSubscription
 {
-	New-AzureRmManagementGroup -GroupName TestSubGroup
+	New-AzManagementGroup -GroupName TestSubGroup
 
-	$response1 = New-AzureRmManagementGroupSubscription -GroupName TestSubGroup -SubscriptionId 394ae65d-9e71-4462-930f-3332dedf845c
+	$response1 = New-AzManagementGroupSubscription -GroupName TestSubGroup -SubscriptionId 394ae65d-9e71-4462-930f-3332dedf845c
 
-	$getresponse = Get-AzureRmManagementGroup -GroupName TestSubGroup -Expand
+	$getresponse = Get-AzManagementGroup -GroupName TestSubGroup -Expand
 
-	$response2 = Remove-AzureRmManagementGroupSubscription -GroupName TestSubGroup -SubscriptionId 394ae65d-9e71-4462-930f-3332dedf845c
+	$response2 = Remove-AzManagementGroupSubscription -GroupName TestSubGroup -SubscriptionId 394ae65d-9e71-4462-930f-3332dedf845c
 	
-	$getresponse2 = Get-AzureRmManagementGroup -GroupName TestSubGroup -Expand
+	$getresponse2 = Get-AzManagementGroup -GroupName TestSubGroup -Expand
 
-	Remove-AzureRmManagementGroup -GroupName TestSubGroup
+	Remove-AzManagementGroup -GroupName TestSubGroup
 
 	$expectedType =  "/subscriptions"
 	$expectedId = "/subscriptions/394ae65d-9e71-4462-930f-3332dedf845c"

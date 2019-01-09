@@ -36,5 +36,5 @@ Cleans the created resource groups
 #>
 function Clean-ResourceGroup($rgname)
 {
-	Remove-AzureRmResourceGroup -Name $rgname -Force
+	Remove-AzResourceGroup -Name $rgname -Force
 }

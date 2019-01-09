@@ -39,7 +39,7 @@ function Test-AddTdeCertificateForSqlServerDefaultParameterSetNoPassword
 	$server = Create-ServerForTest $rg $location
 	try
 	{
-		Add-AzureRmSqlServerTransparentDataEncryptionCertificate `
+		Add-AzSqlServerTransparentDataEncryptionCertificate `
 			-ResourceGroupName $server.ResourceGroupName `
 			-ServerName $server.ServerName `
 			-PrivateBlob $securePrivateBlobNoPassword `
@@ -69,7 +69,7 @@ function Test-AddTdeCertificateForSqlServerDefaultParameterSetWithPassword
 	$server = Create-ServerForTest $rg $location
 	try
 	{
-		Add-AzureRmSqlServerTransparentDataEncryptionCertificate `
+		Add-AzSqlServerTransparentDataEncryptionCertificate `
 			-ResourceGroupName $server.ResourceGroupName `
 			-ServerName $server.ServerName `
 			-PrivateBlob $securePrivateBlobWithPassword `
@@ -96,7 +96,7 @@ function Test-AddTdeCertificateForManagedInstanceDefaultParameterSetNoPassword
 {
 	try
 	{
-		Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate `
+		Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate `
 			-ResourceGroupName $mangedInstanceRg `
 			-ManagedInstanceName $managedInstanceName `
 			-PrivateBlob $securePrivateBlobNoPassword `
@@ -118,7 +118,7 @@ function Test-AddTdeCertificateForManagedInstanceDefaultParameterSetWithPassword
 {
 	try
 	{
-		Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate `
+		Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate `
 			-ResourceGroupName $mangedInstanceRg `
 			-ManagedInstanceName $managedInstanceName `
 			-PrivateBlob $securePrivateBlobWithPassword `
@@ -144,7 +144,7 @@ function Test-AddTdeCertificateForSqlServerInputObjectParameterSetWithPassword
 
 	try
 	{
-		Add-AzureRmSqlServerTransparentDataEncryptionCertificate `
+		Add-AzSqlServerTransparentDataEncryptionCertificate `
 			-SqlServer $server `
 			-PrivateBlob $securePrivateBlobWithPassword `
 			-Password $securePassword
@@ -174,7 +174,7 @@ function Test-AddTdeCertificateForSqlServerResourceIdParameterSetWithPassword
 
 	try
 	{
-		Add-AzureRmSqlServerTransparentDataEncryptionCertificate `
+		Add-AzSqlServerTransparentDataEncryptionCertificate `
 			-SqlServerResourceId $server.ResourceId `
 			-PrivateBlob $securePrivateBlobWithPassword `
 			-Password $securePassword
@@ -204,7 +204,7 @@ function Test-AddTdeCertificateForSqlServerInputObjectParameterSetNoPassword
 
 	try
 	{
-		Add-AzureRmSqlServerTransparentDataEncryptionCertificate `
+		Add-AzSqlServerTransparentDataEncryptionCertificate `
 			-SqlServer $server `
 			-PrivateBlob $securePrivateBlobNoPassword `
 			-Password $secureEmptyPassword
@@ -234,7 +234,7 @@ function Test-AddTdeCertificateForSqlServerResourceIdParameterSetNoPassword
 
 	try
 	{
-		Add-AzureRmSqlServerTransparentDataEncryptionCertificate `
+		Add-AzSqlServerTransparentDataEncryptionCertificate `
 			-SqlServerResourceId $server.ResourceId `
 			-PrivateBlob $securePrivateBlobNoPassword `
 			-Password $secureEmptyPassword
@@ -264,7 +264,7 @@ function Test-AddTdeCertificateForSqlServerWithPiping
 
 	try
 	{
-		$server | Add-AzureRmSqlServerTransparentDataEncryptionCertificate `
+		$server | Add-AzSqlServerTransparentDataEncryptionCertificate `
 			-PrivateBlob $securePrivateBlobNoPassword `
 			-Password $secureEmptyPassword
 	}

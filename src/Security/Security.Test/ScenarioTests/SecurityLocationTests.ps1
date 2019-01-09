@@ -16,9 +16,9 @@
 .SYNOPSIS
 Get security locations on a subscription
 #>
-function Get-AzureRmSecurityLocation-SubscriptionScope
+function Get-AzSecurityLocation-SubscriptionScope
 {
-    $locations = Get-AzureRmSecurityLocation
+    $locations = Get-AzSecurityLocation
 	Validate-Locations $locations
 }
 
@@ -26,10 +26,10 @@ function Get-AzureRmSecurityLocation-SubscriptionScope
 .SYNOPSIS
 Get security location on a subscription
 #>
-function Get-AzureRmSecurityLocation-SubscriptionLevelResource
+function Get-AzSecurityLocation-SubscriptionLevelResource
 {
-	$location = Get-AzureRmSecurityLocation | Select -First 1
-    $fetchedLocation = Get-AzureRmSecurityLocation -Name $location.Name
+	$location = Get-AzSecurityLocation | Select -First 1
+    $fetchedLocation = Get-AzSecurityLocation -Name $location.Name
 	Validate-Location $fetchedLocation
 }
 
@@ -37,10 +37,10 @@ function Get-AzureRmSecurityLocation-SubscriptionLevelResource
 .SYNOPSIS
 Get security location by resource ID
 #>
-function Get-AzureRmSecurityLocation-ResourceId
+function Get-AzSecurityLocation-ResourceId
 {
-	$location = Get-AzureRmSecurityLocation | Select -First 1
-    $fetchedLocation = Get-AzureRmSecurityLocation -ResourceId $location.Id
+	$location = Get-AzSecurityLocation | Select -First 1
+    $fetchedLocation = Get-AzSecurityLocation -ResourceId $location.Id
 	Validate-Location $fetchedLocation
 }
 

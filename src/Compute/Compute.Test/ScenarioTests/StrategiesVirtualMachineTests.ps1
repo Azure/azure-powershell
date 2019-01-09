@@ -29,13 +29,13 @@ function Test-SimpleNewVm
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
-        $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel
+        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
         Assert-False { $x.AdditionalCapabilities.UltraSSDEnabled };
 
-        $nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
+        $nic = Get-AzNetworkInterface -ResourceGroupName $vmname  -Name $vmname
         Assert-NotNull $nic
         Assert-False { $nic.EnableAcceleratedNetworking }
     }
@@ -68,13 +68,13 @@ function Test-SimpleNewVmFromSIGImage
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
-        $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Location "East US 2" -Size "Standard_D2s_v3" -Image "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/SIGTestGroupoDoNotDelete/providers/Microsoft.Compute/galleries/SIGTestGalleryDoNotDelete/images/SIGTestImageWindowsDoNotDelete" 
+        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Location "East US 2" -Size "Standard_D2s_v3" -Image "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/SIGTestGroupoDoNotDelete/providers/Microsoft.Compute/galleries/SIGTestGalleryDoNotDelete/images/SIGTestImageWindowsDoNotDelete" 
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
         Assert-False { $x.AdditionalCapabilities.UltraSSDEnabled };
 
-        $nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
+        $nic = Get-AzNetworkInterface -ResourceGroupName $vmname  -Name $vmname
         Assert-NotNull $nic
         Assert-False { $nic.EnableAcceleratedNetworking }
     }
@@ -104,14 +104,14 @@ function Test-SimpleNewVmWithUltraSSD
         # Common
 		#As of now the ultrasd feature is only supported in east us 2 and in the size Standard_D2s_v3, on the features GA the restriction will be lifted
 		#Use the follwing command to figure out the one to use 
-		#Get-AzureRmComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }
-        $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Location "east US 2" -EnableUltraSSD -Zone 3 -Size "Standard_D2s_v3"
+		#Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }
+        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Location "east US 2" -EnableUltraSSD -Zone 3 -Size "Standard_D2s_v3"
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
 		Assert-True { $x.AdditionalCapabilities.UltraSSDEnabled };
 
-        $nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
+        $nic = Get-AzNetworkInterface -ResourceGroupName $vmname  -Name $vmname
         Assert-NotNull $nic
         Assert-False { $nic.EnableAcceleratedNetworking }
     }
@@ -139,12 +139,12 @@ function Test-SimpleNewVmWithAccelNet
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
-        $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size "Standard_D12_v2"
+        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size "Standard_D12_v2"
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
 
-        $nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
+        $nic = Get-AzNetworkInterface -ResourceGroupName $vmname  -Name $vmname
         Assert-NotNull $nic
         Assert-True { $nic.EnableAcceleratedNetworking }
     }
@@ -172,7 +172,7 @@ function Test-SimpleNewVmSystemAssignedIdentity
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
-        $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -SystemAssignedIdentity
+        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -SystemAssignedIdentity
 
         Assert-AreEqual $vmname $x.Name;
         Assert-AreEqual "SystemAssigned" $x.Identity.Type     
@@ -200,7 +200,7 @@ function Test-NewVmWin10
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
             [string]$domainNameLabel = "$vmname-$vmname".tolower();
-        $x = New-AzureRmVM `
+        $x = New-AzVM `
                   -Name $vmname `
                   -Credential $cred `
                   -DomainNameLabel $domainNameLabel `
@@ -230,15 +230,15 @@ function Test-SimpleNewVmUserAssignedIdentitySystemAssignedIdentity
     try
     {
         # To record this test run these commands first :
-        # New-AzureRmResourceGroup -Name UAITG123456 -Location 'Central US'
-        # New-AzureRmUserAssignedIdentity -ResourceGroupName  UAITG123456 -Name UAITG123456Identity
+        # New-AzResourceGroup -Name UAITG123456 -Location 'Central US'
+        # New-AzUserAssignedIdentity -ResourceGroupName  UAITG123456 -Name UAITG123456Identity
         # 
         # Now get the identity :
         # 
-        # Get-AzureRmUserAssignedIdentity -ResourceGroupName UAITG123456 -Name UAITG123456Identity
+        # Get-AzUserAssignedIdentity -ResourceGroupName UAITG123456 -Name UAITG123456Identity
         # Note down the Id and use it in the PS code
         # $identityName = $vmname + "Identity"
-        # $newUserIdentity =  New-AzureRmUserAssignedIdentity -ResourceGroupName $vmname -Name $identityName
+        # $newUserIdentity =  New-AzUserAssignedIdentity -ResourceGroupName $vmname -Name $identityName
         # $newUserId = $newUserIdentity.Id
         $newUserId = "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourcegroups/UAITG123456/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UAITG123456Identity"
 
@@ -248,7 +248,7 @@ function Test-SimpleNewVmUserAssignedIdentitySystemAssignedIdentity
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
-        $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserAssignedIdentity $newUserId -SystemAssignedIdentity
+        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserAssignedIdentity $newUserId -SystemAssignedIdentity
 
         Assert-AreEqual $vmname $x.Name;
         Assert-AreEqual "UserAssigned" $x.Identity.Type     
@@ -286,8 +286,8 @@ function Test-SimpleNewVmWithAvailabilitySet
         [string]$domainNameLabel = "$vmname-$rgname".tolower();
 
         # Common
-        $r = New-AzureRmResourceGroup -Name $rgname -Location "eastus"
-        $a = New-AzureRmAvailabilitySet `
+        $r = New-AzResourceGroup -Name $rgname -Location "eastus"
+        $a = New-AzAvailabilitySet `
             -ResourceGroupName $rgname `
             -Name $asname `
             -Location "eastus" `
@@ -295,7 +295,7 @@ function Test-SimpleNewVmWithAvailabilitySet
             -PlatformUpdateDomainCount 2 `
             -PlatformFaultDomainCount 2
 
-        $x = New-AzureRmVM `
+        $x = New-AzVM `
             -ResourceGroupName $rgname `
             -Name $vmname `
             -Credential $cred `
@@ -329,7 +329,7 @@ function Test-SimpleNewVmWithDefaultDomainName
         [string] $vmname = "ps9301"
 
         # Common
-        $x = New-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Credential $cred
+        $x = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred
 
         Assert-AreEqual $vmname $x.Name
         $fqdn = $x.FullyQualifiedDomainName
@@ -364,14 +364,14 @@ function Test-SimpleNewVmWithDefaultDomainName2
         [string] $vmname = "vm"
 
         # Common
-        $x = New-AzureRmVM `
+        $x = New-AzVM `
             -ResourceGroupName $rgname `
             -Name $vmname `
             -Credential $cred `
             -ImageName "ubuntults"
 
         # second VM
-        $x2 = New-AzureRmVM `
+        $x2 = New-AzVM `
             -ResourceGroupName $rgname2 `
             -Name $vmname `
             -Credential $cred `
@@ -403,8 +403,8 @@ function Test-SimpleNewVmWithAvailabilitySet2
         [string]$asname = "myAvailabilitySet"
 
         # Common
-        $r = New-AzureRmResourceGroup -Name $rgname -Location "eastus"
-        $a = New-AzureRmAvailabilitySet `
+        $r = New-AzResourceGroup -Name $rgname -Location "eastus"
+        $a = New-AzAvailabilitySet `
             -ResourceGroupName $rgname `
             -Name $asname `
             -Location "eastus" `
@@ -412,7 +412,7 @@ function Test-SimpleNewVmWithAvailabilitySet2
             -PlatformUpdateDomainCount 2 `
             -PlatformFaultDomainCount 2
 
-        $x = New-AzureRmVM `
+        $x = New-AzVM `
             -ResourceGroupName $rgname `
             -Name $vmname `
             -Credential $cred `
@@ -452,7 +452,7 @@ function Test-SimpleNewVmImageName
         [string]$domainNameLabel = "$vmname-$vmname".tolower()
 
         # Common
-        $x = New-AzureRmVM `
+        $x = New-AzVM `
             -Name $vmname `
             -Credential $cred `
             -DomainNameLabel $domainNameLabel `
@@ -485,7 +485,7 @@ function Test-SimpleNewVmImageNameMicrosoftSqlUbuntu
         [string]$domainNameLabel = "xsd3490285".tolower()
 
         # Common
-        $x = New-AzureRmVM `
+        $x = New-AzVM `
             -Name $vmname `
             -Credential $cred `
             -DomainNameLabel $domainNameLabel `

@@ -55,47 +55,47 @@ function Test-NetworkInterfaceCRUDMinimalParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create required dependencies
-        $Subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
-        $VirtualNetwork = New-AzureRmVirtualNetwork -ResourceGroupName $rgname -Location $location -Name $VirtualNetworkName -Subnet $Subnet -AddressPrefix $VirtualNetworkAddressPrefix;
+        $Subnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
+        $VirtualNetwork = New-AzVirtualNetwork -ResourceGroupName $rgname -Location $location -Name $VirtualNetworkName -Subnet $Subnet -AddressPrefix $VirtualNetworkAddressPrefix;
         if(-not $Subnet.Id)
         {
-            $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $VirtualNetwork;
+            $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $VirtualNetwork;
         }
 
         # Create NetworkInterface
-        $vNetworkInterface = New-AzureRmNetworkInterface -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $Subnet;
+        $vNetworkInterface = New-AzNetworkInterface -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $Subnet;
         Assert-NotNull $vNetworkInterface;
-        Assert-True { Check-CmdletReturnType "New-AzureRmNetworkInterface" $vNetworkInterface };
+        Assert-True { Check-CmdletReturnType "New-AzNetworkInterface" $vNetworkInterface };
         $vIpConfiguration = $vNetworkInterface.IpConfigurations | Where-Object { $_.Name -eq "ipconfig1" };
         Assert-NotNull $vIpConfiguration;
         Assert-NotNull $vIpConfiguration.Subnet;
         Assert-AreEqual $rname $vNetworkInterface.Name;
 
         # Get NetworkInterface
-        $vNetworkInterface = Get-AzureRmNetworkInterface -ResourceGroupName $rgname -Name $rname;
+        $vNetworkInterface = Get-AzNetworkInterface -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vNetworkInterface;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmNetworkInterface" $vNetworkInterface };
+        Assert-True { Check-CmdletReturnType "Get-AzNetworkInterface" $vNetworkInterface };
         Assert-AreEqual $rname $vNetworkInterface.Name;
 
         # Get all NetworkInterfaces in resource group
-        $listNetworkInterface = Get-AzureRmNetworkInterface -ResourceGroupName $rgname;
+        $listNetworkInterface = Get-AzNetworkInterface -ResourceGroupName $rgname;
         Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all NetworkInterfaces in subscription
-        $listNetworkInterface = Get-AzureRmNetworkInterface;
+        $listNetworkInterface = Get-AzNetworkInterface;
         Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove NetworkInterface
-        $job = Remove-AzureRmNetworkInterface -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job = Remove-AzNetworkInterface -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeNetworkInterface = $job | Receive-Job;
         Assert-AreEqual $true $removeNetworkInterface;
 
         # Get NetworkInterface should fail
-        Assert-ThrowsContains { Get-AzureRmNetworkInterface -ResourceGroupName $rgname -Name $rname } "not found";
+        Assert-ThrowsContains { Get-AzNetworkInterface -ResourceGroupName $rgname -Name $rname } "not found";
     }
     finally
     {
@@ -135,21 +135,21 @@ function Test-NetworkInterfaceCRUDAllParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create required dependencies
-        $Subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
-        $VirtualNetwork = New-AzureRmVirtualNetwork -ResourceGroupName $rgname -Location $location -Name $VirtualNetworkName -Subnet $Subnet -AddressPrefix $VirtualNetworkAddressPrefix;
+        $Subnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
+        $VirtualNetwork = New-AzVirtualNetwork -ResourceGroupName $rgname -Location $location -Name $VirtualNetworkName -Subnet $Subnet -AddressPrefix $VirtualNetworkAddressPrefix;
         if(-not $Subnet.Id)
         {
-            $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $VirtualNetwork;
+            $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $VirtualNetwork;
         }
-        $PublicIPAddress = New-AzureRmPublicIPAddress -ResourceGroupName $rgname -Location $location -Name $PublicIPAddressName -AllocationMethod $PublicIPAddressAllocationMethod;
+        $PublicIPAddress = New-AzPublicIPAddress -ResourceGroupName $rgname -Location $location -Name $PublicIPAddressName -AllocationMethod $PublicIPAddressAllocationMethod;
 
         # Create NetworkInterface
-        $vNetworkInterface = New-AzureRmNetworkInterface -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $Subnet -PublicIPAddress $PublicIPAddress -PrivateIPAddress $PrivateIPAddress -IpConfigurationName $IpConfigurationName -InternalDnsNameLabel $InternalDnsNameLabel;
+        $vNetworkInterface = New-AzNetworkInterface -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $Subnet -PublicIPAddress $PublicIPAddress -PrivateIPAddress $PrivateIPAddress -IpConfigurationName $IpConfigurationName -InternalDnsNameLabel $InternalDnsNameLabel;
         Assert-NotNull $vNetworkInterface;
-        Assert-True { Check-CmdletReturnType "New-AzureRmNetworkInterface" $vNetworkInterface };
+        Assert-True { Check-CmdletReturnType "New-AzNetworkInterface" $vNetworkInterface };
         $vIpConfiguration = $vNetworkInterface.IpConfigurations | Where-Object { $_.Name -eq $IpConfigurationName };
         Assert-NotNull $vIpConfiguration;
         Assert-NotNull $vIpConfiguration.Subnet;
@@ -162,9 +162,9 @@ function Test-NetworkInterfaceCRUDAllParameters
         Assert-AreEqual $EnableIPForwarding $vNetworkInterface.EnableIPForwarding;
 
         # Get NetworkInterface
-        $vNetworkInterface = Get-AzureRmNetworkInterface -ResourceGroupName $rgname -Name $rname;
+        $vNetworkInterface = Get-AzNetworkInterface -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vNetworkInterface;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmNetworkInterface" $vNetworkInterface };
+        Assert-True { Check-CmdletReturnType "Get-AzNetworkInterface" $vNetworkInterface };
         Assert-AreEqual $rname $vNetworkInterface.Name;
         Assert-AreEqual $PrivateIPAddress $vNetworkInterface.IpConfigurations[0].PrivateIpAddress;
         Assert-AreEqual $IpConfigurationName $vNetworkInterface.IpConfigurations[0].Name;
@@ -173,53 +173,53 @@ function Test-NetworkInterfaceCRUDAllParameters
         Assert-AreEqual $EnableIPForwarding $vNetworkInterface.EnableIPForwarding;
 
         # Get all NetworkInterfaces in resource group
-        $listNetworkInterface = Get-AzureRmNetworkInterface -ResourceGroupName $rgname;
+        $listNetworkInterface = Get-AzNetworkInterface -ResourceGroupName $rgname;
         Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all NetworkInterfaces in subscription
-        $listNetworkInterface = Get-AzureRmNetworkInterface;
+        $listNetworkInterface = Get-AzNetworkInterface;
         Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Set NetworkInterface
         $vNetworkInterface.DnsSettings.InternalDnsNameLabel = $InternalDnsNameLabelSet;
         $vNetworkInterface.EnableAcceleratedNetworking = $EnableAcceleratedNetworkingSet;
         $vNetworkInterface.EnableIPForwarding = $EnableIPForwardingSet;
-        $vNetworkInterface = Set-AzureRmNetworkInterface -NetworkInterface $vNetworkInterface;
+        $vNetworkInterface = Set-AzNetworkInterface -NetworkInterface $vNetworkInterface;
         Assert-NotNull $vNetworkInterface;
-        Assert-True { Check-CmdletReturnType "Set-AzureRmNetworkInterface" $vNetworkInterface };
+        Assert-True { Check-CmdletReturnType "Set-AzNetworkInterface" $vNetworkInterface };
         Assert-AreEqual $rname $vNetworkInterface.Name;
         Assert-AreEqual $InternalDnsNameLabelSet $vNetworkInterface.DnsSettings.InternalDnsNameLabel;
         Assert-AreEqual $EnableAcceleratedNetworkingSet $vNetworkInterface.EnableAcceleratedNetworking;
         Assert-AreEqual $EnableIPForwardingSet $vNetworkInterface.EnableIPForwarding;
 
         # Get NetworkInterface
-        $vNetworkInterface = Get-AzureRmNetworkInterface -ResourceGroupName $rgname -Name $rname;
+        $vNetworkInterface = Get-AzNetworkInterface -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vNetworkInterface;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmNetworkInterface" $vNetworkInterface };
+        Assert-True { Check-CmdletReturnType "Get-AzNetworkInterface" $vNetworkInterface };
         Assert-AreEqual $rname $vNetworkInterface.Name;
         Assert-AreEqual $InternalDnsNameLabelSet $vNetworkInterface.DnsSettings.InternalDnsNameLabel;
         Assert-AreEqual $EnableAcceleratedNetworkingSet $vNetworkInterface.EnableAcceleratedNetworking;
         Assert-AreEqual $EnableIPForwardingSet $vNetworkInterface.EnableIPForwarding;
 
         # Get all NetworkInterfaces in resource group
-        $listNetworkInterface = Get-AzureRmNetworkInterface -ResourceGroupName $rgname;
+        $listNetworkInterface = Get-AzNetworkInterface -ResourceGroupName $rgname;
         Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all NetworkInterfaces in subscription
-        $listNetworkInterface = Get-AzureRmNetworkInterface;
+        $listNetworkInterface = Get-AzNetworkInterface;
         Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove NetworkInterface
-        $job = Remove-AzureRmNetworkInterface -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job = Remove-AzNetworkInterface -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeNetworkInterface = $job | Receive-Job;
         Assert-AreEqual $true $removeNetworkInterface;
 
         # Get NetworkInterface should fail
-        Assert-ThrowsContains { Get-AzureRmNetworkInterface -ResourceGroupName $rgname -Name $rname } "not found";
+        Assert-ThrowsContains { Get-AzNetworkInterface -ResourceGroupName $rgname -Name $rname } "not found";
 
         # Set NetworkInterface should fail
-        Assert-ThrowsContains { Set-AzureRmNetworkInterface -NetworkInterface $vNetworkInterface } "not found";
+        Assert-ThrowsContains { Set-AzNetworkInterface -NetworkInterface $vNetworkInterface } "not found";
     }
     finally
     {
@@ -248,79 +248,79 @@ function Test-NetworkInterfaceIpConfigurationCRUDMinimalParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create required dependencies
-        $Subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
-        $VirtualNetwork = New-AzureRmVirtualNetwork -ResourceGroupName $rgname -Location $location -Name $VirtualNetworkName -Subnet $Subnet -AddressPrefix $VirtualNetworkAddressPrefix;
+        $Subnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
+        $VirtualNetwork = New-AzVirtualNetwork -ResourceGroupName $rgname -Location $location -Name $VirtualNetworkName -Subnet $Subnet -AddressPrefix $VirtualNetworkAddressPrefix;
         if(-not $Subnet.Id)
         {
-            $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $VirtualNetwork;
+            $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $VirtualNetwork;
         }
 
         # Create NetworkInterfaceIpConfiguration
-        $vNetworkInterfaceIpConfiguration = New-AzureRmNetworkInterfaceIpConfig -Name $rname -Subnet $Subnet;
+        $vNetworkInterfaceIpConfiguration = New-AzNetworkInterfaceIpConfig -Name $rname -Subnet $Subnet;
         Assert-NotNull $vNetworkInterfaceIpConfiguration;
-        Assert-True { Check-CmdletReturnType "New-AzureRmNetworkInterfaceIpConfig" $vNetworkInterfaceIpConfiguration };
-        $vNetworkInterface = New-AzureRmNetworkInterface -ResourceGroupName $rgname -Name $rname -IpConfiguration $vNetworkInterfaceIpConfiguration -Location $location;
+        Assert-True { Check-CmdletReturnType "New-AzNetworkInterfaceIpConfig" $vNetworkInterfaceIpConfiguration };
+        $vNetworkInterface = New-AzNetworkInterface -ResourceGroupName $rgname -Name $rname -IpConfiguration $vNetworkInterfaceIpConfiguration -Location $location;
         Assert-NotNull $vNetworkInterface;
         Assert-AreEqual $rname $vNetworkInterfaceIpConfiguration.Name;
 
         # Get NetworkInterfaceIpConfiguration
-        $vNetworkInterfaceIpConfiguration = Get-AzureRmNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rname;
+        $vNetworkInterfaceIpConfiguration = Get-AzNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rname;
         Assert-NotNull $vNetworkInterfaceIpConfiguration;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmNetworkInterfaceIpConfig" $vNetworkInterfaceIpConfiguration };
+        Assert-True { Check-CmdletReturnType "Get-AzNetworkInterfaceIpConfig" $vNetworkInterfaceIpConfiguration };
         Assert-AreEqual $rname $vNetworkInterfaceIpConfiguration.Name;
 
         # Get all NetworkInterface's NetworkInterfaceIpConfigurations
-        $listNetworkInterfaceIpConfiguration = Get-AzureRmNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface;
+        $listNetworkInterfaceIpConfiguration = Get-AzNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface;
         Assert-NotNull ($listNetworkInterfaceIpConfiguration | Where-Object { $_.Name -eq $rname });
 
         # Set NetworkInterfaceIpConfiguration
-        $vNetworkInterface = Set-AzureRmNetworkInterfaceIpConfig -Name $rname -NetworkInterface $vNetworkInterface -Subnet $Subnet;
+        $vNetworkInterface = Set-AzNetworkInterfaceIpConfig -Name $rname -NetworkInterface $vNetworkInterface -Subnet $Subnet;
         Assert-NotNull $vNetworkInterface;
-        $vNetworkInterface = Set-AzureRmNetworkInterface -NetworkInterface $vNetworkInterface;
+        $vNetworkInterface = Set-AzNetworkInterface -NetworkInterface $vNetworkInterface;
         Assert-NotNull $vNetworkInterface;
 
         # Get NetworkInterfaceIpConfiguration
-        $vNetworkInterfaceIpConfiguration = Get-AzureRmNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rname;
+        $vNetworkInterfaceIpConfiguration = Get-AzNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rname;
         Assert-NotNull $vNetworkInterfaceIpConfiguration;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmNetworkInterfaceIpConfig" $vNetworkInterfaceIpConfiguration };
+        Assert-True { Check-CmdletReturnType "Get-AzNetworkInterfaceIpConfig" $vNetworkInterfaceIpConfiguration };
         Assert-AreEqual $rname $vNetworkInterfaceIpConfiguration.Name;
 
         # Get all NetworkInterface's NetworkInterfaceIpConfigurations
-        $listNetworkInterfaceIpConfiguration = Get-AzureRmNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface;
+        $listNetworkInterfaceIpConfiguration = Get-AzNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface;
         Assert-NotNull ($listNetworkInterfaceIpConfiguration | Where-Object { $_.Name -eq $rname });
 
         # Add NetworkInterfaceIpConfiguration
-        $vNetworkInterface = Add-AzureRmNetworkInterfaceIpConfig -Name $rnameAdd -NetworkInterface $vNetworkInterface -SubnetId $Subnet.Id;
+        $vNetworkInterface = Add-AzNetworkInterfaceIpConfig -Name $rnameAdd -NetworkInterface $vNetworkInterface -SubnetId $Subnet.Id;
         Assert-NotNull $vNetworkInterface;
-        $vNetworkInterface = Set-AzureRmNetworkInterface -NetworkInterface $vNetworkInterface;
+        $vNetworkInterface = Set-AzNetworkInterface -NetworkInterface $vNetworkInterface;
         Assert-NotNull $vNetworkInterface;
 
         # Get NetworkInterfaceIpConfiguration
-        $vNetworkInterfaceIpConfiguration = Get-AzureRmNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rnameAdd;
+        $vNetworkInterfaceIpConfiguration = Get-AzNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rnameAdd;
         Assert-NotNull $vNetworkInterfaceIpConfiguration;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmNetworkInterfaceIpConfig" $vNetworkInterfaceIpConfiguration };
+        Assert-True { Check-CmdletReturnType "Get-AzNetworkInterfaceIpConfig" $vNetworkInterfaceIpConfiguration };
         Assert-AreEqual $rnameAdd $vNetworkInterfaceIpConfiguration.Name;
 
         # Get all NetworkInterface's NetworkInterfaceIpConfigurations
-        $listNetworkInterfaceIpConfiguration = Get-AzureRmNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface;
+        $listNetworkInterfaceIpConfiguration = Get-AzNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface;
         Assert-NotNull ($listNetworkInterfaceIpConfiguration | Where-Object { $_.Name -eq $rnameAdd });
 
         # Try Add again
-        Assert-ThrowsContains { Add-AzureRmNetworkInterfaceIpConfig -Name $rnameAdd -NetworkInterface $vNetworkInterface -SubnetId $Subnet.Id } "already exists";
+        Assert-ThrowsContains { Add-AzNetworkInterfaceIpConfig -Name $rnameAdd -NetworkInterface $vNetworkInterface -SubnetId $Subnet.Id } "already exists";
 
         # Remove NetworkInterfaceIpConfiguration
-        $vNetworkInterface = Remove-AzureRmNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rnameAdd;
-        $vNetworkInterface = Set-AzureRmNetworkInterface -NetworkInterface $vNetworkInterface;
+        $vNetworkInterface = Remove-AzNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rnameAdd;
+        $vNetworkInterface = Set-AzNetworkInterface -NetworkInterface $vNetworkInterface;
         Assert-NotNull $vNetworkInterface;
 
         # Get NetworkInterfaceIpConfiguration should fail
-        Assert-ThrowsContains { Get-AzureRmNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rnameAdd } "Sequence contains no matching element";
+        Assert-ThrowsContains { Get-AzNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rnameAdd } "Sequence contains no matching element";
 
         # Set NetworkInterfaceIpConfiguration should fail
-        Assert-ThrowsContains { Set-AzureRmNetworkInterfaceIpConfig -Name $rnameAdd -NetworkInterface $vNetworkInterface -Subnet $Subnet } "does not exist";
+        Assert-ThrowsContains { Set-AzNetworkInterfaceIpConfig -Name $rnameAdd -NetworkInterface $vNetworkInterface -Subnet $Subnet } "does not exist";
     }
     finally
     {
@@ -361,22 +361,22 @@ function Test-NetworkInterfaceIpConfigurationCRUDAllParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create required dependencies
-        $Subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
-        $VirtualNetwork = New-AzureRmVirtualNetwork -ResourceGroupName $rgname -Location $location -Name $VirtualNetworkName -Subnet $Subnet -AddressPrefix $VirtualNetworkAddressPrefix;
+        $Subnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
+        $VirtualNetwork = New-AzVirtualNetwork -ResourceGroupName $rgname -Location $location -Name $VirtualNetworkName -Subnet $Subnet -AddressPrefix $VirtualNetworkAddressPrefix;
         if(-not $Subnet.Id)
         {
-            $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $VirtualNetwork;
+            $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $VirtualNetwork;
         }
-        $PublicIPAddress = New-AzureRmPublicIPAddress -ResourceGroupName $rgname -Location $location -Name $PublicIPAddressName -AllocationMethod $PublicIPAddressAllocationMethod;
+        $PublicIPAddress = New-AzPublicIPAddress -ResourceGroupName $rgname -Location $location -Name $PublicIPAddressName -AllocationMethod $PublicIPAddressAllocationMethod;
 
         # Create NetworkInterfaceIpConfiguration
-        $vNetworkInterfaceIpConfiguration = New-AzureRmNetworkInterfaceIpConfig -Name $rname -Subnet $Subnet -PublicIPAddress $PublicIPAddress -PrivateIPAddress $PrivateIPAddress -PrivateIPAddressVersion $PrivateIPAddressVersion -Primary;
+        $vNetworkInterfaceIpConfiguration = New-AzNetworkInterfaceIpConfig -Name $rname -Subnet $Subnet -PublicIPAddress $PublicIPAddress -PrivateIPAddress $PrivateIPAddress -PrivateIPAddressVersion $PrivateIPAddressVersion -Primary;
         Assert-NotNull $vNetworkInterfaceIpConfiguration;
-        Assert-True { Check-CmdletReturnType "New-AzureRmNetworkInterfaceIpConfig" $vNetworkInterfaceIpConfiguration };
-        $vNetworkInterface = New-AzureRmNetworkInterface -ResourceGroupName $rgname -Name $rname -IpConfiguration $vNetworkInterfaceIpConfiguration -Location $location;
+        Assert-True { Check-CmdletReturnType "New-AzNetworkInterfaceIpConfig" $vNetworkInterfaceIpConfiguration };
+        $vNetworkInterface = New-AzNetworkInterface -ResourceGroupName $rgname -Name $rname -IpConfiguration $vNetworkInterfaceIpConfiguration -Location $location;
         Assert-NotNull $vNetworkInterface;
         Assert-AreEqual $rname $vNetworkInterfaceIpConfiguration.Name;
         Assert-AreEqual $PrivateIPAddress $vNetworkInterfaceIpConfiguration.PrivateIpAddress;
@@ -384,67 +384,67 @@ function Test-NetworkInterfaceIpConfigurationCRUDAllParameters
         Assert-AreEqual $Primary $vNetworkInterfaceIpConfiguration.Primary;
 
         # Get NetworkInterfaceIpConfiguration
-        $vNetworkInterfaceIpConfiguration = Get-AzureRmNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rname;
+        $vNetworkInterfaceIpConfiguration = Get-AzNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rname;
         Assert-NotNull $vNetworkInterfaceIpConfiguration;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmNetworkInterfaceIpConfig" $vNetworkInterfaceIpConfiguration };
+        Assert-True { Check-CmdletReturnType "Get-AzNetworkInterfaceIpConfig" $vNetworkInterfaceIpConfiguration };
         Assert-AreEqual $rname $vNetworkInterfaceIpConfiguration.Name;
         Assert-AreEqual $PrivateIPAddress $vNetworkInterfaceIpConfiguration.PrivateIpAddress;
         Assert-AreEqual $PrivateIPAddressVersion $vNetworkInterfaceIpConfiguration.PrivateIpAddressVersion;
         Assert-AreEqual $Primary $vNetworkInterfaceIpConfiguration.Primary;
 
         # Get all NetworkInterface's NetworkInterfaceIpConfigurations
-        $listNetworkInterfaceIpConfiguration = Get-AzureRmNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface;
+        $listNetworkInterfaceIpConfiguration = Get-AzNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface;
         Assert-NotNull ($listNetworkInterfaceIpConfiguration | Where-Object { $_.Name -eq $rname });
 
         # Set NetworkInterfaceIpConfiguration
-        $vNetworkInterface = Set-AzureRmNetworkInterfaceIpConfig -Name $rname -NetworkInterface $vNetworkInterface -Subnet $Subnet -PrivateIPAddress $PrivateIPAddressSet -Primary;
+        $vNetworkInterface = Set-AzNetworkInterfaceIpConfig -Name $rname -NetworkInterface $vNetworkInterface -Subnet $Subnet -PrivateIPAddress $PrivateIPAddressSet -Primary;
         Assert-NotNull $vNetworkInterface;
-        $vNetworkInterface = Set-AzureRmNetworkInterface -NetworkInterface $vNetworkInterface;
+        $vNetworkInterface = Set-AzNetworkInterface -NetworkInterface $vNetworkInterface;
         Assert-NotNull $vNetworkInterface;
 
         # Get NetworkInterfaceIpConfiguration
-        $vNetworkInterfaceIpConfiguration = Get-AzureRmNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rname;
+        $vNetworkInterfaceIpConfiguration = Get-AzNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rname;
         Assert-NotNull $vNetworkInterfaceIpConfiguration;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmNetworkInterfaceIpConfig" $vNetworkInterfaceIpConfiguration };
+        Assert-True { Check-CmdletReturnType "Get-AzNetworkInterfaceIpConfig" $vNetworkInterfaceIpConfiguration };
         Assert-AreEqual $rname $vNetworkInterfaceIpConfiguration.Name;
         Assert-AreEqual $PrivateIPAddressSet $vNetworkInterfaceIpConfiguration.PrivateIpAddress;
         Assert-AreEqual $PrimarySet $vNetworkInterfaceIpConfiguration.Primary;
 
         # Get all NetworkInterface's NetworkInterfaceIpConfigurations
-        $listNetworkInterfaceIpConfiguration = Get-AzureRmNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface;
+        $listNetworkInterfaceIpConfiguration = Get-AzNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface;
         Assert-NotNull ($listNetworkInterfaceIpConfiguration | Where-Object { $_.Name -eq $rname });
 
         # Add NetworkInterfaceIpConfiguration
-        $vNetworkInterface = Add-AzureRmNetworkInterfaceIpConfig -Name $rnameAdd -NetworkInterface $vNetworkInterface -SubnetId $Subnet.Id -PublicIPAddressId $PublicIPAddress.Id -PrivateIPAddress $PrivateIPAddressAdd;
+        $vNetworkInterface = Add-AzNetworkInterfaceIpConfig -Name $rnameAdd -NetworkInterface $vNetworkInterface -SubnetId $Subnet.Id -PublicIPAddressId $PublicIPAddress.Id -PrivateIPAddress $PrivateIPAddressAdd;
         Assert-NotNull $vNetworkInterface;
-        $vNetworkInterface = Set-AzureRmNetworkInterface -NetworkInterface $vNetworkInterface;
+        $vNetworkInterface = Set-AzNetworkInterface -NetworkInterface $vNetworkInterface;
         Assert-NotNull $vNetworkInterface;
 
         # Get NetworkInterfaceIpConfiguration
-        $vNetworkInterfaceIpConfiguration = Get-AzureRmNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rnameAdd;
+        $vNetworkInterfaceIpConfiguration = Get-AzNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rnameAdd;
         Assert-NotNull $vNetworkInterfaceIpConfiguration;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmNetworkInterfaceIpConfig" $vNetworkInterfaceIpConfiguration };
+        Assert-True { Check-CmdletReturnType "Get-AzNetworkInterfaceIpConfig" $vNetworkInterfaceIpConfiguration };
         Assert-AreEqual $rnameAdd $vNetworkInterfaceIpConfiguration.Name;
         Assert-AreEqual $PrivateIPAddressAdd $vNetworkInterfaceIpConfiguration.PrivateIpAddress;
         Assert-AreEqual $PrimaryAdd $vNetworkInterfaceIpConfiguration.Primary;
 
         # Get all NetworkInterface's NetworkInterfaceIpConfigurations
-        $listNetworkInterfaceIpConfiguration = Get-AzureRmNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface;
+        $listNetworkInterfaceIpConfiguration = Get-AzNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface;
         Assert-NotNull ($listNetworkInterfaceIpConfiguration | Where-Object { $_.Name -eq $rnameAdd });
 
         # Try Add again
-        Assert-ThrowsContains { Add-AzureRmNetworkInterfaceIpConfig -Name $rnameAdd -NetworkInterface $vNetworkInterface -SubnetId $Subnet.Id -PublicIPAddressId $PublicIPAddress.Id -PrivateIPAddress $PrivateIPAddressAdd } "already exists";
+        Assert-ThrowsContains { Add-AzNetworkInterfaceIpConfig -Name $rnameAdd -NetworkInterface $vNetworkInterface -SubnetId $Subnet.Id -PublicIPAddressId $PublicIPAddress.Id -PrivateIPAddress $PrivateIPAddressAdd } "already exists";
 
         # Remove NetworkInterfaceIpConfiguration
-        $vNetworkInterface = Remove-AzureRmNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rnameAdd;
-        $vNetworkInterface = Set-AzureRmNetworkInterface -NetworkInterface $vNetworkInterface;
+        $vNetworkInterface = Remove-AzNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rnameAdd;
+        $vNetworkInterface = Set-AzNetworkInterface -NetworkInterface $vNetworkInterface;
         Assert-NotNull $vNetworkInterface;
 
         # Get NetworkInterfaceIpConfiguration should fail
-        Assert-ThrowsContains { Get-AzureRmNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rnameAdd } "Sequence contains no matching element";
+        Assert-ThrowsContains { Get-AzNetworkInterfaceIpConfig -NetworkInterface $vNetworkInterface -Name $rnameAdd } "Sequence contains no matching element";
 
         # Set NetworkInterfaceIpConfiguration should fail
-        Assert-ThrowsContains { Set-AzureRmNetworkInterfaceIpConfig -Name $rnameAdd -NetworkInterface $vNetworkInterface -Subnet $Subnet -PrivateIPAddress $PrivateIPAddressSet -Primary } "does not exist";
+        Assert-ThrowsContains { Set-AzNetworkInterfaceIpConfig -Name $rnameAdd -NetworkInterface $vNetworkInterface -Subnet $Subnet -PrivateIPAddress $PrivateIPAddressSet -Primary } "does not exist";
     }
     finally
     {
@@ -481,7 +481,7 @@ function Test-NetworkInterfaceGetEffectiveRouteTable
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create required dependencies
         $env = Get-TestDeployment -rgName $rgName `
@@ -494,16 +494,16 @@ function Test-NetworkInterfaceGetEffectiveRouteTable
                                   -virtualNetworkName $virtualNetworkName;
 
         # Invoke cmdlet
-        $job = Get-AzureRmEffectiveRouteTable -ResourceGroupName $rgname -NetworkInterfaceName $env.networkInterfaceName -AsJob;
+        $job = Get-AzEffectiveRouteTable -ResourceGroupName $rgname -NetworkInterfaceName $env.networkInterfaceName -AsJob;
         $job | Wait-Job;
         $vEffectiveRouteTable = $job | Receive-Job;
         Assert-NotNull $vEffectiveRouteTable;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmEffectiveRouteTable" $vEffectiveRouteTable };
+        Assert-True { Check-CmdletReturnType "Get-AzEffectiveRouteTable" $vEffectiveRouteTable };
 
         # Invoke pair cmdlet
-        $vEffectiveNetworkSecurityGroups = Get-AzureRmEffectiveNetworkSecurityGroup -ResourceGroupName $rgname -NetworkInterfaceName $env.networkInterfaceName;
+        $vEffectiveNetworkSecurityGroups = Get-AzEffectiveNetworkSecurityGroup -ResourceGroupName $rgname -NetworkInterfaceName $env.networkInterfaceName;
         Assert-NotNull $vEffectiveNetworkSecurityGroups;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmEffectiveNetworkSecurityGroup" $vEffectiveNetworkSecurityGroups };
+        Assert-True { Check-CmdletReturnType "Get-AzEffectiveNetworkSecurityGroup" $vEffectiveNetworkSecurityGroups };
     }
     finally
     {

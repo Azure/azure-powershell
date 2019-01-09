@@ -24,7 +24,7 @@ function Test-VirtualNetworkAvailableEndpointServicesList
     $location = $location.ToLower() -replace '[^a-z0-9]'
     try
     {
-        $results = Get-AzureRmVirtualNetworkAvailableEndpointService -Location $location;
+        $results = Get-AzVirtualNetworkAvailableEndpointService -Location $location;
         Assert-NotNull $results;
     }
     finally

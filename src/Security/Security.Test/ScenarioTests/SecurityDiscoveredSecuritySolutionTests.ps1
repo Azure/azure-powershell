@@ -16,9 +16,9 @@
 .SYNOPSIS
 Get discovered security solutions on a subscription scope
 #>
-function Get-AzureRmDiscoveredSecuritySolution-SubscriptionScope
+function Get-AzDiscoveredSecuritySolution-SubscriptionScope
 {
-    $discoveredSecuritySolutions = Get-AzureRmDiscoveredSecuritySolution
+    $discoveredSecuritySolutions = Get-AzDiscoveredSecuritySolution
 	Validate-DiscoveredSecuritySolutions $discoveredSecuritySolutions
 }
 
@@ -26,13 +26,13 @@ function Get-AzureRmDiscoveredSecuritySolution-SubscriptionScope
 .SYNOPSIS
 Get discovered security solution
 #>
-function Get-AzureRmDiscoveredSecuritySolution-ResourceGroupLevelResource
+function Get-AzDiscoveredSecuritySolution-ResourceGroupLevelResource
 {
-	$discoveredSecuritySolution = Get-AzureRmDiscoveredSecuritySolution | Select -First 1
+	$discoveredSecuritySolution = Get-AzDiscoveredSecuritySolution | Select -First 1
 	$rgName = Extract-ResourceGroup -ResourceId $discoveredSecuritySolution.Id
 	$location = Extract-ResourceLocation -ResourceId $discoveredSecuritySolution.Id
 
-    $fetchedDiscoveredSecuritySolution = Get-AzureRmDiscoveredSecuritySolution -ResourceGroupName $rgName -Location $location -Name $discoveredSecuritySolution.Name
+    $fetchedDiscoveredSecuritySolution = Get-AzDiscoveredSecuritySolution -ResourceGroupName $rgName -Location $location -Name $discoveredSecuritySolution.Name
 	Validate-DiscoveredSecuritySolution $fetchedDiscoveredSecuritySolution
 }
 
@@ -40,11 +40,11 @@ function Get-AzureRmDiscoveredSecuritySolution-ResourceGroupLevelResource
 .SYNOPSIS
 Get discovered security solution by a resource ID
 #>
-function Get-AzureRmDiscoveredSecuritySolution-ResourceId
+function Get-AzDiscoveredSecuritySolution-ResourceId
 {
-	$discoveredSecuritySolution = Get-AzureRmDiscoveredSecuritySolution | Select -First 1
+	$discoveredSecuritySolution = Get-AzDiscoveredSecuritySolution | Select -First 1
 
-    $discoveredSecuritySolutions = Get-AzureRmDiscoveredSecuritySolution -ResourceId $discoveredSecuritySolution.Id
+    $discoveredSecuritySolutions = Get-AzDiscoveredSecuritySolution -ResourceId $discoveredSecuritySolution.Id
 	Validate-DiscoveredSecuritySolutions $discoveredSecuritySolutions
 }
 

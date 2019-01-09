@@ -51,11 +51,11 @@
 	{
 		$name += $nick
 	}
- 	$resourceGroup = Get-AzureRmResourceGroup -Name $name -ErrorAction Ignore
+ 	$resourceGroup = Get-AzResourceGroup -Name $name -ErrorAction Ignore
 	
 	if ($resourceGroup -eq $null)
 	{
-		New-AzureRmResourceGroup -Name $name -Location $location | Out-Null
+		New-AzResourceGroup -Name $name -Location $location | Out-Null
 	}
  	return $name
 }
@@ -64,12 +64,12 @@
 	[string] $location)
 {
 	$name = "PSTestRSV" + @(Get-RandomSuffix)
- 	$vault = Get-AzureRmRecoveryServicesVault `
+ 	$vault = Get-AzRecoveryServicesVault `
 		-ResourceGroupName $resourceGroupName `
 		-Name $name -ErrorAction Ignore
  	if ($vault -eq $null)
 	{
-		$vault = New-AzureRmRecoveryServicesVault `
+		$vault = New-AzRecoveryServicesVault `
 			-Name $name `
 			-ResourceGroupName $resourceGroupName `
 			-Location $location;
@@ -82,16 +82,16 @@
 {
 	$name = "PSTestSA" + @(Get-RandomSuffix)
 	$name = $name.ToLower()
- 	$sa = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $name -ErrorAction Ignore
+ 	$sa = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $name -ErrorAction Ignore
  	if ($sa -eq $null)
 	{
-		$job = New-AzureRmStorageAccount `
+		$job = New-AzStorageAccount `
 			-ResourceGroupName $resourceGroupName `
 			-Name $name `
 			-Location $location `
 			-Type "Standard_LRS"
 		$job | Wait-Job
-		$sa = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $name
+		$sa = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $name
 	}
  	return $name
 }
@@ -99,9 +99,9 @@
 	$vault,
 	$item)
 {
-	return Backup-AzureRmRecoveryServicesBackupItem `
+	return Backup-AzRecoveryServicesBackupItem `
 		-VaultId $vault.ID `
-		-Item $item | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
+		-Item $item | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 }
  function Get-RecoveryPoint(
 	$vault,
@@ -110,7 +110,7 @@
 {
 	$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
 	$backupEndTime = $backupJob.EndTime.AddMinutes(1);
- 	$rps = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
+ 	$rps = Get-AzRecoveryServicesBackupRecoveryPoint `
 		-VaultId $vault.ID `
 		-Item $item `
 		-StartDate $backupStartTime `

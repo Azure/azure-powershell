@@ -23,7 +23,7 @@ function Test-GetAvailableDelegationsList
     $location = $location.ToLower() -replace '[^a-z0-9]'
     try
     {
-        $results = Get-AzureRmAvailableServiceDelegation -Location $location;
+        $results = Get-AzAvailableServiceDelegation -Location $location;
         Assert-NotNull $results;
     }
     finally

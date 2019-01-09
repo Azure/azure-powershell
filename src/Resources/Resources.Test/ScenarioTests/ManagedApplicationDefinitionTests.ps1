@@ -25,23 +25,23 @@ function Test-ManagedApplicationDefinitionCRUD
 	$display = "myAppDefPoSH"
 
 	# Test
-	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+	New-AzResourceGroup -Name $rgname -Location $rglocation
 
-	$actual = New-AzureRMManagedApplicationDefinition -Name $appDefName -ResourceGroupName $rgname -DisplayName $display -Description "Test" -Location $rglocation -LockLevel ReadOnly -PackageFileUri https://testclinew.blob.core.windows.net/files/vivekMAD.zip -Authorization 5e91139a-c94b-462e-a6ff-1ee95e8aac07:8e3af657-a8ff-443c-a75c-2fe8c4bcb635
-	$expected = Get-AzureRMManagedApplicationDefinition -Name $appDefName -ResourceGroupName $rgname
+	$actual = New-AzManagedApplicationDefinition -Name $appDefName -ResourceGroupName $rgname -DisplayName $display -Description "Test" -Location $rglocation -LockLevel ReadOnly -PackageFileUri https://testclinew.blob.core.windows.net/files/vivekMAD.zip -Authorization 5e91139a-c94b-462e-a6ff-1ee95e8aac07:8e3af657-a8ff-443c-a75c-2fe8c4bcb635
+	$expected = Get-AzManagedApplicationDefinition -Name $appDefName -ResourceGroupName $rgname
 	Assert-AreEqual $expected.Name $actual.Name
 	Assert-AreEqual $expected.ManagedApplicationDefinitionId $actual.ManagedApplicationDefinitionId
 	Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
 	Assert-NotNull($actual.Properties.Authorizations)
 
-	$actual = Set-AzureRMManagedApplicationDefinition -ResourceId $expected.ManagedApplicationDefinitionId -PackageFileUri https://testclinew.blob.core.windows.net/files/vivekMAD.zip -Description "updated"
-	$expected = Get-AzureRMManagedApplicationDefinition -Name $appDefName -ResourceGroupName $rgname
+	$actual = Set-AzManagedApplicationDefinition -ResourceId $expected.ManagedApplicationDefinitionId -PackageFileUri https://testclinew.blob.core.windows.net/files/vivekMAD.zip -Description "updated"
+	$expected = Get-AzManagedApplicationDefinition -Name $appDefName -ResourceGroupName $rgname
 	Assert-AreEqual $expected.Properties.description $actual.Properties.Description
 
-	$list = Get-AzureRMManagedApplicationDefinition -ResourceGroupName $rgname
+	$list = Get-AzManagedApplicationDefinition -ResourceGroupName $rgname
 	Assert-AreEqual 1 @($list).Count
 
-	$remove = Remove-AzureRMManagedApplicationDefinition -Name $appDefName -ResourceGroupName $rgname -Force
+	$remove = Remove-AzManagedApplicationDefinition -Name $appDefName -ResourceGroupName $rgname -Force
 	Assert-AreEqual True $remove
 
 }

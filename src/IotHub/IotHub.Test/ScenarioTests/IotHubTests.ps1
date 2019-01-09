@@ -21,10 +21,10 @@ $global:resourceType = "Microsoft.Devices/IotHubs"
 
 <#
 .SYNOPSIS
-Test Get-AzureRmIotHub for listing all iothubs in a subscription
+Test Get-AzIotHub for listing all iothubs in a subscription
 #>
 
-function Test-AzureRmIotHubLifecycle
+function Test-AzIotHubLifecycle
 {
 	$Location = Get-Location "Microsoft.Devices" "IotHub" 
 	$IotHubName = getAssetName 
@@ -39,16 +39,16 @@ function Test-AzureRmIotHubLifecycle
 	$Tag2Value = "value2"
 
 	# Get all Iot hubs in the subscription
-	$allIotHubs = Get-AzureRmIotHub
+	$allIotHubs = Get-AzIotHub
 
 	Assert-True { $allIotHubs[0].Type -eq $global:resourceType }
 	Assert-True { $allIotHubs.Count -gt 1 }
 
 	# Create or Update Resource Group
-	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
+	$resourceGroup = New-AzResourceGroup -Name $ResourceGroupName -Location $Location 
 
 	Write-Debug " Create new eventHub " 
-    $result = New-AzureRmEventHubNamespace -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -Location $Location
+    $result = New-AzEventHubNamespace -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -Location $Location
 
 	Wait-Seconds 15
     
@@ -58,12 +58,12 @@ function Test-AzureRmIotHubLifecycle
     Write-Debug " Create new eventHub "    
 	$msgRetentionInDays = 3
 	$partionCount = 2
-    $result = New-AzureRmEventHub -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -MessageRetentionInDays $msgRetentionInDays -PartitionCount $partionCount
+    $result = New-AzEventHub -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -MessageRetentionInDays $msgRetentionInDays -PartitionCount $partionCount
 
 	# Create AuthRule
 	$rights = "Listen","Send"
-	$authRule = New-AzureRmEventHubAuthorizationRule -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName  -EventHubName $eventHubName -AuthorizationRuleName $authRuleName -Rights $rights
-	$keys = Get-AzureRmEventHubKey -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName  -EventHubName $eventHubName -AuthorizationRuleName $authRuleName
+	$authRule = New-AzEventHubAuthorizationRule -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName  -EventHubName $eventHubName -AuthorizationRuleName $authRuleName -Rights $rights
+	$keys = Get-AzEventHubKey -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName  -EventHubName $eventHubName -AuthorizationRuleName $authRuleName
 	$ehConnectionString = $keys.PrimaryConnectionString
 
 	# Create Iot Hub
@@ -87,13 +87,13 @@ function Test-AzureRmIotHubLifecycle
 	$routingProperties.Routes = New-Object 'System.Collections.Generic.List[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]'
 	$routingProperties.Routes.Add($routeProp)
 	$properties.Routing = $routingProperties
-	$newIothub1 = New-AzureRmIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1 -Properties $properties
+	$newIothub1 = New-AzIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1 -Properties $properties
 
 	# Get Iot Hub in resourcegroup
-	$allIotHubsInResourceGroup =  Get-AzureRmIotHub -ResourceGroupName $ResourceGroupName 
+	$allIotHubsInResourceGroup =  Get-AzIotHub -ResourceGroupName $ResourceGroupName 
 	
 	# Get Iot Hub
-	$iotHub = Get-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName 
+	$iotHub = Get-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName 
 
 	Assert-True { $allIotHubsInResourceGroup.Count -eq 1 }
 	Assert-True { $iotHub.Name -eq $IotHubName }
@@ -102,90 +102,90 @@ function Test-AzureRmIotHubLifecycle
     Assert-True { $iotHub.Properties.Routing.Endpoints.EventHubs[0].Name -eq "eh1"}
 
 	# Get Quota Metrics
-	$quotaMetrics = Get-AzureRmIotHubQuotaMetric -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	$quotaMetrics = Get-AzIotHubQuotaMetric -ResourceGroupName $ResourceGroupName -Name $IotHubName
 	Assert-True { $quotaMetrics.Count -eq 2 }
 
 	# Get Registry Statistics
-	$registryStats = Get-AzureRmIotHubRegistryStatistic -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	$registryStats = Get-AzIotHubRegistryStatistic -ResourceGroupName $ResourceGroupName -Name $IotHubName
 	Assert-True { $registryStats.TotalDeviceCount -eq 0 }
 	Assert-True { $registryStats.EnabledDeviceCount -eq 0 }
 	Assert-True { $registryStats.DisabledDeviceCount -eq 0 }
 
 	# Get Valid Skus
-	$validSkus = Get-AzureRmIotHubValidSku -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	$validSkus = Get-AzIotHubValidSku -ResourceGroupName $ResourceGroupName -Name $IotHubName
 	Assert-True { $validSkus.Count -gt 1 }
 
 	# Get EventHub Consumer group for events
-	$eventubConsumerGroup = Get-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events
+	$eventubConsumerGroup = Get-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events
 	Assert-True { $eventubConsumerGroup.Count -eq 1 }
 
 	# Get EventHub Consumer group for operationsmonitoring
-	$eventubConsumerGroupOpMon = Get-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName operationsMonitoringEvents
+	$eventubConsumerGroupOpMon = Get-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName operationsMonitoringEvents
 	Assert-True { $eventubConsumerGroupOpMon.Count -eq 1 }
 
 	# Get Keys
-	$keys = Get-AzureRmIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName 
+	$keys = Get-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName 
 	Assert-True { $keys.Count -eq 5 }
 
 	# Get Key for iothubowner
-	$key = Get-AzureRmIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner
+	$key = Get-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner
 	Assert-True { $key.KeyName -eq "iothubowner" }
 
 	# Get Connection strings
-	$connectionstrings = Get-AzureRmIotHubConnectionString -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	$connectionstrings = Get-AzIotHubConnectionString -ResourceGroupName $ResourceGroupName -Name $IotHubName
 	Assert-True { $connectionstrings.Count -eq 5 }
 
 	# Get Connection string
-	$connectionstring = Get-AzureRmIotHubConnectionString -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner
+	$connectionstring = Get-AzIotHubConnectionString -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner
 	Assert-True { $key.KeyName -eq "iothubowner" }
 
 	# Add consumer group
-	Add-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events -EventHubConsumerGroupName cg1
+	Add-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events -EventHubConsumerGroupName cg1
 
 	# Get consumer group
-	$eventubConsumerGroup = Get-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events
+	$eventubConsumerGroup = Get-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events
 	Assert-True { $eventubConsumerGroup.Count -eq 2 }
 
 	# Delete consumer group
-	Remove-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events -EventHubConsumerGroupName cg1
+	Remove-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events -EventHubConsumerGroupName cg1
 
 	# Get consumer group
-	$eventubConsumerGroup = Get-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events
+	$eventubConsumerGroup = Get-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events
 	Assert-True { $eventubConsumerGroup.Count -eq 1 }
 
 	# Add Key
-	Add-AzureRmIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1 -Rights RegistryRead
+	Add-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1 -Rights RegistryRead
 
 	# Get Keys
-	$keys = Get-AzureRmIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName 
+	$keys = Get-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName 
 	Assert-True { $keys.Count -eq 6 }
 
 	# Remove Key
-	Remove-AzureRmIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1
+	Remove-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1
 
 	# Get Keys
-	$keys = Get-AzureRmIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName 
+	$keys = Get-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName 
 	Assert-True { $keys.Count -eq 5 }
 
 	# Set Sku
-	$iothub = Get-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName 
-	$iothubUpdated = Set-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -SkuName S1 -Units 5
+	$iothub = Get-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName 
+	$iothubUpdated = Set-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -SkuName S1 -Units 5
 	Assert-True { $iothubUpdated.Sku.Capacity -eq 5 }
 
 	# Event Hub Properties Update
-	$iothubUpdated = Set-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubRetentionTimeInDays 5
+	$iothubUpdated = Set-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubRetentionTimeInDays 5
 	Assert-True { $iothubUpdated.Properties.EventHubEndpoints.events.RetentionTimeInDays -eq 5 }
 
 	# Cloud To Device Properties Update
 	$cloudToDevice = $iothubUpdated.Properties.CloudToDevice
 	$cloudToDevice.MaxDeliveryCount = 25
-	$iotHubUpdated = Set-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -CloudToDevice $cloudToDevice
+	$iotHubUpdated = Set-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -CloudToDevice $cloudToDevice
 	Assert-True { $iothubUpdated.Properties.CloudToDevice.MaxDeliveryCount -eq 25 }
 
 	# Operations Monitoring properties update
 	$op= $iotHubUpdated.Properties.OperationsMonitoringProperties
 	$op.OperationMonitoringEvents["Connections"] = "Information"
-	$iotHubUpdated = Set-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -OperationsMonitoringProperties $op
+	$iotHubUpdated = Set-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -OperationsMonitoringProperties $op
 	Assert-True { $iothubUpdated.Properties.OperationsMonitoringProperties.OperationMonitoringEvents["Connections"] -eq "Information" }
 
 	# Routing Properties Update
@@ -199,7 +199,7 @@ function Test-AzureRmIotHubLifecycle
 	$routeProp.Source = "DeviceMessages"
 	$routingProperties.Routes = New-Object 'System.Collections.Generic.List[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]'
 	$routingProperties.Routes.Add($routeProp)
-	$iotHubUpdated = Set-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -RoutingProperties $routingProperties
+	$iotHubUpdated = Set-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -RoutingProperties $routingProperties
     Assert-True { $iotHubUpdated.Properties.Routing.Routes.Count -eq 1}
     Assert-True { $iotHubUpdated.Properties.Routing.Routes[0].Name -eq "route1"}
 
@@ -223,27 +223,27 @@ function Test-AzureRmIotHubLifecycle
 	$routes = New-Object 'System.Collections.Generic.List[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]'
 	$routes.Add($routeProp1)
 	$routes.Add($routeProp2)
-	$iotHubUpdated = Set-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -Routes $routes	
+	$iotHubUpdated = Set-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -Routes $routes	
     Assert-True { $iotHubUpdated.Properties.Routing.Routes.Count -eq 2}
     Assert-True { $iotHubUpdated.Properties.Routing.Routes[0].Name -eq "route2"}
 	Assert-True { $iotHubUpdated.Properties.Routing.FallbackRoute.IsEnabled -eq 0}
 
-	$iothub = Get-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName 
+	$iothub = Get-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName 
 	$iothub.Properties.Routing.FallbackRoute.IsEnabled = 1
-	$iotHubUpdated = Set-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -FallbackRoute $iothub.Properties.Routing.FallbackRoute	
+	$iotHubUpdated = Set-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -FallbackRoute $iothub.Properties.Routing.FallbackRoute	
     Assert-True { $iotHubUpdated.Properties.Routing.FallbackRoute.IsEnabled -eq 1}
 
 	# Add Tags to Iot Hub
 	$tags = @{}
 	$tags.Add($Tag1Key, $Tag1Value)
-	$updatedIotHub = Update-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -Tag $tags
+	$updatedIotHub = Update-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -Tag $tags
 	Assert-True { $updatedIotHub.Tags.Count -eq 1 }
 	Assert-True { $updatedIotHub.Tags.Item($Tag1Key) -eq $Tag1Value }
 
 	# Add more Tags to Iot Hub
 	$tags.Clear()
 	$tags.Add($Tag2Key, $Tag2Value)
-	$updatedIotHub = Update-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -Tag $tags
+	$updatedIotHub = Update-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -Tag $tags
 	Assert-True { $updatedIotHub.Tags.Count -eq 2 }
 	Assert-True { $updatedIotHub.Tags.Item($Tag1Key) -eq $Tag1Value }
 	Assert-True { $updatedIotHub.Tags.Item($Tag2Key) -eq $Tag2Value }
@@ -251,15 +251,15 @@ function Test-AzureRmIotHubLifecycle
 	# Add Tags to Iot Hub with Reset option
 	$tags.Clear()
 	$tags.Add($Tag1Key, $Tag1Value)
-	$updatedIotHub = Update-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -Tag $tags -Reset
+	$updatedIotHub = Update-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -Tag $tags -Reset
 	Assert-True { $updatedIotHub.Tags.Count -eq 1 }
 	Assert-True { $updatedIotHub.Tags.Item($Tag1Key) -eq $Tag1Value }
 
 	# Remove IotHub
-	Remove-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	Remove-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName
 }
 
-function Test-AzureRmIotHubCertificateLifecycle
+function Test-AzIotHubCertificateLifecycle
 {
 	$Location = Get-Location "Microsoft.Devices" "IotHub" 
 	$IotHubName = getAssetName 
@@ -269,13 +269,13 @@ function Test-AzureRmIotHubCertificateLifecycle
 	$TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
 
 	# Create or Update Resource Group
-	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
+	$resourceGroup = New-AzResourceGroup -Name $ResourceGroupName -Location $Location 
 
 	# Create Iot Hub
-	$newIothub1 = New-AzureRmIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1 
+	$newIothub1 = New-AzIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1 
 
 	# Get Iot Hub
-	$iotHub = Get-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName 
+	$iotHub = Get-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName 
 
 	Assert-True { $iotHub.Name -eq $IotHubName }
 
@@ -288,48 +288,48 @@ function Test-AzureRmIotHubCertificateLifecycle
 
 	# Add Certificate
 	New-CARootCert $certificateSubject $certificatePath
-	$newCertificate = Add-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Path $certificatePath
+	$newCertificate = Add-AzIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Path $certificatePath
 	Assert-True { $newCertificate.Properties.Subject -eq $certificateSubject }
 	Assert-False { $newCertificate.Properties.IsVerified }
 	Assert-True { $newCertificate.Type -eq $certificateType }
 	Assert-True { $newCertificate.CertificateName -eq $certificateName }
 
 	# List All Certificate
-	$certificates = Get-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	$certificates = Get-AzIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName
 	Assert-True { $certificates.Count -gt 0}
 
 	# Get Certificate
-	$certificate = Get-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName
+	$certificate = Get-AzIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName
 	Assert-True { $certificate.Properties.Subject -eq $certificateSubject }
 	Assert-False { $certificate.Properties.IsVerified }
 	Assert-True { $certificate.Type -eq $certificateType }
 	Assert-True { $certificate.CertificateName -eq $certificateName }
 
 	# Get Verification Code
-	$certificateWithNonce = Get-AzureRmIotHubCertificateVerificationCode -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Etag $certificate.Etag
+	$certificateWithNonce = Get-AzIotHubCertificateVerificationCode -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Etag $certificate.Etag
 	Assert-True { $certificateWithNonce.Properties.Subject -eq $certificateSubject }
 	Assert-NotNull { $certificateWithNonce.Properties.VerificationCode }
 
 	# Proof-of-Possession
 	New-CAVerificationCert $certificateWithNonce.Properties.VerificationCode $certificateSubject $verifyCertificatePath
-	$verifiedCertificate = Set-AzureRmIotHubVerifiedCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Path $verifyCertificatePath  -Etag $certificateWithNonce.Etag
+	$verifiedCertificate = Set-AzIotHubVerifiedCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Path $verifyCertificatePath  -Etag $certificateWithNonce.Etag
 	Assert-True { $verifiedCertificate.Properties.Subject -eq $certificateSubject }
 	Assert-True { $verifiedCertificate.Properties.IsVerified }
 	Assert-True { $verifiedCertificate.Type -eq $certificateType }
 	Assert-True { $verifiedCertificate.CertificateName -eq $certificateName }
 
 	# Remove Certificate
-	Remove-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Etag $verifiedCertificate.Etag
+	Remove-AzIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Etag $verifiedCertificate.Etag
 
 	# List All Certificate
-	$afterRemoveCertificates = Get-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	$afterRemoveCertificates = Get-AzIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName
 	Assert-True { $afterRemoveCertificates.Count -eq 0}
 
 	# Remove IotHub
-	Remove-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	Remove-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName
 
 	# Remove Resource Group
-	Remove-AzureRmResourceGroup -Name $ResourceGroupName -force
+	Remove-AzResourceGroup -Name $ResourceGroupName -force
 }
 
 <#

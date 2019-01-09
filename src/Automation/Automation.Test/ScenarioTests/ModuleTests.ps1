@@ -18,16 +18,16 @@ $testNonGlobalModule = @{
 }
 
 function EnsureTestModuleImported {
-	$foundModule = Get-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -ErrorAction Ignore
+	$foundModule = Get-AzAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -ErrorAction Ignore
     if ($foundModule) {
 		if ($foundModule.ProvisioningState -ne 'Succeeded') {
-			Remove-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -Force
+			Remove-AzAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -Force
 			$foundModule = $null
 		}
 	}
 
     if (-not $foundModule) {
-        $output = New-AzureRmAutomationModule -Name $testNonGlobalModule.Name -ContentLinkUri $testNonGlobalModule.ContentLinkUri @testAutomationAccount
+        $output = New-AzAutomationModule -Name $testNonGlobalModule.Name -ContentLinkUri $testNonGlobalModule.ContentLinkUri @testAutomationAccount
 		Write-Verbose "Module $($testNonGlobalModule.Name) provisioning state: $($output.ProvisioningState)"
 
 		$startTime = Get-Date
@@ -37,7 +37,7 @@ function EnsureTestModuleImported {
         while ($output.ProvisioningState -ne 'Succeeded') {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(10*1000)
 
-            $output = Get-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount
+            $output = Get-AzAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount
 			Write-Verbose "Module $($testNonGlobalModule.Name) provisioning state: $($output.ProvisioningState)"
 
 			if ((Get-Date) -gt $endTime) {
@@ -48,8 +48,8 @@ function EnsureTestModuleImported {
 }
 
 function Remove-TestNonGlobalModule {
-    if (Get-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -ErrorAction Ignore) {
-        Remove-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -Force
+    if (Get-AzAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -ErrorAction Ignore) {
+        Remove-AzAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -Force
     }
 }
 
@@ -58,11 +58,11 @@ function Remove-TestNonGlobalModule {
 Tests getting all modules from an Automation account.
 #>
 function Test-GetAllModules {
-	$output = Get-AzureRmAutomationModule @testAutomationAccount
+	$output = Get-AzAutomationModule @testAutomationAccount
 
 	Assert-NotNull $output
 	$outputCount = $output | Measure-Object | % Count;
-	Assert-True { $outputCount -gt 1 } "Get-AzureRmAutomationModule should output more than one object"
+	Assert-True { $outputCount -gt 1 } "Get-AzAutomationModule should output more than one object"
 
     $azureModule = $output | ?{ $_.Name -eq $testGlobalModule.Name }
 	Assert-AreEqual $azureModule.AutomationAccountName $testAutomationAccount.AutomationAccountName
@@ -82,7 +82,7 @@ function Test-GetAllModules {
 Tests getting a specific module from an Automation account by module name.
 #>
 function Test-GetModuleByName {
-	$output = Get-AzureRmAutomationModule -Name $testGlobalModule.Name @testAutomationAccount
+	$output = Get-AzAutomationModule -Name $testGlobalModule.Name @testAutomationAccount
 
 	Assert-NotNull $output
 	$outputCount = $output | Measure-Object | % Count;
@@ -107,7 +107,7 @@ Tests importing a new module into an Automation account.
 function Test-NewModule {
 	Remove-TestNonGlobalModule
 
-	$output = New-AzureRmAutomationModule -Name $testNonGlobalModule.Name -ContentLinkUri $testNonGlobalModule.ContentLinkUri @testAutomationAccount
+	$output = New-AzAutomationModule -Name $testNonGlobalModule.Name -ContentLinkUri $testNonGlobalModule.ContentLinkUri @testAutomationAccount
 
 	Assert-NotNull $output
 	$outputCount = $output | Measure-Object | % Count;
@@ -127,12 +127,12 @@ function Test-NewModule {
 
 <#
 .SYNOPSIS
-Tests that Import-AzureRmAutomationModule is an alias for New-AzureRmAutomationModule.
+Tests that Import-AzAutomationModule is an alias for New-AzAutomationModule.
 #>
 function Test-ImportModule {
-    $command = Get-Command Import-AzureRmAutomationModule
+    $command = Get-Command Import-AzAutomationModule
     Assert-AreEqual $command.CommandType 'Alias'
-    Assert-AreEqual $command.Definition 'New-AzureRmAutomationModule'
+    Assert-AreEqual $command.Definition 'New-AzAutomationModule'
 }
 
 <#
@@ -142,7 +142,7 @@ Tests updating a module already imported into an Automation account.
 function Test-SetModule {
 	EnsureTestModuleImported
 
-	$output = Set-AzureRmAutomationModule -Name $testNonGlobalModule.Name -ContentLinkUri $testNonGlobalModule.ContentLinkUri @testAutomationAccount
+	$output = Set-AzAutomationModule -Name $testNonGlobalModule.Name -ContentLinkUri $testNonGlobalModule.ContentLinkUri @testAutomationAccount
 
 	Assert-NotNull $output
 	$outputCount = $output | Measure-Object | % Count;
@@ -167,9 +167,9 @@ Tests removing a module from an Automation account.
 function Test-RemoveModule {
 	EnsureTestModuleImported
 
-	$output = Remove-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -Force
+	$output = Remove-AzAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -Force
 
 	Assert-Null $output
-	$moduleFound = Get-AzureRmAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -ErrorAction Ignore
+	$moduleFound = Get-AzAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -ErrorAction Ignore
 	Assert-Null $moduleFound
 }

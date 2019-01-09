@@ -16,7 +16,7 @@
 .SYNOPSIS
 Test common SignalR cmdlets.
 #>
-function Test-AzureRmSignalR {
+function Test-AzSignalR {
     # Setup
     $resourceGroupName = Get-RandomResourceGroupName
     $signalrName = Get-RandomSignalRName
@@ -24,28 +24,28 @@ function Test-AzureRmSignalR {
     $location = Get-ProviderLocation "Microsoft.SignalRService/SignalR"
 
     try {
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
 
         # New Standard SignalR
-        $signalr = New-AzureRmSignalR -ResourceGroupName $resourceGroupName -Name $signalrName -Sku "Standard_S1"
+        $signalr = New-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName -Sku "Standard_S1"
         Verify-SignalR $signalr $signalrName $location "Standard_S1" 1
 
         # List the SignalR instances by resource group, should return a single SignalR instance
-        $signalrs = Get-AzureRmSignalR -ResourceGroupName $resourceGroupName
+        $signalrs = Get-AzSignalR -ResourceGroupName $resourceGroupName
         Assert-NotNull $signalrs
         Assert-AreEqual "PSSignalRResource" $signalrs.GetType().Name
         Verify-SignalR $signalrs $signalrName $location "Standard_S1" 1
 
         # Get the SignalR instance by name
-        $retrievedSignalR = Get-AzureRmSignalR -ResourceGroupName $resourceGroupName -Name $signalrName
+        $retrievedSignalR = Get-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName
         Verify-SignalR $retrievedSignalR $signalrName $location "Standard_S1" 1
 
         # create another free instance in the same resource group
-        $freeSignalR = New-AzureRmSignalR -ResourceGroupName $resourceGroupName -Name $freeSignalRName -Sku "Free_F1"
+        $freeSignalR = New-AzSignalR -ResourceGroupName $resourceGroupName -Name $freeSignalRName -Sku "Free_F1"
         Verify-SignalR $freeSignalR $freeSignalRName $location "Free_F1" 1
 
         # List all the SignalR instances in the resource group
-        $signalrs = Get-AzureRmSignalR -ResourceGroupName $resourceGroupName
+        $signalrs = Get-AzSignalR -ResourceGroupName $resourceGroupName
         Assert-NotNull $signalrs
         Assert-AreEqual "Object[]" $signalrs.GetType().Name
         Assert-AreEqual 2 $signalrs.Length
@@ -56,7 +56,7 @@ function Test-AzureRmSignalR {
         Verify-SignalR $freeSignalR $freeSignalRName $location "Free_F1" 1
 
         # Get the SignalR instance keys
-        $keys = Get-AzureRmSignalRKey -ResourceGroupName $resourceGroupName -Name $signalrName
+        $keys = Get-AzSignalRKey -ResourceGroupName $resourceGroupName -Name $signalrName
         Assert-NotNull $keys
         Assert-NotNull $keys.PrimaryKey
         Assert-NotNull $keys.PrimaryConnectionString
@@ -64,9 +64,9 @@ function Test-AzureRmSignalR {
         Assert-NotNull $keys.SecondaryConnectionString
 
         # regenerate the primary key
-        $ret = New-AzureRmSignalRKey -ResourceGroupName $resourceGroupName -Name $signalrName -KeyType Primary -PassThru
+        $ret = New-AzSignalRKey -ResourceGroupName $resourceGroupName -Name $signalrName -KeyType Primary -PassThru
         Assert-True { $ret }
-        $newKeys1 = Get-AzureRmSignalRKey -ResourceGroupName $resourceGroupName -Name $signalrName
+        $newKeys1 = Get-AzSignalRKey -ResourceGroupName $resourceGroupName -Name $signalrName
         Assert-NotNull $newKeys1
         Assert-AreNotEqual $keys.PrimaryKey $newKeys1.PrimaryKey
         Assert-AreNotEqual $keys.PrimaryConnectionString $newKeys1.PrimaryConnectionString
@@ -74,21 +74,21 @@ function Test-AzureRmSignalR {
         Assert-AreEqual $keys.SecondaryConnectionString $newKeys1.SecondaryConnectionString
 
         # regenerate the secondary key
-        $ret = New-AzureRmSignalRKey -ResourceGroupName $resourceGroupName -Name $signalrName -KeyType Secondary
+        $ret = New-AzSignalRKey -ResourceGroupName $resourceGroupName -Name $signalrName -KeyType Secondary
         Assert-Null $ret
-        $newKeys2 = Get-AzureRmSignalRKey -ResourceGroupName $resourceGroupName -Name $signalrName
+        $newKeys2 = Get-AzSignalRKey -ResourceGroupName $resourceGroupName -Name $signalrName
         Assert-NotNull $newKeys2
         Assert-AreEqual $newKeys1.PrimaryKey $newKeys2.PrimaryKey
         Assert-AreEqual $newKeys1.PrimaryConnectionString $newKeys2.PrimaryConnectionString
         Assert-AreNotEqual $newKeys1.SecondaryKey $newKeys2.SecondaryKey
         Assert-AreNotEqual $newKeys1.SecondaryConnectionString $newKeys2.SecondaryConnectionString
 
-        Remove-AzureRmSignalR -ResourceGroupName $resourceGroupName -Name $signalrName
+        Remove-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName
 
-        Get-AzureRmSignalR -ResourceGroupName $resourceGroupName | Remove-AzureRmSignalR
+        Get-AzSignalR -ResourceGroupName $resourceGroupName | Remove-AzSignalR
     }
     finally {
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
 
@@ -96,7 +96,7 @@ function Test-AzureRmSignalR {
 .SYNOPSIS
 Test SignalR cmdlets using default arguments.
 #>
-function Test-AzureRmSignalRWithDefaultArgs {
+function Test-AzSignalRWithDefaultArgs {
     $resourceGroupName = Get-RandomResourceGroupName
     $signalrName = Get-RandomSignalRName
     $freeSignalRName = Get-RandomSignalRName "signalr-free-test-"
@@ -104,20 +104,20 @@ function Test-AzureRmSignalRWithDefaultArgs {
 
     try {
         # New without SignalR resource group, use the SignalR instance name as the resource group
-        $signalr = New-AzureRmSignalR -Name $resourceGroupName
+        $signalr = New-AzSignalR -Name $resourceGroupName
         Verify-SignalR $signalr $resourceGroupName $location "Standard_S1" 1
 
-        $signalrs = Get-AzureRmSignalR -ResourceGroupName $resourceGroupName
+        $signalrs = Get-AzSignalR -ResourceGroupName $resourceGroupName
         Assert-NotNull $signalrs
         Assert-AreEqual "PSSignalRResource" $signalrs.GetType().Name
         Verify-SignalR $signalrs $resourceGroupName $location "Standard_S1" 1
 
         # Set AzureRm default resource group name, and subsequent calls will use this as the resource group if missing.
-        Set-AzureRmDefault -ResourceGroupName $resourceGroupName
-        $signalr = New-AzureRmSignalR -Name $signalrName -Sku "Free_F1"
+        Set-AzDefault -ResourceGroupName $resourceGroupName
+        $signalr = New-AzSignalR -Name $signalrName -Sku "Free_F1"
 
         # List all the SignalR instances in the resource group
-        $signalrs = Get-AzureRmSignalR -ResourceGroupName $resourceGroupName
+        $signalrs = Get-AzSignalR -ResourceGroupName $resourceGroupName
         Assert-NotNull $signalrs
         Assert-AreEqual "Object[]" $signalrs.GetType().Name
         Assert-AreEqual 2 $signalrs.Length
@@ -128,7 +128,7 @@ function Test-AzureRmSignalRWithDefaultArgs {
         Verify-SignalR $freeSignalR $signalrName $location "Free_F1" 1
 
         #Get keys from the SignalR instance in the default resource group
-        $keys = Get-AzureRmSignalRKey -Name $signalrName
+        $keys = Get-AzSignalRKey -Name $signalrName
         Assert-NotNull $keys
         Assert-NotNull $keys.PrimaryKey
         Assert-NotNull $keys.PrimaryConnectionString
@@ -136,9 +136,9 @@ function Test-AzureRmSignalRWithDefaultArgs {
         Assert-NotNull $keys.SecondaryConnectionString
 
         # Regenerate keys for the SignalR instance in the default resource group
-        $ret = New-AzureRmSignalRKey -Name $signalrName -KeyType Primary -PassThru
+        $ret = New-AzSignalRKey -Name $signalrName -KeyType Primary -PassThru
         Assert-True { $ret }
-        $newKeys1 = Get-AzureRmSignalRKey -Name $signalrName
+        $newKeys1 = Get-AzSignalRKey -Name $signalrName
         Assert-NotNull $newKeys1
         Assert-AreNotEqual $keys.PrimaryKey $newKeys1.PrimaryKey
         Assert-AreNotEqual $keys.PrimaryConnectionString $newKeys1.PrimaryConnectionString
@@ -146,13 +146,13 @@ function Test-AzureRmSignalRWithDefaultArgs {
         Assert-AreEqual $keys.SecondaryConnectionString $newKeys1.SecondaryConnectionString
 
         # Remove the SignalR instance with the given name in the default resource group
-        Remove-AzureRmSignalR -Name $signalrName
+        Remove-AzSignalR -Name $signalrName
 
         # Get the SignalR instance with the given name in the default resource group and remove
-        Get-AzureRmSignalR -Name $resourceGroupName | Remove-AzureRmSignalR
+        Get-AzSignalR -Name $resourceGroupName | Remove-AzSignalR
     }
     finally {
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
 

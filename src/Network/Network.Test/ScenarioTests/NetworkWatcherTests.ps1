@@ -19,7 +19,7 @@ Deployment of new Network Watcher.
 function DeleteIfExistsNetworkWatcher($location)
 {
 	# Get Network Watcher
-	$nwlist = Get-AzureRmNetworkWatcher
+	$nwlist = Get-AzNetworkWatcher
 	foreach ($i in $nwlist)
 	{
 		if($i.Location -eq "$location") 
@@ -31,7 +31,7 @@ function DeleteIfExistsNetworkWatcher($location)
 	# Delete Network Watcher if existing nw
 	if ($nw) 
 	{
-		$job = Remove-AzureRmNetworkWatcher -NetworkWatcher $nw -AsJob
+		$job = Remove-AzNetworkWatcher -NetworkWatcher $nw -AsJob
 		$job | Wait-Job
 	}
 }
@@ -51,35 +51,35 @@ function Test-NetworkWatcherCRUD
     
     try 
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location  $rglocation -Tags @{ testtag = "testval" }
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location  $rglocation -Tags @{ testtag = "testval" }
         
 		DeleteIfExistsNetworkWatcher -location $location
 
         # Create the Network Watcher
         $tags = @{"key1" = "value1"; "key2" = "value2"}
-        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $rgname -Location $location -Tag $tags
+        $nw = New-AzNetworkWatcher -Name $nwName -ResourceGroupName $rgname -Location $location -Tag $tags
 
         Assert-AreEqual $nw.Name $nwName
         Assert-AreEqual "Succeeded" $nw.ProvisioningState
 		
         # Get Network Watcher
-        $getNW = Get-AzureRmNetworkWatcher -ResourceGroupName $rgname -Name $nwName
+        $getNW = Get-AzNetworkWatcher -ResourceGroupName $rgname -Name $nwName
 		
         Assert-AreEqual $getNW.Name $nwName		
         Assert-AreEqual "Succeeded" $nw.ProvisioningState
 		
         # List Network Watchers
-        $listNWByRg = Get-AzureRmNetworkWatcher -ResourceGroupName $rgname
-        $listNW = Get-AzureRmNetworkWatcher
+        $listNWByRg = Get-AzNetworkWatcher -ResourceGroupName $rgname
+        $listNW = Get-AzNetworkWatcher
 		
         Assert-AreEqual 1 @($listNWByRg).Count
 		
         # Delete Network Watcher
-        $job = Remove-AzureRmNetworkWatcher -ResourceGroupName $rgname -name $nwName -AsJob
+        $job = Remove-AzNetworkWatcher -ResourceGroupName $rgname -name $nwName -AsJob
         $job | Wait-Job
         $delete = $job | Receive-Job
 		
-        $list = Get-AzureRmNetworkWatcher -ResourceGroupName $rgname
+        $list = Get-AzNetworkWatcher -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
     finally

@@ -24,13 +24,13 @@ function Test-CreateUpdateDatabaseReadScale ($serverVersion = "12.0", $location 
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
-	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Premium -ReadScale Enabled
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Premium -ReadScale Enabled
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	try
 	{
 		# Alter all properties
-		$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -ReadScale Disabled
+		$db1 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -ReadScale Disabled
 		Assert-AreEqual $db1.ReadScale Disabled
 	}
 	finally
@@ -52,16 +52,16 @@ function Test-GetDatabaseReadScale ($serverVersion = "12.0", $location = "Southe
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
-	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Premium
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Premium
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	try
 	{
-		$db1 = Get-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
+		$db1 = Get-AzSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
 		Assert-AreEqual $db1.ReadScale Disabled
 
 		# Alter read scale properties
-		$db2 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+		$db2 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
 			-ReadScale Enabled
 		Assert-AreEqual $db2.ReadScale Enabled
 	}

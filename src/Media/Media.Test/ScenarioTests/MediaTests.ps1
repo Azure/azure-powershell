@@ -33,14 +33,14 @@ function Test-Media
 
   <# Check name availability #>
   $accountName = "med" + $rgname
-  $availability = Get-AzureRmMediaServiceNameAvailability -AccountName $accountName
+  $availability = Get-AzMediaServiceNameAvailability -AccountName $accountName
   Assert-AreEqual $true $availability.nameAvailable
 
   <# Create a media service with specifiying the primary storage account only #>
   $accountName = "med" + $rgname
   $tags = @{"tag1" = "value1"; "tag2" = "value2"}
   $storageAccount1 = GetStorageAccount -ResourceGroupName $rgname -Name $storageAccountName1
-  $mediaService = New-AzureRmMediaService -ResourceGroupName $rgname -AccountName $accountName -Location $location -StorageAccountId $storageAccount1.Id -Tag $tags
+  $mediaService = New-AzMediaService -ResourceGroupName $rgname -AccountName $accountName -Location $location -StorageAccountId $storageAccount1.Id -Tag $tags
   Assert-NotNull $mediaService
   Assert-AreEqual $accountName $mediaService.AccountName
   Assert-AreEqual $rgname $mediaService.ResourceGroupName
@@ -50,11 +50,11 @@ function Test-Media
   Assert-AreEqual $true $mediaService.StorageAccounts[0].IsPrimary
   Assert-AreEqual $rgname $mediaService.StorageAccounts[0].ResourceGroupName
 
-  $availability = Get-AzureRmMediaServiceNameAvailability -AccountName $accountName
+  $availability = Get-AzMediaServiceNameAvailability -AccountName $accountName
   Assert-AreEqual $false $availability.nameAvailable
 
   <# Get a media service with specifying resource group only #>
-  $mediaServices = Get-AzureRmMediaService -ResourceGroupName $rgname
+  $mediaServices = Get-AzMediaService -ResourceGroupName $rgname
   Assert-NotNull $mediaServices
   Assert-AreEqual 1 $mediaServices.Count
   Assert-AreEqual $accountName $mediaServices[0].AccountName
@@ -65,7 +65,7 @@ function Test-Media
   Assert-AreEqual $rgname $mediaServices[0].StorageAccounts[0].ResourceGroupName
 
   <# Get a media service with specifying resource group and account name #>
-  $mediaService = Get-AzureRmMediaService -ResourceGroupName $rgname -AccountName $accountName
+  $mediaService = Get-AzMediaService -ResourceGroupName $rgname -AccountName $accountName
   Assert-NotNull $mediaService
   Assert-AreEqual $accountName $mediaService.AccountName
   Assert-AreEqual $rgname $mediaService.ResourceGroupName
@@ -77,10 +77,10 @@ function Test-Media
   <# Set a media service #>
   $tagsUpdated = @{"tag3" = "value3"; "tag4" = "value4"}
   $storageAccount2 = GetStorageAccount -ResourceGroupName $rgname -Name $storageAccountName2
-  $primaryStorageAccount = New-AzureRmMediaServiceStorageConfig -storageAccountId $storageAccount1.Id -IsPrimary
-  $secondaryStorageAccount = New-AzureRmMediaServiceStorageConfig -storageAccountId $storageAccount2.Id
+  $primaryStorageAccount = New-AzMediaServiceStorageConfig -storageAccountId $storageAccount1.Id -IsPrimary
+  $secondaryStorageAccount = New-AzMediaServiceStorageConfig -storageAccountId $storageAccount2.Id
   $storageAccounts = @($primaryStorageAccount, $secondaryStorageAccount)
-  $mediaServiceUpdated = Set-AzureRmMediaService -ResourceGroupName $rgname -AccountName $accountName -Tag $tagsUpdated -StorageAccounts $storageAccounts
+  $mediaServiceUpdated = Set-AzMediaService -ResourceGroupName $rgname -AccountName $accountName -Tag $tagsUpdated -StorageAccounts $storageAccounts
   Assert-NotNull $mediaServiceUpdated
   Assert-Tags $tagsUpdated $mediaServiceUpdated.Tags
   Assert-AreEqual $storageAccountName1 $mediaServiceUpdated.StorageAccounts[0].AccountName
@@ -89,7 +89,7 @@ function Test-Media
   Assert-AreEqual $false $mediaServiceUpdated.StorageAccounts[1].IsPrimary
 
   <# Get service keys #>
-  $serviceKeys = Get-AzureRmMediaServiceKeys -ResourceGroupName $rgname -AccountName $accountName
+  $serviceKeys = Get-AzMediaServiceKeys -ResourceGroupName $rgname -AccountName $accountName
   Assert-NotNull $serviceKeys
   Assert-NotNull $serviceKeys.PrimaryAuthEndpoint
   Assert-NotNull $serviceKeys.PrimaryKey
@@ -98,24 +98,24 @@ function Test-Media
   Assert-NotNull $serviceKeys.Scope
 
   <# Set service key #>
-  $serviceKeysUpdated1 = Set-AzureRmMediaServiceKey -ResourceGroupName $rgname -AccountName $accountName -KeyType Primary
+  $serviceKeysUpdated1 = Set-AzMediaServiceKey -ResourceGroupName $rgname -AccountName $accountName -KeyType Primary
   Assert-NotNull $serviceKeysUpdated1
   Assert-NotNull $serviceKeysUpdated1.Key
   Assert-AreNotEqual $serviceKeys.PrimaryKey $serviceKeysUpdated1.Key
 
-  $serviceKeysUpdated2 = Set-AzureRmMediaServiceKey -ResourceGroupName $rgname -AccountName $accountName -KeyType Secondary
+  $serviceKeysUpdated2 = Set-AzMediaServiceKey -ResourceGroupName $rgname -AccountName $accountName -KeyType Secondary
   Assert-NotNull $serviceKeysUpdated2
   Assert-NotNull $serviceKeysUpdated2.Key
   Assert-AreNotEqual $serviceKeys.SecondaryKey $serviceKeysUpdated2.Key
 
   <# Remove media service #>
-  Remove-AzureRmMediaService -ResourceGroupName $rgname -AccountName $accountName -Force
-  $mediaServices = Get-AzureRmMediaService -ResourceGroupName $rgname
+  Remove-AzMediaService -ResourceGroupName $rgname -AccountName $accountName -Force
+  $mediaServices = Get-AzMediaService -ResourceGroupName $rgname
   Assert-Null $mediaServices
 
   <# Create a media service with multiple storage accounts #>
   $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-  $mediaService = New-AzureRmMediaService -ResourceGroupName $rgname -AccountName $accountName -Location $location -StorageAccounts $storageAccounts -Tag $tags
+  $mediaService = New-AzMediaService -ResourceGroupName $rgname -AccountName $accountName -Location $location -StorageAccounts $storageAccounts -Tag $tags
   Assert-NotNull $mediaService
   Assert-AreEqual $accountName $mediaService.AccountName
   Assert-AreEqual $rgname $mediaService.ResourceGroupName
@@ -128,7 +128,7 @@ function Test-Media
   Assert-AreEqual $false $mediaService.StorageAccounts[1].IsPrimary
   Assert-AreEqual $rgname $mediaService.StorageAccounts[1].ResourceGroupName
 
-  Remove-AzureRmMediaService -ResourceGroupName $rgname -AccountName $accountName -Force
+  Remove-AzMediaService -ResourceGroupName $rgname -AccountName $accountName -Force
   RemoveStorageAccount $rgname $storageAccountName1
   RemoveStorageAccount $rgname $storageAccountName2
   RemoveResourceGroup $rgname
@@ -155,7 +155,7 @@ function Test-MediaWithPiping
   <# Create a media service with piping #>
   $accountName = "med" + $rgname
   $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-  $mediaService = GetStorageAccount -ResourceGroupName $rgname -Name $storageAccountName1 | New-AzureRmMediaService -ResourceGroupName $rgname -AccountName $accountName -Location $location -Tag $tags
+  $mediaService = GetStorageAccount -ResourceGroupName $rgname -Name $storageAccountName1 | New-AzMediaService -ResourceGroupName $rgname -AccountName $accountName -Location $location -Tag $tags
   Assert-NotNull $mediaService
   Assert-AreEqual $accountName $mediaService.AccountName
   Assert-AreEqual $rgname $mediaService.ResourceGroupName
@@ -167,12 +167,12 @@ function Test-MediaWithPiping
 
   <# Update a media service with piping #>
   $tagsUpdated = @{"tag3" = "value3"; "tag4" = "value4"}
-  $mediaServiceUpdated = Get-AzureRmMediaService -ResourceGroupName $rgname -AccountName $accountName | Set-AzureRmMediaService -Tag $tagsUpdated
+  $mediaServiceUpdated = Get-AzMediaService -ResourceGroupName $rgname -AccountName $accountName | Set-AzMediaService -Tag $tagsUpdated
   Assert-NotNull $mediaServiceUpdated
   Assert-Tags $tagsUpdated $mediaServiceUpdated.Tags
 
   <# Get service keys with piping #>
-  $serviceKeys = Get-AzureRmMediaService -ResourceGroupName $rgname -AccountName $accountName | Get-AzureRmMediaServiceKeys
+  $serviceKeys = Get-AzMediaService -ResourceGroupName $rgname -AccountName $accountName | Get-AzMediaServiceKeys
   Assert-NotNull $serviceKeys
   Assert-NotNull $serviceKeys.PrimaryAuthEndpoint
   Assert-NotNull $serviceKeys.PrimaryKey
@@ -181,13 +181,13 @@ function Test-MediaWithPiping
   Assert-NotNull $serviceKeys.Scope
 
   <# Set service keys with piping #>
-  $serviceKeysUpdated2 = Get-AzureRmMediaService -ResourceGroupName $rgname -AccountName $accountName | Set-AzureRmMediaServiceKey -KeyType Secondary
+  $serviceKeysUpdated2 = Get-AzMediaService -ResourceGroupName $rgname -AccountName $accountName | Set-AzMediaServiceKey -KeyType Secondary
   Assert-NotNull $serviceKeysUpdated2
   Assert-NotNull $serviceKeysUpdated2.Key
   Assert-AreNotEqual $serviceKeys.SecondaryKey $serviceKeysUpdated2.Key
 
   <# Remove media service with piping #>
-  Get-AzureRmMediaService -ResourceGroupName $rgname -AccountName $accountName | Remove-AzureRmMediaService -Force
+  Get-AzMediaService -ResourceGroupName $rgname -AccountName $accountName | Remove-AzMediaService -Force
 
   RemoveStorageAccount $rgname $storageAccountName
   RemoveResourceGroup $rgname

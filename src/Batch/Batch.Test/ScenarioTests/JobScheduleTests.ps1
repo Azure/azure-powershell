@@ -30,17 +30,17 @@ function Test-JobScheduleCRUD
         $jobSpec1.PoolInformation = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
         $jobSpec1.PoolInformation.PoolId = "testPool"
         $schedule1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSSchedule
-        New-AzureBatchJobSchedule -Id $jsId1 -JobSpecification $jobSpec1 -Schedule $schedule1 -BatchContext $context
+        New-AzBatchJobSchedule -Id $jsId1 -JobSpecification $jobSpec1 -Schedule $schedule1 -BatchContext $context
 
         $jobSpec2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSJobSpecification
         $jobSpec2.PoolInformation = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
         $jobSpec2.PoolInformation.PoolId = "testPool2"
         $schedule2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSSchedule
         $schedule2.DoNotRunUntil = New-Object System.DateTime -ArgumentList @(2020, 01, 01, 12, 30, 0)
-        New-AzureBatchJobSchedule -Id $jsId2 -JobSpecification $jobSpec2 -Schedule $schedule2 -BatchContext $context
+        New-AzBatchJobSchedule -Id $jsId2 -JobSpecification $jobSpec2 -Schedule $schedule2 -BatchContext $context
 
         # List the job schedules to ensure they were created
-        $jobSchedules = Get-AzureBatchJobSchedule -Filter "id eq '$jsId1' or id eq '$jsId2'" -BatchContext $context
+        $jobSchedules = Get-AzBatchJobSchedule -Filter "id eq '$jsId1' or id eq '$jsId2'" -BatchContext $context
         $jobSchedule1 = $jobSchedules | Where-Object { $_.Id -eq $jsId1 }
         $jobSchedule2 = $jobSchedules | Where-Object { $_.Id -eq $jsId2 }
         Assert-NotNull $jobSchedule1
@@ -48,17 +48,17 @@ function Test-JobScheduleCRUD
 
         # Update a job schedule
         $jobSchedule2.Schedule.DoNotRunUntil = $newDoNotRunUntil = New-Object System.DateTime -ArgumentList @(2025, 01, 01, 12, 30, 0)
-        $jobSchedule2 | Set-AzureBatchJobSchedule -BatchContext $context
-        $updatedJobSchedule = Get-AzureBatchJobSchedule -Id $jsId2 -BatchContext $context
+        $jobSchedule2 | Set-AzBatchJobSchedule -BatchContext $context
+        $updatedJobSchedule = Get-AzBatchJobSchedule -Id $jsId2 -BatchContext $context
         Assert-AreEqual $newDoNotRunUntil $updatedJobSchedule.Schedule.DoNotRunUntil
     }
     finally
     {
         # Delete the job schedules
-        Remove-AzureBatchJobSchedule -Id $jsId1 -Force -BatchContext $context
-        Remove-AzureBatchJobSchedule -Id $jsId2 -Force -BatchContext $context
+        Remove-AzBatchJobSchedule -Id $jsId1 -Force -BatchContext $context
+        Remove-AzBatchJobSchedule -Id $jsId2 -Force -BatchContext $context
 
-        foreach ($js in Get-AzureBatchJobSchedule -BatchContext $context)
+        foreach ($js in Get-AzBatchJobSchedule -BatchContext $context)
         {
             Assert-True { ($js.Id -ne $jsId1 -and $js.Id -ne $jsId2) -or ($js.State.ToString().ToLower() -eq 'deleting') }
         }
@@ -75,22 +75,22 @@ function Test-DisableEnableTerminateJobSchedule
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-    Disable-AzureBatchJobSchedule $jobScheduleId -BatchContext $context
+    Disable-AzBatchJobSchedule $jobScheduleId -BatchContext $context
 
     # Verify the job schedule was Disabled
-    $jobSchedule = Get-AzureBatchJobSchedule $jobScheduleId -BatchContext $context
+    $jobSchedule = Get-AzBatchJobSchedule $jobScheduleId -BatchContext $context
     Assert-AreEqual 'Disabled' $jobSchedule.State
 
-    $jobSchedule | Enable-AzureBatchJobSchedule -BatchContext $context
+    $jobSchedule | Enable-AzBatchJobSchedule -BatchContext $context
 
     # Verify the job schedule is Active
-    $jobSchedule = Get-AzureBatchJobSchedule -Filter "id eq '$jobScheduleId'" -BatchContext $context
+    $jobSchedule = Get-AzBatchJobSchedule -Filter "id eq '$jobScheduleId'" -BatchContext $context
     Assert-AreEqual 'Active' $jobSchedule.State
 
     # Terminate the job schedule
-    $jobSchedule | Stop-AzureBatchJobSchedule -BatchContext $context
+    $jobSchedule | Stop-AzBatchJobSchedule -BatchContext $context
 
     # Verify the job schedule was terminated
-    $jobSchedule = Get-AzureBatchJobSchedule $jobScheduleId -BatchContext $context
+    $jobSchedule = Get-AzBatchJobSchedule $jobScheduleId -BatchContext $context
     Assert-True { ($jobSchedule.State.ToString().ToLower() -eq 'terminating') -or ($jobSchedule.State.ToString().ToLower() -eq 'completed') }
 }

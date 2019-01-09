@@ -21,7 +21,7 @@ function Test-GetAzureRmDiagnosticSetting
     try 
     {
         # Test
-        $actual = Get-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -name service
+        $actual = Get-AzDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -name service
 
 		Assert-NotNull $actual "Null result #1"
 
@@ -39,7 +39,7 @@ function Test-GetAzureRmDiagnosticSetting
 		Assert-Null $actual.ServiceBusRuleId
 		Assert-AreEqual "service"    $actual.Name
 
-        $actual = Get-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2
+        $actual = Get-AzDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2
 
 		Assert-NotNull $actual "Null result #2"
 		$actual = $actual[0]
@@ -73,7 +73,7 @@ function Test-SetAzureRmDiagnosticSettingUpdate
 {
     try 
     {
-	    $actual = Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470 -Enabled $true
+	    $actual = Set-AzDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470 -Enabled $true
 
 		Assert-AreEqual $actual.StorageAccountId "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470"
 		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1" $actual.EventHubName
@@ -104,7 +104,7 @@ function Test-SetAzureRmDiagnosticSettingCreate
     try 
     {
 	    # assumes there is no diagnostic settting called service for the given resource
-	    $actual = Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/system-sas-test/providers/Microsoft.KeyVault/vaults/myCanaryKeyVaultCUSEAUP -StorageAccountId /subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/vnet-east-test/providers/Microsoft.Storage/storageAccounts/vnetcnarytestcuseuap2 -Enabled $true
+	    $actual = Set-AzDiagnosticSetting -ResourceId /subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/system-sas-test/providers/Microsoft.KeyVault/vaults/myCanaryKeyVaultCUSEAUP -StorageAccountId /subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/vnet-east-test/providers/Microsoft.Storage/storageAccounts/vnetcnarytestcuseuap2 -Enabled $true
 
 		Assert-AreEqual $actual.StorageAccountId "/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/vnet-east-test/providers/Microsoft.Storage/storageAccounts/vnetcnarytestcuseuap2"
 		Assert-AreEqual 1            $actual.Metrics.Count
@@ -130,7 +130,7 @@ function Test-SetAzureRmDiagnosticSettingWithRetention
 {
     try 
     {
-	    $actual = Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470 -Enabled $true -RetentionEnabled $true -RetentionInDays 90
+	    $actual = Set-AzDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470 -Enabled $true -RetentionEnabled $true -RetentionInDays 90
 
 		Assert-AreEqual $actual.StorageAccountId "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470"
 		Assert-AreEqual "workspace1" $actual.WorkspaceId
@@ -167,7 +167,7 @@ function Test-SetAzureRmDiagnosticSetting-CategoriesOnly
 {
     try 
     {
-	    $actual = Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470 -Enabled $true -Category TestLog2
+	    $actual = Set-AzDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470 -Enabled $true -Category TestLog2
 
 		Assert-AreEqual $actual.StorageAccountId "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470"
 		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1" $actual.EventHubName
@@ -198,7 +198,7 @@ function Test-SetAzureRmDiagnosticSetting-TimegrainsOnly
 {
     try 
     {
-	    $actual = Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470 -Enabled $true -Timegrain PT1M
+	    $actual = Set-AzDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470 -Enabled $true -Timegrain PT1M
 
 		Assert-AreEqual $actual.StorageAccountId "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470"
 		Assert-AreEqual "workspace1" $actual.WorkspaceId

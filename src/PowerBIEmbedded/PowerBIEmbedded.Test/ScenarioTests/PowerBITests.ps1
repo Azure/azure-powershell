@@ -19,19 +19,19 @@
 
 <#
 .SYNOPSIS
-Test Get-AzureRmPowerBIWorkspaceCollection with (List)
+Test Get-AzPowerBIWorkspaceCollection with (List)
 #>
 function Test-GetWorkspaceCollection_ListAll
 {
     try {
 		$resourceGroup = Create-ResourceGroup
 		$workspaceCollectionNames = 1..2 |% { Get-WorkspaceCollectionName }
-		$newWorkspaceCollections = $workspaceCollectionNames |% { New-AzureRmPowerBIWorkspaceCollection `
+		$newWorkspaceCollections = $workspaceCollectionNames |% { New-AzPowerBIWorkspaceCollection `
 			-WorkspaceCollectionName $_ `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-Location $resourceGroup.Location }
 
-		$allWorkspaceCollections = Get-AzureRmPowerBIWorkspaceCollection
+		$allWorkspaceCollections = Get-AzPowerBIWorkspaceCollection
 
 		Assert-True { $allWorkspaceCollections[$allWorkspaceCollections.Count - 2].Name -eq $workspaceCollectionNames[0] }
 		Assert-True { $allWorkspaceCollections[$allWorkspaceCollections.Count - 1].Name -eq $workspaceCollectionNames[1] }
@@ -43,19 +43,19 @@ function Test-GetWorkspaceCollection_ListAll
 
 <#
 .SYNOPSIS
-Test Get-AzureRmPowerBIWorkspaceCollection with (List by RG)
+Test Get-AzPowerBIWorkspaceCollection with (List by RG)
 #>
 function Test-GetWorkspaceCollection_ListByResourceGroup
 {
     try {
 		$resourceGroup = Create-ResourceGroup
 		$workspaceCollectionNames = 1..2 |% { Get-WorkspaceCollectionName }
-		$newWorkspaceCollections = $workspaceCollectionNames |% { New-AzureRmPowerBIWorkspaceCollection `
+		$newWorkspaceCollections = $workspaceCollectionNames |% { New-AzPowerBIWorkspaceCollection `
 			-WorkspaceCollectionName $_ `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-Location $resourceGroup.Location }
 
-		$filteredWorkspaceCollections = Get-AzureRmPowerBIWorkspaceCollection -ResourceGroupName $resourceGroup.ResourceGroupName
+		$filteredWorkspaceCollections = Get-AzPowerBIWorkspaceCollection -ResourceGroupName $resourceGroup.ResourceGroupName
 
 		Assert-AreEqual $filteredWorkspaceCollections.Count $newWorkspaceCollections.Count
 	}
@@ -66,18 +66,18 @@ function Test-GetWorkspaceCollection_ListByResourceGroup
 
 <#
 .SYNOPSIS
-Test Get-AzureRmPowerBIWorkspaceCollection (by RegionName and WorkspaceCollectionName)
+Test Get-AzPowerBIWorkspaceCollection (by RegionName and WorkspaceCollectionName)
 #>
 function Test-GetWorkspaceCollection_ByName
 {
     try {
 		$resourceGroup = Create-ResourceGroup
-		$newWorkspaceCollection = New-AzureRmPowerBIWorkspaceCollection `
+		$newWorkspaceCollection = New-AzPowerBIWorkspaceCollection `
 			-WorkspaceCollectionName $(Get-WorkspaceCollectionName) `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-Location $resourceGroup.Location
 
-		$foundWorkspaceCollection = Get-AzureRmPowerBIWorkspaceCollection `
+		$foundWorkspaceCollection = Get-AzPowerBIWorkspaceCollection `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-WorkspaceCollectionName $newWorkspaceCollection.Name
 
@@ -95,18 +95,18 @@ function Test-GetWorkspaceCollection_ByName
 
 <#
 .SYNOPSIS
-Test Get-AzureRmPowerBIWorkspace (Empty)
+Test Get-AzPowerBIWorkspace (Empty)
 #>
 function Test-GetWorkspace_EmptyCollection
 {
     try {
 		$resourceGroup = Create-ResourceGroup
-		$newWorkspaceCollection = New-AzureRmPowerBIWorkspaceCollection `
+		$newWorkspaceCollection = New-AzPowerBIWorkspaceCollection `
 			-WorkspaceCollectionName $(Get-WorkspaceCollectionName) `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-Location $resourceGroup.Location
 
-		$workspaces = Get-AzureRmPowerBIWorkspace `
+		$workspaces = Get-AzPowerBIWorkspace `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-WorkspaceCollectionName $newWorkspaceCollection.Name
 
@@ -124,27 +124,27 @@ function Test-GetWorkspace_EmptyCollection
 
 <#
 .SYNOPSIS
-Test Reset-AzureRmPowerBIWorkspaceCollectionAccessKeys (Key1)
+Test Reset-AzPowerBIWorkspaceCollectionAccessKeys (Key1)
 #>
 function Test-ResetWorkspaceCollectionAccessKeys_Key1
 {
     try {
 		$resourceGroup = Create-ResourceGroup
-		$newWorkspaceCollection = New-AzureRmPowerBIWorkspaceCollection `
+		$newWorkspaceCollection = New-AzPowerBIWorkspaceCollection `
 			-WorkspaceCollectionName $(Get-WorkspaceCollectionName) `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-Location $resourceGroup.Location
 
-		$k1 = Get-AzureRmPowerBIWorkspaceCollectionAccessKeys `
+		$k1 = Get-AzPowerBIWorkspaceCollectionAccessKeys `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-WorkspaceCollectionName $newWorkspaceCollection.Name
 
-		$kr = Reset-AzureRmPowerBIWorkspaceCollectionAccessKeys `
+		$kr = Reset-AzPowerBIWorkspaceCollectionAccessKeys `
 			-Key1 `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-WorkspaceCollectionName $newWorkspaceCollection.Name
 
-		$k2 = Get-AzureRmPowerBIWorkspaceCollectionAccessKeys `
+		$k2 = Get-AzPowerBIWorkspaceCollectionAccessKeys `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-WorkspaceCollectionName $newWorkspaceCollection.Name
 
@@ -161,27 +161,27 @@ function Test-ResetWorkspaceCollectionAccessKeys_Key1
 
 <#
 .SYNOPSIS
-Test Reset-AzureRmPowerBIWorkspaceCollectionAccessKeys (Key2)
+Test Reset-AzPowerBIWorkspaceCollectionAccessKeys (Key2)
 #>
 function Test-ResetWorkspaceCollectionAccessKeys_Key2
 {
     try {
 		$resourceGroup = Create-ResourceGroup
-		$newWorkspaceCollection = New-AzureRmPowerBIWorkspaceCollection `
+		$newWorkspaceCollection = New-AzPowerBIWorkspaceCollection `
 			-WorkspaceCollectionName $(Get-WorkspaceCollectionName) `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-Location $resourceGroup.Location
 
-		$k1 = Get-AzureRmPowerBIWorkspaceCollectionAccessKeys `
+		$k1 = Get-AzPowerBIWorkspaceCollectionAccessKeys `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-WorkspaceCollectionName $newWorkspaceCollection.Name
 
-		$kr = Reset-AzureRmPowerBIWorkspaceCollectionAccessKeys `
+		$kr = Reset-AzPowerBIWorkspaceCollectionAccessKeys `
 			-Key2 `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-WorkspaceCollectionName $newWorkspaceCollection.Name
 
-		$k2 = Get-AzureRmPowerBIWorkspaceCollectionAccessKeys `
+		$k2 = Get-AzPowerBIWorkspaceCollectionAccessKeys `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-WorkspaceCollectionName $newWorkspaceCollection.Name
 
@@ -198,18 +198,18 @@ function Test-ResetWorkspaceCollectionAccessKeys_Key2
 
 <#
 .SYNOPSIS
-Test Get-AzureRmPowerBIWorkspaceCollectionAccessKeys
+Test Get-AzPowerBIWorkspaceCollectionAccessKeys
 #>
 function Test-GetWorkspaceCollectionAccessKeys
 {
     try {
 		$resourceGroup = Create-ResourceGroup
-		$newWorkspaceCollection = New-AzureRmPowerBIWorkspaceCollection `
+		$newWorkspaceCollection = New-AzPowerBIWorkspaceCollection `
 			-WorkspaceCollectionName $(Get-WorkspaceCollectionName) `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-Location $resourceGroup.Location
 
-		$keys = Get-AzureRmPowerBIWorkspaceCollectionAccessKeys `
+		$keys = Get-AzPowerBIWorkspaceCollectionAccessKeys `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-WorkspaceCollectionName $newWorkspaceCollection.Name
 
@@ -222,25 +222,25 @@ function Test-GetWorkspaceCollectionAccessKeys
 
 <#
 .SYNOPSIS
-Test Remove-AzureRmPowerBIWorkspaceCollection
+Test Remove-AzPowerBIWorkspaceCollection
 #>
 function Test-RemoveWorkspaceCollection
 {
 	try {
 		$resourceGroup = Create-ResourceGroup
-		$newWorkspaceCollection = New-AzureRmPowerBIWorkspaceCollection `
+		$newWorkspaceCollection = New-AzPowerBIWorkspaceCollection `
 			-WorkspaceCollectionName $(Get-WorkspaceCollectionName) `
 			-ResourceGroupName $resourceGroup.ResourceGroupName `
 			-Location $resourceGroup.Location
 
 		try {
-			Remove-AzureRmPowerBIWorkspaceCollection `
+			Remove-AzPowerBIWorkspaceCollection `
 				-WorkspaceCollectionName $newWorkspaceCollection.Name `
 				-ResourceGroupName $resourceGroup.ResourceGroupName
 		}
 		catch {}
 
-		Assert-ThrowsContains { Get-AzureRmPowerBIWorkspaceCollection `
+		Assert-ThrowsContains { Get-AzPowerBIWorkspaceCollection `
 			-WorkspaceCollectionName $newWorkspaceCollection.Name `
 			-ResourceGroupName $resourceGroup.ResourceGroupName } `
 			"NotFound"

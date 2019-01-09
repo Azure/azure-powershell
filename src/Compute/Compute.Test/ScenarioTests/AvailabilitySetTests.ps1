@@ -25,31 +25,31 @@ function Test-AvailabilitySet
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         $asetName = 'avs' + $rgname;
         $nonDefaultUD = 2;
         $nonDefaultFD = 3;
 
-        $job = New-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc -PlatformUpdateDomainCount $nonDefaultUD -PlatformFaultDomainCount $nonDefaultFD -Sku 'Classic' -Tag @{"a"="b"} -AsJob;
+        $job = New-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc -PlatformUpdateDomainCount $nonDefaultUD -PlatformFaultDomainCount $nonDefaultFD -Sku 'Classic' -Tag @{"a"="b"} -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
 
         for($i = 0; $i -lt 200; $i++)
         {
             $avsetname = $asetName + $i;
-            New-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $avsetname -Location $loc -PlatformUpdateDomainCount $nonDefaultUD -PlatformFaultDomainCount $nonDefaultFD -Sku 'Classic' -Tag @{"a"="b"};
+            New-AzAvailabilitySet -ResourceGroupName $rgname -Name $avsetname -Location $loc -PlatformUpdateDomainCount $nonDefaultUD -PlatformFaultDomainCount $nonDefaultFD -Sku 'Classic' -Tag @{"a"="b"};
         }
 
-        $asets = Get-AzureRmAvailabilitySet;
+        $asets = Get-AzAvailabilitySet;
         Assert-NotNull $asets;
         Assert-True {$asets.Count -gt 200}
 
-        $asets = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname;
+        $asets = Get-AzAvailabilitySet -ResourceGroupName $rgname;
         Assert-NotNull $asets;
         Assert-AreEqual $asetName $asets[0].Name;
 
-        $aset = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
+        $aset = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
         Assert-NotNull $aset;
         Assert-AreEqual $aset.Name $asetName;
         Assert-AreEqual $nonDefaultUD $aset.PlatformUpdateDomainCount;
@@ -58,10 +58,10 @@ function Test-AvailabilitySet
         Assert-AreEqual 'Classic' $aset.Sku;
         Assert-AreEqual "b" $aset.Tags["a"];
 
-        $job = $aset | Update-AzureRmAvailabilitySet -Managed -AsJob;
+        $job = $aset | Update-AzAvailabilitySet -Managed -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
-        $aset = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
+        $aset = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
 
         Assert-NotNull $aset;
         Assert-AreEqual $aset.Name $asetName;
@@ -69,8 +69,8 @@ function Test-AvailabilitySet
         Assert-AreEqual $nonDefaultFD $aset.PlatformFaultDomainCount;
         Assert-AreEqual 'Aligned' $aset.Sku;
 
-        $aset | Update-AzureRmAvailabilitySet -Sku 'Aligned';
-        $aset = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
+        $aset | Update-AzAvailabilitySet -Sku 'Aligned';
+        $aset = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
 
         Assert-NotNull $aset;
         Assert-AreEqual $aset.Name $asetName;
@@ -78,7 +78,7 @@ function Test-AvailabilitySet
         Assert-AreEqual $nonDefaultFD $aset.PlatformFaultDomainCount;
         Assert-AreEqual 'Aligned' $aset.Sku;
 
-        $job = Remove-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Force -AsJob;
+        $job = Remove-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Force -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
         $st = $job | Receive-Job;
@@ -88,7 +88,7 @@ function Test-AvailabilitySet
         Assert-AreEqual "OK" $st.ReasonPhrase;
         Assert-True { $st.IsSuccessStatusCode };
         
-        $asets = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname;
+        $asets = Get-AzAvailabilitySet -ResourceGroupName $rgname;
         $avset = $asets | ? {$_.Name -eq $asetName};
         Assert-Null $avset;
     }

@@ -19,7 +19,7 @@ Tests VirtualNetworkTap using ipendpoints
 function Test-VirtualNetworkTapCRUDUsingIpConfig
 {
     #added temporarily
-    # Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Network"
+    # Register-AzResourceProvider -ProviderNamespace "Microsoft.Network"
 
     # Setup
     $rgname = Get-ResourceGroupName
@@ -36,25 +36,25 @@ function Test-VirtualNetworkTapCRUDUsingIpConfig
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network
-        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
-        $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
-        $job = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -AsJob
+        $job = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -AsJob
         $job | Wait-Job
-        $expectedNic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname
+        $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         # Create required dependencies
         $DestinationEndpoint = $expectedNic.IpConfigurations[0]
-        $actualVtap = New-AzureRmVirtualNetworkTap -ResourceGroupName $rgname -Name $rname -Location $location -DestinationNetworkInterfaceIPConfiguration $DestinationEndpoint
+        $actualVtap = New-AzVirtualNetworkTap -ResourceGroupName $rgname -Name $rname -Location $location -DestinationNetworkInterfaceIPConfiguration $DestinationEndpoint
 
-        $vVirtualNetworkTap = Get-AzureRmVirtualNetworkTap -ResourceGroupName $rgname -Name $rname;
+        $vVirtualNetworkTap = Get-AzVirtualNetworkTap -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vVirtualNetworkTap;
         Assert-AreEqual $vVirtualNetworkTap.ResourceGroupName $actualVtap.ResourceGroupName;
         Assert-AreEqual $vVirtualNetworkTap.Name $rname;
@@ -62,9 +62,9 @@ function Test-VirtualNetworkTapCRUDUsingIpConfig
 
         #update the Vtap resource 
         $vVirtualNetworkTap.DestinationPort = 8888;
-        Set-AzureRmVirtualNetworkTap -VirtualNetworkTap $vVirtualNetworkTap
+        Set-AzVirtualNetworkTap -VirtualNetworkTap $vVirtualNetworkTap
 
-        $vVirtualNetworkTap = Get-AzureRmVirtualNetworkTap -ResourceGroupName $rgname -Name $rname;
+        $vVirtualNetworkTap = Get-AzVirtualNetworkTap -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vVirtualNetworkTap;
         Assert-AreEqual $vVirtualNetworkTap.ResourceGroupName $actualVtap.ResourceGroupName;
         Assert-AreEqual $vVirtualNetworkTap.Name $rname;
@@ -72,11 +72,11 @@ function Test-VirtualNetworkTapCRUDUsingIpConfig
         Assert-AreEqual $vVirtualNetworkTap.DestinationPort 8888
 
         # Remove VirtualNetworkTap
-        $removeVirtualNetworkTap = Remove-AzureRmVirtualNetworkTap -ResourceGroupName $rgname -Name $rname -PassThru -Force;
+        $removeVirtualNetworkTap = Remove-AzVirtualNetworkTap -ResourceGroupName $rgname -Name $rname -PassThru -Force;
         Assert-AreEqual $true $removeVirtualNetworkTap;
 
         # Get VirtualNetworkTap should fail
-        Assert-ThrowsLike { Get-AzureRmVirtualNetworkTap -ResourceGroupName $rgname -Name $rname } "*${rname}*not found*";
+        Assert-ThrowsLike { Get-AzVirtualNetworkTap -ResourceGroupName $rgname -Name $rname } "*${rname}*not found*";
     }
     finally
     {

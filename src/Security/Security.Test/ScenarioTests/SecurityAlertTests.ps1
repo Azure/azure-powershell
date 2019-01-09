@@ -16,9 +16,9 @@
 .SYNOPSIS
 Get security alerts on a subscription and its resources
 #>
-function Get-AzureRmSecurityAlert-SubscriptionScope
+function Get-AzSecurityAlert-SubscriptionScope
 {
-    $alerts = Get-AzureRmSecurityAlert
+    $alerts = Get-AzSecurityAlert
 	Validate-Alerts $alerts
 }
 
@@ -26,11 +26,11 @@ function Get-AzureRmSecurityAlert-SubscriptionScope
 .SYNOPSIS
 Get security alerts on a resource group and its resources
 #>
-function Get-AzureRmSecurityAlert-ResourceGroupScope
+function Get-AzSecurityAlert-ResourceGroupScope
 {
 	$rgName = Get-TestResourceGroupName
 
-    $alerts = Get-AzureRmSecurityAlert -ResourceGroupName $rgName
+    $alerts = Get-AzSecurityAlert -ResourceGroupName $rgName
 	Validate-Alerts $alerts
 }
 
@@ -38,15 +38,15 @@ function Get-AzureRmSecurityAlert-ResourceGroupScope
 .SYNOPSIS
 Get a security alert on a resource group level
 #>
-function Get-AzureRmSecurityAlert-ResourceGroupLevelResource
+function Get-AzSecurityAlert-ResourceGroupLevelResource
 {
-	$alerts = Get-AzureRmSecurityAlert
+	$alerts = Get-AzSecurityAlert
 
 	$alert = $alerts | where { $_.Id -like "*resourceGroups*" } | Select -First 1
 	$location = Extract-ResourceLocation -ResourceId $alert.Id
 	$rgName = Extract-ResourceGroup -ResourceId $alert.Id
 
-    $fetchedAlert = Get-AzureRmSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name
+    $fetchedAlert = Get-AzSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name
 	Validate-Alert $fetchedAlert
 }
 
@@ -54,13 +54,13 @@ function Get-AzureRmSecurityAlert-ResourceGroupLevelResource
 .SYNOPSIS
 Get a security alert on a subscription level
 #>
-function Get-AzureRmSecurityAlert-SubscriptionLevelResource
+function Get-AzSecurityAlert-SubscriptionLevelResource
 {
-	$alerts = Get-AzureRmSecurityAlert
+	$alerts = Get-AzSecurityAlert
 	$alert = $alerts | where { $_.Id -notlike "*resourceGroups*" } | Select -First 1
 	$location = Extract-ResourceLocation -ResourceId $alert.Id
 
-    $fetchedAlert = Get-AzureRmSecurityAlert -Location $location -Name $alert.Name
+    $fetchedAlert = Get-AzSecurityAlert -Location $location -Name $alert.Name
 	Validate-Alert $fetchedAlert
 }
 
@@ -68,12 +68,12 @@ function Get-AzureRmSecurityAlert-SubscriptionLevelResource
 .SYNOPSIS
 Get a security alert by a resource ID
 #>
-function Get-AzureRmSecurityAlert-ResourceId
+function Get-AzSecurityAlert-ResourceId
 {
-	$alerts = Get-AzureRmSecurityAlert
+	$alerts = Get-AzSecurityAlert
 	$alert = $alerts | Select -First 1
 
-    $alerts = Get-AzureRmSecurityAlert -ResourceId $alert.Id
+    $alerts = Get-AzSecurityAlert -ResourceId $alert.Id
 	Validate-Alerts $alerts
 }
 
@@ -81,17 +81,17 @@ function Get-AzureRmSecurityAlert-ResourceId
 .SYNOPSIS
 Change resource group security alert state
 #>
-function Set-AzureRmSecurityAlert-ResourceGroupLevelResource
+function Set-AzSecurityAlert-ResourceGroupLevelResource
 {
-	$alerts = Get-AzureRmSecurityAlert
+	$alerts = Get-AzSecurityAlert
 
 	$alert = $alerts | where { $_.Id -like "*resourceGroups*" } | Select -First 1
 	$location = Extract-ResourceLocation -ResourceId $alert.Id
 	$rgName = Extract-ResourceGroup -ResourceId $alert.Id
 
-    Set-AzureRmSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name -ActionType "Activate"
+    Set-AzSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name -ActionType "Activate"
 
-	$fetchedAlert = Get-AzureRmSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name
+	$fetchedAlert = Get-AzSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name
 
 	Validate-AlertActivity -alert $fetchedAlert
 }
@@ -100,15 +100,15 @@ function Set-AzureRmSecurityAlert-ResourceGroupLevelResource
 .SYNOPSIS
 Change subscription security alert state
 #>
-function Set-AzureRmSecurityAlert-SubscriptionLevelResource
+function Set-AzSecurityAlert-SubscriptionLevelResource
 {
-	$alerts = Get-AzureRmSecurityAlert
+	$alerts = Get-AzSecurityAlert
 	$alert = $alerts | where { $_.Id -notlike "*resourceGroups*" } | Select -First 1
 	$location = Extract-ResourceLocation -ResourceId $alert.Id
 
-    Set-AzureRmSecurityAlert -Location $location -Name $alert.Name -ActionType "Activate"
+    Set-AzSecurityAlert -Location $location -Name $alert.Name -ActionType "Activate"
 
-	$fetchedAlert = Get-AzureRmSecurityAlert -Location $location -Name $alert.Name
+	$fetchedAlert = Get-AzSecurityAlert -Location $location -Name $alert.Name
 
 	Validate-AlertActivity -alert $fetchedAlert
 }
@@ -117,14 +117,14 @@ function Set-AzureRmSecurityAlert-SubscriptionLevelResource
 .SYNOPSIS
 Change resource group security alert state by a resource ID
 #>
-function Set-AzureRmSecurityAlert-ResourceId
+function Set-AzSecurityAlert-ResourceId
 {
-	$alerts = Get-AzureRmSecurityAlert
+	$alerts = Get-AzSecurityAlert
 	$alert = $alerts | Select -First 1
 
-    Set-AzureRmSecurityAlert -ResourceId $alert.Id -ActionType "Activate"
+    Set-AzSecurityAlert -ResourceId $alert.Id -ActionType "Activate"
 
-	$fetchedAlert = Get-AzureRmSecurityAlert -ResourceId $alert.Id
+	$fetchedAlert = Get-AzSecurityAlert -ResourceId $alert.Id
 
 	Validate-AlertActivity -alert $fetchedAlert
 }

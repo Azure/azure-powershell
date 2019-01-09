@@ -71,7 +71,7 @@ $automationAccountName = "frangom-sdkCmdlet-tests"
 #region Helper functions
 
 # This function ensure that the given source control does not exist, 
-# which implicitly validates Get-AzureRmAutomationSourceControl and Remove-AzureRmAutomationSourceControl
+# which implicitly validates Get-AzAutomationSourceControl and Remove-AzAutomationSourceControl
 function EnsureSourceControlDoesNotExist
 {
     Param 
@@ -82,13 +82,13 @@ function EnsureSourceControlDoesNotExist
         $Name
     )
 
-    $sourceControl = Get-AzureRmAutomationSourceControl -ResourceGroupName $resourceGroupName `
+    $sourceControl = Get-AzAutomationSourceControl -ResourceGroupName $resourceGroupName `
                                                         -AutomationAccountName $automationAccountName `
                                                         -Name $Name `
                                                         -ErrorAction SilentlyContinue
     if ($sourceControl)
     {
-        Remove-AzureRmAutomationSourceControl -ResourceGroupName $resourceGroupName `
+        Remove-AzAutomationSourceControl -ResourceGroupName $resourceGroupName `
                                               -AutomationAccountName $automationAccountName `
                                               -Name $Name
     }
@@ -117,7 +117,7 @@ function WaitForSourceControlSyncJobState
     $waitTimeInSeconds = 2
     $retries = 40
     $jobCompleted = Retry-Function {
-        return (Get-AzureRmAutomationSourceControlSyncJob -ResourceGroupName $resourceGroupName `
+        return (Get-AzAutomationSourceControlSyncJob -ResourceGroupName $resourceGroupName `
                                                           -AutomationAccountName $automationAccountName  `
                                                           -Name $Name `
                                                           -JobId $JobId).ProvisioningState -eq $ExpectedState } $null $retries $waitTimeInSeconds
@@ -140,7 +140,7 @@ function Test-CreateVsoGitSourceControlAndSync
         # Access token
         $accessToken = ConvertTo-SecureString -String $sourceControl.PersonalAccessToken -AsPlainText -Force
 
-        $createdSourceControl = New-AzureRmAutomationSourceControl -ResourceGroupName $resourceGroupName `
+        $createdSourceControl = New-AzAutomationSourceControl -ResourceGroupName $resourceGroupName `
                                                                    -AutomationAccountName $automationAccountName  `
                                                                    -Name $sourceControl.Name  `
                                                                    -RepoUrl $sourceControl.RepoUrl `
@@ -163,7 +163,7 @@ function Test-CreateVsoGitSourceControlAndSync
         }
 
         # Enable PublishRunbook in the newly created source control 
-        $updatedSourceControl = Update-AzureRmAutomationSourceControl -ResourceGroupName $resourceGroupName `
+        $updatedSourceControl = Update-AzAutomationSourceControl -ResourceGroupName $resourceGroupName `
                                                                       -AutomationAccountName $automationAccountName  `
                                                                       -Name $sourceControl.Name  `
                                                                       -PublishRunbook $true
@@ -173,7 +173,7 @@ function Test-CreateVsoGitSourceControlAndSync
         
         # Start a sync for the source control
         $jobId = "0bfa6b49-c08c-4b2f-853e-08128c3c86ee"
-        Start-AzureRmAutomationSourceControlSyncJob -ResourceGroupName $resourceGroupName `
+        Start-AzAutomationSourceControlSyncJob -ResourceGroupName $resourceGroupName `
                                             -AutomationAccountName $automationAccountName  `
                                             -Name $sourceControl.Name `
                                             -JobId $jobId
@@ -181,13 +181,13 @@ function Test-CreateVsoGitSourceControlAndSync
         WaitForSourceControlSyncJobState -Name $sourceControl.Name -JobId $jobId -ExpectedState Completed
 
         # Get the SourceControlSyncJob streams
-        $streams =  Get-AzureRmAutomationSourceControlSyncJobOutput -ResourceGroupName $resourceGroupName `
+        $streams =  Get-AzAutomationSourceControlSyncJobOutput -ResourceGroupName $resourceGroupName `
                                                                     -AutomationAccountName $automationAccountName  `
                                                                     -Name $sourceControl.Name `
                                                                     -JobId $jobId `
                                                                     -Stream Output | % Summary
         
-        Assert-True {$streams.count -gt 0} "Failed to get Output stream via Get-AzureRmAutomationSourceControlSyncJobOutput "
+        Assert-True {$streams.count -gt 0} "Failed to get Output stream via Get-AzAutomationSourceControlSyncJobOutput "
     }
     finally
     {
@@ -207,7 +207,7 @@ function Test-CreateVsoTfvcSourceControlAndSync
         # Access token
         $accessToken = ConvertTo-SecureString -String $sourceControl.PersonalAccessToken -AsPlainText -Force
 
-        $createdSourceControl = New-AzureRmAutomationSourceControl -ResourceGroupName $resourceGroupName `
+        $createdSourceControl = New-AzAutomationSourceControl -ResourceGroupName $resourceGroupName `
                                                                    -AutomationAccountName $automationAccountName  `
                                                                    -Name  $sourceControl.Name  `
                                                                    -RepoUrl $sourceControl.RepoUrl `
@@ -229,7 +229,7 @@ function Test-CreateVsoTfvcSourceControlAndSync
         }
 
         # Enable PublishRunbook in the newly created source control 
-        $updatedSourceControl = Update-AzureRmAutomationSourceControl -ResourceGroupName $resourceGroupName `
+        $updatedSourceControl = Update-AzAutomationSourceControl -ResourceGroupName $resourceGroupName `
                                                                       -AutomationAccountName $automationAccountName  `
                                                                       -Name $sourceControl.Name  `
                                                                       -PublishRunbook $true
@@ -239,7 +239,7 @@ function Test-CreateVsoTfvcSourceControlAndSync
         
         # Start a sync for the source control
         $jobId = "27dcdb17-1f65-42e9-9eeb-088a5f50eeb8"
-        Start-AzureRmAutomationSourceControlSyncJob -ResourceGroupName $resourceGroupName `
+        Start-AzAutomationSourceControlSyncJob -ResourceGroupName $resourceGroupName `
                                             -AutomationAccountName $automationAccountName  `
                                             -Name $sourceControl.Name `
                                             -JobId $jobId
@@ -247,13 +247,13 @@ function Test-CreateVsoTfvcSourceControlAndSync
         WaitForSourceControlSyncJobState -Name $sourceControl.Name -JobId $jobId -ExpectedState Completed
 
         # Get the SourceControlSyncJob streams
-        $streams =  Get-AzureRmAutomationSourceControlSyncJobOutput -ResourceGroupName $resourceGroupName `
+        $streams =  Get-AzAutomationSourceControlSyncJobOutput -ResourceGroupName $resourceGroupName `
                                                                     -AutomationAccountName $automationAccountName  `
                                                                     -Name $sourceControl.Name `
                                                                     -JobId $jobId `
                                                                     -Stream Output | % Summary
         
-        Assert-True {$streams.count -gt 0} "Failed to get Output stream via Get-AzureRmAutomationSourceControlSyncJobOutput "
+        Assert-True {$streams.count -gt 0} "Failed to get Output stream via Get-AzAutomationSourceControlSyncJobOutput "
     }
     finally
     {
@@ -273,7 +273,7 @@ function Test-CreateGitHubSourceControlAndSync
         # Access token
         $accessToken = ConvertTo-SecureString -String $sourceControl.PersonalAccessToken -AsPlainText -Force
 
-        $createdSourceControl = New-AzureRmAutomationSourceControl -ResourceGroupName $resourceGroupName `
+        $createdSourceControl = New-AzAutomationSourceControl -ResourceGroupName $resourceGroupName `
                                                                    -AutomationAccountName $automationAccountName  `
                                                                    -Name $sourceControl.Name  `
                                                                    -RepoUrl $sourceControl.RepoUrl `
@@ -296,7 +296,7 @@ function Test-CreateGitHubSourceControlAndSync
         }
 
         # Enable PublishRunbook in the newly created source control 
-        $updatedSourceControl = Update-AzureRmAutomationSourceControl -ResourceGroupName $resourceGroupName `
+        $updatedSourceControl = Update-AzAutomationSourceControl -ResourceGroupName $resourceGroupName `
                                                                       -AutomationAccountName $automationAccountName  `
                                                                       -Name $sourceControl.Name  `
                                                                       -PublishRunbook $true
@@ -306,7 +306,7 @@ function Test-CreateGitHubSourceControlAndSync
         
         # Start a sync for the source control
         $jobId = "f7dd56e6-0da3-442a-b1c5-3027065c7786"
-        Start-AzureRmAutomationSourceControlSyncJob -ResourceGroupName $resourceGroupName `
+        Start-AzAutomationSourceControlSyncJob -ResourceGroupName $resourceGroupName `
                                             -AutomationAccountName $automationAccountName  `
                                             -Name $sourceControl.Name `
                                             -JobId $jobId
@@ -314,13 +314,13 @@ function Test-CreateGitHubSourceControlAndSync
         WaitForSourceControlSyncJobState -Name $sourceControl.Name -JobId $jobId -ExpectedState Completed
 
         # Get the SourceControlSyncJob streams
-        $streams =  Get-AzureRmAutomationSourceControlSyncJobOutput -ResourceGroupName $resourceGroupName `
+        $streams =  Get-AzAutomationSourceControlSyncJobOutput -ResourceGroupName $resourceGroupName `
                                                                     -AutomationAccountName $automationAccountName  `
                                                                     -Name $sourceControl.Name `
                                                                     -JobId $jobId `
                                                                     -Stream Output | % Summary
         
-        Assert-True {$streams.count -gt 0} "Failed to get Output stream via Get-AzureRmAutomationSourceControlSyncJobOutput "
+        Assert-True {$streams.count -gt 0} "Failed to get Output stream via Get-AzAutomationSourceControlSyncJobOutput "
     }
     finally
     {

@@ -2,7 +2,7 @@
 .SYNOPSIS
 Test DevSpaces stuff
 #>
-function Test-AzureRmDevSpacesController
+function Test-AzDevSpacesController
 {
     # Manual Setup. Create these resource maunally in the subscription
     $resourceGroupName = "rgps4504"
@@ -20,26 +20,26 @@ function Test-AzureRmDevSpacesController
     $referenceObject.Location = "eastus"
 
     #Create new dev spaces
-    $devSpaceController = New-AzureRmDevSpacesController -ResourceGroupName $resourceGroupName -Name $devSpacesName -TargetClusterName $kubeClusterName -TargetResourceGroupName $resourceGroupName
+    $devSpaceController = New-AzDevSpacesController -ResourceGroupName $resourceGroupName -Name $devSpacesName -TargetClusterName $kubeClusterName -TargetResourceGroupName $resourceGroupName
     Assert-AreEqualPSController $referenceObject $devSpaceController
 
     #Get dev spaces
-    $devSpaceController = Get-AzureRmDevSpacesController -ResourceGroupName $resourceGroupName -Name $devSpacesName
+    $devSpaceController = Get-AzDevSpacesController -ResourceGroupName $resourceGroupName -Name $devSpacesName
     Assert-AreEqualPSController $referenceObject $devSpaceController
 
     #update dev spaces
-    $devSpaceControllerUpdated = $devSpaceController | Update-AzureRmDevSpacesController -Tag @{ $tagKey=$tagValue}
+    $devSpaceControllerUpdated = $devSpaceController | Update-AzDevSpacesController -Tag @{ $tagKey=$tagValue}
     Assert-AreEqualPSController $referenceObject $devSpaceControllerUpdated
-    $tag = Get-AzureRmTag -Name $tagKey
+    $tag = Get-AzTag -Name $tagKey
     $tagValueExist = $tag.Values.Name -Contains $tagValue
     Assert-AreEqual "True" $tagValueExist
 
     #Delete Dev Spaces
-    $deletedAzureRmDevSpace = $devSpaceController | Remove-AzureRmDevSpacesController -PassThru
+    $deletedAzureRmDevSpace = $devSpaceController | Remove-AzDevSpacesController -PassThru
     Assert-AreEqual "True" $deletedAzureRmDevSpace
 
     #Get dev spaces to verify delete
-    $azureRmDevSpaces = Get-AzureRmDevSpacesController -ResourceGroupName $resourceGroupName
+    $azureRmDevSpaces = Get-AzDevSpacesController -ResourceGroupName $resourceGroupName
     Assert-Null $azureRmDevSpaces    
 }
 
@@ -64,17 +64,17 @@ function Test-TestAzureDevSpacesAsJobParameter
     $referenceObject.ProvisioningState = "Succeeded"
     $referenceObject.Location = "eastus"
 
-	$job = New-AzureRmDevSpacesController -ResourceGroupName $resourceGroupName -Name $devSpacesName -TargetClusterName $kubeClusterName -TargetResourceGroupName $resourceGroupName -AsJob
+	$job = New-AzDevSpacesController -ResourceGroupName $resourceGroupName -Name $devSpacesName -TargetClusterName $kubeClusterName -TargetResourceGroupName $resourceGroupName -AsJob
 	$job | Wait-Job
 	$devSpaceController = $job | Receive-Job
 	Assert-AreEqualPSController $referenceObject $devSpaceController
 
-	$deletedJob = $devSpaceController | Remove-AzureRmDevSpacesController -PassThru -AsJob
+	$deletedJob = $devSpaceController | Remove-AzDevSpacesController -PassThru -AsJob
 	$deletedJob | Wait-Job
 	$deletedAzureRmDevSpace = $deletedJob | Receive-Job
 	Assert-AreEqual "True" $deletedAzureRmDevSpace
 
     #Get dev spaces to verify delete
-    $azureRmDevSpaces = Get-AzureRmDevSpacesController -ResourceGroupName $resourceGroupName
+    $azureRmDevSpaces = Get-AzDevSpacesController -ResourceGroupName $resourceGroupName
     Assert-Null $azureRmDevSpaces
 }

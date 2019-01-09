@@ -2,7 +2,7 @@
 # before running this, you need to create a storage account, create a container,
 #    and upload some blobs into the container
 # note: this retrieves all of the blobs in the container in one command.
-#       connect Azure with Login-AzureRmAccount before you run the script.
+#       connect Azure with Login-AzAccount before you run the script.
 #       requests sent as part of this tool will incur transactional costs. 
 # command line usage: script.ps1 -ResourceGroup {YourResourceGroupName} -StorageAccountName {YourAccountName} -ContainerName {YourContainerName}
 #
@@ -18,7 +18,7 @@ param(
     [string]$ContainerName
 )
 
-#Set-StrictMode will cause Get-AzureStorageBlob returns result in different data types when there is only one blob
+#Set-StrictMode will cause Get-AzStorageBlob returns result in different data types when there is only one blob
 #Set-StrictMode -Version 2
 
 $VerbosePreference = "Continue"
@@ -203,10 +203,10 @@ function Get-ContainerBytes
     $MaxReturn = 5000
 
     do {
-        $Blobs = Get-AzureStorageBlob -Context $storageContext -Container $Container.Name -MaxCount $MaxReturn -ContinuationToken $Token
+        $Blobs = Get-AzStorageBlob -Context $storageContext -Container $Container.Name -MaxCount $MaxReturn -ContinuationToken $Token
         if($Blobs -eq $Null) { break }
 
-        #Set-StrictMode will cause Get-AzureStorageBlob returns result in different data types when there is only one blob
+        #Set-StrictMode will cause Get-AzStorageBlob returns result in different data types when there is only one blob
         if($Blobs.GetType().Name -eq "AzureStorageBlob")
         {
             $Token = $Null
@@ -232,9 +232,9 @@ function Get-ContainerBytes
     return @{ "containerSize" = $containerSizeInBytes; "blobCount" = $blobCount }
 }
 
-#Login-AzureRmAccount
+#Login-AzAccount
 
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $ResourceGroup -Name $StorageAccountName -ErrorAction SilentlyContinue
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $ResourceGroup -Name $StorageAccountName -ErrorAction SilentlyContinue
 if($storageAccount -eq $null)
 {
     throw "The storage account specified does not exist in this subscription."
@@ -256,12 +256,12 @@ if (-not ([System.Management.Automation.PSTypeName]'PageRange').Type)
 $containers = New-Object System.Collections.ArrayList
 if($ContainerName.Length -ne 0)
 {
-    $container = Get-AzureStorageContainer -Context $storageContext -Name $ContainerName -ErrorAction SilentlyContinue |
+    $container = Get-AzStorageContainer -Context $storageContext -Name $ContainerName -ErrorAction SilentlyContinue |
         ForEach-Object { $containers.Add($_) } | Out-Null
 }
 else
 {
-    Get-AzureStorageContainer -Context $storageContext | ForEach-Object { $containers.Add($_) } | Out-Null
+    Get-AzStorageContainer -Context $storageContext | ForEach-Object { $containers.Add($_) } | Out-Null
 }
 
 $sizeInBytes = 0

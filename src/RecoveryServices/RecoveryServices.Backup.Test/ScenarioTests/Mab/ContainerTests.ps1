@@ -14,15 +14,15 @@
 
 function Test-MabGetContainers
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
-	$containers = Get-AzureRmRecoveryServicesBackupContainer `
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
+	$containers = Get-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-ContainerType "Windows" `
 		-BackupManagementType "MARS";
 	
 	Assert-AreEqual $containers[0].FriendlyName "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
 
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer `
+	$namedContainer = Get-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-ContainerType "Windows" `
 		-BackupManagementType "MARS" `
@@ -32,17 +32,17 @@ function Test-MabGetContainers
 
 function Test-MabUnregisterContainer
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
 	
-	$container = Get-AzureRmRecoveryServicesBackupContainer `
+	$container = Get-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-ContainerType "Windows" `
 		-BackupManagementType "MARS" `
 		-FriendlyName "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
 	Assert-AreEqual $container.FriendlyName "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
 
-	Unregister-AzureRmRecoveryServicesBackupContainer -VaultId $vault.ID -Container $container;
-	$container = Get-AzureRmRecoveryServicesBackupContainer `
+	Unregister-AzRecoveryServicesBackupContainer -VaultId $vault.ID -Container $container;
+	$container = Get-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-ContainerType "Windows" `
 		-BackupManagementType "MARS" `

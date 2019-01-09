@@ -40,13 +40,13 @@ function Test-IotCentralAppLifecycleManagement{
 		# Test
 
 		# Create Resource Group
-		New-AzureRmResourceGroup -Name $rgname -Location $location
+		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Create App
-		$created = New-AzureRmIotCentralApp -ResourceGroupName $rgname -Name $rname -Subdomain $subdomain -Sku $sku -DisplayName $displayName -Tag $tags
-		$actual = Get-AzureRmIotCentralApp -ResourceGroupName $rgname -Name $rname
+		$created = New-AzIotCentralApp -ResourceGroupName $rgname -Name $rname -Subdomain $subdomain -Sku $sku -DisplayName $displayName -Tag $tags
+		$actual = Get-AzIotCentralApp -ResourceGroupName $rgname -Name $rname
 
-		$list = Get-AzureRmIotCentralApp -ResourceGroupName $rgname
+		$list = Get-AzIotCentralApp -ResourceGroupName $rgname
 	
 		# Assert
 		Assert-AreEqual $actual.Name $rname
@@ -60,8 +60,8 @@ function Test-IotCentralAppLifecycleManagement{
 		$rname1 = $rname
 		$rname2 = ($rname1) + "-2"
 
-		New-AzureRmIotCentralApp $rgname $rname2 $rname2
-		$list = Get-AzureRmIotCentralApp -ResourceGroupName $rgname
+		New-AzIotCentralApp $rgname $rname2 $rname2
+		$list = Get-AzIotCentralApp -ResourceGroupName $rgname
 		$app1 = $list | where {$_.Name -eq $rname1} | Select-Object -First 1
 		$app2 = $list | where {$_.Name -eq $rname2} | Select-Object -First 1
 
@@ -76,8 +76,8 @@ function Test-IotCentralAppLifecycleManagement{
 
 		# Test getting from empty group
 		$emptyrg = ($rgname) + "empty"
-		New-AzureRmResourceGroup -Name $emptyrg -Location $location
-		$listViaDirect = Get-AzureRmIotCentralApp -ResourceGroupName $emptyrg
+		New-AzResourceGroup -Name $emptyrg -Location $location
+		$listViaDirect = Get-AzIotCentralApp -ResourceGroupName $emptyrg
 
 		# Assert
 		Assert-AreEqual 0 @($listViaDirect).Count
@@ -92,11 +92,11 @@ function Test-IotCentralAppLifecycleManagement{
 		$tags = $actual.Tag
 		$tags.add($tt2, $tv2)
 		# Set resource
-		$job = Set-AzureRmIotCentralApp -ResourceGroupName $rgname -Name $rname -Tag $tags -DisplayName $displayName -AsJob
+		$job = Set-AzIotCentralApp -ResourceGroupName $rgname -Name $rname -Tag $tags -DisplayName $displayName -AsJob
 		$job | Wait-Job
 		$result = $job | Receive-Job
 
-		$actual = Get-AzureRmIotCentralApp -ResourceGroupName $rgname -Name $rname
+		$actual = Get-AzIotCentralApp -ResourceGroupName $rgname -Name $rname
 
 		# Assert
 		Assert-AreEqual $actual.Tag.Count 2
@@ -107,15 +107,15 @@ function Test-IotCentralAppLifecycleManagement{
 		Assert-AreEqual $actual.Name $rname
 
 		# Delete
-		# $job = Find-AzureRmResource -ResourceType $resourceType -ResourceGroupNameEquals $rgname | Get-AzureRmIotCentralApp | Remove-AzureRmIotCentralApp -AsJob
+		# $job = Find-AzResource -ResourceType $resourceType -ResourceGroupNameEquals $rgname | Get-AzIotCentralApp | Remove-AzIotCentralApp -AsJob
 		# $job | Wait-Job
-		Get-AzureRmIotCentralApp -ResourceGroupName $rgname | Remove-AzureRmIotCentralApp
+		Get-AzIotCentralApp -ResourceGroupName $rgname | Remove-AzIotCentralApp
 
-		$list = Get-AzureRmIotCentralApp -ResourceGroupName $rgname
+		$list = Get-AzIotCentralApp -ResourceGroupName $rgname
 		Assert-AreEqual 0 @($list).Count
 	}
 	finally{
 		# Clean up
-		# Remove-AzureRmResourceGroup -Name $rgname -Force
+		# Remove-AzResourceGroup -Name $rgname -Force
 	}
 }

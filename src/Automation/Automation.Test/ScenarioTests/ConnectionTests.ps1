@@ -20,7 +20,7 @@ function Test-E2EConnections
 {
     $resourceGroupName = "to-delete-01"
     $automationAccountName = "fbs-aa-01"
-    $output = Get-AzureRmAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
+    $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
     $connectionAssetName = "CreateNewAzureServicePrincipalConnection"
     $connectionTypeName = "AzureServicePrincipal"
     $applicationId = "applicationIdString"
@@ -33,13 +33,13 @@ function Test-E2EConnections
                                "CertificateThumbprint" = $thumbprint; `
                                "SubscriptionId" = $subscriptionId}
 
-    $connectionAssetCreated = New-AzureRmAutomationConnection -ResourceGroupName $resourceGroupName `
+    $connectionAssetCreated = New-AzAutomationConnection -ResourceGroupName $resourceGroupName `
                                                               -AutomationAccountName $automationAccountName `
                                                               -Name $connectionAssetName `
                                                               -ConnectionTypeName $connectionTypeName `
                                                               -ConnectionFieldValues $connectionFieldValues
 
-    $getConnectionAssetCreated = Get-AzureRmAutomationConnection -ResourceGroupName $resourceGroupName `
+    $getConnectionAssetCreated = Get-AzAutomationConnection -ResourceGroupName $resourceGroupName `
                                                                  -AutomationAccountName $automationAccountName `
                                                                  -Name $connectionAssetName
 
@@ -50,12 +50,12 @@ function Test-E2EConnections
     Assert-AreEqual $thumbprint.ToString() $getConnectionAssetCreated.FieldDefinitionValues.Item("CertificateThumbprint")
     Assert-AreEqual $subscriptionId.ToString() $getConnectionAssetCreated.FieldDefinitionValues.Item("SubscriptionId")
 
-    Remove-AzureRmAutomationConnection -Name $connectionAssetName `
+    Remove-AzAutomationConnection -Name $connectionAssetName `
                                        -ResourceGroupName $resourceGroupName `
                                        -AutomationAccountName $automationAccountName `
                                        -Force
 
-    $output = Get-AzureRmAutomationConnection -ResourceGroupName $resourceGroupName `
+    $output = Get-AzAutomationConnection -ResourceGroupName $resourceGroupName `
                                               -AutomationAccountName $automationAccountName `
                                               -Name $connectionAssetName -ErrorAction SilentlyContinue
 

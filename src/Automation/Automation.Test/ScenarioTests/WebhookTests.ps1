@@ -21,8 +21,8 @@ function Create-PublishedRunbook {
 
     $runbookScriptFile = ".\RunbookFile.ps1"
     Set-Content -Path $runbookScriptFile -Value $RunbookScript
-    Import-AzureRmAutomationRunbook -ResourceGroupName $script:ResourceGroupName -AutomationAccountName $script:AutomationAccountName -Name $Name -Type PowerShell -Path $runbookScriptFile
-    Publish-AzureRmAutomationRunbook -ResourceGroupName $script:ResourceGroupName -AutomationAccountName $script:AutomationAccountName -Name $Name
+    Import-AzAutomationRunbook -ResourceGroupName $script:ResourceGroupName -AutomationAccountName $script:AutomationAccountName -Name $Name -Type PowerShell -Path $runbookScriptFile
+    Publish-AzAutomationRunbook -ResourceGroupName $script:ResourceGroupName -AutomationAccountName $script:AutomationAccountName -Name $Name
     Remove-Item $runbookScriptFile -ErrorAction SilentlyContinue
 }
 
@@ -50,16 +50,16 @@ function Initialize-TestEnvironment {
 
 function Remove-TestEnvironment {
     # Removes things in the reverse order of initialize
-    $runbook = Get-AzureRmAutomationRunbook -ResourceGroupName $script:ResourceGroupName -AutomationAccountName $script:AutomationAccountName -Name $script:TestRunbookTwoParamsName -ErrorAction SilentlyContinue
+    $runbook = Get-AzAutomationRunbook -ResourceGroupName $script:ResourceGroupName -AutomationAccountName $script:AutomationAccountName -Name $script:TestRunbookTwoParamsName -ErrorAction SilentlyContinue
     if ($null -ne $runbook)
     {
-        $runbook | Remove-AzureRmAutomationRunbook -Force
+        $runbook | Remove-AzAutomationRunbook -Force
     }
 
-    $runbook = Get-AzureRmAutomationRunbook -ResourceGroupName $script:ResourceGroupName -AutomationAccountName $script:AutomationAccountName -Name $script:TestRunbookName -ErrorAction SilentlyContinue
+    $runbook = Get-AzAutomationRunbook -ResourceGroupName $script:ResourceGroupName -AutomationAccountName $script:AutomationAccountName -Name $script:TestRunbookName -ErrorAction SilentlyContinue
     if ($null -ne $runbook)
     {
-        $runbook | Remove-AzureRmAutomationRunbook -Force
+        $runbook | Remove-AzAutomationRunbook -Force
     }
 }
 
@@ -89,7 +89,7 @@ function Test-BasicCrud {
     
         Initialize-TestEnvironment
 
-        $wh = New-AzureRmAutomationWebhook `
+        $wh = New-AzAutomationWebhook `
             -AutomationAccountName $script:AutomationAccountName `
             -ResourceGroupName $script:ResourceGroupName `
             -RunbookName $script:TestRunbookName `
@@ -104,7 +104,7 @@ function Test-BasicCrud {
         Assert-AreEqual $wh.Name $testWebhookName
         Assert-True { $wh.WebhookURI -match ".azure-automation.net/webhooks\?token=" }
 
-        $getWebhook = Get-AzureRmAutomationWebhook `
+        $getWebhook = Get-AzAutomationWebhook `
             -AutomationAccountName $script:AutomationAccountName `
             -ResourceGroupName $script:ResourceGroupName `
             -Name $testWebhookName
@@ -112,7 +112,7 @@ function Test-BasicCrud {
         Compare-ImmutableProperties $getWebhook $wh
         Assert-AreEqual $getWebhook.IsEnabled $wh.IsEnabled
         
-        $setWebhook = Set-AzureRmAutomationWebhook `
+        $setWebhook = Set-AzAutomationWebhook `
             -AutomationAccountName $script:AutomationAccountName `
             -ResourceGroupName $script:ResourceGroupName `
             -Name $testWebhookName `
@@ -121,12 +121,12 @@ function Test-BasicCrud {
         Compare-ImmutableProperties $setWebhook $wh
         Assert-True { $setWebhook.IsEnabled } # The value that was changed!
         
-        Remove-AzureRmAutomationWebhook `
+        Remove-AzAutomationWebhook `
             -AutomationAccountName $script:AutomationAccountName `
             -ResourceGroupName $script:ResourceGroupName `
             -Name $testWebhookName
 
-        $getWebhook = Get-AzureRmAutomationWebhook `
+        $getWebhook = Get-AzAutomationWebhook `
             -AutomationAccountName $script:AutomationAccountName `
             -ResourceGroupName $script:ResourceGroupName `
             -Name $testWebhookName `
@@ -135,14 +135,14 @@ function Test-BasicCrud {
         Assert-Null $getWebhook
     }
     finally {
-        $webhook = Get-AzureRmAutomationWebhook `
+        $webhook = Get-AzAutomationWebhook `
             -AutomationAccountName $script:AutomationAccountName `
             -ResourceGroupName $script:ResourceGroupName `
             -Name $testWebhookName `
             -ErrorAction SilentlyContinue
 
         if ($webhook) {
-            Remove-AzureRmAutomationWebhook `
+            Remove-AzAutomationWebhook `
                 -AutomationAccountName $script:AutomationAccountName `
                 -ResourceGroupName $script:ResourceGroupName `
                 -Name $testWebhookName `
@@ -162,7 +162,7 @@ function Test-NewWithParameters {
 
         Initialize-TestEnvironment
 
-        $wh = New-AzureRmAutomationWebhook `
+        $wh = New-AzAutomationWebhook `
             -AutomationAccountName $script:AutomationAccountName `
             -ResourceGroupName $script:ResourceGroupName `
             -RunbookName $script:TestRunbookTwoParamsName `
@@ -178,7 +178,7 @@ function Test-NewWithParameters {
         Assert-AreEqual $wh.Name $testWebhookName
         Assert-True { $wh.WebhookURI -match ".azure-automation.net/webhooks\?token=" }
 
-        $getWebhook = Get-AzureRmAutomationWebhook `
+        $getWebhook = Get-AzAutomationWebhook `
             -AutomationAccountName $script:AutomationAccountName `
             -ResourceGroupName $script:ResourceGroupName `
             -Name $testWebhookName
@@ -190,14 +190,14 @@ function Test-NewWithParameters {
         Assert-AreEqual $getWebhook.Parameters["Second"] 1337
     }
     finally {
-        $webhook = Get-AzureRmAutomationWebhook `
+        $webhook = Get-AzAutomationWebhook `
             -AutomationAccountName $script:AutomationAccountName `
             -ResourceGroupName $script:ResourceGroupName `
             -Name $testWebhookName `
             -ErrorAction SilentlyContinue
 
         if ($webhook) {
-            Remove-AzureRmAutomationWebhook `
+            Remove-AzAutomationWebhook `
                 -AutomationAccountName $script:AutomationAccountName `
                 -ResourceGroupName $script:ResourceGroupName `
                 -Name $testWebhookName `
@@ -218,7 +218,7 @@ function Test-NewFailureParams {
         Initialize-TestEnvironment
 
         try {
-            $wh = New-AzureRmAutomationWebhook `
+            $wh = New-AzAutomationWebhook `
                 -AutomationAccountName $script:AutomationAccountName `
                 -ResourceGroupName $script:ResourceGroupName `
                 -RunbookName $script:TestRunbookTwoParamsName `
@@ -237,14 +237,14 @@ function Test-NewFailureParams {
         }
     }
     finally {
-        $webhook = Get-AzureRmAutomationWebhook `
+        $webhook = Get-AzAutomationWebhook `
             -AutomationAccountName $script:AutomationAccountName `
             -ResourceGroupName $script:ResourceGroupName `
             -Name $testWebhookName `
             -ErrorAction SilentlyContinue
 
         if ($webhook) {
-            Remove-AzureRmAutomationWebhook `
+            Remove-AzAutomationWebhook `
                 -AutomationAccountName $script:AutomationAccountName `
                 -ResourceGroupName $script:ResourceGroupName `
                 -Name $testWebhookName `
@@ -264,7 +264,7 @@ function Test-GetSuccessScenarios {
 
         Initialize-TestEnvironment
 
-        $webhook = New-AzureRmAutomationWebhook `
+        $webhook = New-AzAutomationWebhook `
             -AutomationAccountName $script:AutomationAccountName `
             -ResourceGroupName $script:ResourceGroupName `
             -RunbookName $script:TestRunbookTwoParamsName `
@@ -275,7 +275,7 @@ function Test-GetSuccessScenarios {
             -Force
 
         # Test: Get Returns a Webhook By Name
-        $results = Get-AzureRmAutomationWebhook `
+        $results = Get-AzAutomationWebhook `
             -AutomationAccountName $script:AutomationAccountName `
             -ResourceGroupName $script:ResourceGroupName `
             -Name $testWebhookName
@@ -288,7 +288,7 @@ function Test-GetSuccessScenarios {
         Assert-AreEqual $results[0].Parameters.Count 2
 
         # Test: Get Returns a Webhook By ResourceGroupName
-        $results = Get-AzureRmAutomationWebhook `
+        $results = Get-AzAutomationWebhook `
             -AutomationAccountName $script:AutomationAccountName `
             -ResourceGroupName $script:ResourceGroupName
 
@@ -299,7 +299,7 @@ function Test-GetSuccessScenarios {
         Assert-AreEqual $results[0].RunbookName $script:TestRunbookTwoParamsName
 
         # Test: Get Returns a Webhook By RunbookName
-        $results = Get-AzureRmAutomationWebhook `
+        $results = Get-AzAutomationWebhook `
             -AutomationAccountName $script:AutomationAccountName `
             -ResourceGroupName $script:ResourceGroupName `
             -RunbookName $script:TestRunbookTwoParamsName
@@ -311,14 +311,14 @@ function Test-GetSuccessScenarios {
         Assert-AreEqual $results[0].RunbookName $script:TestRunbookTwoParamsName
     }
     finally {
-        $webhook = Get-AzureRmAutomationWebhook `
+        $webhook = Get-AzAutomationWebhook `
             -AutomationAccountName $script:AutomationAccountName `
             -ResourceGroupName $script:ResourceGroupName `
             -Name $testWebhookName `
             -ErrorAction SilentlyContinue
 
         if ($webhook) {
-            Remove-AzureRmAutomationWebhook `
+            Remove-AzAutomationWebhook `
                 -AutomationAccountName $script:AutomationAccountName `
                 -ResourceGroupName $script:ResourceGroupName `
                 -Name $testWebhookName `
@@ -335,7 +335,7 @@ Test-GetFailureScenarios
 function Test-GetFailureScenarios {
     # Test: Get Throws for Non-Existant Webhook By ResourceGroupName
     try {
-        $results = Get-AzureRmAutomationWebhook `
+        $results = Get-AzAutomationWebhook `
             -ResourceGroupName "DoesntExistWebhookRG" `
             -AutomationAccountName $script:AutomationAccountName `
             -ErrorAction Stop # Get operations throw non-terminating errors. This parameter makes it easier to evaluate
@@ -349,7 +349,7 @@ function Test-GetFailureScenarios {
 
     # Test: Get Throws for Non-Existant Webhook By Name
     try {
-        $results = Get-AzureRmAutomationWebhook `
+        $results = Get-AzAutomationWebhook `
             -Name "DoesntExistWebhook" `
             -ResourceGroupName $script:ResourceGroupName `
             -AutomationAccountName $script:AutomationAccountName `
@@ -364,7 +364,7 @@ function Test-GetFailureScenarios {
 
     # Test: Get Returns Zero Results for Non-Existant Webhook By RunbookName
     try {
-        $results = Get-AzureRmAutomationWebhook `
+        $results = Get-AzAutomationWebhook `
             -RunbookName "DoesntExistWebhookRunbook" `
             -ResourceGroupName $script:ResourceGroupName `
             -AutomationAccountName $script:AutomationAccountName `

@@ -16,9 +16,9 @@
 .SYNOPSIS
 Get security auto provisioning settings on a subscription
 #>
-function Get-AzureRmSecurityAutoProvisioningSetting-SubscriptionScope
+function Get-AzSecurityAutoProvisioningSetting-SubscriptionScope
 {
-    $autoProvisioningSettings = Get-AzureRmSecurityAutoProvisioningSetting
+    $autoProvisioningSettings = Get-AzSecurityAutoProvisioningSetting
 	Validate-AutoProvisioningSettings $autoProvisioningSettings
 }
 
@@ -26,9 +26,9 @@ function Get-AzureRmSecurityAutoProvisioningSetting-SubscriptionScope
 .SYNOPSIS
 Get a security auto provisioning setting
 #>
-function Get-AzureRmSecurityAutoProvisioningSetting-SubscriptionLevelResource
+function Get-AzSecurityAutoProvisioningSetting-SubscriptionLevelResource
 {
-    $autoProvisioningSettings = Get-AzureRmSecurityAutoProvisioningSetting -Name "default"
+    $autoProvisioningSettings = Get-AzSecurityAutoProvisioningSetting -Name "default"
 	Validate-AutoProvisioningSettings $autoProvisioningSettings
 }
 
@@ -36,11 +36,11 @@ function Get-AzureRmSecurityAutoProvisioningSetting-SubscriptionLevelResource
 .SYNOPSIS
 Get security auto provisioning setting by a resource ID
 #>
-function Get-AzureRmSecurityAutoProvisioningSetting-ResourceId
+function Get-AzSecurityAutoProvisioningSetting-ResourceId
 {
-	$autoProvisioningSetting = Get-AzureRmSecurityAutoProvisioningSetting | Select -First 1
+	$autoProvisioningSetting = Get-AzSecurityAutoProvisioningSetting | Select -First 1
 
-    $fetchedAutoProvisioningSetting = Get-AzureRmSecurityAutoProvisioningSetting -ResourceId $autoProvisioningSetting.Id
+    $fetchedAutoProvisioningSetting = Get-AzSecurityAutoProvisioningSetting -ResourceId $autoProvisioningSetting.Id
 	Validate-AutoProvisioningSetting $autoProvisioningSetting
 }
 
@@ -48,19 +48,19 @@ function Get-AzureRmSecurityAutoProvisioningSetting-ResourceId
 .SYNOPSIS
 Set security auto provisioning setting
 #>
-function Set-AzureRmSecurityAutoProvisioningSetting-SubscriptionLevelResource
+function Set-AzSecurityAutoProvisioningSetting-SubscriptionLevelResource
 {
-    Set-AzureRmSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
+    Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
 }
 
 <#
 .SYNOPSIS
 Set security auto provisioning setting by resource ID
 #>
-function Set-AzureRmSecurityAutoProvisioningSetting-ResourceId
+function Set-AzSecurityAutoProvisioningSetting-ResourceId
 {
-	$autoProvisioningSetting = Get-AzureRmSecurityAutoProvisioningSetting | Select -First 1
-    Set-AzureRmSecurityAutoProvisioningSetting -ResourceId $autoProvisioningSetting.Id -EnableAutoProvision
+	$autoProvisioningSetting = Get-AzSecurityAutoProvisioningSetting | Select -First 1
+    Set-AzSecurityAutoProvisioningSetting -ResourceId $autoProvisioningSetting.Id -EnableAutoProvision
 }
 
 <#

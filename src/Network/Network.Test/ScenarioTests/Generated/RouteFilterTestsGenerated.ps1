@@ -50,34 +50,34 @@ function Test-RouteFilterCRUDMinimalParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create RouteFilter
-        $vRouteFilter = New-AzureRmRouteFilter -ResourceGroupName $rgname -Name $rname -Location $location;
+        $vRouteFilter = New-AzRouteFilter -ResourceGroupName $rgname -Name $rname -Location $location;
         Assert-NotNull $vRouteFilter;
-        Assert-True { Check-CmdletReturnType "New-AzureRmRouteFilter" $vRouteFilter };
+        Assert-True { Check-CmdletReturnType "New-AzRouteFilter" $vRouteFilter };
         Assert-AreEqual $rname $vRouteFilter.Name;
 
         # Get RouteFilter
-        $vRouteFilter = Get-AzureRmRouteFilter -ResourceGroupName $rgname -Name $rname;
+        $vRouteFilter = Get-AzRouteFilter -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vRouteFilter;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmRouteFilter" $vRouteFilter };
+        Assert-True { Check-CmdletReturnType "Get-AzRouteFilter" $vRouteFilter };
         Assert-AreEqual $rname $vRouteFilter.Name;
 
         # Get all RouteFilters in resource group
-        $listRouteFilter = Get-AzureRmRouteFilter -ResourceGroupName $rgname;
+        $listRouteFilter = Get-AzRouteFilter -ResourceGroupName $rgname;
         Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all RouteFilters in subscription
-        $listRouteFilter = Get-AzureRmRouteFilter;
+        $listRouteFilter = Get-AzRouteFilter;
         Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove RouteFilter
-        $removeRouteFilter = Remove-AzureRmRouteFilter -ResourceGroupName $rgname -Name $rname -PassThru -Force;
+        $removeRouteFilter = Remove-AzRouteFilter -ResourceGroupName $rgname -Name $rname -PassThru -Force;
         Assert-AreEqual $true $removeRouteFilter;
 
         # Get RouteFilter should fail
-        Assert-ThrowsContains { Get-AzureRmRouteFilter -ResourceGroupName $rgname -Name $rname } "not found";
+        Assert-ThrowsContains { Get-AzRouteFilter -ResourceGroupName $rgname -Name $rname } "not found";
     }
     finally
     {
@@ -104,59 +104,59 @@ function Test-RouteFilterCRUDAllParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create RouteFilter
-        $vRouteFilter = New-AzureRmRouteFilter -ResourceGroupName $rgname -Name $rname -Location $location -Tag $Tag;
+        $vRouteFilter = New-AzRouteFilter -ResourceGroupName $rgname -Name $rname -Location $location -Tag $Tag;
         Assert-NotNull $vRouteFilter;
-        Assert-True { Check-CmdletReturnType "New-AzureRmRouteFilter" $vRouteFilter };
+        Assert-True { Check-CmdletReturnType "New-AzRouteFilter" $vRouteFilter };
         Assert-AreEqual $rname $vRouteFilter.Name;
         Assert-AreEqualObjectProperties $Tag $vRouteFilter.Tag;
 
         # Get RouteFilter
-        $vRouteFilter = Get-AzureRmRouteFilter -ResourceGroupName $rgname -Name $rname;
+        $vRouteFilter = Get-AzRouteFilter -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vRouteFilter;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmRouteFilter" $vRouteFilter };
+        Assert-True { Check-CmdletReturnType "Get-AzRouteFilter" $vRouteFilter };
         Assert-AreEqual $rname $vRouteFilter.Name;
         Assert-AreEqualObjectProperties $Tag $vRouteFilter.Tag;
 
         # Get all RouteFilters in resource group
-        $listRouteFilter = Get-AzureRmRouteFilter -ResourceGroupName $rgname;
+        $listRouteFilter = Get-AzRouteFilter -ResourceGroupName $rgname;
         Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all RouteFilters in subscription
-        $listRouteFilter = Get-AzureRmRouteFilter;
+        $listRouteFilter = Get-AzRouteFilter;
         Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Set RouteFilter
         $vRouteFilter.Tag = $TagSet;
-        $vRouteFilter = Set-AzureRmRouteFilter -RouteFilter $vRouteFilter -Force;
+        $vRouteFilter = Set-AzRouteFilter -RouteFilter $vRouteFilter -Force;
         Assert-NotNull $vRouteFilter;
-        Assert-True { Check-CmdletReturnType "Set-AzureRmRouteFilter" $vRouteFilter };
+        Assert-True { Check-CmdletReturnType "Set-AzRouteFilter" $vRouteFilter };
         Assert-AreEqual $rname $vRouteFilter.Name;
         Assert-AreEqualObjectProperties $TagSet $vRouteFilter.Tag;
 
         # Get RouteFilter
-        $vRouteFilter = Get-AzureRmRouteFilter -ResourceGroupName $rgname -Name $rname;
+        $vRouteFilter = Get-AzRouteFilter -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vRouteFilter;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmRouteFilter" $vRouteFilter };
+        Assert-True { Check-CmdletReturnType "Get-AzRouteFilter" $vRouteFilter };
         Assert-AreEqual $rname $vRouteFilter.Name;
         Assert-AreEqualObjectProperties $TagSet $vRouteFilter.Tag;
 
         # Get all RouteFilters in resource group
-        $listRouteFilter = Get-AzureRmRouteFilter -ResourceGroupName $rgname;
+        $listRouteFilter = Get-AzRouteFilter -ResourceGroupName $rgname;
         Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all RouteFilters in subscription
-        $listRouteFilter = Get-AzureRmRouteFilter;
+        $listRouteFilter = Get-AzRouteFilter;
         Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove RouteFilter
-        $removeRouteFilter = Remove-AzureRmRouteFilter -ResourceGroupName $rgname -Name $rname -PassThru -Force;
+        $removeRouteFilter = Remove-AzRouteFilter -ResourceGroupName $rgname -Name $rname -PassThru -Force;
         Assert-AreEqual $true $removeRouteFilter;
 
         # Get RouteFilter should fail
-        Assert-ThrowsContains { Get-AzureRmRouteFilter -ResourceGroupName $rgname -Name $rname } "not found";
+        Assert-ThrowsContains { Get-AzRouteFilter -ResourceGroupName $rgname -Name $rname } "not found";
     }
     finally
     {
@@ -188,65 +188,65 @@ function Test-RouteFilterRuleCRUDMinimalParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create parent resource
-        $vRouteFilter = New-AzureRmRouteFilter -ResourceGroupName $rgname -Name $rname -Location $location;
+        $vRouteFilter = New-AzRouteFilter -ResourceGroupName $rgname -Name $rname -Location $location;
         Assert-NotNull $vRouteFilter;
 
         # Add RouteFilterRule
-        $vRouteFilter = Add-AzureRmRouteFilterRuleConfig -Name $rnameAdd -RouteFilter $vRouteFilter -Access $AccessAdd -RouteFilterRuleType $RouteFilterRuleTypeAdd -CommunityList $CommunityListAdd -Force;
+        $vRouteFilter = Add-AzRouteFilterRuleConfig -Name $rnameAdd -RouteFilter $vRouteFilter -Access $AccessAdd -RouteFilterRuleType $RouteFilterRuleTypeAdd -CommunityList $CommunityListAdd -Force;
         Assert-NotNull $vRouteFilter;
-        $vRouteFilter = Set-AzureRmRouteFilter -RouteFilter $vRouteFilter -Force;
+        $vRouteFilter = Set-AzRouteFilter -RouteFilter $vRouteFilter -Force;
         Assert-NotNull $vRouteFilter;
 
         # Get RouteFilterRule
-        $vRouteFilterRule = Get-AzureRmRouteFilterRuleConfig -RouteFilter $vRouteFilter -Name $rnameAdd;
+        $vRouteFilterRule = Get-AzRouteFilterRuleConfig -RouteFilter $vRouteFilter -Name $rnameAdd;
         Assert-NotNull $vRouteFilterRule;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmRouteFilterRuleConfig" $vRouteFilterRule };
+        Assert-True { Check-CmdletReturnType "Get-AzRouteFilterRuleConfig" $vRouteFilterRule };
         Assert-AreEqual $rnameAdd $vRouteFilterRule.Name;
         Assert-AreEqual $AccessAdd $vRouteFilterRule.Access;
         Assert-AreEqualArray $CommunityListAdd $vRouteFilterRule.Communities;
 
         # Get all RouteFilter's RouteFilterRules
-        $listRouteFilterRule = Get-AzureRmRouteFilterRuleConfig -RouteFilter $vRouteFilter;
+        $listRouteFilterRule = Get-AzRouteFilterRuleConfig -RouteFilter $vRouteFilter;
         Assert-NotNull ($listRouteFilterRule | Where-Object { $_.Name -eq $rnameAdd });
 
         # Try Add again
-        Assert-ThrowsContains { Add-AzureRmRouteFilterRuleConfig -Name $rnameAdd -RouteFilter $vRouteFilter -Access $AccessAdd -RouteFilterRuleType $RouteFilterRuleTypeAdd -CommunityList $CommunityListAdd -Force } "already exists";
+        Assert-ThrowsContains { Add-AzRouteFilterRuleConfig -Name $rnameAdd -RouteFilter $vRouteFilter -Access $AccessAdd -RouteFilterRuleType $RouteFilterRuleTypeAdd -CommunityList $CommunityListAdd -Force } "already exists";
 
         # Set RouteFilterRule
-        $vRouteFilter = Set-AzureRmRouteFilterRuleConfig -Name $rnameAdd -RouteFilter $vRouteFilter -Access $AccessSet -RouteFilterRuleType $RouteFilterRuleTypeSet -CommunityList $CommunityListSet -Force;
+        $vRouteFilter = Set-AzRouteFilterRuleConfig -Name $rnameAdd -RouteFilter $vRouteFilter -Access $AccessSet -RouteFilterRuleType $RouteFilterRuleTypeSet -CommunityList $CommunityListSet -Force;
         Assert-NotNull $vRouteFilter;
-        $vRouteFilter = Set-AzureRmRouteFilter -RouteFilter $vRouteFilter -Force;
+        $vRouteFilter = Set-AzRouteFilter -RouteFilter $vRouteFilter -Force;
         Assert-NotNull $vRouteFilter;
 
         # Get RouteFilterRule
-        $vRouteFilterRule = Get-AzureRmRouteFilterRuleConfig -RouteFilter $vRouteFilter -Name $rnameAdd;
+        $vRouteFilterRule = Get-AzRouteFilterRuleConfig -RouteFilter $vRouteFilter -Name $rnameAdd;
         Assert-NotNull $vRouteFilterRule;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmRouteFilterRuleConfig" $vRouteFilterRule };
+        Assert-True { Check-CmdletReturnType "Get-AzRouteFilterRuleConfig" $vRouteFilterRule };
         Assert-AreEqual $rnameAdd $vRouteFilterRule.Name;
         Assert-AreEqual $AccessSet $vRouteFilterRule.Access;
         Assert-AreEqualArray $CommunityListSet $vRouteFilterRule.Communities;
 
         # Get all RouteFilter's RouteFilterRules
-        $listRouteFilterRule = Get-AzureRmRouteFilterRuleConfig -RouteFilter $vRouteFilter;
+        $listRouteFilterRule = Get-AzRouteFilterRuleConfig -RouteFilter $vRouteFilter;
         Assert-NotNull ($listRouteFilterRule | Where-Object { $_.Name -eq $rnameAdd });
 
         # Remove RouteFilterRule
-        $vRouteFilter = Remove-AzureRmRouteFilterRuleConfig -RouteFilter $vRouteFilter -Name $rnameAdd -Force;
-        $vRouteFilter = Remove-AzureRmRouteFilterRuleConfig -RouteFilter $vRouteFilter -Name $rname -Force;
+        $vRouteFilter = Remove-AzRouteFilterRuleConfig -RouteFilter $vRouteFilter -Name $rnameAdd -Force;
+        $vRouteFilter = Remove-AzRouteFilterRuleConfig -RouteFilter $vRouteFilter -Name $rname -Force;
         # Additional call to test handling of already deleted child resource
-        $vRouteFilter = Remove-AzureRmRouteFilterRuleConfig -RouteFilter $vRouteFilter -Name $rname -Force;
+        $vRouteFilter = Remove-AzRouteFilterRuleConfig -RouteFilter $vRouteFilter -Name $rname -Force;
         # Update parent resource
-        $vRouteFilter = Set-AzureRmRouteFilter -RouteFilter $vRouteFilter -Force;
+        $vRouteFilter = Set-AzRouteFilter -RouteFilter $vRouteFilter -Force;
         Assert-NotNull $vRouteFilter;
 
         # Get RouteFilterRule should fail
-        Assert-ThrowsContains { Get-AzureRmRouteFilterRuleConfig -RouteFilter $vRouteFilter -Name $rnameAdd } "Sequence contains no matching element";
+        Assert-ThrowsContains { Get-AzRouteFilterRuleConfig -RouteFilter $vRouteFilter -Name $rnameAdd } "Sequence contains no matching element";
 
         # Set RouteFilterRule should fail
-        Assert-ThrowsContains { Set-AzureRmRouteFilterRuleConfig -Name $rnameAdd -RouteFilter $vRouteFilter -Access $AccessSet -RouteFilterRuleType $RouteFilterRuleTypeSet -CommunityList $CommunityListSet -Force } "does not exist";
+        Assert-ThrowsContains { Set-AzRouteFilterRuleConfig -Name $rnameAdd -RouteFilter $vRouteFilter -Access $AccessSet -RouteFilterRuleType $RouteFilterRuleTypeSet -CommunityList $CommunityListSet -Force } "does not exist";
     }
     finally
     {

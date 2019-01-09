@@ -58,7 +58,7 @@ function SetupTest([String] $ResourceGroupName, [String] $Location = "East US 2"
 {
     Write-Debug "Create resource group"
     Write-Debug " Resource Group Name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location -Force
+    New-AzResourceGroup -Name $ResourceGroupName -Location $Location -Force
 }
 
 <#
@@ -74,10 +74,10 @@ function TeardownTest([String] $ResourceGroupName, [String] $ManagedByResourceGr
 
     Write-Debug "Delete resource group"
     Write-Debug " Resource Group Name : $ResourceGroupName"
-    Remove-AzureRmResourceGroup -Name $ResourceGroupName -Force
+    Remove-AzResourceGroup -Name $ResourceGroupName -Force
 
 	Write-Debug "Deleting managed by resource group: $ManagedByResourceGroupName"
-	Remove-AzureRmResourceGroup -Name $ManagedByResourceGroupName -Force
+	Remove-AzResourceGroup -Name $ManagedByResourceGroupName -Force
 }
 
 <#
@@ -96,7 +96,7 @@ Gets the managed by resource group name
 #>
 function GetManagedByResourceGroupName([String] $ResourceGroupName)
 {
-	$cluster = Get-AzureRmMlOpCluster -ResourceGroupName $ResourceGroupName
+	$cluster = Get-AzMlOpCluster -ResourceGroupName $ResourceGroupName
 	$success = $cluster.StorageAccount.ResourceId -match "$ResourceGroupName-azureml-\w{5}"
 	$managedByResourceGroupName = $matches[0]
 	return $managedByResourceGroupName
@@ -115,7 +115,7 @@ function Test-NewGetRemove
     SetupTest $resourceGroupName
 
     # Create the cluster
-    $result = New-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location "East US 2" `
+    $result = New-AzMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location "East US 2" `
 		-ClusterType "ACS" -Description "Powershell test cluster" -OrchestratorType "Kubernetes" `
 		-ClientId "00000000-0000-0000-0000-000000000000" -Secret "abcde" `
 		-MasterCount 1 -AgentCount 2 -AgentVmSize Standard_D3_v2
@@ -123,12 +123,12 @@ function Test-NewGetRemove
     Assert-True { $result.ProvisioningState -eq "Succeeded" }
 
     # Get the cluster
-    $result = Get-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+    $result = Get-AzMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 
     Assert-True { $result.ProvisioningState -eq "Succeeded" }
 
     # Get the cluster by resource group name
-    $result = Get-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName
+    $result = Get-AzMlOpCluster -ResourceGroupName $resourceGroupName
 
     Assert-NotNull { $result }
     $clusterExists = $False
@@ -144,7 +144,7 @@ function Test-NewGetRemove
     Assert-True { $clusterExists }
 
     # Get the cluster by listing the clusters in the subscription
-    $result = Get-AzureRmMlOpCluster
+    $result = Get-AzMlOpCluster
 
     $clusterExists = $False
 
@@ -162,9 +162,9 @@ function Test-NewGetRemove
 	$managedByResourceGroupName = GetManagedByResourceGroupName -ResourceGroupName $resourceGroupName
 
     # Remove the cluster
-    Get-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName | Remove-AzureRmMlOpCluster
+    Get-AzMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName | Remove-AzMlOpCluster
 
-    Assert-ThrowsContains { Get-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
+    Assert-ThrowsContains { Get-AzMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
     # Cleanup
     TeardownTest -ResourceGroupName $resourceGroupName -ManagedByResourceGroupName $managedByResourceGroupName
@@ -184,12 +184,12 @@ function Test-GetKeys
 
     # Create the cluster
     $cluster = GetDefaultClusterProperties
-    $result = New-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Cluster $cluster
+    $result = New-AzMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Cluster $cluster
 
     Assert-True { $result.ProvisioningState -eq "Succeeded" }
 
     # Get the keys
-    $keys = Get-AzureRmMlOpClusterKey -ResourceGroupName $resourceGroupName -Name $clusterName
+    $keys = Get-AzMlOpClusterKey -ResourceGroupName $resourceGroupName -Name $clusterName
 
     Assert-NotNull { $keys.StorageAccount.ResourceId }
     Assert-NotNull { $keys.StorageAccount.PrimaryKey }
@@ -207,7 +207,7 @@ function Test-GetKeys
     Assert-NotNull { $keys.AppInsights.InstrumentationKey }
 
     # Get the keys - pipelining
-    $keys = Get-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName | Get-AzureRmMlOpClusterKey
+    $keys = Get-AzMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName | Get-AzMlOpClusterKey
 
     Assert-NotNull { $keys.StorageAccount.ResourceId }
     Assert-NotNull { $keys.StorageAccount.PrimaryKey }
@@ -242,23 +242,23 @@ function Test-UpdateSystemServices
 
     # Create the cluster
     $cluster = GetDefaultClusterProperties
-    $result = New-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Cluster $cluster
+    $result = New-AzMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Cluster $cluster
 
 	# Test for updates
-	$updateAvailability = Test-AzureRmMlOpClusterSystemServicesUpdateAvailability -ResourceGroupName $resourceGroupName -Name $clusterName
+	$updateAvailability = Test-AzMlOpClusterSystemServicesUpdateAvailability -ResourceGroupName $resourceGroupName -Name $clusterName
     Assert-NotNull { $updateAvailability }
 
 	# Test for updates - pipelining
-	$updateAvailability = Get-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName | Test-AzureRmMlOpClusterSystemServicesUpdateAvailability
+	$updateAvailability = Get-AzMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName | Test-AzMlOpClusterSystemServicesUpdateAvailability
     Assert-NotNull { $updateAvailability }
 
 	# Update the cluster
-	$updateResult = Update-AzureRmMlOpClusterSystemService -ResourceGroupName $resourceGroupName -Name $clusterName
+	$updateResult = Update-AzMlOpClusterSystemService -ResourceGroupName $resourceGroupName -Name $clusterName
     Assert-True { $updateResult.UpdateStatus -eq "Succeeded" }
 	Assert-NotNull { $updateResult.UpdateStartedOn }
 	Assert-NotNull { $updateResult.UpdateCompletedOn }
 
-	$updateAvailability = Test-AzureRmMlOpClusterSystemServicesUpdateAvailability -ResourceGroupName $resourceGroupName -Name $clusterName
+	$updateAvailability = Test-AzMlOpClusterSystemServicesUpdateAvailability -ResourceGroupName $resourceGroupName -Name $clusterName
     Assert-True { $updateAvailability.UpdatesAvailable -eq "No" }
 
     # Cleanup
@@ -279,24 +279,24 @@ function Test-Set
 
     # Create the cluster
     $cluster = GetDefaultClusterProperties
-    $createdCluster = New-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Cluster $cluster
+    $createdCluster = New-AzMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Cluster $cluster
 
 	# Update the cluster
 	$newAgentCount = $createdCluster.ContainerService.AgentCount + 1
-	$updatedCluster = Set-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -AgentCount $newAgentCount
+	$updatedCluster = Set-AzMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -AgentCount $newAgentCount
     Assert-True { $updatedCluster.ProvisioningState -eq "Succeeded" }
 	Assert-True { $updatedCluster.ContainerService.AgentCount -eq $newAgentCount }
 
 	# Update the cluster with input object
 	$newAgentCount = $newAgentCount - 1
 	$updatedCluster.ContainerService.AgentCount = $newAgentCount
-	$updatedCluster = Set-AzureRmMlOpCluster -InputObject $updatedCluster
+	$updatedCluster = Set-AzMlOpCluster -InputObject $updatedCluster
     Assert-True { $updatedCluster.ProvisioningState -eq "Succeeded" }
 	Assert-True { $updatedCluster.ContainerService.AgentCount -eq $newAgentCount }
 
 	# Update the cluster with resource id
 	$newAgentCount = $newAgentCount + 1
-	$updatedCluster = Set-AzureRmMlOpCluster -ResourceId $updatedCluster.Id -AgentCount $newAgentCount
+	$updatedCluster = Set-AzMlOpCluster -ResourceId $updatedCluster.Id -AgentCount $newAgentCount
     Assert-True { $updatedCluster.ProvisioningState -eq "Succeeded" }
 	Assert-True { $updatedCluster.ContainerService.AgentCount -eq $newAgentCount }
 
@@ -313,16 +313,16 @@ function Test-RemoveIncludeAllResources
 
     # Create the cluster
     $cluster = GetDefaultLocalClusterProperties
-    $createdCluster = New-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Cluster $cluster
+    $createdCluster = New-AzMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Cluster $cluster
 
 	# Get the managed by resource group name before deleting
 	$managedByResourceGroupName = GetManagedByResourceGroupName -ResourceGroupName $resourceGroupName
 
 	# Delete the cluster
-	Remove-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -IncludeAllResources
+	Remove-AzMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -IncludeAllResources
 
-    Assert-Throws ( Get-AzureRmResourceGroup -ResourceGroupName $managedByResourceGroupName )
+    Assert-Throws ( Get-AzResourceGroup -ResourceGroupName $managedByResourceGroupName )
 
     # Cleanup
-	Remove-AzureRmResourceGroup -ResourceGroupName $resourceGroupName -Force
+	Remove-AzResourceGroup -ResourceGroupName $resourceGroupName -Force
 }

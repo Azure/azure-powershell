@@ -40,7 +40,7 @@ function Test-CreateManagedInstance
 		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
 
  		# With SKU name specified
- 		$job = New-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
+ 		$job = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -AsJob
  		$job | Wait-Job
@@ -62,7 +62,7 @@ function Test-CreateManagedInstance
 		$managedInstanceName = Get-ManagedInstanceName
 
 		# With edition and computeGeneration specified
- 		$job = New-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
+ 		$job = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Edition $edition -ComputeGeneration $computeGeneration  -AsJob
  		$job | Wait-Job
@@ -112,7 +112,7 @@ function Test-SetManagedInstance
 		$storageSizeInGB = 64
 		$vCore = 8
 
-		$managedInstance1 = Set-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
+		$managedInstance1 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
 			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 		
 		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstance.ManagedInstanceName
@@ -129,7 +129,7 @@ function Test-SetManagedInstance
 		$storageSizeInGB = 96
 		$vCore = 16
 
-		$managedInstance2 = $managedInstance | Set-AzureRmSqlInstance -AdministratorPassword $credentials.Password `
+		$managedInstance2 = $managedInstance | Set-AzSqlInstance -AdministratorPassword $credentials.Password `
 			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 
 		Assert-AreEqual $managedInstance2.ManagedInstanceName $managedInstance.ManagedInstanceName
@@ -145,7 +145,7 @@ function Test-SetManagedInstance
 		$storageSizeInGB = 64
 		$vCore = 8
 
-		$managedInstance3 = Set-AzureRmSqlInstance -InputObject $managedInstance `
+		$managedInstance3 = Set-AzSqlInstance -InputObject $managedInstance `
 			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 		
 		Assert-AreEqual $managedInstance3.ManagedInstanceName $managedInstance.ManagedInstanceName
@@ -161,7 +161,7 @@ function Test-SetManagedInstance
 		$storageSizeInGB = 32
 		$vCore = 16
 
-		$managedInstance4 = Set-AzureRmSqlInstance -ResourceId $managedInstance.Id `
+		$managedInstance4 = Set-AzSqlInstance -ResourceId $managedInstance.Id `
 			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 		
 		Assert-AreEqual $managedInstance4.ManagedInstanceName $managedInstance.ManagedInstanceName
@@ -201,7 +201,7 @@ function Test-GetManagedInstance
 	try
 	{
 		# Test using all parameters
-		$resp1 = Get-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance1.ManagedInstanceName
+		$resp1 = Get-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance1.ManagedInstanceName
 		Assert-AreEqual $managedInstance1.ManagedInstanceName $resp1.ManagedInstanceName
 		Assert-AreEqual $managedInstance1.SqlAdministratorLogin $resp1.SqlAdministratorLogin
 		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $resp1.FullyQualifiedDomainName
@@ -210,11 +210,11 @@ function Test-GetManagedInstance
 		Assert-AreEqual $managedInstance1.VCores $resp1.VCores
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $resp1.StorageSizeInGB
 		
-		$all = Get-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName
+		$all = Get-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual 1 $all.Count
 
 		# Test getting all managedInstances in all resource groups
-		$all2 = Get-AzureRmSqlInstance
+		$all2 = Get-AzSqlInstance
 
 		# It is possible that there were existing managedInstances in the subscription when the test was recorded, so make sure
 		# that the managedInstances that we created are retrieved and ignore the other ones.
@@ -248,21 +248,21 @@ function Test-RemoveManagedInstance
 	{
 		# Test using parameters
 		$managedInstance1 = Create-ManagedInstanceForTest $rg $subnetId
-		Remove-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance1.ManagedInstanceName -Force
+		Remove-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance1.ManagedInstanceName -Force
 		
 		# Test using InputObject
 		$managedInstance2 = Create-ManagedInstanceForTest $rg $subnetId
-		Remove-AzureRmSqlInstance -InputObject $managedInstance2 -Force
+		Remove-AzSqlInstance -InputObject $managedInstance2 -Force
 
 		# Test using ResourceId
 		$managedInstance3 = Create-ManagedInstanceForTest $rg $subnetId
-		Remove-AzureRmSqlInstance -ResourceId $managedInstance3.Id -Force
+		Remove-AzSqlInstance -ResourceId $managedInstance3.Id -Force
 
 		# Test piping
 		$managedInstance4 = Create-ManagedInstanceForTest $rg $subnetId
-		$managedInstance4 | Remove-AzureRmSqlInstance -Force
+		$managedInstance4 | Remove-AzSqlInstance -Force
 
-		$all = Get-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName
+		$all = Get-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $all.Count 0
 	}
 	finally
@@ -296,7 +296,7 @@ function Test-CreateManagedInstanceWithIdentity
 
 	try
 	{
-		$managedInstance1 = New-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
+		$managedInstance1 = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -AssignIdentity
 

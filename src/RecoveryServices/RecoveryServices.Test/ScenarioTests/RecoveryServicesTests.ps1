@@ -18,7 +18,7 @@ function Get-ResourceGroupLocation
 {
     $namespace = "Microsoft.RecoveryServices"
     $type = "vaults"
-    $resourceProvider = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+    $resourceProvider = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
   
     if ($resourceProvider -eq $null)
     {
@@ -60,11 +60,11 @@ function Create-ResourceGroup(
 {
 	$name = "PSTestRG" + @(Get-RandomSuffix)
 
-	$resourceGroup = Get-AzureRmResourceGroup -Name $name -ErrorAction Ignore
+	$resourceGroup = Get-AzResourceGroup -Name $name -ErrorAction Ignore
 	
 	if ($resourceGroup -eq $null)
 	{
-		New-AzureRmResourceGroup -Name $name -Location $location | Out-Null
+		New-AzResourceGroup -Name $name -Location $location | Out-Null
 	}
 
 	return $name
@@ -73,19 +73,19 @@ function Create-ResourceGroup(
 function Cleanup-ResourceGroup(
 	[string] $resourceGroupName)
 {
-	$resourceGroup = Get-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction Ignore
+	$resourceGroup = Get-AzResourceGroup -Name $resourceGroupName -ErrorAction Ignore
 
 	if ($resourceGroup -ne $null)
 	{
 		# Cleanup Vaults
-		$vaults = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName
+		$vaults = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName
 		foreach ($vault in $vaults)
 		{
-			Remove-AzureRmRecoveryServicesVault -Vault $vault
+			Remove-AzRecoveryServicesVault -Vault $vault
 		}
 	
 		# Cleanup RG. This cleans up all VMs and Storage Accounts.
-		Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+		Remove-AzResourceGroup -Name $resourceGroupName -Force
 	}
 }
 
@@ -101,18 +101,18 @@ function Test-RecoveryServicesVaultCRUD
 
 	try
 	{
-	  # 1. New-AzureRmRecoveryServicesVault
-		$vault1 = New-AzureRmRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName -Location $location
+	  # 1. New-AzRecoveryServicesVault
+		$vault1 = New-AzRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName -Location $location
 
 		Assert-NotNull($vault1.Name)
 		Assert-NotNull($vault1.ID)
 		Assert-NotNull($vault1.Type)
 
-		# 2. Set-AzureRmRecoveryServicesVault
-		Set-AzureRmRecoveryServicesVaultContext -Vault $vault1
+		# 2. Set-AzRecoveryServicesVault
+		Set-AzRecoveryServicesVaultContext -Vault $vault1
 		
-		# 3. Get-AzureRmRecoveryServicesVault
-		$vaults = Get-AzureRmRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName
+		# 3. Get-AzRecoveryServicesVault
+		$vaults = Get-AzRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName
 
 		Assert-NotNull($vaults)
 		Assert-True { $vaults.Count -gt 0 }
@@ -123,18 +123,18 @@ function Test-RecoveryServicesVaultCRUD
 			Assert-NotNull($vault.Type)
 		}
 
-		# 4. Get-AzureRmRecoveryServicesBackupProperty
-		$vaultBackupProperties = Get-AzureRmRecoveryServicesBackupProperty -Vault $vault1
+		# 4. Get-AzRecoveryServicesBackupProperty
+		$vaultBackupProperties = Get-AzRecoveryServicesBackupProperty -Vault $vault1
 
 		Assert-NotNull($vaultBackupProperties.BackupStorageRedundancy)
 
-		# 5. Set-AzureRmRecoveryServicesBackupProperties
-		Set-AzureRmRecoveryServicesBackupProperties -Vault $vault1 -BackupStorageRedundancy LocallyRedundant
+		# 5. Set-AzRecoveryServicesBackupProperties
+		Set-AzRecoveryServicesBackupProperties -Vault $vault1 -BackupStorageRedundancy LocallyRedundant
 
-		# 6. Remove-AzureRmRecoveryServicesVault
-		Remove-AzureRmRecoveryServicesVault -Vault $vault1
+		# 6. Remove-AzRecoveryServicesVault
+		Remove-AzRecoveryServicesVault -Vault $vault1
 
-		$vaults = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $name
+		$vaults = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $name
 		Assert-True { $vaults.Count -eq 0 } 
 	}
 	finally
@@ -151,11 +151,11 @@ function Test-GetRSVaultSettingsFile
 
 	try
 	{
-  		# 1. New-AzureRmRecoveryServicesVault
-		$vault = New-AzureRmRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName -Location $location
+  		# 1. New-AzRecoveryServicesVault
+		$vault = New-AzRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName -Location $location
 
-		# 2. Get-AzureRmRecoveryServicesVaultSettingsFile
-		$file = Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $vault -Backup
+		# 2. Get-AzRecoveryServicesVaultSettingsFile
+		$file = Get-AzRecoveryServicesVaultSettingsFile -Vault $vault -Backup
 		
 		if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Record)
 		{
