@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.WebSites;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Rest.Azure;
@@ -819,6 +818,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 }},
                 Location = location
             };
+
+            var webapp = GetWebApp(resourceGroupName, webAppName, slotName);
+            webappWithNewSslBinding.Tags = webapp.Tags;
 
             if (shouldUseDeploymentSlot)
             {
