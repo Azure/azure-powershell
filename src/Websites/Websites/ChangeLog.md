@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixes `New-AzWebAppSSLBinding` to upload the certificate to the correct resourcegroup+location if the app is hosted on an ASE.
+* Fixes `New-AzWebAppSSLBinding` to not overwrite the tags on binding an SSL certificate to an app
 
 ## Version 1.0.1
 * Fixed a date parsing bug in `Get-AzDeletedWebApp`
