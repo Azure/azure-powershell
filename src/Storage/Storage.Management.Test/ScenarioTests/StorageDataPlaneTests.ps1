@@ -32,7 +32,7 @@ function Test-File
     New-TestResourceGroupAndStorageAccount -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName
 
     try{
-        $storageAccountKeyValue = $(Get-AzureRmStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
+        $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
         $localSrcFile = "localsrcfiletestfile.psd1" #The file need exist before test, and should be 512 bytes aligned
@@ -112,7 +112,7 @@ function Test-Blob
 
     try{
 
-        $storageAccountKeyValue = $(Get-AzureRmStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
+        $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
         $localSrcFile = "localsrcblobtestfile.psd1" #The file need exist before test, and should be 512 bytes aligned
@@ -201,7 +201,7 @@ function Test-Queue
 
     try
     {
-        $storageAccountKeyValue = $(Get-AzureRmStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
+        $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
         $queueName = "queue-test"
@@ -246,7 +246,7 @@ function Test-Table
 
     try
     {
-        $storageAccountKeyValue = $(Get-AzureRmStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
+        $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
         $tableName = "tabletest"
@@ -291,7 +291,7 @@ function Test-BlobFileCopy
 
     try
     {
-        $storageAccountKeyValue = $(Get-AzureRmStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
+        $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
     
         $localSrcFile = "localsrcblobfilecopytestfile.psd1" #The file need exist before test, and should be 512 bytes aligned
@@ -368,7 +368,7 @@ function Test-Common
 
     try
     {
-        $storageAccountKeyValue = $(Get-AzureRmStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
+        $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
         
         $version = "1.0"
@@ -380,7 +380,7 @@ function Test-Common
 		$propertyUpdated = $false
 		while (($i -lt 120) -and ($propertyUpdated -eq $false))
 		{
-			$property = Get-AzureStorageServiceLoggingProperty -ServiceType blob -Context $storageContext
+			$property = Get-AzStorageServiceLoggingProperty -ServiceType blob -Context $storageContext
 			if (($property.RetentionDays -eq $retentionDays+1) -and ($property.Version -eq $version) -and ($property.LoggingOperations -eq $LoggingOperations))
 			{
 				$propertyUpdated = $true
@@ -402,7 +402,7 @@ function Test-Common
 		$propertyUpdated = $false
 		while (($i -lt 120) -and ($propertyUpdated -eq $false))
 		{
-			$property = Get-AzureStorageServiceLoggingProperty -ServiceType blob -Context $storageContext
+			$property = Get-AzStorageServiceLoggingProperty -ServiceType blob -Context $storageContext
 			if (($property.RetentionDays -eq $retentionDays+1) -and ($property.Version -eq $version) -and ($property.MetricsLevel.ToString()  -eq $MetricsLevel))
 			{
 				$propertyUpdated = $true
@@ -485,6 +485,6 @@ function New-TestResourceGroupAndStorageAccount
 
     $location = Get-ProviderLocation ResourceManagement    
     $storageAccountType = 'Standard_LRS'# Standard Geo-Reduntand Storage
-    New-AzureRmResourceGroup -Name $ResourceGroupName -Location $location
-    New-AzureRmStorageAccount -Name $storageAccountName -ResourceGroupName $ResourceGroupName -Location $location -Type $storageAccountType
+    New-AzResourceGroup -Name $ResourceGroupName -Location $location
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $ResourceGroupName -Location $location -Type $storageAccountType
 }

@@ -24,17 +24,17 @@ function Test-GetMetrics
     try
     {
         # Test
-        $actual = Get-AzureRmMetric -ResourceId $rscname -starttime 2018-03-23T22:00:00Z -endtime 2018-03-23T22:30:00Z
+        $actual = Get-AzMetric -ResourceId $rscname -starttime 2018-03-23T22:00:00Z -endtime 2018-03-23T22:30:00Z
  
         # Assert TODO add more asserts
         Assert-AreEqual 1 $actual.Count
 
-        $actual = Get-AzureRmMetric -ResourceId $rscname -MetricNames CpuTime,Requests -timeGrain 00:01:00 -starttime 2018-03-23T22:00:00Z -endtime 2018-03-23T22:30:00Z -AggregationType Count
+        $actual = Get-AzMetric -ResourceId $rscname -MetricNames CpuTime,Requests -timeGrain 00:01:00 -starttime 2018-03-23T22:00:00Z -endtime 2018-03-23T22:30:00Z -AggregationType Count
 
         # Assert TODO add more asserts
         Assert-AreEqual 2 $actual.Count
 
-        $metricFilter = New-AzureRmMetricFilter -Dimension City -Operator eq -Value "Seattle","New York"
+        $metricFilter = New-AzMetricFilter -Dimension City -Operator eq -Value "Seattle","New York"
 
         Assert-AreEqual 1 $metricFilter.Count
     }
@@ -56,12 +56,12 @@ function Test-GetMetricDefinitions
 
     try
     {
-        $actual = Get-AzureRmMetricDefinition -ResourceId $rscname
+        $actual = Get-AzMetricDefinition -ResourceId $rscname
 
         # Assert TODO add more asserts
         Assert-AreEqual 33 $actual.Count
 
-        $actual = Get-AzureRmMetricDefinition -ResourceId $rscname -MetricName CpuTime,Requests -MetricNamespace "Microsoft.Web/sites"
+        $actual = Get-AzMetricDefinition -ResourceId $rscname -MetricName CpuTime,Requests -MetricNamespace "Microsoft.Web/sites"
 
         Assert-AreEqual 2 $actual.Count
     }

@@ -38,7 +38,7 @@ function TestSetup-CreateResourceGroup
 {
     $resourceGroupName = getAssetName
     $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $rglocation -Force
+    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation -Force
     return $resourceGroup
 }
 

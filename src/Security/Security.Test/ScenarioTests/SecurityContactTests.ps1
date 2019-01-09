@@ -16,11 +16,11 @@
 .SYNOPSIS
 Get security contacts on a subscription
 #>
-function Get-AzureRmSecurityContact-SubscriptionScope
+function Get-AzSecurityContact-SubscriptionScope
 {
-	Set-AzureRmSecurityContact -Name "default1" -Email "ascasc@microsoft.com" -Phone "123123123" -AlertAdmin -NotifyOnAlert
+	Set-AzSecurityContact -Name "default1" -Email "ascasc@microsoft.com" -Phone "123123123" -AlertAdmin -NotifyOnAlert
 
-    $contacts = Get-AzureRmSecurityContact
+    $contacts = Get-AzSecurityContact
 	Validate-Contacts $contacts
 }
 
@@ -28,11 +28,11 @@ function Get-AzureRmSecurityContact-SubscriptionScope
 .SYNOPSIS
 Get a security contact
 #>
-function Get-AzureRmSecurityContact-SubscriptionLevelResource
+function Get-AzSecurityContact-SubscriptionLevelResource
 {
-	Set-AzureRmSecurityContact -Name "default1" -Email "ascasc@microsoft.com" -Phone "123123123" -AlertAdmin -NotifyOnAlert
+	Set-AzSecurityContact -Name "default1" -Email "ascasc@microsoft.com" -Phone "123123123" -AlertAdmin -NotifyOnAlert
 
-    $contact = Get-AzureRmSecurityContact -Name "default1"
+    $contact = Get-AzSecurityContact -Name "default1"
 	Validate-Contact $contact
 }
 
@@ -40,11 +40,11 @@ function Get-AzureRmSecurityContact-SubscriptionLevelResource
 .SYNOPSIS
 Get a security contact by resource ID
 #>
-function Get-AzureRmSecurityContact-ResourceId
+function Get-AzSecurityContact-ResourceId
 {
-	$contact = Set-AzureRmSecurityContact -Name "default1" -Email "ascasc@microsoft.com" -Phone "123123123" -AlertAdmin -NotifyOnAlert
+	$contact = Set-AzSecurityContact -Name "default1" -Email "ascasc@microsoft.com" -Phone "123123123" -AlertAdmin -NotifyOnAlert
 
-    $fetchedContact = Get-AzureRmSecurityContact -ResourceId $contact.Id
+    $fetchedContact = Get-AzSecurityContact -ResourceId $contact.Id
 	Validate-Contact $fetchedContact
 }
 
@@ -52,28 +52,28 @@ function Get-AzureRmSecurityContact-ResourceId
 .SYNOPSIS
 Set a security contact on a subscription
 #>
-function Set-AzureRmSecurityContact-SubscriptionLevelResource
+function Set-AzSecurityContact-SubscriptionLevelResource
 {
-    Set-AzureRmSecurityContact -Name "default1" -Email "ascasc@microsoft.com" -Phone "123123123" -AlertAdmin -NotifyOnAlert
+    Set-AzSecurityContact -Name "default1" -Email "ascasc@microsoft.com" -Phone "123123123" -AlertAdmin -NotifyOnAlert
 }
 
 <#
 .SYNOPSIS
 Set a security contact on a subscription
 #>
-function Set-AzureRmSecurityContact-SubscriptionLevelResource-Secondary
+function Set-AzSecurityContact-SubscriptionLevelResource-Secondary
 {
-    Set-AzureRmSecurityContact -Name "default2" -Email "ascasc@microsoft.com"
+    Set-AzSecurityContact -Name "default2" -Email "ascasc@microsoft.com"
 }
 
 <#
 .SYNOPSIS
 Delete a security contact on a subscription
 #>
-function Remove-AzureRmSecurityContact-SubscriptionLevelResource
+function Remove-AzSecurityContact-SubscriptionLevelResource
 {
-	Set-AzureRmSecurityContact -Name "default1" -Email "ascasc@microsoft.com" -Phone "123123123" -AlertAdmin -NotifyOnAlert
-    Remove-AzureRmSecurityContact -Name "default1"
+	Set-AzSecurityContact -Name "default1" -Email "ascasc@microsoft.com" -Phone "123123123" -AlertAdmin -NotifyOnAlert
+    Remove-AzSecurityContact -Name "default1"
 }
 
 <#

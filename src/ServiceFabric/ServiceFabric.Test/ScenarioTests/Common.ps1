@@ -17,24 +17,24 @@
 #####
 #
 # $password = "[password]" | ConvertTo-SecureString -Force -AsPlainText
-# New-AzureRmServiceFabricCluster -ResourceGroupName azurermsfrg -Name azurermsfcluster -Location southcentralus -VmPassword $password -KeyVaultName azurermsfkv -CertificateOutputFolder $pwd -CertificatePassword $password -CertificateSubjectName "AzureRMSFTestCert"
+# New-AzServiceFabricCluster -ResourceGroupName azurermsfrg -Name azurermsfcluster -Location southcentralus -VmPassword $password -KeyVaultName azurermsfkv -CertificateOutputFolder $pwd -CertificatePassword $password -CertificateSubjectName "AzureRMSFTestCert"
 #
 # # add second certificate to key vault (AzureRMSFTestCert2)
-# $policy = New-AzureKeyVaultCertificatePolicy -SecretContentType application/x-pkcs12 -SubjectName "CN=AzureRMSFTestCert2" -IssuerName Self
-# Add-AzureKeyVaultCertificate -VaultName azurermsfkv -Name AzureRMSFTestCert2 -CertificatePolicy $policy
-# Get-AzureKeyVaultCertificate -VaultName azurermsfkv -Name AzureRMSFTestCert2 | select Thumbprint, SecretId
+# $policy = New-AzKeyVaultCertificatePolicy -SecretContentType application/x-pkcs12 -SubjectName "CN=AzureRMSFTestCert2" -IssuerName Self
+# Add-AzKeyVaultCertificate -VaultName azurermsfkv -Name AzureRMSFTestCert2 -CertificatePolicy $policy
+# Get-AzKeyVaultCertificate -VaultName azurermsfkv -Name AzureRMSFTestCert2 | select Thumbprint, SecretId
 # # Add the above values to Get-SecretUrl and Get-Thumbrprint
 #
 # # add certificate for application test to key vault (AzureRMSFTestCertApp)
-# $policyCertApp = New-AzureKeyVaultCertificatePolicy -SecretContentType application/x-pkcs12 -SubjectName "CN=AzureRMSFTestCertApp" -IssuerName Self
-# # Add-AzureKeyVaultCertificate -VaultName azurermsfkvtest -Name AzureRMSFTestCertApp -CertificatePolicy $policyCertApp
-# Get-AzureKeyVaultCertificate -VaultName azurermsfkvtest -Name AzureRMSFTestCertApp | select Thumbprint, SecretId
+# $policyCertApp = New-AzKeyVaultCertificatePolicy -SecretContentType application/x-pkcs12 -SubjectName "CN=AzureRMSFTestCertApp" -IssuerName Self
+# # Add-AzKeyVaultCertificate -VaultName azurermsfkvtest -Name AzureRMSFTestCertApp -CertificatePolicy $policyCertApp
+# Get-AzKeyVaultCertificate -VaultName azurermsfkvtest -Name AzureRMSFTestCertApp | select Thumbprint, SecretId
 # # Add the above values to Get-CertAppThumbprint and Get-CertAppSecretUrl
 #
 # # add ca certificate for create with common name test (azurermsfcntest.southcentralus.cloudapp.azure.com)
 # # ask alsantam for password and cert file 
 # $certPassword = "[pass]" | ConvertTo-SecureString -Force -AsPlainText 
-# $KVSecret = Import-AzureKeyVaultCertificate -VaultName azurermsfkvtest -Name azurermsfcntest -FilePath c:\path\to\file\azurermsfcntest.pfx -Password $certPassword -Verbose
+# $KVSecret = Import-AzKeyVaultCertificate -VaultName azurermsfkvtest -Name azurermsfcntest -FilePath c:\path\to\file\azurermsfcntest.pfx -Password $certPassword -Verbose
 # $KVSecret.SecretId
 # # Add the above value to Get-CACertSecretUrl
 #
@@ -162,7 +162,7 @@ function WaitForClusterReadyState($clusterName, $resourceGroupName, $timeoutInSe
 {
     $timeoutTime = (Get-Date).AddSeconds($timeoutInSeconds)
     while (-not $clusterReady -and (Get-Date) -lt $timeoutTime) {
-        $cluster = (Get-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Name $clusterName)[0]
+        $cluster = (Get-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Name $clusterName)[0]
         if ($cluster.ClusterState -eq "Ready")
         {
             return $true

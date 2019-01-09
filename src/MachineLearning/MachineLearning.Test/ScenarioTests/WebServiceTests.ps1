@@ -39,14 +39,14 @@ function Test-CreateGetRemoveMLService
             $svcDefinition = LoadWebServiceDefinitionForTest `
                                 $TEST_WEBSERVICE_DEFINITION_FILE $commitmentPlanId $storageAccount
             LogOutput "Creating web service: $webServiceName"
-            $svc = $svcDefinition | New-AzureRmMlWebService `
+            $svc = $svcDefinition | New-AzMlWebService `
                     -ResourceGroupName $rgName -Location $location -Name $webServiceName -Force
             Assert-NotNull $svc
             LogOutput "Created web service: $($svc.Id)"                     
             ValidateWebServiceResult $rgName $webServiceName $location $svc
 
             # Fetch the service's keys and validate they are as expected
-            $keys = Get-AzureRmMlWebServiceKeys -ResourceGroupName $rgName -Name $webServiceName
+            $keys = Get-AzMlWebServiceKeys -ResourceGroupName $rgName -Name $webServiceName
             LogOutput "Checking that the service's keys are not null."
             Assert-NotNull $keys
             $expectedPrimaryKey = $svcDefinition.Properties.Keys.Primary        
@@ -62,12 +62,12 @@ function Test-CreateGetRemoveMLService
 
             # Delete the service using the pipeline form
             LogOutput "Removing web service $webServiceName from resource group $rgName"
-            $svc | Remove-AzureRmMlWebService -Force
+            $svc | Remove-AzMlWebService -Force
             LogOutput "Web service $webServiceName was removed."    
             $serviceDeleted = $true
 
             # Validate that service no longer exists 
-            Assert-ThrowsContains { Get-AzureRmMlWebService -ResourceGroupName $rgName `
+            Assert-ThrowsContains { Get-AzMlWebService -ResourceGroupName $rgName `
                                         -Name $webServiceName } "WebServiceNotFound"
         }
         finally
@@ -101,13 +101,13 @@ function Test-CreateWebServiceFromFile
                                                              $commitmentPlanId $storageAccount
             $definitionFile = "$webServiceName.json"
             LogOutput "Exporting web service definition to file: $definitionFile"
-            Export-AzureRmMlWebService -WebService $svcDefinition -OutputFile $definitionFile
+            Export-AzMlWebService -WebService $svcDefinition -OutputFile $definitionFile
             LogOutput "Checking that exported service definition exists at $definitionFile"
             Assert-True { Test-Path $definitionFile }
 
             # Create a new web service from the local file definition
             LogOutput "Creating web service: $webServiceName"
-            $svc = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location `
+            $svc = New-AzMlWebService -ResourceGroupName $rgName -Location $location `
                                         -Name $webServiceName -DefinitionFile $definitionFile `
                                         -Force
             LogOutput "Created web service: $webServiceName"
@@ -142,7 +142,7 @@ function Test-UpdateWebService
             $svcDefinition = LoadWebServiceDefinitionForTest $TEST_WEBSERVICE_DEFINITION_FILE `
                                     $commitmentPlanId $storageAccount
             LogOutput "Creating web service: $webServiceName"
-            $svc = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location `
+            $svc = New-AzMlWebService -ResourceGroupName $rgName -Location $location `
                                     -Name $webServiceName -NewWebServiceDefinition $svcDefinition `
                                     -Force
             Assert-NotNull $svc
@@ -154,7 +154,7 @@ function Test-UpdateWebService
             # Update the resource by pushing an edited web service definition object 
             $svcDefinition.Properties.Description = "This has now changed."
             LogOutput "Updating description on service $($svc.Id)"
-            $updatedSvc = Update-AzureRmMlWebService -ResourceGroupName $rgName `
+            $updatedSvc = Update-AzMlWebService -ResourceGroupName $rgName `
                                     -Name $webServiceName -ServiceUpdates $svcDefinition `
                                     -Force
             Assert-NotNull $updatedSvc
@@ -172,7 +172,7 @@ function Test-UpdateWebService
             # Update realtime endpoint settings and the service key by using in line parameters
             $newPrimaryKey = 'highly secure key'
             LogOutput "Updating in line properties on service $($svc.Id)"
-            $updatedSvc2 = Update-AzureRmMlWebService -ResourceGroupName $rgName -Name $webServiceName `
+            $updatedSvc2 = Update-AzMlWebService -ResourceGroupName $rgName -Name $webServiceName `
                             -RealtimeConfiguration @{ MaxConcurrentCalls = 30 } `
                             -Keys @{ Primary = $newPrimaryKey } -Force
             Assert-NotNull $updatedSvc2
@@ -187,7 +187,7 @@ function Test-UpdateWebService
             LogOutput "Checking that the ModifiedOn field updated accordingly."            
             Assert-True { $updateModifiedOn -lt $update2ModifiedOn }
             
-            $keys = Get-AzureRmMlWebServiceKeys -ResourceGroupName $rgName -Name $webServiceName
+            $keys = Get-AzMlWebServiceKeys -ResourceGroupName $rgName -Name $webServiceName
             LogOutput "Checking that the service's keys are not null."
             Assert-NotNull $keys
             LogOutput "Checking that the service's primary key has changed."
@@ -222,14 +222,14 @@ function Test-ListWebServices
             $svcDefinition = LoadWebServiceDefinitionForTest $TEST_WEBSERVICE_DEFINITION_FILE `
                                     $commitmentPlanId $storageAccount
             LogOutput "Creating web service 1: $webServiceName"
-            $svc1 = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location `
+            $svc1 = New-AzMlWebService -ResourceGroupName $rgName -Location $location `
                                     -Name $webServiceName -NewWebServiceDefinition $svcDefinition `
                                     -Force
             Assert-NotNull $svc1
             LogOutput "Created web service 1: $($svc1.Id)"                     
             ValidateWebServiceResult $rgName $webServiceName $location $svc1
             LogOutput "Creating web service 2: $sameGroupWebServiceName"
-            $svc2 = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location `
+            $svc2 = New-AzMlWebService -ResourceGroupName $rgName -Location $location `
                             -Name $sameGroupWebServiceName -NewWebServiceDefinition $svcDefinition `
                             -Force
             Assert-NotNull $svc2
@@ -238,10 +238,10 @@ function Test-ListWebServices
 
             # Create a web service in a different resource group
             LogOutput "Creating resource group: $otherResourceGroupName"    
-            $otherGroup = New-AzureRmResourceGroup -Name $otherResourceGroupName -Location $location        
+            $otherGroup = New-AzResourceGroup -Name $otherResourceGroupName -Location $location        
             LogOutput("Created resource group: $($otherGroup.ResourceId)")
             LogOutput "Creating web service: $otherGroupWebServiceName"
-            $svc3 = New-AzureRmMlWebService -ResourceGroupName $otherResourceGroupName -Location $location `
+            $svc3 = New-AzMlWebService -ResourceGroupName $otherResourceGroupName -Location $location `
                             -Name $otherGroupWebServiceName -NewWebServiceDefinition $svcDefinition -Force
             Assert-NotNull $svc3
             LogOutput "Created web service: $($svc3.Id)"                     
@@ -249,7 +249,7 @@ function Test-ListWebServices
 
             # List all services in the first resource group
             LogOutput "Listing all web services in resource group: $rgName"
-            $servicesInGroup = Get-AzureRmMlWebService -ResourceGroupName $rgName
+            $servicesInGroup = Get-AzMlWebService -ResourceGroupName $rgName
             Assert-NotNull $servicesInGroup
             LogOutput "Group $rgName contains $($servicesInGroup.Count) web services."    
             Assert-AreEqual 2 $servicesInGroup.Count
@@ -260,7 +260,7 @@ function Test-ListWebServices
 
             # List all services in the second resource group
             LogOutput "Listing all web services in resource group: $otherResourceGroupName"
-            $servicesInOtherGroup = Get-AzureRmMlWebService -ResourceGroupName $otherResourceGroupName
+            $servicesInOtherGroup = Get-AzMlWebService -ResourceGroupName $otherResourceGroupName
             Assert-NotNull $servicesInOtherGroup            
             LogOutput "Group $otherResourceGroupName contains $($servicesInOtherGroup.Count) web services."                            
             Assert-AreEqual 1 $servicesInOtherGroup.Count
@@ -268,7 +268,7 @@ function Test-ListWebServices
             Assert-True { $servicesInOtherGroup[0].Id -eq $svc3.Id }
 
             # List all services in the subscription
-            $servicesInSubscription = Get-AzureRmMlWebService
+            $servicesInSubscription = Get-AzMlWebService
             Assert-NotNull $servicesInSubscription
             LogOutput "Found $($servicesInSubscription.Count) web services in the current subscription."    
             Assert-False { $servicesInSubscription.Count -lt 3 }
@@ -309,13 +309,13 @@ function Test-CreateAndGetRegionalProperties
                                                              $commitmentPlanId $storageAccount
             $definitionFile = "$webServiceName.json"
             LogOutput "Exporting web service definition to file: $definitionFile"
-            Export-AzureRmMlWebService -WebService $svcDefinition -OutputFile $definitionFile
+            Export-AzMlWebService -WebService $svcDefinition -OutputFile $definitionFile
             LogOutput "Checking that exported service definition exists at $definitionFile"
             Assert-True { Test-Path $definitionFile }
 
             # Create a new web service from the local file definition
             LogOutput "Creating web service: $webServiceName"
-            $svc = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location `
+            $svc = New-AzMlWebService -ResourceGroupName $rgName -Location $location `
                                         -Name $webServiceName -DefinitionFile $definitionFile `
                                         -Force
             LogOutput "Created web service: $webServiceName"
@@ -324,11 +324,11 @@ function Test-CreateAndGetRegionalProperties
             $newRegion = "westcentralus"
 
             # Validate that service no longer exists 
-            Assert-ThrowsContains { Get-AzureRmMlWebService -ResourceGroupName $rgName `
+            Assert-ThrowsContains { Get-AzMlWebService -ResourceGroupName $rgName `
                                         -Name $webServiceName -region $newRegion} "PerRegionPayloadNotFound"
 
             LogOutput "Creating web service regional properties for $webServiceName in $newRegion"
-            $newSvc = Add-AzureRmMlWebServiceRegionalProperty -ResourceGroupName $rgName -Name $webServiceName -region $newRegion -Force
+            $newSvc = Add-AzMlWebServiceRegionalProperty -ResourceGroupName $rgName -Name $webServiceName -region $newRegion -Force
             ValidateWebServiceResult $rgName $webServiceName $location $svc
             
             Assert-AreEqual $newSvc.Properties.Package.Nodes["node1"].parameters["Account Key"].certificateThumbprint "ENCRYPTED_CERTIFICATETHUMBPRINT_2"
@@ -366,7 +366,7 @@ function RunWebServicesTest([ScriptBlock] $testScript)
     {
         # Setup
         LogOutput "Creating resource group: $rgName"    
-        $group = New-AzureRmResourceGroup -Name $rgName -Location $location        
+        $group = New-AzResourceGroup -Name $rgName -Location $location        
         LogOutput("Created resource group: $($group.ResourceId)")
         LogOutput("Created resource group: $($group.ResourceGroupName)")
 
@@ -376,7 +376,7 @@ function RunWebServicesTest([ScriptBlock] $testScript)
 
         LogOutput "Creating commitment plan resource: $commitmentPlanName"
         $cpSku = @{Name = 'S1'; Tier='Standard'; Capacity=1}
-        $cpPlan = New-AzureRmResource -Location $location -ResourceType `
+        $cpPlan = New-AzResource -Location $location -ResourceType `
                         "Microsoft.MachineLearning/CommitmentPlans" -ResourceName $commitmentPlanName `
                         -ResourceGroupName $rgName -SkuObject $cpSku -Properties @{} `
                         -ApiVersion $cpApiVersion -Force     
@@ -393,7 +393,7 @@ function RunWebServicesTest([ScriptBlock] $testScript)
 
 function LoadWebServiceDefinitionForTest([string] $filePath, [string] $commitmentPlanId, [object] $storageAccount)
 {
-    $svcDefinition = Import-AzureRmMlWebService -InputFile $filePath
+    $svcDefinition = Import-AzMlWebService -InputFile $filePath
     $svcDefinition.Properties.CommitmentPlan.Id = $commitmentPlanId
     $svcDefinition.Properties.StorageAccount.Name = $storageAccount.Name
     $svcDefinition.Properties.StorageAccount.Key = $storageAccount.Key
@@ -404,7 +404,7 @@ function LoadWebServiceDefinitionForTest([string] $filePath, [string] $commitmen
 function ValidateWebServiceResult([string] $rgName, [string] $webServiceName, [string] $location, `
                     [Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService] $svc)
 {
-    $subscriptionId = ((Get-AzureRmContext).Subscription).SubscriptionId        
+    $subscriptionId = ((Get-AzContext).Subscription).SubscriptionId        
     $expectedServiceResourceId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.MachineLearning/webservices/$webServiceName"
     LogOutput "Checking that the created webservice's resource id $($svc.Id) matches the expected value $expectedServiceResourceId"
     Assert-AreEqual $expectedServiceResourceId $svc.Id

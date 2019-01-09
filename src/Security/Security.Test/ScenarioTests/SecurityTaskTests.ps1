@@ -16,9 +16,9 @@
 .SYNOPSIS
 Get security tasks at subscription scope
 #>
-function Get-AzureRmSecurityTask-SubscriptionScope
+function Get-AzSecurityTask-SubscriptionScope
 {
-    $tasks = Get-AzureRmSecurityTask
+    $tasks = Get-AzSecurityTask
 	Validate-Tasks $tasks
 }
 
@@ -26,11 +26,11 @@ function Get-AzureRmSecurityTask-SubscriptionScope
 .SYNOPSIS
 Get security tasks at a resource group scope
 #>
-function Get-AzureRmSecurityTask-ResourceGroupScope
+function Get-AzSecurityTask-ResourceGroupScope
 {
 	$rgName = Get-TestResourceGroupName
 
-    $tasks = Get-AzureRmSecurityTask -ResourceGroupName $rgName
+    $tasks = Get-AzSecurityTask -ResourceGroupName $rgName
 	Validate-Tasks $tasks
 }
 
@@ -38,10 +38,10 @@ function Get-AzureRmSecurityTask-ResourceGroupScope
 .SYNOPSIS
 Get a subscription level security task
 #>
-function Get-AzureRmSecurityTask-SubscriptionLevelResource
+function Get-AzSecurityTask-SubscriptionLevelResource
 {
-	$task = Get-AzureRmSecurityTask | where { $_.Id -notlike "*resourceGroups*" } | Select -First 1
-    $fetchedTask = Get-AzureRmSecurityTask -Name $task.Name
+	$task = Get-AzSecurityTask | where { $_.Id -notlike "*resourceGroups*" } | Select -First 1
+    $fetchedTask = Get-AzSecurityTask -Name $task.Name
 	Validate-Task $fetchedTask
 }
 
@@ -49,12 +49,12 @@ function Get-AzureRmSecurityTask-SubscriptionLevelResource
 .SYNOPSIS
 Get a resource group level security task
 #>
-function Get-AzureRmSecurityTask-ResourceGroupLevelResource
+function Get-AzSecurityTask-ResourceGroupLevelResource
 {
-	$task = Get-AzureRmSecurityTask | where { $_.Id -like "*resourceGroups*" } | Select -First 1
+	$task = Get-AzSecurityTask | where { $_.Id -like "*resourceGroups*" } | Select -First 1
 	$rgName = Extract-ResourceGroup -ResourceId $task.Id
 
-    $fetchedTask = Get-AzureRmSecurityTask -ResourceGroupName $rgName -Name $task.Name
+    $fetchedTask = Get-AzSecurityTask -ResourceGroupName $rgName -Name $task.Name
 	Validate-Task $fetchedTask
 }
 
@@ -62,11 +62,11 @@ function Get-AzureRmSecurityTask-ResourceGroupLevelResource
 .SYNOPSIS
 Get a security task by ID
 #>
-function Get-AzureRmSecurityTask-ResourceId
+function Get-AzSecurityTask-ResourceId
 {
-	$task = Get-AzureRmSecurityTask | Select -First 1
+	$task = Get-AzSecurityTask | Select -First 1
 
-    $fetchedTask = Get-AzureRmSecurityTask -ResourceId $task.Id
+    $fetchedTask = Get-AzSecurityTask -ResourceId $task.Id
 	Validate-Task $fetchedTask
 }
 

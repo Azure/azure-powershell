@@ -30,12 +30,12 @@ function Test-ServerActiveDirectoryAdministrator ($location = "North Europe")
 		$activeDirectoryUser1ObjectId = "e87332b2-e3ed-480a-9723-e9b3611268f8"
 
 		# Verify there is no Active Directory Administrator set
-		$activeDirectoryAdmin = Get-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		$activeDirectoryAdmin = Get-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 
 		Assert-Null $activeDirectoryAdmin
 
 			# Set an Azure SQL Server Active Directory Administrator Group
-		$activeDirectoryAdmin1 = Set-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+		$activeDirectoryAdmin1 = Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
 		-DisplayName $activeDirectoryGroup1
 
 		Assert-NotNull $activeDirectoryAdmin1
@@ -45,23 +45,23 @@ function Test-ServerActiveDirectoryAdministrator ($location = "North Europe")
 		Assert-AreEqual $activeDirectoryAdmin1.ObjectId $activeDirectoryGroup1ObjectId
 
 		# Get an Azure SQL Server Active Directory Administrator
-		$activeDirectoryAdmin2 = Get-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		$activeDirectoryAdmin2 = Get-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 
 		Assert-AreEqual $activeDirectoryAdmin2.DisplayName $activeDirectoryGroup1
 		Assert-AreEqual $activeDirectoryAdmin2.ObjectId $activeDirectoryGroup1ObjectId
 
 		# Set an Azure SQL Server Active Directory Administrator User
-		$activeDirectoryAdmin3 = Set-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+		$activeDirectoryAdmin3 = Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
 		-DisplayName $activeDirectoryUser1
 
 		Assert-AreEqual $activeDirectoryAdmin3.DisplayName $activeDirectoryUser1
 		Assert-AreEqual $activeDirectoryAdmin3.ObjectId $activeDirectoryUser1ObjectId
 
 		# Set an Azure SQL Server Active Directory Administrator User
-		$activeDirectoryAdmin4 = Remove-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -Force
+		$activeDirectoryAdmin4 = Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -Force
 
 		# Verify that Azure SQL Server Active Directory Administrator was deleted
-		$activeDirectoryAdmin5 = Get-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		$activeDirectoryAdmin5 = Get-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 
 		Assert-Null $activeDirectoryAdmin5
 	}

@@ -42,7 +42,7 @@ function Get-ProviderLocation($provider)
 		if($provider.Contains("/"))  
 		{  
 			$type = $provider.Substring($namespace.Length + 1)  
-			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+			$location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
   
 			if ($location -eq $null) 
 			{  
@@ -67,7 +67,7 @@ function TestSetup-CreateResourceGroup
 {
     $resourceGroupName = getAssetName
 	$rglocation = Get-ProviderLocation "North Europe"
-    $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $rglocation -Force
+    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation -Force
 	return $resourceGroup
 }
 
@@ -79,7 +79,7 @@ function TestSetup-CreateProfile($profileName, $resourceGroupName, $routingMetho
 {
 	$relativeName = getAssetName
 
-	$profile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod $routingMethod -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" -ProfileStatus "Enabled"
+	$profile = New-AzTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod $routingMethod -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" -ProfileStatus "Enabled"
 
 	return $profile
 }
@@ -90,7 +90,7 @@ Creates a resource group to use in tests
 #>
 function TestSetup-AddEndpoint($endpointName, $profile)
 {
-	$profile = Add-AzureRmTrafficManagerEndpointConfig -EndpointName $endpointName -TrafficManagerProfile $profile -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
+	$profile = Add-AzTrafficManagerEndpointConfig -EndpointName $endpointName -TrafficManagerProfile $profile -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
 
 	return $profile
 }
@@ -101,5 +101,5 @@ Cleans the created resource groups
 #>
 function TestCleanup-RemoveResourceGroup($rgname)
 {
-    Remove-AzureRmResourceGroup -Name $rgname -Force
+    Remove-AzResourceGroup -Name $rgname -Force
 }

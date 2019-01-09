@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Test Get-AzureRmApplicationInsightsPricingPlan
+Test Get-AzApplicationInsightsPricingPlan
 #>
 function Test-GetApplicationInsightsPricingPlan
 {
@@ -27,15 +27,15 @@ function Test-GetApplicationInsightsPricingPlan
 		$appName = "app" + $rgname;
         $loc = Get-ProviderLocation ResourceManagement;
 		$kind = "web";
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
 		
-        $pricingPlan = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
+        $pricingPlan = Get-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
 
 		Assert-NotNull $pricingPlan
         Assert-AreEqual "Basic" $pricingPlan.PricingPlan
         
-        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
+        Remove-AzApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {
@@ -47,7 +47,7 @@ function Test-GetApplicationInsightsPricingPlan
 
 <#
 .SYNOPSIS
-Test Set-AzureRmApplicationInsightsPricingPlan
+Test Set-AzApplicationInsightsPricingPlan
 #>
 function Test-SetApplicationInsightsPricingPlan
 {
@@ -60,10 +60,10 @@ function Test-SetApplicationInsightsPricingPlan
 		$appName = "app" + $rgname;
         $loc = Get-ProviderLocation ResourceManagement;
 		$kind = "web";
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
 		
-        $pricingPlan = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
+        $pricingPlan = Get-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
 
 		Assert-NotNull $pricingPlan
         Assert-AreEqual "Basic" $pricingPlan.PricingPlan
@@ -71,15 +71,15 @@ function Test-SetApplicationInsightsPricingPlan
 		$planName = "Application Insights Enterprise";
 		$dailyCapGB = 300;		
 		$stopSendEmail = $True;
-        Set-AzureRmApplicationInsightsPricingPlan -ResourceGroupName $rgname -Name $appName -PricingPlan $planName -DailyCapGB $dailyCapGB -DisableNotificationWhenHitCap;
+        Set-AzApplicationInsightsPricingPlan -ResourceGroupName $rgname -Name $appName -PricingPlan $planName -DailyCapGB $dailyCapGB -DisableNotificationWhenHitCap;
 
-		$pricingPlan2 = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
+		$pricingPlan2 = Get-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
 		Assert-NotNull $pricingPlan2
         Assert-AreEqual $planName $pricingPlan2.PricingPlan
 		Assert-AreEqual $dailyCapGB $pricingPlan2.Cap
 		Assert-AreEqual $stopSendEmail $pricingPlan2.StopSendNotificationWhenHitCap
 
-        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
+        Remove-AzApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {
@@ -90,7 +90,7 @@ function Test-SetApplicationInsightsPricingPlan
 
 <#
 .SYNOPSIS
-Test Get-AzureRmApplicationInsightsDailyCap
+Test Get-AzApplicationInsightsDailyCap
 #>
 function Test-GetApplicationInsightsDailyCap
 {
@@ -103,16 +103,16 @@ function Test-GetApplicationInsightsDailyCap
 		$appName = "app" + $rgname;
         $loc = Get-ProviderLocation ResourceManagement;
 		$kind = "web";
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
 		
-        $dailyCap = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
+        $dailyCap = Get-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
 
 		Assert-NotNull $dailyCap
         Assert-AreEqual 100 $dailyCap.Cap
 		Assert-AreEqual $False $dailyCap.StopSendNotificationWhenHitCap
         
-        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
+        Remove-AzApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {
@@ -124,7 +124,7 @@ function Test-GetApplicationInsightsDailyCap
 
 <#
 .SYNOPSIS
-Test Set-AzureRmApplicationInsightsDailyCap
+Test Set-AzApplicationInsightsDailyCap
 #>
 function Test-SetApplicationInsightsDailyCap
 {
@@ -137,19 +137,19 @@ function Test-SetApplicationInsightsDailyCap
 		$appName = "app" + $rgname;
         $loc = Get-ProviderLocation ResourceManagement;
 		$kind = "web";
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
 		
 		$dailyCapGB = 300;
 		$stopSendEmail = $True;
-        Set-AzureRmApplicationInsightsDailyCap -ResourceGroupName $rgname -Name $appName -DailyCapGB $dailyCapGB -DisableNotificationWhenHitCap;
+        Set-AzApplicationInsightsDailyCap -ResourceGroupName $rgname -Name $appName -DailyCapGB $dailyCapGB -DisableNotificationWhenHitCap;
 
-		$dailyCapInfo = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
+		$dailyCapInfo = Get-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludePricingPlan;
 		Assert-NotNull $dailyCapInfo        
 		Assert-AreEqual $dailyCapGB $dailyCapInfo.Cap
 		Assert-AreEqual $stopSendEmail $dailyCapInfo.StopSendNotificationWhenHitCap
 
-        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
+        Remove-AzApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {
@@ -160,7 +160,7 @@ function Test-SetApplicationInsightsDailyCap
 
 <#
 .SYNOPSIS
-Test Get-AzureRmApplicationInsightsDailyCapStatus
+Test Get-AzApplicationInsightsDailyCapStatus
 #>
 function Test-GetApplicationInsightsDailyCapStatus
 {
@@ -173,15 +173,15 @@ function Test-GetApplicationInsightsDailyCapStatus
 		$appName = "app" + $rgname;
         $loc = Get-ProviderLocation ResourceManagement;
 		$kind = "web";
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
 		
-        $dailyCapStatus = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludeDailyCapStatus;
+        $dailyCapStatus = Get-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -IncludeDailyCapStatus;
 
 		Assert-NotNull $dailyCapStatus
 		Assert-AreEqual $False $dailyCapStatus.IsCapped
         
-        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
+        Remove-AzApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {

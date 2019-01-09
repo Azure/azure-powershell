@@ -34,18 +34,18 @@ function Test-CreateNewWebAppSSLBinding
 	try
 	{
 		# Test - Create Ssl binding for web app
-		$createResult = New-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Thumbprint $thumbprint
+		$createResult = New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Thumbprint $thumbprint
 		Assert-AreEqual $prodHostname $createResult.Name
 
 		# Test - Create Ssl binding for web app slot
-		$createResult = New-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Thumbprint $thumbprintSlot
+		$createResult = New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Thumbprint $thumbprintSlot
 		Assert-AreEqual $slotHostname $createResult.Name
 	}
     finally
     {
 		# Cleanup
-		Remove-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
-		Remove-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
     }
 }
 
@@ -58,28 +58,28 @@ function Test-GetNewWebAppSSLBinding
 	try
 	{
 		# Setup - Create Ssl bindings
-		$createWebAppResult = New-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Thumbprint $thumbprint
-		$createWebAppSlotResult = New-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Thumbprint $thumbprintSlot
+		$createWebAppResult = New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Thumbprint $thumbprint
+		$createWebAppSlotResult = New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Thumbprint $thumbprintSlot
 
 		# Test - Get commands for web app
-		$getResult = Get-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname
+		$getResult = Get-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname
 		$currentHostNames = $getResult | Select -expand Name
 		Assert-True { $currentHostNames -contains $createWebAppResult.Name }
-		$getResult = Get-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname
+		$getResult = Get-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname
 		Assert-AreEqual $getResult.Name $createWebAppResult.Name
 
 		# Test - Get commands for web app slot
-		$getResult = Get-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot
+		$getResult = Get-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot
 		$currentHostNames = $getResult | Select -expand Name
 		Assert-True { $currentHostNames -contains $createWebAppSlotResult.Name }
-		$getResult = Get-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname
+		$getResult = Get-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname
 		Assert-AreEqual $getResult.Name $createWebAppSlotResult.Name
 	}
     finally
     {
 		# Cleanup
-		Remove-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
-		Remove-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
     }
 }
 
@@ -92,27 +92,27 @@ function Test-RemoveNewWebAppSSLBinding
 	try
 	{
 		# Setup - Create Ssl bindings
-		New-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Thumbprint $thumbprint
-		New-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Thumbprint $thumbprintSlot
+		New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Thumbprint $thumbprint
+		New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Thumbprint $thumbprintSlot
 
 		# Tests - Removing binding from web app and web app slot
-		Remove-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
-		Remove-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
 
 		# Assert
-		$res = Get-AzureRMWebAppSSLBinding  -ResourceGroupName $rgname -WebAppName  $appname
+		$res = Get-AzWebAppSSLBinding  -ResourceGroupName $rgname -WebAppName  $appname
 		$currentHostNames = $res | Select -expand Name
 		Assert-False { $currentHostNames -contains $prodHostname }
 
-		$res = Get-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot
+		$res = Get-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot
 		$currentHostNames = $res | Select -expand Name
 		Assert-False { $currentHostNames -contains $slotHostName }
 	}
     finally
     {
 		# Cleanup
-		Remove-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
-		Remove-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
     }
 }
 
@@ -125,39 +125,39 @@ function Test-WebAppSSLBindingPipeSupport
 	try
 	{
 		# Setup - Retrieve web app and web app slot objects
-		$webapp = Get-AzureRMWebApp  -ResourceGroupName $rgname -Name  $appname
-		$webappslot = Get-AzureRMWebAppSlot  -ResourceGroupName $rgname -Name  $appname -Slot $slot
+		$webapp = Get-AzWebApp  -ResourceGroupName $rgname -Name  $appname
+		$webappslot = Get-AzWebAppSlot  -ResourceGroupName $rgname -Name  $appname -Slot $slot
 
 		# Test - Create Ssl bindings using web app and web app slot objects
-		$createResult = $webapp | New-AzureRMWebAppSSLBinding -Name $prodHostName -Thumbprint $thumbprint
+		$createResult = $webapp | New-AzWebAppSSLBinding -Name $prodHostName -Thumbprint $thumbprint
 		Assert-AreEqual $prodHostName $createResult.Name
 
-		$createResult = $webappslot | New-AzureRMWebAppSSLBinding -Name $slotHostName -Thumbprint $thumbprintSlot
+		$createResult = $webappslot | New-AzWebAppSSLBinding -Name $slotHostName -Thumbprint $thumbprintSlot
 		Assert-AreEqual $slotHostName $createResult.Name
 
 		# Test - Retrieve Ssl bindings using web app and web app slot objects
-		$getResult = $webapp |  Get-AzureRMWebAppSSLBinding
+		$getResult = $webapp |  Get-AzWebAppSSLBinding
 		Assert-AreEqual 1 $getResult.Count
 
-		$getResult = $webappslot | Get-AzureRMWebAppSSLBinding
+		$getResult = $webappslot | Get-AzWebAppSSLBinding
 		Assert-AreEqual 1 $getResult.Count
 
 		# Test - Delete Ssl bindings using web app and web app slot objects
-		$webapp | Remove-AzureRMWebAppSSLBinding -Name $prodHostName -Force 
-		$res = $webapp | Get-AzureRMWebAppSSLBinding
+		$webapp | Remove-AzWebAppSSLBinding -Name $prodHostName -Force 
+		$res = $webapp | Get-AzWebAppSSLBinding
 		$currentHostNames = $res | Select -expand Name
 		Assert-False { $currentHostNames -contains $prodHostName }
 
-		$webappslot | Remove-AzureRMWebAppSSLBinding -Name $slotHostName -Force 
-		$res = $webappslot | Get-AzureRMWebAppSSLBinding
+		$webappslot | Remove-AzWebAppSSLBinding -Name $slotHostName -Force 
+		$res = $webappslot | Get-AzWebAppSSLBinding
 		$currentHostNames = $res | Select -expand Name
 		Assert-False { $currentHostNames -contains $slotHostName }
 	}
     finally
     {
 		# Cleanup
-		Remove-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostName -Force 
-		Remove-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostName -Force 
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostName -Force 
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostName -Force 
     }
 }
 
@@ -170,19 +170,19 @@ function Test-GetWebAppCertificate
 	try
 	{
 		# Setup - Create Ssl bindings
-		New-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Thumbprint $thumbprint
+		New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Thumbprint $thumbprint
 
 		# Tests - Retrieve web app certificate objects
-		$certificates = Get-AzureRMWebAppCertificate -ResourceGroupName $rgname
+		$certificates = Get-AzWebAppCertificate -ResourceGroupName $rgname
 		$thumbprints = $certificates | Select -expand Thumbprint
 		Assert-True { $thumbprints -contains $thumbprint }
 
-		$certificate = Get-AzureRMWebAppCertificate -ResourceGroupName $rgname -Thumbprint $thumbprint
+		$certificate = Get-AzWebAppCertificate -ResourceGroupName $rgname -Thumbprint $thumbprint
 		Assert-AreEqual $thumbprint $certificate.Thumbprint
 	}
     finally
     {
 		# Cleanup
-		Remove-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostName -Force 
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostName -Force 
     }
 }

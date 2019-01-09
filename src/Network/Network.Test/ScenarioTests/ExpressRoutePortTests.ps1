@@ -42,37 +42,37 @@ function Test-ExpressRoutePortCRUD
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
 
         # Create ExpressRoutePort
-        $vExpressRoutePort = New-AzureRmExpressRoutePort -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps
+        $vExpressRoutePort = New-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps
         Assert-NotNull $vExpressRoutePort
-        Assert-True { Check-CmdletReturnType "New-AzureRmExpressRoutePort" $vExpressRoutePort }
+        Assert-True { Check-CmdletReturnType "New-AzExpressRoutePort" $vExpressRoutePort }
         Assert-NotNull $vExpressRoutePort.Links
         Assert-True { $vExpressRoutePort.Links.Count -eq 2 }
         Assert-AreEqual $rname $vExpressRoutePort.Name
 
         # Get ExpressRoutePort
-        $vExpressRoutePort = Get-AzureRmExpressRoutePort -ResourceGroupName $rgname -Name $rname
+        $vExpressRoutePort = Get-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname
         Assert-NotNull $vExpressRoutePort
-        Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRoutePort" $vExpressRoutePort }
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRoutePort" $vExpressRoutePort }
         Assert-AreEqual $rname $vExpressRoutePort.Name
 
 		# Update ExpressRoutePort
 		$vExpressRoutePort.Links[0].AdminState = "Enabled"
-		Set-AzureRmExpressRoutePort -ExpressRoutePort $vExpressRoutePort
+		Set-AzExpressRoutePort -ExpressRoutePort $vExpressRoutePort
 
 		# Get ExpressRouteLink
-		$vExpressRouteLink = $vExpressRoutePort | Get-AzureRmExpressRoutePortLinkConfig -Name "Link1"
+		$vExpressRouteLink = $vExpressRoutePort | Get-AzExpressRoutePortLinkConfig -Name "Link1"
 		Assert-NotNull $vExpressRouteLink;
 		Assert-AreEqual $vExpressRouteLink.AdminState "Enabled"
 
 		# List ExpressRouteLinks
-		$vExpressRouteLinksList = $vExpressRoutePort | Get-AzureRmExpressRoutePortLinkConfig
+		$vExpressRouteLinksList = $vExpressRoutePort | Get-AzExpressRoutePortLinkConfig
 		Assert-True { $vExpressRouteLinksList.Count -eq 2 }
 
         # Remove ExpressRoutePort
-        $removeExpressRoutePort = Remove-AzureRmExpressRoutePort -ResourceGroupName $rgname -Name $rname -PassThru -Force
+        $removeExpressRoutePort = Remove-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname -PassThru -Force
         Assert-AreEqual $true $removeExpressRoutePort
     }
     finally

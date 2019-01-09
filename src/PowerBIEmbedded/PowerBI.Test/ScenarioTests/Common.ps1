@@ -41,7 +41,7 @@ function Get-Location
 	{
 		$namespace = "Microsoft.PowerBIDedicated"
 		$type = "capacities"
-		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace `
+		$location = Get-AzResourceProvider -ProviderNamespace $namespace `
         | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
 
 		if ($location -eq $null)

@@ -83,7 +83,7 @@ function New-TestDeployment
 
     Set-Content -Path $paramFile -Value $paramContent -Force | Out-Null;
 
-    New-AzureRmResourceGroupDeployment -Name $rgName -ResourceGroupName $rgName -TemplateFile $templateFile -TemplateParameterFile $paramFile | Out-Null;
+    New-AzResourceGroupDeployment -Name $rgName -ResourceGroupName $rgName -TemplateFile $templateFile -TemplateParameterFile $paramFile | Out-Null;
 
     Remove-Item -Path $paramFile -Force | Out-Null;
 }
@@ -107,20 +107,20 @@ function Get-TestDeployment
 
     $envContents.targetResourceGroupName = $rgName;
 
-    $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $virtualMachineName;
+    $vm = Get-AzVM -ResourceGroupName $rgName -Name $virtualMachineName;
     $envContents.virtualMachineId = $vm.Id;
     $envContents.virtualMachineName = $vm.Name;
 
-    $storage = Get-AzureRmStorageAccount -ResourceGroupName $rgName -Name $storageAccountName;
+    $storage = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storageAccountName;
     $envContents.storageId = $storage.Id;
     $envContents.storageName = $storage.Name;
 
-    $nic = Get-AzureRmNetworkInterface -ResourceGroupName $rgName -Name $networkInterfaceName;
+    $nic = Get-AzNetworkInterface -ResourceGroupName $rgName -Name $networkInterfaceName;
     $envContents.networkInterfaceId = $nic.Id;
     $envContents.networkInterfaceName = $nic.Name;
     $envContents.localIpAddress = $nic.IpConfigurations[0].PrivateIpAddress;
 
-    $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Name $networkSecurityGroupName;
+    $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName $rgName -Name $networkSecurityGroupName;
     $envContents.networkSecurityGroupId = $nsg.Id;
     $envContents.networkSecurityGroupName = $nsg.Name;
 
@@ -142,7 +142,7 @@ function Get-TestWatcherDeployment
 
     $envContents = Get-TestDeployment $rgName $location $virtualMachineName $storageAccountName $routeTableName $networkInterfaceName $networkSecurityGroupName $virtualNetworkName;
 
-    Set-AzureRmVMExtension -ResourceGroupName $rgName -Location $location -VMName $virtualMachineName -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" | Out-Null;
+    Set-AzVMExtension -ResourceGroupName $rgName -Location $location -VMName $virtualMachineName -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" | Out-Null;
 
     return $envContents;
 }
@@ -167,12 +167,12 @@ function Get-TestDeploymentWithVpnGateway
     $publicIpName = Get-ResourceName;
     $vpnIpCfgName = Get-ResourceName;
 
-    $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix "10.0.1.0/24";
-    $vnet = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -Subnet $subnet -AddressPrefix "10.0.0.0/8";
-    $publicIp = New-AzureRMPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName -Location $location -AllocationMethod "Dynamic";
+    $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix "10.0.1.0/24";
+    $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -Subnet $subnet -AddressPrefix "10.0.0.0/8";
+    $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName -Location $location -AllocationMethod "Dynamic";
 
-    $ipConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vpnIpCfgName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $publicIp.Id;
-    $vpn = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -Name $vpnGatewayName -Location $location -IpConfigurations $ipConfig -VpnType "RouteBased";
+    $ipConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vpnIpCfgName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $publicIp.Id;
+    $vpn = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -Name $vpnGatewayName -Location $location -IpConfigurations $ipConfig -VpnType "RouteBased";
 
     $envContents.vpnGatewayId = $vpn.Id;
     $envContents.vpnGatewayName = $vpn.Name;

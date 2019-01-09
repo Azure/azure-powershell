@@ -23,7 +23,7 @@ function Get-Location
 	{
 		$namespace = "Microsoft.DevTestLab"
 		$type = "sites"
-		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace `
+		$location = Get-AzResourceProvider -ProviderNamespace $namespace `
         | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
 
 		if ($location -eq $null)
@@ -66,8 +66,8 @@ function Setup-Test-ResourceGroup
     $location = Get-Location
 
     #Setup
-    New-AzureRmResourceGroup -Name $rgname -Location $location
-    New-AzureRmResourceGroupDeployment -Name $labName -ResourceGroupName $rgname `
+    New-AzResourceGroup -Name $rgname -Location $location
+    New-AzResourceGroupDeployment -Name $labName -ResourceGroupName $rgname `
     -TemplateParameterObject @{ newLabName = "$labName" } `
     -TemplateFile https://raw.githubusercontent.com/Azure/azure-devtestlab/master/Samples/101-dtl-create-lab/azuredeploy.json
 }
@@ -92,5 +92,5 @@ function Destroy-Test-ResourceGroup
 {
     Param($_resourceGroupName)
 
-    Remove-AzureRmResourceGroup -Name $_resourceGroupName -Force
+    Remove-AzResourceGroup -Name $_resourceGroupName -Force
 }

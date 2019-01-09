@@ -58,11 +58,11 @@ function Clean-ResourceGroup($rgname)
     if ($assemblies -notcontains 'Microsoft.Azure.Test.HttpRecorder.HttpMockServer' `
 		-or $assemblies -notcontains 'Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode' `
 		-or [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzureRmResourceGroup -Name $rgname -Force
+        Remove-AzResourceGroup -Name $rgname -Force
     }
 }
 
-function New-AzureRmRoleAssignmentWithId
+function New-AzRoleAssignmentWithId
 {
     [CmdletBinding()]
     param(
@@ -148,7 +148,7 @@ function New-AzureRmRoleAssignmentWithId
     $cmdlet.ExecuteCmdlet()
 }
 
-function New-AzureRmRoleDefinitionWithId
+function New-AzRoleDefinitionWithId
 {
     [CmdletBinding()]
     param(

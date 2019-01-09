@@ -18,7 +18,7 @@ Get Subscription ID
 #>
 function Get-SubscriptionID
 {
-  $context = Get-AzureRmContext
+  $context = Get-AzContext
   return $context.Subscription.SubscriptionId
 }
 

@@ -50,36 +50,36 @@ function Test-ApplicationSecurityGroupCRUDMinimalParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create ApplicationSecurityGroup
-        $vApplicationSecurityGroup = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -Location $location;
+        $vApplicationSecurityGroup = New-AzApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -Location $location;
         Assert-NotNull $vApplicationSecurityGroup;
-        Assert-True { Check-CmdletReturnType "New-AzureRmApplicationSecurityGroup" $vApplicationSecurityGroup };
+        Assert-True { Check-CmdletReturnType "New-AzApplicationSecurityGroup" $vApplicationSecurityGroup };
         Assert-AreEqual $rname $vApplicationSecurityGroup.Name;
 
         # Get ApplicationSecurityGroup
-        $vApplicationSecurityGroup = Get-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname;
+        $vApplicationSecurityGroup = Get-AzApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vApplicationSecurityGroup;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmApplicationSecurityGroup" $vApplicationSecurityGroup };
+        Assert-True { Check-CmdletReturnType "Get-AzApplicationSecurityGroup" $vApplicationSecurityGroup };
         Assert-AreEqual $rname $vApplicationSecurityGroup.Name;
 
         # Get all ApplicationSecurityGroups in resource group
-        $listApplicationSecurityGroup = Get-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname;
+        $listApplicationSecurityGroup = Get-AzApplicationSecurityGroup -ResourceGroupName $rgname;
         Assert-NotNull ($listApplicationSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all ApplicationSecurityGroups in subscription
-        $listApplicationSecurityGroup = Get-AzureRmApplicationSecurityGroup;
+        $listApplicationSecurityGroup = Get-AzApplicationSecurityGroup;
         Assert-NotNull ($listApplicationSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove ApplicationSecurityGroup
-        $job = Remove-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job = Remove-AzApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeApplicationSecurityGroup = $job | Receive-Job;
         Assert-AreEqual $true $removeApplicationSecurityGroup;
 
         # Get ApplicationSecurityGroup should fail
-        Assert-ThrowsContains { Get-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname } "not found";
+        Assert-ThrowsContains { Get-AzApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname } "not found";
     }
     finally
     {
@@ -104,38 +104,38 @@ function Test-ApplicationSecurityGroupCRUDAllParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create ApplicationSecurityGroup
-        $vApplicationSecurityGroup = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -Location $location -Tag $Tag;
+        $vApplicationSecurityGroup = New-AzApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -Location $location -Tag $Tag;
         Assert-NotNull $vApplicationSecurityGroup;
-        Assert-True { Check-CmdletReturnType "New-AzureRmApplicationSecurityGroup" $vApplicationSecurityGroup };
+        Assert-True { Check-CmdletReturnType "New-AzApplicationSecurityGroup" $vApplicationSecurityGroup };
         Assert-AreEqual $rname $vApplicationSecurityGroup.Name;
         Assert-AreEqualObjectProperties $Tag $vApplicationSecurityGroup.Tag;
 
         # Get ApplicationSecurityGroup
-        $vApplicationSecurityGroup = Get-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname;
+        $vApplicationSecurityGroup = Get-AzApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vApplicationSecurityGroup;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmApplicationSecurityGroup" $vApplicationSecurityGroup };
+        Assert-True { Check-CmdletReturnType "Get-AzApplicationSecurityGroup" $vApplicationSecurityGroup };
         Assert-AreEqual $rname $vApplicationSecurityGroup.Name;
         Assert-AreEqualObjectProperties $Tag $vApplicationSecurityGroup.Tag;
 
         # Get all ApplicationSecurityGroups in resource group
-        $listApplicationSecurityGroup = Get-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname;
+        $listApplicationSecurityGroup = Get-AzApplicationSecurityGroup -ResourceGroupName $rgname;
         Assert-NotNull ($listApplicationSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all ApplicationSecurityGroups in subscription
-        $listApplicationSecurityGroup = Get-AzureRmApplicationSecurityGroup;
+        $listApplicationSecurityGroup = Get-AzApplicationSecurityGroup;
         Assert-NotNull ($listApplicationSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove ApplicationSecurityGroup
-        $job = Remove-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job = Remove-AzApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeApplicationSecurityGroup = $job | Receive-Job;
         Assert-AreEqual $true $removeApplicationSecurityGroup;
 
         # Get ApplicationSecurityGroup should fail
-        Assert-ThrowsContains { Get-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname } "not found";
+        Assert-ThrowsContains { Get-AzApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname } "not found";
     }
     finally
     {

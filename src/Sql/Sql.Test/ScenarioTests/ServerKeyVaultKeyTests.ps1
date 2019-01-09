@@ -23,11 +23,11 @@ function Test-AddServerKeyVaultKey
 
 	try
 	{
-		$job = Add-AzureRmSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId -AsJob
+		$job = Add-AzSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId -AsJob
 		$job | Wait-Job
 		$keyResult = $job.Output
 
-		# $keyResult = Add-AzureRmSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
+		# $keyResult = Add-AzSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
 
 		Assert-AreEqual $params.keyId $keyResult.Uri 
 		Assert-AreEqual $params.serverKeyName $keyResult.ServerKeyName 
@@ -49,11 +49,11 @@ function Test-GetServerKeyVaultKey
 
 	try
 	{
-		$keyResult = Add-AzureRmSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
+		$keyResult = Add-AzSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
 		Assert-AreEqual $params.keyId $keyResult.Uri
 		Assert-AreEqual $params.serverKeyName $keyResult.ServerKeyName 
 
-		$keyGet = Get-AzureRmSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
+		$keyGet = Get-AzSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
 		Assert-AreEqual $params.keyId $keyGet.Uri
 		Assert-AreEqual $params.serverKeyName $keyGet.ServerKeyName
 	}
@@ -74,15 +74,15 @@ function Test-RemoveServerKeyVaultKey
 
 	try
 	{
-		$keyResult = Add-AzureRmSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
+		$keyResult = Add-AzSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
 		Assert-AreEqual $params.keyId $keyResult.Uri 
 		Assert-AreEqual $params.serverKeyName $keyResult.ServerKeyName 
 
-		$keyGet = Get-AzureRmSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
+		$keyGet = Get-AzSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
 		Assert-AreEqual $params.keyId $keyGet.Uri
 		Assert-AreEqual $params.serverKeyName $keyGet.ServerKeyName
 
-		$job = Remove-AzureRmSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId -AsJob
+		$job = Remove-AzSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId -AsJob
 		$job | Wait-Job
 		$keyRemove = $job.Output
 

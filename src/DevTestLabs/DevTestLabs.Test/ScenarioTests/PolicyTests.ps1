@@ -16,11 +16,11 @@
 .SYNOPSIS
 Tests AzureRmDtlVMsPerLabPolicy
 #>
-function Test-AzureRmDtlVMsPerLabPolicy
+function Test-AzDtlVMsPerLabPolicy
 {
     # Max VMs per lab policy
-    $policy = Set-AzureRmDtlVMsPerLabPolicy -MaxVMs 5 -LabName $labName -ResourceGroupName $rgname
-    $readBack = Get-AzureRmDtlVMsPerLabPolicy -LabName $labName -ResourceGroupName $rgname
+    $policy = Set-AzDtlVMsPerLabPolicy -MaxVMs 5 -LabName $labName -ResourceGroupName $rgname
+    $readBack = Get-AzDtlVMsPerLabPolicy -LabName $labName -ResourceGroupName $rgname
 
     Invoke-For-Both $policy $readBack `
     {
@@ -34,10 +34,10 @@ function Test-AzureRmDtlVMsPerLabPolicy
 .SYNOPSIS
 Tests AzureRmDtlVMsPerUserPolicy
 #>
-function Test-AzureRmDtlVMsPerUserPolicy
+function Test-AzDtlVMsPerUserPolicy
 {
-    $policy = Set-AzureRmDtlVMsPerUserPolicy -MaxVMs 5 -LabName $labName -ResourceGroupName $rgname
-    $readBack = Get-AzureRmDtlVMsPerUserPolicy -LabName $labName -ResourceGroupName $rgname
+    $policy = Set-AzDtlVMsPerUserPolicy -MaxVMs 5 -LabName $labName -ResourceGroupName $rgname
+    $readBack = Get-AzDtlVMsPerUserPolicy -LabName $labName -ResourceGroupName $rgname
     Invoke-For-Both $policy $readBack `
     {
         Param($x)
@@ -50,10 +50,10 @@ function Test-AzureRmDtlVMsPerUserPolicy
 .SYNOPSIS
 Tests AzureRmDtlAllowedVMSizesPolicy
 #>
-function Test-AzureRmDtlAllowedVMSizesPolicy
+function Test-AzDtlAllowedVMSizesPolicy
 {
-    $policy = Set-AzureRmDtlAllowedVMSizesPolicy -Enable -LabName $labName -ResourceGroupName $rgname -VmSizes Standard_A3, Standard_A0
-    $readBack = Get-AzureRmDtlAllowedVMSizesPolicy -LabName $labName -ResourceGroupName $rgname
+    $policy = Set-AzDtlAllowedVMSizesPolicy -Enable -LabName $labName -ResourceGroupName $rgname -VmSizes Standard_A3, Standard_A0
+    $readBack = Get-AzDtlAllowedVMSizesPolicy -LabName $labName -ResourceGroupName $rgname
     Invoke-For-Both $policy $readBack `
     {
         Param($x)
@@ -66,10 +66,10 @@ function Test-AzureRmDtlAllowedVMSizesPolicy
 .SYNOPSIS
 Tests AzureRmDtlAllowedVMSizesPolicy
 #>
-function Test-AzureRmDtlAutoShutdownPolicy
+function Test-AzDtlAutoShutdownPolicy
 {
-    $policy = Set-AzureRmDtlAutoShutdownPolicy -Time "13:30:00" -LabName $labName -ResourceGroupName $rgname
-    $readBack = Get-AzureRmDtlAutoShutdownPolicy -LabName $labName -ResourceGroupName $rgname
+    $policy = Set-AzDtlAutoShutdownPolicy -Time "13:30:00" -LabName $labName -ResourceGroupName $rgname
+    $readBack = Get-AzDtlAutoShutdownPolicy -LabName $labName -ResourceGroupName $rgname
     Invoke-For-Both $policy $readBack `
     {
         Param($x)
@@ -82,10 +82,10 @@ function Test-AzureRmDtlAutoShutdownPolicy
 .SYNOPSIS
 Tests AzureRmDtlAutoStartPolicy
 #>
-function Test-AzureRmDtlAutoStartPolicy
+function Test-AzDtlAutoStartPolicy
 {
-    $policy = Set-AzureRmDtlAutoStartPolicy -Time "13:30:00" -LabName $labName -ResourceGroupName $rgname
-    $readBack = Get-AzureRmDtlAutoStartPolicy -LabName $labName -ResourceGroupName $rgname
+    $policy = Set-AzDtlAutoStartPolicy -Time "13:30:00" -LabName $labName -ResourceGroupName $rgname
+    $readBack = Get-AzDtlAutoStartPolicy -LabName $labName -ResourceGroupName $rgname
     Invoke-For-Both $policy $readBack `
     {
         Param($x)
@@ -93,8 +93,8 @@ function Test-AzureRmDtlAutoStartPolicy
         Assert-AreEqual "1330" $x.WeeklyRecurrence.Time
     }
 
-    $policy = Set-AzureRmDtlAutoStartPolicy -Time "13:30:00" -LabName $labName -ResourceGroupName $rgname -Days Monday, Tuesday
-    $readBack = Get-AzureRmDtlAutoStartPolicy -LabName $labName -ResourceGroupName $rgname
+    $policy = Set-AzDtlAutoStartPolicy -Time "13:30:00" -LabName $labName -ResourceGroupName $rgname -Days Monday, Tuesday
+    $readBack = Get-AzDtlAutoStartPolicy -LabName $labName -ResourceGroupName $rgname
     Invoke-For-Both $policy $readBack `
     {
         Param($x)

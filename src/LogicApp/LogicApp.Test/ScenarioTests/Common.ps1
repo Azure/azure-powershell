@@ -41,7 +41,7 @@ function Get-ProviderLocation($provider)
 		if($provider.Contains("/"))  
 		{  
 			$type = $provider.Substring($namespace.Length + 1)  
-			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+			$location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
   
 			if ($location -eq $null) 
 			{  
@@ -75,7 +75,7 @@ function TestSetup-CreateResourceGroup
 {
     $resourceGroupName = getAssetName
 	$rglocation = Get-ProviderLocation "North Europe"
-    $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $rglocation -Force
+    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation -Force
 	
 	return $resourceGroup
 }
@@ -87,7 +87,7 @@ Creates named resource group to use in tests
 function TestSetup-CreateNamedResourceGroup([string]$resourceGroupName)
 {
 	$location = Get-LocationName
-    $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $location -Force
+    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $location -Force
 	
 	return $resourceGroup
 }
@@ -105,7 +105,7 @@ function TestSetup-CreateAppServicePlan ([string]$resourceGroupName, [string]$Ap
 		{
 			$PropertiesObject = @{}
 			$Sku = @{Name='S1'; Tier='Standard'; Size='S1'; Family='S'; Capacity=1}
-			$Plan = New-AzureRmResource -Name $AppServicePlan -Location "West US" -ResourceGroupName $resourceGroupName -ResourceType "Microsoft.Web/serverfarms" -ApiVersion 2015-08-01 -SkuObject $Sku -PropertyObject $PropertiesObject -Force	
+			$Plan = New-AzResource -Name $AppServicePlan -Location "West US" -ResourceGroupName $resourceGroupName -ResourceType "Microsoft.Web/serverfarms" -ApiVersion 2015-08-01 -SkuObject $Sku -PropertyObject $PropertiesObject -Force	
 			return $Plan
 		}
 	}
@@ -120,7 +120,7 @@ Creates a new Integration account
 function TestSetup-CreateIntegrationAccount ([string]$resourceGroupName, [string]$integrationAccountName)
 {		
 	$location = Get-LocationName
-	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
+	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	return $integrationAccount
 }
 
@@ -131,13 +131,13 @@ Creates a new workflow
 function TestSetup-CreateWorkflow ([string]$resourceGroupName, [string]$workflowName, [string]$AppServicePlan)
 {		
 	$rglocation = Get-ProviderLocation "North Europe"
-    $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $rglocation -Force
+    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation -Force
 
 	TestSetup-CreateAppServicePlan $resourceGroupName $AppServicePlan
 
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowDefinition.json"
 	$parameterFilePath = Join-Path "Resources" "TestSimpleWorkflowParameter.json"
-	$workflow = $resourceGroup | New-AzureRmLogicApp -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
+	$workflow = $resourceGroup | New-AzLogicApp -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
     return $workflow
 }
 

@@ -29,12 +29,12 @@ function Test-CreateGetRemoveMLCommitmentPlan
             $commitmentPlanName = Get-CommitmentPlanName
 
             LogOutput "Creating resource group: $resourceGroupName"
-            $group = New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+            $group = New-AzResourceGroup -Name $resourceGroupName -Location $location
             LogOutput("Created resource group: $($group.ResourceId)")
 
             # Create a commitment plan and validate it
             LogOutput "Creating commitment plan: $commitmentPlanName"
-            $plan = New-AzureRmMlCommitmentPlan -ResourceGroupName $resourceGroupName -Location $location -Name $commitmentPlanName -SkuName "S1" -SkuTier "Standard" -Force
+            $plan = New-AzMlCommitmentPlan -ResourceGroupName $resourceGroupName -Location $location -Name $commitmentPlanName -SkuName "S1" -SkuTier "Standard" -Force
             Assert-NotNull $plan
 
             $planId = $plan.Id
@@ -43,12 +43,12 @@ function Test-CreateGetRemoveMLCommitmentPlan
 
             # Delete the commitment plan
             LogOutput "Removing commitment plan $commitmentPlanName from resource group $resourceGroupName"
-            $plan | Remove-AzureRmMlCommitmentPlan -Force
+            $plan | Remove-AzMlCommitmentPlan -Force
             LogOutput "Commitment plan $commitmentPlanName was removed."
             $planDeleted = $true
 
             # Validate that the commitment plan no longer exists 
-            Assert-ThrowsContains { Get-AzureRmMlCommitmentPlan -ResourceGroupName $resourceGroupName -Name $commitmentPlanName } "ResourceNotFound"
+            Assert-ThrowsContains { Get-AzMlCommitmentPlan -ResourceGroupName $resourceGroupName -Name $commitmentPlanName } "ResourceNotFound"
         }
         finally
         {
@@ -82,12 +82,12 @@ function Test-UpdateMLCommitmentPlan
             $commitmentPlanName = Get-CommitmentPlanName
 
             LogOutput "Creating resource group: $resourceGroupName"
-            $group = New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+            $group = New-AzResourceGroup -Name $resourceGroupName -Location $location
             LogOutput("Created resource group: $($group.ResourceId)")
 
             # Create a commitment plan and validate it
             LogOutput "Creating commitment plan: $commitmentPlanName"
-            $plan = New-AzureRmMlCommitmentPlan -ResourceGroupName $resourceGroupName -Location $location -Name $commitmentPlanName -SkuName "S1" -SkuTier "Standard" -Force
+            $plan = New-AzMlCommitmentPlan -ResourceGroupName $resourceGroupName -Location $location -Name $commitmentPlanName -SkuName "S1" -SkuTier "Standard" -Force
             Assert-NotNull $plan
 
             $planId = $plan.Id
@@ -96,16 +96,16 @@ function Test-UpdateMLCommitmentPlan
 
             # Update the commitment plan
             LogOutput "Updating commitment plan $planId"
-            Update-AzureRmMlCommitmentPlan -ResourceGroupName $resourceGroupName -Name $commitmentPlanName -SkuName "S2" -SkuTier "Standard" -SkuCapacity 2 -Tag @{"tag1" = "value1"} -Force
+            Update-AzMlCommitmentPlan -ResourceGroupName $resourceGroupName -Name $commitmentPlanName -SkuName "S2" -SkuTier "Standard" -SkuCapacity 2 -Tag @{"tag1" = "value1"} -Force
             
             # Delete the commitment plan
             LogOutput "Removing commitment plan $commitmentPlanName from resource group $resourceGroupName"
-            $plan | Remove-AzureRmMlCommitmentPlan -Force
+            $plan | Remove-AzMlCommitmentPlan -Force
             LogOutput "Commitment plan $commitmentPlanName was removed."
             $planDeleted = $true
 
             # Validate that the commitment plan no longer exists 
-            Assert-ThrowsContains { Get-AzureRmMlCommitmentPlan -ResourceGroupName $resourceGroupName -Name $commitmentPlanName } "ResourceNotFound"
+            Assert-ThrowsContains { Get-AzMlCommitmentPlan -ResourceGroupName $resourceGroupName -Name $commitmentPlanName } "ResourceNotFound"
         }
         finally
         {
@@ -139,11 +139,11 @@ function Test-ListMLCommitmentPlans
             $secondCommitmentPlanName = Get-CommitmentPlanName
 
             LogOutput "Creating first resource group: $firstResourceGroupName"
-            $firstGroup = New-AzureRmResourceGroup -Name $firstResourceGroupName -Location $location
+            $firstGroup = New-AzResourceGroup -Name $firstResourceGroupName -Location $location
             LogOutput("Created first resource group: $($firstGroup.ResourceId)")
 
             LogOutput "Creating first commitment plan: $firstCommitmentPlanName"
-            $firstPlan = New-AzureRmMlCommitmentPlan -ResourceGroupName $firstResourceGroupName -Location $location -Name $firstCommitmentPlanName -SkuName "S1" -SkuTier "Standard" -Force
+            $firstPlan = New-AzMlCommitmentPlan -ResourceGroupName $firstResourceGroupName -Location $location -Name $firstCommitmentPlanName -SkuName "S1" -SkuTier "Standard" -Force
             Assert-NotNull $firstPlan
 
             $firstPlanId = $firstPlan.Id
@@ -151,7 +151,7 @@ function Test-ListMLCommitmentPlans
             ValidateCommitmentPlanResult $firstResourceGroupName $firstCommitmentPlanName $location $firstPlan
 
             LogOutput "Creating second commitment plan: $secondCommitmentPlanName"
-            $secondPlan = New-AzureRmMlCommitmentPlan -ResourceGroupName $firstResourceGroupName -Location $location -Name $secondCommitmentPlanName -SkuName "S1" -SkuTier "Standard" -Force
+            $secondPlan = New-AzMlCommitmentPlan -ResourceGroupName $firstResourceGroupName -Location $location -Name $secondCommitmentPlanName -SkuName "S1" -SkuTier "Standard" -Force
             Assert-NotNull $secondPlan
 
             $secondPlanId = $secondPlan.Id
@@ -163,11 +163,11 @@ function Test-ListMLCommitmentPlans
             $thirdCommitmentPlanName = Get-CommitmentPlanName
 
             LogOutput "Creating second resource group: $secondResourceGroupName"
-            $secondGroup = New-AzureRmResourceGroup -Name $secondResourceGroupName -Location $location
+            $secondGroup = New-AzResourceGroup -Name $secondResourceGroupName -Location $location
             LogOutput("Created second resource group: $($secondResourceGroupName.ResourceId)")
 
             LogOutput "Creating third commitment plan: $thirdCommitmentPlanName"
-            $thirdPlan = New-AzureRmMlCommitmentPlan -ResourceGroupName $secondResourceGroupName -Location $location -Name $thirdCommitmentPlanName -SkuName "S1" -SkuTier "Standard" -Force
+            $thirdPlan = New-AzMlCommitmentPlan -ResourceGroupName $secondResourceGroupName -Location $location -Name $thirdCommitmentPlanName -SkuName "S1" -SkuTier "Standard" -Force
             Assert-NotNull $thirdPlan
 
             $thirdPlanId = $thirdPlan.Id
@@ -176,7 +176,7 @@ function Test-ListMLCommitmentPlans
 
             # List all commitment plans in the first resource group
             LogOutput "Listing all commitment plans in first resource group: $firstResourceGroupName"
-            $plansInFirstGroup = Get-AzureRmMlCommitmentPlan -ResourceGroupName $firstResourceGroupName
+            $plansInFirstGroup = Get-AzMlCommitmentPlan -ResourceGroupName $firstResourceGroupName
             Assert-NotNull $plansInFirstGroup
             LogOutput "Group $firstResourceGroupName contains $($plansInFirstGroup.Count) commitment plans."
             Assert-AreEqual 2 $plansInFirstGroup.Count
@@ -189,7 +189,7 @@ function Test-ListMLCommitmentPlans
 
             # List all commitment plans in the second resource group
             LogOutput "Listing all commitment plans in second resource group: $secondResourceGroupName"
-            $plansInSecondGroup = Get-AzureRmMlCommitmentPlan -ResourceGroupName $secondResourceGroupName
+            $plansInSecondGroup = Get-AzMlCommitmentPlan -ResourceGroupName $secondResourceGroupName
             Assert-NotNull $plansInSecondGroup
             LogOutput "Group $secondResourceGroupName contains $($plansInSecondGroup.Count) commitment plans."
             Assert-AreEqual 1 $plansInSecondGroup.Count
@@ -198,7 +198,7 @@ function Test-ListMLCommitmentPlans
             Assert-True { $plansInSecondGroup[0].Id -eq $thirdPlan.Id }
 
             # List all services in the subscription
-            $plansInSubscription = Get-AzureRmMlCommitmentPlan
+            $plansInSubscription = Get-AzMlCommitmentPlan
             Assert-NotNull $plansInSubscription
             LogOutput "Found $($plansInSubscription.Count) commitment plans in the current subscription."
             Assert-False { $plansInSubscription.Count -lt 3 }
@@ -246,7 +246,7 @@ function RunCommitmentPlansTest([ScriptBlock] $testScript)
 function ValidateCommitmentPlanResult([string] $rgName, [string] $commitmentPlanName, [string] $location, `
                     [Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan] $plan)
 {
-    $subscriptionId = ((Get-AzureRmContext).Subscription).SubscriptionId        
+    $subscriptionId = ((Get-AzContext).Subscription).SubscriptionId        
     $expectedResourceId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.MachineLearning/commitmentPlans/$commitmentPlanName"
     $planId = $plan.Id
     LogOutput "Checking that the created commitment plan's resource id ($planId) matches the expected value ($expectedResourceId)"

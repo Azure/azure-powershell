@@ -16,9 +16,9 @@
 .SYNOPSIS
 Get security compliances on a subscription
 #>
-function Get-AzureRmSecurityCompliance-SubscriptionScope
+function Get-AzSecurityCompliance-SubscriptionScope
 {
-    $compliances = Get-AzureRmSecurityCompliance
+    $compliances = Get-AzSecurityCompliance
 	Validate-Compliances $compliances
 }
 
@@ -26,10 +26,10 @@ function Get-AzureRmSecurityCompliance-SubscriptionScope
 .SYNOPSIS
 Get security compliance on a specific day
 #>
-function Get-AzureRmSecurityCompliance-SubscriptionLevelResource
+function Get-AzSecurityCompliance-SubscriptionLevelResource
 {
-	$compliance = Get-AzureRmSecurityCompliance | Select -First 1
-    $fetchedCompliance = Get-AzureRmSecurityCompliance -Name $compliance.Name
+	$compliance = Get-AzSecurityCompliance | Select -First 1
+    $fetchedCompliance = Get-AzSecurityCompliance -Name $compliance.Name
 	Validate-Compliance $fetchedCompliance
 }
 
@@ -37,17 +37,17 @@ function Get-AzureRmSecurityCompliance-SubscriptionLevelResource
 .SYNOPSIS
 Get security compliance by a resource ID
 #>
-function Get-AzureRmSecurityCompliance-ResourceId
+function Get-AzSecurityCompliance-ResourceId
 {
-	$compliance = Get-AzureRmSecurityCompliance | Select -First 1
+	$compliance = Get-AzSecurityCompliance | Select -First 1
 
-	$location = Get-AzureRmSecurityLocation | Select -First 1
+	$location = Get-AzSecurityLocation | Select -First 1
 
-	$context = Get-AzureRmContext
+	$context = Get-AzContext
 	$subscriptionId = $context.Subscription.Id
 	
 
-    $fetchedCompliance = Get-AzureRmSecurityCompliance -ResourceId "/subscriptions/$subscriptionId/providers/Microsoft.Seucurity/locations/$location/compliances/$($compliance.Name)"
+    $fetchedCompliance = Get-AzSecurityCompliance -ResourceId "/subscriptions/$subscriptionId/providers/Microsoft.Seucurity/locations/$location/compliances/$($compliance.Name)"
 	Validate-Compliances $fetchedCompliance
 }
 

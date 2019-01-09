@@ -28,7 +28,7 @@ function Test-CreateElasticPool
 		## Create Dtu based pool with DtuPoolParameterSet
 		# Create a pool with all values
 		$poolName = Get-ElasticPoolName
-		$job = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$job = New-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-ElasticPoolName $poolName -Edition Standard -Dtu 200 -DatabaseDtuMin 10 -DatabaseDtuMax 100 -StorageMB 204800 -AsJob
 		$job | Wait-Job
 		$ep1 = $job.Output
@@ -42,7 +42,7 @@ function Test-CreateElasticPool
 
 		# Create a pool using piping and default values
 		$poolName = Get-ElasticPoolName
-		$ep2 = $server | New-AzureRmSqlElasticPool -ElasticPoolName $poolName
+		$ep2 = $server | New-AzSqlElasticPool -ElasticPoolName $poolName
 		Assert-NotNull $ep2
 	}
 	finally
@@ -66,7 +66,7 @@ function Test-CreateVcoreElasticPool
 	{
 		## Create Vcore based pool with all VcorePoolParameterSet
 		$poolName = Get-ElasticPoolName
-		$job = New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$job = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 				-ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4  -DatabaseVCoreMin 0.1 -DatabaseVCoreMax 2 -AsJob
 		$job | Wait-Job
 		$ep1 = $job.Output
@@ -80,7 +80,7 @@ function Test-CreateVcoreElasticPool
 
 		# Create BC_Gen4_1 elastic pool which is not supported and check the error Message
 		$poolName = Get-ElasticPoolName
-		Assert-ThrowsContains -script { New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		Assert-ThrowsContains -script { New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 		-ElasticPoolName $poolName -VCore 1 -Edition BusinessCritial -ComputeGeneration BC_Gen4 -StorageMB 204800 } -message "Mismatch between SKU name 'BC_Gen4_1' and tier 'BusinessCritical'"
 	}
 	finally
@@ -105,7 +105,7 @@ function Test-CreateVcoreElasticPoolWithLicenseType
 
 		## Create default Vcore based pool
 		$poolName = Get-ElasticPoolName
-		$ep1 = New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$ep1 = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 				-ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4  -DatabaseVCoreMin 0.1 -DatabaseVCoreMax 2
 
 		Assert-NotNull $ep1
@@ -113,7 +113,7 @@ function Test-CreateVcoreElasticPoolWithLicenseType
 
 		## Create Vcore based pool with BasePrice license type
 		$poolName = Get-ElasticPoolName
-		$ep2 = New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$ep2 = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 				-ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4  -DatabaseVCoreMin 0.1 -DatabaseVCoreMax 2 -LicenseType BasePrice
 
 		Assert-NotNull $ep2
@@ -121,7 +121,7 @@ function Test-CreateVcoreElasticPoolWithLicenseType
 
 		## Create Vcore based pool with LicenseIncluded license type
 		$poolName = Get-ElasticPoolName
-		$ep3 = New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$ep3 = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 				-ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4  -DatabaseVCoreMin 0.1 -DatabaseVCoreMax 2 -LicenseType LicenseIncluded
 
 		Assert-NotNull $ep3
@@ -148,7 +148,7 @@ function Test-CreateElasticPoolWithZoneRedundancy
 	{
 		# Create a pool with zone redundancy set to true
 		$poolName = Get-ElasticPoolName
-		$ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$ep1 = New-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-ElasticPoolName $poolName -Edition Premium -ZoneRedundant
 		Assert-NotNull $ep1
 		Assert-AreEqual Premium $ep1.Edition
@@ -157,7 +157,7 @@ function Test-CreateElasticPoolWithZoneRedundancy
 
 		# Create a pool with no zone redundancy set
 		$poolName = Get-ElasticPoolName
-		$ep2 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$ep2 = New-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-ElasticPoolName $poolName -Edition Premium -Dtu 125
 		Assert-NotNull $ep2
 		Assert-AreEqual 125 $ep2.Capacity
@@ -183,12 +183,12 @@ function Test-UpdateElasticPool
 	$server = Create-ServerForTest $rg $location
 
 	$poolName = Get-ElasticPoolName
-	$ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+	$ep1 = New-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 		-ElasticPoolName $poolName -Edition Standard -Dtu 200 -DatabaseDtuMin 10 -DatabaseDtuMax 100
 	Assert-NotNull $ep1
 
 	$poolName = Get-ElasticPoolName
-	$ep2 = $server | New-AzureRmSqlElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 10 `
+	$ep2 = $server | New-AzSqlElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 10 `
 		 -DatabaseDtuMax 100
 	Assert-NotNull $ep2
 
@@ -196,7 +196,7 @@ function Test-UpdateElasticPool
 	try
 	{
 		# Update a pool with all values
-		$job = Set-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$job = Set-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-ElasticPoolName $ep1.ElasticPoolName -Dtu 400 -DatabaseDtuMin 0 -DatabaseDtuMax 50 -Edition Standard -StorageMB 409600 -AsJob
 		$job | Wait-Job
 		$sep1 = $job.Output
@@ -210,7 +210,7 @@ function Test-UpdateElasticPool
 		Assert-AreEqual 50 $sep1.DatabaseCapacityMax
 
 		# Update a pool using piping
-		$sep2 = $server | Set-AzureRmSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -Dtu 200 `
+		$sep2 = $server | Set-AzSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -Dtu 200 `
 			-DatabaseDtuMin 10 -DatabaseDtuMax 50  -Edition Standard -StorageMB 204800
 
 		Assert-NotNull $sep2
@@ -240,20 +240,20 @@ function Test-UpdateVcoreElasticPool
 
 	# Create a Vcore Pool
 	$poolName = Get-ElasticPoolName
-	$ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+	$ep1 = New-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 		-ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4
 	Assert-NotNull $ep1
 
 	# Create a Dtu pool
 	$poolName = Get-ElasticPoolName
-	$ep2 = $server | New-AzureRmSqlElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 10 `
+	$ep2 = $server | New-AzSqlElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 10 `
 		 -DatabaseDtuMax 100
 	Assert-NotNull $ep2
 
 	try
 	{
 		# Update Vcore pool to Dtu pool
-		$job = Set-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$job = Set-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-ElasticPoolName $ep1.ElasticPoolName -Dtu 400 -DatabaseDtuMin 0 -DatabaseDtuMax 50 -Edition Standard -StorageMB 409600 -AsJob
 		$job | Wait-Job
 		$sep1 = $job.Output
@@ -267,7 +267,7 @@ function Test-UpdateVcoreElasticPool
 		Assert-AreEqual 50 $sep1.DatabaseCapacityMax
 
 		# Update a Dtu pool to Vcore pool using piping
-		$sep2 = $server | Set-AzureRmSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -VCore 2 `
+		$sep2 = $server | Set-AzSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -VCore 2 `
 			-Edition GeneralPurpose -ComputeGeneration Gen4 -StorageMB 204800
 
 		Assert-NotNull $sep2
@@ -279,12 +279,12 @@ function Test-UpdateVcoreElasticPool
 		Assert-AreEqual 2 $sep2.DatabaseCapacityMax
 
 		# Update VCore pool only on DatabaseVCoreMin
-		$sep3 = $server | Set-AzureRmSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -DatabaseVCoreMin 0.1
+		$sep3 = $server | Set-AzSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -DatabaseVCoreMin 0.1
 		Assert-NotNull $sep3
 		Assert-AreEqual 0.1 $sep3.DatabaseCapacityMin
 
 		# Update Vcore pool only on VCores
-		$sep4 = $server | Set-AzureRmSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -VCore 1
+		$sep4 = $server | Set-AzSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -VCore 1
 		Assert-NotNull $sep4
 		Assert-AreEqual 1 $sep4.Capacity
 		Assert-AreEqual 0.1 $sep4.DatabaseCapacityMin
@@ -308,17 +308,17 @@ function Test-UpdateVcoreElasticPoolWithLicenseType
 
 	# Create a Vcore Pool
 	$poolName = Get-ElasticPoolName
-	$ep1 = New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4
+	$ep1 = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4
 	Assert-NotNull $ep1
 
 	try
 	{
 		# Update Vcore pool license type to BasePrice
-		$resp = Set-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $ep1.ElasticPoolName -LicenseType BasePrice
+		$resp = Set-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $ep1.ElasticPoolName -LicenseType BasePrice
 		Assert-AreEqual $resp.LicenseType BasePrice
 
 		# Update Vcore pool license type to LicenseIncluded
-		$resp = Set-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $ep1.ElasticPoolName -LicenseType LicenseIncluded
+		$resp = Set-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $ep1.ElasticPoolName -LicenseType LicenseIncluded
 		Assert-AreEqual $resp.LicenseType LicenseIncluded
 	}
 	finally
@@ -342,12 +342,12 @@ function Test-UpdateElasticPoolWithZoneRedundancy
 	{
 		# Create a pool with all values
 		$poolName = Get-ElasticPoolName
-		$ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$ep1 = New-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-ElasticPoolName $poolName -Edition Premium -Dtu 125
 		Assert-NotNull $ep1
 
 		# Update a pool with zone redundant set as true
-		$sep1 = Set-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$sep1 = Set-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-ElasticPoolName $ep1.ElasticPoolName -ZoneRedundant
 		Assert-NotNull $sep1
 		Assert-NotNull $sep1.ZoneRedundant
@@ -371,19 +371,19 @@ function Test-GetElasticPool
 	$server = Create-ServerForTest $rg $location
 
 	$poolName = Get-ElasticPoolName
-	$ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+	$ep1 = New-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 		-ElasticPoolName $poolName -Edition Standard -Dtu 200 -DatabaseDtuMin 10 -DatabaseDtuMax 100
 	Assert-NotNull $ep1
 
 	$poolName = Get-ElasticPoolName
-	$ep2 = $server | New-AzureRmSqlElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 0 `
+	$ep2 = $server | New-AzSqlElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 0 `
 		 -DatabaseDtuMax 100
 	Assert-NotNull $ep2
 
 	try
 	{
 		# Create a pool with all values
-		$gep1 = Get-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$gep1 = Get-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-ElasticPoolName $ep1.ElasticPoolName
 		Assert-NotNull $ep1
 		Assert-AreEqual 200 $ep1.Capacity
@@ -393,7 +393,7 @@ function Test-GetElasticPool
 		Assert-AreEqual 100 $ep1.DatabaseCapacityMax
 
 		# Create a pool using piping
-		$gep2 = $ep2 | Get-AzureRmSqlElasticPool
+		$gep2 = $ep2 | Get-AzSqlElasticPool
 		Assert-NotNull $ep2
 		Assert-AreEqual 400 $ep2.Capacity
 		Assert-AreEqual 409600 $ep2.StorageMB
@@ -401,7 +401,7 @@ function Test-GetElasticPool
 		Assert-AreEqual 0 $ep2.DatabaseCapacityMin
 		Assert-AreEqual 100 $ep2.DatabaseCapacityMax
 
-		$all = $server | Get-AzureRmSqlElasticPool
+		$all = $server | Get-AzSqlElasticPool
 		Assert-AreEqual $all.Count 2
 	}
 	finally
@@ -425,22 +425,22 @@ function Test-GetElasticPoolWithZoneRedundancy
 	{
 		# Create a pool with zone redundancy set to true
 		$poolName = Get-ElasticPoolName
-		$ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$ep1 = New-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-ElasticPoolName $poolName -Edition Premium -ZoneRedundant
 
 		# Get created pool with zone redundancy true
-		$gep1 = Get-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$gep1 = Get-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-ElasticPoolName $ep1.ElasticPoolName
 		Assert-NotNull $gep1.ZoneRedundant
 		Assert-AreEqual "true" $gep1.ZoneRedundant
 
 		# Create a pool with no zone redundancy set
 		$poolName = Get-ElasticPoolName
-		$ep2 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$ep2 = New-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-ElasticPoolName $poolName -Edition Premium -Dtu 125
 
 		# Get created pool with zone redundancy false
-		$gep2 = Get-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$gep2 = Get-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-ElasticPoolName $ep2.ElasticPoolName
 		Assert-NotNull $gep2.ZoneRedundant
 		Assert-AreEqual "false" $gep2.ZoneRedundant
@@ -463,24 +463,24 @@ function Test-RemoveElasticPool
 	$server = Create-ServerForTest $rg $location
 
 	$poolName = Get-ElasticPoolName
-	$ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+	$ep1 = New-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 		-ElasticPoolName $poolName -Edition Standard -Dtu 200 -DatabaseDtuMin 10 -DatabaseDtuMax 100
 	Assert-NotNull $ep1
 
 	$poolName = Get-ElasticPoolName
-	$ep2 = $server | New-AzureRmSqlElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 0 `
+	$ep2 = $server | New-AzSqlElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 0 `
 		 -DatabaseDtuMax 100
 	Assert-NotNull $ep2
 
 	try
 	{
 		# Create a pool with all values
-		Remove-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $ep1.ElasticPoolName –Confirm:$false
+		Remove-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $ep1.ElasticPoolName –Confirm:$false
 
 		# Create a pool using piping
-		$ep2 | Remove-AzureRmSqlElasticPool -Force
+		$ep2 | Remove-AzSqlElasticPool -Force
 
-		$all = $server | Get-AzureRmSqlElasticPool
+		$all = $server | Get-AzSqlElasticPool
 		Assert-AreEqual $all.Count 0
 	}
 	finally
@@ -501,12 +501,12 @@ function Test-ListAndCancelElasticPoolOperation
 	$server = Create-ServerForTest $rg $location
 
 	$poolName = Get-ElasticPoolName
-	$ep1 = New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+	$ep1 = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 		-ElasticPoolName $poolName -Edition Premium -Dtu 125 -DatabaseDtuMin 0 -DatabaseDtuMax 50
 	Assert-NotNull $ep1
 
 	$poolName = Get-ElasticPoolName
-	$ep2 = $server | New-AzureRmSqlElasticPool -ElasticPoolName $poolName -Edition Premium -Dtu 250 -DatabaseDtuMin 0 `
+	$ep2 = $server | New-AzSqlElasticPool -ElasticPoolName $poolName -Edition Premium -Dtu 250 -DatabaseDtuMin 0 `
 		 -DatabaseDtuMax 50
 	Assert-NotNull $ep2
 
@@ -515,14 +515,14 @@ function Test-ListAndCancelElasticPoolOperation
 	try
 	{
 		# Update the elastic pool ep1 to premium with 250 Dtu
-		$ep1update = Set-AzureRmSqlElasticPool -ResourceGroupName $ep1.ResourceGroupName -ServerName $ep1.ServerName -ElasticPoolName $ep1.ElasticPoolName `
+		$ep1update = Set-AzSqlElasticPool -ResourceGroupName $ep1.ResourceGroupName -ServerName $ep1.ServerName -ElasticPoolName $ep1.ElasticPoolName `
 			-Edition Premium -Dtu 250 -DatabaseDtuMin 25 -DatabaseDtuMax 125
 		Assert-AreEqual $ep1.ElasticPoolName $ep1update.ElasticPoolName
 		Assert-AreEqual Premium $ep1update.Edition
 		Assert-AreEqual 250 $ep1update.Capacity
 
 		# List and Cancel the elastic pool update operation
-		$epactivity = Get-AzureRmSqlElasticPoolActivity -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -ElasticPoolName $ep1update.ElasticPoolName
+		$epactivity = Get-AzSqlElasticPoolActivity -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -ElasticPoolName $ep1update.ElasticPoolName
 		$epactivityId
 
 		For($i=0; $i -lt $epactivity.Length; $i++) {
@@ -534,7 +534,7 @@ function Test-ListAndCancelElasticPoolOperation
 		try
 		{
 			# cancel a pool update operation with all values
-			$activityCancel = Stop-AzureRmSqlElasticPoolActivity -ResourceGroupName $ep1.ResourceGroupName -ServerName $ep1.ServerName -ElasticPoolName $ep1.ElasticPoolName -OperationId $epactivityId
+			$activityCancel = Stop-AzSqlElasticPoolActivity -ResourceGroupName $ep1.ResourceGroupName -ServerName $ep1.ServerName -ElasticPoolName $ep1.ElasticPoolName -OperationId $epactivityId
 		}
 		Catch
 		{
@@ -544,25 +544,25 @@ function Test-ListAndCancelElasticPoolOperation
 
 		# piping test on related pool operations
 		# Update ep2 tp Premium with 500 Dtu
-		$ep2update = Set-AzureRmSqlElasticPool -ResourceGroupName $ep2.ResourceGroupName -ServerName $ep2.ServerName -ElasticPoolName $ep2.ElasticPoolName `
+		$ep2update = Set-AzSqlElasticPool -ResourceGroupName $ep2.ResourceGroupName -ServerName $ep2.ServerName -ElasticPoolName $ep2.ElasticPoolName `
 			-Edition Premium -Dtu 500 -DatabaseDtuMin 25 -DatabaseDtuMax 250
 		Assert-AreEqual $ep2.ElasticPoolName $ep2update.ElasticPoolName
 		Assert-AreEqual Premium $ep2update.Edition
 		Assert-AreEqual 500 $ep2update.Capacity
 
-		$epactivity = $ep2update | Get-AzureRmSqlElasticPoolActivity
+		$epactivity = $ep2update | Get-AzSqlElasticPoolActivity
 		For($i=0; $i -lt $epactivity.Length; $i++) {
 			if($epactivity[$i].Operation -eq "UPDATE"){
 				$epactivityId = $epactivity[$i].OperationId
 			}
 		}
 
-		$epactivity = $ep2update | Get-AzureRmSqlElasticPoolActivity -OperationId $epactivityId
+		$epactivity = $ep2update | Get-AzSqlElasticPoolActivity -OperationId $epactivityId
 
 		try
 		{
 			# cancel a pool update operation using piping
-			$activityCancel = $epactivity | Stop-AzureRmSqlElasticPoolActivity
+			$activityCancel = $epactivity | Stop-AzSqlElasticPoolActivity
 		}
 		Catch
 		{

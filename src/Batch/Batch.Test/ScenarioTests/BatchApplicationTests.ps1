@@ -26,13 +26,13 @@ function Test-AddApplication
 
     try
     {
-        $addAppPack = New-AzureRmBatchApplication -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName
-        $getapp = Get-AzureRmBatchApplication -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName
+        $addAppPack = New-AzBatchApplication -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName
+        $getapp = Get-AzBatchApplication -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName
 
         Assert-AreEqual $getapp.Id $addAppPack.Id
     }
     finally
     {
-        Remove-AzureRmBatchApplication  -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName
+        Remove-AzBatchApplication  -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName
     }
 }

@@ -51,7 +51,7 @@ function Get-ProviderLocation($provider)
 		if($provider.Contains("/"))
 		{
 			$type = $provider.Substring($namespace.Length + 1)
-			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+			$location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
 
 			if ($location -eq $null)
 			{
@@ -76,7 +76,7 @@ function TestSetup-CreateResourceGroup
 {
     $resourceGroupName = Get-ResourceGroupName
 	$rglocation = Get-ProviderLocation "microsoft.compute"
-    $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $rglocation
+    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation
 	return $resourceGroup
 }
 
@@ -88,7 +88,7 @@ function TestSetup-CreateVirtualNetwork($resourceGroup)
 {
     $virtualNetworkName = Get-VirtualNetworkName
 	$location = Get-ProviderLocation "microsoft.network/virtualNetworks"
-    $virtualNetwork = New-AzureRmVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $location -AddressPrefix "10.0.0.0/8"
+    $virtualNetwork = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $location -AddressPrefix "10.0.0.0/8"
 	return $virtualNetwork
 }
 

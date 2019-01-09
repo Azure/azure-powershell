@@ -33,13 +33,13 @@ function Test-StorageBlobContainer
 		$containerName = "container"+ $rgname
 
         Write-Verbose "RGName: $rgname | Loc: $loc"
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc;
 
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
-        $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 
-		New-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
-		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+		New-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+		$container = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
 		Assert-AreEqual $rgname $container.ResourceGroupName
 		Assert-AreEqual $stoname $container.StorageAccountName
 		Assert-AreEqual $containerName $container.Name
@@ -50,8 +50,8 @@ function Test-StorageBlobContainer
         $publicAccess = 'blob'
 		$metadata = @{tag0="value0"} # set 3 metadata will fail in server, so use 1 mentadata here. Can revert to 3 mentadata when server fixed
 
-		Update-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -PublicAccess $publicAccess -Metadata $metadata
-		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+		Update-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -PublicAccess $publicAccess -Metadata $metadata
+		$container = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
 		Assert-AreEqual $rgname $container.ResourceGroupName
 		Assert-AreEqual $stoname $container.StorageAccountName
 		Assert-AreEqual $containerName $container.Name
@@ -63,8 +63,8 @@ function Test-StorageBlobContainer
         $publicAccess = 'container'
 		$metadata = @{tag0="value0";tag1="value1"}
 		$containerName2 = "container2"+ $rgname		
-		New-AzureRmStorageContainer -StorageAccount $stos -Name $containerName2 -PublicAccess $publicAccess -Metadata $metadata
-		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName2
+		New-AzStorageContainer -StorageAccount $stos -Name $containerName2 -PublicAccess $publicAccess -Metadata $metadata
+		$container = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName2
 		Assert-AreEqual $rgname $container.ResourceGroupName
 		Assert-AreEqual $stoname $container.StorageAccountName
 		Assert-AreEqual $containerName2 $container.Name
@@ -73,21 +73,21 @@ function Test-StorageBlobContainer
 		Assert-AreEqual $publicAccess $container.PublicAccess
 		Assert-AreEqual $metadata.Count $container.Metadata.Count
 
-		$containers = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname
+		$containers = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname
 		Assert-AreEqual 2 $containers.Count
 		Assert-AreEqual $containerName  $containers[1].Name
 		Assert-AreEqual $containerName2  $containers[0].Name
 
-		Remove-AzureRmStorageContainer -Force -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
-		$containers = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname
+		Remove-AzStorageContainer -Force -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+		$containers = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname
 		Assert-AreEqual 1 $containers.Count
 		Assert-AreEqual $containerName2  $containers[0].Name
 
-		Remove-AzureRmStorageContainer -Force -StorageAccount $stos -Name $containerName2
-		$containers = Get-AzureRmStorageContainer -StorageAccount $stos
+		Remove-AzStorageContainer -Force -StorageAccount $stos -Name $containerName2
+		$containers = Get-AzStorageContainer -StorageAccount $stos
 		Assert-AreEqual 0 $containers.Count
 
-        Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
     finally
     {
@@ -112,13 +112,13 @@ function Test-StorageBlobContainerLegalHold
 		$containerName = "container"+ $rgname
 
         Write-Verbose "RGName: $rgname | Loc: $loc"
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc;
 
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
-        $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 
-		New-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
-		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+		New-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+		$container = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
 		Assert-AreEqual $rgname $container.ResourceGroupName
 		Assert-AreEqual $stoname $container.StorageAccountName
 		Assert-AreEqual $containerName $container.Name
@@ -126,8 +126,8 @@ function Test-StorageBlobContainerLegalHold
 		Assert-AreEqual $false $container.HasImmutabilityPolicy
 		Assert-AreEqual none $container.PublicAccess
 		
-        Add-AzureRmStorageContainerLegalHold -ResourceGroupName $rgname -StorageAccountName $stoname  -Name $containerName -Tag  tag1,tag2,tag3
-		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+        Add-AzStorageContainerLegalHold -ResourceGroupName $rgname -StorageAccountName $stoname  -Name $containerName -Tag  tag1,tag2,tag3
+		$container = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual 3 $container.LegalHold.Tags.Count
 		Assert-AreEqual "tag1" $container.LegalHold.Tags[0].Tag
@@ -140,16 +140,16 @@ function Test-StorageBlobContainerLegalHold
 		Assert-AreNotEqual $null $container.LegalHold.Tags[2].Timestamp
 		Assert-AreNotEqual $null $container.LegalHold.Tags[2].ObjectIdentifier
 
-		Remove-AzureRmStorageContainerLegalHold -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -Tag tag1,tag2 
-		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+		Remove-AzStorageContainerLegalHold -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -Tag tag1,tag2 
+		$container = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual 1 $container.LegalHold.Tags.Count
 		Assert-AreEqual "tag3" $container.LegalHold.Tags[0].Tag
 		Assert-AreNotEqual $null $container.LegalHold.Tags[0].Timestamp
 		Assert-AreNotEqual $null $container.LegalHold.Tags[0].ObjectIdentifier
 
-		Add-AzureRmStorageContainerLegalHold -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -Tag tag1
-		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+		Add-AzStorageContainerLegalHold -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -Tag tag1
+		$container = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual 2 $container.LegalHold.Tags.Count
 		Assert-AreEqual "tag3" $container.LegalHold.Tags[0].Tag
@@ -159,16 +159,16 @@ function Test-StorageBlobContainerLegalHold
 		Assert-AreNotEqual $null $container.LegalHold.Tags[1].Timestamp
 		Assert-AreNotEqual $null $container.LegalHold.Tags[1].ObjectIdentifier
 
-		Remove-AzureRmStorageContainerLegalHold -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -Tag tag1,tag3
-		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+		Remove-AzStorageContainerLegalHold -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -Tag tag1,tag3
+		$container = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual 0 $container.LegalHold.Tags.Count
 
-		Remove-AzureRmStorageContainer -Force -StorageAccount $stos -Name $containerName
-		$containers = Get-AzureRmStorageContainer -StorageAccount $stos
+		Remove-AzStorageContainer -Force -StorageAccount $stos -Name $containerName
+		$containers = Get-AzStorageContainer -StorageAccount $stos
 		Assert-AreEqual 0 $containers.Count
 
-        Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
     finally
     {
@@ -193,13 +193,13 @@ function Test-StorageBlobContainerImmutabilityPolicy
 		$containerName = "container"+ $rgname
 
         Write-Verbose "RGName: $rgname | Loc: $loc"
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc;
 
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
-        $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 
-		New-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
-		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+		New-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+		$container = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
 		Assert-AreEqual $rgname $container.ResourceGroupName
 		Assert-AreEqual $stoname $container.StorageAccountName
 		Assert-AreEqual $containerName $container.Name
@@ -208,18 +208,18 @@ function Test-StorageBlobContainerImmutabilityPolicy
 		Assert-AreEqual none $container.PublicAccess
 		
 		
-        $policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName 		
+        $policy = Get-AzStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName 		
 		Assert-AreEqual 0 $policy.ImmutabilityPeriodSinceCreationInDays
 		Assert-AreEqual Unlocked $policy.State
 		Assert-AreEqual "" $policy.Etag
 
 		$immutabilityPeriod =3
-        Set-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName -ImmutabilityPeriod $immutabilityPeriod
-		$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName
+        Set-AzStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName -ImmutabilityPeriod $immutabilityPeriod
+		$policy = Get-AzStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName
 		Assert-AreEqual $immutabilityPeriod $policy.ImmutabilityPeriodSinceCreationInDays
 		Assert-AreEqual Unlocked $policy.State
 		Assert-AreNotEqual $null $policy.Etag
-		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+		$container = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual $immutabilityPeriod $container.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays
 		Assert-AreEqual Unlocked $container.ImmutabilityPolicy.State
@@ -230,12 +230,12 @@ function Test-StorageBlobContainerImmutabilityPolicy
 		Assert-AreNotEqual $null $container.ImmutabilityPolicy.UpdateHistory[0].ObjectIdentifier
 		
 		$immutabilityPeriod =2
-        Set-AzureRmStorageContainerImmutabilityPolicy -inputObject $policy -ImmutabilityPeriod $immutabilityPeriod		
-		$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName 
+        Set-AzStorageContainerImmutabilityPolicy -inputObject $policy -ImmutabilityPeriod $immutabilityPeriod		
+		$policy = Get-AzStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName 
 		Assert-AreEqual $immutabilityPeriod $policy.ImmutabilityPeriodSinceCreationInDays
 		Assert-AreEqual Unlocked $policy.State
 		Assert-AreNotEqual $null $policy.Etag
-		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName		
+		$container = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName		
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual $immutabilityPeriod $container.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays
 		Assert-AreEqual Unlocked $container.ImmutabilityPolicy.State
@@ -245,24 +245,24 @@ function Test-StorageBlobContainerImmutabilityPolicy
 		Assert-AreNotEqual $null $container.ImmutabilityPolicy.UpdateHistory[0].Timestamp
 		Assert-AreNotEqual $null $container.ImmutabilityPolicy.UpdateHistory[0].ObjectIdentifier
 
-        Remove-AzureRmStorageContainerImmutabilityPolicy -inputObject $policy 
-		$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName 
+        Remove-AzStorageContainerImmutabilityPolicy -inputObject $policy 
+		$policy = Get-AzStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName 
 		Assert-AreEqual 0 $policy.ImmutabilityPeriodSinceCreationInDays
 		Assert-AreEqual Deleted $policy.State
 		Assert-AreEqual "" $policy.Etag
-		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName		
+		$container = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName		
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual 0 $container.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays
 		Assert-AreEqual Deleted $container.ImmutabilityPolicy.State
 		Assert-AreEqual 0 $container.ImmutabilityPolicy.UpdateHistory.Count
 		
 		$immutabilityPeriod =7
-        Set-AzureRmStorageContainerImmutabilityPolicy -inputObject $policy -ImmutabilityPeriod $immutabilityPeriod
-		$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName 
+        Set-AzStorageContainerImmutabilityPolicy -inputObject $policy -ImmutabilityPeriod $immutabilityPeriod
+		$policy = Get-AzStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName 
 		Assert-AreEqual $immutabilityPeriod $policy.ImmutabilityPeriodSinceCreationInDays
 		Assert-AreEqual Unlocked $policy.State
 		Assert-AreNotEqual $null $policy.Etag
-		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName	
+		$container = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName	
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual $immutabilityPeriod $container.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays
 		Assert-AreEqual Unlocked $container.ImmutabilityPolicy.State
@@ -272,12 +272,12 @@ function Test-StorageBlobContainerImmutabilityPolicy
 		Assert-AreNotEqual $null $container.ImmutabilityPolicy.UpdateHistory[0].Timestamp
 		Assert-AreNotEqual $null $container.ImmutabilityPolicy.UpdateHistory[0].ObjectIdentifier
 		
-        Lock-AzureRmStorageContainerImmutabilityPolicy -inputObject $policy -Force
-		$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName
+        Lock-AzStorageContainerImmutabilityPolicy -inputObject $policy -Force
+		$policy = Get-AzStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName
 		Assert-AreEqual $immutabilityPeriod $policy.ImmutabilityPeriodSinceCreationInDays
 		Assert-AreEqual Locked $policy.State
 		Assert-AreNotEqual $null $policy.Etag
-		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+		$container = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual $immutabilityPeriod $container.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays
 		Assert-AreEqual Locked $container.ImmutabilityPolicy.State
@@ -292,12 +292,12 @@ function Test-StorageBlobContainerImmutabilityPolicy
 		Assert-AreNotEqual $null $container.ImmutabilityPolicy.UpdateHistory[1].ObjectIdentifier
 		
 		$immutabilityPeriod2 =20
-        Set-AzureRmStorageContainerImmutabilityPolicy -inputObject $policy -ExtendPolicy -ImmutabilityPeriod $immutabilityPeriod2
-		$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName 
+        Set-AzStorageContainerImmutabilityPolicy -inputObject $policy -ExtendPolicy -ImmutabilityPeriod $immutabilityPeriod2
+		$policy = Get-AzStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName 
 		Assert-AreEqual $immutabilityPeriod2 $policy.ImmutabilityPeriodSinceCreationInDays
 		Assert-AreEqual Locked $policy.State
 		Assert-AreNotEqual $null $policy.Etag
-		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+		$container = Get-AzStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual $immutabilityPeriod2 $container.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays
 		Assert-AreEqual Locked $container.ImmutabilityPolicy.State
@@ -315,11 +315,11 @@ function Test-StorageBlobContainerImmutabilityPolicy
 		Assert-AreNotEqual $null $container.ImmutabilityPolicy.UpdateHistory[2].Timestamp
 		Assert-AreNotEqual $null $container.ImmutabilityPolicy.UpdateHistory[2].ObjectIdentifier
 
-		Remove-AzureRmStorageContainer -Force -StorageAccount $stos -Name $containerName
-		$containers = Get-AzureRmStorageContainer -StorageAccount $stos
+		Remove-AzStorageContainer -Force -StorageAccount $stos -Name $containerName
+		$containers = Get-AzStorageContainer -StorageAccount $stos
 		Assert-AreEqual 0 $containers.Count
 
-        Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
     finally
     {

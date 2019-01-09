@@ -22,13 +22,13 @@ function Test-EndpointCrudAndAction
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
     $profileSku = "Standard_Verizon"
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+    $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
     $originName = getAssetName
     $originHostName = "www.microsoft.com"
 
-    $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
+    $nameAvailability = Get-AzCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-True{$nameAvailability.NameAvailable}
 
 		$description = 'Sample delivery policy'
@@ -55,7 +55,7 @@ function Test-EndpointCrudAndAction
 
 	$deliveryPolicy = New-Object -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsDeliveryPolicy -Prop(@{'Description' = $description; 'Rules' = $rules})
 
-    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -DeliveryPolicy $deliveryPolicy
+    $createdEndpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -DeliveryPolicy $deliveryPolicy
 	Assert-AreEqual $description $createdEndpoint.DeliveryPolicy.Description
     Assert-AreEqual $endpointName $createdEndpoint.Name
     Assert-AreEqual $profileName $createdEndpoint.ProfileName
@@ -64,34 +64,34 @@ function Test-EndpointCrudAndAction
     Assert-AreEqual $originHostName $createdEndpoint.Origins[0].HostName
 
 
-    $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
+    $nameAvailability = Get-AzCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-False{$nameAvailability.NameAvailable}
 
-    $stopped = Stop-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false -PassThru
-    $stoppedEndpoint = Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $stopped = Stop-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false -PassThru
+    $stoppedEndpoint = Get-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     Assert-True{$stopped}
     Assert-AreEqual "Stopped" $stoppedEndpoint.ResourceState
 
-    $started = Start-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru
-    $startedEndpoint = Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $started = Start-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru
+    $startedEndpoint = Get-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     Assert-True{$started}
     Assert-AreEqual "Running" $startedEndpoint.ResourceState
 
-    $purged = Unpublish-AzureRmCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PurgeContent @("/pic1.jpg", "/pic2.jpg") -PassThru
+    $purged = Unpublish-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PurgeContent @("/pic1.jpg", "/pic2.jpg") -PassThru
     Assert-True{$purged}
 
-    $loaded = Publish-AzureRmCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -LoadContent @("/pic1.jpg", "/pic2.jpg") -PassThru
+    $loaded = Publish-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -LoadContent @("/pic1.jpg", "/pic2.jpg") -PassThru
     Assert-True{$loaded}
 
-    $validateResult = Test-AzureRmCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName "unverifiedcustomdomain.com"
+    $validateResult = Test-AzCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName "unverifiedcustomdomain.com"
     Assert-False{$validateResult.CustomDomainValidated}
 
-    $endpointRemoved = Remove-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Force
+    $endpointRemoved = Remove-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Force
     Assert-True{$endpointRemoved}
 
-    Assert-ThrowsContains { Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
+    Assert-ThrowsContains { Get-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
 
-    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -104,13 +104,13 @@ function Test-EndpointCrudAndActionWithPiping
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
     $profileSku = "Standard_Verizon"
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+    $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
     $originName = getAssetName
     $originHostName = "www.microsoft.com"
 
-    $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
+    $nameAvailability = Get-AzCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-True{$nameAvailability.NameAvailable}
 
 	$description = 'Sample delivery policy'
@@ -137,7 +137,7 @@ function Test-EndpointCrudAndActionWithPiping
 
 	$deliveryPolicy = New-Object -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsDeliveryPolicy -Prop(@{'Description' = $description; 'Rules' = $rules})
 
-    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -DeliveryPolicy $deliveryPolicy
+    $createdEndpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -DeliveryPolicy $deliveryPolicy
 	Assert-AreEqual $description $createdEndpoint.DeliveryPolicy.Description
     Assert-AreEqual $endpointName $createdEndpoint.Name
     Assert-AreEqual $profileName $createdEndpoint.ProfileName
@@ -145,26 +145,26 @@ function Test-EndpointCrudAndActionWithPiping
     Assert-AreEqual $originName $createdEndpoint.Origins[0].Name
     Assert-AreEqual $originHostName $createdEndpoint.Origins[0].HostName
 
-    $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
+    $nameAvailability = Get-AzCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-False{$nameAvailability.NameAvailable}
 
-    $stopped = Stop-AzureRmCdnEndpoint -CdnEndpoint $createdEndpoint -Confirm:$false -PassThru
-    $stoppedEndpoint = Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $stopped = Stop-AzCdnEndpoint -CdnEndpoint $createdEndpoint -Confirm:$false -PassThru
+    $stoppedEndpoint = Get-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     Assert-True{$stopped}
     Assert-AreEqual "Stopped" $stoppedEndpoint.ResourceState
 
-    $started = Start-AzureRmCdnEndpoint -CdnEndpoint $createdEndpoint -PassThru
-    $startedEndpoint = Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $started = Start-AzCdnEndpoint -CdnEndpoint $createdEndpoint -PassThru
+    $startedEndpoint = Get-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     Assert-True{$started}
     Assert-AreEqual "Running" $startedEndpoint.ResourceState
 
-    $purged = Unpublish-AzureRmCdnEndpointContent -CdnEndpoint $createdEndpoint -PurgeContent @("/pic1.jpg", "/pic2.jpg") -PassThru
+    $purged = Unpublish-AzCdnEndpointContent -CdnEndpoint $createdEndpoint -PurgeContent @("/pic1.jpg", "/pic2.jpg") -PassThru
     Assert-True{$purged}
 
-    $loaded = Publish-AzureRmCdnEndpointContent -CdnEndpoint $createdEndpoint -LoadContent @("/pic1.jpg", "/pic2.jpg") -PassThru
+    $loaded = Publish-AzCdnEndpointContent -CdnEndpoint $createdEndpoint -LoadContent @("/pic1.jpg", "/pic2.jpg") -PassThru
     Assert-True{$loaded}
 
-    $validateResultbyPiping = Test-AzureRmCdnCustomDomain -CdnEndpoint $createdEndpoint -CustomDomainHostName "unverifiedcustomdomain.com"
+    $validateResultbyPiping = Test-AzCdnCustomDomain -CdnEndpoint $createdEndpoint -CustomDomainHostName "unverifiedcustomdomain.com"
     Assert-False{$validateResultbyPiping.CustomDomainValidated}
 
     $startedEndpoint.OriginHostHeader = "www.microsoft.com"
@@ -193,18 +193,18 @@ function Test-EndpointCrudAndActionWithPiping
 	$startedEndpoint.DeliveryPolicy.Description = "Updated Delivery Policy"
 	$startedEndpoint.DeliveryPolicy.Rules = $newRules
 
-    $updatedEndpoint = Set-AzureRmCdnEndpoint -CdnEndpoint $startedEndpoint
+    $updatedEndpoint = Set-AzCdnEndpoint -CdnEndpoint $startedEndpoint
     Assert-AreEqual $startedEndpoint.OriginHostHeader $updatedEndpoint.OriginHostHeader
     Assert-AreEqual $startedEndpoint.OriginPath $updatedEndpoint.OriginPath
     Assert-AreEqual $startedEndpoint.QueryStringCachingBehavior $updatedEndpoint.QueryStringCachingBehavior
 	Assert-AreEqual $startedEndpoint.DeliveryPolicy.Description $updatedEndpoint.DeliveryPolicy.Description
 
-    $endpointRemoved = Remove-AzureRmCdnEndpoint -CdnEndpoint $createdEndpoint -Force -PassThru
+    $endpointRemoved = Remove-AzCdnEndpoint -CdnEndpoint $createdEndpoint -Force -PassThru
     Assert-True{$endpointRemoved}
 
-    Assert-ThrowsContains { Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
+    Assert-ThrowsContains { Get-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
 
-    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -217,7 +217,7 @@ function Test-EndpointCrudAndActionWithAllProperties
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
     $profileSku = "Standard_Verizon"
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+    $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
     $originName = getAssetName
@@ -235,10 +235,10 @@ function Test-EndpointCrudAndActionWithAllProperties
 
     $originHostName = "www.microsoft.com"
 
-    $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
+    $nameAvailability = Get-AzCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-True{$nameAvailability.NameAvailable}
 
-    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginHostHeader $originHostHeader -OriginPath $originPath -ContentTypesToCompress $contentTypeToCompress -IsCompressionEnabled $isCompressionEnabled -IsHttpAllowed $isHttpAllowed -IsHttpsAllowed $isHttpsAllowed -OptimizationType $optimizationType -QueryStringCachingBehavior $queryStringCachingBehavior -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort -HttpsPort $httpsPort -Tag $tags
+    $createdEndpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginHostHeader $originHostHeader -OriginPath $originPath -ContentTypesToCompress $contentTypeToCompress -IsCompressionEnabled $isCompressionEnabled -IsHttpAllowed $isHttpAllowed -IsHttpsAllowed $isHttpsAllowed -OptimizationType $optimizationType -QueryStringCachingBehavior $queryStringCachingBehavior -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort -HttpsPort $httpsPort -Tag $tags
 
     Assert-AreEqual $endpointName $createdEndpoint.Name
     Assert-AreEqual $profileName $createdEndpoint.ProfileName
@@ -259,34 +259,34 @@ function Test-EndpointCrudAndActionWithAllProperties
     Assert-AreEqual $originName $createdEndpoint.Origins[0].Name
     Assert-AreEqual $originHostName $createdEndpoint.Origins[0].HostName
 
-    $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
+    $nameAvailability = Get-AzCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-False{$nameAvailability.NameAvailable}
 
-    $stopped = Stop-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false -PassThru
-    $stoppedEndpoint = Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $stopped = Stop-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false -PassThru
+    $stoppedEndpoint = Get-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     Assert-True{$stopped}
     Assert-AreEqual "Stopped" $stoppedEndpoint.ResourceState
 
-    $started = Start-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru
-    $startedEndpoint = Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $started = Start-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru
+    $startedEndpoint = Get-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     Assert-True{$started}
     Assert-AreEqual "Running" $startedEndpoint.ResourceState
 
-    $purged = Unpublish-AzureRmCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PurgeContent @("/pic1.jpg", "/pic2.jpg") -PassThru
+    $purged = Unpublish-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PurgeContent @("/pic1.jpg", "/pic2.jpg") -PassThru
     Assert-True{$purged}
 
-    $loaded = Publish-AzureRmCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -LoadContent @("/pic1.jpg", "/pic2.jpg") -PassThru
+    $loaded = Publish-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -LoadContent @("/pic1.jpg", "/pic2.jpg") -PassThru
     Assert-True{$loaded}
 
-    $validateResult = Test-AzureRmCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName "unverifiedcustomdomain.com"
+    $validateResult = Test-AzCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName "unverifiedcustomdomain.com"
     Assert-False{$validateResult.CustomDomainValidated}
 
-    $endpointRemoved = Remove-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force -PassThru
+    $endpointRemoved = Remove-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force -PassThru
     Assert-True{$endpointRemoved}
 
-    Assert-ThrowsContains { Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
+    Assert-ThrowsContains { Get-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
 
-    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -299,7 +299,7 @@ function Test-EndpointCrudAndActionWithAllPropertiesWithPiping
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
     $profileSku = "Standard_Verizon"
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+    $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
     $originName = getAssetName
@@ -316,10 +316,10 @@ function Test-EndpointCrudAndActionWithAllPropertiesWithPiping
 
     $originHostName = "www.microsoft.com"
 
-    $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
+    $nameAvailability = Get-AzCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-True{$nameAvailability.NameAvailable}
 
-    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginHostHeader $originHostHeader -OriginPath $originPath -ContentTypesToCompress $contentTypeToCompress -IsCompressionEnabled $isCompressionEnabled -IsHttpAllowed $isHttpAllowed -IsHttpsAllowed $isHttpsAllowed -QueryStringCachingBehavior $queryStringCachingBehavior -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort -HttpsPort $httpsPort -Tag $tags
+    $createdEndpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginHostHeader $originHostHeader -OriginPath $originPath -ContentTypesToCompress $contentTypeToCompress -IsCompressionEnabled $isCompressionEnabled -IsHttpAllowed $isHttpAllowed -IsHttpsAllowed $isHttpsAllowed -QueryStringCachingBehavior $queryStringCachingBehavior -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort -HttpsPort $httpsPort -Tag $tags
     Assert-AreEqual $endpointName $createdEndpoint.Name
     Assert-AreEqual $profileName $createdEndpoint.ProfileName
     Assert-AreEqual $resourceGroup.ResourceGroupName $createdEndpoint.ResourceGroupName
@@ -338,40 +338,40 @@ function Test-EndpointCrudAndActionWithAllPropertiesWithPiping
     Assert-AreEqual $originName $createdEndpoint.Origins[0].Name
     Assert-AreEqual $originHostName $createdEndpoint.Origins[0].HostName
 
-    $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
+    $nameAvailability = Get-AzCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-False{$nameAvailability.NameAvailable}
 
-    $stopped = Stop-AzureRmCdnEndpoint -CdnEndpoint $createdEndpoint -Confirm:$false -PassThru
-    $stoppedEndpoint = Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $stopped = Stop-AzCdnEndpoint -CdnEndpoint $createdEndpoint -Confirm:$false -PassThru
+    $stoppedEndpoint = Get-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     Assert-True{$stopped}
     Assert-AreEqual "Stopped" $stoppedEndpoint.ResourceState
 
-    $started = Start-AzureRmCdnEndpoint -CdnEndpoint $createdEndpoint -PassThru
-    $startedEndpoint = Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $started = Start-AzCdnEndpoint -CdnEndpoint $createdEndpoint -PassThru
+    $startedEndpoint = Get-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     Assert-True{$started}
     Assert-AreEqual "Running" $startedEndpoint.ResourceState
 
-    $purged = Unpublish-AzureRmCdnEndpointContent -CdnEndpoint $createdEndpoint -PurgeContent @("/pic1.jpg", "/pic2.jpg") -PassThru
+    $purged = Unpublish-AzCdnEndpointContent -CdnEndpoint $createdEndpoint -PurgeContent @("/pic1.jpg", "/pic2.jpg") -PassThru
     Assert-True{$purged}
 
-    $loaded = Publish-AzureRmCdnEndpointContent -CdnEndpoint $createdEndpoint -LoadContent @("/pic1.jpg", "/pic2.jpg") -PassThru
+    $loaded = Publish-AzCdnEndpointContent -CdnEndpoint $createdEndpoint -LoadContent @("/pic1.jpg", "/pic2.jpg") -PassThru
     Assert-True{$loaded}
 
     $startedEndpoint.OriginHostHeader = "www.microsoft.com"
     $startedEndpoint.OriginPath = "/pictures"
     $startedEndpoint.QueryStringCachingBehavior = "UseQueryString"
 
-    $updatedEndpoint = Set-AzureRmCdnEndpoint -CdnEndpoint $startedEndpoint
+    $updatedEndpoint = Set-AzCdnEndpoint -CdnEndpoint $startedEndpoint
     Assert-AreEqual $startedEndpoint.OriginHostHeader $updatedEndpoint.OriginHostHeader
     Assert-AreEqual $startedEndpoint.OriginPath $updatedEndpoint.OriginPath
     Assert-AreEqual $startedEndpoint.QueryStringCachingBehavior $updatedEndpoint.QueryStringCachingBehavior
 
-    $endpointRemoved = Remove-AzureRmCdnEndpoint -CdnEndpoint $createdEndpoint -Force -PassThru
+    $endpointRemoved = Remove-AzCdnEndpoint -CdnEndpoint $createdEndpoint -Force -PassThru
     Assert-True{$endpointRemoved}
 
-    Assert-ThrowsContains { Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
+    Assert-ThrowsContains { Get-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
 
-    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -384,54 +384,54 @@ function Test-EndpointCrudAndActionWithStoppedEndpoint
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
     $profileSku = "Standard_Verizon"
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+    $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
     $originName = getAssetName
     $originHostName = "www.microsoft.com"
 
-    $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
+    $nameAvailability = Get-AzCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-True{$nameAvailability.NameAvailable}
 
-    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName
+    $createdEndpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName
     Assert-AreEqual $endpointName $createdEndpoint.Name
     Assert-AreEqual $profileName $createdEndpoint.ProfileName
     Assert-AreEqual $resourceGroup.ResourceGroupName $createdEndpoint.ResourceGroupName
     Assert-AreEqual $originName $createdEndpoint.Origins[0].Name
     Assert-AreEqual $originHostName $createdEndpoint.Origins[0].HostName
 
-    $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
+    $nameAvailability = Get-AzCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-False{$nameAvailability.NameAvailable}
 
-    $stopped = Stop-AzureRmCdnEndpoint -CdnEndpoint $createdEndpoint -Confirm:$false -PassThru
-    $stoppedEndpoint = Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $stopped = Stop-AzCdnEndpoint -CdnEndpoint $createdEndpoint -Confirm:$false -PassThru
+    $stoppedEndpoint = Get-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     Assert-True{$stopped}
     Assert-AreEqual "Stopped" $stoppedEndpoint.ResourceState
 
-    $purged = Unpublish-AzureRmCdnEndpointContent -CdnEndpoint $createdEndpoint -PurgeContent @("/pic1.jpg", "/pic2.jpg") -PassThru
+    $purged = Unpublish-AzCdnEndpointContent -CdnEndpoint $createdEndpoint -PurgeContent @("/pic1.jpg", "/pic2.jpg") -PassThru
     Assert-True{$purged}
 
-    $loaded = Publish-AzureRmCdnEndpointContent -CdnEndpoint $createdEndpoint -LoadContent @("/pic1.jpg", "/pic2.jpg") -PassThru
+    $loaded = Publish-AzCdnEndpointContent -CdnEndpoint $createdEndpoint -LoadContent @("/pic1.jpg", "/pic2.jpg") -PassThru
     Assert-True{$loaded}
 
-    $validateResultbyPiping = Test-AzureRmCdnCustomDomain -CdnEndpoint $endpoint -CustomDomainHostName "unverifiedcustomdomain.com"
+    $validateResultbyPiping = Test-AzCdnCustomDomain -CdnEndpoint $endpoint -CustomDomainHostName "unverifiedcustomdomain.com"
     Assert-False{$validateResultbyPiping.CustomDomainValidated}
 
     $startedEndpoint.OriginHostHeader = "www.microsoft.com"
     $startedEndpoint.OriginPath = "/pictures"
     $startedEndpoint.QueryStringCachingBehavior = "UseQueryString"
 
-    $updatedEndpoint = Set-AzureRmCdnEndpoint -CdnEndpoint $startedEndpoint
+    $updatedEndpoint = Set-AzCdnEndpoint -CdnEndpoint $startedEndpoint
     Assert-AreEqual $startedEndpoint.OriginHostHeader $updatedEndpoint.OriginHostHeader
     Assert-AreEqual $startedEndpoint.OriginPath $updatedEndpoint.OriginPath
     Assert-AreEqual $startedEndpoint.QueryStringCachingBehavior $updatedEndpoint.QueryStringCachingBehavior
 
-    $endpointRemoved = Remove-AzureRmCdnEndpoint -CdnEndpoint $createdEndpoint -Force -PassThru
+    $endpointRemoved = Remove-AzCdnEndpoint -CdnEndpoint $createdEndpoint -Force -PassThru
     Assert-True{$endpointRemoved}
 
-    Assert-ThrowsContains { Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
+    Assert-ThrowsContains { Get-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
 
-    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -444,7 +444,7 @@ function Test-EndpointPipeline
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
     $profileSku = "Standard_Verizon"
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+    $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName1 = getAssetName
     $endpointName2 = getAssetName
@@ -452,20 +452,20 @@ function Test-EndpointPipeline
     $originHostName = "www.microsoft.com"
 
 
-    $createdProfile | New-AzureRmCdnEndpoint -EndpointName $endpointName1 -OriginName $originName -OriginHostName $originHostName
-    $createdProfile | New-AzureRmCdnEndpoint -EndpointName $endpointName2 -OriginName $originName -OriginHostName $originHostName
+    $createdProfile | New-AzCdnEndpoint -EndpointName $endpointName1 -OriginName $originName -OriginHostName $originHostName
+    $createdProfile | New-AzCdnEndpoint -EndpointName $endpointName2 -OriginName $originName -OriginHostName $originHostName
 
-    $endpoints = Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Get-AzureRmCdnEndpoint
+    $endpoints = Get-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Get-AzCdnEndpoint
 
     Assert-True {$endpoints.Count -eq 2}
 
-    Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Get-AzureRmCdnEndpoint | Remove-AzureRmCdnEndpoint -Force
+    Get-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Get-AzCdnEndpoint | Remove-AzCdnEndpoint -Force
 
-    $deletedEndpoints = Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Get-AzureRmCdnEndpoint
+    $deletedEndpoints = Get-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Get-AzCdnEndpoint
 
     Assert-True {$deletedEndpoints.Count -eq 0}
 
-    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -481,15 +481,15 @@ function Test-EndpointGeoFilters
 	$GeoFilter_1 = New-Object -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsGeoFilter -Prop(@{'RelativePath'="/mycar";'Action'="Block"})
 	$GeoFilter_1.CountryCodes = @("GA", "AT")
 
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+    $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName1 = getAssetName
     $originName = getAssetName
     $originHostName = "www.microsoft.com"
 
-    $createdProfile | New-AzureRmCdnEndpoint -EndpointName $endpointName1 -OriginName $originName -OriginHostName $originHostName -GeoFilters @($GeoFilter_1)
+    $createdProfile | New-AzCdnEndpoint -EndpointName $endpointName1 -OriginName $originName -OriginHostName $originHostName -GeoFilters @($GeoFilter_1)
 
-    $endpoint = Get-AzureRmCdnEndpoint -EndpointName $endpointName1 -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $endpoint = Get-AzCdnEndpoint -EndpointName $endpointName1 -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
     Assert-True {$endpoint.GeoFilters.Count -eq 1}
 	Assert-True {$endpoint.GeoFilters[0].Action -eq "Block"}
@@ -500,11 +500,11 @@ function Test-EndpointGeoFilters
 
 	$endpoint.GeoFilters.Add($GeoFilter_2)
 
-	$updatedEndpoint = Set-AzureRmCdnEndpoint -CdnEndpoint $endpoint
+	$updatedEndpoint = Set-AzCdnEndpoint -CdnEndpoint $endpoint
 
 	Assert-True {$updatedEndpoint.GeoFilters.Count -eq 2}
 
-    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -517,7 +517,7 @@ function Test-EndpointCreateWithDsa
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
     $profileSku = "Standard_Verizon"
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+    $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
     $originName = getAssetName
@@ -533,10 +533,10 @@ function Test-EndpointCreateWithDsa
     
     $originHostName = "www.microsoft.com"
 
-    $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
+    $nameAvailability = Get-AzCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-True{$nameAvailability.NameAvailable}
 
-    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginHostHeader $originHostHeader -OriginPath $originPath -ContentTypesToCompress $contentTypeToCompress -IsCompressionEnabled $isCompressionEnabled -IsHttpAllowed $isHttpAllowed -IsHttpsAllowed $isHttpsAllowed -OptimizationType $optimizationType -ProbePath $probePath -QueryStringCachingBehavior $queryStringCachingBehavior -OriginName $originName -OriginHostName $originHostName 
+    $createdEndpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginHostHeader $originHostHeader -OriginPath $originPath -ContentTypesToCompress $contentTypeToCompress -IsCompressionEnabled $isCompressionEnabled -IsHttpAllowed $isHttpAllowed -IsHttpsAllowed $isHttpsAllowed -OptimizationType $optimizationType -ProbePath $probePath -QueryStringCachingBehavior $queryStringCachingBehavior -OriginName $originName -OriginHostName $originHostName 
     Assert-AreEqual $endpointName $createdEndpoint.Name
     Assert-AreEqual $profileName $createdEndpoint.ProfileName
     Assert-AreEqual $resourceGroup.ResourceGroupName $createdEndpoint.ResourceGroupName
@@ -550,7 +550,7 @@ function Test-EndpointCreateWithDsa
 	Assert-AreEqual $optimizationType $createdEndpoint.OptimizationType
     Assert-AreEqual "IgnoreQueryString" $createdEndpoint.QueryStringCachingBehavior
 
-    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -564,21 +564,21 @@ function Test-EndpointResourceUsage
     $resourceLocation = "EastUS"
     $profileSku = "Standard_Akamai"
 
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+    $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName1 = getAssetName
     $originName = getAssetName
     $originHostName = "www.microsoft.com"
 
-    $createdProfile | New-AzureRmCdnEndpoint -EndpointName $endpointName1 -OriginName $originName -OriginHostName $originHostName
+    $createdProfile | New-AzCdnEndpoint -EndpointName $endpointName1 -OriginName $originName -OriginHostName $originHostName
 
-    $endpointResourceUsage = Get-AzureRmCdnEndpointResourceUsage -EndpointName $endpointName1 -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $endpointResourceUsage = Get-AzCdnEndpointResourceUsage -EndpointName $endpointName1 -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
     Assert-True {$endpointResourceUsage.Count -eq 2}
     Assert-True {$endpointResourceUsage[0].CurrentValue -eq 0}
     Assert-True {$endpointResourceUsage[1].CurrentValue -eq 0}
 
-    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -588,12 +588,12 @@ Endpoint validate probe url exercise
 function Test-EndpointValidateProbeUrl
 {
 	$probeUrl = "https://azurecdn-files.azureedge.net/dsa-test/probe-v.txt"	
-	$validateProbeUrlResult = Confirm-AzureRmCdnEndpointProbeURL -ProbeUrl $probeUrl
+	$validateProbeUrlResult = Confirm-AzCdnEndpointProbeURL -ProbeUrl $probeUrl
 
 	Assert-True {$validateProbeUrlResult.IsValid}
 
 	$probeUrl = "https://www.notexist.com/notexist/notexist.txt"
-	$validateProbeUrlResult = Confirm-AzureRmCdnEndpointProbeURL -ProbeUrl $probeUrl
+	$validateProbeUrlResult = Confirm-AzCdnEndpointProbeURL -ProbeUrl $probeUrl
 
 	Assert-False {$validateProbeUrlResult.IsValid}
 }

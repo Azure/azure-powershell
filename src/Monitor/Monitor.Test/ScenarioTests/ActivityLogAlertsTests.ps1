@@ -28,13 +28,13 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 	try
 	{
 		Write-Verbose " ****** Creating a new LeafCondition object"
-		$condition1 = New-AzureRmActivityLogAlertCondition -Field 'field1' -Equal 'equals1'
+		$condition1 = New-AzActivityLogAlertCondition -Field 'field1' -Equal 'equals1'
 
 		Assert-NotNull $condition1
 		Assert-AreEqual 'field1' $condition1.Field
 		Assert-AreEqual 'equals1' $condition1.Equals
 
-        $condition2 = New-AzureRmActivityLogAlertCondition -Field 'field2' -Equal 'equals2'
+        $condition2 = New-AzActivityLogAlertCondition -Field 'field2' -Equal 'equals2'
 
 		Assert-NotNull $condition1
 		Assert-AreEqual 'field1' $condition1.Field
@@ -47,7 +47,7 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 
 		Assert-NotNull $dict
 
-		$actionGrp1 = New-AzureRmActionGroup -ActionGroupId 'actiongr1' -WebhookProperty $dict
+		$actionGrp1 = New-AzActionGroup -ActionGroupId 'actiongr1' -WebhookProperty $dict
 
 		Assert-NotNull $actionGrp1
 		Assert-AreEqual 'actiongr1' $actionGrp1.ActionGroupId
@@ -55,7 +55,7 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 		Assert-AreEqual 'value1' $actionGrp1.WebhookProperties['key1']
 
 		Write-Verbose " ****** Creating a new ActivityLogAlert"
-		$actual = Set-AzureRmActivityLogAlert -Location $location -Name $alertName -ResourceGroupName $resourceGroupName -Scope 'scope1','scope2' -Action $actionGrp1 -Condition $condition1
+		$actual = Set-AzActivityLogAlert -Location $location -Name $alertName -ResourceGroupName $resourceGroupName -Scope 'scope1','scope2' -Action $actionGrp1 -Condition $condition1
 		# , $condition2
 
 		Assert-NotNull $actual
@@ -65,7 +65,7 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 		Assert-AreEqual 1 $actual.Condition.Length
 
 		Write-Verbose " ****** Getting the ActivityLogAlerts by subscriptionId"
-		$retrievedSubId = Get-AzureRmActivityLogAlert
+		$retrievedSubId = Get-AzActivityLogAlert
 
 		Assert-NotNull $retrievedSubId
 		Assert-AreEqual 2 $retrievedSubId.Length
@@ -73,7 +73,7 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 		Assert-AreEqual $location $retrievedSubId[0].Location
 
 		Write-Verbose " ****** Getting the ActivityLogAlerts by resource group"
-		$retrievedRg = Get-AzureRmActivityLogAlert -ResourceGroup $resourceGroupName
+		$retrievedRg = Get-AzActivityLogAlert -ResourceGroup $resourceGroupName
 
 		Assert-NotNull $retrievedRg
 		Assert-AreEqual 1 $retrievedRg.Length
@@ -81,7 +81,7 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 		Assert-AreEqual $location $retrievedRg[0].Location
 
 		Write-Verbose " ****** Getting the ActivityLogAlerts by name"
-		$retrieved = Get-AzureRmActivityLogAlert -ResourceGroup $resourceGroupName -Name $alertName
+		$retrieved = Get-AzActivityLogAlert -ResourceGroup $resourceGroupName -Name $alertName
 		Assert-NotNull $retrieved
 		Assert-AreEqual 1 $retrieved.Length
 		Assert-AreEqual $alertName $retrieved[0].Name
@@ -97,7 +97,7 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 		Write-Verbose " ****** Patching the ActivityLogAlert"
 		Assert-ThrowsContains 
 			{
-				$updated = Disable-AzureRmActivityLogAlert -ResourceGroupName $resourceGroupName -Name $alertName -Tag $dict
+				$updated = Disable-AzActivityLogAlert -ResourceGroupName $resourceGroupName -Name $alertName -Tag $dict
 
 				Assert-NotNull $updated
 				Assert-AreEqual $alertName $updated.Name
@@ -109,7 +109,7 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 
 		Assert-ThrowsContains 
 			{
-				$updated = Disable-AzureRmActivityLogAlert -InputObject $actual
+				$updated = Disable-AzActivityLogAlert -InputObject $actual
 
 				Assert-NotNull $updated
 				Assert-AreEqual $alertName $updated.Name
@@ -121,7 +121,7 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 
 		Assert-ThrowsContains 
 			{
-				$updated = Disable-AzureRmActivityLogAlert -ResourceId $actual.Id
+				$updated = Disable-AzActivityLogAlert -ResourceId $actual.Id
 
 				Assert-NotNull $updated
 				Assert-AreEqual $alertName $updated.Name
@@ -133,7 +133,7 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 
          Assert-ThrowsContains 
 			{
-				$updated = Enable-AzureRmActivityLogAlert -ResourceGroupName $resourceGroupName -Name $alertName -Tag $dict
+				$updated = Enable-AzActivityLogAlert -ResourceGroupName $resourceGroupName -Name $alertName -Tag $dict
 
 				Assert-NotNull $updated
 				Assert-AreEqual $alertName $updated.Name
@@ -145,7 +145,7 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 
 		Assert-ThrowsContains 
 			{
-				$updated = Enable-AzureRmActivityLogAlert -InputObject $actual
+				$updated = Enable-AzActivityLogAlert -InputObject $actual
 
 				Assert-NotNull $updated
 				Assert-AreEqual $alertName $updated.Name
@@ -157,7 +157,7 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 
 		Assert-ThrowsContains 
 			{
-				$updated = Enable-AzureRmActivityLogAlert -ResourceId $actual.Id
+				$updated = Enable-AzActivityLogAlert -ResourceId $actual.Id
 
 				Assert-NotNull $updated
 				Assert-AreEqual $alertName $updated.Name
@@ -168,19 +168,19 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 			"BadRequest"
 
 		Write-Verbose " ****** NOP: setting an activity log alert using the value from the pipe (InputObject)"
-		Get-AzureRmActivityLogAlert -ResourceGroup $resourceGroupName -Name $alertName | Set-AzureRmActivityLogAlert
+		Get-AzActivityLogAlert -ResourceGroup $resourceGroupName -Name $alertName | Set-AzActivityLogAlert
 
 		Write-Verbose " ****** Disabling an activity log alert using the value of ResourceId plus another parameter"
-		Set-AzureRmActivityLogAlert -ResourceId '/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/activityLogAlerts/andy0307rule' -DisableAlert
+		Set-AzActivityLogAlert -ResourceId '/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/activityLogAlerts/andy0307rule' -DisableAlert
 
 		Write-Verbose " ****** Removing the ActivityLogAlert using pileline"
-		Get-AzureRmActivityLogAlert -ResourceGroup $resourceGroupName -Name $alertName | Remove-AzureRmActivityLogAlert
+		Get-AzActivityLogAlert -ResourceGroup $resourceGroupName -Name $alertName | Remove-AzActivityLogAlert
 
 		Write-Verbose " ****** Removing (again) the ActivityLogAlert"
-		Remove-AzureRmActivityLogAlert -ResourceGroupName $resourceGroupName -Name $alertName
+		Remove-AzActivityLogAlert -ResourceGroupName $resourceGroupName -Name $alertName
 
 		Write-Verbose " ****** Removing (again) the ActivityLogAlert using ResourceId param"
-		Remove-AzureRmActivityLogAlert -ResourceId $actual.Id
+		Remove-AzActivityLogAlert -ResourceId $actual.Id
     }
     finally
     {

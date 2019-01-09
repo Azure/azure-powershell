@@ -18,42 +18,42 @@
 #>
 function Test-AzureProvider
 {
-    $defaultProviders = Get-AzureRmResourceProvider
+    $defaultProviders = Get-AzResourceProvider
     Assert-True { $defaultProviders.Length -gt 0 }
 
-    $allProviders = Get-AzureRmResourceProvider -ListAvailable
+    $allProviders = Get-AzResourceProvider -ListAvailable
     Assert-True { $allProviders.Length -gt $defaultProviders.Length }
 
 	$ErrorActionPreference = "SilentlyContinue"
 	$Error.Clear()
 
-	$nonProviders = Get-AzureRmResourceProvider -Location "abc"
+	$nonProviders = Get-AzResourceProvider -Location "abc"
 	Assert-True { $Error[0].Contains("Provided location is not supported") }
 	Assert-True { $nonProviders.Length -eq 0 }
 
 	$ErrorActionPreference = "Stop"
 
-	$globalProviders = Get-AzureRmResourceProvider -Location "global"
+	$globalProviders = Get-AzResourceProvider -Location "global"
 	Assert-True { $globalProviders.Length -gt 0 }
 
-    Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement"
+    Register-AzResourceProvider -ProviderNamespace "Microsoft.ApiManagement"
 
     $endTime = [DateTime]::UtcNow.AddMinutes(5)
 
-    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement")[0].RegistrationState -ne "Registered")
+    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzResourceProvider -ProviderNamespace "Microsoft.ApiManagement")[0].RegistrationState -ne "Registered")
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(1000)
     }
-	$provider = Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement"
+	$provider = Get-AzResourceProvider -ProviderNamespace "Microsoft.ApiManagement"
     Assert-True { $provider[0].RegistrationState -eq "Registered" } 
 
-    Unregister-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement"
+    Unregister-AzResourceProvider -ProviderNamespace "Microsoft.ApiManagement"
 
-    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement")[0].RegistrationState -ne "Unregistered")
+    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzResourceProvider -ProviderNamespace "Microsoft.ApiManagement")[0].RegistrationState -ne "Unregistered")
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(1000)
     }
-	$provider = Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement"
+	$provider = Get-AzResourceProvider -ProviderNamespace "Microsoft.ApiManagement"
     Assert-True { $provider[0].RegistrationState -eq "Unregistered" }
  }
 
@@ -63,7 +63,7 @@ function Test-AzureProvider
 #>
 function Test-AzureProvider-WithZoneMappings
 {
-    $testProvider = Get-AzureRmResourceProvider -ProviderNamespace "Providers.Test"
+    $testProvider = Get-AzResourceProvider -ProviderNamespace "Providers.Test"
 	Assert-True { $testProvider.Count -gt 0 }
 
 	$statefulResources = $testProvider | where-object {$_.ResourceTypes.ResourceTypeName -contains "statefulResources"}
@@ -82,17 +82,17 @@ function Test-AzureProvider-WithZoneMappings
 function Test-AzureProviderOperation
 {
     # Get all operations by all providers
-    $allActions = Get-AzureRmProviderOperation
+    $allActions = Get-AzProviderOperation
 	Assert-True { $allActions.Length -gt 0 }
 
 	# Get all operations of microsoft.insights provider
-	$insightsActions = Get-AzureRmProviderOperation Microsoft.Insights/*
+	$insightsActions = Get-AzProviderOperation Microsoft.Insights/*
 	$insightsActions
 	Assert-True { $insightsActions.Length -gt 0 }
 	Assert-True { $allActions.Length -gt $insightsActions.Length }
 
 	# Get all operations of microsoft.eventgrid provider
-	$eventgridActions = Get-AzureRmProviderOperation Microsoft.EventGrid/*
+	$eventgridActions = Get-AzProviderOperation Microsoft.EventGrid/*
 	$eventgridActions
 	Assert-True { $eventgridActions.Length -gt 0 }
 	Assert-True { $allActions.Length -gt $eventgridActions.Length }
@@ -110,7 +110,7 @@ function Test-AzureProviderOperation
 	}
 
 	# Case insenstive search
-	$insightsCaseActions = Get-AzureRmProviderOperation MicROsoFt.InSIghTs/*
+	$insightsCaseActions = Get-AzProviderOperation MicROsoFt.InSIghTs/*
 	Assert-True { $insightsCaseActions.Length -gt 0 }
 	Assert-True { $insightsCaseActions.Length -eq $insightsActions.Length }
 	foreach ($action in $insightsCaseActions)
@@ -120,7 +120,7 @@ function Test-AzureProviderOperation
 	}
 
 	# Get all Read operations of microsoft.insights provider
-	$insightsReadActions = Get-AzureRmProviderOperation Microsoft.Insights/*/read
+	$insightsReadActions = Get-AzProviderOperation Microsoft.Insights/*/read
 	Assert-True { $insightsReadActions.Length -gt 0 }
 	Assert-True { $insightsActions.Length -gt $insightsReadActions.Length }
 	foreach ($action in $insightsReadActions)
@@ -131,7 +131,7 @@ function Test-AzureProviderOperation
 	}
 
 	# Get all Read operations of all providers
-	$readActions = Get-AzureRmProviderOperation */read
+	$readActions = Get-AzProviderOperation */read
 	Assert-True { $readActions.Length -gt 0 }
 	Assert-True { $readActions.Length -lt $allActions.Length }
 	Assert-True { $readActions.Length -gt $insightsReadActions.Length }
@@ -143,31 +143,31 @@ function Test-AzureProviderOperation
 	}
 
 	# Get a particular operation
-	$action = Get-AzureRmProviderOperation Microsoft.OperationalInsights/workspaces/usages/read
+	$action = Get-AzProviderOperation Microsoft.OperationalInsights/workspaces/usages/read
 	Assert-AreEqual $action.Operation.ToLower() "Microsoft.OperationalInsights/workspaces/usages/read".ToLower();
 
 	# Get an invalid operation
-	$action = Get-AzureRmProviderOperation Microsoft.OperationalInsights/workspaces/usages/read/123
+	$action = Get-AzProviderOperation Microsoft.OperationalInsights/workspaces/usages/read/123
 	Assert-True { $action.Length -eq 0 }
 
 	# Get operations for non-existing provider
 	$exceptionMessage = "Provider 'NonExistentProvider' not found.";
-	Assert-Throws { Get-AzureRmProviderOperation NonExistentProvider/* } $exceptionMessage
+	Assert-Throws { Get-AzProviderOperation NonExistentProvider/* } $exceptionMessage
 
 	# Get operations for non-existing provider
-	Assert-Throws { Get-AzureRmProviderOperation NonExistentProvider/servers/read } $exceptionMessage
+	Assert-Throws { Get-AzProviderOperation NonExistentProvider/servers/read } $exceptionMessage
 
 	# Get operations with invalid search string parts
 	$exceptionMessage = "Individual parts in the search string should either equal * or not contain *.";
-	Assert-Throws {Get-AzureRmProviderOperation Microsoft.ClassicCompute/virtual*/read } $exceptionMessage
+	Assert-Throws {Get-AzProviderOperation Microsoft.ClassicCompute/virtual*/read } $exceptionMessage
 
 	# Get operations with invalid provider name
 	$exceptionMessage = "To get all operations under Microsoft.Sql, please specify the search string as Microsoft.Sql/*.";
-	Assert-Throws {Get-AzureRmProviderOperation Microsoft.Sql } $exceptionMessage
+	Assert-Throws {Get-AzProviderOperation Microsoft.Sql } $exceptionMessage
 
 	# Get operations with ? in search string
 	$exceptionMessage = "Wildcard character ? is not supported.";
-	Assert-Throws {Get-AzureRmProviderOperation Microsoft.Sql/servers/*/rea? } $exceptionMessage
+	Assert-Throws {Get-AzProviderOperation Microsoft.Sql/servers/*/rea? } $exceptionMessage
  }
 
  <#
@@ -178,7 +178,7 @@ function Test-AzureProviderOperationDataActions
 {
 
 	# Get all operations of microsoft.insights provider
-	$storageDataActions = Get-AzureRmProviderOperation Microsoft.Storage/storageAccounts/blobServices/containers/blobs/*
+	$storageDataActions = Get-AzProviderOperation Microsoft.Storage/storageAccounts/blobServices/containers/blobs/*
 
 	foreach ($action in $storageDataActions)
 	{

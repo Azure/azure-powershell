@@ -47,8 +47,8 @@ Cleans the created resources
 function CleanUp($rgname, $dfname)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Force
-        Remove-AzureRmResourceGroup -Name $rgname -Force
+        Remove-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Force
+        Remove-AzResourceGroup -Name $rgname -Force
     }
 }
 

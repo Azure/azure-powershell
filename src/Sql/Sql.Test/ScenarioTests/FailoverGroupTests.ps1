@@ -39,7 +39,7 @@ function Handle-FailoverGroupTestWithFailoverGroup($scriptBlock, $failoverPolicy
 		Param($server, $partnerServer)
 
 		$fgName = Get-FailoverGroupName
-		$fg = $server | New-AzureRmSqlDatabaseFailoverGroup -FailoverGroupName $fgName -PartnerServerName $partnerServer.ServerName -FailoverPolicy $failoverPolicy
+		$fg = $server | New-AzSqlDatabaseFailoverGroup -FailoverGroupName $fgName -PartnerServerName $partnerServer.ServerName -FailoverPolicy $failoverPolicy
 		Invoke-Command -ScriptBlock $scriptBlock -ArgumentList $fg
 		
 	}.GetNewClosure()
@@ -104,10 +104,10 @@ function Assert-FailoverGroupsEqual($expected, $actual, $swapRoles = $false, $ro
 
 function Validate-FailoverGroupWithGet($fg, $message = "no context provided")
 {
-	$actual = $fg | Get-AzureRmSqlDatabaseFailoverGroup
+	$actual = $fg | Get-AzSqlDatabaseFailoverGroup
 	Assert-FailoverGroupsEqual $fg $actual -message $message
 
-	$actual = Get-AzureRmSqlDatabaseFailoverGroup $fg.PartnerResourceGroupName $fg.PartnerServerName $fg.FailoverGroupName
+	$actual = Get-AzSqlDatabaseFailoverGroup $fg.PartnerResourceGroupName $fg.PartnerServerName $fg.FailoverGroupName
 	Assert-FailoverGroupsEqual $fg $actual -swapRoles $true -message $message
 }
 
@@ -123,28 +123,28 @@ function Test-FailoverGroup()
 
 		# Create with default values
 		$fgName = Get-FailoverGroupName
-		$fg = New-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -PartnerServerName $partnerServer.ServerName -FailoverGroupName $fgName -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1 -AllowReadOnlyFailoverToPrimary Enabled
+		$fg = New-AzSqlDatabaseFailoverGroup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -PartnerServerName $partnerServer.ServerName -FailoverGroupName $fgName -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1 -AllowReadOnlyFailoverToPrimary Enabled
 		Validate-FailoverGroup $server $partnerServer $fgName Primary Automatic 1 Enabled @() $fg
 
 		# Alter all properties
-		$fg2 = Set-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName $fg.ResourceGroupName -ServerName $fg.ServerName -FailoverGroupName $fg.FailoverGroupName  -FailoverPolicy Manual -AllowReadOnlyFailoverToPrimary Disabled
+		$fg2 = Set-AzSqlDatabaseFailoverGroup -ResourceGroupName $fg.ResourceGroupName -ServerName $fg.ServerName -FailoverGroupName $fg.FailoverGroupName  -FailoverPolicy Manual -AllowReadOnlyFailoverToPrimary Disabled
 		Validate-FailoverGroup $server $partnerServer $fgName Primary Manual $null Disabled @() $fg2
 
 		#Alter again but piping in the server object
-		$serverObject = Get-AzureRmSqlServer -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
-		$fg3 = $serverObject | Set-AzureRMSqlDatabaseFailoverGroup –ResourceGroupName $server.ResourceGroupName –FailoverGroupName $fg.FailoverGroupName -FailoverPolicy Automatic
+		$serverObject = Get-AzSqlServer -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
+		$fg3 = $serverObject | Set-AzSqlDatabaseFailoverGroup –ResourceGroupName $server.ResourceGroupName –FailoverGroupName $fg.FailoverGroupName -FailoverPolicy Automatic
 		Validate-FailoverGroup $server $partnerServer $fgName Primary Automatic 1 Disabled @() $fg3
 
 		#Get Failover Group
 		Validate-FailoverGroupWithGet $fg3
 
 		#Get Failover Group
-		$fgs = $serverObject | Get-AzureRMSqlDatabaseFailoverGroup –ResourceGroupName $server.ResourceGroupName
+		$fgs = $serverObject | Get-AzSqlDatabaseFailoverGroup –ResourceGroupName $server.ResourceGroupName
 		Assert-AreEqual 1 ($fgs | where { $_.FailoverGroupName.Equals($fg.FailoverGroupName) }).Count
 
 		#Remove Failover Group
-		Remove-AzureRmSqlDatabaseFailoverGroup -ServerName $server.ServerName -ResourceGroupName $server.ResourceGroupName –FailoverGroupName $fg.FailoverGroupName
-		$all = $server | Get-AzureRMSqlDatabaseFailoverGroup –ResourceGroupName $server.ResourceGroupName
+		Remove-AzSqlDatabaseFailoverGroup -ServerName $server.ServerName -ResourceGroupName $server.ResourceGroupName –FailoverGroupName $fg.FailoverGroupName
+		$all = $server | Get-AzSqlDatabaseFailoverGroup –ResourceGroupName $server.ResourceGroupName
 		Assert-AreEqual 0 ($all | where { $_.FailoverGroupName.Equals($fg.FailoverGroupName) }).Count
 	}
 }
@@ -155,7 +155,7 @@ function Test-CreateFailoverGroup-Named()
 		Param($server, $partnerServer)
 
 		$fgName = Get-FailoverGroupName
-		$fg = New-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -FailoverGroupName $fgName -PartnerServerName $partnerServer.ServerName -PartnerResourceGroupName $partnerServer.ResourceGroupName
+		$fg = New-AzSqlDatabaseFailoverGroup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -FailoverGroupName $fgName -PartnerServerName $partnerServer.ServerName -PartnerResourceGroupName $partnerServer.ResourceGroupName
 		Validate-FailoverGroup $server $partnerServer $fgName Primary Automatic 1 Disabled @() $fg
 		Validate-FailoverGroupWithGet $fg
 	}
@@ -167,7 +167,7 @@ function Test-CreateFailoverGroup-Positional()
 		Param($server, $partnerServer)
 
 		$fgName = Get-FailoverGroupName
-		$fg = New-AzureRmSqlDatabaseFailoverGroup $server.ResourceGroupName $server.ServerName -FailoverGroupName $fgName -PartnerServerName $partnerServer.ServerName 
+		$fg = New-AzSqlDatabaseFailoverGroup $server.ResourceGroupName $server.ServerName -FailoverGroupName $fgName -PartnerServerName $partnerServer.ServerName 
 		Validate-FailoverGroup $server $partnerServer $fgName Primary Automatic 1 Disabled @() $fg
 		Validate-FailoverGroupWithGet $fg
 	}
@@ -179,7 +179,7 @@ function Test-CreateFailoverGroup-AutomaticPolicy()
 		Param($server, $partnerServer)
 
 		$fgName = Get-FailoverGroupName
-		$fg = $server | New-AzureRmSqlDatabaseFailoverGroup -FailoverGroupName $fgName -PartnerServerName $partnerServer.ServerName -FailoverPolicy Automatic
+		$fg = $server | New-AzSqlDatabaseFailoverGroup -FailoverGroupName $fgName -PartnerServerName $partnerServer.ServerName -FailoverPolicy Automatic
 		Validate-FailoverGroup $server $partnerServer $fgName Primary Automatic 1 Disabled @() $fg
 		Validate-FailoverGroupWithGet $fg
 	}
@@ -191,7 +191,7 @@ function Test-CreateFailoverGroup-AutomaticPolicyGracePeriodReadOnlyFailover()
 		Param($server, $partnerServer)
 
 		$fgName = Get-FailoverGroupName
-		$fg = $server | New-AzureRmSqlDatabaseFailoverGroup -FailoverGroupName $fgName -PartnerResourceGroupName $partnerServer.ResourceGroupName -PartnerServerName $partnerServer.ServerName -FailoverPolicy Automatic -GracePeriodWithDataLossHours 123 -AllowReadOnlyFailoverToPrimary Enabled
+		$fg = $server | New-AzSqlDatabaseFailoverGroup -FailoverGroupName $fgName -PartnerResourceGroupName $partnerServer.ResourceGroupName -PartnerServerName $partnerServer.ServerName -FailoverPolicy Automatic -GracePeriodWithDataLossHours 123 -AllowReadOnlyFailoverToPrimary Enabled
 		Validate-FailoverGroup $server $partnerServer $fgName Primary Automatic 123 Enabled @() $fg
 		Validate-FailoverGroupWithGet $fg
 	}
@@ -203,7 +203,7 @@ function Test-CreateFailoverGroup-ZeroGracePeriod()
 		Param($server, $partnerServer)
 
 		$fgName = Get-FailoverGroupName
-		$fg = $server | New-AzureRmSqlDatabaseFailoverGroup -FailoverGroupName $fgName -PartnerResourceGroupName $partnerServer.ResourceGroupName -PartnerServerName $partnerServer.ServerName -FailoverPolicy Automatic -GracePeriodWithDataLossHours 0 -AllowReadOnlyFailoverToPrimary Disabled
+		$fg = $server | New-AzSqlDatabaseFailoverGroup -FailoverGroupName $fgName -PartnerResourceGroupName $partnerServer.ResourceGroupName -PartnerServerName $partnerServer.ServerName -FailoverPolicy Automatic -GracePeriodWithDataLossHours 0 -AllowReadOnlyFailoverToPrimary Disabled
 		Validate-FailoverGroup $server $partnerServer $fgName Primary Automatic 1 Disabled @() $fg
 		Validate-FailoverGroupWithGet $fg
 	}
@@ -215,7 +215,7 @@ function Test-CreateFailoverGroup-ManualPolicy()
 		Param($server, $partnerServer)
 
 		$fgName = Get-FailoverGroupName
-		$fg = $server | New-AzureRmSqlDatabaseFailoverGroup -FailoverGroupName $fgName -PartnerResourceGroupName $partnerServer.ResourceGroupName -PartnerServerName $partnerServer.ServerName -FailoverPolicy Manual
+		$fg = $server | New-AzSqlDatabaseFailoverGroup -FailoverGroupName $fgName -PartnerResourceGroupName $partnerServer.ResourceGroupName -PartnerServerName $partnerServer.ServerName -FailoverPolicy Manual
 		Validate-FailoverGroup $server $partnerServer $fgName Primary Manual $null Disabled @() $fg
 		Validate-FailoverGroupWithGet $fg
 	}
@@ -230,7 +230,7 @@ function Test-CreateFailoverGroup-Overflow()
 		$gracePeriodToSet = $expectedGracePeriod + 1
 
 		$fgName = Get-FailoverGroupName
-		$fg = $server | New-AzureRmSqlDatabaseFailoverGroup -FailoverGroupName $fgName -PartnerResourceGroupName $partnerServer.ResourceGroupName -PartnerServerName $partnerServer.ServerName -FailoverPolicy Automatic -GracePeriodWithDataLossHours $gracePeriodToSet
+		$fg = $server | New-AzSqlDatabaseFailoverGroup -FailoverGroupName $fgName -PartnerResourceGroupName $partnerServer.ResourceGroupName -PartnerServerName $partnerServer.ServerName -FailoverPolicy Automatic -GracePeriodWithDataLossHours $gracePeriodToSet
 		Validate-FailoverGroup $server $partnerServer $fgName Primary Automatic $expectedGracePeriod Disabled @() $fg
 		Validate-FailoverGroupWithGet $fg
 	}
@@ -241,7 +241,7 @@ function Test-SetFailoverGroup-Named()
 	Handle-FailoverGroupTestWithFailoverGroup {
 		Param($fg)
 
-		$newFg = Set-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName $fg.ResourceGroupName -ServerName $fg.ServerName -FailoverGroupName $fg.FailoverGroupName
+		$newFg = Set-AzSqlDatabaseFailoverGroup -ResourceGroupName $fg.ResourceGroupName -ServerName $fg.ServerName -FailoverGroupName $fg.FailoverGroupName
 		Assert-FailoverGroupsEqual $fg $newFg
 		Validate-FailoverGroupWithGet $newFg
 	}
@@ -252,7 +252,7 @@ function Test-SetFailoverGroup-Positional()
 	Handle-FailoverGroupTestWithFailoverGroup {
 		Param($fg)
 
-		$newFg = Set-AzureRmSqlDatabaseFailoverGroup $fg.ResourceGroupName $fg.ServerName $fg.FailoverGroupName
+		$newFg = Set-AzSqlDatabaseFailoverGroup $fg.ResourceGroupName $fg.ServerName $fg.FailoverGroupName
 		Assert-FailoverGroupsEqual $fg $newFg
 		Validate-FailoverGroupWithGet $newFg
 	}
@@ -263,7 +263,7 @@ function Test-SetFailoverGroup-PipeServer()
 	Handle-FailoverGroupTestWithFailoverGroup {
 		Param($fg)
 
-		$newFg = Get-AzureRmSqlServer $fg.ResourceGroupName $fg.ServerName | Set-AzureRmSqlDatabaseFailoverGroup -FailoverGroupName $fg.FailoverGroupName
+		$newFg = Get-AzSqlServer $fg.ResourceGroupName $fg.ServerName | Set-AzSqlDatabaseFailoverGroup -FailoverGroupName $fg.FailoverGroupName
 		Assert-FailoverGroupsEqual $fg $newFg
 		Validate-FailoverGroupWithGet $newFg
 	}
@@ -274,7 +274,7 @@ function Test-SetFailoverGroup-AutomaticWithGracePeriodReadOnlyFailover()
 	Handle-FailoverGroupTestWithFailoverGroup {
 		Param($fg)
 
-		$newFg = $fg | Set-AzureRmSqlDatabaseFailoverGroup -FailoverPolicy Automatic -GracePeriodWithDataLossHours 123 -AllowReadOnlyFailoverToPrimary Enabled
+		$newFg = $fg | Set-AzSqlDatabaseFailoverGroup -FailoverPolicy Automatic -GracePeriodWithDataLossHours 123 -AllowReadOnlyFailoverToPrimary Enabled
 		Assert-FailoverGroupsEqual $fg $newFg -failoverPolicy Automatic -gracePeriod 123 -readOnlyFailoverPolicy Enabled
 		Validate-FailoverGroupWithGet $newFg
 	} -failoverPolicy Manual
@@ -285,7 +285,7 @@ function Test-SetFailoverGroup-AutomaticWithGracePeriodZero()
 	Handle-FailoverGroupTestWithFailoverGroup {
 		Param($fg)
 
-		$newFg = $fg | Set-AzureRmSqlDatabaseFailoverGroup -FailoverPolicy Automatic -GracePeriodWithDataLossHours 0 -AllowReadOnlyFailoverToPrimary Disabled
+		$newFg = $fg | Set-AzSqlDatabaseFailoverGroup -FailoverPolicy Automatic -GracePeriodWithDataLossHours 0 -AllowReadOnlyFailoverToPrimary Disabled
 		Assert-FailoverGroupsEqual $fg $newFg -failoverPolicy Automatic -gracePeriod 1 -readOnlyFailoverPolicy Disabled
 		Validate-FailoverGroupWithGet $newFg
 	} -failoverPolicy Manual
@@ -296,7 +296,7 @@ function Test-SetFailoverGroup-AutomaticToManual()
 	Handle-FailoverGroupTestWithFailoverGroup {
 		Param($fg)
 
-		$newFg = $fg | Set-AzureRmSqlDatabaseFailoverGroup -FailoverPolicy Manual
+		$newFg = $fg | Set-AzSqlDatabaseFailoverGroup -FailoverPolicy Manual
 		Assert-FailoverGroupsEqual $fg $newFg -failoverPolicy Manual -gracePeriod $null
 		Validate-FailoverGroupWithGet $newFg
 	}
@@ -307,7 +307,7 @@ function Test-SetFailoverGroup-ManualToAutomaticNoGracePeriod()
 	Handle-FailoverGroupTestWithFailoverGroup {
 		Param($fg)
 
-		$newFg = $fg | Set-AzureRmSqlDatabaseFailoverGroup -FailoverPolicy Automatic
+		$newFg = $fg | Set-AzSqlDatabaseFailoverGroup -FailoverPolicy Automatic
 		Assert-FailoverGroupsEqual $fg $newFg -failoverPolicy Automatic -gracePeriod 1
 		Validate-FailoverGroupWithGet $newFg
 	} -failoverPolicy Manual
@@ -321,7 +321,7 @@ function Test-SetFailoverGroup-Overflow()
 		$expectedGracePeriod = [math]::floor([int]::MaxValue / 60)
 		$gracePeriodToSet = $expectedGracePeriod + 1
 
-		$newFg = $fg | Set-AzureRmSqlDatabaseFailoverGroup -GracePeriodWithDataLossHours $gracePeriodToSet
+		$newFg = $fg | Set-AzSqlDatabaseFailoverGroup -GracePeriodWithDataLossHours $gracePeriodToSet
 		Assert-FailoverGroupsEqual $fg $newFg -gracePeriod $expectedGracePeriod
 		Validate-FailoverGroupWithGet $newFg
 	} -failoverPolicy Automatic
@@ -332,31 +332,31 @@ function Test-AddRemoveDatabasesToFromFailoverGroup()
 	Handle-FailoverGroupTestWithFailoverGroup {
 		Param($fg)
 
-		$db1 = New-AzureRmSqlDatabase $fg.ResourceGroupName $fg.ServerName -DatabaseName (Get-DatabaseName)
+		$db1 = New-AzSqlDatabase $fg.ResourceGroupName $fg.ServerName -DatabaseName (Get-DatabaseName)
 
-		$newFg = $fg | Add-AzureRmSqlDatabaseToFailoverGroup -Database $db1
+		$newFg = $fg | Add-AzSqlDatabaseToFailoverGroup -Database $db1
 		Assert-FailoverGroupsEqual $fg $newFg -databases @($db1) -message "after adding db1"
 		Validate-FailoverGroupWithGet $newFg -message "get after adding db1"
 
-		$newFg = $fg | Remove-AzureRmSqlDatabaseFromFailoverGroup -Database $db1
+		$newFg = $fg | Remove-AzSqlDatabaseFromFailoverGroup -Database $db1
 		Assert-FailoverGroupsEqual $fg $newFg -databases @() -message "after removing db1"
 		Validate-FailoverGroupWithGet $newFg -message "get after removing db1"
 
-		$db2 = New-AzureRmSqlDatabase $fg.ResourceGroupName $fg.ServerName -DatabaseName (Get-DatabaseName)
+		$db2 = New-AzSqlDatabase $fg.ResourceGroupName $fg.ServerName -DatabaseName (Get-DatabaseName)
 
-		$newFg = Add-AzureRmSqlDatabaseToFailoverGroup -ResourceGroupName $fg.ResourceGroupName -ServerName $fg.ServerName -FailoverGroupName $fg.FailoverGroupName -Database @($db1, $db2)
+		$newFg = Add-AzSqlDatabaseToFailoverGroup -ResourceGroupName $fg.ResourceGroupName -ServerName $fg.ServerName -FailoverGroupName $fg.FailoverGroupName -Database @($db1, $db2)
 		Assert-FailoverGroupsEqual $fg $newFg -databases @($db1, $db2) -message "after adding both dbs"
 		Validate-FailoverGroupWithGet $newFg -message "get after adding both dbs"
 
-		$newFg = Remove-AzureRmSqlDatabaseFromFailoverGroup -ResourceGroupName $fg.ResourceGroupName -ServerName $fg.ServerName -FailoverGroupName $fg.FailoverGroupName -Database @($db1, $db2)
+		$newFg = Remove-AzSqlDatabaseFromFailoverGroup -ResourceGroupName $fg.ResourceGroupName -ServerName $fg.ServerName -FailoverGroupName $fg.FailoverGroupName -Database @($db1, $db2)
 		Assert-FailoverGroupsEqual $fg $newFg -databases @() -message "after removing both dbs"
 		Validate-FailoverGroupWithGet $newFg -message "get after removing both dbs"
 
-		$newFg = $db1 | Add-AzureRmSqlDatabaseToFailoverGroup $fg.ResourceGroupName $fg.ServerName $fg.FailoverGroupName
+		$newFg = $db1 | Add-AzSqlDatabaseToFailoverGroup $fg.ResourceGroupName $fg.ServerName $fg.FailoverGroupName
 		Assert-FailoverGroupsEqual $fg $newFg -databases @($db1) -message "after adding db1 by pipeline"
 		Validate-FailoverGroupWithGet $newFg -message "get after adding db1 by pipeline"
 
-		$newFg = $db1 | Remove-AzureRmSqlDatabaseFromFailoverGroup $fg.ResourceGroupName $fg.ServerName $fg.FailoverGroupName
+		$newFg = $db1 | Remove-AzSqlDatabaseFromFailoverGroup $fg.ResourceGroupName $fg.ServerName $fg.FailoverGroupName
 		Assert-FailoverGroupsEqual $fg $newFg -databases @() -message "after removing db1 by pipeline"
 		Validate-FailoverGroupWithGet $newFg -message "get after removing db1 by pipeline"
 	}
@@ -367,11 +367,11 @@ function Test-SwitchFailoverGroup()
 	Handle-FailoverGroupTestWithFailoverGroup {
 		Param($fg)
 
-		$foGroup = Get-AzureRmSqlDatabaseFailoverGroup $fg.PartnerResourceGroupName $fg.PartnerServerName $fg.FailoverGroupName 
-		$job = $foGroup | Switch-AzureRmSqlDatabaseFailoverGroup -AsJob
+		$foGroup = Get-AzSqlDatabaseFailoverGroup $fg.PartnerResourceGroupName $fg.PartnerServerName $fg.FailoverGroupName 
+		$job = $foGroup | Switch-AzSqlDatabaseFailoverGroup -AsJob
 		$job | Wait-Job
 
-		$newSecondaryFg = $fg | Get-AzureRmSqlDatabaseFailoverGroup
+		$newSecondaryFg = $fg | Get-AzSqlDatabaseFailoverGroup
 		Assert-FailoverGroupsEqual $fg $newSecondaryFg -role "Secondary"
 		Validate-FailoverGroupWithGet $newSecondaryFg
 	}
@@ -382,8 +382,8 @@ function Test-SwitchFailoverGroupAllowDataLoss()
 	Handle-FailoverGroupTestWithFailoverGroup {
 		Param($fg)
 
-		Switch-AzureRmSqlDatabaseFailoverGroup $fg.PartnerResourceGroupName $fg.PartnerServerName $fg.FailoverGroupName -AllowDataLoss
-		$newSecondaryFg = $fg | Get-AzureRmSqlDatabaseFailoverGroup
+		Switch-AzSqlDatabaseFailoverGroup $fg.PartnerResourceGroupName $fg.PartnerServerName $fg.FailoverGroupName -AllowDataLoss
+		$newSecondaryFg = $fg | Get-AzSqlDatabaseFailoverGroup
 		Assert-FailoverGroupsEqual $fg $newSecondaryFg -role "Secondary"
 		Validate-FailoverGroupWithGet $newSecondaryFg
 	}

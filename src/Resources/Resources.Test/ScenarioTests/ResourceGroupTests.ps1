@@ -25,8 +25,8 @@ function Test-CreatesNewSimpleResourceGroup
     try
     {
         # Test
-        $actual = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval"}
-        $expected = Get-AzureRmResourceGroup -Name $rgname
+        $actual = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval"}
+        $expected = Get-AzResourceGroup -Name $rgname
 
         # Assert
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
@@ -52,14 +52,14 @@ function Test-UpdatesExistingResourceGroup
     try
     {
         # Test update without tag
-        Set-AzureRmResourceGroup -Name $rgname -Tags @{testtag = "testval"} -ErrorAction SilentlyContinue
+        Set-AzResourceGroup -Name $rgname -Tags @{testtag = "testval"} -ErrorAction SilentlyContinue
         Assert-True { $Error[0] -like "*Provided resource group does not exist." }
         $Error.Clear()
 
-        $new = New-AzureRmResourceGroup -Name $rgname -Location $location
+        $new = New-AzResourceGroup -Name $rgname -Location $location
 
-        $actual = Set-AzureRmResourceGroup -Name $rgname -Tags @{ testtag = "testval" }
-        $expected = Get-AzureRmResourceGroup -Name $rgname
+        $actual = Set-AzResourceGroup -Name $rgname -Tags @{ testtag = "testval" }
+        $expected = Get-AzResourceGroup -Name $rgname
 
         # Assert
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
@@ -85,18 +85,18 @@ function Test-CreatesAndRemoveResourceGroupViaPiping
     $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 
     # Test
-    New-AzureRmResourceGroup -Name $rgname1 -Location $location
-    New-AzureRmResourceGroup -Name $rgname2 -Location $location
+    New-AzResourceGroup -Name $rgname1 -Location $location
+    New-AzResourceGroup -Name $rgname2 -Location $location
 
-    $job = Get-AzureRmResourceGroup | where {$_.ResourceGroupName -eq $rgname1 -or $_.ResourceGroupName -eq $rgname2} | Remove-AzureRmResourceGroup -Force -AsJob
+    $job = Get-AzResourceGroup | where {$_.ResourceGroupName -eq $rgname1 -or $_.ResourceGroupName -eq $rgname2} | Remove-AzResourceGroup -Force -AsJob
 	Wait-Job $job
 
     # Assert
-    Get-AzureRmResourceGroup -Name $rgname1 -ErrorAction SilentlyContinue
+    Get-AzResourceGroup -Name $rgname1 -ErrorAction SilentlyContinue
     Assert-True { $Error[0] -like "*Provided resource group does not exist." }
     $Error.Clear()
 
-    Get-AzureRmResourceGroup -Name $rgname2 -ErrorAction SilentlyContinue
+    Get-AzResourceGroup -Name $rgname2 -ErrorAction SilentlyContinue
     Assert-True { $Error[0] -like "*Provided resource group does not exist." }
     $Error.Clear()
 }
@@ -110,7 +110,7 @@ function Test-GetNonExistingResourceGroup
     # Setup
     $rgname = Get-ResourceGroupName
 
-    Get-AzureRmResourceGroup -Name $rgname -ErrorAction SilentlyContinue
+    Get-AzResourceGroup -Name $rgname -ErrorAction SilentlyContinue
     Assert-True { $Error[0] -like "*Provided resource group does not exist." }
     $Error.Clear()
 }
@@ -124,7 +124,7 @@ function Test-NewResourceGroupInNonExistingLocation
     # Setup
     $rgname = Get-ResourceGroupName
 
-    Assert-Throws { New-AzureRmResourceGroup -Name $rgname -Location 'non-existing' }
+    Assert-Throws { New-AzResourceGroup -Name $rgname -Location 'non-existing' }
 }
 
 <#
@@ -136,7 +136,7 @@ function Test-RemoveNonExistingResourceGroup
     # Setup
     $rgname = Get-ResourceGroupName
 
-    Remove-AzureRmResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue
+    Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue
     Assert-True { $Error[0] -like "*Provided resource group does not exist." }
     $Error.Clear()
 }
@@ -153,41 +153,41 @@ function Test-AzureTagsEndToEnd
     Clean-Tags
 
     # Create tag without values
-    New-AzureRmTag $tag1
+    New-AzTag $tag1
 
-    $tag = Get-AzureRmTag $tag1
+    $tag = Get-AzTag $tag1
     Assert-AreEqual $tag1 $tag.Name
 
     # Add value to the tag (adding same value should pass)
-    New-AzureRmTag $tag1 value1
-    New-AzureRmTag $tag1 value1
-    New-AzureRmTag $tag1 value2
+    New-AzTag $tag1 value1
+    New-AzTag $tag1 value1
+    New-AzTag $tag1 value2
 
-    $tag = Get-AzureRmTag $tag1
+    $tag = Get-AzTag $tag1
     Assert-AreEqual 2 $tag.Values.Count
 
     # Create tag with values
-    New-AzureRmTag $tag2 value1
-    New-AzureRmTag $tag2 value2
-    New-AzureRmTag $tag2 value3
+    New-AzTag $tag2 value1
+    New-AzTag $tag2 value2
+    New-AzTag $tag2 value3
 
-    $tags = Get-AzureRmTag
+    $tags = Get-AzTag
     Assert-AreEqual 2 $tags.Count
 
     # Remove entire tag
-    $tag = Remove-AzureRmTag $tag1 -Force -PassThru
+    $tag = Remove-AzTag $tag1 -Force -PassThru
 
-    $tags = Get-AzureRmTag
+    $tags = Get-AzTag
     Assert-AreEqual $tag1 $tag.Name
 
     # Remove tag value
-    $tag = Remove-AzureRmTag $tag2 value1 -Force -PassThru
+    $tag = Remove-AzTag $tag2 value1 -Force -PassThru
 
-    $tags = Get-AzureRmTag
+    $tags = Get-AzTag
     Assert-AreEqual 0 $tags.Count
 
     # Get a non-existing tag
-    Assert-Throws { Get-AzureRmTag "non-existing" }
+    Assert-Throws { Get-AzTag "non-existing" }
 
     Clean-Tags
 }
@@ -219,7 +219,7 @@ function Test-NewDeploymentAndProviderRegistration
         }
 
         # Test
-        $deployment = New-AzureRmResourceGroup -Name $rgname -Location $location -GalleryTemplateIdentity $template -cacheName $rname -cacheLocation $location
+        $deployment = New-AzResourceGroup -Name $rgname -Location $location -GalleryTemplateIdentity $template -cacheName $rname -cacheLocation $location
 
         # Assert
         $client = New-Object Microsoft.Azure.Commands.Resources.Models.ResourcesClient $subscription
@@ -249,11 +249,11 @@ function Test-RemoveDeployment
     try
     {
         # Test
-        New-AzureRmResourceGroup -Name $rgName -Location "East US"
-        $job = New-AzureRmResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri -AsJob
+        New-AzResourceGroup -Name $rgName -Location "East US"
+        $job = New-AzResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri -AsJob
 		Wait-Job $job
 		$deployment = Receive-Job $job
-		Assert-True { Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName }
+		Assert-True { Remove-AzResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName }
     }
     finally
     {
@@ -272,39 +272,39 @@ function Test-FindResourceGroup
     $rgname = Get-ResourceGroupName
 	$rgname2 = Get-ResourceGroupName
     $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-	$originalResorcrGroups = Get-AzureRmResourceGroup
+	$originalResorcrGroups = Get-AzResourceGroup
 	$originalCount = @($originalResorcrGroups).Count
 
     try
     {
         # Test
-        $actual = New-AzureRmResourceGroup -Name $rgname -Location $location -Tag @{ testtag = "testval" }
-        $actual2 = New-AzureRmResourceGroup -Name $rgname2 -Location $location -Tag @{ testtag = "testval2" }
+        $actual = New-AzResourceGroup -Name $rgname -Location $location -Tag @{ testtag = "testval" }
+        $actual2 = New-AzResourceGroup -Name $rgname2 -Location $location -Tag @{ testtag = "testval2" }
 
-        $expected1 = Get-AzureRmResourceGroup -Name $rgname
+        $expected1 = Get-AzResourceGroup -Name $rgname
         # Assert
         Assert-AreEqual $expected1.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected1.Tags["testtag"] $actual.Tags["testtag"]
 
-		$expected2 = Get-AzureRmResourceGroup -Name $rgname2
+		$expected2 = Get-AzResourceGroup -Name $rgname2
         # Assert
         Assert-AreEqual $expected2.ResourceGroupName $actual2.ResourceGroupName
         Assert-AreEqual $expected2.Tags["testtag"] $actual2.Tags["testtag"]
 
-		$expected3 = Get-AzureRmResourceGroup
+		$expected3 = Get-AzResourceGroup
 		$expectedCount = $originalCount + 2
 		# Assert
 		Assert-AreEqual @($expected3).Count $expectedCount
 
-		$expected4 = Get-AzureRmResourceGroup -Tag @{ testtag = $null}
+		$expected4 = Get-AzResourceGroup -Tag @{ testtag = $null}
         # Assert
         Assert-AreEqual @($expected4).Count 2
 
-		$expected5 = Get-AzureRmResourceGroup -Tag @{ testtag = "testval" }
+		$expected5 = Get-AzResourceGroup -Tag @{ testtag = "testval" }
         # Assert
         Assert-AreEqual @($expected5).Count 1
 
-		$expected6 = Get-AzureRmResourceGroup -Tag @{ testtag2 = $null }
+		$expected6 = Get-AzResourceGroup -Tag @{ testtag2 = $null }
         # Assert
         Assert-AreEqual @($expected6).Count 0
     }
@@ -323,7 +323,7 @@ Tests remove non exist resource group and debug stream gets printed
 function Test-GetNonExistingResourceGroupWithDebugStream
 {
     $ErrorActionPreference="Continue"
-    $output = $(Get-AzureRmResourceGroup -Name "InvalidNonExistRocks" -Debug) 2>&1 5>&1 | Out-String
+    $output = $(Get-AzResourceGroup -Name "InvalidNonExistRocks" -Debug) 2>&1 5>&1 | Out-String
     $ErrorActionPreference="Stop"
     Assert-True { $output -Like "*============================ HTTP RESPONSE ============================*" }
 }
@@ -345,12 +345,12 @@ function Test-ExportResourceGroup
 	try
 	{
 		# Test
-		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+		New-AzResourceGroup -Name $rgname -Location $rglocation
                 #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-		$r = New-AzureRmResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+		$r = New-AzResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
 		Assert-AreEqual $r.ResourceGroupName $rgname
 
-		$exportOutput = Export-AzureRmResourceGroup -ResourceGroupName $rgname -Force
+		$exportOutput = Export-AzResourceGroup -ResourceGroupName $rgname -Force
 		Assert-NotNull $exportOutput
 		Assert-True { $exportOutput.Path.Contains($rgname + ".json") }
 	}
@@ -377,14 +377,14 @@ function Test-ResourceGroupWithPositionalParams
         $ErrorActionPreference = "SilentlyContinue"
         $Error.Clear()
         # Test
-        $actual = New-AzureRmResourceGroup $rgname $location
-        $expected = Get-AzureRmResourceGroup $rgname
+        $actual = New-AzResourceGroup $rgname $location
+        $expected = Get-AzResourceGroup $rgname
 
         # Assert
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
 
         #Test
-        Remove-AzureRmResourceGroup $rgname -Force
+        Remove-AzResourceGroup $rgname -Force
     }
     catch
     {

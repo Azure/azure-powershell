@@ -23,21 +23,21 @@ function Test-Dataset
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
         $linkedServicename = "foo1"
-        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File (Join-Path 'Resources' 'linkedService.json') -Name $linkedServicename -Force
+        Set-AzDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File (Join-Path 'Resources' 'linkedService.json') -Name $linkedServicename -Force
    
         $datasetname = "foo2"
-        $expected = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File (Join-Path 'Resources' 'dataset.json') -Force
-        $actual = Get-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname
+        $expected = Set-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File (Join-Path 'Resources' 'dataset.json') -Force
+        $actual = Get-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname
 
         Verify-AdfSubResource $expected $actual $rgname $dfname $datasetname
 
-        Remove-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -Force
+        Remove-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -Force
     }
     finally
     {
@@ -57,21 +57,21 @@ function Test-DatasetWithResourceId
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        $df = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        $df = Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
         $linkedServicename = "foo1"
-        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File (Join-Path 'Resources' 'linkedService.json') -Name $linkedServicename -Force
+        Set-AzDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File (Join-Path 'Resources' 'linkedService.json') -Name $linkedServicename -Force
    
         $dsname = "foo2"
-        $expected = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $dsname -File (Join-Path 'Resources' 'dataset.json') -Force
-        $actual = Get-AzureRmDataFactoryV2Dataset -ResourceId $expected.Id
+        $expected = Set-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $dsname -File (Join-Path 'Resources' 'dataset.json') -Force
+        $actual = Get-AzDataFactoryV2Dataset -ResourceId $expected.Id
 
         Verify-AdfSubResource $expected $actual $rgname $dfname $dsname
 
-        Remove-AzureRmDataFactoryV2Dataset -ResourceId $expected.Id -Force
+        Remove-AzDataFactoryV2Dataset -ResourceId $expected.Id -Force
     }
     finally
     {
@@ -91,21 +91,21 @@ function Test-DatasetWithDataFactoryParameter
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        $df = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        $df = Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
         $linkedServicename = "foo1"
-        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File (Join-Path 'Resources' 'linkedService.json') -Name $linkedServicename -Force
+        Set-AzDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File (Join-Path 'Resources' 'linkedService.json') -Name $linkedServicename -Force
    
         $datasetname = "foo2"
-        $actual = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File (Join-Path 'Resources' 'dataset.json') -Force
-        $expected = Get-AzureRmDataFactoryV2Dataset -DataFactory $df -Name $datasetname
+        $actual = Set-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File (Join-Path 'Resources' 'dataset.json') -Force
+        $expected = Get-AzDataFactoryV2Dataset -DataFactory $df -Name $datasetname
 
         Verify-AdfSubResource $expected $actual $rgname $dfname $datasetname
 
-        Remove-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -Force
+        Remove-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -Force
     }
     finally
     {
@@ -124,21 +124,21 @@ function Test-DatasetPiping
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
         $linkedServicename = "foo1"
-        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File (Join-Path 'Resources' 'linkedService.json') -Name $linkedServicename -Force
+        Set-AzDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File (Join-Path 'Resources' 'linkedService.json') -Name $linkedServicename -Force
    
         $datasetname = "foo2"
-        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File (Join-Path 'Resources' 'dataset.json') -Force
+        Set-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File (Join-Path 'Resources' 'dataset.json') -Force
         
-        Get-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname | Remove-AzureRmDataFactoryV2Dataset -Force
+        Get-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname | Remove-AzDataFactoryV2Dataset -Force
 
         # Test the dataset no longer exists
-        Assert-ThrowsContains { Get-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname } "NotFound"
+        Assert-ThrowsContains { Get-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname } "NotFound"
     }
     finally
     {

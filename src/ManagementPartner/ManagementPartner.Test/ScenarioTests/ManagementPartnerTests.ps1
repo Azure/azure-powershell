@@ -22,10 +22,10 @@ function Test-GetPartner
 {
     # Setup
 	$partnerId="5127255"
-	$partner = New-AzureRmManagementPartner -PartnerId $partnerId
+	$partner = New-AzManagementPartner -PartnerId $partnerId
 
     # Test
-	$partner = Get-AzureRmManagementPartner -PartnerId $partnerId
+	$partner = Get-AzManagementPartner -PartnerId $partnerId
 
 	# Assert
 	Assert-AreEqual $partnerId $partner.PartnerId
@@ -34,7 +34,7 @@ function Test-GetPartner
     Assert-NotNull $partner.State
 
     # cleanup
-    Remove-AzureRmManagementPartner -PartnerId $partnerId
+    Remove-AzManagementPartner -PartnerId $partnerId
 }
 
 
@@ -46,10 +46,10 @@ function Test-GetPartnerNoPartnerId
 {
 	 # Setup
 	$partnerId="5127255"
-	$partner = New-AzureRmManagementPartner -PartnerId $partnerId
+	$partner = New-AzManagementPartner -PartnerId $partnerId
 
     # Test
-	$partner = Get-AzureRmManagementPartner
+	$partner = Get-AzManagementPartner
 
 	# Assert
 	Assert-AreEqual $partnerId $partner.PartnerId
@@ -58,7 +58,7 @@ function Test-GetPartnerNoPartnerId
     Assert-NotNull $partner.State
 
     # cleanup
-    Remove-AzureRmManagementPartner -PartnerId $partnerId
+    Remove-AzManagementPartner -PartnerId $partnerId
 }
 
 
@@ -69,7 +69,7 @@ Tests add management partner
 function Test-NewPartner
 {
 	$partnerId="5127255"
-	$partner = New-AzureRmManagementPartner -PartnerId $partnerId
+	$partner = New-AzManagementPartner -PartnerId $partnerId
 
 	# Assert
 	Assert-AreEqual $partnerId $partner.PartnerId
@@ -78,7 +78,7 @@ function Test-NewPartner
     Assert-NotNull $partner.State
 
     # cleanup
-    Remove-AzureRmManagementPartner -PartnerId $partnerId
+    Remove-AzManagementPartner -PartnerId $partnerId
 }
 
 
@@ -90,11 +90,11 @@ function Test-UpdatePartner
 {
 	# Setup
 	$partnerId="5127255"
-	$partner = New-AzureRmManagementPartner -PartnerId $partnerId
+	$partner = New-AzManagementPartner -PartnerId $partnerId
 
     # Test
     $newPartnerId="5127254"
-	$partner = Update-AzureRmManagementPartner -PartnerId $newPartnerId
+	$partner = Update-AzManagementPartner -PartnerId $newPartnerId
 
 	# Assert
 	Assert-AreEqual $newPartnerId $partner.PartnerId
@@ -103,7 +103,7 @@ function Test-UpdatePartner
     Assert-NotNull $partner.State
 
     # cleanup
-    Remove-AzureRmManagementPartner -PartnerId $newPartnerId
+    Remove-AzManagementPartner -PartnerId $newPartnerId
 }
 
 <#
@@ -114,8 +114,8 @@ function Test-RemovePartner
 {
 	# Setup
 	$partnerId="5127255"
-	$partner = New-AzureRmManagementPartner -PartnerId $partnerId
+	$partner = New-AzManagementPartner -PartnerId $partnerId
     
     # Test
-	Remove-AzureRmManagementPartner -PartnerId $partnerId
+	Remove-AzManagementPartner -PartnerId $partnerId
 }

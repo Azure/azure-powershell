@@ -113,27 +113,27 @@ function Test-Gallery
     {
         # Common
         $loc = "southcentralus";
-        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;        
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;        
         $description1 = "Original Description";
         $description2 = "Updated Description";
 
         # Gallery
-        New-AzureRmGallery -ResourceGroupName $rgname -Name $galleryName -Description $description1 -Location $loc;
+        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $description1 -Location $loc;
 
-        $galleryList = Get-AzureRmGallery;
+        $galleryList = Get-AzGallery;
         $gallery = $galleryList | ? {$_.Name -eq $galleryName};
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
 
-        $galleryList = Get-AzureRmGallery -ResourceGroupName $rgname;
+        $galleryList = Get-AzGallery -ResourceGroupName $rgname;
         $gallery = $galleryList | ? {$_.Name -eq $galleryName};
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
 
-        $gallery = Get-AzureRmGallery -ResourceGroupName $rgname -Name $galleryName;
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
         $output = $gallery | Out-String;
 
-        Update-AzureRmGallery -ResourceGroupName $rgname -Name $galleryName -Description $description2;
-        $gallery = Get-AzureRmGallery -ResourceGroupName $rgname -Name $galleryName;
+        Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $description2;
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
         Verify-Gallery $gallery $rgname $galleryName $loc $description2;
 
         # Gallery Image Definition
@@ -155,7 +155,7 @@ function Test-Gallery
         $osState = "Generalized";
         $osType = "Linux";
 
-        New-AzureRmGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName `
+        New-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName `
                                           -Location $loc -Publisher $publisherName -Offer $offerName -Sku $skuName `
                                           -OsState $osState -OsType $osType `
                                           -Description $description1 -Eula $eula `
@@ -167,7 +167,7 @@ function Test-Gallery
                                           -PurchasePlanProduct $purchasePlanProduct `
                                           -PurchasePlanPublisher $purchasePlanPublisher;
 
-        $galleryImageDefinitionList = Get-AzureRmGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName;
+        $galleryImageDefinitionList = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName;
         $definition = $galleryImageDefinitionList | ? {$_.Name -eq $galleryImageName};
         Verify-GalleryImageDefinition $definition $rgname $galleryImageName $loc $description1 `
                                       $eula $privacyStatementUri $releaseNoteUri `
@@ -177,7 +177,7 @@ function Test-Gallery
                                       $disallowedDiskTypes `
                                       $purchasePlanName $purchasePlanPublisher $purchasePlanProduct;
 
-        $definition = Get-AzureRmGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName;
+        $definition = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName;
         $output = $definition | Out-String;
         Verify-GalleryImageDefinition $definition $rgname $galleryImageName $loc $description1 `
                                       $eula $privacyStatementUri $releaseNoteUri `
@@ -187,10 +187,10 @@ function Test-Gallery
                                       $disallowedDiskTypes `
                                       $purchasePlanName $purchasePlanPublisher $purchasePlanProduct;
 
-        Update-AzureRmGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName `
+        Update-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName `
                                              -Description $description2;
 
-        $definition = Get-AzureRmGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName;
+        $definition = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName;
         Verify-GalleryImageDefinition $definition $rgname $galleryImageName $loc $description2 `
                                       $eula $privacyStatementUri $releaseNoteUri `
                                       $osType $osState $endOfLifeDate `
@@ -205,37 +205,37 @@ function Test-Gallery
         $targetRegions = @(@{Name='South Central US';ReplicaCount=1},@{Name='East US';ReplicaCount=2},@{Name='Central US'});        
         $tag = @{test1 = "testval1"; test2 = "testval2" };
 
-        New-AzureRmGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+        New-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
                                        -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName `
                                        -Location $loc -SourceImageId $sourceImageId -ReplicaCount 1 `
                                        -PublishingProfileEndOfLifeDate $endOfLifeDate `
                                        -TargetRegion $targetRegions;
 
-        $galleryImageVersionList = Get-AzureRmGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+        $galleryImageVersionList = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
                                                                   -GalleryImageDefinitionName $galleryImageName;
                                        
         $version = $galleryImageVersionList | ? {$_.Name -eq $galleryImageVersionName};
         Verify-GalleryImageVersion $version $rgname $galleryImageVersionName $loc `
                                    $sourceImageId 1 $endOfLifeDate $targetRegions;
 
-        $version = Get-AzureRmGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+        $version = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
                                                   -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
         Verify-GalleryImageVersion $version $rgname $galleryImageVersionName $loc `
                                    $sourceImageId 1 $endOfLifeDate $targetRegions;
 
-        Update-AzureRmGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+        Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
                                           -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName `
                                           -Tag $tag;
 
-        $version = Get-AzureRmGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+        $version = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
                                                   -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
         Verify-GalleryImageVersion $version $rgname $galleryImageVersionName $loc `
                                    $sourceImageId 1 $endOfLifeDate $targetRegions;
         $output = $version | Out-String;
 
-        $version | Remove-AzureRmGalleryImageVersion -Force;
-        $definition | Remove-AzureRmGalleryImageDefinition -Force;
-        $gallery | Remove-AzureRmGallery -Force;
+        $version | Remove-AzGalleryImageVersion -Force;
+        $definition | Remove-AzGalleryImageDefinition -Force;
+        $gallery | Remove-AzGallery -Force;
     }
     finally
     {

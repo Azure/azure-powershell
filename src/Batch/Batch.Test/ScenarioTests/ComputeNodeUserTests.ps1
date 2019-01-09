@@ -25,18 +25,18 @@ function Test-ComputeNodeUserEndToEnd
     $password1 = ConvertTo-SecureString "Password1234!" -AsPlainText -Force
 
     # Create a user
-    New-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Password $password1 -BatchContext $context
+    New-AzBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Password $password1 -BatchContext $context
 
     # Update the user. Since there's no Get user API, this also validates that the create call worked (no 404 error).
     # Basically just validating that we can set the parameters and execute the cmdlet without error. 
     # If a Get user API is added, we can validate that the properties were actually updated.
     $password2 = ConvertTo-SecureString "Abcdefghijk1234!" -AsPlainText -Force
-    Set-AzureBatchComputeNodeUser $poolId $computeNodeId $userName $password2 -ExpiryTime ([DateTime]::Now.AddDays(5)) -BatchContext $context
+    Set-AzBatchComputeNodeUser $poolId $computeNodeId $userName $password2 -ExpiryTime ([DateTime]::Now.AddDays(5)) -BatchContext $context
 
     # Delete the user
-    Remove-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -BatchContext $context
+    Remove-AzBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -BatchContext $context
 
     # Verify the user was deleted
     # There is currently no Get/List user API, so try to delete the user again and verify that it fails.
-    Assert-Throws { Remove-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -BatchContext $context }
+    Assert-Throws { Remove-AzBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -BatchContext $context }
 }

@@ -20,10 +20,10 @@ function Create-ResourceGroupForTest
 	if($useExistingService)
 	{
 		$rgName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("ResourceGroupName")
-		$rg = Get-AzureRmResourceGroup -Name $rgName -Location $location
+		$rg = Get-AzResourceGroup -Name $rgName -Location $location
 	}else{
 		$rgName = Get-ResourceGroupName
-		$rg = New-AzureRmResourceGroup -Name $rgName -Location $location
+		$rg = New-AzResourceGroup -Name $rgName -Location $location
 	}
 
 	Assert-NotNull $rg
@@ -34,7 +34,7 @@ function Create-ResourceGroupForTest
 function Remove-ResourceGroupForTest ($rg)
 {
 	if([Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigBool("cleanup")){
-		Remove-AzureRmResourceGroup -Name $rg.ResourceGroupName -Force
+		Remove-AzResourceGroup -Name $rg.ResourceGroupName -Force
 	}
 }
 
@@ -69,14 +69,14 @@ function Create-DataMigrationService($rg)
 	$service = $null
 	if($useExistingService){
 		$serviceName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("ServiceName")
-		$result = Get-AzureRmDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $serviceName
+		$result = Get-AzDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $serviceName
 		Assert-AreEqual 1 $result.Count
 		$service = $result[0]
 	}else{
 		$serviceName = Get-ServiceName
 		$virtualSubNetId = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("VIRTUAL_SUBNET_ID")
 		$sku = "BusinessCritical_4vCores"
-		$service = New-AzureRmDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $ServiceName -Location $rg.Location -Sku $sku -VirtualSubnetId $virtualSubNetId
+		$service = New-AzDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $ServiceName -Location $rg.Location -Sku $sku -VirtualSubnetId $virtualSubNetId
 	}
 
 	Assert-NotNull $service
@@ -103,7 +103,7 @@ function Create-Project($rg, $service, $targetPlatform)
 	$sourceConnInfo = New-SourceSqlConnectionInfo
 	$targetConnInfo = New-TargetSqlConnectionInfo
 
-    $project = New-AzureRmDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $ProjectName -Location $rg.Location -SourceType SQL -TargetType $targetPlatform -SourceConnection $sourceConnInfo -TargetConnection $targetConnInfo -DatabaseInfo $dbList
+    $project = New-AzDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $ProjectName -Location $rg.Location -SourceType SQL -TargetType $targetPlatform -SourceConnection $sourceConnInfo -TargetConnection $targetConnInfo -DatabaseInfo $dbList
 
 	return $project
 }
@@ -114,7 +114,7 @@ function Create-ProjectMongoDbMongoDb($rg, $service)
 	$sourceConnInfo = New-SourceMongoDbConnectionInfo
 	$targetConnInfo = New-TargetMongoDbConnectionInfo
 
-    $project = New-AzureRmDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $ProjectName -Location $rg.Location -SourceType MongoDb -TargetType MongoDb -SourceConnection $sourceConnInfo -TargetConnection $targetConnInfo
+    $project = New-AzDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $ProjectName -Location $rg.Location -SourceType MongoDb -TargetType MongoDb -SourceConnection $sourceConnInfo -TargetConnection $targetConnInfo
 
 	return $project
 }
@@ -122,14 +122,14 @@ function Create-ProjectMongoDbMongoDb($rg, $service)
 function New-SourceMongoDbConnectionInfo
 {
 	$sourceConn = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("MONGODB_SOURCE_CONNECTIONSTRING")
-	$connectioninfo = New-AzureRmDmsConnInfo -ServerType MongoDb -ConnectionString $sourceConn
+	$connectioninfo = New-AzDmsConnInfo -ServerType MongoDb -ConnectionString $sourceConn
 	return $connectioninfo
 }
 
 function New-TargetMongoDbConnectionInfo
 {
 	$cosmosConn = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("COSMOSDB_TARGET_CONNECTIONSTRING")
-	$connectioninfo = New-AzureRmDmsConnInfo -ServerType MongoDb -ConnectionString $cosmosConn
+	$connectioninfo = New-AzDmsConnInfo -ServerType MongoDb -ConnectionString $cosmosConn
 	return $connectioninfo
 }
 
@@ -143,7 +143,7 @@ function getDmsAssetName($prefix)
 function New-SourceSqlConnectionInfo
 {
 	$dataSource = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_SOURCE_DATASOURCE")
-	$connectioninfo = New-AzureRmDmsConnInfo -ServerType SQL -DataSource $dataSource -AuthType SqlAuthentication -TrustServerCertificate:$true
+	$connectioninfo = New-AzDmsConnInfo -ServerType SQL -DataSource $dataSource -AuthType SqlAuthentication -TrustServerCertificate:$true
 
 	return $connectioninfo
 }
@@ -151,7 +151,7 @@ function New-SourceSqlConnectionInfo
 function New-TargetSqlConnectionInfo
 {
 	$dataSource = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDB_TARGET_DATASOURCE")
-	$connectioninfo = New-AzureRmDmsConnInfo -ServerType SQL -DataSource $dataSource -AuthType SqlAuthentication -TrustServerCertificate:$true
+	$connectioninfo = New-AzDmsConnInfo -ServerType SQL -DataSource $dataSource -AuthType SqlAuthentication -TrustServerCertificate:$true
 
 	return $connectioninfo
 }
@@ -159,7 +159,7 @@ function New-TargetSqlConnectionInfo
 function New-TargetSqlMiConnectionInfo
 {
 	$dataSource = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDBMI_TARGET_DATASOURCE")
-	$connectioninfo = New-AzureRmDmsConnInfo -ServerType SQL -DataSource $dataSource -AuthType SqlAuthentication -TrustServerCertificate:$true
+	$connectioninfo = New-AzDmsConnInfo -ServerType SQL -DataSource $dataSource -AuthType SqlAuthentication -TrustServerCertificate:$true
 
 	return $connectioninfo
 }
@@ -176,7 +176,7 @@ function New-ProjectDbInfos
 {
 	$dbName = Get-DbName
 
-	$dbInfo = New-AzureRmDataMigrationDatabaseInfo -SourceDatabaseName $dbName
+	$dbInfo = New-AzDataMigrationDatabaseInfo -SourceDatabaseName $dbName
 
 	return $dbInfo
 }

@@ -28,49 +28,49 @@ function Test-AddGetListSetRemoveActionGroup
 	try
 	{
 		Write-Verbose " ****** Creating a new email receiver"
-		$email1 = New-AzureRmActionGroupReceiver -EmailReceiver -Name 'emailreceiver' -EmailAddress 'andyshen@microsoft.com'
+		$email1 = New-AzActionGroupReceiver -EmailReceiver -Name 'emailreceiver' -EmailAddress 'andyshen@microsoft.com'
 		Assert-NotNull $email1
 		Assert-AreEqual 'emailreceiver' $email1.Name
 		Assert-AreEqual 'andyshen@microsoft.com' $email1.EmailAddress
 		
 		Write-Verbose " ****** Creating a new sms receiver"
-		$sms1 = New-AzureRmActionGroupReceiver -SmsReceiver -Name 'smsreceiver' -CountryCode '1' -PhoneNumber '4254251234'
+		$sms1 = New-AzActionGroupReceiver -SmsReceiver -Name 'smsreceiver' -CountryCode '1' -PhoneNumber '4254251234'
 		Assert-NotNull $sms1
 		Assert-AreEqual 'smsreceiver' $sms1.Name
 		Assert-AreEqual '1' $sms1.CountryCode
 		Assert-AreEqual '4254251234' $sms1.PhoneNumber
 		
 		Write-Verbose " ****** Creating a new webhook receiver"
-		$webhook1 = New-AzureRmActionGroupReceiver -WebhookReceiver -Name 'webhookreceiver' -ServiceUri 'http://test.com'
+		$webhook1 = New-AzActionGroupReceiver -WebhookReceiver -Name 'webhookreceiver' -ServiceUri 'http://test.com'
 		Assert-NotNull $webhook1
 		Assert-AreEqual 'webhookreceiver' $webhook1.Name
 		Assert-AreEqual 'http://test.com' $webhook1.ServiceUri
 		
 		Write-Verbose " ****** Creating a new action group"
-		$actual =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $resourceGroupName -ShortName $shortName -Receiver $email1,$sms1,$webhook1
+		$actual =  Set-AzActionGroup -Name $actionGroupName -ResourceGroup $resourceGroupName -ShortName $shortName -Receiver $email1,$sms1,$webhook1
 		Assert-NotNull $actual
 		Assert-AreEqual $actionGroupName $actual.Name
 
 		Write-Verbose " ****** Getting the action group by name"
-		$retrieved = Get-AzureRmActionGroup -ResourceGroup $resourceGroupName -Name $actionGroupName
+		$retrieved = Get-AzActionGroup -ResourceGroup $resourceGroupName -Name $actionGroupName
 		Assert-NotNull $retrieved
 		Assert-AreEqual 1 $retrieved.Length
 		Assert-AreEqual $actionGroupName $retrieved[0].Name
 		
 		Write-Verbose " ****** Getting the action group by subscriptionId"
-		$retrieved = Get-AzureRmActionGroup
+		$retrieved = Get-AzActionGroup
 		Assert-NotNull $retrieved
 		Assert-AreEqual 2 $retrieved.Length
 		Assert-AreEqual $actionGroupName $retrieved[0].Name
 		
 		Write-Verbose " ****** Getting the action group by resource group"
-		$retrieved = Get-AzureRmActionGroup -ResourceGroupName $resourceGroupName
+		$retrieved = Get-AzActionGroup -ResourceGroupName $resourceGroupName
 		Assert-NotNull $retrieved
 		Assert-AreEqual 1 $retrieved.Length
 		Assert-AreEqual $actionGroupName $retrieved[0].Name
 
 		Write-Verbose " ****** Removing the action group"
-		Remove-AzureRmActionGroup -ResourceGroup $resourceGroupName -Name $actionGroupName
+		Remove-AzActionGroup -ResourceGroup $resourceGroupName -Name $actionGroupName
 
     }
     finally

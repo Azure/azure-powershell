@@ -93,20 +93,20 @@ function Test-AzureFirewallCRUD
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
         
         # Create the Virtual Network
-        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         # Create public ip
-        $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
 
         # Create AzureFirewall (with no rules)
-        $azureFirewall = New-AzureRmFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName
+        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName
 
         # Get AzureFirewall
-        $getAzureFirewall = Get-AzureRmFirewall -name $azureFirewallName -ResourceGroupName $rgname
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
 
         #verification
         Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
@@ -123,7 +123,7 @@ function Test-AzureFirewallCRUD
         Assert-AreEqual 0 @($getAzureFirewall.NetworkRuleCollections).Count
 
         # list all Azure Firewalls in the resource group
-        $list = Get-AzureRmFirewall -ResourceGroupName $rgname
+        $list = Get-AzFirewall -ResourceGroupName $rgname
         Assert-AreEqual 1 @($list).Count
         Assert-AreEqual $list[0].ResourceGroupName $getAzureFirewall.ResourceGroupName
         Assert-AreEqual $list[0].Name $getAzureFirewall.Name
@@ -138,30 +138,30 @@ function Test-AzureFirewallCRUD
         Assert-AreEqual @($list[0].NetworkRuleCollections).Count @($getAzureFirewall.NetworkRuleCollections).Count
 
         # Create Application Rules
-        $appRule = New-AzureRmFirewallApplicationRule -Name $appRule1Name -Description $appRule1Desc -Protocol $appRule1Protocol1, $appRule1Protocol2 -TargetFqdn $appRule1Fqdn1, $appRule1Fqdn2 -SourceAddress $appRule1SourceAddress1
+        $appRule = New-AzFirewallApplicationRule -Name $appRule1Name -Description $appRule1Desc -Protocol $appRule1Protocol1, $appRule1Protocol2 -TargetFqdn $appRule1Fqdn1, $appRule1Fqdn2 -SourceAddress $appRule1SourceAddress1
 
-        $appRule2 = New-AzureRmFirewallApplicationRule -Name $appRule2Name -Protocol $appRule2Protocol1 -TargetFqdn $appRule2Fqdn1
+        $appRule2 = New-AzFirewallApplicationRule -Name $appRule2Name -Protocol $appRule2Protocol1 -TargetFqdn $appRule2Fqdn1
 
         # Create Application Rule Collection with 1 rule
-        $appRc = New-AzureRmFirewallApplicationRuleCollection -Name $appRcName -Priority $appRcPriority -Rule $appRule -ActionType $appRcActionType
+        $appRc = New-AzFirewallApplicationRuleCollection -Name $appRcName -Priority $appRcPriority -Rule $appRule -ActionType $appRcActionType
 
         # Add a rule to the rule collection using AddRule method
         $appRc.AddRule($appRule2)
 
         # Create a second Application Rule Collection with 1 rule
-        $appRc2 = New-AzureRmFirewallApplicationRuleCollection -Name $appRc2Name -Priority $appRc2Priority -Rule $appRule -ActionType $appRc2ActionType
+        $appRc2 = New-AzFirewallApplicationRuleCollection -Name $appRc2Name -Priority $appRc2Priority -Rule $appRule -ActionType $appRc2ActionType
 
         # Create Network Rule
-        $networkRule = New-AzureRmFirewallNetworkRule -Name $networkRule1Name -Description $networkRule1Desc -Protocol $networkRule1Protocol1, $networkRule1Protocol2, $networkRule1Protocol3 -SourceAddress $networkRule1SourceAddress1, $networkRule1SourceAddress2 -DestinationAddress $networkRule1DestinationAddress1 -DestinationPort $networkRule1DestinationPort1
+        $networkRule = New-AzFirewallNetworkRule -Name $networkRule1Name -Description $networkRule1Desc -Protocol $networkRule1Protocol1, $networkRule1Protocol2, $networkRule1Protocol3 -SourceAddress $networkRule1SourceAddress1, $networkRule1SourceAddress2 -DestinationAddress $networkRule1DestinationAddress1 -DestinationPort $networkRule1DestinationPort1
 
         # Create Network Rule Collection
-        $netRc = New-AzureRmFirewallNetworkRuleCollection -Name $networkRcName -Priority $networkRcPriority -Rule $networkRule -ActionType $networkRcActionType
+        $netRc = New-AzFirewallNetworkRuleCollection -Name $networkRcName -Priority $networkRcPriority -Rule $networkRule -ActionType $networkRcActionType
 
         # Create a NAT rule
-        $natRule = New-AzureRmFirewallNatRule -Name $natRule1Name -Description $natRule1Desc -Protocol $natRule1Protocol1, $natRule1Protocol2 -SourceAddress $natRule1SourceAddress1, $natRule1SourceAddress2 -DestinationAddress $natRule1DestinationAddress1 -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
+        $natRule = New-AzFirewallNatRule -Name $natRule1Name -Description $natRule1Desc -Protocol $natRule1Protocol1, $natRule1Protocol2 -SourceAddress $natRule1SourceAddress1, $natRule1SourceAddress2 -DestinationAddress $natRule1DestinationAddress1 -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
 
         # Create a NAT Rule Collection
-        $natRc = New-AzureRmFirewallNatRuleCollection -Name $natRcName -Priority $natRcPriority -Rule $natRule
+        $natRc = New-AzFirewallNatRuleCollection -Name $natRcName -Priority $natRcPriority -Rule $natRule
 
         # Add ApplicationRuleCollections to the Firewall using method AddApplicationRuleCollection
         $azureFirewall.AddApplicationRuleCollection($appRc)
@@ -174,10 +174,10 @@ function Test-AzureFirewallCRUD
         $azureFirewall.AddNetworkRuleCollection($netRc)
 
         # Set AzureFirewall
-        Set-AzureRmFirewall -AzureFirewall $azureFirewall
+        Set-AzFirewall -AzureFirewall $azureFirewall
 
         # Get AzureFirewall
-        $getAzureFirewall = Get-AzureRmFirewall -name $azureFirewallName -ResourceGroupName $rgName
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgName
         $azureFirewallIpConfiguration = $getAzureFirewall.IpConfigurations
 
         #verification
@@ -322,14 +322,14 @@ function Test-AzureFirewallCRUD
         Assert-AreEqual $networkRule1DestinationPort1 $networkRule.DestinationPorts[0]
 
         # Delete AzureFirewall
-        $delete = Remove-AzureRmFirewall -ResourceGroupName $rgname -name $azureFirewallName -PassThru -Force
+        $delete = Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewallName -PassThru -Force
         Assert-AreEqual true $delete
 
         # Delete VirtualNetwork 
-        $delete = Remove-AzureRmVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+        $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
         Assert-AreEqual true $delete
 
-        $list = Get-AzureRmFirewall -ResourceGroupName $rgname
+        $list = Get-AzFirewall -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
     finally
@@ -358,20 +358,20 @@ function Test-AzureFirewallAllocateAndDeallocate
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
 
         # Create the Virtual Network
-        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         # Create public ip
-        $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
 
         # Create AzureFirewall (with no vnet, public ip)
-        $azureFirewall = New-AzureRmFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location
+        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location
 
         # Get AzureFirewall
-        $getAzureFirewall = Get-AzureRmFirewall -name $azureFirewallName -ResourceGroupName $rgname
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
 
         #verification
         Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
@@ -391,10 +391,10 @@ function Test-AzureFirewallAllocateAndDeallocate
         $getAzureFirewall.Allocate($vnet, $publicip)
 
         # Set Azure Firewall
-        Set-AzureRmFirewall -AzureFirewall $getAzureFirewall
+        Set-AzFirewall -AzureFirewall $getAzureFirewall
 
         # Get AzureFirewall
-        $getAzureFirewall = Get-AzureRmFirewall -name $azureFirewallName -ResourceGroupName $rgname
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
 
         # Verification
         Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
@@ -415,10 +415,10 @@ function Test-AzureFirewallAllocateAndDeallocate
         
         # Deallocate the firewall
         $getAzureFirewall.Deallocate()
-        $getAzureFirewall | Set-AzureRmFirewall
+        $getAzureFirewall | Set-AzFirewall
 
         # Get AzureFirewall
-        $getAzureFirewall = Get-AzureRmFirewall -name $azureFirewallName -ResourceGroupName $rgname
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
 
         # Verification
         Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
@@ -436,14 +436,14 @@ function Test-AzureFirewallAllocateAndDeallocate
         Assert-AreEqual 0 @($getAzureFirewall.NetworkRuleCollections).Count
 
         # Delete AzureFirewall
-        $delete = Remove-AzureRmFirewall -ResourceGroupName $rgname -name $azureFirewallName -PassThru -Force
+        $delete = Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewallName -PassThru -Force
         Assert-AreEqual true $delete
 
         # Delete VirtualNetwork 
-        $delete = Remove-AzureRmVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+        $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
         Assert-AreEqual true $delete
 
-        $list = Get-AzureRmFirewall -ResourceGroupName $rgname
+        $list = Get-AzFirewall -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
     finally

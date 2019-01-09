@@ -19,7 +19,7 @@ function Test-DataLakeStoreTrustedIdProvider
 		# Creating Account
 		$resourceGroupName = Get-ResourceGroupName
 		$accountName = Get-DataLakeStoreAccountName
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		# Test to make sure the account doesn't exist
 		Assert-False {Test-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName}
@@ -81,7 +81,7 @@ function Test-DataLakeStoreTrustedIdProvider
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -106,7 +106,7 @@ function Test-DataLakeStoreFirewall
 		# Creating Account
 		$resourceGroupName = Get-ResourceGroupName
 		$accountName = Get-DataLakeStoreAccountName
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		# Test to make sure the account doesn't exist
 		Assert-False {Test-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName}
@@ -176,7 +176,7 @@ function Test-DataLakeStoreFirewall
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -201,7 +201,7 @@ function Test-DataLakeStoreVirtualNetwork
 		# Creating Account
 		$resourceGroupName = Get-ResourceGroupName
 		$accountName = Get-DataLakeStoreAccountName
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		# Test to make sure the account doesn't exist
 		Assert-False {Test-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName}
@@ -271,7 +271,7 @@ function Test-DataLakeStoreVirtualNetwork
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -297,7 +297,7 @@ function Test-DataLakeStoreAccountTiers
 		$resourceGroupName = Get-ResourceGroupName
 		$accountName = Get-DataLakeStoreAccountName
 		$secondAccountName = Get-DataLakeStoreAccountName
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		# Test to make sure the account doesn't exist
 		Assert-False {Test-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName}
@@ -331,7 +331,7 @@ function Test-DataLakeStoreAccountTiers
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $secondAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -356,7 +356,7 @@ function Test-DataLakeStoreAccount
 		# Creating Account
 		$resourceGroupName = Get-ResourceGroupName
 		$accountName = Get-DataLakeStoreAccountName
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		# Test to make sure the account doesn't exist
 		Assert-False {Test-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName}
@@ -475,7 +475,7 @@ function Test-DataLakeStoreAccount
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $secondAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $thirdAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -501,7 +501,7 @@ function Test-DataLakeStoreFileSystem
 		# Creating Account
 		$resourceGroupName = Get-ResourceGroupName
 		$accountName = Get-DataLakeStoreAccountName
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 		$accountCreated = New-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
     
 		Assert-AreEqual $accountName $accountCreated.Name
@@ -703,7 +703,7 @@ function Test-DataLakeStoreFileSystem
 		# Export DiskUsage
 		$targetFile = "/DuOutputFile"
 		Export-AdlStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile -SaveToAdl
-		$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $targetFile
+		$result = Get-AzDataLakeStoreItem -Account $accountName -path $targetFile
 		Assert-NotNull $result "No file was created on export properties"
 
 		# delete a file
@@ -729,7 +729,7 @@ function Test-DataLakeStoreFileSystem
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -754,7 +754,7 @@ function Test-DataLakeStoreFileSystemPermissions
 		# Creating Account
 		$resourceGroupName = Get-ResourceGroupName
 		$accountName = Get-DataLakeStoreAccountName
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 		$accountCreated = New-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
     
 		Assert-AreEqual $accountName $accountCreated.Name
@@ -853,18 +853,18 @@ function Test-DataLakeStoreFileSystemPermissions
 		
 		#Recursive Acl Modify
 		Set-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Permissions All -Id $aceUserId -Recurse
-		$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/"
+		$result = Get-AzDataLakeStoreItemAclEntry -Account $accountName -path "/"
 		Assert-AreEqual $($currentCount+1) $result.Count
 
 		# Export Acl
 		$targetFile = "/aclOutputFile"
 		Export-AdlStoreChildItemProperties -Account $accountName -Path "/" -OutputPath $targetFile -GetAcl -IncludeFile -SaveToAdl
-		$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $targetFile
+		$result = Get-AzDataLakeStoreItem -Account $accountName -path $targetFile
 		Assert-NotNull $result "No file was created on export properties"
 
 		#Recursive Acl remove
 		Remove-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Recurse
-		$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/"
+		$result = Get-AzDataLakeStoreItemAclEntry -Account $accountName -path "/"
 		Assert-AreEqual $($currentCount) $result.Count
 
 		# Validate full ACL removal
@@ -892,7 +892,7 @@ function Test-DataLakeStoreFileSystemPermissions
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -918,7 +918,7 @@ function Test-NegativeDataLakeStoreAccount
 		# Creating Account
 		$resourceGroupName = Get-ResourceGroupName
 		$accountName = Get-DataLakeStoreAccountName
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 		$accountCreated = New-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
     
 		Assert-AreEqual $accountName $accountCreated.Name
@@ -968,7 +968,7 @@ function Test-NegativeDataLakeStoreAccount
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -983,10 +983,10 @@ function CreateAndGetVirtualNetwork ($resourceGroupName, $vnetName, $location = 
 	$addressPrefix = "10.0.0.0/24"
 	$serviceEndpoint = "Microsoft.AzureActiveDirectory"
 
-	$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $addressPrefix -ServiceEndpoint $serviceEndpoint
-	$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+	$subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $addressPrefix -ServiceEndpoint $serviceEndpoint
+	$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
-	$getVnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+	$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
 
 	return $getVnet
 }

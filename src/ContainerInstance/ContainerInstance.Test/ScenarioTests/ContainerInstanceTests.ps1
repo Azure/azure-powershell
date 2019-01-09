@@ -14,9 +14,9 @@
 
 <#
 .SYNOPSIS
-Test New-AzureRmContainerGroup, Get-AzureRmContainerGroup, Remove-AzureRmContainerGroup
+Test New-AzContainerGroup, Get-AzContainerGroup, Remove-AzContainerGroup
 #>
-function Test-AzureRmContainerGroup
+function Test-AzContainerGroup
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
@@ -29,8 +29,8 @@ function Test-AzureRmContainerGroup
 
     try
     {
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-        $containerGroupCreated = New-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -OsType $osType -RestartPolicy $restartPolicy -IpAddressType "public" -Port @($port1, $port2) -Cpu 1 -Memory 1.5
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        $containerGroupCreated = New-AzContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -OsType $osType -RestartPolicy $restartPolicy -IpAddressType "public" -Port @($port1, $port2) -Cpu 1 -Memory 1.5
 
         Assert-AreEqual $containerGroupCreated.ResourceGroupName $resourceGroupName
         Assert-AreEqual $containerGroupCreated.Name $containerGroupName
@@ -44,14 +44,14 @@ function Test-AzureRmContainerGroup
         Assert-AreEqual $containerGroupCreated.Containers[0].Cpu 1
         Assert-AreEqual $containerGroupCreated.Containers[0].MemoryInGb 1.5
 
-        $retrievedContainerGroup = Get-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
+        $retrievedContainerGroup = Get-AzContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
         Assert-ContainerGroup $containerGroupCreated $retrievedContainerGroup
 
-        $retrievedContainerGroupList = Get-AzureRmContainerGroup -ResourceGroupName $resourceGroupName
+        $retrievedContainerGroupList = Get-AzContainerGroup -ResourceGroupName $resourceGroupName
         Assert-AreEqual $retrievedContainerGroupList.Count 1
         Assert-ContainerGroup $containerGroupCreated $retrievedContainerGroupList[0]
 
-        $retrievedContainerGroup | Remove-AzureRmContainerGroup
+        $retrievedContainerGroup | Remove-AzContainerGroup
     }
     finally
     {
@@ -62,9 +62,9 @@ function Test-AzureRmContainerGroup
 
 <#
 .SYNOPSIS
-Test New-AzureRmContainerGroup, Get-AzureRmContainerGroup, Remove-AzureRmContainerGroup
+Test New-AzContainerGroup, Get-AzContainerGroup, Remove-AzContainerGroup
 #>
-function Test-AzureRmContainerGroupWithIdentity
+function Test-AzContainerGroupWithIdentity
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
@@ -77,8 +77,8 @@ function Test-AzureRmContainerGroupWithIdentity
 
     try
     {
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-        $containerGroupCreated = New-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -OsType $osType -RestartPolicy $restartPolicy -IpAddressType "public" -Port @($port1, $port2) -Cpu 1 -Memory 1.5 -AssignIdentity
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        $containerGroupCreated = New-AzContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -OsType $osType -RestartPolicy $restartPolicy -IpAddressType "public" -Port @($port1, $port2) -Cpu 1 -Memory 1.5 -AssignIdentity
 
         Assert-AreEqual $containerGroupCreated.ResourceGroupName $resourceGroupName
         Assert-AreEqual $containerGroupCreated.Name $containerGroupName
@@ -95,14 +95,14 @@ function Test-AzureRmContainerGroupWithIdentity
 		Assert-NotNull $containerGroupCreated.Identity.PrincipalId;
         Assert-NotNull $containerGroupCreated.Identity.TenantId;
 
-        $retrievedContainerGroup = Get-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
+        $retrievedContainerGroup = Get-AzContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
         Assert-ContainerGroup $containerGroupCreated $retrievedContainerGroup
 
-        $retrievedContainerGroupList = Get-AzureRmContainerGroup -ResourceGroupName $resourceGroupName
+        $retrievedContainerGroupList = Get-AzContainerGroup -ResourceGroupName $resourceGroupName
         Assert-AreEqual $retrievedContainerGroupList.Count 1
         Assert-ContainerGroup $containerGroupCreated $retrievedContainerGroupList[0]
 
-        $retrievedContainerGroup | Remove-AzureRmContainerGroup
+        $retrievedContainerGroup | Remove-AzContainerGroup
     }
     finally
     {
@@ -113,9 +113,9 @@ function Test-AzureRmContainerGroupWithIdentity
 
 <#
 .SYNOPSIS
-Test New-AzureRmContainerGroup, Get-AzureRmContainerGroup, Remove-AzureRmContainerGroup
+Test New-AzContainerGroup, Get-AzContainerGroup, Remove-AzContainerGroup
 #>
-function Test-AzureRmContainerGroupWithIdentities
+function Test-AzContainerGroupWithIdentities
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
@@ -128,9 +128,9 @@ function Test-AzureRmContainerGroupWithIdentities
 
     try
     {
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
 		$userIdentity = "/subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/aci-ps-sdk-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aci-ps-sdk-test"
-        $containerGroupCreated = New-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -OsType $osType -RestartPolicy $restartPolicy -IpAddressType "public" -Port @($port1, $port2) -Cpu 1 -Memory 1.5 -IdentityType SystemAssignedUserAssigned -IdentityId $userIdentity
+        $containerGroupCreated = New-AzContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -OsType $osType -RestartPolicy $restartPolicy -IpAddressType "public" -Port @($port1, $port2) -Cpu 1 -Memory 1.5 -IdentityType SystemAssignedUserAssigned -IdentityId $userIdentity
 
         Assert-AreEqual $containerGroupCreated.ResourceGroupName $resourceGroupName
         Assert-AreEqual $containerGroupCreated.Name $containerGroupName
@@ -152,14 +152,14 @@ function Test-AzureRmContainerGroupWithIdentities
 		Assert-NotNull $containerGroupCreated.Identity.UserAssignedIdentities[$userIdentity].PrincipalId
 		Assert-NotNull $containerGroupCreated.Identity.UserAssignedIdentities[$userIdentity].ClientId
 
-        $retrievedContainerGroup = Get-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
+        $retrievedContainerGroup = Get-AzContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
         Assert-ContainerGroup $containerGroupCreated $retrievedContainerGroup
 
-        $retrievedContainerGroupList = Get-AzureRmContainerGroup -ResourceGroupName $resourceGroupName
+        $retrievedContainerGroupList = Get-AzContainerGroup -ResourceGroupName $resourceGroupName
         Assert-AreEqual $retrievedContainerGroupList.Count 1
         Assert-ContainerGroup $containerGroupCreated $retrievedContainerGroupList[0]
 
-        $retrievedContainerGroup | Remove-AzureRmContainerGroup
+        $retrievedContainerGroup | Remove-AzContainerGroup
     }
     finally
     {
@@ -170,9 +170,9 @@ function Test-AzureRmContainerGroupWithIdentities
 
 <#
 .SYNOPSIS
-Test Get-AzureRmContainerInstanceLog
+Test Get-AzContainerInstanceLog
 #>
-function Test-AzureRmContainerInstanceLog
+function Test-AzContainerInstanceLog
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
@@ -182,14 +182,14 @@ function Test-AzureRmContainerInstanceLog
 
     try
     {
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-        $containerGroupCreated = New-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -OsType $osType -IpAddressType "Public" -RestartPolicy "Never" -Command "echo hello"
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        $containerGroupCreated = New-AzContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -OsType $osType -IpAddressType "Public" -RestartPolicy "Never" -Command "echo hello"
         $containerInstanceName = $containerGroupName
 
-        $log = $containerGroupCreated | Get-AzureRmContainerInstanceLog -Name $containerInstanceName
+        $log = $containerGroupCreated | Get-AzContainerInstanceLog -Name $containerInstanceName
         Assert-NotNull $log
 
-        Remove-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
+        Remove-AzContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
     }
     finally
     {
@@ -200,9 +200,9 @@ function Test-AzureRmContainerInstanceLog
 
 <#
 .SYNOPSIS
-Test New-AzureRmContainerGroup with Azure File volume mount.
+Test New-AzContainerGroup with Azure File volume mount.
 #>
-function Test-AzureRmContainerGroupWithVolume
+function Test-AzContainerGroupWithVolume
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
@@ -221,8 +221,8 @@ function Test-AzureRmContainerGroupWithVolume
 
     try
     {
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-        $containerGroupCreated = New-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -RegistryCredential $registryCredential -RestartPolicy "Never" -Command "ls $mountPath" -AzureFileVolumeShareName $shareName -AzureFileVolumeAccountCredential $accountCredential -AzureFileVolumeMountPath $mountPath
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        $containerGroupCreated = New-AzContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -RegistryCredential $registryCredential -RestartPolicy "Never" -Command "ls $mountPath" -AzureFileVolumeShareName $shareName -AzureFileVolumeAccountCredential $accountCredential -AzureFileVolumeMountPath $mountPath
 
         Assert-NotNull $containerGroupCreated.Volumes
         Assert-NotNull $containerGroupCreated.Volumes[0].AzureFile
@@ -231,7 +231,7 @@ function Test-AzureRmContainerGroupWithVolume
         Assert-NotNull $containerGroupCreated.Containers[0].VolumeMounts
         Assert-AreEqual $containerGroupCreated.Containers[0].VolumeMounts[0].MountPath $mountPath
 
-        Remove-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
+        Remove-AzContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
     }
     finally
     {
@@ -242,9 +242,9 @@ function Test-AzureRmContainerGroupWithVolume
 
 <#
 .SYNOPSIS
-Test New-AzureRmContainerGroup with Azure File volume mount.
+Test New-AzContainerGroup with Azure File volume mount.
 #>
-function Test-AzureRmContainerGroupWithVolumeAndIdentity
+function Test-AzContainerGroupWithVolumeAndIdentity
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
@@ -263,8 +263,8 @@ function Test-AzureRmContainerGroupWithVolumeAndIdentity
 
     try
     {
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-        $containerGroupCreated = New-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -RegistryCredential $registryCredential -RestartPolicy "Never" -Command "ls $mountPath" -AzureFileVolumeShareName $shareName -AzureFileVolumeAccountCredential $accountCredential -AzureFileVolumeMountPath $mountPath -AssignIdentity
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        $containerGroupCreated = New-AzContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -RegistryCredential $registryCredential -RestartPolicy "Never" -Command "ls $mountPath" -AzureFileVolumeShareName $shareName -AzureFileVolumeAccountCredential $accountCredential -AzureFileVolumeMountPath $mountPath -AssignIdentity
 
         Assert-NotNull $containerGroupCreated.Volumes
         Assert-NotNull $containerGroupCreated.Volumes[0].AzureFile
@@ -277,7 +277,7 @@ function Test-AzureRmContainerGroupWithVolumeAndIdentity
 		Assert-NotNull $containerGroupCreated.Identity.PrincipalId;
         Assert-NotNull $containerGroupCreated.Identity.TenantId;
 
-        Remove-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
+        Remove-AzContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
     }
     finally
     {
@@ -288,9 +288,9 @@ function Test-AzureRmContainerGroupWithVolumeAndIdentity
 
 <#
 .SYNOPSIS
-Test New-AzureRmContainerGroup with Azure File volume mount.
+Test New-AzContainerGroup with Azure File volume mount.
 #>
-function Test-AzureRmContainerGroupWithVolumeAndIdentities
+function Test-AzContainerGroupWithVolumeAndIdentities
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
@@ -310,8 +310,8 @@ function Test-AzureRmContainerGroupWithVolumeAndIdentities
     try
     {
 		$userIdentity = "/subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/aci-ps-sdk-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aci-ps-sdk-test"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-        $containerGroupCreated = New-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -RegistryCredential $registryCredential -RestartPolicy "Never" -Command "ls $mountPath" -AzureFileVolumeShareName $shareName -AzureFileVolumeAccountCredential $accountCredential -AzureFileVolumeMountPath $mountPath -IdentityType SystemAssignedUserAssigned -IdentityId $userIdentity
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        $containerGroupCreated = New-AzContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -RegistryCredential $registryCredential -RestartPolicy "Never" -Command "ls $mountPath" -AzureFileVolumeShareName $shareName -AzureFileVolumeAccountCredential $accountCredential -AzureFileVolumeMountPath $mountPath -IdentityType SystemAssignedUserAssigned -IdentityId $userIdentity
 
         Assert-NotNull $containerGroupCreated.Volumes
         Assert-NotNull $containerGroupCreated.Volumes[0].AzureFile
@@ -328,7 +328,7 @@ function Test-AzureRmContainerGroupWithVolumeAndIdentities
 		Assert-NotNull $containerGroupCreated.Identity.UserAssignedIdentities[$userIdentity].PrincipalId
 		Assert-NotNull $containerGroupCreated.Identity.UserAssignedIdentities[$userIdentity].ClientId
 
-        Remove-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
+        Remove-AzContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
     }
     finally
     {
@@ -339,9 +339,9 @@ function Test-AzureRmContainerGroupWithVolumeAndIdentities
 
 <#
 .SYNOPSIS
-Test New-AzureRmContainerGroup with DNS name label.
+Test New-AzContainerGroup with DNS name label.
 #>
-function Test-AzureRmContainerGroupWithDnsNameLabel
+function Test-AzContainerGroupWithDnsNameLabel
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
@@ -355,8 +355,8 @@ function Test-AzureRmContainerGroupWithDnsNameLabel
 
     try
     {
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-        $containerGroupCreated = New-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -OsType $osType -RestartPolicy $restartPolicy -DnsNameLabel $containerGroupName -Port @($port1, $port2) -Cpu 1 -Memory 1.5
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        $containerGroupCreated = New-AzContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -OsType $osType -RestartPolicy $restartPolicy -DnsNameLabel $containerGroupName -Port @($port1, $port2) -Cpu 1 -Memory 1.5
 
         Assert-AreEqual $containerGroupCreated.ResourceGroupName $resourceGroupName
         Assert-AreEqual $containerGroupCreated.Name $containerGroupName
@@ -372,14 +372,14 @@ function Test-AzureRmContainerGroupWithDnsNameLabel
         Assert-AreEqual $containerGroupCreated.Containers[0].Cpu 1
         Assert-AreEqual $containerGroupCreated.Containers[0].MemoryInGb 1.5
 
-        $retrievedContainerGroup = Get-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
+        $retrievedContainerGroup = Get-AzContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
         Assert-ContainerGroup $containerGroupCreated $retrievedContainerGroup
 
-        $retrievedContainerGroupList = Get-AzureRmContainerGroup -ResourceGroupName $resourceGroupName
+        $retrievedContainerGroupList = Get-AzContainerGroup -ResourceGroupName $resourceGroupName
         Assert-AreEqual $retrievedContainerGroupList.Count 1
         Assert-ContainerGroup $containerGroupCreated $retrievedContainerGroupList[0]
 
-        $retrievedContainerGroup | Remove-AzureRmContainerGroup
+        $retrievedContainerGroup | Remove-AzContainerGroup
     }
     finally
     {

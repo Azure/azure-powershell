@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Test New-AzureRmMapsAccount
+Test New-AzMapsAccount
 #>
 function Test-NewAzureRmMapsAccount
 {
@@ -27,12 +27,12 @@ function Test-NewAzureRmMapsAccount
         $skuname = 'S0';
         $location = 'West US';
 
-        New-AzureRmResourceGroup -Name $rgname -Location $location;
+        New-AzResourceGroup -Name $rgname -Location $location;
 
-        $createdAccount = New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        $createdAccount = New-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
         Assert-NotNull $createdAccount;
         # Call create again, expect to get the same account
-        $createdAccountAgain = New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        $createdAccountAgain = New-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
         Assert-NotNull $createdAccountAgain
         Assert-AreEqual $createdAccount.Id $createdAccountAgain.Id;
         Assert-AreEqual $createdAccount.ResourceGroupName $createdAccountAgain.ResourceGroupName;
@@ -40,7 +40,7 @@ function Test-NewAzureRmMapsAccount
         Assert-AreEqual $createdAccount.Location $createdAccountAgain.Location;
         Assert-AreEqual $createdAccount.Sku.Name $createdAccountAgain.Sku.Name;
         
-        Retry-IfException { Remove-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
+        Retry-IfException { Remove-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }
     finally
     {
@@ -51,7 +51,7 @@ function Test-NewAzureRmMapsAccount
 
 <#
 .SYNOPSIS
-Test New-AzureRmMapsAccountS1
+Test New-AzMapsAccountS1
 #>
 function Test-NewAzureRmMapsAccountS1
 {
@@ -64,12 +64,12 @@ function Test-NewAzureRmMapsAccountS1
         $skuname = 'S1';
         $location = 'West US';
 
-        New-AzureRmResourceGroup -Name $rgname -Location $location;
+        New-AzResourceGroup -Name $rgname -Location $location;
 
-        $createdAccount = New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        $createdAccount = New-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
         Assert-NotNull $createdAccount;
         # Call create again, expect to get the same account
-        $createdAccountAgain = New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        $createdAccountAgain = New-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
         Assert-NotNull $createdAccountAgain
         Assert-AreEqual $createdAccount.Id $createdAccountAgain.Id;
         Assert-AreEqual $createdAccount.ResourceGroupName $createdAccountAgain.ResourceGroupName;
@@ -77,7 +77,7 @@ function Test-NewAzureRmMapsAccountS1
         Assert-AreEqual $createdAccount.Location $createdAccountAgain.Location;
         Assert-AreEqual $createdAccount.Sku.Name $createdAccountAgain.Sku.Name;
         
-        Retry-IfException { Remove-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
+        Retry-IfException { Remove-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }
     finally
     {
@@ -88,7 +88,7 @@ function Test-NewAzureRmMapsAccountS1
 
 <#
 .SYNOPSIS
-Test Remove-AzureRmMapsAccount
+Test Remove-AzMapsAccount
 #>
 function Test-RemoveAzureRmMapsAccount
 {
@@ -102,24 +102,24 @@ function Test-RemoveAzureRmMapsAccount
         $skuname = 'S0';
         $location = 'West US';
 
-        New-AzureRmResourceGroup -Name $rgname -Location $location;
+        New-AzResourceGroup -Name $rgname -Location $location;
 
-        $createdAccount = New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
-        Remove-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false;
-        $accountGotten = Get-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname;
+        $createdAccount = New-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        Remove-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false;
+        $accountGotten = Get-AzMapsAccount -ResourceGroupName $rgname -Name $accountname;
         Assert-Null $accountGotten
 
         # create it again and test removal by id
-        $createdAccount2 = New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        $createdAccount2 = New-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
 
-        $resource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $accountname;
+        $resource = Get-AzResource -ResourceGroupName $rgname -ResourceName $accountname;
         $resourceid = $resource.ResourceId;
 
-        Remove-AzureRmMapsAccount -ResourceId $resourceid -Confirm:$false;
-        $accountGotten2 = Get-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname;
+        Remove-AzMapsAccount -ResourceId $resourceid -Confirm:$false;
+        $accountGotten2 = Get-AzMapsAccount -ResourceGroupName $rgname -Name $accountname;
         Assert-Null $accountGotten2
 
-        Retry-IfException { Remove-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
+        Retry-IfException { Remove-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }
     finally
     {
@@ -130,7 +130,7 @@ function Test-RemoveAzureRmMapsAccount
 
 <#
 .SYNOPSIS
-Test Get-AzureRmMapsAccount
+Test Get-AzMapsAccount
 #>
 function Test-GetAzureMapsAccount
 {
@@ -144,36 +144,36 @@ function Test-GetAzureMapsAccount
         $skuname = 'S0';
         $location = 'West US';
 
-        New-AzureRmResourceGroup -Name $rgname -Location $location;
+        New-AzResourceGroup -Name $rgname -Location $location;
 
-        New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        New-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
 
-        $account = Get-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname;
+        $account = Get-AzMapsAccount -ResourceGroupName $rgname -Name $accountname;
         
         Assert-AreEqual $accountname $account.AccountName;
         Assert-AreEqual $skuname $account.Sku.Name;
 
         # get account by resourceid
-        $resource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $accountname;
+        $resource = Get-AzResource -ResourceGroupName $rgname -ResourceName $accountname;
         $resourceid = $resource.ResourceId;
 
-        $account2 = Get-AzureRmMapsAccount -ResourceId $resourceid;
+        $account2 = Get-AzMapsAccount -ResourceId $resourceid;
         Assert-AreEqual $accountname $account2.AccountName;
         Assert-AreEqual $skuname $account2.Sku.Name;
 
         # get all accounts in the RG 
-        $accounts = Get-AzureRmMapsAccount -ResourceGroupName $rgname;
+        $accounts = Get-AzMapsAccount -ResourceGroupName $rgname;
         $numberOfAccountsInRG = ($accounts | measure).Count;
         Assert-AreEqual $accountname $accounts[0].AccountName;
         Assert-AreEqual $skuname $accounts[0].Sku.Name;
 
         # get all accounts in the subscription
-        $allAccountsInSubscription = Get-AzureRmMapsAccount;
+        $allAccountsInSubscription = Get-AzMapsAccount;
         $numberOfAccountsInSubscription = ($allAccountsInSubscription | measure).Count;
 
         Assert-True { $numberOfAccountsInSubscription -ge $numberOfAccountsInRG }
         
-        Retry-IfException { Remove-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
+        Retry-IfException { Remove-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }
     finally
     {
@@ -184,7 +184,7 @@ function Test-GetAzureMapsAccount
 
 <#
 .SYNOPSIS
-Test Get-AzureRmMapsAccountKey
+Test Get-AzMapsAccountKey
 #>
 function Test-GetAzureRmMapsAccountKey
 {
@@ -198,24 +198,24 @@ function Test-GetAzureRmMapsAccountKey
         $skuname = 'S0';
         $location = 'West US';
 
-        New-AzureRmResourceGroup -Name $rgname -Location $location;
-        New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        New-AzResourceGroup -Name $rgname -Location $location;
+        New-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
         
-        $keys = Get-AzureRmMapsAccountKey -ResourceGroupName $rgname -Name $accountname;
+        $keys = Get-AzMapsAccountKey -ResourceGroupName $rgname -Name $accountname;
         
         Assert-NotNull $keys.PrimaryKey;
         Assert-NotNull $keys.SecondaryKey;
         Assert-AreNotEqual $keys.PrimaryKey $keys.SecondaryKey;
 
         # get account by resourceid
-        $resource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $accountname;
+        $resource = Get-AzResource -ResourceGroupName $rgname -ResourceName $accountname;
         $resourceid = $resource.ResourceId;
 
-        $keys2 = Get-AzureRmMapsAccountKey -ResourceId $resourceid;
+        $keys2 = Get-AzMapsAccountKey -ResourceId $resourceid;
         Assert-AreEqual $keys.PrimaryKey $keys2.PrimaryKey;
         Assert-AreEqual $keys.SecondaryKey $keys2.SecondaryKey;
 
-        Retry-IfException { Remove-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
+        Retry-IfException { Remove-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }
     finally
     {
@@ -226,7 +226,7 @@ function Test-GetAzureRmMapsAccountKey
 
 <#
 .SYNOPSIS
-Test New-AzureRmMapsAccountKey
+Test New-AzMapsAccountKey
 #>
 function Test-NewAzureRmMapsAccountKey
 {
@@ -240,34 +240,34 @@ function Test-NewAzureRmMapsAccountKey
         $skuname = 'S0';
         $location = 'West US';
 
-        New-AzureRmResourceGroup -Name $rgname -Location $location;
-        New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        New-AzResourceGroup -Name $rgname -Location $location;
+        New-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
         
-        $originalKeys = Get-AzureRmMapsAccountKey -ResourceGroupName $rgname -Name $accountname;
+        $originalKeys = Get-AzMapsAccountKey -ResourceGroupName $rgname -Name $accountname;
 
         # Update primary
-        $updatedKeys = New-AzureRmMapsAccountKey -ResourceGroupName $rgname -Name $accountname -KeyName Primary -Confirm:$false;
+        $updatedKeys = New-AzMapsAccountKey -ResourceGroupName $rgname -Name $accountname -KeyName Primary -Confirm:$false;
             
         Assert-AreNotEqual $originalKeys.PrimaryKey $updatedKeys.PrimaryKey;
         Assert-AreEqual $originalKeys.SecondaryKey $updatedKeys.SecondaryKey;
 
         # Update secondary
-        $updatedKeys2 = New-AzureRmMapsAccountKey -ResourceGroupName $rgname -Name $accountname -KeyName Secondary -Confirm:$false;
+        $updatedKeys2 = New-AzMapsAccountKey -ResourceGroupName $rgname -Name $accountname -KeyName Secondary -Confirm:$false;
 
         Assert-AreEqual $updatedKeys.PrimaryKey $updatedKeys2.PrimaryKey;
         Assert-AreNotEqual $updatedKeys.SecondaryKey $updatedKeys2.SecondaryKey;
 
         # get account by resourceid
-        $resource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $accountname;
+        $resource = Get-AzResource -ResourceGroupName $rgname -ResourceName $accountname;
         $resourceid = $resource.ResourceId;
 
-        $updatedKeys3 = New-AzureRmMapsAccountKey -ResourceId $resourceid -KeyName Primary -Confirm:$false;
+        $updatedKeys3 = New-AzMapsAccountKey -ResourceId $resourceid -KeyName Primary -Confirm:$false;
             
         Assert-AreNotEqual $updatedKeys2.PrimaryKey $updatedKeys3.PrimaryKey;
         Assert-AreEqual $updatedKeys2.SecondaryKey $updatedKeys3.SecondaryKey;
 
 
-        Retry-IfException { Remove-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
+        Retry-IfException { Remove-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }
     finally
     {
@@ -279,7 +279,7 @@ function Test-NewAzureRmMapsAccountKey
 
 <#
 .SYNOPSIS
-Test Get-AzureRmMapsAccount | Get-AzureRmMapsAccountKey
+Test Get-AzMapsAccount | Get-AzMapsAccountKey
 #>
 function Test-PipingGetAccountToGetKey
 {
@@ -293,16 +293,16 @@ function Test-PipingGetAccountToGetKey
         $skuname = 'S0';
         $location = 'West US';
 
-        New-AzureRmResourceGroup -Name $rgname -Location $location;
-        New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        New-AzResourceGroup -Name $rgname -Location $location;
+        New-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
 
-        $keys = Get-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname | Get-AzureRmMapsAccountKey;
+        $keys = Get-AzMapsAccount -ResourceGroupName $rgname -Name $accountname | Get-AzMapsAccountKey;
         Assert-NotNull $keys
         Assert-NotNull $keys.PrimaryKey
         Assert-NotNull $keys.SecondaryKey
         Assert-AreNotEqual $keys.PrimaryKey $keys.SecondaryKey;
 
-        Retry-IfException { Remove-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
+        Retry-IfException { Remove-AzMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }
     finally
     {

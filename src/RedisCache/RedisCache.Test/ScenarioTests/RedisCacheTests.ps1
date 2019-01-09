@@ -10,10 +10,10 @@ function Test-RedisCache
     $location = "West US"
 
     # Create resource group
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Creating Cache
-    $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium
 
     Assert-AreEqual $cacheName $cacheCreated.Name
     Assert-AreEqual $location $cacheCreated.Location
@@ -33,7 +33,7 @@ function Test-RedisCache
     for ($i = 0; $i -le 60; $i++)
     {
         Start-TestSleep 30000
-        $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
             Assert-AreEqual $cacheName $cacheGet[0].Name
@@ -44,7 +44,7 @@ function Test-RedisCache
     }
 
     # Updating Cache
-    $cacheUpdated = Set-AzureRmRedisCache -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"} -EnableNonSslPort $true
+    $cacheUpdated = Set-AzRedisCache -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"} -EnableNonSslPort $true
 
     Assert-AreEqual $cacheName $cacheUpdated.Name
     Assert-AreEqual 6379 $cacheUpdated.Port
@@ -57,7 +57,7 @@ function Test-RedisCache
     Assert-NotNull $cacheUpdated.SecondaryKey "SecondaryKey do not exists"
 
     # List all cache in resource group
-    $cachesInResourceGroup = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName
+    $cachesInResourceGroup = Get-AzRedisCache -ResourceGroupName $resourceGroupName
     Assert-True {$cachesInResourceGroup.Count -ge 1}
 
     $found = 0
@@ -74,7 +74,7 @@ function Test-RedisCache
     Assert-True {$found -eq 1} "Cache created earlier is not found."
 
     # List all cache in subscription
-    $cachesInSubscription = Get-AzureRmRedisCache
+    $cachesInSubscription = Get-AzRedisCache
     Assert-True {$cachesInSubscription.Count -ge 1}
     Assert-True {$cachesInSubscription.Count -ge $cachesInResourceGroup.Count}
 
@@ -92,20 +92,20 @@ function Test-RedisCache
     Assert-True {$found -eq 1} "Cache created earlier is not found."
 
     # Get cache keys
-    $cacheKeysBeforeUpdate = Get-AzureRmRedisCacheKey -ResourceGroupName $resourceGroupName -Name $cacheName
+    $cacheKeysBeforeUpdate = Get-AzRedisCacheKey -ResourceGroupName $resourceGroupName -Name $cacheName
     Assert-NotNull $cacheKeysBeforeUpdate.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheKeysBeforeUpdate.SecondaryKey "SecondaryKey do not exists"
 
     # Regenerate primary key
-    $cacheKeysAfterUpdate = New-AzureRmRedisCacheKey -ResourceGroupName $resourceGroupName -Name $cacheName -KeyType Primary -Force
+    $cacheKeysAfterUpdate = New-AzRedisCacheKey -ResourceGroupName $resourceGroupName -Name $cacheName -KeyType Primary -Force
     Assert-AreEqual $cacheKeysBeforeUpdate.SecondaryKey $cacheKeysAfterUpdate.SecondaryKey
     Assert-AreNotEqual $cacheKeysBeforeUpdate.PrimaryKey $cacheKeysAfterUpdate.PrimaryKey
 
     # Delete cache
-    Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+    Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
 
     # Delete resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -120,7 +120,7 @@ function Test-SetNonExistingRedisCacheTest
     $location = "West US"
 
     # Creating Cache
-    Assert-Throws {Set-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} }
+    Assert-Throws {Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} }
 }
 
 <#
@@ -135,10 +135,10 @@ function Test-RedisCachePipeline
     $location = "West US"
 
     # Create resource group
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Creating Cache
-    $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 1GB -Sku Standard -EnableNonSslPort $true
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 1GB -Sku Standard -EnableNonSslPort $true
 
     Assert-AreEqual $cacheName $cacheCreated.Name
     Assert-AreEqual $location $cacheCreated.Location
@@ -159,7 +159,7 @@ function Test-RedisCachePipeline
     for ($i = 0; $i -le 60; $i++)
     {
         Start-TestSleep 30000
-        $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
             Assert-AreEqual $cacheName $cacheGet[0].Name
@@ -169,8 +169,8 @@ function Test-RedisCachePipeline
     }
 
     # Updating Cache using pipeline
-    Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Set-AzureRmRedisCache -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -EnableNonSslPort $false
-    $cacheUpdatedPiped = Get-AzureRmRedisCache -Name $cacheName
+    Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Set-AzRedisCache -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -EnableNonSslPort $false
+    $cacheUpdatedPiped = Get-AzRedisCache -Name $cacheName
 
     Assert-AreEqual $cacheName $cacheUpdatedPiped.Name
     Assert-AreEqual $location $cacheUpdatedPiped.Location
@@ -184,20 +184,20 @@ function Test-RedisCachePipeline
     Assert-False  { $cacheUpdatedPiped.EnableNonSslPort }
 
     # Get cache keys
-    $cacheKeysBeforeUpdate = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Get-AzureRmRedisCacheKey
+    $cacheKeysBeforeUpdate = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Get-AzRedisCacheKey
     Assert-NotNull $cacheKeysBeforeUpdate.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheKeysBeforeUpdate.SecondaryKey "SecondaryKey do not exists"
 
     # Regenerate primary key
-    $cacheKeysAfterUpdate = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | New-AzureRmRedisCacheKey -KeyType Primary -Force
+    $cacheKeysAfterUpdate = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | New-AzRedisCacheKey -KeyType Primary -Force
     Assert-AreEqual $cacheKeysBeforeUpdate.SecondaryKey $cacheKeysAfterUpdate.SecondaryKey
     Assert-AreNotEqual $cacheKeysBeforeUpdate.PrimaryKey $cacheKeysAfterUpdate.PrimaryKey
 
     # Delete cache
-    Assert-True {Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Remove-AzureRmRedisCache -Force -PassThru} "Remove cache failed."
+    Assert-True {Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Remove-AzRedisCache -Force -PassThru} "Remove cache failed."
 
     # Delete resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -212,10 +212,10 @@ function Test-RedisCacheClustering
     $location = "West US"
 
     # Create resource group
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Creating Cache
-    $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 6GB -Sku Premium -ShardCount 3
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 6GB -Sku Premium -ShardCount 3
     Assert-AreEqual "Microsoft.Cache/Redis" $cacheCreated.Type
     Assert-AreEqual $resourceGroupName $cacheCreated.ResourceGroupName
 
@@ -233,7 +233,7 @@ function Test-RedisCacheClustering
     for ($i = 0; $i -le 60; $i++)
     {
         Start-TestSleep 30000
-        $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
             Assert-AreEqual $cacheName $cacheGet[0].Name
@@ -243,7 +243,7 @@ function Test-RedisCacheClustering
     }
 
     # Updating Cache
-    $cacheUpdated = Set-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"} -TenantSettings @{"some-key" = "some-value"}
+    $cacheUpdated = Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"} -TenantSettings @{"some-key" = "some-value"}
 
     Assert-AreEqual $cacheName $cacheUpdated.Name
     Assert-AreEqual "succeeded" $cacheUpdated.ProvisioningState
@@ -257,7 +257,7 @@ function Test-RedisCacheClustering
     Assert-NotNull $cacheUpdated.SecondaryKey "SecondaryKey do not exists"
 
     # List all cache in resource group
-    $cachesInResourceGroup = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName
+    $cachesInResourceGroup = Get-AzRedisCache -ResourceGroupName $resourceGroupName
     Assert-True {$cachesInResourceGroup.Count -ge 1}
 
     $found = 0
@@ -278,7 +278,7 @@ function Test-RedisCacheClustering
     Assert-True {$found -eq 1} "Cache created earlier is not found."
 
     # List all cache in subscription
-    $cachesInSubscription = Get-AzureRmRedisCache
+    $cachesInSubscription = Get-AzRedisCache
     Assert-True {$cachesInSubscription.Count -ge 1}
     Assert-True {$cachesInSubscription.Count -ge $cachesInResourceGroup.Count}
 
@@ -300,20 +300,20 @@ function Test-RedisCacheClustering
     Assert-True {$found -eq 1} "Cache created earlier is not found."
 
     # Get cache keys
-    $cacheKeysBeforeUpdate = Get-AzureRmRedisCacheKey -ResourceGroupName $resourceGroupName -Name $cacheName
+    $cacheKeysBeforeUpdate = Get-AzRedisCacheKey -ResourceGroupName $resourceGroupName -Name $cacheName
     Assert-NotNull $cacheKeysBeforeUpdate.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheKeysBeforeUpdate.SecondaryKey "SecondaryKey do not exists"
 
     # Regenerate primary key
-    $cacheKeysAfterUpdate = New-AzureRmRedisCacheKey -ResourceGroupName $resourceGroupName -Name $cacheName -KeyType Primary -Force
+    $cacheKeysAfterUpdate = New-AzRedisCacheKey -ResourceGroupName $resourceGroupName -Name $cacheName -KeyType Primary -Force
     Assert-AreEqual $cacheKeysBeforeUpdate.SecondaryKey $cacheKeysAfterUpdate.SecondaryKey
     Assert-AreNotEqual $cacheKeysBeforeUpdate.PrimaryKey $cacheKeysAfterUpdate.PrimaryKey
 
     # Delete cache
-    Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+    Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
 
     # Delete resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -329,16 +329,16 @@ function Test-RedisCachePatchSchedules
 
     ############################# Initial Creation #############################
     # Create resource group
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Creating Cache
-    $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Sku Premium -Size P1
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Sku Premium -Size P1
     Assert-AreEqual "creating" $cacheCreated.ProvisioningState
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
         Start-TestSleep 30000
-        $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
             Assert-AreEqual $cacheName $cacheGet[0].Name
@@ -348,10 +348,10 @@ function Test-RedisCachePatchSchedules
     }
 
     ############################# Tests schedule patching ##########################################
-    $weekend = New-AzureRmRedisCacheScheduleEntry -DayOfWeek "Weekend" -StartHourUtc 2 -MaintenanceWindow "06:00:00"
-    $thursday = New-AzureRmRedisCacheScheduleEntry -DayOfWeek "Thursday" -StartHourUtc 10 -MaintenanceWindow "09:00:00"
+    $weekend = New-AzRedisCacheScheduleEntry -DayOfWeek "Weekend" -StartHourUtc 2 -MaintenanceWindow "06:00:00"
+    $thursday = New-AzRedisCacheScheduleEntry -DayOfWeek "Thursday" -StartHourUtc 10 -MaintenanceWindow "09:00:00"
 
-    $createResult = New-AzureRmRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName -Entries @($weekend, $thursday)
+    $createResult = New-AzRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName -Entries @($weekend, $thursday)
     Assert-True {$createResult.Count -eq 3}
     foreach ($scheduleEntry in $createResult)
     {
@@ -371,7 +371,7 @@ function Test-RedisCachePatchSchedules
         }
     }
 
-    $getResult = Get-AzureRmRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName
+    $getResult = Get-AzRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName
     Assert-True {$getResult.Count -eq 3}
     foreach ($scheduleEntry in $getResult)
     {
@@ -391,31 +391,31 @@ function Test-RedisCachePatchSchedules
         }
     }
 
-    Remove-AzureRmRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName
+    Remove-AzRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName
 
-    Assert-ThrowsContains {Get-AzureRmRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName} "There are no patch schedules found for redis cache"
+    Assert-ThrowsContains {Get-AzRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName} "There are no patch schedules found for redis cache"
 
     ############################# Bug fix in set redis cache related to EnableNonSslPort ##########################################
-    $cacheUpdated = Set-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -EnableNonSslPort $true
+    $cacheUpdated = Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -EnableNonSslPort $true
     Assert-True  { $cacheUpdated.EnableNonSslPort }
 
-    $cacheUpdated2 = Set-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"}
+    $cacheUpdated2 = Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"}
     Assert-AreEqual "allkeys-lru" $cacheUpdated2.RedisConfiguration.Item("maxmemory-policy")
     Assert-True  { $cacheUpdated2.EnableNonSslPort }
 
     ############################# CleanUp #############################
     # Delete cache
-    Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+    Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
 
     # Delete resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
 
 function Create-StorageAccount($resourceGroupName,$storageName,$location)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
     {
-        $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageName -Location $location -Type "Standard_LRS"
+        $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageName -Location $location -Type "Standard_LRS"
     }
 }
 
@@ -431,13 +431,13 @@ function Get-SasForContainer
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
     {
         # Get storage account context
-        $storageAccountContext = New-AzureStorageContext -StorageAccountName $storageName -StorageAccountKey (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageName).Value[0]
+        $storageAccountContext = New-AzStorageContext -StorageAccountName $storageName -StorageAccountKey (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageName).Value[0]
 
         # Create Container in Storage Account
-        New-AzureStorageContainer -Name $storageContainerName -Context $storageAccountContext
+        New-AzStorageContainer -Name $storageContainerName -Context $storageAccountContext
 
         # Get SAS token for container
-        $sasKeyForContainer.Value = New-AzureStorageContainerSASToken -Name $storageContainerName -Permission "rwdl" -StartTime ([System.DateTime]::Now).AddMinutes(-20) -ExpiryTime ([System.DateTime]::Now).AddHours(2) -Context $storageAccountContext -FullUri
+        $sasKeyForContainer.Value = New-AzStorageContainerSASToken -Name $storageContainerName -Permission "rwdl" -StartTime ([System.DateTime]::Now).AddMinutes(-20) -ExpiryTime ([System.DateTime]::Now).AddHours(2) -Context $storageAccountContext -FullUri
     }
     else
     {
@@ -458,10 +458,10 @@ function Get-SasForBlob
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
     {
         # Get storage account context
-        $storageAccountContext = New-AzureStorageContext -StorageAccountName $storageName -StorageAccountKey (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageName).Value[0]
+        $storageAccountContext = New-AzStorageContext -StorageAccountName $storageName -StorageAccountKey (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageName).Value[0]
 
         # Get SAS token for blob
-        $sasKeyForBlob.Value = New-AzureStorageBlobSASToken -Container $storageContainerName -Blob $prefix -Permission "rwdl" -StartTime ([System.DateTime]::Now).AddMinutes(-20) -ExpiryTime ([System.DateTime]::Now).AddHours(2) -Context $storageAccountContext -FullUri
+        $sasKeyForBlob.Value = New-AzStorageBlobSASToken -Container $storageContainerName -Blob $prefix -Permission "rwdl" -StartTime ([System.DateTime]::Now).AddMinutes(-20) -ExpiryTime ([System.DateTime]::Now).AddHours(2) -Context $storageAccountContext -FullUri
     }
     else
     {
@@ -487,19 +487,19 @@ function Test-ImportExportReboot
 
     ############################# Initial Creation #############################
     # Create resource group
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Create Storage Account
     Create-StorageAccount $resourceGroupName $storageName $location
 
     # Creating Cache
-    $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Sku Premium -Size P1
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Sku Premium -Size P1
     Assert-AreEqual "creating" $cacheCreated.ProvisioningState
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
         Start-TestSleep 30000
-        $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
             Assert-AreEqual $cacheName $cacheGet[0].Name
@@ -514,26 +514,26 @@ function Test-ImportExportReboot
     Get-SasForContainer $resourceGroupName $storageName $storageContainerName ([ref]$sasKeyForContainer)
 
     # Tests ExportRMAzureRedisCache
-    Export-AzureRmRedisCache -Name $cacheName -Prefix $prefix -Container $sasKeyForContainer
+    Export-AzRedisCache -Name $cacheName -Prefix $prefix -Container $sasKeyForContainer
 
     # Get SAS token for blob
     $sasKeyForBlob = ""
     Get-SasForBlob $resourceGroupName $storageName $storageContainerName $prefix ([ref]$sasKeyForBlob)
 
     # Tests ImportAzureRmRedisCache
-    Import-AzureRmRedisCache -Name $cacheName -Files @($sasKeyForBlob) -Force
+    Import-AzRedisCache -Name $cacheName -Files @($sasKeyForBlob) -Force
 
     ############################# Tests ResetRMAzureRedisCache #############################
     $rebootType = "PrimaryNode"
-    Reset-AzureRmRedisCache -Name $cacheName -RebootType $rebootType -Force
+    Reset-AzRedisCache -Name $cacheName -RebootType $rebootType -Force
     Start-TestSleep 120000
 
     ############################# CleanUp #############################
     # Delete cache
-    Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+    Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
 
     # Delete resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -551,20 +551,20 @@ function Test-DiagnosticOperations
 
     ############################# Initial Creation #############################
     # Create resource group
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Create Storage Account
-    New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageName -Location $location -Type "Standard_LRS"
-    $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageName
+    New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageName -Location $location -Type "Standard_LRS"
+    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageName
 
     # Creating Cache
-    $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Sku Premium -Size P1
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Sku Premium -Size P1
     Assert-AreEqual "creating" $cacheCreated.ProvisioningState
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
         Start-TestSleep 30000
-        $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
             Assert-AreEqual $cacheName $cacheGet[0].Name
@@ -576,17 +576,17 @@ function Test-DiagnosticOperations
     ############################# SetAzureRedisCacheDiagnostics & RemoveAzureRedisCacheDiagnostics tests #############################
     # Tests SetAzureRedisCacheDiagnostics
     Assert-NotNull $storageAccount.Id "Storage Id cannot be null"
-    Set-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName -StorageAccountId $storageAccount.Id
+    Set-AzRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName -StorageAccountId $storageAccount.Id
 
     # Tests RemoveAzureRedisCacheDiagnostics
-    Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName
+    Remove-AzRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName
 
     ############################# CleanUp #############################
     # Delete cache
-    Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+    Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
 
     # Delete resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -606,11 +606,11 @@ function Test-GeoReplication
 
     ############################# Initial Creation #############################
     # Create resource group
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location1
+    New-AzResourceGroup -Name $resourceGroupName -Location $location1
 
     # Creating cache1 and cache2
-    $cacheCreated1 = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName1 -Location $location1 -Sku Premium -Size P1
-    $cacheCreated2 = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName2 -Location $location2 -Sku Premium -Size P1
+    $cacheCreated1 = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName1 -Location $location1 -Sku Premium -Size P1
+    $cacheCreated2 = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName2 -Location $location2 -Sku Premium -Size P1
 
     Assert-AreEqual "creating" $cacheCreated1.ProvisioningState
     Assert-AreEqual "creating" $cacheCreated2.ProvisioningState
@@ -619,7 +619,7 @@ function Test-GeoReplication
     for ($i = 0; $i -le 60; $i++)
     {
         Start-TestSleep 30000
-        $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName
         if (([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0) -and ([string]::Compare("succeeded", $cacheGet[1].ProvisioningState, $True) -eq 0))
         {
             break
@@ -628,7 +628,7 @@ function Test-GeoReplication
     }
 
     ############################# NewAzureRedisCacheLink #############################
-    $linkCreated = New-AzureRmRedisCacheLink -PrimaryServerName $cacheName1 -SecondaryServerName $cacheName2
+    $linkCreated = New-AzRedisCacheLink -PrimaryServerName $cacheName1 -SecondaryServerName $cacheName2
     Assert-AreEqual "creating" $linkCreated.ProvisioningState
     Assert-AreEqual $cacheName1 $linkCreated.PrimaryServerName
     Assert-AreEqual $cacheName2 $linkCreated.SecondaryServerName
@@ -638,7 +638,7 @@ function Test-GeoReplication
     for ($i = 0; $i -le 60; $i++)
     {
         Start-TestSleep 30000
-        $linkGet = Get-AzureRmRedisCacheLink -PrimaryServerName $cacheName1 -SecondaryServerName $cacheName2
+        $linkGet = Get-AzRedisCacheLink -PrimaryServerName $cacheName1 -SecondaryServerName $cacheName2
         if ([string]::Compare("succeeded", $linkGet[0].ProvisioningState, $True) -eq 0)
         {
             Assert-AreEqual $cacheName1 $linkGet[0].PrimaryServerName
@@ -649,36 +649,36 @@ function Test-GeoReplication
     }
 
     # Get all links for cache name
-    $linkGet = Get-AzureRmRedisCacheLink -Name $cacheName1
+    $linkGet = Get-AzRedisCacheLink -Name $cacheName1
     Assert-AreEqual $cacheName1 $linkGet[0].PrimaryServerName
     Assert-AreEqual $cacheName2 $linkGet[0].SecondaryServerName
-    $linkGet = Get-AzureRmRedisCacheLink -Name $cacheName2
+    $linkGet = Get-AzRedisCacheLink -Name $cacheName2
     Assert-AreEqual $cacheName1 $linkGet[0].PrimaryServerName
     Assert-AreEqual $cacheName2 $linkGet[0].SecondaryServerName
 
     # Get links where server is primary
-    $linkGet = Get-AzureRmRedisCacheLink -PrimaryServerName $cacheName1
+    $linkGet = Get-AzRedisCacheLink -PrimaryServerName $cacheName1
     Assert-AreEqual $cacheName1 $linkGet[0].PrimaryServerName
     Assert-AreEqual $cacheName2 $linkGet[0].SecondaryServerName
-    $linkGet = Get-AzureRmRedisCacheLink -PrimaryServerName $cacheName2
+    $linkGet = Get-AzRedisCacheLink -PrimaryServerName $cacheName2
     Assert-True {$linkGet.Count -eq 0}
 
     # Get links where server is secondary
-    $linkGet = Get-AzureRmRedisCacheLink -SecondaryServerName $cacheName2
+    $linkGet = Get-AzRedisCacheLink -SecondaryServerName $cacheName2
     Assert-AreEqual $cacheName1 $linkGet[0].PrimaryServerName
     Assert-AreEqual $cacheName2 $linkGet[0].SecondaryServerName
-    $linkGet = Get-AzureRmRedisCacheLink -SecondaryServerName $cacheName1
+    $linkGet = Get-AzRedisCacheLink -SecondaryServerName $cacheName1
     Assert-True {$linkGet.Count -eq 0}
 
     ############################# RemoveAzureRedisCacheLink #############################
-    Assert-True {Remove-AzureRmRedisCacheLink -PrimaryServerName $cacheName1 -SecondaryServerName $cacheName2 -PassThru} "Removing geo replication link failed."
+    Assert-True {Remove-AzRedisCacheLink -PrimaryServerName $cacheName1 -SecondaryServerName $cacheName2 -PassThru} "Removing geo replication link failed."
 
     # links should disappear in 5 min
     for ($i = 0; $i -le 10; $i++)
     {
         Start-TestSleep 30000
-        $linkGet1 = Get-AzureRmRedisCacheLink -PrimaryServerName $cacheName1
-        $linkGet2 = Get-AzureRmRedisCacheLink -SecondaryServerName $cacheName2
+        $linkGet1 = Get-AzRedisCacheLink -PrimaryServerName $cacheName1
+        $linkGet2 = Get-AzRedisCacheLink -SecondaryServerName $cacheName2
         if (($linkGet1.Count -eq 0) -and ($linkGet2.Count -eq 0))
         {
             # removal completed successfully
@@ -689,11 +689,11 @@ function Test-GeoReplication
 
     ############################# CleanUp #############################
     # Delete cache
-    Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName1 -Force -PassThru} "Remove cache failed."
-    Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName2 -Force -PassThru} "Remove cache failed."
+    Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName1 -Force -PassThru} "Remove cache failed."
+    Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName2 -Force -PassThru} "Remove cache failed."
 
     # Delete resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -720,17 +720,17 @@ function Test-FirewallRule
 
     ############################# Initial Creation #############################
     # Create resource group
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Creating cache
-    $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Sku Premium -Size P1
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Sku Premium -Size P1
     Assert-AreEqual "creating" $cacheCreated.ProvisioningState
 
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
         Start-TestSleep 30000
-        $cacheGet = Get-AzureRmRedisCache -Name $cacheName
+        $cacheGet = Get-AzRedisCache -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
             break
@@ -740,32 +740,32 @@ function Test-FirewallRule
 
     ############################# NewAzureRedisCacheFirewallRule #############################
     # Set firewall rule using parameter
-    $rule1Created = New-AzureRmRedisCacheFirewallRule -Name $cacheName -RuleName $rule1 -StartIP $rule1StartIp -EndIP $rule1EndIp
+    $rule1Created = New-AzRedisCacheFirewallRule -Name $cacheName -RuleName $rule1 -StartIP $rule1StartIp -EndIP $rule1EndIp
     Assert-AreEqual $rule1StartIp $rule1Created.StartIP
     Assert-AreEqual $rule1EndIp $rule1Created.EndIP
     Assert-AreEqual $rule1 $rule1Created.RuleName
 
     # Set firewall rule using piping from Get
-    $rule2Created = Get-AzureRmRedisCache -Name $cacheName | New-AzureRmRedisCacheFirewallRule -RuleName $rule2 -StartIP $rule2StartIp -EndIP $rule2EndIp
+    $rule2Created = Get-AzRedisCache -Name $cacheName | New-AzRedisCacheFirewallRule -RuleName $rule2 -StartIP $rule2StartIp -EndIP $rule2EndIp
     Assert-AreEqual $rule2StartIp $rule2Created.StartIP
     Assert-AreEqual $rule2EndIp $rule2Created.EndIP
     Assert-AreEqual $rule2 $rule2Created.RuleName
 
     # Set firewall rule using piping from ResourceId
-    $rule3Created = New-AzureRmRedisCacheFirewallRule -ResourceId $cacheCreated.Id -RuleName $rule3 -StartIP $rule3StartIp -EndIP $rule3EndIp
+    $rule3Created = New-AzRedisCacheFirewallRule -ResourceId $cacheCreated.Id -RuleName $rule3 -StartIP $rule3StartIp -EndIP $rule3EndIp
     Assert-AreEqual $rule3StartIp $rule3Created.StartIP
     Assert-AreEqual $rule3EndIp $rule3Created.EndIP
     Assert-AreEqual $rule3 $rule3Created.RuleName
 
     ############################# GetAzureRedisCacheFirewallRule #############################
     # Get single firewall rule
-    $rule1Get = Get-AzureRmRedisCacheFirewallRule -Name $cacheName -RuleName $rule1
+    $rule1Get = Get-AzRedisCacheFirewallRule -Name $cacheName -RuleName $rule1
     Assert-AreEqual $rule1StartIp $rule1Get.StartIP
     Assert-AreEqual $rule1EndIp $rule1Get.EndIP
     Assert-AreEqual $rule1 $rule1Get.RuleName
 
     # Get all firewall rules
-    $allRulesGet = Get-AzureRmRedisCacheFirewallRule -Name $cacheName
+    $allRulesGet = Get-AzRedisCacheFirewallRule -Name $cacheName
     for ($i = 0; $i -le 2; $i++)
     {
         if($allRulesGet[$i].RuleName -eq $rule1)
@@ -789,25 +789,25 @@ function Test-FirewallRule
         }
     }
     ############################# RemoveAzureRedisCacheFirewallRule #############################
-    Assert-True {Remove-AzureRmRedisCacheFirewallRule -Name $cacheName -RuleName $rule1 -PassThru} "Removing firewall rule 'ruleone' failed."
+    Assert-True {Remove-AzRedisCacheFirewallRule -Name $cacheName -RuleName $rule1 -PassThru} "Removing firewall rule 'ruleone' failed."
 
     # Verify that rule is deleted
-    $allRulesGet = Get-AzureRmRedisCacheFirewallRule -Name $cacheName
+    $allRulesGet = Get-AzRedisCacheFirewallRule -Name $cacheName
     Assert-AreEqual 2 $allRulesGet.Count
 
     # Remove firewall rules using piping
-    Get-AzureRmRedisCacheFirewallRule -Name $cacheName | Remove-AzureRmRedisCacheFirewallRule -PassThru
+    Get-AzRedisCacheFirewallRule -Name $cacheName | Remove-AzRedisCacheFirewallRule -PassThru
 
     # Verify that all rules are deleted
-    $allRulesGet = Get-AzureRmRedisCacheFirewallRule -Name $cacheName
+    $allRulesGet = Get-AzRedisCacheFirewallRule -Name $cacheName
     Assert-AreEqual 0 $allRulesGet.Count
 
     ############################# CleanUp #############################
     # Delete cache
-    Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+    Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
 
     # Delete resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -822,10 +822,10 @@ function Test-Zones
     $location = "East US 2"
 
     # Create resource group
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Creating Cache
-    $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium -Zone @("1") -Tag @{"example-key" = "example-value"}
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium -Zone @("1") -Tag @{"example-key" = "example-value"}
 
     Assert-AreEqual $cacheName $cacheCreated.Name
     Assert-AreEqual $location $cacheCreated.Location
@@ -842,7 +842,7 @@ function Test-Zones
     for ($i = 0; $i -le 60; $i++)
     {
         Start-TestSleep 30000
-        $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
             Assert-AreEqual $cacheName $cacheGet[0].Name
@@ -854,10 +854,10 @@ function Test-Zones
     }
 
     # Delete cache
-    Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+    Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
 
     # Delete resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
 
 

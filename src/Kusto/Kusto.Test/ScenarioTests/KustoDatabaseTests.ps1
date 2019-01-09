@@ -22,7 +22,7 @@ function Test-KustoDatabaseLifecycle
 		$hotCachePeriodInDaysUpdated = Get-Updated-Hot-Cache-Period-In-Days
 
 		#create cluster for the databases
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
+		New-AzResourceGroup -Name $resourceGroupName -Location $RGlocation
 		$clusterCreated = New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
 
 		$databaseCreated = New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -SoftDeletePeriodInDays $softDeletePeriodInDays -HotCachePeriodInDays $hotCachePeriodInDays
@@ -47,7 +47,7 @@ function Test-KustoDatabaseLifecycle
 	{
 #		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -71,7 +71,7 @@ function Test-DatabaseAddRemoveGet {
 		$expectedException = Get-Database-Not-Exist-Message -DatabaseName $databaseName
 
 		#create cluster for the databases
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
+		New-AzResourceGroup -Name $resourceGroupName -Location $RGlocation
 		$clusterCreated = New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
 
 		#create and remove using ResourceId
@@ -100,7 +100,7 @@ function Test-DatabaseAddRemoveGet {
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 		
 }

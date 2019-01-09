@@ -26,19 +26,19 @@ Check if test account exists and remove it
 #>
 function CleanupExistingTestAccount
 {
-	$check = Get-AzureRmAutomationAccount -ResourceGroupName $existingResourceGroup -Name $newAccountName -ErrorAction SilentlyContinue
+	$check = Get-AzAutomationAccount -ResourceGroupName $existingResourceGroup -Name $newAccountName -ErrorAction SilentlyContinue
 	if ($null -ne $check)
 	{
-		Remove-AzureRmAutomationAccount -ResourceGroupName $existingResourceGroup -Name $newAccountName -Force
+		Remove-AzAutomationAccount -ResourceGroupName $existingResourceGroup -Name $newAccountName -Force
 	}
 }
 
 function CreateResourceGroup
 {
-	$check = Get-AzureRmResourceGroup -Name $existingResourceGroup -Location $location -ErrorAction SilentlyContinue
+	$check = Get-AzResourceGroup -Name $existingResourceGroup -Location $location -ErrorAction SilentlyContinue
 	if ($null -eq $check)
 	{
-		New-AzureRmResourceGroup -Name $existingResourceGroup -Location $location -Force
+		New-AzResourceGroup -Name $existingResourceGroup -Location $location -Force
 	}
 }
 <#
@@ -47,7 +47,7 @@ Create Test Automation Account
 #>
 function CreateTestAccount
 {
-	return New-AzureRmAutomationAccount -ResourceGroupName $existingResourceGroup -Name $newAccountName -Location $location
+	return New-AzAutomationAccount -ResourceGroupName $existingResourceGroup -Name $newAccountName -Location $location
 }
 
 <#
@@ -61,7 +61,7 @@ function Test-GetAutomationAccounts
 	CleanupExistingTestAccount
 
 	# get all accounts
-    $automationAccounts = Get-AzureRmAutomationAccount
+    $automationAccounts = Get-AzAutomationAccount
     Assert-NotNull $automationAccounts "Get All automation accounts return null."
 
 	$existingAccountCount = $automationAccounts.Count
@@ -70,7 +70,7 @@ function Test-GetAutomationAccounts
     Assert-NotNull $newAutomationAccount "Create Account Failed."
 
     #Test
-    $automationAccounts = Get-AzureRmAutomationAccount
+    $automationAccounts = Get-AzAutomationAccount
     
 	$newAccountCount = $automationAccounts.Count
 	Assert-AreEqual ($existingAccountCount+1) $newAccountCount "There should have only 1 more account"
@@ -91,17 +91,17 @@ function Test-AutomationAccountTags
 	Assert-AreEqual $newAutomationAccount.Tags.Count 0 "Unexpected Tag Counts"
 
 	# re-put using new
-	$newAutomationAccount = New-AzureRmAutomationAccount -ResourceGroupName $existingResourceGroup -Name $newAccountName -Location $location -Tags @{"abc"="def"; "gg"="hh"}
+	$newAutomationAccount = New-AzAutomationAccount -ResourceGroupName $existingResourceGroup -Name $newAccountName -Location $location -Tags @{"abc"="def"; "gg"="hh"}
 	Assert-AreEqual $newAutomationAccount.Tags.Count 2 "Unexpected Tag Counts from new"
 	Assert-AreEqual $newAutomationAccount.Tags["gg"] "hh" "Unexpected Tag Content from new"
 
 	# use Set
-	$newAutomationAccount = Set-AzureRmAutomationAccount -ResourceGroupName $existingResourceGroup -Name $newAccountName -Tags @{"lm"="jk"}
+	$newAutomationAccount = Set-AzAutomationAccount -ResourceGroupName $existingResourceGroup -Name $newAccountName -Tags @{"lm"="jk"}
 	Assert-AreEqual $newAutomationAccount.Tags.Count 1 "Unexpected Tag Counts from set"
 	Assert-AreEqual $newAutomationAccount.Tags["lm"] "jk" "Unexpected Tag Content from set"
 
 	# test tag from accounts 
-	$newAutomationAccount = Get-AzureRmAutomationAccount | Where-Object {$_.AutomationAccountName -eq $newAccountName }
+	$newAutomationAccount = Get-AzAutomationAccount | Where-Object {$_.AutomationAccountName -eq $newAccountName }
 	Assert-AreEqual $newAutomationAccount.Tags.Count 1 "Unexpected Tag Counts from get all"
 	Assert-AreEqual $newAutomationAccount.Tags["lm"] "jk" "Unexpected Tag Content from get all"
 

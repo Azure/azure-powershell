@@ -59,7 +59,7 @@ function Test-BudgetAtSubscriptionLevel
 	$endDate = ($startDate).AddMonths(3).AddDays(-1)
 
 	Write-Debug "Create a new budget $budgetName at subscription level"
-    $budgetNew = New-AzureRmConsumptionBudget -Amount 6000 -Name $budgetName -Category Cost -StartDate $startDate -EndDate $endDate -TimeGrain Monthly
+    $budgetNew = New-AzConsumptionBudget -Amount 6000 -Name $budgetName -Category Cost -StartDate $startDate -EndDate $endDate -TimeGrain Monthly
 	Assert-NotNull $budgetNew
 	Assert-AreEqual 6000 $budgetNew.Amount
 	Assert-AreEqual $budgetName $budgetNew.Name
@@ -67,7 +67,7 @@ function Test-BudgetAtSubscriptionLevel
 	Assert-AreEqual Monthly $budgetNew.TimeGrain
 
 	Write-Debug "Get the budget $budgetName"
-	$budgetGet = Get-AzureRmConsumptionBudget -Name $budgetName
+	$budgetGet = Get-AzConsumptionBudget -Name $budgetName
 	Assert-NotNull $budgetGet
 	Assert-AreEqual 6000 $budgetGet.Amount
 	Assert-AreEqual $budgetName $budgetGet.Name
@@ -75,21 +75,21 @@ function Test-BudgetAtSubscriptionLevel
 	Assert-AreEqual Monthly $budgetGet.TimeGrain
 
 	Write-Debug "Update the budget $budgetName with amount change to 7500"
-	$budgetSet1 = Get-AzureRmConsumptionBudget -Name $budgetName | Set-AzureRmConsumptionBudget -Amount 7500
+	$budgetSet1 = Get-AzConsumptionBudget -Name $budgetName | Set-AzConsumptionBudget -Amount 7500
 	Assert-NotNull $budgetSet1
 	Assert-AreEqual 7500 $budgetSet1.Amount
 
 	Write-Debug "Update the budget $budgetName with a notification $notificationKey when cost or usage reaches a threshold of 90 percent of amount"
-	$budgetSet2 = Set-AzureRmConsumptionBudget -Name $budgetName -NotificationKey $notificationKey -NotificationEnabled -NotificationThreshold 90 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
+	$budgetSet2 = Set-AzConsumptionBudget -Name $budgetName -NotificationKey $notificationKey -NotificationEnabled -NotificationThreshold 90 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
 	Assert-NotNull $budgetSet2
 	Assert-AreEqual $budgetName $budgetSet2.Name
 	Assert-AreEqual 1 $budgetSet2.Notification.Count
 
 	Write-Debug "Remove the budget $budgetName"
-	$response = Remove-AzureRmConsumptionBudget -Name $budgetName -PassThru
+	$response = Remove-AzConsumptionBudget -Name $budgetName -PassThru
 	Assert-AreEqual True $response
 
-	Assert-Throws {Get-AzureRmConsumptionBudget -Name $budgetName}
+	Assert-Throws {Get-AzConsumptionBudget -Name $budgetName}
 }
 
 <#
@@ -108,13 +108,13 @@ function Test-BudgetAtResourceGroupLevel
 	$endDate = ($startDate).AddMonths(3).AddDays(-1)
 
 	# Create Resource Group 
-	New-AzureRmResourceGroup -Name $resourceGroupName -Location 'West US' -Force
+	New-AzResourceGroup -Name $resourceGroupName -Location 'West US' -Force
 
 	try 
 	{
 		# Create budget
 		Write-Debug "Create a new budget $budgetName at resource group level"
-		$budgetNew = New-AzureRmConsumptionBudget -Amount 6000 -Name $budgetName -ResourceGroupName $resourceGroupName -Category Cost -StartDate $startDate -EndDate $endDate -TimeGrain Monthly
+		$budgetNew = New-AzConsumptionBudget -Amount 6000 -Name $budgetName -ResourceGroupName $resourceGroupName -Category Cost -StartDate $startDate -EndDate $endDate -TimeGrain Monthly
 		Assert-NotNull $budgetNew
 		Assert-AreEqual 6000 $budgetNew.Amount
 		Assert-AreEqual $budgetName $budgetNew.Name
@@ -123,7 +123,7 @@ function Test-BudgetAtResourceGroupLevel
 
 		# Get budget
 		Write-Debug "Get the budget $budgetName"
-		$budgetGet = Get-AzureRmConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName
+		$budgetGet = Get-AzConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName
 		Assert-NotNull $budgetGet
 		Assert-AreEqual 6000 $budgetGet.Amount
 		Assert-AreEqual $budgetName $budgetGet.Name
@@ -132,28 +132,28 @@ function Test-BudgetAtResourceGroupLevel
 
 		# Set budget
 		Write-Debug "Update the budget $budgetName with a notification $notificationKey when cost reaches a threshold of 90 percent of amount"
-		$budgetSet1 = Set-AzureRmConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName -NotificationKey $notificationKey1 -NotificationEnabled -NotificationThreshold 90 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
+		$budgetSet1 = Set-AzConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName -NotificationKey $notificationKey1 -NotificationEnabled -NotificationThreshold 90 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
 		Assert-NotNull $budgetSet1
 		Assert-AreEqual $budgetName $budgetSet1.Name
 		Assert-AreEqual 1 $budgetSet1.Notification.Count
 
 		Write-Debug "Update the budget $budgetName with a second notificaiton $notificationKey when cost reaches a threshold of 150 percent of amount"
-		$budgetSet2 = Set-AzureRmConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName -NotificationKey $notificationKey2 -NotificationEnabled -NotificationThreshold 150 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
+		$budgetSet2 = Set-AzConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName -NotificationKey $notificationKey2 -NotificationEnabled -NotificationThreshold 150 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
 		Assert-NotNull $budgetSet2
 		Assert-AreEqual $budgetName $budgetSet2.Name
 		Assert-AreEqual 2 $budgetSet2.Notification.Count
 
 		# Remove budget
 		Write-Debug "Remove the budget $budgetName"
-		$response = Remove-AzureRmConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName -PassThru
+		$response = Remove-AzConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName -PassThru
 		Assert-AreEqual True $response
 
-		Assert-Throws {Get-AzureRmConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName}		
+		Assert-Throws {Get-AzConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName}		
 	}
 	finally 
 	{	
 		# Remove Resource Group
-		Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+		Remove-AzResourceGroup -Name $resourceGroupName -Force
 	}	
 }
 
@@ -167,16 +167,16 @@ function Test-GetBudgets
 	$startDate = Get-Date -Day 1
 	$endDate = ($startDate).AddMonths(3).AddDays(-1)
 	$budgetName = Get-BudgetName
-	$budgetNew = New-AzureRmConsumptionBudget -Amount 6000 -Name $budgetName -Category Cost -StartDate $startDate -EndDate $endDate -TimeGrain Monthly
+	$budgetNew = New-AzConsumptionBudget -Amount 6000 -Name $budgetName -Category Cost -StartDate $startDate -EndDate $endDate -TimeGrain Monthly
 	Assert-NotNull $budgetNew
 
 	# Validate get all budgets
-    $budgets = Get-AzureRmConsumptionBudget 
+    $budgets = Get-AzConsumptionBudget 
 	Assert-NotNull $budgets
 
 	# Clean up through piping
-	$response = Get-AzureRmConsumptionBudget -Name $budgetName | Remove-AzureRmConsumptionBudget -PassThru
+	$response = Get-AzConsumptionBudget -Name $budgetName | Remove-AzConsumptionBudget -PassThru
 	Assert-AreEqual True $response
 
-	Assert-Throws {Get-AzureRmConsumptionBudget -Name $budgetName}
+	Assert-Throws {Get-AzConsumptionBudget -Name $budgetName}
 }

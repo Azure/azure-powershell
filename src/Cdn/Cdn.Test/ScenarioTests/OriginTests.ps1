@@ -22,16 +22,16 @@ function Test-OriginGetSetWithRunningEndpoint
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
     $profileSku = "Standard_Verizon"
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+    $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
     $originName = getAssetName
     $originHostName = "www.microsoft.com"
     $httpPort = 80
 
-    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort
+    $createdEndpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort
 
-    $createdOrigin = $createdEndpoint | Get-AzureRmCdnOrigin -OriginName $originName 
+    $createdOrigin = $createdEndpoint | Get-AzCdnOrigin -OriginName $originName 
     Assert-AreEqual $originName $createdOrigin.Name
     Assert-AreEqual $originHostName $createdOrigin.HostName
     Assert-AreEqual $httpPort $createdOrigin.HttpPort
@@ -41,14 +41,14 @@ function Test-OriginGetSetWithRunningEndpoint
     $createdOrigin.HttpsPort = 456
     $createdOrigin.HostName = "www.azure.com"
 
-    $updatedOrigin = $createdOrigin | Set-AzureRmCdnOrigin
+    $updatedOrigin = $createdOrigin | Set-AzCdnOrigin
 
     Assert-AreEqual $originName $updatedOrigin.Name
     Assert-AreEqual "www.azure.com" $updatedOrigin.HostName
     Assert-AreEqual 456 $updatedOrigin.HttpsPort
     Assert-AreEqual 789 $updatedOrigin.HttpPort
 
-    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -61,17 +61,17 @@ function Test-OriginGetSetWithStoppedEndpoint
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
     $profileSku = "Standard_Verizon"
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+    $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
     $originName = getAssetName
     $originHostName = "www.microsoft.com"
     $httpPort = 80
 
-    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort
-    Stop-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+    $createdEndpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort
+    Stop-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
 
-    $createdOrigin = Get-AzureRmCdnOrigin -OriginName $originName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $createdOrigin = Get-AzCdnOrigin -OriginName $originName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     Assert-AreEqual $originName $createdOrigin.Name
     Assert-AreEqual $originHostName $createdOrigin.HostName
     Assert-AreEqual $httpPort $createdOrigin.HttpPort
@@ -81,14 +81,14 @@ function Test-OriginGetSetWithStoppedEndpoint
     $createdOrigin.HttpsPort = 456
     $createdOrigin.HostName = "www.azure.com"
 
-    $updatedOrigin = Set-AzureRmCdnOrigin -CdnOrigin $createdOrigin
+    $updatedOrigin = Set-AzCdnOrigin -CdnOrigin $createdOrigin
 
     Assert-AreEqual $originName $updatedOrigin.Name
     Assert-AreEqual "www.azure.com" $updatedOrigin.HostName
     Assert-AreEqual 456 $updatedOrigin.HttpsPort
     Assert-AreEqual 789 $updatedOrigin.HttpPort
 
-    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -101,20 +101,20 @@ function Test-OriginGetSetWhenEndpointDoesnotExist
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
     $profileSku = "Standard_Verizon"
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+    $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
     $originName = getAssetName
     $originHostName = "www.microsoft.com"
     $httpPort = 80
 
-    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort
+    $createdEndpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort
 
-    $createdOrigin = Get-AzureRmCdnOrigin -OriginName $originName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $createdOrigin = Get-AzCdnOrigin -OriginName $originName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     $createdOrigin.Id = "/subscriptions/d33030b5-85cf-4f96-be7d-b99b5dd0325d/resourcegroups/notarg/providers/Microsoft.Cdn/profiles/notaprofile/endpoints/notanendpoint/origins/notanorigin"
 
-    Assert-ThrowsContains { Get-AzureRmCdnOrigin -OriginName "thisisnotanoriginname" -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
-    Assert-ThrowsContains { Set-AzureRmCdnOrigin -CdnOrigin $createdOrigin } "NotFound"
+    Assert-ThrowsContains { Get-AzCdnOrigin -OriginName "thisisnotanoriginname" -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
+    Assert-ThrowsContains { Set-AzCdnOrigin -CdnOrigin $createdOrigin } "NotFound"
 
-    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

@@ -20,13 +20,13 @@ function Test-E2ESchedules
 {
     $resourceGroupName = "to-delete-01"
     $automationAccountName = "fbs-aa-01"
-    $output = Get-AzureRmAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
+    $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
     $StartTime = Get-Date "13:00:00"
     $StartTime = $StartTime.AddDays(1)
     $EndTime = $StartTime.AddYears(1)
     $ScheduleName = "Schedule3"
 
-    New-AzureRmAutomationSchedule -ResourceGroupName $resourceGroupName `
+    New-AzAutomationSchedule -ResourceGroupName $resourceGroupName `
                                   -AutomationAccountName $automationAccountName `
                                   -Name "Schedule3" `
                                   -StartTime $StartTime `
@@ -34,7 +34,7 @@ function Test-E2ESchedules
                                   -DayInterval 1 `
                                   -Description "Hello"
    
-    New-AzureRmAutomationSchedule -ResourceGroupName $resourceGroupName `
+    New-AzAutomationSchedule -ResourceGroupName $resourceGroupName `
                                   -AutomationAccountName $automationAccountName `
                                   -Name $ScheduleName `
                                   -StartTime $StartTime `
@@ -42,32 +42,32 @@ function Test-E2ESchedules
                                   -WeekInterval 3 `
                                   -Description "Hello Again"
 
-    $getSchedule = Get-AzureRmAutomationSchedule -ResourceGroupName $resourceGroupName `
+    $getSchedule = Get-AzAutomationSchedule -ResourceGroupName $resourceGroupName `
                                                  -AutomationAccountName $automationAccountName `
                                                  -Name $ScheduleName
 
     Assert-AreEqual "Hello Again"  $getSchedule.Description
     Assert-AreEqual 3 $getSchedule.Interval
 
-    Set-AzureRmAutomationSchedule -ResourceGroupName $resourceGroupName `
+    Set-AzAutomationSchedule -ResourceGroupName $resourceGroupName `
                                   -AutomationAccountName $automationAccountName `
                                   -Name $ScheduleName `
                                   -Description "Goodbye" `
                                   -IsEnabled $FALSE 
 
-    $getSchedule = Get-AzureRmAutomationSchedule -ResourceGroupName $resourceGroupName `
+    $getSchedule = Get-AzAutomationSchedule -ResourceGroupName $resourceGroupName `
                                                  -AutomationAccountName $automationAccountName `
                                                  -Name $ScheduleName
 
     Assert-AreEqual "Goodbye"  $getSchedule.Description
     Assert-AreEqual $FALSE  $getSchedule.IsEnabled
 
-    Remove-AzureRmAutomationSchedule -ResourceGroupName $resourceGroupName `
+    Remove-AzAutomationSchedule -ResourceGroupName $resourceGroupName `
                                      -AutomationAccountName $automationAccountName `
                                      -Name $ScheduleName `
                                      -Force
 
-    $getSchedule = Get-AzureRmAutomationSchedule -ResourceGroupName $resourceGroupName `
+    $getSchedule = Get-AzAutomationSchedule -ResourceGroupName $resourceGroupName `
                                                  -AutomationAccountName $automationAccountName `
                                                  -Name $ScheduleName -ErrorAction SilentlyContinue
 

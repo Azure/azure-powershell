@@ -18,7 +18,7 @@ List invoices
 #>
 function Test-ListInvoices
 {
-    $billingInvoices = Get-AzureRmBillingInvoice
+    $billingInvoices = Get-AzBillingInvoice
 
     Assert-True {$billingInvoices.Count -ge 1}
 	Assert-NotNull $billingInvoices[0].Name
@@ -36,7 +36,7 @@ List invoices with DownloadUrl
 #>
 function Test-ListInvoicesWithDownloadUrl
 {
-    $billingInvoices = Get-AzureRmBillingInvoice -GenerateDownloadUrl
+    $billingInvoices = Get-AzBillingInvoice -GenerateDownloadUrl
 
     Assert-True {$billingInvoices.Count -ge 1}
 	Assert-NotNull $billingInvoices[0].Name
@@ -54,7 +54,7 @@ List invoices with MaxCount
 #>
 function Test-ListInvoicesWithMaxCount
 {
-    $billingInvoices = Get-AzureRmBillingInvoice -GenerateDownloadUrl -MaxCount 1
+    $billingInvoices = Get-AzBillingInvoice -GenerateDownloadUrl -MaxCount 1
 
     Assert-True {$billingInvoices.Count -eq 1}
 	Assert-NotNull $billingInvoices[0].Name
@@ -72,7 +72,7 @@ Get latest invoice
 #>
 function Test-GetLatestInvoice
 {
-    $invoice = Get-AzureRmBillingInvoice -Latest
+    $invoice = Get-AzBillingInvoice -Latest
 
 	Assert-NotNull $invoice.Name
 	Assert-NotNull $invoice.Id
@@ -89,10 +89,10 @@ Get invoice with specified name
 #>
 function Test-GetInvoiceWithName
 {
-    $sampleInvoices = Get-AzureRmBillingInvoice
+    $sampleInvoices = Get-AzBillingInvoice
     Assert-True { $sampleInvoices.Count -ge 1 }
 
-	$invoice = Get-AzureRmBillingInvoice -Name $sampleInvoices[0].Name
+	$invoice = Get-AzBillingInvoice -Name $sampleInvoices[0].Name
 
 	Assert-AreEqual $invoice.Id $sampleInvoices[0].Id
 }
@@ -103,10 +103,10 @@ Get invoice with specified names
 #>
 function Test-GetInvoiceWithNames
 {
-	$sampleInvoices = Get-AzureRmBillingInvoice
+	$sampleInvoices = Get-AzBillingInvoice
     Assert-True { $sampleInvoices.Count -gt 1 }
 
-    $billingInvoices = Get-AzureRmBillingInvoice -Name $sampleInvoices.Name
+    $billingInvoices = Get-AzBillingInvoice -Name $sampleInvoices.Name
 
     Assert-AreEqual $sampleInvoices.Count $billingInvoices.Count
 }

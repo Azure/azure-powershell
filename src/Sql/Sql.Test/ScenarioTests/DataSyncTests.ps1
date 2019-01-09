@@ -22,13 +22,13 @@ function Test-CreateSyncAgent
     $rg = Create-ResourceGroupForTest
     $server = Create-ServerForTest $rg "West US 2"
     $databaseName = Get-DatabaseName
-    $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 
     try
     {
         # Create a sync agent
         $saName = Get-SyncAgentName
-        $sa = New-AzureRmSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+        $sa = New-AzSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
                 -SyncAgentName $saName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -SyncDatabaseServerName $server.ServerName `
                 -SyncDatabaseName $databaseName
         Assert-NotNull $sa
@@ -50,22 +50,22 @@ function Test-GetAndListSyncAgents
     $rg = Create-ResourceGroupForTest
     $server = Create-ServerForTest $rg "West US 2"
     $databaseName = Get-DatabaseName
-    $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 
     # Create a sync agent
     $saName = Get-SyncAgentName
-    $sa = New-AzureRmSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+    $sa = New-AzSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
             -SyncAgentName $saName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -SyncDatabaseServerName $server.ServerName `
             -SyncDatabaseName $databaseName
     try
     {
         # Get a sync agent
-        $sa2 = Get-AzureRmSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -SyncAgentName $saName
+        $sa2 = Get-AzSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -SyncAgentName $saName
         Assert-NotNull $sa2
         Assert-AreEqual $saName $sa2.SyncAgentName
 
         # Get all sync agents
-        $all = Get-AzureRmSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+        $all = Get-AzSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
         Assert-NotNull $all
         Assert-AreEqual $all.Count 1
     }
@@ -85,18 +85,18 @@ function Test-RemoveSyncAgent
     $rg = Create-ResourceGroupForTest
     $server = Create-ServerForTest $rg "West US 2"
     $databaseName = Get-DatabaseName
-    $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
     $saName = Get-SyncAgentName
-    $sa = New-AzureRmSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+    $sa = New-AzSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
             -SyncAgentName $saName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -SyncDatabaseServerName $server.ServerName `
             -SyncDatabaseName $databaseName
     try
     {
         # Remove the sync agent
-        Remove-AzureRmSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+        Remove-AzSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
          -SyncAgentName $saName -Force
 
-        $all = Get-AzureRmSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+        $all = Get-AzSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
         Assert-AreEqual $all.Count 0
     }
     finally
@@ -115,15 +115,15 @@ function Test-CreateSyncAgentKey
     $rg = Create-ResourceGroupForTest
     $server = Create-ServerForTest $rg "West US 2"
     $databaseName = Get-DatabaseName
-    $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
     $saName = Get-SyncAgentName
-    $sa = New-AzureRmSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+    $sa = New-AzSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
             -SyncAgentName $saName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -SyncDatabaseServerName $server.ServerName `
             -SyncDatabaseName $databaseName
     try
     {
         # Create the sync agent key
-        $key = New-AzureRmSqlSyncAgentKey -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+        $key = New-AzSqlSyncAgentKey -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
          -SyncAgentName $saName
 
         Assert-NotNull $key
@@ -145,15 +145,15 @@ function Test-ListSyncAgentLinkedDatabase
     $rg = Create-ResourceGroupForTest
     $server = Create-ServerForTest $rg "West US 2"
     $databaseName = Get-DatabaseName
-    $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
     $saName = Get-SyncAgentName
-    $sa = New-AzureRmSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+    $sa = New-AzSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
             -SyncAgentName $saName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -SyncDatabaseServerName $server.ServerName `
             -SyncDatabaseName $databaseName
     try
     {
         # List the sync agent linked database
-        $dbs = Get-AzureRmSqlSyncAgentLinkedDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+        $dbs = Get-AzSqlSyncAgentLinkedDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
          -SyncAgentName $saName
         Assert-Null $dbs
     }
@@ -174,16 +174,16 @@ function Test-CreateSyncGroup
     $server = Create-ServerForTest $rg "West US 2"
     $credential = Get-ServerCredential
     $databaseName = Get-DatabaseName
-    $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
     $params = Get-SqlSyncGroupTestEnvironmentParameters
 
     try
     {
         # Create a sync group
         $sgName = Get-SyncGroupName
-        $sg = New-AzureRmSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+        $sg = New-AzSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
             -DatabaseName $databaseName -SyncGroupName $sgName -IntervalInSeconds $params.intervalInSeconds `
             -ConflictResolutionPolicy $params.conflictResolutionPolicy -SyncDatabaseName $syncDatabaseName -SyncDatabaseServerName `
             $server.ServerName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -DatabaseCredential $credential
@@ -207,13 +207,13 @@ function Test-UpdateSyncGroup
     $server = Create-ServerForTest $rg "West US 2"
     $credential = Get-ServerCredential
     $databaseName = Get-DatabaseName
-    $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     # Create a sync group
     $sgName = Get-SyncGroupName
-    $sg = New-AzureRmSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+    $sg = New-AzSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
         -DatabaseName $databaseName -SyncGroupName $sgName -IntervalInSeconds $params.intervalInSeconds `
         -ConflictResolutionPolicy $params.conflictResolutionPolicy -SyncDatabaseName $syncDatabaseName -SyncDatabaseServerName `
         $server.ServerName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -DatabaseCredential $credential
@@ -221,7 +221,7 @@ function Test-UpdateSyncGroup
     {
         # Update a sync group
         $newIntervalInSeconds = 200
-        $sg2 = Update-AzureRmSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+        $sg2 = Update-AzSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
             -DatabaseName $databaseName -SyncGroupName $sgName -IntervalInSeconds $newIntervalInSeconds 
         Assert-AreEqual $newIntervalInSeconds $sg2.IntervalInSeconds
     }
@@ -242,26 +242,26 @@ function Test-GetAndListSyncGroups
     $server = Create-ServerForTest $rg "West US 2"
     $credential = Get-ServerCredential
     $databaseName = Get-DatabaseName
-    $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     # Create a sync group
     $sgName = Get-SyncGroupName
-    $sg = New-AzureRmSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+    $sg = New-AzSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
         -DatabaseName $databaseName -SyncGroupName $sgName -IntervalInSeconds $params.intervalInSeconds `
         -ConflictResolutionPolicy $params.conflictResolutionPolicy -SyncDatabaseName $syncDatabaseName -SyncDatabaseServerName `
         $server.ServerName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -DatabaseCredential $credential
     try
     {
         # Get a sync group
-        $sg1 = Get-AzureRmSqlSyncGroup -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+        $sg1 = Get-AzSqlSyncGroup -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
         -DatabaseName $databaseName -SyncGroupName $sgName
         Assert-AreEqual $params.intervalInSeconds $sg1.IntervalInSeconds
         Assert-AreEqual $params.conflictResolutionPolicy $sg1.ConflictResolutionPolicy
 
         # List all sync groups
-        $all = Get-AzureRmSqlSyncGroup -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+        $all = Get-AzSqlSyncGroup -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
         -DatabaseName $databaseName
         Assert-AreEqual $all.Count 1
         Assert-AreEqual $params.intervalInSeconds $all[0].IntervalInSeconds
@@ -284,24 +284,24 @@ function Test-RefreshAndGetSyncGroupHubSchema
     $server = Create-ServerForTest $rg "West US 2"
     $credential = Get-ServerCredential
     $databaseName = Get-DatabaseName
-    $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     # Create a sync group
     $sgName = Get-SyncGroupName
-    $sg = New-AzureRmSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+    $sg = New-AzSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
         -DatabaseName $databaseName -SyncGroupName $sgName -IntervalInSeconds $params.intervalInSeconds `
         -ConflictResolutionPolicy $params.conflictResolutionPolicy -SyncDatabaseName $syncDatabaseName -SyncDatabaseServerName `
         $server.ServerName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -DatabaseCredential $credential
     try
     {
         # Refresh hub schema
-        Update-AzureRmSqlSyncSchema -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+        Update-AzSqlSyncSchema -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
             -DatabaseName $databaseName -SyncGroupName $sgName
 
         # Get hub schema
-        $schema = Get-AzureRmSqlSyncSchema -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+        $schema = Get-AzSqlSyncSchema -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
             -DatabaseName $databaseName -SyncGroupName $sgName
         Assert-NotNull $schema
     }
@@ -322,23 +322,23 @@ function Test-RemoveSyncGroup
     $server = Create-ServerForTest $rg "West US 2"
     $credential = Get-ServerCredential
     $databaseName = Get-DatabaseName
-    $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     # Create a sync group
     $sgName = Get-SyncGroupName
-    $sg = New-AzureRmSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+    $sg = New-AzSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
         -DatabaseName $databaseName -SyncGroupName $sgName -IntervalInSeconds $params.intervalInSeconds `
         -ConflictResolutionPolicy $params.conflictResolutionPolicy -SyncDatabaseName $syncDatabaseName -SyncDatabaseServerName `
         $server.ServerName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -DatabaseCredential $credential
     try
     {
         # Remove sync group
-        Remove-AzureRmSqlSyncGroup -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+        Remove-AzSqlSyncGroup -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
         -DatabaseName $databaseName -SyncGroupName $sgName -Force
         
-        $all = Get-AzureRmSqlSyncGroup -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+        $all = Get-AzSqlSyncGroup -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
         -DatabaseName $databaseName
         Assert-AreEqual $all.Count 0
     }
@@ -361,15 +361,15 @@ function Test-CreateSyncMember
     $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
     $databaseName1 = Get-DatabaseName
-    $db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
+    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
     $databaseName2 = Get-DatabaseName
-    $db2 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2
+    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
     
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     $sgName = Get-SyncGroupName
-    $sg = New-AzureRmSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+    $sg = New-AzSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
                 -DatabaseName $databaseName1 -SyncGroupName $sgName -IntervalInSeconds $params.intervalInSeconds `
                 -ConflictResolutionPolicy $params.conflictResolutionPolicy -SyncDatabaseName $syncDatabaseName -SyncDatabaseServerName `
                 $server.ServerName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -DatabaseCredential $credential
@@ -379,7 +379,7 @@ function Test-CreateSyncMember
         # Create a sync member 
         $smParams = Get-SqlSyncMemberTestEnvironmentParameters
         $smName = Get-SyncMemberName
-        $sm1 = New-AzureRmSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+        $sm1 = New-AzSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
             -DatabaseName $databaseName1 -SyncGroupName $sgName -SyncMemberName $smName `
             -SyncDirection $smParams.syncDirection -MemberDatabaseType $smParams.databaseType -MemberDatabaseName $databaseName2 `
             -MemberServerName $serverName -MemberDatabaseCredential $credential
@@ -410,29 +410,29 @@ function Test-GetAndListSyncMembers
     $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
     $databaseName1 = Get-DatabaseName
-    $db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
+    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
     $databaseName2 = Get-DatabaseName
-    $db2 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2
+    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
         
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     $sgName = Get-SyncGroupName
-    $sg = New-AzureRmSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+    $sg = New-AzSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
                 -DatabaseName $databaseName1 -SyncGroupName $sgName -IntervalInSeconds $params.intervalInSeconds `
                 -ConflictResolutionPolicy $params.conflictResolutionPolicy -SyncDatabaseName $syncDatabaseName -SyncDatabaseServerName `
                 $server.ServerName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -DatabaseCredential $credential
     # Create a sync member 
     $smParams = Get-SqlSyncMemberTestEnvironmentParameters
     $smName = Get-SyncMemberName
-    $sm1 = New-AzureRmSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+    $sm1 = New-AzSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
         -DatabaseName $databaseName1 -SyncGroupName $sgName -SyncMemberName $smName `
         -SyncDirection $smParams.syncDirection -MemberDatabaseType $smParams.databaseType -MemberDatabaseName $databaseName2 `
         -MemberServerName $serverName -MemberDatabaseCredential $credential
     try
     {
         # Get a sync member
-        $sm2 = Get-AzureRmSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+        $sm2 = Get-AzSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
         -DatabaseName $databaseName1 -SyncGroupName $sg.SyncGroupName -SyncMemberName $smName
         Assert-AreEqual $smParams.syncDirection $sm1.SyncDirection
         Assert-AreEqual $smParams.databaseType $sm1.MemberDatabaseType
@@ -443,7 +443,7 @@ function Test-GetAndListSyncMembers
         Assert-Null $sm1.SqlServerDatabaseId
 
         # List all sync members
-        $all = Get-AzureRmSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+        $all = Get-AzSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
         -DatabaseName $databaseName1 -SyncGroupName $sg.SyncGroupName
         Assert-AreEqual 1 $all.Count
         Assert-AreEqual $smParams.syncDirection $all[0].SyncDirection
@@ -468,29 +468,29 @@ function Test-UpdateSyncMember
     $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
     $databaseName1 = Get-DatabaseName
-    $db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
+    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
     $databaseName2 = Get-DatabaseName
-    $db2 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2
+    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
     
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     $sgName = Get-SyncGroupName
-    $sg = New-AzureRmSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+    $sg = New-AzSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
                 -DatabaseName $databaseName1 -SyncGroupName $sgName -IntervalInSeconds $params.intervalInSeconds `
                 -ConflictResolutionPolicy $params.conflictResolutionPolicy -SyncDatabaseName $syncDatabaseName -SyncDatabaseServerName `
                 $server.ServerName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -DatabaseCredential $credential
     # Create a sync member 
     $smParams = Get-SqlSyncMemberTestEnvironmentParameters
     $smName = Get-SyncMemberName
-    $sm1 = New-AzureRmSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+    $sm1 = New-AzSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
         -DatabaseName $databaseName1 -SyncGroupName $sgName -SyncMemberName $smName `
         -SyncDirection $smParams.syncDirection -MemberDatabaseType $smParams.databaseType -MemberDatabaseName $databaseName2 `
         -MemberServerName $serverName -MemberDatabaseCredential $credential
     try
     {
         # Update a sync member
-        $sm2 = Update-AzureRmSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+        $sm2 = Update-AzSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
             -DatabaseName $databaseName1 -SyncGroupName $sgName -SyncMemberName $smName `
             -MemberDatabaseCredential $credential
         Assert-AreEqual $smParams.databaseType $sm2.MemberDatabaseType
@@ -519,33 +519,33 @@ function Test-RefreshAndGetSyncMemberSchema
     $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
     $databaseName1 = Get-DatabaseName
-    $db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
+    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
     $databaseName2 = Get-DatabaseName
-    $db2 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2
+    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
     
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     $sgName = Get-SyncGroupName
-    $sg = New-AzureRmSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+    $sg = New-AzSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
                 -DatabaseName $databaseName1 -SyncGroupName $sgName -IntervalInSeconds $params.intervalInSeconds `
                 -ConflictResolutionPolicy $params.conflictResolutionPolicy -SyncDatabaseName $syncDatabaseName -SyncDatabaseServerName `
                 $server.ServerName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -DatabaseCredential $credential
     # Create a sync member 
     $smParams = Get-SqlSyncMemberTestEnvironmentParameters
     $smName = Get-SyncMemberName
-    $sm1 = New-AzureRmSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+    $sm1 = New-AzSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
         -DatabaseName $databaseName1 -SyncGroupName $sgName -SyncMemberName $smName `
         -SyncDirection $smParams.syncDirection -MemberDatabaseType $smParams.databaseType -MemberDatabaseName $databaseName2 `
         -MemberServerName $serverName -MemberDatabaseCredential $credential
     try
     {
         # Refresh member schema
-        Update-AzureRmSqlSyncSchema -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+        Update-AzSqlSyncSchema -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
             -DatabaseName $databaseName1 -SyncGroupName $sgName -SyncMemberName $smName 
 
         # Get member schema
-        $schema = Get-AzureRmSqlSyncSchema -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+        $schema = Get-AzSqlSyncSchema -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
             -DatabaseName $databaseName1 -SyncGroupName $sgName -SyncMemberName $smName 
         Assert-NotNull $schema
     }
@@ -568,32 +568,32 @@ function Test-RemoveSyncMember
     $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
     $databaseName1 = Get-DatabaseName
-    $db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
+    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
     $databaseName2 = Get-DatabaseName
-    $db2 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2
+    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
     
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     $sgName = Get-SyncGroupName
-    $sg = New-AzureRmSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+    $sg = New-AzSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
                 -DatabaseName $databaseName1 -SyncGroupName $sgName -IntervalInSeconds $params.intervalInSeconds `
                 -ConflictResolutionPolicy $params.conflictResolutionPolicy -SyncDatabaseName $syncDatabaseName -SyncDatabaseServerName `
                 $server.ServerName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -DatabaseCredential $credential
     # Create a sync member 
     $smParams = Get-SqlSyncMemberTestEnvironmentParameters
     $smName = Get-SyncMemberName
-    $sm1 = New-AzureRmSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+    $sm1 = New-AzSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
         -DatabaseName $databaseName1 -SyncGroupName $sgName -SyncMemberName $smName `
         -SyncDirection $smParams.syncDirection -MemberDatabaseType $smParams.databaseType -MemberDatabaseName $databaseName2 `
         -MemberServerName $serverName -MemberDatabaseCredential $credential
     try
     {
         # Delete a sync member
-        Remove-AzureRmSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+        Remove-AzSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
         -DatabaseName $databaseName1 -SyncGroupName $sgName -SyncMemberName $smName -Force
         
-        $all = Get-AzureRmSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+        $all = Get-AzSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
         -DatabaseName $databaseName1 -SyncGroupName $sgName
         Assert-AreEqual $all.Count 0
     }

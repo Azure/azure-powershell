@@ -22,7 +22,7 @@ function Test-ListAzureFirewallFqdnTag
     $alwaysPresentTag = "WindowsUpdate"
 
     # Get AzureFirewallFqdnTag
-    $availableFqdnTags = Get-AzureRmFirewallFqdnTag
+    $availableFqdnTags = Get-AzFirewallFqdnTag
 
     # Verification
     # Default FQDN Tags will always keep changing, but there should always be at least one item in the list

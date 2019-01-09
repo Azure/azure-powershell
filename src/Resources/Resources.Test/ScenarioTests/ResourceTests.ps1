@@ -29,12 +29,12 @@ function Test-CreatesNewSimpleResource
     $resourceType = "Microsoft.Sql/servers"
 
     # Test
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+    New-AzResourceGroup -Name $rgname -Location $rglocation
         #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-        $actual = New-AzureRmResource -Name $rname -Location $location -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion
-    $expected = Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion
+        $actual = New-AzResource -Name $rname -Location $location -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion
+    $expected = Get-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion
 
-    $list = Get-AzureRmResource -ResourceGroupName $rgname
+    $list = Get-AzResource -ResourceGroupName $rgname
 
     # Assert
     Assert-AreEqual $expected.Name $actual.Name
@@ -63,21 +63,21 @@ function Test-CreatesNewComplexResource
     $apiversion = "2014-04-01"
 
     # Test
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+    New-AzResourceGroup -Name $rgname -Location $rglocation
         #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-    $actualParent = New-AzureRmResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion
-    $expectedParent = Get-AzureRmResource -Name $rnameParent -ResourceGroupName $rgname -ResourceType $resourceTypeParent -ApiVersion $apiversion
+    $actualParent = New-AzResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion
+    $expectedParent = Get-AzResource -Name $rnameParent -ResourceGroupName $rgname -ResourceType $resourceTypeParent -ApiVersion $apiversion
 
-    $actualChild = New-AzureRmResource -Name $rnameChild -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ParentResource servers/$rnameParent -PropertyObject @{"edition" = "Web"; "collation" = "SQL_Latin1_General_CP1_CI_AS"; "maxSizeBytes" = "1073741824"} -ApiVersion $apiversion
-    $expectedChild = Get-AzureRmResource -Name $rnameChild -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ParentResource servers/$rnameParent -ApiVersion $apiversion
+    $actualChild = New-AzResource -Name $rnameChild -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ParentResource servers/$rnameParent -PropertyObject @{"edition" = "Web"; "collation" = "SQL_Latin1_General_CP1_CI_AS"; "maxSizeBytes" = "1073741824"} -ApiVersion $apiversion
+    $expectedChild = Get-AzResource -Name $rnameChild -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ParentResource servers/$rnameParent -ApiVersion $apiversion
 
-    $list = Get-AzureRmResource -ResourceGroupName $rgname
+    $list = Get-AzResource -ResourceGroupName $rgname
 
     $parentFromList = $list | where {$_.ResourceType -eq $resourceTypeParent} | Select-Object -First 1
     $childFromList = $list | where {$_.ResourceType -eq $resourceTypeChild} | Select-Object -First 1
 
-    $listOfServers = Get-AzureRmResource -ResourceType $resourceTypeParent -ResourceGroupName $rgname
-    $listOfDatabases = Get-AzureRmResource -ResourceType $resourceTypeChild -ResourceGroupName $rgname
+    $listOfServers = Get-AzResource -ResourceType $resourceTypeParent -ResourceGroupName $rgname
+    $listOfDatabases = Get-AzResource -ResourceType $resourceTypeChild -ResourceGroupName $rgname
 
     # Assert
     Assert-AreEqual $expectedParent.Name $actualParent.Name
@@ -113,12 +113,12 @@ function Test-GetResourcesViaPiping
     $apiversion = "2014-04-01"
 
     # Test
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+    New-AzResourceGroup -Name $rgname -Location $rglocation
         #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-    New-AzureRmResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion
-    New-AzureRmResource -Name $rnameChild -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ParentResource servers/$rnameParent -PropertyObject @{"edition" = "Web"; "collation" = "SQL_Latin1_General_CP1_CI_AS"; "maxSizeBytes" = "1073741824"} -ApiVersion $apiversion
+    New-AzResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion
+    New-AzResource -Name $rnameChild -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ParentResource servers/$rnameParent -PropertyObject @{"edition" = "Web"; "collation" = "SQL_Latin1_General_CP1_CI_AS"; "maxSizeBytes" = "1073741824"} -ApiVersion $apiversion
 
-    $list = Get-AzureRmResourceGroup -Name $rgname | Get-AzureRmResource
+    $list = Get-AzResourceGroup -Name $rgname | Get-AzResource
     $serverFromList = $list | where {$_.ResourceType -eq $resourceTypeParent} | Select-Object -First 1
     $databaseFromList = $list | where {$_.ResourceType -eq $resourceTypeChild} | Select-Object -First 1
 
@@ -141,9 +141,9 @@ function Test-GetResourcesFromEmptyGroup
     $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 
     # Test
-    New-AzureRmResourceGroup -Name $rgname -Location $location
-    $listViaPiping = Get-AzureRmResourceGroup -Name $rgname | Get-AzureRmResource
-    $listViaDirect = Get-AzureRmResource -ResourceGroupName $rgname
+    New-AzResourceGroup -Name $rgname -Location $location
+    $listViaPiping = Get-AzResourceGroup -Name $rgname | Get-AzResource
+    $listViaDirect = Get-AzResource -ResourceGroupName $rgname
 
     # Assert
     Assert-AreEqual 0 @($listViaPiping).Count
@@ -160,7 +160,7 @@ function Test-GetResourcesFromNonExisingGroup
     $rgname = Get-ResourceGroupName
 
     # Test
-    Assert-Throws { Get-AzureRmResource -ResourceGroupName $rgname } "Provided resource group does not exist."
+    Assert-Throws { Get-AzResource -ResourceGroupName $rgname } "Provided resource group does not exist."
 }
 
 <#
@@ -170,7 +170,7 @@ Nagative test. Get resources from non-existing type.
 function Test-GetResourcesForNonExisingType
 {
     # Test
-    $list = Get-AzureRmResource -ResourceType 'Non-Existing'
+    $list = Get-AzResource -ResourceType 'Non-Existing'
 
     # Assert
     Assert-AreEqual 0 @($list).Count
@@ -191,10 +191,10 @@ function Test-GetResourceForNonExisingResource
     $apiversion = "2014-04-01"
 
     # Test
-    New-AzureRmResourceGroup -Name $rgname -Location $location
-    Assert-Throws { Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceTypeWeb -ApiVersion $apiversion } "Provided resource does not exist."
-    Assert-Throws { Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceTypeSql -ApiVersion $apiversion } "Provided resource does not exist."
-    Assert-Throws { Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType 'Microsoft.Fake/nonexisting' -ApiVersion $apiversion } "Provided resource does not exist."
+    New-AzResourceGroup -Name $rgname -Location $location
+    Assert-Throws { Get-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceTypeWeb -ApiVersion $apiversion } "Provided resource does not exist."
+    Assert-Throws { Get-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceTypeSql -ApiVersion $apiversion } "Provided resource does not exist."
+    Assert-Throws { Get-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType 'Microsoft.Fake/nonexisting' -ApiVersion $apiversion } "Provided resource does not exist."
 }
 
 <#
@@ -215,12 +215,12 @@ function Test-GetResourcesViaPipingFromAnotherResource
     $apiversion = "2014-04-01"
 
     # Test
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+    New-AzResourceGroup -Name $rgname -Location $rglocation
         #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-    New-AzureRmResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion
-    New-AzureRmResource -Name $rnameChild -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ParentResource servers/$rnameParent -PropertyObject @{"edition" = "Web"; "collation" = "SQL_Latin1_General_CP1_CI_AS"; "maxSizeBytes" = "1073741824"} -ApiVersion $apiversion
+    New-AzResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion
+    New-AzResource -Name $rnameChild -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ParentResource servers/$rnameParent -PropertyObject @{"edition" = "Web"; "collation" = "SQL_Latin1_General_CP1_CI_AS"; "maxSizeBytes" = "1073741824"} -ApiVersion $apiversion
 
-    $list = Get-AzureRmResource -ResourceGroupName $rgname | Get-AzureRmResource -ApiVersion $apiversion
+    $list = Get-AzResource -ResourceGroupName $rgname | Get-AzResource -ApiVersion $apiversion
 
     # Assert
     Assert-AreEqual 2 @($list).Count
@@ -245,12 +245,12 @@ function Test-MoveAResource
     try
     {
         # Test
-        New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-        New-AzureRmResourceGroup -Name $rgname2 -Location $rglocation
-        $resource = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -ApiVersion $apiversion -Force
-        Move-AzureRmResource -ResourceId $resource.ResourceId -DestinationResourceGroupName $rgname2 -Force
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+        New-AzResourceGroup -Name $rgname2 -Location $rglocation
+        $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -ApiVersion $apiversion -Force
+        Move-AzResource -ResourceId $resource.ResourceId -DestinationResourceGroupName $rgname2 -Force
 
-        $movedResource = Get-AzureRmResource -ResourceGroupName $rgname2 -ResourceName $rname -ResourceType $resourceType
+        $movedResource = Get-AzResource -ResourceGroupName $rgname2 -ResourceName $rname -ResourceType $resourceType
 
         # Assert
         Assert-AreEqual $movedResource.Name $resource.Name
@@ -272,13 +272,13 @@ function Test-MoveResourceFailed
 {
     #Move a resource through pipeline while no resource is sent
     $exceptionMessage = "At least one valid resource Id must be provided.";
-    Assert-Throws { Get-AzureRmResource | Where-Object { $PSItem.Name -eq "NonExistingResource" } | Move-AzureRmResource -DestinationResourceGroupName "AnyResourceGroup" } $exceptionMessage
+    Assert-Throws { Get-AzResource | Where-Object { $PSItem.Name -eq "NonExistingResource" } | Move-AzResource -DestinationResourceGroupName "AnyResourceGroup" } $exceptionMessage
 
     #Move two resources from two resource groups
     $resourceId1 = "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/tianorg1/providers/Microsoft.Storage/storageAccounts/temp1"
     $resourceId2 = "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/tianorg2/providers/Microsoft.Storage/storageAccounts/temp1"
     $exceptionMessage = "The resources being moved must all reside in the same resource group. The resources: *"
-    Assert-ThrowsLike { Move-AzureRmResource -DestinationResourceGroupName "AnyGroup" -ResourceId @($resourceId1, $resourceId2) } $exceptionMessage
+    Assert-ThrowsLike { Move-AzResource -DestinationResourceGroupName "AnyGroup" -ResourceId @($resourceId1, $resourceId2) } $exceptionMessage
 }
 
 <#
@@ -299,8 +299,8 @@ function Test-SetAResource
     try
     {
         # Test
-        New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-        $resource = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+        $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
 
         # Verify original value
         $oldSku = $resource.Sku.psobject
@@ -309,11 +309,11 @@ function Test-SetAResource
         Assert-AreEqual $resource.SKu.Name "A0"
 
         # Set resource
-        Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
-        $job = Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" }  -Force -AsJob
+        Set-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
+        $job = Set-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" }  -Force -AsJob
         $job | Wait-Job
 
-        $modifiedResource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
+        $modifiedResource = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
 
         # Assert
         Assert-AreEqual $modifiedResource.Properties.key2 "value2"
@@ -340,9 +340,9 @@ function Test-SetAResourceUsingPiping
     try
     {
         # Test
-        New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-        New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-        $resource = Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+        New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        $resource = Get-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
 
         # Verify original value
         Assert-AreEqual $resource.Name $rname
@@ -354,7 +354,7 @@ function Test-SetAResourceUsingPiping
 
         # Set resource
         # Verify all properties are the same when resource object hasn't been modified and is piped
-        $setResource = $resource | Set-AzureRmResource -Force
+        $setResource = $resource | Set-AzResource -Force
         Assert-NotNull $setResource
         Assert-AreEqual $setResource.Name $rname
         Assert-AreEqual $setResource.ResourceGroupName $rgname
@@ -366,7 +366,7 @@ function Test-SetAResourceUsingPiping
         # Verify all properties are updated when resource object has been modified and is piped
         $resource.Tags.Add("testtag1", "testval1")
         $resource.Sku.Name = "A1"
-        $setResource = $resource | Set-AzureRmResource -Force
+        $setResource = $resource | Set-AzResource -Force
         Assert-NotNull $setResource
         Assert-AreEqual $setResource.Name $rname
         Assert-AreEqual $setResource.ResourceGroupName $rgname
@@ -376,7 +376,7 @@ function Test-SetAResourceUsingPiping
         Assert-AreEqual $setResource.Tags["testtag1"] "testval1"
         Assert-AreEqual $setResource.Properties.key "value"
 
-        $modifiedResource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
+        $modifiedResource = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
 
         # Assert
         Assert-NotNull $modifiedResource
@@ -408,12 +408,12 @@ function Test-SetAResourceWithPatch
     $resourceType = "Providers.Test/statefulResources"
 
     # Test
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-    $resource = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-    Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
-    Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" } -UsePatchSemantics -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation
+    $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+    Set-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
+    Set-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" } -UsePatchSemantics -Force
 
-    $modifiedResource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
+    $modifiedResource = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
 
     # Assert patch didn't overwrite existing properties
     Assert-AreEqual $modifiedResource.Properties.key2 "value2"
@@ -439,21 +439,21 @@ function Test-FindAResource
     try
     {
         # Test
-        New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-        $actual = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-        $expected = Get-AzureRmResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+        $actual = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        $expected = Get-AzResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
         Assert-NotNull $expected
         Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
 
-        $expected = Get-AzureRmResource -ResourceType $resourceType -ResourceGroupName "*$rgName*"
+        $expected = Get-AzResource -ResourceType $resourceType -ResourceGroupName "*$rgName*"
         Assert-NotNull $expected
         Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
 
-        New-AzureRmResource -Name $rname2 -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-        $expected = Get-AzureRmResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
+        New-AzResource -Name $rname2 -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        $expected = Get-AzResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
         Assert-AreEqual 2 @($expected).Count
 
-        $expected = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname
+        $expected = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname
         Assert-NotNull $expected
         Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
     }
@@ -483,31 +483,31 @@ function Test-FindAResource-ByTag
     try
     {
         # Test
-        New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-        $actual1 = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{ScenarioTestTag = "ScenarioTestVal"} -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion -Force
-        $actual2 = New-AzureRmResource -Name $rname2 -Location $rglocation -Tags @{ScenarioTestTag = $null} -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion -Force
-        $actual3 = New-AzureRmResource -Name $rname3 -Location $rglocation -Tags @{ScenarioTestTag = "RandomTestVal"; RandomTestVal = "ScenarioTestVal"} -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion -Force
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+        $actual1 = New-AzResource -Name $rname -Location $rglocation -Tags @{ScenarioTestTag = "ScenarioTestVal"} -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion -Force
+        $actual2 = New-AzResource -Name $rname2 -Location $rglocation -Tags @{ScenarioTestTag = $null} -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion -Force
+        $actual3 = New-AzResource -Name $rname3 -Location $rglocation -Tags @{ScenarioTestTag = "RandomTestVal"; RandomTestVal = "ScenarioTestVal"} -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion -Force
 
         # Test both Name and Value
-        $expected = Get-AzureRmResource -Tag @{ScenarioTestTag = "ScenarioTestVal"}
+        $expected = Get-AzResource -Tag @{ScenarioTestTag = "ScenarioTestVal"}
         Assert-NotNull $expected
         Assert-AreEqual $expected.Count 1
         Assert-AreEqual $actual1.ResourceId $expected[0].ResourceId
 
-        $expected = Get-AzureRmResource -TagName "ScenarioTestTag" -TagValue "ScenarioTestVal"
+        $expected = Get-AzResource -TagName "ScenarioTestTag" -TagValue "ScenarioTestVal"
         Assert-NotNull $expected
         Assert-AreEqual $expected.Count 1
         Assert-AreEqual $actual1.ResourceId $expected[0].ResourceId
 
         # Test just Name
-        $expected = Get-AzureRmResource -Tag @{ScenarioTestTag = $null}
+        $expected = Get-AzResource -Tag @{ScenarioTestTag = $null}
         Assert-NotNull $expected
         Assert-AreEqual $expected.Count 3
         Assert-NotNull { $expected | where { $_.ResourceId -eq $actual1.ResourceId } }
         Assert-NotNull { $expected | where { $_.ResourceId -eq $actual2.ResourceId } }
         Assert-NotNull { $expected | where { $_.ResourceId -eq $actual3.ResourceId } }
 
-        $expected = Get-AzureRmResource -TagName "ScenarioTestTag"
+        $expected = Get-AzResource -TagName "ScenarioTestTag"
         Assert-NotNull $expected
         Assert-AreEqual $expected.Count 3
         Assert-NotNull { $expected | where { $_.ResourceId -eq $actual1.ResourceId } }
@@ -515,7 +515,7 @@ function Test-FindAResource-ByTag
         Assert-NotNull { $expected | where { $_.ResourceId -eq $actual3.ResourceId } }
 
         # Test just Value
-        $expected = Get-AzureRmResource -TagValue "ScenarioTestVal"
+        $expected = Get-AzResource -TagValue "ScenarioTestVal"
         Assert-NotNull $expected
         Assert-AreEqual $expected.Count 2
         Assert-NotNull { $expected | where { $_.ResourceId -eq $actual1.ResourceId } }
@@ -545,9 +545,9 @@ function Test-GetResourceExpandProperties
     try
     {
         # Test
-        New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-        $resource = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-        $resourceGet = Get-AzureRmResource -ResourceName $rname -ResourceGroupName $rgname -ExpandProperties
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+        $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        $resourceGet = Get-AzResource -ResourceName $rname -ResourceGroupName $rgname -ExpandProperties
 
         # Assert
         $properties = $resourceGet.Properties.psobject
@@ -577,9 +577,9 @@ function Test-GetResourceByIdAndProperties
 	try
 	{
 		# Test
-        New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-        $resource = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-        $resourceGet = Get-AzureRmResource -ResourceId $resource.ResourceId
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+        $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        $resourceGet = Get-AzResource -ResourceId $resource.ResourceId
 
 		# Assert
 		Assert-NotNull $resourceGet
@@ -613,9 +613,9 @@ function Test-GetResourceByComponentsAndProperties
 	try
 	{
 		# Test
-        New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-        $resource = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-        $resourceGet = Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+        $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        $resourceGet = Get-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
 
 		# Assert
 		Assert-NotNull $resourceGet
@@ -648,29 +648,29 @@ function Test-ManageResourceWithZones
     $resourceType = "Providers.Test/statefulResources"
 
     # Test
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-    $created = New-AzureRmResource -Name $rname -Location $location -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -Zones @("2") -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation
+    $created = New-AzResource -Name $rname -Location $location -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -Zones @("2") -Force
 
     # Assert
     Assert-NotNull $created
     Assert-AreEqual $created.Zones.Length 1
     Assert-AreEqual $created.Zones[0] "2"
 
-    $resourceGet = Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
+    $resourceGet = Get-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
 
     # Assert
     Assert-NotNull $resourceGet
     Assert-AreEqual $resourceGet.Zones.Length 1
     Assert-AreEqual $resourceGet.Zones[0] "2"
 
-    $resourceSet = set-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType -Zones @("3") -Force
+    $resourceSet = set-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType -Zones @("3") -Force
 
     # Assert
     Assert-NotNull $resourceSet
     Assert-AreEqual $resourceSet.Zones.Length 1
     Assert-AreEqual $resourceSet.Zones[0] "3"
 
-    $resourceGet = Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
+    $resourceGet = Get-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
 
     # Assert
     Assert-NotNull $resourceGet
@@ -694,20 +694,20 @@ function Test-RemoveAResource
     $resourceType = "Providers.Test/statefulResources"
 
     # Test
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-    $job = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force -AsJob
+    New-AzResourceGroup -Name $rgname -Location $rglocation
+    $job = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force -AsJob
     $job | Wait-Job
     $actual = $job | Receive-Job
-    # Intermittently, Find-AzureRmResource does not immediately get the resource
+    # Intermittently, Find-AzResource does not immediately get the resource
     Wait-Seconds 2
-    $expected = Get-AzureRmResource -ResourceName $rname -ResourceGroupName $rgname
+    $expected = Get-AzResource -ResourceName $rname -ResourceGroupName $rgname
     Assert-NotNull $expected
     Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
 
-    $job = Remove-AzureRmResource -ResourceId $expected[0].ResourceId -Force -AsJob
+    $job = Remove-AzResource -ResourceId $expected[0].ResourceId -Force -AsJob
     $job | Wait-Job
 
-    $expected = Get-AzureRmResource -ResourceName $rname -ResourceGroupName $rgname
+    $expected = Get-AzResource -ResourceName $rname -ResourceGroupName $rgname
     Assert-Null $expected
 }
 
@@ -726,21 +726,21 @@ function Test-RemoveASetOfResources
     $resourceType = "Providers.Test/statefulResources"
 
     # Test
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-    $actual = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-    $expected = Get-AzureRmResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
+    New-AzResourceGroup -Name $rgname -Location $rglocation
+    $actual = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+    $expected = Get-AzResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
     Assert-NotNull $expected
     Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
 
-    $expected = Get-AzureRmResource -ResourceType $resourceType -ResourceGroupName "*$rgName*"
+    $expected = Get-AzResource -ResourceType $resourceType -ResourceGroupName "*$rgName*"
     Assert-NotNull $expected
     Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
 
-    New-AzureRmResource -Name $rname2 -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-    $expected = Get-AzureRmResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
+    New-AzResource -Name $rname2 -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+    $expected = Get-AzResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
     Assert-AreEqual 2 @($expected).Count
 
-    Get-AzureRmResource -ResourceName "*test*" -ResourceGroupName "*$rgname*" | Remove-AzureRmResource -Force
-    $expected = Get-AzureRmResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
+    Get-AzResource -ResourceName "*test*" -ResourceGroupName "*$rgname*" | Remove-AzResource -Force
+    $expected = Get-AzResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
     Assert-Null $expected
 }

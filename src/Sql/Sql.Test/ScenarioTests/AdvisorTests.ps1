@@ -24,7 +24,7 @@ function Test-ListServerAdvisors
 
 	try
 	{
-		$response = Get-AzureRmSqlServerAdvisor `
+		$response = Get-AzSqlServerAdvisor `
 			-ResourceGroupName $server.ResourceGroupName `
 			-ServerName $server.ServerName
 		Assert-NotNull $response
@@ -54,7 +54,7 @@ function Test-ListServerAdvisorsExpanded
 
 	try
 	{
-		$response = Get-AzureRmSqlServerAdvisor `
+		$response = Get-AzSqlServerAdvisor `
 			-ResourceGroupName $server.ResourceGroupName `
 			-ServerName $server.ServerName -ExpandRecommendedActions
 		Assert-NotNull $response
@@ -84,7 +84,7 @@ function Test-GetServerAdvisor
 
 	try
 	{
-		$response = Get-AzureRmSqlServerAdvisor `
+		$response = Get-AzSqlServerAdvisor `
 			-ResourceGroupName $server.ResourceGroupName `
 			-ServerName $server.ServerName -AdvisorName CreateIndex
 		Assert-NotNull $response
@@ -110,7 +110,7 @@ function Test-UpdateServerAdvisor
 
 	try
 	{
-		$response = Set-AzureRmSqlServerAdvisorAutoExecuteStatus `
+		$response = Set-AzSqlServerAdvisorAutoExecuteStatus `
 			-ResourceGroupName $server.ResourceGroupName `
 			-ServerName $server.ServerName `
 			-AdvisorName CreateIndex `
@@ -138,7 +138,7 @@ function Test-ListDatabaseAdvisors
 
 	try
 	{
-		$response = Get-AzureRmSqlDatabaseAdvisor `
+		$response = Get-AzSqlDatabaseAdvisor `
 			-ResourceGroupName $db.ResourceGroupName `
 			-ServerName $db.ServerName `
 			-DatabaseName $db.DatabaseName 
@@ -169,7 +169,7 @@ function Test-ListDatabaseAdvisorsExpanded
 
 	try
 	{
-		$response = Get-AzureRmSqlDatabaseAdvisor `
+		$response = Get-AzSqlDatabaseAdvisor `
 			-ResourceGroupName $db.ResourceGroupName `
 			-ServerName $db.ServerName `
 			-DatabaseName $db.DatabaseName `
@@ -201,7 +201,7 @@ function Test-GetDatabaseAdvisor
 
 	try
 	{
-		$response = Get-AzureRmSqlDatabaseAdvisor `
+		$response = Get-AzSqlDatabaseAdvisor `
 			-ResourceGroupName $db.ResourceGroupName `
 			-ServerName $db.ServerName `
 			-DatabaseName $db.DatabaseName `
@@ -229,7 +229,7 @@ function Test-UpdateDatabaseAdvisor
 
 	try
 	{
-		$response = Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus `
+		$response = Set-AzSqlDatabaseAdvisorAutoExecuteStatus `
 			-ResourceGroupName $db.ResourceGroupName `
 			-ServerName $db.ServerName `
 			-DatabaseName $db.DatabaseName `
@@ -257,7 +257,7 @@ function Test-ListElasticPoolAdvisors
 
 	try
 	{
-		$response = Get-AzureRmSqlElasticPoolAdvisor `
+		$response = Get-AzSqlElasticPoolAdvisor `
 			-ResourceGroupName $ep.ResourceGroupName`
 			-ServerName $ep.ServerName`
 			-ElasticPoolName $ep.ElasticPoolName
@@ -288,7 +288,7 @@ function Test-ListElasticPoolAdvisorsExpanded
 
 	try
 	{
-		$response = Get-AzureRmSqlElasticPoolAdvisor `
+		$response = Get-AzSqlElasticPoolAdvisor `
 			-ResourceGroupName $ep.ResourceGroupName `
 			-ServerName $ep.ServerName `
 			-ElasticPoolName $ep.ElasticPoolName `
@@ -320,7 +320,7 @@ function Test-GetElasticPoolAdvisor
 
 	try
 	{
-		$response = Get-AzureRmSqlElasticPoolAdvisor `
+		$response = Get-AzSqlElasticPoolAdvisor `
 			-ResourceGroupName $ep.ResourceGroupName `
 			-ServerName $ep.ServerName `
 			-ElasticPoolName $ep.ElasticPoolName `
@@ -355,7 +355,7 @@ function SetupDatabase($resourceGroup)
 {
 	$server = SetupServer $resourceGroup
 	$databaseName = Get-DatabaseName
-	$db = New-AzureRmSqlDatabase `
+	$db = New-AzSqlDatabase `
 		-ResourceGroupName $server.ResourceGroupName `
 		-ServerName $server.ServerName `
 		-DatabaseName $databaseName `
@@ -371,7 +371,7 @@ function SetupElasticPool($resourceGroup)
 {
 	$server = SetupServer $resourceGroup
 	$poolName = Get-ElasticPoolName
-	$ep = New-AzureRmSqlElasticPool `
+	$ep = New-AzSqlElasticPool `
 		-ServerName $server.ServerName `
 		-ResourceGroupName $server.ResourceGroupName `
 		-ElasticPoolName $poolName -Edition Basic

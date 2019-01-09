@@ -16,9 +16,9 @@
 .SYNOPSIS
 Get external security solutions on a subscription scope
 #>
-function Get-AzureRmExternalSecuritySolution-SubscriptionScope
+function Get-AzExternalSecuritySolution-SubscriptionScope
 {
-    $externalSecuritySolutions = Get-AzureRmExternalSecuritySolution
+    $externalSecuritySolutions = Get-AzExternalSecuritySolution
 	Validate-ExternalSecuritySolutions $externalSecuritySolutions
 }
 
@@ -26,14 +26,14 @@ function Get-AzureRmExternalSecuritySolution-SubscriptionScope
 .SYNOPSIS
 Get external security solution
 #>
-function Get-AzureRmExternalSecuritySolution-ResourceGroupLevelResource
+function Get-AzExternalSecuritySolution-ResourceGroupLevelResource
 {
-	$externalSecuritySolutions = Get-AzureRmExternalSecuritySolution
+	$externalSecuritySolutions = Get-AzExternalSecuritySolution
 	$externalSecuritySolution = $externalSecuritySolutions | Select -First 1
 	$rgName = Extract-ResourceGroup -ResourceId $externalSecuritySolution.Id
 	$location = Extract-ResourceLocation -ResourceId $externalSecuritySolution.Id
 
-    $fetchedExternalSecuritySolution = Get-AzureRmExternalSecuritySolution -ResourceGroupName $rgName -Location $location -Name $externalSecuritySolution.Name
+    $fetchedExternalSecuritySolution = Get-AzExternalSecuritySolution -ResourceGroupName $rgName -Location $location -Name $externalSecuritySolution.Name
 	Validate-ExternalSecuritySolution $fetchedExternalSecuritySolution
 }
 
@@ -41,11 +41,11 @@ function Get-AzureRmExternalSecuritySolution-ResourceGroupLevelResource
 .SYNOPSIS
 Get external security solution by a resource ID
 #>
-function Get-AzureRmExternalSecuritySolution-ResourceId
+function Get-AzExternalSecuritySolution-ResourceId
 {
-	$externalSecuritySolution = Get-AzureRmExternalSecuritySolution | Select -First 1
+	$externalSecuritySolution = Get-AzExternalSecuritySolution | Select -First 1
 
-    $fetchedExternalSecuritySolution = Get-AzureRmExternalSecuritySolution -ResourceId $externalSecuritySolution.Id
+    $fetchedExternalSecuritySolution = Get-AzExternalSecuritySolution -ResourceId $externalSecuritySolution.Id
 	Validate-ExternalSecuritySolution $fetchedExternalSecuritySolution
 }
 
