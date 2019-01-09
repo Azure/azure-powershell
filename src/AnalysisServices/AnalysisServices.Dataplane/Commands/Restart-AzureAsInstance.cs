@@ -27,11 +27,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     [OutputType(typeof(bool))]
     public class RestartAzureAnalysisServer : AsAzureDataplaneCmdletBase
     {
-
-        [Parameter(Mandatory = true, HelpMessage = "Name of the Azure Analysis Services server to restart")]
-        [ValidateNotNullOrEmpty]
-        public string Instance { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -54,12 +49,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             {
                 return Resources.ARMDataCollectionMessage;
             }
-        }
-
-        protected override void BeginProcessing()
-        {
-            base.BeginProcessing();
-            this.CommonBeginProcessing(Instance);
         }
 
         protected override void InitializeQosEvent()

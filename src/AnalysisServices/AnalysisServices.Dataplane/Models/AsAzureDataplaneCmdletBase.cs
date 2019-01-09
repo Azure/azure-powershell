@@ -33,6 +33,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 
         private IAzureContext _currentContext;
 
+        [Parameter(Mandatory = true, HelpMessage = "Name of the Azure Analysis Services server")]
+        [ValidateNotNullOrEmpty]
+        public string Instance { get; set; }
+
         /// <summary>
         /// The fully qualified absolute URI of the server instance.
         /// (scheme.region.azureAsEndpoint/serverName)
@@ -92,12 +96,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             set { _asAzureDataplaneClient = value; }
         }
 
-        protected void CommonBeginProcessing(string instance)
+        protected override void BeginProcessing()
         {
+            base.BeginProcessing();
+
             // user must specify the fully qualified server name. For example, westus2.asazure.windows.net/testserver
-            if (!Uri.TryCreate(instance, UriKind.Absolute, out var uriResult) || uriResult.Scheme != AsAzureEndpoints.UriSchemeAsAzure)
+            if (!Uri.TryCreate(Instance, UriKind.Absolute, out var uriResult) || uriResult.Scheme != AsAzureEndpoints.UriSchemeAsAzure)
             {
-                throw new PSInvalidOperationException(string.Format(Properties.Resources.InvalidServerName, instance));
+                throw new PSInvalidOperationException(string.Format(Properties.Resources.InvalidServerName, Instance));
             }
 
             // derive all bits of the url from the input
