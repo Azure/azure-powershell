@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
@@ -32,14 +31,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         #region Defaults
 
         /// <summary>
-        /// Default content type for map.
-        /// </summary>
-        private string contentType = "application/xml";
-
-        /// <summary>
         /// Default map type.
         /// </summary>
-        private string mapType = "Xslt";
+        const string defaultMapType = "Xslt";
 
         #endregion Defaults
 
@@ -71,21 +65,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public string MapDefinition { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account map type.")]
-        [ValidateSet("Xslt", IgnoreCase = false)]
+        [ValidateSet("Xslt", "Xslt20", "Xslt30", "Liquid", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public string MapType
-        {
-            get { return this.mapType; }
-            set { value = this.mapType; }
-        }
+        public string MapType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account map content type.")]
         [ValidateNotNullOrEmpty]
-        public string ContentType
-        {
-            get { return this.contentType; }
-            set { value = this.contentType; }
-        }
+        public string ContentType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account map metadata.",
         ValueFromPipelineByPropertyName = false)]
@@ -106,19 +92,29 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
             if (string.IsNullOrEmpty(this.MapDefinition))
             {
-                this.MapDefinition = CmdletHelper.GetContentFromFile(this.TryResolvePath(this.MapFilePath));
+                this.MapDefinition = CmdletHelper.GetStringContentFromFile(this.TryResolvePath(this.MapFilePath));
             }
 
-            this.WriteObject(IntegrationAccountClient.CreateIntegrationAccountMap(this.ResourceGroupName, integrationAccount.Name, this.MapName,
+            if (string.IsNullOrEmpty(this.MapType))
+            {
+                this.MapType = defaultMapType;
+            }
+
+            if (string.IsNullOrEmpty(this.ContentType))
+            {
+                this.ContentType = this.MapType.Equals("liquid", System.StringComparison.CurrentCultureIgnoreCase) ? "text/plain" : "application/xml";
+            }
+
+            this.WriteObject(this.IntegrationAccountClient.CreateIntegrationAccountMap(this.ResourceGroupName, integrationAccount.Name, this.MapName,
                 new IntegrationAccountMap
                 {
                     ContentType = this.ContentType,
                     Content = this.MapDefinition,
-                    MapType = (MapType) Enum.Parse(typeof(MapType), this.MapType),
+                    MapType = this.MapType,
                     Metadata = this.Metadata
                 }), true);
         }

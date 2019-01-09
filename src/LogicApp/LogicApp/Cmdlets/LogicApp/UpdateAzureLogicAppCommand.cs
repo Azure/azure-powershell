@@ -16,7 +16,6 @@ using System.Globalization;
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
@@ -30,25 +29,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogicApp", SupportsShouldProcess = true, DefaultParameterSetName = "Consumption"), OutputType(typeof(object))]
     public class UpdateAzureLogicAppCommand : LogicAppBaseCmdlet
     {
-        #region private Variables
-
-        /// <summary>
-        /// Default value for the workflow status parameter
-        /// </summary>
-        private string _status = Constants.StatusEnabled;
-
-        /// <summary>
-        /// Default value for the workflow definition
-        /// </summary>
-        private object _definition = string.Empty;
-
-        /// <summary>
-        /// Default value for the workflow parameters
-        /// </summary>
-        private object _parameters = string.Empty;
-
-        #endregion private Variables
-
         #region Input Paramters
 
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
@@ -72,18 +52,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "The state of the workflow.")]
         [ValidateSet(Constants.StatusEnabled, Constants.StatusDisabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
-        public string State
-        {
-            get { return this._status; }
-            set { this._status = value; }
-        }
+        public string State { get; set; } = Constants.StatusEnabled;
 
         [Parameter(Mandatory = false, HelpMessage = "The definition of the workflow.")]
-        public object Definition
-        {
-            get { return this._definition; }
-            set { this._definition = value; }
-        }
+        public object Definition { get; set; } = string.Empty;
 
         [Parameter(Mandatory = false, HelpMessage = "The physical file path of the workflow definition.")]
         [ValidateNotNullOrEmpty]
@@ -94,11 +66,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public string IntegrationAccountId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The parameters parameter for the logic app.")]
-        public object Parameters
-        {
-            get { return this._parameters; }
-            set { this._parameters = value; }
-        }
+        public object Parameters { get; set; } = string.Empty;
 
         [Parameter(Mandatory = false, HelpMessage = "The parameter file path.")]
         [ValidateNotNullOrEmpty]
@@ -116,7 +84,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var workflow = LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name);
+            var workflow = this.LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name);
 
             if (this.Definition == null)
             {
@@ -153,19 +121,19 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (!string.IsNullOrEmpty(this.State))
             {
-                workflow.State = (WorkflowState) Enum.Parse(typeof(WorkflowState), this.State);
+                workflow.State = this.State;
             }
 
-            if (UseConsumptionModel.IsPresent)
+            if (this.UseConsumptionModel.IsPresent)
             {
                 workflow.Sku = null;
             }
             else if (!string.IsNullOrEmpty(this.AppServicePlan))
             {
-                var servicePlan = WebsitesClient.GetAppServicePlan(this.ResourceGroupName, this.AppServicePlan);
+                var servicePlan = this.WebsitesClient.GetAppServicePlan(this.ResourceGroupName, this.AppServicePlan);
                 workflow.Sku = new Sku
                 {
-                    Name = (SkuName) Enum.Parse(typeof(SkuName), servicePlan.Sku.Tier),
+                    Name = servicePlan.Sku.Tier,
                     Plan = new ResourceReference(id: servicePlan.Id)
                 };
             }
@@ -175,15 +143,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 throw new PSArgumentException(Properties.Resource.DefinitionMissingWarning);
             }
 
-            ConfirmAction(Force.IsPresent,
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
-                    "Microsoft.Logic/workflows", this.Name),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
-                    "Microsoft.Logic/workflows", this.Name),
-                Name,
+            this.ConfirmAction(this.Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning, "Microsoft.Logic/workflows", this.Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage, "Microsoft.Logic/workflows", this.Name),
+                this.Name,
                 () =>
                 {
-                    this.WriteObject(LogicAppClient.UpdateWorkflow(this.ResourceGroupName, this.Name, workflow), true);
+                    this.WriteObject(this.LogicAppClient.UpdateWorkflow(this.ResourceGroupName, this.Name, workflow), true);
                 },
                 null);
         }

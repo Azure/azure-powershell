@@ -54,12 +54,12 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            ConfirmAction(Force.IsPresent,
+            this.ConfirmAction(this.Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceWarning, "Microsoft.Logic/integrationAccounts/agreements", this.Name),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceMessage, "Microsoft.Logic/integrationAccounts/agreements", this.Name),
-                Name,
+                this.Name,
                 () => {
-                    IntegrationAccountClient.RemoveIntegrationAccountAgreement(this.ResourceGroupName, this.Name, this.AgreementName);
+                    this.IntegrationAccountClient.RemoveIntegrationAccountAgreement(this.ResourceGroupName, this.Name, this.AgreementName);
                 });
         }
     }

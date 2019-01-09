@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
             }
 
             return IntegrationAccountClient.SessionContentToIntegrationAccountControlNumber(
-                sessionContent: this.LogicManagementClient.Sessions
+                sessionContent: this.LogicManagementClient.IntegrationAccountSessions
                     .CreateOrUpdate(
                         resourceGroupName: resourceGroupName,
                         integrationAccountName: integrationAccountName,
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public IntegrationAccountControlNumber GetIntegrationAccountReceivedControlNumber(string resourceGroupName, string integrationAccountName, string integrationAccountAgreementName, AgreementType agreementType, string controlNumber)
         {
             return IntegrationAccountClient.SessionContentToIntegrationAccountControlNumber(
-                sessionContent: this.LogicManagementClient.Sessions
+                sessionContent: this.LogicManagementClient.IntegrationAccountSessions
                     .Get(
                         resourceGroupName: resourceGroupName,
                         integrationAccountName: integrationAccountName,
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="controlNumber">The control number specific value</param>
         public void RemoveIntegrationAccountReceivedControlNumber(string resourceGroupName, string integrationAccountName, string integrationAccountAgreementName, AgreementType agreementType, string controlNumber)
         {
-            this.LogicManagementClient.Sessions
+            this.LogicManagementClient.IntegrationAccountSessions
                 .Delete(
                     resourceGroupName: resourceGroupName,
                     integrationAccountName: integrationAccountName,

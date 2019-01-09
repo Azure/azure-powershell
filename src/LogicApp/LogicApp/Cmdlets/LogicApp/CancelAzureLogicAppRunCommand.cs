@@ -56,13 +56,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            ConfirmAction(Force.IsPresent,
+            this.ConfirmAction(this.Force.IsPresent,
                 Properties.Resource.CancelLogicAppRunWarning,
                 Properties.Resource.CancelLogicAppRunMessage,
-                Name,
+                this.Name,
                 () =>
                 {
-                    LogicAppClient.CancelWorkflowRun(this.ResourceGroupName, this.Name, this.RunName);
+                    this.LogicAppClient.CancelWorkflowRun(this.ResourceGroupName, this.Name, this.RunName);
                 },
                 null);
         }

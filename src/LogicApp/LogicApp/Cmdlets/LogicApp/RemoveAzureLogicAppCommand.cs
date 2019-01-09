@@ -50,13 +50,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            ConfirmAction(Force.IsPresent,
+            this.ConfirmAction(this.Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceWarning, "Microsoft.Logic/workflows", this.Name),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceMessage, "Microsoft.Logic/workflows", this.Name),                
-                Name,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceMessage, "Microsoft.Logic/workflows", this.Name),
+                this.Name,
                 () =>
                 {
-                    LogicAppClient.RemoveWorkflow(ResourceGroupName, Name);
+                    this.LogicAppClient.RemoveWorkflow(this.ResourceGroupName, this.Name);
                 });
         }
     }

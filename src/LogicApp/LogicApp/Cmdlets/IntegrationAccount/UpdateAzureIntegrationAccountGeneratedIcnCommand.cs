@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            if (string.IsNullOrEmpty(AgreementType))
+            if (string.IsNullOrEmpty(this.AgreementType))
             {
                 this.WriteWarning(Constants.NoAgreementTypeParameterWarningMessage);
-                AgreementType = "X12";
+                this.AgreementType = "X12";
             }
 
             var integrationAccountGeneratedIcn = this.IntegrationAccountClient.GetIntegrationAccountGeneratedIcn(
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 integrationAccountName: this.Name,
                 integrationAccountAgreementName: this.AgreementName);
 
-            integrationAccountGeneratedIcn.MessageType = (MessageType)Enum.Parse(enumType: typeof(MessageType), value: AgreementType, ignoreCase: true);
+            integrationAccountGeneratedIcn.MessageType = (MessageType)Enum.Parse(enumType: typeof(MessageType), value: this.AgreementType, ignoreCase: true);
             integrationAccountGeneratedIcn.ControlNumber = this.ControlNumber;
             integrationAccountGeneratedIcn.ControlNumberChangedTime = DateTime.UtcNow > integrationAccountGeneratedIcn.ControlNumberChangedTime ?
                 DateTime.UtcNow :
