@@ -18,6 +18,13 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Added Cmdlets for Identity on Application Gateway.
+    - New cmdlets added:
+        - Set-AzApplicationGatewayIdentity
+        - Get-AzApplicationGatewayIdentity
+        - New-AzApplicationGatewayIdentity
+        - Remove-AzApplicationGatewayIdentity
+    - New-AzApplicationGateway cmdlet updated with optional parameter -Identity
 
 ## Version 1.0.0
 * General availability of `Az.Network` module
