@@ -8,15 +8,15 @@ param(
     [string] $CIToolsPath
 )
 
-$RMFolders = Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/ResourceManager/AzureResourceManager -Directory
+$RMFolders = Get-ChildItem $PSScriptRoot/../artifacts/$BuildConfig -Directory
 
 $RMFolders | ForEach-Object {
     $dlls = Get-ChildItem $_.FullName -Recurse | Where-Object { $_ -like "*dll" } | ForEach-Object { $_.FullName };
-    & "$CIToolsPath/tools/BinScope/BinScope7.0.7/BinScope.exe" $dlls /OutDir "$PSScriptRoot/../src/Package/BinScope/" /html | Out-Null
+    & "$CIToolsPath/tools/BinScope/BinScope7.0.7/BinScope.exe" $dlls /OutDir "$PSScriptRoot/../artifacts/BinScope/" /html | Out-Null
 }
 
 $shouldThrow = $false
-$binscopeFolders = Get-ChildItem $PSScriptRoot/../src/Package/BinScope
+$binscopeFolders = Get-ChildItem $PSScriptRoot/../artifacts/BinScope
 $binscopeFolders | ForEach-Object {
     $binscopeReport = Get-Content $_.FullName
     if ($binscopeReport -like "*No failed checks*")
@@ -31,9 +31,9 @@ $binscopeFolders | ForEach-Object {
 
 if ($shouldThrow)
 {
-    throw "Binscope failed, please check the files in src/Package/BinScope"
+    throw "Binscope failed, please check the files in artifacts/BinScope"
 }
 else
 {
-    Remove-Item $PSScriptRoot/../src/Package/BinScope
+    Remove-Item $PSScriptRoot/../artifacts/BinScope
 }
