@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 1F5066C6-9756-47B4-886C-C52755809926
@@ -30,7 +30,8 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
- [-Zone <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String>] [-Force] [-AsJob]
+ [-Zone <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String>]
+ [-Identity <PSManagedServiceIdentity>] [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -299,6 +300,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Identity
+Application Gateway Identity to be assigned to Application Gateway.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSManagedServiceIdentity
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
