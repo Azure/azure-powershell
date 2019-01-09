@@ -176,13 +176,13 @@ function UpdateARMLogs([string]$PathToServices)
         if ($serviceName -eq "AzureBackup") { $serviceName = "Backup" }
         if ($serviceName -eq "AzureBatch") { $serviceName = "Batch" }
 
-        if (!(Test-Path "$PathToRepo\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.$serviceName\AzureRM.$serviceName.psd1"))
+        if (!(Test-Path "$PathToRepo\artifacts\Debug\Az.$serviceName\Az.$serviceName.psd1"))
         {
             continue
         }
 
         # Get the psd1 file
-        $Module = Get-Item -Path "$PathToRepo\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.$serviceName\AzureRM.$serviceName.psd1"
+        $Module = Get-Item -Path "$PathToRepo\artifacts\Debug\Az.$serviceName\Az.$serviceName.psd1"
 
         # Get the path to the change log
         $PathToChangeLog = "$($log.FullName)"
@@ -255,21 +255,7 @@ if (!$PathToRepo)
 Import-Module PowerShellGet
 
 # Update all of the ResourceManager change logs
-$ResourceManagerResult = UpdateARMLogs -PathToServices $PathToRepo\src\ResourceManager
-
-# Update the ServiceManagement change log
-$PathToChangeLog = "$PathToRepo\src\ServiceManagement\Services\Commands.Utilities\ChangeLog.md"
-$PathToModule = "$PathToRepo\src\Package\Debug\ServiceManagement\Azure\Azure.psd1"
-
-$ServiceManagementResult = UpdateLog -PathToChangeLog $PathToChangeLog -PathToModule $PathToModule -Service "ServiceManagement"
-Copy-Item -Path $PathToModule -Destination "$PathToRepo\src\ServiceManagement\Services\Commands.Utilities\Azure.psd1" -Force
-
-# Update the Storage change log
-$PathToChangeLog = "$PathToRepo\src\Storage\ChangeLog.md"
-$PathToModule = "$PathToRepo\src\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1"
-
-$StorageResult = UpdateLog -PathToChangeLog $PathToChangeLog -PathToModule $PathToModule -Service "Azure.Storage"
-Copy-Item -Path $PathToModule -Destination "$PathToRepo\src\Storage\Azure.Storage.psd1" -Force
+$ResourceManagerResult = UpdateARMLogs -PathToServices $PathToRepo\src
 
 $result = @()
 
@@ -280,18 +266,6 @@ if ($ResourceManagerResult.Length -gt 0)
     $result += $ResourceManagerResult
 
     UpdateModule -PathToModule "$PathToRepo\tools\AzureRM\AzureRM.psd1" -ChangeLogContent $ResourceManagerResult
-}
-
-# If any changes were made to RDFE services, add them to the list to be added to the master change log
-if ($ServiceManagementResult.Length -gt 0)
-{
-    $result += $ServiceManagementResult
-}
-
-# If any changes were made to Storage, add them to the list to be added to the master change log
-if ($StorageResult.Length -gt 0)
-{
-    $result += $StorageResult
 }
 
 # Blank space added to separate this release and last release changes in change log
