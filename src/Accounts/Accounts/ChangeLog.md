@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.0
 * Add 'Local' Scope to Enable-AzureRmAlias
 
 ## Version 1.0.0
