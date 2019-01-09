@@ -11,6 +11,7 @@ Param(
     [string]$FilteredModules
 )
 
+$ResourceManagerFolders = Get-ChildItem -Directory -Path "$PSScriptRoot\..\src" | Where-Object { $_.Name -ne 'lib' }
 Import-Module "$PSScriptRoot\HelpGeneration\HelpGeneration.psm1"
 $UnfilteredHelpFolders = Get-ChildItem "help" -Recurse -Directory | where { $_.FullName -like "*$BuildConfig*" -and $_.FullName -notlike "*Stack*" }
 $FilteredHelpFolders = $UnfilteredHelpFolders
@@ -31,13 +32,29 @@ if (![string]::IsNullOrEmpty($FilteredModules))
 
 if ($ValidateMarkdownHelp)
 {
-    if (!(Test-Path -Path "$PSScriptRoot\..\src\Package\Exceptions"))
+    if (!(Test-Path -Path "$PSScriptRoot\..\artifacts\Exceptions"))
     {
-        New-Item -Path "$PSScriptRoot\..\src\Package" -Name "Exceptions" -ItemType Directory
+        New-Item -Path "$PSScriptRoot\..\artifacts" -Name "Exceptions" -ItemType Directory
     }
 
-    $SuppressedExceptionsPath = "$PSScriptRoot\..\src\Package\Exceptions"
-    $NewExceptionsPath = "$PSScriptRoot\..\src\Package"
+    $Exceptions = @()
+    foreach ($ServiceFolder in $ResourceManagerFolders)
+    {
+        $HelpFolder = (Get-ChildItem -Path $ServiceFolder.FullName -Filter "help" -Recurse -Directory)
+        if ($HelpFolder -eq $null)
+        {
+            $Exceptions += $ServiceFolder.Name
+        }
+    }
+
+    if ($Exceptions.Count -gt 0)
+    {
+        $Services = $Exceptions -Join ", "
+        throw "No help folder found in the following services: $Services"
+    }
+
+    $SuppressedExceptionsPath = "$PSScriptRoot\..\artifacts\Exceptions"
+    $NewExceptionsPath = "$PSScriptRoot\..\artifacts"
     Copy-Item -Path "$PSScriptRoot\HelpGeneration\Exceptions\ValidateHelpIssues.csv" -Destination $SuppressedExceptionsPath
     New-Item -Path $NewExceptionsPath -Name ValidateHelpIssues.csv -ItemType File -Force | Out-Null
     Add-Content "$NewExceptionsPath\ValidateHelpIssues.csv" "Target,Description"
@@ -50,7 +67,7 @@ if ($ValidateMarkdownHelp)
     }
     else
     {
-        Remove-Item -Path "$NewExceptionsPath\ValidateHelpIssues.csv" -Force   
+        Remove-Item -Path "$NewExceptionsPath\ValidateHelpIssues.csv" -Force
     }
 }
 
