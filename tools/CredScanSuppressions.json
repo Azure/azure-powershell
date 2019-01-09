@@ -1017,6 +1017,26 @@
       "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch\\help\\New-AzBatchTask.md",
       "hash": "9DiQS2GhPQXk8u3D2jadP/YcW2ZysE6slHg0yDqxByg=",
       "_justification": "Markdown example and not a real credential"
+    },
+    {
+      "file": "\\src\\Automation\\Automation.Test\\ScenarioTests\\SourceControlTests.ps1",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "\\src\\Batch\\Batch.Test\\ScenarioTests\\ComputeNodeUserTests.ps1",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "\\src\\HDInsight\\HDInsight.Test\\ScenarioTests\\HDInsightConfigurationTests.ps1",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "\\src\\KeyVault\\KeyVault.Test\\Scripts\\VaultCertificateTests.ps1",
+      "_justification": "Resource creation is mocked"
+    },
+    {
+      "file": "\\src\\Relay\\Relay.Test\\ScenarioTests\\RelayAuthorizationRulesTests.ps1",
+      "_justification": "Test resource is deleted"
     }
   ]
 }
