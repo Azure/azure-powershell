@@ -92,7 +92,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.1.0'; },
                @{ModuleName = 'Az.Resources'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.ServiceBus'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.ServiceFabric'; RequiredVersion = '1.0.0'; }, 
-               @{ModuleName = 'Az.SignalR'; RequiredVersion = '1.0.0'; }, 
+               @{ModuleName = 'Az.SignalR'; RequiredVersion = '1.0.1'; }, 
                @{ModuleName = 'Az.Sql'; RequiredVersion = '1.0.1'; }, 
                @{ModuleName = 'Az.Storage'; RequiredVersion = '1.0.1'; }, 
                @{ModuleName = 'Az.StreamAnalytics'; RequiredVersion = '1.0.0'; }, 
@@ -160,6 +160,7 @@ Az.Accounts
 Az.Compute
 * Name is now optional in ID parameter set for Restart/Start/Stop/Remove/Set-AzVM and Save-AzVMImage
 * Updated the description of ID in help files
+* Fix backward compatibility issue with Az.Accounts module
 
 Az.DataLakeStore
 * Update the sdk version of dataplane to 1.1.14 for SDK fixes.
@@ -193,6 +194,9 @@ Az.Resources
 * Made ''-MailNickname'' parameter mandatory for ''New-AzADUser''
     - More information here: https://github.com/Azure/azure-powershell/issues/8220
 
+Az.SignalR
+* Fix backward compatibility issue with Az.Accounts module
+
 Az.Sql
 * Converted the Storage management client dependency to the common SDK implementation.
 
@@ -204,6 +208,7 @@ Az.Storage
 
 Az.Websites
 * Fixed a date parsing bug in ''Get-AzDeletedWebApp''
+* Fix backward compatibility issue with Az.Accounts module
 '
 
         # Prerelease string of this module

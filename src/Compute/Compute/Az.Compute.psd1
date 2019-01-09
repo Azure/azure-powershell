@@ -198,7 +198,8 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* Name is now optional in ID parameter set for Restart/Start/Stop/Remove/Set-AzVM and Save-AzVMImage
-* Updated the description of ID in help files'
+* Updated the description of ID in help files
+* Fix backward compatibility issue with Az.Accounts module'
 
         # Prerelease string of this module
         # Prerelease = ''

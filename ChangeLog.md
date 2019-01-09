@@ -5,6 +5,7 @@
 #### Az.Compute
 * Name is now optional in ID parameter set for Restart/Start/Stop/Remove/Set-AzVM and Save-AzVMImage
 * Updated the description of ID in help files
+* Fix backward compatibility issue with Az.Accounts module
 
 #### Az.DataLakeStore
 * Update the sdk version of dataplane to 1.1.14 for SDK fixes.
@@ -38,17 +39,21 @@
 * Made '-MailNickname' parameter mandatory for 'New-AzADUser'
     - More information here: https://github.com/Azure/azure-powershell/issues/8220
 
+#### Az.SignalR
+* Fix backward compatibility issue with Az.Accounts module
+
 #### Az.Sql
 * Converted the Storage management client dependency to the common SDK implementation.
 
 #### Az.Storage
-* Set the StorageAccountName of Storage context as the real Storage Account Name, when it's created with Sas Token, OAuth or Anonymous 
+* Set the StorageAccountName of Storage context as the real Storage Account Name, when it's created with Sas Token, OAuth or Anonymous
     - New-AzStorageContext
 * Create Sas Token of Blob Snapshot Object with '-FullUri' parameter, fix the returned Uri to be the sanpshot Uri
     - New-AzStorageBlobSASToken
 
 #### Az.Websites
 * Fixed a date parsing bug in 'Get-AzDeletedWebApp'
+* Fix backward compatibility issue with Az.Accounts module
 
 ## Version 1.0.0 - December 2018
 
