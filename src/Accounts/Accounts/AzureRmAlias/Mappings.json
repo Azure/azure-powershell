@@ -1245,7 +1245,14 @@
     "Set-AzActionGroup": "Set-AzureRmActionGroup",
     "Get-AzActionGroup": "Get-AzureRmActionGroup",
     "Remove-AzActionGroup": "Remove-AzureRmActionGroup",
-    "New-AzMetricFilter": "New-AzureRmMetricFilter"
+    "New-AzMetricFilter": "New-AzureRmMetricFilter",
+    "New-AzScheduledQueryRuleSource": "New-AzureRmScheduledQueryRuleSource",
+    "New-AzScheduledQueryRuleSchedule": "New-AzureRmScheduledQueryRuleSchedule",
+    "New-AzScheduledQueryRuleTriggerCondition": "New-AzureRmScheduledQueryRuleTriggerCondition",
+    "New-AzScheduledQueryRuleMetricTrigger": "New-AzureRmScheduledQueryRuleMetricTrigger",
+    "New-AzScheduledQueryRuleAznsAction": "New-AzureRmScheduledQueryRuleAznsAction",
+    "New-AzScheduledQueryRuleAlertingAction": "New-AzureRmScheduledQueryRuleAlertingAction",
+    "Add-AzScheduledQueryRule": "New-AzureRmScheduledQueryRuler"
   },
   "Az.Network": {
     "Add-AzApplicationGatewayAuthenticationCertificate": "Add-AzureRmApplicationGatewayAuthenticationCertificate",

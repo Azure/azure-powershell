@@ -89,7 +89,11 @@ CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile
                'New-AzActivityLogAlertCondition', 'Enable-AzActivityLogAlert', 
                'Disable-AzActivityLogAlert', 'Remove-AzActivityLogAlert', 
                'New-AzActionGroupReceiver', 'Set-AzActionGroup', 'Get-AzActionGroup', 
-               'Remove-AzActionGroup', 'New-AzMetricFilter'
+               'Remove-AzActionGroup', 'New-AzMetricFilter',
+               'New-AzScheduledQueryRuleSource', 'New-AzScheduledQueryRuleSchedule',
+	           'New-AzScheduledQueryRuleTriggerCondition', 'New-AzScheduledQueryRuleMetricTrigger',
+	           'New-AzScheduledQueryRuleAznsAction', 'New-AzScheduledQueryRuleAlertingAction',
+	           'Add-AzScheduledQueryRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
