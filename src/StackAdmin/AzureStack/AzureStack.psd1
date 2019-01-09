@@ -12,7 +12,7 @@
     # RootModule = ''
 
     # Version number of this module.
-    ModuleVersion          = '2.0.0'
+    ModuleVersion          = '1.7.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -54,7 +54,7 @@
     RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.5.2'; },
         @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; },
         @{ModuleName = 'Azs.AzureBridge.Admin'; RequiredVersion = '0.2.0'; },
-        @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '1.0.0'; },
+        @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.3.0'; },
         @{ModuleName = 'Azs.Commerce.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Compute.Admin'; RequiredVersion = '0.2.1'; },
         @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.3.0'; },
