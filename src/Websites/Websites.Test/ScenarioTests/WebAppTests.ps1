@@ -1339,7 +1339,8 @@ function Test-PublishAzureWebAppFromZip
 		# Create new web app
 		$webapp = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Location $location -AppServicePlan $planName 
 		
-		$publishedApp = Publish-AzWebApp -ResourceGroupName $rgname -Name $appName -ArchivePath ".\ScenarioTests\Resources\nodejs-sample.zip"
+		$zipPath = Join-Path $ResourcesPath "nodejs-sample.zip"
+		$publishedApp = Publish-AzWebApp -ResourceGroupName $rgname -Name $appName -ArchivePath $zipPath
 
 		Assert-NotNull $publishedApp
 	}
@@ -1370,7 +1371,8 @@ function Test-PublishAzureWebAppFromWar
 		# Create new web app
 		$webapp = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Location $location -AppServicePlan $planName 
 		
-		$publishedApp = Publish-AzWebApp -ResourceGroupName $rgname -Name $appName -ArchivePath ".\ScenarioTests\Resources\HelloJava.war"
+		$warPath = Join-Path $ResourcesPath "HelloJava.war"
+		$publishedApp = Publish-AzWebApp -ResourceGroupName $rgname -Name $appName -ArchivePath $warPath
 
 		Assert-NotNull $publishedApp
 	}

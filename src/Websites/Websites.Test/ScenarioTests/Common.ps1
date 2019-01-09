@@ -12,6 +12,9 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
+$ResourcesPath = Join-Path $TestOutputRoot "ScenarioTests" "Resources"
+
 <#
 .SYNOPSIS
 Gets a website name for testing.
