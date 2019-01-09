@@ -99,14 +99,14 @@
   <UsingTask TaskName="FilesChangedTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="FilterTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="SetEnvVar" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll" >
-      <ParameterGroup>
-        <EnvName ParameterType="System.String" Required="true" />
-          <EnvValue ParameterType="System.String" Required="true" />
+    <ParameterGroup>
+      <EnvName ParameterType="System.String" Required="true" />
+      <EnvValue ParameterType="System.String" Required="true" />
     </ParameterGroup>
     <Task>
-          <Using Namespace="System" />
+      <Using Namespace="System" />
       <Code Type="Fragment" Language="cs">
-            <![CDATA[System.Environment.SetEnvironmentVariable(EnvName, EnvValue);]]>
+        <![CDATA[System.Environment.SetEnvironmentVariable(EnvName, EnvValue);]]>
       </Code>
     </Task>
   </UsingTask>
@@ -168,7 +168,7 @@
 
     <!-- Get all of the files changed in the given pull request -->
     <FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)">
-        <Output TaskParameter="FilesChanged" ItemName="FilesChanged" />
+      <Output TaskParameter="FilesChanged" ItemName="FilesChanged" />
     </FilesChangedTask>
 
     <!-- Get the list of modules changed -->
@@ -182,7 +182,7 @@
 
     <!-- Get the list of solutions to build -->
     <FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\SolutionMappings.json">
-        <Output TaskParameter="Output" ItemName="CmdletSolutionsToBuild" />
+      <Output TaskParameter="Output" ItemName="CmdletSolutionsToBuild" />
     </FilterTask>
     <Message Text="Filtering solutions to build by the following:" />
     <Message Text="%(CmdletSolutionsToBuild.Identity)" />
@@ -191,7 +191,7 @@
 
     <!--Get the list of tests to be run based on files changed from a specified PullRequestNumber. Mapping between paths and test DLLs is used to produce the list.-->
     <FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\TestMappings.json">
-        <Output TaskParameter="Output" ItemName="XUnitTests" />
+      <Output TaskParameter="Output" ItemName="XUnitTests" />
     </FilterTask>
     <Message Text="Using these test assemblies:" />
     <Message Text="%(XUnitTests.Identity)" />
@@ -219,9 +219,15 @@
     <Exec Command="dotnet --version" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <ItemGroup>
-      <ModuleCsprojFiles Include="$(LibraryRoot)src/ResourceManager/**/*.csproj" Exclude="$(LibraryRoot)src/ResourceManager/**/*.Test.Netcore.csproj" />
+      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(LibraryRoot)src/**/*.Test.csproj" />
     </ItemGroup>
-    <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFiles->'%(FullPath)', ' ')" />
+    <!-- https://stackoverflow.com/a/35477012/294804 -->
+    <ItemGroup>
+      <ModuleCsprojFilesRelative Include="@(ModuleCsprojFiles)">
+        <RelativePath>$([MSBuild]::MakeRelative($(LibraryRoot), %(ModuleCsprojFiles.FullPath)))</RelativePath>
+      </ModuleCsprojFilesRelative>
+    </ItemGroup>
+    <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFilesRelative->'%(RelativePath)', ' ')" />
     <Exec Command="dotnet sln Azure.PowerShell.sln add $(LibraryRoot)tools/Tools.Common/Tools.Common.Netcore.csproj $(LibraryRoot)tools/StaticAnalysis/StaticAnalysis.Netcore.csproj" />
     <Exec Command="dotnet publish Azure.PowerShell.sln -c $(Configuration)" />
 
@@ -274,13 +280,13 @@
     <Exec ContinueOnError="false"
           Command="$(PowerShellCoreCommandPrefix) &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;" 
           Condition="'$(CodeSign)' == 'true'"/>
-    
+
     <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
 
     <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
-    
+
     <CallTarget Targets="CodeSignBinaries" Condition="'$(CodeSign)' == 'true'" />
-	
+
     <Exec ContinueOnError="false" Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration)&quot;" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSign) == 'true'" />
 
     <Message Importance="high" Text="Running Static Analyser" />
@@ -311,7 +317,7 @@
     <Message Importance="high" Text="Running dependency analysis..." />
 
     <PropertyGroup>
-        <SkipHelpValue Condition=" '$(SkipHelp)' == 'true' ">-s</SkipHelpValue>
+      <SkipHelpValue Condition=" '$(SkipHelp)' == 'true' ">-s</SkipHelpValue>
     </PropertyGroup>
     <!-- TODO: Use '-m @(ModulesChanged)' in command when FilterBuild is fixed. -->
     <!-- <Exec Command="dotnet $(MSBuildThisFileDirectory)artifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $(MSBuildThisFileDirectory)artifacts/$(Configuration) -r $(MSBuildThisFileDirectory)artifacts/StaticAnalysis $(SkipHelpValue) -u" /> -->
@@ -373,15 +379,21 @@
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <ItemGroup>
-      <ModuleCsprojFiles Include="$(LibraryRoot)src/ResourceManager/**/*.csproj" />
+      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" />
     </ItemGroup>
-    <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFiles->'%(FullPath)', ' ')" />
+    <!-- https://stackoverflow.com/a/35477012/294804 -->
+    <ItemGroup>
+      <ModuleCsprojFilesRelative Include="@(ModuleCsprojFiles)">
+        <RelativePath>$([MSBuild]::MakeRelative($(LibraryRoot), %(ModuleCsprojFiles.FullPath)))</RelativePath>
+      </ModuleCsprojFilesRelative>
+    </ItemGroup>
+    <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFilesRelative->'%(RelativePath)', ' ')" />
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
     <Exec Command="dotnet test Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework netcoreapp2.0 --logger trx" />
 
     <ItemGroup>
-      <TestResults Include="$(LibraryRoot)src/ResourceManager/**/TestResults/*.trx" />
+      <TestResults Include="$(LibraryRoot)src/**/TestResults/*.trx" />
     </ItemGroup>
     <Copy SourceFiles="@(TestResults)" DestinationFolder="$(TestOutputDirectory)" />
 
