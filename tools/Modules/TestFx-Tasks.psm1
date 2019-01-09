@@ -186,31 +186,25 @@ In order to successfully run a test, you will need SubscriptionId, TenantId
 This cmdlet will only prompt you for Subscription and Tenant information, rest all other parameters are optional
 
 #>
-    [CmdletBinding(DefaultParameterSetName='UserIdParamSet')]
+    [CmdletBinding()]
     param(
-        [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "UserId (OrgId) you would like to use")]
-        [ValidateNotNullOrEmpty()]
-        [string]$UserId,
-
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal/ClientId you would like to use')]   
+        [Parameter(Mandatory=$true, HelpMessage='ServicePrincipal/ClientId you would like to use')]   
         [ValidateNotNullOrEmpty()]
         [string]$ServicePrincipalId,
 
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use')]
+        [Parameter(Mandatory=$true, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use')]
         [ValidateNotNullOrEmpty()]
         [string]$ServicePrincipalSecret,
 
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
-        [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
+        [Parameter(Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
         [ValidateNotNullOrEmpty()]
         [string]$SubscriptionId,
 
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='AADTenant/TenantId you would like to use')]
+        [Parameter(Mandatory=$true, HelpMessage='AADTenant/TenantId you would like to use')]
         [ValidateNotNullOrEmpty()]
         [string]$TenantId,
 
-	    [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage = "Would you like to record or playback your tests?")]
-        [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "Would you like to record or playback your tests?")]
+	    [Parameter(Mandatory=$true, HelpMessage = "Would you like to record or playback your tests?")]
         [ValidateSet("Playback", "Record", "None")]
         [string]$RecordMode='Playback',
 
@@ -231,11 +225,6 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
     )
 
     $formattedConnStr = [string]::Format("SubscriptionId={0};HttpRecorderMode={1};Environment={2}", $SubscriptionId, $RecordMode, $TargetEnvironment)
-
-    if([string]::IsNullOrEmpty($UserId) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";UserId={0}"), $UserId)
-    }
 
     if([string]::IsNullOrEmpty($TenantId) -eq $false)
     {
@@ -309,7 +298,7 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
     }
 
     Write-Host "Below connection string is ready to be set"
-    Print-ConnectionString $UserId $SubscriptionId $TenantId $ServicePrincipal $ServicePrincipalSecret $RecordMode $TargetEnvironment
+    Print-ConnectionString $SubscriptionId $TenantId $ServicePrincipal $ServicePrincipalSecret $RecordMode $TargetEnvironment
 
     #Set connection string to Environment variable
     $env:TEST_CSM_ORGID_AUTHENTICATION=$formattedConnStr
@@ -328,13 +317,6 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
 
 Function Print-ConnectionString([string]$uid, [string]$subId, [string]$aadTenant, [string]$spn, [string]$spnSecret, [string]$recordMode, [string]$targetEnvironment)
 {
-
-    if([string]::IsNullOrEmpty($uid) -eq $false)
-    {
-        Write-Host "UserId=" -ForegroundColor Green -NoNewline
-        Write-Host $uid";" -NoNewline 
-    }
-
     if([string]::IsNullOrEmpty($subId) -eq $false)
     {
         Write-Host "SubscriptionId=" -ForegroundColor Green -NoNewline
