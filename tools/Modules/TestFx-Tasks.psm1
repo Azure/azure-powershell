@@ -1,38 +1,27 @@
 ﻿Function New-TestCredential
 {
     [CmdletBinding(
-        DefaultParameterSetName='SpnParamSet', 
         SupportsShouldProcess=$true
         )]
     param(
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal/ClientId you would like to use')]   
         [ValidateNotNullOrEmpty()]
         [string]$ServicePrincipalDisplayName,
 
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use')]
-        [ValidateNotNullOrEmpty()]
-        [securestring]$ServicePrincipalSecret,
-
-        [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "UserId (OrgId) you would like to use")]
-        [ValidateNotNullOrEmpty()]
-        [string]$UserId,
-
-        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
-        [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
+        [Parameter(Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
         [ValidateNotNullOrEmpty()]
         [string]$SubscriptionId,
 
-        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage='AADTenant/TenantId you would like to use')]
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='AADTenant/TenantId you would like to use')]
+        [Parameter(Mandatory=$true, HelpMessage='AADTenant/TenantId you would like to use')]
         [ValidateNotNullOrEmpty()]
         [string]$TenantId,
 
-        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage = "Record tests, Playback tests, or neither")]
-        [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "Record tests, Playback tests, or neither")]
+        [Parameter(Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
         [ValidateSet("Playback", "Record", "None")]
         [string]$RecordMode,
+
+        [Parameter(Mandatory=$false, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use (required for existing Service Principal)')]
+        [ValidateNotNullOrEmpty()]
+        [securestring]$ServicePrincipalSecret,
 
         [Parameter(Mandatory=$false, HelpMessage="Environment you would like to run in")]
         [ValidateSet("Prod", "Dogfood", "Current", "Next", "Custom")]
@@ -81,15 +70,20 @@
     $credentials.Environment = $TargetEnvironment
 
     if ([string]::IsNullOrEmpty($ServicePrincipalDisplayName) -eq $false) {
-        $existingServicePrincipal = Get-AzureRmADServicePrincipal -SearchString $ServicePrincipalDisplayName | Where-Object {$_.DisplayName -eq $ServicePrincipalDisplayName}
+        $existingServicePrincipal = Get-AzADServicePrincipal -SearchString $ServicePrincipalDisplayName | Where-Object {$_.DisplayName -eq $ServicePrincipalDisplayName}
         if ($existingServicePrincipal -eq $null -and ($Force -or $PSCmdlet.ShouldContinue("ServicePrincipal `"" + $ServicePrincipalDisplayName + "`" does not exist, would you like to create a new ServicePrincipal with this name?", "Create ServicePrincipal?")))
         {
+            if (![string]::IsNullOrEmpty($ServicePrincipalSecret))
+            {
+                Write-Warning "Service Principal secrets are randomly generated, so provided secret value will not be used during creation."
+            }
+
             if ($TargetEnvironment -ne 'Prod')
             {
                 throw "To create a new Service Principal you must be in Prod. Please run again with `$TargetEnvironment set to 'Prod'"
             }
             $Scope = "/subscriptions/" + $SubscriptionId
-            $NewServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ServicePrincipalDisplayName -Password $ServicePrincipalSecret
+            $NewServicePrincipal = New-AzADServicePrincipal -DisplayName $ServicePrincipalDisplayName
             Write-Host "New ServicePrincipal created: " + $NewServicePrincipal.ApplicationId
     
             $NewRole = $null
@@ -98,12 +92,13 @@
             {
                 # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
                 Start-Sleep 5
-                New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $NewServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
-                $NewRole = Get-AzureRMRoleAssignment -ObjectId $NewServicePrincipal.Id -ErrorAction SilentlyContinue
+                New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $NewServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
+                $NewRole = Get-AzRoleAssignment -ObjectId $NewServicePrincipal.Id -ErrorAction SilentlyContinue
                 $Retries++;
             }
             
             $credentials.ServicePrincipal = $NewServicePrincipal.ApplicationId
+            $ServicePrincipalSecret = $NewServicePrincipal.Secret
             $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($ServicePrincipalSecret)
             $UnsecurePassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
             $credentials.ServicePrincipalSecret = $UnsecurePassword
@@ -116,10 +111,6 @@
             $UnsecurePassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
             $credentials.ServicePrincipalSecret = $UnsecurePassword
         }
-    }
-
-    if ([string]::IsNullOrEmpty($UserId) -eq $false) {
-        $credentials.UserId = $UserId
     }
 
     if ([string]::IsNullOrEmpty($TenantId) -eq $false) {
