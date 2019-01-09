@@ -34,5 +34,5 @@ function Test-BmsUnregisterContainer
 
 	Unregister-AzRecoveryServicesBackupManagementServer `
 		-VaultId $vault.ID `
-		-AzBackupManagementServer $container;
+		-AzureRmBackupManagementServer $container;
 }

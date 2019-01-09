@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountGeneratedIcn command to get the integration account generated interchange control number.
+        /// Test Get-AzIntegrationAccountGeneratedIcn command to get the integration account generated interchange control number.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountGeneratedIcn command to get the integration account generated interchange control number.
+        /// Test Get-AzIntegrationAccountGeneratedIcn command to get the integration account generated interchange control number.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Set-AzureRmIntegrationAccountGeneratedIcn command to update the integration account generated interchange control number.
+        /// Test Set-AzIntegrationAccountGeneratedIcn command to update the integration account generated interchange control number.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountGeneratedIcn command to get all the integration account generated interchange control numbers.
+        /// Test Get-AzIntegrationAccountGeneratedIcn command to get all the integration account generated interchange control numbers.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

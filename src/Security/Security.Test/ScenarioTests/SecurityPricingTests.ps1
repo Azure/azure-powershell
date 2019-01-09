@@ -16,7 +16,7 @@
 .SYNOPSIS
 Get Azure Security Center pricing settings on a subscription and its overrides
 #>
-function Get-AzSecurityPricing-SubscriptionScope
+function Get-AzureRmSecurityPricing-SubscriptionScope
 {
     $pricings = Get-AzSecurityPricing
 	Validate-Pricings $pricings
@@ -26,7 +26,7 @@ function Get-AzSecurityPricing-SubscriptionScope
 .SYNOPSIS
 Get Azure Security Center pricing settings override on a resource group
 #>
-function Get-AzSecurityPricing-ResourceGroupScope
+function Get-AzureRmSecurityPricing-ResourceGroupScope
 {
 	$rgName = Get-TestResourceGroupName
 
@@ -38,7 +38,7 @@ function Get-AzSecurityPricing-ResourceGroupScope
 .SYNOPSIS
 Get Azure Security Center pricing settings on a subscription
 #>
-function Get-AzSecurityPricing-SubscriptionLevelResource
+function Get-AzureRmSecurityPricing-SubscriptionLevelResource
 {
     $pricings = Get-AzSecurityPricing -Name "default"
 	Validate-Pricings $pricings
@@ -48,7 +48,7 @@ function Get-AzSecurityPricing-SubscriptionLevelResource
 .SYNOPSIS
 Get Azure Security Center pricing settings override on a resource group
 #>
-function Get-AzSecurityPricing-ResourceGroupLevelResource
+function Get-AzureRmSecurityPricing-ResourceGroupLevelResource
 {
 	$rgName = Get-TestResourceGroupName
 
@@ -60,7 +60,7 @@ function Get-AzSecurityPricing-ResourceGroupLevelResource
 .SYNOPSIS
 Get Azure Security Center pricing settings by a resource ID
 #>
-function Get-AzSecurityPricing-ResourceId
+function Get-AzureRmSecurityPricing-ResourceId
 {
 	$pricing = Get-AzSecurityPricing | Select -First 1
 
@@ -72,7 +72,7 @@ function Get-AzSecurityPricing-ResourceId
 .SYNOPSIS
 Set an Azure Security Center pricing setting
 #>
-function Set-AzSecurityPricing-SubscriptionLevelResource
+function Set-AzureRmSecurityPricing-SubscriptionLevelResource
 {
     Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
 }
@@ -81,7 +81,7 @@ function Set-AzSecurityPricing-SubscriptionLevelResource
 .SYNOPSIS
 Set an Azure Security Center pricing setting override
 #>
-function Set-AzSecurityPricing-ResourceGroupLevelResource
+function Set-AzureRmSecurityPricing-ResourceGroupLevelResource
 {
 	$rgName = Get-TestResourceGroupName
 

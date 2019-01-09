@@ -21,7 +21,7 @@
 .SYNOPSIS
 Test all iothub routing cmdlets
 #>
-function Test-AzIotHubRoutingLifecycle
+function Test-AzureRmIotHubRoutingLifecycle
 {
 	$Location = Get-Location "Microsoft.Devices" "IotHub" 
 	$IotHubName = getAssetName

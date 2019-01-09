@@ -2,7 +2,7 @@
 .SYNOPSIS
 Test Kubernetes stuff
 #>
-function Test-AzKubernetes
+function Test-AzureRmKubernetes
 {
     # Setup
     $resourceGroupName = Get-RandomResourceGroupName

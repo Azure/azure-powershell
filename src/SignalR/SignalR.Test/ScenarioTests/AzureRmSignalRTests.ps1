@@ -16,7 +16,7 @@
 .SYNOPSIS
 Test common SignalR cmdlets.
 #>
-function Test-AzSignalR {
+function Test-AzureRmSignalR {
     # Setup
     $resourceGroupName = Get-RandomResourceGroupName
     $signalrName = Get-RandomSignalRName
@@ -96,7 +96,7 @@ function Test-AzSignalR {
 .SYNOPSIS
 Test SignalR cmdlets using default arguments.
 #>
-function Test-AzSignalRWithDefaultArgs {
+function Test-AzureRmSignalRWithDefaultArgs {
     $resourceGroupName = Get-RandomResourceGroupName
     $signalrName = Get-RandomSignalRName
     $freeSignalRName = Get-RandomSignalRName "signalr-free-test-"

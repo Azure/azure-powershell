@@ -16,7 +16,7 @@
 .SYNOPSIS
 Test New-AzContainerGroup, Get-AzContainerGroup, Remove-AzContainerGroup
 #>
-function Test-AzContainerGroup
+function Test-AzureRmContainerGroup
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
@@ -64,7 +64,7 @@ function Test-AzContainerGroup
 .SYNOPSIS
 Test New-AzContainerGroup, Get-AzContainerGroup, Remove-AzContainerGroup
 #>
-function Test-AzContainerGroupWithIdentity
+function Test-AzureRmContainerGroupWithIdentity
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
@@ -115,7 +115,7 @@ function Test-AzContainerGroupWithIdentity
 .SYNOPSIS
 Test New-AzContainerGroup, Get-AzContainerGroup, Remove-AzContainerGroup
 #>
-function Test-AzContainerGroupWithIdentities
+function Test-AzureRmContainerGroupWithIdentities
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
@@ -172,7 +172,7 @@ function Test-AzContainerGroupWithIdentities
 .SYNOPSIS
 Test Get-AzContainerInstanceLog
 #>
-function Test-AzContainerInstanceLog
+function Test-AzureRmContainerInstanceLog
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
@@ -202,7 +202,7 @@ function Test-AzContainerInstanceLog
 .SYNOPSIS
 Test New-AzContainerGroup with Azure File volume mount.
 #>
-function Test-AzContainerGroupWithVolume
+function Test-AzureRmContainerGroupWithVolume
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
@@ -244,7 +244,7 @@ function Test-AzContainerGroupWithVolume
 .SYNOPSIS
 Test New-AzContainerGroup with Azure File volume mount.
 #>
-function Test-AzContainerGroupWithVolumeAndIdentity
+function Test-AzureRmContainerGroupWithVolumeAndIdentity
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
@@ -290,7 +290,7 @@ function Test-AzContainerGroupWithVolumeAndIdentity
 .SYNOPSIS
 Test New-AzContainerGroup with Azure File volume mount.
 #>
-function Test-AzContainerGroupWithVolumeAndIdentities
+function Test-AzureRmContainerGroupWithVolumeAndIdentities
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
@@ -341,7 +341,7 @@ function Test-AzContainerGroupWithVolumeAndIdentities
 .SYNOPSIS
 Test New-AzContainerGroup with DNS name label.
 #>
-function Test-AzContainerGroupWithDnsNameLabel
+function Test-AzureRmContainerGroupWithDnsNameLabel
 {
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName

@@ -24,7 +24,7 @@ $global:resourceType = "Microsoft.Devices/IotHubs"
 Test Get-AzIotHub for listing all iothubs in a subscription
 #>
 
-function Test-AzIotHubLifecycle
+function Test-AzureRmIotHubLifecycle
 {
 	$Location = Get-Location "Microsoft.Devices" "IotHub" 
 	$IotHubName = getAssetName 
@@ -259,7 +259,7 @@ function Test-AzIotHubLifecycle
 	Remove-AzIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName
 }
 
-function Test-AzIotHubCertificateLifecycle
+function Test-AzureRmIotHubCertificateLifecycle
 {
 	$Location = Get-Location "Microsoft.Devices" "IotHub" 
 	$IotHubName = getAssetName 

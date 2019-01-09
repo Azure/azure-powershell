@@ -16,7 +16,7 @@
 .SYNOPSIS
 Get security compliances on a subscription
 #>
-function Get-AzSecurityCompliance-SubscriptionScope
+function Get-AzureRmSecurityCompliance-SubscriptionScope
 {
     $compliances = Get-AzSecurityCompliance
 	Validate-Compliances $compliances
@@ -26,7 +26,7 @@ function Get-AzSecurityCompliance-SubscriptionScope
 .SYNOPSIS
 Get security compliance on a specific day
 #>
-function Get-AzSecurityCompliance-SubscriptionLevelResource
+function Get-AzureRmSecurityCompliance-SubscriptionLevelResource
 {
 	$compliance = Get-AzSecurityCompliance | Select -First 1
     $fetchedCompliance = Get-AzSecurityCompliance -Name $compliance.Name
@@ -37,7 +37,7 @@ function Get-AzSecurityCompliance-SubscriptionLevelResource
 .SYNOPSIS
 Get security compliance by a resource ID
 #>
-function Get-AzSecurityCompliance-ResourceId
+function Get-AzureRmSecurityCompliance-ResourceId
 {
 	$compliance = Get-AzSecurityCompliance | Select -First 1
 
