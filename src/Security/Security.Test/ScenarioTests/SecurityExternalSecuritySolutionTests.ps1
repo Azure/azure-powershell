@@ -16,7 +16,7 @@
 .SYNOPSIS
 Get external security solutions on a subscription scope
 #>
-function Get-AzExternalSecuritySolution-SubscriptionScope
+function Get-AzureRmExternalSecuritySolution-SubscriptionScope
 {
     $externalSecuritySolutions = Get-AzExternalSecuritySolution
 	Validate-ExternalSecuritySolutions $externalSecuritySolutions
@@ -26,7 +26,7 @@ function Get-AzExternalSecuritySolution-SubscriptionScope
 .SYNOPSIS
 Get external security solution
 #>
-function Get-AzExternalSecuritySolution-ResourceGroupLevelResource
+function Get-AzureRmExternalSecuritySolution-ResourceGroupLevelResource
 {
 	$externalSecuritySolutions = Get-AzExternalSecuritySolution
 	$externalSecuritySolution = $externalSecuritySolutions | Select -First 1
@@ -41,7 +41,7 @@ function Get-AzExternalSecuritySolution-ResourceGroupLevelResource
 .SYNOPSIS
 Get external security solution by a resource ID
 #>
-function Get-AzExternalSecuritySolution-ResourceId
+function Get-AzureRmExternalSecuritySolution-ResourceId
 {
 	$externalSecuritySolution = Get-AzExternalSecuritySolution | Select -First 1
 

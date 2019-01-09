@@ -16,7 +16,7 @@
 .SYNOPSIS
 Run simple query
 #>
-function Search-AzGraph-Query
+function Search-AzureRmGraph-Query
 {
 	$queryResult = Search-AzGraph "project id, tags, properties | limit 2"
 
@@ -48,7 +48,7 @@ function Search-AzGraph-Query
 .SYNOPSIS
 Run paged query
 #>
-function Search-AzGraph-PagedQuery
+function Search-AzureRmGraph-PagedQuery
 {
 	# Page size was artificially set to 2 rows
 	$queryResult = Search-AzGraph "project id" -First 3 -Skip 2
@@ -81,7 +81,7 @@ function Search-AzGraph-PagedQuery
 .SYNOPSIS
 Run query with subscriptions explicitly passed
 #>
-function Search-AzGraph-Subscriptions
+function Search-AzureRmGraph-Subscriptions
 {
 	$testSubId1 = "11111111-1111-1111-1111-111111111111"
 	$testSubId2 = "22222222-2222-2222-2222-222222222222"
@@ -108,7 +108,7 @@ function Search-AzGraph-Subscriptions
 .SYNOPSIS
 Run malformed query
 #>
-function Search-AzGraph-QueryError
+function Search-AzureRmGraph-QueryError
 {
 	$expectedErrorId = 'InvalidQuery,' + [Microsoft.Azure.Commands.ResourceGraph.Cmdlets.SearchAzureRmGraph].FullName
 	$expectedErrorDetails = '{

@@ -16,7 +16,7 @@
 .SYNOPSIS
 Get security contacts on a subscription
 #>
-function Get-AzSecurityContact-SubscriptionScope
+function Get-AzureRmSecurityContact-SubscriptionScope
 {
 	Set-AzSecurityContact -Name "default1" -Email "ascasc@microsoft.com" -Phone "123123123" -AlertAdmin -NotifyOnAlert
 
@@ -28,7 +28,7 @@ function Get-AzSecurityContact-SubscriptionScope
 .SYNOPSIS
 Get a security contact
 #>
-function Get-AzSecurityContact-SubscriptionLevelResource
+function Get-AzureRmSecurityContact-SubscriptionLevelResource
 {
 	Set-AzSecurityContact -Name "default1" -Email "ascasc@microsoft.com" -Phone "123123123" -AlertAdmin -NotifyOnAlert
 
@@ -40,7 +40,7 @@ function Get-AzSecurityContact-SubscriptionLevelResource
 .SYNOPSIS
 Get a security contact by resource ID
 #>
-function Get-AzSecurityContact-ResourceId
+function Get-AzureRmSecurityContact-ResourceId
 {
 	$contact = Set-AzSecurityContact -Name "default1" -Email "ascasc@microsoft.com" -Phone "123123123" -AlertAdmin -NotifyOnAlert
 
@@ -52,7 +52,7 @@ function Get-AzSecurityContact-ResourceId
 .SYNOPSIS
 Set a security contact on a subscription
 #>
-function Set-AzSecurityContact-SubscriptionLevelResource
+function Set-AzureRmSecurityContact-SubscriptionLevelResource
 {
     Set-AzSecurityContact -Name "default1" -Email "ascasc@microsoft.com" -Phone "123123123" -AlertAdmin -NotifyOnAlert
 }
@@ -61,7 +61,7 @@ function Set-AzSecurityContact-SubscriptionLevelResource
 .SYNOPSIS
 Set a security contact on a subscription
 #>
-function Set-AzSecurityContact-SubscriptionLevelResource-Secondary
+function Set-AzureRmSecurityContact-SubscriptionLevelResource-Secondary
 {
     Set-AzSecurityContact -Name "default2" -Email "ascasc@microsoft.com"
 }
@@ -70,7 +70,7 @@ function Set-AzSecurityContact-SubscriptionLevelResource-Secondary
 .SYNOPSIS
 Delete a security contact on a subscription
 #>
-function Remove-AzSecurityContact-SubscriptionLevelResource
+function Remove-AzureRmSecurityContact-SubscriptionLevelResource
 {
 	Set-AzSecurityContact -Name "default1" -Email "ascasc@microsoft.com" -Phone "123123123" -AlertAdmin -NotifyOnAlert
     Remove-AzSecurityContact -Name "default1"

@@ -2,7 +2,7 @@
 .SYNOPSIS
 Test DevSpaces stuff
 #>
-function Test-AzDevSpacesController
+function Test-AzureRmDevSpacesController
 {
     # Manual Setup. Create these resource maunally in the subscription
     $resourceGroupName = "rgps4504"

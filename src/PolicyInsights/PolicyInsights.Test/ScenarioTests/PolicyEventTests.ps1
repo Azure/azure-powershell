@@ -16,7 +16,7 @@
 .SYNOPSIS
 Get policy events at management group scope
 #>
-function Get-AzPolicyEvent-ManagementGroupScope
+function Get-AzureRmPolicyEvent-ManagementGroupScope
 {
 	$managementGroupName = Get-TestManagementGroupName
 	$from = Get-TestQueryIntervalStart
@@ -29,7 +29,7 @@ function Get-AzPolicyEvent-ManagementGroupScope
 .SYNOPSIS
 Get policy events at subscription scope
 #>
-function Get-AzPolicyEvent-SubscriptionScope
+function Get-AzureRmPolicyEvent-SubscriptionScope
 {
 	$from = Get-TestQueryIntervalStart
 
@@ -41,7 +41,7 @@ function Get-AzPolicyEvent-SubscriptionScope
 .SYNOPSIS
 Get policy events at resource group scope
 #>
-function Get-AzPolicyEvent-ResourceGroupScope
+function Get-AzureRmPolicyEvent-ResourceGroupScope
 {
 	$resourceGroupName = Get-TestResourceGroupName
 	$from = Get-TestQueryIntervalStart
@@ -54,7 +54,7 @@ function Get-AzPolicyEvent-ResourceGroupScope
 .SYNOPSIS
 Get policy events at resource scope
 #>
-function Get-AzPolicyEvent-ResourceScope
+function Get-AzureRmPolicyEvent-ResourceScope
 {
 	$resourceId = Get-TestResourceId
 	$from = Get-TestQueryIntervalStart
@@ -67,7 +67,7 @@ function Get-AzPolicyEvent-ResourceScope
 .SYNOPSIS
 Get policy events at policy set definition scope
 #>
-function Get-AzPolicyEvent-PolicySetDefinitionScope
+function Get-AzureRmPolicyEvent-PolicySetDefinitionScope
 {
 	$policySetDefinitionName = Get-TestPolicySetDefinitionName
 
@@ -79,7 +79,7 @@ function Get-AzPolicyEvent-PolicySetDefinitionScope
 .SYNOPSIS
 Get policy events at policy definition scope
 #>
-function Get-AzPolicyEvent-PolicyDefinitionScope
+function Get-AzureRmPolicyEvent-PolicyDefinitionScope
 {
 	$policyDefinitionName = Get-TestPolicyDefinitionName
 
@@ -91,7 +91,7 @@ function Get-AzPolicyEvent-PolicyDefinitionScope
 .SYNOPSIS
 Get policy events at subscription level policy assignment scope
 #>
-function Get-AzPolicyEvent-SubscriptionLevelPolicyAssignmentScope
+function Get-AzureRmPolicyEvent-SubscriptionLevelPolicyAssignmentScope
 {
 	$policyAssignmentName = Get-TestPolicyAssignmentName
 
@@ -103,7 +103,7 @@ function Get-AzPolicyEvent-SubscriptionLevelPolicyAssignmentScope
 .SYNOPSIS
 Get policy events at resource group level policy assignment scope
 #>
-function Get-AzPolicyEvent-ResourceGroupLevelPolicyAssignmentScope
+function Get-AzureRmPolicyEvent-ResourceGroupLevelPolicyAssignmentScope
 {
 	$resourceGroupName = Get-TestResourceGroupNameForPolicyAssignmentEvents
 	$policyAssignmentName = Get-TestPolicyAssignmentNameResourceGroupLevelEvents

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test New-AzureRmIntegrationAccountMap command to create a new integration account map.
+        /// Test New-AzIntegrationAccountMap command to create a new integration account map.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountMap command to get the integration account map.
+        /// Test Get-AzIntegrationAccountMap command to get the integration account map.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Remove-AzureRmIntegrationAccountMap command to remove the integration account map.
+        /// Test Remove-AzIntegrationAccountMap command to remove the integration account map.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }        
 
         /// <summary>
-        /// Test Set-AzureRmIntegrationAccountMap command to update the integration account map.
+        /// Test Set-AzIntegrationAccountMap command to update the integration account map.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountMap command to get all the integration account map.
+        /// Test Get-AzIntegrationAccountMap command to get all the integration account map.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

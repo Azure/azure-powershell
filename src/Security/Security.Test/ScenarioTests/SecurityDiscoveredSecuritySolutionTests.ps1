@@ -16,7 +16,7 @@
 .SYNOPSIS
 Get discovered security solutions on a subscription scope
 #>
-function Get-AzDiscoveredSecuritySolution-SubscriptionScope
+function Get-AzureRmDiscoveredSecuritySolution-SubscriptionScope
 {
     $discoveredSecuritySolutions = Get-AzDiscoveredSecuritySolution
 	Validate-DiscoveredSecuritySolutions $discoveredSecuritySolutions
@@ -26,7 +26,7 @@ function Get-AzDiscoveredSecuritySolution-SubscriptionScope
 .SYNOPSIS
 Get discovered security solution
 #>
-function Get-AzDiscoveredSecuritySolution-ResourceGroupLevelResource
+function Get-AzureRmDiscoveredSecuritySolution-ResourceGroupLevelResource
 {
 	$discoveredSecuritySolution = Get-AzDiscoveredSecuritySolution | Select -First 1
 	$rgName = Extract-ResourceGroup -ResourceId $discoveredSecuritySolution.Id
@@ -40,7 +40,7 @@ function Get-AzDiscoveredSecuritySolution-ResourceGroupLevelResource
 .SYNOPSIS
 Get discovered security solution by a resource ID
 #>
-function Get-AzDiscoveredSecuritySolution-ResourceId
+function Get-AzureRmDiscoveredSecuritySolution-ResourceId
 {
 	$discoveredSecuritySolution = Get-AzDiscoveredSecuritySolution | Select -First 1
 

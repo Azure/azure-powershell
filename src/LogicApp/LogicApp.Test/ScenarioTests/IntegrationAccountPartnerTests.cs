@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test New-AzureRmIntegrationAccountPartner command to create a new integration account partner.
+        /// Test New-AzIntegrationAccountPartner command to create a new integration account partner.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountPartner command to get the integration account partner.
+        /// Test Get-AzIntegrationAccountPartner command to get the integration account partner.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Remove-AzureRmIntegrationAccountPartner command to remove the integration account partner.
+        /// Test Remove-AzIntegrationAccountPartner command to remove the integration account partner.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }        
 
         /// <summary>
-        /// Test Set-AzureRmIntegrationAccountPartner command to update the integration account partner.
+        /// Test Set-AzIntegrationAccountPartner command to update the integration account partner.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountPartner command to get all the integration account partners.
+        /// Test Get-AzIntegrationAccountPartner command to get all the integration account partners.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

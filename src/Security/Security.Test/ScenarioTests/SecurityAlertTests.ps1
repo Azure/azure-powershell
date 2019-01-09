@@ -16,7 +16,7 @@
 .SYNOPSIS
 Get security alerts on a subscription and its resources
 #>
-function Get-AzSecurityAlert-SubscriptionScope
+function Get-AzureRmSecurityAlert-SubscriptionScope
 {
     $alerts = Get-AzSecurityAlert
 	Validate-Alerts $alerts
@@ -26,7 +26,7 @@ function Get-AzSecurityAlert-SubscriptionScope
 .SYNOPSIS
 Get security alerts on a resource group and its resources
 #>
-function Get-AzSecurityAlert-ResourceGroupScope
+function Get-AzureRmSecurityAlert-ResourceGroupScope
 {
 	$rgName = Get-TestResourceGroupName
 
@@ -38,7 +38,7 @@ function Get-AzSecurityAlert-ResourceGroupScope
 .SYNOPSIS
 Get a security alert on a resource group level
 #>
-function Get-AzSecurityAlert-ResourceGroupLevelResource
+function Get-AzureRmSecurityAlert-ResourceGroupLevelResource
 {
 	$alerts = Get-AzSecurityAlert
 
@@ -54,7 +54,7 @@ function Get-AzSecurityAlert-ResourceGroupLevelResource
 .SYNOPSIS
 Get a security alert on a subscription level
 #>
-function Get-AzSecurityAlert-SubscriptionLevelResource
+function Get-AzureRmSecurityAlert-SubscriptionLevelResource
 {
 	$alerts = Get-AzSecurityAlert
 	$alert = $alerts | where { $_.Id -notlike "*resourceGroups*" } | Select -First 1
@@ -68,7 +68,7 @@ function Get-AzSecurityAlert-SubscriptionLevelResource
 .SYNOPSIS
 Get a security alert by a resource ID
 #>
-function Get-AzSecurityAlert-ResourceId
+function Get-AzureRmSecurityAlert-ResourceId
 {
 	$alerts = Get-AzSecurityAlert
 	$alert = $alerts | Select -First 1
@@ -81,7 +81,7 @@ function Get-AzSecurityAlert-ResourceId
 .SYNOPSIS
 Change resource group security alert state
 #>
-function Set-AzSecurityAlert-ResourceGroupLevelResource
+function Set-AzureRmSecurityAlert-ResourceGroupLevelResource
 {
 	$alerts = Get-AzSecurityAlert
 
@@ -100,7 +100,7 @@ function Set-AzSecurityAlert-ResourceGroupLevelResource
 .SYNOPSIS
 Change subscription security alert state
 #>
-function Set-AzSecurityAlert-SubscriptionLevelResource
+function Set-AzureRmSecurityAlert-SubscriptionLevelResource
 {
 	$alerts = Get-AzSecurityAlert
 	$alert = $alerts | where { $_.Id -notlike "*resourceGroups*" } | Select -First 1
@@ -117,7 +117,7 @@ function Set-AzSecurityAlert-SubscriptionLevelResource
 .SYNOPSIS
 Change resource group security alert state by a resource ID
 #>
-function Set-AzSecurityAlert-ResourceId
+function Set-AzureRmSecurityAlert-ResourceId
 {
 	$alerts = Get-AzSecurityAlert
 	$alert = $alerts | Select -First 1
