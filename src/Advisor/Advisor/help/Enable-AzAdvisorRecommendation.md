@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Advisor.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Advisor.dll-Help.xml
 Module Name: Az.Advisor
 online version: https://docs.microsoft.com/en-us/powershell/module/az.advisor/enable-azadvisorrecommendation
 schema: 2.0.0
