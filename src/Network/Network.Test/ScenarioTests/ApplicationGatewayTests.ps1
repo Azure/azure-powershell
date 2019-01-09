@@ -722,6 +722,7 @@ function Test-ApplicationGatewayCRUD3
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
+	$identityName = Get-ResourceName
 	$vnetName = Get-ResourceName
 	$gwSubnetName = Get-ResourceName
 	$publicIpName = Get-ResourceName
@@ -748,6 +749,9 @@ function Test-ApplicationGatewayCRUD3
 		$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
 		$vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		$gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		# Create Managed Identity
+		$identity = New-AzureRmUserAssignedIdentity -Name $identityName -Location $location -ResourceGroup $rgname
 
 		# Create public ip
 		$publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
@@ -779,8 +783,11 @@ function Test-ApplicationGatewayCRUD3
 		# security part
 		$sslPolicy = New-AzureRmApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 
+		# appgw identity
+		$appgwIdentity = New-AzureRmApplicationGatewayIdentity -UserAssignedIdentity $identity.Id
+
 		# Create Application Gateway
-		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Zone 1,2 -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -SslPolicy $sslPolicy -TrustedRootCertificate $trustedRoot01 -AutoscaleConfiguration $autoscaleConfig
+		$appgw = New-AzureRmApplicationGateway -Identity $appgwIdentity -Name $appgwName -ResourceGroupName $rgname -Zone 1,2 -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -SslPolicy $sslPolicy -TrustedRootCertificate $trustedRoot01 -AutoscaleConfiguration $autoscaleConfig
 
 		# Get Application Gateway
 		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
@@ -810,7 +817,7 @@ function Test-ApplicationGatewayCRUD3
 		Assert-NotNull $autoscaleConfig01
 		Assert-AreEqual $autoscaleConfig01.MinCapacity 3
 
-		# Next setup preparation
+		# Next: Manual sku gateway
 
 		# remove autoscale config
 		$getgw = Remove-AzureRmApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw -Force
@@ -825,6 +832,25 @@ function Test-ApplicationGatewayCRUD3
 		Assert-AreEqual $sku01.Capacity 3
 		Assert-AreEqual $sku01.Name Standard_v2
 		Assert-AreEqual $sku01.Tier Standard_v2
+
+		# Next: Set Identity on an existing gateway without identity
+		# First, Removing identity from the gateway
+		Remove-AzureRmApplicationGatewayIdentity -ApplicationGateway $getgw01 -Force
+
+		# Set Application Gateway
+		$getgw02 = Set-AzureRmApplicationGateway -ApplicationGateway $getgw01
+		Assert-Null $(Get-AzureRmApplicationGatewayIdentity -ApplicationGateway $getgw01)
+
+		# Set identity
+		Set-AzureRmApplicationGatewayIdentity -ApplicationGateway $getgw02 -UserAssignedIdentityId $identity.Id
+
+		# Set Application Gateway
+		$getgw03 = Set-AzureRmApplicationGateway -ApplicationGateway $getgw02
+		$identity01 = Get-AzureRmApplicationGatewayIdentity -ApplicationGateway $getgw03
+		Assert-AreEqual $identity01.UserAssignedIdentities.Count 1
+		Assert-NotNull $identity01.UserAssignedIdentities.Values[0].PrincipalId
+		Assert-NotNull $identity01.UserAssignedIdentities.Values[0].ClientId
+
 
 		# Stop Application Gateway
 		$getgw1 = Stop-AzureRmApplicationGateway -ApplicationGateway $getgw01
