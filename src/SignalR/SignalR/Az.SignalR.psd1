@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.0.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -110,7 +110,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'General availability for Az.SignalR module.'
+        ReleaseNotes = '* Fix backward compatibility issue with Az.Accounts module'
 
         # Prerelease string of this module
         # Prerelease = ''

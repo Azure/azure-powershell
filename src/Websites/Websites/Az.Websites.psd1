@@ -131,7 +131,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed a date parsing bug in ''Get-AzDeletedWebApp'''
+        ReleaseNotes = '* Fixed a date parsing bug in ''Get-AzDeletedWebApp''
+* Fix backward compatibility issue with Az.Accounts module'
 
         # Prerelease string of this module
         # Prerelease = ''
