@@ -17,6 +17,7 @@ using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -93,7 +94,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
                 var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath("AzureRM.StorageSync.psd1"),
+                    _helper.RMStorageDataPlaneModule,
+                    _helper.RMStorageModule,
+                    _helper.GetRMModulePath("Az.StorageSync.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Resources.ps1");
@@ -120,10 +123,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
             var rmClient = context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
             var subClient = context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
             var storageSyncClient = context.GetServiceClient<StorageSyncManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            var storageClient = context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
             var rbacClient = context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
             var authClient = context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-
-            _helper.SetupManagementClients(rmClient, subClient, storageSyncClient, rbacClient, authClient);
+            // public StorageManagementClient StorageClient { get; private set; }
+            _helper.SetupManagementClients(rmClient, subClient, storageSyncClient, storageClient, rbacClient, authClient);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
         }
 
         [Fact(Skip = "Depends on external artefacts")]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]  
+        [Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenComputerNameDoestNotExistsItThrows()
         {
             // Prepare
