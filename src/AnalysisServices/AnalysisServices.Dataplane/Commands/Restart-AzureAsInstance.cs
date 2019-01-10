@@ -30,10 +30,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        public RestartAzureAnalysisServer()
-        {
-        }
-
         protected override IAzureContext DefaultContext
         {
             get

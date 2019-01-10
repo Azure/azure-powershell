@@ -38,10 +38,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
 
-        public ExportAzureAnalysisServerLog()
-        {
-        }
-
         protected override IAzureContext DefaultContext
         {
             get
