@@ -259,7 +259,7 @@ Type: System.String
 Parameter Sets: ByResourceId
 Aliases: Id
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -290,7 +290,7 @@ Type: System.Collections.Hashtable
 Parameter Sets: ByTagObjectParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
