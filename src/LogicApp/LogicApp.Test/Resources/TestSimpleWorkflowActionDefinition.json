@@ -1,0 +1,45 @@
+{
+    "$schema":"http://schema.management.azure.com/providers/Microsoft.Logic/schemas/2014-12-01-preview/workflowdefinition.json#",
+    "contentVersion":"1.0.0.0",
+    "parameters":{
+        "runworkflowmanually":{
+            "defaultValue":true,
+            "type":"bool"
+        },
+        "subscription":{
+            "defaultValue":"1a66ce04-b633-4a0b-b2bc-a912ec8986a6",
+            "type":"string"
+        },
+        "resourceGroup":{
+            "defaultValue":"logicapps-e2e",
+            "type":"string"
+        },
+        "authentication":{
+            "defaultValue":{
+                "type":"ActiveDirectoryOAuth",
+                "audience":"https://management.azure.com/",
+                "tenant":"72f988bf-86f1-41af-91ab-2d7cd011db47",
+                "clientId":"64011f29-3932-4168-b73d-adc835a56732",
+                "secret":"q8Wf7SwoM4iSVgaHZdghScLX8xDxMMUATWvRalclJjo="
+            },
+            "type":"object"
+        }
+    },
+    "triggers":{
+    },
+    "actions":{
+        "listWorkflows":{
+            "type":"Http",
+            "inputs":{
+                "method":"GET",
+                "uri":"someUri",
+                "authentication":"@parameters('authentication')"
+            },
+            "conditions":[
+
+            ]
+        }
+    },
+    "outputs":{
+    }
+}

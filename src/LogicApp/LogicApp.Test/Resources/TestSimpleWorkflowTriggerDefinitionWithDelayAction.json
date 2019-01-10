@@ -1,0 +1,58 @@
+{
+    "$schema": "http://schema.management.azure.com/providers/Microsoft.Logic/schemas/2014-12-01-preview/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "runworkflowmanually": {
+            "defaultValue": false,
+            "type": "bool"
+        }
+    },
+    "triggers": {
+        "httpTrigger": {
+            "type": "Http",
+            "inputs": {
+                "method": "GET",
+                "uri": "http://www.bing.com"
+            },
+            "recurrence": {
+                "frequency": "Hour",
+                "interval": 1
+            },
+            "conditions": [
+                {
+                    "expression": "@bool('true')"
+                }
+            ]
+        }
+    },
+    "actions": {
+        "http": {
+            "until": {
+                "limit": {
+                    "timeout": "PT1H"
+                },
+                "conditions": [
+                    {
+                        "expression": "@bool('false')"
+                    }
+                ]
+            },
+            "type": "Http",
+            "inputs": {
+                "method": "GET",
+                "uri": "http://www.bing.com",
+            },
+            "conditions": [
+                {
+                    "expression": "@bool('true')"
+                }
+            ]
+        }
+    },
+    "outputs": {
+        "output1": {
+            "type": "string",
+            "value": "true"
+        }
+    }
+}

@@ -9,7 +9,7 @@
     <AzTestAssemblySuffix>.Test</AzTestAssemblySuffix>
   </PropertyGroup>
 
-  <!-- CsProj -->
+  <!-- Build -->
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
     <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</AssemblyName>
@@ -24,5 +24,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineConstants>TRACE;RELEASE;NETSTANDARD</DefineConstants>
   </PropertyGroup>
+
+  <!-- Assets -->
+  <ItemGroup>
+    <None Update="SessionRecords\**\*.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="ScenarioTests\*.ps1" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 
 </Project>
