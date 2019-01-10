@@ -12,13 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Globalization;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -37,28 +35,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         [Parameter(Mandatory = false, HelpMessage = "Overwrite file if exists")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
-
-        protected override IAzureContext DefaultContext
-        {
-            get
-            {
-                // Nothing to do with Azure Resource Management context
-                return null;
-            }
-        }
-
-        protected override string DataCollectionWarning
-        {
-            get
-            {
-                return Resources.ARMDataCollectionMessage;
-            }
-        }
-
-        protected override void InitializeQosEvent()
-        {
-            // nothing to do here.
-        }
 
         public override void ExecuteCmdlet()
         {
