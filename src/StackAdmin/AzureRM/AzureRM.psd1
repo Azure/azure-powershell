@@ -51,7 +51,7 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.7.0'; },
+    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.2'; },
         @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.1.1'; },
         @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '4.0.3'; },
         @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '3.5.1'; },
@@ -118,7 +118,7 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.09
+            ReleaseNotes = '## 2019.01
             * Added simple parameter sets in New-AzureRMVM and NewAzureRMVMSS, -ImageName parameter supports specifying user images.'
 
             # External dependent modules of this module
