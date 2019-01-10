@@ -18,11 +18,14 @@ Test New-AzIntegrationAccountMap command
 #>
 function Test-CreateIntegrationAccountMap
 {
-	$xslt1FilePath = Join-Path $TestOutputRoot "\Resources\SampleXslt1Map.xsl"
+	$xslt1FilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt1Map.xsl"
+	$xslt2FilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt2Map.xsl"
+	$xslt3FilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt3Map.xsl"
+	$liquidFilePath = Join-Path $TestOutputRoot "Resources" "SampleLiquidMap.liquid"
 	$xslt1MapContent = [IO.File]::ReadAllText($xslt1FilePath)
-	$xslt2MapContent = [IO.File]::ReadAllText("$TestOutputRoot\Resources\SampleXslt2Map.xsl")	
-	$xslt3MapContent = [IO.File]::ReadAllText("$TestOutputRoot\Resources\SampleXslt3Map.xsl")	
-	$liquidMapContent = [IO.File]::ReadAllText("$TestOutputRoot\Resources\SampleLiquidMap.liquid")	
+	$xslt2MapContent = [IO.File]::ReadAllText($xslt2FilePath)
+	$xslt3MapContent = [IO.File]::ReadAllText($xslt3FilePath)
+	$liquidMapContent = [IO.File]::ReadAllText($liquidFilePath)
 	
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$integrationAccountName = "IA-" + (getAssetname)
@@ -64,7 +67,7 @@ Test Get-AzIntegrationAccountMap command
 #>
 function Test-GetIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXslt1Map.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt1Map.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
 	$resourceGroup = TestSetup-CreateResourceGroup
@@ -93,7 +96,7 @@ Test Remove-AzIntegrationAccountMap command
 #>
 function Test-RemoveIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXslt1Map.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt1Map.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
 	$resourceGroup = TestSetup-CreateResourceGroup
@@ -117,7 +120,7 @@ Test Set-AzIntegrationAccountMap command
 #>
 function Test-UpdateIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXslt1Map.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt1Map.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
 	$resourceGroup = TestSetup-CreateResourceGroup
@@ -145,7 +148,7 @@ Test Get-AzIntegrationAccountMap command : Paging test
 #>
 function Test-ListIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXslt1Map.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt1Map.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 
 	$resourceGroup = TestSetup-CreateResourceGroup

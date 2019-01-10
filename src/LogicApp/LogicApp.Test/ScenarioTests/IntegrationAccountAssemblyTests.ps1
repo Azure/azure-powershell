@@ -18,7 +18,7 @@ Test New-AzIntegrationAccountAssembly command
 #>
 function Test-CreateIntegrationAccountAssembly
 {
-	$localAssemblyFilePath = Join-Path $TestOutputRoot "\Resources\SampleAssembly.dll"
+	$localAssemblyFilePath = Join-Path $TestOutputRoot "Resources" "SampleAssembly.dll"
 	$assemblyContent = [IO.File]::ReadAllBytes($localAssemblyFilePath)
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$integrationAccountName = "IA-" + (getAssetname)
@@ -75,7 +75,7 @@ Test Get-AzIntegrationAccountAssembly command
 #>
 function Test-GetIntegrationAccountAssembly
 {
-	$localAssemblyFilePath = Join-Path $TestOutputRoot "\Resources\SampleAssembly.dll"
+	$localAssemblyFilePath = Join-Path $TestOutputRoot "Resources" "SampleAssembly.dll"
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$integrationAccountName = "IA-" + (getAssetname)
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
@@ -116,7 +116,7 @@ Test Remove-AzIntegrationAccountAssembly command
 #>
 function Test-RemoveIntegrationAccountAssembly
 {
-	$localAssemblyFilePath = Join-Path $TestOutputRoot "\Resources\SampleAssembly.dll"
+	$localAssemblyFilePath = Join-Path $TestOutputRoot "Resources" "SampleAssembly.dll"
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$integrationAccountName = "IA-" + (getAssetname)
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
@@ -146,7 +146,7 @@ Test Set-AzIntegrationAccountAssembly command
 #>
 function Test-UpdateIntegrationAccountAssembly
 {
-	$localAssemblyFilePath = Join-Path $TestOutputRoot "\Resources\SampleAssembly.dll"
+	$localAssemblyFilePath = Join-Path $TestOutputRoot "Resources" "SampleAssembly.dll"
 	$assemblyContent = [IO.File]::ReadAllBytes($localAssemblyFilePath)
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$integrationAccountName = "IA-" + (getAssetname)
