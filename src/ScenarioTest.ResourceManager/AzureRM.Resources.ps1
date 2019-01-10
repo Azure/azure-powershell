@@ -11,11 +11,10 @@
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    if($Name -eq $null) {
+    if([string]::IsNullOrEmpty($Name)) {
       $getTask = $client.ResourceGroups.ListWithHttpMessagesAsync($null, $null, [System.Threading.CancellationToken]::None)
-      $rg = $getTask.Result
-      $resourceGroup = List-ResourceGroup
-      Write-Output $resourceGroup
+      $rg = $getTask.Result.Body
+      Write-Output $rg
     } else {
       $getTask = $client.ResourceGroups.GetWithHttpMessagesAsync($Name, $null, [System.Threading.CancellationToken]::None)
       $rg = $getTask.Result
@@ -25,6 +24,35 @@
         $resourceGroup = Get-ResourceGroup $Name $Location $rg.ResourceGroup.Id
       }
       Write-Output $resourceGroup
+    }
+  }
+  END {}
+}
+
+function Get-AzureRmResource
+{
+  [CmdletBinding()]
+  param(
+    [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceType)
+  BEGIN {
+    $context = Get-Context
+    $client = Get-ResourcesClient $context
+  }
+  PROCESS {
+    $result = $client.Resources.ListWithHttpMessagesAsync().Result.Body
+    if (![string]::IsNullOrEmpty($ResourceType)) {
+      Write-Host "wrong"
+      $output = @()
+      $result | ForEach-Object {
+        if ($_.Type -eq $ResourceType) {
+          $output = $output + $_
+        }
+      }
+      Write-Output $output
+    }
+    else {
+      Write-Host "here"
+      Write-Output $result
     }
   }
   END {}
@@ -271,10 +299,5 @@ function Get-ResourcesClient
 function Get-ResourceGroup {
   param([string] $name, [string] $location, [string] $id)
   $rg = New-Object PSObject -Property @{"ResourceGroupName" = $name; "Location" = $location; "ResourceId" = $id}
-  return $rg
-}
-
-function List-ResourceGroup {
-  $rg = New-Object PSObject -Property @{"ResourceGroupName" = $name; "Location" = $location; }
   return $rg
 }
