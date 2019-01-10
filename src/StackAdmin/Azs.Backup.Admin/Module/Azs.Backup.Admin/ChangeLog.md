@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 1.0.0
+## Version 0.3.0
 * Breaking change: Backup changes to cert-based encryption mode. Support for symmetric keys is deprecated.
     * Set-AzsBackupConfiguration now accepts parameter EncryptionCertPath instead of EncryptionKey:
         Before: Set-AzsBackupConfiguration -EncryptionKey $symmetricKey

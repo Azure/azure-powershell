@@ -121,7 +121,7 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2019.MM - Version 2.0.0
+            ReleaseNotes = '## 2019.MM - Version 1.7.0
             * Supported with 1901 update
             * Azs.Backup.Admin Module
                 * Breaking change: Backup changes to cert-based encryption mode. Support for symmetric keys is deprecated.
