@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (result == null || !result.Any())
             {
                 throw new PSArgumentException(string.Format(
-                    ServiceFabricProperties.Resources.NoneNodeTypeFound,
+                    ServiceFabricProperties.Resources.NoVMSSFoundInRG,
                     this.ResourceGroupName));
             }
 
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 throw new PSInvalidOperationException(
                     string.Format(
-                        ServiceFabricProperties.Resources.CannotFindTheNodeType, 
+                        ServiceFabricProperties.Resources.CannotFindVMSS, 
                         name));
             }
 

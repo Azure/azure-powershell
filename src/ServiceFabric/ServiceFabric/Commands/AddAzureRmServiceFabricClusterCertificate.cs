@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 if (vmssPages == null || !vmssPages.Any())
                 {
                     throw new PSArgumentException(string.Format(
-                        ServiceFabricProperties.Resources.NoneNodeTypeFound,
+                        ServiceFabricProperties.Resources.NoVMSSFoundInRG,
                         this.ResourceGroupName));
                 }
 
