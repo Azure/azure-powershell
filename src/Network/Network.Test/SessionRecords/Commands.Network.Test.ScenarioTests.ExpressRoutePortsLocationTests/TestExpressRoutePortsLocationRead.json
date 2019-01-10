@@ -1,136 +1,68 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/ExpressRoutePortsLocations?api-version=2018-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9FeHByZXNzUm91dGVQb3J0c0xvY2F0aW9ucz9hcGktdmVyc2lvbj0yMDE4LTEwLTAx",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/ExpressRoutePortsLocations?api-version=2018-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9FeHByZXNzUm91dGVQb3J0c0xvY2F0aW9ucz9hcGktdmVyc2lvbj0yMDE4LTExLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0346f339-c9c8-473c-b296-e6ab146d5d2b"
+          "eac6a62a-d4ed-42ca-9c4e-6cd9e76041ad"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3190.0",
+          "FxVersion/4.6.27019.06",
           "OSName/Windows",
-          "OSVersion/10.0.17763.0",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.7.0.0"
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.8.0.0"
         ]
       },
       "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "1457728b-d355-4988-8e8d-8de9a5e2aa94"
-        ],
-        "x-ms-correlation-request-id": [
-          "58dadb1d-baff-4652-993d-4a3d1d6c1133"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
+        "Pragma": [
+          "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "15291c02-2235-43f7-b2a0-11e9fa38f2ad"
+        ],
+        "x-ms-correlation-request-id": [
+          "15291c02-2235-43f7-b2a0-11e9fa38f2ad"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20181205T072337Z:58dadb1d-baff-4652-993d-4a3d1d6c1133"
+          "WESTEUROPE:20190107T175843Z:15291c02-2235-43f7-b2a0-11e9fa38f2ad"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 05 Dec 2018 07:23:37 GMT"
-        ],
-        "Content-Length": [
-          "3360"
+          "Mon, 07 Jan 2019 17:58:42 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"Cheyenne-ERDirect\",\r\n      \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/expressRoutePortsLocations/Cheyenne-ERDirect\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"N/A\",\r\n        \"contact\": \"N/A\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-Ashburn-DC2\",\r\n      \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Ashburn-DC2\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"21715 Filigree Court, DC2, Building F, Ashburn, VA 20147\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-Chicago-CH1\",\r\n      \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Chicago-CH1\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"350 East Cermak Road, 5th Floor Suite F, Chicago, IL 60616\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-Dallas-DA3\",\r\n      \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Dallas-DA3\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"1950 N. Stemmons Freeway, Suite 1039A, DA3, Dallas, TX 75207\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-New-York-NY5\",\r\n      \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-New-York-NY5\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"111 8th Avenue, New York, NY 10011\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-San-Jose-SV1\",\r\n      \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-San-Jose-SV1\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"11 Great Oaks Blvd, SV1, San Jose, CA 95119\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-Seattle-SE2\",\r\n      \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Seattle-SE2\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"2001 Sixth Ave., Suite 350, SE2, Seattle, WA 98121\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/ExpressRoutePortsLocations/Cheyenne-ERDirect?api-version=2018-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9FeHByZXNzUm91dGVQb3J0c0xvY2F0aW9ucy9DaGV5ZW5uZS1FUkRpcmVjdD9hcGktdmVyc2lvbj0yMDE4LTEwLTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "31d743f1-9c79-4074-9c69-192e425be7a0"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3190.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17763.0",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.7.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "7e6c1c02-81bd-4431-b62f-67f28f17eac6"
-        ],
-        "x-ms-correlation-request-id": [
-          "609e1d77-ac33-4c1b-b6dd-24739ef617da"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20181205T072341Z:609e1d77-ac33-4c1b-b6dd-24739ef617da"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Wed, 05 Dec 2018 07:23:40 GMT"
         ],
         "Content-Length": [
-          "458"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
+          "156"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"Cheyenne-ERDirect\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/expressRoutePortsLocations/Cheyenne-ERDirect\",\r\n  \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"address\": \"N/A\",\r\n    \"contact\": \"N/A\",\r\n    \"availableBandwidths\": [\r\n      {\r\n        \"offerName\": \"100 Gbps\",\r\n        \"valueInGbps\": 100\r\n      }\r\n    ]\r\n  }\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidResourceType\",\r\n    \"message\": \"The resource type could not be found in the namespace 'Microsoft.Network' for api version '2018-11-01'.\"\r\n  }\r\n}",
+      "StatusCode": 404
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "18b0dc06-a2b8-4c0f-95af-550319fa5eac"
+    "SubscriptionId": "947d47b4-7883-4bb9-9d85-c5e8e2f572ce"
   }
 }
