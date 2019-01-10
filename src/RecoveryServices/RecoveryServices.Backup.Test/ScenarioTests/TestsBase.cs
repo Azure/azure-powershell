@@ -29,7 +29,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.RecoveryServices;
-using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
@@ -140,10 +140,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                     "ScenarioTests\\" + testFolderName + "\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath("AzureRM.RecoveryServices.psd1"),
-#if !NETSTANDARD
-                    _helper.GetRMModulePath("AzureRM.RecoveryServices.Backup.psd1"),
-                    _helper.RMStorageDataPlaneModule,
-#endif
                     _helper.GetRMModulePath("AzureRM.Compute.psd1"),
                     _helper.GetRMModulePath("AzureRM.Network.psd1"),
                     "AzureRM.Storage.ps1",

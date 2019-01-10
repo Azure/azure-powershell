@@ -87,9 +87,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
                 var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-#if !NETSTANDARD
-                    _helper.RMStorageDataPlaneModule,
-#endif
                     _helper.RMStorageModule,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",

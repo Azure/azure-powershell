@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <PsModuleName>Management.Storage</PsModuleName>
-    <IncludeManagementStorage>false</IncludeManagementStorage>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
