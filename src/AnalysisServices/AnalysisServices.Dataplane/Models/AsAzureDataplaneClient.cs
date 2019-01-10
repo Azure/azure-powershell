@@ -22,11 +22,9 @@ using Microsoft.Rest;
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
     /// <summary>
-    /// Contains properties and logic for <see cref="AsAzureDataplaneClient"/>.
-    /// All permutations of CallGetAsync, and CallPostAsync are in the partial class in order to make this partial class more readable.
+    /// Provides methods for sending HTTP requests and receiving HTTP responses from a resource identified by a URI.
     /// </summary>
-    /// <remarks>Most modifications will likely be in this part of the class.</remarks>
-    public partial class AsAzureDataplaneClient : ServiceClient<AsAzureDataplaneClient>, IAsAzureHttpClient
+    public class AsAzureDataplaneClient : ServiceClient<AsAzureDataplaneClient>, IAsAzureHttpClient
     {
         /// <summary>
         /// The base Uri of the service.
@@ -43,7 +41,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         // This may cause problems, but is necessary for mulitple inheritance.
         public new HttpClient HttpClient { get; set; }
 
-        public AsAzureDataplaneClient(Uri baseUri, ServiceClientCredentials credentials, Func<HttpClient> httpClientProvider, params DelegatingHandler[] handlers) : base(handlers)
+        public AsAzureDataplaneClient(Uri baseUri, ServiceClientCredentials credentials, Func<HttpClient> httpClientProvider, params DelegatingHandler[] handlers)
+            : base(handlers)
         {
             this.BaseUri = baseUri ?? throw new ArgumentNullException(nameof(baseUri));
             this.Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
@@ -52,7 +51,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             this.resetHttpClient();
         }
 
-        public AsAzureDataplaneClient(Uri baseUri, ServiceClientCredentials credentials, Func<HttpClient> httpClientProvider, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
+        public AsAzureDataplaneClient(Uri baseUri, ServiceClientCredentials credentials, Func<HttpClient> httpClientProvider, HttpClientHandler rootHandler, params DelegatingHandler[] handlers)
+            : base(rootHandler, handlers)
         {
             this.BaseUri = baseUri ?? throw new ArgumentNullException(nameof(baseUri));
             this.Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             this.HttpClient = this.HttpClientProvider();
         }
 
-        #region GetMethodAsyncOverloads
+        #region CallHttpMethodAsyncOverloads
 
         /// <summary>
         /// Calls SendRequestAsync() for a GET using a blank correlationId.
@@ -174,9 +174,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             HttpContent content = null,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            // Construct URL
-            ////List<string> queryParameters = new List<string>();
-
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = new HttpRequestMessage()
             {
@@ -187,21 +184,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 
             // Set Headers
             AddHeader(httpRequest.Headers, "x-ms-client-request-id", correlationId.ToString());
-
-            // TODO: Where is this flag located?
-            ////if (this.Client.AcceptLanguage != null)
-            ////{
-            ////    AddHeader(httpRequest.Headers, "accept-language", this.Client.AcceptLanguage);
-            ////}
-
-            // TODO: Where are the custom headers coming from?
-            ////if (customHeaders != null)
-            ////{
-            ////    foreach (var header in customHeaders)
-            ////    {
-            ////        AddHeader(httpRequest.Headers, header.Key, header.Value);
-            ////    }
-            ////}
 
             // Set Credentials
             if (Credentials != null)
