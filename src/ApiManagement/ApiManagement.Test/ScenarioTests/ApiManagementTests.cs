@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -136,9 +136,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + GetType().Name + ".ps1",
                     _helper.RMProfileModule,
-#if !NETSTANDARD
-                    _helper.RMStorageDataPlaneModule,
-#endif
                     _helper.GetRMModulePath("AzureRM.ApiManagement.psd1"),
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");

@@ -52,7 +52,6 @@
  </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Condition="'$(IncludeManagementStorage)' != 'false'" Include="Microsoft.Azure.Management.Storage" Version="8.1.1-preview" />
     <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="3.19.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
   </ItemGroup>

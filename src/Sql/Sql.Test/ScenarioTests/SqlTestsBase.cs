@@ -24,7 +24,6 @@ using System.Diagnostics;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
 using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
-using PublicStorage = Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit.Abstractions;
@@ -108,11 +107,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         protected static CommonStorage.StorageManagementClient GetStorageManagementClient(MockContext context)
         {
             return context.GetServiceClient<CommonStorage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        protected static PublicStorage.StorageManagementClient GetPublicStorageManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<PublicStorage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
     }

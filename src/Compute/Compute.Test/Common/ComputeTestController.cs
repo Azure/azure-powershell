@@ -24,10 +24,6 @@ using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.KeyVault;
-#if !NETSTANDARD
-using Microsoft.Azure.Test;
-using TestBase = Microsoft.Azure.Test.TestBase;
-#endif
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using NetworkManagementClientInternal = Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient;
@@ -36,7 +32,6 @@ using System.Reflection;
 using System.Runtime.Versioning;
 using Microsoft.Azure.Management.Internal.Resources;
 using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
-using PublicStorage = Microsoft.Azure.Management.Storage;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
@@ -45,8 +40,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         private readonly EnvironmentSetupHelper _helper;
 
         public CommonStorage.StorageManagementClient StorageClient { get; private set; }
-
-        public PublicStorage.StorageManagementClient PublicStorageClient { get; private set; }
 
         public ComputeManagementClient ComputeManagementClient { get; private set; }
 
@@ -129,9 +122,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                     "ScenarioTests\\ComputeTestCommon.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-#if !NETSTANDARD
-                    _helper.RMStorageDataPlaneModule,
-#endif
                     _helper.GetRMModulePath("AzureRM.Compute.psd1"),
                     _helper.GetRMModulePath("AzureRM.Network.psd1"),
                     _helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
@@ -161,7 +151,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             NetworkManagementClientInternal = GetNetworkManagementClientInternal(context);
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             ResourceManagementClient = GetResourceManagementClient(context);
-            PublicStorageClient = GetPublicStorageManagementClient(context); 
 
             _helper.SetupSomeOfManagementClients(
                 StorageClient,
@@ -169,8 +158,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 NetworkManagementClient,
                 NetworkManagementClientInternal,
                 KeyVaultManagementClient,
-                ResourceManagementClient,
-                PublicStorageClient);
+                ResourceManagementClient);
         }
 
         private static ResourceManagementClient GetResourceManagementClient(MockContext context)
@@ -181,11 +169,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         private static CommonStorage.StorageManagementClient GetStorageManagementClient(MockContext context)
         {
             return context.GetServiceClient<CommonStorage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private static PublicStorage.StorageManagementClient GetPublicStorageManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<PublicStorage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static KeyVaultManagementClient GetKeyVaultManagementClient(MockContext context)
