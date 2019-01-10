@@ -45,7 +45,7 @@ function New-AzureRmStorageAccount
 		}
 		else
 		{
-		  $Type = Parse-Type $typeString $version.Major
+		  $Type = Parse-Type $typeString
 		}
 
 		$createParms.Sku = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku $Type
@@ -129,7 +129,7 @@ function Get-Context
 
 function Parse-Type
 {
-  param([string] $type, [int] $majorVersion)
+  param([string] $type)
   $type = $type.Replace("_", "")
   $returnSkuName = [System.Enum]::Parse([Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName], $type)
   return $returnSkuName;
