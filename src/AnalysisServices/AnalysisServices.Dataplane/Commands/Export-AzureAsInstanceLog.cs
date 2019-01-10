@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
             var logfileEndpoint = string.Format(AsAzureEndpoints.LogfileEndpointPathFormat, ServerName);
 
-            AsAzureDataplaneClient.resetHttpClient();
+            AsAzureDataplaneClient.ResetHttpClient();
             using (var message = AsAzureDataplaneClient.CallGetAsync(logfileEndpoint).ConfigureAwait(false).GetAwaiter().GetResult())
             {
                 message.EnsureSuccessStatusCode();

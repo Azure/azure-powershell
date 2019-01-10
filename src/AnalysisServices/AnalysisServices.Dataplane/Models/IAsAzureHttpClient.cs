@@ -20,16 +20,16 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
     public interface IAsAzureHttpClient
     {
-        HttpClient HttpClient { get; set; }
+        Task<HttpResponseMessage> CallGetAsync(string requestURL);
 
-        Task<HttpResponseMessage> CallPostAsync(Uri baseURI, string requestURL, string accessToken, HttpContent content = null);
+        Task<HttpResponseMessage> CallGetAsync(Uri baseUri, string requestURL, Guid correlationId);
 
-        Task<HttpResponseMessage> CallPostAsync(Uri baseURI, string requestURL, string accessToken, Guid correlationId, HttpContent content = null);
+        Task<HttpResponseMessage> CallPostAsync(string requestURL, HttpContent content = null);
 
-        Task<HttpResponseMessage> CallGetAsync(Uri baseURI, string requestURL, string accessToken);
+        Task<HttpResponseMessage> CallPostAsync(Uri baseURI, string requestURL, HttpContent content = null);
 
-        Task<HttpResponseMessage> CallGetAsync(Uri baseURI, string requestURL, string accessToken, Guid correlationId);
+        Task<HttpResponseMessage> CallPostAsync(Uri baseURI, string requestURL, Guid correlationId, HttpContent content = null);
 
-        void resetHttpClient();
+        void ResetHttpClient();
     }
 }

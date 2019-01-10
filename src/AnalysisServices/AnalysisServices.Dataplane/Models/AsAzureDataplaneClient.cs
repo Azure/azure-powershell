@@ -38,9 +38,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 
         private Func<HttpClient> HttpClientProvider { get; set; }
 
-        // This may cause problems, but is necessary for mulitple inheritance.
-        public new HttpClient HttpClient { get; set; }
-
         public AsAzureDataplaneClient(Uri baseUri, ServiceClientCredentials credentials, Func<HttpClient> httpClientProvider, params DelegatingHandler[] handlers)
             : base(handlers)
         {
@@ -48,7 +45,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             this.Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
             this.HttpClientProvider = httpClientProvider ?? throw new ArgumentNullException(nameof(httpClientProvider));
             this.Credentials.InitializeServiceClient(this);
-            this.resetHttpClient();
+            this.ResetHttpClient();
         }
 
         public AsAzureDataplaneClient(Uri baseUri, ServiceClientCredentials credentials, Func<HttpClient> httpClientProvider, HttpClientHandler rootHandler, params DelegatingHandler[] handlers)
@@ -58,10 +55,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             this.Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
             this.HttpClientProvider = httpClientProvider ?? throw new ArgumentNullException(nameof(httpClientProvider));
             this.Credentials.InitializeServiceClient(this);
-            this.resetHttpClient();
+            this.ResetHttpClient();
         }
 
-        public void resetHttpClient()
+        public void ResetHttpClient()
         {
             this.HttpClient = this.HttpClientProvider();
         }
@@ -69,26 +66,13 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         #region CallHttpMethodAsyncOverloads
 
         /// <summary>
-        /// Calls SendRequestAsync() for a GET using a blank correlationId.
-        /// </summary>
-        /// <param name="baseUri">The base Uri to call.</param>
-        /// <param name="requestUrl">The request Url.</param>
-        /// <param name="accessToken">The access token (will be discarded).</param>
-        /// <returns>The http response message.</returns>
-        public async Task<HttpResponseMessage> CallGetAsync(Uri baseUri, string requestUrl, string accessToken)
-        {
-            return await CallGetAsync(baseUri: baseUri, requestUrl: requestUrl, accessToken: accessToken, correlationId: new Guid());
-        }
-
-        /// <summary>
         /// Calls SendRequestAsync() for a GET.
         /// </summary>
         /// <param name="baseUri">The base Uri to call.</param>
         /// <param name="requestUrl">The request Url.</param>
-        /// <param name="accessToken">The access token (will be discarded).</param>
         /// <param name="correlationId">The CorrelationId</param>
         /// <returns>The http response message.</returns>
-        public async Task<HttpResponseMessage> CallGetAsync(Uri baseUri, string requestUrl, string accessToken = null, Guid correlationId = new Guid())
+        public async Task<HttpResponseMessage> CallGetAsync(Uri baseUri, string requestUrl, Guid correlationId = new Guid())
         {
             return await SendRequestAsync(HttpMethod.Get, baseUri: baseUri, requestUrl: requestUrl, correlationId: correlationId);
         }
@@ -100,31 +84,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         /// <returns>The http response message.</returns>
         public async Task<HttpResponseMessage> CallGetAsync(string requestUrl)
         {
-            return await CallGetAsync(requestUrl, new Guid());
-        }
-
-        /// <summary>
-        /// Calls SendRequestAsync() for a GET using the default BaseUri.
-        /// </summary>
-        /// <param name="requestUrl">The Request Url.</param>
-        /// <param name="correlationId">The CorrelationId</param>
-        /// <returns>The http response message.</returns>
-        public async Task<HttpResponseMessage> CallGetAsync(string requestUrl, Guid correlationId)
-        {
-            return await SendRequestAsync(HttpMethod.Get, BaseUri, requestUrl, correlationId);
-        }
-
-        /// <summary>
-        /// Calls SendRequestAsync() for a POST using a blank correlationId.
-        /// </summary>
-        /// <param name="baseUri">The base Uri to call.</param>
-        /// <param name="requestUrl">The request Url.</param>
-        /// <param name="accessToken">The access token (will be discarded).</param>
-        /// <param name="content">The content to post (optional).</param>
-        /// <returns>The http response message.</returns>
-        public async Task<HttpResponseMessage> CallPostAsync(Uri baseUri, string requestUrl, string accessToken, HttpContent content = null)
-        {
-            return await CallPostAsync(baseUri: baseUri, requestUrl: requestUrl, accessToken: accessToken, correlationId: new Guid(), content: content);
+            return await CallGetAsync(BaseUri, requestUrl, new Guid());
         }
 
         /// <summary>
@@ -132,13 +92,24 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         /// </summary>
         /// <param name="baseUri">The base Uri to call.</param>
         /// <param name="requestUrl">The request Url.</param>
-        /// <param name="accessToken">The access token (will be discarded).</param>
         /// <param name="correlationId">The CorrelationId</param>
         /// <param name="content">The content to post (optional).</param>
         /// <returns>The http response message.</returns>
-        public async Task<HttpResponseMessage> CallPostAsync(Uri baseUri, string requestUrl, string accessToken = null, Guid correlationId = new Guid(), HttpContent content = null)
+        public async Task<HttpResponseMessage> CallPostAsync(Uri baseUri, string requestUrl, Guid correlationId, HttpContent content = null)
         {
-            return await SendRequestAsync(HttpMethod.Post, baseUri: baseUri, requestUrl: requestUrl, correlationId: correlationId, content: content);
+            return await SendRequestAsync(HttpMethod.Post, baseUri, requestUrl, correlationId, content);
+        }
+
+        /// <summary>
+        /// Calls SendRequestAsync() for a POST using a blank correlationId.
+        /// </summary>
+        /// <param name="baseUri">The base Uri to call.</param>
+        /// <param name="requestUrl">The request Url.</param>
+        /// <param name="content">The content to post (optional).</param>
+        /// <returns>The http response message.</returns>
+        public async Task<HttpResponseMessage> CallPostAsync(Uri baseUri, string requestUrl, HttpContent content = null)
+        {
+            return await CallPostAsync(baseUri, requestUrl, new Guid(), content);
         }
 
         /// <summary>
@@ -149,19 +120,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         /// <returns>The http response message.</returns>
         public async Task<HttpResponseMessage> CallPostAsync(string requestUrl, HttpContent content = null)
         {
-            return await CallPostAsync(requestUrl, new Guid(), content);
-        }
-
-        /// <summary>
-        /// Calls SendRequestAsync() for a POST using the default BaseUri.
-        /// </summary>
-        /// <param name="requestUrl">The Request Url.</param>
-        /// <param name="correlationId">The CorrelationId</param>
-        /// <param name="content">The content to post (optional).</param>
-        /// <returns>The http response message.</returns>
-        public async Task<HttpResponseMessage> CallPostAsync(string requestUrl, Guid correlationId, HttpContent content = null)
-        {
-            return await SendRequestAsync(HttpMethod.Post, BaseUri, requestUrl, correlationId, content);
+            return await CallPostAsync(BaseUri, requestUrl, content);
         }
 
         #endregion
