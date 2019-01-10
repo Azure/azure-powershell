@@ -947,7 +947,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                                 extSetting["certificate"]["commonNames"] == null))
                             {
                                 throw new PSArgumentException(
-                                    ServiceFabricProperties.Resources.InvalidTemplateFile);
+                                    ServiceFabricProperties.Resources.InvalidSFExtensionInTemplate);
                             }
 
                             if (!customize)

@@ -150,6 +150,9 @@
   <data name="CannotFindVaultFromSecretId" xml:space="preserve">
     <value>Cannot find key vault '{0}' from secret id '{1}'.</value>
   </data>
+  <data name="CannotFindVMSS" xml:space="preserve">
+    <value>Cannot find Virtual Machine Scale Sate with name {0}.</value>
+  </data>
   <data name="CannotParseReliabilityLevel" xml:space="preserve">
     <value>Cannot parse reliability level {0}.</value>
   </data>
@@ -243,6 +246,9 @@
   <data name="InvalidPassword" xml:space="preserve">
     <value>The supplied password must be between 12-123 characters long and must satisfy at least 3 of the password complexity requirements from the following: \r\n1) Contains an uppercase character\r\n2) Contains a lowercase character\r\n3) Contains a numeric digit\r\n4) Contains a special character.</value>
   </data>
+  <data name="InvalidSFExtensionInTemplate" xml:space="preserve">
+    <value>The Service Fabric Extension is not valid in ARM Template. Please make sure it contains durabilityLevel definition and certificate section with either thumbprint or commonNames definition. See this template sample for reference: https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-nsg-cluster-65-node-3-nodetype/azuredeploy.json</value>
+  </data>
   <data name="InvalidTemplateFile" xml:space="preserve">
     <value>Invalid template file.</value>
   </data>
@@ -267,11 +273,14 @@
   <data name="NoCertificateOperationReturned" xml:space="preserve">
     <value>No certificateOperation returned when creating self signed certificate in Azure key vault.</value>
   </data>
+  <data name="NodeTypesNotDefinedInCluster" xml:space="preserve">
+    <value>Cluster model has no definition of NodeTypes.</value>
+  </data>
   <data name="NoneCertificateFound" xml:space="preserve">
     <value>Did not find any certificate in the cluster.</value>
   </data>
-  <data name="NoneNodeTypeFound" xml:space="preserve">
-    <value>Did not find any node type in resource group {0}.</value>
+  <data name="NoVMSSFoundInRG" xml:space="preserve">
+    <value>Did not find any Virtual Machine Scale Set in resource group {0}.</value>
   </data>
   <data name="OnlyOneClusterCertificate" xml:space="preserve">
     <value>There is only one certificate in the cluster, which cannot be removed.</value>

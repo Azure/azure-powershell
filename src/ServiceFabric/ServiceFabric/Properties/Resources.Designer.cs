@@ -160,6 +160,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot find Virtual Machine Scale Sate with name {0}..
+        /// </summary>
+        internal static string CannotFindVMSS {
+            get {
+                return ResourceManager.GetString("CannotFindVMSS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot parse reliability level {0}..
         /// </summary>
         internal static string CannotParseReliabilityLevel {
@@ -439,6 +448,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Service Fabric Extension is not valid in ARM Template. Please make sure it contains durabilityLevel definition and certificate section with either thumbprint or commonNames definition. See this template sample for reference: https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-nsg-cluster-65-node-3-nodetype/azuredeploy.json.
+        /// </summary>
+        internal static string InvalidSFExtensionInTemplate {
+            get {
+                return ResourceManager.GetString("InvalidSFExtensionInTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid template file..
         /// </summary>
         internal static string InvalidTemplateFile {
@@ -511,6 +529,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cluster model has no definition of NodeTypes..
+        /// </summary>
+        internal static string NodeTypesNotDefinedInCluster {
+            get {
+                return ResourceManager.GetString("NodeTypesNotDefinedInCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Did not find any certificate in the cluster..
         /// </summary>
         internal static string NoneCertificateFound {
@@ -520,11 +547,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Did not find any node type in resource group {0}..
+        ///   Looks up a localized string similar to Did not find any Virtual Machine Scale Set in resource group {0}..
         /// </summary>
-        internal static string NoneNodeTypeFound {
+        internal static string NoVMSSFoundInRG {
             get {
-                return ResourceManager.GetString("NoneNodeTypeFound", resourceCulture);
+                return ResourceManager.GetString("NoVMSSFoundInRG", resourceCulture);
             }
         }
         
