@@ -12,34 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class LogAnalyticTests
+    public class LogAnalyticTests : ComputeTestRunner
     {
-        XunitTracingInterceptor _logger;
-
         public LogAnalyticTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExportLogAnalyticThrottledRequestsNegative()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-ExportLogAnalyticThrottledRequestsNegative");
+            TestRunner.RunTestScript("Test-ExportLogAnalyticThrottledRequestsNegative");
+
         }
 
 		[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExportLogAnalyticRequestRateByIntervalNegative()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-ExportLogAnalyticRequestRateByIntervalNegative");
+            TestRunner.RunTestScript("Test-ExportLogAnalyticRequestRateByIntervalNegative");
         }
 
         [Fact(Skip = "BUG: LogAnalytics does not work.")]
@@ -47,7 +44,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestExportLogAnalytics()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-ExportLogAnalytics");
+            TestRunner.RunTestScript("Test-ExportLogAnalytics");
         }
     }
 }

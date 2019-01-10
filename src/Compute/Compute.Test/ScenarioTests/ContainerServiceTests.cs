@@ -12,34 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public partial class ContainerServiceTests
+    public class ContainerServiceTests : ComputeTestRunner
     {
-        XunitTracingInterceptor _logger;
-
         public ContainerServiceTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestContainerService()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-ContainerService");
+            TestRunner.RunTestScript("Test-ContainerService");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestContainerServiceUpdate()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-ContainerServiceUpdate");
+            TestRunner.RunTestScript("Test-ContainerServiceUpdate");
         }
     }
 }

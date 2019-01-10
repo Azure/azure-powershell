@@ -12,181 +12,177 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public partial class VirtualMachineTests
+    public partial class VirtualMachineTests : ComputeTestRunner
     {
-        XunitTracingInterceptor _logger;
-
         public VirtualMachineTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, @"Test-VirtualMachine $null");
+            TestRunner.RunTestScript("Test-VirtualMachine $null");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine_Managed()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, @"Test-VirtualMachine $null $true");
+            TestRunner.RunTestScript("Test-VirtualMachine $null $true");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePiping()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachinePiping");
+            TestRunner.RunTestScript("Test-VirtualMachinePiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineUpdateWithoutNic()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineUpdateWithoutNic");
+            TestRunner.RunTestScript("Test-VirtualMachineUpdateWithoutNic");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinuxVirtualMachine()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-LinuxVirtualMachine");
+            TestRunner.RunTestScript("Test-LinuxVirtualMachine");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithVMAgentAutoUpdate()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineWithVMAgentAutoUpdate");
+            TestRunner.RunTestScript("Test-VirtualMachineWithVMAgentAutoUpdate");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineImageList()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineImageList");
+            TestRunner.RunTestScript("Test-VirtualMachineImageList");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineList()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineList");
+            TestRunner.RunTestScript("Test-VirtualMachineList");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineSizeAndUsage()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineSizeAndUsage");
+            TestRunner.RunTestScript("Test-VirtualMachineSizeAndUsage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCapture()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineCapture");
+            TestRunner.RunTestScript("Test-VirtualMachineCapture");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCaptureNegative()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineCaptureNegative");
+            TestRunner.RunTestScript("Test-VirtualMachineCaptureNegative");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineDataDisk()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineDataDisk");
+            TestRunner.RunTestScript("Test-VirtualMachineDataDisk");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineDataDiskNegative()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineDataDiskNegative");
+            TestRunner.RunTestScript("Test-VirtualMachineDataDiskNegative");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePIRv2()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachinePIRv2");
+            TestRunner.RunTestScript("Test-VirtualMachinePIRv2");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePlan()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachinePlan");
+            TestRunner.RunTestScript("Test-VirtualMachinePlan");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePlan2()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachinePlan2");
+            TestRunner.RunTestScript("Test-VirtualMachinePlan2");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineTags()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineTags");
+            TestRunner.RunTestScript("Test-VirtualMachineTags");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMImageCmdletOutputFormat()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VMImageCmdletOutputFormat");
+            TestRunner.RunTestScript("Test-VMImageCmdletOutputFormat");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVMSizeFromAllLocations()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-GetVMSizeFromAllLocations");
+            TestRunner.RunTestScript("Test-GetVMSizeFromAllLocations");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineListWithPaging()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineListWithPaging");
+            TestRunner.RunTestScript("Test-VirtualMachineListWithPaging");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithDifferentStorageResource()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineWithDifferentStorageResource");
+            TestRunner.RunTestScript("Test-VirtualMachineWithDifferentStorageResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithPremiumStorageAccount()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineWithPremiumStorageAccount");
+            TestRunner.RunTestScript("Test-VirtualMachineWithPremiumStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithEmptyAuc()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineWithEmptyAuc");
+            TestRunner.RunTestScript("Test-VirtualMachineWithEmptyAuc");
         }
 
 #if NETSTANDARD
@@ -198,63 +194,63 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithBYOL()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineWithBYOL");
+            TestRunner.RunTestScript("Test-VirtualMachineWithBYOL");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineRedeploy()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineRedeploy");
+            TestRunner.RunTestScript("Test-VirtualMachineRedeploy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineGetStatus()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineGetStatus");
+            TestRunner.RunTestScript("Test-VirtualMachineGetStatus");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineManagedDiskConversion()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineManagedDiskConversion");
+            TestRunner.RunTestScript("Test-VirtualMachineManagedDiskConversion");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePerformanceMaintenance()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachinePerformanceMaintenance");
+            TestRunner.RunTestScript("Test-VirtualMachinePerformanceMaintenance");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineIdentity()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineIdentity");
+            TestRunner.RunTestScript("Test-VirtualMachineIdentity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineIdentityUpdate()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineIdentityUpdate");
+            TestRunner.RunTestScript("Test-VirtualMachineIdentityUpdate");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWriteAcceleratorUpdate()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineWriteAcceleratorUpdate");
+            TestRunner.RunTestScript("Test-VirtualMachineWriteAcceleratorUpdate");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineManagedDisk()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineManagedDisk");
+            TestRunner.RunTestScript("Test-VirtualMachineManagedDisk");
         }
     }
 }

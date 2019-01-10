@@ -12,27 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class ChefExtensionTests
+    public class ChefExtensionTests : ComputeTestRunner
     {
-        XunitTracingInterceptor _logger;
-
         public ChefExtensionTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetChefExtensionBasic()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SetChefExtensionBasic");
+            TestRunner.RunTestScript("Test-SetChefExtensionBasic");
+
         }
     }
 }
