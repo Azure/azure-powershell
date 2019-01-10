@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <PsModuleName>Accounts</PsModuleName>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
