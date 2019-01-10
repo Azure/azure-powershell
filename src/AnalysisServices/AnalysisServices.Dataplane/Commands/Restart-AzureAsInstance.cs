@@ -15,7 +15,6 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -27,31 +26,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     [OutputType(typeof(bool))]
     public class RestartAzureAnalysisServer : AsAzureDataplaneCmdletBase
     {
-        [Parameter(Mandatory = false)]
-        public SwitchParameter PassThru { get; set; }
-
-        protected override IAzureContext DefaultContext
-        {
-            get
-            {
-                // Nothing to do with Azure Resource Management context
-                return null;
-            }
-        }
-
-        protected override string DataCollectionWarning
-        {
-            get
-            {
-                return Resources.ARMDataCollectionMessage;
-            }
-        }
-
-        protected override void InitializeQosEvent()
-        {
-            // nothing to do here.
-        }
-
         public override void ExecuteCmdlet()
         {
             if (!ShouldProcess(Instance, Resources.RestartingAnalysisServicesServer))

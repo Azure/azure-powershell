@@ -59,31 +59,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         [ValidateNotNullOrEmpty]
         public string Database { get; set; }
 
-        [Parameter(Mandatory = false)]
-        public SwitchParameter PassThru { get; set; }
-
         public SynchronizeAzureAzureAnalysisServer()
         {
             this.syncRequestRootActivityId = string.Empty;
             this.correlationId = Guid.Empty;
             this.syncRequestTimeStamp = string.Empty;
-        }
-
-        protected override IAzureContext DefaultContext
-        {
-            get
-            {
-                // Nothing to do with Azure Resource Management context
-                return null;
-            }
-        }
-
-        protected override string DataCollectionWarning
-        {
-            get
-            {
-                return Resources.ARMDataCollectionMessage;
-            }
         }
 
         protected override void BeginProcessing()
@@ -110,10 +90,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         protected override void TearDownHttpClientPipeline()
         {
             // nothing to do here.
-        }
-        protected override void InitializeQosEvent()
-        {
-            // No data collection for this commandlet
         }
 
         public override void ExecuteCmdlet()

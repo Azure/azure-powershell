@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
@@ -36,6 +36,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         [Parameter(Mandatory = true, HelpMessage = "Name of the Azure Analysis Services server")]
         [ValidateNotNullOrEmpty]
         public string Instance { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         /// <summary>
         /// The fully qualified absolute URI of the server instance.
@@ -64,6 +67,19 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                 // Nothing to do with Azure Resource Management context
                 return null;
             }
+        }
+
+        protected override string DataCollectionWarning
+        {
+            get
+            {
+                return Resources.ARMDataCollectionMessage;
+            }
+        }
+
+        protected override void InitializeQosEvent()
+        {
+            // No data collection for this commandlet
         }
 
         protected IAzureContext CurrentContext
@@ -108,7 +124,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             // user must specify the fully qualified server name. For example, westus2.asazure.windows.net/testserver
             if (!Uri.TryCreate(Instance, UriKind.Absolute, out var uriResult) || uriResult.Scheme != AsAzureEndpoints.UriSchemeAsAzure)
             {
-                throw new PSInvalidOperationException(string.Format(Properties.Resources.InvalidServerName, Instance));
+                throw new PSInvalidOperationException(string.Format(Resources.InvalidServerName, Instance));
             }
 
             // derive all bits of the url from the input
@@ -140,7 +156,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         {
             if (context == null)
             {
-                throw new ApplicationException(Resources.NoSubscriptionInContext);
+                throw new ApplicationException(Common.Authentication.Properties.Resources.NoSubscriptionInContext);
             }
 
             if (string.IsNullOrEmpty(hostUri))
