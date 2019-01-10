@@ -97,7 +97,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 
         public override void ExecuteCmdlet()
         {
-            PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
             StartTime = DateTime.Now;
             base.ExecuteCmdlet();
         }

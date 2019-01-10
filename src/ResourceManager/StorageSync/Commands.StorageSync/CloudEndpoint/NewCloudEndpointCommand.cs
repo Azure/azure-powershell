@@ -135,19 +135,19 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
 
                 if (!IsRunningInTest)
                 {
-                    PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
+                    //PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
 
-                    if (servicePrincipal == null)
-                    {
-                        throw new PSArgumentException("Invalid Service Principal");
-                    }
+                    //if (servicePrincipal == null)
+                    //{
+                    //    throw new PSArgumentException("Invalid Service Principal");
+                    //}
 
-                    RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, StorageAccountResourceId);
+                    //RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, StorageAccountResourceId);
 
-                    if (roleAssignment == null)
-                    {
-                        throw new PSArgumentException("Invalid Role Assignment");
-                    }
+                    //if (roleAssignment == null)
+                    //{
+                    //    throw new PSArgumentException("Invalid Role Assignment");
+                    //}
                 }
 
                 var parentResourceIdentifier = default(ResourceIdentifier);
