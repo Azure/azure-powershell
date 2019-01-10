@@ -68,7 +68,7 @@ $myVnet1TomyVnet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName "myVnet
 $myVnet1TomyVnet2.UseRemoteGateways = $True
 
 # Update the virtual network peering
-Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
+Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $myVnet1TomyVnet2
 ```
 
 By changing this property to $True, your peer's VNet gateway can be used.
