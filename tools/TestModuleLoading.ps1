@@ -18,9 +18,9 @@ param (
 )
 
 $tempModulePath = $env:PSModulePath
-$outputDir = "$PSScriptRoot/../src/Package/$configuration"
+$outputDir = "$PSScriptRoot/../artifacts/$configuration"
 Write-Warning "Running Test-ModuleManfiest on .psd1 files in $outputDir"
-$env:PSModulePath += "$pathDelimiter$outputDir/ResourceManager/AzureResourceManager/$pathDelimiter$outputDir/Storage/"
+$env:PSModulePath += "$pathDelimiter$outputDir/"
 Write-Warning "PSModulePath: $env:PSModulePath"
 
 $success = $true

@@ -136,7 +136,7 @@ function UpdateARMBreakingChangeDocs([string]$PathToServices)
         if ($serviceName -eq "AzureBackup") { $serviceName = "Backup" }
         if ($serviceName -eq "AzureBatch") { $serviceName = "Batch" }
 
-        $modulePath = "$PathToRepo\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.$serviceName\AzureRM.$serviceName.psd1"
+        $modulePath = "$PathToRepo\artifacts\Debug\Az.$serviceName\Az.$serviceName.psd1"
 
         $moduleVersion = GetModuleVersion -PathToModule $modulePath
 
@@ -208,38 +208,14 @@ if (!$PathToRepo)
 #Requires -Module PowerShellGet
 
 # Update all of the ResourceManager breaking change docs
-$ResourceManagerChanges = UpdateARMBreakingChangeDocs -PathToServices $PathToRepo\src\ResourceManager
-
-# Update the ServiceManagement breaking change doc
-$PathToCurrentDoc = "$PathToRepo\src\ServiceManagement\Services\Commands.Utilities\documentation\current-breaking-changes.md"
-$ModuleVersion = GetModuleVersion -PathToModule $PathToRepo\src\Package\Debug\ServiceManagement\Azure\Azure.psd1
-
-$ServiceManagementChanges = UpdateCurrentDoc -PathToCurrentDoc $PathToCurrentDoc -ModuleVersion $ModuleVersion
-
-# Update the Storage breaking change doc
-$PathToCurrentDoc = "$PathToRepo\src\Storage\documentation\current-breaking-changes.md"
-$ModuleVersion = GetModuleVersion -PathToModule $PathToRepo\src\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1
-
-$StorageChanges = UpdateCurrentDoc -PathToCurrentDoc $PathToCurrentDoc -ModuleVersion $ModuleVersion
+$ResourceManagerChanges = UpdateARMBreakingChangeDocs -PathToServices $PathToRepo\src
 
 $allChanges = @()
 
 # If there were any ARM breaking changes, add them to the list
 if ($ResourceManagerChanges.Length -gt 0)
 {
-    $allChanges += $ResourceManagerChanges    
-}
-
-# If there were any RDFE breaking changes, add them to the list
-if ($ServiceManagementChanges.Length -gt 0)
-{
-    $allChanges += $ServiceManagementChanges
-}
-
-# If there were any Storage breaking changes, add them to the list
-if ($StorageChanges.Length -gt 0)
-{
-    $allChanges += $StorageChanges
+    $allChanges += $ResourceManagerChanges
 }
 
 # Update the master breaking change doc with all of the breaking changes

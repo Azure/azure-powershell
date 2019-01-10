@@ -1002,8 +1002,21 @@
       "_justification": "Expired test session storage SAS"
     },
     {
-      "file": "\\src\\ResourceManager\\DataFactories\\Commands.DataFactories\\help\\New-AzDataFactoryEncryptValue.md",
+      "file": "\\src\\ResourceManager\\DataFactoryV2\\Commands.DataFactories\\help\\New-AzDataFactoryEncryptValue.md",
       "_justification": "Fake password"
+    },
+    {
+      "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\\TestVirtualNetworkGatewayP2SAndSKU.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "\\src\\ResourceManager\\LogicApp\\Commands.LogicApp.Test\\SessionRecords\\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.WorkflowTests\\TestCreateAndGetLogicAppUsingDefinitionWithActions.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch\\help\\New-AzBatchTask.md",
+      "hash": "9DiQS2GhPQXk8u3D2jadP/YcW2ZysE6slHg0yDqxByg=",
+      "_justification": "Markdown example and not a real credential"
     }
   ]
 }

@@ -18,7 +18,7 @@ The Azure PowerShell Developer Guide was created to help with the development an
         - [Creating the Project](#creating-the-project)
         - [Adding Project References](#adding-project-references)
 - [Creating Cmdlets](#creating-cmdlets)
-    - [PowerShell Cmdlet Design Guidelines](#powershell-cmdlet-design-guidelines)  
+    - [PowerShell Cmdlet Design Guidelines](#powershell-cmdlet-design-guidelines)
     - [Enable Running PowerShell when Debugging](#enable-running-powershell-when-debugging)
         - [Importing Modules](#importing-modules)
     - [Adding Help Content](#adding-help-content)
@@ -46,7 +46,7 @@ The following prerequisites should be completed before contributing to the Azure
 
 - Install [Visual Studio 2017](https://www.visualstudio.com/downloads/)
 - Install the latest version of [Git](https://git-scm.com/downloads)
-- Install the [`platyPS` module](documentation/development-docs/help-generation.md#installing-platyps)
+- Install the [`platyPS` module](help-generation.md#Installing-platyPS)
 - Install the latest [**.NET Core SDK** and **.NET Framework Dev Pack 4.7.2**](https://dotnet.microsoft.com/download) or greater
 - Install [PowerShell Core](https://github.com/PowerShell/PowerShell/releases/latest)
 - Set the PowerShell [execution policy](https://technet.microsoft.com/en-us/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:
@@ -124,7 +124,7 @@ PS C:\azure-powershell> dotnet msbuild build.proj /t:Test
 
 ## .NET SDK
 
-Before adding a new project to Azure PowerShell, you must have generated an [SDK for .NET](https://github.com/Azure/azure-sdk-for-net) using [AutoRest](https://github.com/Azure/autorest) for your service, and it must have been merged into the repository. 
+Before adding a new project to Azure PowerShell, you must have generated an [SDK for .NET](https://github.com/Azure/azure-sdk-for-net) using [AutoRest](https://github.com/Azure/autorest) for your service, and it must have been merged into the repository.
 
 For more information about on-boarding a new library in the SDK for .NET repository, click [here](https://github.com/Azure/azure-sdk-for-net#to-on-board-new-libraries).
 
@@ -150,32 +150,51 @@ Also, members of your team (who are involved with the SDKs) are advised to join 
 
 ## Getting Started
 
-When adding a new ResourceManager project, please follow these guidelines:
+When adding a new project, please follow these guidelines:
 
 ### Creating the Project
 
-Add a new folder under `src/ResourceManager` with your service specific name (_e.g.,_ `Compute`, `Sql`, `Websites`).
+Add a new folder under `src` with your service specific name (_e.g.,_ `Compute`, `Sql`, `Websites`).
 
-We recommend copying an existing module. For example, go to `src/ResourceManager/Media` and copy the contents of this folder. Paste these to your service folder you just created. **Rename** the following:
-- The folders to `Commands.<SERVICE>` and `Commands.<SERVICE>.Test`
+We recommend copying an existing module. For example, go to `src/Cdn` and copy the contents of this folder. Paste these to your service folder you just created. **Rename** the following:
+- The folders to `<SERVICE>` and `<SERVICE>.Test`
 - The solution to `<SERVICE>.sln`
-- The projects (within each folder) to `Commands.<SERVICE>.csproj` and `Commands.<SERVICE>.Test.csproj`
-- The PSD1 file (in the `Commands.<SERVICE>` folder) to `Az.<SERVICE>.psd1`
+- The projects (within each folder) to `<SERVICE>.csproj` and `<SERVICE>.Test.csproj`
+- The PSD1 file (in the `<SERVICE>` folder) to `Az.<SERVICE>.psd1`
 
 Now, you'll need to edit the solution file. Open the `<SERVICE>.sln` in your text editor of choice. Edit these lines to use your `<SERVICE>` name:
-- Update the `"Commands.<SERVICE>.Netcore", "Commands.<SERVICE>\Commands.<SERVICE>.Netcore.csproj"`
-- Update the `"Commands.<SERVICE>.Test.Netcore", "Commands.<SERVICE>.Test\Commands.Media.Test.Netcore.csproj"`
+- Update the `"<SERVICE>", "<SERVICE>\<SERVICE>.csproj"`
+- Update the `"<SERVICE>.Test", "<SERVICE>.Test\<SERVICE>.Test.csproj"`
+- **Note**: Leave the `"Accounts", "..\Accounts\Accounts\Accounts.csproj"` entry as is. All modules depend on `Accounts`.
 
-After the solution file is updated, save and close it. Now, open the solution file in Visual Studio. Right click on the `Commands.<SERVICE>` project in the `Solution Explorer` and select `Unload project`. Right click on the unloaded project and select `Edit Commands.<SERVICE>.csproj`. Once opened, ensure that the following things are changed:
-- The `AssemblyNamespace` and `RootNamespace` attributes of the project _must_ be changed to `Microsoft.Azure.PowerShell.Cmdlets.<SERVICE>`. If these changes are not made, then the assembly produced from this project is not be signed and results in errors when users try to use your module.
-- Change the `OutputPath` attribute to `$(ProjectDir)..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.<SERVICE>\`
-- Change the particular `<ItemGroup>` containing `<None Include="Az.<SERVICE>.psd1">`
+After the solution file is updated, save and close it. Now, open the solution file in Visual Studio. Right click on the `<SERVICE>` project in the `Solution Explorer` and select `Unload project`. Right click on the unloaded project and select `Edit <SERVICE>.csproj`. Once opened, ensure that the following things are changed:
+- Update this entry to use your service name (what you used as `<SERVICE>` above):
+```xml
+  <PropertyGroup>
+    <PsModuleName>Cdn</PsModuleName>
+  </PropertyGroup>
+```
+- Remove the entry:
+```xml
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
+  </PropertyGroup>
+```
+This is not needed since this is a new project.
+  
+- Update this entry to use your SDK:
+```xml
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.Cdn" Version="4.0.2-preview" />
+  </ItemGroup>
+```
+If you have not generated your AutoRest SDK yet, remove this entry for now.
 
 Right click on the project and select `Reload project`, and then build the solution by either right clicking on the solution and selecting `Rebuild Solution` or, from the top of Visual Studio, selecting `Build > Rebuild Solution`. If the build does not succeed, open the `.csproj` file and ensure there are no errors.
 
 ### Adding Project References
 
-There are a few existing projects that need to be added before developing any cmdlets. To add a project to the solution, right click on the solution in `Solution Explorer` and select `Add > Existing Project`. This allows you to navigate through folders to find the `.csproj` of the project you want to add. Once a project is added to your solution, you can add it as a reference to the `Commands.<SERVICE>` project by right clicking on `Commands.<SERVICE>` and selecting `Add > Reference`. This opens the `Reference Manager` window, and once you have selected the `Projects > Solution` option on the left side of the window, you are able to select which projects you want to reference in `Commands.<SERVICE>` by checking the box to the left of the name.
+There are a few existing projects that need to be added before developing any cmdlets. To add a project to the solution, right click on the solution in `Solution Explorer` and select `Add > Existing Project`. This allows you to navigate through folders to find the `.csproj` of the project you want to add. Once a project is added to your solution, you can add it as a reference to the `<SERVICE>` project by right clicking on `<SERVICE>` and selecting `Add > Reference`. This opens the `Reference Manager` window, and once you have selected the `Projects > Solution` option on the left side of the window, you are able to select which projects you want to reference in `<SERVICE>` by checking the box to the left of the name.
 
 # Creating Cmdlets
 
@@ -189,8 +208,8 @@ Please check out the [PowerShell Cmdlet Design Guidelines](azure-powershell-desi
   - Right click on your project in the **Solution Explorer** and select **Set as StartUp project**
 - Right-click on the project and select **Properties**
 - Go to the **Debug** tab
-- Under **Start Action**, pick _Start external program_ and type the PowerShell directory
-  - For example, `C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe`
+- Under **Start Action**, pick _Start external program_ and type the PowerShell 6.0 directory 
+  - For example, `C:\Program Files\PowerShell\6\pwsh.exe`
 
 ### Importing Modules
 
@@ -198,7 +217,7 @@ To import modules automatically when debug has started, follow the below steps:
 
 - In the **Debug** tab mentioned previously, go to **Start Options**
 - Import the Profile module, along with the module you are testing, by pasting the following in the **Command line arguments** box (_note_: you have to update the <PATH_TO_REPO> and <SERVICE> values provided below):
-  - `-NoExit -Command "Import-Module <PATH_TO_REPO>/src/Package/Debug/ResourceManager/AzureResourceManager/Az.Accounts/Az.Accounts.psd1;Import-Module <PATH_TO_REPO>/src/Package/Debug/ResourceManager/AzureResourceManager/Az.<SERVICE>/Az.<SERVICE>.psd1;$VerbosePreference='Continue'"`
+  - `-NoExit -Command "Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1;Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.<SERVICE>/Az.<SERVICE>.psd1;$VerbosePreference='Continue'"`
 - **Note**: if you do not see all of the changes you made to the cmdlets when importing your module in a PowerShell session (_e.g.,_ a cmdlet you added is not recognized as a cmdlet), you may need to delete any existing Azure PowerShell modules that you have on your machine (installed through the PowerShell Gallery) before you import your module.
 
 ## Adding Help Content
@@ -219,14 +238,14 @@ _Note_: As mentioned in the prerequisites section, set the PowerShell [execution
 
 ## Using Azure TestFramework
 
-Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-test-framework.md) for information on how to setup the appropriate connection string and record tests using the `Microsoft.Rest.ClientRuntime.Azure.TestFramework` package. 
+Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-test-framework.md) for information on how to setup the appropriate connection string and record tests using the `Microsoft.Rest.ClientRuntime.Azure.TestFramework` package.
 
 ## Scenario Tests
 
 ### Adding Scenario Tests
 
 - Create a new class in `Commands.<SERVICE>.Test`
-- Create a ps1 file in the same folder that contains the actual tests ([see sample](../../src/ResourceManager/Media/Commands.Media.Test/ScenarioTests))
+- Create a ps1 file in the same folder that contains the actual tests ([see sample](../../src/Media/Commands.Media.Test/ScenarioTests))
     - Use `Assert-AreEqual x y` to verify that values are the same
     - Use `Assert-AreNotEqual x y` to verify that values are not the same
     - Use `Assert-Throws scriptblock message` to verify an exception is being thrown
@@ -262,7 +281,7 @@ Create these environment variables for the AD scenario tests:
 - `AZURE_SERVICE_PRINCIPAL` should be a service principal - an application defined in the subscription's tenant - that has management access to the subscription (or at least to a resource group in the tenant)
   - `AZURE_SERVICE_PRINCIPAL=UserId=<UserGuid>;Password=<Password>;AADTenant=<TenantGuid>;SubscriptionId=<SubscriptionId>`
 
-### Recording/Running Tests 
+### Recording/Running Tests
 
 - Set up environment variables using New-TestCredential as described [here](../testing-docs/using-azure-test-framework.md#new-testcredential)
 - Run the test in Visual Studio in the Test Explorer window and make sure you got a generated JSON file that matches the test name in the bin folder under the `SessionRecords` folder
@@ -273,6 +292,10 @@ Create these environment variables for the AD scenario tests:
 # After Development
 
 Once all of your cmdlets have been created and the appropriate tests have been added, you can open a pull request in the Azure PowerShell repository to have your cmdlets added to the next release. Please make sure to read [CONTRIBUTING.md](../../CONTRIBUTING.md) for more information on how to open a pull request, clean up commits, make sure appropriate files have been added/changed, and more.
+
+## Change Log
+
+Whenver you make updates to a project, please make sure to update the corresponding service's `ChangeLog.md` file with a snippet of what you changed under the `Upcoming Release` header. This information is later used for the release notes that goes out with each module the next time they are released, and provides users with more information as to what has changed in the module from the previous release. For more information on updating change logs can be found in [`CONTRIBUTING.md`](../../CONTRIBUTING.md#updating-the-change-log)
 
 # Misc
 
@@ -303,7 +326,7 @@ $subcriptions = $job | Receive-Job
 
 ## Argument Completers
 
-PowerShell uses Argument Completers to provide tab completion for users. At the moment, Azure PowerShell has two specific argument completers that should be applied to relevant parameters, and one generic argument completer that can be used to tab complete with a given list of values. To test the completers, run a complete build after you have added the completers (`msbuild build.proj`) and ensure that the psm1 file (`Az.<Service>.psm1`) has been added to the psd1 file found in `src/Package/Debug/ResourceManager/AzureResourceManager/AzureRM.<Service>/AzureRM.<Service>.psd1` under "Root Module".
+PowerShell uses Argument Completers to provide tab completion for users. At the moment, Azure PowerShell has two specific argument completers that should be applied to relevant parameters, and one generic argument completer that can be used to tab complete with a given list of values. To test the completers, run a complete build after you have added the completers (`msbuild build.proj`) and ensure that the psm1 file (`Az.<Service>.psm1`) has been added to the psd1 file found in `artifacts/Debug/Az.<Service>/Az.<Service>.psd1` under "Root Module".
 
 ### Resource Group Completer
 
