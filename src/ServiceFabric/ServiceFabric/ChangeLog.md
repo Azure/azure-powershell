@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Rollback when a certificate is added to VMSS model but an exception is thrown this is to fix bug: https://github.com/Azure/service-fabric-issues/issues/932
+* Fix some error messages.
 
 ## Version 1.0.0
 * General availability of `Az.ServiceFabric` module
