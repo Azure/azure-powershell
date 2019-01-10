@@ -32,7 +32,7 @@
 function Get-AzureRmResource
 {
   [CmdletBinding()]
-  [Alias("Get-AzResourceGroup")]
+  [Alias("Get-AzResource")]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceType)
   BEGIN {
