@@ -100,6 +100,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         {
             base.BeginProcessing();
 
+            if (string.IsNullOrEmpty(Instance))
+            {
+                throw new ArgumentNullException(nameof(Instance));
+            }
+
             // user must specify the fully qualified server name. For example, westus2.asazure.windows.net/testserver
             if (!Uri.TryCreate(Instance, UriKind.Absolute, out var uriResult) || uriResult.Scheme != AsAzureEndpoints.UriSchemeAsAzure)
             {
