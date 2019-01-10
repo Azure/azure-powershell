@@ -12,29 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public partial class VMDynamicTests
+    public class VMDynamicTests : ComputeTestRunner
     {
-        public VMDynamicTests() { }
-
-        XunitTracingInterceptor _logger;
-
         public VMDynamicTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "TODO: only works for live mode")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RunVMDynamicTests()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Run-VMDynamicTests -num_total_generated_tests 1");
+            TestRunner.RunTestScript("Run-VMDynamicTests -num_total_generated_tests 1");
         }
     }
 }

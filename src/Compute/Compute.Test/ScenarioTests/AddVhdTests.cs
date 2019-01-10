@@ -12,27 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class AddVhdTests
+    public class AddVhdTests : ComputeTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public AddVhdTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "TODO: only works for live mode")]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAddVhd()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AddVhd");
+            TestRunner.RunTestScript("Test-AddVhd");
         }
     }
 }

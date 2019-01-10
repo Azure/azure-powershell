@@ -12,27 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class AvailabilitySetTests
+    public class AvailabilitySetTests : ComputeTestRunner
     {
-        XunitTracingInterceptor _logger;
-
         public AvailabilitySetTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAvailabilitySet()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AvailabilitySet");
+            TestRunner.RunTestScript("Test-AvailabilitySet");
         }
     }
 }
