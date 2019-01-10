@@ -504,6 +504,46 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                    vmss);
         }
 
+        internal Task RemoveCertFromVmssTask(VirtualMachineScaleSet vmss, CertificateInformation certInformation)
+        {
+            var secretGroup = vmss.VirtualMachineProfile.OsProfile.Secrets.SingleOrDefault(
+                s => s.SourceVault.Id.Equals(certInformation.KeyVault.Id, StringComparison.OrdinalIgnoreCase));
+
+            bool removeNeeded = false;
+            if (secretGroup != null)
+            {
+                if (secretGroup.VaultCertificates != null)
+                {
+                    if (secretGroup.VaultCertificates.Count() == 1 && secretGroup.VaultCertificates.First().CertificateUrl.Equals(certInformation.SecretUrl))
+                    {
+                        vmss.VirtualMachineProfile.OsProfile.Secrets.Remove(secretGroup);
+                        removeNeeded = true;
+                    }
+                    else
+                    {
+                        var certAdded = secretGroup.VaultCertificates.Single(cert => cert.CertificateUrl.Equals(certInformation.SecretUrl));
+                        if (certAdded != null)
+                        {
+                            secretGroup.VaultCertificates.Remove(certAdded);
+                            removeNeeded = true;
+                        }
+                    }
+                }
+            }
+
+            if (removeNeeded)
+            {
+                return ComputeClient.VirtualMachineScaleSets.CreateOrUpdateAsync(
+                       this.ResourceGroupName,
+                       vmss.Name,
+                       vmss);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         protected void GetKeyVaultReady(out Vault vault, out CertificateBundle certificateBundle, out string thumbprint, out string pfxOutputPath, out string commonName, string srcPfxPath = null)
         { 
             vault = TryGetKeyVault(this.KeyVaultResouceGroupName, this.KeyVaultName);
