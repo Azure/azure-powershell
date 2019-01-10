@@ -12,21 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+
 namespace Commands.Automation.Test
 {
-    using Microsoft.Azure.Commands.Automation.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Xunit;
 
-    public class WebhookTests : AutomationScenarioTestsBase
+    public class WebhookTests : AutomationTestRunner
     {
-        public XunitTracingInterceptor logger;
-
         public WebhookTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(logger);
         }
 
         [Fact(Skip = "Parallelization failures when accessing RunbookFile.ps1")]
@@ -34,7 +31,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void BasicCrud()
         {
-            RunPowerShellTest(logger, "Test-BasicCrud");
+            TestRunner.RunTestScript("Test-BasicCrud");
         }
 
         [Fact(Skip = "Parallelization failures when accessing RunbookFile.ps1")]
@@ -42,7 +39,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void NewWithParameters()
         {
-            RunPowerShellTest(logger, "Test-NewWithParameters");
+            TestRunner.RunTestScript("Test-NewWithParameters");
         }
 
         [Fact(Skip = "Parallelization failures when accessing RunbookFile.ps1")]
@@ -50,7 +47,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void NewFailureParams()
         {
-            RunPowerShellTest(logger, "Test-NewFailureParams");
+            TestRunner.RunTestScript("Test-NewFailureParams");
         }
 
         [Fact(Skip = "Parallelization failures when accessing RunbookFile.ps1")]
@@ -58,7 +55,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void GetSuccessScenarios()
         {
-            RunPowerShellTest(logger, "Test-GetSuccessScenarios");
+            TestRunner.RunTestScript("Test-GetSuccessScenarios");
         }
 
         [Fact]
@@ -66,7 +63,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void GetFailureScenarios()
         {
-            RunPowerShellTest(logger, "Test-GetFailureScenarios");
+            TestRunner.RunTestScript("Test-GetFailureScenarios");
         }
     }
 }

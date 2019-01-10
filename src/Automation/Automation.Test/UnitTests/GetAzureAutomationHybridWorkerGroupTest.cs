@@ -4,7 +4,6 @@ using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 using System.Collections.Generic;
@@ -13,7 +12,7 @@ using Xunit;
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
-    public class GetAzureAutomationHybridWorkerGroupTest : RMTestBase
+    public class GetAzureAutomationHybridWorkerGroupTest
     {
         private Mock<IAutomationPSClient> mockAutomationClient;
 
