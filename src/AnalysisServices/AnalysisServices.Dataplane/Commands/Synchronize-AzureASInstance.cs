@@ -170,11 +170,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 try
                 {
                     var syncEndpoint = string.Format(AsAzureEndpoints.SynchronizeEndpointPathFormat, this.ServerName, databaseName);
-                    this.AsAzureDataplaneClient.resetHttpClient();
-                    using (var message = await AsAzureDataplaneClient.CallPostAsync(
-                        baseUri: syncBaseUri,
-                        requestUrl: syncEndpoint,
-                        correlationId: correlationId))
+                    this.AsAzureDataplaneClient.ResetHttpClient();
+                    using (var message = await AsAzureDataplaneClient.CallPostAsync(syncBaseUri, syncEndpoint, correlationId))
                     {
                         this.syncRequestRootActivityId = message.Headers.Contains(RootActivityIdHeaderName) ? message.Headers.GetValues(RootActivityIdHeaderName).FirstOrDefault() : string.Empty;
                         this.syncRequestTimeStamp = message.Headers.Contains(CurrentUtcDateHeaderName) ? message.Headers.GetValues(CurrentUtcDateHeaderName).FirstOrDefault() : string.Empty;
@@ -284,11 +281,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                         await Task.Delay(DefaultRetryIntervalForPolling);
                     }
 
-                    this.AsAzureDataplaneClient.resetHttpClient();
-                    using (HttpResponseMessage message = await AsAzureDataplaneClient.CallGetAsync(
-                        baseUri: pollingUrl,
-                        requestUrl: string.Empty,
-                        correlationId: correlationId))
+                    this.AsAzureDataplaneClient.ResetHttpClient();
+                    using (HttpResponseMessage message = await AsAzureDataplaneClient.CallGetAsync(pollingUrl, string.Empty, correlationId))
                     {
                         bool shouldRetry = false;
                         if (message.IsSuccessStatusCode && message.Content != null)

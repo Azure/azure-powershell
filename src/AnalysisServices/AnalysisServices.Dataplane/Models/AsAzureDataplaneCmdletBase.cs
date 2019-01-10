@@ -140,11 +140,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             var content = new StringContent($"ServerName={serverName}");
             content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/x-www-form-urlencoded");
 
-            this.AsAzureDataplaneClient.resetHttpClient();
-            using (var message = AsAzureDataplaneClient.CallPostAsync(
-                baseUri: clusterUri,
-                requestUrl: AsAzureEndpoints.ClusterResolveEndpoint,
-                content: content).Result)
+            this.AsAzureDataplaneClient.ResetHttpClient();
+            using (var message = AsAzureDataplaneClient.CallPostAsync(clusterUri, AsAzureEndpoints.ClusterResolveEndpoint, content).Result)
             {
                 message.EnsureSuccessStatusCode();
                 var rawResult = message.Content.ReadAsStringAsync().Result;
