@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
     /// </summary>
     public abstract class AsAzureDataplaneCmdletBase : AzurePSCmdlet
     {
-        private AsAzureDataplaneClient _asAzureDataplaneClient;
+        private IAsAzureHttpClient _asAzureDataplaneClient;
 
         private IAzureContext _currentContext;
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             set { _currentContext = value; }
         }
 
-        public AsAzureDataplaneClient AsAzureDataplaneClient
+        public IAsAzureHttpClient AsAzureDataplaneClient
         {
             get
             {
