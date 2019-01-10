@@ -12,25 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
 namespace Commands.Automation.Test
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.Automation.Test;
-    using Microsoft.Azure.ServiceManagement.Common.Models;
+    using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
-    public class CertificateTests : AutomationScenarioTestsBase
-    {
-        public XunitTracingInterceptor logger;
 
+    public class CertificateTests : AutomationTestRunner
+    {
         public CertificateTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(logger);
         }
 
         [Fact]
@@ -40,7 +33,7 @@ namespace Commands.Automation.Test
         [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestE2ECertificates()
         {
-            RunPowerShellTest(logger, "Test-E2ECertificates");
+            TestRunner.RunTestScript("Test-E2ECertificates");
         }
 
     }

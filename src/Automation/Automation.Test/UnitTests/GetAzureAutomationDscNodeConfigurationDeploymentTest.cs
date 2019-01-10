@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using Xunit;
 using System;
@@ -24,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
-    public class GetAzureAutomationDscNodeConfigurationDeploymentTest : RMTestBase
+    public class GetAzureAutomationDscNodeConfigurationDeploymentTest
     {
         private readonly Mock<IAutomationPSClient> mockAutomationClient;
 

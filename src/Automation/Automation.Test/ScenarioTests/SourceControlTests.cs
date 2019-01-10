@@ -24,21 +24,18 @@ you should revoke access for PAT--this way no one can access to your private rep
 are recorded. See example in SourceControlTests.ps1 where $testReposInfo is defined.
 */
 
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+
 namespace Commands.Automation.Test
 {
-    using Microsoft.Azure.Commands.Automation.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Xunit;
 
-    public class SourceControlTests : AutomationScenarioTestsBase
+    public class SourceControlTests : AutomationTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public SourceControlTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -46,7 +43,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void CreateVsoGitSourceControlAndSync()
         {
-            RunPowerShellTest(_logger, "Test-CreateVsoGitSourceControlAndSync");
+            TestRunner.RunTestScript("Test-CreateVsoGitSourceControlAndSync");
         }
 
         [Fact]
@@ -54,7 +51,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void CreateVsoTfvcSourceControlAndSync()
         {
-            RunPowerShellTest(_logger, "Test-CreateVsoTfvcSourceControlAndSync");
+            TestRunner.RunTestScript("Test-CreateVsoTfvcSourceControlAndSync");
         }
 
         [Fact]
@@ -62,7 +59,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void CreateGitHubSourceControlAndSync()
         {
-            RunPowerShellTest(_logger, "Test-CreateGitHubSourceControlAndSync");
+            TestRunner.RunTestScript("Test-CreateGitHubSourceControlAndSync");
         }
     }
 }
