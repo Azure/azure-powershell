@@ -226,10 +226,10 @@ function Validate-MarkdownHelp
                     "online version:"
                     {
                         $onlineString = "https://docs.microsoft.com/en-us/powershell/module/$($ModuleName.ToLower())/$($CmdletName.ToLower())"
-                        $split = $content[$idx] -split ':'
-                        if ([string]::IsNullOrWhiteSpace($split[1]) -or $split[1].Trim() -ne $onlineString)
+                        $split = $content[$idx] -split "online version:"
+                        if ([string]::IsNullOrWhiteSpace($split[1]) -or $split[1] -notlike "*$onlineString*")
                         {
-                            $fileErrors += "Online version in the header of the file is incorrect. The corresponding URL should be the following: https://docs.microsoft.com/en-us/powershell/module/$($ModuleName.ToLower())/$($CmdletName.ToLower())"
+                            $fileErrors += "Online version in the header of the file is incorrect. The corresponding URL should be the following: $onlineString"
                         }
                     }
                     default
