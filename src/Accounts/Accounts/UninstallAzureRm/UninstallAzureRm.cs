@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Profile.UninstallAzureRm
                     var modules = dataStore.GetDirectories(path);
                     foreach (var module in modules)
                     {
-                        var moduleName = module.Split('\\').LastOrDefault();
+                        var moduleName = module.Split(Path.DirectorySeparatorChar).LastOrDefault();
                         if (AzureModules.Any(x => x.Equals(moduleName, StringComparison.OrdinalIgnoreCase)))
                         {
                             if (ShouldProcess(module, string.Format(Properties.Resources.ShouldRemoveModule, moduleName)))
