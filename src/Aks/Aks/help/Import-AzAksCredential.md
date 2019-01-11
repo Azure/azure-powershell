@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/import-azaks
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/import-azakscredential
 schema: 2.0.0
 ---
 
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 
 ### -ConfigPath
 A kubectl config file to create or update.
-Use '-' to print YAML to stdout instead. 
+Use '-' to print YAML to stdout instead.
 Default: %Home%/.kube/config.
 
 ```yaml

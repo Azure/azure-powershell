@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/add-azkeyvaultnetworkrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azkeyvaultnetworkrule
 schema: 2.0.0
 ---
 
@@ -74,7 +74,7 @@ Access Policies                  :
 Network Rule Set                 :
                                    Default Action                             : Allow
                                    Bypass                                     : AzureServices
-                                   IP Rules                                   : 
+                                   IP Rules                                   :
                                    Virtual Network Rules                      :
 
 Tags                             :

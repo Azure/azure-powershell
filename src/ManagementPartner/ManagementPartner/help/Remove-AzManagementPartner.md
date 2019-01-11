@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner.dll-Help.xml
 Module Name: Az.ManagementPartner
-online version: http://go.microsoft.com/fwlink/?LinkID=393045
+online version: https://docs.microsoft.com/en-us/powershell/module/az.managementpartner/remove-azmanagementpartner
 schema: 2.0.0
 ---
 
@@ -28,7 +28,7 @@ PS C:\>Remove-AzManagementPartner -PartnerId 123457 -PassThru
 true
 ```
 
-Remove management partner 
+Remove management partner
 
 ## PARAMETERS
 

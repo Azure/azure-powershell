@@ -1,14 +1,14 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DevSpaces.dll-Help.xml
 Module Name: Az.DevSpaces
-online version: https://docs.microsoft.com/en-us/powershell/module/az.devspaces/update-azevspacescontroller
+online version: https://docs.microsoft.com/en-us/powershell/module/az.devspaces/update-azdevspacescontroller
 schema: 2.0.0
 ---
 
 # Update-AzDevSpacesController
 
 ## SYNOPSIS
-Update the DevSpaces controller to add tags. 
+Update the DevSpaces controller to add tags.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Update-AzDevSpacesController -InputObject <PSController> [-Tag <Hashtable>]
 ```
 
 ## DESCRIPTION
-Update the DevSpaces controller to add tags. 
+Update the DevSpaces controller to add tags.
 
 ## EXAMPLES
 

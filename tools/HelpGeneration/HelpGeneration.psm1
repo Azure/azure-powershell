@@ -225,10 +225,11 @@ function Validate-MarkdownHelp
                     }
                     "online version:"
                     {
+                        $onlineString = "https://docs.microsoft.com/en-us/powershell/module/$($ModuleName.ToLower())/$($CmdletName.ToLower())"
                         $split = $content[$idx] -split ':'
-                        if ([string]::IsNullOrWhiteSpace($split[1]))
+                        if ([string]::IsNullOrWhiteSpace($split[1]) -or $split[1].Trim() -ne $onlineString)
                         {
-                            $fileErrors += "No entry was found for the online version field in the header. The corresponding URL should be the following: https://docs.microsoft.com/en-us/powershell/module/$($ModuleName.ToLower())/$($CmdletName.ToLower())"
+                            $fileErrors += "Online version in the header of the file is incorrect. The corresponding URL should be the following: https://docs.microsoft.com/en-us/powershell/module/$($ModuleName.ToLower())/$($CmdletName.ToLower())"
                         }
                     }
                     default
