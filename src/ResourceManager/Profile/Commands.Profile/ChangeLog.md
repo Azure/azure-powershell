@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 5.8.2
+## Version 5.8.3
 * Bug Fix for TokenCache initialization when importing a context
 
 ## Version 5.8.1
