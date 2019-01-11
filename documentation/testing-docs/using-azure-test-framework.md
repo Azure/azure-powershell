@@ -6,10 +6,8 @@
 	- [New-TestCredential](#new-testcredential)
 		- [Create New Service Principal](#create-new-service-principal)
 		- [Use Existing Service Principal](#use-existing-service-principal)
-		- [UserId](#userid)
 	- [Set-TestEnvironment](#set-testenvironment)
 		- [Existing Service Principal](#existing-service-principal)
-		- [UserId](#userid)
 	- [Manually Set Environment Variables](#manually-set-environment-variables)
 		- [Environment Variables](#environment-variables)
 		- [Playback Test](#playback-test)
@@ -51,11 +49,11 @@ This cmdlet, located in the [`Repo-Tasks` module](/tools/Repo-Tasks.psd1), which
 Using a service principal is the preferred option for recording tests because it works with both .NET Framework and .NET Core.  In order to create a new service principal, run this command with an unused service principal display name:
 
 ```powershell
-New-TestCredential -ServicePrincipalDisplayName "ScenarioTestCredentials" -ServicePrincipalSecret `
-"testpassword" -SubscriptionId <subscriptionId> -TenantId <tenantId> -RecordMode "Record"
+New-TestCredential -ServicePrincipalDisplayName "ScenarioTestCredentials" -SubscriptionId `
+<subscriptionId> -TenantId <tenantId> -RecordMode "Record"
 ```
 
-This command will create a new service principal, set the correct role assignment for this service principal based upon the subscription provided, and place the service principal id and secret into the credentials file.
+This command will create a new service principal, set the correct role assignment for this service principal based upon the subscription provided, and place the service principal id and automatically generated secret into the credentials file.
 
 Alternatively, to create a service principal, follow the [Azure AD guide to create a Application Service Principal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-active-directory-application). The application type should be `Web app / API` and the sign-on URL value is irrelevant (you can set any value).
 
@@ -66,15 +64,6 @@ If you would like to use an existing service principal, run this command with an
 ```powershell
 New-TestCredential -ServicePrincipalDisplayName "Existing Service Principal" -ServicePrincipalSecret `
 "testpassword" -SubscriptionId <subscriptionId> -TenantId <tenantId> -RecordMode "Record"
-```
-
-#### UserId
-
-This is no longer the preferred option because it only works when running on .NET Framework. When running on .NET Core you may get an error like `Interactive Login is supported only in NET45 projects`.  Additionally, you will have to manually log in when running the scenario tests rather than being automatically validated.
-
-```powershell
-New-TestCredential -UserId "exampleuser@microsoft.com" -SubscriptionId <subscriptionId> `
--TenantId <tenantId> -RecordMode "Record"
 ```
 
 ### Set-TestEnvironment
@@ -88,15 +77,6 @@ This is the preferred option for recording tests because it works with both .NET
 ```powershell
 Set-TestEnvironment -ServicePrincipalId <servicePrincipalId> -ServicePrincipalSecret `
 "testpassword" -SubscriptionId <subscriptionId> -TenantId <tenantId> -RecordMode "Record"
-```
-
-#### UserId
-
-This is no longer the preferred option because it only works when running on .NET Framework. When running on .NET Core you may get an error like `Interactive Login is supported only in NET45 projects`.
-
-```powershell
-Set-TestEnvironment -UserId "exampleuser@microsoft.com" -SubscriptionId <subscriptionId> `
--TenantId <tenantId> -RecordMode "Record"
 ```
 
 ### Manually Set Environment Variables
@@ -118,20 +98,7 @@ TEST_CSM_ORGID_AUTHENTICATION=
 AZURE_TEST_MODE=Playback
 ```
 
-#### Record Test with Interactive login using OrgId
-
-This is no longer the preferred option because it only works when running on .NET Framework. When running on .NET Core you may get an error like `Interactive Login is supported only in NET45 projects`.
-
-To use this option, set the following environment variables before starting Visual Studio:
-
-```
-TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId={SubId};UserId={orgId};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
-AZURE_TEST_MODE=Record
-```
-
 #### Record Test with service principal
-
-This is the preferred option for recording tests because it works with both .NET Framework and .NET Core.
 
 After the service principal is created, you will need to give it access to Azure resources. This can be done with the following PowerShell command, with the [Service Principal Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) (this is a guid, not the display name of the service principal) substituted in for `{clientId}`.
 

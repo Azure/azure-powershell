@@ -51,7 +51,7 @@ Copyright = '(c) 2016 ShahAbhijeet. All rights reserved.'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Resources'; ModuleVersion = '5.0.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Resources'; ModuleVersion = '1.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 06DAD751-3A43-4EF6-94C5-AA7AC1A67FC8
@@ -68,7 +68,7 @@ $myVnet1TomyVnet2 = Get-AzVirtualNetworkPeering -VirtualNetworkName "myVnet1" -R
 $myVnet1TomyVnet2.UseRemoteGateways = $True
 
 # Update the virtual network peering
-Set-AzVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
+Set-AzVirtualNetworkPeering -VirtualNetworkPeering $myVnet1TomyVnet2
 ```
 
 By changing this property to $True, your peer's VNet gateway can be used.
