@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: A16C2084-30A4-4AB8-AE22-28CC6E74FD48
@@ -21,7 +21,7 @@ Remove-AzVM [-Name] <String> [-Force] [-ResourceGroupName] <String> [-AsJob]
 
 ### IdParameterSetName
 ```
-Remove-AzVM [-Name] <String> [-Force] [-Id] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzVM [[-Name] <String>] [-Force] [-Id] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -104,10 +104,22 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceGroupNameParameterSetName
 Aliases: ResourceName, VMName
 
 Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: IdParameterSetName
+Aliases: ResourceName, VMName
+
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)

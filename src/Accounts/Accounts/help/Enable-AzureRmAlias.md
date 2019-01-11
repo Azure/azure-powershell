@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
 online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/enable-azurermalias
@@ -86,13 +86,13 @@ Accept wildcard characters: False
 
 ### -Scope
 Indicates what scope aliases should be enabled for. 
-Default is 'Process'
+Default is 'Local'
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Process, CurrentUser, LocalMachine
+Accepted values: Local, Process, CurrentUser, LocalMachine
 
 Required: False
 Position: Named
