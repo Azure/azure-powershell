@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Minor changes for upcoming AzureRM to Az transition
+* Correct documentation for New-AzureRmPolicyDefinition -Mode default value
 
 ## Version 6.7.2
 * Update help documentation for resource identity related parameters in `New-AzureRmPolicyAssignment` and `Set-AzureRmPolicyAssignment`
