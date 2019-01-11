@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/get-azatalakestorechilditemproperties
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/export-azdatalakestorechilditemproperties
 schema: 2.0.0
 ---
 
