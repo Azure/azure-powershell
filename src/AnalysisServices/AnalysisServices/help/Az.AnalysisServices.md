@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.AnalysisServices
 Module Guid: acace26c-1775-4100-85c0-20c4d71eaa21
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices
@@ -11,9 +11,6 @@ Locale: en-US
 This topic displays help topics for the Azure AnalysisServices cmdlets.
 
 ## Az.AnalysisServices Cmdlets
-### [Add-AzAnalysisServicesAccount](Add-AzAnalysisServicesAccount.md)
-Adds an authenticated account to use for Azure Analysis Services server cmdlet requests.
-
 ### [Export-AzAnalysisServicesInstanceLog](Export-AzAnalysisServicesInstanceLog.md)
 Exports a log from an instance of Analysis Services server in the currently logged in Environment as specified in Add-AzAnalysisServicesAccount command
 
