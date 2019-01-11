@@ -69,7 +69,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PacketCapture");
         }
 
-        [Fact]
+        [Fact(Skip = "New-AzureStorageContext not imported; re-record once fixed")]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestTroubleshoot()
