@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Backup.Admin-help.xml
 Module Name: Azs.Backup.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -21,7 +21,7 @@ Generate encryption key for infrastructure backups.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 New-AzsEncryptionKeyBase64
 ```
@@ -40,4 +40,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

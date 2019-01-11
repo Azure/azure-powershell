@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Backup.Admin-help.xml
 Module Name: Azs.Backup.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -41,7 +41,7 @@ Set the backup configuration at the specified location.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Set-AzsBackupConfiguration -Path "\\***.***.***.***\Share" -Username "asdomain1\azurestackadmin" -Password $password  -EncryptionCertPath $encryptionCertPath
 ```
@@ -54,9 +54,9 @@ Set Azure Stack backup configuration.
 Run asynchronous as a job and return the job object.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -69,9 +69,9 @@ Accept wildcard characters: False
 The interval, in hours, for the frequency that the scheduler takes a backup.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -84,9 +84,9 @@ Accept wildcard characters: False
 The retention period, in days, for backups in the storage location.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -99,9 +99,9 @@ Accept wildcard characters: False
 Path to the encryption cert file with public key (.cer).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -114,9 +114,9 @@ Accept wildcard characters: False
 Backup location configuration returned by Get-AzsBackupConfiguration.
 
 ```yaml
-Type: BackupLocation
+Type: Microsoft.AzureStack.Management.Backup.Admin.Models.BackupLocation
 Parameter Sets: InputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -129,9 +129,9 @@ Accept wildcard characters: False
 Whether the backup scheduler should be enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -144,9 +144,9 @@ Accept wildcard characters: False
 Location to configure.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Update
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -159,9 +159,9 @@ Accept wildcard characters: False
 Password required to access backup location.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 Location where backups will be stored.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: BackupShare
 
@@ -189,9 +189,9 @@ Accept wildcard characters: False
 Name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Update
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 The resource id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases: id
 
@@ -219,9 +219,9 @@ Accept wildcard characters: False
 Username required to access backup location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -250,7 +250,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -273,4 +273,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

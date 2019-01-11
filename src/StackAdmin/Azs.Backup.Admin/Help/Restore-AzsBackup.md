@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Backup.Admin-help.xml
 Module Name: Azs.Backup.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -14,13 +14,15 @@ Restore a backup.
 
 ### Backups_Restore (Default)
 ```
-Restore-AzsBackup [-ResourceGroupName <String>] -Name <String> [-Location <String>] -DecryptionCertPath <String> -DecryptionCertPassword <SecureString> [-AsJob] [-Force] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Restore-AzsBackup [-ResourceGroupName <String>] -Name <String> [-Location <String>]
+ -DecryptionCertPath <String> -DecryptionCertPassword <SecureString> [-AsJob] [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Restore-AzsBackup -ResourceId <String> -DecryptionCertPath <String> -DecryptionCertPassword <SecureString> [-AsJob] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzsBackup -DecryptionCertPath <String> -DecryptionCertPassword <SecureString> -ResourceId <String>
+ [-AsJob] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +30,7 @@ Restore a backup.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Restore-AzsBackup -Backup 4e90bd2f-c7ab-47a3-a3c7-908cddd1ad0e -DecryptionCertPath $decryptionCertPath -DecryptionCertPassword $decryptionCertPassword
 ```
@@ -41,9 +43,9 @@ Restore from an Azure Stack backup.
 Run asynchronous as a job and return the job object.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -52,13 +54,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DecryptionCertPassword
+Password of the decryption cert.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DecryptionCertPath
+Path to the decryption cert file with private key (.pfx).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Don't ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -71,9 +103,9 @@ Accept wildcard characters: False
 Name of location to backup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Backups_Restore
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -86,39 +118,9 @@ Accept wildcard characters: False
 Name of the backup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Backups_Restore
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DecryptionCertPath
-Path to the decryption cert file with public key (.pfx).
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DecryptionCertPassword
-Password the decryption cert.
-
-```yaml
-Type: SecureString
-Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -131,9 +133,9 @@ Accept wildcard characters: False
 Name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Backups_Restore
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -146,7 +148,7 @@ Accept wildcard characters: False
 The resource id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases: id
 
@@ -161,7 +163,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -177,7 +179,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -198,4 +200,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Backup.Admin-help.xml
 Module Name: Azs.Backup.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -28,7 +28,7 @@ Back up a specific location.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Start-AzsBackup
 ```
@@ -41,9 +41,9 @@ Start an Azure Stack backup.
 Run asynchronous as a job and return the job object.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -56,9 +56,9 @@ Accept wildcard characters: False
 Don't ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -71,9 +71,9 @@ Accept wildcard characters: False
 Name of the backup location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateBackup
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -86,9 +86,9 @@ Accept wildcard characters: False
 Name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateBackup
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 The resource id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateBackup_FromResourceId
 Aliases: id
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -132,7 +132,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -155,4 +155,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

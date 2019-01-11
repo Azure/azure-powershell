@@ -23,10 +23,10 @@ Licensed under the MIT License. See License.txt in the project root for license 
     The resource id.
 
 .PARAMETER DecryptionCertPath
-    Path to the decryption cert file with public key (.pfx).
+    Path to the decryption cert file with private key (.pfx).
 
 .PARAMETER DecryptionCertPassword
-    Password the decryption cert.
+    Password of the decryption cert.
 
 .PARAMETER AsJob
     Run asynchronous as a job and return the job object.
