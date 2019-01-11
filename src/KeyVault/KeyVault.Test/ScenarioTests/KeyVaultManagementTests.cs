@@ -12,48 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Graph.RBAC.Version1_6;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Xunit;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 {
-    public class KeyVaultManagementTests : IClassFixture<KeyVaultTestFixture>
+    public class KeyVaultManagementTests : KeyVaultTestRunner
     {
-        private readonly KeyVaultTestFixture _data;
-        public XunitTracingInterceptor _logger;
-
         public KeyVaultManagementTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-            _data = new KeyVaultTestFixture();
-            _data.Initialize(MethodBase.GetCurrentMethod().ReflectedType?.ToString());
-        }
-
-        private void Initialize()
-        {
-            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
-            {
-                HttpMockServer.Variables["ResourceGroupName"] = _data.ResourceGroupName;
-                HttpMockServer.Variables["Location"] = _data.Location;
-                HttpMockServer.Variables["PreCreatedVault"] = _data.PreCreatedVault;
-            }
-            else
-            {
-                _data.ResourceGroupName = HttpMockServer.Variables["ResourceGroupName"];
-                _data.Location = HttpMockServer.Variables["Location"];
-                _data.PreCreatedVault = HttpMockServer.Variables["PreCreatedVault"];
-            }
         }
 
         #region New-AzureRmKeyVault        
@@ -62,13 +31,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewVault()
         {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                _logger,
-                () => { return new[] { "Test-CreateNewVault" }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
+            TestRunner.RunTestScript("Test-CreateNewVault");
         }
 
         #endregion
@@ -79,14 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVault()
         {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                _logger,
-                () => { return new[] { "Test-GetVault" }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name,
-                Initialize);
-
+            TestRunner.RunTestScript("Test-GetVault");
         }
 
         #endregion
@@ -97,13 +53,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListVaults()
         {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                _logger,
-                () => { return new[] { "Test-ListVaults" }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
+            TestRunner.RunTestScript("Test-ListVaults");
         }
 
         #endregion
@@ -114,237 +64,82 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteVault()
         {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                _logger,
-                () => { return new[] { "Test-DeleteVaultByName" }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
+            TestRunner.RunTestScript("Test-DeleteVaultByName");
         }
 
         #endregion
 
         #region Set-AzureRmKeyVaultAccessPolicy & Remove-AzureRmKeyVaultAccessPolicy
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetRemoveAccessPolicyByObjectId()
         {
-            string upn = "";
-            _data.ResetPreCreatedVault();
-
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-SetRemoveAccessPolicyByObjectId", _data.PreCreatedVault, _data.ResourceGroupName, objId) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
+            TestRunner.RunTestScript("Test-SetRemoveAccessPolicyByObjectId");
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetRemoveAccessPolicyByUPN()
         {
-            string upn = "";
-            _data.ResetPreCreatedVault();
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-SetRemoveAccessPolicyByUPN", _data.PreCreatedVault, _data.ResourceGroupName, upn) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
+            TestRunner.RunTestScript("Test-SetRemoveAccessPolicyByUPN");
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetRemoveAccessPolicyByCompoundId()
         {
-            string upn = "";
-            Guid? appId = null;
-            _data.ResetPreCreatedVault();
-
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-SetRemoveAccessPolicyByCompoundId", _data.PreCreatedVault, _data.ResourceGroupName, appId, objId) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
+            TestRunner.RunTestScript("Test-SetRemoveAccessPolicyByCompoundId");
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAccessPolicyWithCompoundIdPolicies()
         {
-            string upn = "";
-
-            Guid? appId1 = null;
-            Guid? appId2 = null;
-            _data.ResetPreCreatedVault();
-
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3} {4} {5}", "Test-RemoveAccessPolicyWithCompoundIdPolicies", _data.PreCreatedVault, _data.ResourceGroupName, appId1, appId2, objId) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
+            TestRunner.RunTestScript("Test-RemoveAccessPolicyWithCompoundIdPolicies");
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetCompoundIdAccessPolicy()
         {
-            string upn = "";
-            Guid? appId = null;
-            _data.ResetPreCreatedVault();
-
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-SetCompoundIdAccessPolicy", _data.PreCreatedVault, _data.ResourceGroupName, appId, objId) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
+            TestRunner.RunTestScript("Test-SetCompoundIdAccessPolicy");
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetRemoveAccessPolicyBySPN()
         {
-            Application app = null;
-            ServicePrincipal principal = null;
-
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            _data.ResetPreCreatedVault();
-            controller.RunPsTestWorkflow(
-                _logger,
-            //script builder
-            () =>
-            {
-                app = CreateNewAdApp(controller);
-                principal = CreateNewAdServicePrincipal(controller, app.AppId);
-                return new[] { string.Format("{0} {1} {2} {3}", "Test-SetRemoveAccessPolicyBySPN",
-                    _data.PreCreatedVault,
-                    _data.ResourceGroupName,
-                    principal.ServicePrincipalNames.Where(s => s.StartsWith("http")).FirstOrDefault()) };
-            },
-            // cleanup
-            () =>
-            {
-                DeleteAdServicePrincipal(controller, principal);
-                DeleteAdApp(controller, app);
-            },
-            MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-            MethodBase.GetCurrentMethod().Name
-            );
+            TestRunner.RunTestScript("Test-SetRemoveAccessPolicyBySPN");
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModifyAccessPolicy()
         {
-            string upn = "";
-
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            _data.ResetPreCreatedVault();
-
-            controller.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicy", _data.PreCreatedVault, _data.ResourceGroupName, objId) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
+            TestRunner.RunTestScript("Test-ModifyAccessPolicy");
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModifyAccessPolicyEnabledForDeployment()
         {
-            string upn = "";
-
-            _data.ResetPreCreatedVault();
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyEnabledForDeployment", _data.PreCreatedVault, _data.ResourceGroupName, upn) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
+            TestRunner.RunTestScript("Test-ModifyAccessPolicyEnabledForDeployment");
         }
 
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModifyAccessPolicyEnabledForTemplateDeployment()
         {
-            string upn = "";
-
-            _data.ResetPreCreatedVault();
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyEnabledForTemplateDeployment", _data.PreCreatedVault, _data.ResourceGroupName, upn) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
+            TestRunner.RunTestScript("Test-ModifyAccessPolicyEnabledForTemplateDeployment");
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModifyAccessPolicyEnabledForDiskEncryption()
         {
-            string upn = "";
-
-            _data.ResetPreCreatedVault();
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyEnabledForDiskEncryption", _data.PreCreatedVault, _data.ResourceGroupName, upn) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
+            TestRunner.RunTestScript("Test-ModifyAccessPolicyEnabledForDiskEncryption");
         }
 
 
@@ -352,56 +147,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModifyAccessPolicyNegativeCases()
         {
-            string upn = "";
-
-            _data.ResetPreCreatedVault();
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyNegativeCases", _data.PreCreatedVault, _data.ResourceGroupName, upn) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
+            TestRunner.RunTestScript("Test-ModifyAccessPolicyNegativeCases");
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveNonExistentAccessPolicyDoesNotThrow()
         {
-            string upn = "";
-            _data.ResetPreCreatedVault();
-
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-RemoveNonExistentAccessPolicyDoesNotThrow", _data.PreCreatedVault, _data.ResourceGroupName, objId) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
+            TestRunner.RunTestScript("Test-RemoveNonExistentAccessPolicyDoesNotThrow");
         }
 
         #endregion
 
         #region Piping
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDeleteVaultWithPiping()
         {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                 _logger,
-                () => { return new[] { string.Format("{0} {1} {2}", "Test-CreateDeleteVaultWithPiping", _data.ResourceGroupName, _data.Location) }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
+            TestRunner.RunTestScript("Test-CreateDeleteVaultWithPiping");
         }
 
         #endregion
@@ -410,74 +173,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkSet()
         {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                 _logger,
-                () => { return new[] { "Test-NetworkRuleSet" }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
+            TestRunner.RunTestScript("Test-NetworkRuleSet");
         }
-
-        #region Helper Methods
-        private string GetUserObjectId(KeyVaultManagementController controllerAdmin, string upn)
-        {
-            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
-            {
-                var user = controllerAdmin.GraphClient.Users.Get(upn);
-                HttpMockServer.Variables["ObjectId"] = user.ObjectId;
-                return user.ObjectId;
-            }
-            else
-            {
-                return HttpMockServer.Variables["ObjectId"];
-            }
-        }
-
-        private Application CreateNewAdApp(KeyVaultManagementController controllerAdmin)
-        {
-            var appName = TestUtilities.GenerateName("adApplication");
-            var url = string.Format("http://{0}/home", appName);
-            var appParam = new ApplicationCreateParameters
-            {
-                AvailableToOtherTenants = false,
-                DisplayName = appName,
-                Homepage = url,
-                IdentifierUris = new[] { url },
-                ReplyUrls = new[] { url }
-            };
-
-            return controllerAdmin.GraphClient.Applications.Create(appParam);
-        }
-
-        private ServicePrincipal CreateNewAdServicePrincipal(KeyVaultManagementController controllerAdmin, string appId)
-        {
-            var spParam = new ServicePrincipalCreateParameters
-            {
-                AppId = appId,
-                AccountEnabled = true
-            };
-
-            return controllerAdmin.GraphClient.ServicePrincipals.Create(spParam);
-        }
-
-        private void DeleteAdApp(KeyVaultManagementController controllerAdmin, Application app)
-        {
-            if (app != null)
-            {
-                controllerAdmin.GraphClient.Applications.Delete(app.ObjectId);
-            }
-        }
-
-        private void DeleteAdServicePrincipal(KeyVaultManagementController controllerAdmin, ServicePrincipal newServicePrincipal)
-        {
-            if (newServicePrincipal != null)
-            {
-                controllerAdmin.GraphClient.ServicePrincipals.Delete(newServicePrincipal.ObjectId);
-            }
-        }
-        #endregion
     }
-
-
 }
