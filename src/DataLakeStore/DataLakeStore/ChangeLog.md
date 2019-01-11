@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update incorrect online help URLs
 
 ## Version 1.0.1
 * Update the sdk version of dataplane to 1.1.14 for SDK fixes.
