@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             else if (containerType ==
                 ServiceClientModel.BackupManagementType.AzureWorkload)
             {
-                return ContainerType.AzureWorkload;
+                return ContainerType.AzureVMAppContainer;
             }
             else
             {

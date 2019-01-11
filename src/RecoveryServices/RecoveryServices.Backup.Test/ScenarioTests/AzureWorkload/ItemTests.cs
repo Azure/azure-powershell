@@ -78,15 +78,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
-        public void TestAzureVmWorkloadDisableProtection()
-        {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadDisableProtection");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadAutoProtection()
         {
             TestController.NewInstance.RunPsTest(

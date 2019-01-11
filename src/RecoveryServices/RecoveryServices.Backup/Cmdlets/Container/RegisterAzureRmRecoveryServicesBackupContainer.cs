@@ -31,18 +31,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     public class RegisterAzureRmRecoveryServicesBackupContainer
         : RSBackupVaultCmdletBase
     {
+        internal const string RegisterParamSet = "RegisterContainer";
+        internal const string ReRegisterParamSet = "ReRegisterContainer";
+
         /// <summary>
         /// Azure Vm Id.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 1,
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = RegisterParamSet,
             HelpMessage = ParamHelpMsgs.Container.ResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         /// <summary>
+        /// container object
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ReRegisterParamSet,
+            HelpMessage = ParamHelpMsgs.Container.ContainerObj)]
+        [ValidateNotNullOrEmpty]
+        public ContainerBase Container { get; set; }
+
+        /// <summary>
         /// The backup management type of the container(s) to be fetched.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 2,
+        [Parameter(Mandatory = true, Position = 1,
             HelpMessage = ParamHelpMsgs.Container.BackupManagementType)]
         [ValidateNotNullOrEmpty]
         [ValidateSet("AzureWorkload")]
@@ -51,7 +62,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Workload type of the item to be returned.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 3,
+        [Parameter(Mandatory = true, Position = 2,
             HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
         [ValidateNotNullOrEmpty]
         public Models.WorkloadType WorkloadType { get; set; }
@@ -66,7 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string vaultResourceGroupName = resourceIdentifier.ResourceGroupName;
 
-                string containerName = ResourceId.Split('/')[8];
+                string containerName = Container != null ? Container.Name : ResourceId.Split('/')[8];
 
                 PsBackupProviderManager providerManager =
                     new PsBackupProviderManager(new Dictionary<Enum, object>()
@@ -76,10 +87,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { ContainerParams.Name, containerName },
                         { ContainerParams.ContainerType, ServiceClientHelpers.GetServiceClientWorkloadType(WorkloadType).ToString() },
                         { ContainerParams.BackupManagementType, BackupManagementType.ToString() },
+                        { ContainerParams.Container, Container }
                     }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider =
-                    providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
+                providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
                 psBackupProvider.RegisterContainer();
 
                 // List containers

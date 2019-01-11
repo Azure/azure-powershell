@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Represents Azure Workload
         /// </summary>
-        AzureWorkload
+        AzureVMAppContainer
     }
 
     /// <summary>

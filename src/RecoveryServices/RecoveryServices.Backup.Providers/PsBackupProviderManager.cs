@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                             containerType));
                     }
                     break;
-                case ContainerType.AzureWorkload:
+                case ContainerType.AzureVMAppContainer:
                     if (backupManagementType == BackupManagementType.AzureWorkload ||
                         backupManagementType == null)
                     {

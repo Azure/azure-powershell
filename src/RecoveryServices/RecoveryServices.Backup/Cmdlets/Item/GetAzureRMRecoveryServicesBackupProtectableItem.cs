@@ -20,6 +20,7 @@ using Microsoft.Rest.Azure.OData;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         internal const string NoFilterParamSet = "NoFilterParamSet";
         internal const string FilterParamSet = "FilterParamSet";
+        internal const string IdParamSet = "IdParamSet";
 
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = NoFilterParamSet,
             HelpMessage = ParamHelpMsgs.Item.Container, ValueFromPipelineByPropertyName = true)]
@@ -40,6 +42,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.Item.Container, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public ContainerBase Container { get; set; }
+
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = IdParamSet,
+            HelpMessage = ParamHelpMsgs.Item.ParentID, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string ParentID { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ParameterSetName = NoFilterParamSet,
             HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
@@ -65,12 +72,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
-                string backupManagementType = Container.BackupManagementType.ToString();
-                string workloadType = ConversionUtils.GetServiceClientWorkloadType(WorkloadType.ToString());
+                string backupManagementType = "";
+                string workloadType = "";
+                string containerName = "";
+                if (ParameterSetName == IdParamSet)
+                {
+                    Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(ParentID);
+                    containerName = HelperUtils.GetContainerUri(keyValueDict, ParentID);
+                    if (containerName.Split(new string[] { ";" }, System.StringSplitOptions.None)[0].ToLower() == "vmappcontainer")
+                    {
+                        backupManagementType = ServiceClientModel.BackupManagementType.AzureWorkload;
+                    }
+                    string protectableItem = HelperUtils.GetProtectableItemUri(keyValueDict, ParentID);
+                    if (protectableItem.Split(new string[] { ";" }, System.StringSplitOptions.None)[0].ToLower() == "sqlinstance" ||
+                    protectableItem.Split(new string[] { ";" }, System.StringSplitOptions.None)[0].ToLower() == "sqlavailabilitygroupcontainer")
+                    {
+                        workloadType = ServiceClientModel.WorkloadType.SQLDataBase;
+                    }
+                }
+                else
+                {
+                    backupManagementType = Container.BackupManagementType.ToString();
+                    workloadType = ConversionUtils.GetServiceClientWorkloadType(WorkloadType.ToString());
+                    containerName = Container.Name;
+                }
                 ODataQuery<BMSPOQueryObject> queryParam = new ODataQuery<BMSPOQueryObject>(
                 q => q.BackupManagementType
                      == backupManagementType &&
-                     q.WorkloadType == workloadType);
+                     q.WorkloadType == workloadType &&
+                     q.ContainerName == containerName);
 
                 WriteDebug("going to query service to get list of protectable items");
                 List<WorkloadProtectableItemResource> protectableItems =

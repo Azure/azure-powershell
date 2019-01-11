@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                      Container.BackupManagementType == BackupManagementType.AzureSQL) ||
                      (Container.ContainerType == ContainerType.AzureStorage &&
                        Container.BackupManagementType == BackupManagementType.AzureStorage) ||
-                       (Container.ContainerType == ContainerType.AzureWorkload &&
+                       (Container.ContainerType == ContainerType.AzureVMAppContainer &&
                        Container.BackupManagementType == BackupManagementType.AzureWorkload)))
                 {
                     throw new ArgumentException(string.Format(Resources.UnsupportedContainerException,
@@ -70,10 +70,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     containerName = ContainerConstansts.SqlContainerNamePrefix + containerName;
                 }
 
-                ServiceClientAdapter.UnregisterContainers(
+                if (Container.ContainerType == ContainerType.AzureVMAppContainer)
+                {
+                    var unRegisterResponse = ServiceClientAdapter.UnregisterWorkloadContainers(
                     containerName,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName);
+                }
+                else
+                {
+                    ServiceClientAdapter.UnregisterContainers(
+                    containerName,
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
+                }
 
                 if (PassThru.IsPresent)
                 {

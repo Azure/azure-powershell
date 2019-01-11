@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -22,11 +23,69 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureVmWorkloadContainer : AzureContainer
     {
         /// <summary>
+        ///  Gets resource Id represents the complete path to the resource.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        ///  Gets or sets ARM ID of the virtual machine represented by this Azure Workload
+        /// </summary>
+        public string SourceResourceId { get; set; }
+
+        /// <summary>
+        ///  Gets or sets status of health of the container.
+        /// </summary>
+        public string HealthStatus { get; set; }
+
+        /// <summary>
+        ///  Gets or sets additional details of a workload container.
+        /// </summary>
+        public List<AzureVmWorkloadContainerExtendedInfo> ExtendedInfo { get; set; }
+
+        public string WorkloadsPresent { get; set; }
+
+        /// <summary>
         /// Constructor. Takes the service client object representing the container 
         /// and converts it in to the PS container model
         /// </summary>
         /// <param name="protectionContainerResource">Service client object representing the container</param>
         public AzureVmWorkloadContainer(ProtectionContainerResource protectionContainerResource)
-            : base(protectionContainerResource) { }
+            : base(protectionContainerResource)
+        {
+            AzureVMAppContainerProtectionContainer protectionContainer = (AzureVMAppContainerProtectionContainer)protectionContainerResource.Properties;
+            Id = protectionContainerResource.Id;
+            SourceResourceId = protectionContainer.SourceResourceId;
+            HealthStatus = protectionContainer.HealthStatus;
+            ExtendedInfo = new List<AzureVmWorkloadContainerExtendedInfo>();
+            WorkloadsPresent = "";
+            foreach (var inquiryDetail in protectionContainer.ExtendedInfo.InquiryInfo.InquiryDetails)
+            {
+                ExtendedInfo.Add(new AzureVmWorkloadContainerExtendedInfo()
+                {
+                    InquiryStatus = inquiryDetail.InquiryValidation.Status,
+                    WorkloadItems = inquiryDetail.ItemCount,
+                    WorkloadType = inquiryDetail.Type
+                });
+                WorkloadsPresent += inquiryDetail.Type + ",";
+            }
+            WorkloadsPresent = WorkloadsPresent.Remove(WorkloadsPresent.Length - 1);
+        }
+    }
+    public class AzureVmWorkloadContainerExtendedInfo
+    {
+        /// <summary>
+        /// Gets or sets status for the Inquiry Validation.
+        /// </summary>
+        public string InquiryStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets contains the protectable item Count inside this Container.
+        /// </summary>
+        public string WorkloadType { get; set; }
+
+        /// <summary>
+        /// Gets or sets type of the Workload such as SQL, Oracle etc.
+        /// </summary>
+        public long? WorkloadItems { get; set; }
     }
 }

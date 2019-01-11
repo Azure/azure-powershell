@@ -22,7 +22,7 @@ function Get-AzureVmWorkloadContainer
    try
    {
       $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-      
+
 	  #Register container
       $container = Register-AzRecoveryServicesBackupContainer `
          -ResourceId $resourceId `
@@ -34,14 +34,14 @@ function Get-AzureVmWorkloadContainer
       # VARIATION-1: Get All Containers with only mandatory parameters
       $containers = Get-AzRecoveryServicesBackupContainer `
          -VaultId $vault.ID `
-         -ContainerType AzureWorkload `
+         -ContainerType AzureVMAppContainer `
          -Status Registered;
       Assert-True { $containers.FriendlyName -contains $containerName }
 
       # VARIATION-2: Get Containers with friendly name filter
       $containers = Get-AzRecoveryServicesBackupContainer `
          -VaultId $vault.ID `
-         -ContainerType AzureWorkload `
+         -ContainerType AzureVMAppContainer `
          -Status Registered `
          -FriendlyName $containerName;
       Assert-True { $containers.FriendlyName -contains $containerName }
@@ -49,7 +49,7 @@ function Get-AzureVmWorkloadContainer
       # VARIATION-3: Get Containers with resource group filter
       $containers = Get-AzRecoveryServicesBackupContainer `
          -VaultId $vault.ID `
-         -ContainerType AzureWorkload `
+         -ContainerType AzureVMAppContainer `
          -Status Registered `
          -ResourceGroupName $resourceGroupName;
       Assert-True { $containers.FriendlyName -contains $containerName }
@@ -57,7 +57,7 @@ function Get-AzureVmWorkloadContainer
       # VARIATION-4: Get Containers with friendly name and resource group filters
       $containers = Get-AzRecoveryServicesBackupContainer `
          -VaultId $vault.ID `
-         -ContainerType AzureWorkload `
+         -ContainerType AzureVMAppContainer `
          -Status Registered `
          -FriendlyName $containerName `
          -ResourceGroupName $resourceGroupName;
@@ -77,12 +77,17 @@ function Unregister-AzureWorkloadContainer
       $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 
 	  #Register Container
+      $container = Get-AzRecoveryServicesBackupContainer `
+         -VaultId $vault.ID `
+         -ContainerType AzureVMAppContainer `
+         -Status Registered;
+
+	  #ReRegister Container
       $container = Register-AzRecoveryServicesBackupContainer `
-         -ResourceId $resourceId `
+         -Container $container `
          -BackupManagementType AzureWorkload `
          -WorkloadType MSSQL `
          -VaultId $vault.ID
-	  Assert-AreEqual $container.Status "Registered"
 
 	  #Unregister container
       Unregister-AzRecoveryServicesBackupContainer `
@@ -91,7 +96,7 @@ function Unregister-AzureWorkloadContainer
 
 	  $container = Get-AzRecoveryServicesBackupContainer `
          -VaultId $vault.ID `
-         -ContainerType AzureWorkload `
+         -ContainerType AzureVMAppContainer `
          -Status Registered `
          -FriendlyName $containerName
       Assert-Null $container

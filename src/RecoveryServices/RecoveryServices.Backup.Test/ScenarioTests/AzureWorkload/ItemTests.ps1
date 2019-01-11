@@ -23,19 +23,24 @@ function Test-AzureVmWorkloadProtectableItem
 	try
 	{
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		
-		$container = Get-AzRecoveryServicesBackupContainer `
-			-VaultId $vault.ID `
-			-ContainerType AzureWorkload `
-			-Status Registered `
-			-FriendlyName $containerName `
-			-ResourceGroupName $resourceGroupName;
+
+		$container = Register-AzRecoveryServicesBackupContainer `
+			-ResourceId $resourceId `
+			-BackupManagementType AzureWorkload `
+			-WorkloadType MSSQL `
+			-VaultId $vault.ID
+		Assert-AreEqual $container.Status "Registered"
 		
 		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType "MSSQL";
 		Assert-True { $protectableItems.ServerName -contains $containerName }
+
+		$protectableItemsParentID = Get-AzRecoveryServicesBackupProtectableItem `
+			-VaultId $vault.ID `
+			-ParentID $protectableItems[0].Id;
+		Assert-True { $protectableItemsParentID.ServerName -contains $containerName }
 
 		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
 			-VaultId $vault.ID `
@@ -55,21 +60,25 @@ function Test-AzureVmWorkloadProtectableItem
 	}
 	finally
 	{
- 
+		#Unregister container
+		Unregister-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-Container $container
 	}
 }
+
 function Test-AzureVmWorkloadInitializeProtectableItem
 {
 	try
 	{
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 		
-		$container = Get-AzRecoveryServicesBackupContainer `
-			-VaultId $vault.ID `
-			-ContainerType AzureWorkload `
-			-Status Registered `
-			-FriendlyName $containerName `
-			-ResourceGroupName $resourceGroupName;
+		$container = Register-AzRecoveryServicesBackupContainer `
+			-ResourceId $resourceId `
+			-BackupManagementType AzureWorkload `
+			-WorkloadType MSSQL `
+			-VaultId $vault.ID
+		Assert-AreEqual $container.Status "Registered";
 
 		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
 			-VaultId $vault.ID `
@@ -86,13 +95,17 @@ function Test-AzureVmWorkloadInitializeProtectableItem
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType "MSSQL";
-		Assert-True { $newprotectableItems.count -eq $protectableItems.count + 1 }
+		Assert-True { $newprotectableItems.count -ge $protectableItems.count }
 	}
 	finally
 	{
-	
+		#Unregister container
+		Unregister-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-Container $container
 	}
 }
+
 function Test-AzureVmWorkloadEnableProtectableItem
 {
 	try
@@ -103,12 +116,12 @@ function Test-AzureVmWorkloadEnableProtectableItem
 			-VaultId $vault.ID `
 			-Name $policyName
 		
-		$container = Get-AzRecoveryServicesBackupContainer `
-			-VaultId $vault.ID `
-			-ContainerType AzureWorkload `
-			-Status Registered `
-			-FriendlyName $containerName `
-			-ResourceGroupName $resourceGroupName;
+		$container = Register-AzRecoveryServicesBackupContainer `
+			-ResourceId $resourceId `
+			-BackupManagementType AzureWorkload `
+			-WorkloadType MSSQL `
+			-VaultId $vault.ID
+		Assert-AreEqual $container.Status "Registered";
 
 		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
 			-VaultId $vault.ID `
@@ -119,69 +132,84 @@ function Test-AzureVmWorkloadEnableProtectableItem
 			-VaultId $vault.ID `
 			-Policy $policy `
 			-ProtectableItem $protectableItems[1]
+
+		$item = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType MSSQL;
+		Assert-True { $item.Name -contains $protectableItems[1].Name }
+		Assert-True { $item.LastBackupStatus -eq "IRPending" }
+		Assert-True { $item.ProtectionPolicyName -eq $policyName }
 	}
 	finally
 	{
-	
+		Cleanup-Vault $vault $item $container
 	}
 }
+
 function Test-AzureVmWorkloadBackupProtectionItem
 {
 	try
 	{
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		
-		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
-			-VaultId $vault.ID `
-			-Name $policyName
-		
-		$container = Get-AzRecoveryServicesBackupContainer `
-			-VaultId $vault.ID `
-			-ContainerType AzureWorkload `
-			-Status Registered `
-			-FriendlyName $containerName `
-			-ResourceGroupName $resourceGroupName;
-		
-		$items = Get-AzRecoveryServicesBackupItem `
+		$container = Register-AzRecoveryServicesBackupContainer `
+			-ResourceId $resourceId `
+			-BackupManagementType AzureWorkload `
+			-WorkloadType MSSQL `
+			-VaultId $vault.ID
+
+		Enable-Protection $vault $container
+
+		$item = Get-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType MSSQL;
 
-		Backup-AzRecoveryServicesBackupItem `
+		$backupJob = Backup-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
-			-Item $items[0] `
-			-BackupType "Log"
+			-Item $item `
+			-BackupType "Full" | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $backupJob.Status -eq "Completed" }
 	}
 	finally
 	{
-	
+		Cleanup-Vault $vault $item $container
 	}
 }
+
 function Test-AzureVmWorkloadGetRPs
 {
 	try
 	{
 		# Test 1: Get latest recovery point; should be only one
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
-			-VaultId $vault.ID `
-			-Name $policyName
-		
-		$container = Get-AzRecoveryServicesBackupContainer `
-			-VaultId $vault.ID `
-			-ContainerType AzureWorkload `
-			-Status Registered `
-			-FriendlyName $containerName `
-			-ResourceGroupName $resourceGroupName;
-		
-		$items = Get-AzRecoveryServicesBackupItem `
+		$container = Register-AzRecoveryServicesBackupContainer `
+			-ResourceId $resourceId `
+			-BackupManagementType AzureWorkload `
+			-WorkloadType MSSQL `
+			-VaultId $vault.ID
+
+		Enable-Protection $vault $container
+
+		$item = Get-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType MSSQL;
 
+		$backupJob = Backup-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Item $item `
+			-BackupType "Full" | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
+		$backupEndTime = $backupJob.EndTime.AddMinutes(1);
+
 		$recoveryPoint = Get-AzRecoveryServicesBackupRecoveryPoint `
 			-VaultId $vault.ID `
-			-Item $items[0];
+			-StartDate $backupStartTime `
+			-EndDate $backupEndTime `
+			-Item $item;
 	
 		Assert-NotNull $recoveryPoint[0];
 		Assert-True { $recoveryPoint[0].Id -match $item.Id };
@@ -190,77 +218,71 @@ function Test-AzureVmWorkloadGetRPs
 		$recoveryPointDetail = Get-AzRecoveryServicesBackupRecoveryPoint `
 			-VaultId $vault.ID `
 			-RecoveryPointId $recoveryPoint[0].RecoveryPointId `
-			-Item $items[0];
+			-Item $item;
 	
 		Assert-NotNull $recoveryPointDetail;
 	}
 	finally
 	{
-
+		Cleanup-Vault $vault $item $container
 	}
 }
+
 function Test-AzureVmWorkloadGetLogChains
 {
 	try
 	{
 		# Test 1: Get latest recovery point; should be only one
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$container = Register-AzRecoveryServicesBackupContainer `
+			-ResourceId $resourceId `
+			-BackupManagementType AzureWorkload `
+			-WorkloadType MSSQL `
+			-VaultId $vault.ID
+
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
 			-Name $policyName
-		
-		$container = Get-AzRecoveryServicesBackupContainer `
+
+		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
 			-VaultId $vault.ID `
-			-ContainerType AzureWorkload `
-			-Status Registered `
-			-FriendlyName $containerName `
-			-ResourceGroupName $resourceGroupName;
-		
-		$items = Get-AzRecoveryServicesBackupItem `
+			-Container $container `
+			-WorkloadType "MSSQL";
+
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-ProtectableItem $protectableItems[4]
+
+		$item = Get-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType MSSQL;
 
+		$backupJob = Backup-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Item $item `
+			-BackupType "Full" | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		$backupJob2 = Backup-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Item $item `
+			-BackupType "Log" | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		$backupStartTime = $backupJob2.StartTime.AddMinutes(-10);
+		$backupEndTime = $backupJob2.EndTime.AddMinutes(10);
+
 		$recoveryLogChain = Get-AzRecoveryServicesBackupRecoveryLogChain `
 			-VaultId $vault.ID `
-			-Item $items[0];
+			-StartDate $backupStartTime `
+			-EndDate $backupEndTime `
+			-Item $item;
 	
 		Assert-NotNull $recoveryLogChain[0];
 	}
 	finally
 	{
-
-	}
-}
-function Test-AzureVmWorkloadDisableProtection
-{
-	try
-	{
-		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
-			-VaultId $vault.ID `
-			-Name $policyName
-		
-		$container = Get-AzRecoveryServicesBackupContainer `
-			-VaultId $vault.ID `
-			-ContainerType AzureWorkload `
-			-Status Registered `
-			-FriendlyName $containerName `
-			-ResourceGroupName $resourceGroupName;
-		
-		$items = Get-AzRecoveryServicesBackupItem `
-			-VaultId $vault.ID `
-			-Container $container `
-			-WorkloadType MSSQL;
-
-		Disable-AzureRmRecoveryServicesBackupProtection `
-		-VaultId $vault.ID `
-		-Item $items[0] `
-		-Force;	
-	}
-	finally
-	{
-	
+		Cleanup-Vault $vault $item $container
 	}
 }
 function Test-AzureVmWorkloadAutoProtection
@@ -268,13 +290,14 @@ function Test-AzureVmWorkloadAutoProtection
 	try
 	{
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		
 		$container = Get-AzRecoveryServicesBackupContainer `
+         -VaultId $vault.ID `
+         -ContainerType AzureVMAppContainer `
+         -Status Registered;
+
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
-			-ContainerType AzureWorkload `
-			-Status Registered `
-			-FriendlyName $containerName `
-			-ResourceGroupName $resourceGroupName;
+			-Name $policyName
 
 		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
 			-VaultId $vault.ID `
@@ -282,15 +305,23 @@ function Test-AzureVmWorkloadAutoProtection
 			-WorkloadType "MSSQL" `
 			-ItemType "SQLInstance";
 
-		Enable-AzRecoveryServicesBackupAutoProtection `
+		#Enable-AzRecoveryServicesBackupAutoProtection `
+		#	-VaultId $vault.ID `
+		#	-InputItem $protectableItems[0].Id `
+		#	-BackupManagementType "AzureWorkload" `
+		#	-WorkloadType "MSSQL" `
+		#	-Policy $policy;
+
+		#Start-Sleep -s 10
+
+		Disable-AzRecoveryServicesBackupAutoProtection `
 			-VaultId $vault.ID `
 			-InputItem $protectableItems[0].Id `
 			-BackupManagementType "AzureWorkload" `
-			-WorkloadType "MSSQL"
+			-WorkloadType "MSSQL";
 	}
 	finally
 	{
-	
 	}
 }
 function Test-AzureVmWorkloadFullRestore
@@ -298,40 +329,124 @@ function Test-AzureVmWorkloadFullRestore
 	try
 	{
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$container = Register-AzRecoveryServicesBackupContainer `
+			-ResourceId $resourceId `
+			-BackupManagementType AzureWorkload `
+			-WorkloadType MSSQL `
+			-VaultId $vault.ID
+
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
 			-Name $policyName
-		
-		$container = Get-AzRecoveryServicesBackupContainer `
+
+		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
 			-VaultId $vault.ID `
-			-ContainerType AzureWorkload `
-			-Status Registered `
-			-FriendlyName $containerName `
-			-ResourceGroupName $resourceGroupName;
-		
-		$items = Get-AzRecoveryServicesBackupItem `
+			-Container $container `
+			-WorkloadType "MSSQL" `
+			-ItemType "SQLDataBase";
+
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-ProtectableItem $protectableItems[3];
+
+		$item = Get-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType MSSQL;
 
+		$backupJob = Backup-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Item $item[0] `
+			-BackupType "Full" | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
+		$backupEndTime = $backupJob.EndTime.AddMinutes(1);
+
 		$recoveryPoint = Get-AzRecoveryServicesBackupRecoveryPoint `
 			-VaultId $vault.ID `
-			-Item $items[1];
+			-StartDate $backupStartTime `
+			-EndDate $backupEndTime `
+			-Item $item;
 
-		$restoreConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
+		$restoreConfig1 = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
 			-VaultId $vault.ID `
 			-RecoveryPoint $recoveryPoint[0] `
-			-TargetItem $items[0] `
+			-TargetItem $item[0] `
 			–AlternateWorkloadRestore;
 
-		Assert-NotNull $restoreConfig
+		Assert-NotNull $restoreConfig1
 
-		Restore-AzRecoveryServicesBackupItem `
+		$restoreJob1 = Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
-			-WLRecoveryConfig $restoreConfig
+			-WLRecoveryConfig $restoreConfig1 | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $restoreJob1.Status -eq "Completed" }
+
+		$restoreConfig2 = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
+			-VaultId $vault.ID `
+			-RecoveryPoint $recoveryPoint[0] `
+			–OriginalWorkloadRestore;
+
+		Assert-NotNull $restoreConfig2
+
+		$restoreJob2 = Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-WLRecoveryConfig $restoreConfig2 | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $restoreJob2.Status -eq "Completed" }
+		
+		## Log Restores
+		$backupJob2 = Backup-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Item $item[0] `
+			-BackupType "Full" | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		$backupJob3 = Backup-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Item $item[0] `
+			-BackupType "Log" | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		$backupStartTime = $backupJob3.StartTime.AddMinutes(-1);
+		$backupEndTime = $backupJob3.EndTime.AddMinutes(1);
+
+		$recoveryLogChain = Get-AzRecoveryServicesBackupRecoveryLogChain `
+			-VaultId $vault.ID `
+			-StartDate $backupStartTime `
+			-EndDate $backupEndTime `
+			-Item $item[0];
+
+		$restoreConfig3 = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
+			-VaultId $vault.ID `
+			-PointInTime $recoveryLogChain[0].StartTime.AddMinutes(1) `
+			-Item $item[0] `
+			-TargetItem $item[0] `
+			–AlternateWorkloadRestore;
+
+		Assert-NotNull $restoreConfig3
+
+		$restoreJob3 = Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-WLRecoveryConfig $restoreConfig3 | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $restoreJob3.Status -eq "Completed" }
+
+		$restoreConfig4 = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
+			-VaultId $vault.ID `
+			-PointInTime $recoveryLogChain[0].StartTime.AddMinutes(1) `
+			-Item $item[0] `
+			–OriginalWorkloadRestore;
+
+		Assert-NotNull $restoreConfig4
+
+		$restoreJob4 = Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-WLRecoveryConfig $restoreConfig4 | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $restoreJob4.Status -eq "Completed" }
 	}
 	finally
 	{
-	
+		Cleanup-Vault $vault $item $container
 	}
 }

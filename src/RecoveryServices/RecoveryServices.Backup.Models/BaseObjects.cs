@@ -107,7 +107,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                         protectionContainer.Properties.BackupManagementType),
                    protectionContainer.Properties.BackupManagementType)
         {
-            Name = IdUtils.GetNameFromUri(protectionContainer.Name);
+            if (string.Compare(protectionContainer.Properties.BackupManagementType,
+                ServiceClientModel.BackupManagementType.AzureWorkload) == 0)
+            {
+                Name = protectionContainer.Name;
+            }
+            else
+            {
+                Name = IdUtils.GetNameFromUri(protectionContainer.Name);
+            }
         }
     }
 
