@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azdeployment
@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDeployment
 
 ## SYNOPSIS
-Creat a deployment
+Create a deployment
 
 ## SYNTAX
 

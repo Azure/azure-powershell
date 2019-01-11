@@ -21,6 +21,9 @@
 * Fix parameter set issue when providing `-ODataQuery` and `-ResourceId` parameters for `Get-AzResource`
     - More information here: https://github.com/Azure/azure-powershell/issues/7875
 * Fix handling of the -Custom parameter in New/Set-AzPolicyDefinition
+* Fix typo in New-AzDeployment documentation
+* Made `-MailNickname` parameter mandatory for `New-AzADUser`
+    - More information here: https://github.com/Azure/azure-powershell/issues/8220
 
 ## Version 1.0.0
 * General availability of `Az.Resources` module
