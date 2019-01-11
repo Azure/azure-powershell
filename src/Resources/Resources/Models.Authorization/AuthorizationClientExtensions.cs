@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 }
                 else
                 {
-                    var adObject = adObjects.SingleOrDefault(o => string.Equals(o.Id, p.Id)) ?? new PSADObject() { Id = p.Id };
+                    var adObject = adObjects.SingleOrDefault(o => o.Id == pid.ToString()) ?? new PSADObject() { Id = pid.ToString() };
 
                     if ((adObject is PSADUser)
                         || (adObject is PSADGroup)
