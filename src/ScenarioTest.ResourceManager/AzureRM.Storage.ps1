@@ -1,8 +1,8 @@
 ﻿
 function Get-AzureRmStorageAccount
 {
-
   [CmdletBinding()]
+  [Alias("Get-AzStorageAccount")]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] [alias("StorageAccountName")] $Name)
@@ -36,6 +36,7 @@ function Get-AzureRmStorageAccount
 function New-AzureRmStorageAccount
 {
   [CmdletBinding()]
+  [Alias("New-AzStorageAccount")]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)][alias("StorageAccountName")] $Name,
@@ -92,6 +93,7 @@ function New-AzureRmStorageAccount
 function Set-AzureRmStorageAccount
 {
   [CmdletBinding()]
+  [Alias("Set-AzStorageAccount")]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)][alias("StorageAccountName")] $Name,
@@ -123,6 +125,7 @@ function Set-AzureRmStorageAccount
 function Get-AzureRmStorageAccountKey
 {
   [CmdletBinding()]
+  [Alias("Get-AzStorageAccountKey")]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] [alias("StorageAccountName")] $Name)
@@ -155,8 +158,8 @@ function Get-AzureRmStorageAccountKey
 
 function Remove-AzureRmStorageAccount
 {
-
   [CmdletBinding()]
+  [Alias("Remove-AzStorageAccount")]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] [alias("StorageAccountName")] $Name)
