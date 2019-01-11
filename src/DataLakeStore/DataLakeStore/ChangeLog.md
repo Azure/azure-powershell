@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.1
 * Update the sdk version of dataplane to 1.1.14 for SDK fixes.
     - Fix handling of negative acesstime and modificationtime for getfilestatus and liststatus, Fix async cancellation token
 
