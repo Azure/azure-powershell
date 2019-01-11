@@ -43,8 +43,8 @@ if (Test-Path -Path "$PSScriptRoot\StartupScripts" -ErrorAction Ignore)
 
 if (Get-Module %AZORAZURERM%.profile -ErrorAction Ignore)
 {
-    Write-Warning "%AZORAZURERM%.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: https://aka.ms/azps-migration-guide"
-    throw "%AZORAZURERM%.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: https://aka.ms/azps-migration-guide"
+    Write-Warning ("%AZORAZURERM%.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: https://aka.ms/azps-migration-guide")
+    throw ("%AZORAZURERM%.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: https://aka.ms/azps-migration-guide")
 }
 
 $preloadPath = (Join-Path $PSScriptRoot -ChildPath "PreloadAssemblies")
