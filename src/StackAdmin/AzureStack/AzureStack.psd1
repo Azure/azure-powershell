@@ -12,7 +12,7 @@
     # RootModule = ''
 
     # Version number of this module.
-    ModuleVersion          = '1.6.0'
+    ModuleVersion          = '1.7.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -54,7 +54,7 @@
     RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.5.2'; },
         @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; },
         @{ModuleName = 'Azs.AzureBridge.Admin'; RequiredVersion = '0.2.0'; },
-        @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.3.0'; },
         @{ModuleName = 'Azs.Commerce.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Compute.Admin'; RequiredVersion = '0.2.1'; },
         @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.3.0'; },
@@ -121,25 +121,10 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.12 - Version 1.6.0
-            * Supported with 1811 update
-            * Azs.Compute.Admin Module
-                * Fixed missing Azs prefix for New-DataDiskObject and added alias with warning of future deprecation.
-            * Azs.Update.Admin Module
-                * Added a warning to recommend running Test-AzureStack before Install-AzsUpdate
-            * Azs.Fabric.Admin
-                * New cmdlet (The features are supported by Azure Stack 1811+)
-                    * Get-AzsDrive
-                    * Get-AzsVolume
-                    * Get-AzsStorageSubSystem
-                * Deprecation
-                    * Get-AzsInfrastructureVolume is an alias now to the cmdlet Get-AzsVolume
-            * Azs.InfrastructureInsights.Admin
-                *  Added a new cmdlet Repair-AzsAlert
-            * Azs.Storage.Admin
-                * Bug fix where default quota values are not being used
-            * Azs.Subscriptions.Admin Module
-                * Fixed missing Azs prefix for New-AddonPlanDefinitionObject and added alias with warning of future deprecation.'
+            ReleaseNotes = '## 2019.MM - Version 1.7.0
+            * Supported with 1901 update
+            * Azs.Backup.Admin Module
+                * Breaking change: Backup changes to cert-based encryption mode. Support for symmetric keys is deprecated.'
 
 
 

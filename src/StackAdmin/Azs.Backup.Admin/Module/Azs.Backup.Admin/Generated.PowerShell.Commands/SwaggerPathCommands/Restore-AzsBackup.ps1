@@ -22,6 +22,12 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER ResourceId
     The resource id.
 
+.PARAMETER DecryptionCertPath
+    Path to the decryption cert file with private key (.pfx).
+
+.PARAMETER DecryptionCertPassword
+    Password of the decryption cert.
+
 .PARAMETER AsJob
     Run asynchronous as a job and return the job object.
 
@@ -30,7 +36,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-    Restore-AzsBackup -Backup 4e90bd2f-c7ab-47a3-a3c7-908cddd1ad0e
+    Restore-AzsBackup -Name $backupResourceName -DecryptionCertPath $decryptionCertPath -DecryptionCertPassword $decryptionCertPassword
 
     Restore from an Azure Stack backup.
 
@@ -51,6 +57,16 @@ function Restore-AzsBackup {
         [Parameter(Mandatory = $false, ParameterSetName = 'Backups_Restore')]
         [System.String]
         $Location,
+
+        [Parameter(Mandatory = $true, ParameterSetName = 'Backups_Restore')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'ResourceId')]
+        [System.String]
+        $DecryptionCertPath,
+
+        [Parameter(Mandatory = $true, ParameterSetName = 'Backups_Restore')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'ResourceId')]
+        [securestring]
+        $DecryptionCertPassword,
 
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'ResourceId')]
         [Alias('id')]
@@ -120,9 +136,20 @@ function Restore-AzsBackup {
                     $ResourceGroupName = "System.$($Location)"
                 }
 
+                $RestoreOptions = New-Object -TypeName 'Microsoft.AzureStack.Management.Backup.Admin.Models.RestoreOptions'
+                if (!(Test-Path $DecryptionCertPath))
+                {
+                    throw "The specified decryption cert $DecryptionCertPath does not exist"
+                }
+
+                $decryptionCertBytes = [System.IO.File]::ReadAllBytes($DecryptionCertPath)
+                $decryptionCertBase64 = [System.Convert]::ToBase64String($decryptionCertBytes)
+                $RestoreOptions.DecryptionCertBase64 = $decryptionCertBase64
+                $RestoreOptions.DecryptionCertPassword = ConvertTo-String -SecureString $DecryptionCertPassword
+
                 if ('Backups_Restore' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
                     Write-Verbose -Message 'Performing operation RestoreWithHttpMessagesAsync on $BackupAdminClient.'
-                    $TaskResult = $BackupAdminClient.Backups.RestoreWithHttpMessagesAsync($Location, $ResourceGroupName, $Name)
+                    $TaskResult = $BackupAdminClient.Backups.RestoreWithHttpMessagesAsync($Location, $ResourceGroupName, $Name, $RestoreOptions)
                 } else {
                     Write-Verbose -Message 'Failed to map parameter set to operation method.'
                     throw 'Module failed to find operation to execute.'
@@ -179,3 +206,13 @@ function Restore-AzsBackup {
     }
 }
 
+
+function ConvertTo-String {
+    param(
+        [SecureString]$SecureString
+    )
+    $Ptr = [System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($SecureString)
+    $Result = [System.Runtime.InteropServices.Marshal]::PtrToStringUni($Ptr)
+    [System.Runtime.InteropServices.Marshal]::ZeroFreeCoTaskMemUnicode($Ptr)
+    $Result
+}

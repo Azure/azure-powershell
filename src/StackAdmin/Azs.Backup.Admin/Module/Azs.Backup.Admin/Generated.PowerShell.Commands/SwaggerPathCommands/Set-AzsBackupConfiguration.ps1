@@ -32,8 +32,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER Password
     Password required to access backup location.
 
-.PARAMETER EncryptionKey
-    Encryption key used to encrypt backups.
+.PARAMETER EncryptionCertPath
+    Path to the encryption cert file with public key (.cer).
 
 .PARAMETER IsBackupSchedulerEnabled
     Whether the backup scheduler should be enabled.
@@ -49,7 +49,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-    PS C:\> Set-AzsBackupConfiguration -Path "\\***.***.***.***\Share" -Username "asdomain1\azurestackadmin" -Password $password  -EncryptionKey $encryptionKey
+    PS C:\> Set-AzsBackupConfiguration -Path "\\***.***.***.***\Share" -Username "asdomain1\azurestackadmin" -Password $password  -EncryptionCertPath $encryptionCertPath
 
     Set Azure Stack backup configuration.
 
@@ -105,8 +105,8 @@ function Set-AzsBackupConfiguration {
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [ValidateNotNull()]
-        [securestring]
-        $EncryptionKey,
+        [System.String]
+        $EncryptionCertPath,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
@@ -211,8 +211,15 @@ function Set-AzsBackupConfiguration {
                     $InputObject.Password = ConvertTo-String -SecureString $Password
                 }
 
-                if ($PSBoundParameters.ContainsKey('EncryptionKey')) {
-                    $InputObject.EncryptionKeyBase64 = ConvertTo-String $EncryptionKey
+                if ($PSBoundParameters.ContainsKey('EncryptionCertPath')) {
+                    if (!(Test-Path -Path $EncryptionCertPath -PathType Leaf))
+                    {
+                        throw "The specified encryption cert $EncryptionCertPath does not exist"
+                    }
+
+                    $encryptionCertBytes = [System.IO.File]::ReadAllBytes($EncryptionCertPath)
+                    $encryptionCertBase64 = [System.Convert]::ToBase64String($encryptionCertBytes)
+                    $InputObject.EncryptionCertBase64 = $encryptionCertBase64
                 }
 
                 if ($PSBoundParameters.ContainsKey('IsBackupSchedulerEnabled')) {
