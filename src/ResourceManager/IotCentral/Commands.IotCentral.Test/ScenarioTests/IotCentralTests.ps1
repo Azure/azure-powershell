@@ -88,11 +88,11 @@ function Test-IotCentralAppLifecycleManagement{
 		$tt2 = "tt2"
 		$tv2 = "tv2"
 		$displayName = "New Custom Display Name."
-
+		$newSubdomain = $subdomain + "new"
 		$tags = $actual.Tag
 		$tags.add($tt2, $tv2)
 		# Set resource
-		$job = Set-AzureRmIotCentralApp -ResourceGroupName $rgname -Name $rname -Tag $tags -DisplayName $displayName -AsJob
+		$job = Set-AzureRmIotCentralApp -ResourceGroupName $rgname -Name $rname -Tag $tags -DisplayName $displayName -Subdomain $newSubdomain -AsJob
 		$job | Wait-Job
 		$result = $job | Receive-Job
 
@@ -103,7 +103,7 @@ function Test-IotCentralAppLifecycleManagement{
 		Assert-AreEqual $actual.Tag.Item($tt1) $tv1
 		Assert-AreEqual $actual.Tag.Item($tt2) $tv2
 		Assert-AreEqual $actual.DisplayName $displayName
-		Assert-AreEqual $actual.Subdomain $subdomain
+		Assert-AreEqual $actual.Subdomain $newSubdomain
 		Assert-AreEqual $actual.Name $rname
 
 		# Delete

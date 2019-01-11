@@ -35,6 +35,12 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Subdomain of the IoT Central Application.")]
+        [ValidateNotNullOrEmpty]
+        public string Subdomain { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Iot Central Application Resource Tags.")]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
@@ -53,7 +59,9 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
         private AppPatch CreateApplicationPatch()
         {
             App existingIotCentralApplication = this.GetApplication();
+            this.EnsureSubdomainAvailabilityOrThrow();
             this.SetApplicationDisplayName(existingIotCentralApplication);
+            this.SetApplicationSubdomain(existingIotCentralApplication);
             this.SetApplicationTags(existingIotCentralApplication);
             AppPatch iotCentralAppPatch = IotCentralUtils.CreateAppPatch(existingIotCentralApplication);
             return iotCentralAppPatch;
@@ -64,11 +72,26 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
             application.DisplayName = this.DisplayName ?? application.DisplayName;
         }
 
+        private void SetApplicationSubdomain(App application)
+        {
+            application.Subdomain = this.Subdomain ?? application.Subdomain;
+        }
+
         private void SetApplicationTags(App application)
         {
             if (this.Tag != null)
             {
                 application.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
+            }
+        }
+
+        private void EnsureSubdomainAvailabilityOrThrow()
+        {
+            if (this.Subdomain != null)
+            {
+                var checkSubdomainInputs = new OperationInputs(this.Subdomain, resourceType);
+                var subdomainAvailabilityInfo = this.IotCentralClient.Apps.CheckSubdomainAvailability(checkSubdomainInputs);
+                IotCentralUtils.EnsureAvailabilityOrThrow(subdomainAvailabilityInfo);
             }
         }
 

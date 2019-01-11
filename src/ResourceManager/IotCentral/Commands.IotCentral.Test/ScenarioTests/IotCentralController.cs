@@ -134,8 +134,6 @@ namespace Microsoft.Azure.Commands.IotCentral.Test.ScenarioTests
 
         private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            var env = TestEnvironmentFactory.GetTestEnvironment();
-
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
