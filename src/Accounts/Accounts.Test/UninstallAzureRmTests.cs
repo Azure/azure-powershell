@@ -5,6 +5,7 @@ using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
+using System.IO;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -25,15 +26,15 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var dataStore = new MockDataStore();
             AzureSession.Instance.DataStore = dataStore;
             dataStore.CreateDirectory("testmodulepath");
-            dataStore.CreateDirectory("testmodulepath\\AzureRM.ApiManagement");
-            dataStore.WriteFile("testmodulepath\\AzureRM.ApiManagement\\file1", new byte[2]);
+            dataStore.CreateDirectory(Path.Combine("testmodulepath", "AzureRM.ApiManagement"));
+            dataStore.WriteFile(Path.Combine("testmodulepath", Path.Combine("AzureRM.ApiManagement", "file1")), new byte[2]);
             // Ensure read does not throw
-            Assert.True(dataStore.DirectoryExists("testmodulepath\\AzureRM.ApiManagement"));
+            Assert.True(dataStore.DirectoryExists(Path.Combine("testmodulepath", "AzureRM.ApiManagement")));
 
             var cmdlet = new UninstallAzureRmCommand();
             Environment.SetEnvironmentVariable("PSModulePath", "testmodulepath");
             cmdlet.ExecuteCmdlet();
-            Assert.False(dataStore.DirectoryExists("testmodulepath\\AzureRM.ApiManagement"));
+            Assert.False(dataStore.DirectoryExists(Path.Combine("testmodulepath", "AzureRM.ApiManagement")));
         }
 
         [Fact]
@@ -44,19 +45,19 @@ namespace Microsoft.Azure.Commands.Profile.Test
             AzureSession.Instance.DataStore = dataStore;
             dataStore.CreateDirectory("testmodulepath");
             dataStore.CreateDirectory("testmodulepath2");
-            dataStore.CreateDirectory("testmodulepath\\AzureRM.ApiManagement");
-            dataStore.CreateDirectory("testmodulepath2\\AzureRM.Profile");
-            dataStore.WriteFile("testmodulepath\\AzureRM.ApiManagement\\file1", new byte[2]);
-            dataStore.WriteFile("testmodulepath2\\AzureRM.Profile\\file1", new byte[2]);
+            dataStore.CreateDirectory(Path.Combine("testmodulepath", "AzureRM.ApiManagement"));
+            dataStore.CreateDirectory(Path.Combine("testmodulepath2", "AzureRM.Profile"));
+            dataStore.WriteFile(Path.Combine("testmodulepath", Path.Combine("AzureRM.ApiManagement", "file1")), new byte[2]);
+            dataStore.WriteFile(Path.Combine("testmodulepath2", Path.Combine("AzureRM.Profile", "file1")), new byte[2]);
             // Ensure read does not throw
-            Assert.True(dataStore.DirectoryExists("testmodulepath\\AzureRM.ApiManagement"));
-            Assert.True(dataStore.DirectoryExists("testmodulepath2\\AzureRM.Profile"));
+            Assert.True(dataStore.DirectoryExists(Path.Combine("testmodulepath", "AzureRM.ApiManagement")));
+            Assert.True(dataStore.DirectoryExists(Path.Combine("testmodulepath2", "AzureRM.Profile")));
 
             var cmdlet = new UninstallAzureRmCommand();
             Environment.SetEnvironmentVariable("PSModulePath", "testmodulepath;testmodulepath2;pathdoesntexist");
             cmdlet.ExecuteCmdlet();
-            Assert.False(dataStore.DirectoryExists("testmodulepath\\AzureRM.ApiManagement"));
-            Assert.False(dataStore.DirectoryExists("testmodulepath2\\AzureRM.Profile"));
+            Assert.False(dataStore.DirectoryExists(Path.Combine("testmodulepath", "AzureRM.ApiManagement")));
+            Assert.False(dataStore.DirectoryExists(Path.Combine("testmodulepath2", "AzureRM.Profile")));
         }
 
         [Fact]
@@ -66,11 +67,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var dataStore = new MockDataStore();
             AzureSession.Instance.DataStore = dataStore;
             dataStore.CreateDirectory("testmodulepath");
-            dataStore.CreateDirectory("testmodulepath\\AzureRM.ApiManagement");
-            dataStore.WriteFile("testmodulepath\\AzureRM.ApiManagement\\file1", new byte[2]);
-            dataStore.LockAccessToFile("testmodulepath\\AzureRM.ApiManagement");
+            dataStore.CreateDirectory(Path.Combine("testmodulepath", "AzureRM.ApiManagement"));
+            dataStore.WriteFile(Path.Combine("testmodulepath", Path.Combine("AzureRM.ApiManagement", "file1")), new byte[2]);
+            dataStore.LockAccessToFile(Path.Combine("testmodulepath", "AzureRM.ApiManagement"));
             // Ensure read does not throw
-            Assert.True(dataStore.DirectoryExists("testmodulepath\\AzureRM.ApiManagement"));
+            Assert.True(dataStore.DirectoryExists(Path.Combine("testmodulepath", "AzureRM.ApiManagement")));
 
             var cmdlet = new UninstallAzureRmCommand();
             Environment.SetEnvironmentVariable("PSModulePath", "testmodulepath");
