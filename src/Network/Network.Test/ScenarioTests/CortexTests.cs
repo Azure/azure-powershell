@@ -38,7 +38,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "backend regression. vinayada to update once rolled out")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.pgtm)]
         public void TestCortexExpressRouteCRUD()
@@ -46,7 +46,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexExpressRouteCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "New-AzureStorageContext not imported; re-record once fixed")]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestCortexDownloadConfig()
