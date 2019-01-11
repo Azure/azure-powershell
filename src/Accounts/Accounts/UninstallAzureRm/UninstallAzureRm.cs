@@ -51,25 +51,28 @@ namespace Microsoft.Azure.Commands.Profile.UninstallAzureRm
             var paths = Environment.GetEnvironmentVariable("PSModulePath").Split(';');
             foreach (var path in paths)
             {
-                var modules = dataStore.GetDirectories(path);
-                foreach(var module in modules)
+                if (dataStore.DirectoryExists(path))
                 {
-                    var moduleName = module.Split('\\').LastOrDefault();
-                    if (AzureModules.Any(x => x.Equals(moduleName, StringComparison.OrdinalIgnoreCase)))
+                    var modules = dataStore.GetDirectories(path);
+                    foreach (var module in modules)
                     {
-                        if (ShouldProcess(module, string.Format(Properties.Resources.ShouldRemoveModule, moduleName)))
+                        var moduleName = module.Split('\\').LastOrDefault();
+                        if (AzureModules.Any(x => x.Equals(moduleName, StringComparison.OrdinalIgnoreCase)))
                         {
-                            try
+                            if (ShouldProcess(module, string.Format(Properties.Resources.ShouldRemoveModule, moduleName)))
                             {
-                                dataStore.DeleteDirectory(module);
-                                if (PassThru)
+                                try
                                 {
-                                    WriteObject(moduleName);
+                                    dataStore.DeleteDirectory(module);
+                                    if (PassThru)
+                                    {
+                                        WriteObject(moduleName);
+                                    }
                                 }
-                            }
-                            catch (UnauthorizedAccessException accessException)
-                            {
-                                throw new UnauthorizedAccessException(Properties.Resources.RemoveModuleError, accessException);
+                                catch (UnauthorizedAccessException accessException)
+                                {
+                                    throw new UnauthorizedAccessException(Properties.Resources.RemoveModuleError, accessException);
+                                }
                             }
                         }
                     }
