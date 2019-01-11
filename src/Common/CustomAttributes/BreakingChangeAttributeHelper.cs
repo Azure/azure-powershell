@@ -107,9 +107,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
                 {
                     attribute.PrintCustomAttributeInfo(type, false, writeOutput);
                 }
+
+                writeOutput(string.Format(Resources.BreakingChangesAttributesFooterMessage, BREAKING_CHANGE_ATTRIBUTE_INFORMATION_LINK));
             }
-            
-            writeOutput(string.Format(Resources.BreakingChangesAttributesFooterMessage, BREAKING_CHANGE_ATTRIBUTE_INFORMATION_LINK));
         }
 
         /**
