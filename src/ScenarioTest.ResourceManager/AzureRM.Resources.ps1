@@ -1,6 +1,7 @@
 ﻿function Get-AzureRmResourceGroup
 {
   [CmdletBinding()]
+  [Alias("Get-AzResourceGroup")]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] [alias("ResourceGroupName")] $Name,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] $Location,
@@ -11,11 +12,10 @@
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    if($Name -eq $null) {
+    if([string]::IsNullOrEmpty($Name)) {
       $getTask = $client.ResourceGroups.ListWithHttpMessagesAsync($null, $null, [System.Threading.CancellationToken]::None)
-      $rg = $getTask.Result
-      $resourceGroup = List-ResourceGroup
-      Write-Output $resourceGroup
+      $rg = $getTask.Result.Body
+      Write-Output $rg
     } else {
       $getTask = $client.ResourceGroups.GetWithHttpMessagesAsync($Name, $null, [System.Threading.CancellationToken]::None)
       $rg = $getTask.Result
@@ -30,9 +30,33 @@
   END {}
 }
 
+function Get-AzureRmResource
+{
+  [CmdletBinding()]
+  [Alias("Get-AzResource")]
+  param(
+    [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceType)
+  BEGIN {
+    $context = Get-Context
+    $client = Get-ResourcesClient $context
+  }
+  PROCESS {
+    $result = $client.Resources.ListWithHttpMessagesAsync().Result.Body
+    if (![string]::IsNullOrEmpty($ResourceType)) {
+      $result = $result | Where-Object { $_.Type -eq $ResourceType }
+      Write-Output $result
+    }
+    else {
+      Write-Output $result
+    }
+  }
+  END {}
+}
+
 function Get-AzureRmResourceProvider
 {
   [CmdletBinding()]
+  [Alias("Get-AzResourceProvider")]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ProviderNamespace)
   BEGIN {
@@ -49,6 +73,7 @@ function Get-AzureRmResourceProvider
 function New-AzureRmResourceGroup
 {
   [CmdletBinding()]
+  [Alias("New-AzResourceGroup")]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] [alias("ResourceGroupName")] $Name,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] $Location,
@@ -72,6 +97,7 @@ function New-AzureRmResourceGroup
 function New-AzureRmResourceGroupDeployment
 {
   [CmdletBinding()]
+  [Alias("New-AzResourceGroupDeployment")]
   param(
     [string] [alias("DeploymentName")] $Name,
     [string] $ResourceGroupName,
@@ -118,6 +144,7 @@ function New-AzureRmResourceGroupDeployment
 function Remove-AzureRmResourceGroup
 {
   [CmdletBinding()]
+  [Alias("Remove-AzResourceGroup")]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] [alias("ResourceGroupName")] $Name,
     [switch] $Force)
@@ -135,6 +162,7 @@ function Remove-AzureRmResourceGroup
 function New-AzureRmRoleAssignmentWithId
 {
     [CmdletBinding()]
+    [Alias("New-AzRoleAssignmentWithId")]
     param(
         [Guid]   [Parameter()] [alias("Id", "PrincipalId")] $ObjectId,
         [string] [Parameter()] [alias("Email", "UserPrincipalName")] $SignInName,
@@ -221,6 +249,7 @@ function New-AzureRmRoleAssignmentWithId
 function New-AzureRmRoleDefinitionWithId
 {
     [CmdletBinding()]
+    [Alias("New-AzRoleDefinitionWithId")]
     param(
         [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition] [Parameter()] $Role,
         [string] [Parameter()] $InputFile,
@@ -271,10 +300,5 @@ function Get-ResourcesClient
 function Get-ResourceGroup {
   param([string] $name, [string] $location, [string] $id)
   $rg = New-Object PSObject -Property @{"ResourceGroupName" = $name; "Location" = $location; "ResourceId" = $id}
-  return $rg
-}
-
-function List-ResourceGroup {
-  $rg = New-Object PSObject -Property @{"ResourceGroupName" = $name; "Location" = $location; }
   return $rg
 }
