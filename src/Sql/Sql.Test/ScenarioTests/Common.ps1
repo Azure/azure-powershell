@@ -146,6 +146,17 @@ function Create-TestEnvironmentWithParams ($params, $location, $serverVersion)
 
 <#
 .SYNOPSIS
+Creates the test environment needed to perform the Sql vulnerability assessment tests on managed instance
+#>
+function Create-InstanceTestEnvironmentWithParams ($params, $location)
+{
+	Create-BasicManagedTestEnvironmentWithParams $params $location
+
+	New-AzureRmStorageAccount -StorageAccountName $params.storageAccount -ResourceGroupName $params.rgname -Location $location -Type Standard_GRS
+}
+
+<#
+.SYNOPSIS
 Creates the test environment needed to perform the Sql auditing tests
 #>
 function Create-ClassicTestEnvironmentWithParams ($params, $location, $serverVersion)
@@ -175,6 +186,33 @@ function Create-BasicTestEnvironmentWithParams ($params, $location, $serverVersi
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	New-AzureRmSqlServer -ResourceGroupName $params.rgname -ServerName $params.serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
 	New-AzureRmSqlDatabase -DatabaseName $params.databaseName -ResourceGroupName $params.rgname -ServerName $params.serverName -Edition Basic
+}
+
+<#
+.SYNOPSIS
+Creates the basic test environment needed to perform the Sql data security tests - resource group, managed instance and managed database
+#>
+function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
+{
+	New-AzureRmResourceGroup -Name $params.rgname -Location $location
+	
+	# Setup VNET 
+	$vnetName = "cl_initial"
+	$subnetName = "Cool"
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+	$credentials = Get-ServerCredential
+ 	$licenseType = "BasePrice"
+  	$storageSizeInGB = 32
+ 	$vCore = 16
+ 	$skuName = "GP_Gen4"
+	$collation = "SQL_Latin1_General_CP1_CI_AS"
+
+	$managedInstance = New-AzureRmSqlInstance -ResourceGroupName $params.rgname -Name $params.serverName `
+ 			-Location $location -AdministratorCredential $credentials -SubnetId $subnetId `
+  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName
+
+	New-AzureRmSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName -Collation $collation
 }
 
 <#

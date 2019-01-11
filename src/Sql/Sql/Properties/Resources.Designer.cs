@@ -322,6 +322,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Managed Instance Advanced Threat Protection is not defined. Please run Enable-AzSqlInstanceAdvancedThreatProtection first..
+        /// </summary>
+        internal static string ManagedInstanceAdvancedThreatProtectionIsNotDefined {
+            get {
+                return ResourceManager.GetString("ManagedInstanceAdvancedThreatProtectionIsNotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You need to provide at least one email address or set EmailAdmins to True..
         /// </summary>
         internal static string NeedToProvideEmail {
@@ -700,11 +709,29 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings first..
+        /// </summary>
+        internal static string RunSetManagedDatabaseVulnerabilityAssemenSettings {
+            get {
+                return ResourceManager.GetString("RunSetManagedDatabaseVulnerabilityAssemenSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlDatabaseVulnerabilityAssessmentSettings first..
         /// </summary>
         internal static string RunSetVulnerabilityAssemenSettings {
             get {
                 return ResourceManager.GetString("RunSetVulnerabilityAssemenSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzSqlInstanceDatabaseVulnerabilityAssessmentScanRecord output via pipe..
+        /// </summary>
+        internal static string ScanIdManagedDatabaseParameterIsRequired {
+            get {
+                return ResourceManager.GetString("ScanIdManagedDatabaseParameterIsRequired", resourceCulture);
             }
         }
         
@@ -1011,6 +1038,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase {
             get {
                 return ResourceManager.GetString("VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong parameter type.
+        /// </summary>
+        internal static string VulnerabilityAssessmentWrongParameterType {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentWrongParameterType", resourceCulture);
             }
         }
     }
