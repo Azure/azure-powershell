@@ -1,6 +1,7 @@
 ﻿function Get-AzureRmResourceGroup
 {
   [CmdletBinding()]
+  [Alias("Get-AzResourceGroup")]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] [alias("ResourceGroupName")] $Name,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] $Location,
@@ -62,6 +63,7 @@ function Get-AzureRmResource
 function Get-AzureRmResourceProvider
 {
   [CmdletBinding()]
+  [Alias("Get-AzResourceProvider")]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ProviderNamespace)
   BEGIN {
@@ -78,6 +80,7 @@ function Get-AzureRmResourceProvider
 function New-AzureRmResourceGroup
 {
   [CmdletBinding()]
+  [Alias("New-AzResourceGroup")]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] [alias("ResourceGroupName")] $Name,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] $Location,
@@ -101,6 +104,7 @@ function New-AzureRmResourceGroup
 function New-AzureRmResourceGroupDeployment
 {
   [CmdletBinding()]
+  [Alias("New-AzResourceGroupDeployment")]
   param(
     [string] [alias("DeploymentName")] $Name,
     [string] $ResourceGroupName,
@@ -147,6 +151,7 @@ function New-AzureRmResourceGroupDeployment
 function Remove-AzureRmResourceGroup
 {
   [CmdletBinding()]
+  [Alias("Remove-AzResourceGroup")]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] [alias("ResourceGroupName")] $Name,
     [switch] $Force)
@@ -164,6 +169,7 @@ function Remove-AzureRmResourceGroup
 function New-AzureRmRoleAssignmentWithId
 {
     [CmdletBinding()]
+    [Alias("New-AzRoleAssignmentWithId")]
     param(
         [Guid]   [Parameter()] [alias("Id", "PrincipalId")] $ObjectId,
         [string] [Parameter()] [alias("Email", "UserPrincipalName")] $SignInName,
@@ -250,6 +256,7 @@ function New-AzureRmRoleAssignmentWithId
 function New-AzureRmRoleDefinitionWithId
 {
     [CmdletBinding()]
+    [Alias("New-AzRoleDefinitionWithId")]
     param(
         [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition] [Parameter()] $Role,
         [string] [Parameter()] $InputFile,
