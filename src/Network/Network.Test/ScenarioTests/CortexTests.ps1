@@ -248,7 +248,7 @@ function Test-CortexExpressRouteCRUD
     # Setup
     $rgName = Get-ResourceName
     # ExpressRoute gateways have been enabled only in westcentralus region
-    $rglocation = "westcentralus"
+    $rglocation = Get-ProviderLocation "ResourceManagement" "westcentralus"
 
     $virtualWanName = Get-ResourceName
     $virtualHubName = Get-ResourceName
