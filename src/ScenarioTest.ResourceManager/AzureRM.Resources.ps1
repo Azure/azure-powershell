@@ -43,7 +43,6 @@ function Get-AzureRmResource
   PROCESS {
     $result = $client.Resources.ListWithHttpMessagesAsync().Result.Body
     if (![string]::IsNullOrEmpty($ResourceType)) {
-      Write-Host "wrong"
       $output = @()
       $result | ForEach-Object {
         if ($_.Type -eq $ResourceType) {
@@ -53,7 +52,6 @@ function Get-AzureRmResource
       Write-Output $output
     }
     else {
-      Write-Host "here"
       Write-Output $result
     }
   }
