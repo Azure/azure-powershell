@@ -77,12 +77,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             }
         }
 
-        protected override void InitializeQosEvent()
-        {
-            // No data collection for this commandlet
-        }
+        // No data collection for this commandlet
+        protected override void InitializeQosEvent() { }
 
-        protected IAzureContext CurrentContext
+        public IAzureContext CurrentContext
         {
             get
             {
@@ -121,7 +119,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                 throw new ArgumentNullException(nameof(Instance));
             }
 
-            // user must specify the fully qualified server name. For example, westus2.asazure.windows.net/testserver
+            // user must specify the fully qualified server name. For example, asazure://westus2.asazure.windows.net/testserver
             if (!Uri.TryCreate(Instance, UriKind.Absolute, out var uriResult) || uriResult.Scheme != AsAzureEndpoints.UriSchemeAsAzure)
             {
                 throw new PSInvalidOperationException(string.Format(Resources.InvalidServerName, Instance));
@@ -132,7 +130,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             DnsSafeHost = uriResult.DnsSafeHost;
             ServerName = uriResult.PathAndQuery.Trim('/');
 
-            AsAzureDataplaneClient = CreateAsAzureDataplaneClient(DnsSafeHost, CurrentContext, () => { return new HttpClient(); });
+            if (_asAzureDataplaneClient == null)
+            {
+                AsAzureDataplaneClient = CreateAsAzureDataplaneClient(DnsSafeHost, CurrentContext, () => { return new HttpClient(); });
+            }
         }
 
         protected ClusterResolutionResult ClusterResolve(Uri clusterUri, string serverName)
