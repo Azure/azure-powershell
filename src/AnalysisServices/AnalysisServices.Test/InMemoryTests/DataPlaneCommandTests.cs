@@ -32,6 +32,7 @@ using Xunit.Abstractions;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 {
@@ -76,35 +77,31 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
         //public void Authentication_Succeeds()
         //{
         //    var context = new PSAzureContext();
-        //    var cmdlet = new TestAuthenticationCmdlet()
-        //    {
-        //        CurrentContext = context
-        //    };
-
-        //    cmdlet.InvokeBeginProcessing();
-        //    cmdlet.InvokeEndProcessing();
+        //    TestAuthentication(context);
         //}
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Authentication_FailsFromNullContext()
         {
-            var cmdlet = new TestAuthenticationCmdlet()
-            {
-                CurrentContext = null
-            };
-            Assert.Throws<TargetInvocationException>(() => cmdlet.InvokeBeginProcessing());
+            Assert.Throws<TargetInvocationException>(() => TestAuthentication(null));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Authentication_FailsFromBadContext()
         {
+            Assert.Throws<TargetInvocationException>(() => TestAuthentication(new PSAzureContext()));
+        }
+
+        private void TestAuthentication(IAzureContext context)
+        {
             var cmdlet = new TestAuthenticationCmdlet()
             {
-                CurrentContext = new PSAzureContext()
+                CurrentContext = context
             };
-            Assert.Throws<TargetInvocationException>(() => cmdlet.InvokeBeginProcessing());
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.InvokeEndProcessing();
         }
 
         #endregion
