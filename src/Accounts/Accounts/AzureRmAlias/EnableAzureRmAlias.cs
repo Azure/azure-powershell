@@ -25,12 +25,12 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     /// <summary>
     /// Cmdlet to clear default options. 
     /// </summary>
-    [Cmdlet("Enable","AzureRmAlias", SupportsShouldProcess = true)]
+    [Cmdlet("Enable", "AzureRmAlias", SupportsShouldProcess = true)]
     [OutputType(typeof(string))]
     public class EnableAzureRmAlias : AzureRMCmdlet
     {
-        [Parameter(Mandatory = false, HelpMessage = "Indicates what scope aliases should be enabled for.  Default is 'Process'")]
-        [ValidateSet("Process", "CurrentUser", "LocalMachine")]
+        [Parameter(Mandatory = false, HelpMessage = "Indicates what scope aliases should be enabled for.  Default is 'Local'")]
+        [ValidateSet("Local", "Process", "CurrentUser", "LocalMachine")]
         public string Scope { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Indicates which modules to enable aliases for. If none are specified, default is all modules.")]
@@ -76,7 +76,15 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                         foreach (var name in modulemapping.Keys)
                         {
                             // For every alias, add a pairing in the Alias provider
-                            SessionState.PSVariable.Set("Alias:" + modulemapping[name], name);
+                            if (Scope != null && string.Equals(Scope, "Process", StringComparison.OrdinalIgnoreCase))
+                            {
+                                this.InvokeCommand.InvokeScript("Set-Alias -Scope Global -Name " + modulemapping[name] + " -Value " + name);
+                            }
+                            else
+                            {
+                                SessionState.PSVariable.Set("Alias:" + modulemapping[name], name);
+                            }
+
                             if (PassThru)
                             {
                                 WriteObject(modulemapping[name] + " : " + name);
