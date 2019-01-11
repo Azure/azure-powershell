@@ -29,5 +29,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(
                 _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadGetJob");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
+        public void TestAzureVmWorkloadCancelJob()
+        {
+            TestController.NewInstance.RunPsTest(
+                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadCancelJob");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
+        public void TestAzureVmWorkloadWaitJob()
+        {
+            TestController.NewInstance.RunPsTest(
+                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadWaitJob");
+        }
     }
 }

@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string FriendlyName = "The name of the resource being managed by the" +
                 " Azure Backup service (for example: resource name of the VM).";
             public const string ResourceId = "Azure VM Id";
+            public const string ContainerObj = "Container object that needs to be re registered.";
         }
 
         internal static class Common
@@ -87,6 +88,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string AzureFileStorageAccountResourceGroupName = "Azure file share storage account resource group name";
             public const string BackupType = "Type of backup to be performed";
             public const string EnableCompression = "If enabling compression is required";
+            public const string ParentID = "Parent ID";
         }
 
         internal static class ProtectableItem

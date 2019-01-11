@@ -457,8 +457,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             itemModel = new AzureWorkloadSQLDatabaseProtectedItem(
                 protectedItem,
-                IdUtils.GetNameFromUri(containerUri),
-                ContainerType.AzureWorkload,
+                containerUri,
+                ContainerType.AzureVMAppContainer,
                 policyName);
             return itemModel;
         }
@@ -566,8 +566,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             itemModel = new AzureWorkloadProtectableItem(
                 protectableItem,
-                IdUtils.GetNameFromUri(containerUri),
-                ContainerType.AzureWorkload);
+                containerUri,
+                ContainerType.AzureVMAppContainer);
 
             return itemModel;
         }
@@ -585,16 +585,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             return itemModels;
-        }
-
-        public static SettingsBase GetPSPolicySetting(ServiceClientModel.Settings policySettings)
-        {
-            SettingsBase settings = new SettingsBase();
-            settings.IsCompression = policySettings.IsCompression;
-            settings.Issqlcompression = policySettings.Issqlcompression;
-            settings.TimeZone = policySettings.TimeZone;
-
-            return settings;
         }
 
         public static void GetPSSubProtectionPolicy(AzureVmWorkloadPolicy azureVmWorkloadPolicyModel,

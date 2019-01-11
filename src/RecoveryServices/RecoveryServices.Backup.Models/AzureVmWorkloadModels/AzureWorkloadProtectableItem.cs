@@ -23,6 +23,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureWorkloadProtectableItem : ProtectableItemBase
     {
         /// <summary>
+        /// Gets or sets friendly name of the backup item.
+        /// </summary>
+        public string FriendlyName { get; set; }
+
+        /// <summary>
+        /// Gets or sets state of the back up item
+        /// </summary>
+        public string ProtectionState { get; set; }
+
+        /// <summary>
         /// Type of protectable item
         /// </summary>
         public string ProtectableItemType { get; set; }
@@ -75,6 +85,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             : base(workloadProtectableItemResource, containerName, containerType)
         {
             AzureVmWorkloadProtectableItem protectedItem = (AzureVmWorkloadProtectableItem)workloadProtectableItemResource.Properties;
+            FriendlyName = protectedItem.FriendlyName;
+            ProtectionState = protectedItem.ProtectionState;
             ParentName = protectedItem.ParentName;
             ParentUniqueName = protectedItem.ParentUniqueName;
             ServerName = protectedItem.ServerName;
@@ -83,7 +95,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             Subprotectableitemcount = protectedItem.Subprotectableitemcount;
             Prebackupvalidation = protectedItem.Prebackupvalidation;
             ProtectableItemType = workloadProtectableItemResource.Properties.GetType().ToString();
-            if(workloadProtectableItemResource.Properties.GetType() == typeof(AzureVmWorkloadSQLAvailabilityGroupProtectableItem))
+            if (workloadProtectableItemResource.Properties.GetType() == typeof(AzureVmWorkloadSQLAvailabilityGroupProtectableItem))
             {
                 ProtectableItemType = CmdletModel.ProtectableItemType.SQLAvailabilityGroup.ToString();
             }

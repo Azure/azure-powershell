@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Triggers the enable protection operation for the given item
         /// </summary>
         /// <returns>The job response returned from the service</returns>
-        public RestAzureNS.AzureOperationResponse EnableProtection()
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableProtection()
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Triggers the disable protection operation for the given item
         /// </summary>
         /// <returns>The job response returned from the service</returns>
-        public RestAzureNS.AzureOperationResponse DisableProtection()
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> DisableProtection()
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
@@ -185,48 +185,61 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
 
             bool isComputeAzureVM = false;
+            isComputeAzureVM = IsComputeAzureVM(item.VirtualMachineId);
 
-            if (deleteBackupData)
+            // construct Service Client protectedItem request
+
+            AzureIaaSVMProtectedItem properties;
+            if (isComputeAzureVM == false)
             {
-                return ServiceClientAdapter.DeleteProtectedItem(
+                properties = new AzureIaaSClassicComputeVMProtectedItem();
+            }
+            else
+            {
+                properties = new AzureIaaSComputeVMProtectedItem();
+            }
+
+            properties.PolicyId = string.Empty;
+            properties.ProtectionState = ProtectionState.ProtectionStopped;
+            properties.SourceResourceId = item.SourceResourceId;
+
+            ProtectedItemResource serviceClientRequest = new ProtectedItemResource()
+            {
+                Properties = properties,
+            };
+
+            return ServiceClientAdapter.CreateOrUpdateProtectedItem(
+                containerUri,
+                protectedItemUri,
+                serviceClientRequest,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+        }
+
+        public RestAzureNS.AzureOperationResponse DisableProtectionWithDeleteData()
+        {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            bool deleteBackupData = (bool)ProviderData[ItemParams.DeleteBackupData];
+
+            ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
+
+            AzureVmItem item = (AzureVmItem)ProviderData[ItemParams.Item];
+            // do validations
+
+            ValidateAzureVMDisableProtectionRequest(itemBase);
+
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
+
+            return ServiceClientAdapter.DeleteProtectedItem(
                                 containerUri,
                                 protectedItemUri,
                                 vaultName: vaultName,
                                 resourceGroupName: resourceGroupName);
-            }
-            else
-            {
-                isComputeAzureVM = IsComputeAzureVM(item.VirtualMachineId);
-
-                // construct Service Client protectedItem request
-
-                AzureIaaSVMProtectedItem properties;
-                if (isComputeAzureVM == false)
-                {
-                    properties = new AzureIaaSClassicComputeVMProtectedItem();
-                }
-                else
-                {
-                    properties = new AzureIaaSComputeVMProtectedItem();
-                }
-
-                properties.PolicyId = string.Empty;
-                properties.ProtectionState = ProtectionState.ProtectionStopped;
-                properties.SourceResourceId = item.SourceResourceId;
-
-                ProtectedItemResource serviceClientRequest = new ProtectedItemResource()
-                {
-                    Properties = properties,
-                };
-
-                return ServiceClientAdapter.CreateOrUpdateProtectedItem(
-                    containerUri,
-                    protectedItemUri,
-                    serviceClientRequest,
-                    vaultName: vaultName,
-                    resourceGroupName: resourceGroupName);
-            }
         }
+
 
         /// <summary>
         /// Triggers the backup operation for the given item

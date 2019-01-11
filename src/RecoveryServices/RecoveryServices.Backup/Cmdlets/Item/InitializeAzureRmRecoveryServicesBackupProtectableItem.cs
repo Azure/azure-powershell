@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Get list of items associated with the recovery services vault 
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet("Initialize", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtectableItem"), OutputType(typeof(ItemBase))]
+    [Cmdlet("Initialize", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtectableItem", SupportsShouldProcess = true),
+        OutputType(typeof(ContainerBase))]
     public class InitializeAzureRmRecoveryServicesBackupProtectableItem : RSBackupVaultCmdletBase
     {
         /// <summary>
@@ -46,6 +47,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public Models.WorkloadType WorkloadType { get; set; }
 
+        /// <summary>
+        /// Return the container to be deleted
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Return the container to be deleted.")]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -61,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     q => q.WorkloadType == workloadType && q.BackupManagementType == backupManagementType);
                 string errorMessage = string.Empty;
                 var inquiryResponse = ServiceClientAdapter.InquireContainer(
-                "VMAppContainer;" + Container.Name,
+                Container.Name,
                 queryParams,
                 vaultName,
                 vaultResourceGroupName);
@@ -88,7 +95,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         inquiryResponse.Response.StatusCode);
                     Logger.Instance.WriteDebug(errorMessage);
                 }
-            });
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(Container);
+                }
+            }, ShouldProcess(Container.Name, VerbsLifecycle.Invoke));
         }
     }
 }

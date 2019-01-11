@@ -13,9 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -109,8 +111,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     azureWorkloadRecoveryConfig.RestoredDBName = null;
                     azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";
                     azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
+                    if (RecoveryPoint == null)
+                    {
+                        Models.AzureWorkloadRecoveryPoint azureWorkloadRecoveryPoint = new Models.AzureWorkloadRecoveryPoint()
+                        {
+                            Id = Item.Id + "/recoveryPoints/DefaultRangeRecoveryPoint",
+                            RecoveryPointId = "DefaultRangeRecoveryPoint"
+                        };
+                        azureWorkloadRecoveryConfig.RecoveryPoint = azureWorkloadRecoveryPoint;
+                    }
                 }
-                else if (AlternateWorkloadRestore.IsPresent)
+                else if (AlternateWorkloadRestore.IsPresent && Item == null)
                 {
                     azureWorkloadRecoveryConfig.RestoreRequestType = "Alternate WL Restore";
                     azureWorkloadRecoveryConfig.TargetServer = ((AzureWorkloadSQLDatabaseProtectedItem)TargetItem).ServerName;
@@ -121,8 +132,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
                     List<SQLDataDirectoryMapping> targetPhysicalPath = new List<SQLDataDirectoryMapping>();
 
-                    RecoveryPointBase rpDetails = GetRpDetails(vaultName, resourceGroupName);
-                    foreach (var dataDirectoryPath in ((Models.AzureWorkloadRecoveryPoint)rpDetails).DataDirectoryPaths)
+                    string itemId = GetItemId(RecoveryPoint.Id);
+                    IList<SQLDataDirectory> dataDirectoryPaths = GetRpDetails(vaultName, resourceGroupName);
+                    foreach (var dataDirectoryPath in dataDirectoryPaths)
                     {
                         targetPhysicalPath.Add(new SQLDataDirectoryMapping()
                         {
@@ -141,13 +153,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     azureWorkloadRecoveryConfig.TargetServer = ((AzureWorkloadSQLDatabaseProtectedItem)TargetItem).ServerName;
                     azureWorkloadRecoveryConfig.TargetInstance = ((AzureWorkloadSQLDatabaseProtectedItem)TargetItem).ParentName;
                     azureWorkloadRecoveryConfig.RestoredDBName =
-                    GetRestoredDBName(((AzureWorkloadSQLDatabaseProtectedItem)TargetItem).ParentName, RecoveryPoint.ItemName, currentTime);
+                    GetRestoredDBName(((AzureWorkloadSQLDatabaseProtectedItem)TargetItem).ParentName, Item.Name, currentTime);
                     azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";
                     azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
                     List<SQLDataDirectoryMapping> targetPhysicalPath = new List<SQLDataDirectoryMapping>();
 
-                    RecoveryPointBase rpDetails = GetRpDetails(vaultName, resourceGroupName);
-                    foreach (var dataDirectoryPath in ((Models.AzureWorkloadRecoveryPoint)rpDetails).DataDirectoryPaths)
+                    List<SQLDataDirectory> dataDirectory = GetDataDirectory(vaultName, resourceGroupName, Item.Id, PointInTime);
+                    foreach (var dataDirectoryPath in dataDirectory)
                     {
                         targetPhysicalPath.Add(new SQLDataDirectoryMapping()
                         {
@@ -157,6 +169,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             TargetPath = GetTargetPath(dataDirectoryPath.Path, dataDirectoryPath.LogicalName, offset)
                         });
                     }
+
+                    Models.AzureWorkloadRecoveryPoint azureWorkloadRecoveryPoint = new Models.AzureWorkloadRecoveryPoint()
+                    {
+                        Id = Item.Id + "/recoveryPoints/DefaultRangeRecoveryPoint",
+                        RecoveryPointId = "DefaultRangeRecoveryPoint"
+                    };
+                    azureWorkloadRecoveryConfig.RecoveryPoint = azureWorkloadRecoveryPoint;
+
                     azureWorkloadRecoveryConfig.targetPhysicalPath = targetPhysicalPath;
                     azureWorkloadRecoveryConfig.ContainerId = GetContainerId(TargetItem.Id);
                 }
@@ -183,17 +203,59 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             return resourceIdentifier.ToString();
         }
 
+        public string GetItemId(string recoveryPointId)
+        {
+            string[] split = recoveryPointId.Split(new string[] { "/" }, StringSplitOptions.None);
+            return string.Join("/", split.ToList().GetRange(0, split.Length - 2));
+
+        }
         public string GetContainerId(string itemId)
         {
             string[] split = itemId.Split(new string[] { "/" }, StringSplitOptions.None);
             return string.Join("/", split.ToList().GetRange(0, split.Length - 2));
         }
 
-        public RecoveryPointBase GetRpDetails(string vaultName, string resourceGroupName)
+        public List<SQLDataDirectory> GetDataDirectory(string vaultName, string resourceGroupName, string itemId, DateTime pointInTime)
         {
-            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(TargetItem.Id);
-            string containerUri = HelperUtils.GetContainerUri(uriDict, TargetItem.Id);
-            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, TargetItem.Id);
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(itemId);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, itemId);
+            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, itemId);
+            var queryFilterString = QueryBuilder.Instance.GetQueryString(new BMSRPQueryObject()
+            {
+                RestorePointQueryType = RestorePointQueryType.Log,
+                ExtendedInfo = true
+            });
+
+            ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
+            queryFilter.Filter = queryFilterString;
+
+            var rpResponse = ServiceClientAdapter.GetRecoveryPoints(
+                containerUri,
+                protectedItemName,
+                queryFilter,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+            List<SQLDataDirectory> dataDirectoryPaths = new List<SQLDataDirectory>();
+            if (rpResponse[0].Properties.GetType() == typeof(AzureWorkloadSQLPointInTimeRecoveryPoint))
+            {
+                AzureWorkloadSQLPointInTimeRecoveryPoint recoveryPoint =
+                    rpResponse[0].Properties as AzureWorkloadSQLPointInTimeRecoveryPoint;
+                if (recoveryPoint.ExtendedInfo != null)
+                {
+                    foreach (SQLDataDirectory dataDirectoryPath in recoveryPoint.ExtendedInfo.DataDirectoryPaths)
+                    {
+                        dataDirectoryPaths.Add(dataDirectoryPath);
+                    }
+                }
+            }
+            return dataDirectoryPaths;
+        }
+
+        public IList<SQLDataDirectory> GetRpDetails(string vaultName, string resourceGroupName)
+        {
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(RecoveryPoint.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, RecoveryPoint.Id);
+            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, RecoveryPoint.Id);
 
             var rpResponse = ServiceClientAdapter.GetRecoveryPointDetails(
                 containerUri,
@@ -201,7 +263,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 RecoveryPoint.RecoveryPointId,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
-            return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, TargetItem);
+            AzureWorkloadSQLRecoveryPoint recoveryPoint = rpResponse.Properties as AzureWorkloadSQLRecoveryPoint;
+            return recoveryPoint.ExtendedInfo.DataDirectoryPaths;
         }
 
         public string GetRestoredDBName(string parentName, string itemName, DateTime currentTime)

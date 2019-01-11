@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
@@ -50,6 +51,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public Models.WorkloadType WorkloadType { get; set; }
 
+        /// <summary>
+        /// Policy to be associated with this item as part of the protection operation.
+        /// </summary>
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy)]
+        [ValidateNotNullOrEmpty]
+        public PolicyBase Policy { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -67,18 +75,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     Dictionary<UriEnums, string> keyValueDict =
                     HelperUtils.ParseUri(InputItem);
+
                     protectedItemUri = HelperUtils.GetProtectableItemUri(
                         keyValueDict, InputItem);
-                    ProtectionIntent properties = new ProtectionIntent();
+
+                    AzureRecoveryServiceVaultProtectionIntent properties = new AzureRecoveryServiceVaultProtectionIntent();
                     properties.BackupManagementType = ServiceClientModel.BackupManagementType.AzureWorkload;
                     properties.ItemId = InputItem;
-                    properties.PolicyId = "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestwlRG1bca8/providers/Microsoft.RecoveryServices/vaults/pstestwlRSV1bca8/backupPolicies/HourlyLogBackup";
+                    properties.PolicyId = Policy.Id;
                     ProtectionIntentResource serviceClientRequest = new ProtectionIntentResource()
                     {
                         Properties = properties
                     };
-                    var getResponse = ServiceClientAdapter.CreateOrUpdateProtectionIntent(
-                        protectedItemUri,
+                    var itemResponse = ServiceClientAdapter.CreateOrUpdateProtectionIntent(
+                        Guid.NewGuid().ToString(),
                         serviceClientRequest,
                         vaultName: vaultName,
                         resourceGroupName: resourceGroupName);

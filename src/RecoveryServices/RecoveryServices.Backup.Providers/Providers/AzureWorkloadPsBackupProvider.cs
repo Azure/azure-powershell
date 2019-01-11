@@ -34,9 +34,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
     {
         private const int defaultOperationStatusRetryTimeInMilliSec = 5 * 1000; // 5 sec
         private const string separator = ";";
-        private const CmdletModel.RetentionDurationType defaultFileRetentionType =
-            CmdletModel.RetentionDurationType.Days;
-        private const int defaultFileRetentionCount = 30;
         Dictionary<Enum, object> ProviderData { get; set; }
         ServiceClientAdapter ServiceClientAdapter { get; set; }
         AzureWorkloadProviderHelper AzureWorkloadProviderHelper { get; set; }
@@ -62,7 +59,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return CreateorModifyPolicy().Body;
         }
 
-        public RestAzureNS.AzureOperationResponse DisableProtection()
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> DisableProtection()
+        {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            bool deleteBackupData = ProviderData.ContainsKey(ItemParams.DeleteBackupData) ?
+                (bool)ProviderData[ItemParams.DeleteBackupData] : false;
+
+            ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
+
+            AzureWorkloadSQLDatabaseProtectedItem item = (AzureWorkloadSQLDatabaseProtectedItem)ProviderData[ItemParams.Item];
+            AzureVmWorkloadSQLDatabaseProtectedItem properties = new AzureVmWorkloadSQLDatabaseProtectedItem();
+
+            return EnableOrModifyProtection(disableWithRetentionData: true);
+
+        }
+
+        public RestAzureNS.AzureOperationResponse DisableProtectionWithDeleteData()
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
@@ -76,28 +89,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string protectedItemUri = "";
             AzureVmWorkloadSQLDatabaseProtectedItem properties = new AzureVmWorkloadSQLDatabaseProtectedItem();
 
-            if (deleteBackupData)
-            {
-                //Disable protection and delete backup data
-                ValidateAzureWorkloadSQLDatabaseDisableProtectionRequest(itemBase);
+            ValidateAzureWorkloadSQLDatabaseDisableProtectionRequest(itemBase);
 
-                Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
-                containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
-                protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
+            containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
+            protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
 
-                return ServiceClientAdapter.DeleteProtectedItem(
-                                    containerUri,
-                                    protectedItemUri,
-                                    vaultName: vaultName,
-                                    resourceGroupName: vaultResourceGroupName);
-            }
-            else
-            {
-                return EnableOrModifyProtection(disableWithRetentionData: true);
-            }
+            return ServiceClientAdapter.DeleteProtectedItem(
+                                containerUri,
+                                protectedItemUri,
+                                vaultName: vaultName,
+                                resourceGroupName: vaultResourceGroupName);
         }
 
-        public RestAzureNS.AzureOperationResponse EnableProtection()
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableProtection()
         {
             return EnableOrModifyProtection();
         }
@@ -261,6 +266,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     extendedInfo.RecoveryPointCount =
                         (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
                             serviceClientExtendedInfo.RecoveryPointCount : 0);
+                    ((AzureWorkloadSQLDatabaseProtectedItem)itemModel).LatestRecoveryPoint = ((AzureVmWorkloadSQLDatabaseProtectedItem)protectedItemGetResponse.Properties).LastRecoveryPoint;
                     ((AzureWorkloadSQLDatabaseProtectedItem)itemModel).ExtendedInfo = extendedInfo;
                 });
 
@@ -366,9 +372,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (AzureWorkloadRecoveryConfig)ProviderData[RestoreWLBackupItemParams.WLRecoveryConfig];
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
 
-            if (wLRecoveryConfig.RecoveryPoint != null)
+            if (wLRecoveryConfig.RecoveryPoint.ContainerName != null)
             {
-                AzureWorkloadSQLRestoreRequest azureWorkloadSQLRestoreRequest = new AzureWorkloadSQLRestoreRequest();
+                AzureWorkloadSQLRestoreRequest azureWorkloadSQLRestoreRequest =
+                    new AzureWorkloadSQLRestoreRequest();
 
                 azureWorkloadSQLRestoreRequest.SourceResourceId = wLRecoveryConfig.SourceResourceId;
                 azureWorkloadSQLRestoreRequest.ShouldUseAlternateTargetLocation =
@@ -391,10 +398,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
                 triggerRestoreRequest.Properties = azureWorkloadSQLRestoreRequest;
             }
+            else
+            {
+                AzureWorkloadSQLPointInTimeRestoreRequest azureWorkloadSQLPointInTimeRestoreRequest =
+                    new AzureWorkloadSQLPointInTimeRestoreRequest();
+
+                azureWorkloadSQLPointInTimeRestoreRequest.SourceResourceId = wLRecoveryConfig.SourceResourceId;
+                azureWorkloadSQLPointInTimeRestoreRequest.ShouldUseAlternateTargetLocation =
+                    string.Compare(wLRecoveryConfig.RestoreRequestType, "Original WL Restore") != 0 ? true : false;
+                azureWorkloadSQLPointInTimeRestoreRequest.IsNonRecoverable =
+                    string.Compare(wLRecoveryConfig.NoRecoveryMode, "Enabled") == 0 ? true : false;
+                azureWorkloadSQLPointInTimeRestoreRequest.RecoveryType =
+                    string.Compare(wLRecoveryConfig.RestoreRequestType, "Original WL Restore") == 0 ?
+                    RecoveryType.OriginalLocation : RecoveryType.AlternateLocation;
+                if (azureWorkloadSQLPointInTimeRestoreRequest.RecoveryType == RecoveryType.AlternateLocation)
+                {
+                    azureWorkloadSQLPointInTimeRestoreRequest.TargetInfo = new TargetRestoreInfo()
+                    {
+                        OverwriteOption = string.Compare(wLRecoveryConfig.OverwriteWLIfpresent, "No") == 0 ?
+                        OverwriteOptions.FailOnConflict : OverwriteOptions.Overwrite,
+                        DatabaseName = wLRecoveryConfig.RestoredDBName,
+                        ContainerId = wLRecoveryConfig.ContainerId
+                    };
+                    azureWorkloadSQLPointInTimeRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;
+                }
+                azureWorkloadSQLPointInTimeRestoreRequest.PointInTime = wLRecoveryConfig.PointInTime;
+                triggerRestoreRequest.Properties = azureWorkloadSQLPointInTimeRestoreRequest;
+            }
 
             var response = ServiceClientAdapter.RestoreDisk(
                 (AzureRecoveryPoint)wLRecoveryConfig.RecoveryPoint,
-                "sea",
+                "LocationNotRequired",
                 triggerRestoreRequest,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName,
@@ -515,7 +549,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 resourceGroupName: resourceGroupName);
         }
 
-        private RestAzureNS.AzureOperationResponse EnableOrModifyProtection(bool disableWithRetentionData = false)
+        private RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableOrModifyProtection(bool disableWithRetentionData = false)
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
@@ -551,14 +585,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
             else
             {
-                Dictionary<UriEnums, string> keyValueDict =
-                    HelperUtils.ParseUri(protectableItem.Id);
-                containerUri = HelperUtils.GetContainerUri(
-                    keyValueDict, protectableItem.Id);
-                protectedItemUri = HelperUtils.GetProtectableItemUri(
-                    keyValueDict, protectableItem.Id);
+                if (protectableItem != null)
+                {
+                    Dictionary<UriEnums, string> keyValueDict =
+                        HelperUtils.ParseUri(protectableItem.Id);
+                    containerUri = HelperUtils.GetContainerUri(
+                        keyValueDict, protectableItem.Id);
+                    protectedItemUri = HelperUtils.GetProtectableItemUri(
+                        keyValueDict, protectableItem.Id);
 
-                properties.PolicyId = policy.Id;
+                    properties.PolicyId = policy.Id;
+                }
+                else if (item != null)
+                {
+                    Dictionary<UriEnums, string> keyValueDict =
+                        HelperUtils.ParseUri(item.Id);
+                    containerUri = HelperUtils.GetContainerUri(
+                        keyValueDict, item.Id);
+                    protectedItemUri = HelperUtils.GetProtectedItemUri(
+                        keyValueDict, item.Id);
+
+                    properties.PolicyId = policy.Id;
+                }
             }
 
             ProtectedItemResource serviceClientRequest = new ProtectedItemResource()
@@ -581,35 +629,58 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string containerName = (string)ProviderData[ContainerParams.Name];
             string backupManagementType = (string)ProviderData[ContainerParams.BackupManagementType];
             string workloadType = (string)ProviderData[ContainerParams.ContainerType];
+            ContainerBase containerBase = (ContainerBase)ProviderData[ContainerParams.Container];
+            AzureVmWorkloadContainer container = (AzureVmWorkloadContainer)ProviderData[ContainerParams.Container];
 
-            //Trigger Discovery
-            ODataQuery<BMSRefreshContainersQueryObject> queryParam = new ODataQuery<BMSRefreshContainersQueryObject>(
-               q => q.BackupManagementType
-                    == ServiceClientModel.BackupManagementType.AzureWorkload);
-            AzureWorkloadProviderHelper.RefreshContainer(vaultName, vaultResourceGroupName, queryParam);
-
-            List<ProtectableContainerResource> unregisteredVmContainers =
-                    GetUnRegisteredVmContainers(vaultName, vaultResourceGroupName);
-            ProtectableContainerResource unregisteredVmContainer = unregisteredVmContainers.Find(
-                vmContainer => string.Compare(vmContainer.Name.Split(';').Last(),
-                containerName, true) == 0);
-
-            if (unregisteredVmContainer != null)
+            ProtectionContainerResource protectionContainerResource = null;
+            if (container == null)
             {
-                ProtectionContainerResource protectionContainerResource =
-                        new ProtectionContainerResource(unregisteredVmContainer.Id,
-                        unregisteredVmContainer.Name);
+                //Trigger Discovery
+                ODataQuery<BMSRefreshContainersQueryObject> queryParam = new ODataQuery<BMSRefreshContainersQueryObject>(
+                   q => q.BackupManagementType
+                        == ServiceClientModel.BackupManagementType.AzureWorkload);
+                AzureWorkloadProviderHelper.RefreshContainer(vaultName, vaultResourceGroupName, queryParam);
+
+                List<ProtectableContainerResource> unregisteredVmContainers =
+                        GetUnRegisteredVmContainers(vaultName, vaultResourceGroupName);
+                ProtectableContainerResource unregisteredVmContainer = unregisteredVmContainers.Find(
+                    vmContainer => string.Compare(vmContainer.Name.Split(';').Last(),
+                    containerName, true) == 0);
+
+                if (unregisteredVmContainer != null)
+                {
+                    protectionContainerResource =
+                           new ProtectionContainerResource(unregisteredVmContainer.Id,
+                           unregisteredVmContainer.Name);
+                    AzureVMAppContainerProtectionContainer azureVMContainer = new AzureVMAppContainerProtectionContainer(
+                        friendlyName: containerName,
+                        backupManagementType: backupManagementType,
+                        sourceResourceId: unregisteredVmContainer.Properties.ContainerId,
+                        workloadType: workloadType.ToString());
+                    protectionContainerResource.Properties = azureVMContainer;
+                    AzureWorkloadProviderHelper.RegisterContainer(unregisteredVmContainer.Name,
+                    protectionContainerResource,
+                    vaultName,
+                    vaultResourceGroupName);
+                }
+            }
+            else
+            {
+                protectionContainerResource =
+                            new ProtectionContainerResource(container.Id,
+                            container.Name);
                 AzureVMAppContainerProtectionContainer azureVMContainer = new AzureVMAppContainerProtectionContainer(
                     friendlyName: containerName,
                     backupManagementType: backupManagementType,
-                    sourceResourceId: unregisteredVmContainer.Properties.ContainerId,
-                    workloadType: workloadType.ToString());
-                protectionContainerResource.Properties = azureVMContainer;
+                    sourceResourceId: container.SourceResourceId,
+                    workloadType: workloadType.ToString(),
+                    operationType: OperationType.Reregister);
 
-                AzureWorkloadProviderHelper.RegisterContainer(unregisteredVmContainer.Name,
-                        protectionContainerResource,
-                        vaultName,
-                        vaultResourceGroupName);
+                protectionContainerResource.Properties = azureVMContainer;
+                AzureWorkloadProviderHelper.RegisterContainer(container.Name,
+                    protectionContainerResource,
+                    vaultName,
+                    vaultResourceGroupName);
             }
         }
 
@@ -643,10 +714,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         private void ValidateAzureWorkloadContainerType(CmdletModel.ContainerType type)
         {
-            if (type != CmdletModel.ContainerType.AzureWorkload)
+            if (type != CmdletModel.ContainerType.AzureVMAppContainer)
             {
                 throw new ArgumentException(string.Format(Resources.UnExpectedContainerTypeException,
-                                            CmdletModel.ContainerType.AzureWorkload.ToString(),
+                                            CmdletModel.ContainerType.AzureVMAppContainer.ToString(),
                                             type.ToString()));
             }
         }

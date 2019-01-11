@@ -173,10 +173,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             var response = RSAdapter.Client.RegisteredIdentities.DeleteWithHttpMessagesAsync(
-                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                vaultName ?? BmsAdapter.GetResourceName(),
-                containerName,
-                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
+             resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+             vaultName ?? BmsAdapter.GetResourceName(),
+             containerName,
+             cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
+            return response;
+        }
+
+        /// <summary>
+        /// Triggers unregister of a workload container in service
+        /// </summary>
+        /// <param name="containerName">Name of the container to unregister</param>
+        public RestAzureNS.AzureOperationResponse UnregisterWorkloadContainers(
+            string containerName,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            var response = BmsAdapter.Client.ProtectionContainers.UnregisterWithHttpMessagesAsync(
+            vaultName ?? BmsAdapter.GetResourceName(),
+            resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+            AzureFabricName,
+            containerName,
+            cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
             return response;
         }
     }

@@ -123,10 +123,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         string backupManagementType = ProtectableItem.BackupManagementType.ToString();
                         string workloadType = ConversionUtils.GetServiceClientWorkloadType(ProtectableItem.WorkloadType.ToString());
+                        string containerName = "VMAppContainer;" + ((AzureWorkloadProtectableItem)ProtectableItem).ContainerName;
                         ODataQuery<BMSPOQueryObject> queryParam = new ODataQuery<BMSPOQueryObject>(
                         q => q.BackupManagementType
                              == backupManagementType &&
-                             q.WorkloadType == workloadType);
+                             q.WorkloadType == workloadType &&
+                             q.ContainerName == containerName);
 
                         WriteDebug("going to query service to get list of protectable items");
                         List<WorkloadProtectableItemResource> protectableItems =
@@ -144,10 +146,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             ((AzureWorkloadProtectableItem)ProtectableItem).ServerName) == 0 &&
                             string.Compare(((AzureWorkloadProtectableItem)itemModels[protitemindex]).ProtectableItemType,
                             ((AzureWorkloadProtectableItem)ProtectableItem).ProtectableItemType) == 0 &&
-                            ((AzureWorkloadProtectableItem)itemModels[protitemindex]).Subprotectableitemcount > 0)
+                            ((AzureWorkloadProtectableItem)itemModels[protitemindex]).Subinquireditemcount > 0)
                             {
                                 for (int index = protitemindex + 1;
-                                index <= protitemindex + ((AzureWorkloadProtectableItem)ProtectableItem).Subprotectableitemcount;
+                                index <= protitemindex + ((AzureWorkloadProtectableItem)ProtectableItem).Subinquireditemcount;
                                 index++)
                                 {
                                     PsBackupProviderManager providerManager =

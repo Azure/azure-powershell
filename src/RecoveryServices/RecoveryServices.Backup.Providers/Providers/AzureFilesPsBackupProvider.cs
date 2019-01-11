@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Triggers the enable protection operation for the given item
         /// </summary>
         /// <returns>The job response returned from the service</returns>
-        public RestAzureNS.AzureOperationResponse EnableProtection()
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableProtection()
         {
             return EnableOrModifyProtection();
         }
@@ -72,7 +72,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Triggers the disable protection operation for the given item
         /// </summary>
         /// <returns>The job response returned from the service</returns>
-        public RestAzureNS.AzureOperationResponse DisableProtection()
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> DisableProtection()
+        {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            bool deleteBackupData = ProviderData.ContainsKey(ItemParams.DeleteBackupData) ?
+                (bool)ProviderData[ItemParams.DeleteBackupData] : false;
+
+            ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
+
+            AzureFileShareItem item = (AzureFileShareItem)ProviderData[ItemParams.Item];
+
+            AzureFileshareProtectedItem properties = new AzureFileshareProtectedItem();
+
+            return EnableOrModifyProtection(disableWithRetentionData: true);
+
+        }
+
+        public RestAzureNS.AzureOperationResponse DisableProtectionWithDeleteData()
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
@@ -87,25 +104,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string protectedItemUri = "";
             AzureFileshareProtectedItem properties = new AzureFileshareProtectedItem();
 
-            if (deleteBackupData)
-            {
-                //Disable protection and delete backup data
-                ValidateAzureFileShareDisableProtectionRequest(itemBase);
+            ValidateAzureFileShareDisableProtectionRequest(itemBase);
 
-                Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
-                containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
-                protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
+            containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
+            protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
 
-                return ServiceClientAdapter.DeleteProtectedItem(
-                                    containerUri,
-                                    protectedItemUri,
-                                    vaultName: vaultName,
-                                    resourceGroupName: vaultResourceGroupName);
-            }
-            else
-            {
-                return EnableOrModifyProtection(disableWithRetentionData: true);
-            }
+            return ServiceClientAdapter.DeleteProtectedItem(
+                                containerUri,
+                                protectedItemUri,
+                                vaultName: vaultName,
+                                resourceGroupName: vaultResourceGroupName);
         }
 
         public List<ContainerBase> ListProtectionContainers()
@@ -673,7 +682,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        private RestAzureNS.AzureOperationResponse EnableOrModifyProtection(bool disableWithRetentionData = false)
+        private RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableOrModifyProtection(bool disableWithRetentionData = false)
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
