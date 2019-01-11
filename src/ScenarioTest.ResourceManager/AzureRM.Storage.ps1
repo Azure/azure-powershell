@@ -9,17 +9,9 @@ function Get-AzureRmStorageAccount
   BEGIN { 
     $context = Get-Context
     $client = Get-StorageClient $context
-    $version = $client.GetType().Assembly.GetName().Version
   }
   PROCESS {
-    if ($version.Major -gt 3)
-    {
-        $getTask = $client.StorageAccounts.GetPropertiesWithHttpMessagesAsync($ResourceGroupName, $name, $null, [System.Threading.CancellationToken]::None)
-    }
-    else
-    {
-        $getTask = $client.StorageAccounts.GetPropertiesAsync($ResourceGroupName, $name, [System.Threading.CancellationToken]::None)
-    }
+    $getTask = $client.StorageAccounts.GetPropertiesWithHttpMessagesAsync($ResourceGroupName, $name)
     $sa = $getTask.Result
 
     if($sa -ne $null)
@@ -45,46 +37,23 @@ function New-AzureRmStorageAccount
   BEGIN { 
     $context = Get-Context
     $client = Get-StorageClient $context
-    $version = $client.GetType().Assembly.GetName().Version
   }
   PROCESS {
-    $createParms = New-Object -Type Microsoft.Azure.Management.Storage.Models.StorageAccountCreateParameters
-	if ($version.Major -lt 5)
-	{
-		if ($typeString -eq $null)
+    $createParms = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.StorageAccountCreateParameters
+	  if ([string]::IsNullOrEmpty($typeString))
 		{
-		  $Type = [Microsoft.Azure.Management.Storage.Models.AccountType]::StandardLRS
+		  $Type = [Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName]::StandardLRS
 		}
 		else
 		{
-		  $Type = Parse-Type $typeString $version.Major
+		  $Type = Parse-Type $typeString
 		}
 
-		$createParms.AccountType = $Type
-	}
-	else
-	{
-		if ($typeString -eq $null)
-		{
-		  $Type = [Microsoft.Azure.Management.Storage.Models.SkuName]::StandardLRS
-		}
-		else
-		{
-		  $Type = Parse-Type $typeString $version.Major
-		}
-
-		$createParms.Sku = New-Object -Type Microsoft.Azure.Management.Storage.Models.Sku $Type
-	}
+		$createParms.Sku = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku $Type
     $createParms.Location = $Location
-    if ($version.Major -gt 3)
-    {
-        $getTask = $client.StorageAccounts.CreateWithHttpMessagesAsync($ResourceGroupName, $name, $createParms, $null, [System.Threading.CancellationToken]::None)
-    }
-    else
-    {
-        $getTask = $client.StorageAccounts.CreateAsync($ResourceGroupName, $name, $createParms,[System.Threading.CancellationToken]::None)
-    }
-    $sa = $getTask.Result
+    $getTask = $client.StorageAccounts.CreateWithHttpMessagesAsync($ResourceGroupName, $name, $createParms)
+    $sa = $getTask.Result.Body
+    Write-Output $sa
   }
   END {}
 
@@ -105,22 +74,18 @@ function Set-AzureRmStorageAccount
     $version = $client.GetType().Assembly.GetName().Version
   }
   PROCESS {
-    $createParms = New-Object -Type Microsoft.Azure.Management.Storage.Models.StorageAccountUpdateParameters
-    $createParms.AccountType = [Microsoft.Azure.Management.Storage.Models.AccountType]::StandardLRS
-
-    if ($version.Major -gt 3)
-    {
-        $getTask = $client.StorageAccounts.UpdateWithHttpMessagesAsync($ResourceGroupName, $Name, $createParms, $null, [System.Threading.CancellationToken]::None)
+    $createParms = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.StorageAccountUpdateParameters
+    if ([string]::IsNullOrEmpty($Type)) {
+      $Type = [Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName]::StandardLRS
     }
-    else
-    {
-        $getTask = $client.StorageAccounts.UpdateAsync($ResourceGroupName, $Name, $createParms, [System.Threading.CancellationToken]::None)
-    }
-    $sa = $getTask.Result
+    $sku = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku -ArgumentList @([Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName]::$type)
+    $createParms.Sku = $sku
+    $getTask = $client.StorageAccounts.UpdateWithHttpMessagesAsync($ResourceGroupName, $Name, $createParms)
+    $sa = $getTask.Result.Body
+    Write-Output $sa
   }
   END {}
 }
-
 
 function Get-AzureRmStorageAccountKey
 {
@@ -132,26 +97,10 @@ function Get-AzureRmStorageAccountKey
   BEGIN {  
     $context = Get-Context
     $client = Get-StorageClient $context
-    $version = $client.GetType().Assembly.GetName().Version
   }
   PROCESS {
-    if ($version.Major -gt 5)
-    {
-        $getTask = $client.StorageAccounts.ListKeysWithHttpMessagesAsync($ResourceGroupName, $name, $null, [System.Threading.CancellationToken]::None)
-        $result = $getTask.GetAwaiter().GetResult()
-        Write-Output $result.Body.Keys
-    }
-    elseif ($version.Major -gt 3)
-    {
-        $getTask = $client.StorageAccounts.ListKeysWithHttpMessagesAsync($ResourceGroupName, $name, $null, [System.Threading.CancellationToken]::None)
-        $result = $getTask.GetAwaiter().GetResult()
-        Write-Output $result.Body
-    }
-    else
-    {
-        $getTask = $client.StorageAccounts.ListKeysAsync($ResourceGroupName, $name, [System.Threading.CancellationToken]::None)
-        Write-Output $getTask.Result.StorageAccountKeys
-    }
+    $getTask = $client.StorageAccounts.ListKeysWithHttpMessagesAsync($ResourceGroupName, $name)
+    Write-Output $getTask.Result.Body.Keys
   }
   END {}
 }
@@ -169,15 +118,8 @@ function Remove-AzureRmStorageAccount
     $version = $client.GetType().Assembly.GetName().Version
   }
   PROCESS {
-    if ($version.Major -gt 3)
-    {
-        $getTask = $client.StorageAccounts.DeleteWithHttpMessagesAsync($ResourceGroupName, $name, $null, [System.Threading.CancellationToken]::None)
-    }
-    else
-    {
-        $getTask = $client.StorageAccounts.DeleteAsync($ResourceGroupName, $name, [System.Threading.CancellationToken]::None)
-    }
-    $sa = $getTask.Result
+    $getTask = $client.StorageAccounts.DeleteWithHttpMessagesAsync($ResourceGroupName, $name)
+    $sa = $getTask.Result.Body
   }
   END {}
 
@@ -188,37 +130,23 @@ function Get-Context
       return [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext
 }
 
- function Parse-Type
- {
-    param([string] $type, [int] $majorVersion)
-    $type = $type.Replace("_", "")
-	if ($majorVersion -lt 5)
-	{
-		$returnSkuName = [System.Enum]::Parse([Microsoft.Azure.Management.Storage.Models.AccountType], $type)
-	}
-	else
-	{
-		$returnSkuName = [System.Enum]::Parse([Microsoft.Azure.Management.Storage.Models.SkuName], $type)
-	}
-    return $returnSkuName;
- }
+function Parse-Type
+{
+  param([string] $type)
+  $type = $type.Replace("_", "")
+  $returnSkuName = [System.Enum]::Parse([Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName], $type)
+  return $returnSkuName;
+}
 
 function Get-StorageClient
 {
   param([Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext] $context)
     $factory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.ClientFactory
     [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext], [string]
-    $storageClient = [Microsoft.Azure.Management.Storage.StorageManagementClient]
+    $storageClient = [Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient]
     $storageVersion = [System.Reflection.Assembly]::GetAssembly($storageClient).GetName().Version
-    if ($storageVersion.Major -gt 3)
-    {
-      $method = [Microsoft.Azure.Commands.Common.Authentication.IClientFactory].GetMethod("CreateArmClient", $types)
-    }
-    else
-    {
-      $method = [Microsoft.Azure.Commands.Common.Authentication.IHyakClientFactory].GetMethod("CreateClient", $types)
-    }
-    $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Storage.StorageManagementClient])
+    $method = [Microsoft.Azure.Commands.Common.Authentication.IClientFactory].GetMethod("CreateArmClient", $types)
+    $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient])
     $arguments = $context, [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment+Endpoint]::ResourceManager
     $client = $closedMethod.Invoke($factory, $arguments)
     return $client
