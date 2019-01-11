@@ -29,8 +29,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// Deploy a web app from a ZIP, WAR, or JAR archive.
     /// </summary>
-    [Cmdlet("Publish", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp"), OutputType(typeof(PSSite))]
-    [OutputType(typeof(string))]
+    [Cmdlet("Publish", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet2Name), OutputType(typeof(PSSite))]
     public class PublishAzureWebAppCmdlet : WebAppOptionalSlotBaseCmdlet
     {
         // Poll status for a maximum of 20 minutes (1200 seconds / 2 seconds per status check)
@@ -39,6 +38,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Mandatory = true, HelpMessage = "The path of the archive file. ZIP, WAR, and JAR are supported.")]
         [ValidateNotNullOrEmpty]
         public string ArchivePath { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Deploy the web app without prompting for confirmation.")]
+        public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -65,32 +67,37 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 throw new Exception("Unknown archive type.");
             }
 
-            using (var s = File.OpenRead(ArchivePath))
+            Action zipDeployAction = () =>
             {
-                HttpClient client = new HttpClient();
-                var byteArray = Encoding.ASCII.GetBytes(user.PublishingUserName + ":" + user.PublishingPassword);
-                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
-                HttpContent fileContent = new StreamContent(s);
-                fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("multipart/form-data");
-                r = client.PostAsync(deployUrl, fileContent).Result;
+                using (var s = File.OpenRead(ArchivePath))
+                {
+                    HttpClient client = new HttpClient();
+                    var byteArray = Encoding.ASCII.GetBytes(user.PublishingUserName + ":" + user.PublishingPassword);
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+                    HttpContent fileContent = new StreamContent(s);
+                    fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("multipart/form-data");
+                    r = client.PostAsync(deployUrl, fileContent).Result;
 
-                int numChecks = 0;
-                do
-                {
-                    Thread.Sleep(TimeSpan.FromSeconds(2));
-                    r = client.GetAsync(deploymentStatusUrl).Result;
-                    numChecks++;
-                } while (r.StatusCode == HttpStatusCode.Accepted && numChecks < NumStatusChecks);
+                    int numChecks = 0;
+                    do
+                    {
+                        Thread.Sleep(TimeSpan.FromSeconds(2));
+                        r = client.GetAsync(deploymentStatusUrl).Result;
+                        numChecks++;
+                    } while (r.StatusCode == HttpStatusCode.Accepted && numChecks < NumStatusChecks);
 
-                if (r.StatusCode == HttpStatusCode.Accepted && numChecks >= NumStatusChecks)
-                {
-                    WriteWarning("Maximum status polling time exceeded. Deployment is still in progress.");
+                    if (r.StatusCode == HttpStatusCode.Accepted && numChecks >= NumStatusChecks)
+                    {
+                        WriteWarning("Maximum status polling time exceeded. Deployment is still in progress.");
+                    }
+                    else if (r.StatusCode != HttpStatusCode.OK)
+                    {
+                        WriteWarning("Deployment failed with status code=" + r.StatusCode + " reason=" + r.ReasonPhrase);
+                    }
                 }
-                else if (r.StatusCode != HttpStatusCode.OK)
-                {
-                    WriteWarning("Deployment failed with status code=" + r.StatusCode + " reason=" + r.ReasonPhrase);
-                }
-            }
+            };
+
+            ConfirmAction(this.Force.IsPresent, $"Contents of {ArchivePath} will be deployed to the web app {Name}.", "The web app has been deployed.", Name, zipDeployAction);
 
             PSSite app = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
             WriteObject(app);
