@@ -51,18 +51,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// Location of the publishsettings file web application
         /// </summary>
-        public const string AzurePublishSettingsFileUrl = "http://go.microsoft.com/fwlink/?LinkID=301775";
-        public const string ChinaPublishSettingsFileUrl = "http://go.microsoft.com/fwlink/?LinkID=301776";
+        public const string AzurePublishSettingsFileUrl = "https://go.microsoft.com/fwlink/?LinkID=301775";
+        public const string ChinaPublishSettingsFileUrl = "https://go.microsoft.com/fwlink/?LinkID=301776";
         public const string USGovernmentPublishSettingsFileUrl = "https://manage.windowsazure.us/publishsettings/index";
         public const string GermanPublishSettingsFileUrl = "https://manage.microsoftazure.de/publishsettings/index";
 
         /// <summary>
         /// Location of the maagement portal for the environment
         /// </summary>
-        public const string AzureManagementPortalUrl = "http://go.microsoft.com/fwlink/?LinkId=254433";
-        public const string ChinaManagementPortalUrl = "http://go.microsoft.com/fwlink/?LinkId=301902";
+        public const string AzureManagementPortalUrl = "https://go.microsoft.com/fwlink/?LinkId=254433";
+        public const string ChinaManagementPortalUrl = "https://go.microsoft.com/fwlink/?LinkId=301902";
         public const string USGovernmentManagementPortalUrl = "https://manage.windowsazure.us";
-        public const string GermanManagementPortalUrl = "http://portal.microsoftazure.de/";
+        public const string GermanManagementPortalUrl = "https://portal.microsoftazure.de/";
 
         /// <summary>
         /// The domain name suffix for storage services
