@@ -66,11 +66,7 @@
     <PackageReference Include="PowerShellStandard.Library" Version="5.1.0" PrivateAssets="All" />
   </ItemGroup>
   <PropertyGroup>
-<<<<<<< HEAD
-    <StorageToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.storage\1.0.265-preview\tools\</StorageToolsPath>
-=======
     <StorageToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.storage\1.1.13-preview\tools\</StorageToolsPath>
->>>>>>> d99d9f8f8d730782c5f654243e55138385fd9fe1
   </PropertyGroup>
   <ItemGroup Condition="'$(OmitJsonPackage)' != 'true'">
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3">
