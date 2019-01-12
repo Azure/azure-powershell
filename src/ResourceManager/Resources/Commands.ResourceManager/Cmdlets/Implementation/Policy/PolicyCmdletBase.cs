@@ -88,8 +88,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     return true;
                 }
 
-                var policyType = result.Properties["PolicyType"];
-                return policyType == null || string.Equals(policyType.Value.ToString(), filter.ToString(), StringComparison.OrdinalIgnoreCase);
+                var policyType = ((PSObject)result.Properties["Properties"].Value).Properties["policyType"].Value;
+                return policyType == null || string.Equals(policyType.ToString(), filter.ToString(), StringComparison.OrdinalIgnoreCase);
             };
 
             return resources
