@@ -101,7 +101,7 @@ function Validate-MarkdownHelp
                 continue
             }
 
-            $CmdletName = $file.Name -replace ".md",""
+            $CmdletName = $file.BaseName
 
             $fileErrors = @()
             $content = Get-Content $file.FullName
