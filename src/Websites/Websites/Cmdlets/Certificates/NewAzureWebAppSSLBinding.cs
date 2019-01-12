@@ -125,8 +125,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         webapp.Location,
                         pfxBlob: certificateBytes,
                         password: CertificatePassword,
-                        hostingEnvironmentProfile: (webapp.HostingEnvironmentProfile != null) ?
-                                                        webapp.HostingEnvironmentProfile : null,
+                        hostingEnvironmentProfile: webapp.HostingEnvironmentProfile ?? null,
                                                         serverFarmId: webapp.ServerFarmId);
 
                     try

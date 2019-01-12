@@ -820,7 +820,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             };
 
             var webapp = GetWebApp(resourceGroupName, webAppName, slotName);
-            webappWithNewSslBinding.Tags = webapp.Tags;
+            webappWithNewSslBinding.Tags = webapp?.Tags;
 
             if (shouldUseDeploymentSlot)
             {
