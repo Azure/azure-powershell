@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using System;
 using System.Collections.Generic;
@@ -22,8 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherNetworkConfigurationDiagnostic", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSNetworkConfigurationDiagnosticResponse))]
-
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherNetworkConfigurationDiagnostic", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = true), OutputType(typeof(PSNetworkConfigurationDiagnosticResponse))]
     public class InvokeNetworkWatcherNetworkConfigurationDiagnosticCommand : NetworkWatcherBaseCmdlet
     {
         [Parameter(
@@ -37,7 +37,6 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("Name")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
         [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
             ParameterSetName = "SetByName")]
         [ResourceGroupCompleter]
@@ -64,6 +62,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource ID.",
+            ParameterSetName = "SetByResourceId")]
+        [ValidateNotNull]
+        public string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The ID of the target resource to perform network configuration diagnostic. Valid options are VM, NetworkInterface, VMSS/NetworkInterface and Application Gateway.")]
         [ValidateNotNullOrEmpty]
         public string TargetResourceId { get; set; }
@@ -71,6 +77,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Verbosity level. Accepted values are 'Normal', 'Minimum', 'Full'.")]
+        [PSArgumentCompleter("Minimum", "Full", "Normal")]
         [ValidateNotNullOrEmpty]
         public string VerbosityLevel { get; set; }
 
@@ -78,7 +85,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "List of network configuration diagnostic profiles.")]
         [ValidateNotNullOrEmpty]
-        public List<PSNetworkConfigurationDiagnosticProfile> Profiles { get; set; }
+        public List<PSNetworkConfigurationDiagnosticProfile> Profile { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -93,7 +100,7 @@ namespace Microsoft.Azure.Commands.Network
             parameters.VerbosityLevel = this.VerbosityLevel;
 
             parameters.Profiles = new List<MNM.NetworkConfigurationDiagnosticProfile>();
-            foreach (PSNetworkConfigurationDiagnosticProfile profile in this.Profiles)
+            foreach (PSNetworkConfigurationDiagnosticProfile profile in this.Profile)
             {
                 MNM.NetworkConfigurationDiagnosticProfile profileMNM = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkConfigurationDiagnosticProfile>(profile);
                 parameters.Profiles.Add(profileMNM);
@@ -113,17 +120,20 @@ namespace Microsoft.Azure.Commands.Network
 
                 this.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
                 this.NetworkWatcherName = networkWatcher.Name;
-                response = this.NetworkWatcherClient.GetNetworkConfigurationDiagnostic(this.ResourceGroupName, this.NetworkWatcherName, parameters);
             }
             else if (string.Equals(this.ParameterSetName, "SetByResource", StringComparison.OrdinalIgnoreCase))
             {
-                response = this.NetworkWatcherClient.GetNetworkConfigurationDiagnostic(this.NetworkWatcher.ResourceGroupName, this.NetworkWatcher.Name, parameters);
+                this.ResourceGroupName = this.NetworkWatcher.ResourceGroupName;
+                this.NetworkWatcherName = this.NetworkWatcher.Name;
             }
-            else
+            else if (string.Equals(this.ParameterSetName, "SetByResourceId", StringComparison.OrdinalIgnoreCase))
             {
-                response = this.NetworkWatcherClient.GetNetworkConfigurationDiagnostic(this.ResourceGroupName, this.NetworkWatcherName, parameters);
+                var resourceInfo = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceInfo.ResourceGroupName;
+                this.NetworkWatcherName = resourceInfo.ResourceName;
             }
 
+            response = this.NetworkWatcherClient.GetNetworkConfigurationDiagnostic(this.ResourceGroupName, this.NetworkWatcherName, parameters);
             PSNetworkConfigurationDiagnosticResponse psResponse = NetworkResourceManagerProfile.Mapper.Map<PSNetworkConfigurationDiagnosticResponse>(response);
 
             WriteObject(psResponse);
