@@ -442,7 +442,7 @@
     <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings first.</value>
   </data>
   <data name="ManagedInstanceAdvancedThreatProtectionIsNotDefined" xml:space="preserve">
-    <value>Managed Instance Advanced Threat Protection is not defined. Please run Enable-AzSqlInstanceAdvancedThreatProtection first.</value>
+    <value>Managed Instance Advanced Threat Protection is not defined. Please run Enable-AzSqlInstanceAdvancedDataSecurityPolicy first.</value>
   </data>
   <data name="ScanIdManagedDatabaseParameterIsRequired" xml:space="preserve">
     <value>ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzSqlInstanceDatabaseVulnerabilityAssessmentScanRecord output via pipe.</value>

@@ -1,49 +1,49 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/disable-azsqlinstanceadvancedthreatprotection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlinstanceadvanceddatasecuritypolicy
 schema: 2.0.0
 ---
 
-# Disable-AzSqlInstanceAdvancedThreatProtection
+# Get-AzSqlInstanceAdvancedDataSecurityPolicy
 
 ## SYNOPSIS
-Disables Advanced Threat Protection on a managed instance.
+Gets Advanced Data Security policy of a managed instance.
 
 ## SYNTAX
 
 ```
-Disable-AzSqlInstanceAdvancedThreatProtection [-InputObject <AzureSqlManagedInstanceModel>]
- -InstanceName <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Get-AzSqlInstanceAdvancedDataSecurityPolicy [-InputObject <AzureSqlManagedInstanceModel>]
+ -InstanceName <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzSqlInstanceAdvancedThreatProtection** cmdlet disables Advanced Threat Protection on a managed instance.
+The **Get-AzSqlInstanceAdvancedDataSecurityPolicy** cmdlet retrives the Advanced Data Security policy of a managed instance.
 
 ## EXAMPLES
 
-### Example 1 - Disable managed instance Advanced Threat Protection
+### Example 1 - Gets managed instance Advanced Data Security
 ```powershell
-PS C:\>  Disable-AzSqlInstanceAdvancedThreatProtection `
+PS C:\>  Get-AzSqlInstanceAdvancedDataSecurityPolicy `
             -ResourceGroupName "ResourceGroup01" `
             -InstanceName "ManagedInstance01" `
 
 ResourceGroupName	         : ResourceGroup01
 ManagedInstanceName		     : ManagedInstance01
-IsEnabled		             : False
+IsEnabled		             : True
 ```
 
-### Example 2 - Disable server Advanced Threat Protection from managed instance resource
+### Example 2 - Gets managed instance Advanced Data Security from managed instance resource
 ```powershell
 PS C:\>  Get-AzSqlInstance `
            -ResourceGroupName "ResourceGroup01" `
            -Name "ManagedInstance01" `
-           | Disable-AzSqlInstanceAdvancedThreatProtection
+           | Get-AzSqlInstanceAdvancedDataSecurityPolicy
 
 ResourceGroupName	         : ResourceGroup01
 ManagedInstanceName		     : ManagedInstance01
-IsEnabled		             : False
+IsEnabled		             : True
 ```
 
 ## PARAMETERS
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The managed instance object to use with Advanced Threat Protection policy operation
+The managed instance object to use with Advanced Data Security policy operation
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
@@ -108,37 +108,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -150,7 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model.ManagedInstanceAdvancedThreatProtectionPolicyModel
+### Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model.ManagedInstanceAdvancedDataSecurityPolicyModel
 
 ## NOTES
 

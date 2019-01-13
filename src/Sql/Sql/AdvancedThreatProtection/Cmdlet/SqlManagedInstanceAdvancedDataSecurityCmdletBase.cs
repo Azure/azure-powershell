@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
-    public class SqlManagedInstanceAdvancedThreatProtectionCmdletBase : AzureSqlCmdletBase<ManagedInstanceAdvancedThreatProtectionPolicyModel, SqlAdvancedThreatProtectionAdapter>
+    public class SqlManagedInstanceAdvancedDataSecurityCmdletBase : AzureSqlCmdletBase<ManagedInstanceAdvancedDataSecurityPolicyModel, SqlAdvancedThreatProtectionAdapter>
     {
         protected const string UseParentResourceParameterSet = "UseParentResourceParameterSet";
 
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         [Parameter(ParameterSetName = UseParentResourceParameterSet,
             Mandatory = false,
             ValueFromPipeline = true,
-            HelpMessage = "The managed instance object to use with Advanced Threat Protection policy operation ")]
+            HelpMessage = "The managed instance object to use with Advanced Data Security policy operation ")]
         [ValidateNotNullOrEmpty]
         public AzureSqlManagedInstanceModel InputObject { get; set; }
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         /// Provides the model element that this cmdlet operates on
         /// </summary>
         /// <returns>A model object</returns>
-        protected override ManagedInstanceAdvancedThreatProtectionPolicyModel GetEntity()
+        protected override ManagedInstanceAdvancedDataSecurityPolicyModel GetEntity()
         {
             string resourceGroupName = ResourceGroupName;
             string managedInstanceName = InstanceName;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
                 managedInstanceName = InputObject.ManagedInstanceName;
             }
 
-            return new ManagedInstanceAdvancedThreatProtectionPolicyModel()
+            return new ManagedInstanceAdvancedDataSecurityPolicyModel()
             {
                 ResourceGroupName = resourceGroupName,
                 ManagedInstanceName = managedInstanceName

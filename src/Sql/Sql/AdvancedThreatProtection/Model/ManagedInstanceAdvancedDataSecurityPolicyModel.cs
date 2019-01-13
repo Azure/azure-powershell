@@ -16,7 +16,7 @@ using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model
 {
-    public class ManagedInstanceAdvancedThreatProtectionPolicyModel
+    public class ManagedInstanceAdvancedDataSecurityPolicyModel
     {
         /// <summary>
         /// Gets or sets the resource group
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model
         public string ManagedInstanceName { get; set; }
 
         /// <summary>
-        /// Gets or sets a value to indicate whether Advanced Threat Protection is enabled
+        /// Gets or sets a value to indicate whether Advanced Data Security is enabled
         /// </summary>
         [Ps1Xml(Label = "Enabled", Target = ViewControl.Table)]
         public bool IsEnabled { get; set; }

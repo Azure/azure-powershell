@@ -18,20 +18,27 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
     /// <summary>
-    /// Disables the Advanced Threat Protection of a specific server.
+    /// Returns the Advanced Data Security policy of a specific server.
     /// </summary>
-    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceAdvancedThreatProtection", SupportsShouldProcess = true), OutputType(typeof(ManagedInstanceAdvancedThreatProtectionPolicyModel))]
-    public class DisableAzureSqlManagedInstanceAdvancedThreatProtection : SqlManagedInstanceAdvancedThreatProtectionCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceAdvancedDataSecurityPolicy"), OutputType(typeof(ManagedInstanceAdvancedDataSecurityPolicyModel))]
+    public class GetAzureSqlManagedInstanceAdvancedDataSecurityPolicy : SqlManagedInstanceAdvancedDataSecurityCmdletBase
     {
         /// <summary>
-        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
-        /// object to the REST endpoint
+        /// Provides the model element that this cmdlet operates on
+        /// </summary>
+        /// <returns>A model object</returns>
+        protected override ManagedInstanceAdvancedDataSecurityPolicyModel GetEntity()
+        {
+            ManagedInstanceAdvancedDataSecurityPolicyModel model = base.GetEntity();
+            return ModelAdapter.GetManagedInstanceAdvancedThreatProtectionPolicy(model.ResourceGroupName, model.ManagedInstanceName);
+        }
+
+        /// <summary>
+        /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override ManagedInstanceAdvancedThreatProtectionPolicyModel PersistChanges(ManagedInstanceAdvancedThreatProtectionPolicyModel model)
+        protected override ManagedInstanceAdvancedDataSecurityPolicyModel PersistChanges(ManagedInstanceAdvancedDataSecurityPolicyModel model)
         {
-            model.IsEnabled = false;
-            ModelAdapter.SetManagedInstanceAdvancedThreatProtection(model);
             return model;
         }
     }
