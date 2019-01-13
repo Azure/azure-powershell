@@ -420,8 +420,8 @@ function Test-NetworkConfigurationDiagnostic
 
         #Invoke network configuration diagnostic
         $profile = New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile -Direction Inbound -Protocol Tcp -Source 10.1.1.4 -Destination * -DestinationPort 50 
-        $result1 = Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcher $nw -TargetResourceId $vm.Id -Profiles $profile
-        $result2 = Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcher $nw -TargetResourceId $vm.Id -Profiles $profile -VerbosityLevel Full
+        $result1 = Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcher $nw -TargetResourceId $vm.Id -Profile $profile
+        $result2 = Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcher $nw -TargetResourceId $vm.Id -Profile $profile -VerbosityLevel Full
 
         #Verification
         Assert-AreEqual $result1.results[0].profile.direction Inbound
