@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Managed Instance Advanced Threat Protection is not defined. Please run Enable-AzSqlInstanceAdvancedThreatProtection first..
+        ///   Looks up a localized string similar to Managed Instance Advanced Threat Protection is not defined. Please run Enable-AzSqlInstanceAdvancedDataSecurityPolicy first..
         /// </summary>
         internal static string ManagedInstanceAdvancedThreatProtectionIsNotDefined {
             get {

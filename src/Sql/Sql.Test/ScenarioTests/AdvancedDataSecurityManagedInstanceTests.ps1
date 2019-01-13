@@ -16,7 +16,7 @@
 .SYNOPSIS
 Tests the Advanced Threat Protection Policy cmdlets
 #>
-function Test-AdvancedThreatProtectionPolicyManagedInstanceTest
+function Test-AdvancedDataSecurityPolicyManagedInstanceTest
 {
 	# Setup
 	$testSuffix = getAssetName
@@ -26,7 +26,7 @@ function Test-AdvancedThreatProtectionPolicyManagedInstanceTest
 	try
 	{
 		# Get Advanced Threat Protection Policy
-		$policy = Get-AzSqlInstanceAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -InstanceName $params.serverName 
+		$policy = Get-AzSqlInstanceAdvancedDataSecurityPolicy -ResourceGroupName $params.rgname -InstanceName $params.serverName 
 				
 		# Validate the policy
 		Assert-AreEqual $params.rgname $policy.ResourceGroupName
@@ -34,8 +34,8 @@ function Test-AdvancedThreatProtectionPolicyManagedInstanceTest
 		Assert-False { $policy.IsEnabled }
 
 		# Enabled Advanced Threat Protection Policy
-		Enable-AzSqlInstanceAdvancedThreatProtection -ResourceGroupName $params.rgname -InstanceName $params.serverName 
-		$policy = Get-AzSqlInstanceAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -InstanceName $params.serverName 
+		Enable-AzSqlInstanceAdvancedDataSecurity -ResourceGroupName $params.rgname -InstanceName $params.serverName 
+		$policy = Get-AzSqlInstanceAdvancedDataSecurityPolicy -ResourceGroupName $params.rgname -InstanceName $params.serverName 
 				
 		# Validate the policy
 		Assert-AreEqual $params.rgname $policy.ResourceGroupName
@@ -43,8 +43,8 @@ function Test-AdvancedThreatProtectionPolicyManagedInstanceTest
 		Assert-True { $policy.IsEnabled }
 
 		# Disable Advanced Threat Protection Policy
-		Disable-AzSqlInstanceAdvancedThreatProtection -ResourceGroupName $params.rgname -InstanceName $params.serverName 
-		$policy = Get-AzSqlInstanceAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -InstanceName $params.serverName 
+		Disable-AzSqlInstanceAdvancedDataSecurity -ResourceGroupName $params.rgname -InstanceName $params.serverName 
+		$policy = Get-AzSqlInstanceAdvancedDataSecurityPolicy -ResourceGroupName $params.rgname -InstanceName $params.serverName 
 				
 		# Validate the policy
 		Assert-AreEqual $params.rgname $policy.ResourceGroupName

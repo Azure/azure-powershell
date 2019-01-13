@@ -1,49 +1,49 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/enable-azsqlinstanceadvancedthreatprotection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/disable-azsqlinstanceadvanceddatasecurity
 schema: 2.0.0
 ---
 
-# Enable-AzSqlInstanceAdvancedThreatProtection
+# Disable-AzSqlInstanceAdvancedDataSecurity
 
 ## SYNOPSIS
-Enables Advanced Threat Protection on a managed instance.
+Disables Advanced Data Security on a managed instance.
 
 ## SYNTAX
 
 ```
-Enable-AzSqlInstanceAdvancedThreatProtection [-InputObject <AzureSqlManagedInstanceModel>]
- -InstanceName <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Disable-AzSqlInstanceAdvancedDataSecurity [-InputObject <AzureSqlManagedInstanceModel>] -InstanceName <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzSqlInstanceAdvancedThreatProtection** cmdlet enables Advanced Threat Protection on a managed instance.
+The **Disable-AzSqlInstanceAdvancedDataSecurity** cmdlet disables Advanced Data Security on a managed instance.
 
 ## EXAMPLES
 
-### Example 1 - Enable managed instance Advanced Threat Protection
+### Example 1 - Disable managed instance Advanced Data Security
 ```powershell
-PS C:\>  Enable-AzSqlInstanceAdvancedThreatProtection `
+PS C:\>  Disable-AzSqlInstanceAdvancedDataSecurity `
             -ResourceGroupName "ResourceGroup01" `
-            -InstanceName "ManagedInstance01" 
+            -InstanceName "ManagedInstance01" `
 
 ResourceGroupName	         : ResourceGroup01
 ManagedInstanceName		     : ManagedInstance01
-IsEnabled		             : True
+IsEnabled		             : False
 ```
 
-### Example 2 - Enable managed instance Advanced Threat Protection from server resource
+### Example 2 - Disable server Advanced Data Security from managed instance resource
 ```powershell
 PS C:\>  Get-AzSqlInstance `
            -ResourceGroupName "ResourceGroup01" `
            -Name "ManagedInstance01" `
-           | Enable-AzSqlInstanceAdvancedThreatProtection
+           | Disable-AzSqlInstanceAdvancedDataSecurity
 
 ResourceGroupName	         : ResourceGroup01
 ManagedInstanceName		     : ManagedInstance01
-IsEnabled		             : True
+IsEnabled		             : False
 ```
 
 ## PARAMETERS
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The managed instance object to use with Advanced Threat Protection policy operation
+The managed instance object to use with Advanced Data Security policy operation
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
@@ -150,7 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model.ManagedInstanceAdvancedThreatProtectionPolicyModel
+### Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model.ManagedInstanceAdvancedDataSecurityPolicyModel
 
 ## NOTES
 

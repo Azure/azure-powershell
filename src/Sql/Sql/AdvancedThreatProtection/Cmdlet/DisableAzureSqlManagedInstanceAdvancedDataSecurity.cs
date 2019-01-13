@@ -18,19 +18,19 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
     /// <summary>
-    /// Enables the Advanced Threat Protection of a specific server.
+    /// Disables the Advanced Data Security of a specific server.
     /// </summary>
-    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceAdvancedThreatProtection", SupportsShouldProcess = true), OutputType(typeof(ManagedInstanceAdvancedThreatProtectionPolicyModel))]
-    public class EnableAzureSqlManagedInstanceAdvancedThreatProtection : SqlManagedInstanceAdvancedThreatProtectionCmdletBase
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceAdvancedDataSecurity", SupportsShouldProcess = true), OutputType(typeof(ManagedInstanceAdvancedDataSecurityPolicyModel))]
+    public class DisableAzureSqlManagedInstanceAdvancedDataSecurity : SqlManagedInstanceAdvancedDataSecurityCmdletBase
     {
         /// <summary>
         /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
         /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override ManagedInstanceAdvancedThreatProtectionPolicyModel PersistChanges(ManagedInstanceAdvancedThreatProtectionPolicyModel model)
+        protected override ManagedInstanceAdvancedDataSecurityPolicyModel PersistChanges(ManagedInstanceAdvancedDataSecurityPolicyModel model)
         {
-            model.IsEnabled = true;
+            model.IsEnabled = false;
             ModelAdapter.SetManagedInstanceAdvancedThreatProtection(model);
             return model;
         }

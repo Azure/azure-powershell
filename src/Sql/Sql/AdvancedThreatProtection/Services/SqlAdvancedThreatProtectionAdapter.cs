@@ -72,11 +72,11 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         /// <summary>
         /// Provides a managed instance Advanced Threat Protection policy model for the given managed instance
         /// </summary>
-        public ManagedInstanceAdvancedThreatProtectionPolicyModel GetManagedInstanceAdvancedThreatProtectionPolicy(string resourceGroup, string managedInstanceName)
+        public ManagedInstanceAdvancedDataSecurityPolicyModel GetManagedInstanceAdvancedThreatProtectionPolicy(string resourceGroup, string managedInstanceName)
         {
             // Currently Advanced Threat Protection policy is a TD policy until the backend will support Advanced Threat Protection APIs
             var threatDetectionPolicy = SqlThreatDetectionAdapter.GetManagedInstanceThreatDetectionPolicy(resourceGroup, managedInstanceName);
-            var managedInstanceAdvancedThreatProtectionPolicyModel = new ManagedInstanceAdvancedThreatProtectionPolicyModel()
+            var managedInstanceAdvancedThreatProtectionPolicyModel = new ManagedInstanceAdvancedDataSecurityPolicyModel()
             {
                 ResourceGroupName = resourceGroup,
                 ManagedInstanceName = managedInstanceName,
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         /// <summary>
         /// Sets a managed instance Advanced Threat Protection policy model for the given managed instance
         /// </summary>
-        public ManagedInstanceAdvancedThreatProtectionPolicyModel SetManagedInstanceAdvancedThreatProtection(ManagedInstanceAdvancedThreatProtectionPolicyModel model)
+        public ManagedInstanceAdvancedDataSecurityPolicyModel SetManagedInstanceAdvancedThreatProtection(ManagedInstanceAdvancedDataSecurityPolicyModel model)
         {
             // Currently Advanced Threat Protection policy is a TD policy until the backend will support Advanced Threat Protection APIs
             var threatDetectionPolicy = SqlThreatDetectionAdapter.GetManagedInstanceThreatDetectionPolicy(model.ResourceGroupName, model.ManagedInstanceName);
