@@ -31,11 +31,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators.NetFramework
             var auth = new AuthenticationContext(AuthenticationHelpers.GetAuthority(environment, tenant), environment?.OnPremise ?? true, tokenCache as TokenCache ?? TokenCache.DefaultShared);
             var response = await auth.AcquireTokenAsync(
                 environment.ActiveDirectoryServiceEndpointResourceId, 
-                "1950a258-227b-4e31-a9cf-717495945fc2", 
-                new Uri("urn:ietf:wg:oauth:2.0:oob"), 
+                AuthenticationHelpers.PowerShellClientId, 
+                new Uri(AuthenticationHelpers.PowerShellRedirectUri), 
                 new PlatformParameters(AuthenticationHelpers.GetPromptBehavior(promptBehavior), new ConsoleParentWindow()), 
                 UserIdentifier.AnyUser, 
-                "site_id=501358&display=popup");
+                AuthenticationHelpers.EnableEbdMagicCookie);
             account.Id = response?.UserInfo?.DisplayableId;
             return AuthenticationResultToken.GetAccessToken(response);
         }
