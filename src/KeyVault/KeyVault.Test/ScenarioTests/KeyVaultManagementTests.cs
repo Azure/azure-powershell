@@ -71,56 +71,56 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #region Set-AzureRmKeyVaultAccessPolicy & Remove-AzureRmKeyVaultAccessPolicy
 
-        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test.")]
+        [Fact(Skip = "Test infrastructure calls need to be added to the .ps1 function for the corresponding test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetRemoveAccessPolicyByObjectId()
         {
             TestRunner.RunTestScript("Test-SetRemoveAccessPolicyByObjectId");
         }
 
-        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
+        [Fact(Skip = "Test infrastructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetRemoveAccessPolicyByUPN()
         {
             TestRunner.RunTestScript("Test-SetRemoveAccessPolicyByUPN");
         }
 
-        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
+        [Fact(Skip = "Test infrastructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetRemoveAccessPolicyByCompoundId()
         {
             TestRunner.RunTestScript("Test-SetRemoveAccessPolicyByCompoundId");
         }
 
-        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
+        [Fact(Skip = "Test infrastructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAccessPolicyWithCompoundIdPolicies()
         {
             TestRunner.RunTestScript("Test-RemoveAccessPolicyWithCompoundIdPolicies");
         }
 
-        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
+        [Fact(Skip = "Test infrastructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetCompoundIdAccessPolicy()
         {
             TestRunner.RunTestScript("Test-SetCompoundIdAccessPolicy");
         }
 
-        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
+        [Fact(Skip = "Test infrastructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetRemoveAccessPolicyBySPN()
         {
             TestRunner.RunTestScript("Test-SetRemoveAccessPolicyBySPN");
         }
 
-        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
+        [Fact(Skip = "Test infrastructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModifyAccessPolicy()
         {
             TestRunner.RunTestScript("Test-ModifyAccessPolicy");
         }
 
-        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
+        [Fact(Skip = "Test infrastructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModifyAccessPolicyEnabledForDeployment()
         {
@@ -128,14 +128,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         }
 
 
-        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
+        [Fact(Skip = "Test infrastructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModifyAccessPolicyEnabledForTemplateDeployment()
         {
             TestRunner.RunTestScript("Test-ModifyAccessPolicyEnabledForTemplateDeployment");
         }
 
-        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
+        [Fact(Skip = "Test infrastructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModifyAccessPolicyEnabledForDiskEncryption()
         {
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ModifyAccessPolicyNegativeCases");
         }
 
-        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
+        [Fact(Skip = "Test infrastructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveNonExistentAccessPolicyDoesNotThrow()
         {
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         #endregion
 
         #region Piping
-        [Fact(Skip = "Test infrustructure calls need to be added to the .ps1 function for the corresponding test")]
+        [Fact(Skip = "Test infrastructure calls need to be added to the .ps1 function for the corresponding test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDeleteVaultWithPiping()
         {
