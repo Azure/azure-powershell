@@ -1,11 +1,11 @@
 ﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.IotCentral.dll-Help.xml
-Module Name: Az.IotCentral
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iotcentral/set-aziotcentralapp
+external help file: Microsoft.Azure.Commands.IotCentral.dll-Help.xml
+Module Name: AzureRM.IotCentral
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iotcentral/set-azurermiotcentralapp
 schema: 2.0.0
 ---
 
-# Set-AzIotCentralApp
+# Set-AzureRmIotCentralApp
 
 ## SYNOPSIS
 Updates the metadata for an IoT Central Application.
@@ -14,19 +14,19 @@ Updates the metadata for an IoT Central Application.
 
 ### ResourceIdParameterSet (Default)
 ```
-Set-AzIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] -ResourceId <String> [-AsJob]
+Set-AzureRmIotCentralApp [-DisplayName <String>] [-Subdomain <String>] [-Tag <Hashtable>] -ResourceId <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Set-AzIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] -InputObject <PSIotCentralApp> [-AsJob]
+Set-AzureRmIotCentralApp [-DisplayName <String>] [-Subdomain <String>] [-Tag <Hashtable>] -InputObject <PSIotCentralApp> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InteractiveIotCentralParameterSet
 ```
-Set-AzIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] [-AsJob] [-ResourceGroupName] <String>
+Set-AzureRmIotCentralApp [-DisplayName <String>] [-Subdomain <String>] [-Tag <Hashtable>] [-AsJob] [-ResourceGroupName] <String>
  [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Update the metadata for an IoT Central Application.
 
 ### Example 1 Update Display Name
 ```powershell
-PS C:\> Set-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -DisplayName "My New Custom Display Name"
+PS C:\> Set-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -DisplayName "My New Custom Display Name"
 ```
 
 Update the Display name on an existing IoT Central Application.
@@ -58,13 +58,36 @@ Template          : iotc-default@1.0.0
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
 
+### Example 2 Update Subdomain
+```powershell
+PS C:\> Set-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Subdomain "new-subdomain"
+```
+
+Update the Display name on an existing IoT Central Application.
+
+Example Output:
+
+ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft
+                    .IoTCentral/IoTApps/MyAppResourceName
+Name              : MyAppResourceName
+Type              : Microsoft.IoTCentral/IoTApps
+Location          : westus
+Tag               : 
+Sku               : Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo
+ApplicationId     : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+DisplayName       : Display Name
+Subdomain         : new-subdomain
+Template          : iotc-default@1.0.0
+SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ResourceGroupName : MyResourceGroupName
+
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet as a job in the background.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -79,9 +102,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -94,7 +117,22 @@ Accept wildcard characters: False
 Custom Display Name of the Iot Central Application.
 
 ```yaml
-Type: System.String
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Subdomain
+Subdomain of the Iot Central Application.
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +147,7 @@ Accept wildcard characters: False
 Iot Central Application Input Object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp
+Type: PSIotCentralApp
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -124,7 +162,7 @@ Accept wildcard characters: False
 Name of the Iot Central Application Resource.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: InteractiveIotCentralParameterSet
 Aliases:
 
@@ -139,7 +177,7 @@ Accept wildcard characters: False
 Name of the Resource Group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: InteractiveIotCentralParameterSet
 Aliases:
 
@@ -154,7 +192,7 @@ Accept wildcard characters: False
 Iot Central Application Resource Id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -169,7 +207,7 @@ Accept wildcard characters: False
 Iot Central Application Resource Tags.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -184,7 +222,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -200,7 +238,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -217,13 +255,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
+### System.Collections.Hashtable
 ### Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp
-
 ## NOTES
 
 ## RELATED LINKS
