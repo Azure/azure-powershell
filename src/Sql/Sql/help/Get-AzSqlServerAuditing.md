@@ -71,14 +71,14 @@ PredicateExpression          : statement <> 'select 1'
 ### Example 3: Get the event hub auditing settings of an Azure SQL server
 ```
 PS C:\>Get-AzSqlServerAuditing -ResourceGroupName "resourcegroup01" -ServerName "server01" -EventHub
-AuditActionGroup            : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
-                               BATCH_COMPLETED_GROUP, ...}
-ResourceGroupName           : resourcegroup01
-ServerName                  : server01
-AuditState                  : Enabled
-PredicateExpression         : statement <> 'select 1'
-EventHubName                : eventHubName
-EventHubAuthorizationRuleId : eventHubAuthorizationRuleId
+AuditActionGroup                    : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
+                                       BATCH_COMPLETED_GROUP, ...}
+ResourceGroupName                   : resourcegroup01
+ServerName                          : server01
+AuditState                          : Enabled
+PredicateExpression                 : statement <> 'select 1'
+EventHubName                        : eventHubName
+EventHubAuthorizationRuleResourceId : EventHubAuthorizationRuleResourceId
 ```
 
 ### Example 4: Get the log analytics auditing settings of an Azure SQL server
@@ -90,7 +90,7 @@ ResourceGroupName   : resourcegroup01
 ServerName          : server01
 AuditState          : Enabled
 PredicateExpression : statement <> 'select 1'
-WorkspaceId         : workSpaceId
+WorkspaceResourceId : "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
 ```
 
 ## PARAMETERS
