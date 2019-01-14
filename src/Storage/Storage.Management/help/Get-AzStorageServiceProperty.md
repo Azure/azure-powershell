@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azstorageserviceproperty
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageserviceproperty
 schema: 2.0.0
 ---
 
