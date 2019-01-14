@@ -22,6 +22,7 @@
 
 ## Version 1.1.0
 * Add 'Local' Scope to Enable-AzureRmAlias
+* Bug fix for missing path in Uninstall-AzureRm
 
 ## Version 1.0.0
 * General availability of `Az.Accounts` module
