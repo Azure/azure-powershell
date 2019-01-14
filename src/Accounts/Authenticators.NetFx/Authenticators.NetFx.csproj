@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="$(MSBuildThisFileDirectory)\..\..\..\Repo.props" />
-  <Import Project="$(MSBuildThisFileDirectory)\..\..\Az.Shared.props"/>
+  <Import Project="$(MSBuildThisFileDirectory)\..\..\Az.Shared.props" />
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.Authenticators.NetFramework</AssemblyName>
@@ -26,9 +26,13 @@
     <PackageReference Include="Microsoft.Azure.PowerShell.Authentication" Version="1.0.270-preview" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
   <Target Name="CopyFiles" AfterTargets="Build">
     <ItemGroup>
-      <OutputAssembly Include="$(TargetDir)\$(AssemblyName).dll"/>
+      <OutputAssembly Include="$(TargetDir)\$(AssemblyName).dll" />
     </ItemGroup>
     <Copy SourceFiles="@(OutputAssembly)" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.Accounts\PreloadAssemblies" />
   </Target>
