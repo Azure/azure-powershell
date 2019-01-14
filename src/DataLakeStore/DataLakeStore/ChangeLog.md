@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix issue with ADLS endpoint when using MSI
+    - More information here: https://github.com/Azure/azure-powershell/issues/7462
 
 ## Version 1.0.1
 * Update the sdk version of dataplane to 1.1.14 for SDK fixes.
