@@ -125,14 +125,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         webapp.Location,
                         pfxBlob: certificateBytes,
                         password: CertificatePassword,
-                        hostingEnvironmentProfile: (webapp.HostingEnvironmentProfile != null) ?
-                                                        webapp.HostingEnvironmentProfile :
-                                                        null);
+                        hostingEnvironmentProfile: webapp.HostingEnvironmentProfile ?? null,
+                                                        serverFarmId: webapp.ServerFarmId);
 
-                    var certificateResourceGroup = CmdletHelpers.GetResourceGroupFromResourceId(webapp.ServerFarmId);
                     try
                     {
-                        WebsitesClient.CreateCertificate(certificateResourceGroup, certificateName, certificate);
+                        WebsitesClient.CreateCertificate(resourceGroupName, certificateName, certificate);
                     }
                     catch (CloudException e)
                     {

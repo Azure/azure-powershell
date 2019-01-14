@@ -20,6 +20,8 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -30,9 +32,17 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = true,
            Position = 1,
+           ParameterSetName = ResourceGroupNameParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The virtual machine name.")]
+        [Parameter(
+           Mandatory = false,
+           Position = 1,
+           ParameterSetName = IdParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
+        [CmdletParameterBreakingChange("Name", ChangeDescription = "Name will be removed from the Id parameter set in an upcoming breaking change release.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -57,6 +67,12 @@ namespace Microsoft.Azure.Commands.Compute
                 if (this.ShouldProcess(Name, VerbsLifecycle.Stop) 
                     && (this.Force.IsPresent || this.ShouldContinue(Properties.Resources.VirtualMachineStoppingConfirmation, Properties.Resources.VirtualMachineStoppingCaption)))
                 {
+                    if (ParameterSetName.Equals(IdParameterSet) && string.IsNullOrEmpty(Name))
+                    {
+                        ResourceIdentifier parsedId = new ResourceIdentifier(Id);
+                        this.Name = parsedId.ResourceName;
+                    }
+
                     Action<Func<string, string, Dictionary<string, List<string>>, CancellationToken, Task<Rest.Azure.AzureOperationResponse>>> call = f =>
                     {
                         var op = f(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
