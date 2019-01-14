@@ -51,7 +51,7 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.8.3'; },
+    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.3'; },
         @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.3'; },
         @{ModuleName = 'Azs.AzureBridge.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.3.0'; },
@@ -124,9 +124,10 @@
             ReleaseNotes = '## 2019.MM - Version 1.7.0
             * Supported with 1901 update
             * Azs.Backup.Admin Module
-                * Breaking change: Backup changes to cert-based encryption mode. Support for symmetric keys is deprecated.'
-
-
+                * Breaking change: Backup changes to cert-based encryption mode. Support for symmetric keys is deprecated.
+                * For details on the breaking changes, refer to https://aka.ms/azspshmigration170
+            * Azs.Storage.Admin Module 
+                * Bug fix - New Storage Quota uses defaults if none provided.'
 
             # External dependent modules of this module
             # ExternalModuleDependencies = ''
