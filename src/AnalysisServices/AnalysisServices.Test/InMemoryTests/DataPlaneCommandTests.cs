@@ -80,6 +80,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
         //    TestAuthentication(context);
         //}
 
+        /// <summary>
+        /// Assert that cmdlets will fail authentication when provided null context.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Authentication_FailsFromNullContext()
@@ -87,6 +90,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             Assert.Throws<TargetInvocationException>(() => TestAuthentication(null));
         }
 
+        /// <summary>
+        /// Assert that cmdlets will fail authentication when provided bad context.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Authentication_FailsFromBadContext()
@@ -94,6 +100,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             Assert.Throws<TargetInvocationException>(() => TestAuthentication(new PSAzureContext()));
         }
 
+        /// <summary>
+        /// Common code used for testing authentication.
+        /// </summary>
+        /// <param name="context"></param>
         private void TestAuthentication(IAzureContext context)
         {
             var cmdlet = new TestAuthenticationCmdlet()
@@ -107,6 +117,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
         #endregion
         #region TestRestart
 
+        /// <summary>
+        /// Assert that the restart cmdlet will fail if given a null instance.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RestartAzureASInstance_NullInstanceThrows()
@@ -115,6 +128,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             Assert.Throws<TargetInvocationException>(() => restartCmdlet.InvokeBeginProcessing());
         }
 
+        /// <summary>
+        /// Assert that the restart cmdlet will fail if given a bad instance url.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RestartAzureASInstance_InvalidInstanceThrows()
@@ -123,6 +139,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             Assert.Throws<TargetInvocationException>(() => restartCmdlet.InvokeBeginProcessing());
         }
 
+        /// <summary>
+        /// Assert that the restart cmdlet executes successfully.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RestartAzureASInstance_Succeeds()
@@ -140,6 +159,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             restartCmdlet.InvokeEndProcessing();
         }
 
+        /// <summary>
+        /// Create a properly mocked restart cmdlet.
+        /// </summary>
+        /// <param name="instance">The test server instance name.</param>
+        /// <returns>A properly mocked restart cmdlet.</returns>
         private static RestartAzureAnalysisServer CreateTestRestartCmdlet(string instance)
         {
             var commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -157,6 +181,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
         #endregion
         #region TestExportLog
 
+        /// <summary>
+        /// Assert that the export cmdlet works.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExportAzureASInstanceLogTest()
@@ -199,6 +226,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
         #endregion
         #region TestSync
 
+        /// <summary>
+        /// Assert that the sync cmdlet succeeds syncing a single db instance.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SynchronizeAzureASInstance_SingleDB_Succeeds()
@@ -209,6 +239,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             syncCmdlet.InvokeEndProcessing();
         }
 
+        /// <summary>
+        /// Assert that the sync cmdlet will fail after too many retries.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SynchronizeAzureASInstance_FailsAfterTooManyRetries()
@@ -219,6 +252,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             syncCmdlet.InvokeEndProcessing();
         }
 
+        /// <summary>
+        /// Create a properly mocked Sync cmdlet for testing.
+        /// </summary>
+        /// <param name="tooManyRetries">Flag to set the planned failures to be greater than the retry count.</param>
+        /// <returns>A properly mocked sync cmdlet for testing.</returns>
         private SynchronizeAzureAzureAnalysisServer CreateTestSyncCmdlet(bool tooManyRetries = false)
         {
             // Set up mock http client
