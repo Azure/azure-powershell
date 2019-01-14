@@ -150,31 +150,51 @@ Also, members of your team (who are involved with the SDKs) are advised to join 
 
 ## Getting Started
 
-When adding a new ResourceManager project, please follow these guidelines:
+When adding a new project, please follow these guidelines:
 
 ### Creating the Project
 
-Add a new folder under `src/ResourceManager` with your service specific name (_e.g.,_ `Compute`, `Sql`, `Websites`).
+Add a new folder under `src` with your service specific name (_e.g.,_ `Compute`, `Sql`, `Websites`).
 
-We recommend copying an existing module. For example, go to `src/ResourceManager/Media` and copy the contents of this folder. Paste these to your service folder you just created. **Rename** the following:
-- The folders to `Commands.<SERVICE>` and `Commands.<SERVICE>.Test`
+We recommend copying an existing module. For example, go to `src/Cdn` and copy the contents of this folder. Paste these to your service folder you just created. **Rename** the following:
+- The folders to `<SERVICE>` and `<SERVICE>.Test`
 - The solution to `<SERVICE>.sln`
-- The projects (within each folder) to `Commands.<SERVICE>.csproj` and `Commands.<SERVICE>.Test.csproj`
-- The PSD1 file (in the `Commands.<SERVICE>` folder) to `Az.<SERVICE>.psd1`
+- The projects (within each folder) to `<SERVICE>.csproj` and `<SERVICE>.Test.csproj`
+- The PSD1 file (in the `<SERVICE>` folder) to `Az.<SERVICE>.psd1`
 
 Now, you'll need to edit the solution file. Open the `<SERVICE>.sln` in your text editor of choice. Edit these lines to use your `<SERVICE>` name:
-- Update the `"Commands.<SERVICE>.Netcore", "Commands.<SERVICE>\Commands.<SERVICE>.Netcore.csproj"`
-- Update the `"Commands.<SERVICE>.Test.Netcore", "Commands.<SERVICE>.Test\Commands.Media.Test.Netcore.csproj"`
+- Update the `"<SERVICE>", "<SERVICE>\<SERVICE>.csproj"`
+- Update the `"<SERVICE>.Test", "<SERVICE>.Test\<SERVICE>.Test.csproj"`
+- **Note**: Leave the `"Accounts", "..\Accounts\Accounts\Accounts.csproj"` entry as is. All modules depend on `Accounts`.
 
-After the solution file is updated, save and close it. Now, open the solution file in Visual Studio. Right click on the `Commands.<SERVICE>` project in the `Solution Explorer` and select `Unload project`. Right click on the unloaded project and select `Edit Commands.<SERVICE>.csproj`. Once opened, ensure that the following things are changed:
-- The `AssemblyNamespace` and `RootNamespace` attributes of the project _must_ be changed to `Microsoft.Azure.PowerShell.Cmdlets.<SERVICE>`. If these changes are not made, then the assembly produced from this project is not be signed and results in errors when users try to use your module.
-- Change the particular `<ItemGroup>` containing `<None Include="Az.<SERVICE>.psd1">`
+After the solution file is updated, save and close it. Now, open the solution file in Visual Studio. Right click on the `<SERVICE>` project in the `Solution Explorer` and select `Unload project`. Right click on the unloaded project and select `Edit <SERVICE>.csproj`. Once opened, ensure that the following things are changed:
+- Update this entry to use your service name (what you used as `<SERVICE>` above):
+```xml
+  <PropertyGroup>
+    <PsModuleName>Cdn</PsModuleName>
+  </PropertyGroup>
+```
+- Remove the entry:
+```xml
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
+  </PropertyGroup>
+```
+This is not needed since this is a new project.
+  
+- Update this entry to use your SDK:
+```xml
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.Cdn" Version="4.0.2-preview" />
+  </ItemGroup>
+```
+If you have not generated your AutoRest SDK yet, remove this entry for now.
 
 Right click on the project and select `Reload project`, and then build the solution by either right clicking on the solution and selecting `Rebuild Solution` or, from the top of Visual Studio, selecting `Build > Rebuild Solution`. If the build does not succeed, open the `.csproj` file and ensure there are no errors.
 
 ### Adding Project References
 
-There are a few existing projects that need to be added before developing any cmdlets. To add a project to the solution, right click on the solution in `Solution Explorer` and select `Add > Existing Project`. This allows you to navigate through folders to find the `.csproj` of the project you want to add. Once a project is added to your solution, you can add it as a reference to the `Commands.<SERVICE>` project by right clicking on `Commands.<SERVICE>` and selecting `Add > Reference`. This opens the `Reference Manager` window, and once you have selected the `Projects > Solution` option on the left side of the window, you are able to select which projects you want to reference in `Commands.<SERVICE>` by checking the box to the left of the name.
+There are a few existing projects that need to be added before developing any cmdlets. To add a project to the solution, right click on the solution in `Solution Explorer` and select `Add > Existing Project`. This allows you to navigate through folders to find the `.csproj` of the project you want to add. Once a project is added to your solution, you can add it as a reference to the `<SERVICE>` project by right clicking on `<SERVICE>` and selecting `Add > Reference`. This opens the `Reference Manager` window, and once you have selected the `Projects > Solution` option on the left side of the window, you are able to select which projects you want to reference in `<SERVICE>` by checking the box to the left of the name.
 
 # Creating Cmdlets
 
@@ -225,7 +245,7 @@ Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-
 ### Adding Scenario Tests
 
 - Create a new class in `Commands.<SERVICE>.Test`
-- Create a ps1 file in the same folder that contains the actual tests ([see sample](../../src/ResourceManager/Media/Commands.Media.Test/ScenarioTests))
+- Create a ps1 file in the same folder that contains the actual tests ([see sample](../../src/Media/Commands.Media.Test/ScenarioTests))
     - Use `Assert-AreEqual x y` to verify that values are the same
     - Use `Assert-AreNotEqual x y` to verify that values are not the same
     - Use `Assert-Throws scriptblock message` to verify an exception is being thrown
