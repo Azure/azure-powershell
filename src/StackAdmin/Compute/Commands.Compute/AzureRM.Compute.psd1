@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.0.2'
+ModuleVersion = '4.0.3'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.2'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll',
@@ -62,7 +62,8 @@ RequiredAssemblies = '.\AutoMapper.dll',
                      '.\Microsoft.Data.OData.dll',
                      '.\Microsoft.Data.Services.Client.dll',
                      '.\Microsoft.WindowsAzure.Storage.dll',
-                     '.\System.Spatial.dll'
+                     '.\System.Spatial.dll',
+                     '.\Microsoft.Azure.Commands.Common.Strategies.4.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -210,10 +211,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Compute module supported for the profile 2018-03-01-hybrid
-* This version supports azure stack
-* Apiversion supported by the module is 2017-03-30
-* This module includes functionalities up to the existing AzureRm.Compute module version 4.0.1 with additional bug fixes'        
+        ReleaseNotes = '* Adding simple parameter sets in the New-AzureRMVM and New-AzureRMVMSS cmdlets
+* This adds support for specifying user images while creating VM
+* Apiversion used by the module is still 2017-03-30'        
         
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
