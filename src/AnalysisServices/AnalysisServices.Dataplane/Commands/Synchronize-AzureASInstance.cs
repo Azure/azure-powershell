@@ -350,8 +350,18 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         /// <returns>The <see cref="ClusterResolutionResult"/>.</returns>
         private ClusterResolutionResult ClusterResolve(string serverName)
         {
-            Uri clusterResolveBaseUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, DnsSafeHost));
-            return ClusterResolve(clusterResolveBaseUri, serverName);
+            Uri clusterUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, DnsSafeHost));
+
+            var content = new StringContent($"ServerName={serverName}");
+            content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/x-www-form-urlencoded");
+
+            this.AsAzureDataplaneClient.ResetHttpClient();
+            using (var message = AsAzureDataplaneClient.CallPostAsync(clusterUri, AsAzureEndpoints.ClusterResolveEndpoint, content).Result)
+            {
+                message.EnsureSuccessStatusCode();
+                var rawResult = message.Content.ReadAsStringAsync().Result;
+                return JsonConvert.DeserializeObject<ClusterResolutionResult>(rawResult);
+            }
         }
     }
 }
