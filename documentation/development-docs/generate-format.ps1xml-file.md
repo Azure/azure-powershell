@@ -14,7 +14,7 @@ Our team trends to make the cmdlets output more convenient and consistent across
 
 # How table view output works by default.
 
- As an example let's consider [Get-AzSubscription](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Profile/Commands.Profile/Subscription/GetAzureRMSubscription.cs) cmdlet. 
+ As an example let's consider [Get-AzSubscription](https://github.com/Azure/azure-powershell/blob/master/src/Accounts/Accounts/Subscription/GetAzureRMSubscription.cs) cmdlet. 
 
 The cmdlet class specifies the ```PSAzureSubscription``` class as an output type with the **OutputType attribute**:
 
@@ -406,45 +406,22 @@ c9cbd920-c00c-427c-852b-c329e824c3a8 Azure SDK Powershell Test Enabled 72f988bf-
 
 # How to add the format.ps1xml file to your project.
 
-**Note:** All the paths used in the example in the section are under **_azure-powershell/src/ResourceManager/Profile_**
+**Note:** All the paths used in the example in the section are under **_azure-powershell/src/Accounts_**
 
+1. Copy the generated file into your project source folder. In our example this is [src/Accounts/Accounts](https://github.com/Azure/azure-powershell/tree/master/src/Accounts/Accounts) folder.
 
-1. Copy the generated file into your project source folder. In our example this is [src/ResourceManager/Profile/Commands.Profile](https://github.com/Azure/azure-powershell/tree/master/src/ResourceManager/Profile/Commands.Profile) folder.
+2. Reference the generated format.ps1xml file form your project. In our example this is [Accounts.csproj](https://github.com/Azure/azure-powershell/blob/master/src/Accounts/Accounts/Accounts.csproj) file.
+- **Note**: This is now automatically referenced based on `Az.props` being imported in your csproj file.
 
-2. Reference the generated format.ps1xml file form your project. In our example this is [Commands.Profile.csproj](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Profile/Commands.Profile/Commands.Profile.csproj) file:
-
-```Xml
-  <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.Profile.generated.format.ps1xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Microsoft.Azure.Commands.Profile.format.ps1xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="..\Az.Accounts.psd1">
-      <Link>Az.Accounts.psd1</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <Content Include="Microsoft.Azure.Commands.Profile.types.ps1xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
-    <None Include="StartupScripts\*.ps1" />
-  </ItemGroup>
-```
-3. Add the generated format.ps1xml file to your source module manifest **FormatsToProcess** variable. In our example this is [src/ResourceManager/Profile/Az.Accounts.psd1](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Profile/Az.Accounts.psd1) file:
+3. Add the generated format.ps1xml file to your source module manifest **FormatsToProcess** variable. In our example this is [src/Accounts/Az.Accounts.psd1](https://github.com/Azure/azure-powershell/blob/master/src/Accounts/Az.Accounts.psd1) file:
 ```Powershell
 # script omitted for brevity
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.Profile.generated.format.ps1xml', '.\Microsoft.Azure.Commands.Profile.format.ps1xml'
+FormatsToProcess = '.\Accounts.generated.format.ps1xml', '.\Accounts.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.Profile.dll')
+NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Profile.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
