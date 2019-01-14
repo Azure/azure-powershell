@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         {
             if (context == null)
             {
-                throw new ApplicationException(Common.Authentication.Properties.Resources.NoSubscriptionInContext);
+                throw new ArgumentException(Common.Authentication.Properties.Resources.ArmAccountNotFound);
             }
 
             if (string.IsNullOrEmpty(hostUri))
