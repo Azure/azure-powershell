@@ -28,8 +28,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators.NetFramework
     {
         public override Task<IAccessToken> Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
         {
-            var context = new AuthenticationContext(AuthenticationHelpers.GetAuthority(environment, tenant), environment?.OnPremise ?? true, tokenCache as TokenCache ?? TokenCache.DefaultShared);
-            var result = context.AcquireTokenAsync(resourceId, "clientid", new UserPasswordCredential(account.Id, password));
+            var context = new AuthenticationContext(
+                AuthenticationHelpers.GetAuthority(environment, tenant), 
+                environment?.OnPremise ?? true, 
+                tokenCache as TokenCache ?? TokenCache.DefaultShared);
+            var result = context.AcquireTokenAsync(resourceId, AuthenticationHelpers.PowerShellClientId, new UserPasswordCredential(account.Id, password));
             return AuthenticationResultToken.GetAccessTokenAsync(result);
         }
 
