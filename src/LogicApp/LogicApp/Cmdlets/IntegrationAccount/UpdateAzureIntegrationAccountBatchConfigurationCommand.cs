@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates the integration account batch configuration.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, AzureRMConstants.AzureRMPrefix + "IntegrationAccountBatchConfiguration", DefaultParameterSetName = ParameterSet.ByIntegrationAccountAndParameters)]
+    [Cmdlet(VerbsCommon.Set, AzureRMConstants.AzureRMPrefix + "IntegrationAccountBatchConfiguration", DefaultParameterSetName = ParameterSet.ByIntegrationAccountAndParameters, SupportsShouldProcess = true)]
     [OutputType(typeof(BatchConfiguration))]
     public class UpdateAzureIntegrationAccountBatchConfigurationCommand : LogicAppBaseCmdlet
     {
@@ -220,13 +220,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             batchConfiguration.Properties.Metadata = this.Metadata;
 
-            this.ConfirmAction(
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage, "Microsoft.Logic/integrationAccounts/batchConfigurations", this.Name),
-                this.Name,
-                () =>
-                {
-                    this.WriteObject(this.IntegrationAccountClient.UpdateIntegrationAccountBatchConfiguration(this.ResourceGroupName, this.ParentName, this.Name, batchConfiguration));
-                });
+            if (this.ShouldProcess(this.Name, $"Updating Batch Configuration '{this.Name}' in resource group '{this.ResourceGroupName}'."))
+            {
+                this.WriteObject(this.IntegrationAccountClient.UpdateIntegrationAccountBatchConfiguration(this.ResourceGroupName, this.ParentName, this.Name, batchConfiguration));
+            }
         }
 
         private bool IsValidReleaseCriteria(BatchReleaseCriteria releaseCriteria)

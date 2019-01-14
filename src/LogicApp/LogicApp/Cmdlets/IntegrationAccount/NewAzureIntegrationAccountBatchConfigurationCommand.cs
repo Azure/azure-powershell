@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Creates a new integration account batch configuration.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, AzureRMConstants.AzureRMPrefix + "IntegrationAccountBatchConfiguration", DefaultParameterSetName = ParameterSet.ByIntegrationAccountAndParameters)]
+    [Cmdlet(VerbsCommon.New, AzureRMConstants.AzureRMPrefix + "IntegrationAccountBatchConfiguration", DefaultParameterSetName = ParameterSet.ByIntegrationAccountAndParameters, SupportsShouldProcess = true)]
     [OutputType(typeof(BatchConfiguration))]
     public class NewAzureIntegrationAccountBatchConfigurationCommand : LogicAppBaseCmdlet
     {
@@ -226,7 +226,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             batchConfiguration.Properties.Metadata = this.Metadata;
 
-            this.WriteObject(this.IntegrationAccountClient.CreateIntegrationAccountBatchConfiguration(this.ResourceGroupName, this.ParentName, this.Name, batchConfiguration));
+            if (this.ShouldProcess(this.Name, $"Creating a new Batch Configuration in resource group '{this.ResourceGroupName}' with name '{this.Name}'."))
+            {
+                this.WriteObject(this.IntegrationAccountClient.CreateIntegrationAccountBatchConfiguration(this.ResourceGroupName, this.ParentName, this.Name, batchConfiguration));
+            }
         }
 
         private bool IsValidReleaseCriteria(BatchReleaseCriteria releaseCriteria)

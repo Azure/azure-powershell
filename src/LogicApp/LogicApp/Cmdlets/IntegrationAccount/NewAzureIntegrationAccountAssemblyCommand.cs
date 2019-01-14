@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Creates a new integration account assembly.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, AzureRMConstants.AzureRMPrefix + "IntegrationAccountAssembly", DefaultParameterSetName = ParameterSet.ByIntegrationAccountAndFilePath)]
+    [Cmdlet(VerbsCommon.New, AzureRMConstants.AzureRMPrefix + "IntegrationAccountAssembly", DefaultParameterSetName = ParameterSet.ByIntegrationAccountAndFilePath, SupportsShouldProcess = true)]
     [OutputType(typeof(AssemblyDefinition))]
     public class NewAzureIntegrationAccountAssemblyCommand : LogicAppBaseCmdlet
     {
@@ -167,7 +167,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 }
             }
 
-            this.WriteObject(this.IntegrationAccountClient.CreateIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name, assemblyDefinition));
+            if (this.ShouldProcess(this.Name, $"Creating a new Assembly in resource group '{this.ResourceGroupName}' with name '{this.Name}'.")) {
+                this.WriteObject(this.IntegrationAccountClient.CreateIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name, assemblyDefinition));
+            }
         }
     }
 }

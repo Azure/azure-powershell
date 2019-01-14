@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Removes the integration account batch configuration. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, AzureRMConstants.AzureRMPrefix + "IntegrationAccountBatchConfiguration", DefaultParameterSetName = ParameterSet.ByIntegrationAccount)]
-    [OutputType(typeof(void))]
+    [Cmdlet(VerbsCommon.Remove, AzureRMConstants.AzureRMPrefix + "IntegrationAccountBatchConfiguration", DefaultParameterSetName = ParameterSet.ByIntegrationAccount, SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
     public class RemoveAzureIntegrationAccountBatchConfigurationCommand : LogicAppBaseCmdlet
     {
 
@@ -57,6 +57,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; } = false;
+
         #endregion Input Parameters
 
         /// <summary>
@@ -64,6 +67,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
+
             if (this.ParameterSetName == ParameterSet.ByInputObject)
             {
                 var parsedResourceId = new ResourceIdentifier(this.InputObject.Id);
@@ -79,13 +84,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Name = parsedResourceId.ResourceName;
             }
 
-            base.ExecuteCmdlet();
-            this.ConfirmAction(
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceMessage, "Microsoft.Logic/integrationAccounts/batchConfigurations", this.Name),
-                this.Name,
-                () => {
-                    this.IntegrationAccountClient.RemoveIntegrationAccountBatchConfiguration(this.ResourceGroupName, this.ParentName, this.Name);
-                });
+            if (this.ShouldProcess(this.Name, $"Deleting Batch Configuration '{this.Name}' in resource group {this.ResourceGroupName}"))
+            {
+                this.IntegrationAccountClient.RemoveIntegrationAccountBatchConfiguration(this.ResourceGroupName, this.ParentName, this.Name);
+                if (this.PassThru)
+                {
+                    this.WriteObject(true);
+                }
+            }
         }
     }
 }

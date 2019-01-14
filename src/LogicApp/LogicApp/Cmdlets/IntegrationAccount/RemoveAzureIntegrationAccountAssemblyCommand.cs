@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Removes the integration account assembly. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, AzureRMConstants.AzureRMPrefix + "IntegrationAccountAssembly", DefaultParameterSetName = ParameterSet.ByIntegrationAccount)]
-    [OutputType(typeof(void))]
+    [Cmdlet(VerbsCommon.Remove, AzureRMConstants.AzureRMPrefix + "IntegrationAccountAssembly", DefaultParameterSetName = ParameterSet.ByIntegrationAccount, SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
     public class RemoveAzureIntegrationAccountAssemblyCommand : LogicAppBaseCmdlet
     {
         #region Input Parameters
@@ -56,6 +56,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         #endregion Input Parameters
 
         /// <summary>
@@ -80,12 +83,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Name = parsedResourceId.ResourceName;
             }
 
-            this.ConfirmAction(
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceMessage, "Microsoft.Logic/integrationAccounts/assemblies", this.Name),
-                this.Name,
-                () => {
-                    this.IntegrationAccountClient.RemoveIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name);
-                });
+            if (this.ShouldProcess(this.Name, $"Deleting Assembly '{this.Name}' in resource group {this.ResourceGroupName}"))
+            {
+                this.IntegrationAccountClient.RemoveIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name);
+                if (this.PassThru)
+                {
+                    this.WriteObject(true);
+                }
+            }
         }
     }
 }

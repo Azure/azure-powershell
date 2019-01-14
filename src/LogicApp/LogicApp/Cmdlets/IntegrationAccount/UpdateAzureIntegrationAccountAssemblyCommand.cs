@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates the integration account assembly.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, AzureRMConstants.AzureRMPrefix + "IntegrationAccountAssembly", DefaultParameterSetName = ParameterSet.ByIntegrationAccountAndFilePath)]
+    [Cmdlet(VerbsCommon.Set, AzureRMConstants.AzureRMPrefix + "IntegrationAccountAssembly", DefaultParameterSetName = ParameterSet.ByIntegrationAccountAndFilePath, SupportsShouldProcess = true)]
     [OutputType(typeof(AssemblyDefinition))]
     public class UpdateAzureIntegrationAccountAssemblyCommand : LogicAppBaseCmdlet
     {
@@ -164,13 +164,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 }
             }
 
-            this.ConfirmAction(
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage, "Microsoft.Logic/integrationAccounts/assemblies", this.Name),
-                this.Name,
-                () =>
-                {
-                    this.WriteObject(this.IntegrationAccountClient.UpdateIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name, assemblyDefinition));
-                });
+            if (this.ShouldProcess(this.Name, $"Updating Assembly '{this.Name}' in resource group '{this.ResourceGroupName}'."))
+            {
+                this.WriteObject(this.IntegrationAccountClient.UpdateIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name, assemblyDefinition));
+            }
         }
     }
 }
