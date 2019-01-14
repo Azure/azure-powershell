@@ -22,8 +22,7 @@ $appname = "lketmtestantps10"
 $slot = "testslot"
 $prodHostname = "www.adorenow.net"
 $slotHostname = "testslot.adorenow.net"
-$thumbprint = "EFB353A477464228CC8A155C38DCB8D02726A4C1"
-$thumbprintSlot = "F75A7A8C033FBEA02A1578812DB289277E23EAB1"
+$thumbprint = "F75A7A8C033FBEA02A1578812DB289277E23EAB1"
 
 <#
 .SYNOPSIS
@@ -38,7 +37,7 @@ function Test-CreateNewWebAppSSLBinding
 		Assert-AreEqual $prodHostname $createResult.Name
 
 		# Test - Create Ssl binding for web app slot
-		$createResult = New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Thumbprint $thumbprintSlot
+		$createResult = New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Thumbprint $thumbprint
 		Assert-AreEqual $slotHostname $createResult.Name
 	}
     finally
@@ -59,10 +58,11 @@ function Test-GetNewWebAppSSLBinding
 	{
 		# Setup - Create Ssl bindings
 		$createWebAppResult = New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Thumbprint $thumbprint
-		$createWebAppSlotResult = New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Thumbprint $thumbprintSlot
+		$createWebAppSlotResult = New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Thumbprint $thumbprint
 
 		# Test - Get commands for web app
 		$getResult = Get-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname
+    Assert-AreEqual 1 $getResult.Count
 		$currentHostNames = $getResult | Select -expand Name
 		Assert-True { $currentHostNames -contains $createWebAppResult.Name }
 		$getResult = Get-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname
@@ -70,6 +70,7 @@ function Test-GetNewWebAppSSLBinding
 
 		# Test - Get commands for web app slot
 		$getResult = Get-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot
+    Assert-AreEqual 1 $getResult.Count
 		$currentHostNames = $getResult | Select -expand Name
 		Assert-True { $currentHostNames -contains $createWebAppSlotResult.Name }
 		$getResult = Get-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname
@@ -93,7 +94,7 @@ function Test-RemoveNewWebAppSSLBinding
 	{
 		# Setup - Create Ssl bindings
 		New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Thumbprint $thumbprint
-		New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Thumbprint $thumbprintSlot
+		New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Thumbprint $thumbprint
 
 		# Tests - Removing binding from web app and web app slot
 		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
@@ -132,7 +133,7 @@ function Test-WebAppSSLBindingPipeSupport
 		$createResult = $webapp | New-AzWebAppSSLBinding -Name $prodHostName -Thumbprint $thumbprint
 		Assert-AreEqual $prodHostName $createResult.Name
 
-		$createResult = $webappslot | New-AzWebAppSSLBinding -Name $slotHostName -Thumbprint $thumbprintSlot
+		$createResult = $webappslot | New-AzWebAppSSLBinding -Name $slotHostName -Thumbprint $thumbprint
 		Assert-AreEqual $slotHostName $createResult.Name
 
 		# Test - Retrieve Ssl bindings using web app and web app slot objects
@@ -173,11 +174,11 @@ function Test-GetWebAppCertificate
 		New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Thumbprint $thumbprint
 
 		# Tests - Retrieve web app certificate objects
-		$certificates = Get-AzWebAppCertificate -ResourceGroupName $rgname
+		$certificates = Get-AzWebAppCertificate
 		$thumbprints = $certificates | Select -expand Thumbprint
 		Assert-True { $thumbprints -contains $thumbprint }
 
-		$certificate = Get-AzWebAppCertificate -ResourceGroupName $rgname -Thumbprint $thumbprint
+		$certificate = Get-AzWebAppCertificate -Thumbprint $thumbprint
 		Assert-AreEqual $thumbprint $certificate.Thumbprint
 	}
     finally
