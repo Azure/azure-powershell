@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update incorrect online help URLs
 * Fixes `New-AzWebAppSSLBinding` to upload the certificate to the correct resourcegroup+location if the app is hosted on an ASE.
 * Fixes `New-AzWebAppSSLBinding` to not overwrite the tags on binding an SSL certificate to an app
 

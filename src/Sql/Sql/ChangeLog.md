@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update incorrect online help URLs
 
 ## Version 1.0.1
 * Converted the Storage management client dependency to the common SDK implementation.
