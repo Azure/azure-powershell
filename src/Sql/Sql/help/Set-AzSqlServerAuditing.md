@@ -33,7 +33,7 @@ Set-AzSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>
 ### EventHubSet
 ```
 Set-AzSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
- [-PredicateExpression <String>] [-AsJob] [-EventHubName <String>] [-EventHubAuthorizationRuleId <String>]
+ [-PredicateExpression <String>] [-AsJob] [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>]
  [-ServerName] <String> [-EventHub] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -41,7 +41,7 @@ Set-AzSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>
 ### LogAnalyticsSet
 ```
 Set-AzSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
- [-PredicateExpression <String>] [-AsJob] [-WorkspaceId <String>] [-ServerName] <String> [-LogAnalytics]
+ [-PredicateExpression <String>] [-AsJob] [-WorkspaceResourceId <String>] [-ServerName] <String> [-LogAnalytics]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -84,7 +84,7 @@ PS C:\>Set-AzSqlDatabaseAuditing -State Enabled -ResourceGroupName "ResourceGrou
 
 ### Example 6: Enable the event hub auditing policy of an Azure SQL server
 ```
-PS C:\>Set-AzSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EventHubName "EventHubName" -EventHubAuthorizationRuleId "EventHubAuthorizationRuleId"
+PS C:\>Set-AzSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EventHubName "EventHubName" -EventHubAuthorizationRuleResourceId "EventHubAuthorizationRuleResourceId"
 ```
 
 ### Example 7: Disable the event hub auditing policy of an Azure SQL server
@@ -94,7 +94,7 @@ PS C:\>Set-AzSqlServerAuditing -State Disabled -ResourceGroupName "ResourceGroup
 
 ### Example 8: Enable the log analytics auditing policy of an Azure SQL server
 ```
-PS C:\>Set-AzSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -LogAnalytics -WorkspaceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
+PS C:\>Set-AzSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -LogAnalytics -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
 ```
 
 ### Example 9: Disable the log analytics auditing policy of an Azure SQL server
@@ -187,7 +187,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EventHubAuthorizationRuleId
+### -EventHubAuthorizationRuleResourceId
 The resource Id for the event hub authorization rule
 
 ```yaml
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubName
-The name of the event hub. If none is specified when providing EventHubAuthorizationRuleId, the default event hub will be selected.
+The name of the event hub. If none is specified when providing EventHubAuthorizationRuleResourceId, the default event hub will be selected.
 
 ```yaml
 Type: System.String
@@ -383,7 +383,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WorkspaceId
+### -WorkspaceResourceId
 The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics workspace to which you would like to send Audit Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
 
 ```yaml
