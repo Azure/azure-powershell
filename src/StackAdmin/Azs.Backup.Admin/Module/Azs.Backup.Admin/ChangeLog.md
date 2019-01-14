@@ -19,17 +19,11 @@
 -->
 ## Current Release
 
-## Version 0.2.0
-* Module dependencies updated
-	* AzureRM.Profile
-	* AzureRM.Resources
-* Support handling names of nested resources
-	* Get-AzsBackup
-	* Restore-AzsBackup
-	* Start-AzsBackup
-* Deprecations
-	* Set-AzsBackupShare is an alias now to the cmdlet Set-AzsBackupConfiguration
-	* Get-AzsBackupLocation is an alias now to the cmdlet Get-AzsBackupConfiguration
-	* Set-AzsBackupConfiguration, the parameter BackupShare is an alias now for the parameter path
-* Bug fixes
-	* Handle ErrrorAction correctly now
+## Version 0.3.0
+* Breaking change: Backup changes to cert-based encryption mode. Support for symmetric keys is deprecated.
+    * Set-AzsBackupConfiguration now accepts parameter EncryptionCertPath instead of EncryptionKey:
+        Before: Set-AzsBackupConfiguration -EncryptionKey $symmetricKey
+        After: Set-AzsBackupConfiguration -EncryptionCertPath $pathToEncryptionCert
+    * Restore-AzsBackup now requires parameter DecryptionCertPath and DecryptionCertPassword:
+        Before: Restore-AzsBackup -Name $backupResourceName
+        After: Restore-AzsBackup -Name $backupResourceName -DecryptionCertPath $decryptionCertPath -DecryptionCertPassword $decryptionCertPassword

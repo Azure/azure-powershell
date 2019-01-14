@@ -18,7 +18,7 @@
 
 .DESCRIPTION
     Run AzureStack Backup admin backup location tests using either mock client or our client.
-	The mock client allows for recording and playback.  This allows for offline tests.
+    The mock client allows for recording and playback.  This allows for offline tests.
 
 .PARAMETER RunRaw
     Run using our client creation path.
@@ -26,12 +26,12 @@
 .EXAMPLE
     PS C:\> .\src\Backup.Tests.ps1
     Describing Backups
-	 [+] TestListBackups 81ms
-	 [+] TestGetBackup 73ms
+     [+] TestListBackups 81ms
+     [+] TestGetBackup 73ms
 
 .NOTES
     Author: Microsoft
-	Copyright: Microsoft
+    Copyright: Microsoft
     Date:   August 24, 2017
 #>
 param(
@@ -82,10 +82,9 @@ InModuleScope Azs.Backup.Admin {
         It "TestListBackups" -Skip:$('TestListBackups' -in $global:SkippedTests) {
             $global:TestName = 'TestListBackups'
 
-            $backups = Get-AzsBackup -Location $global:Location
-            $backups  | Should Not Be $null
-            foreach ($backup in $backups) {
-                $result = Get-AzsBackup -Location $global:Location -Name $backup.Name
+            $backupLocations = Get-AzsBackupConfiguration -ResourceGroupName $global:ResourceGroupName
+            foreach ($backupLocation in $backupLocations) {
+                $result = Get-AzsBackup -ResourceGroupName $global:ResourceGroupName -Location $backupLocation.Name
                 ValidateBackup -Backup $result
             }
         }
@@ -93,11 +92,14 @@ InModuleScope Azs.Backup.Admin {
         It "TestGetBackup" -Skip:$('TestGetBackup' -in $global:SkippedTests) {
             $global:TestName = 'TestGetBackup'
 
-            $backups = Get-AzsBackup -Location $global:Location
-            $backups  | Should Not Be $null
-            foreach ($backup in $backups) {
-                $result = Get-AzsBackup -Location $global:Location -Name $backup.Name
-                ValidateBackup -Backup $result
+            $backupLocations = Get-AzsBackupConfiguration -ResourceGroupName $global:ResourceGroupName
+            foreach ($backupLocation in $backupLocations) {
+                $backups = Get-AzsBackup -ResourceGroupName $global:ResourceGroupName -Location $backupLocation.Name
+                $backups  | Should Not Be $null
+                foreach ($backup in $backups) {
+                    $result = Get-AzsBackup -ResourceGroupName $global:ResourceGroupName -Location $backupLocation.Name -Name $backup.Name
+                    ValidateBackup -Backup $result
+                }
             }
         }
     }

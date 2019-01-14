@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 4.0.3
+* Adding simple parameter sets in the New-AzureRMVM and New-AzureRMVMSS cmdlets
+* This adds support for specifying user images while creating VM
+
 ## Version 4.0.2
 * Compute module supported for the profile 2018-03-01-hybrid 
 * This version supports azure stack 

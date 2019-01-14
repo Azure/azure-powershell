@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.Compute.Strategies;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
@@ -115,23 +116,33 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
-        {
-            ExecuteClientAction(() =>
-            {
-                if (ShouldProcess(this.VMScaleSetName, VerbsCommon.New))
-                {
-                    string resourceGroupName = this.ResourceGroupName;
-                    string vmScaleSetName = this.VMScaleSetName;
-                    VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
+        public const string SimpleParameterSet = "SimpleParameterSet";
 
-                    var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
-                    var psObject = new PSVirtualMachineScaleSet();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
-                    WriteObject(psObject);
-                }
-            });
+        public override void ExecuteCmdlet()
+        {
+            switch (ParameterSetName)
+            {
+                case SimpleParameterSet:
+                    this.StartAndWait(SimpleParameterSetExecuteCmdlet);
+                    break;
+                default:
+                    ExecuteClientAction(() =>
+                    {
+                        if (ShouldProcess(this.VMScaleSetName, VerbsCommon.New))
+                        {
+                            string resourceGroupName = this.ResourceGroupName;
+                            string vmScaleSetName = this.VMScaleSetName;
+                            VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
+                            ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
+
+                            var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
+                            var psObject = new PSVirtualMachineScaleSet();
+                            ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
+                            WriteObject(psObject);
+                        }
+                    });
+                    break;
+            }
         }
 
         [Parameter(
@@ -140,7 +151,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false)]
         [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -149,6 +164,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = true)]
         [Alias("Name")]
         [AllowNull]
         public string VMScaleSetName { get; set; }
@@ -161,5 +179,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipeline = true)]
         [AllowNull]
         public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }
