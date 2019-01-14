@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherNetworkConfigurationDiagnostic", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = true), OutputType(typeof(PSNetworkConfigurationDiagnosticResponse))]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherNetworkConfigurationDiagnostic", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSNetworkConfigurationDiagnosticResponse))]
     public class InvokeNetworkWatcherNetworkConfigurationDiagnosticCommand : NetworkWatcherBaseCmdlet
     {
         [Parameter(

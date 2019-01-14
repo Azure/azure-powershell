@@ -1,14 +1,15 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworkconfigurationdiagnosticprofile
 schema: 2.0.0
 ---
 
 # New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new network configuration diagnostic profile object. 
+This object is used to restrict the network confiuration during a diagnostic session using the specified criteria.
 
 ## SYNTAX
 
@@ -25,7 +26,7 @@ This object is used to restrict the network confiuration during a network config
 ## EXAMPLES
 
 ### Example 1: Invoke network configuration diagnostic session for VM and specified network profile
-
+```
 PS C:\> $profile = New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile -Direction Inbound -Protocol Tcp -Source 10.1.1.4 -Destination * -DestinationPort 50
 PS C:\> Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic -Location eastus -TargetResourceId /subscriptions/61cc8a98-a8be-4bfe-a04e-0b461f93fe35/resourceGroups/NwRgEastUS/providers/Microsoft.Compute/virtualMachines/vm1 -Profile $profile
 ```
