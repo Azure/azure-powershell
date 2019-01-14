@@ -136,20 +136,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             }
         }
 
-        protected ClusterResolutionResult ClusterResolve(Uri clusterUri, string serverName)
-        {
-            var content = new StringContent($"ServerName={serverName}");
-            content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/x-www-form-urlencoded");
-
-            this.AsAzureDataplaneClient.ResetHttpClient();
-            using (var message = AsAzureDataplaneClient.CallPostAsync(clusterUri, AsAzureEndpoints.ClusterResolveEndpoint, content).Result)
-            {
-                message.EnsureSuccessStatusCode();
-                var rawResult = message.Content.ReadAsStringAsync().Result;
-                return JsonConvert.DeserializeObject<ClusterResolutionResult>(rawResult);
-            }
-        }
-
         internal static AsAzureDataplaneClient CreateAsAzureDataplaneClient(string hostUri, IAzureContext context, Func<HttpClient> httpClientProvider, bool parameterizedBaseUri = false)
         {
             if (context == null)
