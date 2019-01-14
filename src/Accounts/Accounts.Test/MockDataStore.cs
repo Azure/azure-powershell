@@ -31,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         private Dictionary<string, bool> writeLocks = new Dictionary<string, bool>(StringComparer.InvariantCultureIgnoreCase);
         private Dictionary<string, uint> readLocks = new Dictionary<string, uint>(StringComparer.InvariantCultureIgnoreCase);
         private const string FolderKey = "Folder";
+        private List<string> _unauthorizedFiles = new List<string>();
 
         public Dictionary<string, string> VirtualStore
         {
@@ -142,6 +143,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             {
                 if (key.StartsWith(dir))
                 {
+                    if (_unauthorizedFiles.Contains(key))
+                    {
+                        throw new UnauthorizedAccessException();
+                    }
+
                     VirtualStore.Remove(key);
                 }
             }
@@ -379,6 +385,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                     virtualStore[path] = Encoding.UTF8.GetString(buffer);
                 }
              );
+        }
+
+        public void LockAccessToFile(string path)
+        {
+            _unauthorizedFiles.Add(path);
+            var subfiles = GetFiles(path);
+            foreach (var subfile in subfiles)
+            {
+                _unauthorizedFiles.Add(subfile);
+            }
         }
 
         private class LockingMemoryStream : MemoryStream

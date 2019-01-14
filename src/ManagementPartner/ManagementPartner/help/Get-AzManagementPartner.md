@@ -1,14 +1,14 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner.dll-Help.xml
 Module Name: Az.ManagementPartner
-online version: https://docs.microsoft.com/en-us/powershell/module/get-azmanagementpartner
+online version: https://docs.microsoft.com/en-us/powershell/module/az.managementpartner/get-azmanagementpartner
 schema: 2.0.0
 ---
 
 # Get-AzManagementPartner
 
 ## SYNOPSIS
-Gets the Microsoft Partner Network(MPN) ID of the current authenticated user or service principal. 
+Gets the Microsoft Partner Network(MPN) ID of the current authenticated user or service principal.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzManagementPartner [[-PartnerId] <String>] [-DefaultProfile <IAzureContextC
 ```
 
 ## DESCRIPTION
-Gets the Microsoft Partner Network(MPN) ID of the current authenticated user or service principal. 
+Gets the Microsoft Partner Network(MPN) ID of the current authenticated user or service principal.
 
 ## EXAMPLES
 
