@@ -16,11 +16,9 @@ using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using System;
 using System.Management.Automation;
 using System.Net.Http;
-using System.Net.Http.Headers;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
@@ -29,8 +27,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
     /// </summary>
     public abstract class AsAzureDataplaneCmdletBase : AzurePSCmdlet
     {
+        /// <summary>
+        /// Field for the dataplane http client.
+        /// </summary>
         private IAsAzureHttpClient _asAzureDataplaneClient;
 
+
+        /// <summary>
+        /// Field for the current azure context, for the environment and profile.
+        /// </summary>
         private IAzureContext _currentContext;
 
         [Parameter(Mandatory = true, HelpMessage = "Name of the Azure Analysis Services server")]
@@ -60,6 +65,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         /// <example>testserver</example>
         protected string ServerName;
 
+        /// <inheritdoc cref="AzurePSCmdlet.DefaultContext"/>
         protected override IAzureContext DefaultContext
         {
             get
@@ -69,6 +75,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             }
         }
 
+        /// <inhereitdoc cref="AzurePSCmdlet.DataCollectionWarning"/>
         protected override string DataCollectionWarning
         {
             get
@@ -77,9 +84,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             }
         }
 
-        // No data collection for this commandlet
-        protected override void InitializeQosEvent() { }
+        /// <inheritdoc cref="AzurePSCmdlet.InitializeQosEvent"/>
+        protected override void InitializeQosEvent()
+        {
+            // No data collection for this cmdlet
+        }
 
+        /// <summary>
+        /// Gets or sets the <see cref="_currentContext"/>.
+        /// </summary>
         public IAzureContext CurrentContext
         {
             get
@@ -95,6 +108,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             set { _currentContext = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the <see cref="_asAzureDataplaneClient"/>.
+        /// </summary>
         public IAsAzureHttpClient AsAzureDataplaneClient
         {
             get
@@ -110,6 +126,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             set { _asAzureDataplaneClient = value; }
         }
 
+        /// <inheritdoc cref="AzurePSCmdlet.BeginProcessing"/>
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
@@ -136,7 +153,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             }
         }
 
-        internal static AsAzureDataplaneClient CreateAsAzureDataplaneClient(string hostUri, IAzureContext context, Func<HttpClient> httpClientProvider, bool parameterizedBaseUri = false)
+        /// <summary>
+        /// Creates an instance of an <see cref="AsAzureDataplaneClient"/> based on parameters.
+        /// </summary>
+        /// <param name="hostUri">The Uri to derive the <see cref="AsAzureDataplaneClient.BaseUri"/> from.</param>
+        /// <param name="context">The <see cref="IAzureContext"/> to retrieve ServiceClientCredentials from.</param>
+        /// <param name="httpClientProvider"><see cref="AsAzureDataplaneClient.HttpClientProvider"/>.</param>
+        /// <returns>An instance of an <see cref="AsAzureDataplaneClient"/>.</returns>
+        internal static AsAzureDataplaneClient CreateAsAzureDataplaneClient(string hostUri, IAzureContext context, Func<HttpClient> httpClientProvider)
         {
             if (context == null)
             {
