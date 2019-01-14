@@ -29,15 +29,25 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         /// <summary>
         /// The base Uri of the service.
         /// </summary>
-        public Uri BaseUri { get; set; }
+        public Uri BaseUri { get; }
 
         /// <summary>
         /// Credentials needed for the client to connect to Azure.
         /// </summary>
         public ServiceClientCredentials Credentials { get; private set; }
 
+        /// <summary>
+        /// Function for providing an <see cref="HttpClient"/> for this class.
+        /// </summary>
         private Func<HttpClient> HttpClientProvider { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AsAzureDataplaneClient"/> class.
+        /// </summary>
+        /// <param name="baseUri">The base uri to send http requests to.</param>
+        /// <param name="credentials"><see cref="ServiceClientCredentials"/> for authenticating requests.</param>
+        /// <param name="httpClientProvider">Function for providing an <see cref="HttpClient"/>.</param>
+        /// <param name="handlers">Additional delegating handlers to be passed to the base class.</param>
         public AsAzureDataplaneClient(Uri baseUri, ServiceClientCredentials credentials, Func<HttpClient> httpClientProvider, params DelegatingHandler[] handlers)
             : base(handlers)
         {
@@ -48,6 +58,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             this.ResetHttpClient();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AsAzureDataplaneClient"/> class.
+        /// </summary>
+        /// <param name="baseUri">The base uri to send http requests to.</param>
+        /// <param name="credentials"><see cref="ServiceClientCredentials"/> for authenticating requests.</param>
+        /// <param name="httpClientProvider">Function for providing an <see cref="HttpClient"/>.</param>
+        /// <param name="rootHandler">The root <see cref="HttpClientHandler"/> to be passed to the base class.</param>
+        /// <param name="handlers">Additional delegating handlers to be passed to the base class.</param>
         public AsAzureDataplaneClient(Uri baseUri, ServiceClientCredentials credentials, Func<HttpClient> httpClientProvider, HttpClientHandler rootHandler, params DelegatingHandler[] handlers)
             : base(rootHandler, handlers)
         {
@@ -58,6 +76,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             this.ResetHttpClient();
         }
 
+        /// <summary>
+        /// Invokes the HttpClientProvider function to reset the HttpClient to a new instance.
+        /// </summary>
         public void ResetHttpClient()
         {
             this.HttpClient = this.HttpClientProvider();
@@ -65,59 +86,31 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 
         #region CallHttpMethodAsyncOverloads
 
-        /// <summary>
-        /// Calls SendRequestAsync() for a GET.
-        /// </summary>
-        /// <param name="baseUri">The base Uri to call.</param>
-        /// <param name="requestUrl">The request Url.</param>
-        /// <param name="correlationId">The CorrelationId</param>
-        /// <returns>The http response message.</returns>
+        /// <inheritdoc cref="IAsAzureHttpClient.CallGetAsync(Uri, string, Guid)"/>
         public async Task<HttpResponseMessage> CallGetAsync(Uri baseUri, string requestUrl, Guid correlationId = new Guid())
         {
             return await SendRequestAsync(HttpMethod.Get, baseUri: baseUri, requestUrl: requestUrl, correlationId: correlationId);
         }
 
-        /// <summary>
-        /// Calls SendRequestAsync() for a GET using the default BaseUri and a blank correlationId.
-        /// </summary>
-        /// <param name="requestUrl">The Request Url.</param>
-        /// <returns>The http response message.</returns>
+        /// <inheritdoc cref="IAsAzureHttpClient.CallGetAsync(string)"/>
         public async Task<HttpResponseMessage> CallGetAsync(string requestUrl)
         {
             return await CallGetAsync(BaseUri, requestUrl, new Guid());
         }
 
-        /// <summary>
-        /// Calls SendRequestAsync() for a POST.
-        /// </summary>
-        /// <param name="baseUri">The base Uri to call.</param>
-        /// <param name="requestUrl">The request Url.</param>
-        /// <param name="correlationId">The CorrelationId</param>
-        /// <param name="content">The content to post (optional).</param>
-        /// <returns>The http response message.</returns>
+        /// <inheritdoc cref="IAsAzureHttpClient.CallPostAsync(Uri, string, Guid, HttpContent)"/>
         public async Task<HttpResponseMessage> CallPostAsync(Uri baseUri, string requestUrl, Guid correlationId, HttpContent content = null)
         {
             return await SendRequestAsync(HttpMethod.Post, baseUri, requestUrl, correlationId, content);
         }
 
-        /// <summary>
-        /// Calls SendRequestAsync() for a POST using a blank correlationId.
-        /// </summary>
-        /// <param name="baseUri">The base Uri to call.</param>
-        /// <param name="requestUrl">The request Url.</param>
-        /// <param name="content">The content to post (optional).</param>
-        /// <returns>The http response message.</returns>
+        /// <inheritdoc cref="IAsAzureHttpClient.CallPostAsync(Uri, string, HttpContent)"/>
         public async Task<HttpResponseMessage> CallPostAsync(Uri baseUri, string requestUrl, HttpContent content = null)
         {
             return await CallPostAsync(baseUri, requestUrl, new Guid(), content);
         }
 
-        /// <summary>
-        /// Calls SendRequestAsync() for a POST using the default BaseUri and a blank correlationId.
-        /// </summary>
-        /// <param name="requestUrl">The Request Url.</param>
-        /// <param name="content">The content to post (optional).</param>
-        /// <returns>The http response message.</returns>
+        /// <inheritdoc cref="IAsAzureHttpClient.CallPostAsync(string, HttpContent)"/>
         public async Task<HttpResponseMessage> CallPostAsync(string requestUrl, HttpContent content = null)
         {
             return await CallPostAsync(BaseUri, requestUrl, content);
@@ -125,6 +118,16 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 
         #endregion
 
+        /// <summary>
+        /// Asynchronosly send an http request.
+        /// </summary>
+        /// <param name="method">The http method for this request.</param>
+        /// <param name="baseUri">The base URI to send the request to.</param>
+        /// <param name="requestUrl">The URL endpoint to send the request to.</param>
+        /// <param name="correlationId">The correlation ID for the request.</param>
+        /// <param name="content">HttpContent for a POST request.</param>
+        /// <param name="cancellationToken">The cancelation token.</param>
+        /// <returns>The <see cref="HttpResponseMessage"/> of the request.</returns>
         private async Task<HttpResponseMessage> SendRequestAsync(
             HttpMethod method,
             Uri baseUri,

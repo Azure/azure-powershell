@@ -15,17 +15,19 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     /// <summary>
-    /// Cmdlet to log into an Analysis Services environment
+    /// Cmdlet to restart an Analysis Services server instance.
     /// </summary>
     [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AnalysisServicesInstance", SupportsShouldProcess = true)]
     [Alias("Restart-AzureAsInstance", "Restart-AzAsInstance")]
     [OutputType(typeof(bool))]
     public class RestartAzureAnalysisServer : AsAzureDataplaneCmdletBase
     {
+        /// <inheritdoc cref="AzurePSCmdlet.ExecuteCmdlet"/>
         public override void ExecuteCmdlet()
         {
             if (!ShouldProcess(Instance, Resources.RestartingAnalysisServicesServer))

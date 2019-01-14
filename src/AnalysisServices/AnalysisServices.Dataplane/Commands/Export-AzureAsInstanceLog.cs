@@ -17,11 +17,12 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     /// <summary>
-    /// Cmdlet to export an Analysis Services server log to file
+    /// Cmdlet to export an Analysis Services server log to file.
     /// </summary>
     [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AnalysisServicesInstanceLog", SupportsShouldProcess = true)]
     [Alias("Export-AzureAsInstanceLog", "Export-AzAsInstanceLog")]
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
 
+        /// <inheritdoc cref="AzurePSCmdlet.ExecuteCmdlet"/>
         public override void ExecuteCmdlet()
         {
             if (!ShouldProcess(Instance, Resources.ExportingLogFromAnalysisServicesServer))

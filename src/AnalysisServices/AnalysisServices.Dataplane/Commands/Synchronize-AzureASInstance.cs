@@ -23,33 +23,58 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     /// <summary>
-    /// Cmdlet to log into an Analysis Services environment
+    /// Cmdlet to sync Analysis Services server databases.
     /// </summary>
     [Cmdlet("Sync", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AnalysisServicesInstance", SupportsShouldProcess = true)]
     [Alias("Sync-AzureAsInstance", "Sync-AzAsInstance")]
     [OutputType(typeof(ScaleOutServerDatabaseSyncDetails))]
     public class SynchronizeAzureAzureAnalysisServer : AsAzureDataplaneCmdletBase
     {
-        private static TimeSpan DefaultPollingInterval = TimeSpan.FromSeconds(30);
+        /// <summary>
+        /// Default time interval to wait before first poll for sync status.
+        /// </summary>
+        private static readonly TimeSpan DefaultPollingInterval = TimeSpan.FromSeconds(30);
 
+        /// <summary>
+        /// Default time interval to wait between polls for sync status.
+        /// </summary>
         public static TimeSpan DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(10);
 
+        /// <summary>
+        /// Http Header name for root activity id.
+        /// </summary>
         private readonly string RootActivityIdHeaderName = "x-ms-root-activity-id";
 
+        /// <summary>
+        /// Http Header name for current UTC date and time.
+        /// </summary>
         private readonly string CurrentUtcDateHeaderName = "x-ms-current-utc-date";
 
+        /// <summary>
+        /// The Cluster Resolution Result object.
+        /// </summary>
         private ClusterResolutionResult clusterResolveResult;
 
-        private Guid correlationId;
+        /// <summary>
+        /// Correlation ID for http requests.
+        /// </summary>
+        private Guid correlationId = Guid.Empty;
 
-        private string syncRequestRootActivityId;
+        /// <summary>
+        /// The root activity id for this sync activity.
+        /// </summary>
+        private string syncRequestRootActivityId = string.Empty;
 
-        private string syncRequestTimeStamp;
+        /// <summary>
+        /// Time stamp for the sync request.
+        /// </summary>
+        private string syncRequestTimeStamp = string.Empty;
 
         [Parameter(
             Mandatory = true,
@@ -59,39 +84,38 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         [ValidateNotNullOrEmpty]
         public string Database { get; set; }
 
-        public SynchronizeAzureAzureAnalysisServer()
-        {
-            this.syncRequestRootActivityId = string.Empty;
-            this.correlationId = Guid.Empty;
-            this.syncRequestTimeStamp = string.Empty;
-        }
-
+        /// <inheritdoc cref="AsAzureDataplaneCmdletBase.BeginProcessing"/>
         protected override void BeginProcessing()
         {
             this._dataCollectionProfile = new AzurePSDataCollectionProfile(false);
             base.BeginProcessing();
         }
 
+        /// <inheritdoc cref="AzurePSCmdlet.SetupDebuggingTraces"/>
         protected override void SetupDebuggingTraces()
         {
             // nothing to do here.
         }
 
+        /// <inheritdoc cref="AzurePSCmdlet.TearDownDebuggingTraces"/>
         protected override void TearDownDebuggingTraces()
         {
             // nothing to do here.
         }
 
+        /// <inheritdoc cref="AzurePSCmdlet.SetupHttpClientPipeline"/>
         protected override void SetupHttpClientPipeline()
         {
             // nothing to do here.
         }
 
+        /// <inheritdoc cref="AzurePSCmdlet.TearDownHttpClientPipeline"/>
         protected override void TearDownHttpClientPipeline()
         {
             // nothing to do here.
         }
 
+        /// <inheritdoc cref="AzurePSCmdlet.ExecuteCmdlet"/>
         public override void ExecuteCmdlet()
         {
             if (!ShouldProcess(Instance, Resources.SynchronizingAnalysisServicesServer))
@@ -254,7 +278,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         }
 
         /// <summary>
-        /// 
+        /// Worker Method for the synchronize request.
         /// </summary>
         /// <param name="databaseName">Database name</param>
         /// <param name="pollingUrl">URL for polling</param>
