@@ -73,6 +73,12 @@
                                          "offer":  "WindowsServer",
                                          "sku":  "2008-R2-SP1",
                                          "version":  "latest"
-                                     }
+                                     },
+                    "Win10":  {
+                                  "publisher":  "MicrosoftVisualStudio",
+                                  "offer":  "Windows",
+                                  "sku":  "Windows-10-N-x64",
+                                  "version":  "latest"
+                              }
                 }
 }
