@@ -685,6 +685,12 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 		Assert-NotNull $autoscaleConfig01
 		Assert-AreEqual $autoscaleConfig01.MinCapacity 3
 
+		Set-AzureRmApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw -MinCapacity 3 -MaxCapacity 10
+		$autoscaleConfig02 = Get-AzureRmApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw
+		Assert-NotNull $autoscaleConfig02
+		Assert-AreEqual $autoscaleConfig02.MinCapacity 3
+		Assert-AreEqual $autoscaleConfig02.MaxCapacity 10
+
 		# Next setup preparation
 
 		# remove autoscale config

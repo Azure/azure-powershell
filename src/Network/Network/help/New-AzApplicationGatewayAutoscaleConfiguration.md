@@ -13,7 +13,7 @@ Creates a Autoscale Configuration for the Application Gateway.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity <Int32> [-DefaultProfile <IAzureContextContainer>]
+New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity <Int32> [-MaxCapacity <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -57,6 +57,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxCapacity
+Maximum capacity units that will always be available [and charged] for application gateway.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
