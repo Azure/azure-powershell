@@ -7,15 +7,15 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"ttl\": \"30\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f63885f2-a0af-4433-b448-58308aad4cb9"
+          "c1ca2815-feba-4c67-bfbd-3e3967cde143"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27019.06",
+          "FxVersion/4.6.27129.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17134.",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Advisor.AdvisorManagementClient/0.9.5.0"
         ],
         "Content-Type": [
@@ -38,23 +38,23 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1198"
         ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
         "x-ms-request-id": [
-          "98761cc1-0c27-495f-b975-b8141a9c3df8"
+          "76ce4be1-d671-4093-bdb1-6298e2f839ae"
         ],
         "x-ms-correlation-request-id": [
-          "98761cc1-0c27-495f-b975-b8141a9c3df8"
+          "76ce4be1-d671-4093-bdb1-6298e2f839ae"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181213T170637Z:98761cc1-0c27-495f-b975-b8141a9c3df8"
+          "WESTUS2:20190115T004544Z:76ce4be1-d671-4093-bdb1-6298e2f839ae"
         ],
         "Date": [
-          "Thu, 13 Dec 2018 17:06:37 GMT"
+          "Tue, 15 Jan 2019 00:45:44 GMT"
         ],
         "Content-Length": [
           "135"
@@ -66,7 +66,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"suppressionId\": \"23f2ae3d-f99a-6935-2cfb-1e8ffd82ede5\",\r\n    \"ttl\": \"30\",\r\n    \"expirationTimeStamp\": \"2019-01-12T17:06:37.7369208Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"suppressionId\": \"23f2ae3d-f99a-6935-2cfb-1e8ffd82ede5\",\r\n    \"ttl\": \"30\",\r\n    \"expirationTimeStamp\": \"2019-02-14T00:45:44.1504943Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -76,15 +76,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9f1a8847-7f8e-4e81-a741-c1b0ce2b62fb"
+          "f4128785-9af1-4d2e-8c6a-a83cb4b43361"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27019.06",
+          "FxVersion/4.6.27129.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17134.",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Advisor.AdvisorManagementClient/0.9.5.0"
         ]
       },
@@ -105,22 +105,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "596"
+          "598"
         ],
         "x-ms-request-id": [
-          "779f156f-cccb-445b-a656-af5c5521cca3"
+          "926b7808-b806-460f-bc6c-73b60377670e"
         ],
         "x-ms-correlation-request-id": [
-          "779f156f-cccb-445b-a656-af5c5521cca3"
+          "926b7808-b806-460f-bc6c-73b60377670e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181213T170637Z:779f156f-cccb-445b-a656-af5c5521cca3"
+          "WESTUS2:20190115T004544Z:926b7808-b806-460f-bc6c-73b60377670e"
         ],
         "Date": [
-          "Thu, 13 Dec 2018 17:06:37 GMT"
+          "Tue, 15 Jan 2019 00:45:44 GMT"
         ],
         "Content-Length": [
-          "1371"
+          "1876"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -129,7 +129,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourcegroups/testing/providers/microsoft.storage/storageaccounts/fontcjk/providers/Microsoft.Advisor/recommendations/b0569f30-0351-b3ee-cce6-7a49ae76a06b/suppressions/HardcodedSuppressionName\",\r\n      \"name\": \"HardcodedSuppressionName\",\r\n      \"type\": \"Microsoft.Advisor/suppressions\",\r\n      \"properties\": {\r\n        \"suppressionId\": \"d58d5271-8bc5-9709-20bf-b1b150c8193b\",\r\n        \"ttl\": \"-1\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/xiaoyuh-dev/providers/Microsoft.Network/expressRouteCircuits/test/providers/Microsoft.Advisor/recommendations/5a4b5c09-0537-e36a-caa0-17686b1f680c/suppressions/HardcodedSuppressionName\",\r\n      \"name\": \"HardcodedSuppressionName\",\r\n      \"type\": \"Microsoft.Advisor/suppressions\",\r\n      \"properties\": {\r\n        \"suppressionId\": \"36403fa0-cf40-fb8e-2b90-83629a19e9fa\",\r\n        \"ttl\": \"10.00:00:00\",\r\n        \"expirationTimeStamp\": \"2018-12-22T17:38:21.5033712Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/testing/providers/Microsoft.Storage/storageAccounts/fontcjk/providers/Microsoft.Advisor/recommendations/4fa2ff4f-dc90-9876-0723-1360fa9f4bd7/suppressions/HardcodedSuppressionName\",\r\n      \"name\": \"HardcodedSuppressionName\",\r\n      \"type\": \"Microsoft.Advisor/suppressions\",\r\n      \"properties\": {\r\n        \"suppressionId\": \"23f2ae3d-f99a-6935-2cfb-1e8ffd82ede5\",\r\n        \"ttl\": \"30.00:00:00\",\r\n        \"expirationTimeStamp\": \"2019-01-12T17:06:37.7369208Z\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourcegroups/testing/providers/microsoft.storage/storageaccounts/fontcjk/providers/Microsoft.Advisor/recommendations/b0569f30-0351-b3ee-cce6-7a49ae76a06b/suppressions/HardcodedSuppressionName\",\r\n      \"name\": \"HardcodedSuppressionName\",\r\n      \"type\": \"Microsoft.Advisor/suppressions\",\r\n      \"properties\": {\r\n        \"suppressionId\": \"d58d5271-8bc5-9709-20bf-b1b150c8193b\",\r\n        \"ttl\": \"-1\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourcegroups/xiaoyuh-dev/providers/microsoft.classicstorage/storageaccounts/xiaoyuhdev9950/providers/Microsoft.Advisor/recommendations/19293a95-e22d-d64a-59da-144036374fa1/suppressions/HardcodedSuppressionName\",\r\n      \"name\": \"HardcodedSuppressionName\",\r\n      \"type\": \"Microsoft.Advisor/suppressions\",\r\n      \"properties\": {\r\n        \"suppressionId\": \"f1134e2b-0f52-bcb2-dee6-7a7ba692156f\",\r\n        \"ttl\": \"14.00:00:00\",\r\n        \"expirationTimeStamp\": \"2019-01-23T21:55:56.8138255Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/jebaez-dev/providers/Microsoft.Sql/servers/advisorsqltest/databases/AdvisorDBTest/providers/Microsoft.Advisor/recommendations/0d68b028-5c00-4f2c-36b2-b0bfd1c11423/suppressions/HardcodedSuppressionName\",\r\n      \"name\": \"HardcodedSuppressionName\",\r\n      \"type\": \"Microsoft.Advisor/suppressions\",\r\n      \"properties\": {\r\n        \"suppressionId\": \"d8b6b697-3ee5-1c30-dc30-674b157536fd\",\r\n        \"ttl\": \"7.00:00:00\",\r\n        \"expirationTimeStamp\": \"2019-01-17T21:25:35.5234323Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/testing/providers/Microsoft.Storage/storageAccounts/fontcjk/providers/Microsoft.Advisor/recommendations/4fa2ff4f-dc90-9876-0723-1360fa9f4bd7/suppressions/HardcodedSuppressionName\",\r\n      \"name\": \"HardcodedSuppressionName\",\r\n      \"type\": \"Microsoft.Advisor/suppressions\",\r\n      \"properties\": {\r\n        \"suppressionId\": \"23f2ae3d-f99a-6935-2cfb-1e8ffd82ede5\",\r\n        \"ttl\": \"30.00:00:00\",\r\n        \"expirationTimeStamp\": \"2019-02-14T00:45:44.1504943Z\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],
