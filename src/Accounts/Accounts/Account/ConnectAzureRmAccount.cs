@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Profile
         public string Environment { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
-                    Mandatory = true, HelpMessage = "Credential")]
+                    Mandatory = true, HelpMessage = "Service Principal Secret")]
         [Parameter(ParameterSetName = UserWithCredentialParameterSet,
-                    Mandatory = true, HelpMessage = "Credential")]
+                    Mandatory = true, HelpMessage = "User Password Credential: this is only supported in Windows PowerShell 5.1")]
         public PSCredential Credential { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
@@ -255,6 +255,11 @@ namespace Microsoft.Azure.Commands.Profile
                     azureAccount.Id = this.IsBound(nameof(AccountId)) ? AccountId : string.Format("MSI@{0}", ManagedServicePort);
                     break;
                 default:
+                    if (ParameterSetName == UserWithCredentialParameterSet && string.Equals(SessionState?.PSVariable?.GetValue("PSEdition") as string, "Core"))
+                    {
+                        throw new InvalidOperationException(Resources.PasswordNotSupported);
+                    }
+
                     azureAccount.Type = AzureAccount.AccountType.User;
                     break;
             }
