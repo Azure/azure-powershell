@@ -14,16 +14,10 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-// TODO: Remove IfDef
-#if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
-#endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-// TODO: Remove IfDef
-#if NETSTANDARD
 using Microsoft.Azure.Commands.Profile.Models.Core;
-#endif
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -60,11 +54,6 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string Environment { get; set; }
 
-// TODO: Remove IfDef code
-#if !NETSTANDARD
-        [Parameter(ParameterSetName = UserParameterSet,
-                    Mandatory = false, HelpMessage = "Optional credential", Position = 0)]
-#endif
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true, HelpMessage = "Credential")]
         [Parameter(ParameterSetName = UserWithCredentialParameterSet,
