@@ -16,6 +16,8 @@
 	</ItemGroup>
 	
   <ItemGroup>
+    <ProjectReference Include="..\..\Storage\Storage.Management\Storage.Management.csproj" />
+    <ProjectReference Include="..\..\Storage\Storage\Storage.csproj" />
     <ProjectReference Include="..\StorageSync\StorageSync.csproj" />
   </ItemGroup>
 
