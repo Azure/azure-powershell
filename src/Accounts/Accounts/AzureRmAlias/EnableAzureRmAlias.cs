@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
             Dictionary<string, object> mapping = Mappings.GetCaseInsensitiveMapping();
 
             // If no modules are specified, enable all aliases
-            if (Module == null)
+            if (this.SessionState != null && Module == null)
             {
                 EnableLocalAliases(mapping.Keys.ToArray(), mapping);
             }
-            else
+            else if (this.SessionState != null)
             {
                 EnableLocalAliases(Module, mapping);
             }
