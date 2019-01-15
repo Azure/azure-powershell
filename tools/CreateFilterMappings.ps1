@@ -63,11 +63,23 @@ function Get-AssemblyName
         [string]$TestCsprojPath
     )
 
+    $AzAssemblyPrefix = "Microsoft.Azure.PowerShell.Cmdlets."
+    $LegacyAssemblyPrefix = "Microsoft.Azure.Commands."
+    $AzTestAssemblySuffix = ".Test"
     $Content = Get-Content -Path $TestCsprojPath
-    $MatchedAssembly = $Content | where { $_ -match "<AssemblyName>[a-zA-Z.]*<\/AssemblyName>" }
-    if ($MatchedAssembly -ne $null)
+    $RootNamespace = $Content | where { $_ -like "*<RootNamespace>*</RootNamespace>*" }
+    if ($RootNamespace -ne $null)
     {
-        return $MatchedAssembly.Trim().Trim("<AssemblyName>").Trim("</")
+        $RootNamespace = $RootNamespace.Trim().Replace('<RootNamespace>', '').Replace('</RootNamespace>', '')
+        $RootNamespace = $RootNamespace.Replace('$(AzAssemblyPrefix)', $AzAssemblyPrefix).Replace('$(LegacyAssemblyPrefix)', $LegacyAssemblyPrefix).Replace('$(AzTestAssemblySuffix)', $AzTestAssemblySuffix)
+        $PsModuleName = $Content | where { $_ -like "*<PsModuleName>*</PsModuleName>*" }
+        if ($PsModuleName -ne $null)
+        {
+            $PsModuleName = $PsModuleName.Trim().Replace('<PsModuleName>', '').Replace('</PsModuleName>', '')
+            $RootNamespace = $RootNamespace.Replace('$(PsModuleName)', $PsModuleName)
+        }
+
+        return $RootNamespace
     }
 }
 
@@ -370,7 +382,7 @@ function Add-TestDllMappings
             if ($AssemblyName -ne $null)
             {
                 $TestBasePath = $TestProject.Directory.FullName.Substring($Script:RootPath.length)
-                $TestDllPath = "." + $TestBasePath + "\bin\Debug\$AssemblyName.dll"
+                $TestDllPath = "." + $TestBasePath + "\bin\Debug\netcoreapp2.0\$AssemblyName.dll"
                 $SolutionFiles | % { $Mappings[$_.BaseName] += $TestDllPath }
             }
         }
