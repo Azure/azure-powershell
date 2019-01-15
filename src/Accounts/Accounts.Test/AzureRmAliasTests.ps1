@@ -31,8 +31,8 @@ function Test-AzureRmAlias
 	Get-AzureRmSubscription
 
 	$PROFILE = New-Object PSObject -Property @{
-		CurrentUserAllHosts = Join-Path $env:APPDATA "CurrentUserProfile.ps1"; 
-		AllUsersAllHosts = Join-Path $env:APPDATA "AllUsersProfile.ps1"
+		CurrentUserAllHosts = Join-Path $PSScriptRoot "CurrentUserProfile.ps1"; 
+		AllUsersAllHosts = Join-Path $PSScriptRoot "AllUsersProfile.ps1"
 	}
 
 	Disable-AzureRmAlias
