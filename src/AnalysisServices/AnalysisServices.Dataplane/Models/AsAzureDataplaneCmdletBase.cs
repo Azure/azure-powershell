@@ -27,17 +27,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
     /// </summary>
     public abstract class AsAzureDataplaneCmdletBase : AzurePSCmdlet
     {
-        /// <summary>
-        /// Field for the dataplane http client.
-        /// </summary>
-        private IAsAzureHttpClient _asAzureDataplaneClient;
-
-
-        /// <summary>
-        /// Field for the current azure context, for the environment and profile.
-        /// </summary>
-        private IAzureContext _currentContext;
-
         [Parameter(Mandatory = true, HelpMessage = "Name of the Azure Analysis Services server")]
         [ValidateNotNullOrEmpty]
         public string Instance { get; set; }
@@ -65,30 +54,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         /// <example>testserver</example>
         protected string ServerName;
 
-        /// <inheritdoc cref="AzurePSCmdlet.DefaultContext"/>
-        protected override IAzureContext DefaultContext
-        {
-            get
-            {
-                // Nothing to do with Azure Resource Management context
-                return null;
-            }
-        }
+        /// <summary>
+        /// Field for the current azure context, for the environment and profile.
+        /// </summary>
+        private IAzureContext _currentContext;
 
-        /// <inhereitdoc cref="AzurePSCmdlet.DataCollectionWarning"/>
-        protected override string DataCollectionWarning
-        {
-            get
-            {
-                return Resources.ARMDataCollectionMessage;
-            }
-        }
-
-        /// <inheritdoc cref="AzurePSCmdlet.InitializeQosEvent"/>
-        protected override void InitializeQosEvent()
-        {
-            // No data collection for this cmdlet
-        }
+        /// <summary>
+        /// Field for the dataplane http client.
+        /// </summary>
+        private IAsAzureHttpClient _asAzureDataplaneClient;
 
         /// <summary>
         /// Gets or sets the <see cref="_currentContext"/>.
@@ -126,30 +100,22 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             set { _asAzureDataplaneClient = value; }
         }
 
-        /// <inheritdoc cref="AzurePSCmdlet.BeginProcessing"/>
-        protected override void BeginProcessing()
+        /// <inheritdoc cref="AzurePSCmdlet.DefaultContext"/>
+        protected override IAzureContext DefaultContext
         {
-            base.BeginProcessing();
-
-            if (string.IsNullOrEmpty(Instance))
+            get
             {
-                throw new ArgumentNullException(nameof(Instance));
+                // Nothing to do with Azure Resource Management context
+                return null;
             }
+        }
 
-            // user must specify the fully qualified server name. For example, asazure://westus2.asazure.windows.net/testserver
-            if (!Uri.TryCreate(Instance, UriKind.Absolute, out var uriResult) || uriResult.Scheme != AsAzureEndpoints.UriSchemeAsAzure)
+        /// <inhereitdoc cref="AzurePSCmdlet.DataCollectionWarning"/>
+        protected override string DataCollectionWarning
+        {
+            get
             {
-                throw new PSInvalidOperationException(string.Format(Resources.InvalidServerName, Instance));
-            }
-
-            // derive all bits of the url from the input
-            ServerUri = uriResult.AbsoluteUri;
-            DnsSafeHost = uriResult.DnsSafeHost;
-            ServerName = uriResult.PathAndQuery.Trim('/');
-
-            if (_asAzureDataplaneClient == null)
-            {
-                AsAzureDataplaneClient = CreateAsAzureDataplaneClient(DnsSafeHost, CurrentContext, () => { return new HttpClient(); });
+                return Resources.ARMDataCollectionMessage;
             }
         }
 
@@ -181,6 +147,39 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             var credentials = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix);
             var handlers = AzureSession.Instance.ClientFactory.GetCustomHandlers();
             return AzureSession.Instance.ClientFactory.CreateCustomArmClient<AsAzureDataplaneClient>(baseUri, credentials, httpClientProvider, handlers);
+        }
+
+        /// <inheritdoc cref="AzurePSCmdlet.InitializeQosEvent"/>
+        protected override void InitializeQosEvent()
+        {
+            // No data collection for this cmdlet
+        }
+
+        /// <inheritdoc cref="AzurePSCmdlet.BeginProcessing"/>
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+
+            if (string.IsNullOrEmpty(Instance))
+            {
+                throw new ArgumentNullException(nameof(Instance));
+            }
+
+            // user must specify the fully qualified server name. For example, asazure://westus2.asazure.windows.net/testserver
+            if (!Uri.TryCreate(Instance, UriKind.Absolute, out var uriResult) || uriResult.Scheme != AsAzureEndpoints.UriSchemeAsAzure)
+            {
+                throw new PSInvalidOperationException(string.Format(Resources.InvalidServerName, Instance));
+            }
+
+            // derive all bits of the url from the input
+            ServerUri = uriResult.AbsoluteUri;
+            DnsSafeHost = uriResult.DnsSafeHost;
+            ServerName = uriResult.PathAndQuery.Trim('/');
+
+            if (_asAzureDataplaneClient == null)
+            {
+                AsAzureDataplaneClient = CreateAsAzureDataplaneClient(DnsSafeHost, CurrentContext, () => { return new HttpClient(); });
+            }
         }
     }
 }
