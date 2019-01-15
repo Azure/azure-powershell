@@ -82,7 +82,7 @@ This command connects to an Azure account.
 To run Azure Resource Manager cmdlets with this account, you must provide Microsoft account or organizational ID credentials at the prompt.
 If multi-factor authentication is enabled for your credentials, you must log in using the interactive option or use service principal authentication.
 
-### Example 2: Connect to an Azure account using organizational ID credentials
+### Example 2: (Windows PowerShell 5.1 only) Connect to an Azure account using organizational ID credentials
 ```powershell
 PS C:\> $Credential = Get-Credential
 PS C:\> Connect-AzAccount -Credential $Credential
@@ -92,7 +92,7 @@ Account                SubscriptionName TenantId                Environment
 azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
-The first command will prompt for user credentials (username and password), and then stores them in the $Credential variable.
+This scenario works only in Windows PowerShell 5.1. The first command will prompt for user credentials (username and password), and then stores them in the $Credential variable.
 The second command connects to an Azure account using the credentials stored in $Credential.
 This account authenticates with Azure Resource Manager using organizational ID credentials.
 You cannot use multi-factor authentication or Microsoft account credentials to run Azure Resource Manager cmdlets with this account.
