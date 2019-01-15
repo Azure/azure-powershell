@@ -28,19 +28,19 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = "Microsoft.Azure.Commands.Compute.Strategies.ComputeRp.Images.json";
 
-            var InstanceDict = new Dictionary<string, Dictionary<string, ImageReference>>();
+            var instanceDict = new Dictionary<string, Dictionary<string, ImageReference>>();
 
             using (Stream stream = assembly.GetManifestResourceStream(resourceName))
             using (StreamReader reader = new StreamReader(stream))
             {
                 Dictionary<string, object> jsonFile = (Dictionary<string, object>)JsonConvert.DeserializeObject(reader.ReadToEnd(), typeof(Dictionary<string, object>));
-                foreach (var OSType in jsonFile.Keys)
+                foreach (var oSType in jsonFile.Keys)
                 {
-                    Dictionary<string, object> osDict = (Dictionary<string, object>)JsonConvert.DeserializeObject(jsonFile[OSType].ToString(), typeof(Dictionary<string, object>));
+                    Dictionary<string, object> osDict = (Dictionary<string, object>)JsonConvert.DeserializeObject(jsonFile[oSType].ToString(), typeof(Dictionary<string, object>));
                     Dictionary<string, ImageReference> innerComputeTypeDict = new Dictionary<string, ImageReference>();
-                    foreach (var ComputerType in osDict.Keys)
+                    foreach (var computerType in osDict.Keys)
                     {
-                        Dictionary<string, string> computerDict = (Dictionary<string, string>)JsonConvert.DeserializeObject(osDict[ComputerType].ToString(), typeof(Dictionary<string, string>));
+                        Dictionary<string, string> computerDict = (Dictionary<string, string>)JsonConvert.DeserializeObject(osDict[computerType].ToString(), typeof(Dictionary<string, string>));
                         ImageReference innerImageReference = new ImageReference
                         {
                             Publisher = computerDict["publisher"],
@@ -48,13 +48,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             Sku = computerDict["sku"],
                             Version = computerDict["version"]
                         };
-                        innerComputeTypeDict.Add(ComputerType, innerImageReference);
+                        innerComputeTypeDict.Add(computerType, innerImageReference);
                     }
-                    InstanceDict.Add(OSType, innerComputeTypeDict);
+                    instanceDict.Add(oSType, innerComputeTypeDict);
                 }
             }
 
-            return InstanceDict;
+            return instanceDict;
         }
 
         public static Dictionary<string, Dictionary<string, ImageReference>> Instance { get; } = GenerateImageDictionary();   
