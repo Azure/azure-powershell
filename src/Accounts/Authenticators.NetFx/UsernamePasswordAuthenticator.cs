@@ -28,17 +28,18 @@ namespace Microsoft.Azure.PowerShell.Authenticators.NetFramework
     {
         public override Task<IAccessToken> Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
         {
+            var audience = environment.GetEndpoint(resourceId);
             var context = new AuthenticationContext(
                 AuthenticationHelpers.GetAuthority(environment, tenant), 
                 environment?.OnPremise ?? true, 
                 tokenCache as TokenCache ?? TokenCache.DefaultShared);
-            var result = context.AcquireTokenAsync(resourceId, AuthenticationHelpers.PowerShellClientId, new UserPasswordCredential(account.Id, password));
+            var result = context.AcquireTokenAsync(audience, AuthenticationHelpers.PowerShellClientId, new UserPasswordCredential(account.Id, password));
             return AuthenticationResultToken.GetAccessTokenAsync(result);
         }
 
         public override bool CanAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
         {
-            return (account?.Type == AzureAccount.AccountType.User && environment != null && !string.IsNullOrWhiteSpace(tenant) && password != null && tokenCache != null);
+            return (account?.Type == AzureAccount.AccountType.User && environment != null && !string.IsNullOrEmpty(environment.GetEndpoint(resourceId)) && !string.IsNullOrWhiteSpace(tenant) && password != null && tokenCache != null);
         }
     }
 }
