@@ -101,6 +101,21 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         #endregion
 
         /// <summary>
+        /// Adds a header to the <see cref="HttpRequestHeaders"/> list object.
+        /// </summary>
+        /// <param name="headers">The request headers list object.</param>
+        /// <param name="name">The name of the header to add.</param>
+        /// <param name="value">The value of the header.</param>
+        private static void AddHeader(HttpRequestHeaders headers, string name, string value)
+        {
+            if (headers.Contains(name))
+            {
+                headers.Remove(name);
+            }
+            headers.TryAddWithoutValidation(name, value);
+        }
+
+        /// <summary>
         /// Asynchronosly send an http request.
         /// </summary>
         /// <param name="method">The http method for this request.</param>
@@ -137,21 +152,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             }
 
             return await this.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Adds a header to the <see cref="HttpRequestHeaders"/> list object.
-        /// </summary>
-        /// <param name="headers">The request headers list object.</param>
-        /// <param name="name">The name of the header to add.</param>
-        /// <param name="value">The value of the header.</param>
-        private static void AddHeader(HttpRequestHeaders headers, string name, string value)
-        {
-            if (headers.Contains(name))
-            {
-                headers.Remove(name);
-            }
-            headers.TryAddWithoutValidation(name, value);
         }
     }
 }

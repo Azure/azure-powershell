@@ -37,6 +37,19 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     public class SynchronizeAzureAzureAnalysisServer : AsAzureDataplaneCmdletBase
     {
         /// <summary>
+        /// Default time interval to wait between polls for sync status.
+        /// </summary>
+        public static TimeSpan DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(10);
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Identity of the database need to be synchronized",
+            Position = 1,
+            ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public string Database { get; set; }
+
+        /// <summary>
         /// Default time interval to wait before first poll for sync status.
         /// </summary>
         private static readonly TimeSpan DefaultPollingInterval = TimeSpan.FromSeconds(30);
@@ -65,50 +78,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         /// Time stamp for the sync request.
         /// </summary>
         private string syncRequestTimeStamp = string.Empty;
-
-        /// <summary>
-        /// Default time interval to wait between polls for sync status.
-        /// </summary>
-        public static TimeSpan DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(10);
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Identity of the database need to be synchronized",
-            Position = 1,
-            ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public string Database { get; set; }
-
-        /// <inheritdoc cref="AsAzureDataplaneCmdletBase.BeginProcessing"/>
-        protected override void BeginProcessing()
-        {
-            this._dataCollectionProfile = new AzurePSDataCollectionProfile(false);
-            base.BeginProcessing();
-        }
-
-        /// <inheritdoc cref="AzurePSCmdlet.SetupDebuggingTraces"/>
-        protected override void SetupDebuggingTraces()
-        {
-            // nothing to do here.
-        }
-
-        /// <inheritdoc cref="AzurePSCmdlet.TearDownDebuggingTraces"/>
-        protected override void TearDownDebuggingTraces()
-        {
-            // nothing to do here.
-        }
-
-        /// <inheritdoc cref="AzurePSCmdlet.SetupHttpClientPipeline"/>
-        protected override void SetupHttpClientPipeline()
-        {
-            // nothing to do here.
-        }
-
-        /// <inheritdoc cref="AzurePSCmdlet.TearDownHttpClientPipeline"/>
-        protected override void TearDownHttpClientPipeline()
-        {
-            // nothing to do here.
-        }
 
         /// <inheritdoc cref="AzurePSCmdlet.ExecuteCmdlet"/>
         public override void ExecuteCmdlet()
@@ -159,6 +128,37 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             {
                 WriteObject(syncResult, true);
             }
+        }
+
+        /// <inheritdoc cref="AsAzureDataplaneCmdletBase.BeginProcessing"/>
+        protected override void BeginProcessing()
+        {
+            this._dataCollectionProfile = new AzurePSDataCollectionProfile(false);
+            base.BeginProcessing();
+        }
+
+        /// <inheritdoc cref="AzurePSCmdlet.SetupDebuggingTraces"/>
+        protected override void SetupDebuggingTraces()
+        {
+            // nothing to do here.
+        }
+
+        /// <inheritdoc cref="AzurePSCmdlet.TearDownDebuggingTraces"/>
+        protected override void TearDownDebuggingTraces()
+        {
+            // nothing to do here.
+        }
+
+        /// <inheritdoc cref="AzurePSCmdlet.SetupHttpClientPipeline"/>
+        protected override void SetupHttpClientPipeline()
+        {
+            // nothing to do here.
+        }
+
+        /// <inheritdoc cref="AzurePSCmdlet.TearDownHttpClientPipeline"/>
+        protected override void TearDownHttpClientPipeline()
+        {
+            // nothing to do here.
         }
 
         /// <summary>
