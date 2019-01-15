@@ -34,11 +34,14 @@ namespace Microsoft.Azure.Commands.Profile.UninstallAzureRm
 
         public override void ExecuteCmdlet()
         {
-            var version = (this.SessionState.PSVariable.Get("PSVersionTable").Value as Hashtable)["PSVersion"];
-            if (Convert.ToInt64(version.ToString().Substring(0, 1)) >= 6)
+            if (this.SessionState != null)
             {
-                WriteWarning("Running this cmdlet in PowerShell Core will not remove the modules from PowerShell 5.1. " +
-                    "Please rerun this cmdlet in a PowerShell 5.1 session to remove the modules from PowerShell 5.1.");
+                var version = (this.SessionState.PSVariable.Get("PSVersionTable").Value as Hashtable)["PSVersion"];
+                if (Convert.ToInt64(version.ToString().Substring(0, 1)) >= 6)
+                {
+                    WriteWarning("Running this cmdlet in PowerShell Core will not remove the modules from PowerShell 5.1. " +
+                        "Please rerun this cmdlet in a PowerShell 5.1 session to remove the modules from PowerShell 5.1.");
+                }
             }
 
             List<string> AzureModules = new List<string> { "Azure.AnalysisServices", "Azure.Storage", "AzureRM", "AzureRM.AnalysisServices",
