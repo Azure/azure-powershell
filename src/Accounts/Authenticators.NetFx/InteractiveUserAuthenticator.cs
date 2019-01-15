@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators.NetFramework
 
         public override bool CanAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
         {
-            return (account?.Type == AzureAccount.AccountType.User && environment != null && !string.IsNullOrWhiteSpace(tenant) && password == null && promptBehavior != ShowDialog.Never && tokenCache != null);
+            return (account?.Type == AzureAccount.AccountType.User && environment != null && !string.IsNullOrWhiteSpace(tenant) && password == null && promptBehavior != ShowDialog.Never && tokenCache != null  && account != null && !account.IsPropertySet("UseDeviceAuth"));
         }
     }
 }
