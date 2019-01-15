@@ -59,24 +59,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AsAzureDataplaneClient"/> class.
-        /// </summary>
-        /// <param name="baseUri">The base uri to send http requests to.</param>
-        /// <param name="credentials"><see cref="ServiceClientCredentials"/> for authenticating requests.</param>
-        /// <param name="httpClientProvider">Function for providing an <see cref="HttpClient"/>.</param>
-        /// <param name="rootHandler">The root <see cref="HttpClientHandler"/> to be passed to the base class.</param>
-        /// <param name="handlers">Additional delegating handlers to be passed to the base class.</param>
-        public AsAzureDataplaneClient(Uri baseUri, ServiceClientCredentials credentials, Func<HttpClient> httpClientProvider, HttpClientHandler rootHandler, params DelegatingHandler[] handlers)
-            : base(rootHandler, handlers)
-        {
-            this.BaseUri = baseUri ?? throw new ArgumentNullException(nameof(baseUri));
-            this.Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
-            this.HttpClientProvider = httpClientProvider ?? throw new ArgumentNullException(nameof(httpClientProvider));
-            this.Credentials.InitializeServiceClient(this);
-            this.ResetHttpClient();
-        }
-
-        /// <summary>
         /// Invokes the HttpClientProvider function to reset the HttpClient to a new instance.
         /// </summary>
         public void ResetHttpClient()
