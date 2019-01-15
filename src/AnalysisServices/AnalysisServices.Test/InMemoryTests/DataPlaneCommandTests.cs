@@ -262,23 +262,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             // Set up mock http client
             var mockHttpClient = new Mock<IAsAzureHttpClient>();
 
-            ClusterResolutionResult resolveResult = new ClusterResolutionResult()
-            {
-                ClusterFQDN = "resolved.westcentralus.asazure.windows.net",
-                CoreServerName = testInstance + ":rw",
-                TenantId = Guid.NewGuid().ToString()
-            };
-            mockHttpClient
-                .Setup(m => m.CallPostAsync(
-                    It.IsAny<Uri>(),
-                    It.Is<string>(s => s.Contains("clusterResolve")),
-                    It.IsAny<HttpContent>()))
-                .Returns(Task<HttpResponseMessage>.FromResult(
-                    new HttpResponseMessage(HttpStatusCode.OK)
-                    {
-                        Content = new StringContent(JsonConvert.SerializeObject(resolveResult))
-                    }));
-
             var postResponse = new HttpResponseMessage(HttpStatusCode.Accepted);
             postResponse.Headers.Location = new Uri("https://done");
             postResponse.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));

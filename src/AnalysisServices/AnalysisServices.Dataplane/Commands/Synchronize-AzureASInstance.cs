@@ -42,11 +42,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         private static readonly TimeSpan DefaultPollingInterval = TimeSpan.FromSeconds(30);
 
         /// <summary>
-        /// Default time interval to wait between polls for sync status.
-        /// </summary>
-        public static TimeSpan DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(10);
-
-        /// <summary>
         /// Http Header name for root activity id.
         /// </summary>
         private readonly string RootActivityIdHeaderName = "x-ms-root-activity-id";
@@ -55,11 +50,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         /// Http Header name for current UTC date and time.
         /// </summary>
         private readonly string CurrentUtcDateHeaderName = "x-ms-current-utc-date";
-
-        /// <summary>
-        /// The Cluster Resolution Result object.
-        /// </summary>
-        private ClusterResolutionResult clusterResolveResult;
 
         /// <summary>
         /// Correlation ID for http requests.
@@ -75,6 +65,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         /// Time stamp for the sync request.
         /// </summary>
         private string syncRequestTimeStamp = string.Empty;
+
+        /// <summary>
+        /// Default time interval to wait between polls for sync status.
+        /// </summary>
+        public static TimeSpan DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(10);
 
         [Parameter(
             Mandatory = true,
@@ -123,24 +118,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 return;
             }
 
+            WriteProgress(new ProgressRecord(0, "Sync-AzAnalysisServicesInstance.", string.Format("Successfully authenticated for '{0}' environment.", DnsSafeHost)));
             correlationId = Guid.NewGuid();
-
-            WriteObject(string.Format("Sending sync request for database '{0}' to server '{1}'. Correlation Id: '{2}'.", Database, Instance, correlationId.ToString()));
-
-            var clusterResolveResult = ClusterResolve(ServerName);
-            var virtualServerName = clusterResolveResult.CoreServerName.Split(":".ToCharArray())[0];
-            if (!ServerName.Equals(virtualServerName) && !clusterResolveResult.CoreServerName.EndsWith(":rw"))
-            {
-                throw new SynchronizationFailedException("Sync request can only be sent to the management endpoint");
-            }
-
-            this.clusterResolveResult = clusterResolveResult;
-            Uri clusterBaseUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, clusterResolveResult.ClusterFQDN));
-
+            Uri clusterBaseUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, DnsSafeHost));
             ScaleOutServerDatabaseSyncDetails syncResult = null;
+
             try
             {
-                WriteProgress(new ProgressRecord(0, "Sync-AzAnalysisServicesInstance.", string.Format("Successfully authenticated for '{0}' environment.", DnsSafeHost)));
+                WriteObject(string.Format("Sending sync request for database '{0}' to server '{1}'. Correlation Id: '{2}'.", Database, Instance, correlationId.ToString()));
                 syncResult = SynchronizeDatabaseAsync(clusterBaseUri, Database).GetAwaiter().GetResult();
             }
             catch (AggregateException aex)
@@ -158,7 +143,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             if (syncResult == null)
             {
                 throw new SynchronizationFailedException(string.Format(Resources.SyncASPollStatusUnknownMessage.FormatInvariant(
-                    this.clusterResolveResult.CoreServerName,
+                    ServerName,
                     correlationId,
                     DateTime.Now.ToString(CultureInfo.InvariantCulture),
                     string.Format("RootActivityId: {0}, Date Time UTC: {1}", syncRequestRootActivityId, syncRequestTimeStamp))));
@@ -233,7 +218,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                         Database = databaseName,
                         SyncState = DatabaseSyncState.Invalid,
                         Details = Resources.PostSyncRequestFailureMessage.FormatInvariant(
-                                                                this.clusterResolveResult.CoreServerName,
+                                                                ServerName,
                                                                 this.syncRequestRootActivityId,
                                                                 this.syncRequestTimeStamp,
                                                                 string.Format(e.Message)),
@@ -365,27 +350,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
                 return response;
             });
-        }
-
-        /// <summary>
-        /// Resolves the cluster to which the request needs to be sent for the current environment.
-        /// </summary>
-        /// <param name="serverName"></param>
-        /// <returns>The <see cref="ClusterResolutionResult"/>.</returns>
-        private ClusterResolutionResult ClusterResolve(string serverName)
-        {
-            Uri clusterUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, DnsSafeHost));
-
-            var content = new StringContent($"ServerName={serverName}");
-            content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/x-www-form-urlencoded");
-
-            this.AsAzureDataplaneClient.ResetHttpClient();
-            using (var message = AsAzureDataplaneClient.CallPostAsync(clusterUri, AsAzureEndpoints.ClusterResolveEndpoint, content).Result)
-            {
-                message.EnsureSuccessStatusCode();
-                var rawResult = message.Content.ReadAsStringAsync().Result;
-                return JsonConvert.DeserializeObject<ClusterResolutionResult>(rawResult);
-            }
         }
     }
 }
