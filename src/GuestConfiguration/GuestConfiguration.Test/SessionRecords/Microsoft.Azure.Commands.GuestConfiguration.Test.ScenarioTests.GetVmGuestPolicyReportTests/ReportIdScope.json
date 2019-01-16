@@ -1,0 +1,74 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/VivsGL/providers/Microsoft.Compute/virtualMachines/VivsGL0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/PasswordMustMeetComplexityRequirements/reports/7421bae4-60f0-4712-a45f-c9c960ffc75c?api-version=2018-06-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Jlc291cmNlR3JvdXBzL1ZpdnNHTC9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVzL1ZpdnNHTDAvcHJvdmlkZXJzL01pY3Jvc29mdC5HdWVzdENvbmZpZ3VyYXRpb24vZ3Vlc3RDb25maWd1cmF0aW9uQXNzaWdubWVudHMvUGFzc3dvcmRNdXN0TWVldENvbXBsZXhpdHlSZXF1aXJlbWVudHMvcmVwb3J0cy83NDIxYmFlNC02MGYwLTQ3MTItYTQ1Zi1jOWM5NjBmZmM3NWM/YXBpLXZlcnNpb249MjAxOC0wNi0zMC1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "83494fe4-5f17-4c33-8015-7fcad05778ab"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/Windows",
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/0.10.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "206a670c-765e-4860-a401-da806343e3dd"
+        ],
+        "x-ms-correlation-request-id": [
+          "206a670c-765e-4860-a401-da806343e3dd"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181128T193339Z:206a670c-765e-4860-a401-da806343e3dd"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 28 Nov 2018 19:33:38 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Content-Length": [
+          "1876"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/VivsGL/providers/Microsoft.Compute/virtualMachines/VivsGL0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/PasswordMustMeetComplexityRequirements/reports/7421bae4-60f0-4712-a45f-c9c960ffc75c\",\r\n  \"name\": \"7421bae4-60f0-4712-a45f-c9c960ffc75c\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"Compliant\",\r\n    \"assignment\": {\r\n      \"name\": \"PasswordMustMeetComplexityRequirements\",\r\n      \"configuration\": {\r\n        \"name\": \"PasswordMustMeetComplexityRequirements\"\r\n      }\r\n    },\r\n    \"reportId\": \"7421bae4-60f0-4712-a45f-c9c960ffc75c\",\r\n    \"vm\": {\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/VivsGL/providers/Microsoft.Compute/virtualMachines/VivsGL0\",\r\n      \"uuid\": \"eb2fc1fd-7a59-4fe9-868a-1b80f371290c\"\r\n    },\r\n    \"details\": {\r\n      \"complianceStatus\": \"Compliant\",\r\n      \"startTime\": \"2018-11-16T16:05:48Z\",\r\n      \"endTime\": \"2018-11-16T16:05:51Z\",\r\n      \"jobId\": \"7421bae4-60f0-4712-a45f-c9c960ffc75c\",\r\n      \"resources\": [\r\n        {\r\n          \"complianceStatus\": \"Compliant\",\r\n          \"reasons\": [],\r\n          \"properties\": {\r\n            \"Account_lockout_duration\": 0,\r\n            \"Account_lockout_threshold\": 0,\r\n            \"ConfigurationName\": \"PasswordMustMeetComplexityRequirements\",\r\n            \"DependsOn\": null,\r\n            \"Enforce_password_history\": 0,\r\n            \"Enforce_user_logon_restrictions\": null,\r\n            \"Maximum_Password_Age\": 42,\r\n            \"Maximum_lifetime_for_service_ticket\": 0,\r\n            \"Maximum_lifetime_for_user_ticket\": 0,\r\n            \"Maximum_lifetime_for_user_ticket_renewal\": 0,\r\n            \"Maximum_tolerance_for_computer_clock_synchronization\": 0,\r\n            \"Minimum_Password_Age\": 0,\r\n            \"Minimum_Password_Length\": 0,\r\n            \"ModuleName\": \"SecurityPolicyDsc\",\r\n            \"ModuleVersion\": \"2.4.2.0\",\r\n            \"Name\": null,\r\n            \"Password_must_meet_complexity_requirements\": \"Enabled\",\r\n            \"PsDscRunAsCredential\": null,\r\n            \"Reset_account_lockout_counter_after\": 0,\r\n            \"ResourceId\": \"[AccountPolicy]PasswordMustMeetComplexityRequirements\",\r\n            \"SourceInfo\": null,\r\n            \"Store_passwords_using_reversible_encryption\": \"Disabled\"\r\n          }\r\n        }\r\n      ],\r\n      \"operationType\": \"Consistency\"\r\n    },\r\n    \"startTime\": \"0001-01-01T00:00:00Z\",\r\n    \"endTime\": \"2018-11-16T16:05:51Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "b5e4748c-f69a-467c-8749-e2f9c8cd3db0"
+  }
+}
