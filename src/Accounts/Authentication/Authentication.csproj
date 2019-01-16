@@ -3,6 +3,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <PropertyGroup>
+    <AssemblyName>Microsoft.Azure.Commands.Common.Authentication</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication</RootNamespace>
   </PropertyGroup>
 
