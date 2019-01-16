@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix incorrect examples in `New-AzADAppCredential` and `New-AzADSpCredential` reference documentation
 * Az.Resources: Correct documentation for New-AzureRmPolicyDefinition -Mode default value
 * Az.Resources: Fix for issue https://github.com/Azure/azure-powershell/issues/7522
 * Az.Resources: Fix for issue https://github.com/Azure/azure-powershell/issues/5747
