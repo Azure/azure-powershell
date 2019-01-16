@@ -45,8 +45,7 @@ function Get-AzAdvisorRecommendationByIdParameterSet
 	# All of our API data updates data-resource. Since this CMDLET does not update/create/delete any azure-resource, we have these hardcoded strings to test data and cmdlet.  
 	$propertiesCount = 14
 	$shortDescriptionPropertiesCount = 2
-	$RecommendationId = "/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/testing/providers/Microsoft.Storage/storageAccounts/fontcjk/providers/Microsoft.Advisor/recommendations/4fa2ff4f-dc90-9876-0723-1360fa9f4bd7"
-	$RecommendationName = "4fa2ff4f-dc90-9876-0723-1360fa9f4bd7"
+	$RecommendationId = "/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/testing/providers/Microsoft.Storage/storageAccounts/fontcjk"
 	$cmdletReturnType = "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase"
 
 	$queryResult = Get-AzAdvisorRecommendation -ResourceId $RecommendationId
@@ -54,8 +53,6 @@ function Get-AzAdvisorRecommendationByIdParameterSet
 	for ($i = 0; $i -lt $queryResult.Count; $i++){
 		Assert-IsInstance $queryResult[$i] $cmdletReturnType
 		Assert-PropertiesCount $queryResult[$i] $propertiesCount
-		Assert-AreEqual $queryResult[$i].ResourceId $RecommendationId
-		Assert-AreEqual $queryResult[$i].Name $RecommendationName
 		Assert-PropertiesCount $queryResult[$i].ShortDescription $shortDescriptionPropertiesCount
 	}	
 }
