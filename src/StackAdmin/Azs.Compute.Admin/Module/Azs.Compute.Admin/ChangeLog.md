@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 0.2.2
+BugFix: Add-AzsPlatformImage, Get-AzsPlatformImage : Calling ConvertTo-PlatformImageObject only in the success path
+BugFix: Add-AzsVmExtension, Get-AzsVmExtension : Calling ConvertTo-VmExtensionObject only in the success path
+
 ## Version 0.2.1
 * Added missing Azs prefix for New-DataDiskObject and created alias.  The cmdlet will be deprecated in a future release.
 
