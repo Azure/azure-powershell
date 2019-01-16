@@ -68,6 +68,19 @@
     <SkipHelp Condition ="'$(SkipHelp)' != 'true'">false</SkipHelp>
     <SkipNugetRestore Condition="'$(SkipNugetRestore)' != 'true'">false</SkipNugetRestore>
     <SkipDependencyAnalysis Condition="'$(SkipDependencyAnalysis)' != 'true'">false</SkipDependencyAnalysis>
+    <NuGetCommand>$(MSBuildProjectDirectory)/tools/NuGet.exe</NuGetCommand>
+    <LibraryNugetPackageFolder>$(LibrarySourceFolder)/packages</LibraryNugetPackageFolder>
+    <NuGetRestoreConfigFile>$(MSBuildProjectDirectory)/NuGet.Config</NuGetRestoreConfigFile>
+    <!-- Partial Commands -->
+    <NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
+    <NuGetRestorePackageSetting>-PackagesDirectory $(LibraryNugetPackageFolder)</NuGetRestorePackageSetting>
+    <NuGetLocalBuildTaskPackages>-PackagesDirectory $(LibraryToolsFolder)/BuildPackagesTask/packages</NuGetLocalBuildTaskPackages>
+    <NuGetRepoTasksPackages>-PackagesDirectory $(LibraryToolsFolder)/RepoTasks/packages</NuGetRepoTasksPackages>
+    <PowerShellCommand Condition=" '$(PowerShellCommand)' == '' ">C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe</PowerShellCommand>
+    <PowerShellCoreCommand Condition=" '$(PowerShellCoreCommand)' == '' ">pwsh</PowerShellCoreCommand>
+    <!-- All PowerShell commands have this prefix  -->
+    <PowerShellCommandPrefix>&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command</PowerShellCommandPrefix>
+    <PowerShellCoreCommandPrefix>$(PowerShellCoreCommand) -NonInteractive -NoLogo -NoProfile -Command</PowerShellCoreCommandPrefix>
   </PropertyGroup>
 
   <!-- Skip everything that is not build/test/publish/etc -->
@@ -131,22 +144,6 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path $(PackageDirectory) -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" ContinueOnError="WarnAndContinue" IgnoreExitCode="true" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(MSBuildThisFileDirectory) -Recurse -Include 'bin','obj','TestResults' | Remove-Item -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" ContinueOnError="WarnAndContinue" IgnoreExitCode="true" />
   </Target>
-
-  <PropertyGroup>
-    <NuGetCommand>$(MSBuildProjectDirectory)/tools/NuGet.exe</NuGetCommand>
-    <LibraryNugetPackageFolder>$(LibrarySourceFolder)/packages</LibraryNugetPackageFolder>
-    <NuGetRestoreConfigFile>$(MSBuildProjectDirectory)/NuGet.Config</NuGetRestoreConfigFile>
-    <NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
-    <NuGetRestorePackageSetting>-PackagesDirectory $(LibraryNugetPackageFolder)</NuGetRestorePackageSetting>
-    <NuGetLocalBuildTaskPackages>-PackagesDirectory $(LibraryToolsFolder)/BuildPackagesTask/packages</NuGetLocalBuildTaskPackages>
-    <NuGetRepoTasksPackages>-PackagesDirectory $(LibraryToolsFolder)/RepoTasks/packages</NuGetRepoTasksPackages>
-
-    <PowerShellCommand Condition=" '$(PowerShellCommand)' == '' ">C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe</PowerShellCommand>
-    <PowerShellCoreCommand Condition=" '$(PowerShellCoreCommand)' == '' ">pwsh</PowerShellCoreCommand>
-    <!-- All PowerShell commands have this prefix  -->
-    <PowerShellCommandPrefix>&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command</PowerShellCommandPrefix>
-    <PowerShellCoreCommandPrefix>$(PowerShellCoreCommand) -NonInteractive -NoLogo -NoProfile -Command</PowerShellCoreCommandPrefix>
-  </PropertyGroup>
 
   <!--
   Force nuget package restore so that packages that include .targets files

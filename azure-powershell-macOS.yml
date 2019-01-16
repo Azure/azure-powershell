@@ -6,7 +6,7 @@ pool:
   vmImage: 'macOS-10.13'
 
 steps:
-- powershell: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
+- pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
   displayName: 'Install platyPS'
 
 - task: DotNetCoreCLI@2
