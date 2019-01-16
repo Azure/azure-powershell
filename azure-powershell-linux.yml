@@ -6,7 +6,7 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 steps:
-- powershell: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
+- pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
   displayName: 'Install platyPS'
 
 - task: DotNetCoreCLI@2
