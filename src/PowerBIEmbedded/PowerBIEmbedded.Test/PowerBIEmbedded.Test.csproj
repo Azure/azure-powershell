@@ -14,4 +14,8 @@
     <PackageReference Include="Microsoft.Azure.Management.PowerBIEmbedded" Version="1.1.1-preview" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Accounts\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
+  </ItemGroup>
+
 </Project>

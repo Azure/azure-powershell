@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Accounts\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Resources\*.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 

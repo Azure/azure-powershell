@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Accounts\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
     <ProjectReference Include="..\KeyVault\KeyVault.csproj" />
   </ItemGroup>
 
