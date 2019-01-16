@@ -219,7 +219,7 @@
     <Exec Command="dotnet --version" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <ItemGroup>
-      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(LibraryRoot)src/**/*.Test.csproj;$(LibraryRoot)src/Accounts/ScenarioTest.ResourceManager.csproj;$(LibraryRoot)src/Accounts/TestFx.csproj" />
+      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(LibraryRoot)src/**/*.Test.csproj;$(LibraryRoot)src/**/ScenarioTest.ResourceManager.csproj;$(LibraryRoot)src/**/TestFx.csproj" />
     </ItemGroup>
     <!-- https://stackoverflow.com/a/35477012/294804 -->
     <ItemGroup>
