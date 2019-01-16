@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
+
+  <PropertyGroup>
+    <AssemblyName>Microsoft.Azure.PowerShell.TestFx</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.TestFx</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Moq" Version="4.7.145" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
+    <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
+    <ProjectReference Include="..\Authentication\Authentication.csproj" />
+  </ItemGroup>
+
+</Project>
