@@ -266,6 +266,7 @@
 
     <Message Importance="high" Text="Running Static Analyser" />
     <CallTarget targets="DependencyAnalysis" ContinueOnError="ErrorAndContinue" />
+
     <!-- TODO: Implement CheckAssemblies.ps1 for Az. -->
     <!-- <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" /> -->
 
