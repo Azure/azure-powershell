@@ -14,4 +14,8 @@
     <PackageReference Include="Microsoft.Azure.Management.Media" Version="0.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Accounts\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
+  </ItemGroup>
+
 </Project>

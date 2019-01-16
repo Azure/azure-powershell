@@ -14,4 +14,8 @@
     <PackageReference Include="Microsoft.Azure.Management.SecurityCenter" Version="0.10.0-preview" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Accounts\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
+  </ItemGroup>
+
 </Project>

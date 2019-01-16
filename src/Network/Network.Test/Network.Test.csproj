@@ -23,6 +23,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Accounts\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="ScenarioTests\Data\*.*" CopyToOutputDirectory="PreserveNewest" />
     <None Update="ScenarioTests\Generated\*.*" CopyToOutputDirectory="PreserveNewest" />
     <None Update="ScenarioTests\Utils\*.*" CopyToOutputDirectory="PreserveNewest" />
