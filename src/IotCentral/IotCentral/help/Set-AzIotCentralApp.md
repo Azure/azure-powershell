@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotCentral.dll-Help.xml
 Module Name: AzureRM.IotCentral
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iotcentral/set-azurermiotcentralapp
@@ -14,20 +14,20 @@ Updates the metadata for an IoT Central Application.
 
 ### ResourceIdParameterSet (Default)
 ```
-Set-AzureRmIotCentralApp [-DisplayName <String>] [-Subdomain <String>] [-Tag <Hashtable>] -ResourceId <String> [-AsJob]
+Set-AzureRmIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] -ResourceId <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Set-AzureRmIotCentralApp [-DisplayName <String>] [-Subdomain <String>] [-Tag <Hashtable>] -InputObject <PSIotCentralApp> [-AsJob]
+Set-AzureRmIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] -InputObject <PSIotCentralApp> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InteractiveIotCentralParameterSet
 ```
-Set-AzureRmIotCentralApp [-DisplayName <String>] [-Subdomain <String>] [-Tag <Hashtable>] [-AsJob] [-ResourceGroupName] <String>
- [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] [-ResourceGroupName] <String>
+ [-Name] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,7 +87,7 @@ ResourceGroupName : MyResourceGroupName
 Run cmdlet as a job in the background.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -117,29 +117,14 @@ Accept wildcard characters: False
 Custom Display Name of the Iot Central Application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Subdomain
-Subdomain of the Iot Central Application.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -147,7 +132,7 @@ Accept wildcard characters: False
 Iot Central Application Input Object.
 
 ```yaml
-Type: PSIotCentralApp
+Type: Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -162,14 +147,14 @@ Accept wildcard characters: False
 Name of the Iot Central Application Resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InteractiveIotCentralParameterSet
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -177,14 +162,14 @@ Accept wildcard characters: False
 Name of the Resource Group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InteractiveIotCentralParameterSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -192,7 +177,7 @@ Accept wildcard characters: False
 Iot Central Application Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -207,14 +192,14 @@ Accept wildcard characters: False
 Iot Central Application Resource Tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -222,7 +207,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -238,7 +223,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -261,5 +246,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp
 ## NOTES
+
+## RELATED LINKS
 
 ## RELATED LINKS
