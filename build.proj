@@ -229,7 +229,13 @@
     <!-- Delete powershell runtime files -->
     <ItemGroup>
       <RedundantDlls Include="$(PackageDirectory)\**\Microsoft.Powershell.*.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\System*.dll" Exclude="$(PackageDirectory)\**\System.Security.Cryptography.ProtectedData.dll;$(PackageDirectory)\**\System.Configuration.ConfigurationManager.dll;$(PackageDirectory)\**\System.Runtime.CompilerServices.Unsafe.dll;$(PackageDirectory)\**\System.IO.FileSystem.AccessControl.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\System*.dll" Exclude="
+$(PackageDirectory)\**\System.Security.Cryptography.ProtectedData.dll;
+$(PackageDirectory)\**\System.Configuration.ConfigurationManager.dll;
+$(PackageDirectory)\**\System.Runtime.CompilerServices.Unsafe.dll;
+$(PackageDirectory)\**\System.IO.FileSystem.AccessControl.dll;
+$(PackageDirectory)\**\System.Buffers.dll;
+$(PackageDirectory)\**\System.Text.Encodings.Web.dll;" />
       <RedundantDlls Include="$(PackageDirectory)\**\Microsoft.VisualBasic.dll" />
       <RedundantDlls Include="$(PackageDirectory)\**\Microsoft.CSharp.dll" />
       <RedundantDlls Include="$(PackageDirectory)\**\Microsoft.CodeAnalysis.dll" />
