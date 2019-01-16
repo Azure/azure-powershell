@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Correct documentation for New-AzureRmPolicyDefinition -Mode default value
+* Az.Resources: Correct documentation for New-AzureRmPolicyDefinition -Mode default value
+* Az.Resources: Fix for issue https://github.com/Azure/azure-powershell/issues/7522
+* Az.Resources: Fix for issue https://github.com/Azure/azure-powershell/issues/5747
 
 ## Version 1.1.0
 * Fix parameter set issue when providing `-ODataQuery` and `-ResourceId` parameters for `Get-AzResource`
