@@ -1,0 +1,32 @@
+resources:
+- repo: self
+  fetchDepth: 1
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+- powershell: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
+  displayName: 'Install platyPS'
+
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:Build /p:Configuration=$(Configuration)'
+
+- task: DotNetCoreCLI@2
+  displayName: Test
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:Test /p:Configuration=$(Configuration)'
+
+- task: PublishPipelineArtifact@0
+  displayName: 'Save artifacts'
+  inputs:
+    artifactName: artifacts
+    targetPath: artifacts
+  condition: succeededOrFailed()
+
