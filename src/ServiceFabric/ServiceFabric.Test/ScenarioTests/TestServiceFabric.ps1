@@ -139,7 +139,7 @@ function Test-RemoveAzureRmServiceFabricClientCertificate
 
 	$cluster = Remove-AzureRmServiceFabricClientCertificate -ClusterName $clusterName -ResourceGroupName $resourceGroupName -CommonName $commonName -IssuerThumbprint $thumbprint -Verbose
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
-	Assert-Null $clusters[0].ClientCertificateThumbprints[0]
+	Assert-Null $clusters[0].ClientCertificateCommonNames[0]
 }
 
 function Test-NewAzureRmServiceFabricCluster
@@ -257,7 +257,16 @@ function Test-SetAzureRmServiceFabricSettings
 	$count = $clusters[0].FabricSettings.Count
 	$cluster = Set-AzureRmServiceFabricSetting -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Section $sectionName -Parameter $parameterName -Value $valueName -Verbose
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
-	Assert-Null  ($clusters[0].FabricSettings[$sectionName])  
+	$settingAdded = $false;
+	foreach ($setting in $clusters[0].FabricSettings)
+	{
+		if ($setting.name -eq $sectionName)
+		{
+			$settingAdded = ($setting.parameters[0].name -eq $parameterName -and $setting.parameters[0].value -eq $valueName)
+		}
+	}
+
+	Assert-True { $settingAdded }
 }
 
 function Test-RemoveAzureRmServiceFabricSettings
@@ -293,4 +302,24 @@ function Test-AddAzureRmServiceFabricApplicationCertificate
 	$certSecert = Get-CertAppSecretUrl
 	$res = Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName $resourcGroup -Name $clusterName -SecretIdentifier $certSecert
 	Assert-NotNull $res.CertificateThumbprint
+}
+
+function Test-AddAzureRmServiceFabricApplicationCertificateRollback
+{
+	$clusterName = Get-ClusterName
+	$resourcGroup = Get-ResourceGroupName
+	$certWU_SecretId = Get-CertWUSecretUrl
+
+	$exceptionThrown = $false
+	Try
+	{
+		$res = Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName $resourcGroup -Name $clusterName -SecretIdentifier $certWU_SecretId
+	}
+	Catch [System.AggregateException]
+	{
+		Assert-AreEqual $true ($PSItem.Exception.Message -match 'is different from the location of the VM') "unexpected error message: $($PSItem.Exception.Message)"
+		$exceptionThrown = $true
+	}
+
+	Assert-AreEqual $true $exceptionThrown "Expected Exception keyvault in different location than VMSS not thrown"
 }

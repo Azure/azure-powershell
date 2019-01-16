@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (ShouldProcess(target: this.Name, action: string.Format("Add application certificate")))
             {
-                var addTasks = CreateAddOrRemoveCertVMSSTasks(certInformation);
+                var addTasks = CreateAddOrRemoveCertVMSSTasks(certInformation, false);
 
                 try
                 {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 catch (AggregateException)
                 {
                     WriteWarning("Exception while performing operation. Rollingback...");
-                    var removeTasks = CreateAddOrRemoveCertVMSSTasks(certInformation, false);
+                    var removeTasks = CreateAddOrRemoveCertVMSSTasks(certInformation, false, false);
                     WriteClusterAndVmssVerboseWhenUpdate(removeTasks, false);
                     WriteWarning("Operation rolled back, the certificate was removed from VMSS model.");
                     throw;
@@ -64,41 +64,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 CertificateSavedLocalPath = certInformation.CertificateOutputPath,
                 SecretIdentifier = certInformation.SecretUrl
             });
-        }
-
-        private List<Task> CreateAddOrRemoveCertVMSSTasks(CertificateInformation certInformation, bool addCert = true)
-        {
-            var allTasks = new List<Task>();
-            var vmssPages = this.ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
-
-            if (vmssPages == null || !vmssPages.Any())
-            {
-                throw new PSArgumentException(string.Format(
-                    ServiceFabricProperties.Resources.NoVMSSFoundInRG,
-                    this.ResourceGroupName));
-            }
-
-            do
-            {
-                if (!vmssPages.Any())
-                {
-                    break;
-                }
-
-                if (addCert)
-                {
-                    allTasks.AddRange(vmssPages.Select(vmss => AddCertToVmssTask(vmss, certInformation)));
-                }
-                else
-                {
-                    allTasks.AddRange(vmssPages.Select(vmss => RemoveCertFromVmssTask(vmss, certInformation)).Where(task => task != null));
-                }
-                
-
-            } while (!string.IsNullOrEmpty(vmssPages.NextPageLink) &&
-                     (vmssPages = this.ComputeClient.VirtualMachineScaleSets.ListNext(vmssPages.NextPageLink)) != null);
-
-            return allTasks;
         }
     }
 }
