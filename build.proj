@@ -219,48 +219,23 @@
     <Exec Command="dotnet --version" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <ItemGroup>
-      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(LibraryRoot)src/**/*.Test.csproj" />
+      <CsprojFiles Include="$(LibraryRoot)src/**/*.csproj" />
     </ItemGroup>
-    <!-- https://stackoverflow.com/a/35477012/294804 -->
-    <ItemGroup>
-      <ModuleCsprojFilesRelative Include="@(ModuleCsprojFiles)">
-        <RelativePath>$([MSBuild]::MakeRelative($(LibraryRoot), %(ModuleCsprojFiles.FullPath)))</RelativePath>
-      </ModuleCsprojFilesRelative>
-    </ItemGroup>
-    <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFilesRelative->'%(RelativePath)', ' ')" />
-    <Exec Command="dotnet sln Azure.PowerShell.sln add $(LibraryRoot)tools/Tools.Common/Tools.Common.Netcore.csproj $(LibraryRoot)tools/StaticAnalysis/StaticAnalysis.Netcore.csproj" />
-    <Exec Command="dotnet publish Azure.PowerShell.sln -c $(Configuration)" />
+    <!-- https://github.com/dotnet/cli/issues/6295#issuecomment-346973582 -->
+    <Exec Command="dotnet sln Azure.PowerShell.sln add &quot;%(CsprojFiles.FullPath)&quot;" />
+    <Exec Command="dotnet sln Azure.PowerShell.sln add &quot;$(LibraryRoot)tools/Tools.Common/Tools.Common.Netcore.csproj&quot; &quot;$(LibraryRoot)tools/StaticAnalysis/StaticAnalysis.Netcore.csproj&quot;" />
+    <Exec Command="dotnet build Azure.PowerShell.sln -c $(Configuration)" />
 
-
-    <!-- TODO: <REMOVE THIS SECTION> -->
     <!-- Delete powershell runtime files -->
     <ItemGroup>
-      <RedundantDlls Include="$(PackageDirectory)\**\publish\Microsoft.Powershell.*.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\publish\System*.dll" Exclude="$(PackageDirectory)\**\publish\System.Security.Cryptography.ProtectedData.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\publish\Microsoft.VisualBasic.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\publish\Microsoft.CSharp.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\publish\Microsoft.CodeAnalysis.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\publish\Microsoft.CodeAnalysis.CSharp.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\Microsoft.Powershell.*.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\System*.dll" Exclude="$(PackageDirectory)\**\System.Security.Cryptography.ProtectedData.dll;$(PackageDirectory)\**\System.Configuration.ConfigurationManager.dll;$(PackageDirectory)\**\System.Runtime.CompilerServices.Unsafe.dll;$(PackageDirectory)\**\System.IO.FileSystem.AccessControl.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\Microsoft.VisualBasic.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\Microsoft.CSharp.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\Microsoft.CodeAnalysis.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\Microsoft.CodeAnalysis.CSharp.dll" />
     </ItemGroup>
     <Delete Files="@(RedundantDlls->'%(FullPath)')" />
-
-    <!-- Copy content of the publish folder one folders up -->
-    <ItemGroup>
-      <PackageContent Include="$(PackageDirectory)\**\publish\*.*" />
-      <SourceFile Include="@(PackageContent)">
-        <DestinationFolder>$([System.IO.Path]::Combine('%(RelativeDir)', '..', '%(FileName)%(Extension)'))</DestinationFolder>
-      </SourceFile>
-    </ItemGroup>
-    <Copy SourceFiles="@(SourceFile->'%(FullPath)')" DestinationFiles="@(SourceFile->'%(DestinationFolder)')" SkipUnchangedFiles="true" />
-
-    <!-- Delete build artifacts -->
-    <ItemGroup>
-      <GetAllFiles Include="$(PackageDirectory)\**\publish\*.*" />
-      <Artifacts Include="@(GetAllFiles->'%(RootDir)%(Directory)'->Distinct())" />
-    </ItemGroup>
-    <RemoveDir Directories="%(Artifacts.Identity)" ContinueOnError="true" />
-    <!-- TODO: </REMOVE THIS SECTION> -->
-
 
     <!-- Update module manifests. -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;" Condition="'$(CodeSign)' == 'false'" ContinueOnError="false" />
@@ -377,20 +352,10 @@
     <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
 
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
-    <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
-    <ItemGroup>
-      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" />
-    </ItemGroup>
-    <!-- https://stackoverflow.com/a/35477012/294804 -->
-    <ItemGroup>
-      <ModuleCsprojFilesRelative Include="@(ModuleCsprojFiles)">
-        <RelativePath>$([MSBuild]::MakeRelative($(LibraryRoot), %(ModuleCsprojFiles.FullPath)))</RelativePath>
-      </ModuleCsprojFilesRelative>
-    </ItemGroup>
-    <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFilesRelative->'%(RelativePath)', ' ')" />
+
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
-    <Exec Command="dotnet test Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework netcoreapp2.0 --logger trx" />
+    <Exec Command="dotnet test Azure.PowerShell.sln --no-build --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework netcoreapp2.0 --logger trx" />
 
     <ItemGroup>
       <TestResults Include="$(LibraryRoot)src/**/TestResults/*.trx" />
