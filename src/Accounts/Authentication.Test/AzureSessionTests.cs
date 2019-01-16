@@ -24,6 +24,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.IO;
 using Newtonsoft.Json;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Core;
 
 namespace Common.Authentication.Test
 {
