@@ -25375,6 +25375,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "\"https://nfvprodsuppcy.blob.core.windows.net/cmakexe/5b627f47-6f71-410e-a37d-48fc04168054/amd64/5b627f47-6f71-410e-a37d-48fc04168054.exe?sv=2017-04-17&sr=b&sig=aK6FZAxBWEolEgwY7JWL2t7gTNuI0FcxSlYWj%2BSUjm0%3D&st=2019-01-09T06%3A47%3A02Z&se=2019-01-09T07%3A47%3A02Z&sp=r&fileExtension=.exe\"",
       "StatusCode": 200
     },
