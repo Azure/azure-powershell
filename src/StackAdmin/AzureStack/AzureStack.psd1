@@ -56,7 +56,7 @@
         @{ModuleName = 'Azs.AzureBridge.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.3.0'; },
         @{ModuleName = 'Azs.Commerce.Admin'; RequiredVersion = '0.2.0'; },
-        @{ModuleName = 'Azs.Compute.Admin'; RequiredVersion = '0.2.1'; },
+        @{ModuleName = 'Azs.Compute.Admin'; RequiredVersion = '0.2.2'; },
         @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.3.0'; },
         @{ModuleName = 'Azs.Gallery.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.InfrastructureInsights.Admin'; RequiredVersion = '0.3.0'; },
