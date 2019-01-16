@@ -68,25 +68,25 @@ function Get-NewCertName
 function Get-SecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprint
-    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/631f0364216e46738dffca1bf6067e74"
+    return "https://azurermsfkvtest.vault.azure.net/secrets/AzureRMSFTestCert2/f6bb2b6492e04ffb8fb6acc6cd05005a"
 }
 
 function Get-Thumbprint
 {
-    #Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprint
-    return "3C70633899C7F5194596EB745D1DD106E9F06E79"
+    # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprint
+    return "EC8CA0BBC391A08860115619701E2B858FF44C72"
 }
 
 function Get-CertAppSecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return " https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/26002f61565446baaa6e3bf120227792"
+    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/5ce6654cdfbf4facbe2b81eea93fca57"
 }
 
 function Get-CertAppThumbprint
 {
-    #Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "13B2D20A82B3785B6F9F111FA939DB712F41DB96"
+    # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprintAppCert
+    return "4851738337450E4DAEFB95DFED44DD78B512ACBF"
 }
 
 function Get-CACertCommonName
@@ -101,7 +101,12 @@ function Get-CACertIssuerThumbprint
 
 function Get-CACertSecretUrl
 {
-	return "https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfcntest/4984be5c03b04f55aa0c771e163472fa"
+	return "https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfcntest/6f453495b69c4cf9ae42f12bd7f89620"
+}
+
+function Get-CertWUSecretUrl
+{
+	return "https://azurermsfkvtestwu.vault.azure.net:443/secrets/AzureRMSFTestCertWU/cadfa47ee2354f3ab59e11038c18dff5"
 }
 
 function Get-DurabilityLevel
