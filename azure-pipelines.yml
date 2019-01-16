@@ -3,7 +3,7 @@ resources:
   fetchDepth: 1
 
 pool:
-  vmImage: Hosted Ubuntu 1604
+  vmImage: 'Ubuntu-16.04'
 #Your build pipeline references the ‘Configuration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
 
 steps:
