@@ -6,12 +6,4 @@
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Authentication\ConsoleParentWindow.cs" />
-    <Compile Remove="Authentication\CredStore.cs" />
-    <Compile Remove="Authentication\ServicePrincipalKeyStore.cs" />
-    <Compile Remove="Authentication\UserTokenProvider.cs" />
-    <Compile Remove="Utilities\AdalTokenCache.cs" />
-  </ItemGroup>
-
 </Project>
