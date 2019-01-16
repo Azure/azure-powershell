@@ -10,9 +10,6 @@
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Aks" Version="1.1.13-preview">
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Authentication" Version="1.1.13-preview">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.Azure.PowerShell.Authentication.Abstractions" Version="1.1.13-preview">
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
