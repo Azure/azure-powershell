@@ -1,11 +1,11 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/Add-AzSqlInstanceTransparentDataEncryptionCertificate
 schema: 2.0.0
 ---
 
-# Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate
+# Add-AzSqlInstanceTransparentDataEncryptionCertificate
 
 ## SYNOPSIS
 Adds a Transparent Data Encryption Certificate for the given managed instance
@@ -13,13 +13,13 @@ Adds a Transparent Data Encryption Certificate for the given managed instance
 ## SYNTAX
 
 ```
-Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate [-PassThru] [-ResourceGroupName] <String>
- [-ManagedInstanceName] <String> [-PrivateBlob] <SecureString> [-Password] <SecureString>
+Add-AzSqlInstanceTransparentDataEncryptionCertificate [-PassThru] [-ResourceGroupName] <String>
+ [-InstanceName] <String> [-PrivateBlob] <SecureString> [-Password] <SecureString>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate adds a Transparent Data Encryption Certificate for the given managed instance
+The Add-AzSqlInstanceTransparentDataEncryptionCertificate adds a Transparent Data Encryption Certificate for the given managed instance
 
 ## EXAMPLES
 
@@ -29,7 +29,7 @@ PS C:\>     $privateBlob = "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcG
 PS C:\>     $securePrivateBlob = $privateBlob  | ConvertTo-SecureString -AsPlainText -Force
 PS C:\>     $password = "CertificatePassword"
 PS C:\>     $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate -ResourceGroupName "YourResourceGroupName" -ManagedInstanceName "YourManagedInstanceName" -PrivateBlob $securePrivateBlob -Password $securePassword
+PS C:\> Add-AzSqlInstanceTransparentDataEncryptionCertificate -ResourceGroupName "YourResourceGroupName" -InstanceName "YourManagedInstanceName" -PrivateBlob $securePrivateBlob -Password $securePassword
 ```
 
 ## PARAMETERS
@@ -38,7 +38,7 @@ PS C:\> Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate -ResourceGr
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -49,11 +49,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceName
-The managed instance name
+### -InstanceName
+The instance name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -65,10 +65,10 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-On Successful execution, returns certificate object that was added.
+{{Fill PassThru Description}}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 The Password for Transparent Data Encryption Certificate
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -95,10 +95,11 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateBlob
-The Private blob for Transparent Data Encryption Certificate
+The Private blob for Transparent Data Encryption Certificate.
+For detailed instructions on how to generate the blob go to https://aka.ms/tdecertprep
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +114,7 @@ Accept wildcard characters: False
 The Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +129,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -144,7 +145,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -156,15 +157,18 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
 
+
 ## OUTPUTS
 
 ### System.Boolean
+
 
 ## NOTES
 
