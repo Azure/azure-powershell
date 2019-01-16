@@ -70,7 +70,7 @@ $resourceManagerPath = "$PSScriptRoot/../artifacts/$BuildConfig/"
 
 $RMpsd1s += Get-ChildItem -Path $resourceManagerPath -Depth 2 | Where-Object { $_.Name -like "*.psd1" -and $_.FullName -notlike "*dll-Help*" }
 
-$HelpFolders += Get-ChildItem -Path "$PSScriptRoot/../src/ResourceManager" -Recurse -Directory | where { $_.Name -eq "help" -and $_.FullName -notlike "*\Stack\*" -and $_.FullName -notlike "*\bin\*"}
+$HelpFolders += Get-ChildItem -Path "$PSScriptRoot/../src" -Recurse -Directory | where { $_.Name -eq "help" -and $_.FullName -notlike "*\Stack\*" -and $_.FullName -notlike "*\bin\*"}
 
 # Map the name of the cmdlet to the location of the help file
 $HelpFileMapping = @{}

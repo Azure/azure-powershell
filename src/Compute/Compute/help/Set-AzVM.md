@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 939320CB-2595-4150-AFDD-500CEA78559C
@@ -27,13 +27,13 @@ Set-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Redeploy] [-AsJob]
 
 ### GeneralizeIdParameterSetName
 ```
-Set-AzVM [-Id] <String> [-Name] <String> [-Generalized] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+Set-AzVM [-Id] <String> [[-Name] <String>] [-Generalized] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### RedeployIdParameterSetName
 ```
-Set-AzVM [-Id] <String> [-Name] <String> [-Redeploy] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+Set-AzVM [-Id] <String> [[-Name] <String>] [-Redeploy] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -117,10 +117,22 @@ Specifies the name of the virtual machine on which this cmdlet operates.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GeneralizeResourceGroupNameParameterSetName, RedeployResourceGroupNameParameterSetName
 Aliases:
 
 Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: GeneralizeIdParameterSetName, RedeployIdParameterSetName
+Aliases:
+
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
