@@ -29,4 +29,5 @@ steps:
   inputs:
     artifactName: artifacts
     targetPath: artifacts
+  condition: succeededOrFailed()
 
