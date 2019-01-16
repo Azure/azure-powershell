@@ -295,6 +295,7 @@
     <PropertyGroup>
       <SkipHelpValue Condition=" '$(SkipHelp)' == 'true' ">-s</SkipHelpValue>
     </PropertyGroup>
+
     <!-- TODO: Use '-m @(ModulesChanged)' in command when FilterBuild is fixed. -->
     <!-- <Exec Command="dotnet $(MSBuildThisFileDirectory)artifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $(MSBuildThisFileDirectory)artifacts/$(Configuration) -r $(MSBuildThisFileDirectory)artifacts/StaticAnalysis $(SkipHelpValue) -u" /> -->
 
@@ -305,10 +306,7 @@
   <Target Name="DependencyAnalysisNetcore"
           Condition="'$(SkipDependencyAnalysis)' == 'false'">
 
-    <MSBuild  Projects="@(StaticAnalysisNetcore)"
-              Targets="Build"
-              Properties="Configuration=Debug;Platform=Any CPU"
-              ContinueOnError="false" />
+    <MSBuild Projects="@(StaticAnalysisNetcore)" Targets="Build" Properties="Configuration=Debug;Platform=Any CPU" ContinueOnError="false" />
 
     <Message Importance="high" Text="Running dependency analysis..." />
 
