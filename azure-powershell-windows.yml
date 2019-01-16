@@ -18,6 +18,7 @@ steps:
   displayName: 'Install PowerShell Core'
 
 - powershell: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
+  pwsh: true
   displayName: 'Install-Module platyPS'
 
 - task: DotNetCoreCLI@2
