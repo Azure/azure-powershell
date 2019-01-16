@@ -58,21 +58,16 @@
     <TestOutputDirectory>$(PackageDirectory)\Test</TestOutputDirectory>
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">$(LibrarySourceFolder)</NuGetPublishingSource>
-    <Scope Condition="$(Scope) == ''" >All</Scope>
     <BuildTasksPath>$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks\bin\$(Configuration)</BuildTasksPath>
     <StackPackageFolder>$(LibrarySourceFolder)\Stack</StackPackageFolder>
-    <NetCore Condition="'$(NetCore)' != 'true'">false</NetCore>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="$(NetCore) == 'true' ">
-    <Scope>Netcore</Scope>
-  </PropertyGroup>
-
-  <!-- Set Skips -->
-  <PropertyGroup>
-    <SkipHelp Condition =" '$(SkipHelp)' != 'true' ">false</SkipHelp>
-    <SkipNugetRestore Condition="'$(SkipNugetRestore)' != 'true' ">false</SkipNugetRestore>
-    <SkipDependencyAnalysis Condition="'$(SkipDependencyAnalysis)' != 'true' ">false</SkipDependencyAnalysis>
+    <Scope Condition="$(Scope) == ''" >All</Scope>
+    <NetCore Condition="'$(NetCore)' != 'false'">true</NetCore>
+    <RunStaticAnalysis Condition="'$(RunStaticAnalysis)' != 'false'">true</RunStaticAnalysis>
+    <Scope Condition="$(NetCore) == 'true'">Netcore</Scope>
+    <!-- Set Skips -->
+    <SkipHelp Condition ="'$(SkipHelp)' != 'true'">false</SkipHelp>
+    <SkipNugetRestore Condition="'$(SkipNugetRestore)' != 'true'">false</SkipNugetRestore>
+    <SkipDependencyAnalysis Condition="'$(SkipDependencyAnalysis)' != 'true'">false</SkipDependencyAnalysis>
   </PropertyGroup>
 
   <!-- Skip everything that is not build/test/publish/etc -->
