@@ -3,7 +3,7 @@ resources:
   fetchDepth: 1
 
 pool:
-  vmImage: 'Ubuntu-16.04'
+  vmImage: 'macOS-10.13'
 
 steps:
 - powershell: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
