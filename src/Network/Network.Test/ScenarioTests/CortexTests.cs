@@ -46,7 +46,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexExpressRouteCRUD");
         }
 
-        [Fact(Skip = "New-AzureStorageContext not imported; re-record once fixed")]
+        [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestCortexDownloadConfig()
