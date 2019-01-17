@@ -49,7 +49,7 @@
     <DelaySign Condition =" '$(DelaySign)' == '' ">false</DelaySign>
     <SignedOutputRootDir>$(LibraryRoot)signed</SignedOutputRootDir>
     <PackageDirectory>$(LibraryRoot)/artifacts</PackageDirectory>
-    <TestOutputDirectory>$(PackageDirectory)/Test</TestOutputDirectory>
+    <TestOutputDirectory>$(PackageDirectory)/TestResults</TestOutputDirectory>
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">$(LibrarySourceFolder)</NuGetPublishingSource>
     <BuildTasksPath>$(LibraryToolsFolder)/BuildPackagesTask/Microsoft.Azure.Build.Tasks/bin/$(Configuration)</BuildTasksPath>
@@ -188,19 +188,25 @@
 
     <MakeDir Directories="$(PackageDirectory)" />
 
+    <!-- Copy appropriate targets -->
+    <Copy SourceFiles="after.Azure.PowerShell.sln.targets;Directory.Build.targets" DestinationFolder="$(RepoArtifacts)" />
+
     <!-- Investigate why the ChangeLogCheck target removes the 8080th character -->
     <!-- <CallTarget targets="ChangeLogCheck" ContinueOnError="false" /> -->
 
     <!-- Build and create package content -->
     <Exec Command="dotnet --version" />
-    <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
+    <Exec Command="dotnet new sln -n $(RepoArtifacts)Azure.PowerShell --force" />
     <ItemGroup>
       <CsprojFiles Include="$(LibraryRoot)src/**/*.csproj" />
     </ItemGroup>
     <!-- https://github.com/dotnet/cli/issues/6295#issuecomment-346973582 -->
-    <Exec Command="dotnet sln Azure.PowerShell.sln add &quot;%(CsprojFiles.FullPath)&quot;" />
-    <Exec Command="dotnet sln Azure.PowerShell.sln add &quot;$(LibraryRoot)tools/Tools.Common/Tools.Common.Netcore.csproj&quot; &quot;$(LibraryRoot)tools/StaticAnalysis/StaticAnalysis.Netcore.csproj&quot;" />
-    <Exec Command="dotnet build Azure.PowerShell.sln -c $(Configuration)" />
+    <Exec Command="dotnet sln $(RepoArtifacts)Azure.PowerShell.sln add &quot;%(CsprojFiles.FullPath)&quot;" />
+    <Exec Command="dotnet sln $(RepoArtifacts)Azure.PowerShell.sln add &quot;$(RepoTools)Tools.Common/Tools.Common.Netcore.csproj&quot; &quot;$(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj&quot;" />
+    <Exec Command="dotnet build $(RepoArtifacts)Azure.PowerShell.sln -c $(Configuration)" />
+
+    <!-- Publish static analysis for use cross-plat -->
+    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj --no-build -c $(Configuration) -f netcoreapp2.1 -o $(RepoArtifacts)StaticAnalysis" />
 
     <!-- Delete powershell runtime files -->
     <ItemGroup>
@@ -237,7 +243,7 @@ $(PackageDirectory)/$(Configuration)/**/System.Text.Encodings.Web.dll" />
 
   <Target Name="GenerateHelp" Condition="'$(SkipHelp)' == 'false'">
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(LibraryToolsFolder)/GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration)&quot;" />
-    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/$(Configuration)/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(RepoArtifacts)StaticAnalysis -h -u -m @(ModulesChanged)" Condition="'$(RunStaticAnalysis)' == 'true'" />
+    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(RepoArtifacts)StaticAnalysisResults -h -u -m @(ModulesChanged)" Condition="'$(RunStaticAnalysis)' == 'true'" />
   </Target>
 
   <!-- Do everything possible except Publish -->
@@ -257,7 +263,7 @@ $(PackageDirectory)/$(Configuration)/**/System.Text.Encodings.Web.dll" />
 
   <Target Name="StaticAnalysis" Condition="'$(RunStaticAnalysis)' == 'true'">
     <Message Importance="high" Text="Running static analysis..." />
-    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/$(Configuration)/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(RepoArtifacts)StaticAnalysis -s -u -m @(ModulesChanged)" />
+    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(RepoArtifacts)StaticAnalysisResults -s -u -m @(ModulesChanged)" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" />
     <OnError ExecuteTargets="StaticAnalysisErrorMessage" />
   </Target>
@@ -279,7 +285,7 @@ $(PackageDirectory)/$(Configuration)/**/System.Text.Encodings.Web.dll" />
   <Target Name="Publish">
     <Message Importance="high" Text="Publishing Cmdlets using $(Scope) scope" />
     <Error Condition=" '$(NuGetKey)' == '' " Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)/PublishModules.ps1 -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope $(Scope) -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot; &quot; -NugetExe $(NuGetCommand)" />
+    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)/PublishModules.ps1 -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope $(Scope) -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot;&quot; -NugetExe $(NuGetCommand)" />
     <CallTarget Targets="BuildInstaller" Condition="'$(Scope)' =='All' or '$(Scope)' == 'Netcore'" />
   </Target>
 
@@ -293,7 +299,7 @@ $(PackageDirectory)/$(Configuration)/**/System.Text.Encodings.Web.dll" />
 
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
-    <Exec Command="dotnet test Azure.PowerShell.sln --no-build --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework netcoreapp2.0 --logger trx" />
+    <Exec Command="dotnet test $(RepoArtifacts)Azure.PowerShell.sln --no-build --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework netcoreapp2.0 --logger trx" />
 
     <ItemGroup>
       <TestResults Include="$(LibraryRoot)src/**/TestResults/*.trx" />
@@ -304,7 +310,7 @@ $(PackageDirectory)/$(Configuration)/**/System.Text.Encodings.Web.dll" />
   </Target>
 
   <Target Name="TestFailureErrorMessage">
-    <Error Text="Test failures occured, check the files in artifacts/Test" />
+    <Error Text="Test failures occured, check the files in artifacts/TestResults" />
   </Target>
 
   <Target Name="BinScopeCheck">

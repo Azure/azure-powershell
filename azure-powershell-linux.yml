@@ -81,7 +81,7 @@ jobs:
     displayName: 'Save static-analysis'
     inputs:
       artifactName: 'static-analysis'
-      targetPath: artifacts
+      targetPath: artifacts/StaticAnalysisResults
     condition: succeededOrFailed()
 
 - job: Job_3
@@ -109,7 +109,7 @@ jobs:
     displayName: 'Save test'
     inputs:
       artifactName: test
-      targetPath: artifacts/Test
+      targetPath: artifacts/TestResults
     condition: succeededOrFailed()
 
 - job: Job_4
@@ -140,14 +140,14 @@ jobs:
     displayName: 'Download static-analysis'
     inputs:
       artifactName: 'static-analysis'
-      targetPath: artifacts
+      targetPath: artifacts/StaticAnalysisResults
     condition: succeededOrFailed()
 
   - task: DownloadPipelineArtifact@0
     displayName: 'Download test'
     inputs:
       artifactName: test
-      targetPath: artifacts/Test
+      targetPath: artifacts/TestResults
     condition: succeededOrFailed()
 
   - task: PublishPipelineArtifact@0

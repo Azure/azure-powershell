@@ -85,8 +85,10 @@ namespace StaticAnalysis
                     logReportsDirectoryWarning = false;
                 }
 
-                ExceptionsDirectory = Path.Combine(reportsDirectory, "Exceptions");
-                bool useExceptions = !args.Any(a => a == "--dont-use-exceptions" || a == "-d");
+                if (!Directory.Exists(reportsDirectory))
+                {
+                    Directory.CreateDirectory(reportsDirectory);
+                }
 
                 var modulesToAnalyze = new List<string>();
                 if (args.Any(a => a == "--modules-to-analyze" || a == "-m"))
@@ -116,6 +118,10 @@ namespace StaticAnalysis
                     Analyzers.Add(new HelpAnalyzer.HelpAnalyzer());
                 }
 
+                // https://stackoverflow.com/a/9737418/294804
+                var assemblyDirectory = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
+                ExceptionsDirectory = Path.Combine(assemblyDirectory, "Exceptions");
+                bool useExceptions = !args.Any(a => a == "--dont-use-exceptions" || a == "-d");
                 var useNetcore = args.Any(a => a == "--use-netcore" || a == "-u");
                 ConsolidateExceptionFiles(ExceptionsDirectory, useNetcore);
 
