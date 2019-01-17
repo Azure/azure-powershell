@@ -237,7 +237,7 @@ $(PackageDirectory)/**/System.Text.Encodings.Web.dll" />
 
   <Target Name="GenerateHelp" Condition="'$(SkipHelp)' == 'false'">
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(LibraryToolsFolder)/GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration)&quot;" />
-    <Exec Command="dotnet $(RepoTools)StaticAnalysis/bin/$(Configuration)/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(RepoArtifacts)StaticAnalysis -h -u -m @(ModulesChanged)" Condition="'$(RunStaticAnalysis)' == 'true'" />
+    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/$(Configuration)/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(RepoArtifacts)StaticAnalysis -h -u -m @(ModulesChanged)" Condition="'$(RunStaticAnalysis)' == 'true'" />
   </Target>
 
   <!-- Do everything possible except Publish -->
@@ -257,7 +257,7 @@ $(PackageDirectory)/**/System.Text.Encodings.Web.dll" />
 
   <Target Name="StaticAnalysis" Condition="'$(RunStaticAnalysis)' == 'true'">
     <Message Importance="high" Text="Running static analysis..." />
-    <Exec Command="dotnet $(RepoTools)StaticAnalysis/bin/$(Configuration)/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(RepoArtifacts)StaticAnalysis -s -u -m @(ModulesChanged)" />
+    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/$(Configuration)/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(RepoArtifacts)StaticAnalysis -s -u -m @(ModulesChanged)" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" />
     <OnError ExecuteTargets="StaticAnalysisErrorMessage" />
   </Target>
