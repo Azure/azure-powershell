@@ -354,6 +354,25 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ConnectionMonitorQueryResult, CNM.PSConnectionMonitorQueryResult>();
                 cfg.CreateMap<MNM.ConnectionStateSnapshot, CNM.PSConnectionStateSnapshot>();
 
+                // NetworkConfigurationDiagnostic
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSEvaluatedNetworkSecurityGroup, MNM.EvaluatedNetworkSecurityGroup>();
+                cfg.CreateMap<CNM.PSMatchedRule, MNM.MatchedRule>();
+                cfg.CreateMap<CNM.PSNetworkConfigurationDiagnosticProfile, MNM.NetworkConfigurationDiagnosticProfile>();
+                cfg.CreateMap<CNM.PSNetworkConfigurationDiagnosticResponse, MNM.NetworkConfigurationDiagnosticResponse>();
+                cfg.CreateMap<CNM.PSNetworkConfigurationDiagnosticResult, MNM.NetworkConfigurationDiagnosticResult>();
+                cfg.CreateMap<CNM.PSNetworkSecurityGroupResult, MNM.NetworkSecurityGroupResult>();
+                cfg.CreateMap<CNM.PSNetworkSecurityRulesEvaluationResult, MNM.NetworkSecurityRulesEvaluationResult>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.EvaluatedNetworkSecurityGroup, CNM.PSEvaluatedNetworkSecurityGroup>();
+                cfg.CreateMap<MNM.MatchedRule, CNM.PSMatchedRule>();
+                cfg.CreateMap<MNM.NetworkConfigurationDiagnosticProfile, CNM.PSNetworkConfigurationDiagnosticProfile>();
+                cfg.CreateMap<MNM.NetworkConfigurationDiagnosticResponse, CNM.PSNetworkConfigurationDiagnosticResponse>();
+                cfg.CreateMap<MNM.NetworkConfigurationDiagnosticResult, CNM.PSNetworkConfigurationDiagnosticResult>();
+                cfg.CreateMap<MNM.NetworkSecurityGroupResult, CNM.PSNetworkSecurityGroupResult>();
+                cfg.CreateMap<MNM.NetworkSecurityRulesEvaluationResult, CNM.PSNetworkSecurityRulesEvaluationResult>();
+
                 // LoadBalancer
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSLoadBalancer, MNM.LoadBalancer>();
