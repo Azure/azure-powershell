@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageSync.Test", "Storage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Management", "..\Storage\Storage.Management\Storage.Management.csproj", "{51D839F6-6060-4D69-9303-160A6C595198}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management", "..\Storage\Storage.Management\Storage.Management.csproj", "{51D839F6-6060-4D69-9303-160A6C595198}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage", "..\Storage\Storage\Storage.csproj", "{75AC293A-A199-49C9-8F79-CF57DB2E6BFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage", "..\Storage\Storage\Storage.csproj", "{75AC293A-A199-49C9-8F79-CF57DB2E6BFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
