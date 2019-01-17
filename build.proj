@@ -196,7 +196,7 @@
 
     <!-- Build and create package content -->
     <Exec Command="dotnet --version" />
-    <Exec Command="dotnet new sln -n $(RepoArtifacts)Azure.PowerShell --force" />
+    <Exec Command="dotnet new sln -n Azure.PowerShell -o $(RepoArtifacts) --force" />
     <ItemGroup>
       <CsprojFiles Include="$(LibraryRoot)src/**/*.csproj" />
     </ItemGroup>
