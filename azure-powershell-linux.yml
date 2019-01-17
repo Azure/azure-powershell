@@ -5,7 +5,7 @@ resources:
 jobs:
 
 - job: Phase_1
-  displayName: Build Job
+  displayName: Build
   condition: succeeded()
   pool:
     vmImage: 'Ubuntu-16.04'
@@ -26,7 +26,7 @@ jobs:
     condition: succeededOrFailed()
 
 - job: Job_1
-  displayName: Generate Help Job
+  displayName: Generate Help
   dependsOn: Phase_1
   condition: succeeded()
   pool:
@@ -57,7 +57,7 @@ jobs:
     condition: succeededOrFailed()
 
 - job: Job_2
-  displayName: Static Analysis Job
+  displayName: Static Analysis
   dependsOn: Phase_1
   condition: succeeded()
   pool:
@@ -85,7 +85,7 @@ jobs:
     condition: succeededOrFailed()
 
 - job: Job_3
-  displayName: Test Job
+  displayName: Test
   dependsOn: Phase_1
   condition: succeeded()
   pool:
@@ -113,7 +113,7 @@ jobs:
     condition: succeededOrFailed()
 
 - job: Job_4
-  displayName: Save All Job
+  displayName: Save All
   dependsOn:
   - Job_1
   - Job_2
