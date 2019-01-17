@@ -50,6 +50,7 @@
     <SignedOutputRootDir>$(LibraryRoot)signed</SignedOutputRootDir>
     <PackageDirectory>$(LibraryRoot)/artifacts</PackageDirectory>
     <TestOutputDirectory>$(PackageDirectory)/TestResults</TestOutputDirectory>
+    <StaticAnalysisOutputDirectory>$(PackageDirectory)/StaticAnalysisResults</StaticAnalysisOutputDirectory>
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">$(LibrarySourceFolder)</NuGetPublishingSource>
     <BuildTasksPath>$(LibraryToolsFolder)/BuildPackagesTask/Microsoft.Azure.Build.Tasks/bin/$(Configuration)</BuildTasksPath>
@@ -242,8 +243,11 @@ $(PackageDirectory)/$(Configuration)/**/System.Text.Encodings.Web.dll" />
   </Target>
 
   <Target Name="GenerateHelp" Condition="'$(SkipHelp)' == 'false'">
+    <Message Importance="high" Text="Running help generation..." />
+    <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
+
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(LibraryToolsFolder)/GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration)&quot;" />
-    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(RepoArtifacts)StaticAnalysisResults -h -u -m @(ModulesChanged)" Condition="'$(RunStaticAnalysis)' == 'true'" />
+    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) -h -u -m @(ModulesChanged)" Condition="'$(RunStaticAnalysis)' == 'true'" />
   </Target>
 
   <!-- Do everything possible except Publish -->
@@ -263,7 +267,9 @@ $(PackageDirectory)/$(Configuration)/**/System.Text.Encodings.Web.dll" />
 
   <Target Name="StaticAnalysis" Condition="'$(RunStaticAnalysis)' == 'true'">
     <Message Importance="high" Text="Running static analysis..." />
-    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(RepoArtifacts)StaticAnalysisResults -s -u -m @(ModulesChanged)" />
+    <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
+
+    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) -s -u -m @(ModulesChanged)" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" />
     <OnError ExecuteTargets="StaticAnalysisErrorMessage" />
   </Target>
@@ -291,11 +297,10 @@ $(PackageDirectory)/$(Configuration)/**/System.Text.Encodings.Web.dll" />
 
   <Target Name="Test">
     <Message Importance="high" Text="Running check in tests..." />
+    <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
 
     <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
     <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
-
-    <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
 
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
