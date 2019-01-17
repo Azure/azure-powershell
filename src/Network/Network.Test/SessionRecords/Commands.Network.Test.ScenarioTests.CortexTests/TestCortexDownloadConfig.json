@@ -16969,6 +16969,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"h0EGAs7VkZsSLC0m0nzASxBA3b8LVGp2gr+MOa4bw3jjaTIYBuWGcMOCOtpybCKCwIkgaKxa3qL4g8RPtAOjqQ==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"0jU3OMJc0NdKPargYlRzvzI9fvlit/oMQ+BMSK2H0N0vNjSAneM4Uyu8DOkpmle7S+15U4HVvO0R3FrQF6ShkQ==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
@@ -16976,6 +16977,7 @@
       "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps3502/providers/Microsoft.Network/virtualWans/ps7107/vpnConfiguration?api-version=2018-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzMzUwMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbFdhbnMvcHM3MTA3L3ZwbkNvbmZpZ3VyYXRpb24/YXBpLXZlcnNpb249MjAxOC0xMS0wMQ==",
       "RequestMethod": "POST",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"vpnSites\": [\r\n    \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps3502/providers/Microsoft.Network/vpnSites/ps315\"\r\n  ],\r\n  \"outputBlobSasUrl\": \"https://blobps3502.blob.core.windows.net/contps3502/emptyfile.txt?sv=2018-03-28&sr=b&sig=IFDvc86%2B1UcAhXH1tp126qHWiN044EAUshEhLTz9yuw%3D&st=2019-01-16T12%3A16%3A15Z&se=2019-01-17T13%3A16%3A15Z&sp=rwd\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -17106,6 +17108,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"sasUrl\": \"https://blobps3502.blob.core.windows.net/contps3502/emptyfile.txt?sv=2018-03-28&sr=b&sig=IFDvc86%2B1UcAhXH1tp126qHWiN044EAUshEhLTz9yuw%3D&st=2019-01-16T12%3A16%3A15Z&se=2019-01-17T13%3A16%3A15Z&sp=rwd\"\r\n}",
       "StatusCode": 200
     },
@@ -17167,6 +17170,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"sasUrl\": \"https://blobps3502.blob.core.windows.net/contps3502/emptyfile.txt?sv=2018-03-28&sr=b&sig=IFDvc86%2B1UcAhXH1tp126qHWiN044EAUshEhLTz9yuw%3D&st=2019-01-16T12%3A16%3A15Z&se=2019-01-17T13%3A16%3A15Z&sp=rwd\"\r\n}",
       "StatusCode": 200
     },
