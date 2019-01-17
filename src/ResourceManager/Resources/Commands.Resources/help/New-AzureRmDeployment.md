@@ -75,7 +75,7 @@ This includes the resources that the deployment requires.
 An Azure resource is a user-managed Azure entity. A resource can live in a resource group, like database server, database, website, virtual machine, or Storage account. 
 Or, it can be a subscription level resource, like role definition, policy definition, etc.
 
-To add resources to a resource group, use the **New-AzureRmDeployment** which creates a deployment at a resource group.
+To add resources to a resource group, use the **New-AzureRmResourceGroupDeployment** which creates a deployment at a resource group.
 The **New-AzureRmDeployment** cmdlet creates a deployment at the current subscription scope, which deploys subscription level resources. 
 
 To add a deployment at subscription, specify the location and a template.
