@@ -1,5 +1,4 @@
-﻿
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.ScenarioTest
+namespace Microsoft.Azure.Commands.Common.Probe.Tests
 {
     public class Category
     {
@@ -93,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public const string BVT = "BVT";
 
         public const string CheckIn = "CheckIn";
-        
+
         public const string Flaky = "Flaky";
 
         // Run Type

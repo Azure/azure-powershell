@@ -1,4 +1,4 @@
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Common.Probe.Tests;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;

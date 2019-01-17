@@ -43,10 +43,6 @@
       <Project>{f6d508d1-be2d-475d-aa0f-dfb5c615cc9d}</Project>
       <Name>Compute</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ScenarioTest\ScenarioTest.csproj">
-      <Project>{C1BDA476-A5CC-4394-914D-48B0EC31A710}</Project>
-      <Name>ScenarioTest</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

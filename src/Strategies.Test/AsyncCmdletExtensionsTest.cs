@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Rest;
 using Xunit;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System.Threading;
+using Microsoft.Azure.Commands.Common.Strategies.Tests;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 {
