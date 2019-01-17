@@ -2,31 +2,157 @@ resources:
 - repo: self
   fetchDepth: 1
 
-pool:
-  vmImage: 'Ubuntu-16.04'
+jobs:
 
-steps:
-- pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
-  displayName: 'Install platyPS'
+- job: Phase_1
+  displayName: Build Job
+  condition: succeeded()
+  pool:
+    vmImage: 'Ubuntu-16.04'
 
-- task: DotNetCoreCLI@2
-  displayName: Build
-  inputs:
-    command: custom
-    custom: msbuild
-    arguments: 'build.proj /t:Build /p:Configuration=$(Configuration)'
+  steps:
+  - task: DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj /t:Build /p:Configuration=$(Configuration)'
 
-- task: DotNetCoreCLI@2
-  displayName: Test
-  inputs:
-    command: custom
-    custom: msbuild
-    arguments: 'build.proj /t:Test /p:Configuration=$(Configuration)'
+  - task: PublishPipelineArtifact@0
+    displayName: 'Save build'
+    inputs:
+      artifactName: build
+      targetPath: artifacts
+    condition: succeededOrFailed()
 
-- task: PublishPipelineArtifact@0
-  displayName: 'Save artifacts'
-  inputs:
-    artifactName: artifacts
-    targetPath: artifacts
+- job: Job_1
+  displayName: Generate Help Job
+  dependsOn: Phase_1
+  condition: succeeded()
+  pool:
+    vmImage: 'Ubuntu-16.04'
+
+  steps:
+  - task: DownloadPipelineArtifact@0
+    displayName: 'Download build'
+    inputs:
+      artifactName: build
+      targetPath: artifacts
+
+  - pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
+    displayName: 'Install platyPS'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Generate Help'
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj /t:GenerateHelp /p:Configuration=$(Configuration)'
+
+  - task: PublishPipelineArtifact@0
+    displayName: 'Save help'
+    inputs:
+      artifactName: help
+      targetPath: artifacts
+    condition: succeededOrFailed()
+
+- job: Job_2
+  displayName: Static Analysis Job
+  dependsOn: Phase_1
+  condition: succeeded()
+  pool:
+    vmImage: 'Ubuntu-16.04'
+
+  steps:
+  - task: DownloadPipelineArtifact@0
+    displayName: 'Download build'
+    inputs:
+      artifactName: build
+      targetPath: artifacts
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Static Analysis'
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj /t:StaticAnalysis /p:Configuration=$(Configuration)'
+
+  - task: PublishPipelineArtifact@0
+    displayName: 'Save static-analysis'
+    inputs:
+      artifactName: 'static-analysis'
+      targetPath: artifacts
+    condition: succeededOrFailed()
+
+- job: Job_3
+  displayName: Test Job
+  dependsOn: Phase_1
+  condition: succeeded()
+  pool:
+    vmImage: 'Ubuntu-16.04'
+
+  steps:
+  - task: DownloadPipelineArtifact@0
+    displayName: 'Download build'
+    inputs:
+      artifactName: build
+      targetPath: artifacts
+
+  - task: DotNetCoreCLI@2
+    displayName: Test
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj /t:Test /p:Configuration=$(Configuration)'
+
+  - task: PublishPipelineArtifact@0
+    displayName: 'Save test'
+    inputs:
+      artifactName: test
+      targetPath: artifacts/Test
+    condition: succeededOrFailed()
+
+- job: Job_4
+  displayName: Save All Job
+  dependsOn:
+  - Job_1
+  - Job_2
+  - Job_3
   condition: succeededOrFailed()
+  pool:
+    vmImage: 'Ubuntu-16.04'
+  steps:
+  - task: DownloadPipelineArtifact@0
+    displayName: 'Download build'
+    inputs:
+      artifactName: build
+      targetPath: artifacts
+    condition: succeededOrFailed()
 
+  - task: DownloadPipelineArtifact@0
+    displayName: 'Download help'
+    inputs:
+      artifactName: help
+      targetPath: artifacts
+    condition: succeededOrFailed()
+
+  - task: DownloadPipelineArtifact@0
+    displayName: 'Download static-analysis'
+    inputs:
+      artifactName: 'static-analysis'
+      targetPath: artifacts
+    condition: succeededOrFailed()
+
+  - task: DownloadPipelineArtifact@0
+    displayName: 'Download test'
+    inputs:
+      artifactName: test
+      targetPath: artifacts/Test
+    condition: succeededOrFailed()
+
+  - task: PublishPipelineArtifact@0
+    displayName: 'Save all'
+    inputs:
+      artifactName: all
+      targetPath: artifacts
+    condition: succeededOrFailed()
