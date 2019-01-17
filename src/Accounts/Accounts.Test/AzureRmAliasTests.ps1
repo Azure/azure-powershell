@@ -43,13 +43,8 @@ function Test-AzureRmAlias
 	$file = $azureSession.DataStore.ReadFileAsText($PROFILE.CurrentUserAllHosts)
 	
 	$expected = 
-"
-#Begin Azure PowerShell alias import
-Import-Module Az.Accounts -ErrorAction SilentlyContinue -ErrorVariable importError
-if (`$importerror.Count -eq 0) { 
-    Enable-AzureRmAlias -Module Az.Accounts -ErrorAction SilentlyContinue; 
-}
-#End Azure PowerShell alias import"
+"`r`n#Begin Azure PowerShell alias import`r`nImport-Module Az.Accounts -ErrorAction SilentlyContinue -ErrorVariable importError"+
+"`r`nif (`$importerror.Count -eq 0) { `r`n    Enable-AzureRmAlias -Module Az.Accounts -ErrorAction SilentlyContinue; `r`n}`r`n#End Azure PowerShell alias import"
 	
 	Assert-AreEqual $file $expected
 
