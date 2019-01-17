@@ -204,18 +204,18 @@
 
     <!-- Delete powershell runtime files -->
     <ItemGroup>
-      <RedundantDlls Include="$(PackageDirectory)/**/Microsoft.Powershell.*.dll" />
-      <RedundantDlls Include="$(PackageDirectory)/**/System*.dll" Exclude="
-$(PackageDirectory)/**/System.Security.Cryptography.ProtectedData.dll;
-$(PackageDirectory)/**/System.Configuration.ConfigurationManager.dll;
-$(PackageDirectory)/**/System.Runtime.CompilerServices.Unsafe.dll;
-$(PackageDirectory)/**/System.IO.FileSystem.AccessControl.dll;
-$(PackageDirectory)/**/System.Buffers.dll;
-$(PackageDirectory)/**/System.Text.Encodings.Web.dll" />
-      <RedundantDlls Include="$(PackageDirectory)/**/Microsoft.VisualBasic.dll" />
-      <RedundantDlls Include="$(PackageDirectory)/**/Microsoft.CSharp.dll" />
-      <RedundantDlls Include="$(PackageDirectory)/**/Microsoft.CodeAnalysis.dll" />
-      <RedundantDlls Include="$(PackageDirectory)/**/Microsoft.CodeAnalysis.CSharp.dll" />
+      <RedundantDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.Powershell.*.dll" />
+      <RedundantDlls Include="$(PackageDirectory)/$(Configuration)/**/System*.dll" Exclude="
+$(PackageDirectory)/$(Configuration)/**/System.Security.Cryptography.ProtectedData.dll;
+$(PackageDirectory)/$(Configuration)/**/System.Configuration.ConfigurationManager.dll;
+$(PackageDirectory)/$(Configuration)/**/System.Runtime.CompilerServices.Unsafe.dll;
+$(PackageDirectory)/$(Configuration)/**/System.IO.FileSystem.AccessControl.dll;
+$(PackageDirectory)/$(Configuration)/**/System.Buffers.dll;
+$(PackageDirectory)/$(Configuration)/**/System.Text.Encodings.Web.dll" />
+      <RedundantDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.VisualBasic.dll" />
+      <RedundantDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.CSharp.dll" />
+      <RedundantDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.CodeAnalysis.dll" />
+      <RedundantDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.CodeAnalysis.CSharp.dll" />
     </ItemGroup>
     <Delete Files="@(RedundantDlls->'%(FullPath)')" />
 
