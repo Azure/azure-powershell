@@ -14,8 +14,6 @@
     <ProjectReference Include="..\Accounts\Accounts.csproj" />
     <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
     <ProjectReference Include="..\Authentication\Authentication.csproj" />
-    <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
-    <ProjectReference Include="..\TestFx\TestFx.csproj" />
   </ItemGroup>
 
   <ItemGroup>
