@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.Azure.Commands.IotCentral.dll-Help.xml
-Module Name: AzureRM.IotCentral
+external help file: Microsoft.Azure.PowerShell.Cmdlets.IotCentral.dll-Help.xml
+Module Name: Az.IotCentral
 online version: https://docs.microsoft.com/en-us/powershell/module/az.iotcentral/set-aziotcentralapp
 schema: 2.0.0
 ---
 
-# Set-AzureRmIotCentralApp
+# Set-AzIotCentralApp
 
 ## SYNOPSIS
 Updates the metadata for an IoT Central Application.
@@ -14,20 +14,22 @@ Updates the metadata for an IoT Central Application.
 
 ### ResourceIdParameterSet (Default)
 ```
-Set-AzureRmIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] -ResourceId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzIotCentralApp [-DisplayName <String>] [-Subdomain <String>] [-Tag <Hashtable>] -ResourceId <String>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Set-AzureRmIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] -InputObject <PSIotCentralApp> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzIotCentralApp [-DisplayName <String>] [-Subdomain <String>] [-Tag <Hashtable>]
+ -InputObject <PSIotCentralApp> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InteractiveIotCentralParameterSet
 ```
-Set-AzureRmIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] [-ResourceGroupName] <String>
- [-Name] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzIotCentralApp [-DisplayName <String>] [-Subdomain <String>] [-Tag <Hashtable>] [-AsJob]
+ [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,9 +104,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -124,7 +126,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -154,7 +156,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -169,7 +171,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -188,6 +190,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Subdomain
+Subdomain of the IoT Central Application.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
 Iot Central Application Resource Tags.
 
@@ -199,7 +216,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -240,13 +257,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-### System.Collections.Hashtable
+
 ### Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp
-## NOTES
 
-## RELATED LINKS
+## NOTES
 
 ## RELATED LINKS

@@ -20,6 +20,6 @@ Creates a new IoT Central Application.
 ### [Remove-AzIotCentralApp](Remove-AzIotCentralApp.md)
 Deletes an IoT Central Application.
 
-### [Set-AzureRmIotCentralApp](Set-AzureRmIotCentralApp.md)
+### [Set-AzIotCentralApp](Set-AzIotCentralApp.md)
 Updates the metadata for an IoT Central Application.
 
