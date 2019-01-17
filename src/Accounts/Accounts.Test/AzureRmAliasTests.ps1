@@ -45,8 +45,16 @@ function Test-AzureRmAlias
 	$expected = 
 "`r`n#Begin Azure PowerShell alias import`r`nImport-Module Az.Accounts -ErrorAction SilentlyContinue -ErrorVariable importError"+
 "`r`nif (`$importerror.Count -eq 0) { `r`n    Enable-AzureRmAlias -Module Az.Accounts -ErrorAction SilentlyContinue; `r`n}`r`n#End Azure PowerShell alias import"
+
+	$expectedLinux = 
+"`n#Begin Azure PowerShell alias import`nImport-Module Az.Accounts -ErrorAction SilentlyContinue -ErrorVariable importError"+
+"`nif (`$importerror.Count -eq 0) { `n    Enable-AzureRmAlias -Module Az.Accounts -ErrorAction SilentlyContinue; `n}`n#End Azure PowerShell alias import"
 	
-	Assert-AreEqual $file $expected
+	try {
+		Assert-AreEqual $file $expected
+	} catch {
+		Assert-AreEqual $file $expectedLinux
+	}
 
 	Enable-AzureRmAlias -Scope "LocalMachine" -Module Az.Accounts
 	$file = $azureSession.DataStore.ReadFileAsText($PROFILE.AllUsersAllHosts)
