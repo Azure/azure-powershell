@@ -43,7 +43,7 @@ function Test-ServerEndpoint
         $volumeFreeSpacePercent2 = 80
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         $storageSyncService = New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -52,8 +52,8 @@ function Test-ServerEndpoint
         $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        $storageAccount = New-AzureRMStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation
-        $key = Get-AzureRMStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
+        $storageAccount = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation
+        $key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
         Write-Verbose "Resource: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
@@ -70,7 +70,7 @@ function Test-ServerEndpoint
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
-        $job = New-AzureRMStorageSyncCloudEndpoint -ParentObject $syncGroup -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -AsJob 
+        $job = New-AzStorageSyncCloudEndpoint -ParentObject $syncGroup -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -AsJob 
         $job | Wait-Job
         $cloudEndpoint = get-job -Id $job.Id | receive-job -Keep
 
@@ -85,7 +85,7 @@ function Test-ServerEndpoint
         $registeredServer = get-job -Id $job.Id | receive-job -Keep
 
         Write-Verbose "Resource: $serverEndpointName | Loc: $resourceLocation"
-        $job = New-AzureRMStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -CloudSeededData -VolumeFreeSpacePercent $volumeFreeSpacePercent -CloudSeededDataFileShareUri $cloudSeededDataFileShareUri -TierFilesOlderThanDays $tierFilesOlderThanDays -Verbose -AsJob 
+        $job = New-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -CloudSeededData -VolumeFreeSpacePercent $volumeFreeSpacePercent -CloudSeededDataFileShareUri $cloudSeededDataFileShareUri -TierFilesOlderThanDays $tierFilesOlderThanDays -Verbose -AsJob 
 
         $job | Wait-Job
         $serverEndpoint = get-job -Id $job.Id | receive-job -Keep
@@ -96,7 +96,7 @@ function Test-ServerEndpoint
         Assert-AreEqual $volumeFreeSpacePercent $serverEndpoint.VolumeFreeSpacePercent
 
         Write-Verbose "Get ServerEndpoint by Name"
-        $serverEndpoint = Get-AzureRMStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -ServerEndpointName $serverEndpointName 
+        $serverEndpoint = Get-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -ServerEndpointName $serverEndpointName 
 
         Write-Verbose "Validating ServerEndpoint Properties"
         Assert-AreEqual $serverEndpointName $serverEndpoint.ServerEndpointName
@@ -104,21 +104,21 @@ function Test-ServerEndpoint
         Assert-AreEqual $volumeFreeSpacePercent $serverEndpoint.VolumeFreeSpacePercent
 
         Write-Verbose "Get ServerEndpoint by ParentObject"
-        $serverEndpoint = Get-AzureRMStorageSyncServerEndpoint -ParentObject $syncGroup -Name $serverEndpointName -Verbose
+        $serverEndpoint = Get-AzStorageSyncServerEndpoint -ParentObject $syncGroup -Name $serverEndpointName -Verbose
         Write-Verbose "Validating ServerEndpoint Properties"
         Assert-AreEqual $serverEndpointName $serverEndpoint.ServerEndpointName
         Assert-AreEqual $serverLocalPath $serverEndpoint.ServerLocalPath
         Assert-AreEqual $volumeFreeSpacePercent $serverEndpoint.VolumeFreeSpacePercent
 
         Write-Verbose "Get ServerEndpoint by ParentResourceId"
-        $serverEndpoint = Get-AzureRMStorageSyncServerEndpoint -ParentResourceId $syncGroup.ResourceId -Name $serverEndpointName -Verbose
+        $serverEndpoint = Get-AzStorageSyncServerEndpoint -ParentResourceId $syncGroup.ResourceId -Name $serverEndpointName -Verbose
         Write-Verbose "Validating ServerEndpoint Properties"
         Assert-AreEqual $serverEndpointName $serverEndpoint.ServerEndpointName
         Assert-AreEqual $serverLocalPath $serverEndpoint.ServerLocalPath
         Assert-AreEqual $volumeFreeSpacePercent $serverEndpoint.VolumeFreeSpacePercent
 
         Write-Verbose "Patch ServerEndpoint by Name"
-        $job = Set-AzureRMStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName  $syncGroupName -Name $serverEndpointName -VolumeFreeSpacePercent $volumeFreeSpacePercent2 -Verbose -AsJob 
+        $job = Set-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName  $syncGroupName -Name $serverEndpointName -VolumeFreeSpacePercent $volumeFreeSpacePercent2 -Verbose -AsJob 
         $job | Wait-Job
         $serverEndpoint2 = get-job -Id $job.Id | receive-job -Keep
         Write-Verbose "Validating ServerEndpoint Properties"
@@ -127,7 +127,7 @@ function Test-ServerEndpoint
         Assert-AreEqual $volumeFreeSpacePercent2 $serverEndpoint2.VolumeFreeSpacePercent
 
         Write-Verbose "Patch ServerEndpoint by InputObject"
-        $job = Set-AzureRMStorageSyncServerEndpoint -InputObject $serverEndpoint -VolumeFreeSpacePercent $volumeFreeSpacePercent2 -Verbose -AsJob 
+        $job = Set-AzStorageSyncServerEndpoint -InputObject $serverEndpoint -VolumeFreeSpacePercent $volumeFreeSpacePercent2 -Verbose -AsJob 
         $job | Wait-Job
         $serverEndpoint2 = get-job -Id $job.Id | receive-job -Keep
         Write-Verbose "Validating ServerEndpoint Properties"
@@ -136,7 +136,7 @@ function Test-ServerEndpoint
         Assert-AreEqual $volumeFreeSpacePercent2 $serverEndpoint2.VolumeFreeSpacePercent
 
         Write-Verbose "Patch ServerEndpoint by ResourceId"
-        $job = Set-AzureRMStorageSyncServerEndpoint -ResourceId $serverEndpoint.ResourceId -VolumeFreeSpacePercent $volumeFreeSpacePercent2 -Verbose -AsJob 
+        $job = Set-AzStorageSyncServerEndpoint -ResourceId $serverEndpoint.ResourceId -VolumeFreeSpacePercent $volumeFreeSpacePercent2 -Verbose -AsJob 
         $job | Wait-Job
         $serverEndpoint2 = get-job -Id $job.Id | receive-job -Keep
         Write-Verbose "Validating ServerEndpoint Properties"
@@ -154,18 +154,18 @@ function Test-ServerEndpoint
         Invoke-AzStorageSyncFileRecall -ResourceId $serverEndpoint.ResourceId -AsJob | Wait-Job
 
         Write-Verbose "Removing ServerEndpoint: $serverEndpointName"
-        Remove-AzureRMStorageSyncServerEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -AsJob | Wait-Job
+        Remove-AzStorageSyncServerEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -AsJob | Wait-Job
 
         Write-Verbose "Executing Piping Scenarios"
-        New-AzureRMStorageSyncServerEndpoint -ParentObject $syncGroup -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -CloudSeededData -VolumeFreeSpacePercent $volumeFreeSpacePercent -CloudSeededDataFileShareUri $cloudSeededDataFileShareUri -TierFilesOlderThanDays $tierFilesOlderThanDays | Get-AzureRMStorageSyncServerEndpoint  | Remove-AzureRMStorageSyncServerEndpoint -Force -AsJob | Wait-Job
+        New-AzStorageSyncServerEndpoint -ParentObject $syncGroup -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -CloudSeededData -VolumeFreeSpacePercent $volumeFreeSpacePercent -CloudSeededDataFileShareUri $cloudSeededDataFileShareUri -TierFilesOlderThanDays $tierFilesOlderThanDays | Get-AzStorageSyncServerEndpoint  | Remove-AzStorageSyncServerEndpoint -Force -AsJob | Wait-Job
 
-        New-AzureRMStorageSyncServerEndpoint -ParentResourceId $syncGroup.ResourceId -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -CloudSeededData -VolumeFreeSpacePercent $volumeFreeSpacePercent -CloudSeededDataFileShareUri $cloudSeededDataFileShareUri -TierFilesOlderThanDays $tierFilesOlderThanDays | Remove-AzureRMStorageSyncServerEndpoint -Force -AsJob | Wait-Job
+        New-AzStorageSyncServerEndpoint -ParentResourceId $syncGroup.ResourceId -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -CloudSeededData -VolumeFreeSpacePercent $volumeFreeSpacePercent -CloudSeededDataFileShareUri $cloudSeededDataFileShareUri -TierFilesOlderThanDays $tierFilesOlderThanDays | Remove-AzStorageSyncServerEndpoint -Force -AsJob | Wait-Job
 
         Write-Verbose "Unregister Server: $($registeredServer.ServerId)"
         Unregister-AzStorageSyncServer -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -ServerId $registeredServer.ServerId -AsJob | Wait-Job
 
         Write-Verbose "Removing CloudEndpoint: $cloudEndpointName"
-        Remove-AzureRMStorageSyncCloudEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $cloudEndpointName -AsJob | Wait-Job
+        Remove-AzStorageSyncCloudEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $cloudEndpointName -AsJob | Wait-Job
 
         Write-Verbose "Removing SyncGroup: $syncGroupName"
         Remove-AzStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -AsJob | Wait-Job
@@ -180,7 +180,7 @@ function Test-ServerEndpoint
         }
 
         Write-Verbose "Removing $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        Remove-AzureRMStorageAccount -Force -ResourceGroupName $resourceGroupName -Name $StorageAccountName
+        Remove-AzStorageAccount -Force -ResourceGroupName $resourceGroupName -Name $StorageAccountName
 
     }
     finally
