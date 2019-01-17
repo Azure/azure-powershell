@@ -25,6 +25,11 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD</DefineConstants>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Condition="'$(IncludeCommonTestProject)' != 'false'" Include="$(MSBuildThisFileDirectory)\Accounts\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
+    <ProjectReference Condition="'$(IncludeCommonTestProject)' != 'false'" Include="$(MSBuildThisFileDirectory)\Accounts\TestFx\TestFx.csproj" />
+  </ItemGroup>
+
   <!-- Assets -->
   <ItemGroup>
     <None Update="SessionRecords\**\*.json" CopyToOutputDirectory="PreserveNewest" />

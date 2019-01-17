@@ -14,8 +14,4 @@
     <PackageReference Include="Microsoft.Azure.Commerce.UsageAggregates" Version="1.5.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Accounts\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
-  </ItemGroup>
-
 </Project>
