@@ -5,6 +5,7 @@
   <PropertyGroup>
     <AssemblyName>Microsoft.Azure.PowerShell.TestFx</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.TestFx</RootNamespace>
+    <IncludeCommonTestProject>false</IncludeCommonTestProject>
   </PropertyGroup>
 
   <ItemGroup>

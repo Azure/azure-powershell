@@ -11,7 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Accounts\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
     <PackageReference Include="Microsoft.Azure.Management.ApiManagement" Version="4.0.6-preview" />
   </ItemGroup>
 
