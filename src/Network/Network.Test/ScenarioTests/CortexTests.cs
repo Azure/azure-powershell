@@ -38,7 +38,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexCRUD");
         }
 
-        [Fact(Skip = "backend regression. vinayada to update once rolled out")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.pgtm)]
         public void TestCortexExpressRouteCRUD()
