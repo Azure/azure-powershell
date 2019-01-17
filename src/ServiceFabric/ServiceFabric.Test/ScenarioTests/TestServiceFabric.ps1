@@ -315,7 +315,7 @@ function Test-AddAzureRmServiceFabricApplicationCertificateRollback
 	{
 		$res = Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName $resourcGroup -Name $clusterName -SecretIdentifier $certWU_SecretId
 	}
-	Catch [System.AggregateException]
+	Catch [System.Exception]
 	{
 		Assert-AreEqual $true ($PSItem.Exception.Message -match 'is different from the location of the VM') "unexpected error message: $($PSItem.Exception.Message)"
 		$exceptionThrown = $true
