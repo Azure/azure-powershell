@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.IotCentral.Common;
 using Microsoft.Azure.Commands.IotCentral.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.IotCentral;
 using Microsoft.Azure.Management.IotCentral.Models;
@@ -58,51 +59,7 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
 
         private AppPatch CreateApplicationPatch()
         {
-            App existingIotCentralApplication = this.GetApplication();
-            this.EnsureSubdomainAvailabilityOrThrow();
-            this.SetApplicationDisplayName(existingIotCentralApplication);
-            this.SetApplicationSubdomain(existingIotCentralApplication);
-            this.SetApplicationTags(existingIotCentralApplication);
-            AppPatch iotCentralAppPatch = IotCentralUtils.CreateAppPatch(existingIotCentralApplication);
-            return iotCentralAppPatch;
-        }
-
-        private void SetApplicationDisplayName(App application)
-        {
-            application.DisplayName = this.DisplayName ?? application.DisplayName;
-        }
-
-        private void SetApplicationSubdomain(App application)
-        {
-            application.Subdomain = this.Subdomain ?? application.Subdomain;
-        }
-
-        private void SetApplicationTags(App application)
-        {
-            if (this.Tag != null)
-            {
-                application.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
-            }
-        }
-
-        private void EnsureSubdomainAvailabilityOrThrow()
-        {
-            if (this.Subdomain != null)
-            {
-                var checkSubdomainInputs = new OperationInputs(this.Subdomain, resourceType);
-                var subdomainAvailabilityInfo = this.IotCentralClient.Apps.CheckSubdomainAvailability(checkSubdomainInputs);
-                IotCentralUtils.EnsureAvailabilityOrThrow(subdomainAvailabilityInfo);
-            }
-        }
-
-        private App GetApplication()
-        {
-            App existingIotCentralApplication = this.IotCentralClient.Apps.Get(this.ResourceGroupName, this.Name);
-            if (existingIotCentralApplication == null)
-            {
-                throw new PSArgumentException("Requested Iot Central Application does not exist");
-            }
-            return existingIotCentralApplication;
+            return new AppPatch(TagsConversionHelper.CreateTagDictionary(this.Tag, true), null, this.DisplayName, this.Subdomain);
         }
     }
 }
