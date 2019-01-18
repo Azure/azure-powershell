@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix incorrect examples in `New-AzADAppCredential` and `New-AzADSpCredential` reference documentation
+
+## Version 1.1.0
 * Fix parameter set issue when providing `-ODataQuery` and `-ResourceId` parameters for `Get-AzResource`
     - More information here: https://github.com/Azure/azure-powershell/issues/7875
 * Fix handling of the -Custom parameter in New/Set-AzPolicyDefinition

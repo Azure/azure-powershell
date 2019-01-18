@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update incorrect online help URLs
+
+## Version 1.0.1
+* Fix backward compatibility issue with Az.Accounts module
 
 ## Version 1.0.0
 * General availability of `Az.SignalR` module

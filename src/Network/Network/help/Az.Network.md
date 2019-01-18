@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Network
 Module Guid: eb75c732-e274-4a20-b502-e9958e63484a
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.network
@@ -70,6 +70,9 @@ Adds a circuit connection configuration to Private Peering of an Express Route C
 
 ### [Add-AzExpressRouteCircuitPeeringConfig](Add-AzExpressRouteCircuitPeeringConfig.md)
 Adds a peering configuration to an ExpressRoute circuit.
+
+### [Add-AzExpressRouteCrossConnectionPeering](Add-AzExpressRouteCrossConnectionPeering.md)
+Adds a peering configuration to an ExpressRoute cross connection.
 
 ### [Add-AzLoadBalancerBackendAddressPoolConfig](Add-AzLoadBalancerBackendAddressPoolConfig.md)
 Adds a backend address pool configuration to a load balancer.
@@ -247,6 +250,27 @@ Gets a route table summary of an ExpressRoute circuit.
 
 ### [Get-AzExpressRouteCircuitStats](Get-AzExpressRouteCircuitStats.md)
 Gets usage statistics of an ExpressRoute circuit.
+
+### [Get-AzExpressRouteConnection](Get-AzExpressRouteConnection.md)
+Gets a ExpressRoute connection by name or lists all ExpressRoute connections connected to a ExpressRouteGateway.
+
+### [Get-AzExpressRouteCrossConnection](Get-AzExpressRouteCrossConnection.md)
+Gets an Azure ExpressRoute cross connection from Azure.
+
+### [Get-AzExpressRouteCrossConnectionArpTable](Get-AzExpressRouteCrossConnectionArpTable.md)
+Gets the ARP table from an ExpressRoute cross connection.
+
+### [Get-AzExpressRouteCrossConnectionPeering](Get-AzExpressRouteCrossConnectionPeering.md)
+Gets an ExpressRoute cross connection peering configuration.
+
+### [Get-AzExpressRouteCrossConnectionRouteTable](Get-AzExpressRouteCrossConnectionRouteTable.md)
+Gets a route table from an ExpressRoute cross connection.
+
+### [Get-AzExpressRouteCrossConnectionRouteTableSummary](Get-AzExpressRouteCrossConnectionRouteTableSummary.md)
+Gets a route table summary of an ExpressRoute cross connection.
+
+### [Get-AzExpressRouteGateway](Get-AzExpressRouteGateway.md)
+Gets a ExpressRouteGateway resource using ResourceGroupName and GatewayName OR lists all gateways by ResourceGroupName or SubscriptionId.
 
 ### [Get-AzExpressRoutePort](Get-AzExpressRoutePort.md)
 Gets an Azure ExpressRoutePort resource.
@@ -455,6 +479,9 @@ Gets an Azure VpnSite resource by name OR lists all VpnSites in a ResourceGroup 
 
 This is an RM representation of customer branches that are uploaded to Azure for S2S connectivity with a Cortex virtual hub.
 
+### [Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic](Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic.md)
+Invoke network configuration diagnostic session for specified network profiles on target resource.
+
 ### [Move-AzExpressRouteCircuit](Move-AzExpressRouteCircuit.md)
 Moves an ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model.
 
@@ -566,6 +593,12 @@ Creates an ExpressRoute circuit authorization.
 ### [New-AzExpressRouteCircuitPeeringConfig](New-AzExpressRouteCircuitPeeringConfig.md)
 Creates a new peering configuration to be added to an ExpressRoute circuit.
 
+### [New-AzExpressRouteConnection](New-AzExpressRouteConnection.md)
+Creates an ExpressRoute connection that connects an ExpressRoute gateway to an on premise ExpressRoute circuit
+
+### [New-AzExpressRouteGateway](New-AzExpressRouteGateway.md)
+Creates a Scalable ExpressRoute Gateway.
+
 ### [New-AzExpressRoutePort](New-AzExpressRoutePort.md)
 Creates an Azure ExpressRoutePort.
 
@@ -640,6 +673,10 @@ Creates a new Network Watcher resource.
 
 ### [New-AzNetworkWatcherConnectionMonitor](New-AzNetworkWatcherConnectionMonitor.md)
 Creates a connection monitor.
+
+### [New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile](New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile.md)
+Creates a new network configuration diagnostic profile object. 
+This object is used to restrict the network confiuration during a diagnostic session using the specified criteria.
 
 ### [New-AzNetworkWatcherPacketCapture](New-AzNetworkWatcherPacketCapture.md)
 Creates a new packet capture resource and starts a packet capture session on a VM.
@@ -815,6 +852,15 @@ Removes an ExpressRoute circuit connection configuration.
 
 ### [Remove-AzExpressRouteCircuitPeeringConfig](Remove-AzExpressRouteCircuitPeeringConfig.md)
 Removes an ExpressRoute circuit peering configuration.
+
+### [Remove-AzExpressRouteConnection](Remove-AzExpressRouteConnection.md)
+Removes a ExpressRouteConnection.
+
+### [Remove-AzExpressRouteCrossConnectionPeering](Remove-AzExpressRouteCrossConnectionPeering.md)
+Removes an ExpressRoute cross connection peering configuration.
+
+### [Remove-AzExpressRouteGateway](Remove-AzExpressRouteGateway.md)
+The Remove-AzExpressRouteGateway cmdlet removes an Azure ExpressRoute gateway. This is a gateway specific to Azure Virtual WAN's software defined connectivity.
 
 ### [Remove-AzExpressRoutePort](Remove-AzExpressRoutePort.md)
 Removes an ExpressRoutePort.
@@ -1031,6 +1077,15 @@ Modifies an ExpressRoute circuit.
 
 ### [Set-AzExpressRouteCircuitPeeringConfig](Set-AzExpressRouteCircuitPeeringConfig.md)
 Saves a modified ExpressRoute peering configuration.
+
+### [Set-AzExpressRouteConnection](Set-AzExpressRouteConnection.md)
+Updates a ExpressRouteConnection object to a goal state.
+
+### [Set-AzExpressRouteCrossConnection](Set-AzExpressRouteCrossConnection.md)
+Modifies an ExpressRoute cross connection.
+
+### [Set-AzExpressRouteGateway](Set-AzExpressRouteGateway.md)
+Updates a Scalable ExpressRoute Gateway.
 
 ### [Set-AzExpressRoutePort](Set-AzExpressRoutePort.md)
 Modifies an ExpressRoutePort.
