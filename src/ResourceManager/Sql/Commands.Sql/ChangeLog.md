@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+* Renaming ManagedInstace TDE cmdlets to be without 'Managed' in it's name
+
 ## Version 1.0.0
 * General availability of `Az.Sql` module
 * Added new Data_Exfiltration and Unsafe_Action detection types to Threat Detection's cmdlets

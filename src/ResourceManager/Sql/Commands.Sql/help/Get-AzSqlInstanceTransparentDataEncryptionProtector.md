@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.sql/Get-AzSqlManagedInstanceTransparentDataEncryptionProtector
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.sql/Get-AzSqlInstanceTransparentDataEncryptionProtector
 schema: 2.0.0
 ---
 
-# Get-AzSqlManagedInstanceTransparentDataEncryptionProtector
+# Get-AzSqlInstanceTransparentDataEncryptionProtector
 
 ## SYNOPSIS
 Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
@@ -14,32 +14,30 @@ Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorDefaultParameterSet (Default)
 ```
-Get-AzSqlManagedInstanceTransparentDataEncryptionProtector [-ResourceGroupName] <String>
- [-ManagedInstanceName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzSqlInstanceTransparentDataEncryptionProtector [-ResourceGroupName] <String> [-InstanceName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorInputObjectParameterSet
 ```
-Get-AzSqlManagedInstanceTransparentDataEncryptionProtector
- [-ManagedInstance] <AzureSqlManagedInstanceModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Get-AzSqlInstanceTransparentDataEncryptionProtector [-Instance] <AzureSqlManagedInstanceModel>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorResourceIdParameterSet
 ```
-Get-AzSqlManagedInstanceTransparentDataEncryptionProtector [-ManagedInstanceResourceId] <String>
+Get-AzSqlInstanceTransparentDataEncryptionProtector [-InstanceResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzSqlManagedInstanceTransparentDataEncryptionProtector cmdlet gets the TDE protector for the specified SQL managed instance.
+The Get-AzSqlInstanceTransparentDataEncryptionProtector cmdlet gets the TDE protector for the specified SQL managed instance.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSqlManagedInstanceTransparentDataEncryptionProtector -ResourceGroupName 'ContosoResourceGroup' -ManagedInstanceName 'ContosoManagedInstanceName'
+PS C:\> Get-AzSqlInstanceTransparentDataEncryptionProtector -ResourceGroupName 'ContosoResourceGroup' -InstanceName 'ContosoManagedInstanceName'
 
 ResourceGroupName              : ContosoResourceGroup
 ManagedInstanceName            : ContosoManagedInstanceName
@@ -53,7 +51,7 @@ This command gets the TDE protector for the managed instance named ContosoManage
 ### Example 2: Using managed instance object
 ```powershell
 PS C:\> $managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-PS C:\> Get-AzSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstance $managedInstance 'ContosoManagedInstanceName'
+PS C:\> Get-AzSqlInstanceTransparentDataEncryptionProtector -Instance $managedInstance 'ContosoManagedInstanceName'
 
 ResourceGroupName              : ContosoResourceGroup
 ManagedInstanceName            : ContosoManagedInstanceName
@@ -67,7 +65,7 @@ This command gets the TDE protector for the managed instance named ContosoManage
 ### Example 3: Using managed instance resource id
 ```powershell
 PS C:\> $managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-PS C:\> Get-AzSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstanceResourceId $managedInstance.ResourceId
+PS C:\> Get-AzSqlInstanceTransparentDataEncryptionProtector -InstanceResourceId $managedInstance.ResourceId
 
 ResourceGroupName              : ContosoResourceGroup
 ManagedInstanceName            : ContosoManagedInstanceName
@@ -81,7 +79,7 @@ This command gets the TDE protector for the managed instance named ContosoManage
 ### Example 4: Using piping
 ```powershell
 PS C:\> $managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-PS C:\> $managedInstance | Get-AzSqlManagedInstanceTransparentDataEncryptionProtector
+PS C:\> $managedInstance | Get-AzSqlInstanceTransparentDataEncryptionProtector
 
 ResourceGroupName              : ContosoResourceGroup
 ManagedInstanceName            : ContosoManagedInstanceName
@@ -100,7 +98,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -109,8 +107,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedInstance
-The managed instance input object
+### -Instance
+The instance input object
 
 ```yaml
 Type: AzureSqlManagedInstanceModel
@@ -124,8 +122,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceName
-The managed instance name
+### -InstanceName
+The instance name
 
 ```yaml
 Type: String
@@ -139,8 +137,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceResourceId
-The managed instance resource id
+### -InstanceResourceId
+The instance resource id
 
 ```yaml
 Type: String
@@ -201,15 +199,19 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+System.String
+
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel
+
 
 ## NOTES
 

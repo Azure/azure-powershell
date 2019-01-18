@@ -30,7 +30,7 @@ $secureEmptyPassword = (new-object System.Security.SecureString)
 $location = "WestEurope"
 $exceptionHeader = "##### Following exception occurred causing test failure #####"
 $mangedInstanceRg = "MlAndzic_RG"
-$managedInstanceName = "midemoinstancebc"
+$managedInstanceName = "midemoinstancebc" 
 
 function Test-AddTdeCertificateForSqlServerDefaultParameterSetNoPassword
 {
@@ -96,9 +96,9 @@ function Test-AddTdeCertificateForManagedInstanceDefaultParameterSetNoPassword
 {
 	try
 	{
-		Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate `
+		Add-AzureRmSqlInstanceTransparentDataEncryptionCertificate `
 			-ResourceGroupName $mangedInstanceRg `
-			-ManagedInstanceName $managedInstanceName `
+			-InstanceName $managedInstanceName `
 			-PrivateBlob $securePrivateBlobNoPassword `
 			-Password $secureEmptyPassword
 	}
@@ -118,9 +118,9 @@ function Test-AddTdeCertificateForManagedInstanceDefaultParameterSetWithPassword
 {
 	try
 	{
-		Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate `
+		Add-AzureRmSqlInstanceTransparentDataEncryptionCertificate `
 			-ResourceGroupName $mangedInstanceRg `
-			-ManagedInstanceName $managedInstanceName `
+			-InstanceName $managedInstanceName `
 			-PrivateBlob $securePrivateBlobWithPassword `
 			-Password $securePassword
 	}

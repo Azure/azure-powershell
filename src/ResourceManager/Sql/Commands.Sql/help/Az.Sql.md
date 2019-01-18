@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Sql
 Module Guid: 150d9544-6348-4373-806f-10cd0b4de4cb
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.sql
@@ -13,9 +13,6 @@ This topic displays help topics for the Azure SQL Database Cmdlets.
 ## Az.Sql Cmdlets
 ### [Add-AzSqlDatabaseToFailoverGroup](Add-AzSqlDatabaseToFailoverGroup.md)
 Adds one or more databases to an Azure SQL Database Failover Group.
-
-### [Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate](Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate.md)
-Adds a Transparent Data Encryption Certificate for the given managed instance
 
 ### [Add-AzSqlServerKeyVaultKey](Add-AzSqlServerKeyVaultKey.md)
 Adds a Key Vault key to a SQL server.
