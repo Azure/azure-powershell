@@ -304,7 +304,7 @@ $(PackageDirectory)/$(Configuration)/**/System.Text.Encodings.Web.dll" />
 
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
-    <Exec Command="dotnet test $(RepoArtifacts)Azure.PowerShell.sln --no-build --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework netcoreapp2.0 --logger trx" />
+    <Exec Command="dotnet test $(RepoArtifacts)Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework netcoreapp2.0 --logger trx" />
 
     <ItemGroup>
       <TestResults Include="$(LibraryRoot)src/**/TestResults/*.trx" />
