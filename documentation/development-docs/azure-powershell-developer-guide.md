@@ -180,7 +180,7 @@ After the solution file is updated, save and close it. Now, open the solution fi
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
 ```
-**This is not needed since this is a new project and does not use legacy namespace conventions.**
+**Note**: This is not needed since this is a new project and does not use legacy namespace conventions.
   
 - Update this entry to use your SDK:
 ```xml
