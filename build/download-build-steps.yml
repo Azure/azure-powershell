@@ -1,0 +1,6 @@
+steps:
+- task: Download_Build
+  displayName: 'Download build'
+  inputs:
+    artifactName: build
+    targetPath: artifacts

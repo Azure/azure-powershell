@@ -190,7 +190,7 @@
     <MakeDir Directories="$(PackageDirectory)" />
 
     <!-- Copy appropriate targets -->
-    <Copy SourceFiles="after.Azure.PowerShell.sln.targets;Directory.Build.targets" DestinationFolder="$(RepoArtifacts)" />
+    <Copy SourceFiles="$(RepoBuild)after.Azure.PowerShell.sln.targets" DestinationFolder="$(RepoArtifacts)" />
 
     <!-- Investigate why the ChangeLogCheck target removes the 8080th character -->
     <!-- <CallTarget targets="ChangeLogCheck" ContinueOnError="false" /> -->
