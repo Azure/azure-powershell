@@ -11,4 +11,8 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName).Dataplane</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="3.14.0" />
+  </ItemGroup>
+
 </Project>
