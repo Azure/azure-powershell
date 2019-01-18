@@ -3,6 +3,154 @@ resources:
   fetchDepth: 1
 
 jobs:
-- template: build/jobs.yml
-  parameters:
+- job: Build
+  displayName: Build
+  condition: succeeded()
+  pool:
     vmImage: 'Ubuntu-16.04'
+
+  steps:
+  - template: build/install-pwsh-steps.yml
+    parameters:
+      vmImage: 'Ubuntu-16.04'
+
+  - task: DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj /t:Build /p:Configuration=$(Configuration)'
+
+  - task: PublishPipelineArtifact@0
+    displayName: 'Save build'
+    inputs:
+      artifactName: build
+      targetPath: artifacts
+    condition: succeededOrFailed()
+
+- job: Generate_Help
+  displayName: Generate Help
+  dependsOn: Build
+  condition: succeeded()
+  pool:
+    vmImage: 'Ubuntu-16.04'
+
+  steps:
+  - template: build/download-build-steps.yml
+
+  - template: build/install-pwsh-steps.yml
+    parameters:
+      vmImage: 'Ubuntu-16.04'
+
+  - pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
+    displayName: 'Install platyPS'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Generate Help'
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj /t:GenerateHelp /p:Configuration=$(Configuration)'
+
+  - task: PublishPipelineArtifact@0
+    displayName: 'Save help'
+    inputs:
+      artifactName: help
+      targetPath: artifacts
+    condition: succeededOrFailed()
+
+- job: Static_Analysis
+  displayName: Static Analysis
+  dependsOn: Build
+  condition: succeeded()
+  pool:
+    vmImage: 'Ubuntu-16.04'
+
+  steps:
+  - template: build/download-build-steps.yml
+
+  - template: build/install-pwsh-steps.yml
+    parameters:
+      vmImage: 'Ubuntu-16.04'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Static Analysis'
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj /t:StaticAnalysis /p:Configuration=$(Configuration)'
+
+  - task: PublishPipelineArtifact@0
+    displayName: 'Save static-analysis'
+    inputs:
+      artifactName: 'static-analysis'
+      targetPath: artifacts/StaticAnalysisResults
+    condition: succeededOrFailed()
+
+- job: Test
+  displayName: Test
+  dependsOn: Build
+  condition: succeeded()
+  pool:
+    vmImage: 'Ubuntu-16.04'
+
+  steps:
+  - template: build/download-build-steps.yml
+
+  - template: build/install-pwsh-steps.yml
+    parameters:
+      vmImage: 'Ubuntu-16.04'
+
+  - task: DotNetCoreCLI@2
+    displayName: Test
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj /t:Test /p:Configuration=$(Configuration)'
+
+  - task: PublishPipelineArtifact@0
+    displayName: 'Save test'
+    inputs:
+      artifactName: test
+      targetPath: artifacts/TestResults
+    condition: succeededOrFailed()
+
+- job: Save_All
+  displayName: Save All
+  dependsOn:
+  - Generate_Help
+  - Static_Analysis
+  - Test
+  condition: succeededOrFailed()
+  pool:
+    vmImage: 'Ubuntu-16.04'
+  steps:
+  - template: build/download-build-steps.yml
+
+  - task: DownloadPipelineArtifact@0
+    displayName: 'Download help'
+    inputs:
+      artifactName: help
+      targetPath: artifacts
+    condition: succeededOrFailed()
+
+  - task: DownloadPipelineArtifact@0
+    displayName: 'Download static-analysis'
+    inputs:
+      artifactName: 'static-analysis'
+      targetPath: artifacts/StaticAnalysisResults
+    condition: succeededOrFailed()
+
+  - task: DownloadPipelineArtifact@0
+    displayName: 'Download test'
+    inputs:
+      artifactName: test
+      targetPath: artifacts/TestResults
+    condition: succeededOrFailed()
+
+  - task: PublishPipelineArtifact@0
+    displayName: 'Save all'
+    inputs:
+      artifactName: all
+      targetPath: artifacts
+    condition: succeededOrFailed()
