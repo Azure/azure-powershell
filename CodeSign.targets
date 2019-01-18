@@ -20,7 +20,7 @@
     <!-- Azure -->
     <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
       <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*PowerShell*Cmdlets*.dll;
-        $(PackageDirectory)\$(Configuration)\Az.Accounts\Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+        $(PackageDirectory)\$(Configuration)\Az.Accounts\Microsoft.Azure.Commands.Common.Authentication.ResourceManager.dll;
         $(PackageDirectory)\$(Configuration)\Az.Accounts\Microsoft.Azure.Commands.Common.Authentication.dll" />
     </ItemGroup>
 
