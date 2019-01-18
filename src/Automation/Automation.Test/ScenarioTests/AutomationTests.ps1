@@ -43,22 +43,22 @@ Checks whether the runbook exists and if it exists, removes it and then imports 
 #>
 function CreateRunbook
 {
-    param([string] $runbookPath, [boolean] $byName=$false, [string[]] $tag, [string] $description)
+    param([string] $runbookPath, [boolean] $byName=$false, [string[]] $tag, [string] $description, [string] $type = "PowerShell")
 
     $runbookName = gci $runbookPath | %{$_.BaseName}
-    $runbook = Get-AzureRmAutomationRunbook $accountName | where {$_.Name -eq $runbookName} 
+    $runbook = Get-AzureRmAutomationRunbook $accountName | where {$_.Name -eq $runbookName -and $_.RunbookType -eq $type} 
     if ($runbook.Count -eq 1)
     {
-        Remove-AzureRmAutomationRunbook $accountName -Name $runbookName -Force
+        $runbook | Remove-AzureRmAutomationRunbook -Force
     }
 
     if(!$byName)
     {
-        return New-AzureRmAutomationRunbook $accountName -Path $runbookPath -Tag $tag -Description $description
+        return New-AzureRmAutomationRunbook $accountName -Path $runbookPath -Tag $tag -Description $description -Type $type
     }
     else 
     {
-        return New-AzureRmAutomationRunbook $accountName -Name $runbookName -Tag $tag -Description $description
+        return New-AzureRmAutomationRunbook $accountName -Name $runbookName -Tag $tag -Description $description -Type $type
     }
 }
 
@@ -101,13 +101,13 @@ Tests Runbook with Parameters
 #>
 function Test-RunbookWithParameter
 {
-    param([string] $runbookPath, [HashTable] $parameters, [int]$expectedResult)
+    param([string] $runbookPath, [string] $type, [HashTable] $parameters, [int]$expectedResult)
 
     #Setup
     $automationAccount = Get-AzureRmAutomationAccount -Name $accountName
     Assert-NotNull $automationAccount "Automation account $accountName does not exist."
 
-    $runbook = CreateRunbook  $runbookPath
+    $runbook = CreateRunbook  $runbookPath -type $type
     Assert-NotNull $runbook  "runBook $runbookPath does not import successfully."
     $automationAccount | Publish-AzureRmAutomationRunbook -Name $runbook.Name
 
