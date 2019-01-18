@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   
-  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\src\Az.Test.props" />
 
   <PropertyGroup>
     <AssemblyName>Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager</AssemblyName>
@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Authentication\Authentication.csproj" />
-    <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
+    <ProjectReference Include="..\..\src\Accounts\Authentication\Authentication.csproj" />
+    <ProjectReference Include="..\..\src\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
   </ItemGroup>
 
   <ItemGroup>

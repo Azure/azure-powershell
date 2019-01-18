@@ -1,4 +1,5 @@
-﻿function Get-AzureRmStorageAccount
+﻿
+function Get-AzureRmStorageAccount
 {
   [CmdletBinding()]
   [Alias("Get-AzStorageAccount")]

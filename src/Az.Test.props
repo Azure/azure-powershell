@@ -26,8 +26,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Condition="'$(IncludeCommonTestProject)' != 'false'" Include="$(MSBuildThisFileDirectory)\Accounts\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
-    <ProjectReference Condition="'$(IncludeCommonTestProject)' != 'false'" Include="$(MSBuildThisFileDirectory)\Accounts\TestFx\TestFx.csproj" />
+    <ProjectReference Condition="'$(IncludeCommonTestProject)' != 'false'" Include="$(MSBuildThisFileDirectory)\..\tools\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
+    <ProjectReference Condition="'$(IncludeCommonTestProject)' != 'false'" Include="$(MSBuildThisFileDirectory)\..\tools\TestFx\TestFx.csproj" />
   </ItemGroup>
 
   <!-- Assets -->
