@@ -72,6 +72,7 @@ if ($ValidateMarkdownHelp)
     }
     else
     {
+        New-Item -Path $NewExceptionsPath -Name NoHelpIssues -ItemType File -Force | Out-Null
         Remove-Item -Path "$SuppressedExceptionsPath\ValidateHelpIssues.csv" -Force
         Remove-Item -Path "$NewExceptionsPath\ValidateHelpIssues.csv" -Force
     }
