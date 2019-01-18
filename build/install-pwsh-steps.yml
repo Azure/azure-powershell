@@ -12,4 +12,4 @@ steps:
    # https://stackoverflow.com/a/49292594/294804
    Write-Host "##vso[task.setvariable variable=PATH;]${env:Path};C:\Program Files\PowerShell\6.0.4\";
   displayName: 'Install PowerShell Core'
-  condition: eq(${{ parameters.vmImage }}, 'VS2017-Win2016')
+  condition: eq('${{ parameters.vmImage }}', 'VS2017-Win2016')
