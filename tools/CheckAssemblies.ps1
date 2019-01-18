@@ -18,7 +18,7 @@ param(
 )
 
 $ProjectPaths = @( "$PSScriptRoot\..\artifacts\$BuildConfig" )
-$DependencyMapPath = "$PSScriptRoot\..\artifacts\DependencyMap.csv"
+$DependencyMapPath = "$PSScriptRoot\..\artifacts\StaticAnalysisResults\DependencyMap.csv"
 
 $DependencyMap = Import-Csv -Path $DependencyMapPath
 

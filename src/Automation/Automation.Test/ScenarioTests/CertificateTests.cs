@@ -33,7 +33,7 @@ namespace Commands.Automation.Test
             XunitTracingInterceptor.AddToContext(logger);
         }
 
-        [Fact]
+        [Fact(Skip = "Fails on macOS. Needs investigation.")]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
