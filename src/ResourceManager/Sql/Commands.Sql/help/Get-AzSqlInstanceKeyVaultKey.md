@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSqlInstanceKeyVaultKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a SQL managed instance's Key Vault keys.
 
 ## SYNTAX
 
