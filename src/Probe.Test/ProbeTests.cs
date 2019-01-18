@@ -1,4 +1,3 @@
-using Microsoft.Azure.Commands.Common.Probe.Tests;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
@@ -21,21 +20,18 @@ namespace Commands.Common.Tests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void FalseWhenProgramDoesNotExistTest()
         {
             Assert.False(GeneralUtilities.Probe("foo"));
         }
 
         [Fact(Skip = "Test does not make sense for CI without PS6")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TrueWhenProgramDoesExistTest()
         {
             Assert.True(GeneralUtilities.Probe(_pwsh, " -c 'echo hello world!'"));
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void FailIfStdOutDoesNotMatchTest()
         {
             Assert.False(
@@ -48,7 +44,6 @@ namespace Commands.Common.Tests
         }
 
         [Fact(Skip = "Test does not make sense for CI without PS6")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TrueIfStdOutDoesMatchTest()
         {
             Assert.True(
@@ -61,7 +56,6 @@ namespace Commands.Common.Tests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void FailIfProcessTakesTooLongToRespondTest()
         {
             Assert.False(GeneralUtilities.Probe(_pwsh, "-c \"sleep 4\""));

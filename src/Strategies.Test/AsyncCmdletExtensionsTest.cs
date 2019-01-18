@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.Rest;
 using Xunit;
 using System.Threading;
-using Microsoft.Azure.Commands.Common.Strategies.Tests;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 {
@@ -98,7 +97,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public async Task TestVerboseStream()
         {
             var client = new Client();

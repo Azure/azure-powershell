@@ -4,7 +4,6 @@
     <Root>$(MSBuildThisFileDirectory)..\</Root>
     <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
     <Artifacts>$(Root)artifacts\</Artifacts>
-    <TestFilter>"AcceptanceType=CheckIn"</TestFilter>
   </PropertyGroup>
 
   <Target Name="netstandard20">
