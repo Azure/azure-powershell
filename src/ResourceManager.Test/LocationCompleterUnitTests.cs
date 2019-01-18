@@ -20,7 +20,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Profile.Test
+namespace Microsoft.Azure.Commands.ResourceManager.Test
 {
     public class LocationCompleterUnitTests
     {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal("No valid ResourceType given to LocationCompleter.", ex.Message);
         }
 
-        [Fact(Skip = "Move to common tests, relies on Debug of common code")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReturnsErrorForInvalidResourceType()
         {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal("ResourceType name: 'Microsoft.InvalidResourceType/operations' is invalid.", ex.Message);
         }
 
-        [Fact(Skip = "Move to common tests, relies on Debug of common code")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReturnsErrorForResourceTypeWithNoLocation()
         {
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.Mock/mock3" }, resourceTypeLocationDictionary), new string[] { "\'westus\'", "\'centralus\'" });
         }
 
-        [Fact(Skip = "Move to common tests, relies on Debug of common code")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReturnsErrorForResourceTypesWithNoOverlap()
         {
