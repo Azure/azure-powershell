@@ -7,7 +7,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
     <PropertyGroup>
-    <AssemblyName>Microsoft.Azure.Commands.Common.Authentication.ResourceManager</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Authentication.ResourceManager</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication.ResourceManager</RootNamespace>
   </PropertyGroup>
 
