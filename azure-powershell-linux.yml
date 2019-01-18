@@ -5,4 +5,4 @@ resources:
 jobs:
 - template: build/jobs.yml
   parameters:
-    vmImage: 'Ubuntu-16.04'
+    vmImage: 'ubuntu-16.04'
