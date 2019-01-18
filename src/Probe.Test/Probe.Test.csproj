@@ -4,8 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.Clients.Compute.Test</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Commands.Common.Compute.Tests</RootNamespace>
+    <AssemblyName>Microsoft.Azure.PowerShell.Probe.Test</AssemblyName>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
@@ -20,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Compute\Compute.csproj" />
+    <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
   </ItemGroup>
 
