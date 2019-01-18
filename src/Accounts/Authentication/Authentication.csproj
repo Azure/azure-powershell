@@ -11,4 +11,9 @@
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.5" />
+    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="3.14.0" />
+  </ItemGroup>
+
 </Project>
