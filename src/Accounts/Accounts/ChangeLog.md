@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Update incorrect online help URLs
+* Add warning message in PS Core for Uninstall-AzureRm
 
 ## Version 1.1.0
 * Add 'Local' Scope to Enable-AzureRmAlias
