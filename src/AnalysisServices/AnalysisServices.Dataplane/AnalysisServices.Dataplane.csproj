@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="3.14.0" />
+    <ProjectReference Include="..\..\Accounts\Authentication\Authentication.csproj" />
   </ItemGroup>
 
 </Project>
