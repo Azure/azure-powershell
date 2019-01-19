@@ -57,6 +57,8 @@ DotNetFrameworkVersion = '4.7.2'
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Authentication.Abstractions.dll', 
+               '.\Microsoft.Azure.PowerShell.Authentication.dll', 
+               '.\Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll', 
                '.\Microsoft.Azure.PowerShell.Clients.Authorization.dll', 
                '.\Microsoft.Azure.PowerShell.Clients.Compute.dll', 
                '.\Microsoft.Azure.PowerShell.Clients.Graph.Rbac.dll', 
@@ -75,9 +77,7 @@ RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Authentication.Abstractions.d
                '.\Microsoft.WindowsAzure.Storage.dll', 
                '.\Microsoft.WindowsAzure.Storage.DataMovement.dll', 
                '.\Microsoft.Azure.PowerShell.Clients.Aks.dll', 
-               '.\Microsoft.Azure.PowerShell.Strategies.dll',
-               '.\Microsoft.Azure.Commands.Common.Authentication.dll',
-               '.\Microsoft.Azure.Commands.Common.Authentication.ResourceManager.dll'
+               '.\Microsoft.Azure.PowerShell.Strategies.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
