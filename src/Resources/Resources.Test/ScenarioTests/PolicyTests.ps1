@@ -658,9 +658,6 @@ function Test-PolicyDefinitionCRUDAtManagementGroup
     Assert-NotNull($actual.Properties.PolicyRule)
     Assert-AreEqual $expected.Properties.Mode $actual.Properties.Mode
 
-    # make sure it can't be retrieved at default subscription level
-    Assert-ThrowsContains { Get-AzureRMPolicyDefinition -Name $policyName } "PolicyDefinitionNotFound : The policy definition '$policyName' could not be found."
-
     # update the same policy definition, get it back and validate the new properties
     $actual = Set-AzureRMPolicyDefinition -Name $policyName -ManagementGroupName $managementGroup -DisplayName testDisplay -Description $updatedDescription -Policy ".\SamplePolicyDefinition.json" -Metadata $metadata
     $expected = Get-AzureRMPolicyDefinition -Name $policyName -ManagementGroupName $managementGroup 
@@ -741,9 +738,6 @@ function Test-PolicySetDefinitionCRUDAtManagementGroup
     Assert-AreEqual $expected.PolicySetDefinitionId $actual.PolicySetDefinitionId
     Assert-NotNull($actual.Properties.PolicyDefinitions)
 
-    # make sure it can't be retrieved at default subscription level
-    Assert-ThrowsContains { Get-AzureRMPolicySetDefinition -Name $policySetDefName } "PolicySetDefinitionNotFound : The policy set definition '$policySetDefName' could not be found."
-
     # update the policy set definition, get it back and validate
     $expected = Set-AzureRMPolicySetDefinition -Name $policySetDefName -ManagementGroupName $managementGroup -DisplayName testDisplay -Description $updatedDescription
     $actual = Get-AzureRMPolicySetDefinition -Name $policySetDefName -ManagementGroupName $managementGroup
@@ -806,6 +800,48 @@ function Test-PolicySetDefinitionCRUDAtSubscription
 
     $remove = Remove-AzureRMPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -Force
     Assert-AreEqual True $remove
+}
+
+function Test-GetCmdletFilterParameter
+{
+    # policy definitions
+    $builtins = Get-AzureRmPolicyDefinition -Builtin
+    $builtins | %{ Assert-AreEqual $_.Properties.PolicyType "Builtin" }
+
+    $custom = Get-AzureRmPolicyDefinition -Custom
+    $custom | %{ Assert-AreEqual $_.Properties.PolicyType "Custom" }
+
+    $all = Get-AzureRmPolicyDefinition
+    Assert-AreEqual ($builtins.Count + $custom.Count) $all.Count
+
+    # policy set definitions
+    $builtins = Get-AzureRmPolicySetDefinition -Builtin
+    $builtins | %{ Assert-AreEqual $_.Properties.PolicyType "Builtin" }
+
+    $custom = Get-AzureRmPolicySetDefinition -Custom
+    $custom | %{ Assert-AreEqual $_.Properties.PolicyType "Custom" }
+
+    $all = Get-AzureRmPolicySetDefinition
+    Assert-AreEqual ($builtins.Count + $custom.Count) $all.Count
+}
+
+function Test-GetBuiltinsByName
+{
+    # policy definitions
+    $builtins = Get-AzureRmPolicyDefinition -Builtin
+    foreach ($builtin in $builtins)
+    {
+        $definition = Get-AzureRmPolicyDefinition -Name $builtin.Name
+        Assert-AreEqual $builtin.ResourceId $definition.ResourceId
+    }
+
+    # policy set definitions
+    $builtins = Get-AzureRmPolicySetDefinition -Builtin
+    foreach ($builtin in $builtins)
+    {
+        $setDefinition = Get-AzureRmPolicySetDefinition -Name $builtin.Name
+        Assert-AreEqual $builtin.ResourceId $setDefinition.ResourceId
+    }
 }
 
 <#
@@ -1015,7 +1051,7 @@ function Test-GetPolicyDefinitionParameters
     Assert-ThrowsContains { Get-AzureRmPolicyDefinition -Name $someName -Id $someId -Custom } $parameterSetError
 
     # validate remaining parameter combinations starting with -Id
-    Assert-ThrowsContains { Get-AzureRmPolicyDefinition -Id $goodId } $policyDefinitionNotFound
+    $ok = Get-AzureRmPolicyDefinition -Id $goodId
     Assert-ThrowsContains { Get-AzureRmPolicyDefinition -Id $goodId -ManagementGroupName $someManagementGroup } $parameterSetError
     Assert-ThrowsContains { Get-AzureRmPolicyDefinition -Id $goodId -SubscriptionId $subscriptionId } $parameterSetError
     Assert-ThrowsContains { Get-AzureRmPolicyDefinition -Id $goodId -BuiltIn } $parameterSetError
@@ -1159,7 +1195,7 @@ function Test-GetPolicySetDefinitionParameters
     Assert-ThrowsContains { Get-AzureRmPolicySetDefinition -Name $someName -Id $someId -Custom } $parameterSetError
 
     # validate remaining parameter combinations starting with -Id
-    Assert-ThrowsContains { Get-AzureRmPolicySetDefinition -Id $goodId } $policySetDefinitionNotFound
+    $ok = Get-AzureRmPolicySetDefinition -Id $goodId
     Assert-ThrowsContains { Get-AzureRmPolicySetDefinition -Id $goodId -ManagementGroupName $someManagementGroup } $parameterSetError
     Assert-ThrowsContains { Get-AzureRmPolicySetDefinition -Id $goodId -SubscriptionId $subscriptionId } $parameterSetError
     Assert-ThrowsContains { Get-AzureRmPolicySetDefinition -Id $goodId -BuiltIn } $parameterSetError
