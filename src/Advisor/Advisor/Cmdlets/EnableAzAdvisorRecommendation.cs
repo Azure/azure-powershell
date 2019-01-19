@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         /// <summary>
         /// Gets or sets the Resource Id.
         /// </summary>
-        [Parameter(ParameterSetName = IdParameterSet, Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Resource Id of the recommendation to be suppressed.")]
+        [Parameter(ParameterSetName = IdParameterSet, Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Id of the recommendation to be suppressed.")]
         public string ResourceId { get; set; }
 
         /// <summary>

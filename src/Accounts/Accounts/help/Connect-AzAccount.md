@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/add-azaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/connect-azaccount
 schema: 2.0.0
 ---
 
@@ -85,7 +85,6 @@ If multi-factor authentication is enabled for your credentials, you must log in 
 ### Example 2: (Windows PowerShell 5.1 only) Connect to an Azure account using organizational ID credentials
 ```powershell
 PS C:\> $Credential = Get-Credential
-PS C:\> Connect-AzAccount -Credential $Credential
 
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
@@ -111,7 +110,7 @@ The first command gets the service principal credentials (application id and ser
 The second command connect to Azure using the service principal credentials stored in $Credential for the specified Tenant.
 The ServicePrincipal switch parameter indicates that the account authenticates as a service principal.
 
-### Example 4: Use an interactive login to connect to an account for a specific tenant and subscription
+### Example 3: Use an interactive login to connect to an account for a specific tenant and subscription
 ```powershell
 PS C:\> Connect-AzAccount -Tenant "xxxx-xxxx-xxxx-xxxx" -SubscriptionId "yyyy-yyyy-yyyy-yyyy"
 Account                SubscriptionName TenantId                Environment
@@ -121,7 +120,7 @@ azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 
 This command connects to an Azure account and configured AzureRM PowerShell to run cmdlets for the specified tenant and subscription by default.
 
-### Example 5: Add an Account Using Managed Service Identity Login
+### Example 4: Add an Account Using Managed Service Identity Login
 ```powershell
 PS C:\> Connect-AzAccount -MSI
 
@@ -133,7 +132,7 @@ MSI@50342              Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 This command connects using the managed service identity of the host environment (for example, if executed on a
 VirtualMachine with an assigned Managed Service Identity, this will allow the code to login using that assigned identity)
 
-### Example 6: Add an account using certificates
+### Example 5: Add an account using certificates
 ```powershell
 # For more information on creating a self-signed certificate
 # and giving it proper permissions, please see the following:
