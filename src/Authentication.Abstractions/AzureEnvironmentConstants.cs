@@ -158,5 +158,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public const string ChinaAnalysisServicesEndpointSuffix = "asazure.chinacloudapi.cn";
         public const string USGovernmentAnalysisServicesEndpointSuffix = "asazure.usgovcloudapi.net";
         public const string GermanAnalysisServicesEndpointSuffix = "asazure.cloudapi.de";
+
+        /// <summary>
+        /// The token audiences for authorizing Analysis Service requests
+        /// </summary>
+        /// <remarks>
+        /// Analysis Service expects a token audience which matches "https://*.asazure.windows.net".
+        /// The wildcard takes place of the region, however the region cannot be calculated here.
+        /// "region" can take place of the region, since "*" is an invalid character for URIs.
+        /// </remarks>
+        public const string AzureAnalysisServicesEndpointResourceId = "https://region.asazure.windows.net";
+        public const string ChinaAnalysisServicesEndpointResourceId = "https://region.asazure.chinacloudapi.cn";
+        public const string USGovernmentAnalysisServicesEndpointResourceId = "https://region.asazure.usgovcloudapi.net";
+        public const string GermanAnalysisServicesEndpointResourceId = "https://region.asazure.cloudapi.de";
     }
 }
