@@ -1041,6 +1041,10 @@
     {
       "file": "\\src\\Accounts\\Authentication.Test\\Resources\\ValidProfileChinaOld.PublishSettings",
       "_justification": "Faked credentials"
+    },
+	 {
+      "file": "\\src\\IotHub\\IotHub.Test\\ScenarioTests\\IotHubRoutingTests.ps1",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     }
   ]
 }
