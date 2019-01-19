@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <AssemblyName>Microsoft.Azure.PowerShell.TestFx</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Commands.TestFx</RootNamespace>
+    <RootNamespace>$(LegacyAssemblyPrefix)TestFx</RootNamespace>
     <IncludeCommonTestProject>false</IncludeCommonTestProject>
   </PropertyGroup>
 

@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <AssemblyName>Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Commands.ScenarioTest</RootNamespace>
+    <RootNamespace>$(LegacyAssemblyPrefix)ScenarioTest</RootNamespace>
     <IncludeCommonTestProject>false</IncludeCommonTestProject>
   </PropertyGroup>
 

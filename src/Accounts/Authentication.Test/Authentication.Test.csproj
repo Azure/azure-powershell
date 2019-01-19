@@ -3,8 +3,8 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
 
   <PropertyGroup>
-    <AssemblyName>Microsoft.Azure.Commands.Common.Authentication.Test</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Commands.Common.Authentication.Test</RootNamespace>
+    <AssemblyName>Microsoft.Azure.PowerShell.Authentication.Test</AssemblyName>
+    <RootNamespace>$(LegacyAssemblyPrefix)Common.Authentication.Test</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
