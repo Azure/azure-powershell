@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add Encoding format to Add-IotHubRoutingEndpoint cmdlet.
 
 ## Version 1.0.1
 * Updated to the latest version of the IotHub SDK
