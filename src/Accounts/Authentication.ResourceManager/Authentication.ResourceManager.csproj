@@ -8,7 +8,7 @@
 
     <PropertyGroup>
     <AssemblyName>Microsoft.Azure.PowerShell.Authentication.ResourceManager</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Commands.Common.Authentication.ResourceManager</RootNamespace>
+    <RootNamespace>$(LegacyAssemblyPrefix)Common.Authentication.ResourceManager</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
