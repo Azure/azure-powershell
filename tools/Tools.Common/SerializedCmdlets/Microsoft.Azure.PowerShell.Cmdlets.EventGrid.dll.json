@@ -14,16 +14,19 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Destination": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionDestination",
               "Filter": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionFilter",
               "Labels": "System.Collections.Generic.IList`1[System.String]",
+              "EventTtl": "System.Nullable`1[System.Int32]",
+              "MaxDeliveryAttempt": "System.Nullable`1[System.Int32]",
               "EventSubscriptionName": "System.String",
               "Id": "System.String",
               "Type": "System.String",
               "Topic": "System.String",
               "ProvisioningState": "System.String",
+              "DeadLetterEndpoint": "System.String",
               "Endpoint": "System.String"
             },
             "ElementType": null,
@@ -204,7 +207,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -268,7 +271,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -399,7 +402,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -515,7 +518,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -657,7 +660,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -716,7 +719,7 @@
           ]
         },
         {
-          "Name": "EventSubscriptionInputObjectSet",
+          "Name": "EventSubscriptionCustomTopicInputObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -725,7 +728,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
                   "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -890,16 +893,19 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Destination": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionDestination",
               "Filter": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionFilter",
               "Labels": "System.Collections.Generic.IList`1[System.String]",
+              "EventTtl": "System.Nullable`1[System.Int32]",
+              "MaxDeliveryAttempt": "System.Nullable`1[System.Int32]",
               "EventSubscriptionName": "System.String",
               "Id": "System.String",
               "Type": "System.String",
               "Topic": "System.String",
               "ProvisioningState": "System.String",
+              "DeadLetterEndpoint": "System.String",
               "Endpoint": "System.String"
             },
             "ElementType": null,
@@ -988,7 +994,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -1135,7 +1141,9 @@
           },
           "ValidateSet": [
             "webhook",
-            "eventhub"
+            "eventhub",
+            "storagequeue",
+            "hybridconnection"
           ],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
@@ -1183,7 +1191,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1222,6 +1230,60 @@
             "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": "System.String",
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "EventTtl",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": 1,
+          "ValidateRangeMax": 1440,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "MaxDeliveryAttempt",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": 1,
+          "ValidateRangeMax": 30,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DeadLetterEndpoint",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [],
             "Constructors": []
@@ -1357,7 +1419,9 @@
                 },
                 "ValidateSet": [
                   "webhook",
-                  "eventhub"
+                  "eventhub",
+                  "storagequeue",
+                  "hybridconnection"
                 ],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
@@ -1423,7 +1487,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1490,6 +1554,78 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "EventTtl",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 1440,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MaxDeliveryAttempt",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 30,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DeadLetterEndpoint",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzContext",
@@ -1530,7 +1666,7 @@
           ]
         },
         {
-          "Name": "EventSubscriptionInputObjectSet",
+          "Name": "EventSubscriptionCustomTopicInputObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1539,7 +1675,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
                   "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -1666,7 +1802,9 @@
                 },
                 "ValidateSet": [
                   "webhook",
-                  "eventhub"
+                  "eventhub",
+                  "storagequeue",
+                  "hybridconnection"
                 ],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
@@ -1732,7 +1870,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1794,6 +1932,78 @@
               },
               "Mandatory": false,
               "Position": 7,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EventTtl",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 1440,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MaxDeliveryAttempt",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 30,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DeadLetterEndpoint",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             },
@@ -1955,7 +2165,9 @@
                 },
                 "ValidateSet": [
                   "webhook",
-                  "eventhub"
+                  "eventhub",
+                  "storagequeue",
+                  "hybridconnection"
                 ],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
@@ -2021,7 +2233,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2083,6 +2295,78 @@
               },
               "Mandatory": false,
               "Position": 8,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EventTtl",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 1440,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MaxDeliveryAttempt",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 30,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DeadLetterEndpoint",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
             },
@@ -2220,7 +2504,9 @@
                 },
                 "ValidateSet": [
                   "webhook",
-                  "eventhub"
+                  "eventhub",
+                  "storagequeue",
+                  "hybridconnection"
                 ],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
@@ -2286,7 +2572,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2348,6 +2634,78 @@
               },
               "Mandatory": false,
               "Position": 7,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EventTtl",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 1440,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MaxDeliveryAttempt",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 30,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DeadLetterEndpoint",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
             },
@@ -2490,7 +2848,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -2610,7 +2968,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2715,7 +3073,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2774,7 +3132,7 @@
           ]
         },
         {
-          "Name": "EventSubscriptionInputObjectSet",
+          "Name": "EventSubscriptionCustomTopicInputObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2783,7 +3141,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
                   "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -2877,7 +3235,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3019,7 +3377,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3137,7 +3495,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3205,7 +3563,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3280,16 +3638,19 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Destination": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionDestination",
               "Filter": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionFilter",
               "Labels": "System.Collections.Generic.IList`1[System.String]",
+              "EventTtl": "System.Nullable`1[System.Int32]",
+              "MaxDeliveryAttempt": "System.Nullable`1[System.Int32]",
               "EventSubscriptionName": "System.String",
               "Id": "System.String",
               "Type": "System.String",
               "Topic": "System.String",
               "ProvisioningState": "System.String",
+              "DeadLetterEndpoint": "System.String",
               "Endpoint": "System.String"
             },
             "ElementType": null,
@@ -3378,16 +3739,19 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Destination": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionDestination",
               "Filter": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionFilter",
               "Labels": "System.Collections.Generic.IList`1[System.String]",
+              "EventTtl": "System.Nullable`1[System.Int32]",
+              "MaxDeliveryAttempt": "System.Nullable`1[System.Int32]",
               "EventSubscriptionName": "System.String",
               "Id": "System.String",
               "Type": "System.String",
               "Topic": "System.String",
               "ProvisioningState": "System.String",
+              "DeadLetterEndpoint": "System.String",
               "Endpoint": "System.String"
             },
             "ElementType": null,
@@ -3522,7 +3886,9 @@
           },
           "ValidateSet": [
             "webhook",
-            "eventhub"
+            "eventhub",
+            "storagequeue",
+            "hybridconnection"
           ],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
@@ -3609,6 +3975,60 @@
             "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": "System.String",
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "EventTtl",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": 1,
+          "ValidateRangeMax": 1440,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "MaxDeliveryAttempt",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": 1,
+          "ValidateRangeMax": 30,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DeadLetterEndpoint",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [],
             "Constructors": []
@@ -3720,7 +4140,9 @@
                 },
                 "ValidateSet": [
                   "webhook",
-                  "eventhub"
+                  "eventhub",
+                  "storagequeue",
+                  "hybridconnection"
                 ],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
@@ -3853,6 +4275,78 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "EventTtl",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 1440,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MaxDeliveryAttempt",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 30,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DeadLetterEndpoint",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzContext",
@@ -3893,7 +4387,7 @@
           ]
         },
         {
-          "Name": "EventSubscriptionInputObjectSet",
+          "Name": "EventSubscriptionCustomTopicInputObjectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3902,16 +4396,19 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
                   "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Destination": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionDestination",
                     "Filter": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionFilter",
                     "Labels": "System.Collections.Generic.IList`1[System.String]",
+                    "EventTtl": "System.Nullable`1[System.Int32]",
+                    "MaxDeliveryAttempt": "System.Nullable`1[System.Int32]",
                     "EventSubscriptionName": "System.String",
                     "Id": "System.String",
                     "Type": "System.String",
                     "Topic": "System.String",
                     "ProvisioningState": "System.String",
+                    "DeadLetterEndpoint": "System.String",
                     "Endpoint": "System.String"
                   },
                   "ElementType": null,
@@ -3996,7 +4493,9 @@
                 },
                 "ValidateSet": [
                   "webhook",
-                  "eventhub"
+                  "eventhub",
+                  "storagequeue",
+                  "hybridconnection"
                 ],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
@@ -4113,6 +4612,78 @@
                   "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EventTtl",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 1440,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MaxDeliveryAttempt",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 30,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DeadLetterEndpoint",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
                   "GenericTypeArguments": [],
                   "Methods": [],
                   "Constructors": []
@@ -4261,7 +4832,9 @@
                 },
                 "ValidateSet": [
                   "webhook",
-                  "eventhub"
+                  "eventhub",
+                  "storagequeue",
+                  "hybridconnection"
                 ],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
@@ -4378,6 +4951,78 @@
                   "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EventTtl",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 1440,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MaxDeliveryAttempt",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 30,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DeadLetterEndpoint",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
                   "GenericTypeArguments": [],
                   "Methods": [],
                   "Constructors": []
@@ -4502,7 +5147,9 @@
                 },
                 "ValidateSet": [
                   "webhook",
-                  "eventhub"
+                  "eventhub",
+                  "storagequeue",
+                  "hybridconnection"
                 ],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
@@ -4635,6 +5282,78 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "EventTtl",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 1440,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MaxDeliveryAttempt",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 30,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DeadLetterEndpoint",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzContext",
@@ -4735,7 +5454,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfoListInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfoListInstance, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfoListInstance, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EventTypes": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Management.EventGrid.Models.EventType]",
               "SupportedLocations": "System.Collections.Generic.IEnumerable`1[System.String]",
@@ -4811,7 +5530,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfo, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfo, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EventTypes": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Management.EventGrid.Models.EventType]",
               "SupportedLocations": "System.Collections.Generic.IEnumerable`1[System.String]",
@@ -4909,7 +5628,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4990,7 +5709,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5065,7 +5784,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -5126,7 +5845,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicListInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicListInstance, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicListInstance, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -5573,7 +6292,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.EventGrid.Models",
             "Name": "Microsoft.Azure.Management.EventGrid.Models.TopicSharedAccessKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.EventGrid.Models.TopicSharedAccessKeys, Microsoft.Azure.Management.EventGrid, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.EventGrid.Models.TopicSharedAccessKeys, Microsoft.Azure.Management.EventGrid, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Key1": "System.String",
               "Key2": "System.String"
@@ -5681,7 +6400,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -5898,7 +6617,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
                   "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -6131,7 +6850,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -6506,7 +7225,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.EventGrid.Models",
             "Name": "Microsoft.Azure.Management.EventGrid.Models.TopicSharedAccessKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.EventGrid.Models.TopicSharedAccessKeys, Microsoft.Azure.Management.EventGrid, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.EventGrid.Models.TopicSharedAccessKeys, Microsoft.Azure.Management.EventGrid, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Key1": "System.String",
               "Key2": "System.String"
@@ -6630,7 +7349,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -6893,7 +7612,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
                   "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -7227,7 +7946,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -7291,7 +8010,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7400,7 +8119,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7492,7 +8211,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7560,7 +8279,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
                   "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -7630,7 +8349,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7698,7 +8417,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7773,7 +8492,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -7896,7 +8615,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -8229,7 +8948,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
                   "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.PowerShell.Cmdlets.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -8549,7 +9268,7 @@
     "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionDestination": {
       "Namespace": "Microsoft.Azure.Management.EventGrid.Models",
       "Name": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionDestination",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionDestination, Microsoft.Azure.Management.EventGrid, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionDestination, Microsoft.Azure.Management.EventGrid, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -8601,7 +9320,7 @@
     "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionFilter": {
       "Namespace": "Microsoft.Azure.Management.EventGrid.Models",
       "Name": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionFilter",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionFilter, Microsoft.Azure.Management.EventGrid, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionFilter, Microsoft.Azure.Management.EventGrid, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IncludedEventTypes": "System.Collections.Generic.IList`1[System.String]",
         "IsSubjectCaseSensitive": "System.Nullable`1[System.Boolean]",
@@ -8687,6 +9406,18 @@
       "ElementType": null,
       "GenericTypeArguments": [
         "System.Boolean"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "System.Nullable`1[System.Int32]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Int32]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Int32"
       ],
       "Methods": [],
       "Constructors": []
@@ -8872,7 +9603,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Management.EventGrid.Models.EventType]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Management.EventGrid.Models.EventType]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Management.EventGrid.Models.EventType, Microsoft.Azure.Management.EventGrid, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Management.EventGrid.Models.EventType, Microsoft.Azure.Management.EventGrid, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -8884,7 +9615,7 @@
     "Microsoft.Azure.Management.EventGrid.Models.EventType": {
       "Namespace": "Microsoft.Azure.Management.EventGrid.Models",
       "Name": "Microsoft.Azure.Management.EventGrid.Models.EventType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.EventGrid.Models.EventType, Microsoft.Azure.Management.EventGrid, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.EventGrid.Models.EventType, Microsoft.Azure.Management.EventGrid, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DisplayName": "System.String",
         "Description": "System.String",

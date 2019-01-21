@@ -221,9 +221,7 @@ function Test-CortexDownloadConfig
 		$vpnSitesForConfig = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnSite[] 1
 		$vpnSitesForConfig[0] = $vpnSite
 		Get-AzureRmVirtualWanVpnConfiguration -VirtualWan $virtualWan -StorageSasUrl $blobSasUrl -VpnSite $vpnSitesForConfig
-	}
-	finally
-	{
+
 		$delete = Remove-AzureRmVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
 		Assert-AreEqual $True $delete
 
@@ -238,7 +236,9 @@ function Test-CortexDownloadConfig
 
 		$delete = Remove-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
 		Assert-AreEqual $True $delete
-
+	}
+	finally
+	{
 		Clean-ResourceGroup $rgname
 	}
 }
@@ -248,7 +248,7 @@ function Test-CortexExpressRouteCRUD
     # Setup
     $rgName = Get-ResourceName
     # ExpressRoute gateways have been enabled only in westcentralus region
-    $rglocation = "westcentralus"
+    $rglocation = Get-ProviderLocation "ResourceManagement" "westcentralus"
 
     $virtualWanName = Get-ResourceName
     $virtualHubName = Get-ResourceName
