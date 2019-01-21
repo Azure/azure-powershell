@@ -568,7 +568,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 	)
 
 	# Setup
-	$location = "westus2"
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "westus2"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName

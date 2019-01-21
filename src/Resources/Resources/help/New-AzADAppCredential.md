@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 98836BC0-AB4F-4F24-88BE-E7DD350B71E8
@@ -79,11 +79,11 @@ A new password credential is added to the existing appplication with object id '
 ### Example 2 - Create a new application credential using a certificate
 
 ```
-PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate 
-PS C:\> $cer.Import("C:\myapp.cer") 
-PS C:\> $binCert = $cer.GetRawCertData() 
+PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate
+PS C:\> $cer.Import("C:\myapp.cer")
+PS C:\> $binCert = $cer.GetRawCertData()
 PS C:\> $credValue = [System.Convert]::ToBase64String($binCert)
-PS C:\> New-AzADAppCredential -ApplicationId 4589cd6b-3d79-4bb4-93b8-a0b99f3bfc58 -CertValue $credValue -StartDate $cer.GetEffectiveDateString() -EndDate $cer.GetExpirationDateString()
+PS C:\> New-AzADAppCredential -ApplicationId 4589cd6b-3d79-4bb4-93b8-a0b99f3bfc58 -CertValue $credValue -StartDate $cer.NotBefore -EndDate $cer.NotAfter
 ```
 
 The supplied base64 encoded public X509 certificate ("myapp.cer") is added to the existing application with application id '4589cd6b-3d79-4bb4-93b8-a0b99f3bfc58'.
