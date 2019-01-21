@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Update incorrect online help URLs
+* Updated parameter description for LicenseType parameter with possible values
+* Fix for updating managed instance identity not working when it is the only updated property
 
 ## Version 1.0.1
 * Converted the Storage management client dependency to the common SDK implementation.
