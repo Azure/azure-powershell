@@ -32,6 +32,7 @@ function Test-CreateManagedInstance
   	$storageSizeInGB = 32
  	$vCore = 16
  	$skuName = "GP_Gen4"
+	$collation = "Serbian_Cyrillic_100_CS_AS"
 
  	try
  	{
@@ -42,7 +43,7 @@ function Test-CreateManagedInstance
  		# With SKU name specified
  		$job = New-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -AsJob
+  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -Collation $collation -AsJob
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
@@ -55,6 +56,7 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.LicenseType $licenseType
 		Assert-AreEqual $managedInstance1.VCores $vCore
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $storageSizeInGB
+		Assert-AreEqual $managedInstance1.Collation $collation
  		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
 
 		$edition = "GeneralPurpose"

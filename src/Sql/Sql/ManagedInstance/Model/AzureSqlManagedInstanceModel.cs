@@ -92,5 +92,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets the maximum storage size in GB.
         /// </summary>
         public int? StorageSizeInGB { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Managed Instance collation
+        /// </summary>
+        public string Collation { get; set; }
     }
 }
