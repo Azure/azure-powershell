@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.IO;
+
 namespace Microsoft.Azure.Commands.ServiceFabric.Common
 {
     public static class Constants
@@ -60,8 +62,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Common
         public const string SecCertificateThumbprint = "secCertificateThumbprint";
         public const string SecCertificateUrlValue = "secCertificateUrlValue";
 
-        public const string WindowsTemplateRelativePath = @"Template\Windows";
-        public const string LinuxTemplateRelativePath = @"Template\Linux";
+        public static readonly string WindowsTemplateRelativePath = Path.Combine("Template", "Windows");
+        public static readonly string LinuxTemplateRelativePath = Path.Combine("Template", "Linux");
         public const string ParameterFileName = @"parameter.json";
         public const string TemplateFileName = @"template.json";
 
