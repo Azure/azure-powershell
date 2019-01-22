@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
-        internal List<Task> CreateAddOrRemoveCertVMSSTasks(CertificateInformation certInformation, bool isClusterCert = true, bool addCert = true)
+        internal List<Task> CreateAddOrRemoveCertVMSSTasks(CertificateInformation certInformation, string clusterId, bool isClusterCert = true, bool addCert = true)
         {
             var allTasks = new List<Task>();
             var vmssPages = this.ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
@@ -454,81 +454,88 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     break;
                 }
 
-                if (addCert)
+                foreach (var vmss in vmssPages)
                 {
-                    foreach (var vmss in vmssPages)
+                    VirtualMachineScaleSetExtension sfExt;
+                    if (TryGetFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile.Extensions, out sfExt))
                     {
-                        if (isClusterCert)
+                        if (!string.Equals(GetClusterIdFromExtension(sfExt), clusterId, StringComparison.OrdinalIgnoreCase))
                         {
-                            var ext = FindFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile.Extensions);
-
-                            var extConfig = (JObject)ext.Settings;
-
-                            if (this.CertificateCommonName != null)
-                            {
-                                JArray newCommonNames = (JArray)extConfig.SelectToken("certificate.commonNames");
-                                newCommonNames.Add(this.CertificateCommonName);
-
-                                extConfig["certificate"]["commonNames"] = newCommonNames;
-                            }
-                            else
-                            {
-                                var input = string.Format(
-                                    @"{{""thumbprint"":""{0}"",""x509StoreName"":""{1}""}}",
-                                    certInformation.CertificateThumbprint,
-                                    Constants.DefaultCertificateStore);
-
-                                extConfig["certificateSecondary"] = JObject.Parse(input);
-                            }
-
-                            vmss.VirtualMachineProfile.ExtensionProfile.Extensions.Single(
-                                extension =>
-                                extension.Name.Equals(ext.Name, StringComparison.OrdinalIgnoreCase)).Settings = extConfig;
+                            continue;
                         }
 
-                        allTasks.Add(AddCertToVmssTask(vmss, certInformation));
-                    }
-                }
-                else
-                {
-                    foreach (var vmss in vmssPages)
-                    {
-                        if (isClusterCert)
+                        WriteVerboseWithTimestamp(string.Format("Found VMSS: {0}, id: {1} for cluster {2}", vmss.Name, vmss.Id, clusterId));
+
+                        var extConfig = (JObject)sfExt.Settings;
+
+                        if (addCert)
                         {
-                            var ext = FindFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile.Extensions);
-
-                            var extConfig = (JObject)ext.Settings;
-
-                            if (this.CertificateCommonName != null)
+                            if (isClusterCert)
                             {
-                                JArray commonNames = (JArray)extConfig.SelectToken("certificate.commonNames");
-                                var commonNameToRemove = commonNames.FirstOrDefault(commonName => (string)commonName == this.CertificateCommonName);
-                                if (commonNameToRemove != null)
+                                if (this.CertificateCommonName != null)
                                 {
-                                    commonNames.Remove(commonNameToRemove);
+                                    JArray newCommonNames = (JArray)extConfig.SelectToken("certificate.commonNames");
+                                    newCommonNames.Add(this.CertificateCommonName);
+
+                                    extConfig["certificate"]["commonNames"] = newCommonNames;
                                 }
-                            }
-                            else
-                            {
-                                string secondaryThumbprint = (string)extConfig["certificateSecondary"]["thumbprint"];
-                                if (certInformation.CertificateThumbprint.Equals(secondaryThumbprint, StringComparison.OrdinalIgnoreCase))
+                                else
                                 {
-                                    extConfig.Remove("certificateSecondary");
+                                    var input = string.Format(
+                                        @"{{""thumbprint"":""{0}"",""x509StoreName"":""{1}""}}",
+                                        certInformation.CertificateThumbprint,
+                                        Constants.DefaultCertificateStore);
+
+                                    extConfig["certificateSecondary"] = JObject.Parse(input);
                                 }
+
+                                vmss.VirtualMachineProfile.ExtensionProfile.Extensions.Single(
+                                    extension =>
+                                    extension.Name.Equals(sfExt.Name, StringComparison.OrdinalIgnoreCase)).Settings = extConfig;
                             }
 
-                            vmss.VirtualMachineProfile.ExtensionProfile.Extensions.Single(
-                                extension =>
-                                extension.Name.Equals(ext.Name, StringComparison.OrdinalIgnoreCase)).Settings = extConfig;
+                            allTasks.Add(AddCertToVmssTask(vmss, certInformation));
                         }
+                        else
+                        {
+                            if (isClusterCert)
+                            {
+                                if (this.CertificateCommonName != null)
+                                {
+                                    JArray commonNames = (JArray)extConfig.SelectToken("certificate.commonNames");
+                                    var commonNameToRemove = commonNames.FirstOrDefault(commonName => (string)commonName == this.CertificateCommonName);
+                                    if (commonNameToRemove != null)
+                                    {
+                                        commonNames.Remove(commonNameToRemove);
+                                    }
+                                }
+                                else
+                                {
+                                    string secondaryThumbprint = (string)extConfig["certificateSecondary"]["thumbprint"];
+                                    if (certInformation.CertificateThumbprint.Equals(secondaryThumbprint, StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        extConfig.Remove("certificateSecondary");
+                                    }
+                                }
 
-                        allTasks.Add(RemoveCertFromVmssTask(vmss, certInformation));
+                                vmss.VirtualMachineProfile.ExtensionProfile.Extensions.Single(
+                                    extension =>
+                                    extension.Name.Equals(sfExt.Name, StringComparison.OrdinalIgnoreCase)).Settings = extConfig;
+                            }
+
+                            allTasks.Add(RemoveCertFromVmssTask(vmss, certInformation));
+                        }
                     }
                 }
 
 
             } while (!string.IsNullOrEmpty(vmssPages.NextPageLink) &&
                      (vmssPages = this.ComputeClient.VirtualMachineScaleSets.ListNext(vmssPages.NextPageLink)) != null);
+
+            if (allTasks.Count() == 0)
+            {
+                throw new ItemNotFoundException(string.Format(ServiceFabricProperties.Resources.NoVmssFoundForCluster, this.ResourceGroupName, clusterId));
+            }
 
             return allTasks;
         }

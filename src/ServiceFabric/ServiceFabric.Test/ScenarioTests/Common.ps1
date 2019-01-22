@@ -80,13 +80,13 @@ function Get-Thumbprint
 function Get-CertAppSecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/5ce6654cdfbf4facbe2b81eea93fca57"
+    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/722cb6a2fd80461d8c60f2fc6107346e"
 }
 
 function Get-CertAppThumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "4851738337450E4DAEFB95DFED44DD78B512ACBF"
+    return "07F8E7F9A90CB655FED09548969A97C8CF6BDFAC"
 }
 
 function Get-CACertCommonName
@@ -106,7 +106,7 @@ function Get-CACertSecretUrl
 
 function Get-CertWUSecretUrl
 {
-	return "https://azurermsfkvtestwu.vault.azure.net:443/secrets/AzureRMSFTestCertWU/cadfa47ee2354f3ab59e11038c18dff5"
+	return "https://azurermsfkvtestwu.vault.azure.net:443/secrets/AzureRMSFTestCertWU/7d400ad07f874c08b6325338bc44be39"
 }
 
 function Get-DurabilityLevel

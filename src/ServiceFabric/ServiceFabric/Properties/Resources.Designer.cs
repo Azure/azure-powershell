@@ -547,6 +547,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No VMSS was found under resource group: {0} with service fabric extension and cluster id: {1}..
+        /// </summary>
+        internal static string NoVmssFoundForCluster {
+            get {
+                return ResourceManager.GetString("NoVmssFoundForCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Did not find any Virtual Machine Scale Set in resource group {0}..
         /// </summary>
         internal static string NoVMSSFoundInRG {
@@ -579,6 +588,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         internal static string ResourceGroupNotFound {
             get {
                 return ResourceManager.GetString("ResourceGroupNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service Fabric Extension no found in vmss name: {0} id: {1}..
+        /// </summary>
+        internal static string SFExtensionNotFoundInVMSS {
+            get {
+                return ResourceManager.GetString("SFExtensionNotFoundInVMSS", resourceCulture);
             }
         }
         

@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
+            var clusterResource = GetCurrentCluster();
             var certInformations = base.GetOrCreateCertificateInformation();
 
             var certInformation = certInformations[0];
 
             if (ShouldProcess(target: this.Name, action: string.Format("Add application certificate")))
             {
-                var addTasks = CreateAddOrRemoveCertVMSSTasks(certInformation, false);
+                var addTasks = CreateAddOrRemoveCertVMSSTasks(certInformation, clusterResource.ClusterId, false);
 
                 try
                 {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 catch (AggregateException)
                 {
                     WriteWarning("Exception while performing operation. Rollingback...");
-                    var removeTasks = CreateAddOrRemoveCertVMSSTasks(certInformation, false, false);
+                    var removeTasks = CreateAddOrRemoveCertVMSSTasks(certInformation, clusterResource.ClusterId, false, false);
                     WriteClusterAndVmssVerboseWhenUpdate(removeTasks, false);
                     WriteWarning("Operation rolled back, the certificate was removed from VMSS model.");
                     throw;

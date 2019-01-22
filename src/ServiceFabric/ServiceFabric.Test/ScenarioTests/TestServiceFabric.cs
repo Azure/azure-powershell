@@ -12,7 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.IO;
 using Microsoft.Azure.Commands.ServiceFabric.Commands;
+using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -40,7 +43,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             ServiceFabricCmdletBase.TestThumbprint = "EC8CA0BBC391A08860115619701E2B858FF44C72";
             ServiceFabricCmdletBase.TestCommonNameCACert = "azurermsfcntest.southcentralus.cloudapp.azure.com";
             ServiceFabricCmdletBase.TestCommonNameAppCert = "AzureRMSFTestCertApp";
-            ServiceFabricCmdletBase.TestThumbprintAppCert = "4851738337450E4DAEFB95DFED44DD78B512ACBF";
+            ServiceFabricCmdletBase.TestThumbprintAppCert = "07F8E7F9A90CB655FED09548969A97C8CF6BDFAC";
             ServiceFabricCmdletBase.TestAppCert = false;
         }
 
@@ -178,6 +181,25 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         {
             ServiceFabricCmdletBase.TestAppCert = true;
             TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricApplicationCertificateRollback");
+        }
+
+        [Fact, TestPriority(0)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DefaultTemplateFilesAvailable()
+        {
+            var assemblyFolder = AppDomain.CurrentDomain.BaseDirectory;
+
+            string windowsTemplateDirectory = Path.Combine(assemblyFolder, Constants.WindowsTemplateRelativePath);
+            var templateFilePath = Path.Combine(windowsTemplateDirectory, Constants.TemplateFileName);
+            var parameterFilePath = Path.Combine(windowsTemplateDirectory, Constants.ParameterFileName);
+            Assert.True(File.Exists(templateFilePath), string.Format("file not found: {0}", templateFilePath));
+            Assert.True(File.Exists(parameterFilePath), string.Format("file not found: {0}", parameterFilePath));
+
+            string linuxTemplateDirectory = Path.Combine(assemblyFolder, Constants.LinuxTemplateRelativePath);
+            templateFilePath = Path.Combine(linuxTemplateDirectory, Constants.TemplateFileName);
+            parameterFilePath = Path.Combine(linuxTemplateDirectory, Constants.ParameterFileName);
+            Assert.True(File.Exists(templateFilePath), string.Format("file not found: {0}", templateFilePath));
+            Assert.True(File.Exists(parameterFilePath), string.Format("file not found: {0}", parameterFilePath));
         }
     }
 }
