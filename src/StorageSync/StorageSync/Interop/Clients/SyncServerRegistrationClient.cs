@@ -173,8 +173,6 @@ namespace Commands.StorageSync.Interop.Clients
             // Get OS version using Win32_OperatingSystem WMI object
             try
             {
-
-#if !NETSTANDARD
                 var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem");
                 ManagementObject info = searcher.Get().Cast<ManagementObject>().FirstOrDefault();
 
@@ -189,10 +187,6 @@ namespace Commands.StorageSync.Interop.Clients
                 // we expect the version format to be something like 10.0.14943.0
                 // In order to construct this, we need to combine the version output with the service pack major version.
                 osVersion = $"{version}.{servicePackMajorVersion}";
-#else
-                throw new InvalidOperationException("Cannot retrieve OS version");
-#endif
-
             }
             catch (Exception)
             {
