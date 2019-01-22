@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
 
         public static void EnsureAvailabilityOrThrow(AppAvailabilityInfo availabilityInfo)
         {
-            if (!availabilityInfo.NameAvailable)
+            if (availabilityInfo.NameAvailable != true)
             {
                 throw new PSArgumentException(availabilityInfo.Message);
             }
