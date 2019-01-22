@@ -1347,8 +1347,6 @@ function Test-PublishAzureWebAppFromZip
 	finally
 	{
 		# Cleanup
-		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Force
-		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
 	}
 }
@@ -1379,8 +1377,6 @@ function Test-PublishAzureWebAppFromWar
 	finally
 	{
 		# Cleanup
-		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Force
-		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
 	}
 }
