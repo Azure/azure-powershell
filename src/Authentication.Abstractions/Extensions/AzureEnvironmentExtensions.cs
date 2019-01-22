@@ -274,7 +274,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     case AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix:
                         environment.SetProperty(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix, propertyValue);
                         break;
-
+                    case AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId:
+                        environment.SetProperty(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId, propertyValue);
+                        break;
                 }
             }
         }
@@ -305,6 +307,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 case AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint:
                 case AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId:
                     resource = AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId;
+                    break;
+                case AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix:
+                case AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId:
+                    resource = AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId;
                     break;
                 default:
                     resource = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
