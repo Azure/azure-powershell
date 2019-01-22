@@ -275,6 +275,21 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix, value);
             }
         }
+        
+        /// <summary>
+        /// Gets or sets the resource Id to use for contacting the analysis services endpoint
+        /// </summary>
+        public string AnalysisServicesEndpointResourceId
+        {
+            get
+            {
+                return this.GetEndpointSuffix(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId, value);
+            }
+        }
 
         public IList<string> VersionProfiles { get; } = new List<string>();
 
