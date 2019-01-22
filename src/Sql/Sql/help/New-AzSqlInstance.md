@@ -123,7 +123,9 @@ Accept wildcard characters: False
 ```
 
 ### -Collation
-The collation of the Azure SQL Managed Instance to use.```yaml
+The collation of the Azure SQL Managed Instance to use.
+
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
