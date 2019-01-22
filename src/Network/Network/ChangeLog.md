@@ -25,6 +25,7 @@
         - New-AzApplicationGatewayIdentity
         - Remove-AzApplicationGatewayIdentity
     - New-AzApplicationGateway cmdlet updated with optional parameter -Identity
+* Update incorrect online help URLs
 
 ## Version 1.0.0
 * General availability of `Az.Network` module

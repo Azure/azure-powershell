@@ -224,7 +224,7 @@ namespace VersionController.Models
             File.Copy(outputModuleManifestPath, tempModuleManifestPath);
             var script = "$releaseNotes = @();";
             releaseNotes.ForEach(l => script += "$releaseNotes += \"" + l + "\";");
-            script += $"$env:PSModulePath+=\";{_fileHelper.OutputResourceManagerDirectory};";
+            script += $"$env:PSModulePath+=\";{_fileHelper.OutputResourceManagerDirectory}\";";
             script += "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;";
             script += "Update-ModuleManifest -Path " + tempModuleManifestPath + " -ModuleVersion " + _newVersion + " -ReleaseNotes $releaseNotes";
             using (PowerShell powershell = PowerShell.Create())
