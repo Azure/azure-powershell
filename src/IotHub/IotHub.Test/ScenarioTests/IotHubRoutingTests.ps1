@@ -23,6 +23,15 @@ Test all iothub routing cmdlets
 #>
 function Test-AzureRmIotHubRoutingLifecycle
 {
+	##############################################################
+	# Set these to the proper azure storage account information.
+	$auzreStorageResourceGroupName = 'pshardcodedrg1234'
+	$auzreStorageSubscriptionId = '91d12660-3dec-467a-be2a-213b5544ddc0'
+	$ascConnectionString = 'DefaultEndpointsProtocol=https;AccountName=pshardcodedstorage1234;AccountKey=W1ujKNLtPmMtaNqZfOCUU5cnYMI8bQeF9ODce4riISyT2RSXiIxcwuwQhzCmIuwPWi82ParLfbq1bOF5ypUnPw==;EndpointSuffix=core.windows.net'
+	$containerName1 = 'container1'
+	$containerName2 = 'container2'
+	##############################################################
+
 	$Location = Get-Location "Microsoft.Devices" "IotHub" 
 	$IotHubName = getAssetName
 	$ResourceGroupName = getAssetName
@@ -30,9 +39,12 @@ function Test-AzureRmIotHubRoutingLifecycle
 	$eventHubName = getAssetName
 	$authRuleName = getAssetName
 	$endpointName = getAssetName
+	$endpointName1 = getAssetName
+	$endpointName2 = getAssetName
 	$routeName = getAssetName
 	$Sku = "S1"
 	$EndpointTypeEventHub = [Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType] "EventHub"
+	$EndpointTypeAzureStorage = [Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType] "AzureStorageContainer"
 	$RoutingSourceTwinChangeEvents = [Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource] "TwinChangeEvents"
 	$RoutingSourceDeviceMessages = [Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource] "DeviceMessages"
 
@@ -71,6 +83,36 @@ function Test-AzureRmIotHubRoutingLifecycle
 	Assert-True { $newRoutingEndpoint.SubscriptionId -eq $eventHubSubscriptionId}
 	Assert-True { $newRoutingEndpoint.Name -eq $endpointName}
 
+	# Add azure storage endpoint with encoding format "json"
+	$newRoutingEndpoint1 = Add-AzureRmIotHubRoutingEndpoint -ResourceGroupName $ResourceGroupName -Name $IotHubName -EndpointName $endpointName1 -EndpointType $EndpointTypeAzureStorage -EndpointResourceGroup $auzreStorageResourceGroupName -EndpointSubscriptionId $auzreStorageSubscriptionId -ConnectionString $ascConnectionString -ContainerName $containerName1 -Encoding json
+	Assert-True { $newRoutingEndpoint1.Name -eq $endpointName1}
+	Assert-True { $newRoutingEndpoint1.ResourceGroup -eq $auzreStorageResourceGroupName}
+	Assert-True { $newRoutingEndpoint1.SubscriptionId -eq $auzreStorageSubscriptionId}
+	Assert-True { $newRoutingEndpoint1.Encoding -eq "json"}
+
+	# Add azure storage endpoint with default encoding format
+	$newRoutingEndpoint2 = Add-AzureRmIotHubRoutingEndpoint -ResourceGroupName $ResourceGroupName -Name $IotHubName -EndpointName $endpointName2 -EndpointType $EndpointTypeAzureStorage -EndpointResourceGroup $auzreStorageResourceGroupName -EndpointSubscriptionId $auzreStorageSubscriptionId -ConnectionString $ascConnectionString -ContainerName $containerName2
+	Assert-True { $newRoutingEndpoint2.Name -eq $endpointName2}
+	Assert-True { $newRoutingEndpoint2.ResourceGroup -eq $auzreStorageResourceGroupName}
+	Assert-True { $newRoutingEndpoint2.SubscriptionId -eq $auzreStorageSubscriptionId}
+	Assert-True { $newRoutingEndpoint2.Encoding -eq "avro"}
+
+	# Get all routing endpoints
+	$updatedRoutingEndpoints = Get-AzureRmIotHubRoutingEndpoint -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	Assert-True { $updatedRoutingEndpoints.Count -eq 3}
+	Assert-True { $updatedRoutingEndpoints[0].Name -eq $endpointName}
+	Assert-True { $updatedRoutingEndpoints[0].EndpointType -eq $EndpointTypeEventHub}
+	Assert-True { $updatedRoutingEndpoints[1].Name -eq $endpointName1}
+	Assert-True { $updatedRoutingEndpoints[1].EndpointType -eq $EndpointTypeAzureStorage}
+	Assert-True { $updatedRoutingEndpoints[2].Name -eq $endpointName2}
+	Assert-True { $updatedRoutingEndpoints[2].EndpointType -eq $EndpointTypeAzureStorage}
+
+	# Delete routing endpoints
+	$result = Remove-AzureRmIotHubRoutingEndpoint -ResourceGroupName $ResourceGroupName -Name $IotHubName -EndpointName $endpointName1 -Passthru
+	Assert-True { $result }
+	$result = Remove-AzureRmIotHubRoutingEndpoint -ResourceGroupName $ResourceGroupName -Name $IotHubName -EndpointName $endpointName2 -Passthru
+	Assert-True { $result }
+
 	# Get all routing endpoints
 	$updatedRoutingEndpoints = Get-AzIotHubRoutingEndpoint -ResourceGroupName $ResourceGroupName -Name $IotHubName
 	Assert-True { $updatedRoutingEndpoints.Count -eq 1}
@@ -80,7 +122,7 @@ function Test-AzureRmIotHubRoutingLifecycle
 
 	# Get all routes
 	$routes = Get-AzIotHubRoute -ResourceGroupName $ResourceGroupName -Name $IotHubName
-	Assert-True { $routingEndpoints.Count -eq 0}
+	Assert-True { $routes.Count -eq 0}
 
 	# Add new route
 	$newRoute = Add-AzIotHubRoute -ResourceGroupName $ResourceGroupName -Name $IotHubName -RouteName $routeName -Source $RoutingSourceDeviceMessages -EndpointName $endpointName
