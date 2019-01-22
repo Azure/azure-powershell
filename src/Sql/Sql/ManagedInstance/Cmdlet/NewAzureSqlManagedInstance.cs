@@ -140,6 +140,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string ComputeGeneration { get; set; }
 
         /// <summary>
+        /// Gets or sets the instance collation
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The collation of the Azure SQL Managed Instance to use.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("SQL_Latin1_General_CP1_CI_AS", "Latin1_General_100_CS_AS_SC")]
+        public string Collation { get; set; }
+
+        /// <summary>
         /// Gets or sets the tags to associate with the instance
         /// </summary>
         [Parameter(Mandatory = false,
@@ -229,7 +238,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 StorageSizeInGB = this.StorageSizeInGB,
                 SubnetId = this.SubnetId,
                 VCores = this.VCore,
-                Sku = Sku
+                Sku = Sku,
+                Collation = this.Collation
             });
             return newEntity;
         }
