@@ -312,4 +312,10 @@
   <data name="VmssVerbose" xml:space="preserve">
     <value>Virtual machine scale set {0} state is {1}.</value>
   </data>
+  <data name="NoVmssFoundForCluster" xml:space="preserve">
+    <value>No VMSS was found under resource group: {0} with service fabric extension and cluster id: {1}.</value>
+  </data>
+  <data name="SFExtensionNotFoundInVMSS" xml:space="preserve">
+    <value>Service Fabric Extension no found in vmss name: {0} id: {1}.</value>
+  </data>
 </root>

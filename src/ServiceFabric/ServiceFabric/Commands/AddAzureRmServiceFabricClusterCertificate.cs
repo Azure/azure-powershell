@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         certInformation.CertificateCommonName));
                 }
 
-                var addTasks = CreateAddOrRemoveCertVMSSTasks(certInformation, true);
+                var addTasks = CreateAddOrRemoveCertVMSSTasks(certInformation, clusterResource.ClusterId, true);
 
                 try
                 {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 catch (AggregateException)
                 {
                     WriteWarning("Exception while performing operation. Rollingback...");
-                    var removeTasks = CreateAddOrRemoveCertVMSSTasks(certInformation, true, false);
+                    var removeTasks = CreateAddOrRemoveCertVMSSTasks(certInformation, clusterResource.ClusterId, true, false);
                     WriteClusterAndVmssVerboseWhenUpdate(removeTasks, false);
                     WriteWarning("Operation rolled back, the certificate was removed from VMSS model.");
                     throw;
