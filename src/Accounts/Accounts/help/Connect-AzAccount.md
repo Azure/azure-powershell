@@ -85,6 +85,7 @@ If multi-factor authentication is enabled for your credentials, you must log in 
 ### Example 2: (Windows PowerShell 5.1 only) Connect to an Azure account using organizational ID credentials
 ```powershell
 PS C:\> $Credential = Get-Credential
+PS C:\> Connect-AzAccount -Credential $Credential
 
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
@@ -99,8 +100,8 @@ You cannot use multi-factor authentication or Microsoft account credentials to r
 ### Example 3: Connect to an Azure service principal account
 ```powershell
 PS C:\> $Credential = Get-Credential
-
 PS C:\> Connect-AzAccount -Credential $Credential -Tenant "xxxx-xxxx-xxxx-xxxx" -ServicePrincipal
+
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
 xxxx-xxxx-xxxx-xxxx    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
