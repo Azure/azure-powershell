@@ -1,5 +1,5 @@
 ﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Management.Storage.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 006B4341-274C-4929-86EE-2E107BA9E485
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azstorageaccount

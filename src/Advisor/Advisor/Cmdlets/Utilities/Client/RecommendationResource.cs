@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities.Client
     using Microsoft.Azure.Management.Advisor;
     using Microsoft.Azure.Management.Advisor.Models;
     using Microsoft.Rest.Azure;
-    
+
     /// <summary>
     /// Recommendation Client utility class.
     /// </summary>
@@ -56,6 +56,41 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities.Client
 
             // Convert to PsAzureAdvisorResourceRecommendationBase list and return 
             return PsAzureAdvisorResourceRecommendationBase.GetFromResourceRecommendationBase(entirePageLinkRecommendationData);
+        }
+
+        /// <summary>
+        /// Gets the list of recommendations associated with the given resourceId. Default subscriptionId will be used to gather recommendation(s).
+        /// </summary>
+        /// <param name="advisorClient">Advisor Client</param>
+        /// <param name="resourceId">ResourceId of recommendations</param>
+        /// <returns>List of PsAzureAdvisorResourceRecommendationBase</returns>
+        public List<PsAzureAdvisorResourceRecommendationBase> GetAllRecommendationsFromClient(IAdvisorManagementClient advisorClient, string resourceId)
+        {
+            AzureOperationResponse<IPage<ResourceRecommendationBase>> operationResponseRecommendation = null;
+            List<ResourceRecommendationBase> entirePageLinkRecommendationData = new List<ResourceRecommendationBase>();
+            string nextPageLink = string.Empty;
+
+            do
+            {
+                if (string.IsNullOrEmpty(nextPageLink))
+                {
+                    operationResponseRecommendation = advisorClient.Recommendations.ListWithHttpMessagesAsync().Result;
+                }
+                else
+                {
+                    operationResponseRecommendation = advisorClient.Recommendations.ListNextWithHttpMessagesAsync(nextPageLink).Result;
+                }
+                nextPageLink = operationResponseRecommendation.Body.NextPageLink;
+
+                // Add current page items to the List 
+                entirePageLinkRecommendationData.AddRange(operationResponseRecommendation.Body.ToList());
+            }
+            while (!string.IsNullOrEmpty(nextPageLink));
+
+            // Convert to PsAzureAdvisorResourceRecommendationBase list and return 
+            return RecommendationHelper.RecommendationFilterByResourceId(
+                PsAzureAdvisorResourceRecommendationBase.GetFromResourceRecommendationBase(entirePageLinkRecommendationData),
+                resourceId);
         }
     }
 }

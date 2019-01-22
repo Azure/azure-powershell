@@ -1037,6 +1037,10 @@
     {
       "file": "\\src\\Relay\\Relay.Test\\ScenarioTests\\RelayAuthorizationRulesTests.ps1",
       "_justification": "Test resource is deleted"
+    },
+	  {
+      "file": "\\src\\IotHub\\IotHub.Test\\ScenarioTests\\IotHubRoutingTests.ps1",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     }
   ]
 }
