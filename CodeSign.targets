@@ -19,7 +19,9 @@
     <Message Text="----> Dlls signing section" Importance="high"/>
     <!-- Azure -->
     <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
-      <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*PowerShell*Cmdlets*.dll" />
+      <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*PowerShell*Cmdlets*.dll;
+        $(PackageDirectory)\$(Configuration)\Az.Accounts\Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll;
+        $(PackageDirectory)\$(Configuration)\Az.Accounts\Microsoft.Azure.PowerShell.Authentication.dll" />
     </ItemGroup>
 
     <Message Importance="high" Text="$(PackageDirectory)\$(Configuration) does not contains any files to sign. Code sign will skip." Condition="'@(DelaySignedAssembliesToSign)' == ''" />

@@ -11,4 +11,8 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName).Dataplane</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Accounts\Authentication\Authentication.csproj" />
+  </ItemGroup>
+
 </Project>
