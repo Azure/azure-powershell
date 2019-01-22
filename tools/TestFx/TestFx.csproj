@@ -14,8 +14,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
-    <ProjectReference Include="..\..\src\Accounts\Authentication\Authentication.csproj" />
-    <ProjectReference Include="..\..\src\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
+    <ProjectReference Include="$(RepoSrc)Accounts\Authentication\Authentication.csproj" />
+    <ProjectReference Include="$(RepoSrc)Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
   </ItemGroup>
 
   <ItemGroup>
