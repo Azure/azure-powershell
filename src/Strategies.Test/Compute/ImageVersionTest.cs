@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies.Compute;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest.Compute
@@ -21,7 +20,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest.Compute
     public class ImageVersionTest
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CompareToTest()
         {
             var a = ImageVersion.Parse("1.23.456");

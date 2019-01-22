@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
-    <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
   </ItemGroup>
 
   <ItemGroup>
