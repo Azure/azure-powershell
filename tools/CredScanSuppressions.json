@@ -1017,6 +1017,10 @@
       "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch\\help\\New-AzBatchTask.md",
       "hash": "9DiQS2GhPQXk8u3D2jadP/YcW2ZysE6slHg0yDqxByg=",
       "_justification": "Markdown example and not a real credential"
-    }
+    },
+	{
+      "file": "\\src\\IotHub\\IotHub.Test\\ScenarioTests\\IotHubRoutingTests.ps1",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
   ]
 }
