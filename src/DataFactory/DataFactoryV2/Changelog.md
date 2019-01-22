@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated ADF .Net SDK version to 3.0.0
 
 ## Version 1.0.0
 * General availability of `Az.DataFactory` module
