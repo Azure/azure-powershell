@@ -88,11 +88,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
                     if (r.StatusCode == HttpStatusCode.Accepted && numChecks >= NumStatusChecks)
                     {
-                        WriteWarning("Maximum status polling time exceeded. Deployment is still in progress.");
+                        var rec = new ErrorRecord(new Exception("Maximum status polling time exceeded. Deployment is still in progress."), string.Empty, ErrorCategory.OperationTimeout, null);
+                        WriteError(rec);
                     }
                     else if (r.StatusCode != HttpStatusCode.OK)
                     {
-                        WriteWarning("Deployment failed with status code=" + r.StatusCode + " reason=" + r.ReasonPhrase);
+                        var rec = new ErrorRecord(new Exception("Deployment failed with status code " + r.StatusCode), string.Empty, ErrorCategory.InvalidResult, null);
+                        WriteError(rec);
                     }
                 }
             };
