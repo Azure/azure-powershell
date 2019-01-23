@@ -48,3 +48,4 @@
         - New-AzApplicationGatewaySslCertificate
         - Set-AzApplicationGatewaySslCertificate
     - New-AzApplicationGateway cmdlet updated with optional parameter -UserAssignedIdentityId, -UserAssignedIdentity
+* Add MaxCapacity property in ApplicationGatewayAutoscaleConfiguration
