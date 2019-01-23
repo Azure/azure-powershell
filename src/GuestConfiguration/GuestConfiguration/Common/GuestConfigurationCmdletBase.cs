@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                 var message = string.IsNullOrEmpty(this._initiativeId) ?
                 string.Format(Resources.InitiativeWithThisNameNotFound, initiativeName) :
                 string.Format(Resources.InitiativeWithThisIdNotFound, this._initiativeId);
-                throw new ErrorResponseException(message);
+                throw new GuestConfigurationErrorResponseException(message);
             }
 
             var category = GetPolicySetCategory(policySetDefinition);
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                 var message = string.IsNullOrEmpty(this._initiativeId) ?
                     string.Format(Resources.InitiativeWithThisNameNotOfCategoryGuestConfiguration, initiativeName) :
                     string.Format(Resources.InitiativeWithThisIdNotOfCategoryGuestConfiguration, this._initiativeId);
-                throw new ErrorResponseException(message);
+                throw new GuestConfigurationErrorResponseException(message);
             }
 
             // Get policy definitions in initiative
@@ -194,22 +194,42 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
 
                 var policyRuleThen = JObject.Parse(policyRuleDictionary["then"].ToString());
                 var policyRuleThenDictionary = policyRuleThen.ToObject<Dictionary<string, object>>();
+
                 var effectType = policyRuleThenDictionary["effect"].ToString();
+                var effectTypeLower = effectType.ToLower();
 
-                if (Constants.AuditIfNotExists.ToLower() != effectType.ToLower())
+                if (Constants.AuditIfNotExists != effectTypeLower && Constants.Audit != effectTypeLower)
                 {
                     continue;
                 }
 
-                var policyRuleThenDetails = JObject.Parse(policyRuleThenDictionary["details"].ToString());
-                var policyRuleDetailsDictionary = policyRuleThenDetails.ToObject<Dictionary<string, object>>();
-
-                if(Constants.GuestConfigurationRPType.ToLower() != policyRuleDetailsDictionary["type"].ToString().ToLower())
+                var policyMetadata = JObject.Parse(policyDef.Metadata.ToString());
+                var policyMetadataDictionary = policyMetadata.ToObject<Dictionary<string, object>>();
+                var policyCategory = policyMetadataDictionary["category"].ToString().ToLower();
+                if (Constants.GuestConfigurationCategory != policyCategory)
                 {
                     continue;
                 }
 
-                var guestConfigurationAssignmentNameInPolicy = policyRuleDetailsDictionary["name"].ToString();
+                string guestConfigurationAssignmentNameInPolicy = null;
+
+                if (Constants.AuditIfNotExists == effectTypeLower)
+                {
+                    var policyRuleThenDetails = JObject.Parse(policyRuleThenDictionary["details"].ToString());
+                    var policyRuleDetailsDictionary = policyRuleThenDetails.ToObject<Dictionary<string, object>>();
+                    guestConfigurationAssignmentNameInPolicy = policyRuleDetailsDictionary["name"].ToString();
+                }
+                else if (Constants.Audit == effectTypeLower)
+                {
+                    var policyRuleIf = JObject.Parse(policyRuleDictionary["if"].ToString());
+                    var policyRuleIfDictionary = policyRuleIf.ToObject<Dictionary<string, object>>();
+                    var policyRuleIfAllOf = policyRuleIfDictionary["allOf"];
+                    var policyRuleIfAllOfJArray = JArray.FromObject(policyRuleIfAllOf);
+                    var guestConfigurationAssignmentNameInPolicyArray = policyRuleIfAllOfJArray.Single(
+                         x => x.Value<string>("field") == "name"
+                    );
+                    guestConfigurationAssignmentNameInPolicy = guestConfigurationAssignmentNameInPolicyArray.Value<string>("equals");
+                }
 
                 if (!string.IsNullOrEmpty(guestConfigurationAssignmentNameInPolicy) && gcrp_AssignmentName_Assignment_Map.ContainsKey(guestConfigurationAssignmentNameInPolicy))
                 {
