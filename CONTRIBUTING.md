@@ -108,7 +108,7 @@ For more information on cleaning up the commits in a pull request, such as how t
 
 Any changes that are made must be reflected in the respecitve service's change log under the `Upcoming Release` header. This change log will allow customers to easily track what has been changed between releases of a service.
 
-For ARM service projects, the change log is located at `src/ResourceManager/{{service}}/Commands.{{service}}/ChangeLog.md`.
+For ARM service projects, the change log is located at `src/{{service}}/{{service}}/ChangeLog.md`.
 
 #### Breaking Changes
 
