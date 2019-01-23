@@ -3507,7 +3507,7 @@ function Test-VirtualMachineReimage
         $vm_output = $vm | Out-String;
         Write-Verbose($vm_output);
 
-        Invoke-AzureRmVMReimage -ResourceGroupName $rgname -Name $vmname -TempDisk;
+        Invoke-AzVMReimage -ResourceGroupName $rgname -Name $vmname -TempDisk;
         $vm = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
     }
     finally
