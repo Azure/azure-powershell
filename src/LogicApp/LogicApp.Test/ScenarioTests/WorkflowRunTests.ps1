@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Test Start and Stop AzureLogicApp command for logic app workflow.
+Test Start and Stop AzLogicApp command for logic app workflow.
 #>
 function Test-StartLogicApp
 {
@@ -40,7 +40,7 @@ function Test-StartLogicApp
 .SYNOPSIS
 Test Get-AzLogicAppRunHistory and Get-AzLogicAppRun command to get the logic app history
 #>
-function Test-GetAzureLogicAppRunHistory
+function Test-GetAzLogicAppRunHistory
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
@@ -70,7 +70,7 @@ function Test-GetAzureLogicAppRunHistory
 .SYNOPSIS
 Test Get-AzLogicAppRunAction command to get the logic app run action
 #>
-function Test-GetAzureLogicAppRunAction
+function Test-GetAzLogicAppRunAction
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
@@ -102,9 +102,9 @@ function Test-GetAzureLogicAppRunAction
 
 <#
 .SYNOPSIS
-Test Start and Stop AzureLogicApp command for logic app workflow.
+Test Start and Stop AzLogicApp command for logic app workflow.
 #>
-function Test-StopAzureRmLogicAppRun
+function Test-StopAzLogicAppRun
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName

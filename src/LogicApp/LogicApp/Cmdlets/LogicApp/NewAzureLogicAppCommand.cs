@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Parameters = CmdletHelper.GetParametersFromFile(this.TryResolvePath(this.ParameterFilePath));
             }
 
-            this.WriteObject(this.LogicAppClient.CreateWorkflow(this.ResourceGroupName, this.Name, new Workflow
+            this.WriteObject(LogicAppClient.CreateWorkflow(this.ResourceGroupName, this.Name, new Workflow
             {
                 Location = this.Location,
                 Definition = this.Definition,

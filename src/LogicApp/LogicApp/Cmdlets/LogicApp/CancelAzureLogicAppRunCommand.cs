@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Name,
                 () =>
                 {
-                    this.LogicAppClient.CancelWorkflowRun(this.ResourceGroupName, this.Name, this.RunName);
+                    LogicAppClient.CancelWorkflowRun(this.ResourceGroupName, this.Name, this.RunName);
                 },
                 null);
         }

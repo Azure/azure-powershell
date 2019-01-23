@@ -61,11 +61,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             base.ExecuteCmdlet();
             if (!string.IsNullOrWhiteSpace(this.Version))
             {
-                this.WriteObject(this.LogicAppClient.GetWorkflowVersion(this.ResourceGroupName, this.Name, this.Version), true);
+                this.WriteObject(LogicAppClient.GetWorkflowVersion(this.ResourceGroupName, this.Name, this.Version), true);
             }
             else if (string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var allWorkflows = this.LogicAppClient.ListWorkFlowBySubscription();
+                var allWorkflows = LogicAppClient.ListWorkFlowBySubscription();
                 if (string.IsNullOrEmpty(this.Name))
                 {
                     this.WriteObject(allWorkflows.ToArray(), true);
@@ -77,11 +77,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             }
             else if (string.IsNullOrEmpty(this.Name))
             {
-                this.WriteObject(this.LogicAppClient.ListWorkFlowByResourceGroupName(this.ResourceGroupName).ToArray());
+                this.WriteObject(LogicAppClient.ListWorkFlowByResourceGroupName(this.ResourceGroupName).ToArray());
             }
             else
             {
-                this.WriteObject(this.LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name), true);
+                this.WriteObject(LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name), true);
             }
         }
     }

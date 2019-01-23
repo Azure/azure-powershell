@@ -16,7 +16,7 @@
 .SYNOPSIS
 Test Get-AzLogicAppTrigger for workflow triggers and test to get trigger by name
 #>
-function Test-GetAzureLogicAppTrigger
+function Test-GetAzLogicAppTrigger
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
@@ -38,7 +38,7 @@ function Test-GetAzureLogicAppTrigger
 .SYNOPSIS
 Test Get-AzLogicAppTriggerHistory command to get workflow trigger histories and history by history name
 #>
-function Test-GetAzureLogicAppTriggerHistory
+function Test-GetAzLogicAppTriggerHistory
 {	
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
@@ -69,7 +69,7 @@ function Test-GetAzureLogicAppTriggerHistory
 .SYNOPSIS
 Test Get-AzLogicAppTriggerCallbackUrl command to get workflow trigger callback URL
 #>
-function Test-GetAzureLogicAppTriggerCallbackUrl
+function Test-GetAzLogicAppTriggerCallbackUrl
 {	
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
@@ -97,7 +97,7 @@ function Test-GetAzureLogicAppTriggerCallbackUrl
 .SYNOPSIS
 Test Start-AzLogicAppTrigger command to run workflow trigger
 #>
-function Test-StartAzureLogicAppTrigger
+function Test-StartAzLogicAppTrigger
 {	
 	$resourceGroup = TestSetup-CreateResourceGroup	
 	$resourceGroupName = $resourceGroup.ResourceGroupName

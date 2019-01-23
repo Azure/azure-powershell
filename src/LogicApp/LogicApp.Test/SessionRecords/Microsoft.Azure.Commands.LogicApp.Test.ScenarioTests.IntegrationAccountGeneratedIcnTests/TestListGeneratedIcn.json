@@ -7,13 +7,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ceaedf03-b3ee-4f05-86e1-a612a3a8d794"
+          "b60123d0-2005-491d-8fb6-53be44d77f4e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27019.06",
+          "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
@@ -30,25 +30,25 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:26ef18c3-bc0e-467f-a36a-5ea8a1418be6"
+          "westus:e7446d63-544d-4416-a28a-d7298e37ca9d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11982"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "28096d36-3547-48d8-9dad-41f9ad24846e"
+          "32e3b27c-85a4-4077-991c-7de4e287a699"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190108T230538Z:28096d36-3547-48d8-9dad-41f9ad24846e"
+          "WESTUS2:20190123T184039Z:32e3b27c-85a4-4077-991c-7de4e287a699"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 08 Jan 2019 23:05:37 GMT"
+          "Wed, 23 Jan 2019 18:40:39 GMT"
         ],
         "Content-Length": [
           "10490"
@@ -70,13 +70,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9f0163bb-6737-4477-8091-54f2aa8996bc"
+          "0232c6e0-387a-4b25-8548-deefbdbd106f"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27019.06",
+          "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
@@ -90,34 +90,34 @@
           "no-cache"
         ],
         "ETag": [
-          "\"08586546193078375314\""
+          "\"08586533929042045272\""
         ],
         "Vary": [
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:4a46778e-2948-471a-978f-63fd6119f55b"
+          "westus:f46aa77a-9074-4a5d-9b55-310a7212b1d6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11981"
+          "11994"
         ],
         "x-ms-correlation-request-id": [
-          "54aef0dc-73c8-4490-b516-3db93bb59b16"
+          "8d6611ab-55bf-495c-bf83-fcb817bae7f3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190108T230538Z:54aef0dc-73c8-4490-b516-3db93bb59b16"
+          "WESTUS2:20190123T184039Z:8d6611ab-55bf-495c-bf83-fcb817bae7f3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 08 Jan 2019 23:05:38 GMT"
+          "Wed, 23 Jan 2019 18:40:39 GMT"
         ],
         "Content-Length": [
-          "508"
+          "507"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -126,7 +126,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"createdTime\": \"2018-12-13T22:52:16.0057007Z\",\r\n    \"changedTime\": \"2019-01-08T22:46:17.6441449Z\",\r\n    \"content\": {\r\n      \"ControlNumber\": \"1234\",\r\n      \"ControlNumberChangedTime\": \"2019-01-08T22:46:17.5855177Z\",\r\n      \"MessageType\": 0\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/flowrg/providers/Microsoft.Logic/integrationAccounts/PS-Tests-Sessions/sessions/PS-X12-Agreement-Icn\",\r\n  \"name\": \"PS-X12-Agreement-Icn\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/sessions\",\r\n  \"etag\": \"\\\"08586546193078375314\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"createdTime\": \"2018-12-13T22:52:16.0057007Z\",\r\n    \"changedTime\": \"2019-01-23T03:26:21.277007Z\",\r\n    \"content\": {\r\n      \"ControlNumber\": \"1234\",\r\n      \"ControlNumberChangedTime\": \"2019-01-23T03:26:21.2709183Z\",\r\n      \"MessageType\": 0\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/flowrg/providers/Microsoft.Logic/integrationAccounts/PS-Tests-Sessions/sessions/PS-X12-Agreement-Icn\",\r\n  \"name\": \"PS-X12-Agreement-Icn\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/sessions\",\r\n  \"etag\": \"\\\"08586533929042045272\\\"\"\r\n}",
       "StatusCode": 200
     }
   ],

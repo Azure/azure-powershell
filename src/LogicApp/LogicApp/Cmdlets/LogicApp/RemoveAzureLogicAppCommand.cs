@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Name,
                 () =>
                 {
-                    this.LogicAppClient.RemoveWorkflow(this.ResourceGroupName, this.Name);
+                    LogicAppClient.RemoveWorkflow(this.ResourceGroupName, this.Name);
                 });
         }
     }

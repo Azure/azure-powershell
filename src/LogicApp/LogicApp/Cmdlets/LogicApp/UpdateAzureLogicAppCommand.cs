@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var workflow = this.LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name);
+            var workflow = LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name);
 
             if (this.Definition == null)
             {
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Name,
                 () =>
                 {
-                    this.WriteObject(this.LogicAppClient.UpdateWorkflow(this.ResourceGroupName, this.Name, workflow), true);
+                    this.WriteObject(LogicAppClient.UpdateWorkflow(this.ResourceGroupName, this.Name, workflow), true);
                 },
                 null);
         }
