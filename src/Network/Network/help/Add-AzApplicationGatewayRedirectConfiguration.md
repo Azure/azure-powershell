@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azapplicationgatewayredirectconfiguration
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetListener
-HTTPListener to redirect the request to
+HTTP listener to redirect the request to
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetListenerID
-ID of  listener to redirect the request to
+ID of HTTP listener to redirect the request to
 
 ```yaml
 Type: System.String
@@ -201,3 +201,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzApplicationGatewayRedirectConfiguration](./Get-AzApplicationGatewayRedirectConfiguration.md)
+
+[New-AzApplicationGatewayRedirectConfiguration](./New-AzApplicationGatewayRedirectConfiguration.md)
+
+[Remove-AzApplicationGatewayRedirectConfiguration](./Remove-AzApplicationGatewayRedirectConfiguration.md)
+
+[Set-AzApplicationGatewayRedirectConfiguration](./Set-AzApplicationGatewayRedirectConfiguration.md)

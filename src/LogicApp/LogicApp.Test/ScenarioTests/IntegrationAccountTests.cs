@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test New-AzureRmIntegrationAccount command to create a new integration account.
+        /// Test New-AzIntegrationAccount command to create a new integration account.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccount command to get the integration account.
+        /// Test Get-AzIntegrationAccount command to get the integration account.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Remove-AzureRmIntegrationAccount command to delete the integration account.
+        /// Test Remove-AzIntegrationAccount command to delete the integration account.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Update-AzureRmIntegrationAccount command to update the integration account.
+        /// Test Update-AzIntegrationAccount command to update the integration account.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountCallbackUrl command to get the integration account.
+        /// Test Get-AzIntegrationAccountCallbackUrl command to get the integration account.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

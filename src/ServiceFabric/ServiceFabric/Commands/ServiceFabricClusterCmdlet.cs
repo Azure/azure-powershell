@@ -138,9 +138,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         protected DurabilityLevel GetDurabilityLevel(VirtualMachineScaleSet vmss)
         {
-            var ext = FindFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile.Extensions);
+            VirtualMachineScaleSetExtension sfExt;
+            if (!TryGetFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile.Extensions, out sfExt))
+            {
+                throw new InvalidOperationException(string.Format(ServiceFabricProperties.Resources.SFExtensionNotFoundInVMSS, vmss.Name, vmss.Id));
+            }
 
-            var durabilityLevelStr = (string)((JObject)ext.Settings)["durabilityLevel"];
+            var durabilityLevelStr = (string)((JObject)sfExt.Settings)["durabilityLevel"];
             if (string.IsNullOrWhiteSpace(durabilityLevelStr))
             {
                 throw new PSInvalidOperationException(ServiceFabricProperties.Resources.CannotFindDurabilityLevelSetting);

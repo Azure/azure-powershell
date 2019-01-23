@@ -13,6 +13,7 @@
 // limitations under the License.
 
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
@@ -85,8 +86,8 @@ namespace Microsoft.Azure.Commands.Network
             // Map to the sdk object
             var tapConfigurationModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkInterfaceTapConfiguration>(vTapConfiguration);
 
-            this.NetworkInterfaceTapClient.CreateOrUpdateWithHttpMessagesAsync(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name, this.Name, tapConfigurationModel).GetAwaiter().GetResult();
-           
+            this.NetworkInterfaceTapClient.CreateOrUpdate(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name, this.Name, tapConfigurationModel);
+
             var getTapConfiguration = this.GetNetworkInterfaceTapConfiguration(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name, this.Name);
 
             WriteObject(getTapConfiguration);

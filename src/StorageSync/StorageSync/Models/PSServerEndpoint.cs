@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         public string LastWorkflowId { get; set; }
         public string LastOperationName { get; set; }
         public string FriendlyName { get; set; }
-        public object SyncStatus { get; set; }
+        public PSServerEndpointHealth SyncStatus { get; set; }
         public string CloudTiering { get; set; }
         public int? VolumeFreeSpacePercent { get; set; }
 

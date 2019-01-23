@@ -18,7 +18,7 @@ Test ServerEndpoint
 .DESCRIPTION
 SmokeTest
 #>
-function Test-ServerEndpoint
+function Test-ServerEndpoint2
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
@@ -160,6 +160,113 @@ function Test-ServerEndpoint
         New-AzStorageSyncServerEndpoint -ParentObject $syncGroup -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -CloudSeededData -VolumeFreeSpacePercent $volumeFreeSpacePercent -CloudSeededDataFileShareUri $cloudSeededDataFileShareUri -TierFilesOlderThanDays $tierFilesOlderThanDays | Get-AzStorageSyncServerEndpoint  | Remove-AzStorageSyncServerEndpoint -Force -AsJob | Wait-Job
 
         New-AzStorageSyncServerEndpoint -ParentResourceId $syncGroup.ResourceId -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -CloudSeededData -VolumeFreeSpacePercent $volumeFreeSpacePercent -CloudSeededDataFileShareUri $cloudSeededDataFileShareUri -TierFilesOlderThanDays $tierFilesOlderThanDays | Remove-AzStorageSyncServerEndpoint -Force -AsJob | Wait-Job
+
+        Write-Verbose "Unregister Server: $($registeredServer.ServerId)"
+        Unregister-AzStorageSyncServer -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -ServerId $registeredServer.ServerId -AsJob | Wait-Job
+
+        Write-Verbose "Removing CloudEndpoint: $cloudEndpointName"
+        Remove-AzStorageSyncCloudEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $cloudEndpointName -AsJob | Wait-Job
+
+        Write-Verbose "Removing SyncGroup: $syncGroupName"
+        Remove-AzStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -AsJob | Wait-Job
+
+        Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
+        Remove-AzStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName -AsJob | Wait-Job
+
+        if(IsLive)
+        {
+            Write-Verbose "Removing: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+            $azureFileShare = Remove-AzureStorageShare -Name $StorageAccountShareName -Context $context -Force
+        }
+
+        Write-Verbose "Removing $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
+        Remove-AzStorageAccount -Force -ResourceGroupName $resourceGroupName -Name $StorageAccountName
+
+    }
+    finally
+    {
+        # Cleanup
+        Write-Verbose "Removing ResourceGroup : $resourceGroupName"
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+function Test-ServerEndpoint
+{
+    # Setup
+    $resourceGroupName = Get-ResourceGroupName
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
+    try
+    {
+       # Test
+        $storageSyncServiceName = Get-ResourceName("sss")
+        $syncGroupName = Get-ResourceName("sg")
+        $serverEndpointName = Get-ResourceName("sep")
+        $cloudEndpointName = Get-ResourceName("cep")
+        $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
+
+        $storageAccountShareName = "testfs" #Get-ResourceName("fs")
+        $storageAccountName = Get-ResourceName("sa")
+        $storageAccountTenantId = (Get-AzTenant).Id
+        # NOTE: Check the local server drives where we are performing registration.
+        $serverLocalPath = "D:\" + $serverEndpointName
+        $cloudSeededDataFileShareUri = "http://dummy"
+        $tierFilesOlderThanDays = 10
+        $volumeFreeSpacePercent = 60
+        $volumeFreeSpacePercent2 = 80
+
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
+        $storageSyncService = New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
+        $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+        Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
+        $storageAccount = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation
+        $key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
+        $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
+        Write-Verbose "Resource: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+
+        if(IsLive)
+        {
+            $azureFileShare = New-AzureStorageShare -Name $StorageAccountShareName -Context $context
+            $azureFileShareName = $azureFileShare.Name 
+        }
+        else 
+        {
+                $azureFileShareName = $StorageAccountShareName
+        }
+
+        $storageAccountResourceId = $storageAccount.Id
+
+        Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
+        $job = New-AzStorageSyncCloudEndpoint -ParentObject $syncGroup -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -AsJob 
+        $job | Wait-Job
+        $cloudEndpoint = get-job -Id $job.Id | receive-job -Keep
+
+        if(-not (isLive))
+        {
+             $env:REGISTEREDSERVER_SERVER_ID = $ServerIdLookup["Test-ServerEndpoint"]
+        }
+
+        Write-Verbose "Resource: <auto-generated> | Loc: $resourceLocation | Type : RegisteredServer"
+        $job = Register-AzStorageSyncServer -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -AsJob 
+        $job | Wait-Job
+        $registeredServer = get-job -Id $job.Id | receive-job -Keep
+
+        Write-Verbose "Resource: $serverEndpointName | Loc: $resourceLocation"
+        $job = New-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -CloudSeededData -VolumeFreeSpacePercent $volumeFreeSpacePercent -CloudSeededDataFileShareUri $cloudSeededDataFileShareUri -TierFilesOlderThanDays $tierFilesOlderThanDays -Verbose -AsJob 
+
+        $job | Wait-Job
+        $serverEndpoint = get-job -Id $job.Id | receive-job -Keep
+
+       
+
+        Write-Verbose "Removing ServerEndpoint: $serverEndpointName"
+        Remove-AzStorageSyncServerEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -AsJob | Wait-Job
 
         Write-Verbose "Unregister Server: $($registeredServer.ServerId)"
         Unregister-AzStorageSyncServer -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -ServerId $registeredServer.ServerId -AsJob | Wait-Job

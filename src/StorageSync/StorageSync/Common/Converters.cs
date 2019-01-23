@@ -26,8 +26,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     }
 
     public interface IConverter<P, T> : IConverter
-        where P : PSResourceBase
-        where T : StorageSyncModels.Resource
+        where P : class, new()
+        where T : class, new()
+
+        //where P : PSResourceBase
+        //where T : StorageSyncModels.Resource
     {
         P Convert(T resource);
 
@@ -36,8 +39,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     }
 
     public abstract class ConverterBase<P, T> : IConverter<P, T>
-        where P : PSResourceBase, new()
-        where T : StorageSyncModels.Resource, new()
+        //where P : PSResourceBase, new()
+        //where T : StorageSyncModels.Resource, new()
+        where P : class, new()
+        where T : class, new()
     {
 
         public ConverterBase()
@@ -185,7 +190,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 ResourceLocation = source.ResourceLocation,
                 ServerCertificate = source.ServerCertificate?.Trim('"'),
                 ServerId = source.ServerId?.Trim('"'),
-                ServerManagementtErrorCode = source.ServerManagementtErrorCode,
+                ServerManagementtErrorCode = source.ServerManagementErrorCode,
                 ServerOSVersion = source.ServerOSVersion,
                 ServerRole = source.ServerRole,
                 ServiceLocation = source.ServiceLocation,
@@ -218,7 +223,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 StorageAccountResourceId=source.StorageAccountResourceId,
                 StorageAccountShareName =source.StorageAccountShareName,
                 StorageAccountTenantId = source.StorageAccountTenantId?.Trim('"'),
-                BackupEnabled = source.BackupEnabled,
+                BackupEnabled = System.Convert.ToBoolean(source.BackupEnabled),
                 LastWorkflowId = source.LastWorkflowId,
                 LastOperationName = source.LastOperationName,
                 PartnershipId = source.PartnershipId,
@@ -248,7 +253,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 source.ProvisioningState, 
                 source.LastWorkflowId, 
                 source.LastOperationName, 
-                source.SyncStatus);
+                new StorageSyncModels.ServerEndpointHealth(
+                    source.SyncStatus?.DownloadHealth,
+                    source.SyncStatus?.UploadHealth,
+                    source.SyncStatus?.CombinedHealth,
+                    source.SyncStatus?.LastUpdatedTimestamp,
+                    null));
         }
 
         protected override PSServerEndpoint Transform(StorageSyncModels.ServerEndpoint source)
@@ -265,13 +275,78 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 ServerLocalPath = source.ServerLocalPath,
                 ServerResourceId = source.ServerResourceId,
                 ProvisioningState = source.ProvisioningState,
-                SyncStatus = source.SyncStatus,
+                SyncStatus = new ServerEndpointHealthConvertor().Convert(source.SyncStatus),
                 FriendlyName = source.FriendlyName,
                 LastOperationName = source.LastOperationName,
                 LastWorkflowId = source.LastWorkflowId,
                 CloudTiering = source.CloudTiering,
                 VolumeFreeSpacePercent = source.VolumeFreeSpacePercent,
                 TierFilesOlderThanDays = source.TierFilesOlderThanDays
+            };
+        }
+    }
+
+    public class ServerEndpointHealthConvertor : ConverterBase<PSServerEndpointHealth, StorageSyncModels.ServerEndpointHealth>
+    {
+        protected override StorageSyncModels.ServerEndpointHealth Transform(PSServerEndpointHealth source) => new StorageSyncModels.ServerEndpointHealth(
+            source.DownloadHealth,
+            source.UploadHealth,
+            source.CombinedHealth,
+            source.LastUpdatedTimestamp,
+            new SyncSessionStatusConvertor().Convert(source.UploadStatus),
+            new SyncSessionStatusConvertor().Convert(source.DownloadStatus),
+            new SyncProgressStatusConvertor().Convert(source.CurrentProgress),
+            source.OfflineDataTransferStatus);
+
+        protected override PSServerEndpointHealth Transform(StorageSyncModels.ServerEndpointHealth source)
+        {
+            return new PSServerEndpointHealth()
+            {
+                DownloadHealth = source.DownloadHealth,
+                UploadHealth = source.UploadHealth,
+                CombinedHealth = source.CombinedHealth,
+                LastUpdatedTimestamp = source.LastUpdatedTimestamp,
+                UploadStatus = new SyncSessionStatusConvertor().Convert(source.UploadStatus),
+                DownloadStatus = new SyncSessionStatusConvertor().Convert(source.DownloadStatus),
+                CurrentProgress = new SyncProgressStatusConvertor().Convert(source.CurrentProgress),
+                OfflineDataTransferStatus = source.OfflineDataTransferStatus
+            };
+        }
+    }
+
+    public class SyncSessionStatusConvertor : ConverterBase<PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus>
+    {
+        protected override StorageSyncModels.SyncSessionStatus Transform(PSSyncSessionStatus source) => new StorageSyncModels.SyncSessionStatus(
+            source.LastSyncResult, source.LastSyncTimestamp, source.LastSyncSuccessTimestamp, source.LastSyncPerItemErrorCount);
+
+        protected override PSSyncSessionStatus Transform(StorageSyncModels.SyncSessionStatus source)
+        {
+            return new PSSyncSessionStatus()
+            {
+                LastSyncResult = source.LastSyncResult,
+                LastSyncTimestamp = source.LastSyncTimestamp,
+                LastSyncSuccessTimestamp = source.LastSyncSuccessTimestamp,
+                LastSyncPerItemErrorCount = source.LastSyncPerItemErrorCount
+            };
+        }
+    }
+
+    public class SyncProgressStatusConvertor : ConverterBase<PSSyncProgressStatus, StorageSyncModels.SyncProgressStatus>
+    {
+        protected override StorageSyncModels.SyncProgressStatus Transform(PSSyncProgressStatus source) => new StorageSyncModels.SyncProgressStatus(
+            source.ProgressTimestamp, source.SyncDirection, source.PerItemErrorCount, source.AppliedItemCount, source.TotalItemCount, source.AppliedBytes,source.TotalBytes);
+
+        protected override PSSyncProgressStatus Transform(StorageSyncModels.SyncProgressStatus source)
+        {
+            return new PSSyncProgressStatus()
+            {
+                AppliedBytes = source.AppliedBytes,
+                AppliedItemCount=source.AppliedItemCount,
+                PerItemErrorCount=source.PerItemErrorCount,
+                ProgressTimestamp = source.ProgressTimestamp,
+                SyncDirection = source.SyncDirection,
+                TotalBytes = source.TotalBytes,
+                TotalItemCount=source.TotalItemCount
             };
         }
     }
