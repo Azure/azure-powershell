@@ -710,6 +710,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
             throw new NotImplementedException();
         }
 
+        public AccountProperties GetAccountProperties()
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// The storage context
         /// </summary>
