@@ -1321,6 +1321,66 @@ function Test-WebAppPublishingProfile
 	}
 }
 
+function Test-PublishAzureWebAppFromZip
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$appName = Get-WebsiteName
+	$location = Get-WebLocation
+	$planName = Get-WebHostPlanName
+	$tier = "Shared"
+
+	try
+	{
+		#Setup
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Location  $location -Tier $tier
+		
+		# Create new web app
+		$webapp = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Location $location -AppServicePlan $planName 
+		
+		$zipPath = Join-Path $ResourcesPath "nodejs-sample.zip"
+		$publishedApp = Publish-AzWebApp -ResourceGroupName $rgname -Name $appName -ArchivePath $zipPath -Force
+
+		Assert-NotNull $publishedApp
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzureRmResourceGroup -Name $rgname -Force
+	}
+}
+
+function Test-PublishAzureWebAppFromWar
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$appName = Get-WebsiteName
+	$location = Get-WebLocation
+	$planName = Get-WebHostPlanName
+	$tier = "Shared"
+
+	try
+	{
+		#Setup
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Location  $location -Tier $tier
+		
+		# Create new web app
+		$webapp = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Location $location -AppServicePlan $planName 
+		
+		$warPath = Join-Path $ResourcesPath "HelloJava.war"
+		$publishedApp = Publish-AzWebApp -ResourceGroupName $rgname -Name $appName -ArchivePath $warPath -Force
+
+		Assert-NotNull $publishedApp
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzureRmResourceGroup -Name $rgname -Force
+	}
+}
+
 <#
 .SYNOPSIS
 Tests creating a web app with a simple parameterset.
