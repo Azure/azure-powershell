@@ -166,6 +166,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public string LicenseType { get; set; }
 
         /// <summary>
+        /// Gets or sets the Auto pause delay of the database
+        /// </summary>
+        public int? AutoPauseDelay { get; set; }
+        
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -213,6 +219,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             ReadScale = readScale;
 
             ZoneRedundant = false;
+            AutoPauseDelay = null;
         }
 
         /// <summary>
@@ -259,6 +266,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             SkuName = database.Sku == null ? null : database.Sku.Name;
 
             LicenseType = database.LicenseType;
+
+            AutoPauseDelay = database.AutoPauseDelay;
         }
     }
 }
