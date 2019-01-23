@@ -4,7 +4,6 @@
     <Root>$(MSBuildThisFileDirectory)..\</Root>
     <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
     <Artifacts>$(Root)artifacts\</Artifacts>
-    <TestFilter>"AcceptanceType=CheckIn"</TestFilter>
   </PropertyGroup>
 
   <Target Name="netstandard20">
@@ -20,7 +19,7 @@
     <Exec Command="dotnet build $(Solution) -c $(Configuration) /p:FileVersion=$(FileVersion) /p:AssemblyVersion=$(AssemblyVersion) -NoLogo" />
 
     <Message Condition="'$(Configuration)' == 'Debug'" Importance="high" Text="netstandard20: Testing $([System.IO.Path]::GetFileName($(Solution)))" />
-    <Exec Condition="'$(Configuration)' == 'Debug'" Command="dotnet test $(Solution) --filter $(TestFilter) --configuration $(Configuration) --logger trx -NoLogo" ContinueOnError="ErrorAndContinue" />
+    <Exec Condition="'$(Configuration)' == 'Debug'" Command="dotnet test $(Solution) --configuration $(Configuration) --logger trx -NoLogo" ContinueOnError="ErrorAndContinue" />
     <ItemGroup Condition="'$(Configuration)' == 'Debug'">
       <TestResults Include="$(Root)src\**\TestResults\*.trx" />
     </ItemGroup>

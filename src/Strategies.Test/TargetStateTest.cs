@@ -5,7 +5,6 @@ using Xunit;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.Strategies.Tests;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 {
@@ -32,7 +31,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDependencyGraph()
         {
             // resource group
