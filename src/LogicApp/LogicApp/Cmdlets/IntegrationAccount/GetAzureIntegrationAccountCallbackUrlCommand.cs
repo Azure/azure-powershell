@@ -56,10 +56,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             base.ExecuteCmdlet();
 
             this.WriteObject(
-                sendToPipeline: IntegrationAccountClient.GetIntegrationAccountCallbackUrl(
+                sendToPipeline: this.IntegrationAccountClient.GetIntegrationAccountCallbackUrl(
                     resourceGroupName: this.ResourceGroupName,
                     integrationAccountName: this.Name,
-                    callbackUrl: (NotAfter != null)
+                    callbackUrl: (this.NotAfter != null)
                         ? new GetCallbackUrlParameters
                         {
                             NotAfter = NotAfter

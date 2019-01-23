@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
@@ -106,19 +105,19 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
             if (string.IsNullOrEmpty(this.MapDefinition))
             {
                 this.MapDefinition = CmdletHelper.GetContentFromFile(this.TryResolvePath(this.MapFilePath));
             }
 
-            this.WriteObject(IntegrationAccountClient.CreateIntegrationAccountMap(this.ResourceGroupName, integrationAccount.Name, this.MapName,
+            this.WriteObject(this.IntegrationAccountClient.CreateIntegrationAccountMap(this.ResourceGroupName, integrationAccount.Name, this.MapName,
                 new IntegrationAccountMap
                 {
                     ContentType = this.ContentType,
                     Content = this.MapDefinition,
-                    MapType = (MapType) Enum.Parse(typeof(MapType), this.MapType),
+                    MapType = this.MapType,
                     Metadata = this.Metadata
                 }), true);
         }

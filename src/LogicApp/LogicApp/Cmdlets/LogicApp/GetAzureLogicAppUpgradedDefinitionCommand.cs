@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            this.WriteObject(LogicAppClient.GetWorkflowUpgradedDefinition(this.ResourceGroupName, this.Name, this.TargetSchemaVersion), false);
+            this.WriteObject(this.LogicAppClient.GetWorkflowUpgradedDefinition(this.ResourceGroupName, this.Name, this.TargetSchemaVersion), false);
         }
     }
 }

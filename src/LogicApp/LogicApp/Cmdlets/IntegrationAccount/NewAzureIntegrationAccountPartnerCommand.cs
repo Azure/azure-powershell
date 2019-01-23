@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
@@ -91,19 +90,19 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
             this.WriteObject(
-                IntegrationAccountClient.CreateIntegrationAccountPartner(this.ResourceGroupName, integrationAccount.Name,
+                this.IntegrationAccountClient.CreateIntegrationAccountPartner(this.ResourceGroupName, integrationAccount.Name,
                     this.PartnerName,
                     new IntegrationAccountPartner
                     {
-                        PartnerType = (PartnerType) Enum.Parse(typeof(PartnerType), this.PartnerType),
+                        PartnerType = this.PartnerType,
                         Content = new PartnerContent
                         {
                             B2b = new B2BPartnerContent
                             {
-                                BusinessIdentities = CmdletHelper.ConvertToBusinessIdentityList(BusinessIdentities)
+                                BusinessIdentities = CmdletHelper.ConvertToBusinessIdentityList(this.BusinessIdentities)
                             }
                         },
                         Metadata = this.Metadata

@@ -12,8 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$WORKFLOW_LOCATION = 'westus'
-
 <#
 .SYNOPSIS
 Test Start and Stop AzureLogicApp command for logic app workflow.
@@ -22,86 +20,83 @@ function Test-StartLogicApp
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
 
 	$workflowName = getAssetname
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
+	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $location -DefinitionFilePath $definitionFilePath
 	
 	[int]$counter = 0
 	do {
 		SleepInRecordMode 2000
-		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
+		$workflow =  Get-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
-	Start-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
+	Start-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
 }
 
 <#
 .SYNOPSIS
-Test Get-AzureRmLogicAppRunHistory and Get-AzureRmLogicAppRun command to get the logic app history
+Test Get-AzLogicAppRunHistory and Get-AzLogicAppRun command to get the logic app history
 #>
 function Test-GetAzureLogicAppRunHistory
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
 
 	$workflowName = getAssetname
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
+	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $location -DefinitionFilePath $definitionFilePath
 	
 	[int]$counter = 0
 	do {
 		SleepInRecordMode 2000
-		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
+		$workflow =  Get-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
-	Start-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
+	Start-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
 
-	$runHistory = Get-AzureRmLogicAppRunHistory -ResourceGroupName $resourceGroupName -Name $workflowName 
+	$runHistory = Get-AzLogicAppRunHistory -ResourceGroupName $resourceGroupName -Name $workflowName 
 	Assert-NotNull $runHistory
-	$run = Get-AzureRmLogicAppRunHistory -ResourceGroupName $resourceGroupName -Name $workflowName -RunName $runHistory[0].Name	
+	$run = Get-AzLogicAppRunHistory -ResourceGroupName $resourceGroupName -Name $workflowName -RunName $runHistory[0].Name	
 	Assert-NotNull $run
 	Assert-AreEqual $runHistory[0].Name $run.Name
 }
 
 <#
 .SYNOPSIS
-Test Get-AzureRmLogicAppRunAction command to get the logic app run action
+Test Get-AzLogicAppRunAction command to get the logic app run action
 #>
 function Test-GetAzureLogicAppRunAction
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
 
 	$workflowName = getAssetname
 	$definitionFilePath = Join-Path $TestOutputRoot "Resources\TestSimpleWorkflowTriggerDefinition.json"
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
+	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $location -DefinitionFilePath $definitionFilePath
 
 	[int]$counter = 0
 	do {
 		SleepInRecordMode 2000
-		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
+		$workflow =  Get-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
-	Start-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
+	Start-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
 
-	$runHistory = Get-AzureRmLogicAppRunHistory -ResourceGroupName $resourceGroupName -Name $workflowName 
+	$runHistory = Get-AzLogicAppRunHistory -ResourceGroupName $resourceGroupName -Name $workflowName 
 	Assert-NotNull $runHistory
 	
-	$actions = Get-AzureRmLogicAppRunAction -ResourceGroupName $resourceGroupName -Name $workflowName -RunName $runHistory[0].Name
+	$actions = Get-AzLogicAppRunAction -ResourceGroupName $resourceGroupName -Name $workflowName -RunName $runHistory[0].Name
 	Assert-NotNull $actions
 	Assert-AreEqual 2 $actions.Count
 
-	$action = Get-AzureRmLogicAppRunAction -ResourceGroupName $resourceGroupName -Name $workflowName -RunName $runHistory[0].Name -ActionName "http"
+	$action = Get-AzLogicAppRunAction -ResourceGroupName $resourceGroupName -Name $workflowName -RunName $runHistory[0].Name -ActionName "http"
 	Assert-NotNull $action
 }
 
@@ -113,24 +108,22 @@ function Test-StopAzureRmLogicAppRun
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
 
 	$workflowName = getAssetname
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinitionWithDelayAction.json"
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
+	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $location -DefinitionFilePath $definitionFilePath
 	
 	[int]$counter = 0
 	do {
 		SleepInRecordMode 2000
-		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
+		$workflow =  Get-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
-	Start-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
+	Start-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
 		
-	$runHistory = Get-AzureRmLogicAppRunHistory -ResourceGroupName $resourceGroupName -Name $workflowName
+	$runHistory = Get-AzLogicAppRunHistory -ResourceGroupName $resourceGroupName -Name $workflowName
 
-	Stop-AzureRmLogicAppRun -ResourceGroupName $resourceGroupName -Name $workflowName -RunName $runHistory[0].Name -Force
-
+	Stop-AzLogicAppRun -ResourceGroupName $resourceGroupName -Name $workflowName -RunName $runHistory[0].Name -Force
 }

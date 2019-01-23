@@ -28,50 +28,28 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 
         public IntegrationAccountReceivedIcnTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
+            this._logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(this._logger);
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountReceivedIcn command to get the integration account generated interchange control number.
+        /// Test Get-AzIntegrationAccountReceivedIcn command to get the integration account generated interchange control number.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetIAReceivedIcnWithoutAgreementType()
+        public void TestGetReceivedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountReceivedIcn-NoAgreementType");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-GetReceivedIcn");
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountReceivedIcn command to get the integration account generated interchange control number.
+        /// Test Set-AzIntegrationAccountReceivedIcn command to update the integration account generated interchange control number.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetIntegrationAccountReceivedIcn()
+        public void TestUpdateReceivedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountReceivedIcn");
-        }
-
-        /// <summary>
-        /// Test Remove-AzureRmIntegrationAccountReceivedIcn command to update the integration account generated interchange control number.
-        /// </summary>
-        /// <remarks>The test method name is abbreviated to avoid running into legacy path length limit inside the underlying http mock recorder.</remarks>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveIntegrationAccountReceivedIcn()
-        {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccountReceivedIcn");
-        }
-
-        /// <summary>
-        /// Test Set-AzureRmIntegrationAccountReceivedIcn command to update the integration account generated interchange control number.
-        /// </summary>
-        /// <remarks>The test method name is abbreviated to avoid running into legacy path length limit inside the underlying http mock recorder.</remarks>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateIntegrationAccountReceivedIcn()
-        {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountReceivedIcn");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-UpdateReceivedIcn");
         }
     }
 }

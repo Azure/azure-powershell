@@ -14,131 +14,126 @@
 
 <#
 .SYNOPSIS
-Test New-AzureRmIntegrationAccountMap command
+Test New-AzIntegrationAccountMap command
 #>
 function Test-CreateIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
-	$mapContent = [IO.File]::ReadAllText($mapFilePath)
+	$xslt1FilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt1Map.xsl"
+	$xslt1MapContent = [IO.File]::ReadAllText($xslt1FilePath)
 	
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
-	$integrationAccountMapName1 = getAssetname
-	$integrationAccountMapName2 = getAssetname
-	$integrationAccountMapName3 = getAssetname
+	$integrationAccountMapName1 = "XSLT-" + (getAssetname)
+	$integrationAccountMapName2 = "XSLT-" + (getAssetname)
+	$integrationAccountMapName3 = "XSLT-" + (getAssetname)
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 	
-	$integrationAccountMap1 =  New-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName1 -MapDefinition $mapContent
+	$integrationAccountMap1 =  New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName1 -MapDefinition $xslt1MapContent
 	Assert-AreEqual $integrationAccountMapName1 $integrationAccountMap1.Name
 
-	$integrationAccountMap2 =  New-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName2 -MapFilePath $mapFilePath
+	$integrationAccountMap2 =  New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName2 -MapFilePath $xslt1FilePath
 	Assert-AreEqual $integrationAccountMapName2 $integrationAccountMap2.Name
 
-	$integrationAccountMap3 =  New-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName3 -MapFilePath $mapFilePath -MapType "Xslt" -ContentType "application/xml"
+	$integrationAccountMap3 =  New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName3 -MapFilePath $xslt1FilePath -MapType "Xslt" -ContentType "application/xml"
 	Assert-AreEqual $integrationAccountMapName3 $integrationAccountMap3.Name
 
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 <#
 .SYNOPSIS
-Test Get-AzureRmIntegrationAccountMap command
+Test Get-AzIntegrationAccountMap command
 #>
 function Test-GetIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt1Map.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccountMapName = getAssetname
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
-	$integrationAccountMap =  New-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent
+	$integrationAccountMap =  New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent
 	Assert-AreEqual $integrationAccountMapName $integrationAccountMap.Name
 
-	$result =  Get-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName
+	$result =  Get-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName
 	Assert-AreEqual $integrationAccountMapName $result.Name
 
-	$result1 =  Get-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
+	$result1 =  Get-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
 	Assert-AreEqual $integrationAccountMapName $result1.Name
 	Assert-True { $result1.Count -gt 0 }	
 
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 <#
 .SYNOPSIS
-Test Remove-AzureRmIntegrationAccountMap command
+Test Remove-AzIntegrationAccountMap command
 #>
 function Test-RemoveIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt1Map.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccountMapName = getAssetname
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
-	$integrationAccountMap =  New-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent
+	$integrationAccountMap =  New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent
 	Assert-AreEqual $integrationAccountMapName $integrationAccountMap.Name
 
-	Remove-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName -Force	
+	Remove-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName -Force	
 
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 <#
 .SYNOPSIS
-Test Set-AzureRmIntegrationAccountMap command
+Test Set-AzIntegrationAccountMap command
 #>
 function Test-UpdateIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt1Map.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccountMapName = getAssetname
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
-	$integrationAccountMap =  New-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent
+	$integrationAccountMap =  New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent
 	Assert-AreEqual $integrationAccountMapName $integrationAccountMap.Name
 
-	$integrationAccountMapUpdated =  Set-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent -Force
+	$integrationAccountMapUpdated =  Set-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent -Force
 	Assert-AreEqual $integrationAccountMapName $integrationAccountMap.Name
 
-	$integrationAccountMapUpdated =  Set-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent -Force
+	$integrationAccountMapUpdated =  Set-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent -Force
 	Assert-AreEqual $integrationAccountMapName $integrationAccountMap.Name
 	
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 <#
 .SYNOPSIS
-Test Get-AzureRmIntegrationAccountMap command : Paging test
+Test Get-AzIntegrationAccountMap command : Paging test
 #>
 function Test-ListIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt1Map.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
@@ -146,12 +141,12 @@ function Test-ListIntegrationAccountMap
 	while($val -ne 1)
 	{
 		$val++ ;
-		$integrationAccountMapName = getAssetname
-		New-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent
+		$integrationAccountMapName = "XSLT-$val-" + (getAssetname)
+		New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent
 	}
 
-	$result =  Get-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
+	$result =  Get-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
 	Assert-True { $result.Count -eq 1 }
 
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }

@@ -30,58 +30,58 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 
         public IntegrationAccountTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
+            this._logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(this._logger);
         }
 
         /// <summary>
-        /// Test New-AzureRmIntegrationAccount command to create a new integration account.
+        /// Test New-AzIntegrationAccount command to create a new integration account.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateIntegrationAccount()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccount");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-CreateIntegrationAccount");
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccount command to get the integration account.
+        /// Test Get-AzIntegrationAccount command to get the integration account.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAndGetIntegrationAccount()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAndGetIntegrationAccount");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-GetIntegrationAccount");
         }
 
         /// <summary>
-        /// Test Remove-AzureRmIntegrationAccount command to delete the integration account.
+        /// Test Remove-AzIntegrationAccount command to delete the integration account.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveIntegrationAccount()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccount");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-RemoveIntegrationAccount");
         }
 
         /// <summary>
-        /// Test Update-AzureRmIntegrationAccount command to update the integration account.
+        /// Test Update-AzIntegrationAccount command to update the integration account.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateIntegrationAccount()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccount");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-UpdateIntegrationAccount");
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountCallbackUrl command to get the integration account.
+        /// Test Get-AzIntegrationAccountCallbackUrl command to get the integration account.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetIntegrationAccountCallbackUrl()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountCallbackUrl");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-GetIntegrationAccountCallbackUrl");
         }
     }
 }

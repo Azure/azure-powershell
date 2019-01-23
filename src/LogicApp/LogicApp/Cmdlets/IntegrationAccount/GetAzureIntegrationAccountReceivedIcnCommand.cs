@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            if (string.IsNullOrEmpty(AgreementType))
+            if (string.IsNullOrEmpty(this.AgreementType))
             {
                 this.WriteWarning(Constants.NoAgreementTypeParameterWarningMessage);
-                AgreementType = "X12";
+                this.AgreementType = "X12";
             }
 
             this.WriteObject(
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     resourceGroupName: this.ResourceGroupName,
                     integrationAccountName: this.Name,
                     integrationAccountAgreementName: this.AgreementName,
-                    agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: AgreementType, ignoreCase: true),
+                    agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: this.AgreementType, ignoreCase: true),
                     controlNumber: this.ControlNumberValue));
         }
     }

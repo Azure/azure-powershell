@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 
         public WorkflowController()
         {
-            _helper = new EnvironmentSetupHelper();
+            this._helper = new EnvironmentSetupHelper();
         }
 
         public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
 
-            _helper.TracingInterceptor = logger;
+            this._helper.TracingInterceptor = logger;
 
-            RunPsTestWorkflow(
+            this.RunPsTestWorkflow(
                 () => scripts,
                 // no custom cleanup
                 null,
@@ -82,15 +82,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (var context = MockContext.Start(callingClassType, mockName))
             {
-                SetupManagementClients(context);
-                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                this.SetupManagementClients(context);
+                this._helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                var callingClassName = callingClassType.Split(new[] {"."}, StringSplitOptions.RemoveEmptyEntries).Last();
-                _helper.SetupModules(AzureModule.AzureResourceManager,
+                var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
+                this._helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    _helper.RMProfileModule,
-                    _helper.GetRMModulePath(@"AzureRM.LogicApp.psd1"),
+                    this._helper.RMProfileModule,
+                    this._helper.GetRMModulePath(@"Az.LogicApp.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
                     var psScripts = scriptBuilder?.Invoke();
                     if (psScripts != null)
                     {
-                        _helper.RunPowerShellTest(psScripts);
+                        this._helper.RunPowerShellTest(psScripts);
                     }
                 }
                 finally
@@ -110,17 +110,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient(context);
-            LogicManagementClient = GetLogicManagementClient(context);
-            OldResourceManagementClient = GetOldResourceManagementClient(context);
-            _helper.SetupManagementClients(OldResourceManagementClient, ResourceManagementClient, LogicManagementClient);
+            this.ResourceManagementClient = GetResourceManagementClient(context);
+            this.LogicManagementClient = GetLogicManagementClient(context);
+            this.OldResourceManagementClient = GetOldResourceManagementClient(context);
+            this._helper.SetupManagementClients(this.OldResourceManagementClient, this.ResourceManagementClient, this.LogicManagementClient);
         }
 
         private static Management.ResourceManager.ResourceManagementClient GetOldResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<Management.ResourceManager.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
-
         private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
@@ -132,4 +131,3 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
     }
 }
-

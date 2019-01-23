@@ -105,9 +105,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
-            var integrationAccountMap = IntegrationAccountClient.GetIntegrationAccountMap(this.ResourceGroupName,
+            var integrationAccountMap = this.IntegrationAccountClient.GetIntegrationAccountMap(this.ResourceGroupName,
                 this.Name,
                 this.MapName);
 
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (!string.IsNullOrEmpty(this.MapType))
             {
-                integrationAccountMapCopy.MapType = (MapType)Enum.Parse(typeof(MapType), this.MapType);
+                integrationAccountMapCopy.MapType = this.MapType;
             }
 
             if (this.Metadata != null)
@@ -150,16 +150,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 integrationAccountMapCopy.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            ConfirmAction(Force.IsPresent,
+            this.ConfirmAction(this.Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
                     "Microsoft.Logic/integrationAccounts/maps", this.Name),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
                     "Microsoft.Logic/integrationAccounts/maps", this.Name),
-                Name,
+                this.Name,
                 () =>
                 {
                     this.WriteObject(
-                        IntegrationAccountClient.UpdateIntegrationAccountMap(this.ResourceGroupName, this.Name,
+                        this.IntegrationAccountClient.UpdateIntegrationAccountMap(this.ResourceGroupName, this.Name,
                             this.MapName,
                             integrationAccountMapCopy), true);
                 },

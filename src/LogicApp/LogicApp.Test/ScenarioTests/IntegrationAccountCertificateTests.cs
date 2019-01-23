@@ -28,58 +28,58 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 
         public IntegrationAccountCertificateTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
+            this._logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(this._logger);
         }
 
         /// <summary>
-        /// Test New-AzureRmIntegrationAccountCertificate command to create a new integration account certificate.
+        /// Test New-AzIntegrationAccountCertificate command to create a new integration account certificate.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateIntegrationAccountCertificate()
+        public void TestCreateCertificate()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountCertificate");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-CreateIntegrationAccountCertificate");
         }
 
         /// <summary>
-        /// Test New-AzureRmIntegrationAccountCertificatePrivateKey command to create a new integration account certificate.
+        /// Test New-AzIntegrationAccountCertificatePrivateKey command to create a new integration account certificate.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateIntegrationAccountCertificatePrivateKey()
+        public void TestCreateCertificatePrivateKey()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountCertificatePrivateKey");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-CreateIntegrationAccountCertificatePrivateKey");
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountCertificate command to get the integration account certificate.
+        /// Test Get-AzCertificate command to get the integration account certificate.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetIntegrationAccountCertificate()
+        public void TestGetCertificate()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountCertificate");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-GetIntegrationAccountCertificate");
         }
 
         /// <summary>
-        /// Test Remove-AzureRmIntegrationAccountCertificate command to remove the integration account certificate.
+        /// Test Remove-AzIntegrationAccountCertificate command to remove the integration account certificate.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveIntegrationAccountCertificate()
+        public void TestRemoveCertificate()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccountCertificate");
-        }        
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-RemoveIntegrationAccountCertificate");
+        }
 
         /// <summary>
-        /// Test Set-AzureRmIntegrationAccountCertificate command to update the integration account certificate.
+        /// Test Set-AzIntegrationAccountCertificate command to update the integration account certificate.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateIntegrationAccountCertificate()
+        public void TestUpdateCertificate()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountCertificate");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-UpdateIntegrationAccountCertificate");
         }
 
         /// <summary>
@@ -87,10 +87,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateIntegrationAccountCertificatePublicKey()
+        public void TestCreateCertificatePublicKey()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountCertificatePublicKey");
+            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-CreateIntegrationAccountCertificatePublicKey");
         }
     }
 }
-

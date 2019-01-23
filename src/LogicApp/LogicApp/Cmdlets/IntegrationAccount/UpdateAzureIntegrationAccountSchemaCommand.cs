@@ -105,9 +105,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
-            var integrationAccountSchema = IntegrationAccountClient.GetIntegrationAccountSchema(this.ResourceGroupName,
+            var integrationAccountSchema = this.IntegrationAccountClient.GetIntegrationAccountSchema(this.ResourceGroupName,
                 this.Name,
                 this.SchemaName);
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (!string.IsNullOrEmpty(this.schemaType))
             {
-                integrationAccountSchemaCopy.SchemaType = (SchemaType)Enum.Parse(typeof(SchemaType), this.SchemaType);
+                integrationAccountSchemaCopy.SchemaType = this.SchemaType;
             }
 
             if (!string.IsNullOrEmpty(this.ContentType))
@@ -153,16 +153,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 integrationAccountSchemaCopy.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            ConfirmAction(Force.IsPresent,
+            this.ConfirmAction(this.Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
                     "Microsoft.Logic/integrationAccounts/schemas", this.Name),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
                     "Microsoft.Logic/integrationAccounts/schemas", this.Name),
-                Name,
+                this.Name,
                 () =>
                 {
                     this.WriteObject(
-                        IntegrationAccountClient.UpdateIntegrationAccountSchema(this.ResourceGroupName,
+                        this.IntegrationAccountClient.UpdateIntegrationAccountSchema(this.ResourceGroupName,
                             integrationAccount.Name,
                             this.SchemaName, integrationAccountSchemaCopy), true);
                 },
