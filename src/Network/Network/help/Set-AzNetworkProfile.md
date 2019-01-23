@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznetworkprofile
@@ -127,3 +127,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkProfile](./Get-AzNetworkProfile.md)
+
+[New-AzNetworkProfile](./New-AzNetworkProfile.md)
+
+[Remove-AzNetworkProfile](./Remove-AzNetworkProfile.md)

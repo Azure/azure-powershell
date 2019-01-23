@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvirtualhub
@@ -317,3 +317,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzVirtualHub](./Get-AzVirtualHub.md)
+
+[Remove-AzVirtualHub](./Remove-AzVirtualHub.md)
+
+[Update-AzVirtualHub](./Update-AzVirtualHub.md)
