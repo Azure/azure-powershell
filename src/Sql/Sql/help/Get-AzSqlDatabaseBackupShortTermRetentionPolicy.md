@@ -20,7 +20,7 @@ Get-AzSqlDatabaseBackupShortTermRetentionPolicy [-ResourceGroupName] <String> [-
 
 ### PolicyByInputObjectSet
 ```
-Get-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase <AzureSqlDatabaseModel>
+Get-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabaseObject <AzureSqlDatabaseModel>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -56,17 +56,17 @@ ResourceGroupName ServerName  DatabaseName RetentionDays
 resourcegroup01   server01    database01   35
 ```
 
-This command gets the short term retention policy for database01.
+This command gets the short term retention policy for database01 via piping in a database object.
 
 ## PARAMETERS
 
-### -AzureSqlDatabase
+### -AzureSqlDatabaseObject
 The database object to get the policy for.
 
 ```yaml
-Type: AzureSqlDatabaseModel
+Type: Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
 Parameter Sets: PolicyByInputObjectSet
-Aliases:
+Aliases: AzureSqlDatabase
 
 Required: True
 Position: Named
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 The name of the Azure SQL Database to use.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 The short term retention policy resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PolicyByResourceIdSet
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 The name of the Azure SQL Server the database is in.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
@@ -151,8 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
