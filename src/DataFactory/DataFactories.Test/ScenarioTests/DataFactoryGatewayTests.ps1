@@ -22,11 +22,11 @@ function Test-GetNonExistingDataFactoryGateway
     $rgname = Get-ResourceGroupName
     $rglocation = Get-ProviderLocation ResourceManagement
     
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
-    New-AzureRmDataFactory -Name $dfname -Location $rglocation -ResourceGroup $rgname  -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzDataFactory -Name $dfname -Location $rglocation -ResourceGroup $rgname  -Force
     
     # Test
-    Assert-ThrowsContains { Get-AzureRmDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name "gwname"  } "GatewayNotFound"    
+    Assert-ThrowsContains { Get-AzDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name "gwname"  } "GatewayNotFound"    
 }
 
 <#
@@ -41,28 +41,28 @@ function Test-DataFactoryGateway
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        New-AzDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
      
         $gwname = "foo"
         $description = "description"
    
-        $actual = New-AzureRmDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname
-        $expected = Get-AzureRmDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname
+        $actual = New-AzDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname
+        $expected = Get-AzDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname
         Assert-AreEqual $actual.Name $expected.Name
         Assert-NotNull $actual.Key
 
-        $key = New-AzureRmDataFactoryGatewayKey -ResourceGroupName $rgname -DataFactoryName $dfname -GatewayName $gwname
+        $key = New-AzDataFactoryGatewayKey -ResourceGroupName $rgname -DataFactoryName $dfname -GatewayName $gwname
         Assert-NotNull $key
         Assert-NotNull $key.Gatewaykey
 
-        $result = Set-AzureRmDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname -Description $description
+        $result = Set-AzDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname -Description $description
         Assert-AreEqual $result.Description $description
 
-        Remove-AzureRmDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname -Force
+        Remove-AzDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname -Force
     }
     finally
     {
@@ -82,31 +82,31 @@ function Test-DataFactoryGatewayAuthKey
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        New-AzDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
      
         $gwname = "foo"
         $description = "description"
    
-        $actual = New-AzureRmDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname
-        $expected = Get-AzureRmDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname
+        $actual = New-AzDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname
+        $expected = Get-AzDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname
         Assert-AreEqual $actual.Name $expected.Name
         Assert-NotNull $actual.Key
 
-        $key = Get-AzureRmDataFactoryGatewayAuthKey -ResourceGroupName $rgname -DataFactoryName $dfname -GatewayName $gwname
+        $key = Get-AzDataFactoryGatewayAuthKey -ResourceGroupName $rgname -DataFactoryName $dfname -GatewayName $gwname
         Assert-NotNull $key
         Assert-NotNull $key.Key1
         Assert-NotNull $key.Key2
 
         $keyName = 'key2'
-        $newKey = New-AzureRmDataFactoryGatewayAuthKey -ResourceGroupName $rgname -DataFactoryName $dfname -GatewayName $gwname -KeyName $keyName
+        $newKey = New-AzDataFactoryGatewayAuthKey -ResourceGroupName $rgname -DataFactoryName $dfname -GatewayName $gwname -KeyName $keyName
         Assert-NotNull $key.Key2
         Assert-AreNotEqual $key.Key2 $newKey.Key2
 
-        Remove-AzureRmDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname -Force
+        Remove-AzDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname -Force
     }
     finally
     {
@@ -126,27 +126,27 @@ function Test-DataFactoryGatewayWithDataFactoryParameter
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        $datafactory = New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        $datafactory = New-AzDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
      
         $gwname = "foo"
         $description = "description"
    
-        $actual = New-AzureRmDataFactoryGateway -DataFactory $datafactory -Name $gwname
-        $expected = Get-AzureRmDataFactoryGateway -DataFactory $datafactory -Name $gwname
+        $actual = New-AzDataFactoryGateway -DataFactory $datafactory -Name $gwname
+        $expected = Get-AzDataFactoryGateway -DataFactory $datafactory -Name $gwname
         Assert-AreEqual $actual.Name $expected.Name
 
-        $key = New-AzureRmDataFactoryGatewayKey -DataFactory $datafactory -GatewayName $gwname
+        $key = New-AzDataFactoryGatewayKey -DataFactory $datafactory -GatewayName $gwname
         Assert-NotNull $key
         Assert-NotNull $key.Gatewaykey
 
-        $result = Set-AzureRmDataFactoryGateway -DataFactory $datafactory -Name $gwname -Description $description
+        $result = Set-AzDataFactoryGateway -DataFactory $datafactory -Name $gwname -Description $description
         Assert-AreEqual $result.Description $description
 
-        Remove-AzureRmDataFactoryGateway -DataFactory $datafactory -Name $gwname -Force
+        Remove-AzDataFactoryGateway -DataFactory $datafactory -Name $gwname -Force
     }
     finally
     {

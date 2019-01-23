@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Test-AzureRmLogicApp command to validate given workflow definition.
+        /// Test Test-AzLogicApp command to validate given workflow definition.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

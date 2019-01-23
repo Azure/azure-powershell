@@ -22,10 +22,10 @@ function Test-GetNonExistingDataFactory
     $rgname = Get-ResourceGroupName
     $rglocation = Get-ProviderLocation ResourceManagement
     
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
     
     # Test
-    Assert-ThrowsContains { Get-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname } "ResourceNotFound"    
+    Assert-ThrowsContains { Get-AzDataFactory -ResourceGroupName $rgname -Name $dfname } "ResourceNotFound"    
 }
 
 <#
@@ -40,12 +40,12 @@ function Test-CreateDataFactory
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
     
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        $actual = New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
-        $expected = Get-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname
+        $actual = New-AzDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        $expected = Get-AzDataFactory -ResourceGroupName $rgname -Name $dfname
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
@@ -67,10 +67,10 @@ function Test-DeleteDataFactoryWithDataFactoryParameter
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
     
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
-    $df = New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force        
-    Remove-AzureRmDataFactory -DataFactory $df -Force
+    $df = New-AzDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force        
+    Remove-AzDataFactory -DataFactory $df -Force
 }
 
 <#
@@ -84,12 +84,12 @@ function Test-DataFactoryPiping
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
     
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
-    New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+    New-AzDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
 
-    Get-AzureRmDataFactory -ResourceGroupName $rgname | Remove-AzureRmDataFactory -Force
+    Get-AzDataFactory -ResourceGroupName $rgname | Remove-AzDataFactory -Force
 
     # Test the data factory no longer exists
-    Assert-ThrowsContains { Get-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname } "ResourceNotFound"
+    Assert-ThrowsContains { Get-AzDataFactory -ResourceGroupName $rgname -Name $dfname } "ResourceNotFound"
 }

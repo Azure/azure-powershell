@@ -13,9 +13,18 @@ Modifies an ExpressRoute cross connection.
 
 ## SYNTAX
 
+### ModifyByCircuitReference
 ```
 Set-AzExpressRouteCrossConnection -ExpressRouteCrossConnection <PSExpressRouteCrossConnection> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ModifyByParameterValues
+```
+Set-AzExpressRouteCrossConnection -ResourceGroupName <String> -Name <String>
+ [-ServiceProviderProvisioningState <String>] [-ServiceProviderNotes <String>]
+ [-Peerings <PSExpressRouteCrossConnectionPeering[]>] [-AsJob] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,9 +45,9 @@ Set-AzExpressRouteCrossConnection -ExpressRouteCrossConnection $cc
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -51,9 +60,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -66,14 +75,134 @@ Accept wildcard characters: False
 Specifies the **ExpressRouteCrossConnection** object that this cmdlet modifies.
 
 ```yaml
-Type: PSExpressRouteCrossConnection
-Parameter Sets: (All)
-Aliases: 
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCrossConnection
+Parameter Sets: ModifyByCircuitReference
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Force
+Do not ask for confirmation if you want to overwrite a resource
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of express route cross connection.
+
+```yaml
+Type: System.String
+Parameter Sets: ModifyByParameterValues
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Peerings
+The list of peerings for the cross connection
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCrossConnectionPeering[]
+Parameter Sets: ModifyByParameterValues
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The ExpressRouteCrossConnection
+
+```yaml
+Type: System.String
+Parameter Sets: ModifyByParameterValues
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ServiceProviderNotes
+The service provider notes
+
+```yaml
+Type: System.String
+Parameter Sets: ModifyByParameterValues
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ServiceProviderProvisioningState
+The service provider provisioning state to be set
+
+```yaml
+Type: System.String
+Parameter Sets: ModifyByParameterValues
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
