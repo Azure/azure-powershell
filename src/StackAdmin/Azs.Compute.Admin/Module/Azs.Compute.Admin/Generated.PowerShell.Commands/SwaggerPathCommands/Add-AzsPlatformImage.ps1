@@ -183,7 +183,11 @@ function Add-AzsPlatformImage {
                     $GetTaskResult_params = @{
                         TaskResult = $TaskResult
                     }
-                    ConvertTo-PlatformImageObject -PlatformImage (Get-TaskResult @GetTaskResult_params)
+                    $platformImage = Get-TaskResult @GetTaskResult_params
+                    if ($platformImage -and (Get-Member -InputObject $platformImage -Name 'Id') -and $platformImage.Id)
+                    {
+                        ConvertTo-PlatformImageObject -PlatformImage $platformImage
+                    }
                 }
             }
         }
