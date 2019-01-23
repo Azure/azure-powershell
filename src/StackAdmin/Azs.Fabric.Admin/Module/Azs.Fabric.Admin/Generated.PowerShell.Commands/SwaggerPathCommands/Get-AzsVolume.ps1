@@ -115,10 +115,6 @@ function Get-AzsVolume {
 
     Process {
 
-        if ($MyInvocation.InvocationName -eq 'Get-AzsInfrastructureVolume') {
-            Write-Warning "Get-AzsInfrastructureVolume has been deprecated, please use Get-AzsVolume"
-        }
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Fabric.Admin.FabricAdminClient'
         }
