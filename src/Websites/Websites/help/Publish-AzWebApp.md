@@ -25,7 +25,7 @@ Publish-AzWebApp -ArchivePath <String> [-AsJob] [-WebApp] <PSSite> [-DefaultProf
 ```
 
 ## DESCRIPTION
-The **Publish-AzWebApp** cmdlet uploads content to an existing Azure Web App. The content should be packaged in a ZIP file if using stacks such as .NET, Python, or Node, or a WAR or JAR file if using Java. The content should be pre-built and ready-to-run without any additional build steps during deployment. This cmdlet uses the Kudu zipdeploy and wardeploy features to deploy content. Refer to the Kudu wiki for details about how zipdeploy and wardeploy work, and how to properly package a web app for deployment. https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file and https://github.com/projectkudu/kudu/wiki/Deploying-WAR-files-using-wardeploy contain helpful details about zipdeploy and wardeploy.
+The **Publish-AzWebApp** cmdlet uploads content to an existing Azure Web App. The content should be packaged in a ZIP file if using stacks such as .NET, Python, or Node, or a WAR or JAR file if using Java. The content should be pre-built and ready-to-run without any additional build steps during deployment. This cmdlet uses the Kudu zipdeploy and wardeploy features to deploy content. Refer to the Kudu wiki for details about how zipdeploy and wardeploy work, and how to properly package a web app for deployment. https://aka.ms/kuduzipdeploy and https://aka.ms/kuduwardeploy contain helpful details about zipdeploy and wardeploy.
 
 ## EXAMPLES
 
