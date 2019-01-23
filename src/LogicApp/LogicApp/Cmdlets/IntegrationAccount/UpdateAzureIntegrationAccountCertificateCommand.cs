@@ -88,9 +88,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
-            var integrationAccountCertificate = this.IntegrationAccountClient.GetIntegrationAccountCertifcate(this.ResourceGroupName, this.Name, this.CertificateName);
+            var integrationAccountCertificate = IntegrationAccountClient.GetIntegrationAccountCertifcate(this.ResourceGroupName, this.Name, this.CertificateName);
 
             if (!string.IsNullOrEmpty(this.KeyName))
             {
@@ -130,14 +130,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 integrationAccountCertificate.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            this.ConfirmAction(this.Force.IsPresent,
+            ConfirmAction(Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning, "Microsoft.Logic/integrationAccounts/certificates", this.Name),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage, "Microsoft.Logic/integrationAccounts/certificates", this.Name),
                 this.Name,
                 () =>
                 {
                     this.WriteObject(
-                        this.IntegrationAccountClient.UpdateIntegrationAccountCertificate(this.ResourceGroupName,
+                        IntegrationAccountClient.UpdateIntegrationAccountCertificate(this.ResourceGroupName,
                             integrationAccount.Name, this.CertificateName, integrationAccountCertificate), true);
                 },
                 null);

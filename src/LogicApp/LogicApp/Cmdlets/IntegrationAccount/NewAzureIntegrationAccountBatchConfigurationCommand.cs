@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (this.ShouldProcess(this.Name, $"Creating a new Batch Configuration in resource group '{this.ResourceGroupName}' with name '{this.Name}'."))
             {
-                this.WriteObject(this.IntegrationAccountClient.CreateIntegrationAccountBatchConfiguration(this.ResourceGroupName, this.ParentName, this.Name, batchConfiguration));
+                this.WriteObject(IntegrationAccountClient.CreateIntegrationAccountBatchConfiguration(this.ResourceGroupName, this.ParentName, this.Name, batchConfiguration));
             }
         }
 

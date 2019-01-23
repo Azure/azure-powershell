@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System.Collections;
-    using System.Globalization;
     using System.Management.Automation;
 
     /// <summary>
@@ -166,7 +165,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (this.ShouldProcess(this.Name, $"Updating Assembly '{this.Name}' in resource group '{this.ResourceGroupName}'."))
             {
-                this.WriteObject(this.IntegrationAccountClient.UpdateIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name, assemblyDefinition));
+                this.WriteObject(IntegrationAccountClient.UpdateIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name, assemblyDefinition));
             }
         }
     }

@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
             if (string.IsNullOrEmpty(this.MapDefinition))
             {
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.ContentType = this.MapType.Equals("liquid", System.StringComparison.CurrentCultureIgnoreCase) ? "text/plain" : "application/xml";
             }
 
-            this.WriteObject(this.IntegrationAccountClient.CreateIntegrationAccountMap(this.ResourceGroupName, integrationAccount.Name, this.MapName,
+            this.WriteObject(IntegrationAccountClient.CreateIntegrationAccountMap(this.ResourceGroupName, integrationAccount.Name, this.MapName,
                 new IntegrationAccountMap
                 {
                     ContentType = this.ContentType,

@@ -80,11 +80,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (string.IsNullOrWhiteSpace(this.Name))
             {
-                this.WriteObject(this.IntegrationAccountClient.ListIntegrationAccountAssemblies(this.ResourceGroupName, this.ParentName), true);
+                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountAssemblies(this.ResourceGroupName, this.ParentName), true);
             }
             else
             {
-                this.WriteObject(this.IntegrationAccountClient.GetIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name));
+                this.WriteObject(IntegrationAccountClient.GetIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name));
             }
         }
     }

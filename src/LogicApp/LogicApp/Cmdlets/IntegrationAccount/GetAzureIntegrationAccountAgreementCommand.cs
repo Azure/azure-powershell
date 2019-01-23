@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
@@ -65,11 +64,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (string.IsNullOrEmpty(this.AgreementName))
             {
-                this.WriteObject(this.IntegrationAccountClient.ListIntegrationAccountAgreements(this.ResourceGroupName, this.Name), true);
+                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountAgreements(this.ResourceGroupName, this.Name), true);
             }
             else
             {
-                this.WriteObject(this.IntegrationAccountClient.GetIntegrationAccountAgreement(this.ResourceGroupName, this.Name, this.AgreementName), true);
+                this.WriteObject(IntegrationAccountClient.GetIntegrationAccountAgreement(this.ResourceGroupName, this.Name, this.AgreementName), true);
             }
         }
     }

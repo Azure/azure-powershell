@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public XunitTracingInterceptor _logger;
         public IntegrationAccountAssemblyTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            this._logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(this._logger);
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAssembly()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-CreateIntegrationAccountAssembly");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountAssembly");
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAssembly()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-GetIntegrationAccountAssembly");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountAssembly");
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAssembly()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-RemoveIntegrationAccountAssembly");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccountAssembly");
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateAssembly()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-UpdateIntegrationAccountAssembly");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountAssembly");
         }
     }
 }

@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (string.IsNullOrEmpty(this.MapName))
             {
-                this.WriteObject(this.IntegrationAccountClient.ListIntegrationAccountMaps(this.ResourceGroupName, this.Name), true);
+                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountMaps(this.ResourceGroupName, this.Name), true);
             }
             else
             {
-                this.WriteObject(this.IntegrationAccountClient.GetIntegrationAccountMap(this.ResourceGroupName, this.Name, this.MapName), true);
+                this.WriteObject(IntegrationAccountClient.GetIntegrationAccountMap(this.ResourceGroupName, this.Name, this.MapName), true);
             }
         }
     }

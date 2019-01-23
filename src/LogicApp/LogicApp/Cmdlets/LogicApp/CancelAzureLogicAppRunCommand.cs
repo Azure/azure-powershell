@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            this.ConfirmAction(this.Force.IsPresent,
+            ConfirmAction(Force.IsPresent,
                 Properties.Resource.CancelLogicAppRunWarning,
                 Properties.Resource.CancelLogicAppRunMessage,
                 this.Name,

@@ -50,11 +50,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             base.ExecuteCmdlet();
             if (string.IsNullOrEmpty(this.Name))
             {
-                this.WriteObject(this.IntegrationAccountClient.ListIntegrationAccount(this.ResourceGroupName), true);
+                this.WriteObject(IntegrationAccountClient.ListIntegrationAccount(this.ResourceGroupName), true);
             }
             else
             {
-                this.WriteObject(this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name), true);
+                this.WriteObject(IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name), true);
             }
         }
     }

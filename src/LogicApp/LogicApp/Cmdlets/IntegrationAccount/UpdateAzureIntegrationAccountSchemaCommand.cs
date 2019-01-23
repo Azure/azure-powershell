@@ -104,9 +104,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
-            var integrationAccountSchema = this.IntegrationAccountClient.GetIntegrationAccountSchema(this.ResourceGroupName, this.Name, this.SchemaName);
+            var integrationAccountSchema = IntegrationAccountClient.GetIntegrationAccountSchema(this.ResourceGroupName, this.Name, this.SchemaName);
 
             var integrationAccountSchemaCopy = new IntegrationAccountSchema(schemaType: integrationAccountSchema.SchemaType,
                 id: integrationAccountSchema.Id,
@@ -149,14 +149,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 integrationAccountSchemaCopy.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            this.ConfirmAction(this.Force.IsPresent,
+            ConfirmAction(Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning, "Microsoft.Logic/integrationAccounts/schemas", this.Name),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage, "Microsoft.Logic/integrationAccounts/schemas", this.Name),
                 this.Name,
                 () =>
                 {
                     this.WriteObject(
-                        this.IntegrationAccountClient.UpdateIntegrationAccountSchema(this.ResourceGroupName,
+                        IntegrationAccountClient.UpdateIntegrationAccountSchema(this.ResourceGroupName,
                             integrationAccount.Name,
                             this.SchemaName, integrationAccountSchemaCopy), true);
                 },

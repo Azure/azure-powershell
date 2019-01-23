@@ -80,11 +80,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (string.IsNullOrEmpty(this.Name))
             {
-                this.WriteObject(this.IntegrationAccountClient.ListIntegrationAccountBatchConfigurations(this.ResourceGroupName, this.ParentName), true);
+                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountBatchConfigurations(this.ResourceGroupName, this.ParentName), true);
             }
             else
             {
-                this.WriteObject(this.IntegrationAccountClient.GetIntegrationAccountBatchConfiguration(this.ResourceGroupName, this.ParentName, this.Name));
+                this.WriteObject(IntegrationAccountClient.GetIntegrationAccountBatchConfiguration(this.ResourceGroupName, this.ParentName, this.Name));
             }
         }
     }

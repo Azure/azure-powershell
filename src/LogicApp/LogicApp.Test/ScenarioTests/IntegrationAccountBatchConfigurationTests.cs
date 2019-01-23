@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public XunitTracingInterceptor _logger;
         public IntegrationAccountBatchConfigurationTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            this._logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(this._logger);
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateBatchConfiguration()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-CreateIntegrationAccountBatchConfiguration");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountBatchConfiguration");
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBatchConfiguration()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-GetIntegrationAccountBatchConfiguration");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountBatchConfiguration");
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveBatchConfiguration()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-RemoveIntegrationAccountBatchConfiguration");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccountBatchConfiguration");
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateBatchConfiguration()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-UpdateIntegrationAccountBatchConfiguration");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountBatchConfiguration");
         }
     }
 }

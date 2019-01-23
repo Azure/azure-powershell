@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             base.ExecuteCmdlet();
 
             this.WriteObject(
-                this.IntegrationAccountClient.CreateIntegrationAccount(this.ResourceGroupName, this.Name, new IntegrationAccount
+                IntegrationAccountClient.CreateIntegrationAccount(this.ResourceGroupName, this.Name, new IntegrationAccount
                 {
                     Location = this.Location,
                     Sku = new IntegrationAccountSku

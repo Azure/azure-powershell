@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             }
 
             if (this.ShouldProcess(this.Name, $"Creating a new Assembly in resource group '{this.ResourceGroupName}' with name '{this.Name}'.")) {
-                this.WriteObject(this.IntegrationAccountClient.CreateIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name, assemblyDefinition));
+                this.WriteObject(IntegrationAccountClient.CreateIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name, assemblyDefinition));
             }
         }
     }

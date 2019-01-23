@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Logic.Models;
-    using System.Globalization;
     using System.Management.Automation;
 
     /// <summary>
@@ -85,7 +84,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (this.ShouldProcess(this.Name, $"Deleting Assembly '{this.Name}' in resource group {this.ResourceGroupName}"))
             {
-                this.IntegrationAccountClient.RemoveIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name);
+                IntegrationAccountClient.RemoveIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name);
                 if (this.PassThru)
                 {
                     this.WriteObject(true);

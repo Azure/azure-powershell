@@ -54,11 +54,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             base.ExecuteCmdlet();
             if (string.IsNullOrEmpty(this.CertificateName))
             {
-                this.WriteObject(this.IntegrationAccountClient.ListIntegrationAccountCertificates(this.ResourceGroupName, this.Name), true);
+                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountCertificates(this.ResourceGroupName, this.Name), true);
             }
             else
             {
-                this.WriteObject(this.IntegrationAccountClient.GetIntegrationAccountCertifcate(this.ResourceGroupName, this.Name, this.CertificateName), true);
+                this.WriteObject(IntegrationAccountClient.GetIntegrationAccountCertifcate(this.ResourceGroupName, this.Name, this.CertificateName), true);
             }
         }
     }

@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
             if (string.IsNullOrEmpty(this.SchemaDefinition))
             {
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             }
 
             this.WriteObject(
-                this.IntegrationAccountClient.CreateIntegrationAccountSchema(this.ResourceGroupName, integrationAccount.Name,
+                IntegrationAccountClient.CreateIntegrationAccountSchema(this.ResourceGroupName, integrationAccount.Name,
                     this.SchemaName,
                     new IntegrationAccountSchema
                     {

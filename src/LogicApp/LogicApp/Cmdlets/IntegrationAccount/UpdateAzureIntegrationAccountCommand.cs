@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
             if (!string.IsNullOrEmpty(this.Location))
             {
@@ -81,13 +81,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 };
             }
 
-            this.ConfirmAction(this.Force.IsPresent,
+            ConfirmAction(Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning, "Microsoft.Logic/integrationAccounts", this.Name),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage, "Microsoft.Logic/integrationAccounts", this.Name),
                 this.Name,
                 () =>
                 {
-                    this.WriteObject(this.IntegrationAccountClient.UpdateIntegrationAccount(this.ResourceGroupName, this.Name, integrationAccount), true);
+                    this.WriteObject(IntegrationAccountClient.UpdateIntegrationAccount(this.ResourceGroupName, this.Name, integrationAccount), true);
                 },
                 null);
         }

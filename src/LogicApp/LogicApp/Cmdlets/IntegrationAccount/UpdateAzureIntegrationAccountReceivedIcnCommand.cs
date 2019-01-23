@@ -85,37 +85,37 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            if (string.IsNullOrEmpty(this.AgreementType))
+            if (string.IsNullOrEmpty(AgreementType))
             {
                 this.WriteWarning(Constants.NoAgreementTypeParameterWarningMessage);
-                this.AgreementType = "X12";
+                AgreementType = "X12";
             }
 
-            var integrationAccountReceivedIcn = this.IntegrationAccountClient.GetIntegrationAccountReceivedControlNumber(
+            var integrationAccountReceivedIcn = IntegrationAccountClient.GetIntegrationAccountReceivedControlNumber(
                 resourceGroupName: this.ResourceGroupName,
                 integrationAccountName: this.Name,
                 integrationAccountAgreementName: this.AgreementName,
-                agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: this.AgreementType, ignoreCase: true),
+                agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: AgreementType, ignoreCase: true),
                 controlNumber: this.ControlNumberValue);
 
-            integrationAccountReceivedIcn.MessageType = (MessageType)Enum.Parse(enumType: typeof(MessageType), value: this.AgreementType, ignoreCase: true);
+            integrationAccountReceivedIcn.MessageType = (MessageType)Enum.Parse(enumType: typeof(MessageType), value: AgreementType, ignoreCase: true);
             integrationAccountReceivedIcn.ControlNumber = this.ControlNumberValue;
             integrationAccountReceivedIcn.IsMessageProcessingFailed = this.IsMessageProcessingFailed;
             integrationAccountReceivedIcn.ControlNumberChangedTime = DateTime.UtcNow > integrationAccountReceivedIcn.ControlNumberChangedTime ?
                 DateTime.UtcNow :
                 integrationAccountReceivedIcn.ControlNumberChangedTime.AddTicks(1);
 
-            this.ConfirmAction(
+            ConfirmAction(
                 processMessage: string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateReceivedControlNumberMessage, this.ControlNumberValue, "Microsoft.Logic/integrationAccounts/agreements", this.Name),
                 target: this.Name,
                 action: () =>
                 {
                     this.WriteObject(
-                        sendToPipeline: this.IntegrationAccountClient.UpdateIntegrationAccountReceivedIcn(
+                        sendToPipeline: IntegrationAccountClient.UpdateIntegrationAccountReceivedIcn(
                             resourceGroupName: this.ResourceGroupName,
                             integrationAccountName: this.Name,
                             integrationAccountAgreementName: this.AgreementName,
-                            agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: this.AgreementType, ignoreCase: true),
+                            agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: AgreementType, ignoreCase: true),
                             integrationAccountControlNumber: integrationAccountReceivedIcn),
                         enumerateCollection: true);
                 });

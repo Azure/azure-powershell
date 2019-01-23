@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 
         public IntegrationAccountGeneratedIcnTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            this._logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(this._logger);
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetGeneratedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-GetGeneratedControlNumber");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetGeneratedControlNumber");
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateGeneratedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-UpdateGeneratedControlNumber");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateGeneratedControlNumber");
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListGeneratedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(this._logger, "Test-ListGeneratedControlNumber");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-ListGeneratedControlNumber");
         }
     }
 }

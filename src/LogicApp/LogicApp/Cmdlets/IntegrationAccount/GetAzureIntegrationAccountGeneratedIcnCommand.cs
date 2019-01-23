@@ -70,19 +70,19 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            if (string.IsNullOrEmpty(this.AgreementType))
+            if (string.IsNullOrEmpty(AgreementType))
             {
                 this.WriteWarning(Constants.NoAgreementTypeParameterWarningMessage);
-                this.AgreementType = "X12";
+                AgreementType = "X12";
             }
 
             this.WriteObject(
                 sendToPipeline: string.IsNullOrEmpty(this.AgreementName) ?
-                    this.IntegrationAccountClient.ListIntegrationAccountGeneratedIcns(
+                    IntegrationAccountClient.ListIntegrationAccountGeneratedIcns(
                         resourceGroupName: this.ResourceGroupName,
                         integrationAccountName: this.Name,
-                        agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: this.AgreementType, ignoreCase: true)) as object :
-                    this.IntegrationAccountClient.GetIntegrationAccountGeneratedIcn(
+                        agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: AgreementType, ignoreCase: true)) as object :
+                    IntegrationAccountClient.GetIntegrationAccountGeneratedIcn(
                         resourceGroupName: this.ResourceGroupName,
                         integrationAccountName: this.Name,
                         integrationAccountAgreementName: this.AgreementName),

@@ -104,9 +104,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
-            var integrationAccountMap = this.IntegrationAccountClient.GetIntegrationAccountMap(this.ResourceGroupName, this.Name, this.MapName);
+            var integrationAccountMap = IntegrationAccountClient.GetIntegrationAccountMap(this.ResourceGroupName, this.Name, this.MapName);
 
             var integrationAccountMapCopy = new IntegrationAccountMap(mapType: integrationAccountMap.MapType,
                 id: integrationAccountMap.Id,
@@ -147,13 +147,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 integrationAccountMapCopy.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            this.ConfirmAction(this.Force.IsPresent,
+            ConfirmAction(Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning, "Microsoft.Logic/integrationAccounts/maps", this.Name),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage, "Microsoft.Logic/integrationAccounts/maps", this.Name),
                 this.Name,
                 () =>
                 {
-                    this.WriteObject(this.IntegrationAccountClient.UpdateIntegrationAccountMap(this.ResourceGroupName, this.Name, this.MapName, integrationAccountMapCopy), true);
+                    this.WriteObject(IntegrationAccountClient.UpdateIntegrationAccountMap(this.ResourceGroupName, this.Name, this.MapName, integrationAccountMapCopy), true);
                 },
                 null);
         }

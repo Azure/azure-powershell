@@ -88,19 +88,19 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
-            var integrationAccountPartner = this.IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name, this.PartnerName);
+            var integrationAccountPartner = IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name, this.PartnerName);
 
             if (!string.IsNullOrEmpty(this.PartnerType))
             {
                 integrationAccountPartner.PartnerType = this.PartnerType;
             }
 
-            if (this.BusinessIdentities != null)
+            if (BusinessIdentities != null)
             {
                 integrationAccountPartner.Content.B2b.BusinessIdentities =
-                    CmdletHelper.ConvertToBusinessIdentityList(this.BusinessIdentities);
+                    CmdletHelper.ConvertToBusinessIdentityList(BusinessIdentities);
             }
 
             if (this.Metadata != null)
@@ -108,14 +108,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 integrationAccountPartner.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            this.ConfirmAction(this.Force.IsPresent,
+            ConfirmAction(Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning, "Microsoft.Logic/integrationAccounts/partners", this.Name),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage, "Microsoft.Logic/integrationAccounts/partners", this.Name),
                 this.Name,
                 () =>
                 {
                     this.WriteObject(
-                        this.IntegrationAccountClient.UpdateIntegrationAccountPartner(this.ResourceGroupName,
+                        IntegrationAccountClient.UpdateIntegrationAccountPartner(this.ResourceGroupName,
                             integrationAccount.Name,
                             this.PartnerName,
                             integrationAccountPartner), true);

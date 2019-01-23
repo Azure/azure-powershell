@@ -115,11 +115,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
-            var hostPartner = this.IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name,
+            var hostPartner = IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name,
                 this.HostPartner);
-            var guestPartner = this.IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name,
+            var guestPartner = IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name,
                 this.GuestPartner);
 
             var hostIdentity =
@@ -148,11 +148,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             }
 
             this.WriteObject(
-                this.IntegrationAccountClient.CreateIntegrationAccountAgreement(this.ResourceGroupName, integrationAccount.Name,
+                IntegrationAccountClient.CreateIntegrationAccountAgreement(this.ResourceGroupName, integrationAccount.Name,
                     this.AgreementName,
                     new IntegrationAccountAgreement
                     {
-                        AgreementType = (AgreementType)Enum.Parse(typeof(AgreementType), this.AgreementType),
+                        AgreementType = (AgreementType)Enum.Parse(typeof(AgreementType), AgreementType),
                         HostIdentity = hostIdentity,
                         GuestIdentity = guestIdentity,
                         GuestPartner = this.GuestPartner,

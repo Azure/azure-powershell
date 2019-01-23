@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (string.IsNullOrEmpty(this.PartnerName))
             {
-                this.WriteObject(this.IntegrationAccountClient.ListIntegrationAccountPartners(this.ResourceGroupName, this.Name), true);
+                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountPartners(this.ResourceGroupName, this.Name), true);
             }
             else
             {
-                this.WriteObject(this.IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name, this.PartnerName), true);
+                this.WriteObject(IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name, this.PartnerName), true);
             }
         }
     }

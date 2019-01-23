@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 throw new PSArgumentException(Properties.Resource.DefinitionMissingWarning);
             }
 
-            this.ConfirmAction(this.Force.IsPresent,
+            ConfirmAction(Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning, "Microsoft.Logic/workflows", this.Name),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage, "Microsoft.Logic/workflows", this.Name),
                 this.Name,

@@ -77,30 +77,30 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            if (string.IsNullOrEmpty(this.AgreementType))
+            if (string.IsNullOrEmpty(AgreementType))
             {
                 this.WriteWarning(Constants.NoAgreementTypeParameterWarningMessage);
-                this.AgreementType = "X12";
+                AgreementType = "X12";
             }
 
-            var integrationAccountGeneratedIcn = this.IntegrationAccountClient.GetIntegrationAccountGeneratedIcn(
+            var integrationAccountGeneratedIcn = IntegrationAccountClient.GetIntegrationAccountGeneratedIcn(
                 resourceGroupName: this.ResourceGroupName,
                 integrationAccountName: this.Name,
                 integrationAccountAgreementName: this.AgreementName);
 
-            integrationAccountGeneratedIcn.MessageType = (MessageType)Enum.Parse(enumType: typeof(MessageType), value: this.AgreementType, ignoreCase: true);
+            integrationAccountGeneratedIcn.MessageType = (MessageType)Enum.Parse(enumType: typeof(MessageType), value: AgreementType, ignoreCase: true);
             integrationAccountGeneratedIcn.ControlNumber = this.ControlNumber;
             integrationAccountGeneratedIcn.ControlNumberChangedTime = DateTime.UtcNow > integrationAccountGeneratedIcn.ControlNumberChangedTime ?
                 DateTime.UtcNow :
                 integrationAccountGeneratedIcn.ControlNumberChangedTime.AddTicks(1);
 
-            this.ConfirmAction(
+            ConfirmAction(
                 processMessage: string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateGeneratedControlNumberMessage, "Microsoft.Logic/integrationAccounts/agreements", this.Name),
                 target: this.Name,
                 action: () =>
                 {
                     this.WriteObject(
-                        sendToPipeline: this.IntegrationAccountClient.UpdateIntegrationAccountGeneratedIcn(
+                        sendToPipeline: IntegrationAccountClient.UpdateIntegrationAccountGeneratedIcn(
                             resourceGroupName: this.ResourceGroupName,
                             integrationAccountName: this.Name,
                             integrationAccountAgreementName: this.AgreementName,
