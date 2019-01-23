@@ -2200,6 +2200,8 @@
     "New-AzSqlDatabaseImport": "New-AzureRmSqlDatabaseImport",
     "Get-AzSqlDatabaseGeoBackupPolicy": "Get-AzureRmSqlDatabaseGeoBackupPolicy",
     "Set-AzSqlDatabaseGeoBackupPolicy": "Set-AzureRmSqlDatabaseGeoBackupPolicy",
+    "Get-AzSqlDatabaseBackupShortTermRetentionPolicy": "Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy",
+    "Set-AzSqlDatabaseBackupShortTermRetentionPolicy": "Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy",
     "Get-AzSqlDatabaseBackupLongTermRetentionPolicy": "Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy",
     "Set-AzSqlDatabaseBackupLongTermRetentionPolicy": "Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy",
     "Get-AzSqlDatabaseLongTermRetentionBackup": "Get-AzureRmSqlDatabaseLongTermRetentionBackup",
