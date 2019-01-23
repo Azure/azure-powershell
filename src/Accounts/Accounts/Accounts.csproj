@@ -61,5 +61,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+   
+  <ItemGroup>
+    <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
+    <ProjectReference Include="..\Authentication\Authentication.csproj" />  
+  </ItemGroup>
 
 </Project>
