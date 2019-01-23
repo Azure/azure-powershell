@@ -3095,7 +3095,7 @@ function Test-VirtualMachinePerformanceMaintenance
 
 <#
 .SYNOPSIS
-Test Virtual Machine Performance Maintenance
+Test Virtual Machine Identity
 #>
 function Test-VirtualMachineIdentity
 {
@@ -3173,7 +3173,7 @@ function Test-VirtualMachineIdentity
 
 <#
 .SYNOPSIS
-Test Virtual Machine Performance Maintenance
+Test Virtual Machine Identity Update
 #>
 function Test-VirtualMachineIdentityUpdate
 {
@@ -3326,6 +3326,10 @@ function Test-VirtualMachineWriteAcceleratorUpdate
     }
 }
 
+<#
+.SYNOPSIS
+Test Virtual Machine Managed Disk
+#>
 function Test-VirtualMachineManagedDisk
 {
     # Setup
@@ -3446,6 +3450,65 @@ function Test-VirtualMachineManagedDisk
         Assert-AreEqual 'Standard_LRS' $vm.StorageProfile.OsDisk.ManagedDisk.StorageAccountType;
         Assert-AreEqual $datadisk.Id $vm.StorageProfile.DataDisks[0].ManagedDisk.Id;
         Assert-AreEqual 'Standard_LRS' $vm.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Reimage
+#>
+function Test-VirtualMachineReimage
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+
+        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_DS1_v2';
+        $vmname = 'vm' + $rgname;
+
+        # NRP
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubipId = $pubip.Id;
+        $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nicId = $nic.Id;
+
+        # OS & Image
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+
+        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize `
+             | Add-AzureRmVMNetworkInterface -Id $nicId -Primary `
+             | Set-AzureRmVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred `
+             | Set-AzureRmVMOSDisk -DiffDiskSetting "Local" -Caching 'ReadOnly' -CreateOption FromImage;
+
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef | Set-AzureRmVMSourceImage -VM $p | New-AzureRmVM -ResourceGroupName $rgname -Location $loc;
+
+        # Get VM
+        $vm = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
+        $vm_output = $vm | Out-String;
+        Write-Verbose($vm_output);
+
+        Invoke-AzureRmVMReimage -ResourceGroupName $rgname -Name $vmname -TempDisk;
+        $vm = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
     }
     finally
     {

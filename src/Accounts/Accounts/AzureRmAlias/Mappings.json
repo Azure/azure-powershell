@@ -616,7 +616,8 @@
     "Remove-AzVmssVMDataDisk": "Remove-AzureRmVmssVMDataDisk",
     "Get-AzVmssDiskEncryptionStatus": "Get-AzureRmVmssDiskEncryptionStatus",
     "Get-AzVmssVMDiskEncryptionStatus": "Get-AzureRmVmssVMDiskEncryptionStatus",
-    "Repair-AzVmssServiceFabricUD": "Repair-AzureRmVmssServiceFabricUD"
+    "Repair-AzVmssServiceFabricUD": "Repair-AzureRmVmssServiceFabricUD",
+    "Invoke-AzVMReimage":  "Invoke-AzureRmVMReimage"
   },
   "Az.Compute.ManagedService": {
     "ConvertTo-AzVhd": "ConvertTo-AzureRmVhd"
