@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                 if (cluster.NodeTypes == null)
                 {
-                    throw new PSInvalidOperationException(ServiceFabricProperties.Resources.NoneNodeTypeFound);
+                    throw new PSInvalidOperationException(ServiceFabricProperties.Resources.NodeTypesNotDefinedInCluster);
                 }
 
                 if (existingNodeType != null)

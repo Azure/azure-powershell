@@ -58,6 +58,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetReimageTempDisk()
+        {
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineScaleSetReimageTempDisk");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetLB()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineScaleSetLB");

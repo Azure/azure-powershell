@@ -15,12 +15,9 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Rest;
 using System;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
-
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Kusto.Properties;
 
 namespace Microsoft.Azure.Commands.Kusto.Models
 {

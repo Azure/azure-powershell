@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/export-azloganalyticthrottledrequests
@@ -13,9 +13,9 @@ Export logs that show total throttled Api requests for this subscription in the 
 ## SYNTAX
 
 ```
-Export-AzLogAnalyticThrottledRequests [-GroupByOperationName] [-FromTime] <DateTime> [-GroupByThrottlePolicy]
- [-BlobContainerSasUri] <String> [-GroupByResourceName] [-ToTime] <DateTime> [-Location] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Export-AzLogAnalyticThrottledRequests [-Location] <String> [-FromTime] <DateTime> [-ToTime] <DateTime>
+ [-BlobContainerSasUri] <String> [-GroupByOperationName] [-GroupByResourceName] [-GroupByThrottlePolicy]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

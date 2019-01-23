@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string diskName = this.DiskName;
                     var grantAccessData = new GrantAccessData();
-                    grantAccessData.Access = this.Access;
                     grantAccessData.DurationInSeconds = this.DurationInSecond;
+                    grantAccessData.Access = this.Access;
 
                     var result = DisksClient.GrantAccess(resourceGroupName, diskName, grantAccessData);
                     var psObject = new PSAccessUri();

@@ -19,7 +19,7 @@ Tests getting Active Directory groups.
 function Test-GetAllADGroups
 {
     # Test
-    $groups = Get-AzureRmADGroup
+    $groups = Get-AzADGroup
 
     # Assert
     Assert-NotNull($groups)
@@ -39,7 +39,7 @@ function Test-GetADGroupWithSearchString
 
     # Test
     # Select at most 10 groups. Groups are restricted to contain "test" to fasten the test
-    $groups = Get-AzureRmADGroup -SearchString $displayName
+    $groups = Get-AzADGroup -SearchString $displayName
 
     # Assert
     Assert-AreEqual $groups.Count 1
@@ -55,7 +55,7 @@ function Test-GetADGroupWithBadSearchString
 {
     # Test
     # Select at most 10 groups. Groups are restricted to contain "test" to fasten the test
-    $groups = Get-AzureRmADGroup -SearchString "BadSearchString"
+    $groups = Get-AzADGroup -SearchString "BadSearchString"
 
     # Assert
     Assert-Null($groups)
@@ -70,7 +70,7 @@ function Test-GetADGroupWithObjectId
     param([string]$objectId)
 
     # Test
-    $groups = Get-AzureRmADGroup -ObjectId $objectId
+    $groups = Get-AzADGroup -ObjectId $objectId
 
     # Assert
     Assert-AreEqual $groups.Count 1
@@ -87,7 +87,7 @@ function Test-GetADGroupSecurityEnabled
     param([string]$objectId, [string]$securityEnabled)
 
     # Test
-    $groups = Get-AzureRmADGroup -ObjectId $objectId
+    $groups = Get-AzADGroup -ObjectId $objectId
 
     # Assert
     Assert-AreEqual $groups.Count 1
@@ -103,7 +103,7 @@ Tests getting Active Directory groups.
 function Test-GetADGroupWithBadObjectId
 {
     # Test
-    $groups = Get-AzureRmADGroup -ObjectId "baadc0de-baad-c0de-baad-c0debaadc0de"
+    $groups = Get-AzADGroup -ObjectId "baadc0de-baad-c0de-baad-c0debaadc0de"
 
     # Assert
     Assert-Null $groups
@@ -118,7 +118,7 @@ function Test-GetADGroupWithUserObjectId
     param([string]$objectId)
 
     # Test
-    $groups = Get-AzureRmADGroup -ObjectId $objectId
+    $groups = Get-AzADGroup -ObjectId $objectId
 
     # Assert
     Assert-Null $groups
@@ -133,7 +133,7 @@ function Test-GetADGroupMemberWithGroupObjectId
     param([string]$groupObjectId, [string]$userObjectId, [string]$userName)
 
     # Test
-    $members = Get-AzureRmADGroupMember -GroupObjectId $groupObjectId
+    $members = Get-AzADGroupMember -GroupObjectId $groupObjectId
 
     # Assert
     Assert-AreEqual $members.Count 1
@@ -148,7 +148,7 @@ Tests getting members from an Active Directory group.
 function Test-GetADGroupMemberWithBadGroupObjectId
 {
     # Test
-    Assert-Throws { Get-AzureRmADGroupMember -GroupObjectId "baadc0de-baad-c0de-baad-c0debaadc0de" }
+    Assert-Throws { Get-AzADGroupMember -GroupObjectId "baadc0de-baad-c0de-baad-c0debaadc0de" }
 }
 
 <#
@@ -160,7 +160,7 @@ function Test-GetADGroupMemberWithUserObjectId
     param([string]$objectId)
 
     # Test
-    Assert-Throws { Get-AzureRmADGroupMember -GroupObjectId $objectId }
+    Assert-Throws { Get-AzADGroupMember -GroupObjectId $objectId }
 }
 
 <#
@@ -172,7 +172,7 @@ function Test-GetADGroupMemberFromEmptyGroup
     param([string]$objectId)
 
     # Test
-    $members = Get-AzureRmADGroupMember -GroupObjectId $objectId
+    $members = Get-AzADGroupMember -GroupObjectId $objectId
 
     # Assert
     Assert-Null($members)
@@ -187,7 +187,7 @@ function Test-GetADServicePrincipalWithObjectId
     param([string]$objectId)
 
     # Test
-    $servicePrincipals = Get-AzureRmADServicePrincipal -ObjectId $objectId
+    $servicePrincipals = Get-AzADServicePrincipal -ObjectId $objectId
 
     # Assert
     Assert-AreEqual $servicePrincipals.Count 1
@@ -201,7 +201,7 @@ Tests getting Active Directory service principals.
 function Test-GetADServicePrincipalWithBadObjectId
 {
     # Test
-    $servicePrincipals = Get-AzureRmADServicePrincipal -ObjectId "baadc0de-baad-c0de-baad-c0debaadc0de"
+    $servicePrincipals = Get-AzADServicePrincipal -ObjectId "baadc0de-baad-c0de-baad-c0debaadc0de"
 
     # Assert
     Assert-Null($servicePrincipals)
@@ -216,7 +216,7 @@ function Test-GetADServicePrincipalWithUserObjectId
     param([string]$objectId)
 
     # Test
-    $servicePrincipals = Get-AzureRmADServicePrincipal -ObjectId $objectId
+    $servicePrincipals = Get-AzADServicePrincipal -ObjectId $objectId
 
     # Assert
     Assert-Null($servicePrincipals)
@@ -231,7 +231,7 @@ function Test-GetADServicePrincipalWithSPN
     param([string]$SPN)
 
     # Test
-    $servicePrincipals = Get-AzureRmADServicePrincipal -ServicePrincipalName $SPN
+    $servicePrincipals = Get-AzADServicePrincipal -ServicePrincipalName $SPN
 
     # Assert
     Assert-AreEqual $servicePrincipals.Count 1
@@ -246,7 +246,7 @@ Tests getting Active Directory service principals.
 function Test-GetADServicePrincipalWithBadSPN
 {
     # Test
-    $servicePrincipals = Get-AzureRmADServicePrincipal -ServicePrincipalName "badspn"
+    $servicePrincipals = Get-AzADServicePrincipal -ServicePrincipalName "badspn"
 
     # Assert
     Assert-Null($servicePrincipals)
@@ -261,7 +261,7 @@ function Test-GetADServicePrincipalWithSearchString
     param([string]$displayName)
 
     # Test
-    $servicePrincipals = Get-AzureRmADServicePrincipal -SearchString $displayName
+    $servicePrincipals = Get-AzADServicePrincipal -SearchString $displayName
 
     # Assert
     Assert-AreEqual $servicePrincipals.Count 1
@@ -278,7 +278,7 @@ Tests getting Active Directory service principals.
 function Test-GetADServicePrincipalWithBadSearchString
 {
     # Test
-    $servicePrincipals = Get-AzureRmADServicePrincipal -SearchString "badsearchstring"
+    $servicePrincipals = Get-AzADServicePrincipal -SearchString "badsearchstring"
 
     # Assert
     Assert-Null($servicePrincipals)
@@ -291,7 +291,7 @@ Tests getting Active Directory users.
 function Test-GetAllADUser
 {
     # Test
-    $users = Get-AzureRmADUser
+    $users = Get-AzADUser
 
     # Assert
     Assert-NotNull($users)
@@ -310,7 +310,7 @@ function Test-GetADUserWithObjectId
     param([string]$objectId)
 
     # Test
-    $users = Get-AzureRmADUser -ObjectId $objectId
+    $users = Get-AzADUser -ObjectId $objectId
 
     # Assert
     Assert-AreEqual $users.Count 1
@@ -329,7 +329,7 @@ function Test-GetADUserWithMail
     param([string]$mail)
 
     # Test
-    $users = Get-AzureRmADUser -Mail $mail
+    $users = Get-AzADUser -Mail $mail
 
     # Assert
     Assert-AreEqual $users.Count 1
@@ -345,7 +345,7 @@ Tests getting Active Directory users.
 function Test-GetADUserWithBadObjectId
 {
     # Test
-    $users = Get-AzureRmADUser -ObjectId "baadc0de-baad-c0de-baad-c0debaadc0de"
+    $users = Get-AzADUser -ObjectId "baadc0de-baad-c0de-baad-c0debaadc0de"
 
     # Assert
     Assert-Null($users)
@@ -360,7 +360,7 @@ function Test-GetADUserWithGroupObjectId
     param([string]$objectId)
 
     # Test
-    $users = Get-AzureRmADUser -ObjectId $objectId
+    $users = Get-AzADUser -ObjectId $objectId
 
     # Assert
     Assert-Null($users)
@@ -375,7 +375,7 @@ function Test-GetADUserWithUPN
     param([string]$UPN)
 
     # Test
-    $users = Get-AzureRmADUser -UserPrincipalName $UPN
+    $users = Get-AzADUser -UserPrincipalName $UPN
 
     # Assert
     Assert-AreEqual $users.Count 1
@@ -391,7 +391,7 @@ Tests getting Active Directory users.
 function Test-GetADUserWithFPOUPN
 {
     # Test
-    $users = Get-AzureRmADUser -UserPrincipalName "azsdkposhteam_outlook.com#EXT#@rbactest.onmicrosoft.com"
+    $users = Get-AzADUser -UserPrincipalName "azsdkposhteam_outlook.com#EXT#@rbactest.onmicrosoft.com"
 
     # Assert
     Assert-AreEqual $users.Count 1
@@ -407,7 +407,7 @@ Tests getting Active Directory users.
 function Test-GetADUserWithBadUPN
 {
     # Test
-    $users = Get-AzureRmADUser -UserPrincipalName "baduser@rbactest.onmicrosoft.com"
+    $users = Get-AzADUser -UserPrincipalName "baduser@rbactest.onmicrosoft.com"
 
     # Assert
     Assert-Null($users)
@@ -423,7 +423,7 @@ function Test-GetADUserWithSearchString
 
     # Test
     # Select at most 10 users. Users are restricted to contain "test" to fasten the test
-    $users = Get-AzureRmADUser -SearchString $displayName
+    $users = Get-AzADUser -SearchString $displayName
 
     # Assert
     Assert-NotNull($users)
@@ -440,7 +440,7 @@ function Test-GetADUserWithBadSearchString
 {
     # Test
     # Select at most 10 users. Users are restricted to contain "test" to fasten the test
-    $users = Get-AzureRmADUser -SearchString "badsearchstring"
+    $users = Get-AzADUser -SearchString "badsearchstring"
 
     # Assert
     Assert-Null($users)
@@ -458,31 +458,31 @@ function Test-NewADApplication
     $identifierUri = "http://" + $displayName
 
     # Test
-    $application = New-AzureRmADApplication -DisplayName $displayName -HomePage $homePage -IdentifierUris $identifierUri
+    $application = New-AzADApplication -DisplayName $displayName -HomePage $homePage -IdentifierUris $identifierUri
 
     # Assert
     Assert-NotNull $application
-    $apps =  Get-AzureRmADApplication
+    $apps =  Get-AzADApplication
     Assert-NotNull $apps
     Assert-True { $apps.Count -ge 0 }
 
 	# Get Application by ObjectId
-	$app1 =  Get-AzureRmADApplication -ObjectId $application.ObjectId
+	$app1 =  Get-AzADApplication -ObjectId $application.ObjectId
 	Assert-NotNull $app1
 	Assert-AreEqual $app1.Count 1
 
     # Get Application by ApplicationId
-    $app1 =  Get-AzureRmADApplication -ApplicationId $application.ApplicationId
+    $app1 =  Get-AzADApplication -ApplicationId $application.ApplicationId
     Assert-NotNull $app1
     Assert-AreEqual $app1.Count 1
 
     # Get Application by IdentifierUri
-    $app1 = Get-AzureRmADApplication -IdentifierUri $application.IdentifierUris[0]
+    $app1 = Get-AzADApplication -IdentifierUri $application.IdentifierUris[0]
     Assert-NotNull $app1
     Assert-AreEqual $app1.Count 1
 
     # Get Application by DisplayName
-    $app1 = Get-AzureRmADApplication -DisplayNameStartWith $application.DisplayName
+    $app1 = Get-AzADApplication -DisplayNameStartWith $application.DisplayName
     Assert-NotNull $app1
     Assert-True { $app1.Count -ge 1}
 
@@ -491,13 +491,13 @@ function Test-NewADApplication
     $newIdentifierUri = "http://" + $newDisplayName
 
     # Update displayName and HomePage
-    Set-AzureRmADApplication -ObjectId $application.ObjectId -DisplayName $newDisplayName -HomePage $newHomePage
+    Set-AzADApplication -ObjectId $application.ObjectId -DisplayName $newDisplayName -HomePage $newHomePage
 
     # Update identifierUri
-    Set-AzureRmADApplication -ApplicationId $application.ApplicationId -IdentifierUris $newIdentifierUri
+    Set-AzADApplication -ApplicationId $application.ApplicationId -IdentifierUris $newIdentifierUri
 
     # Get application and verify updated properties
-    $app1 =  Get-AzureRmADApplication -ObjectId $application.ObjectId
+    $app1 =  Get-AzADApplication -ObjectId $application.ObjectId
     Assert-NotNull $app1
     Assert-AreEqual $app1.Count 1
     Assert-AreEqual $app1.DisplayName $newDisplayName
@@ -505,7 +505,7 @@ function Test-NewADApplication
     Assert-AreEqual $app1.IdentifierUris[0] $newIdentifierUri
 
     # Delete
-    Remove-AzureRmADApplication -ObjectId $application.ObjectId -Force
+    Remove-AzADApplication -ObjectId $application.ObjectId -Force
 }
 
 <#
@@ -517,25 +517,25 @@ function Test-NewADServicePrincipal
     param([string]$applicationId)
 
     # Test
-    $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
+    $servicePrincipal = New-AzADServicePrincipal -ApplicationId $applicationId
 
     # Assert
     Assert-NotNull $servicePrincipal
 
     # GetServicePrincipal by ObjectId
-    $sp1 = Get-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id
+    $sp1 = Get-AzADServicePrincipal -ObjectId $servicePrincipal.Id
     Assert-NotNull $sp1
     Assert-AreEqual $sp1.Count 1
     Assert-AreEqual $sp1.Id $servicePrincipal.Id
 
     # GetServicePrincipal by SPN
-    $sp1 = Get-AzureRmADServicePrincipal -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0]
+    $sp1 = Get-AzADServicePrincipal -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0]
     Assert-NotNull $sp1
     Assert-AreEqual $sp1.Count 1
     Assert-True { $sp1.ServicePrincipalNames.Contains($servicePrincipal.ServicePrincipalNames[0]) }
 
     # Delete SP
-    Remove-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id -Force
+    Remove-AzADServicePrincipal -ObjectId $servicePrincipal.Id -Force
 }
 
 <#
@@ -548,8 +548,8 @@ function Test-NewADServicePrincipalWithoutApp
     $displayName = getAssetName
 
     # Test
-    $servicePrincipal = New-AzureRmADServicePrincipal -DisplayName $displayName
-	$role = Get-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id
+    $servicePrincipal = New-AzADServicePrincipal -DisplayName $displayName
+	$role = Get-AzRoleAssignment -ObjectId $servicePrincipal.Id
 
     # Assert
     Assert-NotNull $servicePrincipal
@@ -557,37 +557,37 @@ function Test-NewADServicePrincipalWithoutApp
 	Assert-Null $role
 
     # GetServicePrincipal by ObjectId
-    $sp1 = Get-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id
+    $sp1 = Get-AzADServicePrincipal -ObjectId $servicePrincipal.Id
     Assert-NotNull $sp1
     Assert-AreEqual $sp1.Count 1
     Assert-AreEqual $sp1.Id $servicePrincipal.Id
 
     # GetServicePrincipal by SPN
-    $sp1 = Get-AzureRmADServicePrincipal -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0]
+    $sp1 = Get-AzADServicePrincipal -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0]
     Assert-NotNull $sp1
     Assert-AreEqual $sp1.Count 1
     Assert-True { $sp1.ServicePrincipalNames.Contains($servicePrincipal.ServicePrincipalNames[0]) }
 
     # Get Application by ApplicationId
-    $app1 =  Get-AzureRmADApplication -ApplicationId $servicePrincipal.ApplicationId
+    $app1 =  Get-AzADApplication -ApplicationId $servicePrincipal.ApplicationId
     Assert-NotNull $app1
     Assert-AreEqual $app1.Count 1
 
     # update SP displayName
     $newDisplayName = getAssetName
 
-    Set-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id -DisplayName $newDisplayName
+    Set-AzADServicePrincipal -ObjectId $servicePrincipal.Id -DisplayName $newDisplayName
 
     # Get SP and verify updated name
-    $sp1 = Get-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id
+    $sp1 = Get-AzADServicePrincipal -ObjectId $servicePrincipal.Id
     Assert-NotNull $sp1
     Assert-AreEqual $sp1.Count 1
     Assert-AreEqual $sp1.DisplayName $newDisplayName
 
     # Remove App should delete SP also
-    Remove-AzureRmADApplication -ObjectId $app1.ObjectId -Force
+    Remove-AzADApplication -ObjectId $app1.ObjectId -Force
 
-    Assert-Throws { Remove-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id -Force}
+    Assert-Throws { Remove-AzADServicePrincipal -ObjectId $servicePrincipal.Id -Force}
 }
 
 <#
@@ -601,13 +601,13 @@ function Test-NewADServicePrincipalWithReaderRole
 	$roleDefinitionName = "Reader"
 
 	# Test
-	$servicePrincipal = New-AzureRmADServicePrincipal -DisplayName $displayName -Role $roleDefinitionName
+	$servicePrincipal = New-AzADServicePrincipal -DisplayName $displayName -Role $roleDefinitionName
 	Assert-NotNull $servicePrincipal
 	Assert-AreEqual $servicePrincipal.DisplayName $displayName
 
 	try
 	{
-		$role = Get-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id
+		$role = Get-AzRoleAssignment -ObjectId $servicePrincipal.Id
 		Assert-AreEqual $role.Count 1
 		Assert-AreEqual $role.DisplayName $servicePrincipal.DisplayName
 		Assert-AreEqual $role.ObjectId $servicePrincipal.Id
@@ -616,8 +616,8 @@ function Test-NewADServicePrincipalWithReaderRole
 	}
 	finally
 	{
-		Remove-AzureRmADApplication -ApplicationId $servicePrincipal.ApplicationId -Force
-		Remove-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id -RoleDefinitionName $roleDefinitionName
+		Remove-AzADApplication -ApplicationId $servicePrincipal.ApplicationId -Force
+		Remove-AzRoleAssignment -ObjectId $servicePrincipal.Id -RoleDefinitionName $roleDefinitionName
 	}
 }
 
@@ -630,18 +630,18 @@ function Test-NewADServicePrincipalWithCustomScope
 	# Setup
 	$displayName = getAssetName
 	$defaultRoleDefinitionName = "Contributor"
-	$subscription = Get-AzureRmSubscription | Select -Last 1 -Wait
-	$resourceGroup = Get-AzureRmResourceGroup | Select -Last 1 -Wait
+	$subscription = Get-AzSubscription | Select -Last 1 -Wait
+	$resourceGroup = Get-AzResourceGroup | Select -Last 1 -Wait
 	$scope = "/subscriptions/" + $subscription.Id + "/resourceGroups/" + $resourceGroup.ResourceGroupName
 
 	# Test
-	$servicePrincipal = New-AzureRmADServicePrincipal -DisplayName $displayName -Scope $scope
+	$servicePrincipal = New-AzADServicePrincipal -DisplayName $displayName -Scope $scope
 	Assert-NotNull $servicePrincipal
 	Assert-AreEqual $servicePrincipal.DisplayName $displayName
 
 	try
 	{
-		$role = Get-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id
+		$role = Get-AzRoleAssignment -ObjectId $servicePrincipal.Id
 		Assert-AreEqual $role.Count 1
 		Assert-AreEqual $role.DisplayName $servicePrincipal.DisplayName
 		Assert-AreEqual $role.ObjectId $servicePrincipal.Id
@@ -651,8 +651,8 @@ function Test-NewADServicePrincipalWithCustomScope
 	}
 	finally
 	{
-		Remove-AzureRmADApplication -ApplicationId $servicePrincipal.ApplicationId -Force
-		Remove-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id -Scope $scope -RoleDefinitionName $defaultRoleDefinitionName
+		Remove-AzADApplication -ApplicationId $servicePrincipal.ApplicationId -Force
+		Remove-AzRoleAssignment -ObjectId $servicePrincipal.Id -Scope $scope -RoleDefinitionName $defaultRoleDefinitionName
 	}
 }
 
@@ -668,50 +668,50 @@ function Test-CreateDeleteAppPasswordCredentials
     $password = getAssetName
 
     # Test - Add application with a password cred
-    $application = New-AzureRmADApplication -DisplayName $displayName -IdentifierUris $identifierUri -Password $password
+    $application = New-AzADApplication -DisplayName $displayName -IdentifierUris $identifierUri -Password $password
 
     # Assert
     Assert-NotNull $application
 
     # Get Application by ObjectId
-    $app1 =  Get-AzureRmADApplication -ObjectId $application.ObjectId
+    $app1 =  Get-AzADApplication -ObjectId $application.ObjectId
     Assert-NotNull $app1
 
     # Get credential should fetch 1 credential
-    $cred1 = Get-AzureRmADAppCredential -ObjectId $application.ObjectId
+    $cred1 = Get-AzADAppCredential -ObjectId $application.ObjectId
     Assert-NotNull $cred1
     Assert-AreEqual $cred1.Count 1
 
     # Add 1 more password credential to the same app
     $start = (Get-Date).ToUniversalTime()
     $end = $start.AddYears(1)
-    $cred = New-AzureRmADAppCredential -ObjectId $application.ObjectId -Password $password -StartDate $start -EndDate $end
+    $cred = New-AzADAppCredential -ObjectId $application.ObjectId -Password $password -StartDate $start -EndDate $end
     Assert-NotNull $cred
 
     # Get credential should fetch 2 credentials
-    $cred2 = Get-AzureRmADAppCredential -ObjectId $application.ObjectId
+    $cred2 = Get-AzADAppCredential -ObjectId $application.ObjectId
     Assert-NotNull $cred2
     Assert-AreEqual $cred2.Count 2
     $credCount = $cred2 | where {$_.KeyId -in $cred1.KeyId, $cred.KeyId}
     Assert-AreEqual $credCount.Count 2
 
     # Remove cred by KeyId
-    Remove-AzureRmADAppCredential -ApplicationId $application.ApplicationId -KeyId $cred.KeyId -Force
-    $cred3 = Get-AzureRmADAppCredential -ApplicationId $application.ApplicationId
+    Remove-AzADAppCredential -ApplicationId $application.ApplicationId -KeyId $cred.KeyId -Force
+    $cred3 = Get-AzADAppCredential -ApplicationId $application.ApplicationId
     Assert-NotNull $cred3
     Assert-AreEqual $cred3.Count 1
     Assert-AreEqual $cred3[0].KeyId $cred1.KeyId
 
     # Remove All creds
-    Remove-AzureRmADAppCredential -ObjectId $application.ObjectId -All -Force
-    $cred3 = Get-AzureRmADAppCredential -ObjectId $application.ObjectId
+    Remove-AzADAppCredential -ObjectId $application.ObjectId -All -Force
+    $cred3 = Get-AzADAppCredential -ObjectId $application.ObjectId
     Assert-Null $cred3
 
-    $newApplication = Get-AzureRmADApplication -DisplayNameStartWith "PowershellTestingApp"
-    Assert-Throws { New-AzureRmADAppCredential -ApplicationId $newApplication.ApplicationId -Password "Somedummypwd"}
+    $newApplication = Get-AzADApplication -DisplayNameStartWith "PowershellTestingApp"
+    Assert-Throws { New-AzADAppCredential -ApplicationId $newApplication.ApplicationId -Password "Somedummypwd"}
 
     # Remove App
-    Remove-AzureRmADApplication -ObjectId $application.ObjectId -Force
+    Remove-AzADApplication -ObjectId $application.ObjectId -Force
 }
 
 
@@ -726,7 +726,7 @@ function Test-CreateDeleteSpPasswordCredentials
     $password = getAssetName
 
     # Test - Add SP with a password cred
-    $servicePrincipal = New-AzureRmADServicePrincipal -DisplayName $displayName  -Password $password
+    $servicePrincipal = New-AzADServicePrincipal -DisplayName $displayName  -Password $password
 
     # Assert
     Assert-NotNull $servicePrincipal
@@ -734,43 +734,43 @@ function Test-CreateDeleteSpPasswordCredentials
     Try
     {
     # Get service principal by ObjectId
-    $sp1 =  Get-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id
+    $sp1 =  Get-AzADServicePrincipal -ObjectId $servicePrincipal.Id
     Assert-NotNull $sp1.Id
 
     # Get credential should fetch 1 credential
-    $cred1 = Get-AzureRmADSpCredential -ObjectId $servicePrincipal.Id
+    $cred1 = Get-AzADSpCredential -ObjectId $servicePrincipal.Id
     Assert-NotNull $cred1
     Assert-AreEqual $cred1.Count 1
 
     # Add 1 more passowrd credential to the same app
     $start = (Get-Date).ToUniversalTime()
     $end = $start.AddYears(1)
-    $cred = New-AzureRmADSpCredential -ObjectId $servicePrincipal.Id -Password $password -StartDate $start -EndDate $end
+    $cred = New-AzADSpCredential -ObjectId $servicePrincipal.Id -Password $password -StartDate $start -EndDate $end
     Assert-NotNull $cred
 
     # Get credential should fetch 2 credentials
-    $cred2 = Get-AzureRmADSpCredential -ObjectId $servicePrincipal.Id
+    $cred2 = Get-AzADSpCredential -ObjectId $servicePrincipal.Id
     Assert-NotNull $cred2
     Assert-AreEqual $cred2.Count 2
     $credCount = $cred2 | where {$_.KeyId -in $cred1.KeyId, $cred.KeyId}
     Assert-AreEqual $credCount.Count 2
 
     # Remove cred by KeyId
-    Remove-AzureRmADSpCredential -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0] -KeyId $cred.KeyId -Force
-    $cred3 = Get-AzureRmADSpCredential -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0]
+    Remove-AzADSpCredential -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0] -KeyId $cred.KeyId -Force
+    $cred3 = Get-AzADSpCredential -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0]
     Assert-NotNull $cred3
     Assert-AreEqual $cred3.Count 1
     Assert-AreEqual $cred3[0].KeyId $cred1.KeyId
 
     # Remove All creds
-    Remove-AzureRmADSpCredential -ObjectId $servicePrincipal.Id -All -Force
-    $cred3 = Get-AzureRmADSpCredential -ObjectId $servicePrincipal.Id
+    Remove-AzADSpCredential -ObjectId $servicePrincipal.Id -All -Force
+    $cred3 = Get-AzADSpCredential -ObjectId $servicePrincipal.Id
     Assert-Null $cred3
     }
     Finally
     {
       # Remove App
-      $app =  Get-AzureRmADApplication -ApplicationId $servicePrincipal.ApplicationId
-      Remove-AzureRmADApplication -ObjectId $app.ObjectId -Force
+      $app =  Get-AzADApplication -ApplicationId $servicePrincipal.ApplicationId
+      Remove-AzADApplication -ObjectId $app.ObjectId -Force
     }
 }

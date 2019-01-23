@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvpnclientipsecparameter
@@ -189,3 +189,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzVpnClientIpsecParameter](./Get-AzVpnClientIpsecParameter.md)
+
+[Remove-AzVpnClientIpsecParameter](./Remove-AzVpnClientIpsecParameter.md)
+
+[Set-AzVpnClientIpsecParameter](./Set-AzVpnClientIpsecParameter.md)
