@@ -92,15 +92,9 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.1.0'; },
                @{ModuleName = 'Az.Resources'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.ServiceBus'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.ServiceFabric'; RequiredVersion = '1.0.0'; }, 
-<<<<<<< HEAD
-               @{ModuleName = 'Az.SignalR'; RequiredVersion = '1.0.0'; }, 
-               @{ModuleName = 'Az.Sql'; RequiredVersion = '1.0.0'; }, 
-#               @{ModuleName = 'Az.Storage'; RequiredVersion = '1.0.0'; },  # Storage removed to support preview
-=======
                @{ModuleName = 'Az.SignalR'; RequiredVersion = '1.0.1'; }, 
                @{ModuleName = 'Az.Sql'; RequiredVersion = '1.0.1'; }, 
-               @{ModuleName = 'Az.Storage'; RequiredVersion = '1.0.1'; }, 
->>>>>>> a2f390530016673c821ac011c9e8450fb60ba92e
+#               @{ModuleName = 'Az.Storage'; RequiredVersion = '1.0.0'; },  # Storage removed to support preview
                @{ModuleName = 'Az.StreamAnalytics'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.TrafficManager'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.Websites'; RequiredVersion = '1.0.1'; })
