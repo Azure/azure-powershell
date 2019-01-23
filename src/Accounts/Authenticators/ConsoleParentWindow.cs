@@ -16,7 +16,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Microsoft.Azure.Commands.Common.Authentication
+namespace Microsoft.Azure.PowerShell.Authenticators
 {
     /// <summary>
     /// An implementation of <see cref="IWin32Window"/> that gives the

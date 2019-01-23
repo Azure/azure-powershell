@@ -3,8 +3,8 @@
   <Import Project="$(MSBuildThisFileDirectory)\..\..\Az.Shared.props" />
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.Authenticators.NetFramework</AssemblyName>
-    <RootNamespace>Microsoft.Azure.PowerShell.Authenticators.NetFramework</RootNamespace>
+    <AssemblyName>Microsoft.Azure.PowerShell.Authenticators</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.Authenticators</RootNamespace>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>bin\$(Configuration)</OutputPath>
@@ -23,11 +23,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Authentication" Version="1.1.14-preview" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="System.Windows.Forms" />
+    <ProjectReference Include="..\Authentication\Authentication.csproj" />
   </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">

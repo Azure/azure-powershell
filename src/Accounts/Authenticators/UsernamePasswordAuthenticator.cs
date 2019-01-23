@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-namespace Microsoft.Azure.PowerShell.Authenticators.NetFramework
+namespace Microsoft.Azure.PowerShell.Authenticators
 {
     /// <summary>
     /// Authenticate username + password scenarios
