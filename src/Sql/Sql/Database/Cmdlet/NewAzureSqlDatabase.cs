@@ -160,6 +160,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string LicenseType { get; set; }
 
         /// <summary>
+        /// Gets or sets the Auto Pause delay for Azure Sql Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The auto pause delay for Azure Sql database(serverless only), -1 to opt out")]
+        public int? AutoPauseDelay { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -232,6 +239,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 newDbModel.Edition = Edition;
                 newDbModel.Capacity = VCore;
                 newDbModel.Family = ComputeGeneration;
+                newDbModel.AutoPauseDelay = AutoPauseDelay;
             }
 
             dbCreateUpdateModel.Database = newDbModel;

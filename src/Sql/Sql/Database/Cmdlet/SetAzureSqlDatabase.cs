@@ -177,6 +177,17 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string LicenseType { get; set; }
 
         /// <summary>
+        /// Gets or sets the auto pause delay for the Azure Sql Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The auto pause delay for Azure Sql database (serverless only), -1 to opt out",
+            ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The auto pause delay for Azure Sql database (serverless only), -1 to opt out",
+            ParameterSetName = VcoreDatabaseParameterSet)]
+        public int? AutoPauseDelay { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()

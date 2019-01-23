@@ -157,7 +157,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 SampleName = model.SampleName,
                 ZoneRedundant = model.Database.ZoneRedundant,
                 ElasticPoolId = elasticPoolId,
-                LicenseType = model.Database.LicenseType
+                LicenseType = model.Database.LicenseType,
+                AutoPauseDelay = model.Database.AutoPauseDelay
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
