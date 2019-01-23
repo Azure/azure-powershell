@@ -33,14 +33,14 @@ function Test-StorageAccount
         $accessTier = 'Cool'
 
         Write-Verbose "RGName: $rgname | Loc: $loc"
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc;
 
-        $job = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -AccessTier $accessTier -AsJob
+        $job = New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -AccessTier $accessTier -AsJob
         $job | Wait-Job
-        $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 
         $stotype = 'StandardGRS';
-        Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname; }
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname; }
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
@@ -50,8 +50,8 @@ function Test-StorageAccount
         $stotype = 'Standard_LRS';
         $accessTier = 'Hot'
         # TODO: Still need to do retry for Set-, even after Get- returns it.
-        Retry-IfException { $global:sto = Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -AccessTier $accessTier -Force }
-        $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -AccessTier $accessTier -Force }
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         $stotype = 'StandardLRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
@@ -61,9 +61,9 @@ function Test-StorageAccount
     
         $stotype = 'Standard_RAGRS';
         $accessTier = 'Cool'
-        Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -AccessTier $accessTier -Force
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -AccessTier $accessTier -Force
         
-        $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         $stotype = 'StandardRAGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
@@ -72,9 +72,9 @@ function Test-StorageAccount
         Assert-AreEqual $accessTier $sto.AccessTier;
 
         $stotype = 'Standard_GRS';
-        Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype
         
-        $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         $stotype = 'StandardGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
@@ -82,22 +82,22 @@ function Test-StorageAccount
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $accessTier $sto.AccessTier;
 
-        $stokey1 = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
+        $stokey1 = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
 
-        New-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname -KeyName key1;
+        New-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname -KeyName key1;
         
-        $stokey2 = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
+        $stokey2 = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
         Assert-AreNotEqual $stokey1[0].Value $stokey2[0].Value;
         Assert-AreEqual $stokey2[1].Value $stokey1[1].Value;
 
-        New-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname -KeyName key2;
+        New-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname -KeyName key2;
 
-        $stokey3 = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
+        $stokey3 = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
         Assert-AreNotEqual $stokey1[0].Value $stokey2[0].Value;
         Assert-AreEqual $stokey3[0].Value $stokey2[0].Value;
         Assert-AreNotEqual $stokey2[1].Value $stokey3[1].Value;
 
-        Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
     finally
     {
@@ -108,7 +108,7 @@ function Test-StorageAccount
 
 <#
 .SYNOPSIS
-Test New-AzureRmStorageAccount
+Test New-AzStorageAccount
 .DESCRIPTION
 Smoke[Broken]Test
 #>
@@ -125,18 +125,18 @@ function Test-NewAzureStorageAccount
         $kind = 'StorageV2'
 
         $loc = Get-ProviderLocation ResourceManagement;
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc;
 
         $loc = Get-ProviderLocation ResourceManagement;
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
-        $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         $stotype = 'StandardLRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
         
-        Retry-IfException { Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+        Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
     }
     finally
     {
@@ -147,7 +147,7 @@ function Test-NewAzureStorageAccount
 
 <#
 .SYNOPSIS
-Test Get-AzureRmStorageAccount
+Test Get-AzStorageAccount
 .DESCRIPTION
 SmokeTest
 #>
@@ -164,12 +164,12 @@ function Test-GetAzureStorageAccount
         $loc = Get-ProviderLocation ResourceManagement;
         $kind = 'Storage'
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc;
         Write-Output ("Resource Group created")
 
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype ;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype ;
 
-        Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         $stotype = 'StandardGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
@@ -177,14 +177,14 @@ function Test-GetAzureStorageAccount
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $false $sto.EnableHttpsTrafficOnly;
 
-        $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
         Assert-AreEqual $stoname $stos[0].StorageAccountName;
         Assert-AreEqual $stotype $stos[0].Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $stos[0].Location;
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $false $sto.EnableHttpsTrafficOnly;
 
-        Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
     finally
     {
@@ -195,7 +195,7 @@ function Test-GetAzureStorageAccount
 
 <#
 .SYNOPSIS
-Test Set-AzureRmStorageAccount
+Test Set-AzStorageAccount
 .DESCRIPTION
 SmokeTest
 #>
@@ -212,10 +212,10 @@ function Test-SetAzureStorageAccount
         $loc = Get-ProviderLocation ResourceManagement;
         $kind = 'Storage'
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableHttpsTrafficOnly $true -EnableHierarchicalNamespace $true;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableHttpsTrafficOnly $true -EnableHierarchicalNamespace $true;
 
-        Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         $stotype = 'StandardGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
@@ -224,7 +224,7 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
         
-        $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
         Assert-AreEqual $stoname $stos[0].StorageAccountName;
         Assert-AreEqual $stotype $stos[0].Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $stos[0].Location;
@@ -234,12 +234,12 @@ function Test-SetAzureStorageAccount
 
         $stotype = 'Standard_LRS';
         # TODO: Still need to do retry for Set-, even after Get- returns it.
-        Retry-IfException { Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -EnableHttpsTrafficOnly $false }
+        Retry-IfException { Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -EnableHttpsTrafficOnly $false }
         $stotype = 'Standard_RAGRS';
-        $sto = Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype;
+        $sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype;
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
 
-        $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
         $stotype = 'StandardRAGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
@@ -248,7 +248,7 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $false $sto.EnableHttpsTrafficOnly;
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
 
-        Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
     finally
     {
@@ -259,7 +259,7 @@ function Test-SetAzureStorageAccount
 
 <#
 .SYNOPSIS
-Test Remove-AzureRmStorageAccount -Force
+Test Remove-AzStorageAccount -Force
 .DESCRIPTION
 SmokeTest
 #>
@@ -275,11 +275,11 @@ function Test-RemoveAzureStorageAccount
         $stotype = 'Standard_GRS';
         $loc = Get-ProviderLocation ResourceManagement;
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc;
 
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
         
-        Retry-IfException { Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+        Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
     }
     finally
     {
@@ -290,7 +290,7 @@ function Test-RemoveAzureStorageAccount
 
 <#
 .SYNOPSIS
-Test New-AzureRmStorageAccountEncryptionKeySource
+Test New-AzStorageAccountEncryptionKeySource
 #>
 function Test-SetAzureRmStorageAccountKeySource
 {
@@ -304,11 +304,11 @@ function Test-SetAzureRmStorageAccountKeySource
         $stotype = 'Standard_GRS';
         $loc = Get-ProviderLocation ResourceManagement;
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc;
 
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
         
-        $sto = Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -StorageEncryption
+        $sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -StorageEncryption
         $stotype = 'StandardGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
@@ -320,7 +320,7 @@ function Test-SetAzureRmStorageAccountKeySource
         Assert-AreEqual $null $sto.Encryption.Keyvaultproperties.KeyVersion;
         Assert-AreEqual $null $sto.Encryption.Keyvaultproperties.KeyVaultUri;
         
-        $sto = Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -StorageEncryption -AssignIdentity
+        $sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -StorageEncryption -AssignIdentity
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
@@ -332,7 +332,7 @@ function Test-SetAzureRmStorageAccountKeySource
         Assert-AreEqual $null $sto.Encryption.Keyvaultproperties.KeyVersion;
         Assert-AreEqual $null $sto.Encryption.Keyvaultproperties.KeyVaultUri;
         
-        Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; 
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; 
     }
     finally
     {
@@ -343,7 +343,7 @@ function Test-SetAzureRmStorageAccountKeySource
 
 <#
 .SYNOPSIS
-Test Get-AzureRmStorageAccountKey
+Test Get-AzStorageAccountKey
 #>
 function Test-GetAzureStorageAccountKey
 {
@@ -357,14 +357,14 @@ function Test-GetAzureStorageAccountKey
         $stotype = 'Standard_GRS';
         $loc = Get-ProviderLocation ResourceManagement;
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc;
 
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
         
-        Retry-IfException { $global:stokeys = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname; }
+        Retry-IfException { $global:stokeys = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname; }
         Assert-AreNotEqual $stokeys[1].Value $stokeys[0].Value;
 
-        Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
     finally
     {
@@ -375,7 +375,7 @@ function Test-GetAzureStorageAccountKey
 
 <#
 .SYNOPSIS
-Test New-AzureRmStorageAccountKey
+Test New-AzStorageAccountKey
 #>
 function Test-NewAzureStorageAccountKey
 {
@@ -389,26 +389,26 @@ function Test-NewAzureStorageAccountKey
         $stotype = 'Standard_GRS';
         $loc = Get-ProviderLocation ResourceManagement;
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc;
 
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
         
-        Retry-IfException { $global:stokey1 = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname; }
+        Retry-IfException { $global:stokey1 = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname; }
 
-        New-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname -KeyName key1;
+        New-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname -KeyName key1;
 
-        $stokey2 = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
+        $stokey2 = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
         Assert-AreNotEqual $stokey1[0].Value $stokey2[0].Value;
         Assert-AreEqual $stokey1[1].Value $stokey2[1].Value;
 
-        New-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname -KeyName key2;
+        New-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname -KeyName key2;
 
-        $stokey3 = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
+        $stokey3 = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
         Assert-AreNotEqual $stokey1[0].Value $stokey2[0].Value;
         Assert-AreEqual $stokey2[0].Value $stokey3[0].Value;
         Assert-AreNotEqual $stokey2[1].Value $stokey3[1].Value;
 
-        Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
     finally
     {
@@ -419,7 +419,7 @@ function Test-NewAzureStorageAccountKey
 
 <#
 .SYNOPSIS
-Test Get-AzureRmStorageAccount | Get-AzureRmStorageAccountKey 
+Test Get-AzStorageAccount | Get-AzStorageAccountKey 
 #>
 function Test-PipingGetAccountToGetKey
 {
@@ -433,14 +433,14 @@ function Test-PipingGetAccountToGetKey
         $stotype = 'Standard_GRS';
         $loc = Get-ProviderLocation ResourceManagement;
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc;
 
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
 
-        Retry-IfException { $global:stokeys = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname | Get-AzureRmStorageAccountKey -ResourceGroupName $rgname; }
+        Retry-IfException { $global:stokeys = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname | Get-AzStorageAccountKey -ResourceGroupName $rgname; }
         Assert-AreNotEqual $stokeys[0].Value $stokeys[1].Value;
 
-        Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
     finally
     {
@@ -451,7 +451,7 @@ function Test-PipingGetAccountToGetKey
 
 <#
 .SYNOPSIS
-Test Get-AzureRmStorageAccount | Set-AzureRmCurrentStorageAccount
+Test Get-AzStorageAccount | Set-AzCurrentStorageAccount
 .DESCRIPTION
 SmokeTest
 #>
@@ -467,14 +467,14 @@ function Test-PipingToSetAzureRmCurrentStorageAccount
         $stotype = 'Standard_GRS'
         $loc = Get-ProviderLocation ResourceManagement
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype
-        Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname }
-        $global:sto | Set-AzureRmCurrentStorageAccount
-        $context = Get-AzureRmContext
+        New-AzResourceGroup -Name $rgname -Location $loc
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname }
+        $global:sto | Set-AzCurrentStorageAccount
+        $context = Get-AzContext
         $sub = New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription -ArgumentList $context.Subscription
         Assert-AreEqual $stoname $sub.CurrentStorageAccountName
-        $global:sto | Remove-AzureRmStorageAccount -Force
+        $global:sto | Remove-AzStorageAccount -Force
     }
     finally
     {
@@ -485,7 +485,7 @@ function Test-PipingToSetAzureRmCurrentStorageAccount
 
 <#
 .SYNOPSIS
-Test Set-AzureRmCurrentStorageAccount with RG and storage account name parameters
+Test Set-AzCurrentStorageAccount with RG and storage account name parameters
 .DESCRIPTION
 SmokeTest
 #>
@@ -501,13 +501,13 @@ function Test-SetAzureRmCurrentStorageAccount
         $stotype = 'Standard_GRS'
         $loc = Get-ProviderLocation ResourceManagement
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype
-        Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname }
-        Set-AzureRmCurrentStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname
-        $context = Get-AzureRmContext
+        New-AzResourceGroup -Name $rgname -Location $loc
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname }
+        Set-AzCurrentStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname
+        $context = Get-AzContext
         Assert-AreEqual $stoname $context.Subscription.CurrentStorageAccountName
-        $global:sto | Remove-AzureRmStorageAccount -Force
+        $global:sto | Remove-AzStorageAccount -Force
     }
     finally
     {
@@ -536,14 +536,14 @@ function Test-NetworkRule
         $ip3 = "11.1.1.0/24";
         $ip4 = "28.0.2.0/19";
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc;
         
-        $global:sto = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -NetworkRuleSet (@{bypass="Logging,Metrics,AzureServices";
+        $global:sto = New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -NetworkRuleSet (@{bypass="Logging,Metrics,AzureServices";
             ipRules=(@{IPAddressOrRange="$ip1";Action="allow"},
             @{IPAddressOrRange="$ip2";Action="allow"});
             defaultAction="Deny"}) 
 
-        $stoacl = (Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname).NetworkRuleSet
+        $stoacl = (Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname).NetworkRuleSet
         Assert-AreEqual 7 $stoacl.Bypass;
         Assert-AreEqual Deny $stoacl.DefaultAction;
         Assert-AreEqual 2 $stoacl.IpRules.Count
@@ -551,8 +551,8 @@ function Test-NetworkRule
         Assert-AreEqual $ip2 $stoacl.IpRules[1].IPAddressOrRange;
         Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count
 
-        $sto | Update-AzureRmStorageAccountNetworkRuleSet -verbose -Bypass AzureServices,Metrics -DefaultAction Allow -IpRule (@{IPAddressOrRange="$ip3";Action="allow"},@{IPAddressOrRange="$ip4";Action="allow"})
-        $stoacl = $sto | Get-AzureRmStorageAccountNetworkRuleSet
+        $sto | Update-AzStorageAccountNetworkRuleSet -verbose -Bypass AzureServices,Metrics -DefaultAction Allow -IpRule (@{IPAddressOrRange="$ip3";Action="allow"},@{IPAddressOrRange="$ip4";Action="allow"})
+        $stoacl = $sto | Get-AzStorageAccountNetworkRuleSet
         $stoacliprule = $stoacl.IpRules
         Assert-AreEqual 6 $stoacl.Bypass;
         Assert-AreEqual Allow $stoacl.DefaultAction;
@@ -561,29 +561,29 @@ function Test-NetworkRule
         Assert-AreEqual $ip4 $stoacl.IpRules[1].IPAddressOrRange;
         Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count
 
-        $job = Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -IPAddressOrRange "$ip3" -AsJob
+        $job = Remove-AzStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -IPAddressOrRange "$ip3" -AsJob
         $job | Wait-Job
-        $stoacl = Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
+        $stoacl = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
         Assert-AreEqual 6 $stoacl.Bypass;
         Assert-AreEqual Allow $stoacl.DefaultAction;
         Assert-AreEqual 1 $stoacl.IpRules.Count
         Assert-AreEqual $ip4 $stoacl.IpRules[0].IPAddressOrRange;
         Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count
         
-        $job = Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname -IpRule @() -DefaultAction Deny -Bypass None -AsJob
+        $job = Update-AzStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname -IpRule @() -DefaultAction Deny -Bypass None -AsJob
         $job | Wait-Job
-        $stoacl = Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
+        $stoacl = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
         Assert-AreEqual 0 $stoacl.Bypass;
         Assert-AreEqual Deny $stoacl.DefaultAction;
         Assert-AreEqual 0 $stoacl.IpRules.Count
         Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count
         
         foreach($iprule in $stoacliprule) {
-            $job = Add-AzureRmStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -IpRule $iprule -AsJob
+            $job = Add-AzStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -IpRule $iprule -AsJob
             $job | Wait-Job
         }
 
-        $stoacl = Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
+        $stoacl = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
         Assert-AreEqual 0 $stoacl.Bypass;
         Assert-AreEqual Deny $stoacl.DefaultAction;
         Assert-AreEqual 2 $stoacl.IpRules.Count
@@ -591,13 +591,13 @@ function Test-NetworkRule
         Assert-AreEqual $ip4 $stoacl.IpRules[1].IPAddressOrRange;
         Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count
         
-        $job = Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -AsJob -NetworkRuleSet (@{bypass="AzureServices";
+        $job = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -AsJob -NetworkRuleSet (@{bypass="AzureServices";
             ipRules=(@{IPAddressOrRange="$ip1";Action="allow"},
             @{IPAddressOrRange="$ip2";Action="allow"});
             defaultAction="Allow"}) 
         $job | Wait-Job
 
-        $stoacl = Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
+        $stoacl = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
         Assert-AreEqual 4 $stoacl.Bypass;
         Assert-AreEqual Allow $stoacl.DefaultAction;
         Assert-AreEqual 2 $stoacl.IpRules.Count
@@ -605,7 +605,7 @@ function Test-NetworkRule
         Assert-AreEqual $ip2 $stoacl.IpRules[1].IPAddressOrRange;
         Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count
 
-        $job = Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname -AsJob
+        $job = Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname -AsJob
         $job | Wait-Job
     }
     finally
@@ -634,11 +634,11 @@ function Test-SetAzureStorageAccountStorageV2
         $loc = Get-ProviderLocation ResourceManagement;
         $kind = 'Storage'
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc;
         $loc = Get-ProviderLocation ResourceManagement;
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
 
-        Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         $stotype = 'StandardGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
@@ -646,14 +646,14 @@ function Test-SetAzureStorageAccountStorageV2
         Assert-AreEqual $kind $sto.Kind;        
                     
         $kind = 'StorageV2'
-        Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -UpgradeToStorageV2;
-        $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -UpgradeToStorageV2;
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
 
-        Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
     finally
     {
@@ -673,14 +673,14 @@ function Test-GetAzureStorageLocationUsage
         # Test
         $loc = Get-ProviderLocation_Stage ResourceManagement; 
 
-        $usage = Get-AzureRmStorageUsage -Location $loc
+        $usage = Get-AzStorageUsage -Location $loc
         Assert-AreNotEqual 0 $usage.Limit;
         Assert-AreNotEqual 0 $usage.CurrentValue;      
 }
 
 <#
 .SYNOPSIS
-Test Get-AzureRmStorageAccount | New/Set-AzureRmStorageAccount
+Test Get-AzStorageAccount | New/Set-AzStorageAccount
 #>
 function Test-PipingNewUpdateAccount
 {
@@ -695,22 +695,22 @@ function Test-PipingNewUpdateAccount
         $stotype = 'Standard_GRS';
         $loc = Get-ProviderLocation ResourceManagement;
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc;
 
-        $global:sto = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $global:sto = New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
 
-        Retry-IfException { $global:sto2 = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname | New-AzureRmStorageAccount -Name $stoname2 -skuName $stotype; }
+        Retry-IfException { $global:sto2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname | New-AzStorageAccount -Name $stoname2 -skuName $stotype; }
         Assert-AreEqual $sto.ResourceGroupName $sto2.ResourceGroupName;
         Assert-AreEqual $sto.Location $sto2.Location;
         Assert-AreNotEqual $sto.StorageAccountName $sto2.StorageAccountName;
 		
-		Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname | set-AzureRmStorageAccount -UpgradeToStorageV2
-		$global:sto = $sto | set-AzureRmStorageAccount -EnableHttpsTrafficOnly $true
+		Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname | set-AzStorageAccount -UpgradeToStorageV2
+		$global:sto = $sto | set-AzStorageAccount -EnableHttpsTrafficOnly $true
         Assert-AreEqual 'StorageV2' $sto.Kind;
         Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
 
-        Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname | Remove-AzureRmStorageAccount -Force;
-        $sto2 | Remove-AzureRmStorageAccount -Force;
+        Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname | Remove-AzStorageAccount -Force;
+        $sto2 | Remove-AzStorageAccount -Force;
     }
     finally
     {

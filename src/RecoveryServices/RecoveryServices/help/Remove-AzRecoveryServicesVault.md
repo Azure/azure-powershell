@@ -1,5 +1,5 @@
 ﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.ARM.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 466F6B7C-BA7E-4DFD-8504-5A196A335231
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault
