@@ -1,4 +1,18 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Backup.Services;
 using Microsoft.Azure.Commands.Sql.Common;
@@ -41,7 +55,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "The database object to get the policy for.")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlDatabaseModel AzureSqlDatabase { get; set; }
+        [Alias("AzureSqlDatabase")]
+        public AzureSqlDatabaseModel AzureSqlDatabaseObject { get; set; }
 
         /// <summary>
         /// Gets or sets the Database object to get the policy for.
@@ -102,11 +117,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 
         public override void ExecuteCmdlet()
         {
-            if (AzureSqlDatabase != null)
+            if (AzureSqlDatabaseObject != null)
             {
-                this.ResourceGroupName = AzureSqlDatabase.ResourceGroupName;
-                this.ServerName = AzureSqlDatabase.ServerName;
-                this.DatabaseName = AzureSqlDatabase.DatabaseName;
+                this.ResourceGroupName = AzureSqlDatabaseObject.ResourceGroupName;
+                this.ServerName = AzureSqlDatabaseObject.ServerName;
+                this.DatabaseName = AzureSqlDatabaseObject.DatabaseName;
             }
             else if (!string.IsNullOrEmpty(ResourceId))
             {
