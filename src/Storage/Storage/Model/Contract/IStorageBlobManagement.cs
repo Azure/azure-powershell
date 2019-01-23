@@ -429,5 +429,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         BlobResultSegment ListBlobsSegmented(CloudBlobContainer container, string prefix, bool useFlatBlobListing,
             BlobListingDetails blobListingDetails, int? maxResults, BlobContinuationToken currentToken,
             BlobRequestOptions options, OperationContext operationContext);
+
+        /// <summary>
+        /// Returns the sku name and account kind for the specified account
+        /// </summary>
+        /// <returns>the sku name and account kind</returns>
+        AccountProperties GetAccountProperties();
     }
 }
