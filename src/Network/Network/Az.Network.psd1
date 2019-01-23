@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.0.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Network.dll'
@@ -233,6 +233,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Remove-AzNetworkWatcherConnectionMonitor', 
                'Get-AzNetworkWatcherConnectionMonitor', 
                'Get-AzNetworkWatcherConnectionMonitorReport', 
+               'Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic',
+               'New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile',
                'Get-AzExpressRouteServiceProvider', 
                'Test-AzPrivateIPAddressAvailability', 'Get-AzPublicIpAddress', 
                'New-AzPublicIpAddress', 'Remove-AzPublicIpAddress', 
@@ -367,7 +369,23 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Set-AzNetworkInterfaceTapConfig', 
                'Remove-AzNetworkInterfaceTapConfig', 'Get-AzVirtualNetworkTap', 
                'New-AzVirtualNetworkTap', 'Remove-AzVirtualNetworkTap', 
-               'Set-AzVirtualNetworkTap'
+               'Set-AzVirtualNetworkTap',
+               'Get-AzExpressRouteGateway',
+               'New-AzExpressRouteGateway',
+               'Remove-AzExpressRouteGateway',
+               'Set-AzExpressRouteGateway',
+               'Get-AzExpressRouteConnection',
+               'New-AzExpressRouteConnection',
+               'Remove-AzExpressRouteConnection',
+               'Set-AzExpressRouteConnection',
+               'Get-AzExpressRouteCrossConnection',
+               'Set-AzExpressRouteCrossConnection',
+               'Add-AzExpressRouteCrossConnectionPeering',
+               'Get-AzExpressRouteCrossConnectionPeering',
+               'Remove-AzExpressRouteCrossConnectionPeering',
+               'Get-AzExpressRouteCrossConnectionArpTable',
+               'Get-AzExpressRouteCrossConnectionRouteTable',
+               'Get-AzExpressRouteCrossConnectionRouteTableSummary'
 
 # Variables to export from this module
 # VariablesToExport = @()

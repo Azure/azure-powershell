@@ -139,9 +139,6 @@
     <value>Cannot perform the requested operation because the specified database '{0}' exists.</value>
   </data>
   <data name="KustoClusterNotExist" xml:space="preserve">
-    <value>Cannot perform the requested operation because the specified cluster '{0}' doesn't exist.</value>
-  </data>
-  <data name="KustoClusterNotExist" xml:space="preserve">
     <value>Cannot perform the requested operation because the specified cluster '{0}' exists in region {1}.</value>
   </data>
   <data name="KustoDatabaseNotExist" xml:space="preserve">
@@ -179,5 +176,8 @@
   </data>
   <data name="ResourceGroupNotSpecified" xml:space="preserve">
     <value>Name of resource group not specified</value>
+  </data>
+  <data name="NoSubscriptionInContext" xml:space="preserve">
+    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login.</value>
   </data>
 </root>
