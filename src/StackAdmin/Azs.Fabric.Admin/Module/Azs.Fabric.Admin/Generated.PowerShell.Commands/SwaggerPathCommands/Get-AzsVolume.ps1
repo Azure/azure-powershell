@@ -51,7 +51,6 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 #>
 function Get-AzsVolume {
-    [Alias('Get-AzsInfrastructureVolume')]
     [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.Volume])]
     [CmdletBinding(DefaultParameterSetName = 'List')]
     param(
