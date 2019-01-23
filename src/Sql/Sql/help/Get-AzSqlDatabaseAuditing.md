@@ -15,23 +15,38 @@ Gets the auditing settings of an Azure SQL database.
 
 ### BlobStorageSet
 ```
-Get-AzSqlDatabaseAuditing [-BlobStorage] [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzSqlDatabaseAuditing [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
+ [-BlobStorage] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### EventHubSet
 ```
-Get-AzSqlDatabaseAuditing [-EventHub] [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzSqlDatabaseAuditing [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
+ [-EventHub] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LogAnalyticsSet
 ```
-Get-AzSqlDatabaseAuditing [-LogAnalytics] [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzSqlDatabaseAuditing [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
+ [-LogAnalytics] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### BlobStorageByParentResourceSet
+```
+Get-AzSqlDatabaseAuditing -InputObject <AzureSqlDatabaseModel> [-BlobStorage]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### EventHubByParentResourceSet
+```
+Get-AzSqlDatabaseAuditing -InputObject <AzureSqlDatabaseModel> [-EventHub]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### LogAnalyticsByParentResourceSet
+```
+Get-AzSqlDatabaseAuditing -InputObject <AzureSqlDatabaseModel> [-LogAnalytics]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,7 +126,7 @@ Specifies that audit logs destination is blob storage
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: BlobStorageSet
+Parameter Sets: BlobStorageSet, BlobStorageByParentResourceSet
 Aliases:
 
 Required: False
@@ -126,7 +141,7 @@ SQL Database name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: BlobStorageSet, EventHubSet, LogAnalyticsSet
 Aliases:
 
 Required: True
@@ -156,7 +171,7 @@ Specifies that audit logs destination is event hub
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: EventHubSet
+Parameter Sets: EventHubSet, EventHubByParentResourceSet
 Aliases:
 
 Required: True
@@ -166,12 +181,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The database object
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+Parameter Sets: BlobStorageByParentResourceSet, EventHubByParentResourceSet, LogAnalyticsByParentResourceSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LogAnalytics
 Specifies that audit logs destination is log analytics
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: LogAnalyticsSet
+Parameter Sets: LogAnalyticsSet, LogAnalyticsByParentResourceSet
 Aliases:
 
 Required: True
@@ -186,7 +216,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: BlobStorageSet, EventHubSet, LogAnalyticsSet
 Aliases:
 
 Required: True
@@ -197,47 +227,17 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL Database server name.
+SQL server name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: BlobStorageSet, EventHubSet, LogAnalyticsSet
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
