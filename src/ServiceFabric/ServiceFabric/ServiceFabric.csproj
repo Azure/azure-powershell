@@ -17,10 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Template\Linux\parameter.json" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="Template\Linux\template.json" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="Template\Windows\parameter.json" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="Template\Windows\template.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Template\**\*.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
