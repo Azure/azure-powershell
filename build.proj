@@ -219,7 +219,7 @@
     <Exec Command="dotnet --version" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <PropertyGroup Condition="'$(ExcludeAuthenticators)' == 'true'">
-      <AuthenticatorExclusions>$(LibraryRoot)src/**/Microsoft.Azure.PowerShell.Authenticators.csproj;</AuthenticatorExclusions>
+      <AuthenticatorExclusions>$(LibraryRoot)src/**/Authenticators.csproj;</AuthenticatorExclusions>
     </PropertyGroup>
     <ItemGroup>
       <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(AuthenticatorExclusions)$(LibraryRoot)src/**/*.Test.csproj" />
@@ -376,7 +376,7 @@
   <Target Name="Test">
     <Message Importance="high" Text="Running check in tests..." />
     <PropertyGroup Condition="'$(ExcludeAuthenticators)' == 'true'">
-      <AuthenticatorExclusions>$(LibraryRoot)src/**/Microsoft.Azure.PowerShell.Authenticators;</AuthenticatorExclusions>
+      <AuthenticatorExclusions>$(LibraryRoot)src/**/Authenticators.csproj;</AuthenticatorExclusions>
     </PropertyGroup>
 
     <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
