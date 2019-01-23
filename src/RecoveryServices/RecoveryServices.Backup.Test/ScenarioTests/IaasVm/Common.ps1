@@ -20,37 +20,37 @@ function Create-VM(
 	$suffix = $(Get-RandomSuffix 5) + $nick
 	$vmName = "PSTestVM" + $suffix
 
-	$vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName -ErrorAction Ignore
+	$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName -ErrorAction Ignore
 
 	if ($vm -eq $null)
 	{
 		$subnetConfigName = "PSTestSNC" + $suffix
-		$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetConfigName -AddressPrefix 192.168.1.0/24
+		$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name $subnetConfigName -AddressPrefix 192.168.1.0/24
 
 		$vnetName = "PSTestVNET" + $suffix
-		$vnet = New-AzureRmVirtualNetwork -ResourceGroupName $resourceGroupName -Location $location `
+		$vnet = New-AzVirtualNetwork -ResourceGroupName $resourceGroupName -Location $location `
 			-Name $vnetName -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig -Force
 
 		$pipName = "pstestpublicdns" + $suffix
-		$pip = New-AzureRmPublicIpAddress -ResourceGroupName $resourceGroupName -Location $location `
+		$pip = New-AzPublicIpAddress -ResourceGroupName $resourceGroupName -Location $location `
 			-AllocationMethod Static -IdleTimeoutInMinutes 4 -Name $pipName -Force
 
 		$nsgRuleRDPName = "PSTestNSGRuleRDP" + $suffix
-		$nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name $nsgRuleRDPName  -Protocol Tcp `
+		$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name $nsgRuleRDPName  -Protocol Tcp `
 			-Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
 			-DestinationPortRange 3389 -Access Allow
 
 		$nsgRuleWebName = "PSTestNSGRuleWeb" + $suffix
-		$nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig -Name $nsgRuleWebName  -Protocol Tcp `
+		$nsgRuleWeb = New-AzNetworkSecurityRuleConfig -Name $nsgRuleWebName  -Protocol Tcp `
 			-Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
 			-DestinationPortRange 80 -Access Allow
 
 		$nsgName = "PSTestNSG" + $suffix
-		$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroupName -Location $location `
+		$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $resourceGroupName -Location $location `
 			-Name $nsgName -SecurityRules $nsgRuleRDP,$nsgRuleWeb -Force
 
 		$nicName = "PSTestNIC" + $suffix
-		$nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $resourceGroupName -Location $location `
+		$nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $resourceGroupName -Location $location `
 			-SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id -Force
 
 		$UserName='demouser'
@@ -58,13 +58,13 @@ function Create-VM(
 		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
 		$Credential=New-Object PSCredential($UserName,$Password)
 
-		$vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D1 | `
-			Set-AzureRmVMOperatingSystem -Windows -ComputerName $vmName -Credential $Credential | `
-			Set-AzureRmVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer `
-			-Skus 2016-Datacenter -Version latest | Add-AzureRmVMNetworkInterface -Id $nic.Id
+		$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1 | `
+			Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $Credential | `
+			Set-AzVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer `
+			-Skus 2016-Datacenter -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
 
-		New-AzureRmVM -ResourceGroupName $resourceGroupName -Location $location -VM $vmConfig | Out-Null
-		$vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName
+		New-AzVM -ResourceGroupName $resourceGroupName -Location $location -VM $vmConfig | Out-Null
+		$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
 	}
 
 	return $vm
@@ -78,7 +78,7 @@ function Create-GalleryVM(
 	$suffix = $(Get-RandomSuffix 5) + $nick
 	$vmName = "PSTestGVM" + $suffix
 
-	$vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName -ErrorAction Ignore
+	$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName -ErrorAction Ignore
 
 	if ($vm -eq $null)
 	{
@@ -93,7 +93,7 @@ function Create-GalleryVM(
 		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
 		$Credential=New-Object PSCredential($UserName,$Password)
 
-		$vm = New-AzureRmVm `
+		$vm = New-AzVm `
 			-ResourceGroupName $resourceGroupName `
 			-Name $vmName `
 			-Location $location `
@@ -111,42 +111,42 @@ function Create-GalleryVM(
  function Cleanup-ResourceGroup(
 	[string] $resourceGroupName)
 {
-	$resourceGroup = Get-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction Ignore
+	$resourceGroup = Get-AzResourceGroup -Name $resourceGroupName -ErrorAction Ignore
  	if ($resourceGroup -ne $null)
 	{
 		# Cleanup Vaults
-		$vaults = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName
+		$vaults = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName
 		foreach ($vault in $vaults)
 		{
 			Delete-Vault $vault
 		}
 	
 		# Cleanup RG. This cleans up all VMs and Storage Accounts.
-		Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+		Remove-AzResourceGroup -Name $resourceGroupName -Force
 	}
 }
 
 function Delete-Vault($vault)
 {
-	$containers = Get-AzureRmRecoveryServicesBackupContainer `
+	$containers = Get-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-ContainerType AzureVM
 	foreach ($container in $containers)
 	{
-		$items = Get-AzureRmRecoveryServicesBackupItem `
+		$items = Get-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureVM
 		foreach ($item in $items)
 		{
-			Disable-AzureRmRecoveryServicesBackupProtection `
+			Disable-AzRecoveryServicesBackupProtection `
 				-VaultId $vault.ID `
 				-Item $item `
 				-RemoveRecoveryPoints -Force
 		}
 	}
 
-	Remove-AzureRmRecoveryServicesVault -Vault $vault
+	Remove-AzRecoveryServicesVault -Vault $vault
 }
 
 <# 
@@ -168,30 +168,30 @@ function Enable-Protection(
 {
     # Sleep to give the service time to add the default policy to the vault
     Start-TestSleep 5000
-	$container = Get-AzureRmRecoveryServicesBackupContainer `
+	$container = Get-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-ContainerType AzureVM `
 		-FriendlyName $vm.Name;
 
 	if ($container -eq $null)
 	{
-		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
 			-Name "DefaultPolicy";
 	
-		Enable-AzureRmRecoveryServicesBackupProtection `
+		Enable-AzRecoveryServicesBackupProtection `
 			-VaultId $vault.ID `
 			-Policy $policy `
 			-Name $vm.Name `
 			-ResourceGroupName $vm.ResourceGroupName | Out-Null
 
-		$container = Get-AzureRmRecoveryServicesBackupContainer `
+		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
 			-FriendlyName $vm.Name;
 	}
 	
-	$item = Get-AzureRmRecoveryServicesBackupItem `
+	$item = Get-AzRecoveryServicesBackupItem `
 		-VaultId $vault.ID `
 		-Container $container `
 		-WorkloadType AzureVM `

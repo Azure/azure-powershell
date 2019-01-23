@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Compute
 Module Guid: 0a83c907-1ffb-4d87-a492-c65ac7d7ed37
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.compute
@@ -196,6 +196,9 @@ Grants an access to a disk.
 
 ### [Grant-AzSnapshotAccess](Grant-AzSnapshotAccess.md)
 Grants an access to a snapshot.
+
+### [Invoke-AzVMReimage](Invoke-AzVMReimage.md)
+Reimage an Azure virtual machine.
 
 ### [Invoke-AzVMRunCommand](Invoke-AzVMRunCommand.md)
 Run command on the VM.

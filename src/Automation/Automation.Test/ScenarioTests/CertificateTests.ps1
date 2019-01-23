@@ -24,37 +24,37 @@ function Test-E2ECertificates
     $thumbprint2 = "38dae807ad6fb1f42bde1658b5abec85ace5615e"
     $Password = ConvertTo-SecureString -String "Password" -AsPlainText -Force
 
-    New-AzureRmAutomationCertificate -AutomationAccountName $automationAccountName `
+    New-AzAutomationCertificate -AutomationAccountName $automationAccountName `
                                      -Name "ContosoCertificate" `
                                      -Path "./ScenarioTests/sdkTestCert.cer" `
                                      -Password $Password `
                                      -ResourceGroupName $resourceGroupName `
                                      -Description "Hello"
 
-    $getCertificate = Get-AzureRmAutomationCertificate -ResourceGroupName $resourceGroupName `
+    $getCertificate = Get-AzAutomationCertificate -ResourceGroupName $resourceGroupName `
                                    -AutomationAccountName $automationAccountName `
                                    -Name "ContosoCertificate"
 
     Assert-AreEqual $thumprint  $getCertificate.Thumbprint
 
-    Set-AzureRmAutomationCertificate -ResourceGroupName $resourceGroupName `
+    Set-AzAutomationCertificate -ResourceGroupName $resourceGroupName `
                                    -AutomationAccountName $automationAccountName `
                                    -Name "ContosoCertificate" `
                                    -Description "Goodbye" `
                                    -Path "./ScenarioTests/sdkTestCert2.cer"
 
-    $getCertificate = Get-AzureRmAutomationCertificate -ResourceGroupName $resourceGroupName `
+    $getCertificate = Get-AzAutomationCertificate -ResourceGroupName $resourceGroupName `
                                    -AutomationAccountName $automationAccountName `
                                    -Name "ContosoCertificate"
 
     Assert-AreEqual "Goodbye"  $getCertificate.Description
     Assert-AreEqual $thumbprint2  $getCertificate.Thumbprint
 
-    Remove-AzureRmAutomationCertificate -ResourceGroupName $resourceGroupName `
+    Remove-AzAutomationCertificate -ResourceGroupName $resourceGroupName `
                                         -AutomationAccountName $automationAccountName `
                                         -Name "ContosoCertificate"
 
-    $output = Get-AzureRmAutomationCertificate -ResourceGroupName $resourceGroupName `
+    $output = Get-AzAutomationCertificate -ResourceGroupName $resourceGroupName `
                                                -AutomationAccountName $automationAccountName `
                                                -Name "ContosoCertificate" -ErrorAction SilentlyContinue 
 

@@ -12,6 +12,9 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
+$ResourcesPath = Join-Path $TestOutputRoot "ScenarioTests" "Resources"
+
 <#
 .SYNOPSIS
 Gets a website name for testing.
@@ -95,7 +98,7 @@ function Get-WebLocation
 	{
 		$namespace = "Microsoft.Web"
 		$type = "sites"
-		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+		$location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
   
 		if ($location -eq $null) 
 		{  
@@ -119,7 +122,7 @@ function Get-SecondaryLocation
 	{
 		$namespace = "Microsoft.Web"
 		$type = "sites"
-		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+		$location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
   
 		if ($location -eq $null) 
 		{  
@@ -141,7 +144,7 @@ function Clean-Website($resourceGroup, $websiteName)
 {
     if ((Get-WebsitesTestMode) -ne 'Playback') 
 	{
-		$result = Remove-AzureRmWebsite -ResourceGroupName $resourceGroup.ToString() -WebsiteName $websiteName.ToString() -Force
+		$result = Remove-AzWebsite -ResourceGroupName $resourceGroup.ToString() -WebsiteName $websiteName.ToString() -Force
     }
 }
 
