@@ -46,7 +46,7 @@ function AutomationAccountExistsFn
 {
 	try
 	{
-		$account = Get-AzureRmAutomationAccount -ResourceGroupName $resourceGroupName -Name $automationAccountName
+		$account = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -Name $automationAccountName
     
 		return ($account -ne $null)
 	}
@@ -70,7 +70,7 @@ function Test-CreateRunbookGraph
 
 	Assert-True {AutomationAccountExistsFn} "Automation Account does not exist."
 
-    $runbook = New-AzureRmAutomationRunbook `
+    $runbook = New-AzAutomationRunbook `
                         -Name $Name `
                         -ResourceGroupName $resourceGroupName `
                         -AutomationAccountName $automationAccountName `
@@ -79,12 +79,12 @@ function Test-CreateRunbookGraph
                         -LogProgress $true `
                         -LogVerbose $true
 
-    Assert-NotNull $runbook "New-AzureRmAutomationRunbook failed to create Graph runbook $Name."
+    Assert-NotNull $runbook "New-AzAutomationRunbook failed to create Graph runbook $Name."
 
     Write-Output "Create Graph runbook - success."
 
     # Creating the runbook again MUST fail
-    Assert-Throws {New-AzureRmAutomationRunbook `
+    Assert-Throws {New-AzAutomationRunbook `
                         -Name $Name `
                         -ResourceGroupName $resourceGroupName `
                         -AutomationAccountName $automationAccountName `
@@ -95,12 +95,12 @@ function Test-CreateRunbookGraph
                    }
 
     # Remove the runbook
-    Remove-AzureRmAutomationRunbook -Name $Name -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Force
+    Remove-AzAutomationRunbook -Name $Name -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Force
 
     Write-Output "Remove created runbook."
 
     # Get the runbook again and confirm the call fails, i.e. the runbook is deleted
-    Assert-Throws {Get-AzureRmAutomationRunbook `
+    Assert-Throws {Get-AzAutomationRunbook `
                         -Name $Name `
                         -ResourceGroupName $resourceGroupName `
                         -AutomationAccountName $automationAccountName
@@ -126,7 +126,7 @@ function Test-ImportRunbookPowerShell
     $desc = 'PowerShell Tutorial runbook'
     $tags = @{'TagKey1'='TagValue1'}
 
-    $runbook = Import-AzureRmAutomationRunbook `
+    $runbook = Import-AzAutomationRunbook `
                         -Path $RunbookPath `
                         -Description $desc `
                         -Name $Name `
@@ -138,22 +138,22 @@ function Test-ImportRunbookPowerShell
                         -AutomationAccountName $automationAccountName `
                         -Published 
 
-    Assert-NotNull $runbook "Import-AzureRmAutomationRunbook failed to import PowerShell script runbook $Name."
+    Assert-NotNull $runbook "Import-AzAutomationRunbook failed to import PowerShell script runbook $Name."
 
 	Write-Output "Runbook Name: $($runbook.Name)"
 	Write-Output "Runbook State: $($runbook.State)"
-    Assert-True { $runbook.Name -ieq $Name } "Import-AzureRmAutomationRunbook did not import runbook of type PowerShell successfully."
-    Assert-True { $runbook.State -ieq 'Published' } "Import-AzureRmAutomationRunbook did not Publish the PowerShell runbook, as requested."
+    Assert-True { $runbook.Name -ieq $Name } "Import-AzAutomationRunbook did not import runbook of type PowerShell successfully."
+    Assert-True { $runbook.State -ieq 'Published' } "Import-AzAutomationRunbook did not Publish the PowerShell runbook, as requested."
 
     Write-Output "Import Graphical runbook - success."
 
     # Remove the runbook
-    Remove-AzureRmAutomationRunbook -Name $Name -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Force
+    Remove-AzAutomationRunbook -Name $Name -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Force
 
     Write-Output "Remove created runbook."
 
     # Get the runbook again and confirm the call fails, i.e. the runbook is deleted
-    Assert-Throws {Get-AzureRmAutomationRunbook `
+    Assert-Throws {Get-AzAutomationRunbook `
                         -Name $Name `
                         -ResourceGroupName $resourceGroupName `
                         -AutomationAccountName $automationAccountName
@@ -178,7 +178,7 @@ function Test-ImportAndDeleteRunbookGraphical
 	$desc = 'Graphical Tutorial runbook'
     $tags = @{'TagKey1'='TagValue1'}
 
-    $runbook = Import-AzureRmAutomationRunbook `
+    $runbook = Import-AzAutomationRunbook `
                         -Path $RunbookPath `
                         -Description $desc `
                         -Name $Name `
@@ -190,19 +190,19 @@ function Test-ImportAndDeleteRunbookGraphical
                         -AutomationAccountName $automationAccountName `
                         -Published 
 
-    Assert-NotNull $runbook "Import-AzureRmAutomationRunbook failed to import Graphical runbook $Name."
-    Assert-True { $runbook.Name -ieq $Name } "Import-AzureRmAutomationRunbook did not import runbook of type Graph successfully."
-    Assert-True { $runbook.State -ieq 'Published' } "Import-AzureRmAutomationRunbook did not Publish the Graph runbook, as requested."
+    Assert-NotNull $runbook "Import-AzAutomationRunbook failed to import Graphical runbook $Name."
+    Assert-True { $runbook.Name -ieq $Name } "Import-AzAutomationRunbook did not import runbook of type Graph successfully."
+    Assert-True { $runbook.State -ieq 'Published' } "Import-AzAutomationRunbook did not Publish the Graph runbook, as requested."
 
     Write-Output "Import Graphical runbook - success."
 
     # Remove the runbook
-    Remove-AzureRmAutomationRunbook -Name $Name -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Force
+    Remove-AzAutomationRunbook -Name $Name -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Force
 
     Write-Output "Remove created runbook."
 
     # Get the runbook again and confirm the call fails, i.e. the runbook is deleted
-    Assert-Throws {Get-AzureRmAutomationRunbook `
+    Assert-Throws {Get-AzAutomationRunbook `
                         -Name $Name `
                         -ResourceGroupName $resourceGroupName `
                         -AutomationAccountName $automationAccountName
@@ -228,7 +228,7 @@ function Test-CreateJobAndGetOutputPowerShellScript
     $desc = 'PowerShell Script runbook'
     $tags = @{'TagKey1'='TagValue1'}
 
-    $runbook = Import-AzureRmAutomationRunbook `
+    $runbook = Import-AzAutomationRunbook `
                         -Path $RunbookPath `
                         -Description $desc `
                         -Name $Name `
@@ -240,43 +240,43 @@ function Test-CreateJobAndGetOutputPowerShellScript
                         -AutomationAccountName $automationAccountName `
                         -Published 
 
-    Assert-NotNull $runbook "Import-AzureRmAutomationRunbook failed to import PowerShell Script runbook $Name."
+    Assert-NotNull $runbook "Import-AzAutomationRunbook failed to import PowerShell Script runbook $Name."
 
 	# Looking up an already created job.  Creating new job auto-generates the JobId, which does not match the JobId in the Recorded Session
 	#   resulting in the Playback of test failing.  So, resorting to this workaround.
 	$jobId = 'f6f1bda7-9352-47e9-9ca3-4f6c0af62966'
 
 	# Get Job and check the status 
-	$job = Get-AzureRmAutomationJob -Id $jobId -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName
+	$job = Get-AzAutomationJob -Id $jobId -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName
 
 	Assert-True { $job.Status -ieq 'Failed' } "Failed to find the expected (failed) job!"
 	 
     # Verify that there are at least 5 output records for the Job
-    $allOutput = Get-AzureRmAutomationJobOutput -Id $jobId -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Stream Any
-    Assert-True { $allOutput.Count -gt 0 } "Get-AzureRmAutomationJobOutput failed to get automation Job Output!" 
+    $allOutput = Get-AzAutomationJobOutput -Id $jobId -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Stream Any
+    Assert-True { $allOutput.Count -gt 0 } "Get-AzAutomationJobOutput failed to get automation Job Output!" 
 
     Write-Output "Get $($allOutput.Count) output records - success."
 
     # Get the output of type Error
-    $errOutput = Get-AzureRmAutomationJobOutput -Id $jobId -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Stream Error
+    $errOutput = Get-AzAutomationJobOutput -Id $jobId -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Stream Error
 	$streamId = $errOutput[0].StreamRecordId
-    Assert-True { $errOutput.Type -eq 'Error' } "Get-AzureRmAutomationJobOutput failed to get automation Job Error record!"
+    Assert-True { $errOutput.Type -eq 'Error' } "Get-AzAutomationJobOutput failed to get automation Job Error record!"
 
     Write-Output "Get error output of the job - success."
 
     # Get a single Error ouput record
-    $errRecord = Get-AzureRmAutomationJobOutputRecord -JobId $jobId -Id $streamId -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName
-    Assert-True { $errRecord -ne $null } "Get-AzureRmAutomationJobOutputRecord failed to get automation Job Error record Output!"
+    $errRecord = Get-AzAutomationJobOutputRecord -JobId $jobId -Id $streamId -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName
+    Assert-True { $errRecord -ne $null } "Get-AzAutomationJobOutputRecord failed to get automation Job Error record Output!"
 
     Write-Output "Get single error record of the job - success."
 
     # Remove the runbook
-    Remove-AzureRmAutomationRunbook -Name $Name -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Force
+    Remove-AzAutomationRunbook -Name $Name -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Force
 
     Write-Output "Remove created runbook."
 
     # Get the runbook again and confirm the call fails, i.e. the runbook is deleted
-    Assert-Throws {Get-AzureRmAutomationRunbook `
+    Assert-Throws {Get-AzAutomationRunbook `
                         -Name $Name `
                         -ResourceGroupName $resourceGroupName `
                         -AutomationAccountName $automationAccountName

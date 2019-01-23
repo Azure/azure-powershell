@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.IotCentral.Common;
 using Microsoft.Azure.Commands.IotCentral.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.IotCentral;
 using Microsoft.Azure.Management.IotCentral.Models;
@@ -35,6 +36,12 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Subdomain of the IoT Central Application.")]
+        [ValidateNotNullOrEmpty]
+        public string Subdomain { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Iot Central Application Resource Tags.")]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
@@ -52,34 +59,7 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
 
         private AppPatch CreateApplicationPatch()
         {
-            App existingIotCentralApplication = this.GetApplication();
-            this.SetApplicationDisplayName(existingIotCentralApplication);
-            this.SetApplicationTags(existingIotCentralApplication);
-            AppPatch iotCentralAppPatch = IotCentralUtils.CreateAppPatch(existingIotCentralApplication);
-            return iotCentralAppPatch;
-        }
-
-        private void SetApplicationDisplayName(App application)
-        {
-            application.DisplayName = this.DisplayName ?? application.DisplayName;
-        }
-
-        private void SetApplicationTags(App application)
-        {
-            if (this.Tag != null)
-            {
-                application.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
-            }
-        }
-
-        private App GetApplication()
-        {
-            App existingIotCentralApplication = this.IotCentralClient.Apps.Get(this.ResourceGroupName, this.Name);
-            if (existingIotCentralApplication == null)
-            {
-                throw new PSArgumentException("Requested Iot Central Application does not exist");
-            }
-            return existingIotCentralApplication;
+            return new AppPatch(TagsConversionHelper.CreateTagDictionary(this.Tag, true), null, this.DisplayName, this.Subdomain);
         }
     }
 }

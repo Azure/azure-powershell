@@ -36,39 +36,39 @@ function Test-AzureIotDpsLinkedHubLifeCycle
 	$AllocationWeight = 10
 
 	# Create or Update Resource Group
-	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
+	$resourceGroup = New-AzResourceGroup -Name $ResourceGroupName -Location $Location 
 
 	# Create Iot Hub Device Provisioning Service
-	$iotDps = New-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Location $Location
+	$iotDps = New-AzIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Location $Location
 	Assert-True { $iotDps.Name -eq $IotDpsName }
 	Assert-True { $iotDps.Properties.IotHubs.Count -eq 0 }
 
 	# Create an Iot Hub
-	$iotHub = New-AzureRmIoTHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1
+	$iotHub = New-AzIoTHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1
 	Assert-True { $iotHub.Name -eq $IotHubName }
 
 	# Add a key to IoT Hub
-	$hubKeys = Add-AzureRmIoTHubKey -Name $IotHubName -ResourceGroupName $ResourceGroupName -KeyName $hubKeyName -Rights ServiceConnect
+	$hubKeys = Add-AzIoTHubKey -Name $IotHubName -ResourceGroupName $ResourceGroupName -KeyName $hubKeyName -Rights ServiceConnect
 	Assert-True { $hubKeys.Count -gt 1 }
 
 	# Get key information from IoT Hub
-	$hubKey = Get-AzureRmIoTHubKey -Name $IotHubName -ResourceGroupName $ResourceGroupName -KeyName $hubKeyName
+	$hubKey = Get-AzIoTHubKey -Name $IotHubName -ResourceGroupName $ResourceGroupName -KeyName $hubKeyName
 
 	$HubConnectionString = [string]::Format("HostName={0};SharedAccessKeyName={1};SharedAccessKey={2}",$iotHub.Properties.HostName,$hubKey.KeyName,$hubKey.PrimaryKey)
 
 	# Link an Iot Hub to an Iot Hub Device Provisioning Service
-	$linkedHub = Add-AzureRmIoTDpsHub -ResourceGroupName $ResourceGroupName -Name $IotDpsName -IotHubConnectionString $HubConnectionString -IotHubLocation $iotHub.Location
+	$linkedHub = Add-AzIoTDpsHub -ResourceGroupName $ResourceGroupName -Name $IotDpsName -IotHubConnectionString $HubConnectionString -IotHubLocation $iotHub.Location
 	Assert-True { $linkedHub.Count -eq 1 }
 	Assert-True { $linkedHub.LinkedHubName -eq $iotHub.Properties.HostName }
 	Assert-True { $linkedHub.Location -eq $iotHub.Location }
 
 	# Update Linked Hub in Iot Hub Device Provisioning Service
-	$updatedLinkedHub = Update-AzureRmIoTDpsHub -ResourceGroupName $ResourceGroupName -Name $IotDpsName -LinkedHubName $LinkedHubName -AllocationWeight $AllocationWeight
+	$updatedLinkedHub = Update-AzIoTDpsHub -ResourceGroupName $ResourceGroupName -Name $IotDpsName -LinkedHubName $LinkedHubName -AllocationWeight $AllocationWeight
 	Assert-False { $updatedLinkedHub.ApplyAllocationPolicy }
 	Assert-True { $updatedLinkedHub.AllocationWeight -eq $AllocationWeight }
 
 	# Get Linked Hub in Iot Hub Device Provisioning Service
-	$linkedHub1 = Get-AzureRmIoTDpsHub -ResourceGroupName $ResourceGroupName -Name $IotDpsName -LinkedHubName $LinkedHubName
+	$linkedHub1 = Get-AzIoTDpsHub -ResourceGroupName $ResourceGroupName -Name $IotDpsName -LinkedHubName $LinkedHubName
 	Assert-True { $linkedHub1.Count -eq 1 }
 	Assert-True { $linkedHub1.LinkedHubName -eq $LinkedHubName }
 	Assert-True { $linkedHub1.Location -eq $Location }
@@ -76,9 +76,9 @@ function Test-AzureIotDpsLinkedHubLifeCycle
 	Assert-True { $linkedHub1.AllocationWeight -eq $AllocationWeight }
 
 	# Remove Linked Hub from Iot Hub Device Provisioning Service
-	$result = Remove-AzureRmIoTDpsHub -ResourceGroupName $ResourceGroupName -Name $IotDpsName -LinkedHubName $LinkedHubName -PassThru
+	$result = Remove-AzIoTDpsHub -ResourceGroupName $ResourceGroupName -Name $IotDpsName -LinkedHubName $LinkedHubName -PassThru
 	Assert-True { $result }
 
 	# Remove Resource Group
-	Remove-AzureRmResourceGroup -Name $ResourceGroupName -force
+	Remove-AzResourceGroup -Name $ResourceGroupName -force
 }

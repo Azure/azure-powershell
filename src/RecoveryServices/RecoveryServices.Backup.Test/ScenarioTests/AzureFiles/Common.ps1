@@ -23,21 +23,21 @@ $policyName = "AFSBackupPolicy"
 
 # Setup Instructions:
 # 1. Create a resource group
-#New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+#New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 # 2. Create a storage account and a recovery services vault
-# New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $saName -Location $location -SkuName $skuName
-# New-AzureRmRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $Location
+# New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $saName -Location $location -SkuName $skuName
+# New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $Location
 
 # 3. Create a file share in the storage account
-# $storageAcct = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $saName
+# $storageAcct = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $saName
 # New-AzureStorageShare -Name $fileShareFriendlyName -Context $storageAcct.Context
 
 # 4. Create a backup policy for file shares
-# $vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-# $schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
-# $retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
-# $policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID `
+# $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+# $schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
+# $retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
+# $policy = New-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID `
 #		-Name $policyName `
 #		-WorkloadType AzureFiles `
 #		-RetentionPolicy $retentionPolicy `
@@ -48,29 +48,29 @@ $policyName = "AFSBackupPolicy"
 	$fileShareName,
 	$saName)
 {
-	$container = Get-AzureRmRecoveryServicesBackupContainer `
+	$container = Get-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-ContainerType AzureStorage `
 		-FriendlyName $saName;
 
  	if ($container -eq $null)
 	{
-		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
 			-Name $policyName;
 	
-		Enable-AzureRmRecoveryServicesBackupProtection `
+		Enable-AzRecoveryServicesBackupProtection `
 			-VaultId $vault.ID `
 			-Policy $policy `
 			-Name $fileShareName `
 			-storageAccountName $saName | Out-Null
- 		$container = Get-AzureRmRecoveryServicesBackupContainer `
+ 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-FriendlyName $saName;
 	}
 	
-	$item = Get-AzureRmRecoveryServicesBackupItem `
+	$item = Get-AzRecoveryServicesBackupItem `
 		-VaultId $vault.ID `
 		-Container $container `
 		-WorkloadType AzureFiles `
@@ -83,12 +83,12 @@ function Cleanup-Vault(
 	$container)
 {
 	# Disable Protection
-	Disable-AzureRmRecoveryServicesBackupProtection `
+	Disable-AzRecoveryServicesBackupProtection `
 		-VaultId $vault.ID `
 		-Item $item `
 		-RemoveRecoveryPoints `
 		-Force;
-	Unregister-AzureRmRecoveryServicesBackupContainer `
+	Unregister-AzRecoveryServicesBackupContainer `
 	-VaultId $vault.ID `
 	-Container $container
 }
