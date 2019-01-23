@@ -60,6 +60,12 @@ function Test-VirtualNetworkTapCRUDUsingIpConfig
         Assert-AreEqual $vVirtualNetworkTap.Name $rname;
         Assert-AreEqual $vVirtualNetworkTap.DestinationNetworkInterfaceIPConfiguration.Id $DestinationEndpoint.Id
 
+        $vVirtualNetworkTaps = Get-AzureRmVirtualNetworkTap -ResourceGroupName $rgname;
+        Assert-NotNull $vVirtualNetworkTaps;
+
+        $vVirtualNetworkTapsAll = Get-AzureRmVirtualNetworkTap;
+        Assert-NotNull $vVirtualNetworkTapsAll;
+
         #update the Vtap resource 
         $vVirtualNetworkTap.DestinationPort = 8888;
         Set-AzureRmVirtualNetworkTap -VirtualNetworkTap $vVirtualNetworkTap

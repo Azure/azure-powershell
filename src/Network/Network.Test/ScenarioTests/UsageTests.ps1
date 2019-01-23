@@ -24,10 +24,8 @@ function Test-NetworkUsage
     $subnetName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/Usages"
-    $location = Get-ProviderLocation $resourceTypeParent "West US"
-    # TODO: replace with Normalize-Location after PR is merged: https://github.com/Azure/azure-powershell-common/pull/90
-    $location = $location.ToLower() -replace '[^a-z0-9]'
-    
+    $location = Get-ProviderLocation $resourceTypeParent "West US" -UseCanonical $true
+
     try 
     {
         $usage = Get-AzureRMNetworkUsage -Location $location;

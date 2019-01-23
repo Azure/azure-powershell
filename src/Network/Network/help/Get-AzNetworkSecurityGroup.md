@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5AECCBD7-1FDE-4217-9F59-36328062E669
@@ -32,7 +32,7 @@ The **Get-AzNetworkSecurityGroup** cmdlet gets an Azure network security group.
 
 ### 1: Retrieve an existing network security group
 ```
-Get-AzNetworkSecurityGroup -Name  nsg1 -ResourceGroupName "rg1"
+Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName "rg1"
 ```
 
 This command returns contents of Azure network security group "nsg1" in resource group "rg1"

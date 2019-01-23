@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-AzContainerNicconfig
@@ -49,7 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -IpConfiguration
-{{Fill IpConfiguration Description}}
+Collection of IP configuration profiles which determine what ip configurations are created when a container nic is instantiated from this container network interface configuration
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSIPConfigurationProfile[]
@@ -123,3 +123,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzContainerNicConfigIpConfig](./New-AzContainerNicConfigIpConfig.md)
