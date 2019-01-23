@@ -21,32 +21,35 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 {
-    public class StorageBlobTests : StorageTestRunner
+    public class StorageBlobTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public StorageBlobTests(ITestOutputHelper output)
-            : base(output)
         {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageBlobContainer()
         {
-            TestRunner.RunTestScript("Test-StorageBlobContainer");
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobContainer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageBlobContainerLegalHold()
         {
-            TestRunner.RunTestScript("Test-StorageBlobContainerLegalHold");
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobContainerLegalHold");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageBlobContainerImmutabilityPolicy()
         {
-            TestRunner.RunTestScript("Test-StorageBlobContainerImmutabilityPolicy");
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobContainerImmutabilityPolicy");
         }
     }
 }
