@@ -31,34 +31,41 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsSecurity.Grant, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiskAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSAccessUri))]
-    public partial class GrantAzureRmDiskAccess : ComputeAutomationBaseCmdlet
+    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMReimage", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSOperationStatusResponse))]
+    public partial class InvokeAzureRmVMReimage : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.DiskName, VerbsSecurity.Grant))
+                if (ShouldProcess(this.VMName, VerbsLifecycle.Invoke))
                 {
                     string resourceGroupName = this.ResourceGroupName;
-                    string diskName = this.DiskName;
-                    var grantAccessData = new GrantAccessData();
-                    grantAccessData.DurationInSeconds = this.DurationInSecond;
-                    grantAccessData.Access = this.Access;
+                    string vmName = this.VMName;
+                    bool? tempDisk = this.TempDisk.IsPresent;
 
-                    var result = DisksClient.GrantAccess(resourceGroupName, diskName, grantAccessData);
-                    var psObject = new PSAccessUri();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<AccessUri, PSAccessUri>(result, psObject);
-                    WriteObject(psObject);
+                    var result = VirtualMachinesClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmName, tempDisk).GetAwaiter().GetResult();
+                    PSOperationStatusResponse output = new PSOperationStatusResponse
+                    {
+                        StartTime = this.StartTime,
+                        EndTime = DateTime.Now
+                    };
+
+                    if (result != null && result.Request != null && result.Request.RequestUri != null)
+                    {
+                        output.Name = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
+                    }
+
+                    WriteObject(output);
                 }
             });
         }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -66,24 +73,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceNameCompleter("Microsoft.Compute/disks", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [Alias("Name")]
-        public string DiskName { get; set; }
+        public string VMName { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 3,
-            Mandatory = true)]
-        public string Access { get; set; }
-
-        [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 4,
-            Mandatory = false)]
-        public int DurationInSecond { get; set; }
+            ParameterSetName = "DefaultParameter")]
+        public SwitchParameter TempDisk { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
