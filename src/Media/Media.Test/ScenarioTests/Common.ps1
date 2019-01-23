@@ -59,7 +59,7 @@ Create a resource group
 #>
 function CreateResourceGroup([string]$rgname, [string]$location) 
 {
-	$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Force
+	$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Force
 	return $resourceGroup
 }
 
@@ -69,7 +69,7 @@ Remove a resource group
 #>
 function RemoveResourceGroup([string]$rgname) 
 {
-	Remove-AzureRmResourceGroup -Name $rgname -Force
+	Remove-AzResourceGroup -Name $rgname -Force
 }
 
 <#
@@ -78,8 +78,8 @@ Create a storage account
 #>
 function CreateStorageAccount([string]$rgname, [string]$name, [string]$location)
 {
-	New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $name -Location $location -Type "Standard_GRS"
-	$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $name
+	New-AzStorageAccount -ResourceGroupName $rgname -Name $name -Location $location -Type "Standard_GRS"
+	$storageAccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $name
 	return $storageAccount
 }
 
@@ -89,7 +89,7 @@ Remove a storage account
 #>
 function RemoveStorageAccount([string]$rgname, [string]$name) 
 {
-	Remove-AzureRmStorageAccount -ResourceGroupName $rgname -Name $name
+	Remove-AzStorageAccount -ResourceGroupName $rgname -Name $name
 }
 
 <#
@@ -145,7 +145,7 @@ function Get-AvailableLocation($preferedLocation)
   if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
   {
     $namespace = "Microsoft.Media"
-    $provider = Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Media | where {$_.Locations.length -ne 0}
+    $provider = Get-AzResourceProvider -ProviderNamespace Microsoft.Media | where {$_.Locations.length -ne 0}
     $locations = $provider.Locations
     if($locations -contains $preferedLocation)
     {

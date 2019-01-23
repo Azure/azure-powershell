@@ -27,13 +27,13 @@ function HybridConnectionsTests
 	# Create Resource Group
 	Write-Debug "Create resource group"    
 	Write-Debug " Resource Group Name : $resourceGroupName"
-	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+	New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
 	
 		
 	# Create Relay Namespace
 	Write-Debug "  Create new Relay namespace"
 	Write-Debug " Namespace name : $namespaceName"
-	$result = New-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName -Location $location
+	$result = New-AzRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName -Location $location
 	Wait-Seconds 15
 
 	Try
@@ -43,7 +43,7 @@ function HybridConnectionsTests
 
 		# get the created Relay Namespace 
 		Write-Debug " Get the created namespace within the resource group"
-		$returnedNamespace = Get-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName    
+		$returnedNamespace = Get-AzRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName    
 		# Assert
 		Assert-AreEqual $location $returnedNamespace.Location "NameSpace Location Not matched."        
 		Assert-True {$returnedNamespace.Name -eq $namespaceName} "Namespace created earlier is not found."
@@ -51,20 +51,20 @@ function HybridConnectionsTests
 		# Create a HybridConnections
 		Write-Debug "Create new HybridConnections"
 		$userMetadata = "User Meta data"
-		$result = New-AzureRmRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $HybridConnectionsName -RequiresClientAuthorization $True -UserMetadata $userMetadata
+		$result = New-AzRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $HybridConnectionsName -RequiresClientAuthorization $True -UserMetadata $userMetadata
 	
 		
 		Write-Debug " Get the created HybridConnections "
-		$createdHybridConnections = Get-AzureRmRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $HybridConnectionsName
+		$createdHybridConnections = Get-AzRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $HybridConnectionsName
 	
-		$result2 = Set-AzureRmRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $HybridConnectionsName -UserMetadata "Test UserMetdata"
+		$result2 = Set-AzRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $HybridConnectionsName -UserMetadata "Test UserMetdata"
 
 		#Assert
 		Assert-True {$result2.Name -eq $HybridConnectionsName} "HybridConnections created earlier is not found."
 
 		# Get the Created HybridConnections
 		Write-Debug " Get all the created HybridConnections "
-		$createdHybridConnectionsList = Get-AzureRmRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName
+		$createdHybridConnectionsList = Get-AzRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName
 		
 		#Assert
 		Assert-True {$createdHybridConnectionsList[0].Name -eq $HybridConnectionsName }"HybridConnections created earlier is not found."
@@ -72,7 +72,7 @@ function HybridConnectionsTests
 		# Update the Created HybridConnections
 		Write-Debug " Update HybridConnections "
 		$createdHybridConnections.UserMetadata = "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored."	   
-		$result1 = Set-AzureRmRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $HybridConnectionsName -InputObject $createdHybridConnections
+		$result1 = Set-AzRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $HybridConnectionsName -InputObject $createdHybridConnections
 		Wait-Seconds 15
 	
 		# Assert
@@ -85,12 +85,12 @@ function HybridConnectionsTests
 		Write-Debug " Delete the HybridConnections"
 		for ($i = 0; $i -lt $createdHybridConnectionsList.Count; $i++)
 		{
-			$delete1 = Remove-AzureRmRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $HybridConnectionsName		
+			$delete1 = Remove-AzRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $HybridConnectionsName		
 		}
 		Write-Debug " Delete namespaces"
-		Remove-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
+		Remove-AzRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 
 		Write-Debug " Delete resourcegroup"
-		Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+		Remove-AzResourceGroup -Name $resourceGroupName -Force
 	}
 }
