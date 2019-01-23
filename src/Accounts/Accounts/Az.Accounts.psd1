@@ -69,7 +69,7 @@ RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Authentication.Abstractions.d
                '.\Microsoft.Azure.PowerShell.Clients.Storage.Management.dll', 
                '.\Microsoft.Azure.PowerShell.Clients.KeyVault.dll', 
                '.\Microsoft.Azure.PowerShell.Clients.Websites.dll', 
-               '.\Hyak.Common.dll', 'Microsoft.ApplicationInsights.dll', 
+               '.\Hyak.Common.dll', '.\Microsoft.ApplicationInsights.dll', 
                '.\Microsoft.Azure.Common.dll', 
                '.\Microsoft.Rest.ClientRuntime.dll', 
                '.\Microsoft.Rest.ClientRuntime.Azure.dll', 
