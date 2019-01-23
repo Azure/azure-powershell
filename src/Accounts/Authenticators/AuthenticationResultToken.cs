@@ -17,7 +17,7 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.PowerShell.Authenticators.NetFramework
+namespace Microsoft.Azure.PowerShell.Authenticators
 {
     /// <summary>
     /// Access Token using a single authentication result
