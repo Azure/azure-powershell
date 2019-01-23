@@ -41,9 +41,6 @@ Returns a list of all infrastructure role instances at a location.
 ### [Get-AzsInfrastructureShare](Get-AzsInfrastructureShare.md)
 Returns a list of all fabric file shares at a certain location.
 
-### [Get-AzsInfrastructureVolume](Get-AzsVolume.md)
-Returns a list of all storage volumes at a location (Get-AzsInfrastructureVolume is an alias now to the cmdlet Get-AzsVolume).
-
 ### [Get-AzsIpPool](Get-AzsIpPool.md)
 Returns a list of all IP pools at a certain location.
 
@@ -65,14 +62,8 @@ Returns a list of all scale unit nodes in a location.
 ### [Get-AzsSlbMuxInstance](Get-AzsSlbMuxInstance.md)
 Returns a list of all software load balancer instances at a location.
 
-### [Get-AzsStoragePool](Get-AzsStoragePool.md)
-Returns a list of all storage pools for a location.
-
 ### [Get-AzsStorageSubSystem](Get-AzsStorageSubSystem.md)
 Returns a list of all storage subsystems for a scale unit.
-
-### [Get-AzsStorageSystem](Get-AzsStorageSystem.md)
-Returns a list of all storage subsystems for a location.
 
 ### [Get-AzsVolume](Get-AzsVolume.md)
 Returns a list of all storage volumes at a location.
