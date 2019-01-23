@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: D29C82CC-2080-48DA-880A-1AA83007E552
@@ -68,7 +68,7 @@ $nic = New-AzNetworkInterface -Name mynic1 -ResourceGroupName myrg -Location wes
 ```
 
 The first two commands get a virtual network called myvnet and a subnet called mysubnet respectively that were
-    previously created. These are stored in $vnet and $Subnet respectively.  The third command creates a new IP
+    previously created. These are stored in $vnet and $Subnet respectively. The third command creates a new IP
     configuration called "IPConfig-2" with a private IP address 10.0.0.5 associated with it.
     The last command then creates a network interface called mynic1 using this IP configuration.
 
@@ -364,5 +364,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzNetworkInterfaceIpConfig](./Remove-AzNetworkInterfaceIpConfig.md)
 
 [Set-AzNetworkInterfaceIpConfig](./Set-AzNetworkInterfaceIpConfig.md)
-
-

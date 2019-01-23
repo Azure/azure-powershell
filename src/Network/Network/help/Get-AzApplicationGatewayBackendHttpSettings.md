@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewaybackendhttpsettings
@@ -100,11 +100,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzApplicationGatewayBackendHttpSettings]()
+[Add-AzApplicationGatewayBackendHttpSettings](./Add-AzApplicationGatewayBackendHttpSettings.md)
 
-[New-AzApplicationGatewayBackendHttpSettings]()
+[New-AzApplicationGatewayBackendHttpSettings](./New-AzApplicationGatewayBackendHttpSettings.md)
 
-[Remove-AzApplicationGatewayBackendHttpSettings]()
+[Remove-AzApplicationGatewayBackendHttpSettings](./Remove-AzApplicationGatewayBackendHttpSettings.md)
 
-[Set-AzApplicationGatewayBackendHttpSettings]()
+[Set-AzApplicationGatewayBackendHttpSettings](./Set-AzApplicationGatewayBackendHttpSettings.md)
 

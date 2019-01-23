@@ -65,6 +65,9 @@ function Test-VirtualNetworkCRUD
         Assert-AreEqual "10.0.1.0/24" $list[0].Subnets[0].AddressPrefix
         Assert-AreEqual $expected.Etag $list[0].Etag
 
+        $listAll = Get-AzvirtualNetwork
+        Assert-NotNull $listAll
+
         # Test virtual network private ip address - available - TestByResource
         $testResponse1 = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Test-AzPrivateIPAddressAvailability -IPAddress "10.0.1.10"
         Assert-AreEqual true $testResponse1.Available
@@ -910,6 +913,9 @@ function Test-VirtualNetworkSubnetServiceEndpointPolicies
 
         $getserviceEndpointPolicyList = Get-AzServiceEndpointPolicy -ResourceGroupName $rgname;
         Assert-NotNull $getserviceEndpointPolicyList;
+
+        $getserviceEndpointPolicyListAll = Get-AzServiceEndpointPolicy;
+        Assert-NotNull $getserviceEndpointPolicyListAll;
 
         $getserviceEndpointPolicy = Get-AzServiceEndpointPolicy -ResourceId $serviceEndpointPolicy.Id;
         Assert-AreEqual $getserviceEndpointPolicy[0].Name $serviceEndpointPolicyName;

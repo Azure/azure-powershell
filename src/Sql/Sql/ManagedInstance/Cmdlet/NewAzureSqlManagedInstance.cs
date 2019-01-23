@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// The location in which to create the instance
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "The location in which to create the instance")]
+            HelpMessage = "The location in which to create the instance.")]
         [LocationCompleter("Microsoft.Sql/managedInstances")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets the instance Subnet Id
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "The Subnet Id to use for instance creation")]
+            HelpMessage = "The Subnet Id to use for instance creation.")]
         [ValidateNotNullOrEmpty]
         public string SubnetId { get; set; }
 
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets the instance License Type
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "Determines which License Type to use")]
+            HelpMessage = "Determines which License Type to use. Possible values are BasePrice (with AHB discount) and LicenseIncluded (without AHB discount).")]
         [PSArgumentCompleter(Constants.LicenseTypeBasePrice, Constants.LicenseTypeLicenseIncluded)]
         public string LicenseType { get; set; }
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets the Storage Size in GB for instance
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "Determines how much Storage size to associate with instance")]
+            HelpMessage = "Determines how much Storage size to associate with instance.")]
         [ValidateNotNullOrEmpty]
         public int StorageSizeInGB { get; set; }
 
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets the VCore for instance
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "Determines how much VCore to associate with instance")]
+            HelpMessage = "Determines how much VCore to associate with instance.")]
         [ValidateNotNullOrEmpty]
         public int VCore { get; set; }
 
