@@ -20,41 +20,41 @@ function Test-E2EVariableAsset
 {
     $resourceGroupName = "to-delete-01"
     $automationAccountName = "fbs-aa-01"
-    $output = Get-AzureRmAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
+    $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
     $variableName = "CreateNewVariableWithValue"
     $variableValue = "StringValue"
     $variableValueUpdated = "StringValueChanged"
 
-    $variableCreated = New-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `
+    $variableCreated = New-AzAutomationVariable -ResourceGroupName $resourceGroupName `
                                                      -AutomationAccountName $automationAccountName `
                                                      -name $variableName `
                                                      -value $variableValue `
                                                      -Encrypted:$false `
                                                      -Description "Hello"
 
-    $getVariable = Get-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `
+    $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
                                                  -AutomationAccountName $automationAccountName `
                                                  -name $variableName
 
     Assert-AreEqual "Hello"  $getVariable.Description
 
-    Set-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `
+    Set-AzAutomationVariable -ResourceGroupName $resourceGroupName `
                                   -AutomationAccountName $automationAccountName `
                                   -Name $variableName `
                                   -Encrypted:$false `
                                   -value $variableValueUpdated
 
-    $getVariable = Get-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `
+    $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
                                                  -AutomationAccountName $automationAccountName `
                                                  -name $variableName
 
     Assert-AreEqual $variableValueUpdated  $getVariable.value
 
-    Remove-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `
+    Remove-AzAutomationVariable -ResourceGroupName $resourceGroupName `
                                      -AutomationAccountName $automationAccountName `
                                      -Name $variableName 
 
-    $output = Get-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `
+    $output = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
                                             -AutomationAccountName $automationAccountName `
                                             -name $variableName -ErrorAction SilentlyContinue
 

@@ -27,10 +27,10 @@ function Test-DdosProtectionPlanCRUD
     try
     {
         # Create the resource group
-        New-AzureRmResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ddosProtectionPlan tag" }
+        New-AzResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ddosProtectionPlan tag" }
 
         # Create the DDoS protection plan
-        $job = New-AzureRmDdosProtectionPlan -ResourceGroupName $rgName -Name $ddosProtectionPlanName -Location $rgLocation -AsJob
+        $job = New-AzDdosProtectionPlan -ResourceGroupName $rgName -Name $ddosProtectionPlanName -Location $rgLocation -AsJob
         $job | Wait-Job
         $ddosProtectionPlanNew = $job | Receive-Job
 
@@ -41,7 +41,7 @@ function Test-DdosProtectionPlanCRUD
         Assert-Null $ddosProtectionPlanNew.VirtualMachines
 
         # Get the DDoS protection plan
-        $ddosProtectionPlanGet = Get-AzureRmDdosProtectionPlan -ResourceGroupName $rgName -Name $ddosProtectionPlanName
+        $ddosProtectionPlanGet = Get-AzDdosProtectionPlan -ResourceGroupName $rgName -Name $ddosProtectionPlanName
         Assert-AreEqual $rgName $ddosProtectionPlanGet.ResourceGroupName
         Assert-AreEqual $ddosProtectionPlanName $ddosProtectionPlanGet.Name
         Assert-NotNull $ddosProtectionPlanGet.Location
@@ -49,7 +49,7 @@ function Test-DdosProtectionPlanCRUD
         Assert-Null $ddosProtectionPlanGet.VirtualMachines
 
         # Remove the DDoS protection plan
-        $ddosProtectionPlanDelete = Remove-AzureRmDdosProtectionPlan -Name $ddosProtectionPlanName -ResourceGroupName $rgName -PassThru
+        $ddosProtectionPlanDelete = Remove-AzDdosProtectionPlan -Name $ddosProtectionPlanName -ResourceGroupName $rgName -PassThru
         Assert-AreEqual $true $ddosProtectionPlanDelete
     }
     finally
@@ -78,34 +78,34 @@ function Test-DdosProtectionPlanCRUDWithVirtualNetwork
     {
         # Create the resource group
 
-        New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
 
         # Create the DDoS Protection plan
 
-        $ddosProtectionPlan = New-AzureRmDdosProtectionPlan -Name $ddosProtectionPlanName -ResourceGroupName $rgname -Location $location
+        $ddosProtectionPlan = New-AzDdosProtectionPlan -Name $ddosProtectionPlanName -ResourceGroupName $rgname -Location $location
 
         # Create a Virtual Network with the DDoS protection plan
 
-        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
 
         Assert-AreEqual true $vnet.EnableDdoSProtection
         Assert-AreEqual $ddosProtectionPlan.Id $vnet.DdosProtectionPlan.Id
 
         # Verify DDoS protection now shows the associated VNET
 
-        $ddosProtectionPlanWithVnet = Get-AzureRmDdosProtectionPlan -Name $ddosProtectionPlanName -ResourceGroupName $rgname
+        $ddosProtectionPlanWithVnet = Get-AzDdosProtectionPlan -Name $ddosProtectionPlanName -ResourceGroupName $rgname
 
         Assert-AreEqual $vnet.Id $ddosProtectionPlanWithVnet.VirtualNetworks[0].Id
 
         # Delete the virtual network
 
-        $deleteVnet = Remove-AzureRmvirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+        $deleteVnet = Remove-AzvirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
         Assert-AreEqual true $deleteVnet
 
         # Delete the DDoS protection plan
 
-        $deleteDdosProtectionPlan = Remove-AzureRmDdosProtectionPlan -ResourceGroupName $rgname -name $ddosProtectionPlanName -PassThru
+        $deleteDdosProtectionPlan = Remove-AzDdosProtectionPlan -ResourceGroupName $rgname -name $ddosProtectionPlanName -PassThru
         Assert-AreEqual true $deleteDdosProtectionPlan
     }
     finally
@@ -131,15 +131,15 @@ function Test-DdosProtectionPlanCollections
     {
         # Create the resource group
         
-        New-AzureRmResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ddosProtectionPlan tag" }
+        New-AzResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ddosProtectionPlan tag" }
 
         # Create ddosProtectionPlan in resource group
 
-        $ddosProtectionPlan = New-AzureRmDdosProtectionPlan -Name $ddosProtectionPlanName -ResourceGroupName $rgName -Location $rgLocation
+        $ddosProtectionPlan = New-AzDdosProtectionPlan -Name $ddosProtectionPlanName -ResourceGroupName $rgName -Location $rgLocation
 
         # Get the ddosProtectionPlan in the resource group by using the collections API
 
-        $listRg = Get-AzureRmDdosProtectionPlan -ResourceGroupName $rgName
+        $listRg = Get-AzDdosProtectionPlan -ResourceGroupName $rgName
         Assert-AreEqual 1 @($listRg).Count
         Assert-AreEqual $listRg[0].ResourceGroupName $ddosProtectionPlan.ResourceGroupName
         Assert-AreEqual $listRg[0].Name $ddosProtectionPlan.Name
@@ -148,7 +148,7 @@ function Test-DdosProtectionPlanCollections
 
         # Get all DDoS protection plans in the subscription
 
-        $listSub = Get-AzureRmDdosProtectionPlan
+        $listSub = Get-AzDdosProtectionPlan
 
         $ddosProtectionPlanFromList = @($listSub) | Where-Object Name -eq $ddosProtectionPlanName | Where-Object ResourceGroupName -eq $rgName
         Assert-AreEqual $ddosProtectionPlan.ResourceGroupName $ddosProtectionPlanFromList.ResourceGroupName

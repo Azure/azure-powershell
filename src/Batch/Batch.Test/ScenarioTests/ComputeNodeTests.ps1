@@ -26,14 +26,14 @@ function Test-RemoveComputeNodes
     $resizeTimeout = ([TimeSpan]::FromMinutes(8))
 
     # Remove nodes
-    $computeNodes = Get-AzureBatchComputeNode -PoolId $poolId -BatchContext $context
+    $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -BatchContext $context
     $computeNodeId = $computeNodes[0].Id
     $computeNodeId2 = $computeNodes[1].Id
-    Remove-AzureBatchComputeNode -PoolId $poolId @($computeNodeId, $computeNodeId2) -Force -BatchContext $context
+    Remove-AzBatchComputeNode -PoolId $poolId @($computeNodeId, $computeNodeId2) -Force -BatchContext $context
 
     # State transition isn't immediate
     $select = "id,state"
-    $computeNodes = Get-AzureBatchComputeNode -PoolId $poolId -Select $select -BatchContext $context
+    $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -Select $select -BatchContext $context
     $start = [DateTime]::Now
     $timeout = Compute-TestTimeout 30
     $end = $start.AddSeconds($timeout)
@@ -44,7 +44,7 @@ function Test-RemoveComputeNodes
             throw [System.TimeoutException] "Timed out waiting for compute nodes to enter LeavingPool state"
         }
         Start-TestSleep 1000
-        $computeNodes = Get-AzureBatchComputeNode -PoolId $poolId -Select $select -BatchContext $context
+        $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -Select $select -BatchContext $context
     }
 }
 
@@ -62,13 +62,13 @@ function Test-RebootAndReimageComputeNode
     $reimageOption = ([Microsoft.Azure.Batch.Common.ComputeNodeReimageOption]::Terminate)
 
     # Reboot a node
-    Get-AzureBatchComputeNode $poolId $computeNodeId -BatchContext $context | Restart-AzureBatchComputeNode -RebootOption $rebootOption -BatchContext $context
-    $computeNode = Get-AzureBatchComputeNode -PoolId $poolId $computeNodeId -BatchContext $context
+    Get-AzBatchComputeNode $poolId $computeNodeId -BatchContext $context | Restart-AzBatchComputeNode -RebootOption $rebootOption -BatchContext $context
+    $computeNode = Get-AzBatchComputeNode -PoolId $poolId $computeNodeId -BatchContext $context
     Assert-AreEqual 'Rebooting' $computeNode.State
 
     # Reimage a node
-    Get-AzureBatchComputeNode $poolId $computeNodeId2 -BatchContext $context | Reset-AzureBatchComputeNode -ReimageOption $reimageOption -BatchContext $context
-    $computeNode2 = Get-AzureBatchComputeNode -PoolId $poolId $computeNodeId2 -BatchContext $context
+    Get-AzBatchComputeNode $poolId $computeNodeId2 -BatchContext $context | Reset-AzBatchComputeNode -ReimageOption $reimageOption -BatchContext $context
+    $computeNode2 = Get-AzBatchComputeNode -PoolId $poolId $computeNodeId2 -BatchContext $context
     Assert-AreEqual 'Reimaging' $computeNode2.State
 }
 
@@ -83,14 +83,14 @@ function Test-DisableAndEnableComputeNodeScheduling
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     $disableOption = ([Microsoft.Azure.Batch.Common.DisableComputeNodeSchedulingOption]::Terminate)
-    Get-AzureBatchComputeNode $poolId $computeNodeId -BatchContext $context | Disable-AzureBatchComputeNodeScheduling -DisableSchedulingOption $disableOption -BatchContext $context
+    Get-AzBatchComputeNode $poolId $computeNodeId -BatchContext $context | Disable-AzBatchComputeNodeScheduling -DisableSchedulingOption $disableOption -BatchContext $context
 
-    $computeNode = Get-AzureBatchComputeNode -PoolId $poolId $computeNodeId -Select "id,schedulingState" -BatchContext $context
+    $computeNode = Get-AzBatchComputeNode -PoolId $poolId $computeNodeId -Select "id,schedulingState" -BatchContext $context
     Assert-AreEqual 'Disabled' $computeNode.SchedulingState
 
-    $computeNode | Enable-AzureBatchComputeNodeScheduling -BatchContext $context
+    $computeNode | Enable-AzBatchComputeNodeScheduling -BatchContext $context
 
-    $computeNode = Get-AzureBatchComputeNode -PoolId $poolId $computeNodeId -Select "id,schedulingState" -BatchContext $context
+    $computeNode = Get-AzBatchComputeNode -PoolId $poolId $computeNodeId -Select "id,schedulingState" -BatchContext $context
     Assert-AreEqual 'Enabled' $computeNode.SchedulingState
 }
 
@@ -103,7 +103,7 @@ function Test-GetRemoteLoginSettings
     param([string]$poolId, [string]$computeNodeId)
     
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    $remoteLoginSettings = Get-AzureBatchComputeNode $poolId $computeNodeId -BatchContext $context | Get-AzureBatchRemoteLoginSettings -BatchContext $context
+    $remoteLoginSettings = Get-AzBatchComputeNode $poolId $computeNodeId -BatchContext $context | Get-AzBatchRemoteLoginSettings -BatchContext $context
 
     Assert-AreNotEqual $null $remoteLoginSettings.IPAddress
     Assert-AreNotEqual $null $remoteLoginSettings.Port

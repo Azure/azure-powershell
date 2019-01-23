@@ -31,16 +31,16 @@ function ServiceBusPaginationTests
 	 
     Write-Debug "Create resource group"
 	Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
         
     Write-Debug " Create new Topic namespace"
     Write-Debug "NamespaceName : $namespaceName" 
-    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName
+    $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName
     
     Try
 	{
 		Write-Debug "Get the created namespace within the resource group"
-		$createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
+		$createdNamespace = Get-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 
 		Assert-AreEqual $createdNamespace.Name $namespaceName
 
@@ -50,11 +50,11 @@ function ServiceBusPaginationTests
 		while($count -lt 50)
 		{
 			$queueNameNew = $nameQueue + "_" +$count
-			New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $queueNameNew
+			New-AzServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $queueNameNew
 			$count = $count + 1
 		}
 	
-		$get30Queue = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -MaxCount 30
+		$get30Queue = Get-AzServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -MaxCount 30
 		Assert-AreEqual 30 $get30Queue.Count "Get Queue with MaxCount 30 not returned total 30"
 
 		#Create Topic
@@ -63,11 +63,11 @@ function ServiceBusPaginationTests
 		while($count -lt 50)
 		{
 			$topicNameNew = $nameTopic + "_" +$count
-			New-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $topicNameNew -EnablePartitioning $TRUE
+			New-AzServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $topicNameNew -EnablePartitioning $TRUE
 			$count = $count + 1
 		}
 	
-		$get30Topic = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -MaxCount 30	
+		$get30Topic = Get-AzServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -MaxCount 30	
 		Assert-AreEqual 30 $get30Topic.Count "Get Topic with MaxCount 30 not returned total 30"
 
 		#Create Subscription
@@ -76,11 +76,11 @@ function ServiceBusPaginationTests
 		while($count -lt 50)
 		{
 			$subscriptionNameNew = $subName + "_" +$count
-			New-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $topicNameNew -Name $subscriptionNameNew
+			New-AzServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $topicNameNew -Name $subscriptionNameNew
 			$count = $count + 1
 		}
 	
-		$get30Sub = Get-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $topicNameNew -MaxCount 30	
+		$get30Sub = Get-AzServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $topicNameNew -MaxCount 30	
 		Assert-AreEqual 30 $get30Sub.Count "Get Subscription with MaxCount 30 not returned total 30"	
 
 		#Create Rules
@@ -89,11 +89,11 @@ function ServiceBusPaginationTests
 		while($count -lt 50)
 		{
 			$ruleNameNew = $ruleName + "_" +$count
-			New-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $topicNameNew -Subscription $subscriptionNameNew -Name $ruleNameNew -SqlExpression "myproperty='test'"
+			New-AzServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $topicNameNew -Subscription $subscriptionNameNew -Name $ruleNameNew -SqlExpression "myproperty='test'"
 			$count = $count + 1
 		}
 	
-		$get30Rule = Get-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $topicNameNew -Subscription $subscriptionNameNew -MaxCount 25	
+		$get30Rule = Get-AzServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $topicNameNew -Subscription $subscriptionNameNew -MaxCount 25	
 		Assert-AreEqual 25 $get30Rule.Count "Get Rules with MaxCount 30 not returned total 30"
 	}
 	Finally
@@ -102,10 +102,10 @@ function ServiceBusPaginationTests
 		# Delete namespace
 
 		Write-Debug "Delete NameSpace"
-		Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
+		Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 
 		Write-Debug " Delete resourcegroup"
-		Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+		Remove-AzResourceGroup -Name $resourceGroupName -Force
 	}
 
 	
