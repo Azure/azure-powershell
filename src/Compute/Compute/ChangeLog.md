@@ -19,6 +19,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add Invoke-AzVMReimage cmdlet
+* Add TempDisk parameter to Set-AzVmss
+* Fix the warning message of New-AzVM
 
 ## Version 1.1.0
 * Name is now optional in ID parameter set for Restart/Start/Stop/Remove/Set-AzVM and Save-AzVMImage
