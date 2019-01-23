@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Update incorrect online help URLs
+* Updated parameter description for LicenseType parameter with possible values
+* Fix for updating managed instance identity not working when it is the only updated property
 * Support for custom collation on managed instance
 
 ## Version 1.0.1

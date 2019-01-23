@@ -29,18 +29,18 @@ function Test-CertificateCrudOperations
     $x509cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList $certPathVs
 
     # Add the cert
-    $x509cert | New-AzureBatchCertificate -BatchContext $context
+    $x509cert | New-AzBatchCertificate -BatchContext $context
 
     # Get the cert and ensure its properties match expectations
-    $addedCert = Get-AzureBatchCertificate $thumbprintAlgorithm $x509cert.Thumbprint -BatchContext $context
+    $addedCert = Get-AzBatchCertificate $thumbprintAlgorithm $x509cert.Thumbprint -BatchContext $context
     Assert-AreEqual $x509cert.Thumbprint $addedCert.Thumbprint
     Assert-AreEqual $thumbprintAlgorithm $addedCert.ThumbprintAlgorithm
 
     # Delete the cert via pipelining
-    $addedCert | Remove-AzureBatchCertificate -BatchContext $context
+    $addedCert | Remove-AzBatchCertificate -BatchContext $context
 
     # Ensure that our delete call was successful. Use a list operation to avoid the 404 that a get will return.
-    $allCerts = Get-AzureBatchCertificate -BatchContext $context
+    $allCerts = Get-AzBatchCertificate -BatchContext $context
     foreach ($c in $allCerts)
     {
         Assert-True { ($c.Thumbprint -ne $x509cert.Thumbprint) -or ($c.State.ToString().ToLower() -eq 'deleting') }
@@ -58,14 +58,14 @@ function Test-TestCancelCertificateDelete
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Verify the cert is in the deletefailed state
-    $cert = Get-AzureBatchCertificate $thumbprintAlgorithm $thumbprint -BatchContext $context
+    $cert = Get-AzBatchCertificate $thumbprintAlgorithm $thumbprint -BatchContext $context
     Assert-AreEqual 'deletefailed' $cert.State.ToString().ToLower()
 
-    Get-AzureBatchCertificate $thumbprintAlgorithm $thumbprint -BatchContext $context | Stop-AzureBatchCertificateDeletion -BatchContext $context
+    Get-AzBatchCertificate $thumbprintAlgorithm $thumbprint -BatchContext $context | Stop-AzBatchCertificateDeletion -BatchContext $context
 
     # Verify the cert went back to the active state
     $filter = "state eq 'active'"
-    $cert = Get-AzureBatchCertificate -Filter $filter -BatchContext $context
+    $cert = Get-AzBatchCertificate -Filter $filter -BatchContext $context
     
     Assert-AreEqual $thumbprint $cert.Thumbprint
 }

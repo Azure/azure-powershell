@@ -24,22 +24,22 @@ function Test-Hub
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        New-AzDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
      
         $hubname = "SampleHub"
    
-        $actual = New-AzureRmDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname -File .\Resources\hub.json -Force
-        $expected = Get-AzureRmDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname
+        $actual = New-AzDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname -File .\Resources\hub.json -Force
+        $expected = Get-AzDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
         Assert-AreEqual $expected.HubName $actual.HubName
 
-        Remove-AzureRmDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname -Force
+        Remove-AzDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname -Force
     }
     finally
     {
@@ -60,22 +60,22 @@ function Test-HubWithDataFactoryParameter
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        $df = New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        $df = New-AzDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
      
         $hubname = "SampleHub"
    
-        $actual = New-AzureRmDataFactoryHub -DataFactory $df -Name $hubname -File .\Resources\hub.json -Force
-        $expected = Get-AzureRmDataFactoryHub -DataFactory $df -Name $hubname
+        $actual = New-AzDataFactoryHub -DataFactory $df -Name $hubname -File .\Resources\hub.json -Force
+        $expected = Get-AzDataFactoryHub -DataFactory $df -Name $hubname
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
         Assert-AreEqual $expected.HubName $actual.HubName
 
-        Remove-AzureRmDataFactoryHub -DataFactory $df -Name $hubname -Force
+        Remove-AzDataFactoryHub -DataFactory $df -Name $hubname -Force
     }
     finally
     {
@@ -94,20 +94,20 @@ function Test-HubPiping
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        New-AzDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
      
         $hubname = "SampleHub"
    
-        New-AzureRmDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname -File .\Resources\hub.json -Force
+        New-AzDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname -File .\Resources\hub.json -Force
         
-        Get-AzureRmDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname | Remove-AzureRmDataFactoryHub -Force
+        Get-AzDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname | Remove-AzDataFactoryHub -Force
 
         # Test the hub no longer exists
-        Assert-ThrowsContains { Get-AzureRmDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname } "HubNotFound"
+        Assert-ThrowsContains { Get-AzDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname } "HubNotFound"
     }
     finally
     {

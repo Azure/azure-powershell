@@ -32,12 +32,12 @@ function RelayAuthTests
 	# Create ResourceGroup
     Write-Debug " Create resource group"    
     Write-Debug "Resource group name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
 	   
     # Create Relay Namespace 
     Write-Debug " Create new Relay namespace"
     Write-Debug "Namespace name : $namespaceName"
-    $result = New-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName -Location $location
+    $result = New-AzRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName -Location $location
     Wait-Seconds 15
     
 	# Assert
@@ -47,7 +47,7 @@ function RelayAuthTests
 	{
 		# Get Created NameSpace
 		Write-Debug " Get the created namespace within the resource group"
-		$createdNamespace = Get-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
+		$createdNamespace = Get-AzRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
     
 		# Assert
 		Assert-True {$createdNamespace.Name -eq $namespaceName} "Namespace created earlier is not found."
@@ -56,10 +56,10 @@ function RelayAuthTests
 		Write-Debug " Create new WcfRelay "    
 		$wcfRelayType = "NetTcp"
 		$userMetadata = "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored."
-		$resultWcfRelay = New-AzureRmWcfRelay -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $wcfRelayName -WcfRelayType $wcfRelayType  -RequiresClientAuthorization $true -RequiresTransportSecurity $true -UserMetadata $userMetadata
+		$resultWcfRelay = New-AzWcfRelay -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $wcfRelayName -WcfRelayType $wcfRelayType  -RequiresClientAuthorization $true -RequiresTransportSecurity $true -UserMetadata $userMetadata
 			
 		Write-Debug " Get the created WcfRelay"
-		$createdWcfRelay = Get-AzureRmWcfRelay -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $resultWcfRelay.Name
+		$createdWcfRelay = Get-AzWcfRelay -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $resultWcfRelay.Name
 
 		# Assert
 		Assert-True {$createdWcfRelay.Name -eq $wcfRelayName} "WcfRelay created earlier is not found."  
@@ -67,18 +67,18 @@ function RelayAuthTests
 		# Create a HybridConnections
 		Write-Debug "Create new HybridConnections"
 		$userMetadata = "User Meta data"
-		$resultHybirdconnection = New-AzureRmRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $HybridConnectionsName -RequiresClientAuthorization $True -UserMetadata $userMetadata
+		$resultHybirdconnection = New-AzRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $HybridConnectionsName -RequiresClientAuthorization $True -UserMetadata $userMetadata
 	
 		
 		Write-Debug " Get the created HybridConnections "
-		$createdHybridConnections = Get-AzureRmRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $HybridConnectionsName
+		$createdHybridConnections = Get-AzRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $HybridConnectionsName
 
 		#Assert
 		Assert-True {$createdHybridConnections.Name -eq $HybridConnectionsName} "HybridConnections created earlier is not found."
 	
 		#Create Namespace AuthorizationRule 
 		Write-Debug "Create a WcfRelay Authorization Rule"
-		$result = New-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Rights "Send"
+		$result = New-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Rights "Send"
 
 		# Assert
 		Assert-AreEqual $authRuleName $result.Name
@@ -86,21 +86,21 @@ function RelayAuthTests
 		Wait-Seconds 15
 
 		# get the Updated Namespace Authorization Rule
-		$getAuthRule = Get-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName 
+		$getAuthRule = Get-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName 
 
 		$getAuthRule.Rights.Add("Listen")
 
 		# Update the Namespace Authorization Rule
 		Write-Debug "Update Namespace AuthorizationRule"
-		$updatedAuthRule = Set-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -InputObject $getAuthRule
+		$updatedAuthRule = Set-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -InputObject $getAuthRule
 		Wait-Seconds 15
 
 		# get the Updated Namespace Authorization Rule
-		$getAuthRule1 = Get-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName 
+		$getAuthRule1 = Get-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName 
 
 		# Create WcfRelay Authorization Rule
 		Write-Debug "Create a WcfRelay Authorization Rule"
-		$result = New-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName -Rights "Listen","Send"
+		$result = New-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName -Rights "Listen","Send"
 
 		# Assert
 		Assert-AreEqual $WcfRelayAuthRuleName $result.Name
@@ -110,7 +110,7 @@ function RelayAuthTests
 
 		# Get Created HybridConnection Authorization Rule
 		Write-Debug "Get created authorizationRule"
-		$createdAuthRule = New-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName -Rights "Listen","Send"
+		$createdAuthRule = New-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName -Rights "Listen","Send"
 
 		# Assert
 		Assert-AreEqual $HybirdConnectionAuthRuleName $createdAuthRule.Name
@@ -120,7 +120,7 @@ function RelayAuthTests
 	
 		# Get all Namespace Authorization Rules
 		Write-Debug "Get All WcfRelay AuthorizationRule"
-		$result = Get-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName
+		$result = Get-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName
 		# Assert
 		$found = 0
     
@@ -134,7 +134,7 @@ function RelayAuthTests
     
 		# Get all WcfRelay Authorization Rules
 		Write-Debug "Get All WcfRelay AuthorizationRule"
-		$resultWcfRelayAuthoRuleList = Get-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName
+		$resultWcfRelayAuthoRuleList = Get-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName
 		# Assert
 		$found = 0
     
@@ -149,7 +149,7 @@ function RelayAuthTests
 
 		# Get all HybirdConnection Authorization Rules
 		Write-Debug "Get All WcfRelay AuthorizationRule"
-		$resultHybirdConnectionAuthoRuleList = Get-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName 
+		$resultHybirdConnectionAuthoRuleList = Get-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName 
 		# Assert
 		$found = 0
     
@@ -163,7 +163,7 @@ function RelayAuthTests
     
 		# Update the Namespace Authorization Rule
 		Write-Debug "Update Namespace AuthorizationRule"
-		$updatedAuthRule = Set-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Rights "Listen","Manage","Send"
+		$updatedAuthRule = Set-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Rights "Listen","Manage","Send"
 		Wait-Seconds 15
 
 		# Assert
@@ -174,7 +174,7 @@ function RelayAuthTests
 		Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
 	   
 		# get the Updated Namespace Authorization Rule
-		$updatedAuthRule = Get-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName 
+		$updatedAuthRule = Get-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName 
     
 		# Assert
 		Assert-AreEqual $authRuleName $updatedAuthRule.Name
@@ -186,7 +186,7 @@ function RelayAuthTests
 
 		# Update the WcfRelay Authorization Rule
 		Write-Debug "Update WcfRelay AuthorizationRule"
-		$updatedWcfRelayAuthRule = Set-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName -Rights "Listen","Send", "Manage"
+		$updatedWcfRelayAuthRule = Set-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName -Rights "Listen","Send", "Manage"
 		Wait-Seconds 15
 
 		# Assert
@@ -197,7 +197,7 @@ function RelayAuthTests
 		Assert-True { $updatedWcfRelayAuthRule.Rights -Contains "Manage" }
 	   
 		# get the Updated WcfRelay Authorization Rule
-		$updatedWcfRelayAuthRule1 = Get-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName
+		$updatedWcfRelayAuthRule1 = Get-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName
     
 		# Assert
 		Assert-AreEqual $WcfRelayAuthRuleName $updatedWcfRelayAuthRule1.Name
@@ -210,7 +210,7 @@ function RelayAuthTests
 
 		# Update the HybirdConnection Authorization Rule
 		Write-Debug "Update HybirdConnection AuthorizationRule"
-		$updatedHybirdConnectionAuthRule = Set-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName -Rights "Listen","Send", "Manage"
+		$updatedHybirdConnectionAuthRule = Set-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName -Rights "Listen","Send", "Manage"
 		Wait-Seconds 15
 
 		# Assert
@@ -221,7 +221,7 @@ function RelayAuthTests
 		Assert-True { $updatedHybirdConnectionAuthRule.Rights -Contains "Manage" }
 	   
 		# get the Updated HybridConnection Authorization Rule
-		$updatedHybirdConnectionAuthRule1 = Get-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName
+		$updatedHybirdConnectionAuthRule1 = Get-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName
     
 		# Assert
 		Assert-AreEqual $HybirdConnectionAuthRuleName $updatedHybirdConnectionAuthRule1.Name
@@ -232,7 +232,7 @@ function RelayAuthTests
 
 		# Get the List Keys - Namespace
 		Write-Debug "Get WcfRelay authorizationRules connectionStrings"
-		$namespaceListKeys = Get-AzureRmRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName
+		$namespaceListKeys = Get-AzRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName
 
 		Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($namespaceListKeys.PrimaryKey)}
 		Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($namespaceListKeys.SecondaryKey)}
@@ -240,13 +240,13 @@ function RelayAuthTests
 		# Regentrate the Keys 
 		$policyKey = "PrimaryKey"
 
-		$namespaceRegenerateKeys = New-AzureRmRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -RegenerateKey $policyKey -KeyValue $keyValue
+		$namespaceRegenerateKeys = New-AzRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -RegenerateKey $policyKey -KeyValue $keyValue
 		Assert-True {$namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
 		Assert-AreEqual $namespaceRegenerateKeys.PrimaryKey $keyValue
 
 		$policyKey1 = "SecondaryKey"
 
-		$namespaceRegenerateKeys1 = New-AzureRmRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -RegenerateKey $policyKey1 -KeyValue $keyValue
+		$namespaceRegenerateKeys1 = New-AzRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -RegenerateKey $policyKey1 -KeyValue $keyValue
 		Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey}
 		Assert-AreEqual $namespaceRegenerateKeys1.SecondaryKey $keyValue
 
@@ -254,7 +254,7 @@ function RelayAuthTests
 	
 		# Get the List Keys - WcfRelay
 		Write-Debug "Get WcfRelay authorizationRules connectionStrings"
-		$WcfRelayListKeys = Get-AzureRmRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName
+		$WcfRelayListKeys = Get-AzRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName
 
 		Assert-True {$WcfRelayListKeys.PrimaryConnectionString.Contains($WcfRelayListKeys.PrimaryKey)}
 		Assert-True {$WcfRelayListKeys.SecondaryConnectionString.Contains($WcfRelayListKeys.SecondaryKey)}
@@ -262,19 +262,19 @@ function RelayAuthTests
 		# Regentrate the Keys 
 		$policyKey = "PrimaryKey"
 
-		$WcfRelayRegenerateKeys = New-AzureRmRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName -RegenerateKey $policyKey -KeyValue $keyValue
+		$WcfRelayRegenerateKeys = New-AzRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName -RegenerateKey $policyKey -KeyValue $keyValue
 		Assert-True {$WcfRelayRegenerateKeys.PrimaryKey -ne $WcfRelayListKeys.PrimaryKey}
 		Assert-AreEqual $WcfRelayRegenerateKeys.PrimaryKey $keyValue
 
 		$policyKey1 = "SecondaryKey"
 
-		$WcfRelayRegenerateKeys1 = New-AzureRmRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName -RegenerateKey $policyKey1 -KeyValue $keyValue
+		$WcfRelayRegenerateKeys1 = New-AzRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName -RegenerateKey $policyKey1 -KeyValue $keyValue
 		Assert-True {$WcfRelayRegenerateKeys1.SecondaryKey -ne $WcfRelayListKeys.SecondaryKey}
 		Assert-AreEqual $WcfRelayRegenerateKeys1.SecondaryKey $keyValue
 
 		# Get the List Keys - HybirdConnection
 		Write-Debug "Get WcfRelay authorizationRules connectionStrings"
-		$HybirdConnectionListKeys = Get-AzureRmRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName
+		$HybirdConnectionListKeys = Get-AzRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName
 
 		Assert-True {$HybirdConnectionListKeys.PrimaryConnectionString.Contains($HybirdConnectionListKeys.PrimaryKey)}
 		Assert-True {$HybirdConnectionListKeys.SecondaryConnectionString.Contains($HybirdConnectionListKeys.SecondaryKey)}
@@ -282,40 +282,40 @@ function RelayAuthTests
 		# Regentrate the Keys 
 		$policyKey = "PrimaryKey"
 
-		$HybirdConnectionRegenerateKeys = New-AzureRmRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName -RegenerateKey $policyKey -KeyValue $keyValue
+		$HybirdConnectionRegenerateKeys = New-AzRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName -RegenerateKey $policyKey -KeyValue $keyValue
 		Assert-True {$HybirdConnectionRegenerateKeys.PrimaryKey -ne $HybirdConnectionListKeys.PrimaryKey}
 		Assert-AreEqual $HybirdConnectionRegenerateKeys.PrimaryKey $keyValue
 
 		$policyKey1 = "SecondaryKey"
 
-		$HybirdConnectionRegenerateKeys1 = New-AzureRmRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName -RegenerateKey $policyKey1 -KeyValue $keyValue
+		$HybirdConnectionRegenerateKeys1 = New-AzRelayKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName -RegenerateKey $policyKey1 -KeyValue $keyValue
 		Assert-True {$HybirdConnectionRegenerateKeys1.SecondaryKey -ne $HybirdConnectionListKeys.SecondaryKey}
 		Assert-AreEqual $HybirdConnectionRegenerateKeys1.SecondaryKey $keyValue
 	
 
 		# Cleanup
 		Write-Debug "Delete the created Namespace AuthorizationRule"
-		$result = Remove-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Force
+		$result = Remove-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Force
 
 		Write-Debug "Delete the created WcfRelay AuthorizationRule"
-		$result = Remove-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName -Force
+		$result = Remove-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName -Force
 
 		Write-Debug "Delete the created HybridConnection AuthorizationRule"
-		$result = Remove-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName -Force
+		$result = Remove-AzRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName -Force
     
 
 		Write-Debug "Delete the WcfRelay"
-		Remove-AzureRmRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $HybridConnectionsName
+		Remove-AzRelayHybridConnection -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $HybridConnectionsName
     
 		Write-Debug "Delete the WcfRelay"
-		Remove-AzureRmWcfRelay -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $wcfRelayName
+		Remove-AzWcfRelay -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $wcfRelayName
 	}
 	Finally
 	{
 		Write-Debug "Delete NameSpace"
-		Remove-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
+		Remove-AzRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 
 		Write-Debug " Delete resourcegroup"
-		Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+		Remove-AzResourceGroup -Name $resourceGroupName -Force
 	}        
 }

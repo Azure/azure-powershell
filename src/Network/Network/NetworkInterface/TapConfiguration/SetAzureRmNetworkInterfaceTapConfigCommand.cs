@@ -13,6 +13,7 @@
 // limitations under the License.
 
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
                     var tapConfigModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkInterfaceTapConfiguration>(this.NetworkInterfaceTapConfig);
 
                     // Execute the Create VirtualNetwork call
-                    this.NetworkInterfaceTapClient.CreateOrUpdateWithHttpMessagesAsync(this.NetworkInterfaceTapConfig.ResourceGroupName, this.NetworkInterfaceTapConfig.NetworkInterfaceName, this.NetworkInterfaceTapConfig.Name, tapConfigModel).GetAwaiter().GetResult();
+                    this.NetworkInterfaceTapClient.CreateOrUpdate(this.NetworkInterfaceTapConfig.ResourceGroupName, this.NetworkInterfaceTapConfig.NetworkInterfaceName, this.NetworkInterfaceTapConfig.Name, tapConfigModel);
                     var getTapconfig = this.GetNetworkInterfaceTapConfiguration(this.NetworkInterfaceTapConfig.ResourceGroupName, this.NetworkInterfaceTapConfig.NetworkInterfaceName, this.NetworkInterfaceTapConfig.Name);
 
                     WriteObject(getTapconfig);
