@@ -28,12 +28,12 @@ function Test-VirtualMachineScaleSetProfile
 
     $ipTagType1 = 'FirstPartyUsage1';
     $ipTagValue1 ='Sql1';
-    $ipTag1 = New-AzureRmVmssIpTagConfig -IpTagType $ipTagType1 -Tag $ipTagValue1;
+    $ipTag1 = New-AzVmssIpTagConfig -IpTagType $ipTagType1 -Tag $ipTagValue1;
     $ipTagType2 = 'FirstPartyUsage2';
     $ipTagValue2 ='Sql2';
-    $ipTag2 = New-AzureRmVmssIpTagConfig -IpTagType $ipTagType2 -Tag $ipTagValue2;
+    $ipTag2 = New-AzVmssIpTagConfig -IpTagType $ipTagType2 -Tag $ipTagValue2;
 
-    $ipCfg = New-AzureRmVmssIPConfig -Name $ipName -SubnetId $subnetId -IpTag $ipTag1,$ipTag2 -PublicIPPrefix $ipPrefix;
+    $ipCfg = New-AzVmssIPConfig -Name $ipName -SubnetId $subnetId -IpTag $ipTag1,$ipTag2 -PublicIPPrefix $ipPrefix;
 
     # Sku
     $skuName = 'Standard_A0';
@@ -56,13 +56,13 @@ function Test-VirtualMachineScaleSetProfile
     $newUserId1 = "userid1";
     $newUserId2 = "userid2";
 
-    $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity $skuCapacity -SkuName $skuName -UpgradePolicyMode $upgradePolicy `
+    $vmss = New-AzVmssConfig -Location $loc -SkuCapacity $skuCapacity -SkuName $skuName -UpgradePolicyMode $upgradePolicy `
             -IdentityType UserAssigned -IdentityId $newUserId1,$newUserId2 `
-          | Add-AzureRmVmssNetworkInterfaceConfiguration -Name $networkName -Primary $true -IPConfiguration $ipCfg `
-          | Set-AzureRmVmssOSProfile -ComputerNamePrefix $computePrefix  -AdminUsername $adminUsername -AdminPassword $adminPassword `
-          | Set-AzureRmVmssStorageProfile -OsDiskCreateOption $createOption -OsDiskCaching $osCaching `
+          | Add-AzVmssNetworkInterfaceConfiguration -Name $networkName -Primary $true -IPConfiguration $ipCfg `
+          | Set-AzVmssOSProfile -ComputerNamePrefix $computePrefix  -AdminUsername $adminUsername -AdminPassword $adminPassword `
+          | Set-AzVmssStorageProfile -OsDiskCreateOption $createOption -OsDiskCaching $osCaching `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version -ImageReferencePublisher $imgRef.PublisherName `
-          | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true;
+          | Add-AzVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true;
 
     # IP config and Network profile
     Assert-AreEqual $ipName $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name;
@@ -117,17 +117,17 @@ function Test-VirtualMachineScaleSetProfile
     # AdditionalCapabilities
     Assert-Null $vmss.VirtualMachineProfile.AdditionalCapabilities;
 
-    $vmss2 = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $false;
+    $vmss2 = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $false;
     Assert-False { $vmss2.UpgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback };
 
-    $vmss3 = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $true -EnableUltraSSD;
+    $vmss3 = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $true -EnableUltraSSD;
     Assert-True { $vmss3.UpgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback };
     Assert-True { $vmss3.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled };
 
-    $vmss4 = New-AzureRmVmssConfig -Location $loc -SkuCapacity $skuCapacity -SkuName $skuName -UpgradePolicyMode $upgradePolicy ;
+    $vmss4 = New-AzVmssConfig -Location $loc -SkuCapacity $skuCapacity -SkuName $skuName -UpgradePolicyMode $upgradePolicy ;
     Assert-Null $vmss4.Identity;
 
-    $vmss4 = $vmss4 | Set-AzureRmVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+    $vmss4 = $vmss4 | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
             -ImageReferencePublisher $imgRef.PublisherName -OsDiskWriteAccelerator -ManagedDisk "Premium_LRS" -DiffDiskSetting "Local";
 

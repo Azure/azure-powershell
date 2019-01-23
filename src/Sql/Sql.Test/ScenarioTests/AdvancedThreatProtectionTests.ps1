@@ -26,7 +26,7 @@ function Test-AdvancedThreatProtectionPolicyTest
 	try
 	{
 		# Get Advanced Threat Protection Policy
-		$policy = Get-AzureRmSqlServerAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		$policy = Get-AzSqlServerAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 				
 		# Validate the policy
 		Assert-AreEqual $params.rgname $policy.ResourceGroupName
@@ -34,8 +34,8 @@ function Test-AdvancedThreatProtectionPolicyTest
 		Assert-False { $policy.IsEnabled }
 
 		# Enabled Advanced Threat Protection Policy
-		Enable-AzureRmSqlServerAdvancedThreatProtection -ResourceGroupName $params.rgname -ServerName $params.serverName 
-		$policy = Get-AzureRmSqlServerAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		Enable-AzSqlServerAdvancedThreatProtection -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		$policy = Get-AzSqlServerAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 				
 		# Validate the policy
 		Assert-AreEqual $params.rgname $policy.ResourceGroupName
@@ -43,8 +43,8 @@ function Test-AdvancedThreatProtectionPolicyTest
 		Assert-True { $policy.IsEnabled }
 
 		# Disable Advanced Threat Protection Policy
-		Disable-AzureRmSqlServerAdvancedThreatProtection -ResourceGroupName $params.rgname -ServerName $params.serverName 
-		$policy = Get-AzureRmSqlServerAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		Disable-AzSqlServerAdvancedThreatProtection -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		$policy = Get-AzSqlServerAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 				
 		# Validate the policy
 		Assert-AreEqual $params.rgname $policy.ResourceGroupName
@@ -52,22 +52,22 @@ function Test-AdvancedThreatProtectionPolicyTest
 		Assert-False { $policy.IsEnabled }
 
 		# See that ATP cmdlets don't mess up the Threat Detection policy
-		Set-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType Sql_Injection_Vulnerability
+		Set-AzSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType Sql_Injection_Vulnerability
 
-		Disable-AzureRmSqlServerAdvancedThreatProtection -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		Disable-AzSqlServerAdvancedThreatProtection -ResourceGroupName $params.rgname -ServerName $params.serverName 
 
 		# Assert
-		$policy = Get-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		$policy = Get-AzSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
 		Assert-AreEqual $policy.NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com"
 		Assert-False {$policy.EmailAdmins}
 		Assert-AreEqual $policy.ExcludedDetectionTypes.Count 1
 		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection_Vulnerability)}
 
-		Enable-AzureRmSqlServerAdvancedThreatProtection -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		Enable-AzSqlServerAdvancedThreatProtection -ResourceGroupName $params.rgname -ServerName $params.serverName 
 
 		# Assert
-		$policy = Get-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		$policy = Get-AzSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
 		Assert-AreEqual $policy.NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com"
 		Assert-False {$policy.EmailAdmins}
@@ -110,5 +110,5 @@ Removes the test environment that was needed to perform the tests
 function Remove-AdvancedThreatProtectionTestEnvironment ($testSuffix)
 {
 	$params = Get-SqlAdvancedThreatProtectionTestEnvironmentParameters $testSuffix
-	Remove-AzureRmResourceGroup -Name $params.rgname -Force
+	Remove-AzResourceGroup -Name $params.rgname -Force
 }

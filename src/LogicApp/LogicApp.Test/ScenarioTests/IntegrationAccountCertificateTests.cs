@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test New-AzureRmIntegrationAccountCertificate command to create a new integration account certificate.
+        /// Test New-AzIntegrationAccountCertificate command to create a new integration account certificate.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test New-AzureRmIntegrationAccountCertificatePrivateKey command to create a new integration account certificate.
+        /// Test New-AzIntegrationAccountCertificatePrivateKey command to create a new integration account certificate.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountCertificate command to get the integration account certificate.
+        /// Test Get-AzIntegrationAccountCertificate command to get the integration account certificate.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Remove-AzureRmIntegrationAccountCertificate command to remove the integration account certificate.
+        /// Test Remove-AzIntegrationAccountCertificate command to remove the integration account certificate.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }        
 
         /// <summary>
-        /// Test Set-AzureRmIntegrationAccountCertificate command to update the integration account certificate.
+        /// Test Set-AzIntegrationAccountCertificate command to update the integration account certificate.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvpngateway
@@ -266,3 +266,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzVpnGateway](./Get-AzVpnGateway.md)
+
+[Remove-AzVpnGateway](./Remove-AzVpnGateway.md)
+
+[Update-AzVpnGateway](./Update-AzVpnGateway.md)
