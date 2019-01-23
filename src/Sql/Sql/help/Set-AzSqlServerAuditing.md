@@ -15,35 +15,68 @@ Changes the auditing settings of an Azure SQL server.
 
 ### BlobStorageSet
 ```
-Set-AzSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
- [-PredicateExpression <String>] [-AsJob] [-BlobStorage] [-StorageAccountName <String>]
- [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-ServerName] <String> [-ResourceGroupName] <String>
+Set-AzSqlServerAuditing [-ResourceGroupName] <String> [-ServerName] <String> -State <String>
+ [-AuditActionGroup <AuditActionGroups[]>] [-PassThru] [-PredicateExpression <String>] [-AsJob] [-BlobStorage]
+ [-StorageAccountName <String>] [-StorageKeyType <String>] [-RetentionInDays <UInt32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StorageAccountSubscriptionIdSet
 ```
-Set-AzSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
- [-PredicateExpression <String>] [-AsJob] [-BlobStorage] -StorageAccountName <String>
- -StorageAccountSubscriptionId <Guid> [-StorageKeyType <String>] [-RetentionInDays <UInt32>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzSqlServerAuditing [-ResourceGroupName] <String> [-ServerName] <String> -State <String>
+ [-AuditActionGroup <AuditActionGroups[]>] [-PassThru] [-PredicateExpression <String>] [-AsJob] [-BlobStorage]
+ -StorageAccountName <String> -StorageAccountSubscriptionId <Guid> [-StorageKeyType <String>]
+ [-RetentionInDays <UInt32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### EventHubSet
 ```
-Set-AzSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
- [-PredicateExpression <String>] [-AsJob] [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>]
- [-ServerName] <String> [-EventHub] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSqlServerAuditing [-ResourceGroupName] <String> [-ServerName] <String> -State <String>
+ [-AuditActionGroup <AuditActionGroups[]>] [-PassThru] [-PredicateExpression <String>] [-AsJob]
+ [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>] [-EventHub]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### LogAnalyticsSet
 ```
-Set-AzSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
- [-PredicateExpression <String>] [-AsJob] [-WorkspaceResourceId <String>] [-ServerName] <String> [-LogAnalytics]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Set-AzSqlServerAuditing [-ResourceGroupName] <String> [-ServerName] <String> -State <String>
+ [-AuditActionGroup <AuditActionGroups[]>] [-PassThru] [-PredicateExpression <String>] [-AsJob]
+ [-WorkspaceResourceId <String>] [-LogAnalytics] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### BlobStorageByParentResourceSet
+```
+Set-AzSqlServerAuditing -InputObject <AzureSqlServerModel> -State <String>
+ [-AuditActionGroup <AuditActionGroups[]>] [-PassThru] [-PredicateExpression <String>] [-AsJob] [-BlobStorage]
+ [-StorageAccountName <String>] [-StorageKeyType <String>] [-RetentionInDays <UInt32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StorageAccountSubscriptionIdByParentResourceSet
+```
+Set-AzSqlServerAuditing -InputObject <AzureSqlServerModel> -State <String>
+ [-AuditActionGroup <AuditActionGroups[]>] [-PassThru] [-PredicateExpression <String>] [-AsJob] [-BlobStorage]
+ -StorageAccountName <String> -StorageAccountSubscriptionId <Guid> [-StorageKeyType <String>]
+ [-RetentionInDays <UInt32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### EventHubByParentResourceSet
+```
+Set-AzSqlServerAuditing -InputObject <AzureSqlServerModel> -State <String>
+ [-AuditActionGroup <AuditActionGroups[]>] [-PassThru] [-PredicateExpression <String>] [-AsJob]
+ [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>] [-EventHub]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### LogAnalyticsByParentResourceSet
+```
+Set-AzSqlServerAuditing -InputObject <AzureSqlServerModel> -State <String>
+ [-AuditActionGroup <AuditActionGroups[]>] [-PassThru] [-PredicateExpression <String>] [-AsJob]
+ [-WorkspaceResourceId <String>] [-LogAnalytics] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,7 +180,7 @@ Specifies that audit logs destination is blob storage
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: BlobStorageSet, StorageAccountSubscriptionIdSet
+Parameter Sets: BlobStorageSet, StorageAccountSubscriptionIdSet, BlobStorageByParentResourceSet, StorageAccountSubscriptionIdByParentResourceSet
 Aliases:
 
 Required: False
@@ -177,7 +210,7 @@ Specifies that audit logs destination is event hub
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: EventHubSet
+Parameter Sets: EventHubSet, EventHubByParentResourceSet
 Aliases:
 
 Required: True
@@ -192,7 +225,7 @@ The resource Id for the event hub authorization rule
 
 ```yaml
 Type: System.String
-Parameter Sets: EventHubSet
+Parameter Sets: EventHubSet, EventHubByParentResourceSet
 Aliases:
 
 Required: False
@@ -207,7 +240,7 @@ The name of the event hub. If none is specified when providing EventHubAuthoriza
 
 ```yaml
 Type: System.String
-Parameter Sets: EventHubSet
+Parameter Sets: EventHubSet, EventHubByParentResourceSet
 Aliases:
 
 Required: False
@@ -217,12 +250,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The server object
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
+Parameter Sets: BlobStorageByParentResourceSet, StorageAccountSubscriptionIdByParentResourceSet, EventHubByParentResourceSet, LogAnalyticsByParentResourceSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LogAnalytics
 Specifies that audit logs destination is log analytics
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: LogAnalyticsSet
+Parameter Sets: LogAnalyticsSet, LogAnalyticsByParentResourceSet
 Aliases:
 
 Required: True
@@ -267,7 +315,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: BlobStorageSet, StorageAccountSubscriptionIdSet, EventHubSet, LogAnalyticsSet
 Aliases:
 
 Required: True
@@ -282,7 +330,7 @@ The number of retention days for the audit logs.
 
 ```yaml
 Type: System.Nullable`1[System.UInt32]
-Parameter Sets: BlobStorageSet, StorageAccountSubscriptionIdSet
+Parameter Sets: BlobStorageSet, StorageAccountSubscriptionIdSet, BlobStorageByParentResourceSet, StorageAccountSubscriptionIdByParentResourceSet
 Aliases:
 
 Required: False
@@ -297,7 +345,7 @@ SQL server name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: BlobStorageSet, StorageAccountSubscriptionIdSet, EventHubSet, LogAnalyticsSet
 Aliases:
 
 Required: True
@@ -330,7 +378,7 @@ If you do not specify this parameter, the cmdlet uses the storage account that w
 
 ```yaml
 Type: System.String
-Parameter Sets: BlobStorageSet
+Parameter Sets: BlobStorageSet, BlobStorageByParentResourceSet
 Aliases:
 
 Required: False
@@ -342,7 +390,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: StorageAccountSubscriptionIdSet
+Parameter Sets: StorageAccountSubscriptionIdSet, StorageAccountSubscriptionIdByParentResourceSet
 Aliases:
 
 Required: True
@@ -357,7 +405,7 @@ Specifies storage account subscription id
 
 ```yaml
 Type: System.Guid
-Parameter Sets: StorageAccountSubscriptionIdSet
+Parameter Sets: StorageAccountSubscriptionIdSet, StorageAccountSubscriptionIdByParentResourceSet
 Aliases:
 
 Required: True
@@ -372,7 +420,7 @@ Specifies which of the storage access keys to use.
 
 ```yaml
 Type: System.String
-Parameter Sets: BlobStorageSet, StorageAccountSubscriptionIdSet
+Parameter Sets: BlobStorageSet, StorageAccountSubscriptionIdSet, BlobStorageByParentResourceSet, StorageAccountSubscriptionIdByParentResourceSet
 Aliases:
 Accepted values: Primary, Secondary
 
@@ -388,7 +436,7 @@ The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics 
 
 ```yaml
 Type: System.String
-Parameter Sets: LogAnalyticsSet
+Parameter Sets: LogAnalyticsSet, LogAnalyticsByParentResourceSet
 Aliases:
 
 Required: False
@@ -434,8 +482,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
-
-### Microsoft.Azure.Commands.Sql.Auditing.Model.ServerAuditingSettingsModel
 
 ## NOTES
 
