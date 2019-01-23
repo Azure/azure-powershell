@@ -41,9 +41,8 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         /// <summary>
         /// Intializes the model adapter
         /// </summary>
-        /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The service objective adapter</returns>
-        protected override AzureSqlServerServiceObjectiveAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlServerServiceObjectiveAdapter InitModelAdapter()
         {
             return new AzureSqlServerServiceObjectiveAdapter(DefaultProfile.DefaultContext);
         }
