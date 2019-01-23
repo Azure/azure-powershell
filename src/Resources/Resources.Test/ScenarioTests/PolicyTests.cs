@@ -117,6 +117,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetCmdletFilterParameter()
+        {
+            TestRunner.RunTestScript("Test-GetCmdletFilterParameter");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetBuiltinsByName()
+        {
+            TestRunner.RunTestScript("Test-GetBuiltinsByName");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPolicyAssignmentParameters()
         {
             TestRunner.RunTestScript("Test-GetPolicyAssignmentParameters");

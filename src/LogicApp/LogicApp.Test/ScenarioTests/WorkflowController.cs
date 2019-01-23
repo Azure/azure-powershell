@@ -90,8 +90,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath(@"AzureRM.LogicApp.psd1"),
-                    _helper.GetRMModulePath(@"AzureRM.Resources.psd1"),
+                    _helper.GetRMModulePath(@"Az.LogicApp.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try

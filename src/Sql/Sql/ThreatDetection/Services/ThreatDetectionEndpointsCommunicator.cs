@@ -68,11 +68,27 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         }
 
         /// <summary>
+        /// Gets the managed instance security alert policy for the given instance security in the given resource group
+        /// </summary>
+        public Management.Sql.Models.ManagedServerSecurityAlertPolicy GetManageInstanceSecurityAlertPolicy(string resourceGroupName, string managedInstanceName)
+        {
+            return GetCurrentSqlClient().ManagedServerSecurityAlertPolicies.Get(resourceGroupName, managedInstanceName);
+        }
+
+        /// <summary>
         /// Calls the set security alert APIs for the server security alert policy in the given resource group
         /// </summary>
         public void SetServerSecurityAlertPolicy(string resourceGroupName, string serverName, Management.Sql.Models.ServerSecurityAlertPolicy policyToSet)
         {
             GetCurrentSqlClient().ServerSecurityAlertPolicies.CreateOrUpdate(resourceGroupName, serverName, policyToSet);
+        }
+
+        /// <summary>
+        /// Calls the set security alert APIs for the managed instance security alert policy in the given resource group
+        /// </summary>
+        public void SetManagedInstanceSecurityAlertPolicy(string resourceGroupName, string managedInstanceName, Management.Sql.Models.ManagedServerSecurityAlertPolicy policyToSet)
+        {
+            GetCurrentSqlClient().ManagedServerSecurityAlertPolicies.CreateOrUpdate(resourceGroupName, managedInstanceName, policyToSet);
         }
 
         /// <summary>

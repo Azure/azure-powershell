@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix incorrect examples in `New-AzADAppCredential` and `New-AzADSpCredential` reference documentation
+* Fix issue where path for `-TemplateFile` parameter was not being resolved before executing resource group deployment cmdlets
+* Az.Resources: Correct documentation for New-AzureRmPolicyDefinition -Mode default value
+* Az.Resources: Fix for issue https://github.com/Azure/azure-powershell/issues/7522
+* Az.Resources: Fix for issue https://github.com/Azure/azure-powershell/issues/5747
+* Fix formatting issue with `PSResourceGroupDeployment` object
+    - More information here: https://github.com/Azure/azure-powershell/issues/2123
+
+## Version 1.1.0
 * Fix parameter set issue when providing `-ODataQuery` and `-ResourceId` parameters for `Get-AzResource`
     - More information here: https://github.com/Azure/azure-powershell/issues/7875
 * Fix handling of the -Custom parameter in New/Set-AzPolicyDefinition

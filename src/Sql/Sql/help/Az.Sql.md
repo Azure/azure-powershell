@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Sql
 Module Guid: 150d9544-6348-4373-806f-10cd0b4de4cb
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.sql
@@ -29,11 +29,26 @@ Clears the vulnerability assessment rule baseline.
 ### [Clear-AzSqlDatabaseVulnerabilityAssessmentSettings](Clear-AzSqlDatabaseVulnerabilityAssessmentSettings.md)
 Clears the vulnerability assessment settings of a database.
 
+### [Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
+Clears the vulnerability assessment rule baseline.
+
+### [Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings](Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings.md)
+Clears the vulnerability assessment settings of a managed database.
+
 ### [Convert-AzSqlDatabaseVulnerabilityAssessmentScan](Convert-AzSqlDatabaseVulnerabilityAssessmentScan.md)
 Converts a vulnerability assessment scan results to Excel format.
 
+### [Convert-AzSqlInstanceDatabaseVulnerabilityAssessmentScan](Convert-AzSqlInstanceDatabaseVulnerabilityAssessmentScan.md)
+Converts a vulnerability assessment scan results to Excel format.
+
+### [Disable-AzSqlInstanceAdvancedDataSecurity](Disable-AzSqlInstanceAdvancedDataSecurity.md)
+Disables Advanced Data Security on a managed instance.
+
 ### [Disable-AzSqlServerAdvancedThreatProtection](Disable-AzSqlServerAdvancedThreatProtection.md)
 Disables Advanced Threat Protection on a server.
+
+### [Enable-AzSqlInstanceAdvancedDataSecurity](Enable-AzSqlInstanceAdvancedDataSecurity.md)
+Enables Advanced Data Security on a managed instance.
 
 ### [Enable-AzSqlServerAdvancedThreatProtection](Enable-AzSqlServerAdvancedThreatProtection.md)
 Enables Advanced Threat Protection on a server.
@@ -140,8 +155,20 @@ Gets one or more recommended actions for an Azure SQL Elastic Pool Advisor.
 ### [Get-AzSqlInstance](Get-AzSqlInstance.md)
 Returns information about Azure SQL Managed Database Instance.
 
+### [Get-AzSqlInstanceAdvancedDataSecurityPolicy](Get-AzSqlInstanceAdvancedDataSecurityPolicy.md)
+Gets Advanced Data Security policy of a managed instance.
+
 ### [Get-AzSqlInstanceDatabase](Get-AzSqlInstanceDatabase.md)
 Returns information about Azure SQL Managed Instance database.
+
+### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
+Gets the vulnerability assessment rule baseline.
+
+### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentScanRecord](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentScanRecord.md)
+Gets all vulnerability assessment scan record(s) associated with a given managed database.
+
+### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings.md)
+Gets the vulnerability assessment settings of a managed database.
 
 ### [Get-AzSqlServer](Get-AzSqlServer.md)
 Returns information about SQL Database servers.
@@ -404,6 +431,9 @@ Updates the state of an Azure SQL Elastic Pool recommended action.
 ### [Set-AzSqlInstance](Set-AzSqlInstance.md)
 Sets properties for an Azure SQL Database Managed Instance.
 
+### [Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
+Sets the vulnerability assessment rule baseline.
+
 ### [Set-AzSqlServer](Set-AzSqlServer.md)
 Modifies properties of a SQL Database server.
 
@@ -443,6 +473,9 @@ Starts the workflow that runs a recommended index operation.
 ### [Start-AzSqlDatabaseVulnerabilityAssessmentScan](Start-AzSqlDatabaseVulnerabilityAssessmentScan.md)
 Starts a vulnerability assessment scan.
 
+### [Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan](Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan.md)
+Starts a vulnerability assessment scan.
+
 ### [Start-AzSqlSyncGroupSync](Start-AzSqlSyncGroupSync.md)
 Starts a sync group synchronization.
 
@@ -466,6 +499,9 @@ Executes a failover of an Azure SQL Database Failover Group.
 
 ### [Update-AzSqlDatabaseVulnerabilityAssessmentSettings](Update-AzSqlDatabaseVulnerabilityAssessmentSettings.md)
 Updates the vulnerability assessment settings of a database.
+
+### [Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings](Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings.md)
+Updates the vulnerability assessment settings of a managed database.
 
 ### [Update-AzSqlSyncGroup](Update-AzSqlSyncGroup.md)
 Updates an Azure SQL Database Sync Group.

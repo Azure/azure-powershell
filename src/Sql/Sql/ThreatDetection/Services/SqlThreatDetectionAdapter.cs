@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         }
 
         /// <summary>
-        /// Provides a database threat detection policy model for the given database
+        /// Provides a server threat detection policy model for the given server
         /// </summary>
         public ServerThreatDetectionPolicyModel GetServerThreatDetectionPolicy(string resourceGroup, string serverName)
         {
@@ -123,6 +123,29 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             return serverThreatDetectionPolicyModel;
         }
 
+        /// <summary>
+        /// Provides a managed instance threat detection policy model for the given managed instance
+        /// </summary>
+        public ManagedInstanceThreatDetectionPolicyModel GetManagedInstanceThreatDetectionPolicy(string resourceGroup, string managedInstanceName)
+        {
+            var threatDetectionPolicy = ThreatDetectionCommunicator.GetManageInstanceSecurityAlertPolicy(resourceGroup, managedInstanceName);
+
+            var managedInstanceThreatDetectionPolicyModel = new ManagedInstanceThreatDetectionPolicyModel()
+            {
+                ThreatDetectionState = ModelizeThreatDetectionState(threatDetectionPolicy.State.ToString()),
+                NotificationRecipientsEmails = string.Join(";", threatDetectionPolicy.EmailAddresses.ToArray()),
+                EmailAdmins = threatDetectionPolicy.EmailAccountAdmins == null ? false : threatDetectionPolicy.EmailAccountAdmins.Value,
+                RetentionInDays = (uint)threatDetectionPolicy.RetentionDays,
+            };
+
+            ModelizeDisabledAlerts(managedInstanceThreatDetectionPolicyModel, threatDetectionPolicy.DisabledAlerts.ToArray());
+            managedInstanceThreatDetectionPolicyModel.ResourceGroupName = resourceGroup;
+            managedInstanceThreatDetectionPolicyModel.ServerName = managedInstanceName;
+
+            ModelizeStorageAccount(managedInstanceThreatDetectionPolicyModel, threatDetectionPolicy.StorageEndpoint);
+
+            return managedInstanceThreatDetectionPolicyModel;
+        }
 
         /// <summary>
         /// Transforms the given database policy object to its cmdlet model representation
@@ -227,6 +250,15 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         }
 
         /// <summary>
+        /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
+        /// </summary>
+        public void SetManagedInstanceThreatDetectionPolicy(ManagedInstanceThreatDetectionPolicyModel model, string storageEndpointSuffix)
+        {
+            var managedInstanceSecurityAlertPolicyParameters = PolicizeManagedInstanceSecurityAlertModel(model, storageEndpointSuffix);
+            ThreatDetectionCommunicator.SetManagedInstanceSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, managedInstanceSecurityAlertPolicyParameters);
+        }
+
+        /// <summary>
         /// Extracts the detection types from the given model
         /// </summary>
         private static string[] ExtractExcludedDetectionType(BaseThreatDetectionPolicyModel model)
@@ -255,6 +287,44 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         private Management.Sql.Models.ServerSecurityAlertPolicy PolicizeServerSecurityAlertModel(BaseThreatDetectionPolicyModel model, string storageEndpointSuffix)
         {
             var policy = new Management.Sql.Models.ServerSecurityAlertPolicy()
+            {
+                State = model.ThreatDetectionState == ThreatDetectionStateType.Enabled
+                    ? SecurityAlertPolicyState.Enabled
+                    : SecurityAlertPolicyState.Disabled,
+                DisabledAlerts = ExtractExcludedDetectionType(model),
+                EmailAddresses = model.NotificationRecipientsEmails.Split(';').Where(mail => !string.IsNullOrEmpty(mail)).ToList(),
+                EmailAccountAdmins = model.EmailAdmins,
+                RetentionDays = Convert.ToInt32(model.RetentionInDays),
+            };
+
+            if (policy.State == SecurityAlertPolicyState.Enabled && !policy.EmailAccountAdmins.Value && !policy.EmailAddresses.Any())
+            {
+                // For new TD policy, make sure EmailAccountAdmins is true
+                policy.EmailAccountAdmins = true;
+            }
+
+            if (string.IsNullOrEmpty(model.StorageAccountName))
+            {
+                policy.StorageEndpoint = null;
+                policy.StorageAccountAccessKey = null;
+            }
+            else
+            {
+                BaseSecurityAlertPolicyProperties legacyProperties = new BaseSecurityAlertPolicyProperties();
+                PopulateStoragePropertiesInPolicy(model, legacyProperties, storageEndpointSuffix);
+                policy.StorageEndpoint = legacyProperties.StorageEndpoint;
+                policy.StorageAccountAccessKey = legacyProperties.StorageAccountAccessKey;
+            }
+
+            return policy;
+        }
+
+        /// <summary>
+        /// Takes the cmdlets model object and transform it to the policy as expected by the endpoint
+        /// </summary>
+        private Management.Sql.Models.ManagedServerSecurityAlertPolicy PolicizeManagedInstanceSecurityAlertModel(BaseThreatDetectionPolicyModel model, string storageEndpointSuffix)
+        {
+            var policy = new Management.Sql.Models.ManagedServerSecurityAlertPolicy()
             {
                 State = model.ThreatDetectionState == ThreatDetectionStateType.Enabled
                     ? SecurityAlertPolicyState.Enabled

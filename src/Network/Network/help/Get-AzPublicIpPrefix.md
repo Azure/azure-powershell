@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azpublicipprefix
@@ -129,3 +129,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzPublicIpPrefix](./New-AzPublicIpPrefix.md)
+
+[Remove-AzPublicIpPrefix](./Remove-AzPublicIpPrefix.md)
+
+[Set-AzPublicIpPrefix](./Set-AzPublicIpPrefix.md)
