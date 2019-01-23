@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Recommendation-Id
+ResourceId of the recommendation
 
 ```yaml
 Type: String

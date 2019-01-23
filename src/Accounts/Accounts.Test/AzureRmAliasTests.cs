@@ -12,29 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Commands.Network.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Profile.Test
 {
-    public class ExpressRouteCrossConnectionTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class AzureRmAliasTests : AccountsTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ExpressRouteCrossConnectionTests(ITestOutputHelper output)
+        public AzureRmAliasTests(ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
-        public void TestExpressRouteCrossConnectionApis()
+        public void AzureRmAliasCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCrossConnectionApis");
+            TestRunner.RunTestScript("Test-AzureRmAlias");
         }
     }
 }

@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public void AddProtocol(string protocolType)
         {
-            (Protocols ?? (Protocols = new List<string>())).Add(AzureFirewallNetworkRuleProtocolHelper.MapUserInputToNetworkProtocol(protocolType));
+            (Protocols ?? (Protocols = new List<string>())).Add(AzureFirewallNetworkRuleProtocolHelper.MapUserInputToNetworkRuleProtocol(protocolType));
         }
     }
 }

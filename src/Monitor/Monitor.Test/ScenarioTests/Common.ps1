@@ -42,7 +42,7 @@ function Get-ProviderLocation($provider)
 		if($provider.Contains("/"))  
 		{  
 			$type = $provider.Substring($namespace.Length + 1)  
-			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+			$location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
   
 			if ($location -eq $null) 
 			{  
@@ -75,6 +75,6 @@ Cleans the created resource groups
 function Clean-ResourceGroup($rgname)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzureRmResourceGroup -Name $rgname -Force
+        Remove-AzResourceGroup -Name $rgname -Force
     }
 }
