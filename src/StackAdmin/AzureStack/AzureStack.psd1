@@ -130,7 +130,10 @@
                 * Deprecation
                     * Get-AzsInfrastructureVolume has been deprecated, we provide new cmdlet Get-AzsVolume
                     * Get-AzsStorageSystem has been deprecated, we provide new cmdlet Get-AzsStorageSubSystem
-                    * Get-AzsStoragePool has been deprecated, the StorageSubSystem object has the capacity property'
+                    * Get-AzsStoragePool has been deprecated, the StorageSubSystem object has the capacity property
+			* Azs.Compute.Admin Module
+				* BugFix: Add-AzsPlatformImage, Get-AzsPlatformImage : Calling ConvertTo-PlatformImageObject only in the success path
+				* BugFix: Add-AzsVmExtension, Get-AzsVmExtension : Calling ConvertTo-VmExtensionObject only in the success path
             * Azs.Storage.Admin Module 
                 * Bug fix - New Storage Quota uses defaults if none provided.'
 

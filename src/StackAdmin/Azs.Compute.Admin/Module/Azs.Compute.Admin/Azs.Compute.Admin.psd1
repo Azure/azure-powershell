@@ -120,8 +120,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.12
-            * Added missing Azs prefix for New-DataDiskObject and created alias.  The cmdlet will be deprecated in a future release.
+            ReleaseNotes = '## 2019.01
+            * BugFix: Add-AzsPlatformImage, Get-AzsPlatformImage : Calling ConvertTo-PlatformImageObject only in the success path
+			* BugFix: Add-AzsVmExtension, Get-AzsVmExtension : Calling ConvertTo-VmExtensionObject only in the success path
             '
 
         } # End of PSData hashtable
