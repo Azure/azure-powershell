@@ -350,6 +350,7 @@ function Test-RemoveDatabaseRestorePoint
 	{
 		Remove-ResourceGroupForTest $rg
 	}
+}
 	
 function Test-ShortTermRetentionPolicy
 {
@@ -412,7 +413,6 @@ function Test-ShortTermRetentionPolicy
 			# We expect an error here
 			Assert-AreEqual $_.Count 1
 		}
-
  	}
 	finally
 	{
