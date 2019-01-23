@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.dll-Help.xml
 Module Name: Az.GuestConfiguration
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/az.guestconfiguration/get-azvmguestpolicystatushistory
 schema: 2.0.0
 ---
 
@@ -27,8 +27,8 @@ Get-AzVMGuestPolicyStatusHistory [-ResourceGroupName] <String> [-VMName] <String
 
 ### InitiativeNameScope
 ```
-Get-AzVMGuestPolicyStatusHistory [-ResourceGroupName] <String> [-VMName] <String>
- [-InitiativeName] <String> [-ShowOnlyChange] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVMGuestPolicyStatusHistory [-ResourceGroupName] <String> [-VMName] <String> [-InitiativeName] <String>
+ [-ShowOnlyChange] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,9 +100,9 @@ Gets compliance status history for all guest configuration policies assigned to 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
