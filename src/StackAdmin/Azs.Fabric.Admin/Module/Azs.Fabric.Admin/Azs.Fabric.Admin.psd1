@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Fabric.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.3.0'
+    ModuleVersion     = '0.4.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -75,7 +75,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     NestedModules     = @()
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-    FunctionsToExport = 'Restart-AzsInfrastructureRoleInstance', 'Get-AzsStorageSystem',
+    FunctionsToExport = 'Restart-AzsInfrastructureRoleInstance',
     'Get-AzsScaleUnitNode', 'Disable-AzsScaleUnitNode',
     'Get-AzsLogicalNetwork', 'Get-AzsInfrastructureShare',
     'Get-AzsSlbMuxInstance', 'Get-AzsScaleUnit', 'New-AzsIpPool',
@@ -84,7 +84,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     'Get-AzsVolume', 'Enable-AzsScaleUnitNode',
     'Get-AzsInfrastructureRole', 'Get-AzsIpPool', 'Get-AzsLogicalSubnet',
     'Get-AzsEdgeGateway', 'Get-AzsInfrastructureLocation',
-    'Get-AzsStoragePool', 'Suspend-AzsInfrastructureRoleInstance',
+    'Suspend-AzsInfrastructureRoleInstance',
     'Start-AzsScaleUnitNode', 'Get-AzsInfrastructureRoleInstance',
     'Repair-AzsScaleUnitNode', 'Stop-AzsInfrastructureRoleInstance',
     'Stop-AzsScaleUnitNode', 'Add-AzsScaleUnitNode',
@@ -99,7 +99,6 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
     AliasesToExport   = @(
-    'Get-AzsInfrastructureVolume'
     )
 
     # DSC resources to export from this module
@@ -129,13 +128,11 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.12
-            * New cmdlet (The features are supported by Azure Stack 1811+)
-	            * Get-AzsDrive
-	            * Get-AzsVolume
-	            * Get-AzsStorageSubSystem
+            ReleaseNotes = '## 2019.01
             * Deprecation
-	            * Get-AzsInfrastructureVolume is an alias now to the cmdlet Get-AzsVolume
+                * Get-AzsInfrastructureVolume has been deprecated, we provide new cmdlet Get-AzsVolume
+                * Get-AzsStorageSystem has been deprecated, we provide new cmdlet Get-AzsStorageSubSystem
+                * Get-AzsStoragePool has been deprecated, the StorageSubSystem object has the capacity property
             '
 
         } # End of PSData hashtable

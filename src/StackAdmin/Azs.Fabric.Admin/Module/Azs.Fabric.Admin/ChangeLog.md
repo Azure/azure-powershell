@@ -19,6 +19,12 @@
 -->
 ## Current Release
 
+## Version 0.4.0
+* Deprecation
+    * Get-AzsInfrastructureVolume has been deprecated, we provide new cmdlet Get-AzsVolume
+    * Get-AzsStorageSystem has been deprecated, we provide new cmdlet Get-AzsStorageSubSystem
+    * Get-AzsStoragePool has been deprecated, the StorageSubSystem object has the capacity property
+
 ## Version 0.3.0
 * New cmdlet (The features are supported by Azure Stack 1811+)
     * Get-AzsDrive
