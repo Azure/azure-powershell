@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         public AzureSqlDatabaseBackupAdapter(IAzureContext context)
         {
             Context = context;
-            _subscription = context.Subscription;
+            _subscription = context?.Subscription;
             Communicator = new AzureSqlDatabaseBackupCommunicator(Context);
         }
 
