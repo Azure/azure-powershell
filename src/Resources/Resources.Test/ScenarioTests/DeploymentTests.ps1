@@ -26,7 +26,7 @@ function Test-ValidateDeployment
 
 	# Test
 	New-AzResourceGroup -Name $rgname -Location $rglocation
-		
+
 	$list = Test-AzureResourceGroupTemplate -ResourceGroupName $rgname -TemplateFile Build2014_Website_App.json -siteName $rname -hostingPlanName $rname -siteLocation $location -sku Free -workerSize 0
 
 	# Assert
@@ -50,7 +50,7 @@ function Test-NewDeploymentFromTemplateFile
 	{
 		# Test
 		New-AzResourceGroup -Name $rgname -Location $rglocation
-		
+
 		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleDeploymentTemplate.json -TemplateParameterFile sampleDeploymentTemplateParams.json
 
 		# Assert
@@ -61,7 +61,7 @@ function Test-NewDeploymentFromTemplateFile
 		$getById = Get-AzResourceGroupDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
 	}
-	
+
 	finally
     {
         # Cleanup
@@ -88,7 +88,7 @@ function Test-CrossResourceGroupDeploymentFromTemplateFile
 		# Test
 		New-AzResourceGroup -Name $rgname -Location $rglocation
 		New-AzResourceGroup -Name $rgname2 -Location $rglocation
-		
+
 		$parameters = @{ "NestedDeploymentResourceGroup" = $rgname2 }
 		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplateWithCrossResourceGroupDeployment.json -TemplateParameterObject $parameters
 
@@ -104,7 +104,7 @@ function Test-CrossResourceGroupDeploymentFromTemplateFile
 		$nestedDeployment = Get-AzResourceGroupDeployment -Id $nestedDeploymentId
 		Assert-AreEqual Succeeded $nestedDeployment.ProvisioningState
 	}
-	
+
 	finally
     {
         # Cleanup
@@ -159,7 +159,7 @@ function Test-NestedDeploymentFromTemplateFile
 	{
 		# Test
 		New-AzResourceGroup -Name $rgname -Location $rglocation
-		
+
 		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleNestedTemplate.json -TemplateParameterFile sampleNestedTemplateParams.json
 
 		# Assert
@@ -170,7 +170,7 @@ function Test-NestedDeploymentFromTemplateFile
 		$getById = Get-AzResourceGroupDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
 	}
-	
+
 	finally
     {
         # Cleanup
@@ -195,17 +195,17 @@ function Test-SaveDeploymentTemplateFile
 	{
 		# Test
 		New-AzResourceGroup -Name $rgname -Location $rglocation
-		
+
 		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleDeploymentTemplate.json -TemplateParameterFile sampleDeploymentTemplateParams.json
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
-		
+
 		$saveOutput = Save-AzResourceGroupDeploymentTemplate -ResourceGroupName $rgname -DeploymentName $rname -Force
 		Assert-NotNull $saveOutput
 		Assert-True { $saveOutput.Path.Contains($rname + ".json") }
 	}
-	
+
 	finally
     {
         # Cleanup
@@ -239,7 +239,7 @@ function Test-NewDeploymentWithKeyVaultReference
 		$adUser = Get-AzADUser -UserPrincipalName $context.Account.Id
 		$objectId = $adUser.Id
 		$KeyVaultResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $rgname + "/providers/Microsoft.KeyVault/vaults/" + $keyVaultname
-		
+
 		$parameters = @{ "keyVaultName" = $keyVaultname; "secretName" = $secretName; "secretValue" = $hostplanName; "tenantId" = $tenantId; "objectId" = $objectId }
 		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile keyVaultSetupTemplate.json -TemplateParameterObject $parameters
 
@@ -261,7 +261,7 @@ function Test-NewDeploymentWithKeyVaultReference
 		$getById = Get-AzResourceGroupDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
 	}
-	
+
 	finally
     {
         # Cleanup
@@ -284,7 +284,7 @@ function Test-NewDeploymentWithComplexPramaters
 	{
 		# Test
 		New-AzResourceGroup -Name $rgname -Location $rglocation
-		
+
 		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile complexParametersTemplate.json -TemplateParameterFile complexParameters.json
 
 		# Assert
@@ -295,7 +295,7 @@ function Test-NewDeploymentWithComplexPramaters
 		$getById = Get-AzResourceGroupDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
 	}
-	
+
 	finally
     {
         # Cleanup
@@ -318,7 +318,7 @@ function Test-NewDeploymentWithParameterObject
 	{
 		# Test
 		New-AzResourceGroup -Name $rgname -Location $rglocation
-		
+
 		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile complexParametersTemplate.json -TemplateParameterObject @{appSku=@{code="f1"; name="Free"}; servicePlan="plan1"; ranks=@("c", "d")}
 
 		# Assert
@@ -329,7 +329,7 @@ function Test-NewDeploymentWithParameterObject
 		$getById = Get-AzResourceGroupDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
 	}
-	
+
 	finally
     {
         # Cleanup
@@ -352,7 +352,7 @@ function Test-NewDeploymentWithDynamicParameters
 	{
 		# Test
 		New-AzResourceGroup -Name $rgname -Location $rglocation
-		
+
 		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile complexParametersTemplate.json -appSku @{code="f3"; name=@{major="Official"; minor="1.0"}} -servicePlan "plan1" -ranks @("c", "d")
 
 		# Assert
@@ -363,7 +363,7 @@ function Test-NewDeploymentWithDynamicParameters
 		$getById = Get-AzResourceGroupDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
 	}
-	
+
 	finally
     {
         # Cleanup
@@ -427,10 +427,66 @@ function Test-NewDeploymentWithKeyVaultReferenceInParameterObject
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
 	}
-	
+
 	finally
     {
         # Cleanup
         Clean-ResourceGroup $deploymentRG
+    }
+}
+
+<#
+.SYNOPSIS
+Tests deployment exception thrown with nonexistent template file.
+#>
+function Test-NewDeploymentFromNonexistentTemplateFile
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        # Assert exception is thrown
+        $path = (Get-Item ".\").FullName
+        $file = Join-Path $path "nonexistentFile.json"
+        $exceptionMessage = "Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path '$file' because it does not exist."
+        Assert-Throws { New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile $file -TemplateParameterFile sampleTemplateParams.json } $exceptionMessage
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests deployment exception thrown with nonexistent template parameter file.
+#>
+function Test-NewDeploymentFromNonexistentTemplateParameterFile
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        # Assert exception is thrown
+        $path = (Get-Item ".\").FullName
+        $file = Join-Path $path "nonexistentFile.json"
+        $exceptionMessage = "Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path '$file' because it does not exist."
+        Assert-Throws { New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplateParams.json -TemplateParameterFile $file } $exceptionMessage
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
     }
 }
