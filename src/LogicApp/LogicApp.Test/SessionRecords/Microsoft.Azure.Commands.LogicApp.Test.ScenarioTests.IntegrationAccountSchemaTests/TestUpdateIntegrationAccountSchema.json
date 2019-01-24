@@ -1,0 +1,905 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps3230?api-version=2018-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzMzIzMD9hcGktdmVyc2lvbj0yMDE4LTA1LTAx",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e539c9f0-c795-4fef-8319-616d3c92633a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.9.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "7fa6227b-e932-4f82-a4d7-b82bd1561ea6"
+        ],
+        "x-ms-correlation-request-id": [
+          "7fa6227b-e932-4f82-a4d7-b82bd1561ea6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T003645Z:7fa6227b-e932-4f82-a4d7-b82bd1561ea6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:36:45 GMT"
+        ],
+        "Content-Length": [
+          "98"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps3230?api-version=2018-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzMzIzMD9hcGktdmVyc2lvbj0yMDE4LTA1LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cde6da19-44e4-4a42-960f-0794df36e10a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.9.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "33"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "065db6b8-dcbd-42aa-baab-a83de2785dbd"
+        ],
+        "x-ms-correlation-request-id": [
+          "065db6b8-dcbd-42aa-baab-a83de2785dbd"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T003647Z:065db6b8-dcbd-42aa-baab-a83de2785dbd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:36:47 GMT"
+        ],
+        "Content-Length": [
+          "170"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230\",\r\n  \"name\": \"ps3230\",\r\n  \"location\": \"brazilsouth\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMzIzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM4MTM3P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3912b130-2614-4384-b603-9a08c6ffc1c3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "401625e0-334a-46f0-8e62-fe01737a247e"
+        ],
+        "x-ms-correlation-request-id": [
+          "401625e0-334a-46f0-8e62-fe01737a247e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T003648Z:401625e0-334a-46f0-8e62-fe01737a247e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:36:47 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "152"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Logic/integrationAccounts/ps8137' under resource group 'ps3230' was not found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMzIzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM4MTM3P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "444142b5-e784-407c-94fc-f8d799992e88"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:c81dbf2c-d290-4970-8036-36fb36435dd5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "e11eef4c-96a9-4b13-ac27-4c1ff2d94430"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T003653Z:e11eef4c-96a9-4b13-ac27-4c1ff2d94430"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:36:52 GMT"
+        ],
+        "Content-Length": [
+          "280"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137\",\r\n  \"name\": \"ps8137\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMzIzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM4MTM3P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6d32f23c-3b62-496a-94bd-13c668746e34"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:1cd4f352-0d2e-4333-8e40-290d0cef5cbd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-correlation-request-id": [
+          "1924fc2c-5708-47c8-8972-4bca676d9a3a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T003654Z:1924fc2c-5708-47c8-8972-4bca676d9a3a"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:36:54 GMT"
+        ],
+        "Content-Length": [
+          "280"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137\",\r\n  \"name\": \"ps8137\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMzIzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM4MTM3P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b32639c5-97cf-41c6-ab9d-2310f725c864"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:d058f699-6b43-4d5b-8ca4-1f888e2204d9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-correlation-request-id": [
+          "1c29823d-541d-45ba-b670-85cb73e7d061"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T003655Z:1c29823d-541d-45ba-b670-85cb73e7d061"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:36:54 GMT"
+        ],
+        "Content-Length": [
+          "280"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137\",\r\n  \"name\": \"ps8137\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMzIzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM4MTM3P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1ecfe547-6930-4896-8a0c-0fa08528ff80"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "96"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:a62460e4-3188-4a3b-a6c0-34806c7168a8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "a189b57f-7aab-417d-a15b-84f1ea7e4d14"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T003653Z:a189b57f-7aab-417d-a15b-84f1ea7e4d14"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:36:52 GMT"
+        ],
+        "Content-Length": [
+          "280"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137\",\r\n  \"name\": \"ps8137\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137/schemas/ps4627?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMzIzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM4MTM3L3NjaGVtYXMvcHM0NjI3P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9272685d-a9c6-421a-a196-6ca212ccfe16"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:14ecc4e3-5b79-423f-bc92-f92c840d8f4f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "b75bd080-b442-4d65-a5c6-d07f66d462de"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T003653Z:b75bd080-b442-4d65-a5c6-d07f66d462de"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:36:53 GMT"
+        ],
+        "Content-Length": [
+          "119"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"SchemaNotFound\",\r\n    \"message\": \"The schema 'ps4627' could not be found in integration account 'ps8137'.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137/schemas/ps4627?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMzIzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM4MTM3L3NjaGVtYXMvcHM0NjI3P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "367b3e73-5c27-4e17-a681-646c74bf5bee"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:d02d2b4f-1710-4122-a571-e5ea359ea23d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-correlation-request-id": [
+          "a6b9ce94-c5cb-4eef-a4ef-8cc35a4c8880"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T003655Z:a6b9ce94-c5cb-4eef-a4ef-8cc35a4c8880"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:36:54 GMT"
+        ],
+        "Content-Length": [
+          "855"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"targetNamespace\": \"http://Inbound_EDI.OrderFile\",\r\n    \"documentName\": \"OrderFile\",\r\n    \"contentLink\": {\r\n      \"uri\": \"https://prod-19.brazilsouth.logic.azure.com:443/integrationAccounts/24a41f573a3d4f419928e1834b93d325/schemas/ps4627/contents/Value?api-version=2015-08-01-preview&se=2019-01-03T04%3A36%3A54.9248180Z&sp=%2Fschemas%2Fps4627%2Fread&sv=1.0&sig=X9iQeqe_akLJH7qVDRnsmImLoJXZ65BCEHSD9t_mLcc\",\r\n      \"contentVersion\": \"\\\"0x8D671138F629168\\\"\",\r\n      \"contentSize\": 7901,\r\n      \"contentHash\": {\r\n        \"algorithm\": \"md5\",\r\n        \"value\": \"a+4ZnOsIm8I/Mr0aKJIK6w==\"\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-03T00:36:54.3509744Z\",\r\n    \"changedTime\": \"2019-01-03T00:36:54.3518434Z\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137/schemas/ps4627\",\r\n  \"name\": \"ps4627\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/schemas\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137/schemas/ps4627?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMzIzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM4MTM3L3NjaGVtYXMvcHM0NjI3P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "acbc6032-f5b6-42a7-87e7-5beb7a843db7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:f415e797-5bca-42d6-bb88-3279d8e7d9c2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-correlation-request-id": [
+          "9f068ea4-a27a-417d-a1fa-701b6b68e173"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T003655Z:9f068ea4-a27a-417d-a1fa-701b6b68e173"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:36:55 GMT"
+        ],
+        "Content-Length": [
+          "855"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"targetNamespace\": \"http://Inbound_EDI.OrderFile\",\r\n    \"documentName\": \"OrderFile\",\r\n    \"contentLink\": {\r\n      \"uri\": \"https://prod-19.brazilsouth.logic.azure.com:443/integrationAccounts/24a41f573a3d4f419928e1834b93d325/schemas/ps4627/contents/Value?api-version=2015-08-01-preview&se=2019-01-03T04%3A36%3A55.7373316Z&sp=%2Fschemas%2Fps4627%2Fread&sv=1.0&sig=8rVQM4Zt13XeZdzmCCdyi795BCDpsX8hVTaxazOUOyg\",\r\n      \"contentVersion\": \"\\\"0x8D671138FED3738\\\"\",\r\n      \"contentSize\": 7901,\r\n      \"contentHash\": {\r\n        \"algorithm\": \"md5\",\r\n        \"value\": \"a+4ZnOsIm8I/Mr0aKJIK6w==\"\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-03T00:36:54.3509744Z\",\r\n    \"changedTime\": \"2019-01-03T00:36:55.2636285Z\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137/schemas/ps4627\",\r\n  \"name\": \"ps4627\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/schemas\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137/schemas/ps4627?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMzIzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM4MTM3L3NjaGVtYXMvcHM0NjI3P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"content\": \"<?xml version=\\\"1.0\\\" encoding=\\\"utf-16\\\"?>\\r\\n<xs:schema xmlns:b=\\\"http://schemas.microsoft.com/BizTalk/2003\\\" xmlns=\\\"http://Inbound_EDI.OrderFile\\\" targetNamespace=\\\"http://Inbound_EDI.OrderFile\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\">\\r\\n  <xs:annotation>\\r\\n    <xs:appinfo>\\r\\n      <b:schemaInfo default_pad_char=\\\" \\\" count_positions_by_byte=\\\"false\\\" parser_optimization=\\\"speed\\\" lookahead_depth=\\\"3\\\" suppress_empty_nodes=\\\"false\\\" generate_empty_nodes=\\\"true\\\" allow_early_termination=\\\"false\\\" early_terminate_optional_fields=\\\"false\\\" allow_message_breakup_of_infix_root=\\\"false\\\" compile_parse_tables=\\\"false\\\" standard=\\\"Flat File\\\" root_reference=\\\"OrderFile\\\" />\\r\\n      <schemaEditorExtension:schemaInfo namespaceAlias=\\\"b\\\" extensionClass=\\\"Microsoft.BizTalk.FlatFileExtension.FlatFileExtension\\\" standardName=\\\"Flat File\\\" xmlns:schemaEditorExtension=\\\"http://schemas.microsoft.com/BizTalk/2003/SchemaEditorExtensions\\\" />\\r\\n    </xs:appinfo>\\r\\n  </xs:annotation>\\r\\n  <xs:element name=\\\"OrderFile\\\">\\r\\n    <xs:annotation>\\r\\n      <xs:appinfo>\\r\\n        <b:recordInfo structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" sequence_number=\\\"1\\\" />\\r\\n      </xs:appinfo>\\r\\n    </xs:annotation>\\r\\n    <xs:complexType>\\r\\n      <xs:sequence>\\r\\n        <xs:annotation>\\r\\n          <xs:appinfo>\\r\\n            <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n          </xs:appinfo>\\r\\n        </xs:annotation>\\r\\n        <xs:element name=\\\"Order\\\">\\r\\n          <xs:annotation>\\r\\n            <xs:appinfo>\\r\\n              <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"hex\\\" child_delimiter=\\\"0x0D 0x0A\\\" child_order=\\\"infix\\\" />\\r\\n            </xs:appinfo>\\r\\n          </xs:annotation>\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:annotation>\\r\\n                <xs:appinfo>\\r\\n                  <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                </xs:appinfo>\\r\\n              </xs:annotation>\\r\\n              <xs:element name=\\\"Header\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"HDR|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PODate\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo justification=\\\"left\\\" sequence_number=\\\"2\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerID\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactName\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactPhone\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element minOccurs=\\\"1\\\" maxOccurs=\\\"unbounded\\\" name=\\\"LineItems\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"2\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"DTL|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ItemOrdered\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"2\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Quantity\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"UOM\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Price\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ExtendedPrice\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"6\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Description\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"7\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n      </xs:sequence>\\r\\n    </xs:complexType>\\r\\n  </xs:element>\\r\\n</xs:schema>\",\r\n    \"contentType\": \"application/xml\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f7fda924-ed45-4a84-a908-9a69e608c8c8"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "8539"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:18cefaf8-6230-4da4-b79c-b0a0590cf73e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "377aaafd-4ca3-440b-81c8-13f0dcda568b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T003654Z:377aaafd-4ca3-440b-81c8-13f0dcda568b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:36:53 GMT"
+        ],
+        "Content-Length": [
+          "855"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"targetNamespace\": \"http://Inbound_EDI.OrderFile\",\r\n    \"documentName\": \"OrderFile\",\r\n    \"contentLink\": {\r\n      \"uri\": \"https://prod-19.brazilsouth.logic.azure.com:443/integrationAccounts/24a41f573a3d4f419928e1834b93d325/schemas/ps4627/contents/Value?api-version=2015-08-01-preview&se=2019-01-03T04%3A36%3A54.4248261Z&sp=%2Fschemas%2Fps4627%2Fread&sv=1.0&sig=C7yuRK6Va39gJcSQLtRR2xyCd67A8zYFs6LlBt8BanU\",\r\n      \"contentVersion\": \"\\\"0x8D671138F629168\\\"\",\r\n      \"contentSize\": 7901,\r\n      \"contentHash\": {\r\n        \"algorithm\": \"md5\",\r\n        \"value\": \"a+4ZnOsIm8I/Mr0aKJIK6w==\"\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-03T00:36:54.3509744Z\",\r\n    \"changedTime\": \"2019-01-03T00:36:54.3518434Z\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137/schemas/ps4627\",\r\n  \"name\": \"ps4627\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/schemas\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137/schemas/ps4627?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMzIzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM4MTM3L3NjaGVtYXMvcHM0NjI3P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"targetNamespace\": \"http://Inbound_EDI.OrderFile\",\r\n    \"documentName\": \"OrderFile\",\r\n    \"content\": \"<?xml version=\\\"1.0\\\" encoding=\\\"utf-16\\\"?>\\r\\n<xs:schema xmlns:b=\\\"http://schemas.microsoft.com/BizTalk/2003\\\" xmlns=\\\"http://Inbound_EDI.OrderFile\\\" targetNamespace=\\\"http://Inbound_EDI.OrderFile\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\">\\r\\n  <xs:annotation>\\r\\n    <xs:appinfo>\\r\\n      <b:schemaInfo default_pad_char=\\\" \\\" count_positions_by_byte=\\\"false\\\" parser_optimization=\\\"speed\\\" lookahead_depth=\\\"3\\\" suppress_empty_nodes=\\\"false\\\" generate_empty_nodes=\\\"true\\\" allow_early_termination=\\\"false\\\" early_terminate_optional_fields=\\\"false\\\" allow_message_breakup_of_infix_root=\\\"false\\\" compile_parse_tables=\\\"false\\\" standard=\\\"Flat File\\\" root_reference=\\\"OrderFile\\\" />\\r\\n      <schemaEditorExtension:schemaInfo namespaceAlias=\\\"b\\\" extensionClass=\\\"Microsoft.BizTalk.FlatFileExtension.FlatFileExtension\\\" standardName=\\\"Flat File\\\" xmlns:schemaEditorExtension=\\\"http://schemas.microsoft.com/BizTalk/2003/SchemaEditorExtensions\\\" />\\r\\n    </xs:appinfo>\\r\\n  </xs:annotation>\\r\\n  <xs:element name=\\\"OrderFile\\\">\\r\\n    <xs:annotation>\\r\\n      <xs:appinfo>\\r\\n        <b:recordInfo structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" sequence_number=\\\"1\\\" />\\r\\n      </xs:appinfo>\\r\\n    </xs:annotation>\\r\\n    <xs:complexType>\\r\\n      <xs:sequence>\\r\\n        <xs:annotation>\\r\\n          <xs:appinfo>\\r\\n            <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n          </xs:appinfo>\\r\\n        </xs:annotation>\\r\\n        <xs:element name=\\\"Order\\\">\\r\\n          <xs:annotation>\\r\\n            <xs:appinfo>\\r\\n              <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"hex\\\" child_delimiter=\\\"0x0D 0x0A\\\" child_order=\\\"infix\\\" />\\r\\n            </xs:appinfo>\\r\\n          </xs:annotation>\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:annotation>\\r\\n                <xs:appinfo>\\r\\n                  <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                </xs:appinfo>\\r\\n              </xs:annotation>\\r\\n              <xs:element name=\\\"Header\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"HDR|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PODate\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo justification=\\\"left\\\" sequence_number=\\\"2\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerID\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactName\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactPhone\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element minOccurs=\\\"1\\\" maxOccurs=\\\"unbounded\\\" name=\\\"LineItems\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"2\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"DTL|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ItemOrdered\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"2\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Quantity\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"UOM\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Price\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ExtendedPrice\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"6\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Description\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"7\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n      </xs:sequence>\\r\\n    </xs:complexType>\\r\\n  </xs:element>\\r\\n</xs:schema>\",\r\n    \"contentType\": \"application/xml\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "acd6936b-72c5-424f-b3cd-0b10d3ea66fd"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "8629"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:8a4e454c-97b0-43d4-a5bc-2bd62589ff4c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "4df30a8b-8364-4a8f-81e1-78cf0e63236d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T003655Z:4df30a8b-8364-4a8f-81e1-78cf0e63236d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:36:54 GMT"
+        ],
+        "Content-Length": [
+          "855"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"targetNamespace\": \"http://Inbound_EDI.OrderFile\",\r\n    \"documentName\": \"OrderFile\",\r\n    \"contentLink\": {\r\n      \"uri\": \"https://prod-19.brazilsouth.logic.azure.com:443/integrationAccounts/24a41f573a3d4f419928e1834b93d325/schemas/ps4627/contents/Value?api-version=2015-08-01-preview&se=2019-01-03T04%3A36%3A55.2842483Z&sp=%2Fschemas%2Fps4627%2Fread&sv=1.0&sig=3meIeHf_y_eP8r8KvOfDUfPpjPhfOlQcTVvACohUNTY\",\r\n      \"contentVersion\": \"\\\"0x8D671138FED3738\\\"\",\r\n      \"contentSize\": 7901,\r\n      \"contentHash\": {\r\n        \"algorithm\": \"md5\",\r\n        \"value\": \"a+4ZnOsIm8I/Mr0aKJIK6w==\"\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-03T00:36:54.3509744Z\",\r\n    \"changedTime\": \"2019-01-03T00:36:55.2636285Z\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137/schemas/ps4627\",\r\n  \"name\": \"ps4627\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/schemas\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137/schemas/ps4627?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMzIzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM4MTM3L3NjaGVtYXMvcHM0NjI3P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"targetNamespace\": \"http://Inbound_EDI.OrderFile\",\r\n    \"documentName\": \"OrderFile\",\r\n    \"content\": \"<?xml version=\\\"1.0\\\" encoding=\\\"utf-16\\\"?>\\r\\n<xs:schema xmlns:b=\\\"http://schemas.microsoft.com/BizTalk/2003\\\" xmlns=\\\"http://Inbound_EDI.OrderFile\\\" targetNamespace=\\\"http://Inbound_EDI.OrderFile\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\">\\r\\n  <xs:annotation>\\r\\n    <xs:appinfo>\\r\\n      <b:schemaInfo default_pad_char=\\\" \\\" count_positions_by_byte=\\\"false\\\" parser_optimization=\\\"speed\\\" lookahead_depth=\\\"3\\\" suppress_empty_nodes=\\\"false\\\" generate_empty_nodes=\\\"true\\\" allow_early_termination=\\\"false\\\" early_terminate_optional_fields=\\\"false\\\" allow_message_breakup_of_infix_root=\\\"false\\\" compile_parse_tables=\\\"false\\\" standard=\\\"Flat File\\\" root_reference=\\\"OrderFile\\\" />\\r\\n      <schemaEditorExtension:schemaInfo namespaceAlias=\\\"b\\\" extensionClass=\\\"Microsoft.BizTalk.FlatFileExtension.FlatFileExtension\\\" standardName=\\\"Flat File\\\" xmlns:schemaEditorExtension=\\\"http://schemas.microsoft.com/BizTalk/2003/SchemaEditorExtensions\\\" />\\r\\n    </xs:appinfo>\\r\\n  </xs:annotation>\\r\\n  <xs:element name=\\\"OrderFile\\\">\\r\\n    <xs:annotation>\\r\\n      <xs:appinfo>\\r\\n        <b:recordInfo structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" sequence_number=\\\"1\\\" />\\r\\n      </xs:appinfo>\\r\\n    </xs:annotation>\\r\\n    <xs:complexType>\\r\\n      <xs:sequence>\\r\\n        <xs:annotation>\\r\\n          <xs:appinfo>\\r\\n            <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n          </xs:appinfo>\\r\\n        </xs:annotation>\\r\\n        <xs:element name=\\\"Order\\\">\\r\\n          <xs:annotation>\\r\\n            <xs:appinfo>\\r\\n              <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"hex\\\" child_delimiter=\\\"0x0D 0x0A\\\" child_order=\\\"infix\\\" />\\r\\n            </xs:appinfo>\\r\\n          </xs:annotation>\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:annotation>\\r\\n                <xs:appinfo>\\r\\n                  <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                </xs:appinfo>\\r\\n              </xs:annotation>\\r\\n              <xs:element name=\\\"Header\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"HDR|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PODate\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo justification=\\\"left\\\" sequence_number=\\\"2\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerID\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactName\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactPhone\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element minOccurs=\\\"1\\\" maxOccurs=\\\"unbounded\\\" name=\\\"LineItems\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"2\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"DTL|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ItemOrdered\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"2\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Quantity\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"UOM\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Price\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ExtendedPrice\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"6\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Description\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"7\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n      </xs:sequence>\\r\\n    </xs:complexType>\\r\\n  </xs:element>\\r\\n</xs:schema>\",\r\n    \"contentType\": \"application/xml\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e83a425e-b95c-464c-acd2-0da5bd8f25e7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "8629"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:bffca734-c2f1-49d6-96bf-26e2ef395da0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-correlation-request-id": [
+          "132a0630-cd9f-483f-9199-387543acb5d0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T003656Z:132a0630-cd9f-483f-9199-387543acb5d0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:36:55 GMT"
+        ],
+        "Content-Length": [
+          "855"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"targetNamespace\": \"http://Inbound_EDI.OrderFile\",\r\n    \"documentName\": \"OrderFile\",\r\n    \"contentLink\": {\r\n      \"uri\": \"https://prod-19.brazilsouth.logic.azure.com:443/integrationAccounts/24a41f573a3d4f419928e1834b93d325/schemas/ps4627/contents/Value?api-version=2015-08-01-preview&se=2019-01-03T04%3A36%3A56.0655003Z&sp=%2Fschemas%2Fps4627%2Fread&sv=1.0&sig=K7O6ylzi-DA1k7lMTb-8pQythkdewWUSFky_hIo_nxM\",\r\n      \"contentVersion\": \"\\\"0x8D6711390616AB0\\\"\",\r\n      \"contentSize\": 7901,\r\n      \"contentHash\": {\r\n        \"algorithm\": \"md5\",\r\n        \"value\": \"a+4ZnOsIm8I/Mr0aKJIK6w==\"\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-03T00:36:54.3509744Z\",\r\n    \"changedTime\": \"2019-01-03T00:36:56.0257336Z\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137/schemas/ps4627\",\r\n  \"name\": \"ps4627\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/schemas\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps3230/providers/Microsoft.Logic/integrationAccounts/ps8137?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMzIzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM4MTM3P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "06226f1c-74b9-4794-93ba-bdf3b187a665"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26606.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:89e1da2f-57b2-4dcf-b0e5-d52f5c973203"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "ce8531f9-d941-4a38-a7a0-86dfe5a9795d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190103T003658Z:ce8531f9-d941-4a38-a7a0-86dfe5a9795d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 Jan 2019 00:36:57 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-UpdateIntegrationAccountSchema": [
+      "ps3230",
+      "ps8137",
+      "ps4627"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "9e223dbe-3399-4e19-88eb-0975f02ac87f"
+  }
+}

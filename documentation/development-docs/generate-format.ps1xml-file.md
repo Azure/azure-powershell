@@ -14,7 +14,7 @@ Our team trends to make the cmdlets output more convenient and consistent across
 
 # How table view output works by default.
 
- As an example let's consider [Get-AzSubscription](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Profile/Commands.Profile/Subscription/GetAzureRMSubscription.cs) cmdlet. 
+ As an example let's consider [Get-AzSubscription](https://github.com/Azure/azure-powershell/blob/master/src/Accounts/Accounts/Subscription/GetAzureRMSubscription.cs) cmdlet. 
 
 The cmdlet class specifies the ```PSAzureSubscription``` class as an output type with the **OutputType attribute**:
 
@@ -315,13 +315,13 @@ This will place the column at the very beginning of the table.
 PS E:\git\azure-powershell> msbuild build.proj /p:SkipHelp=true
 ```
 
-* After the build is completed you can find build artifacts in the ```.\src\Package\Debug``` folder:
+* After the build is completed you can find build artifacts in the ```.\artifacts\Debug``` folder:
 
 ```Powershell
-PS E:\git\azure-powershell> ls .\src\Package\Debug\
+PS E:\git\azure-powershell> ls .\artifacts\Debug\
 
 
-    Directory: E:\git\azure-powershell\src\Package\Debug
+    Directory: E:\git\azure-powershell\artifacts\Debug
 
 
 Mode                LastWriteTime         Length Name
@@ -340,15 +340,15 @@ d-----        4/25/2018   4:35 PM                Storage
 PS E:\git\azure-powershell> Import-Module E:\git\azure-powershell\tools\RepoTasks\RepoTasks.Cmdlets\bin\Debug\RepoTasks.Cmdlets.dll
 ```
 3. Run the **New-FormatPs1Xml** cmdlet. 
-* The cmdlet has one required argument **-ModulePath** - a path to a module manifest (psd1) file. Since in our example we are using the Get-AzSubscription cmdlet from the Az.Profile module we need to specify path to the Az.Profile module manifest which is 
+* The cmdlet has one required argument **-ModulePath** - a path to a module manifest (psd1) file. Since in our example we are using the Get-AzSubscription cmdlet from the Az.Accounts module we need to specify path to the Az.Accounts module manifest which is 
 ```
-E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\Az.Profile\Az.Profile.psd1 
+E:\git\azure-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1 
 ``` 
 * Also with the cmdlet we need to use **-OnlyMarkedProperties** switch.
 * You may also want to specify an output path for the generated file with the **-OutputPath** argument. If not specified this is current folder.
 
 ```
-PS E:\git\azure-powershell> New-FormatPs1Xml -ModulePath .\src\Package\Debug\ResourceManager\AzureResourceManager\Az.Profile\Az.Profile.psd1 -OnlyMarkedProperties
+PS E:\git\azure-powershell> New-FormatPs1Xml -ModulePath .\artifacts\Debug\Az.Accounts\Az.Accounts.psd1 -OnlyMarkedProperties
 
 E:\git\azure-powershell\Microsoft.Azure.Commands.Profile.generated.format.ps1xml
 ```
@@ -356,17 +356,17 @@ E:\git\azure-powershell\Microsoft.Azure.Commands.Profile.generated.format.ps1xml
 
 # How to test the format.ps1xml file.
 
-**Note:** All the paths used in the example in the section are under **_azure-powershell/src/Package/Debug_**
+**Note:** All the paths used in the example in the section are under **_azure-powershell/artifacts/Debug_**
 
 1. **Copy** the generated format.ps1xml file to the built module folder (this is where your module manifest file psd1 is located). In our example the module folder is 
 ```
-E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\Az.Profile
+E:\git\azure-powershell\artifacts\Debug\Az.Accounts
 ```
 
 2. Modify your module manifest file. 
-* In our example the module manifest is Az.Profile.psd1: 
+* In our example the module manifest is Az.Accounts.psd1: 
 ```
-E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\Az.Profile\Az.Profile.psd1 
+E:\git\azure-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1 
 ``` 
 
 * In the module manifest file there is a variable called **FormatsToProcess** to reference format.ps1xml files.
@@ -387,9 +387,9 @@ FunctionsToExport = @()
 
 # script omitted for brevity
 ```
-3. Open a **PowerShell window** and **import** your module. In our example it is Az.Profile:
+3. Open a **PowerShell window** and **import** your module. In our example it is Az.Accounts:
 ```Powershell
-PS C:\> Import-Module E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\Az.Profile\Az.Profile.psd1
+PS C:\> Import-Module E:\git\azure-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1
 ```
 
 4. Try your cmdlet out. In our example it is Get-AuzreRmSubsription:
@@ -406,47 +406,22 @@ c9cbd920-c00c-427c-852b-c329e824c3a8 Azure SDK Powershell Test Enabled 72f988bf-
 
 # How to add the format.ps1xml file to your project.
 
-**Note:** All the paths used in the example in the section are under **_azure-powershell/src/ResourceManager/Profile_**
+**Note:** All the paths used in the example in the section are under **_azure-powershell/src/Accounts_**
 
+1. Copy the generated file into your project source folder. In our example this is [src/Accounts/Accounts](https://github.com/Azure/azure-powershell/tree/master/src/Accounts/Accounts) folder.
 
-1. Copy the generated file into your project source folder. In our example this is [src/ResourceManager/Profile/Commands.Profile](https://github.com/Azure/azure-powershell/tree/master/src/ResourceManager/Profile/Commands.Profile) folder.
+2. Reference the generated format.ps1xml file form your project. In our example this is [Accounts.csproj](https://github.com/Azure/azure-powershell/blob/master/src/Accounts/Accounts/Accounts.csproj) file.
+- **Note**: This is now automatically referenced based on `Az.props` being imported in your csproj file.
 
-2. Reference the generated format.ps1xml file form your project. In our example this is [Commands.Profile.csproj](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Profile/Commands.Profile/Commands.Profile.csproj) file:
-
-```Xml
-  <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.Profile.generated.format.ps1xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Microsoft.Azure.Commands.Profile.format.ps1xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="..\AzureRM.Profile.psd1">
-      <Link>AzureRM.Profile.psd1</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <Content Include="Microsoft.Azure.Commands.Profile.types.ps1xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
-    <None Include="StartupScripts\*.ps1">
-      <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
-    </None>
-  </ItemGroup>
-```
-3. Add the generated format.ps1xml file to your source module manifest **FormatsToProcess** variable. In our example this is [src/ResourceManager/Profile/Az.Profile.psd1](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Profile/Az.Profile.psd1) file:
+3. Add the generated format.ps1xml file to your source module manifest **FormatsToProcess** variable. In our example this is [src/Accounts/Az.Accounts.psd1](https://github.com/Azure/azure-powershell/blob/master/src/Accounts/Az.Accounts.psd1) file:
 ```Powershell
 # script omitted for brevity
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.Profile.generated.format.ps1xml', '.\Microsoft.Azure.Commands.Profile.format.ps1xml'
+FormatsToProcess = '.\Accounts.generated.format.ps1xml', '.\Accounts.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.Profile.dll')
+NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Profile.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
