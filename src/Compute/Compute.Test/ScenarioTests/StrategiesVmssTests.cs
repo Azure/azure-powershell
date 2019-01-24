@@ -13,11 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
-using System.Diagnostics;
 using System.Reflection;
 using Xunit;
 
@@ -25,20 +23,15 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class StrategiesVmssTests : ComputeTestRunner
     {
-        XunitTracingInterceptor _logger;
-
         public StrategiesVmssTests(Xunit.Abstractions.ITestOutputHelper output)
             : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmss()
         {
-//            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmss");
             TestRunner.RunTestScript("Test-SimpleNewVmss");
         }
 
@@ -46,7 +39,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmssFromSIGImage()
         {
-//            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmssFromSIGImage");
             TestRunner.RunTestScript("Test-SimpleNewVmssFromSIGImage");
         }
 
@@ -54,7 +46,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmssWithUltraSSD()
         {
-//            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmssWithUltraSSD");
             TestRunner.RunTestScript("Test-SimpleNewVmssWithUltraSSD");
         }
 
@@ -62,7 +53,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmssLbErrorScenario()
         {
-//            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmssLbErrorScenario");
             TestRunner.RunTestScript("Test-SimpleNewVmssLbErrorScenario");
         }
 
@@ -70,7 +60,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmssWithSystemAssignedIdentity()
         {
-//            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmssWithSystemAssignedIdentity");
             TestRunner.RunTestScript("Test-SimpleNewVmssWithSystemAssignedIdentity");
         }
 
@@ -79,7 +68,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmssImageName()
         {
-//            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmssImageName");
             TestRunner.RunTestScript("Test-SimpleNewVmssImageName");
         }
 
@@ -102,7 +90,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
              * Get-AzUserAssignedIdentity -ResourceGroupName UAITG123456 -Name UAITG123456Identity
              * Nore down the Id and use it in the PS code
              * */
-//            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmssWithsystemAssignedUserAssignedIdentity");
             TestRunner.RunTestScript("Test-SimpleNewVmssWithsystemAssignedUserAssignedIdentity");
        }
 

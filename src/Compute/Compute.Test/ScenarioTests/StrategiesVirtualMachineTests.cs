@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
-using System.Diagnostics;
 using System.Reflection;
 using Xunit;
 
@@ -34,7 +33,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestSimpleNewVm()
         {
             TestRunner.RunTestScript("Test-SimpleNewVm");
-
         }
 
         [Fact]
@@ -146,7 +144,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             create.SetValue(null, (Func<string>) GetUnigueId);
             TestRunner.RunTestScript("Test-SimpleNewVmWithDefaultDomainName2");
             create.SetValue(null, oldCreate);
-
         }
 
         [Fact]

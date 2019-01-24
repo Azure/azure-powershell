@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestExportLogAnalyticThrottledRequestsNegative()
         {
             TestRunner.RunTestScript("Test-ExportLogAnalyticThrottledRequestsNegative");
-
         }
 
 		[Fact]
