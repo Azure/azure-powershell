@@ -24,23 +24,17 @@
 // Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
-using System;
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class ExpressRouteCircuitTestsGenerated : RMTestBase
+    public class ExpressRouteCircuitTestsGenerated : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public ExpressRouteCircuitTestsGenerated(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -48,7 +42,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitCRUDMinimalParameters");
+           TestRunner.RunTestScript("Test-ExpressRouteCircuitCRUDMinimalParameters");
         }
 
         [Fact]
@@ -56,7 +50,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitCRUDAllParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitCRUDAllParameters");
+           TestRunner.RunTestScript("Test-ExpressRouteCircuitCRUDAllParameters");
         }
 
         [Fact]
@@ -64,7 +58,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitAuthorizationCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitAuthorizationCRUDMinimalParameters");
+           TestRunner.RunTestScript("Test-ExpressRouteCircuitAuthorizationCRUDMinimalParameters");
         }
 
         [Fact]
@@ -72,7 +66,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitPeeringCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitPeeringCRUDMinimalParameters");
+           TestRunner.RunTestScript("Test-ExpressRouteCircuitPeeringCRUDMinimalParameters");
         }
 
         [Fact]
@@ -80,7 +74,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitPeeringCRUDAllParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitPeeringCRUDAllParameters");
+           TestRunner.RunTestScript("Test-ExpressRouteCircuitPeeringCRUDAllParameters");
         }
     }
 }

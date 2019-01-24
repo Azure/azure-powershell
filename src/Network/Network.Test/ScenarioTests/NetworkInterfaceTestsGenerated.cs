@@ -21,7 +21,7 @@
 // 
 // For documentation on code generator please visit
 //   https://aka.ms/nrp-code-generation
-// Please contact sdnnrp@microsoft.com if you need to make changes to this file.
+// Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
 using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
@@ -30,9 +30,9 @@ using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class NetworkProfileTests : NetworkTestRunner
+    public class NetworkInterfaceTestsGenerated : NetworkTestRunner
     {
-        public NetworkProfileTests(Xunit.Abstractions.ITestOutputHelper output)
+        public NetworkInterfaceTestsGenerated(Xunit.Abstractions.ITestOutputHelper output)
             : base(output)
         {
         }
@@ -40,33 +40,41 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestNetworkProfileCRUDMinimalParameters()
+        public void TestNetworkInterfaceCRUDMinimalParameters()
         {
-            TestRunner.RunTestScript(string.Format("Test-NetworkProfileCRUDMinimalParameters"));
+            TestRunner.RunTestScript("Test-NetworkInterfaceCRUDMinimalParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestNetworkProfileCRUDAllParameters()
+        public void TestNetworkInterfaceCRUDAllParameters()
         {
-            TestRunner.RunTestScript(string.Format("Test-NetworkProfileCRUDAllParameters"));
+            TestRunner.RunTestScript("Test-NetworkInterfaceCRUDAllParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestContainerNetworkInterfaceConfigCRUDMinimalParameters()
+        public void TestNetworkInterfaceIpConfigurationCRUDMinimalParameters()
         {
-            TestRunner.RunTestScript(string.Format("Test-ContainerNetworkInterfaceConfigCRUDMinimalParameters"));
+            TestRunner.RunTestScript("Test-NetworkInterfaceIpConfigurationCRUDMinimalParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestContainerNetworkInterfaceConfigCRUD()
+        public void TestNetworkInterfaceIpConfigurationCRUDAllParameters()
         {
-            TestRunner.RunTestScript(string.Format("Test-ContainerNetworkInterfaceConfigCRUD"));
+            TestRunner.RunTestScript("Test-NetworkInterfaceIpConfigurationCRUDAllParameters");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestNetworkInterfaceGetEffectiveRouteTable()
+        {
+            TestRunner.RunTestScript(string.Format("Test-NetworkInterfaceGetEffectiveRouteTable -baseDir '{0}'", System.AppDomain.CurrentDomain.BaseDirectory));
         }
     }
 }

@@ -24,23 +24,17 @@
 // Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
-using System;
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class LoadBalancerTestsGenerated : RMTestBase
+    public class LoadBalancerTestsGenerated : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public LoadBalancerTestsGenerated(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -48,7 +42,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestLoadBalancerCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LoadBalancerCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-LoadBalancerCRUDMinimalParameters");
         }
 
         [Fact]
@@ -56,7 +50,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestLoadBalancerCRUDAllParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LoadBalancerCRUDAllParameters");
+            TestRunner.RunTestScript("Test-LoadBalancerCRUDAllParameters");
         }
 
         [Fact]
@@ -64,7 +58,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestFrontendIPConfigurationCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-FrontendIPConfigurationCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-FrontendIPConfigurationCRUDMinimalParameters");
         }
 
         [Fact]
@@ -72,7 +66,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestFrontendIPConfigurationCRUDAllParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-FrontendIPConfigurationCRUDAllParameters");
+            TestRunner.RunTestScript("Test-FrontendIPConfigurationCRUDAllParameters");
         }
 
         [Fact]
@@ -80,7 +74,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestBackendAddressPoolCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-BackendAddressPoolCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-BackendAddressPoolCRUDMinimalParameters");
         }
 
         [Fact]
@@ -88,7 +82,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestLoadBalancingRuleCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LoadBalancingRuleCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-LoadBalancingRuleCRUDMinimalParameters");
         }
 
         [Fact]
@@ -96,7 +90,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestLoadBalancingRuleCRUDAllParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LoadBalancingRuleCRUDAllParameters");
+            TestRunner.RunTestScript("Test-LoadBalancingRuleCRUDAllParameters");
         }
 
         [Fact]
@@ -104,7 +98,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestProbeCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ProbeCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-ProbeCRUDMinimalParameters");
         }
 
         [Fact]
@@ -112,7 +106,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestProbeCRUDAllParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ProbeCRUDAllParameters");
+            TestRunner.RunTestScript("Test-ProbeCRUDAllParameters");
         }
 
         [Fact]
@@ -120,7 +114,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestInboundNatRuleCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-InboundNatRuleCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-InboundNatRuleCRUDMinimalParameters");
         }
 
         [Fact]
@@ -128,7 +122,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestInboundNatRuleCRUDAllParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-InboundNatRuleCRUDAllParameters");
+            TestRunner.RunTestScript("Test-InboundNatRuleCRUDAllParameters");
         }
 
         [Fact]
@@ -136,7 +130,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestInboundNatPoolCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-InboundNatPoolCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-InboundNatPoolCRUDMinimalParameters");
         }
 
         [Fact]
@@ -144,7 +138,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestInboundNatPoolCRUDAllParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-InboundNatPoolCRUDAllParameters");
+            TestRunner.RunTestScript("Test-InboundNatPoolCRUDAllParameters");
         }
 
         [Fact]
@@ -152,7 +146,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestOutboundRuleCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-OutboundRuleCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-OutboundRuleCRUDMinimalParameters");
         }
 
         [Fact]
@@ -160,7 +154,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestOutboundRuleCRUDAllParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-OutboundRuleCRUDAllParameters");
+            TestRunner.RunTestScript("Test-OutboundRuleCRUDAllParameters");
         }
     }
 }
