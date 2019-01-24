@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.1
 * Update incorrect online help URLs
 * Add warning message in PS Core for Uninstall-AzureRm
 
