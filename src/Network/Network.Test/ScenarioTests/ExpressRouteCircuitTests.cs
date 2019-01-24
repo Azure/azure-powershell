@@ -19,7 +19,7 @@ using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class ExpressRouteCircuitTests :NetworkTestRunner
+    public class ExpressRouteCircuitTests : NetworkTestRunner
     {
         public ExpressRouteCircuitTests(ITestOutputHelper output)
             : base(output)
