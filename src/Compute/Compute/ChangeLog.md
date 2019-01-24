@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Add Invoke-AzVMReimage cmdlet
 * Add TempDisk parameter to Set-AzVmss
 * Fix the warning message of New-AzVM
