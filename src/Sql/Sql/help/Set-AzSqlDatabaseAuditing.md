@@ -136,6 +136,11 @@ PS C:\>Set-AzSqlDatabaseAuditing -State Enabled -ResourceGroupName "ResourceGrou
 PS C:\>Set-AzSqlDatabaseAuditing -State Disabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -LogAnalytics
 ```
 
+### Example 10: Disable, througth pipeline, the log analytics auditing policy of an Azure SQL database
+```
+PS C:\>Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Set-AzSqlDatabaseAuditing -LogAnalytics -State Disabled
+```
+
 ## PARAMETERS
 
 ### -AsJob

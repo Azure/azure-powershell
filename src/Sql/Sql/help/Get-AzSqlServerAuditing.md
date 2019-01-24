@@ -86,7 +86,22 @@ StorageAccountSubscriptionId : 7fe3301d-31d3-4668-af5e-211a890ba6e3
 PredicateExpression          : statement <> 'select 1'
 ```
 
-### Example 3: Get the event hub auditing settings of an Azure SQL server
+### Example 3: Get, through pipeline, the blob storage auditing settings of an Azure SQL server
+```
+PS C:\> Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Get-AzSqlServerAuditing -BlobStorage
+AuditActionGroup             : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
+                                BATCH_COMPLETED_GROUP, ...}
+ResourceGroupName            : resourcegroup01
+ServerName                   : server01
+AuditState                   : Enabled
+StorageAccountName           : mystorage
+StorageKeyType               : Primary
+RetentionInDays              : 0
+StorageAccountSubscriptionId : 7fe3301d-31d3-4668-af5e-211a890ba6e3
+PredicateExpression          : statement <> 'select 1'
+```
+
+### Example 4: Get the event hub auditing settings of an Azure SQL server
 ```
 PS C:\>Get-AzSqlServerAuditing -ResourceGroupName "resourcegroup01" -ServerName "server01" -EventHub
 AuditActionGroup                    : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
@@ -99,7 +114,21 @@ EventHubName                        : eventHubName
 EventHubAuthorizationRuleResourceId : EventHubAuthorizationRuleResourceId
 ```
 
-### Example 4: Get the log analytics auditing settings of an Azure SQL server
+### Example 5: Get, through pipeline, the event hub auditing settings of an Azure SQL server
+```
+PS C:\>$server = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+PS C:\>$server | Get-AzSqlServerAuditing -EventHub
+AuditActionGroup                    : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
+                                       BATCH_COMPLETED_GROUP, ...}
+ResourceGroupName                   : resourcegroup01
+ServerName                          : server01
+AuditState                          : Enabled
+PredicateExpression                 : statement <> 'select 1'
+EventHubName                        : eventHubName
+EventHubAuthorizationRuleResourceId : EventHubAuthorizationRuleResourceId
+```
+
+### Example 6: Get the log analytics auditing settings of an Azure SQL server
 ```
 PS C:\>Get-AzSqlServerAuditing -ResourceGroupName "resourcegroup01" -ServerName "server01" -LogAnalytics
 AuditActionGroup    : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
