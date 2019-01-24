@@ -30,4 +30,8 @@
     <Content Remove="Properties\AssemblyInfo.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Moq" Version="4.10.1" />
+  </ItemGroup>
+
 </Project>

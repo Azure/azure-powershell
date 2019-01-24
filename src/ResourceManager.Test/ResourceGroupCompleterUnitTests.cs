@@ -12,18 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.ResourceManager.Tests;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.ResourceManger.Test
+namespace Microsoft.Azure.Commands.ResourceManager.Test
 {
     public class ResourceGroupCompleterUnitTests
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReturnsEmptyListWhenNoResourceGroupsExist()
         {
             IList<string> resourceGroupsReturned = new List<string>();
@@ -31,7 +29,6 @@ namespace Microsoft.Azure.Commands.ResourceManger.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void OneResourceGroupNoDefault()
         {
             IList<string> resourceGroupsReturned = new List<string>();
@@ -40,7 +37,6 @@ namespace Microsoft.Azure.Commands.ResourceManger.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void OneResourceGroupWithDefault()
         {
             IList<string> resourceGroupsReturned = new List<string>();
@@ -49,7 +45,6 @@ namespace Microsoft.Azure.Commands.ResourceManger.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void OneResourceGroupWithInvalidDefault()
         {
             IList<string> resourceGroupsReturned = new List<string>();
@@ -59,7 +54,6 @@ namespace Microsoft.Azure.Commands.ResourceManger.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void MultipleResourceGroupsNoDefault()
         {
             IList<string> resourceGroupsReturned = new List<string>();
@@ -72,7 +66,6 @@ namespace Microsoft.Azure.Commands.ResourceManger.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void MultipleResourceGroupsWithDefault()
         {
             IList<string> resourceGroupsReturned = new List<string>();
@@ -85,7 +78,6 @@ namespace Microsoft.Azure.Commands.ResourceManger.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThrowsErrorWhenResultNull()
         {
             var ex = Assert.Throws<Exception>(() => ResourceGroupCompleterAttribute.CreateResourceGroupList(null));

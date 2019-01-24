@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.ResourceManager.Tests;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using System;
@@ -25,7 +24,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
     public class LocationCompleterUnitTests
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReturnsErrorForEmptyResourceTypeList()
         {
             var resourceTypeLocationDictionary = SetMockDictionary();
@@ -35,7 +33,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReturnsErrorForInvalidResourceType()
         {
             var resourceTypeLocationDictionary = SetMockDictionary();
@@ -45,7 +42,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReturnsErrorForResourceTypeWithNoLocation()
         {
             var resourceTypeLocationDictionary = SetMockDictionary();
@@ -55,7 +51,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReturnsLocationForResourceTypeWithOneLocation()
         {
             var resourceTypeLocationDictionary = SetMockDictionary();
@@ -64,7 +59,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReturnsAllLocationForResourceTypeWithMultipleLocations()
         {
             var resourceTypeLocationDictionary = SetMockDictionary();
@@ -73,7 +67,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReturnsErrorForResourceTypesWithNoOverlap()
         {
             var resourceTypeLocationDictionary = SetMockDictionary();
@@ -83,7 +76,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReturnsOverlapForMultipleResourceTypes()
         {
             var resourceTypeLocationDictionary = SetMockDictionary();
@@ -92,7 +84,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReturnsFullOverlapForMultipleResourceTypes()
         {
             var resourceTypeLocationDictionary = SetMockDictionary();
@@ -101,7 +92,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void LocationListRecognizesDifferentFormats()
         {
             var resourceTypeLocationDictionary = SetMockDictionary();
@@ -110,7 +100,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReturnsLocationForLowercaseProvider()
         {
             var resourceTypeLocationDictionary = SetMockDictionary();
@@ -132,7 +121,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConstructsEmptyDictionaryForNoProviders()
         {
             var resourceTypeLocationDictionary = LocationCompleterAttribute.CreateLocationDictionary(new List<Provider>());
@@ -140,7 +128,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConstructsDictionaryForProviderWithNoResourceTypes()
         {
             List<Provider> ProviderList = new List<Provider>();
@@ -155,7 +142,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConstructsDictionaryForProviderWithNoLocations()
         {
             List<Provider> ProviderList = new List<Provider>();
@@ -180,7 +166,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConstructsDictionaryForProviderWithOneLocation()
         {
             List<Provider> ProviderList = new List<Provider>();
@@ -205,7 +190,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConstructsDictionaryForProviderWithMultipleLocations()
         {
             List<Provider> ProviderList = new List<Provider>();
@@ -230,7 +214,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConstructsDictionaryForProviderWitMultipleResourceTypes()
         {
             List<Provider> ProviderList = new List<Provider>();
@@ -261,7 +244,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConstructsDictionaryForMultipleProviders()
         {
             List<Provider> ProviderList = new List<Provider>();
