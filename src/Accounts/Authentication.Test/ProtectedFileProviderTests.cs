@@ -22,7 +22,7 @@ using System;
 using System.IO;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
+namespace Common.Authentication.Test
 {
     public class ProtectedFileProviderTests
     {

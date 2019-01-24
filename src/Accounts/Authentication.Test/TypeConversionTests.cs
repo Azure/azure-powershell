@@ -24,7 +24,7 @@ using System;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.Profile.Test
+namespace Common.Authentication.Test
 {
     public class TypeConversionTests
     {
