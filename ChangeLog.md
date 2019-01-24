@@ -1,5 +1,6 @@
 ## 1.2.0 - January 2019
 #### Az.Accounts
+* Add interactive and username/password authentication for Windows PowerShell 5.1 only
 * Update incorrect online help URLs
 * Add warning message in PS Core for Uninstall-AzureRm
 
