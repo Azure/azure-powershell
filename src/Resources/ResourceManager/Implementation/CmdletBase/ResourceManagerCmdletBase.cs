@@ -423,7 +423,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 var errorResponseException = capturedException.SourceException as ErrorResponseMessageException;
                 if (errorResponseException != null)
                 {
-                    this.ThrowTerminatingError(errorResponseException.ToErrorRecord());
+                    this.WriteError(errorResponseException.ToErrorRecord());
+                    return;
                 }
 
                 var aggregateException = capturedException.SourceException as AggregateException;
@@ -435,18 +436,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         errorResponseException = aggregateException.InnerExceptions.Single() as ErrorResponseMessageException;
                         if (errorResponseException != null)
                         {
-                            this.ThrowTerminatingError(errorResponseException.ToErrorRecord());
+                            this.WriteError(errorResponseException.ToErrorRecord());
+                            return;
                         }
 
-                        this.ThrowTerminatingError(aggregateException.InnerExceptions.Single().ToErrorRecord());
+                        this.WriteError(aggregateException.InnerExceptions.Single().ToErrorRecord());
+                        return;
                     }
                     else
                     {
-                        this.ThrowTerminatingError(aggregateException.ToErrorRecord());
+                        this.WriteError(aggregateException.ToErrorRecord());
+                        return;
                     }
                 }
 
-                capturedException.Throw();
+                this.WriteError(capturedException.SourceException.ToErrorRecord());
+                return;
             }
             finally
             {
