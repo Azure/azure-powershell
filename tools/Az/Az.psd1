@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.1.1'; }, 
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.2.0'; }, 
                @{ModuleName = 'Az.Aks'; RequiredVersion = '1.0.1'; }, 
                @{ModuleName = 'Az.AnalysisServices'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.ApiManagement'; RequiredVersion = '1.0.0'; }, 
@@ -155,6 +155,7 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = '1.2.0 - January 2019
 Az.Accounts
+* Add interactive and username/password authentication for Windows PowerShell 5.1 only
 * Update incorrect online help URLs
 * Add warning message in PS Core for Uninstall-AzureRm
 
