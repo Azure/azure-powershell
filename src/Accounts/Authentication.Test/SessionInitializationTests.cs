@@ -13,27 +13,22 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-// TODO: Remove IfDef
-#if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
-using Microsoft.Azure.Commands.Profile.Context;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Moq;
 using System.IO;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
+namespace Common.Authentication.Test
 {
     public class SessionInitializationTests
     {
