@@ -24,31 +24,33 @@
 // Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
-using System;
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class UsageTestsGenerated : RMTestBase
+    public class ApplicationSecurityGroupTestsGenerated : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public UsageTestsGenerated(Xunit.Abstractions.ITestOutputHelper output)
+        public ApplicationSecurityGroupTestsGenerated(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
-        public void TestUsageCRUDMinimalParameters()
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestApplicationSecurityGroupCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-UsageCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-ApplicationSecurityGroupCRUDMinimalParameters");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestApplicationSecurityGroupCRUDAllParameters()
+        {
+            TestRunner.RunTestScript("Test-ApplicationSecurityGroupCRUDAllParameters");
         }
     }
 }
