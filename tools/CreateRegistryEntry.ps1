@@ -24,7 +24,7 @@ Copy-Item "$PathToLastRelease\webpiReg.reg" "$PathToCurrentRelease"
 Copy-Item "$PathToLastRelease\wpilauncher.exe" "$PathToCurrentRelease"
 
 Copy-Item "$PathToBuildArtifacts\signed\AzurePowerShell.msi" "$PathToCurrentRelease"
-Copy-Item "$PathToBuildArtifacts\src\Package\*.nupkg" "$PathToCurrentRelease\pkgs"
+Copy-Item "$PathToBuildArtifacts\artifacts\*.nupkg" "$PathToCurrentRelease\pkgs"
 
 Rename-Item $PathToCurrentRelease\AzurePowerShell.msi azure-powershell.$PSVersion.msi
 
