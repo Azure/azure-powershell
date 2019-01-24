@@ -27,7 +27,7 @@ Removes all AzureRm modules from a machine.
 PS C:\> Uninstall-AzureRm
 ```
 
-Running this command will remove all AzureRm modules from the machine.
+Running this command will remove all AzureRm modules from the machine for the version of PowerShell in which the cmdlet is run.
 
 ## PARAMETERS
 

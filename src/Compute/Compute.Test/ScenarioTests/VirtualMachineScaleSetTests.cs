@@ -54,6 +54,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetReimageTempDisk()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetReimageTempDisk");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetLB()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetLB");

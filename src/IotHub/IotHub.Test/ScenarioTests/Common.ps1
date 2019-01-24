@@ -37,7 +37,7 @@ Cleans the created resource groups
 function Clean-ResourceGroup($rgname)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzureRmResourceGroup -Name $rgname
+        Remove-AzResourceGroup -Name $rgname
     }
 }
 
@@ -48,7 +48,7 @@ Creates a new resource group
 function Create-ResourceGroup
 {
 	$resourceGroupName = Get-ResourceGroupName
-	return New-AzureRmResourceGroup -Name $resourceGroupName -Location WestUS
+	return New-AzResourceGroup -Name $resourceGroupName -Location WestUS
 }
 
 ######################

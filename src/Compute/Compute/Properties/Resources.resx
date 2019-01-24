@@ -447,7 +447,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>Storage account name for boot diagnostics is not given.</value>
   </data>
   <data name="CreatingStorageAccountForBootDiagnostics" xml:space="preserve">
-    <value>Since the VM is created using premium storage, new standard storage account, {0}, is created for boot diagnostics.</value>
+    <value>Since there is no standard storage account in the same region as the VM, new standard storage account, {0}, is created for boot diagnostics.</value>
     <comment>{0} = new standard storage account name</comment>
   </data>
   <data name="ErrorDuringCreatingStorageAccountForBootDiagnostics" xml:space="preserve">

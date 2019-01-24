@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountReceivedIcn command to get the integration account generated interchange control number.
+        /// Test Get-AzIntegrationAccountReceivedIcn command to get the integration account generated interchange control number.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountReceivedIcn command to get the integration account generated interchange control number.
+        /// Test Get-AzIntegrationAccountReceivedIcn command to get the integration account generated interchange control number.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Remove-AzureRmIntegrationAccountReceivedIcn command to update the integration account generated interchange control number.
+        /// Test Remove-AzIntegrationAccountReceivedIcn command to update the integration account generated interchange control number.
         /// </summary>
         /// <remarks>The test method name is abbreviated to avoid running into legacy path length limit inside the underlying http mock recorder.</remarks>
         [Fact]
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Set-AzureRmIntegrationAccountReceivedIcn command to update the integration account generated interchange control number.
+        /// Test Set-AzIntegrationAccountReceivedIcn command to update the integration account generated interchange control number.
         /// </summary>
         /// <remarks>The test method name is abbreviated to avoid running into legacy path length limit inside the underlying http mock recorder.</remarks>
         [Fact]

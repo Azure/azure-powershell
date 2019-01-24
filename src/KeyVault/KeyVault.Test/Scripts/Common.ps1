@@ -205,15 +205,15 @@ function Cleanup-OldCertificates
 
     $keyVault = Get-KeyVault
     $certificatePattern = Get-CertificateName '*'
-    Get-AzureKeyVaultCertificate $keyVault |
+    Get-AzKeyVaultCertificate $keyVault |
         Where-Object {$_.Name -like $certificatePattern} |
-        Remove-AzureKeyVaultCertificate -Name $_.Name -VaultName $_.VaultName -Force -Confirm:$false
+        Remove-AzKeyVaultCertificate -Name $_.Name -VaultName $_.VaultName -Force -Confirm:$false
 
     if($global:softDeleteEnabled -eq $true) 
     {
-      Get-AzureKeyVaultCertificate -VaultName $keyVault -InRemovedState |
+      Get-AzKeyVaultCertificate -VaultName $keyVault -InRemovedState |
       Where-Object {$_.Name -like $certificatePattern} | %{
-        Remove-AzureKeyVaultCertificate -Name $_.Name -VaultName $_.VaultName -InRemovedState -Force -Confirm:$false
+        Remove-AzKeyVaultCertificate -Name $_.Name -VaultName $_.VaultName -InRemovedState -Force -Confirm:$false
         Wait-Seconds 5;
       }
     }
@@ -229,15 +229,15 @@ function Cleanup-OldKeys
 
     $keyVault = Get-KeyVault
     $keyPattern = Get-KeyName '*'
-    Get-AzureKeyVaultKey $keyVault |
+    Get-AzKeyVaultKey $keyVault |
         Where-Object {$_.Name -like $keyPattern} |
 		Cleanup-Key $_.Name
 
 	if($global:softDeleteEnabled -eq $true) 
 	{
-		Get-AzureKeyVaultKey $keyVault -InRemovedState |
+		Get-AzKeyVaultKey $keyVault -InRemovedState |
 			Where-Object {$_.Name -like $keyPattern} | %{
-				Remove-AzureKeyVaultKey -Name $_.Name -VaultName $_.VaultName -InRemovedState -Force -Confirm:$false
+				Remove-AzKeyVaultKey -Name $_.Name -VaultName $_.VaultName -InRemovedState -Force -Confirm:$false
 				Wait-Seconds 5;
 			}
 	}
@@ -253,15 +253,15 @@ function Cleanup-OldSecrets
 
     $keyVault = Get-KeyVault
     $secretPattern = Get-SecretName '*'
-    Get-AzureKeyVaultSecret $keyVault |
+    Get-AzKeyVaultSecret $keyVault |
         Where-Object {$_.Name -like $secretPattern} | 
 		Cleanup-Secret $_.Name
 	
 	if($global:softDeleteEnabled -eq $true) 
 	{
-		Get-AzureKeyVaultSecret $keyVault -InRemovedState |
+		Get-AzKeyVaultSecret $keyVault -InRemovedState |
 			Where-Object {$_.Name -like $secretPattern} |  %{
-				Remove-AzureKeyVaultSecret -Name $_.Name -VaultName $_.VaultName -Force -Confirm:$false -InRemovedState
+				Remove-AzKeyVaultSecret -Name $_.Name -VaultName $_.VaultName -Force -Confirm:$false -InRemovedState
 				Wait-Seconds 5
 			}
 	}
@@ -277,9 +277,9 @@ function Cleanup-OldManagedStorageAccounts
 
     $keyVault = Get-KeyVault
     $managedStorageAccountPattern = Get-ManagedStorageAccountName '*'
-    Get-AzureKeyVaultManagedStorageAccount $keyVault |
+    Get-AzKeyVaultManagedStorageAccount $keyVault |
         Where-Object {$_.AccountName -like $managedStorageAccountPattern} |
-        Remove-AzureKeyVaultManagedStorageAccount -Force -Confirm:$false
+        Remove-AzKeyVaultManagedStorageAccount -Force -Confirm:$false
 }
 
 <#
@@ -290,7 +290,7 @@ function Initialize-CertificateTest
 {
     $keyVault = Get-KeyVault
     $certificatePattern = Get-CertificateName '*'
-    Get-AzureKeyVaultCertificate $keyVault  | Where-Object {$_.Name -like $certificatePattern}  | Remove-AzureKeyVaultCertificate -Force
+    Get-AzKeyVaultCertificate $keyVault  | Where-Object {$_.Name -like $certificatePattern}  | Remove-AzKeyVaultCertificate -Force
 }
 
 <#
@@ -301,7 +301,7 @@ function Initialize-ManagedStorageAccountTest
 {
     $keyVault = Get-KeyVault
     $managedStorageAccountPattern = Get-ManagedStorageAccountName '*'
-    Get-AzureKeyVaultManagedStorageAccount $keyVault  | Where-Object {$_.AccountName -like $managedStorageAccountPattern}  | Remove-AzureKeyVaultManagedStorageAccount -Force
+    Get-AzKeyVaultManagedStorageAccount $keyVault  | Where-Object {$_.AccountName -like $managedStorageAccountPattern}  | Remove-AzKeyVaultManagedStorageAccount -Force
 }
 
 <#
@@ -328,11 +328,11 @@ function Cleanup-Key ([string]$keyName)
   {
     $keyVault = Get-KeyVault
     Write-Debug "Removing key with name $_ in vault $keyVault"
-    $catch = Remove-AzureKeyVaultKey $keyVault $keyName -Force -Confirm:$false
+    $catch = Remove-AzKeyVaultKey $keyVault $keyName -Force -Confirm:$false
     if($global:softDeleteEnabled -eq $true)
     {
       Wait-ForDeletedKey $keyVault $keyName
-      Remove-AzureKeyVaultKey $keyVault $keyName -Force -Confirm:$false -InRemovedState
+      Remove-AzKeyVaultKey $keyVault $keyName -Force -Confirm:$false -InRemovedState
     }
   }
   catch {
@@ -352,11 +352,11 @@ function Cleanup-Secret ([string]$secretName)
   {
     $keyVault = Get-KeyVault
     Write-Debug "Removing secret with name $_ in vault $keyVault"
-    $catch = Remove-AzureKeyVaultSecret $keyVault $secretName -Force -Confirm:$false
+    $catch = Remove-AzKeyVaultSecret $keyVault $secretName -Force -Confirm:$false
     if($global:softDeleteEnabled -eq $true)
     {
       Wait-ForDeletedSecret $keyVault $secretName
-      Remove-AzureKeyVaultSecret $keyVault $secretName -Force -Confirm:$false -InRemovedState
+      Remove-AzKeyVaultSecret $keyVault $secretName -Force -Confirm:$false -InRemovedState
     }
   }
   catch {
@@ -396,11 +396,11 @@ function Cleanup-SingleCertificateTest
          {
             $keyVault = Get-KeyVault
             Write-Debug "Removing certificate with name $_ in vault $keyVault"
-            $catch = Remove-AzureKeyVaultCertificate $keyVault $_ -Force -Confirm:$false
+            $catch = Remove-AzKeyVaultCertificate $keyVault $_ -Force -Confirm:$false
 		    if($global:softDeleteEnabled -eq $true)
 		    {
 			    Wait-ForDeletedCertificate $keyVault $_
-			    Remove-AzureKeyVaultCertificate $keyVault $_ -Force -Confirm:$false -InRemovedState
+			    Remove-AzKeyVaultCertificate $keyVault $_ -Force -Confirm:$false -InRemovedState
 		    }
          }
          catch 
@@ -424,7 +424,7 @@ function Wait-ForDeletedKey ([string] $vault, [string] $keyName)
 		$ErrorActionPreference = "Stop"
 		try
 		{
-			$key = Get-AzureKeyVaultKey -VaultName $vault -Name $keyName -InRemovedState
+			$key = Get-AzKeyVaultKey -VaultName $vault -Name $keyName -InRemovedState
 		}
 		catch
 		{
@@ -451,7 +451,7 @@ function Wait-ForDeletedSecret ([string] $vault, [string] $secretName)
 	do {
 		try
 		{
-			$secret = Get-AzureKeyVaultSecret -VaultName $vault -Name $secretName -InRemovedState
+			$secret = Get-AzKeyVaultSecret -VaultName $vault -Name $secretName -InRemovedState
 		}
 		catch
 		{
@@ -475,7 +475,7 @@ function Wait-ForDeletedCertificate ([string] $vault, [string] $certName)
 	do {
 		try
 		{
-			$cert = Get-AzureKeyVaultCertificate -VaultName $vault -Name $certName -InRemovedState
+			$cert = Get-AzKeyVaultCertificate -VaultName $vault -Name $certName -InRemovedState
 		}
 		catch
 		{
@@ -502,7 +502,7 @@ function Cleanup-SingleManagedStorageAccountTest
          {
             $keyVault = Get-KeyVault
             Write-Debug "Removing managed storage account with name $_ in vault $keyVault"
-            $catch = Remove-AzureKeyVaultManagedStorageAccount $keyVault $_ -Force -Confirm:$false
+            $catch = Remove-AzKeyVaultManagedStorageAccount $keyVault $_ -Force -Confirm:$false
          }
          catch 
          {

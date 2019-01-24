@@ -124,5 +124,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-NetworkInterfaceTapConfigurationCRUD"));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestNetworkInterfaceVmss()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceVmss");
+        }
     }
 }
