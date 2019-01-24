@@ -21,6 +21,7 @@
 
 ## Version 1.1.0
 * Update incorrect online help URLs
+* Add ResourceId parameter to Get-AzNetworkInterface
 
 ## Version 1.0.0
 * General availability of `Az.Network` module
