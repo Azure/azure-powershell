@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Stop-AzureRmLogicAppRun command to cancel logic app run
+        /// Test Stop-AzLogicAppRun command to cancel logic app run
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

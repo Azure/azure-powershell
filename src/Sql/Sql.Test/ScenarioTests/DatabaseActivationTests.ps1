@@ -28,13 +28,13 @@ function Test-DatabasePauseResume
 	$databaseName = Get-DatabaseName
 	$collationName = "SQL_Latin1_General_CP1_CI_AS"
 	$maxSizeBytes = 250GB
-	$dwdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+	$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 		-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100
 
 	try
 	{
 		# Pause the database. Make sure the database specs remain the same and its Status is Paused.
-		$dwdb2 = Suspend-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
+		$dwdb2 = Suspend-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
 		Assert-AreEqual $dwdb2.DatabaseName $databaseName
 		Assert-AreEqual $dwdb2.MaxSizeBytes $maxSizeBytes
 		Assert-AreEqual $dwdb2.Edition DataWarehouse
@@ -43,7 +43,7 @@ function Test-DatabasePauseResume
 		Assert-AreEqual $dwdb2.Status "Paused"
 		
 		# Resume the database. Make sure the database specs remain the same and its Status is Online.
-		$job = Resume-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -AsJob
+		$job = Resume-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -AsJob
 		$job | Wait-Job
 		$dwdb3 = $job.Output
 
@@ -79,12 +79,12 @@ function Test-DatabasePauseResumePiped
 		$databaseName = Get-DatabaseName
 		$collationName = "SQL_Latin1_General_CP1_CI_AS"
 		$maxSizeBytes = 250GB
-		$dwdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 			-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100
 
 
 		# Pause the database. Make sure the database specs remain the same and its Status is Paused.
-		$job = $dwdb | Suspend-AzureRmSqlDatabase -AsJob
+		$job = $dwdb | Suspend-AzSqlDatabase -AsJob
 		$job | Wait-Job
 		$dwdb2 = $job.Output
 
@@ -96,7 +96,7 @@ function Test-DatabasePauseResumePiped
 		Assert-AreEqual $dwdb2.Status "Paused"
 		
 		# Resume the database. Make sure the database specs remain the same and its Status is Online.
-		$dwdb3 = $dwdb2 | Resume-AzureRmSqlDatabase
+		$dwdb3 = $dwdb2 | Resume-AzSqlDatabase
 		Assert-AreEqual $dwdb3.DatabaseName $databaseName
 		Assert-AreEqual $dwdb3.MaxSizeBytes $maxSizeBytes
 		Assert-AreEqual $dwdb3.Edition DataWarehouse

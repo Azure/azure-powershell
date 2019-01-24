@@ -23,7 +23,6 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {

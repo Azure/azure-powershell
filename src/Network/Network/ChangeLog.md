@@ -18,6 +18,7 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Update incorrect online help URLs
 
 ## Version 1.0.0
 * General availability of `Az.Network` module
@@ -47,3 +48,4 @@
         - New-AzApplicationGatewaySslCertificate
         - Set-AzApplicationGatewaySslCertificate
     - New-AzApplicationGateway cmdlet updated with optional parameter -UserAssignedIdentityId, -UserAssignedIdentity
+* Add MaxCapacity property in ApplicationGatewayAutoscaleConfiguration

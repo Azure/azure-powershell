@@ -252,5 +252,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineManagedDisk");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineReimage()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineReimage");
+        }
     }
 }
