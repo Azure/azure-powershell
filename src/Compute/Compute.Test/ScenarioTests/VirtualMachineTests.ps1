@@ -3472,19 +3472,19 @@ function Test-VirtualMachineReimage
         # Common
         $loc = Get-ComputeVMLocation;
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_DS1_v2';
         $vmname = 'vm' + $rgname;
 
         # NRP
-        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
         $pubipId = $pubip.Id;
-        $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
         $nicId = $nic.Id;
 
         # OS & Image
@@ -3494,21 +3494,21 @@ function Test-VirtualMachineReimage
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
 
-        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize `
-             | Add-AzureRmVMNetworkInterface -Id $nicId -Primary `
-             | Set-AzureRmVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred `
-             | Set-AzureRmVMOSDisk -DiffDiskSetting "Local" -Caching 'ReadOnly' -CreateOption FromImage;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize `
+             | Add-AzVMNetworkInterface -Id $nicId -Primary `
+             | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred `
+             | Set-AzVMOSDisk -DiffDiskSetting "Local" -Caching 'ReadOnly' -CreateOption FromImage;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
-        $imgRef | Set-AzureRmVMSourceImage -VM $p | New-AzureRmVM -ResourceGroupName $rgname -Location $loc;
+        $imgRef | Set-AzVMSourceImage -VM $p | New-AzVM -ResourceGroupName $rgname -Location $loc;
 
         # Get VM
-        $vm = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
+        $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
         $vm_output = $vm | Out-String;
         Write-Verbose($vm_output);
 
         Invoke-AzVMReimage -ResourceGroupName $rgname -Name $vmname -TempDisk;
-        $vm = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
+        $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
     }
     finally
     {

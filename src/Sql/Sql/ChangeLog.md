@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.0
 * Update incorrect online help URLs
 * Updated parameter description for LicenseType parameter with possible values
 * Fix for updating managed instance identity not working when it is the only updated property
