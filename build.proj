@@ -273,7 +273,7 @@ $(PackageDirectory)/$(Configuration)/**/System.Text.Encodings.Web.dll" />
 
     <!-- Azure -->
     <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
-      <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*PowerShell*Cmdlets*.dll" Exclude="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*PowerShell*Cmdlets*Test*.dll" />
+      <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*PowerShell*Cmdlets*.dll" Exclude="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*PowerShell*Cmdlets*.Test.dll" />
     </ItemGroup>
 
     <Message Importance="high" Text="$(PackageDirectory)\$(Configuration) does not contains any files to sign. Code sign will skip." Condition="'@(DelaySignedAssembliesToSign)' == ''" />
