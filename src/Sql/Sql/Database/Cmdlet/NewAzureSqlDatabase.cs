@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <summary>
         /// Gets or sets the compute model for Azure Sql database
         /// </summary>
-        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false,
             HelpMessage="The compute model for Azure Sql database")]
         [PSArgumentCompleter(
             "Preprovisioned",
