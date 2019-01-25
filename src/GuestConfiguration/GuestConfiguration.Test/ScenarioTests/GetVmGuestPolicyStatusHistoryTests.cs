@@ -36,28 +36,28 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VmNameScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmVMGuestPolicyStatusHistory-VmNameScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatusHistory-VmNameScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InitiativeIdScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmVMGuestPolicyStatusHistory-InitiativeIdScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatusHistory-InitiativeIdScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InitiativeNameScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmVMGuestPolicyStatusHistory-InitiativeNameScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatusHistory-InitiativeNameScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ShowOnlyChangeSwitchVmNameScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmVMGuestPolicyStatusHistory-ShowOnlyChangeSwitch-VmNameScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatusHistory-ShowOnlyChangeSwitch-VmNameScope");
         }
     }
 }

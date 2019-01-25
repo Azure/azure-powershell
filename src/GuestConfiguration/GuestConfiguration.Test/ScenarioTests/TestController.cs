@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
                 _helper.SetupModules(
                     AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath(@"AzureRM.GuestConfiguration.psd1"),
+                    _helper.GetRMModulePath(@"Az.GuestConfiguration.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1");
 

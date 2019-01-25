@@ -16,10 +16,10 @@
 .SYNOPSIS
 Get guest configuration policy status history by Vm name scope
 #>
-function Get-AzureRmVMGuestPolicyStatusHistory-VmNameScope
+function Get-AzVMGuestPolicyStatusHistory-VmNameScope
 {
-	$rgName = "VivsGL"
-	$vmName = "VivsGL0"
+	$rgName = "vivga"
+	$vmName = "vivga0"
 
     $historicalStatuses = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName $rgName -VMName $vmName
 	Assert-NotNull $historicalStatuses
@@ -30,11 +30,11 @@ function Get-AzureRmVMGuestPolicyStatusHistory-VmNameScope
 .SYNOPSIS
 Get guest configuration policy status history by Initiative id scope
 #>
-function Get-AzureRmVMGuestPolicyStatusHistory-InitiativeIdScope
+function Get-AzVMGuestPolicyStatusHistory-InitiativeIdScope
 {
-	$rgName = "VivsGL"
-	$vmName = "VivsGL0"
-	$initiativeId = "/providers/Microsoft.Authorization/policySetDefinitions/3fa7cbf5-c0a4-4a59-85a5-cca4d996d5a6"
+	$rgName = "vivga"
+	$vmName = "vivga0"
+	$initiativeId = "/providers/Microsoft.Authorization/policySetDefinitions/25ef9b72-4af2-4501-acd1-fc814e73dde1"
 
     $historicalStatuses = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName $rgName -VMName $vmName -InitiativeId $initiativeId
 	Assert-NotNull $historicalStatuses
@@ -45,11 +45,11 @@ function Get-AzureRmVMGuestPolicyStatusHistory-InitiativeIdScope
 .SYNOPSIS
 Get guest configuration policy status history by Initiative name scope
 #>
-function Get-AzureRmVMGuestPolicyStatusHistory-InitiativeNameScope
+function Get-AzVMGuestPolicyStatusHistory-InitiativeNameScope
 {
-	$rgName = "VivsGL"
-	$vmName = "VivsGL0"
-	$initiativeName = "3fa7cbf5-c0a4-4a59-85a5-cca4d996d5a6"
+	$rgName = "vivga"
+	$vmName = "vivga0"
+	$initiativeName = "25ef9b72-4af2-4501-acd1-fc814e73dde1"
 
     $historicalStatuses = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName
 	Assert-NotNull $historicalStatuses
@@ -60,10 +60,10 @@ function Get-AzureRmVMGuestPolicyStatusHistory-InitiativeNameScope
 .SYNOPSIS
 Get guest configuration policy by vmName scope, using ShowOnlyChange switch
 #>
-function Get-AzureRmVMGuestPolicyStatusHistory-ShowOnlyChangeSwitch-VmNameScope
+function Get-AzVMGuestPolicyStatusHistory-ShowOnlyChangeSwitch-VmNameScope
 {
-	$rgName = "VivsGL"
-	$vmName = "VivsGL0"
+	$rgName = "vivga"
+	$vmName = "vivga0"
 
     $historicalStatuses = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName $rgName -VMName $vmName -ShowOnlyChange
 	Assert-NotNull $historicalStatuses
