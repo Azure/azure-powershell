@@ -157,25 +157,15 @@
     </PropertyGroup>
     <Exec Command="dotnet $(BuildAction) $(RepoArtifacts)Azure.PowerShell.sln -c $(Configuration)" />
 
-    <!-- Publish static analysis for use cross-plat -->
+    <!-- Publish static analysis for use cross-platform -->
     <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration) -f netcoreapp2.1" />
 
     <!-- Delete powershell runtime files -->
-    <ItemGroup>
-      <RuntimeDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.Powershell.*.dll" />
-      <RuntimeDlls Include="$(PackageDirectory)/$(Configuration)/**/System*.dll" Exclude="
-$(PackageDirectory)/$(Configuration)/**/System.Security.Cryptography.ProtectedData.dll;
-$(PackageDirectory)/$(Configuration)/**/System.Configuration.ConfigurationManager.dll;
-$(PackageDirectory)/$(Configuration)/**/System.Runtime.CompilerServices.Unsafe.dll;
-$(PackageDirectory)/$(Configuration)/**/System.IO.FileSystem.AccessControl.dll;
-$(PackageDirectory)/$(Configuration)/**/System.Buffers.dll;
-$(PackageDirectory)/$(Configuration)/**/System.Text.Encodings.Web.dll" />
-      <RuntimeDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.VisualBasic.dll" />
-      <RuntimeDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.CSharp.dll" />
-      <RuntimeDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.CodeAnalysis.dll" />
-      <RuntimeDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.CodeAnalysis.CSharp.dll" />
-    </ItemGroup>
-    <Delete Files="@(RuntimeDlls)" />
+    <PropertyGroup>
+      <RuntimeDllsIncludeList>Microsoft.Powershell.*.dll,System*.dll,Microsoft.VisualBasic.dll,Microsoft.CSharp.dll,Microsoft.CodeAnalysis.dll,Microsoft.CodeAnalysis.CSharp.dll</RuntimeDllsIncludeList>
+      <RuntimeDllsExcludeList>System.Security.Cryptography.ProtectedData.dll,System.Configuration.ConfigurationManager.dll,System.Runtime.CompilerServices.Unsafe.dll,System.IO.FileSystem.AccessControl.dll,System.Buffers.dll,System.Text.Encodings.Web.dll</RuntimeDllsExcludeList>
+    </PropertyGroup>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(PackageDirectory)/$(Configuration) -Recurse -Include $(RuntimeDllsIncludeList) -Exclude $(RuntimeDllsExcludeList) | Remove-Item -Recurse -Force -Confirm:$false&quot;" />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;" />
   </Target>
