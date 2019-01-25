@@ -11,7 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace RepoTasks.CmdletsForTest.Models
+namespace CmdletsForTest.Models
 {
     public class PsDummyOutputTwo
     {

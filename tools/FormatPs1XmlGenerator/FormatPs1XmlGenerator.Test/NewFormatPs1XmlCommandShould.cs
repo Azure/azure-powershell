@@ -11,7 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace RepoTasks.Cmdlets.Tests
+namespace FormatPs1XmlGenerator.Test
 {
     using System;
     using System.Linq;
@@ -21,12 +21,11 @@ namespace RepoTasks.Cmdlets.Tests
     using System.IO;
     using System.Collections.Generic;
     using System.Xml.Linq;
-    using RemoteWorker;
 
     public class NewFormatPs1XmlCommandShould
     {
         private const string CmdletName = "New-FormatPs1Xml";
-        private const string ExpectedAssemblyName = "RepoTasks.CmdletsForTest";
+        private const string ExpectedAssemblyName = "CmdletsForTest";
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

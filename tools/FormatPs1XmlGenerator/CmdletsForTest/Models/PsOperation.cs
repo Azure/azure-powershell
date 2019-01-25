@@ -11,15 +11,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace RepoTasks.CmdletsForTest
-{
-    using System.Management.Automation;
-    using Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
-    [Cmdlet(VerbsDiagnostic.Test, "DummyTwo", SupportsShouldProcess = true)]
-    [OutputType(typeof(PsDummyOutputTwo))]
-    public class TestDummyTwoCommand : PSCmdlet
+namespace CmdletsForTest.Models
+{
+    using System.Net;
+    public class PsOperation
     {
-        // empty
+        [Ps1Xml(Label = "RequestId", Target = ViewControl.All, Position = 1, GroupByThis = true)]
+        public string RequestId { get; set; }
+
+        public HttpStatusCode StatusCode { get; set; }
     }
 }

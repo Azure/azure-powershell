@@ -55,7 +55,7 @@ RequiredModules = @()
 #FormatsToProcess = ''
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\RepoTasks.CmdletsForTest.dll')
+NestedModules = @('.\CmdletsForTest.dll')
 
 # Functions to export from this module
 # FunctionsToExport = @()
