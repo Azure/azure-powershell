@@ -12,15 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Kusto.Models;
 using Microsoft.Azure.Commands.Kusto.Utilities;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.Kusto.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Kusto
 {
+    [CmdletOutputBreakingChange(typeof(PSKustoCluster), NewOutputProperties = new String[] { "DataIngestionUri", "Uri", "Capacity"})]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", DefaultParameterSetName = ParameterSet),
         OutputType(typeof(PSKustoCluster))]
     public class GetAzureRmKustoCluster : KustoCmdletBase

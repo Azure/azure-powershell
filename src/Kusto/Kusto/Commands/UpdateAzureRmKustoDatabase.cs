@@ -19,10 +19,11 @@ using Microsoft.Azure.Commands.Kusto.Properties;
 using Microsoft.Azure.Commands.Kusto.Utilities;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Kusto.Commands
 {
-
+    [CmdletOutputBreakingChange(typeof(PSKustoDatabase), DeprecatedOutputProperties = new String[] {"ETag"})]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoDatabase", DefaultParameterSetName = CmdletParametersSet, 
          SupportsShouldProcess = true),
      OutputType(typeof(PSKustoDatabase))]

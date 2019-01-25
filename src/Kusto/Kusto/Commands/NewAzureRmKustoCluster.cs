@@ -12,15 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Kusto.Models;
 using Microsoft.Azure.Commands.Kusto.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Kusto
 {
+    [CmdletOutputBreakingChange(typeof(PSKustoCluster), NewOutputProperties = new String[] { "DataIngestionUri", "Uri", "Capacity" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", SupportsShouldProcess = true),
         OutputType(typeof(PSKustoCluster))]
     public class NewKustoCluster : KustoCmdletBase
@@ -55,6 +58,12 @@ namespace Microsoft.Azure.Commands.Kusto
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The instance number of the VM.")]
+        [ValidateNotNullOrEmpty]
+        public int? Capacity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Name of the Tier used to create the cluster")]
         [PSArgumentCompleter("Standard")]
         public string Tier { get; set; }
@@ -69,6 +78,11 @@ namespace Microsoft.Azure.Commands.Kusto
         {
             if (ShouldProcess(Name, Resources.CreateNewKustoCluster))
             {
+                if (!string.IsNullOrEmpty(Tier) && string.IsNullOrEmpty(Sku))
+                {
+                    throw new ArgumentNullException("Sku", "Sku can not be null when Tier is defined");
+                }
+
                 try
                 {
                     if (KustoClient.GetCluster(ResourceGroupName, Name) != null)
@@ -95,7 +109,7 @@ namespace Microsoft.Azure.Commands.Kusto
                     }
                 }
 
-                var createdCluster = KustoClient.CreateOrUpdateCluster(ResourceGroupName, Name, Location, Sku, Tag, null);
+                var createdCluster = KustoClient.CreateOrUpdateCluster(ResourceGroupName, Name, Location, Sku, Capacity, Tag, null);
                 WriteObject(createdCluster);
             }
         }

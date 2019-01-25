@@ -11,14 +11,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Kusto.Models;
 using Microsoft.Azure.Commands.Kusto.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Kusto.Commands
 {
-
+    [CmdletOutputBreakingChange(typeof(PSKustoDatabase), DeprecatedOutputProperties = new String[] {"ETag"})]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoDatabase",
          DefaultParameterSetName = ParameterSet),
      OutputType(typeof(PSKustoDatabase))]

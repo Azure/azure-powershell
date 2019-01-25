@@ -11,6 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System;
 using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Kusto.Models;
@@ -18,9 +19,11 @@ using Microsoft.Azure.Commands.Kusto.Properties;
 using Microsoft.Azure.Commands.Kusto.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Kusto.Commands
 {
+    [CmdletOutputBreakingChange(typeof(PSKustoDatabase), DeprecatedOutputProperties = new String[] {"ETag"})]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoDatabase", DefaultParameterSetName = CmdletParametersSet, SupportsShouldProcess = true),
      OutputType(typeof(PSKustoDatabase))]
     public class NewAzureRmKustoDatabase : KustoCmdletBase
@@ -79,7 +82,7 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
             HelpMessage = "Kusto cluster object.")]
         [ValidateNotNullOrEmpty]
         public PSKustoCluster InputObject { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             string resourceGroupName = ResourceGroupName;
