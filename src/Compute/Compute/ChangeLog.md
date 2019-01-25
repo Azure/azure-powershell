@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* AEM extension: Add support for UltraSSD and P60,P70 and P80 disks
 
 ## Version 1.1.0
 * Name is now optional in ID parameter set for Restart/Start/Stop/Remove/Set-AzVM and Save-AzVMImage
