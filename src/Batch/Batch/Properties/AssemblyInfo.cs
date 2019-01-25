@@ -27,4 +27,6 @@ using System.Runtime.InteropServices;
 [assembly: Guid("ed102280-3577-49bf-93dd-11b6e3a44a57")]
 [assembly: AssemblyVersion("1.0.0")]
 [assembly: AssemblyFileVersion("1.0.0")]
+#if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.Batch.Test")]
+#endif

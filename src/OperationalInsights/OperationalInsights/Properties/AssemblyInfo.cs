@@ -27,4 +27,6 @@ using System.Runtime.InteropServices;
 [assembly: Guid("5be35a94-c20f-4659-aa29-9b9aebcfaf36")]
 [assembly: AssemblyVersion("1.0.0")]
 [assembly: AssemblyFileVersion("1.0.0")]
+#if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Test")]
+#endif

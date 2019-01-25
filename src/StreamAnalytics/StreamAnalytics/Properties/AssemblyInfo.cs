@@ -27,4 +27,6 @@ using System.Runtime.InteropServices;
 [assembly: Guid("9188beb8-68c3-404a-91e2-6f287f162a52")]
 [assembly: AssemblyVersion("1.0.0")]
 [assembly: AssemblyFileVersion("1.0.0")]
+#if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Test")]
+#endif
