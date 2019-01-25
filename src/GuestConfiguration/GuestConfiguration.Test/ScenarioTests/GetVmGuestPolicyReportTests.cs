@@ -36,28 +36,28 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VmNameScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmVMGuestPolicyReport-VmNameScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyReport-VmNameScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InitiativeIdScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmVMGuestPolicyReport-InitiativeIdScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyReport-InitiativeIdScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InitiativeNameScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmVMGuestPolicyReport-InitiativeNameScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyReport-InitiativeNameScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReportIdScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmVMGuestPolicyReport-ReportIdScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyReport-ReportIdScope");
         }
     }
 }

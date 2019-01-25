@@ -16,10 +16,10 @@
 .SYNOPSIS
 Get guest configuration policy report by Vm name scope
 #>
-function Get-AzureRmVMGuestPolicyReport-VmNameScope
+function Get-AzVMGuestPolicyReport-VmNameScope
 {
-	$rgName = "VivsGL"
-	$vmName = "VivsGL0"
+	$rgName = "vivga"
+	$vmName = "vivga0"
 
     $reports = Get-AzVMGuestPolicyReport -ResourceGroupName $rgName -VMName $vmName
 	Assert-NotNull $reports
@@ -30,11 +30,11 @@ function Get-AzureRmVMGuestPolicyReport-VmNameScope
 .SYNOPSIS
 Get guest configuration policy report by Initiative id scope
 #>
-function Get-AzureRmVMGuestPolicyReport-InitiativeIdScope
+function Get-AzVMGuestPolicyReport-InitiativeIdScope
 {
-	$rgName = "VivsGL"
-	$vmName = "VivsGL0"
-	$initiativeId = "/providers/Microsoft.Authorization/policySetDefinitions/3fa7cbf5-c0a4-4a59-85a5-cca4d996d5a6"
+	$rgName = "vivga"
+	$vmName = "vivga0"
+	$initiativeId = "/providers/Microsoft.Authorization/policySetDefinitions/25ef9b72-4af2-4501-acd1-fc814e73dde1"
 
     $reports = Get-AzVMGuestPolicyReport -ResourceGroupName $rgName -VMName $vmName -InitiativeId $initiativeId
 	Assert-NotNull $reports
@@ -45,11 +45,11 @@ function Get-AzureRmVMGuestPolicyReport-InitiativeIdScope
 .SYNOPSIS
 Get guest configuration policy report by Initiative name scope
 #>
-function Get-AzureRmVMGuestPolicyReport-InitiativeNameScope
+function Get-AzVMGuestPolicyReport-InitiativeNameScope
 {
-	$rgName = "VivsGL"
-	$vmName = "VivsGL0"
-	$initiativeName = "3fa7cbf5-c0a4-4a59-85a5-cca4d996d5a6"
+	$rgName = "vivga"
+	$vmName = "vivga0"
+	$initiativeName = "25ef9b72-4af2-4501-acd1-fc814e73dde1"
 
     $reports = Get-AzVMGuestPolicyReport -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName
 	Assert-NotNull $reports
@@ -60,11 +60,16 @@ function Get-AzureRmVMGuestPolicyReport-InitiativeNameScope
 .SYNOPSIS
 Get guest configuration policy by reportId scope
 #>
-function Get-AzureRmVMGuestPolicyReport-ReportIdScope
+function Get-AzVMGuestPolicyReport-ReportIdScope
 {
-	$rgName = "VivsGL"
-	$vmName = "VivsGL0"
-	$reportId= "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/VivsGL/providers/Microsoft.Compute/virtualMachines/VivsGL0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/PasswordMustMeetComplexityRequirements/reports/7421bae4-60f0-4712-a45f-c9c960ffc75c"
+	$rgName = "vivga"
+	$vmName = "vivga0"
+	$initiativeName = "25ef9b72-4af2-4501-acd1-fc814e73dde1"
+	$reports = Get-AzVMGuestPolicyReport -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName
+	Assert-NotNull $reports
+	Assert-True { $reports.Count -gt 0 }
+
+	$reportId= $reports[0].LatestReportId;
 
     $report = Get-AzVMGuestPolicyReport -ReportId $reportId
 	Assert-NotNull $report
