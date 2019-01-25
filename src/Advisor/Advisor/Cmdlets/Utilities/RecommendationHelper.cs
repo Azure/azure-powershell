@@ -36,16 +36,6 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         private const int RESOURCEGROUP_VALUE_POSITION = 4;
 
         /// <summary>
-        /// Position of recommendation-Id string in resource ID
-        /// </summary>
-        private const int RECOMMENDATION_STRING_POSITION = 11;
-
-        /// <summary>
-        /// Position of recommendation-Id value in resource ID
-        /// </summary>
-        private const int RECOMMENDATION_VALUE_POSITION = 12;
-
-        /// <summary>
         /// Filter recommendations by given category and resourceGroup name.
         /// </summary>
         /// <param name="recListTobeFiltered">List to be filtered</param>
@@ -205,9 +195,9 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
             string recommendationId = string.Empty;
             string[] resourceIdSplit = resourceID.Split('/');
 
-            if (resourceIdSplit[RECOMMENDATION_STRING_POSITION].Equals("recommendations"))
+            if (resourceIdSplit[resourceIdSplit.Length - 2].Equals("recommendations"))
             {
-                recommendationId = resourceIdSplit[RECOMMENDATION_VALUE_POSITION];
+                recommendationId = resourceIdSplit[resourceIdSplit.Length - 1];
             }
 
             return recommendationId;
