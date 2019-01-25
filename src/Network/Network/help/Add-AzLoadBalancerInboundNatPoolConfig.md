@@ -9,6 +9,7 @@ schema: 2.0.0
 # Add-AzLoadBalancerInboundNatPoolConfig
 
 ## SYNOPSIS
+Adds an inbound NAT pool to a load balancer.
 
 ## SYNTAX
 
@@ -30,6 +31,7 @@ Add-AzLoadBalancerInboundNatPoolConfig -LoadBalancer <PSLoadBalancer> -Name <Str
 ```
 
 ## DESCRIPTION
+The **Add-AzLoadBalancerInboundNatPoolConfig** cmdlet adds an inbound NAT pool to a load balancer.
 
 ## EXAMPLES
 

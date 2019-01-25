@@ -82,6 +82,13 @@ if($PSEdition -eq 'Core' -and (Test-Path $netCorePath -ErrorAction Ignore))
 
 %IMPORTED-DEPENDENCIES%
 
+if (Test-Path -Path "$PSScriptRoot\PostImportScripts" -ErrorAction Ignore)
+{
+    Get-ChildItem "$PSScriptRoot\PostImportScripts" -ErrorAction Stop | ForEach-Object {
+        . $_.FullName
+    }
+}
+
 $FilteredCommands = %DEFAULTRGCOMMANDS%
 
 if ($Env:ACC_CLOUD -eq $null)
