@@ -372,5 +372,19 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
 
             return sku;
         }
+
+        public string GetServerlessSkuNameFromOtherParams(string edition, int vcore, string computeGeneration)
+        {
+            var shortEditions = new Dictionary<string, string>()
+            {
+                { "GeneralPurpose", "GP"},
+                { "BusinessCritical", "BC"},
+                { "Hyperscale", "HS"}
+            };
+            string shortEdition;
+            shortEditions.TryGetValue(edition, out shortEdition);
+
+            return string.Format(@"{0}_S_{1}_{2}", shortEdition, computeGeneration, vcore);
+        }
     }
 }

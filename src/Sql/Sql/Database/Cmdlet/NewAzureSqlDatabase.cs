@@ -167,6 +167,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public int? AutoPauseDelay { get; set; }
 
         /// <summary>
+        /// Gets or sets the compute model for Azure Sql database
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage="The compute model for Azure Sql database")]
+        [PSArgumentCompleter(
+            "Preprovisioned",
+            "Serverless")]
+        public string ComputeModel { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -240,6 +250,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 newDbModel.Capacity = VCore;
                 newDbModel.Family = ComputeGeneration;
                 newDbModel.AutoPauseDelay = AutoPauseDelay;
+                // change sku name for serverless dbs
+                if (ComputeModel == "Serverless")
+                {
+                    newDbModel.SkuName = ModelAdapter.GetServerlessSkuNameFromOtherParams(Edition, VCore, ComputeGeneration);
+                }
             }
 
             dbCreateUpdateModel.Database = newDbModel;
