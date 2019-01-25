@@ -27,4 +27,6 @@ using System.Runtime.InteropServices;
 [assembly: Guid("9e93b969-6685-4a67-b07d-cfd5ebd0091e")]
 [assembly: AssemblyVersion("1.0.0")]
 [assembly: AssemblyFileVersion("1.0.0")]
+#if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.Test")]
+#endif

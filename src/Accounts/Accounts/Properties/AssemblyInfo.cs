@@ -45,5 +45,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyVersion("1.1.0")]
 [assembly: AssemblyFileVersion("1.1.0")]
+#if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.Accounts.Test")]
+#endif
 [assembly: CLSCompliant(false)]

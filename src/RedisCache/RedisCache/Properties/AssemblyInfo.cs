@@ -27,4 +27,6 @@ using System.Runtime.InteropServices;
 [assembly: Guid("6D663ED9-C1A5-438F-B88A-D709562538C6")]
 [assembly: AssemblyVersion("1.0.0")]
 [assembly: AssemblyFileVersion("1.0.0")]
+#if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.RedisCache.Test")]
+#endif
