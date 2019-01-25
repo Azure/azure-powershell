@@ -162,21 +162,20 @@
 
     <!-- Delete powershell runtime files -->
     <ItemGroup>
-      <RedundantDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.Powershell.*.dll" />
-      <RedundantDlls Include="$(PackageDirectory)/$(Configuration)/**/System*.dll" Exclude="
+      <RuntimeDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.Powershell.*.dll" />
+      <RuntimeDlls Include="$(PackageDirectory)/$(Configuration)/**/System*.dll" Exclude="
 $(PackageDirectory)/$(Configuration)/**/System.Security.Cryptography.ProtectedData.dll;
 $(PackageDirectory)/$(Configuration)/**/System.Configuration.ConfigurationManager.dll;
 $(PackageDirectory)/$(Configuration)/**/System.Runtime.CompilerServices.Unsafe.dll;
 $(PackageDirectory)/$(Configuration)/**/System.IO.FileSystem.AccessControl.dll;
 $(PackageDirectory)/$(Configuration)/**/System.Buffers.dll;
 $(PackageDirectory)/$(Configuration)/**/System.Text.Encodings.Web.dll" />
-      <RedundantDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.VisualBasic.dll" />
-      <RedundantDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.CSharp.dll" />
-      <RedundantDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.CodeAnalysis.dll" />
-      <RedundantDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.CodeAnalysis.CSharp.dll" />
+      <RuntimeDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.VisualBasic.dll" />
+      <RuntimeDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.CSharp.dll" />
+      <RuntimeDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.CodeAnalysis.dll" />
+      <RuntimeDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.CodeAnalysis.CSharp.dll" />
     </ItemGroup>
-    <!-- https://stackoverflow.com/a/48306223/294804 -->
-    <Delete Files="@(RedundantDlls->'%(FullPath)')" StandardOutputImportance="low" />
+    <Delete Files="@(RuntimeDlls)" />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;" />
   </Target>
