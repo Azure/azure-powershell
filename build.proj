@@ -161,7 +161,8 @@
       <BuildAction Condition="'$(CodeSign)' == 'false'">build</BuildAction>
       <BuildAction Condition="'$(CodeSign)' == 'true'">publish</BuildAction>
     </PropertyGroup>
-    <Exec Command="dotnet $(BuildAction) $(RepoArtifacts)Azure.PowerShell.sln -c $(Configuration)" />
+    <!-- https://stackoverflow.com/a/48306223/294804 -->
+    <Exec Command="dotnet $(BuildAction) $(RepoArtifacts)Azure.PowerShell.sln -c $(Configuration)" StandardOutputImportance="low" StandardErrorImportance="low" />
 
     <!-- Publish static analysis for use cross-plat -->
     <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj --no-build -c $(Configuration) -f netcoreapp2.1 -o $(RepoArtifacts)StaticAnalysis" Condition="'$(CodeSign)' == 'false'" />
