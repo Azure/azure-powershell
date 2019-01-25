@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 using System;
 using System.IO;
 using System.Security.Cryptography;
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// An implementation of the Adal token cache that stores the cache items
     /// in the DPAPI-protected file.
     /// </summary>
-    public class ProtectedFileTokenCache : TokenCache, IAzureTokenCache
+    public class ProtectedFileTokenCache : IAzureTokenCache
     {
         private static readonly string CacheFileName = Path.Combine(
 #if !NETSTANDARD
@@ -47,18 +47,39 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         IDataStore _store;
 
+        private object _tokenCache;
+
+        public object GetUserCache()
+        {
+            if (_tokenCache == null)
+            {
+                var tokenCache = new TokenCache();
+                tokenCache.SetBeforeAccess(BeforeAccessNotification);
+                tokenCache.SetAfterAccess(AfterAccessNotification);
+                _tokenCache = tokenCache;
+            }
+
+            return _tokenCache;
+        }
+
+        private TokenCache UserCache
+        {
+            get
+            {
+                return (TokenCache)GetUserCache();
+            }
+        }
+
         public byte[] CacheData
         {
             get
             {
-                return Serialize();
+                return UserCache.Serialize();
             }
 
             set
             {
-                Deserialize(value);
-                HasStateChanged = true;
-                EnsureStateSaved();
+                UserCache.Deserialize(value);
             }
         }
 
@@ -85,43 +106,33 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             EnsureCacheFile(fileName);
 
-            AfterAccess = AfterAccessNotification;
-            BeforeAccess = BeforeAccessNotification;
-        }
-
-        // Empties the persistent store.
-        public override void Clear()
-        {
-            base.Clear();
-            if (_store.FileExists(CacheFileName))
-            {
-                _store.DeleteFile(CacheFileName);
-            }
+            UserCache.SetAfterAccess(AfterAccessNotification);
+            UserCache.SetBeforeAccess(BeforeAccessNotification);
         }
 
         // Triggered right before ADAL needs to access the cache.
         // Reload the cache from the persistent store in case it changed since the last access.
         void BeforeAccessNotification(TokenCacheNotificationArgs args)
         {
-            ReadFileIntoCache();
+            ReadFileIntoCache(args: args);
         }
 
         // Triggered right after ADAL accessed the cache.
         void AfterAccessNotification(TokenCacheNotificationArgs args)
         {
             // if the access operation resulted in a cache update
-            EnsureStateSaved();
+            EnsureStateSaved(args);
         }
 
-        void EnsureStateSaved()
+        void EnsureStateSaved(TokenCacheNotificationArgs args = null)
         {
-            if (HasStateChanged)
+            if (args != null && args.HasStateChanged)
             {
-                WriteCacheIntoFile();
+                WriteCacheIntoFile(args: args);
             }
         }
 
-        private void ReadFileIntoCache(string cacheFileName = null)
+        private void ReadFileIntoCache(string cacheFileName = null, TokenCacheNotificationArgs args = null)
         {
             if(cacheFileName == null)
             {
@@ -145,14 +156,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                             _store.DeleteFile(cacheFileName);
                         }
 #else
-                        Deserialize(existingData);
+                        args.TokenCache.Deserialize(existingData);
 #endif
                     }
                 }
             }
         }
 
-        private void WriteCacheIntoFile(string cacheFileName = null)
+        private void WriteCacheIntoFile(string cacheFileName = null, TokenCacheNotificationArgs args = null)
         {
             if(cacheFileName == null)
             {
@@ -162,15 +173,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #if !NETSTANDARD
             var dataToWrite = ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser);
 #else
-            var dataToWrite = Serialize();
+            var dataToWrite = UserCache.Serialize();
 #endif
 
             lock(fileLock)
             {
-                if (HasStateChanged)
+                if (args != null && args.HasStateChanged)
                 {
                     _store.WriteFile(cacheFileName, dataToWrite);
-                    HasStateChanged =  false;
                 }
             }
         }
@@ -194,7 +204,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                             _store.DeleteFile(cacheFileName);
                         }
 #else
-                        Deserialize(existingData);
+                        try
+                        {
+                            UserCache.Deserialize(existingData);
+                        }
+                        catch (Exception ex)
+                        {
+                            string message = ex?.Message;
+                        }
 #endif
                     }
                 }
@@ -203,9 +220,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #if !NETSTANDARD
                 var dataToWrite = ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser);
 #else
-                var dataToWrite = Serialize();
+                var dataToWrite = UserCache.Serialize();
 #endif
                 _store.WriteFile(cacheFileName, dataToWrite);
+            }
+        }
+
+        public void Clear()
+        {
+            if (_store.FileExists(CacheFileName))
+            {
+                _store.DeleteFile(CacheFileName);
             }
         }
     }

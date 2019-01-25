@@ -14,16 +14,15 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 #if NETSTANDARD
-using Microsoft.Rest.Azure.Authentication;
 using Microsoft.WindowsAzure.Commands.Common;
 #endif
 using System;
 using System.Collections.Generic;
 using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -90,10 +89,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 (adalConfig, appId) => this.RenewWithCertificate(adalConfig, appId, certificateThumbprint), clientId);
         }
 
-        private AuthenticationContext GetContext(AdalConfiguration config)
+        private ConfidentialClientApplication GetConfidentialClientApplication(AdalConfiguration config, ClientCredential credential)
         {
-            string authority = config.AdEndpoint + config.AdDomain;
-            return new AuthenticationContext(authority, config.ValidateAuthority, config.TokenCache);
+            return new ConfidentialClientApplication(config.ClientId, config.AdEndpoint + config.AdDomain, config.ResourceClientUri, credential, config.TokenCache, new TokenCache());
         }
 
         private AuthenticationResult AcquireTokenWithSecret(AdalConfiguration config, string appId, SecureString appKey)
@@ -104,13 +102,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             StoreAppKey(appId, config.AdDomain, appKey);
-            var context = GetContext(config);
 #if !NETSTANDARD
             var credential = new ClientCredential(appId, appKey);
             return context.AcquireToken(config.ResourceClientUri, credential);
 #else
-            var credential = new ClientCredential(appId, ConversionUtilities.SecureStringToString(appKey));
-            return context.AcquireTokenAsync(config.ResourceClientUri, credential).ConfigureAwait(false).GetAwaiter().GetResult();
+            var context = GetConfidentialClientApplication(config, new ClientCredential(ConversionUtilities.SecureStringToString(appKey)));
+            var scopes = new string[] { config.ResourceClientUri + "/user_impersonation" };
+            var accounts = context.GetAccountsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            return context.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == appId)).ConfigureAwait(false).GetAwaiter().GetResult();
 #endif
         }
 
@@ -125,12 +124,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 throw new ArgumentException(string.Format(Resources.CertificateNotFoundInStore, thumbprint));
             }
 
-            var context = GetContext(config);
 #if !NETSTANDARD
             return context.AcquireToken(config.ResourceClientUri, new ClientAssertionCertificate(appId, certificate));
 #else
-            return context.AcquireTokenAsync(config.ResourceClientUri, new Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertionCertificate(appId, certificate))
-                          .ConfigureAwait(false).GetAwaiter().GetResult();
+            var context = GetConfidentialClientApplication(config, new ClientCredential(new ClientAssertionCertificate(certificate)));
+            var scopes = new string[] { config.ResourceClientUri + "/user_impersonation" };
+            var accounts = context.GetAccountsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            return context.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == appId)).ConfigureAwait(false).GetAwaiter().GetResult();
 #endif
         }
 
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     AuthResult = tokenRenewer(Configuration, appId);
                 }
 
-                authTokenSetter(AuthResult.AccessTokenType, AuthResult.AccessToken);
+                authTokenSetter("Bearer", AuthResult.AccessToken);
             }
 
             public string UserId { get { return appId; } }
@@ -244,4 +244,3 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         }
     }
 }
-

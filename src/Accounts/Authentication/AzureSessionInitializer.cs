@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 using System;
 using System.IO;
 using System.Diagnostics;
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #else
             public AdalSession()
             {
-                LoggerCallbackHandler.UseDefaultLogging = false;
+                Logger.DefaultLoggingEnabled = false;
             }
 
             public override TraceLevel AuthenticationLegacyTraceLevel

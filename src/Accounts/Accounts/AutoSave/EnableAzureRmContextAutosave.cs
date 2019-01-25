@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 using System.IO;
 using System.Management.Automation;
+using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -93,9 +94,9 @@ namespace Microsoft.Azure.Commands.Profile.Context
                         FileUtilities.EnsureDirectoryExists(session.TokenCacheDirectory);
 
                         diskCache = new ProtectedFileTokenCache(tokenPath, store);
-                        if (memoryCache != null && memoryCache.Count > 0)
+                        if (memoryCache != null)
                         {
-                            diskCache.Deserialize(memoryCache.Serialize());
+                            ((TokenCache)diskCache.GetUserCache()).Deserialize(((TokenCache)memoryCache.GetUserCache()).Serialize());
                         }
 
                         session.TokenCache = diskCache;

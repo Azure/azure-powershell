@@ -22,7 +22,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.IO;
 using System.Management.Automation;
 
@@ -50,10 +49,10 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
                     break;
                 case ContextModificationScope.CurrentUser:
-                    ConfirmAction(Force.IsPresent, Resources.ClearContextUserContinueMessage, 
-                        Resources.ClearContextUserProcessMessage, Resources.ClearContextUserTarget, 
+                    ConfirmAction(Force.IsPresent, Resources.ClearContextUserContinueMessage,
+                        Resources.ClearContextUserProcessMessage, Resources.ClearContextUserTarget,
                         () => ModifyContext(ClearContext),
-                        () => 
+                        () =>
                         {
                             var session = AzureSession.Instance;
                             var contextFilePath = Path.Combine(session.ARMProfileDirectory, session.ARMProfileFile);

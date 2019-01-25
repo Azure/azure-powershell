@@ -12,8 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Rest.Azure.Authentication;
+using Microsoft.Identity.Client;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
@@ -36,13 +35,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         }
 
         /// <summary>
-        /// Authenticate using certificate thumbprint from the datastore 
+        /// Authenticate using certificate thumbprint from the datastore
         /// </summary>
         /// <param name="clientId">The active directory client id for the application.</param>
         /// <param name="audience">The intended audience for authentication</param>
         /// <param name="context">The AD AuthenticationContext to use</param>
         /// <returns></returns>
-        public async Task<AuthenticationResult> AuthenticateAsync(string clientId, string audience, AuthenticationContext context)
+        public async Task<AuthenticationResult> AuthenticateAsync(string clientId, string audience)
         {
             var task = new Task<X509Certificate2>(() =>
             {
@@ -51,9 +50,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             task.Start();
             var certificate = await task.ConfigureAwait(false);
 
-            return await context.AcquireTokenAsync(
-                audience,
-                new Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertionCertificate(clientId, certificate));
+            var clientCredential = new ClientCredential(new ClientAssertionCertificate(certificate));
+            var context = new ConfidentialClientApplication(clientId, audience, clientCredential, new TokenCache(), new TokenCache());
+            return await context.AcquireTokenForClientAsync(new string[] { audience + "/user_impersonation" });
         }
     }
 }
