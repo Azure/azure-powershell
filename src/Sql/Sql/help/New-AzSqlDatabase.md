@@ -28,8 +28,9 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
 New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogCollation <String>]
  [-MaxSizeBytes <Int64>] -Edition <String> [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>]
  [-SampleName <String>] [-ZoneRedundant] [-AsJob] -VCore <Int32> -ComputeGeneration <String>
- [-LicenseType <String>] [-AutoPauseDelay <Int32>] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LicenseType <String>] [-AutoPauseDelay <Int32>] -ComputeModel <String> [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -183,6 +184,21 @@ The compute generation to assign.
 Type: System.String
 Parameter Sets: VcoreBasedDatabase
 Aliases: Family
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputeModel
+The compute model for Azure Sql database
+
+```yaml
+Type: System.String
+Parameter Sets: VcoreBasedDatabase
+Aliases:
 
 Required: True
 Position: Named

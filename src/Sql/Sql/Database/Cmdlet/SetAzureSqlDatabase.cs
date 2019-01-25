@@ -188,6 +188,20 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public int? AutoPauseDelay { get; set; }
 
         /// <summary>
+        /// Gets or sets the compute model for the Azure Sql Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Computed model of Azure Sql database, serverless or preprovisioned",
+            ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "Computed model of Azure Sql database, serverless or preprovisioned",
+            ParameterSetName = VcoreDatabaseParameterSet)]
+        [PSArgumentCompleter(
+            "Preprovisioned",
+            "Serverless")]
+        public string ComputeModel { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -240,6 +254,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Capacity = database.Capacity
             };
 
+            // check if current db is serverless
+            string databaseCurrentComputeModel = database.CurrentServiceObjectiveName.Contains("_S_") ? "Serverless" : "Preprovisioned";
+
             if (this.ParameterSetName == UpdateParameterSetName)
             {
                 newDbModel.SkuName = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition) : RequestedServiceObjectiveName;
@@ -258,6 +275,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                     newDbModel.Edition = skuTier;
                     newDbModel.Family = string.IsNullOrWhiteSpace(ComputeGeneration) ? databaseCurrentSku.Family : ComputeGeneration;
                     newDbModel.Capacity = MyInvocation.BoundParameters.ContainsKey("VCore") ? VCore : databaseCurrentSku.Capacity;
+                    string requestedComputeModel = string.IsNullOrWhiteSpace(ComputeModel) ? databaseCurrentComputeModel : ComputeModel;
+                    // change sku name for serverless
+                    if (requestedComputeModel == "Serverless")
+                    {
+                        newDbModel.SkuName = ModelAdapter.GetServerlessSkuNameFromOtherParams(newDbModel.Edition, newDbModel.Capacity.Value, newDbModel.Family);
+                    }
                 }
 
                 newEntity.Add(newDbModel);

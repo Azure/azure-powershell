@@ -18,17 +18,17 @@ Sets properties for a database, or moves an existing database into an elastic po
 Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
  [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>]
  [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-AutoPauseDelay <Int32>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ComputeModel <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
 ```
 Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
  [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-VCore <Int32>]
- [-ComputeGeneration <String>] [-LicenseType <String>] [-AutoPauseDelay <Int32>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ComputeGeneration <String>] [-LicenseType <String>] [-AutoPauseDelay <Int32>] [-ComputeModel <String>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Rename
@@ -157,6 +157,21 @@ The compute generation to assign.
 Type: System.String
 Parameter Sets: VcoreBasedDatabase
 Aliases: Family
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputeModel
+Computed model of Azure Sql database, serverless or preprovisioned
+
+```yaml
+Type: System.String
+Parameter Sets: Update, VcoreBasedDatabase
+Aliases:
 
 Required: False
 Position: Named
