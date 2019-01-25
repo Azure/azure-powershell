@@ -158,7 +158,7 @@
     <Exec Command="dotnet $(BuildAction) $(RepoArtifacts)Azure.PowerShell.sln -c $(Configuration)" />
 
     <!-- Publish static analysis for use cross-plat -->
-    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration) -f netcoreapp2.1" Condition="'$(CodeSign)' == 'false'" />
+    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration) -f netcoreapp2.1" />
 
     <!-- Delete powershell runtime files -->
     <ItemGroup>
@@ -175,14 +175,10 @@ $(PackageDirectory)/$(Configuration)/**/System.Text.Encodings.Web.dll" />
       <RedundantDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.CodeAnalysis.dll" />
       <RedundantDlls Include="$(PackageDirectory)/$(Configuration)/**/Microsoft.CodeAnalysis.CSharp.dll" />
     </ItemGroup>
-    <Delete Files="@(RedundantDlls->'%(FullPath)')" />
+    <!-- https://stackoverflow.com/a/48306223/294804 -->
+    <Delete Files="@(RedundantDlls->'%(FullPath)')" StandardOutputImportance="low" />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;" />
-
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)/outputtypes.json -BuildConfig $(Configuration)&quot;" Condition="'$(CodeSign)' == 'true'" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/NewHelpIndex.ps1 -OutputFile $(PackageDirectory)/index.json -BuildConfig $(Configuration)&quot;" Condition="'$(CodeSign)' == 'true'" />
-
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/CleanupBuild.ps1 -BuildConfig $(Configuration)&quot;" Condition="'$(CodeSign)' == 'true'" />
   </Target>
 
   <Target Name="OnPremChecks" Condition="'$(OnPremiseBuild)'">
@@ -230,6 +226,11 @@ $(PackageDirectory)/$(Configuration)/**/System.Text.Encodings.Web.dll" />
 
   <Target Name="Publish" Condition="'$(CodeSign)' == 'true'">
     <Message Importance="high" Text="Publishing Cmdlets using $(Scope) scope" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)/outputtypes.json -BuildConfig $(Configuration)&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/NewHelpIndex.ps1 -OutputFile $(PackageDirectory)/index.json -BuildConfig $(Configuration)&quot;" />
+
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/CleanupBuild.ps1 -BuildConfig $(Configuration)&quot;" />
+
     <Error Condition="'$(NuGetKey)' == ''" Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/PublishModules.ps1 -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope $(Scope) -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot;&quot; -NugetExe $(NuGetCommand)" />
   </Target>
