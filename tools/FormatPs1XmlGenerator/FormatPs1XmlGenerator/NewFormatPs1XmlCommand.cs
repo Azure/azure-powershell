@@ -11,9 +11,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace RepoTasks.Cmdlets
+using System.Collections;
+
+namespace FormatPs1XmlGenerator
 {
-    using RemoteWorker;
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -65,7 +66,7 @@ namespace RepoTasks.Cmdlets
 
                 foreach (var assemblyPath in GetAssemblyPath(ModulePath))
                 {
-                    ReflectInIsolateAppDomain<AppDomainWorker>(assemblyPath);
+                    Reflect(assemblyPath);
                 }
             }
             catch (Exception e)
@@ -80,60 +81,36 @@ namespace RepoTasks.Cmdlets
             var list = new List<string>();
             using (var ps = PowerShell.Create())
             {
-                ps.AddCommand("Test-ModuleManifest").AddParameter("Path", manifestPath);
+                ps.AddCommand("Import-PowerShellDataFile").AddParameter("Path", manifestPath);
                 var result = ps.Invoke();
-                var moduleInfo = (PSModuleInfo)result[0].BaseObject;
+                var moduleInfo = (Hashtable)result[0].BaseObject;
                 if (moduleInfo == null) return list;
-                list.AddRange(moduleInfo.NestedModules.Select(nestedModule => Path.Combine(nestedModule.ModuleBase, nestedModule.Name + ".dll")));
+                var nestedModules = (object[])moduleInfo["NestedModules"];
+                var moduleBase = Path.GetDirectoryName(manifestPath) ?? throw new InvalidOperationException("Unable to get module base directory from the manifest path");
+                list.AddRange(nestedModules.Select(nestedModule => Path.GetFullPath(Path.Combine(moduleBase, nestedModule.ToString()))));
             }
 
             return list;
         }
 
-        internal void ReflectInIsolateAppDomain<T>(string assemblyPath) where T : MarshalByRefObject, IReflectionWorker
+        internal void Reflect(string assemblyPath)
         {
-            AppDomain domain = null;
-            try
+            var reflector = new Reflector{Cmdlet = this};
+            var outFilename = reflector.BuildFormatPs1Xml(assemblyPath, Cmdlet, OnlyMarkedProperties);
+
+            if (string.IsNullOrEmpty(outFilename))
             {
-                var setup = new AppDomainSetup
-                {
-                    ApplicationBase = Path.GetDirectoryName(assemblyPath),
-                };
-
-                domain = AppDomain.CreateDomain("AppDomainIsolation: " + Guid.NewGuid(), null, setup);
-                var type = typeof(T);
-                if (type.FullName == null) throw new Exception("type fullname is null");
-                var worker = (T)domain.CreateInstanceFromAndUnwrap(type.Assembly.Location, type.FullName);
-                var res = worker.BuildFormatPs1Xml(assemblyPath, Cmdlet, OnlyMarkedProperties);
-
-                var warnings = res.Item2;
-                if (warnings.Count > 0)
-                {
-                    foreach (var warning in warnings)
-                    {
-                        WriteWarning(warning);
-                    }
-                }
-
-                var outFilename = res.Item1;
-                if (string.IsNullOrEmpty(outFilename))
-                {
-                    WriteWarning(@"No output types found.");
-                    return;
-                }
-
-                var outFilepath = Path.Combine(OutputPath, outFilename);
-                if (!File.Exists(outFilepath)
-                    || Force
-                    || ShouldProcess($"File path: {outFilepath}", "Override existing file"))
-                {
-                    worker.Serialize(outFilepath);
-                    WriteObject(outFilepath);
-                }
+                WriteWarning(@"No output types found.");
+                return;
             }
-            finally
+
+            var outFilepath = Path.Combine(OutputPath, outFilename);
+            if (!File.Exists(outFilepath)
+                || Force
+                || ShouldProcess($"File path: {outFilepath}", "Override existing file"))
             {
-                if (domain != null) AppDomain.Unload(domain);
+                reflector.Serialize(outFilepath);
+                WriteObject(outFilepath);
             }
         }
     }

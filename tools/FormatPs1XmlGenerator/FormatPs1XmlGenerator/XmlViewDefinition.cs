@@ -11,7 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace RepoTasks.RemoteWorker
+namespace FormatPs1XmlGenerator
 {
     using System;
     using System.Xml.Serialization;

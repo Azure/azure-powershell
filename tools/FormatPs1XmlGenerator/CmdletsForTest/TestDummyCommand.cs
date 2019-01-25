@@ -11,16 +11,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
-namespace RepoTasks.CmdletsForTest.Models
+namespace CmdletsForTest
 {
-    using System.Net;
-    public class PsOperation
-    {
-        [Ps1Xml(Label = "RequestId", Target = ViewControl.All, Position = 1, GroupByThis = true)]
-        public string RequestId { get; set; }
+    using Models;
+    using System;
+    using System.Management.Automation;
 
-        public HttpStatusCode StatusCode { get; set; }
+    [Cmdlet(VerbsDiagnostic.Test, "Dummy", SupportsShouldProcess = true)]
+    [OutputType(new Type[] { typeof(PsDummyOutput1), typeof(PsDummyOutput2) })]
+    public class TestDummyCommand : PSCmdlet
+    {
+        // empty
     }
 }

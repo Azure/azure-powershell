@@ -11,17 +11,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-namespace RepoTasks.CmdletsForTest
+namespace FormatPs1XmlGenerator.Test
 {
-    using Models;
-    using System;
-    using System.Management.Automation;
-
-    [Cmdlet(VerbsDiagnostic.Test, "Dummy", SupportsShouldProcess = true)]
-    [OutputType(new Type[] { typeof(PsDummyOutput1), typeof(PsDummyOutput2) })]
-    public class TestDummyCommand : PSCmdlet
+    internal class Category
     {
-        // empty
+        public const string AcceptanceType = "AcceptanceType";
+        public const string CheckIn = "CheckIn";
     }
 }
