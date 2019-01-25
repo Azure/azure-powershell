@@ -60,12 +60,12 @@ function Test-ExpressRouteCircuitCRUDMinimalParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create ExpressRouteCircuit
-        $vExpressRouteCircuit = New-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $rname -Location $location -SkuTier $SkuTier -SkuFamily $SkuFamily -ServiceProviderName $ServiceProviderName -PeeringLocation $PeeringLocation -BandwidthInMbps $BandwidthInMbps;
+        $vExpressRouteCircuit = New-AzExpressRouteCircuit -ResourceGroupName $rgname -Name $rname -Location $location -SkuTier $SkuTier -SkuFamily $SkuFamily -ServiceProviderName $ServiceProviderName -PeeringLocation $PeeringLocation -BandwidthInMbps $BandwidthInMbps;
         Assert-NotNull $vExpressRouteCircuit;
-        Assert-True { Check-CmdletReturnType "New-AzureRmExpressRouteCircuit" $vExpressRouteCircuit };
+        Assert-True { Check-CmdletReturnType "New-AzExpressRouteCircuit" $vExpressRouteCircuit };
         Assert-AreEqual $rname $vExpressRouteCircuit.Name;
         Assert-AreEqual $SkuTier $vExpressRouteCircuit.Sku.Tier;
         Assert-AreEqual $SkuFamily $vExpressRouteCircuit.Sku.Family;
@@ -74,9 +74,9 @@ function Test-ExpressRouteCircuitCRUDMinimalParameters
         Assert-AreEqual $BandwidthInMbps $vExpressRouteCircuit.ServiceProviderProperties.BandwidthInMbps;
 
         # Get ExpressRouteCircuit
-        $vExpressRouteCircuit = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $rname;
+        $vExpressRouteCircuit = Get-AzExpressRouteCircuit -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vExpressRouteCircuit;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRouteCircuit" $vExpressRouteCircuit };
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteCircuit" $vExpressRouteCircuit };
         Assert-AreEqual $rname $vExpressRouteCircuit.Name;
         Assert-AreEqual $SkuTier $vExpressRouteCircuit.Sku.Tier;
         Assert-AreEqual $SkuFamily $vExpressRouteCircuit.Sku.Family;
@@ -85,53 +85,53 @@ function Test-ExpressRouteCircuitCRUDMinimalParameters
         Assert-AreEqual $BandwidthInMbps $vExpressRouteCircuit.ServiceProviderProperties.BandwidthInMbps;
 
         # Get all ExpressRouteCircuits in resource group
-        $listExpressRouteCircuit = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname;
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit -ResourceGroupName $rgname;
         Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all ExpressRouteCircuits in subscription
-        $listExpressRouteCircuit = Get-AzureRmExpressRouteCircuit;
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit;
         Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Set ExpressRouteCircuit
         $vExpressRouteCircuit.Sku.Tier = $SkuTierSet;
         $vExpressRouteCircuit.Sku.Family = $SkuFamilySet;
         $vExpressRouteCircuit.ServiceProviderProperties.BandwidthInMbps = $BandwidthInMbpsSet;
-        $vExpressRouteCircuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
+        $vExpressRouteCircuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull $vExpressRouteCircuit;
-        Assert-True { Check-CmdletReturnType "Set-AzureRmExpressRouteCircuit" $vExpressRouteCircuit };
+        Assert-True { Check-CmdletReturnType "Set-AzExpressRouteCircuit" $vExpressRouteCircuit };
         Assert-AreEqual $rname $vExpressRouteCircuit.Name;
         Assert-AreEqual $SkuTierSet $vExpressRouteCircuit.Sku.Tier;
         Assert-AreEqual $SkuFamilySet $vExpressRouteCircuit.Sku.Family;
         Assert-AreEqual $BandwidthInMbpsSet $vExpressRouteCircuit.ServiceProviderProperties.BandwidthInMbps;
 
         # Get ExpressRouteCircuit
-        $vExpressRouteCircuit = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $rname;
+        $vExpressRouteCircuit = Get-AzExpressRouteCircuit -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vExpressRouteCircuit;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRouteCircuit" $vExpressRouteCircuit };
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteCircuit" $vExpressRouteCircuit };
         Assert-AreEqual $rname $vExpressRouteCircuit.Name;
         Assert-AreEqual $SkuTierSet $vExpressRouteCircuit.Sku.Tier;
         Assert-AreEqual $SkuFamilySet $vExpressRouteCircuit.Sku.Family;
         Assert-AreEqual $BandwidthInMbpsSet $vExpressRouteCircuit.ServiceProviderProperties.BandwidthInMbps;
 
         # Get all ExpressRouteCircuits in resource group
-        $listExpressRouteCircuit = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname;
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit -ResourceGroupName $rgname;
         Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all ExpressRouteCircuits in subscription
-        $listExpressRouteCircuit = Get-AzureRmExpressRouteCircuit;
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit;
         Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove ExpressRouteCircuit
-        $job = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job = Remove-AzExpressRouteCircuit -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeExpressRouteCircuit = $job | Receive-Job;
         Assert-AreEqual $true $removeExpressRouteCircuit;
 
         # Get ExpressRouteCircuit should fail
-        Assert-ThrowsContains { Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $rname } "not found";
+        Assert-ThrowsContains { Get-AzExpressRouteCircuit -ResourceGroupName $rgname -Name $rname } "not found";
 
         # Set ExpressRouteCircuit should fail
-        Assert-ThrowsContains { Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit } "not found";
+        Assert-ThrowsContains { Set-AzExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit } "not found";
     }
     finally
     {
@@ -168,12 +168,12 @@ function Test-ExpressRouteCircuitCRUDAllParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create ExpressRouteCircuit
-        $vExpressRouteCircuit = New-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $rname -Location $location -SkuTier $SkuTier -SkuFamily $SkuFamily -ServiceProviderName $ServiceProviderName -PeeringLocation $PeeringLocation -BandwidthInMbps $BandwidthInMbps -AllowClassicOperation $AllowClassicOperation -Tag $Tag;
+        $vExpressRouteCircuit = New-AzExpressRouteCircuit -ResourceGroupName $rgname -Name $rname -Location $location -SkuTier $SkuTier -SkuFamily $SkuFamily -ServiceProviderName $ServiceProviderName -PeeringLocation $PeeringLocation -BandwidthInMbps $BandwidthInMbps -AllowClassicOperation $AllowClassicOperation -Tag $Tag;
         Assert-NotNull $vExpressRouteCircuit;
-        Assert-True { Check-CmdletReturnType "New-AzureRmExpressRouteCircuit" $vExpressRouteCircuit };
+        Assert-True { Check-CmdletReturnType "New-AzExpressRouteCircuit" $vExpressRouteCircuit };
         Assert-AreEqual $rname $vExpressRouteCircuit.Name;
         Assert-AreEqual $SkuTier $vExpressRouteCircuit.Sku.Tier;
         Assert-AreEqual $SkuFamily $vExpressRouteCircuit.Sku.Family;
@@ -184,9 +184,9 @@ function Test-ExpressRouteCircuitCRUDAllParameters
         Assert-AreEqualObjectProperties $Tag $vExpressRouteCircuit.Tag;
 
         # Get ExpressRouteCircuit
-        $vExpressRouteCircuit = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $rname;
+        $vExpressRouteCircuit = Get-AzExpressRouteCircuit -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vExpressRouteCircuit;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRouteCircuit" $vExpressRouteCircuit };
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteCircuit" $vExpressRouteCircuit };
         Assert-AreEqual $rname $vExpressRouteCircuit.Name;
         Assert-AreEqual $SkuTier $vExpressRouteCircuit.Sku.Tier;
         Assert-AreEqual $SkuFamily $vExpressRouteCircuit.Sku.Family;
@@ -197,11 +197,11 @@ function Test-ExpressRouteCircuitCRUDAllParameters
         Assert-AreEqualObjectProperties $Tag $vExpressRouteCircuit.Tag;
 
         # Get all ExpressRouteCircuits in resource group
-        $listExpressRouteCircuit = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname;
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit -ResourceGroupName $rgname;
         Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all ExpressRouteCircuits in subscription
-        $listExpressRouteCircuit = Get-AzureRmExpressRouteCircuit;
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit;
         Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Set ExpressRouteCircuit
@@ -210,9 +210,9 @@ function Test-ExpressRouteCircuitCRUDAllParameters
         $vExpressRouteCircuit.ServiceProviderProperties.BandwidthInMbps = $BandwidthInMbpsSet;
         $vExpressRouteCircuit.AllowClassicOperations = $AllowClassicOperationSet;
         $vExpressRouteCircuit.Tag = $TagSet;
-        $vExpressRouteCircuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
+        $vExpressRouteCircuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull $vExpressRouteCircuit;
-        Assert-True { Check-CmdletReturnType "Set-AzureRmExpressRouteCircuit" $vExpressRouteCircuit };
+        Assert-True { Check-CmdletReturnType "Set-AzExpressRouteCircuit" $vExpressRouteCircuit };
         Assert-AreEqual $rname $vExpressRouteCircuit.Name;
         Assert-AreEqual $SkuTierSet $vExpressRouteCircuit.Sku.Tier;
         Assert-AreEqual $SkuFamilySet $vExpressRouteCircuit.Sku.Family;
@@ -221,9 +221,9 @@ function Test-ExpressRouteCircuitCRUDAllParameters
         Assert-AreEqualObjectProperties $TagSet $vExpressRouteCircuit.Tag;
 
         # Get ExpressRouteCircuit
-        $vExpressRouteCircuit = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $rname;
+        $vExpressRouteCircuit = Get-AzExpressRouteCircuit -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vExpressRouteCircuit;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRouteCircuit" $vExpressRouteCircuit };
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteCircuit" $vExpressRouteCircuit };
         Assert-AreEqual $rname $vExpressRouteCircuit.Name;
         Assert-AreEqual $SkuTierSet $vExpressRouteCircuit.Sku.Tier;
         Assert-AreEqual $SkuFamilySet $vExpressRouteCircuit.Sku.Family;
@@ -232,24 +232,24 @@ function Test-ExpressRouteCircuitCRUDAllParameters
         Assert-AreEqualObjectProperties $TagSet $vExpressRouteCircuit.Tag;
 
         # Get all ExpressRouteCircuits in resource group
-        $listExpressRouteCircuit = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname;
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit -ResourceGroupName $rgname;
         Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all ExpressRouteCircuits in subscription
-        $listExpressRouteCircuit = Get-AzureRmExpressRouteCircuit;
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit;
         Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove ExpressRouteCircuit
-        $job = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job = Remove-AzExpressRouteCircuit -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeExpressRouteCircuit = $job | Receive-Job;
         Assert-AreEqual $true $removeExpressRouteCircuit;
 
         # Get ExpressRouteCircuit should fail
-        Assert-ThrowsContains { Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $rname } "not found";
+        Assert-ThrowsContains { Get-AzExpressRouteCircuit -ResourceGroupName $rgname -Name $rname } "not found";
 
         # Set ExpressRouteCircuit should fail
-        Assert-ThrowsContains { Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit } "not found";
+        Assert-ThrowsContains { Set-AzExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit } "not found";
     }
     finally
     {
@@ -279,56 +279,56 @@ function Test-ExpressRouteCircuitAuthorizationCRUDMinimalParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create ExpressRouteCircuitAuthorization
-        $vExpressRouteCircuitAuthorization = New-AzureRmExpressRouteCircuitAuthorization -Name $rname;
+        $vExpressRouteCircuitAuthorization = New-AzExpressRouteCircuitAuthorization -Name $rname;
         Assert-NotNull $vExpressRouteCircuitAuthorization;
-        Assert-True { Check-CmdletReturnType "New-AzureRmExpressRouteCircuitAuthorization" $vExpressRouteCircuitAuthorization };
-        $vExpressRouteCircuit = New-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $rname -Authorization $vExpressRouteCircuitAuthorization -SkuTier $ExpressRouteCircuitSkuTier -SkuFamily $ExpressRouteCircuitSkuFamily -ServiceProviderName $ExpressRouteCircuitServiceProviderName -PeeringLocation $ExpressRouteCircuitPeeringLocation -BandwidthInMbps $ExpressRouteCircuitBandwidthInMbps -Location $location;
+        Assert-True { Check-CmdletReturnType "New-AzExpressRouteCircuitAuthorization" $vExpressRouteCircuitAuthorization };
+        $vExpressRouteCircuit = New-AzExpressRouteCircuit -ResourceGroupName $rgname -Name $rname -Authorization $vExpressRouteCircuitAuthorization -SkuTier $ExpressRouteCircuitSkuTier -SkuFamily $ExpressRouteCircuitSkuFamily -ServiceProviderName $ExpressRouteCircuitServiceProviderName -PeeringLocation $ExpressRouteCircuitPeeringLocation -BandwidthInMbps $ExpressRouteCircuitBandwidthInMbps -Location $location;
         Assert-NotNull $vExpressRouteCircuit;
         Assert-AreEqual $rname $vExpressRouteCircuitAuthorization.Name;
 
         # Get ExpressRouteCircuitAuthorization
-        $vExpressRouteCircuitAuthorization = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
+        $vExpressRouteCircuitAuthorization = Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
         Assert-NotNull $vExpressRouteCircuitAuthorization;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRouteCircuitAuthorization" $vExpressRouteCircuitAuthorization };
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteCircuitAuthorization" $vExpressRouteCircuitAuthorization };
         Assert-AreEqual $rname $vExpressRouteCircuitAuthorization.Name;
 
         # Get all ExpressRouteCircuit's ExpressRouteCircuitAuthorizations
-        $listExpressRouteCircuitAuthorization = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit;
+        $listExpressRouteCircuitAuthorization = Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull ($listExpressRouteCircuitAuthorization | Where-Object { $_.Name -eq $rname });
 
         # Add ExpressRouteCircuitAuthorization
-        $vExpressRouteCircuit = Add-AzureRmExpressRouteCircuitAuthorization -Name $rnameAdd -ExpressRouteCircuit $vExpressRouteCircuit;
+        $vExpressRouteCircuit = Add-AzExpressRouteCircuitAuthorization -Name $rnameAdd -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull $vExpressRouteCircuit;
-        $vExpressRouteCircuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
+        $vExpressRouteCircuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull $vExpressRouteCircuit;
 
         # Get ExpressRouteCircuitAuthorization
-        $vExpressRouteCircuitAuthorization = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
+        $vExpressRouteCircuitAuthorization = Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
         Assert-NotNull $vExpressRouteCircuitAuthorization;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRouteCircuitAuthorization" $vExpressRouteCircuitAuthorization };
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteCircuitAuthorization" $vExpressRouteCircuitAuthorization };
         Assert-AreEqual $rnameAdd $vExpressRouteCircuitAuthorization.Name;
 
         # Get all ExpressRouteCircuit's ExpressRouteCircuitAuthorizations
-        $listExpressRouteCircuitAuthorization = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit;
+        $listExpressRouteCircuitAuthorization = Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull ($listExpressRouteCircuitAuthorization | Where-Object { $_.Name -eq $rnameAdd });
 
         # Try Add again
-        Assert-ThrowsContains { Add-AzureRmExpressRouteCircuitAuthorization -Name $rnameAdd -ExpressRouteCircuit $vExpressRouteCircuit } "already exists";
+        Assert-ThrowsContains { Add-AzExpressRouteCircuitAuthorization -Name $rnameAdd -ExpressRouteCircuit $vExpressRouteCircuit } "already exists";
 
         # Remove ExpressRouteCircuitAuthorization
-        $vExpressRouteCircuit = Remove-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
-        $vExpressRouteCircuit = Remove-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
+        $vExpressRouteCircuit = Remove-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
+        $vExpressRouteCircuit = Remove-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
         # Additional call to test handling of already deleted subresource
-        $vExpressRouteCircuit = Remove-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
+        $vExpressRouteCircuit = Remove-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
         # Update parent resource
-        $vExpressRouteCircuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
+        $vExpressRouteCircuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull $vExpressRouteCircuit;
 
         # Get ExpressRouteCircuitAuthorization should fail
-        Assert-ThrowsContains { Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname } "Sequence contains no matching element";
+        Assert-ThrowsContains { Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname } "Sequence contains no matching element";
     }
     finally
     {
@@ -376,13 +376,13 @@ function Test-ExpressRouteCircuitPeeringCRUDMinimalParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create ExpressRouteCircuitPeering
-        $vExpressRouteCircuitPeering = New-AzureRmExpressRouteCircuitPeeringConfig -Name $rname -PeeringType $PeeringType -PeerASN $PeerASN -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefix -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefix -VlanId $VlanId;
+        $vExpressRouteCircuitPeering = New-AzExpressRouteCircuitPeeringConfig -Name $rname -PeeringType $PeeringType -PeerASN $PeerASN -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefix -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefix -VlanId $VlanId;
         Assert-NotNull $vExpressRouteCircuitPeering;
-        Assert-True { Check-CmdletReturnType "New-AzureRmExpressRouteCircuitPeeringConfig" $vExpressRouteCircuitPeering };
-        $vExpressRouteCircuit = New-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $rname -Peering $vExpressRouteCircuitPeering -SkuTier $ExpressRouteCircuitSkuTier -SkuFamily $ExpressRouteCircuitSkuFamily -ServiceProviderName $ExpressRouteCircuitServiceProviderName -PeeringLocation $ExpressRouteCircuitPeeringLocation -BandwidthInMbps $ExpressRouteCircuitBandwidthInMbps -Location $location;
+        Assert-True { Check-CmdletReturnType "New-AzExpressRouteCircuitPeeringConfig" $vExpressRouteCircuitPeering };
+        $vExpressRouteCircuit = New-AzExpressRouteCircuit -ResourceGroupName $rgname -Name $rname -Peering $vExpressRouteCircuitPeering -SkuTier $ExpressRouteCircuitSkuTier -SkuFamily $ExpressRouteCircuitSkuFamily -ServiceProviderName $ExpressRouteCircuitServiceProviderName -PeeringLocation $ExpressRouteCircuitPeeringLocation -BandwidthInMbps $ExpressRouteCircuitBandwidthInMbps -Location $location;
         Assert-NotNull $vExpressRouteCircuit;
         Assert-AreEqual $rname $vExpressRouteCircuitPeering.Name;
         Assert-AreEqual $PeeringType $vExpressRouteCircuitPeering.PeeringType;
@@ -392,9 +392,9 @@ function Test-ExpressRouteCircuitPeeringCRUDMinimalParameters
         Assert-AreEqual $VlanId $vExpressRouteCircuitPeering.VlanId;
 
         # Get ExpressRouteCircuitPeering
-        $vExpressRouteCircuitPeering = Get-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
+        $vExpressRouteCircuitPeering = Get-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
         Assert-NotNull $vExpressRouteCircuitPeering;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRouteCircuitPeeringConfig" $vExpressRouteCircuitPeering };
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteCircuitPeeringConfig" $vExpressRouteCircuitPeering };
         Assert-AreEqual $rname $vExpressRouteCircuitPeering.Name;
         Assert-AreEqual $PeeringType $vExpressRouteCircuitPeering.PeeringType;
         Assert-AreEqual $PeerASN $vExpressRouteCircuitPeering.PeerASN;
@@ -403,19 +403,19 @@ function Test-ExpressRouteCircuitPeeringCRUDMinimalParameters
         Assert-AreEqual $VlanId $vExpressRouteCircuitPeering.VlanId;
 
         # Get all ExpressRouteCircuit's ExpressRouteCircuitPeerings
-        $listExpressRouteCircuitPeering = Get-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit;
+        $listExpressRouteCircuitPeering = Get-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull ($listExpressRouteCircuitPeering | Where-Object { $_.Name -eq $rname });
 
         # Set ExpressRouteCircuitPeering
-        $vExpressRouteCircuit = Set-AzureRmExpressRouteCircuitPeeringConfig -Name $rname -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeSet -PeerASN $PeerASNSet -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixSet -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixSet -VlanId $VlanIdSet;
+        $vExpressRouteCircuit = Set-AzExpressRouteCircuitPeeringConfig -Name $rname -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeSet -PeerASN $PeerASNSet -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixSet -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixSet -VlanId $VlanIdSet;
         Assert-NotNull $vExpressRouteCircuit;
-        $vExpressRouteCircuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
+        $vExpressRouteCircuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull $vExpressRouteCircuit;
 
         # Get ExpressRouteCircuitPeering
-        $vExpressRouteCircuitPeering = Get-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
+        $vExpressRouteCircuitPeering = Get-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
         Assert-NotNull $vExpressRouteCircuitPeering;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRouteCircuitPeeringConfig" $vExpressRouteCircuitPeering };
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteCircuitPeeringConfig" $vExpressRouteCircuitPeering };
         Assert-AreEqual $rname $vExpressRouteCircuitPeering.Name;
         Assert-AreEqual $PeeringTypeSet $vExpressRouteCircuitPeering.PeeringType;
         Assert-AreEqual $PeerASNSet $vExpressRouteCircuitPeering.PeerASN;
@@ -424,19 +424,19 @@ function Test-ExpressRouteCircuitPeeringCRUDMinimalParameters
         Assert-AreEqual $VlanIdSet $vExpressRouteCircuitPeering.VlanId;
 
         # Get all ExpressRouteCircuit's ExpressRouteCircuitPeerings
-        $listExpressRouteCircuitPeering = Get-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit;
+        $listExpressRouteCircuitPeering = Get-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull ($listExpressRouteCircuitPeering | Where-Object { $_.Name -eq $rname });
 
         # Add ExpressRouteCircuitPeering
-        $vExpressRouteCircuit = Add-AzureRmExpressRouteCircuitPeeringConfig -Name $rnameAdd -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeAdd -PeerASN $PeerASNAdd -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixAdd -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixAdd -VlanId $VlanIdAdd;
+        $vExpressRouteCircuit = Add-AzExpressRouteCircuitPeeringConfig -Name $rnameAdd -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeAdd -PeerASN $PeerASNAdd -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixAdd -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixAdd -VlanId $VlanIdAdd;
         Assert-NotNull $vExpressRouteCircuit;
-        $vExpressRouteCircuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
+        $vExpressRouteCircuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull $vExpressRouteCircuit;
 
         # Get ExpressRouteCircuitPeering
-        $vExpressRouteCircuitPeering = Get-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
+        $vExpressRouteCircuitPeering = Get-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
         Assert-NotNull $vExpressRouteCircuitPeering;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRouteCircuitPeeringConfig" $vExpressRouteCircuitPeering };
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteCircuitPeeringConfig" $vExpressRouteCircuitPeering };
         Assert-AreEqual $rnameAdd $vExpressRouteCircuitPeering.Name;
         Assert-AreEqual $PeeringTypeAdd $vExpressRouteCircuitPeering.PeeringType;
         Assert-AreEqual $PeerASNAdd $vExpressRouteCircuitPeering.PeerASN;
@@ -445,26 +445,26 @@ function Test-ExpressRouteCircuitPeeringCRUDMinimalParameters
         Assert-AreEqual $VlanIdAdd $vExpressRouteCircuitPeering.VlanId;
 
         # Get all ExpressRouteCircuit's ExpressRouteCircuitPeerings
-        $listExpressRouteCircuitPeering = Get-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit;
+        $listExpressRouteCircuitPeering = Get-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull ($listExpressRouteCircuitPeering | Where-Object { $_.Name -eq $rnameAdd });
 
         # Try Add again
-        Assert-ThrowsContains { Add-AzureRmExpressRouteCircuitPeeringConfig -Name $rnameAdd -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeAdd -PeerASN $PeerASNAdd -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixAdd -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixAdd -VlanId $VlanIdAdd } "already exists";
+        Assert-ThrowsContains { Add-AzExpressRouteCircuitPeeringConfig -Name $rnameAdd -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeAdd -PeerASN $PeerASNAdd -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixAdd -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixAdd -VlanId $VlanIdAdd } "already exists";
 
         # Remove ExpressRouteCircuitPeering
-        $vExpressRouteCircuit = Remove-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
-        $vExpressRouteCircuit = Remove-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
+        $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
+        $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
         # Additional call to test handling of already deleted subresource
-        $vExpressRouteCircuit = Remove-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
+        $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
         # Update parent resource
-        $vExpressRouteCircuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
+        $vExpressRouteCircuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull $vExpressRouteCircuit;
 
         # Get ExpressRouteCircuitPeering should fail
-        Assert-ThrowsContains { Get-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname } "Sequence contains no matching element";
+        Assert-ThrowsContains { Get-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname } "Sequence contains no matching element";
 
         # Set ExpressRouteCircuitPeering should fail
-        Assert-ThrowsContains { Set-AzureRmExpressRouteCircuitPeeringConfig -Name $rname -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeSet -PeerASN $PeerASNSet -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixSet -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixSet -VlanId $VlanIdSet } "does not exist";
+        Assert-ThrowsContains { Set-AzExpressRouteCircuitPeeringConfig -Name $rname -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeSet -PeerASN $PeerASNSet -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixSet -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixSet -VlanId $VlanIdSet } "does not exist";
     }
     finally
     {
@@ -518,13 +518,13 @@ function Test-ExpressRouteCircuitPeeringCRUDAllParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create ExpressRouteCircuitPeering
-        $vExpressRouteCircuitPeering = New-AzureRmExpressRouteCircuitPeeringConfig -Name $rname -PeeringType $PeeringType -PeerASN $PeerASN -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefix -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefix -VlanId $VlanId -SharedKey $SharedKey -PeerAddressType $PeerAddressType;
+        $vExpressRouteCircuitPeering = New-AzExpressRouteCircuitPeeringConfig -Name $rname -PeeringType $PeeringType -PeerASN $PeerASN -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefix -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefix -VlanId $VlanId -SharedKey $SharedKey -PeerAddressType $PeerAddressType;
         Assert-NotNull $vExpressRouteCircuitPeering;
-        Assert-True { Check-CmdletReturnType "New-AzureRmExpressRouteCircuitPeeringConfig" $vExpressRouteCircuitPeering };
-        $vExpressRouteCircuit = New-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -Name $rname -Peering $vExpressRouteCircuitPeering -SkuTier $ExpressRouteCircuitSkuTier -SkuFamily $ExpressRouteCircuitSkuFamily -ServiceProviderName $ExpressRouteCircuitServiceProviderName -PeeringLocation $ExpressRouteCircuitPeeringLocation -BandwidthInMbps $ExpressRouteCircuitBandwidthInMbps -Location $location;
+        Assert-True { Check-CmdletReturnType "New-AzExpressRouteCircuitPeeringConfig" $vExpressRouteCircuitPeering };
+        $vExpressRouteCircuit = New-AzExpressRouteCircuit -ResourceGroupName $rgname -Name $rname -Peering $vExpressRouteCircuitPeering -SkuTier $ExpressRouteCircuitSkuTier -SkuFamily $ExpressRouteCircuitSkuFamily -ServiceProviderName $ExpressRouteCircuitServiceProviderName -PeeringLocation $ExpressRouteCircuitPeeringLocation -BandwidthInMbps $ExpressRouteCircuitBandwidthInMbps -Location $location;
         Assert-NotNull $vExpressRouteCircuit;
         Assert-AreEqual $rname $vExpressRouteCircuitPeering.Name;
         Assert-AreEqual $PeeringType $vExpressRouteCircuitPeering.PeeringType;
@@ -534,9 +534,9 @@ function Test-ExpressRouteCircuitPeeringCRUDAllParameters
         Assert-AreEqual $VlanId $vExpressRouteCircuitPeering.VlanId;
 
         # Get ExpressRouteCircuitPeering
-        $vExpressRouteCircuitPeering = Get-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
+        $vExpressRouteCircuitPeering = Get-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
         Assert-NotNull $vExpressRouteCircuitPeering;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRouteCircuitPeeringConfig" $vExpressRouteCircuitPeering };
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteCircuitPeeringConfig" $vExpressRouteCircuitPeering };
         Assert-AreEqual $rname $vExpressRouteCircuitPeering.Name;
         Assert-AreEqual $PeeringType $vExpressRouteCircuitPeering.PeeringType;
         Assert-AreEqual $PeerASN $vExpressRouteCircuitPeering.PeerASN;
@@ -545,19 +545,19 @@ function Test-ExpressRouteCircuitPeeringCRUDAllParameters
         Assert-AreEqual $VlanId $vExpressRouteCircuitPeering.VlanId;
 
         # Get all ExpressRouteCircuit's ExpressRouteCircuitPeerings
-        $listExpressRouteCircuitPeering = Get-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit;
+        $listExpressRouteCircuitPeering = Get-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull ($listExpressRouteCircuitPeering | Where-Object { $_.Name -eq $rname });
 
         # Set ExpressRouteCircuitPeering
-        $vExpressRouteCircuit = Set-AzureRmExpressRouteCircuitPeeringConfig -Name $rname -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeSet -PeerASN $PeerASNSet -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixSet -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixSet -VlanId $VlanIdSet -SharedKey $SharedKeySet -PeerAddressType $PeerAddressTypeSet;
+        $vExpressRouteCircuit = Set-AzExpressRouteCircuitPeeringConfig -Name $rname -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeSet -PeerASN $PeerASNSet -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixSet -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixSet -VlanId $VlanIdSet -SharedKey $SharedKeySet -PeerAddressType $PeerAddressTypeSet;
         Assert-NotNull $vExpressRouteCircuit;
-        $vExpressRouteCircuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
+        $vExpressRouteCircuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull $vExpressRouteCircuit;
 
         # Get ExpressRouteCircuitPeering
-        $vExpressRouteCircuitPeering = Get-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
+        $vExpressRouteCircuitPeering = Get-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
         Assert-NotNull $vExpressRouteCircuitPeering;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRouteCircuitPeeringConfig" $vExpressRouteCircuitPeering };
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteCircuitPeeringConfig" $vExpressRouteCircuitPeering };
         Assert-AreEqual $rname $vExpressRouteCircuitPeering.Name;
         Assert-AreEqual $PeeringTypeSet $vExpressRouteCircuitPeering.PeeringType;
         Assert-AreEqual $PeerASNSet $vExpressRouteCircuitPeering.PeerASN;
@@ -566,19 +566,19 @@ function Test-ExpressRouteCircuitPeeringCRUDAllParameters
         Assert-AreEqual $VlanIdSet $vExpressRouteCircuitPeering.VlanId;
 
         # Get all ExpressRouteCircuit's ExpressRouteCircuitPeerings
-        $listExpressRouteCircuitPeering = Get-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit;
+        $listExpressRouteCircuitPeering = Get-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull ($listExpressRouteCircuitPeering | Where-Object { $_.Name -eq $rname });
 
         # Add ExpressRouteCircuitPeering
-        $vExpressRouteCircuit = Add-AzureRmExpressRouteCircuitPeeringConfig -Name $rnameAdd -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeAdd -PeerASN $PeerASNAdd -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixAdd -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixAdd -VlanId $VlanIdAdd -SharedKey $SharedKeyAdd -PeerAddressType $PeerAddressTypeAdd;
+        $vExpressRouteCircuit = Add-AzExpressRouteCircuitPeeringConfig -Name $rnameAdd -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeAdd -PeerASN $PeerASNAdd -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixAdd -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixAdd -VlanId $VlanIdAdd -SharedKey $SharedKeyAdd -PeerAddressType $PeerAddressTypeAdd;
         Assert-NotNull $vExpressRouteCircuit;
-        $vExpressRouteCircuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
+        $vExpressRouteCircuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull $vExpressRouteCircuit;
 
         # Get ExpressRouteCircuitPeering
-        $vExpressRouteCircuitPeering = Get-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
+        $vExpressRouteCircuitPeering = Get-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
         Assert-NotNull $vExpressRouteCircuitPeering;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRouteCircuitPeeringConfig" $vExpressRouteCircuitPeering };
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteCircuitPeeringConfig" $vExpressRouteCircuitPeering };
         Assert-AreEqual $rnameAdd $vExpressRouteCircuitPeering.Name;
         Assert-AreEqual $PeeringTypeAdd $vExpressRouteCircuitPeering.PeeringType;
         Assert-AreEqual $PeerASNAdd $vExpressRouteCircuitPeering.PeerASN;
@@ -587,26 +587,26 @@ function Test-ExpressRouteCircuitPeeringCRUDAllParameters
         Assert-AreEqual $VlanIdAdd $vExpressRouteCircuitPeering.VlanId;
 
         # Get all ExpressRouteCircuit's ExpressRouteCircuitPeerings
-        $listExpressRouteCircuitPeering = Get-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit;
+        $listExpressRouteCircuitPeering = Get-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull ($listExpressRouteCircuitPeering | Where-Object { $_.Name -eq $rnameAdd });
 
         # Try Add again
-        Assert-ThrowsContains { Add-AzureRmExpressRouteCircuitPeeringConfig -Name $rnameAdd -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeAdd -PeerASN $PeerASNAdd -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixAdd -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixAdd -VlanId $VlanIdAdd -SharedKey $SharedKeyAdd -PeerAddressType $PeerAddressTypeAdd } "already exists";
+        Assert-ThrowsContains { Add-AzExpressRouteCircuitPeeringConfig -Name $rnameAdd -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeAdd -PeerASN $PeerASNAdd -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixAdd -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixAdd -VlanId $VlanIdAdd -SharedKey $SharedKeyAdd -PeerAddressType $PeerAddressTypeAdd } "already exists";
 
         # Remove ExpressRouteCircuitPeering
-        $vExpressRouteCircuit = Remove-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
-        $vExpressRouteCircuit = Remove-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
+        $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
+        $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
         # Additional call to test handling of already deleted subresource
-        $vExpressRouteCircuit = Remove-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
+        $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
         # Update parent resource
-        $vExpressRouteCircuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
+        $vExpressRouteCircuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull $vExpressRouteCircuit;
 
         # Get ExpressRouteCircuitPeering should fail
-        Assert-ThrowsContains { Get-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname } "Sequence contains no matching element";
+        Assert-ThrowsContains { Get-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname } "Sequence contains no matching element";
 
         # Set ExpressRouteCircuitPeering should fail
-        Assert-ThrowsContains { Set-AzureRmExpressRouteCircuitPeeringConfig -Name $rname -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeSet -PeerASN $PeerASNSet -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixSet -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixSet -VlanId $VlanIdSet -SharedKey $SharedKeySet -PeerAddressType $PeerAddressTypeSet } "does not exist";
+        Assert-ThrowsContains { Set-AzExpressRouteCircuitPeeringConfig -Name $rname -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeSet -PeerASN $PeerASNSet -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixSet -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixSet -VlanId $VlanIdSet -SharedKey $SharedKeySet -PeerAddressType $PeerAddressTypeSet } "does not exist";
     }
     finally
     {

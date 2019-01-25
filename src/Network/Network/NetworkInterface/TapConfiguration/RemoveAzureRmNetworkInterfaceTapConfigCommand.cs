@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -100,7 +101,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    this.NetworkInterfaceTapClient.DeleteWithHttpMessagesAsync(this.ResourceGroupName, this.NetworkInterfaceName, this.Name).GetAwaiter().GetResult();
+                    this.NetworkInterfaceTapClient.Delete(this.ResourceGroupName, this.NetworkInterfaceName, this.Name);
                     if (PassThru)
                     {
                         WriteObject(true);

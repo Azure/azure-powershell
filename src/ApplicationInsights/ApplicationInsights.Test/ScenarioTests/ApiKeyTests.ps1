@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Test Get-AzureRmApplicationInsightsApiKey
+Test Get-AzApplicationInsightsApiKey
 #>
 function Test-GetApplicationInsightsApiKey
 {
@@ -27,14 +27,14 @@ function Test-GetApplicationInsightsApiKey
 		$appName = "app" + $rgname;
         $loc = Get-ProviderLocation ResourceManagement;
 		$kind = "web";
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
 		
 		$apiKeyName = "test";
 		$permissions = @("ReadTelemetry", "WriteAnnotations", "AuthenticateSDKControlChannel");
-		$apiKey = New-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -Description $apiKeyName -Permissions $permissions;
+		$apiKey = New-AzApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -Description $apiKeyName -Permissions $permissions;
 
-        $apiKey2 = Get-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id;
+        $apiKey2 = Get-AzApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id;
 
         Assert-AreEqual $apiKeyName $apiKey2.Description
         Assert-NotNull $apiKey2.Id
@@ -42,7 +42,7 @@ function Test-GetApplicationInsightsApiKey
         Assert-Null $apiKey2.ApiKey
 		Assert-AreEqual 3 $apiKey2.Permissions.count
 
-        $apiKeys = Get-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName;
+        $apiKeys = Get-AzApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName;
         
 		Assert-AreEqual 1 $apiKeys.count
 		Assert-AreEqual $apiKeyName $apiKeys[0].Description
@@ -51,7 +51,7 @@ function Test-GetApplicationInsightsApiKey
         Assert-Null $apiKeys[0].ApiKey
 		Assert-AreEqual 3 $apiKeys[0].Permissions.count
 
-        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
+        Remove-AzApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {
@@ -62,7 +62,7 @@ function Test-GetApplicationInsightsApiKey
 
 <#
 .SYNOPSIS
-Test New-AzureRmApplicationInsightsApiKey
+Test New-AzApplicationInsightsApiKey
 #>
 function Test-NewApplicationInsightsApiKey
 {
@@ -75,19 +75,19 @@ function Test-NewApplicationInsightsApiKey
 		$appName = "app" + $rgname;
         $loc = Get-ProviderLocation ResourceManagement;
 		$kind = "web";
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
 		
 		$apiKeyName = "test";
 		$permissions = @("ReadTelemetry", "WriteAnnotations", "AuthenticateSDKControlChannel");
-		$apiKey = New-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -Description $apiKeyName -Permissions $permissions;
+		$apiKey = New-AzApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -Description $apiKeyName -Permissions $permissions;
 
         Assert-AreEqual $apiKeyName $apiKey.Description
         Assert-NotNull $apiKey.Id
         Assert-NotNull $apiKey.ApiKey
 		Assert-AreEqual 3 $apiKey.Permissions.count
 
-        $apiKey2 = Get-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id;
+        $apiKey2 = Get-AzApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id;
 
         Assert-AreEqual $apiKeyName $apiKey2.Description
         Assert-NotNull $apiKey2.Id
@@ -95,7 +95,7 @@ function Test-NewApplicationInsightsApiKey
         Assert-Null $apiKey2.ApiKey
 		Assert-AreEqual 3 $apiKey2.Permissions.count
 
-        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
+        Remove-AzApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {
@@ -107,7 +107,7 @@ function Test-NewApplicationInsightsApiKey
 
 <#
 .SYNOPSIS
-Test Remove-AzureRmApplicationInsightsApiKey
+Test Remove-AzApplicationInsightsApiKey
 #>
 function Test-RemoveApplicationInsightsApiKey
 {
@@ -120,25 +120,25 @@ function Test-RemoveApplicationInsightsApiKey
 		$appName = "app" + $rgname;
         $loc = Get-ProviderLocation ResourceManagement;
 		$kind = "web";
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind;
 		
 		$apiKeyName = "test";
 		$permissions = @("ReadTelemetry", "WriteAnnotations", "AuthenticateSDKControlChannel");
-		$apiKey = New-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -Description $apiKeyName -Permissions $permissions;
+		$apiKey = New-AzApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -Description $apiKeyName -Permissions $permissions;
 
         Assert-AreEqual $apiKeyName $apiKey.Description
         Assert-NotNull $apiKey.Id
         Assert-NotNull $apiKey.ApiKey
 		Assert-AreEqual 3 $apiKey.Permissions.count
 
-        $apiKey2 = Get-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id;
+        $apiKey2 = Get-AzApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id;
 
         Assert-NotNull $apiKey2
 
-        Remove-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id;
+        Remove-AzApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id;
 
-		Assert-ThrowsContains { Get-AzureRmApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id } "NotFound"
+		Assert-ThrowsContains { Get-AzApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id } "NotFound"
     }
     finally
     {

@@ -18,3 +18,4 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added subdomain parameter to Set-AzureRmIoTCentralApp for updating subdomain

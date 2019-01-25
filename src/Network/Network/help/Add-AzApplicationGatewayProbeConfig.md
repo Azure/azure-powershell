@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azapplicationgatewayprobeconfig
@@ -245,11 +245,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Add a probe to an existing application gateway](https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#add-a-probe-to-an-existing-application-gateway)
 
-[Get-AzApplicationGatewayProbeConfig]()
+[Get-AzApplicationGatewayProbeConfig](./Get-AzApplicationGatewayProbeConfig.md)
 
-[New-AzApplicationGatewayProbeConfig]()
+[New-AzApplicationGatewayProbeConfig](./New-AzApplicationGatewayProbeConfig.md)
 
-[Remove-AzApplicationGatewayProbeConfig]()
+[Remove-AzApplicationGatewayProbeConfig](./Remove-AzApplicationGatewayProbeConfig.md)
 
-[Set-AzApplicationGatewayProbeConfig]()
+[Set-AzApplicationGatewayProbeConfig](./Set-AzApplicationGatewayProbeConfig.md)
 

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Position = 0,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The name of the Circuit Connection")]
         public string Name { get; set; }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            var peering = this.ExpressRouteCircuit.Peerings.First(
+            var peering = this.ExpressRouteCircuit.Peerings.SingleOrDefault(
                             resource =>
                             string.Equals(resource.Name, "AzurePrivatePeering", System.StringComparison.CurrentCultureIgnoreCase));
 

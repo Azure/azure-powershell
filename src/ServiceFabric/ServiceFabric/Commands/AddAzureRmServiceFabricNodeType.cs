@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 throw new PSInvalidOperationException(
                     string.Format(
-                        ServiceFabricProperties.Resources.NoneNodeTypeFound,
+                        ServiceFabricProperties.Resources.NodeTypesNotDefinedInCluster,
                         this.ResourceGroupName));
             }
 

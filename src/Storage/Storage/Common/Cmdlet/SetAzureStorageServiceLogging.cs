@@ -14,7 +14,9 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
+    using Microsoft.WindowsAzure.Storage.Shared.Protocol;
     using System;
+    using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
     using StorageClient = WindowsAzure.Storage.Shared.Protocol;
@@ -166,6 +168,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             }
 
             StorageClient.ServiceProperties currentServiceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
+
+            // Premium Account not support classic metrics and logging
+            if (currentServiceProperties.Logging == null)
+            {
+                AccountProperties accountProperties = Channel.GetAccountProperties();
+                if (accountProperties.SkuName.Contains("Premium"))
+                {
+                    throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "This Storage account doesn't support Classic Logging, since it’s a Premium Storage account: {0}", Channel.StorageContext.StorageAccountName));
+                }
+            }
+
             StorageClient.ServiceProperties serviceProperties = new StorageClient.ServiceProperties();
             serviceProperties.Clean();
             serviceProperties.Logging = currentServiceProperties.Logging;
