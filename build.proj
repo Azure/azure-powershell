@@ -147,13 +147,10 @@
     <Exec Command="dotnet new sln -n Azure.PowerShell -o $(RepoArtifacts) --force" />
     <ItemGroup>
       <CsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(LibraryRoot)src/**/*.Test.csproj" />
-    </ItemGroup>
-    <ItemGroup Condition="'$(CodeSign)' == 'false'">
-      <CsprojFiles Include="$(LibraryRoot)src/**/*.Test.csproj" />
+      <CsprojFiles Include="$(LibraryRoot)src/**/*.Test.csproj" Condition="'$(CodeSign)' == 'false'" />
     </ItemGroup>
     <!-- https://github.com/dotnet/cli/issues/6295#issuecomment-346973582 -->
     <Exec Command="dotnet sln $(RepoArtifacts)Azure.PowerShell.sln add &quot;%(CsprojFiles.FullPath)&quot;" />
-    <Exec Command="dotnet sln $(RepoArtifacts)Azure.PowerShell.sln add &quot;$(RepoTools)Tools.Common/Tools.Common.Netcore.csproj&quot; &quot;$(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj&quot;" Condition="'$(CodeSign)' == 'false'" />
     <PropertyGroup>
       <BuildAction Condition="'$(CodeSign)' == 'false'">build</BuildAction>
       <BuildAction Condition="'$(CodeSign)' == 'true'">publish</BuildAction>
@@ -161,7 +158,7 @@
     <Exec Command="dotnet $(BuildAction) $(RepoArtifacts)Azure.PowerShell.sln -c $(Configuration)" />
 
     <!-- Publish static analysis for use cross-plat -->
-    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj --no-build -c $(Configuration) -f netcoreapp2.1 -o $(RepoArtifacts)StaticAnalysis" Condition="'$(CodeSign)' == 'false'" />
+    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration) -f netcoreapp2.1" Condition="'$(CodeSign)' == 'false'" />
 
     <!-- Delete powershell runtime files -->
     <ItemGroup>
@@ -180,12 +177,12 @@ $(PackageDirectory)/$(Configuration)/**/System.Text.Encodings.Web.dll" />
     </ItemGroup>
     <Delete Files="@(RedundantDlls->'%(FullPath)')" />
 
-    <!-- Update module manifests -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/CleanupBuild.ps1 -BuildConfig $(Configuration)&quot;" Condition="'$(CodeSign)' == 'true'" />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)/outputtypes.json -BuildConfig $(Configuration)&quot;" Condition="'$(CodeSign)' == 'true'" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/NewHelpIndex.ps1 -OutputFile $(PackageDirectory)/index.json -BuildConfig $(Configuration)&quot;" Condition="'$(CodeSign)' == 'true'" />
+
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/CleanupBuild.ps1 -BuildConfig $(Configuration)&quot;" Condition="'$(CodeSign)' == 'true'" />
   </Target>
 
   <Target Name="OnPremChecks" Condition="'$(OnPremiseBuild)'">
