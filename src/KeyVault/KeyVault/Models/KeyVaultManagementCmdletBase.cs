@@ -12,18 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-// TODO: Remove IfDef
-#if NETSTANDARD
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-#else
-using Microsoft.Azure.ActiveDirectory.GraphClient;
-#endif
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Models;
@@ -33,14 +26,11 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Rest.Azure;
 using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
 using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
 using CertPerms = Microsoft.Azure.Management.KeyVault.Models.CertificatePermissions;
 using StoragePerms = Microsoft.Azure.Management.KeyVault.Models.StoragePermissions;
-using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 
 namespace Microsoft.Azure.Commands.KeyVault
@@ -69,14 +59,14 @@ namespace Microsoft.Azure.Commands.KeyVault
                 if (_activeDirectoryClient != null) return _activeDirectoryClient;
 
                 _dataServiceCredential = new DataServiceCredential(AzureSession.Instance.AuthenticationFactory, DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
-// TODO: Remove IfDef
-#if NETSTANDARD
-                _activeDirectoryClient = new ActiveDirectoryClient(DefaultProfile.DefaultContext);
-#else
-                _activeDirectoryClient = new ActiveDirectoryClient(new Uri(string.Format("{0}/{1}",
-                DefaultProfile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph), _dataServiceCredential.TenantId)),
-                () => Task.FromResult(_dataServiceCredential.GetToken()));
-#endif
+                try
+                {
+                    _activeDirectoryClient = new ActiveDirectoryClient(DefaultProfile.DefaultContext);
+                }
+                catch
+                {
+                    _activeDirectoryClient = null;
+                }
                 return _activeDirectoryClient;
             }
 
@@ -213,14 +203,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             string objectId = null;
             if (DefaultContext.Account.Type == AzureAccount.AccountType.User)
             {
-// TODO: Remove IfDef
-#if NETSTANDARD
                 objectId = ActiveDirectoryClient.GetObjectId(new ADObjectFilterOptions {UPN = DefaultContext.Account.Id}).ToString();
-#else
-                var userFetcher = ActiveDirectoryClient.Me.ToUser();
-                var user = userFetcher.ExecuteAsync().Result;
-                objectId = user.ObjectId;
-#endif
             }
 
             return objectId;
@@ -239,22 +222,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         private string GetObjectIdByUpn(string upn)
         {
             if (string.IsNullOrWhiteSpace(upn)) return null;
-// TODO: Remove IfDef
-#if NETSTANDARD
             var user = ActiveDirectoryClient.FilterUsers(new ADObjectFilterOptions { UPN = upn }).SingleOrDefault();
-#else
-            var user = ActiveDirectoryClient.Users.Where(u => u.UserPrincipalName.Equals(upn, StringComparison.OrdinalIgnoreCase))
-                 .ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult().CurrentPage.SingleOrDefault();
-#endif
             string objId = null;
             if (user != null)
             {
-// TODO: Remove IfDef
-#if NETSTANDARD
                 objId = user.Id.ToString();
-#else
-                objId = user.ObjectId;
-#endif
             }
             return objId;
         }
@@ -262,18 +234,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         private string GetObjectIdBySpn(string spn)
         {
             if (string.IsNullOrWhiteSpace(spn)) return null;
-
-// TODO: Remove IfDef
-#if NETSTANDARD
             var odataQuery = new Rest.Azure.OData.ODataQuery<Graph.RBAC.Version1_6.Models.ServicePrincipal>(s => s.ServicePrincipalNames.Contains(spn));
             var servicePrincipal = ActiveDirectoryClient.FilterServicePrincipals(odataQuery).SingleOrDefault();
             var objId = servicePrincipal?.Id.ToString();
-#else
-            var servicePrincipal = ActiveDirectoryClient.ServicePrincipals.Where(s =>
-                s.ServicePrincipalNames.Any(n => n.Equals(spn, StringComparison.OrdinalIgnoreCase)))
-                 .ExecuteAsync().GetAwaiter().GetResult().CurrentPage.SingleOrDefault();
-            var objId = servicePrincipal?.ObjectId;
-#endif
             return objId;
         }
 
@@ -283,8 +246,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (DefaultProfile.DefaultContext.Environment.OnPremise || string.IsNullOrWhiteSpace(email)) return null;
 
             string objId = null;
-// TODO: Remove IfDef
-#if NETSTANDARD
             var users = ActiveDirectoryClient.FilterUsers(new ADObjectFilterOptions { Mail = email });
             if (users != null)
             {
@@ -292,35 +253,13 @@ namespace Microsoft.Azure.Commands.KeyVault
                 var user = users.FirstOrDefault();
                 objId = user?.Id.ToString();
             }
-#else
-            var users = ActiveDirectoryClient.Users.Where(FilterByEmail(email)).ExecuteAsync().GetAwaiter().GetResult().CurrentPage;
-            if (users != null)
-            {
-                ThrowIfMultipleObjectIds(users, email);
-                var user = users.FirstOrDefault();
-                objId = user?.ObjectId;
-            }
-#endif
             return objId;
         }
 
-// TODO: Remove IfDef code
-#if !NETSTANDARD
-        private Expression<Func<IUser, bool>> FilterByEmail(string email)
-        {
-            return u => u.Mail.Equals(email, StringComparison.OrdinalIgnoreCase) ||
-                u.OtherMails.Any(m => m.Equals(email, StringComparison.OrdinalIgnoreCase));
-        }
-#endif
         private bool ValidateObjectId(string objId)
         {
             if (string.IsNullOrWhiteSpace(objId)) return false;
-// TODO: Remove IfDef
-#if NETSTANDARD
             var objectCollection = ActiveDirectoryClient.GetObjectsByObjectId(new List<string> { objId });
-#else
-            var objectCollection = ActiveDirectoryClient.GetObjectsByObjectIdsAsync(new[] { objId }, new string[] { }).GetAwaiter().GetResult();
-#endif
             return objectCollection.Any();
         }
 
