@@ -89,11 +89,11 @@
     <Message Importance="high" Text="Cleaning Cmdlets..." />
 
     <!-- Clean out the NuGet cache -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path (Join-Path ($env:USERPROFILE) .nuget packages) -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" IgnoreExitCode="true" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path (Join-Path ($env:USERPROFILE) .nuget packages) -Recurse -Force -ErrorAction Ignore&quot;" IgnoreExitCode="true" />
 
     <!-- Remove Package, Publish, bin, obj, and TestResults directories -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path $(PackageDirectory) -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" IgnoreExitCode="true" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(MSBuildThisFileDirectory) -Recurse -Include 'bin','obj','TestResults' | Remove-Item -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" IgnoreExitCode="true" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path $(PackageDirectory) -Recurse -Force -ErrorAction Ignore&quot;" IgnoreExitCode="true" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(MSBuildThisFileDirectory) -Recurse -Include 'bin','obj','TestResults' | Remove-Item -Recurse -Force -ErrorAction Ignore&quot;" IgnoreExitCode="true" />
   </Target>
 
   <Target Name="FilterBuild">
@@ -165,7 +165,7 @@
       <RuntimeDllsIncludeList>Microsoft.Powershell.*.dll,System*.dll,Microsoft.VisualBasic.dll,Microsoft.CSharp.dll,Microsoft.CodeAnalysis.dll,Microsoft.CodeAnalysis.CSharp.dll</RuntimeDllsIncludeList>
       <RuntimeDllsExcludeList>System.Security.Cryptography.ProtectedData.dll,System.Configuration.ConfigurationManager.dll,System.Runtime.CompilerServices.Unsafe.dll,System.IO.FileSystem.AccessControl.dll,System.Buffers.dll,System.Text.Encodings.Web.dll</RuntimeDllsExcludeList>
     </PropertyGroup>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(PackageDirectory)/$(Configuration) -Recurse -Include $(RuntimeDllsIncludeList) -Exclude $(RuntimeDllsExcludeList) | Remove-Item -Recurse -Force -Confirm:$false&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(PackageDirectory)/$(Configuration) -Recurse -Include $(RuntimeDllsIncludeList) -Exclude $(RuntimeDllsExcludeList) | Remove-Item -Recurse -Force&quot;" />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;" />
   </Target>
