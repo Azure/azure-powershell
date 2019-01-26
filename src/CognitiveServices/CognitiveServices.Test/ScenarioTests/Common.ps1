@@ -19,7 +19,7 @@ Cleans the created resource groups
 function Clean-ResourceGroup($rgname)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzureRmResourceGroup -Name $rgname -Force
+        Remove-AzResourceGroup -Name $rgname -Force
     }
 }
 
@@ -90,13 +90,13 @@ function Test-CreateCognitiveServicesAccount
 	param([string] $rgname, [string] $accountname, [string] $accounttype, [string] $skuname, [string] $loc)
 
 	# Action: create
-	$createdAccount = New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
+	$createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
 	
 	# Assert
 	Assert-NotNull $createdAccount;
 
 	# Cleanup
-	Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
+	Retry-IfException { Remove-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
 }
 
 <#

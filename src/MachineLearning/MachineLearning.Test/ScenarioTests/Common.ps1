@@ -57,7 +57,7 @@ function Get-ProviderLocation($providerNamespace, $resourceType)
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne `
         [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
     {
-        $provider = Get-AzureRmResourceProvider -ProviderNamespace $providerNamespace
+        $provider = Get-AzResourceProvider -ProviderNamespace $providerNamespace
         $resourceType = $provider.ResourceTypes | `
                         where {$_.ResourceTypeName -eq $resourceType}
           if ($resourceType -eq $null) 
@@ -102,9 +102,9 @@ Create a storage account to be used during testing, and return its details
 #>
 function Create-TestStorageAccount($resourceGroup, $location, $storageName)
 {
-    New-AzureRmStorageAccount -ResourceGroupName $resourceGroup -Name $storageName `
+    New-AzStorageAccount -ResourceGroupName $resourceGroup -Name $storageName `
                                 -Location $location -Type 'Standard_LRS' | Out-Null
-    $accessKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup `
+    $accessKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroup `
                                 -Name $storageName).Key1;
     return @{ Name = $storageName; Key = $accessKey }
 }
@@ -120,7 +120,7 @@ function Clean-CommitmentPlan($resourceGroup, $commitmentPlanName)
     {
         try {
             LogOutput "Removing commitment plan $commitmentPlanName from resource group $rgName"    
-            Remove-AzureRmMlCommitmentPlan -ResourceGroupName $resourceGroup `
+            Remove-AzMlCommitmentPlan -ResourceGroupName $resourceGroup `
                                         -Name $commitmentPlanName -Force
             LogOutput "Commitment plan $commitmentPlanName was removed."
         }
@@ -143,7 +143,7 @@ function Clean-WebService($resourceGroup, $webServiceName)
     {
         try {
             LogOutput "Removing web service $webServiceName from resource group $rgName"    
-            Remove-AzureRmMlWebService -ResourceGroupName $resourceGroup `
+            Remove-AzMlWebService -ResourceGroupName $resourceGroup `
                                         -Name $webServiceName -Force
             LogOutput "Web service $webServiceName was removed."
         }
@@ -166,7 +166,7 @@ function Clean-TestStorageAccount($resourceGroup, $accountName)
     {
         try {
             LogOutput "Removing storage account $accountName from resource group $rgName"             
-            Remove-AzureRmStorageAccount -ResourceGroupName $resourceGroup -Name $webServiceName
+            Remove-AzStorageAccount -ResourceGroupName $resourceGroup -Name $webServiceName
             LogOutput "Storage account $accountName was removed."
         }
         catch {
@@ -188,7 +188,7 @@ function Clean-ResourceGroup($resourceGroup)
     {
         try {
             LogOutput "Removing resource group $resourceGroup" 
-            Remove-AzureRmResourceGroup -Name $resourceGroup -Force
+            Remove-AzResourceGroup -Name $resourceGroup -Force
             LogOutput "Resource group $resourceGroup was removed." 
         }
         catch {

@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Accounts\Accounts.csproj" />
+    <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
+    <ProjectReference Include="..\Authentication\Authentication.csproj" />
   </ItemGroup>
 
   <ItemGroup>
