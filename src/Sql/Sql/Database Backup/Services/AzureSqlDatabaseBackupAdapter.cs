@@ -553,19 +553,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
-        /// Gets a SQL database by name
-        /// </summary>
-        /// <param name="resourceGroupName">The resource group the database is in</param>
-        /// <param name="serverName">The name of the server</param>
-        /// <param name="databaseName">The name of the database</param>
-        /// <returns></returns>
-        public AzureSqlDatabaseModel GetDatabase(string resourceGroupName, string serverName, string databaseName)
-        {
-            AzureSqlDatabaseAdapter databaseAdapter = new AzureSqlDatabaseAdapter(Context);
-            return databaseAdapter.GetDatabase(resourceGroupName, serverName, databaseName);
-        }
-
-        /// <summary>
         /// Create or update a backup LongTermRetention policy for a Azure SQL Database
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
