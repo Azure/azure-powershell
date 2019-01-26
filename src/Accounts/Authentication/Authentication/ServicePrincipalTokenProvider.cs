@@ -89,9 +89,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 (adalConfig, appId) => this.RenewWithCertificate(adalConfig, appId, certificateThumbprint), clientId);
         }
 
-        private ConfidentialClientApplication GetConfidentialClientApplication(AdalConfiguration config, ClientCredential credential)
+        private ConfidentialClientApplication GetConfidentialClientApplication(AdalConfiguration config, ClientCredential credential, string appId = null)
         {
-            return new ConfidentialClientApplication(config.ClientId, config.AdEndpoint + config.AdDomain, config.ResourceClientUri, credential, config.TokenCache, new TokenCache());
+            return new ConfidentialClientApplication(appId ?? config.ClientId, config.AdEndpoint + config.AdDomain, config.ResourceClientUri, credential, null, new TokenCache());
         }
 
         private AuthenticationResult AcquireTokenWithSecret(AdalConfiguration config, string appId, SecureString appKey)
@@ -106,10 +106,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             var credential = new ClientCredential(appId, appKey);
             return context.AcquireToken(config.ResourceClientUri, credential);
 #else
-            var context = GetConfidentialClientApplication(config, new ClientCredential(ConversionUtilities.SecureStringToString(appKey)));
-            var scopes = new string[] { config.ResourceClientUri + "/user_impersonation" };
-            var accounts = context.GetAccountsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-            return context.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == appId)).ConfigureAwait(false).GetAwaiter().GetResult();
+            var context = GetConfidentialClientApplication(config, new ClientCredential(ConversionUtilities.SecureStringToString(appKey)), appId);
+            var scopes = new string[] { config.ResourceClientUri + "/.default" };
+            return context.AcquireTokenForClientAsync(scopes).ConfigureAwait(false).GetAwaiter().GetResult();
 #endif
         }
 
@@ -127,10 +126,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #if !NETSTANDARD
             return context.AcquireToken(config.ResourceClientUri, new ClientAssertionCertificate(appId, certificate));
 #else
-            var context = GetConfidentialClientApplication(config, new ClientCredential(new ClientAssertionCertificate(certificate)));
-            var scopes = new string[] { config.ResourceClientUri + "/user_impersonation" };
-            var accounts = context.GetAccountsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-            return context.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == appId)).ConfigureAwait(false).GetAwaiter().GetResult();
+            var context = GetConfidentialClientApplication(config, new ClientCredential(new ClientAssertionCertificate(certificate)), appId);
+            var scopes = new string[] { config.ResourceClientUri + "/.default" };
+            return context.AcquireTokenForClientAsync(scopes).ConfigureAwait(false).GetAwaiter().GetResult();
 #endif
         }
 

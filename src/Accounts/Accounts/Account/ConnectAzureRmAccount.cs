@@ -60,10 +60,8 @@ namespace Microsoft.Azure.Commands.Profile
         public string Environment { get; set; }
 
 // TODO: Remove IfDef code
-#if !NETSTANDARD
         [Parameter(ParameterSetName = UserParameterSet,
                     Mandatory = false, HelpMessage = "Optional credential", Position = 0)]
-#endif
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true, HelpMessage = "Credential")]
         public PSCredential Credential { get; set; }

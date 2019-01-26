@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private string _tokenAudience;
         private IPublicClientApplication _authenticationContext;
         private string _clientId;
+        private string _username;
 
         /// <summary>
         /// The id of the active directory common tenant.
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <param name="clientId">The active directory client Id to match when retrieving tokens.</param>
         /// <param name="tokenAudience">The audience to match when retrieving tokens.</param>
         /// <param name="userId">The user id to match when retrieving tokens.</param>
-        public UserTokenAuthenticationProvider(IPublicClientApplication context, string clientId, Uri tokenAudience)
+        public UserTokenAuthenticationProvider(IPublicClientApplication context, string clientId, Uri tokenAudience, string username)
         {
             if (context == null)
             {
@@ -64,10 +65,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 throw new ArgumentNullException("tokenAudience");
             }
+            if (username == null)
+            {
+                throw new ArgumentNullException("username");
+            }
 
             this._authenticationContext = context;
             this._clientId = clientId;
             this._tokenAudience = tokenAudience.OriginalString;
+            this._username = username;
         }
 
         /// <summary>
@@ -89,10 +95,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                             .ConfigureAwait(false).GetAwaiter().GetResult();
             try
             {
-                var authResult = await authenticationContext.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault()).ConfigureAwait(false);
+                var authResult = await authenticationContext.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == username)).ConfigureAwait(false);
                 return
                     new TokenCredentials(
-                        new UserTokenAuthenticationProvider(authenticationContext, clientId, serviceSettings.TokenAudience),
+                        new UserTokenAuthenticationProvider(authenticationContext, clientId, serviceSettings.TokenAudience, username),
                         authResult.TenantId,
                         authResult.Account == null ? null : authResult.Account.Username);
             }
@@ -118,7 +124,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                              .ConfigureAwait(false).GetAwaiter().GetResult();
             try
             {
-                AuthenticationResult result = await _authenticationContext.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault()).ConfigureAwait(false);
+                AuthenticationResult result = await _authenticationContext.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == _username)).ConfigureAwait(false);
                 return new AuthenticationHeaderValue("Bearer", result.AccessToken);
             }
             catch (MsalException authenticationException)
