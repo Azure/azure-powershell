@@ -15,7 +15,7 @@
 $scriptFolder = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . ($scriptFolder + '.\SetupEnv.ps1')
 
-$packageFolder="$env:AzurePSRoot\src\Package"
+$packageFolder="$env:AzurePSRoot\artifacts"
 if (Test-Path $packageFolder) {
     Remove-Item -Path $packageFolder -Recurse -Force	
 }

@@ -32,7 +32,7 @@ Describe "Test-NewCredentialNewServicePrincipal"{
     }
 	
 	Context "Connection string is properly set" {
-        $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\..\..\src\ResourceManager\Common\Commands.ScenarioTests.ResourceManager.Common\bin\Debug\Microsoft.Azure.Commands.ScenarioTest.Common.dll"
+        $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\..\..\src\Common\Commands.ScenarioTests.ResourceManager.Common\bin\Debug\Microsoft.Azure.Commands.ScenarioTest.Common.dll"
         $assembly = [System.Reflection.Assembly]::LoadFrom($filePath)
         $envHelper = New-Object Microsoft.WindowsAzure.Commands.ScenarioTest.EnvironmentSetupHelper -ArgumentList @()
         $envHelper.SetEnvironmentVariableFromCredentialFile()
@@ -71,7 +71,7 @@ Describe "Test-NewCredentialExistingServicePrincipal" {
     }
 
     Context "Connection string is properly set" {
-        $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\..\..\src\ResourceManager\Common\Commands.ScenarioTests.ResourceManager.Common\bin\Debug\Microsoft.Azure.Commands.ScenarioTest.Common.dll"
+        $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\..\..\src\Common\Commands.ScenarioTests.ResourceManager.Common\bin\Debug\Microsoft.Azure.Commands.ScenarioTest.Common.dll"
         $assembly = [System.Reflection.Assembly]::LoadFrom($filePath)
         $envHelper = New-Object Microsoft.WindowsAzure.Commands.ScenarioTest.EnvironmentSetupHelper -ArgumentList @()
         $envHelper.SetEnvironmentVariableFromCredentialFile()
@@ -107,7 +107,7 @@ Describe "Test-NewCredentialUserId" {
     }
 	
 	Context "Connection string is properly set" {
-        $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\..\..\src\ResourceManager\Common\Commands.ScenarioTests.ResourceManager.Common\bin\Debug\Microsoft.Azure.Commands.ScenarioTest.Common.dll"
+        $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\..\..\src\Common\Commands.ScenarioTests.ResourceManager.Common\bin\Debug\Microsoft.Azure.Commands.ScenarioTest.Common.dll"
         $assembly = [System.Reflection.Assembly]::LoadFrom($filePath)
         $envHelper = New-Object Microsoft.WindowsAzure.Commands.ScenarioTest.EnvironmentSetupHelper -ArgumentList @()
         $envHelper.SetEnvironmentVariableFromCredentialFile()

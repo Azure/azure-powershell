@@ -224,7 +224,7 @@ Copy-Item "$PathToShared\PSReleaseDrop\*" "$PathToShared\$entryName" -Recurse
 
 # Copy the msi and packages into the new folder
 Copy-Item $msiFile.FullName "$PathToShared\$entryName"
-Copy-Item "$BuildArtifactsPath\src\Package\*.nupkg" "$PathToShared\$entryName\pkgs"
+Copy-Item "$BuildArtifactsPath\artifacts\*.nupkg" "$PathToShared\$entryName\pkgs"
 
 # ==================================================================================================
 # Update other xml files using Build.sh and copy them to entry

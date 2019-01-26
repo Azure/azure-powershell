@@ -31,6 +31,7 @@ namespace VersionController.Models
             Console.WriteLine("Bumping version for " + moduleName + "...");
             using (PowerShell powershell = PowerShell.Create())
             {
+                powershell.AddScript("Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;");
                 powershell.AddScript("$metadata = Test-ModuleManifest -Path " + _fileHelper.OutputModuleManifestPath + ";$metadata.Version;$metadata.PrivateData.PSData.Prerelease");
                 var cmdletResult = powershell.Invoke();
                 _oldVersion = cmdletResult[0]?.ToString();
@@ -74,7 +75,7 @@ namespace VersionController.Models
             var moduleName = _fileHelper.ModuleName;
             var splitVersion = _oldVersion.Split('.').Select(v => int.Parse(v)).ToArray();
             var versionBump = _metadataHelper.GetVersionBumpUsingSerialized();
-            if (string.Equals(moduleName, "AzureRM.Profile"))
+            if (string.Equals(moduleName, "Az.Accounts"))
             {
                 var commonCodeVersionBump = _metadataHelper.GetVersionBumpForCommonCode();
                 if (commonCodeVersionBump == Version.MAJOR)
@@ -122,6 +123,7 @@ namespace VersionController.Models
             IList<string> nestedModules = null;
             using (PowerShell powershell = PowerShell.Create())
             {
+                powershell.AddScript("Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;");
                 powershell.AddScript("(Test-ModuleManifest -Path " + outputModuleManifestPath + ").NestedModules");
                 var cmdletResult = powershell.Invoke();
                 nestedModules = cmdletResult.Select(c => c.ToString()).ToList();
@@ -144,14 +146,14 @@ namespace VersionController.Models
 
         /// <summary>
         /// Bumps the RequiredVersion field for a given module in the hashtable of RequiredModules
-        /// in the AzureRM module manifest file.
+        /// in the Az module manifest file.
         /// </summary>
         private void UpdateRollupModuleManifest()
         {
             var rollupModuleManifestPath = _fileHelper.RollupModuleManifestPath;
             var moduleName = _fileHelper.ModuleName;
 
-            // Skip this step since preview modules should not be included in AzureRM
+            // Skip this step since preview modules should not be included in Az
             if (_isPreview)
             {
                 return;
@@ -160,7 +162,9 @@ namespace VersionController.Models
             var file = File.ReadAllLines(rollupModuleManifestPath);
             var pattern = @"ModuleName(\s*)=(\s*)(['\""])" + moduleName + @"(['\""])(\s*);(\s*)RequiredVersion(\s*)=(\s*)(['\""])" + _oldVersion + @"(['\""])";
             var updatedFile = file.Select(l => Regex.Replace(l, pattern, "ModuleName = '" + moduleName + "'; RequiredVersion = '" + _newVersion + "'"));
-            File.WriteAllLines(rollupModuleManifestPath, updatedFile);
+            var pattern2 = @"ModuleName(\s*)=(\s*)(['\""])" + moduleName + @"(['\""])(\s*);(\s*)ModuleVersion(\s*)=(\s*)(['\""])" + _oldVersion + @"(['\""])";
+            var updatedFile2 = updatedFile.Select(l => Regex.Replace(l, pattern2, "ModuleName = '" + moduleName + "'; ModuleVersion = '" + _newVersion + "'"));
+            File.WriteAllLines(rollupModuleManifestPath, updatedFile2);
         }
 
         /// <summary>
@@ -182,7 +186,7 @@ namespace VersionController.Models
         }
 
         /// <summary>
-        /// Get the releases notes for the current release from a change log.
+        /// Get the releases notes for the upcoming release from a change log.
         /// </summary>
         /// <returns>List of non-empty strings representing the lines of the release notes.</returns>
         private List<string> GetReleaseNotes()
@@ -209,7 +213,7 @@ namespace VersionController.Models
         /// <summary>
         /// Update the module version and release notes for a module manifest file.
         /// </summary>
-        /// <param name="releaseNotes">Release notes for the current release from the change log.</param>
+        /// <param name="releaseNotes">Release notes for the upcoming release from the change log.</param>
         private void UpdateOutputModuleManifest(List<string> releaseNotes)
         {
             var moduleName = _fileHelper.ModuleName;
@@ -220,7 +224,8 @@ namespace VersionController.Models
             File.Copy(outputModuleManifestPath, tempModuleManifestPath);
             var script = "$releaseNotes = @();";
             releaseNotes.ForEach(l => script += "$releaseNotes += \"" + l + "\";");
-            script += $"$env:PSModulePath+=\";{_fileHelper.OutputResourceManagerDirectory};{_fileHelper.SrcDirectory}\\Package\\Debug\\Storage\";";
+            script += $"$env:PSModulePath+=\";{_fileHelper.OutputResourceManagerDirectory}\";";
+            script += "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;";
             script += "Update-ModuleManifest -Path " + tempModuleManifestPath + " -ModuleVersion " + _newVersion + " -ReleaseNotes $releaseNotes";
             using (PowerShell powershell = PowerShell.Create())
             {
@@ -241,7 +246,7 @@ namespace VersionController.Models
         }
 
         /// <summary>
-        /// Creates a new header for the current release based on the new version.
+        /// Creates a new header for the upcoming release based on the new version.
         /// </summary>
         private void UpdateChangeLog()
         {
@@ -249,7 +254,7 @@ namespace VersionController.Models
             var file = File.ReadAllLines(changeLogPath);
             var newFile = new string[file.Length + 2];
             var idx = 0;
-            while (idx < file.Length && !file[idx].Equals("## Current Release"))
+            while (idx < file.Length && !file[idx].Equals("## Upcoming Release"))
             {
                 newFile[idx] = file[idx];
                 idx++;
@@ -321,7 +326,7 @@ namespace VersionController.Models
             var changeLogPath = _fileHelper.ChangeLogPath;
             var file = File.ReadAllLines(changeLogPath);
             var idx = 0;
-            while (idx < file.Length && !file[idx].Equals("## Current Release"))
+            while (idx < file.Length && !file[idx].Equals("## Upcoming Release"))
             {
                 idx++;
             }
