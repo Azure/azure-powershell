@@ -60,7 +60,7 @@ function getAzureVm{
         $VMLocalAdminSecurePassword = "password"
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
         $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
-        New-AzureRmVM -Name MyVm -Credential $Credential -location getPrimaryLocation
+        New-AzVM -Name MyVm -Credential $Credential -location getPrimaryLocation
 }
 
 function getPrimaryPolicy{
@@ -108,7 +108,7 @@ function getRecoveryNetworkId{
     param([string] $location , [string] $resourceGroup)
 
     $primaryNetworkName = "recoveryNetwork"+ $location + $seed;
-    $virtualNetwork = New-AzureRmVirtualNetwork `
+    $virtualNetwork = New-AzVirtualNetwork `
           -ResourceGroupName $resourceGroup `
           -Location $location `
           -Name $primaryNetworkName `
@@ -136,7 +136,7 @@ function WaitForJobCompletion
         $isJobLeftForProcessing = $true;
         do
         {
-            $Job = Get-AzureRmRecoveryServicesAsrJob -Name $JobId
+            $Job = Get-AzRecoveryServicesAsrJob -Name $JobId
             Write-Host $("Job Status:") -ForegroundColor Green
             $Job
 
@@ -183,7 +183,7 @@ Function WaitForIRCompletion
         Write-Host $("IR in Progress...") -ForegroundColor Yellow
         do
         {
-            $IRjobs = Get-AzureRmRecoveryServicesAsrJob -TargetObjectId $affectedObjectId | Sort-Object StartTime -Descending | select -First 2 | Where-Object{$_.JobType -eq "SecondaryIrCompletion"}
+            $IRjobs = Get-AzRecoveryServicesAsrJob -TargetObjectId $affectedObjectId | Sort-Object StartTime -Descending | select -First 2 | Where-Object{$_.JobType -eq "SecondaryIrCompletion"}
             $isProcessingLeft = ($IRjobs -eq $null -or $IRjobs.Count -ne 1)
 
             if($isProcessingLeft)

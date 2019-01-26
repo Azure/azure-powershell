@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
@@ -18,6 +18,8 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+
+## Version 1.1.0
 * Update incorrect online help URLs
 
 ## Version 1.0.0
@@ -48,3 +50,4 @@
         - New-AzApplicationGatewaySslCertificate
         - Set-AzApplicationGatewaySslCertificate
     - New-AzApplicationGateway cmdlet updated with optional parameter -UserAssignedIdentityId, -UserAssignedIdentity
+* Add MaxCapacity property in ApplicationGatewayAutoscaleConfiguration

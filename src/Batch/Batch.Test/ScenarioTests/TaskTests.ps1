@@ -28,11 +28,11 @@ function Test-TaskCRUD
     try
     {
         # Create 2 tasks
-        New-AzureBatchTask -Id $taskId1 -JobId $jobId -CommandLine "cmd /c echo task1" -BatchContext $context
-        New-AzureBatchTask -Id $taskId2 -JobId $jobId -CommandLine "cmd /c echo task2" -BatchContext $context
+        New-AzBatchTask -Id $taskId1 -JobId $jobId -CommandLine "cmd /c echo task1" -BatchContext $context
+        New-AzBatchTask -Id $taskId2 -JobId $jobId -CommandLine "cmd /c echo task2" -BatchContext $context
 
         # List the tasks to ensure they were created
-        $tasks = Get-AzureBatchTask -JobId $jobId -Filter "id eq '$taskId1' or id eq '$taskId2'" -BatchContext $context
+        $tasks = Get-AzBatchTask -JobId $jobId -Filter "id eq '$taskId1' or id eq '$taskId2'" -BatchContext $context
         $task1 = $tasks | Where-Object { $_.Id -eq $taskId1 }
         $task2 = $tasks | Where-Object { $_.Id -eq $taskId2 }
         Assert-NotNull $task1
@@ -41,17 +41,17 @@ function Test-TaskCRUD
         # Update a task
         $maxTaskRetryCount = 3
         $task2.Constraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @($null, $null, 3)
-        $task2 | Set-AzureBatchTask -BatchContext $context
-        $updatedTask = Get-AzureBatchTask -JobId $jobId -Id $taskId2 -BatchContext $context
+        $task2 | Set-AzBatchTask -BatchContext $context
+        $updatedTask = Get-AzBatchTask -JobId $jobId -Id $taskId2 -BatchContext $context
         Assert-AreEqual $maxTaskRetryCount $updatedTask.Constraints.MaxTaskRetryCount
     }
     finally
     {
         # Delete the tasks
-        Get-AzureBatchTask -JobId $jobId -BatchContext $context | Remove-AzureBatchTask -Force -BatchContext $context
+        Get-AzBatchTask -JobId $jobId -BatchContext $context | Remove-AzBatchTask -Force -BatchContext $context
 
         # Verify the tasks were deleted
-        $tasks = Get-AzureBatchTask -JobId $jobId -BatchContext $context
+        $tasks = Get-AzBatchTask -JobId $jobId -BatchContext $context
         Assert-Null $tasks
     }
 }
@@ -77,9 +77,9 @@ function Test-CreateTaskCollection
     $taskCollection = @($task1, $task2)
 
     # Create a simple task collection and verify pipeline
-    Get-AzureBatchJob -Id $jobId -BatchContext $context | New-AzureBatchTask -Tasks $taskCollection -BatchContext $context
-    $task1 = Get-AzureBatchTask -JobId $jobId -Id $taskId1 -BatchContext $context
-    $task2 = Get-AzureBatchTask -JobId $jobId -Id $taskId2 -BatchContext $context
+    Get-AzBatchJob -Id $jobId -BatchContext $context | New-AzBatchTask -Tasks $taskCollection -BatchContext $context
+    $task1 = Get-AzBatchTask -JobId $jobId -Id $taskId1 -BatchContext $context
+    $task2 = Get-AzBatchTask -JobId $jobId -Id $taskId2 -BatchContext $context
 
     # Verify created task matches expectations
     Assert-AreEqual $taskId1 $task1.Id
@@ -130,10 +130,10 @@ function Test-CreateTaskCollection
     $taskCollection = @($task3, $task4)
 
     # Create a task collection with the job id
-    New-AzureBatchTask -JobId $jobId -Tasks $taskCollection -BatchContext $context
+    New-AzBatchTask -JobId $jobId -Tasks $taskCollection -BatchContext $context
 
-    $task3 = Get-AzureBatchTask -JobId $jobId -Id $taskId3 -BatchContext $context
-    $task4 = Get-AzureBatchTask -JobId $jobId -Id $taskId4 -BatchContext $context
+    $task3 = Get-AzBatchTask -JobId $jobId -Id $taskId3 -BatchContext $context
+    $task4 = Get-AzBatchTask -JobId $jobId -Id $taskId4 -BatchContext $context
 
     # Verify created task matches expectations
     Assert-AreEqual $taskId3 $task3.Id
@@ -165,11 +165,11 @@ function Test-TerminateTask
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-    Stop-AzureBatchTask $jobId $taskId1 -BatchContext $context
-    Get-AzureBatchTask $jobId $taskId2 -BatchContext $context | Stop-AzureBatchTask -BatchContext $context
+    Stop-AzBatchTask $jobId $taskId1 -BatchContext $context
+    Get-AzBatchTask $jobId $taskId2 -BatchContext $context | Stop-AzBatchTask -BatchContext $context
 
     # Verify the tasks were terminated
-    foreach ($task in Get-AzureBatchTask $jobId -BatchContext $context)
+    foreach ($task in Get-AzBatchTask $jobId -BatchContext $context)
     {
         Assert-AreEqual 'completed' $task.State.ToString().ToLower()
     }
@@ -186,12 +186,12 @@ function Test-ListAllSubtasks
     $numSubTasksExpected = $numInstances - 1
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    $subtasks = Get-AzureBatchSubtask $jobId $taskId -BatchContext $context
+    $subtasks = Get-AzBatchSubtask $jobId $taskId -BatchContext $context
 
     Assert-AreEqual $numSubTasksExpected $subtasks.Length
 
     # Verify pipeline also works
-    $subtasks = Get-AzureBatchTask $jobId $taskId -BatchContext $context | Get-AzureBatchSubtask -BatchContext $context
+    $subtasks = Get-AzBatchTask $jobId $taskId -BatchContext $context | Get-AzBatchSubtask -BatchContext $context
 
     Assert-AreEqual $numSubTasksExpected $subtasks.Length
 }

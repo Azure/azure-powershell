@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: AF8CC409-2EA7-4EC1-86C9-E7A773DE9201
@@ -205,7 +205,7 @@ Accept wildcard characters: False
 ```
 
 ### -SslCertificate
-Specifies the SSL certificate object for  the HTTP listener.
+Specifies the SSL certificate object for the HTTP listener.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslCertificate

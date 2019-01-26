@@ -30,7 +30,7 @@ namespace Commands.Network.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact(Skip = "Backend issue. The resource type could not be found in the namespace 'Microsoft.Network' for api version '2018-10-01'.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.pgtm)]
         public void TestExpressRoutePortsLocationRead()
