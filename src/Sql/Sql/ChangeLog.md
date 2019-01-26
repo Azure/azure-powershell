@@ -20,6 +20,9 @@
 ## Upcoming Release
 * Add Get/Set AzSqlDatabaseBackupShortTermRetentionPolicy
 
+## Version 1.1.1
+* Update preview with changes from stable
+
 ## Version 1.1.0
 * Update incorrect online help URLs
 * Updated parameter description for LicenseType parameter with possible values
