@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings first..
+        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceVulnerabilityAssessmentSettings first..
         /// </summary>
         internal static string RunSetManagedDatabaseVulnerabilityAssemenSettings {
             get {
@@ -718,7 +718,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlDatabaseVulnerabilityAssessmentSettings first..
+        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlServerVulnerabilityAssessmentSettings first..
         /// </summary>
         internal static string RunSetVulnerabilityAssemenSettings {
             get {

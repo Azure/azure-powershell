@@ -409,7 +409,7 @@
     <value>Server Advanced Threat Protection is not defined. Please run Enable-AzSqlServerAdvancedThreatProtection first.</value>
   </data>
   <data name="RunSetVulnerabilityAssemenSettings" xml:space="preserve">
-    <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlDatabaseVulnerabilityAssessmentSettings first.</value>
+    <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlServerVulnerabilityAssessmentSettings first.</value>
   </data>
   <data name="InvalidBlobStorageSasUri" xml:space="preserve">
     <value>Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?st=XXXXXX."</value>
@@ -439,7 +439,7 @@
     <value>Wrong parameter type</value>
   </data>
   <data name="RunSetManagedDatabaseVulnerabilityAssemenSettings" xml:space="preserve">
-    <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings first.</value>
+    <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceVulnerabilityAssessmentSettings first.</value>
   </data>
   <data name="ManagedInstanceAdvancedThreatProtectionIsNotDefined" xml:space="preserve">
     <value>Managed Instance Advanced Threat Protection is not defined. Please run Enable-AzSqlInstanceAdvancedDataSecurityPolicy first.</value>
