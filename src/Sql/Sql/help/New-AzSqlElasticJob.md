@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.sql/get-Azsqlelasticjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqlelasticjob
 schema: 2.0.0
 ---
 
