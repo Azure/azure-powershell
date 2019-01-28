@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     {
         private string _tenantId;
         private IServicePrincipalKeyStore _keyStore;
+        private ActiveDirectoryServiceSettings _settings;
 
         /// <summary>
         /// Create a credential provider
@@ -50,6 +51,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         }
 
         /// <summary>
+        /// Create a credential provider
+        /// </summary>
+        /// <param name="tenant"></param>
+        /// <param name="keyStore"></param>
+        /// <param name="settings"></param>
+        public KeyStoreApplicationCredentialProvider(string tenant, IServicePrincipalKeyStore keyStore, ActiveDirectoryServiceSettings settings)
+        {
+            this._tenantId = tenant;
+            this._keyStore = keyStore;
+            this._settings = settings;
+        }
+
+        /// <summary>
         /// Authenticate using the secret for the specified client from the key store
         /// </summary>
         /// <param name="clientId">The active directory client id for the application.</param>
@@ -65,8 +79,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             task.Start();
             var key = await task.ConfigureAwait(false);
             var clientCredential = new ClientCredential(ConversionUtilities.SecureStringToString(key));
-            var context = new ConfidentialClientApplication(clientId, audience, clientCredential, new TokenCache(), new TokenCache());
-            return await context.AcquireTokenForClientAsync(new string[] { audience + "/user_impersonation" });
+            var context = new ConfidentialClientApplication(clientId, _settings.AuthenticationEndpoint + _tenantId, audience, clientCredential, new TokenCache(), new TokenCache());
+            return await context.AcquireTokenForClientAsync(new string[] { audience + "/.default" });
         }
     }
 }

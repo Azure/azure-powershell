@@ -24,6 +24,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     internal sealed class CertificateApplicationCredentialProvider : IApplicationAuthenticationProvider
     {
         private string _certificateThumbprint;
+        private string _tenantId;
+        private ActiveDirectoryServiceSettings _settings;
 
         /// <summary>
         /// Create a certificate provider
@@ -32,6 +34,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public CertificateApplicationCredentialProvider(string certificateThumbprint)
         {
             this._certificateThumbprint = certificateThumbprint;
+        }
+
+        /// <summary>
+        /// Create a certificate provider
+        /// </summary>
+        /// <param name="certificateThumbprint"></param>
+        /// <param name="settings"></param>
+        public CertificateApplicationCredentialProvider(string certificateThumbprint, string tenantId, ActiveDirectoryServiceSettings settings)
+        {
+            this._certificateThumbprint = certificateThumbprint;
+            this._tenantId = tenantId;
+            this._settings = settings;
         }
 
         /// <summary>
@@ -51,8 +65,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             var certificate = await task.ConfigureAwait(false);
 
             var clientCredential = new ClientCredential(new ClientAssertionCertificate(certificate));
-            var context = new ConfidentialClientApplication(clientId, audience, clientCredential, new TokenCache(), new TokenCache());
-            return await context.AcquireTokenForClientAsync(new string[] { audience + "/user_impersonation" });
+            var context = new ConfidentialClientApplication(clientId, _settings.AuthenticationEndpoint + _tenantId, audience, clientCredential, new TokenCache(), new TokenCache());
+            return await context.AcquireTokenForClientAsync(new string[] { audience + "/.default" });
         }
     }
 }

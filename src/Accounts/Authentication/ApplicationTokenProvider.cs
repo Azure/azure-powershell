@@ -133,9 +133,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     : new PublicClientApplication(clientId, serviceSettings.AuthenticationEndpoint + domain, cache);
         }
 
-        public Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
+        public virtual async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            try
+            {
+                AuthenticationResult result;
+                if (AccessTokenExpired)
+                {
+                    result = await this._authentications.AuthenticateAsync(this._clientId, this._tokenAudience).ConfigureAwait(false);
+                    this._accessToken = result.AccessToken;
+                    this._expiration = result.ExpiresOn;
+                }
+
+                return new AuthenticationHeaderValue("Bearer", this._accessToken);
+            }
+            catch (MsalException authenticationException)
+            {
+                throw new MsalException(authenticationException.ErrorCode, "Authentication error while acquiring token.", authenticationException);
+            }
         }
     }
 }

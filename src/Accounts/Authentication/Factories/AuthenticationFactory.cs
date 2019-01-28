@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                                 tenant,
                                 context.Account.Id,
                                 new CertificateApplicationCredentialProvider(
-                                    context.Account.GetThumbprint()),
+                                    context.Account.GetThumbprint(), tenant, env),
                                 env,
                                 tokenCache.GetUserCache() as TokenCache).ConfigureAwait(false).GetAwaiter().GetResult();
                         }
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                             result = ApplicationTokenProvider.LoginSilentAsync(
                                 tenant,
                                 context.Account.Id,
-                                new KeyStoreApplicationCredentialProvider(tenant, KeyStore),
+                                new KeyStoreApplicationCredentialProvider(tenant, KeyStore, env),
                                 env,
                                 tokenCache.GetUserCache() as TokenCache).ConfigureAwait(false).GetAwaiter().GetResult();
                         }
