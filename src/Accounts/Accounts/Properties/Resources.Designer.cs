@@ -538,6 +538,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Username + Password authentication is not supported in PowerShell Core.  Please use device code authentication for interactive log in, or Service Principal authentication for script log in..
+        /// </summary>
+        internal static string PasswordNotSupported {
+            get {
+                return ResourceManager.GetString("PasswordNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set the target account, tenant, and subscription of cmdlets executed in this session to the context stored in {0}.
         /// </summary>
         internal static string ProcessImportContextFromFile {

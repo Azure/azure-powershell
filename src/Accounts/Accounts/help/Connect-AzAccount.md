@@ -15,13 +15,21 @@ Connect to Azure with an authenticated account for use with Azure Resource Manag
 ### UserWithSubscriptionId (Default)
 ```
 Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-Subscription <String>] [-ContextName <String>]
- [-SkipContextPopulation] [-Force] [-Scope <ContextModificationScope>]
+ [-SkipContextPopulation] [-UseDeviceAuthentication] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalWithSubscriptionId
 ```
 Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-ServicePrincipal] -Tenant <String>
+ [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-Force]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UserWithCredential
+```
+Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-Tenant <String>]
  [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-Force]
  [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -74,11 +82,26 @@ This command connects to an Azure account.
 To run Azure Resource Manager cmdlets with this account, you must provide Microsoft account or organizational ID credentials at the prompt.
 If multi-factor authentication is enabled for your credentials, you must log in using the interactive option or use service principal authentication.
 
-### Example 2: Connect to an Azure service principal account
+### Example 2: (Windows PowerShell 5.1 only) Connect to an Azure account using organizational ID credentials
 ```powershell
 PS C:\> $Credential = Get-Credential
+PS C:\> Connect-AzAccount -Credential $Credential
 
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
+```
+
+This scenario works only in Windows PowerShell 5.1. The first command will prompt for user credentials (username and password), and then stores them in the $Credential variable.
+The second command connects to an Azure account using the credentials stored in $Credential.
+This account authenticates with Azure Resource Manager using organizational ID credentials.
+You cannot use multi-factor authentication or Microsoft account credentials to run Azure Resource Manager cmdlets with this account.
+
+### Example 3: Connect to an Azure service principal account
+```powershell
+PS C:\> $Credential = Get-Credential
 PS C:\> Connect-AzAccount -Credential $Credential -Tenant "xxxx-xxxx-xxxx-xxxx" -ServicePrincipal
+
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
 xxxx-xxxx-xxxx-xxxx    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
@@ -229,7 +252,7 @@ The PSCredential object provides the user ID and password for organizational ID 
 
 ```yaml
 Type: System.Management.Automation.PSCredential
-Parameter Sets: ServicePrincipalWithSubscriptionId
+Parameter Sets: ServicePrincipalWithSubscriptionId, UserWithCredential
 Aliases:
 
 Required: True
@@ -467,7 +490,7 @@ Optional tenant name or ID
 
 ```yaml
 Type: System.String
-Parameter Sets: UserWithSubscriptionId, AccessTokenWithSubscriptionId, ManagedServiceLogin
+Parameter Sets: UserWithSubscriptionId, UserWithCredential, AccessTokenWithSubscriptionId, ManagedServiceLogin
 Aliases: Domain, TenantId
 
 Required: False
@@ -483,6 +506,21 @@ Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateW
 Aliases: Domain, TenantId
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseDeviceAuthentication
+Use device code authentication instead of a browser control
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UserWithSubscriptionId
+Aliases: DeviceCode, DeviceAuth, Device
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
