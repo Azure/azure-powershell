@@ -2,6 +2,6 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildThisFileDirectory)\Dependencies.targets"/>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.18" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.19" />
   </ItemGroup>
 </Project>
