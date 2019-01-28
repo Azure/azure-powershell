@@ -51,12 +51,12 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.5.2'; },
-        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; },
+    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.3'; },
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.3'; },
         @{ModuleName = 'Azs.AzureBridge.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.3.0'; },
         @{ModuleName = 'Azs.Commerce.Admin'; RequiredVersion = '0.2.0'; },
-        @{ModuleName = 'Azs.Compute.Admin'; RequiredVersion = '0.2.1'; },
+        @{ModuleName = 'Azs.Compute.Admin'; RequiredVersion = '0.2.2'; },
         @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.4.0'; },
         @{ModuleName = 'Azs.Gallery.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.InfrastructureInsights.Admin'; RequiredVersion = '0.3.0'; },
@@ -123,15 +123,19 @@
             # ReleaseNotes of this module
             ReleaseNotes = '## 2019.MM - Version 1.7.0
             * Supported with 1901 update
+            * This a breaking change release. For details on the breaking changes, refer to https://aka.ms/azspshmigration170
             * Azs.Backup.Admin Module
                 * Breaking change: Backup changes to cert-based encryption mode. Support for symmetric keys is deprecated.
             * Azs.Fabric.Admin Module
                 * Deprecation
                     * Get-AzsInfrastructureVolume has been deprecated, we provide new cmdlet Get-AzsVolume
                     * Get-AzsStorageSystem has been deprecated, we provide new cmdlet Get-AzsStorageSubSystem
-                    * Get-AzsStoragePool has been deprecated, the StorageSubSystem object has the capacity property'
-
-
+                    * Get-AzsStoragePool has been deprecated, the StorageSubSystem object has the capacity property
+			* Azs.Compute.Admin Module
+				* BugFix: Add-AzsPlatformImage, Get-AzsPlatformImage : Calling ConvertTo-PlatformImageObject only in the success path
+				* BugFix: Add-AzsVmExtension, Get-AzsVmExtension : Calling ConvertTo-VmExtensionObject only in the success path
+            * Azs.Storage.Admin Module 
+                * Bug fix - New Storage Quota uses defaults if none provided.'
 
             # External dependent modules of this module
             # ExternalModuleDependencies = ''

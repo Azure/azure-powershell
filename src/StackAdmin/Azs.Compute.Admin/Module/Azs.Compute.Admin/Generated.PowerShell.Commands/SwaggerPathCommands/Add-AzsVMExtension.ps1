@@ -186,7 +186,11 @@ function Add-AzsVMExtension {
                     $GetTaskResult_params = @{
                         TaskResult = $TaskResult
                     }
-                    ConvertTo-VmExtensionObject -VmExtension (Get-TaskResult @GetTaskResult_params)
+                    $vmExtension = Get-TaskResult @GetTaskResult_params
+                    if ($vmExtension -and (Get-Member -InputObject $vmExtension -Name 'Id') -and $vmExtension.Id)
+                    {
+                        ConvertTo-VmExtensionObject -VmExtension $vmExtension
+                    }
                 }
             }
 

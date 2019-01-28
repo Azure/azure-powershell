@@ -12,7 +12,7 @@
     # RootModule = ''
 
     # Version number of this module.
-    ModuleVersion          = '2.3.0.1'
+    ModuleVersion          = '2.4.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -51,18 +51,18 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.2'; },
-        @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.1.1'; },
+    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.3'; },
+        @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.5.0'; },
         @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '4.0.3'; },
         @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '3.5.1'; },
         @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '4.2.0'; },
         @{ModuleName = 'AzureRM.Network'; RequiredVersion = '5.0.1'; },
-        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; },
-        @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '1.1.0.1'; },
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.3'; },
+        @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '5.0.4'; },
         @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '4.0.2'; },
         @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '4.0.3'; },
         @{ModuleName = 'AzureRM.Websites'; RequiredVersion = '5.0.1'; },
-        @{ModuleName = 'AzureRM.Insights'; RequiredVersion = '5.0.0'; })
+        @{ModuleName = 'AzureRM.Insights'; RequiredVersion = '5.1.5'; })
 
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()
@@ -119,7 +119,16 @@
 
             # ReleaseNotes of this module
             ReleaseNotes = '## 2019.01
-            * Added simple parameter sets in New-AzureRMVM and NewAzureRMVMSS, -ImageName parameter supports specifying user images.'
+            * AzureRm.Resources
+                * Bug fix in Get-AzureRmResource to query case insensitively by resource type
+            * Azure.Storage
+                * AzureRm rollup module now includes the already published version 4.5.0 supporting the api-version 2017-07-29
+            * AzureRm.Storage
+                * AzureRm rollup module now includes the already published version 5.0.4 supporting the api-version 2017-10-01
+            * AzureRm.Compute
+                * Added simple parameter sets in New-AzureRMVM and NewAzureRMVMSS, -ImageName parameter supports specifying user images.
+            *AzureRm.Insights
+                * AzureRm rollup module now includes the already published version 5.1.5 supporting the api-version 2018-01-01 for metrics/metric definitions resource types'
 
             # External dependent modules of this module
             # ExternalModuleDependencies = ''

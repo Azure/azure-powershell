@@ -132,19 +132,22 @@ function Get-AzsVMExtension {
             }
 
             Get-TaskResult @GetTaskResult_params | ForEach-Object {
-                [VmExtensionObject]$Object = ConvertTo-VmExtensionObject -VMExtension $_
+                if ($_ -and (Get-Member -InputObject $_ -Name 'Id') -and $_.Id)
+                {
+                    [VmExtensionObject]$Object = ConvertTo-VmExtensionObject -VMExtension $_
 
-                # Filter
-                [bool]$add = $true
-                if ($add -and (-not [System.String]::IsNullOrEmpty($Publisher))) {
-                    $add = $Object.Publisher -like "*$Publisher*"
-                }
-                if ($add -and (-not [System.String]::IsNullOrEmpty($Type))) {
-                    $add = $Object.ExtensionType -like "*$Type*"
-                }
+                    # Filter
+                    [bool]$add = $true
+                    if ($add -and (-not [System.String]::IsNullOrEmpty($Publisher))) {
+                        $add = $Object.Publisher -like "*$Publisher*"
+                    }
+                    if ($add -and (-not [System.String]::IsNullOrEmpty($Type))) {
+                        $add = $Object.ExtensionType -like "*$Type*"
+                    }
 
-                if ($add) {
-                    $Object
+                    if ($add) {
+                        $Object
+                    }
                 }
             }
         }

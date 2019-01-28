@@ -146,25 +146,29 @@ function Get-AzsPlatformImage {
             }
 
             [PlatformImageObject[]]$script:results = @()
+            
             Get-TaskResult @GetTaskResult_params | ForEach-Object {
-                [PlatformImageObject]$result = ConvertTo-PlatformImageObject -PlatformImage $_
+                if ($_ -and (Get-Member -InputObject $_ -Name 'Id') -and $_.Id)
+                {
+                    [PlatformImageObject]$result = ConvertTo-PlatformImageObject -PlatformImage $_
 
-                # Filter
-                [bool]$add = $true
-                if ($add -and (-not [System.String]::IsNullOrEmpty($Publisher))) {
-                    $add = $result.Publisher -like "*$Publisher*"
-                }
+                    # Filter
+                    [bool]$add = $true
+                    if ($add -and (-not [System.String]::IsNullOrEmpty($Publisher))) {
+                        $add = $result.Publisher -like "*$Publisher*"
+                    }
 
-                if ($add -and (-not [System.String]::IsNullOrEmpty($Sku))) {
-                    $add = $result.Sku -like "*$Sku*"
-                }
+                    if ($add -and (-not [System.String]::IsNullOrEmpty($Sku))) {
+                        $add = $result.Sku -like "*$Sku*"
+                    }
 
-                if ($add -and (-not [System.String]::IsNullOrEmpty($Offer))) {
-                    $add = $result.Offer -like "*$Offer*"
-                }
+                    if ($add -and (-not [System.String]::IsNullOrEmpty($Offer))) {
+                        $add = $result.Offer -like "*$Offer*"
+                    }
 
-                if ($add) {
-                    $script:results += $result
+                    if ($add) {
+                        $script:results += $result
+                    }
                 }
             }
 
