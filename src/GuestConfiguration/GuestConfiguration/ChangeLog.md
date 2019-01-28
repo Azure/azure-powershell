@@ -18,4 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* First release of Az.GuestConfiguration module
+
+## Version 0.10.0
+* Initial release of Az.GuestConfiguration module
