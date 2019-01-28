@@ -32,66 +32,67 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Models
             {
                 this.PolicyDisplayName = gcPolicyAssignment.PolicyDisplayName;
                 this.Configuration = gcPolicyAssignment.Configuration;
-                this.ComplianceStatus = gcPolicyAssignment.ComplianceStatus;
-                this.EndTime = gcPolicyAssignment.LastUpdated;
+                this.ComplianceStatus = gcPolicyAssignment.ComplianceStatus; // Initially, gcrpReport can be null. So use status from assignment.
             }
 
             this.ComplianceReasons = new List<ComplianceReasonDetails>();
 
-            if (gcrpReport != null && gcrpReport.Properties != null && gcrpReport.Properties.Details != null)
+            if (gcrpReport != null && gcrpReport.Properties != null )
             {
                 this.LatestReportId = gcrpReport.Id;
-                foreach (var gcrpResource in gcrpReport.Properties.Details.Resources)
+                this.StartTime = gcrpReport.Properties.StartTime;
+                this.EndTime = gcrpReport.Properties.EndTime;
+                this.ComplianceStatus = gcrpReport.Properties.ComplianceStatus;
+
+                if (gcrpReport.Properties.Details != null)
                 {
-                    if (gcrpResource == null)
+                    foreach (var gcrpResource in gcrpReport.Properties.Details.Resources)
                     {
-                        continue;
+                        if (gcrpResource == null)
+                        {
+                            continue;
+                        }
+                        var propertiesJObject = JObject.Parse(gcrpResource.Properties.ToString());
+
+                        if (propertiesJObject == null)
+                        {
+                            continue;
+                        }
+
+                        var propertiesDictionary = propertiesJObject.ToObject<Dictionary<string, object>>();
+                        string policy = null;
+                        if (propertiesDictionary.ContainsKey(Constants.Policy))
+                        {
+                            policy = propertiesDictionary[Constants.Policy].ToString();
+                        }
+
+                        string resourceId = null;
+                        if (propertiesDictionary.ContainsKey(Constants.ResourceId))
+                        {
+                            resourceId = propertiesDictionary[Constants.ResourceId].ToString();
+                        }
+
+                        var resourceReasons = new List<ReasonAndCode>();
+                        foreach (var reason in gcrpResource.Reasons)
+                        {
+                            resourceReasons.Add(
+                                new ReasonAndCode()
+                                {
+                                    Reason = reason.Phrase,
+                                    Code = reason.Code,
+                                }
+                           );
+                        }
+
+                        var complianceReason = new ComplianceReasonDetails()
+                        {
+                            Policy = policy,
+                            ResourceId = resourceId,
+                            ComplianceStatus = gcrpResource.ComplianceStatus,
+                            Reasons = resourceReasons,
+                        };
+                        this.ComplianceReasons.Add(complianceReason);
                     }
-                    var propertiesJObject = JObject.Parse(gcrpResource.Properties.ToString());
-
-                    if (propertiesJObject == null)
-                    {
-                        continue;
-                    }
-
-                    var propertiesDictionary = propertiesJObject.ToObject<Dictionary<string, object>>();
-                    string policy = null;
-                    if (propertiesDictionary.ContainsKey(Constants.Policy))
-                    {
-                        policy = propertiesDictionary[Constants.Policy].ToString();
-                    }
-
-                    string resourceId = null;
-                    if (propertiesDictionary.ContainsKey(Constants.ResourceId))
-                    {
-                        resourceId = propertiesDictionary[Constants.ResourceId].ToString();
-                    }
-
-                    var resourceReasons = new List<ReasonAndCode>();
-                    foreach (var reason in gcrpResource.Reasons)
-                    {
-                        resourceReasons.Add(
-                            new ReasonAndCode()
-                            {
-                                Reason = reason.Phrase,
-                                Code = reason.Code,
-                            }
-                       );
-                    }
-
-                    var complianceReason = new ComplianceReasonDetails()
-                    {
-                        Policy = policy,
-                        ResourceId = resourceId,
-                        ComplianceStatus = gcrpResource.ComplianceStatus,
-                        Reasons = resourceReasons,
-                    };
-                    this.ComplianceReasons.Add(complianceReason);
-                }
-
-                if(!string.IsNullOrEmpty(gcrpReport.Properties.Details.StartTime))
-                {
-                    this.StartTime = Convert.ToDateTime(gcrpReport.Properties.Details.StartTime);
                 }
 
                 if (gcrpReport.Properties.Vm != null)

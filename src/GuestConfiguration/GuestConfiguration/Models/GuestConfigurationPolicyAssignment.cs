@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Models
                 Version = gcrpAssignment.Properties.GuestConfiguration.Version,
             };
             this.LatestReportId = gcrpAssignment.Properties.LatestReportId;
-            if (!string.IsNullOrEmpty(gcrpAssignment.Properties.LastComplianceStatusChecked))
+            if (gcrpAssignment.Properties.LastComplianceStatusChecked != null)
             {
                 this.LastUpdated = Convert.ToDateTime(gcrpAssignment.Properties.LastComplianceStatusChecked);
             }
