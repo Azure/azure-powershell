@@ -9,6 +9,7 @@ schema: 2.0.0
 # Remove-AzLoadBalancerInboundNatPoolConfig
 
 ## SYNOPSIS
+Removes an inbound NAT pool configuration from a load balancer.
 
 ## SYNTAX
 
@@ -18,6 +19,7 @@ Remove-AzLoadBalancerInboundNatPoolConfig -LoadBalancer <PSLoadBalancer> [-Name 
 ```
 
 ## DESCRIPTION
+The **Remove-AzLoadBalancerInboundNatPoolConfig** cmdlet removes an inbound NAT pool configuration from a load balancer.
 
 ## EXAMPLES
 

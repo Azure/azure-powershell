@@ -23,6 +23,13 @@ The **New-AzApplicationGatewayAuthenticationCertificate** cmdlet creates an auth
 
 ## EXAMPLES
 
+### Example 1: Create an authentication certificate
+```
+PS C:\> $cert = New-AzApplicationGatewayAuthenticationCertificate -Name "cert01" -CertificateFile "C:\cert.cer"
+```
+
+The first command creates authentication certificate named cert01.
+
 ## PARAMETERS
 
 ### -CertificateFile

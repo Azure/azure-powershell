@@ -19,6 +19,7 @@ Get-AzApplicationGatewayBackendAddressPool [-Name <String>] -ApplicationGateway 
 ```
 
 ## DESCRIPTION
+The **Get-AzApplicationGatewayBackendAddressPool** cmdlet gets one or more backend address pool configurations from an application gateway.
 
 ## EXAMPLES
 

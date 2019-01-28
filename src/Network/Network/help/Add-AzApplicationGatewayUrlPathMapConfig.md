@@ -37,6 +37,23 @@ The **Add-AzApplicationGatewayUrlPathMapConfig** cmdlet adds an array of URL pat
 
 ## EXAMPLES
 
+### Example 1: Add an URL path mapping to an application gateway.
+```
+PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
+PS C:\> $pool = Get-AzApplicationGatewayBackendAddressPool -ApplicationGateway $appgw -Name "pool01"
+PS C:\> $poolSettings = Get-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $appgw -Name "poolSettings01"
+PS C:\> $pathRule = New-AzApplicationGatewayPathRuleConfig -Name "rule01" -Paths "/path" -BackendAddressPool $pool -BackendHttpSettings $poolSettings
+PS C:\> $appgw = Add-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name "url01" -PathRules $pathRule -DefaultBackendAddressPool $pool -DefaultBackendHttpSettings $poolSettings
+PS C:\> $appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+```
+
+The first command gets an application gateway named appGwName and stores it in $appgw variable.
+The second command gets backend address pool and stores it in $pool variable.
+The third command gets backend http settings and stores it in $poolSettings variable.
+The fourth command create new path rule configuration named rule01 and stores it in $pathRule variable.
+The fifth command adds url path mapping configuration named url01 to the application gateway.
+The sixth command updates the application gateway.
+
 ## PARAMETERS
 
 ### -ApplicationGateway
