@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.1
+* Release with correct version of Authentication
+
 ## Version 1.2.0
 * Add interactive and username/password authentication for Windows PowerShell 5.1 only
 * Update incorrect online help URLs
