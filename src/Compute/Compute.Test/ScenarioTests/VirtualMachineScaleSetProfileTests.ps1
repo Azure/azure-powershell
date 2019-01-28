@@ -107,7 +107,8 @@ function Test-VirtualMachineScaleSetProfile
     Assert-AreEqual $publisher $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].Publisher;
     Assert-AreEqual $exttype $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].Type;
     Assert-AreEqual $extver $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].TypeHandlerVersion;
-    Assert-AreEqual $true $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].AutoUpgradeMinorVersion;
+    Assert-True { $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].AutoUpgradeMinorVersion };
+    Assert-Null $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].ProvisionAfterExtensions;
 
     # IdentityIds
     Assert-AreEqual 2 $vmss.Identity.UserAssignedIdentities.Keys.Count;
@@ -117,8 +118,25 @@ function Test-VirtualMachineScaleSetProfile
     # AdditionalCapabilities
     Assert-Null $vmss.VirtualMachineProfile.AdditionalCapabilities;
 
-    $vmss2 = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $false;
+    $extname2 = 'catextension';
+    $publisher2 = 'Microsoft.AzureCAT.AzureEnhancedMonitoring';
+    $exttype2 = 'AzureCATExtensionHandler';
+    $extver2 = '2.2';
+
+    $vmss2 = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $false `
+           | Add-AzVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $false `
+           | Add-AzVmssExtension -Name $extname2 -Publisher $publisher2 -Type $exttype2 -TypeHandlerVersion $extver2 -AutoUpgradeMinorVersion $false -ProvisionAfterExtension $extname;
+
     Assert-False { $vmss2.UpgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback };
+
+    Assert-AreEqual $extname $vmss2.VirtualMachineProfile.ExtensionProfile.Extensions[0].Name;
+    Assert-False { $vmss2.VirtualMachineProfile.ExtensionProfile.Extensions[0].AutoUpgradeMinorVersion };
+    Assert-Null $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].ProvisionAfterExtensions;
+
+    Assert-AreEqual $extname2 $vmss2.VirtualMachineProfile.ExtensionProfile.Extensions[1].Name;
+    Assert-False { $vmss2.VirtualMachineProfile.ExtensionProfile.Extensions[1].AutoUpgradeMinorVersion };
+    Assert-AreEqual 1 $vmss2.VirtualMachineProfile.ExtensionProfile.Extensions[1].ProvisionAfterExtensions.Count;
+    Assert-AreEqual $extname $vmss2.VirtualMachineProfile.ExtensionProfile.Extensions[1].ProvisionAfterExtensions[0];
 
     $vmss3 = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $true -EnableUltraSSD;
     Assert-True { $vmss3.UpgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback };
