@@ -16,9 +16,9 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
 {
     public class Constants
     {
-        public const string GuestConfigurationCategory = "Guest Configuration";
-        public const string AuditIfNotExists = "AuditIfNotExists";
-        public const string GuestConfigurationRPType = "Microsoft.GuestConfiguration/guestConfigurationAssignments";
+        public const string GuestConfigurationCategory = "guest configuration";
+        public const string AuditIfNotExists = "auditifnotexists";
+        public const string Audit = "audit";
         public const string Policy = "Policy";
         public const string ResourceId = "ResourceId";
     }
