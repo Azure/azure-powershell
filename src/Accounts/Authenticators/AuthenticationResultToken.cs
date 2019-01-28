@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 using System;
 using System.Threading.Tasks;
 
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         AuthenticationResult _result;
         public string AccessToken => _result.AccessToken;
 
-        public string UserId => _result.UserInfo.DisplayableId;
+        public string UserId => _result.Account.Username;
 
         public string TenantId => _result.TenantId;
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         public void AuthorizeRequest(Action<string, string> authTokenSetter)
         {
             var header = _result.CreateAuthorizationHeader();
-            authTokenSetter(_result.AccessTokenType, _result.AccessToken);
+            authTokenSetter("Bearer", _result.AccessToken);
         }
 
         public static async Task<IAccessToken> GetAccessTokenAsync(Task<AuthenticationResult> result)

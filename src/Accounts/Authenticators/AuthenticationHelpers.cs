@@ -11,14 +11,14 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
     internal static class AuthenticationHelpers
     {
-        internal const string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2", 
-            PowerShellRedirectUri = "urn:ietf:wg:oauth:2.0:oob", 
+        internal const string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2",
+            PowerShellRedirectUri = "urn:ietf:wg:oauth:2.0:oob",
             EnableEbdMagicCookie= "site_id=501358&display=popup";
         /// <summary>
         /// Get the authority string given a tenant and environment
@@ -33,20 +33,20 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="showDialog"></param>
         /// <returns></returns>
-        internal static PromptBehavior GetPromptBehavior(string showDialog)
+        internal static UIBehavior GetPromptBehavior(string showDialog)
         {
             switch (showDialog)
             {
                 case ShowDialog.Always:
-                    return PromptBehavior.Always;
+                    return UIBehavior.ForceLogin;
                 case ShowDialog.Never:
-                    return PromptBehavior.Never;
+                    return UIBehavior.Never;
                 default:
-                    return PromptBehavior.Auto;
+                    return UIBehavior.SelectAccount;
             }
         }
 

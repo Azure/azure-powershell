@@ -17,7 +17,7 @@ using System.Security;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -28,13 +28,13 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     {
         public override Task<IAccessToken> Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
         {
-            var audience = environment.GetEndpoint(resourceId);
-            var context = new AuthenticationContext(
-                AuthenticationHelpers.GetAuthority(environment, tenant), 
-                environment?.OnPremise ?? true, 
-                tokenCache as TokenCache ?? TokenCache.DefaultShared);
-            var result = context.AcquireTokenAsync(audience, AuthenticationHelpers.PowerShellClientId, new UserPasswordCredential(account.Id, password));
-            return AuthenticationResultToken.GetAccessTokenAsync(result);
+            var scopes = new string[] { environment.ActiveDirectoryServiceEndpointResourceId + "/user_impersonation" };
+            var context = new PublicClientApplication(
+                AuthenticationHelpers.PowerShellClientId,
+                AuthenticationHelpers.GetAuthority(environment, tenant),
+                tokenCache.GetUserCache() as TokenCache);
+            var response = context.AcquireTokenByUsernamePasswordAsync(scopes, account.Id, password);
+            return AuthenticationResultToken.GetAccessTokenAsync(response);
         }
 
         public override bool CanAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)

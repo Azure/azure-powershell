@@ -54,7 +54,6 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string Environment { get; set; }
 
-#endif
         [Parameter(ParameterSetName = UserParameterSet,
                     Mandatory = false, HelpMessage = "Optional credential", Position = 0)]
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,

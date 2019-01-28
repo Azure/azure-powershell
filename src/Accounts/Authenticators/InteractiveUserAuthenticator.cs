@@ -17,7 +17,7 @@ using System.Security;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -28,15 +28,18 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     {
         public async override Task<IAccessToken> Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
         {
-            var auth = new AuthenticationContext(AuthenticationHelpers.GetAuthority(environment, tenant), environment?.OnPremise ?? true, tokenCache as TokenCache ?? TokenCache.DefaultShared);
-            var response = await auth.AcquireTokenAsync(
-                environment.ActiveDirectoryServiceEndpointResourceId, 
-                AuthenticationHelpers.PowerShellClientId, 
-                new Uri(AuthenticationHelpers.PowerShellRedirectUri), 
-                new PlatformParameters(AuthenticationHelpers.GetPromptBehavior(promptBehavior), new ConsoleParentWindow()), 
-                UserIdentifier.AnyUser, 
-                AuthenticationHelpers.EnableEbdMagicCookie);
-            account.Id = response?.UserInfo?.DisplayableId;
+            var scopes = new string[] { environment.ActiveDirectoryServiceEndpointResourceId + "/user_impersonation" };
+            var context = new PublicClientApplication(
+                AuthenticationHelpers.PowerShellClientId,
+                AuthenticationHelpers.GetAuthority(environment, tenant),
+                tokenCache.GetUserCache() as TokenCache);
+            var response = await context.AcquireTokenAsync(
+                scopes,
+                account.Id,
+                AuthenticationHelpers.GetPromptBehavior(promptBehavior),
+                AuthenticationHelpers.EnableEbdMagicCookie,
+                new UIParent(new ConsoleParentWindow()));
+            account.Id = response?.Account?.Username;
             return AuthenticationResultToken.GetAccessToken(response);
         }
 
