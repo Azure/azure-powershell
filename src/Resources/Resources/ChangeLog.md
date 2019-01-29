@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.1
 * Fix incorrect examples in `New-AzADAppCredential` and `New-AzADSpCredential` reference documentation
 * Fix issue where path for `-TemplateFile` parameter was not being resolved before executing resource group deployment cmdlets
 * Az.Resources: Correct documentation for New-AzureRmPolicyDefinition -Mode default value
