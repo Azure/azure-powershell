@@ -20,6 +20,7 @@
 -->
 ## Upcoming Release
 * AEM extension: Add support for UltraSSD and P60,P70 and P80 disks
+* Update help description for Set-AzVMBootDiagnostics
 
 ## Version 1.2.0
 * Add Invoke-AzVMReimage cmdlet
