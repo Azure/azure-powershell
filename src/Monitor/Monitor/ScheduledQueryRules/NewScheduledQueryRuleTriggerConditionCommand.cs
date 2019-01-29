@@ -27,19 +27,17 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         #region Cmdlet parameters
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The threshold operator : GreaterThan, LessThan or Equal")]
+        [Parameter(Mandatory = true, HelpMessage = "The threshold operator : GreaterThan, LessThan or Equal")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet("GreaterThan", "LessThan", "Equal")]
         public string ThresholdOperator { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The threshold above which alert gets fired")]
+        [Parameter(Mandatory = true, HelpMessage = "The threshold above which alert gets fired")]
+        [ValidateNotNull]
         public double Threshold { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The data source on which this alert is created")]
-        [ValidateNotNullOrEmpty]
-        public PSScheduledQueryRuleMetricTrigger MetricTrigger { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Type of Query - currently supported values : ResultCount")]
-        public string QueryType { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Trigger condition for metric query rule")]
+        public PSScheduledQueryRuleLogMetricTrigger MetricTrigger { get; set; }
 
         #endregion
         protected override void ProcessRecordInternal()

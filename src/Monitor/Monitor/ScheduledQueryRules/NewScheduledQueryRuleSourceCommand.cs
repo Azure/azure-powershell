@@ -28,18 +28,19 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         #region Cmdlet parameters
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert query")]
+        [Parameter(Mandatory = true, HelpMessage = "The alert query")]
         [ValidateNotNullOrEmpty]
         public string Query { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of authorized resources for this alert")]
+        [Parameter(Mandatory = false, HelpMessage = "The list of authorized resources for this alert")]
         public IList<string> AuthorizedResources { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The data source on which this alert is created")]
+        [Parameter(Mandatory = true, HelpMessage = "The data source on which this alert is created")]
         [ValidateNotNullOrEmpty]
         public string DataSourceId { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Type of Query - currently supported values : ResultCount")]
+        [Parameter(Mandatory = false, HelpMessage = "Type of Query - currently supported values : ResultCount")]
+        [ValidateSet("ResultCount")]
         public string QueryType { get; set; }
 
         #endregion

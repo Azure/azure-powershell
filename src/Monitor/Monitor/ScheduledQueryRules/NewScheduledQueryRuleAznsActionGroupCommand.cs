@@ -22,19 +22,19 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
     /// <summary>
     /// Create a ScheduledQueryRule Source object
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRuleAznsAction"), OutputType(typeof(PSScheduledQueryRuleAznsAction))]
-    public class NewScheduledQueryRuleAznsActionCommand : MonitorCmdletBase
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRuleAznsActionGroup"), OutputType(typeof(PSScheduledQueryRuleAznsAction))]
+    public class NewScheduledQueryRuleAznsActionGroupCommand : MonitorCmdletBase
     {
 
         #region Cmdlet parameters
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of action groups to send notification to")]
+        [Parameter(Mandatory = false, HelpMessage = "The list of action groups to send notification to")]
         public IList<string> ActionGroup { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The email subject of alert notification")]
+        [Parameter(Mandatory = false, HelpMessage = "The email subject of alert notification")]
         public string EmailSubject { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The customized webhook payload")]
+        [Parameter(Mandatory = false, HelpMessage = "The customized webhook payload")]
         public string CustomWebhookPayload { get; set; }
 
         #endregion

@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
     /// <summary>
     /// Create a ScheduledQueryRule Source object
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule"), OutputType(typeof(PSScheduledQueryRuleResource))]
-    public class AddScheduledQueryRuleCommand : MonitorCmdletBase
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule"), OutputType(typeof(PSScheduledQueryRuleResource))]
+    public class NewScheduledQueryRuleCommand : MonitorCmdletBase
     {
 
         #region Cmdlet parameters
@@ -32,58 +32,52 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         //
         // Summary:
         //     Gets or sets source (Query, DataSourceId, etc.) for rule.
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The scheduled query rule source")]
+        [Parameter(Mandatory = true, HelpMessage = "The scheduled query rule source")]
         [ValidateNotNullOrEmpty]
         public PSScheduledQueryRuleSource Source { get; set; }
 
         //
         // Summary:
         //     Gets or sets schedule (Frequnecy, Time Window) for rule.
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The scheduled query rule schedule")]
+        [Parameter(Mandatory = false, HelpMessage = "The scheduled query rule schedule")]
         [ValidateNotNullOrEmpty]
         public PSScheduledQueryRuleSchedule Schedule { get; set; }
         //
         // Summary:
         //     Gets or sets action needs to be taken on rule execution.
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The scheduled query rule Alerting Action")]
+        [Parameter(Mandatory = true, HelpMessage = "The scheduled query rule Alerting Action")]
         [ValidateNotNullOrEmpty]
         public PSScheduledQueryRuleAlertingAction Action { get; set; }
 
         //
         // Summary:
         //     Region where alert is to be created
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location for this alert")]
+        [Parameter(Mandatory = true, HelpMessage = "The location for this alert")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         //
         // Summary:
         //     Alert description
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description for this alert")]
+        [Parameter(Mandatory = false, HelpMessage = "The description for this alert")]
         public string Description { get; set; }
 
         //
         // Summary:
         //     Alert name
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert name")]
-        public string Name { get; set; }
-
-        //
-        // Summary:
-        //     Azure resource type
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure resource type")]
-        public string Type { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert name")]
+        public string RuleName { get; set; }
 
         //
         // Summary:
         //     Resource tags
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The duration in minutes for which alert should be throttled")]
-        public Dictionary<string, string> Tags { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "The duration in minutes for which alert should be throttled")]
+        public string Tags { get; set; }
 
         //
         // Summary:
         //     Alert status - enabled or not
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure alert state - valid values - true, false")]
+        [Parameter(Mandatory = false, HelpMessage = "The azure alert state - valid values - true, false")]
         public string Enabled { get; set; }
 
         #endregion

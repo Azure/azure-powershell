@@ -15,15 +15,15 @@
 
 namespace Microsoft.Azure.Management.Monitor.Management.Models
 {
-    public class ScheduledQueryRuleMetricTrigger : Monitor.Models.LogMetricTrigger
+    public class ScheduledQueryRuleLogMetricTrigger : Monitor.Models.LogMetricTrigger
     {
-        public ScheduledQueryRuleMetricTrigger() : base()
+        public ScheduledQueryRuleLogMetricTrigger() : base()
         { }
         /// <summary>
-        /// Initializes a new instance of the ScheduledQueryRuleMetricTrigger class.
+        /// Initializes a new instance of the ScheduledQueryRuleLogMetricTrigger class.
         /// </summary>
         /// <param name="metricTrigger">The Log Metric Trigger Details</param>
-        public ScheduledQueryRuleMetricTrigger(Monitor.Models.LogMetricTrigger metricTrigger) :
+        public ScheduledQueryRuleLogMetricTrigger(Monitor.Models.LogMetricTrigger metricTrigger) :
             base(
                 thresholdOperator: metricTrigger?.ThresholdOperator,
                 threshold: metricTrigger?.Threshold,

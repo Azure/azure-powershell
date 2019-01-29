@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         #region Cmdlet parameters
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert frequency")]
+        [Parameter(Mandatory = true, HelpMessage = "The alert frequency")]
         [ValidateNotNullOrEmpty]
         public int FrequencyInMinutes { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert time window")]
+        [Parameter(Mandatory = true, HelpMessage = "The alert time window")]
         [ValidateNotNullOrEmpty]
         public int TimeWindowInMinutes { get; set; }
 

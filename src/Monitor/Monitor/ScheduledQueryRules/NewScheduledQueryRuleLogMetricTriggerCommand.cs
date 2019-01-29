@@ -22,31 +22,33 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
     /// <summary>
     /// Create a ScheduledQueryRule Metric Trigger object
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRuleMetricTrigger"), OutputType(typeof(PSScheduledQueryRuleMetricTrigger))]
-    public class NewScheduledQueryRuleMetricTriggerCommand : MonitorCmdletBase
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRuleLogMetricTrigger"), OutputType(typeof(PSScheduledQueryRuleLogMetricTrigger))]
+    public class NewScheduledQueryRuleLogMetricTriggerCommand : MonitorCmdletBase
     {
 
         #region Cmdlet parameters
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric threshold operator : GreaterThan, LessThan, Equal")]
+        [Parameter(Mandatory = true, HelpMessage = "The metric threshold operator : GreaterThan, LessThan, Equal")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet("GreaterThan", "LessThan", "Equal")]
         public string ThresholdOperator { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric threshold value")]
+        [Parameter(Mandatory = true, HelpMessage = "The metric threshold value")]
         public double Threshold { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric trigger type")]
+        [Parameter(Mandatory = true, HelpMessage = "The metric trigger type")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet("Consecutive", "Total")]
         public string MetricTriggerType { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Column on which metric value is being aggregated")]
+        [Parameter(Mandatory = true, HelpMessage = "Column on which metric value is being aggregated")]
         public string MetricColumn { get; set; }
 
         #endregion
         protected override void ProcessRecordInternal()
         {
             LogMetricTrigger metricTrigger = new LogMetricTrigger(ThresholdOperator, Threshold, MetricTriggerType, MetricColumn);
-            WriteObject(new PSScheduledQueryRuleMetricTrigger(metricTrigger));
+            WriteObject(new PSScheduledQueryRuleLogMetricTrigger(metricTrigger));
         }
     }
 }
