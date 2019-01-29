@@ -175,6 +175,7 @@
   <Target Name="OnPremChecks" Condition="'$(OnPremiseBuild)'">
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)CheckBinScope.ps1 -BuildConfig $(Configuration) -CIToolsPath $(CIToolsPath)&quot;" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)CheckPoliCheck.ps1 -BuildConfig $(Configuration) -CIToolsPath $(CIToolsPath)&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)CheckCredScan.ps1 -CIToolsPath $(CIToolsPath) -PullRequestNumber $(PullRequestNumber)&quot;" />
     <OnError ExecuteTargets="OnPremChecksErrorMessage" />
   </Target>
 

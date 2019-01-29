@@ -1,16 +1,17 @@
 param(
-    [string]$CISigningPath,
+    [string]$CIToolsPath,
     [string]$PullRequestNumber
 )
 
 . $PSScriptRoot/BuildPackagesTask/Microsoft.Azure.Build.Tasks/GetPullRequestFileChanges.ps1
 
-function RunCredScan([string]$CISigning, [string]$PRNumber) {
-    if ([System.String]::IsNullOrWhiteSpace($CISigning)) {
-        Write-Error "CI Signing repo path is not provided."
+Write-Output "==== CredScan started"
+try {
+    if ([System.String]::IsNullOrWhiteSpace($CIToolsPath)) {
+        Write-Error "CI Tools Path is not provided."
         return
     }
-    if ([System.String]::IsNullOrWhiteSpace($PRNumber)) {
+    if ([System.String]::IsNullOrWhiteSpace($PullRequestNumber)) {
         Write-Error "Pull Request Number is not provided."
         return
     }
@@ -22,26 +23,21 @@ function RunCredScan([string]$CISigning, [string]$PRNumber) {
         Remove-Item $credScanInputFile -Force
     }
     $curDir = (Get-Location).Path
-    $filelist = Get-PullRequestFileChanges -RepositoryOwner $owner -RepositoryName $repo -PullRequestNumber $PRNumber 
+    $filelist = Get-PullRequestFileChanges -RepositoryOwner $owner -RepositoryName $repo -PullRequestNumber $PullRequestNumber 
     $filelist | ForEach-Object {
         Add-Content -Path $credScanInputFile -Value (Join-Path $curDir $_)
     }
     $fileListSize = $filelist.Count
-    $request = "https://api.github.com/repos/$owner/$repo/pulls/$PRNumber"
+    $request = "https://api.github.com/repos/$owner/$repo/pulls/$PullRequestNumber"
     $changedFilesNumber = Invoke-WebRequest $request -UseBasicParsing | ConvertFrom-Json | Select-Object -ExpandProperty changed_files
     if ($changedFilesNumber -gt $fileListSize) {
         Write-Warning "Only $fileListSize files will be scanned out of $changedFilesNumber with CredScan."
     }
 
-    & "$CISigning/adxsdk/RunCredentialScanner.ps1" -InputDir $credScanInputFile -Verbose
-}
-
-Write-Output "==== CredScanner started"
-try {
-    RunCredScan -CISigning $CISigningPath -PRNumber $PullRequestNumber
+    & "$CIToolsPath/RunCredentialScanner.ps1" -InputDir $credScanInputFile -Verbose
 } catch {
     if ($_.Exception.Message -like "Credential scanner match found exception!*") {
-        $resultsDir = "$PSScriptRoot/../artifacts/CredScannerResults"
+        $resultsDir = "$PSScriptRoot/../artifacts/CredScanResults"
         $matchesPath = "$resultsDir/-matches.csv"
         $newName = "CredScanIssues.csv"
         if (Test-Path $matchesPath) {
@@ -56,4 +52,4 @@ try {
         $LastExitCode = 1
     }
 }
-Write-Output "==== CredScanner finished"
+Write-Output "==== CredScan finished"
