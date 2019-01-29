@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The Vcore number for the Azure Sql database")]
-        [Alias("Capacity")]
+        [Alias("Capacity", "MaxVCore")]
         public int VCore { get; set; }
 
         /// <summary>
@@ -242,7 +242,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                        ZoneRedundant != null
                            ? (bool?)ZoneRedundant.ToBool()
                            : null,
-                LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType // set to original license type
+                LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType, // set to original license type
+                AutoPauseDelay = AutoPauseDelay
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);

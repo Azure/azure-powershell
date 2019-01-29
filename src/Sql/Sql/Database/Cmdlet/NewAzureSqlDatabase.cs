@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
             HelpMessage = "The Vcore number for the Azure Sql database")]
-        [Alias("Capacity")]
+        [Alias("Capacity", "MaxVCore")]
         public int VCore { get; set; }
 
         /// <summary>
@@ -235,7 +235,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 ElasticPoolName = ElasticPoolName,
                 ReadScale = ReadScale,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
-                LicenseType = LicenseType // note: default license type will be LicenseIncluded in SQL RP if not specified
+                LicenseType = LicenseType, // note: default license type will be LicenseIncluded in SQL RP if not specified
+                AutoPauseDelay = AutoPauseDelay
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)
@@ -249,7 +250,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 newDbModel.Edition = Edition;
                 newDbModel.Capacity = VCore;
                 newDbModel.Family = ComputeGeneration;
-                newDbModel.AutoPauseDelay = AutoPauseDelay;
                 // change sku name for serverless dbs
                 if (ComputeModel == "Serverless")
                 {
