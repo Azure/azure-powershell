@@ -19,5 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 0.10.0
-* Initial release of Az.GuestConfiguration module
+## Version 0.10.1
+* Initial release of Az.GuestConfiguration
+* Added Get-AzVMGuestPolicyReport and Get-AzVMGuestPolicyStatusHistory
