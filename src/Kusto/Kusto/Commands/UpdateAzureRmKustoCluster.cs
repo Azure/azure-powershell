@@ -125,8 +125,9 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
                     else if (ex.Body != null && !string.IsNullOrEmpty(ex.Body.Code) &&
                              ex.Body.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
                     {
-                        // resource group not found, let create throw error don't throw from here
+                        throw new CloudException(string.Format(Resources.ResourceGroupNotExist, resourceGroupName));
                     }
+                    
                     else
                     {
                         // all other exceptions should be thrown
