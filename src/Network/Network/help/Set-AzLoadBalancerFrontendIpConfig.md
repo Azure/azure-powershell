@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzLoadBalancerFrontendIpConfig
 
 ## SYNOPSIS
-Sets the goal state for a front-end IP configuration in a load balancer.
+Updates a front-end IP configuration for a load balancer.
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
 ```
 
 ## DESCRIPTION
-The **Set-AzLoadBalancerFrontendIpConfig** cmdlet sets the goal state for a front-end IP configuration in an Azure load balancer.
+The **Set-AzLoadBalancerFrontendIpConfig** cmdlet updates a front-end IP configuration for a load balancer.
 
 ## EXAMPLES
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 
 ### -LoadBalancer
 Specifies a load balancer.
-This cmdlet sets the goal state for a front-end configuration for the load balancer that this parameter specifies.
+This cmdlet updates a front-end configuration for the load balancer that this parameter specifies.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
