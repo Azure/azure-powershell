@@ -39,7 +39,7 @@ Storage Account.
 ```powershell
 PS C:\> $sa = Get-AzureRmStorageAccount -Name mysa -ResourceGroupName myrg
 PS C:\> $kv = Get-AzureRmKeyVault -VaultName mykv
-PS C:\> Add-AzureKeyVaultManagedStorageAccount -VaultName $kv.VaultName -AccountName $sa.StorageAccountName -AccountResourceId $sa.Id -ActiveKeyName key1 -RegenerationPeriod 180
+PS C:\> Add-AzureKeyVaultManagedStorageAccount -VaultName $kv.VaultName -AccountName $sa.StorageAccountName -AccountResourceId $sa.Id -ActiveKeyName key1 -RegenerationPeriod ([System.Timespan]::FromDays(180))
 PS C:\> $sctx = New-AzureStorageContext -StorageAccountName $sa.StorageAccountName -Protocol Https -StorageAccountKey Key1
 PS C:\> $start = [System.DateTime]::Now.AddDays(-1)
 PS C:\> $end = [System.DateTime]::Now.AddMonths(1)
