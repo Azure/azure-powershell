@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// <summary>
     /// Wire representation of MSI token WebApps ad hoc
     /// </summary>
-    public class ManagedServiceTokenInfoAppServiceManagedIdentityAdHoc : ICacheable
+    public class ManagedServiceAppServiceTokenInfo : ICacheable
     {
         public static readonly TimeSpan TimeoutThreshold = TimeSpan.FromMinutes(4);
         [JsonProperty(PropertyName ="access_token")]

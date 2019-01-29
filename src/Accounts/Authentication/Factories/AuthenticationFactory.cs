@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             if (account.IsPropertySet(AuthenticationFactory.AppServiceManagedIdentityFlag))
             {
-                return new ManagedServiceAccessTokenAppServiceManagedIdentityAdHoc(account, environment, tenant);
+                return new ManagedServiceAppServiceAccessToken(account, environment, tenant);
             }
 
             return new ManagedServiceAccessToken(account, environment, GetResourceId(resourceId, environment), tenant);

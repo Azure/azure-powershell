@@ -17,9 +17,9 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public class ManagedServiceAccessTokenAppServiceManagedIdentityAdHoc : ManagedServiceAccessTokenBase<ManagedServiceTokenInfoAppServiceManagedIdentityAdHoc>
+    public class ManagedServiceAppServiceAccessToken : ManagedServiceAccessTokenBase<ManagedServiceAppServiceTokenInfo>
     {
-        public ManagedServiceAccessTokenAppServiceManagedIdentityAdHoc(IAzureAccount account, IAzureEnvironment environment, string tenant = "Common")
+        public ManagedServiceAppServiceAccessToken(IAzureAccount account, IAzureEnvironment environment, string tenant = "Common")
             : base(account, environment, @"https://management.azure.com/", tenant)
         {
         }
@@ -27,11 +27,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         protected override IEnumerable<string> BuildTokenUri(string baseUri, IAzureAccount account, IdentityType identityType,
             string resourceId)
         {
-            var uri = $"{baseUri}?resource={resourceId}&api-version=2017-09-01";
-            yield return uri;
+            yield return $"{baseUri}?resource={resourceId}&api-version=2017-09-01";;
         }
 
-        protected override void SetToken(ManagedServiceTokenInfoAppServiceManagedIdentityAdHoc infoWebApps)
+        protected override void SetToken(ManagedServiceAppServiceTokenInfo infoWebApps)
         {
             if (infoWebApps != null)
             {
