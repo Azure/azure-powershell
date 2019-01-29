@@ -18,7 +18,7 @@ Tests querying for a Batch account that does not exist throws
 #>
 function Test-GetNonExistingBatchAccount
 {
-    Assert-Throws { Get-AzureRmBatchAccount -Name "accountthatdoesnotexist" }
+    Assert-Throws { Get-AzBatchAccount -Name "accountthatdoesnotexist" }
 }
 
 <#
@@ -38,8 +38,8 @@ function Test-BatchAccountEndToEnd
         $tagValue = "tagValue1"
 
         # Create a Batch account
-        New-AzureRmResourceGroup -Name $resourceGroup -Location $location
-        $createdAccount = New-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Location $location -Tag @{$tagName = $tagValue}
+        New-AzResourceGroup -Name $resourceGroup -Location $location
+        $createdAccount = New-AzBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Location $location -Tag @{$tagName = $tagValue}
 
         # Verify the properties match expectations
         Assert-AreEqual $accountName $createdAccount.AccountName
@@ -54,27 +54,27 @@ function Test-BatchAccountEndToEnd
         # Update the Batch account
         $newTagName = "tag2"
         $newTagValue = "tagValue2"
-        Set-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Tag @{$newTagName = $newTagValue}
+        Set-AzBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Tag @{$newTagName = $newTagValue}
 
         # Get the account and verify the tags were updated
-        $updatedAccount = Get-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup
+        $updatedAccount = Get-AzBatchAccount -Name $accountName -ResourceGroupName $resourceGroup
 
         Assert-AreEqual $accountName $updatedAccount.AccountName
         Assert-AreEqual 1 $updatedAccount.Tags.Count
         Assert-AreEqual $newTagValue $updatedAccount.Tags[$newTagName]
 
         # Get the account keys (without resource group)
-        $accountWithKeys = Get-AzureRmBatchAccountKeys -Name $accountName
+        $accountWithKeys = Get-AzBatchAccountKeys -Name $accountName
         Assert-NotNull $accountWithKeys.PrimaryAccountKey
         Assert-NotNull $accountWithKeys.SecondaryAccountKey
 
         # Get the account keys (with resource group)
-        $accountWithKeys = Get-AzureRmBatchAccountKeys -Name $accountName -ResourceGroupName $resourceGroup
+        $accountWithKeys = Get-AzBatchAccountKeys -Name $accountName -ResourceGroupName $resourceGroup
         Assert-NotNull $accountWithKeys.PrimaryAccountKey
         Assert-NotNull $accountWithKeys.SecondaryAccountKey
 
         # Regenerate the primary key
-        $updatedKey = New-AzureRmBatchAccountKey -Name $accountName -ResourceGroupName $resourceGroup -KeyType Primary
+        $updatedKey = New-AzBatchAccountKey -Name $accountName -ResourceGroupName $resourceGroup -KeyType Primary
         Assert-NotNull $updatedKey.PrimaryAccountKey
         Assert-AreNotEqual $accountWithKeys.PrimaryAccountKey $updatedKey.PrimaryAccountKey
         Assert-AreEqual $accountWithKeys.SecondaryAccountKey $updatedKey.SecondaryAccountKey
@@ -84,13 +84,13 @@ function Test-BatchAccountEndToEnd
         try
         {
             # Delete the account
-            Remove-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Force
+            Remove-AzBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Force
             $errorMessage = "The specified account does not exist."
-            Assert-ThrowsContains { Get-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup } $errorMessage
+            Assert-ThrowsContains { Get-AzBatchAccount -Name $accountName -ResourceGroupName $resourceGroup } $errorMessage
         }
         finally
         {
-            Remove-AzureRmResourceGroup $resourceGroup
+            Remove-AzResourceGroup $resourceGroup
         }
     }
 }
@@ -104,7 +104,7 @@ function Test-GetBatchNodeAgentSkus
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Get the node agent skus
-    $nodeAgentSkus = Get-AzureBatchNodeAgentSku -BatchContext $context
+    $nodeAgentSkus = Get-AzBatchNodeAgentSku -BatchContext $context
 
     foreach($nodeAgentSku in $nodeAgentSkus)
     {

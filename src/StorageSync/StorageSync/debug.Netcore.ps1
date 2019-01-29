@@ -7,9 +7,9 @@ $scriptpath = $MyInvocation.MyCommand.Path
 $scriptDirectory = Split-Path $scriptpath
 $scriptFileName = Split-Path $scriptpath -Leaf
 
-if (gcm Invoke-AzureRmStorageSyncCompatibilityCheck -ErrorAction SilentlyContinue)
+if (gcm Invoke-AzStorageSyncCompatibilityCheck -ErrorAction SilentlyContinue)
 {
-    throw "Invoke-AzureRmStorageSyncCompatibilityCheck is already available. Cannot continue with module debugging."
+    throw "Invoke-AzStorageSyncCompatibilityCheck is already available. Cannot continue with module debugging."
 }
 
 $azProfilePath = Join-Path $scriptDirectory "..\..\..\..\artifacts\$Configuraton\Az.Accounts\Az.Accounts.psd1"

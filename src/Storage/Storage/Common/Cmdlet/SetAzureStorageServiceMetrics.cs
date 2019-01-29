@@ -16,6 +16,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
     using Microsoft.WindowsAzure.Storage.Shared.Protocol;
     using System;
+    using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
 
@@ -120,6 +121,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         public override void ExecuteCmdlet()
         {
             ServiceProperties currentServiceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
+
+            // Premium Account not support classic metrics and logging
+            if ((MetricsType == ServiceMetricsType.Hour && currentServiceProperties.HourMetrics == null)
+                || (MetricsType == ServiceMetricsType.Minute && currentServiceProperties.MinuteMetrics == null))
+            {
+                AccountProperties accountProperties = Channel.GetAccountProperties();
+                if (accountProperties.SkuName.Contains("Premium"))
+                {
+                    throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "This Storage account doesn't support Classic Metrics, since it’s a Premium Storage account: {0}", Channel.StorageContext.StorageAccountName));
+                }
+            }
+
             ServiceProperties serviceProperties = new ServiceProperties();
             serviceProperties.Clean();
 

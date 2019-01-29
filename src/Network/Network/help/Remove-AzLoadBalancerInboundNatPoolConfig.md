@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 98D2EB70-440F-45C4-A79A-EB87BBDC6256
@@ -9,6 +9,7 @@ schema: 2.0.0
 # Remove-AzLoadBalancerInboundNatPoolConfig
 
 ## SYNOPSIS
+Removes an inbound NAT pool configuration from a load balancer.
 
 ## SYNTAX
 
@@ -18,6 +19,7 @@ Remove-AzLoadBalancerInboundNatPoolConfig -LoadBalancer <PSLoadBalancer> [-Name 
 ```
 
 ## DESCRIPTION
+The **Remove-AzLoadBalancerInboundNatPoolConfig** cmdlet removes an inbound NAT pool configuration from a load balancer.
 
 ## EXAMPLES
 
@@ -114,3 +116,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzLoadBalancerInboundNatPoolConfig](./Add-AzLoadBalancerInboundNatPoolConfig.md)
+
+[Get-AzLoadBalancerInboundNatPoolConfig](./Get-AzLoadBalancerInboundNatPoolConfig.md)
+
+[New-AzLoadBalancerInboundNatPoolConfig](./New-AzLoadBalancerInboundNatPoolConfig.md)
+
+[Set-AzLoadBalancerInboundNatPoolConfig](./Set-AzLoadBalancerInboundNatPoolConfig.md)

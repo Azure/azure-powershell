@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 1CE08F0F-A59E-46AC-B470-F1DCCD46513E
@@ -183,3 +183,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzVirtualNetworkPeering](./Add-AzVirtualNetworkPeering.md)
+
+[Get-AzVirtualNetworkPeering](./Get-AzVirtualNetworkPeering.md)
+
+[Set-AzVirtualNetworkPeering](./Set-AzVirtualNetworkPeering.md)
