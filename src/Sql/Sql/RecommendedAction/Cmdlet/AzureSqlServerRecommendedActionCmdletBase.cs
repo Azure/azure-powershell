@@ -50,9 +50,8 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
         /// <summary>
         /// Initializes the model adapter
         /// </summary>
-        /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The advisor adapter</returns>
-        protected override AzureSqlServerRecommendedActionAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlServerRecommendedActionAdapter InitModelAdapter()
         {
             return new AzureSqlServerRecommendedActionAdapter(DefaultProfile.DefaultContext);
         }

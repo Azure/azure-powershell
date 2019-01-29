@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Add Get/Set AzSqlDatabaseBackupShortTermRetentionPolicy
+* Fix issue where not being logged into Azure account would result in nullref exception when executing SQL cmdlets
 
 ## Version 1.1.0
 * Update incorrect online help URLs
