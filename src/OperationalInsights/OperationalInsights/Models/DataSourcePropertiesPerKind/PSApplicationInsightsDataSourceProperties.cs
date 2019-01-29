@@ -29,18 +29,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public override string Kind { get { return PSDataSourceKinds.ApplicationInsights; } }
 
         /// <summary>
-        /// Id of the azure subscription, which you want audit log to be collect from.
+        /// Linked Application Insights application resource id.
         /// </summary>
         [JsonProperty(PropertyName = "linkedResourceId")]
         public string LinkedResourceId { get; set; }
-    }
 
-    public class ApplicationInsightsArmResource
-    {
-        public string Id { get; }
-        public ApplicationInsightsArmResource(Guid subscriptionId, string resourceGroupName, string name)
+        public PSApplicationInsightsDataSourceProperties(Guid subscriptionId, string resourceGroupName, string name)
         {
-            this.Id = string.Format(Resources.ApplicationInsightsArmResourceFormat, subscriptionId, resourceGroupName, name);
+            this.LinkedResourceId = string.Format(Resources.ApplicationInsightsArmResourceFormat, subscriptionId, resourceGroupName, name);
+        }
+
+        public PSApplicationInsightsDataSourceProperties(string resourceId)
+        {
+            this.LinkedResourceId = resourceId;
         }
     }
 }

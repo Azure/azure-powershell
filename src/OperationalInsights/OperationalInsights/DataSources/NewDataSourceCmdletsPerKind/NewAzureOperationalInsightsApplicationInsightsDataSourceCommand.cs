@@ -55,19 +55,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public string ApplicationName { get; set; }
 
-        //todo: put support for ApplicationResourceId
-
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public override SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
             this.Name = PSDataSourceKinds.ApplicationInsights;
-            ApplicationInsightsArmResource applicationResource = new ApplicationInsightsArmResource(Guid.Parse(this.ApplicationSubscriptionId), this.ApplicationResourceGroupName, this.ApplicationResourceGroupName);
-            var applicationInsightsProperties = new PSApplicationInsightsDataSourceProperties
-            {
-                LinkedResourceId = applicationResource.Id
-            };
+            var applicationInsightsProperties = new PSApplicationInsightsDataSourceProperties(Guid.Parse(this.ApplicationSubscriptionId), this.ApplicationResourceGroupName, this.ApplicationName);
             CreatePSDataSourceWithProperties(applicationInsightsProperties);
         }
     }
