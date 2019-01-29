@@ -39,9 +39,8 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// <summary>
         /// Intializes the model adapter
         /// </summary>
-        /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The server adapter</returns>
-        protected override AzureSqlServerFirewallRuleAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlServerFirewallRuleAdapter InitModelAdapter()
         {
             return new AzureSqlServerFirewallRuleAdapter(DefaultProfile.DefaultContext);
         }

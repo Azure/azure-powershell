@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.2
 * Fix issue with ADLS endpoint when using MSI
     - More information here: https://github.com/Azure/azure-powershell/issues/7462
 * Update incorrect online help URLs
