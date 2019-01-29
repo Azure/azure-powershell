@@ -1249,10 +1249,14 @@
     "New-AzScheduledQueryRuleSource": "New-AzureRmScheduledQueryRuleSource",
     "New-AzScheduledQueryRuleSchedule": "New-AzureRmScheduledQueryRuleSchedule",
     "New-AzScheduledQueryRuleTriggerCondition": "New-AzureRmScheduledQueryRuleTriggerCondition",
-    "New-AzScheduledQueryRuleMetricTrigger": "New-AzureRmScheduledQueryRuleMetricTrigger",
-    "New-AzScheduledQueryRuleAznsAction": "New-AzureRmScheduledQueryRuleAznsAction",
+    "New-AzScheduledQueryRuleLogMetricTrigger": "New-AzureRmScheduledQueryRuleLogMetricTrigger",
+    "New-AzScheduledQueryRuleAznsActionGroup": "New-AzureRmScheduledQueryRuleAznsActionGroup",
     "New-AzScheduledQueryRuleAlertingAction": "New-AzureRmScheduledQueryRuleAlertingAction",
-    "Add-AzScheduledQueryRule": "New-AzureRmScheduledQueryRuler"
+    "New-AzScheduledQueryRule": "New-AzureRmScheduledQueryRule",
+    "Get-AzScheduledQueryRule": "Get-AzureRmScheduledQueryRule",
+    "Update-AzScheduledQueryRule": "Update-AzureRmScheduledQueryRule",
+    "Set-AzScheduledQueryRule": "Set-AzureRmScheduledQueryRule",
+    "Remove-AzScheduledQueryRule": "Remove-AzureRmScheduledQueryRule"
   },
   "Az.Network": {
     "Add-AzApplicationGatewayAuthenticationCertificate": "Add-AzureRmApplicationGatewayAuthenticationCertificate",

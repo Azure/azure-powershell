@@ -28,17 +28,17 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         #region Cmdlet parameters
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The AzNS action details")]
+        [Parameter(Mandatory = true, HelpMessage = "The AzNS action details")]
         [ValidateNotNullOrEmpty]
         public PSScheduledQueryRuleAznsAction AznsAction { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The severity for this alert")]
+        [Parameter(Mandatory = true, HelpMessage = "The severity for this alert")]
         public string Severity { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The duration in minutes for which alert should be throttled")]
+        [Parameter(Mandatory = false, HelpMessage = "The duration in minutes for which alert should be throttled")]
         public int? ThrottlingInMin { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert trigger condition")]
+        [Parameter(Mandatory = true, HelpMessage = "The alert trigger condition")]
         [ValidateNotNullOrEmpty]
         public PSScheduledQueryRuleTriggerCondition Trigger { get; set; }
 

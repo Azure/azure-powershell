@@ -6,9 +6,9 @@ using Microsoft.Azure.Management.Monitor.Management.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
-    public class PSScheduledQueryRuleMetricTrigger : ScheduledQueryRuleMetricTrigger
+    public class PSScheduledQueryRuleLogMetricTrigger : ScheduledQueryRuleLogMetricTrigger
     {
-        public PSScheduledQueryRuleMetricTrigger(Microsoft.Azure.Management.Monitor.Models.LogMetricTrigger metricTrigger)
+        public PSScheduledQueryRuleLogMetricTrigger(Microsoft.Azure.Management.Monitor.Models.LogMetricTrigger metricTrigger)
             : base(metricTrigger: metricTrigger)
         { }
     }
