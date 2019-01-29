@@ -20,7 +20,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Kusto.Commands
 {
-    [CmdletOutputBreakingChange(typeof(PSKustoDatabase), DeprecatedOutputProperties = new String[] {"ETag"})]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoDatabase",
          DefaultParameterSetName = ParameterSet),
      OutputType(typeof(PSKustoDatabase))]

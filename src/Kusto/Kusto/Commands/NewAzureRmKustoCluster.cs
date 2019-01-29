@@ -23,7 +23,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Kusto
 {
-    [CmdletOutputBreakingChange(typeof(PSKustoCluster), NewOutputProperties = new String[] { "DataIngestionUri", "Uri", "Capacity" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", SupportsShouldProcess = true),
         OutputType(typeof(PSKustoCluster))]
     public class NewKustoCluster : KustoCmdletBase
@@ -78,11 +77,6 @@ namespace Microsoft.Azure.Commands.Kusto
         {
             if (ShouldProcess(Name, Resources.CreateNewKustoCluster))
             {
-                if (!string.IsNullOrEmpty(Tier) && string.IsNullOrEmpty(Sku))
-                {
-                    throw new ArgumentNullException("Sku", "Sku can not be null when Tier is defined");
-                }
-
                 try
                 {
                     if (KustoClient.GetCluster(ResourceGroupName, Name) != null)

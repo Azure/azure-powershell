@@ -23,7 +23,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Kusto
 {
-    [CmdletOutputBreakingChange(typeof(PSKustoCluster), NewOutputProperties = new String[] { "DataIngestionUri", "Uri", "Capacity"})]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", DefaultParameterSetName = ParameterSet),
         OutputType(typeof(PSKustoCluster))]
     public class GetAzureRmKustoCluster : KustoCmdletBase
