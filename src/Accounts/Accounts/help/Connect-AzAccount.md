@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
 online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/connect-azaccount
@@ -15,13 +15,21 @@ Connect to Azure with an authenticated account for use with Azure Resource Manag
 ### UserWithSubscriptionId (Default)
 ```
 Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-Subscription <String>] [-ContextName <String>]
- [-SkipContextPopulation] [-Force] [-Scope <ContextModificationScope>]
+ [-SkipContextPopulation] [-UseDeviceAuthentication] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalWithSubscriptionId
 ```
 Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-ServicePrincipal] -Tenant <String>
+ [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-Force]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UserWithCredential
+```
+Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-Tenant <String>]
  [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-Force]
  [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -74,7 +82,7 @@ This command connects to an Azure account.
 To run Azure Resource Manager cmdlets with this account, you must provide Microsoft account or organizational ID credentials at the prompt.
 If multi-factor authentication is enabled for your credentials, you must log in using the interactive option or use service principal authentication.
 
-### Example 2: Connect to an Azure account using organizational ID credentials
+### Example 2: (Windows PowerShell 5.1 only) Connect to an Azure account using organizational ID credentials
 ```powershell
 PS C:\> $Credential = Get-Credential
 PS C:\> Connect-AzAccount -Credential $Credential
@@ -84,7 +92,7 @@ Account                SubscriptionName TenantId                Environment
 azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
-The first command will prompt for user credentials (username and password), and then stores them in the $Credential variable.
+This scenario works only in Windows PowerShell 5.1. The first command will prompt for user credentials (username and password), and then stores them in the $Credential variable.
 The second command connects to an Azure account using the credentials stored in $Credential.
 This account authenticates with Azure Resource Manager using organizational ID credentials.
 You cannot use multi-factor authentication or Microsoft account credentials to run Azure Resource Manager cmdlets with this account.
@@ -92,8 +100,8 @@ You cannot use multi-factor authentication or Microsoft account credentials to r
 ### Example 3: Connect to an Azure service principal account
 ```powershell
 PS C:\> $Credential = Get-Credential
-
 PS C:\> Connect-AzAccount -Credential $Credential -Tenant "xxxx-xxxx-xxxx-xxxx" -ServicePrincipal
+
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
 xxxx-xxxx-xxxx-xxxx    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
@@ -103,7 +111,7 @@ The first command gets the service principal credentials (application id and ser
 The second command connect to Azure using the service principal credentials stored in $Credential for the specified Tenant.
 The ServicePrincipal switch parameter indicates that the account authenticates as a service principal.
 
-### Example 4: Use an interactive login to connect to an account for a specific tenant and subscription
+### Example 3: Use an interactive login to connect to an account for a specific tenant and subscription
 ```powershell
 PS C:\> Connect-AzAccount -Tenant "xxxx-xxxx-xxxx-xxxx" -SubscriptionId "yyyy-yyyy-yyyy-yyyy"
 Account                SubscriptionName TenantId                Environment
@@ -113,7 +121,7 @@ azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 
 This command connects to an Azure account and configured AzureRM PowerShell to run cmdlets for the specified tenant and subscription by default.
 
-### Example 5: Add an Account Using Managed Service Identity Login
+### Example 4: Add an Account Using Managed Service Identity Login
 ```powershell
 PS C:\> Connect-AzAccount -MSI
 
@@ -125,7 +133,7 @@ MSI@50342              Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 This command connects using the managed service identity of the host environment (for example, if executed on a
 VirtualMachine with an assigned Managed Service Identity, this will allow the code to login using that assigned identity)
 
-### Example 6: Add an account using certificates
+### Example 5: Add an account using certificates
 ```powershell
 # For more information on creating a self-signed certificate
 # and giving it proper permissions, please see the following:
@@ -244,7 +252,7 @@ The PSCredential object provides the user ID and password for organizational ID 
 
 ```yaml
 Type: System.Management.Automation.PSCredential
-Parameter Sets: ServicePrincipalWithSubscriptionId
+Parameter Sets: ServicePrincipalWithSubscriptionId, UserWithCredential
 Aliases:
 
 Required: True
@@ -482,7 +490,7 @@ Optional tenant name or ID
 
 ```yaml
 Type: System.String
-Parameter Sets: UserWithSubscriptionId, AccessTokenWithSubscriptionId, ManagedServiceLogin
+Parameter Sets: UserWithSubscriptionId, UserWithCredential, AccessTokenWithSubscriptionId, ManagedServiceLogin
 Aliases: Domain, TenantId
 
 Required: False
@@ -498,6 +506,21 @@ Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateW
 Aliases: Domain, TenantId
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseDeviceAuthentication
+Use device code authentication instead of a browser control
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UserWithSubscriptionId
+Aliases: DeviceCode, DeviceAuth, Device
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -99,15 +99,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 if (string.IsNullOrEmpty(TemplateParameterUri))
                 {
                     dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                        this.TryResolvePath(TemplateFile),
+                        this.ResolvePath(TemplateFile),
                         TemplateParameterObject,
-                        this.TryResolvePath(TemplateParameterFile),
+                        this.ResolvePath(TemplateParameterFile),
                         MyInvocation.MyCommand.Parameters.Keys.ToArray());
                 }
                 else
                 {
                     dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                        this.TryResolvePath(TemplateFile),
+                        this.ResolvePath(TemplateFile),
                         TemplateParameterObject,
                         TemplateParameterUri,
                         MyInvocation.MyCommand.Parameters.Keys.ToArray());
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
                         TemplateUri,
                         TemplateParameterObject,
-                        this.TryResolvePath(TemplateParameterFile),
+                        this.ResolvePath(TemplateParameterFile),
                         MyInvocation.MyCommand.Parameters.Keys.ToArray());
                 }
                 else
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
 
             // Load parameters from the file
-            string templateParameterFilePath = this.TryResolvePath(TemplateParameterFile);
+            string templateParameterFilePath = this.ResolvePath(TemplateParameterFile);
             if (templateParameterFilePath != null && FileUtilities.DataStore.FileExists(templateParameterFilePath))
             {
                 var parametersFromFile = TemplateUtility.ParseTemplateParameterFileContents(templateParameterFilePath);

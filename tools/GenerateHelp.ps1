@@ -58,7 +58,7 @@ if ($ValidateMarkdownHelp)
     Copy-Item -Path "$PSScriptRoot\HelpGeneration\Exceptions\ValidateHelpIssues.csv" -Destination $SuppressedExceptionsPath
     New-Item -Path $NewExceptionsPath -Name ValidateHelpIssues.csv -ItemType File -Force | Out-Null
     Add-Content "$NewExceptionsPath\ValidateHelpIssues.csv" "Target,Description"
-    $FilteredHelpFolders | foreach { Validate-MarkdownHelp $_ $SuppressedExceptionsPath $NewExceptionsPath }
+    $FilteredHelpFolders | foreach { Validate-MarkdownHelp $_.FullName $SuppressedExceptionsPath $NewExceptionsPath }
     $Exceptions = Import-Csv "$NewExceptionsPath\ValidateHelpIssues.csv"
     if (($Exceptions | Measure-Object).Count -gt 0)
     {
@@ -73,5 +73,5 @@ if ($ValidateMarkdownHelp)
 
 if ($GenerateMamlHelp)
 {
-    $FilteredHelpFolders | foreach { Generate-MamlHelp $_ }
+    $FilteredHelpFolders | foreach { Generate-MamlHelp $_.FullName }
 }

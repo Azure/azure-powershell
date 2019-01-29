@@ -141,7 +141,8 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                                 ConnectionString = this.ConnectionString,
                                 ResourceGroup = this.EndpointResourceGroup,
                                 SubscriptionId = this.EndpointSubscriptionId,
-                                ContainerName = this.routingEndpointDynamicParameter.ContainerName
+                                ContainerName = this.routingEndpointDynamicParameter.ContainerName,
+                                Encoding = this.routingEndpointDynamicParameter.Encoding
                             });
                         break;
                 }
@@ -187,6 +188,13 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             [Parameter(Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Name of the storage container")]
             [ValidateNotNullOrEmpty]
             public string ContainerName { get; set; }
+
+            [Parameter(Mandatory = false, ParameterSetName = InputObjectParameterSet, HelpMessage = "Select the format in which you want to route your data in. You can select JSON or AVRO. The default is set to AVRO.")]
+            [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Select the format in which you want to route your data in. You can select JSON or AVRO. The default is set to AVRO.")]
+            [Parameter(Mandatory = false, ParameterSetName = ResourceParameterSet, HelpMessage = "Select the format in which you want to route your data in. You can select JSON or AVRO. The default is set to AVRO.")]
+            [ValidateNotNullOrEmpty]
+            [ValidateSet(new string[] { "json", "avro" }, IgnoreCase = true)]
+            public string Encoding { get; set; }
         }
     }
 }

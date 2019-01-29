@@ -49,7 +49,7 @@ function GetResourceNames()
 function Test-ListServerRecommendedActions
 {
 	$names = GetResourceNames
-	$response = Get-AzureRmSqlServerRecommendedAction `
+	$response = Get-AzSqlServerRecommendedAction `
 		-ResourceGroupName $names["ResourceGroupName"] `
 		-ServerName $names["ServerName"] `
 		-AdvisorName CreateIndex
@@ -64,7 +64,7 @@ function Test-ListServerRecommendedActions
 function Test-GetServerRecommendedAction
 {
 	$names = GetResourceNames
-	$response = Get-AzureRmSqlServerRecommendedAction `
+	$response = Get-AzSqlServerRecommendedAction `
 		-ResourceGroupName $names["ResourceGroupName"] `
 		-ServerName $names["ServerName"] `
 		-AdvisorName CreateIndex `
@@ -81,7 +81,7 @@ function Test-GetServerRecommendedAction
 function Test-UpdateServerRecommendedAction
 {
 	$names = GetResourceNames
-	$response = Set-AzureRmSqlServerRecommendedActionState `
+	$response = Set-AzSqlServerRecommendedActionState `
 		-ResourceGroupName $names["ResourceGroupName"] `
 		-ServerName $names["ServerName"] `
 		-AdvisorName CreateIndex `
@@ -99,7 +99,7 @@ function Test-UpdateServerRecommendedAction
 function Test-ListDatabaseRecommendedActions
 {
 	$names = GetResourceNames
-	$response = Get-AzureRmSqlDatabaseRecommendedAction `
+	$response = Get-AzSqlDatabaseRecommendedAction `
 		-ResourceGroupName $names["ResourceGroupName"] `
 		-ServerName $names["ServerName"] `
 		-DatabaseName $names["DatabaseName"] `
@@ -115,7 +115,7 @@ function Test-ListDatabaseRecommendedActions
 function Test-GetDatabaseRecommendedAction
 {
 	$names = GetResourceNames
-	$response = Get-AzureRmSqlDatabaseRecommendedAction `
+	$response = Get-AzSqlDatabaseRecommendedAction `
 		-ResourceGroupName $names["ResourceGroupName"] `
 		-ServerName $names["ServerName"] `
 		-DatabaseName $names["DatabaseName"] `
@@ -133,7 +133,7 @@ function Test-GetDatabaseRecommendedAction
 function Test-UpdateDatabaseRecommendedAction
 {
 	$names = GetResourceNames
-	$response = Set-AzureRmSqlDatabaseRecommendedActionState `
+	$response = Set-AzSqlDatabaseRecommendedActionState `
 		-ResourceGroupName $names["ResourceGroupName"] `
 		-ServerName $names["ServerName"] `
 		-DatabaseName $names["DatabaseName"] `
@@ -151,7 +151,7 @@ function Test-UpdateDatabaseRecommendedAction
 function Test-ListElasticPoolRecommendedActions
 {
 	$names = GetResourceNames
-	$response = Get-AzureRmSqlElasticPoolRecommendedAction `
+	$response = Get-AzSqlElasticPoolRecommendedAction `
 		-ResourceGroupName $names["ResourceGroupName"] `
 		-ServerName $names["ServerName"] `
 		-ElasticPoolName $names["ElasticPoolName"] `
@@ -167,7 +167,7 @@ function Test-ListElasticPoolRecommendedActions
 function Test-GetElasticPoolRecommendedAction
 {
 	$names = GetResourceNames
-	$response = Get-AzureRmSqlElasticPoolRecommendedAction `
+	$response = Get-AzSqlElasticPoolRecommendedAction `
 		-ResourceGroupName $names["ResourceGroupName"] `
 		-ServerName $names["ServerName"] `
 		-ElasticPoolName $names["ElasticPoolName"] `
@@ -185,7 +185,7 @@ function Test-GetElasticPoolRecommendedAction
 function Test-UpdateElasticPoolRecommendedAction
 {
 	$names = GetResourceNames
-	$response = Set-AzureRmSqlElasticPoolRecommendedActionState `
+	$response = Set-AzSqlElasticPoolRecommendedActionState `
 		-ResourceGroupName $names["ResourceGroupName"] `
 		-ServerName wi-runner-australia-east `
 		-ElasticPoolName $names["ElasticPoolName"] `
@@ -309,7 +309,7 @@ function SetupResources()
 	$names = GetResourceNames
 
 	# Create Resource Group
-	New-AzureRmResourceGroup -Name $names["ResourceGroupName"] -Location $names["Location"]
+	New-AzResourceGroup -Name $names["ResourceGroupName"] -Location $names["Location"]
 	
 	# Create Server
 	$serverLogin = "testusername"
@@ -317,21 +317,21 @@ function SetupResources()
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin `
 		, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
 	
-	New-AzureRmSqlServer -ResourceGroupName  $names["ResourceGroupName"] `
+	New-AzSqlServer -ResourceGroupName  $names["ResourceGroupName"] `
 		-ServerName $names["ServerName"] `
 		-Location $names["Location"] `
 		-ServerVersion "12.0" `
 		-SqlAdministratorCredentials $credentials
 
 	# Create database
-	New-AzureRmSqlDatabase `
+	New-AzSqlDatabase `
 		-ResourceGroupName $names["ResourceGroupName"] `
 		-ServerName $names["ServerName"] `
 		-DatabaseName $names["DatabaseName"] `
 		-Edition Basic
 
 	# Create elastic pool
-	New-AzureRmSqlElasticPool `
+	New-AzSqlElasticPool `
 		-ResourceGroupName $names["ResourceGroupName"] `
 		-ServerName $names["ServerName"] `
 		-ElasticPoolName $names["ElasticPoolName"] `

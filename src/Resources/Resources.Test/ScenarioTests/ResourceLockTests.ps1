@@ -24,9 +24,9 @@ function Test-ResourceLockCRUD
 	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$apiversion = "2014-04-01"
 
-	$rg = New-AzureRMResourceGroup -Name $rgname -Location $rglocation
-	$actual = New-AzureRMResourceLock -LockName $rname -LockLevel CanNotDelete -Force -Scope $rg.ResourceId
-	$expected = Get-AzureRMResourceLock -LockName $rname -Scope $rg.ResourceId
+	$rg = New-AzResourceGroup -Name $rgname -Location $rglocation
+	$actual = New-AzResourceLock -LockName $rname -LockLevel CanNotDelete -Force -Scope $rg.ResourceId
+	$expected = Get-AzResourceLock -LockName $rname -Scope $rg.ResourceId
 
 	# Assert
 	Assert-AreEqual $expected.Name $actual.Name
@@ -35,24 +35,24 @@ function Test-ResourceLockCRUD
 	Assert-AreEqual $expected.ResourceType $actual.ResourceType
 	Assert-AreEqual $expected.LockId $actual.LockId
 
-	$expectedSet = Set-AzureRMResourceLock -LockId $expected.LockId -LockLevel CanNotDelete -LockNotes test -Force
+	$expectedSet = Set-AzResourceLock -LockId $expected.LockId -LockLevel CanNotDelete -LockNotes test -Force
 	Assert-AreEqual $expectedSet.Properties.Notes "test"
 
-	$removed = Remove-AzureRMResourceLock -LockId $expectedSet.LockId -Force
+	$removed = Remove-AzResourceLock -LockId $expectedSet.LockId -Force
 	Assert-AreEqual True $removed
 
-	$actual = New-AzureRMResourceLock -LockName $rname -LockLevel CanNotDelete -Force -Scope $rg.ResourceId
-	$removed = Remove-AzureRMResourceLock -ResourceId $actual.ResourceId -Force
+	$actual = New-AzResourceLock -LockName $rname -LockLevel CanNotDelete -Force -Scope $rg.ResourceId
+	$removed = Remove-AzResourceLock -ResourceId $actual.ResourceId -Force
 	Assert-AreEqual True $removed
 
 	#ReadOnly lock
-	$actual = New-AzureRMResourceLock -LockName $rname -LockLevel ReadOnly -Force -Scope $rg.ResourceId
+	$actual = New-AzResourceLock -LockName $rname -LockLevel ReadOnly -Force -Scope $rg.ResourceId
 	Assert-AreEqual $expected.Name $actual.Name
 
-	$expected = Get-AzureRMResourceLock -LockName $rname -Scope $rg.ResourceId
+	$expected = Get-AzResourceLock -LockName $rname -Scope $rg.ResourceId
 	Assert-AreEqual $expected.Properties.Level "ReadOnly"
 
-	$removed = Remove-AzureRMResourceLock -ResourceId $actual.ResourceId -Force
+	$removed = Remove-AzResourceLock -ResourceId $actual.ResourceId -Force
 	Assert-AreEqual True $removed
 }
 
@@ -66,10 +66,10 @@ function Test-ResourceLockNonExisting
 	$rgname = Get-ResourceGroupName
 	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 
-	$rg = New-AzureRMResourceGroup -Name $rgname -Location $rglocation
+	$rg = New-AzResourceGroup -Name $rgname -Location $rglocation
 	Assert-AreEqual $rgname $rg.ResourceGroupName
 	
-	$lock = Get-AzureRMResourceLock -LockName "NonExisting" -Scope $rg.ResourceId -ErrorAction SilentlyContinue
+	$lock = Get-AzResourceLock -LockName "NonExisting" -Scope $rg.ResourceId -ErrorAction SilentlyContinue
 
 	Assert-True { $Error[0] -like "*LockNotFound : The lock 'NonExisting' could not be found." }
 	Assert-Null $lock

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 13901193-8C68-4969-ADCD-2E82EA714354
@@ -232,5 +232,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzVirtualNetworkPeering](./Remove-AzVirtualNetworkPeering.md)
 
 [Set-AzVirtualNetworkPeering](./Set-AzVirtualNetworkPeering.md)
-
-

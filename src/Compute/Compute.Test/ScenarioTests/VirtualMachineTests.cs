@@ -256,5 +256,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineManagedDisk");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineReimage()
+        {
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineReimage");
+        }
     }
 }
