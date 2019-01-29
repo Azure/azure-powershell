@@ -22,7 +22,7 @@ function Test-GetAvailableDelegationsList
 
     try
     {
-        $results = Get-AzureRmAvailableServiceDelegation -Location $location;
+        $results = Get-AzAvailableServiceDelegation -Location $location;
         Assert-NotNull $results;
     }
     finally

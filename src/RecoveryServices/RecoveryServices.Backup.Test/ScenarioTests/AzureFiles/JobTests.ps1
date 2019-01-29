@@ -23,21 +23,21 @@ $policyName = "AFSBackupPolicy"
 
 # Setup Instructions:
 # 1. Create a resource group
-# New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+# New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 # 2. Create a storage account and a recovery services vault
-# New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $saName -Location $location -SkuName $skuName
-# New-AzureRmRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $Location
+# New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $saName -Location $location -SkuName $skuName
+# New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $Location
 
 # 3. Create a file share in the storage account
-# $storageAcct = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $saName
+# $storageAcct = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $saName
 # New-AzureStorageShare -Name $fileShareFriendlyName -Context $storageAcct.Context
 
 # 4. Create a backup policy for file shares
-# $vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-# $schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
-# $retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
-# $policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID `
+# $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+# $schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
+# $retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
+# $policy = New-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID `
 #		-Name $policyName `
 #		-WorkloadType AzureFiles `
 #		-RetentionPolicy $retentionPolicy `
@@ -47,18 +47,18 @@ function Test-AzureFSGetJob
 {
 	try
 	{
-		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 		$item = Enable-Protection $vault $fileShareFriendlyName $saName
 
 		$startDate1 = Get-QueryDateInUtc $((Get-Date).AddDays(-1)) "StartDate1"
 		$endDate1 = Get-QueryDateInUtc $(Get-Date) "EndDate1"
 
-		$jobs = Get-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID -From $startDate1 -To $endDate1
+		$jobs = Get-AzRecoveryServicesBackupJob -VaultId $vault.ID -From $startDate1 -To $endDate1
 
 		foreach ($job in $jobs)
 		{
-			$jobDetails = Get-AzureRmRecoveryServicesBackupJobDetails -VaultId $vault.ID -Job $job;
-			$jobDetails2 = Get-AzureRmRecoveryServicesBackupJobDetails `
+			$jobDetails = Get-AzRecoveryServicesBackupJobDetails -VaultId $vault.ID -Job $job;
+			$jobDetails2 = Get-AzRecoveryServicesBackupJobDetails `
 				-VaultId $vault.ID `
 				-JobId $job.JobId
 
@@ -66,7 +66,7 @@ function Test-AzureFSGetJob
 			Assert-AreEqual $jobDetails2.JobId $job.JobId
 		}
 
-		$container = Get-AzureRmRecoveryServicesBackupContainer `
+		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `
@@ -82,21 +82,21 @@ function Test-AzureFSWaitJob
 {
 	try
 	{
-		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
  		$item = Enable-Protection $vault $fileShareFriendlyName $saName
 
 		# Trigger backup and wait for completion
-		$backupJob = Backup-AzureRmRecoveryServicesBackupItem `
+		$backupJob = Backup-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-Item $item
 
 		Assert-True { $backupJob.Status -eq "InProgress" }
 
-		$backupJob = Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID -Job $backupJob
+		$backupJob = Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID -Job $backupJob
 
 		Assert-True { $backupJob.Status -eq "Completed" }
 
-		$container = Get-AzureRmRecoveryServicesBackupContainer `
+		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `
@@ -112,19 +112,19 @@ function Test-AzureFSCancelJob
 {
 	try
 	{
-		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
  		$item = Enable-Protection $vault $fileShareFriendlyName $saName
 
 		# Trigger backup and wait for completion
-		$backupJob = Backup-AzureRmRecoveryServicesBackupItem ` -VaultId $vault.ID -Item $item
+		$backupJob = Backup-AzRecoveryServicesBackupItem ` -VaultId $vault.ID -Item $item
 		
 		Assert-True { $backupJob.Status -eq "InProgress" }
 
-		$cancelledJob = Stop-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID -Job $backupJob
+		$cancelledJob = Stop-AzRecoveryServicesBackupJob -VaultId $vault.ID -Job $backupJob
 
 		Assert-True { $cancelledJob.Status -ne "InProgress" }
 
-		$container = Get-AzureRmRecoveryServicesBackupContainer `
+		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `
