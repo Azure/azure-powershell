@@ -15,7 +15,7 @@ Description                           | Module Name                             
 ------------------------------------- | --------------------------------------- | -----------------------
 Azure PowerShell                      | `Az`                                    | [![Az]][AzGallery]
 
-For a full list of modules found in this repository, please see the [Azure PowerShell Modules][AzurePowerShelModules] document.
+For a full list of modules found in this repository, please see the [Azure PowerShell Modules][AzurePowerShelModules] document. 
 
 ## Installation
 
