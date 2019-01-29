@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         public AzureSqlDatabaseBackupAdapter(IAzureContext context)
         {
             Context = context;
-            _subscription = context.Subscription;
+            _subscription = context?.Subscription;
             Communicator = new AzureSqlDatabaseBackupCommunicator(Context);
         }
 
@@ -550,19 +550,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Context);
             var server = serverAdapter.GetServer(resourceGroupName, serverName);
             return server.Location;
-        }
-
-        /// <summary>
-        /// Gets a SQL database by name
-        /// </summary>
-        /// <param name="resourceGroupName">The resource group the database is in</param>
-        /// <param name="serverName">The name of the server</param>
-        /// <param name="databaseName">The name of the database</param>
-        /// <returns></returns>
-        public AzureSqlDatabaseModel GetDatabase(string resourceGroupName, string serverName, string databaseName)
-        {
-            AzureSqlDatabaseAdapter databaseAdapter = new AzureSqlDatabaseAdapter(Context);
-            return databaseAdapter.GetDatabase(resourceGroupName, serverName, databaseName);
         }
 
         /// <summary>

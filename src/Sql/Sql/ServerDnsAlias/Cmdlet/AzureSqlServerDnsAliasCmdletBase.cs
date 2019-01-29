@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
         [ValidateNotNullOrEmpty]
 		public virtual string ServerName { get; set; }
 
-		protected override AzureSqlServerDnsAliasAdapter InitModelAdapter(IAzureSubscription subscription)
+		protected override AzureSqlServerDnsAliasAdapter InitModelAdapter()
 		{
 			return new AzureSqlServerDnsAliasAdapter(DefaultProfile.DefaultContext);
 		}
