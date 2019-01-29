@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Update to latest version of ClientRuntime
+* Short-term fix for the issue #7876
 
 ## Version 1.2.0
 * Add interactive and username/password authentication for Windows PowerShell 5.1 only
