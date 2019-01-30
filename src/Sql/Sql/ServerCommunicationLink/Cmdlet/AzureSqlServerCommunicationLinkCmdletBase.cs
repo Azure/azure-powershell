@@ -39,9 +39,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
         /// <summary>
         /// Initializes the adapter
         /// </summary>
-        /// <param name="subscription">The subscription</param>
         /// <returns>Link adapter for ServerCommunicationLink</returns>
-        protected override AzureSqlServerCommunicationLinkAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlServerCommunicationLinkAdapter InitModelAdapter()
         {
             return new AzureSqlServerCommunicationLinkAdapter(DefaultProfile.DefaultContext);
         }
