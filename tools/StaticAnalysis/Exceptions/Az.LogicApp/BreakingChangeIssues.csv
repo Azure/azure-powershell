@@ -1,1 +1,2 @@
 "AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll","Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureLogicAppCommand","Get-AzLogicApp","0","1050","The parameter set '__AllParameterSets' for cmdlet 'Get-AzLogicApp' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'Get-AzLogicApp'."

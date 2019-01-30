@@ -429,13 +429,13 @@ $script:StorageScopes = @('All', 'Latest', 'AzureStorage')
 $script:ServiceScopes = @('All', 'Latest', 'ServiceManagement')
 
 # Package locations
-$script:AzurePackages = "$PSScriptRoot\..\src\Package"
+$script:AzurePackages = "$PSScriptRoot\..\artifacts"
 $script:StackPackages = "$PSScriptRoot\..\src\Stack"
 $script:StackProjects = "$PSScriptRoot\..\src\StackAdmin"
 
 # Resource Management folders
-$script:AzureRMRoot = "$script:AzurePackages\$buildConfig\ResourceManager\AzureResourceManager"
-$script:StackRMRoot = "$script:StackPackages\$buildConfig\ResourceManager\AzureResourceManager"
+$script:AzureRMRoot = "$script:AzurePackages\$buildConfig"
+$script:StackRMRoot = "$script:StackPackages\$buildConfig"
 
 
 # Begin
