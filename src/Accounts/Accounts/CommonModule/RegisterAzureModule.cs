@@ -258,8 +258,8 @@ namespace Microsoft.Azure.Commands.Common
     }
 
 
-    [Cmdlet(VerbsLifecycle.Register, @"AzureModule")]
-    public class RegisterAzureModule : System.Management.Automation.PSCmdlet
+    [Cmdlet(VerbsLifecycle.Register, @"AzModule")]
+    public class RegisterAzModule : System.Management.Automation.PSCmdlet
     {
 
         protected override void ProcessRecord()
