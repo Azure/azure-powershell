@@ -335,11 +335,11 @@ namespace Microsoft.Azure.Commands.Common
             switch (methodType)
             {
                 case ShouldMethodType.ShouldProcess:
-                    if (boundParameters != null && boundParameters.ContainsKey("Confirm") && (bool)boundParameters["Confirm"])
+                    if (boundParameters != null && boundParameters.ContainsKey("Confirm") && Convert.ToBoolean(boundParameters["Confirm"].ToString()))
                     {
                         result += Resources.ShouldProcessFailConfirm;
                     }
-                    else if (boundParameters != null && boundParameters.ContainsKey("WhatIf") && (bool)boundParameters["WhatIf"])
+                    else if (boundParameters != null && boundParameters.ContainsKey("WhatIf") && Convert.ToBoolean(boundParameters["WhatIf"].ToString()))
                     {
                         result += Resources.ShouldProcessFailWhatIf;
                     }
@@ -539,8 +539,8 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns>True if ShouldProcess does not need to be executed, false otherwise</returns>
         bool CanHandleShouldProcessLocally()
         {
-            return !(_cmdlet.MyInvocation.BoundParameters.ContainsKey("Confirm") && (bool)_cmdlet.MyInvocation.BoundParameters["Confirm"]) &&
-                !(_cmdlet.MyInvocation.BoundParameters.ContainsKey("WhatIf") && (bool)_cmdlet.MyInvocation.BoundParameters["WhatIf"]) &&
+            return !(_cmdlet.MyInvocation.BoundParameters.ContainsKey("Confirm") && Convert.ToBoolean(_cmdlet.MyInvocation.BoundParameters["Confirm"].ToString())) &&
+                !(_cmdlet.MyInvocation.BoundParameters.ContainsKey("WhatIf") && Convert.ToBoolean(_cmdlet.MyInvocation.BoundParameters["WhatIf"].ToString())) &&
                 !_shouldConfirm;
         }
 
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Commands.Common
             {
                 if (IsFailedOrCancelled(JobStateInfo.State))
                 {
-                    throw new LongRunningJobCancelledException("Azure Long running job is stopping, cnanot perform any action");
+                    throw new LongRunningJobCancelledException("Azure Long running job is stopping, cannot perform any action");
                 }
             }
         }
