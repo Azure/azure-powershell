@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqlinstance
@@ -16,16 +16,16 @@ Creates an Azure SQL Database Managed Instance.
 ```
 New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> -AdministratorCredential <PSCredential>
  -Location <String> -SubnetId <String> -LicenseType <String> -StorageSizeInGB <Int32> -VCore <Int32>
- -Edition <String> -ComputeGeneration <String> [-Tag <Hashtable>] [-AssignIdentity] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Edition <String> -ComputeGeneration <String> [-Collation <String>] [-Tag <Hashtable>] [-AssignIdentity]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewBySkuNameParameterSetParameter
 ```
 New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> -AdministratorCredential <PSCredential>
  -Location <String> -SubnetId <String> -LicenseType <String> -StorageSizeInGB <Int32> -VCore <Int32>
- -SkuName <String> [-Tag <Hashtable>] [-AssignIdentity] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SkuName <String> [-Collation <String>] [-Tag <Hashtable>] [-AssignIdentity] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,6 +122,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Collation
+The collation of the Azure SQL Managed Instance to use.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ComputeGeneration
 The compute generation for the instance.
 
@@ -168,7 +183,9 @@ Accept wildcard characters: False
 ```
 
 ### -LicenseType
-Determines which License Type of instance to use
+Determines which License Type to use. Possible values are:
+- BasePrice – Azure Hybrid Benefit (AHB) discounted pricing for existing SQL Server license owners is applied. Managed Instance service price will be discounted for existing SQL Server license owners.
+- LicenseIncluded – Azure Hybrid Benefit (AHB) discount pricing for existing SQL Server license owners is not applied. Managed Instance service price will include a new SQL Server license costs.
 
 ```yaml
 Type: System.String
