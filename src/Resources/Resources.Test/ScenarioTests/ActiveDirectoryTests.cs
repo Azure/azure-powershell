@@ -601,19 +601,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewADServicePrincipalWithCustomScope");
         }
-
-        [Fact(Skip = "Not working in playback.")]
+        
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateDeleteAppPasswordCredentials()
+        [Trait(Category.RunType, Category.DesktopOnly)]
+        public void TestCreateDeleteAppCredentials()
         {
-            TestRunner.RunTestScript("Test-CreateDeleteAppPasswordCredentials");
+            TestRunner.RunTestScript("Test-CreateDeleteAppCredentials");
         }
-
-        [Fact(Skip = "Not working in playback.")]
+        
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateDeleteSpPasswordCredentials()
+        [Trait(Category.RunType, Category.DesktopOnly)]
+        public void TestCreateDeleteSpCredentials()
         {
-            TestRunner.RunTestScript("Test-CreateDeleteSpPasswordCredentials");
+            TestRunner.RunTestScript("Test-CreateDeleteSpCredentials");
         }
 
         [Fact]
