@@ -23,21 +23,21 @@ $policyName = "AFSBackupPolicy"
 
 # Setup Instructions:
 # 1. Create a resource group
-# New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+# New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 # 2. Create a storage account and a recovery services vault
-# New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $saName -Location $location -SkuName $skuName
-# New-AzureRmRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $Location
+# New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $saName -Location $location -SkuName $skuName
+# New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $Location
 
 # 3. Create a file share in the storage account
-# $storageAcct = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $saName
+# $storageAcct = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $saName
 # New-AzureStorageShare -Name $fileShareFriendlyName -Context $storageAcct.Context
 
 # 4. Create a backup policy for file shares
-# $vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-# $schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
-# $retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
-# $policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID `
+# $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+# $schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
+# $retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
+# $policy = New-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID `
 #		-Name $policyName `
 #		-WorkloadType AzureFiles `
 #		-RetentionPolicy $retentionPolicy `
@@ -47,18 +47,18 @@ function Test-AzureFSContainer
 {
 	try
 	{
-		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 		$item = Enable-Protection $vault $fileShareFriendlyName $saName
 		
 		# VARIATION-1: Get All Containers with only mandatory parameters
-		$containers = Get-AzureRmRecoveryServicesBackupContainer `
+		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered;
 		Assert-True { $containers.FriendlyName -contains $saName }
 
 		# VARIATION-2: Get Containers with friendly name filter
-		$containers = Get-AzureRmRecoveryServicesBackupContainer `
+		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `
@@ -66,7 +66,7 @@ function Test-AzureFSContainer
 		Assert-True { $containers.FriendlyName -contains $saName }
 
 		# VARIATION-3: Get Containers with resource group filter
-		$containers = Get-AzureRmRecoveryServicesBackupContainer `
+		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `
@@ -74,7 +74,7 @@ function Test-AzureFSContainer
 		Assert-True { $containers.FriendlyName -contains $saName }
 	
 		# VARIATION-4: Get Containers with friendly name and resource group filters
-		$containers = Get-AzureRmRecoveryServicesBackupContainer `
+		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `
@@ -90,26 +90,26 @@ function Test-AzureFSContainer
 
 function Test-AzureFSUnregisterContainer
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 	$item = Enable-Protection $vault $fileShareFriendlyName $saName
 
-	$container = Get-AzureRmRecoveryServicesBackupContainer `
+	$container = Get-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-ContainerType AzureStorage `
 		-Status Registered `
 		-FriendlyName $saName
 
 	# Disable Protection
-	Disable-AzureRmRecoveryServicesBackupProtection `
+	Disable-AzRecoveryServicesBackupProtection `
 		-VaultId $vault.ID `
 		-Item $item `
 		-RemoveRecoveryPoints `
 		-Force;
-	Unregister-AzureRmRecoveryServicesBackupContainer `
+	Unregister-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-Container $container
 
-	$container = Get-AzureRmRecoveryServicesBackupContainer `
+	$container = Get-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-ContainerType AzureStorage `
 		-Status Registered `

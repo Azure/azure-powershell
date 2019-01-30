@@ -1,5 +1,5 @@
 ﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Management.PowerBIEmbedded.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded.dll-Help.xml
 Module Name: Az.PowerBIEmbedded
 ms.assetid: 3FED0088-47DA-4565-B9F0-DACF9B2DC0C7
 online version: https://docs.microsoft.com/en-us/powershell/module/az.powerbiembedded/get-azpowerbiworkspacecollectionaccesskeys

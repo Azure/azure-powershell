@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Test New-AzureRmSearchService
+Test New-AzSearchService
 #>
 function Test-NewAzureRmSearchService
 {
@@ -29,10 +29,10 @@ function Test-NewAzureRmSearchService
 
 	try
     {
-		New-AzureRmResourceGroup -Name $rgname -Location $loc
+		New-AzResourceGroup -Name $rgname -Location $loc
 		
 		# Act
-		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
 		
 		# Assert
 		Assert-NotNull $newSearchService
@@ -52,7 +52,7 @@ function Test-NewAzureRmSearchService
 
 <#
 .SYNOPSIS
-Test Get-AzureRmSearchService
+Test Get-AzSearchService
 #>
 function Test-GetAzureRmSearchService
 {
@@ -64,16 +64,16 @@ function Test-GetAzureRmSearchService
 
 	try
     {
-		New-AzureRmResourceGroup -Name $rgname -Location $loc
+		New-AzResourceGroup -Name $rgname -Location $loc
 		
 		# Act
-		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc
 
 		# By ResourceGroup + Name
-		$retrievedSearchService1 = Get-AzureRmSearchService -ResourceGroupName $rgname -Name $svcName
+		$retrievedSearchService1 = Get-AzSearchService -ResourceGroupName $rgname -Name $svcName
 
 		# By ResourceId
-		$retrievedSearchService2 = Get-AzureRmSearchService -ResourceId $newSearchService.Id
+		$retrievedSearchService2 = Get-AzSearchService -ResourceId $newSearchService.Id
 		
 		# Assert
 		Assert-NotNull $retrievedSearchService1
@@ -90,10 +90,10 @@ function Test-GetAzureRmSearchService
 
 		# Create anther one in the same ResourceGroup.
 		$svcName2 = $rgname + "-service2"
-		$newSearchService2 = New-AzureRmSearchService -ResourceGroupName $rgname -Name $svcName2 -Sku $sku -Location $loc
+		$newSearchService2 = New-AzSearchService -ResourceGroupName $rgname -Name $svcName2 -Sku $sku -Location $loc
 
 		# By ResourceGroup only = list
-		$allSearchServices = Get-AzureRmSearchService -ResourceGroupName $rgname
+		$allSearchServices = Get-AzSearchService -ResourceGroupName $rgname
 
 		Assert-AreEqual 2 $allSearchServices.Count
 	}
@@ -106,7 +106,7 @@ function Test-GetAzureRmSearchService
 
 <#
 .SYNOPSIS
-Test Remove-AzureRmSearchService
+Test Remove-AzSearchService
 #>
 function Test-RemoveAzureRmSearchService
 {
@@ -117,51 +117,51 @@ function Test-RemoveAzureRmSearchService
 
 	try
     {
-		New-AzureRmResourceGroup -Name $rgname -Location $loc
+		New-AzResourceGroup -Name $rgname -Location $loc
 		
 		# 1
 		# Act - Create
-		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name $($rgname + "-service1") -Sku $sku -Location $loc
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $($rgname + "-service1") -Sku $sku -Location $loc
 
 		# Can Get
-		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
+		$retrievedSvc = Get-AzSearchService -ResourceId $newSearchService.Id
 		Assert-NotNull $retrievedSvc
 
 		# Remove by InputObject
-		$retrievedSvc | Remove-AzureRmSearchService -Force
+		$retrievedSvc | Remove-AzSearchService -Force
 
 		# Assert Get nothing
-		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
+		$retrievedSvc = Get-AzSearchService -ResourceId $newSearchService.Id
 		Assert-Null $retrievedSvc
 		
 		# 2
 		# Act - Create
-		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name $($rgname + "-service2") -Sku $sku -Location $loc
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $($rgname + "-service2") -Sku $sku -Location $loc
 		
 		# Can Get
-		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
+		$retrievedSvc = Get-AzSearchService -ResourceId $newSearchService.Id
 		Assert-NotNull $retrievedSvc
 		
 		# Remove by ResourceId
-		Remove-AzureRmSearchService -ResourceId $retrievedSvc.Id -Force
+		Remove-AzSearchService -ResourceId $retrievedSvc.Id -Force
 
 		# Assert Get nothing
-		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
+		$retrievedSvc = Get-AzSearchService -ResourceId $newSearchService.Id
 		Assert-Null $retrievedSvc
 
 		# 3
 		# Act - Create
-		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name $($rgname + "-service3") -Sku $sku -Location $loc
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $($rgname + "-service3") -Sku $sku -Location $loc
 		
 		# Can Get
-		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
+		$retrievedSvc = Get-AzSearchService -ResourceId $newSearchService.Id
 		Assert-NotNull $retrievedSvc
 		
 		# Remove by ResourceGroup + Name
-		Remove-AzureRmSearchService -ResourceGroupName $rgname -Name $retrievedSvc.Name -Force
+		Remove-AzSearchService -ResourceGroupName $rgname -Name $retrievedSvc.Name -Force
 
 		# Assert Get nothing
-		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
+		$retrievedSvc = Get-AzSearchService -ResourceId $newSearchService.Id
 		Assert-Null $retrievedSvc
 	}
 	finally
@@ -173,7 +173,7 @@ function Test-RemoveAzureRmSearchService
 
 <#
 .SYNOPSIS
-Test Set-AzureRmSearchService
+Test Set-AzSearchService
 #>
 function Test-SetAzureRmSearchService
 {
@@ -187,38 +187,38 @@ function Test-SetAzureRmSearchService
 
 	try
     {
-		New-AzureRmResourceGroup -Name $rgname -Location $loc
+		New-AzResourceGroup -Name $rgname -Location $loc
 		
 		# 1. Act - Create
-		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name $($rgname + "-service1") -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $($rgname + "-service1") -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
 
 		# Set by InputObject
-		$newSearchService | Set-AzureRmSearchService -PartitionCount 2 -ReplicaCount 2
+		$newSearchService | Set-AzSearchService -PartitionCount 2 -ReplicaCount 2
 
 		# Assert Get
-		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
+		$retrievedSvc = Get-AzSearchService -ResourceId $newSearchService.Id
 		Assert-AreEqual 2 $retrievedSvc.PartitionCount
 		Assert-AreEqual 2 $retrievedSvc.ReplicaCount
 
 		# 2. Act - Create
-		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name $($rgname + "-service2") -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $($rgname + "-service2") -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
 		
 		# Set by ResourceId
-		Set-AzureRmSearchService -ResourceId $newSearchService.Id -PartitionCount 3 -ReplicaCount 3
+		Set-AzSearchService -ResourceId $newSearchService.Id -PartitionCount 3 -ReplicaCount 3
 
 		# Assert Get
-		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
+		$retrievedSvc = Get-AzSearchService -ResourceId $newSearchService.Id
 		Assert-AreEqual 3 $retrievedSvc.PartitionCount
 		Assert-AreEqual 3 $retrievedSvc.ReplicaCount
 
 		# 3. Act - Create
-		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name $($rgname + "-service3") -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $($rgname + "-service3") -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
 
 		# Set by ResourceGroup + Name
-		Set-AzureRmSearchService -ResourceGroupName $rgname -Name $newSearchService.Name -PartitionCount 2 -ReplicaCount 2
+		Set-AzSearchService -ResourceGroupName $rgname -Name $newSearchService.Name -PartitionCount 2 -ReplicaCount 2
 
 		# Assert Get
-		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
+		$retrievedSvc = Get-AzSearchService -ResourceId $newSearchService.Id
 		Assert-AreEqual 2 $retrievedSvc.PartitionCount
 		Assert-AreEqual 2 $retrievedSvc.ReplicaCount
 	}
@@ -246,15 +246,15 @@ function Test-ManageAzureRmSearchServiceAdminKey
 
 	try
     {
-		New-AzureRmResourceGroup -Name $rgname -Location $loc
+		New-AzResourceGroup -Name $rgname -Location $loc
 		
 		# 1. Act - Create
-		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
 
 		# Get
-		$adminKeyPair1 = $newSearchService | Get-AzureRmSearchAdminKeyPair
-		$adminKeyPair2 = Get-AzureRmSearchAdminKeyPair -ParentResourceId $newSearchService.Id
-		$adminKeyPair3 = Get-AzureRmSearchAdminKeyPair -ResourceGroupName $rgname -ServiceName $svcName
+		$adminKeyPair1 = $newSearchService | Get-AzSearchAdminKeyPair
+		$adminKeyPair2 = Get-AzSearchAdminKeyPair -ParentResourceId $newSearchService.Id
+		$adminKeyPair3 = Get-AzSearchAdminKeyPair -ResourceGroupName $rgname -ServiceName $svcName
 
 		# Assert
 		Assert-NotNull $adminKeyPair1
@@ -268,9 +268,9 @@ function Test-ManageAzureRmSearchServiceAdminKey
 		Assert-AreEqual $adminKeyPair2.Secondary $adminKeyPair3.Secondary
 
 		# New
-		$newKeyPair1 = $newSearchService | New-AzureRmSearchAdminKey -KeyKind Primary -Force
-		$newKeyPair2 = New-AzureRmSearchAdminKey -ParentResourceId $newSearchService.Id -KeyKind Secondary -Force
-		$newKeyPair3 = New-AzureRmSearchAdminKey -ResourceGroupName $rgname -ServiceName $svcName -KeyKind Primary -Force
+		$newKeyPair1 = $newSearchService | New-AzSearchAdminKey -KeyKind Primary -Force
+		$newKeyPair2 = New-AzSearchAdminKey -ParentResourceId $newSearchService.Id -KeyKind Secondary -Force
+		$newKeyPair3 = New-AzSearchAdminKey -ResourceGroupName $rgname -ServiceName $svcName -KeyKind Primary -Force
 
 		# 1
 		Assert-NotNull $newKeyPair1
@@ -315,15 +315,15 @@ function Test-ManageAzureRmSearchServiceQueryKey
 
 	try
     {
-		New-AzureRmResourceGroup -Name $rgname -Location $loc
+		New-AzResourceGroup -Name $rgname -Location $loc
 		
 		# 1. Act - Create
-		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
 
 		# Get
-		$queryKey1 = $newSearchService | Get-AzureRmSearchQueryKey
-		$queryKey2 = Get-AzureRmSearchQueryKey -ParentResourceId $newSearchService.Id
-		$queryKey3 = Get-AzureRmSearchQueryKey -ResourceGroupName $rgname -ServiceName $svcName
+		$queryKey1 = $newSearchService | Get-AzSearchQueryKey
+		$queryKey2 = Get-AzSearchQueryKey -ParentResourceId $newSearchService.Id
+		$queryKey3 = Get-AzSearchQueryKey -ResourceGroupName $rgname -ServiceName $svcName
 
 		# Assert
 		Assert-NotNull $queryKey1
@@ -342,20 +342,20 @@ function Test-ManageAzureRmSearchServiceQueryKey
 		Assert-AreEqual $queryKey2[0].Key $queryKey3[0].Key
 
 		# New
-		$newQueryKey1 = $newSearchService | New-AzureRmSearchQueryKey -Name "newquerykey1"
-		$newQueryKey2 = New-AzureRmSearchQueryKey -ParentResourceId $newSearchService.Id -Name "newquerykey2"
-		$newQueryKey3 = New-AzureRmSearchQueryKey -ResourceGroupName $rgname -ServiceName $svcName -Name "newquerykey3"
+		$newQueryKey1 = $newSearchService | New-AzSearchQueryKey -Name "newquerykey1"
+		$newQueryKey2 = New-AzSearchQueryKey -ParentResourceId $newSearchService.Id -Name "newquerykey2"
+		$newQueryKey3 = New-AzSearchQueryKey -ResourceGroupName $rgname -ServiceName $svcName -Name "newquerykey3"
 
-		$allKeys = Get-AzureRmSearchQueryKey -ParentResourceId $newSearchService.Id
+		$allKeys = Get-AzSearchQueryKey -ParentResourceId $newSearchService.Id
 		
 		Assert-AreEqual 4 $allKeys.Count
 
 		# Remove
-		$newSearchService | Remove-AzureRmSearchQueryKey -KeyValue $newQueryKey1.Key -Force
-		Remove-AzureRmSearchQueryKey -ParentResourceId $newSearchService.Id -KeyValue $newQueryKey2.Key -Force
-		Remove-AzureRmSearchQueryKey -ResourceGroupName $rgname -ServiceName $svcName -KeyValue $newQueryKey3.Key -Force
+		$newSearchService | Remove-AzSearchQueryKey -KeyValue $newQueryKey1.Key -Force
+		Remove-AzSearchQueryKey -ParentResourceId $newSearchService.Id -KeyValue $newQueryKey2.Key -Force
+		Remove-AzSearchQueryKey -ResourceGroupName $rgname -ServiceName $svcName -KeyValue $newQueryKey3.Key -Force
 
-		$allKeys = Get-AzureRmSearchQueryKey -ParentResourceId $newSearchService.Id
+		$allKeys = Get-AzSearchQueryKey -ParentResourceId $newSearchService.Id
 
 		Assert-AreEqual 1 $allKeys.Count
 	}

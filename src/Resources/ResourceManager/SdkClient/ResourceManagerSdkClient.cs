@@ -621,8 +621,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
 
             ResourceGroup resourceGroup = ResourceManagementClient.ResourceGroups.Get(parameters.ResourceGroupName);
+            Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(parameters.Tag, validate: true);
 
-            resourceGroup = CreateOrUpdateResourceGroup(parameters.ResourceGroupName, resourceGroup.Location, parameters.Tag);
+            resourceGroup = ResourceManagementClient.ResourceGroups.Update(resourceGroup.Name,
+                new ResourceGroupPatchable
+                {
+                    Name = resourceGroup.Name,
+                    Properties = resourceGroup.Properties,
+                    ManagedBy = resourceGroup.ManagedBy,
+                    Tags = tagDictionary
+                });
+
             WriteVerbose(string.Format(ProjectResources.UpdatedResourceGroup, resourceGroup.Name, resourceGroup.Location));
 
             return resourceGroup.ToPSResourceGroup();
