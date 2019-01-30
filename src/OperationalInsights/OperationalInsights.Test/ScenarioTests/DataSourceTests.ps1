@@ -134,7 +134,9 @@ function Test-CreateAllKindsOfDataSource
     # customlog
     $customLogRawJson = '{"customLogName":"Validation_CL","description":"test","inputs":[{"location":{"fileSystemLocations":{"linuxFileTypeLogPaths":null,"windowsFileTypeLogPaths":["C:\\e2e\\Evan\\ArubaSECURITY\\*.log"]}},"recordDelimiter":{"regexDelimiter":{"pattern":"\\n","matchIndex":0}}}],"extractions":[{"extractionName":"TimeGenerated","extractionType":"DateTime","extractionProperties":{"dateTimeExtraction":{"regex":null,"joinStringRegex":null}}}]}'
     $customLogDataSource = New-AzOperationalInsightsCustomLogDataSource -Workspace $workspace -CustomLogRawJson $customLogRawJson -Name "MyCustomLog"
-
+	
+    # ApplicationInsights data source
+    $applicationInsightsDataSource = New-AzOperationalInsightsApplicationInsightsDataSource -Workspace $workspace -ApplicationSubscriptionId $subId1 -ApplicationResourceGroupName $rgname -ApplicationName "ai-app"
 }
 
 <#
