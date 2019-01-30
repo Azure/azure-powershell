@@ -44,14 +44,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 string imageName = this.ImageName;
                 string expand = this.Expand;
 
-                if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(imageName))
+                if (ShouldGetByName(resourceGroupName, imageName))
                 {
                     var result = ImagesClient.Get(resourceGroupName, imageName, expand);
                     var psObject = new PSImage();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImage>(result, psObject);
                     WriteObject(psObject);
                 }
-                else if (!string.IsNullOrEmpty(resourceGroupName))
+                else if (ShouldListByResourceGroup(resourceGroupName, imageName))
                 {
                     var result = ImagesClient.ListByResourceGroup(resourceGroupName);
                     var resultList = result.ToList();
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImageList>(r));
                     }
-                    WriteObject(psObject, true);
+                    WriteObject(TopLevelWildcardFilter(resourceGroupName, imageName, psObject), true);
                 }
                 else
                 {
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImageList>(r));
                     }
-                    WriteObject(psObject, true);
+                    WriteObject(TopLevelWildcardFilter(resourceGroupName, imageName, psObject), true);
                 }
             });
         }
