@@ -20,10 +20,8 @@ using System.Management.Automation;
 using System.Net.Http;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-#if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Profile.Models.Core;
-#endif
 using Microsoft.Azure.Commands.Profile.Models;
 using System.Globalization;
 using Microsoft.Azure.Commands.Common.Authentication;
