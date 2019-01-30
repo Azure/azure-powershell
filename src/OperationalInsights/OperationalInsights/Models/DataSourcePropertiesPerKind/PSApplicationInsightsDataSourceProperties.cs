@@ -35,15 +35,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, PropertyName = "status")]
         public string Status { get; set; }
-
-        public PSApplicationInsightsDataSourceProperties(Guid subscriptionId, string resourceGroupName, string name)
-        {
-            this.LinkedResourceId = string.Format(Resources.ApplicationInsightsArmResourceFormat, subscriptionId, resourceGroupName, name);
-        }
-
-        public PSApplicationInsightsDataSourceProperties(string resourceId)
-        {
-            this.LinkedResourceId = resourceId;
-        }
     }
 }

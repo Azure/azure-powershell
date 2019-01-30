@@ -13,9 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
-using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.OperationalInsights.Properties;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
@@ -60,10 +60,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public override void ExecuteCmdlet()
         {
             this.Name = PSDataSourceKinds.ApplicationInsights;
-            var applicationInsightsProperties = new PSApplicationInsightsDataSourceProperties(
-                Guid.Parse(this.ApplicationSubscriptionId),
-                this.ApplicationResourceGroupName,
-                this.ApplicationName);
+            var applicationInsightsProperties = new PSApplicationInsightsDataSourceProperties()
+            {
+                LinkedResourceId = string.Format(Resources.ApplicationInsightsArmResourceFormat,
+                    ApplicationSubscriptionId, ApplicationResourceGroupName, ApplicationName)
+            };
             CreatePSDataSourceWithProperties(applicationInsightsProperties);
         }
     }
