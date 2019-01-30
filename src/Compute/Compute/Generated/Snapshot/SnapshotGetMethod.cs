@@ -43,14 +43,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 string resourceGroupName = this.ResourceGroupName;
                 string snapshotName = this.SnapshotName;
 
-                if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(snapshotName))
+                if (ShouldGetByName(resourceGroupName, snapshotName))
                 {
                     var result = SnapshotsClient.Get(resourceGroupName, snapshotName);
                     var psObject = new PSSnapshot();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
                     WriteObject(psObject);
                 }
-                else if (!string.IsNullOrEmpty(resourceGroupName))
+                else if (ShouldListByResourceGroup(resourceGroupName, snapshotName))
                 {
                     var result = SnapshotsClient.ListByResourceGroup(resourceGroupName);
                     var resultList = result.ToList();
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<Snapshot, PSSnapshotList>(r));
                     }
-                    WriteObject(psObject, true);
+                    WriteObject(TopLevelWildcardFilter(resourceGroupName, snapshotName, psObject), true);
                 }
                 else
                 {
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<Snapshot, PSSnapshotList>(r));
                     }
-                    WriteObject(psObject, true);
+                    WriteObject(TopLevelWildcardFilter(resourceGroupName, snapshotName, psObject), true);
                 }
             });
         }

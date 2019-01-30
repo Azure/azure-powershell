@@ -43,14 +43,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 string resourceGroupName = this.ResourceGroupName;
                 string diskName = this.DiskName;
 
-                if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(diskName))
+                if (ShouldGetByName(resourceGroupName, diskName))
                 {
                     var result = DisksClient.Get(resourceGroupName, diskName);
                     var psObject = new PSDisk();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
                     WriteObject(psObject);
                 }
-                else if (!string.IsNullOrEmpty(resourceGroupName))
+                else if (ShouldListByResourceGroup(resourceGroupName, diskName))
                 {
                     var result = DisksClient.ListByResourceGroup(resourceGroupName);
                     var resultList = result.ToList();
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDiskList>(r));
                     }
-                    WriteObject(psObject, true);
+                    WriteObject(TopLevelWildcardFilter(resourceGroupName, diskName, psObject), true);
                 }
                 else
                 {
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDiskList>(r));
                     }
-                    WriteObject(psObject, true);
+                    WriteObject(TopLevelWildcardFilter(resourceGroupName, diskName, psObject), true);
                 }
             });
         }
