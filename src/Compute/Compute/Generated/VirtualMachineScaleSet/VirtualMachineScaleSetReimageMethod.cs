@@ -63,6 +63,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         var vmScaleSetReimageInput = new VirtualMachineScaleSetReimageParameters();
                         vmScaleSetReimageInput.InstanceIds = instanceIds;
+                        vmScaleSetReimageInput.TempDisk = this.TempDisk.IsPresent;
                         result = VirtualMachineScaleSetsClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, vmScaleSetReimageInput).GetAwaiter().GetResult();
                     }
 
@@ -101,6 +102,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
         public string [] InstanceId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter")]
+        public SwitchParameter TempDisk { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",

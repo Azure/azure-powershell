@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets the instance License Type
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Determines which License Type to use")]
+            HelpMessage = "Determines which License Type to use. Possible values are BasePrice (with AHB discount) and LicenseIncluded (without AHB discount).")]
         [PSArgumentCompleter(Constants.LicenseTypeBasePrice, Constants.LicenseTypeLicenseIncluded)]
         public string LicenseType { get; set; }
 
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 Sku = Sku,
                 AdministratorPassword = this.AdministratorPassword,
                 LicenseType = this.LicenseType,
-                StorageSizeInGB = this.StorageSizeInGB,
+                StorageSizeInGB = this.StorageSizeInGB ?? model.FirstOrDefault().StorageSizeInGB,
                 VCores = this.VCore,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),

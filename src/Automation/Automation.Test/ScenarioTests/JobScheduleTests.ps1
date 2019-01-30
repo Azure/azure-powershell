@@ -27,19 +27,19 @@ function Test-E2EJobSchedules
 {
     $resourceGroupName = "to-delete-01"
     $automationAccountName = "fbs-aa-01"
-    $output = Get-AzureRmAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
+    $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
     $StartTime = Get-Date "13:00:00"
     $StartTime = $StartTime.AddDays(1)
     $EndTime = $StartTime.AddYears(1)
     $ScheduleName = "ScheduleForRunbookAssociation"
     $runbookName =  "RunbookForScheduleAssociation"
 
-    Register-AzureRmAutomationScheduledRunbook -ResourceGroupName $resourceGroupName `
+    Register-AzAutomationScheduledRunbook -ResourceGroupName $resourceGroupName `
                                                -AutomationAccountName $automationAccountName `
                                                -RunbookName $runbookName `
                                                -ScheduleName $ScheduleName
 
-    $jobSchedule = Get-AzureRmAutomationScheduledRunbook -ResourceGroupName $resourceGroupName `
+    $jobSchedule = Get-AzAutomationScheduledRunbook -ResourceGroupName $resourceGroupName `
                                                          -AutomationAccountName $automationAccountName `
                                                          -RunbookName $runbookName `
                                                          -ScheduleName $ScheduleName
@@ -48,12 +48,12 @@ function Test-E2EJobSchedules
     Assert-AreEqual $ScheduleName  $jobSchedule.ScheduleName 
     Assert-AreEqual $runbookName $jobSchedule.RunbookName
 
-    Unregister-AzureRmAutomationScheduledRunbook -ResourceGroupName $resourceGroupName `
+    Unregister-AzAutomationScheduledRunbook -ResourceGroupName $resourceGroupName `
                                                  -AutomationAccountName $automationAccountName `
                                                  -RunbookName $runbookName `
                                                  -ScheduleName $ScheduleName -Force
 
-    $jobSchedule = Get-AzureRmAutomationScheduledRunbook -ResourceGroupName $resourceGroupName `
+    $jobSchedule = Get-AzAutomationScheduledRunbook -ResourceGroupName $resourceGroupName `
                                                          -AutomationAccountName $automationAccountName `
                                                          -RunbookName $runbookName `
                                                          -ScheduleName $ScheduleName -ErrorAction SilentlyContinue
