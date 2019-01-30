@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 1CE2A30A-6DF8-4C4C-8348-C3C1CD4D0146
@@ -71,6 +71,26 @@ Subnets           : []
 This command gets the route table named RouteTable01 by using Get-AzRouteTable cmdlet.
 The command passes that table to the Add-AzRouteConfig cmdlet by using the pipeline operator.
 **Add-AzRouteConfig** adds the route named Route07, and then passes the result to the current cmdlet, which updates the table to reflect your changes.
+
+### Example 2: Modify route table
+
+```
+PS C:\> $rt = Get-AzRouteTable -ResourceGroupName "rgName" -Name "rtName"
+PS C:\> $rt.DisableBgpRoutePropagation
+False
+PS C:\> $rt.DisableBgpRoutePropagation = $true
+PS C:\> Set-AzRouteTable -RouteTable $rt
+PS C:\> $rt = Get-AzRouteTable -ResourceGroupName "rgName" -Name "rtName"
+PS C:\> $rt.DisableBgpRoutePropagation
+True
+```
+
+The first command gets the route table named rtName and stores it in the $rt variable.
+The second command displays the value of DisableBgpRoutePropagation.
+The third command updates value of DisableBgpRoutePropagation.
+The fourth command updates route table on the server.
+The fifth command gets updated route table and stores it in the $rt variable.
+The sixth command displays the value of DisableBgpRoutePropagation.
 
 ## PARAMETERS
 

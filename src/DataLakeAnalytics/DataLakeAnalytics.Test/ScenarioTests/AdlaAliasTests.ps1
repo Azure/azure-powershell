@@ -14,7 +14,7 @@ function Test-DataLakeAnalyticsJobRelationships
 	try
 	{
 		# Creating Account and initial setup
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 		New-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		$accountCreated = New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
 		$nowTime = $accountCreated.CreationTime
@@ -107,7 +107,7 @@ function Test-DataLakeAnalyticsJobRelationships
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -128,7 +128,7 @@ function Test-DataLakeAnalyticsComputePolicy
 	try
 	{
 		# Creating Account
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		# Test to make sure the account doesn't exist
 		Assert-False {Test-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
@@ -216,7 +216,7 @@ function Test-DataLakeAnalyticsComputePolicy
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -237,7 +237,7 @@ function Test-DataLakeAnalyticsFirewall
 	try
 	{
 		# Creating Account
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		# Test to make sure the account doesn't exist
 		Assert-False {Test-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
@@ -310,7 +310,7 @@ function Test-DataLakeAnalyticsFirewall
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -334,7 +334,7 @@ function Test-DataLakeAnalyticsAccount
     try
 	{
 		# Creating Account and initial setup
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		# Test to make sure the account doesn't exist
 		Assert-False {Test-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
@@ -478,7 +478,7 @@ function Test-DataLakeAnalyticsAccount
 		Invoke-HandledCmdlet -Command {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $secondDataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -500,7 +500,7 @@ function Test-DataLakeAnalyticsAccountTiers
     try
 	{
 		# Creating Account and initial setup
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		# Test to make sure the account doesn't exist
 		Assert-False {Test-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
@@ -533,7 +533,7 @@ function Test-DataLakeAnalyticsAccountTiers
 		Invoke-HandledCmdlet -Command {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $secondAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -553,7 +553,7 @@ function Test-DataLakeAnalyticsJob
 	try
 	{
 		# Creating Account and initial setup
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 		New-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		$accountCreated = New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
 		$nowTime = $accountCreated.CreationTime
@@ -659,7 +659,7 @@ function Test-DataLakeAnalyticsJob
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -682,7 +682,7 @@ function Test-NegativeDataLakeAnalyticsAccount
 	try
 	{
 		# Creating Account and initial setup
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 		New-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		$accountCreated = New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
 		
@@ -733,7 +733,7 @@ function Test-NegativeDataLakeAnalyticsAccount
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -755,7 +755,7 @@ function Test-NegativeDataLakeAnalyticsJob
 	try
 	{
 		# Creating Account and initial setup
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 		New-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		$accountCreated = New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
 		$nowTime = $accountCreated.CreationTime
@@ -806,7 +806,7 @@ function Test-NegativeDataLakeAnalyticsJob
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -835,7 +835,7 @@ function Test-DataLakeAnalyticsCatalog
 	try
 	{
 		# Creating Account and initial setup
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 		New-AdlStore -Name $dataLakeAccountName -Location $location -ResourceGroupName $resourceGroupName
 		$accountCreated = New-AdlAnalyticsAccount -Name $accountName -Location $location -ResourceGroupName $resourceGroupName -DefaultDataLakeStore $dataLakeAccountName
     
@@ -1427,6 +1427,6 @@ function Test-DataLakeAnalyticsCatalog
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }

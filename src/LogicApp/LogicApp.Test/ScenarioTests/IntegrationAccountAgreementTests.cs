@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test New-AzureRmIntegrationAccountAgreement command to create a new X12 integration account agreement.
+        /// Test New-AzIntegrationAccountAgreement command to create a new X12 integration account agreement.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test New-AzureRmIntegrationAccountAgreement command with invalid partner and qualifier value.
+        /// Test New-AzIntegrationAccountAgreement command with invalid partner and qualifier value.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test New-AzureRmIntegrationAccountAgreement command to create a new AS2 integration account agreement.
+        /// Test New-AzIntegrationAccountAgreement command to create a new AS2 integration account agreement.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test New-AzureRmIntegrationAccountAgreement command to create a new EDIFACT integration account agreement.
+        /// Test New-AzIntegrationAccountAgreement command to create a new EDIFACT integration account agreement.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountAgreement command to get the integration account agreement.
+        /// Test Get-AzIntegrationAccountAgreement command to get the integration account agreement.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Remove-AzureRmIntegrationAccountAgreement command to remove the integration account agreement.
+        /// Test Remove-AzIntegrationAccountAgreement command to remove the integration account agreement.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }        
 
         /// <summary>
-        /// Test Set-AzureRmIntegrationAccountAgreement command to update the integration account agreement.
+        /// Test Set-AzIntegrationAccountAgreement command to update the integration account agreement.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountAgreement command to get all the integration account agreements.
+        /// Test Get-AzIntegrationAccountAgreement command to get all the integration account agreements.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
