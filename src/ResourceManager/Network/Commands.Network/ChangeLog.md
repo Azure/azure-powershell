@@ -26,6 +26,7 @@
 * Added example for Set-AzureRmVirtualNetworkGatewayConnectionSharedKey
 * Added example for Set-AzureRmVirtualNetworkGatewayConnection
 * Re-generated cmdlets for ApplicationSecurityGroup, RouteTable and Usage using latest code generator
+* Added additional details about the default behavior of Get-AzureRmVirtualNetworkGatewayConnection
 
 ## Version 6.4.1
 * Updated all help files to include full parameter types and correct input/output types.
