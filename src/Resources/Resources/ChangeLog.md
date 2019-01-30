@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix for issue https://github.com/Azure/azure-powershell/issues/8235
 
 ## Version 1.1.1
 * Fix incorrect examples in `New-AzADAppCredential` and `New-AzADSpCredential` reference documentation
