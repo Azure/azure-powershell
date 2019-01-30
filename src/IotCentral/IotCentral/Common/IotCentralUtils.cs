@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.IotCentral.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.IotCentral.Common
 {
@@ -41,6 +42,14 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
                 Subdomain = iotCentralApp.Subdomain
             };
             return copiedIotCenralApp;
+        }
+
+        public static void EnsureAvailabilityOrThrow(AppAvailabilityInfo availabilityInfo)
+        {
+            if (availabilityInfo.NameAvailable != true)
+            {
+                throw new PSArgumentException(availabilityInfo.Message);
+            }
         }
     }
 }

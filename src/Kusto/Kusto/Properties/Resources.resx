@@ -183,4 +183,7 @@
   <data name="ResourceGroupNotSpecified" xml:space="preserve">
     <value>Name of resource group not specified</value>
   </data>
+  <data name="NoSubscriptionInContext" xml:space="preserve">
+    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login.</value>
+  </data>
 </root>

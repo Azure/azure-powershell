@@ -19,8 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.2
+* Update incorrect online help URLs
+* Give detail error message when get/set classic Logging/Metric on Premium Storage Account, since Premium Storage Account not supoort classic Logging/Metric.
+    - Get/Set-AzStorageServiceLoggingProperty
+    - Get/Set-AzStorageServiceMetricsProperty
+
 ## Version 1.0.1
-* Set the StorageAccountName of Storage context as the real Storage Account Name, when it's created with Sas Token, OAuth or Anonymous 
+* Set the StorageAccountName of Storage context as the real Storage Account Name, when it's created with Sas Token, OAuth or Anonymous
     - New-AzStorageContext
 * Create Sas Token of Blob Snapshot Object with '-FullUri' parameter, fix the returned Uri to be the sanpshot Uri
     - New-AzStorageBlobSASToken

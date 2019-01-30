@@ -25,26 +25,26 @@ function Test-DeploymentEndToEnd
 		$deploymentName = Get-ResourceName
 		$location = "WestUS"
 
-		New-AzureRmResourceGroup -Name $rgname -Location $location
+		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Test
-		$deployment = New-AzureRmDeployment -Name $deploymentName -Location $location -TemplateFile subscription_level_template.json -TemplateParameterFile subscription_level_parameters.json -nestedDeploymentRG $rgname
+		$deployment = New-AzDeployment -Name $deploymentName -Location $location -TemplateFile subscription_level_template.json -TemplateParameterFile subscription_level_parameters.json -nestedDeploymentRG $rgname
     
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
     
-		$subId = (Get-AzureRmContext).Subscription.SubscriptionId
+		$subId = (Get-AzContext).Subscription.SubscriptionId
 		$deploymentId = "/subscriptions/$subId/providers/Microsoft.Resources/deployments/$deploymentName"
-		$getById = Get-AzureRmDeployment -Id $deploymentId
+		$getById = Get-AzDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
 
-		$templatePath = Save-AzureRmDeploymentTemplate -Name $deploymentName -Force
+		$templatePath = Save-AzDeploymentTemplate -Name $deploymentName -Force
 		Assert-NotNull $templatePath.Path
 
-		$operations = Get-AzureRmDeploymentOperation -DeploymentName $deploymentName
+		$operations = Get-AzDeploymentOperation -DeploymentName $deploymentName
 		Assert-AreEqual 4 @($operations).Count
 
-		Remove-AzureRmDeployment -Name $deploymentName
+		Remove-AzDeployment -Name $deploymentName
 	}
 	finally
 	{
@@ -66,10 +66,10 @@ function Test-DeploymentAsJob
 		$storageAccountName = Get-ResourceName
 		$location = "WestUS"
 
-		New-AzureRmResourceGroup -Name $rgname -Location $location
+		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Test
-		$job = New-AzureRmDeployment -Name $deploymentName -Location $location -TemplateFile subscription_level_template.json -nestedDeploymentRG $rgname -storageAccountName $storageAccountName -AsJob
+		$job = New-AzDeployment -Name $deploymentName -Location $location -TemplateFile subscription_level_template.json -nestedDeploymentRG $rgname -storageAccountName $storageAccountName -AsJob
 		Assert-AreEqual Running $job[0].State
 
 		$job = $job | Wait-Job
@@ -78,15 +78,15 @@ function Test-DeploymentAsJob
 		$deployment = $job | Receive-Job
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
     
-		$subId = (Get-AzureRmContext).Subscription.SubscriptionId
+		$subId = (Get-AzContext).Subscription.SubscriptionId
 		$deploymentId = "/subscriptions/$subId/providers/Microsoft.Resources/deployments/$deploymentName"
-		$getById = Get-AzureRmDeployment -Id $deploymentId
+		$getById = Get-AzDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
 
-		$operations = Get-AzureRmDeploymentOperation -DeploymentName $deploymentName
+		$operations = Get-AzDeploymentOperation -DeploymentName $deploymentName
 		Assert-AreEqual 4 @($operations).Count
 
-		Remove-AzureRmDeployment -Name $deploymentName
+		Remove-AzDeployment -Name $deploymentName
 	}
 	finally
 	{
@@ -108,15 +108,15 @@ function Test-StopDeployment
 		$storageAccountName = Get-ResourceName
 		$location = "WestUS"
 
-		New-AzureRmResourceGroup -Name $rgname -Location $location
+		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Test
-		$job = New-AzureRmDeployment -Name $deploymentName -Location $location -TemplateFile subscription_level_template.json -nestedDeploymentRG $rgname -storageAccountName $storageAccountName -AsJob
+		$job = New-AzDeployment -Name $deploymentName -Location $location -TemplateFile subscription_level_template.json -nestedDeploymentRG $rgname -storageAccountName $storageAccountName -AsJob
 		Assert-AreEqual Running $job[0].State
 
 		#Start-Sleep -s 1
 
-		Stop-AzureRmDeployment -Name $deploymentName
+		Stop-AzDeployment -Name $deploymentName
 
 		$job = $job | Wait-Job
 		Assert-AreEqual Completed $job[0].State
@@ -126,7 +126,7 @@ function Test-StopDeployment
 
 		#Start-Sleep -s 1
 
-		Remove-AzureRmDeployment -Name $deploymentName
+		Remove-AzDeployment -Name $deploymentName
 	}
 	finally
 	{
