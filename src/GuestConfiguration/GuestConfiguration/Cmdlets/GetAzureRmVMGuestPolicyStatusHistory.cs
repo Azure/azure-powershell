@@ -65,7 +65,11 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
             switch (ParameterSetName)
             {
                 case ParameterSetNames.InitiativeNameScope:
-                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeName(ResourceGroupName, VMName, InitiativeName, true, ShowOnlyChange.IsPresent);
+                    // get all gcrp assignments first
+                    var gcrpAssignments = GetAllGCRPAssignments(ResourceGroupName, VMName);
+
+                    // Process results for cmdlet
+                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeName(ResourceGroupName, VMName, InitiativeName, true, gcrpAssignments, ShowOnlyChange.IsPresent);
                     if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
                     {
                         WriteObject(gcPolicyAssignmentReports, true);
@@ -73,7 +77,11 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
                     break;
 
                 case ParameterSetNames.InitiativeIdScope:
-                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeId(ResourceGroupName, VMName, InitiativeId, true, ShowOnlyChange.IsPresent);
+                    // get all gcrp assignments first
+                    gcrpAssignments = GetAllGCRPAssignments(ResourceGroupName, VMName);
+
+                    // Process results for cmdlet
+                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeId(ResourceGroupName, VMName, InitiativeId, true, gcrpAssignments, ShowOnlyChange.IsPresent);
 
                     if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
                     {

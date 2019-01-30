@@ -30,7 +30,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Guest Configuration service cmdlets for Azure Resource Manager'
+Description = 'Service cmdlets for Azure Policy Guest Configuration. Allows querying for Guest Configuration node compliance status, compliance reasons, and compliance status history. For more information, please visit: https://aka.ms/guestconfigcmdlets'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '5.1'

@@ -19,5 +19,9 @@
 -->
 ## Upcoming Release
 
-## Version 0.10.0
-* Initial release of Az.GuestConfiguration module
+## Version 0.10.2
+* Initial release of Az.GuestConfiguration module. Provides these two cmdlets. 
+  * Get-AzVMGuestPolicyReport 
+    * Provides compliance status of a VM in a resource group, compliance reasons. 
+  * Get-AzVMGuestPolicyStatusHistory: 
+    * Provides historical compliance statuses of a VM in a resource group, for a maximum of past 14 days.
