@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5C309071-A2ED-464C-9197-0A77859C8FBB
@@ -396,5 +396,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Reset-AzVirtualNetworkGateway](./Reset-AzVirtualNetworkGateway.md)
 
 [Resize-AzVirtualNetworkGateway](./Resize-AzVirtualNetworkGateway.md)
-
-

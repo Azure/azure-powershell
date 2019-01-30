@@ -24,7 +24,7 @@ List marketplaces
 #>
 function Test-ListMarketplaces
 {
-    $marketplaces = Get-AzureRmConsumptionMarketplace -Top 10
+    $marketplaces = Get-AzConsumptionMarketplace -Top 10
 	Assert-NotNull $marketplaces
     Assert-AreEqual 10 $marketplaces.Count
 	Foreach($mkp in $marketplaces)
@@ -53,7 +53,7 @@ List marketplaces with Filter on Dates
 #>
 function Test-ListMarketplacesWithDateFilter
 {
-    $marketplaces = Get-AzureRmConsumptionMarketplace -StartDate 2018-01-03 -EndDate 2018-01-20 -Top 10
+    $marketplaces = Get-AzConsumptionMarketplace -StartDate 2018-01-03 -EndDate 2018-01-20 -Top 10
 	Assert-NotNull $marketplaces
     Assert-AreEqual 10 $marketplaces.Count
 	Foreach($mkp in $marketplaces)
@@ -82,7 +82,7 @@ List marketplaces in billing period
 #>
 function Test-ListBillingPeriodMarketplaces
 {
-    $marketplaces = Get-AzureRmConsumptionMarketplace -BillingPeriodName 201801-1 -Top 10
+    $marketplaces = Get-AzConsumptionMarketplace -BillingPeriodName 201801-1 -Top 10
 	Assert-NotNull $marketplaces
     Assert-AreEqual 10 $marketplaces.Count
 	Foreach($mkp in $marketplaces)
@@ -111,7 +111,7 @@ List marketplaces with Filter on Instance Name
 #>
 function Test-ListMarketplacesWithFilterOnInstanceName
 {
-    $marketplaces = Get-AzureRmConsumptionMarketplace -InstanceName TestVM -Top 10
+    $marketplaces = Get-AzConsumptionMarketplace -InstanceName TestVM -Top 10
 	Assert-NotNull $marketplaces
     Assert-AreEqual 10 $marketplaces.Count
 	Foreach($mkp in $marketplaces)

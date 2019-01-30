@@ -56,7 +56,7 @@ function WaitForJobCompletion
         $isJobLeftForProcessing = $true;
         do
         {
-            $Job = Get-AzureRmRecoveryServicesAsrJob -Name $JobId
+            $Job = Get-AzRecoveryServicesAsrJob -Name $JobId
             $Job
 
             if($Job.State -eq "InProgress" -or $Job.State -eq "NotStarted")
@@ -93,7 +93,7 @@ Function WaitForIRCompletion
 
         do
         {
-            $IRjobs = Get-AzureRmRecoveryServicesAsrJob -TargetObjectId $VM.Name | Sort-Object StartTime -Descending | select -First 4 | Where-Object{$_.JobType -eq "PrimaryIrCompletion" -or $_.JobType -eq "SecondaryIrCompletion"}
+            $IRjobs = Get-AzRecoveryServicesAsrJob -TargetObjectId $VM.Name | Sort-Object StartTime -Descending | select -First 4 | Where-Object{$_.JobType -eq "PrimaryIrCompletion" -or $_.JobType -eq "SecondaryIrCompletion"}
             if($IRjobs -eq $null -or $IRjobs.Count -lt 2)
             {
                 $isProcessingLeft = $true
@@ -123,10 +123,10 @@ function Test-SiteRecoveryEnumerationTests
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     # Enumerate Vaults
-    $vaults = Get-AzureRmRecoveryServicesVault
+    $vaults = Get-AzRecoveryServicesVault
     Assert-True { $vaults.Count -gt 0 }
     Assert-NotNull($vaults)
     foreach($vault in $vaults)
@@ -136,7 +136,7 @@ function Test-SiteRecoveryEnumerationTests
     }
 
     # Enumerate Recovery Services Providers
-    $rsps = Get-AzureRmRecoveryServicesAsrFabric | Get-AzureRmRecoveryServicesAsrServicesProvider
+    $rsps = Get-AzRecoveryServicesAsrFabric | Get-AzRecoveryServicesAsrServicesProvider
     Assert-True { $rsps.Count -gt 0 }
     Assert-NotNull($rsps)
     foreach($rsp in $rsps)
@@ -146,7 +146,7 @@ function Test-SiteRecoveryEnumerationTests
     }
 
     # Enumerate Protection Containers
-    $protectionContainers = Get-AzureRmRecoveryServicesAsrFabric | Get-AzureRmRecoveryServicesAsrProtectionContainer
+    $protectionContainers = Get-AzRecoveryServicesAsrFabric | Get-AzRecoveryServicesAsrProtectionContainer
     Assert-True { $protectionContainers.Count -gt 0 }
     Assert-NotNull($protectionContainers)
     foreach($protectionContainer in $protectionContainers)
@@ -165,41 +165,41 @@ function Test-AsrEvent
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     $Events = get-asrEvent
     Assert-NotNull($Events)
 
-    $e = Get-AzureRmRecoveryServicesAsrEvent -Name $Events[0].Name
+    $e = Get-AzRecoveryServicesAsrEvent -Name $Events[0].Name
     Assert-NotNull($e)
     Assert-NotNull($e.Name)
     Assert-NotNull($e.Description)
     Assert-NotNull($e.FabricId)
     Assert-NotNull($e.AffectedObjectFriendlyName)
 
-    $e = Get-AzureRmRecoveryServicesAsrEvent -Severity $Events[0].Severity
+    $e = Get-AzRecoveryServicesAsrEvent -Severity $Events[0].Severity
     Assert-NotNull($e)
 
-    $e = Get-AzureRmRecoveryServicesAsrEvent -EventType VmHealth
+    $e = Get-AzRecoveryServicesAsrEvent -EventType VmHealth
     Assert-NotNull($e)
 
-    $e = Get-AzureRmRecoveryServicesAsrEvent -EventType VmHealth -AffectedObjectFriendlyName $e[0].AffectedObjectFriendlyName
+    $e = Get-AzRecoveryServicesAsrEvent -EventType VmHealth -AffectedObjectFriendlyName $e[0].AffectedObjectFriendlyName
     Assert-NotNull($e)
 
-    $e = Get-AzureRmRecoveryServicesAsrEvent -EventType VmHealth -FabricId $e[0].FabricId
+    $e = Get-AzRecoveryServicesAsrEvent -EventType VmHealth -FabricId $e[0].FabricId
     Assert-NotNull($e)
 
-     $e = Get-AzureRmRecoveryServicesAsrEvent -ResourceId  $e[0].Id
+     $e = Get-AzRecoveryServicesAsrEvent -ResourceId  $e[0].Id
     Assert-NotNull($e)
 
     $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
-    $e = Get-AzureRmRecoveryServicesAsrEvent -Fabric $fabric
+    $e = Get-AzRecoveryServicesAsrEvent -Fabric $fabric
     Assert-NotNull($e)
     
-    $e = Get-AzureRmRecoveryServicesAsrEvent -AffectedObjectFriendlyName $Events[0].AffectedObjectFriendlyName
+    $e = Get-AzRecoveryServicesAsrEvent -AffectedObjectFriendlyName $Events[0].AffectedObjectFriendlyName
     Assert-NotNull($e)
     
-    $e = Get-AzureRmRecoveryServicesAsrEvent -StartTime "8/18/2017 2:05:00 AM"
+    $e = Get-AzRecoveryServicesAsrEvent -StartTime "8/18/2017 2:05:00 AM"
     Assert-NotNull($e)
 
 }
@@ -214,32 +214,32 @@ function Test-Job
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
     # Enumerate specific Fabric
-    $jobs =  Get-AzureRmRecoveryServicesAsrJob
+    $jobs =  Get-AzRecoveryServicesAsrJob
     Assert-NotNull($jobs)
     $job = $jobs[0]
     Assert-NotNull($job.name)
     Assert-NotNull($job.id)
 
-    $job = Get-AzureRmRecoveryServicesAsrJob -name $job.name
+    $job = Get-AzRecoveryServicesAsrJob -name $job.name
 
     Assert-NotNull($job.name)
     Assert-NotNull($job.id)
 
-    $job = Get-AzureRmRecoveryServicesAsrJob -job $job
+    $job = Get-AzRecoveryServicesAsrJob -job $job
 
     Assert-NotNull($job.name)
     Assert-NotNull($job.id)
 
-    $jobList = Get-AzureRmRecoveryServicesAsrJob -TargetObjectId $job.TargetObjectId
+    $jobList = Get-AzRecoveryServicesAsrJob -TargetObjectId $job.TargetObjectId
 
     Assert-NotNull($jobList)
 
-    $jobList = Get-AzureRmRecoveryServicesAsrJob -StartTime '2017-08-04T09:28:52.0000000Z' -EndTime '2017-08-10T14:20:50.0000000Z'
+    $jobList = Get-AzRecoveryServicesAsrJob -StartTime '2017-08-04T09:28:52.0000000Z' -EndTime '2017-08-10T14:20:50.0000000Z'
     Assert-NotNull($jobList)
 
-    $jobList =  Get-AzureRmRecoveryServicesAsrJob -State Succeeded
+    $jobList =  Get-AzRecoveryServicesAsrJob -State Succeeded
     Assert-NotNull($jobList)
 }
 
@@ -252,19 +252,19 @@ function Test-NotificationSettings
     param([string] $vaultSettingsFilePath)
 
     # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
     # Enumerate specific Fabric
-    $NotificationSettings = Set-AzureRmRecoveryServicesAsrNotificationSetting -EnableEmailSubscriptionOwner -CustomEmailAddress "abcxxxx@microsft.com"
+    $NotificationSettings = Set-AzRecoveryServicesAsrNotificationSetting -EnableEmailSubscriptionOwner -CustomEmailAddress "abcxxxx@microsft.com"
     Assert-NotNull($NotificationSettings)
     
-    $NotificationSettings = Set-AzureRmRecoveryServicesAsrNotificationSetting -DisableEmailToSubscriptionOwner -CustomEmailAddress "abcxxxx@microsft.com"
+    $NotificationSettings = Set-AzRecoveryServicesAsrNotificationSetting -DisableEmailToSubscriptionOwner -CustomEmailAddress "abcxxxx@microsft.com"
     Assert-NotNull($NotificationSettings)
 
-    $NotificationSettings = Get-AzureRmRecoveryServicesAsrNotificationSetting
+    $NotificationSettings = Get-AzRecoveryServicesAsrNotificationSetting
     Assert-NotNull($NotificationSettings)
     Assert-NotNull($NotificationSettings.CustomEmailAddress)
     Assert-AreEqual -expected "abcxxxx@microsft.com" -actual $NotificationSettings.CustomEmailAddress
     Assert-NotNull($NotificationSettings.EmailSubscriptionOwner)
     Assert-NotNull($NotificationSettings.Locale)
-    Set-AzureRmRecoveryServicesAsrNotificationSetting -DisableNotification
+    Set-AzRecoveryServicesAsrNotificationSetting -DisableNotification
 }

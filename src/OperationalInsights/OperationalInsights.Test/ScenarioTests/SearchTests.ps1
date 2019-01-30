@@ -23,7 +23,7 @@ function Test-SearchGetSearchResultsAndUpdate
 
 	$top = 5
 
-	$searchResult = Get-AzureRmOperationalInsightsSearchResults -ResourceGroupName $rgname -WorkspaceName $wsname -Top $top -Query "*"
+	$searchResult = Get-AzOperationalInsightsSearchResults -ResourceGroupName $rgname -WorkspaceName $wsname -Top $top -Query "*"
 
 	Assert-NotNull $searchResult
 	Assert-NotNull $searchResult.Metadata
@@ -38,7 +38,7 @@ function Test-SearchGetSearchResultsAndUpdate
 
 	$idArray = $searchResult.Id.Split("/")
 	$id = $idArray[$idArray.Length-1]
-	$updatedResult = Get-AzureRmOperationalInsightsSearchResults -ResourceGroupName $rgname -WorkspaceName $wsname -Id $id
+	$updatedResult = Get-AzOperationalInsightsSearchResults -ResourceGroupName $rgname -WorkspaceName $wsname -Id $id
 	
 	Assert-NotNull $updatedResult
 	Assert-NotNull $updatedResult.Metadata
@@ -56,11 +56,11 @@ function Test-SearchGetSchema
     $rgname = Get-ResourceGroupName
     $wslocation = Get-ProviderLocation
 
-    New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
+    New-AzResourceGroup -Name $rgname -Location $wslocation -Force
 
     # Create a workspace to house the data sources
-    $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
-	$schema = Get-AzureRmOperationalInsightsSchema -ResourceGroupName $rgname -WorkspaceName $wsname
+    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
+	$schema = Get-AzOperationalInsightsSchema -ResourceGroupName $rgname -WorkspaceName $wsname
 	Assert-NotNull $schema
 	Assert-NotNull $schema.Metadata
 	Assert-AreEqual $schema.Metadata.ResultType "schema"
@@ -76,7 +76,7 @@ function Test-SearchGetSavedSearchesAndResults
     $rgname = "mms-eus"
     $wsname = "188087e4-5850-4d8b-9d08-3e5b448eaecd"
 
-	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
+	$savedSearches = Get-AzOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
 	
 	Assert-NotNull $savedSearches
 	Assert-NotNull $savedSearches.Value
@@ -84,7 +84,7 @@ function Test-SearchGetSavedSearchesAndResults
 	$idArray = $savedSearches.Value[0].Id.Split("/")
 	$id = $idArray[$idArray.Length-1]
 
-	$savedSearch = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id
+	$savedSearch = Get-AzOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id
 
 	Assert-NotNull $savedSearch
 	Assert-NotNull $savedSearch.ETag
@@ -92,7 +92,7 @@ function Test-SearchGetSavedSearchesAndResults
 	Assert-NotNull $savedSearch.Properties
 	Assert-NotNull $savedSearch.Properties.Query
 
-	$savedSearchResult = Get-AzureRmOperationalInsightsSavedSearchResults -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id
+	$savedSearchResult = Get-AzOperationalInsightsSavedSearchResults -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id
 
 	Assert-NotNull $savedSearchResult
 	Assert-NotNull $savedSearchResult.Metadata
@@ -110,10 +110,10 @@ function Test-SearchSetAndRemoveSavedSearches
     $rgname = Get-ResourceGroupName
     $wslocation = Get-ProviderLocation
 
-    New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
+    New-AzResourceGroup -Name $rgname -Location $wslocation -Force
 
     # Create a workspace to house the data sources
-    $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
+    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
 
 	$id = "test-new-saved-search-id-2015"
 	$displayName = "TestingSavedSearch"
@@ -122,15 +122,15 @@ function Test-SearchSetAndRemoveSavedSearches
 	$query = "* | measure Count() by Computer"
 
 	# Get the count of saved searches
-	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
+	$savedSearches = Get-AzOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
 	$count = $savedSearches.Value.Count
 	$newCount = $count + 1
 	$tags = @{"Group" = "Computer"}
 
-	New-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -DisplayName $displayName -Category $category -Query $query -Tag $tags -Version $version -Force
+	New-AzOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -DisplayName $displayName -Category $category -Query $query -Tag $tags -Version $version -Force
 	
 	# Check that the search was saved
-	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
+	$savedSearches = Get-AzOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
 	Assert-AreEqual $savedSearches.Value.Count $newCount
 
 	$etag = ""
@@ -144,10 +144,10 @@ function Test-SearchSetAndRemoveSavedSearches
 	#Set saved search cmdlet has issue with Etag. Temporarily comment out the call until it's fixed.
 	# Test updating the search
 	$query = "* | distinct Computer"
-	Set-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -DisplayName $displayName -Category $category -Query $query -Tag $tags -Version $version -ETag $etag
+	Set-AzOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -DisplayName $displayName -Category $category -Query $query -Tag $tags -Version $version -ETag $etag
 	
 	# Check that the search was updated
-	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
+	$savedSearches = Get-AzOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
 	Assert-AreEqual $savedSearches.Value.Count $newCount
 
 	$found = 0
@@ -165,9 +165,9 @@ function Test-SearchSetAndRemoveSavedSearches
 	Assert-AreEqual $hasTag 1
 
 
-	Remove-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id
+	Remove-AzOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id
 	
 	# Check that the search was deleted
-	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
+	$savedSearches = Get-AzOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
 	Assert-AreEqual $savedSearches.Value.Count $count
 }

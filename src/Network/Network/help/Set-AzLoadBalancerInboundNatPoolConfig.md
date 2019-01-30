@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 355DF798-6233-45C6-9416-8AB0E0D7DC02
@@ -9,6 +9,7 @@ schema: 2.0.0
 # Set-AzLoadBalancerInboundNatPoolConfig
 
 ## SYNOPSIS
+Sets an inbound NAT pool configuration for a load balancer.
 
 ## SYNTAX
 
@@ -30,6 +31,7 @@ Set-AzLoadBalancerInboundNatPoolConfig -LoadBalancer <PSLoadBalancer> -Name <Str
 ```
 
 ## DESCRIPTION
+The **Set-AzLoadBalancerInboundNatPoolConfig** cmdlet sets an inbound NAT pool configuration for a load balancer.
 
 ## EXAMPLES
 
@@ -264,5 +266,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzLoadBalancerInboundNatPoolConfig](./New-AzLoadBalancerInboundNatPoolConfig.md)
 
 [Remove-AzLoadBalancerInboundNatPoolConfig](./Remove-AzLoadBalancerInboundNatPoolConfig.md)
-
-

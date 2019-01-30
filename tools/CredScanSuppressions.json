@@ -1017,6 +1017,54 @@
       "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch\\help\\New-AzBatchTask.md",
       "hash": "9DiQS2GhPQXk8u3D2jadP/YcW2ZysE6slHg0yDqxByg=",
       "_justification": "Markdown example and not a real credential"
+    },
+    {
+      "file": "\\src\\Automation\\Automation.Test\\ScenarioTests\\SourceControlTests.ps1",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "\\src\\Batch\\Batch.Test\\ScenarioTests\\ComputeNodeUserTests.ps1",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "\\src\\HDInsight\\HDInsight.Test\\ScenarioTests\\HDInsightConfigurationTests.ps1",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "\\src\\KeyVault\\KeyVault.Test\\Scripts\\VaultCertificateTests.ps1",
+      "_justification": "Resource creation is mocked"
+    },
+    {
+      "file": "\\src\\Relay\\Relay.Test\\ScenarioTests\\RelayAuthorizationRulesTests.ps1",
+      "_justification": "Test resource is deleted"
+    },
+	  {
+      "file": "\\src\\Accounts\\Authentication.Test\\Resources\\ValidProfile.PublishSettings",
+      "_justification": "Faked credentials"
+    },
+    {
+      "file": "\\src\\Accounts\\Authentication.Test\\Resources\\ValidProfile2.PublishSettings",
+      "_justification": "Faked credentials"
+    },
+    {
+      "file": "\\src\\Accounts\\Authentication.Test\\Resources\\Azure.PublishSettings",
+      "_justification": "Faked credentials"
+    },
+    {
+      "file": "\\src\\Accounts\\Authentication.Test\\Resources\\ValidProfileChina.PublishSettings",
+      "_justification": "Faked credentials"
+    },
+    {
+      "file": "\\src\\Accounts\\Authentication.Test\\Resources\\ValidProfile3.PublishSettings",
+      "_justification": "Faked credentials"
+    },
+    {
+      "file": "\\src\\Accounts\\Authentication.Test\\Resources\\ValidProfileChinaOld.PublishSettings",
+      "_justification": "Faked credentials"
+    },
+	  {
+      "file": "\\src\\IotHub\\IotHub.Test\\ScenarioTests\\IotHubRoutingTests.ps1",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     }
   ]
 }

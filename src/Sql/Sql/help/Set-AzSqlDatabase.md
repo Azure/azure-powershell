@@ -220,7 +220,9 @@ Accept wildcard characters: False
 ```
 
 ### -LicenseType
-The license type for the Azure Sql database.
+The license type for the Azure Sql database. Possible values are:
+- BasePrice – Azure Hybrid Benefit (AHB) discounted pricing for existing SQL Server license owners is applied. Database price will be discounted for existing SQL Server license owners.
+- LicenseIncluded – Azure Hybrid Benefit (AHB) discount pricing for existing SQL Server license owners is not applied. Database price will include a new SQL Server license costs.
 
 ```yaml
 Type: System.String

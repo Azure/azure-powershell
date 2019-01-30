@@ -41,11 +41,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricCluster", SupportsShouldProcess = true, DefaultParameterSetName = ByDefaultArmTemplate),OutputType(typeof(PSDeploymentResult))]
     public class NewAzureRmServiceFabricCluster : ServiceFabricClusterCertificateCmdlet
     {
-        public const string WindowsTemplateRelativePath = @"Template\Windows";
-        public const string LinuxTemplateRelativePath = @"Template\Linux";
-        public const string ParameterFileName = @"parameter.json";
-        public const string TemplateFileName = @"template.json";
-        
         public readonly Dictionary<OperatingSystem, string> OsToVmSkuString = new Dictionary<OperatingSystem, string>()
         {
             {OperatingSystem.WindowsServer2012R2Datacenter, "2012-R2-Datacenter"},
@@ -442,10 +437,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     Path.Combine(
                         assemblyFolder,
                         this.OS != OperatingSystem.UbuntuServer1604
-                            ? WindowsTemplateRelativePath
-                            : LinuxTemplateRelativePath);
-                templateFilePath = Path.Combine(templateDirectory, TemplateFileName);
-                parameterFilePath = Path.Combine(templateDirectory, ParameterFileName);
+                            ? Constants.WindowsTemplateRelativePath
+                            : Constants.LinuxTemplateRelativePath);
+                templateFilePath = Path.Combine(templateDirectory, Constants.TemplateFileName);
+                parameterFilePath = Path.Combine(templateDirectory, Constants.ParameterFileName);
             }
 
             if (!File.Exists(templateFilePath) || !File.Exists(parameterFilePath))
@@ -947,7 +942,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                                 extSetting["certificate"]["commonNames"] == null))
                             {
                                 throw new PSArgumentException(
-                                    ServiceFabricProperties.Resources.InvalidTemplateFile);
+                                    ServiceFabricProperties.Resources.InvalidSFExtensionInTemplate);
                             }
 
                             if (!customize)
