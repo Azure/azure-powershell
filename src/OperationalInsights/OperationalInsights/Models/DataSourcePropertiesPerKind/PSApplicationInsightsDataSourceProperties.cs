@@ -34,6 +34,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         [JsonProperty(PropertyName = "linkedResourceId")]
         public string LinkedResourceId { get; set; }
 
+        /// <summary>
+        /// Connection status
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, PropertyName = "status")]
+        public string Status { get; set; }
+
         public PSApplicationInsightsDataSourceProperties(Guid subscriptionId, string resourceGroupName, string name)
         {
             this.LinkedResourceId = string.Format(Resources.ApplicationInsightsArmResourceFormat, subscriptionId, resourceGroupName, name);
