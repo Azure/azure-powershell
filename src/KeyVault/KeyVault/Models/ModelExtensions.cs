@@ -113,6 +113,8 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             try
             {
+// TODO: Remove IfDef
+#if NETSTANDARD
                 var obj = adClient.GetObjectsByObjectId(new List<string> { objectId }).FirstOrDefault();
                 if (obj != null)
                 {
@@ -135,6 +137,30 @@ namespace Microsoft.Azure.Commands.KeyVault
                         displayName = group.DisplayName;
                     }
                 }
+#else
+                var obj = adClient.GetObjectsByObjectIdsAsync(new[] { objectId }, new string[] { }).GetAwaiter().GetResult().FirstOrDefault();
+                if (obj != null)
+                {
+                    if (obj.ObjectType.Equals("user", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var user = adClient.Users.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
+                        displayName = user.DisplayName;
+                        upnOrSpn = user.UserPrincipalName;
+                    }
+                    else if (obj.ObjectType.Equals("serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var servicePrincipal = adClient.ServicePrincipals.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
+                        displayName = servicePrincipal.AppDisplayName;
+                        upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
+                    }
+                    else if (obj.ObjectType.Equals("group", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var group = adClient.Groups.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
+                        displayName = group.DisplayName;
+                        upnOrSpn = group.MailNickname;
+                    }
+                }
+#endif
             }
             catch
             {
