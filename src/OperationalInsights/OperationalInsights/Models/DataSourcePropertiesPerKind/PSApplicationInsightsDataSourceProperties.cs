@@ -15,10 +15,6 @@
 using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
@@ -35,7 +31,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public string LinkedResourceId { get; set; }
 
         /// <summary>
-        /// Connection status
+        /// Connection status, 'Pending' or 'Succeeded'. 
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, PropertyName = "status")]
         public string Status { get; set; }
