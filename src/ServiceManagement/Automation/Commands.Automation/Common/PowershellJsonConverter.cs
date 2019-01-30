@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.WindowsAzure.Commands.Automation.Properties;
 using System;
 using System.Collections;
 using System.Collections.ObjectModel;

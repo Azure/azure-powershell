@@ -952,6 +952,10 @@
     {
       "file": "src\\ServiceManagement\\Services\\Commands.Test\\Profile\\ProfileCmdltsTests.cs",
       "_justification": "Sample certificate only used in tests"
+    },
+    {
+      "file": "src\\ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\UnitTests\\UnitTestHelper.cs",
+      "_justification": "Mocked test credentials"
     }
   ]
 }

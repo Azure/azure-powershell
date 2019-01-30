@@ -18,7 +18,7 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.WindowsAzure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {

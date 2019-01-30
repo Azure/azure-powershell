@@ -76,11 +76,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 {
                     "Resources\\ChefExtension\\ChefExtensionTests.ps1",
                     "Resources\\ServiceManagement\\Common.ps1",
-                    @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\AzurePreview.psd1"
+                    @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\AzurePreview.psd1",
+                    "..\\..\\..\\..\\..\\Package\\Debug\\ServiceManagement\\Azure\\Azure.psd1"
                 };
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModules(AzureModule.AzureServiceManagement, modules.ToArray());
+                helper.SetupModules(modules.ToArray());
 
 
                 var scriptEnvPath = new List<string>();

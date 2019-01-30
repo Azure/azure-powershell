@@ -60,9 +60,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 modules.Add(Path.Combine(EnvironmentSetupHelper.PackageDirectory,@"ServiceManagement\Azure\Compute\AzurePreview.psd1"));
                 modules.AddRange(Directory.GetFiles(@"Resources\ServiceManagement".AsAbsoluteLocation(), "*.ps1").ToList());
+                modules.Add("..\\..\\..\\..\\..\\Package\\Debug\\ServiceManagement\\Azure\\Azure.psd1");
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModules(AzureModule.AzureServiceManagement, modules.ToArray());
+                helper.SetupModules(modules.ToArray());
 
                 var scriptEnvPath = new List<string>();
                 scriptEnvPath.Add(

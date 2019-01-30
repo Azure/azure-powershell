@@ -14,7 +14,6 @@
 
 using System.Collections;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Properties;
 using System;
 using System.Collections.Generic;
 

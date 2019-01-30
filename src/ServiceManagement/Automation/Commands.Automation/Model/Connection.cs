@@ -15,7 +15,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.WindowsAzure.Commands.Automation.Properties;
 using System;
 
 namespace Microsoft.Azure.Commands.Automation.Model

@@ -104,9 +104,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 SetupManagementClients();
 
                 List<string> modules = Directory.GetFiles("Resources\\Automation".AsAbsoluteLocation(), "*.ps1").ToList();
+                modules.Add("..\\..\\..\\..\\..\\Package\\Debug\\ServiceManagement\\Azure\\Azure.psd1");
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModulesFromCommon(AzureModule.AzureServiceManagement, modules.ToArray());
+                helper.SetupModules(modules.ToArray());
 
                 helper.RunPowerShellTest(scripts);
             }

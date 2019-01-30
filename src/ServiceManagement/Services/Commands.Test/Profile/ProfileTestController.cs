@@ -168,8 +168,8 @@ namespace Microsoft.Azure.Commands.Test.Profile
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
                 helper.SetupModules(
-                    this.Module, 
-                    "Profile\\" + callingClassName + ".ps1");
+                    "Profile\\" + callingClassName + ".ps1",
+                    "..\\..\\..\\..\\..\\Package\\Debug\\ServiceManagement\\Azure\\Azure.psd1");
 
                 try
                 {

@@ -23,7 +23,7 @@ using System.Text;
 using System.Xml.Linq;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.DataContract;
-using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.WindowsAzure.Commands.Automation.Properties;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Hyak.Common;

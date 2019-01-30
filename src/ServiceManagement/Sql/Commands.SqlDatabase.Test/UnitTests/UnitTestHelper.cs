@@ -247,8 +247,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
         public static void ImportAzureModule(System.Management.Automation.PowerShell powershell)
         {
             // Import the test manifest file
-            powershell.InvokeBatchScript(@"Import-Module ..\..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
-            powershell.InvokeBatchScript(@"Import-Module ..\..\..\..\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1");
             powershell.InvokeBatchScript(@"Import-Module ..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1");
             Assert.IsTrue(powershell.Streams.Error.Count == 0);
         }
@@ -318,6 +316,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
                 Id = subscriptionId.ToString(),
                 Name = UnitTestSubscriptionName,
             };
+            account.ExtendedProperties.Add("Subscriptions", subscription.Id);
             subscription.SetEnvironment(UnitTestEnvironmentName);
             subscription.SetAccount(account.Id);
 

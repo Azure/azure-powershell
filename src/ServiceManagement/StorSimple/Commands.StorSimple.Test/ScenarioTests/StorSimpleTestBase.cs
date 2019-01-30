@@ -84,7 +84,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
                 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
                 
-                helper.SetupModules(AzureModule.AzureServiceManagement, "ScenarioTests\\" + this.GetType().Name + ".ps1");
+                helper.SetupModules("ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    "..\\..\\..\\..\\..\\Package\\Debug\\ServiceManagement\\Azure\\Azure.psd1");
                 helper.RunPowerShellTest(scripts);
             }
         }

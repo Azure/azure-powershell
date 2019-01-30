@@ -39,22 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         public PowerShellTest(AzureModule commandMode, params string[] modules)
         {
             this.modules = new List<string>();
-            if (commandMode == AzureModule.AzureServiceManagement)
-            {
-                this.modules.Add(FileUtilities.GetContentFilePath(@"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"));
-                this.modules.Add(FileUtilities.GetContentFilePath(@"Storage\Azure.Storage\Azure.Storage.psd1"));
-                this.modules.Add(FileUtilities.GetContentFilePath(@"ServiceManagement\Azure\Azure.psd1"));
-            }
-            else if (commandMode == AzureModule.AzureResourceManager)
-            {
-                this.modules.Add(FileUtilities.GetContentFilePath(@"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"));
-                this.modules.Add(FileUtilities.GetContentFilePath(@"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"));
-                this.modules.Add(FileUtilities.GetContentFilePath(@"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1"));
-            }
-            else
-            {
-                throw new ArgumentException("Unknown command type for testing");
-            }
+            this.modules.Add(FileUtilities.GetContentFilePath(@"ServiceManagement\Azure\Azure.psd1"));
             this.modules.Add("Assert.ps1");
             this.modules.Add("Common.ps1");
             this.modules.AddRange(modules);

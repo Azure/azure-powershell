@@ -122,8 +122,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModules(AzureModule.AzureServiceManagement,
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1");
+                helper.SetupModules("ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    "..\\..\\..\\..\\..\\Package\\Debug\\ServiceManagement\\Azure\\Azure.psd1");
 
                 helper.RunPowerShellTest(scripts);
             }
