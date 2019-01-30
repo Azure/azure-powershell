@@ -14,9 +14,10 @@
 
 
 using Hyak.Common;
+using Microsoft.Azure;
 using System;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
+namespace Common.Authentication.Test
 {
     public class NullClient : ServiceClient<NullClient>
     {

@@ -12,29 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-// TODO: Remove IfDef
-#if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
-#endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-// TODO: Remove IfDef
-#if NETSTANDARD
 using Microsoft.Azure.Commands.Profile.Models.Core;
-#endif
 using Microsoft.Azure.Commands.ScenarioTest.Extensions;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Globalization;
 using System.Management.Automation;
 using Xunit;
-using Xunit.Abstractions;
-using System.Text;
 using System.Linq;
 
-namespace Microsoft.Azure.Commands.Profile.Test
+namespace Common.Authentication.Test
 {
     public class PSSerializationTests
     {

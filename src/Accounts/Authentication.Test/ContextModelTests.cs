@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Profile.Test
+namespace Common.Authentication.Test
 {
     public class ContextModelTests
     {
