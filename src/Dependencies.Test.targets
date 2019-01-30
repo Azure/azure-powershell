@@ -6,7 +6,7 @@
   <Import Project="$(MSBuildThisFileDirectory)\Dependencies.Client.targets" />
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.13.2" />
+    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.13.3" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.7" />
     <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="3.14.0" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.7.6" />
