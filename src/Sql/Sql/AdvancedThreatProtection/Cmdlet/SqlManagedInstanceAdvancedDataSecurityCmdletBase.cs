@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         /// </summary>
         /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected override SqlAdvancedThreatProtectionAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override SqlAdvancedThreatProtectionAdapter InitModelAdapter()
         {
             return new SqlAdvancedThreatProtectionAdapter(DefaultProfile.DefaultContext);
         }
