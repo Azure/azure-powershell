@@ -89,7 +89,7 @@ To change the subscription that you are using for your current context, use the 
 Set-AzContext -Subscription $SubscriptionName -Name 'MyContext'
 
 # Set the Azure PowerShell context using piping
-Get-AzSubscription -SubscriptionName $SubscriptionName | Set-AzureRmContext -Name 'MyContext'
+Get-AzSubscription -SubscriptionName $SubscriptionName | Set-AzContext -Name 'MyContext'
 ```
 
 For details on Azure PowerShell contexts, see our [persisted credentials guide][PersistedCredentialsGuide].
