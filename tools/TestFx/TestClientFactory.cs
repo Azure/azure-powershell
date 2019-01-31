@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.TestFx
 
         public TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Rest.ServiceClient<TClient>
         {
-            if (typeof(TClient) != typeof(GraphRbacManagementClient))
+            if (typeof(TClient).Name != typeof(GraphRbacManagementClient).Name)
             {
                 return _mockContext.GetServiceClient<TClient>();
             }
