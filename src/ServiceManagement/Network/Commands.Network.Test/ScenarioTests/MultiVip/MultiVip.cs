@@ -83,12 +83,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
 
                 List<string> modules = Directory.GetFiles("ScenarioTests\\MultiVip".AsAbsoluteLocation(), "*.ps1").ToList();
+                modules.Add("..\\..\\..\\..\\..\\Package\\Debug\\ServiceManagement\\Azure\\Azure.psd1");
                 modules.AddRange(Directory.GetFiles("ScenarioTests".AsAbsoluteLocation(), "*.ps1"));
 
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModules(AzureModule.AzureServiceManagement, modules.ToArray());
+                helper.SetupModules(modules.ToArray());
 
                 helper.RunPowerShellTest(scripts);
             }

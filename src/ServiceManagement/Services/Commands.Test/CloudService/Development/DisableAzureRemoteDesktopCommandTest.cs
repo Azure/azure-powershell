@@ -26,6 +26,7 @@ using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
 {
@@ -97,7 +98,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
                 disableRDCmdlet.PassThru = true;
                 disableRDCmdlet.DisableRemoteDesktop();
 
-                Assert.True((bool)mockCommandRuntime.OutputPipeline[0]);
+                Assert.True(Convert.ToBoolean(mockCommandRuntime.OutputPipeline[0]));
             }
         }
 

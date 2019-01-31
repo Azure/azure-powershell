@@ -133,9 +133,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
 
-                List<string> modules = Directory.GetFiles("ScenarioTests\\NetworkSecurityGroup".AsAbsoluteLocation(), "*.ps1").ToList();
+                List<string> modules = new List<string>() { "..\\..\\..\\..\\..\\Package\\Debug\\ServiceManagement\\Azure\\Azure.psd1" };
+                modules.AddRange(Directory.GetFiles("ScenarioTests\\NetworkSecurityGroup".AsAbsoluteLocation(), "*.ps1").ToList());
                 modules.AddRange(Directory.GetFiles("ScenarioTests".AsAbsoluteLocation(), "*.ps1"));
-                modules.Add("..\\..\\..\\..\\..\\Package\\Debug\\ServiceManagement\\Azure\\Azure.psd1");
 
                 SetupManagementClients();
 
