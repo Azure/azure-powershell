@@ -26,12 +26,8 @@ function Test-CreateAndRemoveLogicApp
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$workflowName = getAssetname
-	$definitionFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowDefinition.json"
-	$parameterFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowParameter.json"
-
-	#Create App Service Plan
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+	$definitionFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowDefinition.json"
+	$parameterFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowParameter.json"
 
 	#Case1 : Using physical file
 	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
@@ -43,21 +39,20 @@ function Test-CreateAndRemoveLogicApp
 	Remove-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force
 
 	#Case2 : Using definition object and parameter file
-	$parameterFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowParameter.json"
-    $definition = [IO.File]::ReadAllText((Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowDefinition.json"))
+	$parameterFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowParameter.json"
+    $definition = [IO.File]::ReadAllText((Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowDefinition.json"))
 
-	$workflowName = getAssetname	
+	$workflowName = getAssetname
 	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Definition $definition -ParameterFilePath $parameterFilePath -Location $WORKFLOW_LOCATION
     
-	Assert-NotNull $workflow	
+	Assert-NotNull $workflow
 	Assert-NotNull $workflow.Definition
 	Assert-NotNull $workflow.Parameters
 	Assert-AreEqual $workflowName $workflow.Name 
 	Remove-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force
 
 	#Case3 : Create using Piped input
-
-	$workflowName = getAssetname	
+	$workflowName = getAssetname
 	$workflow = $resourceGroup | New-AzLogicApp -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath    
 	
 	Assert-NotNull $workflow
@@ -73,13 +68,9 @@ function Test-CreateLogicAppWithDuplicateName
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$workflowName = getAssetname
 	
-	$definitionFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowDefinition.json"
-	$parameterFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowParameter.json"
+	$definitionFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowDefinition.json"
+	$parameterFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowParameter.json"
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-
-	#Create App Service Plan
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
 	$workflow = $resourceGroup | New-AzLogicApp -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
     
@@ -89,11 +80,11 @@ function Test-CreateLogicAppWithDuplicateName
 		$workflow = $resourceGroup | New-AzLogicApp -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
 	}
 	catch
-	{		
-		Assert-AreEqual $_.Exception.Message "The Resource '$WorkflowName' under resource group '$resourceGroupName' already exists."		
+	{
+		Assert-AreEqual $_.Exception.Message "The Resource '$WorkflowName' under resource group '$resourceGroupName' already exists."
 	}
 	
-	Remove-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force	
+	Remove-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force
 }
 
 <#
@@ -106,23 +97,20 @@ function Test-CreateLogicAppUsingInputfromWorkflowObject
 	$workflowName = getAssetname	
 	$newWorkflowName = getAssetname	
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
-	$definitionFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowDefinition.json"
-	$parameterFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowParameter.json"
+	$definitionFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowDefinition.json"
+	$parameterFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowParameter.json"
 
 	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath 
 	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $newWorkflowName -Location $WORKFLOW_LOCATION -Definition $workflow.Definition -Parameters $workflow.Parameters
-		    
+
 	Assert-NotNull $workflow	
 	Assert-NotNull $workflow.Definition
 	Assert-NotNull $workflow.Parameters
 	Assert-AreEqual $newWorkflowName $workflow.Name 
 	Assert-AreEqual "Enabled" $workflow.State
 
-	Remove-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Force	
+	Remove-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Force
 }
 
 <#
@@ -135,18 +123,15 @@ function Test-CreateLogicAppUsingInputParameterAsHashTable
 	$workflowName = getAssetname
 	$resourceGroupName = $resourceGroup.ResourceGroupName
 
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
-
-	$definitionFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowDefinition.json"	
+	$definitionFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowDefinition.json"
 	$parameters = @{destinationUri="http://www.bing.com"}
-		
+
 	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Parameters $parameters -Location $WORKFLOW_LOCATION
-		    
-	Assert-NotNull $workflow	
+
+	Assert-NotNull $workflow
 	Assert-NotNull $workflow.Parameters
 	
-	Remove-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force	
+	Remove-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force
 }
 
 <#
@@ -158,13 +143,10 @@ function Test-CreateLogicAppUsingDefinitionWithTriggers
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$workflowName = getAssetname
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$definitionFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowTriggerDefinition.json"
-
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+	$definitionFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 
 	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
-		    
+
 	Assert-NotNull $workflow
 	
 	[int]$counter = 0
@@ -173,7 +155,7 @@ function Test-CreateLogicAppUsingDefinitionWithTriggers
 		$workflow =  Get-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
-	Remove-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Force			
+	Remove-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Force
 }
 
 <#
@@ -188,9 +170,7 @@ function Test-CreateAndGetLogicAppUsingDefinitionWithActions
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$workflowName = getAssetname
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$definitionFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowActionDefinition.json"
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+	$definitionFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowActionDefinition.json"
 	
 	# Test 1: Create logic app without parameters
 	$workflow1 = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
@@ -215,9 +195,10 @@ function Test-CreateAndGetLogicAppUsingDefinitionWithActions
 	Assert-True { $workflow5.Length -ge 1 }
 
 	# Test 6: Get workflow with just name parameter
-	$workflow6 = Get-AzLogicApp -Name $workflowName
-	Assert-NotNull $workflow6
-	Assert-True { $workflow6.Length -ge 1 }
+	# refortie (1/31/19): TODO Test is disabled for now, we only return the first page on get logic app by subscription
+	# $workflow6 = Get-AzLogicApp -Name $workflowName
+	# Assert-NotNull $workflow6
+	# Assert-True { $workflow6.Length -ge 1 }
 
 	# Test 7: Get non-existing logic app using get cmdlet
 	try
@@ -226,10 +207,10 @@ function Test-CreateAndGetLogicAppUsingDefinitionWithActions
 	}
 	catch
 	{
-		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Logic/workflows/InvalidWorkflow' under resource group '$resourceGroupName' was not found."		
+		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Logic/workflows/InvalidWorkflow' under resource group '$resourceGroupName' was not found."
 	} 
 
-	Remove-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Force		
+	Remove-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Force
 }
 
 <#
@@ -259,17 +240,14 @@ function Test-UpdateLogicApp
 	$workflowName = getAssetname
 	$resourceGroupName = $resourceGroup.ResourceGroupName
 
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
-
-	$simpleDefinitionFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowDefinition.json"
-	$simpleParameterFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowParameter.json"
+	$simpleDefinitionFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowDefinition.json"
+	$simpleParameterFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowParameter.json"
 	$workflow = $resourceGroup | New-AzLogicApp -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $simpleDefinitionFilePath -ParameterFilePath $simpleParameterFilePath
 
 	Assert-NotNull $workflow
 
 	#Case1: Update definition with no parameters and disable
-	$definitionFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowTriggerDefinition.json"
+	$definitionFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 
 	$UpdatedWorkflow = Set-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -State "Disabled" -DefinitionFilePath $definitionFilePath -Parameters $null -Force
 	
@@ -302,8 +280,8 @@ function Test-UpdateLogicApp
 	try
 	{
 		$workflowName = "82D2D842-C312-445C-8A4D-E3EE9542436D"
-		$definitionFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowTriggerDefinition.json"
-		Set-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath -Force
+		$definitionFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowTriggerDefinition.json"
+		Set-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Force
 	}
 	catch
 	{
@@ -323,12 +301,10 @@ function Test-ValidateLogicApp
 	$workflowName = getAssetname
 	$resourceGroupName = $resourceGroup.ResourceGroupName
 
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 	$locationName = 'northeurope'
 
-	$definitionFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowDefinition.json"
-	$parameterFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowParameter.json"
+	$definitionFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowDefinition.json"
+	$parameterFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowParameter.json"
 
 	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
 
@@ -338,18 +314,8 @@ function Test-ValidateLogicApp
 	# Test 2: Using definition object and parameter file.
 	$definition = [IO.File]::ReadAllText($definitionFilePath)
 	Test-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location $locationName -Definition $definition -ParameterFilePath $parameterFilePath
-    
-	# Test 3: Failure for an invalid definition.
-	try
-	{
-		Test-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $locationName -Definition '{}'
-	}
-	catch
-	{		
-		Assert-AreEqual $_.Exception.Message "Operation returned an invalid status code 'BadRequest'"
-	}
 
-	Remove-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Force	
+	Remove-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Force
 }
 
 <#
@@ -361,8 +327,8 @@ function Test-CreateLogicAppWithNonExistingAppServicePlan
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$workflowName = getAssetname
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$definitionFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowDefinition.json"
-	$parameterFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowParameter.json"
+	$definitionFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowDefinition.json"
+	$parameterFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowParameter.json"
 	$Plan = "B9F87338CAE4470F9116F3D685365748"
 	try
 	{
@@ -384,11 +350,8 @@ function Test-GetUpgradedDefinitionForLogicApp
 	$workflowName = getAssetname
 	$resourceGroupName = $resourceGroup.ResourceGroupName
 
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
-
-	$definitionFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowDefinition.json"
-	$parameterFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowParameter.json"
+	$definitionFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowDefinition.json"
+	$parameterFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowParameter.json"
 
 	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
 
