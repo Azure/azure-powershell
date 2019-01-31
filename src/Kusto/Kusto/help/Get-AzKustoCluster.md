@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Kusto.dll-Help.xml
 Module Name: Az.Kusto
 online version: https://docs.microsoft.com/en-us/powershell/module/az.kusto/get-azkustocluster
@@ -55,13 +55,13 @@ State             : Running
 Tag               : {}
 Uri               : https://mykustocluster2.centralus.kusto.windows.net
 DataIngestionUri  : https://ingest-mykustocluster2.centralus.kusto.windows.net
+
+
 ```
 PS C:\> Get-AzKustoCluster -ResourceGroupName testrg
 ```
 
 The above command lists all Kusto clusters in the resource group "testrg".
-
-
 
 ### Example 2 - Get a specific Kusto cluster by name
 

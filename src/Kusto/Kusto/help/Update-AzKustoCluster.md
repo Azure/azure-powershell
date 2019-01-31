@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Kusto.dll-Help.xml
 Module Name: Az.Kusto
 online version: https://docs.microsoft.com/en-us/powershell/module/az.kusto/update-azkustocluster
@@ -14,19 +14,19 @@ Update an existing Kusto cluster.
 
 ### ByNameAndResourceGroup (Default)
 ```
-Update-AzKustoCluster [-ResourceGroupName] <String> [-Name] <String> [-SkuName <String>] [-Tier <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzKustoCluster [-ResourceGroupName] <String> [-Name] <String> [-SkuName <String>] [-Capacity <Int32>]
+ [-Tier <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Update-AzKustoCluster [-SkuName <String>] [-Tier <String>] [-ResourceId] <String>
+Update-AzKustoCluster [-SkuName <String>] [-Capacity <Int32>] [-Tier <String>] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Update-AzKustoCluster [-SkuName <String>] [-Tier <String>] [-InputObject] <PSKustoCluster>
+Update-AzKustoCluster [-SkuName <String>] [-Capacity <Int32>] [-Tier <String>] [-InputObject] <PSKustoCluster>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -52,7 +52,6 @@ State             : Running
 Tag               : {}
 Uri               : https://mykustocluster1.centralus.kusto.windows.net
 DataIngestionUri  : https://ingest-mykustocluster1.centralus.kusto.windows.net
-
 ```
 
 The above command updates the tier of the Kusto cluster "mykustocluster" found in the resource group "testrg".
@@ -79,6 +78,21 @@ DataIngestionUri  : https://ingest-mykustocluster1.centralus.kusto.windows.net
 The above command gets the Kusto cluster "mykustocluster" found in the resource group "testrg" using the `Get-AzKustoCluster` cmdlet, and then pipes the result to `Update-AzKustoCluster` to update the cluster's tier to "standard".
 
 ## PARAMETERS
+
+### -Capacity
+The instance number of the VM.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
