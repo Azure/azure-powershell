@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
 online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/rename-azcontext
@@ -131,7 +131,6 @@ The name of the context
 Type: System.String
 Parameter Sets: RenameByName
 Aliases:
-Accepted values:
 
 Required: True
 Position: 0

@@ -19,6 +19,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update help description for Set-AzVMBootDiagnostics
+
+## Version 1.2.0
+* Add Invoke-AzVMReimage cmdlet
+* Add TempDisk parameter to Set-AzVmss
+* Fix the warning message of New-AzVM
+* Add ProvisionAfterExtension parameter to Add-AzVmssExtension
 
 ## Version 1.1.0
 * Name is now optional in ID parameter set for Restart/Start/Stop/Remove/Set-AzVM and Save-AzVMImage

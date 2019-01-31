@@ -28,33 +28,33 @@ function Test-Pipeline
     $endDate = [DateTime]::Parse("9/8/2014")
     $startDate = $endDate.AddHours(-1)
         
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        $df = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        $df = Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
 
         $lsName = "foo1"
-        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $lsName -Force
+        Set-AzDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $lsName -Force
 
-        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "dsIn" -File .\Resources\dataset-dsIn.json -Force
-        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds0_0" -File .\Resources\dataset-ds0_0.json -Force
-        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds1_0" -File .\Resources\dataset-ds1_0.json -Force
+        Set-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "dsIn" -File .\Resources\dataset-dsIn.json -Force
+        Set-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds0_0" -File .\Resources\dataset-ds0_0.json -Force
+        Set-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds1_0" -File .\Resources\dataset-ds1_0.json -Force
 
         $pipelineName = "samplePipeline"   
-        $expected = Set-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipeline.json" -Force
-        $actual = Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname
+        $expected = Set-AzDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipeline.json" -Force
+        $actual = Get-AzDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname
 
         Verify-AdfSubResource $expected $actual $rgname $dfname $pipelineName
                 
         #remove the pipeline through piping
-        Get-AzureRmDataFactoryV2Pipeline -DataFactory $df -Name $pipelineName | Remove-AzureRmDataFactoryV2Pipeline -Force
+        Get-AzDataFactoryV2Pipeline -DataFactory $df -Name $pipelineName | Remove-AzDataFactoryV2Pipeline -Force
 
         #test the pipeline no longer exists
-        Assert-ThrowsContains { Get-AzureRmDataFactoryV2Pipeline -DataFactory $df -Name $pipelineName } "NotFound" 
+        Assert-ThrowsContains { Get-AzDataFactoryV2Pipeline -DataFactory $df -Name $pipelineName } "NotFound" 
                 
         #remove the pipeline again should not throw
-        Remove-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -DataFactoryName $dfname -Name $pipelineName -Force
+        Remove-AzDataFactoryV2Pipeline -ResourceGroupName $rgname -DataFactoryName $dfname -Name $pipelineName -Force
     }
     finally
     {
@@ -77,29 +77,29 @@ function Test-PipelineWithResourceId
     $endDate = [DateTime]::Parse("9/8/2014")
     $startDate = $endDate.AddHours(-1)
         
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        $df = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        $df = Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
 
         $lsName = "foo1"
-        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $lsName -Force
+        Set-AzDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $lsName -Force
 
-        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "dsIn" -File .\Resources\dataset-dsIn.json -Force
-        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds0_0" -File .\Resources\dataset-ds0_0.json -Force
-        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds1_0" -File .\Resources\dataset-ds1_0.json -Force
+        Set-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "dsIn" -File .\Resources\dataset-dsIn.json -Force
+        Set-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds0_0" -File .\Resources\dataset-ds0_0.json -Force
+        Set-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds1_0" -File .\Resources\dataset-ds1_0.json -Force
 
         $pipelineName = "samplePipeline"   
-        $actual = Set-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipeline.json" -Force
+        $actual = Set-AzDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipeline.json" -Force
         
-        $expected = Get-AzureRmDataFactoryV2Pipeline -ResourceId $actual.Id
+        $expected = Get-AzDataFactoryV2Pipeline -ResourceId $actual.Id
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
         Assert-AreEqual $expected.Name $actual.Name
 
-        Remove-AzureRmDataFactoryV2Pipeline -ResourceId $actual.Id -Force
+        Remove-AzDataFactoryV2Pipeline -ResourceId $actual.Id -Force
     }
     finally
     {

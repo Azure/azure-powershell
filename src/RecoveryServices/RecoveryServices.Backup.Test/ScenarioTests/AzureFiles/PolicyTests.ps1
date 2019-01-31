@@ -23,28 +23,28 @@ $newPolicyName = "newFilePolicy"
 
 # Setup Instructions:
 # 1. Create a resource group
-# New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+# New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 # 2. Create a storage account and a recovery services vault
-# New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $saName -Location $location -SkuName $skuName
-# New-AzureRmRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $Location
+# New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $saName -Location $location -SkuName $skuName
+# New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $Location
 
 # 3. Create a file share in the storage account
-# $storageAcct = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $saName
+# $storageAcct = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $saName
 # New-AzureStorageShare -Name $fileShareFriendlyName -Context $storageAcct.Context
 
 function Test-AzureFSPolicy
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 		
 	# Get default policy objects
-	$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
+	$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
 	Assert-NotNull $schedulePolicy
-	$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
+	$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
 	Assert-NotNull $retentionPolicy
 
 	# Create policy
-	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy `
+	$policy = New-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-Name $newPolicyName `
 		-WorkloadType AzureFiles `
@@ -54,7 +54,7 @@ function Test-AzureFSPolicy
 	Assert-AreEqual $policy.Name $newPolicyName
 
 	# Get policy
-	$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+	$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-Name $newPolicyName
 	Assert-NotNull $policy
@@ -62,27 +62,27 @@ function Test-AzureFSPolicy
 
 	# Get default policy objects (this data is generated partially at random. So, running this again gives different values)
 	Assert-NotNull $schedulePolicy
-	$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
+	$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
 	$retentionPolicy.DailySchedule.DurationCountInDays = 31
 	Assert-NotNull $retentionPolicy
 
 	# Update policy
-	Set-AzureRmRecoveryServicesBackupProtectionPolicy `
+	Set-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-RetentionPolicy $retentionPolicy `
 		-SchedulePolicy $schedulePolicy `
 		-Policy $policy
-	$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+	$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-Name $newPolicyName
 	Assert-AreEqual $policy.RetentionPolicy.DailySchedule.DurationCountInDays $retentionPolicy.DailySchedule.DurationCountInDays
 
 	# Delete policy
-	Remove-AzureRmRecoveryServicesBackupProtectionPolicy `
+	Remove-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-Policy $policy `
 		-Force
-	$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+	$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-WorkloadType AzureFiles
 	Assert-False { $policy.Name -contains $newPolicyName }

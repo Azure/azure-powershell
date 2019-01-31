@@ -18,7 +18,7 @@ List usage details
 #>
 function Test-ListUsageDetails
 {
-    $usageDetails = Get-AzureRmConsumptionUsageDetail -Top 10
+    $usageDetails = Get-AzConsumptionUsageDetail -Top 10
 	Assert-NotNull $usageDetails
     Assert-AreEqual 10 $usageDetails.Count
 	Foreach($usage in $usageDetails)
@@ -55,7 +55,7 @@ List usage details with Expand on Meter Details
 #>
 function Test-ListUsageDetailsWithMeterDetailsExpand
 {
-    $usageDetails = Get-AzureRmConsumptionUsageDetail -Expand MeterDetails -Top 10
+    $usageDetails = Get-AzConsumptionUsageDetail -Expand MeterDetails -Top 10
 
 	Foreach($usage in $usageDetails)
 	{
@@ -91,7 +91,7 @@ List usage details with Filter on Dates
 #>
 function Test-ListUsageDetailsWithDateFilter
 {
-    $usageDetails = Get-AzureRmConsumptionUsageDetail -StartDate 2017-10-02 -EndDate 2017-10-05 -Top 10
+    $usageDetails = Get-AzConsumptionUsageDetail -StartDate 2017-10-02 -EndDate 2017-10-05 -Top 10
 
     Assert-AreEqual 10 $usageDetails.Count
 	Foreach($usage in $usageDetails)
@@ -128,7 +128,7 @@ List usage details in Billing Period
 #>
 function Test-ListBillingPeriodUsageDetails
 {
-    $usageDetails = Get-AzureRmConsumptionUsageDetail -BillingPeriodName 201710 -Top 10
+    $usageDetails = Get-AzConsumptionUsageDetail -BillingPeriodName 201710 -Top 10
 
     Assert-AreEqual 10 $usageDetails.Count
 	Foreach($usage in $usageDetails)
@@ -165,7 +165,7 @@ List usage details in Billing Period with Filter on Instance Name
 #>
 function Test-ListBillingPeriodUsageDetailsWithFilterOnInstanceName
 {
-    $usageDetails = Get-AzureRmConsumptionUsageDetail -BillingPeriodName 201710 -InstanceName 1c2052westus -Top 10
+    $usageDetails = Get-AzConsumptionUsageDetail -BillingPeriodName 201710 -InstanceName 1c2052westus -Top 10
 
 	Foreach($usage in $usageDetails)
 	{
@@ -202,7 +202,7 @@ List usage details in Billing Period with Date Filter
 #>
 function Test-ListBillingPeriodUsageDetailsWithDateFilter
 {
-    $usageDetails = Get-AzureRmConsumptionUsageDetail -BillingPeriodName 201710 -StartDate 2017-10-19 -Top 10
+    $usageDetails = Get-AzConsumptionUsageDetail -BillingPeriodName 201710 -StartDate 2017-10-19 -Top 10
 
     Assert-AreEqual 10 $usageDetails.Count
 	Foreach($usage in $usageDetails)

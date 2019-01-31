@@ -187,6 +187,15 @@ namespace Microsoft.Azure.Commands.Kusto.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login..
+        /// </summary>
+        internal static string NoSubscriptionInContext {
+            get {
+                return ResourceManager.GetString("NoSubscriptionInContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete Kusto cluster.
         /// </summary>
         internal static string RemovingKustoCluster {

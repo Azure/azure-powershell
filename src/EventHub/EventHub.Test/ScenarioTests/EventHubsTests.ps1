@@ -29,42 +29,42 @@ function EventHubsTests
 	# Create Resource Group
 	Write-Debug "Create resource group"    
 	Write-Debug " Resource Group Name : $resourceGroupName"
-	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+	New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
 	
 		
 	# Create EventHub Namespace
 	Write-Debug "  Create new eventhub namespace"
 	Write-Debug " Namespace name : $namespaceName"
-	$result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location
+	$result = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location
 
 	# Assert
 	Assert-AreEqual $result.Name $namespaceName	"New Namespace: Namespace created earlier is not found."
 
 	# get the created Eventhub Namespace 
 	Write-Debug " Get the created namespace within the resource group"
-	$createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
+	$createdNamespace = Get-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
 	
 	Assert-AreEqual $createdNamespace.Name $namespaceName "Get Namespace: Namespace created earlier is not found."
 	
 	# Create a EventHub
 	Write-Debug " Create new eventHub "	
-	$result = New-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $eventHubName
+	$result = New-AzEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $eventHubName
 			
 	Write-Debug " Get the created Eventhub "
-	$createdEventHub = Get-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $result.Name
+	$createdEventHub = Get-AzEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $result.Name
 
 	# Assert
 	Assert-AreEqual $createdEventHub.Name $eventHubName "Get Eventhub: EventHub created earlier is not found."	    
 
 	# Get the Created Eventhub
 	Write-Debug " Get all the created EventHub "
-	$createdEventHubList = Get-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName
+	$createdEventHubList = Get-AzEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName
 
 	# Assert
 	Assert-AreEqual $createdEventHubList.Count 1 "List Eventhub: EventHub created earlier is not found in list"
 
 	$createdEventHub.MessageRetentionInDays = 3
-	Set-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $createdEventHub.Name  -InputObject $createdEventHub
+	Set-AzEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $createdEventHub.Name  -InputObject $createdEventHub
 	
 	# Update the Created EventHub
 	Write-Debug " Update the first EventHub"
@@ -79,14 +79,14 @@ function EventHubsTests
 	$createdEventHub.CaptureDescription.Destination.ArchiveNameFormat = "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
 	$createdEventHub.CaptureDescription.Destination.StorageAccountResourceId = "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourcegroups/v-ajnavtest/providers/Microsoft.Storage/storageAccounts/testingsdkeventhub"
 		
-	$result = Set-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $createdEventHub.Name  -InputObject $createdEventHub
+	$result = Set-AzEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $createdEventHub.Name  -InputObject $createdEventHub
 	
 	# Assert
 	Assert-AreEqual $result.MessageRetentionInDays $createdEventHub.MessageRetentionInDays
 	Assert-AreEqual $result.CaptureDescription.Destination.BlobContainer "container01"
 
 	# Create New EventHub with InputObject
-	$resultNew = New-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $createdEventHub.Name  -InputObject $result
+	$resultNew = New-AzEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $createdEventHub.Name  -InputObject $result
 
 	# Assert
 	Assert-AreEqual $resultNew.MessageRetentionInDays $createdEventHub.MessageRetentionInDays
@@ -97,13 +97,13 @@ function EventHubsTests
 	Write-Debug " Delete the EventHub"
 	for ($i = 0; $i -lt $createdEventHubList.Count; $i++)
 	{
-		$delete1 = Remove-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $createdEventHubList[$i].Name		
+		$delete1 = Remove-AzEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $createdEventHubList[$i].Name		
 	}
 	Write-Debug " Delete namespaces"
-	Remove-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
+	Remove-AzEventHubNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
 
 	Write-Debug " Delete resourcegroup"
-	#Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+	#Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -122,19 +122,19 @@ function EventHubsAuthTests
 	# Create ResourceGroup
 	Write-Debug " Create resource group"    
 	Write-Debug "Resource group name : $resourceGroupName"
-	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+	New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
 	   
 	# Create EventHub Namespace 
 	Write-Debug " Create new Eventhub namespace"
 	Write-Debug "Namespace name : $namespaceName"
-	$result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location
+	$result = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location
 
 	# Assert
 	Assert-AreEqual $result.Name $namespaceName "New Namespace: Namespace created earlier is not found."
 
 	# Get Created NameSpace
 	Write-Debug " Get the created namespace within the resource group"
-	$createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
+	$createdNamespace = Get-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
 	
 	# Assert
 	Assert-AreEqual $createdNamespace.Name $namespaceName "Get Namespace: Namespace created earlier is not found."
@@ -143,10 +143,10 @@ function EventHubsAuthTests
 	Write-Debug " Create new eventHub "    
 	$msgRetentionInDays = 3
 	$partionCount = 2
-	$result_eventHub = New-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $eventHubName -MessageRetentionInDays $msgRetentionInDays -PartitionCount $partionCount
+	$result_eventHub = New-AzEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $eventHubName -MessageRetentionInDays $msgRetentionInDays -PartitionCount $partionCount
 	
 	Write-Debug "Get the created eventHub"
-	$createdEventHub = Get-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $result_eventHub.Name
+	$createdEventHub = Get-AzEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $result_eventHub.Name
 
 	# Assert
 	Assert-AreEqual $createdEventHub.Name $eventHubName "Get Eventhub: EventHub created earlier is not found."
@@ -154,7 +154,7 @@ function EventHubsAuthTests
 
 	# Create Eventhub Authorization Rule
 	Write-Debug "Create a EventHub Authorization Rule"
-	$result = New-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -Rights @("Listen","Send")
+	$result = New-AzEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -Rights @("Listen","Send")
 
 	# Assert
 	Assert-AreEqual $authRuleName $result.Name
@@ -164,7 +164,7 @@ function EventHubsAuthTests
 
 	# Get Created Eventhub Authorization Rule
 	Write-Debug "Get created authorizationRule"
-	$createdAuthRule = Get-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName
+	$createdAuthRule = Get-AzEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName
 
 	# Assert
 	Assert-AreEqual $authRuleName $createdAuthRule.Name "Get Authorizationrule: Authorizationrule name do not match"
@@ -174,7 +174,7 @@ function EventHubsAuthTests
 
 	# Get all Eventhub Authorization Rules
 	Write-Debug "Get All eventHub AuthorizationRule"
-	$result = Get-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName
+	$result = Get-AzEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName
 	# Assert
 	for ($i = 0; $i -lt $result.Count; $i++)
 	{
@@ -192,7 +192,7 @@ function EventHubsAuthTests
 	# Update the Eventhub Authorization Rule
 	Write-Debug "Update eventHub AuthorizationRule"
 	$createdAuthRule.Rights.Add("Manage")
-	$updatedAuthRule = Set-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -InputObj $createdAuthRule
+	$updatedAuthRule = Set-AzEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -InputObj $createdAuthRule
 
 	# Assert
 	Assert-AreEqual $authRuleName $updatedAuthRule.Name "Set Authorizationrule: Authorizationrule name do not match"
@@ -202,7 +202,7 @@ function EventHubsAuthTests
 	Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
 	   
 	# get the Updated Eventhub Authorization Rule
-	$updatedAuthRule = Get-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName
+	$updatedAuthRule = Get-AzEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName
 	
 	# Assert
 	Assert-AreEqual $authRuleName $updatedAuthRule.Name "Get Authorization rule after Set (updated): Autho rule name dosent match"
@@ -213,7 +213,7 @@ function EventHubsAuthTests
 	
 	# Get the List Keys
 	Write-Debug "Get Eventhub authorizationRules connectionStrings"
-	$namespaceListKeys = Get-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName
+	$namespaceListKeys = Get-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName
 
 	Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)}
 	Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($updatedAuthRule.SecondaryKey)}
@@ -221,30 +221,30 @@ function EventHubsAuthTests
 	# Regentrate the Keys 
 	$policyKey = "PrimaryKey"
 
-	$namespaceRegenerateKeysDefault = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -RegenerateKey $policyKey
+	$namespaceRegenerateKeysDefault = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -RegenerateKey $policyKey
 	Assert-True {$namespaceRegenerateKeysDefault.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
 
-	$namespaceRegenerateKeys = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -RegenerateKey $policyKey -KeyValue $namespaceListKeys.PrimaryKey
+	$namespaceRegenerateKeys = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -RegenerateKey $policyKey -KeyValue $namespaceListKeys.PrimaryKey
 	Assert-AreEqual $namespaceRegenerateKeys.PrimaryKey $namespaceListKeys.PrimaryKey
 
 	$policyKey1 = "SecondaryKey"
 
-	$namespaceRegenerateKeys1 = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -RegenerateKey $policyKey1 -KeyValue $namespaceListKeys.PrimaryKey
+	$namespaceRegenerateKeys1 = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -RegenerateKey $policyKey1 -KeyValue $namespaceListKeys.PrimaryKey
 	Assert-AreEqual $namespaceRegenerateKeys1.SecondaryKey $namespaceListKeys.PrimaryKey
 
-	$namespaceRegenerateKeys1 = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -RegenerateKey $policyKey1
+	$namespaceRegenerateKeys1 = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -RegenerateKey $policyKey1
 	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.PrimaryKey}	
 
 	# Cleanup
 	Write-Debug "Delete the created EventHub AuthorizationRule"
-	$result = Remove-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -Force
+	$result = Remove-AzEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -Force
 	
 	Write-Debug "Delete the Eventhub"
-	Remove-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $eventHubName 
+	Remove-AzEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $eventHubName 
 	
 	Write-Debug "Delete NameSpace"
-	Remove-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
+	Remove-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
 
 	Write-Debug " Delete resourcegroup"
-	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+	Remove-AzResourceGroup -Name $resourceGroupName -Force
 }

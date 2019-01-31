@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Newtonsoft.Json.Linq;
@@ -110,15 +111,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (!string.IsNullOrEmpty(ResourceIdUtility.GetResourceName(resourceId)))
             {
-                var resource = await this
-                    .GetResourcesClient()
-                    .GetResource<JObject>(
-                        resourceId: resourceId,
-                        apiVersion: apiVersion,
-                        cancellationToken: this.CancellationToken.Value)
-                    .ConfigureAwait(continueOnCapturedContext: false);
-                ResponseWithContinuation<JObject[]> retVal;
-                return resource.TryConvertTo(out retVal) && retVal.Value != null
+                JObject resource;
+                try
+                {
+                    resource = await this
+                        .GetResourcesClient()
+                        .GetResource<JObject>(
+                            resourceId: resourceId,
+                            apiVersion: apiVersion,
+                            cancellationToken: this.CancellationToken.Value)
+                        .ConfigureAwait(continueOnCapturedContext: false);
+                }
+                catch (ErrorResponseMessageException ex)
+                {
+                    if (!ex.Message.StartsWith("PolicySetDefinitionNotFound", StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw;
+                    }
+
+                    resourceId = this.GetBuiltinResourceId();
+                    resource = await this
+                        .GetResourcesClient()
+                        .GetResource<JObject>(
+                            resourceId: resourceId,
+                            apiVersion: apiVersion,
+                            cancellationToken: this.CancellationToken.Value)
+                        .ConfigureAwait(continueOnCapturedContext: false);
+                }
+
+                return resource.TryConvertTo(out ResponseWithContinuation<JObject[]> retVal) && retVal.Value != null
                     ? retVal
                     : new ResponseWithContinuation<JObject[]> { Value = resource.AsArray() };
             }
@@ -140,6 +161,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private string GetResourceId()
         {
             return this.Id ?? this.MakePolicySetDefinitionId(this.ManagementGroupName, this.SubscriptionId, this.Name);
+        }
+
+        /// <summary>
+        /// Gets the resource Id assuming the name is for a builtin
+        /// </summary>
+        private string GetBuiltinResourceId()
+        {
+            return $"/{Constants.Providers}/{Constants.MicrosoftAuthorizationPolicySetDefinitionType}/{this.Name}";
         }
     }
 }
