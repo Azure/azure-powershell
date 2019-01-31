@@ -33,19 +33,19 @@ Get-AzSqlServerAuditing [-ResourceGroupName] <String> [-ServerName] <String> [-L
 
 ### BlobStorageByParentResourceSet
 ```
-Get-AzSqlServerAuditing [-BlobStorage] -InputObject <AzureSqlServerModel>
+Get-AzSqlServerAuditing -InputObject <AzureSqlServerModel> [-BlobStorage]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### EventHubByParentResourceSet
 ```
-Get-AzSqlServerAuditing [-EventHub] -InputObject <AzureSqlServerModel>
+Get-AzSqlServerAuditing -InputObject <AzureSqlServerModel> [-EventHub]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LogAnalyticsByParentResourceSet
 ```
-Get-AzSqlServerAuditing [-LogAnalytics] -InputObject <AzureSqlServerModel>
+Get-AzSqlServerAuditing -InputObject <AzureSqlServerModel> [-LogAnalytics]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 

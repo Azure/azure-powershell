@@ -20,7 +20,7 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class BlobAuditingTests : SqlTestsBase
+    public class AuditingTests : SqlTestsBase
     {
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
@@ -28,10 +28,15 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             var publicstorageV2Client = GetPublicStorageManagementClient(context);
             var storageV2Client = GetStorageManagementClient(context);
             var newResourcesClient = GetResourcesClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, publicstorageV2Client, storageV2Client, newResourcesClient);
+            var monitorManagementClient = GetMonitorManagementClient(context);
+            var eventHubManagementClient = GetEventHubManagementClient(context);
+            var operationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
+            Helper.SetupSomeOfManagementClients(sqlClient, publicstorageV2Client, storageV2Client,
+                newResourcesClient, monitorManagementClient, eventHubManagementClient,
+                operationalInsightsManagementClient);
         }
 
-        public BlobAuditingTests(ITestOutputHelper output) : base(output)
+        public AuditingTests(ITestOutputHelper output) : base(output)
         {
         }
 
@@ -173,6 +178,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestExtendedAuditingOnServer()
         {
             RunPowerShellTest("Test-ExtendedAuditingOnServer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAuditingOnDatabase()
+        {
+            RunPowerShellTest("Test-AuditingOnDatabase");
         }
     }
 }

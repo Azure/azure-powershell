@@ -17,17 +17,17 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
-    /// <summary>
-    /// Returns the auditing settings of a specific database server.
-    /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAuditing", SupportsShouldProcess = true), OutputType(typeof(ServerBlobAuditingSettingsModel))]
-    public class GetAzureSqlServerAuditing : SqlServerAuditingSettingsCmdletBase
+    [Cmdlet(
+        VerbsCommon.Get,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ServerAuditingCmdletsSuffix),
+        OutputType(typeof(ServerAuditingSettingsModel))]
+    public class GetAzSqlServerAuditing : SqlServerAuditingSettingsCmdletBase
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override ServerBlobAuditingSettingsModel PersistChanges(ServerBlobAuditingSettingsModel model)
+        protected override ServerAuditingSettingsModel PersistChanges(ServerAuditingSettingsModel model)
         {
             return null;
         }

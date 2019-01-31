@@ -12,16 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Auditing.Services;
+
 namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 {
     /// <summary>
-    /// A class representing A server's auditing policy
+    /// The class that defines the model of database blob auditing policy
     /// </summary>
-    public class ServerAuditingPolicyModel : BaseTableAuditingPolicyModel
+    public class DatabaseAuditingSettingsModel : ServerAuditingSettingsModel
     {
-        /// <summary>
-        /// Gets or sets the audit type
-        /// </summary>
-        public AuditType AuditType { get; set; }
+        public string DatabaseName { get; set; }
+
+        public string[] AuditAction { get; set; }
+
+        protected override bool SetAuditingPolicy(SqlAuditAdapter adapter) => adapter.SetAuditingPolicy(this);
     }
 }
