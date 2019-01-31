@@ -18,9 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update to latest version of ClientRuntime
+
+## Version 1.2.0
+* Add interactive and username/password authentication for Windows PowerShell 5.1 only
+* Update incorrect online help URLs
+* Add warning message in PS Core for Uninstall-AzureRm
 
 ## Version 1.1.0
 * Add 'Local' Scope to Enable-AzureRmAlias
+* Bug fix for missing path in Uninstall-AzureRm
 
 ## Version 1.0.0
 * General availability of `Az.Accounts` module

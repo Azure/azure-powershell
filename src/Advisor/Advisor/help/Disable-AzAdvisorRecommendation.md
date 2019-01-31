@@ -51,7 +51,7 @@ Create a suppression for the given recommendation name with a default-Suppressio
 
 ### Example 2
 ```powershell
-PS C:\> Disable-AzAdvisorRecommendation -ResourceId "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}" -Days 12
+PS C:\> Disable-AzAdvisorRecommendation -ResourceId "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz" -Days 12
 
 SuppressionId : 7d1f0547-0e72-db29-443e-c1164d5d4377
 Ttl           : 12.00:00:00
@@ -65,7 +65,7 @@ A suppression is created for the given recommendation-Id.
 
 ### Example 3
 ```powershell
-PS C:\>  Get-AzAdvisorRecommendation -ResourceId "/subscriptions/user_subscription/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}" | Disable-A
+PS C:\>  Get-AzAdvisorRecommendation -ResourceId "/subscriptions/user_subscription/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz" | Disable-A
 zAdvisorRecommendation
 
 SuppressionId : daf24e78-af2d-e8d3-9c50-fa970edc2937
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-ResourceID of the recommendation to be suppressed.
+Id of the recommendation to be suppressed.
 
 ```yaml
 Type: String

@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Test New-AzureRmIntegrationAccountSchema command
+Test New-AzIntegrationAccountSchema command
 #>
 function Test-CreateIntegrationAccountSchema
 {
@@ -31,21 +31,21 @@ function Test-CreateIntegrationAccountSchema
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
-	$integrationAccountSchema1 =  New-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName1 -SchemaDefinition $schemaContent 
+	$integrationAccountSchema1 =  New-AzIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName1 -SchemaDefinition $schemaContent 
 	Assert-AreEqual $integrationAccountSchemaName1 $integrationAccountSchema1.Name
 
-	$integrationAccountSchema2 =  New-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName2 -SchemaFilePath $schemaFilePath
+	$integrationAccountSchema2 =  New-AzIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName2 -SchemaFilePath $schemaFilePath
 	Assert-AreEqual $integrationAccountSchemaName2 $integrationAccountSchema2.Name
 
-	$integrationAccountSchema3 =  New-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName3 -SchemaFilePath $schemaFilePath -SchemaType "Xml" -ContentType "application/xml"
+	$integrationAccountSchema3 =  New-AzIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName3 -SchemaFilePath $schemaFilePath -SchemaType "Xml" -ContentType "application/xml"
 	Assert-AreEqual $integrationAccountSchemaName3 $integrationAccountSchema3.Name
 
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 <#
 .SYNOPSIS
-Test Get-AzureRmIntegrationAccountSchema command
+Test Get-AzIntegrationAccountSchema command
 #>
 function Test-GetIntegrationAccountSchema
 {
@@ -60,22 +60,22 @@ function Test-GetIntegrationAccountSchema
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
-	$integrationAccountSchema =  New-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent
+	$integrationAccountSchema =  New-AzIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent
 	Assert-AreEqual $integrationAccountSchemaName $integrationAccountSchema.Name
 
-	$result =  Get-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName
+	$result =  Get-AzIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName
 	Assert-AreEqual $integrationAccountSchemaName $result.Name
 
-	$result1 =  Get-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
+	$result1 =  Get-AzIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
 	Assert-AreEqual $integrationAccountSchemaName $result1.Name
 	Assert-True { $result1.Count -gt 0 }	
 
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 <#
 .SYNOPSIS
-Test Remove-AzureRmIntegrationAccountSchema command
+Test Remove-AzIntegrationAccountSchema command
 #>
 function Test-RemoveIntegrationAccountSchema
 {
@@ -90,17 +90,17 @@ function Test-RemoveIntegrationAccountSchema
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
-	$integrationAccountSchema =  New-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent
+	$integrationAccountSchema =  New-AzIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent
 	Assert-AreEqual $integrationAccountSchemaName $integrationAccountSchema.Name
 
-	Remove-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName -Force	
+	Remove-AzIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName -Force	
 
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 <#
 .SYNOPSIS
-Test Set-AzureRmIntegrationAccountSchema command
+Test Set-AzIntegrationAccountSchema command
 #>
 function Test-UpdateIntegrationAccountSchema
 {
@@ -115,21 +115,21 @@ function Test-UpdateIntegrationAccountSchema
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
-	$integrationAccountSchema =  New-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent
+	$integrationAccountSchema =  New-AzIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent
 	Assert-AreEqual $integrationAccountSchemaName $integrationAccountSchema.Name
 
-	$integrationAccountSchemaUpdated =  Set-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent -Force
+	$integrationAccountSchemaUpdated =  Set-AzIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent -Force
 	Assert-AreEqual $integrationAccountSchemaName $integrationAccountSchema.Name
 
-	$integrationAccountSchemaUpdated =  Set-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent -Force
+	$integrationAccountSchemaUpdated =  Set-AzIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent -Force
 	Assert-AreEqual $integrationAccountSchemaName $integrationAccountSchema.Name
 	
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 <#
 .SYNOPSIS
-Test Get-AzureRmIntegrationAccountSchema command : Paging test
+Test Get-AzIntegrationAccountSchema command : Paging test
 #>
 function Test-ListIntegrationAccountSchema
 {
@@ -147,11 +147,11 @@ function Test-ListIntegrationAccountSchema
 	{
 		$val++ ;
 		$integrationAccountSchemaName = getAssetname
-		New-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent
+		New-AzIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent
 	}
 
-	$result =  Get-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
+	$result =  Get-AzIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
 	Assert-True { $result.Count -eq 1 }
 
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }

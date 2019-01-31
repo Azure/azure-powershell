@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azvirtualnetworktap
@@ -124,3 +124,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzVirtualNetworkTap](./Get-AzVirtualNetworkTap.md)
+
+[New-AzVirtualNetworkTap](./New-AzVirtualNetworkTap.md)
+
+[Remove-AzVirtualNetworkTap](./Remove-AzVirtualNetworkTap.md)

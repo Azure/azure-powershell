@@ -12,9 +12,9 @@ function Test-PowerBIEmbeddedCapacity
 		$resourceGroupName = Get-ResourceGroupName
 		$capacityName = Get-PowerBIEmbeddedCapacityName
 
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
+		New-AzResourceGroup -Name $resourceGroupName -Location $RGlocation
 		
-		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net','aztest1@stabletest.ccsctp.net'
+		$capacityCreated = New-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net','aztest1@stabletest.ccsctp.net'
     
 		Assert-AreEqual $capacityName $capacityCreated.Name
 		Assert-AreEqual $location $capacityCreated.Location
@@ -22,7 +22,7 @@ function Test-PowerBIEmbeddedCapacity
 		Assert-AreEqual 2 $capacityCreated.Administrator.Count
 		Assert-True {$capacityCreated.Id -like "*$resourceGroupName*"}
 	
-		[array]$capacityGet = Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName
+		[array]$capacityGet = Get-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName
 		$capacityGetItem = $capacityGet[0]
 
 		Assert-True {$capacityGetItem.State -like "Succeeded"}
@@ -33,18 +33,18 @@ function Test-PowerBIEmbeddedCapacity
 		Assert-True {$capacityGetItem.Id -like "*$resourceGroupName*"}
 
 		# Test to make sure the capacity does exist
-		Assert-True {Test-AzureRmPowerBIEmbeddedCapacity -Name $capacityName}
+		Assert-True {Test-AzPowerBIEmbeddedCapacity -Name $capacityName}
 		# Test it without specifying a resource group
-		Assert-True {Test-AzureRmPowerBIEmbeddedCapacity -Name $capacityName}
+		Assert-True {Test-AzPowerBIEmbeddedCapacity -Name $capacityName}
 		
 		# Updating capacity
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
-		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Tag $tagsToUpdate -PassThru
+		$capacityUpdated = Update-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Tag $tagsToUpdate -PassThru
 		Assert-NotNull $capacityUpdated.Tag "Tag do not exists"
 		Assert-NotNull $capacityUpdated.Tag["TestTag"] "The updated tag 'TestTag' does not exist"
 		Assert-AreEqual $capacityUpdated.Administrator.Count 2
 
-		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Administrator 'aztest1@stabletest.ccsctp.net' -PassThru
+		$capacityUpdated = Update-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Administrator 'aztest1@stabletest.ccsctp.net' -PassThru
 		Assert-NotNull $capacityUpdated.Administrator "Capacity Administrator list is empty"
 		Assert-AreEqual $capacityUpdated.Administrator.Count 1
 
@@ -54,7 +54,7 @@ function Test-PowerBIEmbeddedCapacity
 		Assert-True {$capacityUpdated.Id -like "*$resourceGroupName*"}
 
 		# List all capacitys in resource group
-		[array]$capacitysInResourceGroup = Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName
+		[array]$capacitysInResourceGroup = Get-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName
 		Assert-True {$capacitysInResourceGroup.Count -ge 1}
 
 		$found = 0
@@ -73,7 +73,7 @@ function Test-PowerBIEmbeddedCapacity
 		Assert-True {$found -eq 1} "capacity created earlier is not found when listing all in resource group: $resourceGroupName."
 
 		# List all PowerBI Embedded Capacities in subscription
-		[array]$capacitysInSubscription = Get-AzureRmPowerBIEmbeddedCapacity
+		[array]$capacitysInSubscription = Get-AzPowerBIEmbeddedCapacity
 		Assert-True {$capacitysInSubscription.Count -ge 1}
 		Assert-True {$capacitysInSubscription.Count -ge $capacitysInResourceGroup.Count}
     
@@ -93,29 +93,29 @@ function Test-PowerBIEmbeddedCapacity
 		Assert-True {$found -eq 1} "Account created earlier is not found when listing all in subscription."
 
 		# Suspend PowerBI Embedded capacity
-		$capacityGetItem = Suspend-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
+		$capacityGetItem = Suspend-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
 		# this is to ensure backward compatibility compatibility. The servie side would make change to differenciate state and provisioningState in future
 		Assert-True {$capacityGetItem.State -like "Paused"}
 		Assert-AreEqual $resourceGroupName $capacityGetItem.ResourceGroup
 
 		# Resume PowerBI Embedded capacity
-		$capacityGetItem = Resume-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
-		[array]$capacityGet = Get-AzureRmPowerBIEmbeddedCapacity -ResourceId $capacityGetItem.Id
+		$capacityGetItem = Resume-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
+		[array]$capacityGet = Get-AzPowerBIEmbeddedCapacity -ResourceId $capacityGetItem.Id
 		$capacityGetItem = $capacityGet[0]
 		Assert-AreEqual $capacityGetItem.Name $capacityGetItem.Name
 		Assert-True {$capacityGetItem.State -like "Succeeded"}
 		
 		# Delete PowerBI Embedded capacity
-		Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName | Remove-AzureRmPowerBIEmbeddedCapacity -PassThru
+		Get-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName | Remove-AzPowerBIEmbeddedCapacity -PassThru
 
 		# Verify that it is gone by trying to get it again
-		Assert-Throws {Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName}
+		Assert-Throws {Get-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName}
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -133,9 +133,9 @@ function Test-PowerBIEmbeddedCapacityScale
 		$resourceGroupName = Get-ResourceGroupName
 		$capacityName = Get-PowerBIEmbeddedCapacityName
 
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
+		New-AzResourceGroup -Name $resourceGroupName -Location $RGlocation
 		
-		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net','aztest1@stabletest.ccsctp.net'
+		$capacityCreated = New-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net','aztest1@stabletest.ccsctp.net'
 		Assert-AreEqual $capacityName $capacityCreated.Name
 		Assert-AreEqual $location $capacityCreated.Location
 		Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityCreated.Type
@@ -143,7 +143,7 @@ function Test-PowerBIEmbeddedCapacityScale
 		Assert-True {$capacityCreated.Id -like "*$resourceGroupName*"}
 	
 		# Check capacity was created successfully
-		[array]$capacityGet = Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName
+		[array]$capacityGet = Get-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName
 		$capacityGetItem = $capacityGet[0]
 
 		Assert-True {$capacityGetItem.State -like "Succeeded"}
@@ -154,25 +154,25 @@ function Test-PowerBIEmbeddedCapacityScale
 		Assert-True {$capacityGetItem.Id -like "*$resourceGroupName*"}
 		
 		# Scale up A1 -> A2
-		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku A2 -PassThru
+		$capacityUpdated = Update-AzPowerBIEmbeddedCapacity -Name $capacityName -Sku A2 -PassThru
 		Assert-AreEqual A2 $capacityUpdated.Sku
 
-		$capacityGetItem = Suspend-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
+		$capacityGetItem = Suspend-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
 		# this is to ensure backward compatibility compatibility. The servie side would make change to differenciate state and provisioningState in future
 		Assert-True {$capacityGetItem.State -like "Paused"}
 
 		# Scale down A2 -> A1
-		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku A1 -PassThru
+		$capacityUpdated = Update-AzPowerBIEmbeddedCapacity -Name $capacityName -Sku A1 -PassThru
 		Assert-AreEqual A1 $capacityUpdated.Sku
 		
 		# Delete PowerBI Embedded capacity
-		Remove-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
+		Remove-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -196,8 +196,8 @@ function Test-NegativePowerBIEmbeddedCapacity
 		$resourceGroupName = Get-ResourceGroupName
 		$capacityName = Get-PowerBIEmbeddedCapacityName
 		
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
-		$capacityCreated = New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net','aztest1@stabletest.ccsctp.net'
+		New-AzResourceGroup -Name $resourceGroupName -Location $RGlocation
+		$capacityCreated = New-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A1' -Administrator 'aztest0@stabletest.ccsctp.net','aztest1@stabletest.ccsctp.net'
 
 		Assert-AreEqual $capacityName $capacityCreated.Name
 		Assert-AreEqual $location $capacityCreated.Location
@@ -205,34 +205,34 @@ function Test-NegativePowerBIEmbeddedCapacity
 		Assert-True {$capacityCreated.Id -like "*$resourceGroupName*"}
 
 		# attempt to recreate the already created capacity
-		Assert-Throws {New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location}
+		Assert-Throws {New-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location}
 
 		# attempt to update a non-existent capacity
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
-		Assert-Throws {Update-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $fakecapacityName -Tag $tagsToUpdate}
+		Assert-Throws {Update-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $fakecapacityName -Tag $tagsToUpdate}
 
 		# attempt to get a non-existent capacity
-		Assert-Throws {Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $fakecapacityName}
+		Assert-Throws {Get-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $fakecapacityName}
 
 		# attempt to create a capacity with invalid Sku
-		Assert-Throws {New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $fakecapacityName -Location $location -Sku $invalidSku -Administrator 'aztest0@stabletest.ccsctp.net','aztest1@stabletest.ccsctp.net'}
+		Assert-Throws {New-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $fakecapacityName -Location $location -Sku $invalidSku -Administrator 'aztest0@stabletest.ccsctp.net','aztest1@stabletest.ccsctp.net'}
 
 		# attempt to scale a capacity to invalid Sku
-		Assert-Throws {Update-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Sku $invalidSku}
+		Assert-Throws {Update-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Sku $invalidSku}
 
 		# Delete PowerBI Embedded capacity
-		Remove-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
+		Remove-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
 
 		# Delete PowerBI Embedded capacity again should throw.
-		Assert-Throws {Remove-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru}
+		Assert-Throws {Remove-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru}
 
 		# Verify that it is gone by trying to get it again
-		Assert-Throws {Get-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName}
+		Assert-Throws {Get-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName}
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
