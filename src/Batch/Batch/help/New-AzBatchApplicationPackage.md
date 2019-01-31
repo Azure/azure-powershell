@@ -15,14 +15,14 @@ Creates an application package in a Batch account.
 
 ### UploadAndActivate (Default)
 ```
-New-AzBatchApplicationPackage [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationId] <String>
+New-AzBatchApplicationPackage [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationName] <String>
  [-ApplicationVersion] <String> [-Format] <String> -FilePath <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ActivateOnly
 ```
-New-AzBatchApplicationPackage [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationId] <String>
+New-AzBatchApplicationPackage [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationName] <String>
  [-ApplicationVersion] <String> [-Format] <String> [-ActivateOnly] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ The **New-AzBatchApplicationPackage** cmdlet creates an application package in a
 
 ### Example 1: Install an application package into a Batch account
 ```
-PS C:\>New-AzBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationId "Litware" -ApplicationVersion "1.0" -FilePath "litware.1.0.zip" -Format "zip"
+PS C:\>New-AzBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationName "Litware" -ApplicationVersion "1.0" -FilePath "litware.1.0.zip" -Format "zip"
 ```
 
 This command creates and activates version 1.0 of the Litware application, and uploads the contents of litware.1.0.zip as the application package content.
@@ -71,8 +71,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ApplicationId
-Specifies the ID of the application.
+### -ApplicationName
+Specifies the name of the application.
 
 ```yaml
 Type: System.String

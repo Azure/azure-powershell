@@ -30,7 +30,8 @@ PS C:\>New-AzBatchAccount -AccountName "pfuller" -ResourceGroupName "ResourceGro
 AccountName                  : pfuller
 Location                     : westus
 ResourceGroupName            : ResourceGroup03
-CoreQuota                    : 20
+DedicatedCoreQuota           : 20
+LowPriorityCoreQuota         : 20
 PoolQuota                    : 20
 ActiveJobAndJobScheduleQuota : 20
 Tags                         :

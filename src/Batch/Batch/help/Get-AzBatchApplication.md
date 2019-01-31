@@ -14,7 +14,7 @@ Gets information about the specified application.
 ## SYNTAX
 
 ```
-Get-AzBatchApplication [-AccountName] <String> [-ResourceGroupName] <String> [[-ApplicationId] <String>]
+Get-AzBatchApplication [-AccountName] <String> [-ResourceGroupName] <String> [[-ApplicationName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ The **Get-AzBatchApplication** cmdlet gets information about an application in a
 ### Example 1: Display the applications in a Batch account
 ```
 PS C:\>Get-AzBatchApplication -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup"
-ApplicationId AllowUpdates DisplayName
+ApplicationName AllowUpdates DisplayName
 
 ------------- ------------ ----------------------------
 
@@ -52,8 +52,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ApplicationId
-Specifies the ID of the application.
+### -ApplicationName
+Specifies the name of the application.
 
 ```yaml
 Type: System.String

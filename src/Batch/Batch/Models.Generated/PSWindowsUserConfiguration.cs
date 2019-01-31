@@ -29,17 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSOSDisk
+    public partial class PSWindowsUserConfiguration
     {
         
-        internal Microsoft.Azure.Batch.OSDisk omObject;
+        internal Microsoft.Azure.Batch.WindowsUserConfiguration omObject;
         
-        public PSOSDisk(System.Nullable<Microsoft.Azure.Batch.Common.CachingType> caching = null)
+        public PSWindowsUserConfiguration(System.Nullable<Microsoft.Azure.Batch.Common.LoginMode> loginMode = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.OSDisk(caching);
+            this.omObject = new Microsoft.Azure.Batch.WindowsUserConfiguration(loginMode);
         }
         
-        internal PSOSDisk(Microsoft.Azure.Batch.OSDisk omObject)
+        internal PSWindowsUserConfiguration(Microsoft.Azure.Batch.WindowsUserConfiguration omObject)
         {
             if ((omObject == null))
             {
@@ -48,11 +48,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.CachingType? Caching
+        public Microsoft.Azure.Batch.Common.LoginMode? LoginMode
         {
             get
             {
-                return this.omObject.Caching;
+                return this.omObject.LoginMode;
+            }
+            set
+            {
+                this.omObject.LoginMode = value;
             }
         }
     }

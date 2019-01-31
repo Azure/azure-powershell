@@ -30,7 +30,8 @@ PS C:\>Set-AzBatchAccount -AccountName "cmdletexample" -Tag @{key0="value0";key1
 AccountName                  : cmdletexample
 Location                     : westus
 ResourceGroupName            : CmdletExampleRG
-CoreQuota                    : 20
+DedicatedCoreQuota           : 20
+LowPriorityCoreQuota         : 20
 PoolQuota                    : 20
 ActiveJobAndJobScheduleQuota : 20
 Tags                         :

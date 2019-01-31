@@ -31,7 +31,8 @@ PS C:\>Get-AzBatchAccount -AccountName "pfuller"
 AccountName                  : pfuller
 Location                     : westus
 ResourceGroupName            : CmdletExampleRG
-CoreQuota                    : 20
+DedicatedCoreQuota           : 20
+LowPriorityCoreQuota         : 20
 PoolQuota                    : 20
 ActiveJobAndJobScheduleQuota : 20
 Tags                         :
@@ -46,7 +47,8 @@ PS C:\>Get-AzBatchAccount -ResourceGroupName "CmdletExampleRG"
 AccountName                  : cmdletexample
 Location                     : westus
 ResourceGroupName            : CmdletExampleRG
-CoreQuota                    : 20
+DedicatedCoreQuota           : 20
+LowPriorityCoreQuota         : 20
 PoolQuota                    : 20
 ActiveJobAndJobScheduleQuota : 20
 Tags                         :
@@ -54,7 +56,8 @@ TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
 AccountName                  : cmdletexample2
 Location                     : westus
 ResourceGroupName            : CmdletExampleRG
-CoreQuota                    : 20
+DedicatedCoreQuota           : 20
+LowPriorityCoreQuota         : 20
 PoolQuota                    : 20
 ActiveJobAndJobScheduleQuota : 20
 Tags                         :

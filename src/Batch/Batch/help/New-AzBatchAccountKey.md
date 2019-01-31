@@ -28,17 +28,12 @@ The cmdlet returns a **BatchAccountContext** object that has its current **Prima
 ```
 PS C:\>New-AzBatchAccountKey -AccountName "pfuller" -KeyType "Primary"
 AccountName                  : pfuller
-
 Location                     : westus
-
 ResourceGroupName            : CmdletExampleRG
-
-CoreQuota                    : 20
-
+DedicatedCoreQuota           : 20
+LowPriorityCoreQuota         : 20
 PoolQuota                    : 20
-
 ActiveJobAndJobScheduleQuota : 20
-
 Tags                         : 
 TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
 ```

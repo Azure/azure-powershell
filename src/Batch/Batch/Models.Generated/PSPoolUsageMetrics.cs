@@ -43,22 +43,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public double DataEgressGiB
-        {
-            get
-            {
-                return this.omObject.DataEgressGiB;
-            }
-        }
-        
-        public double DataIngressGiB
-        {
-            get
-            {
-                return this.omObject.DataIngressGiB;
-            }
-        }
-        
         public System.DateTime EndTime
         {
             get

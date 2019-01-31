@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("ResourceFile")]
-        public IDictionary ResourceFiles { get; set; }
+        public PSResourceFile[] ResourceFiles { get; set; }
 
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]

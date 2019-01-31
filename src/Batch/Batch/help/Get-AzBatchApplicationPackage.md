@@ -14,7 +14,7 @@ Gets information about an application package in a Batch account.
 ## SYNTAX
 
 ```
-Get-AzBatchApplicationPackage [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationId] <String>
+Get-AzBatchApplicationPackage [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationName] <String>
  [-ApplicationVersion] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ The **Get-AzBatchApplicationPackage** cmdlet gets information about an applicati
 
 ### Example 1: Get details of an application package in a Batch account
 ```
-PS C:\>Get-AzBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationId "Litware" -ApplicationVersion "1.0"
+PS C:\>Get-AzBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationName "Litware" -ApplicationVersion "1.0"
 Format             : zip
 State              : Active
 Version            : 1.0
@@ -54,8 +54,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ApplicationId
-Specifies the ID of the application.
+### -ApplicationName
+Specifies the name of the application.
 
 ```yaml
 Type: System.String

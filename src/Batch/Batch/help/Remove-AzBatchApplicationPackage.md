@@ -15,7 +15,7 @@ Deletes an application package record and the binary file.
 
 ```
 Remove-AzBatchApplicationPackage [-AccountName] <String> [-ResourceGroupName] <String>
- [-ApplicationId] <String> [-ApplicationVersion] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ApplicationName] <String> [-ApplicationVersion] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ The **Remove-AzBatchApplicationPackage** cmdlet deletes an application package r
 
 ### Example 1: Delete an application package from a Batch account
 ```
-PS C:\>Remove-AzBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationId "litware" -ApplicationVersion "1.0"
+PS C:\>Remove-AzBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationName "litware" -ApplicationVersion "1.0"
 ```
 
 This command deletes version 1.0 of the Litware application from the ContosoBatchGroup account.
@@ -49,8 +49,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ApplicationId
-Specifies the ID of the application.
+### -ApplicationName
+Specifies the name of the application.
 
 ```yaml
 Type: System.String

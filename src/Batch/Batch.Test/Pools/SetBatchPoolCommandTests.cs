@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             {
                 new PSApplicationPackageReference()
                 {
-                    ApplicationId = "myApp",
+                    ApplicationName = "myApp",
                     Version = "1.0"
                 }
             };
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.Pool.CertificateReferences[0].Thumbprint, requestParameters.CertificateReferences[0].Thumbprint);
             Assert.Equal(cmdlet.Pool.CertificateReferences[0].ThumbprintAlgorithm, requestParameters.CertificateReferences[0].ThumbprintAlgorithm);
             Assert.Equal(cmdlet.Pool.ApplicationPackageReferences.Count, requestParameters.ApplicationPackageReferences.Count);
-            Assert.Equal(cmdlet.Pool.ApplicationPackageReferences[0].ApplicationId, requestParameters.ApplicationPackageReferences[0].ApplicationId);
+            Assert.Equal(cmdlet.Pool.ApplicationPackageReferences[0].ApplicationName, requestParameters.ApplicationPackageReferences[0].ApplicationId);
             Assert.Equal(cmdlet.Pool.ApplicationPackageReferences[0].Version, requestParameters.ApplicationPackageReferences[0].Version);
             Assert.Equal(cmdlet.Pool.Metadata.Count, requestParameters.Metadata.Count);
             Assert.Equal(cmdlet.Pool.Metadata[0].Name, requestParameters.Metadata[0].Name);

@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.CertificateReferences[0].Thumbprint, requestParameters.CertificateReferences[0].Thumbprint);
             Assert.Equal(cmdlet.CertificateReferences[0].ThumbprintAlgorithm, requestParameters.CertificateReferences[0].ThumbprintAlgorithm);
             Assert.Equal(cmdlet.CloudServiceConfiguration.OSFamily, requestParameters.CloudServiceConfiguration.OsFamily);
-            Assert.Equal(cmdlet.CloudServiceConfiguration.TargetOSVersion, requestParameters.CloudServiceConfiguration.TargetOSVersion);
+            Assert.Equal(cmdlet.CloudServiceConfiguration.OSVersion, requestParameters.CloudServiceConfiguration.OsVersion);
             Assert.Equal(cmdlet.DisplayName, requestParameters.DisplayName);
             Assert.Equal(cmdlet.InterComputeNodeCommunicationEnabled, requestParameters.EnableInterNodeCommunication);
             Assert.Equal(cmdlet.MaxTasksPerComputeNode, requestParameters.MaxTasksPerNode);
@@ -210,41 +210,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(cmdlet.NetworkConfiguration.SubnetId, subnetId);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewBatchPoolOSDiskGetsPassedToRequest()
-        {
-            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
-            cmdlet.BatchContext = context;
-
-            cmdlet.Id = "testPool";
-            cmdlet.TargetDedicatedComputeNodes = 3;
-
-            Azure.Batch.Common.CachingType cachingType = Azure.Batch.Common.CachingType.ReadWrite;
-            cmdlet.VirtualMachineConfiguration =
-                new PSVirtualMachineConfiguration(new PSImageReference("offer", "publisher", "sku"), "node agent")
-                {
-                    OSDisk = new PSOSDisk(cachingType)
-                };
-            PoolAddParameter requestParameters = null;
-
-            // Store the request parameters
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                PoolAddParameter,
-                PoolAddOptions,
-                AzureOperationHeaderResponse<PoolAddHeaders>>(requestAction: (r) =>
-                {
-                    requestParameters = r.Parameters;
-                });
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>())).Returns(true);
-            cmdlet.ExecuteCmdlet();
-
-            // Verify the request parameters match the cmdlet parameters
-            Assert.Equal(cachingType.ToString().ToLowerInvariant(), 
-                requestParameters.VirtualMachineConfiguration.OsDisk.Caching.ToString().ToLowerInvariant());
         }
 
         [Fact]

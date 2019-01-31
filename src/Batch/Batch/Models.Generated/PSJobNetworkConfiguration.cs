@@ -29,17 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSCloudServiceConfiguration
+    public partial class PSJobNetworkConfiguration
     {
         
-        internal Microsoft.Azure.Batch.CloudServiceConfiguration omObject;
+        internal Microsoft.Azure.Batch.JobNetworkConfiguration omObject;
         
-        public PSCloudServiceConfiguration(string osFamily, string osVersion = null)
+        public PSJobNetworkConfiguration(string subnetId = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.CloudServiceConfiguration(osFamily, osVersion);
+            this.omObject = new Microsoft.Azure.Batch.JobNetworkConfiguration(subnetId);
         }
         
-        internal PSCloudServiceConfiguration(Microsoft.Azure.Batch.CloudServiceConfiguration omObject)
+        internal PSJobNetworkConfiguration(Microsoft.Azure.Batch.JobNetworkConfiguration omObject)
         {
             if ((omObject == null))
             {
@@ -48,27 +48,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string OSFamily
+        public string SubnetId
         {
             get
             {
-                return this.omObject.OSFamily;
-            }
-            set
-            {
-                this.omObject.OSFamily = value;
-            }
-        }
-        
-        public string OSVersion
-        {
-            get
-            {
-                return this.omObject.OSVersion;
-            }
-            set
-            {
-                this.omObject.OSVersion = value;
+                return this.omObject.SubnetId;
             }
         }
     }

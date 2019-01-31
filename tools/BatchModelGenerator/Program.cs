@@ -66,6 +66,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.RemoteLoginSettings", "PSRemoteLoginSettings"},
             {"Microsoft.Azure.Batch.JobConstraints", "PSJobConstraints"},
             {"Microsoft.Azure.Batch.JobExecutionInformation", "PSJobExecutionInformation"},
+            {"Microsoft.Azure.Batch.JobNetworkConfiguration", "PSJobNetworkConfiguration"},
             {"Microsoft.Azure.Batch.JobManagerTask", "PSJobManagerTask"},
             {"Microsoft.Azure.Batch.JobPreparationAndReleaseTaskExecutionInformation", "PSJobPreparationAndReleaseTaskExecutionInformation"},
             {"Microsoft.Azure.Batch.JobPreparationTask", "PSJobPreparationTask"},
@@ -87,7 +88,6 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.NodeAgentSku", "PSNodeAgentSku"},
             {"Microsoft.Azure.Batch.NodeCounts", "PSNodeCounts"},
             {"Microsoft.Azure.Batch.NodeFile", "PSNodeFile"},
-            {"Microsoft.Azure.Batch.OSDisk", "PSOSDisk"},
             {"Microsoft.Azure.Batch.OutputFile", "PSOutputFile"},
             {"Microsoft.Azure.Batch.OutputFileDestination", "PSOutputFileDestination"},
             {"Microsoft.Azure.Batch.OutputFileUploadOptions", "PSOutputFileUploadOptions"},
@@ -123,6 +123,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.UserIdentity", "PSUserIdentity"},
             {"Microsoft.Azure.Batch.VirtualMachineConfiguration", "PSVirtualMachineConfiguration"},
             {"Microsoft.Azure.Batch.WindowsConfiguration", "PSWindowsConfiguration"},
+            {"Microsoft.Azure.Batch.WindowsUserConfiguration", "PSWindowsUserConfiguration"},
         };
 
 
@@ -134,7 +135,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.CloudJobSchedule", new string[] {"CustomBehaviors"}},
             {"Microsoft.Azure.Batch.CloudPool", new string[] {"CustomBehaviors"}},
             // Hide file staging for now - users can use storage cmdlets to upload files and generate SAS tokens
-            {"Microsoft.Azure.Batch.CloudTask", new string[] {"CustomBehaviors","FilesToStage"}},
+            {"Microsoft.Azure.Batch.CloudTask", new string[] {"CustomBehaviors", "FilesToStage"}},
             {"Microsoft.Azure.Batch.ComputeNode", new string[] {"CustomBehaviors"}},
             {"Microsoft.Azure.Batch.ComputeNodeUser", new string[] {"CustomBehaviors"}},
             {"Microsoft.Azure.Batch.NodeFile", new string[] {"CustomBehaviors"}},

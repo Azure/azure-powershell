@@ -14,7 +14,7 @@ Deletes an application from a Batch account.
 ## SYNTAX
 
 ```
-Remove-AzBatchApplication [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationId] <String>
+Remove-AzBatchApplication [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ The **Remove-AzBatchApplication** cmdlet deletes an application from an Azure Ba
 
 ### Example 1: Delete an application from a Batch account
 ```
-PS C:\>Remove-AzBatchApplication -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationId "Litware"
+PS C:\>Remove-AzBatchApplication -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationName "Litware"
 ```
 
 This command deletes the Litware application from the ContosoBatch account.
@@ -48,8 +48,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ApplicationId
-Specifies the ID of the application.
+### -ApplicationName
+Specifies the name of the application.
 
 ```yaml
 Type: System.String

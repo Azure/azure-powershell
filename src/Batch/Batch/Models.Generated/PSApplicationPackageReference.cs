@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string ApplicationId
+        public string ApplicationName
         {
             get
             {

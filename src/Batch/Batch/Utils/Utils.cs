@@ -155,18 +155,13 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                         return envSetting;
                     });
 
-                jobManager.omObject.ResourceFiles = CreateSyncedList(jobManager.ResourceFiles,
-                    (r) =>
-                    {
-                        ResourceFile resourceFile = new ResourceFile(r.BlobSource, r.FilePath);
-                        return resourceFile;
-                    });
+                jobManager.omObject.ResourceFiles = CreateSyncedList(jobManager.ResourceFiles, ConvertResourceFile);
                 jobManager.omObject.ApplicationPackageReferences = CreateSyncedList(jobManager.ApplicationPackageReferences,
                     a =>
                     {
                         ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference
                         {
-                            ApplicationId = a.ApplicationId,
+                            ApplicationId = a.ApplicationName,
                             Version = a.Version
                         };
                         return applicationPackageReference;
@@ -188,12 +183,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                         return envSetting;
                     });
 
-                jobPrepTask.omObject.ResourceFiles = CreateSyncedList(jobPrepTask.ResourceFiles,
-                    (r) =>
-                    {
-                        ResourceFile resourceFile = new ResourceFile(r.BlobSource, r.FilePath);
-                        return resourceFile;
-                    });
+                jobPrepTask.omObject.ResourceFiles = CreateSyncedList(jobPrepTask.ResourceFiles, ConvertResourceFile);
             }
         }
 
@@ -211,12 +201,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                         return envSetting;
                     });
 
-                jobReleaseTask.omObject.ResourceFiles = CreateSyncedList(jobReleaseTask.ResourceFiles,
-                    (r) =>
-                    {
-                        ResourceFile resourceFile = new ResourceFile(r.BlobSource, r.FilePath);
-                        return resourceFile;
-                    });
+                jobReleaseTask.omObject.ResourceFiles = CreateSyncedList(jobReleaseTask.ResourceFiles, ConvertResourceFile);
             }
         }
 
@@ -273,7 +258,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                     {
                         return new ApplicationPackageReference()
                         {
-                            ApplicationId = apr.ApplicationId,
+                            ApplicationId = apr.ApplicationName,
                             Version = apr.Version
                         };
                     });
@@ -309,12 +294,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                         return envSetting;
                     });
 
-                task.omObject.ResourceFiles = CreateSyncedList(task.ResourceFiles,
-                    (r) =>
-                    {
-                        ResourceFile resourceFile = new ResourceFile(r.BlobSource, r.FilePath);
-                        return resourceFile;
-                    });
+                task.omObject.ResourceFiles = CreateSyncedList(task.ResourceFiles, ConvertResourceFile);
 
                 MultiInstanceSettingsSyncCollections(task.MultiInstanceSettings);
             }
@@ -334,12 +314,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                         return envSetting;
                     });
 
-                startTask.omObject.ResourceFiles = CreateSyncedList(startTask.ResourceFiles,
-                    (r) =>
-                    {
-                        ResourceFile resourceFile = new ResourceFile(r.BlobSource, r.FilePath);
-                        return resourceFile;
-                    });
+                startTask.omObject.ResourceFiles = CreateSyncedList(startTask.ResourceFiles, ConvertResourceFile);
             }
         }
 
@@ -350,12 +325,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (multiInstanceSettings != null)
             {
-                multiInstanceSettings.omObject.CommonResourceFiles = CreateSyncedList(multiInstanceSettings.CommonResourceFiles,
-                    (r) =>
-                    {
-                        ResourceFile resourceFile = new ResourceFile(r.BlobSource, r.FilePath);
-                        return resourceFile;
-                    });
+                multiInstanceSettings.omObject.CommonResourceFiles = CreateSyncedList(multiInstanceSettings.CommonResourceFiles, ConvertResourceFile);
             }
         }
 
@@ -404,7 +374,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference()
             {
-                ApplicationId = psApr.ApplicationId,
+                ApplicationId = psApr.ApplicationName,
                 Version = psApr.Version
             };
             return applicationPackageReference;
@@ -427,6 +397,37 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                         ExitCodeMapping exitCodeMapping = new ExitCodeMapping(e.Code, e.omObject.ExitOptions);
                         return exitCodeMapping;
                     });
+            }
+        }
+
+        internal static ResourceFile ConvertResourceFile(PSResourceFile psResourceFile)
+        {
+            if (!string.IsNullOrEmpty(psResourceFile.AutoStorageContainerName))
+            {
+                return ResourceFile.FromAutoStorageContainer(
+                    psResourceFile.AutoStorageContainerName,
+                    filePath: psResourceFile.FilePath,
+                    blobPrefix: psResourceFile.BlobPrefix,
+                    fileMode: psResourceFile.FileMode);
+            }
+            else if(!string.IsNullOrEmpty(psResourceFile.StorageContainerUrl))
+            {
+                return ResourceFile.FromStorageContainerUrl(
+                    psResourceFile.StorageContainerUrl,
+                    filePath: psResourceFile.FilePath,
+                    blobPrefix: psResourceFile.BlobPrefix,
+                    fileMode: psResourceFile.FileMode);
+            }
+            else if(!string.IsNullOrEmpty(psResourceFile.HttpUrl))
+            {
+                return ResourceFile.FromUrl(
+                   psResourceFile.HttpUrl,
+                   filePath: psResourceFile.FilePath,
+                   fileMode: psResourceFile.FileMode);
+            }
+            else
+            {
+                throw new ArgumentException($"ResourceFile missing expected fields");
             }
         }
     }
