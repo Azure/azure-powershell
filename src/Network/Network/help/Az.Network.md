@@ -81,7 +81,7 @@ Adds a backend address pool configuration to a load balancer.
 Adds a front-end IP configuration to a load balancer.
 
 ### [Add-AzLoadBalancerInboundNatPoolConfig](Add-AzLoadBalancerInboundNatPoolConfig.md)
-
+Adds an inbound NAT pool to a load balancer.
 
 ### [Add-AzLoadBalancerInboundNatRuleConfig](Add-AzLoadBalancerInboundNatRuleConfig.md)
 Adds an inbound NAT rule configuration to a load balancer.
@@ -303,7 +303,7 @@ Gets a backend address pool configuration for a load balancer.
 Gets a front-end IP configuration in a load balancer.
 
 ### [Get-AzLoadBalancerInboundNatPoolConfig](Get-AzLoadBalancerInboundNatPoolConfig.md)
-
+Gets one or more inbound NAT pool configurations from a load balancer.
 
 ### [Get-AzLoadBalancerInboundNatRuleConfig](Get-AzLoadBalancerInboundNatRuleConfig.md)
 Gets an inbound NAT rule configuration for a load balancer.
@@ -636,7 +636,7 @@ Creates a backend address pool configuration for a load balancer.
 Creates a front-end IP configuration for a load balancer.
 
 ### [New-AzLoadBalancerInboundNatPoolConfig](New-AzLoadBalancerInboundNatPoolConfig.md)
-
+Creates an inbound NAT pool configuration for a load balancer.
 
 ### [New-AzLoadBalancerInboundNatRuleConfig](New-AzLoadBalancerInboundNatRuleConfig.md)
 Creates an inbound NAT rule configuration for a load balancer.
@@ -878,7 +878,7 @@ Removes a backend address pool configuration from a load balancer.
 Removes a front-end IP configuration from a load balancer.
 
 ### [Remove-AzLoadBalancerInboundNatPoolConfig](Remove-AzLoadBalancerInboundNatPoolConfig.md)
-
+Removes an inbound NAT pool configuration from a load balancer.
 
 ### [Remove-AzLoadBalancerInboundNatRuleConfig](Remove-AzLoadBalancerInboundNatRuleConfig.md)
 Removes an inbound NAT rule configuration from a load balancer.
@@ -1100,7 +1100,7 @@ Sets the goal state for a load balancer.
 Sets the goal state for a front-end IP configuration in a load balancer.
 
 ### [Set-AzLoadBalancerInboundNatPoolConfig](Set-AzLoadBalancerInboundNatPoolConfig.md)
-
+Sets an inbound NAT pool configuration for a load balancer.
 
 ### [Set-AzLoadBalancerInboundNatRuleConfig](Set-AzLoadBalancerInboundNatRuleConfig.md)
 Sets an inbound NAT rule configuration for a load balancer.
@@ -1236,4 +1236,3 @@ Update-AzVpnGateway updates a scalable VPN Gateway to the appropriate goal state
 
 ### [Update-AzVpnSite](Update-AzVpnSite.md)
 Updates a VpnSite representing a customer branch to an intended goal state.
-
