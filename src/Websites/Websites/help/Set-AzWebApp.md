@@ -40,7 +40,7 @@ The **Set-AzWebApp** cmdlet sets an Azure Web App.
 
 ### Example 1
 ```
-PS C:\> Set-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -AppServicePlan $aspResourceId
+PS C:\> Set-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -AppServicePlan "ContosoPlan"
 ```
 
 This command changes the appservice plan associated with the Web App ContosoWebApp associated with the resource group Default-Web-WestUS. Use the link to learm more about changing the appservice plan and constraints associated with it.
