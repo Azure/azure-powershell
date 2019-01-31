@@ -28,6 +28,9 @@ using PublicStorage = Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit.Abstractions;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.EventHub;
+using Microsoft.Azure.Management.OperationalInsights;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -93,6 +96,21 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         protected SqlManagementClient GetSqlClient(MockContext context)
         {
             return context.GetServiceClient<SqlManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected IMonitorManagementClient GetMonitorManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected IEventHubManagementClient GetEventHubManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<EventHubManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected IOperationalInsightsManagementClient GetOperationalInsightsManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<OperationalInsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected ResourceManagementClient GetResourcesClient(MockContext context)
