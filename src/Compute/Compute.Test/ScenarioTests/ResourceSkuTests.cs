@@ -12,27 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class ResourceSkuTests
+    public class ResourceSkuTests : ComputeTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
         public ResourceSkuTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip="Fails on Linux/macOS. Needs investigation.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourceSku()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-GetResourceSku");
+            TestRunner.RunTestScript("Test-GetResourceSku");
         }
     }
 }
