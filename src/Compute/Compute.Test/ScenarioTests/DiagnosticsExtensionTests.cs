@@ -22,56 +22,53 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class DiagnosticsExtensionTests
+    public class DiagnosticsExtensionTests : ComputeTestRunner
     {
-        private static string configDirPath = Path.Combine(Path.GetDirectoryName(Uri.UnescapeDataString(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath)), "ConfigFiles");
+        private static readonly string configDirPath = Path.Combine(Path.GetDirectoryName(Uri.UnescapeDataString(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath)), "ConfigFiles");
 
         private static string GetConfigFilePath(string filename)
         {
             return Path.Combine(configDirPath, filename);
         }
 
-        XunitTracingInterceptor _logger;
-
         public DiagnosticsExtensionTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDiagnosticsExtensionBasic()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-DiagnosticsExtensionBasic");
+            TestRunner.RunTestScript("Test-DiagnosticsExtensionBasic");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDiagnosticsExtensionSepcifyStorageAccountName()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-DiagnosticsExtensionSepcifyStorageAccountName");
+            TestRunner.RunTestScript("Test-DiagnosticsExtensionSepcifyStorageAccountName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDiagnosticsExtensionCantListSepcifyStorageAccountKey()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-DiagnosticsExtensionCantListSepcifyStorageAccountKey");
+            TestRunner.RunTestScript("Test-DiagnosticsExtensionCantListSepcifyStorageAccountKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDiagnosticsExtensionSupportJsonConfig()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-DiagnosticsExtensionSupportJsonConfig");
+            TestRunner.RunTestScript("Test-DiagnosticsExtensionSupportJsonConfig");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVmssDiagnosticsExtension()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VmssDiagnosticsExtension");
+            TestRunner.RunTestScript("Test-VmssDiagnosticsExtension");
         }
 
         [Fact]

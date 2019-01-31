@@ -32,11 +32,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
     public class SqlThreatDetectionAdapter
     {
         /// <summary>
-        /// Gets or sets the Azure subscription
-        /// </summary>
-        private IAzureSubscription Subscription { get; set; }
-
-        /// <summary>
         /// The Threat Detection endpoints communicator used by this adapter
         /// </summary>
         private ThreatDetectionEndpointsCommunicator ThreatDetectionCommunicator { get; set; }
@@ -59,7 +54,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         public SqlThreatDetectionAdapter(IAzureContext context)
         {
             Context = context;
-            Subscription = context.Subscription;
             ThreatDetectionCommunicator = new ThreatDetectionEndpointsCommunicator(Context);
             AzureCommunicator = new AzureEndpointsCommunicator(Context);
             AuditingAdapter = new SqlAuditAdapter(context);
