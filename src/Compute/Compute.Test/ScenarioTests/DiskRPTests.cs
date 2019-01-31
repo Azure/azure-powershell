@@ -12,34 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class DiskRPTests
+    public class DiskRPTests : ComputeTestRunner
     {
-        XunitTracingInterceptor _logger;
-
         public DiskRPTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisk()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-Disk");
+            TestRunner.RunTestScript("Test-Disk");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSnapshot()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-Snapshot");
+            TestRunner.RunTestScript("Test-Snapshot");
         }
     }
 }
