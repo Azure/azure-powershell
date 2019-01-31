@@ -47,8 +47,7 @@ namespace Microsoft.Azure.Commands.TestFx
                 return _mockContext.GetServiceClient<TClient>();
             }
 
-            var graphClient = _mockContext.GetGraphServiceClient<GraphRbacManagementClient>();
-            graphClient.TenantID = context.Tenant.Id;
+            var graphClient = _mockContext.GetGraphServiceClient<TClient>();
             return graphClient as TClient;
         }
 
@@ -99,7 +98,7 @@ namespace Microsoft.Azure.Commands.TestFx
         #region UserAgent
 
         public HashSet<ProductInfoHeaderValue> UniqueUserAgents { get; set; } = new HashSet<ProductInfoHeaderValue>();
-        
+
         public void AddUserAgent(string productName, string productVersion)
         {
             UniqueUserAgents.Add(new ProductInfoHeaderValue(productName, productVersion));
