@@ -22,8 +22,5 @@
 * ETag of Database is depricated.
 * Cluster has new Properties: Uri, DataIngestionUri and Capacity.
 
-
-
-
 ## Version 0.1.0
 * Initial version of the Kusto PowerShell interface
