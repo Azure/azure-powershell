@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                 memoryCache = new AuthenticationStoreTokenCache(new AzureTokenCache());
                 if (diskCache != null)
                 {
-                    ((TokenCache)memoryCache.GetUserCache()).Deserialize(((TokenCache)diskCache.GetUserCache()).Serialize());
+                    memoryCache.CacheData = diskCache.CacheData;
                 }
 
                 session.TokenCache = memoryCache;

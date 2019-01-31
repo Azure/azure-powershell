@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             var cache = new AuthenticationStoreTokenCache(new TokenCache());
             if (profile.HasTokenCache())
             {
-                ((TokenCache)cache.GetUserCache()).Deserialize(profile.GetTokenCache().CacheData);
+                cache.CacheData = profile.GetTokenCache().CacheData;
             }
 
             AzureSession.Instance.TokenCache = cache;

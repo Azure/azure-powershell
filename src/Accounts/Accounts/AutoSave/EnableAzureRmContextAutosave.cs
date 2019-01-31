@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                         diskCache = new ProtectedFileTokenCache(tokenPath, store);
                         if (memoryCache != null)
                         {
-                            ((TokenCache)diskCache.GetUserCache()).Deserialize(((TokenCache)memoryCache.GetUserCache()).Serialize());
+                            diskCache.CacheData = memoryCache.CacheData;
                         }
 
                         session.TokenCache = diskCache;

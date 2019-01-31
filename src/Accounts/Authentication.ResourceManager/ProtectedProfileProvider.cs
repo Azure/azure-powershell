@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             session.TokenCache = cache;
             if (profile.HasTokenCache())
             {
-                ((TokenCache)cache.GetUserCache()).Deserialize(profile.GetTokenCache().CacheData);
+                cache.CacheData = profile.GetTokenCache().CacheData;
             }
 
             profile.SetTokenCache(cache);

@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 result = context.AcquireTokenWithDeviceCodeAsync(scopes, deviceCodeResult =>
                 {
-                    // promptAction(deviceCodeResult?.Message);
+                    Console.WriteLine(deviceCodeResult?.Message);
                     return Task.FromResult(0);
                 }).ConfigureAwait(false).GetAwaiter().GetResult();
             }
