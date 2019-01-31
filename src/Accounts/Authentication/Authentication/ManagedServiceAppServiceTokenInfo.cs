@@ -18,25 +18,16 @@ using Newtonsoft.Json;
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     /// <summary>
-    /// Wire representation of MSI token
+    /// Wire representation of MSI token WebApps ad hoc
     /// </summary>
-    public class ManagedServiceTokenInfo : ICacheable
+    public class ManagedServiceAppServiceTokenInfo : ICacheable
     {
         public static readonly TimeSpan TimeoutThreshold = TimeSpan.FromMinutes(4);
         [JsonProperty(PropertyName ="access_token")]
         public string AccessToken { get; set; }
 
-        [JsonProperty(PropertyName = "refresh_token")]
-        public string RefreshToken { get; set; }
-
-        [JsonProperty(PropertyName = "expires_in")]
-        public int ExpiresIn { get; set; }
-
         [JsonProperty(PropertyName = "expires_on")]
-        public int ExpiresOn { get; set; }
-
-        [JsonProperty(PropertyName = "not_before")]
-        public int NotBefore { get; set; }
+        public DateTimeOffset ExpiresOn { get; set; }
 
         [JsonProperty(PropertyName = "resource")]
         public string Resource { get; set; }
@@ -44,12 +35,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         [JsonProperty(PropertyName = "token_type")]
         public string TokenType { get; set; }
 
-        [JsonIgnore]
-        public DateTimeOffset CreationDate { get; } = DateTimeOffset.Now;
-
         public override string ToString()
         {
-            return $"(AccessToken: {AccessToken}, ExpiresIn: {ExpiresIn}, ExpiresOn: {ExpiresOn}, Resource:{Resource})";
+            return $"(AccessToken: {AccessToken}, ExpiresOn: {ExpiresOn}, Resource:{Resource})";
         }
 
         public bool ShouldCache()
@@ -59,7 +47,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public bool IsExpired()
         {
-            return DateTimeOffset.Now - CreationDate > (TimeSpan.FromSeconds(ExpiresIn) - TimeoutThreshold);
+            return DateTimeOffset.Now  > ExpiresOn - TimeoutThreshold;
         }
     }
 }
