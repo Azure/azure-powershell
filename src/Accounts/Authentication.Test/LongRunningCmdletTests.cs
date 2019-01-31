@@ -146,6 +146,20 @@ namespace Common.Authentication.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanHandleConfirmSetToFalse()
+        {
+            Mock<ICommandRuntime> mockRuntime;
+            var cmdlet = SetupCmdlet(true, false, out mockRuntime);
+            cmdlet.MyInvocation.BoundParameters["Confirm"] = new SwitchParameter(false);
+            var job = cmdlet.ExecuteAsJob("Test Job") as AzureLongRunningJob<AzureStreamTestCmdlet>;
+            WaitForCompletion(job, j =>
+            {
+                ValidateCompletedCmdlet(job);
+            });
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanHandleShouldProcessExceptionForWhatIf()
         {
             Mock<ICommandRuntime> mockRuntime;
