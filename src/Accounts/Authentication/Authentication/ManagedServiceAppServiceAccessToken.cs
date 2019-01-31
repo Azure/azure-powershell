@@ -13,23 +13,29 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public class ManagedServiceAccessToken : ManagedServiceAccessTokenBase<ManagedServiceTokenInfo>
+    public class ManagedServiceAppServiceAccessToken : ManagedServiceAccessTokenBase<ManagedServiceAppServiceTokenInfo>
     {
-        public ManagedServiceAccessToken(IAzureAccount account, IAzureEnvironment environment, string resourceId, string tenant = "Common")
-            : base(account, environment, resourceId, tenant)
+        public ManagedServiceAppServiceAccessToken(IAzureAccount account, IAzureEnvironment environment, string tenant = "Common")
+            : base(account, environment, @"https://management.azure.com/", tenant)
         {
         }
 
-        protected override void SetToken(ManagedServiceTokenInfo info)
+        protected override IEnumerable<string> BuildTokenUri(string baseUri, IAzureAccount account, IdentityType identityType,
+            string resourceId)
         {
-            if (info != null)
+            yield return $"{baseUri}?resource={resourceId}&api-version=2017-09-01";;
+        }
+
+        protected override void SetToken(ManagedServiceAppServiceTokenInfo infoWebApps)
+        {
+            if (infoWebApps != null)
             {
-                Expiration = DateTimeOffset.Now + TimeSpan.FromSeconds(info.ExpiresIn);
-                accessToken = info.AccessToken;
+                Expiration = infoWebApps.ExpiresOn;
+                accessToken = infoWebApps.AccessToken;
             }
         }
     }
