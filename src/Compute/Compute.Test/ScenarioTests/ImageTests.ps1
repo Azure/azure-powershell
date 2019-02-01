@@ -119,8 +119,48 @@ function Test-Image
         Assert-AreEqual $dataDiskVhdUri2 $createdImage.StorageProfile.DataDisks[1].BlobUri;
 
         # List and Delete Image
+		$wildcardRgQuery = ($rgname -replace ".$") + "*"
+		$wildcardNameQuery = ($imageName -replace ".$") + "*"
+
+		$images = Get-AzImage;
+        Assert-True { $images.Count -ge 1 };
+
+		$images = Get-AzImage -ResourceGroupName $wildcardRgQuery;
+        Assert-AreEqual 1 $images.Count;
+		Assert-AreEqual $rgname $images[0].ResourceGroupName;
+
         $images = Get-AzImage -ResourceGroupName $rgname;
         Assert-AreEqual 1 $images.Count;
+		Assert-AreEqual $rgname $images[0].ResourceGroupName;
+
+		$images = Get-AzImage -Name $wildcardNameQuery;
+        Assert-AreEqual 1 $images.Count;
+		Assert-AreEqual $rgname $images[0].ResourceGroupName;
+		Assert-AreEqual $imageName $images[0].Name;
+
+        $images = Get-AzImage -Name $imageName;
+        Assert-AreEqual 1 $images.Count;
+		Assert-AreEqual $rgname $images[0].ResourceGroupName;
+		Assert-AreEqual $imageName $images[0].Name;
+
+		$images = Get-AzImage -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery;
+        Assert-AreEqual 1 $images.Count;
+		Assert-AreEqual $rgname $images[0].ResourceGroupName;
+		Assert-AreEqual $imageName $images[0].Name;
+
+        $images = Get-AzImage -ResourceGroupName $rgname -Name $wildcardNameQuery;
+        Assert-AreEqual 1 $images.Count;
+		Assert-AreEqual $rgname $images[0].ResourceGroupName;
+		Assert-AreEqual $imageName $images[0].Name;
+
+		$images = Get-AzImage -ResourceGroupName $wildcardRgQuery -Name $imageName;
+        Assert-AreEqual 1 $images.Count;
+		Assert-AreEqual $rgname $images[0].ResourceGroupName;
+		Assert-AreEqual $imageName $images[0].Name;
+
+        $images = Get-AzImage -ResourceGroupName $rgname -Name $imageName;
+		Assert-AreEqual $rgname $images.ResourceGroupName;
+		Assert-AreEqual $imageName $images.Name;
 
         $job = Remove-AzImage -ResourceGroupName $rgname -ImageName $imageName -Force -AsJob;
         $result = $job | Wait-Job;

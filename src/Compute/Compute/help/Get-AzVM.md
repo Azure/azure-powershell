@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 6250EC11-79CF-428B-A72F-9BD72C1751F0
@@ -13,15 +13,10 @@ Gets the properties of a virtual machine.
 
 ## SYNTAX
 
-### ListAllVirtualMachinesParamSet (Default)
+### DefaultParamSet (Default)
 ```
-Get-AzVM [-Status] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ListVirtualMachineInResourceGroupParamSet
-```
-Get-AzVM [-ResourceGroupName] <String> [-Status] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzVM [[-ResourceGroupName] <String>] [[-Name] <String>] [-Status]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetVirtualMachineInResourceGroupParamSet
@@ -141,6 +136,18 @@ Specifies the name of the virtual machine to get.
 
 ```yaml
 Type: System.String
+Parameter Sets: DefaultParamSet
+Aliases: ResourceName, VMName
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
 Parameter Sets: GetVirtualMachineInResourceGroupParamSet
 Aliases: ResourceName, VMName
 
@@ -171,7 +178,19 @@ Specifies the name of a resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListVirtualMachineInResourceGroupParamSet, GetVirtualMachineInResourceGroupParamSet
+Parameter Sets: DefaultParamSet
+Aliases:
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: GetVirtualMachineInResourceGroupParamSet
 Aliases:
 
 Required: True
