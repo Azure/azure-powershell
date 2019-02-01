@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="protectedItemName">Name of the item</param>
         /// <param name="request">Protected item create or update request</param>
         /// <returns>Job created in the service for this operation</returns>
-        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> CreateOrUpdateProtectedItem(
+        public RestAzureNS.AzureOperationResponse CreateOrUpdateProtectedItem(
             string containerName,
             string protectedItemName,
             ProtectedItemResource request,
@@ -196,44 +196,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                  AzureFabricName,
                  protectedItemName,
                  request,
-                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
-        }
-
-        /// <summary>
-        /// Delete protection intent
-        /// </summary>
-        /// <param name="containerName">Name of the container which this item belongs to</param>
-        /// <param name="protectedItemName">Name of the item</param>
-        /// <returns>Job created in the service for this operation</returns>
-        public RestAzureNS.AzureOperationResponse DeleteProtectionIntent(
-            string protectedItemName,
-            string vaultName = null,
-            string resourceGroupName = null)
-        {
-            return BmsAdapter.Client.ProtectionIntent.DeleteWithHttpMessagesAsync(
-                 vaultName ?? BmsAdapter.GetResourceName(),
-                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                 AzureFabricName,
-                 protectedItemName,
-                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
-        }
-
-        /// <summary>
-        /// Delete protection intent
-        /// </summary>
-        /// <param name="containerName">Name of the container which this item belongs to</param>
-        /// <param name="protectedItemName">Name of the item</param>
-        /// <returns>Job created in the service for this operation</returns>
-        public RestAzureNS.AzureOperationResponse<ProtectionIntentResource> GetProtectionIntent(
-            string protectedItemName,
-            string vaultName = null,
-            string resourceGroupName = null)
-        {
-            return BmsAdapter.Client.ProtectionIntent.GetWithHttpMessagesAsync(
-                 vaultName ?? BmsAdapter.GetResourceName(),
-                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                 AzureFabricName,
-                 protectedItemName,
                  cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
     }

@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 Boolean isProtected = String.Equals(backupStatus.ProtectionStatus, "Protected", StringComparison.OrdinalIgnoreCase);
 
                 WriteObject(new ResourceBackupStatus(
-                                isProtected == true ? backupStatus.ContainerName : null,
+                                isProtected == true ? backupStatus.VaultId : null,
                                 isProtected));
             });
         }

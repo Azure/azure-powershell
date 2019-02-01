@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ServiceClientAdapter = serviceClientAdapter;
         }
 
-        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableProtection()
+        public RestAzureNS.AzureOperationResponse EnableProtection()
         {
             throw new NotImplementedException();
         }
 
-        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> DisableProtection()
+        public RestAzureNS.AzureOperationResponse DisableProtection()
         {
             throw new NotImplementedException();
         }
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public List<PointInTimeRange> GetLogChains()
+        public List<PointInTimeBase> GetLogChains()
         {
             throw new NotImplementedException();
         }
