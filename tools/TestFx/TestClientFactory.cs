@@ -18,12 +18,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
-using Microsoft.Rest;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
@@ -42,13 +39,9 @@ namespace Microsoft.Azure.Commands.TestFx
 
         public TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Rest.ServiceClient<TClient>
         {
-            if (typeof(TClient).Name != typeof(GraphRbacManagementClient).Name)
-            {
-                return _mockContext.GetServiceClient<TClient>();
-            }
-
-            var graphClient = _mockContext.GetGraphServiceClient<TClient>();
-            return graphClient as TClient;
+            return string.Equals(endpoint, AzureEnvironment.Endpoint.Graph, StringComparison.OrdinalIgnoreCase) ?
+                _mockContext.GetGraphServiceClient<TClient>() :
+                _mockContext.GetServiceClient<TClient>();
         }
 
         public TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Rest.ServiceClient<TClient>
