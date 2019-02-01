@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ActiveDirectoryAccessToken is not available. Please either use the ObjectId parameter set or authenticate with an ActiveDirectoryAccessToken..
+        ///   Looks up a localized string similar to The current credentials do not have access to Azure Active Directory. Please either use an ObjectId to refer to ActiveDirectory objects, or log in using credentials that have access to Azure Active Directory..
         /// </summary>
         internal static string ActiveDirectoryClientNull {
             get {
