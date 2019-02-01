@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
@@ -37,6 +38,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
         private const string SubscriptionIdKey = "SubscriptionId";
+
+        public string UserDomain { get; private set; }
 
         private readonly EnvironmentSetupHelper _helper;
 
@@ -123,10 +126,51 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
             var subClient = context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
             var storageSyncClient = context.GetServiceClient<StorageSyncManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
             var storageClient = context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-            var rbacClient = context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            //var rbacClient = context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            GraphRbacManagementClient rbacClient = GetGraphClient(context);
             var authClient = context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-            // public StorageManagementClient StorageClient { get; private set; }
             _helper.SetupManagementClients(rmClient, subClient, storageSyncClient, storageClient, rbacClient, authClient);
+        }
+
+        private GraphRbacManagementClient GetGraphClient(MockContext context)
+        {
+            var environment = TestEnvironmentFactory.GetTestEnvironment();
+            string tenantId = null;
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                tenantId = environment.Tenant;
+                UserDomain = String.IsNullOrEmpty(environment.UserName) ? String.Empty : environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
+
+                HttpMockServer.Variables[TenantIdKey] = tenantId;
+                HttpMockServer.Variables[DomainKey] = UserDomain;
+            }
+            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
+                {
+                    tenantId = HttpMockServer.Variables[TenantIdKey];
+                }
+                if (HttpMockServer.Variables.ContainsKey(DomainKey))
+                {
+                    UserDomain = HttpMockServer.Variables[DomainKey];
+                }
+                if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
+                {
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.Id = HttpMockServer.Variables[SubscriptionIdKey];
+                }
+            }
+
+            var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
+            client.TenantID = tenantId;
+            if (AzureRmProfileProvider.Instance != null &&
+                AzureRmProfileProvider.Instance.Profile != null &&
+                AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
+                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant != null)
+            {
+                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = client.TenantID;
+            }
+            return client;
         }
     }
 }

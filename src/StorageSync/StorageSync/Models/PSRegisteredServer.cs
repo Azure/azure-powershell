@@ -54,5 +54,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         public string FriendlyName { get; set; }
 
         public string ManagementEndpointUri { get; set; }
+
+        public string MonitoringConfiguration { get; set; }
+
     }
 }

@@ -32,29 +32,23 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             string resourceGroupName,
             IList<KeyValuePair<string, string>> resources = null)
         {
-            //resources is allowed to be null
-            if (resources != null && resources.Count > 0)
+            if (string.IsNullOrEmpty(resourceGroupName))
             {
-                if(string.IsNullOrEmpty(resourceGroupName))
-                {
-                    throw new ArgumentException(nameof(resourceGroupName));
-                }
+                throw new ArgumentException(nameof(resourceGroupName));
             }
 
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
+
             sb.Append($"/{StorageSyncConstants.SubscriptionTypeName}/{subscriptionId}");
 
-            if (!string.IsNullOrEmpty(resourceGroupName))
-            {
-                sb.Append($"/{StorageSyncConstants.ResourceGroupTypeName}/{resourceGroupName}");
+            sb.Append($"/{StorageSyncConstants.ResourceGroupTypeName}/{resourceGroupName}");
 
-                if (resources != null && resources.Count > 0)
+            if (resources?.Count > 0)
+            {
+                sb.Append($"/{StorageSyncConstants.ProvidersTypeName}/{StorageSyncConstants.ResourceProvider}");
+                foreach (var resourcePair in resources)
                 {
-                    sb.Append($"/{StorageSyncConstants.ProvidersTypeName}/{StorageSyncConstants.ResourceProvider}");
-                    foreach (var resourcePair in resources)
-                    {
-                        sb.Append($"/{resourcePair.Key}/{resourcePair.Value}");
-                    }
+                    sb.Append($"/{resourcePair.Key}/{resourcePair.Value}");
                 }
             }
 

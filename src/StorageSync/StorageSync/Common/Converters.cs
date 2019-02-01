@@ -164,7 +164,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 source.ResourceLocation,
                 source.ServiceLocation,
                 source.FriendlyName,
-                source.ManagementEndpointUri);
+                source.ManagementEndpointUri,
+                source.MonitoringConfiguration);
         }
 
         protected override PSRegisteredServer Transform(StorageSyncModels.RegisteredServer source)
@@ -194,7 +195,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 ServerOSVersion = source.ServerOSVersion,
                 ServerRole = source.ServerRole,
                 ServiceLocation = source.ServiceLocation,
-                StorageSyncServiceUid = source.StorageSyncServiceUid?.Trim('"')
+                StorageSyncServiceUid = source.StorageSyncServiceUid?.Trim('"'),
+                MonitoringConfiguration = source.MonitoringConfiguration
             };
         }
     }
