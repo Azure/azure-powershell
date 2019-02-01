@@ -213,6 +213,50 @@ function Test-VirtualMachine
         Assert-True{$a.Contains("NIC");}
         Assert-AreNotEqual $vms $null;
 
+		$wildcardRgQuery = ($rgname -replace ".$") + "*"
+		$wildcardNameQuery = ($vmname -replace ".$") + "*"
+
+		$vms = Get-AzVM;
+		$a = $vms | Out-String;
+		Assert-NotNull $a
+        Assert-AreNotEqual $vms $null;
+
+		$vms = Get-AzVM -ResourceGroupName $wildcardRgQuery;
+		$a = $vms | Out-String;
+		Assert-NotNull $a
+        Assert-True{$a.Contains("NIC");}
+        Assert-AreNotEqual $vms $null;
+
+		$vms = Get-AzVM -Name $vmname;
+		$a = $vms | Out-String;
+		Assert-NotNull $a
+        Assert-True{$a.Contains("NIC");}
+        Assert-AreNotEqual $vms $null;
+
+		$vms = Get-AzVM -Name $wildcardNameQuery;
+		$a = $vms | Out-String;
+		Assert-NotNull $a
+        Assert-True{$a.Contains("NIC");}
+        Assert-AreNotEqual $vms $null;
+
+		$vms = Get-AzVM -ResourceGroupName $wildcardRgQuery -Name $vmname;
+		$a = $vms | Out-String;
+		Assert-NotNull $a
+        Assert-True{$a.Contains("NIC");}
+        Assert-AreNotEqual $vms $null;
+
+		$vms = Get-AzVM -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery;
+		$a = $vms | Out-String;
+		Assert-NotNull $a
+        Assert-True{$a.Contains("NIC");}
+        Assert-AreNotEqual $vms $null;
+
+		$vms = Get-AzVM -ResourceGroupName $rgname -Name $wildcardNameQuery;
+		$a = $vms | Out-String;
+		Assert-NotNull $a
+        Assert-True{$a.Contains("NIC");}
+        Assert-AreNotEqual $vms $null;
+
         Assert-NotNull $vms[0]
         # VM Compact output
         $a = $vms[0] | Format-Custom | Out-String;

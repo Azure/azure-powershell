@@ -66,6 +66,68 @@ function Test-Disk
         Assert-AreEqual "Completed" $result.State;
 
         # Get disk test
+		$wildcardRgQuery = ($rgname -replace ".$") + "*"
+		$wildcardNameQuery = ($diskname -replace ".$") + "*"
+
+		$disk = Get-AzDisk
+        Assert-True { $disk.Count -ge 1 }
+
+		$disk = Get-AzDisk -ResourceGroupName $rgname
+        Assert-AreEqual $null $disk.Zones;
+        Assert-AreEqual 5 $disk.DiskSizeGB;
+        Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
+        Assert-AreEqual Windows $disk.OsType;
+        Assert-AreEqual Empty $disk.CreationData.CreateOption;
+        Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
+
+		$disk = Get-AzDisk -ResourceGroupName $wildcardRgQuery
+        Assert-AreEqual $null $disk.Zones;
+        Assert-AreEqual 5 $disk.DiskSizeGB;
+        Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
+        Assert-AreEqual Windows $disk.OsType;
+        Assert-AreEqual Empty $disk.CreationData.CreateOption;
+        Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
+
+		$disk = Get-AzDisk -Name $diskname
+        Assert-AreEqual $null $disk.Zones;
+        Assert-AreEqual 5 $disk.DiskSizeGB;
+        Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
+        Assert-AreEqual Windows $disk.OsType;
+        Assert-AreEqual Empty $disk.CreationData.CreateOption;
+        Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
+
+		$disk = Get-AzDisk -Name $wildcardNameQuery
+        Assert-AreEqual $null $disk.Zones;
+        Assert-AreEqual 5 $disk.DiskSizeGB;
+        Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
+        Assert-AreEqual Windows $disk.OsType;
+        Assert-AreEqual Empty $disk.CreationData.CreateOption;
+        Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
+
+		$disk = Get-AzDisk -ResourceGroupName $wildcardRgQuery -Name $diskname
+        Assert-AreEqual $null $disk.Zones;
+        Assert-AreEqual 5 $disk.DiskSizeGB;
+        Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
+        Assert-AreEqual Windows $disk.OsType;
+        Assert-AreEqual Empty $disk.CreationData.CreateOption;
+        Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
+
+		$disk = Get-AzDisk -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery
+        Assert-AreEqual $null $disk.Zones;
+        Assert-AreEqual 5 $disk.DiskSizeGB;
+        Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
+        Assert-AreEqual Windows $disk.OsType;
+        Assert-AreEqual Empty $disk.CreationData.CreateOption;
+        Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
+
+		$disk = Get-AzDisk -ResourceGroupName $rgname -Name $wildcardNameQuery
+        Assert-AreEqual $null $disk.Zones;
+        Assert-AreEqual 5 $disk.DiskSizeGB;
+        Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
+        Assert-AreEqual Windows $disk.OsType;
+        Assert-AreEqual Empty $disk.CreationData.CreateOption;
+        Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
+
         $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
         Assert-AreEqual $null $disk.Zones;
         Assert-AreEqual 5 $disk.DiskSizeGB;
@@ -154,6 +216,61 @@ function Test-Snapshot
         Assert-AreEqual "Completed" $result.State;
 
         # Get snapshot test
+		$wildcardRgQuery = ($rgname -replace ".$") + "*"
+		$wildcardNameQuery = ($snapshotname -replace ".$") + "*"
+
+		$snapshot = Get-AzSnapshot
+        Assert-True { $snapshot.Count -ge 1 }
+
+		$snapshot = Get-AzSnapshot -ResourceGroupName $rgname
+        Assert-AreEqual 5 $snapshot.DiskSizeGB;
+        Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
+        Assert-AreEqual Windows $snapshot.OsType;
+        Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
+        Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
+
+		$snapshot = Get-AzSnapshot -ResourceGroupName $wildcardRgQuery
+        Assert-AreEqual 5 $snapshot.DiskSizeGB;
+        Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
+        Assert-AreEqual Windows $snapshot.OsType;
+        Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
+        Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
+
+		$snapshot = Get-AzSnapshot -SnapshotName $snapshotname;
+        Assert-AreEqual 5 $snapshot.DiskSizeGB;
+        Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
+        Assert-AreEqual Windows $snapshot.OsType;
+        Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
+        Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
+
+		$snapshot = Get-AzSnapshot -SnapshotName $wildcardNameQuery;
+        Assert-AreEqual 5 $snapshot.DiskSizeGB;
+        Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
+        Assert-AreEqual Windows $snapshot.OsType;
+        Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
+        Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
+
+		$snapshot = Get-AzSnapshot -ResourceGroupName $wildcardRgQuery -SnapshotName $wildcardNameQuery;
+        Assert-AreEqual 5 $snapshot.DiskSizeGB;
+        Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
+        Assert-AreEqual Windows $snapshot.OsType;
+        Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
+        Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
+
+		$snapshot = Get-AzSnapshot -ResourceGroupName $wildcardRgQuery -SnapshotName $snapshotname;
+        Assert-AreEqual 5 $snapshot.DiskSizeGB;
+        Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
+        Assert-AreEqual Windows $snapshot.OsType;
+        Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
+        Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
+
+		$snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $wildcardNameQuery;
+        Assert-AreEqual 5 $snapshot.DiskSizeGB;
+        Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
+        Assert-AreEqual Windows $snapshot.OsType;
+        Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
+        Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
+
         $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
