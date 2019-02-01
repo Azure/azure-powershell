@@ -13,10 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Management.Automation;
+using SystemNet = System.Net;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -76,6 +78,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     containerName,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName);
+
+                    var operationStatus = TrackingHelpers.GetOperationResult(
+                        unRegisterResponse,
+                        operationId =>
+                            ServiceClientAdapter.GetContainerRefreshOrInquiryOperationResult(
+                                operationId,
+                                vaultName: vaultName,
+                                resourceGroupName: resourceGroupName));
+
+                    //Now wait for the operation to Complete
+                    if (unRegisterResponse.Response.StatusCode
+                            != SystemNet.HttpStatusCode.NoContent)
+                    {
+                        string errorMessage = string.Format(Resources.UnRegisterFailureErrorCode,
+                            unRegisterResponse.Response.StatusCode);
+                        Logger.Instance.WriteDebug(errorMessage);
+                    }
                 }
                 else
                 {

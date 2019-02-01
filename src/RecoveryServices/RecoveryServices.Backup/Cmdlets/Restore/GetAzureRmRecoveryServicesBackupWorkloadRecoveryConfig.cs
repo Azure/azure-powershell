@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
@@ -52,12 +53,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public DateTime PointInTime { get; set; }
 
         /// <summary>
-        /// Protected Item object for which recovery points need to be fetched
+        /// Protectable Item object for which recovery points need to be fetched
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipeline = false, Position = 1,
             HelpMessage = ParamHelpMsgs.RecoveryPointConfig.TargetItem)]
         [ValidateNotNullOrEmpty]
-        public ItemBase TargetItem { get; set; }
+        public ProtectableItemBase TargetItem { get; set; }
 
         /// <summary>
         /// Protected Item object for which recovery points need to be fetched
@@ -91,13 +92,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 AzureWorkloadRecoveryConfig azureWorkloadRecoveryConfig = new AzureWorkloadRecoveryConfig();
                 azureWorkloadRecoveryConfig.SourceResourceId = Item != null ? Item.SourceResourceId : GetResourceId();
-                DateTime currentTime = DateTime.Now.ToUniversalTime();
+                DateTime currentTime = DateTime.Now;
                 TimeSpan timeSpan = DateTime.UtcNow - new DateTime(1970, 1, 1);
                 int offset = (int)timeSpan.TotalSeconds;
-
+                string targetServer = "";
+                string parentName = "";
+                string targetDb = "";
                 if (ParameterSetName == RpParameterSet)
                 {
                     azureWorkloadRecoveryConfig.RecoveryPoint = RecoveryPoint;
+                    Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(RecoveryPoint.Id);
+                    string containerUri = HelperUtils.GetContainerUri(keyValueDict, RecoveryPoint.Id);
+                    targetServer = containerUri.Split(new string[] { ";" }, StringSplitOptions.None)[3];
+                    string itemUri = HelperUtils.GetProtectedItemUri(keyValueDict, RecoveryPoint.Id);
+                    parentName = itemUri.Split(new string[] { ";" }, StringSplitOptions.None)[1];
+                    targetDb = itemUri.Split(new string[] { ";" }, StringSplitOptions.None)[2];
                 }
                 else
                 {
@@ -106,9 +115,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 if (OriginalWorkloadRestore.IsPresent)
                 {
                     azureWorkloadRecoveryConfig.RestoreRequestType = "Original WL Restore";
-                    azureWorkloadRecoveryConfig.TargetServer = null;
-                    azureWorkloadRecoveryConfig.TargetInstance = null;
-                    azureWorkloadRecoveryConfig.RestoredDBName = null;
+                    azureWorkloadRecoveryConfig.TargetServer = Item != null ?
+                    ((AzureWorkloadSQLDatabaseProtectedItem)Item).ServerName : targetServer;
+                    azureWorkloadRecoveryConfig.TargetInstance = Item != null ?
+                    ((AzureWorkloadSQLDatabaseProtectedItem)Item).ParentName : parentName;
+                    azureWorkloadRecoveryConfig.RestoredDBName = Item != null ?
+                    ((AzureWorkloadSQLDatabaseProtectedItem)Item).FriendlyName : targetDb;
                     azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";
                     azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
                     if (RecoveryPoint == null)
@@ -120,14 +132,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         };
                         azureWorkloadRecoveryConfig.RecoveryPoint = azureWorkloadRecoveryPoint;
                     }
+                    azureWorkloadRecoveryConfig.ContainerId = Item != null ?
+                    GetContainerId(Item.Id) : GetContainerId(GetItemId(RecoveryPoint.Id));
                 }
                 else if (AlternateWorkloadRestore.IsPresent && Item == null)
                 {
+                    if (string.Compare(((AzureWorkloadProtectableItem)TargetItem).ProtectableItemType,
+                        ProtectableItemType.SQLDataBase.ToString()) == 0)
+                    {
+                        throw new ArgumentException(string.Format(Resources.AzureWorkloadRestoreProtectableItemException));
+                    }
+
                     azureWorkloadRecoveryConfig.RestoreRequestType = "Alternate WL Restore";
-                    azureWorkloadRecoveryConfig.TargetServer = ((AzureWorkloadSQLDatabaseProtectedItem)TargetItem).ServerName;
-                    azureWorkloadRecoveryConfig.TargetInstance = ((AzureWorkloadSQLDatabaseProtectedItem)TargetItem).ParentName;
+                    azureWorkloadRecoveryConfig.TargetServer = ((AzureWorkloadProtectableItem)TargetItem).ServerName;
+                    azureWorkloadRecoveryConfig.TargetInstance = ((AzureWorkloadProtectableItem)TargetItem).ParentName;
                     azureWorkloadRecoveryConfig.RestoredDBName =
-                    GetRestoredDBName(((AzureWorkloadSQLDatabaseProtectedItem)TargetItem).ParentName, RecoveryPoint.ItemName, currentTime);
+                    GetRestoredDBName(((AzureWorkloadProtectableItem)TargetItem).ParentName, RecoveryPoint.ItemName, currentTime);
                     azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";
                     azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
                     List<SQLDataDirectoryMapping> targetPhysicalPath = new List<SQLDataDirectoryMapping>();
@@ -149,11 +169,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else if (Item != null && TargetItem != null)
                 {
+                    if (string.Compare(((AzureWorkloadProtectableItem)TargetItem).ProtectableItemType,
+                        ProtectableItemType.SQLDataBase.ToString()) == 0)
+                    {
+                        throw new ArgumentException(string.Format(Resources.AzureWorkloadRestoreProtectableItemException));
+                    }
+
                     azureWorkloadRecoveryConfig.RestoreRequestType = "Alternate WL Restore to diff item";
-                    azureWorkloadRecoveryConfig.TargetServer = ((AzureWorkloadSQLDatabaseProtectedItem)TargetItem).ServerName;
-                    azureWorkloadRecoveryConfig.TargetInstance = ((AzureWorkloadSQLDatabaseProtectedItem)TargetItem).ParentName;
+                    azureWorkloadRecoveryConfig.TargetServer = ((AzureWorkloadProtectableItem)TargetItem).ServerName;
+                    azureWorkloadRecoveryConfig.TargetInstance = ((AzureWorkloadProtectableItem)TargetItem).ParentName;
                     azureWorkloadRecoveryConfig.RestoredDBName =
-                    GetRestoredDBName(((AzureWorkloadSQLDatabaseProtectedItem)TargetItem).ParentName, Item.Name, currentTime);
+                    GetRestoredDBName(((AzureWorkloadProtectableItem)TargetItem).ParentName, Item.Name, currentTime);
                     azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";
                     azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
                     List<SQLDataDirectoryMapping> targetPhysicalPath = new List<SQLDataDirectoryMapping>();
@@ -271,7 +297,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             List<string> nameList = new List<string>(itemName.Split(new string[] { ";" }, StringSplitOptions.None));
 
-            string itemSuffix = currentTime.Month.ToString() + currentTime.Month.ToString() + "_" + currentTime.Month.ToString() + "_" +
+            string itemSuffix = currentTime.Month.ToString() + "_" + currentTime.Day.ToString() + "_" +
                 currentTime.Year.ToString() + "_" + currentTime.Hour.ToString() + currentTime.Minute.ToString();
 
             return parentName + "/" + nameList.Last() + "_restored_" + itemSuffix;

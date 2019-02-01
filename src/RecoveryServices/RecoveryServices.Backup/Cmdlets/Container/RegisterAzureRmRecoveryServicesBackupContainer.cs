@@ -31,24 +31,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     public class RegisterAzureRmRecoveryServicesBackupContainer
         : RSBackupVaultCmdletBase
     {
-        internal const string RegisterParamSet = "RegisterContainer";
-        internal const string ReRegisterParamSet = "ReRegisterContainer";
-
         /// <summary>
         /// Azure Vm Id.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = RegisterParamSet,
+        [Parameter(Mandatory = true, Position = 0,
             HelpMessage = ParamHelpMsgs.Container.ResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
-
-        /// <summary>
-        /// container object
-        /// </summary>
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ReRegisterParamSet,
-            HelpMessage = ParamHelpMsgs.Container.ContainerObj)]
-        [ValidateNotNullOrEmpty]
-        public ContainerBase Container { get; set; }
 
         /// <summary>
         /// The backup management type of the container(s) to be fetched.
@@ -77,7 +66,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string vaultResourceGroupName = resourceIdentifier.ResourceGroupName;
 
-                string containerName = Container != null ? Container.Name : ResourceId.Split('/')[8];
+                string containerName = ResourceId.Split('/')[8];
 
                 PsBackupProviderManager providerManager =
                     new PsBackupProviderManager(new Dictionary<Enum, object>()
@@ -87,7 +76,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { ContainerParams.Name, containerName },
                         { ContainerParams.ContainerType, ServiceClientHelpers.GetServiceClientWorkloadType(WorkloadType).ToString() },
                         { ContainerParams.BackupManagementType, BackupManagementType.ToString() },
-                        { ContainerParams.Container, Container }
                     }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider =

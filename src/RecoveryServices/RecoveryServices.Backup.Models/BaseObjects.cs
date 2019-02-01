@@ -295,6 +295,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
+    /// Base class for recovery point.
+    /// </summary>
+    public class PointInTimeBase
+    {
+        /// <summary>
+        /// Item Name
+        /// </summary>
+        public string ItemName { get; set; }
+
+        /// <summary>
+        /// Gets or sets start time of the time range for log recovery.
+        /// </summary>
+        public DateTime? StartTime { get; set; }
+        /// <summary>
+        /// Gets or sets end time of the time range for log recovery.
+        /// </summary>
+        public DateTime? EndTime { get; set; }
+
+        public PointInTimeBase()
+            : base()
+        {
+        }
+    }
+
+    /// <summary>
     /// Details of script to mount recovery point.
     /// </summary>
     public class RPMountScriptDetails : ObjectBase

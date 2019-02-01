@@ -23,6 +23,9 @@ Dismounts all the files of the recovery point.
 ### [Edit-AzRecoveryServicesAsrRecoveryPlan](Edit-AzRecoveryServicesAsrRecoveryPlan.md)
 Edits a Site Recovery plan.
 
+### [Enable-AzRecoveryServicesBackupAutoProtection](Enable-AzRecoveryServicesBackupAutoProtection.md)
+Enables auto protectection for an item with a specified Backup protection policy.
+
 ### [Enable-AzRecoveryServicesBackupProtection](Enable-AzRecoveryServicesBackupProtection.md)
 Enables backup for an item with a specified Backup protection policy.
 

@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
         }
 
-        public List<PointInTimeRange> ListLogChains(Dictionary<Enum, object> ProviderData)
+        public List<PointInTimeBase> ListLogChains(Dictionary<Enum, object> ProviderData)
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
 
-            List<PointInTimeRange> timeRanges = new List<PointInTimeRange>();
+            List<PointInTimeBase> timeRanges = new List<PointInTimeBase>();
             foreach (RecoveryPointResource rp in rpListResponse)
             {
                 if (rp.Properties.GetType() == typeof(AzureWorkloadSQLPointInTimeRecoveryPoint))
@@ -429,7 +429,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                        rp.Properties as AzureWorkloadSQLPointInTimeRecoveryPoint;
                     foreach (PointInTimeRange timeRange in recoveryPoint.TimeRanges)
                     {
-                        timeRanges.Add(timeRange);
+                        timeRanges.Add(new PointInTimeBase()
+                        {
+                            
+                            StartTime = timeRange.StartTime,
+                            EndTime = timeRange.EndTime,
+                            ItemName = item.Name
+                        });
                     }
                 }
 

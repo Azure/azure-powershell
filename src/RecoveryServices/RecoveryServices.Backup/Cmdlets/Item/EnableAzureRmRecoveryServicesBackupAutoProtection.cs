@@ -24,10 +24,9 @@ using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Mo
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Enable protection of an item with the recovery services vault. 
-    /// Returns the corresponding job created in the service to track this operation.
+    /// Enable auto protection of an item with the recovery services vault. 
     /// </summary>
-    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupAutoProtection", SupportsShouldProcess = true)]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupAutoProtection", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class EnableAzureRmRecoveryServicesBackupAutoProtection : RSBackupVaultCmdletBase
     {
         /// <summary>
@@ -58,6 +57,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public PolicyBase Policy { get; set; }
 
+        /// <summary>
+        /// Return the result for auto protection
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Return the result for auto protection.")]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -87,11 +92,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         Properties = properties
                     };
-                    var itemResponse = ServiceClientAdapter.CreateOrUpdateProtectionIntent(
+                    bool isAutoProtectionSuccessful = false;
+                    try
+                    {
+                        var itemResponse = ServiceClientAdapter.CreateOrUpdateProtectionIntent(
                         Guid.NewGuid().ToString(),
                         serviceClientRequest,
                         vaultName: vaultName,
                         resourceGroupName: resourceGroupName);
+                        isAutoProtectionSuccessful = true;
+                    }
+                    catch
+                    {
+
+                    }
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(isAutoProtectionSuccessful);
+                    }
                 }
             });
         }

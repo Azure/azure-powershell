@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
     {
         void Initialize(Dictionary<System.Enum, object> providerData, ServiceClientAdapter serviceClientAdapter);
 
-        RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableProtection();
+        RestAzureNS.AzureOperationResponse EnableProtection();
 
-        RestAzureNS.AzureOperationResponse<ProtectedItemResource> DisableProtection();
+        RestAzureNS.AzureOperationResponse DisableProtection();
 
         RestAzureNS.AzureOperationResponse DisableProtectionWithDeleteData();
 
@@ -65,6 +65,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         void RegisterContainer();
 
-        List<PointInTimeRange> GetLogChains();
+        List<PointInTimeBase> GetLogChains();
     }
 }

@@ -15,15 +15,17 @@ Get recovery plan for a backup up item.
 ### RpParameterSet (Default)
 ```
 Get-AzRecoveryServicesBackupWorkloadRecoveryConfig [[-RecoveryPoint] <RecoveryPointBase>]
- [[-TargetItem] <ItemBase>] [[-Item] <ItemBase>] [-OriginalWorkloadRestore] [-AlternateWorkloadRestore]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-TargetItem] <ProtectableItemBase>] [[-Item] <ItemBase>] [-OriginalWorkloadRestore]
+ [-AlternateWorkloadRestore] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### LogChainParameterSet
 ```
-Get-AzRecoveryServicesBackupWorkloadRecoveryConfig [[-PointInTime] <DateTime>] [[-TargetItem] <ItemBase>]
- [[-Item] <ItemBase>] [-OriginalWorkloadRestore] [-AlternateWorkloadRestore] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzRecoveryServicesBackupWorkloadRecoveryConfig [[-PointInTime] <DateTime>]
+ [[-TargetItem] <ProtectableItemBase>] [[-Item] <ItemBase>] [-OriginalWorkloadRestore]
+ [-AlternateWorkloadRestore] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,8 +36,8 @@ The command returns a recovery config for AzureWorkload items which is passed to
 ### Example 1
 ```
 PS C:\> $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $SQLBkpItem $startdate $enddate
-PS C:\> $SQLRecoveryObject = Get-AzRecoveryServicesWorkloadRecoveryConfig -RecoveryPoint $RP –OriginalWorkloadRestore
-PS C:\> $SQLRecoveryObject = Get-AzRecoveryServicesWorkloadRecoveryConfig -RecoveryPoint $RP –AlternateWorkloadRestore -TargetItem $SQLProtItem
+PS C:\> $SQLRecoveryObject = Get-AzRecoveryServicesWorkloadRecoveryConfig -RecoveryPoint $RP -OriginalWorkloadRestore
+PS C:\> $SQLRecoveryObject = Get-AzRecoveryServicesWorkloadRecoveryConfig -RecoveryPoint $RP -AlternateWorkloadRestore -TargetItem $SQLProtItem
 ```
 
 The first cmdlet is used to get the Recovery point object.
@@ -138,7 +140,7 @@ Accept wildcard characters: False
 TargetItem
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ProtectableItemBase
 Parameter Sets: (All)
 Aliases:
 

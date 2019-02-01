@@ -285,45 +285,6 @@ function Test-AzureVmWorkloadGetLogChains
 		Cleanup-Vault $vault $item $container
 	}
 }
-function Test-AzureVmWorkloadAutoProtection
-{
-	try
-	{
-		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		$container = Get-AzRecoveryServicesBackupContainer `
-         -VaultId $vault.ID `
-         -ContainerType AzureVMAppContainer `
-         -Status Registered;
-
-		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
-			-VaultId $vault.ID `
-			-Name $policyName
-
-		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
-			-VaultId $vault.ID `
-			-Container $container `
-			-WorkloadType "MSSQL" `
-			-ItemType "SQLInstance";
-
-		#Enable-AzRecoveryServicesBackupAutoProtection `
-		#	-VaultId $vault.ID `
-		#	-InputItem $protectableItems[0].Id `
-		#	-BackupManagementType "AzureWorkload" `
-		#	-WorkloadType "MSSQL" `
-		#	-Policy $policy;
-
-		#Start-Sleep -s 10
-
-		Disable-AzRecoveryServicesBackupAutoProtection `
-			-VaultId $vault.ID `
-			-InputItem $protectableItems[0].Id `
-			-BackupManagementType "AzureWorkload" `
-			-WorkloadType "MSSQL";
-	}
-	finally
-	{
-	}
-}
 function Test-AzureVmWorkloadFullRestore
 {
 	try
@@ -344,6 +305,12 @@ function Test-AzureVmWorkloadFullRestore
 			-Container $container `
 			-WorkloadType "MSSQL" `
 			-ItemType "SQLDataBase";
+
+		$protectableInstances = Get-AzRecoveryServicesBackupProtectableItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "MSSQL" `
+			-ItemType "SQLInstance";
 
 		Enable-AzRecoveryServicesBackupProtection `
 			-VaultId $vault.ID `
@@ -372,7 +339,7 @@ function Test-AzureVmWorkloadFullRestore
 		$restoreConfig1 = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
 			-VaultId $vault.ID `
 			-RecoveryPoint $recoveryPoint[0] `
-			-TargetItem $item[0] `
+			-TargetItem $protectableInstances[0] `
 			–AlternateWorkloadRestore;
 
 		Assert-NotNull $restoreConfig1
@@ -420,7 +387,7 @@ function Test-AzureVmWorkloadFullRestore
 			-VaultId $vault.ID `
 			-PointInTime $recoveryLogChain[0].StartTime.AddMinutes(1) `
 			-Item $item[0] `
-			-TargetItem $item[0] `
+			-TargetItem $protectableInstances[0] `
 			–AlternateWorkloadRestore;
 
 		Assert-NotNull $restoreConfig3
