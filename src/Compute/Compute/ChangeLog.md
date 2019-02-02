@@ -20,6 +20,7 @@
 -->
 ## Upcoming Release
 * Update help description for Set-AzVMBootDiagnostics
+* Update help description and example for Update-AzImage
 
 ## Version 1.2.0
 * Add Invoke-AzVMReimage cmdlet
