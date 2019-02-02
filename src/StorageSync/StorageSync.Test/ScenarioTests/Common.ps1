@@ -24,7 +24,7 @@ $ServerIdLookup["Test-GetRegisteredServerParentObject"] = "c1198372-7618-4d59-93
 $ServerIdLookup["Test-GetRegisteredServerParentResourceId"] = "1628499e-0616-4181-afd1-dd8906700527"
 $ServerIdLookup["Test-GetRegisteredServers"] = "88fa2470-8afa-424b-823e-0d33687f4d77"
 $ServerIdLookup["Test-NewRegisteredServer"] = "66a8e786-2f91-4552-b802-ecca80b95ac7"
-$ServerIdLookup["Test-ServerEndpoint"] = "83cb0baf-db95-4b95-9eea-1a9d88d49c41"
+$ServerIdLookup["Test-ServerEndpoint"] = "1aa747ce-4f90-4d60-823d-0e5a1fbb2586"
 
 <#
 .SYNOPSIS
