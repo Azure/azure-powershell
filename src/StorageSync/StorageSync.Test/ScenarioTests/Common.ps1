@@ -13,17 +13,17 @@
 # ----------------------------------------------------------------------------------
 
 $ServerIdLookup = @{}
-$ServerIdLookup["Test-NewRegisteredServerParentObject"] = "cc1acdd7-9ba4-48e8-9a2b-d11d51fdb9a8"
-$ServerIdLookup["Test-NewRegisteredServerParentResourceId"] = "9c9bbf76-6b9e-41ae-ac25-62a5fa0ee87c"
-$ServerIdLookup["Test-RegisteredServer"] = @("6e47b502-766b-4609-977a-f54f3d2a1414","b0116785-567e-43d6-bccd-c875b0dc0e88", "d80a603c-e0ef-40b2-84e3-8ef6216ac2df")
-$ServerIdLookup["Test-RemoveRegisteredServer"] = "411bd5fb-1aee-4604-8c57-22b4b548e7d8"
-$ServerIdLookup["Test-RemoveRegisteredServerInputObject"] = "57f039df-4cce-42c7-9efa-e1229d4a3c7b"
-$ServerIdLookup["Test-RemoveRegisteredServerResourceId"] = "408b1927-a310-492e-9c0a-ef9fcb44c321"
-$ServerIdLookup["Test-GetRegisteredServer"] = "63495a03-9831-4ece-bc24-b6aede400488"
-$ServerIdLookup["Test-GetRegisteredServerParentObject"] = "dd71fe90-f292-4b64-85a8-355843a75149"
-$ServerIdLookup["Test-GetRegisteredServerParentResourceId"] = "0afd78e3-5df8-440d-b33a-632443cee1ce"
-$ServerIdLookup["Test-GetRegisteredServers"] = "ff26f36b-cd82-43f4-a26b-94c86820a552"
-$ServerIdLookup["Test-NewRegisteredServer"] = "4136bfec-4873-48da-93a9-65a8019c7ce7"
+$ServerIdLookup["Test-NewRegisteredServerParentObject"] = "aa86ff9c-6191-4145-b7e2-fd674a7a60b4"
+$ServerIdLookup["Test-NewRegisteredServerParentResourceId"] = "b218026d-45d4-4e0e-94c1-7101e0c19e71"
+$ServerIdLookup["Test-RegisteredServer"] = @("251c5af7-25f5-48e0-9cea-a1ce5332c552","edb903a8-b51e-49a9-8841-0401ab326144", "a259e889-a9c7-422d-b1b8-d5fdfa338f98")
+$ServerIdLookup["Test-RemoveRegisteredServer"] = "ae80a828-ffaf-4b91-8b4b-241a5a611bb1"
+$ServerIdLookup["Test-RemoveRegisteredServerInputObject"] = "c0b9056c-27fd-4bc3-abaf-ca7913a87c17"
+$ServerIdLookup["Test-RemoveRegisteredServerResourceId"] = "9bd2a8e3-dcb8-49ac-a4f1-4de5f53e0a09"
+$ServerIdLookup["Test-GetRegisteredServer"] = "80cbc767-51b0-49de-9378-a0105ea0e660"
+$ServerIdLookup["Test-GetRegisteredServerParentObject"] = "c1198372-7618-4d59-933c-caf09ec5a84b"
+$ServerIdLookup["Test-GetRegisteredServerParentResourceId"] = "1628499e-0616-4181-afd1-dd8906700527"
+$ServerIdLookup["Test-GetRegisteredServers"] = "88fa2470-8afa-424b-823e-0d33687f4d77"
+$ServerIdLookup["Test-NewRegisteredServer"] = "66a8e786-2f91-4552-b802-ecca80b95ac7"
 $ServerIdLookup["Test-ServerEndpoint"] = "83cb0baf-db95-4b95-9eea-1a9d88d49c41"
 
 <#
