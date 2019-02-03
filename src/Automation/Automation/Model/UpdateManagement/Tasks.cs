@@ -14,23 +14,19 @@
 
 namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
 {
-    using System;
     using System.Collections.Generic;
 
-    public class UpdateConfiguration
+    public class Tasks
     {
-        public OperatingSystemType OperatingSystem { get; set; }
+        public Task PreTask { get; set; }
 
-        public WindowsConfiguration Windows { get; set; }
+        public Task PostTask { get; set; }
+    }
 
-        public LinuxConfiguration Linux { get; set; }
+    public class Task
+    {
+        public string source { get; set; }
 
-        public TimeSpan? Duration { get; set; }
-
-        public IList<string> AzureVirtualMachines { get; set; }
-
-        public IList<string> NonAzureComputers { get; set; }
-
-        public UpdateTargets Targets { get; set; }
+        public IDictionary<string, string> parameters { get; set; }
     }
 }
