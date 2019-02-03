@@ -78,21 +78,21 @@ The **New-AzureStorageContext** cmdlet creates an Azure Storage context.
 
 ### Example 1: Create a context by specifying a storage account name and key
 ```
-C:\PS>New-AzureStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral ends with == >"
+PS C:\>New-AzureStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral ends with == >"
 ```
 
 This command creates a context for the account named ContosoGeneral that uses the specified key.
 
 ### Example 2: Create a context by specifying a connection string
 ```
-C:\PS>New-AzureStorageContext -ConnectionString "DefaultEndpointsProtocol=https;AccountName=ContosoGeneral;AccountKey=< Storage Key for ContosoGeneral ends with == >;"
+PS C:\>New-AzureStorageContext -ConnectionString "DefaultEndpointsProtocol=https;AccountName=ContosoGeneral;AccountKey=< Storage Key for ContosoGeneral ends with == >;"
 ```
 
 This command creates a context based on the specified connection string for the account ContosoGeneral.
 
 ### Example 3: Create a context for an anonymous storage account
 ```
-C:\PS>New-AzureStorageContext -StorageAccountName "ContosoGeneral" -Anonymous -Protocol "http"
+PS C:\>New-AzureStorageContext -StorageAccountName "ContosoGeneral" -Anonymous -Protocol "http"
 ```
 
 This command creates a context for anonymous use for the account named ContosoGeneral.
@@ -100,7 +100,7 @@ The command specifies HTTP as a connection protocol.
 
 ### Example 4: Create a context by using the local development storage account
 ```
-C:\PS>New-AzureStorageContext -Local
+PS C:\>New-AzureStorageContext -Local
 ```
 
 This command creates a context by using the local development storage account.
@@ -108,7 +108,7 @@ The command specifies the *Local* parameter.
 
 ### Example 5: Get the container for the local developer storage account
 ```
-C:\PS>New-AzureStorageContext -Local | Get-AzureStorageContainer
+PS C:\>New-AzureStorageContext -Local | Get-AzureStorageContainer
 ```
 
 This command creates a context by using the local development storage account, and then passes the new context to the **Get-AzureStorageContainer** cmdlet by using the pipeline operator.
@@ -116,7 +116,7 @@ The command gets the Azure Storage container for the local developer storage acc
 
 ### Example 6: Get multiple containers
 ```
-C:\PS>$Context01 = New-AzureStorageContext -Local 
+PS C:\>$Context01 = New-AzureStorageContext -Local 
 PS C:\> $Context02 = New-AzureStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral ends with == >"
 PS C:\> ($Context01, $Context02) | Get-AzureStorageContainer
 ```
@@ -127,7 +127,7 @@ The final command gets the containers for the contexts stored in $Context01 and 
 
 ### Example 7: Create a context with an endpoint
 ```
-C:\PS>New-AzureStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral ends with == >" -Endpoint "contosoaccount.core.windows.net"
+PS C:\>New-AzureStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral ends with == >" -Endpoint "contosoaccount.core.windows.net"
 ```
 
 This command creates an Azure Storage context that has the specified storage endpoint.
@@ -135,7 +135,7 @@ The command creates the context for the account named ContosoGeneral that uses t
 
 ### Example 8: Create a context with a specified environment
 ```
-C:\PS>New-AzureStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral ends with == >" -Environment "AzureChinaCloud"
+PS C:\>New-AzureStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral ends with == >" -Environment "AzureChinaCloud"
 ```
 
 This command creates an Azure storage context that has the specified Azure environment.
@@ -143,7 +143,7 @@ The command creates the context for the account named ContosoGeneral that uses t
 
 ### Example 9: Create a context by using an SAS token
 ```
-C:\PS>$SasToken = New-AzureStorageContainerSASToken -Name "ContosoMain" -Permission "rad"
+PS C:\>$SasToken = New-AzureStorageContainerSASToken -Name "ContosoMain" -Permission "rad"
 PS C:\> $Context = New-AzureStorageContext -StorageAccountName "ContosoGeneral" -SasToken $SasToken
 PS C:\> $Context | Get-AzureStorageBlob -Container "ContosoMain"
 ```
@@ -155,8 +155,8 @@ The final command lists all the blobs associated with the container named Contos
 
 ### Example 10: Create a context by using the OAuth Authentication
 ```
-C:\PS>Connect-AzureRmAccount
-C:\PS> $Context = New-AzureStorageContext -StorageAccountName "myaccountname" -UseConnectedAccount
+PS C:\>Connect-AzureRmAccount
+PS C:\> $Context = New-AzureStorageContext -StorageAccountName "myaccountname" -UseConnectedAccount
 ```
 
 This command creates a context by using the OAuth Authentication.
