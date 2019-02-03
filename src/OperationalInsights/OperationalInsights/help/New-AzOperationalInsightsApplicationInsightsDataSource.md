@@ -32,6 +32,13 @@ The **New-AzOperationalInsightsApplicationInsightsDataSource** cmdlet enables th
 
 ## EXAMPLES
 
+### Example 1: Create application-insights data source in workspace
+```
+PS C:\> New-AzOperationalInsightsApplicationInsightsDataSource -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "MyWorkspace" -ApplicationSubscriptionId "e791a474-ee54-46a2-bb06-5e058302d234" -ApplicationResourceGroupName "ContosoResourceGroup" -ApplicationName "MyAIApplication"
+```
+
+This command creates an application-insights data source of a given application in a given log analytics workpsace. This enables the collection of logs from given application to the log analytics workpsace.
+
 ## PARAMETERS
 
 ### -ApplicationName
