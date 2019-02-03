@@ -44,7 +44,7 @@ Creates a capacity named testcapacity in the Azure region West Central US and in
 ## PARAMETERS
 
 ### -Administrator
-A comma separated capacity names to set as administrator on the capacity
+A comma separated names to set as administrator on the capacity
 
 ```yaml
 Type: System.String[]
