@@ -42,7 +42,7 @@ function Get-ProviderLocation($provider)
         if($provider.Contains("/"))  
         {  
             $type = $provider.Substring($namespace.Length + 1)  
-            $location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+            $location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
   
             if ($location -eq $null) 
             {  
@@ -67,7 +67,7 @@ function TestSetup-CreateResourceGroup
 {
     $resourceGroupName = getAssetName
     $rglocation = Get-ProviderLocation "North Europe"
-    $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $rglocation -Force
+    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation -Force
     return $resourceGroup
 }
 

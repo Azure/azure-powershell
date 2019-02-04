@@ -18,7 +18,7 @@ Create subscription
 #>
 function Test-NewSubscription
 {
-    # $accounts = Get-AzureRmEnrollmentAccount
+    # $accounts = Get-AzEnrollmentAccount
     $accounts = @(@{ ObjectId = "cdf813b6-bdc2-4df5-b150-00ccfd7580e2" })
     
     # Verify the caller has at least one enrollment account.
@@ -26,7 +26,7 @@ function Test-NewSubscription
 
     $myNewSubName = GetAssetName
 
-    $newSub = New-AzureRmSubscription -EnrollmentAccountObjectId $accounts[0].ObjectId -Name $myNewSubName -OfferType MS-AZR-0017P
+    $newSub = New-AzSubscription -EnrollmentAccountObjectId $accounts[0].ObjectId -Name $myNewSubName -OfferType MS-AZR-0017P
 
     Assert-AreEqual $myNewSubName $newSub.Name
 	Assert-NotNull $newSub.SubscriptionId

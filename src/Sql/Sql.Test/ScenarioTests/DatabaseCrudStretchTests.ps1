@@ -38,7 +38,7 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "westcentralus
 		$databaseName = Get-DatabaseName
 		$collationName = "SQL_Latin1_General_CP1_CI_AS"
 		$maxSizeBytes = 250GB
-		$job = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		$job = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 				-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition Stretch -RequestedServiceObjectiveName DS100 -AsJob
 		$job | Wait-Job
 		$strechdb = $job.Output
@@ -79,11 +79,11 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "westcentralus
 		$databaseName = Get-DatabaseName
 		$collationName = "SQL_Latin1_General_CP1_CI_AS"
 		$maxSizeBytes = 250GB
-		$strechdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		$strechdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 		-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition Stretch -RequestedServiceObjectiveName DS100
 
 		# Alter stretch database properties
-		$job = Set-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $strechdb.DatabaseName `
+		$job = Set-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $strechdb.DatabaseName `
 		-MaxSizeBytes $maxSizeBytes -Edition Stretch -RequestedServiceObjectiveName DS200 -AsJob
 		$job | Wait-Job
 		$strechdb2 = $job.Output
@@ -125,9 +125,9 @@ function Test-GetDatabaseInternal  ($serverVersion, $location = "westcentralus")
 	{
 		# Create stretch database and get-database to compare
 		$databaseName = Get-DatabaseName
-		$strechdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		$strechdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 				-CollationName SQL_Latin1_General_CP1_CI_AS -MaxSizeBytes 250GB -Edition Stretch -RequestedServiceObjectiveName DS100
-		$strechdb2 = Get-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $strechdb.DatabaseName
+		$strechdb2 = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $strechdb.DatabaseName
 		Assert-AreEqual $strechdb.DatabaseName $strechdb2.DatabaseName
 		Assert-AreEqual $strechdb.MaxSizeBytes $strechdb2.MaxSizeBytes
 		Assert-AreEqual $strechdb.Edition $strechdb2.Edition
@@ -135,7 +135,7 @@ function Test-GetDatabaseInternal  ($serverVersion, $location = "westcentralus")
 		Assert-AreEqual $strechdb.CollationName $strechdb2.CollationName
 
 		# Check total number of databases
-		$all = $server | Get-AzureRmSqlDatabase
+		$all = $server | Get-AzSqlDatabase
 		Assert-AreEqual $all.Count 2 # 2 because master database is included
 	}
 	finally
@@ -169,15 +169,15 @@ function Test-RemoveDatabaseInternal  ($serverVersion, $location = "westcentralu
 	{
 		# Create stretch database
 		$databaseName = Get-DatabaseName
-		$stretchdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		$stretchdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 			-CollationName "SQL_Latin1_General_CP1_CI_AS" -MaxSizeBytes 250GB -Edition Stretch -RequestedServiceObjectiveName DS100
 		Assert-AreEqual $databaseName $stretchdb.DatabaseName
 
 		# Remove stretch databse
-		Remove-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $stretchdb.DatabaseName -Force
+		Remove-AzSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $stretchdb.DatabaseName -Force
 		
 		# Check total number of databases after removal 
-		$all = $server | Get-AzureRmSqlDatabase
+		$all = $server | Get-AzSqlDatabase
 		Assert-AreEqual $all.Count 1 # 1 because master database is included
 	}
 	finally

@@ -72,7 +72,7 @@ A new password credential is added to the existing service principal with object
 ### Example 2 - Create a new service principal credential using a certificate
 
 ```
-PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate
+PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
 PS C:\> $cer.Import("C:\myapp.cer")
 PS C:\> $binCert = $cer.GetRawCertData()
 PS C:\> $credValue = [System.Convert]::ToBase64String($binCert)

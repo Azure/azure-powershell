@@ -19,17 +19,17 @@
 function Test-GetIndexRecommendations
 {
     # Get all recommended indexes for server
-    $response = Get-AzureRmSqlDatabaseIndexRecommendations -ResourceGroup Group-6 -ServerName witest-eus
+    $response = Get-AzSqlDatabaseIndexRecommendations -ResourceGroup Group-6 -ServerName witest-eus
     ValidateResponse($response)
     Assert-AreEqual "Active" $response[0].State
 
     # Get all recommended indexes for database
-    $response = Get-AzureRmSqlDatabaseIndexRecommendations -ResourceGroup Group-6 -ServerName witest-eus -DatabaseName witestdb-eus
+    $response = Get-AzSqlDatabaseIndexRecommendations -ResourceGroup Group-6 -ServerName witest-eus -DatabaseName witestdb-eus
     ValidateResponse($response)
     Assert-AreEqual "Active" $response[0].State
 
     # Get recommended indexes by name
-    $response = Get-AzureRmSqlDatabaseIndexRecommendations -ResourceGroup Group-6 -ServerName witest-eus -DatabaseName witestdb-eus -IndexRecommendationName nci_wi_Clusters_034590D0-0378-4AB9-96D5-C144B14F6A9B
+    $response = Get-AzSqlDatabaseIndexRecommendations -ResourceGroup Group-6 -ServerName witest-eus -DatabaseName witestdb-eus -IndexRecommendationName nci_wi_Clusters_034590D0-0378-4AB9-96D5-C144B14F6A9B
     ValidateResponse($response)
     Assert-AreEqual "Active" $response[0].State
 }
@@ -41,11 +41,11 @@ function Test-GetIndexRecommendations
 function Test-CreateIndex
 {
     # Start index operation
-    $response = Start-AzureRmSqlDatabaseExecuteIndexRecommendation -ResourceGroup Group-6 -ServerName witest-eus -DatabaseName witestdb-eus -IndexRecommendationName nci_wi_Clusters_034590D0-0378-4AB9-96D5-C144B14F6A9B    
+    $response = Start-AzSqlDatabaseExecuteIndexRecommendation -ResourceGroup Group-6 -ServerName witest-eus -DatabaseName witestdb-eus -IndexRecommendationName nci_wi_Clusters_034590D0-0378-4AB9-96D5-C144B14F6A9B    
     Assert-AreEqual "Pending" $response[0].State
 
     # Start index operation
-    $response = Stop-AzureRmSqlDatabaseExecuteIndexRecommendation -ResourceGroup Group-6 -ServerName witest-eus -DatabaseName witestdb-eus -IndexRecommendationName nci_wi_Clusters_034590D0-0378-4AB9-96D5-C144B14F6A9B
+    $response = Stop-AzSqlDatabaseExecuteIndexRecommendation -ResourceGroup Group-6 -ServerName witest-eus -DatabaseName witestdb-eus -IndexRecommendationName nci_wi_Clusters_034590D0-0378-4AB9-96D5-C144B14F6A9B
     Assert-AreEqual "Active" $response[0].State
 }
 

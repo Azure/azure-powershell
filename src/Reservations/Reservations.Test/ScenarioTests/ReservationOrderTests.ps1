@@ -23,7 +23,7 @@ function Test-GetReservationOrder
     # Once reservation is created you will have reservationOrderId to run this test
 	$type = "Microsoft.Capacity/reservationOrders"
 	$reservationOrderId = "704aee8c-c906-47c7-bd22-781841fb48b5"
-    $reservation = Get-AzureRmReservationOrder -ReservationOrderId $reservationOrderId
+    $reservation = Get-AzReservationOrder -ReservationOrderId $reservationOrderId
 
 	Assert-NotNull $reservation
 	Assert-True { $reservation.Etag -gt 0 }
@@ -41,7 +41,7 @@ function Test-ListReservationOrders
 {
 	$type = "Microsoft.Capacity/reservationOrders"
 
-    $reservationList = Get-AzureRmReservationOrder
+    $reservationList = Get-AzReservationOrder
 
 	Assert-NotNull $reservationList
 	Foreach ($reservation in $reservationList)
