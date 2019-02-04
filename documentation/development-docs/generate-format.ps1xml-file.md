@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         [Ps1Xml(Label = "SubscriptionId", Target = ViewControl.Table)]
         public string Id { get; set; }
 
-        [Ps1Xml(Label = "SubscriptionName", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table)]
         public string Name { get; set; }
 
         [Ps1Xml(Label = "State", Target = ViewControl.Table)]
@@ -298,7 +298,7 @@ public class PSAzureSubscription : IAzureSubscription
 
 // code omitted for brevity
 
-    [Ps1Xml(Label = "SubscriptionName", Target = ViewControl.Table, Position = 0)]
+    [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
     public string Name { get; set; }
 
 // code omitted for brevity 
@@ -413,7 +413,7 @@ PS C:\> Import-Module E:\git\azure-powershell\artifacts\Debug\Az.Accounts\Az.Acc
 ```Powershell
 PS C:\> Get-AzSubscription
 
-SubscriptionId                       SubscriptionName          State   TenantId
+SubscriptionId                       Name                      State   TenantId
 ---------------                      -----------------         -----   ---------
 c9cbd920-c00c-427c-852b-c329e824c3a8 Azure SDK Powershell Test Enabled 72f988bf-86f1-41af-91ab-7a64d1d63df5
 6b085460-5f21-477e-ba44-4cd9fbd030ef Azure SDK Infrastructure  Enabled 72f988bf-86f1-41af-91ab-7a64d1d63df5
