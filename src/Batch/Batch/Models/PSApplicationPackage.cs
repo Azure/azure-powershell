@@ -24,6 +24,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
         public PackageState State { get; set; }
 
+        public string Id { get; set; }
+
         public string Name { get; set; }
 
         public DateTime? LastActivationTime { get; set; }

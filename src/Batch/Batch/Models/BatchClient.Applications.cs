@@ -161,6 +161,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 DefaultVersion = application.DefaultVersion,
                 DisplayName = application.DisplayName,
                 Name = application.Name,
+                Id = application.Id
             };
         }
     }

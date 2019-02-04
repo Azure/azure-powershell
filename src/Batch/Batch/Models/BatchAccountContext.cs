@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// <summary>
         /// The subscription Id that the account belongs to.
         /// </summary>
-        public string Subscription { get; private set; }
+        public string Subscription { get; internal set; }
 
         /// <summary>
         /// The provisioning state of the account resource.

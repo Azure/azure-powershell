@@ -240,6 +240,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 StorageUrl = response.StorageUrl,
                 StorageUrlExpiry = response.StorageUrlExpiry.Value,
                 State = response.State.Value,
+                Id = response.Id,
                 Name = response.Name,
                 LastActivationTime = response.LastActivationTime
             };

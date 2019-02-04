@@ -100,12 +100,7 @@ function Test-CreateTaskCollection
     $file = New-AzBatchResourceFile -HttpUrl "https://testacct.blob.core.windows.net/" -FilePath "file1"
     $resourceFiles.Add($file)
 
-    $envSettings = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting]
-    $env1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting("env1", "value1")
-    $env2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting("env2", "value2")
-    $envSettings.Add($env1)
-    $envSettings.Add($env2)
-
+    $envSettings = @{ env1 = "value1"; env2 = "value2" }
     $numInstances = 3
     $multiInstanceSettings = New-Object Microsoft.Azure.Commands.Batch.Models.PSMultiInstanceSettings -ArgumentList @("cmd /c echo coordinating", $numInstances)
     $coordinationCommandLine = $multiInstanceSettings.CoordinationCommandLine
