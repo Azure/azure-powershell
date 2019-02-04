@@ -260,8 +260,8 @@ To specify what goes into the table view - use the **ScriptBlock** attribute pro
     {
         // code omitted for brevity
 
-        [Ps1Xml(Label = "AccountId", Target = ViewControl.Table, ScriptBlock = "$_.Account.Id")]
-        [Ps1Xml(Label = "AccountType", Target = ViewControl.Table, ScriptBlock = "$_.Account.Type")]
+        [Ps1Xml(Label = "Account.Id", Target = ViewControl.Table, ScriptBlock = "$_.Account.Id")]
+        [Ps1Xml(Label = "Account.Type", Target = ViewControl.Table, ScriptBlock = "$_.Account.Type")]
         public IAzureAccount Account { get; set; }
 
         // code omitted for brevity
@@ -272,8 +272,8 @@ Note: **$_** symbol in PowerShell means the same as **this** key word means in C
 
 These two attribute will result in 2 column in the table view:
 ```Ps
-    Account Id  Account Type
-    ==========  ============
+    Account.Id   Account.Type
+    ==========   ============
 ```
 ## GroupBy a property.
 
@@ -361,13 +361,13 @@ This will place the column at the very beginning of the table.
     ```Powershell
     PS E:\git\azure-powershell> New-FormatPs1Xml -OnlyMarkedProperties -ModulePath .\artifacts\Debug\Az.Storage\Az.Storage.psd1
     E:\git\azure-powershell\Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.generated.format.ps1xml
-    E:\git\psxml\azure-powershell\Microsoft.Azure.PowerShell.Cmdlets.Storage.generated.format.ps1xml
+    E:\git\azure-powershell\Microsoft.Azure.PowerShell.Cmdlets.Storage.generated.format.ps1xml
     ```
     * Below is an example of how to generate a format.ps1xml file for the ```Az.Account``` module:
     ```powershell
     PS E:\git\azure-powershell> New-FormatPs1Xml -OnlyMarkedProperties -ModulePath .\artifacts\Debug\Az.Accounts\Az.Accounts.psd1
     E:\git\azure-powershell\Microsoft.Azure.PowerShell.Cmdlets.Accounts.generated.format.ps1xml
-    PS E:\git\psxml\azure-powershell>
+    PS E:\git\azure-powershell>
     ```
 
 # How to test the format.ps1xml file.
