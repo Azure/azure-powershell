@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.10.0'
+ModuleVersion = '0.10.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -30,7 +30,8 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Service cmdlets for Azure Policy Guest Configuration. Allows querying for Guest Configuration node compliance status, compliance reasons, and compliance status history. For more information, please visit: https://aka.ms/guestconfigcmdlets'
+Description = 'Microsoft Azure PowerShell - Guest Configuration service cmdlets for Azure Resource Manager. Allows querying VM compliance statuses for initiatives (part of Azure Policy) of category "Guest configuration", compliance reasons, compliance status history. For more information, please visit: https://aka.ms/guestconfigcmdlets '
+
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -104,10 +105,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial release of Az.GuestConfiguration module'
+        ReleaseNotes = 'Initial Release'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        #Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

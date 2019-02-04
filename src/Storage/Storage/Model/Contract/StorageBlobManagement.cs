@@ -838,5 +838,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         {
             return blob.StartIncrementalCopyAsync(source, destAccessCondition, options, operationContext, cancellationToken);
         }
+
+        /// <summary>
+        /// Returns the sku name and account kind for the specified account
+        /// </summary>
+        /// <returns>the sku name and account kind</returns>
+        public AccountProperties GetAccountProperties()
+        {
+            return this.BlobClient.GetAccountPropertiesAsync().Result;
+        }
     }
 }

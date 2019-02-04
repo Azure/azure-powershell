@@ -1,22 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
   <PropertyGroup>
     <PsModuleName>Storage</PsModuleName>
     <OmitJsonPackage>true</OmitJsonPackage>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
   </PropertyGroup>
-
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
-
   <PropertyGroup>
     <RootNamespace>Microsoft.WindowsAzure.Commands.$(PsModuleName)</RootNamespace>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
     <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.8.1" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\AzureContextAdapterExtensions.cs" Link="Common\Cmdlet\AzureContextAdapterExtensions.cs" />
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageBlob.cs" Link="Common\AzureStorageBlob.cs" />
@@ -24,5 +24,4 @@
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageQueue.cs" Link="Common\AzureStorageQueue.cs" />
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageTable.cs" Link="Common\AzureStorageTable.cs" />
   </ItemGroup>
-
 </Project>

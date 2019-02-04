@@ -106,7 +106,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 StorageSizeInGB = model.StorageSizeInGB,
                 SubnetId = model.SubnetId,
                 VCores = model.VCores,
-                Identity = model.Identity
+                Identity = model.Identity,
+                Collation = model.Collation
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -172,6 +173,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.LicenseType = resp.LicenseType;
             managedInstance.VCores = resp.VCores;
             managedInstance.StorageSizeInGB = resp.StorageSizeInGB;
+            managedInstance.Collation = resp.Collation;
 
             Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             sku.Name = resp.Sku.Name;

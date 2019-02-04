@@ -15,16 +15,16 @@ function Test-DataLakeAnalyticsComputePolicy
 	try
 	{
 		# Creating Account
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		# Test to make sure the account doesn't exist
-		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		Assert-False {Test-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 		# Test it without specifying a resource group
-		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -Name $accountName}
+		Assert-False {Test-AzDataLakeAnalyticsAccount -Name $accountName}
 
-		New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
+		New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 
-		$accountCreated = New-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
+		$accountCreated = New-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
     
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
@@ -34,7 +34,7 @@ function Test-DataLakeAnalyticsComputePolicy
 		# In loop to check if account exists
 		for ($i = 0; $i -le 60; $i++)
 		{
-			[array]$accountGet = Get-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			[array]$accountGet = Get-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
 			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
@@ -50,7 +50,7 @@ function Test-DataLakeAnalyticsComputePolicy
 		}
 
 		# Test to make sure the account does exist
-		Assert-True {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		Assert-True {Test-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 
 		# define compute policies
 		$userPolicyObjectId = "8ce05900-7a9e-4895-b3f0-0fbcee507803"
@@ -62,48 +62,48 @@ function Test-DataLakeAnalyticsComputePolicy
 		Assert-AreEqual 0 $accountCreated.ComputePolicies.Count 		
 
 		# attempt to create an empty policy without specifying either max or min
-		Assert-Throws {New-AzureRMDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName  $accountName -Name $userPolicyName -ObjectId $userPolicyObjectId -ObjectType "User"}
+		Assert-Throws {New-AzDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName  $accountName -Name $userPolicyName -ObjectId $userPolicyObjectId -ObjectType "User"}
 
 		# Add a compute policy with one policy for a user
-		New-AzureRMDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName  $accountName -Name $userPolicyName -ObjectId $userPolicyObjectId -ObjectType "User" -MaxDegreeOfParallelismPerJob 2
+		New-AzDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName  $accountName -Name $userPolicyName -ObjectId $userPolicyObjectId -ObjectType "User" -MaxDegreeOfParallelismPerJob 2
 
 		# Add a compute policy with two policy for a group
-		New-AzureRMDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName $accountName -Name $groupPolicyName -ObjectId $groupPolicyObjectId -ObjectType "Group" -MaxDegreeOfParallelismPerJob 2 -MinPriorityPerJob 2
+		New-AzDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName $accountName -Name $groupPolicyName -ObjectId $groupPolicyObjectId -ObjectType "Group" -MaxDegreeOfParallelismPerJob 2 -MinPriorityPerJob 2
 
 		# Get the list of policies
-		$policyResult = Get-AzureRMDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName $accountName
+		$policyResult = Get-AzDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName $accountName
 
 		Assert-AreEqual 2 $policyResult.Count
 
 		# Get a specific policy (user policy)
-		$singlePolicy = Get-AzureRMDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName $accountName -Name $userPolicyName
+		$singlePolicy = Get-AzDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName $accountName -Name $userPolicyName
 		Assert-AreEqual $userPolicyName $singlePolicy.Name
 		Assert-AreEqual 2 $singlePolicy.MaxDegreeOfParallelismPerJob
 
 		# attempt to update that policy with no policy pieces (should fail)
-		Assert-Throws {Update-AzureRMDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName  $accountName -Name $userPolicyName}
+		Assert-Throws {Update-AzDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName  $accountName -Name $userPolicyName}
 
 		# update the user policy to include a min priority
-		Update-AzureRMDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName  $accountName -Name $userPolicyName -MinPriorityPerJob 2
+		Update-AzDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName  $accountName -Name $userPolicyName -MinPriorityPerJob 2
 
 		# get the policy and confirm the change
-		$singlePolicy = Get-AzureRMDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName $accountName -Name $userPolicyName
+		$singlePolicy = Get-AzDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName $accountName -Name $userPolicyName
 		Assert-AreEqual $userPolicyName $singlePolicy.Name
 		Assert-AreEqual 2 $singlePolicy.MaxDegreeOfParallelismPerJob
 		Assert-AreEqual 2 $singlePolicy.MinPriorityPerJob
 
 		# remove the user policy
-		Remove-AzureRMDataLakeAnalyticsComputePolicy -AccountName $accountName -Name $userPolicyName
+		Remove-AzDataLakeAnalyticsComputePolicy -AccountName $accountName -Name $userPolicyName
 
 		# Make sure get throws.
-		Assert-Throws {Get-AzureRMDataLakeAnalyticsComputePolicy -AccountName $accountName -Name $userPolicyName}
+		Assert-Throws {Get-AzDataLakeAnalyticsComputePolicy -AccountName $accountName -Name $userPolicyName}
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -124,16 +124,16 @@ function Test-DataLakeAnalyticsFirewall
 	try
 	{
 		# Creating Account
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		# Test to make sure the account doesn't exist
-		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		Assert-False {Test-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 		# Test it without specifying a resource group
-		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -Name $accountName}
+		Assert-False {Test-AzDataLakeAnalyticsAccount -Name $accountName}
 
-		New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
+		New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 
-		$accountCreated = New-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
+		$accountCreated = New-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
     
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
@@ -143,7 +143,7 @@ function Test-DataLakeAnalyticsFirewall
 		# In loop to check if account exists
 		for ($i = 0; $i -le 60; $i++)
 		{
-			[array]$accountGet = Get-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			[array]$accountGet = Get-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
 			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
@@ -159,7 +159,7 @@ function Test-DataLakeAnalyticsFirewall
 		}
 
 		# Test to make sure the account does exist
-		Assert-True {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		Assert-True {Test-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 
 		# Test to enable the firewall as well as allowing azure IPs
 		Assert-AreEqual "Disabled" $accountCreated.FirewallState 
@@ -167,7 +167,7 @@ function Test-DataLakeAnalyticsFirewall
 		# TODO: Re-enable this when this property is re-introduced by the service
 		# Assert-AreEqual "Disabled" $accountCreated.FirewallAllowAzureIps 
 
-		$accountSet = Set-AzureRMDataLakeAnalyticsAccount -Name $accountName -FirewallState "Enabled" -AllowAzureIpState "Enabled"
+		$accountSet = Set-AzDataLakeAnalyticsAccount -Name $accountName -FirewallState "Enabled" -AllowAzureIpState "Enabled"
 
 		Assert-AreEqual "Enabled" $accountSet.FirewallState 
 		
@@ -178,26 +178,26 @@ function Test-DataLakeAnalyticsFirewall
 		$startIp = "127.0.0.1"
 		$endIp = "127.0.0.2"
 		# Add a firewall rule
-		Add-AzureRMDataLakeAnalyticsFirewallRule -AccountName $accountName -Name $firewallRuleName -StartIpAddress $startIp -EndIpAddress $endIp
+		Add-AzDataLakeAnalyticsFirewallRule -AccountName $accountName -Name $firewallRuleName -StartIpAddress $startIp -EndIpAddress $endIp
 
 		# Get the firewall rule
-		$result = Get-AzureRMDataLakeAnalyticsFirewallRule -AccountName $accountName -Name $firewallRuleName
+		$result = Get-AzDataLakeAnalyticsFirewallRule -AccountName $accountName -Name $firewallRuleName
 		Assert-AreEqual $firewallRuleName $result.Name
 		Assert-AreEqual $startIp $result.StartIpAddress
 		Assert-AreEqual $endIp $result.EndIpAddress
 
 		# remove the firewall rule
-		Remove-AzureRMDataLakeAnalyticsFirewallRule -AccountName $accountName -Name $firewallRuleName
+		Remove-AzDataLakeAnalyticsFirewallRule -AccountName $accountName -Name $firewallRuleName
 
 		# Make sure get throws.
-		Assert-Throws {Get-AzureRMDataLakeAnalyticsFirewallRule -AccountName $accountName -Name $firewallRuleName}
+		Assert-Throws {Get-AzDataLakeAnalyticsFirewallRule -AccountName $accountName -Name $firewallRuleName}
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -221,16 +221,16 @@ function Test-DataLakeAnalyticsAccount
     try
 	{
 		# Creating Account and initial setup
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		# Test to make sure the account doesn't exist
-		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		Assert-False {Test-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 		# Test it without specifying a resource group
-		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -Name $accountName}
+		Assert-False {Test-AzDataLakeAnalyticsAccount -Name $accountName}
 
-		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
-		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $secondDataLakeAccountName -Location $location
-		$accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
+		New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
+		New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $secondDataLakeAccountName -Location $location
+		$accountCreated = New-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
     
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
@@ -240,7 +240,7 @@ function Test-DataLakeAnalyticsAccount
 		# In loop to check if account exists
 		for ($i = 0; $i -le 60; $i++)
 		{
-			[array]$accountGet = Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			[array]$accountGet = Get-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
 			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
@@ -256,13 +256,13 @@ function Test-DataLakeAnalyticsAccount
 		}
 
 		# Test to make sure the account does exist now
-		Assert-True {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		Assert-True {Test-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 		# Test it without specifying a resource group
-		Assert-True {Test-AzureRMDataLakeAnalyticsAccount -Name $accountName}
+		Assert-True {Test-AzDataLakeAnalyticsAccount -Name $accountName}
 
 		# Updating Account
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
-		$accountUpdated = Set-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tag $tagsToUpdate
+		$accountUpdated = Set-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tag $tagsToUpdate
     
 		Assert-AreEqual $accountName $accountUpdated.Name
 		Assert-AreEqual $location $accountUpdated.Location
@@ -273,7 +273,7 @@ function Test-DataLakeAnalyticsAccount
 		Assert-NotNull $accountUpdated.Tags["TestTag"] "The updated tag 'TestTag' does not exist"
 
 		# List all accounts in resource group
-		[array]$accountsInResourceGroup = Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName
+		[array]$accountsInResourceGroup = Get-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName
 		Assert-True {$accountsInResourceGroup.Count -ge 1}
     
 		$found = 0
@@ -291,7 +291,7 @@ function Test-DataLakeAnalyticsAccount
 		Assert-True {$found -eq 1} "Account created earlier is not found when listing all in resource group: $resourceGroupName."
 
 		# List all dataLakeAnalytics accounts in subscription
-		[array]$accountsInSubscription = Get-AzureRmDataLakeAnalyticsAccount
+		[array]$accountsInSubscription = Get-AzDataLakeAnalyticsAccount
 		Assert-True {$accountsInSubscription.Count -ge 1}
 		Assert-True {$accountsInSubscription.Count -ge $accountsInResourceGroup.Count}
     
@@ -310,62 +310,62 @@ function Test-DataLakeAnalyticsAccount
 		Assert-True {$found -eq 1} "Account created earlier is not found when listing all in subscription."
 
 		# add a data lake store account to the analytics account
-		Add-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName
+		Add-AzDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName
 
 		# get the account and ensure that it contains two data lake stores
-		$testStoreAdd = Get-AzureRmDataLakeAnalyticsAccount -Name $accountName
+		$testStoreAdd = Get-AzDataLakeAnalyticsAccount -Name $accountName
 		Assert-AreEqual 2 $testStoreAdd.DataLakeStoreAccounts.Count
 
 		# get the specific data source added
-		$adlsAccountInfo = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName
+		$adlsAccountInfo = Get-AzDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName
 		Assert-AreEqual $secondDataLakeAccountName $adlsAccountInfo.Name
 
 		# get the list of all data sources
-		$adlsAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName
+		$adlsAccountInfos = Get-AzDataLakeAnalyticsDataSource -Account $accountName
 		Assert-AreEqual 2 $adlsAccountInfos.Count
 
 		# remove the Data lake storage account
-		Assert-True {Remove-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName -Force -PassThru} "Remove Data Lake Store account failed."
+		Assert-True {Remove-AzDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName -Force -PassThru} "Remove Data Lake Store account failed."
 
 		# get the account and ensure that it contains one data lake store
-		$testStoreAdd = Get-AzureRmDataLakeAnalyticsAccount -Name $accountName
+		$testStoreAdd = Get-AzDataLakeAnalyticsAccount -Name $accountName
 		Assert-AreEqual 1 $testStoreAdd.DataLakeStoreAccounts.Count
 
 		# add a blob account to the analytics account
-		Add-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName -AccessKey $blobAccountKey
+		Add-AzDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName -AccessKey $blobAccountKey
 
 		# get the account and ensure that it contains one blob account
-		$testStoreAdd = Get-AzureRmDataLakeAnalyticsAccount -Name $accountName
+		$testStoreAdd = Get-AzDataLakeAnalyticsAccount -Name $accountName
 		Assert-AreEqual 1 $testStoreAdd.StorageAccounts.Count
 
 		# get the specific data source added
-		$blobAccountInfo = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName
+		$blobAccountInfo = Get-AzDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName
 		Assert-AreEqual $blobAccountName $blobAccountInfo.Name
 
 		# get the list of data sources (there should be two, one ADLS account and one blob storage account)
-		$blobAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName
+		$blobAccountInfos = Get-AzDataLakeAnalyticsDataSource -Account $accountName
 		Assert-AreEqual 2 $blobAccountInfos.Count
 
 		# remove the blob storage account
-		Assert-True {Remove-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName -Force -PassThru} "Remove blob Storage account failed."
+		Assert-True {Remove-AzDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName -Force -PassThru} "Remove blob Storage account failed."
 
 		# get the account and ensure that it contains no azure storage accounts
-		$testStoreAdd = Get-AzureRmDataLakeAnalyticsAccount -Name $accountName
+		$testStoreAdd = Get-AzDataLakeAnalyticsAccount -Name $accountName
 		Assert-True {$testStoreAdd.StorageAccounts -eq $null -or $testStoreAdd.StorageAccounts.Count -eq 0} "Remove blob storage reported success but failed to remove the account."
 
 		# Delete dataLakeAnalytics account
-		Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+		Assert-True {Remove-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
 		# Verify that it is gone by trying to get it again
-		Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		Assert-Throws {Get-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $secondDataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $secondDataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -386,40 +386,40 @@ function Test-DataLakeAnalyticsAccountTiers
     try
 	{
 		# Creating Account and initial setup
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		# Test to make sure the account doesn't exist
-		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		Assert-False {Test-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 		# Test it without specifying a resource group
-		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -Name $accountName}
+		Assert-False {Test-AzDataLakeAnalyticsAccount -Name $accountName}
 
-		New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
+		New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 
 		# Test 1: create account with no pricing tier and validate default
-		$accountCreated = New-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
+		$accountCreated = New-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
     
 		Assert-AreEqual "Consumption" $accountCreated.CurrentTier
 		Assert-AreEqual "Consumption" $accountCreated.NewTier
 
 		# Test 2: update this account to have a new pricing tier
-		$accountUpdated = Set-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tier Commitment100AUHours
+		$accountUpdated = Set-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tier Commitment100AUHours
 
 		Assert-AreEqual "Consumption" $accountUpdated.CurrentTier
 		Assert-AreEqual "Commitment100AUHours" $accountUpdated.NewTier
 
 		# Test 3: Create a new account with a tier specified
 		$secondAccountName = (Get-DataLakeAnalyticsAccountName)
-		$accountCreated = New-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $secondAccountName -Location $location -DefaultDataLakeStore $dataLakeAccountName -Tier Commitment100AUHours
+		$accountCreated = New-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $secondAccountName -Location $location -DefaultDataLakeStore $dataLakeAccountName -Tier Commitment100AUHours
 		Assert-AreEqual "Commitment100AUHours" $accountCreated.CurrentTier
 		Assert-AreEqual "Commitment100AUHours" $accountCreated.NewTier
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $secondAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $secondAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -439,9 +439,9 @@ function Test-DataLakeAnalyticsJob
 	try
 	{
 		# Creating Account and initial setup
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
-		$accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
+		New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
+		$accountCreated = New-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
 		$nowTime = $accountCreated.CreationTime
         
 		Assert-AreEqual $accountName $accountCreated.Name
@@ -452,7 +452,7 @@ function Test-DataLakeAnalyticsJob
 		# In loop to check if account exists
 		for ($i = 0; $i -le 60; $i++)
 		{
-			[array]$accountGet = Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			[array]$accountGet = Get-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
 			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
@@ -474,12 +474,12 @@ function Test-DataLakeAnalyticsJob
 		# Submit a job
 		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("jobTest01")
 		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
-		$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -AccountName $accountName -Name "TestJob" -Script "DROP DATABASE IF EXISTS foo; CREATE DATABASE foo;"
+		$jobInfo = Submit-AzDataLakeAnalyticsJob -AccountName $accountName -Name "TestJob" -Script "DROP DATABASE IF EXISTS foo; CREATE DATABASE foo;"
 		Assert-NotNull {$jobInfo}
 
 		# "Cancel" the fake job right away
-		Stop-AzureRmDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId -Force
-		$cancelledJob = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId
+		Stop-AzDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId -Force
+		$cancelledJob = Get-AzDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId
 
 		# Get the specific job, and the list of all jobs in the resource group
 		Assert-NotNull {$cancelledJob}
@@ -487,14 +487,14 @@ function Test-DataLakeAnalyticsJob
 		# Verify the job was actually cancelled.
 		Assert-True {$cancelledJob.Result -like "*Cancel*"}
 
-		Assert-NotNull {Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName}
+		Assert-NotNull {Get-AzDataLakeAnalyticsJob -AccountName $accountName}
 
-		$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -SubmittedAfter $([DateTimeOffset]($nowTime).AddMinutes(-10))
+		$jobsWithDateOffset = Get-AzDataLakeAnalyticsJob -AccountName $accountName -SubmittedAfter $([DateTimeOffset]($nowTime).AddMinutes(-10))
 
 		Assert-True {$jobsWithDateOffset.Count -gt 0} "Failed to retrieve jobs submitted after ten miuntes ago"
 
 		# We add ten minutes to ensure that the timing is right, since we are using the account creation time, and not truly "now"
-		$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -SubmittedBefore $([DateTimeOffset]($nowTime).AddMinutes(10)) 
+		$jobsWithDateOffset = Get-AzDataLakeAnalyticsJob -AccountName $accountName -SubmittedBefore $([DateTimeOffset]($nowTime).AddMinutes(10)) 
 
 		Assert-True {$jobsWithDateOffset.Count -gt 0} "Failed to retrieve jobs submitted before right now"
 
@@ -535,17 +535,17 @@ function Test-DataLakeAnalyticsJob
 		Assert-AreEqual $expectedScript $jobInfo.Properties.Script
 
 		# Delete the DataLakeAnalytics account
-		Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+		Assert-True {Remove-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
 		# Verify that it is gone by trying to get it again
-		Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		Assert-Throws {Get-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -566,9 +566,9 @@ function Test-DataLakeAnalyticsJobRelationships
 	try
 	{
 		# Creating Account and initial setup
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
-		$accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
+		New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
+		$accountCreated = New-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
 		$nowTime = $accountCreated.CreationTime
         
 		Assert-AreEqual $accountName $accountCreated.Name
@@ -579,7 +579,7 @@ function Test-DataLakeAnalyticsJobRelationships
 		# In loop to check if account exists
 		for ($i = 0; $i -le 60; $i++)
 		{
-			[array]$accountGet = Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			[array]$accountGet = Get-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
 			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
@@ -610,7 +610,7 @@ function Test-DataLakeAnalyticsJobRelationships
 		$pipelineUri = "https://begoldsm.contoso.com/jobs"
 
 		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
-		$jobInfo = Submit-AzureRmDataLakeAnalyticsJob `
+		$jobInfo = Submit-AzDataLakeAnalyticsJob `
 			-AccountName $accountName `
 			-Name "TestJob" `
 			-Script "DROP DATABASE IF EXISTS foo; CREATE DATABASE foo;" `
@@ -622,7 +622,7 @@ function Test-DataLakeAnalyticsJobRelationships
 			-RunId $guidForJobRun
 
 		# wait for the job to finish and then confirm the relationship properties
-		$jobInfo = Wait-AzureRmDataLakeAnalyticsJob -Account $accountName -JobId $jobInfo.JobId
+		$jobInfo = Wait-AzDataLakeAnalyticsJob -Account $accountName -JobId $jobInfo.JobId
 		
 		Assert-NotNull {$jobInfo}
 		Assert-AreEqual $guidForJobRecurrence $jobInfo.Related.RecurrenceId
@@ -633,33 +633,33 @@ function Test-DataLakeAnalyticsJobRelationships
 		Assert-AreEqual $pipelineUri $jobInfo.Related.PipelineUri
 
 		# list all jobs with a specific pipelineId and then a specific recurrenceId
-		$jobList = Get-AzureRmDataLakeAnalyticsJob -Account $accountName -PipelineId $guidForJobPipeline
+		$jobList = Get-AzDataLakeAnalyticsJob -Account $accountName -PipelineId $guidForJobPipeline
 		Assert-True {$jobList.Count -ge 1}
 
-		$jobList = Get-AzureRmDataLakeAnalyticsJob -Account $accountName -RecurrenceId $guidForJobRecurrence
+		$jobList = Get-AzDataLakeAnalyticsJob -Account $accountName -RecurrenceId $guidForJobRecurrence
 		Assert-True {$jobList.Count -ge 1}
 
 		# get and list pipelines and recurrences
-		$recurrenceList = Get-AzureRmDataLakeAnalyticsJobRecurrence -Account $accountName
+		$recurrenceList = Get-AzDataLakeAnalyticsJobRecurrence -Account $accountName
 		Assert-True {$recurrenceList.Count -ge 1}
 
-		$recurrence = Get-AzureRmDataLakeAnalyticsJobRecurrence -Account $accountName -RecurrenceId $guidForJobRecurrence
+		$recurrence = Get-AzDataLakeAnalyticsJobRecurrence -Account $accountName -RecurrenceId $guidForJobRecurrence
 		Assert-AreEqual $recurrenceName $recurrence.RecurrenceName
 		Assert-AreEqual $guidForJobRecurrence $recurrence.RecurrenceId
 
-		$pipelineList = Get-AzureRmDataLakeAnalyticsJobPipeline -Account $accountName
+		$pipelineList = Get-AzDataLakeAnalyticsJobPipeline -Account $accountName
 		Assert-True {$pipelineList.Count -ge 1}
 
-		$pipeline = Get-AzureRmDataLakeAnalyticsJobPipeline -Account $accountName -PipelineId $guidForJobPipeline
+		$pipeline = Get-AzDataLakeAnalyticsJobPipeline -Account $accountName -PipelineId $guidForJobPipeline
 		Assert-AreEqual $pipelineName $pipeline.PipelineName
 		Assert-AreEqual $guidForJobPipeline $pipeline.PipelineId
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -681,9 +681,9 @@ function Test-NegativeDataLakeAnalyticsAccount
 	try
 	{
 		# Creating Account and initial setup
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
-		$accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
+		New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
+		$accountCreated = New-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
     
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
@@ -693,7 +693,7 @@ function Test-NegativeDataLakeAnalyticsAccount
 		# In loop to check if account exists
 		for ($i = 0; $i -le 60; $i++)
 		{
-			[array]$accountGet = Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			[array]$accountGet = Get-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
 			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
@@ -709,30 +709,30 @@ function Test-NegativeDataLakeAnalyticsAccount
 		}
 
 		# attempt to recreate the already created account
-		Assert-Throws {New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName}
+		Assert-Throws {New-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName}
 
 		# attempt to update a non-existent account
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
-		Assert-Throws {Set-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tag $tagsToUpdate}
+		Assert-Throws {Set-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tag $tagsToUpdate}
 
 		# attempt to get a non-existent account
-		Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName}
+		Assert-Throws {Get-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName}
 
 		# Delete dataLakeAnalytics account
-		Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+		Assert-True {Remove-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
 		# Verify that trying to delete a non existent account now throws
-		Assert-Throws {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru}
+		Assert-Throws {Remove-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru}
 
 		# Verify that it is gone by trying to get it again
-		Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		Assert-Throws {Get-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -754,9 +754,9 @@ function Test-NegativeDataLakeAnalyticsJob
 	try
 	{
 		# Creating Account and initial setup
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
-		$accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
+		New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
+		$accountCreated = New-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
         $nowTime = $accountCreated.CreationTime
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
@@ -766,7 +766,7 @@ function Test-NegativeDataLakeAnalyticsJob
 		# In loop to check if account exists
 		for ($i = 0; $i -le 60; $i++)
 		{
-			[array]$accountGet = Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			[array]$accountGet = Get-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
 			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
@@ -782,30 +782,30 @@ function Test-NegativeDataLakeAnalyticsJob
 		}
 
 		# attempt to "cancel" a non-existent job
-		Assert-Throws {Stop-AzureRmDataLakeAnalyticsJob -AccountName $accountName -JobIdentity [Guid]::Empty}
+		Assert-Throws {Stop-AzDataLakeAnalyticsJob -AccountName $accountName -JobIdentity [Guid]::Empty}
 
 		# Attempt to get a job that doesn't exist
-		Assert-Throws {Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -JobIdentity [Guid]::Empty}
+		Assert-Throws {Get-AzDataLakeAnalyticsJob -AccountName $accountName -JobIdentity [Guid]::Empty}
 
 		# Attempt to Get debug data for a non-existent job
-		Assert-Throws {Get-AzureRmDataLakeAnalyticsJobDebugInfo -AccountName $accountName -JobIdentity [Guid]::Empty}
+		Assert-Throws {Get-AzDataLakeAnalyticsJobDebugInfo -AccountName $accountName -JobIdentity [Guid]::Empty}
 
-		$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -SubmittedAfter $([DateTimeOffset]$nowTime)
+		$jobsWithDateOffset = Get-AzDataLakeAnalyticsJob -AccountName $accountName -SubmittedAfter $([DateTimeOffset]$nowTime)
 
 		Assert-True {$jobsWithDateOffset.Count -eq 0} "Retrieval of jobs submitted after right now returned results and should not have"
 
 		# Delete the DataLakeAnalytics account
-		Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+		Assert-True {Remove-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
 		# Verify that it is gone by trying to get it again
-		Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		Assert-Throws {Get-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -834,9 +834,9 @@ function Test-DataLakeAnalyticsCatalog
 	try
 	{
 		# Creating Account and initial setup
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-		New-AzureRmDataLakeStoreAccount -Name $dataLakeAccountName -Location $location -ResourceGroupName $resourceGroupName
-		$accountCreated = New-AzureRmDataLakeAnalyticsAccount -Name $accountName -Location $location -ResourceGroupName $resourceGroupName -DefaultDataLakeStore $dataLakeAccountName
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
+		New-AzDataLakeStoreAccount -Name $dataLakeAccountName -Location $location -ResourceGroupName $resourceGroupName
+		$accountCreated = New-AzDataLakeAnalyticsAccount -Name $accountName -Location $location -ResourceGroupName $resourceGroupName -DefaultDataLakeStore $dataLakeAccountName
     
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
@@ -846,7 +846,7 @@ function Test-DataLakeAnalyticsCatalog
 		# In loop to check if account exists
 		for ($i = 0; $i -le 60; $i++)
 		{
-			[array]$accountGet = Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			[array]$accountGet = Get-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
 			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
@@ -963,12 +963,12 @@ function Test-DataLakeAnalyticsCatalog
 		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("createCatalogJob01")
 		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
 		
-		$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -AccountName $accountName -Name "TestJob" -Script $scriptToRun
-		$result = Wait-AzureRMDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId
+		$jobInfo = Submit-AzDataLakeAnalyticsJob -AccountName $accountName -Name "TestJob" -Script $scriptToRun
+		$result = Wait-AzDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId
 		Assert-AreEqual "Succeeded" $result.Result
 
 		# retrieve the list of databases and ensure the created DB is in it
-		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Database
+		$itemList = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Database
 
 		Assert-NotNull $itemList "The database list is null"
 
@@ -986,12 +986,12 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the database $databaseName in the database list"
 	
 		# retrieve the specific DB
-		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Database -Path $databaseName
+		$specificItem = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Database -Path $databaseName
 		Assert-NotNull $specificItem "Could not retrieve the db by name"
 		Assert-AreEqual $databaseName $specificItem.Name
 
 		# retrieve the list of tables and ensure the created table is in it
-		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Table -Path "$databaseName.dbo"
+		$itemList = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Table -Path "$databaseName.dbo"
 
 		Assert-NotNull $itemList "The table list is null"
 
@@ -1009,7 +1009,7 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the table $tableName in the table list"
 	
 		# retrieve tables from the db (no schema)
-		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Table -Path "$databaseName"
+		$itemList = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Table -Path "$databaseName"
 
 		Assert-NotNull $itemList "The table list is null"
 
@@ -1027,12 +1027,12 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the table $tableName in the table list"
 
 		# retrieve the specific table
-		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Table -Path "$databaseName.dbo.$tableName"
+		$specificItem = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Table -Path "$databaseName.dbo.$tableName"
 		Assert-NotNull $specificItem "Could not retrieve the table by name"
 		Assert-AreEqual $tableName $specificItem.Name
 
 		# retrieve the list of table partitions
-		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TablePartition -Path "$databaseName.dbo.$tableName"
+		$itemList = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TablePartition -Path "$databaseName.dbo.$tableName"
 
 		Assert-NotNull $itemList "The table partition list is null"
 
@@ -1041,12 +1041,12 @@ function Test-DataLakeAnalyticsCatalog
 		$itemToFind = $itemList[0]
 	
 		# retrieve the specific table partition
-		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TablePartition -Path "$databaseName.dbo.$tableName.[$($itemToFind.Name)]"
+		$specificItem = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TablePartition -Path "$databaseName.dbo.$tableName.[$($itemToFind.Name)]"
 		Assert-NotNull $specificItem "Could not retrieve the table partition by name"
 		Assert-AreEqual $itemToFind.Name $specificItem.Name
 
 		# retrieve the list of table valued functions and ensure the created tvf is in it
-		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TableValuedFunction -Path "$databaseName.dbo"
+		$itemList = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TableValuedFunction -Path "$databaseName.dbo"
 
 		Assert-NotNull $itemList "The TVF list is null"
 
@@ -1064,7 +1064,7 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the TVF $tvfName in the TVF list"
 	
 		# retrieve the TVF list from the db (no schema)
-		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TableValuedFunction -Path "$databaseName"
+		$itemList = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TableValuedFunction -Path "$databaseName"
 
 		Assert-NotNull $itemList "The TVF list is null"
 
@@ -1082,12 +1082,12 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the TVF $tvfName in the TVF list"
 
 		# retrieve the specific TVF
-		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TableValuedFunction -Path "$databaseName.dbo.$tvfName"
+		$specificItem = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TableValuedFunction -Path "$databaseName.dbo.$tvfName"
 		Assert-NotNull $specificItem "Could not retrieve the TVF by name"
 		Assert-AreEqual $tvfName $specificItem.Name
 
 		# retrieve the list of procedures and ensure the created procedure is in it
-		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Procedure -Path "$databaseName.dbo"
+		$itemList = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Procedure -Path "$databaseName.dbo"
 
 		Assert-NotNull $itemList "The procedure list is null"
 
@@ -1105,12 +1105,12 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the procedure $procName in the procedure list"
 	
 		# retrieve the specific procedure
-		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Procedure -Path "$databaseName.dbo.$procName"
+		$specificItem = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Procedure -Path "$databaseName.dbo.$procName"
 		Assert-NotNull $specificItem "Could not retrieve the procedure by name"
 		Assert-AreEqual $procName $specificItem.Name
 
 		# retrieve the list of views and ensure the created view is in it
-		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType View -Path "$databaseName.dbo"
+		$itemList = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType View -Path "$databaseName.dbo"
 
 		Assert-NotNull $itemList "The view list is null"
 
@@ -1128,7 +1128,7 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the view $viewName in the view list"
 
 		# get the views from the db only (no schema)
-		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType View -Path "$databaseName"
+		$itemList = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType View -Path "$databaseName"
 
 		Assert-NotNull $itemList "The view list is null"
 
@@ -1147,7 +1147,7 @@ function Test-DataLakeAnalyticsCatalog
 
 
 		# retrieve the specific view
-		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType View -Path "$databaseName.dbo.$viewName"
+		$specificItem = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType View -Path "$databaseName.dbo.$viewName"
 		Assert-NotNull $specificItem "Could not retrieve the view by name"
 		Assert-AreEqual $viewName $specificItem.Name
 
@@ -1157,20 +1157,20 @@ function Test-DataLakeAnalyticsCatalog
 		$secretName2 = $secretName + "dup"
 		$secret2 = New-Object System.Management.Automation.PSCredential($secretName2,$pw)
 
-		New-AzureRmDataLakeAnalyticsCatalogSecret -AccountName $accountName -secret $secret -DatabaseName $databaseName -Uri "https://pstest.contoso.com:443"
-		New-AzureRmDataLakeAnalyticsCatalogSecret -AccountName $accountName -secret $secret2 -DatabaseName $databaseName -Uri "https://pstest.contoso.com:443"
+		New-AzDataLakeAnalyticsCatalogSecret -AccountName $accountName -secret $secret -DatabaseName $databaseName -Uri "https://pstest.contoso.com:443"
+		New-AzDataLakeAnalyticsCatalogSecret -AccountName $accountName -secret $secret2 -DatabaseName $databaseName -Uri "https://pstest.contoso.com:443"
 
 		# verify that the secret can be retrieved
 		# NOTE: Secret CRUD is deprecated and will be removed soon.
 		# Credential creation through jobs has already been completely removed, so secret CRUD will be removed soon.
-		$getSecret = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName"
+		$getSecret = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName"
 		Assert-NotNull $getSecret "Could not retrieve the secret"
 		
 		# Create the credential using the new create credential cmdlet
-		New-AzureRMDataLakeAnalyticsCatalogCredential -AccountName $accountName -DatabaseName $databaseName -CredentialName $credentialName -Credential $secret -Uri "https://fakedb.contoso.com:443"
+		New-AzDataLakeAnalyticsCatalogCredential -AccountName $accountName -DatabaseName $databaseName -CredentialName $credentialName -Credential $secret -Uri "https://fakedb.contoso.com:443"
 
 		# retrieve the list of credentials and ensure the created credential is in it
-		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Credential -Path $databaseName
+		$itemList = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Credential -Path $databaseName
 
 		Assert-NotNull $itemList "The credential list is null"
 
@@ -1186,51 +1186,51 @@ function Test-DataLakeAnalyticsCatalog
 		}
 	
 		# retrieve the specific credential
-		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"
+		$specificItem = Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"
 		Assert-NotNull $specificItem "Could not retrieve the credential by name"
 		Assert-AreEqual $credentialName $specificItem.Name
 
 		# Remove the credential
-		Remove-AzureRmDataLakeAnalyticsCatalogCredential -AccountName $accountName -DatabaseName $databaseName -Name $credentialName
+		Remove-AzDataLakeAnalyticsCatalogCredential -AccountName $accountName -DatabaseName $databaseName -Name $credentialName
 		
 		# Verify that trying to get the credential fails
-		Assert-Throws {Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"}
+		Assert-Throws {Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"}
 
 		# recreate the credential to drop with recursive parameters to ensure that it still works.
-		New-AzureRMDataLakeAnalyticsCatalogCredential -AccountName $accountName -DatabaseName $databaseName -CredentialName $credentialName -Credential $secret -Uri "https://fakedb.contoso.com:443"
+		New-AzDataLakeAnalyticsCatalogCredential -AccountName $accountName -DatabaseName $databaseName -CredentialName $credentialName -Credential $secret -Uri "https://fakedb.contoso.com:443"
 
 		# Remove the credential with recurse
-		Remove-AzureRmDataLakeAnalyticsCatalogCredential -AccountName $accountName -DatabaseName $databaseName -Name $credentialName -Recurse -Force
+		Remove-AzDataLakeAnalyticsCatalogCredential -AccountName $accountName -DatabaseName $databaseName -Name $credentialName -Recurse -Force
 		
 		# Verify that trying to get the credential fails
-		Assert-Throws {Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"}
+		Assert-Throws {Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"}
 
 		# delete the secret
-		Remove-AzureRmDataLakeAnalyticsCatalogSecret -AccountName $accountName -Name $secretName -DatabaseName $databaseName -Force
+		Remove-AzDataLakeAnalyticsCatalogSecret -AccountName $accountName -Name $secretName -DatabaseName $databaseName -Force
 
 		# verify that the secret cannot be retrieved
-		Assert-Throws {Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName"}
+		Assert-Throws {Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName"}
 
 		# delete all secrets
-		Remove-AzureRmDataLakeAnalyticsCatalogSecret -AccountName $accountName -DatabaseName $databaseName -Force
+		Remove-AzDataLakeAnalyticsCatalogSecret -AccountName $accountName -DatabaseName $databaseName -Force
 
 		# verify that the second secret cannot be retrieved
-		Assert-Throws {Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName2"}
+		Assert-Throws {Get-AzDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName2"}
 
 		# prepare to grant/revoke ACLs
 		$userPrincipalId = "027c28d5-c91d-49f0-98c5-d10134b169b3"
 		$groupPrincipalId = "9b6130bf-d65e-4464-b92e-733da0bc1c43"
 
 		# get the initial number of ACL by db
-		$aclByDbList = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ItemType Database -Path $databaseName
+		$aclByDbList = Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ItemType Database -Path $databaseName
 		$aclByDbInitialCount = $aclByDbList.count
 
 		# get the initial number of ACL by catalog
-		$aclList = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName
+		$aclList = Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName
 		$aclInitialCount = $aclList.count
 
 		# grant ACL entry for user to the db
-		$aclByDbList = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -User -ObjectId $userPrincipalId -ItemType Database -Path $databaseName -Permissions Read
+		$aclByDbList = Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -User -ObjectId $userPrincipalId -ItemType Database -Path $databaseName -Permissions Read
 
 		Assert-AreEqual $($aclByDbInitialCount+1) $aclByDbList.count
 		$found = $false
@@ -1250,13 +1250,13 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the entry for $userPrincipalId in the ACL list of $databaseName"
 
 		# revoke ACE for user from the db
-		Assert-True {Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -User -ObjectId $userPrincipalId -ItemType Database -Path $databaseName -PassThru} "Remove ACE failed."
+		Assert-True {Remove-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -User -ObjectId $userPrincipalId -ItemType Database -Path $databaseName -PassThru} "Remove ACE failed."
 
-		$aclByDbList = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ItemType Database -Path $databaseName
+		$aclByDbList = Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ItemType Database -Path $databaseName
 		Assert-AreEqual $aclByDbInitialCount $aclByDbList.count
 
 		# grant ACL entry for group to the db
-		$aclByDbList = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Group -ObjectId $groupPrincipalId -ItemType Database -Path $databaseName -Permissions Read
+		$aclByDbList = Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Group -ObjectId $groupPrincipalId -ItemType Database -Path $databaseName -Permissions Read
 		Assert-AreEqual $($aclByDbInitialCount+1) $aclByDbList.count
 		$found = $false
 		foreach($acl in $aclByDbList)
@@ -1275,13 +1275,13 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the entry for $groupPrincipalId in the ACL list of $databaseName"
 
 		# revoke ACE for group from the db
-		Assert-True {Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Group -ObjectId $groupPrincipalId -ItemType Database -Path $databaseName -PassThru} "Remove ACE failed."
+		Assert-True {Remove-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Group -ObjectId $groupPrincipalId -ItemType Database -Path $databaseName -PassThru} "Remove ACE failed."
 
-		$aclByDbList = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ItemType Database -Path $databaseName
+		$aclByDbList = Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ItemType Database -Path $databaseName
 		Assert-AreEqual $aclByDbInitialCount $aclByDbList.count
 
 		# set ACL entry for other
-		$aclByDbList = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Other -ItemType Database -Path $databaseName -Permissions None
+		$aclByDbList = Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Other -ItemType Database -Path $databaseName -Permissions None
 		Assert-AreEqual $aclByDbInitialCount $aclByDbList.count
 		$found = $false
 		foreach($acl in $aclByDbList)
@@ -1297,7 +1297,7 @@ function Test-DataLakeAnalyticsCatalog
 
 		Assert-True {$found} "Could not find the entry for Other in the ACL list of $databaseName"
 
-		$aclByDbList = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Other -ItemType Database -Path $databaseName -Permissions Read
+		$aclByDbList = Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Other -ItemType Database -Path $databaseName -Permissions Read
 		Assert-AreEqual $aclByDbInitialCount $aclByDbList.count
 		$found = $false
 		foreach($acl in $aclByDbList)
@@ -1314,17 +1314,17 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the entry for Other in the ACL list of $databaseName"
 
 		# set owner permission to the db
-		$prevDbOwnerAcl = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -UserOwner -ItemType Database -Path $databaseName
+		$prevDbOwnerAcl = Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -UserOwner -ItemType Database -Path $databaseName
 		Assert-AreNotEqual None $prevDbOwnerAcl.Permissions
-		$currentDbOwnerAcl = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -UserOwner -ItemType Database -Path $databaseName -Permissions None
+		$currentDbOwnerAcl = Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -UserOwner -ItemType Database -Path $databaseName -Permissions None
 		Assert-AreEqual None $currentDbOwnerAcl.Permissions
-		$prevDbGroupAcl = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -GroupOwner -ItemType Database -Path $databaseName
+		$prevDbGroupAcl = Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -GroupOwner -ItemType Database -Path $databaseName
 		Assert-AreNotEqual None $prevDbGroupAcl.Permissions
-		$currentDbGroupAcl = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -GroupOwner -ItemType Database -Path $databaseName -Permissions None
+		$currentDbGroupAcl = Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -GroupOwner -ItemType Database -Path $databaseName -Permissions None
 		Assert-AreEqual None $currentDbGroupAcl.Permissions
 
 		# grant ACE for user to the catalog
-		$aclList = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -User -ObjectId $userPrincipalId -Permissions Read
+		$aclList = Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -User -ObjectId $userPrincipalId -Permissions Read
 		Assert-AreEqual $($aclInitialCount+1) $aclList.count
 		$found = $false
 		foreach($acl in $aclList)
@@ -1343,13 +1343,13 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the entry for $userPrincipalId in the Catalog ACL list"
 
 		# revoke ACE for user from the catalog
-		Assert-True {Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -User -ObjectId $userPrincipalId -PassThru} "Remove ACE failed."
+		Assert-True {Remove-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -User -ObjectId $userPrincipalId -PassThru} "Remove ACE failed."
 
-		$aclList = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName
+		$aclList = Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName
 		Assert-AreEqual $aclInitialCount $aclList.count
 
 		# grant ACL entry for group to the catalog
-		$aclList = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Group -ObjectId $groupPrincipalId -Permissions Read
+		$aclList = Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Group -ObjectId $groupPrincipalId -Permissions Read
 
 		Assert-AreEqual $($aclInitialCount+1) $aclList.count
 		$found = $false
@@ -1369,13 +1369,13 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the entry for $groupPrincipalId in the Catalog ACL list"
 
 		# revoke ACE for group from the catalog
-		Assert-True {Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Group -ObjectId $groupPrincipalId -PassThru} "Remove ACE failed."
+		Assert-True {Remove-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Group -ObjectId $groupPrincipalId -PassThru} "Remove ACE failed."
 
-		$aclList = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName
+		$aclList = Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName
 		Assert-AreEqual $aclInitialCount $aclList.count
 
 		# set ACL entry for other
-		$aclList = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Other -Permissions None
+		$aclList = Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Other -Permissions None
 		Assert-AreEqual $aclInitialCount $aclList.count
 		$found = $false
 		foreach($acl in $aclList)
@@ -1391,7 +1391,7 @@ function Test-DataLakeAnalyticsCatalog
 
 		Assert-True {$found} "Could not find the entry for Other in the Catalog ACL list"
 
-		$aclList = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Other -Permissions Read
+		$aclList = Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Other -Permissions Read
 		Assert-AreEqual $aclInitialCount $aclList.count
 		$found = $false
 		foreach($acl in $aclList)
@@ -1408,26 +1408,26 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the entry for Other in the Catalog ACL list"
 
 		# set owner permission to the catalog
-		$prevCatalogOwnerAcl = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -UserOwner
+		$prevCatalogOwnerAcl = Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -UserOwner
 		Assert-AreNotEqual None $prevCatalogOwnerAcl.Permissions
-		$currentCatalogOwnerAcl = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -UserOwner -Permissions None
+		$currentCatalogOwnerAcl = Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -UserOwner -Permissions None
 		Assert-AreEqual None $currentCatalogOwnerAcl.Permissions
-		$prevCatalogGroupAcl = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -GroupOwner
+		$prevCatalogGroupAcl = Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -GroupOwner
 		Assert-AreNotEqual None $prevCatalogGroupAcl.Permissions
-		$currentCatalogGroupAcl = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -GroupOwner -Permissions None
+		$currentCatalogGroupAcl = Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -GroupOwner -Permissions None
 		Assert-AreEqual None $currentCatalogGroupAcl.Permissions
 
 		# Delete the DataLakeAnalytics account
-		Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+		Assert-True {Remove-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
 		# Verify that it is gone by trying to get it again
-		Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		Assert-Throws {Get-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
