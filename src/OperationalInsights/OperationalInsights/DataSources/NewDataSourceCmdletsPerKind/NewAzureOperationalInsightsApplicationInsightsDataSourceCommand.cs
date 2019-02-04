@@ -38,17 +38,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public override string WorkspaceName { get; set; }
 
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The subscription id of the linked application.")]
         [ValidateNotNullOrEmpty]
         public string ApplicationSubscriptionId { get; set; }
 
-        [Parameter(Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name of the linked application.")]
         [ValidateNotNullOrEmpty]
         public string ApplicationResourceGroupName { get; set; }
 
-        [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the linked application.")]
         [ValidateNotNullOrEmpty]
         public string ApplicationName { get; set; }
