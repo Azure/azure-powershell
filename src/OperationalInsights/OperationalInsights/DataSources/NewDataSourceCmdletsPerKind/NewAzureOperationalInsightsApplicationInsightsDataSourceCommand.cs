@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Linq;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -22,36 +24,53 @@ namespace Microsoft.Azure.Commands.OperationalInsights
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsApplicationInsightsDataSource", SupportsShouldProcess = true, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
     public class NewAzureOperationalInsightsApplicationInsightsDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {
-        [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true, 
+        const string ByWorkspaceNameByApplicationResourceId = "ByWorkspaceNameByApplicationResourceId";
+        const string ByWorkspaceObjectByApplicationResourceId = "ByWorkspaceObjectByApplicationResourceId";
+        const string ByWorkspaceNameByApplicationParameters = "ByWorkspaceNameByApplicationParameters";
+        const string ByWorkspaceObjectByApplicationParameters = "ByWorkspaceObjectByApplicationParameters";
+
+        [Parameter(Position = 0, ParameterSetName = ByWorkspaceObjectByApplicationParameters, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The workspace that will contain the data source.")]
+        [Parameter(ParameterSetName = ByWorkspaceObjectByApplicationResourceId)]
         [ValidateNotNull]
         public override PSWorkspace Workspace { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 1, ParameterSetName = ByWorkspaceNameByApplicationParameters, Mandatory = true, ValueFromPipelineByPropertyName = true, 
             HelpMessage = "The resource group name.")]
+        [Parameter(ParameterSetName = ByWorkspaceNameByApplicationResourceId)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 2, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 2, ParameterSetName = ByWorkspaceNameByApplicationParameters, Mandatory = true, ValueFromPipelineByPropertyName = true, 
             HelpMessage = "The name of the workspace that will contain the data source.")]
         [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = ByWorkspaceNameByApplicationResourceId)]
         public override string WorkspaceName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ParameterSetName = ByWorkspaceNameByApplicationParameters, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The subscription id of the linked application.")]
         [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = ByWorkspaceObjectByApplicationParameters)]
         public string ApplicationSubscriptionId { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ParameterSetName = ByWorkspaceNameByApplicationParameters, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name of the linked application.")]
         [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = ByWorkspaceObjectByApplicationParameters)]
         public string ApplicationResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ParameterSetName = ByWorkspaceNameByApplicationParameters, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the linked application.")]
         [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = ByWorkspaceObjectByApplicationParameters)]
         public string ApplicationName { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = ByWorkspaceNameByApplicationResourceId, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The linked application resource id.")]
+        [Parameter(ParameterSetName = ByWorkspaceObjectByApplicationResourceId)]
+        [ValidateNotNullOrEmpty]
+        public string ApplicationResourceId { get; set; }
 
         [Parameter(Mandatory = false, 
             HelpMessage = "Don't ask for confirmation.")]
@@ -60,12 +79,42 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public override void ExecuteCmdlet()
         {
             this.Name = PSDataSourceKinds.ApplicationInsights;
+            if (ParameterSetName == ByWorkspaceObjectByApplicationParameters || ParameterSetName == ByWorkspaceObjectByApplicationResourceId)
+            {
+                ResourceGroupName = Workspace.ResourceGroupName;
+                WorkspaceName = Workspace.Name;
+            }
+
+            var resourceId = default(string);
+
+            if (ParameterSetName == ByWorkspaceObjectByApplicationParameters || ParameterSetName == ByWorkspaceNameByApplicationParameters)
+            {
+                resourceId = string.Format(Resources.ApplicationInsightsArmResourceFormat, ApplicationSubscriptionId, ApplicationResourceGroupName, ApplicationName);
+            }
+
+            if (ParameterSetName == ByWorkspaceObjectByApplicationResourceId || ParameterSetName == ByWorkspaceNameByApplicationResourceId)
+            {
+                ValidateResourceId(ApplicationResourceId);
+                resourceId = ApplicationResourceId;
+            }
+
             var applicationInsightsProperties = new PSApplicationInsightsDataSourceProperties()
             {
-                LinkedResourceId = string.Format(Resources.ApplicationInsightsArmResourceFormat,
-                    ApplicationSubscriptionId, ApplicationResourceGroupName, ApplicationName)
+                LinkedResourceId = resourceId
             };
             CreatePSDataSourceWithProperties(applicationInsightsProperties);
+        }
+
+        private void ValidateResourceId(string resourceId)
+        {
+            int[] indicesToRemove = {1, 3, 7};
+            // get only constant tokens in arm url template and compare
+            var actualTokens = resourceId.Trim('/').Split('/').Where((token, idx) => !indicesToRemove.Contains(idx)).ToArray();
+            var expectedTokens = Resources.ApplicationInsightsArmResourceFormat.Trim('/').Split('/').Where((token, idx) => !indicesToRemove.Contains(idx)).ToArray();
+            if (actualTokens.Except(expectedTokens).Any())
+            {
+                throw new ArgumentException(Resources.DataSourceInvalidApplicationInsightsResourceId);
+            }
         }
     }
 }

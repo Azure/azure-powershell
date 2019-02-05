@@ -117,6 +117,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Application resource id is invalid..
+        /// </summary>
+        internal static string DataSourceInvalidApplicationInsightsResourceId {
+            get {
+                return ResourceManager.GetString("DataSourceInvalidApplicationInsightsResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kind cannot be null..
         /// </summary>
         internal static string DataSourceKindCannotBeEmpty {
