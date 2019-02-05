@@ -12,31 +12,31 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-<# 
+<#
     .SYNOPSIS
     Tests the Get-AzSqlCapability cmdlet
 #>
 function Test-Capabilities
 {
-	$location = "Southeast Asia"
+	$location = "eastus"
 	$all = Get-AzSqlCapability $location
 	Validate-Capabilities $all
-	
+
 	$default = Get-AzSqlCapability $location -Defaults
 	Validate-Capabilities $default
-	
+
 	$version = Get-AzSqlCapability $location -ServerVersionName "12.0"
 	Validate-Capabilities $default
-	
+
 	$edition = Get-AzSqlCapability $location -EditionName "Premium"
 	Validate-Capabilities $default
-	
+
 	$so = Get-AzSqlCapability $location -ServiceObjectiveName "S3"
 	Validate-Capabilities $default
 
 }
 
-<# 
+<#
     .SYNOPSIS
     Validates that a LocationCapabilities object is valid and has all properties filled out
 #>
@@ -57,15 +57,15 @@ function Validate-Capabilities ($capabilities)
 			Assert-NotNull $edition.EditionName
 			Assert-NotNull $edition.Status
 			Assert-True {$edition.SupportedServiceObjectives.Count -gt 0}
-			
+
 			foreach($so in $edition.SupportedServiceObjectives) {
 				Assert-NotNull $so
 				Assert-NotNull $so.ServiceObjectiveName
 				Assert-NotNull $so.Status
 				Assert-NotNull $so.Id
 				Assert-AreNotEqual $so.Id [System.Guid]::Empty
-				Assert-True {$so.SupportedMaxSizes.Count -gt 0}
-			
+				#Assert-True {$so.SupportedMaxSizes.Count -gt 0} # Vcore service objectives have empty list of SupportedMaxSizes
+
 				foreach($size in $so.SupportedMaxSizes) {
 					Assert-NotNull $size
 					Assert-NotNull $size.MinValue.Limit

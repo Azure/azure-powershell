@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Kusto.Commands
 {
-
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoDatabase",
          DefaultParameterSetName = ParameterSet),
      OutputType(typeof(PSKustoDatabase))]

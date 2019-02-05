@@ -1,3 +1,82 @@
+## 1.2.0 - January 2019
+#### Az.Accounts
+* Add interactive and username/password authentication for Windows PowerShell 5.1 only
+* Update incorrect online help URLs
+* Add warning message in PS Core for Uninstall-AzureRm
+
+#### Az.Aks
+* Update incorrect online help URLs
+
+#### Az.Automation
+* Added support for Python 2 runbooks
+* Update incorrect online help URLs
+
+#### Az.Cdn
+* Update incorrect online help URLs
+
+#### Az.Compute
+* Add Invoke-AzVMReimage cmdlet
+* Add TempDisk parameter to Set-AzVmss
+* Fix the warning message of New-AzVM
+
+#### Az.ContainerRegistry
+* Update incorrect online help URLs
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 3.0.0
+
+#### Az.DataLakeStore
+* Fix issue with ADLS endpoint when using MSI
+    - More information here: https://github.com/Azure/azure-powershell/issues/7462
+* Update incorrect online help URLs
+
+#### Az.IotHub
+* Add Encoding format to Add-IotHubRoutingEndpoint cmdlet.
+
+#### Az.KeyVault
+* Update incorrect online help URLs
+
+#### Az.Network
+* Update incorrect online help URLs
+
+#### Az.Resources
+* Fix incorrect examples in 'New-AzADAppCredential' and 'New-AzADSpCredential' reference documentation
+* Fix issue where path for '-TemplateFile' parameter was not being resolved before executing resource group deployment cmdlets
+* Az.Resources: Correct documentation for New-AzureRmPolicyDefinition -Mode default value
+* Az.Resources: Fix for issue https://github.com/Azure/azure-powershell/issues/7522
+* Az.Resources: Fix for issue https://github.com/Azure/azure-powershell/issues/5747
+* Fix formatting issue with 'PSResourceGroupDeployment' object
+    - More information here: https://github.com/Azure/azure-powershell/issues/2123
+
+#### Az.ServiceFabric
+* Rollback when a certificate is added to VMSS model but an exception is thrown this is to fix bug: https://github.com/Azure/service-fabric-issues/issues/932
+* Fix some error messages.
+* Fix create cluster with default ARM template for New-AzServiceFabriCluster which was not working with migration to Az.
+* Fix add cluster/application certificate to only add to VM Scale Sets that correspond to the cluster by checking cluster id in the extension.
+
+#### Az.SignalR
+* Update incorrect online help URLs
+
+#### Az.Sql
+* Update incorrect online help URLs
+* Updated parameter description for LicenseType parameter with possible values
+* Fix for updating managed instance identity not working when it is the only updated property
+* Support for custom collation on managed instance
+
+#### Az.Storage
+* Update incorrect online help URLs
+* Give detail error message when get/set classic Logging/Metric on Premium Storage Account, since Premium Storage Account not supoort classic Logging/Metric.
+    - Get/Set-AzStorageServiceLoggingProperty
+    - Get/Set-AzStorageServiceMetricsProperty
+
+#### Az.TrafficManager
+* Update incorrect online help URLs
+
+#### Az.Websites
+* Update incorrect online help URLs
+* Fixes 'New-AzWebAppSSLBinding' to upload the certificate to the correct resourcegroup+location if the app is hosted on an ASE.
+* Fixes 'New-AzWebAppSSLBinding' to not overwrite the tags on binding an SSL certificate to an app
+
 ## 1.1.0 - January 2019
 #### Az.Accounts
 * Add 'Local' Scope to Enable-AzureRmAlias
