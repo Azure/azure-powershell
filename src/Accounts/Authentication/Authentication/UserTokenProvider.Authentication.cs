@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             ActiveDirectoryServiceSettings serviceSettings, TokenCache cache)
         {
             var authenticationContext = GetAuthenticationContext(clientId, domain, serviceSettings, cache);
-            var scopes = new string[] { serviceSettings.TokenAudience + "/user_impersonation" };
+            var scopes = new string[] { serviceSettings.TokenAudience + ".default" };
             var accounts = authenticationContext.GetAccountsAsync()
                             .ConfigureAwait(false).GetAwaiter().GetResult();
             try
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public virtual async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            var scopes = new string[] { _tokenAudience + "/user_impersonation" };
+            var scopes = new string[] { _tokenAudience + ".default" };
             var accounts = _authenticationContext.GetAccountsAsync()
                              .ConfigureAwait(false).GetAwaiter().GetResult();
             try
