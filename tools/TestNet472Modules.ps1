@@ -8,6 +8,7 @@ param(
 )
 
 $dirPath = (Join-Path $PSScriptRoot -ChildPath '..')
+$artPath = (Join-Path $dirPath 'artifacts')
 $srcPath = (Join-Path $dirPath -ChildPath 'src')
 $libPath = (Join-Path $srcPath -ChildPath 'lib')
 $testConfig = (Join-Path $libPath -ChildPath 'test.net472.config')
@@ -26,6 +27,8 @@ $rmItems | %{`
   $testExecDir = $testExec.Directory.FullName
   $testExecFile = $testExec.Name
   $newExecPath = Join-Path $testDir -ChildPath $testExecFile
+  $logFile = $_.Name -replace '.dll', '.log.xml'
+  $logPath = (Join-Path $artPath $logFile)
   $copiedItems = (Get-ChildItem $testExecDir | Where-Object {$_.Name.StartsWith("xunit")})
   $copiedItems | Copy-Item -Destination $testDir
   try {
@@ -33,7 +36,7 @@ $rmItems | %{`
     -Wait `
     -WorkingDirectory $testDir `
     -NoNewWindow `
-    -ArgumentList $_.FullName, $testConfig, '-trait "AcceptanceType=CheckIn"', '-notrait "Runtype=DesktopOnly"'`
+    -ArgumentList $_.FullName, $testConfig, '-trait "AcceptanceType=CheckIn"', '-notrait "Runtype=DesktopOnly"', "-xml $logPath" `
   }
   finally {
     $copiedItems | %{Remove-Item -Force (Join-Path $testDir $_.Name)}
