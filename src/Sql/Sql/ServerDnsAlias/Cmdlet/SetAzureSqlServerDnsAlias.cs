@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// <summary>
 		/// Init model adapter
 		/// </summary>
-		protected override AzureSqlServerDnsAliasAdapter InitModelAdapter(IAzureSubscription subscription)
+		protected override AzureSqlServerDnsAliasAdapter InitModelAdapter()
 		{
 			return new AzureSqlServerDnsAliasAdapter(DefaultProfile.DefaultContext);
 		}

@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices.backup/get-azrecoveryservicesbackupstatus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupstatus
 schema: 2.0.0
 ---
 

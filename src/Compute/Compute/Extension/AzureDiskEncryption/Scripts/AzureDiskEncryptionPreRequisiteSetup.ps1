@@ -46,7 +46,7 @@ $ErrorActionPreference = "Stop"
 # Section1:  Log-in to Azure and select appropriate subscription. 
 ########################################################################################################################
 
-    Select-AzureRmSubscription -SubscriptionId $subscriptionId;
+    Select-AzSubscription -SubscriptionId $subscriptionId;
 
 ####################################################################################################################################
 # Section2:  Create AAD app if encryption is enabled using AAD. Fill in $aadClientSecret variable if AAD app was already created.
@@ -57,7 +57,7 @@ $ErrorActionPreference = "Stop"
     if($aadAppName)
     {
         # Check if AAD app with $aadAppName was already created
-        $SvcPrincipals = (Get-AzureRmADServicePrincipal -SearchString $aadAppName);
+        $SvcPrincipals = (Get-AzADServicePrincipal -SearchString $aadAppName);
         if(-not $SvcPrincipals)
         {
             # Create a new AD application if not created before
@@ -71,19 +71,19 @@ $ErrorActionPreference = "Stop"
             if($azureResourcesModule.Version.Major -ge 5)
             {
                 $secureAadClientSecret = ConvertTo-SecureString -String $aadClientSecret -AsPlainText -Force;
-                $ADApp = New-AzureRmADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $secureAadClientSecret;
+                $ADApp = New-AzADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $secureAadClientSecret;
             }
             else
             {
-                $ADApp = New-AzureRmADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $aadClientSecret;
+                $ADApp = New-AzADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $aadClientSecret;
             }
 
-            $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $ADApp.ApplicationId;
-            $SvcPrincipals = (Get-AzureRmADServicePrincipal -SearchString $aadAppName);
+            $servicePrincipal = New-AzADServicePrincipal -ApplicationId $ADApp.ApplicationId;
+            $SvcPrincipals = (Get-AzADServicePrincipal -SearchString $aadAppName);
             if(-not $SvcPrincipals)
             {
                 # AAD app wasn't created 
-                Write-Error "Failed to create AAD app $aadAppName. Please log in to Azure using Connect-AzureRmAccount and try again";
+                Write-Error "Failed to create AAD app $aadAppName. Please log in to Azure using Connect-AzAccount and try again";
                 return;
             }
             $aadClientID = $servicePrincipal.ApplicationId;
@@ -111,7 +111,7 @@ $ErrorActionPreference = "Stop"
 
     Try
     {
-        $resGroup = Get-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue;
+        $resGroup = Get-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue;
     }
     Catch [System.ArgumentException]
     {
@@ -123,13 +123,13 @@ $ErrorActionPreference = "Stop"
     if (-not $resGroup)
     {
         Write-Host "Creating new resource group:  ($resourceGroupName)";
-        $resGroup = New-AzureRmResourceGroup -Name $resourceGroupName -Location $location;
+        $resGroup = New-AzResourceGroup -Name $resourceGroupName -Location $location;
         Write-Host "Created a new resource group named $resourceGroupName to place keyVault";
     }
     
     Try
     {
-        $keyVault = Get-AzureRmKeyVault -VaultName $keyVaultName -ErrorAction SilentlyContinue;
+        $keyVault = Get-AzKeyVault -VaultName $keyVaultName -ErrorAction SilentlyContinue;
     }
     Catch [System.ArgumentException]
     {
@@ -141,28 +141,28 @@ $ErrorActionPreference = "Stop"
     if (-not $keyVault)
     {
         Write-Host "Creating new key vault:  ($keyVaultName)";
-        $keyVault = New-AzureRmKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName -Sku Standard -Location $location;
+        $keyVault = New-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName -Sku Standard -Location $location;
         Write-Host "Created a new KeyVault named $keyVaultName to store encryption keys";
     }
 
     if($aadAppName)
     {
         # Specify privileges to the vault for the AAD application - https://msdn.microsoft.com/en-us/library/mt603625.aspx
-        Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $aadClientID -PermissionsToKeys wrapKey -PermissionsToSecrets set;
+        Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $aadClientID -PermissionsToKeys wrapKey -PermissionsToSecrets set;
     }
 
-    Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption;
+    Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption;
 
     # Enable soft delete on KeyVault to not lose encryption secrets
     Write-Host "Enabling Soft Delete on KeyVault $keyVaultName";
-    $resource = Get-AzureRmResource -ResourceId $keyVault.ResourceId;
+    $resource = Get-AzResource -ResourceId $keyVault.ResourceId;
     $resource.Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true" -Force;
-    Set-AzureRmResource -resourceid $resource.ResourceId -Properties $resource.Properties -Force;
+    Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties -Force;
 
     # Enable ARM resource lock on KeyVault to prevent accidental key vault deletion
     Write-Host "Adding resource lock on  KeyVault $keyVaultName";
     $lockNotes = "KeyVault may contain AzureDiskEncryption secrets required to boot encrypted VMs";
-    New-AzureRmResourceLock -LockLevel CanNotDelete -LockName "LockKeyVault" -ResourceName $resource.Name -ResourceType $resource.ResourceType -ResourceGroupName $resource.ResourceGroupName -LockNotes $lockNotes -Force;
+    New-AzResourceLock -LockLevel CanNotDelete -LockName "LockKeyVault" -ResourceName $resource.Name -ResourceType $resource.ResourceType -ResourceGroupName $resource.ResourceGroupName -LockNotes $lockNotes -Force;
 
     $diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
 	$keyVaultResourceId = $keyVault.ResourceId;
@@ -171,7 +171,7 @@ $ErrorActionPreference = "Stop"
     {
         Try
         {
-            $kek = Get-AzureKeyVaultKey -VaultName $keyVaultName -Name $keyEncryptionKeyName -ErrorAction SilentlyContinue;
+            $kek = Get-AzKeyVaultKey -VaultName $keyVaultName -Name $keyEncryptionKeyName -ErrorAction SilentlyContinue;
         }
         Catch [Microsoft.Azure.KeyVault.KeyVaultClientException]
         {
@@ -182,7 +182,7 @@ $ErrorActionPreference = "Stop"
         if(-not $kek)
         {
             Write-Host "Creating new key encryption key named:$keyEncryptionKeyName in Key Vault: $keyVaultName";
-            $kek = Add-AzureKeyVaultKey -VaultName $keyVaultName -Name $keyEncryptionKeyName -Destination Software -ErrorAction SilentlyContinue;
+            $kek = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyEncryptionKeyName -Destination Software -ErrorAction SilentlyContinue;
             Write-Host "Created  key encryption key named:$keyEncryptionKeyName in Key Vault: $keyVaultName";
         }
 
@@ -205,24 +205,24 @@ $ErrorActionPreference = "Stop"
         Write-Host "`t KeyEncryptionKeyURL: $keyEncryptionKeyUrl" -foregroundcolor Green;
         Write-Host "`t KeyEncryptionKeyVaultId: $keyVaultResourceId" -foregroundcolor Green;
     }
-    Write-Host "Please Press [Enter] after saving values displayed above. They are needed to enable encryption using Set-AzureRmVmDiskEncryptionExtension cmdlet" -foregroundcolor Green;
+    Write-Host "Please Press [Enter] after saving values displayed above. They are needed to enable encryption using Set-AzVmDiskEncryptionExtension cmdlet" -foregroundcolor Green;
     Read-Host;
 
 ########################################################################################################################
 # To encrypt one VM in given resource group of the logged in subscritpion, assign $vmName and uncomment below section
 ########################################################################################################################
 #$vmName = "Your VM Name";
-#$allVMs = Get-AzureRmVm -ResourceGroupName $resourceGroupName -Name $vmName;
+#$allVMs = Get-AzVm -ResourceGroupName $resourceGroupName -Name $vmName;
 
 ########################################################################################################################
 # To encrypt all the VMs in the given resource group of the logged in subscription uncomment below section
 ########################################################################################################################
-#$allVMs = Get-AzureRmVm -ResourceGroupName $resourceGroupName;
+#$allVMs = Get-AzVm -ResourceGroupName $resourceGroupName;
 
 ########################################################################################################################
 # To encrypt all the VMs in the all the resource groups of the logged in subscription, uncomment below section
 ########################################################################################################################
-#$allVMs = Get-AzureRmVm;
+#$allVMs = Get-AzVm;
 
 ########################################################################################################################
 # Loop through the selected list of VMs and enable encryption
@@ -241,11 +241,11 @@ foreach($vm in $allVMs)
     {
         if(-not $kek)
         {
-            Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';
+            Set-AzVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';
         }
         else
         {
-            Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';
+            Set-AzVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';
         }
     }
     else
@@ -258,13 +258,13 @@ foreach($vm in $allVMs)
 
         if(-not $kek)
         {
-            Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';
+            Set-AzVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';
         }
         else
         {
-            Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';
+            Set-AzVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';
         }
     }
     # Show encryption status of the VM
-    Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name;
+    Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name;
 }

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 29BB24C4-1EC9-47DE-A5B8-5EEA4525AE3A
@@ -22,6 +22,17 @@ Remove-AzApplicationGatewayAuthenticationCertificate -Name <String> -Application
 The **Remove-AzApplicationGatewayAuthenticationCertificate** cmdlet removes an authentication certificate from an Azure application gateway.
 
 ## EXAMPLES
+
+### Example 1: Remove an authentication certificate from an application gateway
+```
+PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
+PS C:\> $appgw = Remove-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $appgw -Name "cert01"
+PS C:\> $appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+```
+
+The first command gets the application gateway named appGwName and stores the result in the $appgw variable.
+The second command removes the authentication certificate named cert01 from the application gateway.
+The third command updates the application gateway.
 
 ## PARAMETERS
 

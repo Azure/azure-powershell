@@ -95,6 +95,20 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestPublishWebAppFromZip()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-PublishAzureWebAppFromZip");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestPublishWebAppFromWar()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-PublishAzureWebAppFromWar");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneNewWebApp()
         {

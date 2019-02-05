@@ -21,5 +21,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         [Ps1Xml(Target = ViewControl.Table)]
         public int MinCapacity { get; set; }
+
+        public int? MaxCapacity { get; set; }
     }
 }

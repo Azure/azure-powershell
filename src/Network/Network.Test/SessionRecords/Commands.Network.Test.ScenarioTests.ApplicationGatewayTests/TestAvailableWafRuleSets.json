@@ -1,39 +1,39 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/5f1006f9-e71f-4023-bb9e-f1c90262eda0/providers/Microsoft.Network/applicationGatewayAvailableWafRuleSets?api-version=2018-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWYxMDA2ZjktZTcxZi00MDIzLWJiOWUtZjFjOTAyNjJlZGEwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVXYWZSdWxlU2V0cz9hcGktdmVyc2lvbj0yMDE4LTEwLTAx",
+      "RequestUri": "/subscriptions/b651b9ea-5e9d-4817-8441-435ce25fdf30/providers/Microsoft.Network/applicationGatewayAvailableWafRuleSets?api-version=2018-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjY1MWI5ZWEtNWU5ZC00ODE3LTg0NDEtNDM1Y2UyNWZkZjMwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVXYWZSdWxlU2V0cz9hcGktdmVyc2lvbj0yMDE4LTExLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "02a32826-ef4f-40bb-8ca4-39180472c694"
+          "76ad5f13-3a52-42ab-b34c-0d6a24f87369"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3190.0",
+          "FxVersion/4.6.27129.04",
           "OSName/Windows",
-          "OSVersion/6.2.9200.0",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/21.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
         ]
       },
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6e07a73b-7789-453d-9706-52d78be19a21"
+          "2dcf4b55-ba73-4177-9d53-46c734768ff6"
         ],
         "x-ms-correlation-request-id": [
-          "bf763339-68a6-45de-8665-143240f1d3be"
+          "5c113a5b-a348-4541-ab3d-5e2cbb1255ac"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -43,13 +43,13 @@
           "11999"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181122T103453Z:bf763339-68a6-45de-8665-143240f1d3be"
+          "WESTUS:20190115T025727Z:5c113a5b-a348-4541-ab3d-5e2cbb1255ac"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 22 Nov 2018 10:34:52 GMT"
+          "Tue, 15 Jan 2019 02:57:27 GMT"
         ],
         "Content-Length": [
           "73781"
@@ -67,6 +67,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "5f1006f9-e71f-4023-bb9e-f1c90262eda0"
+    "SubscriptionId": "b651b9ea-5e9d-4817-8441-435ce25fdf30"
   }
 }

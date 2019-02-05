@@ -61,7 +61,7 @@ Removes all the suppressions for the given recommendation with name "recommendat
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzAdvisorRecommendation -ResourceId "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}" 
+PS C:\> Get-AzAdvisorRecommendation -ResourceId "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz" 
 | Enable-AzAdvisorRecommendation
 
 ResourceId           : subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}
@@ -82,7 +82,7 @@ Name                 : {recommendation_id}
 Type                 : Microsoft.Advisor/recommendations
 ```
 
-Removes all the suppressions for the given recommendation passed from the pipeline.
+Removes all the suppressions for the given recommendation(s) passed from the pipeline.
 
 ## PARAMETERS
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource Id of the recommendation to be suppressed.
+Id of the recommendation to be suppressed.
 
 ```yaml
 Type: String
