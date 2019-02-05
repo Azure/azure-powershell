@@ -231,7 +231,7 @@
       </ModuleCsprojFilesRelative>
     </ItemGroup>
     <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFilesRelative->'%(RelativePath)', ' ')" />
-    <Exec Command="dotnet sln Azure.PowerShell.sln add $(LibraryRoot)tools/Tools.Common/Tools.Common.Netcore.csproj $(LibraryRoot)tools/StaticAnalysis/StaticAnalysis.Netcore.csproj" />
+    <Exec Command="dotnet sln Azure.PowerShell.sln add $(LibraryRoot)tools/Tools.Common/Tools.Common.Netcore.csproj $(LibraryRoot)tools/StaticAnalysis/StaticAnalysis.Netcore.csproj $(LibraryRoot)tools/VersionController/VersionController.Netcore.csproj" />
     <Exec Command="dotnet publish Azure.PowerShell.sln -c $(Configuration)" />
 
 
