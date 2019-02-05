@@ -18,7 +18,7 @@ Test New-AzIntegrationAccountAgreement command
 #>
 function Test-CreateIntegrationAccountAgreementX12
 {
-	$agreementX12FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementX12FilePath = Join-Path $TestOutputRoot "Resources" "IntegrationAccountX12AgreementContent.json"
 	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 
 	$resourceGroupName = getAssetname
@@ -66,7 +66,7 @@ Test New-AzIntegrationAccountAgreement command
 #>
 function Test-CreateIntegrationAccountAgreementAS2
 {
-	$agreementAS2FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountAS2AgreementContent.json"
+	$agreementAS2FilePath = Join-Path $TestOutputRoot "Resources" "IntegrationAccountAS2AgreementContent.json"
 	$agreementAS2Content = [IO.File]::ReadAllText($agreementAS2FilePath)
 
 	$resourceGroupName = getAssetname
@@ -100,7 +100,7 @@ Test New-AzIntegrationAccountAgreement command
 #>
 function Test-CreateIntegrationAccountAgreementEdifact
 {
-	$agreementEdifactFilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountEdifactAgreementContent.json"
+	$agreementEdifactFilePath = Join-Path $TestOutputRoot "Resources" "IntegrationAccountEdifactAgreementContent.json"
 	$agreementEdifactContent = [IO.File]::ReadAllText($agreementEdifactFilePath)
 	
 	$resourceGroupName = getAssetname
@@ -135,7 +135,7 @@ Test New-AzIntegrationAccountAgreement command with negative scenario.
 #>
 function Test-CreateIntegrationAccountAgreementWithFailure
 {
-	$agreementX12FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementX12FilePath = Join-Path $TestOutputRoot "Resources" "IntegrationAccountX12AgreementContent.json"
 	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 
 	$resourceGroupName = getAssetname
@@ -170,7 +170,7 @@ Test Get-AzIntegrationAccountAgreement command
 #>
 function Test-GetIntegrationAccountAgreement
 {
-	$agreementX12FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementX12FilePath = Join-Path $TestOutputRoot "Resources" "IntegrationAccountX12AgreementContent.json"
 	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 
 	Assert-ThrowsContains { Get-AzIntegrationAccountAgreement -ResourceGroupName "Random83da135" -IntegrationAccountName "DoesNotMatter" -AgreementName "DoesNotMatter" } "Resource group 'Random83da135' could not be found."
@@ -207,7 +207,7 @@ Test Remove-AzIntegrationAccountAgreement command
 #>
 function Test-RemoveIntegrationAccountAgreement
 {
-	$agreementX12FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementX12FilePath = Join-Path $TestOutputRoot "Resources" "IntegrationAccountX12AgreementContent.json"
 	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 
 	$resourceGroupName = getAssetname
@@ -238,10 +238,10 @@ Test Set-AzIntegrationAccountAgreement command
 #>
 function Test-UpdateIntegrationAccountAgreement
 {
-	$agreementX12FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementX12FilePath = Join-Path $TestOutputRoot "Resources" "IntegrationAccountX12AgreementContent.json"
 	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 	
-	$agreementAS2FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountAS2AgreementContent.json"
+	$agreementAS2FilePath = Join-Path $TestOutputRoot "Resources" "IntegrationAccountAS2AgreementContent.json"
 	$agreementAS2Content = [IO.File]::ReadAllText($agreementAS2FilePath)
 
 	$resourceGroupName = getAssetname
@@ -324,7 +324,7 @@ Test Get-AzIntegrationAccountAgreement command : paging test
 #>
 function Test-ListIntegrationAccountAgreement
 {
-	$agreementX12FilePath = Join-Path $TestOutputRoot "\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementX12FilePath = Join-Path $TestOutputRoot "Resources" "IntegrationAccountX12AgreementContent.json"
 	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 
 	$resourceGroupName = getAssetname

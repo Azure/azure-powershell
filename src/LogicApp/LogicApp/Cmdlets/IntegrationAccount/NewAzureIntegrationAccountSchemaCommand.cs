@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     new IntegrationAccountSchema
                     {
                         ContentType = this.contentType,
-                        SchemaType = (SchemaType) Enum.Parse(typeof(SchemaType), this.schemaType),                        
+                        SchemaType = this.schemaType,
                         Content = this.SchemaDefinition,
                         Metadata = this.Metadata
                     }), true);
