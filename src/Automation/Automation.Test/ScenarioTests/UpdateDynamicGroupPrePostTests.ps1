@@ -165,7 +165,7 @@ function Test-CreateAndGetSoftwareUpdateConfigurationWithDynamicGroups
                                                              -Window `
                                                              -AzureVMResourceId $azureVMIdsL `
                                                              -Duration (New-TimeSpan -Hours 2) `
-                                                             -AzureQueries $AzureQueries `
+                                                             -AzureQuery $AzureQueries `
                                                              -IncludedUpdateClassification Security,Critical 
 
 
