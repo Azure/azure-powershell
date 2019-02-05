@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
             var vnetGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.VirtualNetworkGatewayName);
             if (vnetGateway.VpnClientConfiguration == null)
             {
-                throw new ArgumentException(string.Format("No revoked certificates found on VirtualNetworkGateway {0}", VirtualNetworkGatewayName));
+                throw new ArgumentException(string.Format(Properties.Resources.VirtualNetworkGatewayNoRevokedCertificate, VirtualNetworkGatewayName));
             }
 
             if (!string.IsNullOrEmpty(this.VpnClientRevokedCertificateName))
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Network
                 PSVpnClientRevokedCertificate clientRevokedCertificate = vnetGateway.VpnClientConfiguration.VpnClientRevokedCertificates.Find(cert => cert.Name.Equals(VpnClientRevokedCertificateName));
                 if (clientRevokedCertificate == null)
                 {
-                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, VpnClientRevokedCertificateName));
+                    throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, VpnClientRevokedCertificateName));
                 }
                 else
                 {
