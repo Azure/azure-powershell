@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                     throw new ArgumentException($"Invalid resource ID format: {StorageAccountResourceId}");
                 }
 
-                if (!IsRunningInTest)
+                if (!IsPlaybackMode)
                 {
                     PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
 

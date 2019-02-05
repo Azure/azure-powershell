@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 throw new PSArgumentException("No subscription found");
             }
 
-            using (ISyncServerRegistration syncServerRegistrationClient = InteropClientFactory.CreateSyncServerRegistrationClient(InteropClientFactory.CreateEcsManagement(IsRunningInTest)))
+            using (ISyncServerRegistration syncServerRegistrationClient = InteropClientFactory.CreateSyncServerRegistrationClient(InteropClientFactory.CreateEcsManagement(IsPlaybackMode)))
             {
                 if(string.IsNullOrEmpty(StorageSyncClientWrapper.AfsAgentInstallerPath))
                 {

@@ -46,17 +46,18 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         {
         }
 
-        private bool? isRunningInTest;
-        public bool IsRunningInTest
+        private bool? isPlaybackMode;
+        public bool IsPlaybackMode
         {
             get
             {
-                if (!isRunningInTest.HasValue)
+                if (!isPlaybackMode.HasValue)
                 {
                     string mode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
-                    isRunningInTest = "Playback".Equals(mode, StringComparison.OrdinalIgnoreCase);
+
+                    isPlaybackMode = !"Record".Equals(mode, StringComparison.OrdinalIgnoreCase);
                 }
-                return isRunningInTest.Value;
+                return isPlaybackMode.Value;
             }
         }
 
