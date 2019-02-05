@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.DataMigration.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; already exists..
         /// </summary>
-        public static string AlreadyExists {
+        internal static string AlreadyExists {
             get {
                 return ResourceManager.GetString("AlreadyExists", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Results at the &apos;{0}&apos; level are not available for migrations from source data platform &apos;{1}&apos; to target data platform &apos;{2}&apos;..
         /// </summary>
-        public static string CannotQueryMigrationResult {
+        internal static string CannotQueryMigrationResult {
             get {
                 return ResourceManager.GetString("CannotQueryMigrationResult", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Cannot select tables for migration for the target server type &apos;{0}&apos;..
         /// </summary>
-        public static string CannotSelectTablesForMigration {
+        internal static string CannotSelectTablesForMigration {
             get {
                 return ResourceManager.GetString("CannotSelectTablesForMigration", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to The selected &apos;{0}&apos; data platform type &apos;{1}&apos; does not match the &apos;{2}&apos; platform type &apos;{3}&apos; of the connection info object..
         /// </summary>
-        public static string ConnectionTypeMigrationTaskMismatch {
+        internal static string ConnectionTypeMigrationTaskMismatch {
             get {
                 return ResourceManager.GetString("ConnectionTypeMigrationTaskMismatch", resourceCulture);
             }
@@ -99,16 +99,25 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Parameter set &apos;{0}&apos; cannot be used with the connection type &apos;{1}&apos; .
         /// </summary>
-        public static string ConnectionTypeParameterSetMismatch {
+        internal static string ConnectionTypeParameterSetMismatch {
             get {
                 return ResourceManager.GetString("ConnectionTypeParameterSetMismatch", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Azure Active Directory App.
+        /// </summary>
+        internal static string createAadApp {
+            get {
+                return ResourceManager.GetString("createAadApp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create CosmosDb collection setting.
         /// </summary>
-        public static string createCollectionSetting {
+        internal static string createCollectionSetting {
             get {
                 return ResourceManager.GetString("createCollectionSetting", resourceCulture);
             }
@@ -117,7 +126,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Creating Command.
         /// </summary>
-        public static string createCommand {
+        internal static string createCommand {
             get {
                 return ResourceManager.GetString("createCommand", resourceCulture);
             }
@@ -126,7 +135,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Create Connection Info.
         /// </summary>
-        public static string createConnectionInfo {
+        internal static string createConnectionInfo {
             get {
                 return ResourceManager.GetString("createConnectionInfo", resourceCulture);
             }
@@ -135,7 +144,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Create Database Info.
         /// </summary>
-        public static string createDbInfo {
+        internal static string createDbInfo {
             get {
                 return ResourceManager.GetString("createDbInfo", resourceCulture);
             }
@@ -144,7 +153,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Creating Project.
         /// </summary>
-        public static string createProject {
+        internal static string createProject {
             get {
                 return ResourceManager.GetString("createProject", resourceCulture);
             }
@@ -153,7 +162,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Create Databases Info for Migration.
         /// </summary>
-        public static string createSelectedDB {
+        internal static string createSelectedDB {
             get {
                 return ResourceManager.GetString("createSelectedDB", resourceCulture);
             }
@@ -162,7 +171,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Creating Service.
         /// </summary>
-        public static string createService {
+        internal static string createService {
             get {
                 return ResourceManager.GetString("createService", resourceCulture);
             }
@@ -171,7 +180,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Creating Task.
         /// </summary>
-        public static string createTask {
+        internal static string createTask {
             get {
                 return ResourceManager.GetString("createTask", resourceCulture);
             }
@@ -180,7 +189,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to The database &apos;{0}&apos; is not available on the source server..
         /// </summary>
-        public static string DatabaseNameNotAvailableOnSource {
+        internal static string DatabaseNameNotAvailableOnSource {
             get {
                 return ResourceManager.GetString("DatabaseNameNotAvailableOnSource", resourceCulture);
             }
@@ -189,7 +198,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to The database &apos;{0}&apos; is not available on the target server..
         /// </summary>
-        public static string DatabaseNameNotAvailableOnTarget {
+        internal static string DatabaseNameNotAvailableOnTarget {
             get {
                 return ResourceManager.GetString("DatabaseNameNotAvailableOnTarget", resourceCulture);
             }
@@ -198,7 +207,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to The database &apos;{0}&apos; has not been selected for migration. Please first run Add-AzDmsDatabase to add the database to the migration task..
         /// </summary>
-        public static string DatabaseNotSelectedForMigration {
+        internal static string DatabaseNotSelectedForMigration {
             get {
                 return ResourceManager.GetString("DatabaseNotSelectedForMigration", resourceCulture);
             }
@@ -207,7 +216,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to This command is not available for migration tasks from &apos;{0}&apos; to &apos;{1}&apos;.
         /// </summary>
-        public static string InvalidCommandOperation {
+        internal static string InvalidCommandOperation {
             get {
                 return ResourceManager.GetString("InvalidCommandOperation", resourceCulture);
             }
@@ -216,7 +225,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; not found..
         /// </summary>
-        public static string NotFound {
+        internal static string NotFound {
             get {
                 return ResourceManager.GetString("NotFound", resourceCulture);
             }
@@ -225,7 +234,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Removing project ....
         /// </summary>
-        public static string removeProject {
+        internal static string removeProject {
             get {
                 return ResourceManager.GetString("removeProject", resourceCulture);
             }
@@ -234,7 +243,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Removing service ....
         /// </summary>
-        public static string removeService {
+        internal static string removeService {
             get {
                 return ResourceManager.GetString("removeService", resourceCulture);
             }
@@ -243,7 +252,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Removing task ....
         /// </summary>
-        public static string removeTask {
+        internal static string removeTask {
             get {
                 return ResourceManager.GetString("removeTask", resourceCulture);
             }
@@ -252,7 +261,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove project &apos;{0}&apos;.
         /// </summary>
-        public static string removingProject {
+        internal static string removingProject {
             get {
                 return ResourceManager.GetString("removingProject", resourceCulture);
             }
@@ -261,7 +270,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove service &apos;{0}&apos;.
         /// </summary>
-        public static string removingService {
+        internal static string removingService {
             get {
                 return ResourceManager.GetString("removingService", resourceCulture);
             }
@@ -270,7 +279,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove task &apos;{0}&apos;.
         /// </summary>
-        public static string removingTask {
+        internal static string removingTask {
             get {
                 return ResourceManager.GetString("removingTask", resourceCulture);
             }
@@ -279,7 +288,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to The {0} SKU in service {1} is marked for deprecation and will be discontinued from 08/31/2018..
         /// </summary>
-        public static string SKUDeprecationWarningMessage {
+        internal static string SKUDeprecationWarningMessage {
             get {
                 return ResourceManager.GetString("SKUDeprecationWarningMessage", resourceCulture);
             }
@@ -288,7 +297,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Start Project.
         /// </summary>
-        public static string startProject {
+        internal static string startProject {
             get {
                 return ResourceManager.GetString("startProject", resourceCulture);
             }
@@ -297,7 +306,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Start Service.
         /// </summary>
-        public static string startService {
+        internal static string startService {
             get {
                 return ResourceManager.GetString("startService", resourceCulture);
             }
@@ -306,7 +315,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Start Task.
         /// </summary>
-        public static string startTask {
+        internal static string startTask {
             get {
                 return ResourceManager.GetString("startTask", resourceCulture);
             }
@@ -315,7 +324,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Stop Service.
         /// </summary>
-        public static string stopService {
+        internal static string stopService {
             get {
                 return ResourceManager.GetString("stopService", resourceCulture);
             }
@@ -324,7 +333,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         /// <summary>
         ///   Looks up a localized string similar to Stop Task.
         /// </summary>
-        public static string stopTask {
+        internal static string stopTask {
             get {
                 return ResourceManager.GetString("stopTask", resourceCulture);
             }
