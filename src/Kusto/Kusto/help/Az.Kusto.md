@@ -1,8 +1,8 @@
-﻿---
+---
 Module Name: Az.Kusto
 Module Guid: 868389ce-dd36-4f57-a674-0970db085d9b
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.kusto
+Help Version: 1.0.0.0
 Locale: en-US
 ---
 
@@ -12,7 +12,7 @@ Module to manage Kusto resources in PowerShell.
 
 ## Az.Kusto Cmdlets
 ### [Get-AzKustoCluster](Get-AzKustoCluster.md)
-List all Kusto clusters in a subscription or resource group, or get a specific Kusto cluster.
+List all Kusto clusters in a resource group or get a specific Kusto cluster.
 
 ### [Get-AzKustoDatabase](Get-AzKustoDatabase.md)
 List all Kusto databases in a cluster or get a specific Kusto database.
