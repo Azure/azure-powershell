@@ -13,58 +13,16 @@
 
 <#
 .SYNOPSIS
-Gets valid resource group name
+Creates a resource group to use in tests
 #>
-function Get-ResourceGroupName
+function CurrentApiVersion 
 {
-    return getAssetName
+	return "2018-07-01-preview"
 }
 
-<#
-.SYNOPSIS
-Gets valid resource name
-#>
-function Get-ResourceName
+function SampleMetadata
 {
-    return getAssetName
-}
-
-<#
-.SYNOPSIS
-Gets the default location for a provider
-#>
-function Get-ProviderLocation($provider)
-{
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-	{
-		$namespace = $provider.Split("/")[0]  
-		if($provider.Contains("/"))  
-		{  
-			$type = $provider.Substring($namespace.Length + 1)  
-			$location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
-  
-			if ($location -eq $null) 
-			{  
-				return "West US"  
-			} else 
-			{  
-				return $location.Locations[0]
-			}  
-		}
-		
-		return "West US"
-	}
-
-	return "WestUS"
-}
-
-<#
-.SYNOPSIS
-Gets the default test location name.
-#>
-function Get-LocationName()
-{
-	return 'brazilsouth'
+	return @{ "key1" = "value1"; "key2" = "value2"; "key3" = "value3"; }
 }
 
 <#
@@ -73,22 +31,10 @@ Creates a resource group to use in tests
 #>
 function TestSetup-CreateResourceGroup
 {
-    $resourceGroupName = getAssetName
-	$rglocation = Get-ProviderLocation "North Europe"
-    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation -Force
-	
-	return $resourceGroup
-}
+    $resourceGroupName = "RG-" + (getAssetname)
+	$location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $location
 
-<#
-.SYNOPSIS
-Creates named resource group to use in tests
-#>
-function TestSetup-CreateNamedResourceGroup([string]$resourceGroupName)
-{
-	$location = Get-LocationName
-    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $location -Force
-	
 	return $resourceGroup
 }
 
@@ -98,7 +44,7 @@ Creates a new Integration account
 #>
 function TestSetup-CreateIntegrationAccount ([string]$resourceGroupName, [string]$integrationAccountName)
 {
-	$location = Get-LocationName
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts" "West US"
 	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	return $integrationAccount
 }
@@ -109,14 +55,12 @@ Creates a new workflow
 #>
 function TestSetup-CreateWorkflow ([string]$resourceGroupName, [string]$workflowName, [string]$AppServicePlan)
 {
-	$rglocation = Get-ProviderLocation "North Europe"
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
     $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation -Force
-
-	TestSetup-CreateAppServicePlan $resourceGroupName $AppServicePlan
 
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowDefinition.json"
 	$parameterFilePath = Join-Path "Resources" "TestSimpleWorkflowParameter.json"
-	$workflow = $resourceGroup | New-AzLogicApp -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
+	$workflow = $resourceGroup | New-AzLogicApp -Name $workflowName -Location $location -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
     return $workflow
 }
 

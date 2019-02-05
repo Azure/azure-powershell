@@ -18,27 +18,31 @@ Test New-AzIntegrationAccount command
 #>
 function Test-CreateIntegrationAccount
 {
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname	
-
-	$location = Get-LocationName
-	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
-	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts"
 	
-	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+	$integrationAccountNameBasic = "IA-Basic-" + (getAssetname)
+	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameBasic -Location $location -Sku "Basic" 	
+	Assert-AreEqual $integrationAccountNameBasic $integrationAccount.Name 
+ 	
+	$integrationAccountNameStandard = "IA-Standard-" + (getAssetname)
+	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameStandard -Location $location -Sku "Standard" 	
+	Assert-AreEqual $integrationAccountNameStandard $integrationAccount.Name 
+ 	
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameBasic -Force
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameStandard -Force
 }
 
 <#
 .SYNOPSIS
 Test Get-AzIntegrationAccount command
 #>
-function Test-CreateAndGetIntegrationAccount
+function Test-GetIntegrationAccount
 {
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
-	$location = Get-LocationName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts"
 
 	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
@@ -58,10 +62,9 @@ Test Remove-AzIntegrationAccount command
 #>
 function Test-RemoveIntegrationAccount
 {
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
-	$location = Get-LocationName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts"
 
 	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
@@ -76,10 +79,9 @@ Test Update-AzIntegrationAccount command
 #>
 function Test-UpdateIntegrationAccount
 {
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
-	$location = Get-LocationName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts"
 
 	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
@@ -105,10 +107,9 @@ Test Get-AzIntegrationAccountCallbackUrl command
 #>
 function Test-GetIntegrationAccountCallbackUrl
 {
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
-	$location = Get-LocationName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts"
 
 	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name

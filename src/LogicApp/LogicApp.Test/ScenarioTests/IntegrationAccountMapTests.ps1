@@ -18,26 +18,25 @@ Test New-AzIntegrationAccountMap command
 #>
 function Test-CreateIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXsltMap.xsl"
-	$mapContent = [IO.File]::ReadAllText($mapFilePath)
+	$xslt1FilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt1Map.xslt"
+	$xslt1MapContent = [IO.File]::ReadAllText($xslt1FilePath)
 	
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
-	$integrationAccountMapName1 = getAssetname
-	$integrationAccountMapName2 = getAssetname
-	$integrationAccountMapName3 = getAssetname
+	$integrationAccountMapName1 = "XSLT-" + (getAssetname)
+	$integrationAccountMapName2 = "XSLT-" + (getAssetname)
+	$integrationAccountMapName3 = "XSLT-" + (getAssetname)
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 	
-	$integrationAccountMap1 =  New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName1 -MapDefinition $mapContent
+	$integrationAccountMap1 =  New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName1 -MapDefinition $xslt1MapContent
 	Assert-AreEqual $integrationAccountMapName1 $integrationAccountMap1.Name
 
-	$integrationAccountMap2 =  New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName2 -MapFilePath $mapFilePath
+	$integrationAccountMap2 =  New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName2 -MapFilePath $xslt1FilePath
 	Assert-AreEqual $integrationAccountMapName2 $integrationAccountMap2.Name
 
-	$integrationAccountMap3 =  New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName3 -MapFilePath $mapFilePath -MapType "Xslt" -ContentType "application/xml"
+	$integrationAccountMap3 =  New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName3 -MapFilePath $xslt1FilePath -MapType "Xslt" -ContentType "application/xml"
 	Assert-AreEqual $integrationAccountMapName3 $integrationAccountMap3.Name
 
 	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
@@ -49,12 +48,11 @@ Test Get-AzIntegrationAccountMap command
 #>
 function Test-GetIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXsltMap.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt1Map.xslt"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccountMapName = getAssetname
 
@@ -79,12 +77,11 @@ Test Remove-AzIntegrationAccountMap command
 #>
 function Test-RemoveIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXsltMap.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt1Map.xslt"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccountMapName = getAssetname
 
@@ -104,12 +101,11 @@ Test Set-AzIntegrationAccountMap command
 #>
 function Test-UpdateIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXsltMap.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt1Map.xslt"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccountMapName = getAssetname
 
@@ -133,12 +129,11 @@ Test Get-AzIntegrationAccountMap command : Paging test
 #>
 function Test-ListIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXsltMap.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXslt1Map.xslt"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
@@ -146,7 +141,7 @@ function Test-ListIntegrationAccountMap
 	while($val -ne 1)
 	{
 		$val++ ;
-		$integrationAccountMapName = getAssetname
+		$integrationAccountMapName = "XSLT-$val-" + (getAssetname)
 		New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent
 	}
 
