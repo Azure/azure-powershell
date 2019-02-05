@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid resource group name {0} or VM name {1}. Please check whether the resource group and VM exist in subscription. Use cmdlet Select-AzSubscription to select a subscription..
+        ///   Looks up a localized string similar to Invalid resource group name {0} or VM name {1}. Please check whether the resource group and VM exist in subscription. Use Select-AzContext to select a context with a different subscription..
         /// </summary>
         internal static string InvalidRGOrVMName {
             get {
