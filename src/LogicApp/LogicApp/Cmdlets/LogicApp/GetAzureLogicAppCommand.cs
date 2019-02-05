@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using System.Management.Automation;
 
     /// <summary>
-    /// Creates a new LogicApp workflow 
+    /// Gets a workflow 
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogicApp", DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(Workflow), typeof(WorkflowVersion))]
@@ -59,25 +59,25 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (!string.IsNullOrWhiteSpace(Version))
+            if (!string.IsNullOrWhiteSpace(this.Version))
             {
                 this.WriteObject(LogicAppClient.GetWorkflowVersion(this.ResourceGroupName, this.Name, this.Version), true);
             }
-            else if (string.IsNullOrEmpty(ResourceGroupName))
+            else if (string.IsNullOrEmpty(this.ResourceGroupName))
             {
                 var allWorkflows = LogicAppClient.ListWorkFlowBySubscription();
-                if (string.IsNullOrEmpty(Name))
+                if (string.IsNullOrEmpty(this.Name))
                 {
                     this.WriteObject(allWorkflows.ToArray(), true);
                 }
                 else
                 {
-                    this.WriteObject(allWorkflows.Where(a => a.Name.Equals(Name, StringComparison.CurrentCultureIgnoreCase)).ToArray(), true);
+                    this.WriteObject(allWorkflows.Where(a => a.Name.Equals(this.Name, StringComparison.CurrentCultureIgnoreCase)).ToArray(), true);
                 }
             }
-            else if (string.IsNullOrEmpty(Name))
+            else if (string.IsNullOrEmpty(this.Name))
             {
-                this.WriteObject(LogicAppClient.ListWorkFlowByResourceGroupName(ResourceGroupName).ToArray());
+                this.WriteObject(LogicAppClient.ListWorkFlowByResourceGroupName(this.ResourceGroupName).ToArray());
             }
             else
             {

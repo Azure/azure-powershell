@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 AgreementType = "X12";
             }
 
-            var integrationAccountGeneratedIcn = this.IntegrationAccountClient.GetIntegrationAccountGeneratedIcn(
+            var integrationAccountGeneratedIcn = IntegrationAccountClient.GetIntegrationAccountGeneratedIcn(
                 resourceGroupName: this.ResourceGroupName,
                 integrationAccountName: this.Name,
                 integrationAccountAgreementName: this.AgreementName);
@@ -94,13 +94,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 DateTime.UtcNow :
                 integrationAccountGeneratedIcn.ControlNumberChangedTime.AddTicks(1);
 
-            this.ConfirmAction(
+            ConfirmAction(
                 processMessage: string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateGeneratedControlNumberMessage, "Microsoft.Logic/integrationAccounts/agreements", this.Name),
                 target: this.Name,
                 action: () =>
                 {
                     this.WriteObject(
-                        sendToPipeline: this.IntegrationAccountClient.UpdateIntegrationAccountGeneratedIcn(
+                        sendToPipeline: IntegrationAccountClient.UpdateIntegrationAccountGeneratedIcn(
                             resourceGroupName: this.ResourceGroupName,
                             integrationAccountName: this.Name,
                             integrationAccountAgreementName: this.AgreementName,

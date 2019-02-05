@@ -49,8 +49,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
             }
 
             return IntegrationAccountClient.SessionContentToIntegrationAccountControlNumber(
-                sessionContent: this.LogicManagementClient.Sessions
-                    .CreateOrUpdate(
+                sessionContent: this.LogicManagementClient.IntegrationAccountSessions.CreateOrUpdate(
                         resourceGroupName: resourceGroupName,
                         integrationAccountName: integrationAccountName,
                         sessionName: IntegrationAccountClient.SessionNameForGeneratedIcn(integrationAccountAgreementName),
@@ -72,7 +71,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public IntegrationAccountControlNumber GetIntegrationAccountGeneratedIcn(string resourceGroupName, string integrationAccountName, string integrationAccountAgreementName)
         {
             return IntegrationAccountClient.SessionContentToIntegrationAccountControlNumber(
-                sessionContent: this.LogicManagementClient.Sessions
+                sessionContent: this.LogicManagementClient.IntegrationAccountSessions
                     .Get(
                         resourceGroupName: resourceGroupName,
                         integrationAccountName: integrationAccountName,
@@ -94,7 +93,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
             try
             {
                 return IntegrationAccountClient.SessionContentToIntegrationAccountControlNumber(
-                    sessionContent: this.LogicManagementClient.Sessions
+                    sessionContent: this.LogicManagementClient.IntegrationAccountSessions
                         .Get(
                             resourceGroupName: resourceGroupName,
                             integrationAccountName: integrationAccountName,
@@ -190,5 +189,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
                 ControlNumberType.Icn,
                 string.Empty);
         }
-   }
+    }
 }

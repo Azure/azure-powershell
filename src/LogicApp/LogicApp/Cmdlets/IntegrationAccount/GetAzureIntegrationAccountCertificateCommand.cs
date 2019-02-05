@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
-    using Microsoft.Rest.Azure;
     using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>

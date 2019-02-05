@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 AgreementType = "X12";
             }
 
-            this.ConfirmAction(
+            ConfirmAction(
                 processMessage: string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceMessage, "received control number", this.Name),
-                target: Name,
-                action : () => {
+                target: this.Name,
+                action: () => {
                     IntegrationAccountClient.RemoveIntegrationAccountReceivedControlNumber(
                         resourceGroupName: this.ResourceGroupName,
                         integrationAccountName: this.Name,

@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using System;
-    using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
@@ -79,11 +78,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             this.WriteObject(
                 sendToPipeline: string.IsNullOrEmpty(this.AgreementName) ?
-                    this.IntegrationAccountClient.ListIntegrationAccountGeneratedIcns(
+                    IntegrationAccountClient.ListIntegrationAccountGeneratedIcns(
                         resourceGroupName: this.ResourceGroupName,
                         integrationAccountName: this.Name,
                         agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: AgreementType, ignoreCase: true)) as object :
-                    this.IntegrationAccountClient.GetIntegrationAccountGeneratedIcn(
+                    IntegrationAccountClient.GetIntegrationAccountGeneratedIcn(
                         resourceGroupName: this.ResourceGroupName,
                         integrationAccountName: this.Name,
                         integrationAccountAgreementName: this.AgreementName),

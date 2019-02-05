@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             }
 
             this.WriteObject(
-                sendToPipeline: this.IntegrationAccountClient.GetIntegrationAccountReceivedControlNumber(
+                sendToPipeline: IntegrationAccountClient.GetIntegrationAccountReceivedControlNumber(
                     resourceGroupName: this.ResourceGroupName,
                     integrationAccountName: this.Name,
                     integrationAccountAgreementName: this.AgreementName,

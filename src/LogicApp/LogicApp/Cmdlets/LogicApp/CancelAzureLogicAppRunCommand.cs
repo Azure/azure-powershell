@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             ConfirmAction(Force.IsPresent,
                 Properties.Resource.CancelLogicAppRunWarning,
                 Properties.Resource.CancelLogicAppRunMessage,
-                Name,
+                this.Name,
                 () =>
                 {
                     LogicAppClient.CancelWorkflowRun(this.ResourceGroupName, this.Name, this.RunName);

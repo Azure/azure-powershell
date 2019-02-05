@@ -113,9 +113,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccountAgreement =
-                IntegrationAccountClient.GetIntegrationAccountAgreement(this.ResourceGroupName,
-                    this.Name, this.AgreementName);
+            var integrationAccountAgreement = IntegrationAccountClient.GetIntegrationAccountAgreement(this.ResourceGroupName, this.Name, this.AgreementName);
 
             if (this.Metadata != null)
             {
@@ -140,17 +138,18 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     hostPartner.Content.B2b.BusinessIdentities.FirstOrDefault(
                         s => (s.Qualifier == this.HostIdentityQualifier && s.Value == this.HostIdentityQualifierValue));
 
-                if (hostIdentity == null)
+                if (hostIdentity != null)
                 {
-                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture,
-                        Properties.Resource.InvalidQualifierSpecified, this.HostIdentityQualifier, hostPartner.Name));
+                    integrationAccountAgreement.HostIdentity = hostIdentity;
                 }
-
-                integrationAccountAgreement.HostIdentity = hostIdentity;
+                else
+                {
+                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resource.InvalidQualifierSpecified, this.HostIdentityQualifier, hostPartner.Name));
+                }
             }
-            else  if (string.IsNullOrEmpty(this.HostIdentityQualifier) ^ string.IsNullOrEmpty(this.HostIdentityQualifierValue))
+            else if (string.IsNullOrEmpty(this.HostIdentityQualifier) ^ string.IsNullOrEmpty(this.HostIdentityQualifierValue))
             {
-                throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture,Properties.Resource.QualifierWithValueNotSpecified, "Host"));
+                throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resource.QualifierWithValueNotSpecified, "Host"));
             }
 
             if (!string.IsNullOrEmpty(this.GuestIdentityQualifier) && !string.IsNullOrEmpty(this.GuestIdentityQualifierValue))
@@ -159,29 +158,28 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     guestPartner.Content.B2b.BusinessIdentities.FirstOrDefault(
                         s => (s.Qualifier == this.GuestIdentityQualifier && s.Value == this.GuestIdentityQualifierValue));
 
-                if (guestIdentity == null)
+                if (guestIdentity != null)
                 {
-                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture,
-                        Properties.Resource.InvalidQualifierSpecified, this.GuestIdentityQualifier, guestPartner.Name));
+                    integrationAccountAgreement.GuestIdentity = guestIdentity;
                 }
-
-                integrationAccountAgreement.GuestIdentity = guestIdentity;
+                else
+                {
+                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resource.InvalidQualifierSpecified, this.GuestIdentityQualifier, guestPartner.Name));
+                }
             }
             else if (string.IsNullOrEmpty(this.GuestIdentityQualifier) ^ string.IsNullOrEmpty(this.GuestIdentityQualifierValue))
             {
                 throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resource.QualifierWithValueNotSpecified, "Guest"));
             }
 
-            if (!string.IsNullOrEmpty(this.AgreementType))
+            if (!string.IsNullOrEmpty(AgreementType))
             {
-                integrationAccountAgreement.AgreementType =
-                    (AgreementType) Enum.Parse(typeof(AgreementType), this.AgreementType);
+                integrationAccountAgreement.AgreementType = (AgreementType)Enum.Parse(typeof(AgreementType), AgreementType);
             }
 
             if (!string.IsNullOrEmpty(this.AgreementContentFilePath))
             {
-                this.AgreementContent =
-                    CmdletHelper.GetContentFromFile(this.TryResolvePath(this.AgreementContentFilePath));
+                this.AgreementContent = CmdletHelper.GetStringContentFromFile(this.TryResolvePath(this.AgreementContentFilePath));
             }
 
             if (!string.IsNullOrEmpty(this.AgreementContent))
@@ -190,18 +188,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             }
 
             ConfirmAction(Force.IsPresent,
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
-                    "Microsoft.Logic/integrationAccounts/agreements", this.Name),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
-                    "Microsoft.Logic/integrationAccounts/agreements", this.Name),
-                Name,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning, "Microsoft.Logic/integrationAccounts/agreements", this.Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage, "Microsoft.Logic/integrationAccounts/agreements", this.Name),
+                this.Name,
                 () =>
                 {
                     this.WriteObject(
                         IntegrationAccountClient.UpdateIntegrationAccountAgreement(this.ResourceGroupName, this.Name,
                             this.AgreementName,
                             integrationAccountAgreement), true);
-
                 },
                 null);
         }

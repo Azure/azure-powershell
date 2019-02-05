@@ -144,8 +144,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (string.IsNullOrEmpty(this.AgreementContent))
             {
-                this.AgreementContent =
-                    CmdletHelper.GetContentFromFile(this.TryResolvePath(this.AgreementContentFilePath));
+                this.AgreementContent = CmdletHelper.GetStringContentFromFile(this.TryResolvePath(this.AgreementContentFilePath));
             }
 
             this.WriteObject(
@@ -153,7 +152,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     this.AgreementName,
                     new IntegrationAccountAgreement
                     {
-                        AgreementType = (AgreementType) Enum.Parse(typeof(AgreementType), this.AgreementType),
+                        AgreementType = (AgreementType)Enum.Parse(typeof(AgreementType), AgreementType),
                         HostIdentity = hostIdentity,
                         GuestIdentity = guestIdentity,
                         GuestPartner = this.GuestPartner,

@@ -14,11 +14,9 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
@@ -98,7 +96,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     this.PartnerName,
                     new IntegrationAccountPartner
                     {
-                        PartnerType = (PartnerType) Enum.Parse(typeof(PartnerType), this.PartnerType),
+                        PartnerType = this.PartnerType,
                         Content = new PartnerContent
                         {
                             B2b = new B2BPartnerContent

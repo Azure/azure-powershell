@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             ConfirmAction(Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceWarning, "Microsoft.Logic/integrationAccounts/partners", this.Name),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceMessage, "Microsoft.Logic/integrationAccounts/partners", this.Name),
-                Name,
+                this.Name,
                 () => {
                     IntegrationAccountClient.RemoveIntegrationAccountPartner(this.ResourceGroupName, this.Name, this.PartnerName);
                 });

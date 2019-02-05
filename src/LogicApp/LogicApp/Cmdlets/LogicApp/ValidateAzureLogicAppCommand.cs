@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System;
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
@@ -29,15 +28,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogicApp"), OutputType(typeof(void))]
     public class ValidateAzureLogicApp : LogicAppBaseCmdlet
     {
-        #region private Variables
-
-        /// <summary>
-        /// Default value for the workflow status parameter
-        /// </summary>
-        private string _status = Constants.StatusEnabled;
-
-        #endregion private Variables
-
         #region Input Parameters
 
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
@@ -60,11 +50,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "The state of the workflow.")]
         [ValidateSet(Constants.StatusEnabled, Constants.StatusDisabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
-        public string State
-        {
-            get { return this._status; }
-            set { this._status = value; }
-        }
+        public string State { get; set; } = Constants.StatusEnabled;
 
         [Parameter(Mandatory = false, HelpMessage = "The definition of the workflow.",
             ParameterSetName = ParameterSet.LogicAppWithDefinition)]
@@ -125,7 +111,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 IntegrationAccount = string.IsNullOrEmpty(this.IntegrationAccountId)
                     ? null
                     : new ResourceReference(this.IntegrationAccountId),
-                State = (WorkflowState)Enum.Parse(typeof(WorkflowState), this.State)
+                State = this.State
             });
         }
     }

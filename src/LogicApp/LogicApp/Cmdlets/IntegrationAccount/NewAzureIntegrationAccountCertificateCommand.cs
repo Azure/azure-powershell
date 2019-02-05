@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account certificate key name.",
             ValueFromPipelineByPropertyName = true)]
-        [Parameter(ParameterSetName = "PrivateKey",Mandatory = true)]
+        [Parameter(ParameterSetName = "PrivateKey", Mandatory = true)]
         [Parameter(ParameterSetName = "Both", Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string KeyName { get; set; }

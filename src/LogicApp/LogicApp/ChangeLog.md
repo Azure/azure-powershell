@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update to Logic App SDK 4.1.0
+* New cmdlets for Assemblies
+	- Get-AzIntegrationAccountAssembly
+	- New-AzIntegrationAccountAssembly
+	- Remove-AzIntegrationAccountAssembly
+	- Set-AzIntegrationAccountAssembly
+* New cmdlets for Batch Configuration
+	- Get-AzIntegrationAccountBatchConfiguration
+	- New-AzIntegrationAccountBatchConfiguration
+	- Remove-AzIntegrationAccountBatchConfiguration
+	- Set-AzIntegrationAccountBatchConfiguration
 
 ## Version 1.1.0
 * Get-AzLogicApp lists all without specified Name

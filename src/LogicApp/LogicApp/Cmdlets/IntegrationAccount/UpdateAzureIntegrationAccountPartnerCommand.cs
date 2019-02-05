@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System;
     using System.Globalization;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
@@ -91,19 +90,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
-            var integrationAccountPartner = IntegrationAccountClient.GetIntegrationAccountPartner(
-                this.ResourceGroupName,
-                this.Name, this.PartnerName);
+            var integrationAccountPartner = IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name, this.PartnerName);
 
             if (!string.IsNullOrEmpty(this.PartnerType))
             {
-                integrationAccountPartner.PartnerType = (PartnerType) Enum.Parse(typeof(PartnerType), this.PartnerType);
+                integrationAccountPartner.PartnerType = this.PartnerType;
             }
 
-            if (this.BusinessIdentities != null)
+            if (BusinessIdentities != null)
             {
                 integrationAccountPartner.Content.B2b.BusinessIdentities =
-                    CmdletHelper.ConvertToBusinessIdentityList(this.BusinessIdentities);
+                    CmdletHelper.ConvertToBusinessIdentityList(BusinessIdentities);
             }
 
             if (this.Metadata != null)
@@ -112,11 +109,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             }
 
             ConfirmAction(Force.IsPresent,
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
-                    "Microsoft.Logic/integrationAccounts/partners", this.Name),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
-                    "Microsoft.Logic/integrationAccounts/partners", this.Name),
-                Name,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning, "Microsoft.Logic/integrationAccounts/partners", this.Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage, "Microsoft.Logic/integrationAccounts/partners", this.Name),
+                this.Name,
                 () =>
                 {
                     this.WriteObject(

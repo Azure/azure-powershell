@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     Location = this.Location,
                     Sku = new IntegrationAccountSku
                     {
-                        Name = (IntegrationAccountSkuName) Enum.Parse(typeof(IntegrationAccountSkuName), this.Sku)
+                        Name = this.Sku
                     },
                     Properties = new JObject()
 
