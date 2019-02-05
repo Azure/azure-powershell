@@ -20,18 +20,18 @@ function WaitforStatetoBeSucceded
 {
 	param([string]$resourceGroupName,[string]$namespaceName,[string]$drConfigName)
 	
-	$createdMigrationConfig = Get-AzureRmServiceBusMigration -ResourceGroup $resourceGroupName -Name $namespaceName
+	$createdMigrationConfig = Get-AzServiceBusMigration -ResourceGroup $resourceGroupName -Name $namespaceName
 
 	while($createdMigrationConfig.MigrationState -ne "Active" -and $createdMigrationConfig.ProvisioningState -ne "Succeeded")
 	{
 		Wait-Seconds 10
-		$createdMigrationConfig = Get-AzureRmServiceBusMigration -ResourceGroup $resourceGroupName -Name $namespaceName
+		$createdMigrationConfig = Get-AzServiceBusMigration -ResourceGroup $resourceGroupName -Name $namespaceName
 	}
 
 	while($createdMigrationConfig.PendingReplicationOperationsCount -ne $null -and $createdMigrationConfig.PendingReplicationOperationsCount -gt 0)
 	{
 		Wait-Seconds 10
-		$createdMigrationConfig = Get-AzureRmServiceBusMigration -ResourceGroup $resourceGroupName -Name $namespaceName
+		$createdMigrationConfig = Get-AzServiceBusMigration -ResourceGroup $resourceGroupName -Name $namespaceName
 	}
 
 	return $createdMigrationConfig
@@ -45,12 +45,12 @@ function WaitforStatetoBeSucceded_namespace
 {
 	param([string]$resourceGroupName,[string]$namespaceName)
 	
-	$Getnamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName 
+	$Getnamespace = Get-AzServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName 
 
 	while($Getnamespace.ProvisioningState -ne "Succeeded")
 	{
 		Wait-Seconds 10
-		$Getnamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+		$Getnamespace = Get-AzServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
 	}
 
 }
@@ -76,12 +76,12 @@ function ServiceBusMigrationConfigurationTests
 	# Create Resource Group
 	Write-Debug "Create resource group"
 	Write-Debug " Resource Group Name : $resourceGroupName"
-	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location_south -Force	
+	New-AzResourceGroup -Name $resourceGroupName -Location $location_south -Force	
 		
 	# Create ServiceBus Namespace - 1
 	Write-Debug "  Create new ServiceBus namespace 1"
 	Write-Debug " Namespace 1 name : $namespaceName1"
-	$result1 = New-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1 -Location $location_south -SkuName Standard
+	$result1 = New-AzServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1 -Location $location_south -SkuName Standard
 
 	# Assert
 	Assert-AreEqual $result1.Name $namespaceName1
@@ -89,7 +89,7 @@ function ServiceBusMigrationConfigurationTests
 	# Create ServiceBus Namespace - 2
 	Write-Debug "  Create new ServiceBus namespace 2"
 	Write-Debug " Namespace 2 name : $namespaceName2"
-	$result2 = New-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Location $location_north -SkuName Premium
+	$result2 = New-AzServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Location $location_north -SkuName Premium
 
 	# Assert
 	Assert-AreEqual $result2.Name $namespaceName2
@@ -98,20 +98,20 @@ function ServiceBusMigrationConfigurationTests
 	{
 		# get the created ServiceBus Namespace  1
 		Write-Debug " Get the created namespace within the resource group"
-		$createdNamespace1 = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1
+		$createdNamespace1 = Get-AzServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1
 	
 		Assert-AreEqual $createdNamespace1.Name $namespaceName1 "Namespace created earlier is not found."
 
 		# get the created ServiceBus Namespace  2
 		Write-Debug " Get the created namespace within the resource group"
-		$createdNamespace2 = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2
+		$createdNamespace2 = Get-AzServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2
 	
 		Assert-AreEqual $createdNamespace2.Name $namespaceName2 "Namespace created earlier is not found."
 
 		# Create AuthorizationRule
 		Write-Debug "Create a Namespace Authorization Rule"
 		Write-Debug "Auth Rule name : $authRuleName"
-		$result = New-AzureRmServiceBusAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName1 -Name $authRuleName -Rights @("Listen","Send")
+		$result = New-AzServiceBusAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName1 -Name $authRuleName -Rights @("Listen","Send")
 																																	  
 		Assert-AreEqual $authRuleName $result.Name
 		Assert-AreEqual 2 $result.Rights.Count
@@ -122,38 +122,38 @@ function ServiceBusMigrationConfigurationTests
 		for ($count = 0; $count -lt 20 ; $count++)
 		{
 			$queueName = getAssetName "Queue-"
-			$resultQueue = New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $queueName
+			$resultQueue = New-AzServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $queueName
 		} 	
 	
 		# Create Topic in Stanradrd namespace
 		for ($count = 0; $count -lt 20 ; $count++)
 		{
 			$topicName = getAssetName "Topic-"
-			$resultTopic = New-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $topicName -EnablePartitioning $TRUE		
+			$resultTopic = New-AzServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $topicName -EnablePartitioning $TRUE		
 		} 
 				
 		# Create and Start MigrationConfiguration
 		Write-Debug " Create and Start MigrationConfiguration"
-		$result = Start-AzureRmServiceBusMigration -ResourceGroupName $resourceGroupName -Name $namespaceName1 -TargetNameSpace $result2.Id -PostMigrationName $postmigrationName
+		$result = Start-AzServiceBusMigration -ResourceGroupName $resourceGroupName -Name $namespaceName1 -TargetNameSpace $result2.Id -PostMigrationName $postmigrationName
 	
 		# Wait till the Migration Provisioning  state changes to succeeded
 		WaitforStatetoBeSucceded $resourceGroupName $namespaceName1
 																			  
 		# Complete the Migration
-		$completMigration = Complete-AzureRmServiceBusMigration -ResourceGroupName $resourceGroupName -Name $namespaceName1
+		$completMigration = Complete-AzServiceBusMigration -ResourceGroupName $resourceGroupName -Name $namespaceName1
 
 		# Wait till the Migration Provisioning  state changes to succeeded
 		WaitforStatetoBeSucceded $resourceGroupName $namespaceName1
 	
 		# Get Premium Namespaces 
-		$GetPremiumNamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2
+		$GetPremiumNamespace = Get-AzServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2
 			
 		# Get queues using Premium namespace to check migration
-		$getQueueList = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName2
+		$getQueueList = Get-AzServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName2
 		Assert-AreEqual $getQueueList.Count 20 "Total Queue count not 20"
 
 		# Get Topic using Premium namespace to check migration			
-		$getTopicList = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName2
+		$getTopicList = Get-AzServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName2
 		Assert-AreEqual $getTopicList.Count 20 "Total Topic count not 20"
 
 		# Wait till the Namespace Provisioning  state changes to succeeded
@@ -165,13 +165,13 @@ function ServiceBusMigrationConfigurationTests
 	Finally
 	{
 		Write-Debug " Delete namespaces"
-		Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName1
+		Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName1
 
 		Write-Debug " Delete namespaces"
-		Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName2
+		Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName2
 
 		Write-Debug " Delete resourcegroup"
-		Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+		Remove-AzResourceGroup -Name $resourceGroupName -Force
 	}
 
 	

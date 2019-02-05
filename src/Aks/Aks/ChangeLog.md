@@ -19,5 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.1
+* Update incorrect online help URLs
+
 ## Version 1.0.0
 * General availability of `Az.Aks` module

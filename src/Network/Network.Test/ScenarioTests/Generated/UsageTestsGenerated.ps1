@@ -35,7 +35,7 @@ function Test-UsageCRUDMinimalParameters
 
     try
     {
-        $vUsage = Get-AzureRmNetworkUsage -Location $location;
+        $vUsage = Get-AzNetworkUsage -Location $location;
         Assert-NotNull $vUsage;
     }
     finally

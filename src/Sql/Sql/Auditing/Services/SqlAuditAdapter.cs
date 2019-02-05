@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         public SqlAuditAdapter(IAzureContext context)
         {
             Context = context;
-            Subscription = context.Subscription;
+            Subscription = context?.Subscription;
             Communicator = new AuditingEndpointsCommunicator(Context);
             AzureCommunicator = new AzureEndpointsCommunicator(Context);
         }

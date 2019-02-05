@@ -115,5 +115,19 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewDeploymentWithKeyVaultReferenceInParameterObject");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentFromNonexistentTemplateFile()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentFromNonexistentTemplateFile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentFromNonexistentTemplateParameterFile()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentFromNonexistentTemplateParameterFile");
+        }
     }
 }

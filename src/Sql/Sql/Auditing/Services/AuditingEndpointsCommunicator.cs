@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         public AuditingEndpointsCommunicator(IAzureContext context)
         {
             Context = context;
-            if (context.Subscription != Subscription)
+            if (context?.Subscription != Subscription)
             {
-                Subscription = context.Subscription;
+                Subscription = context?.Subscription;
                 SqlClient = null;
                 MonitorClient = null;
             }

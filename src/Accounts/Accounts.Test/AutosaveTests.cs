@@ -30,7 +30,7 @@ using Microsoft.Azure.Commands.Profile.Context;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
+namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class AutosaveTests
     {

@@ -17,7 +17,6 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.ContainerInstance;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Redis;
-using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -29,6 +28,7 @@ using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 
 namespace Commands.Network.Test
 {
@@ -129,6 +129,7 @@ namespace Commands.Network.Test
                     _helper.GetRMModulePath("AzureRM.ContainerInstance.psd1"),
                     _helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
                     "AzureRM.Storage.ps1",
+                    _helper.GetRMModulePath("AzureRM.Storage.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try
