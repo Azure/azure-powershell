@@ -186,5 +186,19 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-AuditingOnDatabase");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAuditingOnServer()
+        {
+            RunPowerShellTest("Test-AuditingOnServer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDiagnosticsAreCreatedOnNeed()
+        {
+            RunPowerShellTest("Test-NewDiagnosticsAreCreatedOnNeed");
+        }
     }
 }

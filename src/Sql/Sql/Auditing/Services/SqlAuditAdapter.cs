@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
 
             model.DiagnosticsEnablingAuditCategory = AuditingEndpointsCommunicator.IsAuditCategoryEnabled(updatedSettings) ?
-                new List<DiagnosticSettingsResource> { settings } : null;
+                new List<DiagnosticSettingsResource> { updatedSettings } : null;
             return true;
         }
 
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             if (settings == null ||
                 (model is DatabaseAuditingSettingsModel dbModel ?
                 Communicator.RemoveDiagnosticSettings(settings.Name, dbModel.ResourceGroupName, dbModel.ServerName, dbModel.DatabaseName) :
-                Communicator.RemoveDiagnosticSettings(settings.Name, model.ResourceGroupName, model.ServerName) == false))
+                Communicator.RemoveDiagnosticSettings(settings.Name, model.ResourceGroupName, model.ServerName)) == false)
             {
                 return false;
             }
