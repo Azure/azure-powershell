@@ -662,6 +662,79 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal(tenants[1], resultSubscription.TenantId);
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetAzureRmSubscriptionManagedService()
+        {
+            var tenants = new List<string> { Guid.NewGuid().ToString(), DefaultTenant.ToString() };
+            var firstTenantSubscriptions = new List<string> {  Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString() };
+            var secondTenantSubscriptions = new List<string> { Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString() };
+
+            var firstList = new List<string> { firstTenantSubscriptions[0], firstTenantSubscriptions[1] };
+            var secondList = new List<string> { firstTenantSubscriptions[2], firstTenantSubscriptions[3] };
+
+            var thirdList = new List<string> { secondTenantSubscriptions[0], secondTenantSubscriptions[1] };
+            var fourthList = new List<string> { secondTenantSubscriptions[2], secondTenantSubscriptions[3] };
+
+            var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList, fourthList);
+
+            // TEST WITH USER TYPE
+            var dataStore = new MemoryDataStore();
+            AzureSession.Instance.DataStore = dataStore;
+            var commandRuntimeMock = new MockCommandRuntime();
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            var profile = new AzureRmProfile();
+            profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
+            profile.DefaultContext = Context;
+            profile.DefaultContext.Account = new AzureAccount();
+            profile.DefaultContext.Tenant.Id = DefaultTenant.ToString();
+
+            profile.DefaultContext.Account.Type = "User";
+            var cmdlt = new GetAzureRMSubscriptionCommand();
+            // Setup
+            cmdlt.DefaultProfile = profile;
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            Assert.Null(cmdlt.TenantId);
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+            Assert.Null(cmdlt.TenantId);
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 8);
+
+            // TEST WITH MANAGEDSERVICE
+            client = SetupTestEnvironment(tenants, firstList, secondList, thirdList, fourthList);
+
+            dataStore = new MemoryDataStore();
+            AzureSession.Instance.DataStore = dataStore;
+            commandRuntimeMock = new MockCommandRuntime();
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            profile = new AzureRmProfile();
+            profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
+            profile.DefaultContext = Context;
+            profile.DefaultContext.Account = new AzureAccount();
+            profile.DefaultContext.Tenant.Id = DefaultTenant.ToString();
+
+            profile.DefaultContext.Account.Type = "ManagedService";
+            cmdlt = new GetAzureRMSubscriptionCommand();
+            // Setup
+            cmdlt.DefaultProfile = profile;
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            Assert.Null(cmdlt.TenantId);
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+            Assert.NotNull(cmdlt.TenantId);
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 4);
+        }
+
 #if NETSTANDARD
         [Fact(Skip = "ConcurrentDictionary is not marked as Serializable")]
         [Trait(Category.RunType, Category.DesktopOnly)]

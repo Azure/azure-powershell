@@ -51,9 +51,8 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         /// <summary>
         /// Initializes the model adapter
         /// </summary>
-        /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The advisor adapter</returns>
-        protected override AzureSqlDatabaseAdvisorAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlDatabaseAdvisorAdapter InitModelAdapter()
         {
             return new AzureSqlDatabaseAdvisorAdapter(DefaultProfile.DefaultContext);
         }
