@@ -11,32 +11,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace RepoTasks.RemoteWorker
+namespace FormatPs1XmlGenerator
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Reflection;
+    using System.Runtime.Loader;
     using System.Xml.Serialization;
     using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
-    public class AppDomainWorker : MarshalByRefObject, IReflectionWorker
+    public class Reflector
     {
         private Configuration _configuration;
         private bool _onlyMarkedProperties;
+        public PSCmdlet Cmdlet { get; set; }
 
-        public Tuple<string, List<string>> BuildFormatPs1Xml(string assemblyPath, string[] cmdlets, bool onlyMarkedProperties)
+        public string BuildFormatPs1Xml(string assemblyPath, string[] cmdlets, bool onlyMarkedProperties)
         {
             _onlyMarkedProperties = onlyMarkedProperties;
-            string assemblyName;
-            var cmdletTypes = GetCmdletTypes(assemblyPath, cmdlets, out assemblyName);
+            var cmdletTypes = GetCmdletTypes(assemblyPath, cmdlets, out var assemblyName);
             if (cmdletTypes.Count == 0) return null;
-            var warnings = new List<string>();
-            _configuration = BuildXmlConfiguration(cmdletTypes, warnings);
+            _configuration = BuildXmlConfiguration(cmdletTypes);
             var filename = assemblyName + ".generated.format.ps1xml";
-            return Tuple.Create(filename, warnings);;
+            return filename;;
         }
 
         public void Serialize(string filepath)
@@ -44,39 +44,78 @@ namespace RepoTasks.RemoteWorker
             Serialize(_configuration, filepath);
         }
 
-        internal static IList<Type> GetCmdletTypes(string assemblyPath, string[] cmdlets, out string assemblyName)
+        public IList<Type> GetCmdletTypes(string assemblyPath, string[] cmdlets, out string assemblyName)
         {
             if (string.IsNullOrEmpty(assemblyPath)) throw new ArgumentNullException(nameof(assemblyPath));
-            var assembly = Assembly.LoadFrom(assemblyPath);
 
+            // Every module has dependecy on the Az.Accounts module
+            // First, try to find the Az.Accounts module in the 'artifacts' directory
+            Assembly Resoler(AssemblyLoadContext context, AssemblyName name)
+            {
+                try
+                {
+                    // we assume that our assembly is in the 'artifacts' directory as well
+                    var assemblyDirectory = Path.GetDirectoryName(assemblyPath) ?? throw new InvalidOperationException();
+                    var accountPath = Path.Combine(assemblyDirectory, Path.Combine("..", @"Az.Accounts"));
+                    return Assembly.LoadFrom(Path.Combine(accountPath, $"{name.Name}.dll"));
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+
+            try
+            {
+                // if the Az.Accounts module gets imported manually
+                return LoadAssemblyAndGetCmdletTypes(assemblyPath, cmdlets, out assemblyName);
+            }
+            catch
+            {
+                try
+                {
+                    AssemblyLoadContext.Default.Resolving += Resoler;
+                    return LoadAssemblyAndGetCmdletTypes(assemblyPath, cmdlets, out assemblyName);
+                }
+                finally
+                {
+                    AssemblyLoadContext.Default.Resolving -= Resoler;
+                }
+            }
+        }
+
+        public IList<Type> LoadAssemblyAndGetCmdletTypes(string assemblyPath, string[] cmdlets, out string assemblyName)
+        {
+            var assembly = Assembly.LoadFrom(assemblyPath);
             assemblyName = assembly.GetName().Name;
             var cmdletTypes = assembly
                 .ExportedTypes
                 .Where(
-                    type => {
+                    type =>
+                    {
                         var attributes = type.GetCustomAttributes(
                             typeof(CmdletAttribute),
                             false);
 
                         if (attributes.Length == 0) return false;
-                        var cmdletAttribute = (CmdletAttribute)attributes.First();
+                        var cmdletAttribute = (CmdletAttribute) attributes.First();
                         if (cmdletAttribute == null) return false;
                         if (!(cmdlets?.Length > 0)) return true;
                         var attrCmdlet = $"{cmdletAttribute.VerbName}-{cmdletAttribute.NounName}";
-                        return cmdlets.Any(cmdlet => string.Equals(cmdlet, attrCmdlet, StringComparison.OrdinalIgnoreCase));
+                        return cmdlets.Any(cmdlet =>
+                            string.Equals(cmdlet, attrCmdlet, StringComparison.OrdinalIgnoreCase));
                     })
                 .ToList();
-
             return cmdletTypes;
         }
 
         private readonly ISet<string> _usedTypes = new HashSet<string>();
 
-        internal Configuration BuildXmlConfiguration(IEnumerable<Type> cmdletTypeList, IList<string> warnings)
+        public Configuration BuildXmlConfiguration(IEnumerable<Type> cmdletTypeLists)
         {
             var viewList = new List<View>();
 
-            foreach (var cmdletType in cmdletTypeList)
+            foreach (var cmdletType in cmdletTypeLists)
             {
                 var attributes = cmdletType.GetCustomAttributes(
                     typeof(OutputTypeAttribute),
@@ -101,8 +140,8 @@ namespace RepoTasks.RemoteWorker
                         var listItems = new List<ListItem>();
                         GroupByInfo groupByInfo = null;
 
-                        HandleMemberInfo(psType.GetProperties(), tableHeaders, tableColumnItems, listItems, ref groupByInfo, warnings);
-                        HandleMemberInfo(psType.GetFields(), tableHeaders, tableColumnItems, listItems, ref groupByInfo, warnings);
+                        HandleMemberInfo(psType.GetProperties(), tableHeaders, tableColumnItems, listItems, ref groupByInfo);
+                        HandleMemberInfo(psType.GetFields(), tableHeaders, tableColumnItems, listItems, ref groupByInfo);
 
                         if (tableHeaders.Count != 0)
                         {
@@ -209,8 +248,7 @@ namespace RepoTasks.RemoteWorker
             IList<TableColumnHeader> tableHeaders, 
             IList<TableColumnItem> tableColumnItems, 
             IList<ListItem> listItems,
-            ref GroupByInfo groupByInfo,
-            IList<string> warnings) 
+            ref GroupByInfo groupByInfo) 
             where T: MemberInfo
         {
             var memeber = typeof(T) == typeof(PropertyInfo)
@@ -360,7 +398,7 @@ namespace RepoTasks.RemoteWorker
                     warning = warning + "'" + propName + "' in the class " + outputTypeName + " : " + baseTypeName + "; ";
                 }
 
-                warnings.Add(warning); 
+                Cmdlet.WriteWarning(warning); 
             }
 
             var duplicates = dupTrackerPosition
@@ -383,7 +421,7 @@ namespace RepoTasks.RemoteWorker
                     }
                 }
 
-                warnings.Add(warning);
+                Cmdlet.WriteWarning(warning);
             }
 
             Merge(tableHeaders, columnHeadersWithPosition);
