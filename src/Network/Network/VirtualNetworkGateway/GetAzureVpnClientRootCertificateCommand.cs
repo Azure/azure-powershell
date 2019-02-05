@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
             var vnetGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.VirtualNetworkGatewayName);
             if (vnetGateway.VpnClientConfiguration == null)
             {
-                throw new ArgumentException(string.Format("No root certificates found on VirtualNetworkGateway {0}", VirtualNetworkGatewayName));
+                throw new ArgumentException(string.Format(Properties.Resources.VirtualNetworkGatewayNoRootCertificate, VirtualNetworkGatewayName));
             }
 
             if (!string.IsNullOrEmpty(this.VpnClientRootCertificateName))
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Network
                 PSVpnClientRootCertificate rootCertificate = vnetGateway.VpnClientConfiguration.VpnClientRootCertificates.Find(cert => cert.Name.Equals(VpnClientRootCertificateName));
                 if (rootCertificate == null)
                 {
-                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, VpnClientRootCertificateName));
+                    throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, VpnClientRootCertificateName));
                 }
                 else
                 {
