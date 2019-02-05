@@ -1,3 +1,27 @@
+## 1.3.0 - February 2019
+#### Az.Accounts
+* Update to latest version of ClientRuntime
+
+#### Az.AnalysisServices
+General availability for Az.AnalysisServices module.
+
+#### Az.Compute
+* AEM extension: Add support for UltraSSD and P60,P70 and P80 disks
+* Update help description for Set-AzVMBootDiagnostics
+* Update help description and example for Update-AzImage
+
+#### Az.RecoveryServices
+General availability for Az.RecoveryServices module.
+
+#### Az.Resources
+* Fix for issue https://github.com/Azure/azure-powershell/issues/8166
+* Fix for issue https://github.com/Azure/azure-powershell/issues/8235
+
+#### Az.Sql
+* Add Get/Set AzSqlDatabaseBackupShortTermRetentionPolicy
+* Fix issue where not being logged into Azure account would result in nullref exception when executing SQL cmdlets
+* Fixed null ref exception in Get-AzSqlCapability
+
 ## 1.2.0 - January 2019
 #### Az.Accounts
 * Add interactive and username/password authentication for Windows PowerShell 5.1 only
