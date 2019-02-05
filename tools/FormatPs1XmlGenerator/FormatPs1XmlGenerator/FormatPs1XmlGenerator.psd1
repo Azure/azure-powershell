@@ -4,10 +4,10 @@
 RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.4.0'
+ModuleVersion = '0.0.1'
 
 # ID used to uniquely identify this module
-GUID = '0a83c907-1ffb-4d87-a492-c65ac7d7ed37'
+GUID = 'E29254E7-76F8-470E-A8CB-F180EA25DF60'
 
 # Author of this module
 Author = 'Microsoft Corporation'
@@ -19,10 +19,10 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Test'
+Description = 'Generates format.ps1xml files for a provided module'
 
 # Minimum version of the Windows PowerShell engine required by this module
-PowerShellVersion = '3.0'
+PowerShellVersion = '5.1'
 
 # Name of the Windows PowerShell host required by this module
 # PowerShellHostName = ''
@@ -31,7 +31,7 @@ PowerShellVersion = '3.0'
 # PowerShellHostVersion = ''
 
 # Minimum version of Microsoft .NET Framework required by this module
-DotNetFrameworkVersion = '4.5.2'
+DotNetFrameworkVersion = '4.7.2'
 
 # Minimum version of the common language runtime (CLR) required by this module
 CLRVersion = '4.0'
@@ -55,7 +55,7 @@ RequiredModules = @()
 #FormatsToProcess = ''
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\RepoTasks.CmdletsForTest.dll')
+NestedModules = @('.\FormatPs1XmlGenerator.dll')
 
 # Functions to export from this module
 # FunctionsToExport = @()

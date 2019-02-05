@@ -11,14 +11,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-namespace RepoTasks.RemoteWorker
+namespace CmdletsForTest
 {
-    public interface IReflectionWorker
+    using System.Management.Automation;
+    using Models;
+
+    [Cmdlet(VerbsDiagnostic.Test, "DummyTwo", SupportsShouldProcess = true)]
+    [OutputType(typeof(PsDummyOutputTwo))]
+    public class TestDummyTwoCommand : PSCmdlet
     {
-        Tuple<string, List<string>> BuildFormatPs1Xml(string assemblyPath, string[] cmdlet, bool onlyMarkedProperties);
-        void Serialize(string filepath);
+        // empty
     }
 }
