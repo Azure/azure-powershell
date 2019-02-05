@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: DCA1FD7A-54AF-48B1-A245-BFA9C43ACA9B
@@ -70,7 +70,7 @@ Specifies the name of the application.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ApplicationId
 
 Required: True
 Position: 2

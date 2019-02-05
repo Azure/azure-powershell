@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 2B4BFDDA-9721-42E6-84E1-A209CB782954
@@ -16,7 +16,7 @@ Creates a Batch task under a job.
 ### JobId_Single (Default)
 ```
 New-AzBatchTask -JobId <String> -Id <String> [-DisplayName <String>] [-CommandLine <String>]
- [-ResourceFiles <IDictionary>] [-EnvironmentSettings <IDictionary>]
+ [-ResourceFiles <PSResourceFile[]>] [-EnvironmentSettings <IDictionary>]
  [-AuthenticationTokenSettings <PSAuthenticationTokenSettings>] [-UserIdentity <PSUserIdentity>]
  [-AffinityInformation <PSAffinityInformation>] [-Constraints <PSTaskConstraints>]
  [-MultiInstanceSettings <PSMultiInstanceSettings>] [-DependsOn <TaskDependencies>]
@@ -40,7 +40,7 @@ New-AzBatchTask [-Job <PSCloudJob>] [-Tasks <PSCloudTask[]>] -BatchContext <Batc
 ### JobObject_Single
 ```
 New-AzBatchTask [-Job <PSCloudJob>] -Id <String> [-DisplayName <String>] [-CommandLine <String>]
- [-ResourceFiles <IDictionary>] [-EnvironmentSettings <IDictionary>]
+ [-ResourceFiles <PSResourceFile[]>] [-EnvironmentSettings <IDictionary>]
  [-AuthenticationTokenSettings <PSAuthenticationTokenSettings>] [-UserIdentity <PSUserIdentity>]
  [-AffinityInformation <PSAffinityInformation>] [-Constraints <PSTaskConstraints>]
  [-MultiInstanceSettings <PSMultiInstanceSettings>] [-DependsOn <TaskDependencies>]
@@ -403,7 +403,7 @@ The key is the resource file path.
 The value is the resource file blob source.
 
 ```yaml
-Type: System.Collections.IDictionary
+Type: Microsoft.Azure.Commands.Batch.Models.PSResourceFile[]
 Parameter Sets: JobId_Single, JobObject_Single
 Aliases: ResourceFile
 

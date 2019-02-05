@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string HttpUrl { get; set; }
 
-        [Parameter(ParameterSetName = HttpUrlParameterSet, Mandatory = true, HelpMessage = "The location on the compute node to which to download the file(s), relative to the task's working directory. This is the path which the file will be downloaded to, including the filename.")]
-        [Parameter(ParameterSetName = StorageContainerUrlParameterSet, HelpMessage = "The location on the compute node to which to download the file(s), relative to the task's working directory. This is the directory to download the files to. Any directory structure already associated with the input data will be retained in full and appended to the specified FilePath directory. The specified relative path cannot break out of the task's working directory (for example by using '..').")]
-        [Parameter(ParameterSetName = AutoStorageContainerNameParameterSet, HelpMessage = "The location on the compute node to which to download the file(s), relative to the task's working directory. This is the directory to download the files to. Any directory structure already associated with the input data will be retained in full and appended to the specified FilePath directory. The specified relative path cannot break out of the task's working directory (for example by using '..').")]
+        [Parameter(ParameterSetName = HttpUrlParameterSet, Mandatory = true, HelpMessage = "The location on the compute node to which to download the file(s), relative to the task's working directory. If the HttpUrl parameter is specified, the FilePath is required and describes the path which the file will be downloaded to, including the filename. Otherwise, if the AutoStorageContainerName or StorageContainerUrl parameters are specified, FilePath is optional and is the directory to download the files to. In the case where FilePath is used as a directory, any directory structure already associated with the input data will be retained in full and appended to the specified FilePath directory. The specified relative path cannot break out of the task's working directory (for example by using '..').")]
+        [Parameter(ParameterSetName = StorageContainerUrlParameterSet)]
+        [Parameter(ParameterSetName = AutoStorageContainerNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string FilePath { get; set; }
 
@@ -47,9 +47,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(
             ParameterSetName = StorageContainerUrlParameterSet, 
             HelpMessage = "Gets the blob prefix to use when downloading blobs from an Azure Storage container. Only the blobs whose names begin with the specified prefix will be downloaded. This prefix can be a partial filename or a subdirectory. If a prefix is not specified, all the files in the container will be downloaded.")]
-        [Parameter(
-            ParameterSetName = AutoStorageContainerNameParameterSet,
-            HelpMessage = "Gets the blob prefix to use when downloading blobs from an Azure Storage container. Only the blobs whose names begin with the specified prefix will be downloaded. This prefix can be a partial filename or a subdirectory. If a prefix is not specified, all the files in the container will be downloaded.")]
+        [Parameter(ParameterSetName = AutoStorageContainerNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string BlobPrefix { get; set; }
 
