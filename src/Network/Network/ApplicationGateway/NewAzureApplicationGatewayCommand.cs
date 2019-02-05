@@ -24,7 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGateway", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGateway", DefaultParameterSetName = "IdentityByUserAssignedIdentityId", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
     public class NewAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -183,6 +183,7 @@ namespace Microsoft.Azure.Commands.Network
         public Hashtable Tag { get; set; }
 
         [Parameter(
+            ParameterSetName = "IdentityByUserAssignedIdentityId",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "ResourceId of the user assigned identity to be assigned to Application Gateway.")]
@@ -191,7 +192,8 @@ namespace Microsoft.Azure.Commands.Network
         public string UserAssignedIdentityId { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            ParameterSetName = "IdentityByIdentityObject",
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Gateway Identity to be assigned to Application Gateway.")]
         [ValidateNotNullOrEmpty]
