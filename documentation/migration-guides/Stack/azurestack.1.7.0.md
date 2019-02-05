@@ -5,9 +5,6 @@ This document serves as both a breaking change notification and migration guide 
 - [Breaking changes to Backup Admin cmdlets](#breaking-changes-to-backup-admin-cmdlets)
 - [Breaking changes to Fabric Admin cmdlets](#breaking-changes-to-fabric-admin-cmdlets)
 
-### AzureRm.Profile dependency
-All the modules in the AzureRm 2.3.0 are taking ModuleVersion dependency on the AzureRm.Profile module. This means that any future versions of AzureRm.Profile modules will also be compatible with all other modules getting shipped part of AzureRm 2.3.0 version
-
 ## Breaking changes to Backup Admin cmdlets
 Backup uses cert-based encryption now. Support for symmetric keys is deprecated.
 ### Set-AzsBackupConfiguration 
