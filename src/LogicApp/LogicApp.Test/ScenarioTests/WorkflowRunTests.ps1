@@ -12,21 +12,20 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$WORKFLOW_LOCATION = 'westus'
-
 <#
 .SYNOPSIS
-Test Start and Stop AzureLogicApp command for logic app workflow.
+Test Start and Stop AzLogicApp command for logic app workflow.
 #>
 function Test-StartLogicApp
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
 
 	$workflowName = getAssetname
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 
-	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
+	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $location -DefinitionFilePath $definitionFilePath
 	
 	[int]$counter = 0
 	do {
@@ -41,15 +40,16 @@ function Test-StartLogicApp
 .SYNOPSIS
 Test Get-AzLogicAppRunHistory and Get-AzLogicAppRun command to get the logic app history
 #>
-function Test-GetAzureLogicAppRunHistory
+function Test-GetAzLogicAppRunHistory
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
 
 	$workflowName = getAssetname
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 
-	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
+	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $location -DefinitionFilePath $definitionFilePath
 	
 	[int]$counter = 0
 	do {
@@ -70,15 +70,16 @@ function Test-GetAzureLogicAppRunHistory
 .SYNOPSIS
 Test Get-AzLogicAppRunAction command to get the logic app run action
 #>
-function Test-GetAzureLogicAppRunAction
+function Test-GetAzLogicAppRunAction
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
 
 	$workflowName = getAssetname
 	$definitionFilePath = Join-Path $TestOutputRoot "Resources\TestSimpleWorkflowTriggerDefinition.json"
 
-	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
+	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $location -DefinitionFilePath $definitionFilePath
 
 	[int]$counter = 0
 	do {
@@ -101,17 +102,18 @@ function Test-GetAzureLogicAppRunAction
 
 <#
 .SYNOPSIS
-Test Start and Stop AzureLogicApp command for logic app workflow.
+Test Start and Stop AzLogicApp command for logic app workflow.
 #>
-function Test-StopAzureRmLogicAppRun
+function Test-StopAzLogicAppRun
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
 
 	$workflowName = getAssetname
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinitionWithDelayAction.json"
 
-	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
+	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $location -DefinitionFilePath $definitionFilePath
 	
 	[int]$counter = 0
 	do {
