@@ -397,6 +397,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             }
             else if (ParameterSetName == DefinitionsCommon.LogAnalyticsParameterSetName ||
                 ParameterSetName == DefinitionsCommon.LogAnalyticsByParentResourceParameterSetName)
+
             {
                 DatabaseLogAnalyticsAuditingSettingsModel logAnalyticsModel = model as DatabaseLogAnalyticsAuditingSettingsModel;
                 if (WorkspaceResourceId != null)
