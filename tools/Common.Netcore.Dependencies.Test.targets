@@ -9,13 +9,13 @@
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.1-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.14.1" >
+    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.13.3" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.5" >
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.7" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.8.1" >
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.7.6" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="xunit" Version="2.4.0" />
