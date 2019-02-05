@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             var monitorManagementClient = GetMonitorManagementClient(context);
             var eventHubManagementClient = GetEventHubManagementClient(context);
             var operationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, publicstorageV2Client, storageV2Client,
+            Helper.SetupSomeOfManagementClients(sqlClient, storageV2Client, storageV2Client,
                 newResourcesClient, monitorManagementClient, eventHubManagementClient,
                 operationalInsightsManagementClient);
         }

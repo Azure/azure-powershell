@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// </summary>
         /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected override SqlAuditAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override SqlAuditAdapter InitModelAdapter()
         {
             return new SqlAuditAdapter(DefaultProfile.DefaultContext);
         }
