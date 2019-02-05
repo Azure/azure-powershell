@@ -55,6 +55,12 @@ namespace Microsoft.Azure.Commands.Kusto
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The instance number of the VM.")]
+        [ValidateNotNullOrEmpty]
+        public int? Capacity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Name of the Tier used to create the cluster")]
         [PSArgumentCompleter("Standard")]
         public string Tier { get; set; }
@@ -95,7 +101,7 @@ namespace Microsoft.Azure.Commands.Kusto
                     }
                 }
 
-                var createdCluster = KustoClient.CreateOrUpdateCluster(ResourceGroupName, Name, Location, Sku, Tag, null);
+                var createdCluster = KustoClient.CreateOrUpdateCluster(ResourceGroupName, Name, Location, Sku, Capacity, Tag, null);
                 WriteObject(createdCluster);
             }
         }

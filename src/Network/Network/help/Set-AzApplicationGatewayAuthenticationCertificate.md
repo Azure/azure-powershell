@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 0108A65B-E322-4783-AB6A-6AF1E1A58AC5
@@ -22,6 +22,17 @@ Set-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway <PSApplica
 The **Set-AzApplicationGatewayAuthenticationCertificate** cmdlet updates an authentication certificate for an Azure application gateway.
 
 ## EXAMPLES
+
+### Example 1: Update an authentication certificate
+```
+PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
+PS C:\> $appgw = Set-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $appgw -Name "cert01" -CertificateFile "C:\cert2.cer"
+PS C:\> $appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+```
+
+The first command gets the application gateway named appGwName and stores the result in the $appgw variable.
+The second command updates the authentication certificate named cert01 in the application gateway.
+The third command updates the application gateway.
 
 ## PARAMETERS
 

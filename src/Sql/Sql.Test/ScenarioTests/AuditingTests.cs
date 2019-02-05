@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
             var sqlClient = GetSqlClient(context);
-            var publicstorageV2Client = GetPublicStorageManagementClient(context);
             var storageV2Client = GetStorageManagementClient(context);
             var newResourcesClient = GetResourcesClient(context);
             var monitorManagementClient = GetMonitorManagementClient(context);

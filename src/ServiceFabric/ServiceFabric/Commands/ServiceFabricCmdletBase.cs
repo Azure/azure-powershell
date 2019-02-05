@@ -45,6 +45,7 @@ using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
 using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.KeyVault.Models;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -191,7 +192,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (result == null || !result.Any())
             {
                 throw new PSArgumentException(string.Format(
-                    ServiceFabricProperties.Resources.NoneNodeTypeFound,
+                    ServiceFabricProperties.Resources.NoVMSSFoundInRG,
                     this.ResourceGroupName));
             }
 
@@ -202,14 +203,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 throw new PSInvalidOperationException(
                     string.Format(
-                        ServiceFabricProperties.Resources.CannotFindTheNodeType, 
+                        ServiceFabricProperties.Resources.CannotFindVMSS, 
                         name));
             }
 
             return vmss;
         }
 
-        public VirtualMachineScaleSetExtension FindFabricVmExt(IList<VirtualMachineScaleSetExtension> extensions)
+        public bool TryGetFabricVmExt(IList<VirtualMachineScaleSetExtension> extensions, out VirtualMachineScaleSetExtension sfExtension)
         {
             var extConfigs = extensions.Where(
                     e =>e.Type.Equals(
@@ -219,14 +220,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 extConfigs = extensions.Where(
                    e => e.Type.Equals(Constants.ServiceFabricLinuxNodeExtName, StringComparison.OrdinalIgnoreCase));
-
-                if (!extConfigs.Any())
-                {
-                    throw new PSInvalidOperationException(extConfigs.Count().ToString());
-                }
+                sfExtension = null;
+                return false;
             }
 
-            return extConfigs.First();
+            sfExtension = extConfigs.First();
+            return true;
+        }
+
+        public string GetClusterIdFromExtension(VirtualMachineScaleSetExtension sfExtension)
+        {
+            JObject extSettings = (JObject)sfExtension.Settings;
+            string clusterEndpoint = (string)extSettings.SelectToken("clusterEndpoint");
+            string id = clusterEndpoint.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+            return id;
         }
 
         #endregion

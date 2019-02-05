@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azserviceendpointpolicy
@@ -8,13 +8,19 @@ schema: 2.0.0
 # Get-AzServiceEndpointPolicy
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a service endpoint policy.
 
 ## SYNTAX
 
-### GetByNameParameterSet (Default)
+### ListParameterSet (Default)
 ```
-Get-AzServiceEndpointPolicy [-Name <String>] -ResourceGroupName <String>
+Get-AzServiceEndpointPolicy [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### GetByNameParameterSet
+```
+Get-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -68,7 +74,7 @@ Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -77,6 +83,18 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: ListParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ```yaml
 Type: System.String
@@ -91,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{Fill ResourceId Description}}
+The ID of the service endpoint policy.
 
 ```yaml
 Type: System.String
@@ -149,3 +167,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzServiceEndpointPolicy](./New-AzServiceEndpointPolicy.md)
+
+[Remove-AzServiceEndpointPolicy](./Remove-AzServiceEndpointPolicy.md)
+
+[Set-AzServiceEndpointPolicy](./Set-AzServiceEndpointPolicy.md)

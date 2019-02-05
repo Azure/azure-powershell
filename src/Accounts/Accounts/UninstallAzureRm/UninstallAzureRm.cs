@@ -14,6 +14,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -33,6 +34,16 @@ namespace Microsoft.Azure.Commands.Profile.UninstallAzureRm
 
         public override void ExecuteCmdlet()
         {
+            if (this.SessionState != null)
+            {
+                var version = (this.SessionState.PSVariable.Get("PSVersionTable").Value as Hashtable)["PSVersion"];
+                if (Convert.ToInt64(version.ToString().Substring(0, 1)) >= 6)
+                {
+                    WriteWarning("Running this cmdlet in PowerShell Core will not remove the modules from PowerShell 5.1. " +
+                        "Please rerun this cmdlet in a PowerShell 5.1 session to remove the modules from PowerShell 5.1.");
+                }
+            }
+
             List<string> AzureModules = new List<string> { "Azure.AnalysisServices", "Azure.Storage", "AzureRM", "AzureRM.AnalysisServices",
                 "AzureRM.ApiManagement", "AzureRM.ApplicationInsights", "AzureRM.Automation", "AzureRM.Backup", "AzureRM.Batch", "AzureRM.Billing",
                 "AzureRM.Cdn", "AzureRM.CognitiveServices", "AzureRM.Compute", "AzureRM.Compute.Experiments", "AzureRM.Consumption",
@@ -51,25 +62,28 @@ namespace Microsoft.Azure.Commands.Profile.UninstallAzureRm
             var paths = Environment.GetEnvironmentVariable("PSModulePath").Split(';');
             foreach (var path in paths)
             {
-                var modules = dataStore.GetDirectories(path);
-                foreach(var module in modules)
+                if (dataStore.DirectoryExists(path))
                 {
-                    var moduleName = module.Split('\\').LastOrDefault();
-                    if (AzureModules.Any(x => x.Equals(moduleName, StringComparison.OrdinalIgnoreCase)))
+                    var modules = dataStore.GetDirectories(path);
+                    foreach (var module in modules)
                     {
-                        if (ShouldProcess(module, string.Format(Properties.Resources.ShouldRemoveModule, moduleName)))
+                        var moduleName = module.Split(Path.DirectorySeparatorChar).LastOrDefault();
+                        if (AzureModules.Any(x => x.Equals(moduleName, StringComparison.OrdinalIgnoreCase)))
                         {
-                            try
+                            if (ShouldProcess(module, string.Format(Properties.Resources.ShouldRemoveModule, moduleName)))
                             {
-                                dataStore.DeleteDirectory(module);
-                                if (PassThru)
+                                try
                                 {
-                                    WriteObject(moduleName);
+                                    dataStore.DeleteDirectory(module);
+                                    if (PassThru)
+                                    {
+                                        WriteObject(moduleName);
+                                    }
                                 }
-                            }
-                            catch (UnauthorizedAccessException accessException)
-                            {
-                                throw new UnauthorizedAccessException(Properties.Resources.RemoveModuleError, accessException);
+                                catch (UnauthorizedAccessException accessException)
+                                {
+                                    throw new UnauthorizedAccessException(Properties.Resources.RemoveModuleError, accessException);
+                                }
                             }
                         }
                     }

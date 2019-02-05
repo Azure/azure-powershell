@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add Get/Set AzSqlDatabaseBackupShortTermRetentionPolicy
+* Fix issue where not being logged into Azure account would result in nullref exception when executing SQL cmdlets
+* Fixed null ref exception in Get-AzSqlCapability
+
+## Version 1.1.0
+* Update incorrect online help URLs
+* Updated parameter description for LicenseType parameter with possible values
+* Fix for updating managed instance identity not working when it is the only updated property
+* Support for custom collation on managed instance
+
+## Version 1.0.1
 * Converted the Storage management client dependency to the common SDK implementation.
 
 ## Version 1.0.0

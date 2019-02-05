@@ -12,7 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.IO;
 using Microsoft.Azure.Commands.ServiceFabric.Commands;
+using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -37,14 +40,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             ServiceFabricCmdletBase.RunningTest = true;
             ServiceFabricCmdletBase.NewCreatedKeyVaultWaitTimeInSec = 0;
             //change the thumbprint in the common.ps1 file as well
-            ServiceFabricCmdletBase.TestThumbprint = "3C70633899C7F5194596EB745D1DD106E9F06E79";
+            ServiceFabricCmdletBase.TestThumbprint = "EC8CA0BBC391A08860115619701E2B858FF44C72";
             ServiceFabricCmdletBase.TestCommonNameCACert = "azurermsfcntest.southcentralus.cloudapp.azure.com";
             ServiceFabricCmdletBase.TestCommonNameAppCert = "AzureRMSFTestCertApp";
-            ServiceFabricCmdletBase.TestThumbprintAppCert = "13B2D20A82B3785B6F9F111FA939DB712F41DB96";
+            ServiceFabricCmdletBase.TestThumbprintAppCert = "07F8E7F9A90CB655FED09548969A97C8CF6BDFAC";
             ServiceFabricCmdletBase.TestAppCert = false;
         }
 
-        [Fact, TestPriority(1)]
+        [Fact, TestPriority(3)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateAzureRmServiceFabricDurability()
         {
@@ -135,28 +138,28 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(_logger, "Test-NewAzureRmServiceFabricClusterCNCert");
         }
 
-        [Fact, TestPriority(2)]
+        [Fact, TestPriority(4)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmServiceFabricNode()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricNode");
         }
 
-        [Fact, TestPriority(3)]
+        [Fact, TestPriority(5)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureRmServiceFabricNode()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRmServiceFabricNode");
         }
 
-        [Fact, TestPriority(0)]
+        [Fact, TestPriority(2)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmServiceFabricNodeType()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricNodeType");
         }
 
-        [Fact, TestPriority(4)]
+        [Fact, TestPriority(6)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestRemoveAzureRmServiceFabricNodeType()
@@ -170,6 +173,33 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         {
             ServiceFabricCmdletBase.TestAppCert = true;
             TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricApplicationCertificate");
+        }
+
+        [Fact, TestPriority(0)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddAzureRmServiceFabricApplicationCertificateRollback()
+        {
+            ServiceFabricCmdletBase.TestAppCert = true;
+            TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricApplicationCertificateRollback");
+        }
+
+        [Fact, TestPriority(0)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DefaultTemplateFilesAvailable()
+        {
+            var assemblyFolder = AppDomain.CurrentDomain.BaseDirectory;
+
+            string windowsTemplateDirectory = Path.Combine(assemblyFolder, Constants.WindowsTemplateRelativePath);
+            var templateFilePath = Path.Combine(windowsTemplateDirectory, Constants.TemplateFileName);
+            var parameterFilePath = Path.Combine(windowsTemplateDirectory, Constants.ParameterFileName);
+            Assert.True(File.Exists(templateFilePath), string.Format("file not found: {0}", templateFilePath));
+            Assert.True(File.Exists(parameterFilePath), string.Format("file not found: {0}", parameterFilePath));
+
+            string linuxTemplateDirectory = Path.Combine(assemblyFolder, Constants.LinuxTemplateRelativePath);
+            templateFilePath = Path.Combine(linuxTemplateDirectory, Constants.TemplateFileName);
+            parameterFilePath = Path.Combine(linuxTemplateDirectory, Constants.ParameterFileName);
+            Assert.True(File.Exists(templateFilePath), string.Format("file not found: {0}", templateFilePath));
+            Assert.True(File.Exists(parameterFilePath), string.Format("file not found: {0}", parameterFilePath));
         }
     }
 }

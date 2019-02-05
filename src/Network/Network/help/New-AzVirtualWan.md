@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvirtualwan
@@ -207,3 +207,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzVirtualWan](./Get-AzVirtualWan.md)
+
+[Remove-AzVirtualWan](./Remove-AzVirtualWan.md)
+
+[Update-AzVirtualWan](./Update-AzVirtualWan.md)
