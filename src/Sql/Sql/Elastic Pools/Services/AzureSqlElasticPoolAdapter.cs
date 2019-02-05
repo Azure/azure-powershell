@@ -44,18 +44,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         public IAzureContext Context { get; set; }
 
         /// <summary>
-        /// Gets or sets the Azure Subscription
-        /// </summary>
-        private IAzureSubscription _subscription { get; set; }
-
-        /// <summary>
         /// Constructs a database adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
         public AzureSqlElasticPoolAdapter(IAzureContext context)
         {
-            _subscription = context.Subscription;
             Context = context;
             Communicator = new AzureSqlElasticPoolCommunicator(Context);
         }
