@@ -188,7 +188,23 @@ function Test-CreateAndGetLogicAppUsingDefinitionWithActions
 	$workflow3 = Get-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Version $workflow1.Version
 	Assert-NotNull $workflow3
 
-	# Test 4: Get non-existing logic app using get cmdlet
+	# Test 4: Get all workflows in ResourceGroup
+	$workflow4 = Get-AzLogicApp -ResourceGroupName $resourceGroupName
+	Assert-NotNull $workflow4
+	Assert-True { $workflow4.Length -ge 1 }
+
+	# Test 5: Get all workflows in Subscription
+	$workflow5 = Get-AzLogicApp
+	Assert-NotNull $workflow5
+	Assert-True { $workflow5.Length -ge 1 }
+
+	# Test 6: Get workflow with just name parameter
+	# refortie (1/31/19): TODO Test is disabled for now, we only return the first page on get logic app by subscription
+	# $workflow6 = Get-AzLogicApp -Name $workflowName
+	# Assert-NotNull $workflow6
+	# Assert-True { $workflow6.Length -ge 1 }
+
+	# Test 7: Get non-existing logic app using get cmdlet
 	try
 	{
 		Get-AzLogicApp -ResourceGroupName $resourceGroupName -Name "InvalidWorkflow"
@@ -198,7 +214,7 @@ function Test-CreateAndGetLogicAppUsingDefinitionWithActions
 		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Logic/workflows/InvalidWorkflow' under resource group '$resourceGroupName' was not found."
 	} 
 
-	Remove-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Force		
+	Remove-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Force
 }
 
 <#
@@ -302,7 +318,17 @@ function Test-ValidateLogicApp
 	$definition = [IO.File]::ReadAllText($definitionFilePath)
 	Test-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location $location -Definition $definition -ParameterFilePath $parameterFilePath
 
-	Remove-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Force	
+	# Test 3: Failure for an invalid definition.
+	try
+	{
+		Test-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $location -Definition '{}'
+	}
+	catch
+	{
+		Assert-AreEqual $_.Exception.Message "The request content is not valid and could not be deserialized: 'Required property '`$schema' not found in JSON. Path 'properties.definition', line 4, position 20.'."
+	}
+
+	Remove-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Force
 }
 
 <#
