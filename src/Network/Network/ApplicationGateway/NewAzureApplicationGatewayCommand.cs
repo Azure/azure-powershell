@@ -192,6 +192,13 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Application Gateway Identity to be assigned to Application Gateway.")]
+        [ValidateNotNullOrEmpty]
+        public PSManagedServiceIdentity Identity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
 
@@ -339,6 +346,10 @@ namespace Microsoft.Azure.Commands.Network
                         { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
                     }
                 };
+            }
+            else if (this.Identity != null)
+            {
+                applicationGateway.Identity = this.Identity;
             }
 
             if (this.CustomErrorConfiguration != null)
