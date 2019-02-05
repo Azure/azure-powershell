@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Kusto.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified cluster &apos;{0}&apos; doesn't exist..
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified cluster &apos;{0}&apos; doesn&apos;t exist..
         /// </summary>
         internal static string KustoClusterNotExist {
             get {
@@ -156,6 +156,15 @@ namespace Microsoft.Azure.Commands.Kusto.Properties {
         public static string KustoClusterExistsRegion {
             get {
                 return ResourceManager.GetString("KustoClusterExistsRegion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified cluster &apos;{0}&apos; exists in region {1}..
+        /// </summary>
+        internal static string KustoClustertExist {
+            get {
+                return ResourceManager.GetString("KustoClustertExist", resourceCulture);
             }
         }
         
@@ -210,6 +219,15 @@ namespace Microsoft.Azure.Commands.Kusto.Properties {
         internal static string RemovingKustoDatabase {
             get {
                 return ResourceManager.GetString("RemovingKustoDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified Resource Group &apos;{0}&apos; doesn&apos;t exist..
+        /// </summary>
+        internal static string ResourceGroupNotExist {
+            get {
+                return ResourceManager.GetString("ResourceGroupNotExist", resourceCulture);
             }
         }
         
