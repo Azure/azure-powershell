@@ -11,8 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-namespace RepoTasks.CmdletsForTest.Models
+namespace CmdletsForTest.Models
 {
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
