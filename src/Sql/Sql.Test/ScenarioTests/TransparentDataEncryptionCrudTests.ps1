@@ -26,7 +26,7 @@ function Test-UpdateTransparentDataEncryption
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
-	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	#Default database will be Standard s0 with maxsize: 268435456000 (250GB)
@@ -34,7 +34,7 @@ function Test-UpdateTransparentDataEncryption
 	try
 	{
 		# Alter all properties
-		$tde1 = Set-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName `
+		$tde1 = Set-AzSqlDatabaseTransparentDataEncryption -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName `
 			-DatabaseName $db.DatabaseName -State Enabled
 
 		Assert-AreEqual $tde1.State Enabled
@@ -58,30 +58,30 @@ function Test-GetTransparentDataEncryption
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
-	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	try
 	{
-		$tde1 = Get-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName `
+		$tde1 = Get-AzSqlDatabaseTransparentDataEncryption -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName `
 			-DatabaseName $db.DatabaseName
 		Assert-AreEqual $tde1.State Enabled
 
-		$tde2 = $tde1 | Get-AzureRmSqlDatabaseTransparentDataEncryption
+		$tde2 = $tde1 | Get-AzSqlDatabaseTransparentDataEncryption
 		Assert-AreEqual $tde2.State Enabled
 
 		# Alter all properties
-		$tde3 = Set-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName `
+		$tde3 = Set-AzSqlDatabaseTransparentDataEncryption -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName `
 			-DatabaseName $db.DatabaseName -State Disabled
 		Assert-AreEqual $tde3.State Disabled
 
 		Start-Sleep -s 1
 
-		$tdeActivity = Get-AzureRmSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName $server.ResourceGroupname `
+		$tdeActivity = Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName $server.ResourceGroupname `
 			-ServerName $server.ServerName -DatabaseName $db.DatabaseName
 		Assert-AreEqual $tdeActivity.Status Decrypting
 
-		$tde4 = Get-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $server.ResourceGroupname `
+		$tde4 = Get-AzSqlDatabaseTransparentDataEncryption -ResourceGroupName $server.ResourceGroupname `
 			-ServerName $server.ServerName -DatabaseName $db.DatabaseName
 		Assert-AreEqual $tde4.State Disabled
 	}
@@ -104,7 +104,7 @@ function Test-GetTransparentDataEncryptionProtector
 	try
 	{
 		# Encryption Protector should be set to Service Managed initially
-		$encProtector1 = Get-AzureRmSqlServerTransparentDataEncryptionProtector -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
+		$encProtector1 = Get-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
 		Assert-AreEqual ServiceManaged $encProtector1.Type 
 		Assert-AreEqual ServiceManaged $encProtector1.ServerKeyVaultKeyName 
 	}
@@ -127,16 +127,16 @@ function Test-SetTransparentDataEncryptionProtector
 	try
 	{
 		# Encryption Protector should be set to Service Managed initially
-		$encProtector1 = Get-AzureRmSqlServerTransparentDataEncryptionProtector -ResourceGroupName $params.rgName -ServerName $params.serverName
+		$encProtector1 = Get-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $params.rgName -ServerName $params.serverName
 		Assert-AreEqual ServiceManaged $encProtector1.Type 
 		Assert-AreEqual ServiceManaged $encProtector1.ServerKeyVaultKeyName 
 
 		# Add server key
-		$keyResult = Add-AzureRmSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
+		$keyResult = Add-AzSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
 		Assert-AreEqual $params.keyId $keyResult.Uri
 
 		# Rotate to AKV
-		$job = Set-AzureRmSqlServerTransparentDataEncryptionProtector -ResourceGroupName $params.rgName -ServerName $params.serverName `
+		$job = Set-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $params.rgName -ServerName $params.serverName `
 			-Type AzureKeyVault -KeyId $params.keyId -Force -AsJob
 		$job | Wait-Job
 		$encProtector2 = $job.Output
@@ -145,7 +145,7 @@ function Test-SetTransparentDataEncryptionProtector
 		Assert-AreEqual $params.serverKeyName $encProtector2.ServerKeyVaultKeyName 
 
 		# Rotate back to Service Managed
-		$encProtector3 = Set-AzureRmSqlServerTransparentDataEncryptionProtector -ResourceGroupName $params.rgName -ServerName $params.serverName -Type ServiceManaged
+		$encProtector3 = Set-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $params.rgName -ServerName $params.serverName -Type ServiceManaged
 		Assert-AreEqual ServiceManaged $encProtector3.Type 
 		Assert-AreEqual ServiceManaged $encProtector3.ServerKeyVaultKeyName 
 	}

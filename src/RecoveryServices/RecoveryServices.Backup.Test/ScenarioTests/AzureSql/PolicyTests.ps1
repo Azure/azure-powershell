@@ -14,21 +14,21 @@
 
 function Test-AzureSqlPolicy
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "sqlpaasrg" -Name "sqlpaasrn";
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName "sqlpaasrg" -Name "sqlpaasrn";
 	
 	# get default objects
-	$retPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureSQL"
+	$retPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureSQL"
 	Assert-NotNull $retPolicy
 
 	# now create new policy
-	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy `
+	$policy = New-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-Name "swatipol1" `
 		-WorkloadType "AzureSQL" `
 		-RetentionPolicy $retPolicy
 		
 	# now get policy and update it with new schedule/retention
-	$policy1 = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+	$policy1 = Get-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-Name "swatipol1"
 	Assert-AreEqual $policy1.RetentionPolicy.RetentionCount 10;
@@ -36,34 +36,34 @@ function Test-AzureSqlPolicy
 
 	$retPolicy.RetentionDurationType = "Weeks"
 	$retPolicy.RetentionCount = 2
-	Set-AzureRmRecoveryServicesBackupProtectionPolicy `
+	Set-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-RetentionPolicy $retPolicy `
 		-Policy $policy1
 
-	$policy1 = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+	$policy1 = Get-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-Name "swatipol1"
 	Assert-AreEqual $policy1.RetentionPolicy.RetentionCount 2
 	Assert-AreEqual $policy1.RetentionPolicy.RetentionDurationType "Weeks"
 
 	# create another policy
-	$policy2 = New-AzureRmRecoveryServicesBackupProtectionPolicy `
+	$policy2 = New-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-Name "swatipol2" `
 		-WorkloadType "AzureSQL" `
 		-RetentionPolicy $retPolicy
 
-	$listPolicy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+	$listPolicy = Get-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-WorkloadType "AzureSQLDatabase"
 	Assert-NotNull $listPolicy
 
 	#cleanup 
-	Remove-AzureRmRecoveryServicesBackupProtectionPolicy `
+	Remove-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-Policy $policy1 -Force
-	Remove-AzureRmRecoveryServicesBackupProtectionPolicy `
+	Remove-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `
 		-Policy $policy2 -Force
 }
