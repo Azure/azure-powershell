@@ -315,6 +315,16 @@ function Test-ValidateLogicApp
 	$definition = [IO.File]::ReadAllText($definitionFilePath)
 	Test-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location $locationName -Definition $definition -ParameterFilePath $parameterFilePath
 
+	# Test 3: Failure for an invalid definition.
+	try
+	{
+		Test-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $locationName -Definition '{}'
+	}
+	catch
+	{
+		Assert-AreEqual $_.Exception.Message "The request content is not valid and could not be deserialized: 'Required property '`$schema' not found in JSON. Path 'properties.definition', line 4, position 20.'."
+	}
+
 	Remove-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Force
 }
 

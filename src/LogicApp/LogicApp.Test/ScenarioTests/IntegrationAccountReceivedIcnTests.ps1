@@ -13,6 +13,7 @@
 # ----------------------------------------------------------------------------------
 
 # Constants used in the tests.
+# To see up new resources for the tests, see "how-to-create-a-session.md"
 $SESSION_RG = "flowrg"
 $SESSION_IA = "PS-Tests-Sessions"
 $AGREEMENT_X12_Name = "PS-X12-Agreement"
