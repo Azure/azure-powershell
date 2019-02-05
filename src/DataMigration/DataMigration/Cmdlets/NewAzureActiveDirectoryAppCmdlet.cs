@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// <summary>
     /// Class that creates a new instance of AzureActiveDirectoryApp.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationAzureActiveDirectoryApp"), OutputType(typeof(PSAzureActiveDirectoryApp))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationAzureActiveDirectoryApp", SupportsShouldProcess = true), OutputType(typeof(PSAzureActiveDirectoryApp))]
     [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsAadApp")]
     public class NewAzureActiveDirectoryAppCmdlet : DataMigrationCmdlet
     {
@@ -41,15 +41,18 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            PSAzureActiveDirectoryApp aadApp = new PSAzureActiveDirectoryApp(this.DefaultContext.Tenant.Id)
+            if (ShouldProcess(this.ApplicationId, Resources.createAadApp))
             {
-                ApplicationId = ApplicationId,
-                AppKey = AppKey,
-            };
+                base.ExecuteCmdlet();
 
-            WriteObject(aadApp);
+                PSAzureActiveDirectoryApp aadApp = new PSAzureActiveDirectoryApp(this.DefaultContext.Tenant.Id)
+                {
+                    ApplicationId = ApplicationId,
+                    AppKey = AppKey,
+                };
+
+                WriteObject(aadApp);
+            }
         }
     }
 }
