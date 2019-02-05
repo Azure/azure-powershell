@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "31c72c69-152d-407f-ae05-c04ab8fc16fa"
+          "25ace894-18e9-4f85-8d09-9c23299c52f1"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,34 +27,34 @@
           "no-cache"
         ],
         "ETag": [
-          "\"08586526415951678352\""
+          "\"08586522059553572950\""
         ],
         "Vary": [
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:e30265a1-ee5a-43cd-8a4e-bbd0c3d232ce"
+          "westus:4585f2d7-3a3f-4868-9b21-0557329b04f2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11951"
         ],
         "x-ms-correlation-request-id": [
-          "1c521713-9c7d-4341-a494-0bd10105c869"
+          "a18c2b5e-07f2-4859-a168-92bb8ad144e5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190131T213127Z:1c521713-9c7d-4341-a494-0bd10105c869"
+          "WESTUS2:20190205T212239Z:a18c2b5e-07f2-4859-a168-92bb8ad144e5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 31 Jan 2019 21:31:27 GMT"
+          "Tue, 05 Feb 2019 21:22:39 GMT"
         ],
         "Content-Length": [
-          "507"
+          "542"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"createdTime\": \"2018-12-13T22:52:16.0057007Z\",\r\n    \"changedTime\": \"2019-01-31T20:08:10.3127474Z\",\r\n    \"content\": {\r\n      \"ControlNumber\": \"1234\",\r\n      \"ControlNumberChangedTime\": \"2019-01-31T20:08:10.270807Z\",\r\n      \"MessageType\": 0\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/flowrg/providers/Microsoft.Logic/integrationAccounts/PS-Tests-Sessions/sessions/PS-X12-Agreement-Icn\",\r\n  \"name\": \"PS-X12-Agreement-Icn\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/sessions\",\r\n  \"etag\": \"\\\"08586526415951678352\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"createdTime\": \"2019-02-05T00:37:09.6501444Z\",\r\n    \"changedTime\": \"2019-02-05T21:08:50.1247441Z\",\r\n    \"content\": {\r\n      \"ControlNumber\": \"1234\",\r\n      \"ControlNumberChangedTime\": \"2019-02-05T21:08:50.2017657Z\",\r\n      \"IsMessageProcessingFailed\": false,\r\n      \"MessageType\": 0\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/flowrg/providers/Microsoft.Logic/integrationAccounts/PS-Tests-Sessions/sessions/PS-X12-Agreement-ICN\",\r\n  \"name\": \"PS-X12-Agreement-ICN\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/sessions\",\r\n  \"etag\": \"\\\"08586522059553572950\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -73,7 +73,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "aa42e94b-b6d5-4f18-9ba9-fe2c73f44aa0"
+          "cc235bba-cfa1-4244-bcb6-134b41553304"
         ],
         "Accept-Language": [
           "en-US"
@@ -93,34 +93,34 @@
           "no-cache"
         ],
         "ETag": [
-          "\"08586526365971737463\""
+          "\"08586522051256108285\""
         ],
         "Vary": [
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:24897bad-7b56-4bdb-8ffd-59bdd7801bf4"
+          "westus:56132bec-824d-480e-b935-a0386636a070"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "11949"
         ],
         "x-ms-correlation-request-id": [
-          "81d94f06-02f5-4bb3-97a1-a1ae0590786d"
+          "5afa5b77-027a-43d9-85ff-b192afa16ea4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190131T213128Z:81d94f06-02f5-4bb3-97a1-a1ae0590786d"
+          "WESTUS2:20190205T212239Z:5afa5b77-027a-43d9-85ff-b192afa16ea4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 31 Jan 2019 21:31:27 GMT"
+          "Tue, 05 Feb 2019 21:22:39 GMT"
         ],
         "Content-Length": [
-          "507"
+          "541"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -129,7 +129,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"createdTime\": \"2018-12-13T22:52:16.0057007Z\",\r\n    \"changedTime\": \"2019-01-31T21:31:28.3084517Z\",\r\n    \"content\": {\r\n      \"ControlNumber\": \"4321\",\r\n      \"ControlNumberChangedTime\": \"2019-01-31T21:31:27.991459Z\",\r\n      \"MessageType\": 0\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/flowrg/providers/Microsoft.Logic/integrationAccounts/PS-Tests-Sessions/sessions/PS-X12-Agreement-Icn\",\r\n  \"name\": \"PS-X12-Agreement-Icn\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/sessions\",\r\n  \"etag\": \"\\\"08586526365971737463\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"createdTime\": \"2019-02-05T00:37:09.6501444Z\",\r\n    \"changedTime\": \"2019-02-05T21:22:39.8706596Z\",\r\n    \"content\": {\r\n      \"ControlNumber\": \"4321\",\r\n      \"ControlNumberChangedTime\": \"2019-02-05T21:22:39.660052Z\",\r\n      \"IsMessageProcessingFailed\": false,\r\n      \"MessageType\": 0\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/flowrg/providers/Microsoft.Logic/integrationAccounts/PS-Tests-Sessions/sessions/PS-X12-Agreement-ICN\",\r\n  \"name\": \"PS-X12-Agreement-ICN\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/sessions\",\r\n  \"etag\": \"\\\"08586522051256108285\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -139,7 +139,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cdec8309-05ce-40bf-8730-92355f558864"
+          "a862300c-ac42-4f86-b9ed-c330e0b4fa6b"
         ],
         "Accept-Language": [
           "en-US"
@@ -162,25 +162,25 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:8b6f1b75-0309-485b-81a6-170a0cacfafb"
+          "westus:ceb165d8-b874-4ae8-be3e-45f93e8a0e1b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "11950"
         ],
         "x-ms-correlation-request-id": [
-          "7aa29b1e-a68e-4684-9aea-ec491bae910a"
+          "8a33860f-705d-4730-8ade-55618b39c6e7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190131T213127Z:7aa29b1e-a68e-4684-9aea-ec491bae910a"
+          "WESTUS2:20190205T212239Z:8a33860f-705d-4730-8ade-55618b39c6e7"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 31 Jan 2019 21:31:27 GMT"
+          "Tue, 05 Feb 2019 21:22:39 GMT"
         ],
         "Content-Length": [
           "5654"
@@ -202,7 +202,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "830501a9-8d1a-4e9b-acf4-509794ad76b9"
+          "fd6bc3a1-0533-4e91-a2a4-bcd8df3cc6b6"
         ],
         "Accept-Language": [
           "en-US"
@@ -225,25 +225,25 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:b573b803-a025-4382-9a77-660dc3ecd4ca"
+          "westus:ff960d2a-9c58-4823-9068-e03aa8fc4145"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "11948"
         ],
         "x-ms-correlation-request-id": [
-          "63bcace0-75cf-43bb-8267-0ee82ffa18de"
+          "a26523a8-8520-4c5b-9cfe-7cabb024457e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190131T213128Z:63bcace0-75cf-43bb-8267-0ee82ffa18de"
+          "WESTUS2:20190205T212239Z:a26523a8-8520-4c5b-9cfe-7cabb024457e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 31 Jan 2019 21:31:27 GMT"
+          "Tue, 05 Feb 2019 21:22:39 GMT"
         ],
         "Content-Length": [
           "5654"
@@ -262,10 +262,10 @@
       "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/flowrg/providers/Microsoft.Logic/integrationAccounts/PS-Tests-Sessions/sessions/PS-X12-Agreement-Icn?api-version=2018-07-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL2Zsb3dyZy9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvUFMtVGVzdHMtU2Vzc2lvbnMvc2Vzc2lvbnMvUFMtWDEyLUFncmVlbWVudC1JY24/YXBpLXZlcnNpb249MjAxOC0wNy0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"content\": {\r\n      \"ControlNumber\": \"4321\",\r\n      \"ControlNumberChangedTime\": \"2019-01-31T21:31:27.991459Z\",\r\n      \"MessageType\": 0\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"content\": {\r\n      \"ControlNumber\": \"4321\",\r\n      \"ControlNumberChangedTime\": \"2019-02-05T21:22:39.660052Z\",\r\n      \"IsMessageProcessingFailed\": false,\r\n      \"MessageType\": 0\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cc706faf-473f-4fff-9817-236f81f34fda"
+          "492fee08-dab8-434a-9ef5-d24a50809b74"
         ],
         "Accept-Language": [
           "en-US"
@@ -280,7 +280,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "175"
+          "218"
         ]
       },
       "ResponseHeaders": {
@@ -291,34 +291,34 @@
           "no-cache"
         ],
         "ETag": [
-          "\"08586526365971737463\""
+          "\"08586522051256108285\""
         ],
         "Vary": [
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:258c1628-5895-4899-b215-bffaebe86aa5"
+          "westus:b58f4009-eac8-46d0-8e36-b1ded2b135e3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1180"
         ],
         "x-ms-correlation-request-id": [
-          "f71dbe38-70d8-4eff-9ef5-76f5ff63a3d4"
+          "9e3fd009-f8cb-4e1b-a550-5d5ca3f39ee8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190131T213128Z:f71dbe38-70d8-4eff-9ef5-76f5ff63a3d4"
+          "WESTUS2:20190205T212239Z:9e3fd009-f8cb-4e1b-a550-5d5ca3f39ee8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 31 Jan 2019 21:31:27 GMT"
+          "Tue, 05 Feb 2019 21:22:39 GMT"
         ],
         "Content-Length": [
-          "507"
+          "541"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -327,17 +327,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"createdTime\": \"2018-12-13T22:52:16.0057007Z\",\r\n    \"changedTime\": \"2019-01-31T20:08:10.3127474Z\",\r\n    \"content\": {\r\n      \"ControlNumber\": \"4321\",\r\n      \"ControlNumberChangedTime\": \"2019-01-31T21:31:27.991459Z\",\r\n      \"MessageType\": 0\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/flowrg/providers/Microsoft.Logic/integrationAccounts/PS-Tests-Sessions/sessions/PS-X12-Agreement-Icn\",\r\n  \"name\": \"PS-X12-Agreement-Icn\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/sessions\",\r\n  \"etag\": \"\\\"08586526365971737463\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"createdTime\": \"2019-02-05T00:37:09.6501444Z\",\r\n    \"changedTime\": \"2019-02-05T21:08:50.1247441Z\",\r\n    \"content\": {\r\n      \"ControlNumber\": \"4321\",\r\n      \"ControlNumberChangedTime\": \"2019-02-05T21:22:39.660052Z\",\r\n      \"IsMessageProcessingFailed\": false,\r\n      \"MessageType\": 0\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/flowrg/providers/Microsoft.Logic/integrationAccounts/PS-Tests-Sessions/sessions/PS-X12-Agreement-ICN\",\r\n  \"name\": \"PS-X12-Agreement-ICN\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/sessions\",\r\n  \"etag\": \"\\\"08586522051256108285\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/flowrg/providers/Microsoft.Logic/integrationAccounts/PS-Tests-Sessions/sessions/PS-X12-Agreement-Icn?api-version=2018-07-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL2Zsb3dyZy9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvUFMtVGVzdHMtU2Vzc2lvbnMvc2Vzc2lvbnMvUFMtWDEyLUFncmVlbWVudC1JY24/YXBpLXZlcnNpb249MjAxOC0wNy0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"content\": {\r\n      \"ControlNumber\": \"1234\",\r\n      \"ControlNumberChangedTime\": \"2019-01-31T21:31:28.4654279Z\",\r\n      \"MessageType\": 0\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"content\": {\r\n      \"ControlNumber\": \"1234\",\r\n      \"ControlNumberChangedTime\": \"2019-02-05T21:22:40.1214217Z\",\r\n      \"IsMessageProcessingFailed\": false,\r\n      \"MessageType\": 0\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "30639929-ce51-434c-a2ed-01abc61d85e3"
+          "684b758c-752b-486d-a26a-c0be92039c31"
         ],
         "Accept-Language": [
           "en-US"
@@ -352,7 +352,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "176"
+          "219"
         ]
       },
       "ResponseHeaders": {
@@ -363,34 +363,34 @@
           "no-cache"
         ],
         "ETag": [
-          "\"08586526365969690137\""
+          "\"08586522051254285040\""
         ],
         "Vary": [
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:9e86d472-5287-4787-a06b-c84ec33a0bd4"
+          "westus:d16e1b76-800e-46e1-b504-88303bad3e88"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1179"
         ],
         "x-ms-correlation-request-id": [
-          "b2b5ca75-a387-423d-b924-07f6b0e2a931"
+          "db2445eb-91d0-4f64-95e3-c676d7d5cd39"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190131T213128Z:b2b5ca75-a387-423d-b924-07f6b0e2a931"
+          "WESTUS2:20190205T212240Z:db2445eb-91d0-4f64-95e3-c676d7d5cd39"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 31 Jan 2019 21:31:27 GMT"
+          "Tue, 05 Feb 2019 21:22:40 GMT"
         ],
         "Content-Length": [
-          "508"
+          "542"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -399,7 +399,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"createdTime\": \"2018-12-13T22:52:16.0057007Z\",\r\n    \"changedTime\": \"2019-01-31T21:31:28.3084517Z\",\r\n    \"content\": {\r\n      \"ControlNumber\": \"1234\",\r\n      \"ControlNumberChangedTime\": \"2019-01-31T21:31:28.4654279Z\",\r\n      \"MessageType\": 0\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/flowrg/providers/Microsoft.Logic/integrationAccounts/PS-Tests-Sessions/sessions/PS-X12-Agreement-Icn\",\r\n  \"name\": \"PS-X12-Agreement-Icn\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/sessions\",\r\n  \"etag\": \"\\\"08586526365969690137\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"createdTime\": \"2019-02-05T00:37:09.6501444Z\",\r\n    \"changedTime\": \"2019-02-05T21:22:39.8706596Z\",\r\n    \"content\": {\r\n      \"ControlNumber\": \"1234\",\r\n      \"ControlNumberChangedTime\": \"2019-02-05T21:22:40.1214217Z\",\r\n      \"IsMessageProcessingFailed\": false,\r\n      \"MessageType\": 0\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/flowrg/providers/Microsoft.Logic/integrationAccounts/PS-Tests-Sessions/sessions/PS-X12-Agreement-ICN\",\r\n  \"name\": \"PS-X12-Agreement-ICN\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/sessions\",\r\n  \"etag\": \"\\\"08586522051254285040\\\"\"\r\n}",
       "StatusCode": 200
     }
   ],
