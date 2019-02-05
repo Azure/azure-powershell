@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
         public string[] NonAzureComputer { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Dynamic update target groups.")]
-        public AzureQueryProperties[] AzureQueries { get; set; }
+        public AzureQueryProperties[] AzureQuery { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Maximum duration for the update.")]
         public TimeSpan Duration { get; set; }
@@ -91,9 +91,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
             {
                 throw new PSArgumentException(Resources.SoftwareUpdateConfigurationHasNoTargetComputers);
             }
-            var target = this.AzureQueries == null ? null : new UpdateTargets
+            var target = this.AzureQuery == null ? null : new UpdateTargets
             {
-                AzureQueries = this.AzureQueries.ToList()
+                AzureQueries = this.AzureQuery.ToList()
             };
 
             var resource = string.Format(CultureInfo.CurrentCulture, Resources.SoftwareUpdateConfigurationCreateOperation);
