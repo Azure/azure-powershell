@@ -39,9 +39,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
         /// <summary>
         /// Intializes the model adapter
         /// </summary>
-        /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The ServerKeyVaultKey adapter</returns>
-        protected override AzureSqlServerKeyVaultKeyAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlServerKeyVaultKeyAdapter InitModelAdapter()
         {
             return new AzureSqlServerKeyVaultKeyAdapter(DefaultProfile.DefaultContext);
         }

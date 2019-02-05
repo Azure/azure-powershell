@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.Compute
                         this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id));
                     if (osDiskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                     {
-                        WriteVerbose("OS Disk Storage Account is a premium account - adding SLAs for OS disk");
+                        WriteVerbose("OS Disk is a Premium Managed Disk - adding SLAs for OS disk");
                         var sla = this._Helper.GetDiskSLA(osDiskMD.DiskSizeGB, null);
                         var caching = osdisk.Caching;
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id) });
@@ -246,6 +246,19 @@ namespace Microsoft.Azure.Commands.Compute
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = sla.TP });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.iops." + diskNumber, Value = sla.IOPS });
                             this._Helper.WriteVerbose("Done - Data Disk {0} is a Premium Managed Disk - adding SLAs for disk", diskNumber.ToString());
+                        }
+                        else if (diskMD.Sku.Name == StorageAccountTypes.UltraSSDLRS)
+                        {
+                            this._Helper.WriteVerbose("Data Disk {0} is an UltraSSD Disk - adding SLAs for disk", diskNumber.ToString());
+                            var sla = this._Helper.GetDiskSLA(diskMD.DiskSizeGB, null);
+                            var cachingMD = disk.Caching;
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = this._Helper.GetResourceNameFromId(disk.ManagedDisk.Id) });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = cachingMD });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_ULTRA_MD });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = diskMD.DiskMBpsReadWrite });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.iops." + diskNumber, Value = diskMD.DiskIOPSReadWrite });
+                            this._Helper.WriteVerbose("Done - Data Disk {0} is an UltraSSD Disk - adding SLAs for disk", diskNumber.ToString());
                         }
                         else
                         {

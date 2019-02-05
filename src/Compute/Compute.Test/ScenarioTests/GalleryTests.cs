@@ -12,27 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class GalleryTests
+    public class GalleryTests : ComputeTestRunner
     {
-        XunitTracingInterceptor _logger;
-
         public GalleryTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGallery()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-Gallery");
+            TestRunner.RunTestScript("Test-Gallery");
         }
     }
 }
