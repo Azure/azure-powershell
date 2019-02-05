@@ -22,12 +22,10 @@ function Test-GetAzureLogicAppTrigger
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
 	$workflowName = getAssetname
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
-		
+
 	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
 
 	$workflowTrigger = Get-AzLogicAppTrigger -ResourceGroupName $resourceGroupName -Name $workflowName
@@ -45,8 +43,6 @@ function Test-GetAzureLogicAppTriggerHistory
 {	
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
 	$workflowName = getAssetname
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
@@ -77,8 +73,6 @@ function Test-GetAzureLogicAppTriggerCallbackUrl
 {	
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
 	$workflowName = getAssetname
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
@@ -103,12 +97,10 @@ function Test-StartAzureLogicAppTrigger
 {	
 	$resourceGroup = TestSetup-CreateResourceGroup	
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 	
 	$workflowName = getAssetname
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
-		
+
 	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
 	
 	[int]$counter = 0

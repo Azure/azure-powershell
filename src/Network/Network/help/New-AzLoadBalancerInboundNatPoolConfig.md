@@ -9,6 +9,7 @@ schema: 2.0.0
 # New-AzLoadBalancerInboundNatPoolConfig
 
 ## SYNOPSIS
+Creates an inbound NAT pool configuration for a load balancer.
 
 ## SYNTAX
 
@@ -29,6 +30,7 @@ New-AzLoadBalancerInboundNatPoolConfig -Name <String> -Protocol <String> -Fronte
 ```
 
 ## DESCRIPTION
+The **New-AzLoadBalancerInboundNatPoolConfig** cmdlet creates an inbound NAT pool configuration for a load balancer.
 
 ## EXAMPLES
 
