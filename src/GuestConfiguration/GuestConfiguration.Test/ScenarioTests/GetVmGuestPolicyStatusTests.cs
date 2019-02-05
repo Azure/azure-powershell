@@ -21,11 +21,11 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
     using Xunit;
 
 
-    public class GetVmGuestPolicyReportTests
+    public class GetVmGuestPolicyStatusTests
     {
         private readonly XunitTracingInterceptor _logger;
 
-        public GetVmGuestPolicyReportTests(Xunit.Abstractions.ITestOutputHelper output)
+        public GetVmGuestPolicyStatusTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -36,28 +36,28 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VmNameScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyReport-VmNameScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-VmNameScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InitiativeIdScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyReport-InitiativeIdScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-InitiativeIdScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InitiativeNameScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyReport-InitiativeNameScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-InitiativeNameScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReportIdScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyReport-ReportIdScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-ReportIdScope");
         }
     }
 }

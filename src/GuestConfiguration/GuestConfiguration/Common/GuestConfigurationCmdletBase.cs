@@ -75,32 +75,6 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
             }
         }
 
-        // Get all guest configuration policy assignments for a VM
-        protected IEnumerable<GuestConfigurationPolicyAssignment> GetAllGuestConfigurationAssignments(string resourceGroupName, string vmName)
-        {
-
-            var gcPolicyAssignmentsList = new List<GuestConfigurationPolicyAssignment>();
-            var gcPolicySetDefinitions = GetAllGuestConfigPolicySetDefinitions();
-
-            if (gcPolicySetDefinitions == null || gcPolicySetDefinitions.Count() == 0)
-            {
-                return null;
-            }
-
-            // get all gcrp assignments first
-            var gcrpAssignments = GetAllGCRPAssignments(resourceGroupName, vmName);
-
-            foreach (var gcPolicySetDefinition in gcPolicySetDefinitions)
-            {
-                var gcAssignments = GetAllGuestConfigurationAssignmentsByInitiativeId(resourceGroupName, vmName, gcPolicySetDefinition.Id, gcrpAssignments);
-                if(gcAssignments != null || gcAssignments.Count() > 0)
-                {
-                    gcPolicyAssignmentsList.AddRange(gcAssignments);
-                }
-            }
-            return gcPolicyAssignmentsList;
-        }
-
         // Get all guest configuration policy assignment reports for a VM
         protected IEnumerable<GuestConfigurationPolicyAssignmentReport> GetAllGuestConfigurationAssignmentReports(string resourceGroupName, string vmName, bool isStatusHistoryCmdlet, bool isShowStatusChangeOnlyPresent = false)
         {
@@ -240,16 +214,6 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                 }
             }
             return gcPolicyAssignmentsList;
-        }
-
-        // Get guest configuration policy assignments by initiative definition name
-        protected IEnumerable<GuestConfigurationPolicyAssignment> GetAllGuestConfigurationAssignmentsByInitiativeId(string resourceGroupName, string vmName, string initiativeId, IEnumerable<GuestConfigurationAssignment> gcrpAssignments)
-        {
-            this._initiativeId = initiativeId;
-            var initiativeName = GetInitiativeNameFromId(initiativeId);          
-            var gcPolicyAssignments = GetAllGuestConfigurationAssignmentsByInitiativeName(resourceGroupName, vmName, initiativeName, gcrpAssignments);
-
-            return gcPolicyAssignments;
         }
 
         // Get guest configuration policy assignment reports by initiative definition name

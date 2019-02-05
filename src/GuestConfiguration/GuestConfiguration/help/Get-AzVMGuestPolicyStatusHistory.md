@@ -34,7 +34,7 @@ Get-AzVMGuestPolicyStatusHistory [-ResourceGroupName] <String> [-VMName] <String
 ## DESCRIPTION
 The Get-AzVMGuestPolicyStatusHistory cmdlet gets compliance status history of guest configuration policies for an initiative of type "Guest Configuration" that is assigned to a VM.
 An initiative is a policy of definition type "Initiative".
-Use Get-AzVMGuestPolicyReport cmdlet to get details of a single compliance report using reportId that can be found in output of Get-AzVMGuestPolicyStatusHistory cmdlet.
+Use Get-AzVMGuestPolicyStatus cmdlet to get details of a single compliance report using reportId that can be found in output of Get-AzVMGuestPolicyStatusHistory cmdlet.
 
 ## EXAMPLES
 
@@ -67,7 +67,7 @@ Skips statuses that have not changed between two compliance status audit runs.
 
 ### Example 4
 ```
-PS C:\> Get-AzVMGuestPolicyReport -ReportId "/subscriptions/4e6c6ed2-0bf6-41d7-9d21-a452c2cc7920/resourceGroups/MyResourceGroupName/providers/Microsoft.Compute/virtualMachines/MyVMName/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/MaximumPasswordAge/reports/c271f845-2c0a-4456-a441-e48fc332d0ac"
+PS C:\> Get-AzVMGuestPolicyStatus -ReportId "/subscriptions/4e6c6ed2-0bf6-41d7-9d21-a452c2cc7920/resourceGroups/MyResourceGroupName/providers/Microsoft.Compute/virtualMachines/MyVMName/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/MaximumPasswordAge/reports/c271f845-2c0a-4456-a441-e48fc332d0ac"
 ```
 
 Get detailed guest configuration policy report by report Id.
