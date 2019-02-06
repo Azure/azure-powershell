@@ -50,6 +50,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         string AfsAgentInstallerPath { get; }
 
         string AfsAgentVersion { get; }
+
+        bool IsPlaybackMode { get; }
     }
 
     public class StorageSyncClientWrapper : IStorageSyncClientWrapper
@@ -100,11 +102,33 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                     {
                         if (!RegistryUtility.TryGetValue<string>(StorageSyncConstants.AfsAgentInstallerPathRegistryKeyValueName, StorageSyncConstants.AfsAgentRegistryKey, out _afsAgentInstallerPath, RegistryValueKind.String, RegistryValueOptions.None, RegistryView.Registry64))
                         {
-                            ErrorLogger.Invoke($"AFS Agent Registrykey {StorageSyncConstants.AfsAgentInstallerPathRegistryKeyValueName} Value: {StorageSyncConstants.AfsAgentInstallerPathRegistryKeyValueName} not found in registry.");
+                            if (IsPlaybackMode)
+                            {
+                                _afsAgentInstallerPath = @"C:\Program Files\Azure\StorageSyncAgent\";
+                            }
+                            else
+                            {
+                                ErrorLogger.Invoke($"AFS Agent Registrykey {StorageSyncConstants.AfsAgentInstallerPathRegistryKeyValueName} Value: {StorageSyncConstants.AfsAgentInstallerPathRegistryKeyValueName} not found in registry.");
+                            }
                         }
                     }
                 }
                 return _afsAgentInstallerPath;
+            }
+        }
+
+        private bool? isPlaybackMode;
+        public bool IsPlaybackMode
+        {
+            get
+            {
+                if (!isPlaybackMode.HasValue)
+                {
+                    string mode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+
+                    isPlaybackMode = !"Record".Equals(mode, StringComparison.OrdinalIgnoreCase);
+                }
+                return isPlaybackMode.Value;
             }
         }
 
@@ -124,7 +148,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                     {
                         if (!RegistryUtility.TryGetValue<string>(StorageSyncConstants.AfsAgentVersionRegistryKeyValueName, StorageSyncConstants.AfsAgentRegistryKey, out _afsAgentVersion, RegistryValueKind.String, RegistryValueOptions.None, RegistryView.Registry64))
                         {
-                            ErrorLogger.Invoke($"AFS Agent Registrykey {StorageSyncConstants.AfsAgentVersionRegistryKeyValueName} Value: {StorageSyncConstants.AfsAgentVersionRegistryKeyValueName} not found in registry.");
+                            if (IsPlaybackMode)
+                            {
+                                _afsAgentInstallerPath = @"5.0.2.0";
+                            }
+                            else
+                            {
+                                ErrorLogger.Invoke($"AFS Agent Registrykey {StorageSyncConstants.AfsAgentVersionRegistryKeyValueName} Value: {StorageSyncConstants.AfsAgentVersionRegistryKeyValueName} not found in registry.");
+                            }
                         }
                     }
                 }

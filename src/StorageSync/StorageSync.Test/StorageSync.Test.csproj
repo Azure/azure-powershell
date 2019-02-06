@@ -13,7 +13,6 @@
    <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.StorageSync" Version="2.8.0-preview" />
 	<PackageReference Include="Microsoft.Azure.Management.Storage" Version="9.1.0-preview" />
-	<PackageReference Include="Microsoft.Win32.Registry" Version="4.6.0-preview1-27018-01" />
 	<PackageReference Include="System.Management" Version="4.6.0-preview.18571.3" />
 	</ItemGroup>
 	

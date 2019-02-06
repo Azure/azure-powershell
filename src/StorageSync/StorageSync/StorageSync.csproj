@@ -10,14 +10,10 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.Win32.Registry.dll" />
-  </ItemGroup>
-
   
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.StorageSync" Version="2.8.0-preview" />
-	<PackageReference Include="Microsoft.Win32.Registry" Version="4.6.0-preview1-27018-01" />
+    <PackageReference Include="Microsoft.Win32.Registry" Version="4.5.0" />
     <PackageReference Include="System.Management" Version="4.6.0-preview.18571.3" />
 	</ItemGroup>
   
