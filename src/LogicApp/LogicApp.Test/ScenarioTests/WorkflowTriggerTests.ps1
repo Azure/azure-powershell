@@ -12,23 +12,20 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$WORKFLOW_LOCATION = 'westus'
-
 <#
 .SYNOPSIS
 Test Get-AzLogicAppTrigger for workflow triggers and test to get trigger by name
 #>
-function Test-GetAzureLogicAppTrigger
+function Test-GetAzLogicAppTrigger
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
 	$workflowName = getAssetname
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 		
-	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
+	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $location
 
 	$workflowTrigger = Get-AzLogicAppTrigger -ResourceGroupName $resourceGroupName -Name $workflowName
 	Assert-NotNull $workflowTrigger
@@ -41,17 +38,16 @@ function Test-GetAzureLogicAppTrigger
 .SYNOPSIS
 Test Get-AzLogicAppTriggerHistory command to get workflow trigger histories and history by history name
 #>
-function Test-GetAzureLogicAppTriggerHistory
+function Test-GetAzLogicAppTriggerHistory
 {	
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
 	$workflowName = getAssetname
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 		
-	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
+	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $location
 	
 	[int]$counter = 0
 	do {
@@ -73,17 +69,16 @@ function Test-GetAzureLogicAppTriggerHistory
 .SYNOPSIS
 Test Get-AzLogicAppTriggerCallbackUrl command to get workflow trigger callback URL
 #>
-function Test-GetAzureLogicAppTriggerCallbackUrl
+function Test-GetAzLogicAppTriggerCallbackUrl
 {	
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
 	$workflowName = getAssetname
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 		
-	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
+	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $location
 	
 	[int]$counter = 0
 	do {
@@ -93,23 +88,25 @@ function Test-GetAzureLogicAppTriggerCallbackUrl
 	
 	$callbackUrlString = Get-AzLogicAppTriggerCallbackUrl -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "manualTrigger"
 	Assert-NotNull $callbackUrlString
+
+	$curApiVersion = '*' + (CurrentApiVersion) + '*'
+	Assert-True { $callbackUrlString.Value -like $curApiVersion }
 }
 
 <#
 .SYNOPSIS
 Test Start-AzLogicAppTrigger command to run workflow trigger
 #>
-function Test-StartAzureLogicAppTrigger
+function Test-StartAzLogicAppTrigger
 {	
 	$resourceGroup = TestSetup-CreateResourceGroup	
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$planName = "StandardServicePlan"
-	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 	
 	$workflowName = getAssetname
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 		
-	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
+	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $location
 	
 	[int]$counter = 0
 	do {
