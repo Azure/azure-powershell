@@ -169,8 +169,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fix for issue https://github.com/Azure/azure-powershell/issues/8166
-* Fix for issue https://github.com/Azure/azure-powershell/issues/8235'
+        ReleaseNotes = '* Fix tagging for resource groups
+* Fix issue where Get-AzureRmRoleAssignment does not respect -ErrorAction'
 
         # Prerelease string of this module
         # Prerelease = ''
