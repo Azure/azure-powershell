@@ -21,6 +21,8 @@
 
 ## Version 1.1.0
 * Update incorrect online help URLs
+* Add ResourceId parameter to Get-AzNetworkInterface
+* Improved error handling for Get-AzVpnClientRevokedCertificate, Get-AzVpnClientRootCertificate
 
 ## Version 1.0.0
 * General availability of `Az.Network` module
