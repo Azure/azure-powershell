@@ -1,102 +1,131 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/restore-azsqlinstancedatabase
 schema: 2.0.0
 ---
 
-# Restore-AzSqlInstanceDatabase
+# Restore-AzSqlDatabase
 
 ## SYNOPSIS
-Restores an Azure SQL Managed Instance database.
+Restores a SQL database.
 
 ## SYNTAX
 
-### PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters (Default)
+### FromPointInTimeBackup
 ```
-Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-Name] <String> [-InstanceName] <String>
- [-ResourceGroupName] <String> -PointInTime <DateTime> -TargetInstanceDatabaseName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### PointInTimeSameInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
-```
-Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-InputObject] <AzureSqlManagedDatabaseModel>
- -PointInTime <DateTime> -TargetInstanceDatabaseName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -ResourceId <String>
+ -ServerName <String> -TargetDatabaseName <String> [-Edition <String>] [-ServiceObjectiveName <String>]
+ [-ElasticPoolName <String>] [-AsJob] [-LicenseType <String>] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### PointInTimeSameInstanceRestoreInstanceDatabaseFromAzureResourceId
+### FromPointInTimeBackupWithVcore
 ```
-Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceId] <String> -PointInTime <DateTime>
- -TargetInstanceDatabaseName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Restore-AzSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -ResourceId <String>
+ -ServerName <String> -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String>
+ -VCore <Int32> [-LicenseType <String>] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### FromDeletedDatabaseBackup
+```
+Restore-AzSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -DeletionDate <DateTime>
+ -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> [-Edition <String>]
+ [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob] [-LicenseType <String>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### FromDeletedDatabaseBackupWithVcore
+```
+Restore-AzSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -DeletionDate <DateTime>
+ -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> -Edition <String> [-AsJob]
+ -ComputeGeneration <String> -VCore <Int32> [-LicenseType <String>] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### FromGeoBackup
+```
+Restore-AzSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String> -TargetDatabaseName <String>
+ [-Edition <String>] [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob]
+ [-LicenseType <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters
+### FromGeoBackupWithVcore
 ```
-Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-Name] <String> [-InstanceName] <String>
- [-ResourceGroupName] <String> -PointInTime <DateTime> -TargetInstanceDatabaseName <String>
- -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String> -TargetDatabaseName <String>
+ -Edition <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32> [-LicenseType <String>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
+### FromLongTermRetentionBackup
 ```
-Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-InputObject] <AzureSqlManagedDatabaseModel>
- -PointInTime <DateTime> -TargetInstanceDatabaseName <String> -TargetInstanceName <String>
- -TargetResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Restore-AzSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -ServerName <String>
+ -TargetDatabaseName <String> [-Edition <String>] [-ServiceObjectiveName <String>] [-ElasticPoolName <String>]
+ [-AsJob] [-LicenseType <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId
+### FromLongTermRetentionBackupWithVcore
 ```
-Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceId] <String> -PointInTime <DateTime>
- -TargetInstanceDatabaseName <String> -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-
-### GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet
-```
-Restore-AzSqlInstanceDatabase [-FromGeoBackup] [-GeoBackupObject] <AzureSqlRecoverableManagedDatabaseModel>
--TargetInstanceDatabaseName <String> -TargetInstanceName <String> -TargetResourceGroupName <String>  [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet
-```
-Restore-AzSqlInstanceDatabase [-FromGeoBackup] [-ResourceId] <String>
- -TargetInstanceDatabaseName <String> -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet
-```
-Restore-AzSqlInstanceDatabase [-FromGeoBackup]  [-Name] <String> [-InstanceName] <String>
- [-ResourceGroupName] <String>  -TargetInstanceDatabaseName <String> -TargetInstanceName <String>
- -TargetResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -ServerName <String>
+ -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32>
+ [-LicenseType <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Restore-AzSqlInstanceDatabase** cmdlet restores an instance database from a point in time in a live database.
-The restored database is created as a new instance database.
+The **Restore-AzSqlDatabase** cmdlet restores a SQL database from a geo-redundant backup, a backup of a deleted database, a long term retention backup, or a point in time in a live database.
+The restored database is created as a new database.
+You can create an elastic SQL database by setting the *ElasticPoolName* parameter to an existing elastic pool.
 
 ## EXAMPLES
 
-### Example 1: Restore a instance database from a point in time
+### Example 1: Restore a database from a point in time
 ```
-PS C:\> Restore-AzSqlinstanceDatabase -Name "Database01" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01" -PointInTime UTCDateTime -TargetInstanceDatabaseName "Database01_restored"
-```
-
-The command restores the instance database Database01 from the specified point-in-time backup to the instance database named Database01_restored.
-
-### Example 2: Restore a instance database from a point in time to another instance on different resource group
-```
-PS C:\> Restore-AzSqlInstanceDatabase -Name "Database01" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01" -PointInTime UTCDateTime -TargetInstanceDatabaseName "Database01_restored" -TargetInstanceName "managedInstance1" -TargetResourceGroupName "ResourceGroup02"
+PS C:\>$Database = Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+PS C:\> Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime UTCDateTime -ResourceGroupName $Database.ResourceGroupName -ServerName $Database.ServerName -TargetDatabaseName "RestoredDatabase" -ResourceId $Database.ResourceID -Edition "Standard" -ServiceObjectiveName "S2"
 ```
 
-The command restores the instance database Database01 on instance managedInstance1 on resource group ResourceGroup01 from the specified point-in-time backup to the instance database named Database01_restored on instance managedInstance2 on resource group ResourceGroup02.
+The first command gets the SQL database named Database01, and then stores it in the $Database variable.
+The second command restores the database in $Database from the specified point-in-time backup to the database named RestoredDatabase.
+
+### Example 2: Restore a database from a point in time to an elastic pool
+```
+PS C:\>$Database = Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+PS C:\> Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime UTCDateTime -ResourceGroupName $Database.ResourceGroupName -ServerName $Database.ServerName -TargetDatabaseName "RestoredDatabase" -ResourceId $Database.ResourceID -ElasticPoolName "ElasticPool01"
+```
+
+The first command gets the SQL database named Database01, and then stores it in the $Database variable.
+The second command restores the database in $Database from the specified point-in-time backup to the SQL database named RestoredDatabase in the elastic pool named elasticpool01.
+
+### Example 3: Restore a deleted database
+```
+PS C:\>$DeletedDatabase = Get-AzSqlDeletedDatabaseBackup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+PS C:\> Restore-AzSqlDatabase -FromDeletedDatabaseBackup -DeletionDate $DeletedDatabase.DeletionDate -ResourceGroupName $DeletedDatabase.ResourceGroupName -ServerName $DeletedDatabase.ServerName -TargetDatabaseName "RestoredDatabase" -ResourceId $DeletedDatabase.ResourceID -Edition "Standard" -ServiceObjectiveName "S2" -PointInTime UTCDateTime
+```
+
+The first command gets the deleted database backup that you want to restore by using [Get-AzSqlDeletedDatabaseBackup](./Get-AzSqlDeletedDatabaseBackup.md).
+The second command starts the restore from the deleted database backup by using the [Restore-AzSqlDatabase](./Restore-AzSqlDatabase.md) cmdlet. If the -PointInTime parameter is not specified, the database will be restored to the deletion time.
+
+### Example 4: Restore a deleted database into an elastic pool
+```
+PS C:\>$DeletedDatabase = Get-AzSqlDeletedDatabaseBackup -ResourceGroupName $resourceGroupName -ServerName $sqlServerName -DatabaseName 'DatabaseToRestore'
+PS C:\> Restore-AzSqlDatabase -FromDeletedDatabaseBackup -DeletionDate $DeletedDatabase.DeletionDate -ResourceGroupName $DeletedDatabase.ResourceGroupName -ServerName $DeletedDatabase.ServerName -TargetDatabaseName "RestoredDatabase" -ResourceId $DeletedDatabase.ResourceID -ElasticPoolName "elasticpool01" -PointInTime UTCDateTime
+```
+
+The first command gets the deleted database backup that you want to restore by using [Get-AzSqlDeletedDatabaseBackup](./Get-AzSqlDeletedDatabaseBackup.md).
+The second command starts the restore from the deleted database backup by using [Restore-AzSqlDatabase](./Restore-AzSqlDatabase.md). If the -PointInTime parameter is not specified, the database will be restored to the deletion time.
+
+### Example 5: Geo-Restore a database
+```
+PS C:\>$GeoBackup = Get-AzSqlDatabaseGeoBackup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+PS C:\> Restore-AzSqlDatabase -FromGeoBackup -ResourceGroupName "TargetResourceGroup" -ServerName "TargetServer" -TargetDatabaseName "RestoredDatabase" -ResourceId $GeoBackup.ResourceID -Edition "Standard" -RequestedServiceObjectiveName "S2"
+```
+
+The first command gets the geo-redundant backup for the database named Database01, and then stores it in the $GeoBackup variable.
+The second command restores the backup in $GeoBackup to the SQL database named RestoredDatabase.
 
 ## PARAMETERS
 
@@ -115,8 +144,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ComputeGeneration
+The compute generation to assign to the restored database
+
+```yaml
+Type: System.String
+Parameter Sets: FromPointInTimeBackupWithVcore, FromDeletedDatabaseBackupWithVcore, FromGeoBackupWithVcore, FromLongTermRetentionBackupWithVcore
+Aliases: Family
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -130,12 +174,112 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FromPointInTimeBackup
-Restore from a point-in-time backup.
+### -DeletionDate
+Specifies the deletion date as a **DateTime** object.
+To get a **DateTime** object, use the Get-Date cmdlet.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: FromDeletedDatabaseBackup, FromDeletedDatabaseBackupWithVcore
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Edition
+Specifies the edition of the SQL database.
+The acceptable values for this parameter are:
+- None
+- Basic
+- Standard
+- Premium
+- DataWarehouse
+- Free
+- Stretch
+- GeneralPurpose
+- BusinessCritical
+
+```yaml
+Type: System.String
+Parameter Sets: FromPointInTimeBackup, FromDeletedDatabaseBackup, FromGeoBackup, FromLongTermRetentionBackup
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: FromPointInTimeBackupWithVcore, FromDeletedDatabaseBackupWithVcore, FromGeoBackupWithVcore, FromLongTermRetentionBackupWithVcore
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ElasticPoolName
+Specifies the name of the elastic pool in which to put the SQL database.
+
+```yaml
+Type: System.String
+Parameter Sets: FromPointInTimeBackup, FromDeletedDatabaseBackup, FromGeoBackup, FromLongTermRetentionBackup
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FromDeletedDatabaseBackup
+Indicates that this cmdlet restores a database from a backup of a deleted SQL database.
+You can use the Get-AzSqlDeletedDatabaseBackup cmdlet to get the backup of a deleted SQL database.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: FromDeletedDatabaseBackup, FromDeletedDatabaseBackupWithVcore
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FromGeoBackup
+Indicates that this cmdlet restores a SQL database from a geo-redundant backup.
+You can use the Get-AzSqlDatabaseGeoBackup cmdlet to get a geo-redundant backup.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: FromGeoBackup, FromGeoBackupWithVcore
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FromLongTermRetentionBackup
+Indicates that this cmdlet restores a SQL database from a long term retention backup.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: FromLongTermRetentionBackup, FromLongTermRetentionBackupWithVcore
 Aliases:
 
 Required: True
@@ -146,11 +290,11 @@ Accept wildcard characters: False
 ```
 
 ### -FromPointInTimeBackup
-Restore from a geo redundant backup.
+Indicates that this cmdlet restores a SQL database from a point-in-time backup.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: FromPointInTimeBackup, FromPointInTimeBackupWithVcore
 Aliases:
 
 Required: True
@@ -160,72 +304,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The Instance Database object to restore
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
-Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
-Aliases: InstanceDatabase
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -GeoBackupObject
-The Instance Database redundant backup object to restore
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlRecoverableManagedDatabaseModel
-Parameter Sets: GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet
-Aliases: RecoverableInstanceDatabase
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InstanceName
-The instance name.
+### -LicenseType
+The license type for the Azure Sql database.
 
 ```yaml
 Type: System.String
-Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The instance database name to restore.
-
-```yaml
-Type: System.String
-Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet
-Aliases: InstanceDatabaseName
-
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PointInTime
-The point in time to restore the database to.
+Specifies the point in time, as a **DateTime** object, that you want to restore your SQL database to.
+To get a **DateTime** object, use **Get-Date** cmdlet.
+Use this parameter together with the *FromPointInTimeBackup* parameter.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: FromPointInTimeBackup, FromPointInTimeBackupWithVcore
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.DateTime
+Parameter Sets: FromDeletedDatabaseBackup, FromDeletedDatabaseBackupWithVcore
 Aliases:
 
 Required: False
@@ -236,26 +349,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+Specifies the name of the resource group to which this cmdlet assigns the SQL database.
 
 ```yaml
 Type: System.String
-Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The resource id of Instance Database object to restore
-
-```yaml
-Type: System.String
-Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromAzureResourceId, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId, GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -265,8 +363,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -TargetInstanceDatabaseName
-The name of the target instance database to restore to.
+### -ResourceId
+Specifies the ID of the resource to restore.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Id
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+Specifies the name of the SQL database server.
 
 ```yaml
 Type: System.String
@@ -276,69 +389,49 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -TargetInstanceName
-The name of the target instance to restore to.
-If not specified, the target instance is the same as the source instance.
+### -ServiceObjectiveName
+Specifies the name of the service objective.
 
 ```yaml
 Type: System.String
-Parameter Sets: PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId, 
-                 GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet, GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet
+Parameter Sets: FromPointInTimeBackup, FromDeletedDatabaseBackup, FromGeoBackup, FromLongTermRetentionBackup
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetResourceGroupName
-The name of the target resource group to restore to.
-If not specified, the target resource group is the same as the source resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId, 
-                 GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet, GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TargetDatabaseName
+Specifies the name of the database to restore to.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -VCore
+The Vcore numbers of the restored Azure Sql Database.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
+Type: System.Int32
+Parameter Sets: FromPointInTimeBackupWithVcore, FromDeletedDatabaseBackupWithVcore, FromGeoBackupWithVcore, FromLongTermRetentionBackupWithVcore
+Aliases: Capacity
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -350,14 +443,27 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
+### System.DateTime
 
 ### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
+### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
 
 ## NOTES
 
 ## RELATED LINKS
+
+[Recover an Azure SQL Database from an outage](http://go.microsoft.com/fwlink/?LinkId=746882)
+
+[Recover an Azure SQL Database from a user error](http://go.microsoft.com/fwlink/?LinkId=746944)
+
+[Get-AzSqlDatabase](./Get-AzSqlDatabase.md)
+
+[Get-AzSqlDatabaseGeoBackup](./Get-AzSqlDatabaseGeoBackup.md)
+
+[Get-AzSqlDeletedDatabaseBackup](./Get-AzSqlDeletedDatabaseBackup.md)
+
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+
