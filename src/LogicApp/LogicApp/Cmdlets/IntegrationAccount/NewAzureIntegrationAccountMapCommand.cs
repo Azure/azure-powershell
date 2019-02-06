@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (string.IsNullOrEmpty(this.MapDefinition))
             {
-                this.MapDefinition = CmdletHelper.GetContentFromFile(this.TryResolvePath(this.MapFilePath));
+                this.MapDefinition = CmdletHelper.GetStringContentFromFile(this.TryResolvePath(this.MapFilePath));
             }
 
             this.ContentType = this.MapType.Equals("liquid", StringComparison.CurrentCultureIgnoreCase) ? "text/plain" : "application/xml";

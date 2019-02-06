@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resource {
+    public class Resource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.LogicApp.Properties.Resource", typeof(Resource).Assembly);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,27 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to At least one of ContentLink, AssemblyFilePath, or AssemblyData must be provided..
+        /// </summary>
+        public static string AssemblyParameterNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("AssemblyParameterNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At least one release criteria must be provided..
+        /// </summary>
+        public static string BatchConfigurationParameterNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("BatchConfigurationParameterNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancelling the LogicApp run..
         /// </summary>
-        internal static string CancelLogicAppRunMessage {
+        public static string CancelLogicAppRunMessage {
             get {
                 return ResourceManager.GetString("CancelLogicAppRunMessage", resourceCulture);
             }
@@ -72,7 +90,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to cancel the LogicApp run..
         /// </summary>
-        internal static string CancelLogicAppRunWarning {
+        public static string CancelLogicAppRunWarning {
             get {
                 return ResourceManager.GetString("CancelLogicAppRunWarning", resourceCulture);
             }
@@ -81,7 +99,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Definition content needs to be specified..
         /// </summary>
-        internal static string DefinitionMissingWarning {
+        public static string DefinitionMissingWarning {
             get {
                 return ResourceManager.GetString("DefinitionMissingWarning", resourceCulture);
             }
@@ -90,7 +108,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to File &apos;{0}&apos; does not exist..
         /// </summary>
-        internal static string FileDoesNotExist {
+        public static string FileDoesNotExist {
             get {
                 return ResourceManager.GetString("FileDoesNotExist", resourceCulture);
             }
@@ -99,7 +117,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The existing generated control number for agreement &apos;{0}&apos; is not in a valid format..
         /// </summary>
-        internal static string GeneratedControlNumberInvalidFormat {
+        public static string GeneratedControlNumberInvalidFormat {
             get {
                 return ResourceManager.GetString("GeneratedControlNumberInvalidFormat", resourceCulture);
             }
@@ -108,7 +126,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No generated control number was found for this agreement..
         /// </summary>
-        internal static string GeneratedControlNumberNotFound {
+        public static string GeneratedControlNumberNotFound {
             get {
                 return ResourceManager.GetString("GeneratedControlNumberNotFound", resourceCulture);
             }
@@ -117,7 +135,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Invalid business identity..
         /// </summary>
-        internal static string InvalidBusinessIdentity {
+        public static string InvalidBusinessIdentity {
             get {
                 return ResourceManager.GetString("InvalidBusinessIdentity", resourceCulture);
             }
@@ -126,7 +144,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Invalid metadata..
         /// </summary>
-        internal static string InvalidMetadata {
+        public static string InvalidMetadata {
             get {
                 return ResourceManager.GetString("InvalidMetadata", resourceCulture);
             }
@@ -135,7 +153,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The qualifier &apos;{0}&apos; for partner &apos;{1}&apos; is invalid..
         /// </summary>
-        internal static string InvalidQualifierSpecified {
+        public static string InvalidQualifierSpecified {
             get {
                 return ResourceManager.GetString("InvalidQualifierSpecified", resourceCulture);
             }
@@ -144,7 +162,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; needs to be specified..
         /// </summary>
-        internal static string ParameterNeedsToBeSpecified {
+        public static string ParameterNeedsToBeSpecified {
             get {
                 return ResourceManager.GetString("ParameterNeedsToBeSpecified", resourceCulture);
             }
@@ -153,7 +171,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Either &apos;{0}&apos; business Identity qualifier or qualifier value is not specified..
         /// </summary>
-        internal static string QualifierWithValueNotSpecified {
+        public static string QualifierWithValueNotSpecified {
             get {
                 return ResourceManager.GetString("QualifierWithValueNotSpecified", resourceCulture);
             }
@@ -162,7 +180,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The existing received control number &apos;{0}&apos; for agreement &apos;{1}&apos; is not in a valid format..
         /// </summary>
-        internal static string ReceivedControlNumberInvalidFormat {
+        public static string ReceivedControlNumberInvalidFormat {
             get {
                 return ResourceManager.GetString("ReceivedControlNumberInvalidFormat", resourceCulture);
             }
@@ -171,7 +189,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing &apos;{0}&apos; &apos;{1}&apos;..
         /// </summary>
-        internal static string RemoveResourceMessage {
+        public static string RemoveResourceMessage {
             get {
                 return ResourceManager.GetString("RemoveResourceMessage", resourceCulture);
             }
@@ -180,7 +198,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the &apos;{0}&apos; &apos;{1}&apos;..
         /// </summary>
-        internal static string RemoveResourceWarning {
+        public static string RemoveResourceWarning {
             get {
                 return ResourceManager.GetString("RemoveResourceWarning", resourceCulture);
             }
@@ -189,7 +207,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The Resource &apos;{0}&apos; under resource group &apos;{1}&apos; already exists..
         /// </summary>
-        internal static string ResourceAlreadyExists {
+        public static string ResourceAlreadyExists {
             get {
                 return ResourceManager.GetString("ResourceAlreadyExists", resourceCulture);
             }
@@ -198,7 +216,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The Resource &apos;{0}&apos; under resource group &apos;{1}&apos; was not found..
         /// </summary>
-        internal static string ResourceNotFound {
+        public static string ResourceNotFound {
             get {
                 return ResourceManager.GetString("ResourceNotFound", resourceCulture);
             }
@@ -207,7 +225,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Updating the generated control number for &apos;{0}&apos; &apos;{1}&apos;..
         /// </summary>
-        internal static string UpdateGeneratedControlNumberMessage {
+        public static string UpdateGeneratedControlNumberMessage {
             get {
                 return ResourceManager.GetString("UpdateGeneratedControlNumberMessage", resourceCulture);
             }
@@ -216,7 +234,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Updating the recevied control number &apos;{0}&apos; for &apos;{1}&apos; &apos;{2}&apos;..
         /// </summary>
-        internal static string UpdateReceivedControlNumberMessage {
+        public static string UpdateReceivedControlNumberMessage {
             get {
                 return ResourceManager.GetString("UpdateReceivedControlNumberMessage", resourceCulture);
             }
@@ -225,7 +243,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Updating &apos;{0}&apos; &apos;{1}&apos;..
         /// </summary>
-        internal static string UpdateResourceMessage {
+        public static string UpdateResourceMessage {
             get {
                 return ResourceManager.GetString("UpdateResourceMessage", resourceCulture);
             }
@@ -234,7 +252,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to update the &apos;{0}&apos; &apos;{1}&apos;..
         /// </summary>
-        internal static string UpdateResourceWarning {
+        public static string UpdateResourceWarning {
             get {
                 return ResourceManager.GetString("UpdateResourceWarning", resourceCulture);
             }
