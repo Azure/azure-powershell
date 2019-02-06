@@ -14,13 +14,14 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using System.Globalization;
     using ResourceManager.Common.ArgumentCompleters;
+    using System;
+    using System.Globalization;
+    using System.Management.Automation;
 
     /// <summary>
     /// Updates the integration account map.
@@ -63,6 +64,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account map content type.")]
         [ValidateNotNullOrEmpty]
+        [CmdletParameterBreakingChange("ContentType", ChangeDescription = Constants.DeprecatedContentTypeMessage)]
         public string ContentType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account map metadata.",
