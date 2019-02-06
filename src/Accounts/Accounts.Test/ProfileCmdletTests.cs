@@ -15,11 +15,8 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -30,7 +27,7 @@ using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
+namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class ProfileCmdletTests : RMTestBase
     {
