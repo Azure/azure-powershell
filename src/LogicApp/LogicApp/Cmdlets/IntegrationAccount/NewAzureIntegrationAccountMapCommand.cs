@@ -14,12 +14,13 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using ResourceManager.Common.ArgumentCompleters;
+    using System;
+    using System.Management.Automation;
 
     /// <summary>
     /// Creates a new integration account map.
@@ -62,6 +63,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account map content type.")]
         [ValidateNotNullOrEmpty]
+        [CmdletParameterBreakingChange("ContentType", ChangeDescription = Constants.DeprecatedContentTypeMessage)]
         public string ContentType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account map metadata.",
@@ -90,10 +92,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.MapDefinition = CmdletHelper.GetContentFromFile(this.TryResolvePath(this.MapFilePath));
             }
 
-            if (string.IsNullOrEmpty(this.ContentType))
-            {
-                this.ContentType = this.MapType.Equals("liquid", StringComparison.CurrentCultureIgnoreCase) ? "text/plain" : "application/xml";
-            }
+            this.ContentType = this.MapType.Equals("liquid", StringComparison.CurrentCultureIgnoreCase) ? "text/plain" : "application/xml";
 
             this.WriteObject(IntegrationAccountClient.CreateIntegrationAccountMap(this.ResourceGroupName, integrationAccount.Name, this.MapName,
                 new IntegrationAccountMap
