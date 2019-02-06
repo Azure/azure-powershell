@@ -181,6 +181,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditingOnDatabase()
         {
             RunPowerShellTest("Test-AuditingOnDatabase");
@@ -188,6 +189,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditingOnServer()
         {
             RunPowerShellTest("Test-AuditingOnServer");
@@ -195,6 +197,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestNewDatabaseDiagnosticsAreCreatedOnNeed()
         {
             RunPowerShellTest("Test-NewDatabaseDiagnosticsAreCreatedOnNeed");
@@ -202,6 +205,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestServerDiagnosticsAreCreatedOnNeed()
         {
             RunPowerShellTest("Test-NewServerDiagnosticsAreCreatedOnNeed");
