@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -182,6 +183,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
+        [CmdletParameterBreakingChange("UserAssignedIdentityId", ReplaceMentCmdletParameterName = "Identity")]
         [Parameter(
             ParameterSetName = "IdentityByUserAssignedIdentityId",
             Mandatory = false,
