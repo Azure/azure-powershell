@@ -22,14 +22,14 @@ New-AzOperationalInsightsApplicationInsightsDataSource [-Force] [-DefaultProfile
 ### ByWorkspaceObjectByApplicationParameters
 ```
 New-AzOperationalInsightsApplicationInsightsDataSource [-Workspace] <PSWorkspace>
- [-ApplicationSubscriptionId <String>] [-ApplicationResourceGroupName <String>] [-ApplicationName <String>]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ApplicationSubscriptionId <String> -ApplicationResourceGroupName <String> -ApplicationName <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByWorkspaceObjectByApplicationResourceId
 ```
-New-AzOperationalInsightsApplicationInsightsDataSource [[-Workspace] <PSWorkspace>]
- [-ApplicationResourceId <String>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+New-AzOperationalInsightsApplicationInsightsDataSource [-Workspace] <PSWorkspace>
+ -ApplicationResourceId <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -42,9 +42,9 @@ New-AzOperationalInsightsApplicationInsightsDataSource [-ResourceGroupName] <Str
 
 ### ByWorkspaceNameByApplicationResourceId
 ```
-New-AzOperationalInsightsApplicationInsightsDataSource [[-ResourceGroupName] <String>]
- [[-WorkspaceName] <String>] -ApplicationResourceId <String> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzOperationalInsightsApplicationInsightsDataSource [-ResourceGroupName] <String> [-WorkspaceName] <String>
+ -ApplicationResourceId <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,25 +66,13 @@ The name of the linked application.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByWorkspaceObjectByApplicationParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByWorkspaceNameByApplicationParameters
+Parameter Sets: ByWorkspaceObjectByApplicationParameters, ByWorkspaceNameByApplicationParameters
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -93,25 +81,13 @@ The resource group name of the linked application.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByWorkspaceObjectByApplicationParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByWorkspaceNameByApplicationParameters
+Parameter Sets: ByWorkspaceObjectByApplicationParameters, ByWorkspaceNameByApplicationParameters
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -120,25 +96,13 @@ The linked application resource id.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByWorkspaceObjectByApplicationResourceId
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByWorkspaceNameByApplicationResourceId
+Parameter Sets: ByWorkspaceObjectByApplicationResourceId, ByWorkspaceNameByApplicationResourceId
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -147,25 +111,13 @@ The subscription id of the linked application.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByWorkspaceObjectByApplicationParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByWorkspaceNameByApplicationParameters
+Parameter Sets: ByWorkspaceObjectByApplicationParameters, ByWorkspaceNameByApplicationParameters
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -204,22 +156,10 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByWorkspaceNameByApplicationParameters
+Parameter Sets: ByWorkspaceNameByApplicationParameters, ByWorkspaceNameByApplicationResourceId
 Aliases:
 
 Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByWorkspaceNameByApplicationResourceId
-Aliases:
-
-Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -231,22 +171,10 @@ The workspace that will contain the data source.
 
 ```yaml
 Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
-Parameter Sets: ByWorkspaceObjectByApplicationParameters
+Parameter Sets: ByWorkspaceObjectByApplicationParameters, ByWorkspaceObjectByApplicationResourceId
 Aliases:
 
 Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
-Parameter Sets: ByWorkspaceObjectByApplicationResourceId
-Aliases:
-
-Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -258,22 +186,10 @@ The name of the workspace that will contain the data source.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByWorkspaceNameByApplicationParameters
+Parameter Sets: ByWorkspaceNameByApplicationParameters, ByWorkspaceNameByApplicationResourceId
 Aliases:
 
 Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByWorkspaceNameByApplicationResourceId
-Aliases:
-
-Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
