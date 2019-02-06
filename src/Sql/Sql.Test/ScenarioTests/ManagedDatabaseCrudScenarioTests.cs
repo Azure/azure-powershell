@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-RestoreManagedDatabase");
         }
 
-        [Fact]
+        [Fact(Skip = "Setup time is long (more than 10 hours)")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagedDatabaseGeoBackup()
         {
