@@ -28,21 +28,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     [OutputType(typeof(IntegrationAccountMap))]
     public class NewAzureIntegrationAccountMapCommand : LogicAppBaseCmdlet
     {
-
-        #region Defaults
-
-        /// <summary>
-        /// Default content type for map.
-        /// </summary>
-        private string contentType = "application/xml";
-
-        /// <summary>
-        /// Default map type.
-        /// </summary>
-        private string mapType = "Xslt";
-
-        #endregion Defaults
-
         #region Input Parameters
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account resource group name.",
@@ -71,21 +56,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public string MapDefinition { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account map type.")]
-        [ValidateSet("Xslt", IgnoreCase = false)]
+        [ValidateSet("Xslt", "Xslt20", "Xslt30", "Liquid", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public string MapType
-        {
-            get { return this.mapType; }
-            set { value = this.mapType; }
-        }
+        public string MapType { get; set; } = "Xslt";
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account map content type.")]
         [ValidateNotNullOrEmpty]
-        public string ContentType
-        {
-            get { return this.contentType; }
-            set { value = this.contentType; }
-        }
+        public string ContentType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account map metadata.",
         ValueFromPipelineByPropertyName = false)]
@@ -111,6 +88,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             if (string.IsNullOrEmpty(this.MapDefinition))
             {
                 this.MapDefinition = CmdletHelper.GetContentFromFile(this.TryResolvePath(this.MapFilePath));
+            }
+
+            if (string.IsNullOrEmpty(this.ContentType))
+            {
+                this.ContentType = this.MapType.Equals("liquid", StringComparison.CurrentCultureIgnoreCase) ? "text/plain" : "application/xml";
             }
 
             this.WriteObject(IntegrationAccountClient.CreateIntegrationAccountMap(this.ResourceGroupName, integrationAccount.Name, this.MapName,

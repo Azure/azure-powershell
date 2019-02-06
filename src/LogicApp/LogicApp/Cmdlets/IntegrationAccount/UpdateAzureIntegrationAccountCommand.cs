@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account SKU.",
             ValueFromPipelineByPropertyName = true)]
+        [ValidateSet("Free", "Basic", "Standard", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Sku { get; set; }
 
