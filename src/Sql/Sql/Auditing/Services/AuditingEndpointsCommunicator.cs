@@ -164,25 +164,15 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 }
             }
 
-            var result =  client.DiagnosticSettings.CreateOrUpdateAsync(
+            return client.DiagnosticSettings.CreateOrUpdateAsync(
                 resoureUri, settings, GetDiagnosticSettingsName()).Result;
-
-            // Currently, when listing diagnostics immediately after updating, we get old diagnostics,
-            // instead of modified ones. This is why the thread goes to sleep for 1 second.
-            Thread.Sleep(TimeSpan.FromSeconds(5));
-            return result;
         }
 
         public DiagnosticSettingsResource UpdateDiagnosticSettings(DiagnosticSettingsResource settings,
             string resourceGroupName, string serverName, string databaseName = "master")
         {
-            var result = GetMonitorManagementClient().DiagnosticSettings.CreateOrUpdateAsync(
+            return GetMonitorManagementClient().DiagnosticSettings.CreateOrUpdateAsync(
                 GetResourceUri(resourceGroupName, serverName, databaseName), settings, settings.Name).Result;
-
-            // Currently, when listing diagnostics immediately after updating, we get old diagnostics,
-            // instead of modified ones. This is why the thread goes to sleep for 1 second.
-            Thread.Sleep(TimeSpan.FromSeconds(5));
-            return result;
         }
 
         private static string GetDiagnosticSettingsName()
