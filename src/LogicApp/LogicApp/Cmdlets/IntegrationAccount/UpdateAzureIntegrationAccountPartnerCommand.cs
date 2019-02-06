@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (!string.IsNullOrEmpty(this.PartnerType))
             {
-                integrationAccountPartner.PartnerType = (PartnerType) Enum.Parse(typeof(PartnerType), this.PartnerType);
+                integrationAccountPartner.PartnerType = this.PartnerType;
             }
 
             if (this.BusinessIdentities != null)
