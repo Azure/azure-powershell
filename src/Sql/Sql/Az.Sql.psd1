@@ -184,7 +184,8 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Get-AzSqlInstance', 'New-AzSqlInstance', 'Remove-AzSqlInstance', 
                'Set-AzSqlInstance', 'Get-AzSqlInstanceDatabase', 
                'New-AzSqlInstanceDatabase', 'Remove-AzSqlInstanceDatabase', 
-               'Restore-AzSqlInstanceDatabase'
+               'Restore-AzSqlInstanceDatabase',
+			   'Get-AzSqlInstanceDatabaseGeoBackup'
 
 # Variables to export from this module
 # VariablesToExport = @()

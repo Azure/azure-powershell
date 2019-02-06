@@ -56,6 +56,28 @@ Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceId] <String> -P
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+
+### GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet
+```
+Restore-AzSqlInstanceDatabase [-FromGeoBackup] [-GeoBackupObject] <AzureSqlRecoverableManagedDatabaseModel>
+-TargetInstanceDatabaseName <String> -TargetInstanceName <String> -TargetResourceGroupName <String>  [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet
+```
+Restore-AzSqlInstanceDatabase [-FromGeoBackup] [-ResourceId] <String>
+ -TargetInstanceDatabaseName <String> -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet
+```
+Restore-AzSqlInstanceDatabase [-FromGeoBackup]  [-Name] <String> [-InstanceName] <String>
+ [-ResourceGroupName] <String>  -TargetInstanceDatabaseName <String> -TargetInstanceName <String>
+ -TargetResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Restore-AzSqlInstanceDatabase** cmdlet restores an instance database from a point in time in a live database.
 The restored database is created as a new instance database.
@@ -123,6 +145,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FromPointInTimeBackup
+Restore from a geo redundant backup.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The Instance Database object to restore
 
@@ -138,12 +175,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -GeoBackupObject
+The Instance Database redundant backup object to restore
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlRecoverableManagedDatabaseModel
+Parameter Sets: GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet
+Aliases: RecoverableInstanceDatabase
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InstanceName
 The instance name.
 
 ```yaml
 Type: System.String
-Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters
+Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet
 Aliases:
 
 Required: True
@@ -158,7 +210,7 @@ The instance database name to restore.
 
 ```yaml
 Type: System.String
-Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters
+Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet
 Aliases: InstanceDatabaseName
 
 Required: True
@@ -176,7 +228,7 @@ Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -188,7 +240,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters
+Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet
 Aliases:
 
 Required: True
@@ -203,7 +255,7 @@ The resource id of Instance Database object to restore
 
 ```yaml
 Type: System.String
-Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromAzureResourceId, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId
+Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromAzureResourceId, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId, GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -234,7 +286,8 @@ If not specified, the target instance is the same as the source instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId
+Parameter Sets: PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId, 
+                 GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet, GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet
 Aliases:
 
 Required: True
@@ -250,7 +303,8 @@ If not specified, the target resource group is the same as the source resource g
 
 ```yaml
 Type: System.String
-Parameter Sets: PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId
+Parameter Sets: PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId, 
+                 GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet, GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet
 Aliases:
 
 Required: True

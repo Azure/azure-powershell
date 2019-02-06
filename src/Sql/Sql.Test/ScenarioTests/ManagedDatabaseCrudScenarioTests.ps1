@@ -241,3 +241,81 @@ function Test-RestoreManagedDatabase
 		Remove-ResourceGroupForTest $rg
 	}
 }
+
+<#
+.SYNOPSIS
+	Tests Getting a managed database
+#>
+function Test-GetManagedDatabaseGeoBackup
+{
+	# Setup
+	$rgName = "restore-rg"	
+	$managedInstanceName = "restorerunnermanagedserverwus"
+	$managedDatabaseName = "sourceDb"
+
+	# Test Get using all parameters
+	$gdb1 = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name $managedDatabaseName
+	Assert-NotNull $gdb1
+	Assert-AreEqual $managedDatabaseName $gdb1.Name
+
+	# Test Get using ResourceGroupName and InstanceName
+	$all = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName 
+
+	Assert-NotNull $all
+	if($all.Count -le 1)
+	{
+        throw "Should mget more than 1 backup geo backups"
+    }
+}
+
+<#
+	.SYNOPSIS
+	Tests geo-restoring a managed database
+#>
+function Test-GeoRestoreManagedDatabase
+{
+	# Setup
+    $rgName = "restore-rg"	
+	$managedInstanceName = "restorerunnermanagedserverwus"
+	$managedDatabaseName = "sourceDb"
+
+	$targetRgName = "brrg"
+	$targetInstanceName = "brcl-eus"
+	try
+	{
+		$sourceDbGeoBackup = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name $managedDatabaseName
+
+		Assert-NotNull $sourceDbGeoBackup
+		$targetManagedDatabaseName1 = Get-ManagedDatabaseName		
+		$targetManagedDatabaseName2 = Get-ManagedDatabaseName
+		$targetManagedDatabaseName3 = Get-ManagedDatabaseName
+
+		# geo-restore managed database using resourceID
+		$restoredDb1 = Restore-AzSqlInstanceDatabase -FromGeoBackup -ResourceId $sourceDbGeoBackup.RecoverableDatabaseId -TargetInstanceDatabaseName $targetManagedDatabaseName1 -TargetInstanceName $targetInstanceName -TargetResourceGroupName $targetRgName
+		Assert-NotNull $restoredDb1
+		Assert-AreEqual $restoredDb1.Name $targetManagedDatabaseName1
+		Assert-AreEqual $restoredDb1.ResourceGroupName $targetRgName
+		Assert-AreEqual $restoredDb1.ManagedInstanceName $targetInstanceName
+
+		# geo-restore managed database using name, instance and resource group name 
+		$restoredDb2 = Restore-AzSqlInstanceDatabase -FromGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name $managedDatabaseName -TargetInstanceDatabaseName $targetManagedDatabaseName2 -TargetInstanceName $targetInstanceName -TargetResourceGroupName $targetRgName
+		Assert-NotNull $restoredDb2
+		Assert-AreEqual $restoredDb2.Name $targetManagedDatabaseName2
+		Assert-AreEqual $restoredDb2.ResourceGroupName $targetRgName
+		Assert-AreEqual $restoredDb2.ManagedInstanceName $targetInstanceName
+		
+		# geo-restore managed database using GeoBackupObject
+		$restoredDb3 = Restore-AzSqlInstanceDatabase -FromGeoBackup -GeoBackupObject $sourceDbGeoBackup -TargetInstanceDatabaseName $targetManagedDatabaseName3 -TargetInstanceName $targetInstanceName -TargetResourceGroupName $targetRgName
+		Assert-NotNull $restoredDb3
+		Assert-AreEqual $restoredDb3.Name $targetManagedDatabaseName3
+		Assert-AreEqual $restoredDb3.ResourceGroupName $targetRgName
+		Assert-AreEqual $restoredDb3.ManagedInstanceName $targetInstanceName
+
+	}
+	finally
+	{
+		$restoredDb1 | Remove-AzSqlInstanceDatabase -Force
+		$restoredDb2 | Remove-AzSqlInstanceDatabase -Force
+		$restoredDb3 | Remove-AzSqlInstanceDatabase -Force
+	}
+}
