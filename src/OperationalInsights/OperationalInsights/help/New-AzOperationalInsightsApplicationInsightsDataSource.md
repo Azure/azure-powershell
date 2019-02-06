@@ -65,9 +65,11 @@ Properties        : {"linkedResourceId":"subscriptions/e791a474-ee54-46a2-bb06-5
 
 ```
 
-### Example 2: Create application-insights data source in workspace by the application resource id
+This command creates an application-insights data source of a given application in a given log analytics workpsace. This enables the collection of logs from given application to the log analytics workpsace.
+
+### Example 2: Get workspace object and create application-insights data source by the application resource id
 ```
-PS C:\> New-AzOperationalInsightsApplicationInsightsDataSource -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "MyWorkspace" -ApplicationResourceId "/subscriptions/e791a474-ee54-46a2-bb06-5e058302d234/resourceGroups/ContosoResourceGroup/providers/microsoft.insights/components/MyAIApplication"
+PS C:\> Get-AzureRmOperationalInsightsWorkspace -Name "MyWorkspace" -ResourceGroupName "ContosoResourceGroup" | New-AzOperationalInsightsApplicationInsightsDataSource -ApplicationResourceId "/subscriptions/e791a474-ee54-46a2-bb06-5e058302d234/resourceGroups/ContosoResourceGroup/providers/microsoft.insights/components/MyAIApplication"
 
 Name              : subscriptions/aaaaa474-ee54-4aaa-bb06-5e058302daaa/resourceGroups/ContosoResourceGroup/providers/microsoft.insights/components/MyAIApplication
 ResourceGroupName : ContosoResourceGroup
@@ -78,7 +80,7 @@ Properties        : {"linkedResourceId":"subscriptions/e791a474-ee54-46a2-bb06-5
 
 ```
 
-These commands create an application-insights data source of a given application in a given log analytics workpsace. This enables the collection of logs from given application to the log analytics workpsace.
+This command demonstrates getting a log analytics workspace object and then passing the output to create an associated application-insights data source by the application resource id. 
 
 ## PARAMETERS
 
