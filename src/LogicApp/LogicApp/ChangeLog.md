@@ -20,6 +20,16 @@
 ## Upcoming Release
 * Add in Basic sku for Integration Accounts
 * Add in XSLT 2.0, XSLT 3.0 and Liquid Map Types
+* New cmdlets for Integration Account Assemblies
+	- Get-AzIntegrationAccountAssembly
+	- New-AzIntegrationAccountAssembly
+	- Remove-AzIntegrationAccountAssembly
+	- Set-AzIntegrationAccountAssembly
+* New cmdlets for Integration Account Batch Configuration
+	- Get-AzIntegrationAccountBatchConfiguration
+	- New-AzIntegrationAccountBatchConfiguration
+	- Remove-AzIntegrationAccountBatchConfiguration
+	- Set-AzIntegrationAccountBatchConfiguration
 * Update Logic App SDK to version 4.1.0
 
 ## Version 1.1.0
