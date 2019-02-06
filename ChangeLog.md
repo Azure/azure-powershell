@@ -14,8 +14,10 @@ General availability for Az.AnalysisServices module.
 General availability for Az.RecoveryServices module.
 
 #### Az.Resources
-* Fix for issue https://github.com/Azure/azure-powershell/issues/8166
-* Fix for issue https://github.com/Azure/azure-powershell/issues/8235
+* Fix tagging for resource groups 
+    - More information here: https://github.com/Azure/azure-powershell/issues/8166
+* Fix issue where `Get-AzureRmRoleAssignment` doesn't respect -ErrorAction 
+    - More information here: https://github.com/Azure/azure-powershell/issues/8235
 
 #### Az.Sql
 * Add Get/Set AzSqlDatabaseBackupShortTermRetentionPolicy
