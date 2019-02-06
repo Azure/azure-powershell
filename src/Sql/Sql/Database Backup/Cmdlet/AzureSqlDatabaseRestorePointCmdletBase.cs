@@ -51,9 +51,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <summary>
         /// Initializes the adapter
         /// </summary>
-        /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlDatabaseBackupAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlDatabaseBackupAdapter InitModelAdapter()
         {
             return new AzureSqlDatabaseBackupAdapter(DefaultProfile.DefaultContext);
         }

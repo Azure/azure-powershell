@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 {
                     ContentType = this.ContentType,
                     Content = this.MapDefinition,
-                    MapType = (MapType) Enum.Parse(typeof(MapType), this.MapType),
+                    MapType = this.MapType,
                     Metadata = this.Metadata
                 }), true);
         }

@@ -398,6 +398,12 @@ namespace Microsoft.Azure.Commands.Compute
                                 this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA IOPS", "disk.sla.throughput." + diskNumber, sapmonPublicConfig, sla.TP, aemConfigResult);
                                 this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA Throughput", "disk.sla.iops." + diskNumber, sapmonPublicConfig, sla.IOPS, aemConfigResult);
                             }
+                            else if (diskMD.Sku.Name == StorageAccountTypes.UltraSSDLRS)
+                            {
+                                this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " Type", "disk.type." + diskNumber, sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_PREMIUM_MD, aemConfigResult);
+                                this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA IOPS", "disk.sla.throughput." + diskNumber, sapmonPublicConfig, diskMD.DiskMBpsReadWrite, aemConfigResult);
+                                this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA Throughput", "disk.sla.iops." + diskNumber, sapmonPublicConfig, diskMD.DiskIOPSReadWrite, aemConfigResult);
+                            }
                             else
                             {
                                 this._Helper.WriteWarning("[WARN] Standard Managed Disks are not supported.");

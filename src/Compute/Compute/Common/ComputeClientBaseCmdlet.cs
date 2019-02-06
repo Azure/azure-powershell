@@ -13,14 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -120,137 +118,6 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             return managedDisk;
-        }
-
-        public List<object> TopLevelWildcardFilter(string ResourceGroupName, string Name, IEnumerable<object> resources)
-        {
-            List<object> resourceGroupMatch = new List<object>();
-            foreach (var resource in resources)
-            {
-                System.Reflection.PropertyInfo pi = resource.GetType().GetProperty("Id");
-                ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
-                if (string.IsNullOrEmpty(ResourceGroupName))
-                {
-                    resourceGroupMatch.Add(resource);
-                }
-                else if (ResourceGroupName.Contains("*"))
-                {
-                    string pattern = ResourceGroupName;
-                    string regexPattern = pattern.Replace("*", ".");
-                    if (Regex.IsMatch(parsedId.ResourceGroupName, regexPattern, RegexOptions.IgnoreCase))
-                    {
-                        resourceGroupMatch.Add(resource);
-                    }
-                }
-                else
-                {
-                    if (ResourceGroupName.Equals(parsedId.ResourceGroupName, StringComparison.CurrentCultureIgnoreCase))
-                    {
-                        resourceGroupMatch.Add(resource);
-                    }
-                }
-            }
-
-            List<object> output = new List<object>();
-            foreach (var resource in resourceGroupMatch)
-            {
-                System.Reflection.PropertyInfo pi = resource.GetType().GetProperty("Id");
-                ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
-                if (string.IsNullOrEmpty(Name))
-                {
-                    output.Add(resource);
-                }
-                else if (Name.Contains("*"))
-                {
-                    string pattern = Name;
-                    string regexPattern = pattern.Replace("*", ".");
-                    if (Regex.IsMatch(parsedId.ResourceName, regexPattern, RegexOptions.IgnoreCase))
-                    {
-                        output.Add(resource);
-                    }
-                }
-                else
-                {
-                    if (Name.Equals(parsedId.ResourceName))
-                    {
-                        output.Add(resource);
-                    }
-                }
-            }
-
-            return output;
-        }
-
-        public List<object> SubResourceWildcardFilter(string Name, IEnumerable<object> resources)
-        {
-            List<object> output = new List<object>();
-            foreach (var resource in resources)
-            {
-                System.Reflection.PropertyInfo pi = resource.GetType().GetProperty("Id");
-                ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
-                if (string.IsNullOrEmpty(Name))
-                {
-                    output.Add(resource);
-                }
-                else if (Name.Contains("*"))
-                {
-                    string pattern = Name;
-                    string regexPattern = pattern.Replace("*", ".");
-                    if (Regex.IsMatch(parsedId.ResourceName, regexPattern))
-                    {
-                        output.Add(resource);
-                    }
-                }
-                else
-                {
-                    if (Name.Equals(parsedId.ResourceName))
-                    {
-                        output.Add(resource);
-                    }
-                }
-            }
-
-            return output;
-        }
-
-        public bool ShouldListBySubscription(string resourceGroupName, string name)
-        {
-            if (string.IsNullOrEmpty(resourceGroupName))
-            {
-                return true;
-            }
-            else if (resourceGroupName.Contains("*"))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        public bool ShouldListByResourceGroup(string resourceGroupName, string name)
-        {
-            if (!string.IsNullOrEmpty(resourceGroupName) && !resourceGroupName.Contains("*"))
-            {
-                if (string.IsNullOrEmpty(name) || name.Contains("*"))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-        
-        public bool ShouldGetByName(string resourceGroupName, string name)
-        {
-            if (!string.IsNullOrEmpty(resourceGroupName) && !resourceGroupName.Contains("*"))
-            {
-                if (!string.IsNullOrEmpty(name) && !name.Contains("*"))
-                {
-                    return true;
-                }
-            }
-
-            return false;
         }
     }
 }

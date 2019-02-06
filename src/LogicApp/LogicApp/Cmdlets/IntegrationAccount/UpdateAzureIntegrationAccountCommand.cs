@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             {
                 integrationAccount.Sku = new IntegrationAccountSku
                 {
-                    Name = (IntegrationAccountSkuName) Enum.Parse(typeof(IntegrationAccountSkuName), this.Sku),
+                    Name = this.Sku,
 
                 };
             }

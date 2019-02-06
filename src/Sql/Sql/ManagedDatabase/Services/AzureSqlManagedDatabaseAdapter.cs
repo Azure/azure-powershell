@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         public AzureSqlManagedDatabaseAdapter(IAzureContext context)
         {
             Context = context;
-            _subscription = context.Subscription;
+            _subscription = context?.Subscription;
             Communicator = new AzureSqlManagedDatabaseCommunicator(Context);
         }
 
