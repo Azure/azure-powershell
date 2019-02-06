@@ -664,7 +664,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Common.Authentication]: User info for token DisplayId: &apos;{0}&apos;, Name: {2} {1}, IdProvider: &apos;{3}&apos;, Uid: &apos;{4}&apos;.
+        ///   Looks up a localized string similar to [Common.Authentication]: User info for token Username: &apos;{0}&apos;, HomeAccountId: {1}, Environment: &apos;{2}&apos;, Uid: &apos;{3}&apos;.
         /// </summary>
         public static string UPNRenewTokenUserInfoTrace {
             get {

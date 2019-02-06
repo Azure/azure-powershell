@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             TracingAdapter.Information(
                 Resources.UPNRenewTokenTrace,
+                "Bearer",
                 token.AuthResult.ExpiresOn,
                 true,
                 token.AuthResult.TenantId,
@@ -82,9 +83,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 TracingAdapter.Information(
                     Resources.UPNRenewTokenUserInfoTrace,
+                    user.Username,
+                    user.HomeAccountId.ObjectId,
                     user.Environment,
-                    user.HomeAccountId,
-                    user.Username);
+                    token.AuthResult.UniqueId);
             }
             if (IsExpired(token))
             {
