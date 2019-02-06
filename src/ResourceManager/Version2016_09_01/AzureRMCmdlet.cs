@@ -398,26 +398,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             foreach (var resource in resources)
             {
                 System.Reflection.PropertyInfo pi = resource.GetType().GetProperty("Id");
-                ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
-                if (string.IsNullOrEmpty(ResourceGroupName))
+                if (pi != null)
                 {
-                    resourceGroupMatch.Add(resource);
-                }
-                else if (ResourceGroupName.Contains("*"))
-                {
-                    string pattern = ResourceGroupName;
-                    string regexPattern = pattern.Replace("*", ".");
-                    if (Regex.IsMatch(parsedId.ResourceGroupName, regexPattern, RegexOptions.IgnoreCase))
+                    ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
+                    if (string.IsNullOrEmpty(ResourceGroupName))
                     {
                         resourceGroupMatch.Add(resource);
+                    }
+                    else if (ContainsSpecialCharacters(ResourceGroupName))
+                    {
+                        if (Regex.IsMatch(parsedId.ResourceGroupName, ResourceGroupName, RegexOptions.IgnoreCase))
+                        {
+                            resourceGroupMatch.Add(resource);
+                        }
+                    }
+                    else
+                    {
+                        if (ResourceGroupName.Equals(parsedId.ResourceGroupName, StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            resourceGroupMatch.Add(resource);
+                        }
                     }
                 }
                 else
                 {
-                    if (ResourceGroupName.Equals(parsedId.ResourceGroupName, StringComparison.CurrentCultureIgnoreCase))
-                    {
-                        resourceGroupMatch.Add(resource);
-                    }
+                    resourceGroupMatch.Add(resource);
                 }
             }
 
@@ -425,26 +430,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             foreach (var resource in resourceGroupMatch)
             {
                 System.Reflection.PropertyInfo pi = resource.GetType().GetProperty("Id");
-                ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
-                if (string.IsNullOrEmpty(Name))
+                if (pi != null)
                 {
-                    output.Add(resource);
-                }
-                else if (Name.Contains("*"))
-                {
-                    string pattern = Name;
-                    string regexPattern = pattern.Replace("*", ".");
-                    if (Regex.IsMatch(parsedId.ResourceName, regexPattern, RegexOptions.IgnoreCase))
+                    ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
+                    if (string.IsNullOrEmpty(Name))
                     {
                         output.Add(resource);
+                    }
+                    else if (ContainsSpecialCharacters(Name))
+                    {
+                        if (Regex.IsMatch(parsedId.ResourceName, Name, RegexOptions.IgnoreCase))
+                        {
+                            output.Add(resource);
+                        }
+                    }
+                    else
+                    {
+                        if (Name.Equals(parsedId.ResourceName, StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            output.Add(resource);
+                        }
                     }
                 }
                 else
                 {
-                    if (Name.Equals(parsedId.ResourceName))
-                    {
-                        output.Add(resource);
-                    }
+                    output.Add(resource);
                 }
             }
 
@@ -457,30 +467,42 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             foreach (var resource in resources)
             {
                 System.Reflection.PropertyInfo pi = resource.GetType().GetProperty("Id");
-                ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
-                if (string.IsNullOrEmpty(Name))
+                if (pi != null)
                 {
-                    output.Add(resource);
-                }
-                else if (Name.Contains("*"))
-                {
-                    string pattern = Name;
-                    string regexPattern = pattern.Replace("*", ".");
-                    if (Regex.IsMatch(parsedId.ResourceName, regexPattern))
+                    ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
+                    if (string.IsNullOrEmpty(Name))
                     {
                         output.Add(resource);
+                    }
+                    else if (ContainsSpecialCharacters(Name))
+                    {
+                        if (Regex.IsMatch(parsedId.ResourceName, Name, RegexOptions.IgnoreCase))
+                        {
+                            output.Add(resource);
+                        }
+                    }
+                    else
+                    {
+                        if (Name.Equals(parsedId.ResourceName, StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            output.Add(resource);
+                        }
                     }
                 }
                 else
                 {
-                    if (Name.Equals(parsedId.ResourceName))
-                    {
-                        output.Add(resource);
-                    }
+                    output.Add(resource);
                 }
             }
 
             return output;
+        }
+
+        private const string SpecialCharacters = "[\\^$|?*+";
+
+        public static bool ContainsSpecialCharacters(string text)
+        {
+            return text.IndexOfAny(SpecialCharacters.ToCharArray()) >= 0;
         }
 
         public bool ShouldListBySubscription(string resourceGroupName, string name)
@@ -489,7 +511,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 return true;
             }
-            else if (resourceGroupName.Contains("*"))
+            else if (ContainsSpecialCharacters(resourceGroupName))
             {
                 return true;
             }
@@ -499,9 +521,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public bool ShouldListByResourceGroup(string resourceGroupName, string name)
         {
-            if (!string.IsNullOrEmpty(resourceGroupName) && !resourceGroupName.Contains("*"))
+            if (!string.IsNullOrEmpty(resourceGroupName) && !ContainsSpecialCharacters(resourceGroupName))
             {
-                if (string.IsNullOrEmpty(name) || name.Contains("*"))
+                if (string.IsNullOrEmpty(name) || ContainsSpecialCharacters(name))
                 {
                     return true;
                 }
@@ -512,9 +534,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public bool ShouldGetByName(string resourceGroupName, string name)
         {
-            if (!string.IsNullOrEmpty(resourceGroupName) && !resourceGroupName.Contains("*"))
+            if (!string.IsNullOrEmpty(resourceGroupName) && !ContainsSpecialCharacters(resourceGroupName))
             {
-                if (!string.IsNullOrEmpty(name) && !name.Contains("*"))
+                if (!string.IsNullOrEmpty(name) && !ContainsSpecialCharacters(name))
                 {
                     return true;
                 }

@@ -113,16 +113,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
 
             Assert.True(cmdlet.ShouldListBySubscription(null, "*"));
             Assert.True(cmdlet.ShouldListBySubscription("*", "*"));
-            Assert.True(cmdlet.ShouldListBySubscription("testrg*", "*"));
+            Assert.True(cmdlet.ShouldListBySubscription("testrg+", "*"));
             Assert.True(cmdlet.ShouldListBySubscription("*testrg*", "*"));
-            Assert.True(cmdlet.ShouldListBySubscription("test*rg", "*"));
+            Assert.True(cmdlet.ShouldListBySubscription("test\\rg", "*"));
             Assert.False(cmdlet.ShouldListBySubscription("testrg", "*"));
 
             Assert.True(cmdlet.ShouldListBySubscription(null, "testname*"));
             Assert.True(cmdlet.ShouldListBySubscription("*", "testname*"));
-            Assert.True(cmdlet.ShouldListBySubscription("testrg*", "testname*"));
-            Assert.True(cmdlet.ShouldListBySubscription("*testrg*", "testname*"));
-            Assert.True(cmdlet.ShouldListBySubscription("test*rg", "testname*"));
+            Assert.True(cmdlet.ShouldListBySubscription("t?estrg*", "testname*"));
+            Assert.True(cmdlet.ShouldListBySubscription("^tes|trg*", "testname*"));
+            Assert.True(cmdlet.ShouldListBySubscription("test[r]g", "testname*"));
             Assert.False(cmdlet.ShouldListBySubscription("testrg", "testname*"));
 
             Assert.True(cmdlet.ShouldListBySubscription(null, "*testname*"));
@@ -144,13 +144,38 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
         public void TopLevelWildcardFilterTest()
         {
             WildCardTestCmdlet cmdlet = new WildCardTestCmdlet();
-            cmdlet.TopLevelWildcardFilter("resourcegroupname", "name", ReturnedResources);
+
+            Assert.Single(cmdlet.TopLevelWildcardFilter("resourcegroup1", "test1", ReturnedResources));
+            Assert.Empty(cmdlet.TopLevelWildcardFilter("resourcegroup11", "test1", ReturnedResources));
+            Assert.Empty(cmdlet.TopLevelWildcardFilter("1", "test1", ReturnedResources));
+            Assert.Empty(cmdlet.TopLevelWildcardFilter("resourcegroup1", "test11", ReturnedResources));
+            Assert.Empty(cmdlet.TopLevelWildcardFilter("resourcegroup1", "1", ReturnedResources));
+
+            Assert.Equal(3, cmdlet.TopLevelWildcardFilter("r*p", "test1", ReturnedResources).Count);
+            Assert.Empty(cmdlet.TopLevelWildcardFilter("r*p$", "test1", ReturnedResources));
+            Assert.Single(cmdlet.TopLevelWildcardFilter("^r.*1$", "test1", ReturnedResources));
+
+            Assert.Equal(6, cmdlet.TopLevelWildcardFilter("resourcegroup1", ".*", ReturnedResources).Count);
+            Assert.Equal(2, cmdlet.TopLevelWildcardFilter("resourcegroup1", ".*1$", ReturnedResources).Count);
+
+            Assert.Equal(11, cmdlet.TopLevelWildcardFilter("r*p", ".*", ReturnedResources).Count);
+            Assert.Equal(6, cmdlet.TopLevelWildcardFilter("r*1", ".*", ReturnedResources).Count);
+            Assert.Equal(2, cmdlet.TopLevelWildcardFilter("r*1", "1$", ReturnedResources).Count);
+            Assert.Equal(6, cmdlet.TopLevelWildcardFilter("r*1", "1*", ReturnedResources).Count);
         }
 
         [Fact]
         public void SubResourceWildcardFilterTest()
         {
             WildCardTestCmdlet cmdlet = new WildCardTestCmdlet();
+
+            Assert.Equal(3, cmdlet.SubResourceWildcardFilter("test1", ReturnedResources).Count);
+            Assert.Empty(cmdlet.SubResourceWildcardFilter("test11", ReturnedResources));
+            Assert.Empty(cmdlet.SubResourceWildcardFilter("1", ReturnedResources));
+
+            Assert.Equal(11, cmdlet.SubResourceWildcardFilter("t*t", ReturnedResources).Count);
+            Assert.Single(cmdlet.SubResourceWildcardFilter("t*t$", ReturnedResources));
+            Assert.Equal(4, cmdlet.SubResourceWildcardFilter("^t.*1$", ReturnedResources).Count);
         }
 
         public List<TestResource> ReturnedResources = new List<TestResource>()
@@ -181,6 +206,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
             this.Id = Id;
         }
 
-        public string Id;
+        public string Id { get; set; }
     }
 }
