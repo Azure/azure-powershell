@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Commands.Kusto.Models
             string clusterName,
             string location,
             string skuName = null,
+            int? capacity = null,
             Hashtable customTags = null,
             PSKustoCluster existingCluster = null)
         {
@@ -89,7 +90,7 @@ namespace Microsoft.Azure.Commands.Kusto.Models
                     {
                         Location = location,
                         Tags = tags,
-                        Sku = new AzureSku(skuName),
+                        Sku = new AzureSku(skuName, capacity),
                     });
             }
 
@@ -215,7 +216,7 @@ namespace Microsoft.Azure.Commands.Kusto.Models
             if (existingDatbase != null)
             {
 
-                var updateParameters = new DatabaseUpdate(){SoftDeletePeriodInDays = softDeletePeriodInDays, HotCachePeriodInDays = hotCachePeriodInDays};
+                var updateParameters = new DatabaseUpdate() { SoftDeletePeriodInDays = softDeletePeriodInDays, HotCachePeriodInDays = hotCachePeriodInDays };
                 newOrUpdatedDatabase = _client.Databases.Update(resourceGroupName, clusterName, databaseName, updateParameters);
             }
             else

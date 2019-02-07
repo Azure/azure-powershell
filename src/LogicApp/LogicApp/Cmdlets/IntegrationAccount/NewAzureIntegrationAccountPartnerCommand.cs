@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     this.PartnerName,
                     new IntegrationAccountPartner
                     {
-                        PartnerType = (PartnerType) Enum.Parse(typeof(PartnerType), this.PartnerType),
+                        PartnerType = this.PartnerType,
                         Content = new PartnerContent
                         {
                             B2b = new B2BPartnerContent

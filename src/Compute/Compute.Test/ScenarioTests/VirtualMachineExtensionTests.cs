@@ -12,76 +12,72 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class VirtualMachineExtensionTests
+    public class VirtualMachineExtensionTests : ComputeTestRunner
     {
-        XunitTracingInterceptor _logger;
-
         public VirtualMachineExtensionTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineExtension()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineExtension");
+            TestRunner.RunTestScript("Test-VirtualMachineExtension");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineExtensionUsingHashTable()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineExtensionUsingHashTable");
+            TestRunner.RunTestScript("Test-VirtualMachineExtensionUsingHashTable");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtension()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineCustomScriptExtension");
+            TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtension");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtensionWrongStorage()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineCustomScriptExtensionWrongStorage");
+            TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionWrongStorage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtensionSecureExecution()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineCustomScriptExtensionSecureExecution");
+            TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionSecureExecution");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtensionFileUri()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineCustomScriptExtensionFileUri");
+            TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionFileUri");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineAccessExtension()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineAccessExtension");
+            TestRunner.RunTestScript("Test-VirtualMachineAccessExtension");
         }
 
         [Fact(Skip = "TODO: only works for live mode")]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAzureDiskEncryptionExtension()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AzureDiskEncryptionExtension");
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionExtension");
         }
 
 #if NETSTANDARD
@@ -93,7 +89,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureDiskEncryptionExtensionSinglePass()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AzureDiskEncryptionExtensionSinglePass");
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionSinglePass");
         }
 
 #if NETSTANDARD
@@ -105,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureDiskEncryptionExtensionSinglePassRemove()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AzureDiskEncryptionExtensionSinglePassRemove");
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionSinglePassRemove");
         }
 
 #if NETSTANDARD
@@ -117,35 +113,35 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureDiskEncryptionExtensionSinglePassDisableAndRemove()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove");
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBginfoExtension()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineBginfoExtension");
+            TestRunner.RunTestScript("Test-VirtualMachineBginfoExtension");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineExtensionWithSwitch()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineExtensionWithSwitch");
+            TestRunner.RunTestScript("Test-VirtualMachineExtensionWithSwitch");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineADDomainExtension()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineADDomainExtension");
+            TestRunner.RunTestScript("Test-VirtualMachineADDomainExtension");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineADDomainExtensionDomainJoin()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineADDomainExtensionDomainJoin");
+            TestRunner.RunTestScript("Test-VirtualMachineADDomainExtensionDomainJoin");
         }
     }
 }

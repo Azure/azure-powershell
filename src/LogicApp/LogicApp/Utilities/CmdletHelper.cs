@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>String content</returns>
         internal static string GetContentFromFile(string filePath)
         {
-            string content = string.Empty;
+            var content = string.Empty;
 
             if (!string.IsNullOrEmpty(filePath))
             {

@@ -1694,6 +1694,7 @@
     "New-AzOperationalInsightsWindowsPerformanceCounterDataSource": "New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource",
     "New-AzOperationalInsightsLinuxPerformanceObjectDataSource": "New-AzureRmOperationalInsightsLinuxPerformanceObjectDataSource",
     "New-AzOperationalInsightsLinuxSyslogDataSource": "New-AzureRmOperationalInsightsLinuxSyslogDataSource",
+    "New-AzOperationalInsightsApplicationInsightsDataSource": "New-AzureRmOperationalInsightsApplicationInsightsDataSource",
     "Disable-AzOperationalInsightsLinuxSyslogCollection": "Disable-AzureRmOperationalInsightsLinuxSyslogCollection",
     "New-AzOperationalInsightsWindowsEventDataSource": "New-AzureRmOperationalInsightsWindowsEventDataSource",
     "Get-AzOperationalInsightsSavedSearch": "Get-AzureRmOperationalInsightsSavedSearch",

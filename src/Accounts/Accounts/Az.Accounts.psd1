@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.2.0'
+ModuleVersion = '1.2.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -141,9 +141,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add interactive and username/password authentication for Windows PowerShell 5.1 only
-* Update incorrect online help URLs
-* Add warning message in PS Core for Uninstall-AzureRm'
+        ReleaseNotes = '* Release with correct version of Authentication'
 
         # Prerelease string of this module
         # Prerelease = ''
