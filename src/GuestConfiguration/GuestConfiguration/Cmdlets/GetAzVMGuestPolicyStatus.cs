@@ -20,14 +20,14 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
     using Microsoft.Azure.Commands.GuestConfiguration.Common;
     using Microsoft.Azure.Commands.GuestConfiguration.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.Azure.Management.GuestConfiguration.Models;
+    using Microsoft.Azure.Commands.GuestConfiguration.Helpers;
 
     /// <summary>
     /// Gets Vm Guest Policy reports (GuestConfiguration policy reports)
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "VMGuestPolicyStatus", DefaultParameterSetName = ParameterSetNames.VmNameScope)]
-    [OutputType(typeof(GuestConfigurationAssignmentReport))]
-    [OutputType(typeof(GuestConfigurationAssignmentReport[]))]
+    [OutputType(typeof(PolicyStatusDetailed))]
+    [OutputType(typeof(PolicyStatusDetailed[]))]
     public class GetAzVMGuestPolicyStatus : GuestConfigurationCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.VmNameScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
@@ -51,25 +51,24 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
         [ValidateNotNullOrEmpty]
         public string InitiativeId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ReportIdScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.ReportId)]
+        [Parameter(ParameterSetName = ParameterSetNames.IdScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.Id)]
         [ValidateNotNullOrEmpty]
-        public string ReportId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            IEnumerable<GuestConfigurationPolicyAssignmentReport> gcPolicyAssignmentReports = null;
-
+            IEnumerable<PolicyStatusDetailed> gcPolicyAssignmentReports = null;
             switch (ParameterSetName)
             {
+                // Process results for cmdlet
                 case ParameterSetNames.InitiativeNameScope:
                     // get all gcrp assignments first
                     var gcrpAssignments = GetAllGCRPAssignments(ResourceGroupName, VMName);
 
-                    // Process results for cmdlet
-                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeName(ResourceGroupName, VMName, InitiativeName, false, gcrpAssignments);
+                    gcPolicyAssignmentReports = GetPolicyStatusesDetailedByInitiativeName(ResourceGroupName, VMName, InitiativeName, gcrpAssignments);
                     if(gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
                     {
                         WriteObject(gcPolicyAssignmentReports, true);
@@ -80,8 +79,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
                     // get all gcrp assignments first
                     gcrpAssignments = GetAllGCRPAssignments(ResourceGroupName, VMName);
 
-                    // Process results for cmdlet
-                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeId(ResourceGroupName, VMName, InitiativeId, false, gcrpAssignments);
+                    gcPolicyAssignmentReports = GetPolicyStatusesDetailedByInitiativeId(ResourceGroupName, VMName, InitiativeId, false, gcrpAssignments);
 
                     if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
                     {
@@ -89,8 +87,8 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
                     }                   
                     break;
 
-                case ParameterSetNames.ReportIdScope:
-                    var policyReport = GetGuestConfigurationAssignmentReportById(ReportId);
+                case ParameterSetNames.IdScope:
+                    var policyReport = GetPolicyStatusDetailedByReportId(Id);
                     if (policyReport != null)
                     {
                         WriteObject(policyReport);
@@ -98,7 +96,10 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
                     break;
 
                 case ParameterSetNames.VmNameScope:
-                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReports(ResourceGroupName, VMName, false);
+                    // get all gcrp assignments first
+                    gcrpAssignments = GetAllGCRPAssignments(ResourceGroupName, VMName);
+
+                    gcPolicyAssignmentReports = GetPolicyStatusesDetailed(ResourceGroupName, VMName, gcrpAssignments, false);
                     if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
                     {
                         WriteObject(gcPolicyAssignmentReports, true);

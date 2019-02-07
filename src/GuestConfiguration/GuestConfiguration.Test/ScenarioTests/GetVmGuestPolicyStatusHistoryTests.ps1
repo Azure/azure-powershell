@@ -19,7 +19,7 @@ Get guest configuration policy status history by Vm name scope
 function Get-AzVMGuestPolicyStatusHistory-VmNameScope
 {
 	$rgName = "vivga"
-	$vmName = "vivga0"
+	$vmName = "Viv1809SDDC"
 
     $historicalStatuses = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName $rgName -VMName $vmName
 	Assert-NotNull $historicalStatuses
@@ -33,7 +33,7 @@ Get guest configuration policy status history by Initiative id scope
 function Get-AzVMGuestPolicyStatusHistory-InitiativeIdScope
 {
 	$rgName = "vivga"
-	$vmName = "vivga0"
+	$vmName = "Viv1809SDDC"
 	$initiativeId = "/providers/Microsoft.Authorization/policySetDefinitions/25ef9b72-4af2-4501-acd1-fc814e73dde1"
 
     $historicalStatuses = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName $rgName -VMName $vmName -InitiativeId $initiativeId
@@ -48,7 +48,7 @@ Get guest configuration policy status history by Initiative name scope
 function Get-AzVMGuestPolicyStatusHistory-InitiativeNameScope
 {
 	$rgName = "vivga"
-	$vmName = "vivga0"
+	$vmName = "Viv1809SDDC"
 	$initiativeName = "25ef9b72-4af2-4501-acd1-fc814e73dde1"
 
     $historicalStatuses = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName
@@ -63,7 +63,7 @@ Get guest configuration policy by vmName scope, using ShowOnlyChange switch
 function Get-AzVMGuestPolicyStatusHistory-ShowOnlyChangeSwitch-VmNameScope
 {
 	$rgName = "vivga"
-	$vmName = "vivga0"
+	$vmName = "Viv1809SDDC"
 
     $historicalStatuses = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName $rgName -VMName $vmName -ShowOnlyChange
 	Assert-NotNull $historicalStatuses
