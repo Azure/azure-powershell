@@ -13,13 +13,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         protected override void MarkAuditStateAsDisabled()
         {
-            AuditState = AuditState.Disabled;
+            AuditState = AuditStateType.Disabled;
             WorkspaceResourceId = null;
         }
 
         protected override void MarkAuditStateAsEnabled()
         {
-            AuditState = AuditState.Enabled;
+            AuditState = AuditStateType.Enabled;
             DiagnosticSettingsResource settings = DiagnosticsEnablingAuditCategory.FirstOrDefault(
                 s => !string.IsNullOrEmpty(s.WorkspaceId));
             WorkspaceResourceId = settings.WorkspaceId;
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         protected override void VerifySettingsBeforePersistChanges()
         {
-            if (AuditState == AuditState.Enabled &&
+            if (AuditState == AuditStateType.Enabled &&
                 string.IsNullOrEmpty(WorkspaceResourceId))
             {
                 throw DefinitionsCommon.WorkspaceResourceIdParameterException;

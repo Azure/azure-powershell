@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 {
-    public enum AuditState { Enabled, Disabled };
+    public enum AuditStateType { Enabled, Disabled };
 
     public enum AuditActionGroups
     {
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         public string ServerName { get; set; }
 
-        public AuditState AuditState { get; set; }
+        public AuditStateType AuditState { get; set; }
 
         public AuditActionGroups[] AuditActionGroup { get; set; }
 
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         internal virtual void PersistChanges(SqlAuditAdapter adapter)
         {
             VerifySettingsBeforePersistChanges();
-            IsGlobalAuditEnabled = AuditState == AuditState.Enabled ||
+            IsGlobalAuditEnabled = AuditState == AuditStateType.Enabled ||
                 (IsGlobalAuditEnabled && IsAzureMonitorTargetEnabled == true);
             if (SetAuditingPolicy(adapter) == false)
             {
@@ -106,12 +106,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         protected virtual void MarkAuditStateAsDisabled()
         {
-            AuditState = AuditState.Disabled;
+            AuditState = AuditStateType.Disabled;
         }
 
         protected virtual void MarkAuditStateAsEnabled()
         {
-            AuditState = AuditState.Enabled;
+            AuditState = AuditStateType.Enabled;
         }
 
         protected virtual bool IsAuditStateDisabled =>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         protected virtual void VerifySettingsBeforePersistChanges()
         {
-            if (AuditState == AuditState.Enabled && string.IsNullOrEmpty(StorageAccountName))
+            if (AuditState == AuditStateType.Enabled && string.IsNullOrEmpty(StorageAccountName))
             {
                 throw new PSArgumentException("Storage acount name is not provided",
                     DefinitionsCommon.StorageAccountNameParameterName);
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         private void ChangeWhenDiagnosticsEnablingAuditCategoryDoNotExist(SqlAuditAdapter adapter)
         {
-            if (AuditState == AuditState.Enabled)
+            if (AuditState == AuditStateType.Enabled)
             {
                 EnableWhenDiagnosticsEnablingAuditCategoryDoNotExist(adapter);
             }
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
             try
             {
-                if (AuditState == AuditState.Enabled)
+                if (AuditState == AuditStateType.Enabled)
                 {
                     EnableWhenDiagnosticsEnablingAuditCategoryDoNotExist(adapter, settings);
                 }
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
             string oldEventHubAuthorizationRuleId = settings.EventHubAuthorizationRuleId;
             string oldWorkspaceId = settings.WorkspaceId;
 
-            if (AuditState == AuditState.Enabled)
+            if (AuditState == AuditStateType.Enabled)
             {
                 EnableWhenOnlyAuditCategoryIsEnabled(adapter, settings, oldEventHubName, oldEventHubAuthorizationRuleId, oldWorkspaceId);
             }
