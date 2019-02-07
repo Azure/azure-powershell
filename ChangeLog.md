@@ -1,3 +1,13 @@
+## 1.2.1 - January 2019
+#### Az.Accounts
+* Release with correct version of Authentication
+
+#### Az.AnalysisServices
+* Release with updated Authentication dependency
+
+#### Az.RecoveryServices
+* Release with updated Authentication dependency
+
 ## 1.2.0 - January 2019
 #### Az.Accounts
 * Add interactive and username/password authentication for Windows PowerShell 5.1 only

@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
     public class AuthenticationFactory : IAuthenticationFactory
     {
+        public const string AppServiceManagedIdentityFlag = "AppServiceManagedIdentityFlag";
+
         public const string CommonAdTenant = "Common",
             DefaultMSILoginUri = "http://169.254.169.254/metadata/identity/oauth2/token",
             DefaultBackupMSILoginUri = "http://localhost:50342/oauth2/token";
@@ -453,6 +455,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             if (string.IsNullOrWhiteSpace(tenant))
             {
                 tenant = environment.AdTenant ?? "Common";
+            }
+
+            if (account.IsPropertySet(AuthenticationFactory.AppServiceManagedIdentityFlag))
+            {
+                return new ManagedServiceAppServiceAccessToken(account, environment, tenant);
             }
 
             return new ManagedServiceAccessToken(account, environment, GetResourceId(resourceId, environment), tenant);
