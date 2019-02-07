@@ -55,12 +55,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Constructs a database adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current context</param>
         public AzureSqlDatabaseAdapter(IAzureContext context)
         {
             Context = context;
-            _subscription = context.Subscription;
+            _subscription = context?.Subscription;
             Communicator = new AzureSqlDatabaseCommunicator(Context);
             ElasticPoolCommunicator = new AzureSqlElasticPoolCommunicator(Context);
         }

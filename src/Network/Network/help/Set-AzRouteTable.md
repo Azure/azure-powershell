@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzRouteTable
 
 ## SYNOPSIS
-Sets the goal state for a route table.
+Updates a route table.
 
 ## SYNTAX
 
@@ -19,11 +19,11 @@ Set-AzRouteTable -RouteTable <PSRouteTable> [-AsJob] [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-The **Set-AzRouteTable** cmdlet sets the goal state for an Azure route table.
+The **Set-AzRouteTable** cmdlet updates a route table.
 
 ## EXAMPLES
 
-### Example 1: Add a route and then set the goal state of the route table
+### Example 1: Update a route table by adding route configuration to it
 ```
 PS C:\>Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Add-AzRouteConfig -Name "Route07" -AddressPrefix 10.2.0.0/16 -NextHopType "VnetLocal" | Set-AzRouteTable
 Name              : RouteTable01
@@ -72,6 +72,26 @@ This command gets the route table named RouteTable01 by using Get-AzRouteTable c
 The command passes that table to the Add-AzRouteConfig cmdlet by using the pipeline operator.
 **Add-AzRouteConfig** adds the route named Route07, and then passes the result to the current cmdlet, which updates the table to reflect your changes.
 
+### Example 2: Modify route table
+
+```
+PS C:\> $rt = Get-AzRouteTable -ResourceGroupName "rgName" -Name "rtName"
+PS C:\> $rt.DisableBgpRoutePropagation
+False
+PS C:\> $rt.DisableBgpRoutePropagation = $true
+PS C:\> Set-AzRouteTable -RouteTable $rt
+PS C:\> $rt = Get-AzRouteTable -ResourceGroupName "rgName" -Name "rtName"
+PS C:\> $rt.DisableBgpRoutePropagation
+True
+```
+
+The first command gets the route table named rtName and stores it in the $rt variable.
+The second command displays the value of DisableBgpRoutePropagation.
+The third command updates value of DisableBgpRoutePropagation.
+The fourth command updates route table on the server.
+The fifth command gets updated route table and stores it in the $rt variable.
+The sixth command displays the value of DisableBgpRoutePropagation.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -105,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -RouteTable
-Specifies a route table object that represents the goal state to which this cmdlet sets the route table.
+Specifies a route table object representing the state to which the route table should be set.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSRouteTable

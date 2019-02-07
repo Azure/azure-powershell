@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
@@ -18,7 +18,11 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+
+## Version 1.1.0
 * Update incorrect online help URLs
+* Add ResourceId parameter to Get-AzNetworkInterface
+* Improved error handling for Get-AzVpnClientRevokedCertificate, Get-AzVpnClientRootCertificate
 
 ## Version 1.0.0
 * General availability of `Az.Network` module
