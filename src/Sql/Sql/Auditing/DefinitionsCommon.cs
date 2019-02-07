@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
         internal const string StorageAccountNameParameterName = "StorageAccountName";
         internal const string ServerAuditingCmdletsSuffix = "SqlServerAuditing";
         internal const string DatabaseAuditingCmdletsSuffix = "SqlDatabaseAuditing";
-        internal const string BlobStorageParameterSetName = "BlobStorageSet";
+        internal const string BlobStorageParameterSetName = "DefaultParameterSet";
         internal const string BlobStorageByParentResourceParameterSetName = "BlobStorageByParentResourceSet";
         internal const string EventHubParameterSetName = "EventHubSet";
         internal const string EventHubByParentResourceParameterSetName = "EventHubByParentResourceSet";
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
         internal const string LogAnalyticsByParentResourceParameterSetName = "LogAnalyticsByParentResourceSet";
         internal const string StorageAccountSubscriptionIdParameterSetName = "StorageAccountSubscriptionIdSet";
         internal const string StorageAccountSubscriptionIdByParentResourceParameterSetName = "StorageAccountSubscriptionIdByParentResourceSet";
-        internal const string DiagnosticSettingsNamePrefix = "SQLSecurityAuditEvents_";
+        internal const string DiagnosticSettingsNamePrefix = "SQLSecurityAuditEvents_3d229c42-c7e7-4c97-9a99-ec0d0d8b86c1_";
         internal const string SQLSecurityAuditCategory = "SQLSecurityAuditEvents";
         internal const string BlobStorageParameterName = "BlobStorage";
         internal static readonly string AuditLogsDestinationWasNotSpecifiedWarning = $"Audit logs destination was not specified, {BlobStorageParameterName} is the default destination.";

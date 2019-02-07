@@ -6,7 +6,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 {
-    public abstract class DatabaseDiagnosticAuditingSettingsModel : DatabaseAuditingSettingsModel
+    public abstract class DatabaseDiagnosticAuditingSettingsModel : DatabaseBlobAuditingSettingsModel
     {
         [Hidden]
         public override string StorageAccountName { get; set; }

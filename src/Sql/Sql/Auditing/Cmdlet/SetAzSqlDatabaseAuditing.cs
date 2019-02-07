@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     [Cmdlet(
         VerbsCommon.Set,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.DatabaseAuditingCmdletsSuffix,
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true),
+        OutputType(typeof(DatabaseBlobAuditingSettingsModel))]
     public class SetAzSqlDatabaseAuditing : SqlDatabaseAuditingSettingsCmdletBase
     {
         [Parameter(
@@ -327,7 +328,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override DatabaseAuditingSettingsModel ApplyUserInputToModel(DatabaseAuditingSettingsModel model)
+        protected override DatabaseBlobAuditingSettingsModel ApplyUserInputToModel(DatabaseBlobAuditingSettingsModel model)
         {
             base.ApplyUserInputToModel(model);
 
@@ -414,7 +415,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override DatabaseAuditingSettingsModel PersistChanges(DatabaseAuditingSettingsModel model)
+        protected override DatabaseBlobAuditingSettingsModel PersistChanges(DatabaseBlobAuditingSettingsModel model)
         {
             model.PersistChanges(ModelAdapter);
 

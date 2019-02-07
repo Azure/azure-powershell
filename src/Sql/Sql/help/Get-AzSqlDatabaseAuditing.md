@@ -13,40 +13,40 @@ Gets the auditing settings of an Azure SQL database.
 
 ## SYNTAX
 
-### BlobStorageSet
+### DefaultParameterSet
 ```
 Get-AzSqlDatabaseAuditing [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
- [-BlobStorage] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-BlobStorage] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EventHubSet
 ```
 Get-AzSqlDatabaseAuditing [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
- [-EventHub] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EventHub] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### LogAnalyticsSet
 ```
 Get-AzSqlDatabaseAuditing [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
- [-LogAnalytics] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-LogAnalytics] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobStorageByParentResourceSet
 ```
 Get-AzSqlDatabaseAuditing -InputObject <AzureSqlDatabaseModel> [-BlobStorage]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EventHubByParentResourceSet
 ```
 Get-AzSqlDatabaseAuditing -InputObject <AzureSqlDatabaseModel> [-EventHub]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### LogAnalyticsByParentResourceSet
 ```
 Get-AzSqlDatabaseAuditing -InputObject <AzureSqlDatabaseModel> [-LogAnalytics]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -159,7 +159,7 @@ Specifies that audit logs destination is blob storage
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: BlobStorageSet, BlobStorageByParentResourceSet
+Parameter Sets: DefaultParameterSet, BlobStorageByParentResourceSet
 Aliases:
 
 Required: False
@@ -174,7 +174,7 @@ SQL Database name.
 
 ```yaml
 Type: System.String
-Parameter Sets: BlobStorageSet, EventHubSet, LogAnalyticsSet
+Parameter Sets: DefaultParameterSet, EventHubSet, LogAnalyticsSet
 Aliases:
 
 Required: True
@@ -249,7 +249,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: BlobStorageSet, EventHubSet, LogAnalyticsSet
+Parameter Sets: DefaultParameterSet, EventHubSet, LogAnalyticsSet
 Aliases:
 
 Required: True
@@ -264,13 +264,43 @@ SQL server name.
 
 ```yaml
 Type: System.String
-Parameter Sets: BlobStorageSet, EventHubSet, LogAnalyticsSet
+Parameter Sets: DefaultParameterSet, EventHubSet, LogAnalyticsSet
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -283,7 +313,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Auditing.Model.DatabaseAuditingSettingsModel
+### Microsoft.Azure.Commands.Sql.Auditing.Model.DatabaseBlobAuditingSettingsModel
 
 ## NOTES
 

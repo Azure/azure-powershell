@@ -87,7 +87,10 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     Helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
                     Helper.RMNetworkModule,
                     "AzureRM.Storage.ps1",
-                    "AzureRM.Resources.ps1");
+                    "AzureRM.Resources.ps1",
+                    "Az.OperationalInsights.ps1",
+                    "Az.EventHub.ps1",
+                    "Az.Monitor.ps1");
                 Helper.RunPowerShellTest(scripts);
             }
         }

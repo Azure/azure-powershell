@@ -102,11 +102,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         }
 
         public IList<DiagnosticSettingsResource> GetDiagnosticsEnablingAuditCategory(
+            out string nextDiagnosticSettingsName,
             string resourceGroupName, string serverName, string databaseName = "master")
         {
             string resourceUri = GetResourceUri(resourceGroupName, serverName, databaseName);
             IList<DiagnosticSettingsResource> settings =
                 GetMonitorManagementClient().DiagnosticSettings.ListAsync(resourceUri).Result.Value;
+            nextDiagnosticSettingsName = GetNextDiagnosticSettingsName(settings);
             return settings?.Where(s => IsAuditCategoryEnabled(s))?.OrderBy(s => s.Name)?.ToList();
         }
 
@@ -119,7 +121,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         }
 
         public DiagnosticSettingsResource CreateDiagnosticSettings(
-            string eventHubName, string eventHubAuthorizationRuleId, string workspaceId,
+            string settingsName, string eventHubName, string eventHubAuthorizationRuleId, string workspaceId,
             string resourceGroupName, string serverName, string databaseName = "master")
         {
             string resoureUri = GetResourceUri(resourceGroupName, serverName, databaseName);
@@ -165,7 +167,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
 
             return client.DiagnosticSettings.CreateOrUpdateAsync(
-                resoureUri, settings, GetDiagnosticSettingsName()).Result;
+                resoureUri, settings, settingsName).Result;
         }
 
         public DiagnosticSettingsResource UpdateDiagnosticSettings(DiagnosticSettingsResource settings,
@@ -175,9 +177,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 GetResourceUri(resourceGroupName, serverName, databaseName), settings, settings.Name).Result;
         }
 
-        private static string GetDiagnosticSettingsName()
+        private static string GetNextDiagnosticSettingsName(IList<DiagnosticSettingsResource> settings)
         {
-            return $"{DefinitionsCommon.DiagnosticSettingsNamePrefix}{Guid.NewGuid()}";
+            int nextIndex = (settings?.Where(
+                s => s.Name.StartsWith(DefinitionsCommon.DiagnosticSettingsNamePrefix)).Select(
+                s => s.Name).Select(
+                name => name.Replace(DefinitionsCommon.DiagnosticSettingsNamePrefix, string.Empty)).Select(
+                number => Int32.TryParse(number, out Int32 index) ? index : 0).DefaultIfEmpty().Max() ?? 0) + 1;
+            return $"{DefinitionsCommon.DiagnosticSettingsNamePrefix}{nextIndex}";
         }
 
         internal static bool IsAuditCategoryEnabled(DiagnosticSettingsResource settings)

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
     public enum StorageKeyKind { Primary, Secondary };
 
-    public class ServerAuditingSettingsModel
+    public class ServerBlobAuditingSettingsModel
     {
         public string ResourceGroupName { get; set; }
 
@@ -69,6 +69,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         [Hidden]
         internal IList<DiagnosticSettingsResource> DiagnosticsEnablingAuditCategory { get; set; }
+
+        [Hidden]
+        internal string NextDiagnosticSettingsName { get; set; }
 
         public virtual string StorageAccountName { get; set; }
 
