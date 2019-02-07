@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.AnalysisServices.Dataplane;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests;
 using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
         public void SynchronizeAzureASInstance_SingleDB_Succeeds()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
-            
+
             // Setup
             // Clear the the current profile
             AsAzureClientSession.Instance.Profile.Environments.Clear();
@@ -607,7 +607,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             Assert.Throws<SynchronizationFailedException>(() => syncCmdlet.ExecuteCmdlet());
             syncCmdlet.InvokeEndProcessing();
         }
-        
+
         private void DoLogin(AddAzureASAccountCommand addCmdlet)
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();

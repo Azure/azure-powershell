@@ -19,7 +19,7 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
@@ -39,24 +39,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 
         public string GetTokenFromTokenCache(TokenCache tokenCache, string uniqueId, string environmentName)
         {
-            TokenCacheItem tokenCacheItem = null;
-            if (string.IsNullOrEmpty(uniqueId))
-            {
-                var tokenCacheItems = tokenCache.ReadItems().Where(tokenItem => (string.IsNullOrEmpty(environmentName) || tokenItem.Resource.Contains(environmentName)));
-                tokenCacheItem = tokenCacheItems.FirstOrDefault();
-            }
-            else
-            {
-                var tokenCacheItems = tokenCache.ReadItems().Where(tokenItem => tokenItem.UniqueId.Equals(uniqueId) && (string.IsNullOrEmpty(environmentName) || tokenItem.Resource.Contains(environmentName)));
-                tokenCacheItem = tokenCacheItems.FirstOrDefault();
-            }
-
-            if (tokenCacheItem == null || string.IsNullOrEmpty(tokenCacheItem.AccessToken))
-            {
-                throw new PSInvalidOperationException(string.Format(Resources.NotLoggedInMessage, ""));
-            }
-
-            return tokenCacheItem.AccessToken;
+            return null;
         }
     }
 }

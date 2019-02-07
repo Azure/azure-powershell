@@ -15,7 +15,7 @@
 using System;
 using System.Runtime.Serialization;
 using System.Security;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 // TODO: Remove IfDef
@@ -61,10 +61,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                     : asAzureContext.Account.Tenant
             };
 
-            var authenticationContext = new AuthenticationContext(
-                authUriBuilder.ToString(),
-                AsAzureClientSession.TokenCache);
-
             AuthenticationResult result = null;
             var accountType = string.IsNullOrEmpty(asAzureContext.Account.Type) ? AsAzureAccount.AccountType.User : asAzureContext.Account.Type;
 
@@ -74,12 +70,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                 {
 // TODO: Remove IfDef
 #if NETSTANDARD
-                    result = authenticationContext.AcquireTokenAsync(
-                        resourceUri,
-                        clientId,
-                        resourceRedirectUri,
-                        new PlatformParameters(),
-                        new UserIdentifier(asAzureContext.Account.Id, UserIdentifierType.OptionalDisplayableId)).Result;
+
 #else
                     result = authenticationContext.AcquireToken(
                         resourceUri,
@@ -93,11 +84,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                 {
 // TODO: Remove IfDef
 #if NETSTANDARD
-                    result = authenticationContext.AcquireTokenAsync(
-                        resourceUri,
-                        clientId,
-                        resourceRedirectUri,
-                        new PlatformParameters()).Result;
+
 #else
                     result = authenticationContext.AcquireToken(
                         resourceUri,
@@ -107,9 +94,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 #endif
                 }
 
-                asAzureContext.Account.Id = result.UserInfo.DisplayableId;
+                asAzureContext.Account.Id = result.Account.Username;
                 asAzureContext.Account.Tenant = result.TenantId;
-                asAzureContext.Account.UniqueId = result.UserInfo.UniqueId;
+                asAzureContext.Account.UniqueId = result.UniqueId;
             }
             else
             {
@@ -117,21 +104,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                 {
 // TODO: Remove IfDef
 #if NETSTANDARD
-                    //https://stackoverflow.com/a/39393039/294804
-                    //https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/482
-                    //https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile/blob/5d5499d09c918ae837810d457822474df97600e9/DirSearcherClient/Program.cs#L206-L210
-                    // Note: More robust implementation in UserTokenProvider.Netcore.cs in DoAcquireToken
-                    var codeResult = authenticationContext.AcquireDeviceCodeAsync(resourceUri, clientId).Result;
-                    promptAction(codeResult?.Message);
-                    result = authenticationContext.AcquireTokenByDeviceCodeAsync(codeResult).Result;
+
 #else
                     UserCredential userCredential = new UserCredential(asAzureContext.Account.Id, password);
                     result = authenticationContext.AcquireToken(resourceUri, clientId, userCredential);
 #endif
 
-                    asAzureContext.Account.Id = result.UserInfo.DisplayableId;
+                    asAzureContext.Account.Id = result.Account.Username;
                     asAzureContext.Account.Tenant = result.TenantId;
-                    asAzureContext.Account.UniqueId = result.UserInfo.UniqueId;
+                    asAzureContext.Account.UniqueId = result.UniqueId;
                 }
                 else if (accountType == AsAzureAccount.AccountType.ServicePrincipal)
                 {
@@ -139,8 +120,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                     {
 // TODO: Remove IfDef
 #if NETSTANDARD
-                        var credential = new ClientCredential(asAzureContext.Account.Id, ConversionUtilities.SecureStringToString(password));
-                        result = authenticationContext.AcquireTokenAsync(resourceUri, credential).Result;
+
 #else
                         ClientCredential credential = new ClientCredential(asAzureContext.Account.Id, password);
                         result = authenticationContext.AcquireToken(resourceUri, credential);
@@ -156,7 +136,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                         }
 // TODO: Remove IfDef
 #if NETSTANDARD
-                        result = authenticationContext.AcquireTokenAsync(resourceUri, new ClientAssertionCertificate(asAzureContext.Account.Id, certificate)).Result;
+
 #else
                         result = authenticationContext.AcquireToken(resourceUri, new ClientAssertionCertificate(asAzureContext.Account.Id, certificate));
 #endif
