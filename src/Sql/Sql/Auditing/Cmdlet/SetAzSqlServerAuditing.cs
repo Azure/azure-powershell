@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         protected override ServerBlobAuditingSettingsModel ApplyUserInputToModel(ServerBlobAuditingSettingsModel model)
         {
             base.ApplyUserInputToModel(model);
-            model.AuditState = State == SecurityConstants.Enabled ? AuditState.Enabled : AuditState.Disabled;
+            model.AuditState = State == SecurityConstants.Enabled ? AuditStateType.Enabled : AuditStateType.Disabled;
 
             if (AuditActionGroup != null && AuditActionGroup.Length != 0)
             {

@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 policy.RetentionDays = (int)model.RetentionInDays;
             }
 
-            if (model.AuditState == AuditState.Enabled && !string.IsNullOrEmpty(model.StorageAccountName))
+            if (model.AuditState == AuditStateType.Enabled && !string.IsNullOrEmpty(model.StorageAccountName))
             {
                 string storageEndpointSuffix = Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
                 policy.StorageEndpoint = ExtractStorageAccountName(model, storageEndpointSuffix);

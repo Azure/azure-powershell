@@ -13,7 +13,7 @@ Gets the auditing settings of an Azure SQL server.
 
 ## SYNTAX
 
-### DefaultParameterSet
+### DefaultParameterSet (Default)
 ```
 Get-AzSqlServerAuditing [-ResourceGroupName] <String> [-ServerName] <String> [-BlobStorage]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -147,7 +147,7 @@ Specifies that audit logs destination is blob storage
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DefaultParameterSet, BlobStorageByParentResourceSet
+Parameter Sets: DefaultParameterSet (Default), BlobStorageByParentResourceSet
 Aliases:
 
 Required: False
@@ -222,7 +222,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: DefaultParameterSet, EventHubSet, LogAnalyticsSet
+Parameter Sets: DefaultParameterSet (Default), EventHubSet, LogAnalyticsSet
 Aliases:
 
 Required: True
@@ -237,7 +237,7 @@ SQL server name.
 
 ```yaml
 Type: System.String
-Parameter Sets: DefaultParameterSet, EventHubSet, LogAnalyticsSet
+Parameter Sets: DefaultParameterSet (Default), EventHubSet, LogAnalyticsSet
 Aliases:
 
 Required: True
