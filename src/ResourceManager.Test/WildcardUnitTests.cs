@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
             Assert.False(cmdlet.ShouldGetByName(null, "testname*"));
             Assert.False(cmdlet.ShouldGetByName("*", "testname*"));
             Assert.False(cmdlet.ShouldGetByName("testrg*", "testname*"));
-            Assert.False(cmdlet.ShouldGetByName("*testrg*", "testname*"));
+            Assert.False(cmdlet.ShouldGetByName("*te?strg*", "testname*"));
             Assert.False(cmdlet.ShouldGetByName("test*rg", "testname*"));
             Assert.False(cmdlet.ShouldGetByName("testrg", "testname*"));
 
@@ -113,15 +113,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
 
             Assert.True(cmdlet.ShouldListBySubscription(null, "*"));
             Assert.True(cmdlet.ShouldListBySubscription("*", "*"));
-            Assert.True(cmdlet.ShouldListBySubscription("testrg+", "*"));
+            Assert.True(cmdlet.ShouldListBySubscription("testrg*", "*"));
             Assert.True(cmdlet.ShouldListBySubscription("*testrg*", "*"));
-            Assert.True(cmdlet.ShouldListBySubscription("test\\rg", "*"));
+            Assert.True(cmdlet.ShouldListBySubscription("tes*trg", "*"));
             Assert.False(cmdlet.ShouldListBySubscription("testrg", "*"));
 
             Assert.True(cmdlet.ShouldListBySubscription(null, "testname*"));
             Assert.True(cmdlet.ShouldListBySubscription("*", "testname*"));
             Assert.True(cmdlet.ShouldListBySubscription("t?estrg*", "testname*"));
-            Assert.True(cmdlet.ShouldListBySubscription("^tes|trg*", "testname*"));
+            Assert.True(cmdlet.ShouldListBySubscription("tes[t]rg*", "testname*"));
             Assert.True(cmdlet.ShouldListBySubscription("test[r]g", "testname*"));
             Assert.False(cmdlet.ShouldListBySubscription("testrg", "testname*"));
 
@@ -151,17 +151,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
             Assert.Empty(cmdlet.TopLevelWildcardFilter("resourcegroup1", "test11", ReturnedResources));
             Assert.Empty(cmdlet.TopLevelWildcardFilter("resourcegroup1", "1", ReturnedResources));
 
-            Assert.Equal(3, cmdlet.TopLevelWildcardFilter("r*p", "test1", ReturnedResources).Count);
-            Assert.Empty(cmdlet.TopLevelWildcardFilter("r*p$", "test1", ReturnedResources));
-            Assert.Single(cmdlet.TopLevelWildcardFilter("^r.*1$", "test1", ReturnedResources));
+            Assert.Equal(3, cmdlet.TopLevelWildcardFilter("r*g*", "test1", ReturnedResources).Count);
+            Assert.Empty(cmdlet.TopLevelWildcardFilter("r*p", "test1", ReturnedResources));
+            Assert.Single(cmdlet.TopLevelWildcardFilter("r*1", "test1", ReturnedResources));
 
-            Assert.Equal(6, cmdlet.TopLevelWildcardFilter("resourcegroup1", ".*", ReturnedResources).Count);
-            Assert.Equal(2, cmdlet.TopLevelWildcardFilter("resourcegroup1", ".*1$", ReturnedResources).Count);
+            Assert.Equal(6, cmdlet.TopLevelWildcardFilter("resourcegroup1", "*", ReturnedResources).Count);
+            Assert.Equal(2, cmdlet.TopLevelWildcardFilter("resourcegroup1", "*1", ReturnedResources).Count);
 
-            Assert.Equal(11, cmdlet.TopLevelWildcardFilter("r*p", ".*", ReturnedResources).Count);
-            Assert.Equal(6, cmdlet.TopLevelWildcardFilter("r*1", ".*", ReturnedResources).Count);
-            Assert.Equal(2, cmdlet.TopLevelWildcardFilter("r*1", "1$", ReturnedResources).Count);
-            Assert.Equal(6, cmdlet.TopLevelWildcardFilter("r*1", "1*", ReturnedResources).Count);
+            Assert.Equal(11, cmdlet.TopLevelWildcardFilter("r*p*", "*", ReturnedResources).Count);
+            Assert.Equal(6, cmdlet.TopLevelWildcardFilter("r*1", "*", ReturnedResources).Count);
+            Assert.Equal(2, cmdlet.TopLevelWildcardFilter("r*1", "*1", ReturnedResources).Count);
+            Assert.Equal(6, cmdlet.TopLevelWildcardFilter("r*1", "t*", ReturnedResources).Count);
         }
 
         [Fact]
@@ -173,9 +173,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Test
             Assert.Empty(cmdlet.SubResourceWildcardFilter("test11", ReturnedResources));
             Assert.Empty(cmdlet.SubResourceWildcardFilter("1", ReturnedResources));
 
-            Assert.Equal(11, cmdlet.SubResourceWildcardFilter("t*t", ReturnedResources).Count);
-            Assert.Single(cmdlet.SubResourceWildcardFilter("t*t$", ReturnedResources));
-            Assert.Equal(4, cmdlet.SubResourceWildcardFilter("^t.*1$", ReturnedResources).Count);
+            Assert.Equal(11, cmdlet.SubResourceWildcardFilter("t*t*", ReturnedResources).Count);
+            Assert.Single(cmdlet.SubResourceWildcardFilter("t*t", ReturnedResources));
+            Assert.Equal(4, cmdlet.SubResourceWildcardFilter("t*1", ReturnedResources).Count);
         }
 
         public List<TestResource> ReturnedResources = new List<TestResource>()

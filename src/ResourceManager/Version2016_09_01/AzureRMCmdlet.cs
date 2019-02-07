@@ -31,7 +31,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Security.Authentication;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -405,9 +404,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     {
                         resourceGroupMatch.Add(resource);
                     }
-                    else if (ContainsSpecialCharacters(ResourceGroupName))
+                    else if (WildcardPattern.ContainsWildcardCharacters(ResourceGroupName))
                     {
-                        if (Regex.IsMatch(parsedId.ResourceGroupName, ResourceGroupName, RegexOptions.IgnoreCase))
+                        WildcardPattern regex = new WildcardPattern(ResourceGroupName, WildcardOptions.IgnoreCase);
+                        if (regex.IsMatch(parsedId.ResourceGroupName))
                         {
                             resourceGroupMatch.Add(resource);
                         }
@@ -437,9 +437,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     {
                         output.Add(resource);
                     }
-                    else if (ContainsSpecialCharacters(Name))
+                    else if (WildcardPattern.ContainsWildcardCharacters(Name))
                     {
-                        if (Regex.IsMatch(parsedId.ResourceName, Name, RegexOptions.IgnoreCase))
+                        WildcardPattern regex = new WildcardPattern(Name, WildcardOptions.IgnoreCase);
+                        if (regex.IsMatch(parsedId.ResourceName))
                         {
                             output.Add(resource);
                         }
@@ -474,9 +475,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     {
                         output.Add(resource);
                     }
-                    else if (ContainsSpecialCharacters(Name))
+                    else if (WildcardPattern.ContainsWildcardCharacters(Name))
                     {
-                        if (Regex.IsMatch(parsedId.ResourceName, Name, RegexOptions.IgnoreCase))
+                        WildcardPattern regex = new WildcardPattern(Name, WildcardOptions.IgnoreCase);
+                        if (regex.IsMatch(parsedId.ResourceName))
                         {
                             output.Add(resource);
                         }
@@ -498,20 +500,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return output;
         }
 
-        private const string SpecialCharacters = "[\\^$|?*+";
-
-        public static bool ContainsSpecialCharacters(string text)
-        {
-            return text.IndexOfAny(SpecialCharacters.ToCharArray()) >= 0;
-        }
-
         public bool ShouldListBySubscription(string resourceGroupName, string name)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 return true;
             }
-            else if (ContainsSpecialCharacters(resourceGroupName))
+            else if (WildcardPattern.ContainsWildcardCharacters(resourceGroupName))
             {
                 return true;
             }
@@ -521,9 +516,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public bool ShouldListByResourceGroup(string resourceGroupName, string name)
         {
-            if (!string.IsNullOrEmpty(resourceGroupName) && !ContainsSpecialCharacters(resourceGroupName))
+            if (!string.IsNullOrEmpty(resourceGroupName) && !WildcardPattern.ContainsWildcardCharacters(resourceGroupName))
             {
-                if (string.IsNullOrEmpty(name) || ContainsSpecialCharacters(name))
+                if (string.IsNullOrEmpty(name) || WildcardPattern.ContainsWildcardCharacters(name))
                 {
                     return true;
                 }
@@ -534,9 +529,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public bool ShouldGetByName(string resourceGroupName, string name)
         {
-            if (!string.IsNullOrEmpty(resourceGroupName) && !ContainsSpecialCharacters(resourceGroupName))
+            if (!string.IsNullOrEmpty(resourceGroupName) && !WildcardPattern.ContainsWildcardCharacters(resourceGroupName))
             {
-                if (!string.IsNullOrEmpty(name) && !ContainsSpecialCharacters(name))
+                if (!string.IsNullOrEmpty(name) && !WildcardPattern.ContainsWildcardCharacters(name))
                 {
                     return true;
                 }
