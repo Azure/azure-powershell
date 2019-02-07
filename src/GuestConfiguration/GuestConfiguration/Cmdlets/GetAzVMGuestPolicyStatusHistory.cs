@@ -20,14 +20,13 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
     using Microsoft.Azure.Commands.GuestConfiguration.Common;
     using Microsoft.Azure.Commands.GuestConfiguration.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.Azure.Management.GuestConfiguration.Models;
 
     /// <summary>
     /// Gets Vm Guest Policy reports (GuestConfiguration policy reports)
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "VMGuestPolicyStatusHistory", DefaultParameterSetName = ParameterSetNames.VmNameScope)]
-    [OutputType(typeof(GuestConfigurationAssignmentReport))]
-    [OutputType(typeof(GuestConfigurationAssignmentReport[]))]
+    [OutputType(typeof(PolicyStatus))]
+    [OutputType(typeof(PolicyStatus[]))]
     public class GetAzVMGuestPolicyStatusHistory : GuestConfigurationCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.VmNameScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
@@ -61,40 +60,36 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            IEnumerable<GuestConfigurationPolicyAssignmentReport> gcPolicyAssignmentReports = null;
+            IEnumerable<PolicyStatus> policyStatuses = null;
+
+            // get all gcrp assignments first
+            var gcrpAssignments = GetAllGCRPAssignments(ResourceGroupName, VMName);
 
             switch (ParameterSetName)
             {
-                case ParameterSetNames.InitiativeNameScope:
-                    // get all gcrp assignments first
-                    var gcrpAssignments = GetAllGCRPAssignments(ResourceGroupName, VMName);
-
-                    // Process results for cmdlet
-                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeName(ResourceGroupName, VMName, InitiativeName, true, gcrpAssignments, ShowOnlyChange.IsPresent);
-                    if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
+                // Process results for cmdlet
+                case ParameterSetNames.InitiativeNameScope:                 
+                    policyStatuses = GetPolicyStatusHistory(ResourceGroupName, VMName, gcrpAssignments, InitiativeName, ShowOnlyChange.IsPresent);
+                    if (policyStatuses == null || policyStatuses.Count() > 0)
                     {
-                        WriteObject(gcPolicyAssignmentReports, true);
+                        WriteObject(policyStatuses, true);
                     }
                     break;
 
                 case ParameterSetNames.InitiativeIdScope:
-                    // get all gcrp assignments first
-                    gcrpAssignments = GetAllGCRPAssignments(ResourceGroupName, VMName);
+                    policyStatuses = GetPolicyStatusHistoryByInitiativeId(ResourceGroupName, VMName, InitiativeId, gcrpAssignments, ShowOnlyChange.IsPresent);
 
-                    // Process results for cmdlet
-                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeId(ResourceGroupName, VMName, InitiativeId, true, gcrpAssignments, ShowOnlyChange.IsPresent);
-
-                    if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
+                    if (policyStatuses == null || policyStatuses.Count() > 0)
                     {
-                        WriteObject(gcPolicyAssignmentReports, true);
+                        WriteObject(policyStatuses, true);
                     }
                     break;
 
                 case ParameterSetNames.VmNameScope:
-                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReports(ResourceGroupName, VMName, true, ShowOnlyChange.IsPresent);
-                    if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
+                    policyStatuses = GetPolicyStatusHistory(ResourceGroupName, VMName, gcrpAssignments, null, ShowOnlyChange.IsPresent);
+                    if (policyStatuses == null || policyStatuses.Count() > 0)
                     {
-                        WriteObject(gcPolicyAssignmentReports, true);
+                        WriteObject(policyStatuses, true);
                     }
                     break;
             }

@@ -19,7 +19,7 @@ Get guest configuration policy report by Vm name scope
 function Get-AzVMGuestPolicyStatus-VmNameScope
 {
 	$rgName = "vivga"
-	$vmName = "vivga0"
+	$vmName = "Viv1809SDDC"
 
     $reports = Get-AzVMGuestPolicyStatus -ResourceGroupName $rgName -VMName $vmName
 	Assert-NotNull $reports
@@ -33,7 +33,7 @@ Get guest configuration policy report by Initiative id scope
 function Get-AzVMGuestPolicyStatus-InitiativeIdScope
 {
 	$rgName = "vivga"
-	$vmName = "vivga0"
+	$vmName = "Viv1809SDDC"
 	$initiativeId = "/providers/Microsoft.Authorization/policySetDefinitions/25ef9b72-4af2-4501-acd1-fc814e73dde1"
 
     $reports = Get-AzVMGuestPolicyStatus -ResourceGroupName $rgName -VMName $vmName -InitiativeId $initiativeId
@@ -48,7 +48,7 @@ Get guest configuration policy report by Initiative name scope
 function Get-AzVMGuestPolicyStatus-InitiativeNameScope
 {
 	$rgName = "vivga"
-	$vmName = "vivga0"
+	$vmName = "Viv1809SDDC"
 	$initiativeName = "25ef9b72-4af2-4501-acd1-fc814e73dde1"
 
     $reports = Get-AzVMGuestPolicyStatus -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName
@@ -58,19 +58,19 @@ function Get-AzVMGuestPolicyStatus-InitiativeNameScope
 
 <#
 .SYNOPSIS
-Get guest configuration policy by reportId scope
+Get guest configuration policy by Id scope
 #>
-function Get-AzVMGuestPolicyStatus-ReportIdScope
+function Get-AzVMGuestPolicyStatus-IdScope
 {
 	$rgName = "vivga"
-	$vmName = "vivga0"
+	$vmName = "Viv1809SDDC"
 	$initiativeName = "25ef9b72-4af2-4501-acd1-fc814e73dde1"
 	$reports = Get-AzVMGuestPolicyStatus -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName
 	Assert-NotNull $reports
 	Assert-True { $reports.Count -gt 0 }
 
-	$reportId= $reports[0].LatestReportId;
+	$Id= $reports[0].Id;
 
-    $report = Get-AzVMGuestPolicyStatus -ReportId $reportId
+    $report = Get-AzVMGuestPolicyStatus -Id $Id
 	Assert-NotNull $report
 }

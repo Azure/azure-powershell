@@ -17,9 +17,10 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Models
     using System;
     using Microsoft.Azure.Management.GuestConfiguration.Models;
 
-    public class GuestConfigurationPolicyAssignment
+    // Contains data from Azure policy and guest configuration assignment from Guest Configuration service
+    public class PolicyData
     {
-        public GuestConfigurationPolicyAssignment(GuestConfigurationAssignment gcrpAssignment, string policyDisplayName)
+        public PolicyData(GuestConfigurationAssignment gcrpAssignment, string policyDisplayName)
         {
             this.PolicyDisplayName = policyDisplayName;
             this.ComplianceStatus = gcrpAssignment.Properties.ComplianceStatus;
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Models
             }
         }
 
-        public GuestConfigurationPolicyAssignment()
+        public PolicyData()
         {
 
         }
