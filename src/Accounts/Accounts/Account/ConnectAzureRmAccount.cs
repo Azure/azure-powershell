@@ -229,13 +229,24 @@ namespace Microsoft.Azure.Commands.Profile
                         Path = "/oauth2/token"
                     };
 
+                    var envSecret = System.Environment.GetEnvironmentVariable(MSISecretVariable);
+
                     var msiSecret = this.IsBound(nameof(ManagedServiceSecret))
                         ? ManagedServiceSecret.ConvertToString()
-                        : System.Environment.GetEnvironmentVariable(MSISecretVariable);
+                        : envSecret;
+
+                    var envUri = System.Environment.GetEnvironmentVariable(MSIEndpointVariable);
 
                     var suppliedUri = this.IsBound(nameof(ManagedServiceHostName))
                         ? builder.Uri.ToString()
-                        : System.Environment.GetEnvironmentVariable(MSIEndpointVariable);
+                        : envUri;
+
+                    if (!this.IsBound(nameof(ManagedServiceHostName)) && !string.IsNullOrWhiteSpace(envUri) 
+                        && !this.IsBound(nameof(ManagedServiceSecret)) && !string.IsNullOrWhiteSpace(envSecret))
+                    {
+                        // set flag indicating this is AppService Managed Identity ad hoc mode
+                        azureAccount.SetProperty(AuthenticationFactory.AppServiceManagedIdentityFlag, "the value not used");
+                    }
 
                     if (!string.IsNullOrWhiteSpace(msiSecret))
                     {
