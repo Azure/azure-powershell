@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAndGetIntegrationAccount()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAndGetIntegrationAccount");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccount");
         }
 
         /// <summary>
