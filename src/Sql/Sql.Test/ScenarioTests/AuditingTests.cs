@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.RunType, Category.LiveOnly)]
-        public void TestServerDiagnosticsAreCreatedOnNeed()
+        public void TestNewServerDiagnosticsAreCreatedOnNeed()
         {
             RunPowerShellTest("Test-NewServerDiagnosticsAreCreatedOnNeed");
         }
