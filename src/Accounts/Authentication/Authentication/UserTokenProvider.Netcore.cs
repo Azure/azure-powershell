@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        private PublicClientApplication GetPublicClientApplication(AdalConfiguration config)
+        private PublicClientApplication GetPublicClient(AdalConfiguration config)
         {
             return new PublicClientApplication(config.ClientId, config.AdEndpoint + config.AdDomain, config.TokenCache);
         }
@@ -188,13 +188,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             bool renew = false)
         {
             AuthenticationResult result;
-            var context = GetPublicClientApplication(config);
+            var publicClient = GetPublicClient(config);
 
             TracingAdapter.Information(
                 Resources.UPNAcquireTokenContextTrace,
-                context.Authority,
+                publicClient.Authority,
                 string.Empty,
-                context.ValidateAuthority);
+                publicClient.ValidateAuthority);
             TracingAdapter.Information(
                 Resources.UPNAcquireTokenConfigTrace,
                 config.AdDomain,
@@ -204,14 +204,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             var scopes = new string[] { config.ResourceClientUri + "/user_impersonation" };
             if (promptAction == null || renew)
             {
-                var accounts = context.GetAccountsAsync()
+                var accounts = publicClient.GetAccountsAsync()
                     .ConfigureAwait(false).GetAwaiter().GetResult();
-                result = context.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == userId))
+                result = publicClient.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == userId))
                     .ConfigureAwait(false).GetAwaiter().GetResult();
             }
             else if (string.IsNullOrEmpty(userId) || password == null)
             {
-                result = context.AcquireTokenWithDeviceCodeAsync(scopes, deviceCodeResult =>
+                result = publicClient.AcquireTokenWithDeviceCodeAsync(scopes, deviceCodeResult =>
                 {
                     Console.WriteLine(deviceCodeResult?.Message);
                     return Task.FromResult(0);
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
             else
             {
-                result = context.AcquireTokenByUsernamePasswordAsync(scopes, userId, password).
+                result = publicClient.AcquireTokenByUsernamePasswordAsync(scopes, userId, password).
                     ConfigureAwait(false).GetAwaiter().GetResult();
             }
 

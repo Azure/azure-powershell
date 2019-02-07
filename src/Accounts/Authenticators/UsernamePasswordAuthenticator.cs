@@ -29,11 +29,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         public override Task<IAccessToken> Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
         {
             var scopes = new string[] { environment.ActiveDirectoryServiceEndpointResourceId + "/user_impersonation" };
-            var context = new PublicClientApplication(
+            var publicClient = new PublicClientApplication(
                 AuthenticationHelpers.PowerShellClientId,
                 AuthenticationHelpers.GetAuthority(environment, tenant),
                 tokenCache.GetUserCache() as TokenCache);
-            var response = context.AcquireTokenByUsernamePasswordAsync(scopes, account.Id, password);
+            var response = publicClient.AcquireTokenByUsernamePasswordAsync(scopes, account.Id, password);
             return AuthenticationResultToken.GetAccessTokenAsync(response);
         }
 

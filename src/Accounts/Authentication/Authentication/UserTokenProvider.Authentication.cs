@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// logins in the login dialog.
         /// </summary>
         private string _tokenAudience;
-        private IPublicClientApplication _authenticationContext;
+        private IPublicClientApplication _publicClient;
         private string _clientId;
         private string _username;
 
@@ -47,15 +47,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// Create a token provider which can provide user tokens in the given context.  The user must have previously authenticated in the given context.
         /// Tokens are retrieved from the token cache.
         /// </summary>
-        /// <param name="context">The active directory authentication context to use for retrieving tokens.</param>
+        /// <param name="publicClient">The MSAL public client to use for retrieving tokens.</param>
         /// <param name="clientId">The active directory client Id to match when retrieving tokens.</param>
         /// <param name="tokenAudience">The audience to match when retrieving tokens.</param>
         /// <param name="userId">The user id to match when retrieving tokens.</param>
-        public UserTokenAuthenticationProvider(IPublicClientApplication context, string clientId, Uri tokenAudience, string username)
+        public UserTokenAuthenticationProvider(IPublicClientApplication publicClient, string clientId, Uri tokenAudience, string username)
         {
-            if (context == null)
+            if (publicClient == null)
             {
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException("publicClient");
             }
             if (string.IsNullOrWhiteSpace(clientId))
             {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 throw new ArgumentNullException("username");
             }
 
-            this._authenticationContext = context;
+            this._publicClient = publicClient;
             this._clientId = clientId;
             this._tokenAudience = tokenAudience.OriginalString;
             this._username = username;
@@ -89,16 +89,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public static async Task<ServiceClientCredentials> CreateCredentialsFromCache(string clientId, string domain, string username,
             ActiveDirectoryServiceSettings serviceSettings, TokenCache cache)
         {
-            var authenticationContext = GetAuthenticationContext(clientId, domain, serviceSettings, cache);
+            var publicClient = GetPublicClient(clientId, domain, serviceSettings, cache);
             var scopes = new string[] { serviceSettings.TokenAudience + ".default" };
-            var accounts = authenticationContext.GetAccountsAsync()
+            var accounts = publicClient.GetAccountsAsync()
                             .ConfigureAwait(false).GetAwaiter().GetResult();
             try
             {
-                var authResult = await authenticationContext.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == username)).ConfigureAwait(false);
+                var authResult = await publicClient.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == username)).ConfigureAwait(false);
                 return
                     new TokenCredentials(
-                        new UserTokenAuthenticationProvider(authenticationContext, clientId, serviceSettings.TokenAudience, username),
+                        new UserTokenAuthenticationProvider(publicClient, clientId, serviceSettings.TokenAudience, username),
                         authResult.TenantId,
                         authResult.Account == null ? null : authResult.Account.Username);
             }
@@ -108,23 +108,22 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        private static IPublicClientApplication GetAuthenticationContext(string clientId, string domain, ActiveDirectoryServiceSettings serviceSettings, TokenCache cache)
+        private static IPublicClientApplication GetPublicClient(string clientId, string domain, ActiveDirectoryServiceSettings serviceSettings, TokenCache cache)
         {
-            var context = (cache == null
-                ? new PublicClientApplication(clientId, serviceSettings.AuthenticationEndpoint + domain)
-                : new PublicClientApplication(clientId, serviceSettings.AuthenticationEndpoint + domain, cache));
-            return context;
+            return (cache == null
+                        ? new PublicClientApplication(clientId, serviceSettings.AuthenticationEndpoint + domain)
+                        : new PublicClientApplication(clientId, serviceSettings.AuthenticationEndpoint + domain, cache));
         }
 
         public virtual async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
             var scopes = new string[] { _tokenAudience + ".default" };
-            var accounts = _authenticationContext.GetAccountsAsync()
+            var accounts = _publicClient.GetAccountsAsync()
                              .ConfigureAwait(false).GetAwaiter().GetResult();
             try
             {
-                AuthenticationResult result = await _authenticationContext.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == _username)).ConfigureAwait(false);
+                AuthenticationResult result = await _publicClient.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == _username)).ConfigureAwait(false);
                 return new AuthenticationHeaderValue("Bearer", result.AccessToken);
             }
             catch (MsalException authenticationException)

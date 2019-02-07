@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Profile
         public string Environment { get; set; }
 
         [Parameter(ParameterSetName = UserParameterSet,
-                    Mandatory = false, HelpMessage = "Optional credential", Position = 0)]
+                    Mandatory = false, HelpMessage = "Optional credential")]
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true, HelpMessage = "Service Principal Secret")]
         [Parameter(ParameterSetName = UserWithCredentialParameterSet,
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.Profile
                         ? builder.Uri.ToString()
                         : envUri;
 
-                    if (!this.IsBound(nameof(ManagedServiceHostName)) && !string.IsNullOrWhiteSpace(envUri) 
+                    if (!this.IsBound(nameof(ManagedServiceHostName)) && !string.IsNullOrWhiteSpace(envUri)
                         && !this.IsBound(nameof(ManagedServiceSecret)) && !string.IsNullOrWhiteSpace(envSecret))
                     {
                         // set flag indicating this is AppService Managed Identity ad hoc mode

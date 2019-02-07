@@ -521,8 +521,37 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         private void RemoveFromTokenCache(TokenCache cache, IAzureAccount account)
         {
-             // Use app.RemoveAsync() to clear cache for user
+            var publicClient = new PublicClientApplication(string.Empty, string.Empty, cache);
+            var tokenAccounts = publicClient.GetAccountsAsync()
+                            .ConfigureAwait(false).GetAwaiter().GetResult()
+                            .Where(a => MatchCacheItem(account, a));
+            foreach (var tokenAccount in tokenAccounts)
+            {
+                publicClient.RemoveAsync(tokenAccount)
+                                .ConfigureAwait(false).GetAwaiter().GetResult();
+            }
         }
 
+        private bool MatchCacheItem(IAzureAccount account, IAccount tokenAccount)
+        {
+            bool result = false;
+            if (account != null && !string.IsNullOrWhiteSpace(account.Type) && tokenAccount != null)
+            {
+                switch (account.Type)
+                {
+                    case AzureAccount.AccountType.ServicePrincipal:
+                        result = string.Equals(account.Id, tokenAccount.Username, StringComparison.OrdinalIgnoreCase);
+                        break;
+                    case AzureAccount.AccountType.User:
+                        result = string.Equals(account.Id, tokenAccount.Username, StringComparison.OrdinalIgnoreCase)
+                            || (account.TenantMap != null && account.TenantMap.Any(
+                                (m) => string.Equals(m.Key, tokenAccount.HomeAccountId.TenantId, StringComparison.OrdinalIgnoreCase)
+                                       && string.Equals(m.Value, tokenAccount.HomeAccountId.Identifier, StringComparison.OrdinalIgnoreCase)));
+                        break;
+                }
+            }
+
+            return result;
+        }
     }
 }

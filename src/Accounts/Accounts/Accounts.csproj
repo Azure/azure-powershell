@@ -18,10 +18,8 @@
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Permissions.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Private.ServiceModel.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Net.Http.WinHttpHandler.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetFx\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetFx\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
-    <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetCore\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
-    <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetCore\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.Identity.Client\NetFx\Microsoft.Identity.Client.dll" />
+    <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.Identity.Client\NetCore\Microsoft.Identity.Client.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.DataMovement.dll" />
   </ItemGroup>

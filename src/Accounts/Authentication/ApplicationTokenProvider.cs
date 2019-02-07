@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public class ApplicationTokenProvider : Microsoft.Rest.ITokenProvider
     {
         #region fields
-        private IPublicClientApplication _authenticationContext;
+        private IPublicClientApplication _publicClient;
         private string _tokenAudience;
         private IApplicationAuthenticationProvider _authentications;
         private string _clientId;
@@ -78,10 +78,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             IApplicationAuthenticationProvider authenticationProvider, ActiveDirectoryServiceSettings settings, TokenCache cache)
         {
             var audience = settings.TokenAudience.OriginalString;
-            var context = GetAuthenticationContext(clientId, domain, settings, cache);
+            var publicClient = GetPublicClient(clientId, domain, settings, cache);
             var authResult = await authenticationProvider.AuthenticateAsync(clientId, audience);
             return new TokenCredentials(
-                new ApplicationTokenProvider(context, audience, clientId, authenticationProvider, authResult),
+                new ApplicationTokenProvider(publicClient, audience, clientId, authenticationProvider, authResult),
                 authResult.TenantId,
                 authResult.Account == null ? null : authResult.Account.Username);
         }
@@ -91,12 +91,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             get { return DateTime.UtcNow + ExpirationThreshold >= this._expiration; }
         }
 
-        private void Initialize(IPublicClientApplication context, string tokenAudience, string clientId,
+        private void Initialize(IPublicClientApplication publicClient, string tokenAudience, string clientId,
             IApplicationAuthenticationProvider authenticationStore, AuthenticationResult authenticationResult, DateTimeOffset tokenExpiration)
         {
-            if (context == null)
+            if (publicClient == null)
             {
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException("publicClient");
             }
 
             if (string.IsNullOrWhiteSpace(tokenAudience))
@@ -120,13 +120,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             this._authentications = authenticationStore;
             this._clientId = clientId;
-            this._authenticationContext = context;
+            this._publicClient = publicClient;
             this._accessToken = authenticationResult.AccessToken;
             this._tokenAudience = tokenAudience;
             this._expiration = tokenExpiration;
         }
 
-        private static IPublicClientApplication GetAuthenticationContext(string clientId, string domain, ActiveDirectoryServiceSettings serviceSettings, TokenCache cache)
+        private static IPublicClientApplication GetPublicClient(string clientId, string domain, ActiveDirectoryServiceSettings serviceSettings, TokenCache cache)
         {
             return (cache == null)
                     ? new PublicClientApplication(clientId, serviceSettings.AuthenticationEndpoint + domain)

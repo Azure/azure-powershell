@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 WriteWarningMessage(string.Format(ProfileMessages.UnableToAqcuireToken, commonTenant));
                 if (account.IsPropertySet(AzureAccount.Property.Tenants))
@@ -700,7 +700,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
                 if (!result.Any())
                 {
-                    throw;
+                    throw ex;
                 }
 
             }

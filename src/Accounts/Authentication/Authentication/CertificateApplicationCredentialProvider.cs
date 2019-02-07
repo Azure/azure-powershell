@@ -53,7 +53,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// </summary>
         /// <param name="clientId">The active directory client id for the application.</param>
         /// <param name="audience">The intended audience for authentication</param>
-        /// <param name="context">The AD AuthenticationContext to use</param>
         /// <returns></returns>
         public async Task<AuthenticationResult> AuthenticateAsync(string clientId, string audience)
         {
@@ -65,8 +64,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             var certificate = await task.ConfigureAwait(false);
 
             var clientCredential = new ClientCredential(new ClientAssertionCertificate(certificate));
-            var context = new ConfidentialClientApplication(clientId, _settings.AuthenticationEndpoint + _tenantId, audience, clientCredential, new TokenCache(), new TokenCache());
-            return await context.AcquireTokenForClientAsync(new string[] { audience + "/.default" });
+            var confidentialClient = new ConfidentialClientApplication(clientId, _settings.AuthenticationEndpoint + _tenantId, audience, clientCredential, new TokenCache(), new TokenCache());
+            return await confidentialClient.AcquireTokenForClientAsync(new string[] { audience + "/.default" });
         }
     }
 }

@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             var credential = new ClientCredential(appId, appKey);
             return context.AcquireToken(config.ResourceClientUri, credential);
 #else
-            var context = GetConfidentialClientApplication(config, new ClientCredential(ConversionUtilities.SecureStringToString(appKey)), appId);
+            var confidentialClient = GetConfidentialClientApplication(config, new ClientCredential(ConversionUtilities.SecureStringToString(appKey)), appId);
             var scopes = new string[] { config.ResourceClientUri + "/.default" };
-            return context.AcquireTokenForClientAsync(scopes).ConfigureAwait(false).GetAwaiter().GetResult();
+            return confidentialClient.AcquireTokenForClientAsync(scopes).ConfigureAwait(false).GetAwaiter().GetResult();
 #endif
         }
 
@@ -126,9 +126,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #if !NETSTANDARD
             return context.AcquireToken(config.ResourceClientUri, new ClientAssertionCertificate(appId, certificate));
 #else
-            var context = GetConfidentialClientApplication(config, new ClientCredential(new ClientAssertionCertificate(certificate)), appId);
+            var confidentialClient = GetConfidentialClientApplication(config, new ClientCredential(new ClientAssertionCertificate(certificate)), appId);
             var scopes = new string[] { config.ResourceClientUri + "/.default" };
-            return context.AcquireTokenForClientAsync(scopes).ConfigureAwait(false).GetAwaiter().GetResult();
+            return confidentialClient.AcquireTokenForClientAsync(scopes).ConfigureAwait(false).GetAwaiter().GetResult();
 #endif
         }
 
