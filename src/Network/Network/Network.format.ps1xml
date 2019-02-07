@@ -3041,6 +3041,63 @@
       </CustomControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableServerVariablesResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableServerVariablesResult</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>
+                  [Microsoft.Azure.Commands.Network.ApplicationGatewayPowerShellFormatting]::Format($_, 0)
+                </ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableRequestHeadersResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableRequestHeadersResult</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>
+                  [Microsoft.Azure.Commands.Network.ApplicationGatewayPowerShellFormatting]::Format($_, 0)
+                </ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableResponseHeadersResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableResponseHeadersResult</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>
+                  [Microsoft.Azure.Commands.Network.ApplicationGatewayPowerShellFormatting]::Format($_, 0)
+                </ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallRuleSet</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallRuleSet</TypeName>

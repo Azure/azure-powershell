@@ -1,0 +1,72 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/applicationGatewayAvailableRequestHeaders?api-version=2018-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVSZXF1ZXN0SGVhZGVycz9hcGktdmVyc2lvbj0yMDE4LTEyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4cfeee97-c351-489d-b87f-02fff3ed26e8"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f72d82fc-4525-4098-a8bd-859daf5e3b4d"
+        ],
+        "x-ms-correlation-request-id": [
+          "08140f38-b311-4bc4-b27d-9dd98eb03508"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20190207T093245Z:08140f38-b311-4bc4-b27d-9dd98eb03508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 07 Feb 2019 09:32:45 GMT"
+        ],
+        "Content-Length": [
+          "791"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "[\r\n  \"A-IM\",\r\n  \"Accept\",\r\n  \"Accept-Charset\",\r\n  \"Accept-Encoding\",\r\n  \"Accept-Language\",\r\n  \"Accept-Datetime\",\r\n  \"Access-Control-Request-Method\",\r\n  \"Access-Control-Request-Headers\",\r\n  \"Authorization\",\r\n  \"Cache-Control\",\r\n  \"Connection\",\r\n  \"Content-Length\",\r\n  \"Content-MD5\",\r\n  \"Content-Type\",\r\n  \"Cookie\",\r\n  \"Date\",\r\n  \"Expect\",\r\n  \"Forwarded\",\r\n  \"From\",\r\n  \"Host\",\r\n  \"If-Match\",\r\n  \"If-Modified-Since\",\r\n  \"If-None-Match\",\r\n  \"If-Range\",\r\n  \"If-Unmodified-Since\",\r\n  \"Max-Forwards\",\r\n  \"Origin\",\r\n  \"Pragma\",\r\n  \"Proxy-Authorization\",\r\n  \"Range\",\r\n  \"Referer\",\r\n  \"TE\",\r\n  \"User-Agent\",\r\n  \"Upgrade\",\r\n  \"Via\",\r\n  \"Warning\",\r\n  \"X-Requested-With\",\r\n  \"DNT\",\r\n  \"X-Forwarded-For\",\r\n  \"X-Forwarded-Host\",\r\n  \"X-Forwarded-Proto\",\r\n  \"Front-End-Https\",\r\n  \"X-Http-Method-Override\"\r\n]",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "f7e1a56e-347b-4103-87c7-e775a3e11ac5"
+  }
+}

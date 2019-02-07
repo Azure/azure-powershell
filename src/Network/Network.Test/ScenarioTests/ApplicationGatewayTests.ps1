@@ -1528,3 +1528,30 @@ function Test-ApplicationGatewayCRUDSubItems2
 		Clean-ResourceGroup $rgname
 	}
 }
+
+function Test-AvailableServerVariables
+{
+	$result = Get-AzApplicationGatewayAvailableServerVariables
+
+	Write-Host ($result)
+	Assert-NotNull $result
+	Assert-True { $result.Count -gt 0 }
+}
+
+function Test-AvailableRequestHeaders
+{
+	$result = Get-AzApplicationGatewayAvailableRequestHeaders
+
+	Write-Host ($result)
+	Assert-NotNull $result
+	Assert-True { $result.Count -gt 0 }
+}
+
+function Test-AvailableResponseHeaders
+{
+	$result = Get-AzApplicationGatewayAvailableResponseHeaders
+
+	Write-Host ($result)
+	Assert-NotNull $result
+	Assert-True { $result.Count -gt 0 }
+}
