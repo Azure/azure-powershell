@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
                     break;
                 case ContextModificationScope.CurrentUser:
-                    ConfirmAction(Force.IsPresent, Resources.ClearContextUserContinueMessage,
-                        Resources.ClearContextUserProcessMessage, Resources.ClearContextUserTarget,
+                    ConfirmAction(Force.IsPresent, Resources.ClearContextUserContinueMessage, 
+                        Resources.ClearContextUserProcessMessage, Resources.ClearContextUserTarget, 
                         () => ModifyContext(ClearContext),
-                        () =>
+                        () => 
                         {
                             var session = AzureSession.Instance;
                             var contextFilePath = Path.Combine(session.ARMProfileDirectory, session.ARMProfileFile);
