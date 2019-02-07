@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Update to latest version of ClientRuntime
+* Update common packages to include new wildcard support functions
 
 ## Version 1.2.0
 * Add interactive and username/password authentication for Windows PowerShell 5.1 only
