@@ -32,5 +32,10 @@ namespace Microsoft.Azure.Commands.Sql.Common
         public const string ComputeGenerationGen5 = "Gen5";
         public const string CollationSqlLatin1 = "SQL_Latin1_General_CP1_CI_AS";
         public const string CollationLatin1 = "Latin1_General_100_CS_AS_SC";
+        public const string PublicDataEndpointEnabledTrue = "$true";
+        public const string PublicDataEndpointEnabledFalse = "$false";
+        public const string ProxyOverrideDefault = "Default";
+        public const string ProxyOverrideProxy = "Proxy";
+        public const string ProxyOverrideRedirect = "Redirect";
     }
 }

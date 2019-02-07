@@ -107,7 +107,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 SubnetId = model.SubnetId,
                 VCores = model.VCores,
                 Identity = model.Identity,
-                Collation = model.Collation
+                Collation = model.Collation,
+                PublicDataEndpointEnabled = model.PublicDataEndpointEnabled,
+                ProxyOverride = model.ProxyOverride
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -129,7 +131,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 LicenseType = model.LicenseType,
                 StorageSizeInGB = model.StorageSizeInGB,
                 SubnetId = model.SubnetId,
-                VCores = model.VCores
+                VCores = model.VCores,
+                PublicDataEndpointEnabled = model.PublicDataEndpointEnabled,
+                ProxyOverride = model.ProxyOverride
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -174,6 +178,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.VCores = resp.VCores;
             managedInstance.StorageSizeInGB = resp.StorageSizeInGB;
             managedInstance.Collation = resp.Collation;
+            managedInstance.PublicDataEndpointEnabled = resp.PublicDataEndpointEnabled;
+            managedInstance.ProxyOverride = resp.ProxyOverride;
 
             Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             sku.Name = resp.Sku.Name;
