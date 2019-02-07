@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: F6D9EA59-BA61-4117-8771-9B190424BFF8
@@ -126,6 +126,7 @@ Specifies a SKU name for the integration account.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Free, Basic, Standard
 
 Required: False
 Position: Named

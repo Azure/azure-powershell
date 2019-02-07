@@ -46,5 +46,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public const string IsAcknowledgementSessionIdSuffix = "-ACK";
 
         public const string NoAgreementTypeParameterWarningMessage = "By default, you are using the X12 agreement type. Please provide a value for AgreementType if you would like to specify the agreement type. Possible values are X12 and Edifact.";
+
+        public const string DeprecatedContentTypeMessage = "ContentType is being deprecated without being replaced. It will be inferred from MapType";
     }
 }

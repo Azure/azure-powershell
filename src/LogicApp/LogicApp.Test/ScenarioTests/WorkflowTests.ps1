@@ -40,17 +40,17 @@ function Test-CreateAndRemoveLogicApp
 	$parameterFilePath = Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowParameter.json"
     $definition = [IO.File]::ReadAllText((Join-Path $TestOutputRoot "Resources" "TestSimpleWorkflowDefinition.json"))
 
-	$workflowName = getAssetname	
+	$workflowName = getAssetname
 	$workflow = New-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Definition $definition -ParameterFilePath $parameterFilePath -Location $location
 
-	Assert-NotNull $workflow	
+	Assert-NotNull $workflow
 	Assert-NotNull $workflow.Definition
 	Assert-NotNull $workflow.Parameters
 	Assert-AreEqual $workflowName $workflow.Name 
 	Remove-AzLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force
 
 	#Case3 : Create using Piped input
-	$workflowName = getAssetname	
+	$workflowName = getAssetname
 	$workflow = $resourceGroup | New-AzLogicApp -Name $workflowName -Location $location -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
 
 	Assert-NotNull $workflow
