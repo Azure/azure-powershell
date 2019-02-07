@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.2.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.2.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.OperationalInsights.dll', 
@@ -85,6 +85,7 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
                'New-AzOperationalInsightsWindowsPerformanceCounterDataSource', 
                'New-AzOperationalInsightsLinuxPerformanceObjectDataSource', 
                'New-AzOperationalInsightsLinuxSyslogDataSource', 
+               'New-AzOperationalInsightsApplicationInsightsDataSource', 
                'Disable-AzOperationalInsightsLinuxSyslogCollection', 
                'New-AzOperationalInsightsWindowsEventDataSource', 
                'Get-AzOperationalInsightsSavedSearch', 
