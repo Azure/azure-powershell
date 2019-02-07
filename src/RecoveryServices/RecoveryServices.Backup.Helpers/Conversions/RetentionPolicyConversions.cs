@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
@@ -74,7 +75,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         public static SimpleRetentionPolicy GetPSSimpleRetentionPolicy(
-           ServiceClientModel.SimpleRetentionPolicy hydraRetPolicy, string timeZone, string provider)
+           ServiceClientModel.SimpleRetentionPolicy hydraRetPolicy, string timeZone)
         {
             if (hydraRetPolicy == null)
             {
@@ -91,24 +92,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     (int)hydraRetPolicy.RetentionDuration.Count : default(int);
             }
 
-            if (string.Compare(provider, "AzureSql") == 0)
-            {
-                int weeklyLimit = PolicyConstants.MaxAllowedRetentionDurationCountWeeklySql;
-                int monthlyLimit = PolicyConstants.MaxAllowedRetentionDurationCountMonthlySql;
-                int yearlyLimit = PolicyConstants.MaxAllowedRetentionDurationCountYearlySql;
-
-                if ((simplePolicy.RetentionDurationType == RetentionDurationType.Days) ||
-                    (simplePolicy.RetentionDurationType == RetentionDurationType.Weeks &&
-                        (simplePolicy.RetentionCount <= 0 || simplePolicy.RetentionCount > weeklyLimit)) ||
-                    (simplePolicy.RetentionDurationType == RetentionDurationType.Months &&
-                        (simplePolicy.RetentionCount <= 0 || simplePolicy.RetentionCount > monthlyLimit)) ||
-                    (simplePolicy.RetentionDurationType == RetentionDurationType.Years &&
-                        (simplePolicy.RetentionCount <= 0 || simplePolicy.RetentionCount > yearlyLimit)))
-                {
-                    throw new ArgumentException(Resources.AllowedSqlRetentionRange);
-                }
-            }
-
+            simplePolicy.Validate();
             return simplePolicy;
         }
 

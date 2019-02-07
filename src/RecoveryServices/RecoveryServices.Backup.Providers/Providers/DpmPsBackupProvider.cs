@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
@@ -51,11 +50,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         public RestAzureNS.AzureOperationResponse DisableProtection()
-        {
-            throw new NotImplementedException();
-        }
-
-        public RestAzureNS.AzureOperationResponse DisableProtectionWithDeleteData()
         {
             throw new NotImplementedException();
         }
@@ -117,7 +111,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Lists backup management servers registered with the recovery services vault
         /// </summary>
         /// <returns></returns>
-        public List<Models.BackupEngineBase> ListBackupManagementServers()
+        public List<BackupEngineBase> ListBackupManagementServers()
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
@@ -131,7 +125,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
 
-            List<Models.BackupEngineBase> backupEngineModels = ConversionHelpers.GetBackupEngineModelList(listResponse);
+            List<BackupEngineBase> backupEngineModels = ConversionHelpers.GetBackupEngineModelList(listResponse);
 
             return backupEngineModels;
         }
@@ -157,16 +151,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         public List<ItemBase> ListProtectedItems()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RegisterContainer()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<PointInTimeBase> GetLogChains()
         {
             throw new NotImplementedException();
         }

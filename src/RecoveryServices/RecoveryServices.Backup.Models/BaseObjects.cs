@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
@@ -107,15 +107,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                         protectionContainer.Properties.BackupManagementType),
                    protectionContainer.Properties.BackupManagementType)
         {
-            if (string.Compare(protectionContainer.Properties.BackupManagementType,
-                ServiceClientModel.BackupManagementType.AzureWorkload) == 0)
-            {
-                Name = protectionContainer.Name;
-            }
-            else
-            {
-                Name = IdUtils.GetNameFromUri(protectionContainer.Name);
-            }
+            Name = IdUtils.GetNameFromUri(protectionContainer.Name);
         }
     }
 
@@ -169,37 +161,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// Represents Azure Backup Item Context Class
-    /// </summary>
-    public class ProtectableItemContext : ContainerContext
-    {
-        /// <summary>
-        /// Workload Type of Item
-        /// </summary>
-        public WorkloadType WorkloadType { get; set; }
-
-        /// <summary>
-        /// Unique name of the Container
-        /// </summary>
-        public string ContainerName { get; set; }
-
-        public ProtectableItemContext()
-            : base()
-        {
-
-        }
-
-        public ProtectableItemContext(ServiceClientModel.WorkloadProtectableItem protectableItem,
-            string containerName, ContainerType containerType)
-            : base(containerType, protectableItem.BackupManagementType)
-        {
-            WorkloadType = ConversionUtils.GetPsWorkloadType(
-                protectableItem.WorkloadType.ToString());
-            ContainerName = containerName;
-        }
-    }
-
-    /// <summary>
     /// Represents Azure Backup Item Base Class
     /// </summary>
     public class ItemBase : ItemContext
@@ -237,31 +198,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// Represents Azure Backup Protectable Item Base Class
-    /// </summary>
-    public class ProtectableItemBase : ProtectableItemContext
-    {
-        /// <summary>
-        /// Name of the item
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Id of the item
-        /// </summary>
-        public string Id { get; set; }
-
-        public ProtectableItemBase(ServiceClientModel.WorkloadProtectableItemResource workloadProtectableItemResource,
-            string containerName, ContainerType containerType)
-            : base(workloadProtectableItemResource.Properties, containerName, containerType)
-        {
-            ServiceClientModel.WorkloadProtectableItem protectableItem = workloadProtectableItemResource.Properties;
-            Name = workloadProtectableItemResource.Name;
-            Id = workloadProtectableItemResource.Id;
-        }
-    }
-
-    /// <summary>
     /// Represents Azure Backup Item ExtendedInfo Base Class
     /// </summary>
     public class ItemExtendedInfoBase : ObjectBase
@@ -289,31 +225,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string Id { get; set; }
 
         public RecoveryPointBase()
-            : base()
-        {
-        }
-    }
-
-    /// <summary>
-    /// Base class for recovery point.
-    /// </summary>
-    public class PointInTimeBase
-    {
-        /// <summary>
-        /// Item Name
-        /// </summary>
-        public string ItemName { get; set; }
-
-        /// <summary>
-        /// Gets or sets start time of the time range for log recovery.
-        /// </summary>
-        public DateTime? StartTime { get; set; }
-        /// <summary>
-        /// Gets or sets end time of the time range for log recovery.
-        /// </summary>
-        public DateTime? EndTime { get; set; }
-
-        public PointInTimeBase()
             : base()
         {
         }
@@ -378,27 +289,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class SchedulePolicyBase : ObjectBase
     {
-    }
-
-    /// <summary>
-    /// Base class for azure workload policy settings.
-    /// </summary>
-    public class SettingsBase : ObjectBase
-    {
-        /// <summary>
-        /// Is compression enabled
-        /// </summary>
-        public bool? IsCompression { get; set; }
-
-        /// <summary>
-        /// Is sql compression enabled
-        /// </summary>
-        public bool? Issqlcompression { get; set; }
-
-        /// <summary>
-        /// TimeZone property
-        /// </summary>
-        public string TimeZone { get; set; }
     }
 
     /// <summary>
@@ -477,31 +367,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Status of the sub task
         /// </summary>
         public string Status { get; set; }
-    }
-
-    /// <summary>
-    /// This class contains recovery config detail.
-    /// </summary>
-    public class RecoveryConfigBase
-    {
-        /// <summary>
-        /// source resource id.
-        /// </summary>
-        public string SourceResourceId { get; set; }
-
-        /// <summary>
-        /// Original WL Restore, Alternate WL restore, Alternate WL restore to diff item.
-        /// </summary>
-        public string RestoreRequestType { get; set; }
-
-        /// <summary>
-        /// Recovery point for full/differential backup.
-        /// </summary>
-        public RecoveryPointBase RecoveryPoint { get; set; }
-
-        /// <summary>
-        /// PointInTime for Log backup.
-        /// </summary>
-        public DateTime PointInTime { get; set; }
     }
 }
