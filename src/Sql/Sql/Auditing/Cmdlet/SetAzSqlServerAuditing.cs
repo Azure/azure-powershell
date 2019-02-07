@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     [Cmdlet(
         VerbsCommon.Set,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAuditing",
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true),
+        OutputType(typeof(ServerBlobAuditingSettingsModel))]
     public class SetAzSqlServerAuditing : SqlServerAuditingSettingsCmdletBase
     {
         [Parameter(
@@ -292,7 +293,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override ServerAuditingSettingsModel ApplyUserInputToModel(ServerAuditingSettingsModel model)
+        protected override ServerBlobAuditingSettingsModel ApplyUserInputToModel(ServerBlobAuditingSettingsModel model)
         {
             base.ApplyUserInputToModel(model);
             model.AuditState = State == SecurityConstants.Enabled ? AuditState.Enabled : AuditState.Disabled;
@@ -364,7 +365,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             return model;
         }
 
-        protected override ServerAuditingSettingsModel PersistChanges(ServerAuditingSettingsModel model)
+        protected override ServerBlobAuditingSettingsModel PersistChanges(ServerBlobAuditingSettingsModel model)
         {
             model.PersistChanges(ModelAdapter);
             return null;

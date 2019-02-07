@@ -19,15 +19,16 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
     [Cmdlet(
         VerbsCommon.Get,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ServerAuditingCmdletsSuffix),
-        OutputType(typeof(ServerAuditingSettingsModel))]
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ServerAuditingCmdletsSuffix,
+        SupportsShouldProcess = true),
+        OutputType(typeof(ServerBlobAuditingSettingsModel))]
     public class GetAzSqlServerAuditing : SqlServerAuditingSettingsCmdletBase
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override ServerAuditingSettingsModel PersistChanges(ServerAuditingSettingsModel model)
+        protected override ServerBlobAuditingSettingsModel PersistChanges(ServerBlobAuditingSettingsModel model)
         {
             return null;
         }

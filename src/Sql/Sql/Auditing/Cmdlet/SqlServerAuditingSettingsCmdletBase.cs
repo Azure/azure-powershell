@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
-    public abstract class SqlServerAuditingSettingsCmdletBase : AzureSqlCmdletBase<ServerAuditingSettingsModel, SqlAuditAdapter>
+    public abstract class SqlServerAuditingSettingsCmdletBase : AzureSqlCmdletBase<ServerBlobAuditingSettingsModel, SqlAuditAdapter>
     {
         [Parameter(
             ParameterSetName = DefinitionsCommon.BlobStorageParameterSetName,
@@ -122,9 +122,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             HelpMessage = AuditingHelpMessages.LogAnalyticsHelpMessage)]
         public SwitchParameter LogAnalytics { get; set; }
 
-        protected override ServerAuditingSettingsModel GetEntity()
+        protected override ServerBlobAuditingSettingsModel GetEntity()
         {
-            ServerAuditingSettingsModel model = null;
+            ServerBlobAuditingSettingsModel model = null;
             if (ParameterSetName == DefinitionsCommon.BlobStorageParameterSetName ||
                 ParameterSetName == DefinitionsCommon.StorageAccountSubscriptionIdParameterSetName ||
                 ParameterSetName == DefinitionsCommon.BlobStorageByParentResourceParameterSetName ||
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                     WriteWarning(DefinitionsCommon.AuditLogsDestinationWasNotSpecifiedWarning);
                 }
 
-                model = new ServerAuditingSettingsModel();
+                model = new ServerBlobAuditingSettingsModel();
             }
             else if (ParameterSetName == DefinitionsCommon.EventHubParameterSetName ||
                 ParameterSetName == DefinitionsCommon.EventHubByParentResourceParameterSetName)

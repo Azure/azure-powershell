@@ -60,30 +60,32 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
 
         internal void GetAuditingSettings(
             string resourceGroup, string serverName, string databaseName,
-            DatabaseAuditingSettingsModel model)
+            DatabaseBlobAuditingSettingsModel model)
         {
             ExtendedDatabaseBlobAuditingPolicy policy = Communicator.GetAuditingPolicy(resourceGroup, serverName, databaseName);
             ModelizeDatabaseAuditPolicy(model, policy);
             if (model is DatabaseDiagnosticAuditingSettingsModel diagnosticModel)
             {
                 diagnosticModel.DiagnosticsEnablingAuditCategory =
-                    Communicator.GetDiagnosticsEnablingAuditCategory(
+                    Communicator.GetDiagnosticsEnablingAuditCategory(out string nextDiagnosticSettingsName,
                         resourceGroup, serverName, databaseName);
+                diagnosticModel.NextDiagnosticSettingsName = nextDiagnosticSettingsName;
             }
 
             model.DetermineAuditState();
         }
 
         internal void GetAuditingSettings(
-            string resourceGroup, string serverName, ServerAuditingSettingsModel model)
+            string resourceGroup, string serverName, ServerBlobAuditingSettingsModel model)
         {
             ExtendedServerBlobAuditingPolicy policy = Communicator.GetAuditingPolicy(resourceGroup, serverName);
             ModelizeServerAuditPolicy(model, policy);
             if (model is ServerDiagnosticAuditingSettingsModel diagnosticModel)
             {
                 diagnosticModel.DiagnosticsEnablingAuditCategory =
-                    Communicator.GetDiagnosticsEnablingAuditCategory(
+                    Communicator.GetDiagnosticsEnablingAuditCategory(out string nextDiagnosticSettingsName,
                         resourceGroup, serverName);
+                diagnosticModel.NextDiagnosticSettingsName = nextDiagnosticSettingsName;
             }
 
             model.DetermineAuditState();
@@ -106,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             model.AuditActionGroup = groups.ToArray();
         }
 
-        private void ModelizeAuditActions(DatabaseAuditingSettingsModel model, IEnumerable<string> auditActionsAndGroups)
+        private void ModelizeAuditActions(DatabaseBlobAuditingSettingsModel model, IEnumerable<string> auditActionsAndGroups)
         {
             var actions = new List<string>();
             if (auditActionsAndGroups != null)
@@ -142,7 +144,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             model.StorageAccountSubscriptionId = storageAccountSubscriptionId ?? Guid.Empty;
         }
 
-        private void ModelizeServerAuditPolicy(ServerAuditingSettingsModel model, ExtendedServerBlobAuditingPolicy policy)
+        private void ModelizeServerAuditPolicy(ServerBlobAuditingSettingsModel model, ExtendedServerBlobAuditingPolicy policy)
         {
             model.IsGlobalAuditEnabled = policy.State == BlobAuditingPolicyState.Enabled;
             model.IsAzureMonitorTargetEnabled = policy.IsAzureMonitorTargetEnabled;
@@ -152,7 +154,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             ModelizeRetentionInfo(model, policy.RetentionDays);
         }
 
-        private void ModelizeDatabaseAuditPolicy(DatabaseAuditingSettingsModel model, ExtendedDatabaseBlobAuditingPolicy policy)
+        private void ModelizeDatabaseAuditPolicy(DatabaseBlobAuditingSettingsModel model, ExtendedDatabaseBlobAuditingPolicy policy)
         {
             model.IsGlobalAuditEnabled = policy.State == BlobAuditingPolicyState.Enabled;
             model.IsAzureMonitorTargetEnabled = policy.IsAzureMonitorTargetEnabled;
@@ -163,7 +165,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             ModelizeRetentionInfo(model, policy.RetentionDays);
         }
 
-        public bool SetAuditingPolicy(DatabaseAuditingSettingsModel model)
+        public bool SetAuditingPolicy(DatabaseBlobAuditingSettingsModel model)
         {
             if (!IsDatabaseInServiceTierForPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName))
             {
@@ -188,7 +190,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
         }
 
-        public bool SetAuditingPolicy(ServerAuditingSettingsModel model)
+        public bool SetAuditingPolicy(ServerBlobAuditingSettingsModel model)
         {
             if (string.IsNullOrEmpty(model.PredicateExpression))
             {
@@ -208,12 +210,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         }
 
         internal bool CreateDiagnosticSettings(string eventHubName, string eventHubAuthorizationRuleId, string workspaceId,
-            ServerAuditingSettingsModel model)
+            ServerBlobAuditingSettingsModel model)
         {
-            DiagnosticSettingsResource settings = model is DatabaseAuditingSettingsModel dbModel ?
-                Communicator.CreateDiagnosticSettings(eventHubName, eventHubAuthorizationRuleId, workspaceId,
+            DiagnosticSettingsResource settings = model is DatabaseBlobAuditingSettingsModel dbModel ?
+                Communicator.CreateDiagnosticSettings(dbModel.NextDiagnosticSettingsName,
+                eventHubName, eventHubAuthorizationRuleId, workspaceId,
                 dbModel.ResourceGroupName, dbModel.ServerName, dbModel.DatabaseName) :
-                Communicator.CreateDiagnosticSettings(eventHubName, eventHubAuthorizationRuleId, workspaceId,
+                Communicator.CreateDiagnosticSettings(model.NextDiagnosticSettingsName,
+                eventHubName, eventHubAuthorizationRuleId, workspaceId,
                 model.ResourceGroupName, model.ServerName);
 
             if (settings == null)
@@ -225,9 +229,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return true;
         }
 
-        internal bool UpdateDiagnosticSettings(DiagnosticSettingsResource settings, ServerAuditingSettingsModel model)
+        internal bool UpdateDiagnosticSettings(DiagnosticSettingsResource settings, ServerBlobAuditingSettingsModel model)
         {
-            DiagnosticSettingsResource updatedSettings = model is DatabaseAuditingSettingsModel dbModel ?
+            DiagnosticSettingsResource updatedSettings = model is DatabaseBlobAuditingSettingsModel dbModel ?
                 Communicator.UpdateDiagnosticSettings(settings, dbModel.ResourceGroupName, dbModel.ServerName, dbModel.DatabaseName) :
                 Communicator.UpdateDiagnosticSettings(settings, model.ResourceGroupName, model.ServerName);
             if (updatedSettings == null)
@@ -240,11 +244,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return true;
         }
 
-        internal bool RemoveDiagnosticSettings(ServerAuditingSettingsModel model)
+        internal bool RemoveDiagnosticSettings(ServerBlobAuditingSettingsModel model)
         {
             DiagnosticSettingsResource settings = model.DiagnosticsEnablingAuditCategory.FirstOrDefault();
             if (settings == null ||
-                (model is DatabaseAuditingSettingsModel dbModel ?
+                (model is DatabaseBlobAuditingSettingsModel dbModel ?
                 Communicator.RemoveDiagnosticSettings(settings.Name, dbModel.ResourceGroupName, dbModel.ServerName, dbModel.DatabaseName) :
                 Communicator.RemoveDiagnosticSettings(settings.Name, model.ResourceGroupName, model.ServerName)) == false)
             {
@@ -295,7 +299,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         private static IList<string> ExtractAuditActionsAndGroups(dynamic model)
         {
             var actionsAndGroups = new List<string>();
-            if (model is DatabaseAuditingSettingsModel dbModel)
+            if (model is DatabaseBlobAuditingSettingsModel dbModel)
             {
                 actionsAndGroups.AddRange(dbModel.AuditAction);
             }
