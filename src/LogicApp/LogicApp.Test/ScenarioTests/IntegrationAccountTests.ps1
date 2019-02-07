@@ -21,17 +21,22 @@ function Test-CreateIntegrationAccount
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$integrationAccountName = "IA-" + (getAssetname)
 	$location = Get-Location "Microsoft.Logic" "integrationAccounts"
-	
+
 	$integrationAccountNameBasic = "IA-Basic-" + (getAssetname)
-	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameBasic -Location $location -Sku "Basic" 	
+	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameBasic -Location $location -Sku "Basic"
 	Assert-AreEqual $integrationAccountNameBasic $integrationAccount.Name 
- 	
+ 
 	$integrationAccountNameStandard = "IA-Standard-" + (getAssetname)
-	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameStandard -Location $location -Sku "Standard" 	
+	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameStandard -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountNameStandard $integrationAccount.Name 
- 	
+
+	$integrationAccountNameStandard2 = "IA-Standard2-" + (getAssetname)
+	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameStandard2 -Location $location -Sku "standard"
+	Assert-AreEqual $integrationAccountNameStandard2 $integrationAccount.Name 
+ 
 	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameBasic -Force
 	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameStandard -Force
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameStandard2 -Force
 }
 
 <#
@@ -53,7 +58,7 @@ function Test-GetIntegrationAccount
 	$integrationAccounts = Get-AzIntegrationAccount
 	Assert-True { $integrationAccounts.Count -gt 0 }
 
-	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force 	
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 <#
@@ -68,7 +73,7 @@ function Test-RemoveIntegrationAccount
 
 	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
-	
+
 	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
@@ -97,7 +102,7 @@ function Test-UpdateIntegrationAccount
 
 	$updatedIntegrationAccount = Set-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Force
 	Assert-AreEqual $updatedIntegrationAccount.Name $integrationAccount.Name 
-	
+
 	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
@@ -122,6 +127,6 @@ function Test-GetIntegrationAccountCallbackUrl
 
 	$callbackUrl1 = Get-AzIntegrationAccountCallbackUrl -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
 	Assert-NotNull $callbackUrl1 
-	
+
 	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
