@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -25,8 +24,6 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Test;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit.Abstractions;
-using Microsoft.Rest.Azure;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Common.Authentication.Test
 {
@@ -180,7 +177,7 @@ namespace Common.Authentication.Test
             IRenewableToken token = (IRenewableToken) authFactory.Authenticate(account, environment, tenant, null, null, null);
             _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
             Assert.Equal(expectedAccessToken, token.AccessToken);
-            Assert.Equal(3600, Math.Round(token.ExpiresOn.DateTime.Subtract(DateTime.UtcNow).TotalSeconds));
+            Assert.Equal(3600, Math.Round(token.ExpiresOn.Subtract(DateTimeOffset.Now).TotalSeconds));
             var account2 = new AzureAccount
             {
                 Id = userId,
@@ -230,7 +227,7 @@ namespace Common.Authentication.Test
             IRenewableToken token = (IRenewableToken) authFactory.Authenticate(account, environment, tenant, null, null, null);
             _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
             Assert.Equal(expectedAccessToken, token.AccessToken);
-            Assert.Equal(3600, Math.Round(token.ExpiresOn.DateTime.Subtract(DateTime.UtcNow).TotalSeconds));
+            Assert.Equal(3600, Math.Round(token.ExpiresOn.Subtract(DateTimeOffset.Now).TotalSeconds));
             var account2 = new AzureAccount
             {
                 Id = userId,
@@ -279,7 +276,7 @@ namespace Common.Authentication.Test
             IRenewableToken token = (IRenewableToken) authFactory.Authenticate(account, environment, tenant, null, null, null);
             _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
             Assert.Equal(expectedAccessToken, token.AccessToken);
-            Assert.Equal(3600, Math.Round(token.ExpiresOn.DateTime.Subtract(DateTime.UtcNow).TotalSeconds));
+            Assert.Equal(3600, Math.Round(token.ExpiresOn.Subtract(DateTimeOffset.Now).TotalSeconds));
             var account2 = new AzureAccount
             {
                 Id = userId,
@@ -328,7 +325,7 @@ namespace Common.Authentication.Test
             IRenewableToken token = (IRenewableToken) authFactory.Authenticate(account, environment, tenant, null, null, null);
             _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
             Assert.Equal(expectedAccessToken, token.AccessToken);
-            Assert.Equal(3600, Math.Round(token.ExpiresOn.DateTime.Subtract(DateTime.UtcNow).TotalSeconds));
+            Assert.Equal(3600, Math.Round(token.ExpiresOn.Subtract(DateTimeOffset.Now).TotalSeconds));
             var account2 = new AzureAccount
             {
                 Id = userId,
@@ -351,7 +348,6 @@ namespace Common.Authentication.Test
 
         void VerifyToken(IAccessToken checkToken, string expectedAccessToken, string expectedUserId, string expectedTenant)
         {
-
             Assert.True(checkToken is RawAccessToken);
             Assert.Equal(expectedAccessToken, checkToken.AccessToken);
             Assert.Equal(expectedUserId, checkToken.UserId);
@@ -363,5 +359,45 @@ namespace Common.Authentication.Test
             });
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AppServiceManagedIdentity()
+        {
+            AzureSessionInitializer.InitializeAzureSession();
+            var tenant = Guid.NewGuid().ToString();
+            var userId = Guid.NewGuid().ToString();
+            var environment = AzureEnvironment.PublicEnvironments["AzureCloud"];
+            var account = new AzureAccount
+            {
+                Id = userId,
+                Type = AzureAccount.AccountType.ManagedService
+            };
+            const string resource = @"https://management.azure.com/";
+            const string endpoint = @"http://127.0.0.1:41217/MSI/token/";
+            var expectedUri = $"{endpoint}?resource={resource}&api-version=2017-09-01";
+            account.SetProperty(AzureAccount.Property.MSILoginUri , endpoint);
+            account.SetProperty(AzureAccount.Property.MSILoginSecret , @"bar");
+            const string expectedAccessToken = "foo";
+            var expectedExpiresOn = DateTimeOffset.Parse("1/23/2019 7:15:42 AM +00:00");
+            var responses = new Dictionary<string, ManagedServiceAppServiceTokenInfo>(StringComparer.OrdinalIgnoreCase)
+            {
+                {
+                    expectedUri,
+                    new ManagedServiceAppServiceTokenInfo()
+                    {
+                        AccessToken = expectedAccessToken,
+                        ExpiresOn = expectedExpiresOn,
+                        Resource = resource,
+                        TokenType = "Bearer",
+                    }
+                }
+            };
+            AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
+            var msat = new ManagedServiceAppServiceAccessToken(account, environment, tenant);
+            Assert.Equal(expectedUri, msat.RequestUris.Peek());
+            var accessToken = msat.AccessToken;
+            Assert.Equal(expectedAccessToken, accessToken);
+            Assert.Equal(expectedExpiresOn, msat.ExpiresOn);
+        }
     }
 }
