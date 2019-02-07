@@ -1554,3 +1554,27 @@ function Test-ApplicationGatewayCRUDSubItems2
 		Clean-ResourceGroup $rgname
 	}
 }
+
+function Test-AvailableServerVariables
+{
+	$result = Get-AzApplicationGatewayAvailableServerVariables
+
+	Assert-NotNull $result
+	Assert-True { $result.Count -gt 0 }
+}
+
+function Test-AvailableRequestHeaders
+{
+	$result = Get-AzApplicationGatewayAvailableRequestHeaders
+
+	Assert-NotNull $result
+	Assert-True { $result.Count -gt 0 }
+}
+
+function Test-AvailableResponseHeaders
+{
+	$result = Get-AzApplicationGatewayAvailableResponseHeaders
+
+	Assert-NotNull $result
+	Assert-True { $result.Count -gt 0 }
+}
