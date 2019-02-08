@@ -433,8 +433,11 @@
     <Exec Command="dotnet sln Azure.PowerShell.sln add $(LibraryRoot)tools/ScenarioTest.ResourceManager/ScenarioTest.ResourceManager.csproj $(LibraryRoot)tools/TestFx/TestFx.csproj" />
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
-    <Exec Command="dotnet build Azure.PowerShell.sln --configuration $(Configuration) --framework netstandard2.0" />
-
+    <Exec Command="dotnet build Azure.PowerShell.sln --configuration $(Configuration)" />
+    <Exec Command="dotnet new console -n Net472Tests" />
+    <Exec Command="dotnet add Net472Tests package xunit.runner.console --version 2.4.0" />
+    <Exec Command="dotnet restore --packages ./artifacts/tools -f --no-cache Net472Tests" />
+    <Exec Command="$(PowerShellCommandPrefix) &quot;$(LibraryToolsFolder)/TestNet472Modules.ps1 -TestExecPath '$(LibraryArtifactsFolder)/tools/xunit.runner.console/2.4.0/tools/net472/xunit.console.exe' &quot;" />
     <OnError ExecuteTargets="TestFailureErrorMessage" />
  </Target>
 
