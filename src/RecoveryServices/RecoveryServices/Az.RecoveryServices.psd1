@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.0.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -54,7 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.2.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.2.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', 
@@ -154,11 +154,15 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
                'Set-AzRecoveryServicesVaultContext', 
                'Backup-AzRecoveryServicesBackupItem', 
                'Get-AzRecoveryServicesBackupManagementServer', 
-               'Get-AzRecoveryServicesBackupContainer', 
+               'Get-AzRecoveryServicesBackupContainer',
+               'Register-AzRecoveryServicesBackupContainer', 
                'Unregister-AzRecoveryServicesBackupContainer', 
                'Disable-AzRecoveryServicesBackupProtection', 
-               'Enable-AzRecoveryServicesBackupProtection', 
-               'Get-AzRecoveryServicesBackupItem', 
+               'Enable-AzRecoveryServicesBackupProtection',
+               'Enable-AzRecoveryServicesBackupAutoProtection',
+               'Get-AzRecoveryServicesBackupItem',
+               'Get-AzRecoveryServicesBackupProtectableItem',
+               'Initialize-AzRecoveryServicesBackupProtectableItem',
                'Get-AzRecoveryServicesBackupJob', 
                'Get-AzRecoveryServicesBackupJobDetails', 
                'Stop-AzRecoveryServicesBackupJob', 
@@ -169,8 +173,10 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
                'New-AzRecoveryServicesBackupProtectionPolicy', 
                'Remove-AzRecoveryServicesBackupProtectionPolicy', 
                'Set-AzRecoveryServicesBackupProtectionPolicy', 
-               'Get-AzRecoveryServicesBackupRecoveryPoint', 
-               'Restore-AzRecoveryServicesBackupItem', 
+               'Get-AzRecoveryServicesBackupRecoveryPoint',
+               'Get-AzRecoveryServicesBackupRecoveryLogChain', 
+               'Restore-AzRecoveryServicesBackupItem',
+               'Get-AzRecoveryServicesBackupWorkloadRecoveryConfig',
                'Unregister-AzRecoveryServicesBackupManagementServer', 
                'Get-AzRecoveryServicesBackupRPMountScript', 
                'Disable-AzRecoveryServicesBackupRPMountScript', 
@@ -244,7 +250,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'General availability for Az.RecoveryServices module.'
+        ReleaseNotes = '* Release with updated Authentication dependency'
 
         # Prerelease string of this module
         # Prerelease = ''

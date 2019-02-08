@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add in Basic sku for Integration Accounts
+* Add in XSLT 2.0, XSLT 3.0 and Liquid Map Types
+* Update Logic App SDK to version 4.1.0
 
 ## Version 1.1.0
 * Get-AzLogicApp lists all without specified Name

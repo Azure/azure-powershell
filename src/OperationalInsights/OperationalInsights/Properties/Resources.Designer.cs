@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -57,6 +57,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /subscriptions/{0}/resourceGroups/{1}/providers/microsoft.insights/components/{2}.
+        /// </summary>
+        internal static string ApplicationInsightsArmResourceFormat {
+            get {
+                return ResourceManager.GetString("ApplicationInsightsArmResourceFormat", resourceCulture);
             }
         }
         
@@ -104,6 +113,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
         internal static string DataSourceExists {
             get {
                 return ResourceManager.GetString("DataSourceExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application resource id is invalid..
+        /// </summary>
+        internal static string DataSourceInvalidApplicationInsightsResourceId {
+            get {
+                return ResourceManager.GetString("DataSourceInvalidApplicationInsightsResourceId", resourceCulture);
             }
         }
         
