@@ -45,7 +45,7 @@ function Test-CreateManagedInstance
  		# With SKU name specified
  		$job = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -Collation $collation
+  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -Collation $collation `
 			-PublicDataEndpointEnabled $publicDataEndpointEnabled -ProxyOverride $proxyOverride -AsJob
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
@@ -171,7 +171,7 @@ function Test-SetManagedInstance
 		$proxyOverride = "Proxy"
 
 		$managedInstance4 = Set-AzSqlInstance -ResourceId $managedInstance.Id `
-			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
+			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore `
 			-PublicDataEndpointEnabled $publicDataEndpointEnabled -ProxyOverride $proxyOverride -Force
 		
 		Assert-AreEqual $managedInstance4.ManagedInstanceName $managedInstance.ManagedInstanceName
