@@ -402,8 +402,7 @@
     <ItemGroup>
       <TestResults Include="$(LibraryRoot)src/**/TestResults/*.trx" />
     </ItemGroup>
-    <!-- <Copy SourceFiles="@(TestResults)" DestinationFolder="$(TestOutputDirectory)" /> -->
-	<Copy SourceFiles="@(TestResults)" DestinationFiles="@(TestResults->'$(TestOutputDirectory)\%(Filename)%(Extension)')" />
+    <copy sourcefiles="@(testresults)" destinationfolder="$(testoutputdirectory)" />
 
     <OnError ExecuteTargets="TestFailureErrorMessage" />
   </Target>
