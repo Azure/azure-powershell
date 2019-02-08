@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"objectIds\": [\r\n    \"baadc0de-baad-c0de-baad-c0debaadc0de\"\r\n  ],\r\n  \"includeDirectoryObjectReferences\": true\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f9a25e53-4272-4b07-a727-88e1efb51ee1"
+          "c6350d4b-b008-4f17-baf1-85149f8af7b9"
         ],
         "Accept-Language": [
           "en-US"
@@ -36,19 +36,22 @@
           "Microsoft-IIS/10.0"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "3abjruB1Cy3okP0vEppZNocrEoQDzP7wunknChspjP8="
+          "zZ1f4XOAaTeupg8OmIBOPbaDV65tJpuytfDxxeFsj0o="
         ],
         "request-id": [
-          "4765aaf8-6346-4010-9d30-28531c9497a6"
+          "d2ded087-272e-45e6-a565-3a201c20821a"
         ],
         "client-request-id": [
-          "f9a25e53-4272-4b07-a727-88e1efb51ee1"
+          "c6350d4b-b008-4f17-baf1-85149f8af7b9"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "V3frLQnepM8XUVrRyUAXR3vHrR1C8ymz630UWP46gDQrrf-ruGD-NK35cQQTvkWIczNwCWaY3b3IFgoPaDfXKW_nwATWaJrlVmdnXZ2yhF0WSdg6Wglnr-raYFGWF1nni5JeASpWQxB1ErPlOUSUKw.yxG2RDxcJS0AXZdSyiEuRwDDUlvG-yn_nI9wgaPoE6w"
+          "zvrs_vCBSducWvjGu90s98NXTPIfSkI7ZXPnI7oUefpafgH3ae3bydzvPFzSQfx7VFvf5nHIpH64vl9Cks71O2Zib2p_f5sdil2UJ4zJFqPLKf2OJ6FAkl4vlIp17XlB3Q-WE1_uNslkj87lb0woXw.6Tu1sZr9QLPEnCkkMdeaQebGE_9x2pRShdB7cLOuXrA"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "DataServiceVersion": [
           "3.0;"
@@ -66,10 +69,10 @@
           "ASP.NET"
         ],
         "Duration": [
-          "819476"
+          "557883"
         ],
         "Date": [
-          "Thu, 31 Jan 2019 22:45:33 GMT"
+          "Fri, 08 Feb 2019 00:15:22 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"

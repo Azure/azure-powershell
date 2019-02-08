@@ -4,10 +4,10 @@
       "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/groups?api-version=1.6",
       "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9ncm91cHM/YXBpLXZlcnNpb249MS42",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"displayName\": \"adgroup3810\",\r\n  \"mailNickname\": \"adgroupmail1274\",\r\n  \"mailEnabled\": false,\r\n  \"securityEnabled\": true\r\n}",
+      "RequestBody": "{\r\n  \"displayName\": \"adgroup4852\",\r\n  \"mailNickname\": \"adgroupmail1066\",\r\n  \"mailEnabled\": false,\r\n  \"securityEnabled\": true\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "606d37d9-0d17-4bf0-9255-56f3595c83a7"
+          "aecd4617-c4e5-4272-bd0e-46ccc1b3d6ee"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,25 +33,25 @@
           "no-cache"
         ],
         "Location": [
-          "https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/540df6d1-8cf1-47fb-8606-f42d4cb02ec2/Microsoft.DirectoryServices.Group"
+          "https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/683136fc-c111-49cb-b835-ef6cc078935f/Microsoft.DirectoryServices.Group"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "zZ1f4XOAaTeupg8OmIBOPbaDV65tJpuytfDxxeFsj0o="
+          "P277HeLOcMoYADlOIgX/5nDH/EQ2eMVFV4LkO8IWIBk="
         ],
         "request-id": [
-          "09e2c425-863e-449a-85f7-6eb6bbdca073"
+          "a2d20c79-c04c-49cd-9d70-7288314b22d5"
         ],
         "client-request-id": [
-          "606d37d9-0d17-4bf0-9255-56f3595c83a7"
+          "aecd4617-c4e5-4272-bd0e-46ccc1b3d6ee"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "0N7gVrBQllGRRH6USBGhDB_6kw7rz3EpDVLZWPUVhdPUoyJTfpkXYr7GmKaEKgdBPIU7KziXohD1bOt4KiMk4T2S8Bq3oySF8AiqPI5A23D-u6As8VRJwVhPyGHzfXpjFaFKA9Mv3IG1S50yoBRH8A.CN5zwFedgRWZ_QqgCBlKqiikrLPC2nFShIiTvj_ygi4"
+          "AstIeNUa5IsTuuG_NlTjjEm5N4DDmL-tY4iiR2KDi5KYszLYjefkYbK7r3cli9Af-a0KNYOfOBg2hLMjs4e-ElHcWwGiy5-UeDCaEMH1RekleOfQJoG6mRdFG3WHq5SFtAWIcOrqYZ0wtVHNsxpTww.9Pk5gI9yE46r5dpUpbCkV2x8tAIxSN4_bhT69BHR2vA"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -72,10 +72,10 @@
           "ASP.NET"
         ],
         "Duration": [
-          "1390299"
+          "1346239"
         ],
         "Date": [
-          "Thu, 31 Jan 2019 22:45:30 GMT"
+          "Fri, 08 Feb 2019 00:15:18 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -90,17 +90,17 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Group/@Element\",\r\n  \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n  \"objectType\": \"Group\",\r\n  \"objectId\": \"540df6d1-8cf1-47fb-8606-f42d4cb02ec2\",\r\n  \"deletionTimestamp\": null,\r\n  \"description\": null,\r\n  \"dirSyncEnabled\": null,\r\n  \"displayName\": \"adgroup3810\",\r\n  \"lastDirSyncTime\": null,\r\n  \"mail\": null,\r\n  \"mailNickname\": \"adgroupmail1274\",\r\n  \"mailEnabled\": false,\r\n  \"onPremisesDomainName\": null,\r\n  \"onPremisesNetBiosName\": null,\r\n  \"onPremisesSamAccountName\": null,\r\n  \"onPremisesSecurityIdentifier\": null,\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [],\r\n  \"securityEnabled\": true\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Group/@Element\",\r\n  \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n  \"objectType\": \"Group\",\r\n  \"objectId\": \"683136fc-c111-49cb-b835-ef6cc078935f\",\r\n  \"deletionTimestamp\": null,\r\n  \"description\": null,\r\n  \"dirSyncEnabled\": null,\r\n  \"displayName\": \"adgroup4852\",\r\n  \"lastDirSyncTime\": null,\r\n  \"mail\": null,\r\n  \"mailNickname\": \"adgroupmail1066\",\r\n  \"mailEnabled\": false,\r\n  \"onPremisesDomainName\": null,\r\n  \"onPremisesNetBiosName\": null,\r\n  \"onPremisesSamAccountName\": null,\r\n  \"onPremisesSecurityIdentifier\": null,\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [],\r\n  \"securityEnabled\": true\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/users/540df6d1-8cf1-47fb-8606-f42d4cb02ec2?api-version=1.6",
-      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi91c2Vycy81NDBkZjZkMS04Y2YxLTQ3ZmItODYwNi1mNDJkNGNiMDJlYzI/YXBpLXZlcnNpb249MS42",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/users/683136fc-c111-49cb-b835-ef6cc078935f?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi91c2Vycy82ODMxMzZmYy1jMTExLTQ5Y2ItYjgzNS1lZjZjYzA3ODkzNWY/YXBpLXZlcnNpb249MS42",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2133a01e-7f91-4fd6-abc4-ea028d81b5c4"
+          "5231573f-9961-4816-967e-7b1b4c53bf39"
         ],
         "Accept-Language": [
           "en-US"
@@ -123,16 +123,16 @@
           "Ww4JZ3phP63mdXQAX3Q+w5V7Po6AayFlRCSGeKGwhtg="
         ],
         "request-id": [
-          "669f1f54-619a-4cf6-97ba-0448e195f8fa"
+          "d277ec43-eb5e-49ea-a772-7592b2d24f0d"
         ],
         "client-request-id": [
-          "2133a01e-7f91-4fd6-abc4-ea028d81b5c4"
+          "5231573f-9961-4816-967e-7b1b4c53bf39"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "rNj914AkjkVzrkZ95P8rLYS6HwZf2bYKk90xI0i8KykhJiy-gKuH042d82ihtD00l8EllIKFhWOviRJapI1RUxmiAi8hLw-sBSjNLBrpya55EjR4k0mR45lsMMk6AbsJeQO4_fGy_pOnYK5LHRzvVg.fd-3tMbHMMPGYUZmM4vc6jKO7Thq8NsfGpDbekggYmE"
+          "-YSBdLeXmBymhP_gnf9x3Aw4teoNDqBNd6-oxjgYrdFxRx1arOFkQFbJrg2N9C3uNUxSPYN9S2ZKU2Y2gXIpztGHcfl10YJCoql8rM5dkFHUywl3vhil3lRNI09P4DRhXD9-gPNdq9O2ytWHcSIjkA.pUb2U5Yi-T68kagVHNkVcSXM3YLOmpOxHkAxj87Nzho"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -147,10 +147,10 @@
           "ASP.NET"
         ],
         "Duration": [
-          "729422"
+          "733279"
         ],
         "Date": [
-          "Thu, 31 Jan 2019 22:45:30 GMT"
+          "Fri, 08 Feb 2019 00:15:19 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; charset=utf-8"
@@ -162,17 +162,17 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": {\r\n      \"lang\": \"en\",\r\n      \"value\": \"Resource '540df6d1-8cf1-47fb-8606-f42d4cb02ec2' does not exist or one of its queried reference-property objects are not present.\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": {\r\n      \"lang\": \"en\",\r\n      \"value\": \"Resource '683136fc-c111-49cb-b835-ef6cc078935f' does not exist or one of its queried reference-property objects are not present.\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/groups/540df6d1-8cf1-47fb-8606-f42d4cb02ec2?api-version=1.6",
-      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9ncm91cHMvNTQwZGY2ZDEtOGNmMS00N2ZiLTg2MDYtZjQyZDRjYjAyZWMyP2FwaS12ZXJzaW9uPTEuNg==",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/groups/683136fc-c111-49cb-b835-ef6cc078935f?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9ncm91cHMvNjgzMTM2ZmMtYzExMS00OWNiLWI4MzUtZWY2Y2MwNzg5MzVmP2FwaS12ZXJzaW9uPTEuNg==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5db081b6-b88b-45d2-8651-540e945c0297"
+          "165c70c3-ce85-4ec7-8b7b-503748b1720f"
         ],
         "Accept-Language": [
           "en-US"
@@ -195,19 +195,19 @@
           "Microsoft-IIS/10.0"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "7zDIRrVJqjSZfhHAIvOE5P1Iegs1wlixjPO7KsOVy0Y="
+          "P277HeLOcMoYADlOIgX/5nDH/EQ2eMVFV4LkO8IWIBk="
         ],
         "request-id": [
-          "e3e18ebd-356d-462a-a50a-07ed75df156f"
+          "dc8fa482-3da3-4558-9d0f-3a8d1894510e"
         ],
         "client-request-id": [
-          "5db081b6-b88b-45d2-8651-540e945c0297"
+          "165c70c3-ce85-4ec7-8b7b-503748b1720f"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "EkN8EVpweaifjgChvf4j06XC2zL9f-itM0pQuz9r9vWSVGMqohGfULtfu8tFl8KOZF0WkL8NO0rJvVZFrU7iMJWNsn8LypNSrzab40UnIWsPm7umIh6Sbeo7H89hY2Fpb0KrR24NDLOc4awz63aOgQ.pF4vx-8S0FglE5HFCzbwWAPJNsMgU5LVPa6T_Bh1XC0"
+          "32lPJJhQgpVqhDaaDuzdOlXLoml3wTw5XiGxYPge3QkT4BQsmg2WTLwzxMwQuvsVpR7N9KHEXSglGUn7BXvhd-E-BUVaaDKTCJPwmcm-j7gMLkGJKdawn3LqzJnEFZIOXDFF--55-rj404cqziOXBg.pV734PvJWrTdiOU0n8ZSa4ZhfB80MFXafQGVROS8nrg"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -228,10 +228,10 @@
           "ASP.NET"
         ],
         "Duration": [
-          "1199415"
+          "1948644"
         ],
         "Date": [
-          "Thu, 31 Jan 2019 22:45:30 GMT"
+          "Fri, 08 Feb 2019 00:15:19 GMT"
         ],
         "Expires": [
           "-1"
@@ -246,8 +246,8 @@
   ],
   "Names": {
     "CreateNewAdGroup": [
-      "adgroup3810",
-      "adgroupmail1274"
+      "adgroup4852",
+      "adgroupmail1066"
     ]
   },
   "Variables": {

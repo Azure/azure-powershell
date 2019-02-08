@@ -12,6 +12,9 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
+$ResourcesPath = Join-Path $TestOutputRoot "ScenarioTests"
+
 <#
 .SYNOPSIS
 Gets valid resource group name
