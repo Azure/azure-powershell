@@ -1113,6 +1113,46 @@
 	  {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxMD_ESeries.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSync.Test.ScenarioTests.CloudEndpointTests\\TestGetCloudEndpoint.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSync.Test.ScenarioTests.CloudEndpointTests\\TestGetCloudEndpointParentObject.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSync.Test.ScenarioTests.CloudEndpointTests\\TestCloudEndpoint.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSync.Test.ScenarioTests.CloudEndpointTests\\TestGetCloudEndpointParentResourceId.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSync.Test.ScenarioTests.CloudEndpointTests\\TestGetCloudEndpoints.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSync.Test.ScenarioTests.CloudEndpointTests\\TestNewCloudEndpoint.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSync.Test.ScenarioTests.CloudEndpointTests\\TestRemoveCloudEndpoint.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSync.Test.ScenarioTests.CloudEndpointTests\\TestRemoveCloudEndpointInputObject.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSync.Test.ScenarioTests.CloudEndpointTests\\TestRemoveCloudEndpointResourceId.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSync.Test.ScenarioTests.ServerEndpointTests\\TestServerEndpoint.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     }
   ]
 }
