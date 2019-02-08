@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         /// <summary>
         /// Gets or sets the Id.
         /// </summary>s
-        [Parameter(ParameterSetName = "IdParameterSet", ValueFromPipelineByPropertyName = true, Mandatory = true, Position = 0, HelpMessage = "Recommendation-Id")]
+        [Parameter(ParameterSetName = "IdParameterSet", ValueFromPipelineByPropertyName = true, Mandatory = true, Position = 0, HelpMessage = "ResourceId of the recommendation")]
         public string ResourceId { get; set; }
 
         /// <summary>
@@ -70,15 +70,11 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
             RecommendationResource recommendationResourceUtil = new RecommendationResource();
             List<PsAzureAdvisorResourceRecommendationBase> results = new List<PsAzureAdvisorResourceRecommendationBase>();
             List<ResourceRecommendationBase> entirePageLinkRecommendationData = new List<ResourceRecommendationBase>();
-            AzureOperationResponse<ResourceRecommendationBase> recommendation = null;
 
             switch (this.ParameterSetName)
             {
                 case IdParameterSet:
-                    string recommendationId = RecommendationHelper.GetRecommendationIdFromResourceID(this.ResourceId);
-
-                    recommendation = this.ResourceAdvisorClient.Recommendations.GetWithHttpMessagesAsync("subscriptions/" + this.ResourceAdvisorClient.SubscriptionId, recommendationId).Result;
-                    results.Add(PsAzureAdvisorResourceRecommendationBase.GetFromResourceRecommendationBase(recommendation.Body));
+                    results = recommendationResourceUtil.GetAllRecommendationsFromClient(this.ResourceAdvisorClient, this.ResourceId);
                     break;
 
                 case NameParameterSet:

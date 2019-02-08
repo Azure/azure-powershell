@@ -67,56 +67,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         certInformation.CertificateCommonName));
                 }
 
-                var allTasks = new List<Task>();
-                var vmssPages = ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
+                var addTasks = CreateAddOrRemoveCertVMSSTasks(certInformation, clusterResource.ClusterId, true);
 
-                if (vmssPages == null || !vmssPages.Any())
+                try
                 {
-                    throw new PSArgumentException(string.Format(
-                        ServiceFabricProperties.Resources.NoneNodeTypeFound,
-                        this.ResourceGroupName));
+                    WriteClusterAndVmssVerboseWhenUpdate(addTasks, false);
                 }
-
-                do
+                catch (AggregateException)
                 {
-                    if (!vmssPages.Any())
-                    {
-                        break;
-                    }
-
-                    foreach (var vmss in vmssPages)
-                    {
-                        var ext = FindFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile.Extensions);
-
-                        var extConfig = (JObject)ext.Settings;
-
-                        if (this.CertificateCommonName != null)
-                        {
-                            JArray newCommonNames = (JArray)extConfig.SelectToken("certificate.commonNames");
-                            newCommonNames.Add(this.CertificateCommonName);
-
-                            extConfig["certificate"]["commonNames"] = newCommonNames;
-                        }
-                        else
-                        {
-                            var input = string.Format(
-                                @"{{""thumbprint"":""{0}"",""x509StoreName"":""{1}""}}",
-                                certInformation.CertificateThumbprint,
-                                Constants.DefaultCertificateStore);
-
-                            extConfig["certificateSecondary"] = JObject.Parse(input);
-                        }
-
-                        vmss.VirtualMachineProfile.ExtensionProfile.Extensions.Single(
-                            extension =>
-                            extension.Name.Equals(ext.Name, StringComparison.OrdinalIgnoreCase)).Settings = extConfig;
-
-                        allTasks.Add(AddCertToVmssTask(vmss, certInformation));
-                    }
-                } while (!string.IsNullOrEmpty(vmssPages.NextPageLink) &&
-                        (vmssPages = ComputeClient.VirtualMachineScaleSets.ListNext(vmssPages.NextPageLink)) != null);
-
-                WriteClusterAndVmssVerboseWhenUpdate(allTasks,false);
+                    WriteWarning("Exception while performing operation. Rollingback...");
+                    var removeTasks = CreateAddOrRemoveCertVMSSTasks(certInformation, clusterResource.ClusterId, true, false);
+                    WriteClusterAndVmssVerboseWhenUpdate(removeTasks, false);
+                    WriteWarning("Operation rolled back, the certificate was removed from VMSS model.");
+                    throw;
+                }
 
                 var patchRequest = new ClusterUpdateParameters();
                 if (this.CertificateCommonName != null)

@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         public AzureSqlDatabaseReplicationAdapter(IAzureContext context)
         {
             Context = context;
-            _subscription = context.Subscription;
+            _subscription = context?.Subscription;
             ReplicationCommunicator = new AzureSqlDatabaseReplicationCommunicator(Context);
             DatabaseCommunicator = new AzureSqlDatabaseCommunicator(Context);
             ServerCommunicator = new AzureSqlServerCommunicator(Context);

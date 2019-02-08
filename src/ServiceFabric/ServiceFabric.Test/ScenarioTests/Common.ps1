@@ -17,24 +17,24 @@
 #####
 #
 # $password = "[password]" | ConvertTo-SecureString -Force -AsPlainText
-# New-AzureRmServiceFabricCluster -ResourceGroupName azurermsfrg -Name azurermsfcluster -Location southcentralus -VmPassword $password -KeyVaultName azurermsfkv -CertificateOutputFolder $pwd -CertificatePassword $password -CertificateSubjectName "AzureRMSFTestCert"
+# New-AzServiceFabricCluster -ResourceGroupName azurermsfrg -Name azurermsfcluster -Location southcentralus -VmPassword $password -KeyVaultName azurermsfkv -CertificateOutputFolder $pwd -CertificatePassword $password -CertificateSubjectName "AzureRMSFTestCert"
 #
 # # add second certificate to key vault (AzureRMSFTestCert2)
-# $policy = New-AzureKeyVaultCertificatePolicy -SecretContentType application/x-pkcs12 -SubjectName "CN=AzureRMSFTestCert2" -IssuerName Self
-# Add-AzureKeyVaultCertificate -VaultName azurermsfkv -Name AzureRMSFTestCert2 -CertificatePolicy $policy
-# Get-AzureKeyVaultCertificate -VaultName azurermsfkv -Name AzureRMSFTestCert2 | select Thumbprint, SecretId
+# $policy = New-AzKeyVaultCertificatePolicy -SecretContentType application/x-pkcs12 -SubjectName "CN=AzureRMSFTestCert2" -IssuerName Self
+# Add-AzKeyVaultCertificate -VaultName azurermsfkv -Name AzureRMSFTestCert2 -CertificatePolicy $policy
+# Get-AzKeyVaultCertificate -VaultName azurermsfkv -Name AzureRMSFTestCert2 | select Thumbprint, SecretId
 # # Add the above values to Get-SecretUrl and Get-Thumbrprint
 #
 # # add certificate for application test to key vault (AzureRMSFTestCertApp)
-# $policyCertApp = New-AzureKeyVaultCertificatePolicy -SecretContentType application/x-pkcs12 -SubjectName "CN=AzureRMSFTestCertApp" -IssuerName Self
-# # Add-AzureKeyVaultCertificate -VaultName azurermsfkvtest -Name AzureRMSFTestCertApp -CertificatePolicy $policyCertApp
-# Get-AzureKeyVaultCertificate -VaultName azurermsfkvtest -Name AzureRMSFTestCertApp | select Thumbprint, SecretId
+# $policyCertApp = New-AzKeyVaultCertificatePolicy -SecretContentType application/x-pkcs12 -SubjectName "CN=AzureRMSFTestCertApp" -IssuerName Self
+# # Add-AzKeyVaultCertificate -VaultName azurermsfkvtest -Name AzureRMSFTestCertApp -CertificatePolicy $policyCertApp
+# Get-AzKeyVaultCertificate -VaultName azurermsfkvtest -Name AzureRMSFTestCertApp | select Thumbprint, SecretId
 # # Add the above values to Get-CertAppThumbprint and Get-CertAppSecretUrl
 #
 # # add ca certificate for create with common name test (azurermsfcntest.southcentralus.cloudapp.azure.com)
 # # ask alsantam for password and cert file 
 # $certPassword = "[pass]" | ConvertTo-SecureString -Force -AsPlainText 
-# $KVSecret = Import-AzureKeyVaultCertificate -VaultName azurermsfkvtest -Name azurermsfcntest -FilePath c:\path\to\file\azurermsfcntest.pfx -Password $certPassword -Verbose
+# $KVSecret = Import-AzKeyVaultCertificate -VaultName azurermsfkvtest -Name azurermsfcntest -FilePath c:\path\to\file\azurermsfcntest.pfx -Password $certPassword -Verbose
 # $KVSecret.SecretId
 # # Add the above value to Get-CACertSecretUrl
 #
@@ -68,25 +68,25 @@ function Get-NewCertName
 function Get-SecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprint
-    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/631f0364216e46738dffca1bf6067e74"
+    return "https://azurermsfkvtest.vault.azure.net/secrets/AzureRMSFTestCert2/f6bb2b6492e04ffb8fb6acc6cd05005a"
 }
 
 function Get-Thumbprint
 {
-    #Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprint
-    return "3C70633899C7F5194596EB745D1DD106E9F06E79"
+    # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprint
+    return "EC8CA0BBC391A08860115619701E2B858FF44C72"
 }
 
 function Get-CertAppSecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return " https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/26002f61565446baaa6e3bf120227792"
+    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/722cb6a2fd80461d8c60f2fc6107346e"
 }
 
 function Get-CertAppThumbprint
 {
-    #Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "13B2D20A82B3785B6F9F111FA939DB712F41DB96"
+    # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprintAppCert
+    return "07F8E7F9A90CB655FED09548969A97C8CF6BDFAC"
 }
 
 function Get-CACertCommonName
@@ -101,7 +101,12 @@ function Get-CACertIssuerThumbprint
 
 function Get-CACertSecretUrl
 {
-	return "https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfcntest/4984be5c03b04f55aa0c771e163472fa"
+	return "https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfcntest/6f453495b69c4cf9ae42f12bd7f89620"
+}
+
+function Get-CertWUSecretUrl
+{
+	return "https://azurermsfkvtestwu.vault.azure.net:443/secrets/AzureRMSFTestCertWU/7d400ad07f874c08b6325338bc44be39"
 }
 
 function Get-DurabilityLevel
@@ -162,7 +167,7 @@ function WaitForClusterReadyState($clusterName, $resourceGroupName, $timeoutInSe
 {
     $timeoutTime = (Get-Date).AddSeconds($timeoutInSeconds)
     while (-not $clusterReady -and (Get-Date) -lt $timeoutTime) {
-        $cluster = (Get-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Name $clusterName)[0]
+        $cluster = (Get-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Name $clusterName)[0]
         if ($cluster.ClusterState -eq "Ready")
         {
             return $true

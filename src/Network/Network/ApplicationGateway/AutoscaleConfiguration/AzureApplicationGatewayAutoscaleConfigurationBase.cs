@@ -26,6 +26,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true)]
         public int MinCapacity { get; set; }
 
+        [Parameter(
+            HelpMessage = "Maximum capacity units that will always be available [and charged] for application gateway.",
+            Mandatory = false)]
+        public int? MaxCapacity { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -35,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var autoscaleConfiguration = new PSApplicationGatewayAutoscaleConfiguration();
             autoscaleConfiguration.MinCapacity = this.MinCapacity;
+            autoscaleConfiguration.MaxCapacity = this.MaxCapacity;
             return autoscaleConfiguration;
         }
     }

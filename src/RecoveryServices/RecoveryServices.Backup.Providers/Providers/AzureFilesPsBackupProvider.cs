@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdap
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
 using System;
@@ -27,7 +26,6 @@ using System.Management.Automation;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using SystemNet = System.Net;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -85,29 +83,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             AzureFileShareItem item = (AzureFileShareItem)ProviderData[ItemParams.Item];
 
+            AzureFileshareProtectedItem properties = new AzureFileshareProtectedItem();
+
+            return EnableOrModifyProtection(disableWithRetentionData: true);
+
+        }
+
+        public RestAzureNS.AzureOperationResponse DisableProtectionWithDeleteData()
+        {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            bool deleteBackupData = ProviderData.ContainsKey(ItemParams.DeleteBackupData) ?
+                (bool)ProviderData[ItemParams.DeleteBackupData] : false;
+
+            ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
+
+            AzureFileShareItem item = (AzureFileShareItem)ProviderData[ItemParams.Item];
+
             string containerUri = "";
             string protectedItemUri = "";
             AzureFileshareProtectedItem properties = new AzureFileshareProtectedItem();
 
-            if (deleteBackupData)
-            {
-                //Disable protection and delete backup data
-                ValidateAzureFileShareDisableProtectionRequest(itemBase);
+            ValidateAzureFileShareDisableProtectionRequest(itemBase);
 
-                Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
-                containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
-                protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
+            containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
+            protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
 
-                return ServiceClientAdapter.DeleteProtectedItem(
-                                    containerUri,
-                                    protectedItemUri,
-                                    vaultName: vaultName,
-                                    resourceGroupName: vaultResourceGroupName);
-            }
-            else
-            {
-                return EnableOrModifyProtection(disableWithRetentionData: true);
-            }
+            return ServiceClientAdapter.DeleteProtectedItem(
+                                containerUri,
+                                protectedItemUri,
+                                vaultName: vaultName,
+                                resourceGroupName: vaultResourceGroupName);
         }
 
         public List<ContainerBase> ListProtectionContainers()
@@ -476,7 +483,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             //inquiry
-            TriggerInquiry(vaultName, vaultResourceGroupName, storageContainerName);
+            AzureWorkloadProviderHelper.TriggerInquiry(vaultName, vaultResourceGroupName,
+                storageContainerName, ServiceClientModel.WorkloadType.AzureFileShare);
 
             //get protectable item
             WorkloadProtectableItemResource protectableObjectResource = null;
@@ -530,37 +538,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
             }
             return protectableObjectResource;
-        }
-
-        private void TriggerInquiry(string vaultName, string vaultResourceGroupName,
-            string storageContainerName)
-        {
-            ODataQuery<BMSContainersInquiryQueryObject> queryParams = new ODataQuery<BMSContainersInquiryQueryObject>(
-                q => q.WorkloadType
-                     == ServiceClientModel.WorkloadType.AzureFileShare);
-            string errorMessage = string.Empty;
-            var inquiryResponse = ServiceClientAdapter.InquireContainer(
-               storageContainerName,
-               queryParams,
-               vaultName,
-               vaultResourceGroupName);
-
-            var operationStatus = TrackingHelpers.GetOperationResult(
-                inquiryResponse,
-                operationId =>
-                    ServiceClientAdapter.GetContainerRefreshOrInquiryOperationResult(
-                        operationId,
-                        vaultName: vaultName,
-                        resourceGroupName: vaultResourceGroupName));
-
-            //Now wait for the operation to Complete
-            if (inquiryResponse.Response.StatusCode
-                    != SystemNet.HttpStatusCode.NoContent)
-            {
-                errorMessage = string.Format(Resources.TriggerEnquiryFailureErrorCode,
-                    inquiryResponse.Response.StatusCode);
-                Logger.Instance.WriteDebug(errorMessage);
-            }
         }
 
         private List<ContainerBase> GetRegisteredStorageAccounts(string vaultName = null,
@@ -698,6 +675,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             return itemModels;
+        }
+
+        public void RegisterContainer()
+        {
+            throw new NotImplementedException();
         }
 
         private RestAzureNS.AzureOperationResponse EnableOrModifyProtection(bool disableWithRetentionData = false)
@@ -913,6 +895,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 throw new ArgumentException(string.Format(Resources.AzureFileTargetSANameMissingException));
             }
+        }
+
+        public List<PointInTimeBase> GetLogChains()
+        {
+            throw new NotImplementedException();
         }
     }
 }

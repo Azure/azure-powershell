@@ -33,54 +33,53 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test New-AzureRmIntegrationAccountPartner command to create a new integration account partner.
+        /// Test New-AzIntegrationAccountPartner command to create a new integration account partner.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateIntegrationAccountPartner()
+        public void TestCreatePartner()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountPartner");
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountPartner command to get the integration account partner.
+        /// Test Get-AzIntegrationAccountPartner command to get the integration account partner.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetIntegrationAccountPartner()
+        public void TestGetPartner()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountPartner");
         }
 
         /// <summary>
-        /// Test Remove-AzureRmIntegrationAccountPartner command to remove the integration account partner.
+        /// Test Remove-AzIntegrationAccountPartner command to remove the integration account partner.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveIntegrationAccountPartner()
+        public void TestRemovePartner()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccountPartner");
-        }        
+        }
 
         /// <summary>
-        /// Test Set-AzureRmIntegrationAccountPartner command to update the integration account partner.
+        /// Test Set-AzIntegrationAccountPartner command to update the integration account partner.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateIntegrationAccountPartner()
+        public void TestUpdatePartner()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountPartner");
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountPartner command to get all the integration account partners.
+        /// Test Get-AzIntegrationAccountPartner command to get all the integration account partners.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListIntegrationAccountPartner()
+        public void TestListPartner()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-ListIntegrationAccountPartner");
         }
     }
 }
-

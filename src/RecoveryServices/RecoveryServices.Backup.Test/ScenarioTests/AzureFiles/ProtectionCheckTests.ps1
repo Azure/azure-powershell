@@ -24,21 +24,21 @@ $storageAccountId = "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourc
 
 # Setup Instructions:
 # 1. Create a resource group
-# New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+# New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 # 2. Create a storage account and a recovery services vault
-# New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $saName -Location $location -SkuName $skuName
-# New-AzureRmRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $Location
+# New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $saName -Location $location -SkuName $skuName
+# New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $Location
 
 # 3. Create a file share in the storage account
-# $storageAcct = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $saName
+# $storageAcct = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $saName
 # New-AzureStorageShare -Name $fileShareFriendlyName -Context $storageAcct.Context
 
 # 4. Create a backup policy for file shares
-# $vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-# $schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
-# $retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
-# $policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID `
+# $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+# $schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
+# $retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
+# $policy = New-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID `
 #		-Name $policyName `
 #		-WorkloadType AzureFiles `
 #		-RetentionPolicy $retentionPolicy `
@@ -48,7 +48,7 @@ function Test-AzureFSProtectionCheck
 {
 	try
 	{
-  $status = Get-AzureRmRecoveryServicesBackupStatus `
+  $status = Get-AzRecoveryServicesBackupStatus `
 			-ResourceId $storageAccountId `
 			-ProtectableObjectName $fileShareFriendlyName `
 			-Type AzureFiles
@@ -56,10 +56,10 @@ function Test-AzureFSProtectionCheck
 		Assert-NotNull $status
 		Assert-False { $status.BackedUp }
 
-		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 		$item = Enable-Protection $vault $fileShareFriendlyName $saName
 		
-		$status = Get-AzureRmRecoveryServicesBackupStatus `
+		$status = Get-AzRecoveryServicesBackupStatus `
 			-ResourceId $storageAccountId `
 			-ProtectableObjectName $fileShareFriendlyName `
 			-Type AzureFiles
@@ -68,7 +68,7 @@ function Test-AzureFSProtectionCheck
 		Assert-True { $status.BackedUp }
 		Assert-True { $status.VaultId -eq $vault.ID }
 
-		$container = Get-AzureRmRecoveryServicesBackupContainer `
+		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `

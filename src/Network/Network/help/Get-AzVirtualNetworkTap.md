@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualnetworktap
@@ -12,9 +12,15 @@ Gets a virtual network tap
 
 ## SYNTAX
 
-### GetByNameParameterSet (Default)
+### ListParameterSet (Default)
 ```
-Get-AzVirtualNetworkTap -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzVirtualNetworkTap [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### GetByNameParameterSet
+```
+Get-AzVirtualNetworkTap -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -61,7 +67,7 @@ Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -70,6 +76,18 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The resource group name of the virtual network tap.
+
+```yaml
+Type: System.String
+Parameter Sets: ListParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ```yaml
 Type: System.String
@@ -142,3 +160,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzVirtualNetworkTap](./New-AzVirtualNetworkTap.md)
+
+[Remove-AzVirtualNetworkTap](./Remove-AzVirtualNetworkTap.md)
+
+[Set-AzVirtualNetworkTap](./Set-AzVirtualNetworkTap.md)

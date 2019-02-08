@@ -47,7 +47,7 @@ function Test-ImportDatabase
  {
 	# Setup	   
     $params = Get-SqlDatabaseImportExportTestEnvironmentParameters  $testSuffix
-    $rg = New-AzureRmResourceGroup -Name $params.rgname -Location $params.location
+    $rg = New-AzResourceGroup -Name $params.rgname -Location $params.location
     $export = "Export"
     $import = "Import"
 
@@ -61,22 +61,22 @@ function Test-ImportDatabase
         $secureString = ($password | ConvertTo-SecureString -asPlainText -Force) 
         $credentials = new-object System.Management.Automation.PSCredential($params.userName, $secureString) 	
         if($createServer -eq $true){
-            $server = New-AzureRmSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -ServerVersion $params.version -Location $params.location -SqlAdministratorCredentials $credentials       
+            $server = New-AzSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -ServerVersion $params.version -Location $params.location -SqlAdministratorCredentials $credentials       
         }
 
         if($createDatabase -eq $true){
-            $standarddb = New-AzureRmSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+            $standarddb = New-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
         }
         
         if($createFirewallRule -eq $true){
-            New-AzureRmSqlServerFirewallRule -ResourceGroupName  $params.rgname -ServerName $params.serverName -AllowAllAzureIPs
+            New-AzSqlServerFirewallRule -ResourceGroupName  $params.rgname -ServerName $params.serverName -AllowAllAzureIPs
         }
 
         $operationStatusLink = ""
                 
         if($operationName -eq $export){
             # Export database.       
-            $exportResponse = New-AzureRmSqlDatabaseExport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.exportBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -AuthenticationType $params.authType
+            $exportResponse = New-AzSqlDatabaseExport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.exportBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -AuthenticationType $params.authType
             Assert-NotNull $exportResponse
             $operationStatusLink = $exportResponse.OperationStatusLink        
             Assert-AreEqual $exportResponse.ResourceGroupName $params.rgname
@@ -91,7 +91,7 @@ function Test-ImportDatabase
         }
 
         if($operationName -eq $import){
-            $importResponse = New-AzureRmSqlDatabaseImport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.importBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -Edition $params.databaseEdition -ServiceObjectiveName $params.serviceObjectiveName -DatabaseMaxSizeBytes $params.databaseMaxSizeBytes -AuthenticationType $params.authType
+            $importResponse = New-AzSqlDatabaseImport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.importBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -Edition $params.databaseEdition -ServiceObjectiveName $params.serviceObjectiveName -DatabaseMaxSizeBytes $params.databaseMaxSizeBytes -AuthenticationType $params.authType
             Assert-NotNull $importResponse
             $operationStatusLink = $importResponse.OperationStatusLink
             Assert-AreEqual $importResponse.ResourceGroupName $params.rgname
@@ -118,7 +118,7 @@ function Test-ImportDatabase
         if($succeeded -eq $true){
             Write-Output "Getting Status" 
             while($status -eq $statusInProgress){
-                $statusResponse = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $operationStatusLink
+                $statusResponse = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $operationStatusLink
                 Write-Output "Import Export Status Message:" + $statusResponse.StatusMessage  
                 Assert-AreEqual $statusResponse.OperationStatusLink $operationStatusLink
                 $status = $statusResponse.Status
