@@ -877,7 +877,7 @@ function Test-ApplicationGatewayCRUD3
 
 		# Next: Set Identity on an existing gateway without identity
 		# First, Removing identity from the gateway
-		Remove-AzApplicationGatewayIdentity -ApplicationGateway $getgw01 -Force
+		Remove-AzApplicationGatewayIdentity -ApplicationGateway $getgw01
 
 		# Set Application Gateway
 		$getgw02 = Set-AzApplicationGateway -ApplicationGateway $getgw01

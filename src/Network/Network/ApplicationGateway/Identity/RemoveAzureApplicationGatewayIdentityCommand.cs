@@ -27,28 +27,13 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "The applicationGateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (this.ApplicationGateway.Identity == null)
             {
-                throw new ArgumentException("Gateway doesn't have an identity assigned to it.");
+                throw new ArgumentException("Application Gateway doesn't have an identity assigned to it.");
             }
 
-            ConfirmAction(
-               Force.IsPresent,
-               "Are you sure you want to remove Identity",
-               "Removing Identity..",
-               ApplicationGateway.Identity.ToString(),
-               () => RemoveIdentity());
-        }
-
-        private void RemoveIdentity()
-        {
             base.ExecuteCmdlet();
             this.ApplicationGateway.Identity = null;
             WriteObject(this.ApplicationGateway);
