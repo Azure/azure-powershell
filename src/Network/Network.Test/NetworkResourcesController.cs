@@ -129,6 +129,7 @@ namespace Commands.Network.Test
                     _helper.GetRMModulePath("AzureRM.ContainerInstance.psd1"),
                     _helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
                     "AzureRM.Storage.ps1",
+                    _helper.GetRMModulePath("AzureRM.Storage.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try

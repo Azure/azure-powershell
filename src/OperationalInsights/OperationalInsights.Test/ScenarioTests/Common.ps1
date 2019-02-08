@@ -36,7 +36,7 @@ Gets a valid storage account resource id
 #>
 function Get-StorageResourceId($rgname, $resourcename)
 {
-    $subscription = (Get-AzureRmContext).Subscription.Id
+    $subscription = (Get-AzContext).Subscription.Id
     return "/subscriptions/$subscription/resourcegroups/$rgname/providers/microsoft.storage/storageaccounts/$resourcename"
 }
 
@@ -50,7 +50,7 @@ function Get-ProviderLocation()
 	{
 		$namespace = "Microsoft.OperationalInsights"  
 		$type = "workspaces"
-		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+		$location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
   
 		if ($location -eq $null) 
 		{  

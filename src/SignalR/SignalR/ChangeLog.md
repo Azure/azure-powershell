@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.2
+* Update incorrect online help URLs
+
 ## Version 1.0.1
 * Fix backward compatibility issue with Az.Accounts module
 

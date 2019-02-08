@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotCentral.dll-Help.xml
 Module Name: Az.IotCentral
 online version: https://docs.microsoft.com/en-us/powershell/module/az.iotcentral/get-aziotcentralapp

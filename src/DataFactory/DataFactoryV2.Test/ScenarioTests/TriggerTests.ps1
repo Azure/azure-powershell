@@ -24,19 +24,19 @@ function Test-Trigger
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
      
         $triggername = "foo"
-        $expected = Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -File .\Resources\scheduletrigger.json -Force
-        $actual = Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
+        $expected = Set-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -File .\Resources\scheduletrigger.json -Force
+        $actual = Get-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
 
         Verify-Trigger $expected $actual $rgname $dfname $triggername
 
-        Remove-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
+        Remove-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
     }
     finally
     {
@@ -57,21 +57,21 @@ function Test-StartTriggerThrowsWithoutPipeline
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
      
         $triggername = "foo"
-        $expected = Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -File .\Resources\scheduletrigger.json -Force
-        $actual = Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
+        $expected = Set-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -File .\Resources\scheduletrigger.json -Force
+        $actual = Get-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
 
         Verify-Trigger $expected $actual $rgname $dfname $triggername
 
-        Assert-ThrowsContains {Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force} "BadRequest"
+        Assert-ThrowsContains {Start-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force} "BadRequest"
         
-        Remove-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
+        Remove-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
     }
     finally
     {
@@ -92,31 +92,31 @@ function Test-TriggerRun
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
      
         $lsName = "foo1"
-        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $lsName -Force
+        Set-AzDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $lsName -Force
 
-        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "dsIn" -File .\Resources\dataset-dsIn.json -Force
-        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds0_0" -File .\Resources\dataset-ds0_0.json -Force
-        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds1_0" -File .\Resources\dataset-ds1_0.json -Force
+        Set-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "dsIn" -File .\Resources\dataset-dsIn.json -Force
+        Set-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds0_0" -File .\Resources\dataset-ds0_0.json -Force
+        Set-AzDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name "ds1_0" -File .\Resources\dataset-ds1_0.json -Force
 
         $pipelineName = "samplePipeline"   
-        Set-AzureRmDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipeline.json" -Force
+        Set-AzDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipeline.json" -Force
 
         $triggername = "foo"
-        $expected = Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -File .\Resources\scheduleTriggerWithPipeline.json -Force
-        $actual = Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
+        $expected = Set-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -File .\Resources\scheduleTriggerWithPipeline.json -Force
+        $actual = Get-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
 
         Verify-Trigger $expected $actual $rgname $dfname $triggername
         
         $startDate = [DateTime]::Parse("09/10/2017")
-        Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
-        $started = Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
+        Start-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
+        $started = Get-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
         
         Assert-AreEqual 'Started' $started.RuntimeState 
         
@@ -125,19 +125,19 @@ function Test-TriggerRun
         }
         
         $endDate = $startDate.AddYears(1)
-        $triggerRuns = Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $rgname -DataFactoryName $dfname -TriggerName $triggername -TriggerRunStartedAfter $startDate -TriggerRunStartedBefore $endDate
+        $triggerRuns = Get-AzDataFactoryV2TriggerRun -ResourceGroupName $rgname -DataFactoryName $dfname -TriggerName $triggername -TriggerRunStartedAfter $startDate -TriggerRunStartedBefore $endDate
         
         if($triggerRuns.Count -lt 1)
         {
             throw "Expected atleast 1 trigger run"
         }
          
-        Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
-        $stopped = Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
+        Stop-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
+        $stopped = Get-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
         
         Assert-AreEqual 'Stopped' $stopped.RuntimeState 
 
-        Remove-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
+        Remove-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
     }
     finally
     {
@@ -157,19 +157,19 @@ function Test-TriggerWithResourceId
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        $df = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        $df = Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
      
         $triggername = "foo"
-        $expected = Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -File .\Resources\scheduletrigger.json -Force
-        $actual = Get-AzureRmDataFactoryV2Trigger -ResourceId $expected.Id
+        $expected = Set-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -File .\Resources\scheduletrigger.json -Force
+        $actual = Get-AzDataFactoryV2Trigger -ResourceId $expected.Id
 
         Verify-Trigger $expected $actual $rgname $dfname $triggername
 
-        Remove-AzureRmDataFactoryV2Trigger -ResourceId $expected.Id -Force
+        Remove-AzDataFactoryV2Trigger -ResourceId $expected.Id -Force
     }
     finally
     {
