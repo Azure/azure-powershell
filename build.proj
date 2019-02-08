@@ -48,6 +48,7 @@
     <LibraryRoot>$(MSBuildThisFileDirectory)</LibraryRoot>
     <LibrarySourceFolder>$(LibraryRoot)src</LibrarySourceFolder>
     <LibraryToolsFolder>$(LibraryRoot)tools</LibraryToolsFolder>
+    <LibraryArtifactsFolder>$(LibraryRoot)artifacts</LibraryArtifactsFolder>
     <LocalFeedFolder>$(LibraryToolsFolder)\LocalFeed</LocalFeedFolder>
     <Configuration Condition=" '$(Configuration)' != 'Release'">Debug</Configuration>
     <CodeSign>false</CodeSign>
