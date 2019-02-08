@@ -88,9 +88,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     Helper.RMNetworkModule,
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1",
-                    "Az.OperationalInsights.ps1",
-                    "Az.EventHub.ps1",
-                    "Az.Monitor.ps1");
+                    Helper.RMOperationalInsightsModule,
+                    Helper.RMEventHubModule,
+                    Helper.RMMonitorModule);
                 Helper.RunPowerShellTest(scripts);
             }
         }
