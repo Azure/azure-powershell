@@ -33,7 +33,7 @@ function Test-CreateManagedInstance
  	$vCore = 16
  	$skuName = "GP_Gen4"
 	$collation = "Serbian_Cyrillic_100_CS_AS"
-	$publicDataEndpointEnabled = "$true"
+	$publicDataEndpointEnabled = $true
 	$proxyOverride = "Proxy"
 
  	try
@@ -167,7 +167,7 @@ function Test-SetManagedInstance
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 32
 		$vCore = 16
-		$publicDataEndpointEnabled = "$true"
+		$publicDataEndpointEnabled = $true
 		$proxyOverride = "Proxy"
 
 		$managedInstance4 = Set-AzSqlInstance -ResourceId $managedInstance.Id `
