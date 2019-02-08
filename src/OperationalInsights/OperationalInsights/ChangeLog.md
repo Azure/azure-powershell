@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Additional support for New and Get ApplicationInsights data source.
+    - Added new 'ApplicationInsights' kind to support Get specific and Get all ApplicationInsights data sources for given workspace. 
+    - Added New-AzOperationalInsightsApplicationInsightsDataSource cmdlet for creating data source by given Application-Insights resource parameters: subscription Id, resourceGroupName and name. 
 ## Version 1.0.0
 * General availability of `Az.OperationalInsights` module
 * Default parameter set for Get-AzOperationalInsightsDataSource is removed, and ByWorkspaceNameByKind has become the default parameter set
