@@ -664,7 +664,7 @@ function Test-CreateDeleteAppCredentials
 {
     # Setup
 	$getAssetName = ConvertTo-SecureString "test" -AsPlainText -Force
-    $displayName = $getAssetName
+    $displayName = "test"
     $identifierUri = "http://" + $displayName
     $password = $getAssetName
 	$keyId1 = "316af45c-83ff-42a5-a1d1-8fe9b2de3ac1"
@@ -701,9 +701,9 @@ function Test-CreateDeleteAppCredentials
 	$cred2 = $cred
 
 	# Add 1 key credential to the same app
-	$certCreated = 0
-	$cert = New-SelfSignedCertificate 
-	$certCreated = 1
+	$certPath = Join-Path $ResourcesPath "certificate.pfx"
+	$cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certPath)
+
 	$binCert = $cert.GetRawCertData()
 	$credValue = [System.Convert]::ToBase64String($binCert)
 	$start = (Get-Date).ToUniversalTime()
@@ -752,11 +752,6 @@ function Test-CreateDeleteAppCredentials
 	Finally{
 		# Remove App
 		Remove-AzADApplication -ObjectId $application.ObjectId -Force
-	
-		# Remove Cert
-		If ($certCreated -eq 1) {
-			Remove-Item .\certificate.pfx
-		}
 	}
 }
 
@@ -769,14 +764,15 @@ function Test-CreateDeleteSpCredentials
 {
     # Setup
 	$getAssetName = ConvertTo-SecureString "test" -AsPlainText -Force
-    $displayName = $getAssetName
+    $displayName = "test"
+    $identifierUri = "http://" + $displayName
 	$password = $getAssetName
 	$keyId1 = "316af45c-83ff-42a5-a1d1-8fe9b2de3ac1"
 	$keyId2 = "9b7fda23-cb39-4504-8aa6-3570c4239620"
 	$keyId3 = "4141b479-4ca0-4919-8451-7e155de6aa0f"
 
-    # Test - Add SP with a password cred
-    $servicePrincipal = New-AzADServicePrincipal -DisplayName $displayName  -Password $password
+    # Test - Add SP
+    $servicePrincipal = New-AzADServicePrincipal -DisplayName $displayName  
 
     # Assert
     Assert-NotNull $servicePrincipal
@@ -795,7 +791,7 @@ function Test-CreateDeleteSpCredentials
     # Add 1 more password credential to the same app
     $start = (Get-Date).ToUniversalTime()
     $end = $start.AddYears(1)
-    $cred = New-AzADSpCredentialWithId -ObjectId $servicePrincipal.Id -Password $password -StartDate $start -EndDate $end -KeyId $keyId1
+    $cred = New-AzADSpCredentialWithId -ObjectId $servicePrincipal.Id -StartDate $start -EndDate $end -KeyId $keyId1
     Assert-NotNull $cred
 
     # Get credential should fetch 2 credentials
@@ -807,9 +803,9 @@ function Test-CreateDeleteSpCredentials
 	$cred2 = $cred
 
 	# Add 1 key credential to the same app
-	$certCreated = 0
-	$cert = New-SelfSignedCertificate 
-	$certCreated = 1
+	$certPath = Join-Path $ResourcesPath "certificate.pfx"
+	$cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certPath)
+
 	$binCert = $cert.GetRawCertData()
 	$credValue = [System.Convert]::ToBase64String($binCert)
 	$start = (Get-Date).ToUniversalTime()
@@ -855,13 +851,11 @@ function Test-CreateDeleteSpCredentials
     }
     Finally
     {
+		# Remove Service Principal
+		Remove-AzADServicePrincipal -ObjectId $servicePrincipal.Id -Force
+
 		# Remove App
 		$app =  Get-AzADApplication -ApplicationId $servicePrincipal.ApplicationId
 		Remove-AzADApplication -ObjectId $app.ObjectId -Force
-
-		# Remove Cert
-		If ($certCreated -eq 1) {
-			Remove-Item .\certificate.pfx
-		}
     }
 }

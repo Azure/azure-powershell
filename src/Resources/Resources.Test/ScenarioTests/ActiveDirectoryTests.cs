@@ -604,7 +604,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestCreateDeleteAppCredentials()
         {
             TestRunner.RunTestScript("Test-CreateDeleteAppCredentials");
@@ -612,7 +611,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestCreateDeleteSpCredentials()
         {
             TestRunner.RunTestScript("Test-CreateDeleteSpCredentials");

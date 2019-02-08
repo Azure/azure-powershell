@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     {
                         EndDate = EndDate,
                         StartDate = StartDate,
-                        KeyId = Guid.NewGuid().ToString(),
+                        KeyId = KeyId == default(Guid) ? Guid.NewGuid().ToString() : KeyId.ToString(),
                         Value = decodedPassword
                     };
                     if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to service principal with objectId {0}", ObjectId)))
