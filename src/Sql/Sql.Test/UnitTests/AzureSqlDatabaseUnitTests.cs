@@ -55,6 +55,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             Assert.Equal(
                 "BC",
                 AzureSqlDatabaseAdapter.GetDatabaseSkuName("BusinessCritical"));
+            Assert.Equal(
+                "HS",
+                AzureSqlDatabaseAdapter.GetDatabaseSkuName("Hyperscale"));
         }
     }
 }
