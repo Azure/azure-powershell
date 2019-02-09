@@ -83,7 +83,8 @@ CmdletsToExport = 'Get-AzCdnProfile', 'Get-AzCdnProfileSsoUrl', 'New-AzCdnProfil
                'Stop-AzCdnEndpoint', 'Test-AzCdnCustomDomain', 
                'Get-AzCdnCustomDomain', 'New-AzCdnCustomDomain', 
                'Remove-AzCdnCustomDomain', 'Enable-AzCdnCustomDomain', 
-               'Disable-AzCdnCustomDomain', 'Get-AzCdnProfileResourceUsage', 
+               'Disable-AzCdnCustomDomain', 'Enable-AzCdnCustomDomainHttps',
+               'Disable-AzCdnCustomDomainHttps', 'Get-AzCdnProfileResourceUsage', 
                'Confirm-AzCdnEndpointProbeUrl', 'Get-AzCdnEndpointResourceUsage', 
                'Get-AzCdnProfileSupportedOptimizationType', 
                'Get-AzCdnSubscriptionResourceUsage', 'Get-AzCdnEdgeNodes'
