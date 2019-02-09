@@ -48,5 +48,12 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CustomDomainGetRemoveWithStoppedEndpoint");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCustomDomainHttpsWithRunningEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CustomDomainEnableHttpsWithRunningEndpoint");
+        }
     }
 }
