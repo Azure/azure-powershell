@@ -25,8 +25,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnCustomDomain",DefaultParameterSetName = FieldsParameterSet,SupportsShouldProcess = true),OutputType(typeof(bool))]
-    public class RemoveAzureRmCdnCustomDomain : AzureCdnCmdletBase
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnCustomDomainHttps",DefaultParameterSetName = FieldsParameterSet,SupportsShouldProcess = true),OutputType(typeof(bool))]
+    public class EnableAzureRmCdnCustomDomainHttps : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN custom domain display name.")]
         [ValidateNotNullOrEmpty]
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 
             ConfirmAction(MyInvocation.InvocationName,
                 String.Format("{0} ({1})", existingCustomDomain.Name, existingCustomDomain.HostName),
-                () => CdnManagementClient.CustomDomains.Delete(
+                () => CdnManagementClient.CustomDomains.EnableCustomHttps(
                     ResourceGroupName,
                     ProfileName,
                     EndpointName,
