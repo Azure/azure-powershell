@@ -248,8 +248,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         private void ChangeWhenMultipleCategoriesAreEnabled(SqlAuditAdapter adapter, DiagnosticSettingsResource settings)
         {
-            DisableAuditCategory(settings);
-            if (adapter.UpdateDiagnosticSettings(settings, this) == false)
+            if (DisableAuditCategory(adapter, settings) == false)
             {
                 throw DefinitionsCommon.UpdateDiagnosticSettingsException;
             }
@@ -282,8 +281,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
             {
                 try
                 {
-                    EnableAuditCategory(settings);
-                    adapter.UpdateDiagnosticSettings(settings, this);
+                    EnableAuditCategory(adapter, settings);
                 }
                 catch (Exception) { }
 
@@ -386,23 +384,25 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
             }
         }
 
-        private void SetAuditCategoryState(DiagnosticSettingsResource settings, bool enabled)
+        private bool SetAuditCategoryState(SqlAuditAdapter adapter, DiagnosticSettingsResource settings, bool isEenabled)
         {
             var log = settings?.Logs?.FirstOrDefault(l => string.Equals(l.Category, DefinitionsCommon.SQLSecurityAuditCategory));
             if (log != null)
             {
-                log.Enabled = enabled;
+                log.Enabled = isEenabled;
             }
+
+            return adapter.UpdateDiagnosticSettings(settings, this);
         }
 
-        private void EnableAuditCategory(DiagnosticSettingsResource settings)
+        private bool EnableAuditCategory(SqlAuditAdapter adapter, DiagnosticSettingsResource settings)
         {
-            SetAuditCategoryState(settings, true);
+            return SetAuditCategoryState(adapter, settings, true);
         }
 
-        private void DisableAuditCategory(DiagnosticSettingsResource settings)
+        private bool DisableAuditCategory(SqlAuditAdapter adapter, DiagnosticSettingsResource settings)
         {
-            SetAuditCategoryState(settings, false);
+            return SetAuditCategoryState(adapter, settings, false);
         }
 
         private bool IsAnotherCategoryEnabled(DiagnosticSettingsResource settings)
