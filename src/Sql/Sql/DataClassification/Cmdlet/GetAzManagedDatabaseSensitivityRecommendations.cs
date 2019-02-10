@@ -50,6 +50,11 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         [ValidateNotNullOrEmpty]
         public AzureSqlManagedDatabaseModel InputObject { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = DefinitionsCommon.AsJobHelpMessage)]
+        public SwitchParameter AsJob { get; set; }
+
         protected override ManagedDatabaseSensitivityClassificationModel GetEntity()
         {
             ManagedDatabaseSensitivityClassificationModel model = new ManagedDatabaseSensitivityClassificationModel()

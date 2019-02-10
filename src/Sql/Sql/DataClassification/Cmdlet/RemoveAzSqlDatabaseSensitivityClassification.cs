@@ -75,6 +75,11 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         [ValidateNotNullOrEmpty]
         public SqlDatabaseSensitivityClassificationModel InputObject { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = DefinitionsCommon.AsJobHelpMessage)]
+        public SwitchParameter AsJob { get; set; }
+
         protected override SqlDatabaseSensitivityClassificationModel GetEntity()
         {
             return InputObject ??
