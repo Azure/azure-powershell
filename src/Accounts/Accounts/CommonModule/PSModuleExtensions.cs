@@ -21,11 +21,11 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common
 {
-  internal static class PSModuleExtensions
+    internal static class PSModuleExtensions
     {
-        internal static Module GetModule(this PSCmdlet cmdlet)
+        internal static AzModule GetModule(this PSCmdlet cmdlet)
         {
-            return new Module(cmdlet.CommandRuntime);
+            return new AzModule(cmdlet.CommandRuntime);
         }
     }
 

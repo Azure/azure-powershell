@@ -23,16 +23,12 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common
 {
+    using EventListenerDelegate = Func<EventData, Task>;
+    using GetParameterDelegate = Func<string, System.Management.Automation.InvocationInfo, string, object>;
+    using SendAsyncStep = Func<HttpRequestMessage, IEventListener, ISendAsync, Task<HttpResponseMessage>>;
+    using PipelineChangeDelegate = Action<EventData>;
 
-
-  using EventListenerDelegate = Func<EventData, Task>;
-  using GetParameterDelegate = Func<string, Dictionary<string, object>, string, object>;
-  using SendAsyncStep = Func<HttpRequestMessage, IEventListener, ISendAsync, Task<HttpResponseMessage>>;
-  using PipelineChangeDelegate = Action<EventData>;
-
-
-
-  [TypeConverter(typeof(EventDataConverter))]
+    [TypeConverter(typeof(EventDataConverter))]
     ///	<remarks>
     /// In PowerShell, we add on the EventDataConverter to support sending events between modules.
     /// Obviously, this code would need to be duplcated on both modules.
@@ -91,38 +87,6 @@ namespace Microsoft.Azure.Commands.Common
         /// </code>
         /// </summary>
         public object ResponseMessage;
-
-        /// <summary> 
-        /// The name of the cmdlet that is being executed
-        /// </summary> 
-        public string CmdletName;
-        
-        /// <summary> 
-        /// Correlation Id for cmdlet invocation
-        /// </summary> 
-        public string CmdletInvocationId;
-        
-        /// <summary> 
-        /// 
-        /// </summary> 
-        public string ProcessRecordId;
-
-        /// <summary> 
-        /// 
-        /// </summary> 
-        public string ParameterSet;
-
-        /// <summary> 
-        /// 
-        /// </summary> 
-        public string RequestCorrelationId;
-
-        /// <summary> 
-        /// The 'this.MyInvocation.BoundParameters' from the cmdlet 
-        /// </summary> 
-        public System.Collections.Generic.IDictionary<string,object> BoundParamters;
-
-        public System.Exception Exception;
 
         /// <summary>
         /// Cancellation method for this event. 

@@ -25,25 +25,57 @@ using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Common
 {
-  using NextDelegate = Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>;
-  using SignalDelegate = Func<string, CancellationToken, Func<EventArgs>, Task>;
-  using PipelineChangeDelegate = Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>;
+    using NextDelegate = Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>;
+    using SignalDelegate = Func<string, CancellationToken, Func<EventArgs>, Task>;
+    using PipelineChangeDelegate = Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>;
 
-  internal class ContextAdapter
+    internal class ContextAdapter
     {
         IProfileProvider _provider = AzureRmProfileProvider.Instance;
         IAuthenticationFactory _authenticator = AzureSession.Instance.AuthenticationFactory;
 
         internal static ContextAdapter Instance => new ContextAdapter();
 
-        public void OnNewRequest(Dictionary<string, object> boundParameters, PipelineChangeDelegate prependStep, PipelineChangeDelegate appendStep)
+        /// <summary>
+        /// Implementation of the OnNewRequest Event
+        ///  
+        /// The cmdlet will call this when a new request is being created.
+        /// </summary>
+        /// <param name="invocationInfo">The <see cref="System.Management.Automation.InvocationInfo" /> from the cmdlet</param>
+        /// <param name="correlationId">The <see cref="string" /> containing the correlation id for the cmdlet (if available)</param>
+        /// <param name="processRecordId">The <see cref="string" /> containing the correlation id for the individual process record. (if available)</param>
+        /// <param name="prependStep">a delegate which allows the module to prepend a step in the HTTP Pipeline</param>
+        /// <param name="appendStep">a delegate which allows the module to append a step in the HTTP Pipeline</param>
+        public void OnNewRequest(System.Management.Automation.InvocationInfo invocationInfo, string correlationId, string processRecordId, PipelineChangeDelegate prependStep, PipelineChangeDelegate appendStep)
         {
-            appendStep(this.SendHandler(GetDefaultContext(_provider, boundParameters), AzureEnvironment.Endpoint.ResourceManager));
+            appendStep(this.SendHandler(GetDefaultContext(_provider, invocationInfo), AzureEnvironment.Endpoint.ResourceManager));
         }
 
-        public object GetParameterValue(string resourceId, string moduleName, Dictionary<string, object> boundParameters, string name)
+        /// <summary>
+        ///  Called for well-known parameters that require argument completers
+        ///  </summary>
+        /// <param name="completerName">string - the type of completer requested (Resource, Location)</param>
+        /// <param name="invocationInfo">The <see cref="System.Management.Automation.InvocationInfo" /> from the cmdlet</param>
+        /// <param name="correlationId">The <see cref="string" /> containing the correlation id for the cmdlet (if available)</param>
+        /// <param name="resourceTypes">An <see cref="System.String[]"/> containing resource (or resource types) being completed  </param >
+        /// <param name="parentResourceParameterNames"> An <see cref="System.String[]"/> containing list of parent resource parameter names (if applicable)</param >
+        /// <returns>A <see cref="System.String[]"/> containing the valid options for the completer.</returns>
+        public string[] CompleteArgument(string completerName, System.Management.Automation.InvocationInfo invocationInfo, string correlationId, string[] resourceTypes, string[] parentResourceParameterNames)
         {
-            var defaultContext = GetDefaultContext(_provider, boundParameters);
+            return new string[] { "" };
+        }
+
+        /// <summary>
+        /// The cmdlet will call this when it is trying to fill in a parameter value that it needs
+        /// </summary>
+        /// <param name="resourceId"><c>string</c>containing the expected resource id (ie, ARM).</param>
+        /// <param name="moduleName"><c>string</c>containing the name of the module being loaded.</param>
+        /// <param name="invocationInfo">The <see cref="System.Management.Automation.InvocationInfo" /> from the cmdlet</param>
+        /// <param name="correlationId">The <see cref="string" /> containing the correlation id for the cmdlet</param>
+        /// <param name="name">The <see cref="string" /> parameter name being asked for</param>
+        public object GetParameterValue(string resourceId, string moduleName, System.Management.Automation.InvocationInfo invocationInfo, string correlationId, string name)
+        {
+            var defaultContext = GetDefaultContext(_provider, invocationInfo);
             var endpoint = GetDefaultEndpoint(defaultContext, AzureEnvironment.Endpoint.ResourceManager);
             switch (name)
             {
@@ -58,14 +90,14 @@ namespace Microsoft.Azure.Commands.Common
             return string.Empty;
         }
 
-        static IAzureContext GetDefaultContext(IProfileProvider provider, Dictionary<string, object> boundParameters)
+        static IAzureContext GetDefaultContext(IProfileProvider provider, System.Management.Automation.InvocationInfo invocationInfo)
         {
             IAzureContextContainer context;
             var contextConverter = new AzureContextConverter();
-            if (boundParameters.ContainsKey("DefaultContext")
-                && contextConverter.CanConvertFrom(boundParameters["DefaultContext"], typeof(IAzureContextContainer)))
+            if (invocationInfo.BoundParameters.ContainsKey("DefaultContext")
+                && contextConverter.CanConvertFrom(invocationInfo.BoundParameters["DefaultContext"], typeof(IAzureContextContainer)))
             {
-                context = contextConverter.ConvertFrom(boundParameters["DefaultContext"], typeof(IAzureContextContainer), CultureInfo.InvariantCulture, true) as IAzureContextContainer;
+                context = contextConverter.ConvertFrom(invocationInfo.BoundParameters["DefaultContext"], typeof(IAzureContextContainer), CultureInfo.InvariantCulture, true) as IAzureContextContainer;
             }
             else
             {
