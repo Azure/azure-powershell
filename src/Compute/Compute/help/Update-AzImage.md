@@ -19,15 +19,19 @@ Update-AzImage [-ResourceGroupName] <String> [-ImageName] <String> [-Image] <PSI
 
 ## DESCRIPTION
 The **Update-AzImage** cmdlet updates an image.
+Currently, only the Tags can be updated.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' | Remove-AzImageDataDisk -Lun 1 | Update-AzImage;
+PS C:\> $image = Get-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' 
+PS C:\> $image.Tags = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]";
+PS C:\> $image.Tags.Add("key1", "val1");
+PS C:\> Update-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' -Image $image;
 ```
 
-This command removes the data disk of logical unit number 1 from the existing image 'Image01' in the resource group 'ResourceGroup01'.
+This command updates the Tag value of the existing image 'Image01' in the resource group 'ResourceGroup01'.
 
 ## PARAMETERS
 

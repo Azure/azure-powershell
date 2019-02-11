@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            ModelAdapter = InitModelAdapter(DefaultProfile.DefaultContext.Subscription);
+            ModelAdapter = InitModelAdapter();
 
             WriteObject(GetDatabase());
         }

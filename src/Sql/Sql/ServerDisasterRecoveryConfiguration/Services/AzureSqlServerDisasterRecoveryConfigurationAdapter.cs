@@ -40,11 +40,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         public IAzureContext Context { get; set; }
 
         /// <summary>
-        /// Gets or sets the Azure Subscription
-        /// </summary>
-        private IAzureSubscription _subscription { get; set; }
-
-        /// <summary>
         /// Constructs a Server Disaster Recovery Configuration adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
@@ -52,7 +47,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         public AzureSqlServerDisasterRecoveryConfigurationAdapter(IAzureContext context)
         {
             Context = context;
-            _subscription = context.Subscription;
             Communicator = new AzureSqlServerDisasterRecoveryConfigurationCommunicator(Context);
         }
 

@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         public SqlAdvancedThreatProtectionAdapter(IAzureContext context)
         {
             Context = context;
-            Subscription = context.Subscription;
+            Subscription = context?.Subscription;
             SqlThreatDetectionAdapter = new SqlThreatDetectionAdapter(Context);
         }
 

@@ -63,13 +63,12 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            var tenant = TenantId;
             if (!string.IsNullOrWhiteSpace(this.SubscriptionName))
             {
                 IAzureSubscription result;
                 try
                 {
-                    if (!this._client.TryGetSubscriptionByName(tenant, this.SubscriptionName, out result))
+                    if (!this._client.TryGetSubscriptionByName(TenantId, this.SubscriptionName, out result))
                     {
                         ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionName);
                     }
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Commands.Profile
                 }
                 catch (AadAuthenticationException exception)
                 {
-                    ThrowTenantAuthenticationError(tenant, exception);
+                    ThrowTenantAuthenticationError(TenantId, exception);
                     throw;
                 }
 
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Commands.Profile
                 IAzureSubscription result;
                 try
                 {
-                    if (!this._client.TryGetSubscriptionById(tenant, this.SubscriptionId, out result))
+                    if (!this._client.TryGetSubscriptionById(TenantId, this.SubscriptionId, out result))
                     {
                         ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionId);
                     }
@@ -97,7 +96,7 @@ namespace Microsoft.Azure.Commands.Profile
                 }
                 catch (AadAuthenticationException exception)
                 {
-                    ThrowTenantAuthenticationError(tenant, exception);
+                    ThrowTenantAuthenticationError(TenantId, exception);
                     throw;
                 }
 
@@ -108,26 +107,26 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     if (DefaultContext.Account.Type.Equals("ManagedService"))
                     {
-                        if (tenant == null)
+                        if (TenantId == null)
                         {
-                            tenant = DefaultContext.Tenant.Id;
+                            TenantId = DefaultContext.Tenant.Id;
                         }
 
-                        if (tenant.Equals(DefaultContext.Tenant.Id))
+                        if (TenantId.Equals(DefaultContext.Tenant.Id))
                         {
-                            var subscriptions = _client.ListSubscriptions(tenant);
+                            var subscriptions = _client.ListSubscriptions(TenantId);
                             WriteObject(subscriptions.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true);
                         }
                     }
                     else
                     {
-                        var subscriptions = _client.ListSubscriptions(tenant);
+                        var subscriptions = _client.ListSubscriptions(TenantId);
                         WriteObject(subscriptions.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true);
                     }
                 }
                 catch (AadAuthenticationException exception)
                 {
-                    ThrowTenantAuthenticationError(tenant, exception);
+                    ThrowTenantAuthenticationError(TenantId, exception);
                     throw;
                 }
             }

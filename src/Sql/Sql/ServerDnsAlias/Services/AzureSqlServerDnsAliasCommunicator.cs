@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Services
         public AzureSqlServerDnsAliasCommunicator(IAzureContext context)
 		{
 			Context = context;
-			if (context.Subscription != Subscription)
+			if (context?.Subscription != Subscription)
 			{
-				Subscription = context.Subscription;
+				Subscription = context?.Subscription;
 				SqlClient = null;
 			}
 		}
