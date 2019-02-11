@@ -65,6 +65,24 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
                 ServerName = InputObject == null ? ServerName : InputObject.ServerName,
                 DatabaseName = InputObject == null ? DatabaseName : InputObject.DatabaseName,
                 SensitivityLabels = new List<SensitivityLabel>()
+                {
+                    new SensitivityLabel
+                    {
+                        ColumnName = "column1",
+                        TableName = "table1",
+                        SchemaName = "schema1",
+                        LabelName = "label1",
+                        InformationType = "informationType1"
+                    },
+                    new SensitivityLabel
+                    {
+                        ColumnName = "column2",
+                        TableName = "table2",
+                        SchemaName = "schema2",
+                        LabelName = "label2",
+                        InformationType = "informationType2"
+                    }
+                }
             };
 
             return model;
@@ -72,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override DataClassificationAdapter InitModelAdapter()
         {
-            throw new System.NotImplementedException();
+            return new DataClassificationAdapter();
         }
     }
 }

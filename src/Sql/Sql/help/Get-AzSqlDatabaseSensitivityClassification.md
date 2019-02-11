@@ -2,42 +2,71 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabasesensitivityclassification
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/Get-azsqldatabasesensitivityclassification
 schema: 2.0.0
 ---
 
-# Set-AzSqlDatabaseSensitivityClassification
+# Get-AzSqlDatabaseSensitivityClassification
 
 ## SYNOPSIS
+Gets the current sensitivity labels and information types of columns in the database.
 
 ## SYNTAX
 
+### DatabaseParameterSet
+```
+Get-AzSqlDatabaseSensitivityClassification [-ResourceGroupName] <String> [-ServerName] <String>
+ [-DatabaseName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ColumnParameterSet
 ```
-Set-AzSqlDatabaseSensitivityClassification [-ResourceGroupName] <String> [-ServerName] <String>
- [-DatabaseName] <String> -SchemaName <String> -TableName <String> -ColumnName <String> [-LabelName <String>]
- [-InformationType <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzSqlDatabaseSensitivityClassification [-ResourceGroupName] <String> [-ServerName] <String>
+ [-DatabaseName] <String> -SchemaName <String> -TableName <String> -ColumnName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentResourceParameterSet
 ```
-Set-AzSqlDatabaseSensitivityClassification -InputObject <SqlDatabaseSensitivityClassificationModel>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzSqlDatabaseSensitivityClassification -InputObject <AzureSqlDatabaseModel> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ParentResourceColumnParameterSet
+```
+Get-AzSqlDatabaseSensitivityClassification -InputObject <AzureSqlDatabaseModel> -SchemaName <String>
+ -TableName <String> -ColumnName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+The Get-AzSqlDatabaseSensitivityClassification cmdlet gets the current sensitivity labels and information types of columns in the database.
 
 ## EXAMPLES
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ColumnName
 Name of column.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet
+Parameter Sets: ColumnParameterSet, ParentResourceColumnParameterSet
 Aliases:
 
 Required: True
@@ -52,7 +81,7 @@ SQL Database name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet
+Parameter Sets: DatabaseParameterSet, ColumnParameterSet
 Aliases:
 
 Required: True
@@ -77,27 +106,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationType
-A name that describes the information type of the data  stored in the column.
-
-```yaml
-Type: System.String
-Parameter Sets: ColumnParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -InputObject
 An object representing a SQL Database Sensitivity Classification
 
 ```yaml
-Type: Microsoft.Azure.Commands.Sql.DataClassification.Model.SqlDatabaseSensitivityClassificationModel
-Parameter Sets: ParentResourceParameterSet
+Type: Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+Parameter Sets: ParentResourceParameterSet, ParentResourceColumnParameterSet
 Aliases:
 
 Required: True
@@ -107,27 +121,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LabelName
-A name that describes the sensitivity of the data  stored in the column.
-
-```yaml
-Type: System.String
-Parameter Sets: ColumnParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet
+Parameter Sets: DatabaseParameterSet, ColumnParameterSet
 Aliases:
 
 Required: True
@@ -142,7 +141,7 @@ Name of schema.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet
+Parameter Sets: ColumnParameterSet, ParentResourceColumnParameterSet
 Aliases:
 
 Required: True
@@ -157,7 +156,7 @@ SQL server name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet
+Parameter Sets: DatabaseParameterSet, ColumnParameterSet
 Aliases:
 
 Required: True
@@ -172,7 +171,7 @@ Name of table.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet
+Parameter Sets: ColumnParameterSet, ParentResourceColumnParameterSet
 Aliases:
 
 Required: True
@@ -182,42 +181,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Sql.DataClassification.Model.SqlDatabaseSensitivityClassificationModel
 
 ## NOTES
 
