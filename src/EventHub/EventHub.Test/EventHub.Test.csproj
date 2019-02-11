@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>EventHubs</PsModuleName>
@@ -13,11 +13,4 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.4.0" />
   </ItemGroup>
-
-  <ItemGroup>
-    <None Update="ScenarioTests\EventHubsTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
