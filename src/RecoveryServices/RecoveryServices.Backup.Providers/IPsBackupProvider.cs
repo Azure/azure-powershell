@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         RestAzureNS.AzureOperationResponse DisableProtection();
 
+        RestAzureNS.AzureOperationResponse DisableProtectionWithDeleteData();
+
         RestAzureNS.AzureOperationResponse TriggerBackup();
 
         RestAzureNS.AzureOperationResponse TriggerRestore();
@@ -60,5 +62,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         RPMountScriptDetails ProvisionItemLevelRecoveryAccess();
 
         void RevokeItemLevelRecoveryAccess();
+
+        void RegisterContainer();
+
+        List<PointInTimeBase> GetLogChains();
     }
 }
