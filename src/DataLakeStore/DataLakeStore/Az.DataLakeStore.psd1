@@ -102,7 +102,9 @@ CmdletsToExport = 'Get-AzDataLakeStoreTrustedIdProvider',
                'Set-AzDataLakeStoreItemOwner', 'Set-AzDataLakeStoreItemPermission', 
                'Test-AzDataLakeStoreAccount', 'Test-AzDataLakeStoreItem', 
                'Export-AzDataLakeStoreChildItemProperties', 
-               'Get-AzDataLakeStoreChildItemSummary'
+               'Get-AzDataLakeStoreChildItemSummary',
+               'Get-AzDataLakeStoreDeletedItem',
+               'Restore-AzDataLakeStoreDeletedItem'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -126,7 +128,8 @@ AliasesToExport = 'Get-AdlStoreTrustedIdProvider', 'Remove-AdlStoreTrustedIdProv
                'Set-AdlStore', 'Set-AdlStoreItemAcl', 'Set-AdlStoreItemExpiry', 
                'Set-AdlStoreItemOwner', 'Set-AdlStoreItemPermission', 
                'Test-AdlStore', 'Test-AdlStoreItem', 'Get-AdlStoreChildItemSummary', 
-               'Export-AdlStoreChildItemProperties'
+               'Export-AdlStoreChildItemProperties',
+               'Get-AdlStoreDeletedItem', 'Restore-AdlStoreDeletedItem'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
