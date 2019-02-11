@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlRecoverableManagedDatabaseAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlRecoverableManagedDatabaseAdapter InitModelAdapter()
         {
             return new AzureSqlRecoverableManagedDatabaseAdapter(DefaultProfile.DefaultContext);
         }
