@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public string TokenType { get; set; }
 
         [JsonIgnore]
-        public DateTime CreationDate { get; } = DateTime.UtcNow;
+        public DateTimeOffset CreationDate { get; } = DateTimeOffset.Now;
 
         public override string ToString()
         {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public bool IsExpired()
         {
-            return DateTime.UtcNow - CreationDate > (TimeSpan.FromSeconds(ExpiresIn) - TimeoutThreshold);
+            return DateTimeOffset.Now - CreationDate > (TimeSpan.FromSeconds(ExpiresIn) - TimeoutThreshold);
         }
     }
 }

@@ -81,7 +81,7 @@ Adds a backend address pool configuration to a load balancer.
 Adds a front-end IP configuration to a load balancer.
 
 ### [Add-AzLoadBalancerInboundNatPoolConfig](Add-AzLoadBalancerInboundNatPoolConfig.md)
-
+Adds an inbound NAT pool to a load balancer.
 
 ### [Add-AzLoadBalancerInboundNatRuleConfig](Add-AzLoadBalancerInboundNatRuleConfig.md)
 Adds an inbound NAT rule configuration to a load balancer.
@@ -169,6 +169,9 @@ Gets the HTTP listener of an application gateway.
 
 ### [Get-AzApplicationGatewayHttpListenerCustomError](Get-AzApplicationGatewayHttpListenerCustomError.md)
 Gets custom error(s) from a http listener of an application gateway.
+
+### [Get-AzApplicationGatewayIdentity](Get-AzApplicationGatewayIdentity.md)
+Get identity assigned to the application gateway.
 
 ### [Get-AzApplicationGatewayIPConfiguration](Get-AzApplicationGatewayIPConfiguration.md)
 Gets the IP configuration of an application gateway.
@@ -303,7 +306,7 @@ Gets a backend address pool configuration for a load balancer.
 Gets a front-end IP configuration in a load balancer.
 
 ### [Get-AzLoadBalancerInboundNatPoolConfig](Get-AzLoadBalancerInboundNatPoolConfig.md)
-
+Gets one or more inbound NAT pool configurations from a load balancer.
 
 ### [Get-AzLoadBalancerInboundNatRuleConfig](Get-AzLoadBalancerInboundNatRuleConfig.md)
 Gets an inbound NAT rule configuration for a load balancer.
@@ -521,6 +524,9 @@ Creates a front-end port for an application gateway.
 ### [New-AzApplicationGatewayHttpListener](New-AzApplicationGatewayHttpListener.md)
 Creates an HTTP listener for an application gateway.
 
+### [New-AzApplicationGatewayIdentity](New-AzApplicationGatewayIdentity.md)
+Creates an identity object for an application gateway. This will hold reference to the user assigned identity.
+
 ### [New-AzApplicationGatewayIPConfiguration](New-AzApplicationGatewayIPConfiguration.md)
 Creates an IP configuration for an application gateway.
 
@@ -636,7 +642,7 @@ Creates a backend address pool configuration for a load balancer.
 Creates a front-end IP configuration for a load balancer.
 
 ### [New-AzLoadBalancerInboundNatPoolConfig](New-AzLoadBalancerInboundNatPoolConfig.md)
-
+Creates an inbound NAT pool configuration for a load balancer.
 
 ### [New-AzLoadBalancerInboundNatRuleConfig](New-AzLoadBalancerInboundNatRuleConfig.md)
 Creates an inbound NAT rule configuration for a load balancer.
@@ -805,6 +811,9 @@ Removes an HTTP listener from an application gateway.
 ### [Remove-AzApplicationGatewayHttpListenerCustomError](Remove-AzApplicationGatewayHttpListenerCustomError.md)
 Removes a custom error from a http listener of an application gateway.
 
+### [Remove-AzApplicationGatewayIdentity](Remove-AzApplicationGatewayIdentity.md)
+Removes a identity from an application gateway.
+
 ### [Remove-AzApplicationGatewayIPConfiguration](Remove-AzApplicationGatewayIPConfiguration.md)
 Removes an IP configuration from an application gateway.
 
@@ -878,7 +887,7 @@ Removes a backend address pool configuration from a load balancer.
 Removes a front-end IP configuration from a load balancer.
 
 ### [Remove-AzLoadBalancerInboundNatPoolConfig](Remove-AzLoadBalancerInboundNatPoolConfig.md)
-
+Removes an inbound NAT pool configuration from a load balancer.
 
 ### [Remove-AzLoadBalancerInboundNatRuleConfig](Remove-AzLoadBalancerInboundNatRuleConfig.md)
 Removes an inbound NAT rule configuration from a load balancer.
@@ -1039,6 +1048,9 @@ Modifies an HTTP listener for an application gateway.
 ### [Set-AzApplicationGatewayHttpListenerCustomError](Set-AzApplicationGatewayHttpListenerCustomError.md)
 Updates a custom error in a http listener of an application gateway.
 
+### [Set-AzApplicationGatewayIdentity](Set-AzApplicationGatewayIdentity.md)
+Updates a identity assigned to the application gateway.
+
 ### [Set-AzApplicationGatewayIPConfiguration](Set-AzApplicationGatewayIPConfiguration.md)
 Modifies an IP configuration for an application gateway.
 
@@ -1100,7 +1112,7 @@ Sets the goal state for a load balancer.
 Sets the goal state for a front-end IP configuration in a load balancer.
 
 ### [Set-AzLoadBalancerInboundNatPoolConfig](Set-AzLoadBalancerInboundNatPoolConfig.md)
-
+Sets an inbound NAT pool configuration for a load balancer.
 
 ### [Set-AzLoadBalancerInboundNatRuleConfig](Set-AzLoadBalancerInboundNatRuleConfig.md)
 Sets an inbound NAT rule configuration for a load balancer.

@@ -23,6 +23,17 @@ The **Remove-AzApplicationGatewayUrlPathMapConfig** cmdlet removes URL path mapp
 
 ## EXAMPLES
 
+### Example 1: Remove an URL path mapping from an application gateway
+```
+PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
+PS C:\> $appgw = Remove-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name "map01"
+PS C:\> $appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+```
+
+The first command gets the application gateway named appGwName and stores the result in the $appgw variable.
+The second command removes the URL path mapping named map01 from the application gateway.
+The third command updates the application gateway.
+
 ## PARAMETERS
 
 ### -ApplicationGateway
