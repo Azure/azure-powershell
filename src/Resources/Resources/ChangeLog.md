@@ -18,8 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix for issue https://github.com/Azure/azure-powershell/issues/8166
-* Fix for issue https://github.com/Azure/azure-powershell/issues/8235
+
+## Version 1.1.2
+* Fix tagging for resource groups 
+    - More information here: https://github.com/Azure/azure-powershell/issues/8166
+* Fix issue where `Get-AzureRmRoleAssignment` doesn't respect -ErrorAction 
+    - More information here: https://github.com/Azure/azure-powershell/issues/8235
 
 ## Version 1.1.1
 * Fix incorrect examples in `New-AzADAppCredential` and `New-AzADSpCredential` reference documentation
