@@ -665,7 +665,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
               "TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
@@ -1182,7 +1182,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentOperation, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentOperation, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StatusMessage": "System.Object",
               "Id": "System.String",
@@ -1276,7 +1276,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
               "TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
@@ -1555,7 +1555,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
                     "TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
@@ -1816,7 +1816,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
               "TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
@@ -4233,7 +4233,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
               "TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
@@ -4741,7 +4741,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
                     "TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
@@ -5098,7 +5098,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplatePath",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplatePath, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplatePath, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Path": "System.String"
             },
@@ -5171,7 +5171,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
               "TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
@@ -5512,7 +5512,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
                     "TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
@@ -5929,7 +5929,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
               "TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
@@ -6371,7 +6371,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
                     "TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
@@ -6680,7 +6680,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Details": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]",
               "Code": "System.String",
@@ -8306,7 +8306,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FeatureName": "System.String",
               "ProviderName": "System.String",
@@ -8689,7 +8689,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FeatureName": "System.String",
               "ProviderName": "System.String",
@@ -8918,7 +8918,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderLocation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderLocation, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderLocation, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Providers": "System.Collections.Generic.List`1[System.String]",
               "DisplayName": "System.String",
@@ -10797,7 +10797,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -11177,7 +11177,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11529,7 +11529,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11833,7 +11833,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12113,7 +12113,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12441,7 +12441,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12793,7 +12793,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13046,7 +13046,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13326,7 +13326,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15234,7 +15234,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15614,7 +15614,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15966,7 +15966,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16270,7 +16270,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16550,7 +16550,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16878,7 +16878,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17230,7 +17230,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17483,7 +17483,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17763,7 +17763,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19170,7 +19170,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19532,7 +19532,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19903,7 +19903,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -20295,7 +20295,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -23847,7 +23847,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.PsResourceProviderAlias",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.PsResourceProviderAlias, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.PsResourceProviderAlias, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Aliases": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ResourceManager.Models.AliasType]",
               "Locations": "System.Collections.Generic.IList`1[System.String]",
@@ -38442,7 +38442,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceTypes": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
               "ZoneMappings": "System.Collections.Hashtable",
@@ -39031,7 +39031,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceTypes": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
               "ZoneMappings": "System.Collections.Hashtable",
@@ -39304,7 +39304,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceTypes": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
               "ZoneMappings": "System.Collections.Hashtable",
@@ -39577,7 +39577,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
               "OnErrorDeployment": "Microsoft.Azure.Management.ResourceManager.Models.OnErrorDeploymentExtended",
@@ -40464,7 +40464,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
               "OnErrorDeployment": "Microsoft.Azure.Management.ResourceManager.Models.OnErrorDeploymentExtended",
@@ -46053,7 +46053,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Details": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]",
               "Code": "System.String",
@@ -49638,7 +49638,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -50280,7 +50280,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -50688,7 +50688,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -51296,7 +51296,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Identity": "Microsoft.Azure.Management.ResourceManager.Models.Identity",
               "Plan": "Microsoft.Azure.Management.ResourceManager.Models.Plan",
@@ -57397,7 +57397,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Identity": "Microsoft.Azure.Management.ResourceManager.Models.Identity",
               "Plan": "Microsoft.Azure.Management.ResourceManager.Models.Plan",
@@ -57843,7 +57843,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Management.ResourceManager.Models.Identity",
                     "Plan": "Microsoft.Azure.Management.ResourceManager.Models.Plan",
@@ -60277,7 +60277,7 @@
     "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable]",
-      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -60290,7 +60290,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Value": "System.Object",
         "Type": "System.String"
@@ -60355,7 +60355,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -60367,7 +60367,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Details": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]",
         "Code": "System.String",
@@ -60578,7 +60578,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[], Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[], Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType",
       "GenericTypeArguments": [],
@@ -60588,7 +60588,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ZoneMappings": "System.Collections.Hashtable",
         "ResourceTypeName": "System.String",
