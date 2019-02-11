@@ -28,7 +28,10 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
             {
                 string name = property.Name;
                 object value = property.GetValue(this);
-                builder.AppendLine($"\t{name}: {value},");
+                if (value != null)
+                {
+                    builder.AppendLine($"\t{name}: {value},");
+                }
             }
             builder.Append("}");
 
