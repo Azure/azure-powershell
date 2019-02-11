@@ -21,7 +21,7 @@
 
 ## Version 0.10.2
 - General bug fixes.
-- Rename cmdlet Get-AzVMGuestPolicyStatus to Get-AzVMGuestPolicyStatus to keep it consistent with the Azure portal and to avoid user confusion.
+- Rename cmdlet Get-AzVMGuestPolicyReport to Get-AzVMGuestPolicyStatus to keep it consistent with the Azure portal and to avoid user confusion.
 
 ## Version 0.10.1
 * Initial release of Az.GuestConfiguration module. Provides these two cmdlets.

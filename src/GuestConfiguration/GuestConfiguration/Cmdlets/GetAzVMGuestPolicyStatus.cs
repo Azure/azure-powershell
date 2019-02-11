@@ -20,14 +20,12 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
     using Microsoft.Azure.Commands.GuestConfiguration.Common;
     using Microsoft.Azure.Commands.GuestConfiguration.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.Azure.Commands.GuestConfiguration.Helpers;
 
     /// <summary>
     /// Gets Vm Guest Policy reports (GuestConfiguration policy reports)
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "VMGuestPolicyStatus", DefaultParameterSetName = ParameterSetNames.VmNameScope)]
     [OutputType(typeof(PolicyStatusDetailed))]
-    [OutputType(typeof(PolicyStatusDetailed[]))]
     public class GetAzVMGuestPolicyStatus : GuestConfigurationCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.VmNameScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.ResourceGroupName)]

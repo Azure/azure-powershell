@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "VMGuestPolicyStatusHistory", DefaultParameterSetName = ParameterSetNames.VmNameScope)]
     [OutputType(typeof(PolicyStatus))]
-    [OutputType(typeof(PolicyStatus[]))]
     public class GetAzVMGuestPolicyStatusHistory : GuestConfigurationCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.VmNameScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
