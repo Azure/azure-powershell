@@ -1,11 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
   <PropertyGroup>
     <PsModuleName>DataMigration</PsModuleName>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>2.0</OldToolsVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
   <PropertyGroup>
