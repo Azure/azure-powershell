@@ -130,28 +130,12 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
                 {
                     new SensitivityLabel
                     {
-                        SchemaName = "schema1",
-                        TableName = "table1",
-                        ColumnName = "column1",
-                        LabelName = "label1",
-                        InformationType = "informationType1"
-                    },
-                    new SensitivityLabel
-                    {
-                        SchemaName = "schema2",
-                        TableName = "table2",
-                        ColumnName = "column2",
-                        LabelName = "label2",
-                        InformationType = null
-                    },
-                    new SensitivityLabel
-                    {
-                        SchemaName = "schema3",
-                        TableName = "table3",
-                        ColumnName = "column3",
-                        LabelName = "label3",
-                        InformationType = null
-                    },
+                        SchemaName = "schema",
+                        TableName = "table",
+                        ColumnName = "column",
+                        LabelName = "label",
+                        InformationType = "informationType"
+                    }
                 }
             };
 
@@ -160,7 +144,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override DataClassificationAdapter InitModelAdapter()
         {
-            throw new NotImplementedException();
+            return new DataClassificationAdapter(DefaultProfile.DefaultContext);
         }
     }
 }
