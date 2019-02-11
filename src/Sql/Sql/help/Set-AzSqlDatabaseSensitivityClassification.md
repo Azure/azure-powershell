@@ -9,6 +9,7 @@ schema: 2.0.0
 # Set-AzSqlDatabaseSensitivityClassification
 
 ## SYNOPSIS
+Sets the sensitivity labels and information types of columns in the database.
 
 ## SYNTAX
 
@@ -16,21 +17,47 @@ schema: 2.0.0
 ```
 Set-AzSqlDatabaseSensitivityClassification [-ResourceGroupName] <String> [-ServerName] <String>
  [-DatabaseName] <String> -SchemaName <String> -TableName <String> -ColumnName <String> [-LabelName <String>]
- [-InformationType <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-InformationType <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentResourceParameterSet
 ```
-Set-AzSqlDatabaseSensitivityClassification -InputObject <SqlDatabaseSensitivityClassificationModel>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSqlDatabaseSensitivityClassification -InputObject <SqlDatabaseSensitivityClassificationModel> [-PassThru]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+The Set-AzSqlDatabaseSensitivityClassification cmdlet sets the sensitivity labels and information types of columns in the database.
 
 ## EXAMPLES
 
+### Example 1: Set sensitivity classification of a column in an Azure SQL database.
+```powershell
+PS C:\> Set-AzSqlDatabaseSensitivityClassification -ResourceGroupName resourceGroup -ServerName server -DatabaseName database -SchemaName schema -TableName table -ColumnName column -InformationType informationType -LabelName label
+```
+
+### Example 2: Set recommended sensitivity classification of columns in an Azure SQL database.
+```powershell
+PS C:\> Get-AzSqlDatabaseSensitivityRecommendations -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Set-AzSqlDatabaseSensitivityClassification
+```
+
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ColumnName
 Name of column.
@@ -48,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Database.
 
 ```yaml
 Type: System.String
@@ -78,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -InformationType
-A name that describes the information type of the data  stored in the column.
+A name that describes the information type of the data stored in the column.
 
 ```yaml
 Type: System.String
@@ -93,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-An object representing a SQL Database Sensitivity Classification
+An object representing a SQL Database Sensitivity Classification.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.DataClassification.Model.SqlDatabaseSensitivityClassificationModel
@@ -108,7 +135,7 @@ Accept wildcard characters: False
 ```
 
 ### -LabelName
-A name that describes the sensitivity of the data  stored in the column.
+A name that describes the sensitivity of the data stored in the column.
 
 ```yaml
 Type: System.String
@@ -119,6 +146,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Specifies whether to output the sensitivity classification model at end of cmdlet execution
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -216,6 +258,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.Commands.Sql.DataClassification.Model.SqlDatabaseSensitivityClassificationModel
 
 ## OUTPUTS
 

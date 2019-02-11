@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification
         internal const string SqlDatabaseInputObjectHelpMessage = "The SQL database object.";
         internal const string ManagedDatabaseInputObjectHelpMessage = "The SQL instance database object.";
         internal const string SqlDatabaseSensitivityClassificationInputObjectHelpMessage = "An object representing a SQL Database Sensitivity Classification.";
-        internal const string ManagedDatabaseSensitivityClassificationInputObjectHelpMessage = "An object representing a SQL Managed Database Sensitivity Classification.";
+        internal const string ManagedDatabaseSensitivityClassificationInputObjectHelpMessage = "An object representing a SQL Managed Instance Database Sensitivity Classification.";
         internal const string PassThruHelpMessage = "Specifies whether to output the sensitivity classification model at end of cmdlet execution";
         internal const string AsJobHelpMessage = "Run cmdlet in the background";
         internal const string SchemaNameHelpMessage = "Name of schema.";

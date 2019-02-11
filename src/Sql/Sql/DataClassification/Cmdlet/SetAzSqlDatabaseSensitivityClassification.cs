@@ -127,5 +127,10 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         {
             return new DataClassificationAdapter(DefaultProfile.DefaultContext);
         }
+
+        protected override bool WriteResult()
+        {
+            return PassThru;
+        }
     }
 }
