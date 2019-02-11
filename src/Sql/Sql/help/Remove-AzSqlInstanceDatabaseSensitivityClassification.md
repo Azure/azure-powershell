@@ -2,35 +2,62 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azmanageddatabasesensitivityclassification
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification
 schema: 2.0.0
 ---
 
-# Remove-AzManagedDatabaseSensitivityClassification
+# Remove-AzSqlInstanceDatabaseSensitivityClassification
 
 ## SYNOPSIS
+Removes the classification of columns in the database.
 
 ## SYNTAX
 
 ### ColumnParameterSet
 ```
-Set-AzSqlDatabaseSensitivityClassification [-ResourceGroupName] <String> [-ServerName] <String>
- [-DatabaseName] <String> -SchemaName <String> -TableName <String> -ColumnName <String> [-LabelName <String>]
- [-InformationType <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzSqlInstanceDatabaseSensitivityClassification [-ResourceGroupName] <String> [-InstanceName] <String>
+ [-DatabaseName] <String> -SchemaName <String> -TableName <String> -ColumnName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentResourceParameterSet
 ```
-Set-AzSqlDatabaseSensitivityClassification -InputObject <SqlDatabaseSensitivityClassificationModel>
+Remove-AzSqlInstanceDatabaseSensitivityClassification
+ -InputObject <ManagedDatabaseSensitivityClassificationModel> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+The Remove-AzSqlInstanceDatabaseSensitivityClassification cmdlet removes the classification of columns in the database.
 
 ## EXAMPLES
 
+### Example 1: Remove sensitivity classification of a column in an Azure SQL Managed Instance database.
+```powershell
+PS C:\> Remove-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database -SchemaName schema -TableName table -ColumnName column
+```
+
+### Example 2: Remove current sensitivity classification of columns in an Azure SQL Managed Instance database.
+```powershell
+PS C:\> Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database | Remove-AzSqlInstanceDatabaseSensitivityClassification
+```
+
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ColumnName
 Name of column.
@@ -48,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Instance Database.
 
 ```yaml
 Type: System.String
@@ -77,26 +104,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationType
-A name that describes the information type of the data  stored in the column.
-
-```yaml
-Type: System.String
-Parameter Sets: ColumnParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -InputObject
-An object representing a SQL Database Sensitivity Classification
+The SQL database object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Sql.DataClassification.Model.SqlDatabaseSensitivityClassificationModel
+Type: Microsoft.Azure.Commands.Sql.DataClassification.Model.ManagedDatabaseSensitivityClassificationModel
 Parameter Sets: ParentResourceParameterSet
 Aliases:
 
@@ -107,16 +119,16 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LabelName
-A name that describes the sensitivity of the data  stored in the column.
+### -InstanceName
+SQL Managed Instance name.
 
 ```yaml
 Type: System.String
 Parameter Sets: ColumnParameterSet
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -147,21 +159,6 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ServerName
-SQL server name.
-
-```yaml
-Type: System.String
-Parameter Sets: ColumnParameterSet
-Aliases:
-
-Required: True
-Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -216,6 +213,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.Commands.Sql.DataClassification.Model.ManagedDatabaseSensitivityClassificationModel
 
 ## OUTPUTS
 
