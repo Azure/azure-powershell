@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override DataClassificationAdapter InitModelAdapter()
         {
-            throw new System.NotImplementedException();
+            return new DataClassificationAdapter();
         }
     }
 }
