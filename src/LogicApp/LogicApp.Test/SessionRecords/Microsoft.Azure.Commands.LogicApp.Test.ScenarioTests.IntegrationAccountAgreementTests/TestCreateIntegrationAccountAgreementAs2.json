@@ -1,85 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps9802?api-version=2018-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzOTgwMj9hcGktdmVyc2lvbj0yMDE4LTA1LTAx",
-      "RequestMethod": "HEAD",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "3a49e937-b1d2-4dc5-ac15-ac69e436794a"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.26606.02",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.9.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
-        ],
-        "x-ms-request-id": [
-          "796a21e9-5f7c-41d5-aab5-cd154a4e8441"
-        ],
-        "x-ms-correlation-request-id": [
-          "796a21e9-5f7c-41d5-aab5-cd154a4e8441"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013243Z:796a21e9-5f7c-41d5-aab5-cd154a4e8441"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 03 Jan 2019 01:32:42 GMT"
-        ],
-        "Content-Length": [
-          "98"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps9802?api-version=2018-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzOTgwMj9hcGktdmVyc2lvbj0yMDE4LTA1LTAx",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourcegroups/ps5060?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlZ3JvdXBzL3BzNTA2MD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"brazilsouth\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "86468cf8-e7c3-4bbc-b9e3-11bf0f6870f3"
+          "2361c8c8-708f-43e5-a066-880a5985de74"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.9.1.0"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.16"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -96,16 +33,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1199"
         ],
         "x-ms-request-id": [
-          "25cd8e55-747d-4142-a9e2-cd5927d00e1f"
+          "7faca57e-cd6d-42b4-9f82-e24089424d87"
         ],
         "x-ms-correlation-request-id": [
-          "25cd8e55-747d-4142-a9e2-cd5927d00e1f"
+          "7faca57e-cd6d-42b4-9f82-e24089424d87"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013246Z:25cd8e55-747d-4142-a9e2-cd5927d00e1f"
+          "WESTUS2:20190131T213443Z:7faca57e-cd6d-42b4-9f82-e24089424d87"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -114,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:45 GMT"
+          "Thu, 31 Jan 2019 21:34:42 GMT"
         ],
         "Content-Length": [
           "170"
@@ -126,26 +63,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802\",\r\n  \"name\": \"ps9802\",\r\n  \"location\": \"brazilsouth\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060\",\r\n  \"name\": \"ps5060\",\r\n  \"location\": \"brazilsouth\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTc/YXBpLXZlcnNpb249MjAxOC0wNy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "24fbeeeb-3eb1-4980-a004-6639ded0689f"
+          "13057062-db84-4ffa-b7fc-dd4a36e85517"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -159,13 +96,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "ad8f0c13-ba10-4516-900a-d7d3b0088390"
+          "6f158d7b-c450-495f-a13e-33f644ff8936"
         ],
         "x-ms-correlation-request-id": [
-          "ad8f0c13-ba10-4516-900a-d7d3b0088390"
+          "6f158d7b-c450-495f-a13e-33f644ff8936"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013247Z:ad8f0c13-ba10-4516-900a-d7d3b0088390"
+          "WESTUS2:20190131T213443Z:6f158d7b-c450-495f-a13e-33f644ff8936"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -174,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:47 GMT"
+          "Thu, 31 Jan 2019 21:34:43 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -183,29 +120,29 @@
           "-1"
         ],
         "Content-Length": [
-          "152"
+          "151"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Logic/integrationAccounts/ps1225' under resource group 'ps9802' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Logic/integrationAccounts/ps617' under resource group 'ps5060' was not found.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTc/YXBpLXZlcnNpb249MjAxOC0wNy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "58689b07-24b3-4606-9aa9-4567484836d0"
+          "f2a4c515-5cfa-41fd-b6f1-865ec48f33e4"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -219,28 +156,28 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "brazilsouth:c5024dff-e491-4248-b58d-8d5c1ae98a22"
+          "brazilsouth:7cd2c547-d0c2-4c10-8985-c9b393d8bb73"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11940"
         ],
         "x-ms-correlation-request-id": [
-          "338b2936-986a-4de9-a485-8b0db71ba6e5"
+          "100fcf5b-5b90-41f4-bf13-e8f91ff04b81"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013252Z:338b2936-986a-4de9-a485-8b0db71ba6e5"
+          "WESTUS2:20190131T213447Z:100fcf5b-5b90-41f4-bf13-e8f91ff04b81"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:52 GMT"
+          "Thu, 31 Jan 2019 21:34:46 GMT"
         ],
         "Content-Length": [
-          "280"
+          "278"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -249,26 +186,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225\",\r\n  \"name\": \"ps1225\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617\",\r\n  \"name\": \"ps617\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTc/YXBpLXZlcnNpb249MjAxOC0wNy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "82119f01-0182-4aa5-8ef4-ceb37d3a4969"
+          "1a9bf98c-134c-4e18-9e0d-b40035984a8b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -282,28 +219,28 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "brazilsouth:ed0df3a7-b38a-41ac-88be-2545634962db"
+          "brazilsouth:5fd7f6d7-01a4-4df0-95aa-ba8fbdd9afe6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "11938"
         ],
         "x-ms-correlation-request-id": [
-          "701a1fe0-4bc4-4e1a-b9e3-ca1e1a3e0a71"
+          "61cc3b4f-beaf-4ce7-b2f7-000aa5ce70dc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013254Z:701a1fe0-4bc4-4e1a-b9e3-ca1e1a3e0a71"
+          "WESTUS2:20190131T213447Z:61cc3b4f-beaf-4ce7-b2f7-000aa5ce70dc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:53 GMT"
+          "Thu, 31 Jan 2019 21:34:47 GMT"
         ],
         "Content-Length": [
-          "280"
+          "278"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -312,26 +249,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225\",\r\n  \"name\": \"ps1225\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617\",\r\n  \"name\": \"ps617\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTc/YXBpLXZlcnNpb249MjAxOC0wNy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c2b0d61b-88f7-4d95-8db8-70ae73158057"
+          "501c94c1-3199-4add-ba2b-5a6181bc11f7"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -345,28 +282,28 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "brazilsouth:905aa808-c443-4358-b5d0-edc4f39bb5e5"
+          "brazilsouth:ce89a964-1336-43c3-ab8f-1b3f4a754742"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
+          "11936"
         ],
         "x-ms-correlation-request-id": [
-          "f6624d68-5f0c-4b98-a7d3-c18a503c4b5f"
+          "f8af41ca-1033-4f52-a4dd-63e0aea1d649"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013254Z:f6624d68-5f0c-4b98-a7d3-c18a503c4b5f"
+          "WESTUS2:20190131T213447Z:f8af41ca-1033-4f52-a4dd-63e0aea1d649"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:54 GMT"
+          "Thu, 31 Jan 2019 21:34:47 GMT"
         ],
         "Content-Length": [
-          "280"
+          "278"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -375,26 +312,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225\",\r\n  \"name\": \"ps1225\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617\",\r\n  \"name\": \"ps617\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTc/YXBpLXZlcnNpb249MjAxOC0wNy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "eea85730-0a18-47d8-813f-bd5152880b0b"
+          "b04bc010-8802-4726-9923-9e3d3eb78e12"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -408,28 +345,28 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "brazilsouth:b944f6d9-58ad-47bd-a016-f2120e084893"
+          "brazilsouth:2ae5833d-b7d6-4783-ba2e-e5fd7aefe7a8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
+          "11932"
         ],
         "x-ms-correlation-request-id": [
-          "7ec63609-8561-4292-b18b-c3efcdb36ceb"
+          "cc66b2d7-60df-462e-a9c3-346af813e200"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013256Z:7ec63609-8561-4292-b18b-c3efcdb36ceb"
+          "WESTUS2:20190131T213448Z:cc66b2d7-60df-462e-a9c3-346af813e200"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:55 GMT"
+          "Thu, 31 Jan 2019 21:34:47 GMT"
         ],
         "Content-Length": [
-          "280"
+          "278"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -438,26 +375,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225\",\r\n  \"name\": \"ps1225\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617\",\r\n  \"name\": \"ps617\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTc/YXBpLXZlcnNpb249MjAxOC0wNy0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"location\": \"brazilsouth\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cfddc201-d48f-44a8-9150-b2ae8c4b9ee8"
+          "62ca2f9c-24f7-4812-b163-1c49f1227843"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -474,28 +411,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:496acb04-7ce2-49d8-a6da-dec26ddc7288"
+          "brazilsouth:dae885c3-c512-4614-9834-23685f631d2b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1186"
         ],
         "x-ms-correlation-request-id": [
-          "ad365c00-1151-4a5d-be23-9a2d7bc94a0e"
+          "b507b39b-ce01-44bd-90ad-34794d580f8d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013252Z:ad365c00-1151-4a5d-be23-9a2d7bc94a0e"
+          "WESTUS2:20190131T213447Z:b507b39b-ce01-44bd-90ad-34794d580f8d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:51 GMT"
+          "Thu, 31 Jan 2019 21:34:46 GMT"
         ],
         "Content-Length": [
-          "280"
+          "278"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -504,26 +441,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225\",\r\n  \"name\": \"ps1225\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617\",\r\n  \"name\": \"ps617\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/partners/ps71?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1L3BhcnRuZXJzL3BzNzE/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/partners/ps2551?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTcvcGFydG5lcnMvcHMyNTUxP2FwaS12ZXJzaW9uPTIwMTgtMDctMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "38701da5-108f-4f68-8619-4b5379d8a7f8"
+          "25e7ac0a-cdc6-4efc-b5f0-750a4987dbe6"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -534,28 +471,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:a4666164-657c-435d-9d88-26b765d580fc"
+          "brazilsouth:5a8e26d6-e501-46fa-96b8-cdffa46c5df8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "11939"
         ],
         "x-ms-correlation-request-id": [
-          "3bd60d3f-081b-40a0-82df-b99325865c09"
+          "cf800563-aafd-4a26-a920-6cf8002a857c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013252Z:3bd60d3f-081b-40a0-82df-b99325865c09"
+          "WESTUS2:20190131T213447Z:cf800563-aafd-4a26-a920-6cf8002a857c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:52 GMT"
+          "Thu, 31 Jan 2019 21:34:47 GMT"
         ],
         "Content-Length": [
-          "119"
+          "120"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -564,26 +501,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PartnerNotFound\",\r\n    \"message\": \"The partner 'ps71' could not be found in integration account 'ps1225'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PartnerNotFound\",\r\n    \"message\": \"The partner 'ps2551' could not be found in integration account 'ps617'.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/partners/ps71?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1L3BhcnRuZXJzL3BzNzE/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/partners/ps2551?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTcvcGFydG5lcnMvcHMyNTUxP2FwaS12ZXJzaW9uPTIwMTgtMDctMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9b5b9ac7-1e36-43cb-af1c-4ab4c472b1f4"
+          "6df6270d-a0e5-4a11-9835-ee8e3b0dd35f"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -597,28 +534,28 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "brazilsouth:a95b9200-a170-47b7-9695-822dca8245a9"
+          "brazilsouth:82deb962-5463-405d-b98b-de71bfffaf8c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
+          "11935"
         ],
         "x-ms-correlation-request-id": [
-          "87ed1436-c7ae-4c98-9b14-1da814e70f4e"
+          "8d11995e-666e-4102-b4d7-b20228fef4e3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013255Z:87ed1436-c7ae-4c98-9b14-1da814e70f4e"
+          "WESTUS2:20190131T213447Z:8d11995e-666e-4102-b4d7-b20228fef4e3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:54 GMT"
+          "Thu, 31 Jan 2019 21:34:47 GMT"
         ],
         "Content-Length": [
-          "449"
+          "452"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -627,26 +564,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          {\r\n            \"qualifier\": \"BB\",\r\n            \"value\": \"BB\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-03T01:32:53.5971941Z\",\r\n    \"changedTime\": \"2019-01-03T01:32:53.5972941Z\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/partners/ps71\",\r\n  \"name\": \"ps71\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/partners\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          {\r\n            \"qualifier\": \"BB\",\r\n            \"value\": \"BB\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-31T21:34:47.5358823Z\",\r\n    \"changedTime\": \"2019-01-31T21:34:47.5367051Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/partners/ps2551\",\r\n  \"name\": \"ps2551\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/partners\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/partners/ps71?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1L3BhcnRuZXJzL3BzNzE/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/partners/ps2551?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTcvcGFydG5lcnMvcHMyNTUxP2FwaS12ZXJzaW9uPTIwMTgtMDctMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2ae942e0-946a-44d3-ba5c-9aab87d08451"
+          "36f6e5a0-f253-4919-b4c5-916387ec1046"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -660,28 +597,28 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "brazilsouth:77669b94-5f56-4783-a7e2-40d8f18cfa98"
+          "brazilsouth:de8779ff-fd4a-4d6a-bad7-e768bc5e80ce"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "11931"
         ],
         "x-ms-correlation-request-id": [
-          "2902aa10-4f6e-49cb-a93c-acd74e7948e2"
+          "06ecf571-2983-4484-88e5-0994489e8779"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013256Z:2902aa10-4f6e-49cb-a93c-acd74e7948e2"
+          "WESTUS2:20190131T213448Z:06ecf571-2983-4484-88e5-0994489e8779"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:56 GMT"
+          "Thu, 31 Jan 2019 21:34:47 GMT"
         ],
         "Content-Length": [
-          "449"
+          "452"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -690,26 +627,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          {\r\n            \"qualifier\": \"BB\",\r\n            \"value\": \"BB\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-03T01:32:53.5971941Z\",\r\n    \"changedTime\": \"2019-01-03T01:32:53.5972941Z\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/partners/ps71\",\r\n  \"name\": \"ps71\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/partners\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          {\r\n            \"qualifier\": \"BB\",\r\n            \"value\": \"BB\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-31T21:34:47.5358823Z\",\r\n    \"changedTime\": \"2019-01-31T21:34:47.5367051Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/partners/ps2551\",\r\n  \"name\": \"ps2551\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/partners\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/partners/ps71?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1L3BhcnRuZXJzL3BzNzE/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/partners/ps2551?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTcvcGFydG5lcnMvcHMyNTUxP2FwaS12ZXJzaW9uPTIwMTgtMDctMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          {\r\n            \"qualifier\": \"BB\",\r\n            \"value\": \"BB\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0172096f-cde2-411a-999a-b67d997d1b36"
+          "fe0f28eb-1a8c-4269-b1ac-d2db1fa65af5"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -726,28 +663,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:f91848f8-2f32-4f38-83cc-dd926b602ea2"
+          "brazilsouth:36d19816-9c67-48ee-84cf-ec70d6290c10"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1185"
         ],
         "x-ms-correlation-request-id": [
-          "443d9652-ec50-493c-b315-2883ab5f005d"
+          "d08c1df2-518b-4087-bd72-3e496bc7bd3c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013253Z:443d9652-ec50-493c-b315-2883ab5f005d"
+          "WESTUS2:20190131T213447Z:d08c1df2-518b-4087-bd72-3e496bc7bd3c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:53 GMT"
+          "Thu, 31 Jan 2019 21:34:47 GMT"
         ],
         "Content-Length": [
-          "449"
+          "452"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -756,26 +693,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          {\r\n            \"qualifier\": \"BB\",\r\n            \"value\": \"BB\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-03T01:32:53.5971941Z\",\r\n    \"changedTime\": \"2019-01-03T01:32:53.5972941Z\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/partners/ps71\",\r\n  \"name\": \"ps71\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/partners\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          {\r\n            \"qualifier\": \"BB\",\r\n            \"value\": \"BB\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-31T21:34:47.5358823Z\",\r\n    \"changedTime\": \"2019-01-31T21:34:47.5367051Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/partners/ps2551\",\r\n  \"name\": \"ps2551\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/partners\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/partners/ps5818?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1L3BhcnRuZXJzL3BzNTgxOD9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/partners/ps1014?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTcvcGFydG5lcnMvcHMxMDE0P2FwaS12ZXJzaW9uPTIwMTgtMDctMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "47dd920a-70a4-4981-aed6-a597e9401cbe"
+          "2bdff092-6f0e-495d-bdc5-a9f6078e83d6"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -786,28 +723,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:524bbcb7-e3c3-44f2-82bd-0c531ee0c0a7"
+          "brazilsouth:26a84a49-56a4-47e7-b9a3-30eaa13e9b67"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "11937"
         ],
         "x-ms-correlation-request-id": [
-          "4bb349a7-ad60-44b8-a81c-f5a43f5c4657"
+          "ee19b14e-cdf8-483f-85ab-f0e1a4ac9b54"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013254Z:4bb349a7-ad60-44b8-a81c-f5a43f5c4657"
+          "WESTUS2:20190131T213447Z:ee19b14e-cdf8-483f-85ab-f0e1a4ac9b54"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:53 GMT"
+          "Thu, 31 Jan 2019 21:34:47 GMT"
         ],
         "Content-Length": [
-          "121"
+          "120"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -816,26 +753,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PartnerNotFound\",\r\n    \"message\": \"The partner 'ps5818' could not be found in integration account 'ps1225'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PartnerNotFound\",\r\n    \"message\": \"The partner 'ps1014' could not be found in integration account 'ps617'.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/partners/ps5818?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1L3BhcnRuZXJzL3BzNTgxOD9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/partners/ps1014?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTcvcGFydG5lcnMvcHMxMDE0P2FwaS12ZXJzaW9uPTIwMTgtMDctMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "babaeab9-3bd6-43b4-bf11-4eaa3f9ef92c"
+          "e1f8533a-91e7-483e-a2e4-d32fcc5b0c43"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -849,28 +786,28 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "brazilsouth:298d4339-64fb-488b-875f-9317b8ccf5c9"
+          "brazilsouth:b088f70c-2390-445d-8e66-e056efe94ed6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
+          "11934"
         ],
         "x-ms-correlation-request-id": [
-          "f2d8beaa-ba9f-4310-842e-d666e4f61966"
+          "5a2bb6db-b28a-45db-8df2-e652d9de24e7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013255Z:f2d8beaa-ba9f-4310-842e-d666e4f61966"
+          "WESTUS2:20190131T213448Z:5a2bb6db-b28a-45db-8df2-e652d9de24e7"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:54 GMT"
+          "Thu, 31 Jan 2019 21:34:47 GMT"
         ],
         "Content-Length": [
-          "453"
+          "452"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -879,26 +816,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          {\r\n            \"qualifier\": \"XX\",\r\n            \"value\": \"XX\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-03T01:32:54.4535366Z\",\r\n    \"changedTime\": \"2019-01-03T01:32:54.4539309Z\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/partners/ps5818\",\r\n  \"name\": \"ps5818\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/partners\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          {\r\n            \"qualifier\": \"XX\",\r\n            \"value\": \"XX\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-31T21:34:47.8120818Z\",\r\n    \"changedTime\": \"2019-01-31T21:34:47.8121663Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/partners/ps1014\",\r\n  \"name\": \"ps1014\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/partners\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/partners/ps5818?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1L3BhcnRuZXJzL3BzNTgxOD9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/partners/ps1014?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTcvcGFydG5lcnMvcHMxMDE0P2FwaS12ZXJzaW9uPTIwMTgtMDctMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a66e8a30-eed8-4394-b1d4-f96f48413b53"
+          "b7ec42af-48dc-4df3-b532-df7ae39b83d6"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -912,28 +849,28 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "brazilsouth:1c7aab30-afd1-4b89-8bc2-1338492a7deb"
+          "brazilsouth:1b153270-66d2-40a6-a33a-44c77f0ba79a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11986"
+          "11930"
         ],
         "x-ms-correlation-request-id": [
-          "c8b20f35-29f2-4029-b0d1-c27f06f55270"
+          "d9d46387-8a2f-41f6-ab76-66a751e86175"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013256Z:c8b20f35-29f2-4029-b0d1-c27f06f55270"
+          "WESTUS2:20190131T213448Z:d9d46387-8a2f-41f6-ab76-66a751e86175"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:56 GMT"
+          "Thu, 31 Jan 2019 21:34:48 GMT"
         ],
         "Content-Length": [
-          "453"
+          "452"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -942,26 +879,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          {\r\n            \"qualifier\": \"XX\",\r\n            \"value\": \"XX\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-03T01:32:54.4535366Z\",\r\n    \"changedTime\": \"2019-01-03T01:32:54.4539309Z\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/partners/ps5818\",\r\n  \"name\": \"ps5818\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/partners\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          {\r\n            \"qualifier\": \"XX\",\r\n            \"value\": \"XX\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-31T21:34:47.8120818Z\",\r\n    \"changedTime\": \"2019-01-31T21:34:47.8121663Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/partners/ps1014\",\r\n  \"name\": \"ps1014\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/partners\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/partners/ps5818?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1L3BhcnRuZXJzL3BzNTgxOD9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/partners/ps1014?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTcvcGFydG5lcnMvcHMxMDE0P2FwaS12ZXJzaW9uPTIwMTgtMDctMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          {\r\n            \"qualifier\": \"XX\",\r\n            \"value\": \"XX\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "69efffa5-a3d1-4560-9c0a-ff35bb9b2695"
+          "59ba1af6-287e-48af-abe1-ea57bd5d3faf"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -978,28 +915,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:cc62bfaf-d289-485b-a8ff-2db5e177250e"
+          "brazilsouth:148e3e33-4b64-4832-a1f5-a4c1e8519d60"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1184"
         ],
         "x-ms-correlation-request-id": [
-          "d7b0c994-bb07-475a-bdf0-892cee645f67"
+          "f85c68ee-d013-4b0d-81f4-92b329f7fe9a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013254Z:d7b0c994-bb07-475a-bdf0-892cee645f67"
+          "WESTUS2:20190131T213447Z:f85c68ee-d013-4b0d-81f4-92b329f7fe9a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:54 GMT"
+          "Thu, 31 Jan 2019 21:34:47 GMT"
         ],
         "Content-Length": [
-          "453"
+          "452"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1008,26 +945,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          {\r\n            \"qualifier\": \"XX\",\r\n            \"value\": \"XX\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-03T01:32:54.4535366Z\",\r\n    \"changedTime\": \"2019-01-03T01:32:54.4539309Z\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/partners/ps5818\",\r\n  \"name\": \"ps5818\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/partners\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          {\r\n            \"qualifier\": \"XX\",\r\n            \"value\": \"XX\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-31T21:34:47.8120818Z\",\r\n    \"changedTime\": \"2019-01-31T21:34:47.8121663Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/partners/ps1014\",\r\n  \"name\": \"ps1014\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/partners\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/agreements/ps473?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1L2FncmVlbWVudHMvcHM0NzM/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/agreements/ps8071?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTcvYWdyZWVtZW50cy9wczgwNzE/YXBpLXZlcnNpb249MjAxOC0wNy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "20ae7817-4908-480a-ae83-672abfc16509"
+          "49cc8193-8fbf-4c3d-b3c1-65691d3d4e69"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1038,25 +975,25 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:2ab26053-402e-409c-a78d-f59457e10853"
+          "brazilsouth:705037f6-6619-4cb7-b7a1-67b8cec111d4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
+          "11933"
         ],
         "x-ms-correlation-request-id": [
-          "df96828f-91c5-4591-b6d2-c2e89cc3c545"
+          "c3adc4c8-3c9c-4878-89f9-40547a7c50b4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013255Z:df96828f-91c5-4591-b6d2-c2e89cc3c545"
+          "WESTUS2:20190131T213448Z:c3adc4c8-3c9c-4878-89f9-40547a7c50b4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:54 GMT"
+          "Thu, 31 Jan 2019 21:34:47 GMT"
         ],
         "Content-Length": [
           "124"
@@ -1068,32 +1005,32 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AgreementNotFound\",\r\n    \"message\": \"The agreement 'ps473' could not be found in integration account 'ps1225'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AgreementNotFound\",\r\n    \"message\": \"The agreement 'ps8071' could not be found in integration account 'ps617'.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/agreements/ps473?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1L2FncmVlbWVudHMvcHM0NzM/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/agreements/ps8071?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTcvYWdyZWVtZW50cy9wczgwNzE/YXBpLXZlcnNpb249MjAxOC0wNy0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"agreementType\": \"AS2\",\r\n    \"hostPartner\": \"ps71\",\r\n    \"guestPartner\": \"ps5818\",\r\n    \"hostIdentity\": {\r\n      \"qualifier\": \"AA\",\r\n      \"value\": \"AA\"\r\n    },\r\n    \"guestIdentity\": {\r\n      \"qualifier\": \"ZZ\",\r\n      \"value\": \"ZZ\"\r\n    },\r\n    \"content\": {\r\n      \"aS2\": {\r\n        \"receiveAgreement\": {\r\n          \"senderBusinessIdentity\": {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          \"receiverBusinessIdentity\": {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          \"protocolSettings\": {\r\n            \"messageConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"acknowledgementConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"mdnSettings\": {\r\n              \"needMdn\": true,\r\n              \"signMdn\": true,\r\n              \"sendMdnAsynchronously\": true,\r\n              \"receiptDeliveryUrl\": \"http://tempuri.org\",\r\n              \"dispositionNotificationTo\": \"http://tempuri.org\",\r\n              \"signOutboundMdnIfOptional\": true,\r\n              \"mdnText\": \"Sample\",\r\n              \"sendInboundMdnToMessageBox\": true,\r\n              \"micHashingAlgorithm\": \"MD5\"\r\n            },\r\n            \"securitySettings\": {\r\n              \"overrideGroupSigningCertificate\": false,\r\n              \"enableNrrForInboundEncodedMessages\": true,\r\n              \"enableNrrForInboundDecodedMessages\": true,\r\n              \"enableNrrForOutboundMdn\": true,\r\n              \"enableNrrForOutboundEncodedMessages\": true,\r\n              \"enableNrrForOutboundDecodedMessages\": true,\r\n              \"enableNrrForInboundMdn\": true\r\n            },\r\n            \"validationSettings\": {\r\n              \"overrideMessageProperties\": true,\r\n              \"encryptMessage\": false,\r\n              \"signMessage\": false,\r\n              \"compressMessage\": true,\r\n              \"checkDuplicateMessage\": true,\r\n              \"interchangeDuplicatesValidityDays\": 100,\r\n              \"checkCertificateRevocationListOnSend\": true,\r\n              \"checkCertificateRevocationListOnReceive\": true,\r\n              \"encryptionAlgorithm\": \"AES128\"\r\n            },\r\n            \"envelopeSettings\": {\r\n              \"messageContentType\": \"text/plain\",\r\n              \"transmitFileNameInMimeHeader\": true,\r\n              \"fileNameTemplate\": \"Test\",\r\n              \"suspendMessageOnFileNameGenerationError\": true,\r\n              \"autogenerateFileName\": true\r\n            },\r\n            \"errorSettings\": {\r\n              \"suspendDuplicateMessage\": true,\r\n              \"resendIfMdnNotReceived\": true\r\n            }\r\n          }\r\n        },\r\n        \"sendAgreement\": {\r\n          \"senderBusinessIdentity\": {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          \"receiverBusinessIdentity\": {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          \"protocolSettings\": {\r\n            \"messageConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"acknowledgementConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"mdnSettings\": {\r\n              \"needMdn\": true,\r\n              \"signMdn\": true,\r\n              \"sendMdnAsynchronously\": true,\r\n              \"receiptDeliveryUrl\": \"http://tempuri.org\",\r\n              \"dispositionNotificationTo\": \"http://tempuri.org\",\r\n              \"signOutboundMdnIfOptional\": true,\r\n              \"mdnText\": \"Sample\",\r\n              \"sendInboundMdnToMessageBox\": true,\r\n              \"micHashingAlgorithm\": \"SHA1\"\r\n            },\r\n            \"securitySettings\": {\r\n              \"overrideGroupSigningCertificate\": false,\r\n              \"enableNrrForInboundEncodedMessages\": true,\r\n              \"enableNrrForInboundDecodedMessages\": true,\r\n              \"enableNrrForOutboundMdn\": true,\r\n              \"enableNrrForOutboundEncodedMessages\": true,\r\n              \"enableNrrForOutboundDecodedMessages\": true,\r\n              \"enableNrrForInboundMdn\": true\r\n            },\r\n            \"validationSettings\": {\r\n              \"overrideMessageProperties\": true,\r\n              \"encryptMessage\": false,\r\n              \"signMessage\": false,\r\n              \"compressMessage\": true,\r\n              \"checkDuplicateMessage\": true,\r\n              \"interchangeDuplicatesValidityDays\": 100,\r\n              \"checkCertificateRevocationListOnSend\": true,\r\n              \"checkCertificateRevocationListOnReceive\": true,\r\n              \"encryptionAlgorithm\": \"AES128\"\r\n            },\r\n            \"envelopeSettings\": {\r\n              \"messageContentType\": \"text/plain\",\r\n              \"transmitFileNameInMimeHeader\": true,\r\n              \"fileNameTemplate\": \"Test\",\r\n              \"suspendMessageOnFileNameGenerationError\": true,\r\n              \"autogenerateFileName\": true\r\n            },\r\n            \"errorSettings\": {\r\n              \"suspendDuplicateMessage\": true,\r\n              \"resendIfMdnNotReceived\": true\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"agreementType\": \"AS2\",\r\n    \"hostPartner\": \"ps2551\",\r\n    \"guestPartner\": \"ps1014\",\r\n    \"hostIdentity\": {\r\n      \"qualifier\": \"AA\",\r\n      \"value\": \"AA\"\r\n    },\r\n    \"guestIdentity\": {\r\n      \"qualifier\": \"ZZ\",\r\n      \"value\": \"ZZ\"\r\n    },\r\n    \"content\": {\r\n      \"aS2\": {\r\n        \"receiveAgreement\": {\r\n          \"senderBusinessIdentity\": {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          \"receiverBusinessIdentity\": {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          \"protocolSettings\": {\r\n            \"messageConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"acknowledgementConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"mdnSettings\": {\r\n              \"needMdn\": true,\r\n              \"signMdn\": true,\r\n              \"sendMdnAsynchronously\": true,\r\n              \"receiptDeliveryUrl\": \"http://tempuri.org\",\r\n              \"dispositionNotificationTo\": \"http://tempuri.org\",\r\n              \"signOutboundMdnIfOptional\": true,\r\n              \"mdnText\": \"Sample\",\r\n              \"sendInboundMdnToMessageBox\": true,\r\n              \"micHashingAlgorithm\": \"MD5\"\r\n            },\r\n            \"securitySettings\": {\r\n              \"overrideGroupSigningCertificate\": false,\r\n              \"enableNrrForInboundEncodedMessages\": true,\r\n              \"enableNrrForInboundDecodedMessages\": true,\r\n              \"enableNrrForOutboundMdn\": true,\r\n              \"enableNrrForOutboundEncodedMessages\": true,\r\n              \"enableNrrForOutboundDecodedMessages\": true,\r\n              \"enableNrrForInboundMdn\": true\r\n            },\r\n            \"validationSettings\": {\r\n              \"overrideMessageProperties\": true,\r\n              \"encryptMessage\": false,\r\n              \"signMessage\": false,\r\n              \"compressMessage\": true,\r\n              \"checkDuplicateMessage\": true,\r\n              \"interchangeDuplicatesValidityDays\": 100,\r\n              \"checkCertificateRevocationListOnSend\": true,\r\n              \"checkCertificateRevocationListOnReceive\": true,\r\n              \"encryptionAlgorithm\": \"AES128\"\r\n            },\r\n            \"envelopeSettings\": {\r\n              \"messageContentType\": \"text/plain\",\r\n              \"transmitFileNameInMimeHeader\": true,\r\n              \"fileNameTemplate\": \"Test\",\r\n              \"suspendMessageOnFileNameGenerationError\": true,\r\n              \"autogenerateFileName\": true\r\n            },\r\n            \"errorSettings\": {\r\n              \"suspendDuplicateMessage\": true,\r\n              \"resendIfMdnNotReceived\": true\r\n            }\r\n          }\r\n        },\r\n        \"sendAgreement\": {\r\n          \"senderBusinessIdentity\": {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          \"receiverBusinessIdentity\": {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          \"protocolSettings\": {\r\n            \"messageConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"acknowledgementConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"mdnSettings\": {\r\n              \"needMdn\": true,\r\n              \"signMdn\": true,\r\n              \"sendMdnAsynchronously\": true,\r\n              \"receiptDeliveryUrl\": \"http://tempuri.org\",\r\n              \"dispositionNotificationTo\": \"http://tempuri.org\",\r\n              \"signOutboundMdnIfOptional\": true,\r\n              \"mdnText\": \"Sample\",\r\n              \"sendInboundMdnToMessageBox\": true,\r\n              \"micHashingAlgorithm\": \"SHA1\"\r\n            },\r\n            \"securitySettings\": {\r\n              \"overrideGroupSigningCertificate\": false,\r\n              \"enableNrrForInboundEncodedMessages\": true,\r\n              \"enableNrrForInboundDecodedMessages\": true,\r\n              \"enableNrrForOutboundMdn\": true,\r\n              \"enableNrrForOutboundEncodedMessages\": true,\r\n              \"enableNrrForOutboundDecodedMessages\": true,\r\n              \"enableNrrForInboundMdn\": true\r\n            },\r\n            \"validationSettings\": {\r\n              \"overrideMessageProperties\": true,\r\n              \"encryptMessage\": false,\r\n              \"signMessage\": false,\r\n              \"compressMessage\": true,\r\n              \"checkDuplicateMessage\": true,\r\n              \"interchangeDuplicatesValidityDays\": 100,\r\n              \"checkCertificateRevocationListOnSend\": true,\r\n              \"checkCertificateRevocationListOnReceive\": true,\r\n              \"encryptionAlgorithm\": \"AES128\"\r\n            },\r\n            \"envelopeSettings\": {\r\n              \"messageContentType\": \"text/plain\",\r\n              \"transmitFileNameInMimeHeader\": true,\r\n              \"fileNameTemplate\": \"Test\",\r\n              \"suspendMessageOnFileNameGenerationError\": true,\r\n              \"autogenerateFileName\": true\r\n            },\r\n            \"errorSettings\": {\r\n              \"suspendDuplicateMessage\": true,\r\n              \"resendIfMdnNotReceived\": true\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "48a31548-9546-4b50-a12d-e8aa5a3e7a9a"
+          "d2844057-8e34-41be-8297-ccb415dab94e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "5682"
+          "5684"
         ]
       },
       "ResponseHeaders": {
@@ -1104,28 +1041,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:d6d7778f-f4a4-4c1b-b818-55b24e8fcd6b"
+          "brazilsouth:a75f6279-c89b-46b9-a0c7-11b16c03b055"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1183"
         ],
         "x-ms-correlation-request-id": [
-          "d57c8ef1-a61c-4e13-92ad-b60d8bce25ab"
+          "4abd631b-e8d6-48e7-b3ab-95510c7c4049"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013256Z:d57c8ef1-a61c-4e13-92ad-b60d8bce25ab"
+          "WESTUS2:20190131T213448Z:4abd631b-e8d6-48e7-b3ab-95510c7c4049"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:55 GMT"
+          "Thu, 31 Jan 2019 21:34:47 GMT"
         ],
         "Content-Length": [
-          "3792"
+          "3795"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1134,26 +1071,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"hostPartner\": \"ps71\",\r\n    \"guestPartner\": \"ps5818\",\r\n    \"hostIdentity\": {\r\n      \"qualifier\": \"AA\",\r\n      \"value\": \"AA\"\r\n    },\r\n    \"guestIdentity\": {\r\n      \"qualifier\": \"ZZ\",\r\n      \"value\": \"ZZ\"\r\n    },\r\n    \"agreementType\": \"AS2\",\r\n    \"content\": {\r\n      \"aS2\": {\r\n        \"receiveAgreement\": {\r\n          \"protocolSettings\": {\r\n            \"messageConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"acknowledgementConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"mdnSettings\": {\r\n              \"needMDN\": true,\r\n              \"signMDN\": true,\r\n              \"sendMDNAsynchronously\": true,\r\n              \"receiptDeliveryUrl\": \"http://tempuri.org\",\r\n              \"dispositionNotificationTo\": \"http://tempuri.org\",\r\n              \"signOutboundMDNIfOptional\": true,\r\n              \"mdnText\": \"Sample\",\r\n              \"sendInboundMDNToMessageBox\": true,\r\n              \"micHashingAlgorithm\": \"MD5\"\r\n            },\r\n            \"securitySettings\": {\r\n              \"overrideGroupSigningCertificate\": false,\r\n              \"enableNRRForInboundEncodedMessages\": true,\r\n              \"enableNRRForInboundDecodedMessages\": true,\r\n              \"enableNRRForOutboundMDN\": true,\r\n              \"enableNRRForOutboundEncodedMessages\": true,\r\n              \"enableNRRForOutboundDecodedMessages\": true,\r\n              \"enableNRRForInboundMDN\": true\r\n            },\r\n            \"validationSettings\": {\r\n              \"overrideMessageProperties\": true,\r\n              \"encryptMessage\": false,\r\n              \"signMessage\": false,\r\n              \"compressMessage\": true,\r\n              \"checkDuplicateMessage\": true,\r\n              \"interchangeDuplicatesValidityDays\": 100,\r\n              \"checkCertificateRevocationListOnSend\": true,\r\n              \"checkCertificateRevocationListOnReceive\": true,\r\n              \"encryptionAlgorithm\": \"AES128\"\r\n            },\r\n            \"envelopeSettings\": {\r\n              \"messageContentType\": \"text/plain\",\r\n              \"transmitFileNameInMimeHeader\": true,\r\n              \"fileNameTemplate\": \"Test\",\r\n              \"suspendMessageOnFileNameGenerationError\": true,\r\n              \"autogenerateFileName\": true\r\n            },\r\n            \"errorSettings\": {\r\n              \"suspendDuplicateMessage\": true,\r\n              \"resendIfMDNNotReceived\": true\r\n            }\r\n          },\r\n          \"senderBusinessIdentity\": {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          \"receiverBusinessIdentity\": {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          }\r\n        },\r\n        \"sendAgreement\": {\r\n          \"protocolSettings\": {\r\n            \"messageConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"acknowledgementConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"mdnSettings\": {\r\n              \"needMDN\": true,\r\n              \"signMDN\": true,\r\n              \"sendMDNAsynchronously\": true,\r\n              \"receiptDeliveryUrl\": \"http://tempuri.org\",\r\n              \"dispositionNotificationTo\": \"http://tempuri.org\",\r\n              \"signOutboundMDNIfOptional\": true,\r\n              \"mdnText\": \"Sample\",\r\n              \"sendInboundMDNToMessageBox\": true,\r\n              \"micHashingAlgorithm\": \"SHA1\"\r\n            },\r\n            \"securitySettings\": {\r\n              \"overrideGroupSigningCertificate\": false,\r\n              \"enableNRRForInboundEncodedMessages\": true,\r\n              \"enableNRRForInboundDecodedMessages\": true,\r\n              \"enableNRRForOutboundMDN\": true,\r\n              \"enableNRRForOutboundEncodedMessages\": true,\r\n              \"enableNRRForOutboundDecodedMessages\": true,\r\n              \"enableNRRForInboundMDN\": true\r\n            },\r\n            \"validationSettings\": {\r\n              \"overrideMessageProperties\": true,\r\n              \"encryptMessage\": false,\r\n              \"signMessage\": false,\r\n              \"compressMessage\": true,\r\n              \"checkDuplicateMessage\": true,\r\n              \"interchangeDuplicatesValidityDays\": 100,\r\n              \"checkCertificateRevocationListOnSend\": true,\r\n              \"checkCertificateRevocationListOnReceive\": true,\r\n              \"encryptionAlgorithm\": \"AES128\"\r\n            },\r\n            \"envelopeSettings\": {\r\n              \"messageContentType\": \"text/plain\",\r\n              \"transmitFileNameInMimeHeader\": true,\r\n              \"fileNameTemplate\": \"Test\",\r\n              \"suspendMessageOnFileNameGenerationError\": true,\r\n              \"autogenerateFileName\": true\r\n            },\r\n            \"errorSettings\": {\r\n              \"suspendDuplicateMessage\": true,\r\n              \"resendIfMDNNotReceived\": true\r\n            }\r\n          },\r\n          \"senderBusinessIdentity\": {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          \"receiverBusinessIdentity\": {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-03T01:32:56.0364096Z\",\r\n    \"changedTime\": \"2019-01-03T01:32:56.0364846Z\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/agreements/ps473\",\r\n  \"name\": \"ps473\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/agreements\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"hostPartner\": \"ps2551\",\r\n    \"guestPartner\": \"ps1014\",\r\n    \"hostIdentity\": {\r\n      \"qualifier\": \"AA\",\r\n      \"value\": \"AA\"\r\n    },\r\n    \"guestIdentity\": {\r\n      \"qualifier\": \"ZZ\",\r\n      \"value\": \"ZZ\"\r\n    },\r\n    \"agreementType\": \"AS2\",\r\n    \"content\": {\r\n      \"aS2\": {\r\n        \"receiveAgreement\": {\r\n          \"protocolSettings\": {\r\n            \"messageConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"acknowledgementConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"mdnSettings\": {\r\n              \"needMDN\": true,\r\n              \"signMDN\": true,\r\n              \"sendMDNAsynchronously\": true,\r\n              \"receiptDeliveryUrl\": \"http://tempuri.org\",\r\n              \"dispositionNotificationTo\": \"http://tempuri.org\",\r\n              \"signOutboundMDNIfOptional\": true,\r\n              \"mdnText\": \"Sample\",\r\n              \"sendInboundMDNToMessageBox\": true,\r\n              \"micHashingAlgorithm\": \"MD5\"\r\n            },\r\n            \"securitySettings\": {\r\n              \"overrideGroupSigningCertificate\": false,\r\n              \"enableNRRForInboundEncodedMessages\": true,\r\n              \"enableNRRForInboundDecodedMessages\": true,\r\n              \"enableNRRForOutboundMDN\": true,\r\n              \"enableNRRForOutboundEncodedMessages\": true,\r\n              \"enableNRRForOutboundDecodedMessages\": true,\r\n              \"enableNRRForInboundMDN\": true\r\n            },\r\n            \"validationSettings\": {\r\n              \"overrideMessageProperties\": true,\r\n              \"encryptMessage\": false,\r\n              \"signMessage\": false,\r\n              \"compressMessage\": true,\r\n              \"checkDuplicateMessage\": true,\r\n              \"interchangeDuplicatesValidityDays\": 100,\r\n              \"checkCertificateRevocationListOnSend\": true,\r\n              \"checkCertificateRevocationListOnReceive\": true,\r\n              \"encryptionAlgorithm\": \"AES128\"\r\n            },\r\n            \"envelopeSettings\": {\r\n              \"messageContentType\": \"text/plain\",\r\n              \"transmitFileNameInMimeHeader\": true,\r\n              \"fileNameTemplate\": \"Test\",\r\n              \"suspendMessageOnFileNameGenerationError\": true,\r\n              \"autogenerateFileName\": true\r\n            },\r\n            \"errorSettings\": {\r\n              \"suspendDuplicateMessage\": true,\r\n              \"resendIfMDNNotReceived\": true\r\n            }\r\n          },\r\n          \"senderBusinessIdentity\": {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          \"receiverBusinessIdentity\": {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          }\r\n        },\r\n        \"sendAgreement\": {\r\n          \"protocolSettings\": {\r\n            \"messageConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"acknowledgementConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"mdnSettings\": {\r\n              \"needMDN\": true,\r\n              \"signMDN\": true,\r\n              \"sendMDNAsynchronously\": true,\r\n              \"receiptDeliveryUrl\": \"http://tempuri.org\",\r\n              \"dispositionNotificationTo\": \"http://tempuri.org\",\r\n              \"signOutboundMDNIfOptional\": true,\r\n              \"mdnText\": \"Sample\",\r\n              \"sendInboundMDNToMessageBox\": true,\r\n              \"micHashingAlgorithm\": \"SHA1\"\r\n            },\r\n            \"securitySettings\": {\r\n              \"overrideGroupSigningCertificate\": false,\r\n              \"enableNRRForInboundEncodedMessages\": true,\r\n              \"enableNRRForInboundDecodedMessages\": true,\r\n              \"enableNRRForOutboundMDN\": true,\r\n              \"enableNRRForOutboundEncodedMessages\": true,\r\n              \"enableNRRForOutboundDecodedMessages\": true,\r\n              \"enableNRRForInboundMDN\": true\r\n            },\r\n            \"validationSettings\": {\r\n              \"overrideMessageProperties\": true,\r\n              \"encryptMessage\": false,\r\n              \"signMessage\": false,\r\n              \"compressMessage\": true,\r\n              \"checkDuplicateMessage\": true,\r\n              \"interchangeDuplicatesValidityDays\": 100,\r\n              \"checkCertificateRevocationListOnSend\": true,\r\n              \"checkCertificateRevocationListOnReceive\": true,\r\n              \"encryptionAlgorithm\": \"AES128\"\r\n            },\r\n            \"envelopeSettings\": {\r\n              \"messageContentType\": \"text/plain\",\r\n              \"transmitFileNameInMimeHeader\": true,\r\n              \"fileNameTemplate\": \"Test\",\r\n              \"suspendMessageOnFileNameGenerationError\": true,\r\n              \"autogenerateFileName\": true\r\n            },\r\n            \"errorSettings\": {\r\n              \"suspendDuplicateMessage\": true,\r\n              \"resendIfMDNNotReceived\": true\r\n            }\r\n          },\r\n          \"senderBusinessIdentity\": {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          \"receiverBusinessIdentity\": {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-31T21:34:48.2462392Z\",\r\n    \"changedTime\": \"2019-01-31T21:34:48.2463848Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/agreements/ps8071\",\r\n  \"name\": \"ps8071\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/agreements\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/agreements/ps8801?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1L2FncmVlbWVudHMvcHM4ODAxP2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/agreements/ps7532?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTcvYWdyZWVtZW50cy9wczc1MzI/YXBpLXZlcnNpb249MjAxOC0wNy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "53f8d515-bb5a-49ae-93c7-61f87be6d650"
+          "bac83e73-d047-4726-be25-ba9665f5ee94"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1164,28 +1101,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:498a1db2-017c-40ad-a2ff-208930a17321"
+          "brazilsouth:fe4379c9-0c88-45f1-9f69-36c650811629"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11985"
+          "11929"
         ],
         "x-ms-correlation-request-id": [
-          "0e332a4e-f6d5-402c-b9a1-8322e1e742f6"
+          "f4ed64d2-a72b-48cc-92d4-2e7a45ab36e2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013257Z:0e332a4e-f6d5-402c-b9a1-8322e1e742f6"
+          "WESTUS2:20190131T213448Z:f4ed64d2-a72b-48cc-92d4-2e7a45ab36e2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:56 GMT"
+          "Thu, 31 Jan 2019 21:34:48 GMT"
         ],
         "Content-Length": [
-          "125"
+          "124"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1194,32 +1131,32 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AgreementNotFound\",\r\n    \"message\": \"The agreement 'ps8801' could not be found in integration account 'ps1225'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AgreementNotFound\",\r\n    \"message\": \"The agreement 'ps7532' could not be found in integration account 'ps617'.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/agreements/ps8801?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1L2FncmVlbWVudHMvcHM4ODAxP2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/agreements/ps7532?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTcvYWdyZWVtZW50cy9wczc1MzI/YXBpLXZlcnNpb249MjAxOC0wNy0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"agreementType\": \"AS2\",\r\n    \"hostPartner\": \"ps71\",\r\n    \"guestPartner\": \"ps5818\",\r\n    \"hostIdentity\": {\r\n      \"qualifier\": \"AA\",\r\n      \"value\": \"AA\"\r\n    },\r\n    \"guestIdentity\": {\r\n      \"qualifier\": \"ZZ\",\r\n      \"value\": \"ZZ\"\r\n    },\r\n    \"content\": {\r\n      \"aS2\": {\r\n        \"receiveAgreement\": {\r\n          \"senderBusinessIdentity\": {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          \"receiverBusinessIdentity\": {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          \"protocolSettings\": {\r\n            \"messageConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"acknowledgementConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"mdnSettings\": {\r\n              \"needMdn\": true,\r\n              \"signMdn\": true,\r\n              \"sendMdnAsynchronously\": true,\r\n              \"receiptDeliveryUrl\": \"http://tempuri.org\",\r\n              \"dispositionNotificationTo\": \"http://tempuri.org\",\r\n              \"signOutboundMdnIfOptional\": true,\r\n              \"mdnText\": \"Sample\",\r\n              \"sendInboundMdnToMessageBox\": true,\r\n              \"micHashingAlgorithm\": \"MD5\"\r\n            },\r\n            \"securitySettings\": {\r\n              \"overrideGroupSigningCertificate\": false,\r\n              \"enableNrrForInboundEncodedMessages\": true,\r\n              \"enableNrrForInboundDecodedMessages\": true,\r\n              \"enableNrrForOutboundMdn\": true,\r\n              \"enableNrrForOutboundEncodedMessages\": true,\r\n              \"enableNrrForOutboundDecodedMessages\": true,\r\n              \"enableNrrForInboundMdn\": true\r\n            },\r\n            \"validationSettings\": {\r\n              \"overrideMessageProperties\": true,\r\n              \"encryptMessage\": false,\r\n              \"signMessage\": false,\r\n              \"compressMessage\": true,\r\n              \"checkDuplicateMessage\": true,\r\n              \"interchangeDuplicatesValidityDays\": 100,\r\n              \"checkCertificateRevocationListOnSend\": true,\r\n              \"checkCertificateRevocationListOnReceive\": true,\r\n              \"encryptionAlgorithm\": \"AES128\"\r\n            },\r\n            \"envelopeSettings\": {\r\n              \"messageContentType\": \"text/plain\",\r\n              \"transmitFileNameInMimeHeader\": true,\r\n              \"fileNameTemplate\": \"Test\",\r\n              \"suspendMessageOnFileNameGenerationError\": true,\r\n              \"autogenerateFileName\": true\r\n            },\r\n            \"errorSettings\": {\r\n              \"suspendDuplicateMessage\": true,\r\n              \"resendIfMdnNotReceived\": true\r\n            }\r\n          }\r\n        },\r\n        \"sendAgreement\": {\r\n          \"senderBusinessIdentity\": {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          \"receiverBusinessIdentity\": {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          \"protocolSettings\": {\r\n            \"messageConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"acknowledgementConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"mdnSettings\": {\r\n              \"needMdn\": true,\r\n              \"signMdn\": true,\r\n              \"sendMdnAsynchronously\": true,\r\n              \"receiptDeliveryUrl\": \"http://tempuri.org\",\r\n              \"dispositionNotificationTo\": \"http://tempuri.org\",\r\n              \"signOutboundMdnIfOptional\": true,\r\n              \"mdnText\": \"Sample\",\r\n              \"sendInboundMdnToMessageBox\": true,\r\n              \"micHashingAlgorithm\": \"SHA1\"\r\n            },\r\n            \"securitySettings\": {\r\n              \"overrideGroupSigningCertificate\": false,\r\n              \"enableNrrForInboundEncodedMessages\": true,\r\n              \"enableNrrForInboundDecodedMessages\": true,\r\n              \"enableNrrForOutboundMdn\": true,\r\n              \"enableNrrForOutboundEncodedMessages\": true,\r\n              \"enableNrrForOutboundDecodedMessages\": true,\r\n              \"enableNrrForInboundMdn\": true\r\n            },\r\n            \"validationSettings\": {\r\n              \"overrideMessageProperties\": true,\r\n              \"encryptMessage\": false,\r\n              \"signMessage\": false,\r\n              \"compressMessage\": true,\r\n              \"checkDuplicateMessage\": true,\r\n              \"interchangeDuplicatesValidityDays\": 100,\r\n              \"checkCertificateRevocationListOnSend\": true,\r\n              \"checkCertificateRevocationListOnReceive\": true,\r\n              \"encryptionAlgorithm\": \"AES128\"\r\n            },\r\n            \"envelopeSettings\": {\r\n              \"messageContentType\": \"text/plain\",\r\n              \"transmitFileNameInMimeHeader\": true,\r\n              \"fileNameTemplate\": \"Test\",\r\n              \"suspendMessageOnFileNameGenerationError\": true,\r\n              \"autogenerateFileName\": true\r\n            },\r\n            \"errorSettings\": {\r\n              \"suspendDuplicateMessage\": true,\r\n              \"resendIfMdnNotReceived\": true\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"agreementType\": \"AS2\",\r\n    \"hostPartner\": \"ps2551\",\r\n    \"guestPartner\": \"ps1014\",\r\n    \"hostIdentity\": {\r\n      \"qualifier\": \"AA\",\r\n      \"value\": \"AA\"\r\n    },\r\n    \"guestIdentity\": {\r\n      \"qualifier\": \"ZZ\",\r\n      \"value\": \"ZZ\"\r\n    },\r\n    \"content\": {\r\n      \"aS2\": {\r\n        \"receiveAgreement\": {\r\n          \"senderBusinessIdentity\": {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          \"receiverBusinessIdentity\": {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          \"protocolSettings\": {\r\n            \"messageConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"acknowledgementConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"mdnSettings\": {\r\n              \"needMdn\": true,\r\n              \"signMdn\": true,\r\n              \"sendMdnAsynchronously\": true,\r\n              \"receiptDeliveryUrl\": \"http://tempuri.org\",\r\n              \"dispositionNotificationTo\": \"http://tempuri.org\",\r\n              \"signOutboundMdnIfOptional\": true,\r\n              \"mdnText\": \"Sample\",\r\n              \"sendInboundMdnToMessageBox\": true,\r\n              \"micHashingAlgorithm\": \"MD5\"\r\n            },\r\n            \"securitySettings\": {\r\n              \"overrideGroupSigningCertificate\": false,\r\n              \"enableNrrForInboundEncodedMessages\": true,\r\n              \"enableNrrForInboundDecodedMessages\": true,\r\n              \"enableNrrForOutboundMdn\": true,\r\n              \"enableNrrForOutboundEncodedMessages\": true,\r\n              \"enableNrrForOutboundDecodedMessages\": true,\r\n              \"enableNrrForInboundMdn\": true\r\n            },\r\n            \"validationSettings\": {\r\n              \"overrideMessageProperties\": true,\r\n              \"encryptMessage\": false,\r\n              \"signMessage\": false,\r\n              \"compressMessage\": true,\r\n              \"checkDuplicateMessage\": true,\r\n              \"interchangeDuplicatesValidityDays\": 100,\r\n              \"checkCertificateRevocationListOnSend\": true,\r\n              \"checkCertificateRevocationListOnReceive\": true,\r\n              \"encryptionAlgorithm\": \"AES128\"\r\n            },\r\n            \"envelopeSettings\": {\r\n              \"messageContentType\": \"text/plain\",\r\n              \"transmitFileNameInMimeHeader\": true,\r\n              \"fileNameTemplate\": \"Test\",\r\n              \"suspendMessageOnFileNameGenerationError\": true,\r\n              \"autogenerateFileName\": true\r\n            },\r\n            \"errorSettings\": {\r\n              \"suspendDuplicateMessage\": true,\r\n              \"resendIfMdnNotReceived\": true\r\n            }\r\n          }\r\n        },\r\n        \"sendAgreement\": {\r\n          \"senderBusinessIdentity\": {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          \"receiverBusinessIdentity\": {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          \"protocolSettings\": {\r\n            \"messageConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"acknowledgementConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"mdnSettings\": {\r\n              \"needMdn\": true,\r\n              \"signMdn\": true,\r\n              \"sendMdnAsynchronously\": true,\r\n              \"receiptDeliveryUrl\": \"http://tempuri.org\",\r\n              \"dispositionNotificationTo\": \"http://tempuri.org\",\r\n              \"signOutboundMdnIfOptional\": true,\r\n              \"mdnText\": \"Sample\",\r\n              \"sendInboundMdnToMessageBox\": true,\r\n              \"micHashingAlgorithm\": \"SHA1\"\r\n            },\r\n            \"securitySettings\": {\r\n              \"overrideGroupSigningCertificate\": false,\r\n              \"enableNrrForInboundEncodedMessages\": true,\r\n              \"enableNrrForInboundDecodedMessages\": true,\r\n              \"enableNrrForOutboundMdn\": true,\r\n              \"enableNrrForOutboundEncodedMessages\": true,\r\n              \"enableNrrForOutboundDecodedMessages\": true,\r\n              \"enableNrrForInboundMdn\": true\r\n            },\r\n            \"validationSettings\": {\r\n              \"overrideMessageProperties\": true,\r\n              \"encryptMessage\": false,\r\n              \"signMessage\": false,\r\n              \"compressMessage\": true,\r\n              \"checkDuplicateMessage\": true,\r\n              \"interchangeDuplicatesValidityDays\": 100,\r\n              \"checkCertificateRevocationListOnSend\": true,\r\n              \"checkCertificateRevocationListOnReceive\": true,\r\n              \"encryptionAlgorithm\": \"AES128\"\r\n            },\r\n            \"envelopeSettings\": {\r\n              \"messageContentType\": \"text/plain\",\r\n              \"transmitFileNameInMimeHeader\": true,\r\n              \"fileNameTemplate\": \"Test\",\r\n              \"suspendMessageOnFileNameGenerationError\": true,\r\n              \"autogenerateFileName\": true\r\n            },\r\n            \"errorSettings\": {\r\n              \"suspendDuplicateMessage\": true,\r\n              \"resendIfMdnNotReceived\": true\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d3d4b835-4324-4edd-845e-8ad090ff9e96"
+          "e81d6662-f8bd-4a04-9b72-d45cc07ad68a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "5682"
+          "5684"
         ]
       },
       "ResponseHeaders": {
@@ -1230,28 +1167,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:e06c88d5-6d74-4866-818c-1d2a75333840"
+          "brazilsouth:980eb526-860b-411c-86fa-9c1ea67566e9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1193"
+          "1182"
         ],
         "x-ms-correlation-request-id": [
-          "e48d13be-62c2-4795-a1ef-e409e672c8fe"
+          "00878920-a18b-48a3-a1d5-dca0070e9a14"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013257Z:e48d13be-62c2-4795-a1ef-e409e672c8fe"
+          "WESTUS2:20190131T213448Z:00878920-a18b-48a3-a1d5-dca0070e9a14"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:56 GMT"
+          "Thu, 31 Jan 2019 21:34:48 GMT"
         ],
         "Content-Length": [
-          "3794"
+          "3795"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1260,26 +1197,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"hostPartner\": \"ps71\",\r\n    \"guestPartner\": \"ps5818\",\r\n    \"hostIdentity\": {\r\n      \"qualifier\": \"AA\",\r\n      \"value\": \"AA\"\r\n    },\r\n    \"guestIdentity\": {\r\n      \"qualifier\": \"ZZ\",\r\n      \"value\": \"ZZ\"\r\n    },\r\n    \"agreementType\": \"AS2\",\r\n    \"content\": {\r\n      \"aS2\": {\r\n        \"receiveAgreement\": {\r\n          \"protocolSettings\": {\r\n            \"messageConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"acknowledgementConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"mdnSettings\": {\r\n              \"needMDN\": true,\r\n              \"signMDN\": true,\r\n              \"sendMDNAsynchronously\": true,\r\n              \"receiptDeliveryUrl\": \"http://tempuri.org\",\r\n              \"dispositionNotificationTo\": \"http://tempuri.org\",\r\n              \"signOutboundMDNIfOptional\": true,\r\n              \"mdnText\": \"Sample\",\r\n              \"sendInboundMDNToMessageBox\": true,\r\n              \"micHashingAlgorithm\": \"MD5\"\r\n            },\r\n            \"securitySettings\": {\r\n              \"overrideGroupSigningCertificate\": false,\r\n              \"enableNRRForInboundEncodedMessages\": true,\r\n              \"enableNRRForInboundDecodedMessages\": true,\r\n              \"enableNRRForOutboundMDN\": true,\r\n              \"enableNRRForOutboundEncodedMessages\": true,\r\n              \"enableNRRForOutboundDecodedMessages\": true,\r\n              \"enableNRRForInboundMDN\": true\r\n            },\r\n            \"validationSettings\": {\r\n              \"overrideMessageProperties\": true,\r\n              \"encryptMessage\": false,\r\n              \"signMessage\": false,\r\n              \"compressMessage\": true,\r\n              \"checkDuplicateMessage\": true,\r\n              \"interchangeDuplicatesValidityDays\": 100,\r\n              \"checkCertificateRevocationListOnSend\": true,\r\n              \"checkCertificateRevocationListOnReceive\": true,\r\n              \"encryptionAlgorithm\": \"AES128\"\r\n            },\r\n            \"envelopeSettings\": {\r\n              \"messageContentType\": \"text/plain\",\r\n              \"transmitFileNameInMimeHeader\": true,\r\n              \"fileNameTemplate\": \"Test\",\r\n              \"suspendMessageOnFileNameGenerationError\": true,\r\n              \"autogenerateFileName\": true\r\n            },\r\n            \"errorSettings\": {\r\n              \"suspendDuplicateMessage\": true,\r\n              \"resendIfMDNNotReceived\": true\r\n            }\r\n          },\r\n          \"senderBusinessIdentity\": {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          \"receiverBusinessIdentity\": {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          }\r\n        },\r\n        \"sendAgreement\": {\r\n          \"protocolSettings\": {\r\n            \"messageConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"acknowledgementConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"mdnSettings\": {\r\n              \"needMDN\": true,\r\n              \"signMDN\": true,\r\n              \"sendMDNAsynchronously\": true,\r\n              \"receiptDeliveryUrl\": \"http://tempuri.org\",\r\n              \"dispositionNotificationTo\": \"http://tempuri.org\",\r\n              \"signOutboundMDNIfOptional\": true,\r\n              \"mdnText\": \"Sample\",\r\n              \"sendInboundMDNToMessageBox\": true,\r\n              \"micHashingAlgorithm\": \"SHA1\"\r\n            },\r\n            \"securitySettings\": {\r\n              \"overrideGroupSigningCertificate\": false,\r\n              \"enableNRRForInboundEncodedMessages\": true,\r\n              \"enableNRRForInboundDecodedMessages\": true,\r\n              \"enableNRRForOutboundMDN\": true,\r\n              \"enableNRRForOutboundEncodedMessages\": true,\r\n              \"enableNRRForOutboundDecodedMessages\": true,\r\n              \"enableNRRForInboundMDN\": true\r\n            },\r\n            \"validationSettings\": {\r\n              \"overrideMessageProperties\": true,\r\n              \"encryptMessage\": false,\r\n              \"signMessage\": false,\r\n              \"compressMessage\": true,\r\n              \"checkDuplicateMessage\": true,\r\n              \"interchangeDuplicatesValidityDays\": 100,\r\n              \"checkCertificateRevocationListOnSend\": true,\r\n              \"checkCertificateRevocationListOnReceive\": true,\r\n              \"encryptionAlgorithm\": \"AES128\"\r\n            },\r\n            \"envelopeSettings\": {\r\n              \"messageContentType\": \"text/plain\",\r\n              \"transmitFileNameInMimeHeader\": true,\r\n              \"fileNameTemplate\": \"Test\",\r\n              \"suspendMessageOnFileNameGenerationError\": true,\r\n              \"autogenerateFileName\": true\r\n            },\r\n            \"errorSettings\": {\r\n              \"suspendDuplicateMessage\": true,\r\n              \"resendIfMDNNotReceived\": true\r\n            }\r\n          },\r\n          \"senderBusinessIdentity\": {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          \"receiverBusinessIdentity\": {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-03T01:32:57.2804578Z\",\r\n    \"changedTime\": \"2019-01-03T01:32:57.2809053Z\"\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225/agreements/ps8801\",\r\n  \"name\": \"ps8801\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/agreements\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"hostPartner\": \"ps2551\",\r\n    \"guestPartner\": \"ps1014\",\r\n    \"hostIdentity\": {\r\n      \"qualifier\": \"AA\",\r\n      \"value\": \"AA\"\r\n    },\r\n    \"guestIdentity\": {\r\n      \"qualifier\": \"ZZ\",\r\n      \"value\": \"ZZ\"\r\n    },\r\n    \"agreementType\": \"AS2\",\r\n    \"content\": {\r\n      \"aS2\": {\r\n        \"receiveAgreement\": {\r\n          \"protocolSettings\": {\r\n            \"messageConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"acknowledgementConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"mdnSettings\": {\r\n              \"needMDN\": true,\r\n              \"signMDN\": true,\r\n              \"sendMDNAsynchronously\": true,\r\n              \"receiptDeliveryUrl\": \"http://tempuri.org\",\r\n              \"dispositionNotificationTo\": \"http://tempuri.org\",\r\n              \"signOutboundMDNIfOptional\": true,\r\n              \"mdnText\": \"Sample\",\r\n              \"sendInboundMDNToMessageBox\": true,\r\n              \"micHashingAlgorithm\": \"MD5\"\r\n            },\r\n            \"securitySettings\": {\r\n              \"overrideGroupSigningCertificate\": false,\r\n              \"enableNRRForInboundEncodedMessages\": true,\r\n              \"enableNRRForInboundDecodedMessages\": true,\r\n              \"enableNRRForOutboundMDN\": true,\r\n              \"enableNRRForOutboundEncodedMessages\": true,\r\n              \"enableNRRForOutboundDecodedMessages\": true,\r\n              \"enableNRRForInboundMDN\": true\r\n            },\r\n            \"validationSettings\": {\r\n              \"overrideMessageProperties\": true,\r\n              \"encryptMessage\": false,\r\n              \"signMessage\": false,\r\n              \"compressMessage\": true,\r\n              \"checkDuplicateMessage\": true,\r\n              \"interchangeDuplicatesValidityDays\": 100,\r\n              \"checkCertificateRevocationListOnSend\": true,\r\n              \"checkCertificateRevocationListOnReceive\": true,\r\n              \"encryptionAlgorithm\": \"AES128\"\r\n            },\r\n            \"envelopeSettings\": {\r\n              \"messageContentType\": \"text/plain\",\r\n              \"transmitFileNameInMimeHeader\": true,\r\n              \"fileNameTemplate\": \"Test\",\r\n              \"suspendMessageOnFileNameGenerationError\": true,\r\n              \"autogenerateFileName\": true\r\n            },\r\n            \"errorSettings\": {\r\n              \"suspendDuplicateMessage\": true,\r\n              \"resendIfMDNNotReceived\": true\r\n            }\r\n          },\r\n          \"senderBusinessIdentity\": {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          },\r\n          \"receiverBusinessIdentity\": {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          }\r\n        },\r\n        \"sendAgreement\": {\r\n          \"protocolSettings\": {\r\n            \"messageConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"acknowledgementConnectionSettings\": {\r\n              \"ignoreCertificateNameMismatch\": true,\r\n              \"supportHttpStatusCodeContinue\": true,\r\n              \"keepHttpConnectionAlive\": true,\r\n              \"unfoldHttpHeaders\": true\r\n            },\r\n            \"mdnSettings\": {\r\n              \"needMDN\": true,\r\n              \"signMDN\": true,\r\n              \"sendMDNAsynchronously\": true,\r\n              \"receiptDeliveryUrl\": \"http://tempuri.org\",\r\n              \"dispositionNotificationTo\": \"http://tempuri.org\",\r\n              \"signOutboundMDNIfOptional\": true,\r\n              \"mdnText\": \"Sample\",\r\n              \"sendInboundMDNToMessageBox\": true,\r\n              \"micHashingAlgorithm\": \"SHA1\"\r\n            },\r\n            \"securitySettings\": {\r\n              \"overrideGroupSigningCertificate\": false,\r\n              \"enableNRRForInboundEncodedMessages\": true,\r\n              \"enableNRRForInboundDecodedMessages\": true,\r\n              \"enableNRRForOutboundMDN\": true,\r\n              \"enableNRRForOutboundEncodedMessages\": true,\r\n              \"enableNRRForOutboundDecodedMessages\": true,\r\n              \"enableNRRForInboundMDN\": true\r\n            },\r\n            \"validationSettings\": {\r\n              \"overrideMessageProperties\": true,\r\n              \"encryptMessage\": false,\r\n              \"signMessage\": false,\r\n              \"compressMessage\": true,\r\n              \"checkDuplicateMessage\": true,\r\n              \"interchangeDuplicatesValidityDays\": 100,\r\n              \"checkCertificateRevocationListOnSend\": true,\r\n              \"checkCertificateRevocationListOnReceive\": true,\r\n              \"encryptionAlgorithm\": \"AES128\"\r\n            },\r\n            \"envelopeSettings\": {\r\n              \"messageContentType\": \"text/plain\",\r\n              \"transmitFileNameInMimeHeader\": true,\r\n              \"fileNameTemplate\": \"Test\",\r\n              \"suspendMessageOnFileNameGenerationError\": true,\r\n              \"autogenerateFileName\": true\r\n            },\r\n            \"errorSettings\": {\r\n              \"suspendDuplicateMessage\": true,\r\n              \"resendIfMDNNotReceived\": true\r\n            }\r\n          },\r\n          \"senderBusinessIdentity\": {\r\n            \"qualifier\": \"ZZ\",\r\n            \"value\": \"ZZ\"\r\n          },\r\n          \"receiverBusinessIdentity\": {\r\n            \"qualifier\": \"AA\",\r\n            \"value\": \"AA\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-01-31T21:34:48.6709085Z\",\r\n    \"changedTime\": \"2019-01-31T21:34:48.6709566Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617/agreements/ps7532\",\r\n  \"name\": \"ps7532\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/agreements\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps9802/providers/Microsoft.Logic/integrationAccounts/ps1225?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzOTgwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHMxMjI1P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/ps5060/providers/Microsoft.Logic/integrationAccounts/ps617?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL3BzNTA2MC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvcHM2MTc/YXBpLXZlcnNpb249MjAxOC0wNy0wMS1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "568cf8a6-dad2-4cc2-91f5-63b51689e3c7"
+          "41993620-d255-4a47-9da8-d5fa8e7c6641"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26606.02",
+          "FxVersion/4.6.27207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1290,25 +1227,25 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:b049fa85-7e97-4a6f-97cc-ce8dfc81aa38"
+          "brazilsouth:7d394226-208a-48bd-b3fd-ac78eb158c90"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
+          "14994"
         ],
         "x-ms-correlation-request-id": [
-          "ea7406a9-3724-44c4-ab17-081bc464830f"
+          "d9814eeb-5c9d-4431-823d-fb1db39b82a4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190103T013259Z:ea7406a9-3724-44c4-ab17-081bc464830f"
+          "WESTUS2:20190131T213450Z:d9814eeb-5c9d-4431-823d-fb1db39b82a4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 03 Jan 2019 01:32:58 GMT"
+          "Thu, 31 Jan 2019 21:34:49 GMT"
         ],
         "Expires": [
           "-1"
@@ -1323,15 +1260,15 @@
   ],
   "Names": {
     "Test-CreateIntegrationAccountAgreementAS2": [
-      "ps9802",
-      "ps1225",
-      "ps473",
-      "ps8801",
-      "ps71",
-      "ps5818"
+      "ps5060",
+      "ps617",
+      "ps8071",
+      "ps7532",
+      "ps2551",
+      "ps1014"
     ]
   },
   "Variables": {
-    "SubscriptionId": "9e223dbe-3399-4e19-88eb-0975f02ac87f"
+    "SubscriptionId": "f34b22a3-2202-4fb1-b040-1332bd928c84"
   }
 }

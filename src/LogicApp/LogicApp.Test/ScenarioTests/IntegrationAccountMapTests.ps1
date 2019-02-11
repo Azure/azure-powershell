@@ -18,7 +18,7 @@ Test New-AzIntegrationAccountMap command
 #>
 function Test-CreateIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXsltMap.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
 	$resourceGroupName = getAssetname
@@ -49,7 +49,7 @@ Test Get-AzIntegrationAccountMap command
 #>
 function Test-GetIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXsltMap.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
 	$resourceGroupName = getAssetname
@@ -79,7 +79,7 @@ Test Remove-AzIntegrationAccountMap command
 #>
 function Test-RemoveIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXsltMap.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
 	$resourceGroupName = getAssetname
@@ -104,7 +104,7 @@ Test Set-AzIntegrationAccountMap command
 #>
 function Test-UpdateIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXsltMap.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 	
 	$resourceGroupName = getAssetname
@@ -133,7 +133,7 @@ Test Get-AzIntegrationAccountMap command : Paging test
 #>
 function Test-ListIntegrationAccountMap
 {
-	$mapFilePath = Join-Path $TestOutputRoot "\Resources\SampleXsltMap.xsl"
+	$mapFilePath = Join-Path $TestOutputRoot "Resources" "SampleXsltMap.xsl"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
 
 	$resourceGroupName = getAssetname

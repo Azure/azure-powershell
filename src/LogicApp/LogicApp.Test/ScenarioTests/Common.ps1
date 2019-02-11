@@ -94,31 +94,10 @@ function TestSetup-CreateNamedResourceGroup([string]$resourceGroupName)
 
 <#
 .SYNOPSIS
-Creates an App Service Plan
-#>
-function TestSetup-CreateAppServicePlan ([string]$resourceGroupName, [string]$AppServicePlan)
-{	
-	if(Test-Path Env:AZURE_TEST_MODE)
-	{
-		$AZURE_TEST_MODE = Get-ChildItem Env:AZURE_TEST_MODE
-		if($AZURE_TEST_MODE.Value.ToLowerInvariant() -eq 'record')
-		{
-			$PropertiesObject = @{}
-			$Sku = @{Name='S1'; Tier='Standard'; Size='S1'; Family='S'; Capacity=1}
-			$Plan = New-AzResource -Name $AppServicePlan -Location "West US" -ResourceGroupName $resourceGroupName -ResourceType "Microsoft.Web/serverfarms" -ApiVersion 2015-08-01 -SkuObject $Sku -PropertyObject $PropertiesObject -Force	
-			return $Plan
-		}
-	}
-	return $null	
-}
-
-
-<#
-.SYNOPSIS
 Creates a new Integration account
 #>
 function TestSetup-CreateIntegrationAccount ([string]$resourceGroupName, [string]$integrationAccountName)
-{		
+{
 	$location = Get-LocationName
 	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	return $integrationAccount
@@ -129,7 +108,7 @@ function TestSetup-CreateIntegrationAccount ([string]$resourceGroupName, [string
 Creates a new workflow
 #>
 function TestSetup-CreateWorkflow ([string]$resourceGroupName, [string]$workflowName, [string]$AppServicePlan)
-{		
+{
 	$rglocation = Get-ProviderLocation "North Europe"
     $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation -Force
 
@@ -149,7 +128,7 @@ function SleepInRecordMode ([int]$SleepIntervalInMillisec)
 {
 	$mode = $env:AZURE_TEST_MODE
 	if ( $mode -ne $null -and $mode.ToUpperInvariant() -eq "RECORD")
-	{	
+	{
 		Sleep -Milliseconds $SleepIntervalInMillisec 
-	}		
+	}
 }
