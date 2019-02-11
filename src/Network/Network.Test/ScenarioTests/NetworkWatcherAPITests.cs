@@ -81,12 +81,8 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-FlowLog");
         }
 
-#if NETSTANDARD
         [Fact(Skip = "This test only applies to desktop")]
         [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestConnectivityCheck()

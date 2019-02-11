@@ -13,12 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    using global::Commands.Network.Test;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
 
     public class PublicIpPrefixTests : NetworkTestRunner
     {
