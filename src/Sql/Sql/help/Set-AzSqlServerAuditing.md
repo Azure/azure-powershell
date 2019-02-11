@@ -185,7 +185,7 @@ Specifies that audit logs destination is blob storage
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DefaultParameterSet (Default), StorageAccountSubscriptionIdSet, BlobStorageByParentResourceSet, StorageAccountSubscriptionIdByParentResourceSet
+Parameter Sets: DefaultParameterSet, StorageAccountSubscriptionIdSet, BlobStorageByParentResourceSet, StorageAccountSubscriptionIdByParentResourceSet
 Aliases:
 
 Required: False
@@ -320,7 +320,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: DefaultParameterSet (Default), StorageAccountSubscriptionIdSet, EventHubSet, LogAnalyticsSet
+Parameter Sets: DefaultParameterSet, StorageAccountSubscriptionIdSet, EventHubSet, LogAnalyticsSet
 Aliases:
 
 Required: True
@@ -335,7 +335,7 @@ The number of retention days for the audit logs.
 
 ```yaml
 Type: System.Nullable`1[System.UInt32]
-Parameter Sets: DefaultParameterSet (Default), StorageAccountSubscriptionIdSet, BlobStorageByParentResourceSet, StorageAccountSubscriptionIdByParentResourceSet
+Parameter Sets: DefaultParameterSet, StorageAccountSubscriptionIdSet, BlobStorageByParentResourceSet, StorageAccountSubscriptionIdByParentResourceSet
 Aliases:
 
 Required: False
@@ -350,7 +350,7 @@ SQL server name.
 
 ```yaml
 Type: System.String
-Parameter Sets: DefaultParameterSet (Default), StorageAccountSubscriptionIdSet, EventHubSet, LogAnalyticsSet
+Parameter Sets: DefaultParameterSet, StorageAccountSubscriptionIdSet, EventHubSet, LogAnalyticsSet
 Aliases:
 
 Required: True
@@ -383,7 +383,7 @@ If you do not specify this parameter, the cmdlet uses the storage account that w
 
 ```yaml
 Type: System.String
-Parameter Sets: DefaultParameterSet (Default), BlobStorageByParentResourceSet
+Parameter Sets: DefaultParameterSet, BlobStorageByParentResourceSet
 Aliases:
 
 Required: False
@@ -425,7 +425,7 @@ Specifies which of the storage access keys to use.
 
 ```yaml
 Type: System.String
-Parameter Sets: DefaultParameterSet (Default), StorageAccountSubscriptionIdSet, BlobStorageByParentResourceSet, StorageAccountSubscriptionIdByParentResourceSet
+Parameter Sets: DefaultParameterSet, StorageAccountSubscriptionIdSet, BlobStorageByParentResourceSet, StorageAccountSubscriptionIdByParentResourceSet
 Aliases:
 Accepted values: Primary, Secondary
 
