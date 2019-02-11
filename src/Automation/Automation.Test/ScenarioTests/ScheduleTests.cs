@@ -12,18 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
 namespace Commands.Automation.Test
 {
-    using Microsoft.Azure.ServiceManagement.Common.Models;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
-
     public class ScheduleTests : AutomationTestRunner
     {
-        public XunitTracingInterceptor logger;
-
         public ScheduleTests(Xunit.Abstractions.ITestOutputHelper output)
             : base(output)
         {

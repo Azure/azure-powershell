@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.TestFx;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
+﻿using Microsoft.Azure.Commands.TestFx;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
+namespace Commands.Automation.Test
 {
     public class AutomationTestRunner
     {
@@ -15,7 +9,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
 
         protected AutomationTestRunner(ITestOutputHelper output)
         {
-            TestRunner = TestFx.TestManager.CreateInstance (output)
+            TestRunner = TestManager.CreateInstance (output)
                 .WithNewPsScriptFilename ($"{GetType().Name}.ps1")
                 .WithProjectSubfolderForTests ("ScenarioTests")
                 .WithCommonPsScripts (new[]

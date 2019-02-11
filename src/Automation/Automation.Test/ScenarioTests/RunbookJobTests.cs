@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System.IO;
+using Xunit;
 
 namespace Commands.Automation.Test
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using System.IO;
-    using Xunit;
-
     public class RunbookJobTests : AutomationTestRunner
     {
         public RunbookJobTests(Xunit.Abstractions.ITestOutputHelper output)
