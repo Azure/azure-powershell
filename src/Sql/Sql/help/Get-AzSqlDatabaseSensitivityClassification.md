@@ -69,6 +69,7 @@ SensitivityLabels : {{
                         LabelName: label3,
                     }}
 ```
+
 ### Example 2: Get current sensitivity classification of an Azure SQL database.
 ```powershell
 PS C:\> Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Get-AzSqlDatabaseSensitivityClassification
@@ -94,6 +95,7 @@ SensitivityLabels : {{
                         LabelName: label3,
                     }}
 ```
+
 ### Example 3: Get current sensitivity classification of a specific column of an Azure SQL database.
 ```powershell
 PS C:\> Get-AzSqlDatabaseSensitivityClassification -ResourceGroupName resourceGroup -ServerName server -DatabaseName database -SchemaName schema -TableName table -ColumnName column
@@ -109,6 +111,7 @@ SensitivityLabels : {{
                         InformationType: informationType,
                     }}
 ```
+
 ### Example 4: Get current sensitivity classification of a specific column of an Azure SQL database.
 ```powershell
 PS C:\> Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Get-AzSqlDatabaseSensitivityClassification -SchemaName schema -TableName table -ColumnName column
@@ -158,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Database.
 
 ```yaml
 Type: System.String

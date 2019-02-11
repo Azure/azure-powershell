@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ManagedDatabaseSensitivityClassification,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.SqlInstanceDatabaseSensitivityClassification,
         SupportsShouldProcess = true)]
     public class RemoveAzSqlInstanceDatabaseSensitivityClassification : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
     {
