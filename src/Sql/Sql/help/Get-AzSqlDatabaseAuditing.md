@@ -92,7 +92,7 @@ PredicateExpression          : statement <> 'select 1'
 
 ### Example 3: Get, through pipeline, the blob storage auditing settings of an Azure SQL database
 ```
-PS C:\> Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Get-AzSqlDatabaseAuditing
+PS C:\> Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Get-AzSqlDatabaseAuditing
 DatabaseName                 : database01
 AuditAction                  : {}
 AuditActionGroup             : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
