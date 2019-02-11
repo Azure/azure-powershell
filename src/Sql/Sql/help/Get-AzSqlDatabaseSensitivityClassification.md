@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/Get-azsqldatabasesensitivityclassification
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabasesensitivityclassification
 schema: 2.0.0
 ---
 
@@ -40,7 +40,7 @@ Get-AzSqlDatabaseSensitivityClassification -InputObject <AzureSqlDatabaseModel> 
 ```
 
 ## DESCRIPTION
-The Get-AzSqlDatabaseSensitivityClassification cmdlet gets the current sensitivity labels and information types of columns in the database.
+The Get-AzSqlDatabaseSensitivityClassification cmdlet returns the current sensitivity labels and information types of columns in the database.
 
 ## EXAMPLES
 

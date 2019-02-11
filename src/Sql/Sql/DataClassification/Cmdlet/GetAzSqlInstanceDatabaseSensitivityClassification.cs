@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ManagedDatabaseSensitivityClassification),
         OutputType(typeof(ManagedDatabaseSensitivityClassificationModel))]
-    public class GetAzManagedDatabaseSensitivityClassification : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
+    public class GetAzSqlInstanceDatabaseSensitivityClassification : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
     {
         [Parameter(
             ParameterSetName = DefinitionsCommon.DatabaseParameterSet,

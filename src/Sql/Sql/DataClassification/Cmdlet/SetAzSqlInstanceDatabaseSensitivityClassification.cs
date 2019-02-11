@@ -1,18 +1,18 @@
-﻿
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataClassification.Model;
 using Microsoft.Azure.Commands.Sql.DataClassification.Services;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 {
     [Cmdlet(
-        VerbsCommon.Remove,
+        VerbsCommon.Set,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ManagedDatabaseSensitivityClassification,
         SupportsShouldProcess = true)]
-    public class RemoveAzManagedDatabaseSensitivityClassification : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
+    public class SetAzSqlInstanceDatabaseSensitivityClassification : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
     {
         [Parameter(
             ParameterSetName = DefinitionsCommon.ColumnParameterSet,
@@ -66,12 +66,33 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         public string ColumnName { get; set; }
 
         [Parameter(
+            ParameterSetName = DefinitionsCommon.ColumnParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = DefinitionsCommon.LabelNameHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string LabelName { get; set; }
+
+        [Parameter(
+            ParameterSetName = DefinitionsCommon.ColumnParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = DefinitionsCommon.InformationTypeHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string InformationType { get; set; }
+
+        [Parameter(
             ParameterSetName = DefinitionsCommon.ParentResourceParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = DefinitionsCommon.SqlDatabaseInputObjectHelpMessage)]
+            HelpMessage = DefinitionsCommon.ManagedDatabaseInputObjectHelpMessage)]
         [ValidateNotNullOrEmpty]
         public ManagedDatabaseSensitivityClassificationModel InputObject { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = DefinitionsCommon.PassThruHelpMessage)]
+        public SwitchParameter PassThru { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -86,20 +107,22 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
                 InstanceName = InstanceName,
                 DatabaseName = DatabaseName,
                 SensitivityLabels = new List<SensitivityLabel>()
-                {
-                    new SensitivityLabel
                     {
-                        SchemaName  = SchemaName,
-                        TableName = TableName,
-                        ColumnName = ColumnName
+                        new SensitivityLabel
+                        {
+                            SchemaName  = SchemaName,
+                            TableName = TableName,
+                            ColumnName = ColumnName,
+                            InformationType = InformationType,
+                            LabelName = LabelName
+                        }
                     }
-                }
             };
         }
 
         protected override DataClassificationAdapter InitModelAdapter()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }
