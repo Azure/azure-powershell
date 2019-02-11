@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateIntegrationAccountAgreementX12()
+        public void TestCreateAgreementX12()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountAgreementX12");
         }
@@ -47,10 +47,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateIntegrationAccountAgreementWithFailure()
+        public void TestCreateAgreementWithFailure()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(
-                _logger, "Test-CreateIntegrationAccountAgreementWithFailure");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountAgreementWithFailure");
         }
 
         /// <summary>
@@ -58,7 +57,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateIntegrationAccountAgreementAs2()
+        public void TestCreateAgreementAs2()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountAgreementAS2");
         }
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateIntegrationAccountAgreementEdifact()
+        public void TestCreateAgreementEdifact()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountAgreementEdifact");
         }
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetIntegrationAccountAgreement()
+        public void TestGetAgreement()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountAgreement");
         }
@@ -88,17 +87,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveIntegrationAccountAgreement()
+        public void TestRemoveAgreement()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccountAgreement");
-        }        
+        }
 
         /// <summary>
         /// Test Set-AzIntegrationAccountAgreement command to update the integration account agreement.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateIntegrationAccountAgreement()
+        public void TestUpdateAgreement()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountAgreement");
         }
@@ -108,10 +107,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListIntegrationAccountAgreement()
+        public void TestListAgreement()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-ListIntegrationAccountAgreement");
         }
     }
 }
-
