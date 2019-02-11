@@ -80,8 +80,16 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
                         TableName = "table2",
                         SchemaName = "schema2",
                         LabelName = "label2",
-                        InformationType = "informationType2"
-                    }
+                        InformationType = null
+                    },
+                    new SensitivityLabel
+                    {
+                        ColumnName = "column2",
+                        TableName = "table2",
+                        SchemaName = "schema2",
+                        LabelName = "label2",
+                        InformationType = null
+                    },
                 }
             };
 
