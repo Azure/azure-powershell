@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     [Cmdlet(
         VerbsCommon.Set,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAuditing",
+        DefaultParameterSetName = DefinitionsCommon.BlobStorageParameterSetName,
         SupportsShouldProcess = true),
         OutputType(typeof(ServerBlobAuditingSettingsModel))]
     public class SetAzSqlServerAuditing : SqlServerAuditingSettingsCmdletBase

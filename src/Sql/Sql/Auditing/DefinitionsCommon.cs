@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
         internal const string StorageAccountNameParameterName = "StorageAccountName";
         internal const string ServerAuditingCmdletsSuffix = "SqlServerAuditing";
         internal const string DatabaseAuditingCmdletsSuffix = "SqlDatabaseAuditing";
-        internal const string BlobStorageParameterSetName = "DefaultParameterSet (Default)";
+        internal const string BlobStorageParameterSetName = "DefaultParameterSet";
         internal const string BlobStorageByParentResourceParameterSetName = "BlobStorageByParentResourceSet";
         internal const string EventHubParameterSetName = "EventHubSet";
         internal const string EventHubByParentResourceParameterSetName = "EventHubByParentResourceSet";

@@ -1458,7 +1458,6 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 
 		# Enable event hub auditing policy and verify it.
 		Set-AzSqlDatabaseAuditing -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
-		Start-Sleep -s 180
 		$policy = Get-AzSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
 		Assert-AreEqual "Enabled" $policy.AuditState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
@@ -1482,10 +1481,8 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		# Enable a new category in existing Diagnostic Settings.
 		$settingsName = ($diagnostics)[0].Name
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
-		Start-Sleep -s 180
 		# Enable log analytics auditing policy and verify it
 		Set-AzSqlDatabaseAuditing -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics -WorkspaceResourceId $workspaceResourceId
-		Start-Sleep -s 180
 		$policy = Get-AzSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
 		Assert-AreEqual "Enabled" $policy.AuditState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
@@ -1507,7 +1504,6 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		
 		# Remove old Diagnostics.
 		Remove-AzDiagnosticSetting -ResourceId $resourceId -Name $settingsName
-		Start-Sleep -s 180
 		# Verify only one diagnostic settings exists.
 		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
 		Assert-AreEqual 1 ($diagnostics).count
@@ -1515,7 +1511,6 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		# Enable a new category in Diagnostic Settings.
 		$settingsName = ($diagnostics)[0].Name
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
-		Start-Sleep -s 180
 		# Verify log analytics auditing policy is enabled.
 		$policy = Get-AzSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
 		Assert-AreEqual "Enabled" $policy.AuditState
@@ -1535,7 +1530,6 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		
 		# Enable event hub auditing policy and verify it.
 		Set-AzSqlDatabaseAuditing -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
-		Start-Sleep -s 180
 		$policy = Get-AzSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
 		Assert-AreEqual "Enabled" $policy.AuditState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
@@ -1557,7 +1551,6 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		
 		# Remove old Diagnostics.
 		Remove-AzDiagnosticSetting -ResourceId $resourceId -Name $settingsName
-		Start-Sleep -s 180
 		# Verify only one diagnostic settings exist.
 		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
 		Assert-AreEqual 1 ($diagnostics).count
@@ -1565,7 +1558,6 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		# Enable a new category in Diagnostic Settings
 		$settingsName = ($diagnostics)[0].Name
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
-		Start-Sleep -s 180
 		# Verify event hub auditing settings is enabled.
 		$policy = Get-AzSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
 		Assert-AreEqual "Enabled" $policy.AuditState
@@ -1585,7 +1577,6 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 
 		# Disable event hub auditing policy and verify it.
 		Set-AzSqlDatabaseAuditing -State Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
-		Start-Sleep -s 180
 		$policy = Get-AzSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
 		Assert-AreEqual "Disabled" $policy.AuditState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
@@ -1607,7 +1598,6 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		
 		# Remove old Diagnostics
 		Remove-AzDiagnosticSetting -ResourceId $resourceId -Name $settingsName
-		Start-Sleep -s 180
 		# Verify only one diagnostic settings exist.
 		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
 		Assert-AreEqual 1 ($diagnostics).count
@@ -1631,7 +1621,6 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		
 		# Enable event hub auditing policy and verify it.
 		Set-AzSqlDatabaseAuditing -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
-		Start-Sleep -s 180
 		$policy = Get-AzSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
 		Assert-AreEqual "Enabled" $policy.AuditState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
@@ -1654,10 +1643,8 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		$settingsName = ($diagnostics)[0].Name
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
 		
-		Start-Sleep -s 180
 		# Disable log analytics auditing policy and verify it
 		Set-AzSqlDatabaseAuditing -State Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
-		Start-Sleep -s 180
 		$policy = Get-AzSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
 		Assert-AreEqual "Disabled" $policy.AuditState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
@@ -1679,7 +1666,6 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		
 		# Remove old Diagnostics
 		Remove-AzDiagnosticSetting -ResourceId $resourceId -Name $settingsName
-		Start-Sleep -s 180
 		# Verify log analytics auditing policy is Disabled.
 		$policy = Get-AzSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
 		Assert-AreEqual "Disabled" $policy.AuditState
@@ -1699,7 +1685,6 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		
 		# Disable event hub auditing policy and verify it.
 		Set-AzSqlDatabaseAuditing -State Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
-		Start-Sleep -s 180
 		$policy = Get-AzSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
 		Assert-AreEqual "Disabled" $policy.AuditState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
@@ -1758,7 +1743,6 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 
 		# Enable event hub auditing policy and verify it.
 		Set-AzSqlServerAuditing -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
-		Start-Sleep -s 180
 		$policy = Get-AzSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
 		Assert-AreEqual "Enabled" $policy.AuditState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
@@ -1778,11 +1762,9 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		# Enable a new category in existing Diagnostic Settings.
 		$settingsName = ($diagnostics)[0].Name
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
-		Start-Sleep -s 180
 
 		# Enable log analytics auditing policy and verify it
 		Set-AzSqlServerAuditing -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics -WorkspaceResourceId $workspaceResourceId
-		Start-Sleep -s 180
 		$policy = Get-AzSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
 		Assert-AreEqual "Enabled" $policy.AuditState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
@@ -1800,7 +1782,6 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		
 		# Remove old Diagnostics.
 		Remove-AzDiagnosticSetting -ResourceId $resourceId -Name $settingsName
-		Start-Sleep -s 180
 
 		# Verify only one diagnostic settings exists.
 		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
@@ -1809,7 +1790,6 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		# Enable a new category in Diagnostic Settings.
 		$settingsName = ($diagnostics)[0].Name
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
-		Start-Sleep -s 180
 
 		# Verify log analytics auditing policy is enabled.
 		$policy = Get-AzSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
@@ -1826,7 +1806,6 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		
 		# Enable event hub auditing policy and verify it.
 		Set-AzSqlServerAuditing -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
-		Start-Sleep -s 180
 		$policy = Get-AzSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
 		Assert-AreEqual "Enabled" $policy.AuditState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
@@ -1844,7 +1823,6 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		
 		# Remove old Diagnostics.
 		Remove-AzDiagnosticSetting -ResourceId $resourceId -Name $settingsName
-		Start-Sleep -s 180
 
 		# Verify only one diagnostic settings exist.
 		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
@@ -1853,7 +1831,6 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		# Enable a new category in Diagnostic Settings
 		$settingsName = ($diagnostics)[0].Name
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
-		Start-Sleep -s 180
 		# Verify event hub auditing settings is enabled.
 		$policy = Get-AzSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
 		Assert-AreEqual "Enabled" $policy.AuditState
@@ -1869,7 +1846,6 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 
 		# Disable event hub auditing policy and verify it.
 		Set-AzSqlServerAuditing -State Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
-		Start-Sleep -s 180
 		$policy = Get-AzSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
 		Assert-AreEqual "Disabled" $policy.AuditState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
@@ -1887,7 +1863,6 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		
 		# Remove old Diagnostics
 		Remove-AzDiagnosticSetting -ResourceId $resourceId -Name $settingsName
-		Start-Sleep -s 180
 		# Verify only one diagnostic settings exist.
 		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
 		Assert-AreEqual 1 ($diagnostics).count "7"
@@ -1907,7 +1882,6 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		
 		# Enable event hub auditing policy and verify it.
 		Set-AzSqlServerAuditing -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
-		Start-Sleep -s 180
 		$policy = Get-AzSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
 		Assert-AreEqual "Enabled" $policy.AuditState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
@@ -1925,11 +1899,9 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		Assert-AreEqual 1 ($diagnostics).count "8"
 		$settingsName = ($diagnostics)[0].Name
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
-		Start-Sleep -s 180
 		
 		# Disable log analytics auditing policy and verify it
 		Set-AzSqlServerAuditing -State Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
-		Start-Sleep -s 180
 		$policy = Get-AzSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
 		Assert-AreEqual "Disabled" $policy.AuditState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
@@ -1947,7 +1919,6 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		
 		# Remove old Diagnostics
 		Remove-AzDiagnosticSetting -ResourceId $resourceId -Name $settingsName
-		Start-Sleep -s 180
 		# Verify log analytics auditing policy is Disabled.
 		$policy = Get-AzSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
 		Assert-AreEqual "Disabled" $policy.AuditState
@@ -1963,7 +1934,6 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		
 		# Disable event hub auditing policy and verify it.
 		Set-AzSqlServerAuditing -State Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
-		Start-Sleep -s 180
 		$policy = Get-AzSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
 		Assert-AreEqual "Disabled" $policy.AuditState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
