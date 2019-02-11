@@ -57,9 +57,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         public AzureSqlDatabaseBackupCommunicator(IAzureContext context)
         {
             Context = context;
-            if (context.Subscription != Subscription)
+            if (context?.Subscription != Subscription)
             {
-                Subscription = context.Subscription;
+                Subscription = context?.Subscription;
                 LegacyClient = null;
             }
         }
@@ -371,6 +371,41 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         public Management.Sql.Models.Database RestoreDatabase(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.Database model)
         {
             return GetCurrentSqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, model);
+        }
+
+        /// <summary>
+        /// Get the ShortTermRetention policy for a Azure SQL Database
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <returns>A BackupShortTermRetention policy</returns>
+        public Management.Sql.Models.BackupShortTermRetentionPolicy GetDatabaseBackupShortTermRetentionPolicy(
+            string resourceGroupName,
+            string serverName,
+            string databaseName)
+        {
+            return GetCurrentSqlClient().BackupShortTermRetentionPolicies.Get(
+                resourceGroupName,
+                serverName,
+                databaseName);
+        }
+
+        /// <summary>
+        /// Sets a database's backup Short Term Retention policy.
+        /// </summary>
+        /// <param name="resourceGroup">The resource group name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="policy">The Long Term Retention policy to apply.</param>
+        /// <returns>A backup ShortTermRetention policy</returns>
+        public Management.Sql.Models.BackupShortTermRetentionPolicy SetDatabaseBackupShortTermRetentionPolicy(
+            string resourceGroup,
+            string serverName,
+            string databaseName,
+            Management.Sql.Models.BackupShortTermRetentionPolicy policy)
+        {
+            return GetCurrentSqlClient().BackupShortTermRetentionPolicies.CreateOrUpdate(resourceGroup, serverName, databaseName, policy);
         }
 
         /// <summary>

@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public const string CustomLogCollection = "CustomLogCollection";
         public const string LinuxPerformanceCollection = "LinuxPerformanceCollection";
         public const string LinuxPerformanceObject = "LinuxPerformanceObject";
+        public const string ApplicationInsights = "ApplicationInsights";
     }
 
     public class PSDataSource
@@ -108,6 +109,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                     break;
                 case PSDataSourceKinds.IISLogs:
                     this.Properties = ((JToken)dataSource.Properties).ToObject<PSIISLogsDataSourceProperties>();
+                    break;
+                case PSDataSourceKinds.ApplicationInsights:
+                    this.Properties = ((JToken)dataSource.Properties).ToObject<PSApplicationInsightsDataSourceProperties>();
                     break;
             }
 
