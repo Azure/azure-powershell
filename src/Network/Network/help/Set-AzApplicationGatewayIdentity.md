@@ -1,37 +1,37 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azapplicationgatewayautoscaleconfiguration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azapplicationgatewayidentity
 schema: 2.0.0
 ---
 
-# Set-AzApplicationGatewayAutoscaleConfiguration
+# Set-AzApplicationGatewayIdentity
 
 ## SYNOPSIS
-Updates Autoscale Configuration of an application gateway.
+Updates a identity assigned to the application gateway.
 
 ## SYNTAX
 
 ```
-Set-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway <PSApplicationGateway> -MinCapacity <Int32>
- [-MaxCapacity <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzApplicationGatewayIdentity -ApplicationGateway <PSApplicationGateway> -UserAssignedIdentityId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzApplicationGatewayAutoscaleConfiguration** cmdlet modifies the existing autoscale configuration of an Application Gateway.
+The **Set-AzApplicationGatewayIdentity** cmdlet updates an identity assigned to application gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
-PS C:\> $gw = Set-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $gw -MinCapacity 5
-PS C:\> $gw = Set-AzApplicationGateway -ApplicationGateway $gw
+PS C:\>$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgName
+PS C:\>$identity = New-AzUserAssignedIdentity -Name $identityName -ResourceGroupName $rgName -Location $location
+PS C:\>$appgwIdentity = Set-AzApplicationGatewayIdentity -UserAssignedIdentity $identity.Id -ApplicationGateway $appgw
+PS C:\>$updatedAppGw = Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
-The first command gets the application gateway and stores it in $gw variable.
-The second command updates the autoscale configuration from the applicationg gateway.
-The third command updates the application gateway on Azure.
+In this example, we assign a user assigned identity to an existing applicaiton gateway.
+Note: This identity should have access to the keyvault from which the certificates/secrets will be referenced.
 
 ## PARAMETERS
 
@@ -65,33 +65,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxCapacity
-Maximum capcity for application gateway.
+### -UserAssignedIdentityId
+ResourceId of the user assigned identity to be assigned to Application Gateway.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.String
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MinCapacity
-Minimum capcity for application gateway.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
+Aliases: UserAssignedIdentity
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -133,6 +118,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 
+### System.String
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
@@ -140,9 +127,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzApplicationGatewayAutoscaleConfiguration](./Get-AzApplicationGatewayAutoscaleConfiguration.md)
-
-[New-AzApplicationGatewayAutoscaleConfiguration](./New-AzApplicationGatewayAutoscaleConfiguration.md)
-
-[Remove-AzApplicationGatewayAutoscaleConfiguration](./Remove-AzApplicationGatewayAutoscaleConfiguration.md)
