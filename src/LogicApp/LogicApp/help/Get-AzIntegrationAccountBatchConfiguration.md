@@ -20,13 +20,13 @@ Get-AzIntegrationAccountBatchConfiguration -ResourceGroupName <String> -ParentNa
 
 ### ByInputObject
 ```
-Get-AzIntegrationAccountBatchConfiguration [-Name <String>] -ParentObject <IntegrationAccount>
+Get-AzIntegrationAccountBatchConfiguration -ParentObject <IntegrationAccount> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzIntegrationAccountBatchConfiguration [-Name <String>] -ParentResourceId <String>
+Get-AzIntegrationAccountBatchConfiguration -ParentResourceId <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -37,14 +37,37 @@ The **Get-AzIntegrationAccountBatchConfiguration** cmdlet gets an batch configur
 
 ### Example 1: Get a batch configuration by parameters
 ```powershell
-PS C:\> Get-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -BatchConfigurationName "sampleBatchConfiguration"
+PS C:\> Get-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -BatchConfigurationName "sampleBatchConfig"
+
+Properties : Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties
+Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/batchConfigurations/sampleBatchConfig
+Name       : sampleBatchConfig
+Type       : Microsoft.Logic/integrationAccounts/batchConfigurations
+Location   :
+Tags       :
+
 ```
 
-Get a batch configuration named "sampleBatchConfiguration" located in the integration account "sampleIntegrationAccount" which is contained in the resource group "sampleResourceGroup".
+Get a batch configuration named "sampleBatchConfig" located in the integration account "sampleIntegrationAccount" which is contained in the resource group "sampleResourceGroup".
 
 ### Example 2: List all batch configurations in an integration account by parameters
 ```powershell
 PS C:\> Get-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount"
+
+Properties : Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties
+Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/batchConfigurations/sampleBatchConfig
+Name       : sampleBatchConfig
+Type       : Microsoft.Logic/integrationAccounts/batchConfigurations
+Location   :
+Tags       :
+
+Properties : Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties
+Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/batchConfigurations/sampleBatchConfig2
+Name       : sampleBatchConfig2
+Type       : Microsoft.Logic/integrationAccounts/batchConfigurations
+Location   :
+Tags       :
+
 ```
 
 Get all batch configurations located in the integration account "sampleIntegrationAccount" which is contained in the resource group "sampleResourceGroup".
@@ -152,7 +175,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Logic.Models.BatchConfiguration
+### Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration
 
 ## NOTES
 

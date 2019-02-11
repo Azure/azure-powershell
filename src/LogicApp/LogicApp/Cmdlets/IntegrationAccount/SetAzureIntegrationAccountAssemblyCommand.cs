@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
+    using Microsoft.Azure.Commands.LogicApp.Models;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -21,14 +22,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System.Collections;
+    using System.Globalization;
     using System.Management.Automation;
+    using Resource = Properties.Resource;
 
     /// <summary>
     /// Updates the integration account assembly.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, AzureRMConstants.AzureRMPrefix + "IntegrationAccountAssembly", DefaultParameterSetName = ParameterSet.ByIntegrationAccountAndFilePath, SupportsShouldProcess = true)]
-    [OutputType(typeof(AssemblyDefinition))]
-    public class UpdateAzureIntegrationAccountAssemblyCommand : LogicAppBaseCmdlet
+    [OutputType(typeof(PSIntegrationAccountAssembly))]
+    public class SetAzureIntegrationAccountAssemblyCommand : LogicAppBaseCmdlet
     {
         #region Input Paramters
 
@@ -46,6 +49,18 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         [Alias("IntegrationAccountName")]
         public string ParentName { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyInputObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObjectAndContentLink, ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyInputObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObjectAndFileBytes, ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyInputObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObjectAndFilePath, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public PSIntegrationAccountAssembly InputObject { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceIdAndContentLink, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceIdAndFileBytes, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceIdAndFilePath, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyNameHelpMessage, ParameterSetName = ParameterSet.ByIntegrationAccountAndContentLink)]
         [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyNameHelpMessage, ParameterSetName = ParameterSet.ByIntegrationAccountAndFileBytes)]
@@ -76,18 +91,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = Constants.AssemblyMetadataHelpMessage)]
         [ValidateNotNullOrEmpty]
         public Hashtable Metadata { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyInputObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObjectAndContentLink, ValueFromPipeline = true)]
-        [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyInputObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObjectAndFileBytes, ValueFromPipeline = true)]
-        [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyInputObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObjectAndFilePath, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public AssemblyDefinition InputObject { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceIdAndContentLink, ValueFromPipelineByPropertyName = true)]
-        [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceIdAndFileBytes, ValueFromPipelineByPropertyName = true)]
-        [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceIdAndFilePath, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         #endregion Input Parameters
 
@@ -163,9 +166,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 }
             }
 
-            if (this.ShouldProcess(this.Name, $"Updating Assembly '{this.Name}' in resource group '{this.ResourceGroupName}'."))
+            if (this.ShouldProcess(this.Name, string.Format(CultureInfo.InvariantCulture, Resource.UpdateIntegrationAccountArtifactMessage, Resource.Assembly, this.Name, this.ResourceGroupName)))
             {
-                this.WriteObject(IntegrationAccountClient.UpdateIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name, assemblyDefinition));
+                var assembly = IntegrationAccountClient.UpdateIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name, assemblyDefinition);
+                this.WriteObject(assembly);
             }
         }
     }

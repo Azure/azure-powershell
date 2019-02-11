@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
+    using Microsoft.Azure.Commands.LogicApp.Models;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -24,13 +25,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using System.Collections;
     using System.Globalization;
     using System.Management.Automation;
+    using Resource = Properties.Resource;
 
     /// <summary>
     /// Updates the integration account batch configuration.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, AzureRMConstants.AzureRMPrefix + "IntegrationAccountBatchConfiguration", DefaultParameterSetName = ParameterSet.ByIntegrationAccountAndParameters, SupportsShouldProcess = true)]
-    [OutputType(typeof(BatchConfiguration))]
-    public class UpdateAzureIntegrationAccountBatchConfigurationCommand : LogicAppBaseCmdlet
+    [OutputType(typeof(PSIntegrationAccountBatchConfiguration))]
+    public class SetAzureIntegrationAccountBatchConfigurationCommand : LogicAppBaseCmdlet
     {
         #region Input Parameters
 
@@ -48,6 +50,18 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         [Alias("IntegrationAccountName")]
         public string ParentName { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationInputObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObjectAndJson, ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationInputObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObjectAndFilePath, ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationInputObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObjectAndParameters, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public PSIntegrationAccountBatchConfiguration InputObject { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceIdAndJson, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceIdAndFilePath, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceIdAndParameters, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationNameHelpMessage, ParameterSetName = ParameterSet.ByIntegrationAccountAndJson)]
         [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationNameHelpMessage, ParameterSetName = ParameterSet.ByIntegrationAccountAndFilePath)]
@@ -115,18 +129,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = Constants.BatchConfigurationMetadataHelpMessage)]
         [ValidateNotNullOrEmpty]
         public Hashtable Metadata { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationInputObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObjectAndJson, ValueFromPipeline = true)]
-        [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationInputObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObjectAndFilePath, ValueFromPipeline = true)]
-        [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationInputObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObjectAndParameters, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public BatchConfiguration InputObject { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceIdAndJson, ValueFromPipelineByPropertyName = true)]
-        [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceIdAndFilePath, ValueFromPipelineByPropertyName = true)]
-        [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceIdAndParameters, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         #endregion Input Parameters
 
@@ -211,7 +213,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
                     if (!this.IsValidReleaseCriteria(releaseCriteria))
                     {
-                        throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resource.BatchConfigurationParameterNeedsToBeSpecified));
+                        throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Resource.BatchConfigurationParameterNeedsToBeSpecified));
                     }
 
                     break;
@@ -220,9 +222,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             batchConfiguration.Properties.Metadata = this.Metadata;
 
-            if (this.ShouldProcess(this.Name, $"Updating Batch Configuration '{this.Name}' in resource group '{this.ResourceGroupName}'."))
+            if (this.ShouldProcess(this.Name, string.Format(CultureInfo.InvariantCulture, Resource.UpdateIntegrationAccountArtifactMessage, Resource.BatchConfiguration, this.Name, this.ResourceGroupName)))
             {
-                this.WriteObject(IntegrationAccountClient.UpdateIntegrationAccountBatchConfiguration(this.ResourceGroupName, this.ParentName, this.Name, batchConfiguration));
+                var updatedBatchConfiguration = IntegrationAccountClient.UpdateIntegrationAccountBatchConfiguration(this.ResourceGroupName, this.ParentName, this.Name, batchConfiguration);
+                this.WriteObject(updatedBatchConfiguration);
             }
         }
 

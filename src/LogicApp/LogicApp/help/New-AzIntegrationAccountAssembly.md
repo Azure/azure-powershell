@@ -15,56 +15,58 @@ Creates an integration account assembly.
 ### ByIntegrationAccountAndFilePath (Default)
 ```
 New-AzIntegrationAccountAssembly -ResourceGroupName <String> -ParentName <String> -Name <String>
- -AssemblyFilePath <String> [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -AssemblyFilePath <String> [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIntegrationAccountAndContentLink
 ```
 New-AzIntegrationAccountAssembly -ResourceGroupName <String> -ParentName <String> -Name <String>
- -ContentLink <String> [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ContentLink <String> [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByIntegrationAccountAndFileBytes
 ```
 New-AzIntegrationAccountAssembly -ResourceGroupName <String> -ParentName <String> -Name <String>
- -AssemblyData <Byte[]> [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -AssemblyData <Byte[]> [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByInputObjectAndContentLink
 ```
-New-AzIntegrationAccountAssembly -Name <String> -ContentLink <String> [-Metadata <Hashtable>]
- -ParentObject <IntegrationAccount> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByResourceIdAndContentLink
-```
-New-AzIntegrationAccountAssembly -Name <String> -ContentLink <String> [-Metadata <Hashtable>]
- -ParentResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzIntegrationAccountAssembly -ParentObject <IntegrationAccount> -Name <String> -ContentLink <String>
+ [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObjectAndFileBytes
 ```
-New-AzIntegrationAccountAssembly -Name <String> -AssemblyData <Byte[]> [-Metadata <Hashtable>]
- -ParentObject <IntegrationAccount> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByResourceIdAndFileBytes
-```
-New-AzIntegrationAccountAssembly -Name <String> -AssemblyData <Byte[]> [-Metadata <Hashtable>]
- -ParentResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzIntegrationAccountAssembly -ParentObject <IntegrationAccount> -Name <String> -AssemblyData <Byte[]>
+ [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObjectAndFilePath
 ```
-New-AzIntegrationAccountAssembly -Name <String> -AssemblyFilePath <String> [-Metadata <Hashtable>]
- -ParentObject <IntegrationAccount> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzIntegrationAccountAssembly -ParentObject <IntegrationAccount> -Name <String> -AssemblyFilePath <String>
+ [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdAndContentLink
+```
+New-AzIntegrationAccountAssembly -ParentResourceId <String> -Name <String> -ContentLink <String>
+ [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdAndFileBytes
+```
+New-AzIntegrationAccountAssembly -ParentResourceId <String> -Name <String> -AssemblyData <Byte[]>
+ [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdAndFilePath
 ```
-New-AzIntegrationAccountAssembly -Name <String> -AssemblyFilePath <String> [-Metadata <Hashtable>]
- -ParentResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzIntegrationAccountAssembly -ParentResourceId <String> -Name <String> -AssemblyFilePath <String>
+ [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,6 +77,14 @@ The **Get-AzIntegrationAccountAssembly** cmdlet creates a new assembly in an int
 ### Example 1: Create new assembly using local file
 ```powershell
 PS C:\> New-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -AssemblyName "sampleAssembly" -AssemblyFilePath $localAssemblyFilePath
+
+Properties : Microsoft.Azure.Management.Logic.Models.AssemblyProperties
+Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/assemblies/sampleAssembly
+Name       : sampleAssembly
+Type       : Microsoft.Logic/integrationAccounts/assemblies
+Location   :
+Tags       :
+
 ```
 
 Creates a new assembly using the local file located at the file path contained in "$localAssemblyFilePath".
@@ -82,6 +92,14 @@ Creates a new assembly using the local file located at the file path contained i
 ### Example 2: Create new assembly using byte data
 ```powershell
 PS C:\> New-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -AssemblyName "sampleAssembly" -AssemblyData $assemblyContent
+
+Properties : Microsoft.Azure.Management.Logic.Models.AssemblyProperties
+Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/assemblies/sampleAssembly
+Name       : sampleAssembly
+Type       : Microsoft.Logic/integrationAccounts/assemblies
+Location   :
+Tags       :
+
 ```
 
 Creates a new assembly using the a byte array contained in "$assemblyContent".
@@ -89,6 +107,14 @@ Creates a new assembly using the a byte array contained in "$assemblyContent".
 ### Example 3: Create new assembly using a content link
 ```powershell
 PS C:\> New-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -AssemblyName "sampleAssembly" -ContentLink $assemblyUrl
+
+Properties : Microsoft.Azure.Management.Logic.Models.AssemblyProperties
+Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/assemblies/sampleAssembly
+Name       : sampleAssembly
+Type       : Microsoft.Logic/integrationAccounts/assemblies
+Location   :
+Tags       :
+
 ```
 
 Creates a new assembly using the a byte data located at the URL "$assemblyUrl". This is the suggested method for creating large sized assemblies.
@@ -245,6 +271,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -256,7 +312,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Logic.Models.AssemblyDefinition
+### Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly
 
 ## NOTES
 

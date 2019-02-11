@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateAssembly()
+        public void TestNewAssembly()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountAssembly");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-NewIntegrationAccountAssembly");
         }
 
         /// <summary>
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateAssembly()
+        public void TestSetAssembly()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountAssembly");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-SetIntegrationAccountAssembly");
         }
     }
 }

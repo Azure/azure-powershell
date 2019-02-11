@@ -15,19 +15,19 @@ Removes an integration account batch configuration.
 ### ByIntegrationAccount (Default)
 ```
 Remove-AzIntegrationAccountBatchConfiguration -ResourceGroupName <String> -ParentName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzIntegrationAccountBatchConfiguration -InputObject <BatchConfiguration>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzIntegrationAccountBatchConfiguration -InputObject <PSIntegrationAccountBatchConfiguration> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzIntegrationAccountBatchConfiguration -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Remove-AzIntegrationAccountBatchConfiguration -ResourceId <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,10 +37,10 @@ The **Remove-AzIntegrationAccountBatchConfiguration** cmdlet removes a batch con
 
 ### Example 1: Remove a batch configuration by parameters
 ```powershell
-PS C:\> Remove-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -BatchConfigurationName "sampleBatchConfiguration"
+PS C:\> Remove-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -BatchConfigurationName "sampleBatchConfig"
 ```
 
-Removes the batch configuration named "sampleBatchConfiguration" located in the integration account "sampleIntegrationAccount".
+Removes the batch configuration named "sampleBatchConfig" located in the integration account "sampleIntegrationAccount".
 
 ## PARAMETERS
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 An integration account batch configuration.
 
 ```yaml
-Type: Microsoft.Azure.Management.Logic.Models.BatchConfiguration
+Type: Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -104,6 +104,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PassThru
+Return whether the command was successful or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -134,18 +149,48 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Management.Logic.Models.BatchConfiguration
+### Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration
 
 ### System.String
 
 ## OUTPUTS
 
-### System.Void
+### System.Boolean
 
 ## NOTES
 

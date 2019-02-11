@@ -14,11 +14,13 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
-    using Microsoft.Azure.Management.Logic.Models;
+    using Microsoft.Azure.Commands.LogicApp.Models;
     using Microsoft.Azure.Management.Logic;
-    using System.Management.Automation;
-    using System.Globalization;
+    using Microsoft.Azure.Management.Logic.Models;
     using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Management.Automation;
 
     /// <summary>
     /// LogicApp client partial class for integration account assembly operations.
@@ -33,17 +35,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="integrationAccountAssemblyName">The integration account assembly name.</param>
         /// <param name="integrationAccountAssembly">The integration account assembly object.</param>
         /// <returns>Newly created integration account assembly object.</returns>
-        public AssemblyDefinition CreateIntegrationAccountAssembly(string resourceGroupName, string integrationAccountName, string integrationAccountAssemblyName, AssemblyDefinition integrationAccountAssembly)
+        public PSIntegrationAccountAssembly CreateIntegrationAccountAssembly(string resourceGroupName, string integrationAccountName, string integrationAccountAssemblyName, AssemblyDefinition integrationAccountAssembly)
         {
             if (!this.DoesIntegrationAccountAssemblyExist(resourceGroupName, integrationAccountName, integrationAccountAssemblyName))
             {
-                var temp = this.LogicManagementClient.IntegrationAccountAssemblies.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountAssemblyName, integrationAccountAssembly);
-                return temp;
+                var assembly = this.LogicManagementClient.IntegrationAccountAssemblies.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountAssemblyName, integrationAccountAssembly);
+
+                return new PSIntegrationAccountAssembly(assembly);
             }
             else
             {
-                throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture,
-                    Properties.Resource.ResourceAlreadyExists, integrationAccountAssemblyName, resourceGroupName));
+                throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resource.ResourceAlreadyExists, integrationAccountAssemblyName, resourceGroupName));
             }
         }
 
@@ -66,6 +68,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
             {
                 result = false;
             }
+
             return result;
         }
 
@@ -77,9 +80,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="integrationAccountAssemblyName">The integration account assembly name.</param>
         /// <param name="integrationAccountAssembly">The integration account assembly object.</param>
         /// <returns>Updated integration account assembly</returns>
-        public AssemblyDefinition UpdateIntegrationAccountAssembly(string resourceGroupName, string integrationAccountName, string integrationAccountAssemblyName, AssemblyDefinition integrationAccountAssembly)
+        public PSIntegrationAccountAssembly UpdateIntegrationAccountAssembly(string resourceGroupName, string integrationAccountName, string integrationAccountAssemblyName, AssemblyDefinition integrationAccountAssembly)
         {
-            return this.LogicManagementClient.IntegrationAccountAssemblies.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountAssemblyName, integrationAccountAssembly);
+            var updatedAssembly = this.LogicManagementClient.IntegrationAccountAssemblies.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountAssemblyName, integrationAccountAssembly);
+
+            return new PSIntegrationAccountAssembly(updatedAssembly);
         }
 
         /// <summary>
@@ -89,9 +94,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="integrationAccountName">The integration account name.</param>
         /// <param name="integrationAccountAssemblyName">The integration account assembly name.</param>
         /// <returns>Integration account assembly object.</returns>
-        public AssemblyDefinition GetIntegrationAccountAssembly(string resourceGroupName, string integrationAccountName, string integrationAccountAssemblyName)
+        public PSIntegrationAccountAssembly GetIntegrationAccountAssembly(string resourceGroupName, string integrationAccountName, string integrationAccountAssemblyName)
         {
-            return this.LogicManagementClient.IntegrationAccountAssemblies.Get(resourceGroupName, integrationAccountName, integrationAccountAssemblyName);
+            var assembly = this.LogicManagementClient.IntegrationAccountAssemblies.Get(resourceGroupName, integrationAccountName, integrationAccountAssemblyName);
+
+            return new PSIntegrationAccountAssembly(assembly);
         }
 
         /// <summary>
@@ -100,9 +107,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="resourceGroupName">The integration account resource group name.</param>
         /// <param name="integrationAccountName">The integration account name.</param>
         /// <returns>List of integration account assemblies.</returns>
-        public IEnumerable<AssemblyDefinition> ListIntegrationAccountAssemblies(string resourceGroupName, string integrationAccountName)
+        public IEnumerable<PSIntegrationAccountAssembly> ListIntegrationAccountAssemblies(string resourceGroupName, string integrationAccountName)
         {
-            return this.LogicManagementClient.IntegrationAccountAssemblies.List(resourceGroupName, integrationAccountName);
+            var assemblies = this.LogicManagementClient.IntegrationAccountAssemblies.List(resourceGroupName, integrationAccountName);
+
+            return assemblies.Select(assembly => new PSIntegrationAccountAssembly(assembly));
         }
 
         /// <summary>
