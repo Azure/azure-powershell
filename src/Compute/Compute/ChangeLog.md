@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update Get-AzVMExtension to list all installed extension if Name parameter is not provided
 
 ## Version 1.3.0
 * AEM extension: Add support for UltraSSD and P60,P70 and P80 disks

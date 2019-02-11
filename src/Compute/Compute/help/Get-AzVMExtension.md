@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 842652D4-0F1C-4D0D-AB55-0D43D3C5D82A
@@ -14,7 +14,7 @@ Gets properties of Virtual Machine Extensions installed on a virtual machine.
 ## SYNTAX
 
 ```
-Get-AzVMExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Status]
+Get-AzVMExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -38,6 +38,13 @@ PS C:\> Get-AzVMExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualM
 ```
 
 This command gets the instance view for the extension named CustomScriptExtension on the virtual machine named VirtualMachine22 in the resource group ResourceGroup11.
+
+### Example 3: Get all extensions installed on a VM
+```
+PS C:\> Get-AzVMExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine22"
+```
+
+This command gets the list of extensions installed on the virtual machine named VirtualMachine22 in the resource group ResourceGroup11.
 
 ## PARAMETERS
 
@@ -65,7 +72,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: ExtensionName
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
