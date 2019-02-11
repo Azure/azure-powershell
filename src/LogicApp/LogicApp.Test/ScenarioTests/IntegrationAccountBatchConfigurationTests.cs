@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateBatchConfiguration()
+        public void TestNewBatchConfiguration()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountBatchConfiguration");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-NewIntegrationAccountBatchConfiguration");
         }
 
         /// <summary>
@@ -66,9 +66,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateBatchConfiguration()
+        public void TestSetBatchConfiguration()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountBatchConfiguration");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-SetIntegrationAccountBatchConfiguration");
         }
     }
 }

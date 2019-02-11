@@ -14,10 +14,12 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
+    using Microsoft.Azure.Commands.LogicApp.Models;
     using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Management.Logic.Models;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.Linq;
     using System.Management.Automation;
 
     /// <summary>
@@ -33,11 +35,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="integrationAccountBatchConfigurationName">The integration account batch configuration name.</param>
         /// <param name="integrationAccountBatchConfiguration">The integration account batch configuration object.</param>
         /// <returns>Newly created integration account batch configuration object.</returns>
-        public BatchConfiguration CreateIntegrationAccountBatchConfiguration(string resourceGroupName, string integrationAccountName, string integrationAccountBatchConfigurationName, BatchConfiguration integrationAccountBatchConfiguration)
+        public PSIntegrationAccountBatchConfiguration CreateIntegrationAccountBatchConfiguration(string resourceGroupName, string integrationAccountName, string integrationAccountBatchConfigurationName, BatchConfiguration integrationAccountBatchConfiguration)
         {
             if (!this.DoesIntegrationAccountBatchConfigurationExist(resourceGroupName, integrationAccountName, integrationAccountBatchConfigurationName))
             {
-                return this.LogicManagementClient.IntegrationAccountBatchConfigurations.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountBatchConfigurationName, integrationAccountBatchConfiguration);
+                var batchConfiguration =  this.LogicManagementClient.IntegrationAccountBatchConfigurations.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountBatchConfigurationName, integrationAccountBatchConfiguration);
+
+                return new PSIntegrationAccountBatchConfiguration(batchConfiguration);
             }
             else
             {
@@ -76,9 +80,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="integrationAccountBatchConfigurationName">The integration account batch configuration name.</param>
         /// <param name="integrationAccountBatchConfiguration">The integration account batch configuration object.</param>
         /// <returns>Updated integration account batch configuration</returns>
-        public BatchConfiguration UpdateIntegrationAccountBatchConfiguration(string resourceGroupName, string integrationAccountName, string integrationAccountBatchConfigurationName, BatchConfiguration integrationAccountBatchConfiguration)
+        public PSIntegrationAccountBatchConfiguration UpdateIntegrationAccountBatchConfiguration(string resourceGroupName, string integrationAccountName, string integrationAccountBatchConfigurationName, BatchConfiguration integrationAccountBatchConfiguration)
         {
-            return this.LogicManagementClient.IntegrationAccountBatchConfigurations.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountBatchConfigurationName, integrationAccountBatchConfiguration);
+            var updatedBatchConfiguration = this.LogicManagementClient.IntegrationAccountBatchConfigurations.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountBatchConfigurationName, integrationAccountBatchConfiguration);
+
+            return new PSIntegrationAccountBatchConfiguration(updatedBatchConfiguration);
         }
 
         /// <summary>
@@ -88,9 +94,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="integrationAccountName">The integration account name.</param>
         /// <param name="integrationAccountBatchConfigurationName">The integration account batch configuration name.</param>
         /// <returns>Integration account batch configuration object.</returns>
-        public BatchConfiguration GetIntegrationAccountBatchConfiguration(string resourceGroupName, string integrationAccountName, string integrationAccountBatchConfigurationName)
+        public PSIntegrationAccountBatchConfiguration GetIntegrationAccountBatchConfiguration(string resourceGroupName, string integrationAccountName, string integrationAccountBatchConfigurationName)
         {
-            return this.LogicManagementClient.IntegrationAccountBatchConfigurations.Get(resourceGroupName, integrationAccountName, integrationAccountBatchConfigurationName);
+            var batchConfiguration = this.LogicManagementClient.IntegrationAccountBatchConfigurations.Get(resourceGroupName, integrationAccountName, integrationAccountBatchConfigurationName);
+
+            return new PSIntegrationAccountBatchConfiguration(batchConfiguration);
         }
 
         /// <summary>
@@ -99,9 +107,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="resourceGroupName">The integration account resource group name.</param>
         /// <param name="integrationAccountName">The integration account name.</param>
         /// <returns>List of integration account batch configurations.</returns>
-        public IEnumerable<BatchConfiguration> ListIntegrationAccountBatchConfigurations(string resourceGroupName, string integrationAccountName)
+        public IEnumerable<PSIntegrationAccountBatchConfiguration> ListIntegrationAccountBatchConfigurations(string resourceGroupName, string integrationAccountName)
         {
-            return this.LogicManagementClient.IntegrationAccountBatchConfigurations.List(resourceGroupName, integrationAccountName);
+            var batchConfigurations = this.LogicManagementClient.IntegrationAccountBatchConfigurations.List(resourceGroupName, integrationAccountName);
+
+            return batchConfigurations.Select(batchConfiguration => new PSIntegrationAccountBatchConfiguration(batchConfiguration));
         }
 
         /// <summary>

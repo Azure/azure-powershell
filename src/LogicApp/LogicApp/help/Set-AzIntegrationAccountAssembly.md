@@ -15,56 +15,58 @@ Modifies an integration account assembly.
 ### ByIntegrationAccountAndFilePath (Default)
 ```
 Set-AzIntegrationAccountAssembly -ResourceGroupName <String> -ParentName <String> -Name <String>
- -AssemblyFilePath <String> [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -AssemblyFilePath <String> [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIntegrationAccountAndContentLink
 ```
 Set-AzIntegrationAccountAssembly -ResourceGroupName <String> -ParentName <String> -Name <String>
- -ContentLink <String> [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ContentLink <String> [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByIntegrationAccountAndFileBytes
 ```
 Set-AzIntegrationAccountAssembly -ResourceGroupName <String> -ParentName <String> -Name <String>
- -AssemblyData <Byte[]> [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByInputObjectAndFilePath
-```
-Set-AzIntegrationAccountAssembly -AssemblyFilePath <String> [-Metadata <Hashtable>]
- -InputObject <AssemblyDefinition> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByResourceIdAndFilePath
-```
-Set-AzIntegrationAccountAssembly -AssemblyFilePath <String> [-Metadata <Hashtable>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByInputObjectAndFileBytes
-```
-Set-AzIntegrationAccountAssembly -AssemblyData <Byte[]> [-Metadata <Hashtable>]
- -InputObject <AssemblyDefinition> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByResourceIdAndFileBytes
-```
-Set-AzIntegrationAccountAssembly -AssemblyData <Byte[]> [-Metadata <Hashtable>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -AssemblyData <Byte[]> [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByInputObjectAndContentLink
 ```
-Set-AzIntegrationAccountAssembly -ContentLink <String> [-Metadata <Hashtable>]
- -InputObject <AssemblyDefinition> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzIntegrationAccountAssembly -InputObject <PSIntegrationAccountAssembly> -ContentLink <String>
+ [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObjectAndFileBytes
+```
+Set-AzIntegrationAccountAssembly -InputObject <PSIntegrationAccountAssembly> -AssemblyData <Byte[]>
+ [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObjectAndFilePath
+```
+Set-AzIntegrationAccountAssembly -InputObject <PSIntegrationAccountAssembly> -AssemblyFilePath <String>
+ [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdAndContentLink
 ```
-Set-AzIntegrationAccountAssembly -ContentLink <String> [-Metadata <Hashtable>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzIntegrationAccountAssembly -ResourceId <String> -ContentLink <String> [-Metadata <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdAndFileBytes
+```
+Set-AzIntegrationAccountAssembly -ResourceId <String> -AssemblyData <Byte[]> [-Metadata <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdAndFilePath
+```
+Set-AzIntegrationAccountAssembly -ResourceId <String> -AssemblyFilePath <String> [-Metadata <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,6 +77,14 @@ The **Set-AzIntegrationAccountAssembly** cmdlet modifies an integration account 
 ### Example 1: Modify an assembly using local file
 ```powershell
 PS C:\> Set-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -AssemblyName "sampleAssembly" -AssemblyFilePath $localAssemblyFilePath
+
+Properties : Microsoft.Azure.Management.Logic.Models.AssemblyProperties
+Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/assemblies/sampleAssembly
+Name       : sampleAssembly
+Type       : Microsoft.Logic/integrationAccounts/assemblies
+Location   :
+Tags       :
+
 ```
 
 Modifies the assembly named "sampleAssembly" using the local file located at the file path contained in "$localAssemblyFilePath".
@@ -82,6 +92,14 @@ Modifies the assembly named "sampleAssembly" using the local file located at the
 ### Example 2: Modify an assembly using byte data
 ```powershell
 PS C:\> Set-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -AssemblyName "sampleAssembly" -AssemblyData $assemblyContent
+
+Properties : Microsoft.Azure.Management.Logic.Models.AssemblyProperties
+Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/assemblies/sampleAssembly
+Name       : sampleAssembly
+Type       : Microsoft.Logic/integrationAccounts/assemblies
+Location   :
+Tags       :
+
 ```
 
 Modifies the assembly named "sampleAssembly" using the a byte array contained in "$assemblyContent".
@@ -89,6 +107,14 @@ Modifies the assembly named "sampleAssembly" using the a byte array contained in
 ### Example 3: Modify an assembly using a content link
 ```powershell
 PS C:\> Set-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -AssemblyName "sampleAssembly" -ContentLink $assemblyUrl
+
+Properties : Microsoft.Azure.Management.Logic.Models.AssemblyProperties
+Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/assemblies/sampleAssembly
+Name       : sampleAssembly
+Type       : Microsoft.Logic/integrationAccounts/assemblies
+Location   :
+Tags       :
+
 ```
 
 Modifies the assembly named "sampleAssembly" using the a byte data located at the URL "$assemblyUrl". This is the suggested method for creating large sized assemblies.
@@ -159,8 +185,8 @@ Accept wildcard characters: False
 An integration account assembly.
 
 ```yaml
-Type: Microsoft.Azure.Management.Logic.Models.AssemblyDefinition
-Parameter Sets: ByInputObjectAndFilePath, ByInputObjectAndFileBytes, ByInputObjectAndContentLink
+Type: Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly
+Parameter Sets: ByInputObjectAndContentLink, ByInputObjectAndFileBytes, ByInputObjectAndFilePath
 Aliases:
 
 Required: True
@@ -235,7 +261,7 @@ The integration account assembly resource id.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceIdAndFilePath, ByResourceIdAndFileBytes, ByResourceIdAndContentLink
+Parameter Sets: ByResourceIdAndContentLink, ByResourceIdAndFileBytes, ByResourceIdAndFilePath
 Aliases:
 
 Required: True
@@ -245,18 +271,48 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Management.Logic.Models.AssemblyDefinition
+### Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly
 
 ### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Logic.Models.AssemblyDefinition
+### Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly
 
 ## NOTES
 

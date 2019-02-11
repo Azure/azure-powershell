@@ -14,12 +14,14 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
+    using Microsoft.Azure.Commands.LogicApp.Models;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-    using Microsoft.Azure.Management.Logic.Models;
+    using System.Globalization;
     using System.Management.Automation;
+    using Resource = Properties.Resource;
 
     /// <summary>
     /// Removes the integration account assembly. 
@@ -41,19 +43,19 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Alias("IntegrationAccountName")]
         public string ParentName { get; set; }
 
+        [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyInputObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObject, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public PSIntegrationAccountAssembly InputObject { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceId, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyNameHelpMessage, ParameterSetName = ParameterSet.ByIntegrationAccount)]
         [ResourceNameCompleter("Microsoft.Logic/integrationAccounts/assemblies", nameof(ResourceGroupName), nameof(ParentName))]
         [ValidateNotNullOrEmpty]
         [Alias("AssemblyName", "ResourceName")]
         public string Name { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyInputObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObject, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public AssemblyDefinition InputObject { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = Constants.AssemblyResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceId, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Name = parsedResourceId.ResourceName;
             }
 
-            if (this.ShouldProcess(this.Name, $"Deleting Assembly '{this.Name}' in resource group {this.ResourceGroupName}"))
+            if (this.ShouldProcess(this.Name, string.Format(CultureInfo.InvariantCulture, Resource.RemoveIntegrationAccountArtifactMessage, Resource.Assembly, this.Name, this.ResourceGroupName)))
             {
                 IntegrationAccountClient.RemoveIntegrationAccountAssembly(this.ResourceGroupName, this.ParentName, this.Name);
                 if (this.PassThru)

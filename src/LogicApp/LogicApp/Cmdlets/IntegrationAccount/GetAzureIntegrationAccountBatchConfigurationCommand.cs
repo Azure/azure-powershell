@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
+    using Microsoft.Azure.Commands.LogicApp.Models;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// Gets the integration account batch configuration by name 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "IntegrationAccountBatchConfiguration", DefaultParameterSetName = ParameterSet.ByIntegrationAccount)]
-    [OutputType(typeof(BatchConfiguration))]
+    [OutputType(typeof(PSIntegrationAccountBatchConfiguration))]
     public class GetAzureIntegrationAccountBatchConfigurationCommand : LogicAppBaseCmdlet
     {
         #region Input Parameters
@@ -33,6 +34,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = Constants.IntegrationAccountObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObject, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public IntegrationAccount ParentObject { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = Constants.IntegrationAccountResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceId, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string ParentResourceId { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.IntegrationAccountNameHelpMessage, ParameterSetName = ParameterSet.ByIntegrationAccount)]
         [ResourceNameCompleter("Microsoft.Logic/integrationAccounts", nameof(ResourceGroupName))]
@@ -47,14 +56,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         [Alias("BatchConfigurationName", "ResourceName")]
         public string Name { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = Constants.IntegrationAccountObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObject, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public IntegrationAccount ParentObject { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = Constants.IntegrationAccountResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceId, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string ParentResourceId { get; set; }
 
         #endregion Input Parameters
 

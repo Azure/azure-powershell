@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "745641fc-61cc-45f8-8c98-4e0b1edc7333"
+          "6d962a77-3bab-4f04-9cc7-07b8a2dc0603"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,16 +27,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11998"
         ],
         "x-ms-request-id": [
-          "8856ac88-5e8b-4837-9b4e-fedf1a39cb31"
+          "43c9484e-d597-4060-82d2-e449ca0873d8"
         ],
         "x-ms-correlation-request-id": [
-          "8856ac88-5e8b-4837-9b4e-fedf1a39cb31"
+          "43c9484e-d597-4060-82d2-e449ca0873d8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190206T010211Z:8856ac88-5e8b-4837-9b4e-fedf1a39cb31"
+          "WESTUS2:20190211T224030Z:43c9484e-d597-4060-82d2-e449ca0873d8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Feb 2019 01:02:10 GMT"
+          "Mon, 11 Feb 2019 22:40:30 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -61,13 +61,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourcegroups/RG-ps8681?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlZ3JvdXBzL1JHLXBzODY4MT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourcegroups/RG-ps2116?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlZ3JvdXBzL1JHLXBzMjExNj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d1b08454-dc3d-49da-8840-fc27a099b44e"
+          "0846d71d-44b4-4c96-96e8-b5da48f972b4"
         ],
         "Accept-Language": [
           "en-US"
@@ -96,13 +96,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "4dd1475c-1bb9-494b-ab9e-5e70710f4e9f"
+          "11ec52cf-c8eb-4d3f-9d59-0e283aad93d4"
         ],
         "x-ms-correlation-request-id": [
-          "4dd1475c-1bb9-494b-ab9e-5e70710f4e9f"
+          "11ec52cf-c8eb-4d3f-9d59-0e283aad93d4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190206T010212Z:4dd1475c-1bb9-494b-ab9e-5e70710f4e9f"
+          "WESTUS2:20190211T224031Z:11ec52cf-c8eb-4d3f-9d59-0e283aad93d4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Feb 2019 01:02:11 GMT"
+          "Mon, 11 Feb 2019 22:40:30 GMT"
         ],
         "Content-Length": [
           "171"
@@ -123,7 +123,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps8681\",\r\n  \"name\": \"RG-ps8681\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps2116\",\r\n  \"name\": \"RG-ps2116\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -133,7 +133,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4c4ce969-15b6-412e-897a-4cdce539c738"
+          "b9ea7a15-ba96-4be2-b64d-d5fedb1ea447"
         ],
         "Accept-Language": [
           "en-US"
@@ -153,16 +153,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11997"
         ],
         "x-ms-request-id": [
-          "52ab28e0-10db-4655-9711-0e21549a3c18"
+          "c71dfdb2-dda1-4719-a105-dca796932365"
         ],
         "x-ms-correlation-request-id": [
-          "52ab28e0-10db-4655-9711-0e21549a3c18"
+          "c71dfdb2-dda1-4719-a105-dca796932365"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190206T010212Z:52ab28e0-10db-4655-9711-0e21549a3c18"
+          "WESTUS2:20190211T224031Z:c71dfdb2-dda1-4719-a105-dca796932365"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -171,7 +171,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Feb 2019 01:02:12 GMT"
+          "Mon, 11 Feb 2019 22:40:30 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -187,13 +187,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps8681/providers/Microsoft.Logic/integrationAccounts/IA-ps7562?api-version=2018-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL1JHLXBzODY4MS9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvSUEtcHM3NTYyP2FwaS12ZXJzaW9uPTIwMTgtMDctMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps2116/providers/Microsoft.Logic/integrationAccounts/IA-ps2810?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL1JHLXBzMjExNi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvSUEtcHMyODEwP2FwaS12ZXJzaW9uPTIwMTgtMDctMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3ecafb45-4bae-4999-9620-beaad870a15c"
+          "bb8e277a-9a0a-4125-a0ad-d3bf0d76d7f3"
         ],
         "Accept-Language": [
           "en-US"
@@ -216,13 +216,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "38717daa-eed5-4490-8c32-49b33ca016f2"
+          "c0ebcacb-69ad-47fe-99dd-7844d2ccb0b1"
         ],
         "x-ms-correlation-request-id": [
-          "38717daa-eed5-4490-8c32-49b33ca016f2"
+          "c0ebcacb-69ad-47fe-99dd-7844d2ccb0b1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190206T010212Z:38717daa-eed5-4490-8c32-49b33ca016f2"
+          "WESTUS2:20190211T224031Z:c0ebcacb-69ad-47fe-99dd-7844d2ccb0b1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -231,7 +231,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Feb 2019 01:02:12 GMT"
+          "Mon, 11 Feb 2019 22:40:30 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -243,17 +243,17 @@
           "158"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Logic/integrationAccounts/IA-ps7562' under resource group 'RG-ps8681' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Logic/integrationAccounts/IA-ps2810' under resource group 'RG-ps2116' was not found.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps8681/providers/Microsoft.Logic/integrationAccounts/IA-ps7562?api-version=2018-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL1JHLXBzODY4MS9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvSUEtcHM3NTYyP2FwaS12ZXJzaW9uPTIwMTgtMDctMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps2116/providers/Microsoft.Logic/integrationAccounts/IA-ps2810?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL1JHLXBzMjExNi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvSUEtcHMyODEwP2FwaS12ZXJzaW9uPTIwMTgtMDctMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f817605b-057d-4200-bad1-6f5830c25033"
+          "862413b3-991b-4773-8460-d035e77f8731"
         ],
         "Accept-Language": [
           "en-US"
@@ -279,25 +279,25 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:ea3be41a-cea8-406c-866b-7aa9d46a121c"
+          "westus:494a4574-6a0e-4952-b1cf-5ad68023fa3c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1191"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "40b8a0fa-5408-4ec4-b1d6-00169eeeea49"
+          "f6712557-d2e4-4449-aec3-f8c4aea03c08"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190206T010213Z:40b8a0fa-5408-4ec4-b1d6-00169eeeea49"
+          "WESTUS2:20190211T224031Z:f6712557-d2e4-4449-aec3-f8c4aea03c08"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Feb 2019 01:02:13 GMT"
+          "Mon, 11 Feb 2019 22:40:31 GMT"
         ],
         "Content-Length": [
           "285"
@@ -309,17 +309,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps8681/providers/Microsoft.Logic/integrationAccounts/IA-ps7562\",\r\n  \"name\": \"IA-ps7562\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"West US\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps2116/providers/Microsoft.Logic/integrationAccounts/IA-ps2810\",\r\n  \"name\": \"IA-ps2810\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"West US\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps8681/providers/Microsoft.Logic/integrationAccounts/IA-ps7562/assemblies/OriginalBC?api-version=2018-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL1JHLXBzODY4MS9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvSUEtcHM3NTYyL2Fzc2VtYmxpZXMvT3JpZ2luYWxCQz9hcGktdmVyc2lvbj0yMDE4LTA3LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps2116/providers/Microsoft.Logic/integrationAccounts/IA-ps2810/assemblies/OriginalBC?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL1JHLXBzMjExNi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvSUEtcHMyODEwL2Fzc2VtYmxpZXMvT3JpZ2luYWxCQz9hcGktdmVyc2lvbj0yMDE4LTA3LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "33353e09-44ff-487a-bcb4-38b3c6435f82"
+          "0d1db617-0706-4c3a-b418-5703e63ba097"
         ],
         "Accept-Language": [
           "en-US"
@@ -339,25 +339,25 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:5664ec5f-fb41-4a9f-ac7d-e3011349a15c"
+          "westus:6674baa1-8082-4c59-8d52-224cf70161ed"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "c17bb927-d9a2-4edc-9e42-40ade03c7c59"
+          "48164dce-836d-4705-8b47-6cd19da1a496"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190206T010213Z:c17bb927-d9a2-4edc-9e42-40ade03c7c59"
+          "WESTUS2:20190211T224031Z:48164dce-836d-4705-8b47-6cd19da1a496"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Feb 2019 01:02:13 GMT"
+          "Mon, 11 Feb 2019 22:40:31 GMT"
         ],
         "Content-Length": [
           "130"
@@ -369,17 +369,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AssemblyNotFound\",\r\n    \"message\": \"The assembly 'OriginalBC' could not be found in integration account 'IA-ps7562'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AssemblyNotFound\",\r\n    \"message\": \"The assembly 'OriginalBC' could not be found in integration account 'IA-ps2810'.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps8681/providers/Microsoft.Logic/integrationAccounts/IA-ps7562/batchConfigurations/OriginalBC?api-version=2018-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL1JHLXBzODY4MS9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvSUEtcHM3NTYyL2JhdGNoQ29uZmlndXJhdGlvbnMvT3JpZ2luYWxCQz9hcGktdmVyc2lvbj0yMDE4LTA3LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps2116/providers/Microsoft.Logic/integrationAccounts/IA-ps2810/batchConfigurations/OriginalBC?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL1JHLXBzMjExNi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvSUEtcHMyODEwL2JhdGNoQ29uZmlndXJhdGlvbnMvT3JpZ2luYWxCQz9hcGktdmVyc2lvbj0yMDE4LTA3LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"batchGroupName\": \"DEFAULT\",\r\n    \"releaseCriteria\": {\r\n      \"recurrence\": {\r\n        \"frequency\": \"Week\",\r\n        \"interval\": 1\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7a991ec3-c219-408d-b1b3-94fbe0526953"
+          "d36f388c-deaa-4e1f-b447-e3e67e432892"
         ],
         "Accept-Language": [
           "en-US"
@@ -405,94 +405,25 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:a321f579-c3e5-4613-ab5e-4e29fd92c109"
+          "westus:5f7ed1fd-5c22-486f-a301-43f384b89c93"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1190"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "e8f18272-24c2-4a85-b008-6caa1ae81888"
+          "6efb709d-4e43-4aa7-a5e7-804f28dd70ba"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190206T010214Z:e8f18272-24c2-4a85-b008-6caa1ae81888"
+          "WESTUS2:20190211T224032Z:6efb709d-4e43-4aa7-a5e7-804f28dd70ba"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Feb 2019 01:02:14 GMT"
-        ],
-        "Content-Length": [
-          "455"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"batchGroupName\": \"DEFAULT\",\r\n    \"releaseCriteria\": {\r\n      \"recurrence\": {\r\n        \"frequency\": \"Week\",\r\n        \"interval\": 1\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-02-06T01:02:14.2490341Z\",\r\n    \"changedTime\": \"2019-02-06T01:02:14.278852Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps8681/providers/Microsoft.Logic/integrationAccounts/IA-ps7562/batchConfigurations/OriginalBC\",\r\n  \"name\": \"OriginalBC\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/batchConfigurations\"\r\n}",
-      "StatusCode": 201
-    },
-    {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps8681/providers/Microsoft.Logic/integrationAccounts/IA-ps7562/batchConfigurations/OriginalBC?api-version=2018-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL1JHLXBzODY4MS9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvSUEtcHM3NTYyL2JhdGNoQ29uZmlndXJhdGlvbnMvT3JpZ2luYWxCQz9hcGktdmVyc2lvbj0yMDE4LTA3LTAxLXByZXZpZXc=",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"batchGroupName\": \"DEFAULT\",\r\n    \"releaseCriteria\": {\r\n      \"recurrence\": {\r\n        \"frequency\": \"Week\",\r\n        \"interval\": 1\r\n      }\r\n    }\r\n  }\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "255cd6e3-b42d-460f-befe-9b1826cfe162"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "180"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-request-id": [
-          "westus:83f11e95-312f-4122-95ee-4c9e86e61bfc"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1189"
-        ],
-        "x-ms-correlation-request-id": [
-          "5f37a7ef-7ddd-4011-8056-969f9ae038b6"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20190206T010214Z:5f37a7ef-7ddd-4011-8056-969f9ae038b6"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Wed, 06 Feb 2019 01:02:14 GMT"
+          "Mon, 11 Feb 2019 22:40:31 GMT"
         ],
         "Content-Length": [
           "456"
@@ -504,17 +435,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"batchGroupName\": \"DEFAULT\",\r\n    \"releaseCriteria\": {\r\n      \"recurrence\": {\r\n        \"frequency\": \"Week\",\r\n        \"interval\": 1\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-02-06T01:02:14.2490341Z\",\r\n    \"changedTime\": \"2019-02-06T01:02:14.5615222Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps8681/providers/Microsoft.Logic/integrationAccounts/IA-ps7562/batchConfigurations/OriginalBC\",\r\n  \"name\": \"OriginalBC\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/batchConfigurations\"\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"batchGroupName\": \"DEFAULT\",\r\n    \"releaseCriteria\": {\r\n      \"recurrence\": {\r\n        \"frequency\": \"Week\",\r\n        \"interval\": 1\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-02-11T22:40:31.9330145Z\",\r\n    \"changedTime\": \"2019-02-11T22:40:31.9459252Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps2116/providers/Microsoft.Logic/integrationAccounts/IA-ps2810/batchConfigurations/OriginalBC\",\r\n  \"name\": \"OriginalBC\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/batchConfigurations\"\r\n}",
+      "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps8681/providers/Microsoft.Logic/integrationAccounts/IA-ps7562/batchConfigurations/OriginalBC?api-version=2018-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL1JHLXBzODY4MS9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvSUEtcHM3NTYyL2JhdGNoQ29uZmlndXJhdGlvbnMvT3JpZ2luYWxCQz9hcGktdmVyc2lvbj0yMDE4LTA3LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps2116/providers/Microsoft.Logic/integrationAccounts/IA-ps2810/batchConfigurations/OriginalBC?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL1JHLXBzMjExNi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvSUEtcHMyODEwL2JhdGNoQ29uZmlndXJhdGlvbnMvT3JpZ2luYWxCQz9hcGktdmVyc2lvbj0yMDE4LTA3LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"batchGroupName\": \"DEFAULT\",\r\n    \"releaseCriteria\": {\r\n      \"recurrence\": {\r\n        \"frequency\": \"Week\",\r\n        \"interval\": 1\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "42c17c65-0f3b-4e89-a721-9ea67299d9ee"
+          "aedf52d3-5315-419a-8faf-a8fa34457bc7"
         ],
         "Accept-Language": [
           "en-US"
@@ -543,28 +474,28 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:b055639c-12d6-4eef-81ab-ed46bd1dcfa8"
+          "westus:350df28a-f117-40fd-a2de-41642e72c521"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1188"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "edfcfd89-115c-4397-81f6-10509c619d2a"
+          "9f8342dc-9830-4bd5-9bea-96590075c2c0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190206T010214Z:edfcfd89-115c-4397-81f6-10509c619d2a"
+          "WESTUS2:20190211T224032Z:9f8342dc-9830-4bd5-9bea-96590075c2c0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Feb 2019 01:02:14 GMT"
+          "Mon, 11 Feb 2019 22:40:31 GMT"
         ],
         "Content-Length": [
-          "455"
+          "456"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -573,17 +504,86 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"batchGroupName\": \"DEFAULT\",\r\n    \"releaseCriteria\": {\r\n      \"recurrence\": {\r\n        \"frequency\": \"Week\",\r\n        \"interval\": 1\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-02-06T01:02:14.2490341Z\",\r\n    \"changedTime\": \"2019-02-06T01:02:14.665167Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps8681/providers/Microsoft.Logic/integrationAccounts/IA-ps7562/batchConfigurations/OriginalBC\",\r\n  \"name\": \"OriginalBC\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/batchConfigurations\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"batchGroupName\": \"DEFAULT\",\r\n    \"releaseCriteria\": {\r\n      \"recurrence\": {\r\n        \"frequency\": \"Week\",\r\n        \"interval\": 1\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-02-11T22:40:31.9330145Z\",\r\n    \"changedTime\": \"2019-02-11T22:40:32.2834544Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps2116/providers/Microsoft.Logic/integrationAccounts/IA-ps2810/batchConfigurations/OriginalBC\",\r\n  \"name\": \"OriginalBC\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/batchConfigurations\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps8681/providers/Microsoft.Logic/integrationAccounts/IA-ps7562/batchConfigurations/OriginalBC?api-version=2018-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL1JHLXBzODY4MS9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvSUEtcHM3NTYyL2JhdGNoQ29uZmlndXJhdGlvbnMvT3JpZ2luYWxCQz9hcGktdmVyc2lvbj0yMDE4LTA3LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps2116/providers/Microsoft.Logic/integrationAccounts/IA-ps2810/batchConfigurations/OriginalBC?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL1JHLXBzMjExNi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvSUEtcHMyODEwL2JhdGNoQ29uZmlndXJhdGlvbnMvT3JpZ2luYWxCQz9hcGktdmVyc2lvbj0yMDE4LTA3LTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"batchGroupName\": \"DEFAULT\",\r\n    \"releaseCriteria\": {\r\n      \"recurrence\": {\r\n        \"frequency\": \"Week\",\r\n        \"interval\": 1\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c269ed76-213b-4368-beb9-85ac30e65a79"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/4.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "180"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:4ef45539-9244-4fad-bcff-8819640ed1bf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-correlation-request-id": [
+          "dc2f67fb-1abf-48c2-904d-558221c16d22"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190211T224032Z:dc2f67fb-1abf-48c2-904d-558221c16d22"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 11 Feb 2019 22:40:32 GMT"
+        ],
+        "Content-Length": [
+          "456"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"batchGroupName\": \"DEFAULT\",\r\n    \"releaseCriteria\": {\r\n      \"recurrence\": {\r\n        \"frequency\": \"Week\",\r\n        \"interval\": 1\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-02-11T22:40:31.9330145Z\",\r\n    \"changedTime\": \"2019-02-11T22:40:32.3873403Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps2116/providers/Microsoft.Logic/integrationAccounts/IA-ps2810/batchConfigurations/OriginalBC\",\r\n  \"name\": \"OriginalBC\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/batchConfigurations\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps2116/providers/Microsoft.Logic/integrationAccounts/IA-ps2810/batchConfigurations/OriginalBC?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL1JHLXBzMjExNi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvSUEtcHMyODEwL2JhdGNoQ29uZmlndXJhdGlvbnMvT3JpZ2luYWxCQz9hcGktdmVyc2lvbj0yMDE4LTA3LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"batchGroupName\": \"DEFAULT\",\r\n    \"releaseCriteria\": {\r\n      \"messageCount\": 199,\r\n      \"batchSize\": 5,\r\n      \"recurrence\": {\r\n        \"frequency\": \"Month\",\r\n        \"interval\": 1\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7d2dc484-abf5-44fb-b293-b4a093cfb8c7"
+          "448d3eed-4815-4c4d-a6a8-e59251b5e117"
         ],
         "Accept-Language": [
           "en-US"
@@ -612,25 +612,25 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:653d48ce-a202-4848-b582-6adc1d2e2aa7"
+          "westus:e8a8a4ad-21c7-4c1d-b650-589b3a32fe28"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1187"
+          "1194"
         ],
         "x-ms-correlation-request-id": [
-          "6974fc45-98de-49ef-b888-e22dd840669c"
+          "d133fac9-9c68-47bc-92a1-3dedf4249ffa"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190206T010214Z:6974fc45-98de-49ef-b888-e22dd840669c"
+          "WESTUS2:20190211T224032Z:d133fac9-9c68-47bc-92a1-3dedf4249ffa"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Feb 2019 01:02:14 GMT"
+          "Mon, 11 Feb 2019 22:40:32 GMT"
         ],
         "Content-Length": [
           "490"
@@ -642,17 +642,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"batchGroupName\": \"DEFAULT\",\r\n    \"releaseCriteria\": {\r\n      \"messageCount\": 199,\r\n      \"batchSize\": 5,\r\n      \"recurrence\": {\r\n        \"frequency\": \"Month\",\r\n        \"interval\": 1\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-02-06T01:02:14.2490341Z\",\r\n    \"changedTime\": \"2019-02-06T01:02:14.7745865Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps8681/providers/Microsoft.Logic/integrationAccounts/IA-ps7562/batchConfigurations/OriginalBC\",\r\n  \"name\": \"OriginalBC\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/batchConfigurations\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"batchGroupName\": \"DEFAULT\",\r\n    \"releaseCriteria\": {\r\n      \"messageCount\": 199,\r\n      \"batchSize\": 5,\r\n      \"recurrence\": {\r\n        \"frequency\": \"Month\",\r\n        \"interval\": 1\r\n      }\r\n    },\r\n    \"createdTime\": \"2019-02-11T22:40:31.9330145Z\",\r\n    \"changedTime\": \"2019-02-11T22:40:32.5016897Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps2116/providers/Microsoft.Logic/integrationAccounts/IA-ps2810/batchConfigurations/OriginalBC\",\r\n  \"name\": \"OriginalBC\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/batchConfigurations\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps8681/providers/Microsoft.Logic/integrationAccounts/IA-ps7562?api-version=2018-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL1JHLXBzODY4MS9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvSUEtcHM3NTYyP2FwaS12ZXJzaW9uPTIwMTgtMDctMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/RG-ps2116/providers/Microsoft.Logic/integrationAccounts/IA-ps2810?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL1JHLXBzMjExNi9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvSUEtcHMyODEwP2FwaS12ZXJzaW9uPTIwMTgtMDctMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6f329d83-9de5-4081-a628-8610fb361576"
+          "30b8ade0-e028-4c4d-848b-c6f77f8c16c5"
         ],
         "Accept-Language": [
           "en-US"
@@ -672,25 +672,25 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:0af3854b-237b-4bd1-beec-85e8e984e3c3"
+          "westus:b0a11419-3775-456a-9efe-00dcb6b68c2e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14997"
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "57ada76d-880c-4fbf-a25b-5c4e681fdf94"
+          "445d4ce1-cee7-4932-8ac9-afb406147262"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190206T010215Z:57ada76d-880c-4fbf-a25b-5c4e681fdf94"
+          "WESTUS2:20190211T224032Z:445d4ce1-cee7-4932-8ac9-afb406147262"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Feb 2019 01:02:15 GMT"
+          "Mon, 11 Feb 2019 22:40:32 GMT"
         ],
         "Expires": [
           "-1"
@@ -704,9 +704,9 @@
     }
   ],
   "Names": {
-    "Test-UpdateIntegrationAccountBatchConfiguration": [
-      "ps8681",
-      "ps7562"
+    "Test-SetIntegrationAccountBatchConfiguration": [
+      "ps2116",
+      "ps2810"
     ]
   },
   "Variables": {

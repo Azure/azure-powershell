@@ -14,12 +14,14 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
+    using Microsoft.Azure.Commands.LogicApp.Models;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-    using Microsoft.Azure.Management.Logic.Models;
+    using System.Globalization;
     using System.Management.Automation;
+    using Resource = Properties.Resource;
 
     /// <summary>
     /// Removes the integration account batch configuration. 
@@ -42,22 +44,22 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Alias("IntegrationAccountName")]
         public string ParentName { get; set; }
 
+        [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationInputObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObject, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public PSIntegrationAccountBatchConfiguration InputObject { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceId, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationNameHelpMessage, ParameterSetName = ParameterSet.ByIntegrationAccount)]
         [ResourceNameCompleter("Microsoft.Logic/integrationAccounts/batchConfigurations", nameof(ResourceGroupName), nameof(ParentName))]
         [ValidateNotNullOrEmpty]
         [Alias("BatchConfigurationName", "ResourceName")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationInputObjectHelpMessage, ParameterSetName = ParameterSet.ByInputObject, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public BatchConfiguration InputObject { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = Constants.BatchConfigurationResourceIdHelpMessage, ParameterSetName = ParameterSet.ByResourceId, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
         [Parameter(Mandatory = false)]
-        public SwitchParameter PassThru { get; set; } = false;
+        public SwitchParameter PassThru { get; set; }
 
         #endregion Input Parameters
 
@@ -83,7 +85,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Name = parsedResourceId.ResourceName;
             }
 
-            if (this.ShouldProcess(this.Name, $"Deleting Batch Configuration '{this.Name}' in resource group {this.ResourceGroupName}"))
+            if (this.ShouldProcess(this.Name, string.Format(CultureInfo.InvariantCulture, Resource.RemoveIntegrationAccountArtifactMessage, Resource.BatchConfiguration, this.Name, this.ResourceGroupName)))
             {
                 IntegrationAccountClient.RemoveIntegrationAccountBatchConfiguration(this.ResourceGroupName, this.ParentName, this.Name);
                 if (this.PassThru)

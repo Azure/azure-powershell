@@ -16,7 +16,7 @@
 .SYNOPSIS
 Test New-AzIntegrationAccountBatchConfiguration command
 #>
-function Test-CreateIntegrationAccountBatchConfiguration
+function Test-NewIntegrationAccountBatchConfiguration
 {
 	$batchConfigurationFilePath = Join-Path $TestOutputRoot "Resources" "SampleBatchConfiguration.json"
 	$batchConfigurationContent = [IO.File]::ReadAllText($batchConfigurationFilePath)
@@ -143,7 +143,7 @@ function Test-RemoveIntegrationAccountBatchConfiguration
 .SYNOPSIS
 Test Set-AzIntegrationAccountBatchConfiguration command
 #>
-function Test-UpdateIntegrationAccountBatchConfiguration
+function Test-SetIntegrationAccountBatchConfiguration
 {
 	$batchConfigurationFilePath = Join-Path $TestOutputRoot "Resources" "SampleBatchConfiguration.json"
 	$batchConfigurationContent = [IO.File]::ReadAllText($batchConfigurationFilePath)

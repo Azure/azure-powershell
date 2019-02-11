@@ -16,7 +16,7 @@
 .SYNOPSIS
 Test New-AzIntegrationAccountAssembly command
 #>
-function Test-CreateIntegrationAccountAssembly
+function Test-NewIntegrationAccountAssembly
 {
 	$localAssemblyFilePath = Join-Path $TestOutputRoot "Resources" "SampleAssembly.dll"
 	$assemblyContent = [IO.File]::ReadAllBytes($localAssemblyFilePath)
@@ -144,7 +144,7 @@ function Test-RemoveIntegrationAccountAssembly
 .SYNOPSIS
 Test Set-AzIntegrationAccountAssembly command
 #>
-function Test-UpdateIntegrationAccountAssembly
+function Test-SetIntegrationAccountAssembly
 {
 	$localAssemblyFilePath = Join-Path $TestOutputRoot "Resources" "SampleAssembly.dll"
 	$assemblyContent = [IO.File]::ReadAllBytes($localAssemblyFilePath)

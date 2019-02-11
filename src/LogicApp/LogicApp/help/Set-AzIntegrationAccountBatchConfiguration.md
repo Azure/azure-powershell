@@ -17,61 +17,63 @@ Modifies an integration account batch configuration.
 Set-AzIntegrationAccountBatchConfiguration -ResourceGroupName <String> -ParentName <String> -Name <String>
  [-BatchGroupName <String>] [-MessageCount <Int32>] [-BatchSize <Int32>] [-ScheduleInterval <Int32>]
  [-ScheduleFrequency <String>] [-ScheduleTimeZone <String>] [-ScheduleStartTime <DateTime>]
- [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIntegrationAccountAndJson
 ```
 Set-AzIntegrationAccountBatchConfiguration -ResourceGroupName <String> -ParentName <String> -Name <String>
  -BatchConfigurationDefinition <String> [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIntegrationAccountAndFilePath
 ```
 Set-AzIntegrationAccountBatchConfiguration -ResourceGroupName <String> -ParentName <String> -Name <String>
  -BatchConfigurationFilePath <String> [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ByInputObjectAndFilePath
-```
-Set-AzIntegrationAccountBatchConfiguration -BatchConfigurationFilePath <String> [-Metadata <Hashtable>]
- -InputObject <BatchConfiguration> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByResourceIdAndFilePath
-```
-Set-AzIntegrationAccountBatchConfiguration -BatchConfigurationFilePath <String> [-Metadata <Hashtable>]
- -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObjectAndJson
 ```
-Set-AzIntegrationAccountBatchConfiguration -BatchConfigurationDefinition <String> [-Metadata <Hashtable>]
- -InputObject <BatchConfiguration> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzIntegrationAccountBatchConfiguration -InputObject <PSIntegrationAccountBatchConfiguration>
+ -BatchConfigurationDefinition <String> [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceIdAndJson
+### ByInputObjectAndFilePath
 ```
-Set-AzIntegrationAccountBatchConfiguration -BatchConfigurationDefinition <String> [-Metadata <Hashtable>]
- -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzIntegrationAccountBatchConfiguration -InputObject <PSIntegrationAccountBatchConfiguration>
+ -BatchConfigurationFilePath <String> [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObjectAndParameters
 ```
-Set-AzIntegrationAccountBatchConfiguration [-BatchGroupName <String>] [-MessageCount <Int32>]
- [-BatchSize <Int32>] [-ScheduleInterval <Int32>] [-ScheduleFrequency <String>] [-ScheduleTimeZone <String>]
- [-ScheduleStartTime <DateTime>] [-Metadata <Hashtable>] -InputObject <BatchConfiguration>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzIntegrationAccountBatchConfiguration -InputObject <PSIntegrationAccountBatchConfiguration>
+ [-BatchGroupName <String>] [-MessageCount <Int32>] [-BatchSize <Int32>] [-ScheduleInterval <Int32>]
+ [-ScheduleFrequency <String>] [-ScheduleTimeZone <String>] [-ScheduleStartTime <DateTime>]
+ [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdAndJson
+```
+Set-AzIntegrationAccountBatchConfiguration -ResourceId <String> -BatchConfigurationDefinition <String>
+ [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdAndFilePath
+```
+Set-AzIntegrationAccountBatchConfiguration -ResourceId <String> -BatchConfigurationFilePath <String>
+ [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdAndParameters
 ```
-Set-AzIntegrationAccountBatchConfiguration [-BatchGroupName <String>] [-MessageCount <Int32>]
- [-BatchSize <Int32>] [-ScheduleInterval <Int32>] [-ScheduleFrequency <String>] [-ScheduleTimeZone <String>]
- [-ScheduleStartTime <DateTime>] [-Metadata <Hashtable>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzIntegrationAccountBatchConfiguration -ResourceId <String> [-BatchGroupName <String>]
+ [-MessageCount <Int32>] [-BatchSize <Int32>] [-ScheduleInterval <Int32>] [-ScheduleFrequency <String>]
+ [-ScheduleTimeZone <String>] [-ScheduleStartTime <DateTime>] [-Metadata <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,24 +83,48 @@ The **Set-AzIntegrationAccountBatchConfiguration** cmdlet modifies an integratio
 
 ### Example 1: Modify a batch configuration using local file
 ```powershell
-PS C:\> Set-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -BatchConfigurationName "sampleBatchConfiguration" -BatchConfigurationFilePath $batchConfigurationFilePath
+PS C:\> Set-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -BatchConfigurationName "sampleBatchConfig" -BatchConfigurationFilePath $batchConfigurationFilePath
+
+Properties : Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties
+Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/batchConfigurations/sampleBatchConfig
+Name       : sampleBatchConfig
+Type       : Microsoft.Logic/integrationAccounts/batchConfigurations
+Location   :
+Tags       :
+
 ```
 
-Modify a batch configuration named "sampleBatchConfiguration" using the local file located at the file path contained in "$batchConfigurationFilePath".
+Modify a batch configuration named "sampleBatchConfig" using the local file located at the file path contained in "$batchConfigurationFilePath".
 
 ### Example 2: Modify a batch configuration using a JSON string
 ```powershell
-PS C:\> Set-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -BatchConfigurationName "sampleBatchConfiguration" -BatchConfigurationDefinition $batchConfigurationContent
+PS C:\> Set-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -BatchConfigurationName "sampleBatchConfig" -BatchConfigurationDefinition $batchConfigurationContent
+
+Properties : Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties
+Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/batchConfigurations/sampleBatchConfig
+Name       : sampleBatchConfig
+Type       : Microsoft.Logic/integrationAccounts/batchConfigurations
+Location   :
+Tags       :
+
 ```
 
-Modify a batch configuration named "sampleBatchConfiguration" using the a JSON string contained in "$batchConfigurationContent".
+Modify a batch configuration named "sampleBatchConfig" using the a JSON string contained in "$batchConfigurationContent".
 
 ### Example 3: Modify a batch configuration using parameters
 ```powershell
-PS C:\> Set-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -BatchConfigurationName "sampleBatchConfiguration" -MessageCount 199 -BatchSize 5 -ScheduleInterval 1 -ScheduleFrequency "Month"
+PS C:\> Set-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -BatchConfigurationName "sampleBatchConfig" -MessageCount 199 -BatchSize 5 -ScheduleInterval 1 -ScheduleFrequency "Month"
+
+Properties : Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties
+Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/batchConfigurations/sampleBatchConfig
+Name       : sampleBatchConfig
+Type       : Microsoft.Logic/integrationAccounts/batchConfigurations
+Location   :
+Tags       :
+
 ```
 
-Modify a batch configuration named "sampleBatchConfiguration" by manually providing all of the nessecary parameters.
+Modify a batch configuration named "sampleBatchConfig" by manually providing all of the nessecary parameters.
 
 ## PARAMETERS
 
@@ -181,8 +207,8 @@ Accept wildcard characters: False
 An integration account batch configuration.
 
 ```yaml
-Type: Microsoft.Azure.Management.Logic.Models.BatchConfiguration
-Parameter Sets: ByInputObjectAndFilePath, ByInputObjectAndJson, ByInputObjectAndParameters
+Type: Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration
+Parameter Sets: ByInputObjectAndJson, ByInputObjectAndFilePath, ByInputObjectAndParameters
 Aliases:
 
 Required: True
@@ -272,7 +298,7 @@ The integration account batch configuration resource id.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceIdAndFilePath, ByResourceIdAndJson, ByResourceIdAndParameters
+Parameter Sets: ByResourceIdAndJson, ByResourceIdAndFilePath, ByResourceIdAndParameters
 Aliases:
 
 Required: True
@@ -343,18 +369,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Management.Logic.Models.BatchConfiguration
+### Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration
 
 ### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Logic.Models.BatchConfiguration
+### Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration
 
 ## NOTES
 
