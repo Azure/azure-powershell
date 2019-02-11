@@ -2,57 +2,109 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabasesensitivityrecommendations
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendations
 schema: 2.0.0
 ---
 
-# Set-AzSqlDatabaseSensitivityRecommendations
+# Get-AzSqlDatabaseSensitivityRecommendations
 
 ## SYNOPSIS
+Gets the recommended sensitivity labels and information types of columns in the database.
 
 ## SYNTAX
 
-### ColumnParameterSet
+### DatabaseParameterSet
 ```
-Set-AzSqlDatabaseSensitivityClassification [-ResourceGroupName] <String> [-ServerName] <String>
- [-DatabaseName] <String> -SchemaName <String> -TableName <String> -ColumnName <String> [-LabelName <String>]
- [-InformationType <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzSqlDatabaseSensitivityRecommendations [-ResourceGroupName] <String> [-ServerName] <String>
+ [-DatabaseName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentResourceParameterSet
 ```
-Set-AzSqlDatabaseSensitivityClassification -InputObject <SqlDatabaseSensitivityClassificationModel>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzSqlDatabaseSensitivityRecommendations -InputObject <AzureSqlDatabaseModel> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+The Get-AzSqlDatabaseSensitivityRecommendations cmdlet returns the recommended sensitivity labels and information types of columns in the database.
 
 ## EXAMPLES
 
+### Example 1: Get recommended sensitivity classification of an Azure SQL database.
+```powershell
+PS C:\> Get-AzSqlDatabaseSensitivityRecommendations -ResourceGroupName resourceGroup -ServerName server -DatabaseName database
+
+ResourceGroupName : resourceGroup
+ServerName        : server
+DatabaseName      : database
+SensitivityLabels : {{
+                        SchemaName: schema1,
+                        TableName: table1,
+                        ColumnName: column1,
+                        LabelName: label1,
+                        InformationType: informationType1,
+                    }, {
+                        SchemaName: schema2,
+                        TableName: table2,
+                        ColumnName: column2,
+                        LabelName: label2,
+                    }, {
+                        SchemaName: schema3,
+                        TableName: table3,
+                        ColumnName: column3,
+                        LabelName: label3,
+                    }}
+```
+
+### Example 2: Get recommended sensitivity classification of an Azure SQL database.
+```powershell
+PS C:\> Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Get-AzSqlDatabaseSensitivityRecommendations
+
+ResourceGroupName : resourceGroup
+ServerName        : server
+DatabaseName      : database
+SensitivityLabels : {{
+                        SchemaName: schema1,
+                        TableName: table1,
+                        ColumnName: column1,
+                        LabelName: label1,
+                        InformationType: informationType1,
+                    }, {
+                        SchemaName: schema2,
+                        TableName: table2,
+                        ColumnName: column2,
+                        LabelName: label2,
+                    }, {
+                        SchemaName: schema3,
+                        TableName: table3,
+                        ColumnName: column3,
+                        LabelName: label3,
+                    }}
+```
+
 ## PARAMETERS
 
-### -ColumnName
-Name of column.
+### -AsJob
+Run cmdlet in the background
 
 ```yaml
-Type: System.String
-Parameter Sets: ColumnParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Database.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet
+Parameter Sets: DatabaseParameterSet
 Aliases:
 
 Required: True
@@ -77,26 +129,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationType
-A name that describes the information type of the data  stored in the column.
-
-```yaml
-Type: System.String
-Parameter Sets: ColumnParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -InputObject
-An object representing a SQL Database Sensitivity Classification
+The SQL database object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Sql.DataClassification.Model.SqlDatabaseSensitivityClassificationModel
+Type: Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
 Parameter Sets: ParentResourceParameterSet
 Aliases:
 
@@ -107,46 +144,16 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LabelName
-A name that describes the sensitivity of the data  stored in the column.
-
-```yaml
-Type: System.String
-Parameter Sets: ColumnParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet
+Parameter Sets: DatabaseParameterSet
 Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SchemaName
-Name of schema.
-
-```yaml
-Type: System.String
-Parameter Sets: ColumnParameterSet
-Aliases:
-
-Required: True
-Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -157,7 +164,7 @@ SQL server name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet
+Parameter Sets: DatabaseParameterSet
 Aliases:
 
 Required: True
@@ -167,57 +174,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -TableName
-Name of table.
-
-```yaml
-Type: System.String
-Parameter Sets: ColumnParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Sql.DataClassification.Model.SqlDatabaseSensitivityClassificationModel
 
 ## NOTES
 

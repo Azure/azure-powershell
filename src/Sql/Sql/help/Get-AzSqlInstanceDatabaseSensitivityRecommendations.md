@@ -2,11 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azmanageddatabasesensitivityclassification
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendations
 schema: 2.0.0
 ---
 
-# Get-AzManagedDatabaseSensitivityRecommendations
+# Get-AzSqlInstanceDatabaseSensitivityRecommendations
 
 ## SYNOPSIS
 Gets the recommended sensitivity labels and information types of columns in the database.
@@ -15,19 +15,72 @@ Gets the recommended sensitivity labels and information types of columns in the 
 
 ### DatabaseParameterSet
 ```
-Get-AzManagedDatabaseSensitivityRecommendations [-ResourceGroupName] <String> [-InstanceName] <String>
+Get-AzSqlInstanceDatabaseSensitivityRecommendations [-ResourceGroupName] <String> [-InstanceName] <String>
  [-DatabaseName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentResourceParameterSet
 ```
-Get-AzManagedDatabaseSensitivityRecommendations -InputObject <AzureSqlManagedDatabaseModel> [-AsJob]
+Get-AzSqlInstanceDatabaseSensitivityRecommendations -InputObject <AzureSqlManagedDatabaseModel> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+The Get-AzSqlInstanceDatabaseSensitivityRecommendations cmdlet returns the recommended sensitivity labels and information types of columns in the database.
 
 ## EXAMPLES
+
+### Example 1: Get recommended sensitivity classification of an Azure SQL Managed Instance database.
+```powershell
+PS C:\> Get-AzSqlInstanceDatabaseSensitivityRecommendations -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database
+
+ResourceGroupName : resourceGroup
+InstanceName      : managedInstance
+DatabaseName      : database
+SensitivityLabels : {{
+                        SchemaName: schema1,
+                        TableName: table1,
+                        ColumnName: column1,
+                        LabelName: label1,
+                        InformationType: informationType1,
+                    }, {
+                        SchemaName: schema2,
+                        TableName: table2,
+                        ColumnName: column2,
+                        LabelName: label2,
+                    }, {
+                        SchemaName: schema3,
+                        TableName: table3,
+                        ColumnName: column3,
+                        LabelName: label3,
+                    }}
+```
+
+### Example 2: Get recommended sensitivity classification of an Azure SQL Managed Instance database.
+```powershell
+PS C:\> Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -Name database | Get-AzSqlInstanceDatabaseSensitivityRecommendations
+
+ResourceGroupName : resourceGroup
+InstanceName      : managedInstance
+DatabaseName      : database
+SensitivityLabels : {{
+                        SchemaName: schema1,
+                        TableName: table1,
+                        ColumnName: column1,
+                        LabelName: label1,
+                        InformationType: informationType1,
+                    }, {
+                        SchemaName: schema2,
+                        TableName: table2,
+                        ColumnName: column2,
+                        LabelName: label2,
+                    }, {
+                        SchemaName: schema3,
+                        TableName: table3,
+                        ColumnName: column3,
+                        LabelName: label3,
+                    }}
+```
 
 ## PARAMETERS
 
@@ -47,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Instance Database.
 
 ```yaml
 Type: System.String
@@ -77,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-An object representing a SQL Database Sensitivity Classification
+The SQL instance database object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
@@ -126,7 +179,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Sql.DataClassification.Model.ManagedDatabaseSensitivityClassificationModel
 
 ## NOTES
 
