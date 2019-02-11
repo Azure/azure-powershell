@@ -24,13 +24,11 @@ you should revoke access for PAT--this way no one can access to your private rep
 are recorded. See example in SourceControlTests.ps1 where $testReposInfo is defined.
 */
 
-using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
 namespace Commands.Automation.Test
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
-
     public class SourceControlTests : AutomationTestRunner
     {
         public SourceControlTests(Xunit.Abstractions.ITestOutputHelper output)
