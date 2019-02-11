@@ -2,11 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azmanageddatabasesensitivityclassification
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification
 schema: 2.0.0
 ---
 
-# Get-AzManagedDatabaseSensitivityClassification
+# Get-AzSqlInstanceDatabaseSensitivityClassification
 
 ## SYNOPSIS
 Gets the current sensitivity labels and information types of columns in the database.
@@ -15,34 +15,118 @@ Gets the current sensitivity labels and information types of columns in the data
 
 ### DatabaseParameterSet
 ```
-Get-AzManagedDatabaseSensitivityClassification [-ResourceGroupName] <String> [-InstanceName] <String>
+Get-AzSqlInstanceDatabaseSensitivityClassification [-ResourceGroupName] <String> [-InstanceName] <String>
  [-DatabaseName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ColumnParameterSet
 ```
-Get-AzManagedDatabaseSensitivityClassification [-ResourceGroupName] <String> [-InstanceName] <String>
+Get-AzSqlInstanceDatabaseSensitivityClassification [-ResourceGroupName] <String> [-InstanceName] <String>
  [-DatabaseName] <String> -SchemaName <String> -TableName <String> -ColumnName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentResourceParameterSet
 ```
-Get-AzManagedDatabaseSensitivityClassification -InputObject <AzureSqlManagedDatabaseModel> [-AsJob]
+Get-AzSqlInstanceDatabaseSensitivityClassification -InputObject <AzureSqlManagedDatabaseModel> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentResourceColumnParameterSet
 ```
-Get-AzManagedDatabaseSensitivityClassification -InputObject <AzureSqlManagedDatabaseModel> -SchemaName <String>
- -TableName <String> -ColumnName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSqlInstanceDatabaseSensitivityClassification -InputObject <AzureSqlManagedDatabaseModel>
+ -SchemaName <String> -TableName <String> -ColumnName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzManagedDatabaseSensitivityClassification cmdlet gets the current sensitivity labels and information types of columns in the database.
+The Get-AzSqlInstanceDatabaseSensitivityClassification cmdlet returns the current sensitivity labels and information types of columns in the database.
 
 ## EXAMPLES
+
+### Example 1: Get current sensitivity classification of an Azure SQL Managed Instance database.
+```powershell
+PS C:\> Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database
+
+ResourceGroupName : resourceGroup
+InstanceName      : managedInstance
+DatabaseName      : database
+SensitivityLabels : {{
+                        SchemaName: schema1,
+                        TableName: table1,
+                        ColumnName: column1,
+                        LabelName: label1,
+                        InformationType: informationType1,
+                    }, {
+                        SchemaName: schema2,
+                        TableName: table2,
+                        ColumnName: column2,
+                        LabelName: label2,
+                    }, {
+                        SchemaName: schema3,
+                        TableName: table3,
+                        ColumnName: column3,
+                        LabelName: label3,
+                    }}
+```
+
+### Example 2: Get current sensitivity classification of an Azure SQL Managed Instance database.
+```powershell
+PS C:\> Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -Name database | Get-AzSqlInstanceDatabaseSensitivityClassification
+
+ResourceGroupName : resourceGroup
+InstanceName      : managedInstance
+DatabaseName      : database
+SensitivityLabels : {{
+                        SchemaName: schema1,
+                        TableName: table1,
+                        ColumnName: column1,
+                        LabelName: label1,
+                        InformationType: informationType1,
+                    }, {
+                        SchemaName: schema2,
+                        TableName: table2,
+                        ColumnName: column2,
+                        LabelName: label2,
+                    }, {
+                        SchemaName: schema3,
+                        TableName: table3,
+                        ColumnName: column3,
+                        LabelName: label3,
+                    }}
+```
+
+### Example 3: Get current sensitivity classification of a specific column of an Azure SQL Managed Instance database.
+```powershell
+PS C:\> Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database -SchemaName schema -TableName table -ColumnName column
+
+ResourceGroupName : resourceGroup
+InstanceName      : managedInstance
+DatabaseName      : database
+SensitivityLabels : {{
+                        SchemaName: schema,
+                        TableName: table,
+                        ColumnName: column,
+                        LabelName: label,
+                        InformationType: informationType,
+                    }}
+```
+
+### Example 4: Get current sensitivity classification of a specific column of an Azure SQL Managed Instance database.
+```powershell
+PS C:\> Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -Name database | Get-AzSqlInstanceDatabaseSensitivityClassification -SchemaName schema -TableName table -ColumnName column
+
+ResourceGroupName : resourceGroup
+InstanceName      : managedInstance
+DatabaseName      : database
+SensitivityLabels : {{
+                        SchemaName: schema,
+                        TableName: table,
+                        ColumnName: column,
+                        LabelName: label,
+                        InformationType: informationType,
+                    }}
+```
 
 ## PARAMETERS
 
@@ -77,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Instance Database.
 
 ```yaml
 Type: System.String
@@ -107,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-An object representing a SQL Database Sensitivity Classification
+The SQL instance database object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
