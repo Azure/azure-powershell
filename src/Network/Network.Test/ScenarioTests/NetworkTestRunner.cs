@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
                 {
                     @"Common.ps1",
                     @"../AzureRM.Resources.ps1",
-                    @"../AzureRM.Storage.ps1",
                 })
                 .WithNewRmModules (helper => new[]
                 {
@@ -25,6 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
                     helper.GetRMModulePath("AzureRM.Monitor.psd1"),
                     helper.GetRMModulePath("AzureRM.Network.psd1"),
                     helper.GetRMModulePath("AzureRM.Compute.psd1"),
+                    helper.GetRMModulePath("AzureRM.Storage.psd1"),
                     helper.GetRMModulePath("AzureRM.ContainerInstance.psd1"),
                     helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
                 })
