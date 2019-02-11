@@ -34,7 +34,7 @@ function Create-ResourceGroupForTest
 function Remove-ResourceGroupForTest ($rg)
 {
 	if([Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigBool("cleanup")){
-		#Remove-AzResourceGroup -Name $rg.ResourceGroupName -Force
+		Remove-AzResourceGroup -Name $rg.ResourceGroupName -Force
 	}
 }
 
