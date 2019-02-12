@@ -22,8 +22,8 @@ Get-AzSqlInstanceDatabaseGeoBackup [[-Name] <String>] [-InstanceName] <String> [
 
 ## EXAMPLES
 
-### Example 1
-```powershell
+### Example 1:Get all database redundant backups on a instance
+```
 
 PS C:\>Get-AzSqlInstanceDatabaseGeoBackup -InstanceName "managedInstance1" -ResourceGroupName "resourcegroup01"
 ResourceGroupName        : resourcegroup01
@@ -41,9 +41,9 @@ LastAvailableBackupDate  : 01/31/2019 20:44:57
 RecoverableDatabaseId   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1/recoverableDatabases/managedDatabase2
 ```
 
-This command gets all databases on the instance named managedInstance1.
+This command gets all database redundant backups on the instance named managedInstance1.
 
-### Example 2: Get a database by name on a Managed instance
+### Example 2: Get a database redundant backup by name on a Managed instance
 ```
 PS C:\>Get-AzSqlInstanceDatabaseGeoBackup -Name "managedDatabase1" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ResourceGroupName        : resourcegroup01
