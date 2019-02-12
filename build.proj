@@ -382,7 +382,7 @@
     <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
     <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
 
-    <Message Importnace="High" Text="Creating test output directory at '$(TestOutputDirectory)'" />"
+    <Message Importance="High" Text="Creating test output directory at '$(TestOutputDirectory)'" />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <ItemGroup>
