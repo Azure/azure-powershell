@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Rest;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
@@ -29,14 +28,5 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// The client factory for clients
         /// </summary>
         IClientFactory ClientFactory { get; set; }
-
-        /// <summary>
-        /// Apply the client action to the given AutoRest client
-        /// </summary>
-        /// <typeparam name="TClient">The type of the AutoRest client</typeparam>
-        /// <param name="client">The client to apply this action to</param>
-        /// <param name="profile">The current container for credentials and target account, subscription, and tenant information</param>
-        /// <param name="endpoint">The named endpoint the client targets</param>
-        void ApplyArm<TClient>(TClient client, IAzureContextContainer profile, string endpoint) where TClient :ServiceClient<TClient>;
     }
 }

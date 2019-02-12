@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Rest;
 using System;
 using System.Security;
 
@@ -64,21 +63,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             string promptBehavior,
             Action<string> promptAction,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
-
-        /// <summary>
-        /// Get AutoRest credentials for the given context
-        /// </summary>
-        /// <param name="context">The target azure context</param>
-        /// <returns>AutoRest client credentials targeting the given context</returns>
-        ServiceClientCredentials GetServiceClientCredentials(IAzureContext context);
-
-        /// <summary>
-        /// Get AutoRest credebntials using the given context and named endpoint
-        /// </summary>
-        /// <param name="context">The context to use for authentication</param>
-        /// <param name="targetEndpoint">The named endpoint the AutoRest client will target</param>
-        /// <returns>AutoRest client crentials targeting the given context and endpoint</returns>
-        ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint);
 
         /// <summary>
         /// Remove any stored credentials for the given user
