@@ -9,7 +9,7 @@ schema: 2.0.0
 # Get-AzSqlDatabaseSensitivityClassification
 
 ## SYNOPSIS
-Gets the current sensitivity labels and information types of columns in the database.
+Gets the current information types and sensitivity labels of columns in the database.
 
 ## SYNTAX
 
@@ -40,11 +40,11 @@ Get-AzSqlDatabaseSensitivityClassification -InputObject <AzureSqlDatabaseModel> 
 ```
 
 ## DESCRIPTION
-The Get-AzSqlDatabaseSensitivityClassification cmdlet returns the current sensitivity labels and information types of columns in the database.
+The Get-AzSqlDatabaseSensitivityClassification cmdlet returns the current information types and sensitivity labels of columns in the database.
 
 ## EXAMPLES
 
-### Example 1: Get current sensitivity classification of an Azure SQL database.
+### Example 1: Get current information types and sensitivity labels of an Azure SQL Database.
 ```powershell
 PS C:\> Get-AzSqlDatabaseSensitivityClassification -ResourceGroupName resourceGroup -ServerName server -DatabaseName database
 
@@ -70,7 +70,7 @@ SensitivityLabels : {{
                     }}
 ```
 
-### Example 2: Get current sensitivity classification of an Azure SQL database.
+### Example 2: Get current information types and sensitivity labels of an Azure SQL Database.
 ```powershell
 PS C:\> Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Get-AzSqlDatabaseSensitivityClassification
 
@@ -96,7 +96,7 @@ SensitivityLabels : {{
                     }}
 ```
 
-### Example 3: Get current sensitivity classification of a specific column of an Azure SQL database.
+### Example 3: Get current information type and sensitivity label of a specific column of an Azure SQL Database.
 ```powershell
 PS C:\> Get-AzSqlDatabaseSensitivityClassification -ResourceGroupName resourceGroup -ServerName server -DatabaseName database -SchemaName schema -TableName table -ColumnName column
 
@@ -112,7 +112,7 @@ SensitivityLabels : {{
                     }}
 ```
 
-### Example 4: Get current sensitivity classification of a specific column of an Azure SQL database.
+### Example 4: Get current information type and sensitivity label of a specific column of an Azure SQL Database.
 ```powershell
 PS C:\> Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Get-AzSqlDatabaseSensitivityClassification -SchemaName schema -TableName table -ColumnName column
 

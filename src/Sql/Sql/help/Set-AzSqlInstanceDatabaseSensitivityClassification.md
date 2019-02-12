@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzSqlInstanceDatabaseSensitivityClassification
 
 ## SYNOPSIS
-Sets the sensitivity labels and information types of columns in the database.
+Sets the information types and sensitivity labels of columns in the database.
 
 ## SYNTAX
 
@@ -28,16 +28,16 @@ Set-AzSqlInstanceDatabaseSensitivityClassification -InputObject <ManagedDatabase
 ```
 
 ## DESCRIPTION
-The Set-AzSqlInstanceDatabaseSensitivityClassification cmdlet sets the sensitivity labels and information types of columns in the database.
+The Set-AzSqlInstanceDatabaseSensitivityClassification cmdlet sets the information types and sensitivity labels of columns in the database.
 
 ## EXAMPLES
 
-### Example 1: Set sensitivity classification of a column in an Azure SQL Managed Instance database.
+### Example 1: Set information type and sensitivity label of a column in an Azure SQL Managed Instance Database.
 ```powershell
 PS C:\> Set-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database -SchemaName schema -TableName table -ColumnName column -InformationType informationType -LabelName label
 ```
 
-### Example 2: Set recommended sensitivity classification of columns in an Azure SQL Managed Instance database.
+### Example 2: Set recommended information types and sensitivity labels of columns in an Azure SQL Managed Instance Database.
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabaseSensitivityRecommendations -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database | Set-AzSqlInstanceDatabaseSensitivityClassification
 ```

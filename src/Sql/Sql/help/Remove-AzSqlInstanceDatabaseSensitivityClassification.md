@@ -9,7 +9,7 @@ schema: 2.0.0
 # Remove-AzSqlInstanceDatabaseSensitivityClassification
 
 ## SYNOPSIS
-Removes the classification of columns in the database.
+Removes the information types and sensitivity labels of columns in the database.
 
 ## SYNTAX
 
@@ -28,16 +28,16 @@ Remove-AzSqlInstanceDatabaseSensitivityClassification
 ```
 
 ## DESCRIPTION
-The Remove-AzSqlInstanceDatabaseSensitivityClassification cmdlet removes the classification of columns in the database.
+The Remove-AzSqlInstanceDatabaseSensitivityClassification cmdlet removes the information types and sensitivity labels of columns in the database.
 
 ## EXAMPLES
 
-### Example 1: Remove sensitivity classification of a column in an Azure SQL Managed Instance database.
+### Example 1: Remove information type and sensitivity label of a column in an Azure SQL Managed Instance Database.
 ```powershell
 PS C:\> Remove-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database -SchemaName schema -TableName table -ColumnName column
 ```
 
-### Example 2: Remove current sensitivity classification of columns in an Azure SQL Managed Instance database.
+### Example 2: Remove current information types and sensitivity labels of columns in an Azure SQL Managed Instance Database.
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database | Remove-AzSqlInstanceDatabaseSensitivityClassification
 ```
