@@ -18,13 +18,12 @@ Get-AzSqlInstanceDatabaseGeoBackup [[-Name] <String>] [-InstanceName] <String> [
 ```
 
 ## DESCRIPTION
-**Get-AzSqlInstanceDatabaseGeoBackup** cmdlet gets one or more Azure SQL databases redundant backups from an Azure SQL Database Managed Instance.
+The **Get-AzSqlInstanceDatabaseGeoBackup** cmdlet gets one or more Azure SQL databases redundant backups from an Azure SQL Database Managed Instance.
 
 ## EXAMPLES
 
-### Example 1:Get all database redundant backups on a instance
+### Example 1: Get all database redundant backups on a instance
 ```
-
 PS C:\>Get-AzSqlInstanceDatabaseGeoBackup -InstanceName "managedInstance1" -ResourceGroupName "resourcegroup01"
 ResourceGroupName        : resourcegroup01
 ManagedInstanceName      : managedInstance1
@@ -124,7 +123,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### None
+### System.String
 
 ## OUTPUTS
 
