@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSecurityThreatProtection
 
 ## SYNOPSIS
-Gets the threat protection policy for a Microsoft Storage account.
+Gets the threat protection policy for a storage account.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzSecurityThreatProtection -ResourceId <String> [-DefaultProfile <IAzureCont
 ```
 
 ## DESCRIPTION
-The **Get-AzSecurityThreatProtection** cmdlet gets the threat protetion Microsoft Storage account.
+The "Get-AzSecurityThreatProtection" cmdlet gets the threat protetion policy of a storage account.
 To use this cmdlet, specify the *ResourceId* parameter.
 
 
