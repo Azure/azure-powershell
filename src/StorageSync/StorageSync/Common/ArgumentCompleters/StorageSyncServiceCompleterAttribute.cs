@@ -77,7 +77,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters
 
                         catch (Exception ex)
                         {
-                            if (ex == null) { }
 #if DEBUG
                             throw ex;
 #endif

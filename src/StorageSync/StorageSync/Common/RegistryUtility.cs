@@ -93,12 +93,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception) when (!throwException)
             {
-                if (throwException)
-                {
-                    throw;
-                }
+                // Absorb the exception when input parameter throw exception is false
             }
         }
     }
