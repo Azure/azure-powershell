@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlinstancedatabasegeobackup
 schema: 2.0.0
 ---
 
 # Get-AzSqlInstanceDatabaseGeoBackup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Returns information about Azure SQL Managed Instance database redundant backup.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzSqlInstanceDatabaseGeoBackup [[-Name] <String>] [-InstanceName] <String> [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+**Get-AzSqlInstanceDatabaseGeoBackup** cmdlet gets one or more Azure SQL databases redundant backups from an Azure SQL Database Managed Instance.
 
 ## EXAMPLES
 
@@ -27,7 +27,7 @@ Get-AzSqlInstanceDatabaseGeoBackup [[-Name] <String>] [-InstanceName] <String> [
 PS C:\> {{ Add example code here }}
 ```
 
-{{ Add example description here }}
+This command gets a database redundant backup named managedDatabase1 from an instance named managedInstance1.
 
 ## PARAMETERS
 

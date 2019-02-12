@@ -244,13 +244,13 @@ function Test-RestoreManagedDatabase
 
 <#
 .SYNOPSIS
-	Tests Getting a managed database
+	Tests Getting a managed database redundant backups
 #>
 function Test-GetManagedDatabaseGeoBackup
 {
 	# Setup
 	$rgName = "restore-rg"	
-	$managedInstanceName = "restorerunnermanagedserverwus"
+	$managedInstanceName = "testbrinstance"
 	$managedDatabaseName = "sourceDb"
 
 	# Test Get using all parameters
@@ -264,7 +264,7 @@ function Test-GetManagedDatabaseGeoBackup
 	Assert-NotNull $all
 	if($all.Count -le 1)
 	{
-        throw "Should mget more than 1 backup geo backups"
+        throw "Should get more than 1 backup geo backups"
     }
 }
 
@@ -276,7 +276,7 @@ function Test-GeoRestoreManagedDatabase
 {
 	# Setup
     $rgName = "restore-rg"	
-	$managedInstanceName = "restorerunnermanagedserverwus"
+	$managedInstanceName = "testbrinstance"
 	$managedDatabaseName = "sourceDb"
 
 	$targetRgName = "brrg"
