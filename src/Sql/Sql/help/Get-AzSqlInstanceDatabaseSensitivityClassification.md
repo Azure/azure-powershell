@@ -9,7 +9,7 @@ schema: 2.0.0
 # Get-AzSqlInstanceDatabaseSensitivityClassification
 
 ## SYNOPSIS
-Gets the current information types and sensitivity labels of columns in the database.
+Gets the current information types and sensitivity labels of columns in the Azure SQL managed instance database.
 
 ## SYNTAX
 
@@ -40,11 +40,11 @@ Get-AzSqlInstanceDatabaseSensitivityClassification -InputObject <AzureSqlManaged
 ```
 
 ## DESCRIPTION
-The Get-AzSqlInstanceDatabaseSensitivityClassification cmdlet returns the current information types and sensitivity labels of columns in the database.
+The Get-AzSqlInstanceDatabaseSensitivityClassification cmdlet returns the current information types and sensitivity labels of columns in the Azure SQL managed instance database.
 
 ## EXAMPLES
 
-### Example 1: Get current information types and sensitivity labels of an Azure SQL Managed Instance Database.
+### Example 1: Get current information types and sensitivity labels of an Azure SQL managed instance database.
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database
 
@@ -70,7 +70,7 @@ SensitivityLabels : {{
                     }}
 ```
 
-### Example 2: Get current information types and sensitivity labels of an Azure SQL Managed Instance Database with Piping..
+### Example 2: Get current information types and sensitivity labels of an Azure SQL managed Instance database with Piping.
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -Name database | Get-AzSqlInstanceDatabaseSensitivityClassification
 
@@ -96,7 +96,7 @@ SensitivityLabels : {{
                     }}
 ```
 
-### Example 3: Get current information type and sensitivity label of a specific column of an Azure SQL Managed Instance Database.
+### Example 3: Get current information type and sensitivity label of a specific column of an Azure SQL managed instance database.
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database -SchemaName schema -TableName table -ColumnName column
 
@@ -112,7 +112,7 @@ SensitivityLabels : {{
                     }}
 ```
 
-### Example 4: Get current information type and sensitivity label of a specific column of an Azure SQL Managed Instance Database using Piping..
+### Example 4: Get current information type and sensitivity label of a specific column of an Azure SQL managed instance database using Piping.
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -Name database | Get-AzSqlInstanceDatabaseSensitivityClassification -SchemaName schema -TableName table -ColumnName column
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-The name of the Azure SQL Instance Database.
+The name of the Azure SQL managed instance database.
 
 ```yaml
 Type: System.String
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The SQL instance database object.
+The Azure SQL managed instance database object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
@@ -206,7 +206,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-SQL Managed Instance name.
+Azure SQL managed instance name.
 
 ```yaml
 Type: System.String
@@ -279,3 +279,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+Learn more about [Azure SQL Database data discovery and classification](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification)
