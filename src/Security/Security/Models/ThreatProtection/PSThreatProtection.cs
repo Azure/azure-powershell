@@ -12,19 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Security.Common
+namespace Microsoft.Azure.Commands.Security.Models.ThreatProtection
 {
-    public static class ParameterSetNames
+    public class PSThreatProtection
     {
-        public const string GeneralScope = "GeneralScope";
-        public const string SubscriptionScope = "SubscriptionScope";
-        public const string ResourceGroupScope = "ResourceGroupScope";
-        public const string ScopeLevelResource = "ScopeLevelResource";
-        public const string SubscriptionLevelResource = "SubscriptionLevelResource";
-        public const string ResourceGroupLevelResource = "ResourceGroupLevelResource";
-        public const string ResourceId = "ResourceId";
-        public const string InputObject = "InputObject";
-        public const string PolicyOn = "PolicyOn";
-        public const string PolicyOff = "PolicyOff";
+        public string Id { get; set; }
+
+        public string Name { get; set; }
     }
 }

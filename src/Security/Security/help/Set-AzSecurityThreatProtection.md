@@ -25,7 +25,7 @@ Set-AzSecurityThreatProtection -ResourceId <String> [-Disable] [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-The **Set-AzSecurityThreatProtection** cmdlet sets a threat protetion for Microsoft Storage account.
+The "Set-AzSecurityThreatProtection" cmdlet sets the threat protetion policy of a storage account.
 To use this cmdlet, specify the *ResourceId* and *-Enable* OR *-Disable* parameters to activate or deactivate the policy.
 
 
