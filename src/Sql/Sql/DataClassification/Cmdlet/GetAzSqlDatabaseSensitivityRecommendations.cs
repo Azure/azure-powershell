@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
                 ResourceGroupName = InputObject == null ? ResourceGroupName : InputObject.ResourceGroupName,
                 ServerName = InputObject == null ? ServerName : InputObject.ServerName,
                 DatabaseName = InputObject == null ? DatabaseName : InputObject.DatabaseName,
-                SensitivityLabels = new List<SensitivityLabel>()
+                SensitivityLabels = new List<SensitivityLabelModel>()
                 {
-                    new SensitivityLabel
+                    new SensitivityLabelModel
                     {
                         ColumnName = "column1",
                         TableName = "table1",
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
                         LabelName = "label1",
                         InformationType = "informationType1"
                     },
-                    new SensitivityLabel
+                    new SensitivityLabelModel
                     {
                         ColumnName = "column2",
                         TableName = "table2",
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
                         LabelName = "label2",
                         InformationType = null
                     },
-                    new SensitivityLabel
+                    new SensitivityLabelModel
                     {
                         ColumnName = "column2",
                         TableName = "table2",

@@ -105,9 +105,9 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
                 ResourceGroupName = ResourceGroupName,
                 InstanceName = InstanceName,
                 DatabaseName = DatabaseName,
-                SensitivityLabels = new List<SensitivityLabel>()
+                SensitivityLabels = new List<SensitivityLabelModel>()
                     {
-                        new SensitivityLabel
+                        new SensitivityLabelModel
                         {
                             SchemaName  = SchemaName,
                             TableName = TableName,
