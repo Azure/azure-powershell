@@ -48,19 +48,19 @@
     <LibraryRoot>$(MSBuildThisFileDirectory)</LibraryRoot>
     <LibrarySourceFolder>$(LibraryRoot)src</LibrarySourceFolder>
     <LibraryToolsFolder>$(LibraryRoot)tools</LibraryToolsFolder>
-    <LocalFeedFolder>$(LibraryToolsFolder)\LocalFeed</LocalFeedFolder>
+    <LocalFeedFolder>$(LibraryToolsFolder)LocalFeed</LocalFeedFolder>
     <Configuration Condition=" '$(Configuration)' != 'Release'">Debug</Configuration>
     <CodeSign>false</CodeSign>
     <!--Set this true only if you want to test the code sign workflow locally-->
     <DelaySign Condition =" '$(DelaySign)' == '' ">false</DelaySign>
     <SignedOutputRootDir>$(LibraryRoot)signed</SignedOutputRootDir>
-    <PackageDirectory>$(LibraryRoot)\artifacts</PackageDirectory>
-    <TestOutputDirectory>$(PackageDirectory)\Test</TestOutputDirectory>
+    <PackageDirectory>$(LibraryRoot)artifacts</PackageDirectory>
+    <TestOutputDirectory>$(PackageDirectory)Test</TestOutputDirectory>
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">$(LibrarySourceFolder)</NuGetPublishingSource>
     <Scope Condition="$(Scope) == ''" >All</Scope>
-    <BuildTasksPath>$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks\bin\$(Configuration)</BuildTasksPath>
-    <StackPackageFolder>$(LibrarySourceFolder)\Stack</StackPackageFolder>
+    <BuildTasksPath>$(LibraryToolsFolder)BuildPackagesTask/Microsoft.Azure.Build.Tasks/bin/$(Configuration)</BuildTasksPath>
+    <StackPackageFolder>$(LibrarySourceFolder)Stack</StackPackageFolder>
     <NetCore Condition="'$(NetCore)' != 'true'">false</NetCore>
   </PropertyGroup>
 
@@ -382,6 +382,7 @@
     <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
     <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
 
+    <Message Importnace="High" Text="Creating test output directory at '$(TestOutputDirectory)'" />"
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <ItemGroup>
@@ -402,7 +403,10 @@
     <ItemGroup>
       <TestResults Include="$(LibraryRoot)src/**/TestResults/*.trx" />
     </ItemGroup>
-    <Copy SourceFiles="@(TestResults)" DestinationFolder="$(TestOutputDirectory)" />
+    
+    <Message Importance="High" Text="Copying test results:"  />
+    <Message Text="'%(TestResults.Name)'" />
+    <Copy SourceFiles="@(TestResults)" DestinationFolder="$(TestOutputDirectory)" /> 
 
     <OnError ExecuteTargets="TestFailureErrorMessage" />
   </Target>
