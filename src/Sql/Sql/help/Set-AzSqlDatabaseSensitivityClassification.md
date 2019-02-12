@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzSqlDatabaseSensitivityClassification
 
 ## SYNOPSIS
-Sets the sensitivity labels and information types of columns in the database.
+Sets the information types and sensitivity labels of columns in the database.
 
 ## SYNTAX
 
@@ -28,16 +28,16 @@ Set-AzSqlDatabaseSensitivityClassification -InputObject <SqlDatabaseSensitivityC
 ```
 
 ## DESCRIPTION
-The Set-AzSqlDatabaseSensitivityClassification cmdlet sets the sensitivity labels and information types of columns in the database.
+The Set-AzSqlDatabaseSensitivityClassification cmdlet sets the information types and sensitivity labels of columns in the database.
 
 ## EXAMPLES
 
-### Example 1: Set sensitivity classification of a column in an Azure SQL database.
+### Example 1: Set the information type and sensitivity label of a column in an Azure SQL database.
 ```powershell
 PS C:\> Set-AzSqlDatabaseSensitivityClassification -ResourceGroupName resourceGroup -ServerName server -DatabaseName database -SchemaName schema -TableName table -ColumnName column -InformationType informationType -LabelName label
 ```
 
-### Example 2: Set recommended sensitivity classification of columns in an Azure SQL database.
+### Example 2: Set information types and sensitivity labels based on the recommended classification in an Azure SQL database.
 ```powershell
 PS C:\> Get-AzSqlDatabaseSensitivityRecommendations -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Set-AzSqlDatabaseSensitivityClassification
 ```
@@ -67,7 +67,7 @@ Type: System.String
 Parameter Sets: ColumnParameterSet
 Aliases:
 
-Required: True
+Required: True  
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -134,7 +134,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LabelName
+### -LabelName <-- Why don't we call this "SensitivityLabel"?
 A name that describes the sensitivity of the data stored in the column.
 
 ```yaml
@@ -266,3 +266,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+Learn more about [Azure SQL Database data discovery and classification](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification)
