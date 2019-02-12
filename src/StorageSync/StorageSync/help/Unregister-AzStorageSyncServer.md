@@ -12,13 +12,7 @@ This command will use to unregister storage sync server.
 
 ## SYNTAX
 
-### ObjectParameterSet (Default)
-```
-Unregister-AzStorageSyncServer [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### InputObjectParameterSet
+### InputObjectParameterSet (Default)
 ```
 Unregister-AzStorageSyncServer [-InputObject] <PSRegisteredServer> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
