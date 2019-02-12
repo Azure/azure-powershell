@@ -13,6 +13,6 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
         public string DatabaseName { get; set; }
 
         [Ps1Xml(Target = ViewControl.List)]
-        public List<SensitivityLabel> SensitivityLabels { get; set; }
+        public IList<SensitivityLabelModel> SensitivityLabels { get; set; }
     }
 }

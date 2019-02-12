@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
                 ResourceGroupName = InputObject == null ? ResourceGroupName : InputObject.ResourceGroupName,
                 InstanceName  = InputObject == null ? InstanceName : InputObject.ManagedInstanceName,
                 DatabaseName = InputObject == null ? DatabaseName : InputObject.Name,
-                SensitivityLabels = new List<SensitivityLabel>()
+                SensitivityLabels = new List<SensitivityLabelModel>()
             };
 
             return model;

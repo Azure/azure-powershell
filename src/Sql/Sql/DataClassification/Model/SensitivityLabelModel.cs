@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
 {
-    public class SensitivityLabel
+    public class SensitivityLabelModel
     {
         [Ps1Xml(Target = ViewControl.List)]
         public string SchemaName { get; set; }
@@ -19,6 +19,10 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
 
         [Ps1Xml(Target = ViewControl.List)]
         public string InformationType { get; set; }
+
+        public string LabelId { get; set; }
+
+        public string InformationTypeId { get; set; }
 
         public override string ToString()
         {
