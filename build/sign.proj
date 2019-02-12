@@ -18,7 +18,9 @@
   <Target Name="All">
     <Message Importance="high" Text="Sign: All started" />
     <ItemGroup>
-      <UnsignedFiles Include="$(OutputDir)netstandard2.0\Microsoft.Azure.PowerShell*.dll" Exclude="$(OutputDir)netstandard2.0\Microsoft.Azure.PowerShell*.Test.dll" />
+      <UnsignedFiles Include="$(OutputDir)net452\Microsoft.Azure.Commands*.dll" />
+      <UnsignedFiles Include="$(OutputDir)net452\Microsoft.WindowsAzure.Commands*.dll" />
+      <UnsignedFiles Include="$(OutputDir)net452\Microsoft.Azure.PowerShell*.dll" Exclude="$(OutputDir)net452\Microsoft.Azure.PowerShell*.Test.dll" />
     </ItemGroup>
     <ESRPSignTask
       CopyBackSignedFilesToOriginalLocation="true"
