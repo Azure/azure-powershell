@@ -105,7 +105,9 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     resourceGroupName = ResourceGroupName;
                 }
 
-                if (ShouldProcess(resourceName, "Remove Storage Sync Service"))
+                Target = resourceName;
+                ActionMessage = "Remove Storage Sync Service";
+                if (ShouldProcess(Target, ActionMessage))
                 {
                     if (Force || ShouldContinue(string.Format("Remove Storage Sync Service '{0}' and all content in it", resourceName), ""))
                     {

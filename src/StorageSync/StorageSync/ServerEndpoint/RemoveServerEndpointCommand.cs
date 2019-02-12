@@ -127,7 +127,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     storageSyncServiceName = StorageSyncServiceName;
                 }
 
-                if (ShouldProcess(resourceName, "Remove Server Endpoint"))
+                Target = resourceName;
+                ActionMessage = "Remove Server Endpoint";
+                if (ShouldProcess(Target, ActionMessage))
                 {
                     if (Force || ShouldContinue(string.Format("Remove Server Endpoint '{0}' and all content in it", resourceName), String.Empty))
                     {

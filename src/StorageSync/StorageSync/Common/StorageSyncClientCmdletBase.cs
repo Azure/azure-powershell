@@ -46,6 +46,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         {
         }
 
+        protected virtual string Target { get; set; }
+
+        protected virtual string ActionMessage { get; set; }
+
         private bool? isPlaybackMode;
         public bool IsPlaybackMode
         {
@@ -88,8 +92,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                     storageSyncClientWrapper = new StorageSyncClientWrapper(DefaultProfile.DefaultContext, ActiveDirectoryClient);
                 }
 
-                this.storageSyncClientWrapper.VerboseLogger = WriteVerboseWithTimestamp;
-                this.storageSyncClientWrapper.ErrorLogger = WriteErrorWithTimestamp;
+                storageSyncClientWrapper.VerboseLogger = WriteVerboseWithTimestamp;
+                storageSyncClientWrapper.ErrorLogger = WriteErrorWithTimestamp;
                 return storageSyncClientWrapper;
             }
 

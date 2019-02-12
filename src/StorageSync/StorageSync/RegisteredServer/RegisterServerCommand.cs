@@ -81,47 +81,54 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJobParameter)]
         public SwitchParameter AsJob { get; set; }
 
+        protected override string Target => StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? ParentResourceId;
+
+        protected override string ActionMessage => $"Create a new Registered Server for Storage Sync Service {StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? ParentResourceId}";
+
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            ExecuteClientAction(() =>
+            if (ShouldProcess(Target, ActionMessage))
             {
-                var parentResourceIdentifier = default(ResourceIdentifier);
+                base.ExecuteCmdlet();
 
-                if (!string.IsNullOrEmpty(ParentResourceId))
+                ExecuteClientAction(() =>
                 {
-                    parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
+                    var parentResourceIdentifier = default(ResourceIdentifier);
 
-                    if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
+                    if (!string.IsNullOrEmpty(ParentResourceId))
                     {
-                        throw new PSArgumentException($"Invalid Argument {nameof(ParentResourceId)}", nameof(ParentResourceId));
+                        parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
+
+                        if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
+                        {
+                            throw new PSArgumentException($"Invalid Argument {nameof(ParentResourceId)}", nameof(ParentResourceId));
+                        }
                     }
-                }
 
-                var resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier?.ResourceGroupName;
+                    var resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier?.ResourceGroupName;
 
-                if(string.IsNullOrEmpty(resourceGroupName))
-                {
-                    throw new PSArgumentException($"Invalid Argument {nameof(ResourceGroupName)}", nameof(ResourceGroupName));
-                }
+                    if (string.IsNullOrEmpty(resourceGroupName))
+                    {
+                        throw new PSArgumentException($"Invalid Argument {nameof(ResourceGroupName)}", nameof(ResourceGroupName));
+                    }
 
-                var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
+                    var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
 
-                if (string.IsNullOrEmpty(parentResourceName))
-                {
-                    throw new PSArgumentException($"Invalid Argument {nameof(StorageSyncServiceName)}", nameof(StorageSyncServiceName));
-                }
+                    if (string.IsNullOrEmpty(parentResourceName))
+                    {
+                        throw new PSArgumentException($"Invalid Argument {nameof(StorageSyncServiceName)}", nameof(StorageSyncServiceName));
+                    }
 
-                if (!SubscriptionId.HasValue)
-                {
-                    throw new PSArgumentException("No subscription found", nameof(SubscriptionId));
-                }
+                    if (!SubscriptionId.HasValue)
+                    {
+                        throw new PSArgumentException("No subscription found", nameof(SubscriptionId));
+                    }
 
-                RegisteredServer resource = PerformServerRegistration(resourceGroupName, SubscriptionId.Value, parentResourceName);
+                    RegisteredServer resource = PerformServerRegistration(resourceGroupName, SubscriptionId.Value, parentResourceName);
 
-                WriteObject(resource);
-            });
+                    WriteObject(resource);
+                });
+            }
         }
         private RegisteredServer PerformServerRegistration(string resourceGroupName, Guid subscriptionId, string storageSyncServiceName)
         {

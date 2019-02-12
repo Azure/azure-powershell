@@ -118,59 +118,66 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJobParameter)]
         public SwitchParameter AsJob { get; set; }
 
+        protected override string Target => Name ?? ResourceId ?? InputObject?.ServerEndpointName;
+
+        protected override string ActionMessage => $"Updating a Server endpoint {Name ?? ResourceId ?? InputObject?.ServerEndpointName}";
+
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            ExecuteClientAction(() =>
+            if (ShouldProcess(Target, ActionMessage))
             {
-                var resourceName = default(string);
-                var resourceGroupName = default(string);
-                var storageSyncServiceName = default(string);
-                var parentResourceName = default(string);
+                base.ExecuteCmdlet();
 
-                if (!string.IsNullOrEmpty(ResourceId))
+                ExecuteClientAction(() =>
                 {
-                    var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                    resourceName = resourceIdentifier.ResourceName;
-                    resourceGroupName = resourceIdentifier.ResourceGroupName;
-                    parentResourceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.SyncGroupTypeName, 0);
-                    storageSyncServiceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 1);
-                }
-                else if (InputObject != null)
-                {
-                    resourceName = InputObject.ServerEndpointName;
-                    resourceGroupName = InputObject.ResourceGroupName;
-                    parentResourceName = InputObject.SyncGroupName;
-                    storageSyncServiceName = InputObject.StorageSyncServiceName;
-                }
-                else
-                {
-                    resourceName = Name;
-                    resourceGroupName = ResourceGroupName;
-                    parentResourceName = SyncGroupName;
-                    storageSyncServiceName = StorageSyncServiceName;
-                }
+                    var resourceName = default(string);
+                    var resourceGroupName = default(string);
+                    var storageSyncServiceName = default(string);
+                    var parentResourceName = default(string);
 
-                var updateParameters = new ServerEndpointUpdateParameters()
-                {
-                    CloudTiering = CloudTiering.IsPresent ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
-                    VolumeFreeSpacePercent = VolumeFreeSpacePercent,
-                    TierFilesOlderThanDays = TierFilesOlderThanDays,
+                    if (!string.IsNullOrEmpty(ResourceId))
+                    {
+                        var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                        resourceName = resourceIdentifier.ResourceName;
+                        resourceGroupName = resourceIdentifier.ResourceGroupName;
+                        parentResourceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.SyncGroupTypeName, 0);
+                        storageSyncServiceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 1);
+                    }
+                    else if (InputObject != null)
+                    {
+                        resourceName = InputObject.ServerEndpointName;
+                        resourceGroupName = InputObject.ResourceGroupName;
+                        parentResourceName = InputObject.SyncGroupName;
+                        storageSyncServiceName = InputObject.StorageSyncServiceName;
+                    }
+                    else
+                    {
+                        resourceName = Name;
+                        resourceGroupName = ResourceGroupName;
+                        parentResourceName = SyncGroupName;
+                        storageSyncServiceName = StorageSyncServiceName;
+                    }
+
+                    var updateParameters = new ServerEndpointUpdateParameters()
+                    {
+                        CloudTiering = CloudTiering.IsPresent ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
+                        VolumeFreeSpacePercent = VolumeFreeSpacePercent,
+                        TierFilesOlderThanDays = TierFilesOlderThanDays,
                     // TODO : Update once we update SDK from v4 to v5
                     //CloudSeededData = CloudSeededData.IsPresent ? "on" : "off"
                     //CloudSeededDataFileShareUri = CloudSeededDataFileShareUri
                 };
-                
-                StorageSyncModels.ServerEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.Update(
-                    resourceGroupName,
-                    storageSyncServiceName,
-                    parentResourceName,
-                    resourceName,
-                    updateParameters);
 
-                WriteObject(resource);
-            });
+                    StorageSyncModels.ServerEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.Update(
+                        resourceGroupName,
+                        storageSyncServiceName,
+                        parentResourceName,
+                        resourceName,
+                        updateParameters);
+
+                    WriteObject(resource);
+                });
+            }
         }
     }
 }

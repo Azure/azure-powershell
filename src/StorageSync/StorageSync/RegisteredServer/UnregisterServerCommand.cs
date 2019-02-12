@@ -134,7 +134,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     throw new PSArgumentException($"Invalid Argument {nameof(ServerId)}", nameof(ServerId));
                 }
 
-                if (ShouldProcess(resourceName, "Remove Sync Server"))
+                Target = resourceName;
+                ActionMessage = "Remove Sync Server";
+                if (ShouldProcess(Target, ActionMessage))
                 {
                     if (Force || ShouldContinue(string.Format("Remove Sync Server '{0}' and all content in it", resourceName), ""))
                     {

@@ -74,49 +74,57 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
+
+        protected override string Target => StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? ParentResourceId;
+
+        protected override string ActionMessage => $"Reset Server Certificate for Storage sync service {StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? ParentResourceId}";
+
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            ExecuteClientAction(() =>
+            if (ShouldProcess(Target, ActionMessage))
             {
-                var parentResourceIdentifier = default(ResourceIdentifier);
+                base.ExecuteCmdlet();
 
-                if (!string.IsNullOrEmpty(ParentResourceId))
+                ExecuteClientAction(() =>
                 {
-                    parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
+                    var parentResourceIdentifier = default(ResourceIdentifier);
 
-                    if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
+                    if (!string.IsNullOrEmpty(ParentResourceId))
                     {
-                        throw new PSArgumentException($"Invalid Argument {nameof(ParentResourceId)}", nameof(ParentResourceId));
+                        parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
+
+                        if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
+                        {
+                            throw new PSArgumentException($"Invalid Argument {nameof(ParentResourceId)}", nameof(ParentResourceId));
+                        }
                     }
-                }
 
-                var resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier?.ResourceGroupName;
+                    var resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier?.ResourceGroupName;
 
-                if(string.IsNullOrEmpty(resourceGroupName))
+                    if (string.IsNullOrEmpty(resourceGroupName))
+                    {
+                        throw new PSArgumentException($"Invalid Argument {nameof(ResourceGroupName)}", nameof(ResourceGroupName));
+                    }
+
+                    var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
+
+                    if (string.IsNullOrEmpty(parentResourceName))
+                    {
+                        throw new PSArgumentException($"Invalid Argument {nameof(StorageSyncServiceName)}", nameof(StorageSyncServiceName));
+                    }
+
+                    if (!SubscriptionId.HasValue)
+                    {
+                        throw new PSArgumentException("No subscription found", nameof(SubscriptionId));
+                    }
+
+                    PerformTriggerRolloverInCloud(resourceGroupName, SubscriptionId.Value, parentResourceName);
+                });
+
+                if (PassThru.IsPresent)
                 {
-                    throw new PSArgumentException($"Invalid Argument {nameof(ResourceGroupName)}", nameof(ResourceGroupName));
+                    WriteObject(true);
                 }
-
-                var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
-
-                if (string.IsNullOrEmpty(parentResourceName))
-                {
-                    throw new PSArgumentException($"Invalid Argument {nameof(StorageSyncServiceName)}", nameof(StorageSyncServiceName));
-                }
-
-                if (!SubscriptionId.HasValue)
-                {
-                    throw new PSArgumentException("No subscription found", nameof(SubscriptionId));
-                }
-
-                PerformTriggerRolloverInCloud(resourceGroupName, SubscriptionId.Value, parentResourceName);
-            });
-
-            if (PassThru.IsPresent)
-            {
-                WriteObject(true);
             }
         }
         private void PerformTriggerRolloverInCloud(string resourceGroupName, Guid subscriptionId, string storageSyncServiceName)

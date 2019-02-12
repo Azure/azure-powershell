@@ -133,7 +133,9 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
                     throw new PSArgumentException($"Invalid Argument {nameof(Name)}", nameof(Name));
                 }
 
-                if (ShouldProcess(resourceName, "Remove Sync Group"))
+                Target = resourceName;
+                ActionMessage = "Remove Sync Group";
+                if (ShouldProcess(Target, ActionMessage))
                 {
                     if (Force || ShouldContinue(string.Format("Remove Sync Group '{0}' and all content in it", resourceName), ""))
                     {

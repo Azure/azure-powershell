@@ -120,6 +120,10 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         /// </summary>
         private Guid KailaniAppId = new Guid("9469b9f5-6722-4481-a2b2-14ed560b706f");
 
+        protected override string Target => Name;
+
+        protected override string ActionMessage => $"Create a new Cloud Endpoint {Name}";
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

@@ -134,41 +134,48 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJobParameter)]
         public SwitchParameter AsJob { get; set; }
 
+        protected override string Target => Name;
+
+        protected override string ActionMessage => $"Create a new Server endpoint {Name}";
+
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            ExecuteClientAction(() =>
+            if (ShouldProcess(Target, ActionMessage))
             {
-                var parentResourceIdentifier = default(ResourceIdentifier);
+                base.ExecuteCmdlet();
 
-                if (!string.IsNullOrEmpty(ParentResourceId))
+                ExecuteClientAction(() =>
                 {
-                    parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
+                    var parentResourceIdentifier = default(ResourceIdentifier);
 
-                    if (!string.Equals(StorageSyncConstants.SyncGroupType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
+                    if (!string.IsNullOrEmpty(ParentResourceId))
                     {
-                        throw new PSArgumentException($"Invalid Argument {nameof(ParentResourceId)}", nameof(ParentResourceId));
+                        parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
+
+                        if (!string.Equals(StorageSyncConstants.SyncGroupType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
+                        {
+                            throw new PSArgumentException($"Invalid Argument {nameof(ParentResourceId)}", nameof(ParentResourceId));
+                        }
                     }
-                }
 
-                var createParameters = new ServerEndpointCreateParameters()
-                {
-                    CloudTiering = CloudTiering.IsPresent ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
-                    VolumeFreeSpacePercent = VolumeFreeSpacePercent,
-                    ServerLocalPath = ServerLocalPath,
-                    ServerResourceId = ServerResourceId
-                };
+                    var createParameters = new ServerEndpointCreateParameters()
+                    {
+                        CloudTiering = CloudTiering.IsPresent ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
+                        VolumeFreeSpacePercent = VolumeFreeSpacePercent,
+                        ServerLocalPath = ServerLocalPath,
+                        ServerResourceId = ServerResourceId
+                    };
 
-                StorageSyncModels.ServerEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.Create(
-                    ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName,
-                    StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0),
-                    SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName,
-                    Name,
-                    createParameters);
+                    StorageSyncModels.ServerEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.Create(
+                        ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName,
+                        StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0),
+                        SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName,
+                        Name,
+                        createParameters);
 
-                WriteObject(resource);
-            });
+                    WriteObject(resource);
+                });
+            }
         }
     }
 }

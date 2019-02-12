@@ -79,50 +79,57 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
         [Alias(StorageSyncAliases.SyncGroupNameAlias)]
         public string Name { get; set; }
 
+        protected override string Target => Name;
+
+        protected override string ActionMessage => $"Create a new Sync group {Name}";
+
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            ExecuteClientAction(() =>
+            if (ShouldProcess(Target, ActionMessage))
             {
-                var parentResourceIdentifier = default(ResourceIdentifier);
+                base.ExecuteCmdlet();
 
-                if (!string.IsNullOrEmpty(ParentResourceId))
+                ExecuteClientAction(() =>
                 {
-                    parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
+                    var parentResourceIdentifier = default(ResourceIdentifier);
 
-                    if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
+                    if (!string.IsNullOrEmpty(ParentResourceId))
                     {
-                        throw new PSArgumentException($"Invalid Argument {nameof(ParentResourceId)}", nameof(ParentResourceId));
+                        parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
+
+                        if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
+                        {
+                            throw new PSArgumentException($"Invalid Argument {nameof(ParentResourceId)}", nameof(ParentResourceId));
+                        }
                     }
-                }
 
-                var resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier?.ResourceGroupName;
+                    var resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier?.ResourceGroupName;
 
-                if(string.IsNullOrEmpty(resourceGroupName))
-                {
-                    throw new PSArgumentException($"Invalid Argument {nameof(ResourceGroupName)}", nameof(ResourceGroupName));
-                }
+                    if (string.IsNullOrEmpty(resourceGroupName))
+                    {
+                        throw new PSArgumentException($"Invalid Argument {nameof(ResourceGroupName)}", nameof(ResourceGroupName));
+                    }
 
-                var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
+                    var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
 
-                if (string.IsNullOrEmpty(parentResourceName))
-                {
-                    throw new PSArgumentException($"Invalid Argument {nameof(StorageSyncServiceName)}", nameof(StorageSyncServiceName));
-                }
+                    if (string.IsNullOrEmpty(parentResourceName))
+                    {
+                        throw new PSArgumentException($"Invalid Argument {nameof(StorageSyncServiceName)}", nameof(StorageSyncServiceName));
+                    }
 
-                var createParameters = new SyncGroupCreateParameters()
-                {
-                };
+                    var createParameters = new SyncGroupCreateParameters()
+                    {
+                    };
 
-                StorageSyncModels.SyncGroup syncGroup = StorageSyncClientWrapper.StorageSyncManagementClient.SyncGroups.Create(
-                    resourceGroupName,
-                    parentResourceName,
-                    Name,
-                    createParameters);
+                    StorageSyncModels.SyncGroup syncGroup = StorageSyncClientWrapper.StorageSyncManagementClient.SyncGroups.Create(
+                        resourceGroupName,
+                        parentResourceName,
+                        Name,
+                        createParameters);
 
-                WriteObject(syncGroup);
-            });
+                    WriteObject(syncGroup);
+                });
+            }
         }
     }
 }

@@ -69,30 +69,37 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
         [Alias(StorageSyncAliases.TagsAlias)]
         public Hashtable Tag { get; set; }
 
+        protected override string Target => Name;
+
+        protected override string ActionMessage => $"Create a new Storage Sync Service {Name}";
+
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            ExecuteClientAction(() =>
+            if (ShouldProcess(Target, ActionMessage))
             {
+                base.ExecuteCmdlet();
 
-                CheckNameAvailabilityResult checkNameAvailabilityResult = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.CheckNameAvailability(Location.Replace(" ",string.Empty), Name);
-
-                if (!checkNameAvailabilityResult.NameAvailable.Value)
+                ExecuteClientAction(() =>
                 {
-                    throw new System.ArgumentException(checkNameAvailabilityResult.Message, nameof(Name));
-                }
 
-                StorageSyncServiceCreateParameters createParameters = new StorageSyncServiceCreateParameters()
-                {
-                    Location = Location,
-                    Tags = TagsConversionHelper.CreateTagDictionary(Tag ?? new Hashtable(), validate: true),
-                };
+                    CheckNameAvailabilityResult checkNameAvailabilityResult = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.CheckNameAvailability(Location.Replace(" ", string.Empty), Name);
 
-                StorageSyncModels.StorageSyncService storageSyncService = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.Create(ResourceGroupName, Name, createParameters);
+                    if (!checkNameAvailabilityResult.NameAvailable.Value)
+                    {
+                        throw new System.ArgumentException(checkNameAvailabilityResult.Message, nameof(Name));
+                    }
 
-                WriteObject(storageSyncService);
-            });
+                    StorageSyncServiceCreateParameters createParameters = new StorageSyncServiceCreateParameters()
+                    {
+                        Location = Location,
+                        Tags = TagsConversionHelper.CreateTagDictionary(Tag ?? new Hashtable(), validate: true),
+                    };
+
+                    StorageSyncModels.StorageSyncService storageSyncService = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.Create(ResourceGroupName, Name, createParameters);
+
+                    WriteObject(storageSyncService);
+                });
+            }
         }
     }
 }
