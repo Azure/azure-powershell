@@ -70,7 +70,7 @@ SensitivityLabels : {{
                     }}
 ```
 
-### Example 2: Get current information types and sensitivity labels of an Azure SQL Managed Instance Database.
+### Example 2: Get current information types and sensitivity labels of an Azure SQL Managed Instance Database with Piping..
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -Name database | Get-AzSqlInstanceDatabaseSensitivityClassification
 
@@ -112,7 +112,7 @@ SensitivityLabels : {{
                     }}
 ```
 
-### Example 4: Get current information type and sensitivity label of a specific column of an Azure SQL Managed Instance Database.
+### Example 4: Get current information type and sensitivity label of a specific column of an Azure SQL Managed Instance Database using Piping..
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -Name database | Get-AzSqlInstanceDatabaseSensitivityClassification -SchemaName schema -TableName table -ColumnName column
 
