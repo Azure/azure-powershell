@@ -530,9 +530,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return output;
         }
 
-        public List<object> SubResourceWildcardFilter(string Name, IEnumerable<object> resources)
+        public List<T> SubResourceWildcardFilter<T>(string Name, IEnumerable<T> resources)
         {
-            List<object> output = new List<object>();
+            List<T> output = new List<T>();
             foreach (var resource in resources)
             {
                 var parsedResourceName = GetResourceNameFromObject(resource);
