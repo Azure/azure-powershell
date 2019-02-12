@@ -391,15 +391,84 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             base.BeginProcessing();
         }
 
-        public List<object> TopLevelWildcardFilter(string ResourceGroupName, string Name, IEnumerable<object> resources)
+        public string GetResourceGroupFromObject<T>(T resource)
         {
-            List<object> resourceGroupMatch = new List<object>();
+            System.Reflection.PropertyInfo pi = resource.GetType().GetProperty("Id");
+            if (pi != null)
+            {
+                ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
+                if (parsedId.ResourceGroupName != null)
+                {
+                    return parsedId.ResourceGroupName;
+                }
+            }
+
+            pi = resource.GetType().GetProperty("ResourceId");
+            if (pi != null)
+            {
+                ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
+                if (parsedId.ResourceGroupName != null)
+                {
+                    return parsedId.ResourceGroupName;
+                }
+            }
+
+            pi = resource.GetType().GetProperty("ResourceGroupName");
+            if (pi != null)
+            {
+                var resourceGroupName = (String)(pi.GetValue(resource, null));
+                if (resourceGroupName != null)
+                {
+                    return resourceGroupName;
+                }
+            }
+
+            return null;
+        }
+
+        public string GetResourceNameFromObject<T>(T resource)
+        {
+            System.Reflection.PropertyInfo pi = resource.GetType().GetProperty("Id");
+            if (pi != null)
+            {
+                ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
+                if (parsedId.ResourceName != null)
+                {
+                    return parsedId.ResourceName;
+                }
+            }
+
+            pi = resource.GetType().GetProperty("ResourceId");
+            if (pi != null)
+            {
+                ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
+                if (parsedId.ResourceName != null)
+                {
+                    return parsedId.ResourceName;
+                }
+            }
+
+            pi = resource.GetType().GetProperty("Name");
+            if (pi != null)
+            {
+                var name = (String)(pi.GetValue(resource, null));
+                if (name != null)
+                {
+                    return name;
+                }
+            }
+
+            return null;
+        }
+
+        public List<T> TopLevelWildcardFilter<T>(string ResourceGroupName, string Name, IEnumerable<T> resources)
+        {
+            List<T> resourceGroupMatch = new List<T>();
             foreach (var resource in resources)
             {
-                System.Reflection.PropertyInfo pi = resource.GetType().GetProperty("Id");
-                if (pi != null)
+                string parsedResourceGroup = GetResourceGroupFromObject(resource);
+                if (parsedResourceGroup != null)
                 {
-                    ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
                     if (string.IsNullOrEmpty(ResourceGroupName))
                     {
                         resourceGroupMatch.Add(resource);
@@ -407,14 +476,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     else if (WildcardPattern.ContainsWildcardCharacters(ResourceGroupName))
                     {
                         WildcardPattern regex = new WildcardPattern(ResourceGroupName, WildcardOptions.IgnoreCase);
-                        if (regex.IsMatch(parsedId.ResourceGroupName))
+                        if (regex.IsMatch(parsedResourceGroup))
                         {
                             resourceGroupMatch.Add(resource);
                         }
                     }
                     else
                     {
-                        if (ResourceGroupName.Equals(parsedId.ResourceGroupName, StringComparison.CurrentCultureIgnoreCase))
+                        if (ResourceGroupName.Equals(parsedResourceGroup, StringComparison.CurrentCultureIgnoreCase))
                         {
                             resourceGroupMatch.Add(resource);
                         }
@@ -426,13 +495,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
             }
 
-            List<object> output = new List<object>();
+            List<T> output = new List<T>();
             foreach (var resource in resourceGroupMatch)
             {
-                System.Reflection.PropertyInfo pi = resource.GetType().GetProperty("Id");
-                if (pi != null)
+                var parsedResourceName = GetResourceNameFromObject(resource);
+                if (parsedResourceName != null)
                 {
-                    ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
                     if (string.IsNullOrEmpty(Name))
                     {
                         output.Add(resource);
@@ -440,14 +508,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     else if (WildcardPattern.ContainsWildcardCharacters(Name))
                     {
                         WildcardPattern regex = new WildcardPattern(Name, WildcardOptions.IgnoreCase);
-                        if (regex.IsMatch(parsedId.ResourceName))
+                        if (regex.IsMatch(parsedResourceName))
                         {
                             output.Add(resource);
                         }
                     }
                     else
                     {
-                        if (Name.Equals(parsedId.ResourceName, StringComparison.InvariantCultureIgnoreCase))
+                        if (Name.Equals(parsedResourceName, StringComparison.InvariantCultureIgnoreCase))
                         {
                             output.Add(resource);
                         }
@@ -467,10 +535,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             List<object> output = new List<object>();
             foreach (var resource in resources)
             {
-                System.Reflection.PropertyInfo pi = resource.GetType().GetProperty("Id");
-                if (pi != null)
+                var parsedResourceName = GetResourceNameFromObject(resource);
+                if (parsedResourceName != null)
                 {
-                    ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
                     if (string.IsNullOrEmpty(Name))
                     {
                         output.Add(resource);
@@ -478,14 +545,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     else if (WildcardPattern.ContainsWildcardCharacters(Name))
                     {
                         WildcardPattern regex = new WildcardPattern(Name, WildcardOptions.IgnoreCase);
-                        if (regex.IsMatch(parsedId.ResourceName))
+                        if (regex.IsMatch(parsedResourceName))
                         {
                             output.Add(resource);
                         }
                     }
                     else
                     {
-                        if (Name.Equals(parsedId.ResourceName, StringComparison.InvariantCultureIgnoreCase))
+                        if (Name.Equals(parsedResourceName, StringComparison.InvariantCultureIgnoreCase))
                         {
                             output.Add(resource);
                         }
