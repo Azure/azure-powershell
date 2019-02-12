@@ -48,19 +48,19 @@
     <LibraryRoot>$(MSBuildThisFileDirectory)</LibraryRoot>
     <LibrarySourceFolder>$(LibraryRoot)src</LibrarySourceFolder>
     <LibraryToolsFolder>$(LibraryRoot)tools</LibraryToolsFolder>
-    <LocalFeedFolder>$(LibraryToolsFolder)LocalFeed</LocalFeedFolder>
+    <LocalFeedFolder>$(LibraryToolsFolder)/LocalFeed</LocalFeedFolder>
     <Configuration Condition=" '$(Configuration)' != 'Release'">Debug</Configuration>
     <CodeSign>false</CodeSign>
     <!--Set this true only if you want to test the code sign workflow locally-->
     <DelaySign Condition =" '$(DelaySign)' == '' ">false</DelaySign>
     <SignedOutputRootDir>$(LibraryRoot)signed</SignedOutputRootDir>
     <PackageDirectory>$(LibraryRoot)artifacts</PackageDirectory>
-    <TestOutputDirectory>$(PackageDirectory)Test</TestOutputDirectory>
+    <TestOutputDirectory>$(PackageDirectory)/Test</TestOutputDirectory>
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">$(LibrarySourceFolder)</NuGetPublishingSource>
     <Scope Condition="$(Scope) == ''" >All</Scope>
-    <BuildTasksPath>$(LibraryToolsFolder)BuildPackagesTask/Microsoft.Azure.Build.Tasks/bin/$(Configuration)</BuildTasksPath>
-    <StackPackageFolder>$(LibrarySourceFolder)Stack</StackPackageFolder>
+    <BuildTasksPath>$(LibraryToolsFolder)/BuildPackagesTask/Microsoft.Azure.Build.Tasks/bin/$(Configuration)</BuildTasksPath>
+    <StackPackageFolder>$(LibrarySourceFolder)/Stack</StackPackageFolder>
     <NetCore Condition="'$(NetCore)' != 'true'">false</NetCore>
   </PropertyGroup>
 
@@ -130,7 +130,7 @@
     <Message Importance="high" Text="Cleaning Cmdlets..." />
 
     <!-- Clean out the NuGet cache -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path (Join-Path ($env:USERPROFILE) .nuget packages) -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" ContinueOnError="WarnAndContinue" IgnoreExitCode="true" />
+    <Exec Command="dotnet nuget locals global-packages --clear" ContinueOnError="WarnAndContinue" IgnoreExitCode="true" />
 
     <!-- Remove Package, Publish, bin, obj, and TestResults directories -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path $(PackageDirectory) -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" ContinueOnError="WarnAndContinue" IgnoreExitCode="true" />
@@ -405,8 +405,8 @@
     </ItemGroup>
     
     <Message Importance="High" Text="Copying test results:"  />
-    <Message Text="'%(TestResults.Name)'" />
-    <Copy SourceFiles="@(TestResults)" DestinationFolder="$(TestOutputDirectory)" /> 
+    <Message Importance="High" Text="'%(TestResults.Filename)'" />
+    <Copy SourceFiles="@(TestResults->'%(FullPath)')" DestinationFolder="$(TestOutputDirectory)" /> 
 
     <OnError ExecuteTargets="TestFailureErrorMessage" />
   </Target>
