@@ -27,7 +27,7 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
 {
 
-    [Cmdlet(VerbsCommon.New, StorageSyncNouns.NounAzureRmStorageSyncGroup, DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet), OutputType(typeof(PSSyncGroup))]
+    [Cmdlet(VerbsCommon.New, StorageSyncNouns.NounAzureRmStorageSyncGroup, DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSyncGroup))]
     public class NewSyncGroupCommand : StorageSyncClientCmdletBase
     {
         [Parameter(

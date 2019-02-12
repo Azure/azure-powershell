@@ -31,7 +31,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
 
-    [Cmdlet(VerbsLifecycle.Register, StorageSyncNouns.NounAzureRmStorageSyncServer, DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet), OutputType(typeof(PSRegisteredServer))]
+    [Cmdlet(VerbsLifecycle.Register, StorageSyncNouns.NounAzureRmStorageSyncServer,
+        DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSRegisteredServer))]
     public class RegisterServerCommand : StorageSyncClientCmdletBase
     {
         [Parameter(

@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
     /// <summary>
     /// Creates a new StorageSyncService in a specific location.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, StorageSyncNouns.NounAzureRmStorageSyncService, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet), OutputType(typeof(PSStorageSyncService))]
+    [Cmdlet(VerbsCommon.New, StorageSyncNouns.NounAzureRmStorageSyncService,
+        DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSStorageSyncService))]
     public class NewStorageSyncServiceCommand : StorageSyncClientCmdletBase
     {
         [Parameter(
@@ -61,7 +62,6 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
         public string Location { get; set; }
 
         [Parameter(
-             Position = 3,
              ParameterSetName = StorageSyncParameterSets.StringParameterSet,
              Mandatory = false,
              HelpMessage = HelpMessages.StorageSyncServiceTagsParameter)]

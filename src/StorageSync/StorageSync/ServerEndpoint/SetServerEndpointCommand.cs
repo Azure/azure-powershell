@@ -25,7 +25,8 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Set, StorageSyncNouns.NounAzureRmStorageSyncServerEndpoint, DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet), OutputType(typeof(PSServerEndpoint))]
+    [Cmdlet(VerbsCommon.Set, StorageSyncNouns.NounAzureRmStorageSyncServerEndpoint,
+        DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServerEndpoint))]
     public class SetServerEndpointCommand : StorageSyncClientCmdletBase
     {
         [Parameter(
