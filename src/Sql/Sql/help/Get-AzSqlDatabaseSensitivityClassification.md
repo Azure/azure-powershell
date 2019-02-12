@@ -153,7 +153,7 @@ Type: System.String
 Parameter Sets: ColumnParameterSet, ParentResourceColumnParameterSet
 Aliases:
 
-Required: True <-- This is not actually required, correct? If so, please fix
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -228,7 +228,7 @@ Type: System.String
 Parameter Sets: ColumnParameterSet, ParentResourceColumnParameterSet
 Aliases:
 
-Required: True <-- This is not required, correct? If so, please fix
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -258,7 +258,7 @@ Type: System.String
 Parameter Sets: ColumnParameterSet, ParentResourceColumnParameterSet
 Aliases:
 
-Required: True <-- This is not required, correct? If so, please fix
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
