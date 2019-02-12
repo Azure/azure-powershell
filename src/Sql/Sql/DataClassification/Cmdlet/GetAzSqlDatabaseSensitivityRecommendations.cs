@@ -59,41 +59,21 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override SqlDatabaseSensitivityClassificationModel GetEntity()
         {
-            SqlDatabaseSensitivityClassificationModel model = new SqlDatabaseSensitivityClassificationModel()
+            if (InputObject != null)
             {
-                ResourceGroupName = InputObject == null ? ResourceGroupName : InputObject.ResourceGroupName,
-                ServerName = InputObject == null ? ServerName : InputObject.ServerName,
-                DatabaseName = InputObject == null ? DatabaseName : InputObject.DatabaseName,
-                SensitivityLabels = new List<SensitivityLabelModel>()
-                {
-                    new SensitivityLabelModel
-                    {
-                        ColumnName = "column1",
-                        TableName = "table1",
-                        SchemaName = "schema1",
-                        LabelName = "label1",
-                        InformationType = "informationType1"
-                    },
-                    new SensitivityLabelModel
-                    {
-                        ColumnName = "column2",
-                        TableName = "table2",
-                        SchemaName = "schema2",
-                        LabelName = "label2",
-                        InformationType = null
-                    },
-                    new SensitivityLabelModel
-                    {
-                        ColumnName = "column2",
-                        TableName = "table2",
-                        SchemaName = "schema2",
-                        LabelName = "label2",
-                        InformationType = null
-                    },
-                }
-            };
+                ResourceGroupName = InputObject.ResourceGroupName;
+                ServerName = InputObject.ServerName;
+                DatabaseName = InputObject.DatabaseName;
+            }
 
-            return model;
+            return new SqlDatabaseSensitivityClassificationModel()
+            {
+                ResourceGroupName = ResourceGroupName,
+                ServerName = ServerName,
+                DatabaseName = DatabaseName,
+                SensitivityLabels = ModelAdapter.GetCurrentSensitivityLabels(
+                    ResourceGroupName, ServerName, DatabaseName)
+            };
         }
 
         protected override DataClassificationAdapter InitModelAdapter()

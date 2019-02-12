@@ -3,7 +3,6 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.DataClassification.Model;
 using Microsoft.Azure.Commands.Sql.DataClassification.Services;
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
@@ -120,23 +119,32 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override SqlDatabaseSensitivityClassificationModel GetEntity()
         {
-            SqlDatabaseSensitivityClassificationModel model = new SqlDatabaseSensitivityClassificationModel();
-
-            if (InputObject == null)
-            {
-                ResourceGroupName = ResourceGroupName;
-                ServerName = ServerName;
-                DatabaseName = DatabaseName;
-            }
-            else
+            if (InputObject != null)
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
                 ServerName = InputObject.ServerName;
                 DatabaseName = InputObject.DatabaseName;
             }
 
-            model.SensitivityLabels = ModelAdapter.GetCurrentSensitivityLabels(model.ResourceGroupName,
-                model.ServerName, model.DatabaseName, SchemaName, TableName, ColumnName, false);
+            SqlDatabaseSensitivityClassificationModel model = new SqlDatabaseSensitivityClassificationModel()
+            {
+                ResourceGroupName = ResourceGroupName,
+                ServerName = ServerName,
+                DatabaseName = DatabaseName
+            };
+
+            if (ParameterSetName == DefinitionsCommon.ColumnParameterSet ||
+                ParameterSetName == DefinitionsCommon.ParentResourceColumnParameterSet)
+            {
+                model.SensitivityLabels = ModelAdapter.GetSensitivityLabel(
+                    model.ResourceGroupName, model.ServerName, model.DatabaseName,
+                    SchemaName, TableName, ColumnName);
+            }
+            else
+            {
+                model.SensitivityLabels = ModelAdapter.GetCurrentSensitivityLabels(
+                    model.ResourceGroupName, model.ServerName, model.DatabaseName);
+            }
 
             return model;
         }

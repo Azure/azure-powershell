@@ -120,13 +120,32 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override ManagedDatabaseSensitivityClassificationModel GetEntity()
         {
+            if (InputObject != null)
+            {
+                ResourceGroupName = InputObject.ResourceGroupName;
+                InstanceName = InputObject.ManagedInstanceName;
+                DatabaseName = InputObject.Name;
+            }
+
             ManagedDatabaseSensitivityClassificationModel model = new ManagedDatabaseSensitivityClassificationModel()
             {
-                ResourceGroupName = InputObject == null ? ResourceGroupName : InputObject.ResourceGroupName,
-                InstanceName = InputObject == null ? InstanceName : InputObject.ManagedInstanceName,
-                DatabaseName = InputObject == null ? DatabaseName : InputObject.Name,
-                SensitivityLabels = new List<SensitivityLabelModel>()
+                ResourceGroupName = ResourceGroupName,
+                InstanceName = InstanceName,
+                DatabaseName = DatabaseName
             };
+
+            if (ParameterSetName == DefinitionsCommon.ColumnParameterSet ||
+                ParameterSetName == DefinitionsCommon.ParentResourceColumnParameterSet)
+            {
+                model.SensitivityLabels = ModelAdapter.GetManagedDatabaseSensitivityLabel(
+                    model.ResourceGroupName, model.InstanceName, model.DatabaseName,
+                    SchemaName, TableName, ColumnName);
+            }
+            else
+            {
+                model.SensitivityLabels = ModelAdapter.GetManagedDatabaseCurrentSensitivityLabels(
+                    model.ResourceGroupName, model.InstanceName, model.DatabaseName);
+            }
 
             return model;
         }
