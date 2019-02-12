@@ -32,12 +32,12 @@ The Set-AzSqlDatabaseSensitivityClassification cmdlet sets the information types
 
 ## EXAMPLES
 
-### Example 1: Set the information type and sensitivity label of a column in an Azure SQL database.
+### Example 1: Set information type and sensitivity label of a column in an Azure SQL database.
 ```powershell
 PS C:\> Set-AzSqlDatabaseSensitivityClassification -ResourceGroupName resourceGroup -ServerName server -DatabaseName database -SchemaName schema -TableName table -ColumnName column -InformationType informationType -LabelName label
 ```
 
-### Example 2: Set information types and sensitivity labels based on the recommended classification in an Azure SQL database.
+### Example 2: Set recommended information types and sensitivity labels of columns in an Azure SQL database.
 ```powershell
 PS C:\> Get-AzSqlDatabaseSensitivityRecommendations -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Set-AzSqlDatabaseSensitivityClassification
 ```

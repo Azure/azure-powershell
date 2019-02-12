@@ -9,7 +9,7 @@ schema: 2.0.0
 # Get-AzSqlDatabaseSensitivityRecommendations
 
 ## SYNOPSIS
-Gets the recommended sensitivity labels and information types of columns in the database.
+Gets the recommended information types and sensitivity labels of columns in the database.
 
 ## SYNTAX
 
@@ -26,11 +26,11 @@ Get-AzSqlDatabaseSensitivityRecommendations -InputObject <AzureSqlDatabaseModel>
 ```
 
 ## DESCRIPTION
-The Get-AzSqlDatabaseSensitivityRecommendations cmdlet returns the recommended sensitivity labels and information types of columns in the database.
+The Get-AzSqlDatabaseSensitivityRecommendations cmdlet returns the recommended information types and sensitivity labels of columns in the database.
 
 ## EXAMPLES
 
-### Example 1: Get recommended sensitivity classification of an Azure SQL database.
+### Example 1: Get recommended information types and sensitivity labels of an Azure SQL database.
 ```powershell
 PS C:\> Get-AzSqlDatabaseSensitivityRecommendations -ResourceGroupName resourceGroup -ServerName server -DatabaseName database
 
@@ -56,7 +56,7 @@ SensitivityLabels : {{
                     }}
 ```
 
-### Example 2: Get recommended sensitivity classification of an Azure SQL database.
+### Example 2: Get recommended information types and sensitivity labels of an Azure SQL database using Piping.
 ```powershell
 PS C:\> Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Get-AzSqlDatabaseSensitivityRecommendations
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-The name of the Azure SQL Database.
+The name of the Azure SQL database.
 
 ```yaml
 Type: System.String
@@ -188,3 +188,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+Learn more about [Azure SQL Database data discovery and classification](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification)
