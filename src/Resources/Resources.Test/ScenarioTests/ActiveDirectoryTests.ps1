@@ -762,6 +762,8 @@ Tests Creating and deleting application using Service Principal Credentials.
 #>
 function Test-CreateDeleteSpCredentials
 {
+	param([string]$applicationId)
+
     # Setup
 	$getAssetName = ConvertTo-SecureString "test" -AsPlainText -Force
     $displayName = "test"
@@ -772,7 +774,7 @@ function Test-CreateDeleteSpCredentials
 	$keyId3 = "4141b479-4ca0-4919-8451-7e155de6aa0f"
 
     # Test - Add SP
-    $servicePrincipal = New-AzADServicePrincipal -DisplayName $displayName  
+    $servicePrincipal = New-AzADServicePrincipal -DisplayName $displayName -ApplicationId $applicationId
 
     # Assert
     Assert-NotNull $servicePrincipal
@@ -853,9 +855,5 @@ function Test-CreateDeleteSpCredentials
     {
 		# Remove Service Principal
 		Remove-AzADServicePrincipal -ObjectId $servicePrincipal.Id -Force
-
-		# Remove App
-		$app =  Get-AzADApplication -ApplicationId $servicePrincipal.ApplicationId
-		Remove-AzADApplication -ObjectId $app.ObjectId -Force
     }
 }

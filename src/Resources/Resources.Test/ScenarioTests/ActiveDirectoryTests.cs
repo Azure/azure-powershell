@@ -613,7 +613,25 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDeleteSpCredentials()
         {
-            TestRunner.RunTestScript("Test-CreateDeleteSpCredentials");
+            const string scriptMethod = "Test-CreateDeleteSpCredentials '{0}'";
+            Application application = null;
+            var controllerAdmin = ResourcesController.NewInstance;
+
+            controllerAdmin.RunPsTestWorkflow(
+                interceptor,
+                // scriptBuilder
+                () =>
+                {
+                    application = CreateNewAdApp(controllerAdmin);
+                    return new[] { string.Format(scriptMethod, application.AppId) };
+                },
+                // cleanup
+                () =>
+                {
+                    DeleteAdApp(controllerAdmin, application);
+                },
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
