@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
     using System.Collections.Generic;
     using System.Linq;
 
-    public class FilenamesCharactersValidation : BaseNamespaceValidation
+    public class FilenamesCharactersValidation : NamespaceValidationBase
     {
         #region Fields and Properties
         private bool[] _codePointBlackList;

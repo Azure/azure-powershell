@@ -1,9 +1,9 @@
 <!--
     Please leave this section at the top of the change log.
 
-    Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
+    Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
 
-    ## Upcoming Release
+    ## Current Release
     * Overview of change #1
         - Additional information about change #1
     * Overview of change #2
@@ -18,9 +18,8 @@
         - Additional information about change #1
 -->
 
-## Upcoming Release
-
-## Version 0.7.1
+## Current Release
+* Update all cmdlets required to manager StorageSync ARM resources.
 * Fixed a typo in the progress message.
 * Introduced the following breaking changes in Invoke-AzureRmStorageSyncCompatibilityCheck cmdlet:
     - Parameter 'Quiet' had been removed.
