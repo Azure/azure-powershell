@@ -9,7 +9,7 @@ schema: 2.0.0
 # Remove-AzSqlInstanceDatabaseSensitivityClassification
 
 ## SYNOPSIS
-Removes the classification of columns in the database.
+Removes the information types and sensitivity labels of columns in the Azure SQL managed instance database.
 
 ## SYNTAX
 
@@ -28,16 +28,16 @@ Remove-AzSqlInstanceDatabaseSensitivityClassification
 ```
 
 ## DESCRIPTION
-The Remove-AzSqlInstanceDatabaseSensitivityClassification cmdlet removes the classification of columns in the database.
+The Remove-AzSqlInstanceDatabaseSensitivityClassification cmdlet removes the information types and sensitivity labels of columns in the Azure SQL managed instance database.
 
 ## EXAMPLES
 
-### Example 1: Remove sensitivity classification of a column in an Azure SQL Managed Instance database.
+### Example 1: Remove information type and sensitivity label of a column in an Azure SQL managed instance database.
 ```powershell
 PS C:\> Remove-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database -SchemaName schema -TableName table -ColumnName column
 ```
 
-### Example 2: Remove current sensitivity classification of columns in an Azure SQL Managed Instance database.
+### Example 2: Remove current information types and sensitivity labels of columns in an Azure SQL managed instance database with Piping.
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database | Remove-AzSqlInstanceDatabaseSensitivityClassification
 ```
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-The name of the Azure SQL Instance Database.
+The name of the Azure SQL managed instance database.
 
 ```yaml
 Type: System.String
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The SQL database object.
+The Azure SQL managed instance database object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.DataClassification.Model.ManagedDatabaseSensitivityClassificationModel
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-SQL Managed Instance name.
+Azure SQL managed instance name.
 
 ```yaml
 Type: System.String
@@ -221,3 +221,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+Learn more about [Azure SQL Database data discovery and classification](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification)

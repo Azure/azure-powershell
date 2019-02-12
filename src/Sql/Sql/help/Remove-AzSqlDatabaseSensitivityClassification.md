@@ -9,7 +9,7 @@ schema: 2.0.0
 # Remove-AzSqlDatabaseSensitivityClassification
 
 ## SYNOPSIS
-Removes the classification of columns in the database.
+Removes the information types and sensitivity labels of columns in the database.
 
 ## SYNTAX
 
@@ -27,16 +27,16 @@ Remove-AzSqlDatabaseSensitivityClassification -InputObject <SqlDatabaseSensitivi
 ```
 
 ## DESCRIPTION
-The Remove-AzSqlDatabaseSensitivityClassification cmdlet removes the classification of columns in the database.
+The Remove-AzSqlDatabaseSensitivityClassification cmdlet removes the information types and sensitivity labels of columns in the database.
 
 ## EXAMPLES
 
-### Example 1: Remove sensitivity classification of a column in an Azure SQL database.
+### Example 1: Remove information type and sensitivity label of a column in an Azure SQL Database.
 ```powershell
 PS C:\> Remove-AzSqlDatabaseSensitivityClassification -ResourceGroupName resourceGroup -ServerName server -DatabaseName database -SchemaName schema -TableName table -ColumnName column
 ```
 
-### Example 2: Remove current sensitivity classification of columns in an Azure SQL database.
+### Example 2: Remove current information types and sensitivity labels of columns in an Azure SQL database using Piping.
 ```powershell
 PS C:\> Get-AzSqlDatabaseSensitivityClassification -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Remove-AzSqlDatabaseSensitivityClassification
 ```
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-The name of the Azure SQL Database.
+The name of the Azure SQL database.
 
 ```yaml
 Type: System.String
@@ -220,3 +220,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+Learn more about [Azure SQL Database data discovery and classification](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification)
