@@ -27,13 +27,6 @@
     </ItemGroup>
   </Target>
 
-  <Target Name="netstandard20">
-    <Message Importance="high" Text="Sign: netstandard20 started" />
-    <ItemGroup>
-      <UnsignedFiles Include="$(OutputDir)netstandard2.0\Microsoft.Azure.PowerShell*.dll" Exclude="$(OutputDir)netstandard2.0\Microsoft.Azure.PowerShell*.Test.dll" />
-    </ItemGroup>
-  </Target>
-
   <Target Name="SignFiles" AfterTargets="net452;netstandard20;All" Condition="'$(DisableSigning)' != 'true'">
     <Message Importance="high" Text="Sign: task started" />
     <CodeSigningTask
