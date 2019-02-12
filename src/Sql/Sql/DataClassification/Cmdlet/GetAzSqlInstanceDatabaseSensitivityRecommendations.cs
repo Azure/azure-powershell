@@ -3,7 +3,6 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataClassification.Model;
 using Microsoft.Azure.Commands.Sql.DataClassification.Services;
 using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
@@ -57,15 +56,21 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override ManagedDatabaseSensitivityClassificationModel GetEntity()
         {
-            ManagedDatabaseSensitivityClassificationModel model = new ManagedDatabaseSensitivityClassificationModel()
+            if (InputObject != null)
             {
-                ResourceGroupName = InputObject == null ? ResourceGroupName : InputObject.ResourceGroupName,
-                InstanceName  = InputObject == null ? InstanceName : InputObject.ManagedInstanceName,
-                DatabaseName = InputObject == null ? DatabaseName : InputObject.Name,
-                SensitivityLabels = new List<SensitivityLabelModel>()
-            };
+                ResourceGroupName = InputObject.ResourceGroupName;
+                InstanceName = InputObject.ManagedInstanceName;
+                DatabaseName = InputObject.Name;
+            }
 
-            return model;
+            return new ManagedDatabaseSensitivityClassificationModel()
+            {
+                ResourceGroupName = ResourceGroupName,
+                InstanceName = InstanceName,
+                DatabaseName = DatabaseName,
+                SensitivityLabels = ModelAdapter.GetManagedDatabaseCurrentSensitivityLabels(
+                    ResourceGroupName, InstanceName, DatabaseName)
+            };
         }
 
         protected override DataClassificationAdapter InitModelAdapter()
