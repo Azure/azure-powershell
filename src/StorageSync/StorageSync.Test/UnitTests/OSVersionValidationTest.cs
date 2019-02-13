@@ -28,9 +28,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     public class OSVersionValidationTest
     {
         [Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]  
+        [Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenOsVersionIsSupportedValidationResultIsSuccessful()
         {
+            
             // Prepare
             string aValidOSVersion = "1.0";
             uint aValidOSSku = 0;

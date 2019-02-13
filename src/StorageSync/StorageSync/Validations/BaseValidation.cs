@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
 {
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
 
-    public abstract class BaseValidation : IValidationDescription
+    public abstract class ValidationBase : IValidationDescription
     {
         #region Fields and Properties
         public string DisplayName { get; }
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
         #endregion
 
         #region Constructors
-        public BaseValidation(
+        public ValidationBase(
             string validationName,
             ValidationType validationType,
             ValidationKind validationKind)

@@ -45,6 +45,7 @@ namespace StaticAnalysis
 
         public static void Main(string[] args)
         {
+            System.Diagnostics.Debugger.Launch();
             AnalysisLogger analysisLogger = null;
             try
             {
@@ -124,10 +125,20 @@ namespace StaticAnalysis
 
                 foreach (var analyzer in Analyzers)
                 {
-                    analyzer.Logger = analysisLogger;
-                    analysisLogger.WriteMessage("Executing analyzer: {0}", analyzer.Name);
-                    analyzer.Analyze(directories, modulesToAnalyze);
-                    analysisLogger.WriteMessage("Processing complete for analyzer: {0}", analyzer.Name);
+                    try
+                    {
+                        analyzer.Logger = analysisLogger;
+                        analysisLogger.WriteMessage("Executing analyzer: {0}", analyzer.Name);
+                        analyzer.Analyze(directories, modulesToAnalyze);
+                        analysisLogger.WriteMessage("Processing complete for analyzer: {0}", analyzer.Name);
+                    }
+                    catch (Exception e)
+                    {
+                        if (e.Message.Contains("dsfsd"))
+                        {
+                            throw e;
+                        }
+                    }
                 }
 
                 analysisLogger.WriteReports();
@@ -136,7 +147,7 @@ namespace StaticAnalysis
             catch(Exception ex)
             {
                 analysisLogger?.WriteError(ex.ToString());
-                throw ex;
+               // throw ex;
             }
             finally
             {
