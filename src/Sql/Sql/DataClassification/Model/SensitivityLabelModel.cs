@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
         public string ColumnName { get; set; }
 
         [Ps1Xml(Target = ViewControl.List)]
-        public string LabelName { get; set; }
+        public string SensitivityLabel { get; set; }
 
         [Ps1Xml(Target = ViewControl.List)]
         public string InformationType { get; set; }
