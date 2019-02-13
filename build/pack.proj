@@ -31,7 +31,7 @@
     <ItemGroup>
       <Net452Projects Include="$(Src)**\*.csproj" Exclude="$(Src)**\*.Netcore.csproj;$(Src)**\*.Tests.csproj;$(Src)**\*.Test.csproj;$(Src)**\*.UnitTest.csproj" />
     </ItemGroup>
-    <Exec Command="$(NuGet) pack %(Net452Projects.FullPath) -OutputDirectory $(Net452PackDir) -Properties Configuration=$(Configuration) -Version $(PackageVersion)-preview -IncludeReferencedProjects" />
+    <Exec Command="$(NuGet) pack %(Net452Projects.FullPath) -OutputDirectory $(Net452PackDir) -Properties Configuration=$(Configuration) -Version $(PackageVersion)-preview -IncludeReferencedProjects -MSBuildVersion 14" />
   </Target>
 
   <Target Name="All" DependsOnTargets="net452">
