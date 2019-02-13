@@ -12,13 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Security;
+
 namespace Microsoft.Azure.Commands.DataMigration.Models
 {
-    public enum ServerTypeEnum
+    public class PSAzureActiveDirectoryApp
     {
-        SQL,
-        MongoDb,
-        SQLMI
+        public PSAzureActiveDirectoryApp(string tenantId)
+        {
+            if (string.IsNullOrEmpty(tenantId))
+            {
+                throw new ArgumentNullException("TenantId");
+            }
+
+            this.TenantId = tenantId;
+        }
+
+        public string ApplicationId { get; set; }
+        
+        public SecureString AppKey { get; set; }
+
+        public string TenantId { get; private set; }
+
     }
 }
-
