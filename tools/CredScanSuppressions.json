@@ -1114,6 +1114,7 @@
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxMD_ESeries.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
+
 	  {
       "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSyncTests.CloudEndpointTests\\TestGetCloudEndpoint.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
@@ -1153,6 +1154,22 @@
 	  {
       "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSyncTests.ServerEndpointTests\\TestServerEndpoint.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+    {
+      "file": "\\src\\DataMigration\\DataMigration.Test\\SessionRecords\\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\\TestConnectToTargetSqlDbMiSync.json",
+      "_justification": "Legitimate session record, Key will be revoked after test"
+    },
+	  {
+      "file": "\\src\\DataMigration\\DataMigration.Test\\SessionRecords\\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\\TestMigrateSqlSqlDbMiSync.json",
+      "_justification": "Legitimate session record, Key will be revoked after test"
+    },
+	  {
+      "file": "\\src\\DataMigration\\DataMigration.Test\\SessionRecords\\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\\TestValidateMigrationInputSqlSqlDbMiSync.json",
+      "_justification": "Legitimate session record, Key will be revoked after test"
+    },
+	  {
+      "file": "\\src\\DataMigration\\DataMigration.Test\\SessionRecords\\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\\TestMigrateSqlSqlDbMiSync.json",
+      "_justification": "Legitimate session record, Key will be revoked after test"
     }
   ]
 }
