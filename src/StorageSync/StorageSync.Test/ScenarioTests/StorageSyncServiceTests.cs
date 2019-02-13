@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests;
+using ScenarioTests;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace StorageSync.Test.ScenarioTests
+namespace StorageSyncTests
 {
     public class StorageSyncServiceTests
     {

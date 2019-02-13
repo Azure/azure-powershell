@@ -18,7 +18,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
+namespace ScenarioTests
 {
     public class StorageSyncTests
     {

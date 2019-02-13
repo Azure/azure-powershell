@@ -31,7 +31,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
+namespace ScenarioTests
 {
     public class TestController : RMTestBase
     {
