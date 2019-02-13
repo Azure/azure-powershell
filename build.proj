@@ -401,7 +401,7 @@
     <Exec Command="dotnet test Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework netcoreapp2.0 --logger trx" />
 
     <ItemGroup>
-      <TestResults Include="$(LibraryRoot)src/**/TestResults/*.trx" />
+      <TestResults Include="$(LibraryRoot)src/*/*/TestResults/*.trx" />
     </ItemGroup>
     
     <Message Importance="High" Text="Copying test results:"  />
