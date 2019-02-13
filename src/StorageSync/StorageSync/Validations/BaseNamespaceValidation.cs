@@ -16,14 +16,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 {
     using Interfaces;
 
-    public class BaseNamespaceValidation : BaseValidation, INamespaceValidation
+    public class NamespaceValidationBase : ValidationBase, INamespaceValidation
     {
         #region Fields and Properties
         protected IConfiguration Configuration { get;  }
         #endregion
 
         #region Constructors
-        public BaseNamespaceValidation(
+        public NamespaceValidationBase(
             IConfiguration configuration,
             string validationName,
             ValidationType validationType): base(validationName, validationType, ValidationKind.NamespaceValidation)

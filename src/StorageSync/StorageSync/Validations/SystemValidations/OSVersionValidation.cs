@@ -6,7 +6,7 @@
     using System.Management.Automation;
     using Interfaces;
 
-    public class OSVersionValidation : BaseSystemValidation
+    public class OSVersionValidation : SystemValidationBase
     {
         #region Fields and Properties
         private readonly Dictionary<string, string> _osversions;

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 {
     using Interfaces;
 
-    public class MaximumFilenameLengthValidation : BaseNamespaceValidation
+    public class MaximumFilenameLengthValidation : NamespaceValidationBase
     {
         #region Fields and Properties
         private readonly int _maxFilenameLength;

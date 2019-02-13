@@ -227,30 +227,39 @@ namespace StaticAnalysis.DependencyAnalyzer
             {
                 foreach (var directoryPath in Directory.EnumerateDirectories(baseDirectory))
                 {
-                    if (modulesToAnalyze != null &&
-                        modulesToAnalyze.Any() &&
-                        !modulesToAnalyze.Any(m => directoryPath.EndsWith(m)))
+                    try
                     {
-                        continue;
-                    }
+                        if (modulesToAnalyze != null &&
+                            modulesToAnalyze.Any() &&
+                            !modulesToAnalyze.Any(m => directoryPath.EndsWith(m)))
+                        {
+                            continue;
+                        }
 
-                    if (!Directory.Exists(directoryPath))
+                        if (!Directory.Exists(directoryPath))
+                        {
+                            throw new InvalidOperationException("Please pass a valid directory name as the first parameter");
+                        }
+
+                        Logger.WriteMessage("Processing Directory {0}", directoryPath);
+                        _assemblies.Clear();
+                        _versionConflictLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
+                        _missingAssemblyLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
+                        _extraAssemblyLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
+                        _dependencyMapLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
+                        _isNetcore = directoryPath.Contains("Az.");
+                        ProcessDirectory(directoryPath);
+                        _versionConflictLogger.Decorator.Remove("Directory");
+                        _missingAssemblyLogger.Decorator.Remove("Directory");
+                        _extraAssemblyLogger.Decorator.Remove("Directory");
+                        _dependencyMapLogger.Decorator.Remove("Directory");
+                    }
+                    catch (Exception e)
                     {
-                        throw new InvalidOperationException("Please pass a valid directory name as the first parameter");
+                        e.Data.Add(nameof(baseDirectory), baseDirectory);
+                        e.Data.Add(nameof(directoryPath), directoryPath);
+                        throw e;
                     }
-
-                    Logger.WriteMessage("Processing Directory {0}", directoryPath);
-                    _assemblies.Clear();
-                    _versionConflictLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
-                    _missingAssemblyLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
-                    _extraAssemblyLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
-                    _dependencyMapLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
-                    _isNetcore = directoryPath.Contains("Az.");
-                    ProcessDirectory(directoryPath);
-                    _versionConflictLogger.Decorator.Remove("Directory");
-                    _missingAssemblyLogger.Decorator.Remove("Directory");
-                    _extraAssemblyLogger.Decorator.Remove("Directory");
-                    _dependencyMapLogger.Decorator.Remove("Directory");
                 }
             }
         }
