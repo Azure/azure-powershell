@@ -391,180 +391,97 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             base.BeginProcessing();
         }
 
-        public string GetResourceGroupFromObject<T>(T resource)
+        public List<T> TopLevelWildcardFilter<T>(string resourceGroupName, string name, IEnumerable<T> resources)
         {
-            System.Reflection.PropertyInfo pi = resource.GetType().GetProperty("Id");
-            if (pi != null)
+            IEnumerable<T> output = resources;
+            if (HasProperty<T>("ResourceId") || HasProperty<T>("Id"))
             {
-                ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
-                if (parsedId.ResourceGroupName != null)
-                {
-                    return parsedId.ResourceGroupName;
-                }
-            }
-
-            pi = resource.GetType().GetProperty("ResourceId");
-            if (pi != null)
-            {
-                ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
-                if (parsedId.ResourceGroupName != null)
-                {
-                    return parsedId.ResourceGroupName;
-                }
-            }
-
-            pi = resource.GetType().GetProperty("ResourceGroupName");
-            if (pi != null)
-            {
-                var resourceGroupName = (String)(pi.GetValue(resource, null));
+                string idProperty = HasProperty<T>("ResourceId") ? "ResourceId" : "Id";
                 if (resourceGroupName != null)
                 {
-                    return resourceGroupName;
+                    WildcardPattern pattern = new WildcardPattern(resourceGroupName, WildcardOptions.IgnoreCase);
+                    output = output.Select(t => new { Id = new ResourceIdentifier((string) GetPropertyValue(t, idProperty)), Resource = t })
+                                   .Where(p => IsMatch(p.Id, "ResourceGroupName", pattern))
+                                   .Select(r => r.Resource);
                 }
-            }
 
-            return null;
-        }
-
-        public string GetResourceNameFromObject<T>(T resource)
-        {
-            System.Reflection.PropertyInfo pi = resource.GetType().GetProperty("Id");
-            if (pi != null)
-            {
-                ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
-                if (parsedId.ResourceName != null)
-                {
-                    return parsedId.ResourceName;
-                }
-            }
-
-            pi = resource.GetType().GetProperty("ResourceId");
-            if (pi != null)
-            {
-                ResourceIdentifier parsedId = new ResourceIdentifier((String)(pi.GetValue(resource, null)));
-                if (parsedId.ResourceName != null)
-                {
-                    return parsedId.ResourceName;
-                }
-            }
-
-            pi = resource.GetType().GetProperty("Name");
-            if (pi != null)
-            {
-                var name = (String)(pi.GetValue(resource, null));
                 if (name != null)
                 {
-                    return name;
+                    WildcardPattern pattern = new WildcardPattern(name, WildcardOptions.IgnoreCase);
+                    output = output.Select(t => new { Id = new ResourceIdentifier((string) GetPropertyValue(t, idProperty)), Resource = t })
+                                   .Where(p => IsMatch(p.Id, "ResourceName", pattern))
+                                   .Select(r => r.Resource);
                 }
+
+            }
+            else
+            {
+                // if ResourceGroupName property, filter resource group
+                if (HasProperty<T>("ResourceGroupName") && resourceGroupName != null)
+                {
+                    WildcardPattern pattern = new WildcardPattern(resourceGroupName, WildcardOptions.IgnoreCase);
+                    output = output.Where(t => IsMatch(t, "ResourceGroupName", pattern));
+                }
+
+                // if Name property, filter name
+                if (HasProperty<T>("Name") && name != null)
+                {
+                    WildcardPattern pattern = new WildcardPattern(name, WildcardOptions.IgnoreCase);
+                    output = output.Where(t => IsMatch(t, "Name", pattern));
+                }
+            }
+
+            return output.ToList();
+        }
+
+        public List<T> SubResourceWildcardFilter<T>(string name, IEnumerable<T> resources)
+        {
+            IEnumerable<T> output = resources;
+            if (HasProperty<T>("ResourceId") || HasProperty<T>("Id"))
+            {
+                string idProperty = HasProperty<T>("ResourceId") ? "ResourceId" : "Id";
+                if (name != null)
+                {
+                    WildcardPattern pattern = new WildcardPattern(name, WildcardOptions.IgnoreCase);
+                    output = output.Select(t => new { Id = new ResourceIdentifier((string)GetPropertyValue(t, idProperty)), Resource = t })
+                                   .Where(p => IsMatch(p.Id, "ResourceName", pattern))
+                                   .Select(r => r.Resource);
+                }
+
+            }
+            else
+            {
+                // if Name property, filter name
+                if (HasProperty<T>("Name") && name != null)
+                {
+                    WildcardPattern pattern = new WildcardPattern(name, WildcardOptions.IgnoreCase);
+                    output = output.Where(t => IsMatch(t, "Name", pattern));
+                }
+            }
+
+            return output.ToList();
+        }
+
+        private bool HasProperty<T>(string property)
+        {
+            return typeof(T).GetProperty(property) != null;
+        }
+
+        private object GetPropertyValue<T>(T resource, string property)
+        {
+            System.Reflection.PropertyInfo pi = typeof(T).GetProperty(property);
+            if (pi != null)
+            {
+                return pi.GetValue(resource, null);
             }
 
             return null;
         }
 
-        public List<T> TopLevelWildcardFilter<T>(string ResourceGroupName, string Name, IEnumerable<T> resources)
+        private bool IsMatch<T>(T resource, string property, WildcardPattern pattern)
         {
-            List<T> resourceGroupMatch = new List<T>();
-            foreach (var resource in resources)
-            {
-                string parsedResourceGroup = GetResourceGroupFromObject(resource);
-                if (parsedResourceGroup != null)
-                {
-                    if (string.IsNullOrEmpty(ResourceGroupName))
-                    {
-                        resourceGroupMatch.Add(resource);
-                    }
-                    else if (WildcardPattern.ContainsWildcardCharacters(ResourceGroupName))
-                    {
-                        WildcardPattern regex = new WildcardPattern(ResourceGroupName, WildcardOptions.IgnoreCase);
-                        if (regex.IsMatch(parsedResourceGroup))
-                        {
-                            resourceGroupMatch.Add(resource);
-                        }
-                    }
-                    else
-                    {
-                        if (ResourceGroupName.Equals(parsedResourceGroup, StringComparison.CurrentCultureIgnoreCase))
-                        {
-                            resourceGroupMatch.Add(resource);
-                        }
-                    }
-                }
-                else
-                {
-                    resourceGroupMatch.Add(resource);
-                }
-            }
-
-            List<T> output = new List<T>();
-            foreach (var resource in resourceGroupMatch)
-            {
-                var parsedResourceName = GetResourceNameFromObject(resource);
-                if (parsedResourceName != null)
-                {
-                    if (string.IsNullOrEmpty(Name))
-                    {
-                        output.Add(resource);
-                    }
-                    else if (WildcardPattern.ContainsWildcardCharacters(Name))
-                    {
-                        WildcardPattern regex = new WildcardPattern(Name, WildcardOptions.IgnoreCase);
-                        if (regex.IsMatch(parsedResourceName))
-                        {
-                            output.Add(resource);
-                        }
-                    }
-                    else
-                    {
-                        if (Name.Equals(parsedResourceName, StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            output.Add(resource);
-                        }
-                    }
-                }
-                else
-                {
-                    output.Add(resource);
-                }
-            }
-
-            return output;
-        }
-
-        public List<T> SubResourceWildcardFilter<T>(string Name, IEnumerable<T> resources)
-        {
-            List<T> output = new List<T>();
-            foreach (var resource in resources)
-            {
-                var parsedResourceName = GetResourceNameFromObject(resource);
-                if (parsedResourceName != null)
-                {
-                    if (string.IsNullOrEmpty(Name))
-                    {
-                        output.Add(resource);
-                    }
-                    else if (WildcardPattern.ContainsWildcardCharacters(Name))
-                    {
-                        WildcardPattern regex = new WildcardPattern(Name, WildcardOptions.IgnoreCase);
-                        if (regex.IsMatch(parsedResourceName))
-                        {
-                            output.Add(resource);
-                        }
-                    }
-                    else
-                    {
-                        if (Name.Equals(parsedResourceName, StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            output.Add(resource);
-                        }
-                    }
-                }
-                else
-                {
-                    output.Add(resource);
-                }
-            }
-
-            return output;
+            var value = (string)GetPropertyValue(resource, property);
+            return !string.IsNullOrEmpty(value) && pattern.IsMatch(value);
         }
 
         public bool ShouldListBySubscription(string resourceGroupName, string name)
