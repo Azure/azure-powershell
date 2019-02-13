@@ -20,7 +20,6 @@
 
 ## Current Release
 * Update all cmdlets required to manager StorageSync ARM resources.
-* Fixed a typo in the progress message.
-* Introduced the following breaking changes in Invoke-AzureRmStorageSyncCompatibilityCheck cmdlet:
-    - Parameter 'Quiet' had been removed.
-    - Return type has changed from list of PSValidationResult to PSStorageSyncValidation. Validation results are now stored in PSStorageSyncValidation.Results member.
+
+## Version 1.0.0
+* General availability of `Az.StorageSync` module
