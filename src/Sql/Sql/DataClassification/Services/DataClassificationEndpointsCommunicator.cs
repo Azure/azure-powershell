@@ -6,6 +6,7 @@ using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
 {

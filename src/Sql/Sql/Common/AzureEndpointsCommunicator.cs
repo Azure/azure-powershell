@@ -344,6 +344,17 @@ namespace Microsoft.Azure.Commands.Sql.Common
             return id;
         }
 
+        public async Task<string> RetrieveInformationProtectionPolicyAsync(Guid tenantId)
+        {
+            string endpoint = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString();
+            string uri = $"{endpoint}/providers/Microsoft.Management/managementGroups/{tenantId}/providers/Microsoft.Security/informationprotectionpolicies/effective?api-version=2017-08-01";
+            Exception exception = new Exception(
+                string.Format(Properties.Resources.DataClassificationFailedToRetrieveInformationProtectionPolicy,
+                tenantId));
+            var v = await SendAsync(uri, HttpMethod.Get, exception);
+            return v.ToString();
+        }
+
         /// <summary>
         /// Sends an async HTTP request.
         /// </summary>

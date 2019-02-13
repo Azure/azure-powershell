@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
         internal IList<SensitivityLabelModel> GetCurrentSensitivityLabels(
             string resourceGroupName, string serverName, string databaseName)
         {
+            string s = AzureCommunicator.RetrieveInformationProtectionPolicyAsync(Context.Tenant.GetId()).Result;
             return ToSensitivityLabelModelList(Communicator.GetCurrentSensitivityLabels(resourceGroupName, serverName, databaseName));
         }
 

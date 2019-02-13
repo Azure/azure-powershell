@@ -447,4 +447,7 @@
   <data name="ScanIdManagedDatabaseParameterIsRequired" xml:space="preserve">
     <value>ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzSqlInstanceDatabaseVulnerabilityAssessmentScanRecord output via pipe.</value>
   </data>
+  <data name="DataClassificationFailedToRetrieveInformationProtectionPolicy" xml:space="preserve">
+    <value>Failed to retrieve information protection policy of tenant {0}.</value>
+  </data>
 </root>
