@@ -107,7 +107,7 @@ PrivateData = @{
         ReleaseNotes = 'General bug fixes and Cmdlet Get-AzVMGuestPolicyReport renamed to Get-AzVMGuestPolicyStatus to keep it consistent with the Azure portal and to avoid user confusion.'
 
         # Prerelease string of this module
-        #Prerelease = 'preview'
+        #Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
@@ -126,4 +126,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-
