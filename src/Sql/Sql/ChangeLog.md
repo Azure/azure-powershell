@@ -18,8 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add support for SQL DB Hyperscale tier
+
+## Version 1.2.0
 * Add Get/Set AzSqlDatabaseBackupShortTermRetentionPolicy
 * Fix issue where not being logged into Azure account would result in nullref exception when executing SQL cmdlets
+* Fixed null ref exception in Get-AzSqlCapability
 
 ## Version 1.1.0
 * Update incorrect online help URLs
