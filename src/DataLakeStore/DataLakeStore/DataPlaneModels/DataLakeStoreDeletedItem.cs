@@ -18,7 +18,7 @@ using Microsoft.Azure.DataLake.Store;
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
-    /// TODO
+    /// Object returned by Get-AzDataLakeStoreDeletedItem
     /// </summary>
     public class DataLakeStoreDeletedItem
     {

@@ -995,7 +995,7 @@ function CreateAndGetVirtualNetwork ($resourceGroupName, $vnetName, $location = 
 .SYNOPSIS
 Tests DataLakeStore deleted items operations (Enumerate, Restore).
 #>
-function Test-EnumerateAndRestoreDataLakeStoreDeletedItem
+function Test-AdlsEnumerateAndRestoreDeletedItem
 {
 	param
     (
