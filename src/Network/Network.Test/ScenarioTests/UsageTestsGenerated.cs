@@ -24,47 +24,28 @@
 // Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
-using System;
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class RouteFilterTestsGenerated : RMTestBase
+    public class UsageTestsGenerated : NetworkTestRunner
     {
         public XunitTracingInterceptor _logger;
 
-        public RouteFilterTestsGenerated(Xunit.Abstractions.ITestOutputHelper output)
+        public UsageTestsGenerated(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
-        public void TestRouteFilterCRUDMinimalParameters()
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        public void TestUsageCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteFilterCRUDMinimalParameters");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
-        public void TestRouteFilterCRUDAllParameters()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteFilterCRUDAllParameters");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
-        public void TestRouteFilterRuleCRUDMinimalParameters()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteFilterRuleCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-UsageCRUDMinimalParameters");
         }
     }
 }

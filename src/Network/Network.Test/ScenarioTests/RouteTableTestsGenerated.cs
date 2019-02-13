@@ -24,63 +24,49 @@
 // Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
-using System;
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class NetworkInterfaceTestsGenerated : RMTestBase
+    public class RouteTableTestsGenerated : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public NetworkInterfaceTestsGenerated(Xunit.Abstractions.ITestOutputHelper output)
+        public RouteTableTestsGenerated(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestNetworkInterfaceCRUDMinimalParameters()
+        public void TestRouteTableCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-RouteTableCRUDMinimalParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestNetworkInterfaceCRUDAllParameters()
+        public void TestRouteTableCRUDAllParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceCRUDAllParameters");
+            TestRunner.RunTestScript("Test-RouteTableCRUDAllParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestNetworkInterfaceIpConfigurationCRUDMinimalParameters()
+        public void TestRouteCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceIpConfigurationCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-RouteCRUDMinimalParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestNetworkInterfaceIpConfigurationCRUDAllParameters()
+        public void TestRouteCRUDAllParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceIpConfigurationCRUDAllParameters");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestNetworkInterfaceGetEffectiveRouteTable()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-NetworkInterfaceGetEffectiveRouteTable -baseDir '{0}'", System.AppDomain.CurrentDomain.BaseDirectory));
+            TestRunner.RunTestScript("Test-RouteCRUDAllParameters");
         }
     }
 }
