@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = DefinitionsCommon.LabelNameHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public string LabelName { get; set; }
+        public string SensitivityLabel { get; set; }
 
         [Parameter(
             ParameterSetName = DefinitionsCommon.ColumnParameterSet,
@@ -103,23 +103,22 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override SqlDatabaseSensitivityClassificationModel GetEntity()
         {
-            return InputObject ??
+            if (InputObject != null)
+            {
+                ResourceGroupName = InputObject.ResourceGroupName;
+                ServerName = InputObject.ServerName;
+                DatabaseName = InputObject.DatabaseName;
+            }
+
+            return 
                 new SqlDatabaseSensitivityClassificationModel
                 {
                     ResourceGroupName = ResourceGroupName,
                     ServerName = ServerName,
                     DatabaseName = DatabaseName,
-                    SensitivityLabels = new List<SensitivityLabelModel>()
-                    {
-                        new SensitivityLabelModel
-                        {
-                            SchemaName  = SchemaName,
-                            TableName = TableName,
-                            ColumnName = ColumnName,
-                            InformationType = InformationType,
-                            LabelName = LabelName
-                        }
-                    }
+                    SensitivityLabels = ParameterSetName == DefinitionsCommon.ColumnParameterSet ?
+                        ModelAdapter.GetSensitivityLabel(ResourceGroupName, ServerName, DatabaseName, SchemaName, TableName, ColumnName) :
+                        ModelAdapter.GetCurrentSensitivityLabels(ResourceGroupName, ServerName, DatabaseName)
                 };
         }
 

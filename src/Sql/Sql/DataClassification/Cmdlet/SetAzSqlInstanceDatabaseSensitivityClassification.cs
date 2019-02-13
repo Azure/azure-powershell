@@ -2,7 +2,6 @@
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataClassification.Model;
 using Microsoft.Azure.Commands.Sql.DataClassification.Services;
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = DefinitionsCommon.LabelNameHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public string LabelName { get; set; }
+        public string SensitivityLabel { get; set; }
 
         [Parameter(
             ParameterSetName = DefinitionsCommon.ColumnParameterSet,
@@ -100,23 +99,23 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override ManagedDatabaseSensitivityClassificationModel GetEntity()
         {
-            return InputObject ?? new ManagedDatabaseSensitivityClassificationModel
+            if (InputObject != null)
             {
-                ResourceGroupName = ResourceGroupName,
-                InstanceName = InstanceName,
-                DatabaseName = DatabaseName,
-                SensitivityLabels = new List<SensitivityLabelModel>()
-                    {
-                        new SensitivityLabelModel
-                        {
-                            SchemaName  = SchemaName,
-                            TableName = TableName,
-                            ColumnName = ColumnName,
-                            InformationType = InformationType,
-                            LabelName = LabelName
-                        }
-                    }
-            };
+                ResourceGroupName = InputObject.ResourceGroupName;
+                InstanceName = InputObject.InstanceName;
+                DatabaseName = InputObject.DatabaseName;
+            }
+
+            return
+                new ManagedDatabaseSensitivityClassificationModel
+                {
+                    ResourceGroupName = ResourceGroupName,
+                    InstanceName = InstanceName,
+                    DatabaseName = DatabaseName,
+                    SensitivityLabels = ParameterSetName == DefinitionsCommon.ColumnParameterSet ?
+                        ModelAdapter.GetManagedDatabaseSensitivityLabel(ResourceGroupName, InstanceName, DatabaseName, SchemaName, TableName, ColumnName) :
+                        ModelAdapter.GetManagedDatabaseCurrentSensitivityLabels(ResourceGroupName, InstanceName, DatabaseName)
+                };
         }
 
         protected override DataClassificationAdapter InitModelAdapter()
