@@ -13,7 +13,7 @@ Gets the auditing settings of an Azure SQL database.
 
 ## SYNTAX
 
-### DefaultParameterSet
+### DefaultParameterSet (Default)
 ```
 Get-AzSqlDatabaseAuditing [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
  [-BlobStorage] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
