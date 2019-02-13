@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.ContainerInstance;
+using Microsoft.Azure.Management.ManagedServiceIdentity;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Redis;
 using Microsoft.Azure.Management.OperationalInsights;
@@ -48,6 +49,8 @@ namespace Commands.Network.Test
 
         public OperationalInsightsManagementClient OperationalInsightsManagementClient { get; private set; }
 
+        public ManagedServiceIdentityClient ManagedServiceIdentityClient { get; private set; }
+
         public static NetworkResourcesController NewInstance => new NetworkResourcesController();
 
         public NetworkResourcesController()
@@ -64,7 +67,8 @@ namespace Commands.Network.Test
                 {"Microsoft.Compute", null},
                 {"Microsoft.Features", null},
                 {"Microsoft.Authorization", null},
-                {"Microsoft.Storage", null}
+                {"Microsoft.Storage", null},
+                {"Microsoft.ManagedServiceIdentity", null}
             };
             var providersToIgnore = new Dictionary<string, string>
             {
@@ -128,6 +132,7 @@ namespace Commands.Network.Test
                     _helper.GetRMModulePath("AzureRM.Compute.psd1"),
                     _helper.GetRMModulePath("AzureRM.ContainerInstance.psd1"),
                     _helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
+                    _helper.GetRMModulePath("AzureRM.ManagedServiceIdentity.psd1"),
                     "AzureRM.Storage.ps1",
                     _helper.GetRMModulePath("AzureRM.Storage.psd1"),
                     "AzureRM.Resources.ps1");
@@ -161,6 +166,7 @@ namespace Commands.Network.Test
             StorageManagementClient = GetStorageManagementClient(context);
             RedisManagementClient = GetRedisManagementClient(context);
             OperationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
+            ManagedServiceIdentityClient = GetManagedServiceIdentityClient(context);
 
             _helper.SetupManagementClients(
                 resourceManagerResourceManagementClient,
@@ -169,7 +175,13 @@ namespace Commands.Network.Test
                 ContainerInstanceManagementClient,
                 StorageManagementClient,
                 RedisManagementClient,
-                OperationalInsightsManagementClient);
+                OperationalInsightsManagementClient,
+                ManagedServiceIdentityClient);
+        }
+
+        private static ManagedServiceIdentityClient GetManagedServiceIdentityClient(MockContext context)
+        {
+            return context.GetServiceClient<ManagedServiceIdentityClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static NetworkManagementClient GetNetworkManagementClient(MockContext context)
@@ -203,3 +215,4 @@ namespace Commands.Network.Test
         }
 }
 }
+
