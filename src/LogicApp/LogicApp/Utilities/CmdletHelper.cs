@@ -148,19 +148,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         }
 
         /// <summary>
-        /// Build App service plan id using plan name and resource group name
-        /// Null check for parameter not needed as both these parameters are required parameters.
-        /// </summary>
-        /// <param name="planName">App service plan name</param>
-        /// <param name="resourceGroupName">Resource group name</param>
-        /// <param name="subscriptionId">Subscription id</param>
-        /// <returns>App service plan id</returns>
-        internal static string BuildAppServicePlanId(string planName, string resourceGroupName, string subscriptionId)
-        {
-            return string.Format(CultureInfo.InvariantCulture, Constants.ApplicationServicePlanIdFormat, subscriptionId, resourceGroupName, planName);
-        }
-
-        /// <summary>
         /// Converts IEnumerator to IEnumerable
         /// </summary>
         /// <typeparam name="T">Generic Type</typeparam>

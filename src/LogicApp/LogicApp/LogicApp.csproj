@@ -14,10 +14,4 @@
     <PackageReference Include="Microsoft.Azure.Management.Logic" Version="4.1.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resource.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-
 </Project>

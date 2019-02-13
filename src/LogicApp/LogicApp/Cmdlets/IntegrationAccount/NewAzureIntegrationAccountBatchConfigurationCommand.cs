@@ -89,18 +89,21 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = Constants.BatchConfigurationMessageCountHelpMessage, ParameterSetName = ParameterSet.ByInputObjectAndParameters)]
         [Parameter(Mandatory = false, HelpMessage = Constants.BatchConfigurationMessageCountHelpMessage, ParameterSetName = ParameterSet.ByResourceIdAndParameters)]
         [Parameter(Mandatory = false, HelpMessage = Constants.BatchConfigurationMessageCountHelpMessage, ParameterSetName = ParameterSet.ByIntegrationAccountAndParameters)]
+        [ValidateRange(0, int.MaxValue)]
         [ValidateNotNullOrEmpty]
         public int MessageCount { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.BatchConfigurationBatchSizeHelpMessage, ParameterSetName = ParameterSet.ByInputObjectAndParameters)]
         [Parameter(Mandatory = false, HelpMessage = Constants.BatchConfigurationBatchSizeHelpMessage, ParameterSetName = ParameterSet.ByResourceIdAndParameters)]
         [Parameter(Mandatory = false, HelpMessage = Constants.BatchConfigurationBatchSizeHelpMessage, ParameterSetName = ParameterSet.ByIntegrationAccountAndParameters)]
+        [ValidateRange(0, int.MaxValue)]
         [ValidateNotNullOrEmpty]
         public int BatchSize { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.BatchConfigurationScheduleIntervalHelpMessage, ParameterSetName = ParameterSet.ByInputObjectAndParameters)]
         [Parameter(Mandatory = false, HelpMessage = Constants.BatchConfigurationScheduleIntervalHelpMessage, ParameterSetName = ParameterSet.ByResourceIdAndParameters)]
         [Parameter(Mandatory = false, HelpMessage = Constants.BatchConfigurationScheduleIntervalHelpMessage, ParameterSetName = ParameterSet.ByIntegrationAccountAndParameters)]
+        [ValidateRange(0, int.MaxValue)]
         [ValidateNotNullOrEmpty]
         public int ScheduleInterval { get; set; }
 
@@ -181,17 +184,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 case ParameterSet.ByIntegrationAccountAndParameters:
                 {
                     var releaseCriteria = new BatchReleaseCriteria();
-                    if (this.MessageCount > 0)
+                    if (this.MyInvocation.BoundParameters.ContainsKey("MessageCount"))
                     {
                         releaseCriteria.MessageCount = this.MessageCount;
                     }
 
-                    if (this.BatchSize > 0)
+                    if (this.MyInvocation.BoundParameters.ContainsKey("BatchSize"))
                     {
                         releaseCriteria.BatchSize = this.BatchSize;
                     }
 
-                    if (this.ScheduleInterval > 0)
+                    if (this.MyInvocation.BoundParameters.ContainsKey("ScheduleInterval"))
                     {
                         releaseCriteria.Recurrence = new WorkflowTriggerRecurrence
                         {
@@ -227,9 +230,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         private bool IsValidReleaseCriteria(BatchReleaseCriteria releaseCriteria)
         {
-            return releaseCriteria.MessageCount > 0 ||
-                   releaseCriteria.BatchSize > 0 ||
-                   (releaseCriteria.Recurrence?.Interval > 0 && !string.IsNullOrWhiteSpace(releaseCriteria.Recurrence?.Frequency));
+            return this.MyInvocation.BoundParameters.ContainsKey("MessageCount") ||
+                   this.MyInvocation.BoundParameters.ContainsKey("BatchSize") ||
+                   (this.MyInvocation.BoundParameters.ContainsKey("ScheduleInterval") && !string.IsNullOrWhiteSpace(releaseCriteria.Recurrence?.Frequency));
         }
     }
 }
