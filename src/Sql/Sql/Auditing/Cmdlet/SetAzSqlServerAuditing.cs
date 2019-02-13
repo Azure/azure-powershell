@@ -92,22 +92,22 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             ParameterSetName = DefinitionsCommon.BlobStorageByParentResourceParameterSetName,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = AuditingHelpMessages.DatabaseInputObjectHelpMessage)]
+            HelpMessage = AuditingHelpMessages.ServerInputObjectHelpMessage)]
         [Parameter(
             ParameterSetName = DefinitionsCommon.StorageAccountSubscriptionIdByParentResourceParameterSetName,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = AuditingHelpMessages.DatabaseInputObjectHelpMessage)]
+            HelpMessage = AuditingHelpMessages.ServerInputObjectHelpMessage)]
         [Parameter(
             ParameterSetName = DefinitionsCommon.EventHubByParentResourceParameterSetName,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = AuditingHelpMessages.DatabaseInputObjectHelpMessage)]
+            HelpMessage = AuditingHelpMessages.ServerInputObjectHelpMessage)]
         [Parameter(
             ParameterSetName = DefinitionsCommon.LogAnalyticsByParentResourceParameterSetName,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = AuditingHelpMessages.DatabaseInputObjectHelpMessage)]
+            HelpMessage = AuditingHelpMessages.ServerInputObjectHelpMessage)]
         [ValidateNotNullOrEmpty]
         public override AzureSqlServerModel InputObject { get; set; }
 
