@@ -1065,6 +1065,54 @@
 	  {
       "file": "\\src\\IotHub\\IotHub.Test\\ScenarioTests\\IotHubRoutingTests.ps1",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinux.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxMD_DSeries.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxMD.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxWAD.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedWindows.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedWindowsMD.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedWindowsWAD.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicLinux.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicLinuxWAD.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicWindows.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicWindowsWAD.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxMD_ESeries.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     }
   ]
 }
