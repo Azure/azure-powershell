@@ -142,8 +142,12 @@ function Test-VirtualMachineExtension
         Assert-NotNull $ext.Statuses;
         Assert-NotNull $ext.SubStatuses;
 
-		$ext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname
-		Assert-True { $ext.Count -ge 1 }
+        $ext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname
+        Assert-True { $ext.Count -ge 1 }
+        Assert-Null $ext[0].Statuses
+
+        $ext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Status
+        Assert-NotNull $ext.Statuses
 
         # Remove Extension
         $ext | Remove-AzVMExtension -Force;

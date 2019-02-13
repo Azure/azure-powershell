@@ -81,11 +81,22 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    var result = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName);
-
-                    foreach (var ext in result.Value)
+                    if (Status.IsPresent)
                     {
-                        WriteObject(ext.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
+                        var result = this.VirtualMachineExtensionClient.ListWithInstanceView(this.ResourceGroupName, this.VMName);
+
+                        foreach (var ext in result.Body.Value)
+                        {
+                            WriteObject(ext.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
+                        }
+                    }
+                    else
+                    {
+                        var result = this.VirtualMachineExtensionClient.ListWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter().GetResult();
+                        foreach (var ext in result.Body.Value)
+                        {
+                            WriteObject(ext.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
+                        }
                     }
                 }
             });
