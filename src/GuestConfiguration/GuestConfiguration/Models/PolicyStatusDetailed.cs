@@ -24,26 +24,14 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Models
     /// <summary>
     /// Guest configuration assignment reort
     /// </summary>
-    public class GuestConfigurationPolicyAssignmentReport
+    public class PolicyStatusDetailed : PolicyStatus
     {
-        public GuestConfigurationPolicyAssignmentReport(GuestConfigurationAssignmentReport gcrpReport, GuestConfigurationPolicyAssignment gcPolicyAssignment)
+        public PolicyStatusDetailed(GuestConfigurationAssignmentReport gcrpReport, PolicyData gcPolicyAssignment) : base(gcrpReport, gcPolicyAssignment)
         {
-            if(gcPolicyAssignment != null)
-            {
-                this.PolicyDisplayName = gcPolicyAssignment.PolicyDisplayName;
-                this.Configuration = gcPolicyAssignment.Configuration;
-                this.ComplianceStatus = gcPolicyAssignment.ComplianceStatus; // Initially, gcrpReport can be null. So use status from assignment.
-            }
-
             this.ComplianceReasons = new List<ComplianceReasonDetails>();
 
             if (gcrpReport != null && gcrpReport.Properties != null )
             {
-                this.LatestReportId = gcrpReport.Id;
-                this.StartTime = gcrpReport.Properties.StartTime;
-                this.EndTime = gcrpReport.Properties.EndTime;
-                this.ComplianceStatus = gcrpReport.Properties.ComplianceStatus;
-
                 if (gcrpReport.Properties.Details != null)
                 {
                     foreach (var gcrpResource in gcrpReport.Properties.Details.Resources)
@@ -94,33 +82,10 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Models
                         this.ComplianceReasons.Add(complianceReason);
                     }
                 }
-
-                if (gcrpReport.Properties.Vm != null)
-                {
-                    this.VM = new VMInfo()
-                    {
-                        Uuid = gcrpReport.Properties.Vm.Uuid,
-                        ResourceId = gcrpReport.Properties.Vm.Id,
-                    };
-                }
             }   
         }
 
-        public string PolicyDisplayName { get; set; }
-
-        public string ComplianceStatus { get; set; }
-
         public IList<ComplianceReasonDetails> ComplianceReasons { get; set; }
-
-        public DateTime? StartTime { get; set; }
-
-        public DateTime? EndTime { get; set; }
-
-        public string LatestReportId { get; set; }
-
-        public VMInfo VM { get; set; }
-
-        public GuestConfigurationPolicyAssignment.ConfigurationInfo Configuration { get; set; }
 
         public class ComplianceReasonDetails
         {
@@ -131,20 +96,6 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Models
             public string ComplianceStatus { get; set; }
 
             public IList<ReasonAndCode> Reasons { get; set; }
-        }
-
-        public class VMInfo
-        {
-            public string Uuid { get; set; }
-
-            public string ResourceId { get; set; }
-        }
-
-        public class ReasonAndCode
-        {
-            public string Reason;
-
-            public string Code;
         }
     }
 }

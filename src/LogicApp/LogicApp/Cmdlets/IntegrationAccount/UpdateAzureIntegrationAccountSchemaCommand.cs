@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             if (!string.IsNullOrEmpty(this.SchemaFilePath))
             {
                 integrationAccountSchemaCopy.Content =
-                    CmdletHelper.GetContentFromFile(this.TryResolvePath(this.SchemaFilePath));
+                    CmdletHelper.GetStringContentFromFile(this.TryResolvePath(this.SchemaFilePath));
             }
 
             if (!string.IsNullOrEmpty(this.SchemaDefinition))

@@ -20,14 +20,13 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
     using Microsoft.Azure.Commands.GuestConfiguration.Common;
     using Microsoft.Azure.Commands.GuestConfiguration.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.Azure.Management.GuestConfiguration.Models;
 
     /// <summary>
     /// Gets Vm Guest Policy reports (GuestConfiguration policy reports)
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMGuestPolicyStatusHistory", DefaultParameterSetName = ParameterSetNames.VmNameScope),
-        OutputType(typeof(IList<GuestConfigurationAssignmentReport>))]
-    public class GetAzureRmVMGuestPolicyStatusHistory : GuestConfigurationCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "VMGuestPolicyStatus", DefaultParameterSetName = ParameterSetNames.VmNameScope)]
+    [OutputType(typeof(PolicyStatusDetailed))]
+    public class GetAzVMGuestPolicyStatus : GuestConfigurationCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.VmNameScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [Parameter(ParameterSetName = ParameterSetNames.InitiativeIdScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
@@ -50,45 +49,61 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
         [ValidateNotNullOrEmpty]
         public string InitiativeId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.InitiativeNameScope, Mandatory = false, HelpMessage = ParameterHelpMessages.ShowOnlyChange)]
-        [Parameter(ParameterSetName = ParameterSetNames.InitiativeIdScope, Mandatory = false, HelpMessage = ParameterHelpMessages.ShowOnlyChange)]
-        [Parameter(ParameterSetName = ParameterSetNames.VmNameScope, Mandatory = false, HelpMessage = ParameterHelpMessages.ShowOnlyChange)]
-        public SwitchParameter ShowOnlyChange { get; set; }
+        [Parameter(ParameterSetName = ParameterSetNames.IdScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.Id)]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
 
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            IEnumerable<GuestConfigurationPolicyAssignmentReport> gcPolicyAssignmentReports = null;
-
+            IEnumerable<PolicyStatusDetailed> gcPolicyAssignmentReports = null;
             switch (ParameterSetName)
             {
+                // Process results for cmdlet
                 case ParameterSetNames.InitiativeNameScope:
-                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeName(ResourceGroupName, VMName, InitiativeName, true, ShowOnlyChange.IsPresent);
-                    if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
+                    // get all gcrp assignments first
+                    var gcrpAssignments = GetAllGCRPAssignments(ResourceGroupName, VMName);
+
+                    gcPolicyAssignmentReports = GetPolicyStatusesDetailedByInitiativeName(ResourceGroupName, VMName, InitiativeName, gcrpAssignments);
+                    if(gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
                     {
                         WriteObject(gcPolicyAssignmentReports, true);
-                    }
+                    }                        
                     break;
 
                 case ParameterSetNames.InitiativeIdScope:
-                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeId(ResourceGroupName, VMName, InitiativeId, true, ShowOnlyChange.IsPresent);
+                    // get all gcrp assignments first
+                    gcrpAssignments = GetAllGCRPAssignments(ResourceGroupName, VMName);
+
+                    gcPolicyAssignmentReports = GetPolicyStatusesDetailedByInitiativeId(ResourceGroupName, VMName, InitiativeId, false, gcrpAssignments);
 
                     if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
                     {
                         WriteObject(gcPolicyAssignmentReports, true);
+                    }                   
+                    break;
+
+                case ParameterSetNames.IdScope:
+                    var policyReport = GetPolicyStatusDetailedByReportId(Id);
+                    if (policyReport != null)
+                    {
+                        WriteObject(policyReport);
                     }
                     break;
 
                 case ParameterSetNames.VmNameScope:
-                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReports(ResourceGroupName, VMName, true, ShowOnlyChange.IsPresent);
+                    // get all gcrp assignments first
+                    gcrpAssignments = GetAllGCRPAssignments(ResourceGroupName, VMName);
+
+                    gcPolicyAssignmentReports = GetPolicyStatusesDetailed(ResourceGroupName, VMName, gcrpAssignments, false);
                     if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
                     {
                         WriteObject(gcPolicyAssignmentReports, true);
                     }
                     break;
-            }
+            }    
         }
     }
 }
