@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -83,20 +84,13 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     if (Status.IsPresent)
                     {
-                        var result = this.VirtualMachineExtensionClient.ListWithInstanceView(this.ResourceGroupName, this.VMName);
-
-                        foreach (var ext in result.Body.Value)
-                        {
-                            WriteObject(ext.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
-                        }
+                        var result = this.VirtualMachineExtensionClient.ListWithInstanceView(this.ResourceGroupName, this.VMName).Body.Value;
+                        WriteObject(result.ToList().Select(t => t.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName)), true);
                     }
                     else
                     {
-                        var result = this.VirtualMachineExtensionClient.ListWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter().GetResult();
-                        foreach (var ext in result.Body.Value)
-                        {
-                            WriteObject(ext.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
-                        }
+                        var result = this.VirtualMachineExtensionClient.ListWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter().GetResult().Body.Value;
+                        WriteObject(result.ToList().Select(t => t.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName)), true);
                     }
                 }
             });
