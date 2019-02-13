@@ -1117,6 +1117,22 @@
     {
       "file": "\\src\\Resources\\Resources.Test\\ScenarioTests\\certificate.pfx",
       "_justification": "Legitimate test certificate."
+    },
+     {
+      "file": "\\src\\DataMigration\\DataMigration.Test\\SessionRecords\\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\\TestConnectToTargetSqlDbMiSync.json",
+      "_justification": "Legitimate session record, Key will be revoked after test"
+    },
+	  {
+      "file": "\\src\\DataMigration\\DataMigration.Test\\SessionRecords\\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\\TestMigrateSqlSqlDbMiSync.json",
+      "_justification": "Legitimate session record, Key will be revoked after test"
+    },
+	  {
+      "file": "\\src\\DataMigration\\DataMigration.Test\\SessionRecords\\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\\TestValidateMigrationInputSqlSqlDbMiSync.json",
+      "_justification": "Legitimate session record, Key will be revoked after test"
+    },
+	  {
+      "file": "\\src\\DataMigration\\DataMigration.Test\\SessionRecords\\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\\TestMigrateSqlSqlDbMiSync.json",
+      "_justification": "Legitimate session record, Key will be revoked after test"
     }
   ]
 }

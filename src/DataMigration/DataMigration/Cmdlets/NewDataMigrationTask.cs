@@ -186,6 +186,18 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                         taskCmdlet = new ValidateMongoDbMigrationTaskCmdlet(this.MyInvocation);
                         expandParameterOfTask = "output($filter=ResultType eq 'Migration' or ResultType eq 'Database')";
                         break;
+                    case TaskTypeEnum.ConnectToTargetSqlDbMiSync:
+                        taskCmdlet = new ConnectToTargetSqlDbMiSyncTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
+                        break;
+                    case TaskTypeEnum.ValidateSqlServerSqlDbMiSync:
+                        taskCmdlet = new ValidateSqlServerSqlDbMiSyncTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
+                        break;
+                    case TaskTypeEnum.MigrateSqlServerSqlDbMiSync:
+                        taskCmdlet = new MigrateSqlServerSqlDbMiSyncTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "";
+                        break;
                     default:
                         throw new PSArgumentException();
                 }
@@ -240,7 +252,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                             ( response.Properties.State == "Queued" || response.Properties.State == "Running" ) )
                         {
                             System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(TaskWaitSleepIntervalInSeconds));
-                            WriteVerbose($"{taskInput.Id} {taskInput.Name} {taskInput.Properties.State} Elapsed: {System.DateTime.UtcNow - utcStartedOn}");
+                            WriteVerbose($"{response.Id} {response.Name} {response.Properties.State} Elapsed: {System.DateTime.UtcNow - utcStartedOn}");
                             response = DataMigrationClient.Tasks.Get(ResourceGroupName, ServiceName, ProjectName, Name, this.expandParameterOfTask);
                         }
                     }

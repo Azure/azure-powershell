@@ -93,7 +93,8 @@ CmdletsToExport = 'New-AzDataMigrationDatabaseInfo',
                'New-AzDataMigrationSyncSelectedDBObject', 
                'New-AzDataMigrationMongoDbDatabaseSetting', 
                'New-AzDataMigrationMongoDbCollectionSetting', 
-               'Invoke-AzDataMigrationCommand'
+               'Invoke-AzDataMigrationCommand',
+               'New-AzDataMigrationAzureActiveDirectoryApp'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -123,7 +124,8 @@ AliasesToExport = 'Get-AzDms',
                'New-AzDmsSelectedDBObject', 
                'New-AzDmsSyncSelectedDBObject',
                'New-AzDmsMongoDbDatabaseSetting',
-               'New-AzDmsMongoDbCollectionSetting'
+               'New-AzDmsMongoDbCollectionSetting',
+               'New-AzDmsAadApp'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
