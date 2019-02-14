@@ -11,9 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Sql">
-        <HintPath>E:\azure-sdk-for-net\src\SDKs\SqlManagement\Management.Sql\bin\Debug\netstandard1.4\Microsoft.Azure.Management.Sql.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.28.0-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
 
