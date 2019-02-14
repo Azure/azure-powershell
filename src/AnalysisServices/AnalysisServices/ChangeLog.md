@@ -19,5 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.1
+* Release with updated Authentication dependency
+
 ## Version 1.0.0
 * General availability of `Az.AnalysisServices` module
