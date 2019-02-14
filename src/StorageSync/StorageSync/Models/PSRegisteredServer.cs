@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
     public class PSRegisteredServer : PSResourceBase
     {
         /// <summary>
-        /// Gets the name of the storage synchronize service.
+        /// Gets the name of the storage sync service.
         /// </summary>
-        /// <value>The name of the storage synchronize service.</value>
+        /// <value>The name of the storage sync service.</value>
         public string StorageSyncServiceName { get; internal set; }
         /// <summary>
         /// Gets the name of the server.
@@ -82,9 +82,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// <value>The server identifier.</value>
         public string ServerId { get; set; }
         /// <summary>
-        /// Gets or sets the storage synchronize service uid.
+        /// Gets or sets the storage sync service uid.
         /// </summary>
-        /// <value>The storage synchronize service uid.</value>
+        /// <value>The storage sync service uid.</value>
         public string StorageSyncServiceUid { get; set; }
         /// <summary>
         /// Gets or sets the last workflow identifier.

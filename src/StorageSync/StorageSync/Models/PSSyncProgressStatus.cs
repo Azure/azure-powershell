@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// <value>The progress timestamp.</value>
         public DateTime? ProgressTimestamp { get; set; }
         /// <summary>
-        /// Gets or sets the synchronize direction.
+        /// Gets or sets the sync direction.
         /// </summary>
-        /// <value>The synchronize direction.</value>
+        /// <value>The sync direction.</value>
         public string SyncDirection { get; set; }
         /// <summary>
         /// Gets or sets the per item error count.

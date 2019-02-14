@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         ActiveDirectoryClient ActiveDirectoryClient { get; set; }
 
         /// <summary>
-        /// Gets or sets the storage synchronize management client.
+        /// Gets or sets the storage sync management client.
         /// </summary>
-        /// <value>The storage synchronize management client.</value>
+        /// <value>The storage sync management client.</value>
         IStorageSyncManagementClient StorageSyncManagementClient { get; set; }
 
         /// <summary>
@@ -115,9 +115,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         public const string BuiltInRoleDefinitionId = "c12c1c16-33a1-487b-954d-41c89c60f349";
 
         /// <summary>
-        /// Gets or sets the storage synchronize management client.
+        /// Gets or sets the storage sync management client.
         /// </summary>
-        /// <value>The storage synchronize management client.</value>
+        /// <value>The storage sync management client.</value>
         public IStorageSyncManagementClient StorageSyncManagementClient { get; set; }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// Initializes a new instance of the <see cref="StorageSyncClientWrapper"/> class.
         /// </summary>
-        /// <param name="storageSyncManagementClient">The storage synchronize management client.</param>
+        /// <param name="storageSyncManagementClient">The storage sync management client.</param>
         /// <param name="authorizationManagementClient">The authorization management client.</param>
         public StorageSyncClientWrapper(IStorageSyncManagementClient storageSyncManagementClient, AuthorizationManagementClient authorizationManagementClient)
         {

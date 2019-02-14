@@ -23,35 +23,35 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
     public class StorageSyncNouns
     {
         /// <summary>
-        /// The noun azure rm storage synchronize service
+        /// The noun azure rm storage sync service
         /// </summary>
         public const string NounAzureRmStorageSyncService = StorageSyncConstants.ProductPrefix + "Service";
         /// <summary>
-        /// The noun azure rm storage synchronize group
+        /// The noun azure rm storage sync group
         /// </summary>
         public const string NounAzureRmStorageSyncGroup = StorageSyncConstants.ProductPrefix + "Group";
         /// <summary>
-        /// The noun azure rm storage synchronize server
+        /// The noun azure rm storage sync server
         /// </summary>
         public const string NounAzureRmStorageSyncServer = StorageSyncConstants.ProductPrefix + "Server";
         /// <summary>
-        /// The noun azure rm storage synchronize cloud endpoint
+        /// The noun azure rm storage sync cloud endpoint
         /// </summary>
         public const string NounAzureRmStorageSyncCloudEndpoint = StorageSyncConstants.ProductPrefix + "CloudEndpoint";
         /// <summary>
-        /// The noun azure rm storage synchronize server endpoint
+        /// The noun azure rm storage sync server endpoint
         /// </summary>
         public const string NounAzureRmStorageSyncServerEndpoint = StorageSyncConstants.ProductPrefix + "ServerEndpoint";
         /// <summary>
-        /// The noun azure rm storage synchronize server configuration
+        /// The noun azure rm storage sync server configuration
         /// </summary>
         public const string NounAzureRmStorageSyncServerConfiguration = StorageSyncConstants.ProductPrefix + "ServerConfiguration";
         /// <summary>
-        /// The noun azure rm storage synchronize file recall
+        /// The noun azure rm storage sync file recall
         /// </summary>
         public const string NounAzureRmStorageSyncFileRecall = StorageSyncConstants.ProductPrefix + "FileRecall";
         /// <summary>
-        /// The noun azure rm storage synchronize server certificate
+        /// The noun azure rm storage sync server certificate
         /// </summary>
         public const string NounAzureRmStorageSyncServerCertificate = NounAzureRmStorageSyncServer + "Certificate";
     }

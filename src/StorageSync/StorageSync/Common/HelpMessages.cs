@@ -27,59 +27,59 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public const string AsJobParameter = "Run cmdlet in the background";
         /// <summary>
-        /// The storage synchronize service object parameter
+        /// The storage sync service object parameter
         /// </summary>
         public const string StorageSyncServiceObjectParameter = "StorageSyncService Object, normally passed through the parameter.";
         /// <summary>
-        /// The storage synchronize service input object parameter
+        /// The storage sync service input object parameter
         /// </summary>
         public const string StorageSyncServiceInputObjectParameter = "StorageSyncService Input Object, normally passed through the pipeline.";
         /// <summary>
-        /// The storage synchronize service resource identifier parameter
+        /// The storage sync service resource identifier parameter
         /// </summary>
         public const string StorageSyncServiceResourceIdParameter = "StorageSyncService Resource Id";
         /// <summary>
-        /// The storage synchronize service parent resource identifier parameter
+        /// The storage sync service parent resource identifier parameter
         /// </summary>
         public const string StorageSyncServiceParentResourceIdParameter = "StorageSyncService Parent Resource Id";
         /// <summary>
-        /// The storage synchronize service name parameter
+        /// The storage sync service name parameter
         /// </summary>
         public const string StorageSyncServiceNameParameter = "Name of the StorageSyncService.";
         /// <summary>
-        /// The storage synchronize service location parameter
+        /// The storage sync service location parameter
         /// </summary>
         public const string StorageSyncServiceLocationParameter = "Storage Sync Service Location.";
         /// <summary>
-        /// The storage synchronize service tags parameter
+        /// The storage sync service tags parameter
         /// </summary>
         public const string StorageSyncServiceTagsParameter = "Storage Sync Service Tags.";
         /// <summary>
-        /// The storage synchronize service force parameter
+        /// The storage sync service force parameter
         /// </summary>
         public const string StorageSyncServiceForceParameter = "Force to Delete the Storage Sync Service";
         /// <summary>
-        /// The synchronize group object parameter
+        /// The sync group object parameter
         /// </summary>
         public const string SyncGroupObjectParameter = "SyncGroup Object, normally passed through the parameter.";
         /// <summary>
-        /// The synchronize group input object parameter
+        /// The sync group input object parameter
         /// </summary>
         public const string SyncGroupInputObjectParameter = "SyncGroup Input Object";
         /// <summary>
-        /// The synchronize group resource identifier parameter
+        /// The sync group resource identifier parameter
         /// </summary>
         public const string SyncGroupResourceIdParameter = "SyncGroup Resource Id";
         /// <summary>
-        /// The synchronize group parent resource identifier parameter
+        /// The sync group parent resource identifier parameter
         /// </summary>
         public const string SyncGroupParentResourceIdParameter = "SyncGroup Parent Resource Id";
         /// <summary>
-        /// The synchronize group name parameter
+        /// The sync group name parameter
         /// </summary>
         public const string SyncGroupNameParameter = "Name of the SyncGroup.";
         /// <summary>
-        /// The synchronize group force parameter
+        /// The sync group force parameter
         /// </summary>
         public const string SyncGroupForceParameter = "Force to Delete the Sync Group";
         /// <summary>

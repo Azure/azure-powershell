@@ -22,14 +22,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
     public class PSSyncGroup : PSResourceBase
     {
         /// <summary>
-        /// Gets or sets the name of the synchronize group.
+        /// Gets or sets the name of the sync group.
         /// </summary>
-        /// <value>The name of the synchronize group.</value>
+        /// <value>The name of the sync group.</value>
         public string SyncGroupName { get; set; }
         /// <summary>
-        /// Gets or sets the name of the storage synchronize service.
+        /// Gets or sets the name of the storage sync service.
         /// </summary>
-        /// <value>The name of the storage synchronize service.</value>
+        /// <value>The name of the storage sync service.</value>
         public string StorageSyncServiceName { get; set; }
         /// <summary>
         /// Gets or sets the unique identifier.
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// <value>The unique identifier.</value>
         public string UniqueId { get; set; }
         /// <summary>
-        /// Gets or sets the synchronize group status.
+        /// Gets or sets the sync group status.
         /// </summary>
-        /// <value>The synchronize group status.</value>
+        /// <value>The sync group status.</value>
         public string SyncGroupStatus { get; set; }
     }
 }

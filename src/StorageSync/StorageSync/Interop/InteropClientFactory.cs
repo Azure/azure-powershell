@@ -33,7 +33,7 @@ namespace Commands.StorageSync.Interop
         }
 
         /// <summary>
-        /// Creates the synchronize server registration client.
+        /// Creates the sync server registration client.
         /// </summary>
         /// <param name="ecsManagementClient">The ecs management client.</param>
         /// <returns>ISyncServerRegistration.</returns>

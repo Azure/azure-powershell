@@ -154,11 +154,11 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// Validates the synchronize server.
+        /// Validates the sync server.
         /// </summary>
         /// <param name="serviceUri">The service URI.</param>
         /// <param name="subscriptionId">The subscription identifier.</param>
-        /// <param name="storageSyncServiceName">Name of the storage synchronize service.</param>
+        /// <param name="storageSyncServiceName">Name of the storage sync service.</param>
         /// <param name="resourceGroupName">Name of the resource group.</param>
         /// <returns>System.Int32.</returns>
         public int ValidateSyncServer([In, MarshalAs(UnmanagedType.BStr)] string serviceUri, [In, MarshalAs(UnmanagedType.BStr)] string subscriptionId, [In, MarshalAs(UnmanagedType.BStr)] string storageSyncServiceName, [In, MarshalAs(UnmanagedType.BStr)] string resourceGroupName)
@@ -167,11 +167,11 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// Ensures the synchronize server certificate.
+        /// Ensures the sync server certificate.
         /// </summary>
         /// <param name="serviceUri">The service URI.</param>
         /// <param name="subscriptionId">The subscription identifier.</param>
-        /// <param name="storageSyncServiceName">Name of the storage synchronize service.</param>
+        /// <param name="storageSyncServiceName">Name of the storage sync service.</param>
         /// <param name="resourceGroupName">Name of the resource group.</param>
         /// <param name="certificateProviderName">Name of the certificate provider.</param>
         /// <param name="certificateHashAlgorithm">The certificate hash algorithm.</param>
@@ -183,11 +183,11 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// Registers the synchronize server.
+        /// Registers the sync server.
         /// </summary>
         /// <param name="serviceUri">The service URI.</param>
         /// <param name="subscriptionId">The subscription identifier.</param>
-        /// <param name="storageSyncServiceName">Name of the storage synchronize service.</param>
+        /// <param name="storageSyncServiceName">Name of the storage sync service.</param>
         /// <param name="resourceGroupName">Name of the resource group.</param>
         /// <param name="certificateProviderName">Name of the certificate provider.</param>
         /// <param name="certificateHashAlgorithm">The certificate hash algorithm.</param>
@@ -200,7 +200,7 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// Resets the synchronize server configuration.
+        /// Resets the sync server configuration.
         /// </summary>
         /// <param name="cleanClusterRegistration">if set to <c>true</c> [clean cluster registration].</param>
         /// <returns>System.Int32.</returns>
@@ -261,7 +261,7 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// Gets the storage synchronize server endpoint status.
+        /// Gets the storage sync server endpoint status.
         /// </summary>
         /// <param name="path">The path.</param>
         /// <param name="serverEndpointReports">The server endpoint reports.</param>
@@ -272,7 +272,7 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// Gets the storage synchronize registered server status.
+        /// Gets the storage sync registered server status.
         /// </summary>
         /// <param name="registeredServerStats">The registered server stats.</param>
         /// <returns>System.Int32.</returns>
@@ -324,25 +324,25 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// Determines whether [is path under synchronize share] [the specified path].
+        /// Determines whether [is path under sync share] [the specified path].
         /// </summary>
         /// <param name="path">The path.</param>
-        /// <returns><c>true</c> if [is path under synchronize share] [the specified path]; otherwise, <c>false</c>.</returns>
+        /// <returns><c>true</c> if [is path under sync share] [the specified path]; otherwise, <c>false</c>.</returns>
         public bool IsPathUnderSyncShare([In, MarshalAs(UnmanagedType.BStr)] string path)
         {
             return m_managementObject.IsPathUnderSyncShare(path);
         }
 
         /// <summary>
-        /// Persists the synchronize server registration.
+        /// Persists the sync server registration.
         /// </summary>
         /// <param name="serviceUri">The service URI.</param>
         /// <param name="subscriptionId">The subscription identifier.</param>
-        /// <param name="storageSyncServiceName">Name of the storage synchronize service.</param>
+        /// <param name="storageSyncServiceName">Name of the storage sync service.</param>
         /// <param name="resourceGroupName">Name of the resource group.</param>
         /// <param name="clusterId">The cluster identifier.</param>
         /// <param name="clusterName">Name of the cluster.</param>
-        /// <param name="storageSyncServiceUid">The storage synchronize service uid.</param>
+        /// <param name="storageSyncServiceUid">The storage sync service uid.</param>
         /// <param name="discoveryUri">The discovery URI.</param>
         /// <param name="serviceLocation">The service location.</param>
         /// <param name="resourceLocation">The resource location.</param>
@@ -423,7 +423,7 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// Gets the synchronize server certificate.
+        /// Gets the sync server certificate.
         /// </summary>
         /// <param name="isPrimary">if set to <c>true</c> [is primary].</param>
         /// <param name="serverCertificate">The server certificate.</param>
@@ -434,7 +434,7 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// Gets the synchronize server identifier.
+        /// Gets the sync server identifier.
         /// </summary>
         /// <param name="serverId">The server identifier.</param>
         /// <returns>System.Int32.</returns>

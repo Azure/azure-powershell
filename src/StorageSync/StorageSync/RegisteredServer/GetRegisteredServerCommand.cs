@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the storage synchronize service.
+        /// Gets or sets the name of the storage sync service.
         /// </summary>
-        /// <value>The name of the storage synchronize service.</value>
+        /// <value>The name of the storage sync service.</value>
         [Parameter(
            Position = 1,
           ParameterSetName = StorageSyncParameterSets.StringParameterSet,

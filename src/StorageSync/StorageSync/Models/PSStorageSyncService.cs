@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         [Ps1Xml(Label = "Location", Target = ViewControl.Table, Position = 4)]
         public string Location { get; set; }
         /// <summary>
-        /// Gets or sets the name of the storage synchronize service.
+        /// Gets or sets the name of the storage sync service.
         /// </summary>
-        /// <value>The name of the storage synchronize service.</value>
+        /// <value>The name of the storage sync service.</value>
         [Ps1Xml(Label = "StorageSyncServiceName ", Target = ViewControl.Table, Position = 5)]
         public string StorageSyncServiceName { get; set; }
         /// <summary>

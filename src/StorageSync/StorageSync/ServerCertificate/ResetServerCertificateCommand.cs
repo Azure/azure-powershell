@@ -52,9 +52,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the storage synchronize service.
+        /// Gets or sets the name of the storage sync service.
         /// </summary>
-        /// <value>The name of the storage synchronize service.</value>
+        /// <value>The name of the storage sync service.</value>
         [Parameter(
            Position = 1,
            ParameterSetName =StorageSyncParameterSets.StringParameterSet,
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// </summary>
         /// <param name="resourceGroupName">Name of the resource group.</param>
         /// <param name="subscriptionId">The subscription identifier.</param>
-        /// <param name="storageSyncServiceName">Name of the storage synchronize service.</param>
+        /// <param name="storageSyncServiceName">Name of the storage sync service.</param>
         private void TriggerCertificateRollover(string resourceGroupName, Guid subscriptionId, string storageSyncServiceName)
         {
             using (ISyncServerCertificateRollover certificateRolloverClient = new SyncServerCertificateRolloverClient(InteropClientFactory.CreateEcsManagement(IsPlaybackMode)))
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <param name="certificateData">certificate to add</param>
         /// <param name="serverId">serverId</param>
         /// <param name="resourceGroupName">Name of the resource group.</param>
-        /// <param name="storageSyncServiceName">Name of the storage synchronize service.</param>
+        /// <param name="storageSyncServiceName">Name of the storage sync service.</param>
         private void PerformTriggerRolloverInCloud(string certificateData, Guid serverId, string resourceGroupName, string storageSyncServiceName)
         {
             WriteVerbose("Triggering certificate rollover on service");

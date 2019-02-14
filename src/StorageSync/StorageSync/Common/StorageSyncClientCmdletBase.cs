@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
     public interface IStorageSyncClientCmdlet
     {
         /// <summary>
-        /// Gets or sets the storage synchronize client wrapper.
+        /// Gets or sets the storage sync client wrapper.
         /// </summary>
-        /// <value>The storage synchronize client wrapper.</value>
+        /// <value>The storage sync client wrapper.</value>
         IStorageSyncClientWrapper StorageSyncClientWrapper { get; set;}
     }
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         protected DateTime StartTime;
 
         /// <summary>
-        /// The storage synchronize client wrapper
+        /// The storage sync client wrapper
         /// </summary>
         private IStorageSyncClientWrapper storageSyncClientWrapper;
 
@@ -116,9 +116,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         public Guid SubscriptionId => DefaultProfile.DefaultContext.Subscription.GetId();
 
         /// <summary>
-        /// Gets or sets the storage synchronize client wrapper.
+        /// Gets or sets the storage sync client wrapper.
         /// </summary>
-        /// <value>The storage synchronize client wrapper.</value>
+        /// <value>The storage sync client wrapper.</value>
         public IStorageSyncClientWrapper StorageSyncClientWrapper
         {
             get

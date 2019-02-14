@@ -51,11 +51,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public const string SubscriptionTypeName = "subscriptions";
         /// <summary>
-        /// The storage synchronize service type name
+        /// The storage sync service type name
         /// </summary>
         public const string StorageSyncServiceTypeName = "storageSyncServices";
         /// <summary>
-        /// The synchronize group type name
+        /// The sync group type name
         /// </summary>
         public const string SyncGroupTypeName =  "syncGroups";
         /// <summary>
@@ -71,11 +71,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public const string CloudEndpointTypeName = "cloudEndpoints";
         /// <summary>
-        /// The storage synchronize service type
+        /// The storage sync service type
         /// </summary>
         public const string StorageSyncServiceType = ResourceProvider + "/" + StorageSyncServiceTypeName;
         /// <summary>
-        /// The synchronize group type
+        /// The sync group type
         /// </summary>
         public const string SyncGroupType = StorageSyncServiceType + "/" + SyncGroupTypeName;
         /// <summary>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public const string MonitoringAgentDirectoryName = @"MAAgent\Monitoring";
         /// <summary>
-        /// The file synchronize SVC name
+        /// The file sync SVC name
         /// </summary>
         public const string FileSyncSvcName = "FileSyncSvc";
     }
