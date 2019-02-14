@@ -126,9 +126,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         {
             get
             {
-                if (this._driveLetter != default(char))
+                if (_driveLetter != default(char))
                 {
-                    return this._driveLetter;
+                    return _driveLetter;
                 }
 
                 return null;
@@ -139,13 +139,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// Gets the name of the computer.
         /// </summary>
         /// <value>The name of the computer.</value>
-        public string ComputerName => this._computerName;
+        public string ComputerName => _computerName;
 
         /// <summary>
         /// Gets the name of the share.
         /// </summary>
         /// <value>The name of the share.</value>
-        public string ShareName => this._shareName;
+        public string ShareName => _shareName;
 
         /// <summary>
         /// Gets the length.
@@ -155,27 +155,27 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         {
             get
             {
-                if (!this._length.HasValue)
+                if (!_length.HasValue)
                 {
-                    switch (this._pathKind)
+                    switch (_pathKind)
                     {
                         case PathKind.SimpleDrive:
                         case PathKind.ExtDrive:
                         case PathKind.UncDrive:
                         case PathKind.ExtUncDrive:
                             {
-                                this._length = this._path.Length + 2; // adding two chars for drive and colon
+                                _length = _path.Length + 2; // adding two chars for drive and colon
                                 break;
                             }
                         default:
                             {
-                                this._length = this._path.Length;
+                                _length = _path.Length;
                                 break;
                             }
                     }
                 }
 
-                return this._length.Value;
+                return _length.Value;
             }
         }
 
@@ -187,17 +187,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         {
             get
             {
-                if (!this._depth.HasValue)
+                if (!_depth.HasValue)
                 {
-                    this._depth = this._path.Split(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar).Length;
+                    _depth = _path.Split(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar).Length;
 
-                    if (this._path.StartsWith(@"\"))
+                    if (_path.StartsWith(@"\"))
                     {
-                        this._depth--;
+                        _depth--;
                     }
                 }
 
-                return this._depth.Value;
+                return _depth.Value;
             }
         }
 
@@ -211,16 +211,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <exception cref="ArgumentException">Invalid path - fullName</exception>
         public AfsPath(string fullName)
         {
-            this._fullName = fullName;
+            _fullName = fullName;
 
             if (!TryParsePath(
                 path: fullName,
-                pathKind: out this._pathKind,
-                origin: out this._origin,
-                dataPath: out this._path,
-                computerName: out this._computerName,
-                shareName: out this._shareName,
-                driveLetter: out this._driveLetter))
+                pathKind: out _pathKind,
+                origin: out _origin,
+                dataPath: out _path,
+                computerName: out _computerName,
+                shareName: out _shareName,
+                driveLetter: out _driveLetter))
             {
                 throw new ArgumentException("Invalid path", nameof(fullName));
             }            

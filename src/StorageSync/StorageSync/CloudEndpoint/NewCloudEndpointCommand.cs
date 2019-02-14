@@ -17,13 +17,12 @@ using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
-using System;
 using System.Management.Automation;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
@@ -161,11 +160,6 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
-        /// Kailani Service application ID, for both PROD and PPE (first-party app)
-        /// </summary>
-        private Guid KailaniAppId = new Guid("9469b9f5-6722-4481-a2b2-14ed560b706f");
-
-        /// <summary>
         /// Gets the target.
         /// </summary>
         /// <value>The target.</value>
@@ -175,81 +169,71 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         /// Gets the action message.
         /// </summary>
         /// <value>The action message.</value>
-        protected override string ActionMessage => $"Create a new Cloud Endpoint {Name}";
+        protected override string ActionMessage => $"{StorageSyncResources.NewCloudEndpointActionMessage} {Name}";
 
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Target, ActionMessage))
-            {
-                base.ExecuteCmdlet();
+            base.ExecuteCmdlet();
 
-                ExecuteClientAction(() =>
-                {
+            ExecuteClientAction(() =>
+            {
                 // Validate Storage Account Resource Id
                 var storageAccountResourceIdentifier = new ResourceIdentifier(StorageAccountResourceId);
 
-                    if (string.IsNullOrEmpty(storageAccountResourceIdentifier?.ResourceName))
+                if (string.IsNullOrEmpty(storageAccountResourceIdentifier?.ResourceName))
+                {
+                    throw new PSArgumentException(nameof(StorageAccountResourceId));
+                }
+
+                if (!IsPlaybackMode)
+                {
+                    PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
+                    RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, StorageAccountResourceId);
+                }
+
+                var parentResourceIdentifier = default(ResourceIdentifier);
+
+                if (!string.IsNullOrEmpty(ParentResourceId))
+                {
+                    parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
+
+                    if (!string.Equals(StorageSyncConstants.SyncGroupType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new PSArgumentException(nameof(StorageAccountResourceId));
+                        throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
                     }
+                }
 
-                    if (!IsPlaybackMode)
-                    {
-                        PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
-
-                        if (servicePrincipal == null)
-                        {
-                            throw new PSArgumentException(nameof(servicePrincipal));
-                        }
-
-                        RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, StorageAccountResourceId);
-
-                        if (roleAssignment == null)
-                        {
-                            throw new PSArgumentException(nameof(roleAssignment));
-                        }
-                    }
-
-                    var parentResourceIdentifier = default(ResourceIdentifier);
-
-                    if (!string.IsNullOrEmpty(ParentResourceId))
-                    {
-                        parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
-
-                        if (!string.Equals(StorageSyncConstants.SyncGroupType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
-                        {
-                            throw new PSArgumentException(nameof(ParentResourceId));
-                        }
-                    }
-
-                    var createParameters = new CloudEndpointCreateParameters()
-                    {
-                        StorageAccountResourceId = StorageAccountResourceId,
-                        StorageAccountShareName = StorageAccountShareName,
-                        StorageAccountTenantId = (StorageAccountTenantId ?? DefaultContext.Tenant?.Id)
-                    };
-
-                    if (string.IsNullOrEmpty(createParameters.StorageAccountTenantId))
-                    {
-                        throw new PSArgumentException(nameof(createParameters.StorageAccountTenantId));
-                    }
+                var createParameters = new CloudEndpointCreateParameters()
+                {
+                    StorageAccountResourceId = StorageAccountResourceId,
+                    StorageAccountShareName = StorageAccountShareName,
+                    StorageAccountTenantId = (StorageAccountTenantId ?? DefaultContext.Tenant?.Id)
+                };
 
                 // TODO : Remove when we record next.
                 createParameters.StorageAccountTenantId = "\"" + createParameters.StorageAccountTenantId + "\"";
 
+                string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;
+                string storageSyncServiceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0);
+                string syncGroupName = SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName;
+
+                Target = string.Join("/", resourceGroupName, storageSyncServiceName, syncGroupName, Name);
+
+                if (ShouldProcess(Target, ActionMessage))
+                {
                     StorageSyncModels.CloudEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.Create(
-                        ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName,
-                        StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0),
-                        SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName,
+                        resourceGroupName,
+                        storageSyncServiceName,
+                       syncGroupName,
                         Name,
                         createParameters);
 
                     WriteObject(resource);
-                });
-            }
+                }
+            });
         }
     }
 }

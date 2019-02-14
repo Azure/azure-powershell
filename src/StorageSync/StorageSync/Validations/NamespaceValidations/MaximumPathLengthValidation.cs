@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <param name="configuration">The configuration.</param>
         public MaximumPathLengthValidation(IConfiguration configuration) : base(configuration, "Files/Directories over the path length limit", ValidationType.PathLength)
         {
-            this._maxPathLength = configuration.MaximumPathLength();
+            _maxPathLength = configuration.MaximumPathLength();
         }
         #endregion
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IFileInfo node)
         {
-            return this.ValidateInternal(node);
+            return ValidateInternal(node);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IDirectoryInfo node)
         {
-            return this.ValidateInternal(node);
+            return ValidateInternal(node);
         }
         #endregion
 
@@ -74,22 +74,22 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
             AfsPath path = new AfsPath(node.FullName);
             int pathLength = path.Length;
 
-            bool pathIsTooLong = pathLength > this._maxPathLength;
+            bool pathIsTooLong = pathLength > _maxPathLength;
             if (pathIsTooLong)
             {
                 return new ValidationResult
                 {
                     Result = Result.Fail,
-                    Description = $"Path length limit exceeded. Maximum length is {this._maxPathLength}.",
+                    Description = $"Path length limit exceeded. Maximum length is {_maxPathLength}.",
                     Level = ResultLevel.Error,
                     Path = node.FullName,
-                    Type = this.ValidationType,
-                    Kind = this.ValidationKind
+                    Type = ValidationType,
+                    Kind = ValidationKind
                 };
             }
 
 
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
         #endregion
     }

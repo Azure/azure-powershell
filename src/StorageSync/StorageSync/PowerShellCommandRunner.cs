@@ -57,11 +57,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
                 connectionInfo.Credential = credential;
             }
 
-            this._runspace = RunspaceFactory.CreateRunspace(connectionInfo);
-            this._runspace.Open();
+            _runspace = RunspaceFactory.CreateRunspace(connectionInfo);
+            _runspace.Open();
 
-            this._powerShell = PowerShell.Create();
-            this._powerShell.Runspace = this._runspace;
+            _powerShell = PowerShell.Create();
+            _powerShell.Runspace = _runspace;
         }
 
         /// <summary>
@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// </summary>
         ~PowerShellCommandRunner()
         {
-            this._powerShell?.Dispose();
-            this._runspace?.Close();
+            _powerShell?.Dispose();
+            _runspace?.Close();
         }
         #endregion
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="script">The script.</param>
         public void AddScript(string script)
         {
-            this._powerShell.AddScript(script);
+            _powerShell.AddScript(script);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns>Collection&lt;PSObject&gt;.</returns>
         public Collection<PSObject> Invoke()
         {
-            return this._powerShell.Invoke();
+            return _powerShell.Invoke();
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns>PSDataCollection&lt;ErrorRecord&gt;.</returns>
         public PSDataCollection<ErrorRecord> Errors()
         {
-            return this._powerShell.Streams.Error;
+            return _powerShell.Streams.Error;
         }
         #endregion
     }

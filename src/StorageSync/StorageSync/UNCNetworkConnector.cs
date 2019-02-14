@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// </summary>
         public void Dispose()
         {
-            if (!this.disposed)
+            if (!disposed)
             {
                 NetUseDelete();
             }

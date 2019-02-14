@@ -15,8 +15,8 @@ This command will use to create server endpoint.
 ### ObjectParameterSet (Default)
 ```
 New-AzStorageSyncServerEndpoint [-ParentObject] <PSSyncGroup> -Name <String> -ServerResourceId <String>
- -ServerLocalPath <String> [-CloudTiering] [-VolumeFreeSpacePercent <Int32>] [-CloudSeededData]
- [-TierFilesOlderThanDays <Int32>] [-CloudSeededDataFileShareUri <String>] [-AsJob]
+ -ServerLocalPath <String> [-CloudTiering] [-VolumeFreeSpacePercent <Int32>] [-OfflineDataTransfer]
+ [-TierFilesOlderThanDays <Int32>] [-OfflineDataTransferShareName <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,16 +24,16 @@ New-AzStorageSyncServerEndpoint [-ParentObject] <PSSyncGroup> -Name <String> -Se
 ```
 New-AzStorageSyncServerEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
  [-SyncGroupName] <String> -Name <String> -ServerResourceId <String> -ServerLocalPath <String> [-CloudTiering]
- [-VolumeFreeSpacePercent <Int32>] [-CloudSeededData] [-TierFilesOlderThanDays <Int32>]
- [-CloudSeededDataFileShareUri <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-VolumeFreeSpacePercent <Int32>] [-OfflineDataTransfer] [-TierFilesOlderThanDays <Int32>]
+ [-OfflineDataTransferShareName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ParentStringParameterSet
 ```
 New-AzStorageSyncServerEndpoint [-ParentResourceId] <String> -Name <String> -ServerResourceId <String>
- -ServerLocalPath <String> [-CloudTiering] [-VolumeFreeSpacePercent <Int32>] [-CloudSeededData]
- [-TierFilesOlderThanDays <Int32>] [-CloudSeededDataFileShareUri <String>] [-AsJob]
+ -ServerLocalPath <String> [-CloudTiering] [-VolumeFreeSpacePercent <Int32>] [-OfflineDataTransfer]
+ [-TierFilesOlderThanDays <Int32>] [-OfflineDataTransferShareName <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ This command will use to create server endpoint.
 ### Example 1
 ```powershell
 PS C:\> $RegisteredServer = Get-AzStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
-PS C:\> New-AzStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName" -ServerResourceId $RegisteredServer.ResourceId -ServerLocalPath "myServerLocalPath" -CloudTiering -CloudSeededData -CloudSeededDataFileShareUri "myCloudSeededDataFileShareUri" -TierFilesOlderThanDays "myTierFilesOlderThanDays"
+PS C:\> New-AzStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName" -ServerResourceId $RegisteredServer.ResourceId -ServerLocalPath "myServerLocalPath" -CloudTiering -OfflineDataTransfer -OfflineDataTransferShareName "myOfflineDataTransferShareName" -TierFilesOlderThanDays "myTierFilesOlderThanDays"
 ```
 
 This command adds a serverendpoint provided all the name of the dependent resources.
@@ -67,7 +67,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CloudSeededData
+### -OfflineDataTransfer
 Cloud Seeded Data Parameter
 
 ```yaml
@@ -82,7 +82,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CloudSeededDataFileShareUri
+### -OfflineDataTransferShareName
 Cloud Seeded Data File Share Uri Parameter
 
 ```yaml

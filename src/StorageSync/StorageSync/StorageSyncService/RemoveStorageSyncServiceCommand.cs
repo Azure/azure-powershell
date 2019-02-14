@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Models;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using System.Management.Automation;
@@ -138,11 +139,11 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     resourceGroupName = ResourceGroupName;
                 }
 
-                Target = resourceName;
-                ActionMessage = "Remove Storage Sync Service";
+                Target = string.Join("/", resourceGroupName, resourceName);
+                ActionMessage = StorageSyncResources.RemoveStorageSyncServiceActionMessage;
                 if (ShouldProcess(Target, ActionMessage))
                 {
-                    if (Force || ShouldContinue(string.Format("Remove Storage Sync Service '{0}' and all content in it", resourceName), ""))
+                    if (Force || ShouldContinue(string.Format(StorageSyncResources.RemoveStorageSyncServicePromptFormat, Target), string.Empty))
                     {
                         StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.Delete(resourceGroupName, resourceName);
                     }

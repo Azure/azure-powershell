@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using System;
@@ -142,8 +143,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                     if (!string.Equals(StorageSyncConstants.RegisteredServerType, resourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new PSArgumentException($"Invalid Argument {nameof(ResourceId)}", nameof(ResourceId));
+                        throw new PSArgumentException(nameof(ResourceId));
                     }
+
                     resourceName = resourceIdentifier.ResourceName;
                     resourceGroupName = resourceIdentifier.ResourceGroupName;
                     parentResourceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName);
@@ -161,21 +163,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     parentResourceName = StorageSyncServiceName;
                 }
 
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    throw new PSArgumentException(nameof(ResourceGroupName));
-                }
-                else if (string.IsNullOrEmpty(parentResourceName))
-                {
-                    throw new PSArgumentException(nameof(StorageSyncServiceName));
-                }
-                else if (string.IsNullOrEmpty(resourceName))
-                {
-                    throw new PSArgumentException($"Invalid Argument {nameof(ServerId)}", nameof(ServerId));
-                }
-
-                Target = resourceName;
-                ActionMessage = "Remove Sync Server";
+                Target = string.Join("/", resourceGroupName, parentResourceName, resourceName);
+                ActionMessage = StorageSyncResources.UnregisterServerActionMessage;
                 if (ShouldProcess(Target, ActionMessage))
                 {
                     if (Force || ShouldContinue(string.Format("Remove Sync Server '{0}' and all content in it", resourceName), ""))

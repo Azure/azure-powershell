@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using System;
@@ -171,11 +172,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     storageSyncServiceName = StorageSyncServiceName;
                 }
 
-                Target = resourceName;
-                ActionMessage = "Remove Server Endpoint";
+                Target = string.Join("/", resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);
+                ActionMessage = StorageSyncResources.RemoveServerEndpointActionMessage;
                 if (ShouldProcess(Target, ActionMessage))
                 {
-                    if (Force || ShouldContinue(string.Format("Remove Server Endpoint '{0}' and all content in it", resourceName), String.Empty))
+                    if (Force || ShouldContinue(string.Format(StorageSyncResources.RemoveServerEndpointPromptFormat, Target), string.Empty))
                     {
                         StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.Delete(resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);
                     }

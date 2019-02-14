@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="progressReporter">The progress reporter.</param>
         public NamespaceValidationsProcessor(IList<INamespaceValidation> validations, IList<IOutputWriter> outputWriters, IProgressReporter progressReporter)
         {
-            this._validations = validations;
-            this._outputWriters = outputWriters;
-            this._progressReporter = progressReporter;
+            _validations = validations;
+            _outputWriters = outputWriters;
+            _progressReporter = progressReporter;
         }
         #endregion
 
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="node">The node.</param>
         public void BeginDir(IDirectoryInfo node)
         {
-            foreach (INamespaceValidation validation in this._validations)
+            foreach (INamespaceValidation validation in _validations)
             {
                 IValidationResult validationResult = validation.Validate(node);
                 Broadcast(validationResult);
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="node">The node.</param>
         public void EndDir(IDirectoryInfo node)
         {
-            this._progressReporter.CompleteStep();
+            _progressReporter.CompleteStep();
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="namespaceInfo">The namespace information.</param>
         public void EndOfEnumeration(INamespaceInfo namespaceInfo)
         {
-            foreach (INamespaceValidation validation in this._validations)
+            foreach (INamespaceValidation validation in _validations)
             {
                 IValidationResult validationResult = validation.Validate(namespaceInfo);
                 Broadcast(validationResult);
@@ -98,12 +98,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="node">The node.</param>
         public void NextFile(IFileInfo node)
         {
-            foreach (INamespaceValidation validation in this._validations)
+            foreach (INamespaceValidation validation in _validations)
             {
                 IValidationResult validationResult = validation.Validate(node);
                 Broadcast(validationResult);
             }
-            this._progressReporter.CompleteStep();
+            _progressReporter.CompleteStep();
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="dir">The dir.</param>
         public void UnauthorizedDir(IDirectoryInfo dir)
         {
-            var firstValidation = this._validations.FirstOrDefault() as IValidationDescription;
+            var firstValidation = _validations.FirstOrDefault() as IValidationDescription;
             if (firstValidation != null)
             {
                 Broadcast(ValidationResult.UnauthorizedAccessDir(firstValidation.ValidationType, firstValidation.ValidationKind, dir));
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="fileCount">The file count.</param>
         public void NamespaceHint(long directoryCount, long fileCount)
         {
-            this._progressReporter.ReserveSteps(directoryCount + fileCount);
+            _progressReporter.ReserveSteps(directoryCount + fileCount);
         }
         #endregion
 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="validationResult">The validation result.</param>
         private void Broadcast(IValidationResult validationResult)
         {
-            foreach (IOutputWriter outputWriter in this._outputWriters)
+            foreach (IOutputWriter outputWriter in _outputWriters)
             {
                 outputWriter.Write(validationResult);
             }

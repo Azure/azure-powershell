@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
         /// </summary>
         public PSStorageSyncValidation()
         {
-            this.Results = new List<PSValidationResult>();
+            Results = new List<PSValidationResult>();
         }
         #endregion
     }

@@ -51,11 +51,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         public string Path {
             get
             {
-                return this._path;
+                return _path;
             }
             set
             {
-                this._path = this.NormalizePath(value);
+                _path = NormalizePath(value);
             }
         }
 
@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         /// <value>The is network path.</value>
         private Lazy<bool> IsNetworkPath => new Lazy<bool>(() => 
         {
-            if (!string.IsNullOrEmpty(this.Path))
+            if (!string.IsNullOrEmpty(Path))
             {
-                var afsPath = new AfsPath(this.Path);
+                var afsPath = new AfsPath(Path);
                 if (afsPath.ComputerName != null)
                 {
                     return true;
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         {
             get
             {
-                return this.Credential == null ? "the current user" : this.Credential.UserName;
+                return Credential == null ? "the current user" : Credential.UserName;
             }
         }
 
@@ -108,9 +108,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         /// <value>The computer name value.</value>
         private Lazy<string> ComputerNameValue => new Lazy<string>(() =>
         {
-            if (!string.IsNullOrEmpty(this.Path))
+            if (!string.IsNullOrEmpty(Path))
             {
-                var afsPath = new AfsPath(this.Path);
+                var afsPath = new AfsPath(Path);
                 if (afsPath.ComputerName != null)
                 {
                     return afsPath.ComputerName;
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
                 return "localhost";
             }
 
-            return this.ComputerName;
+            return ComputerName;
         });
 
         /// <summary>
@@ -140,17 +140,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         /// Gets a value indicating whether this instance can run namespace checks.
         /// </summary>
         /// <value><c>true</c> if this instance can run namespace checks; otherwise, <c>false</c>.</value>
-        private bool CanRunNamespaceChecks => !string.IsNullOrEmpty(this.Path);
+        private bool CanRunNamespaceChecks => !string.IsNullOrEmpty(Path);
         /// <summary>
         /// Gets a value indicating whether this instance can run estimation.
         /// </summary>
         /// <value><c>true</c> if this instance can run estimation; otherwise, <c>false</c>.</value>
-        private bool CanRunEstimation => this.CanRunNamespaceChecks;
+        private bool CanRunEstimation => CanRunNamespaceChecks;
         /// <summary>
         /// Gets a value indicating whether this instance can run system checks.
         /// </summary>
         /// <value><c>true</c> if this instance can run system checks; otherwise, <c>false</c>.</value>
-        private bool CanRunSystemChecks => !string.IsNullOrEmpty(this.ComputerNameValue.Value);
+        private bool CanRunSystemChecks => !string.IsNullOrEmpty(ComputerNameValue.Value);
 
         /// <summary>
         /// Gets the maximum duration of namespace estimation.
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             IList<INamespaceValidation> namespaceValidations = ValidationsFactory.GetNamespaceValidations(configuration);
 
             // prepare system validations
-            IList<ISystemValidation> systemValidations = ValidationsFactory.GetSystemValidations(configuration, this.Path);
+            IList<ISystemValidation> systemValidations = ValidationsFactory.GetSystemValidations(configuration, Path);
 
             // output writers
             var validationResultWriter = new PSValidationResultOutputWriter();
@@ -181,19 +181,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
                 validationResultWriter
             };
 
-            this.WriteVerbose($"Path = {this.Path}");
-            this.WriteVerbose($"ComputerName = {this.ComputerName}");
-            this.WriteVerbose($"ComputerNameValue = {this.ComputerNameValue.Value}");
-            this.WriteVerbose($"CanRunNamespaceChecks = {this.CanRunNamespaceChecks}");
-            this.WriteVerbose($"CanRunSystemChecks = {this.CanRunSystemChecks}");
-            this.WriteVerbose($"CanRunEstimation = {this.CanRunEstimation}");
-            this.WriteVerbose($"SkipNamespaceChecks = {this.SkipNamespaceChecks}");
-            this.WriteVerbose($"SkipSystemChecks = {this.SkipSystemChecks}");
-            this.WriteVerbose($"NumberOfSystemChecks = {systemValidations.Count}");
-            this.WriteVerbose($"NumberOfNamespaceChecks = {namespaceValidations.Count}");
+            WriteVerbose($"Path = {Path}");
+            WriteVerbose($"ComputerName = {ComputerName}");
+            WriteVerbose($"ComputerNameValue = {ComputerNameValue.Value}");
+            WriteVerbose($"CanRunNamespaceChecks = {CanRunNamespaceChecks}");
+            WriteVerbose($"CanRunSystemChecks = {CanRunSystemChecks}");
+            WriteVerbose($"CanRunEstimation = {CanRunEstimation}");
+            WriteVerbose($"SkipNamespaceChecks = {SkipNamespaceChecks}");
+            WriteVerbose($"SkipSystemChecks = {SkipSystemChecks}");
+            WriteVerbose($"NumberOfSystemChecks = {systemValidations.Count}");
+            WriteVerbose($"NumberOfNamespaceChecks = {namespaceValidations.Count}");
 
             long totalObjectsToScan = 0;
-            if (this.CanRunEstimation && !this.SkipNamespaceChecks.ToBool())
+            if (CanRunEstimation && !SkipNamespaceChecks.ToBool())
             {
                 IProgressReporter progressReporter = new NamespaceEstimationProgressReporter(this);
                 progressReporter.Show();
@@ -204,15 +204,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
                 INamespaceInfo namespaceInfoEstimation;
                 try
                 {
-                    namespaceInfoEstimation = this.RunActionWithUncConnectionIfNeeded<INamespaceInfo>(
-                        () => new NamespaceEnumerator().Run(new AfsDirectoryInfo(this.Path), this.MaximumDurationOfNamespaceEstimation));
+                    namespaceInfoEstimation = RunActionWithUncConnectionIfNeeded<INamespaceInfo>(
+                        () => new NamespaceEnumerator().Run(new AfsDirectoryInfo(Path), MaximumDurationOfNamespaceEstimation));
                 }
                 catch (System.IO.DirectoryNotFoundException)
                 {
-                    if (this.IsNetworkPath.Value)
+                    if (IsNetworkPath.Value)
                     {
-                        this.WriteWarning(
-                            $"Accessing network path {this.Path}' as {this.UserName} didn't work." + Environment.NewLine +
+                        WriteWarning(
+                            $"Accessing network path {Path}' as {UserName} didn't work." + Environment.NewLine +
                             $"Consider using -Credential parameter to provide creentials of the user account with appropriate access.");
                     }
                     throw;
@@ -226,64 +226,64 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
                 string namespaceCompleteness = namespaceInfoEstimation.IsComplete ? "complete" : "incomplete";
                 TimeSpan duration = stopwatch.Elapsed;
 
-                this.WriteVerbose($"Namespace estimation took {duration.TotalSeconds:F3} seconds and is {namespaceCompleteness}");
+                WriteVerbose($"Namespace estimation took {duration.TotalSeconds:F3} seconds and is {namespaceCompleteness}");
             }
             else
             {
-                this.WriteVerbose("Skipping estimation.");
+                WriteVerbose("Skipping estimation.");
             }
 
-            if (this.CanRunSystemChecks && !this.SkipSystemChecks.ToBool())
+            if (CanRunSystemChecks && !SkipSystemChecks.ToBool())
             {
                 IProgressReporter progressReporter = new SystemCheckProgressReporter(this);
                 progressReporter.Show();
 
                 progressReporter.AddSteps(systemValidations.Count);
                 Stopwatch stopwatch = Stopwatch.StartNew();
-                this.PerformSystemChecks(systemValidations, progressReporter, this, outputWriters);
+                PerformSystemChecks(systemValidations, progressReporter, this, outputWriters);
                 stopwatch.Stop();
                 progressReporter.Complete();
                 TimeSpan duration = stopwatch.Elapsed;
 
-                this.WriteVerbose($"System checks took {duration.TotalSeconds:F3} seconds");
+                WriteVerbose($"System checks took {duration.TotalSeconds:F3} seconds");
             }
             else
             {
-                this.WriteVerbose("Skipping system checks.");
+                WriteVerbose("Skipping system checks.");
             }
 
             INamespaceInfo namespaceInfo = null;
-            if (this.CanRunNamespaceChecks && !this.SkipNamespaceChecks.ToBool())
+            if (CanRunNamespaceChecks && !SkipNamespaceChecks.ToBool())
             {
                 IProgressReporter progressReporter = new NamespaceScanProgressReporter(this);
                 progressReporter.Show();
                 progressReporter.AddSteps(totalObjectsToScan);
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
-                namespaceInfo = this.RunActionWithUncConnectionIfNeeded<INamespaceInfo>(
-                    () => this.StorageEval(namespaceValidations, progressReporter, this, outputWriters));
+                namespaceInfo = RunActionWithUncConnectionIfNeeded<INamespaceInfo>(
+                    () => StorageEval(namespaceValidations, progressReporter, this, outputWriters));
                 stopwatch.Stop();
                 progressReporter.Complete();
 
                 TimeSpan duration = stopwatch.Elapsed;
                 long namespaceFileCount = namespaceInfo.NumberOfFiles;
                 double fileThroughput = namespaceFileCount > 0 ? duration.TotalMilliseconds / namespaceFileCount : 0.0;
-                this.WriteVerbose($"Namespace scan took {duration.TotalSeconds:F3} seconds with throughput of {fileThroughput:F3} milliseconds per file");
+                WriteVerbose($"Namespace scan took {duration.TotalSeconds:F3} seconds with throughput of {fileThroughput:F3} milliseconds per file");
             }
             else
             {
-                this.WriteVerbose("Skipping namespace checks.");
+                WriteVerbose("Skipping namespace checks.");
             }
 
             var validationModel = validationResultWriter.Validation;
-            validationModel.ComputerName = this.ComputerNameValue.Value;
+            validationModel.ComputerName = ComputerNameValue.Value;
             if (namespaceInfo != null)
             {
                 validationModel.NamespacePath = namespaceInfo.Path;
                 validationModel.NamespaceDirectoryCount = namespaceInfo.NumberOfDirectories;
                 validationModel.NamespaceFileCount = namespaceInfo.NumberOfFiles;
             }
-            this.WriteObject(validationModel);
+            WriteObject(validationModel);
         }
         #endregion
 
@@ -301,13 +301,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 
             try
             {
-                commandRunner = new PowerShellCommandRunner(this.ComputerNameValue.Value, this.Credential);
+                commandRunner = new PowerShellCommandRunner(ComputerNameValue.Value, Credential);
             }
             catch
             {
-                this.WriteWarning(
-                    $"Establishing management service connection with host '{this.ComputerNameValue.Value}' as {this.UserName} didn't work." + Environment.NewLine +
-                    $"Ensure {this.UserName} has administrative rights and that the process is running with administrative permissions." + Environment.NewLine +
+                WriteWarning(
+                    $"Establishing management service connection with host '{ComputerNameValue.Value}' as {UserName} didn't work." + Environment.NewLine +
+                    $"Ensure {UserName} has administrative rights and that the process is running with administrative permissions." + Environment.NewLine +
                     $"You can also use -SkipSystemChecks switch to skip system requirements checks.");
                 throw;
             }
@@ -327,19 +327,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         {
             T result = default(T);
 
-            if (this.IsNetworkPath.Value && this.Credential != null)
+            if (IsNetworkPath.Value && Credential != null)
             {
                 using (UncNetworkConnector connector = new UncNetworkConnector())
                 {
-                    NetworkCredential networkCredential = this.Credential.GetNetworkCredential();
-                    if (connector.NetUseWithCredentials(this.Path, networkCredential.UserName, networkCredential.Domain, networkCredential.Password))
+                    NetworkCredential networkCredential = Credential.GetNetworkCredential();
+                    if (connector.NetUseWithCredentials(Path, networkCredential.UserName, networkCredential.Domain, networkCredential.Password))
                     {
                         result = action();
                     }
                     else
                     {
                         string errorMessage = connector.GetLastError();
-                        WriteError(new ErrorRecord(new Exception($"Failed mounting network path {this.Path}. Error: {errorMessage}"), errorMessage, ErrorCategory.ConnectionError, this.Path));
+                        WriteError(new ErrorRecord(new Exception($"Failed mounting network path {Path}. Error: {errorMessage}"), errorMessage, ErrorCategory.ConnectionError, Path));
                     }
                 }
             }
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         /// <returns>INamespaceInfo.</returns>
         private INamespaceInfo StorageEval(IList<INamespaceValidation> validations, IProgressReporter progressReporter, ICmdlet cmdlet, IList<IOutputWriter> outputWriters)
         {
-            IDirectoryInfo root = new AfsDirectoryInfo(this.Path);
+            IDirectoryInfo root = new AfsDirectoryInfo(Path);
 
             NamespaceValidationsProcessor validationsProcessor = new NamespaceValidationsProcessor(validations, outputWriters, progressReporter);
 

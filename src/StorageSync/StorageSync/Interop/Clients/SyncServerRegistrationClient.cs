@@ -59,8 +59,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// </exception>
         public override bool Validate(Uri managementEndpointUri, Guid subscriptionId, string storageSyncServiceName, string resourceGroupName, string monitoringDataPath)
         {
-            DirectoryInfo directoryInfo;
-            if (!Directory.Exists(monitoringDataPath) && !TryCreateDirectory(monitoringDataPath,out directoryInfo))
+            if (!Directory.Exists(monitoringDataPath) && !TryCreateDirectory(monitoringDataPath, out DirectoryInfo directoryInfo))
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.MonitoringDataPathIsInvalid);
             }
@@ -122,8 +121,7 @@ namespace Commands.StorageSync.Interop.Clients
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.EnsureSyncServerCertificateFailed, hr, ErrorCategory.InvalidResult);
             }
 
-            string syncServerCertificate;
-            hr = EcsManagementInteropClient.GetSyncServerCertificate(isPrimary:true, serverCertificate:out syncServerCertificate);
+            hr = EcsManagementInteropClient.GetSyncServerCertificate(isPrimary: true, serverCertificate: out string syncServerCertificate);
 
             success = hr == 0;
 
@@ -132,19 +130,16 @@ namespace Commands.StorageSync.Interop.Clients
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.GetSyncServerCertificateFailed, hr, ErrorCategory.InvalidResult);
             }
 
-            string syncServerId;
-            hr = EcsManagementInteropClient.GetSyncServerId(out syncServerId);
+            hr = EcsManagementInteropClient.GetSyncServerId(out string syncServerId);
 
             Guid serverGuid = Guid.Empty;
             bool hasServerGuid = Guid.TryParse(syncServerId, out serverGuid);
             if (!hasServerGuid)
             {
-                throw new ArgumentException(nameof(serverGuid));
+                throw new ArgumentException(nameof(Guid.Empty));
             }
 
             success = hr == 0;
-
-
             if (!success)
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.GetSyncServerIdFailed, hr, ErrorCategory.InvalidResult);
@@ -208,7 +203,7 @@ namespace Commands.StorageSync.Interop.Clients
             var serverRegistrationData = new ServerRegistrationData
             {
                 Id = resourceId,
-                ServerId = serverGuid,
+                ServerId = Guid.Empty,
                 ServerCertificate = syncServerCertificate.ToBase64Bytes(true),
                 ServerRole = isInCluster ? ServerRoleType.ClusterNode : ServerRoleType.Standalone,
                 ServerOSVersion = osVersion,

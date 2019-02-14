@@ -46,7 +46,7 @@ namespace Commands.StorageSync.Interop.DataObjects
         {
             get
             {
-                return this.handle == IntPtr.Zero;
+                return handle == IntPtr.Zero;
             }
         }
 
@@ -56,7 +56,7 @@ namespace Commands.StorageSync.Interop.DataObjects
         /// <returns>true if the handle is released successfully; otherwise, in the event of a catastrophic failure, false. In this case, it generates a <see cref="~/docs/framework/debug-trace-profile/releasehandlefailed-mda.md">releaseHandleFailed</see> Managed Debugging Assistant.</returns>
         protected override bool ReleaseHandle()
         {
-            int newRefCount = Marshal.Release(this.handle);
+            int newRefCount = Marshal.Release(handle);
             Debug.Write($"RefCount: {newRefCount}");
             return true;
         }
@@ -67,7 +67,7 @@ namespace Commands.StorageSync.Interop.DataObjects
         /// <param name="assignedHandle">The assigned handle.</param>
         public void AttachHandle(IntPtr assignedHandle)
         {
-            this.SetHandle(assignedHandle);
+            SetHandle(assignedHandle);
         }
     }
 }

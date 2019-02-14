@@ -20,17 +20,16 @@ using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
-
     /// <summary>
     /// Class RegisterServerCommand.
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
@@ -116,7 +115,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// Gets or sets the action message.
         /// </summary>
         /// <value>The action message.</value>
-        protected override string ActionMessage => $"Create a new Registered Server for Storage Sync Service {StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? ParentResourceId}";
+        protected override string ActionMessage => $"{StorageSyncResources.RegisterServerActionMessage} {StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? ParentResourceId}";
 
         /// <summary>
         /// Executes the cmdlet.
@@ -134,23 +133,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                     if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new PSArgumentException(nameof(ParentResourceId));
+                        throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
                     }
                 }
 
                 var resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier?.ResourceGroupName;
-
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    throw new PSArgumentException(nameof(ResourceGroupName));
-                }
-
                 var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
 
-                if (string.IsNullOrEmpty(parentResourceName))
-                {
-                    throw new PSArgumentException(nameof(StorageSyncServiceName));
-                }
+                Target = string.Join("/", resourceGroupName, parentResourceName);
 
                 if (ShouldProcess(Target, ActionMessage))
                 {
@@ -174,7 +164,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
             {
                 if(string.IsNullOrEmpty(StorageSyncClientWrapper.AfsAgentInstallerPath))
                 {
-                    throw new PSArgumentException(nameof(StorageSyncClientWrapper.AfsAgentInstallerPath));
+                    throw new PSArgumentException(StorageSyncResources.MissingAfsAgentInstallerPathErrorMessage);
                 }
 
                 return syncServerRegistrationClient.Register(

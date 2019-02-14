@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="length">The length.</param>
         public AfsFileInfo(string name, long length) : base(name)
         {
-            this.Length = length;
+            Length = length;
         }
 
         /// <summary>

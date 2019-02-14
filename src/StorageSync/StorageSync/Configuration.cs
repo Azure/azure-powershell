@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             using (Stream configStream = assembly.GetManifestResourceStream(resourceName))
             {
                 DataContractJsonSerializer validationsConfigurationJsonSerializer = new DataContractJsonSerializer(typeof(ValidationsConfiguration));
-                this._validationsConfiguration =
+                _validationsConfiguration =
                     (ValidationsConfiguration)validationsConfigurationJsonSerializer.ReadObject(configStream);
             }
 		}
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns>IEnumerable&lt;System.String&gt;.</returns>
         public IEnumerable<string> ValidFilesystems()
         {
-            return this._validationsConfiguration.ValidFilesystems;
+            return _validationsConfiguration.ValidFilesystems;
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns>IEnumerable&lt;System.String&gt;.</returns>
         public IEnumerable<string> ValidOsVersions()
         {
-            return this._validationsConfiguration.ValidOSVersions;
+            return _validationsConfiguration.ValidOSVersions;
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns>IEnumerable&lt;System.UInt32&gt;.</returns>
         public IEnumerable<uint> ValidOsSKU()
         {
-            return this._validationsConfiguration.ValidOSSkus;
+            return _validationsConfiguration.ValidOSSkus;
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns>IEnumerable&lt;System.String&gt;.</returns>
         public IEnumerable<string> InvalidFileNames()
         {
-            return this._validationsConfiguration.InvalidFilenames;
+            return _validationsConfiguration.InvalidFilenames;
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns>IEnumerable&lt;Configuration.CodePointRange&gt;.</returns>
         public IEnumerable<CodePointRange> WhitelistOfCodePointRanges()
         {
-            return this._validationsConfiguration.WhitelistOfCodePointRanges;
+            return _validationsConfiguration.WhitelistOfCodePointRanges;
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns>IEnumerable&lt;System.Int32&gt;.</returns>
         public IEnumerable<int> BlacklistOfCodePoints()
         {
-            return this._validationsConfiguration.BlacklistOfCodePoints;
+            return _validationsConfiguration.BlacklistOfCodePoints;
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns>System.Int32.</returns>
         public int MaximumFilenameLength()
         {
-            return this._validationsConfiguration.MaximumFilenameLength;
+            return _validationsConfiguration.MaximumFilenameLength;
         }
 
         /// <summary>
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns>System.Int64.</returns>
         public long MaximumFileSizeInBytes()
         {
-            return this._validationsConfiguration.MaximumFileSizeInBytes;
+            return _validationsConfiguration.MaximumFileSizeInBytes;
         }
 
         /// <summary>
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns>System.Int32.</returns>
         public int MaximumPathLength()
         {
-            return this._validationsConfiguration.MaximumPathLength;
+            return _validationsConfiguration.MaximumPathLength;
         }
 
         /// <summary>
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns>System.Int32.</returns>
         public int MaximumTreeDepth()
         {
-            return this._validationsConfiguration.MaximumTreeDepth;
+            return _validationsConfiguration.MaximumTreeDepth;
         }
 
         /// <summary>
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns>System.Int64.</returns>
         public long MaximumDatasetSizeInBytes()
         {
-            return this._validationsConfiguration.MaximumDatasetSizeInBytes;
+            return _validationsConfiguration.MaximumDatasetSizeInBytes;
         }
     }
 }

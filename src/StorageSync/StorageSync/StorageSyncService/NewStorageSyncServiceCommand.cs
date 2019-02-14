@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Models;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
 using System.Collections;
@@ -97,7 +98,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
         /// Gets or sets the action message.
         /// </summary>
         /// <value>The action message.</value>
-        protected override string ActionMessage => $"Create a new Storage Sync Service {Name}";
+        protected override string ActionMessage => $"{StorageSyncResources.NewStorageSyncServiceActionMessage} {Name}";
 
         /// <summary>
         /// Executes the cmdlet.
@@ -114,14 +115,16 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
 
                 if (!checkNameAvailabilityResult.NameAvailable.Value)
                 {
-                    throw new System.ArgumentException(checkNameAvailabilityResult.Message, nameof(Name));
+                    throw new PSArgumentException(checkNameAvailabilityResult.Message, nameof(Name));
                 }
 
-                StorageSyncServiceCreateParameters createParameters = new StorageSyncServiceCreateParameters()
+                var createParameters = new StorageSyncServiceCreateParameters()
                 {
                     Location = Location,
                     Tags = TagsConversionHelper.CreateTagDictionary(Tag ?? new Hashtable(), validate: true),
                 };
+
+                Target = string.Join("/", ResourceGroupName, Name);
                 if (ShouldProcess(Target, ActionMessage))
                 {
                     StorageSyncModels.StorageSyncService storageSyncService = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.Create(ResourceGroupName, Name, createParameters);

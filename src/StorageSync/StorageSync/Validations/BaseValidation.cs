@@ -58,10 +58,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
             ValidationType validationType,
             ValidationKind validationKind)
         {
-            this.DisplayName = validationName;
-            this.ValidationKind = validationKind;
-            this.ValidationType = validationType;
-            this.SuccessfulResult = ValidationResult.SuccessfullValidationResult(validationType, validationKind);
+            DisplayName = validationName;
+            ValidationKind = validationKind;
+            ValidationType = validationType;
+            SuccessfulResult = ValidationResult.SuccessfullValidationResult(validationType, validationKind);
         }
         #endregion
     }

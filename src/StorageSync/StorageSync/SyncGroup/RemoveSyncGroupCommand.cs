@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using System.Management.Automation;
@@ -141,7 +142,7 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
 
                     if (!string.Equals(StorageSyncConstants.SyncGroupType, resourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new PSArgumentException($"Invalid Argument {nameof(ResourceId)}", nameof(ResourceId));
+                        throw new PSArgumentException(StorageSyncResources.MissingResourceIdErrorMessage);
                     }
                     resourceName = resourceIdentifier.ResourceName;
                     resourceGroupName = resourceIdentifier.ResourceGroupName;
@@ -160,24 +161,11 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
                     parentResourceName = StorageSyncServiceName;
                 }
 
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    throw new PSArgumentException(nameof(ResourceGroupName));
-                }
-                else if (string.IsNullOrEmpty(parentResourceName))
-                {
-                    throw new PSArgumentException(nameof(StorageSyncServiceName));
-                }
-                else if (string.IsNullOrEmpty(resourceName))
-                {
-                    throw new PSArgumentException($"Invalid Argument {nameof(Name)}", nameof(Name));
-                }
-
-                Target = resourceName;
-                ActionMessage = "Remove Sync Group";
+                Target = string.Join("/", resourceGroupName, parentResourceName, resourceName);
+                ActionMessage = StorageSyncResources.RemoveSyncGroupActionMessage;
                 if (ShouldProcess(Target, ActionMessage))
                 {
-                    if (Force || ShouldContinue(string.Format("Remove Sync Group '{0}' and all content in it", resourceName), ""))
+                    if (Force || ShouldContinue(string.Format(StorageSyncResources.RemoveSyncGroupPromptFormat, Target), string.Empty))
                     {
                         StorageSyncClientWrapper.StorageSyncManagementClient.SyncGroups.Delete(resourceGroupName, parentResourceName, resourceName);
                     }

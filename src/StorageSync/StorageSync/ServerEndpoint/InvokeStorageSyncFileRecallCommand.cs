@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
@@ -148,12 +149,23 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
+        /// Gets or sets the target.
+        /// </summary>
+        /// <value>The target.</value>
+        protected override string Target => Name;
+
+        /// <summary>
+        /// Gets or sets the action message.
+        /// </summary>
+        /// <value>The action message.</value>
+        protected override string ActionMessage => StorageSyncResources.InvokeStorageSyncFileRecallActionMessage;
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
             ExecuteClientAction(() =>
             {
                 var resourceName = default(string);
@@ -190,13 +202,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     RecallPath = RecallPath
                 };
 
-                StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.RecallAction(
-                    resourceGroupName,
-                    storageSyncServiceName,
-                    parentResourceName,
-                    resourceName,
-                    recallActionParameters);
-                
+                Target = string.Join("/", resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);
+                if (ShouldProcess(Target, ActionMessage))
+                {
+                    StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.RecallAction(
+                        resourceGroupName,
+                        storageSyncServiceName,
+                        parentResourceName,
+                        resourceName,
+                        recallActionParameters);
+                }
+
             });
 
             if (PassThru.IsPresent)

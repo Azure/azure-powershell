@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Models;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
@@ -131,27 +132,15 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
 
                     if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new PSArgumentException(nameof(ParentResourceId));
+                        throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
                     }
                 }
 
                 var resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier?.ResourceGroupName;
-
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    throw new PSArgumentException(nameof(ResourceGroupName));
-                }
-
                 var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
+                var createParameters = new SyncGroupCreateParameters();
 
-                if (string.IsNullOrEmpty(parentResourceName))
-                {
-                    throw new PSArgumentException(nameof(StorageSyncServiceName));
-                }
-
-                var createParameters = new SyncGroupCreateParameters()
-                {
-                };
+                Target = string.Join("/", resourceGroupName, parentResourceName, Name);
                 if (ShouldProcess(Target, ActionMessage))
                 {
                     StorageSyncModels.SyncGroup syncGroup = StorageSyncClientWrapper.StorageSyncManagementClient.SyncGroups.Create(
