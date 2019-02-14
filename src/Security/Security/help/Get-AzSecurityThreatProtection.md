@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/get-azsecuritythreatprotection
 schema: 2.0.0
 ---
 
@@ -30,7 +30,6 @@ PS C:\> Get-AzSecurityThreatProtection -ResourceId "/subscriptions/cma24pc8-89b5
 ```
 
 This command gets the threat protection policy for resource id "/subscriptions/cma24pc8-89b5-4aa7-9ff6-486e886c304a/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/".
-```
 
 ## PARAMETERS
 
