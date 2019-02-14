@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Security.Models.ThreatProtection;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.AdvancedThreatProtection
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityThreatProtection", SupportsShouldProcess = true), OutputType(typeof(PSThreatProtection))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityThreatProtection", DefaultParameterSetName = ParameterSetNames.PolicyOn, SupportsShouldProcess = true), OutputType(typeof(PSThreatProtection))]
     public class SetThreatProtectionPolicy : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.PolicyOn, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ResourceId)]
