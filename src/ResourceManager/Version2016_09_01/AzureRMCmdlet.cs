@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             if (HasProperty<T>("ResourceId") || HasProperty<T>("Id"))
             {
                 string idProperty = HasProperty<T>("ResourceId") ? "ResourceId" : "Id";
-                if (resourceGroupName != null)
+                if (!string.IsNullOrEmpty(resourceGroupName))
                 {
                     WildcardPattern pattern = new WildcardPattern(resourceGroupName, WildcardOptions.IgnoreCase);
                     output = output.Select(t => new { Id = new ResourceIdentifier((string) GetPropertyValue(t, idProperty)), Resource = t })
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                    .Select(r => r.Resource);
                 }
 
-                if (name != null)
+                if (!string.IsNullOrEmpty(name))
                 {
                     WildcardPattern pattern = new WildcardPattern(name, WildcardOptions.IgnoreCase);
                     output = output.Select(t => new { Id = new ResourceIdentifier((string) GetPropertyValue(t, idProperty)), Resource = t })
@@ -417,14 +417,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             else
             {
                 // if ResourceGroupName property, filter resource group
-                if (HasProperty<T>("ResourceGroupName") && resourceGroupName != null)
+                if (HasProperty<T>("ResourceGroupName") && !string.IsNullOrEmpty(resourceGroupName))
                 {
                     WildcardPattern pattern = new WildcardPattern(resourceGroupName, WildcardOptions.IgnoreCase);
                     output = output.Where(t => IsMatch(t, "ResourceGroupName", pattern));
                 }
 
                 // if Name property, filter name
-                if (HasProperty<T>("Name") && name != null)
+                if (HasProperty<T>("Name") && !string.IsNullOrEmpty(name))
                 {
                     WildcardPattern pattern = new WildcardPattern(name, WildcardOptions.IgnoreCase);
                     output = output.Where(t => IsMatch(t, "Name", pattern));
@@ -436,30 +436,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public List<T> SubResourceWildcardFilter<T>(string name, IEnumerable<T> resources)
         {
-            IEnumerable<T> output = resources;
-            if (HasProperty<T>("ResourceId") || HasProperty<T>("Id"))
-            {
-                string idProperty = HasProperty<T>("ResourceId") ? "ResourceId" : "Id";
-                if (name != null)
-                {
-                    WildcardPattern pattern = new WildcardPattern(name, WildcardOptions.IgnoreCase);
-                    output = output.Select(t => new { Id = new ResourceIdentifier((string)GetPropertyValue(t, idProperty)), Resource = t })
-                                   .Where(p => IsMatch(p.Id, "ResourceName", pattern))
-                                   .Select(r => r.Resource);
-                }
-
-            }
-            else
-            {
-                // if Name property, filter name
-                if (HasProperty<T>("Name") && name != null)
-                {
-                    WildcardPattern pattern = new WildcardPattern(name, WildcardOptions.IgnoreCase);
-                    output = output.Where(t => IsMatch(t, "Name", pattern));
-                }
-            }
-
-            return output.ToList();
+            return TopLevelWildcardFilter(null, name, resources);
         }
 
         private bool HasProperty<T>(string property)
