@@ -19,30 +19,87 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
     using System.IO;
     using System.Text.RegularExpressions;
 
+    /// <summary>
+    /// Class AfsPath.
+    /// </summary>
     public class AfsPath
     {
+        /// <summary>
+        /// Enum PathKind
+        /// </summary>
         private enum PathKind
         {
+            /// <summary>
+            /// The invalid
+            /// </summary>
             Invalid,
+            /// <summary>
+            /// The simple drive
+            /// </summary>
             SimpleDrive,
+            /// <summary>
+            /// The ext drive
+            /// </summary>
             ExtDrive,
+            /// <summary>
+            /// The unc drive
+            /// </summary>
             UncDrive,
+            /// <summary>
+            /// The unc share
+            /// </summary>
             UncShare,
+            /// <summary>
+            /// The ext unc drive
+            /// </summary>
             ExtUncDrive,
+            /// <summary>
+            /// The ext unc share
+            /// </summary>
             ExtUncShare
         }
 
         #region Fields and Properties
+        /// <summary>
+        /// The full name
+        /// </summary>
         private readonly string _fullName;
+        /// <summary>
+        /// The path kind
+        /// </summary>
         private PathKind _pathKind;
+        /// <summary>
+        /// The computer name
+        /// </summary>
         private string _computerName;
+        /// <summary>
+        /// The share name
+        /// </summary>
         private string _shareName;
+        /// <summary>
+        /// The drive letter
+        /// </summary>
         private char _driveLetter;
+        /// <summary>
+        /// The length
+        /// </summary>
         private int? _length;
+        /// <summary>
+        /// The depth
+        /// </summary>
         private int? _depth;
+        /// <summary>
+        /// The origin
+        /// </summary>
         private string _origin;
+        /// <summary>
+        /// The path
+        /// </summary>
         private string _path;
 
+        /// <summary>
+        /// The path patterns
+        /// </summary>
         private static readonly Regex PathPatterns = new Regex(
             @"^(?:" +
             @"([a-zA-Z])\:|" +                                          // simpleDrive
@@ -61,6 +118,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             group 9,10  extuncServerShare       \\?\unc\server\share
          */
 
+        /// <summary>
+        /// Gets the drive letter.
+        /// </summary>
+        /// <value>The drive letter.</value>
         public char? DriveLetter
         {
             get
@@ -74,10 +135,22 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             }
         }
 
+        /// <summary>
+        /// Gets the name of the computer.
+        /// </summary>
+        /// <value>The name of the computer.</value>
         public string ComputerName => this._computerName;
 
+        /// <summary>
+        /// Gets the name of the share.
+        /// </summary>
+        /// <value>The name of the share.</value>
         public string ShareName => this._shareName;
 
+        /// <summary>
+        /// Gets the length.
+        /// </summary>
+        /// <value>The length.</value>
         public int Length
         {
             get
@@ -106,6 +179,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             }
         }
 
+        /// <summary>
+        /// Gets the depth.
+        /// </summary>
+        /// <value>The depth.</value>
         public int Depth
         {
             get
@@ -127,6 +204,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AfsPath"/> class.
+        /// </summary>
+        /// <param name="fullName">The full name.</param>
+        /// <exception cref="ArgumentException">Invalid path - fullName</exception>
         public AfsPath(string fullName)
         {
             this._fullName = fullName;
@@ -147,6 +229,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 
 
         #region Private methods
+        /// <summary>
+        /// Tries the parse path.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="pathKind">Kind of the path.</param>
+        /// <param name="origin">The origin.</param>
+        /// <param name="dataPath">The data path.</param>
+        /// <param name="computerName">Name of the computer.</param>
+        /// <param name="shareName">Name of the share.</param>
+        /// <param name="driveLetter">The drive letter.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private static bool TryParsePath(string path, out PathKind pathKind, out string origin, out string dataPath, out string computerName, out string shareName, out char driveLetter)
         {
             computerName = null;

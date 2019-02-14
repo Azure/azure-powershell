@@ -16,11 +16,30 @@ using System;
 
 namespace Microsoft.Azure.Commands.StorageSync.Models
 {
+    /// <summary>
+    /// Class PSSyncSessionStatus.
+    /// </summary>
     public class PSSyncSessionStatus
     {
+        /// <summary>
+        /// Gets or sets the last synchronize result.
+        /// </summary>
+        /// <value>The last synchronize result.</value>
         public int? LastSyncResult { get; set; }
+        /// <summary>
+        /// Gets or sets the last synchronize timestamp.
+        /// </summary>
+        /// <value>The last synchronize timestamp.</value>
         public DateTime? LastSyncTimestamp { get; set; }
+        /// <summary>
+        /// Gets or sets the last synchronize success timestamp.
+        /// </summary>
+        /// <value>The last synchronize success timestamp.</value>
         public DateTime? LastSyncSuccessTimestamp { get; set; }
+        /// <summary>
+        /// Gets or sets the last synchronize per item error count.
+        /// </summary>
+        /// <value>The last synchronize per item error count.</value>
         public int? LastSyncPerItemErrorCount { get; set; }
     }
 }

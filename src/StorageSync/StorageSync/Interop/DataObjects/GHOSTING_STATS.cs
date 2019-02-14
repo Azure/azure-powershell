@@ -17,16 +17,43 @@ namespace Commands.StorageSync.Interop.DataObjects
     using System;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Struct GHOSTING_STATS
+    /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct GHOSTING_STATS
     {
+        /// <summary>
+        /// The tiered count
+        /// </summary>
         public UInt32 TieredCount;
+        /// <summary>
+        /// The already tiered count
+        /// </summary>
         public UInt32 AlreadyTieredCount;
+        /// <summary>
+        /// The skipped for size count
+        /// </summary>
         public UInt32 SkippedForSizeCount;
+        /// <summary>
+        /// The skipped for age count
+        /// </summary>
         public UInt32 SkippedForAgeCount;
+        /// <summary>
+        /// The skipped for unsupported reparse point count
+        /// </summary>
         public UInt32 SkippedForUnsupportedReparsePointCount;
+        /// <summary>
+        /// The failed to tier count
+        /// </summary>
         public UInt32 FailedToTierCount;
+        /// <summary>
+        /// The reclaimed space bytes
+        /// </summary>
         public UInt64 ReclaimedSpaceBytes;
+        /// <summary>
+        /// The skipped for stable version failure
+        /// </summary>
         public UInt64 SkippedForStableVersionFailure;
     }
 

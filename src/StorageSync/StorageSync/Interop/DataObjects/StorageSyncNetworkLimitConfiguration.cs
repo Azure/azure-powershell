@@ -19,8 +19,17 @@ namespace Commands.StorageSync.Interop.DataObjects
 
 
 
+    /// <summary>
+    /// Class StorageSyncNetworkLimitConfiguration.
+    /// Implements the <see cref="Commands.StorageSync.Interop.Interfaces.INetworkLimitConfigEntry" />
+    /// </summary>
+    /// <seealso cref="Commands.StorageSync.Interop.Interfaces.INetworkLimitConfigEntry" />
     public class StorageSyncNetworkLimitConfiguration : INetworkLimitConfigEntry
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageSyncNetworkLimitConfiguration"/> class.
+        /// </summary>
+        /// <param name="entry">The entry.</param>
         public StorageSyncNetworkLimitConfiguration(INetworkLimitConfigEntry entry = null)
         {
             if (entry != null)
@@ -35,18 +44,46 @@ namespace Commands.StorageSync.Interop.DataObjects
             }
         }
 
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         public string Id { get; set; }
 
+        /// <summary>
+        /// Gets or sets the day.
+        /// </summary>
+        /// <value>The day.</value>
         public DayOfWeek Day { get; set; }
 
+        /// <summary>
+        /// Gets or sets the start hour.
+        /// </summary>
+        /// <value>The start hour.</value>
         public uint StartHour { get; set; }
 
+        /// <summary>
+        /// Gets or sets the start minute.
+        /// </summary>
+        /// <value>The start minute.</value>
         public uint StartMinute { get; set; }
 
+        /// <summary>
+        /// Gets or sets the end hour.
+        /// </summary>
+        /// <value>The end hour.</value>
         public uint EndHour { get; set; }
 
+        /// <summary>
+        /// Gets or sets the end minute.
+        /// </summary>
+        /// <value>The end minute.</value>
         public uint EndMinute { get; set; }
 
+        /// <summary>
+        /// Gets or sets the limit KBPS.
+        /// </summary>
+        /// <value>The limit KBPS.</value>
         public uint LimitKbps { get; set; }
     }
 }

@@ -17,9 +17,18 @@ namespace Commands.StorageSync.Interop.Enums
     using System;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Enum GarbageCollectionMode
+    /// </summary>
     public enum GarbageCollectionMode : UInt32
     {
+        /// <summary>
+        /// The shallow
+        /// </summary>
         Shallow = 0,
+        /// <summary>
+        /// The full
+        /// </summary>
         Full
     }
 }

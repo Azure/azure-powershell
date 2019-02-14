@@ -14,14 +14,38 @@
 
 namespace Commands.StorageSync.Interop.Enums
 {
+    /// <summary>
+    /// Enum RpcAuthnLevel
+    /// </summary>
     public enum RpcAuthnLevel
     {
+        /// <summary>
+        /// The default
+        /// </summary>
         Default = 0,
+        /// <summary>
+        /// The none
+        /// </summary>
         None = 1,
+        /// <summary>
+        /// The connect
+        /// </summary>
         Connect = 2,
+        /// <summary>
+        /// The call
+        /// </summary>
         Call = 3,
+        /// <summary>
+        /// The PKT
+        /// </summary>
         Pkt = 4,
+        /// <summary>
+        /// The PKT integrity
+        /// </summary>
         PktIntegrity = 5,
+        /// <summary>
+        /// The PKT privacy
+        /// </summary>
         PktPrivacy = 6
     }
 }

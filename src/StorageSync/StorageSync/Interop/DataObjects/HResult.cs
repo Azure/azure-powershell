@@ -19,6 +19,9 @@ using System.Threading.Tasks;
 
 namespace Commands.StorageSync.Interop.DataObjects
 {
+    /// <summary>
+    /// Class HResult.
+    /// </summary>
     public static class HResult
     {
         /// <summary>
@@ -26,6 +29,7 @@ namespace Commands.StorageSync.Interop.DataObjects
         /// Definition as per Essential COM by Don Box page 42
         /// </summary>
         /// <param name="hresult">code to analyze</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static bool Succeeded(int hresult)
         {
             return (hresult >= 0);
@@ -36,6 +40,7 @@ namespace Commands.StorageSync.Interop.DataObjects
         /// Definition as per Essential COM by Don Box page 42
         /// </summary>
         /// <param name="hresult">code to analyze</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static bool Failed(int hresult)
         {
             return (hresult < 0);

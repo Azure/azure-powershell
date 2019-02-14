@@ -19,15 +19,27 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Models;
 
+    /// <summary>
+    /// Class PSValidationResultOutputWriter.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.IOutputWriter" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.IOutputWriter" />
     class PSValidationResultOutputWriter : IOutputWriter
     {
         #region Fields and Properties
 
+        /// <summary>
+        /// Gets the validation.
+        /// </summary>
+        /// <value>The validation.</value>
         public PSStorageSyncValidation Validation { get; private set; }
 
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PSValidationResultOutputWriter"/> class.
+        /// </summary>
         public PSValidationResultOutputWriter()
         {
             this.Validation = new PSStorageSyncValidation();
@@ -36,6 +48,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
 
         #region Public methods
 
+        /// <summary>
+        /// Writes the specified validation result.
+        /// </summary>
+        /// <param name="validationResult">The validation result.</param>
+        /// <exception cref="ArgumentException"></exception>
         public void Write(IValidationResult validationResult)
         {
             switch (validationResult.Kind)

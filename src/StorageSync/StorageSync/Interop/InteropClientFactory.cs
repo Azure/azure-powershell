@@ -17,13 +17,26 @@ using Commands.StorageSync.Interop.Interfaces;
 
 namespace Commands.StorageSync.Interop
 {
+    /// <summary>
+    /// Class InteropClientFactory.
+    /// </summary>
     public static class InteropClientFactory
     {
+        /// <summary>
+        /// Creates the ecs management.
+        /// </summary>
+        /// <param name="isTestMode">if set to <c>true</c> [is test mode].</param>
+        /// <returns>IEcsManagement.</returns>
         public static IEcsManagement CreateEcsManagement(bool isTestMode)
         {
             return isTestMode ? new EcsManagementInteropClientPlayback() as IEcsManagement : new EcsManagementInteropClient();
         }
 
+        /// <summary>
+        /// Creates the synchronize server registration client.
+        /// </summary>
+        /// <param name="ecsManagementClient">The ecs management client.</param>
+        /// <returns>ISyncServerRegistration.</returns>
         public static ISyncServerRegistration CreateSyncServerRegistrationClient(IEcsManagement ecsManagementClient)
         {
             return new SyncServerRegistrationClient(ecsManagementClient);

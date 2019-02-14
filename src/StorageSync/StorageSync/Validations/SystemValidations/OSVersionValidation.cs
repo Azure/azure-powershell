@@ -6,18 +6,45 @@
     using System.Management.Automation;
     using Interfaces;
 
+    /// <summary>
+    /// Class OSVersionValidation.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidations.SystemValidationBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidations.SystemValidationBase" />
     public class OSVersionValidation : SystemValidationBase
     {
         #region Fields and Properties
+        /// <summary>
+        /// The osversions
+        /// </summary>
         private readonly Dictionary<string, string> _osversions;
+        /// <summary>
+        /// The editions
+        /// </summary>
         private readonly Dictionary<uint, string> _editions;
+        /// <summary>
+        /// The valid os versions
+        /// </summary>
         private readonly IList<string> _validOsVersions;
+        /// <summary>
+        /// The valid os skus
+        /// </summary>
         private readonly IList<uint> _validOsSkus;
+        /// <summary>
+        /// The supported versions string
+        /// </summary>
         private readonly string _supportedVersionsString;
+        /// <summary>
+        /// The supported editions strings
+        /// </summary>
         private readonly string _supportedEditionsStrings;
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OSVersionValidation"/> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
         public OSVersionValidation(IConfiguration configuration) : base(configuration, "OS version check", ValidationType.OsVersion)
         {
             this._osversions = new Dictionary<string, string>();
@@ -66,6 +93,11 @@
         #endregion
 
         #region Protected methods
+        /// <summary>
+        /// Does the validate using.
+        /// </summary>
+        /// <param name="commandRunner">The command runner.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidateUsing(IPowershellCommandRunner commandRunner)
         {
             string osVersion;
@@ -116,6 +148,11 @@
         #endregion
 
         #region Private methods
+        /// <summary>
+        /// Determines whether [is valid version] [the specified os version].
+        /// </summary>
+        /// <param name="osVersion">The os version.</param>
+        /// <returns><c>true</c> if [is valid version] [the specified os version]; otherwise, <c>false</c>.</returns>
         private bool IsValidVersion(string osVersion)
         {
             foreach (string supportedOsVersion in this._validOsVersions)
@@ -129,6 +166,11 @@
             return false;
         }
 
+        /// <summary>
+        /// Determines whether [is valid sku] [the specified sku].
+        /// </summary>
+        /// <param name="sku">The sku.</param>
+        /// <returns><c>true</c> if [is valid sku] [the specified sku]; otherwise, <c>false</c>.</returns>
         private bool IsValidSKU(uint sku)
         {
             return this._validOsSkus.Contains(sku);

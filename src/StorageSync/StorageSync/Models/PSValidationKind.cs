@@ -14,9 +14,18 @@
 
 namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
 {
+    /// <summary>
+    /// Enum PSValidationKind
+    /// </summary>
     public enum PSValidationKind
     {
+        /// <summary>
+        /// The system validation
+        /// </summary>
         SystemValidation,
+        /// <summary>
+        /// The namespace validation
+        /// </summary>
         NamespaceValidation
     }
 }

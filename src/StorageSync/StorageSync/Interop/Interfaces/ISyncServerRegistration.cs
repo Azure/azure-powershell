@@ -19,8 +19,10 @@ using System;
 namespace Commands.StorageSync.Interop.Interfaces
 {
     /// <summary>
-    /// 
+    /// Interface ISyncServerRegistration
+    /// Implements the <see cref="System.IDisposable" />
     /// </summary>
+    /// <seealso cref="System.IDisposable" />
     public interface ISyncServerRegistration : IDisposable
     {
         /// <summary>
@@ -57,11 +59,11 @@ namespace Commands.StorageSync.Interop.Interfaces
         /// <summary>
         /// This function processes the unregistration of the server and performs following steps:
         /// 1. Delete all server endpoints (sync folders)
-        /// 2. Delete server registration 
+        /// 2. Delete server registration
         /// 3. (Optional) delete cluster registration
-        /// 
         /// Note: this unregistration path if offline only.
         /// </summary>
+        /// <param name="cleanClusterRegistration">if set to <c>true</c> [clean cluster registration].</param>
         void ResetSyncServerConfiguration(bool cleanClusterRegistration);
     }
 }

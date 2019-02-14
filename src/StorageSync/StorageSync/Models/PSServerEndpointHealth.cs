@@ -16,15 +16,50 @@ using System;
 
 namespace Microsoft.Azure.Commands.StorageSync.Models
 {
+    /// <summary>
+    /// Class PSServerEndpointHealth.
+    /// </summary>
     public class PSServerEndpointHealth
     {
+        /// <summary>
+        /// Gets or sets the download health.
+        /// </summary>
+        /// <value>The download health.</value>
         public string DownloadHealth { get; set; }
+        /// <summary>
+        /// Gets or sets the upload health.
+        /// </summary>
+        /// <value>The upload health.</value>
         public string UploadHealth { get; set; }
+        /// <summary>
+        /// Gets or sets the combined health.
+        /// </summary>
+        /// <value>The combined health.</value>
         public string CombinedHealth { get; set; }
+        /// <summary>
+        /// Gets or sets the last updated timestamp.
+        /// </summary>
+        /// <value>The last updated timestamp.</value>
         public DateTime? LastUpdatedTimestamp { get; set; }
+        /// <summary>
+        /// Gets or sets the upload status.
+        /// </summary>
+        /// <value>The upload status.</value>
         public PSSyncSessionStatus UploadStatus { get; set; }
+        /// <summary>
+        /// Gets or sets the download status.
+        /// </summary>
+        /// <value>The download status.</value>
         public PSSyncSessionStatus DownloadStatus { get; set; }
+        /// <summary>
+        /// Gets or sets the current progress.
+        /// </summary>
+        /// <value>The current progress.</value>
         public PSSyncProgressStatus CurrentProgress { get; set; }
+        /// <summary>
+        /// Gets or sets the offline data transfer status.
+        /// </summary>
+        /// <value>The offline data transfer status.</value>
         public string OfflineDataTransferStatus { get; set; }
     }
 }

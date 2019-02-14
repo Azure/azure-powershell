@@ -27,9 +27,18 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
 
+    /// <summary>
+    /// Class ResetServerCertificateCommand.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     [Cmdlet(VerbsCommon.Reset, StorageSyncNouns.NounAzureRmStorageSyncServerCertificate, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class ResetServerCertificateCommand : StorageSyncClientCmdletBase
     {
+        /// <summary>
+        /// Gets or sets the name of the resource group.
+        /// </summary>
+        /// <value>The name of the resource group.</value>
         [Parameter(
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -40,6 +49,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the storage synchronize service.
+        /// </summary>
+        /// <value>The name of the storage synchronize service.</value>
         [Parameter(
            Position = 1,
            ParameterSetName =StorageSyncParameterSets.StringParameterSet,
@@ -51,6 +64,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.ParentNameAlias)]
         public string StorageSyncServiceName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the parent object.
+        /// </summary>
+        /// <value>The parent object.</value>
         [Parameter(
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.ObjectParameterSet,
@@ -61,6 +78,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.StorageSyncServiceAlias)]
         public PSStorageSyncService ParentObject { get; set; }
 
+        /// <summary>
+        /// Gets or sets the parent resource identifier.
+        /// </summary>
+        /// <value>The parent resource identifier.</value>
         [Parameter(
           Position = 0,
           ParameterSetName = StorageSyncParameterSets.ParentStringParameterSet,
@@ -72,13 +93,28 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.StorageSyncServiceIdAlias)]
         public string ParentResourceId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the pass thru.
+        /// </summary>
+        /// <value>The pass thru.</value>
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
+        /// <summary>
+        /// Gets or sets the target.
+        /// </summary>
+        /// <value>The target.</value>
         protected override string Target => StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? ParentResourceId;
 
+        /// <summary>
+        /// Gets or sets the action message.
+        /// </summary>
+        /// <value>The action message.</value>
         protected override string ActionMessage => $"Reset Server Certificate for Storage sync service {StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? ParentResourceId}";
 
+        /// <summary>
+        /// Executes the cmdlet.
+        /// </summary>
         public override void ExecuteCmdlet()
         {
 
@@ -123,6 +159,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 WriteObject(true);
             }
         }
+        /// <summary>
+        /// Triggers the certificate rollover.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="storageSyncServiceName">Name of the storage synchronize service.</param>
         private void TriggerCertificateRollover(string resourceGroupName, Guid subscriptionId, string storageSyncServiceName)
         {
             using (ISyncServerCertificateRollover certificateRolloverClient = new SyncServerCertificateRolloverClient(InteropClientFactory.CreateEcsManagement(IsPlaybackMode)))
@@ -139,8 +181,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <summary>
         /// Triggers certificate rollover workflow on service
         /// </summary>
-        /// <param name="certificateData"> certificate to add </param>
-        /// <param name="serverId"> serverId</param>
+        /// <param name="certificateData">certificate to add</param>
+        /// <param name="serverId">serverId</param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="storageSyncServiceName">Name of the storage synchronize service.</param>
         private void PerformTriggerRolloverInCloud(string certificateData, Guid serverId, string resourceGroupName, string storageSyncServiceName)
         {
             WriteVerbose("Triggering certificate rollover on service");

@@ -17,10 +17,22 @@ namespace Commands.StorageSync.Interop.Enums
     using System;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Enum RecallResult
+    /// </summary>
     public enum RecallResult
     {
+        /// <summary>
+        /// The recall succeeded
+        /// </summary>
         RECALL_SUCCEEDED = 1,
+        /// <summary>
+        /// The recall failed
+        /// </summary>
         RECALL_FAILED = 2,
+        /// <summary>
+        /// The recall skipped
+        /// </summary>
         RECALL_SKIPPED = 3
     }
 

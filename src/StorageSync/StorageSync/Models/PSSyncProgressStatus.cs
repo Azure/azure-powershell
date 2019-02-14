@@ -16,14 +16,45 @@ using System;
 
 namespace Microsoft.Azure.Commands.StorageSync.Models
 {
+    /// <summary>
+    /// Class PSSyncProgressStatus.
+    /// </summary>
     public class PSSyncProgressStatus
     {
+        /// <summary>
+        /// Gets or sets the progress timestamp.
+        /// </summary>
+        /// <value>The progress timestamp.</value>
         public DateTime? ProgressTimestamp { get; set; }
+        /// <summary>
+        /// Gets or sets the synchronize direction.
+        /// </summary>
+        /// <value>The synchronize direction.</value>
         public string SyncDirection { get; set; }
+        /// <summary>
+        /// Gets or sets the per item error count.
+        /// </summary>
+        /// <value>The per item error count.</value>
         public int? PerItemErrorCount { get; set; }
+        /// <summary>
+        /// Gets or sets the applied item count.
+        /// </summary>
+        /// <value>The applied item count.</value>
         public int? AppliedItemCount { get; set; }
+        /// <summary>
+        /// Gets or sets the total item count.
+        /// </summary>
+        /// <value>The total item count.</value>
         public int? TotalItemCount { get; set; }
+        /// <summary>
+        /// Gets or sets the applied bytes.
+        /// </summary>
+        /// <value>The applied bytes.</value>
         public int? AppliedBytes { get; set; }
+        /// <summary>
+        /// Gets or sets the total bytes.
+        /// </summary>
+        /// <value>The total bytes.</value>
         public int? TotalBytes { get; set; }
     }
 }

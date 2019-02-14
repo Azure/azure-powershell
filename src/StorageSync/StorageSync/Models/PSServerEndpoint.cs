@@ -14,20 +14,77 @@
 
 namespace Microsoft.Azure.Commands.StorageSync.Models
 {
+    /// <summary>
+    /// Class PSServerEndpoint.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Models.PSResourceBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Models.PSResourceBase" />
     public class PSServerEndpoint : PSResourceBase
     {
+        /// <summary>
+        /// Gets or sets the name of the synchronize group.
+        /// </summary>
+        /// <value>The name of the synchronize group.</value>
         public string SyncGroupName { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the storage synchronize service.
+        /// </summary>
+        /// <value>The name of the storage synchronize service.</value>
         public string StorageSyncServiceName { get; set; }
+        /// <summary>
+        /// Gets or sets the server local path.
+        /// </summary>
+        /// <value>The server local path.</value>
         public string ServerLocalPath { get; set; }
+        /// <summary>
+        /// Gets or sets the server resource identifier.
+        /// </summary>
+        /// <value>The server resource identifier.</value>
         public string ServerResourceId { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the server endpoint.
+        /// </summary>
+        /// <value>The name of the server endpoint.</value>
         public string ServerEndpointName { get; set; }
+        /// <summary>
+        /// Gets or sets the state of the provisioning.
+        /// </summary>
+        /// <value>The state of the provisioning.</value>
         public string ProvisioningState { get; set; }
+        /// <summary>
+        /// Gets or sets the last workflow identifier.
+        /// </summary>
+        /// <value>The last workflow identifier.</value>
         public string LastWorkflowId { get; set; }
+        /// <summary>
+        /// Gets or sets the last name of the operation.
+        /// </summary>
+        /// <value>The last name of the operation.</value>
         public string LastOperationName { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the friendly.
+        /// </summary>
+        /// <value>The name of the friendly.</value>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// Gets or sets the synchronize status.
+        /// </summary>
+        /// <value>The synchronize status.</value>
         public PSServerEndpointHealth SyncStatus { get; set; }
+        /// <summary>
+        /// Gets or sets the cloud tiering.
+        /// </summary>
+        /// <value>The cloud tiering.</value>
         public string CloudTiering { get; set; }
+        /// <summary>
+        /// Gets or sets the volume free space percent.
+        /// </summary>
+        /// <value>The volume free space percent.</value>
         public int? VolumeFreeSpacePercent { get; set; }
+        /// <summary>
+        /// Gets or sets the tier files older than days.
+        /// </summary>
+        /// <value>The tier files older than days.</value>
         public int? TierFilesOlderThanDays { get; set; }
     }
 }

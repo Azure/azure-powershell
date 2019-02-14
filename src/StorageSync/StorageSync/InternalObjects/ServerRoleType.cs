@@ -14,13 +14,25 @@
 
 namespace Microsoft.Azure.Commands.StorageSync.InternalObjects
 {
+    /// <summary>
+    /// Enum ServerRoleType
+    /// </summary>
     public enum ServerRoleType
     {
         // Stadalone server, not participating in a cluster
+        /// <summary>
+        /// The standalone
+        /// </summary>
         Standalone = 0,
         // A node in a cluster
+        /// <summary>
+        /// The cluster node
+        /// </summary>
         ClusterNode,
         // The CNO of a cluster
+        /// <summary>
+        /// The cluster name
+        /// </summary>
         ClusterName
     }
 }

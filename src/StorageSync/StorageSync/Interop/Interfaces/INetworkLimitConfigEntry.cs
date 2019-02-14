@@ -17,47 +17,78 @@ using System.Runtime.InteropServices;
 
 namespace Commands.StorageSync.Interop.Interfaces
 {
+    /// <summary>
+    /// Interface INetworkLimitConfigEntry
+    /// </summary>
     [ComImport]
     [Guid("D8875569-2376-42B6-B2BA-3722F88F77F7"),
      InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INetworkLimitConfigEntry
     {
+        /// <summary>
+        /// Gets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         string Id
         {
             [return: MarshalAs(UnmanagedType.BStr)]
             get;
         }
 
+        /// <summary>
+        /// Gets the day.
+        /// </summary>
+        /// <value>The day.</value>
         DayOfWeek Day
         {
             [return: MarshalAs(UnmanagedType.U4)]
             get;
         }
 
+        /// <summary>
+        /// Gets the start hour.
+        /// </summary>
+        /// <value>The start hour.</value>
         uint StartHour
         {
             [return: MarshalAs(UnmanagedType.U4)]
             get;
         }
 
+        /// <summary>
+        /// Gets the start minute.
+        /// </summary>
+        /// <value>The start minute.</value>
         uint StartMinute
         {
             [return: MarshalAs(UnmanagedType.U4)]
             get;
         }
 
+        /// <summary>
+        /// Gets the end hour.
+        /// </summary>
+        /// <value>The end hour.</value>
         uint EndHour
         {
             [return: MarshalAs(UnmanagedType.U4)]
             get;
         }
 
+        /// <summary>
+        /// Gets the end minute.
+        /// </summary>
+        /// <value>The end minute.</value>
         uint EndMinute
         {
             [return: MarshalAs(UnmanagedType.U4)]
             get;
         }
 
+        /// <summary>
+        /// Gets the limit KBPS.
+        /// </summary>
+        /// <value>The limit KBPS.</value>
         uint LimitKbps
         {
             [return: MarshalAs(UnmanagedType.U4)]

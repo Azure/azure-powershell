@@ -24,21 +24,27 @@ namespace Commands.StorageSync.Interop.Clients
     /// <summary>
     /// Abstract class for ISyncServerRegistration interface.
     /// Base class for Sync Server Registration Client
+    /// Implements the <see cref="Commands.StorageSync.Interop.Interfaces.ISyncServerRegistration" />
     /// </summary>
+    /// <seealso cref="Commands.StorageSync.Interop.Interfaces.ISyncServerRegistration" />
     public abstract class SyncServerRegistrationClientBase : ISyncServerRegistration
     {
 
+        /// <summary>
+        /// The m is disposed
+        /// </summary>
         private bool m_isDisposed;
 
         /// <summary>
         /// ECS Management Interop Client
         /// </summary>
+        /// <value>The ecs management interop client.</value>
         protected IEcsManagement EcsManagementInteropClient { get; private set; }
 
         /// <summary>
         /// Parameter constructor for SyncServerRegistrationClientBase
         /// </summary>
-        /// <param name="ecsManagementInteropClient"></param>
+        /// <param name="ecsManagementInteropClient">The ecs management interop client.</param>
         public SyncServerRegistrationClientBase(IEcsManagement ecsManagementInteropClient)
         {
             EcsManagementInteropClient = ecsManagementInteropClient;
@@ -122,6 +128,8 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="agentVersion">Agent Version</param>
         /// <param name="registerOnlineCallback">Register Online Callback</param>
         /// <returns>Registered Server Resource</returns>
+        /// <exception cref="ServerRegistrationException">
+        /// </exception>
         public RegisteredServer Register(
             Uri managementEndpointUri,
             Guid subscriptionId,
@@ -163,9 +171,8 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// This method will clean all of the AFS management configuration on the server. 
+        /// This method will clean all of the AFS management configuration on the server.
         /// This includes all server endpoints (sync folders), the server registration, and the cluster registration (if desired).
-        /// 
         /// Note: this unregistration path if offline only.
         /// </summary>
         /// <param name="cleanClusterRegistration">Specify if the cluster registration should be cleaned.</param>

@@ -16,13 +16,25 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 {
     using Interfaces;
 
+    /// <summary>
+    /// Class MaximumPathLengthValidation.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
     public class MaximumPathLengthValidation : NamespaceValidationBase
     {
         #region Fields and Properties
+        /// <summary>
+        /// The maximum path length
+        /// </summary>
         private readonly int _maxPathLength;
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MaximumPathLengthValidation"/> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
         public MaximumPathLengthValidation(IConfiguration configuration) : base(configuration, "Files/Directories over the path length limit", ValidationType.PathLength)
         {
             this._maxPathLength = configuration.MaximumPathLength();
@@ -30,11 +42,21 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         #endregion
 
         #region Protected methods
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IFileInfo node)
         {
             return this.ValidateInternal(node);
         }
 
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IDirectoryInfo node)
         {
             return this.ValidateInternal(node);
@@ -42,6 +64,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         #endregion
 
         #region Private methods
+        /// <summary>
+        /// Validates the internal.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         private IValidationResult ValidateInternal(INamedObjectInfo node)
         {
             AfsPath path = new AfsPath(node.FullName);

@@ -17,20 +17,53 @@ using System.Runtime.InteropServices;
 
 namespace Commands.StorageSync.Interop.DataObjects
 {
+    /// <summary>
+    /// Struct WIN32_FIND_DATA
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     public struct WIN32_FIND_DATA
     {
+        /// <summary>
+        /// The dw file attributes
+        /// </summary>
         public FileAttributes dwFileAttributes;
+        /// <summary>
+        /// The ft creation time
+        /// </summary>
         public FILETIME ftCreationTime;
+        /// <summary>
+        /// The ft last access time
+        /// </summary>
         public FILETIME ftLastAccessTime;
+        /// <summary>
+        /// The ft last write time
+        /// </summary>
         public FILETIME ftLastWriteTime;
+        /// <summary>
+        /// The n file size high
+        /// </summary>
         public int nFileSizeHigh;
+        /// <summary>
+        /// The n file size low
+        /// </summary>
         public int nFileSizeLow;
+        /// <summary>
+        /// The dw reserved0
+        /// </summary>
         public int dwReserved0;
+        /// <summary>
+        /// The dw reserved1
+        /// </summary>
         public int dwReserved1;
+        /// <summary>
+        /// The c file name
+        /// </summary>
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = ManagementInteropConstants.MAX_PATH)]
         public string cFileName;
         // not using this
+        /// <summary>
+        /// The c alternate
+        /// </summary>
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 14)]
         public string cAlternate;
     }

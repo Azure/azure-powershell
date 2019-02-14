@@ -23,9 +23,18 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
+    /// <summary>
+    /// Class GetServerEndpointCommand.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     [Cmdlet(VerbsCommon.Get, StorageSyncNouns.NounAzureRmStorageSyncServerEndpoint, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet), OutputType(typeof(PSServerEndpoint))]
     public class GetServerEndpointCommand : StorageSyncClientCmdletBase
     {
+        /// <summary>
+        /// Gets or sets the name of the resource group.
+        /// </summary>
+        /// <value>The name of the resource group.</value>
         [Parameter(
            Position = 0,
             ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -36,6 +45,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the storage synchronize service.
+        /// </summary>
+        /// <value>The name of the storage synchronize service.</value>
         [Parameter(
              Position = 1,
              ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -47,6 +60,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.ParentNameAlias)]
         public string StorageSyncServiceName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the synchronize group.
+        /// </summary>
+        /// <value>The name of the synchronize group.</value>
         [Parameter(
             Position = 2,
             ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -57,6 +74,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         public string SyncGroupName { get; set; }
 
 
+        /// <summary>
+        /// Gets or sets the parent object.
+        /// </summary>
+        /// <value>The parent object.</value>
         [Parameter(
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.ObjectParameterSet,
@@ -67,6 +88,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.SyncGroupAlias)]
         public PSSyncGroup ParentObject { get; set; }
 
+        /// <summary>
+        /// Gets or sets the parent resource identifier.
+        /// </summary>
+        /// <value>The parent resource identifier.</value>
         [Parameter(
           Position = 0,
           ParameterSetName = StorageSyncParameterSets.ParentStringParameterSet,
@@ -77,6 +102,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.SyncGroupIdAlias)]
         public string ParentResourceId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>The name.</value>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.ServerEndpointNameParameter)]
@@ -84,6 +113,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.ServerEndpointNameAlias)]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Executes the cmdlet.
+        /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

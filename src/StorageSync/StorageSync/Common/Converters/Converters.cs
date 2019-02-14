@@ -20,11 +20,26 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
+    /// <summary>
+    /// Interface IConverter
+    /// </summary>
     public interface IConverter
     {
+        /// <summary>
+        /// Converts the specified resource.
+        /// </summary>
+        /// <param name="resource">The resource.</param>
+        /// <returns>System.Object.</returns>
         object Convert(object resource);
     }
 
+    /// <summary>
+    /// Interface IConverter
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.IConverter" />
+    /// </summary>
+    /// <typeparam name="P"></typeparam>
+    /// <typeparam name="T"></typeparam>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.IConverter" />
     public interface IConverter<P, T> : IConverter
         where P : class, new()
         where T : class, new()
@@ -32,12 +47,29 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         //where P : PSResourceBase
         //where T : StorageSyncModels.Resource
     {
+        /// <summary>
+        /// Converts the specified resource.
+        /// </summary>
+        /// <param name="resource">The resource.</param>
+        /// <returns>P.</returns>
         P Convert(T resource);
 
+        /// <summary>
+        /// Converts the specified ps resource.
+        /// </summary>
+        /// <param name="psResource">The ps resource.</param>
+        /// <returns>T.</returns>
         T Convert(P psResource);
 
     }
 
+    /// <summary>
+    /// Class ConverterBase.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.IConverter{P, T}" />
+    /// </summary>
+    /// <typeparam name="P"></typeparam>
+    /// <typeparam name="T"></typeparam>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.IConverter{P, T}" />
     public abstract class ConverterBase<P, T> : IConverter<P, T>
         //where P : PSResourceBase, new()
         //where T : StorageSyncModels.Resource, new()
@@ -45,14 +77,32 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         where T : class, new()
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConverterBase{P, T}"/> class.
+        /// </summary>
         public ConverterBase()
         {
         }
 
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>T.</returns>
         protected abstract T Transform(P source);
 
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>P.</returns>
         protected abstract P Transform(T source);
 
+        /// <summary>
+        /// Converts the specified resource.
+        /// </summary>
+        /// <param name="resource">The resource.</param>
+        /// <returns>P.</returns>
         public P Convert(T resource)
         {
             if (resource != null)
@@ -64,6 +114,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 
         }
 
+        /// <summary>
+        /// Converts the specified ps resource.
+        /// </summary>
+        /// <param name="psResource">The ps resource.</param>
+        /// <returns>T.</returns>
         public T Convert(P psResource)
         {
             if (psResource != null)
@@ -75,6 +130,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 
         }
 
+        /// <summary>
+        /// Converts the specified resource.
+        /// </summary>
+        /// <param name="resource">The resource.</param>
+        /// <returns>System.Object.</returns>
         public object Convert(object resource)
         {
             if(resource is P)
@@ -86,15 +146,33 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         }
     }
 
+    /// <summary>
+    /// Class StorageSyncServiceConverter.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.Management.StorageSync.Models.StorageSyncService}" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.Management.StorageSync.Models.StorageSyncService}" />
     public class StorageSyncServiceConverter : ConverterBase<PSStorageSyncService, StorageSyncModels.StorageSyncService>
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageSyncServiceConverter"/> class.
+        /// </summary>
         public StorageSyncServiceConverter()
         {
         }
 
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>StorageSyncModels.StorageSyncService.</returns>
         protected override StorageSyncModels.StorageSyncService Transform(PSStorageSyncService source) => new StorageSyncModels.StorageSyncService(source.Location, source.ResourceId, source.StorageSyncServiceName, StorageSyncConstants.StorageSyncServiceType, source.Tags);
 
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>PSStorageSyncService.</returns>
         protected override PSStorageSyncService Transform(StorageSyncModels.StorageSyncService source)
         {
             var resourceIdentifier = new ResourceIdentifier(source.Id);
@@ -110,15 +188,33 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         }
     }
 
+    /// <summary>
+    /// Class SyncGroupConverter.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.Management.StorageSync.Models.SyncGroup}" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.Management.StorageSync.Models.SyncGroup}" />
     public class SyncGroupConverter : ConverterBase<PSSyncGroup, StorageSyncModels.SyncGroup>
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SyncGroupConverter"/> class.
+        /// </summary>
         public SyncGroupConverter()
         {
         }
 
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>StorageSyncModels.SyncGroup.</returns>
         protected override StorageSyncModels.SyncGroup Transform(PSSyncGroup source) => new StorageSyncModels.SyncGroup(source.ResourceId,source.SyncGroupName,source.Type);
 
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>PSSyncGroup.</returns>
         protected override PSSyncGroup Transform(StorageSyncModels.SyncGroup source)
         {
             var resourceIdentifier = new ResourceIdentifier(source.Id);
@@ -135,13 +231,26 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         }
     }
 
+    /// <summary>
+    /// Class RegisteredServerConverter.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.Management.StorageSync.Models.RegisteredServer}" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.Management.StorageSync.Models.RegisteredServer}" />
     public class RegisteredServerConverter : ConverterBase<PSRegisteredServer, StorageSyncModels.RegisteredServer>
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RegisteredServerConverter"/> class.
+        /// </summary>
         public RegisteredServerConverter()
         {
         }
 
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>StorageSyncModels.RegisteredServer.</returns>
         protected override StorageSyncModels.RegisteredServer Transform(PSRegisteredServer source)
         {
             return new StorageSyncModels.RegisteredServer(source.ResourceId,
@@ -150,7 +259,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 source.ServerCertificate,
                 source.AgentVersion,
                 source.ServerOSVersion,
-                source.ServerManagementtErrorCode,
+                source.ServerManagementErrorCode,
                 source.LastHeartBeat,
                 source.ProvisioningState,
                 source.ServerRole,
@@ -168,6 +277,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 source.MonitoringConfiguration);
         }
 
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>PSRegisteredServer.</returns>
         protected override PSRegisteredServer Transform(StorageSyncModels.RegisteredServer source)
         {
             var resourceIdentifier = new ResourceIdentifier(source.Id);
@@ -191,7 +305,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 ResourceLocation = source.ResourceLocation,
                 ServerCertificate = source.ServerCertificate?.Trim('"'),
                 ServerId = source.ServerId?.Trim('"'),
-                ServerManagementtErrorCode = source.ServerManagementErrorCode,
+                ServerManagementErrorCode = source.ServerManagementErrorCode,
                 ServerOSVersion = source.ServerOSVersion,
                 ServerRole = source.ServerRole,
                 ServiceLocation = source.ServiceLocation,
@@ -201,15 +315,33 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         }
     }
 
+    /// <summary>
+    /// Class CloudEndpointConverter.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.Management.StorageSync.Models.CloudEndpoint}" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.Management.StorageSync.Models.CloudEndpoint}" />
     public class CloudEndpointConverter : ConverterBase<PSCloudEndpoint, StorageSyncModels.CloudEndpoint>
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CloudEndpointConverter"/> class.
+        /// </summary>
         public CloudEndpointConverter()
         {
         }
 
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>StorageSyncModels.CloudEndpoint.</returns>
         protected override StorageSyncModels.CloudEndpoint Transform(PSCloudEndpoint source) => new StorageSyncModels.CloudEndpoint(source.ResourceId, source.CloudEndpointName, source.Type, source.StorageAccountResourceId, source.StorageAccountShareName, source.StorageAccountTenantId, friendlyName: source.FriendlyName);
 
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>PSCloudEndpoint.</returns>
         protected override PSCloudEndpoint Transform(StorageSyncModels.CloudEndpoint source)
         {
             var resourceIdentifier = new ResourceIdentifier(source.Id);
@@ -234,13 +366,26 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         }
     }
 
+    /// <summary>
+    /// Class ServerEndpointConverter.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.Management.StorageSync.Models.ServerEndpoint}" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.Management.StorageSync.Models.ServerEndpoint}" />
     public class ServerEndpointConverter : ConverterBase<PSServerEndpoint, StorageSyncModels.ServerEndpoint>
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServerEndpointConverter"/> class.
+        /// </summary>
         public ServerEndpointConverter()
         {
         }
 
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>StorageSyncModels.ServerEndpoint.</returns>
         protected override StorageSyncModels.ServerEndpoint Transform(PSServerEndpoint source)
         {
             return new StorageSyncModels.ServerEndpoint(source.ResourceId,
@@ -263,6 +408,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                     null));
         }
 
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>PSServerEndpoint.</returns>
         protected override PSServerEndpoint Transform(StorageSyncModels.ServerEndpoint source)
         {
             var resourceIdentifier = new ResourceIdentifier(source.Id);
@@ -288,8 +438,18 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         }
     }
 
+    /// <summary>
+    /// Class ServerEndpointHealthConvertor.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth, Microsoft.Azure.Management.StorageSync.Models.ServerEndpointHealth}" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth, Microsoft.Azure.Management.StorageSync.Models.ServerEndpointHealth}" />
     public class ServerEndpointHealthConvertor : ConverterBase<PSServerEndpointHealth, StorageSyncModels.ServerEndpointHealth>
     {
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>StorageSyncModels.ServerEndpointHealth.</returns>
         protected override StorageSyncModels.ServerEndpointHealth Transform(PSServerEndpointHealth source) => new StorageSyncModels.ServerEndpointHealth(
             source.DownloadHealth,
             source.UploadHealth,
@@ -300,6 +460,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             new SyncProgressStatusConvertor().Convert(source.CurrentProgress),
             source.OfflineDataTransferStatus);
 
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>PSServerEndpointHealth.</returns>
         protected override PSServerEndpointHealth Transform(StorageSyncModels.ServerEndpointHealth source)
         {
             return new PSServerEndpointHealth()
@@ -316,11 +481,26 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         }
     }
 
+    /// <summary>
+    /// Class SyncSessionStatusConvertor.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSSyncSessionStatus, Microsoft.Azure.Management.StorageSync.Models.SyncSessionStatus}" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSSyncSessionStatus, Microsoft.Azure.Management.StorageSync.Models.SyncSessionStatus}" />
     public class SyncSessionStatusConvertor : ConverterBase<PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus>
     {
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>StorageSyncModels.SyncSessionStatus.</returns>
         protected override StorageSyncModels.SyncSessionStatus Transform(PSSyncSessionStatus source) => new StorageSyncModels.SyncSessionStatus(
             source.LastSyncResult, source.LastSyncTimestamp, source.LastSyncSuccessTimestamp, source.LastSyncPerItemErrorCount);
 
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>PSSyncSessionStatus.</returns>
         protected override PSSyncSessionStatus Transform(StorageSyncModels.SyncSessionStatus source)
         {
             return new PSSyncSessionStatus()
@@ -333,11 +513,26 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         }
     }
 
+    /// <summary>
+    /// Class SyncProgressStatusConvertor.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSSyncProgressStatus, Microsoft.Azure.Management.StorageSync.Models.SyncProgressStatus}" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSSyncProgressStatus, Microsoft.Azure.Management.StorageSync.Models.SyncProgressStatus}" />
     public class SyncProgressStatusConvertor : ConverterBase<PSSyncProgressStatus, StorageSyncModels.SyncProgressStatus>
     {
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>StorageSyncModels.SyncProgressStatus.</returns>
         protected override StorageSyncModels.SyncProgressStatus Transform(PSSyncProgressStatus source) => new StorageSyncModels.SyncProgressStatus(
             source.ProgressTimestamp, source.SyncDirection, source.PerItemErrorCount, source.AppliedItemCount, source.TotalItemCount, source.AppliedBytes,source.TotalBytes);
 
+        /// <summary>
+        /// Transforms the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>PSSyncProgressStatus.</returns>
         protected override PSSyncProgressStatus Transform(StorageSyncModels.SyncProgressStatus source)
         {
             return new PSSyncProgressStatus()

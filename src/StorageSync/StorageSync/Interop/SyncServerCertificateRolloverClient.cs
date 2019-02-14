@@ -23,20 +23,26 @@ namespace StorageSync.Management.PowerShell.Cmdlets.CertificateRollover
 {
     /// <summary>
     /// Function performs server certificate rollover
+    /// Implements the <see cref="StorageSync.Management.PowerShell.Cmdlets.CertificateRollover.ISyncServerCertificateRollover" />
     /// </summary>
+    /// <seealso cref="StorageSync.Management.PowerShell.Cmdlets.CertificateRollover.ISyncServerCertificateRollover" />
     public class SyncServerCertificateRolloverClient : ISyncServerCertificateRollover
     {
+        /// <summary>
+        /// The m is disposed
+        /// </summary>
         private bool m_isDisposed;
 
         /// <summary>
         /// ECS Management Interop Client
         /// </summary>
+        /// <value>The ecs management interop client.</value>
         protected IEcsManagement EcsManagementInteropClient { get; private set; }
 
         /// <summary>
         /// Parameterzed constructor for Sync Server certificate rollover Client
         /// </summary>
-        /// <param name="ecsManagementInteropClient"></param>
+        /// <param name="ecsManagementInteropClient">The ecs management interop client.</param>
         public SyncServerCertificateRolloverClient(IEcsManagement ecsManagementInteropClient)
         {
             this.EcsManagementInteropClient = ecsManagementInteropClient;
@@ -49,7 +55,7 @@ namespace StorageSync.Management.PowerShell.Cmdlets.CertificateRollover
         /// <param name="certificateHashAlgorithm">Certificate Hash Algorithm</param>
         /// <param name="certificateKeyLength">Certificate Key Length</param>
         /// <param name="triggerServiceRollover">Trigger service request callback for service call</param>
-        /// <param name="verboseLogger"> powershell tracing function </param>
+        /// <param name="verboseLogger">powershell tracing function</param>
         public void RolloverServerCertificate(
             string certificateProviderName, 
             string certificateHashAlgorithm, 
@@ -69,6 +75,9 @@ namespace StorageSync.Management.PowerShell.Cmdlets.CertificateRollover
             SwitchCertificate(verboseLogger);
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             if (!m_isDisposed)
@@ -83,6 +92,17 @@ namespace StorageSync.Management.PowerShell.Cmdlets.CertificateRollover
             }
         }
 
+        /// <summary>
+        /// Rollovers the secondary certificate.
+        /// </summary>
+        /// <param name="verboseLogger">The verbose logger.</param>
+        /// <param name="serverId">The server identifier.</param>
+        /// <returns>System.String.</returns>
+        /// <exception cref="ArgumentException">serverId</exception>
+        /// <exception cref="Exception">
+        /// Certificate thumbprints not found. Check if server is registered.
+        /// or
+        /// </exception>
         private string RolloverSecondaryCertificate(Action<string> verboseLogger, out Guid serverId)
         {
             string primaryCertificateThumbprint = string.Empty;
@@ -175,6 +195,16 @@ namespace StorageSync.Management.PowerShell.Cmdlets.CertificateRollover
             return secondaryCertificate;
         }
 
+        /// <summary>
+        /// Switches the certificate.
+        /// </summary>
+        /// <param name="verboseLogger">The verbose logger.</param>
+        /// <exception cref="ArgumentException">
+        /// primaryCertificateThumbprint
+        /// or
+        /// secondaryCertificateThumbprint
+        /// </exception>
+        /// <exception cref="Exception"></exception>
         private void SwitchCertificate(Action<string> verboseLogger)
         {
 
@@ -231,7 +261,13 @@ namespace StorageSync.Management.PowerShell.Cmdlets.CertificateRollover
                 verboseLogger($"COM Exception during deletion of old Primary certificate: HResult:{ex.HResult} Message:{ex.Message}. Ignoring the error..");
             }
         }
-        
+
+        /// <summary>
+        /// Validates the certificate.
+        /// </summary>
+        /// <param name="certificateString">The certificate string.</param>
+        /// <param name="verboseLogger">The verbose logger.</param>
+        /// <exception cref="Exception">MgmtInvalidOrExpiredCertificate</exception>
         private void ValidateCertificate(string certificateString, Action<string> verboseLogger)
         {
             string errorMessage = string.Empty;

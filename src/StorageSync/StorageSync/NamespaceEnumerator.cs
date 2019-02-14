@@ -18,18 +18,34 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Class NamespaceEnumerator.
+    /// </summary>
     public class NamespaceEnumerator
     {
         #region Fields and Properties
+        /// <summary>
+        /// The namespace information
+        /// </summary>
         private NamespaceInfo _namespaceInfo;
+        /// <summary>
+        /// The listeners
+        /// </summary>
         private readonly IList<INamespaceEnumeratorListener> _listeners;
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NamespaceEnumerator"/> class.
+        /// </summary>
         public NamespaceEnumerator() : this(new List<INamespaceEnumeratorListener> { })
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NamespaceEnumerator"/> class.
+        /// </summary>
+        /// <param name="listeners">The listeners.</param>
         public NamespaceEnumerator(IList<INamespaceEnumeratorListener> listeners)
         {
             this._listeners = listeners;
@@ -38,6 +54,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         #endregion
 
         #region Public methods
+        /// <summary>
+        /// Runs the specified root.
+        /// </summary>
+        /// <param name="root">The root.</param>
+        /// <returns>NamespaceInfo.</returns>
         public NamespaceInfo Run(IDirectoryInfo root)
         {
             this.EnumeratePostOrderNonRecursive(root);
@@ -45,6 +66,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             return this._namespaceInfo;
         }
 
+        /// <summary>
+        /// Runs the specified root.
+        /// </summary>
+        /// <param name="root">The root.</param>
+        /// <param name="maximumDuration">The maximum duration.</param>
+        /// <returns>NamespaceInfo.</returns>
         public NamespaceInfo Run(IDirectoryInfo root, TimeSpan maximumDuration)
         {
             DateTime endTime = DateTime.UtcNow + maximumDuration;
@@ -56,6 +83,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         #endregion
 
         #region Private methods
+        /// <summary>
+        /// Notifies the end of enumeration.
+        /// </summary>
         private void NotifyEndOfEnumeration()
         {
             foreach (INamespaceEnumeratorListener listener in this._listeners)
@@ -69,11 +99,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// it is done this way to guarantee that by the time we finish any directory
         /// all of its subdirectories/files had been visited
         /// Note:
-        /// if operaiton is cancelled - not all notifications will be emited, 
+        /// if operaiton is cancelled - not all notifications will be emited,
         /// and namespace information will be partial.
         /// </summary>
         /// <param name="root">directory to scan</param>
         /// <param name="cancelationCallback">function to consult with for cancelation</param>
+        /// <exception cref="System.IO.DirectoryNotFoundException">Cannot access directory: {root.FullName}</exception>
         private void EnumeratePostOrderNonRecursive(IDirectoryInfo root, Func<bool> cancelationCallback = null)
         {
             // handle the case than this is actually network share.
@@ -169,6 +200,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             this._namespaceInfo.IsComplete = true;
         }
 
+        /// <summary>
+        /// Notifies the unauthorized dir.
+        /// </summary>
+        /// <param name="dir">The dir.</param>
         private void NotifyUnauthorizedDir(IDirectoryInfo dir)
         {
             foreach (INamespaceEnumeratorListener listener in this._listeners)
@@ -177,6 +212,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             }
         }
 
+        /// <summary>
+        /// Notifies the next file.
+        /// </summary>
+        /// <param name="file">The file.</param>
         private void NotifyNextFile(IFileInfo file)
         {
             foreach (INamespaceEnumeratorListener listener in this._listeners)
@@ -185,6 +224,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             }
         }
 
+        /// <summary>
+        /// Notifies the namespace hints.
+        /// </summary>
+        /// <param name="directoryCount">The directory count.</param>
+        /// <param name="fileCount">The file count.</param>
         private void NotifyNamespaceHints(long directoryCount, long fileCount)
         {
             if (directoryCount + fileCount == 0)
@@ -198,6 +242,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             }
         }
 
+        /// <summary>
+        /// Notifies the end dir.
+        /// </summary>
+        /// <param name="dir">The dir.</param>
         private void NotifyEndDir(IDirectoryInfo dir)
         {
             foreach (INamespaceEnumeratorListener listener in this._listeners)
@@ -206,6 +254,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             }
         }
 
+        /// <summary>
+        /// Notifies the begin dir.
+        /// </summary>
+        /// <param name="dir">The dir.</param>
         private void NotifyBeginDir(IDirectoryInfo dir)
         {
             foreach (INamespaceEnumeratorListener listener in this._listeners)

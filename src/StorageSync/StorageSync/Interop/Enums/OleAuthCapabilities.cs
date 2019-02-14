@@ -16,23 +16,71 @@ using System;
 
 namespace Commands.StorageSync.Interop.Enums
 {
+    /// <summary>
+    /// Enum OleAuthCapabilities
+    /// </summary>
     [Flags]
     public enum OleAuthCapabilities
     {
+        /// <summary>
+        /// The eoacnone
+        /// </summary>
         EOACNONE = 0,
+        /// <summary>
+        /// The eoacmutualauth
+        /// </summary>
         EOACMUTUALAUTH = 0x1,
+        /// <summary>
+        /// The eoacstaticcloaking
+        /// </summary>
         EOACSTATICCLOAKING = 0x20,
+        /// <summary>
+        /// The eoacdynamiccloaking
+        /// </summary>
         EOACDYNAMICCLOAKING = 0x40,
+        /// <summary>
+        /// The eoacanyauthority
+        /// </summary>
         EOACANYAUTHORITY = 0x80,
+        /// <summary>
+        /// The eoacmakefullsic
+        /// </summary>
         EOACMAKEFULLSIC = 0x100,
+        /// <summary>
+        /// The eoacdefault
+        /// </summary>
         EOACDEFAULT = 0x800,
+        /// <summary>
+        /// The eoacsecurerefs
+        /// </summary>
         EOACSECUREREFS = 0x2,
+        /// <summary>
+        /// The eoacaccesscontrol
+        /// </summary>
         EOACACCESSCONTROL = 0x4,
+        /// <summary>
+        /// The eoacappid
+        /// </summary>
         EOACAPPID = 0x8,
+        /// <summary>
+        /// The eoacdynamic
+        /// </summary>
         EOACDYNAMIC = 0x10,
+        /// <summary>
+        /// The eoacrequirefullsic
+        /// </summary>
         EOACREQUIREFULLSIC = 0x200,
+        /// <summary>
+        /// The eoacautoimpersonate
+        /// </summary>
         EOACAUTOIMPERSONATE = 0x400,
+        /// <summary>
+        /// The eoacnocustommarshal
+        /// </summary>
         EOACNOCUSTOMMARSHAL = 0x2000,
+        /// <summary>
+        /// The eoacdisableaaa
+        /// </summary>
         EOACDISABLEAAA = 0x1000
     }
 }

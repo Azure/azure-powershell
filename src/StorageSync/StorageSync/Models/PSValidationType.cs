@@ -14,16 +14,46 @@
 
 namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
 {
-     public enum PSValidationType
+    /// <summary>
+    /// Enum PSValidationType
+    /// </summary>
+    public enum PSValidationType
     {
+        /// <summary>
+        /// The filename characters
+        /// </summary>
         FilenameCharacters,
+        /// <summary>
+        /// The filename
+        /// </summary>
         Filename,
+        /// <summary>
+        /// The filename length
+        /// </summary>
         FilenameLength,
+        /// <summary>
+        /// The file size
+        /// </summary>
         FileSize,
+        /// <summary>
+        /// The path length
+        /// </summary>
         PathLength,
+        /// <summary>
+        /// The node depth
+        /// </summary>
         NodeDepth,
+        /// <summary>
+        /// The dataset size
+        /// </summary>
         DatasetSize,
+        /// <summary>
+        /// The file system
+        /// </summary>
         FileSystem,
+        /// <summary>
+        /// The os version
+        /// </summary>
         OsVersion
     }
 }

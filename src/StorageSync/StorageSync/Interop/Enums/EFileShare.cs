@@ -18,12 +18,27 @@ namespace Commands.StorageSync.Interop.Enums
     using System;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Enum EFileShare
+    /// </summary>
     [Flags]
     public enum EFileShare : uint
     {
+        /// <summary>
+        /// The none
+        /// </summary>
         None = 0x00000000,
+        /// <summary>
+        /// The read
+        /// </summary>
         Read = 0x00000001,
+        /// <summary>
+        /// The write
+        /// </summary>
         Write = 0x00000002,
+        /// <summary>
+        /// The delete
+        /// </summary>
         Delete = 0x00000004,
     }
 

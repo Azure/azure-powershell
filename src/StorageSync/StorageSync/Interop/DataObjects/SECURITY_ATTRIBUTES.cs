@@ -17,11 +17,23 @@ using System.Runtime.InteropServices;
 
 namespace Commands.StorageSync.Interop.DataObjects
 {
+    /// <summary>
+    /// Struct SECURITY_ATTRIBUTES
+    /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SECURITY_ATTRIBUTES
     {
+        /// <summary>
+        /// The n length
+        /// </summary>
         public int nLength;
+        /// <summary>
+        /// The lp security descriptor
+        /// </summary>
         public IntPtr lpSecurityDescriptor;
+        /// <summary>
+        /// The b inherit handle
+        /// </summary>
         public int bInheritHandle;
     }
 }

@@ -17,22 +17,57 @@ using System;
 
 namespace Commands.StorageSync.Interop.DataObjects
 {
+    /// <summary>
+    /// Class ServerRegistrationData.
+    /// </summary>
     public class ServerRegistrationData
     {
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         public string Id { get; set; }
 
+        /// <summary>
+        /// Gets or sets the server certificate.
+        /// </summary>
+        /// <value>The server certificate.</value>
         public byte[] ServerCertificate { get; set; }
 
+        /// <summary>
+        /// Gets or sets the agent version.
+        /// </summary>
+        /// <value>The agent version.</value>
         public string AgentVersion { get; set; }
 
+        /// <summary>
+        /// Gets or sets the server os version.
+        /// </summary>
+        /// <value>The server os version.</value>
         public string ServerOSVersion { get; set; }
 
+        /// <summary>
+        /// Gets or sets the server role.
+        /// </summary>
+        /// <value>The server role.</value>
         public ServerRoleType ServerRole { get; set; }
 
+        /// <summary>
+        /// Gets or sets the cluster identifier.
+        /// </summary>
+        /// <value>The cluster identifier.</value>
         public Guid? ClusterId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the cluster.
+        /// </summary>
+        /// <value>The name of the cluster.</value>
         public string ClusterName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the server identifier.
+        /// </summary>
+        /// <value>The server identifier.</value>
         public Guid ServerId { get; set; }
     }
 }
