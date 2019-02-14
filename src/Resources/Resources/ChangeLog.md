@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix for issue https://github.com/Azure/azure-powershell/issues/8166
+* Fix for issue https://github.com/Azure/azure-powershell/issues/8235
+* Fix for issue https://github.com/Azure/azure-powershell/issues/6219
+* Fix bug preventing repeat creation of KeyCredentials
 
 ## Version 1.1.2
 * Fix tagging for resource groups 

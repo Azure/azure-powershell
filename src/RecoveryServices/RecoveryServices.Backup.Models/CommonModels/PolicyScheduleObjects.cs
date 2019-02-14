@@ -74,46 +74,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                                   TraceUtils.GetString(ScheduleRunTimes));
         }
     }
-
-    public class LogSchedulePolicy : SchedulePolicyBase
-    {
-        public int? ScheduleFrequencyInMins { get; set; }
-    }
-
-    public class SQLSchedulePolicy : SchedulePolicyBase
-    {
-        /// <summary>
-        /// Is compression enabled
-        /// </summary>
-        public bool? IsCompression { get; set; }
-
-        /// <summary>
-        /// Is differential backup enabled bool object
-        /// </summary>
-        public bool IsDifferentialBackupEnabled { get; set; }
-
-        /// <summary>
-        /// Is log backup enabled bool object
-        /// </summary>
-        public bool IsLogBackupEnabled { get; set; }
-
-        /// <summary>
-        /// Full backup schedule policy object
-        /// </summary>
-        public SimpleSchedulePolicy FullBackupSchedulePolicy { get; set; }
-
-        /// <summary>
-        /// Differential backup schedule policy object
-        /// </summary>
-        public SimpleSchedulePolicy DifferentialBackupSchedulePolicy { get; set; }
-
-        /// <summary>
-        /// Log backup schedule policy object
-        /// </summary>
-        public LogSchedulePolicy LogBackupSchedulePolicy { get; set; }
-
-        public SQLSchedulePolicy()
-        {
-        }
-    }
 }
