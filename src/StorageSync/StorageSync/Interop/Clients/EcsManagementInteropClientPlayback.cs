@@ -341,8 +341,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// <returns>System.Int32.</returns>
         public int GetSyncServerId([MarshalAs(UnmanagedType.BStr), Out] out string serverId)
         {
-            Guid serverGuid;
-            if (!Guid.TryParse(Environment.GetEnvironmentVariable("REGISTEREDSERVER_SERVER_ID"), out serverGuid))
+            if (!Guid.TryParse(Environment.GetEnvironmentVariable("REGISTEREDSERVER_SERVER_ID"), out Guid serverGuid))
             {
                 serverGuid = Guid.NewGuid();
             }
