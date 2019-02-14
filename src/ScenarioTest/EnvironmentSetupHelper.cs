@@ -173,6 +173,19 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 AzureSession.Instance.AuthenticationFactory = new MockCertificateAuthenticationFactory(environment.UserName,
                     environment.AuthorizationContext.Certificate);
             }
+            else if (environment.AuthorizationContext.TokenCredentials.ContainsKey(TokenAudience.Management))
+            {
+                var httpMessage = new HttpRequestMessage();
+                environment.AuthorizationContext.TokenCredentials[TokenAudience.Management]
+                    .ProcessHttpRequestAsync(httpMessage, CancellationToken.None)
+                    .ConfigureAwait(false)
+                    .GetAwaiter()
+                    .GetResult();
+
+                AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory(
+                    environment.UserName,
+                    httpMessage.Headers.Authorization.Parameter);
+            }
         }
 
         private void SetAuthenticationFactory(AzureModule mode, TestEnvironment rdfeEnvironment, TestEnvironment csmEnvironment)

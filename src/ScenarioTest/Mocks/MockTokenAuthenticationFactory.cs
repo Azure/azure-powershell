@@ -104,9 +104,19 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return new AccessTokenCredential(context.Subscription.GetId(), Token);
         }
 
+        public Microsoft.Rest.ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
+        {
+            return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
+        }
+
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context, string targetEndpoint)
         {
             return new TokenCloudCredentials(context.Subscription.Id.ToString(),Token.AccessToken);
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        {
+            return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
         }
 
         public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
