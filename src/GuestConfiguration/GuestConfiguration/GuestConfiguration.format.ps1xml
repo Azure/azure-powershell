@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>GuestConfigurationPolicyAssignmentReport</Name>
+      <Name>PolicyStatusDetailed</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.GuestConfiguration.Models.GuestConfigurationPolicyAssignmentReport</TypeName>
+        <TypeName>Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatusDetailed</TypeName>
       </ViewSelectedBy>
        <TableControl>
                 <TableHeaders>
@@ -14,7 +14,7 @@
                     <TableColumnHeader><Label>StartTime</Label><Width>10</Width></TableColumnHeader>
                     <TableColumnHeader><Label>EndTime</Label><Width>10</Width></TableColumnHeader>
                     <TableColumnHeader><Label>VMName</Label><Width>10</Width></TableColumnHeader>
-                    <TableColumnHeader><Label>LatestReportId</Label><Width>10</Width></TableColumnHeader>
+                    <TableColumnHeader><Label>Id</Label><Width>10</Width></TableColumnHeader>
                 </TableHeaders>
                 <TableRowEntries>
                     <TableRowEntry>
@@ -24,8 +24,7 @@
                             <TableColumnItem>
                               <ScriptBlock>
                                 If($_.ComplianceReasons -ne $null -and $_.ComplianceReasons[0] -ne $null -and $_.ComplianceReasons[0].Reasons -ne $null -and 
-                                   $_.ComplianceReasons[0].Reasons[0] -ne $null -and $_.ComplianceReasons[0].Reasons[0].Reason -ne $null  -and 
-                                   $_.ComplianceReasons[0].Reasons[0].Reason -ne $null)
+                                   $_.ComplianceReasons[0].Reasons[0] -ne $null -and $_.ComplianceReasons[0].Reasons[0].Reason -ne $null)
                                   {
                                     if(99 -lt $_.ComplianceReasons[0].Reasons[0].Reason.Length)
                                       { $_.ComplianceReasons[0].Reasons[0].Reason.Substring(0, 100) }
@@ -37,7 +36,35 @@
                             <TableColumnItem><ScriptBlock>$_.StartTime.ToString("MM/dd/yyyy hh:mm:ss tt")</ScriptBlock></TableColumnItem>
                             <TableColumnItem><ScriptBlock>$_.EndTime.ToString("MM/dd/yyyy hh:mm:ss tt")</ScriptBlock></TableColumnItem>
                             <TableColumnItem><ScriptBlock>$_.VM.ResourceId.Substring($_.VM.ResourceId.LastIndexOf("/")+1)</ScriptBlock></TableColumnItem>
-                            <TableColumnItem><ScriptBlock>".." + $_.LatestReportId.Substring($_.LatestReportId.LastIndexOf("/"), 37)</ScriptBlock></TableColumnItem>
+                            <TableColumnItem><ScriptBlock>".." + $_.Id.Substring($_.Id.LastIndexOf("/"), 37)</ScriptBlock></TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+       </TableControl>
+    </View>
+      <View>
+      <Name>PolicyStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus</TypeName>
+      </ViewSelectedBy>
+       <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader><Label>PolicyDisplayName</Label></TableColumnHeader>
+                    <TableColumnHeader><Label>ComplianceStatus</Label></TableColumnHeader>
+                    <TableColumnHeader><Label>StartTime</Label><Width>10</Width></TableColumnHeader>
+                    <TableColumnHeader><Label>EndTime</Label><Width>10</Width></TableColumnHeader>
+                    <TableColumnHeader><Label>VMName</Label><Width>10</Width></TableColumnHeader>
+                    <TableColumnHeader><Label>Id</Label><Width>10</Width></TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem><PropertyName>PolicyDisplayName</PropertyName></TableColumnItem>
+                            <TableColumnItem><PropertyName>ComplianceStatus</PropertyName></TableColumnItem>
+                            <TableColumnItem><ScriptBlock>$_.StartTime.ToString("MM/dd/yyyy hh:mm:ss tt")</ScriptBlock></TableColumnItem>
+                            <TableColumnItem><ScriptBlock>$_.EndTime.ToString("MM/dd/yyyy hh:mm:ss tt")</ScriptBlock></TableColumnItem>
+                            <TableColumnItem><ScriptBlock>$_.VM.ResourceId.Substring($_.VM.ResourceId.LastIndexOf("/")+1)</ScriptBlock></TableColumnItem>
+                            <TableColumnItem><ScriptBlock>".." + $_.Id.Substring($_.Id.LastIndexOf("/"), 37)</ScriptBlock></TableColumnItem>
                         </TableColumnItems>
                     </TableRowEntry>
                 </TableRowEntries>

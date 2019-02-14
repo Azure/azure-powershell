@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
@@ -19,14 +20,11 @@ using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class AzureFirewallFqdnTagTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class AzureFirewallFqdnTagTests : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public AzureFirewallFqdnTagTests(ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]
@@ -34,7 +32,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestListAzureFirewallFqdnTag()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ListAzureFirewallFqdnTag");
+            TestRunner.RunTestScript("Test-ListAzureFirewallFqdnTag");
         }
     }
 }
