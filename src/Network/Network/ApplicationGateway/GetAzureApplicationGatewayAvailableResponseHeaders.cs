@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            var availableResponseHeaders = this.ApplicationGatewayClient.ListAvailableWafRuleSets();
+            var availableResponseHeaders = this.ApplicationGatewayClient.ListAvailableResponseHeaders();
             WriteObject(availableResponseHeaders);
         }
     }
