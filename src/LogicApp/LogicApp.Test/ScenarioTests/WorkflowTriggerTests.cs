@@ -35,43 +35,43 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Test-GetAzureLogicAppTrigger command to verify the trigger in the workflow.
+        /// Test Test-GetAzLogicAppTrigger command to verify the trigger in the workflow.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureLogicAppTrigger()
+        public void TestGetAzLogicAppTrigger()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzureLogicAppTrigger");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzLogicAppTrigger");
         }
 
         /// <summary>
-        /// Test Get-AzureLogicAppTriggerHistory command to verify the trigger history for the workflow.
+        /// Test Get-AzLogicAppTriggerHistory command to verify the trigger history for the workflow.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureLogicAppTriggerHistory()
+        public void TestGetAzLogicAppTriggerHistory()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzureLogicAppTriggerHistory");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzLogicAppTriggerHistory");
         }
 
         /// <summary>
-        /// Test Get-AzureLogicAppTriggerHistory command to verify the trigger history for the workflow.
+        /// Test Get-AzLogicAppTriggerHistory command to verify the trigger history for the workflow.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureLogicAppTriggerCallbackUrl()
+        public void TestGetAzLogicAppTriggerCallbackUrl()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzureLogicAppTriggerCallbackUrl");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzLogicAppTriggerCallbackUrl");
         }
 
         /// <summary>
-        /// Test Start-AzureLogicAppTrigger command to run the trigger of the workflow.
+        /// Test Start-AzLogicAppTrigger command to run the trigger of the workflow.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestStartAzureLogicAppTrigger()
+        public void TestStartAzLogicAppTrigger()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-StartAzureLogicAppTrigger");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-StartAzLogicAppTrigger");
         }
     }
 }

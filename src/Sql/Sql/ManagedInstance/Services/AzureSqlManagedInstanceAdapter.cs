@@ -22,6 +22,7 @@ using System.Security;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
@@ -182,6 +183,24 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.Sku = sku;
 
             return managedInstance;
+        }
+
+        /// <summary>
+        /// Get instance sku name based on edition
+        ///    Edition              | SkuName
+        ///    GeneralPurpose       | GP
+        ///    BusinessCritical     | BC
+        /// </summary>
+        /// <param name="tier">Azure Sql database edition</param>
+        /// <returns>The sku name</returns>
+        public static string GetInstanceSkuPrefix(string tier)
+        {
+            if (string.IsNullOrWhiteSpace(tier))
+            {
+                return null;
+            }
+
+            return SqlSkuUtils.GetVcoreSkuPrefix(tier) ?? "Unknown";
         }
     }
 }
