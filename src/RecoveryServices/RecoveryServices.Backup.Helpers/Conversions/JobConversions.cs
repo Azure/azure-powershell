@@ -47,10 +47,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 response = GetPSAzureFileShareJob(serviceClientJob);
             }
-            else if (serviceClientJob.Properties.GetType() == typeof(AzureWorkloadJob))
-            {
-                response = GetPSAzureWorkloadJob(serviceClientJob);
-            }
 
             return response;
         }
@@ -233,88 +229,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 psErrorInfo.Recommendations = new List<string>();
                 psErrorInfo.Recommendations.AddRange(fileShareError.Recommendations);
-            }
-
-            return psErrorInfo;
-        }
-
-        private static CmdletModel.JobBase GetPSAzureWorkloadJob(JobResource serviceClientJob)
-        {
-            CmdletModel.AzureVmWorkloadJob response;
-
-            AzureWorkloadJob workloadJob = serviceClientJob.Properties as AzureWorkloadJob;
-
-            if (workloadJob.ExtendedInfo != null)
-            {
-                response = new CmdletModel.AzureVmWorkloadJobDetails();
-            }
-            else
-            {
-                response = new CmdletModel.AzureVmWorkloadJob();
-            }
-
-            response.JobId = GetLastIdFromFullId(serviceClientJob.Id);
-            response.StartTime = GetJobStartTime(workloadJob.StartTime);
-            response.EndTime = workloadJob.EndTime;
-            response.Duration = GetJobDuration(workloadJob.Duration);
-            response.Status = workloadJob.Status;
-            response.WorkloadName = workloadJob.EntityFriendlyName;
-            response.ActivityId = workloadJob.ActivityId;
-            response.BackupManagementType =
-                CmdletModel.ConversionUtils.GetPsBackupManagementType(workloadJob.BackupManagementType);
-            response.Operation = workloadJob.Operation;
-
-            if (workloadJob.ErrorDetails != null)
-            {
-                response.ErrorDetails = new List<CmdletModel.AzureJobErrorInfo>();
-                foreach (var workloadError in workloadJob.ErrorDetails)
-                {
-                    response.ErrorDetails.Add(GetPSAzureWorkloadErrorInfo(workloadError));
-                }
-            }
-
-            // fill extended info if present
-            if (workloadJob.ExtendedInfo != null)
-            {
-                CmdletModel.AzureVmWorkloadJobDetails detailedResponse =
-                    response as CmdletModel.AzureVmWorkloadJobDetails;
-
-                detailedResponse.DynamicErrorMessage = workloadJob.ExtendedInfo.DynamicErrorMessage;
-                if (workloadJob.ExtendedInfo.PropertyBag != null)
-                {
-                    detailedResponse.Properties = new Dictionary<string, string>();
-                    foreach (var key in workloadJob.ExtendedInfo.PropertyBag.Keys)
-                    {
-                        detailedResponse.Properties.Add(key, workloadJob.ExtendedInfo.PropertyBag[key]);
-                    }
-                }
-
-                if (workloadJob.ExtendedInfo.TasksList != null)
-                {
-                    detailedResponse.SubTasks = new List<CmdletModel.AzureVmWorkloadJobSubTask>();
-                    foreach (var workloadJobTask in workloadJob.ExtendedInfo.TasksList)
-                    {
-                        detailedResponse.SubTasks.Add(new CmdletModel.AzureVmWorkloadJobSubTask()
-                        {
-                            Name = workloadJobTask.TaskId,
-                            Status = workloadJobTask.Status
-                        });
-                    }
-                }
-            }
-
-            return response;
-        }
-
-        private static CmdletModel.AzureJobErrorInfo GetPSAzureWorkloadErrorInfo(AzureWorkloadErrorInfo workloadError)
-        {
-            CmdletModel.AzureVmWorkloadJobErrorInfo psErrorInfo = new CmdletModel.AzureVmWorkloadJobErrorInfo();
-            psErrorInfo.ErrorCode = GetJobErrorCode(workloadError.ErrorCode);
-            psErrorInfo.ErrorMessage = workloadError.ErrorString;
-            if (workloadError.Recommendations != null)
-            {
-                psErrorInfo.Recommendations = new List<string>();
-                psErrorInfo.Recommendations.AddRange(workloadError.Recommendations);
             }
 
             return psErrorInfo;

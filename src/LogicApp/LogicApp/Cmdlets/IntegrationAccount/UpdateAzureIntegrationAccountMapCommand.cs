@@ -105,13 +105,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (!string.IsNullOrEmpty(this.MapFilePath))
             {
-                integrationAccountMapCopy.Content = CmdletHelper.GetContentFromFile(this.TryResolvePath(this.MapFilePath));
+                integrationAccountMapCopy.Content = CmdletHelper.GetStringContentFromFile(this.TryResolvePath(this.MapFilePath));
             }
 
             if (!string.IsNullOrEmpty(this.MapDefinition))
             {
                 integrationAccountMapCopy.Content = this.MapDefinition;
-                CmdletHelper.GetContentFromFile(this.TryResolvePath(this.MapFilePath));
+                CmdletHelper.GetStringContentFromFile(this.TryResolvePath(this.MapFilePath));
             }
 
             if (!string.IsNullOrEmpty(this.MapType))

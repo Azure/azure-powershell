@@ -45,7 +45,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         TargetLocation,
         KeyFileDownloadLocation,
         FileDownloadLocation,
-        RestorePointQueryType
     }
 
     public enum RestoreBackupItemParams
@@ -70,20 +69,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         TargetFileShareName,
         TargetFolder
     }
-    public enum RestoreWLBackupItemParams
-    {
-        WLRecoveryConfig
-    }
-
-    public enum WorkloadRecoveryConfigParams
-    {
-        PointInTime,
-        RecoveryPoint,
-        OriginalWorkloadRestore,
-        AlternateWorkloadRestore,
-        Item,
-        TargetItem
-    }
 
     public enum PolicyParams
     {
@@ -105,7 +90,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         WorkloadType,
         Policy,
         Item,
-        ProtectableItem,
         ParameterSetName,
         Container,
         ProtectionStatus,
@@ -114,8 +98,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         BackupManagementType,
         ExpiryDateTimeUTC,
         StorageAccountName,
-        BackupType,
-        EnableCompression
     }
 
     public enum ProtectionCheckParams
