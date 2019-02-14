@@ -56,11 +56,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public RestAzureNS.AzureOperationResponse DisableProtectionWithDeleteData()
-        {
-            throw new NotImplementedException();
-        }
-
         public RestAzureNS.AzureOperationResponse TriggerBackup()
         {
             throw new NotImplementedException();
@@ -159,16 +154,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         public List<ItemBase> ListProtectedItems()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RegisterContainer()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<PointInTimeBase> GetLogChains()
         {
             throw new NotImplementedException();
         }

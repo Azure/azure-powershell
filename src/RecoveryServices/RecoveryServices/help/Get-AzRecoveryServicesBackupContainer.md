@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 1097FF29-1C23-4960-930C-5C1227419359
@@ -78,7 +78,7 @@ The acceptable values for this parameter are:
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, Windows, AzureSQL, AzureStorage, AzureWorkload
+Accepted values: AzureVM, Windows, AzureSQL, AzureStorage
 
 Required: True
 Position: 1

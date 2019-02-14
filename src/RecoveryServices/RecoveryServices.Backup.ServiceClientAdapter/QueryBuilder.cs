@@ -60,26 +60,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                     var genericArguments = property.PropertyType.GetGenericArguments();
                     if (genericArguments.Any(type => type == typeof(DateTime)))
                     {
-                        if (property.GetValue(queryObject) != null)
-                        {
-                            var dateTime = (DateTime)property.GetValue(queryObject);
-                            DateTimeFormatInfo dateFormat = new CultureInfo("en-US").DateTimeFormat;
-                            rightHandSide = string.Format(
-                                "'{0}'",
-                                dateTime.ToUniversalTime().ToString(
-                                    "yyyy-MM-dd hh:mm:ss tt", dateFormat));
-                        }
-                        else
-                        {
-                            rightHandSide = null;
-                        }
+                        var dateTime = (DateTime)property.GetValue(queryObject);
+                        DateTimeFormatInfo dateFormat = new CultureInfo("en-US").DateTimeFormat;
+                        rightHandSide = string.Format(
+                            "'{0}'",
+                            dateTime.ToUniversalTime().ToString(
+                                "yyyy-MM-dd hh:mm:ss tt", dateFormat));
                     }
                     else if (genericArguments.Any(type => type.IsEnum))
-                    {
-                        rightHandSide = (property.GetValue(queryObject) != null) ?
-                        string.Format("'{0}'", property.GetValue(queryObject).ToString()) : null;
-                    }
-                    else if (genericArguments.Any(type => type == typeof(bool)))
                     {
                         rightHandSide = (property.GetValue(queryObject) != null) ?
                         string.Format("'{0}'", property.GetValue(queryObject).ToString()) : null;
