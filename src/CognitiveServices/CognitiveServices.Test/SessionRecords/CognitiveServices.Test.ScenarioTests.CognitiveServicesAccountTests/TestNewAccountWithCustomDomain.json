@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "22e42f5b-c547-41c1-a6e5-bf736ecf0739"
+          "0278d524-c706-4db8-92a6-26ad911750f8"
         ],
         "Accept-Language": [
           "en-US"
@@ -30,13 +30,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "f9db8a60-40fd-44c3-bedb-33cc767c67b6"
+          "7a8d5de6-1d1e-47a2-80f8-c287b40208dd"
         ],
         "x-ms-correlation-request-id": [
-          "f9db8a60-40fd-44c3-bedb-33cc767c67b6"
+          "7a8d5de6-1d1e-47a2-80f8-c287b40208dd"
         ],
         "x-ms-routing-request-id": [
-          "AUSTRALIAEAST:20190213T104233Z:f9db8a60-40fd-44c3-bedb-33cc767c67b6"
+          "AUSTRALIAEAST:20190214T052313Z:7a8d5de6-1d1e-47a2-80f8-c287b40208dd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 13 Feb 2019 10:42:33 GMT"
+          "Thu, 14 Feb 2019 05:23:12 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -61,13 +61,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg9839?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnOTgzOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg1737?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnMTczNz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West Central US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6491f08f-5702-4e59-a13d-abd5a7d75b9f"
+          "5c7756bd-04cf-47f9-8ed4-a8135e9c3208"
         ],
         "Accept-Language": [
           "en-US"
@@ -96,13 +96,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "801b7c29-8fd4-4c90-b126-051c1f371913"
+          "0adb1718-8424-41ed-b04e-ac69b4273784"
         ],
         "x-ms-correlation-request-id": [
-          "801b7c29-8fd4-4c90-b126-051c1f371913"
+          "0adb1718-8424-41ed-b04e-ac69b4273784"
         ],
         "x-ms-routing-request-id": [
-          "AUSTRALIAEAST:20190213T104237Z:801b7c29-8fd4-4c90-b126-051c1f371913"
+          "AUSTRALIAEAST:20190214T052316Z:0adb1718-8424-41ed-b04e-ac69b4273784"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 13 Feb 2019 10:42:36 GMT"
+          "Thu, 14 Feb 2019 05:23:16 GMT"
         ],
         "Content-Length": [
           "184"
@@ -123,17 +123,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg9839\",\r\n  \"name\": \"pstestrg9839\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1737\",\r\n  \"name\": \"pstestrg1737\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg9839/providers/Microsoft.CognitiveServices/accounts/csapstestrg9839?api-version=2017-04-18",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTgzOS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnOTgzOT9hcGktdmVyc2lvbj0yMDE3LTA0LTE4",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1737/providers/Microsoft.CognitiveServices/accounts/csapstestrg1737?api-version=2017-04-18",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMTczNy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMTczNz9hcGktdmVyc2lvbj0yMDE3LTA0LTE4",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"location\": \"West Central US\",\r\n  \"properties\": {\r\n    \"customSubDomainName\": \"csapstestrg9839\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"location\": \"West Central US\",\r\n  \"properties\": {\r\n    \"customSubDomainName\": \"csapstestrg1737\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3f4480bf-2bd8-4e3d-9731-6b0f22271212"
+          "2585b28d-8106-4ed8-a8a2-23af54b9b289"
         ],
         "Accept-Language": [
           "en-US"
@@ -159,10 +159,10 @@
           "no-cache"
         ],
         "ETag": [
-          "\"04005b95-0000-0000-0000-5c63f4a20000\""
+          "\"05008770-0000-0000-0000-5c64fb4b0000\""
         ],
         "x-ms-request-id": [
-          "9d918f8b-55ca-442a-8db1-6cec93002d05"
+          "4cb5876e-a720-47d3-a3ac-288d977e571a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -180,16 +180,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "765df7f2-7242-4976-bdf5-68ba1d7a5ad8"
+          "1edb32b9-d097-48a0-a246-55b07a110217"
         ],
         "x-ms-routing-request-id": [
-          "AUSTRALIAEAST:20190213T104243Z:765df7f2-7242-4976-bdf5-68ba1d7a5ad8"
+          "AUSTRALIAEAST:20190214T052324Z:1edb32b9-d097-48a0-a246-55b07a110217"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 13 Feb 2019 10:42:43 GMT"
+          "Thu, 14 Feb 2019 05:23:23 GMT"
         ],
         "Content-Length": [
           "609"
@@ -201,17 +201,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg9839/providers/Microsoft.CognitiveServices/accounts/csapstestrg9839\",\r\n  \"name\": \"csapstestrg9839\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"04005b95-0000-0000-0000-5c63f4a20000\\\"\",\r\n  \"location\": \"West Central US\",\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://csapstestrg9839.cognitiveservices.azure.com/text/analytics/v2.0\",\r\n    \"internalId\": \"f7815c0762094041aa2d6887b80c51b4\",\r\n    \"dateCreated\": \"2019-02-13T10:42:41.9875441Z\",\r\n    \"customSubDomainName\": \"csapstestrg9839\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1737/providers/Microsoft.CognitiveServices/accounts/csapstestrg1737\",\r\n  \"name\": \"csapstestrg1737\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"05008770-0000-0000-0000-5c64fb4b0000\\\"\",\r\n  \"location\": \"West Central US\",\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://csapstestrg1737.cognitiveservices.azure.com/text/analytics/v2.0\",\r\n    \"internalId\": \"ded3bb95f259487a99c9bf3d004d1e09\",\r\n    \"dateCreated\": \"2019-02-14T05:23:22.0003607Z\",\r\n    \"customSubDomainName\": \"csapstestrg1737\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg9839/providers/Microsoft.CognitiveServices/accounts/csapstestrg9839?api-version=2017-04-18",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTgzOS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnOTgzOT9hcGktdmVyc2lvbj0yMDE3LTA0LTE4",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1737/providers/Microsoft.CognitiveServices/accounts/csapstestrg1737?api-version=2017-04-18",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMTczNy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMTczNz9hcGktdmVyc2lvbj0yMDE3LTA0LTE4",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"location\": \"West Central US\",\r\n  \"properties\": {\r\n    \"customSubDomainName\": \"csapstestrg9839\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"location\": \"West Central US\",\r\n  \"properties\": {\r\n    \"customSubDomainName\": \"csapstestrg1737\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "53ad2e7a-e838-4469-9b22-18cf3bce8c91"
+          "f490288e-0763-42f0-9df2-31625ed6b4a6"
         ],
         "Accept-Language": [
           "en-US"
@@ -237,10 +237,10 @@
           "no-cache"
         ],
         "ETag": [
-          "\"04005e95-0000-0000-0000-5c63f4a40000\""
+          "\"05008a70-0000-0000-0000-5c64fb4c0000\""
         ],
         "x-ms-request-id": [
-          "81f2389d-97b9-4efc-bda0-36ffb9a037ae"
+          "64ee4ea2-3be9-4eb8-a50b-8ab8f64ef0da"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -258,16 +258,16 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "e3534b3c-7f0f-4d9a-9036-5ed61708ec22"
+          "bea44096-e8bc-4058-bbdd-527475aeac4d"
         ],
         "x-ms-routing-request-id": [
-          "AUSTRALIAEAST:20190213T104244Z:e3534b3c-7f0f-4d9a-9036-5ed61708ec22"
+          "AUSTRALIAEAST:20190214T052324Z:bea44096-e8bc-4058-bbdd-527475aeac4d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 13 Feb 2019 10:42:44 GMT"
+          "Thu, 14 Feb 2019 05:23:24 GMT"
         ],
         "Content-Length": [
           "609"
@@ -279,17 +279,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg9839/providers/Microsoft.CognitiveServices/accounts/csapstestrg9839\",\r\n  \"name\": \"csapstestrg9839\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"04005e95-0000-0000-0000-5c63f4a40000\\\"\",\r\n  \"location\": \"West Central US\",\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://csapstestrg9839.cognitiveservices.azure.com/text/analytics/v2.0\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"internalId\": \"f7815c0762094041aa2d6887b80c51b4\",\r\n    \"dateCreated\": \"2019-02-13T10:42:41.9875441Z\",\r\n    \"customSubDomainName\": \"csapstestrg9839\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1737/providers/Microsoft.CognitiveServices/accounts/csapstestrg1737\",\r\n  \"name\": \"csapstestrg1737\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"05008a70-0000-0000-0000-5c64fb4c0000\\\"\",\r\n  \"location\": \"West Central US\",\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://csapstestrg1737.cognitiveservices.azure.com/text/analytics/v2.0\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"internalId\": \"ded3bb95f259487a99c9bf3d004d1e09\",\r\n    \"dateCreated\": \"2019-02-14T05:23:22.0003607Z\",\r\n    \"customSubDomainName\": \"csapstestrg1737\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg9839/providers/Microsoft.CognitiveServices/accounts/csapstestrg9839?api-version=2017-04-18",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTgzOS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnOTgzOT9hcGktdmVyc2lvbj0yMDE3LTA0LTE4",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1737/providers/Microsoft.CognitiveServices/accounts/csapstestrg1737?api-version=2017-04-18",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMTczNy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMTczNz9hcGktdmVyc2lvbj0yMDE3LTA0LTE4",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "11f9a8d7-3225-463f-bef4-3741ba493d62"
+          "47ca6096-9af3-4b8c-87ab-4b1e3b485178"
         ],
         "Accept-Language": [
           "en-US"
@@ -309,10 +309,10 @@
           "no-cache"
         ],
         "ETag": [
-          "\"04005b95-0000-0000-0000-5c63f4a20000\""
+          "\"05008770-0000-0000-0000-5c64fb4b0000\""
         ],
         "x-ms-request-id": [
-          "e5d9c812-6ad1-449e-9c91-22a0fbe2cab6"
+          "aa4c5399-f9a9-497f-86d6-b91ffc229735"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -330,16 +330,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "16c30a60-4818-4462-8d83-eb7084145192"
+          "cbf26aac-c190-4211-b2f5-fea56d996466"
         ],
         "x-ms-routing-request-id": [
-          "AUSTRALIAEAST:20190213T104244Z:16c30a60-4818-4462-8d83-eb7084145192"
+          "AUSTRALIAEAST:20190214T052324Z:cbf26aac-c190-4211-b2f5-fea56d996466"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 13 Feb 2019 10:42:43 GMT"
+          "Thu, 14 Feb 2019 05:23:24 GMT"
         ],
         "Content-Length": [
           "609"
@@ -351,17 +351,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg9839/providers/Microsoft.CognitiveServices/accounts/csapstestrg9839\",\r\n  \"name\": \"csapstestrg9839\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"04005b95-0000-0000-0000-5c63f4a20000\\\"\",\r\n  \"location\": \"West Central US\",\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://csapstestrg9839.cognitiveservices.azure.com/text/analytics/v2.0\",\r\n    \"internalId\": \"f7815c0762094041aa2d6887b80c51b4\",\r\n    \"dateCreated\": \"2019-02-13T10:42:41.9875441Z\",\r\n    \"customSubDomainName\": \"csapstestrg9839\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1737/providers/Microsoft.CognitiveServices/accounts/csapstestrg1737\",\r\n  \"name\": \"csapstestrg1737\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"05008770-0000-0000-0000-5c64fb4b0000\\\"\",\r\n  \"location\": \"West Central US\",\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://csapstestrg1737.cognitiveservices.azure.com/text/analytics/v2.0\",\r\n    \"internalId\": \"ded3bb95f259487a99c9bf3d004d1e09\",\r\n    \"dateCreated\": \"2019-02-14T05:23:22.0003607Z\",\r\n    \"customSubDomainName\": \"csapstestrg1737\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg9839/providers/Microsoft.CognitiveServices/accounts/csapstestrg9839?api-version=2017-04-18",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTgzOS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnOTgzOT9hcGktdmVyc2lvbj0yMDE3LTA0LTE4",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1737/providers/Microsoft.CognitiveServices/accounts/csapstestrg1737?api-version=2017-04-18",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMTczNy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMTczNz9hcGktdmVyc2lvbj0yMDE3LTA0LTE4",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e63494b3-7f59-42be-9a49-17803cb18892"
+          "0ab8eceb-120f-4c52-9d64-fdf30037289f"
         ],
         "Accept-Language": [
           "en-US"
@@ -381,10 +381,10 @@
           "no-cache"
         ],
         "ETag": [
-          "\"04005e95-0000-0000-0000-5c63f4a40000\""
+          "\"05008a70-0000-0000-0000-5c64fb4c0000\""
         ],
         "x-ms-request-id": [
-          "f913dd47-92f3-48e7-928f-2409697883c8"
+          "72eafd53-a429-42c3-82e8-ec68f51a97cb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -402,16 +402,16 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "d5e7925e-4a48-4760-a575-3533cc3c73fc"
+          "2940673d-49e5-4433-993d-d60c00f83556"
         ],
         "x-ms-routing-request-id": [
-          "AUSTRALIAEAST:20190213T104245Z:d5e7925e-4a48-4760-a575-3533cc3c73fc"
+          "AUSTRALIAEAST:20190214T052325Z:2940673d-49e5-4433-993d-d60c00f83556"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 13 Feb 2019 10:42:44 GMT"
+          "Thu, 14 Feb 2019 05:23:24 GMT"
         ],
         "Content-Length": [
           "609"
@@ -423,17 +423,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg9839/providers/Microsoft.CognitiveServices/accounts/csapstestrg9839\",\r\n  \"name\": \"csapstestrg9839\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"04005e95-0000-0000-0000-5c63f4a40000\\\"\",\r\n  \"location\": \"West Central US\",\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://csapstestrg9839.cognitiveservices.azure.com/text/analytics/v2.0\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"internalId\": \"f7815c0762094041aa2d6887b80c51b4\",\r\n    \"dateCreated\": \"2019-02-13T10:42:41.9875441Z\",\r\n    \"customSubDomainName\": \"csapstestrg9839\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1737/providers/Microsoft.CognitiveServices/accounts/csapstestrg1737\",\r\n  \"name\": \"csapstestrg1737\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"05008a70-0000-0000-0000-5c64fb4c0000\\\"\",\r\n  \"location\": \"West Central US\",\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://csapstestrg1737.cognitiveservices.azure.com/text/analytics/v2.0\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"internalId\": \"ded3bb95f259487a99c9bf3d004d1e09\",\r\n    \"dateCreated\": \"2019-02-14T05:23:22.0003607Z\",\r\n    \"customSubDomainName\": \"csapstestrg1737\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg9839/providers/Microsoft.CognitiveServices/accounts/csapstestrg9839?api-version=2017-04-18",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTgzOS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnOTgzOT9hcGktdmVyc2lvbj0yMDE3LTA0LTE4",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1737/providers/Microsoft.CognitiveServices/accounts/csapstestrg1737?api-version=2017-04-18",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMTczNy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMTczNz9hcGktdmVyc2lvbj0yMDE3LTA0LTE4",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4268b2d9-3060-490e-85ac-c3e2bea591ad"
+          "bc76459f-d7c9-4c00-b2e8-45737fd3093f"
         ],
         "Accept-Language": [
           "en-US"
@@ -468,19 +468,19 @@
           "14999"
         ],
         "x-ms-request-id": [
-          "5e64cdb1-38f7-4f0e-a66a-166175ffde73"
+          "112705d4-d91d-4594-b9e1-cde4942e7792"
         ],
         "x-ms-correlation-request-id": [
-          "5e64cdb1-38f7-4f0e-a66a-166175ffde73"
+          "112705d4-d91d-4594-b9e1-cde4942e7792"
         ],
         "x-ms-routing-request-id": [
-          "AUSTRALIAEAST:20190213T104247Z:5e64cdb1-38f7-4f0e-a66a-166175ffde73"
+          "AUSTRALIAEAST:20190214T052328Z:112705d4-d91d-4594-b9e1-cde4942e7792"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 13 Feb 2019 10:42:47 GMT"
+          "Thu, 14 Feb 2019 05:23:27 GMT"
         ],
         "Expires": [
           "-1"
@@ -493,13 +493,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg9839?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnOTgzOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg1737?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnMTczNz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7b1690fc-5e49-4437-9b0c-aef707d8ceef"
+          "e604e7f9-871b-4741-b439-8540fad14c6e"
         ],
         "Accept-Language": [
           "en-US"
@@ -519,7 +519,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzk4MzktV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE3MzctV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -528,13 +528,13 @@
           "14999"
         ],
         "x-ms-request-id": [
-          "e0792f73-a67e-481e-85f2-39cd3f2a01e8"
+          "94aa6fd8-623d-4d73-b620-453dea63d23b"
         ],
         "x-ms-correlation-request-id": [
-          "e0792f73-a67e-481e-85f2-39cd3f2a01e8"
+          "94aa6fd8-623d-4d73-b620-453dea63d23b"
         ],
         "x-ms-routing-request-id": [
-          "AUSTRALIAEAST:20190213T104250Z:e0792f73-a67e-481e-85f2-39cd3f2a01e8"
+          "AUSTRALIAEAST:20190214T052330Z:94aa6fd8-623d-4d73-b620-453dea63d23b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -543,7 +543,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 13 Feb 2019 10:42:50 GMT"
+          "Thu, 14 Feb 2019 05:23:29 GMT"
         ],
         "Expires": [
           "-1"
@@ -556,8 +556,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzk4MzktV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSems0TXprdFYwVlRWRU5GVGxSU1FVeFZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE3MzctV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekUzTXpjdFYwVlRWRU5GVGxSU1FVeFZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -576,7 +576,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzk4MzktV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE3MzctV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -585,13 +585,13 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "e2fac854-a7bc-4102-8155-ec856a328713"
+          "36203a65-fd71-4ce8-bdad-3a00c5275365"
         ],
         "x-ms-correlation-request-id": [
-          "e2fac854-a7bc-4102-8155-ec856a328713"
+          "36203a65-fd71-4ce8-bdad-3a00c5275365"
         ],
         "x-ms-routing-request-id": [
-          "AUSTRALIAEAST:20190213T104307Z:e2fac854-a7bc-4102-8155-ec856a328713"
+          "AUSTRALIAEAST:20190214T052347Z:36203a65-fd71-4ce8-bdad-3a00c5275365"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -600,7 +600,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 13 Feb 2019 10:43:07 GMT"
+          "Thu, 14 Feb 2019 05:23:47 GMT"
         ],
         "Expires": [
           "-1"
@@ -613,8 +613,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzk4MzktV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSems0TXprdFYwVlRWRU5GVGxSU1FVeFZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE3MzctV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekUzTXpjdFYwVlRWRU5GVGxSU1FVeFZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -633,7 +633,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzk4MzktV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE3MzctV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -642,13 +642,13 @@
           "11997"
         ],
         "x-ms-request-id": [
-          "784d2f27-2628-4fd3-9430-0e05008fb3be"
+          "a5caf5f0-0beb-425e-b23e-24fe9c953465"
         ],
         "x-ms-correlation-request-id": [
-          "784d2f27-2628-4fd3-9430-0e05008fb3be"
+          "a5caf5f0-0beb-425e-b23e-24fe9c953465"
         ],
         "x-ms-routing-request-id": [
-          "AUSTRALIAEAST:20190213T104322Z:784d2f27-2628-4fd3-9430-0e05008fb3be"
+          "AUSTRALIAEAST:20190214T052402Z:a5caf5f0-0beb-425e-b23e-24fe9c953465"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -657,7 +657,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 13 Feb 2019 10:43:22 GMT"
+          "Thu, 14 Feb 2019 05:24:02 GMT"
         ],
         "Expires": [
           "-1"
@@ -670,8 +670,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzk4MzktV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSems0TXprdFYwVlRWRU5GVGxSU1FVeFZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE3MzctV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekUzTXpjdFYwVlRWRU5GVGxSU1FVeFZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -693,13 +693,13 @@
           "11996"
         ],
         "x-ms-request-id": [
-          "22f627b5-f9ee-4540-87fa-d79144bbbeb5"
+          "cab19111-031e-4417-8db6-e13ce959b82c"
         ],
         "x-ms-correlation-request-id": [
-          "22f627b5-f9ee-4540-87fa-d79144bbbeb5"
+          "cab19111-031e-4417-8db6-e13ce959b82c"
         ],
         "x-ms-routing-request-id": [
-          "AUSTRALIAEAST:20190213T104338Z:22f627b5-f9ee-4540-87fa-d79144bbbeb5"
+          "AUSTRALIAEAST:20190214T052418Z:cab19111-031e-4417-8db6-e13ce959b82c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -708,7 +708,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 13 Feb 2019 10:43:37 GMT"
+          "Thu, 14 Feb 2019 05:24:18 GMT"
         ],
         "Expires": [
           "-1"
@@ -721,8 +721,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzk4MzktV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSems0TXprdFYwVlRWRU5GVGxSU1FVeFZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE3MzctV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekUzTXpjdFYwVlRWRU5GVGxSU1FVeFZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -744,13 +744,13 @@
           "11995"
         ],
         "x-ms-request-id": [
-          "4794464a-2c5a-44ab-a077-6ce796583707"
+          "d78a8d30-7b9e-4781-b0e4-03ef8eeb16d3"
         ],
         "x-ms-correlation-request-id": [
-          "4794464a-2c5a-44ab-a077-6ce796583707"
+          "d78a8d30-7b9e-4781-b0e4-03ef8eeb16d3"
         ],
         "x-ms-routing-request-id": [
-          "AUSTRALIAEAST:20190213T104339Z:4794464a-2c5a-44ab-a077-6ce796583707"
+          "AUSTRALIAEAST:20190214T052419Z:d78a8d30-7b9e-4781-b0e4-03ef8eeb16d3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -759,7 +759,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 13 Feb 2019 10:43:38 GMT"
+          "Thu, 14 Feb 2019 05:24:18 GMT"
         ],
         "Expires": [
           "-1"
@@ -774,7 +774,7 @@
   ],
   "Names": {
     "Test-NewAzureRmCognitiveServicesAccountWithCustomDomain": [
-      "pstestrg9839"
+      "pstestrg1737"
     ]
   },
   "Variables": {
