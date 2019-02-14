@@ -1,8 +1,8 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
-ms.assetid: ECA70C6C-E0B0-445D-BCAD-041625FAC632
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/get-azdatalakestoreitem
+ms.assetid: D231E9A0-DC1E-411B-A87A-56A8C767F6C5
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem
 schema: 2.0.0
 ---
 
@@ -27,11 +27,23 @@ The **Restore-AzDataLakeStoreDeletedItem** cmdlet restores a deleted file or fol
 
 ## EXAMPLES
 
-### Example 1: Get details of a file from the Data Lake Store
+### Example 1: Restore a file from the Data Lake Store using -force option
 ```
 PS > Restore-AzDataLakeStoreDeletedItem -Account ml1ptrashtest -Path adl://ml1ptrashtest.azuredatalake.com/`$temp/trash/131940576000000000/me1sch201110222/deleted_0a7b9a4a-7dc0-4ddb-aa6c-6d55dca8e770
 -Destination adl://ml1ptrashtest.azuredatalake.com/test0/file_1230 -Type "file" -Force
 PS >
+
+### Example 2: Restore a file from Data Lake Store using user confirmation
+
+PS > restore-azdatalakestoredeleteditem -account ml1ptrashtest -path adl://ml1ptrashtest.azuredatalake.com/`$temp/trash/131943168000000000/me1sch201112020/deleted_6b03f36a-912c-429d-9e4f-6969b465d069 -destination adl://ml1ptrashtest.azuredatalake.com/test4/file_1115 -type file
+
+Restore user data ?
+From - adl://ml1ptrashtest.azuredatalake.com/$temp/trash/131943168000000000/me1sch201112020/deleted_6b03f36a-912c-429d-9e4f-6969b465d069
+To   - adl://ml1ptrashtest.azuredatalake.com/test4/file_1115
+Type - file
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+PS >
+
 
 ```
 
