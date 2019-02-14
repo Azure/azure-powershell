@@ -65,12 +65,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
         /// <param name="result">The result.</param>
         public PSValidationResult(IValidationResult result)
         {
-            this.Kind = this.Convert(result.Kind);
-            this.Type = this.Convert(result.Type);
-            this.Level = this.Convert(result.Level);
-            this.Positions = result.Positions != null ? new List<int>(result.Positions) : null;
-            this.Description = result.Description;
-            this.Path = result.Path;
+            Kind = Convert(result.Kind);
+            Type = Convert(result.Type);
+            Level = Convert(result.Level);
+            Positions = result.Positions != null ? new List<int>(result.Positions) : null;
+            Description = result.Description;
+            Path = result.Path;
         }
 
         #endregion

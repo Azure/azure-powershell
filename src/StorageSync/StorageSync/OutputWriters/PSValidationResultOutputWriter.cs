@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
         /// </summary>
         public PSValidationResultOutputWriter()
         {
-            this.Validation = new PSStorageSyncValidation();
+            Validation = new PSStorageSyncValidation();
         }
         #endregion
 
@@ -58,12 +58,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
             switch (validationResult.Kind)
             {
                 case ValidationKind.SystemValidation:
-                    this.Validation.Results.Add(new PSValidationResult(validationResult));
+                    Validation.Results.Add(new PSValidationResult(validationResult));
                     break;
                 case ValidationKind.NamespaceValidation:
                     if (validationResult.Result == Result.Fail)
                     {
-                        this.Validation.Results.Add(new PSValidationResult(validationResult));
+                        Validation.Results.Add(new PSValidationResult(validationResult));
                     }
                     break;
                 default:

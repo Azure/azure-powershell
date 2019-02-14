@@ -20,5 +20,20 @@
   <ItemGroup>
     <EmbeddedResource Include="Config.json" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Update="Properties\StorageSyncResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StorageSyncResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\StorageSyncResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StorageSyncResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
 
 </Project>

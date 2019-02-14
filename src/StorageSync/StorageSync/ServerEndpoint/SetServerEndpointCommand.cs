@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
@@ -141,8 +142,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
-          HelpMessage = HelpMessages.CloudSeededDataParameter)]
-        public SwitchParameter CloudSeededData { get; set; }
+          HelpMessage = HelpMessages.OfflineDataTransferParameter)]
+        public SwitchParameter OfflineDataTransfer { get; set; }
 
         /// <summary>
         /// Gets or sets the tier files older than days.
@@ -161,8 +162,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
-          HelpMessage = HelpMessages.CloudSeededDataFileShareUriParameter)]
-        public string CloudSeededDataFileShareUri { get; set; }
+          HelpMessage = HelpMessages.OfflineDataTransferShareNameParameter)]
+        public string OfflineDataTransferShareName { get; set; }
 
         /// <summary>
         /// Gets or sets as job.
@@ -181,7 +182,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// Gets or sets the action message.
         /// </summary>
         /// <value>The action message.</value>
-        protected override string ActionMessage => $"Updating a Server endpoint {Name ?? ResourceId ?? InputObject?.ServerEndpointName}";
+        protected override string ActionMessage => $"{StorageSyncResources.SetServerEndpointActionMessage} {Name ?? ResourceId ?? InputObject?.ServerEndpointName}";
 
         /// <summary>
         /// Executes the cmdlet.
@@ -225,13 +226,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     CloudTiering = CloudTiering.IsPresent ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
                     VolumeFreeSpacePercent = VolumeFreeSpacePercent,
                     TierFilesOlderThanDays = TierFilesOlderThanDays,
-                        // TODO : Update once we update SDK from v4 to v5
-                        //CloudSeededData = CloudSeededData.IsPresent ? "on" : "off"
-                        //CloudSeededDataFileShareUri = CloudSeededDataFileShareUri
-                    };
+                    OfflineDataTransfer = OfflineDataTransfer.IsPresent ? "on" : "off",
+                    OfflineDataTransferShareName = OfflineDataTransferShareName
+                };
+
+                Target = string.Join("/", resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);
                 if (ShouldProcess(Target, ActionMessage))
                 {
-                    StorageSyncModels.ServerEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.Update(
+                    ServerEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.Update(
                         resourceGroupName,
                         storageSyncServiceName,
                         parentResourceName,

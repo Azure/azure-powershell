@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Models;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using System;
@@ -118,24 +119,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                     if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new PSArgumentException(nameof(ParentResourceId));
+                        throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
                     }
                 }
 
                 var resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier?.ResourceGroupName;
-
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    throw new PSArgumentException(nameof(ResourceGroupName));
-                }
-
                 var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
-
-                if (string.IsNullOrEmpty(parentResourceName))
-                {
-                    throw new PSArgumentException(nameof(StorageSyncServiceName));
-                }
-
                 if (ServerId == Guid.Empty)
                 {
                     WriteObject(StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.ListByStorageSyncService(resourceGroupName, parentResourceName));

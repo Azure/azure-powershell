@@ -85,12 +85,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         /// <param name="withProgressBar">if set to <c>true</c> [with progress bar].</param>
         public ProgressReporter(ICmdlet cmdlet, bool withProgressBar)
         {
-            this._steps = 0;
-            this._completedSteps = 0;
-            this._lastCompletePercentage = 0;
-            this._cmdlet = cmdlet;
-            this._withProgressBar = withProgressBar;
-            this._timer = Stopwatch.StartNew();
+            _steps = 0;
+            _completedSteps = 0;
+            _lastCompletePercentage = 0;
+            _cmdlet = cmdlet;
+            _withProgressBar = withProgressBar;
+            _timer = Stopwatch.StartNew();
         }
         #endregion
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         /// <param name="steps">The steps.</param>
         public void AddSteps(long steps)
         {
-            this._steps += steps;
+            _steps += steps;
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         /// <param name="steps">The steps.</param>
         public void ReserveSteps(long steps)
         {
-            this._reserveSteps += steps;
+            _reserveSteps += steps;
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         /// <param name="steps">The steps.</param>
         public void ResetSteps(long steps)
         {
-            this._steps = steps;
+            _steps = steps;
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         /// </summary>
         public void Show()
         {
-            this._cmdlet.WriteProgress(this.CreateProgressRecord(this._lastCompletePercentage));
+            _cmdlet.WriteProgress(CreateProgressRecord(_lastCompletePercentage));
         }
 
         /// <summary>
@@ -135,21 +135,21 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         /// </summary>
         public void CompleteStep()
         {
-            bool shouldUpdateProgress = this.ShouldUpdateProgress();
+            bool shouldUpdateProgress = ShouldUpdateProgress();
 
-            this._completedSteps += 1;
+            _completedSteps += 1;
 
             // It is possible to have more actual steps than predicted
             // and if that happens, we might not have a good estimate on remaining work
             // we limit it to 100 to avoid going above the limit.
             // Callers can use AddSteps, ResetSteps or ReserveSteps to update number of steps
             // and make progress behave better if they can predict amount of pending work.
-            int newCompletePercentage = System.Math.Min(100, (int)(this._completedSteps * 100 / System.Math.Max(this._steps, this._reserveSteps)));
+            int newCompletePercentage = System.Math.Min(100, (int)(_completedSteps * 100 / System.Math.Max(_steps, _reserveSteps)));
 
-            if (newCompletePercentage != this._lastCompletePercentage && shouldUpdateProgress)
+            if (newCompletePercentage != _lastCompletePercentage && shouldUpdateProgress)
             {
-                this._lastCompletePercentage = newCompletePercentage;
-                this._cmdlet.WriteProgress(this.CreateProgressRecord(newCompletePercentage));
+                _lastCompletePercentage = newCompletePercentage;
+                _cmdlet.WriteProgress(CreateProgressRecord(newCompletePercentage));
             }
         }
 
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         /// </summary>
         public void Complete()
         {
-            this._cmdlet.WriteProgress(this.CreateCompletionRecord());
+            _cmdlet.WriteProgress(CreateCompletionRecord());
         }
         #endregion
 
@@ -170,8 +170,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         /// <returns>ProgressRecord.</returns>
         protected ProgressRecord CreateProgressRecord(int percentage)
         {
-            var result = new ProgressRecord(this.ActivityId, this.ActivityDescription, this.ActivityStatus);
-            if (this._withProgressBar)
+            var result = new ProgressRecord(ActivityId, ActivityDescription, ActivityStatus);
+            if (_withProgressBar)
             {
                 result.PercentComplete = percentage;
             }
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         /// <returns>ProgressRecord.</returns>
         protected ProgressRecord CreateCompletionRecord()
         {
-            return new ProgressRecord(this.ActivityId, this.ActivityDescription, this.ActivityStatus)
+            return new ProgressRecord(ActivityId, ActivityDescription, ActivityStatus)
             {
                 RecordType = ProgressRecordType.Completed
             };
@@ -198,14 +198,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool ShouldUpdateProgress()
         {
-            this._timer.Stop();
-            if (this._timer.Elapsed < this._updateFrequency)
+            _timer.Stop();
+            if (_timer.Elapsed < _updateFrequency)
             {
-                this._timer.Start();
+                _timer.Start();
                 return false;
             }
 
-            this._timer.Restart();
+            _timer.Restart();
             return true;
         }
         #endregion

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <param name="configuration">The configuration.</param>
         public MaximumDatasetSizeValidation(IConfiguration configuration) : base(configuration, "Namespace size limit", ValidationType.DatasetSize)
         {
-            this._maxDataSetSize = configuration.MaximumDatasetSizeInBytes();
+            _maxDataSetSize = configuration.MaximumDatasetSizeInBytes();
         }
 
         #endregion
@@ -52,21 +52,21 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(INamespaceInfo namespaceInfo)
         {
-            bool dataSetTooBig = namespaceInfo.TotalFileSizeInBytes > this._maxDataSetSize;
+            bool dataSetTooBig = namespaceInfo.TotalFileSizeInBytes > _maxDataSetSize;
             if (dataSetTooBig)
             {
                 return new ValidationResult
                 {
                     Result = Result.Fail,
-                    Type = this.ValidationType,
-                    Kind = this.ValidationKind,
+                    Type = ValidationType,
+                    Kind = ValidationKind,
                     Level = ResultLevel.Error,
-                    Description = $"The dataset is too big. Maximum dataset size is {this._maxDataSetSize}.",
+                    Description = $"The dataset is too big. Maximum dataset size is {_maxDataSetSize}.",
                     Path = namespaceInfo.Path 
                 };
             }
 
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
 
         #endregion

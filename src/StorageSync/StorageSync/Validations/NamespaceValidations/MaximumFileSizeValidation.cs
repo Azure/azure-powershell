@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <param name="configuration">The configuration.</param>
         public MaximumFileSizeValidation(IConfiguration configuration): base(configuration, "Files over the size limit", ValidationType.FileSize)
         {
-            this._maxFileSizeInBytes = configuration.MaximumFileSizeInBytes();
+            _maxFileSizeInBytes = configuration.MaximumFileSizeInBytes();
         }
         #endregion
 
@@ -49,22 +49,22 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IFileInfo node)
         {
-            bool fileIsTooBig = node.Length > this._maxFileSizeInBytes;
+            bool fileIsTooBig = node.Length > _maxFileSizeInBytes;
 
             if (fileIsTooBig)
             {
                 return new ValidationResult
                 {
                     Result = Result.Fail,
-                    Description = $"File {node.Name} is too big. Maximum allowed file size is {this._maxFileSizeInBytes} bytes",
+                    Description = $"File {node.Name} is too big. Maximum allowed file size is {_maxFileSizeInBytes} bytes",
                     Level = ResultLevel.Error,
                     Path = node.FullName,
-                    Type = this.ValidationType,
-                    Kind = this.ValidationKind
+                    Type = ValidationType,
+                    Kind = ValidationKind
                 };
             }
 
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
         #endregion
     }

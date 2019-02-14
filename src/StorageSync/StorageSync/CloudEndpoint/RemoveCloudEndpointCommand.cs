@@ -17,9 +17,9 @@ using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
-using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
-    [Cmdlet(VerbsCommon.Remove, StorageSyncNouns.NounAzureRmStorageSyncCloudEndpoint, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet(VerbsCommon.Remove, StorageSyncNouns.NounAzureRmStorageSyncCloudEndpoint,
+        DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveCloudEndpointCommand : StorageSyncClientCmdletBase
     {
         /// <summary>
@@ -171,11 +172,12 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                     storageSyncServiceName = StorageSyncServiceName;
                 }
 
-                Target = resourceName;
-                ActionMessage = "Remove Cloud Endpoint";
+                Target = string.Join("/", resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);
+                ActionMessage = StorageSyncResources.RemoveCloudEndpointActionMessage;
+
                 if (ShouldProcess(Target, ActionMessage))
                 {
-                    if (Force || ShouldContinue(string.Format("Remove Cloud Endpoint '{0}' and all content in it", resourceName), String.Empty))
+                    if (Force || ShouldContinue(string.Format(StorageSyncResources.RemoveCloudEndpointPromptFormat, Target), string.Empty))
                     {
                         StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.Delete(resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);
                     }

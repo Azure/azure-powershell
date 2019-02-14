@@ -14,7 +14,7 @@
 
 using System;
 
-namespace StorageSync.Management.PowerShell.Cmdlets.CertificateRollover
+namespace Commands.StorageSync.Interop.Interfaces
 {
     /// <summary>
     /// Function performs server certificate rollover

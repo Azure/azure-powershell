@@ -165,11 +165,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The cloud seeded data parameter
         /// </summary>
-        public const string CloudSeededDataParameter = "Cloud Seeded Data Parameter";
+        public const string OfflineDataTransferParameter = "Cloud Seeded Data Parameter";
         /// <summary>
         /// The cloud seeded data file share URI parameter
         /// </summary>
-        public const string CloudSeededDataFileShareUriParameter = "Cloud Seeded Data File Share Uri Parameter";
+        public const string OfflineDataTransferShareNameParameter = "Cloud Seeded Data File Share Uri Parameter";
         /// <summary>
         /// The tier files older than days parameter
         /// </summary>

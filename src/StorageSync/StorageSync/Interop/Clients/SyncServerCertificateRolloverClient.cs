@@ -15,11 +15,12 @@
 using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using System;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 
-namespace StorageSync.Management.PowerShell.Cmdlets.CertificateRollover
+namespace Commands.StorageSync.Interop.Clients
 {
     /// <summary>
     /// Function performs server certificate rollover
@@ -45,7 +46,7 @@ namespace StorageSync.Management.PowerShell.Cmdlets.CertificateRollover
         /// <param name="ecsManagementInteropClient">The ecs management interop client.</param>
         public SyncServerCertificateRolloverClient(IEcsManagement ecsManagementInteropClient)
         {
-            this.EcsManagementInteropClient = ecsManagementInteropClient;
+            EcsManagementInteropClient = ecsManagementInteropClient;
         }
 
         /// <summary>
@@ -113,48 +114,44 @@ namespace StorageSync.Management.PowerShell.Cmdlets.CertificateRollover
             string serverIdString = string.Empty;
 
             // Retrieve serverId from the configuration
-            this.EcsManagementInteropClient.GetSyncServerId(out serverIdString);
+            EcsManagementInteropClient.GetSyncServerId(out serverIdString);
 
             if (!Guid.TryParse(serverIdString, out serverId))
             {
                 throw new ArgumentException(nameof(serverId));
             }
 
-            verboseLogger($"ServerId: {serverId}");
+            verboseLogger(string.Format(StorageSyncResources.ResetCertificateMessageFormat1, serverId));
 
-            this.EcsManagementInteropClient.GetServerCertificateThumbprints(out primaryCertificateThumbprint, out secondaryCertificateThumbprint);
-
-            verboseLogger("Primary Certificate Thumbprint: " + primaryCertificateThumbprint + " Secondary Certificate Thumbprint: " + secondaryCertificateThumbprint);
-
+            EcsManagementInteropClient.GetServerCertificateThumbprints(out primaryCertificateThumbprint, out secondaryCertificateThumbprint);
             if(string.IsNullOrEmpty(primaryCertificateThumbprint) || string.IsNullOrEmpty(secondaryCertificateThumbprint))
             {
-                //throw new HfsBackendException(HfsErrorCodes.MgmtUnexpectedServerCertificateConfiguration, "Certificate thumbprints not found. Check if server is registered.", null);
-                throw new Exception("Certificate thumbprints not found. Check if server is registered.");
+                throw new Exception(StorageSyncResources.CertificateThumbprintNotFound);
             }
+
+            verboseLogger(string.Format(StorageSyncResources.ResetCertificateMessageFormat2,primaryCertificateThumbprint, secondaryCertificateThumbprint));
 
             if (!string.Equals(primaryCertificateThumbprint, secondaryCertificateThumbprint, StringComparison.OrdinalIgnoreCase))
             {
-                verboseLogger($"Primary and Secondary certificate thumbprints are different. Attempting to load the secondary certificate from store instead of generating new certificate..");
-
                 try
                 {
-                    hResult = this.EcsManagementInteropClient.GetSyncServerCertificate(false, out secondaryCertificate);
+                    hResult = EcsManagementInteropClient.GetSyncServerCertificate(false, out secondaryCertificate);
                 }
                 catch (COMException ex)
                 {
-                    verboseLogger($"COM Exception while loading certificate: HResult: {ex.HResult} Message: {ex.Message}");
+                    verboseLogger(string.Format(StorageSyncResources.GetSyncServerCertificateErrorMessageFormat, ex.HResult, ex.Message));
                     hResult = ex.HResult;
                 }
 
                 if (hResult == 0 && !string.IsNullOrEmpty(secondaryCertificate))
                 {
-                    verboseLogger($"Succesfully retrieved secondary certificate with thumbprint: {secondaryCertificateThumbprint} from store with HResult: {hResult}");
+                    verboseLogger(string.Format(StorageSyncResources.ResetCertificateMessageFormat3, secondaryCertificateThumbprint, hResult));
 
                     generateNewCertificate = false;
                 }
                 else
                 {
-                    verboseLogger($"Failed to retrieve the secondary certificate from store with HResult: {hResult}");
+                    verboseLogger(string.Format(StorageSyncResources.ResetCertificateMessageFormat4, hResult));
                 }
             }
 
@@ -163,12 +160,11 @@ namespace StorageSync.Management.PowerShell.Cmdlets.CertificateRollover
                 secondaryCertificate = string.Empty;
 
                 // Generate new Certificate
-                verboseLogger($"Generating new Secondary Certificate.. Current Thumbprint: {secondaryCertificateThumbprint}");
-                verboseLogger("Generating new Secondary certificate..");
+                verboseLogger(string.Format(StorageSyncResources.ResetCertificateMessageFormat1, secondaryCertificateThumbprint));
 
                 try
                 {
-                    hResult = this.EcsManagementInteropClient.RolloverSecondaryCertificate(
+                    hResult = EcsManagementInteropClient.RolloverSecondaryCertificate(
                     ManagementInteropConstants.CertificateProviderName,
                     ManagementInteropConstants.CertificateHashAlgorithm,
                     ManagementInteropConstants.CertificateKeyLength,
@@ -181,15 +177,12 @@ namespace StorageSync.Management.PowerShell.Cmdlets.CertificateRollover
 
                 if (hResult != 0 || string.IsNullOrEmpty(secondaryCertificate))
                 {
-                    string errorMessage = $"Failed to generate secondary certificate. HResult: {hResult}";
-                    verboseLogger(errorMessage);
-                    //throw new HfsBackendException(HfsErrorCodes.MgmtServerCertificateGenerationFailed, errorMessage, null);
-                    throw new Exception(errorMessage);
+                    verboseLogger(string.Format(StorageSyncResources.RolloverSecondaryCertificateErrorMessageFormat, hResult));
+                    throw new Exception(string.Format(StorageSyncResources.RolloverSecondaryCertificateErrorMessageFormat, hResult));
                 }
 
-                verboseLogger($"Successfully generated certificate in the store");
             }
-            
+
             ValidateCertificate(secondaryCertificate, verboseLogger);
 
             return secondaryCertificate;
@@ -212,7 +205,7 @@ namespace StorageSync.Management.PowerShell.Cmdlets.CertificateRollover
             string primaryCertificateThumbprint = string.Empty;
             string secondaryCertificateThumbprint = string.Empty;
             
-            this.EcsManagementInteropClient.GetServerCertificateThumbprints(out primaryCertificateThumbprint, out secondaryCertificateThumbprint);
+            EcsManagementInteropClient.GetServerCertificateThumbprints(out primaryCertificateThumbprint, out secondaryCertificateThumbprint);
 
             if(string.IsNullOrEmpty(primaryCertificateThumbprint))
             {
@@ -226,39 +219,37 @@ namespace StorageSync.Management.PowerShell.Cmdlets.CertificateRollover
 
             if (string.Equals(primaryCertificateThumbprint, secondaryCertificateThumbprint, StringComparison.OrdinalIgnoreCase))
             {
-                string errorMessage = $"Primary and Secondary certificates are same. Cannot proceed to switch and delete certificate step. Primary Thumbprint: {primaryCertificateThumbprint}";
+                string errorMessage = string.Format(StorageSyncResources.ResetCertificateMessageFormat6, primaryCertificateThumbprint);
                 verboseLogger(errorMessage);
-
-                //throw new HfsBackendException(HfsErrorCodes.MgmtUnexpectedServerCertificateConfiguration, errorMessage, null);
                 throw new Exception(errorMessage);
             }
 
             // Switch to secondary certificate 
-            verboseLogger($"Switching primary certificate to secondary and updating monitoring with latest certificate. Primary Certificate: {primaryCertificateThumbprint} Secondary Certificate: {secondaryCertificateThumbprint}");
+            verboseLogger(string.Format(StorageSyncResources.ResetCertificateMessageFormat7, primaryCertificateThumbprint, secondaryCertificateThumbprint));
 
             try
             {
-                this.EcsManagementInteropClient.SwitchToSecondaryCertificateAndUpdateMonitoring();
+                EcsManagementInteropClient.SwitchToSecondaryCertificateAndUpdateMonitoring();
             }
             catch (COMException ex)
             {
-                verboseLogger($"COM Exception while switching certificate: HResult:{ex.HResult} Message:{ex.Message}");
+                verboseLogger(string.Format(StorageSyncResources.ResetCertificateMessageFormat8, ex.HResult,ex.Message));
             }
 
-            verboseLogger($"Successfully switched to secondary certificate. Certificate: {secondaryCertificateThumbprint}");
+            verboseLogger(string.Format(StorageSyncResources.ResetCertificateMessageFormat9, secondaryCertificateThumbprint));
 
             try
             {
-                verboseLogger($"Deleting old certificate  with thumbprint: {primaryCertificateThumbprint}");
+                verboseLogger(string.Format(StorageSyncResources.ResetCertificateMessageFormat10, primaryCertificateThumbprint));
 
-                hResult = this.EcsManagementInteropClient.DeleteServerCertificate(primaryCertificateThumbprint);
+                hResult = EcsManagementInteropClient.DeleteServerCertificate(primaryCertificateThumbprint);
 
-                verboseLogger($"Successfully deleted the certificate from the store: {primaryCertificateThumbprint}");
+                verboseLogger(string.Format(StorageSyncResources.ResetCertificateMessageFormat11, primaryCertificateThumbprint));
             }
             catch (COMException ex)
             {
                 // Ignoring the failure to delete the stale certificate
-                verboseLogger($"COM Exception during deletion of old Primary certificate: HResult:{ex.HResult} Message:{ex.Message}. Ignoring the error..");
+                verboseLogger(string.Format(StorageSyncResources.ResetCertificateMessageFormat12, ex.HResult, ex.Message));
             }
         }
 
@@ -274,27 +265,26 @@ namespace StorageSync.Management.PowerShell.Cmdlets.CertificateRollover
 
             var certificate = new X509Certificate2(certificateString.ToBase64Bytes(true));
 
-            verboseLogger($"Validating Certificate with Thumbprint: {certificate.Thumbprint}");
+            verboseLogger(string.Format(StorageSyncResources.ResetCertificateMessageFormat13, certificate.Thumbprint));
 
             // Validate certificate expiry
             if (DateTime.Compare(DateTime.Now, certificate.NotAfter) > 0)
             {
-                errorMessage = $"Certificate is expired. Current Time: {DateTime.Now} Certificate NotAfter: {certificate.NotAfter}";
+                errorMessage = string.Format(StorageSyncResources.ResetCertificateMessageFormat14, DateTime.Now, certificate.NotAfter);
             }
 
             // Validate certificate doesn't contain Private key
             if (certificate.HasPrivateKey)
             {
-                errorMessage = $"Certificate contains Private Key";
+                errorMessage = StorageSyncResources.ResetCertificateMessageFormat15;
             }
 
             if (!string.IsNullOrEmpty(errorMessage))
             {
-                //throw new HfsBackendException(HfsErrorCodes.MgmtInvalidOrExpiredCertificate, errorMessage, null);
-                throw new Exception("MgmtInvalidOrExpiredCertificate");
+                throw new Exception(errorMessage);
             }
 
-            verboseLogger($"Successfully validated certificate with thumbprint: {certificate.Thumbprint}");
+            verboseLogger(string.Format(StorageSyncResources.ResetCertificateMessageFormat16, certificate.Thumbprint));
         }
     }
 }

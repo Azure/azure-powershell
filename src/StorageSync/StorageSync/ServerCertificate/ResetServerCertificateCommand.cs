@@ -13,14 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Commands.StorageSync.Interop;
+using Commands.StorageSync.Interop.Clients;
 using Commands.StorageSync.Interop.DataObjects;
+using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Models;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
-using StorageSync.Management.PowerShell.Cmdlets.CertificateRollover;
 using System;
 using System.Management.Automation;
 
@@ -110,16 +112,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// Gets or sets the action message.
         /// </summary>
         /// <value>The action message.</value>
-        protected override string ActionMessage => $"Reset Server Certificate for Storage sync service {StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? ParentResourceId}";
+        protected override string ActionMessage => $"{StorageSyncResources.ResetServerCertificateActionMessage} {StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? ParentResourceId}";
 
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         public override void ExecuteCmdlet()
         {
-
             base.ExecuteCmdlet();
-
             ExecuteClientAction(() =>
             {
                 var parentResourceIdentifier = default(ResourceIdentifier);
@@ -130,24 +130,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                     if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new PSArgumentException(nameof(ParentResourceId));
+                        throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
                     }
                 }
 
                 var resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier?.ResourceGroupName;
-
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    throw new PSArgumentException(nameof(ResourceGroupName));
-                }
-
                 var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
-
-                if (string.IsNullOrEmpty(parentResourceName))
-                {
-                    throw new PSArgumentException(nameof(StorageSyncServiceName));
-                }
-
                 if (ShouldProcess(Target, ActionMessage))
                 {
                     TriggerCertificateRollover(resourceGroupName, SubscriptionId, parentResourceName);

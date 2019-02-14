@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns>IEnumerable&lt;IDirectoryInfo&gt;.</returns>
         public IEnumerable<IDirectoryInfo> EnumerateDirectories()
         {
-            List<string> subDirectories = ListFiles.GetDirectories(ListFiles.EnsureUncPrefixPresent(this.FullName));
-            return subDirectories.Select(subDirectoryName => new AfsDirectoryInfo(Combine(this.FullName, subDirectoryName)));
+            List<string> subDirectories = ListFiles.GetDirectories(ListFiles.EnsureUncPrefixPresent(FullName));
+            return subDirectories.Select(subDirectoryName => new AfsDirectoryInfo(Combine(FullName, subDirectoryName)));
         }
 
         /// <summary>
@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns>IEnumerable&lt;IFileInfo&gt;.</returns>
         public IEnumerable<IFileInfo> EnumerateFiles()
         {
-            List<Tuple<string, long>> subDirectories = ListFiles.GetFiles(ListFiles.EnsureUncPrefixPresent(this.FullName));
-            return subDirectories.Select(tuple => new AfsFileInfo(Combine(this.FullName, tuple.Item1), tuple.Item2));
+            List<Tuple<string, long>> subDirectories = ListFiles.GetFiles(ListFiles.EnsureUncPrefixPresent(FullName));
+            return subDirectories.Select(tuple => new AfsFileInfo(Combine(FullName, tuple.Item1), tuple.Item2));
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool Exists()
         {
-            return System.IO.Directory.Exists(this.FullName);
+            return System.IO.Directory.Exists(FullName);
         }
     }
 }

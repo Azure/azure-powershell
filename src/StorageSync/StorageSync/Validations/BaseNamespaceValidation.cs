@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
             string validationName,
             ValidationType validationType): base(validationName, validationType, ValidationKind.NamespaceValidation)
         {
-            this.Configuration = configuration;
+            Configuration = configuration;
         }
 
         #endregion
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <returns>IValidationResult.</returns>
         public IValidationResult Validate(IFileInfo fileInfo)
         {
-            return this.DoValidate(fileInfo);
+            return DoValidate(fileInfo);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <returns>IValidationResult.</returns>
         public IValidationResult Validate(IDirectoryInfo directoryInfo)
         {
-            return this.DoValidate(directoryInfo);
+            return DoValidate(directoryInfo);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <returns>IValidationResult.</returns>
         public IValidationResult Validate(INamespaceInfo namespaceInfo)
         {
-            return this.DoValidate(namespaceInfo);
+            return DoValidate(namespaceInfo);
         }
         #endregion
 
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <returns>IValidationResult.</returns>
         protected virtual IValidationResult DoValidate(IFileInfo file)
         {
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <returns>IValidationResult.</returns>
         protected virtual IValidationResult DoValidate(IDirectoryInfo directoryInfo)
         {
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <returns>IValidationResult.</returns>
         protected virtual IValidationResult DoValidate(INamespaceInfo namespaceInfo)
         {
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
         #endregion
     }

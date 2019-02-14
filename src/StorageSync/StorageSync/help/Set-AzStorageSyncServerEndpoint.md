@@ -15,8 +15,8 @@ This command will use to set server endpoint.
 ### ObjectParameterSet (Default)
 ```
 Set-AzStorageSyncServerEndpoint [-InputObject] <PSServerEndpoint> [-CloudTiering]
- [-VolumeFreeSpacePercent <Int32>] [-CloudSeededData] [-TierFilesOlderThanDays <Int32>]
- [-CloudSeededDataFileShareUri <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-VolumeFreeSpacePercent <Int32>] [-OfflineDataTransfer] [-TierFilesOlderThanDays <Int32>]
+ [-OfflineDataTransferShareName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -24,14 +24,14 @@ Set-AzStorageSyncServerEndpoint [-InputObject] <PSServerEndpoint> [-CloudTiering
 ```
 Set-AzStorageSyncServerEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
  [-SyncGroupName] <String> [-Name] <String> [-CloudTiering] [-VolumeFreeSpacePercent <Int32>]
- [-CloudSeededData] [-TierFilesOlderThanDays <Int32>] [-CloudSeededDataFileShareUri <String>] [-AsJob]
+ [-OfflineDataTransfer] [-TierFilesOlderThanDays <Int32>] [-OfflineDataTransferShareName <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Set-AzStorageSyncServerEndpoint [-ResourceId] <String> [-CloudTiering] [-VolumeFreeSpacePercent <Int32>]
- [-CloudSeededData] [-TierFilesOlderThanDays <Int32>] [-CloudSeededDataFileShareUri <String>] [-AsJob]
+ [-OfflineDataTransfer] [-TierFilesOlderThanDays <Int32>] [-OfflineDataTransferShareName <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ This command will use to set server endpoint.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName"  -CloudTiering -CloudSeededData -CloudSeededDataFileShareUri "myCloudSeededDataFileShareUri" -TierFilesOlderThanDays "myTierFilesOlderThanDays"
+PS C:\> Set-AzStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName"  -CloudTiering -OfflineDataTransfer -OfflineDataTransferShareName "myOfflineDataTransferShareName" -TierFilesOlderThanDays "myTierFilesOlderThanDays"
 ```
 
 This command set a serverendpoint provided all the name of the dependent resources.
@@ -64,7 +64,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CloudSeededData
+### -OfflineDataTransfer
 Cloud Seeded Data Parameter
 
 ```yaml
@@ -79,7 +79,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CloudSeededDataFileShareUri
+### -OfflineDataTransferShareName
 Cloud Seeded Data File Share Uri Parameter
 
 ```yaml

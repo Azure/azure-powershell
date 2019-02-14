@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using System.Management.Automation;
@@ -119,39 +120,21 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
             ExecuteClientAction(() =>
             {
                 var parentResourceIdentifier = default(ResourceIdentifier);
-
                 if (!string.IsNullOrEmpty(ParentResourceId))
                 {
                     parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
-
                     if (!string.Equals(StorageSyncConstants.SyncGroupType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new PSArgumentException(nameof(ParentResourceId));
+                        throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
                     }
                 }
 
                 string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;
                 string storageSyncServiceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0);
                 string parentResourceName = SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName;
-
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    throw new PSArgumentException(nameof(ResourceGroupName));
-                }
-                if (string.IsNullOrEmpty(parentResourceName))
-                {
-                    throw new PSArgumentException(nameof(SyncGroupName));
-                }
-
-                if (string.IsNullOrEmpty(storageSyncServiceName))
-                {
-                    throw new PSArgumentException(nameof(StorageSyncServiceName));
-                }
-
                 if (string.IsNullOrEmpty(Name))
                 {
                     WriteObject(StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, parentResourceName));

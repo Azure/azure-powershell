@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <param name="configuration">The configuration.</param>
         public InvalidFilenameValidation(IConfiguration configuration) : base(configuration, "Files with prohibited names", ValidationType.Filename)
         {
-            this._invalidFileNames = new HashSet<string>(configuration.InvalidFileNames(), StringComparer.OrdinalIgnoreCase);
+            _invalidFileNames = new HashSet<string>(configuration.InvalidFileNames(), StringComparer.OrdinalIgnoreCase);
         }
 
         #endregion
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IFileInfo node)
         {
-            return this.Validate(node.Name, node.FullName);
+            return Validate(node.Name, node.FullName);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IDirectoryInfo node)
         {
-            return this.Validate(node.Name, node.FullName);
+            return Validate(node.Name, node.FullName);
         }
         #endregion
 
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <returns>IValidationResult.</returns>
         private IValidationResult Validate(string name, string path)
         {
-            if (this._invalidFileNames.Contains(name))
+            if (_invalidFileNames.Contains(name))
             {
                 return new ValidationResult
                 {
@@ -86,12 +86,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                     Description = $"The name {name} is not allowed.",
                     Level = ResultLevel.Error,
                     Path = path,
-                    Type = this.ValidationType,
-                    Kind = this.ValidationKind
+                    Type = ValidationType,
+                    Kind = ValidationKind
                 };
             }
 
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
 
         #endregion

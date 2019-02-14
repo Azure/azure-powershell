@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
@@ -107,7 +108,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The kailani application identifier
         /// </summary>
-        public static Guid KailaniAppId = new Guid("9469b9f5-6722-4481-a2b2-14ed560b706f");
+        public static Guid KailaniAppId = new Guid(StorageSyncResources.KailaniApplicationId);
         /// <summary>
         /// The built in role definition identifier
         /// </summary>

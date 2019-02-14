@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="progressReporter">The progress reporter.</param>
         public SystemValidationsProcessor(IPowershellCommandRunner commandRunner, IList<ISystemValidation> validations, IList<IOutputWriter> outputWriters, IProgressReporter progressReporter)
         {
-            this._commandRunner = commandRunner;
-            this._validations = validations;
-            this._outputWriters = outputWriters;
-            this._progressReporter = progressReporter;
+            _commandRunner = commandRunner;
+            _validations = validations;
+            _outputWriters = outputWriters;
+            _progressReporter = progressReporter;
         }
         #endregion
 
@@ -64,12 +64,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// </summary>
         public void Run()
         {
-            this._progressReporter.ResetSteps(this._validations.Count);
-            foreach (ISystemValidation validation in this._validations)
+            _progressReporter.ResetSteps(_validations.Count);
+            foreach (ISystemValidation validation in _validations)
             {
-                IValidationResult validationResult = validation.ValidateUsing(this._commandRunner);
-                this._progressReporter.CompleteStep();
-                this.Broadcast(validationResult);
+                IValidationResult validationResult = validation.ValidateUsing(_commandRunner);
+                _progressReporter.CompleteStep();
+                Broadcast(validationResult);
             }
         }
         #endregion
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="validationResult">The validation result.</param>
         private void Broadcast(IValidationResult validationResult)
         {
-            foreach (IOutputWriter outputWriter in this._outputWriters)
+            foreach (IOutputWriter outputWriter in _outputWriters)
             {
                 outputWriter.Write(validationResult);
             }

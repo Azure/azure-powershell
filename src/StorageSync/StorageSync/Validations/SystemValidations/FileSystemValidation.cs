@@ -27,7 +27,7 @@
         /// <param name="path">The path.</param>
         public FileSystemValidation(IConfiguration configuration, string path): base(configuration, "File system check", ValidationType.FileSystem)
         {
-            this._driveLetter = string.IsNullOrEmpty(path) ? null : new AfsPath(path).DriveLetter;
+            _driveLetter = string.IsNullOrEmpty(path) ? null : new AfsPath(path).DriveLetter;
         }
         #endregion
 
@@ -39,27 +39,27 @@
         /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidateUsing(IPowershellCommandRunner commandRunner)
         {
-            if (!this._driveLetter.HasValue)
+            if (!_driveLetter.HasValue)
             {
-                return this.UnableToRunBecause(
+                return UnableToRunBecause(
                     @"Unable to perform the File System validation. In order to run this validation, specify 'Path' parameter such that it includes the drive letter, e.g. C:\MyDataSet or \\contoso-server\d$\data");
             }
 
             string filesystem;
             try
             {
-                commandRunner.AddScript($"Get-Volume -DriveLetter {this._driveLetter.Value}");
+                commandRunner.AddScript($"Get-Volume -DriveLetter {_driveLetter.Value}");
                 PSObject volume = commandRunner.Invoke()[0];
                 filesystem = (string)volume.Members["FileSystem"].Value;
             }
             catch (Exception e)
             {
-                return this.UnableToRunBecause($"The File System validation was not able to run. Cause: {e.Message}");
+                return UnableToRunBecause($"The File System validation was not able to run. Cause: {e.Message}");
             }
 
-            if (this.IsValid(filesystem))
+            if (IsValid(filesystem))
             {
-                return this.SuccessfulResult;
+                return SuccessfulResult;
             }
 
             return new ValidationResult
@@ -67,8 +67,8 @@
                 Description = $"The {filesystem} filesystem is not supported.",
                 Level = ResultLevel.Error,
                 Result = Result.Fail,
-                Type = this.ValidationType,
-                Kind = this.ValidationKind
+                Type = ValidationType,
+                Kind = ValidationKind
             };
         }
         #endregion
@@ -81,7 +81,7 @@
         /// <returns><c>true</c> if the specified filesystem is valid; otherwise, <c>false</c>.</returns>
         private bool IsValid(string filesystem)
         {
-            return this.Configuration.ValidFilesystems().Contains(filesystem);
+            return Configuration.ValidFilesystems().Contains(filesystem);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@
         /// <returns>IValidationResult.</returns>
         private IValidationResult UnableToRunBecause(string cause)
         {
-            return ValidationResult.UnavailableValidation(this.ValidationType, this.ValidationKind, cause);
+            return ValidationResult.UnavailableValidation(ValidationType, ValidationKind, cause);
         }
         #endregion
     }

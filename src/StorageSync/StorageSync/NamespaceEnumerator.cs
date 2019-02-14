@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="listeners">The listeners.</param>
         public NamespaceEnumerator(IList<INamespaceEnumeratorListener> listeners)
         {
-            this._listeners = listeners;
-            this._namespaceInfo = new NamespaceInfo();
+            _listeners = listeners;
+            _namespaceInfo = new NamespaceInfo();
         }
         #endregion
 
@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <returns>NamespaceInfo.</returns>
         public NamespaceInfo Run(IDirectoryInfo root)
         {
-            this.EnumeratePostOrderNonRecursive(root);
+            EnumeratePostOrderNonRecursive(root);
             NotifyEndOfEnumeration();
-            return this._namespaceInfo;
+            return _namespaceInfo;
         }
 
         /// <summary>
@@ -76,9 +76,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         {
             DateTime endTime = DateTime.UtcNow + maximumDuration;
             Func<bool> shouldCancel = () => DateTime.UtcNow >= endTime;
-            this.EnumeratePostOrderNonRecursive(root, shouldCancel);
+            EnumeratePostOrderNonRecursive(root, shouldCancel);
             NotifyEndOfEnumeration();
-            return this._namespaceInfo;
+            return _namespaceInfo;
         }
         #endregion
 
@@ -88,9 +88,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// </summary>
         private void NotifyEndOfEnumeration()
         {
-            foreach (INamespaceEnumeratorListener listener in this._listeners)
+            foreach (INamespaceEnumeratorListener listener in _listeners)
             {
-                listener.EndOfEnumeration(this._namespaceInfo);
+                listener.EndOfEnumeration(_namespaceInfo);
             }
         }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
                 throw new System.IO.DirectoryNotFoundException($"Cannot access directory: {root.FullName}. Ensure directory exists.");
             }
 
-            this._namespaceInfo = new NamespaceInfo
+            _namespaceInfo = new NamespaceInfo
             {
                 Path = root.FullName,
                 IsComplete = false
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 
             stack1.Push(root);
 
-            this._namespaceInfo.NumberOfDirectories++;
+            _namespaceInfo.NumberOfDirectories++;
 
             while (stack1.Count > 0)
             {
@@ -163,12 +163,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
                     continue;
                 }
 
-                this.NotifyNamespaceHints(subdirs.Count, 0);
+                NotifyNamespaceHints(subdirs.Count, 0);
 
                 foreach (IDirectoryInfo subdir in subdirs)
                 {
                     stack1.Push(subdir);
-                    this._namespaceInfo.NumberOfDirectories++;
+                    _namespaceInfo.NumberOfDirectories++;
                 }
             }
 
@@ -183,12 +183,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 
                 IList<IFileInfo> files = new List<IFileInfo>(currentDirectory.EnumerateFiles());
 
-                this.NotifyNamespaceHints(0, files.Count);
+                NotifyNamespaceHints(0, files.Count);
 
                 foreach (IFileInfo file in files)
                 {
-                    this._namespaceInfo.NumberOfFiles++;
-                    this._namespaceInfo.TotalFileSizeInBytes += file.Length;
+                    _namespaceInfo.NumberOfFiles++;
+                    _namespaceInfo.TotalFileSizeInBytes += file.Length;
 
                     NotifyNextFile(file);
                 }
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
                 NotifyEndDir(currentDirectory);
             }
 
-            this._namespaceInfo.IsComplete = true;
+            _namespaceInfo.IsComplete = true;
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="dir">The dir.</param>
         private void NotifyUnauthorizedDir(IDirectoryInfo dir)
         {
-            foreach (INamespaceEnumeratorListener listener in this._listeners)
+            foreach (INamespaceEnumeratorListener listener in _listeners)
             {
                 listener.UnauthorizedDir(dir);
             }
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="file">The file.</param>
         private void NotifyNextFile(IFileInfo file)
         {
-            foreach (INamespaceEnumeratorListener listener in this._listeners)
+            foreach (INamespaceEnumeratorListener listener in _listeners)
             {
                 listener.NextFile(file);
             }
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
                 return;
             }
 
-            foreach (INamespaceEnumeratorListener listener in this._listeners)
+            foreach (INamespaceEnumeratorListener listener in _listeners)
             {
                 listener.NamespaceHint(directoryCount, fileCount);
             }
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="dir">The dir.</param>
         private void NotifyEndDir(IDirectoryInfo dir)
         {
-            foreach (INamespaceEnumeratorListener listener in this._listeners)
+            foreach (INamespaceEnumeratorListener listener in _listeners)
             {
                 listener.EndDir(dir);
             }
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="dir">The dir.</param>
         private void NotifyBeginDir(IDirectoryInfo dir)
         {
-            foreach (INamespaceEnumeratorListener listener in this._listeners)
+            foreach (INamespaceEnumeratorListener listener in _listeners)
             {
                 listener.BeginDir(dir);
             }

@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="path">The path.</param>
         public AfsNamedObjectInfo(string path)
         {
-            this.FullName = path;
+            FullName = path;
             int index = path.LastIndexOfAny(Separators);
-            this.Name = index >= 0 ? path.Substring(index + 1) : path;
+            Name = index >= 0 ? path.Substring(index + 1) : path;
         }
 
         /// <summary>

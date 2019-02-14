@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemVali
             string validationName,
             ValidationType validationType) : base(validationName, validationType, ValidationKind.SystemValidation)
         {
-            this.Configuration = configuration;
+            Configuration = configuration;
         }
 
         #endregion
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemVali
         /// <returns>IValidationResult.</returns>
         public IValidationResult ValidateUsing(IPowershellCommandRunner commandRunner)
         {
-            return this.DoValidateUsing(commandRunner);
+            return DoValidateUsing(commandRunner);
         }
 
         #endregion
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemVali
         /// <returns>IValidationResult.</returns>
         protected virtual IValidationResult DoValidateUsing(IPowershellCommandRunner commandRunner)
         {
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
         #endregion
     }
