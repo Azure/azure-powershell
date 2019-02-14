@@ -17,14 +17,25 @@ using System;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
 {
+    /// <summary>
+    /// Class ResourceIdentifierExtensions.
+    /// </summary>
     public static class ResourceIdentifierExtensions
     {
         /// <summary>
         /// Get the parent resource name starting from level 0, immediate parent
         /// </summary>
-        /// <param name="resourceIdentifier"></param>
-        /// <param name="level"></param>
-        /// <returns></returns>
+        /// <param name="resourceIdentifier">The resource identifier.</param>
+        /// <param name="resourceType">Type of the resource.</param>
+        /// <param name="level">The level.</param>
+        /// <returns>System.String.</returns>
+        /// <exception cref="ArgumentException">
+        /// Invalid argument {nameof(resourceIdentifier.ParentResource)} - ParentResource
+        /// or
+        /// Invalid argument {nameof(level)} - level
+        /// or
+        /// Invalid argument {nameof(resourceType)} - resourceType
+        /// </exception>
         public static string GetParentResourceName(this ResourceIdentifier resourceIdentifier, string resourceType, int level = 0)
         {
             if (resourceIdentifier?.ParentResource == null)

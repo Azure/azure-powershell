@@ -25,14 +25,28 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
     using Interfaces;
     using Models;
 
+    /// <summary>
+    /// Class InvokeCompatibilityCheckCmdlet.
+    /// Implements the <see cref="System.Management.Automation.Cmdlet" />
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.ICmdlet" />
+    /// </summary>
+    /// <seealso cref="System.Management.Automation.Cmdlet" />
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.ICmdlet" />
     [Cmdlet("Invoke", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageSyncCompatibilityCheck",DefaultParameterSetName="PathBased")]
     [OutputType(typeof(PSStorageSyncValidation))]
     public class InvokeCompatibilityCheckCmdlet : Cmdlet, ICmdlet
     {
         #region Fields and Properties
 
+        /// <summary>
+        /// The path
+        /// </summary>
         private string _path;
 
+        /// <summary>
+        /// Gets or sets the path.
+        /// </summary>
+        /// <value>The path.</value>
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = "PathBased")]
         public string Path {
             get
@@ -45,12 +59,24 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             }
         }
 
+        /// <summary>
+        /// Gets or sets the credential.
+        /// </summary>
+        /// <value>The credential.</value>
         [Parameter]
         public PSCredential Credential { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the computer.
+        /// </summary>
+        /// <value>The name of the computer.</value>
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = "ComputerNameBased")]
         public string ComputerName { get; set; }
 
+        /// <summary>
+        /// Gets the is network path.
+        /// </summary>
+        /// <value>The is network path.</value>
         private Lazy<bool> IsNetworkPath => new Lazy<bool>(() => 
         {
             if (!string.IsNullOrEmpty(this.Path))
@@ -64,6 +90,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             return false;
         });
 
+        /// <summary>
+        /// Gets the name of the user.
+        /// </summary>
+        /// <value>The name of the user.</value>
         private string UserName
         {
             get
@@ -72,6 +102,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             }
         }
 
+        /// <summary>
+        /// Gets the computer name value.
+        /// </summary>
+        /// <value>The computer name value.</value>
         private Lazy<string> ComputerNameValue => new Lazy<string>(() =>
         {
             if (!string.IsNullOrEmpty(this.Path))
@@ -88,21 +122,48 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             return this.ComputerName;
         });
 
+        /// <summary>
+        /// Gets or sets the skip system checks.
+        /// </summary>
+        /// <value>The skip system checks.</value>
         [Parameter]
         public SwitchParameter SkipSystemChecks { get; set; }
 
+        /// <summary>
+        /// Gets or sets the skip namespace checks.
+        /// </summary>
+        /// <value>The skip namespace checks.</value>
         [Parameter(ParameterSetName = "PathBased")]
         public SwitchParameter SkipNamespaceChecks { get; set; }
 
+        /// <summary>
+        /// Gets a value indicating whether this instance can run namespace checks.
+        /// </summary>
+        /// <value><c>true</c> if this instance can run namespace checks; otherwise, <c>false</c>.</value>
         private bool CanRunNamespaceChecks => !string.IsNullOrEmpty(this.Path);
+        /// <summary>
+        /// Gets a value indicating whether this instance can run estimation.
+        /// </summary>
+        /// <value><c>true</c> if this instance can run estimation; otherwise, <c>false</c>.</value>
         private bool CanRunEstimation => this.CanRunNamespaceChecks;
+        /// <summary>
+        /// Gets a value indicating whether this instance can run system checks.
+        /// </summary>
+        /// <value><c>true</c> if this instance can run system checks; otherwise, <c>false</c>.</value>
         private bool CanRunSystemChecks => !string.IsNullOrEmpty(this.ComputerNameValue.Value);
 
+        /// <summary>
+        /// Gets the maximum duration of namespace estimation.
+        /// </summary>
+        /// <value>The maximum duration of namespace estimation.</value>
         private TimeSpan MaximumDurationOfNamespaceEstimation => TimeSpan.FromSeconds(30);
 
         #endregion
 
         #region Protected methods
+        /// <summary>
+        /// Processes the record.
+        /// </summary>
         protected override void ProcessRecord()
         {
             Configuration configuration = new Configuration();
@@ -227,6 +288,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         #endregion
 
         #region Private methods
+        /// <summary>
+        /// Performs the system checks.
+        /// </summary>
+        /// <param name="validations">The validations.</param>
+        /// <param name="progressReporter">The progress reporter.</param>
+        /// <param name="cmdlet">The cmdlet.</param>
+        /// <param name="outputWriters">The output writers.</param>
         private void PerformSystemChecks(IList<ISystemValidation> validations, IProgressReporter progressReporter, ICmdlet cmdlet, IList<IOutputWriter> outputWriters)
         {
             PowerShellCommandRunner commandRunner = null;
@@ -249,6 +317,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             systemChecksProcessor.Run();
         }
 
+        /// <summary>
+        /// Runs the action with unc connection if needed.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="action">The action.</param>
+        /// <returns>T.</returns>
         private T RunActionWithUncConnectionIfNeeded<T>(Func<T> action)
         {
             T result = default(T);
@@ -277,6 +351,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             return result;
         }
 
+        /// <summary>
+        /// Storages the eval.
+        /// </summary>
+        /// <param name="validations">The validations.</param>
+        /// <param name="progressReporter">The progress reporter.</param>
+        /// <param name="cmdlet">The cmdlet.</param>
+        /// <param name="outputWriters">The output writers.</param>
+        /// <returns>INamespaceInfo.</returns>
         private INamespaceInfo StorageEval(IList<INamespaceValidation> validations, IProgressReporter progressReporter, ICmdlet cmdlet, IList<IOutputWriter> outputWriters)
         {
             IDirectoryInfo root = new AfsDirectoryInfo(this.Path);
@@ -295,6 +377,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             return namespaceInfo;
         }
 
+        /// <summary>
+        /// Normalizes the path.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <returns>System.String.</returns>
         private string NormalizePath(string path)
         {
             string result = path?.Replace(System.IO.Path.AltDirectorySeparatorChar, System.IO.Path.DirectorySeparatorChar);

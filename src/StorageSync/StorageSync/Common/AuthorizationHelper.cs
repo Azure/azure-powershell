@@ -14,8 +14,17 @@
 
 namespace Microsoft.Azure.Commands.StorageSync.Common
 {
+    /// <summary>
+    /// Class AuthorizationHelper.
+    /// </summary>
     public class AuthorizationHelper
     {
+        /// <summary>
+        /// Constructs the fully qualified role definition identifier from subscription and identifier as unique identifier.
+        /// </summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="roleId">The role identifier.</param>
+        /// <returns>System.String.</returns>
         public static string ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(string subscriptionId, string roleId)
         {
             if (string.IsNullOrEmpty(subscriptionId) || string.IsNullOrEmpty(roleId))
@@ -26,6 +35,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             return string.Concat(GetSubscriptionScope(subscriptionId).TrimEnd('/'), "/providers/Microsoft.Authorization/roleDefinitions/", roleId);
         }
 
+        /// <summary>
+        /// Gets the subscription scope.
+        /// </summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <returns>System.String.</returns>
         public static string GetSubscriptionScope(string subscriptionId)
         {
             if (string.IsNullOrEmpty(subscriptionId))

@@ -18,6 +18,9 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common
 {
+    /// <summary>
+    /// Class ResourceIdFormatter.
+    /// </summary>
     public static class ResourceIdFormatter
     {
         /// <summary>
@@ -27,6 +30,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <param name="resourceGroupName">Resource group name</param>
         /// <param name="resources">Key-value pairs, each one contains resource type and resource name</param>
         /// <returns>Return the resource Id</returns>
+        /// <exception cref="ArgumentException">resourceGroupName</exception>
         public static string GenerateResourceId(
             Guid subscriptionId,
             string resourceGroupName,

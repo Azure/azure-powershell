@@ -30,43 +30,124 @@ using System.Security;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common
 {
+    /// <summary>
+    /// Interface IStorageSyncClientWrapper
+    /// </summary>
     public interface IStorageSyncClientWrapper
     {
+        /// <summary>
+        /// Gets or sets the active directory client.
+        /// </summary>
+        /// <value>The active directory client.</value>
         ActiveDirectoryClient ActiveDirectoryClient { get; set; }
 
+        /// <summary>
+        /// Gets or sets the storage synchronize management client.
+        /// </summary>
+        /// <value>The storage synchronize management client.</value>
         IStorageSyncManagementClient StorageSyncManagementClient { get; set; }
 
+        /// <summary>
+        /// Gets or sets the authorization management client.
+        /// </summary>
+        /// <value>The authorization management client.</value>
         IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
+        /// <summary>
+        /// Gets or sets the verbose logger.
+        /// </summary>
+        /// <value>The verbose logger.</value>
         Action<string> VerboseLogger { get; set; }
 
+        /// <summary>
+        /// Gets or sets the error logger.
+        /// </summary>
+        /// <value>The error logger.</value>
         Action<string> ErrorLogger { get; set; }
 
+        /// <summary>
+        /// Ensures the service principal.
+        /// </summary>
+        /// <returns>PSADServicePrincipal.</returns>
         PSADServicePrincipal EnsureServicePrincipal();
 
+        /// <summary>
+        /// Ensures the role assignment.
+        /// </summary>
+        /// <param name="serverPrincipal">The server principal.</param>
+        /// <param name="resourceId">The resource identifier.</param>
+        /// <returns>RoleAssignment.</returns>
         RoleAssignment EnsureRoleAssignment(PSADServicePrincipal serverPrincipal,string resourceId);
 
+        /// <summary>
+        /// Gets the afs agent installer path.
+        /// </summary>
+        /// <value>The afs agent installer path.</value>
         string AfsAgentInstallerPath { get; }
 
+        /// <summary>
+        /// Gets the afs agent version.
+        /// </summary>
+        /// <value>The afs agent version.</value>
         string AfsAgentVersion { get; }
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is playback mode.
+        /// </summary>
+        /// <value><c>true</c> if this instance is playback mode; otherwise, <c>false</c>.</value>
         bool IsPlaybackMode { get; }
     }
 
+    /// <summary>
+    /// Class StorageSyncClientWrapper.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncClientWrapper" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncClientWrapper" />
     public class StorageSyncClientWrapper : IStorageSyncClientWrapper
     {
+        /// <summary>
+        /// The kailani application identifier
+        /// </summary>
         public static Guid KailaniAppId = new Guid("9469b9f5-6722-4481-a2b2-14ed560b706f");
+        /// <summary>
+        /// The built in role definition identifier
+        /// </summary>
         public const string BuiltInRoleDefinitionId = "c12c1c16-33a1-487b-954d-41c89c60f349";
 
+        /// <summary>
+        /// Gets or sets the storage synchronize management client.
+        /// </summary>
+        /// <value>The storage synchronize management client.</value>
         public IStorageSyncManagementClient StorageSyncManagementClient { get; set; }
 
+        /// <summary>
+        /// Gets or sets the authorization management client.
+        /// </summary>
+        /// <value>The authorization management client.</value>
         public IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
 
+        /// <summary>
+        /// Gets or sets the active directory client.
+        /// </summary>
+        /// <value>The active directory client.</value>
         public ActiveDirectoryClient ActiveDirectoryClient { get; set; }
 
+        /// <summary>
+        /// Gets or sets the verbose logger.
+        /// </summary>
+        /// <value>The verbose logger.</value>
         public Action<string> VerboseLogger { get; set; }
 
+        /// <summary>
+        /// Gets or sets the error logger.
+        /// </summary>
+        /// <value>The error logger.</value>
         public Action<string> ErrorLogger { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageSyncClientWrapper"/> class.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="activeDirectoryClient">The active directory client.</param>
         public StorageSyncClientWrapper(IAzureContext context, ActiveDirectoryClient activeDirectoryClient)
                 : this(
                       AzureSession.Instance.ClientFactory.CreateArmClient<StorageSyncManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
@@ -75,18 +156,26 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             ActiveDirectoryClient = activeDirectoryClient;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageSyncClientWrapper"/> class.
+        /// </summary>
+        /// <param name="storageSyncManagementClient">The storage synchronize management client.</param>
+        /// <param name="authorizationManagementClient">The authorization management client.</param>
         public StorageSyncClientWrapper(IStorageSyncManagementClient storageSyncManagementClient, AuthorizationManagementClient authorizationManagementClient)
         {
             StorageSyncManagementClient = storageSyncManagementClient;
             AuthorizationManagementClient = authorizationManagementClient;
         }
 
+        /// <summary>
+        /// The afs agent installer path
+        /// </summary>
         private string _afsAgentInstallerPath;
 
         /// <summary>
         /// Gets the AFS Agent Installer Path
         /// </summary>
-        /// <returns> Returns AFS Agent Installer Path</returns>
+        /// <value>The afs agent installer path.</value>
         public string AfsAgentInstallerPath
         {
             get
@@ -112,7 +201,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             }
         }
 
+        /// <summary>
+        /// The is playback mode
+        /// </summary>
         private bool? isPlaybackMode;
+        /// <summary>
+        /// Gets a value indicating whether this instance is playback mode.
+        /// </summary>
+        /// <value><c>true</c> if this instance is playback mode; otherwise, <c>false</c>.</value>
         public bool IsPlaybackMode
         {
             get
@@ -127,12 +223,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             }
         }
 
+        /// <summary>
+        /// The afs agent version
+        /// </summary>
         private string _afsAgentVersion;
 
         /// <summary>
         /// Gets the AFS Agent Version
         /// </summary>
-        /// <returns> Returns AFS Agent Version</returns>
+        /// <value>The afs agent version.</value>
         public string AfsAgentVersion
         {
             get
@@ -158,6 +257,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             }
         }
 
+        /// <summary>
+        /// Ensures the service principal.
+        /// </summary>
+        /// <returns>PSADServicePrincipal.</returns>
         public PSADServicePrincipal EnsureServicePrincipal()
         {
             string applicationId = KailaniAppId.ToString();
@@ -197,6 +300,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         }
 
 
+        /// <summary>
+        /// Ensures the role assignment.
+        /// </summary>
+        /// <param name="serverPrincipal">The server principal.</param>
+        /// <param name="storageAccountResourceId">The storage account resource identifier.</param>
+        /// <returns>RoleAssignment.</returns>
+        /// <exception cref="PSArgumentException">roleDefinition</exception>
         public RoleAssignment EnsureRoleAssignment(PSADServicePrincipal serverPrincipal, string storageAccountResourceId)
         {
             var resourceIdentifier = new ResourceIdentifier(storageAccountResourceId);

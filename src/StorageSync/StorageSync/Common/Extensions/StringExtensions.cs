@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
     /// </summary>
     public static class StringExtensions
     {
- 
+
         /// <summary>
         /// This function will transform an string to uri object.
         /// </summary>
@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
         /// <summary>
         /// This function will convert a string to server certificate.
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="throwException"></param>
-        /// <returns></returns>
+        /// <param name="source">The source.</param>
+        /// <param name="throwException">if set to <c>true</c> [throw exception].</param>
+        /// <returns>System.Byte[].</returns>
         public static byte[] ToBase64Bytes(this string source, bool throwException = true)
         {
             try
