@@ -203,7 +203,7 @@ namespace Commands.StorageSync.Interop.Clients
             var serverRegistrationData = new ServerRegistrationData
             {
                 Id = resourceId,
-                ServerId = Guid.Empty,
+                ServerId = serverGuid,
                 ServerCertificate = syncServerCertificate.ToBase64Bytes(true),
                 ServerRole = isInCluster ? ServerRoleType.ClusterNode : ServerRoleType.Standalone,
                 ServerOSVersion = osVersion,
@@ -250,15 +250,14 @@ namespace Commands.StorageSync.Interop.Clients
         /// </exception>
         public override bool Persist(RegisteredServer registeredServerResource, Guid subscriptionId, string storageSyncServiceName, string resourceGroupName, string monitoringDataPath)
         {
-            Guid storageSyncServiceUid = Guid.Empty;
+            var storageSyncServiceUid = Guid.Empty;
             bool hasStorageSyncServiceUid = Guid.TryParse(registeredServerResource.StorageSyncServiceUid, out storageSyncServiceUid);
             if (!hasStorageSyncServiceUid)
             {
                 throw new ArgumentException(nameof(registeredServerResource.StorageSyncServiceUid));
             }
 
-            ServerRoleType serverRole;
-            bool hasServerRole = Enum.TryParse(registeredServerResource.ServerRole, out serverRole);
+            bool hasServerRole = Enum.TryParse(registeredServerResource.ServerRole, out ServerRoleType serverRole);
             if (!hasServerRole)
             {
                 throw new ArgumentException(nameof(registeredServerResource.ServerRole));
@@ -292,7 +291,12 @@ namespace Commands.StorageSync.Interop.Clients
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.PersistSyncServerRegistrationFailed, hr, ErrorCategory.InvalidResult);
             }
 
-            var monitoringConfiguration = JsonConvert.DeserializeObject<HybridMonitoringConfigurationResource>(registeredServerResource.MonitoringConfiguration);
+            var monitoringConfiguration = default(HybridMonitoringConfigurationResource);
+
+            if (!string.IsNullOrEmpty(registeredServerResource.MonitoringConfiguration))
+            {
+                monitoringConfiguration = JsonConvert.DeserializeObject<HybridMonitoringConfigurationResource>(registeredServerResource.MonitoringConfiguration);
+            }
             var registrationInfo = new ServerRegistrationInformation(
                 serviceEndpoint: registeredServerResource.ManagementEndpointUri,
                 subscriptionId: subscriptionId,
