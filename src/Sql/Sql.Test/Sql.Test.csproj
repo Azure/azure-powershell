@@ -11,9 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Sql">
-        <HintPath>E:\azure-sdk-for-net\src\SDKs\SqlManagement\Management.Sql\bin\Debug\netstandard1.4\Microsoft.Azure.Management.Sql.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.28.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.8.1-preview" />
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.2.0-preview" />
   </ItemGroup>
