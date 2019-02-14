@@ -37,7 +37,7 @@ function Test-ServerEndpoint2
         $storageAccountTenantId = (Get-AzTenant).Id
         # NOTE: Check the local server drives where we are performing registration.
         $serverLocalPath = "D:\" + $serverEndpointName
-        $cloudSeededDataFileShareUri = "http://dummy"
+        $offlineDataTransferShareName = "http://dummy"
         $tierFilesOlderThanDays = 10
         $volumeFreeSpacePercent = 60
         $volumeFreeSpacePercent2 = 80
@@ -85,7 +85,7 @@ function Test-ServerEndpoint2
         $registeredServer = get-job -Id $job.Id | receive-job -Keep
 
         Write-Verbose "Resource: $serverEndpointName | Loc: $resourceLocation"
-        $job = New-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -CloudSeededData -VolumeFreeSpacePercent $volumeFreeSpacePercent -CloudSeededDataFileShareUri $cloudSeededDataFileShareUri -TierFilesOlderThanDays $tierFilesOlderThanDays -Verbose -AsJob 
+        $job = New-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -OfflineDataTransfer -VolumeFreeSpacePercent $volumeFreeSpacePercent -OfflineDataTransferShareName $offlineDataTransferShareName -TierFilesOlderThanDays $tierFilesOlderThanDays -Verbose -AsJob 
 
         $job | Wait-Job
         $serverEndpoint = get-job -Id $job.Id | receive-job -Keep
@@ -157,9 +157,9 @@ function Test-ServerEndpoint2
         Remove-AzStorageSyncServerEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -AsJob | Wait-Job
 
         Write-Verbose "Executing Piping Scenarios"
-        New-AzStorageSyncServerEndpoint -ParentObject $syncGroup -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -CloudSeededData -VolumeFreeSpacePercent $volumeFreeSpacePercent -CloudSeededDataFileShareUri $cloudSeededDataFileShareUri -TierFilesOlderThanDays $tierFilesOlderThanDays | Get-AzStorageSyncServerEndpoint  | Remove-AzStorageSyncServerEndpoint -Force -AsJob | Wait-Job
+        New-AzStorageSyncServerEndpoint -ParentObject $syncGroup -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -OfflineDataTransfer -VolumeFreeSpacePercent $volumeFreeSpacePercent -OfflineDataTransferShareName $offlineDataTransferShareName -TierFilesOlderThanDays $tierFilesOlderThanDays | Get-AzStorageSyncServerEndpoint  | Remove-AzStorageSyncServerEndpoint -Force -AsJob | Wait-Job
 
-        New-AzStorageSyncServerEndpoint -ParentResourceId $syncGroup.ResourceId -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -CloudSeededData -VolumeFreeSpacePercent $volumeFreeSpacePercent -CloudSeededDataFileShareUri $cloudSeededDataFileShareUri -TierFilesOlderThanDays $tierFilesOlderThanDays | Remove-AzStorageSyncServerEndpoint -Force -AsJob | Wait-Job
+        New-AzStorageSyncServerEndpoint -ParentResourceId $syncGroup.ResourceId -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -OfflineDataTransfer -VolumeFreeSpacePercent $volumeFreeSpacePercent -OfflineDataTransferShareName $offlineDataTransferShareName -TierFilesOlderThanDays $tierFilesOlderThanDays | Remove-AzStorageSyncServerEndpoint -Force -AsJob | Wait-Job
 
         Write-Verbose "Unregister Server: $($registeredServer.ServerId)"
         Unregister-AzStorageSyncServer -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -ServerId $registeredServer.ServerId -AsJob | Wait-Job
@@ -210,7 +210,7 @@ function Test-ServerEndpoint
         $storageAccountTenantId = (Get-AzTenant).Id
         # NOTE: Check the local server drives where we are performing registration.
         $serverLocalPath = "D:\" + $serverEndpointName
-        $cloudSeededDataFileShareUri = "http://dummy"
+        $offlineDataTransferShareName = "http://dummy"
         $tierFilesOlderThanDays = 10
         $volumeFreeSpacePercent = 60
         $volumeFreeSpacePercent2 = 80
@@ -258,7 +258,7 @@ function Test-ServerEndpoint
         $registeredServer = get-job -Id $job.Id | receive-job -Keep
 
         Write-Verbose "Resource: $serverEndpointName | Loc: $resourceLocation"
-        $job = New-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -CloudSeededData -VolumeFreeSpacePercent $volumeFreeSpacePercent -CloudSeededDataFileShareUri $cloudSeededDataFileShareUri -TierFilesOlderThanDays $tierFilesOlderThanDays -Verbose -AsJob 
+        $job = New-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -OfflineDataTransfer -VolumeFreeSpacePercent $volumeFreeSpacePercent -OfflineDataTransferShareName $offlineDataTransferShareName -TierFilesOlderThanDays $tierFilesOlderThanDays -Verbose -AsJob 
 
         $job | Wait-Job
         $serverEndpoint = get-job -Id $job.Id | receive-job -Keep
