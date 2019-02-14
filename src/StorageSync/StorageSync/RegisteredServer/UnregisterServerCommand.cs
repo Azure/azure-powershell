@@ -14,12 +14,13 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
-using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
+
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
 
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
             Mandatory = true,
             ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
-        [StorageSyncServiceCompleter]
+        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [Alias(StorageSyncAliases.ParentNameAlias)]
         public string StorageSyncServiceName { get; set; }
@@ -137,7 +138,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 var resourceGroupName = default(string);
                 var parentResourceName = default(string);
 
-                if (!string.IsNullOrEmpty(ResourceId))
+                if (this.IsParameterBound(c => c.ResourceId))
                 {
                     var resourceIdentifier = new ResourceIdentifier(ResourceId);
 
@@ -150,7 +151,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     resourceGroupName = resourceIdentifier.ResourceGroupName;
                     parentResourceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName);
                 }
-                else if (InputObject != null)
+                else if (this.IsParameterBound(c => c.InputObject))
                 {
                     resourceName = InputObject.ServerId;
                     resourceGroupName = InputObject.ResourceGroupName;

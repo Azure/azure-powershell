@@ -14,12 +14,12 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
-using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
-        [StorageSyncServiceCompleter]
+        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [Alias(StorageSyncAliases.ParentNameAlias)]
         public string StorageSyncServiceName { get; set; }
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
             ExecuteClientAction(() =>
             {
                 var parentResourceIdentifier = default(ResourceIdentifier);
-                if (!string.IsNullOrEmpty(ParentResourceId))
+                if (this.IsParameterBound(c => c.ParentResourceId))
                 {
                     parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
                     if (!string.Equals(StorageSyncConstants.SyncGroupType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 string storageSyncServiceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0);
                 string parentResourceName = SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName;
 
-                if (string.IsNullOrEmpty(Name))
+                 if (!this.IsParameterBound(c => c.Name))
                 {
                     WriteObject(StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, parentResourceName));
                 }

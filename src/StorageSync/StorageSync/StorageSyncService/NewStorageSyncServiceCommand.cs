@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.StorageSync.Models;
 using System.Collections;
 using System.Management.Automation;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
 {

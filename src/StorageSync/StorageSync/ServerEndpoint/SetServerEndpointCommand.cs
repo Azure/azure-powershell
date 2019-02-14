@@ -14,13 +14,14 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
-using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
+
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
            Mandatory = true,
            ValueFromPipelineByPropertyName = false,
            HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
-        [StorageSyncServiceCompleter]
+        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [Alias(StorageSyncAliases.ParentNameAlias)]
         public string StorageSyncServiceName { get; set; }
@@ -198,7 +199,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 var storageSyncServiceName = default(string);
                 var parentResourceName = default(string);
 
-                if (!string.IsNullOrEmpty(ResourceId))
+                if (this.IsParameterBound(c => c.ResourceId))
                 {
                     var resourceIdentifier = new ResourceIdentifier(ResourceId);
                     resourceName = resourceIdentifier.ResourceName;
@@ -206,7 +207,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     parentResourceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.SyncGroupTypeName, 0);
                     storageSyncServiceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 1);
                 }
-                else if (InputObject != null)
+                else if (this.IsParameterBound(c => c.InputObject))
                 {
                     resourceName = InputObject.ServerEndpointName;
                     resourceGroupName = InputObject.ResourceGroupName;
