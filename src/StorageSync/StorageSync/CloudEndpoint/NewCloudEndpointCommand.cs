@@ -30,10 +30,19 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
 {
 
+    /// <summary>
+    /// Class NewCloudEndpointCommand.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     [Cmdlet(VerbsCommon.New, StorageSyncNouns.NounAzureRmStorageSyncCloudEndpoint,
         DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSCloudEndpoint))]
     public class NewCloudEndpointCommand : StorageSyncClientCmdletBase
     {
+        /// <summary>
+        /// Gets or sets the name of the resource group.
+        /// </summary>
+        /// <value>The name of the resource group.</value>
         [Parameter(
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -44,6 +53,10 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the storage synchronize service.
+        /// </summary>
+        /// <value>The name of the storage synchronize service.</value>
         [Parameter(
            Position = 1,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -55,6 +68,10 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         [Alias(StorageSyncAliases.ParentNameAlias)]
         public string StorageSyncServiceName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the synchronize group.
+        /// </summary>
+        /// <value>The name of the synchronize group.</value>
         [Parameter(
            Position = 2,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -64,6 +81,10 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         [ValidateNotNullOrEmpty]
         public string SyncGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the parent object.
+        /// </summary>
+        /// <value>The parent object.</value>
         [Parameter(
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.ObjectParameterSet,
@@ -74,6 +95,10 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         [Alias(StorageSyncAliases.SyncGroupAlias)]
         public PSSyncGroup ParentObject { get; set; }
 
+        /// <summary>
+        /// Gets or sets the parent resource identifier.
+        /// </summary>
+        /// <value>The parent resource identifier.</value>
         [Parameter(
           Position = 0,
           ParameterSetName = StorageSyncParameterSets.ParentStringParameterSet,
@@ -84,6 +109,10 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         [Alias(StorageSyncAliases.SyncGroupIdAlias)]
         public string ParentResourceId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>The name.</value>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.CloudEndpointNameParameter)]
@@ -91,6 +120,10 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         [Alias(StorageSyncAliases.CloudEndpointNameAlias)]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the storage account resource identifier.
+        /// </summary>
+        /// <value>The storage account resource identifier.</value>
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = false,
@@ -99,6 +132,10 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         [ResourceIdCompleter(StorageSyncConstants.StorageAccountType)]
         public string StorageAccountResourceId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the storage account share.
+        /// </summary>
+        /// <value>The name of the storage account share.</value>
         [Parameter(
           Mandatory = true,
           ValueFromPipelineByPropertyName = false,
@@ -106,12 +143,20 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         [ValidateNotNullOrEmpty]
         public string StorageAccountShareName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the storage account tenant identifier.
+        /// </summary>
+        /// <value>The storage account tenant identifier.</value>
         [Parameter(Mandatory = false,
                    ValueFromPipelineByPropertyName = false,
                    HelpMessage = HelpMessages.StorageAccountTenantIdParameter)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountTenantId { get; set; }
 
+        /// <summary>
+        /// Gets or sets as job.
+        /// </summary>
+        /// <value>As job.</value>
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJobParameter)]
         public SwitchParameter AsJob { get; set; }
 
@@ -120,10 +165,21 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         /// </summary>
         private Guid KailaniAppId = new Guid("9469b9f5-6722-4481-a2b2-14ed560b706f");
 
+        /// <summary>
+        /// Gets the target.
+        /// </summary>
+        /// <value>The target.</value>
         protected override string Target => Name;
 
+        /// <summary>
+        /// Gets the action message.
+        /// </summary>
+        /// <value>The action message.</value>
         protected override string ActionMessage => $"Create a new Cloud Endpoint {Name}";
 
+        /// <summary>
+        /// Executes the cmdlet.
+        /// </summary>
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Target, ActionMessage))

@@ -26,13 +26,28 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters
 
     /// <summary>
     /// This attribute will allow the user to autocomplete the -StorageSyncServiceName parameter of a cmdlet with valid resource groups
+    /// Implements the <see cref="System.Management.Automation.ArgumentCompleterAttribute" />
     /// </summary>
+    /// <seealso cref="System.Management.Automation.ArgumentCompleterAttribute" />
     public class StorageSyncServiceCompleterAttribute : ArgumentCompleterAttribute
     {
+        /// <summary>
+        /// The storage synchronize service names dictionary
+        /// </summary>
         private static IDictionary<int, IList<String>> _storageSyncServiceNamesDictionary = new ConcurrentDictionary<int, IList<string>>();
+        /// <summary>
+        /// The lock
+        /// </summary>
         private static readonly object _lock = new object();
+        /// <summary>
+        /// The timeout
+        /// </summary>
         public static int _timeout = 3;
 
+        /// <summary>
+        /// Gets the storage synchronize service names.
+        /// </summary>
+        /// <value>The storage synchronize service names.</value>
         protected static IList<String> StorageSyncServiceNames
         {
             get
@@ -97,23 +112,37 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters
         /// This class will provide a list of resource groups that are available to the user (with default resource group first if it exists). This will then be available to the user to tab through.
         /// Example: [Parameter(ParameterSetName = ListByNameInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false), StorageSyncServiceCompleter()]
         /// </summary>
-        /// <param name="resourceTypes"></param>
         public StorageSyncServiceCompleterAttribute() : base(CreateScriptBlock())
         {
         }
 
+        /// <summary>
+        /// Gets the storage synchronize services.
+        /// </summary>
+        /// <param name="timeout">The timeout.</param>
+        /// <returns>System.String[].</returns>
         public static string[] GetStorageSyncServices(int timeout)
         {
             _timeout = timeout;
             return GetStorageSyncServices();
         }
 
+        /// <summary>
+        /// Gets the storage synchronize services.
+        /// </summary>
+        /// <returns>System.String[].</returns>
         public static string[] GetStorageSyncServices()
         {
             IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
             return GetStorageSyncServices(StorageSyncServiceNames, defaultStorageSyncService: null);
         }
 
+        /// <summary>
+        /// Gets the storage synchronize services.
+        /// </summary>
+        /// <param name="storageSyncServiceNames">The storage synchronize service names.</param>
+        /// <param name="defaultStorageSyncService">The default storage synchronize service.</param>
+        /// <returns>System.String[].</returns>
         public static string[] GetStorageSyncServices(IList<string> storageSyncServiceNames, string defaultStorageSyncService)
         {
             if (defaultStorageSyncService != null)
@@ -127,6 +156,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters
             return storageSyncServiceNames.ToArray();
         }
 
+        /// <summary>
+        /// Creates the script block.
+        /// </summary>
+        /// <returns>ScriptBlock.</returns>
         private static ScriptBlock CreateScriptBlock()
         {
             string script = "param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)\n" +
@@ -136,11 +169,21 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters
             return ScriptBlock.Create(script);
         }
 
+        /// <summary>
+        /// Hashes the context.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <returns>System.Int32.</returns>
         private static int HashContext(IAzureContext context)
         {
             return (context.Account.Id + context.Environment.Name + context.Subscription.Id + context.Tenant.Id).GetHashCode();
         }
 
+        /// <summary>
+        /// Creates the storage synchronize service list.
+        /// </summary>
+        /// <param name="result">The result.</param>
+        /// <returns>List&lt;System.String&gt;.</returns>
         public static List<string> CreateStorageSyncServiceList(IEnumerable<StorageSyncModels.StorageSyncService> result)
         {
             var tempStorageSyncServiceList = new List<string>();

@@ -19,20 +19,41 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Exceptions
 {
+    /// <summary>
+    /// Class StorageSyncCloudException.
+    /// Implements the <see cref="Microsoft.Rest.Azure.CloudException" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Rest.Azure.CloudException" />
     public class StorageSyncCloudException : Rest.Azure.CloudException
     {
+        /// <summary>
+        /// The request identifier header in response
+        /// </summary>
         protected const string RequestIdHeaderInResponse = "x-ms-request-id";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageSyncCloudException"/> class.
+        /// </summary>
+        /// <param name="ex">The ex.</param>
         public StorageSyncCloudException(Rest.Azure.CloudException ex)
             : base(GetErrorMessageWithRequestIdInfo(ex), ex)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageSyncCloudException"/> class.
+        /// </summary>
+        /// <param name="ex">The ex.</param>
         public StorageSyncCloudException(StorageSyncErrorException ex)
             : base(ex.Body?.Error?.Message ?? ex.Message, ex)
         {
         }
 
+        /// <summary>
+        /// Gets the error message with request identifier information.
+        /// </summary>
+        /// <param name="cloudException">The cloud exception.</param>
+        /// <returns>System.String.</returns>
         protected static string GetErrorMessageWithRequestIdInfo(Rest.Azure.CloudException cloudException)
         {
             if (cloudException == null)

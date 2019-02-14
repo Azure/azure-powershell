@@ -23,34 +23,78 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common
 {
+    /// <summary>
+    /// Interface IStorageSyncClientCmdlet
+    /// </summary>
     public interface IStorageSyncClientCmdlet
     {
+        /// <summary>
+        /// Gets or sets the storage synchronize client wrapper.
+        /// </summary>
+        /// <value>The storage synchronize client wrapper.</value>
         IStorageSyncClientWrapper StorageSyncClientWrapper { get; set;}
     }
 
+    /// <summary>
+    /// Class StorageSyncClientCmdletBase.
+    /// Implements the <see cref="Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.ActiveDirectoryBaseCmdlet" />
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncClientCmdlet" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.ActiveDirectoryBaseCmdlet" />
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncClientCmdlet" />
     public abstract class StorageSyncClientCmdletBase : ActiveDirectoryBaseCmdlet, IStorageSyncClientCmdlet
     {
+        /// <summary>
+        /// The production arm service host
+        /// </summary>
         public const string ProductionArmServiceHost = "https://management.azure.com";
 
+        /// <summary>
+        /// The start time
+        /// </summary>
         protected DateTime StartTime;
 
+        /// <summary>
+        /// The storage synchronize client wrapper
+        /// </summary>
         private IStorageSyncClientWrapper storageSyncClientWrapper;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageSyncClientCmdletBase"/> class.
+        /// </summary>
         public StorageSyncClientCmdletBase()
         {
             InitializeComponent();
 
         }
 
+        /// <summary>
+        /// Initializes the component.
+        /// </summary>
         protected virtual void InitializeComponent()
         {
         }
 
+        /// <summary>
+        /// Gets or sets the target.
+        /// </summary>
+        /// <value>The target.</value>
         protected virtual string Target { get; set; }
 
+        /// <summary>
+        /// Gets or sets the action message.
+        /// </summary>
+        /// <value>The action message.</value>
         protected virtual string ActionMessage { get; set; }
 
+        /// <summary>
+        /// The is playback mode
+        /// </summary>
         private bool? isPlaybackMode;
+        /// <summary>
+        /// Gets a value indicating whether this instance is playback mode.
+        /// </summary>
+        /// <value><c>true</c> if this instance is playback mode; otherwise, <c>false</c>.</value>
         public bool IsPlaybackMode
         {
             get
@@ -65,8 +109,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             }
         }
 
+        /// <summary>
+        /// Gets the subscription identifier.
+        /// </summary>
+        /// <value>The subscription identifier.</value>
         public Guid SubscriptionId => DefaultProfile.DefaultContext.Subscription.GetId();
 
+        /// <summary>
+        /// Gets or sets the storage synchronize client wrapper.
+        /// </summary>
+        /// <value>The storage synchronize client wrapper.</value>
         public IStorageSyncClientWrapper StorageSyncClientWrapper
         {
             get
@@ -84,12 +136,21 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             set { storageSyncClientWrapper = value; }
         }
 
+        /// <summary>
+        /// Executes the cmdlet.
+        /// </summary>
         public override void ExecuteCmdlet()
         {
             StartTime = DateTime.Now;
             base.ExecuteCmdlet();
         }
 
+        /// <summary>
+        /// Executes the client action.
+        /// </summary>
+        /// <param name="action">The action.</param>
+        /// <exception cref="Microsoft.Azure.Commands.StorageSync.Common.Exceptions.StorageSyncCloudException">
+        /// </exception>
         protected void ExecuteClientAction(Action action)
         {
             try
@@ -106,51 +167,91 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             }
         }
 
+        /// <summary>
+        /// Writes the object.
+        /// </summary>
+        /// <param name="resource">The resource.</param>
         protected void WriteObject(StorageSyncModels.StorageSyncService resource)
         {
             WriteObject(new StorageSyncServiceConverter().Convert(resource));
         }
 
+        /// <summary>
+        /// Writes the object.
+        /// </summary>
+        /// <param name="resources">The resources.</param>
         protected void WriteObject(IEnumerable<StorageSyncModels.StorageSyncService> resources)
         {
             WriteObject(resources.Select(new StorageSyncServiceConverter().Convert), true);
         }
 
+        /// <summary>
+        /// Writes the object.
+        /// </summary>
+        /// <param name="resource">The resource.</param>
         protected void WriteObject(StorageSyncModels.SyncGroup resource)
         {
             WriteObject(new SyncGroupConverter().Convert(resource));
         }
 
+        /// <summary>
+        /// Writes the object.
+        /// </summary>
+        /// <param name="resources">The resources.</param>
         protected void WriteObject(IEnumerable<StorageSyncModels.SyncGroup> resources)
         {
             WriteObject(resources.Select(new SyncGroupConverter().Convert), true);
         }
 
+        /// <summary>
+        /// Writes the object.
+        /// </summary>
+        /// <param name="resource">The resource.</param>
         protected void WriteObject(StorageSyncModels.RegisteredServer resource)
         {
             WriteObject(new RegisteredServerConverter().Convert(resource));
         }
 
+        /// <summary>
+        /// Writes the object.
+        /// </summary>
+        /// <param name="resources">The resources.</param>
         protected void WriteObject(IEnumerable<StorageSyncModels.RegisteredServer> resources)
         {
             WriteObject(resources.Select(new RegisteredServerConverter().Convert), true);
         }
 
+        /// <summary>
+        /// Writes the object.
+        /// </summary>
+        /// <param name="resource">The resource.</param>
         protected void WriteObject(StorageSyncModels.CloudEndpoint resource)
         {
             WriteObject(new CloudEndpointConverter().Convert(resource));
         }
 
+        /// <summary>
+        /// Writes the object.
+        /// </summary>
+        /// <param name="resources">The resources.</param>
         protected void WriteObject(IEnumerable<StorageSyncModels.CloudEndpoint> resources)
         {
             WriteObject(resources.Select(new CloudEndpointConverter().Convert), true);
         }
 
+        /// <summary>
+        /// Writes the object.
+        /// </summary>
+        /// <param name="resource">The resource.</param>
         protected void WriteObject(StorageSyncModels.ServerEndpoint resource)
         {
             WriteObject(new ServerEndpointConverter().Convert(resource));
         }
 
+        /// <summary>
+        /// Writes the object.
+        /// </summary>
+        /// <param name="resources">The resources.</param>
         protected void WriteObject(IEnumerable<StorageSyncModels.ServerEndpoint> resources)
         {
             WriteObject(resources.Select(new ServerEndpointConverter().Convert), true);

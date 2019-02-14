@@ -18,8 +18,16 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
 {
+    /// <summary>
+    /// Class HashTableExtensions.
+    /// </summary>
     public static class HashTableExtensions
     {
+        /// <summary>
+        /// Converts to dictionary.
+        /// </summary>
+        /// <param name="tags">The tags.</param>
+        /// <returns>Dictionary&lt;System.String, System.String&gt;.</returns>
         public static Dictionary<string, string> ToDictionary(this Hashtable tags)
         {
             return TagsConversionHelper.CreateTagDictionary(tags, true);

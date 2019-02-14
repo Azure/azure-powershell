@@ -17,27 +17,90 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common
 {
+    /// <summary>
+    /// Class StorageSyncAliases.
+    /// </summary>
     public class StorageSyncAliases
     {
+        /// <summary>
+        /// The tags alias
+        /// </summary>
         public const string TagsAlias = "Tags";
+        /// <summary>
+        /// The parent name alias
+        /// </summary>
         public const string ParentNameAlias = "ParentName";
+        /// <summary>
+        /// The storage synchronize service name alias
+        /// </summary>
         public const string StorageSyncServiceNameAlias = "StorageSyncServiceName";
+        /// <summary>
+        /// The synchronize group name alias
+        /// </summary>
         public const string SyncGroupNameAlias = "SyncGroupName";
+        /// <summary>
+        /// The registered server name alias
+        /// </summary>
         public const string RegisteredServerNameAlias = "RegisteredServerName";
+        /// <summary>
+        /// The server name alias
+        /// </summary>
         public const string ServerNameAlias = "ServerName";
+        /// <summary>
+        /// The cloud endpoint name alias
+        /// </summary>
         public const string CloudEndpointNameAlias = "CloudEndpointName";
+        /// <summary>
+        /// The server endpoint name alias
+        /// </summary>
         public const string ServerEndpointNameAlias = "ServerEndpointName";
+        /// <summary>
+        /// The storage synchronize service alias
+        /// </summary>
         public const string StorageSyncServiceAlias = "StorageSyncService";
+        /// <summary>
+        /// The synchronize group alias
+        /// </summary>
         public const string SyncGroupAlias = "SyncGroup";
+        /// <summary>
+        /// The registered server alias
+        /// </summary>
         public const string RegisteredServerAlias = "RegisteredServer";
+        /// <summary>
+        /// The server alias
+        /// </summary>
         public const string ServerAlias = "Server";
+        /// <summary>
+        /// The cloud endpoint alias
+        /// </summary>
         public const string CloudEndpointAlias = "CloudEndpoint";
+        /// <summary>
+        /// The server endpoint alias
+        /// </summary>
         public const string ServerEndpointAlias = "ServerEndpoint";
+        /// <summary>
+        /// The storage synchronize service identifier alias
+        /// </summary>
         public const string StorageSyncServiceIdAlias = "StorageSyncServiceId";
+        /// <summary>
+        /// The synchronize group identifier alias
+        /// </summary>
         public const string SyncGroupIdAlias = "SyncGroupId";
+        /// <summary>
+        /// The registered server identifier alias
+        /// </summary>
         public const string RegisteredServerIdAlias = "RegisteredServerId";
+        /// <summary>
+        /// The server identifier alias
+        /// </summary>
         public const string ServerIdAlias = "ServerId";
+        /// <summary>
+        /// The cloud endpoint identifier alias
+        /// </summary>
         public const string CloudEndpointIdAlias = "CloudEndpointId";
+        /// <summary>
+        /// The server endpoint identifier alias
+        /// </summary>
         public const string ServerEndpointIdAlias = "ServerEndpointId";
     }
 }

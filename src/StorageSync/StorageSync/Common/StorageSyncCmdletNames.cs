@@ -17,26 +17,86 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common
 {
+    /// <summary>
+    /// Class StorageSyncCmdletNames.
+    /// </summary>
     public class StorageSyncCmdletNames
     {
+        /// <summary>
+        /// Creates new azurermstoragesyncservice.
+        /// </summary>
         public const string NewAzureRmStorageSyncService = VerbsCommon.New + "-" + StorageSyncNouns.NounAzureRmStorageSyncService;
+        /// <summary>
+        /// Creates new azurermstoragesyncgroup.
+        /// </summary>
         public const string NewAzureRmStorageSyncGroup = VerbsCommon.New + "-" + StorageSyncNouns.NounAzureRmStorageSyncGroup;
+        /// <summary>
+        /// Creates new azurermstoragesyncserver.
+        /// </summary>
         public const string NewAzureRmStorageSyncServer = VerbsCommon.New + "-" + StorageSyncNouns.NounAzureRmStorageSyncServer;
+        /// <summary>
+        /// Creates new azurermstoragesynccloudendpoint.
+        /// </summary>
         public const string NewAzureRmStorageSyncCloudEndpoint = VerbsCommon.New + "-" + StorageSyncNouns.NounAzureRmStorageSyncCloudEndpoint;
+        /// <summary>
+        /// Creates new azurermstoragesyncserverendpoint.
+        /// </summary>
         public const string NewAzureRmStorageSyncServerEndpoint = VerbsCommon.New + "-" + StorageSyncNouns.NounAzureRmStorageSyncServerEndpoint;
+        /// <summary>
+        /// The invoke azure rm storage synchronize file recall
+        /// </summary>
         public const string InvokeAzureRmStorageSyncFileRecall = VerbsLifecycle.Invoke + "-" + StorageSyncNouns.NounAzureRmStorageSyncFileRecall;
+        /// <summary>
+        /// The get azure rm storage synchronize service
+        /// </summary>
         public const string GetAzureRmStorageSyncService = VerbsCommon.Get + "-" + StorageSyncNouns.NounAzureRmStorageSyncService;
+        /// <summary>
+        /// The get azure rm storage synchronize group
+        /// </summary>
         public const string GetAzureRmStorageSyncGroup = VerbsCommon.Get + "-" + StorageSyncNouns.NounAzureRmStorageSyncGroup;
+        /// <summary>
+        /// The get azure rm storage synchronize server
+        /// </summary>
         public const string GetAzureRmStorageSyncServer = VerbsCommon.Get + "-" + StorageSyncNouns.NounAzureRmStorageSyncServer;
+        /// <summary>
+        /// The get azure rm storage synchronize cloud endpoint
+        /// </summary>
         public const string GetAzureRmStorageSyncCloudEndpoint = VerbsCommon.Get + "-" + StorageSyncNouns.NounAzureRmStorageSyncCloudEndpoint;
+        /// <summary>
+        /// The get azure rm storage synchronize server endpoint
+        /// </summary>
         public const string GetAzureRmStorageSyncServerEndpoint = VerbsCommon.Get + "-" + StorageSyncNouns.NounAzureRmStorageSyncServerEndpoint;
+        /// <summary>
+        /// The remove azure rm storage synchronize service
+        /// </summary>
         public const string RemoveAzureRmStorageSyncService = VerbsCommon.Remove + "-" + StorageSyncNouns.NounAzureRmStorageSyncService;
+        /// <summary>
+        /// The remove azure rm storage synchronize group
+        /// </summary>
         public const string RemoveAzureRmStorageSyncGroup = VerbsCommon.Remove + "-" + StorageSyncNouns.NounAzureRmStorageSyncGroup;
+        /// <summary>
+        /// The remove azure rm storage synchronize cloud endpoint
+        /// </summary>
         public const string RemoveAzureRmStorageSyncCloudEndpoint = VerbsCommon.Remove + "-" + StorageSyncNouns.NounAzureRmStorageSyncCloudEndpoint;
+        /// <summary>
+        /// The remove azure rm storage synchronize server endpoint
+        /// </summary>
         public const string RemoveAzureRmStorageSyncServerEndpoint = VerbsCommon.Remove + "-" + StorageSyncNouns.NounAzureRmStorageSyncServerEndpoint;
+        /// <summary>
+        /// The set azure rm storage synchronize service
+        /// </summary>
         public const string SetAzureRmStorageSyncService = VerbsCommon.Set + "-" + StorageSyncNouns.NounAzureRmStorageSyncService;
+        /// <summary>
+        /// The set azure rm storage synchronize server endpoint
+        /// </summary>
         public const string SetAzureRmStorageSyncServerEndpoint = VerbsCommon.Set + "-" + StorageSyncNouns.NounAzureRmStorageSyncServerEndpoint;
+        /// <summary>
+        /// The unregister azure rm storage synchronize server
+        /// </summary>
         public const string UnregisterAzureRmStorageSyncServer = VerbsLifecycle.Unregister + "-" + StorageSyncNouns.NounAzureRmStorageSyncServer;
+        /// <summary>
+        /// The register azure rm storage synchronize server
+        /// </summary>
         public const string RegisterAzureRmStorageSyncServer = VerbsLifecycle.Register + "-" + StorageSyncNouns.NounAzureRmStorageSyncServer;
     }
 }

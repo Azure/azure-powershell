@@ -29,10 +29,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <typeparam name="T"></typeparam>
         /// <param name="key">Registry key</param>
         /// <param name="path">Path</param>
-        /// <param name="value"></param>
-        /// <param name="kind"></param>
-        /// <param name="options"></param>
-        /// <returns></returns>
+        /// <param name="value">The value.</param>
+        /// <param name="kind">The kind.</param>
+        /// <param name="options">The options.</param>
+        /// <param name="registryView">The registry view.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static bool TryGetValue<T>(string key, string path, out T value, RegistryValueKind kind, RegistryValueOptions options = RegistryValueOptions.None, RegistryView registryView = RegistryView.Default)
         {
             
