@@ -34,7 +34,7 @@ The **Get-AzWebAppSlotMetrics** gets Web App metrics for the specified slot.
 
 ### Example 1
 ```
-PS C:\> Get-AzAppServicePlanMetrics -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -StartTime 2016-11-30T22:00:00Z -EndTime 2016-11-30T22:30:00Z -Granularity PT1M -Metrics ["Requests"]
+PS C:\> Get-AzWebAppSlotMetrics -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -StartTime 2016-11-30T22:00:00Z -EndTime 2016-11-30T22:30:00Z -Granularity PT1M -Metrics ["Requests"]
 ```
 
 This command gets Request of the specified Web App 
