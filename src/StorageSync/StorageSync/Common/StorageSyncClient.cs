@@ -270,17 +270,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 
             if (servicePrincipal == null)
             {
-                VerboseLogger.Invoke("Creating Service Principal...");
-
-                SecureString Password = Guid.NewGuid().ToString().ConvertToSecureString();
-
+                VerboseLogger.Invoke(StorageSyncResources.CreateServicePrincipalMessage);
                 // Create an application and get the applicationId
                 var passwordCredential = new PSADPasswordCredential()
                 {
                     StartDate = DateTime.Now,
                     EndDate = DateTime.Now.AddYears(1),
                     KeyId = Guid.NewGuid(),
-                    Password = SecureStringExtensions.ConvertToString(Password)
+                    Password = SecureStringExtensions.ConvertToString(Guid.NewGuid().ToString().ConvertToSecureString())
                 };
 
                 var createParameters = new CreatePSServicePrincipalParameters
@@ -294,7 +291,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 };
 
                 servicePrincipal = ActiveDirectoryClient.CreateServicePrincipal(createParameters);
-                VerboseLogger.Invoke("Created Service Principal");
             }
 
             return servicePrincipal;
@@ -314,11 +310,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             string roleDefinitionScope = "/";
             RoleDefinition roleDefinition = AuthorizationManagementClient.RoleDefinitions.Get(roleDefinitionScope, BuiltInRoleDefinitionId);
 
-            if (roleDefinition == null)
-            {
-                throw new PSArgumentException(nameof(roleDefinition));
-            }
-
             var serverPrincipalId = serverPrincipal.Id.ToString();
             var roleAssignments = AuthorizationManagementClient.RoleAssignments
                 .ListForResource(
@@ -328,14 +319,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 ResourceIdentifier.GetTypeFromResourceType(resourceIdentifier.ResourceType),
                 resourceIdentifier.ResourceName,
                 odataQuery: new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(serverPrincipalId)));
-            RoleAssignment roleAssignment = roleAssignments.FirstOrDefault();
             var roleAssignmentScope = storageAccountResourceId;
             var roleAssignmentId = Guid.NewGuid().ToString();
 
+            RoleAssignment roleAssignment = roleAssignments.FirstOrDefault();
             if (roleAssignment == null)
             {
-                VerboseLogger.Invoke("Creating Role Assignment...");
-
+                VerboseLogger.Invoke(StorageSyncResources.CreateRoleAssignmentMessage);
                 var createParameters = new RoleAssignmentCreateParameters
                 {
                     Properties = new RoleAssignmentProperties
@@ -346,8 +336,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 };
 
                 roleAssignment = AuthorizationManagementClient.RoleAssignments.Create(roleAssignmentScope, roleAssignmentId, createParameters);
-
-                VerboseLogger.Invoke("Created Role Assignment");
             }
 
             return roleAssignment;

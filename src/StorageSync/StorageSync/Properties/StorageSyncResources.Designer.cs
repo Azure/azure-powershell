@@ -70,6 +70,24 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating Role Assignment....
+        /// </summary>
+        internal static string CreateRoleAssignmentMessage {
+            get {
+                return ResourceManager.GetString("CreateRoleAssignmentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating Service Principal....
+        /// </summary>
+        internal static string CreateServicePrincipalMessage {
+            get {
+                return ResourceManager.GetString("CreateServicePrincipalMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to COM Exception while loading certificate: HResult: {0} Message: {1}.
         /// </summary>
         internal static string GetSyncServerCertificateErrorMessageFormat {

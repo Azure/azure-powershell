@@ -193,51 +193,57 @@
     <value>Unregister Storage Sync Server for Storage Sync Service '{0}' and all content in it</value>
   </data>
   <data name="ResetCertificateMessageFormat1" xml:space="preserve">
-<value>Starting rollover certificate for ServerId: {serverId}</value>
-</data>
+    <value>Starting rollover certificate for ServerId: {serverId}</value>
+  </data>
   <data name="ResetCertificateMessageFormat2" xml:space="preserve">
     <value>Primary Certificate Thumbprint: {0} Secondary Certificate Thumbprint: {1}</value>
-</data>
+  </data>
   <data name="ResetCertificateMessageFormat3" xml:space="preserve">
-                 <value>Succesfully retrieved secondary certificate with thumbprint: {0} from store with HResult: {1}</value>
-</data>
+    <value>Succesfully retrieved secondary certificate with thumbprint: {0} from store with HResult: {1}</value>
+  </data>
   <data name="ResetCertificateMessageFormat4" xml:space="preserve">
-                 <value>Failed to retrieve the secondary certificate from store with HResult: {0}</value>
-</data>
+    <value>Failed to retrieve the secondary certificate from store with HResult: {0}</value>
+  </data>
   <data name="ResetCertificateMessageFormat5" xml:space="preserve">
-             <value>Generating new Secondary Certificate.. Current Thumbprint: {0}</value>
-</data>
+    <value>Generating new Secondary Certificate.. Current Thumbprint: {0}</value>
+  </data>
   <data name="ResetCertificateMessageFormat6" xml:space="preserve">
-             <value>Primary and Secondary certificates are same. Cannot proceed to switch and delete certificate step. Primary Thumbprint: {0}</value>
-</data>
+    <value>Primary and Secondary certificates are same. Cannot proceed to switch and delete certificate step. Primary Thumbprint: {0}</value>
+  </data>
   <data name="ResetCertificateMessageFormat7" xml:space="preserve">
-         <value>Switching primary certificate to secondary and updating monitoring with latest certificate. Primary Certificate: {0} Secondary Certificate: {1}</value>
-</data>
+    <value>Switching primary certificate to secondary and updating monitoring with latest certificate. Primary Certificate: {0} Secondary Certificate: {1}</value>
+  </data>
   <data name="ResetCertificateMessageFormat8" xml:space="preserve">
-             <value>COM Exception while switching certificate: HResult:{0} MessageFormat:{1}</value>
-</data>
+    <value>COM Exception while switching certificate: HResult:{0} MessageFormat:{1}</value>
+  </data>
   <data name="ResetCertificateMessageFormat9" xml:space="preserve">
-         <value>Successfully switched to secondary certificate. Certificate: {0}</value>
-</data>
+    <value>Successfully switched to secondary certificate. Certificate: {0}</value>
+  </data>
   <data name="ResetCertificateMessageFormat10" xml:space="preserve">
-             <value>Deleting old certificate  with thumbprint: {0}</value>
-</data>
+    <value>Deleting old certificate  with thumbprint: {0}</value>
+  </data>
   <data name="ResetCertificateMessageFormat11" xml:space="preserve">
-             <value>Successfully deleted the certificate from the store: {0}</value>
-</data>
+    <value>Successfully deleted the certificate from the store: {0}</value>
+  </data>
   <data name="ResetCertificateMessageFormat12" xml:space="preserve">
-             <value>COM Exception during deletion of old Primary certificate: HResult:{0} MessageFormat:{1}. Ignoring the error..</value>
-</data>
+    <value>COM Exception during deletion of old Primary certificate: HResult:{0} MessageFormat:{1}. Ignoring the error..</value>
+  </data>
   <data name="ResetCertificateMessageFormat13" xml:space="preserve">
-         <value>Validating Certificate with Thumbprint: {0}</value>
-</data>
+    <value>Validating Certificate with Thumbprint: {0}</value>
+  </data>
   <data name="ResetCertificateMessageFormat14" xml:space="preserve">
-         <value>$"Certificate is expired. Current Time: {0} Certificate NotAfter: {1}";</value>
-</data>
+    <value>$"Certificate is expired. Current Time: {0} Certificate NotAfter: {1}";</value>
+  </data>
   <data name="ResetCertificateMessageFormat15" xml:space="preserve">
-         <value>Certificate contains Private Key</value>
-</data>
+    <value>Certificate contains Private Key</value>
+  </data>
   <data name="ResetCertificateMessageFormat16" xml:space="preserve">
-         <value>Successfully validated certificate with thumbprint: {0}</value>
-</data>
+    <value>Successfully validated certificate with thumbprint: {0}</value>
+  </data>
+  <data name="CreateRoleAssignmentMessage" xml:space="preserve">
+    <value>Creating Role Assignment...</value>
+  </data>
+  <data name="CreateServicePrincipalMessage" xml:space="preserve">
+    <value>Creating Service Principal...</value>
+  </data>
 </root>
