@@ -179,6 +179,8 @@ TenantId         : 4cd76576-b611-43d0-8f2b-adcb139531bf
 Environment      : AzureCloud
 ```
 
+This command connects to an Azure account using certificate-based service principal authentication. The service principal used for authentication should have been created with the given certificate.
+
 ### Example 8: Add an account using AccessToken authentication
 ```powershell
 PS C:\> $url = "https://login.windows.net/<SubscriptionId>/oauth2/token"
@@ -195,7 +197,7 @@ Account                SubscriptionName TenantId                Environment
 azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
-This command connects to an Azure account using certificate-based service principal authentication. The service principal used for authentication should have been created with the given certificate.
+This command connects to an Azure account specified in "AccountId" using the AccessToken and KeyVaultAccessToken provided.
 
 ## PARAMETERS
 
