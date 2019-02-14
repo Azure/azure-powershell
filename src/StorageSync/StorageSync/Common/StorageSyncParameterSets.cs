@@ -12,29 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Text;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
+namespace Microsoft.Azure.Commands.StorageSync.Common
 {
-    public static class LocationStringExtensions
+    public class StorageSyncParameterSets
     {
-        public static string Canonicalize(this string location)
-        {
-            if (!string.IsNullOrEmpty(location))
-            {
-                StringBuilder sb = new StringBuilder();
-                foreach (char ch in location)
-                {
-                    if (!char.IsWhiteSpace(ch))
-                    {
-                        sb.Append(ch);
-                    }
-                }
-
-                location = sb.ToString().ToLower();
-            }
-
-            return location;
-        }
+        public const string ResourceIdParameterSet = "ResourceIdParameterSet";
+        public const string StringParameterSet = "StringParameterSet";
+        public const string ObjectParameterSet = "ObjectParameterSet";
+        public const string ParentStringParameterSet = "ParentStringParameterSet";
+        public const string InputObjectParameterSet = "InputObjectParameterSet";
+        public const string DefaultParameterSet = "DefaultParameterSet";
     }
 }

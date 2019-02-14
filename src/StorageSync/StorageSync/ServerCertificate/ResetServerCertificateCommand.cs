@@ -27,7 +27,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
 
-    [Cmdlet(VerbsCommon.Reset, StorageSyncNouns.NounAzureRmStorageSyncServerCertificate, DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Reset, StorageSyncNouns.NounAzureRmStorageSyncServerCertificate, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class ResetServerCertificateCommand : StorageSyncClientCmdletBase
     {
         [Parameter(
@@ -81,66 +81,57 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Target, ActionMessage))
+
+            base.ExecuteCmdlet();
+
+            ExecuteClientAction(() =>
             {
-                base.ExecuteCmdlet();
+                var parentResourceIdentifier = default(ResourceIdentifier);
 
-                ExecuteClientAction(() =>
+                if (!string.IsNullOrEmpty(ParentResourceId))
                 {
-                    var parentResourceIdentifier = default(ResourceIdentifier);
+                    parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
 
-                    if (!string.IsNullOrEmpty(ParentResourceId))
+                    if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
                     {
-                        parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
-
-                        if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
-                        {
-                            throw new PSArgumentException($"Invalid Argument {nameof(ParentResourceId)}", nameof(ParentResourceId));
-                        }
+                        throw new PSArgumentException(nameof(ParentResourceId));
                     }
-
-                    var resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier?.ResourceGroupName;
-
-                    if (string.IsNullOrEmpty(resourceGroupName))
-                    {
-                        throw new PSArgumentException($"Invalid Argument {nameof(ResourceGroupName)}", nameof(ResourceGroupName));
-                    }
-
-                    var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
-
-                    if (string.IsNullOrEmpty(parentResourceName))
-                    {
-                        throw new PSArgumentException($"Invalid Argument {nameof(StorageSyncServiceName)}", nameof(StorageSyncServiceName));
-                    }
-
-                    if (!SubscriptionId.HasValue)
-                    {
-                        throw new PSArgumentException("No subscription found", nameof(SubscriptionId));
-                    }
-
-                    PerformTriggerRolloverInCloud(resourceGroupName, SubscriptionId.Value, parentResourceName);
-                });
-
-                if (PassThru.IsPresent)
-                {
-                    WriteObject(true);
                 }
+
+                var resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier?.ResourceGroupName;
+
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    throw new PSArgumentException(nameof(ResourceGroupName));
+                }
+
+                var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
+
+                if (string.IsNullOrEmpty(parentResourceName))
+                {
+                    throw new PSArgumentException(nameof(StorageSyncServiceName));
+                }
+
+                if (ShouldProcess(Target, ActionMessage))
+                {
+                    TriggerCertificateRollover(resourceGroupName, SubscriptionId, parentResourceName);
+                }
+            });
+
+            if (PassThru.IsPresent)
+            {
+                WriteObject(true);
             }
         }
-        private void PerformTriggerRolloverInCloud(string resourceGroupName, Guid subscriptionId, string storageSyncServiceName)
+        private void TriggerCertificateRollover(string resourceGroupName, Guid subscriptionId, string storageSyncServiceName)
         {
-            if (subscriptionId == null)
-            {
-                throw new PSArgumentException("No subscription found");
-            }
-
             using (ISyncServerCertificateRollover certificateRolloverClient = new SyncServerCertificateRolloverClient(InteropClientFactory.CreateEcsManagement(IsPlaybackMode)))
             {
                 certificateRolloverClient.RolloverServerCertificate(
                     ManagementInteropConstants.CertificateProviderName,
                     ManagementInteropConstants.CertificateHashAlgorithm,
                     ManagementInteropConstants.CertificateKeyLength,
-                    (certificate, serverId) => TriggerCertificateRollover(certificate, serverId, resourceGroupName,storageSyncServiceName),
+                    (certificate, serverId) => PerformTriggerRolloverInCloud(certificate, serverId, resourceGroupName,storageSyncServiceName),
                     (inputLogData) => StorageSyncClientWrapper.VerboseLogger(inputLogData));
             }
         }
@@ -150,7 +141,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// </summary>
         /// <param name="certificateData"> certificate to add </param>
         /// <param name="serverId"> serverId</param>
-        private void TriggerCertificateRollover(string certificateData, Guid serverId, string resourceGroupName, string storageSyncServiceName)
+        private void PerformTriggerRolloverInCloud(string certificateData, Guid serverId, string resourceGroupName, string storageSyncServiceName)
         {
             WriteVerbose("Triggering certificate rollover on service");
 

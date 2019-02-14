@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-
 namespace Microsoft.Azure.Commands.StorageSync.Models
 {
     public class PSCloudEndpoint : PSResourceBase
@@ -21,11 +19,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         public string SyncGroupName { get; set; }
         public string StorageSyncServiceName { get; set; }
         public string CloudEndpointName { get; set; }
-
         public string StorageAccountResourceId { get; set; }
         public string StorageAccountShareName { get; set; }
         public string StorageAccountTenantId { get; set; }
-
         public string FriendlyName { get; set; }
         public bool? BackupEnabled { get; set; }
         public string LastWorkflowId { get; set; }

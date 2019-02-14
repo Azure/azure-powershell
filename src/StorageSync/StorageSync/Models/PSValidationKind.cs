@@ -12,18 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-
-namespace Microsoft.Azure.Commands.StorageSync.Models
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
 {
-    public class PSSyncProgressStatus
+    public enum PSValidationKind
     {
-        public DateTime? ProgressTimestamp { get; set; }
-        public string SyncDirection { get; set; }
-        public int? PerItemErrorCount { get; set; }
-        public int? AppliedItemCount { get; set; }
-        public int? TotalItemCount { get; set; }
-        public int? AppliedBytes { get; set; }
-        public int? TotalBytes { get; set; }
+        SystemValidation,
+        NamespaceValidation
     }
 }

@@ -216,25 +216,6 @@ function Get-StorageSyncLocation($provider)
 
 <#
 .SYNOPSIS
-Gets the Canary location for a provider
-#>
-function Get-StorageSyncLocation_Canary($provider)
-{
-    "eastus2euap"
-}
-
-
-<#
-.SYNOPSIS
-Gets the Stage location for a provider
-#>
-function Get-StorageSyncLocation_Stage($provider)
-{
-    "eastus2(stage)"
-}
-
-<#
-.SYNOPSIS
 Normalize Location
 #>
 function Normalize-Location($location)

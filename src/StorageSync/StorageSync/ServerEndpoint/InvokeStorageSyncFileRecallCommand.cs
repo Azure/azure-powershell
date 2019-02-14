@@ -25,7 +25,7 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
-    [Cmdlet(VerbsLifecycle.Invoke, StorageSyncNouns.NounAzureRmStorageSyncFileRecall, DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Invoke, StorageSyncNouns.NounAzureRmStorageSyncFileRecall, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet), OutputType(typeof(void))]
     public class InvokeStorageSyncFileRecallCommand : StorageSyncClientCmdletBase
     {
         [Parameter(

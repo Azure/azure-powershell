@@ -17,9 +17,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
     public class PSServerEndpoint : PSResourceBase
     {
         public string SyncGroupName { get; set; }
-
         public string StorageSyncServiceName { get; set; }
-
         public string ServerLocalPath { get; set; }
         public string ServerResourceId { get; set; }
         public string ServerEndpointName { get; set; }
@@ -30,7 +28,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         public PSServerEndpointHealth SyncStatus { get; set; }
         public string CloudTiering { get; set; }
         public int? VolumeFreeSpacePercent { get; set; }
-
         public int? TierFilesOlderThanDays { get; set; }
     }
 }

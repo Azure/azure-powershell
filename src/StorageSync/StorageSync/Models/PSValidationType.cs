@@ -12,26 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
-using System;
-using System.Text;
-
-namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
 {
-    /// <summary>
-    /// Object extensions class
-    /// </summary>
-    public static class ObjectExtensions
+     public enum PSValidationType
     {
-
-        /// <summary>
-        /// This function will transform an object to json formatted string.
-        /// </summary>
-        /// <param name="currentObject">current object</param>
-        /// <returns>Json formatted string</returns>
-        public static string ToJson(this object currentObject)
-        {
-            return JsonConvert.SerializeObject(currentObject);
-        }
+        FilenameCharacters,
+        Filename,
+        FilenameLength,
+        FileSize,
+        PathLength,
+        NodeDepth,
+        DatasetSize,
+        FileSystem,
+        OsVersion
     }
 }

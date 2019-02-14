@@ -75,31 +75,31 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Target, ActionMessage))
+
+            base.ExecuteCmdlet();
+
+            ExecuteClientAction(() =>
             {
-                base.ExecuteCmdlet();
 
-                ExecuteClientAction(() =>
+                CheckNameAvailabilityResult checkNameAvailabilityResult = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.CheckNameAvailability(Location.Replace(" ", string.Empty), Name);
+
+                if (!checkNameAvailabilityResult.NameAvailable.Value)
                 {
+                    throw new System.ArgumentException(checkNameAvailabilityResult.Message, nameof(Name));
+                }
 
-                    CheckNameAvailabilityResult checkNameAvailabilityResult = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.CheckNameAvailability(Location.Replace(" ", string.Empty), Name);
-
-                    if (!checkNameAvailabilityResult.NameAvailable.Value)
-                    {
-                        throw new System.ArgumentException(checkNameAvailabilityResult.Message, nameof(Name));
-                    }
-
-                    StorageSyncServiceCreateParameters createParameters = new StorageSyncServiceCreateParameters()
-                    {
-                        Location = Location,
-                        Tags = TagsConversionHelper.CreateTagDictionary(Tag ?? new Hashtable(), validate: true),
-                    };
-
+                StorageSyncServiceCreateParameters createParameters = new StorageSyncServiceCreateParameters()
+                {
+                    Location = Location,
+                    Tags = TagsConversionHelper.CreateTagDictionary(Tag ?? new Hashtable(), validate: true),
+                };
+                if (ShouldProcess(Target, ActionMessage))
+                {
                     StorageSyncModels.StorageSyncService storageSyncService = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.Create(ResourceGroupName, Name, createParameters);
 
                     WriteObject(storageSyncService);
-                });
-            }
+                }
+            });
         }
     }
 }

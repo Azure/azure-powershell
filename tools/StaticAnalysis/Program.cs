@@ -45,7 +45,6 @@ namespace StaticAnalysis
 
         public static void Main(string[] args)
         {
-            System.Diagnostics.Debugger.Launch();
             AnalysisLogger analysisLogger = null;
             try
             {
@@ -70,7 +69,7 @@ namespace StaticAnalysis
                     throw new InvalidOperationException(string.Format("Please provide a valid installation directory; the provided directory '{0}' could not be found.", installDir));
                 }
 
-                var directories = new List<string>{ installDir }.Where((d) => Directory.Exists(d)).ToList<string>();
+                var directories = new List<string> { installDir }.Where((d) => Directory.Exists(d)).ToList<string>();
 
                 var reportsDirectory = Directory.GetCurrentDirectory();
                 bool logReportsDirectoryWarning = true;
@@ -125,29 +124,19 @@ namespace StaticAnalysis
 
                 foreach (var analyzer in Analyzers)
                 {
-                    try
-                    {
-                        analyzer.Logger = analysisLogger;
-                        analysisLogger.WriteMessage("Executing analyzer: {0}", analyzer.Name);
-                        analyzer.Analyze(directories, modulesToAnalyze);
-                        analysisLogger.WriteMessage("Processing complete for analyzer: {0}", analyzer.Name);
-                    }
-                    catch (Exception e)
-                    {
-                        if (e.Message.Contains("dsfsd"))
-                        {
-                            throw e;
-                        }
-                    }
+                    analyzer.Logger = analysisLogger;
+                    analysisLogger.WriteMessage("Executing analyzer: {0}", analyzer.Name);
+                    analyzer.Analyze(directories, modulesToAnalyze);
+                    analysisLogger.WriteMessage("Processing complete for analyzer: {0}", analyzer.Name);
                 }
 
                 analysisLogger.WriteReports();
                 analysisLogger.CheckForIssues(2);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 analysisLogger?.WriteError(ex.ToString());
-               // throw ex;
+                throw ex;
             }
             finally
             {

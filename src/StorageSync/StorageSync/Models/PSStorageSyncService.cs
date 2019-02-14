@@ -21,11 +21,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
     {
         [Ps1Xml(Label = "Location", Target = ViewControl.Table, Position = 4)]
         public string Location { get; set; }
-
         [Ps1Xml(Label = "StorageSyncServiceName ", Target = ViewControl.Table, Position = 5)]
         public string StorageSyncServiceName { get; set; }
-
         public IDictionary<string, string> Tags { get; set; }
-
     }
 }

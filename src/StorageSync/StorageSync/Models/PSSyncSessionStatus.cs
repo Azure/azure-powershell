@@ -13,35 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Runtime.Serialization;
 
-namespace Microsoft.Azure.Commands.StorageSync.Common.Exceptions
+namespace Microsoft.Azure.Commands.StorageSync.Models
 {
-
-    [Serializable]
-    public class StorageSyncServerException : ApplicationException
+    public class PSSyncSessionStatus
     {
-        protected const string RequestIdHeaderInResponse = "x-ms-request-id";
-
-        public StorageSyncServerException()
-            : base()
-        {
-        }
-
-        public StorageSyncServerException(string message)
-            : base(message)
-        {
-        }
-
-        public StorageSyncServerException(string message, Exception innerException)
-            : base(message, innerException)
-        {
-        }
-
-        public StorageSyncServerException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-        }
-
+        public int? LastSyncResult { get; set; }
+        public DateTime? LastSyncTimestamp { get; set; }
+        public DateTime? LastSyncSuccessTimestamp { get; set; }
+        public int? LastSyncPerItemErrorCount { get; set; }
     }
 }

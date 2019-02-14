@@ -35,12 +35,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
             {
                 return new Uri(uriString, uriKind);
             }
-            catch (Exception)
+            catch (Exception) when (!throwException)
             {
-                if (throwException)
-                {
-                    throw;
-                }
             }
             return default(Uri);
         }
@@ -57,12 +53,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
             {
                 return Convert.FromBase64String(source);
             }
-            catch (FormatException)
+            catch (FormatException) when (!throwException)
             {
-                 if (throwException)
-                {
-                    throw;
-                }
             }
 
             return default(byte[]);

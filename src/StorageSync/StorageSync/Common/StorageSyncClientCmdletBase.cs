@@ -65,23 +65,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             }
         }
 
-        private Guid? subscriptionId;
-        public Guid? SubscriptionId
-        {
-            get
-            {
-                if (subscriptionId == null)
-                {
-                    IAzureContext context = null;
-                    bool hasAzureContext = TryGetDefaultContext(out context);
-                    if (hasAzureContext && !string.IsNullOrEmpty(context.Subscription?.Id))
-                    {
-                        subscriptionId = context.Subscription.GetId();
-                    }
-                }
-                return subscriptionId;
-            }
-        }
+        public Guid SubscriptionId => DefaultProfile.DefaultContext.Subscription.GetId();
 
         public IStorageSyncClientWrapper StorageSyncClientWrapper
         {
@@ -114,42 +98,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             }
             catch (StorageSyncModels.StorageSyncErrorException ex)
             {
-                try
-                {
-                    base.EndProcessing();
-                }
-                catch
-                {
-                    // Ignore exceptions during end processing
-                }
-
                 throw new StorageSyncCloudException(ex);
             }
             catch (Rest.Azure.CloudException ex)
             {
-                try
-                {
-                    base.EndProcessing();
-                }
-                catch
-                {
-                    // Ignore exceptions during end processing
-                }
-
                 throw new StorageSyncCloudException(ex);
-            }
-            catch (Exception ex)
-            {
-                try
-                {
-                    base.EndProcessing();
-                }
-                catch
-                {
-                    // Ignore exceptions during end processing
-                }
-
-                throw new StorageSyncServerException(ex.Message, ex);
             }
         }
 

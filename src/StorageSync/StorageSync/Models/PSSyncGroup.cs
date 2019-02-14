@@ -17,9 +17,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
     public class PSSyncGroup : PSResourceBase
     {
         public string SyncGroupName { get; set; }
-
         public string StorageSyncServiceName { get; set; }
-
         public string UniqueId { get; set; }
         public string SyncGroupStatus { get; set; }
     }

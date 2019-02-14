@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
     /// <summary>
     /// Deletes a Storage Sync Service
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, StorageSyncNouns.NounAzureRmStorageSyncService, DefaultParameterSetName = StorageSyncParameterSets.InputObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, StorageSyncNouns.NounAzureRmStorageSyncService, DefaultParameterSetName = StorageSyncParameterSets.InputObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveStorageSyncServiceCommand : StorageSyncClientCmdletBase
     {
         [Parameter(Mandatory = true,

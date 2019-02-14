@@ -32,8 +32,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 {
     public interface IStorageSyncClientWrapper
     {
-        IAzureContext AzureContext { get; set; }
-
         ActiveDirectoryClient ActiveDirectoryClient { get; set; }
 
         IStorageSyncManagementClient StorageSyncManagementClient { get; set; }
@@ -69,14 +67,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 
         public Action<string> ErrorLogger { get; set; }
 
-        public IAzureContext AzureContext { get; set; }
-
         public StorageSyncClientWrapper(IAzureContext context, ActiveDirectoryClient activeDirectoryClient)
                 : this(
                       AzureSession.Instance.ClientFactory.CreateArmClient<StorageSyncManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                       AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
-            AzureContext = context;
             ActiveDirectoryClient = activeDirectoryClient;
         }
 
@@ -165,15 +160,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 
         public PSADServicePrincipal EnsureServicePrincipal()
         {
-            if (KailaniAppId == Guid.Empty)
-            {
-                throw new PSArgumentException($"Invalid Argument {nameof(KailaniAppId)}", nameof(KailaniAppId));
-            }
-
             string applicationId = KailaniAppId.ToString();
-
             var servicePrincipals = ActiveDirectoryClient.FilterServicePrincipals(new ODataQuery<ServicePrincipal>(s => s.AppId == applicationId));
-
             PSADServicePrincipal servicePrincipal = servicePrincipals.FirstOrDefault();
 
             if (servicePrincipal == null)
@@ -209,25 +197,18 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         }
 
 
-        public RoleAssignment EnsureRoleAssignment(PSADServicePrincipal serverPrincipal, string resourceId)
+        public RoleAssignment EnsureRoleAssignment(PSADServicePrincipal serverPrincipal, string storageAccountResourceId)
         {
-            var resourceIdentifier = new ResourceIdentifier(resourceId);
-
-            if (string.IsNullOrEmpty(resourceIdentifier?.ResourceName))
-            {
-                throw new PSArgumentException($"Invalid resource ID format: {resourceId}");
-            }
-
+            var resourceIdentifier = new ResourceIdentifier(storageAccountResourceId);
             string roleDefinitionScope = "/";
             RoleDefinition roleDefinition = AuthorizationManagementClient.RoleDefinitions.Get(roleDefinitionScope, BuiltInRoleDefinitionId);
 
             if (roleDefinition == null)
             {
-                throw new PSArgumentException("Cannot get RoleDefinition");
+                throw new PSArgumentException(nameof(roleDefinition));
             }
 
             var serverPrincipalId = serverPrincipal.Id.ToString();
-
             var roleAssignments = AuthorizationManagementClient.RoleAssignments
                 .ListForResource(
                 resourceIdentifier.ResourceGroupName,
@@ -237,9 +218,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 resourceIdentifier.ResourceName,
                 odataQuery: new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(serverPrincipalId)));
             RoleAssignment roleAssignment = roleAssignments.FirstOrDefault();
-
-            var roleAssignmentScope = resourceId;
-            string roleAssignmentId = Guid.NewGuid().ToString();
+            var roleAssignmentScope = storageAccountResourceId;
+            var roleAssignmentId = Guid.NewGuid().ToString();
 
             if (roleAssignment == null)
             {

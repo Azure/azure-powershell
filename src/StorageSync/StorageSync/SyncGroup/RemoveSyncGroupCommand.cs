@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
 {
-    [Cmdlet(VerbsCommon.Remove, StorageSyncNouns.NounAzureRmStorageSyncGroup, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, StorageSyncNouns.NounAzureRmStorageSyncGroup, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveSyncGroupCommand : StorageSyncClientCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -122,11 +122,11 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
 
                 if (string.IsNullOrEmpty(resourceGroupName))
                 {
-                    throw new PSArgumentException($"Invalid Argument {nameof(ResourceGroupName)}", nameof(ResourceGroupName));
+                    throw new PSArgumentException(nameof(ResourceGroupName));
                 }
                 else if (string.IsNullOrEmpty(parentResourceName))
                 {
-                    throw new PSArgumentException($"Invalid Argument {nameof(StorageSyncServiceName)}", nameof(StorageSyncServiceName));
+                    throw new PSArgumentException(nameof(StorageSyncServiceName));
                 }
                 else if (string.IsNullOrEmpty(resourceName))
                 {
