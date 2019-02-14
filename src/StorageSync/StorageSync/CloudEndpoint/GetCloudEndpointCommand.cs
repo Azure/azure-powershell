@@ -123,10 +123,14 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
 
             ExecuteClientAction(() =>
             {
-                var parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
-                if (!string.Equals(StorageSyncConstants.SyncGroupType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
+                var parentResourceIdentifier = default(ResourceIdentifier);
+                if (!string.IsNullOrEmpty(ParentResourceId))
                 {
-                    throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
+                    parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
+                    if (!string.Equals(StorageSyncConstants.SyncGroupType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
+                    }
                 }
 
                 string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;
