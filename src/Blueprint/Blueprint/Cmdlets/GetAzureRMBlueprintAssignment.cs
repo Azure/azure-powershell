@@ -1,0 +1,50 @@
+﻿using System;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Blueprint.Common;
+using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
+using ParameterHelpMessages = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterHelpMessages;
+
+namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
+{
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintAssignment")]
+    public class GetAzureRmBlueprintAssignment : BlueprintCmdletBase
+    {
+        #region Parameters
+
+        [Parameter(ParameterSetName = ParameterSetNames.BlueprintAssignmentByName, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.SubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.BlueprintAssignmentsBySubscription, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.SubscriptionId)]
+        [ValidateNotNullOrEmpty]
+        public string SubscriptionId { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.BlueprintAssignmentByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintAssignmentName)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+        #endregion Parameters
+
+        #region Cmdlet Overrides
+        public override void ExecuteCmdlet()
+        {
+            var subscription = SubscriptionId ?? DefaultContext.Subscription.Id;
+
+            try
+            {
+                switch (ParameterSetName) {
+                    case ParameterSetNames.BlueprintAssignmentsBySubscription:
+                        foreach (var assignment in BlueprintClient.ListBlueprintAssignments(string.Format(BlueprintConstants.SubscriptionScope, subscription)))
+                            WriteObject(assignment);
+                        break;
+                    case ParameterSetNames.BlueprintAssignmentByName:
+                        WriteObject(BlueprintClient.GetBlueprintAssignment(string.Format(BlueprintConstants.SubscriptionScope, subscription), Name));
+                        break;
+                    default:
+                        throw new PSInvalidOperationException();
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteExceptionError(ex);
+            }
+        }
+        #endregion Cmdlet Overrides
+    }
+}
