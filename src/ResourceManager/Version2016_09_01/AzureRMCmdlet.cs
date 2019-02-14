@@ -390,5 +390,115 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             base.BeginProcessing();
         }
+
+        public List<T> TopLevelWildcardFilter<T>(string resourceGroupName, string name, IEnumerable<T> resources)
+        {
+            IEnumerable<T> output = resources;
+            if (HasProperty<T>("ResourceId") || HasProperty<T>("Id"))
+            {
+                string idProperty = HasProperty<T>("ResourceId") ? "ResourceId" : "Id";
+                if (!string.IsNullOrEmpty(resourceGroupName))
+                {
+                    WildcardPattern pattern = new WildcardPattern(resourceGroupName, WildcardOptions.IgnoreCase);
+                    output = output.Select(t => new { Id = new ResourceIdentifier((string) GetPropertyValue(t, idProperty)), Resource = t })
+                                   .Where(p => IsMatch(p.Id, "ResourceGroupName", pattern))
+                                   .Select(r => r.Resource);
+                }
+
+                if (!string.IsNullOrEmpty(name))
+                {
+                    WildcardPattern pattern = new WildcardPattern(name, WildcardOptions.IgnoreCase);
+                    output = output.Select(t => new { Id = new ResourceIdentifier((string) GetPropertyValue(t, idProperty)), Resource = t })
+                                   .Where(p => IsMatch(p.Id, "ResourceName", pattern))
+                                   .Select(r => r.Resource);
+                }
+
+            }
+            else
+            {
+                // if ResourceGroupName property, filter resource group
+                if (HasProperty<T>("ResourceGroupName") && !string.IsNullOrEmpty(resourceGroupName))
+                {
+                    WildcardPattern pattern = new WildcardPattern(resourceGroupName, WildcardOptions.IgnoreCase);
+                    output = output.Where(t => IsMatch(t, "ResourceGroupName", pattern));
+                }
+
+                // if Name property, filter name
+                if (HasProperty<T>("Name") && !string.IsNullOrEmpty(name))
+                {
+                    WildcardPattern pattern = new WildcardPattern(name, WildcardOptions.IgnoreCase);
+                    output = output.Where(t => IsMatch(t, "Name", pattern));
+                }
+            }
+
+            return output.ToList();
+        }
+
+        public List<T> SubResourceWildcardFilter<T>(string name, IEnumerable<T> resources)
+        {
+            return TopLevelWildcardFilter(null, name, resources);
+        }
+
+        private bool HasProperty<T>(string property)
+        {
+            return typeof(T).GetProperty(property) != null;
+        }
+
+        private object GetPropertyValue<T>(T resource, string property)
+        {
+            System.Reflection.PropertyInfo pi = typeof(T).GetProperty(property);
+            if (pi != null)
+            {
+                return pi.GetValue(resource, null);
+            }
+
+            return null;
+        }
+
+        private bool IsMatch<T>(T resource, string property, WildcardPattern pattern)
+        {
+            var value = (string)GetPropertyValue(resource, property);
+            return !string.IsNullOrEmpty(value) && pattern.IsMatch(value);
+        }
+
+        public bool ShouldListBySubscription(string resourceGroupName, string name)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                return true;
+            }
+            else if (WildcardPattern.ContainsWildcardCharacters(resourceGroupName))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool ShouldListByResourceGroup(string resourceGroupName, string name)
+        {
+            if (!string.IsNullOrEmpty(resourceGroupName) && !WildcardPattern.ContainsWildcardCharacters(resourceGroupName))
+            {
+                if (string.IsNullOrEmpty(name) || WildcardPattern.ContainsWildcardCharacters(name))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool ShouldGetByName(string resourceGroupName, string name)
+        {
+            if (!string.IsNullOrEmpty(resourceGroupName) && !WildcardPattern.ContainsWildcardCharacters(resourceGroupName))
+            {
+                if (!string.IsNullOrEmpty(name) && !WildcardPattern.ContainsWildcardCharacters(name))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }
