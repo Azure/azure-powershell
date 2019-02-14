@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the storage synchronize service.
+        /// Gets or sets the name of the storage sync service.
         /// </summary>
-        /// <value>The name of the storage synchronize service.</value>
+        /// <value>The name of the storage sync service.</value>
         [Parameter(
            Position = 1,
            ParameterSetName =StorageSyncParameterSets.StringParameterSet,
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// </summary>
         /// <param name="resourceGroupName">Name of the resource group.</param>
         /// <param name="subscriptionId">The subscription identifier.</param>
-        /// <param name="storageSyncServiceName">Name of the storage synchronize service.</param>
+        /// <param name="storageSyncServiceName">Name of the storage sync service.</param>
         /// <returns>RegisteredServer.</returns>
         /// <exception cref="PSArgumentException">AfsAgentInstallerPath</exception>
         private RegisteredServer PerformServerRegistration(string resourceGroupName, Guid subscriptionId, string storageSyncServiceName)
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// Creates the registered resource in cloud.
         /// </summary>
         /// <param name="resourceGroupName">Name of the resource group.</param>
-        /// <param name="storageSyncServiceName">Name of the storage synchronize service.</param>
+        /// <param name="storageSyncServiceName">Name of the storage sync service.</param>
         /// <param name="serverRegistrationData">The server registration data.</param>
         /// <returns>RegisteredServer.</returns>
         private RegisteredServer CreateRegisteredResourceInCloud(string resourceGroupName, string storageSyncServiceName,ServerRegistrationData serverRegistrationData)

@@ -22,14 +22,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
     public class PSServerEndpoint : PSResourceBase
     {
         /// <summary>
-        /// Gets or sets the name of the synchronize group.
+        /// Gets or sets the name of the sync group.
         /// </summary>
-        /// <value>The name of the synchronize group.</value>
+        /// <value>The name of the sync group.</value>
         public string SyncGroupName { get; set; }
         /// <summary>
-        /// Gets or sets the name of the storage synchronize service.
+        /// Gets or sets the name of the storage sync service.
         /// </summary>
-        /// <value>The name of the storage synchronize service.</value>
+        /// <value>The name of the storage sync service.</value>
         public string StorageSyncServiceName { get; set; }
         /// <summary>
         /// Gets or sets the server local path.
@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// <value>The name of the friendly.</value>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Gets or sets the synchronize status.
+        /// Gets or sets the sync status.
         /// </summary>
-        /// <value>The synchronize status.</value>
+        /// <value>The sync status.</value>
         public PSServerEndpointHealth SyncStatus { get; set; }
         /// <summary>
         /// Gets or sets the cloud tiering.

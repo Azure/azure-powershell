@@ -31,11 +31,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public const string ParentNameAlias = "ParentName";
         /// <summary>
-        /// The storage synchronize service name alias
+        /// The storage sync service name alias
         /// </summary>
         public const string StorageSyncServiceNameAlias = "StorageSyncServiceName";
         /// <summary>
-        /// The synchronize group name alias
+        /// The sync group name alias
         /// </summary>
         public const string SyncGroupNameAlias = "SyncGroupName";
         /// <summary>
@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public const string ServerEndpointNameAlias = "ServerEndpointName";
         /// <summary>
-        /// The storage synchronize service alias
+        /// The storage sync service alias
         /// </summary>
         public const string StorageSyncServiceAlias = "StorageSyncService";
         /// <summary>
-        /// The synchronize group alias
+        /// The sync group alias
         /// </summary>
         public const string SyncGroupAlias = "SyncGroup";
         /// <summary>
@@ -79,11 +79,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public const string ServerEndpointAlias = "ServerEndpoint";
         /// <summary>
-        /// The storage synchronize service identifier alias
+        /// The storage sync service identifier alias
         /// </summary>
         public const string StorageSyncServiceIdAlias = "StorageSyncServiceId";
         /// <summary>
-        /// The synchronize group identifier alias
+        /// The sync group identifier alias
         /// </summary>
         public const string SyncGroupIdAlias = "SyncGroupId";
         /// <summary>

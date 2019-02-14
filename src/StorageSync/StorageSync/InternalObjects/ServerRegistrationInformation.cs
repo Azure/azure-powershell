@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Commands.StorageSync.InternalObjects
         /// </summary>
         /// <param name="subscriptionId">The subscription identifier.</param>
         /// <param name="resourceGroupName">Name of the resource group.</param>
-        /// <param name="storageSyncServiceName">Name of the storage synchronize service.</param>
-        /// <param name="storageSyncServiceUid">The storage synchronize service uid.</param>
+        /// <param name="storageSyncServiceName">Name of the storage sync service.</param>
+        /// <param name="storageSyncServiceUid">The storage sync service uid.</param>
         /// <param name="clusterName">Name of the cluster.</param>
         /// <param name="clusterId">The cluster identifier.</param>
         /// <param name="monitoringConfiguration">The monitoring configuration.</param>
@@ -102,9 +102,9 @@ namespace Microsoft.Azure.Commands.StorageSync.InternalObjects
         }
 
         /// <summary>
-        /// Gets or sets the name of the storage synchronize service.
+        /// Gets or sets the name of the storage sync service.
         /// </summary>
-        /// <value>The name of the storage synchronize service.</value>
+        /// <value>The name of the storage sync service.</value>
         [JsonProperty(PropertyName = "storageSyncServiceName", Required = Required.Default)]
         public string StorageSyncServiceName
         {
@@ -168,9 +168,9 @@ namespace Microsoft.Azure.Commands.StorageSync.InternalObjects
         }
 
         /// <summary>
-        /// Gets or sets the storage synchronize service uid.
+        /// Gets or sets the storage sync service uid.
         /// </summary>
-        /// <value>The storage synchronize service uid.</value>
+        /// <value>The storage sync service uid.</value>
         [JsonProperty(PropertyName = "storageSyncServiceUid", Required = Required.Default)]
         public Guid StorageSyncServiceUid
         {

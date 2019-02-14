@@ -36,11 +36,11 @@ namespace Commands.StorageSync.Interop.Enums
         /// </summary>
         MonitoringDataPathIsInvalid,
         /// <summary>
-        /// The register synchronize server error
+        /// The register sync server error
         /// </summary>
         RegisterSyncServerError,
         /// <summary>
-        /// The get synchronize server certificate error
+        /// The get sync server certificate error
         /// </summary>
         GetSyncServerCertificateError,
         /// <summary>
@@ -72,19 +72,19 @@ namespace Commands.StorageSync.Interop.Enums
         /// </summary>
         ServiceEndpointIsNotSet,
         /// <summary>
-        /// The validate synchronize server failed
+        /// The validate sync server failed
         /// </summary>
         ValidateSyncServerFailed,
         /// <summary>
-        /// The ensure synchronize server certificate failed
+        /// The ensure sync server certificate failed
         /// </summary>
         EnsureSyncServerCertificateFailed,
         /// <summary>
-        /// The get synchronize server certificate failed
+        /// The get sync server certificate failed
         /// </summary>
         GetSyncServerCertificateFailed,
         /// <summary>
-        /// The get synchronize server identifier failed
+        /// The get sync server identifier failed
         /// </summary>
         GetSyncServerIdFailed,
         /// <summary>
@@ -92,19 +92,19 @@ namespace Commands.StorageSync.Interop.Enums
         /// </summary>
         GetClusterInfoFailed,
         /// <summary>
-        /// The persist synchronize server registration failed
+        /// The persist sync server registration failed
         /// </summary>
         PersistSyncServerRegistrationFailed,
         /// <summary>
-        /// The register online synchronize registration failed
+        /// The register online sync registration failed
         /// </summary>
         RegisterOnlineSyncRegistrationFailed,
         /// <summary>
-        /// The process synchronize registration failed
+        /// The process sync registration failed
         /// </summary>
         ProcessSyncRegistrationFailed,
         /// <summary>
-        /// The synchronize server already exists
+        /// The sync server already exists
         /// </summary>
         SyncServerAlreadyExists,
         /// <summary>
@@ -112,11 +112,11 @@ namespace Commands.StorageSync.Interop.Enums
         /// </summary>
         RegisterMonitoringAgentFailed,
         /// <summary>
-        /// The register synchronize server access denied
+        /// The register sync server access denied
         /// </summary>
         RegisterSyncServerAccessDenied,
         /// <summary>
-        /// The synchronize server not found
+        /// The sync server not found
         /// </summary>
         SyncServerNotFound,
 

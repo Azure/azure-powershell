@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters
     public class StorageSyncServiceCompleterAttribute : ArgumentCompleterAttribute
     {
         /// <summary>
-        /// The storage synchronize service names dictionary
+        /// The storage sync service names dictionary
         /// </summary>
         private static IDictionary<int, IList<String>> _storageSyncServiceNamesDictionary = new ConcurrentDictionary<int, IList<string>>();
         /// <summary>
@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters
         public static int _timeout = 3;
 
         /// <summary>
-        /// Gets the storage synchronize service names.
+        /// Gets the storage sync service names.
         /// </summary>
-        /// <value>The storage synchronize service names.</value>
+        /// <value>The storage sync service names.</value>
         protected static IList<String> StorageSyncServiceNames
         {
             get
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters
         }
 
         /// <summary>
-        /// Gets the storage synchronize services.
+        /// Gets the storage sync services.
         /// </summary>
         /// <param name="timeout">The timeout.</param>
         /// <returns>System.String[].</returns>
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters
         }
 
         /// <summary>
-        /// Gets the storage synchronize services.
+        /// Gets the storage sync services.
         /// </summary>
         /// <returns>System.String[].</returns>
         public static string[] GetStorageSyncServices()
@@ -138,10 +138,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters
         }
 
         /// <summary>
-        /// Gets the storage synchronize services.
+        /// Gets the storage sync services.
         /// </summary>
-        /// <param name="storageSyncServiceNames">The storage synchronize service names.</param>
-        /// <param name="defaultStorageSyncService">The default storage synchronize service.</param>
+        /// <param name="storageSyncServiceNames">The storage sync service names.</param>
+        /// <param name="defaultStorageSyncService">The default storage sync service.</param>
         /// <returns>System.String[].</returns>
         public static string[] GetStorageSyncServices(IList<string> storageSyncServiceNames, string defaultStorageSyncService)
         {
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters
         }
 
         /// <summary>
-        /// Creates the storage synchronize service list.
+        /// Creates the storage sync service list.
         /// </summary>
         /// <param name="result">The result.</param>
         /// <returns>List&lt;System.String&gt;.</returns>
