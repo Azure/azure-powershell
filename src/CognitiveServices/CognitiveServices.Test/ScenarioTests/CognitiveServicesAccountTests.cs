@@ -125,13 +125,7 @@ namespace CognitiveServices.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-MinMaxAccountName");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetWithPaging()
-        {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetWithPaging");
-        }
+        
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
