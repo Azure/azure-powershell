@@ -14,11 +14,12 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
-using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
+
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
             ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
         [ValidateNotNullOrEmpty]
-        [StorageSyncServiceCompleter]
+        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices", "ResourceGroupName")]
         [Alias(StorageSyncAliases.StorageSyncServiceNameAlias)]
         public string Name { get; set; }
 
@@ -122,13 +123,13 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                 var resourceGroupName = default(string);
 
                 // Handle ResourceId Parameter Set
-                if (!string.IsNullOrEmpty(ResourceId))
+                if (this.IsParameterBound(c => c.ResourceId))
                 {
                     var resourceIdentifier = new ResourceIdentifier(ResourceId);
                     resourceName = resourceIdentifier.ResourceName;
                     resourceGroupName = resourceIdentifier.ResourceGroupName;
                 }
-                else if (InputObject != null)
+                else if (this.IsParameterBound(c => c.InputObject))
                 {
                     resourceName = InputObject.StorageSyncServiceName;
                     resourceGroupName = InputObject.ResourceGroupName;

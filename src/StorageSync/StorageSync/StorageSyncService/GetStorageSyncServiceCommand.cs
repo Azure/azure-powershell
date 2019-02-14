@@ -14,9 +14,9 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
-using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
+
 using Microsoft.Azure.Commands.StorageSync.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.StorageSync;
 using System.Management.Automation;
 
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
         [ValidateNotNullOrEmpty]
-        [StorageSyncServiceCompleter]
+        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices", "ResourceGroupName")]
         [Alias(StorageSyncAliases.StorageSyncServiceNameAlias)]
         public string Name { get; set; }
 
@@ -74,11 +74,11 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
 
             ExecuteClientAction(() =>
             {
-                    if (string.IsNullOrEmpty(ResourceGroupName))
+                    if (!this.IsParameterBound(c => c.ResourceGroupName))
                     {
                         WriteObject(StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.ListBySubscription());
                     }
-                    else if (string.IsNullOrEmpty(Name))
+                    else if (!this.IsParameterBound(c => c.Name))
                     {
                         WriteObject(StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.ListByResourceGroup(ResourceGroupName));
                     }
