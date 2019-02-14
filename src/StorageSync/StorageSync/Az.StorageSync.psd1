@@ -57,7 +57,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.0'; })
 RequiredAssemblies = '.\Microsoft.Azure.Management.StorageSync.dll', 
                '.\Microsoft.Win32.Registry.dll', 
                '.\System.Management.dll',
-               '.\System.CodeDom.dll'
+               '.\System.CodeDom.dll', 
                '.\Microsoft.ApplicationInsights.dll', 
                '.\Microsoft.Azure.PowerShell.Clients.Aks.dll', 
                '.\Microsoft.Azure.PowerShell.Clients.Compute.dll', 
