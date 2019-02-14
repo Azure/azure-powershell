@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
 
     [Cmdlet(VerbsLifecycle.Register, StorageSyncNouns.NounAzureRmStorageSyncServer,
-        DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSRegisteredServer))]
+        DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSRegisteredServer))]
     public class RegisterServerCommand : StorageSyncClientCmdletBase
     {
         [Parameter(
@@ -87,61 +87,50 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Target, ActionMessage))
+            base.ExecuteCmdlet();
+            ExecuteClientAction(() =>
             {
-                base.ExecuteCmdlet();
+                var parentResourceIdentifier = default(ResourceIdentifier);
 
-                ExecuteClientAction(() =>
+                if (!string.IsNullOrEmpty(ParentResourceId))
                 {
-                    var parentResourceIdentifier = default(ResourceIdentifier);
+                    parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
 
-                    if (!string.IsNullOrEmpty(ParentResourceId))
+                    if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
                     {
-                        parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
-
-                        if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
-                        {
-                            throw new PSArgumentException($"Invalid Argument {nameof(ParentResourceId)}", nameof(ParentResourceId));
-                        }
+                        throw new PSArgumentException(nameof(ParentResourceId));
                     }
+                }
 
-                    var resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier?.ResourceGroupName;
+                var resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier?.ResourceGroupName;
 
-                    if (string.IsNullOrEmpty(resourceGroupName))
-                    {
-                        throw new PSArgumentException($"Invalid Argument {nameof(ResourceGroupName)}", nameof(ResourceGroupName));
-                    }
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    throw new PSArgumentException(nameof(ResourceGroupName));
+                }
 
-                    var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
+                var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
 
-                    if (string.IsNullOrEmpty(parentResourceName))
-                    {
-                        throw new PSArgumentException($"Invalid Argument {nameof(StorageSyncServiceName)}", nameof(StorageSyncServiceName));
-                    }
+                if (string.IsNullOrEmpty(parentResourceName))
+                {
+                    throw new PSArgumentException(nameof(StorageSyncServiceName));
+                }
 
-                    if (!SubscriptionId.HasValue)
-                    {
-                        throw new PSArgumentException("No subscription found", nameof(SubscriptionId));
-                    }
-
-                    RegisteredServer resource = PerformServerRegistration(resourceGroupName, SubscriptionId.Value, parentResourceName);
-
+                if (ShouldProcess(Target, ActionMessage))
+                {
+                    RegisteredServer resource = PerformServerRegistration(resourceGroupName, SubscriptionId, parentResourceName);
                     WriteObject(resource);
-                });
-            }
+                }
+            });
         }
+
         private RegisteredServer PerformServerRegistration(string resourceGroupName, Guid subscriptionId, string storageSyncServiceName)
         {
-            if (subscriptionId == null)
-            {
-                throw new PSArgumentException("No subscription found");
-            }
-
             using (ISyncServerRegistration syncServerRegistrationClient = InteropClientFactory.CreateSyncServerRegistrationClient(InteropClientFactory.CreateEcsManagement(IsPlaybackMode)))
             {
                 if(string.IsNullOrEmpty(StorageSyncClientWrapper.AfsAgentInstallerPath))
                 {
-                    throw new PSArgumentException("No Afs Agent Installer path found.");
+                    throw new PSArgumentException(nameof(StorageSyncClientWrapper.AfsAgentInstallerPath));
                 }
 
                 return syncServerRegistrationClient.Register(

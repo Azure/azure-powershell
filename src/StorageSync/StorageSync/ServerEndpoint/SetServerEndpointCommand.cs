@@ -26,7 +26,7 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
     [Cmdlet(VerbsCommon.Set, StorageSyncNouns.NounAzureRmStorageSyncServerEndpoint,
-        DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServerEndpoint))]
+        DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServerEndpoint))]
     public class SetServerEndpointCommand : StorageSyncClientCmdletBase
     {
         [Parameter(
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
            ValueFromPipeline = true,
            HelpMessage = HelpMessages.SyncGroupObjectParameter)]
         [Alias(StorageSyncAliases.RegisteredServerAlias)]
-        public PSServerEndpoint InputObject{ get; set; }
+        public PSServerEndpoint InputObject { get; set; }
 
         [Parameter(
           Mandatory = false,
@@ -124,50 +124,49 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Target, ActionMessage))
+            base.ExecuteCmdlet();
+
+            ExecuteClientAction(() =>
             {
-                base.ExecuteCmdlet();
+                var resourceName = default(string);
+                var resourceGroupName = default(string);
+                var storageSyncServiceName = default(string);
+                var parentResourceName = default(string);
 
-                ExecuteClientAction(() =>
+                if (!string.IsNullOrEmpty(ResourceId))
                 {
-                    var resourceName = default(string);
-                    var resourceGroupName = default(string);
-                    var storageSyncServiceName = default(string);
-                    var parentResourceName = default(string);
+                    var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                    resourceName = resourceIdentifier.ResourceName;
+                    resourceGroupName = resourceIdentifier.ResourceGroupName;
+                    parentResourceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.SyncGroupTypeName, 0);
+                    storageSyncServiceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 1);
+                }
+                else if (InputObject != null)
+                {
+                    resourceName = InputObject.ServerEndpointName;
+                    resourceGroupName = InputObject.ResourceGroupName;
+                    parentResourceName = InputObject.SyncGroupName;
+                    storageSyncServiceName = InputObject.StorageSyncServiceName;
+                }
+                else
+                {
+                    resourceName = Name;
+                    resourceGroupName = ResourceGroupName;
+                    parentResourceName = SyncGroupName;
+                    storageSyncServiceName = StorageSyncServiceName;
+                }
 
-                    if (!string.IsNullOrEmpty(ResourceId))
-                    {
-                        var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                        resourceName = resourceIdentifier.ResourceName;
-                        resourceGroupName = resourceIdentifier.ResourceGroupName;
-                        parentResourceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.SyncGroupTypeName, 0);
-                        storageSyncServiceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 1);
-                    }
-                    else if (InputObject != null)
-                    {
-                        resourceName = InputObject.ServerEndpointName;
-                        resourceGroupName = InputObject.ResourceGroupName;
-                        parentResourceName = InputObject.SyncGroupName;
-                        storageSyncServiceName = InputObject.StorageSyncServiceName;
-                    }
-                    else
-                    {
-                        resourceName = Name;
-                        resourceGroupName = ResourceGroupName;
-                        parentResourceName = SyncGroupName;
-                        storageSyncServiceName = StorageSyncServiceName;
-                    }
-
-                    var updateParameters = new ServerEndpointUpdateParameters()
-                    {
-                        CloudTiering = CloudTiering.IsPresent ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
-                        VolumeFreeSpacePercent = VolumeFreeSpacePercent,
-                        TierFilesOlderThanDays = TierFilesOlderThanDays,
-                    // TODO : Update once we update SDK from v4 to v5
-                    //CloudSeededData = CloudSeededData.IsPresent ? "on" : "off"
-                    //CloudSeededDataFileShareUri = CloudSeededDataFileShareUri
-                };
-
+                var updateParameters = new ServerEndpointUpdateParameters()
+                {
+                    CloudTiering = CloudTiering.IsPresent ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
+                    VolumeFreeSpacePercent = VolumeFreeSpacePercent,
+                    TierFilesOlderThanDays = TierFilesOlderThanDays,
+                        // TODO : Update once we update SDK from v4 to v5
+                        //CloudSeededData = CloudSeededData.IsPresent ? "on" : "off"
+                        //CloudSeededDataFileShareUri = CloudSeededDataFileShareUri
+                    };
+                if (ShouldProcess(Target, ActionMessage))
+                {
                     StorageSyncModels.ServerEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.Update(
                         resourceGroupName,
                         storageSyncServiceName,
@@ -176,8 +175,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                         updateParameters);
 
                     WriteObject(resource);
-                });
-            }
+                }
+            });
         }
     }
 }

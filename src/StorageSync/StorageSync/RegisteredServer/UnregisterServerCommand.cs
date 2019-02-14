@@ -24,7 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
-    [Cmdlet(VerbsLifecycle.Unregister, StorageSyncNouns.NounAzureRmStorageSyncServer, DefaultParameterSetName = StorageSyncParameterSets.InputObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Unregister, StorageSyncNouns.NounAzureRmStorageSyncServer, DefaultParameterSetName = StorageSyncParameterSets.InputObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class UnregisterServerCommand : StorageSyncClientCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -123,11 +123,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                 if (string.IsNullOrEmpty(resourceGroupName))
                 {
-                    throw new PSArgumentException($"Invalid Argument {nameof(ResourceGroupName)}", nameof(ResourceGroupName));
+                    throw new PSArgumentException(nameof(ResourceGroupName));
                 }
                 else if (string.IsNullOrEmpty(parentResourceName))
                 {
-                    throw new PSArgumentException($"Invalid Argument {nameof(StorageSyncServiceName)}", nameof(StorageSyncServiceName));
+                    throw new PSArgumentException(nameof(StorageSyncServiceName));
                 }
                 else if (string.IsNullOrEmpty(resourceName))
                 {

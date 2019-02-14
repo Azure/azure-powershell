@@ -277,7 +277,7 @@ namespace Commands.StorageSync.Interop.Clients
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.PersistSyncServerRegistrationFailed, hr, ErrorCategory.InvalidResult);
             }
 
-            var monitoringConfiguration = ResourcePropertyConversionUtils.DeserializeValue<HybridMonitoringConfigurationResource>(registeredServerResource.MonitoringConfiguration);
+            var monitoringConfiguration = JsonConvert.DeserializeObject<HybridMonitoringConfigurationResource>(registeredServerResource.MonitoringConfiguration);
             var registrationInfo = new ServerRegistrationInformation(
                 serviceEndpoint: registeredServerResource.ManagementEndpointUri,
                 subscriptionId: subscriptionId,
@@ -293,7 +293,7 @@ namespace Commands.StorageSync.Interop.Clients
  
             // We try to register monitoring agent but do not gurantee it to succeed.
             hr = EcsManagementInteropClient.RegisterMonitoringAgent(
-               registrationInfo.ToJson(),
+               JsonConvert.SerializeObject(registrationInfo),
                 monitoringDataPath);
             success = hr == 0;
 

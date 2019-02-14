@@ -18,44 +18,24 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
     {
         public string StorageSyncServiceName { get; internal set; }
         public string ServerName { get; internal set; }
-
         public string ServerCertificate { get; set; }
-
         public string AgentVersion { get; set; }
-
         public string ServerOSVersion { get; set; }
-
         public int? ServerManagementtErrorCode { get; set; }
-
         public string LastHeartBeat { get; set; }
-
         public string ProvisioningState { get; set; }
-
         public string ServerRole { get; set; }
-
         public string ClusterId { get; set; }
-
         public string ClusterName { get; set; }
-
         public string ServerId { get; set; }
-
         public string StorageSyncServiceUid { get; set; }
-
         public string LastWorkflowId { get; set; }
-
         public string LastOperationName { get; set; }
-
         public string DiscoveryEndpointUri { get; set; }
-
         public string ResourceLocation { get; set; }
-
         public string ServiceLocation { get; set; }
-
         public string FriendlyName { get; set; }
-
         public string ManagementEndpointUri { get; set; }
-
         public string MonitoringConfiguration { get; set; }
-
     }
 }

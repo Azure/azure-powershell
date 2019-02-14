@@ -20,10 +20,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
     {
         [Ps1Xml(Label = "ResourceId", Target = ViewControl.Table, Position = 0)]
         public string ResourceId { get; set; }
-
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
         public string ResourceGroupName{ get; set; }
-
         public string Type { get; set; }
 
         internal protected PSResourceBase()

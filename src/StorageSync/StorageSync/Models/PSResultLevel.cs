@@ -12,18 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-
-namespace Microsoft.Azure.Commands.StorageSync.Models
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
 {
-    public class PSSyncSessionStatus
+    public enum PSResultLevel
     {
-        public int? LastSyncResult { get; set; }
-
-        public DateTime? LastSyncTimestamp { get; set; }
-
-        public DateTime? LastSyncSuccessTimestamp { get; set; }
-
-        public int? LastSyncPerItemErrorCount { get; set; }
+        Error,
+        Warning,
+        Info
     }
 }

@@ -50,6 +50,7 @@ function Test-CloudEndpoint
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
         Write-Verbose "Resource: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
+        #TODO : Optimized the pattern to common code
         if(IsLive)
         {
             $azureFileShare = New-AzureStorageShare -Name $StorageAccountShareName -Context $context

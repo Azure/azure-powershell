@@ -13,21 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
-using System.Collections;
 using System.Management.Automation;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
 {
 
-    [Cmdlet(VerbsCommon.New, StorageSyncNouns.NounAzureRmStorageSyncGroup, DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSyncGroup))]
+    [Cmdlet(VerbsCommon.New, StorageSyncNouns.NounAzureRmStorageSyncGroup, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSyncGroup))]
     public class NewSyncGroupCommand : StorageSyncClientCmdletBase
     {
         [Parameter(
@@ -42,7 +40,7 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
 
         [Parameter(
            Position = 1,
-           ParameterSetName =StorageSyncParameterSets.StringParameterSet,
+           ParameterSetName = StorageSyncParameterSets.StringParameterSet,
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
@@ -85,42 +83,41 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Target, ActionMessage))
+            base.ExecuteCmdlet();
+
+            ExecuteClientAction(() =>
             {
-                base.ExecuteCmdlet();
+                var parentResourceIdentifier = default(ResourceIdentifier);
 
-                ExecuteClientAction(() =>
+                if (!string.IsNullOrEmpty(ParentResourceId))
                 {
-                    var parentResourceIdentifier = default(ResourceIdentifier);
+                    parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
 
-                    if (!string.IsNullOrEmpty(ParentResourceId))
+                    if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
                     {
-                        parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
-
-                        if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
-                        {
-                            throw new PSArgumentException($"Invalid Argument {nameof(ParentResourceId)}", nameof(ParentResourceId));
-                        }
+                        throw new PSArgumentException(nameof(ParentResourceId));
                     }
+                }
 
-                    var resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier?.ResourceGroupName;
+                var resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier?.ResourceGroupName;
 
-                    if (string.IsNullOrEmpty(resourceGroupName))
-                    {
-                        throw new PSArgumentException($"Invalid Argument {nameof(ResourceGroupName)}", nameof(ResourceGroupName));
-                    }
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    throw new PSArgumentException(nameof(ResourceGroupName));
+                }
 
-                    var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
+                var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
 
-                    if (string.IsNullOrEmpty(parentResourceName))
-                    {
-                        throw new PSArgumentException($"Invalid Argument {nameof(StorageSyncServiceName)}", nameof(StorageSyncServiceName));
-                    }
+                if (string.IsNullOrEmpty(parentResourceName))
+                {
+                    throw new PSArgumentException(nameof(StorageSyncServiceName));
+                }
 
-                    var createParameters = new SyncGroupCreateParameters()
-                    {
-                    };
-
+                var createParameters = new SyncGroupCreateParameters()
+                {
+                };
+                if (ShouldProcess(Target, ActionMessage))
+                {
                     StorageSyncModels.SyncGroup syncGroup = StorageSyncClientWrapper.StorageSyncManagementClient.SyncGroups.Create(
                         resourceGroupName,
                         parentResourceName,
@@ -128,8 +125,8 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
                         createParameters);
 
                     WriteObject(syncGroup);
-                });
-            }
+                }
+            });
         }
     }
 }

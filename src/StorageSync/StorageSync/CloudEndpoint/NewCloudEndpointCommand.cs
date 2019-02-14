@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
 {
 
     [Cmdlet(VerbsCommon.New, StorageSyncNouns.NounAzureRmStorageSyncCloudEndpoint,
-        DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSCloudEndpoint))]
+        DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSCloudEndpoint))]
     public class NewCloudEndpointCommand : StorageSyncClientCmdletBase
     {
         [Parameter(
@@ -126,68 +126,74 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            ExecuteClientAction(() =>
+            if (ShouldProcess(Target, ActionMessage))
             {
+                base.ExecuteCmdlet();
+
+                ExecuteClientAction(() =>
+                {
                 // Validate Storage Account Resource Id
                 var storageAccountResourceIdentifier = new ResourceIdentifier(StorageAccountResourceId);
 
-                if (string.IsNullOrEmpty(storageAccountResourceIdentifier?.ResourceName))
-                {
-                    throw new ArgumentException($"Invalid resource ID format: {StorageAccountResourceId}");
-                }
-
-                if (!IsPlaybackMode)
-                {
-                    PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
-
-                    if (servicePrincipal == null)
+                    if (string.IsNullOrEmpty(storageAccountResourceIdentifier?.ResourceName))
                     {
-                        throw new PSArgumentException("Invalid Service Principal");
+                        throw new PSArgumentException(nameof(StorageAccountResourceId));
                     }
 
-                    RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, StorageAccountResourceId);
-
-                    if (roleAssignment == null)
+                    if (!IsPlaybackMode)
                     {
-                        throw new PSArgumentException("Invalid Role Assignment");
+                        PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
+
+                        if (servicePrincipal == null)
+                        {
+                            throw new PSArgumentException(nameof(servicePrincipal));
+                        }
+
+                        RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, StorageAccountResourceId);
+
+                        if (roleAssignment == null)
+                        {
+                            throw new PSArgumentException(nameof(roleAssignment));
+                        }
                     }
-                }
 
-                var parentResourceIdentifier = default(ResourceIdentifier);
+                    var parentResourceIdentifier = default(ResourceIdentifier);
 
-                if (!string.IsNullOrEmpty(ParentResourceId))
-                {
-                    parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
-
-                    if (!string.Equals(StorageSyncConstants.SyncGroupType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
+                    if (!string.IsNullOrEmpty(ParentResourceId))
                     {
-                        throw new PSArgumentException($"Invalid Argument {nameof(ParentResourceId)}", nameof(ParentResourceId));
+                        parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
+
+                        if (!string.Equals(StorageSyncConstants.SyncGroupType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
+                        {
+                            throw new PSArgumentException(nameof(ParentResourceId));
+                        }
                     }
-                }
 
-                var createParameters = new CloudEndpointCreateParameters()
-                {
-                    StorageAccountResourceId = StorageAccountResourceId,
-                    StorageAccountShareName = StorageAccountShareName,
-                    StorageAccountTenantId = "\"" + (StorageAccountTenantId ?? StorageSyncClientWrapper.AzureContext.Tenant.Id) + "\""
-                };
+                    var createParameters = new CloudEndpointCreateParameters()
+                    {
+                        StorageAccountResourceId = StorageAccountResourceId,
+                        StorageAccountShareName = StorageAccountShareName,
+                        StorageAccountTenantId = (StorageAccountTenantId ?? DefaultContext.Tenant?.Id)
+                    };
 
-                if (string.IsNullOrEmpty(createParameters.StorageAccountTenantId))
-                {
-                    throw new PSArgumentException($"Invalid Argument {nameof(StorageAccountTenantId)}", nameof(StorageAccountTenantId));
-                }
+                    if (string.IsNullOrEmpty(createParameters.StorageAccountTenantId))
+                    {
+                        throw new PSArgumentException(nameof(createParameters.StorageAccountTenantId));
+                    }
 
-                StorageSyncModels.CloudEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.Create(
-                    ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName,
-                    StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0),
-                    SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName,
-                    Name,
-                    createParameters);
+                // TODO : Remove when we record next.
+                createParameters.StorageAccountTenantId = "\"" + createParameters.StorageAccountTenantId + "\"";
 
-                WriteObject(resource);
-            });
+                    StorageSyncModels.CloudEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.Create(
+                        ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName,
+                        StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0),
+                        SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName,
+                        Name,
+                        createParameters);
+
+                    WriteObject(resource);
+                });
+            }
         }
     }
 }

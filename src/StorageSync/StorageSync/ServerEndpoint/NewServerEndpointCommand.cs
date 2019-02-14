@@ -26,7 +26,7 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
     [Cmdlet(VerbsCommon.New, StorageSyncNouns.NounAzureRmStorageSyncServerEndpoint,
-        DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServerEndpoint))]
+        DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServerEndpoint))]
     public class NewServerEndpointCommand : StorageSyncClientCmdletBase
     {
         [Parameter(
@@ -140,33 +140,33 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Target, ActionMessage))
+
+            base.ExecuteCmdlet();
+
+            ExecuteClientAction(() =>
             {
-                base.ExecuteCmdlet();
+                var parentResourceIdentifier = default(ResourceIdentifier);
 
-                ExecuteClientAction(() =>
+                if (!string.IsNullOrEmpty(ParentResourceId))
                 {
-                    var parentResourceIdentifier = default(ResourceIdentifier);
+                    parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
 
-                    if (!string.IsNullOrEmpty(ParentResourceId))
+                    if (!string.Equals(StorageSyncConstants.SyncGroupType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
                     {
-                        parentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
-
-                        if (!string.Equals(StorageSyncConstants.SyncGroupType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
-                        {
-                            throw new PSArgumentException($"Invalid Argument {nameof(ParentResourceId)}", nameof(ParentResourceId));
-                        }
+                        throw new PSArgumentException(nameof(ParentResourceId));
                     }
+                }
 
-                    var createParameters = new ServerEndpointCreateParameters()
-                    {
-                        CloudTiering = CloudTiering.IsPresent ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
-                        VolumeFreeSpacePercent = VolumeFreeSpacePercent,
-                        ServerLocalPath = ServerLocalPath,
-                        ServerResourceId = ServerResourceId
-                    };
-
-                    StorageSyncModels.ServerEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.Create(
+                var createParameters = new ServerEndpointCreateParameters()
+                {
+                    CloudTiering = CloudTiering.IsPresent ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
+                    VolumeFreeSpacePercent = VolumeFreeSpacePercent,
+                    ServerLocalPath = ServerLocalPath,
+                    ServerResourceId = ServerResourceId
+                };
+                if (ShouldProcess(Target, ActionMessage))
+                {
+                    ServerEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.Create(
                         ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName,
                         StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0),
                         SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName,
@@ -174,8 +174,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                         createParameters);
 
                     WriteObject(resource);
-                });
-            }
+                }
+            });
         }
     }
 }

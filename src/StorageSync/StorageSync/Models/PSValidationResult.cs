@@ -19,32 +19,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
     using System;
     using System.Collections.Generic;
 
-    public enum PSValidationKind
-    {
-        SystemValidation,
-        NamespaceValidation
-    }
-
-    public enum PSValidationType
-    {
-        FilenameCharacters,
-        Filename,
-        FilenameLength,
-        FileSize,
-        PathLength,
-        NodeDepth,
-        DatasetSize,
-        FileSystem,
-        OsVersion
-    }
-
-    public enum PSResultLevel
-    {
-        Error,
-        Warning,
-        Info
-    }
-
     public class PSValidationResult
     {
         #region Fields and Properties

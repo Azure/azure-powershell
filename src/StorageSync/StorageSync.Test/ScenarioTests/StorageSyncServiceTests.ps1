@@ -43,7 +43,8 @@ function Test-StorageSyncService
         $storageSyncService = Get-AzStorageSyncService -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Verbose
 
         Write-Verbose "List StorageSyncServices by Name"
-        Retry-IfException { $global:storageSyncService = Get-AzStorageSyncService -ResourceGroupName $resourceGroupName  -Name $storageSyncServiceName }
+        #TODO :Remove this line when we record next.
+        Retry-IfException { $global:storageSyncService = Get-AzStorageSyncService -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName }
 
         Write-Verbose "Validating StorageSyncService Properties"
         Assert-AreEqual $storageSyncServiceName $storageSyncService.StorageSyncServiceName

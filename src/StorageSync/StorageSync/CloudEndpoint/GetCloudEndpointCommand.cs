@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
 {
-    [Cmdlet(VerbsCommon.Get, StorageSyncNouns.NounAzureRmStorageSyncCloudEndpoint, DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet), OutputType(typeof(PSCloudEndpoint))]
+    [Cmdlet(VerbsCommon.Get, StorageSyncNouns.NounAzureRmStorageSyncCloudEndpoint, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet), OutputType(typeof(PSCloudEndpoint))]
     public class GetCloudEndpointCommand : StorageSyncClientCmdletBase
     {
         [Parameter(
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
 
                     if (!string.Equals(StorageSyncConstants.SyncGroupType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new PSArgumentException($"Invalid Argument {nameof(ParentResourceId)}", nameof(ParentResourceId));
+                        throw new PSArgumentException(nameof(ParentResourceId));
                     }
                 }
 
@@ -108,16 +108,16 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
 
                 if (string.IsNullOrEmpty(resourceGroupName))
                 {
-                    throw new PSArgumentException($"Invalid Argument {nameof(ResourceGroupName)}", nameof(ResourceGroupName));
+                    throw new PSArgumentException(nameof(ResourceGroupName));
                 }
                 if (string.IsNullOrEmpty(parentResourceName))
                 {
-                    throw new PSArgumentException($"Invalid Argument {nameof(SyncGroupName)}", nameof(SyncGroupName));
+                    throw new PSArgumentException(nameof(SyncGroupName));
                 }
 
                 if (string.IsNullOrEmpty(storageSyncServiceName))
                 {
-                    throw new PSArgumentException($"Invalid Argument {nameof(StorageSyncServiceName)}", nameof(StorageSyncServiceName));
+                    throw new PSArgumentException(nameof(StorageSyncServiceName));
                 }
 
                 if (string.IsNullOrEmpty(Name))

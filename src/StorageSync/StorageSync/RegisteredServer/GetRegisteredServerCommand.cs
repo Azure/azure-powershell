@@ -24,7 +24,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
 
-    [Cmdlet(VerbsCommon.Get, StorageSyncNouns.NounAzureRmStorageSyncServer, DefaultParameterSetName = StorageSyncParameterSets.ObjectParameterSet), OutputType(typeof(PSRegisteredServer))]
+    [Cmdlet(VerbsCommon.Get, StorageSyncNouns.NounAzureRmStorageSyncServer, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet), OutputType(typeof(PSRegisteredServer))]
     public class GetRegisteredServerCommand : StorageSyncClientCmdletBase
     {
         [Parameter(
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                     if (!string.Equals(StorageSyncConstants.StorageSyncServiceType, parentResourceIdentifier.ResourceType, System.StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new PSArgumentException($"Invalid Argument {nameof(ParentResourceId)}", nameof(ParentResourceId));
+                        throw new PSArgumentException(nameof(ParentResourceId));
                     }
                 }
 
@@ -98,14 +98,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                 if (string.IsNullOrEmpty(resourceGroupName))
                 {
-                    throw new PSArgumentException($"Invalid Argument {nameof(ResourceGroupName)}", nameof(ResourceGroupName));
+                    throw new PSArgumentException(nameof(ResourceGroupName));
                 }
 
                 var parentResourceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier?.ResourceName;
 
                 if (string.IsNullOrEmpty(parentResourceName))
                 {
-                    throw new PSArgumentException($"Invalid Argument {nameof(StorageSyncServiceName)}", nameof(StorageSyncServiceName));
+                    throw new PSArgumentException(nameof(StorageSyncServiceName));
                 }
 
                 if (ServerId == Guid.Empty)
