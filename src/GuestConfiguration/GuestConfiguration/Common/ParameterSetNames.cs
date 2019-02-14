@@ -22,6 +22,6 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
         public const string VmNameScope = "VmScope";
         public const string InitiativeNameScope = "InitiativeNameScope";
         public const string InitiativeIdScope = "InitiativeIdScope";
-        public const string ReportIdScope = "ReportIdScope";
+        public const string IdScope = "IdScope";
     }
 }

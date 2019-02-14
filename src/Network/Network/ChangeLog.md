@@ -18,6 +18,8 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+
+## Version 1.2.0
 * Added Cmdlets for Identity on Application Gateway.
     - New cmdlets added:
         - Set-AzApplicationGatewayIdentity

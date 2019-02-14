@@ -54,26 +54,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return psPolicy;
         }
 
-        // <summary>
-        /// Helper function to convert ps log schedule policy from service response.
-        /// </summary>
-        public static LogSchedulePolicy GetPSLogSchedulePolicy(
-            ServiceClientModel.LogSchedulePolicy serviceClientPolicy, string timeZone)
-        {
-            if (serviceClientPolicy == null)
-            {
-                return null;
-            }
-
-            LogSchedulePolicy psPolicy = new LogSchedulePolicy();
-            psPolicy.ScheduleFrequencyInMins = serviceClientPolicy.ScheduleFrequencyInMins;
-
-            // safe side validation
-            psPolicy.Validate();
-
-            return psPolicy;
-        }
-
         #endregion
 
         #region PStoServiceClientObject conversions
@@ -134,19 +114,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
             serviceClientPolicy.ScheduleRunTimes =
                 psPolicy.ScheduleRunTimes.ConvertAll(dateTime => (DateTime?)dateTime);
-            return serviceClientPolicy;
-        }
-
-        public static ServiceClientModel.LogSchedulePolicy GetServiceClientLogSchedulePolicy(
-            LogSchedulePolicy psPolicy)
-        {
-            if (psPolicy == null)
-            {
-                return null;
-            }
-
-            ServiceClientModel.LogSchedulePolicy serviceClientPolicy = new ServiceClientModel.LogSchedulePolicy();
-            serviceClientPolicy.ScheduleFrequencyInMins = psPolicy.ScheduleFrequencyInMins;
             return serviceClientPolicy;
         }
 
