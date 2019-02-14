@@ -19,10 +19,19 @@ namespace Commands.StorageSync.Interop.DataObjects
     using System.Runtime.InteropServices;
 
 
+    /// <summary>
+    /// Struct RecallOutput
+    /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct RecallOutput
     {
+        /// <summary>
+        /// The result
+        /// </summary>
         public RecallResult Result;
+        /// <summary>
+        /// The space claimed in bytes
+        /// </summary>
         public UInt64 SpaceClaimedInBytes;
     }
 }

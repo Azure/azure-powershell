@@ -14,12 +14,30 @@
 
 namespace Commands.StorageSync.Interop.Enums
 {
+    /// <summary>
+    /// Enum ECreationDisposition
+    /// </summary>
     public enum ECreationDisposition : uint
     {
+        /// <summary>
+        /// The new
+        /// </summary>
         New = 1,
+        /// <summary>
+        /// The create always
+        /// </summary>
         CreateAlways = 2,
+        /// <summary>
+        /// The open existing
+        /// </summary>
         OpenExisting = 3,
+        /// <summary>
+        /// The open always
+        /// </summary>
         OpenAlways = 4,
+        /// <summary>
+        /// The truncate existing
+        /// </summary>
         TruncateExisting = 5,
     }
 

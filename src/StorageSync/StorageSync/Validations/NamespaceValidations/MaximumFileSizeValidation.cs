@@ -16,13 +16,25 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 {
     using Interfaces;
 
+    /// <summary>
+    /// Class MaximumFileSizeValidation.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
     public class MaximumFileSizeValidation : NamespaceValidationBase
     {
         #region Fields and Properties
+        /// <summary>
+        /// The maximum file size in bytes
+        /// </summary>
         private readonly long _maxFileSizeInBytes;
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MaximumFileSizeValidation"/> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
         public MaximumFileSizeValidation(IConfiguration configuration): base(configuration, "Files over the size limit", ValidationType.FileSize)
         {
             this._maxFileSizeInBytes = configuration.MaximumFileSizeInBytes();
@@ -30,6 +42,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         #endregion
 
         #region Protected methods
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IFileInfo node)
         {
             bool fileIsTooBig = node.Length > this._maxFileSizeInBytes;

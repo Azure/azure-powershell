@@ -19,24 +19,70 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
     using System.Diagnostics;
     using Interfaces;
 
+    /// <summary>
+    /// Class ProgressReporter.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.IProgressReporter" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.IProgressReporter" />
     internal abstract class ProgressReporter : IProgressReporter
     {
         #region Fields and Properties
+        /// <summary>
+        /// The update frequency
+        /// </summary>
         private readonly TimeSpan _updateFrequency = TimeSpan.FromSeconds(1);
+        /// <summary>
+        /// The timer
+        /// </summary>
         private Stopwatch _timer;
+        /// <summary>
+        /// The steps
+        /// </summary>
         private long _steps;
+        /// <summary>
+        /// The reserve steps
+        /// </summary>
         private long _reserveSteps;
+        /// <summary>
+        /// The completed steps
+        /// </summary>
         private long _completedSteps;
+        /// <summary>
+        /// The last complete percentage
+        /// </summary>
         private int _lastCompletePercentage;
+        /// <summary>
+        /// The cmdlet
+        /// </summary>
         private readonly ICmdlet _cmdlet;
+        /// <summary>
+        /// The with progress bar
+        /// </summary>
         private readonly bool _withProgressBar;
 
+        /// <summary>
+        /// Gets the activity identifier.
+        /// </summary>
+        /// <value>The activity identifier.</value>
         protected abstract int ActivityId { get; }
+        /// <summary>
+        /// Gets the activity description.
+        /// </summary>
+        /// <value>The activity description.</value>
         protected abstract string ActivityDescription { get; }
+        /// <summary>
+        /// Gets the activity status.
+        /// </summary>
+        /// <value>The activity status.</value>
         protected abstract string ActivityStatus { get; }
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProgressReporter"/> class.
+        /// </summary>
+        /// <param name="cmdlet">The cmdlet.</param>
+        /// <param name="withProgressBar">if set to <c>true</c> [with progress bar].</param>
         public ProgressReporter(ICmdlet cmdlet, bool withProgressBar)
         {
             this._steps = 0;
@@ -49,21 +95,36 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         #endregion
 
         #region Public methods
+        /// <summary>
+        /// Adds the steps.
+        /// </summary>
+        /// <param name="steps">The steps.</param>
         public void AddSteps(long steps)
         {
             this._steps += steps;
         }
 
+        /// <summary>
+        /// Reserves the steps.
+        /// </summary>
+        /// <param name="steps">The steps.</param>
         public void ReserveSteps(long steps)
         {
             this._reserveSteps += steps;
         }
 
+        /// <summary>
+        /// Resets the steps.
+        /// </summary>
+        /// <param name="steps">The steps.</param>
         public void ResetSteps(long steps)
         {
             this._steps = steps;
         }
 
+        /// <summary>
+        /// Shows this instance.
+        /// </summary>
         public void Show()
         {
             this._cmdlet.WriteProgress(this.CreateProgressRecord(this._lastCompletePercentage));
@@ -92,6 +153,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             }
         }
 
+        /// <summary>
+        /// Completes this instance.
+        /// </summary>
         public void Complete()
         {
             this._cmdlet.WriteProgress(this.CreateCompletionRecord());
@@ -99,6 +163,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         #endregion
 
         #region Protected methods
+        /// <summary>
+        /// Creates the progress record.
+        /// </summary>
+        /// <param name="percentage">The percentage.</param>
+        /// <returns>ProgressRecord.</returns>
         protected ProgressRecord CreateProgressRecord(int percentage)
         {
             var result = new ProgressRecord(this.ActivityId, this.ActivityDescription, this.ActivityStatus);
@@ -109,6 +178,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             return result;
         }
 
+        /// <summary>
+        /// Creates the completion record.
+        /// </summary>
+        /// <returns>ProgressRecord.</returns>
         protected ProgressRecord CreateCompletionRecord()
         {
             return new ProgressRecord(this.ActivityId, this.ActivityDescription, this.ActivityStatus)
@@ -119,6 +192,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         #endregion
 
         #region Private methods
+        /// <summary>
+        /// Shoulds the update progress.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool ShouldUpdateProgress()
         {
             this._timer.Stop();
@@ -135,34 +212,97 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 
     }
 
+    /// <summary>
+    /// Class NamespaceEstimationProgressReporter.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets.ProgressReporter" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets.ProgressReporter" />
     internal class NamespaceEstimationProgressReporter : ProgressReporter
     {
+        /// <summary>
+        /// Gets the activity identifier.
+        /// </summary>
+        /// <value>The activity identifier.</value>
         protected override int ActivityId => 2;
+        /// <summary>
+        /// Gets the activity description.
+        /// </summary>
+        /// <value>The activity description.</value>
         protected override string ActivityDescription => "Analyzing storage sync compatibility";
+        /// <summary>
+        /// Gets the activity status.
+        /// </summary>
+        /// <value>The activity status.</value>
         protected override string ActivityStatus => "Preparing to run the analysis";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NamespaceEstimationProgressReporter"/> class.
+        /// </summary>
+        /// <param name="cmdlet">The cmdlet.</param>
         public NamespaceEstimationProgressReporter(ICmdlet cmdlet) : base(cmdlet, withProgressBar: false)
         {
         }
     }
 
+    /// <summary>
+    /// Class NamespaceScanProgressReporter.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets.ProgressReporter" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets.ProgressReporter" />
     internal class NamespaceScanProgressReporter : ProgressReporter
     {
+        /// <summary>
+        /// Gets the activity identifier.
+        /// </summary>
+        /// <value>The activity identifier.</value>
         protected override int ActivityId => 0;
+        /// <summary>
+        /// Gets the activity description.
+        /// </summary>
+        /// <value>The activity description.</value>
         protected override string ActivityDescription => "Analyzing storage sync compatibility";
+        /// <summary>
+        /// Gets the activity status.
+        /// </summary>
+        /// <value>The activity status.</value>
         protected override string ActivityStatus => "Scanning files and directories";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NamespaceScanProgressReporter"/> class.
+        /// </summary>
+        /// <param name="cmdlet">The cmdlet.</param>
         public NamespaceScanProgressReporter(ICmdlet cmdlet) : base(cmdlet, withProgressBar: true)
         {
         }
     }
 
+    /// <summary>
+    /// Class SystemCheckProgressReporter.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets.ProgressReporter" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets.ProgressReporter" />
     internal class SystemCheckProgressReporter : ProgressReporter
     {
+        /// <summary>
+        /// Gets the activity identifier.
+        /// </summary>
+        /// <value>The activity identifier.</value>
         protected override int ActivityId => 1;
+        /// <summary>
+        /// Gets the activity description.
+        /// </summary>
+        /// <value>The activity description.</value>
         protected override string ActivityDescription => "Analyzing storage sync compatibility";
+        /// <summary>
+        /// Gets the activity status.
+        /// </summary>
+        /// <value>The activity status.</value>
         protected override string ActivityStatus => "Checking your computer for compatibility issues";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SystemCheckProgressReporter"/> class.
+        /// </summary>
+        /// <param name="cmdlet">The cmdlet.</param>
         public SystemCheckProgressReporter(ICmdlet cmdlet) : base(cmdlet, withProgressBar: true)
         {
         }

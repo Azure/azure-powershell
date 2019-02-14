@@ -23,9 +23,18 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
 {
+    /// <summary>
+    /// Class RemoveSyncGroupCommand.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     [Cmdlet(VerbsCommon.Remove, StorageSyncNouns.NounAzureRmStorageSyncGroup, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveSyncGroupCommand : StorageSyncClientCmdletBase
     {
+        /// <summary>
+        /// Gets or sets the input object.
+        /// </summary>
+        /// <value>The input object.</value>
         [Parameter(Mandatory = true,
                    ParameterSetName = StorageSyncParameterSets.InputObjectParameterSet,
                    Position = 0,
@@ -34,6 +43,10 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
         [ValidateNotNullOrEmpty]
         public PSSyncGroup InputObject { get; set; }
 
+        /// <summary>
+        /// Gets or sets the resource identifier.
+        /// </summary>
+        /// <value>The resource identifier.</value>
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = StorageSyncParameterSets.ResourceIdParameterSet,
@@ -43,6 +56,10 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
         [ResourceIdCompleter(StorageSyncConstants.SyncGroupType)]
         public string ResourceId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the resource group.
+        /// </summary>
+        /// <value>The name of the resource group.</value>
         [Parameter(
            Position = 0,
            Mandatory = true,
@@ -53,6 +70,10 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the storage synchronize service.
+        /// </summary>
+        /// <value>The name of the storage synchronize service.</value>
         [Parameter(
             Position = 1,
             ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -64,6 +85,10 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
         [Alias(StorageSyncAliases.ParentNameAlias)]
         public string StorageSyncServiceName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>The name.</value>
         [Parameter(Position = 2,
             Mandatory = true,
             ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -73,18 +98,33 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
         [Alias(StorageSyncAliases.SyncGroupNameAlias)]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the force.
+        /// </summary>
+        /// <value>The force.</value>
         [Parameter(Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = HelpMessages.SyncGroupForceParameter)]
         public SwitchParameter Force { get; set; }
 
+        /// <summary>
+        /// Gets or sets the pass thru.
+        /// </summary>
+        /// <value>The pass thru.</value>
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
+        /// <summary>
+        /// Gets or sets as job.
+        /// </summary>
+        /// <value>As job.</value>
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJobParameter)]
         public SwitchParameter AsJob { get; set; }
 
 
+        /// <summary>
+        /// Executes the cmdlet.
+        /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

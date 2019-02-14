@@ -16,13 +16,25 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 {
     using Interfaces;
 
+    /// <summary>
+    /// Class MaximumFilenameLengthValidation.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
     public class MaximumFilenameLengthValidation : NamespaceValidationBase
     {
         #region Fields and Properties
+        /// <summary>
+        /// The maximum filename length
+        /// </summary>
         private readonly int _maxFilenameLength;
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MaximumFilenameLengthValidation"/> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
         public MaximumFilenameLengthValidation(IConfiguration configuration): base(configuration, "Files/Directories over the name length limit", ValidationType.FilenameLength)
         {
             this._maxFilenameLength = configuration.MaximumFilenameLength();
@@ -30,11 +42,21 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         #endregion
 
         #region Protected methods
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IFileInfo node)
         {
             return this.ValidateInternal((INamedObjectInfo)node);
         }
 
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IDirectoryInfo node)
         {
             return this.ValidateInternal((INamedObjectInfo)node);
@@ -43,6 +65,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 
         #region Private methods
 
+        /// <summary>
+        /// Validates the internal.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         private IValidationResult ValidateInternal(INamedObjectInfo node)
         {
             bool filenameIsTooLong = node.Name.Length > this._maxFilenameLength;

@@ -17,14 +17,29 @@ namespace Commands.StorageSync.Interop.DataObjects
     using System;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Struct ProxySetting
+    /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct ProxySetting
     {
+        /// <summary>
+        /// The address
+        /// </summary>
         [MarshalAs(UnmanagedType.BStr)]
         public string Address;
+        /// <summary>
+        /// The port
+        /// </summary>
         public uint Port;
+        /// <summary>
+        /// The user name
+        /// </summary>
         [MarshalAs(UnmanagedType.BStr)]
         public string UserName;
+        /// <summary>
+        /// The password
+        /// </summary>
         [MarshalAs(UnmanagedType.BStr)]
         public string Password;
     }

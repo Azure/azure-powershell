@@ -23,6 +23,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
     /// </summary>
     public static class SystemUtility
     {
+        /// <summary>
+        /// Gets the name of the machine.
+        /// </summary>
+        /// <returns>System.String.</returns>
         public static string GetMachineName()
         {
             var machineName = string.Empty;

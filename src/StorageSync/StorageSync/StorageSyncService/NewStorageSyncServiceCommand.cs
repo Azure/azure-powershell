@@ -27,11 +27,17 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
 
     /// <summary>
     /// Creates a new StorageSyncService in a specific location.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     [Cmdlet(VerbsCommon.New, StorageSyncNouns.NounAzureRmStorageSyncService,
         DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSStorageSyncService))]
     public class NewStorageSyncServiceCommand : StorageSyncClientCmdletBase
     {
+        /// <summary>
+        /// Gets or sets the name of the resource group.
+        /// </summary>
+        /// <value>The name of the resource group.</value>
         [Parameter(
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -42,6 +48,10 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>The name.</value>
         [Parameter(Position = 1,
             ParameterSetName = StorageSyncParameterSets.StringParameterSet,
             Mandatory = true,
@@ -51,6 +61,10 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
         [Alias(StorageSyncAliases.StorageSyncServiceNameAlias)]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the location.
+        /// </summary>
+        /// <value>The location.</value>
         [Parameter(
            Position = 2,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -61,6 +75,10 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tag.
+        /// </summary>
+        /// <value>The tag.</value>
         [Parameter(
              ParameterSetName = StorageSyncParameterSets.StringParameterSet,
              Mandatory = false,
@@ -69,10 +87,21 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
         [Alias(StorageSyncAliases.TagsAlias)]
         public Hashtable Tag { get; set; }
 
+        /// <summary>
+        /// Gets or sets the target.
+        /// </summary>
+        /// <value>The target.</value>
         protected override string Target => Name;
 
+        /// <summary>
+        /// Gets or sets the action message.
+        /// </summary>
+        /// <value>The action message.</value>
         protected override string ActionMessage => $"Create a new Storage Sync Service {Name}";
 
+        /// <summary>
+        /// Executes the cmdlet.
+        /// </summary>
         public override void ExecuteCmdlet()
         {
 

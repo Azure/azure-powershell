@@ -25,10 +25,19 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
+    /// <summary>
+    /// Class SetServerEndpointCommand.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     [Cmdlet(VerbsCommon.Set, StorageSyncNouns.NounAzureRmStorageSyncServerEndpoint,
         DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServerEndpoint))]
     public class SetServerEndpointCommand : StorageSyncClientCmdletBase
     {
+        /// <summary>
+        /// Gets or sets the name of the resource group.
+        /// </summary>
+        /// <value>The name of the resource group.</value>
         [Parameter(
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -39,6 +48,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the storage synchronize service.
+        /// </summary>
+        /// <value>The name of the storage synchronize service.</value>
         [Parameter(
            Position = 1,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -50,6 +63,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.ParentNameAlias)]
         public string StorageSyncServiceName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the synchronize group.
+        /// </summary>
+        /// <value>The name of the synchronize group.</value>
         [Parameter(
            Position = 2,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -59,6 +76,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [ValidateNotNullOrEmpty]
         public string SyncGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>The name.</value>
         [Parameter(Position = 3,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
            Mandatory = true,
@@ -68,6 +89,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.ServerEndpointNameAlias)]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the resource identifier.
+        /// </summary>
+        /// <value>The resource identifier.</value>
         [Parameter(Mandatory = true,
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.ResourceIdParameterSet,
@@ -76,6 +101,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [ResourceIdCompleter(StorageSyncConstants.ServerEndpointType)]
         public string ResourceId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the input object.
+        /// </summary>
+        /// <value>The input object.</value>
         [Parameter(
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.ObjectParameterSet,
@@ -85,43 +114,78 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.RegisteredServerAlias)]
         public PSServerEndpoint InputObject { get; set; }
 
+        /// <summary>
+        /// Gets or sets the cloud tiering.
+        /// </summary>
+        /// <value>The cloud tiering.</value>
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.CloudTieringParameter)]
         public SwitchParameter CloudTiering { get; set; }
 
+        /// <summary>
+        /// Gets or sets the volume free space percent.
+        /// </summary>
+        /// <value>The volume free space percent.</value>
         [Parameter(
         Mandatory = false,
         ValueFromPipelineByPropertyName = false,
         HelpMessage = HelpMessages.VolumeFreeSpacePercentParameter)]
         public int? VolumeFreeSpacePercent { get; set; }
 
+        /// <summary>
+        /// Gets or sets the cloud seeded data.
+        /// </summary>
+        /// <value>The cloud seeded data.</value>
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.CloudSeededDataParameter)]
         public SwitchParameter CloudSeededData { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tier files older than days.
+        /// </summary>
+        /// <value>The tier files older than days.</value>
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.TierFilesOlderThanDaysParameter)]
         public int? TierFilesOlderThanDays { get; set; }
 
+        /// <summary>
+        /// Gets or sets the cloud seeded data file share URI.
+        /// </summary>
+        /// <value>The cloud seeded data file share URI.</value>
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.CloudSeededDataFileShareUriParameter)]
         public string CloudSeededDataFileShareUri { get; set; }
 
+        /// <summary>
+        /// Gets or sets as job.
+        /// </summary>
+        /// <value>As job.</value>
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJobParameter)]
         public SwitchParameter AsJob { get; set; }
 
+        /// <summary>
+        /// Gets or sets the target.
+        /// </summary>
+        /// <value>The target.</value>
         protected override string Target => Name ?? ResourceId ?? InputObject?.ServerEndpointName;
 
+        /// <summary>
+        /// Gets or sets the action message.
+        /// </summary>
+        /// <value>The action message.</value>
         protected override string ActionMessage => $"Updating a Server endpoint {Name ?? ResourceId ?? InputObject?.ServerEndpointName}";
 
+        /// <summary>
+        /// Executes the cmdlet.
+        /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

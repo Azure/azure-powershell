@@ -17,12 +17,29 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.StorageSync.Models
 {
+    /// <summary>
+    /// Class PSStorageSyncService.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Models.PSResourceBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Models.PSResourceBase" />
     public class PSStorageSyncService : PSResourceBase
     {
+        /// <summary>
+        /// Gets or sets the location.
+        /// </summary>
+        /// <value>The location.</value>
         [Ps1Xml(Label = "Location", Target = ViewControl.Table, Position = 4)]
         public string Location { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the storage synchronize service.
+        /// </summary>
+        /// <value>The name of the storage synchronize service.</value>
         [Ps1Xml(Label = "StorageSyncServiceName ", Target = ViewControl.Table, Position = 5)]
         public string StorageSyncServiceName { get; set; }
+        /// <summary>
+        /// Gets or sets the tags.
+        /// </summary>
+        /// <value>The tags.</value>
         public IDictionary<string, string> Tags { get; set; }
     }
 }

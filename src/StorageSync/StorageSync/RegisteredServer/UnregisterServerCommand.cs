@@ -24,9 +24,18 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
+    /// <summary>
+    /// Class UnregisterServerCommand.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     [Cmdlet(VerbsLifecycle.Unregister, StorageSyncNouns.NounAzureRmStorageSyncServer, DefaultParameterSetName = StorageSyncParameterSets.InputObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class UnregisterServerCommand : StorageSyncClientCmdletBase
     {
+        /// <summary>
+        /// Gets or sets the input object.
+        /// </summary>
+        /// <value>The input object.</value>
         [Parameter(Mandatory = true,
                    ParameterSetName = StorageSyncParameterSets.InputObjectParameterSet,
                    Position = 0,
@@ -35,6 +44,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [ValidateNotNullOrEmpty]
         public PSRegisteredServer InputObject { get; set; }
 
+        /// <summary>
+        /// Gets or sets the resource identifier.
+        /// </summary>
+        /// <value>The resource identifier.</value>
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = StorageSyncParameterSets.ResourceIdParameterSet,
@@ -44,6 +57,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [ResourceIdCompleter(StorageSyncConstants.RegisteredServerType)]
         public string ResourceId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the resource group.
+        /// </summary>
+        /// <value>The name of the resource group.</value>
         [Parameter(
            Position = 0,
            Mandatory = true,
@@ -54,6 +71,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the storage synchronize service.
+        /// </summary>
+        /// <value>The name of the storage synchronize service.</value>
         [Parameter(
             Position = 1,
             ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -65,6 +86,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.ParentNameAlias)]
         public string StorageSyncServiceName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the server identifier.
+        /// </summary>
+        /// <value>The server identifier.</value>
         [Parameter(Position = 2,
             Mandatory = true,
             ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -74,18 +99,33 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.RegisteredServerNameAlias)]
         public Guid ServerId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the force.
+        /// </summary>
+        /// <value>The force.</value>
         [Parameter(Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = HelpMessages.RegisteredServerForceParameter)]
         public SwitchParameter Force { get; set; }
 
+        /// <summary>
+        /// Gets or sets the pass thru.
+        /// </summary>
+        /// <value>The pass thru.</value>
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
+        /// <summary>
+        /// Gets or sets as job.
+        /// </summary>
+        /// <value>As job.</value>
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJobParameter)]
         public SwitchParameter AsJob { get; set; }
 
 
+        /// <summary>
+        /// Executes the cmdlet.
+        /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

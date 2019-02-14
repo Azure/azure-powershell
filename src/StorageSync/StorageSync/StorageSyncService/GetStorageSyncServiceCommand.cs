@@ -25,10 +25,16 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
 
     /// <summary>
     /// Get StorageSyncServices
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     [Cmdlet(VerbsCommon.Get, StorageSyncNouns.NounAzureRmStorageSyncService, DefaultParameterSetName = StorageSyncParameterSets.ParentStringParameterSet), OutputType(typeof(PSStorageSyncService))]
     public class GetStorageSyncServiceCommand : StorageSyncClientCmdletBase
     {
+        /// <summary>
+        /// Gets or sets the name of the resource group.
+        /// </summary>
+        /// <value>The name of the resource group.</value>
         [Parameter(
           Position = 0,
           Mandatory = false,
@@ -45,6 +51,10 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>The name.</value>
         [Parameter(Position = 1,
             Mandatory = false,
             ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -55,6 +65,9 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
         [Alias(StorageSyncAliases.StorageSyncServiceNameAlias)]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Executes the cmdlet.
+        /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

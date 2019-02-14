@@ -14,12 +14,30 @@
 
 namespace Commands.StorageSync.Interop.Enums
 {
+    /// <summary>
+    /// Enum RpcImpLevel
+    /// </summary>
     public enum RpcImpLevel
     {
+        /// <summary>
+        /// The default
+        /// </summary>
         Default = 0,
+        /// <summary>
+        /// The anonymous
+        /// </summary>
         Anonymous = 1,
+        /// <summary>
+        /// The identify
+        /// </summary>
         Identify = 2,
+        /// <summary>
+        /// The impersonate
+        /// </summary>
         Impersonate = 3,
+        /// <summary>
+        /// The delegate
+        /// </summary>
         Delegate = 4
     }
 

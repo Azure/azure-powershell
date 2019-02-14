@@ -17,13 +17,34 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common
 {
+    /// <summary>
+    /// Class StorageSyncParameterSets.
+    /// </summary>
     public class StorageSyncParameterSets
     {
+        /// <summary>
+        /// The resource identifier parameter set
+        /// </summary>
         public const string ResourceIdParameterSet = "ResourceIdParameterSet";
+        /// <summary>
+        /// The string parameter set
+        /// </summary>
         public const string StringParameterSet = "StringParameterSet";
+        /// <summary>
+        /// The object parameter set
+        /// </summary>
         public const string ObjectParameterSet = "ObjectParameterSet";
+        /// <summary>
+        /// The parent string parameter set
+        /// </summary>
         public const string ParentStringParameterSet = "ParentStringParameterSet";
+        /// <summary>
+        /// The input object parameter set
+        /// </summary>
         public const string InputObjectParameterSet = "InputObjectParameterSet";
+        /// <summary>
+        /// The default parameter set
+        /// </summary>
         public const string DefaultParameterSet = "DefaultParameterSet";
     }
 }

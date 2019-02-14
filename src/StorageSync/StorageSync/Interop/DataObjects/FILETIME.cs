@@ -20,10 +20,19 @@ using System.Threading.Tasks;
 
 namespace Commands.StorageSync.Interop.DataObjects
 {
+    /// <summary>
+    /// Struct FILETIME
+    /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct FILETIME
     {
-         uint dwLowDateTime;
+        /// <summary>
+        /// The dw low date time
+        /// </summary>
+        uint dwLowDateTime;
+        /// <summary>
+        /// The dw high date time
+        /// </summary>
         uint dwHighDateTime;
     };
 }

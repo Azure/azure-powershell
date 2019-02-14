@@ -24,12 +24,24 @@ namespace Commands.StorageSync.Interop.DataObjects
     using System.Diagnostics;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Class COMReleaseHandle. This class cannot be inherited.
+    /// Implements the <see cref="System.Runtime.InteropServices.SafeHandle" />
+    /// </summary>
+    /// <seealso cref="System.Runtime.InteropServices.SafeHandle" />
     public sealed class COMReleaseHandle : SafeHandle
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="COMReleaseHandle"/> class.
+        /// </summary>
         public COMReleaseHandle() : base(IntPtr.Zero, true)
         {
         }
 
+        /// <summary>
+        /// When overridden in a derived class, gets a value indicating whether the handle value is invalid.
+        /// </summary>
+        /// <value><c>true</c> if this instance is invalid; otherwise, <c>false</c>.</value>
         public override bool IsInvalid
         {
             get
@@ -38,6 +50,10 @@ namespace Commands.StorageSync.Interop.DataObjects
             }
         }
 
+        /// <summary>
+        /// When overridden in a derived class, executes the code required to free the handle.
+        /// </summary>
+        /// <returns>true if the handle is released successfully; otherwise, in the event of a catastrophic failure, false. In this case, it generates a <see cref="~/docs/framework/debug-trace-profile/releasehandlefailed-mda.md">releaseHandleFailed</see> Managed Debugging Assistant.</returns>
         protected override bool ReleaseHandle()
         {
             int newRefCount = Marshal.Release(this.handle);
@@ -45,6 +61,10 @@ namespace Commands.StorageSync.Interop.DataObjects
             return true;
         }
 
+        /// <summary>
+        /// Attaches the handle.
+        /// </summary>
+        /// <param name="assignedHandle">The assigned handle.</param>
         public void AttachHandle(IntPtr assignedHandle)
         {
             this.SetHandle(assignedHandle);

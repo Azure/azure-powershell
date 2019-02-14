@@ -17,15 +17,39 @@ namespace Commands.StorageSync.Interop.DataObjects
     using System;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Struct SCRUBBING_STATS
+    /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SCRUBBING_STATS
     {
+        /// <summary>
+        /// The file data access failures
+        /// </summary>
         public UInt32 FileDataAccessFailures;
+        /// <summary>
+        /// The files automatic recovered
+        /// </summary>
         public UInt32 FilesAutoRecovered;
+        /// <summary>
+        /// The files recovered
+        /// </summary>
         public UInt32 FilesRecovered;
+        /// <summary>
+        /// The files failed to recover
+        /// </summary>
         public UInt32 FilesFailedToRecover;
+        /// <summary>
+        /// The error files created
+        /// </summary>
         public UInt32 ErrorFilesCreated;
+        /// <summary>
+        /// The files needing promotion
+        /// </summary>
         public UInt32 FilesNeedingPromotion;
+        /// <summary>
+        /// The files promoted
+        /// </summary>
         public UInt32 FilesPromoted;
     }
 }

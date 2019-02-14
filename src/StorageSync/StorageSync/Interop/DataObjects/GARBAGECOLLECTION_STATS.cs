@@ -17,12 +17,27 @@ namespace Commands.StorageSync.Interop.DataObjects
     using System;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Struct GARBAGECOLLECTION_STATS
+    /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct GARBAGECOLLECTION_STATS
     {
+        /// <summary>
+        /// The stable versions deleted
+        /// </summary>
         public UInt32 StableVersionsDeleted;
+        /// <summary>
+        /// The stable versions already deleted
+        /// </summary>
         public UInt32 StableVersionsAlreadyDeleted;
+        /// <summary>
+        /// The stable versions failed to delete
+        /// </summary>
         public UInt32 StableVersionsFailedToDelete;
+        /// <summary>
+        /// The stable versions failed to delete exceeded maximum count
+        /// </summary>
         public UInt32 StableVersionsFailedToDeleteExceededMaxCnt;
     }
 }

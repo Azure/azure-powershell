@@ -16,16 +16,43 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
 {
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
 
+    /// <summary>
+    /// Class ValidationBase.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.IValidationDescription" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.IValidationDescription" />
     public abstract class ValidationBase : IValidationDescription
     {
         #region Fields and Properties
+        /// <summary>
+        /// Gets the display name.
+        /// </summary>
+        /// <value>The display name.</value>
         public string DisplayName { get; }
+        /// <summary>
+        /// Gets the kind of the validation.
+        /// </summary>
+        /// <value>The kind of the validation.</value>
         public ValidationKind ValidationKind { get; }
+        /// <summary>
+        /// Gets the type of the validation.
+        /// </summary>
+        /// <value>The type of the validation.</value>
         public ValidationType ValidationType { get; }
+        /// <summary>
+        /// Gets the successful result.
+        /// </summary>
+        /// <value>The successful result.</value>
         protected IValidationResult SuccessfulResult { get; }
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ValidationBase"/> class.
+        /// </summary>
+        /// <param name="validationName">Name of the validation.</param>
+        /// <param name="validationType">Type of the validation.</param>
+        /// <param name="validationKind">Kind of the validation.</param>
         public ValidationBase(
             string validationName,
             ValidationType validationType,

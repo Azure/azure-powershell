@@ -21,11 +21,18 @@ using System.Threading.Tasks;
 
 namespace Commands.StorageSync.Interop.Interfaces
 {
+    /// <summary>
+    /// Interface INetworkLimitConfigurationEntryEnumeration
+    /// </summary>
     [ComImport]
     [Guid("B72C2D6B-1A05-4B96-9012-91B06C793BCC"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INetworkLimitConfigurationEntryEnumeration
     {
+        /// <summary>
+        /// Gets the next value.
+        /// </summary>
+        /// <returns>INetworkLimitConfigEntry.</returns>
         [return: MarshalAs(UnmanagedType.Interface)]
         INetworkLimitConfigEntry GetNextValue();
     }

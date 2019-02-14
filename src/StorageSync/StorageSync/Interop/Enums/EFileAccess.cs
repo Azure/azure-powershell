@@ -17,12 +17,27 @@ namespace Commands.StorageSync.Interop.Enums
     using System;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Enum EFileAccess
+    /// </summary>
     [Flags]
     public enum EFileAccess : uint
     {
+        /// <summary>
+        /// The generic read
+        /// </summary>
         GenericRead = 0x80000000,
+        /// <summary>
+        /// The generic write
+        /// </summary>
         GenericWrite = 0x40000000,
+        /// <summary>
+        /// The generic execute
+        /// </summary>
         GenericExecute = 0x20000000,
+        /// <summary>
+        /// The generic all
+        /// </summary>
         GenericAll = 0x10000000,
     }
 

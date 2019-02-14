@@ -14,11 +14,32 @@
 
 namespace Microsoft.Azure.Commands.StorageSync.Models
 {
+    /// <summary>
+    /// Class PSSyncGroup.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Models.PSResourceBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Models.PSResourceBase" />
     public class PSSyncGroup : PSResourceBase
     {
+        /// <summary>
+        /// Gets or sets the name of the synchronize group.
+        /// </summary>
+        /// <value>The name of the synchronize group.</value>
         public string SyncGroupName { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the storage synchronize service.
+        /// </summary>
+        /// <value>The name of the storage synchronize service.</value>
         public string StorageSyncServiceName { get; set; }
+        /// <summary>
+        /// Gets or sets the unique identifier.
+        /// </summary>
+        /// <value>The unique identifier.</value>
         public string UniqueId { get; set; }
+        /// <summary>
+        /// Gets or sets the synchronize group status.
+        /// </summary>
+        /// <value>The synchronize group status.</value>
         public string SyncGroupStatus { get; set; }
     }
 }

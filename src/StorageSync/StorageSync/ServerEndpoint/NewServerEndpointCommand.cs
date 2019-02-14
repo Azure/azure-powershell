@@ -25,10 +25,19 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
+    /// <summary>
+    /// Class NewServerEndpointCommand.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     [Cmdlet(VerbsCommon.New, StorageSyncNouns.NounAzureRmStorageSyncServerEndpoint,
         DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServerEndpoint))]
     public class NewServerEndpointCommand : StorageSyncClientCmdletBase
     {
+        /// <summary>
+        /// Gets or sets the name of the resource group.
+        /// </summary>
+        /// <value>The name of the resource group.</value>
         [Parameter(
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -39,6 +48,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the storage synchronize service.
+        /// </summary>
+        /// <value>The name of the storage synchronize service.</value>
         [Parameter(
            Position = 1,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -50,6 +63,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.ParentNameAlias)]
         public string StorageSyncServiceName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the synchronize group.
+        /// </summary>
+        /// <value>The name of the synchronize group.</value>
         [Parameter(
            Position = 2,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -59,6 +76,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [ValidateNotNullOrEmpty]
         public string SyncGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the parent object.
+        /// </summary>
+        /// <value>The parent object.</value>
         [Parameter(
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.ObjectParameterSet,
@@ -69,6 +90,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.SyncGroupAlias)]
         public PSSyncGroup ParentObject { get; set; }
 
+        /// <summary>
+        /// Gets or sets the parent resource identifier.
+        /// </summary>
+        /// <value>The parent resource identifier.</value>
         [Parameter(
           Position = 0,
           ParameterSetName = StorageSyncParameterSets.ParentStringParameterSet,
@@ -79,6 +104,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.SyncGroupIdAlias)]
         public string ParentResourceId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>The name.</value>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.ServerEndpointNameParameter)]
@@ -86,6 +115,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.ServerEndpointNameAlias)]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the server resource identifier.
+        /// </summary>
+        /// <value>The server resource identifier.</value>
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = false,
@@ -94,6 +127,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [ResourceIdCompleter(StorageSyncConstants.RegisteredServerType)]
         public string ServerResourceId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the server local path.
+        /// </summary>
+        /// <value>The server local path.</value>
         [Parameter(
           Mandatory = true,
           ValueFromPipelineByPropertyName = false,
@@ -101,43 +138,78 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ServerLocalPath { get; set; }
 
+        /// <summary>
+        /// Gets or sets the cloud tiering.
+        /// </summary>
+        /// <value>The cloud tiering.</value>
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.CloudTieringParameter)]
         public SwitchParameter CloudTiering { get; set; }
 
+        /// <summary>
+        /// Gets or sets the volume free space percent.
+        /// </summary>
+        /// <value>The volume free space percent.</value>
         [Parameter(
         Mandatory = false,
         ValueFromPipelineByPropertyName = false,
         HelpMessage = HelpMessages.VolumeFreeSpacePercentParameter)]
         public int? VolumeFreeSpacePercent { get; set; }
 
+        /// <summary>
+        /// Gets or sets the cloud seeded data.
+        /// </summary>
+        /// <value>The cloud seeded data.</value>
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.CloudSeededDataParameter)]
         public SwitchParameter CloudSeededData { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tier files older than days.
+        /// </summary>
+        /// <value>The tier files older than days.</value>
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.TierFilesOlderThanDaysParameter)]
         public int? TierFilesOlderThanDays { get; set; }
 
+        /// <summary>
+        /// Gets or sets the cloud seeded data file share URI.
+        /// </summary>
+        /// <value>The cloud seeded data file share URI.</value>
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.CloudSeededDataFileShareUriParameter)]
         public string CloudSeededDataFileShareUri { get; set; }
 
+        /// <summary>
+        /// Gets or sets as job.
+        /// </summary>
+        /// <value>As job.</value>
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJobParameter)]
         public SwitchParameter AsJob { get; set; }
 
+        /// <summary>
+        /// Gets or sets the target.
+        /// </summary>
+        /// <value>The target.</value>
         protected override string Target => Name;
 
+        /// <summary>
+        /// Gets or sets the action message.
+        /// </summary>
+        /// <value>The action message.</value>
         protected override string ActionMessage => $"Create a new Server endpoint {Name}";
 
+        /// <summary>
+        /// Executes the cmdlet.
+        /// </summary>
         public override void ExecuteCmdlet()
         {
 

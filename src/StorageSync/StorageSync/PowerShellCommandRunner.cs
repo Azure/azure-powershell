@@ -19,14 +19,30 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
     using System.Management.Automation;
     using System.Management.Automation.Runspaces;
 
+    /// <summary>
+    /// Class PowerShellCommandRunner.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.IPowershellCommandRunner" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.IPowershellCommandRunner" />
     public class PowerShellCommandRunner : IPowershellCommandRunner
     {
         #region Fields and Properties
+        /// <summary>
+        /// The runspace
+        /// </summary>
         private readonly Runspace _runspace;
+        /// <summary>
+        /// The power shell
+        /// </summary>
         private readonly PowerShell _powerShell;
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PowerShellCommandRunner"/> class.
+        /// </summary>
+        /// <param name="computerName">Name of the computer.</param>
+        /// <param name="credential">The credential.</param>
         public PowerShellCommandRunner(string computerName, PSCredential credential)
         {
             WSManConnectionInfo connectionInfo = new WSManConnectionInfo();
@@ -48,6 +64,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             this._powerShell.Runspace = this._runspace;
         }
 
+        /// <summary>
+        /// Finalizes an instance of the <see cref="PowerShellCommandRunner"/> class.
+        /// </summary>
         ~PowerShellCommandRunner()
         {
             this._powerShell?.Dispose();
@@ -56,16 +75,28 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         #endregion
 
         #region Public methods
+        /// <summary>
+        /// Adds the script.
+        /// </summary>
+        /// <param name="script">The script.</param>
         public void AddScript(string script)
         {
             this._powerShell.AddScript(script);
         }
 
+        /// <summary>
+        /// Invokes this instance.
+        /// </summary>
+        /// <returns>Collection&lt;PSObject&gt;.</returns>
         public Collection<PSObject> Invoke()
         {
             return this._powerShell.Invoke();
         }
 
+        /// <summary>
+        /// Errorses this instance.
+        /// </summary>
+        /// <returns>PSDataCollection&lt;ErrorRecord&gt;.</returns>
         public PSDataCollection<ErrorRecord> Errors()
         {
             return this._powerShell.Streams.Error;

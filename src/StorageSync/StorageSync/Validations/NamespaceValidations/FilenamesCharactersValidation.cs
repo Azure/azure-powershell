@@ -20,14 +20,29 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Class FilenamesCharactersValidation.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
     public class FilenamesCharactersValidation : NamespaceValidationBase
     {
         #region Fields and Properties
+        /// <summary>
+        /// The code point black list
+        /// </summary>
         private bool[] _codePointBlackList;
+        /// <summary>
+        /// The number of code points
+        /// </summary>
         private int NumberOfCodePoints = 0x10FFFF + 1;
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FilenamesCharactersValidation"/> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
         public FilenamesCharactersValidation(
             IConfiguration configuration): base(
                 configuration,
@@ -47,11 +62,21 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         #endregion
 
         #region Protected methods
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="file">The file.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IFileInfo file)
         {
             return this.ValidateInternal(file, isDirectory: false);
         }
 
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="directoryInfo">The directory information.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IDirectoryInfo directoryInfo)
         {
             // skip validating volume root
@@ -66,7 +91,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         #endregion
 
         #region Private methods
-        
+
+        /// <summary>
+        /// Validates the internal.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <param name="isDirectory">if set to <c>true</c> [is directory].</param>
+        /// <returns>IValidationResult.</returns>
         private IValidationResult ValidateInternal (INamedObjectInfo node, bool isDirectory)
         {
             string name = node.Name;

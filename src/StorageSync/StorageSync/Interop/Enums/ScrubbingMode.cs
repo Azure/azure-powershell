@@ -14,10 +14,22 @@
 
 namespace Commands.StorageSync.Interop.Enums
 {
+    /// <summary>
+    /// Enum ScrubbingMode
+    /// </summary>
     public enum ScrubbingMode
     {
+        /// <summary>
+        /// The report
+        /// </summary>
         Report = 0,
+        /// <summary>
+        /// The repair
+        /// </summary>
         Repair,
+        /// <summary>
+        /// The overwrite
+        /// </summary>
         Overwrite
     }
 }

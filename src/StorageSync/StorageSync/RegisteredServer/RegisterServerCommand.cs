@@ -31,10 +31,19 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
 
+    /// <summary>
+    /// Class RegisterServerCommand.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     [Cmdlet(VerbsLifecycle.Register, StorageSyncNouns.NounAzureRmStorageSyncServer,
         DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSRegisteredServer))]
     public class RegisterServerCommand : StorageSyncClientCmdletBase
     {
+        /// <summary>
+        /// Gets or sets the name of the resource group.
+        /// </summary>
+        /// <value>The name of the resource group.</value>
         [Parameter(
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -45,6 +54,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the storage synchronize service.
+        /// </summary>
+        /// <value>The name of the storage synchronize service.</value>
         [Parameter(
            Position = 1,
            ParameterSetName =StorageSyncParameterSets.StringParameterSet,
@@ -56,6 +69,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.ParentNameAlias)]
         public string StorageSyncServiceName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the parent object.
+        /// </summary>
+        /// <value>The parent object.</value>
         [Parameter(
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.ObjectParameterSet,
@@ -66,6 +83,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.StorageSyncServiceAlias)]
         public PSStorageSyncService ParentObject { get; set; }
 
+        /// <summary>
+        /// Gets or sets the parent resource identifier.
+        /// </summary>
+        /// <value>The parent resource identifier.</value>
         [Parameter(
           Position = 0,
           ParameterSetName = StorageSyncParameterSets.ParentStringParameterSet,
@@ -78,13 +99,28 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         public string ParentResourceId { get; set; }
 
 
+        /// <summary>
+        /// Gets or sets as job.
+        /// </summary>
+        /// <value>As job.</value>
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJobParameter)]
         public SwitchParameter AsJob { get; set; }
 
+        /// <summary>
+        /// Gets or sets the target.
+        /// </summary>
+        /// <value>The target.</value>
         protected override string Target => StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? ParentResourceId;
 
+        /// <summary>
+        /// Gets or sets the action message.
+        /// </summary>
+        /// <value>The action message.</value>
         protected override string ActionMessage => $"Create a new Registered Server for Storage Sync Service {StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? ParentResourceId}";
 
+        /// <summary>
+        /// Executes the cmdlet.
+        /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -124,6 +160,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
             });
         }
 
+        /// <summary>
+        /// Performs the server registration.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="storageSyncServiceName">Name of the storage synchronize service.</param>
+        /// <returns>RegisteredServer.</returns>
+        /// <exception cref="PSArgumentException">AfsAgentInstallerPath</exception>
         private RegisteredServer PerformServerRegistration(string resourceGroupName, Guid subscriptionId, string storageSyncServiceName)
         {
             using (ISyncServerRegistration syncServerRegistrationClient = InteropClientFactory.CreateSyncServerRegistrationClient(InteropClientFactory.CreateEcsManagement(IsPlaybackMode)))
@@ -147,6 +191,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
             }
         }
 
+        /// <summary>
+        /// Creates the registered resource in cloud.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="storageSyncServiceName">Name of the storage synchronize service.</param>
+        /// <param name="serverRegistrationData">The server registration data.</param>
+        /// <returns>RegisteredServer.</returns>
         private RegisteredServer CreateRegisteredResourceInCloud(string resourceGroupName, string storageSyncServiceName,ServerRegistrationData serverRegistrationData)
         {
             var createParameters = new RegisteredServerCreateParameters()
@@ -169,6 +220,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 createParameters));
         }
 
+        /// <summary>
+        /// Removes the double quotes.
+        /// </summary>
+        /// <param name="registeredServer">The registered server.</param>
+        /// <returns>RegisteredServer.</returns>
         private RegisteredServer RemoveDoubleQuotes(RegisteredServer registeredServer)
         {
             registeredServer.ClusterId = registeredServer.ClusterId.Trim(new char[] { '\"' });

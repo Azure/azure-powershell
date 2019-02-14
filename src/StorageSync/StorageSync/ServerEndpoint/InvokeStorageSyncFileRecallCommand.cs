@@ -25,9 +25,18 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
+    /// <summary>
+    /// Class InvokeStorageSyncFileRecallCommand.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     [Cmdlet(VerbsLifecycle.Invoke, StorageSyncNouns.NounAzureRmStorageSyncFileRecall, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet), OutputType(typeof(void))]
     public class InvokeStorageSyncFileRecallCommand : StorageSyncClientCmdletBase
     {
+        /// <summary>
+        /// Gets or sets the name of the resource group.
+        /// </summary>
+        /// <value>The name of the resource group.</value>
         [Parameter(
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -38,6 +47,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the storage synchronize service.
+        /// </summary>
+        /// <value>The name of the storage synchronize service.</value>
         [Parameter(
            Position = 1,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -49,6 +62,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.ParentNameAlias)]
         public string StorageSyncServiceName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the synchronize group.
+        /// </summary>
+        /// <value>The name of the synchronize group.</value>
         [Parameter(
            Position = 2,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
@@ -58,6 +75,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [ValidateNotNullOrEmpty]
         public string SyncGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>The name.</value>
         [Parameter(Position = 3,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
            Mandatory = true,
@@ -67,6 +88,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.ServerEndpointNameAlias)]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the resource identifier.
+        /// </summary>
+        /// <value>The resource identifier.</value>
         [Parameter(Mandatory = true,
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.ResourceIdParameterSet,
@@ -75,6 +100,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [ResourceIdCompleter(StorageSyncConstants.ServerEndpointType)]
         public string ResourceId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the input object.
+        /// </summary>
+        /// <value>The input object.</value>
         [Parameter(
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.ObjectParameterSet,
@@ -84,24 +113,43 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.RegisteredServerAlias)]
         public PSServerEndpoint InputObject{ get; set; }
 
+        /// <summary>
+        /// Gets or sets the pattern.
+        /// </summary>
+        /// <value>The pattern.</value>
         [Parameter(
         Mandatory = false,
         ValueFromPipelineByPropertyName = false,
         HelpMessage = HelpMessages.PatternParameter)]
         public string Pattern { get; set; }
 
+        /// <summary>
+        /// Gets or sets the recall path.
+        /// </summary>
+        /// <value>The recall path.</value>
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.RecallPathParameter)]
         public string RecallPath { get; set; }
 
+        /// <summary>
+        /// Gets or sets the pass thru.
+        /// </summary>
+        /// <value>The pass thru.</value>
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
+        /// <summary>
+        /// Gets or sets as job.
+        /// </summary>
+        /// <value>As job.</value>
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJobParameter)]
         public SwitchParameter AsJob { get; set; }
 
+        /// <summary>
+        /// Executes the cmdlet.
+        /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

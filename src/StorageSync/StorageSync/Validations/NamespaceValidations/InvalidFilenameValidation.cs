@@ -19,14 +19,26 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Class InvalidFilenameValidation.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
     public class InvalidFilenameValidation : NamespaceValidationBase
     {
         #region Fields and Properties
+        /// <summary>
+        /// The invalid file names
+        /// </summary>
         private readonly HashSet<string> _invalidFileNames;
         #endregion
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InvalidFilenameValidation"/> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
         public InvalidFilenameValidation(IConfiguration configuration) : base(configuration, "Files with prohibited names", ValidationType.Filename)
         {
             this._invalidFileNames = new HashSet<string>(configuration.InvalidFileNames(), StringComparer.OrdinalIgnoreCase);
@@ -35,11 +47,21 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         #endregion
 
         #region Protected methods
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IFileInfo node)
         {
             return this.Validate(node.Name, node.FullName);
         }
 
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IDirectoryInfo node)
         {
             return this.Validate(node.Name, node.FullName);
@@ -48,6 +70,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 
         #region Private methods
 
+        /// <summary>
+        /// Validates the specified name.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="path">The path.</param>
+        /// <returns>IValidationResult.</returns>
         private IValidationResult Validate(string name, string path)
         {
             if (this._invalidFileNames.Contains(name))

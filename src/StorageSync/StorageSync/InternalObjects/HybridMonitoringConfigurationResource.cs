@@ -17,11 +17,22 @@ namespace Microsoft.Azure.Commands.StorageSync.InternalObjects
     using Newtonsoft.Json;
     using System.Diagnostics.CodeAnalysis;
 
+    /// <summary>
+    /// Class HybridMonitoringConfigurationResource.
+    /// </summary>
     public class HybridMonitoringConfigurationResource
     {
+        /// <summary>
+        /// Gets or sets the agent configuration.
+        /// </summary>
+        /// <value>The agent configuration.</value>
         [JsonProperty(PropertyName = "agentConfiguration", Required = Required.Default)]
         public string AgentConfiguration { get; set; }
 
+        /// <summary>
+        /// Gets or sets the configuration version.
+        /// </summary>
+        /// <value>The configuration version.</value>
         [JsonProperty(PropertyName = "configurationVersion", Required = Required.Default)]
         public string ConfigurationVersion { get; set; }
     }
