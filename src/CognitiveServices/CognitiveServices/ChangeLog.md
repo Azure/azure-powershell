@@ -18,11 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added CustomSubdomainName as a new optional parameter for New-AzCognitiveServicesAccount which is used to specify subdomain for the resource.
 
 ## Version 1.0.0
 * General availability of `Az.CognitiveServices` module
 * Add completers for SkuName and Typem available on New-AzureRmCognitiveServicesAccount operation.
 * Removed GetSkusWithAccountParamSetName parameter set from Get-AzCognitiveServicesAccountSkus
-
-## Version 1.3.0
-* Added CustomSubdomainName as a new optional parameter for New-AzCognitiveServicesAccount which is used to specify subdomain for the resource.
