@@ -119,9 +119,9 @@ function Test-Gallery
 
         # Gallery
         New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $description1 -Location $loc;
-
-		$wildcardRgQuery = ($rgname -replace ".$") + "*"
-		$wildcardNameQuery = ($galleryName -replace ".$") + "*"
+        
+        $wildcardRgQuery = ($rgname -replace ".$") + "*"
+        $wildcardNameQuery = ($galleryName -replace ".$") + "*"
 
         $galleryList = Get-AzGallery;
         $gallery = $galleryList | ? {$_.Name -eq $galleryName};
@@ -130,35 +130,35 @@ function Test-Gallery
         $galleryList = Get-AzGallery -ResourceGroupName $rgname;
         $gallery = $galleryList | ? {$_.Name -eq $galleryName};
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
-
-		$galleryList = Get-AzGallery -ResourceGroupName $wildcardRgQuery;
+        
+        $galleryList = Get-AzGallery -ResourceGroupName $wildcardRgQuery;
         $gallery = $galleryList | ? {$_.Name -eq $galleryName};
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
-
-		$gallery = Get-AzGallery -Name $galleryName;
+        
+        $gallery = Get-AzGallery -Name $galleryName;
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
         $output = $gallery | Out-String;
-
-		$gallery = Get-AzGallery -Name $wildcardNameQuery;
+        
+        $gallery = Get-AzGallery -Name $wildcardNameQuery;
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
         $output = $gallery | Out-String;
-
-		$gallery = Get-AzGallery -ResourceGroupName $rgname -Name $wildcardNameQuery;
+        
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $wildcardNameQuery;
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
         $output = $gallery | Out-String;
-
-		$gallery = Get-AzGallery -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery;
+        
+        $gallery = Get-AzGallery -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery;
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
         $output = $gallery | Out-String;
-
-		$gallery = Get-AzGallery -ResourceGroupName $wildcardRgQuery -Name $galleryName;
+        
+        $gallery = Get-AzGallery -ResourceGroupName $wildcardRgQuery -Name $galleryName;
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
         $output = $gallery | Out-String;
-
+        
         $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
         $output = $gallery | Out-String;
-
+        
         Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $description2;
         $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
         Verify-Gallery $gallery $rgname $galleryName $loc $description2;
@@ -193,7 +193,7 @@ function Test-Gallery
                                           -PurchasePlanName $purchasePlanName `
                                           -PurchasePlanProduct $purchasePlanProduct `
                                           -PurchasePlanPublisher $purchasePlanPublisher;
-
+                                          
         $wildcardNameQuery = ($galleryImageName -replace ".$") + "*"
 		$galleryImageDefinitionList = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $wildcardNameQuery;
         $definition = $galleryImageDefinitionList | ? {$_.Name -eq $galleryImageName};
@@ -229,8 +229,8 @@ function Test-Gallery
 
         # Gallery Image Version        
         $galleryImageVersionName = "1.0.0";
-
-		# Create a VM first
+        
+        # Create a VM first
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
         $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
@@ -313,7 +313,7 @@ function Test-Gallery
                                        -TargetRegion $targetRegions;
 
         $wildcardNameQuery = ($galleryImageVersionName -replace ".$") + "*"
-		$galleryImageVersionList = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+        $galleryImageVersionList = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
                                                   -GalleryImageDefinitionName $galleryImageName -Name $wildcardNameQuery;
                                        
         $version = $galleryImageVersionList | ? {$_.Name -eq $galleryImageVersionName};
