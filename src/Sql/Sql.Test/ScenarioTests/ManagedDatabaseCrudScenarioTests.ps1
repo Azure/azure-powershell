@@ -244,7 +244,7 @@ function Test-RestoreManagedDatabase
 
 <#
 .SYNOPSIS
-	Tests Getting a managed database redundant backups
+	Tests Getting a managed database geo-redundant backups
 #>
 function Test-GetManagedDatabaseGeoBackup
 {
@@ -264,7 +264,7 @@ function Test-GetManagedDatabaseGeoBackup
 	Assert-NotNull $all
 	if($all.Count -le 1)
 	{
-        throw "Should get more than 1 backup geo backups"
+        throw "Should get more than 1 backup geo-redundant backups"
     }
 }
 
