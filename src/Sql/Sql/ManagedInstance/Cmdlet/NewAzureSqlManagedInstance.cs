@@ -153,9 +153,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "Whether or not the public data endpoint is enabled for the instance.")]
-        [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter(Constants.PublicDataEndpointEnabledTrue, Constants.PublicDataEndpointEnabledFalse)]
-        public bool? PublicDataEndpointEnabled { get; set; }
+        public SwitchParameter PublicDataEndpointEnabled { get; set; }
 
         /// <summary>
         /// Gets or sets connection type used for connecting to the instance.
