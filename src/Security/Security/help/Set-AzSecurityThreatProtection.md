@@ -34,9 +34,7 @@ To use this cmdlet, specify the *ResourceId* and *-Enable* OR *-Disable* paramet
 ### Example 1:  Enable Advanced Threat Protection policy:
 ```powershell
 PS C:\> Set-AzSecurityThreatProtection -ResourceId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/" -Enable
-```
-Example 1 Output:
-```powershell
+
 IsEnabled Id
 --------- --
     True  "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
@@ -45,9 +43,7 @@ This command enables the threat protection policy for resource id "/subscription
 ### Example 2:  Disable Advanced Threat Protection policy:
 ```powershell
 PS C:\> Set-AzSecurityThreatProtection -ResourceId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/" -Disable
-```
-Example 2 Output:
-```powershell
+
 IsEnabled Id
 --------- --
     False  "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
