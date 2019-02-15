@@ -27,9 +27,7 @@ To use this cmdlet, specify the *ResourceId* parameter.
 ### Example 1
 ```powershell
 PS C:\> Get-AzSecurityThreatProtection -ResourceId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
-```
-Example 1 Output:
-```powershell
+
 IsEnabled Id
 --------- --
     False  "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
