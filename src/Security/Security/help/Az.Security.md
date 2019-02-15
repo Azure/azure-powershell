@@ -42,7 +42,7 @@ Gets the pricing tier data for Azure Security Center for a scope.
 Gets the security tasks that Azure Security Center recommends you to do in order to strengthen your security posture.
 
 ### [Get-AzSecurityThreatProtection](Get-AzSecurityThreatProtection.md)
-{{Fill in the Synopsis}}
+Gets the threat protection policy for a storage account.
 
 ### [Get-AzSecurityWorkspaceSetting](Get-AzSecurityWorkspaceSetting.md)
 Gets the configured security workspace settings on a subscription.
@@ -72,7 +72,7 @@ Updates a security contact for a subscription.
 Sets the pricing of Azure Security Center tier for a scope.
 
 ### [Set-AzSecurityThreatProtection](Set-AzSecurityThreatProtection.md)
-{{Fill in the Synopsis}}
+Sets the threat protection policy for a storage account.
 
 ### [Set-AzSecurityWorkspaceSetting](Set-AzSecurityWorkspaceSetting.md)
 Updates the workspace settings for the subscription.

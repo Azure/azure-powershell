@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSecurityThreatProtection
 
 ## SYNOPSIS
-Sets the threat protection policy for a Microsoft Storage account.
+Sets the threat protection policy for a storage account.
 
 ## SYNTAX
 
@@ -33,15 +33,25 @@ To use this cmdlet, specify the *ResourceId* and *-Enable* OR *-Disable* paramet
 
 ### Example 1:  Enable Advanced Threat Protection policy:
 ```powershell
-PS C:\> Set-AzSecurityThreatProtection -ResourceId "/subscriptions/cma24pc8-89b5-4aa7-9ff6-486e886c304a/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/" -Enable
+PS C:\> Set-AzSecurityThreatProtection -ResourceId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/" -Enable
 ```
-
+Example 1 Output:
+```powershell
+IsEnabled Id
+--------- --
+    True  "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
+```
 This command enables the threat protection policy for resource id "/subscriptions/cma24pc8-89b5-4aa7-9ff6-486e886c304a/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/".
 ### Example 2:  Disable Advanced Threat Protection policy:
 ```powershell
-PS C:\> Set-AzSecurityThreatProtection -ResourceId "/subscriptions/cma24pc8-89b5-4aa7-9ff6-486e886c304a/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/" -Disable
+PS C:\> Set-AzSecurityThreatProtection -ResourceId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/" -Disable
 ```
-
+Example 2 Output:
+```powershell
+IsEnabled Id
+--------- --
+    False  "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
+```
 This command disables the threat protection policy for resource id "/subscriptions/cma24pc8-89b5-4aa7-9ff6-486e886c304a/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/".
 ## PARAMETERS
 
