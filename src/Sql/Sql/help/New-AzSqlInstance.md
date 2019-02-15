@@ -16,7 +16,7 @@ Creates an Azure SQL Database Managed Instance.
 ```
 New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> -AdministratorCredential <PSCredential>
  -Location <String> -SubnetId <String> -LicenseType <String> -StorageSizeInGB <Int32> -VCore <Int32>
- -Edition <String> -ComputeGeneration <String> [-Collation <String>] [-PublicDataEndpointEnabled <Boolean>]
+ -Edition <String> -ComputeGeneration <String> [-Collation <String>] [-PublicDataEndpointEnabled]
  [-ProxyOverride <String>] [-Tag <Hashtable>] [-AssignIdentity] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> -AdministratorC
 ```
 New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> -AdministratorCredential <PSCredential>
  -Location <String> -SubnetId <String> -LicenseType <String> -StorageSizeInGB <Int32> -VCore <Int32>
- -SkuName <String> [-Collation <String>] [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>]
+ -SkuName <String> [-Collation <String>] [-PublicDataEndpointEnabled] [-ProxyOverride <String>]
  [-Tag <Hashtable>] [-AssignIdentity] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -250,7 +250,7 @@ Accept wildcard characters: False
 Whether or not the public data endpoint is enabled for the instance.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
