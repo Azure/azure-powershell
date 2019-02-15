@@ -2,6 +2,7 @@
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataClassification.Model;
 using Microsoft.Azure.Management.Sql.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -69,7 +70,10 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
         internal IList<SensitivityLabelModel> GetCurrentSensitivityLabels(
             string resourceGroupName, string serverName, string databaseName)
         {
-            string s = AzureCommunicator.RetrieveInformationProtectionPolicyAsync(Context.Tenant.GetId()).Result;
+            Tuple<IDictionary<string, Guid>, IDictionary<string, Guid>> tuple =
+                AzureCommunicator.RetrieveInformationProtectionPolicyAsync(Context.Tenant.GetId()).Result;
+            IDictionary<string, Guid> sensitivityLabels = tuple.Item1;
+            IDictionary<string, Guid> informationTypes = tuple.Item2;
             return ToSensitivityLabelModelList(Communicator.GetCurrentSensitivityLabels(resourceGroupName, serverName, databaseName));
         }
 
