@@ -9044,6 +9044,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"pVoIA4o5Dp47UmMinNVdxqteS6BIXNCLOWsMhhRPIlyBu7rdau6m03FBwCd6yQVa0ASaaqB2vH71GZWRfRMROw==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"r9slEObcOzwdCfPEWqeyhI2KweXXRqrCWB3TuvVxJqjitNL3H9E+GvDnGWdAjLhxtQz1zqetFb6wWnWsggQujA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
