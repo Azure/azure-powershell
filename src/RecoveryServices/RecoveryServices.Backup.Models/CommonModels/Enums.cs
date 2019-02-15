@@ -37,12 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Represents any Azure Storage containers.
         /// </summary>
-        AzureStorage,
-
-        /// <summary>
-        /// Represents Azure Workload
-        /// </summary>
-        AzureVMAppContainer
+        AzureStorage
     }
 
     /// <summary>
@@ -75,11 +70,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Represents Azure File Storage. https://docs.microsoft.com/en-in/azure/storage/files/storage-files-introduction
         /// </summary>
         AzureStorage,
-
-        /// <summary>
-        /// Represents Azure Workload
-        /// </summary>
-        AzureWorkload
     }
 
     /// <summary>
@@ -113,11 +103,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Represents Azure File https://docs.microsoft.com/en-in/azure/storage/files/storage-files-introduction
         /// </summary>
         AzureFiles,
-
-        /// <summary>
-        /// Represents MSSQL in Azure VM.
-        /// </summary>
-        MSSQL,
     }
 
     /// <summary>
@@ -149,7 +134,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Represents the Azure File provider for powershell cmdlets.
         /// </summary>
         AzureFiles,
-        AzureWorkload,
     }
 
     /// <summary>
@@ -349,26 +333,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         File,
         Directory
-    }
-
-    /// <summary>
-    /// Type of the backup.
-    /// </summary>
-    public enum BackupType
-    {
-        Full,
-        Differential,
-        Log,
-        CopyOnlyFull
-    }
-
-    /// <summary>
-    /// Options to select the protectable type
-    /// </summary>
-    public enum ProtectableItemType
-    {
-        SQLDataBase,
-        SQLInstance,
-        SQLAvailabilityGroup
     }
 }

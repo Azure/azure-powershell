@@ -1,6 +1,6 @@
 {
     "tool": "Credential Scanner",
-    "suppressions": [
+  "suppressions": [
     {
       "file": "\\documentation\\development-docs\\azure-powershell-developer-guide.md",
       "_justification": "Documentation with non-live passwords in sample connection strings"
@@ -1038,7 +1038,7 @@
       "file": "\\src\\Relay\\Relay.Test\\ScenarioTests\\RelayAuthorizationRulesTests.ps1",
       "_justification": "Test resource is deleted"
     },
-	  {
+    {
       "file": "\\src\\Accounts\\Authentication.Test\\Resources\\ValidProfile.PublishSettings",
       "_justification": "Faked credentials"
     },
@@ -1062,57 +1062,77 @@
       "file": "\\src\\Accounts\\Authentication.Test\\Resources\\ValidProfileChinaOld.PublishSettings",
       "_justification": "Faked credentials"
     },
-	  {
+    {
       "file": "\\src\\IotHub\\IotHub.Test\\ScenarioTests\\IotHubRoutingTests.ps1",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinux.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxMD_DSeries.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxMD.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxWAD.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedWindows.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedWindowsMD.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedWindowsWAD.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicLinux.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicLinuxWAD.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicWindows.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicWindowsWAD.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxMD_ESeries.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+    {
+      "file": "\\src\\Resources\\Resources.Test\\ScenarioTests\\certificate.pfx",
+      "_justification": "Legitimate test certificate."
+    },
+     {
+      "file": "\\src\\DataMigration\\DataMigration.Test\\SessionRecords\\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\\TestConnectToTargetSqlDbMiSync.json",
+      "_justification": "Legitimate session record, Key will be revoked after test"
+    },
+	  {
+      "file": "\\src\\DataMigration\\DataMigration.Test\\SessionRecords\\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\\TestMigrateSqlSqlDbMiSync.json",
+      "_justification": "Legitimate session record, Key will be revoked after test"
+    },
+	  {
+      "file": "\\src\\DataMigration\\DataMigration.Test\\SessionRecords\\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\\TestValidateMigrationInputSqlSqlDbMiSync.json",
+      "_justification": "Legitimate session record, Key will be revoked after test"
+    },
+	  {
+      "file": "\\src\\DataMigration\\DataMigration.Test\\SessionRecords\\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\\TestMigrateSqlSqlDbMiSync.json",
+      "_justification": "Legitimate session record, Key will be revoked after test"
     }
   ]
 }

@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: F49FA524-28BC-464F-BD0A-F898E99C83D8
@@ -28,12 +28,6 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-SourceFileType <SourceFileType>] [-TargetStorageAccountName <String>] [-TargetFileShareName <String>]
  [-TargetFolder <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### AzureWorkloadParameterSet
-```
-Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-WLRecoveryConfig] <RecoveryConfigBase>
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +84,7 @@ To obtain an **AzureRmRecoveryServicesBackupRecoveryPoint** object, use the Get-
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase
-Parameter Sets: AzureVMParameterSet, AzureFileParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -135,7 +129,7 @@ Accept wildcard characters: False
 Used for a particular item restore from a file share. The path of the item to be restored within the file share.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SourceFileType]
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SourceFileType
 Parameter Sets: AzureFileParameterSet
 Aliases:
 Accepted values: File, Directory
@@ -279,21 +273,6 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -WLRecoveryConfig
-Recovery config
-
-```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryConfigBase
-Parameter Sets: AzureWorkloadParameterSet
-Aliases:
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False

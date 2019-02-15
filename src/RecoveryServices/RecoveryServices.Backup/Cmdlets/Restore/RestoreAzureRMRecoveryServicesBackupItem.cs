@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         internal const string AzureVMParameterSet = "AzureVMParameterSet";
         internal const string AzureFileParameterSet = "AzureFileParameterSet";
-        internal const string AzureWorkloadParameterSet = "AzureWorkloadParameterSet";
 
         /// <summary>
         /// Location of the Recovery Services Vault.
@@ -47,19 +46,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Recovery point of the item to be restored
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0,
-            ParameterSetName = AzureVMParameterSet, HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0,
-            ParameterSetName = AzureFileParameterSet, HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
+            HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
         [ValidateNotNullOrEmpty]
         public RecoveryPointBase RecoveryPoint { get; set; }
-
-        /// <summary>
-        /// Recovery point of the item to be restored
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0,
-            ParameterSetName = AzureWorkloadParameterSet, HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryConfig)]
-        [ValidateNotNullOrEmpty]
-        public RecoveryConfigBase WLRecoveryConfig { get; set; }
 
         /// <summary>
         /// Storage account name where the disks need to be recovered
@@ -161,7 +150,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(RestoreFSBackupItemParams.TargetStorageAccountName, TargetStorageAccountName);
                 providerParameters.Add(RestoreFSBackupItemParams.TargetFileShareName, TargetFileShareName);
                 providerParameters.Add(RestoreFSBackupItemParams.TargetFolder, TargetFolder);
-                providerParameters.Add(RestoreWLBackupItemParams.WLRecoveryConfig, WLRecoveryConfig);
 
                 if (StorageAccountName != null)
                 {
@@ -185,25 +173,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 PsBackupProviderManager providerManager =
                     new PsBackupProviderManager(providerParameters, ServiceClientAdapter);
-                IPsBackupProvider psBackupProvider = null;
-                if (string.Compare(ParameterSetName, AzureWorkloadParameterSet) != 0)
-                {
-                    psBackupProvider = providerManager.GetProviderInstance(
-                        RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
-                }
-                else
-                {
-                    psBackupProvider = providerManager.GetProviderInstance(
-                        WorkloadType.MSSQL, BackupManagementType.AzureWorkload);
-                }
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
+                    RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
                 var jobResponse = psBackupProvider.TriggerRestore();
+
                 WriteDebug(string.Format("Restore submitted"));
                 HandleCreatedJob(
                     jobResponse,
                     Resources.RestoreOperation,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName);
-            }, ShouldProcess(RecoveryPoint != null ? RecoveryPoint.ItemName : WLRecoveryConfig.ToString(), VerbsData.Restore));
+            }, ShouldProcess(RecoveryPoint.ItemName, VerbsData.Restore));
         }
     }
 }
