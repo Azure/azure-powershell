@@ -135,7 +135,7 @@ PS C:\>Set-AzSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup0
 PS C:\>Set-AzSqlServerAuditing -State Disabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -LogAnalytics
 ```
 
-### Example 9: Disable, through pipeline, the log analytics auditing policy of an Azure SQL server
+### Example 10: Disable, through pipeline, the log analytics auditing policy of an Azure SQL server
 ```
 PS C:\>Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Set-AzSqlServerAuditing -LogAnalytics -State Disabled
 ```
