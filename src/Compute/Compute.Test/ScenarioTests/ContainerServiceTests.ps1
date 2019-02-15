@@ -51,52 +51,52 @@ function Test-ContainerService
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
         $container = $job | Receive-Job
-
-		$wildcardRgQuery = ($rgname -replace ".$") + "*"
-		$wildcardNameQuery = ($csName -replace ".$") + "*"
-
-		$cs = Get-AzContainerService
-		Assert-True { $cs.Count -ge 1 }
+        
+        $wildcardRgQuery = ($rgname -replace ".$") + "*"
+        $wildcardNameQuery = ($csName -replace ".$") + "*"
+        
+        $cs = Get-AzContainerService
+        Assert-True { $cs.Count -ge 1 }
         $output = $cs | Out-String;
         Assert-False { $output.Contains("AgentPoolProfiles") };
-
-		$cs = Get-AzContainerService -ResourceGroupName $rgname
-		Assert-AreEqual $rgname $cs.ResourceGroupName
+        
+        $cs = Get-AzContainerService -ResourceGroupName $rgname
+        Assert-AreEqual $rgname $cs.ResourceGroupName
         $output = $cs | Out-String;
         Assert-False { $output.Contains("AgentPoolProfiles") };
-
-		$cs = Get-AzContainerService -ResourceGroupName $wildcardRgQuery
-		Assert-AreEqual $rgname $cs.ResourceGroupName
+        
+        $cs = Get-AzContainerService -ResourceGroupName $wildcardRgQuery
+        Assert-AreEqual $rgname $cs.ResourceGroupName
         $output = $cs | Out-String;
         Assert-False { $output.Contains("AgentPoolProfiles") };
-
-		$cs = Get-AzContainerService -Name $csName;
-		Assert-AreEqual $rgname $cs.ResourceGroupName
+        
+        $cs = Get-AzContainerService -Name $csName;
+        Assert-AreEqual $rgname $cs.ResourceGroupName
         $output = $cs | Out-String;
         Assert-False { $output.Contains("AgentPoolProfiles") };
-
-		$cs = Get-AzContainerService -Name $wildcardNameQuery;
-		Assert-AreEqual $rgname $cs.ResourceGroupName
+        
+        $cs = Get-AzContainerService -Name $wildcardNameQuery;
+        Assert-AreEqual $rgname $cs.ResourceGroupName
         $output = $cs | Out-String;
         Assert-False { $output.Contains("AgentPoolProfiles") };
-
-		$cs = Get-AzContainerService -ResourceGroupName $rgname -Name $wildcardNameQuery;
-		Assert-AreEqual $rgname $cs.ResourceGroupName
+        
+        $cs = Get-AzContainerService -ResourceGroupName $rgname -Name $wildcardNameQuery;
+        Assert-AreEqual $rgname $cs.ResourceGroupName
         $output = $cs | Out-String;
         Assert-False { $output.Contains("AgentPoolProfiles") };
-
-		$cs = Get-AzContainerService -ResourceGroupName $wildcardRgQuery -Name $csName;
-		Assert-AreEqual $rgname $cs.ResourceGroupName
+        
+        $cs = Get-AzContainerService -ResourceGroupName $wildcardRgQuery -Name $csName;
+        Assert-AreEqual $rgname $cs.ResourceGroupName
         $output = $cs | Out-String;
         Assert-False { $output.Contains("AgentPoolProfiles") };
-
-		$cs = Get-AzContainerService -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery;
-		Assert-AreEqual $rgname $cs.ResourceGroupName
+        
+        $cs = Get-AzContainerService -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery;
+        Assert-AreEqual $rgname $cs.ResourceGroupName
         $output = $cs | Out-String;
         Assert-False { $output.Contains("AgentPoolProfiles") };
-
+        
         $cs = Get-AzContainerService -ResourceGroupName $rgname -Name $csName;
-		Assert-AreEqual $rgname $cs.ResourceGroupName
+        Assert-AreEqual $rgname $cs.ResourceGroupName
         $output = $cs | Out-String;
         Assert-True { $output.Contains("AgentPoolProfiles") };
 
