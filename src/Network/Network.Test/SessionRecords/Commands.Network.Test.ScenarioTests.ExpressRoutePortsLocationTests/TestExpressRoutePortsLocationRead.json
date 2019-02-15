@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/ExpressRoutePortsLocations?api-version=2018-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9FeHByZXNzUm91dGVQb3J0c0xvY2F0aW9ucz9hcGktdmVyc2lvbj0yMDE4LTExLTAx",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/ExpressRoutePortsLocations?api-version=2018-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9FeHByZXNzUm91dGVQb3J0c0xvY2F0aW9ucz9hcGktdmVyc2lvbj0yMDE4LTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8a8a6982-5fcf-41e7-8321-660cf7234059"
+          "116c57ac-7c61-4ea0-a1a3-79424c4d2c19"
         ],
         "Accept-Language": [
           "en-US"
@@ -15,8 +15,8 @@
         "User-Agent": [
           "FxVersion/4.6.27019.06",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.6.3.9600.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.8.0.0"
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -27,10 +27,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "43edf365-f540-442f-bef6-95524242d0a2"
+          "64495b02-167a-46c4-9c41-0f3f5de85a29"
         ],
         "x-ms-correlation-request-id": [
-          "61d0b2d2-b632-4784-8c62-f75f5b506031"
+          "8e01d8ef-cf69-46e5-bd52-08d644d8a757"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,13 +43,13 @@
           "11999"
         ],
         "x-ms-routing-request-id": [
-          "UKWEST:20190110T100317Z:61d0b2d2-b632-4784-8c62-f75f5b506031"
+          "WESTEUROPE:20190212T105009Z:8e01d8ef-cf69-46e5-bd52-08d644d8a757"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 10 Jan 2019 10:03:17 GMT"
+          "Tue, 12 Feb 2019 10:50:09 GMT"
         ],
         "Content-Length": [
           "3771"
@@ -65,13 +65,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/ExpressRoutePortsLocations/Cheyenne-ERDirect?api-version=2018-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9FeHByZXNzUm91dGVQb3J0c0xvY2F0aW9ucy9DaGV5ZW5uZS1FUkRpcmVjdD9hcGktdmVyc2lvbj0yMDE4LTExLTAx",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/ExpressRoutePortsLocations/Cheyenne-ERDirect?api-version=2018-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9FeHByZXNzUm91dGVQb3J0c0xvY2F0aW9ucy9DaGV5ZW5uZS1FUkRpcmVjdD9hcGktdmVyc2lvbj0yMDE4LTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7ff4da0b-3324-4bf7-95d7-25e83800d685"
+          "32f138c1-9bbe-49d8-989d-75b32902049d"
         ],
         "Accept-Language": [
           "en-US"
@@ -79,8 +79,8 @@
         "User-Agent": [
           "FxVersion/4.6.27019.06",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.6.3.9600.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.8.0.0"
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -91,10 +91,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f6a9ebc2-42ce-4294-bc3b-0fe78766cea5"
+          "13eb16ed-1f9d-49b2-99f8-be5b7907e532"
         ],
         "x-ms-correlation-request-id": [
-          "275e6e04-82a6-4f14-9023-dd40e1423d69"
+          "19825a27-9820-4581-82a4-af7185e6d39b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -107,13 +107,13 @@
           "11998"
         ],
         "x-ms-routing-request-id": [
-          "UKWEST:20190110T100320Z:275e6e04-82a6-4f14-9023-dd40e1423d69"
+          "WESTEUROPE:20190212T105010Z:19825a27-9820-4581-82a4-af7185e6d39b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 10 Jan 2019 10:03:20 GMT"
+          "Tue, 12 Feb 2019 10:50:09 GMT"
         ],
         "Content-Length": [
           "458"
