@@ -19,8 +19,8 @@ Get a security contact by resource ID
 function Test-AzSecurityThreatProtection-ResourceId
 {
 	# Setup
-	$testSuffix = "pstest"
-	$testParams = Get-AdvancedThreatProtectionTestEnvironmentParameters $testSuffix
+	$testPrefix = "psstorage"
+	$testParams = Get-AdvancedThreatProtectionTestEnvironmentParameters $testPrefix
 	$resourceId = "/subscriptions/" + $testParams.subscriptionId + "/resourceGroups/" + $testParams.rgName + "/providers/Microsoft.Storage/storageAccounts/" + $testParams.accountName
 	Create-TestEnvironmentWithParams $testParams
 
@@ -41,13 +41,13 @@ function Test-AzSecurityThreatProtection-ResourceId
 .SYNOPSIS
 Gets the values of the parameters used at the tests
 #>
-function Get-AdvancedThreatProtectionTestEnvironmentParameters ($testSuffix)
+function Get-AdvancedThreatProtectionTestEnvironmentParameters ($testPrefix)
 {
 	return @{ subscriptionId =  (Get-AzContext).Subscription.Id;
-			rgName = "storage-atp-cmdlet-test-rg" +$testSuffix;
-			accountName = "storage" +$testSuffix;
+			rgName = getAssetName ($testPrefix);
+			accountName = getAssetName ($testPrefix);
 			storageSku = "Standard_GRS";
-			location = "West Central US"
+			location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 			}
 }
 
@@ -61,5 +61,5 @@ function Create-TestEnvironmentWithParams ($testParams)
 	New-AzResourceGroup -Name $testParams.rgName -Location $testParams.location
 
 	# Create the storage account.
-	$storageAccount = New-AzStorageAccount -ResourceGroupName $testParams.rgName -AccountName $testParams.accountName -Location $testParams.location -SkuName $testParams.storageSku
+	$storageAccount = New-AzStorageAccount -ResourceGroupName $testParams.rgName -Name $testParams.accountName -Location $testParams.location -Type $testParams.storageSku
 }

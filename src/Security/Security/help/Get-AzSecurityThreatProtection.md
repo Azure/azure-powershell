@@ -18,7 +18,7 @@ Get-AzSecurityThreatProtection -ResourceId <String> [-DefaultProfile <IAzureCont
 ```
 
 ## DESCRIPTION
-The "Get-AzSecurityThreatProtection" cmdlet gets the threat protetion policy of a storage account.
+The "Get-AzSecurityThreatProtection" cmdlet gets the threat protecion policy of a storage account.
 To use this cmdlet, specify the *ResourceId* parameter.
 
 
@@ -26,10 +26,16 @@ To use this cmdlet, specify the *ResourceId* parameter.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecurityThreatProtection -ResourceId "/subscriptions/cma24pc8-89b5-4aa7-9ff6-486e886c304a/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
+PS C:\> Get-AzSecurityThreatProtection -ResourceId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
+```
+Example 1 Output:
+```powershell
+IsEnabled Id
+--------- --
+    False  "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
 ```
 
-This command gets the threat protection policy for resource id "/subscriptions/cma24pc8-89b5-4aa7-9ff6-486e886c304a/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/".
+This command gets the threat protection policy for resource id "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/".
 
 ## PARAMETERS
 

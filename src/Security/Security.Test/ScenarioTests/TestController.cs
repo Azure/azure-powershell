@@ -13,9 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Security;
-using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -64,8 +64,8 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
                     _helper.GetRMModulePath(@"AzureRM.Security.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    _helper.GetRMModulePath(@"AzureRM.Resources"),
-                    _helper.GetRMModulePath(@"Az.Storage.psd1"));
+                    "AzureRM.Storage.ps1",
+                    "AzureRM.Resources.ps1");
 
                 _helper.RunPowerShellTest(scripts);
             }
