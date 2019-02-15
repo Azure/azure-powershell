@@ -39,7 +39,7 @@ IsEnabled Id
 --------- --
     True  "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
 ```
-This command enables the threat protection policy for resource id "/subscriptions/cma24pc8-89b5-4aa7-9ff6-486e886c304a/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/".
+This command enables the threat protection policy for resource id "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/".
 ### Example 2:  Disable Advanced Threat Protection policy:
 ```powershell
 PS C:\> Set-AzSecurityThreatProtection -ResourceId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/" -Disable
@@ -48,7 +48,7 @@ IsEnabled Id
 --------- --
     False  "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
 ```
-This command disables the threat protection policy for resource id "/subscriptions/cma24pc8-89b5-4aa7-9ff6-486e886c304a/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/".
+This command disables the threat protection policy for resource id "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/".
 ## PARAMETERS
 
 ### -DefaultProfile
