@@ -137,26 +137,30 @@ VirtualMachine with an assigned Managed Service Identity, this will allow the co
 ### Example 5: Add an Account Using Managed Service Identity Login and ClientId
 ```powershell
 PS C:\> $identity = Get-AzUserAssignedIdentity -ResourceGroupName "myResourceGroup" -Name "myUserAssignedIdentity"
-PS C:\> Connect-AzAccount -Identity -AccountId $identity.ClientId
+PS C:\> Get-AzVM -ResourceGroupName contoso -Name testvm | Update-AzVM -IdentityType UserAssigned -IdentityId $identity.Id
+PS C:\> Connect-AzAccount -Identity -AccountId $identity.ClientId # Run on the "testvm" virtual machine
 
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
 MSI@50342              Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
-This command connects using the managed service identity of "myUserAssignedIdentity".
+This command connects using the managed service identity of "myUserAssignedIdentity" by adding the User Assigned Identity to the Virtual Machine, then connecting using the ClientId of the User Assigned Identity.
+More information about configuring Managed Identities can be found here: https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.
 
 ### Example 6: Add an Account Using Managed Service Identity Login and ClientId
 ```powershell
 PS C:\> $identity = Get-AzUserAssignedIdentity -ResourceGroupName "myResourceGroup" -Name "myUserAssignedIdentity"
-PS C:\> Connect-AzAccount -Identity -AccountId $identity.Id
+PS C:\> Get-AzVM -ResourceGroupName contoso -Name testvm | Update-AzVM -IdentityType UserAssigned -IdentityId $identity.Id
+PS C:\> Connect-AzAccount -Identity -AccountId $identity.Id # Run on the "testvm" virtual machine
 
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
 MSI@50342              Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
-This command connects using the managed service identity of "myUserAssignedIdentity".
+This command connects using the managed service identity of "myUserAssignedIdentity" by adding the User Assigned Identity to the Virtual Machine, then connecting using the Id of the User Assigned Identity.
+More information about configuring Managed Identities can be found here: https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.
 
 ### Example 7: Add an account using certificates
 ```powershell
