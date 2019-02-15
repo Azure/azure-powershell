@@ -25,6 +25,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         OutputType(typeof(ServerBlobAuditingSettingsModel))]
     public class GetAzSqlServerAuditing : SqlServerAuditingSettingsCmdletBase
     {
+        protected override ServerBlobAuditingSettingsModel GetEntity()
+        {
+            TraceWarningIfParameterIsUsed(DefinitionsCommon.WhatIfParameterName);
+            TraceWarningIfParameterIsUsed(DefinitionsCommon.ConfirmParameterName);
+
+            return base.GetEntity();
+        }
+
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
@@ -32,6 +40,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         protected override ServerBlobAuditingSettingsModel PersistChanges(ServerBlobAuditingSettingsModel model)
         {
             return null;
+        }
+
+        private void TraceWarningIfParameterIsUsed(string parameterName)
+        {
+            if (MyInvocation.BoundParameters.ContainsKey(parameterName))
+            {
+                WriteWarning($"Please avoid using parameter '{parameterName}' as it will be deprecated soon.");
+            }
         }
     }
 }
