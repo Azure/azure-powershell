@@ -122,20 +122,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                             containerType));
                     }
                     break;
-                case ContainerType.AzureVMAppContainer:
-                    if (backupManagementType == BackupManagementType.AzureWorkload ||
-                        backupManagementType == null)
-                    {
-                        providerType = PsBackupProviderTypes.AzureWorkload;
-                    }
-                    else
-                    {
-                        throw new ArgumentException(
-                            string.Format(
-                            Resources.BackupManagementTypeRequiredForContainerType,
-                            containerType));
-                    }
-                    break;
                 default:
                     throw new ArgumentException(
                         string.Format(Resources.UnsupportedContainerType,
@@ -168,9 +154,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     break;
                 case WorkloadType.AzureFiles:
                     providerType = PsBackupProviderTypes.AzureFiles;
-                    break;
-                case WorkloadType.MSSQL:
-                    providerType = PsBackupProviderTypes.AzureWorkload;
                     break;
                 default:
                     throw new ArgumentException(
@@ -232,16 +215,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     }
                     psProviderType = PsBackupProviderTypes.AzureFiles;
                     break;
-                case WorkloadType.MSSQL:
-                    if (backupManagementType.HasValue &&
-                        backupManagementType != BackupManagementType.AzureWorkload)
-                    {
-                        throw new ArgumentException(
-                            string.Format(Resources.BackupManagementTypeNotExpectedForWorkloadType,
-                            workloadType.ToString()));
-                    }
-                    psProviderType = PsBackupProviderTypes.AzureWorkload;
-                    break;
                 default:
                     throw new ArgumentException(
                         string.Format(Resources.UnsupportedWorkloadTypeException,
@@ -274,9 +247,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     break;
                 case PsBackupProviderTypes.AzureFiles:
                     psBackupProvider = new AzureFilesPsBackupProvider();
-                    break;
-                case PsBackupProviderTypes.AzureWorkload:
-                    psBackupProvider = new AzureWorkloadPsBackupProvider();
                     break;
                 default:
                     break;
