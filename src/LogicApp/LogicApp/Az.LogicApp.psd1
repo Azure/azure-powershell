@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.2.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Logic.dll'
@@ -75,6 +75,8 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzIntegrationAccountAgreement', 
+               'Get-AzIntegrationAccountAssembly', 
+               'Get-AzIntegrationAccountBatchConfiguration', 
                'Get-AzIntegrationAccountCallbackUrl', 
                'Get-AzIntegrationAccountCertificate', 'Get-AzIntegrationAccount', 
                'Get-AzIntegrationAccountMap', 'Get-AzIntegrationAccountPartner', 
@@ -82,16 +84,22 @@ CmdletsToExport = 'Get-AzIntegrationAccountAgreement',
                'Get-AzIntegrationAccountGeneratedIcn', 
                'Get-AzIntegrationAccountReceivedIcn', 
                'New-AzIntegrationAccountAgreement', 
+               'New-AzIntegrationAccountAssembly', 
+               'New-AzIntegrationAccountBatchConfiguration', 
                'New-AzIntegrationAccountCertificate', 'New-AzIntegrationAccount', 
                'New-AzIntegrationAccountMap', 'New-AzIntegrationAccountPartner', 
                'New-AzIntegrationAccountSchema', 
                'Remove-AzIntegrationAccountAgreement', 
+               'Remove-AzIntegrationAccountAssembly', 
+               'Remove-AzIntegrationAccountBatchConfiguration', 
                'Remove-AzIntegrationAccountCertificate', 
                'Remove-AzIntegrationAccount', 'Remove-AzIntegrationAccountMap', 
                'Remove-AzIntegrationAccountPartner', 
                'Remove-AzIntegrationAccountSchema', 
                'Remove-AzIntegrationAccountReceivedIcn', 
                'Set-AzIntegrationAccountAgreement', 
+               'Set-AzIntegrationAccountAssembly', 
+               'Set-AzIntegrationAccountBatchConfiguration', 
                'Set-AzIntegrationAccountCertificate', 'Set-AzIntegrationAccount', 
                'Set-AzIntegrationAccountMap', 'Set-AzIntegrationAccountPartner', 
                'Set-AzIntegrationAccountSchema', 'Stop-AzLogicAppRun', 
