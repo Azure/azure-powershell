@@ -30,46 +30,25 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         IAuthenticator Next { get; set; }
 
         /// <summary>
-        /// Determine if this authenticator can apply to the given authentication parameters
+        /// Determine if this authenticator can apply to the given authentication parameters.
         /// </summary>
-        /// <param name="account">The account to authenticate</param>
-        /// <param name="environment">The environment to authenticate in</param>
-        /// <param name="tenant">The tenant</param>
-        /// <param name="password">The secure credentials for the given account</param>
-        /// <param name="promptBehavior">The desired prompting behavior during authentication</param>
-        /// <param name="promptAction">Action to take if the user need to be prompted</param>
-        /// <param name="tokenCache">The token cache to use in this authentication</param>
-        /// <param name="resourceId">The resource that will need proof of authentication</param>
-        /// <returns>true if this authenticator can be applied to the given parameters, otherwise false</returns>
-        bool CanAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId);
+        /// <param name="parameters">The complex object containing authentication specific information (e.g., tenant, token cache, etc.)</param>
+        /// <returns></returns>
+        bool CanAuthenticate(AuthenticationParameters parameters);
 
         /// <summary>
         /// Apply this authenticator to the given authentication parameters
         /// </summary>
-        /// <param name="account">The account to authenticate</param>
-        /// <param name="environment">The environment to authenticate in</param>
-        /// <param name="tenant">The tenant</param>
-        /// <param name="password">The secure credentials for the given account</param>
-        /// <param name="promptBehavior">The desired prompting behavior during authentication</param>
-        /// <param name="promptAction">Action to take if the user need to be prompted</param>
-        /// <param name="tokenCache">The token cache to use in this authentication</param>
-        /// <param name="resourceId">The resource that will need proof of authentication</param>
-        /// <returns>The token based authntication information</returns>
-        Task<IAccessToken> Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId);
+        /// <param name="parameters">The complex object containing authentication specific information (e.g., tenant, token cache, etc.)</param>
+        /// <returns></returns>
+        Task<IAccessToken> Authenticate(AuthenticationParameters parameters);
 
         /// <summary>
-        /// Determine if this request can be authenticated using the given authenticaotr, and authenticate if it can 
+        /// Determine if this request can be authenticated using the given authenticator, and authenticate if it can
         /// </summary>
-        /// <param name="account">The account to authenticate</param>
-        /// <param name="environment">The environment to authenticate in</param>
-        /// <param name="tenant">The tenant</param>
-        /// <param name="password">The secure credentials for the given account</param>
-        /// <param name="promptBehavior">The desired prompting behavior during authentication</param>
-        /// <param name="promptAction">Action to take if the user need to be prompted</param>
-        /// <param name="tokenCache">The token cache to use in this authentication</param>
-        /// <param name="resourceId">The resource that will need proof of authentication</param>
-        /// <param name="token">The token based authntication information</param>
-        /// <returns>true if the request was authenticated, otherwise false</returns>
-        bool TryAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId, out Task<IAccessToken> token);
+        /// <param name="parameters">The complex object containing authentication specific information (e.g., tenant, token cache, etc.)</param>
+        /// <param name="token">The token based authentication information</param>
+        /// <returns></returns>
+        bool TryAuthenticate(AuthenticationParameters parameters, out Task<IAccessToken> token);
     }
 }

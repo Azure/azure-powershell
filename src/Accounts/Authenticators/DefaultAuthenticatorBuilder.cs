@@ -1,4 +1,5 @@
-﻿// Licensed under the Apache License, Version 2.0 (the "License");
+﻿// ----------------------------------------------------------------------------------
+// Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 // http://www.apache.org/licenses/LICENSE-2.0
@@ -15,13 +16,14 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
-    public class DesktopAuthenticatorBuilder : IAuthenticatorBuilder
+    public class DefaultAuthenticatorBuilder : IAuthenticatorBuilder
     {
-        public DesktopAuthenticatorBuilder()
+        public DefaultAuthenticatorBuilder()
         {
-            AppendAuthenticator(() => { return new InteractiveUserAuthenticator(); });
-            var defaultBuilder = new DefaultAuthenticatorBuilder();
-            AppendAuthenticator(() => { return defaultBuilder.Authenticator; });
+                AppendAuthenticator(() => { return new UsernamePasswordAuthenticator(); });
+                AppendAuthenticator(() => { return new DeviceCodeAuthenticator(); });
+                AppendAuthenticator(() => { return new ServicePrincipalAuthenticator(); });
+                AppendAuthenticator(() => { return new SilentAuthenticator(); });
         }
 
         public IAuthenticator Authenticator { get; set; }
@@ -35,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             }
 
             IAuthenticator current;
-            for (current = Authenticator; current != null && current.Next != null; current = current.Next);
+            for (current = Authenticator; current != null && current.Next != null; current = current.Next) ;
             current.Next = constructor();
             return true;
         }

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
@@ -21,26 +22,25 @@ using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
-    /// <summary>
-    /// Authenticate username + password scenarios
-    /// </summary>
-    public class UsernamePasswordAuthenticator : DelegatingAuthenticator
+    public class SilentAuthenticator : DelegatingAuthenticator
     {
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
-            var upParameters = parameters as UsernamePasswordParameters;
-            var scopes = new string[] { string.Format(AuthenticationHelpers.UserImpersonationScope, upParameters.Environment.ActiveDirectoryServiceEndpointResourceId) };
+            var silentParameters = parameters as SilentParameters;
+            var scopes = new string[] { string.Format(AuthenticationHelpers.UserImpersonationScope, silentParameters.Environment.ActiveDirectoryServiceEndpointResourceId) };
             var publicClient = new PublicClientApplication(
                 AuthenticationHelpers.PowerShellClientId,
-                AuthenticationHelpers.GetAuthority(upParameters.Environment, upParameters.TenantId),
-                upParameters.TokenCache.GetUserCache() as TokenCache);
-            var response = publicClient.AcquireTokenByUsernamePasswordAsync(scopes, upParameters.UserId, upParameters.Password);
+                AuthenticationHelpers.GetAuthority(silentParameters.Environment, silentParameters.TenantId),
+                silentParameters.TokenCache.GetUserCache() as TokenCache);
+            var accounts = publicClient.GetAccountsAsync()
+                .ConfigureAwait(false).GetAwaiter().GetResult();
+            var response = publicClient.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == silentParameters.UserId));
             return AuthenticationResultToken.GetAccessTokenAsync(response);
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
-            return parameters is UsernamePasswordParameters;
+            return parameters is SilentParameters;
         }
     }
 }

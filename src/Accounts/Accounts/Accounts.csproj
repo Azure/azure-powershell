@@ -47,7 +47,8 @@
    
   <ItemGroup>
     <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
-    <ProjectReference Include="..\Authentication\Authentication.csproj" />  
+    <ProjectReference Include="..\Authentication\Authentication.csproj" />
+    <ProjectReference Include="..\Authenticators\Authenticators.csproj" />  
   </ItemGroup>
 
 </Project>

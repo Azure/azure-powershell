@@ -27,6 +27,7 @@ using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.PowerShell.Authenticators;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -398,6 +399,13 @@ namespace Microsoft.Azure.Commands.Profile
                     new AzureRmServicePrincipalKeyStore();
 #endif
                 AzureSession.Instance.RegisterComponent(ServicePrincipalKeyStore.Name, () => keyStore);
+
+                IAuthenticatorBuilder builder = null;
+                if (!AzureSession.Instance.TryGetComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, out builder))
+                {
+                    builder = new DefaultAuthenticatorBuilder();
+                    AzureSession.Instance.RegisterComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, () => builder);
+                }
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)

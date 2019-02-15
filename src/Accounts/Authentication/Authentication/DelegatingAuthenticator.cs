@@ -27,20 +27,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public abstract class DelegatingAuthenticator : IAuthenticator
     {
         public IAuthenticator Next { get; set; }
-        public abstract bool CanAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId);
-        public abstract Task<IAccessToken> Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId);
-        public bool TryAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId, out Task<IAccessToken> token)
+        public abstract bool CanAuthenticate(AuthenticationParameters parameters);
+        public abstract Task<IAccessToken> Authenticate(AuthenticationParameters parameters);
+
+        public bool TryAuthenticate(AuthenticationParameters parameters, out Task<IAccessToken> token)
         {
             token = null;
-            if (CanAuthenticate(account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId))
+            if (CanAuthenticate(parameters))
             {
-                token = Authenticate(account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId);
+                token = Authenticate(parameters);
                 return true;
             }
 
             if (Next != null)
             {
-                return Next.TryAuthenticate(account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId, out token);
+                return Next.TryAuthenticate(parameters, out token);
             }
 
             return false;

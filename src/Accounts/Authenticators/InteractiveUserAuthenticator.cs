@@ -26,26 +26,26 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     /// </summary>
     public class InteractiveUserAuthenticator : DelegatingAuthenticator
     {
-        public async override Task<IAccessToken> Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
+        public async override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
-            var scopes = new string[] { environment.ActiveDirectoryServiceEndpointResourceId + "/user_impersonation" };
+            var interactiveParameters = parameters as InteractiveParameters;
+            var scopes = new string[] { string.Format(AuthenticationHelpers.UserImpersonationScope, interactiveParameters.Environment.ActiveDirectoryServiceEndpointResourceId) };
             var publicClient = new PublicClientApplication(
                 AuthenticationHelpers.PowerShellClientId,
-                AuthenticationHelpers.GetAuthority(environment, tenant),
-                tokenCache.GetUserCache() as TokenCache);
+                AuthenticationHelpers.GetAuthority(interactiveParameters.Environment, interactiveParameters.TenantId),
+                interactiveParameters.TokenCache.GetUserCache() as TokenCache);
             var response = await publicClient.AcquireTokenAsync(
                 scopes,
-                account.Id,
-                AuthenticationHelpers.GetPromptBehavior(promptBehavior),
+                string.Empty,
+                AuthenticationHelpers.GetPromptBehavior(ShowDialog.Always),
                 AuthenticationHelpers.EnableEbdMagicCookie,
                 new UIParent(new ConsoleParentWindow()));
-            account.Id = response?.Account?.Username;
             return AuthenticationResultToken.GetAccessToken(response);
         }
 
-        public override bool CanAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
+        public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
-            return (account?.Type == AzureAccount.AccountType.User && environment != null && !string.IsNullOrWhiteSpace(tenant) && password == null && promptBehavior != ShowDialog.Never && tokenCache != null  && account != null && !account.IsPropertySet("UseDeviceAuth"));
+            return parameters is InteractiveParameters;
         }
     }
 }

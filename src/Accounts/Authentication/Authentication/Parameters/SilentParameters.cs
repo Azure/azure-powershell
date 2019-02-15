@@ -12,26 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Security;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    /// <summary>
-    /// Default authenticator, which defers to any other authenticators in the chain
-    /// </summary>
-    public class PassThroughAuthenticator : DelegatingAuthenticator
+    public class SilentParameters : AuthenticationParameters
     {
-        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
-        {
-            return null;
-        }
+        public string UserId { get; set; }
 
-        public override bool CanAuthenticate(AuthenticationParameters parameters)
+        public SilentParameters(
+            IAzureEnvironment environment,
+            IAzureTokenCache tokenCache,
+            string tenantId,
+            string userId) : base(environment, tokenCache, tenantId)
         {
-            return false;
+            UserId = userId;
         }
     }
 }

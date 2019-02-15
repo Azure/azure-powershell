@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             IAzureTokenCache tokenCache,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-            IAccessToken token;
+            IAccessToken token = null;
             var cache = tokenCache.GetUserCache() as TokenCache;
             if (cache == null)
             {
@@ -102,71 +102,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             Task<IAccessToken> authToken;
-            if (Builder.Authenticator.TryAuthenticate(account, environment, tenant, password, promptBehavior, Task.FromResult(promptAction), tokenCache, resourceId, out authToken))
+            if (Builder.Authenticator.TryAuthenticate(GetAuthenticationParameters(account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId), out authToken))
             {
-                return authToken.ConfigureAwait(false).GetAwaiter().GetResult();
-            }
-
-            var configuration = GetAdalConfiguration(environment, tenant, resourceId, cache);
-
-            TracingAdapter.Information(
-                Resources.AdalAuthConfigurationTrace,
-                configuration.AdDomain,
-                configuration.AdEndpoint,
-                configuration.ClientId,
-                configuration.ClientRedirectUri,
-                configuration.ResourceClientUri,
-                configuration.ValidateAuthority);
-            if (account != null && account.Type == AzureAccount.AccountType.ManagedService)
-            {
-                token = GetManagedServiceToken(account, environment, tenant, resourceId);
-            }
-            else if (account != null && environment != null
-                && account.Type == AzureAccount.AccountType.AccessToken)
-            {
-                var rawToken = new RawAccessToken
+                token = authToken.ConfigureAwait(false).GetAwaiter().GetResult();
+                if (token != null)
                 {
-                    TenantId = tenant,
-                    UserId = account.Id,
-                    LoginType = AzureAccount.AccountType.AccessToken
-                };
-
-                if ((string.Equals(resourceId, environment.AzureKeyVaultServiceEndpointResourceId, StringComparison.OrdinalIgnoreCase)
-                     || string.Equals(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, resourceId, StringComparison.OrdinalIgnoreCase))
-                     && account.IsPropertySet(AzureAccount.Property.KeyVaultAccessToken))
-                {
-                    rawToken.AccessToken = account.GetProperty(AzureAccount.Property.KeyVaultAccessToken);
+                    account.Id = token.UserId;
                 }
-                else if ((string.Equals(resourceId, environment.GraphEndpointResourceId, StringComparison.OrdinalIgnoreCase)
-                    || string.Equals(AzureEnvironment.Endpoint.GraphEndpointResourceId, resourceId, StringComparison.OrdinalIgnoreCase))
-                    && account.IsPropertySet(AzureAccount.Property.GraphAccessToken))
-                {
-                    rawToken.AccessToken = account.GetProperty(AzureAccount.Property.GraphAccessToken);
-                }
-                else if ((string.Equals(resourceId, environment.ActiveDirectoryServiceEndpointResourceId, StringComparison.OrdinalIgnoreCase)
-                    || string.Equals(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, resourceId, StringComparison.OrdinalIgnoreCase))
-                    && account.IsPropertySet(AzureAccount.Property.AccessToken))
-                {
-                    rawToken.AccessToken = account.GetAccessToken();
-                }
-                else
-                {
-                    throw new InvalidOperationException(string.Format(Resources.AccessTokenResourceNotFound, resourceId));
-                }
-
-                token = rawToken;
-            }
-            else if (account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
-            {
-                var thumbprint = account.GetProperty(AzureAccount.Property.CertificateThumbprint);
-                token = TokenProvider.GetAccessTokenWithCertificate(configuration, account.Id, thumbprint, account.Type);
-            }
-            else
-            {
-                token = TokenProvider.GetAccessToken(configuration, promptBehavior, promptAction, account.Id, password, account.Type);
             }
 
-            account.Id = token.UserId;
             return token;
         }
 
@@ -552,6 +496,39 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             return result;
+        }
+
+        private AuthenticationParameters GetAuthenticationParameters(
+            IAzureAccount account,
+            IAzureEnvironment environment,
+            string tenant,
+            SecureString password,
+            string promptBehavior,
+            Action<string> promptAction,
+            IAzureTokenCache tokenCache,
+            string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
+        {
+            if (account.Type == AzureAccount.AccountType.User)
+            {
+                if (password == null)
+                {
+                    if (!string.IsNullOrEmpty(account.Id))
+                    {
+                        return new SilentParameters(environment, tokenCache, tenant, account.Id);
+                    }
+
+                    return new InteractiveParameters(environment, tokenCache, tenant);
+                }
+
+                return new UsernamePasswordParameters(environment, tokenCache, tenant, account.Id, password);
+            }
+            else if (account.Type == AzureAccount.AccountType.ServicePrincipal ||
+                     account.Type == AzureAccount.AccountType.Certificate)
+            {
+                return new ServicePrincipalParameters(environment, tokenCache, tenant, account.Id, account.GetProperty(AzureAccount.Property.CertificateThumbprint), password);
+            }
+
+            return null;
         }
     }
 }
