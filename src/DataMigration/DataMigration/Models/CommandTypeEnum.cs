@@ -16,9 +16,10 @@ namespace Microsoft.Azure.Commands.DataMigration.Models
 {
     public enum CommandTypeEnum
     {
-        Complete,
-        Cancel,
-        Restart,
-        Finish
+        CompleteSqlDBSync,
+        CancelMongoDB,
+        RestartMongoDB,
+        FinishMongoDB,
+        CompleteSqlMiSync
     }
 }
