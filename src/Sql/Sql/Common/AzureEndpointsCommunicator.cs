@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
@@ -350,20 +351,25 @@ namespace Microsoft.Azure.Commands.Sql.Common
             return id;
         }
 
-        public async Task<string> RetrieveInformationProtectionPolicyAsync(Guid tenantId)
+        public async Task<Tuple<IDictionary<string, Guid>, IDictionary<string, Guid>>> RetrieveInformationProtectionPolicyAsync(Guid tenantId)
         {
-            IDictionary<string, Guid> sensitivityLabels = new Dictionary<string, Guid>();
-            IDictionary<string, Guid> informationTypes = new Dictionary<string, Guid>();
-
             string endpoint = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString();
             string uri = $"{endpoint}providers/Microsoft.Management/managementGroups/{tenantId}/providers/Microsoft.Security/informationprotectionpolicies/effective?api-version=2017-08-01-preview";
             Exception exception = new Exception(
                 string.Format(Properties.Resources.DataClassificationFailedToRetrieveInformationProtectionPolicy,
                 tenantId));
-            JToken responseToken = await SendAsync(uri, HttpMethod.Get, exception);
-            JToken propertiesToken = responseToken["properties"];
-            JArray labelsArray = (JArray)propertiesToken["labels"];
-            return responseToken.ToString();
+            JToken policyToken = await SendAsync(uri, HttpMethod.Get, exception);
+
+            IDictionary<string, Guid> sensitivityLabels = ToDictionary(policyToken, "labels");
+            IDictionary<string, Guid> informationTypes = ToDictionary(policyToken, "informationTypes");
+            return Tuple.Create(sensitivityLabels, informationTypes);
+        }
+
+        private static IDictionary<string, Guid> ToDictionary(JToken policyToken, string policyEntry)
+        {
+            JToken propertiesToken = policyToken["properties"];
+            IDictionary<string, JToken> dictionary = (JObject)propertiesToken["labels"];
+            return dictionary.ToDictionary(pair => pair.Value["displayName"].ToString(), pair => Guid.Parse(pair.Key));
         }
 
         /// <summary>
