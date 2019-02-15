@@ -18,7 +18,7 @@ Get-AzSecurityThreatProtection -ResourceId <String> [-DefaultProfile <IAzureCont
 ```
 
 ## DESCRIPTION
-The "Get-AzSecurityThreatProtection" cmdlet gets the threat protecion policy of a storage account.
+The "Get-AzSecurityThreatProtection" cmdlet gets the threat protection policy of a storage account.
 To use this cmdlet, specify the *ResourceId* parameter.
 
 
