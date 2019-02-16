@@ -120,14 +120,31 @@ namespace Microsoft.Azure.Commands.KeyVault
                 VaultName = InputObject.VaultName;
                 Name = InputObject.Name;
             }
-            
+
             if (ShouldProcess(Name, Properties.Resources.SetSecret))
             {
-                var secret = DataServiceClient.SetSecret(
-                VaultName,
-                Name,
-                SecretValue,
-                new PSKeyVaultSecretAttributes(!Disable.IsPresent, Expires, NotBefore, ContentType, Tag));
+                PSKeyVaultSecretAttributes attributes = new PSKeyVaultSecretAttributes();
+
+                attributes.Enabled = !Disable.IsPresent;
+
+                if (Expires != null) {
+                    attributes.Expires = this.Expires;
+                }
+
+                if (this.NotBefore != null) {
+                    attributes.NotBefore = this.NotBefore;
+                }
+
+                if (this.ContentType != null) {
+                    attributes.ContentType = this.ContentType;
+                }
+
+                if (this.Tag != null)
+                {
+                    attributes.Tags = this.Tag.ConvertToStringHashtable();
+                }
+
+                var secret = DataServiceClient.SetSecret(VaultName, Name, SecretValue, attributes);
                 WriteObject(secret);
             }
         }
