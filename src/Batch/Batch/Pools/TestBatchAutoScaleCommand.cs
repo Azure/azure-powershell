@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string AutoScaleFormula { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             EvaluateAutoScaleParameters parameters = new EvaluateAutoScaleParameters(this.BatchContext, this.Id, null,
                 this.AutoScaleFormula, this.AdditionalBehaviors);

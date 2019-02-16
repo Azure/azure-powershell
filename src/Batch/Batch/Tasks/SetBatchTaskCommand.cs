@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSCloudTask Task { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             this.BatchClient.UpdateTask(this.BatchContext, this.Task, this.AdditionalBehaviors);
         }

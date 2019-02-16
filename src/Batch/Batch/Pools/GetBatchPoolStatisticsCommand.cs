@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchPoolStatistics"), OutputType(typeof(PSPoolStatistics))]
     public class GetBatchPoolStatisticsCommand : BatchObjectModelCmdletBase
     {
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             PSPoolStatistics poolStatistics = BatchClient.GetAllPoolsLifetimeStatistics(this.BatchContext, this.AdditionalBehaviors);
             WriteObject(poolStatistics);

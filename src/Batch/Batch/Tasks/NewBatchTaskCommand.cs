@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
-        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
-        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet, Mandatory = true)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string CommandLine { get; set; }
 
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSTaskContainerSettings ContainerSettings { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             if (Tasks != null)
             {

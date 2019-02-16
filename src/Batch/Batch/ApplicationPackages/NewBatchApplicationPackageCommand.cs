@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public SwitchParameter ActivateOnly { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             PSApplicationPackage response = BatchClient.UploadAndActivateApplicationPackage(
                 this.ResourceGroupName,

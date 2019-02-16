@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Alias("ApplicationId")]
         public string ApplicationName { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             if (string.IsNullOrEmpty(this.ApplicationName))
             {

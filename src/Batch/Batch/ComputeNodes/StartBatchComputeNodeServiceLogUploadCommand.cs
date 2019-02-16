@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Batch
             HelpMessage = "The end of the time range from which to upload Batch Service log file(s).")]
         public DateTime? EndTime { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             StartComputeNodeServiceLogUploadParameters parameters = new StartComputeNodeServiceLogUploadParameters(
                 this.BatchContext,

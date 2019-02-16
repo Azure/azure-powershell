@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Expand { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             var options = new ListJobPreparationAndReleaseStatusOptions(this.BatchContext, this.AdditionalBehaviors)
             {

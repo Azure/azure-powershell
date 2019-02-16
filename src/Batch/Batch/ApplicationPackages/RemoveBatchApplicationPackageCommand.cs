@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string ApplicationVersion { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             WriteVerboseWithTimestamp(Resources.BeginMAMLCall, mamlCall);
             BatchClient.DeleteApplicationPackage(this.ResourceGroupName, this.AccountName, this.ApplicationName, this.ApplicationVersion);

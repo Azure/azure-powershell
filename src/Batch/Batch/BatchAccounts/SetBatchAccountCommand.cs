@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string AutoStorageAccountId { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             BatchAccountContext context = BatchClient.UpdateAccount(this.ResourceGroupName, this.AccountName, this.Tag, this.AutoStorageAccountId);
             WriteObject(context);

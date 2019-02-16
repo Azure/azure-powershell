@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchJobStatistics"), OutputType(typeof(PSJobStatistics))]
     public class GetBatchJobStatisticsCommand : BatchObjectModelCmdletBase
     {
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             PSJobStatistics jobStatistics = BatchClient.GetAllJobsLifetimeStatistics(this.BatchContext, this.AdditionalBehaviors);
             WriteObject(jobStatistics);

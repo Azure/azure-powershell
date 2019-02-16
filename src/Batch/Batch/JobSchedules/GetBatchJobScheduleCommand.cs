@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Expand { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             ListJobScheduleOptions options = new ListJobScheduleOptions(this.BatchContext, this.AdditionalBehaviors)
             {

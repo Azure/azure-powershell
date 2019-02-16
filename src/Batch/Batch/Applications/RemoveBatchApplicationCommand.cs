@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Alias("ApplicationId")]
         public string ApplicationName { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             WriteVerboseWithTimestamp(Resources.BeginMAMLCall, mamlCall);
             BatchClient.DeleteApplication(this.ResourceGroupName, this.AccountName, this.ApplicationName);

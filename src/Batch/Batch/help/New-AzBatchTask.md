@@ -15,7 +15,7 @@ Creates a Batch task under a job.
 
 ### JobId_Single (Default)
 ```
-New-AzBatchTask -JobId <String> -Id <String> [-DisplayName <String>] [-CommandLine <String>]
+New-AzBatchTask -JobId <String> -Id <String> -CommandLine <String> [-DisplayName <String>]
  [-ResourceFiles <PSResourceFile[]>] [-EnvironmentSettings <IDictionary>]
  [-AuthenticationTokenSettings <PSAuthenticationTokenSettings>] [-UserIdentity <PSUserIdentity>]
  [-AffinityInformation <PSAffinityInformation>] [-Constraints <PSTaskConstraints>]
@@ -39,7 +39,7 @@ New-AzBatchTask [-Job <PSCloudJob>] [-Tasks <PSCloudTask[]>] -BatchContext <Batc
 
 ### JobObject_Single
 ```
-New-AzBatchTask [-Job <PSCloudJob>] -Id <String> [-DisplayName <String>] [-CommandLine <String>]
+New-AzBatchTask [-Job <PSCloudJob>] -Id <String> -CommandLine <String> [-DisplayName <String>]
  [-ResourceFiles <PSResourceFile[]>] [-EnvironmentSettings <IDictionary>]
  [-AuthenticationTokenSettings <PSAuthenticationTokenSettings>] [-UserIdentity <PSUserIdentity>]
  [-AffinityInformation <PSAffinityInformation>] [-Constraints <PSTaskConstraints>]
@@ -203,7 +203,7 @@ Type: System.String
 Parameter Sets: JobId_Single, JobObject_Single
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

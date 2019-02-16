@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string ApplicationVersion { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             if (string.IsNullOrEmpty(this.ApplicationVersion))
             {

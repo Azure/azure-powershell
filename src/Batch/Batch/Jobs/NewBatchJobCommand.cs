@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public OnAllTasksComplete? OnAllTasksComplete { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             NewJobParameters parameters = new NewJobParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
             {

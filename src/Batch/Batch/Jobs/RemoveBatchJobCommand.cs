@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             ConfirmAction(
                 Force.IsPresent,

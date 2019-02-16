@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             PSApplication response = BatchClient.AddApplication(this.ResourceGroupName, this.AccountName, this.ApplicationName, this.AllowUpdates, this.DisplayName);
             WriteObject(response);

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public bool? AllowUpdates { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             WriteVerboseWithTimestamp(Resources.BeginMAMLCall, mamlCall);
             BatchClient.UpdateApplication(this.ResourceGroupName, this.AccountName, this.ApplicationName, this.AllowUpdates, this.DefaultVersion, this.DisplayName);
