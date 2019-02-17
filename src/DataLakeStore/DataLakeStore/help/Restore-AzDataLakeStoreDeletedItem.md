@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: D231E9A0-DC1E-411B-A87A-56A8C767F6C5
@@ -9,17 +9,21 @@ schema: 2.0.0
 # Restore-AzDataLakeStoreDeletedItem
 
 ## SYNOPSIS
-Restore a deleted file or folder in Azure Data Lake
+Restore a deleted file or folder in Azure Data Lake.
 
 ## SYNTAX
-### ByName (Default)
+
+### Default (Default)
 ```
-Restore-AzDataLakeStoreDeletedItem [-Account] <String> [-Path] <String> [-Destination] <String> [-Type] <String> [-RestoreAction] <String> [-Force] [-PassThru]
+Restore-AzDataLakeStoreDeletedItem [-Account] <String> [-Path] <String> [-Destination] <String>
+ [-Type] <String> [-RestoreAction <String>] [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
-### ByInputObject
+### InputObject
 ```
-Restore-AzDataLakeStoreDeletedItem [-Account] <String> [-DeletedItem] <DataLakeStoreDeletedItem> [-RestoreAction] <String> [-Force] [-PassThru]
+Restore-AzDataLakeStoreDeletedItem [-Account] <String> [-DeletedItem] <DataLakeStoreDeletedItem>
+ [-RestoreAction <String>] [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,13 +47,11 @@ To   - adl://ml1ptrashtest.azuredatalake.com/test4/file_1115
 Type - file
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 PS >
-
-
 ```
 
 ## PARAMETERS
-### ByName (Default)
-#### -Account
+
+### -Account
 Specifies the name of the Data Lake Store account.
 
 ```yaml
@@ -64,28 +66,44 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-#### -Path
-The path of the deleted deleted file or folder in trash.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.String
-Parameter Sets: DefaultParameterSet
-Aliases: 
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeletedItem
+The deleted item object
+
+
+```yaml
+Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreDeletedItem
+Parameter Sets: InputObject
+Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-#### -Destination
+### -Destination
 The destination path to where the deleted file or folder should be restored. 
 
 ```yaml
 Type: System.String
-Parameter Sets: DefaultParameterSet
-Aliases: 
+Parameter Sets: Default
+Aliases:
 
 Required: True
 Position: 2
@@ -94,64 +112,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-#### -Type
-The type of entry being restored - "file" or "folder"
-
-```yaml
-Type: System.String
-Parameter Sets: DefaultParameterSet
-Aliases: 
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-
-#### DeletedItem
-The deleted item object
-```yaml
-Type: DataLakeStoreDeletedItem
-Parameter Sets: InputObjectParameterSet
-Aliases: Default
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-#### -RestoreAction
-Action to take on destination name conflicts - "copy" or "overwrite"
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-#### -PassThru
-Return boolean true on success
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 ### -Force
 Forces the command to run without asking for user confirmation
 
@@ -166,6 +126,69 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -PassThru
+Return boolean true on success
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Path
+The path of the deleted deleted file or folder in trash.
+
+```yaml
+Type: System.String
+Parameter Sets: Default
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RestoreAction
+Action to take on destination name conflicts - "copy" or "overwrite"
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Type
+The type of entry being restored - "file" or "folder"
+
+```yaml
+Type: System.String
+Parameter Sets: Default
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
