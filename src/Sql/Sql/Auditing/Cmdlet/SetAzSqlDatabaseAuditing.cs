@@ -16,11 +16,15 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
+    [CmdletOutputBreakingChange(
+        typeof(DatabaseBlobAuditingSettingsModel),
+        ReplacementCmdletOutputTypeName = "bool")]
     [Cmdlet(
         VerbsCommon.Set,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.DatabaseAuditingCmdletsSuffix,

@@ -13,10 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
+    [CmdletOutputBreakingChange(
+        typeof(DatabaseBlobAuditingSettingsModel),
+        ReplacementCmdletOutputTypeName = "Microsoft.Azure.Commands.Sql.Auditing.Model.DatabaseAuditingSettingsModel")]
     [Cmdlet(
         VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.DatabaseAuditingCmdletsSuffix,
@@ -27,8 +31,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     {
         protected override DatabaseBlobAuditingSettingsModel GetEntity()
         {
-            TraceWarningIfParameterIsUsed(DefinitionsCommon.WhatIfParameterName);
-            TraceWarningIfParameterIsUsed(DefinitionsCommon.ConfirmParameterName);
+            TraceWarningIfParameterAreUsed(
+                $"{VerbsCommon.Get}-{ResourceManager.Common.AzureRMConstants.AzureRMPrefix}{DefinitionsCommon.DatabaseAuditingCmdletsSuffix}",
+                DefinitionsCommon.WhatIfParameterName,
+                DefinitionsCommon.ConfirmParameterName);
 
             return base.GetEntity();
         }
@@ -42,11 +48,22 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             return null;
         }
 
-        private void TraceWarningIfParameterIsUsed(string parameterName)
+        private void TraceWarningIfParameterAreUsed(string cmdletName, params string[] parametersNames)
         {
-            if (MyInvocation.BoundParameters.ContainsKey(parameterName))
+            bool wasHeaderWritten = false;
+            foreach (string parameterName in parametersNames)
             {
-                WriteWarning($"Please avoid using parameter '{parameterName}' as it will be deprecated soon.");
+                if (MyInvocation.BoundParameters.ContainsKey(parameterName))
+                {
+                    if (!wasHeaderWritten)
+                    {
+                        WriteWarning($"Breaking changes in the cmdlet '{cmdletName}' :");
+                        wasHeaderWritten = true;
+                    }
+
+                    WriteWarning($" - The parameter '{parameterName}' is changing");
+                    WriteWarning("   Change description: Parameter is being deprecated without being replaced");
+                }
             }
         }
     }
