@@ -77,7 +77,7 @@ Logs
    Category : Category4
 ```
 
-This command enables the metrics cateories called Category1 and Category2.
+This command disables the metrics cateories called Category1 and Category2.
 All the other categories remain the same.
 
 ### Example 4: Enable/disable multiple log categories
