@@ -23,7 +23,8 @@ Restore-AzDataLakeStoreDeletedItem [-Account] <String> [-Path] <String> [-Destin
 ### InputObject
 ```
 Restore-AzDataLakeStoreDeletedItem [-Account] <String> [-DeletedItem] <DataLakeStoreDeletedItem>
- [-RestoreAction <String>] [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-RestoreAction <String>] [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,8 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeletedItem
-The deleted item object
-
+The deleted item object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreDeletedItem
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Forces the command to run without asking for user confirmation
+Forces the command to run without asking for user confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return boolean true on success
+Return boolean true on success.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
