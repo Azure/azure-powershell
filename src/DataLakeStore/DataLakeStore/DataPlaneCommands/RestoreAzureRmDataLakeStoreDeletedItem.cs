@@ -18,7 +18,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreDeletedItem", DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(DataLakeStoreDeletedItem))]
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreDeletedItem",
+        DefaultParameterSetName = DefaultParameterSet, SupportsShouldProcess = true),
+        OutputType(typeof(DataLakeStoreDeletedItem))]
     [Alias("Restore-AdlStoreDeletedItem")]
     public class RestoreAzureDataLakeStoreDeletedItem : DataLakeStoreFileSystemCmdletBase
     {
