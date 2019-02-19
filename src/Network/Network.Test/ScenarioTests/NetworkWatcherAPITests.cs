@@ -122,7 +122,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ConnectionMonitor");
         }
 
-        [Fact]
+        [Fact(Skip = "Server returns empty array")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestNetworkConfigurationDiagnostic()
