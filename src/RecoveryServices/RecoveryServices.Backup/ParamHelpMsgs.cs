@@ -30,8 +30,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RegisteredContainer = "The recovery services backup container.";
             public const string FriendlyName = "The name of the resource being managed by the" +
                 " Azure Backup service (for example: resource name of the VM).";
-            public const string ResourceId = "Azure VM Id";
-            public const string ContainerObj = "Container object that needs to be re registered.";
         }
 
         internal static class Common
@@ -72,7 +70,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string AzureVMServiceName = "Cloud Service Name for Azure Classic Compute VM.";
             public const string AzureVMResourceGroupName = "Resource Group Name for Azure Compute VM .";
             public const string ProtectedItem = "Filter value for status of job.";
-            public const string ProtectableItem = "Protectabe item";
             public const string ProtectionStatus = "Protection status of Item";
             public const string Status = "Status of the data source";
             public const string Container = "Container where the item resides";
@@ -86,15 +83,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string AzureFileShareName = "Azure FileShare Name.";
             public const string AzureFileStorageAccountName = "Azure file share storage account name";
             public const string AzureFileStorageAccountResourceGroupName = "Azure file share storage account resource group name";
-            public const string BackupType = "Type of backup to be performed";
-            public const string EnableCompression = "If enabling compression is required";
-            public const string ParentID = "Parent ID";
-        }
-
-        internal static class ProtectableItem
-        {
-            public const string ItemType = "Protectable Item type.";
-            public const string ItemId = "Item Id";
         }
 
         internal static class RecoveryPoint
@@ -122,7 +110,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RecoveryPoint = "Recovery point object to be restored";
             public const string StorageAccountName = "Storage account name where the disks need to be recovered";
             public const string StorageAccountResourceGroupName = "Resource group name of Storage account name where the disks need to be recovered";
-            public const string RecoveryConfig = "Recovery config";
         }
 
         internal static class RestoreVM
@@ -149,14 +136,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string Type = "Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.";
             public const string ResourceId = "ID of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.";
             public const string ProtectableObjName = "Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.";
-        }
-
-        internal static class RecoveryPointConfig
-        {
-            public const string Item = "Item";
-            public const string TargetItem = "TargetItem";
-            public const string OriginalWorkloadRestore = "OriginalWorkloadRestore";
-            public const string AlternateWorkloadRestore = "AlternateWorkloadRestore";
         }
     }
 }
