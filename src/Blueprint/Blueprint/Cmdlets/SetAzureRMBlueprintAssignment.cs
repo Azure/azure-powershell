@@ -60,12 +60,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         Lock,
                         Parameters,
                         ResourceGroups);
+
                     var subscriptionsList = SubscriptionId ?? new[] { DefaultContext.Subscription.Id };
 
                     foreach (var subscription in subscriptionsList)
                     {
                         var scope = string.Format(BlueprintConstants.SubscriptionScope, subscription);
-                        CheckIfAssignmentExist(scope, Name, true);
+                        ThrowIfAssignmentNotExist(scope, Name);
                         // First Register Blueprint RP and grant owner permission to BP service principal
                         RegisterBlueprintRp(subscription);
                         var servicePrincipal = GetBlueprintSpn();

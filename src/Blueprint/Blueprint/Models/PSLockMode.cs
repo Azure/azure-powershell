@@ -8,8 +8,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
 {
     public enum PSLockMode
     {
-        Unknown = 0,
-        None = 1,
-        AllResources = 2
+        None = 0,
+        AllResourcesReadOnly = 1,
+        AllResourcesDoNotDelete = 2
     }
 }

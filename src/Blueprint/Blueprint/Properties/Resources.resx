@@ -118,30 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AssignmentExists" xml:space="preserve">
-    <value>An assignment with name '{0}' in Subscription '{1}' already exists. Please use Set-AzBlueprintAssignment to update an existing assignment.</value>
+    <value>An assignment with name '{0}' in subscription '{1}' already exists. Please use Set-AzBlueprintAssignment to update an existing assignment.</value>
   </data>
   <data name="AssignmentNotExist" xml:space="preserve">
-    <value>An assignment with name '{0}' in Subscription '{1}' does not exists. Please use New-AzBlueprintAssignment to create a new assignment.</value>
-  </data>
-  <data name="BlueprintAssignmentNotFound" xml:space="preserve">
-    <value>Blueprint assignment '{0}' could not be found within Subscription '{1}'.</value>
+    <value>An assignment with name '{0}' in subscription '{1}' does not exist. Please use New-AzBlueprintAssignment to create a new assignment.</value>
   </data>
   <data name="CreateAssignmentShouldProcessString" xml:space="preserve">
     <value>Creating blueprint assignment '{0}'</value>
   </data>
   <data name="DeleteAssignmentShouldProcessString" xml:space="preserve">
-    <value>Deleting blueprint assignment '{0}' in Subscription '{1}'</value>
-  </data>
-  <data name="ManagementGroupNotFound" xml:space="preserve">
-    <value>We can't find any Management Groups that you have access to.</value>
-  </data>
-  <data name="NoBlueprintAssignmentsNotFound" xml:space="preserve">
-    <value>Could not find any Blueprints assignments within '{0}'. Please check the Subscription Id and try again.</value>
-  </data>
-  <data name="NoBlueprintsFound" xml:space="preserve">
-    <value>Could not find any Blueprints.</value>
-  </data>
-  <data name="PublishedBlueprintNotFound" xml:space="preserve">
-    <value>Published Blueprint '{0}' could not be found in management group '{1}'.</value>
+    <value>Deleting blueprint assignment '{0}' in subscription '{1}'</value>
   </data>
 </root>

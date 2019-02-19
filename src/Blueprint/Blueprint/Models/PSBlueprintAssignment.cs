@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 BlueprintId = assignment.BlueprintId,
                 ProvisioningState = PSAssignmentProvisioningState.Unknown,
                 Status = new PSAssignmentStatus(),
-                Locks = new PSAssignmentLockSettings {Mode = PSLockMode.Unknown},
+                Locks = new PSAssignmentLockSettings { Mode = PSLockMode.None },
                 Parameters = new Dictionary<string, PSParameterValueBase>(),
                 ResourceGroups = new Dictionary<string, PSResourceGroupValue>(),
                 ParametersDisplayList = new List<string>(),
@@ -71,15 +71,40 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
             };
 
             if (DateTime.TryParse(assignment.Status.TimeCreated, out DateTime timeCreated))
+            {
                 psAssignment.Status.TimeCreated = timeCreated;
+            }
+            else
+            {
+                psAssignment.Status.TimeCreated = null;
+            }
+
             if (DateTime.TryParse(assignment.Status.LastModified, out DateTime lastModified))
+            {
                 psAssignment.Status.LastModified = lastModified;
+            }
+            else
+            {
+                psAssignment.Status.LastModified = null;
+            }
 
             if (Enum.TryParse(assignment.ProvisioningState, true, out PSAssignmentProvisioningState state))
+            {
                 psAssignment.ProvisioningState = state;
+            }
+            else
+            {
+                psAssignment.ProvisioningState = PSAssignmentProvisioningState.Unknown;
+            }
 
             if (Enum.TryParse(assignment.Locks.Mode, true, out PSLockMode lockMode))
+            {
                 psAssignment.Locks.Mode = lockMode;
+            }
+            else
+            {
+                psAssignment.Locks.Mode = PSLockMode.None;
+            }
 
             foreach (var item in assignment.Parameters)
             {
@@ -90,7 +115,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
             foreach (var item in assignment.ResourceGroups)
             {
                 psAssignment.ResourceGroups.Add(item.Key, new PSResourceGroupValue {Name = item.Value.Name, Location = item.Value.Location});
-                psAssignment.ResourceGroupDisplayList.Add(item.Value.Name ?? "");
+                psAssignment.ResourceGroupDisplayList.Add(item.Key);
             }
 
             return psAssignment;
