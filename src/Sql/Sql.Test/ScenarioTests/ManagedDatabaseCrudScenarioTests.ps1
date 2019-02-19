@@ -289,6 +289,7 @@ function Test-GeoRestoreManagedDatabase
 		$targetManagedDatabaseName1 = Get-ManagedDatabaseName		
 		$targetManagedDatabaseName2 = Get-ManagedDatabaseName
 		$targetManagedDatabaseName3 = Get-ManagedDatabaseName
+		$targetManagedDatabaseName4 = Get-ManagedDatabaseName
 
 		# geo-restore managed database using resourceID
 		$restoredDb1 = Restore-AzSqlInstanceDatabase -FromGeoBackup -ResourceId $sourceDbGeoBackup.RecoverableDatabaseId -TargetInstanceDatabaseName $targetManagedDatabaseName1 -TargetInstanceName $targetInstanceName -TargetResourceGroupName $targetRgName
@@ -311,11 +312,19 @@ function Test-GeoRestoreManagedDatabase
 		Assert-AreEqual $restoredDb3.ResourceGroupName $targetRgName
 		Assert-AreEqual $restoredDb3.ManagedInstanceName $targetInstanceName
 
+		# geo-restore managed database using piping
+		$restoredDb4 = Restore-AzSqlInstanceDatabase -FromGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name $managedDatabaseName -TargetInstanceDatabaseName $targetManagedDatabaseName4 -TargetInstanceName $targetInstanceName -TargetResourceGroupName $targetRgName
+		Assert-NotNull $restoredDb4
+		Assert-AreEqual $restoredDb4.Name $targetManagedDatabaseName4
+		Assert-AreEqual $restoredDb4.ResourceGroupName $targetRgName
+		Assert-AreEqual $restoredDb4.ManagedInstanceName $targetInstanceName	
+
 	}
 	finally
 	{
 		$restoredDb1 | Remove-AzSqlInstanceDatabase -Force
 		$restoredDb2 | Remove-AzSqlInstanceDatabase -Force
 		$restoredDb3 | Remove-AzSqlInstanceDatabase -Force
+		$restoredDb4 | Remove-AzSqlInstanceDatabase -Force
 	}
 }
