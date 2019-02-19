@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Add support for SQL DB Hyperscale tier
-* Removed unnecessary parameters passed in different restore mode
+* Fixed bug where restore could fail due to setting unnecessary properties in restore request
 
 ## Version 1.2.0
 * Add Get/Set AzSqlDatabaseBackupShortTermRetentionPolicy
