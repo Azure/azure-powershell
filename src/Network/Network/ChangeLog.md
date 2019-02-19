@@ -18,6 +18,7 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Update help example for Add-AzApplicationGatewayCustomError
 
 ## Version 1.2.0
 * Added Cmdlets for Identity on Application Gateway.

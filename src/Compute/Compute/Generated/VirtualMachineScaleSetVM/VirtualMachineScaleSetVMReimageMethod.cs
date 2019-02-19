@@ -81,14 +81,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
 
         [Parameter(
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string VMScaleSetName { get; set; }
 
         [Parameter(
-            Position = 3,
+            Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string InstanceId { get; set; }
