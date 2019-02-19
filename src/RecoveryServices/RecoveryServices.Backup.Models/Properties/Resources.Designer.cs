@@ -194,29 +194,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("AzureVMUnsupportedBackupManagementTypeException", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to The specified workload is already registered in the given resource ID.
-        /// </summary>
-        public static string AzureWorkloadAlreadyRegisteredException
-        {
-            get
-            {
-                return ResourceManager.GetString("AzureWorkloadAlreadyRegisteredException", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Provide SQLInstance or SQLAvailabilityGroup protectable item in TargetItem.
-        /// </summary>
-        public static string AzureWorkloadRestoreProtectableItemException
-        {
-            get
-            {
-                return ResourceManager.GetString("AzureWorkloadAlreadyRegisteredException", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to RetentionTime in retention schedule should be same as backup time specified in SchedulePolicy.
         /// </summary>
@@ -387,18 +365,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("DiscoveryFailureErrorCode", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to UnRegister operation failed with ErrorCode: {0}.
-        /// </summary>
-        public static string UnRegisterFailureErrorCode
-        {
-            get
-            {
-                return ResourceManager.GetString("UnRegisterFailureErrorCode", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Going to retry Discovery if retry count is not exceeded&quot;.
         /// </summary>

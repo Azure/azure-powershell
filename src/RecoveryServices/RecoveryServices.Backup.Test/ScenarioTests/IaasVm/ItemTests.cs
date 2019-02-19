@@ -25,7 +25,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ItemTests : RMTestBase
     {
+#if NETSTANDARD
+        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMGetItems()
@@ -34,7 +38,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMGetItems");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMProtection()
@@ -43,7 +51,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMProtection");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMBackup()
@@ -52,7 +64,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMBackup");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMGetRPs()
@@ -60,7 +76,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(
                 _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMGetRPs");
         }
-
 
 #if NETSTANDARD
         [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
@@ -75,7 +90,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMFullRestore");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMRPMountScript()
@@ -89,7 +108,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             Assert.True(AzureSession.Instance.DataStore.FileExists(mountScriptDetails.FilePath));
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]	
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMSetVaultContext()

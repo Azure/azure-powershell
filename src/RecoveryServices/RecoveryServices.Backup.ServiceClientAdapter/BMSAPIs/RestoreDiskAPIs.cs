@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using System;
-using System.Collections.Generic;
 using RestAzureNS = Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
@@ -45,13 +45,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string protectedItemUri = HelperUtils.GetProtectedItemUri(uriDict, rp.Id);
             string recoveryPointId = rp.RecoveryPointId;
             //validtion block
-            if (!triggerRestoreRequest.Properties.GetType().IsSubclassOf(typeof(AzureWorkloadRestoreRequest)))
+            if (storageAccountLocation != vaultLocation)
             {
-                if (storageAccountLocation != vaultLocation)
-                {
-                    throw new Exception(Resources.TriggerRestoreIncorrectRegion);
-                }
+                throw new Exception(Resources.TriggerRestoreIncorrectRegion);
             }
+
             var response = BmsAdapter.Client.Restores.TriggerWithHttpMessagesAsync(
                 vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
