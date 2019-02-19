@@ -15,8 +15,8 @@ An initiative is a policy of definition type "Initiative".
 
 ### VmScope (Default)
 ```
-Get-AzVMGuestPolicyStatusHistory [-ResourceGroupName] <String> [-VMName] <String> [-ShowOnlyChange]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVMGuestPolicyStatusHistory [-ResourceGroupName] <String> [-VMName] <String>
+ [-ShowOnlyChange] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InitiativeIdScope
@@ -40,29 +40,29 @@ Use Get-AzVMGuestPolicyStatus cmdlet to get details of a single compliance statu
 
 ### Example 1
 ```
-PS C:\> Get-AzVMGuestPolicyStatusHistory -ResourceGroupName "MyResourceGroupName" -VMName "MyVMName" -InitiativeId "/providers/Microsoft.Authorization/policySetDefinitions/3fa7cbf5-c0a4-4a59-85a5-cca4d996d5af" -ShowOnlyChanges
+PS C:\> Get-AzVMGuestPolicyStatusHistory -ResourceGroupName "MyResourceGroupName" -VMName "MyVMName" -InitiativeId "/providers/Microsoft.Authorization/policySetDefinitions/3fa7cbf5-c0a4-4a59-85a5-cca4d996d5af" -ShowOnlyChange
 ```
 
 Gets compliance status history by initiative Id.
-ShowOnlyChanges switch shows only historical status changes.
+ShowOnlyChange switch shows only historical status changes.
 Skips statuses that have not changed between two compliance checks.
 
 ### Example 2
 ```
-PS C:\> Get-AzVMGuestPolicyStatusHistory -ResourceGroupName "MyResourceGroupName" -VMName "MyVMName" -InitiativeName "b5a822e0-ba98-4e54-9278-5d9833aa9b17" -ShowOnlyChanges
+PS C:\> Get-AzVMGuestPolicyStatusHistory -ResourceGroupName "MyResourceGroupName" -VMName "MyVMName" -InitiativeName "b5a822e0-ba98-4e54-9278-5d9833aa9b17" -ShowOnlyChange
 ```
 
 Gets compliance status history by initiative name.
-ShowOnlyChanges switch shows only historical status changes.
+ShowOnlyChange switch shows only historical status changes.
 Skips statuses that have not changed between two compliance checks.
 
 ### Example 3
 ```
-PS C:\> Get-AzVMGuestPolicyStatusHistory -ResourceGroupName "MyResourceGroupName" -VMName "MyVMName" -ShowOnlyChanges
+PS C:\> Get-AzVMGuestPolicyStatusHistory -ResourceGroupName "MyResourceGroupName" -VMName "MyVMName" -ShowOnlyChange
 ```
 
 Gets compliance status history for all guest configuration policies assigned to the VM.
-ShowOnlyChanges switch shows only historical status changes.
+ShowOnlyChange switch shows only historical status changes.
 Skips statuses that have not changed between two compliance checks.
 
 ### Example 4
@@ -195,8 +195,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Management.Automation.SwitchParameter
 ## OUTPUTS
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Management.GuestConfiguration.Models.GuestConfigurationAssignment, Microsoft.Azure.Management.GuestConfiguration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Management.GuestConfiguration.Models.GuestConfigurationAssignmentReport, Microsoft.Azure.Management.GuestConfiguration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### [Microsoft.Azure.Management.GuestConfiguration.Models.PolicyStatus, Microsoft.Azure.Management.GuestConfiguration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]
 ## NOTES
 
 ## RELATED LINKS
