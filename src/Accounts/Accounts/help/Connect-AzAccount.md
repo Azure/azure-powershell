@@ -142,7 +142,7 @@ PS C:\> Connect-AzAccount -Identity -AccountId $identity.ClientId # Run on the "
 
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
-MSI@50342              Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
+yyyy-yyyy-yyyy-yyyy    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
 This command connects using the managed service identity of "myUserAssignedIdentity" by adding the User Assigned Identity to the Virtual Machine, then connecting using the ClientId of the User Assigned Identity.
@@ -156,7 +156,7 @@ PS C:\> Connect-AzAccount -Identity -AccountId $identity.Id # Run on the "testvm
 
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
-MSI@50342              Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
+yyyy-yyyy-yyyy-yyyy    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
 This command connects using the managed service identity of "myUserAssignedIdentity" by adding the User Assigned Identity to the Virtual Machine, then connecting using the Id of the User Assigned Identity.
@@ -187,14 +187,15 @@ This command connects to an Azure account using certificate-based service princi
 
 ### Example 8: Add an account using AccessToken authentication
 ```powershell
-PS C:\> $url = "https://login.windows.net/<SubscriptionId>/oauth2/token"
+PS C:\> $url = "https://login.windows.net/<TenantId>/oauth2/token"
 PS C:\> $body = "grant_type=refresh_token&refresh_token=<refreshtoken>" # Refresh token obtained from ~/.azure/TokenCache.dat
-PS C:\> $response = Invoke-RestMethod $url -Method POST -Body $body;
-PS C:\> $AccessToken = $response.access_token;
-PS C:\> $body += "&resource=https%3A%2F%2Fvault.azure.net";
-PS C:\> $response = Invoke-RestMethod $url -Method POST -Body $body;
-PS C:\> $KeyVaultAccessToken = $response.access_token;
-PS C:\> Connect-AzAccount -AccountId "azureuser@contoso.com" -AccessToken $AccessToken -KeyVaultAccessToken $KeyVaultAccessToken -Tenant "xxxx-xxxx-xxxx-xxxx" -SubscriptionId "yyyy-yyyy-yyyy-yyyy"
+PS C:\> $response = Invoke-RestMethod $url -Method POST -Body $body
+PS C:\> $AccessToken = $response.access_token
+PS C:\> $body1 = $body + "&resource=https%3A%2F%2Fvault.azure.net"
+PS C:\> $response = Invoke-RestMethod $url -Method POST -Body $body1
+PS C:\> $body2 = $body + "&resource=https%3A%2F%2Fgraph.microsoft.com"
+PS C:\> $GraphAccessToken = $response.access_token
+PS C:\> Connect-AzAccount -AccountId "azureuser@contoso.com" -AccessToken $AccessToken -KeyVaultAccessToken $KeyVaultAccessToken -GraphAccessToken $GraphAccessToken -Tenant "xxxx-xxxx-xxxx-xxxx" -SubscriptionId "yyyy-yyyy-yyyy-yyyy"
 
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
