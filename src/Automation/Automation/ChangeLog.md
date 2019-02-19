@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update help for Import-AzAutomationDscNodeConfiguration
 
 ## Version 1.1.0
 * Added support for Python 2 runbooks
