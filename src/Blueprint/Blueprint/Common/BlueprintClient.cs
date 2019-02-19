@@ -159,8 +159,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             }
         }    
 
-
-
         private async Task<IEnumerable<PSPublishedBlueprint>> ListPublishedBlueprintsAsync(string scope, string blueprintName)
         {
             var list = new List<PSPublishedBlueprint>();

@@ -33,21 +33,12 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// The blueprint client.
         /// </summary>
         private IBlueprintClient blueprintClient;
-
-        public IBlueprintClient BlueprintClient
-        {
-            get
-            {
-                return blueprintClient = blueprintClient ?? new BlueprintClient(DefaultProfile.DefaultContext);
-            }
-            set => blueprintClient = value;
-        }
+        public IBlueprintClient BlueprintClient => blueprintClient ?? new BlueprintClient(DefaultProfile.DefaultContext);  
 
         /// <summary>
-        /// The blueprint client with delegating handler. The delegating handler is needed to get blueprint versions info.
+        /// Blueprint client with delegating handler. The delegating handler is needed to get blueprint versions info.
         /// </summary>
         private IBlueprintClient blueprintClientWithVersion;
-
         public IBlueprintClient BlueprintClientWithVersion
         {
             get
@@ -59,6 +50,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                                                             new ApiExpandHandler()
                                                         });
             }
+            set => blueprintClient = value;
         }
 
         /// <summary>
@@ -73,7 +65,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                                                AzureEnvironment.Endpoint.ResourceManager);
 
             }
-
             set => clientCredentials = value;
         }
 
@@ -86,7 +77,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         {
             get
             {
-
                 graphRbacManagementClient = graphRbacManagementClient ?? AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
 
                 graphRbacManagementClient.TenantID = DefaultProfile.DefaultContext.Tenant.Id.ToString();
@@ -105,8 +95,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         {
             get
             {
-                return authorizationManagementClient = authorizationManagementClient ?? AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
- 
+                return authorizationManagementClient = authorizationManagementClient ?? AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(DefaultProfile.DefaultContext, 
+                                                           AzureEnvironment.Endpoint.ResourceManager);
             }
             set => authorizationManagementClient = value;
         }
@@ -139,50 +129,46 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 {
                     WriteExceptionError(e);
                 }
-
                 return;
             }
-
             throw ex;
         }
         #endregion Cmdlet Overrides
 
         #region Protected Methods
-        /// <summary>
-        /// Check if an assignment with the same name exists
-        /// </summary>
-        /// <param name="scope"> Subscription scope</param>
-        /// <param name="name"> Assignment name</param>
-        /// <param name="invertCheck"> Inverts the check logic from check for exists to check for not-exits </param>
-        protected void CheckIfAssignmentExist(string scope, string name, bool invertCheck)
+
+        protected void ThrowIfAssignmentExits(string scope, string name)
         {
-            PSBlueprintAssignment existingAssignment = null;
+            PSBlueprintAssignment assignment = null;
+
+            assignment = BlueprintClient.GetBlueprintAssignment(scope, name);
+
+            if (assignment != null)
+            {
+                throw new Exception(string.Format(Resources.AssignmentExists, name, scope));
+            }
+        }
+
+        protected void ThrowIfAssignmentNotExist(string scope, string name)
+        {
+            PSBlueprintAssignment assignment = null;
 
             try
             {
-                existingAssignment = BlueprintClient.GetBlueprintAssignment(scope, name);
+                assignment = BlueprintClient.GetBlueprintAssignment(scope, name);
             }
             catch (Exception ex)
             {
                 if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {
-                    throw new CloudException(cex.Message);
+                    // if exception is for a reason other than .NotFound, pass it to the caller.
+                    throw ex;
                 }
             }
 
-            if (invertCheck)
+            if (assignment == null)
             {
-                if (existingAssignment == null)
-                {
-                    throw new Exception(string.Format(Resources.AssignmentNotExist, name, scope));
-                }
-            }
-            else
-            {
-                if (existingAssignment != null)
-                {
-                    throw new Exception(string.Format(Resources.AssignmentExists, name, scope));
-                }
+                throw new Exception(string.Format(Resources.AssignmentNotExist, name, scope));
             }
         }
 
@@ -306,7 +292,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 // ignore if it already exists
                 if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.Conflict)
                 {
-                    throw new CloudException(cex.Message);
+                    throw ex;
                 }
             }
         }
@@ -330,15 +316,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 {
                     managementGroupAncestors.Add(mgObject.ToString());
                 }
-
-                if (managementGroupAncestors.Count > 0)
-                {
-                    // Remove the last item which is the tenantId.
-                    int lastIndex = managementGroupAncestors.Count() - 1;
-                    managementGroupAncestors.RemoveAt(lastIndex);
-                }
             }
-
             return managementGroupAncestors;
         }
 

@@ -18,4 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Initial release
+
+## Version 0.1.0
+* Preview release of Az.Blueprint module

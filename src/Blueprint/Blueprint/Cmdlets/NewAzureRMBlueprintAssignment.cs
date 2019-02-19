@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.Location)]
         [ValidateNotNullOrEmpty]
-        [LocationCompleter("Microsoft.Batch/operations")]
+        [LocationCompleter("Microsoft.Resources/resourceGroups")]
         public string Location { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true)]
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                     foreach (var subscription in subscriptionsList)
                     {
                         var scope = string.Format(BlueprintConstants.SubscriptionScope, subscription);
-                        CheckIfAssignmentExist(scope, Name, false);
+                        ThrowIfAssignmentExits(scope, Name);
                         // First Register Blueprint RP and grant owner permission to BP service principal
                         RegisterBlueprintRp(subscription);
                         var servicePrincipal = GetBlueprintSpn();

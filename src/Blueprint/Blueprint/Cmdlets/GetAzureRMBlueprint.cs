@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         public override void ExecuteCmdlet()
         {
 
-            var scope = getCurrentScope();
+            var scope = GetCurrentScope();
 
             try
             {
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         #endregion Cmdlet Overrides
 
         #region Private Methods
-        private string getCurrentScope()
+        private string GetCurrentScope()
         {
             string scope = null;
 

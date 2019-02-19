@@ -62,15 +62,27 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
             {
                 psBlueprint.Status.TimeCreated = timeCreated;
             }
+            else
+            {
+                psBlueprint.Status.TimeCreated = null;
+            }
 
             if (DateTime.TryParse(model.Status.LastModified, out DateTime lastModified))
             {
                 psBlueprint.Status.LastModified = lastModified;
             }
+            else
+            {
+                psBlueprint.Status.LastModified = null;
+            }
 
             if (Enum.TryParse(model.TargetScope, true, out PSBlueprintTargetScope targetScope))
             {
                 psBlueprint.TargetScope = targetScope;
+            }
+            else
+            {
+                psBlueprint.TargetScope = PSBlueprintTargetScope.Unknown;
             }
 
             foreach (var item in model.Parameters)

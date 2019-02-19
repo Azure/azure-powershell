@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
     public enum PSBlueprintTargetScope
     {
         Unknown = 0,
-        Subscription = 1,
-        ManagementGroup = 2,
+        Subscription = 1
     }
 }
