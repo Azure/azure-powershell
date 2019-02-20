@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             cmdlet.ApplicationPackageReferences = new[]
             {
-                new PSApplicationPackageReference { ApplicationName = applicationName, Version = applicationVersion} ,
+                new PSApplicationPackageReference { ApplicationId = applicationName, Version = applicationVersion} ,
             };
 
             // Don't go to the service on an Add CloudJob call

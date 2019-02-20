@@ -94,13 +94,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             {
                 new PSApplicationPackageReference()
                 {
-                    ApplicationName = "myApp",
+                    ApplicationId = "myApp",
                     Version = "1.0"
                 }
             };
-            cmdlet.Pool.Metadata = new List<PSMetadataItem>()
+            cmdlet.Pool.Metadata = new Dictionary<string, string>
             {
-                new PSMetadataItem("meta1", "value1")
+                { "meta1", "value1" }
             };
 
             PoolUpdatePropertiesParameter requestParameters = null;
@@ -123,11 +123,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.Pool.CertificateReferences[0].Thumbprint, requestParameters.CertificateReferences[0].Thumbprint);
             Assert.Equal(cmdlet.Pool.CertificateReferences[0].ThumbprintAlgorithm, requestParameters.CertificateReferences[0].ThumbprintAlgorithm);
             Assert.Equal(cmdlet.Pool.ApplicationPackageReferences.Count, requestParameters.ApplicationPackageReferences.Count);
-            Assert.Equal(cmdlet.Pool.ApplicationPackageReferences[0].ApplicationName, requestParameters.ApplicationPackageReferences[0].ApplicationId);
+            Assert.Equal(cmdlet.Pool.ApplicationPackageReferences[0].ApplicationId, requestParameters.ApplicationPackageReferences[0].ApplicationId);
             Assert.Equal(cmdlet.Pool.ApplicationPackageReferences[0].Version, requestParameters.ApplicationPackageReferences[0].Version);
             Assert.Equal(cmdlet.Pool.Metadata.Count, requestParameters.Metadata.Count);
-            Assert.Equal(cmdlet.Pool.Metadata[0].Name, requestParameters.Metadata[0].Name);
-            Assert.Equal(cmdlet.Pool.Metadata[0].Value, requestParameters.Metadata[0].Value);
+            Assert.Contains(
+                requestParameters.Metadata,
+                metadata => metadata.Name == "meta1" && metadata.Value == cmdlet.Pool.Metadata["meta1"].ToString());
         }
     }
 }

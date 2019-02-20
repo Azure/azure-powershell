@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
 
             var psApplicationPackageReference = pipeline[0].JobManagerTask.ApplicationPackageReferences.First();
-            Assert.Equal(applicationName, psApplicationPackageReference.ApplicationName);
+            Assert.Equal(applicationName, psApplicationPackageReference.ApplicationId);
             Assert.Equal(applicationVersion, psApplicationPackageReference.Version);
         }
     }

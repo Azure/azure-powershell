@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
 
             var psApplicationPackageReference = pipeline[0].ApplicationPackageReferences.First();
-            Assert.Equal(applicationName, psApplicationPackageReference.ApplicationName);
+            Assert.Equal(applicationName, psApplicationPackageReference.ApplicationId);
             Assert.Equal(applicationVersion, psApplicationPackageReference.Version);
         }
     }

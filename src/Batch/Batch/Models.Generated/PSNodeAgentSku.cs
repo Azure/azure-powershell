@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSImageReference(enumerator.Current));
                     }
-                    this.verifiedImageReferences = list.AsReadOnly();
+                    this.verifiedImageReferences = list;
                 }
                 return this.verifiedImageReferences;
             }

@@ -15,7 +15,9 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Batch.Utils
 {
@@ -42,12 +44,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                     return ConvertCertificateReference(c);
                 });
 
-                pool.omObject.Metadata = CreateSyncedList(pool.Metadata,
-                (m) =>
-                {
-                    MetadataItem metadata = new MetadataItem(m.Name, m.Value);
-                    return metadata;
-                });
+                pool.omObject.Metadata = CreateSyncedDict(pool.Metadata, ConvertMetadataItem);
 
                 if (pool.StartTask != null)
                 {
@@ -63,12 +60,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (jobSchedule != null)
             {
-                jobSchedule.omObject.Metadata = CreateSyncedList(jobSchedule.Metadata,
-                (m) =>
-                {
-                    MetadataItem metadata = new MetadataItem(m.Name, m.Value);
-                    return metadata;
-                });
+                jobSchedule.omObject.Metadata = CreateSyncedDict(jobSchedule.Metadata, ConvertMetadataItem);
 
                 if (jobSchedule.JobSpecification != null)
                 {
@@ -84,13 +76,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (job != null)
             {
-                job.omObject.Metadata = CreateSyncedList(job.Metadata,
-                (m) =>
-                {
-                    MetadataItem metadata = new MetadataItem(m.Name, m.Value);
-                    return metadata;
-                });
-
+                job.omObject.Metadata = CreateSyncedDict(job.Metadata, ConvertMetadataItem);
                 if (job.PoolInformation != null)
                 {
                     PoolInformationSyncCollections(job.PoolInformation);
@@ -105,12 +91,9 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (specification != null)
             {
-                specification.omObject.CommonEnvironmentSettings = CreateSyncedList(specification.CommonEnvironmentSettings,
-                (e) =>
-                {
-                    EnvironmentSetting envSetting = new EnvironmentSetting(e.Name, e.Value);
-                    return envSetting;
-                });
+                specification.omObject.CommonEnvironmentSettings = CreateSyncedDict(
+                    specification.CommonEnvironmentSettings,
+                    ConvertEnvironmentSetting);
 
                 if (specification.JobManagerTask != null)
                 {
@@ -127,12 +110,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                     JobReleaseTaskSyncCollections(specification.JobReleaseTask);
                 }
 
-                specification.omObject.Metadata = CreateSyncedList(specification.Metadata,
-                (m) =>
-                {
-                    MetadataItem metadata = new MetadataItem(m.Name, m.Value);
-                    return metadata;
-                });
+                specification.omObject.Metadata = CreateSyncedDict(specification.Metadata, ConvertMetadataItem);
 
                 if (specification.PoolInformation != null)
                 {
@@ -148,12 +126,9 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (jobManager != null)
             {
-                jobManager.omObject.EnvironmentSettings = CreateSyncedList(jobManager.EnvironmentSettings,
-                    (e) =>
-                    {
-                        EnvironmentSetting envSetting = new EnvironmentSetting(e.Name, e.Value);
-                        return envSetting;
-                    });
+                jobManager.omObject.EnvironmentSettings = CreateSyncedDict(
+                    jobManager.EnvironmentSettings,
+                    ConvertEnvironmentSetting);
 
                 jobManager.omObject.ResourceFiles = CreateSyncedList(jobManager.ResourceFiles, ConvertResourceFile);
                 jobManager.omObject.ApplicationPackageReferences = CreateSyncedList(jobManager.ApplicationPackageReferences,
@@ -161,7 +136,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                     {
                         ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference
                         {
-                            ApplicationId = a.ApplicationName,
+                            ApplicationId = a.ApplicationId,
                             Version = a.Version
                         };
                         return applicationPackageReference;
@@ -176,12 +151,9 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (jobPrepTask != null)
             {
-                jobPrepTask.omObject.EnvironmentSettings = CreateSyncedList(jobPrepTask.EnvironmentSettings,
-                    (e) =>
-                    {
-                        EnvironmentSetting envSetting = new EnvironmentSetting(e.Name, e.Value);
-                        return envSetting;
-                    });
+                jobPrepTask.omObject.EnvironmentSettings = CreateSyncedDict(
+                    jobPrepTask.EnvironmentSettings,
+                    ConvertEnvironmentSetting);
 
                 jobPrepTask.omObject.ResourceFiles = CreateSyncedList(jobPrepTask.ResourceFiles, ConvertResourceFile);
             }
@@ -194,12 +166,9 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (jobReleaseTask != null)
             {
-                jobReleaseTask.omObject.EnvironmentSettings = CreateSyncedList(jobReleaseTask.EnvironmentSettings,
-                    (e) =>
-                    {
-                        EnvironmentSetting envSetting = new EnvironmentSetting(e.Name, e.Value);
-                        return envSetting;
-                    });
+                jobReleaseTask.omObject.EnvironmentSettings = CreateSyncedDict(
+                    jobReleaseTask.EnvironmentSettings,
+                    ConvertEnvironmentSetting);
 
                 jobReleaseTask.omObject.ResourceFiles = CreateSyncedList(jobReleaseTask.ResourceFiles, ConvertResourceFile);
             }
@@ -246,19 +215,16 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                         return ConvertCertificateReference(c);
                     });
 
-                spec.omObject.Metadata = CreateSyncedList(spec.Metadata,
-                    (m) =>
-                    {
-                        MetadataItem metadata = new MetadataItem(m.Name, m.Value);
-                        return metadata;
-                    });
+                spec.omObject.Metadata = CreateSyncedDict(
+                    spec.Metadata,
+                    ConvertMetadataItem);
 
                 spec.omObject.ApplicationPackageReferences = CreateSyncedList(spec.ApplicationPackageReferences,
                     (apr) =>
                     {
                         return new ApplicationPackageReference()
                         {
-                            ApplicationId = apr.ApplicationName,
+                            ApplicationId = apr.ApplicationId,
                             Version = apr.Version
                         };
                     });
@@ -287,12 +253,9 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (task != null)
             {
-                task.omObject.EnvironmentSettings = CreateSyncedList(task.EnvironmentSettings,
-                    (e) =>
-                    {
-                        EnvironmentSetting envSetting = new EnvironmentSetting(e.Name, e.Value);
-                        return envSetting;
-                    });
+                task.omObject.EnvironmentSettings = CreateSyncedDict(
+                    task.EnvironmentSettings,
+                    ConvertEnvironmentSetting);
 
                 task.omObject.ResourceFiles = CreateSyncedList(task.ResourceFiles, ConvertResourceFile);
 
@@ -307,12 +270,9 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (startTask != null)
             {
-                startTask.omObject.EnvironmentSettings = CreateSyncedList(startTask.EnvironmentSettings,
-                    (e) =>
-                    {
-                        EnvironmentSetting envSetting = new EnvironmentSetting(e.Name, e.Value);
-                        return envSetting;
-                    });
+                startTask.omObject.EnvironmentSettings = CreateSyncedDict(
+                    startTask.EnvironmentSettings,
+                    ConvertEnvironmentSetting);
 
                 startTask.omObject.ResourceFiles = CreateSyncedList(startTask.ResourceFiles, ConvertResourceFile);
             }
@@ -353,6 +313,29 @@ namespace Microsoft.Azure.Commands.Batch.Utils
             return omList;
         }
 
+        private static IList<Tom> CreateSyncedDict<Tom>(IDictionary psDict, Func<string, string, Tom> mappingFunction)
+        {
+            if (psDict == null)
+            {
+                return null;
+            }
+
+            List<Tom> omList = new List<Tom>();
+            foreach (DictionaryEntry item in psDict)
+            {
+                Tom omItem = mappingFunction(item.Key.ToString(), item.Value.ToString());
+                omList.Add(omItem);
+            }
+            return omList;
+        }
+
+        /// <summary>
+        /// Converts a PSCertificateReference to a CertificateReference
+        /// </summary>
+        private static MetadataItem ConvertMetadataItem(string key, string value) => new MetadataItem(key, value);
+
+        private static EnvironmentSetting ConvertEnvironmentSetting(string key, string value) => new EnvironmentSetting(key, value);
+
         /// <summary>
         /// Converts a PSCertificateReference to a CertificateReference
         /// </summary>
@@ -374,7 +357,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference()
             {
-                ApplicationId = psApr.ApplicationName,
+                ApplicationId = psApr.ApplicationId,
                 Version = psApr.Version
             };
             return applicationPackageReference;
