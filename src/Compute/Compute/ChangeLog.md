@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix issue with ID parameter sets
 * Add Tag and ResourceId parameters to Update-AzImage cmdlet
 * Get-AzVmssVM without instance ID and with InstanceView can list VMSS VMs with instance view.
 
