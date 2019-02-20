@@ -20,6 +20,8 @@
 -->
 ## Upcoming Release
 * Update Get-AzVMExtension to list all installed extension if Name parameter is not provided
+* Add Tag and ResourceId parameters to Update-AzImage cmdlet
+* Get-AzVmssVM without instance ID and with InstanceView can list VMSS VMs with instance view.
 
 ## Version 1.3.0
 * AEM extension: Add support for UltraSSD and P60,P70 and P80 disks

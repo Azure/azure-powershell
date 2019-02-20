@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Correct example in Get-AzWebAppSlotMetrics
 
 ## Version 1.1.0
 * Update incorrect online help URLs
