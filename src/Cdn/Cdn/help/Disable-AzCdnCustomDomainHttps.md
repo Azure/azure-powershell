@@ -1,58 +1,55 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-ms.assetid: 5727E2CA-0A0B-4050-9F4A-7E06758D9B53
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/remove-azcdncustomdomain
+online version:
 schema: 2.0.0
 ---
 
-# Remove-AzCdnCustomDomain
+# Disable-AzCdnCustomDomainHttps
 
 ## SYNOPSIS
-Removes a custom domain.
+{{Fill in the Synopsis}}
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Remove-AzCdnCustomDomain -CustomDomainName <String> -EndpointName <String> -ProfileName <String>
+Disable-AzCdnCustomDomainHttps -CustomDomainName <String> -EndpointName <String> -ProfileName <String>
  -ResourceGroupName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzCdnCustomDomain -CdnCustomDomain <PSCustomDomain> [-PassThru]
+Disable-AzCdnCustomDomainHttps -InputObject <PSCustomDomain> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByResourceIdParameterSet
+```
+Disable-AzCdnCustomDomainHttps -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Remove-AzCdnCustomDomain** cmdlet removes the custom domain from an Azure Content Delivery Network (CDN) endpoint.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
-## PARAMETERS
-
-### -CdnCustomDomain
-Specifies the custom domain that this cmdlet removes.
-
-```yaml
-Type: Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
+{{ Add example description here }}
+
+## PARAMETERS
+
 ### -CustomDomainName
-Specifies the resource name of the custom domain that this cmdlet removes.
+Azure CDN custom domain display name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -64,10 +61,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -79,10 +76,10 @@ Accept wildcard characters: False
 ```
 
 ### -EndpointName
-Specifies the name of the endpoint from which this cmdlet removes a custom domain.
+Azure CDN endpoint name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -93,12 +90,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
+### -InputObject
+The custom domain object.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: PSCustomDomain
+Parameter Sets: ByObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Return object if specified.
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -110,10 +121,10 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Specifies the name of the profile from which this cmdlet removes a custom domain.
+Azure CDN profile name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -125,10 +136,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group from which this cmdlet removes a custom domain.
+The resource group of the Azure CDN profile
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -139,17 +150,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+ResourceId
+
+```yaml
+Type: String
+Parameter Sets: ByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -159,23 +185,26 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain
+
+### System.String
 
 ### System.Management.Automation.SwitchParameter
 
@@ -186,11 +215,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzCdnCustomDomain](./Get-AzCdnCustomDomain.md)
-
-[New-AzCdnCustomDomain](./New-AzCdnCustomDomain.md)
-
-[Test-AzCdnCustomDomain](./Test-AzCdnCustomDomain.md)
-
-
