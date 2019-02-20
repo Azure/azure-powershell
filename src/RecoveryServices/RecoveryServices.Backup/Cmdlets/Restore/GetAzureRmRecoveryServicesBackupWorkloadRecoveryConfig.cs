@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Restores an item using the recovery point provided within the recovery services vault
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupWorkloadRecoveryConfig",
-        DefaultParameterSetName = RpParameterSet, SupportsShouldProcess = true), OutputType(typeof(RecoveryConfigBase))]
+        DefaultParameterSetName = RpParameterSet), OutputType(typeof(RecoveryConfigBase))]
     public class GetAzureRmRecoveryServicesBackupWorkloadRecoveryConfig : RSBackupVaultCmdletBase
     {
         internal const string RpParameterSet = "RpParameterSet";

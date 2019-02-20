@@ -28,7 +28,8 @@ function Test-AzureVmWorkloadProtectableItem
 			-ResourceId $resourceId `
 			-BackupManagementType AzureWorkload `
 			-WorkloadType MSSQL `
-			-VaultId $vault.ID
+			-VaultId $vault.ID `
+			-Force
 		Assert-AreEqual $container.Status "Registered"
 		
 		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
@@ -77,7 +78,8 @@ function Test-AzureVmWorkloadInitializeProtectableItem
 			-ResourceId $resourceId `
 			-BackupManagementType AzureWorkload `
 			-WorkloadType MSSQL `
-			-VaultId $vault.ID
+			-VaultId $vault.ID `
+			-Force
 		Assert-AreEqual $container.Status "Registered";
 
 		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
@@ -120,7 +122,8 @@ function Test-AzureVmWorkloadEnableProtectableItem
 			-ResourceId $resourceId `
 			-BackupManagementType AzureWorkload `
 			-WorkloadType MSSQL `
-			-VaultId $vault.ID
+			-VaultId $vault.ID `
+			-Force
 		Assert-AreEqual $container.Status "Registered";
 
 		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
@@ -161,7 +164,8 @@ function Test-AzureVmWorkloadEnableAutoProtectableItem
 			-ResourceId $resourceId `
 			-BackupManagementType AzureWorkload `
 			-WorkloadType MSSQL `
-			-VaultId $vault.ID
+			-VaultId $vault.ID `
+			-Force
 		Assert-AreEqual $container.Status "Registered";
 
 		$protectableInstances = Get-AzRecoveryServicesBackupProtectableItem `
@@ -222,7 +226,8 @@ function Test-AzureVmWorkloadBackupProtectionItem
 			-ResourceId $resourceId `
 			-BackupManagementType AzureWorkload `
 			-WorkloadType MSSQL `
-			-VaultId $vault.ID
+			-VaultId $vault.ID `
+			-Force
 
 		Enable-Protection $vault $container
 
@@ -254,7 +259,8 @@ function Test-AzureVmWorkloadGetRPs
 			-ResourceId $resourceId `
 			-BackupManagementType AzureWorkload `
 			-WorkloadType MSSQL `
-			-VaultId $vault.ID
+			-VaultId $vault.ID `
+			-Force
 
 		Enable-Protection $vault $container
 
@@ -306,7 +312,8 @@ function Test-AzureVmWorkloadGetLogChains
 			-ResourceId $resourceId `
 			-BackupManagementType AzureWorkload `
 			-WorkloadType MSSQL `
-			-VaultId $vault.ID
+			-VaultId $vault.ID `
+			-Force
 
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
@@ -364,7 +371,8 @@ function Test-AzureVmWorkloadFullRestore
 			-ResourceId $resourceId `
 			-BackupManagementType AzureWorkload `
 			-WorkloadType MSSQL `
-			-VaultId $vault.ID
+			-VaultId $vault.ID `
+			-Force
 
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `

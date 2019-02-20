@@ -556,4 +556,10 @@ Please contact Microsoft for further assistance.</value>
   <data name="AzureWorkloadRestoreProtectableItemException" xml:space="preserve">
     <value>Provide SQLInstance or SQLAvailabilityGroup protectable item in TargetItem</value>
   </data>
+  <data name="RegisterContainerMessage" xml:space="preserve">
+    <value>Registering container</value>
+  </data>
+  <data name="RegisterContainerWarning" xml:space="preserve">
+    <value>Are you sure you want to disable protection for the container '{0}'</value>
+  </data>
 </root>
