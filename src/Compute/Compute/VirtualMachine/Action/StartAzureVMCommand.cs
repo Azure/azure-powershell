@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Compute
                     if (ParameterSetName.Equals(IdParameterSet) && string.IsNullOrEmpty(Name))
                     {
                         ResourceIdentifier parsedId = new ResourceIdentifier(Id);
+                        this.ResourceGroupName = parsedId.ResourceGroupName;
                         this.Name = parsedId.ResourceName;
                     }
 
