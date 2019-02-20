@@ -313,7 +313,7 @@ function Test-GeoRestoreManagedDatabase
 		Assert-AreEqual $restoredDb3.ManagedInstanceName $targetInstanceName
 
 		# geo-restore managed database using piping
-		$restoredDb4 = Restore-AzSqlInstanceDatabase -FromGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name $managedDatabaseName -TargetInstanceDatabaseName $targetManagedDatabaseName4 -TargetInstanceName $targetInstanceName -TargetResourceGroupName $targetRgName
+		$restoredDb4 = $sourceDbGeoBackup | Restore-AzSqlInstanceDatabase -FromGeoBackup -TargetInstanceDatabaseName $targetManagedDatabaseName4 -TargetInstanceName $targetInstanceName -TargetResourceGroupName $targetRgName
 		Assert-NotNull $restoredDb4
 		Assert-AreEqual $restoredDb4.Name $targetManagedDatabaseName4
 		Assert-AreEqual $restoredDb4.ResourceGroupName $targetRgName
