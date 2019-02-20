@@ -172,6 +172,19 @@ function Test-subnetCRUD
         Assert-AreEqual $subnet2Name $subnetAll[1].Name
         Assert-AreEqual $subnet2Name $subnet2.Name
 
+        # Check that Update doesn't drop parameters
+        $job = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Update-AzVirtualNetworkSubnetConfig -Name $subnet2Name | Set-AzVirtualNetwork -AsJob
+        $job | Wait-Job
+        $job = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Update-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.5.0/24 | Set-AzVirtualNetwork -AsJob
+        $job | Wait-Job
+
+        $vnetExpected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual 2 @($vnetExpected.Subnets).Count
+        Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name
+        Assert-AreEqual $subnet2Name $vnetExpected.Subnets[1].Name
+        Assert-AreEqual "10.0.5.0/24" $vnetExpected.Subnets[0].AddressPrefix
+        Assert-AreEqual "10.0.3.0/24" $vnetExpected.Subnets[1].AddressPrefix
+
         # Get non-existing subnet
         try
         {
