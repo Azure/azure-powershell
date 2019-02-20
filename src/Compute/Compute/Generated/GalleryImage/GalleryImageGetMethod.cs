@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
 
                 if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(galleryName) 
-                    && !string.IsNullOrEmpty(galleryImageName) && !galleryImageName.Contains("*"))
+                    && !string.IsNullOrEmpty(galleryImageName) && !WildcardPattern.ContainsWildcardCharacters(galleryImageName))
                 {
                     var result = GalleryImagesClient.Get(resourceGroupName, galleryName, galleryImageName);
                     var psObject = new PSGalleryImage();

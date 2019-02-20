@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
 
                 if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(galleryName) && !string.IsNullOrEmpty(galleryImageName) 
-                    && !string.IsNullOrEmpty(galleryImageVersionName) && !galleryImageVersionName.Contains("*"))
+                    && !string.IsNullOrEmpty(galleryImageVersionName) && !WildcardPattern.ContainsWildcardCharacters(galleryImageVersionName))
                 {
                     var result = GalleryImageVersionsClient.Get(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, expand);
                     var psObject = new PSGalleryImageVersion();

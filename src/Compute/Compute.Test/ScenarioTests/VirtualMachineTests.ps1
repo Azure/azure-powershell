@@ -625,7 +625,7 @@ function Test-VirtualMachineImageList
                         $skus = $s3 | select -ExpandProperty Skus;
                         foreach ($sku in $skus)
                         {
-                            $s4 = Get-AzVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku;
+                            $s4 = Get-AzVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -Version "*";
                             if ($s4.Count -gt 0)
                             {
                                 $versions = $s4 | select -ExpandProperty Version;
@@ -668,7 +668,7 @@ function Test-VirtualMachineImageList
             {
                 foreach ($type in $types)
                 {
-                    $s2 = Get-AzVMExtensionImage -Location $locStr -PublisherName $pub -Type $type -FilterExpression "startswith(name,'1')";
+                    $s2 = Get-AzVMExtensionImage -Location $locStr -PublisherName $pub -Type $type -FilterExpression "startswith(name,'1')" -Version "*";
                     $versions = $s2 | select -ExpandProperty Version;
                     foreach ($ver in $versions)
                     {
