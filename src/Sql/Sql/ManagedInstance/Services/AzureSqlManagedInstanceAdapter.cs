@@ -107,7 +107,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 SubnetId = model.SubnetId,
                 VCores = model.VCores,
                 Identity = model.Identity,
-                Collation = model.Collation
+                Collation = model.Collation,
+                TimezoneId = model.TimezoneId,
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -174,6 +175,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.VCores = resp.VCores;
             managedInstance.StorageSizeInGB = resp.StorageSizeInGB;
             managedInstance.Collation = resp.Collation;
+            managedInstance.TimezoneId = resp.TimezoneId;
 
             Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             sku.Name = resp.Sku.Name;
