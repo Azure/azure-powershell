@@ -97,5 +97,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets the Managed Instance collation
         /// </summary>
         public string Collation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Managed Instance time zone
+        /// </summary>
+        public string TimezoneId { get; set; }
     }
 }
