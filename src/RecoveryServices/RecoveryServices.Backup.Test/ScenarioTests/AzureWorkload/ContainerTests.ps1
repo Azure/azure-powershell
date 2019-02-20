@@ -28,7 +28,8 @@ function Get-AzureVmWorkloadContainer
          -ResourceId $resourceId `
          -BackupManagementType AzureWorkload `
          -WorkloadType MSSQL `
-         -VaultId $vault.ID
+         -VaultId $vault.ID `
+		 -Force
 	  Assert-AreEqual $container.Status "Registered"
 
       # VARIATION-1: Get All Containers with only mandatory parameters
@@ -81,7 +82,8 @@ function Unregister-AzureWorkloadContainer
          -ResourceId $resourceId `
          -BackupManagementType AzureWorkload `
          -WorkloadType MSSQL `
-         -VaultId $vault.ID
+         -VaultId $vault.ID `
+		 -Force
 	  Assert-AreEqual $container.Status "Registered"
 
 	  #Unregister container
