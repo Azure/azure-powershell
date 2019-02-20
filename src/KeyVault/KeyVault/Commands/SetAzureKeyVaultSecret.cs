@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -125,28 +125,12 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (ShouldProcess(Name, Properties.Resources.SetSecret))
             {
-                PSKeyVaultSecretAttributes attributes = new PSKeyVaultSecretAttributes();
-
-                attributes.Enabled = !Disable.IsPresent;
-
-                if (Expires != null) {
-                    attributes.Expires = this.Expires;
-                }
-
-                if (this.NotBefore != null) {
-                    attributes.NotBefore = this.NotBefore;
-                }
-
-                if (this.ContentType != null) {
-                    attributes.ContentType = this.ContentType;
-                }
-
-                if (this.Tag != null)
-                {
-                    attributes.Tags = TagsConversionHelper.CreateTagHashtable(TagsConversionHelper.CreateTagDictionary(this.Tag, true));
-                }
-
-                var secret = DataServiceClient.SetSecret(VaultName, Name, SecretValue, attributes);
+                var secret = DataServiceClient.SetSecret(
+                VaultName,
+                Name,
+                SecretValue,
+                new PSKeyVaultSecretAttributes(!Disable.IsPresent, Expires, NotBefore, ContentType, 
+                    TagsConversionHelper.CreateTagHashtable(TagsConversionHelper.CreateTagDictionary(this.Tag, true))));
                 WriteObject(secret);
             }
         }
