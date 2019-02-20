@@ -251,7 +251,7 @@ function Test-GetManagedDatabaseGeoBackup
 	# Setup
 	$rgName = "georestore-rg"	
 	$managedInstanceName = "testinstance"
-	$managedDatabaseName = "sourceDb"
+	$managedDatabaseName = "sourcedb"
 
 	# Test Get using all parameters
 	$gdb1 = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name $managedDatabaseName
@@ -277,7 +277,7 @@ function Test-GeoRestoreManagedDatabase
 	# Setup
     $rgName = "georestore-rg"	
 	$managedInstanceName = "testinstance"
-	$managedDatabaseName = "sourceDb"
+	$managedDatabaseName = "sourcedb"
 
 	$targetRgName = "targetrg"
 	$targetInstanceName = "targetinstance"
