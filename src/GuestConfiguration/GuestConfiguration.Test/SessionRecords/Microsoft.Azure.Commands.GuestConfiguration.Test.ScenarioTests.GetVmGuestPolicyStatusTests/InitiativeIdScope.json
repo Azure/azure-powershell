@@ -7,15 +7,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "33aacffa-92bf-46d2-8f40-7903fa02c93f"
+          "8af52ca4-021d-4134-805e-4de420c65a37"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27207.03",
+          "FxVersion/4.6.27129.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
           "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/1.0.0"
         ]
       },
@@ -39,19 +39,19 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "c45bfe75-3013-4881-a647-6d4b0a1bc737"
+          "96dd754b-6b2e-438a-a647-4bf62a20d602"
         ],
         "x-ms-correlation-request-id": [
-          "c45bfe75-3013-4881-a647-6d4b0a1bc737"
+          "96dd754b-6b2e-438a-a647-4bf62a20d602"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190207T182627Z:c45bfe75-3013-4881-a647-6d4b0a1bc737"
+          "WESTUS2:20190215T235438Z:96dd754b-6b2e-438a-a647-4bf62a20d602"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 07 Feb 2019 18:26:27 GMT"
+          "Fri, 15 Feb 2019 23:54:37 GMT"
         ],
         "Content-Length": [
           "3883"
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication\",\r\n      \"name\": \"WhitelistedApplication\",\r\n      \"properties\": {\r\n        \"complianceStatus\": \"NonCompliant\",\r\n        \"assignmentHash\": \"69F892A374D1B02FD2F7C321E0B76DADE037703E7D3E2F8109B7496B31F53FFC.E381A1748D08855C4004123F85A5DAE5D26E33B38FFDAACE715AB39B88F8BF04\",\r\n        \"latestReportId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication/reports/e8f3ec17-0a83-407f-ae59-eb221dcd80fe\",\r\n        \"lastComplianceStatusChecked\": \"2019-02-07T16:31:22Z\",\r\n        \"context\": null,\r\n        \"guestConfiguration\": {\r\n          \"kind\": null,\r\n          \"name\": \"WhitelistedApplication\",\r\n          \"version\": \"1.*\",\r\n          \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/WhitelistedApplication/WhitelistedApplication_1.5.0.0.zip\",\r\n          \"contentHash\": \"69F892A374D1B02FD2F7C321E0B76DADE037703E7D3E2F8109B7496B31F53FFC\",\r\n          \"contentType\": null,\r\n          \"configurationParameter\": [\r\n            {\r\n              \"name\": \"[InstalledApplication]bwhitelistedapp;Name\",\r\n              \"value\": \"*Chrome*\"\r\n            }\r\n          ],\r\n          \"configurationSetting\": null\r\n        },\r\n        \"provisioningState\": null\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditSecureProtocol\",\r\n      \"name\": \"AuditSecureProtocol\",\r\n      \"properties\": {\r\n        \"complianceStatus\": \"Compliant\",\r\n        \"assignmentHash\": \"98ACBE11E578A78AC17C43A19045E3E80D08E764CC90C4B3BC1BFD48E8243140.E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855\",\r\n        \"latestReportId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditSecureProtocol/reports/55bc8d8c-376c-41be-989b-908dd6e08d1c\",\r\n        \"lastComplianceStatusChecked\": \"2019-02-07T16:31:21Z\",\r\n        \"context\": null,\r\n        \"guestConfiguration\": {\r\n          \"kind\": null,\r\n          \"name\": \"AuditSecureProtocol\",\r\n          \"version\": \"1.*\",\r\n          \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/AuditSecureProtocol/AuditSecureProtocol_1.1.0.0.zip\",\r\n          \"contentHash\": \"98ACBE11E578A78AC17C43A19045E3E80D08E764CC90C4B3BC1BFD48E8243140\",\r\n          \"contentType\": null,\r\n          \"configurationParameter\": [],\r\n          \"configurationSetting\": null\r\n        },\r\n        \"provisioningState\": null\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/NotInstalledApplication\",\r\n      \"name\": \"NotInstalledApplication\",\r\n      \"properties\": {\r\n        \"complianceStatus\": \"Compliant\",\r\n        \"assignmentHash\": \"520E428984E2C33C0BCC7BC1CF8982D6AF065B14BD8D36DA5082D7BE7FF4E578.2C5D17ECE6FA069B3EBC5A9C1790E443FB8CD58E0B2332E4F8BAE86C915DA89A\",\r\n        \"latestReportId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/NotInstalledApplication/reports/a70606bb-8541-4b31-9dc9-fb09720ebf26\",\r\n        \"lastComplianceStatusChecked\": \"2019-02-07T16:31:24Z\",\r\n        \"context\": null,\r\n        \"guestConfiguration\": {\r\n          \"kind\": null,\r\n          \"name\": \"NotInstalledApplication\",\r\n          \"version\": \"1.*\",\r\n          \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/NotInstalledApplication/NotInstalledApplication_1.0.0.0.zip\",\r\n          \"contentHash\": \"520E428984E2C33C0BCC7BC1CF8982D6AF065B14BD8D36DA5082D7BE7FF4E578\",\r\n          \"contentType\": null,\r\n          \"configurationParameter\": [\r\n            {\r\n              \"name\": \"[InstalledApplication]NotInstalledApplicationResource1;Name\",\r\n              \"value\": \"*Chrome*\"\r\n            }\r\n          ],\r\n          \"configurationSetting\": null\r\n        },\r\n        \"provisioningState\": null\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication\",\r\n      \"name\": \"WhitelistedApplication\",\r\n      \"properties\": {\r\n        \"complianceStatus\": \"NonCompliant\",\r\n        \"assignmentHash\": \"69F892A374D1B02FD2F7C321E0B76DADE037703E7D3E2F8109B7496B31F53FFC.E381A1748D08855C4004123F85A5DAE5D26E33B38FFDAACE715AB39B88F8BF04\",\r\n        \"latestReportId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication/reports/94e01650-b73c-48e5-9405-1bee65cd1ab8\",\r\n        \"lastComplianceStatusChecked\": \"2019-02-15T22:39:00Z\",\r\n        \"context\": null,\r\n        \"guestConfiguration\": {\r\n          \"kind\": null,\r\n          \"name\": \"WhitelistedApplication\",\r\n          \"version\": \"1.*\",\r\n          \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/WhitelistedApplication/WhitelistedApplication_1.5.0.0.zip\",\r\n          \"contentHash\": \"69F892A374D1B02FD2F7C321E0B76DADE037703E7D3E2F8109B7496B31F53FFC\",\r\n          \"contentType\": null,\r\n          \"configurationParameter\": [\r\n            {\r\n              \"name\": \"[InstalledApplication]bwhitelistedapp;Name\",\r\n              \"value\": \"*Chrome*\"\r\n            }\r\n          ],\r\n          \"configurationSetting\": null\r\n        },\r\n        \"provisioningState\": null\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditSecureProtocol\",\r\n      \"name\": \"AuditSecureProtocol\",\r\n      \"properties\": {\r\n        \"complianceStatus\": \"Compliant\",\r\n        \"assignmentHash\": \"98ACBE11E578A78AC17C43A19045E3E80D08E764CC90C4B3BC1BFD48E8243140.E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855\",\r\n        \"latestReportId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditSecureProtocol/reports/b3d25a4d-b10e-44db-9783-32bf6bda7623\",\r\n        \"lastComplianceStatusChecked\": \"2019-02-15T22:38:58Z\",\r\n        \"context\": null,\r\n        \"guestConfiguration\": {\r\n          \"kind\": null,\r\n          \"name\": \"AuditSecureProtocol\",\r\n          \"version\": \"1.*\",\r\n          \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/AuditSecureProtocol/AuditSecureProtocol_1.1.0.0.zip\",\r\n          \"contentHash\": \"98ACBE11E578A78AC17C43A19045E3E80D08E764CC90C4B3BC1BFD48E8243140\",\r\n          \"contentType\": null,\r\n          \"configurationParameter\": [],\r\n          \"configurationSetting\": null\r\n        },\r\n        \"provisioningState\": null\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/NotInstalledApplication\",\r\n      \"name\": \"NotInstalledApplication\",\r\n      \"properties\": {\r\n        \"complianceStatus\": \"Compliant\",\r\n        \"assignmentHash\": \"520E428984E2C33C0BCC7BC1CF8982D6AF065B14BD8D36DA5082D7BE7FF4E578.2C5D17ECE6FA069B3EBC5A9C1790E443FB8CD58E0B2332E4F8BAE86C915DA89A\",\r\n        \"latestReportId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/NotInstalledApplication/reports/e9a2cd10-4b90-41c3-8152-1e4d650bbd4f\",\r\n        \"lastComplianceStatusChecked\": \"2019-02-15T22:39:02Z\",\r\n        \"context\": null,\r\n        \"guestConfiguration\": {\r\n          \"kind\": null,\r\n          \"name\": \"NotInstalledApplication\",\r\n          \"version\": \"1.*\",\r\n          \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/NotInstalledApplication/NotInstalledApplication_1.0.0.0.zip\",\r\n          \"contentHash\": \"520E428984E2C33C0BCC7BC1CF8982D6AF065B14BD8D36DA5082D7BE7FF4E578\",\r\n          \"contentType\": null,\r\n          \"configurationParameter\": [\r\n            {\r\n              \"name\": \"[InstalledApplication]NotInstalledApplicationResource1;Name\",\r\n              \"value\": \"*Chrome*\"\r\n            }\r\n          ],\r\n          \"configurationSetting\": null\r\n        },\r\n        \"provisioningState\": null\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -73,15 +73,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "78e50633-eab1-4c10-a27b-35e9b143225a"
+          "e4dc6ab3-8223-4838-8dd0-fccf18eb16e5"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27207.03",
+          "FxVersion/4.6.27129.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
           "Microsoft.Azure.Management.Internal.ResourceManager.Version2018.05.01.PolicyClient/1.1.16"
         ]
       },
@@ -95,17 +95,17 @@
         "Vary": [
           "Accept-Encoding"
         ],
-        "x-ms-correlation-request-id": [
-          "4d4dbc11-44d6-4b75-b17e-1d00821d726c"
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
         ],
         "x-ms-request-id": [
-          "westus2:65bac38b-68fa-49d6-8286-d7cc88680836"
+          "westus2:65f55bf4-4203-4f5e-92a3-41ca10d0415b"
         ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "11997"
+        "x-ms-correlation-request-id": [
+          "24d51321-5137-422b-8e40-139b82e8dcd3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190207T182628Z:4d4dbc11-44d6-4b75-b17e-1d00821d726c"
+          "WESTUS2:20190215T235448Z:24d51321-5137-422b-8e40-139b82e8dcd3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -114,10 +114,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 07 Feb 2019 18:26:27 GMT"
+          "Fri, 15 Feb 2019 23:54:47 GMT"
         ],
         "Content-Length": [
-          "1361"
+          "1350"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -126,8 +126,68 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Audit that an application is installed inside Windows VMs\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"description\": \"This initiative will both deploy the policy requirements and audit that the specified application is installed inside Windows virtual machines. For more information on guest configuration policies, please visit http://aka.ms/gcpol\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"parameters\": {\r\n      \"installedApplication\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Application name (supports wildcard)\",\r\n          \"description\": \"Application name. Example: 'Microsoft SQL Server 2014 (64-bit)' or 'Microsoft SQL Server 2014*' to match any application starting with 'Microsoft SQL Server 2014'.\"\r\n        }\r\n      }\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Deploy_InstalledApp\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/12f7e5d0-42a7-4630-80d8-54fb7cff9bd6\",\r\n        \"parameters\": {\r\n          \"installedApplication\": {\r\n            \"value\": \"[parameters('installedApplication')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Audit_InstalledApp\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/5e393799-e3ca-4e43-a9a5-0ec4648a57d9\"\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policySetDefinitions/25ef9b72-4af2-4501-acd1-fc814e73dde1\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"25ef9b72-4af2-4501-acd1-fc814e73dde1\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Audit that an application is installed inside Windows VMs\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"description\": \"This initiative will both deploy the policy requirements and audit that the specified application is installed inside Windows virtual machines. For more information on guest configuration policies, please visit http://aka.ms/gcpol\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"parameters\": {\r\n      \"installedApplication\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Application name (supports wildcard)\",\r\n          \"description\": \"Application name. Example: 'Microsoft SQL Server 2014 (64-bit)' or 'Microsoft SQL Server 2014*' to match any application starting with 'Microsoft SQL Server 2014'.\"\r\n        }\r\n      }\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Deploy_InstalledApp\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/12f7e5d0-42a7-4630-80d8-54fb7cff9bd6\",\r\n        \"parameters\": {\r\n          \"installedApplication\": {\r\n            \"value\": \"[parameters('installedApplication')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Audit_InstalledApp\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/5e393799-e3ca-4e43-a9a5-0ec4648a57d9\"\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policySetDefinitions/25ef9b72-4af2-4501-acd1-fc814e73dde1\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"25ef9b72-4af2-4501-acd1-fc814e73dde1\"\r\n}",
       "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/providers/Microsoft.Authorization/policyDefinitions/12f7e5d0-42a7-4630-80d8-54fb7cff9bd6?api-version=2018-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy8xMmY3ZTVkMC00MmE3LTQ2MzAtODBkOC01NGZiN2NmZjliZDY/YXBpLXZlcnNpb249MjAxOC0wNS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fc73cdb2-a210-4032-9b8b-0fa461597bd5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.ResourceManager.Version2018.05.01.PolicyClient/1.1.16"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus2:f65bd3fe-d290-49bc-b955-9485095c9330"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "7b56e6c5-8bd4-41a7-905e-84821ec9de38"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190215T235451Z:7b56e6c5-8bd4-41a7-905e-84821ec9de38"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 15 Feb 2019 23:54:51 GMT"
+        ],
+        "Content-Length": [
+          "138"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PolicyDefinitionNotFound\",\r\n    \"message\": \"The policy definition '12f7e5d0-42a7-4630-80d8-54fb7cff9bd6' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
     },
     {
       "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/12f7e5d0-42a7-4630-80d8-54fb7cff9bd6?api-version=2018-05-01",
@@ -136,15 +196,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7de0770b-6cf4-40df-b6ee-c50323177937"
+          "969c3ac4-b8d4-4808-958a-67fa09163b88"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27207.03",
+          "FxVersion/4.6.27129.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
           "Microsoft.Azure.Management.Internal.ResourceManager.Version2018.05.01.PolicyClient/1.1.16"
         ]
       },
@@ -159,16 +219,16 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11996"
+          "11998"
         ],
         "x-ms-request-id": [
-          "westus2:d5749899-f94a-4e70-b839-cdf70ff0baee"
+          "westus2:d3297117-0ec9-42b6-b160-cca1cbfdb775"
         ],
         "x-ms-correlation-request-id": [
-          "e2d8dcfd-39a6-45cc-8b4b-aeb20ebea172"
+          "63d5cb9c-6eee-47e1-8179-80ddda6af300"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190207T182628Z:e2d8dcfd-39a6-45cc-8b4b-aeb20ebea172"
+          "WESTUS2:20190215T235451Z:63d5cb9c-6eee-47e1-8179-80ddda6af300"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -177,10 +237,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 07 Feb 2019 18:26:27 GMT"
+          "Fri, 15 Feb 2019 23:54:51 GMT"
         ],
         "Content-Length": [
-          "4817"
+          "4806"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -189,8 +249,68 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Deploy VM extension to audit that an application is installed inside Windows VMs\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"Include this rule to deploy the VM extension for Microsoft Guest Configuration, the VM extension for Microsoft Azure Managed Service Identity, and the required content to audit that an application is installed inside Windows virtual machines. This policy should only be used along with its corresponding audit policy in an initiative/policy set. For more information on guest configuration policies, please visit http://aka.ms/gcpol\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\",\r\n      \"requiredProviders\": [\r\n        \"Microsoft.GuestConfiguration\"\r\n      ]\r\n    },\r\n    \"parameters\": {\r\n      \"installedApplication\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Application name (supports wildcard)\",\r\n          \"description\": \"Application name. Example: 'Microsoft SQL Server 2014 (64-bit)' or 'Microsoft SQL Server 2014*' to match any application starting with 'Microsoft SQL Server 2014'.\"\r\n        }\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"anyOf\": [\r\n              {\r\n                \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                \"in\": [\r\n                  \"MicrosoftDynamicsAX\",\r\n                  \"MicrosoftWindowsDesktop\",\r\n                  \"MicrosoftVisualStudio\",\r\n                  \"incredibuild\",\r\n                  \"MicrosoftWindowsServerHPCPack\",\r\n                  \"esri\"\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"MicrosoftWindowsServer\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"notLike\": \"2008*\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"MicrosoftSQLServer\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"notEquals\": \"SQL2008R2SP3-WS2008R2SP1\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"microsoft-dsvm\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"dsvm-windows\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"microsoft-ads\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"in\": [\r\n                      \"standard-data-science-vm\",\r\n                      \"windows-data-science-vm\"\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"batch\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"rendering-windows2016\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"center-for-internet-security-inc\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"like\": \"cis-windows-server-201*\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"pivotal\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"like\": \"bosh-windows-server*\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"cloud-infrastructure-services\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"like\": \"ad*\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deployIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"name\": \"WhitelistedApplication\",\r\n          \"roleDefinitionIds\": [\r\n            \"/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n          ],\r\n          \"deployment\": {\r\n            \"properties\": {\r\n              \"mode\": \"incremental\",\r\n              \"parameters\": {\r\n                \"vmName\": {\r\n                  \"value\": \"[field('name')]\"\r\n                },\r\n                \"location\": {\r\n                  \"value\": \"[field('location')]\"\r\n                },\r\n                \"configurationName\": {\r\n                  \"value\": \"WhitelistedApplication\"\r\n                },\r\n                \"installedApplication\": {\r\n                  \"value\": \"[parameters('installedApplication')]\"\r\n                }\r\n              },\r\n              \"template\": {\r\n                \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n                \"contentVersion\": \"1.0.0.0\",\r\n                \"parameters\": {\r\n                  \"vmName\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"location\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"configurationName\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"installedApplication\": {\r\n                    \"type\": \"string\"\r\n                  }\r\n                },\r\n                \"resources\": [\r\n                  {\r\n                    \"apiVersion\": \"2018-11-20\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/providers/guestConfigurationAssignments\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('configurationName'))]\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"guestConfiguration\": {\r\n                        \"name\": \"[parameters('configurationName')]\",\r\n                        \"version\": \"1.*\",\r\n                        \"configurationParameter\": [\r\n                          {\r\n                            \"name\": \"[InstalledApplication]bwhitelistedapp;Name\",\r\n                            \"value\": \"[parameters('installedApplication')]\"\r\n                          }\r\n                        ]\r\n                      }\r\n                    }\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2017-03-30\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines\",\r\n                    \"identity\": {\r\n                      \"type\": \"SystemAssigned\"\r\n                    },\r\n                    \"name\": \"[parameters('vmName')]\",\r\n                    \"location\": \"[parameters('location')]\"\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2015-05-01-preview\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/AzurePolicyforWindows')]\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"publisher\": \"Microsoft.GuestConfiguration\",\r\n                      \"type\": \"ConfigurationforWindows\",\r\n                      \"typeHandlerVersion\": \"1.1\",\r\n                      \"autoUpgradeMinorVersion\": true,\r\n                      \"settings\": {},\r\n                      \"protectedSettings\": {}\r\n                    },\r\n                    \"dependsOn\": [\r\n                      \"[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'),'/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/',parameters('configurationName'))]\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/12f7e5d0-42a7-4630-80d8-54fb7cff9bd6\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"12f7e5d0-42a7-4630-80d8-54fb7cff9bd6\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Deploy VM extension to audit that an application is installed inside Windows VMs\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"Include this rule to deploy the VM extension for Microsoft Guest Configuration, the VM extension for Microsoft Azure Managed Service Identity, and the required content to audit that an application is installed inside Windows virtual machines. This policy should only be used along with its corresponding audit policy in an initiative/policy set. For more information on guest configuration policies, please visit http://aka.ms/gcpol\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\",\r\n      \"requiredProviders\": [\r\n        \"Microsoft.GuestConfiguration\"\r\n      ]\r\n    },\r\n    \"parameters\": {\r\n      \"installedApplication\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Application name (supports wildcard)\",\r\n          \"description\": \"Application name. Example: 'Microsoft SQL Server 2014 (64-bit)' or 'Microsoft SQL Server 2014*' to match any application starting with 'Microsoft SQL Server 2014'.\"\r\n        }\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"anyOf\": [\r\n              {\r\n                \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                \"in\": [\r\n                  \"MicrosoftDynamicsAX\",\r\n                  \"MicrosoftWindowsDesktop\",\r\n                  \"MicrosoftVisualStudio\",\r\n                  \"incredibuild\",\r\n                  \"MicrosoftWindowsServerHPCPack\",\r\n                  \"esri\"\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"MicrosoftWindowsServer\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"notLike\": \"2008*\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"MicrosoftSQLServer\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"notEquals\": \"SQL2008R2SP3-WS2008R2SP1\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"microsoft-dsvm\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"dsvm-windows\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"microsoft-ads\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"in\": [\r\n                      \"standard-data-science-vm\",\r\n                      \"windows-data-science-vm\"\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"batch\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"rendering-windows2016\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"center-for-internet-security-inc\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"like\": \"cis-windows-server-201*\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"pivotal\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"like\": \"bosh-windows-server*\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"cloud-infrastructure-services\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"like\": \"ad*\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deployIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"name\": \"WhitelistedApplication\",\r\n          \"roleDefinitionIds\": [\r\n            \"/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n          ],\r\n          \"deployment\": {\r\n            \"properties\": {\r\n              \"mode\": \"incremental\",\r\n              \"parameters\": {\r\n                \"vmName\": {\r\n                  \"value\": \"[field('name')]\"\r\n                },\r\n                \"location\": {\r\n                  \"value\": \"[field('location')]\"\r\n                },\r\n                \"configurationName\": {\r\n                  \"value\": \"WhitelistedApplication\"\r\n                },\r\n                \"installedApplication\": {\r\n                  \"value\": \"[parameters('installedApplication')]\"\r\n                }\r\n              },\r\n              \"template\": {\r\n                \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n                \"contentVersion\": \"1.0.0.0\",\r\n                \"parameters\": {\r\n                  \"vmName\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"location\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"configurationName\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"installedApplication\": {\r\n                    \"type\": \"string\"\r\n                  }\r\n                },\r\n                \"resources\": [\r\n                  {\r\n                    \"apiVersion\": \"2018-11-20\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/providers/guestConfigurationAssignments\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('configurationName'))]\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"guestConfiguration\": {\r\n                        \"name\": \"[parameters('configurationName')]\",\r\n                        \"version\": \"1.*\",\r\n                        \"configurationParameter\": [\r\n                          {\r\n                            \"name\": \"[InstalledApplication]bwhitelistedapp;Name\",\r\n                            \"value\": \"[parameters('installedApplication')]\"\r\n                          }\r\n                        ]\r\n                      }\r\n                    }\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2017-03-30\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines\",\r\n                    \"identity\": {\r\n                      \"type\": \"SystemAssigned\"\r\n                    },\r\n                    \"name\": \"[parameters('vmName')]\",\r\n                    \"location\": \"[parameters('location')]\"\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2015-05-01-preview\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/AzurePolicyforWindows')]\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"publisher\": \"Microsoft.GuestConfiguration\",\r\n                      \"type\": \"ConfigurationforWindows\",\r\n                      \"typeHandlerVersion\": \"1.1\",\r\n                      \"autoUpgradeMinorVersion\": true,\r\n                      \"settings\": {},\r\n                      \"protectedSettings\": {}\r\n                    },\r\n                    \"dependsOn\": [\r\n                      \"[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'),'/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/',parameters('configurationName'))]\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/12f7e5d0-42a7-4630-80d8-54fb7cff9bd6\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"12f7e5d0-42a7-4630-80d8-54fb7cff9bd6\"\r\n}",
       "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/providers/Microsoft.Authorization/policyDefinitions/5e393799-e3ca-4e43-a9a5-0ec4648a57d9?api-version=2018-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy81ZTM5Mzc5OS1lM2NhLTRlNDMtYTlhNS0wZWM0NjQ4YTU3ZDk/YXBpLXZlcnNpb249MjAxOC0wNS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e24d76b8-640b-41c4-bac0-834b27a43fc7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.ResourceManager.Version2018.05.01.PolicyClient/1.1.16"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus2:c9f6fee1-0361-41d8-bae3-db01d49ff406"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "aaf6a56a-296d-4b5e-a42d-272b5858321d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190215T235452Z:aaf6a56a-296d-4b5e-a42d-272b5858321d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 15 Feb 2019 23:54:52 GMT"
+        ],
+        "Content-Length": [
+          "138"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PolicyDefinitionNotFound\",\r\n    \"message\": \"The policy definition '5e393799-e3ca-4e43-a9a5-0ec4648a57d9' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
     },
     {
       "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/5e393799-e3ca-4e43-a9a5-0ec4648a57d9?api-version=2018-05-01",
@@ -199,15 +319,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a532aab5-cd04-44f8-9eae-d3268b08f743"
+          "34856b3f-f5f2-46d7-9866-c065c35b8fc3"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27207.03",
+          "FxVersion/4.6.27129.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
           "Microsoft.Azure.Management.Internal.ResourceManager.Version2018.05.01.PolicyClient/1.1.16"
         ]
       },
@@ -222,16 +342,16 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11995"
+          "11997"
         ],
         "x-ms-request-id": [
-          "westus2:f66e2a63-59fc-4d32-8b6b-60ad20296431"
+          "westus2:a15b37f8-1f32-4e26-8925-ae94cee9db9b"
         ],
         "x-ms-correlation-request-id": [
-          "3ba54cfd-6ce0-43f0-a2c2-c6adc25ffd26"
+          "c203f17f-056b-46a5-ae09-a32a05232bdd"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190207T182628Z:3ba54cfd-6ce0-43f0-a2c2-c6adc25ffd26"
+          "WESTUS2:20190215T235453Z:c203f17f-056b-46a5-ae09-a32a05232bdd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -240,10 +360,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 07 Feb 2019 18:26:27 GMT"
+          "Fri, 15 Feb 2019 23:54:52 GMT"
         ],
         "Content-Length": [
-          "992"
+          "981"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -252,25 +372,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Audit that an application is installed inside Windows VMs\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"This policy will audit that the specified application is installed inside Windows virtual machines. This policy should only be used along with its corresponding deploy policy in an initiative/policy set. For more information on guest configuration policies, please visit http://aka.ms/gcpol\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\"\r\n          },\r\n          {\r\n            \"field\": \"name\",\r\n            \"equals\": \"WhitelistedApplication\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceStatus\",\r\n            \"notEquals\": \"Compliant\"\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"audit\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/5e393799-e3ca-4e43-a9a5-0ec4648a57d9\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"5e393799-e3ca-4e43-a9a5-0ec4648a57d9\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Audit that an application is installed inside Windows VMs\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"This policy will audit that the specified application is installed inside Windows virtual machines. This policy should only be used along with its corresponding deploy policy in an initiative/policy set. For more information on guest configuration policies, please visit http://aka.ms/gcpol\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\"\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\"\r\n          },\r\n          {\r\n            \"field\": \"name\",\r\n            \"equals\": \"WhitelistedApplication\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceStatus\",\r\n            \"notEquals\": \"Compliant\"\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"audit\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/5e393799-e3ca-4e43-a9a5-0ec4648a57d9\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"5e393799-e3ca-4e43-a9a5-0ec4648a57d9\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication/reports/e8f3ec17-0a83-407f-ae59-eb221dcd80fe?api-version=2018-11-20",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Jlc291cmNlR3JvdXBzL3ZpdmdhL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvVml2MTgwOVNEREMvcHJvdmlkZXJzL01pY3Jvc29mdC5HdWVzdENvbmZpZ3VyYXRpb24vZ3Vlc3RDb25maWd1cmF0aW9uQXNzaWdubWVudHMvV2hpdGVsaXN0ZWRBcHBsaWNhdGlvbi9yZXBvcnRzL2U4ZjNlYzE3LTBhODMtNDA3Zi1hZTU5LWViMjIxZGNkODBmZT9hcGktdmVyc2lvbj0yMDE4LTExLTIw",
+      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication/reports/94e01650-b73c-48e5-9405-1bee65cd1ab8?api-version=2018-11-20",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Jlc291cmNlR3JvdXBzL3ZpdmdhL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvVml2MTgwOVNEREMvcHJvdmlkZXJzL01pY3Jvc29mdC5HdWVzdENvbmZpZ3VyYXRpb24vZ3Vlc3RDb25maWd1cmF0aW9uQXNzaWdubWVudHMvV2hpdGVsaXN0ZWRBcHBsaWNhdGlvbi9yZXBvcnRzLzk0ZTAxNjUwLWI3M2MtNDhlNS05NDA1LTFiZWU2NWNkMWFiOD9hcGktdmVyc2lvbj0yMDE4LTExLTIw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "16bb667d-abac-4b06-89d0-8373b4e39c5e"
+          "067c1b56-131e-4e97-a1ec-9613a97b6a96"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27207.03",
+          "FxVersion/4.6.27129.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
           "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/1.0.0"
         ]
       },
@@ -294,19 +414,19 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "8e2e50d2-d36c-451d-8606-4d49e30730c9"
+          "54ee827d-864f-4882-a196-46c85a0f08a6"
         ],
         "x-ms-correlation-request-id": [
-          "8e2e50d2-d36c-451d-8606-4d49e30730c9"
+          "54ee827d-864f-4882-a196-46c85a0f08a6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190207T182628Z:8e2e50d2-d36c-451d-8606-4d49e30730c9"
+          "WESTUS2:20190215T235454Z:54ee827d-864f-4882-a196-46c85a0f08a6"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 07 Feb 2019 18:26:28 GMT"
+          "Fri, 15 Feb 2019 23:54:53 GMT"
         ],
         "Content-Length": [
           "1667"
@@ -318,7 +438,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication/reports/e8f3ec17-0a83-407f-ae59-eb221dcd80fe\",\r\n  \"name\": \"e8f3ec17-0a83-407f-ae59-eb221dcd80fe\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"NonCompliant\",\r\n    \"assignment\": {\r\n      \"name\": \"WhitelistedApplication\",\r\n      \"configuration\": {\r\n        \"name\": \"WhitelistedApplication\",\r\n        \"version\": \"1.5.0.0\"\r\n      }\r\n    },\r\n    \"reportId\": \"e8f3ec17-0a83-407f-ae59-eb221dcd80fe\",\r\n    \"vm\": {\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC\",\r\n      \"uuid\": \"5f1486e6-45c1-4ff1-b892-5b6989e78b68\"\r\n    },\r\n    \"details\": {\r\n      \"complianceStatus\": \"NonCompliant\",\r\n      \"startTime\": \"2019-02-07T16:30:46Z\",\r\n      \"endTime\": \"2019-02-07T16:31:22Z\",\r\n      \"jobId\": \"e8f3ec17-0a83-407f-ae59-eb221dcd80fe\",\r\n      \"resources\": [\r\n        {\r\n          \"complianceStatus\": \"NonCompliant\",\r\n          \"reasons\": [\r\n            {\r\n              \"phrase\": \"The following applications are not installed: '*Chrome*'.\",\r\n              \"code\": \"UserApplication:InstalledApplication:ApplicationNotInstalled\"\r\n            }\r\n          ],\r\n          \"properties\": {\r\n            \"ApplicationInfo\": [\r\n              {\r\n                \"Ensure\": \"Absent\",\r\n                \"Name\": \"*Chrome*\"\r\n              }\r\n            ],\r\n            \"ConfigurationName\": \"WhitelistedApplication\",\r\n            \"DependsOn\": null,\r\n            \"Ensure\": \"Absent\",\r\n            \"ModuleName\": \"UserApplication\",\r\n            \"ModuleVersion\": \"1.0.0.3\",\r\n            \"Name\": \"*Chrome*\",\r\n            \"PsDscRunAsCredential\": null,\r\n            \"Reasons\": [\r\n              {\r\n                \"Code\": \"UserApplication:InstalledApplication:ApplicationNotInstalled\",\r\n                \"Phrase\": \"The following applications are not installed: '*Chrome*'.\"\r\n              }\r\n            ],\r\n            \"ResourceId\": \"[InstalledApplication]bwhitelistedapp\",\r\n            \"SourceInfo\": null\r\n          }\r\n        }\r\n      ],\r\n      \"operationType\": \"Consistency\"\r\n    },\r\n    \"startTime\": \"2019-02-07T16:30:46Z\",\r\n    \"endTime\": \"2019-02-07T16:31:22Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication/reports/94e01650-b73c-48e5-9405-1bee65cd1ab8\",\r\n  \"name\": \"94e01650-b73c-48e5-9405-1bee65cd1ab8\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"NonCompliant\",\r\n    \"assignment\": {\r\n      \"name\": \"WhitelistedApplication\",\r\n      \"configuration\": {\r\n        \"name\": \"WhitelistedApplication\",\r\n        \"version\": \"1.5.0.0\"\r\n      }\r\n    },\r\n    \"reportId\": \"94e01650-b73c-48e5-9405-1bee65cd1ab8\",\r\n    \"vm\": {\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC\",\r\n      \"uuid\": \"5f1486e6-45c1-4ff1-b892-5b6989e78b68\"\r\n    },\r\n    \"details\": {\r\n      \"complianceStatus\": \"NonCompliant\",\r\n      \"startTime\": \"2019-02-15T22:38:23Z\",\r\n      \"endTime\": \"2019-02-15T22:39:00Z\",\r\n      \"jobId\": \"94e01650-b73c-48e5-9405-1bee65cd1ab8\",\r\n      \"resources\": [\r\n        {\r\n          \"complianceStatus\": \"NonCompliant\",\r\n          \"reasons\": [\r\n            {\r\n              \"phrase\": \"The following applications are not installed: '*Chrome*'.\",\r\n              \"code\": \"UserApplication:InstalledApplication:ApplicationNotInstalled\"\r\n            }\r\n          ],\r\n          \"properties\": {\r\n            \"ApplicationInfo\": [\r\n              {\r\n                \"Ensure\": \"Absent\",\r\n                \"Name\": \"*Chrome*\"\r\n              }\r\n            ],\r\n            \"ConfigurationName\": \"WhitelistedApplication\",\r\n            \"DependsOn\": null,\r\n            \"Ensure\": \"Absent\",\r\n            \"ModuleName\": \"UserApplication\",\r\n            \"ModuleVersion\": \"1.0.0.3\",\r\n            \"Name\": \"*Chrome*\",\r\n            \"PsDscRunAsCredential\": null,\r\n            \"Reasons\": [\r\n              {\r\n                \"Code\": \"UserApplication:InstalledApplication:ApplicationNotInstalled\",\r\n                \"Phrase\": \"The following applications are not installed: '*Chrome*'.\"\r\n              }\r\n            ],\r\n            \"ResourceId\": \"[InstalledApplication]bwhitelistedapp\",\r\n            \"SourceInfo\": null\r\n          }\r\n        }\r\n      ],\r\n      \"operationType\": \"Consistency\"\r\n    },\r\n    \"startTime\": \"2019-02-15T22:38:23Z\",\r\n    \"endTime\": \"2019-02-15T22:39:00Z\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
