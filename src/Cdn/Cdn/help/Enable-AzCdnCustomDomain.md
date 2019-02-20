@@ -8,7 +8,7 @@ schema: 2.0.0
 # Enable-AzCdnCustomDomain
 
 ## SYNOPSIS
-Enables custom HTTPS.
+Enables Custom Domain HTTPS (Deprecated).
 
 ## SYNTAX
 
