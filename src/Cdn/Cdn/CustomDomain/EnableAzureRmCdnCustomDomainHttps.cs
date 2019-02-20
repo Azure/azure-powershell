@@ -13,19 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.Cdn.Common;
+using Microsoft.Azure.Commands.Cdn.Helpers;
 using Microsoft.Azure.Commands.Cdn.Models.CustomDomain;
 using Microsoft.Azure.Commands.Cdn.Properties;
-using Microsoft.Azure.Management.Cdn;
-using Microsoft.Azure.Management.Cdn.Models;
-using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
-    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnCustomDomainHttps",DefaultParameterSetName = FieldsParameterSet,SupportsShouldProcess = true),OutputType(typeof(bool))]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnCustomDomainHttps", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class EnableAzureRmCdnCustomDomainHttps : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN custom domain display name.")]
@@ -47,21 +47,33 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The custom domain object.", ParameterSetName = ObjectParameterSet)]
         [ValidateNotNull]
-        public PSCustomDomain CdnCustomDomain { get; set; }
+        public PSCustomDomain InputObject { get; set; }
+
+        [Parameter(ParameterSetName = ResourceIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ResourceId")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
         public SwitchParameter PassThru { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ObjectParameterSet)
             {
-                EndpointName = CdnCustomDomain.EndpointName;
-                ProfileName = CdnCustomDomain.ProfileName;
-                ResourceGroupName = CdnCustomDomain.ResourceGroupName;
-                CustomDomainName = CdnCustomDomain.Name;
+                EndpointName = InputObject.EndpointName;
+                ProfileName = InputObject.ProfileName;
+                ResourceGroupName = InputObject.ResourceGroupName;
+                CustomDomainName = InputObject.Name;
             }
 
+            if (ParameterSetName.Equals(ResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = parsedResourceId.ResourceGroupName;
+                ProfileName = parsedResourceId.GetProfileName();
+                EndpointName = parsedResourceId.GetEndpointName();
+                CustomDomainName = parsedResourceId.ResourceName;
+            }
 
             var existingCustomDomain = CdnManagementClient.CustomDomains
                 .ListByEndpoint(ResourceGroupName, ProfileName, EndpointName)
