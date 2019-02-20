@@ -31,7 +31,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 if (string.IsNullOrWhiteSpace(key))
                     throw new ArgumentException("Invalid tag name");
 
-                string value = (tag.Value == null) ? string.Empty : tag.Value.ToString();
+                if (tag.Value != null && !(tag.Value is string))
+                    throw new ArgumentException("Tag has invalid value");
+                string value = (tag.Value == null) ? string.Empty : (string)tag.Value;
                 tagsDictionary[key] = value;
             }
 
