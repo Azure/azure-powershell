@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (this.ParameterSetName.Equals(ListVMImageParamSetName))
+                if (this.ParameterSetName.Equals(ListVMImageParamSetName) || WildcardPattern.ContainsWildcardCharacters(Version))
                 {
                     var filter = new ODataQuery<VirtualMachineImageResource>(this.FilterExpression);
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Compute
                                      FilterExpression = this.FilterExpression
                                  };
 
-                    WriteObject(images, true);
+                    WriteObject(SubResourceWildcardFilter(Version, images), true);
                 }
                 else
                 {
