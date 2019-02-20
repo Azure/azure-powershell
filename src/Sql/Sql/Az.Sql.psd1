@@ -57,7 +57,8 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Sql.dll', 
-               '.\Microsoft.Azure.PowerShell.Cmdlets.Sql.LegacySdk.dll'
+               '.\Microsoft.Azure.PowerShell.Cmdlets.Sql.LegacySdk.dll',
+			    '.\Microsoft.Azure.Management.Monitor.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
