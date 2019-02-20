@@ -18,9 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Deprecated AddAzureASAccount cmdlet
 
 ## Version 1.0.1
+* Deprecated AddAzureASAccount cmdlet
 * Release with updated Authentication dependency
 
 ## Version 1.0.0
