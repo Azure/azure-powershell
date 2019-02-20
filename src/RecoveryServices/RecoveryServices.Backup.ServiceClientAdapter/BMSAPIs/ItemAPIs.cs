@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
-using System;
-using System.Collections.Generic;
 using RestAzureNS = Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -159,14 +159,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceId,
             string resourceLocation,
             string protectableObjName)
-        {
+    {
             ODataQuery<ProtectionPolicyQueryObject> queryParams =
              new ODataQuery<ProtectionPolicyQueryObject>();
 
             BackupStatusRequest request = new BackupStatusRequest();
             request.ResourceType = ConversionUtils.GetServiceClientWorkloadType(type);
             request.ResourceId = resourceId;
-            if (!string.IsNullOrWhiteSpace(protectableObjName))
+            if(!string.IsNullOrWhiteSpace(protectableObjName))
             {
                 request.PoLogicalName = protectableObjName;
             }
@@ -175,28 +175,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 resourceLocation,
                 request,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
-        }
-
-        /// <summary>
-        /// Creates a new protection intent or updates an already existing protection intent
-        /// </summary>
-        /// <param name="containerName">Name of the container which this item belongs to</param>
-        /// <param name="protectedItemName">Name of the item</param>
-        /// <param name="request">Protected item create or update request</param>
-        /// <returns>Job created in the service for this operation</returns>
-        public RestAzureNS.AzureOperationResponse<ProtectionIntentResource> CreateOrUpdateProtectionIntent(
-            string protectedItemName,
-            ProtectionIntentResource request,
-            string vaultName = null,
-            string resourceGroupName = null)
-        {
-            return BmsAdapter.Client.ProtectionIntent.CreateOrUpdateWithHttpMessagesAsync(
-                 vaultName ?? BmsAdapter.GetResourceName(),
-                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
-                 AzureFabricName,
-                 protectedItemName,
-                 request,
-                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
     }
 }

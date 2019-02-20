@@ -18,9 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add support for SQL DB Hyperscale tier
+* Fixed bug where restore could fail due to setting unnecessary properties in restore request
+
+## Version 1.2.0
 * Add Get/Set AzSqlDatabaseBackupShortTermRetentionPolicy
 * Fix issue where not being logged into Azure account would result in nullref exception when executing SQL cmdlets
 * Fixed null ref exception in Get-AzSqlCapability
+* Support Database/Server auditing to event hub and log analytics.
 
 ## Version 1.1.0
 * Update incorrect online help URLs

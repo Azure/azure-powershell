@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using System.Collections.Generic;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Disable protection of an item protected by the recovery services vault. 
     /// Returns the corresponding job created in the service to track this operation.
     /// </summary>
-    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtection", SupportsShouldProcess = true), OutputType(typeof(JobBase))]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtection", SupportsShouldProcess = true),OutputType(typeof(JobBase))]
     public class DisableAzureRmRecoveryServicesBackupProtection : RSBackupVaultCmdletBase
     {
         /// <summary>
@@ -85,28 +85,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             providerManager.GetProviderInstance(Item.WorkloadType,
                             Item.BackupManagementType);
 
-                        if(DeleteBackupData)
-                        {
-                            var itemResponse = psBackupProvider.DisableProtectionWithDeleteData();
+                        var itemResponse = psBackupProvider.DisableProtection();
 
-                            // Track Response and display job details
-                            HandleCreatedJob(
-                                    itemResponse,
-                                    Resources.DisableProtectionOperation,
-                                    vaultName: vaultName,
-                                    resourceGroupName: resourceGroupName);
-                        }
-                        else
-                        {
-                            var itemResponse = psBackupProvider.DisableProtection();
+                        // Track Response and display job details
 
-                            // Track Response and display job details
-                            HandleCreatedJob(
-                                    itemResponse,
-                                    Resources.DisableProtectionOperation,
-                                    vaultName: vaultName,
-                                    resourceGroupName: resourceGroupName);
-                        }
+                        HandleCreatedJob(
+                            itemResponse,
+                            Resources.DisableProtectionOperation,
+                            vaultName: vaultName,
+                            resourceGroupName: resourceGroupName);
                     }
                 );
             }, ShouldProcess(Item.Name, VerbsLifecycle.Disable));
