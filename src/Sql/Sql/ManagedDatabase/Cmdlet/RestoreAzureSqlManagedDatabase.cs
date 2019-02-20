@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             HelpMessage = "The resource id of instance database object to restore")]
         [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet,
             Mandatory = true,
-            HelpMessage = "The name of the target instance to restore to.")]
+            HelpMessage = "The resource id of instance database object to restore")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

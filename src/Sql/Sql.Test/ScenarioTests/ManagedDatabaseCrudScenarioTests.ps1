@@ -249,8 +249,8 @@ function Test-RestoreManagedDatabase
 function Test-GetManagedDatabaseGeoBackup
 {
 	# Setup
-	$rgName = "restore-rg"	
-	$managedInstanceName = "testbrinstance"
+	$rgName = "georestore-rg"	
+	$managedInstanceName = "testinstance"
 	$managedDatabaseName = "sourceDb"
 
 	# Test Get using all parameters
@@ -275,12 +275,12 @@ function Test-GetManagedDatabaseGeoBackup
 function Test-GeoRestoreManagedDatabase
 {
 	# Setup
-    $rgName = "restore-rg"	
-	$managedInstanceName = "testbrinstance"
+    $rgName = "georestore-rg"	
+	$managedInstanceName = "testinstance"
 	$managedDatabaseName = "sourceDb"
 
-	$targetRgName = "brrg"
-	$targetInstanceName = "brcl-eus"
+	$targetRgName = "targetrg"
+	$targetInstanceName = "targetinstance"
 	try
 	{
 		$sourceDbGeoBackup = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name $managedDatabaseName
