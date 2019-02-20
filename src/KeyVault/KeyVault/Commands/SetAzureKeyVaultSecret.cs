@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security;
 
@@ -141,7 +142,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (this.Tag != null)
                 {
-                    attributes.Tags = this.Tag.ConvertToStringHashtable();
+                    attributes.Tags = this.Tag.ConvertToDictionary().ConvertToHashtable();
                 }
 
                 var secret = DataServiceClient.SetSecret(VaultName, Name, SecretValue, attributes);

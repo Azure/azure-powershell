@@ -22,16 +22,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public static class TagsHelper
     {
-        public static Hashtable ConvertToStringHashtable(this Hashtable tags) {
-            Hashtable tagsHashtable = new Hashtable();
-
-            foreach (string Key in tags.Keys) {
-                tagsHashtable.Add(Key, tags[Key].ToString());
-            }
-
-            return tagsHashtable;
-        }
-
         public static Dictionary<string, string> ConvertToDictionary(this Hashtable tags)
         {
             Dictionary<string, string> tagsDictionary = new Dictionary<string, string>();
@@ -41,9 +31,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 if (string.IsNullOrWhiteSpace(key))
                     throw new ArgumentException("Invalid tag name");
 
-                if (tag.Value != null && !(tag.Value is string))
-                    throw new ArgumentException("Tag has invalid value");
-                string value = (tag.Value == null) ? string.Empty : (string)tag.Value;
+                string value = (tag.Value == null) ? string.Empty : tag.Value.ToString();
                 tagsDictionary[key] = value;
             }
 
