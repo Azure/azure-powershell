@@ -118,10 +118,17 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                 }
                 catch (ResourceManagerErrorResponseException exception) when (HttpStatusCode.NotFound.Equals(exception.Response.StatusCode))
                 {
-                    var message = string.IsNullOrEmpty(this._initiativeId) ?
-                    string.Format(StringResources.InitiativeWithThisNameNotFound, initiativeName) :
-                    string.Format(StringResources.InitiativeWithThisIdNotFound, this._initiativeId);
-                    throw new GuestConfigurationErrorResponseException(message);
+                    try
+                    {
+                        policySetDefinitionsArray = new PolicySetDefinition[] { PolicyClient.PolicySetDefinitions.Get(initiativeName) };
+                    }
+                    catch (ResourceManagerErrorResponseException exception_custom) when (HttpStatusCode.NotFound.Equals(exception_custom.Response.StatusCode))
+                    {
+                        var message = string.IsNullOrEmpty(this._initiativeId) ?
+                            string.Format(StringResources.InitiativeWithThisNameNotFound, initiativeName) :
+                            string.Format(StringResources.InitiativeWithThisIdNotFound, this._initiativeId);
+                        throw new GuestConfigurationErrorResponseException(message);
+                    }
                 }
 
                 if (policySetDefinitionsArray != null && policySetDefinitionsArray.Length == 1)
@@ -271,13 +278,18 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
         {
             var categoryMetadata = JObject.Parse(initiativeDefinition.Metadata.ToString());
             var categoryMetadataDictionary = categoryMetadata.ToObject<Dictionary<string, object>>();
-            var category = categoryMetadataDictionary["category"].ToString();
-            return category;
+            if (categoryMetadataDictionary.ContainsKey("category"))
+            {
+                var category = categoryMetadataDictionary["category"].ToString();
+                return category;
+            }
+
+            return string.Empty;
         }
 
         private IEnumerable<PolicySetDefinition> GetAllGuestConfigPolicySetDefinitions()
         {
-            var policySetDefinitions = PolicyClient.PolicySetDefinitions.ListBuiltIn();
+            var policySetDefinitions = PolicyClient.PolicySetDefinitions.List();
             if (policySetDefinitions == null || policySetDefinitions.Count() == 0)
             {
                 return null;
@@ -310,7 +322,16 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                 foreach (var policyDefinitionIdInInitiative in policyDefinitionIdsInInitiative)
                 {
                     var _initiativeName = GetInitiativeNameFromId(policyDefinitionIdInInitiative);
-                    var policyDef = PolicyClient.PolicyDefinitions.GetBuiltIn(_initiativeName);
+                    PolicyDefinition policyDef;
+                    try
+                    {
+                        policyDef = PolicyClient.PolicyDefinitions.GetBuiltIn(_initiativeName);
+                    }
+                    catch(Exception)
+                    {
+                        policyDef = PolicyClient.PolicyDefinitions.Get(_initiativeName);
+                    }
+                    
                     if (policyDef != null)
                     {
                         policyDefinitionsForTheInitiative.Add(policyDef);
