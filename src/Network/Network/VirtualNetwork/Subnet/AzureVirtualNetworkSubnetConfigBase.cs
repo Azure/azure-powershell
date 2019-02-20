@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The address prefixes of the subnet")]
         [ValidateNotNullOrEmpty]
-        public string[] AddressPrefix { get; set; }
+        public virtual string[] AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
