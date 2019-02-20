@@ -8,7 +8,7 @@ schema: 2.0.0
 # Disable-AzCdnCustomDomain
 
 ## SYNOPSIS
-Disables custom HTTPS.
+Disables Custom Domain HTTPS (Deprecated).
 
 ## SYNTAX
 
