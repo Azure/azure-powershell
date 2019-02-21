@@ -42,31 +42,31 @@ namespace Microsoft.Azure.Commands.Network
            MNM.ExpressRoutePeeringType.AzurePublicPeering,
            MNM.ExpressRoutePeeringType.MicrosoftPeering,
            IgnoreCase = true)]
-        public string PeeringType { get; set; }
+        public virtual string PeeringType { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The PeerAsn")]
         [ValidateNotNullOrEmpty]
-        public uint PeerASN { get; set; }
+        public virtual uint PeerASN { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The PrimaryPeerAddressPrefix")]
         [ValidateNotNullOrEmpty]
-        public string PrimaryPeerAddressPrefix { get; set; }
+        public virtual string PrimaryPeerAddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The SecondaryPeerAddressPrefix")]
         [ValidateNotNullOrEmpty]
-        public string SecondaryPeerAddressPrefix { get; set; }
+        public virtual string SecondaryPeerAddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The vlanId")]
         [ValidateNotNullOrEmpty]
-        public int VlanId { get; set; }
+        public virtual int VlanId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = ParamSetByRouteFilterId,
             HelpMessage = "RouteFilterId")]
         [ValidateNotNullOrEmpty]
-        public string RouteFilterId { get; set; }
+        public virtual string RouteFilterId { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = ParamSetByRouteFilter,
             HelpMessage = "RouteFilter")]
         [ValidateNotNullOrEmpty]
-        public PSRouteFilter RouteFilter { get; set; }
+        public virtual PSRouteFilter RouteFilter { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -146,6 +146,55 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
+        public void UpdateMicrosoftConfig(PSPeering peering)
+        {
+            if (PeerAddressType == IPv6)
+            {
+                if (peering.Ipv6PeeringConfig.MicrosoftPeeringConfig == null)
+                {
+                    peering.Ipv6PeeringConfig.MicrosoftPeeringConfig = new PSPeeringConfig();
+                }
+
+                if (this.MicrosoftConfigAdvertisedPublicPrefixes != null)
+                {
+                    peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes?.ToList();
+                }
+
+                if (MyInvocation.BoundParameters.ContainsKey("MicrosoftConfigCustomerAsn"))
+                {
+                    peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.CustomerASN = this.MicrosoftConfigCustomerAsn;
+                }
+
+                if (this.MicrosoftConfigRoutingRegistryName != null)
+                {
+                    peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
+                }
+            }
+            else
+            {
+                // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
+                if (peering.MicrosoftPeeringConfig == null)
+                {
+                    peering.MicrosoftPeeringConfig = new PSPeeringConfig();
+                }
+
+                if (this.MicrosoftConfigAdvertisedPublicPrefixes != null)
+                {
+                    peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes?.ToList();
+                }
+
+                if (MyInvocation.BoundParameters.ContainsKey("MicrosoftConfigCustomerAsn"))
+                {
+                    peering.MicrosoftPeeringConfig.CustomerASN = this.MicrosoftConfigCustomerAsn;
+                }
+
+                if (this.MicrosoftConfigRoutingRegistryName != null)
+                {
+                    peering.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
+                }
+            }
+        }
+
         public void SetIpv6PeeringParameters(PSPeering peering)
         {
             peering.Ipv6PeeringConfig = new PSIpv6PeeringConfig();
@@ -158,10 +207,83 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
+        public void UpdateIpv6PeeringParameters(PSPeering peering)
+        {
+            if (peering.Ipv6PeeringConfig == null)
+            {
+                peering.Ipv6PeeringConfig = new PSIpv6PeeringConfig();
+            }
+
+            if (peering.PrimaryPeerAddressPrefix != null)
+            {
+                peering.PrimaryPeerAddressPrefix = null;
+            }
+
+            if (peering.SecondaryPeerAddressPrefix != null)
+            {
+                peering.SecondaryPeerAddressPrefix = null;
+            }
+
+            if (peering.RouteFilter != null)
+            {
+                peering.RouteFilter = null;
+            }
+
+            if (this.PrimaryPeerAddressPrefix != null)
+            {
+                peering.Ipv6PeeringConfig.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
+            }
+
+            if (this.SecondaryPeerAddressPrefix != null)
+            {
+                peering.Ipv6PeeringConfig.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
+            }
+
+            if (!string.IsNullOrEmpty(this.RouteFilterId))
+            {
+                peering.Ipv6PeeringConfig.RouteFilter = new PSRouteFilter();
+                peering.Ipv6PeeringConfig.RouteFilter.Id = this.RouteFilterId;
+            }
+        }
+
         public void SetIpv4PeeringParameters(PSPeering peering)
         {
             peering.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
             peering.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
+            if (!string.IsNullOrEmpty(this.RouteFilterId))
+            {
+                peering.RouteFilter = new PSRouteFilter();
+                peering.RouteFilter.Id = this.RouteFilterId;
+            }
+        }
+
+        public void UpdateIpv4PeeringParameters(PSPeering peering)
+        {
+            if(peering.Ipv6PeeringConfig != null && peering.Ipv6PeeringConfig.PrimaryPeerAddressPrefix != null)
+            {
+                peering.Ipv6PeeringConfig.PrimaryPeerAddressPrefix = null;
+            }
+
+            if (peering.Ipv6PeeringConfig != null && peering.Ipv6PeeringConfig.SecondaryPeerAddressPrefix != null)
+            {
+                peering.Ipv6PeeringConfig.SecondaryPeerAddressPrefix = null;
+            }
+
+            if (peering.Ipv6PeeringConfig != null && peering.Ipv6PeeringConfig.RouteFilter != null)
+            {
+                peering.Ipv6PeeringConfig.RouteFilter = null;
+            }
+
+            if (this.PrimaryPeerAddressPrefix != null)
+            {
+                peering.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
+            }
+
+            if (this.SecondaryPeerAddressPrefix != null)
+            {
+                peering.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
+            }
+
             if (!string.IsNullOrEmpty(this.RouteFilterId))
             {
                 peering.RouteFilter = new PSRouteFilter();
