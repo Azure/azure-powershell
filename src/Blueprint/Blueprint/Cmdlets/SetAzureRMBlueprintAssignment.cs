@@ -10,6 +10,7 @@ using Microsoft.Azure.Commands.Blueprint.Models;
 using System.Collections;
 using Microsoft.Azure.Management.Blueprint.Models;
 using Microsoft.Azure.Commands.Blueprint.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
@@ -43,6 +44,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [ValidateNotNull]
         public Hashtable Parameters { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, HelpMessage = ParameterHelpMessages.SystemAssignedIdentity)]
+        public SwitchParameter SystemAssignedIdentity { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.UserAssignedIdentity)]
+        [ValidateNotNullOrEmpty]
+        public string UserAssignedIdentity { get; set; }
+
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, HelpMessage = ParameterHelpMessages.LockFlag)]
         public PSLockMode? Lock { get; set; }
         #endregion Parameters
@@ -54,25 +62,56 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             {
                 if (ShouldProcess(Name, string.Format(Resources.CreateAssignmentShouldProcessString, Name)))
                 {
-                    var assignment = CreateAssignmentObject(ManagedServiceIdentityType.SystemAssigned,
-                        Location,
-                        Blueprint.Id,
-                        Lock,
-                        Parameters,
-                        ResourceGroups);
-
                     var subscriptionsList = SubscriptionId ?? new[] { DefaultContext.Subscription.Id };
 
-                    foreach (var subscription in subscriptionsList)
+                    // System assigned identity to be used
+                    if (this.IsParameterBound(c => c.SystemAssignedIdentity))
                     {
-                        var scope = Utils.GetScopeForSubscription(subscription);
-                        ThrowIfAssignmentNotExist(scope, Name);
-                        // First Register Blueprint RP and grant owner permission to BP service principal
-                        RegisterBlueprintRp(subscription);
-                        var servicePrincipal = GetBlueprintSpn();
-                        AssignOwnerPermission(subscription, servicePrincipal);
+                        var assignment = CreateAssignmentObject(ManagedServiceIdentityType.SystemAssigned,
+                            null,
+                            Location,
+                            Blueprint.Id,
+                            Lock,
+                            Parameters,
+                            ResourceGroups);
 
-                        WriteObject(BlueprintClient.CreateOrUpdateBlueprintAssignment(scope, Name, assignment));
+                        foreach (var subscription in subscriptionsList)
+                        {
+                            var scope = Utils.GetScopeForSubscription(subscription);
+                            ThrowIfAssignmentNotExist(scope, Name);
+                            // First Register Blueprint RP and grant owner permission to BP service principal
+                            RegisterBlueprintRp(subscription);
+                            var servicePrincipal = GetBlueprintSpn();
+                            AssignOwnerPermission(subscription, servicePrincipal);
+
+                            WriteObject(BlueprintClient.CreateOrUpdateBlueprintAssignment(scope, Name, assignment));
+                        }
+                    }
+                    // User assigned identity to be used
+                    else
+                    {
+                        var userAssignedIdentity = new Dictionary<string, UserAssignedIdentity>()
+                        {
+                            { UserAssignedIdentity, new UserAssignedIdentity() }
+                        };
+
+                        var assignment = CreateAssignmentObject(ManagedServiceIdentityType.UserAssigned,
+                           userAssignedIdentity,
+                           Location,
+                           Blueprint.Id,
+                           Lock,
+                           Parameters,
+                           ResourceGroups);
+
+                        foreach (var subscription in subscriptionsList)
+                        {
+                            var scope = Utils.GetScopeForSubscription(subscription);
+                            ThrowIfAssignmentNotExist(scope, Name);
+                            // Register Blueprint RP
+                            RegisterBlueprintRp(subscription);
+
+                            WriteObject(BlueprintClient.CreateOrUpdateBlueprintAssignment(scope, Name, assignment));
+                        }
                     }
                 }
             }

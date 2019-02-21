@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             get
             {
                 return blueprintClient = blueprintClient ?? new BlueprintClient(DefaultProfile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                                             clientCredentials);
+                                             ClientCredentials);
             }
             set => blueprintClient = value;
         }
@@ -149,7 +149,18 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         {
             PSBlueprintAssignment assignment = null;
 
-            assignment = BlueprintClient.GetBlueprintAssignment(scope, name);
+            try
+            {
+                assignment = BlueprintClient.GetBlueprintAssignment(scope, name);
+            }
+            catch (Exception ex)
+            {
+                if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                {
+                    // if exception is for a reason other than .NotFound, pass it to the caller.
+                    throw;
+                }
+            }
 
             if (assignment != null)
             {
@@ -190,11 +201,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// <param name="Parameters"></param>
         /// <param name="ResourceGroups"></param>
         /// <returns></returns>
-        protected Assignment CreateAssignmentObject(string identityType, string bpLocation, string blueprintId, PSLockMode? lockMode, Hashtable Parameters, Hashtable ResourceGroups)
+        protected Assignment CreateAssignmentObject(string identityType, Dictionary<string, UserAssignedIdentity> userAssignedIdentity, string bpLocation, string blueprintId, PSLockMode? lockMode, Hashtable Parameters, Hashtable ResourceGroups)
         {
             var localAssignment = new Assignment
             {
-                Identity = new ManagedServiceIdentity { Type = identityType },
+                Identity = new ManagedServiceIdentity { Type = identityType, UserAssignedIdentities = userAssignedIdentity },
                 Location = bpLocation,
                 BlueprintId = blueprintId,
                 Locks = new AssignmentLockSettings { Mode = lockMode == null ? PSLockMode.None.ToString() : lockMode.ToString() },
@@ -249,7 +260,12 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         protected void RegisterBlueprintRp(string subscriptionId)
         {
             ResourceManagerClient.SubscriptionId = subscriptionId;
-            ResourceManagerClient.Providers.Register(BlueprintConstants.BlueprintProviderNamespace);
+            var response = ResourceManagerClient.Providers.Register(BlueprintConstants.BlueprintProviderNamespace);
+
+            if (response == null)
+            {
+                throw new KeyNotFoundException(string.Format(Resources.ResourceProviderRegistrationFailed, BlueprintConstants.BlueprintProviderNamespace));
+            }
         }
 
         /// <summary>
