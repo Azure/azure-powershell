@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.3.1'
+ModuleVersion = '1.3.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -204,11 +204,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
-    - New-AzStorageContainerSASToken
-    - New-AzStorageBlobSASToken
-* Support revoke Storage Account User Delegation Keys, so all Idenity SAS tokens are revoked
-    - Revoke-AzStorageAccountUserDelegationKeys'
+        ReleaseNotes = '* Support new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
+       - New-AzStorageAccount
+       - Set-AzStorageAccount'
 
         # Prerelease string of this module
         Prerelease = 'preview'

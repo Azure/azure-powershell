@@ -18,10 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Support Kind FileStorage and SkuName Premium_ZRS when create Storage account
+* Support new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
     - New-AzStorageAccount
-* Clarified description of blob immutability cmdlet
-    -  Remove-AzRmStorageContainerImmutabilityPolicy
+    - Set-AzStorageAccount
 
 ## Version 1.3.1
 * Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication

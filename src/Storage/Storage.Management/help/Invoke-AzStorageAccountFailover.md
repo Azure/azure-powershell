@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.storage/invoke-Azstorageaccountfailover
 schema: 2.0.0
@@ -44,7 +44,7 @@ Status LastSyncTime
 Live   11/13/2018 2:44:22 AM
 
 PS C:\>$job = Invoke-AzStorageAccountFailover -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Force -AsJob
-PS C:\>$job | Wait-Job 
+PS C:\>$job | Wait-Job
 ```
 
 This command check the last sync time of a Storage account then invokes failover of it, the secondary cluster will become primary after failover. Since failover takes a long time, suggest to run it in the backend with -Asjob parameter, and then wait for the job complete.
@@ -70,9 +70,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
