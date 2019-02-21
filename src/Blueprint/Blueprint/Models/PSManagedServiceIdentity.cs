@@ -25,5 +25,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
         public string Type { get; set; }
         public string PrincipalId { get; set; }
         public string TenantId { get; set; }
+        public IDictionary<string, PSUserAssignedIdentity> UserAssignedIdentities { get; set; }
     }
 }

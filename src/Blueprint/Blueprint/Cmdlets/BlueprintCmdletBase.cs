@@ -15,7 +15,6 @@ using System.Collections;
 using System.Linq;
 using System.Net.Http;
 using System.Threading;
-using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Common;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
@@ -33,7 +32,15 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// The blueprint client.
         /// </summary>
         private IBlueprintClient blueprintClient;
-        public IBlueprintClient BlueprintClient => blueprintClient ?? new BlueprintClient(DefaultProfile.DefaultContext);  
+        public IBlueprintClient BlueprintClient
+        {
+            get
+            {
+                return blueprintClient = blueprintClient ?? new BlueprintClient(DefaultProfile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                                             clientCredentials);
+            }
+            set => blueprintClient = value;
+        }
 
         /// <summary>
         /// Blueprint client with delegating handler. The delegating handler is needed to get blueprint versions info.
@@ -131,7 +138,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 }
                 return;
             }
-            throw ex;
+
+            base.WriteExceptionError(ex);
         }
         #endregion Cmdlet Overrides
 
@@ -162,7 +170,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {
                     // if exception is for a reason other than .NotFound, pass it to the caller.
-                    throw ex;
+                    throw;
                 }
             }
 
@@ -292,7 +300,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 // ignore if it already exists
                 if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.Conflict)
                 {
-                    throw ex;
+                    throw;
                 }
             }
         }

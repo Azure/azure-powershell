@@ -5,7 +5,7 @@ using System;
 using System.Collections.Specialized;
 using System.Web;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Common
+namespace Microsoft.Azure.Commands.Blueprint.Common
 {
     /// <summary>
     /// Delegating handler class to append $expand=versions to the URL. Needed to get blueprint versions.

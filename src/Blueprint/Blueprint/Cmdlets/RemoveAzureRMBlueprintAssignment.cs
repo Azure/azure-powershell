@@ -2,6 +2,7 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
+using Microsoft.Azure.Commands.Blueprint.Common;
 using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
 using ParameterHelpMessages = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterHelpMessages;
 using BlueprintConstants = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
@@ -39,11 +40,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                     case ParameterSetNames.DeleteBlueprintAssignmentByName:
                         if (ShouldProcess(Name, string.Format(Resources.DeleteAssignmentShouldProcessString, Name, SubscriptionId)))
                         {
-                            BlueprintClient.DeleteBlueprintAssignment(String.Format(BlueprintConstants.SubscriptionScope, SubscriptionId), Name);
+                            var deletedAssignment = BlueprintClient.DeleteBlueprintAssignment(Utils.GetScopeForSubscription(SubscriptionId), Name);
 
-                            if (PassThru.IsPresent)
+                            if (deletedAssignment != null && PassThru.IsPresent)
                             {
-                                WriteObject(true);
+                                WriteObject(deletedAssignment);
                             }
                         }
                         break;
@@ -51,11 +52,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         if (ShouldProcess(BlueprintAssignmentObject.Name, string.Format(Resources.DeleteAssignmentShouldProcessString, BlueprintAssignmentObject.Name,
                                 BlueprintAssignmentObject.Location)))
                         {
-                            BlueprintClient.DeleteBlueprintAssignment(BlueprintAssignmentObject.Scope, BlueprintAssignmentObject.Name);
+                            var deletedAssignment = BlueprintClient.DeleteBlueprintAssignment(BlueprintAssignmentObject.Scope, BlueprintAssignmentObject.Name);
 
-                            if (PassThru.IsPresent)
+                            if (deletedAssignment != null && PassThru.IsPresent)
                             {
-                                WriteObject(true);
+                                WriteObject(deletedAssignment);
                             }
                         }
                         break;

@@ -22,7 +22,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.Blueprint;
-using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Common;
 using BlueprintManagement = Microsoft.Azure.Management.Blueprint;
 using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using Microsoft.Rest;
@@ -41,25 +40,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         }
 
         /// <summary>
-        /// Construct a BlueprintClient from an IAzureContext
-        /// </summary>
-        /// <param name="context"></param>
-        public BlueprintClient(IAzureContext context)
-            : this(context.Subscription,
-                   AzureSession.Instance.ClientFactory.CreateArmClient<BlueprintManagement.BlueprintManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
-        {
-        }
-
-        /// <summary>
-        /// Construct a BlueprintClient from a subscription and a BlueprintManagementClient.
+        /// Construct a BlueprintClient BlueprintManagementClient.
         /// </summary>
         /// <param name="subscription"></param>
         /// <param name="blueprintManagementClient"></param>
-        public BlueprintClient(IAzureSubscription subscription,
-                               BlueprintManagement.BlueprintManagementClient blueprintManagementClient)
+        public BlueprintClient(Uri uri, ServiceClientCredentials credentials)
         {
-            //this.Subscription = subscription;
-            this.blueprintManagementClient = blueprintManagementClient;
+            this.blueprintManagementClient = new BlueprintManagementClient(uri, credentials);
         }
 
         public BlueprintClient(Uri uri, ServiceClientCredentials credentials, DelegatingHandler[] handler)
