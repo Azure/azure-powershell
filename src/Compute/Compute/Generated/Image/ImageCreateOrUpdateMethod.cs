@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [Alias("Name")]
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
+            Position = 2,
             Mandatory = true,
             ValueFromPipeline = true)]
         public PSImage Image { get; set; }
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Image", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Image", DefaultParameterSetName = "ObjectParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSImage))]
     public partial class UpdateAzureRmImage : ComputeAutomationBaseCmdlet
     {
@@ -93,10 +94,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (ShouldProcess(this.ImageName, VerbsData.Update))
                 {
-                    string resourceGroupName = this.ResourceGroupName;
-                    string imageName = this.ImageName;
-                    Image parameters = new Image();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSImage, Image>(this.Image, parameters);
+                    string resourceGroupName;
+                    string imageName;
+                    switch (this.ParameterSetName)
+                    {
+                        case "ResourceIdParameter":
+                            resourceGroupName = GetResourceGroupName(this.ResourceId);
+                            imageName = GetResourceName(this.ResourceId, "Microsoft.Compute/Images");
+                            break;
+                        case "ObjectParameter":
+                            resourceGroupName = GetResourceGroupName(this.Image.Id);
+                            imageName = GetResourceName(this.Image.Id, "Microsoft.Compute/Images");
+                            break;
+                        default:
+                            resourceGroupName = this.ResourceGroupName;
+                            imageName = this.ImageName;
+                            break;
+                    }
+
+                    var parameters = ImagesClient.Get(resourceGroupName, imageName);
+                    parameters.Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null;
 
                     var result = ImagesClient.CreateOrUpdate(resourceGroupName, imageName, parameters);
                     var psObject = new PSImage();
@@ -108,7 +125,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -116,18 +133,37 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [Alias("Name")]
         public string ImageName { get; set; }
 
+        [CmdletParameterBreakingChange("Image", "Image parameter will be removed for the parameter set when resource group name and image name are given.")]
         [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 3,
+            ParameterSetName = "ObjectParameter",
+            Position = 0,
             Mandatory = true,
             ValueFromPipeline = true)]
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = false,
+            ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
         public PSImage Image { get; set; }
+
+        [Parameter(
+            ParameterSetName = "ResourceIdParameter",
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }

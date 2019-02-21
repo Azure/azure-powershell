@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Accounts
 Module Guid: 342714fc-4009-4863-8afb-a9067e3db04b
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.accounts

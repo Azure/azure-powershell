@@ -18,10 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.1
 * Support failover Storage account
     - Invoke-AzureRmStorageAccountFailover
 * Support Get last sync time of Storage account by run get-AzureRMStorageAccount with parameter -IncludeGeoReplicationStats
     - Get-AzureRMStorageAccount
+    
+## Version 1.0.2
 * Update incorrect online help URLs
 * Give detail error message when get/set classic Logging/Metric on Premium Storage Account, since Premium Storage Account not supoort classic Logging/Metric.
     - Get/Set-AzStorageServiceLoggingProperty

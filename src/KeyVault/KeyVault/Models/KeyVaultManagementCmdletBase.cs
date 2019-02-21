@@ -71,7 +71,14 @@ namespace Microsoft.Azure.Commands.KeyVault
                 _dataServiceCredential = new DataServiceCredential(AzureSession.Instance.AuthenticationFactory, DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
 // TODO: Remove IfDef
 #if NETSTANDARD
-                _activeDirectoryClient = new ActiveDirectoryClient(DefaultProfile.DefaultContext);
+                try
+                {
+                    _activeDirectoryClient = new ActiveDirectoryClient(DefaultProfile.DefaultContext);
+                }
+                catch
+                {
+                    _activeDirectoryClient = null;
+                }
 #else
                 _activeDirectoryClient = new ActiveDirectoryClient(new Uri(string.Format("{0}/{1}",
                 DefaultProfile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph), _dataServiceCredential.TenantId)),

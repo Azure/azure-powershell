@@ -45,7 +45,6 @@ PS C:\> Update-AzKustoDatabase -ResourceGroupName testrg -ClusterName mykustoclu
 Name                   : mykustocluster/mykustodatabase
 SoftDeletePeriodInDays : 5
 HotCachePeriodInDays   : 2
-Etag                   : "v4.0"
 Statistic              : Microsoft.Azure.Management.Kusto.Models.DatabaseStatistics
 Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/mykustocluster/Databases/mykustodatabase
 Location               : Central US
@@ -62,7 +61,6 @@ PS C:\> PS C:\> Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName mykus
 Name                   : mykustocluster/mykustodatabase
 SoftDeletePeriodInDays : 5
 HotCachePeriodInDays   : 2
-Etag                   : "v4.0"
 Statistic              : Microsoft.Azure.Management.Kusto.Models.DatabaseStatistics
 Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/mykustocluster/Databases/mykustodatabase
 Location               : Central US
