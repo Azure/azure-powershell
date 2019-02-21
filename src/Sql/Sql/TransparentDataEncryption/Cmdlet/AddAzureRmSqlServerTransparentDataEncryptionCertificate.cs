@@ -143,9 +143,8 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         /// <summary>
         /// Intializes the model adapter
         /// </summary>
-        /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The server adapter</returns>
-        protected override AzureSqlDatabaseTransparentDataEncryptionArmAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlDatabaseTransparentDataEncryptionArmAdapter InitModelAdapter()
         {
             return new AzureSqlDatabaseTransparentDataEncryptionArmAdapter(DefaultProfile.DefaultContext);
         }

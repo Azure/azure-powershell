@@ -36,11 +36,6 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Services
         public IAzureContext Context { get; set; }
 
         /// <summary>
-        /// Gets or sets the Azure Subscription
-        /// </summary>
-        private IAzureSubscription _subscription { get; set; }
-
-        /// <summary>
         /// Constructs a database activation adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
@@ -48,7 +43,6 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Services
         public AzureSqlDatabaseActivationAdapter(IAzureContext context)
         {
             Context = context;
-            _subscription = context.Subscription;
             Communicator = new AzureSqlDatabaseActivationCommunicator(Context);
         }
 
