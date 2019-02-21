@@ -2049,7 +2049,7 @@
       "ps2327",
       "ps808"
     ],
-    "TestNewCloudEndpoint": [
+    "TestGetCloudEndpoints": [
       "1661e45d-c984-4464-99b6-a0a97011e89a"
     ]
   },

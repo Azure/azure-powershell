@@ -171,7 +171,7 @@ namespace ScenarioTests
         /// <param name="testName">Name of the test.</param>
         private void RegisterComponents(MockContext context, string testName)
         {
-            AzureSession.Instance.RegisterComponent<IStorageSyncResourceManager>(StorageSyncConstants.StorageSyncResourceManager, () => new MockStorageSyncResourceManager(testName));
+            AzureSession.Instance.RegisterComponent<IStorageSyncResourceManager>(StorageSyncConstants.StorageSyncResourceManager, () => new MockStorageSyncResourceManager(testName), overwrite: true);
         }
 
         /// <summary>
