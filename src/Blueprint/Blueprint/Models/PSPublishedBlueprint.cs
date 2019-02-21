@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Blueprint.Models;
-using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Blueprint.Common;
 
 namespace Microsoft.Azure.Commands.Blueprint.Models
 {

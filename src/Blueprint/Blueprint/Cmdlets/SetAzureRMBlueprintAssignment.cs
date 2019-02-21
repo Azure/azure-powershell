@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
                     foreach (var subscription in subscriptionsList)
                     {
-                        var scope = string.Format(BlueprintConstants.SubscriptionScope, subscription);
+                        var scope = Utils.GetScopeForSubscription(subscription);
                         ThrowIfAssignmentNotExist(scope, Name);
                         // First Register Blueprint RP and grant owner permission to BP service principal
                         RegisterBlueprintRp(subscription);

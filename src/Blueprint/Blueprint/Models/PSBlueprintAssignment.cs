@@ -56,7 +56,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 {
                     PrincipalId = assignment.Identity.PrincipalId,
                     TenantId = assignment.Identity.TenantId,
-                    Type = assignment.Type
+                    Type = assignment.Type,
+                    UserAssignedIdentities = new Dictionary<string, PSUserAssignedIdentity>()
                 },
                 DisplayName = assignment.DisplayName,
                 Description = assignment.Description,
@@ -116,6 +117,12 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
             {
                 psAssignment.ResourceGroups.Add(item.Key, new PSResourceGroupValue {Name = item.Value.Name, Location = item.Value.Location});
                 psAssignment.ResourceGroupDisplayList.Add(item.Key);
+            }
+
+            foreach (var item in assignment.Identity.UserAssignedIdentities)
+            {
+                psAssignment.Identity.UserAssignedIdentities.Add(item.Key, 
+                    new PSUserAssignedIdentity { ClientId = item.Value.ClientId, PrincipalId = item.Value.PrincipalId });
             }
 
             return psAssignment;

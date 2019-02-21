@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Common
+namespace Microsoft.Azure.Commands.Blueprint.Common
 {
     public class Utils
     {
@@ -19,15 +19,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Common
 
             if (tokens != null && tokens.Length == 2)
             {
-                locationId = string.Equals(tokens[0], "subscriptions", StringComparison.InvariantCultureIgnoreCase) ? tokens[1] : null;      
+                locationId = string.Equals(tokens[0], "subscriptions", StringComparison.OrdinalIgnoreCase) ? tokens[1] : null;      
             }
 
             if (tokens != null && tokens.Length == 4)
             {
-                locationId = string.Equals(tokens[0], "managementgroups", StringComparison.InvariantCultureIgnoreCase) ? tokens[3] : null;
+                locationId = string.Equals(tokens[0], "managementgroups", StringComparison.OrdinalIgnoreCase) ? tokens[3] : null;
             }
 
             return locationId;
+        }
+
+        public static string GetScopeForManagementGroup(string managementGroupId)
+        {
+            return string.Format(BlueprintConstants.ManagementGroupScope, managementGroupId);
+        }
+
+        public static string GetScopeForSubscription(string subscriptionId)
+        {
+            return string.Format(BlueprintConstants.SubscriptionScope, subscriptionId);
         }
     }
 }

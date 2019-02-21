@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             {
                 switch (ParameterSetName) {
                     case ParameterSetNames.BlueprintAssignmentsBySubscription:
-                        foreach (var assignment in BlueprintClient.ListBlueprintAssignments(string.Format(BlueprintConstants.SubscriptionScope, subscription)))
+                        foreach (var assignment in BlueprintClient.ListBlueprintAssignments(Utils.GetScopeForSubscription(subscription)))
                             WriteObject(assignment);
                         break;
                     case ParameterSetNames.BlueprintAssignmentByName:
-                        WriteObject(BlueprintClient.GetBlueprintAssignment(string.Format(BlueprintConstants.SubscriptionScope, subscription), Name));
+                        WriteObject(BlueprintClient.GetBlueprintAssignment(Utils.GetScopeForSubscription(subscription), Name));
                         break;
                     default:
                         throw new PSInvalidOperationException();
