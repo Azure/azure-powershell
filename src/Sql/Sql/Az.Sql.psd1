@@ -199,7 +199,8 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan', 
                'Enable-AzSqlInstanceAdvancedDataSecurity', 
                'Disable-AzSqlInstanceAdvancedDataSecurity', 
-               'Get-AzSqlInstanceAdvancedDataSecurityPolicy'
+               'Get-AzSqlInstanceAdvancedDataSecurityPolicy',
+               'Get-AzSqlInstanceDatabaseGeoBackup'
 
 # Variables to export from this module
 # VariablesToExport = @()

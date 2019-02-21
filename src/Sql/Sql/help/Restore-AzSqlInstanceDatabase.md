@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/restore-azsqlinstancedatabase
@@ -56,25 +56,56 @@ Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceId] <String> -P
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameter
+```
+Restore-AzSqlInstanceDatabase [-FromGeoBackup] [-GeoBackupObject] <AzureSqlRecoverableManagedDatabaseModel>
+ -TargetInstanceDatabaseName <String> -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GeoRestoreFromGeoBackupSetNameFromResourceIdParameter
+```
+Restore-AzSqlInstanceDatabase [-FromGeoBackup] [-ResourceId] <String> -TargetInstanceDatabaseName <String>
+ -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameter
+```
+Restore-AzSqlInstanceDatabase [-FromGeoBackup] [-Name] <String> [-InstanceName] <String>
+ [-ResourceGroupName] <String> -TargetInstanceDatabaseName <String> -TargetInstanceName <String>
+ -TargetResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Restore-AzSqlInstanceDatabase** cmdlet restores an instance database from a point in time in a live database.
+The **Restore-AzSqlInstanceDatabase** cmdlet restores an instance database from a geo-redundant backup or a point in time in a live database.
 The restored database is created as a new instance database.
 
 ## EXAMPLES
 
-### Example 1: Restore a instance database from a point in time
+### Example 1: Restore an instance database from a point in time
 ```
 PS C:\> Restore-AzSqlinstanceDatabase -Name "Database01" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01" -PointInTime UTCDateTime -TargetInstanceDatabaseName "Database01_restored"
 ```
 
 The command restores the instance database Database01 from the specified point-in-time backup to the instance database named Database01_restored.
 
-### Example 2: Restore a instance database from a point in time to another instance on different resource group
+### Example 2: Restore an instance database from a point in time to another instance on different resource group
 ```
 PS C:\> Restore-AzSqlInstanceDatabase -Name "Database01" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01" -PointInTime UTCDateTime -TargetInstanceDatabaseName "Database01_restored" -TargetInstanceName "managedInstance1" -TargetResourceGroupName "ResourceGroup02"
 ```
 
 The command restores the instance database Database01 on instance managedInstance1 on resource group ResourceGroup01 from the specified point-in-time backup to the instance database named Database01_restored on instance managedInstance2 on resource group ResourceGroup02.
+
+### Example 3: Geo-Restore an instance database
+```
+PS C:\>$GeoBackup = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName "ResourceGroup01" -InstanceName "managedInstance1" -Name "Database01"
+PS C:\> $GeoBackup | Restore-AzSqlDatabase -FromGeoBackup -TargetInstanceDatabaseName "Database01_restored" -TargetInstanceName "managedInstance2" -TargetResourceGroupName "ResourceGroup02"
+```
+
+The first command gets the geo-redundant backup for the database named Database01, and then stores it in the $GeoBackup variable.
+The second command restores the backup in $GeoBackup to the instance database named Database01_restored.
 
 ## PARAMETERS
 
@@ -94,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The credentials, account, tenant, and subscription used for communication with Azure
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -120,6 +151,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FromGeoBackup
+Restore from a geo backup.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameter, GeoRestoreFromGeoBackupSetNameFromResourceIdParameter, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GeoBackupObject
+The recoverable instance database object to restore
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlRecoverableManagedDatabaseModel
+Parameter Sets: GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameter
+Aliases: RecoverableInstanceDatabase
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -276,8 +337,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -298,6 +358,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 
+### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedRecoverableDatabaseModel
+
 ### System.String
 
 ## OUTPUTS
@@ -307,3 +369,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
