@@ -42,9 +42,9 @@ The **Set-AzSqlDatabase** cmdlet sets properties for a database in Azure SQL Dat
 
 ## EXAMPLES
 
-### Example 1: Update a database to a Standard S2 database
+### Example 1: Update a database to a Standard S0 database
 ```
-PS C:\>Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01" -ServerName "Server01" -Edition "Standard" -RequestedServiceObjectiveName "S2"
+PS C:\>Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01" -ServerName "Server01" -Edition "Standard" -RequestedServiceObjectiveName "S0"
 ResourceGroupName             : ResourceGroup01
 ServerName                    : Server01
 DatabaseName                  : Database01
@@ -57,7 +57,7 @@ MaxSizeBytes                  : 268435456000
 Status                        : Online
 CreationDate                  : 7/3/2015 7:33:37 AM
 CurrentServiceObjectiveId     : 455330e1-00cd-488b-b5fa-177c226f28b7
-CurrentServiceObjectiveName   : S2
+CurrentServiceObjectiveName   : S0
 RequestedServiceObjectiveId   : 455330e1-00cd-488b-b5fa-177c226f28b7
 RequestedServiceObjectiveName :
 ElasticPoolName               :
@@ -65,7 +65,7 @@ EarliestRestoreDate           :
 Tags                          :
 ```
 
-This command updates a database named Database01 to a Standard S2 database on a server named Server01.
+This command updates a database named Database01 to a Standard S0 database on a server named Server01.
 
 ### Example 2: Add a database to an elastic pool
 ```
