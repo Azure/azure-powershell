@@ -386,10 +386,6 @@ function Test-MigrateSqlSqlDBMi
 		$fileShareCred = Get-Creds $fileShareUsername $fileSharePassword
 
 		$backupFileShare = New-AzDmsFileShare -Path $fileSharePath -Credential $fileShareCred
-		Assert-AreEqual $fileSharePath $backupFileShare.Path
-		Assert-AreEqual $fileShareUserName $backupFileShare.Username
-		Assert-AreEqual $fileSharePassword $backupFileShare.Password
-
 		$sourceDbName = "TestMI"
 		$targetDbName = "TestMI6"
         $backupMode = "CreateBackup"
@@ -398,7 +394,6 @@ function Test-MigrateSqlSqlDBMi
 
 		Assert-AreEqual $sourceDbName $selectedDbs[0].Name
 		Assert-AreEqual $targetDbName $selectedDbs[0].RestoreDatabaseName
-		Assert-AreEqual $backupFileShare.Path $selectedDbs[0].BackupFileShare.Path
 
         #Migrating Logins and AgentJobs
         #$selectedLogins = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("MI_LOGINS")
@@ -424,7 +419,6 @@ function Test-MigrateSqlSqlDBMi
 		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 		Assert-AreEqual $taskName $task[0].Name
-		Assert-AreEqual $backupFileShare.Path $task.ProjectTask.Properties.Input.BackupFileShare.Path
 		#Assert-AreEqual $selectedJobs[0] $task.ProjectTask.Properties.Input.SelectedAgentJobs[0]
 		#Assert-AreEqual $selectedLogins[0] $task.ProjectTask.Properties.Input.SelectedLogins[0]
 		Assert-AreEqual $sourceDbName $task.ProjectTask.Properties.Input.SelectedDatabases[0].Name
@@ -788,7 +782,7 @@ function Test-MigrateSqlSqlDBSync
 
 				    if ($output.MigrationState -eq "READY_TO_COMPLETE")
 				    {
-					    $command = Invoke-AzDmsCommand -CommandType Complete `
+					    $command = Invoke-AzDmsCommand -CommandType CompleteSqlDBSync `
 						    -ResourceGroupName $rg.ResourceGroupName `
 						    -ServiceName $service.Name `
 						    -ProjectName $project.Name `
@@ -903,12 +897,225 @@ function Test-MigrateMongoDb
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 			if($task.ProjectTask.Properties.State -eq "Running") {
-				$res = Invoke-AzDataMigrationCommand  -CommandType cancel -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -ObjectName "test.many"
+				$res = Invoke-AzDataMigrationCommand  -CommandType CancelMongoDB -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -ObjectName "test.many"
 				Assert-AreEqual "Accepted" $res.State
 			}
 		}
 
 		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+function Test-ConnectToTargetSqlDbMiSync
+{
+	$rg = Create-ResourceGroupForTest
+	
+	try
+	{
+		$service = Create-DataMigrationService($rg)
+		$project = Create-ProjectSqlSqlDbMi $rg $service
+		$taskName = Get-TaskName
+		$connectionInfo = New-TargetSqlMiSyncConnectionInfo
+		$userName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDBMI_USERNAME")
+		$password = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDBMI_PASSWORD")
+		$cred = Get-Creds $userName $password
+		$app = New-AzureActiveDirectoryApp
+
+		$task = New-AzDataMigrationTask -TaskType ConnectToTargetSqlDbMiSync -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -TargetConnection $connectioninfo -TargetCred $cred -AzureActiveDirectoryApp $app
+
+		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+
+		Assert-AreEqual $taskName $task[0].Name
+		Assert-AreEqual 1 $task.Count
+		
+		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
+		{
+			SleepTask 15
+			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		}
+
+		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
+		
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+function Test-ValidateMigrationInputSqlSqlDbMiSync
+{
+	$rg = Create-ResourceGroupForTest
+	
+	try
+	{
+		$service = Create-DataMigrationService($rg)
+		$project = Create-ProjectSqlSqlDbMi $rg $service
+		$taskName = Get-TaskName
+
+		#Source Connection Details
+		$sourceConnectionInfo = New-SourceSqlConnectionInfo
+		$sourceUserName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_USERNAME")
+		$sourcePassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_PASSWORD")
+		$sourceCred = Get-Creds $sourceUserName $sourcePassword
+
+		#Target Connection Details
+		$targetConnectionInfo = New-TargetSqlMiSyncConnectionInfo
+		$targetUserName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDBMI_USERNAME")
+		$targetPassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDBMI_PASSWORD")
+		$targetCred = Get-Creds $targetUserName $targetPassword
+		
+		$app = New-AzureActiveDirectoryApp
+
+		$fileSharePath = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("FILESHARE_PATH")
+		$fileShareUsername = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("FILESHARE_USERNAME")
+		$fileSharePassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("FILESHARE_PASSWORD")
+		$fileShareCred = Get-Creds $fileShareUsername $fileSharePassword
+		$backupFileShare = New-AzDmsFileShare -Path $fileSharePath -Credential $fileShareCred
+
+		$storageResourceId = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("STORAGE_RESOURCE_ID")
+
+		$sourceDbName = "AdventureWorks"
+		$targetDbName = getDmsAssetName AdventureWorks
+
+		$selectedDbs = New-AzDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name $sourceDbName -TargetDatabaseName $targetDbName -BackupFileShare $backupFileShare
+
+		$migTask = New-AzDataMigrationTask -TaskType ValidateSqlServerSqlDbMiSync `
+		  -ResourceGroupName $rg.ResourceGroupName `
+		  -ServiceName $service.Name `
+		  -ProjectName $project.Name `
+		  -TaskName $taskName `
+		  -SourceConnection $sourceConnectionInfo `
+		  -SourceCred $sourceCred `
+		  -TargetConnection $targetConnectionInfo `
+		  -TargetCred $targetCred `
+		  -BackupFileShare $backupFileShare `
+		  -SelectedDatabase $selectedDbs `
+		  -AzureActiveDirectoryApp $app `
+		  -StorageResourceId $storageResourceId
+
+
+		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+
+		Assert-AreEqual $taskName $task[0].Name
+		Assert-AreEqual 1 $task.Count
+		
+		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
+		{
+			SleepTask 15
+			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		}
+
+		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
+
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+function Test-MigrateSqlSqlDbMiSync
+{
+	$rg = Create-ResourceGroupForTest
+	
+	try
+	{
+		$service = Create-DataMigrationService($rg)
+		$project = Create-ProjectSqlSqlDbMi $rg $service
+		$taskName = Get-TaskName
+
+		#Source Connection Details
+		$sourceConnectionInfo = New-SourceSqlConnectionInfo
+		$sourceUserName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_USERNAME")
+		$sourcePassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_PASSWORD")
+		$sourceCred = Get-Creds $sourceUserName $sourcePassword
+
+		#Target Connection Details
+		$targetConnectionInfo = New-TargetSqlMiSyncConnectionInfo
+		$targetUserName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDBMI_USERNAME")
+		$targetPassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDBMI_PASSWORD")
+		$targetCred = Get-Creds $targetUserName $targetPassword
+		
+		$app = New-AzureActiveDirectoryApp
+
+		$fileSharePath = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("FILESHARE_PATH")
+		$fileShareUsername = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("FILESHARE_USERNAME")
+		$fileSharePassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("FILESHARE_PASSWORD")
+		$fileShareCred = Get-Creds $fileShareUsername $fileSharePassword
+		$backupFileShare = New-AzDmsFileShare -Path $fileSharePath -Credential $fileShareCred
+
+		$storageResourceId = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("STORAGE_RESOURCE_ID")
+
+		$sourceDbName = "AdventureWorks"
+		$dbId = "db|"+$sourceDbName
+		$targetDbName = getDmsAssetName AdventureWorks
+
+		$selectedDbs = New-AzDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name $sourceDbName -TargetDatabaseName $targetDbName -BackupFileShare $backupFileShare
+
+		$migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMiSync `
+		  -ResourceGroupName $rg.ResourceGroupName `
+		  -ServiceName $service.Name `
+		  -ProjectName $project.Name `
+		  -TaskName $taskName `
+		  -SourceConnection $sourceConnectionInfo `
+		  -SourceCred $sourceCred `
+		  -TargetConnection $targetConnectionInfo `
+		  -TargetCred $targetCred `
+		  -BackupFileShare $backupFileShare `
+		  -SelectedDatabase $selectedDbs `
+		  -AzureActiveDirectoryApp $app `
+		  -StorageResourceId $storageResourceId
+
+
+		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+
+		Assert-AreEqual $taskName $task[0].Name
+		Assert-AreEqual 1 $task.Count
+		
+		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
+		{
+			Foreach($output in $task.ProjectTask.Properties.Output)
+			{
+				if ($output.Id -eq  $dbId)
+				{
+					if ($output.MigrationState -eq "LOG_FILES_UPLOADING")
+					{
+						if ($output.FullBackupSetInfo.BackupType -eq "Database")
+						{
+							if($output.FullBackupSetInfo.IsBackupRestored)
+							{
+								$command = Invoke-AzDmsCommand -CommandType CompleteSqlMiSync `
+								-ResourceGroupName $rg.ResourceGroupName `
+								-ServiceName $service.Name `
+								-ProjectName $project.Name `
+								-TaskName $taskName `
+								-DatabaseName $output.SourceDatabaseName
+							}
+						}
+					}
+				}
+			}
+
+			SleepTask 15
+			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		}
+
+		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
+
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
 	}
 	finally
 	{
