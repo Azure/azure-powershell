@@ -1,0 +1,11 @@
+<Project>
+
+  <!-- Custom -->
+  <PropertyGroup>
+    <RepoRoot>$(MSBuildThisFileDirectory)</RepoRoot>
+    <RepoSrc>$(RepoRoot)src\</RepoSrc>
+    <RepoArtifacts>$(RepoRoot)artifacts\</RepoArtifacts>
+    <RepoTools>$(RepoRoot)tools\</RepoTools>
+  </PropertyGroup>
+
+</Project>

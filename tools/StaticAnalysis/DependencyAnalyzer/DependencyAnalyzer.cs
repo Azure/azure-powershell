@@ -31,33 +31,164 @@ namespace StaticAnalysis.DependencyAnalyzer
     /// </summary>
     public class DependencyAnalyzer : IStaticAnalyzer
     {
-        const int NoAssemblyVersionEvidence = 1000;
-        const int ReferenceDoesNotMatchAssemblyVersion = 1010;
-        const int ExtraAssemblyRecord = 2000;
-        const int MissingAssemblyRecord = 3000;
-        const int AssemblyVersionFileVersionMismatch = 7000;
-        const int CommonAuthenticationMismatch = 7010;
+        private const int NoAssemblyVersionEvidence = 1000;
+        private const int ReferenceDoesNotMatchAssemblyVersion = 1010;
+        private const int ExtraAssemblyRecord = 2000;
+        private const int MissingAssemblyRecord = 3000;
+        private const int AssemblyVersionFileVersionMismatch = 7000;
+        private const int CommonAuthenticationMismatch = 7010;
 
-        static List<string> FrameworkAssemblies = new List<string>
+        private static readonly List<string> FrameworkAssemblies = new List<string>
         {
             "Microsoft.CSharp",
             "Microsoft.Management.Infrastructure",
             "Microsoft.Build",
             "Microsoft.Build.Framework",
             "Microsoft.Win32.Primitives",
-            "WindowsBase"
+            "mscorlib",
+            "netstandard",
+            "Microsoft.Win32.Primitives",
+            "System.AppContext",
+            "System.Collections",
+            "System.Collections.Immutable",
+            "System.Collections.Concurrent",
+            "System.Collections.NonGeneric",
+            "System.Collections.Specialized",
+            "System.ComponentModel",
+            "System.ComponentModel.EventBasedAsync",
+            "System.ComponentModel.Primitives",
+            "System.ComponentModel.TypeConverter",
+            "System.Console",
+            "System.Data.Common",
+            "System.Diagnostics.Contracts",
+            "System.Diagnostics.Debug",
+            "System.Diagnostics.DiagnosticSource",
+            "System.Diagnostics.FileVersionInfo",
+            "System.Diagnostics.Process",
+            "System.Diagnostics.StackTrace",
+            "System.Diagnostics.TextWriterTraceListener",
+            "System.Diagnostics.Tools",
+            "System.Diagnostics.TraceSource",
+            "System.Diagnostics.Tracing",
+            "System.Drawing.Primitives",
+            "System.Dynamic.Runtime",
+            "System.Globalization",
+            "System.Globalization.Calendars",
+            "System.Globalization.Extensions",
+            "System.IO",
+            "System.IO.Compression",
+            "System.IO.Compression.ZipFile",
+            "System.IO.FileSystem",
+            "System.IO.FileSystem.DriveInfo",
+            "System.IO.FileSystem.Primitives",
+            "System.IO.FileSystem.Watcher",
+            "System.IO.IsolatedStorage",
+            "System.IO.MemoryMappedFiles",
+            "System.IO.Pipes",
+            "System.IO.UnmanagedMemoryStream",
+            "System.Linq",
+            "System.Linq.Expressions",
+            "System.Linq.Parallel",
+            "System.Linq.Queryable",
+            "System.Net.Http",
+            "System.Net.NameResolution",
+            "System.Net.NetworkInformation",
+            "System.Net.Ping",
+            "System.Net.Primitives",
+            "System.Net.Requests",
+            "System.Net.Security",
+            "System.Net.Sockets",
+            "System.Net.WebHeaderCollection",
+            "System.Net.WebSockets",
+            "System.Net.WebSockets.Client",
+            "System.ObjectModel",
+            "System.Private.DataContractSerialization", 
+            "System.Reflection",
+            "System.Reflection.Emit",
+            "System.Reflection.Emit.ILGeneration",
+            "System.Reflection.Emit.Lightweight",
+            "System.Reflection.Extensions",
+            "System.Reflection.Metadata",
+            "System.Reflection.Primitives",
+            "System.Resources.Reader",
+            "System.Resources.ResourceManager",
+            "System.Resources.Writer",
+            "System.Runtime",
+            "System.Runtime.CompilerServices.VisualC",
+            "System.Runtime.Extensions",
+            "System.Runtime.Handles",
+            "System.Runtime.InteropServices",
+            "System.Runtime.InteropServices.RuntimeInformation",
+            "System.Runtime.Numerics",
+            "System.Runtime.Serialization.Formatters",
+            "System.Runtime.Serialization.Json",
+            "System.Runtime.Serialization.Primitives",
+            "System.Runtime.Serialization.Xml",
+            "System.Security.Claims",
+            "System.Security.Cryptography.Algorithms",
+            "System.Security.Cryptography.Csp",
+            "System.Security.Cryptography.Encoding",
+            "System.Security.Cryptography.Primitives",
+            "System.Security.Cryptography.X509Certificates",
+            "System.Security.Principal",
+            "System.Security.SecureString",
+            "System.Text.Encoding",
+            "System.Text.Encoding.Extensions",
+            "System.Text.RegularExpressions",
+            "System.Threading",
+            "System.Threading.Overlapped",
+            "System.Threading.Tasks",
+            "System.Threading.Tasks.Parallel",
+            "System.Threading.Thread",
+            "System.Threading.ThreadPool",
+            "System.Threading.Timer",
+            "System.ValueTuple",
+            "System.Xml.ReaderWriter",
+            "System.Xml.XDocument",
+            "System.Xml.XmlDocument",
+            "System.Xml.XmlSerializer",
+            "System.Xml.XPath",
+            "System.Xml.XPath.XDocument",
+            "WindowsBase",
+            "System.Security.Cryptography.Cng",
+            "System.Security.Cryptography.Pkcs",
+            "System.Private.CoreLib",
+            "System.Private.ServiceModel",
+            "System.Private.Xml.Linq",
+            "System.Net.Http.WinHttpHandler",
+            "System.Net.Mail",
+            "System.Security.Permissions",
+            "System.Runtime.Loader",
+            "System.DirectoryServices",
+            "System.Management",
+            "System.Configuration",
+            "System.Configuration.ConfigurationManager",
+            "System.Net.WebClient",
+            "System.Memory",
+            "System.Text.Encoding.CodePages",
+            "System.Private.Xml",
+            "System.Reflection.DispatchProxy",
+            "System.ServiceModel",
+            "System.ServiceModel.Syndication",
+            "System.ServiceModel.Http",
+            "System.ServiceModel.Duplex",
+            "System.ServiceModel.NetTcp",
+            "System.ServiceModel.Primitives",
+            "System.ServiceModel.Security",
+            "System.IO.FileSystem.AccessControl",
+            "System.Security.Permissions",
+            "System.Security.AccessControl",
+            "System.Security.Principal.Windows",
+            "System.Data.SqlClient",
+            "System.Security.Cryptography.ProtectedData"
         };
 
-        private Dictionary<string, AssemblyRecord> _assemblies =
+        private readonly Dictionary<string, AssemblyRecord> _assemblies =
             new Dictionary<string, AssemblyRecord>(StringComparer.OrdinalIgnoreCase);
-        private Dictionary<AssemblyName, AssemblyRecord> _sharedAssemblyReferences =
+        private readonly Dictionary<AssemblyName, AssemblyRecord> _sharedAssemblyReferences =
             new Dictionary<AssemblyName, AssemblyRecord>(new AssemblyNameComparer());
-        private Dictionary<string, AssemblyRecord> _identicalSharedAssemblies =
+        private readonly Dictionary<string, AssemblyRecord> _identicalSharedAssemblies =
             new Dictionary<string, AssemblyRecord>(StringComparer.OrdinalIgnoreCase);
-
-#if !NETSTANDARD
-        private AppDomain _testDomain;
-#endif
         private AssemblyLoader _loader;
         private ReportLogger<AssemblyVersionConflict> _versionConflictLogger;
         private ReportLogger<SharedAssemblyConflict> _sharedConflictLogger;
@@ -98,7 +229,7 @@ namespace StaticAnalysis.DependencyAnalyzer
                 {
                     if (modulesToAnalyze != null &&
                         modulesToAnalyze.Any() &&
-                        !modulesToAnalyze.Where(m => directoryPath.EndsWith(m)).Any())
+                        !modulesToAnalyze.Any(m => directoryPath.EndsWith(m)))
                     {
                         continue;
                     }
@@ -132,7 +263,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             {
                 var assembly = LoadByReflectionFromFile(fullPath);
                 var versionInfo = FileVersionInfo.GetVersionInfo(fullPath);
-                result = new AssemblyRecord()
+                result = new AssemblyRecord
                 {
                     AssemblyName = assembly.GetName(),
                     AssemblyFileMajorVersion = versionInfo.FileMajorPart,
@@ -158,35 +289,32 @@ namespace StaticAnalysis.DependencyAnalyzer
             if (_sharedAssemblyReferences.ContainsKey(assembly.AssemblyName))
             {
                 var stored = _sharedAssemblyReferences[assembly.AssemblyName];
-                if (!assembly.Equals(stored) && !(IsFrameworkAssembly(assembly.AssemblyName) && assembly.Version.Major <= 4))
+                if (assembly.Equals(stored) || IsFrameworkAssembly(assembly.AssemblyName) && assembly.Version.Major <= 4) return true;
+
+                _sharedConflictLogger.LogRecord(new SharedAssemblyConflict
                 {
-                    _sharedConflictLogger.LogRecord(new SharedAssemblyConflict
+                    AssemblyName = assembly.Name,
+                    AssemblyPathsAndFileVersions = new List<Tuple<string, Version>>
                     {
-                        AssemblyName = assembly.Name,
-                        AssemblyPathsAndFileVersions = new List<Tuple<string, Version>>()
-                        {
-                            new Tuple<string, Version>(assembly.Location, new Version(assembly.AssemblyFileMajorVersion,
-                                assembly.AssemblyFileMinorVersion)),
-                            new Tuple<string, Version>(stored.Location, new Version(stored.AssemblyFileMajorVersion,
-                                stored.AssemblyFileMinorVersion))
+                        new Tuple<string, Version>(assembly.Location, new Version(assembly.AssemblyFileMajorVersion,
+                            assembly.AssemblyFileMinorVersion)),
+                        new Tuple<string, Version>(stored.Location, new Version(stored.AssemblyFileMajorVersion,
+                            stored.AssemblyFileMinorVersion))
 
-                        },
-                        AssemblyVersion = assembly.Version,
-                        Severity = 0,
-                        ProblemId = AssemblyVersionFileVersionMismatch,
-                        Description = "Shared assembly conflict, shared assemblies with the same assembly " +
-                                      "version have differing file versions",
-                        Remediation = string.Format("Update the assembly reference for {0} in one of the " +
-                                                    "referring assemblies", assembly.Name)
-                    });
+                    },
+                    AssemblyVersion = assembly.Version,
+                    Severity = 0,
+                    ProblemId = AssemblyVersionFileVersionMismatch,
+                    Description = "Shared assembly conflict, shared assemblies with the same assembly " +
+                                  "version have differing file versions",
+                    Remediation = string.Format("Update the assembly reference for {0} in one of the " +
+                                                "referring assemblies", assembly.Name)
+                });
 
-                    return false;
-                }
+                return false;
             }
-            else
-            {
-                _sharedAssemblyReferences[assembly.AssemblyName] = assembly;
-            }
+
+            _sharedAssemblyReferences[assembly.AssemblyName] = assembly;
 
             return true;
         }
@@ -207,72 +335,56 @@ namespace StaticAnalysis.DependencyAnalyzer
             if (_identicalSharedAssemblies.ContainsKey(record.Name))
             {
                 var stored = _identicalSharedAssemblies[record.Name];
-                if (!record.Equals(stored) && !(IsFrameworkAssembly(record.AssemblyName)))
+                if (record.Equals(stored) || IsFrameworkAssembly(record.AssemblyName)) return true;
+
+                _sharedConflictLogger.LogRecord(new SharedAssemblyConflict
                 {
-                    _sharedConflictLogger.LogRecord(new SharedAssemblyConflict
+                    AssemblyName = record.Name,
+                    AssemblyVersion = record.Version,
+                    Severity = 0,
+                    ProblemId = CommonAuthenticationMismatch,
+                    AssemblyPathsAndFileVersions = new List<Tuple<string, Version>>
                     {
-                        AssemblyName = record.Name,
-                        AssemblyVersion = record.Version,
-                        Severity = 0,
-                        ProblemId = CommonAuthenticationMismatch,
-                        AssemblyPathsAndFileVersions = new List<Tuple<string, Version>>()
-                        {
-                            new Tuple<string, Version>(record.Location, new Version(record.AssemblyFileMajorVersion,
-                                record.AssemblyFileMinorVersion)),
-                            new Tuple<string, Version>(stored.Location, new Version(stored.AssemblyFileMajorVersion,
-                                stored.AssemblyFileMinorVersion)),
-                        },
-                        Description = string.Format("Assembly {0} has multiple versions as specified in 'Target'",
+                        new Tuple<string, Version>(record.Location, new Version(record.AssemblyFileMajorVersion,
+                            record.AssemblyFileMinorVersion)),
+                        new Tuple<string, Version>(stored.Location, new Version(stored.AssemblyFileMajorVersion,
+                            stored.AssemblyFileMinorVersion)),
+                    },
+                    Description = string.Format("Assembly {0} has multiple versions as specified in 'Target'",
                         record.Name),
-                        Remediation = string.Format("Ensure that all packages reference exactly the same package " +
-                                                    "version of {0}", record.Name)
+                    Remediation = string.Format("Ensure that all packages reference exactly the same package " +
+                                                "version of {0}", record.Name)
 
-                    });
+                });
 
-                    return false;
-                }
+                return false;
             }
-            else
-            {
-                _identicalSharedAssemblies[record.Name] = record;
-            }
+
+            _identicalSharedAssemblies[record.Name] = record;
 
             return true;
         }
 
-        private static bool RequiresExactVersionMatch(AssemblyRecord name)
-        {
-            return name.Name.Contains("Microsoft.Azure.Common.Authentication");
-        }
-
         private static bool IsFrameworkAssembly(AssemblyName name)
         {
-            return name.Name.StartsWith("System") || name.Name.Equals("mscorlib") || name.Name.Equals("netstandard")
-                || FrameworkAssemblies.Contains(name.Name);
+            return IsFrameworkAssembly(name.Name);
+        }
+
+        private static bool IsFrameworkAssembly(string name)
+        {
+            return FrameworkAssemblies.Contains(name, StringComparer.OrdinalIgnoreCase);
         }
 
         private void ProcessDirectory(string directoryPath)
         {
             var savedDirectory = Directory.GetCurrentDirectory();
             Directory.SetCurrentDirectory(directoryPath);
-            _loader =
-#if !NETSTANDARD
-                EnvironmentHelpers.CreateProxy<AssemblyLoader>(directoryPath, out _testDomain);
-#else
-                new AssemblyLoader();
-#endif
+            _loader = new AssemblyLoader();
             foreach (var file in Directory.GetFiles(directoryPath).Where(file => file.EndsWith(".dll")))
             {
-                AssemblyRecord assembly = CreateAssemblyRecord(file);
+                var assembly = CreateAssemblyRecord(file);
                 _assemblies[assembly.Name] = assembly;
-                if (RequiresExactVersionMatch(assembly))
-                {
-                    AddSharedAssemblyExactVersion(assembly);
-                }
-                else
-                {
-                    AddSharedAssembly(assembly);
-                }
+                AddSharedAssembly(assembly);
 
             }
 
@@ -288,26 +400,25 @@ namespace StaticAnalysis.DependencyAnalyzer
 
             foreach (var assembly in _assemblies.Values)
             {
-                foreach (var parent in assembly.ReferencingAssembly)
+                if (!assembly.Name.Contains("Microsoft.IdentityModel") && !assembly.Name.Equals("Newtonsoft.Json") && !IsFrameworkAssembly(assembly.Name))
                 {
-                    _dependencyMapLogger.LogRecord(
-                        new DependencyMap
-                        {
-                            AssemblyName = assembly.Name,
-                            AssemblyVersion = assembly.Version.ToString(),
-                            ReferencingAssembly = parent.Name,
-                            ReferencingAssemblyVersion = parent.Version.ToString(),
-                            Severity = 3
-                        });
+                    foreach (var parent in assembly.ReferencingAssembly)
+                    {
+                        _dependencyMapLogger.LogRecord(
+                            new DependencyMap
+                            {
+                                AssemblyName = assembly.Name,
+                                AssemblyVersion = assembly.Version.ToString(),
+                                ReferencingAssembly = parent.Name,
+                                ReferencingAssemblyVersion = parent.Version.ToString(),
+                                Severity = 3
+                            });
+                    }
                 }
 
             }
 
             FindExtraAssemblies();
-
-#if !NETSTANDARD
-            AppDomain.Unload(_testDomain);
-#endif
             Directory.SetCurrentDirectory(savedDirectory);
         }
 
@@ -318,25 +429,31 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         private void FindExtraAssemblies()
         {
-            if (_assemblies.Values.Any(a => !IsCommandAssembly(a) && (a.ReferencingAssembly == null
-                || a.ReferencingAssembly.Count == 0 || !a.GetAncestors().Any(IsCommandAssembly))))
+            if (!_assemblies.Values.Any(a =>
+                !IsCommandAssembly(a)
+                && (a.ReferencingAssembly == null
+                || a.ReferencingAssembly.Count == 0
+                || !a.GetAncestors().Any(IsCommandAssembly))))
             {
-                foreach (
-                    var assembly in
-                        _assemblies.Values.Where(a => !IsCommandAssembly(a) && (a.ReferencingAssembly == null ||
-                            a.ReferencingAssembly.Count == 0 || !a.GetAncestors().Any(IsCommandAssembly))))
+                return;
+            }
+
+            foreach (var assembly in _assemblies.Values.Where(a =>
+                !IsCommandAssembly(a)
+                && (a.ReferencingAssembly == null
+                || a.ReferencingAssembly.Count == 0
+                || !a.GetAncestors().Any(IsCommandAssembly))))
+            {
+                _extraAssemblyLogger.LogRecord(new ExtraAssembly
                 {
-                    _extraAssemblyLogger.LogRecord(new ExtraAssembly
-                    {
-                        AssemblyName = assembly.Name,
-                        Severity = 2,
-                        ProblemId = ExtraAssemblyRecord,
-                        Description = string.Format("Assembly {0} is not referenced from any cmdlets assembly",
+                    AssemblyName = assembly.Name,
+                    Severity = 2,
+                    ProblemId = ExtraAssemblyRecord,
+                    Description = string.Format("Assembly {0} is not referenced from any cmdlets assembly",
                         assembly.Name),
-                        Remediation = string.Format("Remove assembly {0} from the project and regenerate the Wix " +
-                                                    "file", assembly.Name)
-                    });
-                }
+                    Remediation = string.Format("Remove assembly {0} from the project and regenerate the Wix " +
+                                                "file", assembly.Name)
+                });
             }
         }
 
@@ -353,7 +470,7 @@ namespace StaticAnalysis.DependencyAnalyzer
                 {
                     Logger.WriteWarning("{0}.dll has reference to assembly {1} without any version specification.",
                         parent.Name, reference.Name);
-                    _versionConflictLogger.LogRecord(new AssemblyVersionConflict()
+                    _versionConflictLogger.LogRecord(new AssemblyVersionConflict
                     {
                         AssemblyName = reference.Name,
                         ActualVersion = stored.Version,
@@ -372,7 +489,7 @@ namespace StaticAnalysis.DependencyAnalyzer
                 else if (_isNetcore && stored.Version < reference.Version)
                 {
                     var minVersion = (stored.Version < reference.Version) ? stored.Version : reference.Version;
-                    _versionConflictLogger.LogRecord(new AssemblyVersionConflict()
+                    _versionConflictLogger.LogRecord(new AssemblyVersionConflict
                     {
                         AssemblyName = reference.Name,
                         ActualVersion = stored.Version,

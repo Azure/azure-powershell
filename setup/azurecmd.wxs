@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" >
   <Product Id="*"
            Name="$(var.productName)"
            Language="1033"
            Version="$(var.version)"
            Manufacturer="Microsoft Corporation"
-           UpgradeCode="EBC1AD5E-1BBE-45B5-9E8D-ACFC8951C252">
+           UpgradeCode="EBC1AD5E-1BBE-45B5-9E8D-ACFC8951C253">
 
     <Package InstallerVersion="200" Compressed="yes"  />
     <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
@@ -30,9 +30,36 @@
     </Property>
 
     <!-- This condition will break if PowerShell has less than version x5.0 -->
-    <Condition Message="This setup requires the Windows PowerShell 5.0 or compatible version to be installed.">
-      <![CDATA[Installed or (PSCOMPATIBLEVERSION >< "5.0")]]>
+    <Condition Message="This setup requires the Windows PowerShell 5.1 or compatible version to be installed.">
+      <![CDATA[Installed or (PSCOMPATIBLEVERSION >< "5.1")]]>
     </Condition>
+
+    <?define NetFx472MinRelease = 461808 ?>
+    <Property Id="NETFRAMEWORK472" Value="0" Secure="yes">
+        <RegistrySearch
+            Id="RegSearch"
+            Root="HKLM"
+            Key="SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"
+            Name="Release"
+            Type="raw" />
+    </Property>
+
+    <Condition Message="This setup requires the .NET Framework version 4.7.2 or greater to be installed.">
+        <![CDATA[NETFRAMEWORK472 >= "#$(var.NetFx472MinRelease)"]]>
+    </Condition>
+    
+    <Binary Id="InstallerChecks.CA.dll"
+            src="InstallerChecks.CA.dll" />
+
+    <CustomAction Id="InstallerChecks" 
+                  Return="check" 
+                  Execute="immediate" 
+                  BinaryKey="InstallerChecks.CA.dll" 
+                  DllEntry="CheckForAzureRm" />
+    
+    <InstallExecuteSequence>
+      <Custom Action="InstallerChecks" Before="LaunchConditions"  />
+    </InstallExecuteSequence>
 
     <Directory Id="TARGETDIR" Name="SourceDir">
       <!-- x64 files -->
@@ -51,7 +78,7 @@
       </Directory>
     </Directory>
 
-    <Feature Id="azurecmd" Title="Microsoft Azure PowerShell" Level="1" Description="Windows PowerShell commandlets">
+    <Feature Id="azurecmd" Title="Microsoft Azure PowerShell" Level="1" Description="Azure PowerShell cmdlets">
       <?if $(sys.BUILDARCH) = "x64" ?>  
         <ComponentGroupRef Id="azurecmdfilesx64" />
       <?endif?>      

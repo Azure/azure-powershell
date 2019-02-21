@@ -57,11 +57,6 @@ function Create-SmokeTestModule(
             $null = $files.AddRange(@(Get-ChildItem "$($folder.Path)\..\" -Filter "*.json" -ErrorAction Stop))
         }
     }
-    # copy the very common files @(Assert.ps1, Common.ps1) from the folder: src\ResourceManager\Common\Commands.ScenarioTests.ResourceManager.Common\
-    $rmCommonDir = Join-Path $srcPath 'ResourceManager\Common\Commands.ScenarioTests.ResourceManager.Common'
-    $null = $files.Add((Get-Item "$rmCommonDir\Assert.ps1"))
-    # Rename the 'common Common.ps1' as to maximize filename clash avoidance.
-    $null = $files.Add((Copy-Item "$rmCommonDir\$commonFileName" "$archiveDir\Very$commonFileName" -PassThru -ErrorAction Stop))
 
     # Create the module file
     $moduleFile = New-Item "$archiveDir\$moduleName.psm1" -type file

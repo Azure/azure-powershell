@@ -5,12 +5,7 @@ Param
     [string]$FilesChanged
 )
 
-$PathsToCheck = @(
-    "src/Common",
-    "src/ResourceManager",
-    "src/ServiceManagement",
-    "src/Storage"
-)
+$PathsToCheck = @("src")
 
 $PathStringsToIgnore = @(
     "Test",
@@ -61,7 +56,7 @@ foreach ($ChangeLog in $ChangeLogs)
     }
     else
     {
-        # Handle ResourceManager to construct a string like "src/ResourceManager/{{service}}"
+        # Handle to construct a string like "src/{{service}}"
         $SplitPath = @()
         while ($true)
         {
@@ -92,12 +87,6 @@ $FlaggedFiles = @()
 foreach ($File in $FilesChangedList)
 {
     if ($File -like "*ChangeLog.md*" -or $File -like "*.psd1*" -or $File -like "*.sln")
-    {
-        continue
-    }
-
-    # If a file in src/Common is updated, check for change log entry in Profile
-    if (($File.StartsWith("src/Common") -or $File.StartsWith("src/ResourceManager/Common")) -and ($UpdatedServicePaths | where { $_ -like "*Profile*" } | Measure-Object).Count -gt 0)
     {
         continue
     }

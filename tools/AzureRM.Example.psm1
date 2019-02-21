@@ -43,8 +43,15 @@ if (Test-Path -Path "$PSScriptRoot\StartupScripts" -ErrorAction Ignore)
 
 if (Get-Module %AZORAZURERM%.profile -ErrorAction Ignore)
 {
+<<<<<<< HEAD
     Write-Warning ("%AZORAZURERM%.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: https://aka.ms/azps-migration-guide")
     throw ("%AZORAZURERM%.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: https://aka.ms/azps-migration-guide")
+=======
+    Write-Warning ("%AZORAZURERM%.Profile already loaded. Az and AzureRM modules cannot be imported in the same session or used in the same script or runbook. If you are running PowerShell in an environment you control you can use the 'Uninstall-AzureRm' cmdlet to remove all AzureRm modules from your machine. " +
+        "If you are running in Azure Automation, take care that none of your runbooks import both Az and AzureRM modules. More information can be found here: https://aka.ms/azps-migration-guide.")
+    throw ("%AZORAZURERM%.Profile already loaded. Az and AzureRM modules cannot be imported in the same session or used in the same script or runbook. If you are running PowerShell in an environment you control you can use the 'Uninstall-AzureRm' cmdlet to remove all AzureRm modules from your machine. " +
+        "If you are running in Azure Automation, take care that none of your runbooks import both Az and AzureRM modules. More information can be found here: https://aka.ms/azps-migration-guide.")
+>>>>>>> 67b66d3d611f788631f8fe89c24598ff82893354
 }
 
 $preloadPath = (Join-Path $PSScriptRoot -ChildPath "PreloadAssemblies")
@@ -79,6 +86,13 @@ if($PSEdition -eq 'Core' -and (Test-Path $netCorePath -ErrorAction Ignore))
 
 
 %IMPORTED-DEPENDENCIES%
+
+if (Test-Path -Path "$PSScriptRoot\PostImportScripts" -ErrorAction Ignore)
+{
+    Get-ChildItem "$PSScriptRoot\PostImportScripts" -ErrorAction Stop | ForEach-Object {
+        . $_.FullName
+    }
+}
 
 $FilteredCommands = %DEFAULTRGCOMMANDS%
 

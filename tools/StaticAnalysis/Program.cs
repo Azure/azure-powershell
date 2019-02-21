@@ -69,12 +69,7 @@ namespace StaticAnalysis
                     throw new InvalidOperationException(string.Format("Please provide a valid installation directory; the provided directory '{0}' could not be found.", installDir));
                 }
 
-                var directories = new List<string>
-                {
-                    Path.Combine(installDir, @"ResourceManager\AzureResourceManager\"),
-                    Path.Combine(installDir, @"ServiceManagement\Azure\"),
-                    Path.Combine(installDir, @"Storage\")
-                }.Where((d) => Directory.Exists(d)).ToList<string>();
+                var directories = new List<string>{ installDir }.Where((d) => Directory.Exists(d)).ToList<string>();
 
                 var reportsDirectory = Directory.GetCurrentDirectory();
                 bool logReportsDirectoryWarning = true;
@@ -109,13 +104,10 @@ namespace StaticAnalysis
                 }
 
                 bool useNetcore = args.Any(a => a == "--use-netcore" || a == "-u");
-                if (!useNetcore)
-                {
-                    Analyzers.Add(new SignatureVerifier.SignatureVerifier());
-                    Analyzers.Add(new BreakingChangeAnalyzer.BreakingChangeAnalyzer());
-                }
+                Analyzers.Add(new SignatureVerifier.SignatureVerifier());
+                Analyzers.Add(new BreakingChangeAnalyzer.BreakingChangeAnalyzer());
 
-                if (!skipHelp && !useNetcore)
+                if (!skipHelp)
                 {
                     Analyzers.Add(new HelpAnalyzer.HelpAnalyzer());
                 }
