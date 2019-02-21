@@ -95,5 +95,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
                 return ResourceManager.GetString("DeleteAssignmentShouldProcessString", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not register the resource provider &apos;{0}&apos;.
+        /// </summary>
+        internal static string ResourceProviderRegistrationFailed {
+            get {
+                return ResourceManager.GetString("ResourceProviderRegistrationFailed", resourceCulture);
+            }
+        }
     }
 }

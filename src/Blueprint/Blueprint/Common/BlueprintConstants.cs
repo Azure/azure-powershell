@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
             public const string BlueprintAssignmentsBySubscription = "BlueprintAssignmentsBySubscription";
             public const string BlueprintAssignmentByName = "BlueprintAssignmentByName";
-            public const string CreateBlueprintAssignment = "BlueprintAssignment";
+            public const string CreateBlueprintAssignment = "CreateBlueprintAssignmentBySystemAssigned";
             public const string DeleteBlueprintAssignmentByName = "DeleteBlueprintAssignmentByName";
             public const string DeleteBlueprintAssignmentByObject = "DeleteBlueprintAssignmentByObject";
         }
@@ -45,6 +45,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string Parameters = "Collection of key/value pairs for parameters and their corresponding values.";
             public const string LockFlag = "Lock resources. Learn more at aka.ms/blueprintlocks";
             public const string CurrentLevel = "Flag to denote if current management group level or subscription to be used for the query.";
+            public const string SystemAssignedIdentity = "System assigned identity(MSI) to deploy the artifacts.";
+            public const string UserAssignedIdentity = "User assigned identity(MSI) to deploy the artifacts.";
         }
     }
 }
