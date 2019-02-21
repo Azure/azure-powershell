@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update help for Get-AzMetric
 
 ## Version 1.0.0
 * General availability of `Az.Monitor` module

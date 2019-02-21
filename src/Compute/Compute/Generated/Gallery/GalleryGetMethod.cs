@@ -109,7 +109,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 0,
-            Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
@@ -118,7 +117,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 1,
-            Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
