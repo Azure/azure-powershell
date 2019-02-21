@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.1'
+ModuleVersion = '1.0.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -150,7 +150,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Update incorrect online help URLs'
+        ReleaseNotes = '* Fix tagging on Set-AzKeyVaultSecret'
 
         # Prerelease string of this module
         # Prerelease = ''

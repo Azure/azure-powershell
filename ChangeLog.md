@@ -11,6 +11,8 @@
 * Added CustomSubdomainName as a new optional parameter for New-AzCognitiveServicesAccount which is used to specify subdomain for the resource.
 
 #### Az.Compute
+* Fix issue with ID parameter sets
+* Update Get-AzVMExtension to list all installed extension if Name parameter is not provided
 * Add Tag and ResourceId parameters to Update-AzImage cmdlet
 * Get-AzVmssVM without instance ID and with InstanceView can list VMSS VMs with instance view.
 
@@ -19,6 +21,9 @@
 
 #### Az.EventHub
 * Added new boolean property SkipEmptyArchives to Skip Empty Archives in CaptureDescription class of Eventhub 
+
+#### Az.KeyVault
+* Fix tagging on Set-AzKeyVaultSecret
 
 #### Az.LogicApp
 * Add in Basic sku for Integration Accounts
