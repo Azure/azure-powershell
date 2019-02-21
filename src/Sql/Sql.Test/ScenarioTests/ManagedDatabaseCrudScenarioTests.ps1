@@ -249,8 +249,8 @@ function Test-RestoreManagedDatabase
 function Test-GetManagedDatabaseGeoBackup
 {
 	# Setup
-	$rgName = "georestore-rg"	
-	$managedInstanceName = "testinstance"
+	$rgName = "restore-rg"	
+	$managedInstanceName = "testbrinstance"
 	$managedDatabaseName = "sourcedb"
 
 	# Test Get using all parameters
@@ -275,18 +275,19 @@ function Test-GetManagedDatabaseGeoBackup
 function Test-GeoRestoreManagedDatabase
 {
 	# Setup
-    $rgName = "georestore-rg"	
-	$managedInstanceName = "testinstance"
+    $rgName = "restore-rg"	
+	$managedInstanceName = "testbrinstance"
 	$managedDatabaseName = "sourcedb"
 
-	$targetRgName = "targetrg"
-	$targetInstanceName = "targetinstance"
+	$targetRgName = "restore-rg"
+	$targetInstanceName = "testbrinstance"
 	try
 	{
 		$sourceDbGeoBackup = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name $managedDatabaseName
 
 		Assert-NotNull $sourceDbGeoBackup
-		$targetManagedDatabaseName1 = Get-ManagedDatabaseName		
+
+	   $targetManagedDatabaseName1 = Get-ManagedDatabaseName		
 		$targetManagedDatabaseName2 = Get-ManagedDatabaseName
 		$targetManagedDatabaseName3 = Get-ManagedDatabaseName
 		$targetManagedDatabaseName4 = Get-ManagedDatabaseName
@@ -317,12 +318,12 @@ function Test-GeoRestoreManagedDatabase
 		Assert-NotNull $restoredDb4
 		Assert-AreEqual $restoredDb4.Name $targetManagedDatabaseName4
 		Assert-AreEqual $restoredDb4.ResourceGroupName $targetRgName
-		Assert-AreEqual $restoredDb4.ManagedInstanceName $targetInstanceName	
+	   Assert-AreEqual $restoredDb4.ManagedInstanceName $targetInstanceName	
 
 	}
 	finally
 	{
-		$restoredDb1 | Remove-AzSqlInstanceDatabase -Force
+     	$restoredDb1 | Remove-AzSqlInstanceDatabase -Force
 		$restoredDb2 | Remove-AzSqlInstanceDatabase -Force
 		$restoredDb3 | Remove-AzSqlInstanceDatabase -Force
 		$restoredDb4 | Remove-AzSqlInstanceDatabase -Force
