@@ -65,6 +65,16 @@ function Test-ExpressRouteRouteFilters
       Assert-AreEqual $filterName $filter.Name
       Assert-NotNull $filter.Location
       Assert-AreEqual 1 @($filter.Rules).Count
+	  Assert-AreEqual "Allow" $filter.Rules[0].Access
+
+	  Update-AzRouteFilterRuleConfig -RouteFilter $filter -Name $ruleName -Access Deny -Force
+	  $job = Set-AzRouteFilter -RouteFilter $filter -Force -AsJob
+	  $job | Wait-Job
+	  $filter = $job | Receive-Job
+
+	  #verification
+      Assert-AreEqual 1 @($filter.Rules).Count
+	  Assert-AreEqual "Deny" $filter.Rules[0].Access
 
 	  $filter = Get-AzRouteFilter -Name $filterName -ResourceGroupName $rgname
 	  $filter.Rules.Clear()
