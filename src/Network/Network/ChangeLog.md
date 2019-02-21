@@ -18,6 +18,16 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Update help example for Add-AzApplicationGatewayCustomError
+
+## Version 1.2.0
+* Added Cmdlets for Identity on Application Gateway.
+    - New cmdlets added:
+        - Set-AzApplicationGatewayIdentity
+        - Get-AzApplicationGatewayIdentity
+        - New-AzApplicationGatewayIdentity
+        - Remove-AzApplicationGatewayIdentity
+    - New-AzApplicationGateway cmdlet updated with optional parameter -Identity
 
 ## Version 1.1.0
 * Update incorrect online help URLs
@@ -28,7 +38,6 @@
     - Set-AzNetworkInterfaceIpConfig
 
 ## Version 1.0.0
-* General availability of `Az.Network` module
 * Added support for the configuring RewriteRuleSets in the Application Gateway
     - New cmdlets added:
         - Add-AzureRmApplicationGatewayRewriteRuleSet
