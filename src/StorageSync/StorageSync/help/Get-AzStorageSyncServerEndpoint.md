@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzStorageSyncServerEndpoint
 
 ## SYNOPSIS
-This command will use to get server endpoint.
+This command lists all server endpoints within a given sync group.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Get-AzStorageSyncServerEndpoint [-ParentResourceId] <String> [-Name <String>]
 ```
 
 ## DESCRIPTION
-This command will use to get server endpoint.
+This command lists all server endpoints within a given sync group. It can be used to also list the attributes of each server endpoint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -ServerEndpointName "myServerEndpointName"
+PS C:\> Get-AzStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName"
 ```
 
-This command gets a sync serverendpoint provided all the name of the dependent resources.
+This command gets all server endpoints contained within the specified sync group. Specify -ServerEndpointName to return a specific one.
 
 ## PARAMETERS
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the ServerEndpoint.
+Name of the server endpoint.
 
 ```yaml
 Type: System.String

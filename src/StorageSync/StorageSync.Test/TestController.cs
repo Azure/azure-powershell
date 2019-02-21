@@ -14,6 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.StorageSync.Common;
+using Microsoft.Azure.Commands.StorageSync.Interfaces;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
@@ -25,6 +27,7 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using StorageSync.Test.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -33,23 +36,56 @@ using System.Linq;
 
 namespace ScenarioTests
 {
+    /// <summary>
+    /// Class TestController.
+    /// Implements the <see cref="Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase" />
     public class TestController : RMTestBase
     {
+        /// <summary>
+        /// The tenant identifier key
+        /// </summary>
         private const string TenantIdKey = "TenantId";
+        /// <summary>
+        /// The domain key
+        /// </summary>
         private const string DomainKey = "Domain";
+        /// <summary>
+        /// The subscription identifier key
+        /// </summary>
         private const string SubscriptionIdKey = "SubscriptionId";
 
+        /// <summary>
+        /// Gets the user domain.
+        /// </summary>
+        /// <value>The user domain.</value>
         public string UserDomain { get; private set; }
 
+        /// <summary>
+        /// The helper
+        /// </summary>
         private readonly EnvironmentSetupHelper _helper;
 
+        /// <summary>
+        /// Creates new instance.
+        /// </summary>
+        /// <value>The new instance.</value>
         public static TestController NewInstance => new TestController();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestController"/> class.
+        /// </summary>
         public TestController()
         {
             _helper = new EnvironmentSetupHelper();
         }
 
+        /// <summary>
+        /// Runs the ps test.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
+        /// <param name="scripts">The scripts.</param>
         public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var sf = new StackTrace().GetFrame(1);
@@ -66,11 +102,18 @@ namespace ScenarioTests
                 mockName);
         }
 
+        /// <summary>
+        /// Runs the ps test workflow.
+        /// </summary>
+        /// <param name="scriptBuilder">The script builder.</param>
+        /// <param name="cleanup">The cleanup.</param>
+        /// <param name="callingClassType">Type of the calling class.</param>
+        /// <param name="testName">Name of the test.</param>
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
             Action cleanup,
             string callingClassType,
-            string mockName)
+            string testName)
         {
             var d = new Dictionary<string, string>
             {
@@ -88,8 +131,9 @@ namespace ScenarioTests
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (var context = MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, testName))
             {
+                RegisterComponents(context,testName);
                 SetupManagementClients(context);
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
@@ -120,6 +164,20 @@ namespace ScenarioTests
             }
         }
 
+        /// <summary>
+        /// Registers the components.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="testName">Name of the test.</param>
+        private void RegisterComponents(MockContext context, string testName)
+        {
+            AzureSession.Instance.RegisterComponent<IStorageSyncResourceManager>(StorageSyncConstants.StorageSyncResourceManager, () => new MockStorageSyncResourceManager(testName));
+        }
+
+        /// <summary>
+        /// Setups the management clients.
+        /// </summary>
+        /// <param name="context">The context.</param>
         private void SetupManagementClients(MockContext context)
         {
             var rmClient = context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
@@ -132,6 +190,11 @@ namespace ScenarioTests
             _helper.SetupManagementClients(rmClient, subClient, storageSyncClient, storageClient, rbacClient, authClient);
         }
 
+        /// <summary>
+        /// Gets the graph client.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <returns>GraphRbacManagementClient.</returns>
         private GraphRbacManagementClient GetGraphClient(MockContext context)
         {
             var environment = TestEnvironmentFactory.GetTestEnvironment();

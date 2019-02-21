@@ -25,8 +25,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidations;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
+    /// <summary>
+    /// Class OSVersionValidationTest.
+    /// </summary>
     public class OSVersionValidationTest
     {
+        /// <summary>
+        /// Defines the test method WhenOsVersionIsSupportedValidationResultIsSuccessful.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenOsVersionIsSupportedValidationResultIsSuccessful()
@@ -61,6 +67,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Assert.StrictEqual<Result>(Result.Success, validationResult.Result);
         }
 
+        /// <summary>
+        /// Defines the test method WhenOsVersionIsNotSupportedValidationResultIsError.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenOsVersionIsNotSupportedValidationResultIsError()
@@ -96,6 +105,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Assert.StrictEqual<Result>(Result.Fail, validationResult.Result);
         }
 
+        /// <summary>
+        /// Defines the test method WhenOsEditionIsNotSupportedValidationResultIsError.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WhenOsEditionIsNotSupportedValidationResultIsError()
@@ -130,6 +142,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Assert.StrictEqual<Result>(Result.Fail, validationResult.Result);
         }
 
+        /// <summary>
+        /// Defines the test method WhenCommandFailsToRunValidationResultIsUnavailable.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenCommandFailsToRunValidationResultIsUnavailable()

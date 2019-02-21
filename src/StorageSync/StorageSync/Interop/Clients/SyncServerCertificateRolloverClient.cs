@@ -25,7 +25,9 @@ namespace Commands.StorageSync.Interop.Clients
     /// <summary>
     /// Function performs server certificate rollover
     /// Implements the <see cref="StorageSync.Management.PowerShell.Cmdlets.CertificateRollover.ISyncServerCertificateRollover" />
+    /// Implements the <see cref="Commands.StorageSync.Interop.Interfaces.ISyncServerCertificateRollover" />
     /// </summary>
+    /// <seealso cref="Commands.StorageSync.Interop.Interfaces.ISyncServerCertificateRollover" />
     /// <seealso cref="StorageSync.Management.PowerShell.Cmdlets.CertificateRollover.ISyncServerCertificateRollover" />
     public class SyncServerCertificateRolloverClient : ISyncServerCertificateRollover
     {
@@ -100,10 +102,8 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="serverId">The server identifier.</param>
         /// <returns>System.String.</returns>
         /// <exception cref="ArgumentException">serverId</exception>
-        /// <exception cref="Exception">
-        /// Certificate thumbprints not found. Check if server is registered.
-        /// or
-        /// </exception>
+        /// <exception cref="Exception">Certificate thumbprints not found. Check if server is registered.
+        /// or</exception>
         private string RolloverSecondaryCertificate(Action<string> verboseLogger, out Guid serverId)
         {
             string primaryCertificateThumbprint = string.Empty;
@@ -192,11 +192,9 @@ namespace Commands.StorageSync.Interop.Clients
         /// Switches the certificate.
         /// </summary>
         /// <param name="verboseLogger">The verbose logger.</param>
-        /// <exception cref="ArgumentException">
-        /// primaryCertificateThumbprint
+        /// <exception cref="ArgumentException">primaryCertificateThumbprint
         /// or
-        /// secondaryCertificateThumbprint
-        /// </exception>
+        /// secondaryCertificateThumbprint</exception>
         /// <exception cref="Exception"></exception>
         private void SwitchCertificate(Action<string> verboseLogger)
         {

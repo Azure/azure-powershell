@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Commands.StorageSync.Interop;
+using Commands.StorageSync.Interop.Clients;
 using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <value>The name of the storage sync service.</value>
         [Parameter(
            Position = 1,
-           ParameterSetName =StorageSyncParameterSets.StringParameterSet,
+           ParameterSetName = StorageSyncParameterSets.StringParameterSet,
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
@@ -160,9 +160,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <exception cref="PSArgumentException">AfsAgentInstallerPath</exception>
         private RegisteredServer PerformServerRegistration(string resourceGroupName, Guid subscriptionId, string storageSyncServiceName)
         {
-            using (ISyncServerRegistration syncServerRegistrationClient = InteropClientFactory.CreateSyncServerRegistrationClient(InteropClientFactory.CreateEcsManagement(IsPlaybackMode)))
+            using (ISyncServerRegistration syncServerRegistrationClient = new SyncServerRegistrationClient(StorageSyncClientWrapper.StorageSyncResourceManager.CreateEcsManagement()))
             {
-                if(string.IsNullOrEmpty(StorageSyncClientWrapper.AfsAgentInstallerPath))
+                if (string.IsNullOrEmpty(StorageSyncClientWrapper.AfsAgentInstallerPath))
                 {
                     throw new PSArgumentException(StorageSyncResources.MissingAfsAgentInstallerPathErrorMessage);
                 }
@@ -177,7 +177,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     ManagementInteropConstants.CertificateKeyLength,
                     Path.Combine(StorageSyncClientWrapper.AfsAgentInstallerPath, StorageSyncConstants.MonitoringAgentDirectoryName),
                     StorageSyncClientWrapper.AfsAgentVersion,
-                    (pResourceGroupName, pStorageSyncCerviceName, pServerRegistrationData) => CreateRegisteredResourceInCloud(pResourceGroupName, pStorageSyncCerviceName, pServerRegistrationData));
+                    (pResourceGroupName, pStorageSyncCerviceName, pServerRegistrationData) => CreateRegisteredResourceInCloud(pResourceGroupName, pStorageSyncCerviceName,
+                            StorageSyncClientWrapper.StorageSyncResourceManager.UpdateServerRegistrationData(pServerRegistrationData)));
             }
         }
 
@@ -188,23 +189,23 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <param name="storageSyncServiceName">Name of the storage sync service.</param>
         /// <param name="serverRegistrationData">The server registration data.</param>
         /// <returns>RegisteredServer.</returns>
-        private RegisteredServer CreateRegisteredResourceInCloud(string resourceGroupName, string storageSyncServiceName,ServerRegistrationData serverRegistrationData)
+        private RegisteredServer CreateRegisteredResourceInCloud(string resourceGroupName, string storageSyncServiceName, ServerRegistrationData serverRegistrationData)
         {
             var createParameters = new RegisteredServerCreateParameters()
             {
-                ServerId = "\"" + serverRegistrationData.ServerId.ToString() + "\"",
-                ClusterId = "\"" + serverRegistrationData.ClusterId.ToString() + "\"",
+                ServerId = serverRegistrationData.ServerId.ToString(),
+                ClusterId = serverRegistrationData.ClusterId.ToString(),
                 ClusterName = serverRegistrationData.ClusterName,
                 AgentVersion = serverRegistrationData.AgentVersion,
-                ServerCertificate = "\"" + System.Convert.ToBase64String(serverRegistrationData.ServerCertificate)+ "\"",
+                ServerCertificate = Convert.ToBase64String(serverRegistrationData.ServerCertificate),
                 ServerOSVersion = serverRegistrationData.ServerOSVersion,
                 ServerRole = serverRegistrationData.ServerRole.ToString(),
                 FriendlyName = SystemUtility.GetMachineName(),
-                LastHeartBeat = "\"" + DateTime.Now.ToString() + "\"",
+                LastHeartBeat = DateTime.Now.ToString(),
             };
 
             return RemoveDoubleQuotes(StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Create(
-                resourceGroupName,
+               resourceGroupName,
                 storageSyncServiceName,
                 serverRegistrationData.ServerId.ToString(),
                 createParameters));
@@ -217,14 +218,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <returns>RegisteredServer.</returns>
         private RegisteredServer RemoveDoubleQuotes(RegisteredServer registeredServer)
         {
-            registeredServer.ClusterId = registeredServer.ClusterId.Trim(new char[] { '\"' });
-            registeredServer.StorageSyncServiceUid = registeredServer.StorageSyncServiceUid.Trim(new char[] { '\"' });
-            registeredServer.ServerId = registeredServer.ServerId.Trim(new char[] { '\"' });
-            registeredServer.DiscoveryEndpointUri = registeredServer.DiscoveryEndpointUri.Trim(new char[] { '\"' });
-            registeredServer.ManagementEndpointUri = registeredServer.ManagementEndpointUri.Trim(new char[] { '\"' });
-            registeredServer.LastHeartBeat = registeredServer.LastHeartBeat.Trim(new char[] { '\"' });
+            registeredServer.ClusterId = registeredServer.ClusterId.Trim('\"');
+            registeredServer.StorageSyncServiceUid = registeredServer.StorageSyncServiceUid.Trim('\"');
+            registeredServer.ServerId = registeredServer.ServerId.Trim('\"');
+            registeredServer.DiscoveryEndpointUri = registeredServer.DiscoveryEndpointUri.Trim('\"');
+            registeredServer.ManagementEndpointUri = registeredServer.ManagementEndpointUri.Trim('\"');
+            registeredServer.LastHeartBeat = registeredServer.LastHeartBeat.Trim('\"');
 
             return registeredServer;
         }
+
     }
 }

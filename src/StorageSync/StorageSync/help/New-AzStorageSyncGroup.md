@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzStorageSyncGroup
 
 ## SYNOPSIS
-This command will use to create sync group.
+This command creates a new sync group within a specified storage sync service.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ New-AzStorageSyncGroup [-ParentResourceId] <String> -Name <String> [-DefaultProf
 ```
 
 ## DESCRIPTION
-This command will use to create sync group.
+This command creates a new sync group within a specified storage sync service. A sync group is used to describe a topology of locations, referred to as endpoints, that will sync any files stored within any one of the endpoints. A sync group contains cloud endpoints, which reference Azure file shares, and it also contains server endpoints which reference a specific local path on a registered server.
 
 ## EXAMPLES
 
@@ -40,7 +40,7 @@ This command will use to create sync group.
 PS C:\> New-AzStorageSyncGroup -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -Name "mySyncGroupName"
 ```
 
-This command adds a cloudendpoint provided all the name of the dependent resources.
+This command creates a new sync group within a specified storage sync service.
 
 ## PARAMETERS
 

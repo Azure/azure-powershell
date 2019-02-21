@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="PowerShellCommandRunner"/> class.
+        /// Initializes a new instance of the <see cref="PowerShellCommandRunner" /> class.
         /// </summary>
         /// <param name="computerName">Name of the computer.</param>
         /// <param name="credential">The credential.</param>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         }
 
         /// <summary>
-        /// Finalizes an instance of the <see cref="PowerShellCommandRunner"/> class.
+        /// Finalizes an instance of the <see cref="PowerShellCommandRunner" /> class.
         /// </summary>
         ~PowerShellCommandRunner()
         {

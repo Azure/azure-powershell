@@ -36,14 +36,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="NamespaceEnumerator"/> class.
+        /// Initializes a new instance of the <see cref="NamespaceEnumerator" /> class.
         /// </summary>
         public NamespaceEnumerator() : this(new List<INamespaceEnumeratorListener> { })
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NamespaceEnumerator"/> class.
+        /// Initializes a new instance of the <see cref="NamespaceEnumerator" /> class.
         /// </summary>
         /// <param name="listeners">The listeners.</param>
         public NamespaceEnumerator(IList<INamespaceEnumeratorListener> listeners)

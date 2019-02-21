@@ -32,7 +32,7 @@ namespace Commands.StorageSync.Interop.DataObjects
     public sealed class COMReleaseHandle : SafeHandle
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="COMReleaseHandle"/> class.
+        /// Initializes a new instance of the <see cref="COMReleaseHandle" /> class.
         /// </summary>
         public COMReleaseHandle() : base(IntPtr.Zero, true)
         {

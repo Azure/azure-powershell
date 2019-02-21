@@ -55,8 +55,9 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="resourceGroupName">Resource Group Name</param>
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <returns>success status</returns>
-        /// <exception cref="ServerRegistrationException">
+        /// <exception cref="Commands.StorageSync.Interop.Exceptions.ServerRegistrationException">
         /// </exception>
+        /// <exception cref="ServerRegistrationException"></exception>
         public override bool Validate(Uri managementEndpointUri, Guid subscriptionId, string storageSyncServiceName, string resourceGroupName, string monitoringDataPath)
         {
             if (!Directory.Exists(monitoringDataPath) && !TryCreateDirectory(monitoringDataPath, out DirectoryInfo directoryInfo))
@@ -97,13 +98,12 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <param name="agentVersion">Agent Version</param>
         /// <returns>Registered Server Resource</returns>
-        /// <exception cref="ServerRegistrationException">
+        /// <exception cref="Commands.StorageSync.Interop.Exceptions.ServerRegistrationException">
         /// </exception>
-        /// <exception cref="ArgumentException">
-        /// serverGuid
+        /// <exception cref="ArgumentException">serverGuid
         /// or
-        /// clusterId
-        /// </exception>
+        /// clusterId</exception>
+        /// <exception cref="ServerRegistrationException"></exception>
         public override ServerRegistrationData Setup(Uri managementEndpointUri, Guid subscriptionId, string storageSyncServiceName, string resourceGroupName, string certificateProviderName, string certificateHashAlgorithm, uint certificateKeyLength, string monitoringDataPath, string agentVersion)
         {
             int hr = EcsManagementInteropClient.EnsureSyncServerCertificate(managementEndpointUri.OriginalString,
@@ -239,15 +239,18 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="resourceGroupName">Resource Group Name</param>
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <returns>success status</returns>
-        /// <exception cref="ArgumentException">
-        /// StorageSyncServiceUid
+        /// <exception cref="ArgumentException">StorageSyncServiceUid
         /// or
         /// ServerRole
         /// or
-        /// ClusterId
+        /// ClusterId</exception>
+        /// <exception cref="Commands.StorageSync.Interop.Exceptions.ServerRegistrationException">
         /// </exception>
-        /// <exception cref="ServerRegistrationException">
-        /// </exception>
+        /// <exception cref="ServerRegistrationException">StorageSyncServiceUid
+        /// or
+        /// ServerRole
+        /// or
+        /// ClusterId</exception>
         public override bool Persist(RegisteredServer registeredServerResource, Guid subscriptionId, string storageSyncServiceName, string resourceGroupName, string monitoringDataPath)
         {
             var storageSyncServiceUid = Guid.Empty;

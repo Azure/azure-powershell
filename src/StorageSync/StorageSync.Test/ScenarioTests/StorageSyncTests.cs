@@ -20,16 +20,29 @@ using Xunit.Abstractions;
 
 namespace ScenarioTests
 {
+    /// <summary>
+    /// Class StorageSyncTests.
+    /// </summary>
     public class StorageSyncTests
     {
+        /// <summary>
+        /// The logger
+        /// </summary>
         private readonly XunitTracingInterceptor _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageSyncTests"/> class.
+        /// </summary>
+        /// <param name="output">The output.</param>
         public StorageSyncTests(ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
+        /// <summary>
+        /// Defines the test method TestStorageSync.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageSync()

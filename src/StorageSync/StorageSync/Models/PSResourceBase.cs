@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         public string Type { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PSResourceBase"/> class.
+        /// Initializes a new instance of the <see cref="PSResourceBase" /> class.
         /// </summary>
         internal protected PSResourceBase()
         {

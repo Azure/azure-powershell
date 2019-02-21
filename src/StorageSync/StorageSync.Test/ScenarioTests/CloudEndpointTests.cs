@@ -21,16 +21,29 @@ using Xunit.Abstractions;
 
 namespace StorageSyncTests
 {
+    /// <summary>
+    /// Class CloudEndpointTests.
+    /// </summary>
     public class CloudEndpointTests
     {
+        /// <summary>
+        /// The logger
+        /// </summary>
         private readonly XunitTracingInterceptor _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CloudEndpointTests"/> class.
+        /// </summary>
+        /// <param name="output">The output.</param>
         public CloudEndpointTests(ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
+        /// <summary>
+        /// Defines the test method TestCloudEndpoint.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloudEndpoint()
@@ -38,6 +51,9 @@ namespace StorageSyncTests
             TestController.NewInstance.RunPsTest(_logger, "Test-CloudEndpoint");
         }
 
+        /// <summary>
+        /// Defines the test method TestNewCloudEndpoint.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewCloudEndpoint()
@@ -45,6 +61,9 @@ namespace StorageSyncTests
             TestController.NewInstance.RunPsTest(_logger, "Test-NewCloudEndpoint");
         }
 
+        /// <summary>
+        /// Defines the test method TestGetCloudEndpoint.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetCloudEndpoint()
@@ -52,6 +71,9 @@ namespace StorageSyncTests
             TestController.NewInstance.RunPsTest(_logger, "Test-GetCloudEndpoint");
         }
 
+        /// <summary>
+        /// Defines the test method TestGetCloudEndpointParentObject.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetCloudEndpointParentObject()
@@ -59,6 +81,9 @@ namespace StorageSyncTests
             TestController.NewInstance.RunPsTest(_logger, "Test-GetCloudEndpointParentObject");
         }
 
+        /// <summary>
+        /// Defines the test method TestGetCloudEndpointParentResourceId.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetCloudEndpointParentResourceId()
@@ -67,6 +92,9 @@ namespace StorageSyncTests
         }
 
 
+        /// <summary>
+        /// Defines the test method TestGetCloudEndpoints.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetCloudEndpoints()
@@ -74,6 +102,9 @@ namespace StorageSyncTests
             TestController.NewInstance.RunPsTest(_logger, "Test-GetCloudEndpoints");
         }
 
+        /// <summary>
+        /// Defines the test method TestRemoveCloudEndpoint.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveCloudEndpoint()
@@ -81,6 +112,9 @@ namespace StorageSyncTests
             TestController.NewInstance.RunPsTest(_logger, "Test-RemoveCloudEndpoint");
         }
 
+        /// <summary>
+        /// Defines the test method TestRemoveCloudEndpointResourceId.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveCloudEndpointResourceId()
@@ -88,6 +122,9 @@ namespace StorageSyncTests
             TestController.NewInstance.RunPsTest(_logger, "Test-RemoveCloudEndpointResourceId");
         }
 
+        /// <summary>
+        /// Defines the test method TestRemoveCloudEndpointInputObject.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveCloudEndpointInputObject()
