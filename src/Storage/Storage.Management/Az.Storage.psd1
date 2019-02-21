@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.2.1'
+ModuleVersion = '1.3.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -204,8 +204,17 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add a sub property "CanFailover" to Storage Account cmdlet output type PSStorageAccount.GeoReplicationStats
-    - New/Get/Set-AzureRMStorageAccount'
+        ReleaseNotes = '* Support new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
+       - New-AzStorageAccount
+       - Set-AzStorageAccount
+* Upgrade to Storage Client Library 10.0.1 (the namespace of all objects from this SDK change from "Microsoft.WindowsAzure.Storage.*" to "Microsoft.Azure.Storage.*")
+* Upgrade to Microsoft.Azure.Management.Storage 11.0.0, to support new API version 2019-04-01.
+* The default Storage account Kind in Create Storage account change from ''Storage'' to ''StorageV2''
+    - New-AzStorageAccount
+* Change the Storage account cmdlet output Sku.Name to be aligned with input SkuName by add ''-'', like "StandardLRS" change to "Standard_LRS"
+    - New-AzStorageAccount
+    - Get-AzStorageAccount
+    - Set-AzStorageAccount'
 
         # Prerelease string of this module
         Prerelease = 'preview'

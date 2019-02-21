@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 4D7EEDD7-89D4-4B1E-A9A1-B301E759CE72
@@ -18,8 +18,8 @@ Modifies a Storage account.
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity]
- [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-EnableAzureFilesAadIntegrationForSMB <Boolean>] [-UpgradeToStorageV2]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
@@ -27,7 +27,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> -KeyVersion <String>
- -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-AsJob]
+ -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
+ [-EnableAzureFilesAadIntegrationForSMB <Boolean>] [-UpgradeToStorageV2] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -196,6 +197,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAzureFilesAadIntegrationForSMB
+Enable Azure Files AAD Integration for the Storage account.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases: EnableFilesAADIntegration
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableHttpsTrafficOnly
 Indicates whether or not the Storage account only enables HTTPS traffic.
 
@@ -347,7 +363,7 @@ You cannot change other account types to Standard_ZRS or Premium_LRS.
 Type: System.String
 Parameter Sets: (All)
 Aliases: StorageAccountType, AccountType, Type
-Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS
+Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS, Standard_GZRS, Standard_RAGZRS
 
 Required: False
 Position: Named

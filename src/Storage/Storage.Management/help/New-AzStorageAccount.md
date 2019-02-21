@@ -17,8 +17,8 @@ Creates a Storage account.
 New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Location] <String>
  [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-EnableHierarchicalNamespace <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-EnableAzureFilesAadIntegrationForSMB <Boolean>] [-EnableHierarchicalNamespace <Boolean>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,6 +149,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAzureFilesAadIntegrationForSMB
+Enable Azure Files AAD Integration for the Storage account.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases: EnableFilesAADIntegration
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableHierarchicalNamespace
 Indicates whether or not the Storage account enables Hierarchical Namespace.
 
@@ -191,7 +206,7 @@ The default value is Storage.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Storage, StorageV2, BlobStorage, BlockBlobStorage
+Accepted values: Storage, StorageV2, BlobStorage, BlockBlobStorage, FileStorage
 
 Required: False
 Position: Named
@@ -273,7 +288,7 @@ The acceptable values for this parameter are:
 Type: System.String
 Parameter Sets: (All)
 Aliases: StorageAccountType, AccountType, Type
-Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS
+Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS, Standard_GZRS, Standard_RAGZRS
 
 Required: True
 Position: 2
