@@ -35,9 +35,8 @@ The command returns a recovery config for AzureWorkload items which is passed to
 
 ### Example 1
 ```
-PS C:\> $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $SQLBkpItem $startdate $enddate
-PS C:\> $SQLRecoveryObject = Get-AzRecoveryServicesWorkloadRecoveryConfig -RecoveryPoint $RP -OriginalWorkloadRestore
-PS C:\> $SQLRecoveryObject = Get-AzRecoveryServicesWorkloadRecoveryConfig -RecoveryPoint $RP -AlternateWorkloadRestore -TargetItem $SQLProtItem
+PS C:\> $SQLRecoveryObject = Get-AzRecoveryServicesBackupRecoveryPoint -Item $SQLBkpItem $startdate $enddate | Get-AzRecoveryServicesWorkloadRecoveryConfig -OriginalWorkloadRestore
+PS C:\> $SQLRecoveryObject = Get-AzRecoveryServicesBackupRecoveryPoint -Item $SQLBkpItem $startdate $enddate | Get-AzRecoveryServicesWorkloadRecoveryConfig -AlternateWorkloadRestore -TargetItem $SQLProtItem
 ```
 
 The first cmdlet is used to get the Recovery point object.

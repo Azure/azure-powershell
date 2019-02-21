@@ -25,7 +25,8 @@ The **Disable-AzRecoveryServicesBackupAutoProtection** cmdlet disables protectio
 
 ### Example 1
 ```
-PS C:\> Disable-AzRecoveryServicesAutoProtection -BackupManagementType “AzureWorkload” -WorkloadType “MSSQL” -InputItem <$ItemID> -VaultId $vault.ID
+PS C:\> $container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer
+PS C:\> Get-AzRecoveryServicesBackupProtectableItem -Container $container -WorkloadType "MSSQL" -ItemType "SQLInstance" | Disable-AzRecoveryServicesBackupAutoProtection -BackupManagementType "AzureWorkload" -WorkloadType "MSSQL"
 ```
 
 The first cmdlet disables the Backup protection policy.
