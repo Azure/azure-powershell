@@ -12,21 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
 namespace Commands.Automation.Test
 {
-    using Microsoft.Azure.Commands.Automation.Test;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.ServiceManagement.Common.Models;
-    using Xunit;
-
-    public class UpdateManagementTests : AutomationScenarioTestsBase
+    public class UpdateManagementTests : AutomationTestRunner
     {
-        public XunitTracingInterceptor logger;
-
         public UpdateManagementTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(logger);
         }
 
         [Fact]
@@ -34,7 +29,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void CreateWindowsOneTimeSUCWithDefaults()
         {
-            RunPowerShellTest(logger, "Test-CreateWindowsOneTimeSoftwareUpdateConfigurationWithDefaults");
+            TestRunner.RunTestScript("Test-CreateWindowsOneTimeSoftwareUpdateConfigurationWithDefaults");
         }
 
         [Fact]
@@ -42,7 +37,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void CreateLinuxOneTimeSUCWithDefaults()
         {
-            RunPowerShellTest(logger, "Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithDefaults");
+            TestRunner.RunTestScript("Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithDefaults");
         }
 
         [Fact]
@@ -50,7 +45,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void CreateWindowsOneTimeSUCWithAllOption()
         {
-            RunPowerShellTest(logger, "Test-CreateWindowsOneTimeSoftwareUpdateConfigurationWithAllOption");
+            TestRunner.RunTestScript("Test-CreateWindowsOneTimeSoftwareUpdateConfigurationWithAllOption");
         }
 
         [Fact]
@@ -58,7 +53,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void CreateLinuxOneTimeSUCWithAllOption()
         {
-            RunPowerShellTest(logger, "Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithAllOption");
+            TestRunner.RunTestScript("Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithAllOption");
         }
 
         [Fact]
@@ -66,7 +61,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void CreateLinuxOneTimeSUCNonAzureOnly()
         {
-            RunPowerShellTest(logger, "Test-CreateLinuxOneTimeSoftwareUpdateConfigurationNonAzureOnly");
+            TestRunner.RunTestScript("Test-CreateLinuxOneTimeSoftwareUpdateConfigurationNonAzureOnly");
         }
 
         [Fact(Skip = "No recording generated")]
@@ -74,7 +69,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void CreateLinuxOneTimeSUCNoTarget()
         {
-            RunPowerShellTest(logger, "Test-CreateLinuxOneTimeSoftwareUpdateConfigurationNoTargets");
+            TestRunner.RunTestScript("Test-CreateLinuxOneTimeSoftwareUpdateConfigurationNoTargets");
         }
 
         [Fact]
@@ -82,7 +77,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void GetAllSUCs()
         {
-            RunPowerShellTest(logger, "Test-GetAllSoftwareUpdateConfigurations");
+            TestRunner.RunTestScript("Test-GetAllSoftwareUpdateConfigurations");
         }
 
         [Fact]
@@ -90,7 +85,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void GetAllSUCsForVM()
         {
-            RunPowerShellTest(logger, "Test-GetSoftwareUpdateConfigurationsForVM");
+            TestRunner.RunTestScript("Test-GetSoftwareUpdateConfigurationsForVM");
         }
 
         [Fact]
@@ -98,7 +93,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void DeleteSUC()
         {
-            RunPowerShellTest(logger, "Test-DeleteSoftwareUpdateConfiguration");
+            TestRunner.RunTestScript("Test-DeleteSoftwareUpdateConfiguration");
         }
 
         [Fact(Skip = "Test needs to be re-recorded after issue https://github.com/Azure/azure-powershell/issues/7705 is fixed.")]
@@ -106,7 +101,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void GetAllRuns()
         {
-            RunPowerShellTest(logger, "Test-GetAllSoftwareUpdateRuns");
+            TestRunner.RunTestScript("Test-GetAllSoftwareUpdateRuns");
         }
 
         [Fact(Skip = "Test needs to be re-recorded after issue https://github.com/Azure/azure-powershell/issues/7705 is fixed.")]
@@ -114,7 +109,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void GetAllRunsWithFilters()
         {
-            RunPowerShellTest(logger, "Test-GetAllSoftwareUpdateRunsWithFilters");
+            TestRunner.RunTestScript("Test-GetAllSoftwareUpdateRunsWithFilters");
         }
 
         [Fact]
@@ -122,7 +117,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void GetAllRunsWithFiltersNoResults()
         {
-            RunPowerShellTest(logger, "Test-GetAllSoftwareUpdateRunsWithFiltersNoResults");
+            TestRunner.RunTestScript("Test-GetAllSoftwareUpdateRunsWithFiltersNoResults");
         }
 
         [Fact]
@@ -130,7 +125,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void GetAllMachineRuns()
         {
-            RunPowerShellTest(logger, "Test-GetAllSoftwareUpdateMachineRuns");
+            TestRunner.RunTestScript("Test-GetAllSoftwareUpdateMachineRuns");
         }
 
         [Fact]
@@ -138,7 +133,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void GetAllMachineRunsWithFilters()
         {
-            RunPowerShellTest(logger, "Test-GetAllSoftwareUpdateMachineRunsWithFilters");
+            TestRunner.RunTestScript("Test-GetAllSoftwareUpdateMachineRunsWithFilters");
         }
 
         [Fact]
@@ -146,7 +141,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void GetAllMachineRunsWithFiltersNoResults()
         {
-            RunPowerShellTest(logger, "Test-GetAllSoftwareUpdateMachineRunsWithFiltersNoResults");
+            TestRunner.RunTestScript("Test-GetAllSoftwareUpdateMachineRunsWithFiltersNoResults");
         }
 
         [Fact]
@@ -154,7 +149,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void CreateLinuxWeeklySUC()
         {
-            RunPowerShellTest(logger, "Test-CreateLinuxWeeklySoftwareUpdateConfiguration");
+            TestRunner.RunTestScript("Test-CreateLinuxWeeklySoftwareUpdateConfiguration");
         }
 
         [Fact]
@@ -162,7 +157,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void CreateWindowsMonthlySUC()
         {
-            RunPowerShellTest(logger, "Test-CreateWindowsMonthlySoftwareUpdateConfiguration");
+            TestRunner.RunTestScript("Test-CreateWindowsMonthlySoftwareUpdateConfiguration");
         }
     }
 }
