@@ -14,13 +14,14 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using System.Globalization;
     using ResourceManager.Common.ArgumentCompleters;
+    using System;
+    using System.Globalization;
+    using System.Management.Automation;
 
     /// <summary>
     /// Updates the integration account map.
@@ -29,21 +30,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     [OutputType(typeof(IntegrationAccountMap))]
     public class UpdateAzureIntegrationAccountMapCommand : LogicAppBaseCmdlet
     {
-
-        #region Defaults
-
-        /// <summary>
-        /// Default content type for map.
-        /// </summary>
-        private string contentType = "application/xml";
-
-        /// <summary>
-        /// Default map type.
-        /// </summary>
-        private string mapType = "Xslt";
-
-        #endregion Defaults
-
         #region Input Paramters
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account resource group name.",
@@ -72,21 +58,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public string MapDefinition { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account map type.")]
-        [ValidateSet("Xslt", IgnoreCase = false)]
+        [ValidateSet("Xslt", "Xslt20", "Xslt30", "Liquid", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public string MapType
-        {
-            get { return this.mapType; }
-            set { value = this.mapType; }
-        }
+        public string MapType { get; set; } = "Xslt";
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account map content type.")]
         [ValidateNotNullOrEmpty]
-        public string ContentType
-        {
-            get { return this.contentType; }
-            set { value = this.contentType; }
-        }
+        [CmdletParameterBreakingChange("ContentType", ChangeDescription = Constants.DeprecatedContentTypeMessage)]
+        public string ContentType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account map metadata.",
             ValueFromPipelineByPropertyName = false)]
@@ -126,24 +105,21 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (!string.IsNullOrEmpty(this.MapFilePath))
             {
-                integrationAccountMapCopy.Content = CmdletHelper.GetContentFromFile(this.TryResolvePath(this.MapFilePath));
+                integrationAccountMapCopy.Content = CmdletHelper.GetStringContentFromFile(this.TryResolvePath(this.MapFilePath));
             }
 
             if (!string.IsNullOrEmpty(this.MapDefinition))
             {
                 integrationAccountMapCopy.Content = this.MapDefinition;
-                CmdletHelper.GetContentFromFile(this.TryResolvePath(this.MapFilePath));
-            }
-
-            if (!string.IsNullOrEmpty(this.ContentType))
-            {
-                integrationAccountMapCopy.ContentType = this.contentType;
+                CmdletHelper.GetStringContentFromFile(this.TryResolvePath(this.MapFilePath));
             }
 
             if (!string.IsNullOrEmpty(this.MapType))
             {
-                integrationAccountMapCopy.MapType = (MapType)Enum.Parse(typeof(MapType), this.MapType);
+                integrationAccountMapCopy.MapType = this.MapType;
             }
+
+            integrationAccountMapCopy.ContentType = this.MapType.Equals("liquid", StringComparison.CurrentCultureIgnoreCase) ? "text/plain" : "application/xml";
 
             if (this.Metadata != null)
             {

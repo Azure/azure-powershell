@@ -37,19 +37,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetIAGeneratedIcnWithoutAgreementType()
+        public void TestGetGeneratedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountGeneratedControlNumber-NoAgreementType");
-        }
-
-        /// <summary>
-        /// Test Get-AzIntegrationAccountGeneratedIcn command to get the integration account generated interchange control number.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetIntegrationAccountGeneratedIcn()
-        {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountGeneratedControlNumber");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetGeneratedControlNumber");
         }
 
         /// <summary>
@@ -57,9 +47,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateIntegrationAccountGeneratedIcn()
+        public void TestUpdateGeneratedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountGenCN");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateGeneratedControlNumber");
         }
 
         /// <summary>
@@ -67,9 +57,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListIntegrationAccountGeneratedIcn()
+        public void TestListGeneratedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-ListIntegrationAccountGenCN");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-ListGeneratedControlNumber");
         }
     }
 }

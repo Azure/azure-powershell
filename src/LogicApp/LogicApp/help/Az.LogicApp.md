@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.LogicApp
 Module Guid: 8a7d44bb-e747-4265-8f22-b3937961d709
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.logicapp
@@ -16,6 +16,12 @@ Gets integration accounts.
 
 ### [Get-AzIntegrationAccountAgreement](Get-AzIntegrationAccountAgreement.md)
 Gets an integration account agreement.
+
+### [Get-AzIntegrationAccountAssembly](Get-AzIntegrationAccountAssembly.md)
+Gets an integration account assembly.
+
+### [Get-AzIntegrationAccountBatchConfiguration](Get-AzIntegrationAccountBatchConfiguration.md)
+Gets an integration account batch configuration.
 
 ### [Get-AzIntegrationAccountCallbackUrl](Get-AzIntegrationAccountCallbackUrl.md)
 Gets an integration account callback URL.
@@ -65,6 +71,12 @@ Creates an integration account.
 ### [New-AzIntegrationAccountAgreement](New-AzIntegrationAccountAgreement.md)
 Creates an integration account agreement.
 
+### [New-AzIntegrationAccountAssembly](New-AzIntegrationAccountAssembly.md)
+Creates an integration account assembly.
+
+### [New-AzIntegrationAccountBatchConfiguration](New-AzIntegrationAccountBatchConfiguration.md)
+Creates an integration account batch configuration.
+
 ### [New-AzIntegrationAccountCertificate](New-AzIntegrationAccountCertificate.md)
 Creates an integration account certificate.
 
@@ -85,6 +97,12 @@ Removes an integration account.
 
 ### [Remove-AzIntegrationAccountAgreement](Remove-AzIntegrationAccountAgreement.md)
 Removes an integration account agreement.
+
+### [Remove-AzIntegrationAccountAssembly](Remove-AzIntegrationAccountAssembly.md)
+Removes an integration account assembly.
+
+### [Remove-AzIntegrationAccountBatchConfiguration](Remove-AzIntegrationAccountBatchConfiguration.md)
+Removes an integration account batch configuration.
 
 ### [Remove-AzIntegrationAccountCertificate](Remove-AzIntegrationAccountCertificate.md)
 Removes an integration account certificate from a resource group.
@@ -109,6 +127,12 @@ Modifies an integration account.
 
 ### [Set-AzIntegrationAccountAgreement](Set-AzIntegrationAccountAgreement.md)
 Modifies an integration account agreement.
+
+### [Set-AzIntegrationAccountAssembly](Set-AzIntegrationAccountAssembly.md)
+Modifies an integration account assembly.
+
+### [Set-AzIntegrationAccountBatchConfiguration](Set-AzIntegrationAccountBatchConfiguration.md)
+Modifies an integration account batch configuration.
 
 ### [Set-AzIntegrationAccountCertificate](Set-AzIntegrationAccountCertificate.md)
 Modifies an integration account certificate.
