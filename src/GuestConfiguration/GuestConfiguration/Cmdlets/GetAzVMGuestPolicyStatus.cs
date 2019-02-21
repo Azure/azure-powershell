@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
         [ValidateNotNullOrEmpty]
         public string InitiativeId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.IdScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.Id)]
+        [Parameter(ParameterSetName = ParameterSetNames.ReportIdScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.ReportId)]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
+        public string ReportId { get; set; }
 
         /// <summary>
         /// Executes the cmdlet
@@ -85,8 +85,8 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
                     }                   
                     break;
 
-                case ParameterSetNames.IdScope:
-                    var policyReport = GetPolicyStatusDetailedByReportId(Id);
+                case ParameterSetNames.ReportIdScope:
+                    var policyReport = GetPolicyStatusDetailedByReportId(ReportId);
                     if (policyReport != null)
                     {
                         WriteObject(policyReport);
