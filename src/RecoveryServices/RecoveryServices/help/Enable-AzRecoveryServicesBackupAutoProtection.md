@@ -27,7 +27,8 @@ The **Enable-AzRecoveryServicesBackupAutoProtection** cmdlet sets Azure auto Bac
 ### Example 1
 ```
 PS C:\> $Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy"
-PS C:\> Enable-AzRecoveryServicesAutoProtection -BackupManagementType "AzureWorkload" -WorkloadType "MSSQL" -InputItem <$Item> -Policy $Pol -VaultId $vault.ID
+PS C:\> $container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer
+PS C:\> Get-AzRecoveryServicesBackupProtectableItem -Container $container -WorkloadType "MSSQL" -ItemType "SQLInstance" | Enable-AzRecoveryServicesBackupAutoProtection -BackupManagementType "AzureWorkload" -WorkloadType "MSSQL" -Policy $Pol
 ```
 
 The first cmdlet gets a default policy object, and then stores it in the $Pol variable.
