@@ -237,6 +237,22 @@ function Test-NetworkSecurityGroup-SecurityRuleCRUD
 		Assert-AreEqual 1 @($securityRules).Count
 		Assert-AreEqual $securityRule1Name $securityRules[0].Name
 
+		Update-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRule1Name -Description "desciption123"
+		Set-AzNetworkSecurityGroup -NetworkSecurityGroup $nsg
+		$nsg = Get-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName
+
+        Assert-AreEqual $securityRule1Name $nsg.SecurityRules[0].Name
+        Assert-NotNull $nsg.SecurityRules[0].Etag
+        Assert-AreEqual "desciption123" $nsg.SecurityRules[0].Description
+        Assert-AreEqual "Tcp" $nsg.SecurityRules[0].Protocol
+        Assert-AreEqual "23-45" $nsg.SecurityRules[0].SourcePortRange
+        Assert-AreEqual "46-56" $nsg.SecurityRules[0].DestinationPortRange
+        Assert-AreEqual "*" $nsg.SecurityRules[0].SourceAddressPrefix
+        Assert-AreEqual "*" $nsg.SecurityRules[0].DestinationAddressPrefix
+        Assert-AreEqual "Allow" $nsg.SecurityRules[0].Access
+        Assert-AreEqual "123" $nsg.SecurityRules[0].Priority
+        Assert-AreEqual "Inbound" $nsg.SecurityRules[0].Direction
+
         # Delete NetworkSecurityGroup
         $delete = Remove-AzNetworkSecurityGroup -ResourceGroupName $rgname -name $nsgName -PassThru -Force
         Assert-AreEqual true $delete
