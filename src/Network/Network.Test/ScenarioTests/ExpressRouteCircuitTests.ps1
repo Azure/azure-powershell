@@ -318,6 +318,16 @@ function Test-ExpressRouteCircuitPrivatePublicPeeringCRUD
 		Assert-AreEqual "192.168.2.0/30" $p.SecondaryPeerAddressPrefix
 		Assert-AreEqual "55" $p.VlanId
 
+	    $circuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname | Update-AzExpressRouteCircuitPeeringConfig -Name AzurePublicPeering -PeerASN 101 | Set-AzExpressRouteCircuit 
+		$p = $circuit | Get-AzExpressRouteCircuitPeeringConfig -Name AzurePublicPeering
+
+		Assert-AreEqual "AzurePublicPeering" $p.Name
+		Assert-AreEqual "AzurePublicPeering" $p.PeeringType
+		Assert-AreEqual "101" $p.PeerASN
+		Assert-AreEqual "192.168.1.0/30" $p.PrimaryPeerAddressPrefix
+		Assert-AreEqual "192.168.2.0/30" $p.SecondaryPeerAddressPrefix
+		Assert-AreEqual "55" $p.VlanId
+
 		$listPeering = $circuit | Get-AzExpressRouteCircuitPeeringConfig
 		Assert-AreEqual 2 @($listPeering).Count			
 
@@ -420,6 +430,20 @@ function Test-ExpressRouteCircuitMicrosoftPeeringCRUD
 		Assert-AreEqual "555" $p.VlanId
 		Assert-NotNull $p.MicrosoftPeeringConfig
 		Assert-AreEqual "1000" $p.MicrosoftPeeringConfig.CustomerASN
+		Assert-AreEqual "AFRINIC" $p.MicrosoftPeeringConfig.RoutingRegistryName
+		Assert-AreEqual 2 @($p.MicrosoftPeeringConfig.AdvertisedPublicPrefixes).Count
+		Assert-NotNull $p.MicrosoftPeeringConfig.AdvertisedPublicPrefixesState
+
+	    $circuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname | Update-AzExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -MicrosoftConfigCustomerAsn 1001 | Set-AzExpressRouteCircuit 
+		$p = $circuit | Get-AzExpressRouteCircuitPeeringConfig -Name MicrosoftPeering
+		Assert-AreEqual "MicrosoftPeering" $p.Name
+		Assert-AreEqual "MicrosoftPeering" $p.PeeringType
+		Assert-AreEqual "44" $p.PeerASN
+		Assert-AreEqual "192.171.1.0/30" $p.PrimaryPeerAddressPrefix
+		Assert-AreEqual "192.171.2.0/30" $p.SecondaryPeerAddressPrefix
+		Assert-AreEqual "555" $p.VlanId
+		Assert-NotNull $p.MicrosoftPeeringConfig
+		Assert-AreEqual "1001" $p.MicrosoftPeeringConfig.CustomerASN
 		Assert-AreEqual "AFRINIC" $p.MicrosoftPeeringConfig.RoutingRegistryName
 		Assert-AreEqual 2 @($p.MicrosoftPeeringConfig.AdvertisedPublicPrefixes).Count
 		Assert-NotNull $p.MicrosoftPeeringConfig.AdvertisedPublicPrefixesState
