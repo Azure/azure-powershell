@@ -189,7 +189,9 @@ function Test-AzureVmWorkloadEnableAutoProtectableItem
 			-Container $container `
 			-WorkloadType MSSQL;
 
-		Get-AzRecoveryServicesBackupProtectableItem `
+		Assert-True { $item.Count -eq 1 }
+
+		$enableResult = Get-AzRecoveryServicesBackupProtectableItem `
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType "MSSQL" `
@@ -197,23 +199,49 @@ function Test-AzureVmWorkloadEnableAutoProtectableItem
 				-VaultId $vault.ID `
 				-BackupManagementType "AzureWorkload" `
 				-WorkloadType "MSSQL" `
-				-Policy $policy;
+				-Policy $policy `
+				-PassThru;
 
-		Disable-AzRecoveryServicesBackupAutoProtection `
+		Assert-AreEqual $enableResult $True
+
+		$disableResult = Disable-AzRecoveryServicesBackupAutoProtection `
 			-VaultId $vault.ID `
-			-InputItem $protectableInstances[0].ID `
+			-InputItem $protectableInstances[0] `
 			-BackupManagementType "AzureWorkload" `
-			-WorkloadType "MSSQL";
+			-WorkloadType "MSSQL" `
+			-PassThru;
+
+		Assert-AreEqual $disableResult $True
+
+		$items = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType MSSQL;
+		
+		Assert-True { $items.Count -eq 4 }
+
+		foreach($protectedItem in $items)
+		{
+			Disable-AzureRmRecoveryServicesBackupProtection `
+				-VaultId $vault.ID `
+				-Item $protectedItem `
+				-RemoveRecoveryPoints `
+				-Force;
+		}
 
 		$item = Get-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType MSSQL;
-		Assert-True { $item.Count -eq 1 }
+
+		Assert-True { $item.Count -eq 0 }
 	}
 	finally
 	{
-		Cleanup-Vault $vault $item $container
+		#Unregister container
+		Unregister-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-Container $container
 	}
 }
 

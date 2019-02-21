@@ -13,7 +13,7 @@ Disables auto backup for a protectable item.
 ## SYNTAX
 
 ```
-Disable-AzRecoveryServicesBackupAutoProtection [-InputItem] <String>
+Disable-AzRecoveryServicesBackupAutoProtection [-InputItem] <ProtectableItemBase>
  [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-PassThru] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ The **Disable-AzRecoveryServicesBackupAutoProtection** cmdlet disables protectio
 
 ### Example 1
 ```
-PS C:\> Disable-AzRecoveryServicesAutoProtection -BackupManagementType ‚ÄúAzureWorkload‚Äù -WorkloadType ‚ÄúMSSQL‚Äù -InputItem <$ItemID> -VaultId $vault.ID
+PS C:\> Disable-AzRecoveryServicesAutoProtection -BackupManagementType ìAzureWorkloadî -WorkloadType ìMSSQLî -InputItem <$ItemID> -VaultId $vault.ID
 ```
 
 The first cmdlet disables the Backup protection policy.
@@ -67,14 +67,14 @@ Accept wildcard characters: False
 Item Id
 
 ```yaml
-Type: String
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ProtectableItemBase
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
