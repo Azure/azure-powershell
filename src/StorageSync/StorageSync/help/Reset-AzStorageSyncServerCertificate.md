@@ -8,7 +8,7 @@ schema: 2.0.0
 # Reset-AzStorageSyncServerCertificate
 
 ## SYNOPSIS
-This command will use to reset storage sync server certificate.
+Use for troubleshooting only. This command will roll the storage sync server certificate used to describe the server identity to the storage sync service.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Reset-AzStorageSyncServerCertificate [-ParentResourceId] <String> [-PassThru]
 ```
 
 ## DESCRIPTION
-This command will use to reset storage sync server certificate.
+This command will roll storage sync server certificate used to describe the server identity to the storage sync service. This is meant for to be used in troubleshooting scenarios. When calling this command, the server certificate is replaced, updating the storage sync service this server is registered with as well, by submitting the public part of the key. Since a new certificate is generated, the expiration time of this cert is also updated. This command can also be used to update an expired certificate. This can happen if a server is offline for an extended period of time.
 
 ## EXAMPLES
 
@@ -40,7 +40,7 @@ This command will use to reset storage sync server certificate.
 PS C:\> Reset-AzStorageSyncServerCertificate -ResourceGroupName "myResourceGroup" -Name "myStorageSyncServiceName"
 ```
 
-This command will reset the sync server certificate.
+This command will roll the local server certificate and inform the corresponding storage sync service of the server's new identity, in a secure way.
 
 ## PARAMETERS
 

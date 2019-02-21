@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StorageSyncServiceConverter"/> class.
+        /// Initializes a new instance of the <see cref="StorageSyncServiceConverter" /> class.
         /// </summary>
         public StorageSyncServiceConverter()
         {

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzStorageSyncServerEndpoint
 
 ## SYNOPSIS
-This command will use to set server endpoint.
+This command allows for changes on the adjustable parameters of a server endpoint.
 
 ## SYNTAX
 
@@ -36,16 +36,16 @@ Set-AzStorageSyncServerEndpoint [-ResourceId] <String> [-CloudTiering] [-VolumeF
 ```
 
 ## DESCRIPTION
-This command will use to set server endpoint.
+This command allows for changes on the adjustable parameters of a server endpoint. For instance cloud tiering and cloud tiering policies can be changed at any time. Several aspects of a server endpoint, such as the local path, cannot be changed after the server endpoint had been created.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName"  -CloudTiering -OfflineDataTransfer -OfflineDataTransferShareName "myOfflineDataTransferShareName" -TierFilesOlderThanDays "myTierFilesOlderThanDays"
+PS C:\> Set-AzStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName"  -TierFilesOlderThanDays 30 -OfflineDataTransfer -OfflineDataTransfer $false
 ```
 
-This command set a serverendpoint provided all the name of the dependent resources.
+This example performs two actions, it sets a new cloud tiering policy on the specified server endpoint, which directs the server to tier all files that have not been accessed in the past 30 days and it also disables the offline data transfer mode, which was initially enabled on this server endpoint during it's creation. Offline data transfer is used as part of interoperability with bulk migration services, such as Azure Data Box.
 
 ## PARAMETERS
 

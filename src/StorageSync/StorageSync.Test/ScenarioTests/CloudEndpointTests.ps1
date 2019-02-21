@@ -30,7 +30,7 @@ function Test-CloudEndpoint
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
-        $StorageAccountShareName = "testfs" #Get-ResourceName("fs")
+        $AzureFileShareName = "testfs" #Get-ResourceName("fs")
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzTenant).Id
 
@@ -44,27 +44,30 @@ function Test-CloudEndpoint
         $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        $storageAccount = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation
+        $job = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation -AsJob
+        $job | Wait-Job
+        $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $StorageAccountName
+
         $key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         Write-Verbose "Resource: $StorageAccountName | Key: $key[0]" 
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
-        Write-Verbose "Resource: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+        Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
         #TODO : Optimized the pattern to common code
         if(IsLive)
         {
-            $azureFileShare = New-AzureStorageShare -Name $StorageAccountShareName -Context $context
+            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
             $azureFileShareName = $azureFileShare.Name 
         }
         else 
         {
-                $azureFileShareName = $StorageAccountShareName
+                $azureFileShareName = $AzureFileShareName
         }
 
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
-        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
+        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -AzureFileShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
 
         Write-Verbose "Validating CloudEndpoint Properties"
         Assert-AreEqual $cloudEndpointName $cloudEndpoint.CloudEndpointName
@@ -97,9 +100,9 @@ function Test-CloudEndpoint
         Remove-AzStorageSyncCloudEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $cloudEndpointName -AsJob | Wait-Job
 
         Write-Verbose "Executing Piping Scenarios"
-        New-AzStorageSyncCloudEndpoint -ParentObject $syncGroup -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId | Remove-AzStorageSyncCloudEndpoint -Force -AsJob | Wait-Job
+        New-AzStorageSyncCloudEndpoint -ParentObject $syncGroup -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -AzureFileShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId | Remove-AzStorageSyncCloudEndpoint -Force -AsJob | Wait-Job
 
-        New-AzStorageSyncCloudEndpoint -ParentResourceId $syncGroup.ResourceId -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId | Remove-AzStorageSyncCloudEndpoint -Force -AsJob | Wait-Job
+        New-AzStorageSyncCloudEndpoint -ParentResourceId $syncGroup.ResourceId -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -AzureFileShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId | Remove-AzStorageSyncCloudEndpoint -Force -AsJob | Wait-Job
 
         Write-Verbose "Removing SyncGroup: $syncGroupName"
         Remove-AzStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -AsJob | Wait-Job
@@ -109,8 +112,8 @@ function Test-CloudEndpoint
 
         if(IsLive)
         {
-            Write-Verbose "Removing: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
-            $azureFileShare = Remove-AzureStorageShare -Name $StorageAccountShareName -Context $context -Force
+            Write-Verbose "Removing: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+            $azureFileShare = Remove-AzureStorageShare -Name $AzureFileShareName -Context $context -Force
         }
 
         Write-Verbose "Removing $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
@@ -142,7 +145,7 @@ function Test-NewCloudEndpoint
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
-        $StorageAccountShareName = "testfs" #Get-StorageManagementTestResourceName
+        $AzureFileShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzTenant).Id
 
@@ -156,26 +159,30 @@ function Test-NewCloudEndpoint
         $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        $storageAccount = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation
+
+        $job = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation -AsJob
+        $job | Wait-Job
+        $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $StorageAccountName
+
         $key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         Write-Verbose "Resource: $StorageAccountName | Key: $key[0]" 
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
-        Write-Verbose "Resource: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+        Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
         if(IsLive)
         {
-            $azureFileShare = New-AzureStorageShare -Name $StorageAccountShareName -Context $context
+            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
             $azureFileShareName = $azureFileShare.Name 
         }
         else 
         {
-                $azureFileShareName = $StorageAccountShareName
+                $azureFileShareName = $AzureFileShareName
         }
 
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
-        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
+        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -AzureFileShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
 
         Write-Verbose "Validating CloudEndpoint Properties"
         Assert-AreEqual $cloudEndpointName $cloudEndpoint.CloudEndpointName
@@ -193,8 +200,8 @@ function Test-NewCloudEndpoint
 
         if(IsLive)
         {
-            Write-Verbose "Removing: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
-            $azureFileShare = Remove-AzureStorageShare -Name $StorageAccountShareName -Context $context -Force
+            Write-Verbose "Removing: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+            $azureFileShare = Remove-AzureStorageShare -Name $AzureFileShareName -Context $context -Force
         }
 
         Write-Verbose "Removing $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
@@ -226,7 +233,7 @@ function Test-GetCloudEndpoint
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
-        $StorageAccountShareName = "testfs" #Get-StorageManagementTestResourceName
+        $AzureFileShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzTenant).Id
 
@@ -240,26 +247,29 @@ function Test-GetCloudEndpoint
         $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        $storageAccount = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation
+        $job = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation -AsJob
+        $job | Wait-Job
+        $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $StorageAccountName
+
         $key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         Write-Verbose "Resource: $StorageAccountName | Key: $key[0]" 
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
-        Write-Verbose "Resource: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+        Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
         if(IsLive)
         {
-            $azureFileShare = New-AzureStorageShare -Name $StorageAccountShareName -Context $context
+            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
             $azureFileShareName = $azureFileShare.Name 
         }
         else 
         {
-                $azureFileShareName = $StorageAccountShareName
+                $azureFileShareName = $AzureFileShareName
         }
 
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
-        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
+        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -AzureFileShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
 
         Write-Verbose "Validating CloudEndpoint Properties"
         Assert-AreEqual $cloudEndpointName $cloudEndpoint.CloudEndpointName
@@ -285,8 +295,8 @@ function Test-GetCloudEndpoint
 
         if(IsLive)
         {
-            Write-Verbose "Removing: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
-            $azureFileShare = Remove-AzureStorageShare -Name $StorageAccountShareName -Context $context -Force
+            Write-Verbose "Removing: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+            $azureFileShare = Remove-AzureStorageShare -Name $AzureFileShareName -Context $context -Force
         }
 
         Write-Verbose "Removing $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
@@ -318,7 +328,7 @@ function Test-GetCloudEndpoints
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
-        $StorageAccountShareName = "testfs" #Get-StorageManagementTestResourceName
+        $AzureFileShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzTenant).Id
 
@@ -332,26 +342,28 @@ function Test-GetCloudEndpoints
         $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        $storageAccount = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation
+        $job = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation -AsJob
+        $job | Wait-Job
+        $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         $key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         Write-Verbose "Resource: $StorageAccountName | Key: $key[0]" 
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
-        Write-Verbose "Resource: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+        Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
         if(IsLive)
         {
-            $azureFileShare = New-AzureStorageShare -Name $StorageAccountShareName -Context $context
+            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
             $azureFileShareName = $azureFileShare.Name 
         }
         else 
         {
-                $azureFileShareName = $StorageAccountShareName
+                $azureFileShareName = $AzureFileShareName
         }
 
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
-        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
+        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -AzureFileShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
 
         Write-Verbose "Validating CloudEndpoint Properties"
         Assert-AreEqual $cloudEndpointName $cloudEndpoint.CloudEndpointName
@@ -380,8 +392,8 @@ function Test-GetCloudEndpoints
 
         if(IsLive)
         {
-            Write-Verbose "Removing: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
-            $azureFileShare = Remove-AzureStorageShare -Name $StorageAccountShareName -Context $context -Force
+            Write-Verbose "Removing: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+            $azureFileShare = Remove-AzureStorageShare -Name $AzureFileShareName -Context $context -Force
         }
 
         Write-Verbose "Removing $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
@@ -413,7 +425,7 @@ function Test-GetCloudEndpointParentObject
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
-        $StorageAccountShareName = "testfs" #Get-StorageManagementTestResourceName
+        $AzureFileShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzTenant).Id
 
@@ -427,26 +439,28 @@ function Test-GetCloudEndpointParentObject
         $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        $storageAccount = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation
+        $job = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation -AsJob
+        $job | Wait-Job
+        $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         $key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         Write-Verbose "Resource: $StorageAccountName | Key: $key[0]" 
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
-        Write-Verbose "Resource: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+        Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
         if(IsLive)
         {
-            $azureFileShare = New-AzureStorageShare -Name $StorageAccountShareName -Context $context
+            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
             $azureFileShareName = $azureFileShare.Name 
         }
         else 
         {
-                $azureFileShareName = $StorageAccountShareName
+                $azureFileShareName = $AzureFileShareName
         }
 
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
-        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
+        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -AzureFileShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
 
         Write-Verbose "Validating CloudEndpoint Properties"
         Assert-AreEqual $cloudEndpointName $cloudEndpoint.CloudEndpointName
@@ -471,8 +485,8 @@ function Test-GetCloudEndpointParentObject
 
         if(IsLive)
         {
-            Write-Verbose "Removing: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
-            $azureFileShare = Remove-AzureStorageShare -Name $StorageAccountShareName -Context $context -Force
+            Write-Verbose "Removing: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+            $azureFileShare = Remove-AzureStorageShare -Name $AzureFileShareName -Context $context -Force
         }
 
         Write-Verbose "Removing $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
@@ -504,7 +518,7 @@ function Test-GetCloudEndpointParentResourceId
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
-        $StorageAccountShareName = "testfs" #Get-StorageManagementTestResourceName
+        $AzureFileShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzTenant).Id
 
@@ -518,26 +532,28 @@ function Test-GetCloudEndpointParentResourceId
         $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        $storageAccount = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation
+        $job = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation -AsJob
+        $job | Wait-Job
+        $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         $key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         Write-Verbose "Resource: $StorageAccountName | Key: $key[0]" 
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
-        Write-Verbose "Resource: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+        Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
         if(IsLive)
         {
-            $azureFileShare = New-AzureStorageShare -Name $StorageAccountShareName -Context $context
+            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
             $azureFileShareName = $azureFileShare.Name 
         }
         else 
         {
-                $azureFileShareName = $StorageAccountShareName
+                $azureFileShareName = $AzureFileShareName
         }
 
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
-        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
+        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -AzureFileShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
 
         Write-Verbose "Validating CloudEndpoint Properties"
         Assert-AreEqual $cloudEndpointName $cloudEndpoint.CloudEndpointName
@@ -562,8 +578,8 @@ function Test-GetCloudEndpointParentResourceId
 
         if(IsLive)
         {
-            Write-Verbose "Removing: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
-            $azureFileShare = Remove-AzureStorageShare -Name $StorageAccountShareName -Context $context -Force
+            Write-Verbose "Removing: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+            $azureFileShare = Remove-AzureStorageShare -Name $AzureFileShareName -Context $context -Force
         }
 
         Write-Verbose "Removing $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
@@ -595,7 +611,7 @@ function Test-RemoveCloudEndpoint
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
-        $StorageAccountShareName = "testfs" #Get-StorageManagementTestResourceName
+        $AzureFileShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzTenant).Id
 
@@ -609,26 +625,28 @@ function Test-RemoveCloudEndpoint
         $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        $storageAccount = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation
+        $job = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation -AsJob
+        $job | Wait-Job
+        $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         $key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         Write-Verbose "Resource: $StorageAccountName | Key: $key[0]" 
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
-        Write-Verbose "Resource: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+        Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
         if(IsLive)
         {
-            $azureFileShare = New-AzureStorageShare -Name $StorageAccountShareName -Context $context
+            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
             $azureFileShareName = $azureFileShare.Name 
         }
         else 
         {
-                $azureFileShareName = $StorageAccountShareName
+                $azureFileShareName = $AzureFileShareName
         }
 
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
-        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
+        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -AzureFileShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
 
         Write-Verbose "Validating CloudEndpoint Properties"
         Assert-AreEqual $cloudEndpointName $cloudEndpoint.CloudEndpointName
@@ -649,8 +667,8 @@ function Test-RemoveCloudEndpoint
 
         if(IsLive)
         {
-            Write-Verbose "Removing: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
-            $azureFileShare = Remove-AzureStorageShare -Name $StorageAccountShareName -Context $context -Force
+            Write-Verbose "Removing: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+            $azureFileShare = Remove-AzureStorageShare -Name $AzureFileShareName -Context $context -Force
         }
 
         Write-Verbose "Removing $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
@@ -682,7 +700,7 @@ function Test-RemoveCloudEndpointInputObject
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
-        $StorageAccountShareName = "testfs" #Get-StorageManagementTestResourceName
+        $AzureFileShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzTenant).Id
 
@@ -696,26 +714,28 @@ function Test-RemoveCloudEndpointInputObject
         $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        $storageAccount = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation
+        $job = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation -AsJob
+        $job | Wait-Job
+        $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         $key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         Write-Verbose "Resource: $StorageAccountName | Key: $key[0]" 
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
-        Write-Verbose "Resource: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+        Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
         if(IsLive)
         {
-            $azureFileShare = New-AzureStorageShare -Name $StorageAccountShareName -Context $context
+            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
             $azureFileShareName = $azureFileShare.Name 
         }
         else 
         {
-                $azureFileShareName = $StorageAccountShareName
+                $azureFileShareName = $AzureFileShareName
         }
 
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
-        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
+        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -AzureFileShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
 
         Write-Verbose "Removing CloudEndpoint: $cloudEndpointName"
         Remove-AzStorageSyncCloudEndpoint -Force -InputObject $cloudEndpoint -AsJob | Wait-Job
@@ -728,8 +748,8 @@ function Test-RemoveCloudEndpointInputObject
 
         if(IsLive)
         {
-            Write-Verbose "Removing: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
-            $azureFileShare = Remove-AzureStorageShare -Name $StorageAccountShareName -Context $context -Force
+            Write-Verbose "Removing: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+            $azureFileShare = Remove-AzureStorageShare -Name $AzureFileShareName -Context $context -Force
         }
 
         Write-Verbose "Removing $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
@@ -762,7 +782,7 @@ function Test-RemoveCloudEndpointResourceId
         $syncGroupName = Get-ResourceName("sg")
         $cloudEndpointName = Get-ResourceName("cep")
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
-        $StorageAccountShareName = "testfs" #Get-StorageManagementTestResourceName
+        $AzureFileShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
         $StorageAccountTenantId = (Get-AzTenant).Id
 
@@ -776,26 +796,28 @@ function Test-RemoveCloudEndpointResourceId
         $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        $storageAccount = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation
+        $job = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation -AsJob
+        $job | Wait-Job
+        $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         $key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         Write-Verbose "Resource: $StorageAccountName | Key: $key[0]" 
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
-        Write-Verbose "Resource: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+        Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
         if(IsLive)
         {
-            $azureFileShare = New-AzureStorageShare -Name $StorageAccountShareName -Context $context
+            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
             $azureFileShareName = $azureFileShare.Name 
         }
         else 
         {
-                $azureFileShareName = $StorageAccountShareName
+                $azureFileShareName = $AzureFileShareName
         }
 
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
-        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
+        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $syncGroup.ResourceGroupName  -StorageSyncServiceName $syncGroup.StorageSyncServiceName -SyncGroupName $syncGroup.SyncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccountResourceId -AzureFileShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -Verbose
 
         Write-Verbose "Removing CloudEndpoint: $cloudEndpointName"
         Remove-AzStorageSyncCloudEndpoint -Force -ResourceId $cloudEndpoint.ResourceId -AsJob | Wait-Job
@@ -808,8 +830,8 @@ function Test-RemoveCloudEndpointResourceId
 
         if(IsLive)
         {
-            Write-Verbose "Removing: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
-            $azureFileShare = Remove-AzureStorageShare -Name $StorageAccountShareName -Context $context -Force
+            Write-Verbose "Removing: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+            $azureFileShare = Remove-AzureStorageShare -Name $AzureFileShareName -Context $context -Force
         }
 
         Write-Verbose "Removing $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"

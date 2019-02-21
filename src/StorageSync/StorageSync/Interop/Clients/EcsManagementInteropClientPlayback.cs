@@ -35,7 +35,7 @@ namespace Commands.StorageSync.Interop.Clients
         protected virtual bool HasValidHandle => true;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EcsManagementInteropClientPlayback"/> class.
+        /// Initializes a new instance of the <see cref="EcsManagementInteropClientPlayback" /> class.
         /// </summary>
         public EcsManagementInteropClientPlayback()
         {

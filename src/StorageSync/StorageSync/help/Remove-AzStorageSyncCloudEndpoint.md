@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzStorageSyncCloudEndpoint
 
 ## SYNOPSIS
-This command will use to remove cloud endpoint.
+This command will delete the specified cloud endpoint from a sync group. Without at least one cloud endpoint, no other server endpoints in this sync group can sync.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Remove-AzStorageSyncCloudEndpoint [-ResourceId] <String> [-Force] [-PassThru] [-
 ```
 
 ## DESCRIPTION
-This command will use to remove cloud endpoint.
+This command will delete the specified cloud endpoint from a sync group. The Azure file share the cloud endpoint references remains untouched by this process. This command is only intended for decommissioning. Removing a cloud endpoint is a destructive operation. Server endpoints cannot sync without at least one cloud endpoint present. This operation should not be performed to solve sync issues. If this Azure file share is added again to the same sync group, as a cloud endpoint, it can lead to conflict files and other unintended consequences.
 
 ## EXAMPLES
 
@@ -41,7 +41,7 @@ This command will use to remove cloud endpoint.
 PS C:\> Remove-AzStorageSyncCloudEndpoint -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName"
 ```
 
-This command will remove the cloudendpoint.
+This command will remove the cloud endpoint.
 
 ## PARAMETERS
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Force to Delete the CloudEndpoint
+Supply -Force to skip confirmation of this command.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Prompts for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

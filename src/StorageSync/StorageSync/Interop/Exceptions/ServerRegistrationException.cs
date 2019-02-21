@@ -29,14 +29,14 @@ namespace Commands.StorageSync.Interop.Exceptions
     public sealed class ServerRegistrationException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServerRegistrationException"/> class.
+        /// Initializes a new instance of the <see cref="ServerRegistrationException" /> class.
         /// </summary>
         public ServerRegistrationException()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServerRegistrationException"/> class.
+        /// Initializes a new instance of the <see cref="ServerRegistrationException" /> class.
         /// </summary>
         /// <param name="errorCode">The error code.</param>
         public ServerRegistrationException(int errorCode)
@@ -45,7 +45,7 @@ namespace Commands.StorageSync.Interop.Exceptions
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServerRegistrationException"/> class.
+        /// Initializes a new instance of the <see cref="ServerRegistrationException" /> class.
         /// </summary>
         /// <param name="errorCode">The error code.</param>
         /// <param name="category">The category.</param>
@@ -56,7 +56,7 @@ namespace Commands.StorageSync.Interop.Exceptions
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServerRegistrationException"/> class.
+        /// Initializes a new instance of the <see cref="ServerRegistrationException" /> class.
         /// </summary>
         /// <param name="internalErrorCode">The internal error code.</param>
         public ServerRegistrationException(ServerRegistrationErrorCode internalErrorCode)
@@ -65,7 +65,7 @@ namespace Commands.StorageSync.Interop.Exceptions
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServerRegistrationException"/> class.
+        /// Initializes a new instance of the <see cref="ServerRegistrationException" /> class.
         /// </summary>
         /// <param name="internalErrorCode">The internal error code.</param>
         /// <param name="category">The category.</param>
@@ -76,7 +76,7 @@ namespace Commands.StorageSync.Interop.Exceptions
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServerRegistrationException"/> class.
+        /// Initializes a new instance of the <see cref="ServerRegistrationException" /> class.
         /// </summary>
         /// <param name="internalErrorCode">The internal error code.</param>
         /// <param name="errorCode">The error code.</param>
@@ -87,7 +87,7 @@ namespace Commands.StorageSync.Interop.Exceptions
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServerRegistrationException"/> class.
+        /// Initializes a new instance of the <see cref="ServerRegistrationException" /> class.
         /// </summary>
         /// <param name="internalErrorCode">The internal error code.</param>
         /// <param name="errorCode">The error code.</param>
@@ -100,7 +100,7 @@ namespace Commands.StorageSync.Interop.Exceptions
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServerRegistrationException"/> class.
+        /// Initializes a new instance of the <see cref="ServerRegistrationException" /> class.
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
         public ServerRegistrationException(string message)
@@ -109,7 +109,7 @@ namespace Commands.StorageSync.Interop.Exceptions
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServerRegistrationException"/> class.
+        /// Initializes a new instance of the <see cref="ServerRegistrationException" /> class.
         /// </summary>
         /// <param name="message">The message.</param>
         /// <param name="innerException">The inner exception.</param>

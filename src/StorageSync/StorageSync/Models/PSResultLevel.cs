@@ -22,20 +22,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
         /// <summary>
         /// The error
         /// </summary>
-        /// <summary>
-        /// The error
-        /// </summary>
         Error,
         /// <summary>
         /// The warning
         /// </summary>
-        /// <summary>
-        /// The warning
-        /// </summary>
         Warning,
-        /// <summary>
-        /// The information
-        /// </summary>
         /// <summary>
         /// The information
         /// </summary>

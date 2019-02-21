@@ -27,7 +27,7 @@ namespace Commands.StorageSync.Interop.DataObjects
     public class StorageSyncNetworkLimitConfiguration : INetworkLimitConfigEntry
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="StorageSyncNetworkLimitConfiguration"/> class.
+        /// Initializes a new instance of the <see cref="StorageSyncNetworkLimitConfiguration" /> class.
         /// </summary>
         /// <param name="entry">The entry.</param>
         public StorageSyncNetworkLimitConfiguration(INetworkLimitConfigEntry entry = null)

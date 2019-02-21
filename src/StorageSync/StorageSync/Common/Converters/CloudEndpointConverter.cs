@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CloudEndpointConverter"/> class.
+        /// Initializes a new instance of the <see cref="CloudEndpointConverter" /> class.
         /// </summary>
         public CloudEndpointConverter()
         {
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>StorageSyncModels.CloudEndpoint.</returns>
-        protected override StorageSyncModels.CloudEndpoint Transform(PSCloudEndpoint source) => new StorageSyncModels.CloudEndpoint(source.ResourceId, source.CloudEndpointName, source.Type, source.StorageAccountResourceId, source.StorageAccountShareName, source.StorageAccountTenantId, friendlyName: source.FriendlyName);
+        protected override StorageSyncModels.CloudEndpoint Transform(PSCloudEndpoint source) => new StorageSyncModels.CloudEndpoint(source.ResourceId, source.CloudEndpointName, source.Type, source.StorageAccountResourceId, source.AzureFileShareName, source.StorageAccountTenantId, friendlyName: source.FriendlyName);
 
         /// <summary>
         /// Transforms the specified source.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 Type = resourceIdentifier.ResourceType ?? StorageSyncConstants.CloudEndpointType,
                 FriendlyName = source.FriendlyName,
                 StorageAccountResourceId = source.StorageAccountResourceId,
-                StorageAccountShareName = source.StorageAccountShareName,
+                AzureFileShareName = source.StorageAccountShareName,
                 StorageAccountTenantId = source.StorageAccountTenantId?.Trim('"'),
                 BackupEnabled = System.Convert.ToBoolean(source.BackupEnabled),
                 LastWorkflowId = source.LastWorkflowId,

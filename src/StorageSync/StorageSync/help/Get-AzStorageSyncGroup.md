@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzStorageSyncGroup
 
 ## SYNOPSIS
-This command will use to get syncgroup.
+This command lists all sync groups within a given storage sync service.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Get-AzStorageSyncGroup [-ParentResourceId] <String> [-Name <String>] [-DefaultPr
 ```
 
 ## DESCRIPTION
-This command will use to get syncgroup.
+This command lists all sync groups within a given storage sync service. It can be used to also list the attributes of each sync group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzStorageSyncGroup New-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -Name "mySyncGroupName"
+PS C:\> Get-AzStorageSyncGroup New-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
 ```
 
-This command gets a syncgroup provided all the name of the dependent resources.
+This command gets all sync groups contained within the specified storage sync service. Specify -Name to return a specific one.
 
 ## PARAMETERS
 

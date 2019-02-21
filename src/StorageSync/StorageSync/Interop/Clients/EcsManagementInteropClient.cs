@@ -62,7 +62,7 @@ namespace Commands.StorageSync.Interop.Clients
             get { return !m_managementObjectHandle.IsInvalid; }
         }
         /// <summary>
-        /// Initializes a new instance of the <see cref="EcsManagementInteropClient"/> class.
+        /// Initializes a new instance of the <see cref="EcsManagementInteropClient" /> class.
         /// </summary>
         public EcsManagementInteropClient()
         {
@@ -73,8 +73,9 @@ namespace Commands.StorageSync.Interop.Clients
         /// Initializes this instance.
         /// </summary>
         /// <returns>IEcsManagement.</returns>
-        /// <exception cref="ServerRegistrationException">
+        /// <exception cref="Commands.StorageSync.Interop.Exceptions.ServerRegistrationException">
         /// </exception>
+        /// <exception cref="ServerRegistrationException"></exception>
         protected virtual IEcsManagement Initialize()
         {
             var managementInterfacePointer = IntPtr.Zero;
@@ -120,7 +121,7 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// Finalizes an instance of the <see cref="EcsManagementInteropClient"/> class.
+        /// Finalizes an instance of the <see cref="EcsManagementInteropClient" /> class.
         /// </summary>
         ~EcsManagementInteropClient()
         {

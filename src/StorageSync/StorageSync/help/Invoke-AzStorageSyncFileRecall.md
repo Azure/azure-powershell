@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzStorageSyncFileRecall
 
 ## SYNOPSIS
-This cmdlet will invoke the file recall on a given serverendpoint.
+This command recalls all tiered files back to local disk.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Invoke-AzStorageSyncFileRecall [-ResourceId] <String> [-Pattern <String>] [-Reca
 ```
 
 ## DESCRIPTION
-This cmdlet will invoke the file recall on a given serverendpoint.
+When cloud tiering is enabled on a server endpoint (a specific location on a registered server) then this command can be used to recall all tiered files to local disk. It is highly recommended to disable cloud tiering on this server endpoint before starting recall. If tiering is still on, recall might lead to other files getting tiered which misses to achieve the desired goal of all content residing on local disk.
 
 ## EXAMPLES
 
@@ -41,7 +41,7 @@ This cmdlet will invoke the file recall on a given serverendpoint.
 PS C:\> Invoke-AzStorageSyncFileRecall -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -ServerEndpointName "myServerEndpointName"
 ```
 
-This cmdlet will invoke the file recall on a given serverendpoint.
+This command recursively recalls all tiered files located under the root path of the specified server endpoint.
 
 ## PARAMETERS
 

@@ -21,7 +21,7 @@
 
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileSystemValidation"/> class.
+        /// Initializes a new instance of the <see cref="FileSystemValidation" /> class.
         /// </summary>
         /// <param name="configuration">The configuration.</param>
         /// <param name="path">The path.</param>

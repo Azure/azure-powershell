@@ -42,7 +42,7 @@
 
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="OSVersionValidation"/> class.
+        /// Initializes a new instance of the <see cref="OSVersionValidation" /> class.
         /// </summary>
         /// <param name="configuration">The configuration.</param>
         public OSVersionValidation(IConfiguration configuration) : base(configuration, "OS version check", ValidationType.OsVersion)

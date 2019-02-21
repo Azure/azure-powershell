@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProgressReporter"/> class.
+        /// Initializes a new instance of the <see cref="ProgressReporter" /> class.
         /// </summary>
         /// <param name="cmdlet">The cmdlet.</param>
         /// <param name="withProgressBar">if set to <c>true</c> [with progress bar].</param>
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         protected override string ActivityStatus => "Preparing to run the analysis";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NamespaceEstimationProgressReporter"/> class.
+        /// Initializes a new instance of the <see cref="NamespaceEstimationProgressReporter" /> class.
         /// </summary>
         /// <param name="cmdlet">The cmdlet.</param>
         public NamespaceEstimationProgressReporter(ICmdlet cmdlet) : base(cmdlet, withProgressBar: false)
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         protected override string ActivityStatus => "Scanning files and directories";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NamespaceScanProgressReporter"/> class.
+        /// Initializes a new instance of the <see cref="NamespaceScanProgressReporter" /> class.
         /// </summary>
         /// <param name="cmdlet">The cmdlet.</param>
         public NamespaceScanProgressReporter(ICmdlet cmdlet) : base(cmdlet, withProgressBar: true)
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         protected override string ActivityStatus => "Checking your computer for compatibility issues";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SystemCheckProgressReporter"/> class.
+        /// Initializes a new instance of the <see cref="SystemCheckProgressReporter" /> class.
         /// </summary>
         /// <param name="cmdlet">The cmdlet.</param>
         public SystemCheckProgressReporter(ICmdlet cmdlet) : base(cmdlet, withProgressBar: true)

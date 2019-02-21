@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Exceptions
         protected const string RequestIdHeaderInResponse = "x-ms-request-id";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StorageSyncCloudException"/> class.
+        /// Initializes a new instance of the <see cref="StorageSyncCloudException" /> class.
         /// </summary>
         /// <param name="ex">The ex.</param>
         public StorageSyncCloudException(Rest.Azure.CloudException ex)
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Exceptions
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StorageSyncCloudException"/> class.
+        /// Initializes a new instance of the <see cref="StorageSyncCloudException" /> class.
         /// </summary>
         /// <param name="ex">The ex.</param>
         public StorageSyncCloudException(StorageSyncErrorException ex)

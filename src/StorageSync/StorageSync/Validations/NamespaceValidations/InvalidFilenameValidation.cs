@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InvalidFilenameValidation"/> class.
+        /// Initializes a new instance of the <see cref="InvalidFilenameValidation" /> class.
         /// </summary>
         /// <param name="configuration">The configuration.</param>
         public InvalidFilenameValidation(IConfiguration configuration) : base(configuration, "Files with prohibited names", ValidationType.Filename)

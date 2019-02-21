@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="MaximumFileSizeValidation"/> class.
+        /// Initializes a new instance of the <see cref="MaximumFileSizeValidation" /> class.
         /// </summary>
         /// <param name="configuration">The configuration.</param>
         public MaximumFileSizeValidation(IConfiguration configuration): base(configuration, "Files over the size limit", ValidationType.FileSize)

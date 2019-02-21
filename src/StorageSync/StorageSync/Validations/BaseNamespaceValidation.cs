@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="NamespaceValidationBase"/> class.
+        /// Initializes a new instance of the <see cref="NamespaceValidationBase" /> class.
         /// </summary>
         /// <param name="configuration">The configuration.</param>
         /// <param name="validationName">Name of the validation.</param>

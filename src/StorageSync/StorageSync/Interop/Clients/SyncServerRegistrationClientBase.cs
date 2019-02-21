@@ -128,8 +128,9 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="agentVersion">Agent Version</param>
         /// <param name="registerOnlineCallback">Register Online Callback</param>
         /// <returns>Registered Server Resource</returns>
-        /// <exception cref="ServerRegistrationException">
+        /// <exception cref="Commands.StorageSync.Interop.Exceptions.ServerRegistrationException">
         /// </exception>
+        /// <exception cref="ServerRegistrationException"></exception>
         public RegisteredServer Register(
             Uri managementEndpointUri,
             Guid subscriptionId,

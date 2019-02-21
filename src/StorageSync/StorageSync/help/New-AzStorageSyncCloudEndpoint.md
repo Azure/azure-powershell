@@ -8,21 +8,21 @@ schema: 2.0.0
 # New-AzStorageSyncCloudEndpoint
 
 ## SYNOPSIS
-This command will use to create cloud endpoint.
+This command creates an Azure File Sync cloud endpoint in a sync group.
 
 ## SYNTAX
 
 ### ObjectParameterSet (Default)
 ```
 New-AzStorageSyncCloudEndpoint [-ParentObject] <PSSyncGroup> -Name <String> -StorageAccountResourceId <String>
- -StorageAccountShareName <String> [-StorageAccountTenantId <String>] [-AsJob]
+ -AzureFileShareName <String> [-StorageAccountTenantId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StringParameterSet
 ```
 New-AzStorageSyncCloudEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
- [-SyncGroupName] <String> -Name <String> -StorageAccountResourceId <String> -StorageAccountShareName <String>
+ [-SyncGroupName] <String> -Name <String> -StorageAccountResourceId <String> -AzureFileShareName <String>
  [-StorageAccountTenantId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -30,21 +30,21 @@ New-AzStorageSyncCloudEndpoint [-ResourceGroupName] <String> [-StorageSyncServic
 ### ParentStringParameterSet
 ```
 New-AzStorageSyncCloudEndpoint [-ParentResourceId] <String> -Name <String> -StorageAccountResourceId <String>
- -StorageAccountShareName <String> [-StorageAccountTenantId <String>] [-AsJob]
+ -AzureFileShareName <String> [-StorageAccountTenantId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This command will use to create cloud endpoint.
+This command creates an Azure File Sync cloud endpoint. A cloud endpoint is a reference to an existing Azure file share. It represents the file share and defines it participation in syncing all the files part of the sync group the cloud endpoint has been created in.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName" -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName "myAzureFileShareName" -StorageAccountTenantId "myStorageAccountTenantId"
+PS C:\> New-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName" -StorageAccountResourceId $storageAccountResourceId -AzureFileShareName "myAzureFileShareName" -StorageAccountTenantId "myStorageAccountTenantId"
 ```
 
-This command adds a cloudendpoint provided all the name of the dependent resources.
+A cloud endpoint is an integral member of a sync group, this is an example of creating one inside of an existing sync group called "mySyncGroupName".
 
 ## PARAMETERS
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the CloudEndpoint.
+Name of the cloud endpoint. When created through the Azure portal, Name is set to the name of the Azure file share it references.
 
 ```yaml
 Type: System.String
@@ -153,8 +153,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageAccountShareName
-Storage Account Share Name (Azure File Share Name)
+### -AzureFileShareName
+Storage Account Share Name (Azure file share name)
 
 ```yaml
 Type: System.String

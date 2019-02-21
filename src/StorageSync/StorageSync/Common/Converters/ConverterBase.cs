@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConverterBase{P, T}"/> class.
+        /// Initializes a new instance of the <see cref="ConverterBase{P, T}" /> class.
         /// </summary>
         public ConverterBase()
         {
