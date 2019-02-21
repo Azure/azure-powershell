@@ -30,9 +30,9 @@ Get-AzVMGuestPolicyStatus [-ResourceGroupName] <String> [-VMName] <String> [-Ini
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ReportIdScope
+### IdScope
 ```
-Get-AzVMGuestPolicyStatus [-ReportId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVMGuestPolicyStatus [-Id] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -115,13 +115,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReportId
-Report Id of a Guest Configuration policy report.
-A policy whose definition type is Initiative and category is Guest Configuration must be assigned to a scope to get reports.
+### -Id
+Id of a Guest Configuration policy status. 
+A policy where definition type is Initiative and category is Guest Configuration must be assigned to a scope to get statuses.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReportIdScope
+Parameter Sets: IdScope
 Aliases:
 
 Required: True
@@ -172,9 +172,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Management.GuestConfiguration.Models.GuestConfigurationAssignment, Microsoft.Azure.Management.GuestConfiguration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Management.GuestConfiguration.Models.GuestConfigurationAssignmentReport, Microsoft.Azure.Management.GuestConfiguration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### [Microsoft.Azure.Management.GuestConfiguration.Models.PolicyStatusDetailed, Microsoft.Azure.Management.GuestConfiguration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]
 
 ## NOTES
 
