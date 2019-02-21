@@ -322,12 +322,12 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                 foreach (var policyDefinitionIdInInitiative in policyDefinitionIdsInInitiative)
                 {
                     var _initiativeName = GetInitiativeNameFromId(policyDefinitionIdInInitiative);
-                    PolicyDefinition policyDef;
+                    PolicyDefinition policyDef = null;
                     try
                     {
                         policyDef = PolicyClient.PolicyDefinitions.GetBuiltIn(_initiativeName);
                     }
-                    catch(Exception)
+                    catch(Microsoft.Rest.Azure.CloudException ex) when (HttpStatusCode.NotFound.Equals(ex.Response.StatusCode))
                     {
                         policyDef = PolicyClient.PolicyDefinitions.Get(_initiativeName);
                     }
