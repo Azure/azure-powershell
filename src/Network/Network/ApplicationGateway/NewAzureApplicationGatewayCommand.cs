@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGateway", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGateway", DefaultParameterSetName = "IdentityByUserAssignedIdentityId", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
     public class NewAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -182,13 +183,23 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
+        [CmdletParameterBreakingChange("UserAssignedIdentityId", ReplaceMentCmdletParameterName = "Identity")]
         [Parameter(
+            ParameterSetName = "IdentityByUserAssignedIdentityId",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "ResourceId of the user assigned identity to be assigned to Application Gateway.")]
         [ValidateNotNullOrEmpty]
         [Alias("UserAssignedIdentity")]
         public string UserAssignedIdentityId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "IdentityByIdentityObject",
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Application Gateway Identity to be assigned to Application Gateway.")]
+        [ValidateNotNullOrEmpty]
+        public PSManagedServiceIdentity Identity { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -339,6 +350,10 @@ namespace Microsoft.Azure.Commands.Network
                         { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
                     }
                 };
+            }
+            else if (this.Identity != null)
+            {
+                applicationGateway.Identity = this.Identity;
             }
 
             if (this.CustomErrorConfiguration != null)

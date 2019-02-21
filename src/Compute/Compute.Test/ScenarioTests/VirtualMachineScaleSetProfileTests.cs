@@ -18,21 +18,18 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class VirtualMachineScaleSetProfileTests
+    public class VirtualMachineScaleSetProfileTests : ComputeTestRunner
     {
-        XunitTracingInterceptor _logger;
-
         public VirtualMachineScaleSetProfileTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetProfile()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineScaleSetProfile");
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetProfile");
         }
     }
 }

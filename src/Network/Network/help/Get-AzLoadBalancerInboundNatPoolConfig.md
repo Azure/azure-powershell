@@ -9,6 +9,7 @@ schema: 2.0.0
 # Get-AzLoadBalancerInboundNatPoolConfig
 
 ## SYNOPSIS
+Gets one or more inbound NAT pool configurations from a load balancer.
 
 ## SYNTAX
 
@@ -18,6 +19,7 @@ Get-AzLoadBalancerInboundNatPoolConfig -LoadBalancer <PSLoadBalancer> [-Name <St
 ```
 
 ## DESCRIPTION
+The **Get-AzLoadBalancerInboundNatPoolConfig** cmdlet gets one or more inbound NAT pool configurations from a load balancer.
 
 ## EXAMPLES
 
