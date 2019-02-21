@@ -24,6 +24,8 @@
 * Fix bug preventing repeat creation of KeyCredentials
 * Fix issue when piping the result of `Get-AzResource` to `Set-AzResource`
     - More information here: https://github.com/Azure/azure-powershell/issues/8240
+* Fix issue with JSON data type change when running `Set-AzResource`
+    - More information here: https://github.com/Azure/azure-powershell/issues/7930
 
 ## Version 1.1.2
 * Fix tagging for resource groups
