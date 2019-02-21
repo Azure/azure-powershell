@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Name of the Azure VM whose representative item needs to be protected.
         /// </summary>
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = ParamHelpMsgs.ProtectableItem.ItemId)]
-        public string InputItem { get; set; }
+        public ProtectableItemBase InputItem { get; set; }
 
         /// <summary>
         /// Backup management type of the items to be returned.
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
-                string shouldProcessName = InputItem;
+                string shouldProcessName = InputItem.Id;
 
                 string itemType = "";
                 string itemName = "";
@@ -74,14 +74,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 if (ShouldProcess(shouldProcessName, VerbsLifecycle.Disable))
                 {
                     Dictionary<UriEnums, string> keyValueDict =
-                    HelperUtils.ParseUri(InputItem);
+                    HelperUtils.ParseUri(InputItem.Id);
 
                     itemType = HelperUtils.GetProtectableItemUri(
-                        keyValueDict, InputItem).Split(';')[0];
+                        keyValueDict, InputItem.Id).Split(';')[0];
                     itemName = HelperUtils.GetProtectableItemUri(
-                        keyValueDict, InputItem).Split(';')[1];
+                        keyValueDict, InputItem.Id).Split(';')[1];
                     containerUri = HelperUtils.GetContainerUri(
-                        keyValueDict, InputItem);
+                        keyValueDict, InputItem.Id);
 
                     bool isDisableAutoProtectionSuccessful = false;
 

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -53,6 +54,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadEnableAutoProtectableItem()
         {
+            AzureSession.Instance.RegisterComponent("GetGuidComponent", () => "29e3f4dc-6407-4a9a-99cf-ea910639ba19", true);
             TestController.NewInstance.RunPsTest(
                 _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadEnableAutoProtectableItem");
         }
