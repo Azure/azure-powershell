@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests.Models
     public class ScheduleTest
     {
         [Fact]
-        [Trait(Category.Automation, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Service, Category.Automation)]
         public void ScheduleConstructorHandlesMonthlyDayOfWeekSchedule()
         {
             const string expectedDayOfWeek = "Saturday";
