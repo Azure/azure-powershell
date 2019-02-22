@@ -56,9 +56,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         public IStorageSyncManagementClient StorageSyncManagementClient { get; set; }
 
         /// <summary>
-        /// Gets or sets the storage synchronize resource manager.
+        /// Gets or sets the storage sync resource manager.
         /// </summary>
-        /// <value>The storage synchronize resource manager.</value>
+        /// <value>The storage sync resource manager.</value>
         public IStorageSyncResourceManager StorageSyncResourceManager { get; set; }
 
         /// <summary>

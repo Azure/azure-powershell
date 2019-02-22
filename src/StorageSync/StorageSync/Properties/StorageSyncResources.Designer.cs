@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         /// <summary>
         /// Looks up a localized string similar to COM Exception while loading certificate: HResult: {0} Message: {1}.
         /// </summary>
-        /// <value>The get synchronize server certificate error message format.</value>
+        /// <value>The get sync server certificate error message format.</value>
         internal static string GetSyncServerCertificateErrorMessageFormat {
             get {
                 return ResourceManager.GetString("GetSyncServerCertificateErrorMessageFormat", resourceCulture);
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         /// <summary>
         /// Looks up a localized string similar to Invoke Storage Sync File Recall.
         /// </summary>
-        /// <value>The invoke storage synchronize file recall action message.</value>
+        /// <value>The invoke storage sync file recall action message.</value>
         internal static string InvokeStorageSyncFileRecallActionMessage {
             get {
                 return ResourceManager.GetString("InvokeStorageSyncFileRecallActionMessage", resourceCulture);
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         /// <summary>
         /// Looks up a localized string similar to Create a new Storage Sync Service.
         /// </summary>
-        /// <value>The new storage synchronize service action message.</value>
+        /// <value>The new storage sync service action message.</value>
         internal static string NewStorageSyncServiceActionMessage {
             get {
                 return ResourceManager.GetString("NewStorageSyncServiceActionMessage", resourceCulture);
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         /// <summary>
         /// Looks up a localized string similar to Create a new Sync Group.
         /// </summary>
-        /// <value>The new synchronize group action message.</value>
+        /// <value>The new sync group action message.</value>
         internal static string NewSyncGroupActionMessage {
             get {
                 return ResourceManager.GetString("NewSyncGroupActionMessage", resourceCulture);
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         /// <summary>
         /// Looks up a localized string similar to Remove a given Storage Sync Service.
         /// </summary>
-        /// <value>The remove storage synchronize service action message.</value>
+        /// <value>The remove storage sync service action message.</value>
         internal static string RemoveStorageSyncServiceActionMessage {
             get {
                 return ResourceManager.GetString("RemoveStorageSyncServiceActionMessage", resourceCulture);
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         /// <summary>
         /// Looks up a localized string similar to Remove Storage Sync Service '{0}' and all content in it.
         /// </summary>
-        /// <value>The remove storage synchronize service prompt format.</value>
+        /// <value>The remove storage sync service prompt format.</value>
         internal static string RemoveStorageSyncServicePromptFormat {
             get {
                 return ResourceManager.GetString("RemoveStorageSyncServicePromptFormat", resourceCulture);
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         /// <summary>
         /// Looks up a localized string similar to Remove a given Sync Group.
         /// </summary>
-        /// <value>The remove synchronize group action message.</value>
+        /// <value>The remove sync group action message.</value>
         internal static string RemoveSyncGroupActionMessage {
             get {
                 return ResourceManager.GetString("RemoveSyncGroupActionMessage", resourceCulture);
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         /// <summary>
         /// Looks up a localized string similar to Remove Sync Group '{0}' and all content in it.
         /// </summary>
-        /// <value>The remove synchronize group prompt format.</value>
+        /// <value>The remove sync group prompt format.</value>
         internal static string RemoveSyncGroupPromptFormat {
             get {
                 return ResourceManager.GetString("RemoveSyncGroupPromptFormat", resourceCulture);
