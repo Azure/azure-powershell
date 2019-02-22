@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.OperationalInsights
 Module Guid: e827799a-7abf-4538-a61f-94dc52a48bd4
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights
@@ -73,6 +73,9 @@ Gets the usage data for a workspace.
 
 ### [Invoke-AzOperationalInsightsQuery](Invoke-AzOperationalInsightsQuery.md)
 Returns search results based on the specified parameters.
+
+### [New-AzOperationalInsightsApplicationInsightsDataSource](New-AzOperationalInsightsApplicationInsightsDataSource.md)
+Collect logs from given Application-Insights application.
 
 ### [New-AzOperationalInsightsAzureActivityLogDataSource](New-AzOperationalInsightsAzureActivityLogDataSource.md)
 Collect Azure Activity log from given subscription.

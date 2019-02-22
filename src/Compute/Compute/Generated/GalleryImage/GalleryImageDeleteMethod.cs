@@ -124,6 +124,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
         public PSGalleryImage InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]

@@ -34,9 +34,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Initializes the adapter
         /// </summary>
-        /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlManagedDatabaseAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlManagedDatabaseAdapter InitModelAdapter()
         {
             return new AzureSqlManagedDatabaseAdapter(DefaultProfile.DefaultContext);
         }

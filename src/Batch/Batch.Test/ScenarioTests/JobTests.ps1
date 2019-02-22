@@ -29,14 +29,14 @@ function Test-JobCRUD
         # Create 2 jobs
         $poolInfo1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
         $poolInfo1.PoolId = "testPool"
-        New-AzureBatchJob -Id $jobId1 -PoolInformation $poolInfo1 -BatchContext $context
+        New-AzBatchJob -Id $jobId1 -PoolInformation $poolInfo1 -BatchContext $context
 
         $poolInfo2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
         $poolInfo2.PoolId = "testPool2"
-        New-AzureBatchJob -Id $jobId2 -PoolInformation $poolInfo2 -Priority 3 -BatchContext $context
+        New-AzBatchJob -Id $jobId2 -PoolInformation $poolInfo2 -Priority 3 -BatchContext $context
 
         # List the jobs to ensure they were created
-        $jobs = Get-AzureBatchJob -Filter "id eq '$jobId1' or id eq '$jobId2'" -BatchContext $context
+        $jobs = Get-AzBatchJob -Filter "id eq '$jobId1' or id eq '$jobId2'" -BatchContext $context
         $job1 = $jobs | Where-Object { $_.Id -eq $jobId1 }
         $job2 = $jobs | Where-Object { $_.Id -eq $jobId2 }
         Assert-NotNull $job1
@@ -44,17 +44,17 @@ function Test-JobCRUD
 
         # Update a job
         $job2.Priority = $newPriority = $job2.Priority + 2
-        $job2 | Set-AzureBatchJob -BatchContext $context
-        $updatedJob = Get-AzureBatchJob -Id $jobId2 -BatchContext $context
+        $job2 | Set-AzBatchJob -BatchContext $context
+        $updatedJob = Get-AzBatchJob -Id $jobId2 -BatchContext $context
         Assert-AreEqual $newPriority $updatedJob.Priority
     }
     finally
     {
         # Delete the jobs
-        Remove-AzureBatchJob -Id $jobId1 -Force -BatchContext $context
-        Remove-AzureBatchJob -Id $jobId2 -Force -BatchContext $context
+        Remove-AzBatchJob -Id $jobId1 -Force -BatchContext $context
+        Remove-AzBatchJob -Id $jobId2 -Force -BatchContext $context
 
-        foreach ($job in Get-AzureBatchJob -BatchContext $context)
+        foreach ($job in Get-AzBatchJob -BatchContext $context)
         {
             Assert-True { ($job.Id -ne $jobId1 -and $job.Id -ne $jobId2) -or ($job.State.ToString().ToLower() -eq 'deleting') }
         }
@@ -71,26 +71,26 @@ function Test-DisableEnableTerminateJob
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-    Disable-AzureBatchJob $jobId Terminate -BatchContext $context
+    Disable-AzBatchJob $jobId Terminate -BatchContext $context
 
     # Sleep a bit in Record mode since the job doesn't immediately switch to Disabled.
     Start-TestSleep 10000
 
     # Verify the job was Disabled
-    $job = Get-AzureBatchJob $jobId -BatchContext $context
+    $job = Get-AzBatchJob $jobId -BatchContext $context
     Assert-AreEqual 'Disabled' $job.State
 
-    $job | Enable-AzureBatchJob -BatchContext $context
+    $job | Enable-AzBatchJob -BatchContext $context
 
     # Verify the job is Active
-    $job = Get-AzureBatchJob -Filter "id eq '$jobId'" -BatchContext $context
+    $job = Get-AzBatchJob -Filter "id eq '$jobId'" -BatchContext $context
     Assert-AreEqual 'Active' $job.State
 
     # Terminate the job
-    $job | Stop-AzureBatchJob -BatchContext $context
+    $job | Stop-AzBatchJob -BatchContext $context
 
     # Verify the job was terminated
-    $job = Get-AzureBatchJob $jobId -BatchContext $context
+    $job = Get-AzBatchJob $jobId -BatchContext $context
     Assert-True { ($job.State.ToString().ToLower() -eq 'terminating') -or ($job.State.ToString().ToLower() -eq 'completed') }
 }
 
@@ -127,12 +127,12 @@ function Test-JobWithTaskDependencies
         $taskIds = @("2","3")
         $taskIdRange = New-Object Microsoft.Azure.Batch.TaskIdRange(1,10)
         $dependsOn = New-Object Microsoft.Azure.Batch.TaskDependencies -ArgumentList @([string[]]$taskIds, [Microsoft.Azure.Batch.TaskIdRange[]]$taskIdRange)
-        New-AzureBatchJob -Id $jobId -BatchContext $context -PoolInformation $poolInformation -usesTaskDependencies
-        New-AzureBatchTask -Id $taskId -CommandLine $cmd -BatchContext $context -DependsOn $dependsOn -JobId $jobId
-        $job = Get-AzureBatchJob -Id $jobId -BatchContext $context
+        New-AzBatchJob -Id $jobId -BatchContext $context -PoolInformation $poolInformation -usesTaskDependencies
+        New-AzBatchTask -Id $taskId -CommandLine $cmd -BatchContext $context -DependsOn $dependsOn -JobId $jobId
+        $job = Get-AzBatchJob -Id $jobId -BatchContext $context
 
         Assert-AreEqual $job.UsesTaskDependencies $TRUE
-        $task = Get-AzureBatchTask -JobId $jobId -Id $taskId -BatchContext $context
+        $task = Get-AzBatchTask -JobId $jobId -Id $taskId -BatchContext $context
         Assert-AreEqual $task.DependsOn.TaskIdRanges.End 10
         Assert-AreEqual $task.DependsOn.TaskIdRanges.Start 1
         Assert-AreEqual $task.DependsOn.TaskIds[0] 2
@@ -140,7 +140,7 @@ function Test-JobWithTaskDependencies
     }
     finally
     {
-        Remove-AzureBatchJob -Id $jobId -Force -BatchContext $context
+        Remove-AzBatchJob -Id $jobId -Force -BatchContext $context
     }
 }
 
@@ -179,6 +179,6 @@ function IfJobSetsAutoFailure-ItCompletesWhenAnyTaskFails
     $ExitCodeRangeMapping = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitCodeRangeMapping -ArgumentList @(2, 4, $ExitOptions)
     $ExitConditions.ExitCodeRanges = [Microsoft.Azure.Commands.Batch.Models.PSExitCodeRangeMapping[]]$ExitCodeRangeMapping
 
-    New-AzureBatchJob -Id $jobId -BatchContext $context -PoolInformation $poolInformation -OnTaskFailure PerformExitOptionsJobAction
-    New-AzureBatchTask -Id $taskId -CommandLine $cmd -BatchContext $context -JobId $jobId -ExitConditions $ExitConditions
+    New-AzBatchJob -Id $jobId -BatchContext $context -PoolInformation $poolInformation -OnTaskFailure PerformExitOptionsJobAction
+    New-AzBatchTask -Id $taskId -CommandLine $cmd -BatchContext $context -JobId $jobId -ExitConditions $ExitConditions
 }

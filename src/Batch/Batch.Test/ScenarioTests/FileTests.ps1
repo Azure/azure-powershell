@@ -25,8 +25,8 @@ function Test-GetNodeFileContentByTask
 
     try
     {
-        $nodeFile = Get-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Path $nodeFilePath -BatchContext $context
-        $nodeFile | Get-AzureBatchNodeFileContent -BatchContext $context -DestinationStream $stream
+        $nodeFile = Get-AzBatchNodeFile -JobId $jobId -TaskId $taskId -Path $nodeFilePath -BatchContext $context
+        $nodeFile | Get-AzBatchNodeFileContent -BatchContext $context -DestinationStream $stream
         
         $stream.Position = 0
         $sr = New-Object System.IO.StreamReader $stream
@@ -58,8 +58,8 @@ function Test-GetNodeFileContentByComputeNode
 
     try
     {
-        $nodeFile = Get-AzureBatchNodeFile -PoolId $poolId -ComputeNodeId $computeNodeId -Path $nodeFilePath -BatchContext $context
-        $nodeFile | Get-AzureBatchNodeFileContent -BatchContext $context -DestinationStream $stream
+        $nodeFile = Get-AzBatchNodeFile -PoolId $poolId -ComputeNodeId $computeNodeId -Path $nodeFilePath -BatchContext $context
+        $nodeFile | Get-AzBatchNodeFileContent -BatchContext $context -DestinationStream $stream
         
         $stream.Position = 0
         $sr = New-Object System.IO.StreamReader $stream
@@ -92,8 +92,8 @@ function Test-GetRDPFile
 
     try
     {
-        $computeNode = Get-AzureBatchComputeNode -PoolId $poolId -Id $computeNodeId -BatchContext $context
-        $computeNode | Get-AzureBatchRemoteDesktopProtocolFile -BatchContext $context -DestinationStream $stream
+        $computeNode = Get-AzBatchComputeNode -PoolId $poolId -Id $computeNodeId -BatchContext $context
+        $computeNode | Get-AzBatchRemoteDesktopProtocolFile -BatchContext $context -DestinationStream $stream
         
         $stream.Position = 0
         $sr = New-Object System.IO.StreamReader $stream
@@ -121,10 +121,10 @@ function Test-DeleteNodeFileByTask
     param([string]$jobId, [string]$taskId, [string]$filePath)
     
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    Get-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Path $filePath -BatchContext $context | Remove-AzureBatchNodeFile -Force -BatchContext $context
+    Get-AzBatchNodeFile -JobId $jobId -TaskId $taskId -Path $filePath -BatchContext $context | Remove-AzBatchNodeFile -Force -BatchContext $context
     
     # Use filter to avoid 404 from GET
-    $file = Get-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Filter "startswith(name,'$filePath')" -BatchContext $context
+    $file = Get-AzBatchNodeFile -JobId $jobId -TaskId $taskId -Filter "startswith(name,'$filePath')" -BatchContext $context
 
     Assert-AreEqual $null $file
 }
@@ -138,10 +138,10 @@ function Test-DeleteNodeFileByComputeNode
     param([string]$poolId, [string]$computeNodeId, [string]$filePath)
     
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    Get-AzureBatchNodeFile $poolId $computeNodeId $filePath -BatchContext $context | Remove-AzureBatchNodeFile -Force -BatchContext $context
+    Get-AzBatchNodeFile $poolId $computeNodeId $filePath -BatchContext $context | Remove-AzBatchNodeFile -Force -BatchContext $context
 
     # Use filter to avoid 404 from GET
-    $file = Get-AzureBatchNodeFile $poolId $computeNodeId -Filter "startswith(name,'$filePath')" -BatchContext $context
+    $file = Get-AzBatchNodeFile $poolId $computeNodeId -Filter "startswith(name,'$filePath')" -BatchContext $context
 
     Assert-AreEqual $null $file
 }

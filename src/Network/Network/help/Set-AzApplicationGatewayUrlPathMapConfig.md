@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 9F5EC8E7-12E9-40E5-B98D-AAFD8F9F3C37
@@ -36,6 +36,17 @@ Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGatew
 The **Set-AzApplicationGatewayUrlPathMapConfig** cmdlet sets configuration for an array of URL path mappings to a backend server pool.
 
 ## EXAMPLES
+
+### Example 1: Update an URL path mapping
+```
+PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
+PS C:\> $appgw = Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name "map01"
+PS C:\> $appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+```
+
+The first command gets the application gateway named appGwName and stores the result in the $appgw variable.
+The second command updates the URL path mapping named map01 in the application gateway.
+The third command updates the application gateway.
 
 ## PARAMETERS
 

@@ -56,7 +56,7 @@ function Test-CustomDomainGetRemoveWithRunningEndpoint
 
     Assert-ThrowsContains { Get-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
 
-    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -92,7 +92,7 @@ function Test-CustomDomainEnableDisableWithRunningEndpoint
     Assert-AreEqual $customDomainName $createdCustomDomain.Name
     Assert-AreEqual $hostName $createdCustomDomain.HostName
     
-    $customDomain = $endpoint | Get-AzCdnCustomDomain -CustomDomainName $customDomainName 
+   	$customDomain = $endpoint | Get-AzCdnCustomDomain -CustomDomainName $customDomainName 
     Assert-AreEqual $customDomainName $customDomain.Name
     Assert-AreEqual $hostName $customDomain.HostName
 
@@ -102,7 +102,7 @@ function Test-CustomDomainEnableDisableWithRunningEndpoint
 
     Assert-ThrowsContains { Disable-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "BadRequest"
 
-    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 

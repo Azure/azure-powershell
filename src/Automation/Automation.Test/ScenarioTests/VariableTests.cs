@@ -12,20 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
 namespace Commands.Automation.Test
 {
-    using Microsoft.Azure.Commands.Automation.Test;
-    using Microsoft.Azure.ServiceManagement.Common.Models;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
-
-    public class VariableTests : AutomationScenarioTestsBase
+    public class VariableTests : AutomationTestRunner
     {
-        public XunitTracingInterceptor logger;
         public VariableTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(logger);
         }
 
         [Fact]
@@ -35,7 +31,7 @@ namespace Commands.Automation.Test
         [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestE2EVariableAsset()
         {
-            RunPowerShellTest(logger, "Test-E2EVariableAsset");
+            TestRunner.RunTestScript("Test-E2EVariableAsset");
         }
     }
 }
