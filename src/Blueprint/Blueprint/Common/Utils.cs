@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
             if (tokens != null && tokens.Length == 4)
             {
-                locationId = string.Equals(tokens[0], "managementgroups", StringComparison.OrdinalIgnoreCase) ? tokens[3] : null;
+                locationId = string.Equals(tokens[2], "managementgroups", StringComparison.OrdinalIgnoreCase) ? tokens[3] : null;
             }
 
             return locationId;
