@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
                    {
                        throw new ArgumentException("rule with the specified name does not exist");
                    }
-                   System.Diagnostics.Debugger.Launch();
+
                    rule.Name = this.Name;
                    if (this.Access != null)
                    {
