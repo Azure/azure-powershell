@@ -62,7 +62,8 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests.Models
         }
 
         [Fact]
-        [Trait(Category.Automation, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Service, Category.Automation)]
         public void ScheduleConstructorHandlesMonthlyDayOfMonthSchedule()
         {
             var sdkSchedule = new Schedule()
@@ -86,7 +87,8 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests.Models
         }
 
         [Fact]
-        [Trait(Category.Automation, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Service, Category.Automation)]
         public void ScheduleConstructorHandlesWeeklySchedule()
         {
             var sdkSchedule = new Schedule()
