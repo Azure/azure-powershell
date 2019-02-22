@@ -983,7 +983,22 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
                 };
 
-                var job = this.automationManagementClient.DscCompilationJob.Create(resourceGroupName, automationAccountName, Guid.NewGuid().ToString(), createJobParameters);
+                string jobId = Guid.NewGuid().ToString();
+
+                var jobTask = this.automationManagementClient.DscCompilationJob.CreateAsync(resourceGroupName, automationAccountName, jobId, createJobParameters).GetAwaiter();
+                DscCompilationJob job = null;
+
+                while (!jobTask.IsCompleted && job == null) {
+                    System.Threading.Thread.Sleep(1000);
+
+                    try
+                    {
+                        job = this.automationManagementClient.DscCompilationJob.Get(resourceGroupName, automationAccountName, jobId);
+                    }
+                    catch {
+                        job = null;
+                    }
+                }              
 
                 return new Model.CompilationJob(resourceGroupName, automationAccountName, job);
             }
