@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/disable-azcdncustomdomainhttps
 schema: 2.0.0
 ---
 
@@ -38,10 +38,11 @@ Disable-AzCdnCustomDomainHttps -ResourceId <String> [-PassThru] [-DefaultProfile
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Disable-AzCdnCustomDomainHttps -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroupName
+true
 ```
 
-{{ Add example description here }}
+Disable secure delivery of the custom domain.
 
 ## PARAMETERS
 

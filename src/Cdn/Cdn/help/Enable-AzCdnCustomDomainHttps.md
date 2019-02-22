@@ -5,6 +5,13 @@ online version:
 schema: 2.0.0
 ---
 
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
+Module Name: Az.Cdn
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/enable-azcdncustomdomainhttps
+schema: 2.0.0
+---
+
 # Enable-AzCdnCustomDomainHttps
 
 ## SYNOPSIS
@@ -38,10 +45,11 @@ Enable-AzCdnCustomDomainHttps -ResourceId <String> [-PassThru] [-DefaultProfile 
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Enable-AzCdnCustomDomainHttps -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroupName
+true
 ```
 
-{{ Add example description here }}
+Enable secure delivery of the custom domain.
 
 ## PARAMETERS
 
