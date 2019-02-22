@@ -18,6 +18,8 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+
+## Version 1.2.1
 * Update help example for Add-AzApplicationGatewayCustomError
 
 ## Version 1.2.0

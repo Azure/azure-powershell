@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.2
 * Fix tagging on Set-AzKeyVaultSecret
 
 ## Version 1.0.1
