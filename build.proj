@@ -48,6 +48,7 @@
     <LibraryRoot>$(MSBuildThisFileDirectory)</LibraryRoot>
     <LibrarySourceFolder>$(LibraryRoot)src</LibrarySourceFolder>
     <LibraryToolsFolder>$(LibraryRoot)tools</LibraryToolsFolder>
+    <LibraryArtifactsFolder>$(LibraryRoot)artifacts</LibraryArtifactsFolder>
     <LocalFeedFolder>$(LibraryToolsFolder)\LocalFeed</LocalFeedFolder>
     <Configuration Condition=" '$(Configuration)' != 'Release'">Debug</Configuration>
     <CodeSign>false</CodeSign>
@@ -378,6 +379,9 @@
     <PropertyGroup Condition="'$(ExcludeAuthenticators)' == 'true'">
       <AuthenticatorExclusions>$(LibraryRoot)src/**/Authenticators.csproj;</AuthenticatorExclusions>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Framework)' == ''">
+        <Framework>netcoreapp2.0</Framework>
+    </PropertyGroup>
 
     <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
     <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
@@ -397,7 +401,7 @@
     <Exec Command="dotnet sln Azure.PowerShell.sln add $(LibraryRoot)tools/ScenarioTest.ResourceManager/ScenarioTest.ResourceManager.csproj $(LibraryRoot)tools/TestFx/TestFx.csproj" />
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
-    <Exec Command="dotnet test Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework netcoreapp2.0 --logger trx" />
+    <Exec Command="dotnet test Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework $(Framework) --logger trx" />
 
     <ItemGroup>
       <TestResults Include="$(LibraryRoot)src/**/TestResults/*.trx" />
@@ -406,6 +410,37 @@
 
     <OnError ExecuteTargets="TestFailureErrorMessage" />
   </Target>
+
+  <Target Name="TestNet472">
+     <Message Importance="high" Text="Running check in tests..." />
+    <PropertyGroup>
+      <AuthExclusions>$(LibraryRoot)src/**/Authenticators.csproj;</AuthExclusions>
+      <AutomationExclusions>$(LibraryRoot)src/**/Automation.Test.csproj;</AutomationExclusions>
+      <StorageExclusions>$(LibraryRoot)src/**/Storage.Test.csproj;</StorageExclusions>
+    </PropertyGroup>
+
+    <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
+    <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
+    <ItemGroup>
+      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(AuthExclusions);$(AutomationExclusions);$(StorageExclusions)"/>
+    </ItemGroup>
+    <!-- https://stackoverflow.com/a/35477012/294804 -->
+    <ItemGroup>
+      <ModuleCsprojFilesRelative Include="@(ModuleCsprojFiles)">
+        <RelativePath>$([MSBuild]::MakeRelative($(LibraryRoot), %(ModuleCsprojFiles.FullPath)))</RelativePath>
+      </ModuleCsprojFilesRelative>
+    </ItemGroup>
+    <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFilesRelative->'%(RelativePath)', ' ')" />
+    <Exec Command="dotnet sln Azure.PowerShell.sln add $(LibraryRoot)tools/ScenarioTest.ResourceManager/ScenarioTest.ResourceManager.csproj $(LibraryRoot)tools/TestFx/TestFx.csproj" />
+    <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
+    <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
+    <Exec Command="dotnet build Azure.PowerShell.sln --configuration $(Configuration)" />
+    <Exec Command="dotnet new console -n Net472Tests" />
+    <Exec Command="dotnet add Net472Tests package xunit.runner.console --version 2.4.0" />
+    <Exec Command="dotnet restore --packages ./artifacts/tools -f --no-cache Net472Tests" />
+    <Exec Command="$(PowerShellCommandPrefix) &quot;$(LibraryToolsFolder)/TestNet472Modules.ps1 -TestExecPath '$(LibraryArtifactsFolder)/tools/xunit.runner.console/2.4.0/tools/net472/xunit.console.exe' &quot;" />
+    <OnError ExecuteTargets="TestFailureErrorMessage" />
+ </Target>
 
   <Target Name="TestFailureErrorMessage">
     <Error Text="Test failures occured, check the files in artifacts/Test" />
