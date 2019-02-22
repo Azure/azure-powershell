@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Models
 
             if (gcrpReport != null && gcrpReport.Properties != null)
             {
-                this.Id = gcrpReport.Id;
+                this.ReportId = gcrpReport.Id;
                 this.StartTime = gcrpReport.Properties.StartTime;
                 this.EndTime = gcrpReport.Properties.EndTime;
                 this.ComplianceStatus = gcrpReport.Properties.ComplianceStatus;
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Models
 
         public DateTime? EndTime { get; set; }
 
-        public string Id { get; set; }
+        public string ReportId { get; set; }
 
         public VMInfo VM { get; set; }
 

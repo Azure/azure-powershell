@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "67e6c97e-2901-4876-92af-1bf327321264"
+          "f73f36f2-b8c1-4c24-aa5f-0cbe10487c20"
         ],
         "Accept-Language": [
           "en-US"
@@ -36,22 +36,22 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11995"
         ],
         "x-ms-request-id": [
-          "c1e8379b-dcfb-40f8-b2d8-d1cddafb3e28"
+          "9fc81c07-1d7e-4dcd-a883-3b45366565b1"
         ],
         "x-ms-correlation-request-id": [
-          "c1e8379b-dcfb-40f8-b2d8-d1cddafb3e28"
+          "9fc81c07-1d7e-4dcd-a883-3b45366565b1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190220T015357Z:c1e8379b-dcfb-40f8-b2d8-d1cddafb3e28"
+          "WESTUS2:20190222T181825Z:9fc81c07-1d7e-4dcd-a883-3b45366565b1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 20 Feb 2019 01:53:56 GMT"
+          "Fri, 22 Feb 2019 18:18:25 GMT"
         ],
         "Content-Length": [
           "1253"
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditWindowsService\",\r\n      \"name\": \"AuditWindowsService\",\r\n      \"properties\": {\r\n        \"complianceStatus\": \"NonCompliant\",\r\n        \"assignmentHash\": \"FCE48C2D50C34F88FC258BB3F59B4727676A31FE20B474074C48DC87A7874B11.E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855\",\r\n        \"latestReportId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditWindowsService/reports/45d4d0ee-cef6-4e67-8d75-7ed30e850523\",\r\n        \"lastComplianceStatusChecked\": \"2019-02-20T01:45:12Z\",\r\n        \"context\": null,\r\n        \"guestConfiguration\": {\r\n          \"kind\": null,\r\n          \"name\": \"AuditWindowsService\",\r\n          \"version\": \"1.2.1.0\",\r\n          \"contentUri\": \"https://github.com/Microsoft/PowerShell-DSC-for-Linux/raw/amits/custompolicy/MyCustomPolicy4/AuditWindowsService.zip\",\r\n          \"contentHash\": \"FCE48C2D50C34F88FC258BB3F59B4727676A31FE20B474074C48DC87A7874B11\",\r\n          \"contentType\": null,\r\n          \"configurationParameter\": [],\r\n          \"configurationSetting\": null\r\n        },\r\n        \"provisioningState\": null\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditWindowsService\",\r\n      \"name\": \"AuditWindowsService\",\r\n      \"properties\": {\r\n        \"complianceStatus\": \"NonCompliant\",\r\n        \"assignmentHash\": \"FCE48C2D50C34F88FC258BB3F59B4727676A31FE20B474074C48DC87A7874B11.E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855\",\r\n        \"latestReportId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditWindowsService/reports/87042979-66fe-4e24-b610-f9f9f1b01dcd\",\r\n        \"lastComplianceStatusChecked\": \"2019-02-22T18:04:29Z\",\r\n        \"context\": null,\r\n        \"guestConfiguration\": {\r\n          \"kind\": null,\r\n          \"name\": \"AuditWindowsService\",\r\n          \"version\": \"1.2.1.0\",\r\n          \"contentUri\": \"https://github.com/Microsoft/PowerShell-DSC-for-Linux/raw/amits/custompolicy/MyCustomPolicy4/AuditWindowsService.zip\",\r\n          \"contentHash\": \"FCE48C2D50C34F88FC258BB3F59B4727676A31FE20B474074C48DC87A7874B11\",\r\n          \"contentType\": null,\r\n          \"configurationParameter\": [],\r\n          \"configurationSetting\": null\r\n        },\r\n        \"provisioningState\": null\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -73,7 +73,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "af8775d6-dcd8-475a-b95e-f4ce5c9cca5e"
+          "f2fdc46c-f3d3-4866-bc9b-7ec6abc7bf11"
         ],
         "Accept-Language": [
           "en-US"
@@ -93,16 +93,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus2:6844e5b1-9d4f-4484-88fa-7ead8fefe78d"
+          "westus2:7e493ce1-4dd8-42fc-b1bf-b00469a42635"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11996"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "5bd8d86b-22b6-46be-99da-184bbd87eb73"
+          "d2837e52-cd5c-4e89-9b9f-a1bf2b7f37d8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190220T015357Z:5bd8d86b-22b6-46be-99da-184bbd87eb73"
+          "WESTUS2:20190222T181825Z:d2837e52-cd5c-4e89-9b9f-a1bf2b7f37d8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 20 Feb 2019 01:53:56 GMT"
+          "Fri, 22 Feb 2019 18:18:25 GMT"
         ],
         "Content-Length": [
           "145"
@@ -133,7 +133,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "896da2f2-109e-45e4-9765-55a8fe8becfa"
+          "63ead112-34e8-4786-9d21-b16380437210"
         ],
         "Accept-Language": [
           "en-US"
@@ -156,16 +156,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:b8201e92-aa8f-42c9-8795-6dff19c23dcf"
+          "westus2:a0b01f4c-2aad-4cee-84c3-040b88ac7417"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "6541dce1-c137-4f96-bd6d-20282a6a6ec9"
+          "2de21080-b982-4048-b46d-0fa4be0174f4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190220T015357Z:6541dce1-c137-4f96-bd6d-20282a6a6ec9"
+          "WESTUS2:20190222T181825Z:2de21080-b982-4048-b46d-0fa4be0174f4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -174,7 +174,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 20 Feb 2019 01:53:56 GMT"
+          "Fri, 22 Feb 2019 18:18:25 GMT"
         ],
         "Content-Length": [
           "1043"
@@ -196,7 +196,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9d158fb1-3822-42f9-906e-90b9298c1f84"
+          "87abfff0-d783-4f3e-8cbd-6766e0db949b"
         ],
         "Accept-Language": [
           "en-US"
@@ -216,16 +216,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus2:25ed76ca-695f-4419-aafe-a26ecdf0b894"
+          "westus2:455ce3d4-27c2-4760-976e-01f81ec0cbb7"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11995"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "ca309d0b-5e02-46bd-8f34-d9999cd93248"
+          "7bae8864-e69a-4c2e-b680-a5111fbf96e3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190220T015357Z:ca309d0b-5e02-46bd-8f34-d9999cd93248"
+          "WESTUS2:20190222T181825Z:7bae8864-e69a-4c2e-b680-a5111fbf96e3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -234,7 +234,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 20 Feb 2019 01:53:56 GMT"
+          "Fri, 22 Feb 2019 18:18:25 GMT"
         ],
         "Content-Length": [
           "138"
@@ -256,7 +256,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a7b5a8ac-12a2-4fd0-90a6-6afb567374b5"
+          "40e0595b-ed84-49df-bfbc-5de68be4910b"
         ],
         "Accept-Language": [
           "en-US"
@@ -279,16 +279,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:77da6974-4c52-4202-b596-5a0c0b1c61fb"
+          "westus2:539ea9a1-05ae-4802-ad42-b320ba83f16d"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "91c867f4-3c71-4f2a-a260-40029ee3e1b9"
+          "8d55fc75-604b-47b5-b9b6-cd42bda55a07"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190220T015357Z:91c867f4-3c71-4f2a-a260-40029ee3e1b9"
+          "WESTUS2:20190222T181825Z:8d55fc75-604b-47b5-b9b6-cd42bda55a07"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -297,7 +297,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 20 Feb 2019 01:53:56 GMT"
+          "Fri, 22 Feb 2019 18:18:25 GMT"
         ],
         "Content-Length": [
           "4376"
@@ -319,7 +319,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "30444541-e2f2-4e42-8fa3-b04b482cc76e"
+          "9c8bb01f-59bc-4587-ba98-b6edd51baf3d"
         ],
         "Accept-Language": [
           "en-US"
@@ -339,16 +339,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus2:0cb455dd-5297-419d-8855-a5568d8cc3e2"
+          "westus2:940671df-5e28-4e55-a465-446f0c2f94c3"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11994"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "851929f2-c23f-46ec-931f-9cbe8e978632"
+          "64d29642-96a3-48af-87d1-2347b4f153a7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190220T015357Z:851929f2-c23f-46ec-931f-9cbe8e978632"
+          "WESTUS2:20190222T181825Z:64d29642-96a3-48af-87d1-2347b4f153a7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -357,7 +357,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 20 Feb 2019 01:53:56 GMT"
+          "Fri, 22 Feb 2019 18:18:25 GMT"
         ],
         "Content-Length": [
           "138"
@@ -379,7 +379,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "17bf8242-d5a1-4d87-94fb-bac8edae6235"
+          "4e3d84e5-d384-4bdf-bba6-e7005ed73eaa"
         ],
         "Accept-Language": [
           "en-US"
@@ -402,16 +402,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:3a5e5b91-0db9-42ba-a29c-ff1a1cfbd5d5"
+          "westus2:18b12607-8a49-41c8-80ec-b6d8c332c6f1"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "f95c12bc-e378-4f0e-9692-a71c7cf02553"
+          "fe8a9abe-b899-464f-b986-41cfd90271d8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190220T015357Z:f95c12bc-e378-4f0e-9692-a71c7cf02553"
+          "WESTUS2:20190222T181825Z:fe8a9abe-b899-464f-b986-41cfd90271d8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -420,7 +420,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 20 Feb 2019 01:53:56 GMT"
+          "Fri, 22 Feb 2019 18:18:25 GMT"
         ],
         "Content-Length": [
           "878"
@@ -436,13 +436,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditWindowsService/reports/45d4d0ee-cef6-4e67-8d75-7ed30e850523?api-version=2018-11-20",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Jlc291cmNlR3JvdXBzL2FtaXRzLXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9hbWl0cy13aW5zZXI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuR3Vlc3RDb25maWd1cmF0aW9uL2d1ZXN0Q29uZmlndXJhdGlvbkFzc2lnbm1lbnRzL0F1ZGl0V2luZG93c1NlcnZpY2UvcmVwb3J0cy80NWQ0ZDBlZS1jZWY2LTRlNjctOGQ3NS03ZWQzMGU4NTA1MjM/YXBpLXZlcnNpb249MjAxOC0xMS0yMA==",
+      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditWindowsService/reports/87042979-66fe-4e24-b610-f9f9f1b01dcd?api-version=2018-11-20",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Jlc291cmNlR3JvdXBzL2FtaXRzLXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9hbWl0cy13aW5zZXI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuR3Vlc3RDb25maWd1cmF0aW9uL2d1ZXN0Q29uZmlndXJhdGlvbkFzc2lnbm1lbnRzL0F1ZGl0V2luZG93c1NlcnZpY2UvcmVwb3J0cy84NzA0Mjk3OS02NmZlLTRlMjQtYjYxMC1mOWY5ZjFiMDFkY2Q/YXBpLXZlcnNpb249MjAxOC0xMS0yMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "97e1e9c0-3af5-4b62-ab0e-741fe7418c61"
+          "1d474e4b-85ff-40ff-9eb5-74476b8ed50c"
         ],
         "Accept-Language": [
           "en-US"
@@ -471,22 +471,22 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11994"
         ],
         "x-ms-request-id": [
-          "105ebfe1-84f4-4277-aa10-4ba6295db1e6"
+          "5dc64f0f-9c4f-4259-aa9a-7ae4e22abbad"
         ],
         "x-ms-correlation-request-id": [
-          "105ebfe1-84f4-4277-aa10-4ba6295db1e6"
+          "5dc64f0f-9c4f-4259-aa9a-7ae4e22abbad"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190220T015357Z:105ebfe1-84f4-4277-aa10-4ba6295db1e6"
+          "WESTUS2:20190222T181826Z:5dc64f0f-9c4f-4259-aa9a-7ae4e22abbad"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 20 Feb 2019 01:53:56 GMT"
+          "Fri, 22 Feb 2019 18:18:25 GMT"
         ],
         "Content-Length": [
           "1484"
@@ -498,7 +498,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditWindowsService/reports/45d4d0ee-cef6-4e67-8d75-7ed30e850523\",\r\n  \"name\": \"45d4d0ee-cef6-4e67-8d75-7ed30e850523\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"NonCompliant\",\r\n    \"assignment\": {\r\n      \"name\": \"AuditWindowsService\",\r\n      \"configuration\": {\r\n        \"name\": \"AuditWindowsService\",\r\n        \"version\": \"1.2.1.0\"\r\n      }\r\n    },\r\n    \"reportId\": \"45d4d0ee-cef6-4e67-8d75-7ed30e850523\",\r\n    \"vm\": {\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6\",\r\n      \"uuid\": \"2a71dc82-653c-4368-9067-1d56eeb5110d\"\r\n    },\r\n    \"details\": {\r\n      \"complianceStatus\": \"NonCompliant\",\r\n      \"startTime\": \"2019-02-20T01:45:10Z\",\r\n      \"endTime\": \"2019-02-20T01:45:12Z\",\r\n      \"jobId\": \"45d4d0ee-cef6-4e67-8d75-7ed30e850523\",\r\n      \"resources\": [\r\n        {\r\n          \"complianceStatus\": \"NonCompliant\",\r\n          \"reasons\": [],\r\n          \"properties\": {\r\n            \"BuiltInAccount\": null,\r\n            \"ConfigurationName\": \"foo\",\r\n            \"Credential\": null,\r\n            \"Dependencies\": null,\r\n            \"DependsOn\": null,\r\n            \"Description\": null,\r\n            \"DesktopInteract\": null,\r\n            \"DisplayName\": null,\r\n            \"Ensure\": \"Absent\",\r\n            \"ModuleName\": \"GuestConfiguration\",\r\n            \"ModuleVersion\": \"1.0.0.0\",\r\n            \"Name\": \"foo\",\r\n            \"Path\": null,\r\n            \"PsDscRunAsCredential\": null,\r\n            \"ResourceId\": \"[Service]s\",\r\n            \"SourceInfo\": null,\r\n            \"StartupTimeout\": null,\r\n            \"StartupType\": null,\r\n            \"State\": null,\r\n            \"TerminateTimeout\": null\r\n          }\r\n        }\r\n      ],\r\n      \"operationType\": \"Consistency\"\r\n    },\r\n    \"startTime\": \"2019-02-20T01:45:10Z\",\r\n    \"endTime\": \"2019-02-20T01:45:12Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditWindowsService/reports/87042979-66fe-4e24-b610-f9f9f1b01dcd\",\r\n  \"name\": \"87042979-66fe-4e24-b610-f9f9f1b01dcd\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"NonCompliant\",\r\n    \"assignment\": {\r\n      \"name\": \"AuditWindowsService\",\r\n      \"configuration\": {\r\n        \"name\": \"AuditWindowsService\",\r\n        \"version\": \"1.2.1.0\"\r\n      }\r\n    },\r\n    \"reportId\": \"87042979-66fe-4e24-b610-f9f9f1b01dcd\",\r\n    \"vm\": {\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6\",\r\n      \"uuid\": \"2a71dc82-653c-4368-9067-1d56eeb5110d\"\r\n    },\r\n    \"details\": {\r\n      \"complianceStatus\": \"NonCompliant\",\r\n      \"startTime\": \"2019-02-22T18:04:28Z\",\r\n      \"endTime\": \"2019-02-22T18:04:29Z\",\r\n      \"jobId\": \"87042979-66fe-4e24-b610-f9f9f1b01dcd\",\r\n      \"resources\": [\r\n        {\r\n          \"complianceStatus\": \"NonCompliant\",\r\n          \"reasons\": [],\r\n          \"properties\": {\r\n            \"BuiltInAccount\": null,\r\n            \"ConfigurationName\": \"foo\",\r\n            \"Credential\": null,\r\n            \"Dependencies\": null,\r\n            \"DependsOn\": null,\r\n            \"Description\": null,\r\n            \"DesktopInteract\": null,\r\n            \"DisplayName\": null,\r\n            \"Ensure\": \"Absent\",\r\n            \"ModuleName\": \"GuestConfiguration\",\r\n            \"ModuleVersion\": \"1.0.0.0\",\r\n            \"Name\": \"foo\",\r\n            \"Path\": null,\r\n            \"PsDscRunAsCredential\": null,\r\n            \"ResourceId\": \"[Service]s\",\r\n            \"SourceInfo\": null,\r\n            \"StartupTimeout\": null,\r\n            \"StartupType\": null,\r\n            \"State\": null,\r\n            \"TerminateTimeout\": null\r\n          }\r\n        }\r\n      ],\r\n      \"operationType\": \"Consistency\"\r\n    },\r\n    \"startTime\": \"2019-02-22T18:04:28Z\",\r\n    \"endTime\": \"2019-02-22T18:04:29Z\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
