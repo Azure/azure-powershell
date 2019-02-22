@@ -511,27 +511,22 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 LicenseType = model.LicenseType
             };
 
-            if(model.CreateMode.Equals(Management.Sql.Models.CreateMode.Recovery))
+            switch (model.CreateMode)
             {
-                dbModel.SourceDatabaseId = resourceId;
-                dbModel.RecoverableDatabaseId = resourceId;
-                dbModel.RecoveryServicesRecoveryPointId = resourceId;
-            }
-            else if(model.CreateMode.Equals(Management.Sql.Models.CreateMode.Restore))
-            {
-                dbModel.RestorableDroppedDatabaseId = resourceId;
-                dbModel.RecoveryServicesRecoveryPointId = resourceId;
-            }
-            else if(model.CreateMode.Equals(Management.Sql.Models.CreateMode.RestoreLongTermRetentionBackup) && resourceId.Contains("/providers/Microsoft.Sql"))
-            {
-                // LTR V2
-                dbModel.LongTermRetentionBackupResourceId = resourceId;
-                dbModel.SourceDatabaseId = resourceId;
-            }
-            else
-            {
-                dbModel.SourceDatabaseId = resourceId;
-                dbModel.RecoveryServicesRecoveryPointId = resourceId;
+                case Management.Sql.Models.CreateMode.Recovery:
+                    dbModel.RecoverableDatabaseId = resourceId;
+                    break;
+                case Management.Sql.Models.CreateMode.Restore:
+                    dbModel.RestorableDroppedDatabaseId = resourceId;
+                    break;
+                case Management.Sql.Models.CreateMode.PointInTimeRestore:
+                    dbModel.SourceDatabaseId = resourceId;
+                    break;
+                case Management.Sql.Models.CreateMode.RestoreLongTermRetentionBackup:
+                    dbModel.LongTermRetentionBackupResourceId = resourceId;
+                    break;
+                default:
+                    throw new ArgumentException("Restore mode not supported");
             }
 
             Management.Sql.Models.Database database = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, dbModel);

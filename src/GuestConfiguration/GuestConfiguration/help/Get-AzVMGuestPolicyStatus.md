@@ -63,10 +63,10 @@ Get the latest guest configuration policy statuses by initiative name. The statu
 
 ### Example 4
 ```powershell
-PS C:\> Get-AzVMGuestPolicyStatus -Id "/subscriptions/4e6c6ed2-0bf6-41d7-9d21-a452c2cc7920/resourceGroups/MyResourceGroupName/providers/Microsoft.Compute/virtualMachines/MyVMName/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/MaximumPasswordAge/reports/c271f845-2c0a-4456-a441-e48fc332d0ac"
+PS C:\> Get-AzVMGuestPolicyStatus -ReportId "/subscriptions/4e6c6ed2-0bf6-41d7-9d21-a452c2cc7920/resourceGroups/MyResourceGroupName/providers/Microsoft.Compute/virtualMachines/MyVMName/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/MaximumPasswordAge/reports/c271f845-2c0a-4456-a441-e48fc332d0ac"
 ```
 
-Get guest configuration policy status by Id. The Id is the Id property that can be found in the results of Get-AzVMGuestPolicyStatus by initiativeId or Initiative name (please refer other examples)
+Get guest configuration policy status by ReportId. The ReportId is the ReportId property that can be found in the results of Get-AzVMGuestPolicyStatus by initiativeId or Initiative name (please refer other examples)
 
 ## PARAMETERS
 
@@ -116,8 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReportId
-Report Id of a Guest Configuration policy report.
-A policy whose definition type is Initiative and category is Guest Configuration must be assigned to a scope to get reports.
+ReportId of a Guest Configuration policy status. A policy where definition type is Initiative and category is Guest Configuration must be assigned to a scope to get statuses.
 
 ```yaml
 Type: System.String
@@ -172,9 +171,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Management.GuestConfiguration.Models.GuestConfigurationAssignment, Microsoft.Azure.Management.GuestConfiguration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Management.GuestConfiguration.Models.GuestConfigurationAssignmentReport, Microsoft.Azure.Management.GuestConfiguration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### [Microsoft.Azure.Management.GuestConfiguration.Models.PolicyStatusDetailed, Microsoft.Azure.Management.GuestConfiguration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]
 
 ## NOTES
 

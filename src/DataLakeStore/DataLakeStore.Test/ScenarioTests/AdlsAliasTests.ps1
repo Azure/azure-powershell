@@ -990,3 +990,103 @@ function CreateAndGetVirtualNetwork ($resourceGroupName, $vnetName, $location = 
 
 	return $getVnet
 }
+
+<#
+.SYNOPSIS
+Tests DataLakeStore deleted items operations (Enumerate, Restore).
+#>
+function Test-AdlsEnumerateAndRestoreDeletedItem
+{
+	param
+    (
+        $fileToCopy,
+		$location
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
+
+	try
+	{
+		# Creating Account
+		$resourceGroupName = Get-ResourceGroupName
+		$accountName = Get-DataLakeStoreAccountName
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
+    
+		Assert-AreEqual $accountName $accountCreated.Name
+		Assert-AreEqual $location $accountCreated.Location
+		Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
+		Assert-True {$accountCreated.Id -like "*$resourceGroupName*"}
+
+		# In loop to check if account exists
+		for ($i = 0; $i -le 60; $i++)
+		{
+			[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
+			{
+				Assert-AreEqual $accountName $accountGet[0].Name
+				Assert-AreEqual $location $accountGet[0].Location
+				Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountGet[0].Type
+				Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
+				break
+			}
+
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
+			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
+		}
+
+		# define all the files and folders
+		$folderToCreate1 = "/adlfolder1"
+		$folderToCreate2 = "/adlfolder2"
+		$fileToCreate1 = "/adlfolder1/adlfile1"
+		$fileToCreate2 = "/adlfolder2/adlfile2"
+
+		# Create and get Empty folder
+		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate1 -Folder
+		Assert-NotNull $result "No value was returned on folder creation"
+
+		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate2 -Folder
+		Assert-NotNull $result "No value was returned on folder creation"
+		
+		# Create and get Empty File
+		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $fileToCreate1
+		Assert-NotNull $result "No value was returned on empty file creation"
+		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $fileToCreate2
+		Assert-NotNull $result "No value was returned on empty file creation"
+		
+	    # delete a file
+		Assert-True {Remove-AdlStoreItem -Account $accountName -paths $fileToCreate1 -force -passthru } "Remove File Failed"
+		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $fileToCreate1}
+		Assert-True {Remove-AdlStoreItem -Account $accountName -paths $fileToCreate2 -force -passthru } "Remove File Failed"
+		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $fileToCreate2}
+		
+		# search delete folder
+		$out = Get-AdlStoreDeletedItem -Account $accountName -filter "adlfolder1" -Count 1000
+		foreach($item in $out)
+		{
+			Assert-True { Restore-AdlStoreDeletedItem -Account $accountName -Path $item.TrashDirPath -Destination $item.OriginalPath -Type "file" -Force -Passthru}
+		}
+
+		$out = Get-AdlStoreDeletedItem -Account $accountName -filter "adlfolder2" -Count 1000
+		foreach($item in $out)
+		{
+			Assert-True { Restore-AdlStoreDeletedItem -Account $accountName $item -Force -Passthru}
+		}
+    
+		# Delete Data Lake account
+		Assert-True {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+
+		# Verify that it is gone by trying to get it again
+		Assert-Throws {Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}

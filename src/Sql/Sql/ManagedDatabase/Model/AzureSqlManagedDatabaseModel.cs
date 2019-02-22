@@ -114,6 +114,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         public string FailoverGroupId { get; set; }
 
         /// <summary>
+        /// Gets or sets the failover group Id
+        /// </summary>
+        public string RecoverableDatabaseId { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlManagedDatabaseModel
         /// </summary>
         public AzureSqlManagedDatabaseModel()
@@ -146,6 +151,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
             StorageContainerSasToken = database.StorageContainerSasToken;
             SourceDatabaseId = database.SourceDatabaseId;
             FailoverGroupId = database.FailoverGroupId;
+            RecoverableDatabaseId = database.RecoverableDatabaseId;
         }
     }
 }
