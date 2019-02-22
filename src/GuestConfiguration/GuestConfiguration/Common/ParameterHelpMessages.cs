@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
         public const string VMName = "VM name.";
         public const string InitiativeName = "Name of a policy where definition type is Initiative and category is Guest Configuration";
         public const string InitiativeId = "Definition Id of a policy where definition type is Initiative and category is Guest Configuration";
-        public const string Id = "Id of a Guest Configuration policy status. A policy where definition type is Initiative and category is Guest Configuration must be assigned to a scope to get statuses.";
+        public const string ReportId = "Id of a Guest Configuration policy status. A policy where definition type is Initiative and category is Guest Configuration must be assigned to a scope to get statuses.";
         public const string ShowOnlyChange = "Shows historical status changes only for guest configuration policies. Skips statuses that have not changed between two compliance status audit runs.";
     }
 }

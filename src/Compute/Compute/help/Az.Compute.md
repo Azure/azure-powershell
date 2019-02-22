@@ -162,7 +162,7 @@ Gets the VMImage publishers.
 Gets VMImage SKUs.
 
 ### [Get-AzVMRunCommandDocument](Get-AzVMRunCommandDocument.md)
-Get run command document.
+Get a run command document.
 
 ### [Get-AzVMSize](Get-AzVMSize.md)
 Gets available virtual machine sizes.
@@ -201,7 +201,7 @@ Grants an access to a snapshot.
 Reimage an Azure virtual machine.
 
 ### [Invoke-AzVMRunCommand](Invoke-AzVMRunCommand.md)
-Run command on the VM.
+Run a command on the VM.
 
 ### [Invoke-AzVmssVMRunCommand](Invoke-AzVmssVMRunCommand.md)
 Run command on the Virtual Machine Scale Set VM.

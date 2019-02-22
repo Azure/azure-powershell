@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.7.1'
+ModuleVersion = '0.7.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -85,7 +85,9 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Get-AzSecurityContact', 'Set-AzSecurityContact', 
                'Remove-AzSecurityContact', 'Get-AzSecurityTask', 
                'Get-AzSecurityWorkspaceSetting', 'Set-AzSecurityWorkspaceSetting', 
-               'Remove-AzSecurityWorkspaceSetting'
+               'Remove-AzSecurityWorkspaceSetting',
+               'Get-AzSecurityThreatProtection',
+               'Set-AzSecurityThreatProtection'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -120,7 +122,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Update Set-AzSecurityContact. Phone, AlertAdmin, NotifyOnAlert parameters are no longer mandatory'
+        ReleaseNotes = '* Add new cmdlets: Get-AzSecurityThreatProtection and Set-AzSecurityThreatProtection'
 
         # Prerelease string of this module
         # Prerelease = ''

@@ -58,9 +58,9 @@ function Get-AzVMGuestPolicyStatus-InitiativeNameScope
 
 <#
 .SYNOPSIS
-Get guest configuration policy by Id scope
+Get guest configuration policy by ReportId scope
 #>
-function Get-AzVMGuestPolicyStatus-IdScope
+function Get-AzVMGuestPolicyStatus-ReportIdScope
 {
 	$rgName = "vivga"
 	$vmName = "Viv1809SDDC"
@@ -69,8 +69,8 @@ function Get-AzVMGuestPolicyStatus-IdScope
 	Assert-NotNull $reports
 	Assert-True { $reports.Count -gt 0 }
 
-	$Id= $reports[0].Id;
+	$Id= $reports[0].ReportId;
 
-    $report = Get-AzVMGuestPolicyStatus -Id $Id
+    $report = Get-AzVMGuestPolicyStatus -ReportId $Id
 	Assert-NotNull $report
 }
