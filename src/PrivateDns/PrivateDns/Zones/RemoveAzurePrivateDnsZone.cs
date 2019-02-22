@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
         private const string ObjectParameterSetName = "Object";
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group in which the zone exists.", ParameterSetName = FieldsParameterSetName)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
