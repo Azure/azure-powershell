@@ -17,6 +17,8 @@ using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
 using System.Text.RegularExpressions;
 
@@ -59,13 +61,14 @@ namespace StorageSync.Test.Common
                 {
                     if (Microsoft.Azure.Test.HttpRecorder.HttpMockServer.Mode == Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode.Playback)
                     {
-                        isPlaybackMode =true;
+                        isPlaybackMode = true;
                     }
                     else if (Microsoft.Azure.Test.HttpRecorder.HttpMockServer.Mode == Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode.Record)
                     {
                         isPlaybackMode = false;
 
-                    } else
+                    }
+                    else
                     {
                         throw new NotSupportedException($"{Microsoft.Azure.Test.HttpRecorder.HttpMockServer.Mode} Mode is not supported");
                     }
@@ -139,6 +142,20 @@ namespace StorageSync.Test.Common
             {
                 System.Threading.Thread.Sleep(40 * 1000);
             }
+        }
+
+        public string GetTenantId()
+        {
+            string tenantId = null;
+
+            if (IsPlaybackMode)
+            {
+                if (HttpMockServer.Variables.ContainsKey(StorageSyncConstants.TenantId))
+                {
+                    tenantId = HttpMockServer.GetVariable(StorageSyncConstants.TenantId, null);
+                }
+            }
+            return tenantId;
         }
     }
 }

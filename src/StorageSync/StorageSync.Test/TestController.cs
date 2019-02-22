@@ -46,7 +46,7 @@ namespace ScenarioTests
         /// <summary>
         /// The tenant identifier key
         /// </summary>
-        private const string TenantIdKey = "TenantId";
+        private const string TenantIdKey = StorageSyncConstants.TenantId;
         /// <summary>
         /// The domain key
         /// </summary>

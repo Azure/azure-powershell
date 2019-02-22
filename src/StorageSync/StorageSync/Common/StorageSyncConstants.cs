@@ -124,13 +124,18 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         public const string FileSyncSvcName = "FileSyncSvc";
 
         /// <summary>
-        /// The storage synchronize resource manager
+        /// The storage sync resource manager
         /// </summary>
         public const string StorageSyncResourceManager = "StorageSyncResourceManager";
 
         /// <summary>
-        /// The synchronize server identifier
+        /// The sync server identifier
         /// </summary>
         public const string SyncServerId = "SyncServerId";
+
+        /// <summary>
+        /// The tenant identifier
+        /// </summary>
+        public const string TenantId = "TenantId";
     }
 }

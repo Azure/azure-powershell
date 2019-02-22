@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         protected virtual void InitializeComponent()
         {
+            DefaultProfile.DefaultContext.Tenant.Id = StorageSyncClientWrapper.StorageSyncResourceManager.GetTenantId() ?? DefaultProfile.DefaultContext.Tenant.Id;
         }
 
         /// <summary>

@@ -65,5 +65,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// Waits for access propogation.
         /// </summary>
         void WaitForAccessPropogation();
+
+        /// <summary>
+        /// Gets the tenant identifier.
+        /// </summary>
+        /// <returns>System.String.</returns>
+        string GetTenantId();
     }
 }

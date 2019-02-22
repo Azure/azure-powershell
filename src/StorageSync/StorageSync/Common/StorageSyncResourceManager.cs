@@ -101,5 +101,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         {
             System.Threading.Thread.Sleep(40 * 1000);
         }
+
+        public string GetTenantId() => null;
     }
 }
