@@ -1,4 +1,4 @@
-﻿$platformDirectory = Join-Path $PSScriptRoot "PlatformAssemblies"
+﻿$platformDirectory = Join-Path (Join-Path $PSScriptRoot "..") "PlatformAssemblies"
 if ($PSEdition -eq 'Desktop' -or $IsWindows) {
     $platformDirectory = Join-Path $platformDirectory "win" 
 }
