@@ -44,6 +44,13 @@ namespace CognitiveServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAccountWithCustomDomain()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmCognitiveServicesAccountWithCustomDomain");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAllKindsOfAccounts()
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmAllKindsOfCognitiveServicesAccounts");
@@ -118,13 +125,7 @@ namespace CognitiveServices.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-MinMaxAccountName");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetWithPaging()
-        {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetWithPaging");
-        }
+        
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
