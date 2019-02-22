@@ -193,7 +193,7 @@ PS C:\> $response = Invoke-RestMethod $url -Method POST -Body $body
 PS C:\> $AccessToken = $response.access_token
 PS C:\> $body1 = $body + "&resource=https%3A%2F%2Fvault.azure.net"
 PS C:\> $response = Invoke-RestMethod $url -Method POST -Body $body1
-PS C:\> $body2 = $body + "&resource=https%3A%2F%2Fgraph.microsoft.com"
+PS C:\> $body2 = $body + "&resource=https%3A%2F%2Fgraph.windows.net"
 PS C:\> $GraphAccessToken = $response.access_token
 PS C:\> Connect-AzAccount -AccountId "azureuser@contoso.com" -AccessToken $AccessToken -KeyVaultAccessToken $KeyVaultAccessToken -GraphAccessToken $GraphAccessToken -Tenant "xxxx-xxxx-xxxx-xxxx" -SubscriptionId "yyyy-yyyy-yyyy-yyyy"
 
