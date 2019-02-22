@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetBlueprintAssingment()
+        public void TestSetBlueprintAssignment()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetBlueprintAssingment");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetBlueprintAssignment");
         }
 
         [Fact]

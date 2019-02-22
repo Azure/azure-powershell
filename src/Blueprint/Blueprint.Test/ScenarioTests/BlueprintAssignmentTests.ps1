@@ -1,9 +1,4 @@
-﻿function Get-TestSubscriptionScope
-{
-	return "subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321"
-}
-
-<#
+﻿<#
 .SYNOPSIS
 Test Blueprint assignment cmdlets. Get a single Blueprint and assignment it to a subscription and delete.
 #>
@@ -22,61 +17,106 @@ function Test-GetBlueprintAssignment
 
 function Test-NewBlueprintAssignment
 {
-	$mgId = "AzBlueprint"
-	$blueprintName = "Filiz_Powershell_Test"
+	$mgId = "AzBlueprintAssignTest"
+	$blueprintName = "Filiz-Ps-Test1"
 	$subscriptionId = "28cbf98f-381d-4425-9ac4-cf342dab9753"
 	$assignmentName = "PS-ScenarioTest-NewAssignment"
 	$location = "East US"
 	$params = @{audituseofclassicvirtualmachines_effect='Audit'}
-	$rg1 = @{name='filiz-ps-testrgName5';location='eastus'}
+	$rg1 = @{name='bp-testrg';location='eastus'}
 	$rgs = @{ResourceGroup=$rg1}
+	$identity = "/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity"
 
     $blueprint = Get-AzBlueprint -ManagementGroupId $mgId -Name $blueprintName
 	Assert-NotNull $blueprint
 	Assert-AreEqual $blueprintName $blueprint.Name
 	
-	$assignment = New-AzBlueprintAssignment -Name $assignmentName -Blueprint $blueprint -SubscriptionId $subscriptionId -Location $location -Parameters $params -ResourceGroups $rgs
+	$assignment = New-AzBlueprintAssignment -Name $assignmentName -Blueprint $blueprint -SubscriptionId $subscriptionId -Location $location -Parameters $params -ResourceGroups $rgs -UserAssignedIdentity $identity
 
 	$expectedProvisioningState = "Creating"
+	Assert-NotNull $assignment
+	Assert-AreEqual $assignment.ProvisioningState $expectedProvisioningState
+}
 
+function Test-SetBlueprintAssignment
+{
+	$mgId = "AzBlueprintAssignTest"
+	$blueprintName = "Filiz-Ps-Test1"
+	$subscriptionId = "28cbf98f-381d-4425-9ac4-cf342dab9753"
+	$assignmentName = "PS-ScenarioTest-SetAssignment"
+	$location = "East US"
+	$params = @{audituseofclassicvirtualmachines_effect='Audit'}
+	$rg1 = @{name='bp-testrg';location='eastus'}
+	$rgs = @{ResourceGroup=$rg1}
+	$identity = "/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity"
+
+	# Get the test blueprint
+    $blueprint = Get-AzBlueprint -ManagementGroupId $mgId -Name $blueprintName
+	Assert-NotNull $blueprint
+	Assert-AreEqual $blueprintName $blueprint.Name
+
+	# Assign blueprint
+	$assignment = New-AzBlueprintAssignment -Name $assignmentName -Blueprint $blueprint -SubscriptionId $subscriptionId -Location $location -Parameters $params -ResourceGroups $rgs -UserAssignedIdentity $identity
+	$expectedProvisioningState = "Creating"
 	Assert-NotNull $assignment
 	Assert-AreEqual $assignment.ProvisioningState $expectedProvisioningState
 
-}
-
-function Test-SetBlueprintAssingment
-{
-	$mgId = "AzBlueprint";
-	$blueprintName = "Filiz_Powershell_Test";
-	$subscriptionId = "4ce8c9fe-cadc-47d6-9c76-335812fd59df";
-	$assignmentName = "PS-ScenarioTest-NewAssignment"
-	$location = "East US";
-	$param=@{audituseofclassicvirtualmachines_effect='Audit'}
-	$rg1 = @{name='filiz-ps-testrgName5';location='eastus'}
-	$rgs = @{ResourceGroup=$rg1}
-
-    $blueprint = Get-AzureRmBlueprint -ManagementGroupId $mgId -Name $blueprintName
-	Assert-NotNull $blueprint
-	Assert-AreEqual $blueprintName $blueprint.Name
+	# Retrieve assigned blueprint
+	$assigned = Get-AzBlueprintAssignment -SubscriptionId $subscriptionId -Name $assignmentName
+	# Wait till the provisioning state changes to succeeded
+	$assigned = Get-AzBlueprintAssignment -SubscriptionId $subscriptionId -Name $assignmentName
+	while($assigned.ProvisioningState -eq "Creating" -or $assigned.ProvisioningState -eq "Deploying")
+    {
+        Wait-Seconds 10
+        $assigned = Get-AzBlueprintAssignment -SubscriptionId $subscriptionId -Name $assignmentName
+    }
 	
-	$assignment = SetBlueprintAssingment-AzureRMBlueprintAssignment -Name $assignmentName -Blueprint $blueprint -SubscriptionId $subscriptionId -Location $location -Parameters $params -ResourceGroups $rgs
-
+	#update rg name and re-assign
+	$newTestRg = "bp-testrg-new"
+	$rg1 = @{name= $newTestRg;location='eastus'}
+	$rgs = @{ResourceGroup=$rg1}
+	$assignment = Set-AzBlueprintAssignment -Name $assignmentName -Blueprint $blueprint -SubscriptionId $subscriptionId -Location $location -Parameters $params -ResourceGroups $rgs -UserAssignedIdentity $identity
 	$expectedProvisioningState = "Creating"
-
 	Assert-NotNull $assignment
+	Assert-AreEqual $assignment.ProvisioningState $expectedProvisioningState
 }
 
 function Test-RemoveBlueprintAssignment
 {
-	$subscriptionScope = Get-TestSubscriptionScope
-	$assignments = Get-AzBlueprintAssignment | where { $_.Scope -eq $subscriptionScope }
+	$mgId = "AzBlueprintAssignTest"
+	$blueprintName = "Filiz-Ps-Test1"
+	$subscriptionId = "28cbf98f-381d-4425-9ac4-cf342dab9753"
+	$assignmentName = "PS-ScenarioTest-RemoveAssignment"
+	$location = "East US"
+	$params = @{audituseofclassicvirtualmachines_effect='Audit'}
+	$rg1 = @{name='bp-testrg';location='eastus'}
+	$rgs = @{ResourceGroup=$rg1}
+	$identity = "/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity"
 
-    Assert-True {$blueprints.Count -ge 1}
-	Assert-NotNull $assignments[0].Name
-	Assert-NotNull $assignments[0].Id
-	Assert-NotNull $assignments[0].BlueprintId
-	Assert-NotNull $assignments[0].Scope
-	Assert-NotNull $assignments[0].Location
-	Assert-NotNull $assignments[0].Description
+	# Get the test blueprint
+    $blueprint = Get-AzBlueprint -ManagementGroupId $mgId -Name $blueprintName
+	Assert-NotNull $blueprint
+	Assert-AreEqual $blueprintName $blueprint.Name
+
+	# Assign blueprint
+	$assignment = New-AzBlueprintAssignment -Name $assignmentName -Blueprint $blueprint -SubscriptionId $subscriptionId -Location $location -Parameters $params -ResourceGroups $rgs -UserAssignedIdentity $identity
+	$expectedProvisioningState = "Creating"
+	Assert-NotNull $assignment
+	Assert-AreEqual $assignment.ProvisioningState $expectedProvisioningState
+
+	# Retrieve assigned blueprint
+	$assigned = Get-AzBlueprintAssignment -SubscriptionId $subscriptionId -Name $assignmentName
+	while($assigned.ProvisioningState -eq "Creating" -or $assigned.ProvisioningState -eq "Deploying")
+    {
+        Wait-Seconds 10
+        $assigned = Get-AzBlueprintAssignment -SubscriptionId $subscriptionId -Name $assignmentName
+    }
+	
+	# remove assignment
+	$removed = Remove-AzBlueprintAssignment -SubscriptionId $subscriptionId -Name $assignment.Name -PassThru
+	$expectedProvisioningState = "Deleting"
+	Assert-NotNull $removed
+	Assert-AreEqual $removed.Name $assignment.Name
+	Assert-AreEqual $removed.ProvisioningState $expectedProvisioningState
 }
 

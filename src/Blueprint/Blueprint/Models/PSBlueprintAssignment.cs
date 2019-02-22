@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 BlueprintId = assignment.BlueprintId,
                 ProvisioningState = PSAssignmentProvisioningState.Unknown,
                 Status = new PSAssignmentStatus(),
-                Locks = new PSAssignmentLockSettings { Mode = PSLockMode.None },
+                Locks = new PSAssignmentLockSettings {Mode = PSLockMode.None},
                 Parameters = new Dictionary<string, PSParameterValueBase>(),
                 ResourceGroups = new Dictionary<string, PSResourceGroupValue>(),
                 ParametersDisplayList = new List<string>(),
@@ -115,14 +115,18 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
 
             foreach (var item in assignment.ResourceGroups)
             {
-                psAssignment.ResourceGroups.Add(item.Key, new PSResourceGroupValue {Name = item.Value.Name, Location = item.Value.Location});
+                psAssignment.ResourceGroups.Add(item.Key,
+                    new PSResourceGroupValue {Name = item.Value.Name, Location = item.Value.Location});
                 psAssignment.ResourceGroupDisplayList.Add(item.Key);
             }
 
-            foreach (var item in assignment.Identity.UserAssignedIdentities)
+            if (assignment.Identity.UserAssignedIdentities != null)
             {
-                psAssignment.Identity.UserAssignedIdentities.Add(item.Key, 
-                    new PSUserAssignedIdentity { ClientId = item.Value.ClientId, PrincipalId = item.Value.PrincipalId });
+                foreach (var item in assignment.Identity.UserAssignedIdentities)
+                {
+                    psAssignment.Identity.UserAssignedIdentities.Add(item.Key,
+                        new PSUserAssignedIdentity { ClientId = item.Value.ClientId, PrincipalId = item.Value.PrincipalId });
+                }
             }
 
             return psAssignment;
