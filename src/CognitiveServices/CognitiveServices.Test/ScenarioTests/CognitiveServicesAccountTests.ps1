@@ -65,23 +65,16 @@ function Test-NewAzureRmAllKindsOfCognitiveServicesAccounts
 		New-AzResourceGroup -Name $rgname -Location 'West US';
 		
 		# Create all known kinds of Cognitive Services accounts.
-		Test-CreateCognitiveServicesAccount $rgname 'AcademicTest' 'Academic' 'S0' $locWU
-		Test-CreateCognitiveServicesAccount $rgname 'BingAutosuggestTest' 'Bing.Autosuggest' 'S1' $locGBL
-		Test-CreateCognitiveServicesAccount $rgname 'BingSearchTest' 'Bing.Search' 'S1' $locGBL
-		Test-CreateCognitiveServicesAccount $rgname 'BingSpeechTest' 'Bing.Speech' 'S0' $locGBL
-		Test-CreateCognitiveServicesAccount $rgname 'BingSpellCheckTest' 'Bing.SpellCheck' 'S1' $locGBL
+		Test-CreateCognitiveServicesAccount $rgname 'BingSearchTest' 'Bing.Search.v7' 'S1' $locGBL
+		Test-CreateCognitiveServicesAccount $rgname 'BingSpeechTest' 'SpeechServices' 'S0' $locWU
+		Test-CreateCognitiveServicesAccount $rgname 'BingSpellCheckTest' 'Bing.SpellCheck.v7' 'S1' $locGBL
 		Test-CreateCognitiveServicesAccount $rgname 'ComputerVisionTest' 'ComputerVision' 'S0' $locWU
 		Test-CreateCognitiveServicesAccount $rgname 'ContentModeratorTest' 'ContentModerator' 'S0' $locWU
-		Test-CreateCognitiveServicesAccount $rgname 'EmotionTest' 'Emotion' 'S0' $locWU
 		Test-CreateCognitiveServicesAccount $rgname 'FaceTest' 'Face' 'S0' $locWU
 		Test-CreateCognitiveServicesAccount $rgname 'LUISTest' 'LUIS' 'S0' $locWU
-		Test-CreateCognitiveServicesAccount $rgname 'RecommendationsTest' 'Recommendations' 'S1' $locWU
 		Test-CreateCognitiveServicesAccount $rgname 'SpeakerRecognitionTest' 'SpeakerRecognition' 'S0' $locWU
-		Test-CreateCognitiveServicesAccount $rgname 'SpeechTest' 'Speech' 'S0' $locWU
-		Test-CreateCognitiveServicesAccount $rgname 'SpeechTranslationTest' 'SpeechTranslation' 'S1' $locGBL
 		Test-CreateCognitiveServicesAccount $rgname 'TextAnalyticsTest' 'TextAnalytics' 'S1' $locWU
 		Test-CreateCognitiveServicesAccount $rgname 'TextTranslationTest' 'TextTranslation' 'S1' $locGBL
-		Test-CreateCognitiveServicesAccount $rgname 'WebLMTest' 'WebLM' 'S0' $locWU
 	}
 	finally
 	{
@@ -292,6 +285,43 @@ function Test-NewAzureRmCognitiveServicesAccountKey
     }
 }
 
+
+<#
+.SYNOPSIS
+Test New-AzCognitiveServicesAccountKey
+#>
+function Test-NewAzureRmCognitiveServicesAccountWithCustomDomain
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S2';
+        $accounttype = 'TextAnalytics';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West Central US";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
+        Assert-NotNull $createdAccount;
+        # Call create again, expect to get the same account
+        $createdAccountAgain = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
+        Assert-NotNull $createdAccountAgain
+        Assert-AreEqual $createdAccount.Name $createdAccountAgain.Name;
+        Assert-AreEqual $createdAccount.Endpoint $createdAccountAgain.Endpoint;
+        Assert-True {$createdAccount.Endpoint.Contains('cognitiveservices.azure.com')}
+        Retry-IfException { Remove-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 <#
 .SYNOPSIS
 Test Get-AzCognitiveServicesAccountSkus
@@ -306,13 +336,13 @@ function Test-GetAzureRmCognitiveServicesAccountSkus
         $skus = (Get-AzCognitiveServicesAccountSkus -Type 'TextAnalytics');
         $skuNames = $skus | Select-Object -ExpandProperty Name | Sort-Object | Get-Unique
         
-        $expectedSkus = "F0", "S0","S1", "S2", "S3", "S4"
+        $expectedSkus = "F0", "S", "S0","S1", "S2", "S3", "S4"
         Assert-AreEqualArray $expectedSkus $skuNames
 
 		$skus = (Get-AzCognitiveServicesAccountSkus -Type 'TextAnalytics' -Location 'westus');
         $skuNames = $skus | Select-Object -ExpandProperty Name | Sort-Object | Get-Unique
         
-        $expectedSkus = "F0", "S0","S1", "S2", "S3", "S4"
+        $expectedSkus = "F0", "S", "S0","S1", "S2", "S3", "S4"
         Assert-AreEqualArray $expectedSkus $skuNames
 
         $skus = (Get-AzCognitiveServicesAccountSkus -Type 'QnAMaker' -Location 'global');
@@ -479,10 +509,10 @@ function Test-GetWithPaging
 			New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name "facepaging_wu_$i" -Type 'Face' -SkuName 'S0' -Location $loc -Force;
 		}
 
-		# 100 Emotion
+		# 100 CV
 		For($i = 0; $i -lt $TotalCount ; $i++)
 		{
-			New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name "emotionpaging_wu_$i" -Type 'Emotion' -SkuName 'S0' -Location $loc -Force;
+			New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name "cvpaging_wu_$i" -Type 'ComputerVision' -SkuName 'S0' -Location $loc -Force;
 		}
 
 		$accounts = Get-AzCognitiveServicesAccount
