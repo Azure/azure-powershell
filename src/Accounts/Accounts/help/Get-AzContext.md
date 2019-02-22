@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
 online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/get-azcontext
@@ -93,7 +93,6 @@ The name of the context
 Type: System.String
 Parameter Sets: GetSingleContext
 Aliases:
-Accepted values:
 
 Required: False
 Position: 0

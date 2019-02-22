@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewaycustomerror
@@ -97,3 +97,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzApplicationGatewayCustomError](./Add-AzApplicationGatewayCustomError.md)
+
+[New-AzApplicationGatewayCustomError](./New-AzApplicationGatewayCustomError.md)
+
+[Remove-AzApplicationGatewayCustomError](./Remove-AzApplicationGatewayCustomError.md)
+
+[Set-AzApplicationGatewayCustomError](./Set-AzApplicationGatewayCustomError.md)

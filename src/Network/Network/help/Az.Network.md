@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Network
 Module Guid: eb75c732-e274-4a20-b502-e9958e63484a
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.network
@@ -71,6 +71,9 @@ Adds a circuit connection configuration to Private Peering of an Express Route C
 ### [Add-AzExpressRouteCircuitPeeringConfig](Add-AzExpressRouteCircuitPeeringConfig.md)
 Adds a peering configuration to an ExpressRoute circuit.
 
+### [Add-AzExpressRouteCrossConnectionPeering](Add-AzExpressRouteCrossConnectionPeering.md)
+Adds a peering configuration to an ExpressRoute cross connection.
+
 ### [Add-AzLoadBalancerBackendAddressPoolConfig](Add-AzLoadBalancerBackendAddressPoolConfig.md)
 Adds a backend address pool configuration to a load balancer.
 
@@ -78,7 +81,7 @@ Adds a backend address pool configuration to a load balancer.
 Adds a front-end IP configuration to a load balancer.
 
 ### [Add-AzLoadBalancerInboundNatPoolConfig](Add-AzLoadBalancerInboundNatPoolConfig.md)
-
+Adds an inbound NAT pool to a load balancer.
 
 ### [Add-AzLoadBalancerInboundNatRuleConfig](Add-AzLoadBalancerInboundNatRuleConfig.md)
 Adds an inbound NAT rule configuration to a load balancer.
@@ -167,6 +170,9 @@ Gets the HTTP listener of an application gateway.
 ### [Get-AzApplicationGatewayHttpListenerCustomError](Get-AzApplicationGatewayHttpListenerCustomError.md)
 Gets custom error(s) from a http listener of an application gateway.
 
+### [Get-AzApplicationGatewayIdentity](Get-AzApplicationGatewayIdentity.md)
+Get identity assigned to the application gateway.
+
 ### [Get-AzApplicationGatewayIPConfiguration](Get-AzApplicationGatewayIPConfiguration.md)
 Gets the IP configuration of an application gateway.
 
@@ -248,6 +254,27 @@ Gets a route table summary of an ExpressRoute circuit.
 ### [Get-AzExpressRouteCircuitStats](Get-AzExpressRouteCircuitStats.md)
 Gets usage statistics of an ExpressRoute circuit.
 
+### [Get-AzExpressRouteConnection](Get-AzExpressRouteConnection.md)
+Gets a ExpressRoute connection by name or lists all ExpressRoute connections connected to a ExpressRouteGateway.
+
+### [Get-AzExpressRouteCrossConnection](Get-AzExpressRouteCrossConnection.md)
+Gets an Azure ExpressRoute cross connection from Azure.
+
+### [Get-AzExpressRouteCrossConnectionArpTable](Get-AzExpressRouteCrossConnectionArpTable.md)
+Gets the ARP table from an ExpressRoute cross connection.
+
+### [Get-AzExpressRouteCrossConnectionPeering](Get-AzExpressRouteCrossConnectionPeering.md)
+Gets an ExpressRoute cross connection peering configuration.
+
+### [Get-AzExpressRouteCrossConnectionRouteTable](Get-AzExpressRouteCrossConnectionRouteTable.md)
+Gets a route table from an ExpressRoute cross connection.
+
+### [Get-AzExpressRouteCrossConnectionRouteTableSummary](Get-AzExpressRouteCrossConnectionRouteTableSummary.md)
+Gets a route table summary of an ExpressRoute cross connection.
+
+### [Get-AzExpressRouteGateway](Get-AzExpressRouteGateway.md)
+Gets a ExpressRouteGateway resource using ResourceGroupName and GatewayName OR lists all gateways by ResourceGroupName or SubscriptionId.
+
 ### [Get-AzExpressRoutePort](Get-AzExpressRoutePort.md)
 Gets an Azure ExpressRoutePort resource.
 
@@ -279,7 +306,7 @@ Gets a backend address pool configuration for a load balancer.
 Gets a front-end IP configuration in a load balancer.
 
 ### [Get-AzLoadBalancerInboundNatPoolConfig](Get-AzLoadBalancerInboundNatPoolConfig.md)
-
+Gets one or more inbound NAT pool configurations from a load balancer.
 
 ### [Get-AzLoadBalancerInboundNatRuleConfig](Get-AzLoadBalancerInboundNatRuleConfig.md)
 Gets an inbound NAT rule configuration for a load balancer.
@@ -360,19 +387,19 @@ Gets a public IP prefix
 Gets routes from a route table.
 
 ### [Get-AzRouteFilter](Get-AzRouteFilter.md)
-{{Fill in the Synopsis}}
+Gets a route filter.
 
 ### [Get-AzRouteFilterRuleConfig](Get-AzRouteFilterRuleConfig.md)
-{{Fill in the Synopsis}}
+Gets a route filter rule in a route filter.
 
 ### [Get-AzRouteTable](Get-AzRouteTable.md)
 Gets route tables.
 
 ### [Get-AzServiceEndpointPolicy](Get-AzServiceEndpointPolicy.md)
-{{Fill in the Synopsis}}
+Gets a service endpoint policy.
 
 ### [Get-AzServiceEndpointPolicyDefinition](Get-AzServiceEndpointPolicyDefinition.md)
-{{Fill in the Synopsis}}
+Gets a service endpoint policy definition.
 
 ### [Get-AzVirtualHub](Get-AzVirtualHub.md)
 Gets an Azure VirtualHub by Name and ResourceGroupName or lists all Virtual Hubs by ResourceGroupName/Subscription.
@@ -455,6 +482,9 @@ Gets an Azure VpnSite resource by name OR lists all VpnSites in a ResourceGroup 
 
 This is an RM representation of customer branches that are uploaded to Azure for S2S connectivity with a Cortex virtual hub.
 
+### [Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic](Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic.md)
+Invoke network configuration diagnostic session for specified network profiles on target resource.
+
 ### [Move-AzExpressRouteCircuit](Move-AzExpressRouteCircuit.md)
 Moves an ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model.
 
@@ -493,6 +523,9 @@ Creates a front-end port for an application gateway.
 
 ### [New-AzApplicationGatewayHttpListener](New-AzApplicationGatewayHttpListener.md)
 Creates an HTTP listener for an application gateway.
+
+### [New-AzApplicationGatewayIdentity](New-AzApplicationGatewayIdentity.md)
+Creates an identity object for an application gateway. This will hold reference to the user assigned identity.
 
 ### [New-AzApplicationGatewayIPConfiguration](New-AzApplicationGatewayIPConfiguration.md)
 Creates an IP configuration for an application gateway.
@@ -566,6 +599,12 @@ Creates an ExpressRoute circuit authorization.
 ### [New-AzExpressRouteCircuitPeeringConfig](New-AzExpressRouteCircuitPeeringConfig.md)
 Creates a new peering configuration to be added to an ExpressRoute circuit.
 
+### [New-AzExpressRouteConnection](New-AzExpressRouteConnection.md)
+Creates an ExpressRoute connection that connects an ExpressRoute gateway to an on premise ExpressRoute circuit
+
+### [New-AzExpressRouteGateway](New-AzExpressRouteGateway.md)
+Creates a Scalable ExpressRoute Gateway.
+
 ### [New-AzExpressRoutePort](New-AzExpressRoutePort.md)
 Creates an Azure ExpressRoutePort.
 
@@ -603,7 +642,7 @@ Creates a backend address pool configuration for a load balancer.
 Creates a front-end IP configuration for a load balancer.
 
 ### [New-AzLoadBalancerInboundNatPoolConfig](New-AzLoadBalancerInboundNatPoolConfig.md)
-
+Creates an inbound NAT pool configuration for a load balancer.
 
 ### [New-AzLoadBalancerInboundNatRuleConfig](New-AzLoadBalancerInboundNatRuleConfig.md)
 Creates an inbound NAT rule configuration for a load balancer.
@@ -641,6 +680,10 @@ Creates a new Network Watcher resource.
 ### [New-AzNetworkWatcherConnectionMonitor](New-AzNetworkWatcherConnectionMonitor.md)
 Creates a connection monitor.
 
+### [New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile](New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile.md)
+Creates a new network configuration diagnostic profile object. 
+This object is used to restrict the network confiuration during a diagnostic session using the specified criteria.
+
 ### [New-AzNetworkWatcherPacketCapture](New-AzNetworkWatcherPacketCapture.md)
 Creates a new packet capture resource and starts a packet capture session on a VM.
 
@@ -672,10 +715,10 @@ Creates a route filter rule for a route filter.
 Creates a route table.
 
 ### [New-AzServiceEndpointPolicy](New-AzServiceEndpointPolicy.md)
-{{Fill in the Synopsis}}
+Creates a service endpoint policy.
 
 ### [New-AzServiceEndpointPolicyDefinition](New-AzServiceEndpointPolicyDefinition.md)
-{{Fill in the Synopsis}}
+Creates a service endpoint policy definition.
 
 ### [New-AzVirtualHub](New-AzVirtualHub.md)
 Creates an Azure VirtualHub resource.
@@ -768,6 +811,9 @@ Removes an HTTP listener from an application gateway.
 ### [Remove-AzApplicationGatewayHttpListenerCustomError](Remove-AzApplicationGatewayHttpListenerCustomError.md)
 Removes a custom error from a http listener of an application gateway.
 
+### [Remove-AzApplicationGatewayIdentity](Remove-AzApplicationGatewayIdentity.md)
+Removes a identity from an application gateway.
+
 ### [Remove-AzApplicationGatewayIPConfiguration](Remove-AzApplicationGatewayIPConfiguration.md)
 Removes an IP configuration from an application gateway.
 
@@ -816,6 +862,15 @@ Removes an ExpressRoute circuit connection configuration.
 ### [Remove-AzExpressRouteCircuitPeeringConfig](Remove-AzExpressRouteCircuitPeeringConfig.md)
 Removes an ExpressRoute circuit peering configuration.
 
+### [Remove-AzExpressRouteConnection](Remove-AzExpressRouteConnection.md)
+Removes a ExpressRouteConnection.
+
+### [Remove-AzExpressRouteCrossConnectionPeering](Remove-AzExpressRouteCrossConnectionPeering.md)
+Removes an ExpressRoute cross connection peering configuration.
+
+### [Remove-AzExpressRouteGateway](Remove-AzExpressRouteGateway.md)
+The Remove-AzExpressRouteGateway cmdlet removes an Azure ExpressRoute gateway. This is a gateway specific to Azure Virtual WAN's software defined connectivity.
+
 ### [Remove-AzExpressRoutePort](Remove-AzExpressRoutePort.md)
 Removes an ExpressRoutePort.
 
@@ -832,7 +887,7 @@ Removes a backend address pool configuration from a load balancer.
 Removes a front-end IP configuration from a load balancer.
 
 ### [Remove-AzLoadBalancerInboundNatPoolConfig](Remove-AzLoadBalancerInboundNatPoolConfig.md)
-
+Removes an inbound NAT pool configuration from a load balancer.
 
 ### [Remove-AzLoadBalancerInboundNatRuleConfig](Remove-AzLoadBalancerInboundNatRuleConfig.md)
 Removes an inbound NAT rule configuration from a load balancer.
@@ -886,19 +941,19 @@ Removes a public IP prefix
 Removes a route from a route table.
 
 ### [Remove-AzRouteFilter](Remove-AzRouteFilter.md)
-{{Fill in the Synopsis}}
+Removes a route filter.
 
 ### [Remove-AzRouteFilterRuleConfig](Remove-AzRouteFilterRuleConfig.md)
-{{Fill in the Synopsis}}
+Removes a route filter rule from a route filter.
 
 ### [Remove-AzRouteTable](Remove-AzRouteTable.md)
 Removes a route table.
 
 ### [Remove-AzServiceEndpointPolicy](Remove-AzServiceEndpointPolicy.md)
-{{Fill in the Synopsis}}
+Removes a service endpoint policy.
 
 ### [Remove-AzServiceEndpointPolicyDefinition](Remove-AzServiceEndpointPolicyDefinition.md)
-{{Fill in the Synopsis}}
+Removes a service endpoint policy definition.
 
 ### [Remove-AzVirtualHub](Remove-AzVirtualHub.md)
 Removes an Azure VirtualHub resource.
@@ -993,6 +1048,9 @@ Modifies an HTTP listener for an application gateway.
 ### [Set-AzApplicationGatewayHttpListenerCustomError](Set-AzApplicationGatewayHttpListenerCustomError.md)
 Updates a custom error in a http listener of an application gateway.
 
+### [Set-AzApplicationGatewayIdentity](Set-AzApplicationGatewayIdentity.md)
+Updates a identity assigned to the application gateway.
+
 ### [Set-AzApplicationGatewayIPConfiguration](Set-AzApplicationGatewayIPConfiguration.md)
 Modifies an IP configuration for an application gateway.
 
@@ -1032,6 +1090,15 @@ Modifies an ExpressRoute circuit.
 ### [Set-AzExpressRouteCircuitPeeringConfig](Set-AzExpressRouteCircuitPeeringConfig.md)
 Saves a modified ExpressRoute peering configuration.
 
+### [Set-AzExpressRouteConnection](Set-AzExpressRouteConnection.md)
+Updates a ExpressRouteConnection object to a goal state.
+
+### [Set-AzExpressRouteCrossConnection](Set-AzExpressRouteCrossConnection.md)
+Modifies an ExpressRoute cross connection.
+
+### [Set-AzExpressRouteGateway](Set-AzExpressRouteGateway.md)
+Updates a Scalable ExpressRoute Gateway.
+
 ### [Set-AzExpressRoutePort](Set-AzExpressRoutePort.md)
 Modifies an ExpressRoutePort.
 
@@ -1045,7 +1112,7 @@ Sets the goal state for a load balancer.
 Sets the goal state for a front-end IP configuration in a load balancer.
 
 ### [Set-AzLoadBalancerInboundNatPoolConfig](Set-AzLoadBalancerInboundNatPoolConfig.md)
-
+Sets an inbound NAT pool configuration for a load balancer.
 
 ### [Set-AzLoadBalancerInboundNatRuleConfig](Set-AzLoadBalancerInboundNatRuleConfig.md)
 Sets an inbound NAT rule configuration for a load balancer.
@@ -1096,19 +1163,19 @@ Sets the Tags for an existing PublicIpPrefix
 Sets the goal state for a route.
 
 ### [Set-AzRouteFilter](Set-AzRouteFilter.md)
-{{Fill in the Synopsis}}
+Updates a route filter.
 
 ### [Set-AzRouteFilterRuleConfig](Set-AzRouteFilterRuleConfig.md)
-{{Fill in the Synopsis}}
+Modifies the route filter rule of a route filter.
 
 ### [Set-AzRouteTable](Set-AzRouteTable.md)
 Sets the goal state for a route table.
 
 ### [Set-AzServiceEndpointPolicy](Set-AzServiceEndpointPolicy.md)
-{{Fill in the Synopsis}}
+Updates a service endpoint policy.
 
 ### [Set-AzServiceEndpointPolicyDefinition](Set-AzServiceEndpointPolicyDefinition.md)
-{{Fill in the Synopsis}}
+Updates a service endpoint policy definition.
 
 ### [Set-AzVirtualNetwork](Set-AzVirtualNetwork.md)
 Sets the goal state for a virtual network.

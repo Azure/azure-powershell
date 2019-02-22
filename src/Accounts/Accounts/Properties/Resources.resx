@@ -447,4 +447,7 @@
   <data name="ImportAuthenticationFailure" xml:space="preserve">
     <value>Unable to import authentication information into the global cache.  Please try executing the command again.</value>
   </data>
+  <data name="PasswordNotSupported" xml:space="preserve">
+    <value>Username + Password authentication is not supported in PowerShell Core.  Please use device code authentication for interactive log in, or Service Principal authentication for script log in.</value>
+  </data>
 </root>

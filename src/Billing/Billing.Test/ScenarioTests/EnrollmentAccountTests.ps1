@@ -16,7 +16,7 @@
 # 1. An enrollment account in EA. Please go to http://ea.azure.com/ to add and manage enrollment accounts.
 # 2. Run your test as either a user with an enrollment in EA.
 #    2b. Alternatively, you can grant a service principal access to your enrollment account using RBAC by running the following:
-#           New-AzureRmRoleAssignment -Scope /providers/Microsoft.Billing/enrollmentAccounts/<object id of the user with an enrollment in EA> -RoleDefinitionName Contributor -ServicePrincipalName <SPN>
+#           New-AzRoleAssignment -Scope /providers/Microsoft.Billing/enrollmentAccounts/<object id of the user with an enrollment in EA> -RoleDefinitionName Contributor -ServicePrincipalName <SPN>
 #        You can then run the tests below using this service principal.
 
 <#
@@ -25,7 +25,7 @@ List billing periods
 #>
 function Test-ListEnrollmentAccounts
 {
-    $enrollmentAccounts = Get-AzureRmEnrollmentAccount
+    $enrollmentAccounts = Get-AzEnrollmentAccount
 
     Assert-True {$enrollmentAccounts.Count -ge 1}
 	Assert-NotNull $enrollmentAccounts[0].ObjectId
@@ -38,10 +38,10 @@ Get billing period with specified name
 #>
 function Test-GetEnrollmentAccountWithName
 {
-    $enrollmentAccounts = @(Get-AzureRmEnrollmentAccount)
+    $enrollmentAccounts = @(Get-AzEnrollmentAccount)
 
 	$enrollmentAccountObjectId = $enrollmentAccounts[0].ObjectId
-    $enrollmentAccount = Get-AzureRmEnrollmentAccount -ObjectId $enrollmentAccountObjectId
+    $enrollmentAccount = Get-AzEnrollmentAccount -ObjectId $enrollmentAccountObjectId
 
 	Assert-AreEqual $enrollmentAccountObjectId $enrollmentAccount.ObjectId
 	Assert-NotNull $enrollmentAccount.PrincipalName
