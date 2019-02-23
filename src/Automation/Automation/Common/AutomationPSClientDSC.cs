@@ -988,17 +988,19 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 var jobTask = this.automationManagementClient.DscCompilationJob.CreateAsync(resourceGroupName, automationAccountName, jobId, createJobParameters).GetAwaiter();
                 DscCompilationJob job = null;
 
-                while (!jobTask.IsCompleted && job == null) {
+                do
+                {
                     System.Threading.Thread.Sleep(1000);
 
                     try
                     {
                         job = this.automationManagementClient.DscCompilationJob.Get(resourceGroupName, automationAccountName, jobId);
                     }
-                    catch {
+                    catch
+                    {
                         job = null;
                     }
-                }              
+                } while (job == null);
 
                 return new Model.CompilationJob(resourceGroupName, automationAccountName, job);
             }
