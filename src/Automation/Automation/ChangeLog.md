@@ -22,6 +22,7 @@
 * Added configuration name validation to Import-AzAutomationDscConfiguration cmdlet
 * Improved error handling for Import-AzAutomationDscConfiguration cmdlet
 * Changed behavior for Start-AzAutomationDscCompilationJob to just start the job instead of waiting for its completion.
+    - Fix for issue https://github.com/Azure/azure-powershell/issues/8347
 
 ## Version 1.1.0
 * Added support for Python 2 runbooks
