@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.0.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -244,7 +244,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'General availability for Az.RecoveryServices module.'
+        ReleaseNotes = '* Release with updated Authentication dependency'
 
         # Prerelease string of this module
         # Prerelease = ''

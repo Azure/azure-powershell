@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             HelpMessage = "SQL Database server name.")]
         [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string ServerName { get; set; }
+        public virtual string ServerName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the database to use.
@@ -42,6 +42,6 @@ namespace Microsoft.Azure.Commands.Sql.Common
             HelpMessage = "SQL Database name.")]
         [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
+        public virtual string DatabaseName { get; set; }
     }
 }
