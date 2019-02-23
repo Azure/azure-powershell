@@ -21,7 +21,7 @@ function Test-ZoneCrud
 	$zoneName = Get-RandomZoneName
     $resourceGroup = TestSetup-CreateResourceGroup
 
-	$createdZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1"}
+	$createdZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"}
 
 	Assert-NotNull $createdZone
 	Assert-NotNull $createdZone.Etag
@@ -43,7 +43,7 @@ function Test-ZoneCrud
 	Assert-AreEqual $createdZone.NumberOfRecordSets $retrievedZone.NumberOfRecordSets
 	Assert-Null $retrievedZone.Type
 
-	$updatedZone = Set-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1";tag2="value2"}
+	$updatedZone = Set-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1";tag2="value2"}
 
 	Assert-NotNull $updatedZone
 	Assert-NotNull $updatedZone.Etag
@@ -90,7 +90,7 @@ function Test-ZoneCrudTrimsDot
 	Assert-NotNull $retrievedZone
 	Assert-AreEqual $zoneName $retrievedZone.Name
 
-	$updatedZone = Set-AzPrivateDnsZone -Name $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1";tag2="value2"}
+	$updatedZone = Set-AzPrivateDnsZone -Name $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1";tag2="value2"}
 
 	Assert-NotNull $updatedZone
 	Assert-AreEqual $zoneName $updatedZone.Name
@@ -112,7 +112,7 @@ function Test-ZoneCrudWithPiping
 	$zoneName = Get-RandomZoneName
     $resourceGroup = TestSetup-CreateResourceGroup 
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$createdZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName -Tags @{tag1="value1"}
+	$createdZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName -Tag @{tag1="value1"}
 
 	Assert-NotNull $createdZone
 	Assert-NotNull $createdZone.Etag
@@ -120,7 +120,7 @@ function Test-ZoneCrudWithPiping
 	Assert-NotNull $createdZone.ResourceGroupName
 	Assert-AreEqual 1 $createdZone.Tags.Count
 
-	$updatedZone = Get-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName | Set-AzPrivateDnsZone -Tags $null
+	$updatedZone = Get-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName | Set-AzPrivateDnsZone -Tag $null
 
 	Assert-NotNull $updatedZone
 	Assert-NotNull $updatedZone.Etag
@@ -221,7 +221,7 @@ function Test-ZoneSetUsingResourceId
 {
 	$zoneName = Get-RandomZoneName
     $resourceGroup = TestSetup-CreateResourceGroup
-	$updatedZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1"} | Set-AzPrivateDnsZone -Tags @{tag1="value1";tag2="value2"}
+	$updatedZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"} | Set-AzPrivateDnsZone -Tag @{tag1="value1";tag2="value2"}
 	
 	Assert-NotNull $updatedZone
 	Assert-NotNull $updatedZone.Etag
@@ -242,7 +242,7 @@ function Test-ZoneRemoveUsingResourceId
 {
 	$zoneName = Get-RandomZoneName
     $resourceGroup = TestSetup-CreateResourceGroup	
-	New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1"} | Remove-AzPrivateDnsZone -PassThru -Confirm:$false
+	New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"} | Remove-AzPrivateDnsZone -PassThru -Confirm:$false
 	Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
 
@@ -307,7 +307,7 @@ function Test-ZoneList
 	Write-Debug $zoneName2
 	$resourceGroup = TestSetup-CreateResourceGroup
 
-	$createdZone1 = New-AzPrivateDnsZone -Name $zoneName1 -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1"}
+	$createdZone1 = New-AzPrivateDnsZone -Name $zoneName1 -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"}
 	$createdZone2 = New-AzPrivateDnsZone -Name $zoneName2 -ResourceGroupName $resourceGroup.ResourceGroupName
 
 	$result = Get-AzPrivateDnsZone -ResourceGroupName $resourceGroup.ResourceGroupName
@@ -333,7 +333,7 @@ function Test-ZoneListSubscription
 	$zoneName1 = Get-RandomZoneName
 	$zoneName2 = $zoneName1 + "A"
 	$resourceGroup = TestSetup-CreateResourceGroup
-    $createdZone1 = New-AzPrivateDnsZone -Name $zoneName1 -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1"}
+    $createdZone1 = New-AzPrivateDnsZone -Name $zoneName1 -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"}
 	$createdZone2 = New-AzPrivateDnsZone -Name $zoneName2 -ResourceGroupName $resourceGroup.ResourceGroupName
 
 	$result = Get-AzPrivateDnsZone

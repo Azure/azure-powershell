@@ -28,23 +28,44 @@ You can use the **PrivateDnsZone** object to update the zone, for example you ca
 ### Example 1: Get a zone
 ```
 PS C:\> $Zone = Get-AzPrivateDnsZone -ResourceGroupName "MyResourceGroup" -Name "myzone.com"
-```
 
 This example gets the Private DNS zone named myzone.com from the specified resource group, and then stores it in the $Zone variable.
 $Zone looks something like this: 
 
 Name                          : myzone.com
-ResourceId					  : "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/MyResourceGroup/PrivateZones/myzone.com"
+ResourceId:                   : "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/MyResourceGroup/PrivateZones/myzone.com"
 ResourceGroupName             : MyResourceGroup
-Location					  : global
+Location					  : 
 Etag                          : 00000002-0000-0000-6cd5-f11f2628d401
 Tags                          : {}
 NumberOfRecordSets            : 1
 MaxNumberOfRecordSets         : 5000
+```
 
 ### Example 2: Get all of the zones in a resource group
 ```
 PS C:\> $Zones = Get-AzPrivateDnsZone -ResourceGroupName "MyResourceGroup"
+
+Name                  : zone1.com
+ResourceId            : /subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/MyResourceGroup/providers/Micros
+                        oft.Network/privateDnsZones/zone1.com
+ResourceGroupName     : MyResourceGroup
+Location              :
+Etag                  : a90c3315-27f5-4051-a4a7-e35716b996a9
+Tags                  :
+NumberOfRecordSets    : 1
+MaxNumberOfRecordSets : 5000
+
+Name                  : zone2.com
+ResourceId            : /subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/MyResourceGroup/providers/Micros
+                        oft.Network/privateDnsZones/zone2.com
+ResourceGroupName     : MyResourceGroup
+Location              :
+Etag                  : 9ab7a8af-94ec-42a0-8e21-633e2e3baa0d
+Tags                  :
+NumberOfRecordSets    : 1
+MaxNumberOfRecordSets : 5000
+
 ```
 
 This example gets all of the Private DNS zones in the specified resource group, and then stores it in the $Zones variable.
@@ -52,6 +73,27 @@ This example gets all of the Private DNS zones in the specified resource group, 
 ### Example 3: Get all of the zones in a subscription
 ```
 PS C:\> $Zones = Get-AzPrivateDnsZone
+
+Name                  : zone1.com
+ResourceId            : /subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/MyResourceGroup1/providers/Micros
+                        oft.Network/privateDnsZones/zone1.com
+ResourceGroupName     : MyResourceGroup1
+Location              :
+Etag                  : a90c3315-27f5-4051-a4a7-e35716b996a9
+Tags                  :
+NumberOfRecordSets    : 1
+MaxNumberOfRecordSets : 5000
+
+Name                  : zone2.com
+ResourceId            : /subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/MyResourceGroup2/providers/Micros
+                        oft.Network/privateDnsZones/zone2.com
+ResourceGroupName     : MyResourceGroup2
+Location              :
+Etag                  : 9ab7a8af-94ec-42a0-8e21-633e2e3baa0d
+Tags                  :
+NumberOfRecordSets    : 1
+MaxNumberOfRecordSets : 5000
+
 ```
 
 This example gets all of the Private DNS zones in the current Azure subscription, and then stores them in the $Zones variable.
