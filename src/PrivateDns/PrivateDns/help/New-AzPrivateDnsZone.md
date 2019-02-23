@@ -13,7 +13,7 @@ Creates a new private DNS zone.
 ## SYNTAX
 
 ```
-New-AzPrivateDnsZone -Name <String> -ResourceGroupName <String> [-Tags <Hashtable>]
+New-AzPrivateDnsZone -ResourceGroupName <String> -Name <String> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,19 +30,20 @@ whether the cmdlet prompts you for confirmation.
 ### Example 1: Create a Private DNS zone
 ```
 PS C:\>$Zone = New-AzPrivateDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
-```
+
 
 This command creates a new private DNS zone named myzone.com in the specified resource group, and then
 stores it in the $Zone variable. $Zone object looks something like this,
 
 Name                          : myzone.com
-ResourceId					  : "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/MyResourceGroup/PrivateZones/myzone.com"
+ResourceId                    : "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/MyResourceGroup/PrivateZones/myzone.com"
 ResourceGroupName             : MyResourceGroup
-Location					  : global
+Location					  : 
 Etag                          : 00000002-0000-0000-6cd5-f11f2628d401
 Tags                          : {}
 NumberOfRecordSets            : 1
 MaxNumberOfRecordSets         : 5000
+```
 
 ## PARAMETERS
 
@@ -91,9 +92,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
-Key-value pairs in the form of a hash table. For example:
-@{key0="value0";key1=$null;key2="value2"}
+### -Tag
+A hash table which represents resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable

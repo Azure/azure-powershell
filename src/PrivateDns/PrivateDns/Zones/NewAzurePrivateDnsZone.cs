@@ -26,16 +26,15 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsZone", SupportsShouldProcess = true), OutputType(typeof(PSPrivateDnsZone))]
     public class NewAzurePrivateDnsZone : PrivateDnsBaseCmdlet
     {
-        [Parameter(Mandatory = true, HelpMessage = "The full name of the zone (without a terminating dot).")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
         [Parameter(Mandatory = true, HelpMessage = "The resource group in which to create the zone.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("Tags")]
+        [Parameter(Mandatory = true, HelpMessage = "The full name of the zone (without a terminating dot).")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
 

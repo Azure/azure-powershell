@@ -41,22 +41,21 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Alias("Tags")]
-        [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.", ParameterSetName = FieldsParameterSetName)]
-        [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.", ParameterSetName = ResourceParameterSetName)]
-        public Hashtable Tag { get; set; }
+        [Parameter(ParameterSetName = ResourceParameterSetName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Private DNS Zone ResourceID.")]
+        [ResourceIdCompleter("Microsoft.Network/privateDnsZones")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The zone object to set.", ParameterSetName = ObjectParameterSetName)]
         [ValidateNotNullOrEmpty]
         public PSPrivateDnsZone PrivateZone { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.", ParameterSetName = FieldsParameterSetName)]
+        [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.", ParameterSetName = ResourceParameterSetName)]
+        public Hashtable Tag { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.", ParameterSetName = ObjectParameterSetName)]
         public SwitchParameter Overwrite { get; set; }
-
-        [Parameter( ParameterSetName = ResourceParameterSetName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Private DNS Zone ResourceID.")]
-        [ResourceIdCompleter("Microsoft.Network/privateDnsZones")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {

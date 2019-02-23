@@ -14,13 +14,13 @@ Updates a Private DNS zone from a resource group.
 
 ### Fields (Default)
 ```
-Set-AzPrivateDnsZone -ResourceGroupName <String> -Name <String> [-Tags <Hashtable>]
+Set-AzPrivateDnsZone -ResourceGroupName <String> -Name <String> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Set-AzPrivateDnsZone [-Tags <Hashtable>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Set-AzPrivateDnsZone -ResourceId <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,31 +31,31 @@ Set-AzPrivateDnsZone -PrivateZone <PSPrivateDnsZone> [-Overwrite] [-DefaultProfi
 ```
 
 ## DESCRIPTION
-The **Remove-AzPrivateDnsZone** cmdlet permanently deletes a private Domain Name System (DNS) zone from a specified resource group.
-All record sets contained in the zone are also deleted.
-You can pass a **PrivateDnsZone** object using the *Name* parameter or by using the pipeline operator, or alternatively you can specify the *ZoneName* and *ResourceGroupName* parameters.
+The **Set-AzPrivateDnsZone** cmdlet permanently updates a private Domain Name System (DNS) zone from a specified resource group.
+You can pass a **PrivateDnsZone** object using the *PrivateZone* parameter or by using the pipeline operator, or alternatively you can specify the *Name* and *ResourceGroupName* parameters.
 You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
-When specifying the zone using a **PrivateDnsZone** object (passed via the pipeline or *Zone* parameter), the zone is not deleted if it has been changed in Azure DNS since the local **PrivateDnsZone** object was retrieved (only operations directly on the DNS zone resource count as changes, operations on record sets within the zone do not).
+When specifying the zone using a **PrivateDnsZone** object (passed via the pipeline or *Zone* parameter), the zone is not updated if it has been changed in Azure DNS since the local **PrivateDnsZone** object was retrieved (only operations directly on the DNS zone resource count as changes, operations on record sets within the zone do not).
 This provides protection for concurrent zone changes.
-This can be suppressed using the *Overwrite* parameter, which deletes the zone regardless of concurrent changes.
+This can be suppressed using the *Overwrite* parameter, which updates the zone regardless of concurrent changes.
 
 ## EXAMPLES
 
 ### Example 1: Updates a private zone
 ```
 PS C:\>Set-AzPrivateDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup" -Tags @{tag1="value1";tag2="value2"}
-```
+
 
 This command updates the zone named myzone.com from the resource group named MyResourceGroup with the tags provided. Use Get-AzPrivateDnsZone to retrieve the updated zone. Updated zone would look something like this:
 
 Name                          : myzone.com
-ResourceId					  : "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/MyResourceGroup/PrivateZones/myzone.com"
+ResourceId                    : "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/MyResourceGroup/PrivateZones/myzone.com"
 ResourceGroupName             : MyResourceGroup
-Location					  : global
+Location					  : 
 Etag                          : 00000002-0000-0000-6cd5-f11f2628d401
 Tags                          : {tag1="value1";tag2="value2"}
 NumberOfRecordSets            : 1
 MaxNumberOfRecordSets         : 5000
+```
 
 ## PARAMETERS
 
@@ -92,9 +92,9 @@ Accept wildcard characters: False
 ```
 
 ### -Overwrite
-When specifying the zone using a **PrivateDnsZone** object (passed via the pipeline or *Zone* parameter), the zone is not deleted if it has been changed in Azure DNS since the local **DnsZone** object was retrieved (only operations directly on the DNS zone resource count as changes, operations on record sets within the zone do not).
+When specifying the zone using a **PrivateDnsZone** object (passed via the pipeline or *Zone* parameter), the zone is not updated if it has been changed in Azure DNS since the local **DnsZone** object was retrieved (only operations directly on the DNS zone resource count as changes, operations on record sets within the zone do not).
 This provides protection for concurrent zone changes.
-This can be suppressed using the *Overwrite* parameter, which deletes the zone regardless of concurrent changes.
+This can be suppressed using the *Overwrite* parameter, which updates the zone regardless of concurrent changes.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group that contains the zone to remove.
+Specifies the name of the resource group that contains the zone to be updated.
 You must also specify the *ZoneName* parameter.
 Alternatively, you can specify the private DNS zone using a **DnsZone** object, passed via either the pipeline or the *Zone* parameter.
 
@@ -155,7 +155,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 A hash table which represents resource tags.
 
 ```yaml
@@ -206,9 +206,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone
-
 ### System.String
+
+### Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone
 
 ## OUTPUTS
 
