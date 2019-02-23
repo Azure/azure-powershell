@@ -47,7 +47,7 @@
   </Target>
 
   <ItemGroup>
-    <None Update="StartupScripts\LoadPlatformAssemblies.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="PostImportScripts\LoadPlatformAssemblies.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 
