@@ -173,15 +173,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 string fileContent = null;
                 string configurationName = String.Empty;
 
-                try
+                if (File.Exists(Path.GetFullPath(sourcePath)))
                 {
-                    if (File.Exists(Path.GetFullPath(sourcePath)))
-                    {
-                        fileContent = System.IO.File.ReadAllText(sourcePath);
-                    }
+                    fileContent = System.IO.File.ReadAllText(sourcePath);
                 }
-                catch (Exception)
-                {
+                else {
                     // exception in accessing the file path
                     throw new FileNotFoundException(
                                         string.Format(
@@ -191,6 +187,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
                 // configuration name is same as filename
                 configurationName = Path.GetFileNameWithoutExtension(sourcePath);
+
+                if (!System.Text.RegularExpressions.Regex.IsMatch(configurationName, "^([a-zA-Z]{1}([a-zA-Z0-9]|_){0,63})$")) {
+                    throw new PSInvalidOperationException("Invalid configuration name. Valid configuration names can contain only letters, numbers, and underscores. The name must start with a letter. The length of the name must be between 1 and 64 characters. ");
+                }
 
                 // for the private preview, configuration can be imported in Published mode only
                 // Draft mode is not implemented
@@ -238,14 +238,30 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         }
                 };
 
-                var configuration =
-                    this.automationManagementClient.DscConfiguration.CreateOrUpdate(
+                try
+                {
+                    var configuration =
+                        this.automationManagementClient.DscConfiguration.CreateOrUpdate(
                         resourceGroupName,
                         automationAccountName,
                         configurationName,
                         configurationCreateParameters);
 
-                return new Model.DscConfiguration(resourceGroupName, automationAccountName, configuration);
+                    return new Model.DscConfiguration(resourceGroupName, automationAccountName, configuration);
+                }
+                catch (Microsoft.Azure.Management.Automation.Models.ErrorResponseException ex)
+                {
+                    if (ex.Response.Content != null)
+                    {
+                        throw new Microsoft.Azure.Management.Automation.Models.ErrorResponseException(ex.Response.Content, ex);
+                    }
+                    else {
+                        throw ex;
+                    }
+                }
+                catch (Exception ex) {
+                    throw ex;
+                }
             }
         }
 
