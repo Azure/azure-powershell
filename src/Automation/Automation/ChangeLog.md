@@ -20,6 +20,8 @@
 ## Upcoming Release
 * Fixed issue when retreiving certain monthly schedules in several Azure Automation cmdlets
 * Updated Get-AzAutomationJobOutputRecord to handle JSON and Text record values.
+    - Fix for issue https://github.com/Azure/azure-powershell/issues/7977
+    - Fix for issue https://github.com/Azure/azure-powershell/issues/8600
 
 ## Version 1.1.1
 * Update help for Import-AzAutomationDscNodeConfiguration
