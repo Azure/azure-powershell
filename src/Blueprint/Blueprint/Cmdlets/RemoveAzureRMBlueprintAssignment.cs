@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
     public class RemoveAzureRmBlueprintAssignment : BlueprintCmdletBase
     {
         #region Parameters
-        [Parameter(ParameterSetName = ParameterSetNames.DeleteBlueprintAssignmentByName, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.SubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.DeleteBlueprintAssignmentByName, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 

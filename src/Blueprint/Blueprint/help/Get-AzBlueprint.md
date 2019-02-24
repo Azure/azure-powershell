@@ -8,18 +8,13 @@ schema: 2.0.0
 # Get-AzBlueprint
 
 ## SYNOPSIS
-Get one or more blueprints.
+Get one or more blueprint definitions.
 
 ## SYNTAX
 
 ### SubscriptionScope (Default)
 ```
 Get-AzBlueprint [[-SubscriptionId] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ManagementGroupScope
-```
-Get-AzBlueprint [-ManagementGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BySubscriptionAndName
@@ -30,8 +25,8 @@ Get-AzBlueprint [[-SubscriptionId] <String>] [-Name] <String> [-DefaultProfile <
 
 ### BySubscriptionNameAndVersion
 ```
-Get-AzBlueprint [[-SubscriptionId] <String>] [-Version] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzBlueprint [[-SubscriptionId] <String>] [-Name] <String> [-Version] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BySubscriptionNameAndLatestPublished
@@ -40,70 +35,75 @@ Get-AzBlueprint [[-SubscriptionId] <String>] [-Name] <String> [-LatestPublished]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ManagementGroupScope
+```
+Get-AzBlueprint [-ManagementGroupId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ByManagementGroupAndName
 ```
-Get-AzBlueprint [-ManagementGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzBlueprint [-ManagementGroupId] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByManagementGroupNameAndVersion
 ```
-Get-AzBlueprint [-ManagementGroupName] <String> [-Version] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzBlueprint [-ManagementGroupId] <String> [-Name] <String> [-Version] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByManagementGroupNameAndLatestPublished
 ```
-Get-AzBlueprint [-ManagementGroupName] <String> [-Name] <String> [-LatestPublished]
+Get-AzBlueprint [-ManagementGroupId] <String> [-Name] <String> [-LatestPublished]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get one or more blueprints. Blueprints can be queried at management group or subscription scope.
+Get one or more blueprint definitions. Blueprint definitions exist at the management group or subscription scope.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzBlueprint
+```powershell
+PS> Get-AzBlueprint
 ```
 
-Gets the Blueprints within the subscription in current context.
+Get the blueprint definitions within the current subscription.
 
 ### Example 2
-```
-PS C:\> Get-AzBlueprint -ManagementGroupName "myManagementGroupId"
+```powershell
+PS> Get-AzBlueprint -ManagementGroupName "myManagementGroupId"
 ```
 
-Gets the list of Blueprints within the specified management group.
+Gets the blueprint definitions within the specified management group.
 
 ### Example 3
-```
-PS C:\> Get-AzBlueprint -SubscriptionId "00000000-1111-0000-1111-000000000000"
+```powershell
+PS> Get-AzBlueprint -SubscriptionId "00000000-1111-0000-1111-000000000000"
 ```
 
-Gets the list of Blueprints within the given subscription.
+Get the blueprint definitions within the specified subscription.
 
 ### Example 4
-```
-PS C:\> Get-AzBlueprint -SubscriptionId "00000000-1111-0000-1111-000000000000" -Name "myBlueprintName"
+```powershell
+PS> Get-AzBlueprint -SubscriptionId "00000000-1111-0000-1111-000000000000" -Name "myBlueprintName"
 ```
 
-Gets the Blueprint with given name.
+Get the blueprint definition with the given name within the specified subscription.
 
 ### Example 5
-```
-PS C:\> Get-AzBlueprint -ManagementGroupName "myManagementGroupId" -Name "myBlueprintName" -Version "myBlueprintVersion"
+```powershell
+PS> Get-AzBlueprint -ManagementGroupName "myManagementGroupId" -Name "myBlueprintName" -Version "myBlueprintVersion"
 ```
 
-Gets the Blueprint with given version.
+Get the blueprint definition with the given name and version within the specified management group.
 
 ### Example 6
-```
-PS C:\> Get-AzBlueprint -ManagementGroupName "myManagementGroupId" -Name "myBlueprintName" -LatestPublished
+```powershell
+PS> Get-AzBlueprint -ManagementGroupName "myManagementGroupId" -Name "myBlueprintName" -LatestPublished
 ```
 
-Get the lastest published Blueprint.
+Get the lastest published blueprint definition with the given name within the specified management group.
 
 ## PARAMETERS
 
@@ -123,8 +123,8 @@ Accept wildcard characters: False
 ```
 
 ### -LatestPublished
-The latest published Blueprint flag.
-When set, execution returns the latest published version of Blueprint.
+The latest published blueprint definition flag.
+When set, execution returns the latest published version of the blueprint definition.
 Defaults to false.
 
 ```yaml
@@ -139,8 +139,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ManagementGroupName
-Management Group Id where Blueprint is located.
+### -ManagementGroupId
+Management Group Id where the blueprint definition is saved.
 
 ```yaml
 Type: System.String
@@ -159,7 +159,7 @@ Blueprint definition name.
 
 ```yaml
 Type: System.String
-Parameter Sets: BySubscriptionAndName, BySubscriptionNameAndLatestPublished, ByManagementGroupAndName, ByManagementGroupNameAndLatestPublished
+Parameter Sets: BySubscriptionAndName, BySubscriptionNameAndVersion, BySubscriptionNameAndLatestPublished, ByManagementGroupAndName, ByManagementGroupNameAndVersion, ByManagementGroupNameAndLatestPublished
 Aliases:
 
 Required: True
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription Id.
+Subscription Id where the blueprint definition is saved.
 
 ```yaml
 Type: System.String
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-Blueprint definition version.
+Published blueprint definition version.
 
 ```yaml
 Type: System.String

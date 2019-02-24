@@ -14,8 +14,9 @@ Update an existing blueprint assignment.
 
 ```
 Set-AzBlueprintAssignment -Name <String> -Blueprint <PSBlueprintBase> [-SubscriptionId <String[]>]
- -Location <String> [-Parameters <Hashtable>] [-Lock <PSLockMode>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Location <String> [-ResourceGroups <Hashtable>] [-Parameters <Hashtable>] [-SystemAssignedIdentity]
+ [-UserAssignedIdentity <String>] [-Lock <PSLockMode>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,10 +26,10 @@ Update an existing blueprint assignment.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -Parameters @{P1="v1"; P2="v2"}
+PS C:\> Set-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -Parameters @{P1="v3"; P2="v4"} -SystemAssignedIdentity
 ```
 
-Update an existing blueprint assignment.
+Update an existing blueprint assignment of the blueprint definition `$blueprintObject` within the specified subscription, updating the parameters. Uses system-assigned identity. The location defines the region for creating the managed identity.
 
 ## PARAMETERS
 
@@ -86,7 +87,7 @@ Learn more at aka.ms/blueprintlocks
 Type: System.Nullable`1[Microsoft.Azure.Commands.Blueprint.Models.PSLockMode]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Unknown, None, AllResources
+Accepted values: None, AllResourcesReadOnly, AllResourcesDoNotDelete
 
 Required: False
 Position: Named
@@ -125,12 +126,57 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceGroups
+{{Fill ResourceGroups Description}}
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 SubscriptionId to assign the Blueprint.
 Can be a comma delimited list of subscriptionId strings.
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SystemAssignedIdentity
+System assigned identity(MSI) to deploy the artifacts.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+User assigned identity(MSI) to deploy the artifacts.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

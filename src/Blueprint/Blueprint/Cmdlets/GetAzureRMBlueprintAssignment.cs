@@ -11,8 +11,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
     {
         #region Parameters
 
-        [Parameter(ParameterSetName = ParameterSetNames.BlueprintAssignmentByName, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.SubscriptionId)]
-        [Parameter(ParameterSetName = ParameterSetNames.BlueprintAssignmentsBySubscription, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.SubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.BlueprintAssignmentByName, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.BlueprintAssignmentsBySubscription, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 

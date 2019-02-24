@@ -22,8 +22,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 {
     public interface IBlueprintClient
     {
-        IAzureSubscription Subscription { get; }
-
         PSBlueprint GetBlueprint(string scope, string blueprintName);
 
         IEnumerable<PSBlueprint> ListBlueprints(string scope);

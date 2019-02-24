@@ -36,8 +36,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         {
             get
             {
-                return blueprintClient = blueprintClient ?? new BlueprintClient(DefaultProfile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                                             ClientCredentials);
+                return blueprintClient = blueprintClient ?? new BlueprintClient(DefaultProfile.DefaultContext);
             }
             set => blueprintClient = value;
         }
@@ -50,12 +49,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         {
             get
             {
-                return blueprintClientWithVersion = blueprintClientWithVersion ?? new BlueprintClient(DefaultProfile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                                                        ClientCredentials,
-                                                        new DelegatingHandler[]
-                                                        {
-                                                            new ApiExpandHandler()
-                                                        });
+                return blueprintClientWithVersion = blueprintClientWithVersion ?? new BlueprintClient(DefaultProfile.DefaultContext, new ApiExpandHandler());
             }
             set => blueprintClient = value;
         }

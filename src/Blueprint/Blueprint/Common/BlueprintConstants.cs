@@ -32,14 +32,15 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
         public static class ParameterHelpMessages
         {
-            public const string SubscriptionId = "Subscription Id.";
+            public const string DefinitionSubscriptionId = "Subscription Id where the blueprint definition is saved.";
+            public const string AssignmentSubscriptionId = "Subscription Id the blueprint assignment is deployed to.";
             public const string BlueprintAssignmentName = "Blueprint assignment name.";
             public const string BlueprintAssignmentObject = "Blueprint assignment object.";
             public const string BlueprintObject = "Blueprint object.";
-            public const string ManagementGroupId = "Management Group Id where Blueprint is located.";
+            public const string DefinitionManagementGroupId = "Management Group Id where the blueprint definition is saved.";
             public const string BlueprintDefinitionName = "Blueprint definition name.";
-            public const string BlueprintDefinitionVersion = "Blueprint definition version.";
-            public const string LatestPublishedFlag = "The latest published Blueprint flag. When set, execution returns the latest published version of Blueprint. Defaults to false.";
+            public const string BlueprintDefinitionVersion = "Published blueprint definition version.";
+            public const string LatestPublishedFlag = "The latest published blueprint definition flag. When set, execution returns the latest published version of the blueprint definition.";
             public const string SubscriptionIdToAssign = "SubscriptionId to assign the Blueprint. Can be a comma delimited list of subscriptionId strings.";
             public const string Location = "Region for managed identity to be created in. Learn more at aka.ms/blueprintmsi";
             public const string Parameters = "Collection of key/value pairs for parameters and their corresponding values.";
