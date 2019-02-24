@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Net.Http;
+using System.Net;
 using System.Threading;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
@@ -359,7 +360,16 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 {
                     await ClientCredentials.ProcessHttpRequestAsync(httpRequest, new CancellationToken(false)).ConfigureAwait(false);
                     httpResponse = await client.SendAsync(httpRequest, new CancellationToken(false));
-                    responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                    HttpStatusCode statusCode = httpResponse.StatusCode;
+                    // If we can't find the given subscription in the tenant, show error message.
+                    if (statusCode == HttpStatusCode.NotFound)
+                    {
+                        CloudException cex = new CloudException(string.Format("Subscription Id '{0}' could not be found in current tenant.", subscriptionId));
+                        throw cex;
+                    }
+
+                    responseContent = httpResponse.EnsureSuccessStatusCode().Content.ReadAsStringAsync().Result;
                 }
                 return responseContent;
 
