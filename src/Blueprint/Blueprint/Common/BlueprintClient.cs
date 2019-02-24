@@ -32,26 +32,32 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
     {
         private readonly BlueprintManagement.IBlueprintManagementClient blueprintManagementClient;
 
-        public IAzureSubscription Subscription { get; private set; }
-
-        // Injection point for unit tests
-        public BlueprintClient()
-        {
-        }
-
         /// <summary>
         /// Construct a BlueprintClient BlueprintManagementClient.
         /// </summary>
         /// <param name="subscription"></param>
         /// <param name="blueprintManagementClient"></param>
-        public BlueprintClient(Uri uri, ServiceClientCredentials credentials)
+        public BlueprintClient(IAzureContext context)
         {
-            this.blueprintManagementClient = new BlueprintManagementClient(uri, credentials);
+            //Remove our custom api handler if it's in the current session's custom handlers list
+            var customHandlers = AzureSession.Instance.ClientFactory.GetCustomHandlers();
+            var apiExpandHandler = customHandlers?.Where(handler => handler.GetType().Equals(typeof(ApiExpandHandler))).FirstOrDefault();
+
+            if (apiExpandHandler != null )
+            {
+                AzureSession.Instance.ClientFactory.RemoveHandler(apiExpandHandler.GetType());
+            }
+
+            this.blueprintManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<BlueprintManagementClient>(context,
+                AzureEnvironment.Endpoint.ResourceManager);
         }
 
-        public BlueprintClient(Uri uri, ServiceClientCredentials credentials, DelegatingHandler[] handler)
+        public BlueprintClient(IAzureContext context, ApiExpandHandler handler)
         {
-            this.blueprintManagementClient = new BlueprintManagementClient(uri, credentials, handler);
+            AzureSession.Instance.ClientFactory.AddHandler(handler);
+
+            this.blueprintManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<BlueprintManagementClient>(context,
+                AzureEnvironment.Endpoint.ResourceManager);
         }
 
         public PSBlueprint GetBlueprint(string scope, string blueprintName)

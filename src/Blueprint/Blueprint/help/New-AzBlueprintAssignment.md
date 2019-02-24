@@ -8,39 +8,52 @@ schema: 2.0.0
 # New-AzBlueprintAssignment
 
 ## SYNOPSIS
-Assign a blueprint to a subscription.
+Assign a blueprint definition to a subscription.
 
 ## SYNTAX
 
 ```
 New-AzBlueprintAssignment -Name <String> -Blueprint <PSBlueprintBase> [-SubscriptionId <String[]>]
- -Location <String> [-Parameters <Hashtable>] [-Lock <PSLockMode>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Location <String> [-ResourceGroups <Hashtable>] [-Parameters <Hashtable>] [-SystemAssignedIdentity]
+ [-UserAssignedIdentity <String>] [-Lock <PSLockMode>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Assign a blueprint to a subscription.
+Assign a blueprint definition to a subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -Parameters @{P1="v1"; P2="v2"}
+PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -ResourceGroups $rg -Parameters $params -SystemAssignedIdentity
 ```
+ResourceGroups format: @{RG1=@{name='rg_name';location='location'}}
+Example: $rg = @{ResourceGroup=@{name='storage_rg';location='eastus'}}
 
-Create a new assignment.
+Parameters format: @{P1='v1'; P2='v2'}
+Example: $param=@{audituseofclassicvirtualmachines_effect='Audit'}
+
+Create a new blueprint assignment of the blueprint definition `$blueprintObject` within the specified subscription using the defined parameter and resource group dictionary. Uses system-assigned identity. The location defines the region for creating the managed identity.
 
 ### Example 2
 ```powershell
 PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -Parameters @{P1="v1"; P2="v2"} -Lock AllResources
 ```
 
-Create a new assignment with resource locks.
+Create a new blueprint assignment of the blueprint definition `$blueprintObject` within the specified subscription using the defined parameter and resource group dictionary and configuring resource locking to **AllResources**. Defaults to using system-assigned identity.  The location defines the region for creating the managed identity.
+
+### Example 3
+```powershell
+PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -Parameters @{P1="v1"; P2="v2"} -UserAssignedIdentity "/subscriptions/00000000-1111-0000-1111-000000000000/resourceGroups/my-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-user-defined-identity"
+```
+
+Create a new blueprint assignment of the blueprint definition `$blueprintObject` within the specified subscription using the defined defined parameter and resource group dictionary using the specified user-assigned identity id.
 
 ## PARAMETERS
 
 ### -Blueprint
-Blueprint object.
+Blueprint definition object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase
@@ -93,7 +106,7 @@ Learn more at aka.ms/blueprintlocks
 Type: System.Nullable`1[Microsoft.Azure.Commands.Blueprint.Models.PSLockMode]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Unknown, None, AllResources
+Accepted values: None, AllResourcesReadOnly, AllResourcesDoNotDelete
 
 Required: False
 Position: Named
@@ -132,8 +145,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceGroups
+{{Fill ResourceGroups Description}}
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
-SubscriptionId to assign the Blueprint.
+Subscription Id to assign the blueprint definition.
 Can be a comma delimited list of subscriptionId strings.
 
 ```yaml
@@ -145,6 +173,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SystemAssignedIdentity
+System assigned identity(MSI) to deploy the artifacts.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+User assigned identity(MSI) to deploy the artifacts.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

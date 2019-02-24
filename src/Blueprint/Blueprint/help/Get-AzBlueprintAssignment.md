@@ -25,23 +25,23 @@ Get-AzBlueprintAssignment [[-SubscriptionId] <String>] [-DefaultProfile <IAzureC
 ```
 
 ## DESCRIPTION
-Get one or more blueprint assignments. Blueprint assignments are queried at subscription scope.
+Get one or more blueprint assignments. Blueprint assignments exist at the subscription scope.
 
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> Get-AzBlueprintAssignment -SubscriptionId 00000000-1111-0000-1111-000000000000
 ```
 
-Get a list of Blueprint assignments within the specified subscription.
+Get the blueprint assignments within the specified subscription.
 
 ### Example 2
-```
+```powershell
 PS C:\> Get-AzBlueprintAssignment -SubscriptionId 00000000-1111-0000-1111-000000000000 -Name "myAssignmentName"
 ```
 
-Get the specified Blueprint assignment.
+Get the blueprint assignment with the given name within the specified subscription.
 
 ## PARAMETERS
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-SubscriptionId.
+Subscription Id the blueprint assignment is deployed to.
 
 ```yaml
 Type: System.String

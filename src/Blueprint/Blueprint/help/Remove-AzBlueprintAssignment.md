@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzBlueprintAssignment
 
 ## SYNOPSIS
-Remove a blueprint that has been assigned to a subscription.
+Remove a blueprint assignment from a subscription.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Remove-AzBlueprintAssignment [-BlueprintAssignmentObject] <PSBlueprintAssignment
 ```
 
 ## DESCRIPTION
-Remove a blueprint that has been assigned to a subscription.
+Remove a blueprint assignment from a subscription.
 
 ## EXAMPLES
 
@@ -34,7 +34,7 @@ Remove a blueprint that has been assigned to a subscription.
 PS C:\> Remove-AzBlueprintAssignment -Name "myAssignment" -Subscription 00000000-1111-0000-1111-000000000000 -Confirm
 ```
 
-Remove the specified assigment.
+Remove the blueprint assignment specified by name from the specified subscription. The cmdlet will prompt for confirmation before executing the command.
 
 ## PARAMETERS
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription Id.
+Subscription Id the blueprint assignment is deployed to.
 
 ```yaml
 Type: System.String

@@ -10,22 +10,23 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
     /// <summary>
     /// Delegating handler class to append $expand=versions to the URL. Needed to get blueprint versions.
     /// </summary>
-    class ApiExpandHandler : DelegatingHandler
+    public class ApiExpandHandler : DelegatingHandler, ICloneable
     {
-        public ApiExpandHandler()
-        {
-
-        }
+        private const string ExpandString = "versions";
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             var uriString = request.RequestUri.ToString();
             UriBuilder uri = new UriBuilder(uriString);
-            var apiString =  uri.ToString() + "&$expand=versions";
+            var expandQueryString = "&$expand=" + ExpandString;
+            var apiString =  uri.ToString() + expandQueryString;
             request.RequestUri = new Uri(apiString);
 
             return base.SendAsync(request, cancellationToken);
         }
-
+        public object Clone()
+        {
+            return new ApiExpandHandler();
+        }
     }
 }
