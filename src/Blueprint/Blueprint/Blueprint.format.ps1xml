@@ -152,7 +152,7 @@
               </ListItem>
               <ListItem>
                 <Label>Scope</Label>
-                <PropertyName>SubscriptionId</PropertyName>
+                <PropertyName>Scope</PropertyName>
               </ListItem>
               <ListItem>
                 <PropertyName>Description</PropertyName>
