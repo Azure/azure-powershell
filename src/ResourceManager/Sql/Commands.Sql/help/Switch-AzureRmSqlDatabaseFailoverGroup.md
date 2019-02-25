@@ -22,6 +22,10 @@ Switch-AzureRmSqlDatabaseFailoverGroup [-ServerName] <String> [[-FailoverGroupNa
 This command swaps the roles of the servers in a Failover Group and switches all secondary databases to the primary role. All new TDS sessions are automatically re-routed to the secondary server after the DNS client cache is refreshed. When the original primary server is back online, all formerly primary databases in it will switch to the secondary role.
 The Failover Group's secondary server must be used to execute this command.
 
+## Permissions
+
+Failover is an action on the target-side failover group entity, so to failover you need RBAC write access to the failover group resource path on the new primary server (ex: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}`)
+
 ## EXAMPLES
 
 ### Example 1
