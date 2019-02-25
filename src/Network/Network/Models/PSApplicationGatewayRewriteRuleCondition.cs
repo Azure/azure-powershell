@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string Variable { get; set; }
 
-        public string? Pattern { get; set; }
+        public string Pattern { get; set; }
 
         public bool? IgnoreCase { get; set; }
 
