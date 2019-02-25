@@ -29,6 +29,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewBlueprintAssignmentWithSystemAssignedIdentity()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewBlueprintAssignmentWithSystemAssignedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewBlueprintAssignment()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewBlueprintAssignment");

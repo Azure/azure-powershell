@@ -1,0 +1,203 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "//providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "Ly9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZW1lbnQvbWFuYWdlbWVudEdyb3Vwcy9BekJsdWVwcmludEFzc2lnblRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5CbHVlcHJpbnQvYmx1ZXByaW50cy9GaWxpei1Qcy1UZXN0MT9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "feab1047-d780-419c-916a-6b0611cc3b31"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Blueprint.BlueprintManagementClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4ab1922c-7891-4de8-9be1-03a7f4ee9c71"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "cb33d0d1-bee5-425c-a351-8e99899e5fd2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190225T211929Z:cb33d0d1-bee5-425c-a351-8e99899e5fd2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 25 Feb 2019 21:19:28 GMT"
+        ],
+        "Content-Length": [
+          "956"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"type\": \"string\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Effect (Policy: Audit use of classic virtual machines)\"\r\n        },\r\n        \"defaultValue\": \"Audit\",\r\n        \"allowedValues\": [\r\n          \"Audit\",\r\n          \"Disabled\"\r\n        ]\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"metadata\": {\r\n          \"displayName\": \"filiz-ps-testrg\"\r\n        },\r\n        \"dependsOn\": []\r\n      }\r\n    },\r\n    \"targetScope\": \"subscription\",\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-03T09:12:58-08:00\",\r\n      \"lastModified\": \"2019-02-03T10:13:28-08:00\"\r\n    },\r\n    \"description\": \"testing\"\r\n  },\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1\",\r\n  \"type\": \"Microsoft.Blueprint/blueprints\",\r\n  \"name\": \"Filiz-Ps-Test1\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-NewAssignment?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzI4Y2JmOThmLTM4MWQtNDQyNS05YWM0LWNmMzQyZGFiOTc1My9wcm92aWRlcnMvTWljcm9zb2Z0LkJsdWVwcmludC9ibHVlcHJpbnRBc3NpZ25tZW50cy9QUy1TY2VuYXJpb1Rlc3QtTmV3QXNzaWdubWVudD9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "46af2985-fa18-4989-9d1b-5de2c9cb92ac"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Blueprint.BlueprintManagementClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1da8f6b8-6e05-4a5c-b821-8d95e0f8ac60"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "71bc65e0-8571-4baa-82dc-1f74265e7aa0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190225T211930Z:71bc65e0-8571-4baa-82dc-1f74265e7aa0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 25 Feb 2019 21:19:29 GMT"
+        ],
+        "Content-Length": [
+          "194"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AssignmentNotFound\",\r\n    \"message\": \"Assignment 'PS-ScenarioTest-NewAssignment' could not be found in subscription '28cbf98f-381d-4425-9ac4-cf342dab9753'.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "//subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-NewAssignment?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzI4Y2JmOThmLTM4MWQtNDQyNS05YWM0LWNmMzQyZGFiOTc1My9wcm92aWRlcnMvTWljcm9zb2Z0LkJsdWVwcmludC9ibHVlcHJpbnRBc3NpZ25tZW50cy9QUy1TY2VuYXJpb1Rlc3QtTmV3QXNzaWdubWVudD9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"locks\": {\r\n      \"mode\": \"None\"\r\n    }\r\n  },\r\n  \"location\": \"East US\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "696ed387-9ea7-4a74-b5ab-9d64b266a6de"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Blueprint.BlueprintManagementClient/0.10.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "758"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f5cd8fd3-3029-4cdd-87af-e3752142541a"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "7b6f707c-c230-43c2-a044-729d9927183c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190225T211940Z:7b6f707c-c230-43c2-a044-729d9927183c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 25 Feb 2019 21:19:39 GMT"
+        ],
+        "Content-Length": [
+          "1438"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {\r\n        \"principalId\": \"613933a9-4c82-49b6-b90c-9a4d18c6e3d3\",\r\n        \"clientId\": \"423694c8-02b8-41c9-af47-9efc9d24f763\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"creating\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-25T13:19:38-08:00\",\r\n      \"lastModified\": \"2019-02-25T13:19:40-08:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-NewAssignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"PS-ScenarioTest-NewAssignment\"\r\n}",
+      "StatusCode": 201
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "28cbf98f-381d-4425-9ac4-cf342dab9753"
+  }
+}

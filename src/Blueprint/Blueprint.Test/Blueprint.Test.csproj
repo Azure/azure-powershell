@@ -7,8 +7,11 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Data\**" />
     <Compile Remove="UnitTests\**" />
+    <EmbeddedResource Remove="Data\**" />
     <EmbeddedResource Remove="UnitTests\**" />
+    <None Remove="Data\**" />
     <None Remove="UnitTests\**" />
   </ItemGroup>
   <ItemGroup>
@@ -16,6 +19,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blueprint\Blueprint.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="SubscriptionLevelSimpleBlueprint.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="2.0.0-preview" />
