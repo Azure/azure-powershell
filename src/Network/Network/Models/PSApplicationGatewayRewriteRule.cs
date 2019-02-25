@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public int? RuleSequence { get; set; }
 
-        public List<PSApplicationGatewayRewriteRuleCondition>? Conditions { get; set; }
+        public List<PSApplicationGatewayRewriteRuleCondition>? Condition { get; set; }
 
         public PSApplicationGatewayRewriteRuleActionSet ActionSet { get; set; }
 
