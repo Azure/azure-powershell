@@ -35,6 +35,12 @@ Clears the vulnerability assessment rule baseline.
 ### [Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings](Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings.md)
 Clears the vulnerability assessment settings of a managed database.
 
+### [Clear-AzSqlInstanceVulnerabilityAssessmentSettings](Clear-AzSqlInstanceVulnerabilityAssessmentSettings.md)
+Clears the vulnerability assessment settings of a managed instance.
+
+### [Clear-AzSqlServerVulnerabilityAssessmentSettings](Clear-AzSqlServerVulnerabilityAssessmentSettings.md)
+Clears the vulnerability assessment settings of a server.
+
 ### [Convert-AzSqlDatabaseVulnerabilityAssessmentScan](Convert-AzSqlDatabaseVulnerabilityAssessmentScan.md)
 Converts a vulnerability assessment scan results to Excel format.
 
@@ -70,6 +76,9 @@ Gets the auditing settings of an Azure SQL database.
 
 ### [Get-AzSqlDatabaseBackupLongTermRetentionPolicy](Get-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 Gets a database long term retention policy.
+
+### [Get-AzSqlDatabaseBackupShortTermRetentionPolicy](Get-AzSqlDatabaseBackupShortTermRetentionPolicy.md)
+Gets a backup short term retention policy.
 
 ### [Get-AzSqlDatabaseDataMaskingPolicy](Get-AzSqlDatabaseDataMaskingPolicy.md)
 Gets the data masking policy for a database.
@@ -161,6 +170,9 @@ Gets Advanced Data Security policy of a managed instance.
 ### [Get-AzSqlInstanceDatabase](Get-AzSqlInstanceDatabase.md)
 Returns information about Azure SQL Managed Instance database.
 
+### [Get-AzSqlInstanceDatabaseGeoBackup](Get-AzSqlInstanceDatabaseGeoBackup.md)
+Returns information about Azure SQL Managed Instance database redundant backup.
+
 ### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Gets the vulnerability assessment rule baseline.
 
@@ -169,6 +181,9 @@ Gets all vulnerability assessment scan record(s) associated with a given managed
 
 ### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings.md)
 Gets the vulnerability assessment settings of a managed database.
+
+### [Get-AzSqlInstanceVulnerabilityAssessmentSettings](Get-AzSqlInstanceVulnerabilityAssessmentSettings.md)
+Gets the vulnerability assessment settings of a managed instance.
 
 ### [Get-AzSqlServer](Get-AzSqlServer.md)
 Returns information about SQL Database servers.
@@ -220,6 +235,9 @@ Gets pricing tier hints for upgrading an Azure SQL Database server.
 
 ### [Get-AzSqlServerVirtualNetworkRule](Get-AzSqlServerVirtualNetworkRule.md)
 Gets or lists Azure SQL Server Virtual Network Rule.
+
+### [Get-AzSqlServerVulnerabilityAssessmentSettings](Get-AzSqlServerVulnerabilityAssessmentSettings.md)
+Gets the vulnerability assessment settings of a server.
 
 ### [Get-AzSqlSyncAgent](Get-AzSqlSyncAgent.md)
 Returns information about Azure SQL Sync Agents.
@@ -392,6 +410,9 @@ Changes the auditing settings for an Azure SQL database.
 ### [Set-AzSqlDatabaseBackupLongTermRetentionPolicy](Set-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 Sets a server long term retention policy.
 
+### [Set-AzSqlDatabaseBackupShortTermRetentionPolicy](Set-AzSqlDatabaseBackupShortTermRetentionPolicy.md)
+Sets a backup short term retention policy.
+
 ### [Set-AzSqlDatabaseDataMaskingPolicy](Set-AzSqlDatabaseDataMaskingPolicy.md)
 Sets data masking for a database.
 
@@ -502,6 +523,12 @@ Updates the vulnerability assessment settings of a database.
 
 ### [Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings](Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings.md)
 Updates the vulnerability assessment settings of a managed database.
+
+### [Update-AzSqlInstanceVulnerabilityAssessmentSettings](Update-AzSqlInstanceVulnerabilityAssessmentSettings.md)
+Updates the vulnerability assessment settings of a managed instance.
+
+### [Update-AzSqlServerVulnerabilityAssessmentSettings](Update-AzSqlServerVulnerabilityAssessmentSettings.md)
+Updates the vulnerability assessment settings of a server.
 
 ### [Update-AzSqlSyncGroup](Update-AzSqlSyncGroup.md)
 Updates an Azure SQL Database Sync Group.
