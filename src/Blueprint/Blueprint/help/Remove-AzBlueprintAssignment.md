@@ -20,7 +20,7 @@ Remove-AzBlueprintAssignment [-SubscriptionId] <String> [-Name] <String> [-PassT
 
 ### DeleteBlueprintAssignmentByObject
 ```
-Remove-AzBlueprintAssignment [-BlueprintAssignmentObject] <PSBlueprintAssignment> [-PassThru]
+Remove-AzBlueprintAssignment [-Assignment] <PSBlueprintAssignment> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Remove the blueprint assignment specified by name from the specified subscriptio
 
 ## PARAMETERS
 
-### -BlueprintAssignmentObject
+### -Assignment
 Blueprint assignment object.
 
 ```yaml

@@ -68,7 +68,7 @@ Get one or more blueprint definitions. Blueprint definitions exist at the manage
 PS> Get-AzBlueprint
 ```
 
-Get the blueprint definitions within the current subscription.
+Get the blueprint definitions within the current subscription and the management group hierarchy of the subscription.
 
 ### Example 2
 ```powershell
@@ -82,7 +82,7 @@ Gets the blueprint definitions within the specified management group.
 PS> Get-AzBlueprint -SubscriptionId "00000000-1111-0000-1111-000000000000"
 ```
 
-Get the blueprint definitions within the specified subscription.
+Get the blueprint definitions within the specified subscription and the management group hierarchy of the subscription.
 
 ### Example 4
 ```powershell

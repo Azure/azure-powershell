@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating blueprint assignment &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Create blueprint assignment &apos;{0}&apos;.
         /// </summary>
         internal static string CreateAssignmentShouldProcessString {
             get {
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting blueprint assignment &apos;{0}&apos; in subscription &apos;{1}&apos;.
+        ///   Looks up a localized string similar to Delete blueprint assignment &apos;{0}&apos;.
         /// </summary>
         internal static string DeleteAssignmentShouldProcessString {
             get {
@@ -102,6 +102,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         internal static string ResourceProviderRegistrationFailed {
             get {
                 return ResourceManager.GetString("ResourceProviderRegistrationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update blueprint assignment &apos;{0}&apos;.
+        /// </summary>
+        internal static string UpdateAssignmentShouldProcessString {
+            get {
+                return ResourceManager.GetString("UpdateAssignmentShouldProcessString", resourceCulture);
             }
         }
     }
