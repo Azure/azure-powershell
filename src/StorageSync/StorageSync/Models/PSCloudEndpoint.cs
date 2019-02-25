@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// Gets or sets the name of the storage account share.
         /// </summary>
         /// <value>The name of the storage account share.</value>
-        public string StorageAccountShareName { get; set; }
+        public string AzureFileShareName { get; set; }
         /// <summary>
         /// Gets or sets the storage account tenant identifier.
         /// </summary>

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzStorageSyncCloudEndpoint
 
 ## SYNOPSIS
-This command will use to get cloudendpoint.
+This command lists all cloud endpoints within a given sync group.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Get-AzStorageSyncCloudEndpoint [-ParentResourceId] <String> [-Name <String>]
 ```
 
 ## DESCRIPTION
-This command will use to get cloudendpoint.
+This command lists all cloud endpoints within a given sync group. It can be used to also list the attributes of each cloud endpoint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -CloudEndpointName "myCloudEndpointName"
+PS C:\> Get-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName"
 ```
 
-This command gets a cloudendpoint provided all the name of the dependent resources.
+This command gets all cloud endpoints contained within the specified sync group. Specify -CloudEndpointName to return a specific one.
 
 ## PARAMETERS
 

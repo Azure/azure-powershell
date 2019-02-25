@@ -12,20 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$ServerIdLookup = @{}
-$ServerIdLookup["Test-NewRegisteredServerParentObject"] = "aa86ff9c-6191-4145-b7e2-fd674a7a60b4"
-$ServerIdLookup["Test-NewRegisteredServerParentResourceId"] = "b218026d-45d4-4e0e-94c1-7101e0c19e71"
-$ServerIdLookup["Test-RegisteredServer"] = @("251c5af7-25f5-48e0-9cea-a1ce5332c552","edb903a8-b51e-49a9-8841-0401ab326144", "a259e889-a9c7-422d-b1b8-d5fdfa338f98")
-$ServerIdLookup["Test-RemoveRegisteredServer"] = "ae80a828-ffaf-4b91-8b4b-241a5a611bb1"
-$ServerIdLookup["Test-RemoveRegisteredServerInputObject"] = "c0b9056c-27fd-4bc3-abaf-ca7913a87c17"
-$ServerIdLookup["Test-RemoveRegisteredServerResourceId"] = "9bd2a8e3-dcb8-49ac-a4f1-4de5f53e0a09"
-$ServerIdLookup["Test-GetRegisteredServer"] = "80cbc767-51b0-49de-9378-a0105ea0e660"
-$ServerIdLookup["Test-GetRegisteredServerParentObject"] = "c1198372-7618-4d59-933c-caf09ec5a84b"
-$ServerIdLookup["Test-GetRegisteredServerParentResourceId"] = "1628499e-0616-4181-afd1-dd8906700527"
-$ServerIdLookup["Test-GetRegisteredServers"] = "88fa2470-8afa-424b-823e-0d33687f4d77"
-$ServerIdLookup["Test-NewRegisteredServer"] = "66a8e786-2f91-4552-b802-ecca80b95ac7"
-$ServerIdLookup["Test-ServerEndpoint"] = "1aa747ce-4f90-4d60-823d-0e5a1fbb2586"
-
 <#
 .SYNOPSIS
 Gets test mode - 'Record' or 'Playback'

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MaximumTreeDepthValidation"/> class.
+        /// Initializes a new instance of the <see cref="MaximumTreeDepthValidation" /> class.
         /// </summary>
         /// <param name="configuration">The configuration.</param>
         public MaximumTreeDepthValidation(IConfiguration configuration) : base(configuration, "Files/Directories in too deep folder structures (directory tree depth)", ValidationType.NodeDepth)

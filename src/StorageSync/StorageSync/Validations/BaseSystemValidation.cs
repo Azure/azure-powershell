@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemVali
 
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="SystemValidationBase"/> class.
+        /// Initializes a new instance of the <see cref="SystemValidationBase" /> class.
         /// </summary>
         /// <param name="configuration">The configuration.</param>
         /// <param name="validationName">Name of the validation.</param>

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzStorageSyncService
 
 ## SYNOPSIS
-This command will use to create storage sync service.
+This command creates a new storage sync service in a resource group.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzStorageSyncService [-ResourceGroupName] <String> [-Name] <String> [-Locati
 ```
 
 ## DESCRIPTION
-This command will use to create storage sync service.
+A storage sync service is the top level resource for Azure File Sync. This command creates a new storage sync service in a resource group. We recommend to create as few storage sync services as absolutely necessary to differentiate distinct groups of servers in your organization. A storage sync service contains sync groups and also works as a target to register your servers to. A server can only be registered to a single storage sync service. If servers ever need to participate in syncing the same set of files, register them to the same storage sync service.
 
 ## EXAMPLES
 
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Storage Sync Service Location.
+Storage Sync Service location.
 
 ```yaml
 Type: System.String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the StorageSyncService.
+Name of the storage sync service.
 
 ```yaml
 Type: System.String

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzStorageSyncServerEndpoint
 
 ## SYNOPSIS
-This command will use to create server endpoint.
+This command creates a new server endpoint on a registered server. This enables the specified path on the server to start syncing the files with other endpoints in the sync group.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ New-AzStorageSyncServerEndpoint [-ParentResourceId] <String> -Name <String> -Ser
 ```
 
 ## DESCRIPTION
-This command will use to create server endpoint.
+This command creates a new server endpoint on a registered server. This enables the specified path on the server to start syncing the files with other endpoints in the sync group. If there are already files on other endpoints in the sync group and this newly added location also contains files, a reconciliation process will attempt to determine if files are in fact the same ones in the same folders as on other endpoints. The namespaces will merge and reconciliation helps to prevent conflict files. If there are files on other server endpoints it is often better to start with an empty location on this server, so that the files from the cloud come down to the server in an automatic process called fast disaster recovery. Namespace metadata will be synced down first, then the data stream of each file is downloaded. If a file is requested by a user or application out of download order, that file will be recalled with priority to satisfy the access request. You can optionally use cloud tiering on this server endpoint to determine if this endpoint is supposed to become a cache of the complete set of files from the cloud. If cloud tiering is used, then the file content download will stop at the point defined by the cloud tiering policies you can set.
 
 ## EXAMPLES
 
@@ -48,7 +48,7 @@ PS C:\> $RegisteredServer = Get-AzStorageSyncServer -ResourceGroupName "myResour
 PS C:\> New-AzStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName" -ServerResourceId $RegisteredServer.ResourceId -ServerLocalPath "myServerLocalPath" -CloudTiering -OfflineDataTransfer -OfflineDataTransferShareName "myOfflineDataTransferShareName" -TierFilesOlderThanDays "myTierFilesOlderThanDays"
 ```
 
-This command adds a serverendpoint provided all the name of the dependent resources.
+This command creates a new server endpoint on a registered server and inserts it into a sync group. THis way it is part of a topology of other endpoints and file metadata and content will immediately start to sync between all locations referenced as endpoints in the sync group.
 
 ## PARAMETERS
 

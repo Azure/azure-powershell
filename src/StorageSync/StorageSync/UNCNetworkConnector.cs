@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         }
 
         /// <summary>
-        /// Finalizes an instance of the <see cref="UncNetworkConnector"/> class.
+        /// Finalizes an instance of the <see cref="UncNetworkConnector" /> class.
         /// </summary>
         ~UncNetworkConnector()
         {

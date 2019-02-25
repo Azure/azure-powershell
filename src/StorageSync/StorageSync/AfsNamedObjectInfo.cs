@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         private static char[] Separators => new char[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar };
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AfsNamedObjectInfo"/> class.
+        /// Initializes a new instance of the <see cref="AfsNamedObjectInfo" /> class.
         /// </summary>
         /// <param name="path">The path.</param>
         public AfsNamedObjectInfo(string path)

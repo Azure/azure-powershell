@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="AfsPath"/> class.
+        /// Initializes a new instance of the <see cref="AfsPath" /> class.
         /// </summary>
         /// <param name="fullName">The full name.</param>
         /// <exception cref="ArgumentException">Invalid path - fullName</exception>

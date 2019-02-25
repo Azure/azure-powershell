@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzStorageSyncService
 
 ## SYNOPSIS
-This command will use to get sync service.
+This command lists all storage sync services within a given scope of subscription/resource group.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Get-AzStorageSyncService [-ResourceGroupName] <String> [[-Name] <String>]
 ```
 
 ## DESCRIPTION
-This command will use to get sync service.
+This command lists all storage sync services within a given scope of subscription/resource group. It can be used to also list the attributes of each storage sync service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzStorageSyncService -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
+PS C:\> Get-AzStorageSyncService -ResourceGroupName "myResourceGroup"
 ```
 
-This command is used to get the storage sync service based on the dependent resource names.
+This command lists all storage sync service resources within a given resource group. It can be used to also list the attributes of each storage sync service. Specify -StorageSyncServiceName to return a specific one.
 
 ## PARAMETERS
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the StorageSyncService.
+Name of the storage sync service.
 
 ```yaml
 Type: System.String

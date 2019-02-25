@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         private static readonly string ConfigFilename = "Config.json";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Configuration"/> class.
+        /// Initializes a new instance of the <see cref="Configuration" /> class.
         /// </summary>
         public Configuration()
         {

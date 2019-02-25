@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PSValidationResult"/> class.
+        /// Initializes a new instance of the <see cref="PSValidationResult" /> class.
         /// </summary>
         /// <param name="result">The result.</param>
         public PSValidationResult(IValidationResult result)

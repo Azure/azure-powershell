@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="FilenamesCharactersValidation"/> class.
+        /// Initializes a new instance of the <see cref="FilenamesCharactersValidation" /> class.
         /// </summary>
         /// <param name="configuration">The configuration.</param>
         public FilenamesCharactersValidation(

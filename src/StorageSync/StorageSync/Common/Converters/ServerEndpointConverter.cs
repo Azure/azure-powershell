@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServerEndpointConverter"/> class.
+        /// Initializes a new instance of the <see cref="ServerEndpointConverter" /> class.
         /// </summary>
         public ServerEndpointConverter()
         {

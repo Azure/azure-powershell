@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
     class AfsDirectoryInfo : AfsNamedObjectInfo, IDirectoryInfo
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AfsDirectoryInfo"/> class.
+        /// Initializes a new instance of the <see cref="AfsDirectoryInfo" /> class.
         /// </summary>
         /// <param name="path">The path.</param>
         public AfsDirectoryInfo(string path) : base(path)

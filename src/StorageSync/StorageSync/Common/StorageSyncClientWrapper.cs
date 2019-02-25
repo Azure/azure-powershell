@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.StorageSync.Interfaces;
 using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
@@ -27,81 +28,15 @@ using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using System.Security;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common
 {
     /// <summary>
-    /// Interface IStorageSyncClientWrapper
-    /// </summary>
-    public interface IStorageSyncClientWrapper
-    {
-        /// <summary>
-        /// Gets or sets the active directory client.
-        /// </summary>
-        /// <value>The active directory client.</value>
-        ActiveDirectoryClient ActiveDirectoryClient { get; set; }
-
-        /// <summary>
-        /// Gets or sets the storage sync management client.
-        /// </summary>
-        /// <value>The storage sync management client.</value>
-        IStorageSyncManagementClient StorageSyncManagementClient { get; set; }
-
-        /// <summary>
-        /// Gets or sets the authorization management client.
-        /// </summary>
-        /// <value>The authorization management client.</value>
-        IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
-        /// <summary>
-        /// Gets or sets the verbose logger.
-        /// </summary>
-        /// <value>The verbose logger.</value>
-        Action<string> VerboseLogger { get; set; }
-
-        /// <summary>
-        /// Gets or sets the error logger.
-        /// </summary>
-        /// <value>The error logger.</value>
-        Action<string> ErrorLogger { get; set; }
-
-        /// <summary>
-        /// Ensures the service principal.
-        /// </summary>
-        /// <returns>PSADServicePrincipal.</returns>
-        PSADServicePrincipal EnsureServicePrincipal();
-
-        /// <summary>
-        /// Ensures the role assignment.
-        /// </summary>
-        /// <param name="serverPrincipal">The server principal.</param>
-        /// <param name="resourceId">The resource identifier.</param>
-        /// <returns>RoleAssignment.</returns>
-        RoleAssignment EnsureRoleAssignment(PSADServicePrincipal serverPrincipal,string resourceId);
-
-        /// <summary>
-        /// Gets the afs agent installer path.
-        /// </summary>
-        /// <value>The afs agent installer path.</value>
-        string AfsAgentInstallerPath { get; }
-
-        /// <summary>
-        /// Gets the afs agent version.
-        /// </summary>
-        /// <value>The afs agent version.</value>
-        string AfsAgentVersion { get; }
-
-        /// <summary>
-        /// Gets a value indicating whether this instance is playback mode.
-        /// </summary>
-        /// <value><c>true</c> if this instance is playback mode; otherwise, <c>false</c>.</value>
-        bool IsPlaybackMode { get; }
-    }
-
-    /// <summary>
     /// Class StorageSyncClientWrapper.
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncClientWrapper" />
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Interfaces.IStorageSyncClientWrapper" />
     /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Interfaces.IStorageSyncClientWrapper" />
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncClientWrapper" />
     public class StorageSyncClientWrapper : IStorageSyncClientWrapper
     {
@@ -119,6 +54,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         /// <value>The storage sync management client.</value>
         public IStorageSyncManagementClient StorageSyncManagementClient { get; set; }
+
+        /// <summary>
+        /// Gets or sets the storage sync resource manager.
+        /// </summary>
+        /// <value>The storage sync resource manager.</value>
+        public IStorageSyncResourceManager StorageSyncResourceManager { get; set; }
 
         /// <summary>
         /// Gets or sets the authorization management client.
@@ -145,7 +86,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         public Action<string> ErrorLogger { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StorageSyncClientWrapper"/> class.
+        /// Initializes a new instance of the <see cref="StorageSyncClientWrapper" /> class.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="activeDirectoryClient">The active directory client.</param>
@@ -155,10 +96,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                       AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
             ActiveDirectoryClient = activeDirectoryClient;
+
+            if (AzureSession.Instance.TryGetComponent(StorageSyncConstants.StorageSyncResourceManager, out IStorageSyncResourceManager storageSyncResourceManager))
+            {
+                StorageSyncResourceManager = storageSyncResourceManager;
+            }
+            else
+            {
+                StorageSyncResourceManager = new StorageSyncResourceManager();
+            }
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StorageSyncClientWrapper"/> class.
+        /// Initializes a new instance of the <see cref="StorageSyncClientWrapper" /> class.
         /// </summary>
         /// <param name="storageSyncManagementClient">The storage sync management client.</param>
         /// <param name="authorizationManagementClient">The authorization management client.</param>
@@ -183,44 +133,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             {
                 if (_afsAgentInstallerPath == null)
                 {
-                    if (!RegistryUtility.TryGetValue<string>(StorageSyncConstants.AfsAgentInstallerPathRegistryKeyValueName, StorageSyncConstants.AfsAgentRegistryKey, out _afsAgentInstallerPath, RegistryValueKind.String, RegistryValueOptions.None))
+                    if (!StorageSyncResourceManager.TryGetAfsAgentInstallerPath(out string afsAgentInstallerPath))
                     {
-                        if (!RegistryUtility.TryGetValue<string>(StorageSyncConstants.AfsAgentInstallerPathRegistryKeyValueName, StorageSyncConstants.AfsAgentRegistryKey, out _afsAgentInstallerPath, RegistryValueKind.String, RegistryValueOptions.None, RegistryView.Registry64))
-                        {
-                            if (IsPlaybackMode)
-                            {
-                                _afsAgentInstallerPath = @"C:\Program Files\Azure\StorageSyncAgent\";
-                            }
-                            else
-                            {
-                                ErrorLogger.Invoke($"AFS Agent Registrykey {StorageSyncConstants.AfsAgentInstallerPathRegistryKeyValueName} Value: {StorageSyncConstants.AfsAgentInstallerPathRegistryKeyValueName} not found in registry.");
-                            }
-                        }
+                        ErrorLogger.Invoke($"AFS Agent Registrykey {StorageSyncConstants.AfsAgentInstallerPathRegistryKeyValueName} Value: {StorageSyncConstants.AfsAgentInstallerPathRegistryKeyValueName} not found in registry.");
+                    }
+                    else
+                    {
+                        _afsAgentInstallerPath = afsAgentInstallerPath;
                     }
                 }
                 return _afsAgentInstallerPath;
-            }
-        }
-
-        /// <summary>
-        /// The is playback mode
-        /// </summary>
-        private bool? isPlaybackMode;
-        /// <summary>
-        /// Gets a value indicating whether this instance is playback mode.
-        /// </summary>
-        /// <value><c>true</c> if this instance is playback mode; otherwise, <c>false</c>.</value>
-        public bool IsPlaybackMode
-        {
-            get
-            {
-                if (!isPlaybackMode.HasValue)
-                {
-                    string mode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
-
-                    isPlaybackMode = !"Record".Equals(mode, StringComparison.OrdinalIgnoreCase);
-                }
-                return isPlaybackMode.Value;
             }
         }
 
@@ -239,19 +161,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             {
                 if (_afsAgentVersion == null)
                 {
-                    if (!RegistryUtility.TryGetValue<string>(StorageSyncConstants.AfsAgentVersionRegistryKeyValueName, StorageSyncConstants.AfsAgentRegistryKey, out _afsAgentVersion, RegistryValueKind.String, RegistryValueOptions.None))
+                    if (!StorageSyncResourceManager.TryGetAfsAgentVersion(out string afsAgentVersion))
                     {
-                        if (!RegistryUtility.TryGetValue<string>(StorageSyncConstants.AfsAgentVersionRegistryKeyValueName, StorageSyncConstants.AfsAgentRegistryKey, out _afsAgentVersion, RegistryValueKind.String, RegistryValueOptions.None, RegistryView.Registry64))
-                        {
-                            if (IsPlaybackMode)
-                            {
-                                _afsAgentInstallerPath = @"5.0.2.0";
-                            }
-                            else
-                            {
-                                ErrorLogger.Invoke($"AFS Agent Registrykey {StorageSyncConstants.AfsAgentVersionRegistryKeyValueName} Value: {StorageSyncConstants.AfsAgentVersionRegistryKeyValueName} not found in registry.");
-                            }
-                        }
+                        ErrorLogger.Invoke($"AFS Agent Registrykey {StorageSyncConstants.AfsAgentVersionRegistryKeyValueName} Value: {StorageSyncConstants.AfsAgentVersionRegistryKeyValueName} not found in registry.");
+                    }
+                    else
+                    {
+                        _afsAgentVersion = afsAgentVersion;
                     }
                 }
                 return _afsAgentVersion;
@@ -320,7 +236,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 resourceIdentifier.ResourceName,
                 odataQuery: new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(serverPrincipalId)));
             var roleAssignmentScope = storageAccountResourceId;
-            var roleAssignmentId = Guid.NewGuid().ToString();
+            Guid roleAssignmentId = StorageSyncResourceManager.GetGuid(StorageSyncResourceManager.TestName);
 
             RoleAssignment roleAssignment = roleAssignments.FirstOrDefault();
             if (roleAssignment == null)
@@ -335,7 +251,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                     }
                 };
 
-                roleAssignment = AuthorizationManagementClient.RoleAssignments.Create(roleAssignmentScope, roleAssignmentId, createParameters);
+                roleAssignment = AuthorizationManagementClient.RoleAssignments.Create(roleAssignmentScope, roleAssignmentId.ToString(), createParameters);
+                StorageSyncResourceManager.WaitForAccessPropogation();
+
             }
 
             return roleAssignment;
