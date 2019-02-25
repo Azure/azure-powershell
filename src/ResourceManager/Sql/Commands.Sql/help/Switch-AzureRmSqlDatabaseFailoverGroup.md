@@ -24,7 +24,7 @@ The Failover Group's secondary server must be used to execute this command.
 
 ## Permissions
 
-Failover is an action on the target-side failover group entity, so to failover you need RBAC write access to the failover group resource path on the new primary server (ex: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}`)
+Failover is an action on the target-side failover group entity, so to failover you need RBAC write access to the failover group resource path on the new primary server (ex: `.../Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}`)
 
 ## EXAMPLES
 
