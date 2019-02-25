@@ -151,6 +151,15 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removal of a record of type {0} from a record set of type {1} is not allowed..
+        /// </summary>
+        internal static string Error_RemoveRecordTypeNotAllowed {
+            get {
+                return ResourceManager.GetString("Error_RemoveRecordTypeNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The parameter set {0} of cmdlet is unknown.
         /// </summary>
         internal static string Error_UnknownParameterSetName {
@@ -304,11 +313,11 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Usage of this cmdlet without DnsRecords parameter will be deprecated soon. If there is a need to create empty record set, please specify DnsRecords parameter with an empty array as value.
+        ///   Looks up a localized string similar to Usage of this cmdlet without PrivateDnsRecords parameter will be deprecated soon. If there is a need to create empty record set, please specify PrivateDnsRecords parameter with an empty array as value.
         /// </summary>
-        internal static string Warning_DnsRecordsParamNeedsToBeSpecified {
+        internal static string Warning_PrivateDnsRecordsParamNeedsToBeSpecified {
             get {
-                return ResourceManager.GetString("Warning_DnsRecordsParamNeedsToBeSpecified", resourceCulture);
+                return ResourceManager.GetString("Warning_PrivateDnsRecordsParamNeedsToBeSpecified", resourceCulture);
             }
         }
     }

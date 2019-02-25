@@ -65,7 +65,6 @@ Etag                  : 9ab7a8af-94ec-42a0-8e21-633e2e3baa0d
 Tags                  :
 NumberOfRecordSets    : 1
 MaxNumberOfRecordSets : 5000
-
 ```
 
 This example gets all of the Private DNS zones in the specified resource group, and then stores it in the $Zones variable.
@@ -93,7 +92,6 @@ Etag                  : 9ab7a8af-94ec-42a0-8e21-633e2e3baa0d
 Tags                  :
 NumberOfRecordSets    : 1
 MaxNumberOfRecordSets : 5000
-
 ```
 
 This example gets all of the Private DNS zones in the current Azure subscription, and then stores them in the $Zones variable.
