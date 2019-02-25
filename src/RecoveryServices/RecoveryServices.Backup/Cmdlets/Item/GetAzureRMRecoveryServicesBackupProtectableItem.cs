@@ -80,10 +80,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     string containerName = "";
                     Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(ParentID);
                     containerName = HelperUtils.GetContainerUri(keyValueDict, ParentID);
-                    if (containerName.Split(new string[] { ";" }, System.StringSplitOptions.None)[0].ToLower() == "vmappcontainer")
-                    {
-                        backupManagementType = ServiceClientModel.BackupManagementType.AzureWorkload;
-                    }
+                    backupManagementType = ServiceClientModel.BackupManagementType.AzureWorkload;
                     string protectableItem = HelperUtils.GetProtectableItemUri(keyValueDict, ParentID);
                     if (protectableItem.Split(new string[] { ";" }, System.StringSplitOptions.None)[0].ToLower() == "sqlinstance" ||
                     protectableItem.Split(new string[] { ";" }, System.StringSplitOptions.None)[0].ToLower() == "sqlavailabilitygroupcontainer")
@@ -98,7 +95,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else
                 {
-                    if(Container != null)
+                    if (Container != null)
                     {
                         string containerName = "";
                         backupManagementType = Container.BackupManagementType.ToString();
