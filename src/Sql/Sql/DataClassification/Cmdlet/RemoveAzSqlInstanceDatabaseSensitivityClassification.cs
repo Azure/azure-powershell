@@ -3,6 +3,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataClassification.Model;
 using Microsoft.Azure.Commands.Sql.DataClassification.Services;
+using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -43,7 +44,20 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         public string DatabaseName { get; set; }
 
         [Parameter(
+            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = DefinitionsCommon.ManagedDatabaseObjectHelpMessage)]
+        [ValidateNotNull]
+        public AzureSqlManagedDatabaseModel DatabaseObject { get; set; }
+
+        [Parameter(
             ParameterSetName = DefinitionsCommon.ColumnParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = DefinitionsCommon.SchemaNameHelpMessage)]
+        [Parameter(
+            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = DefinitionsCommon.SchemaNameHelpMessage)]
@@ -55,6 +69,11 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = DefinitionsCommon.TableNameHelpMessage)]
+        [Parameter(
+            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = DefinitionsCommon.SchemaNameHelpMessage)]
         public string TableName { get; set; }
 
         [Parameter(
@@ -62,16 +81,21 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = DefinitionsCommon.ColumnNameHelpMessage)]
+        [Parameter(
+            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = DefinitionsCommon.ColumnNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ColumnName { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ParentResourceParameterSet,
+            ParameterSetName = DefinitionsCommon.ClassificationObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = DefinitionsCommon.SqlDatabaseInputObjectHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public ManagedDatabaseSensitivityClassificationModel InputObject { get; set; }
+            HelpMessage = DefinitionsCommon.ManagedDatabaseSensitivityClassificationObjectHelpMessage)]
+        [ValidateNotNull]
+        public ManagedDatabaseSensitivityClassificationModel ClassificationObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -80,7 +104,14 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override ManagedDatabaseSensitivityClassificationModel GetEntity()
         {
-            return InputObject ?? new ManagedDatabaseSensitivityClassificationModel
+            if (DatabaseObject != null)
+            {
+                ResourceGroupName = DatabaseObject.ResourceGroupName;
+                InstanceName = DatabaseObject.ManagedInstanceName;
+                DatabaseName = DatabaseObject.Name;
+            }
+
+            return ClassificationObject ?? new ManagedDatabaseSensitivityClassificationModel
             {
                 ResourceGroupName = ResourceGroupName,
                 InstanceName = InstanceName,
@@ -99,7 +130,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override DataClassificationAdapter InitModelAdapter()
         {
-            throw new System.NotImplementedException();
+            return new DataClassificationAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

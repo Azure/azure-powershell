@@ -42,12 +42,12 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         public string DatabaseName { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ParentResourceParameterSet,
+            ParameterSetName = DefinitionsCommon.DatabaseObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = DefinitionsCommon.ManagedDatabaseInputObjectHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlManagedDatabaseModel InputObject { get; set; }
+            HelpMessage = DefinitionsCommon.ManagedDatabaseObjectHelpMessage)]
+        [ValidateNotNull]
+        public AzureSqlManagedDatabaseModel DatabaseObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override ManagedDatabaseSensitivityClassificationModel GetEntity()
         {
-            if (InputObject != null)
+            if (DatabaseObject != null)
             {
-                ResourceGroupName = InputObject.ResourceGroupName;
-                InstanceName = InputObject.ManagedInstanceName;
-                DatabaseName = InputObject.Name;
+                ResourceGroupName = DatabaseObject.ResourceGroupName;
+                InstanceName = DatabaseObject.ManagedInstanceName;
+                DatabaseName = DatabaseObject.Name;
             }
 
             return new ManagedDatabaseSensitivityClassificationModel()
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
                 ResourceGroupName = ResourceGroupName,
                 InstanceName = InstanceName,
                 DatabaseName = DatabaseName,
-                SensitivityLabels = ModelAdapter.GetManagedDatabaseCurrentSensitivityLabels(
+                SensitivityLabels = ModelAdapter.GetManagedDatabaseRecommendedSensitivityLabels(
                     ResourceGroupName, InstanceName, DatabaseName)
             };
         }

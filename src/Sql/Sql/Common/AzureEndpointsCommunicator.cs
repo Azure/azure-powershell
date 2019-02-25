@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using Microsoft.Azure.Commands.Sql.DataClassification.Services;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
@@ -351,7 +352,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             return id;
         }
 
-        public async Task<Tuple<IDictionary<string, Guid>, IDictionary<string, Guid>>> RetrieveInformationProtectionPolicyAsync(Guid tenantId)
+        internal async Task<InformationProtectionPolicy> RetrieveInformationProtectionPolicyAsync(Guid tenantId)
         {
             string endpoint = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString();
             string uri = $"{endpoint}providers/Microsoft.Management/managementGroups/{tenantId}/providers/Microsoft.Security/informationprotectionpolicies/effective?api-version=2017-08-01-preview";
@@ -359,17 +360,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 string.Format(Properties.Resources.DataClassificationFailedToRetrieveInformationProtectionPolicy,
                 tenantId));
             JToken policyToken = await SendAsync(uri, HttpMethod.Get, exception);
-
-            IDictionary<string, Guid> sensitivityLabels = ToDictionary(policyToken, "labels");
-            IDictionary<string, Guid> informationTypes = ToDictionary(policyToken, "informationTypes");
-            return Tuple.Create(sensitivityLabels, informationTypes);
-        }
-
-        private static IDictionary<string, Guid> ToDictionary(JToken policyToken, string policyEntry)
-        {
-            JToken propertiesToken = policyToken["properties"];
-            IDictionary<string, JToken> dictionary = (JObject)propertiesToken["labels"];
-            return dictionary.ToDictionary(pair => pair.Value["displayName"].ToString(), pair => Guid.Parse(pair.Key));
+            return InformationProtectionPolicy.ToInformationProtectionPolicy(policyToken);
         }
 
         /// <summary>

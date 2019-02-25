@@ -26,21 +26,20 @@ Get-AzSqlDatabaseSensitivityClassification [-ResourceGroupName] <String> [-Serve
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ParentResourceParameterSet
+### DatabaseObjectParameterSet
 ```
-Get-AzSqlDatabaseSensitivityClassification -InputObject <AzureSqlDatabaseModel> [-AsJob]
+Get-AzSqlDatabaseSensitivityClassification -DatabaseObject <AzureSqlDatabaseModel> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ParentResourceColumnParameterSet
+### DatabaseObjectColumnParameterSet
 ```
-Get-AzSqlDatabaseSensitivityClassification -InputObject <AzureSqlDatabaseModel> -SchemaName <String>
+Get-AzSqlDatabaseSensitivityClassification -DatabaseObject <AzureSqlDatabaseModel> -SchemaName <String>
  -TableName <String> -ColumnName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzSqlDatabaseSensitivityClassification cmdlet returns the current information types and sensitivity labels of columns in the database.
 
 ## EXAMPLES
 
@@ -150,7 +149,7 @@ Name of column.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet, ParentResourceColumnParameterSet
+Parameter Sets: ColumnParameterSet, DatabaseObjectColumnParameterSet
 Aliases:
 
 Required: True
@@ -175,6 +174,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DatabaseObject
+The SQL database object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+Parameter Sets: DatabaseObjectParameterSet, DatabaseObjectColumnParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -187,21 +201,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The SQL database object.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
-Parameter Sets: ParentResourceParameterSet, ParentResourceColumnParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -225,7 +224,7 @@ Name of schema.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet, ParentResourceColumnParameterSet
+Parameter Sets: ColumnParameterSet, DatabaseObjectColumnParameterSet
 Aliases:
 
 Required: True
@@ -255,7 +254,7 @@ Name of table.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet, ParentResourceColumnParameterSet
+Parameter Sets: ColumnParameterSet, DatabaseObjectColumnParameterSet
 Aliases:
 
 Required: True

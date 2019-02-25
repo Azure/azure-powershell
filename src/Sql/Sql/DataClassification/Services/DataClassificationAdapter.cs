@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
 
         internal void SetSensitivityLabels(SqlDatabaseSensitivityClassificationModel model)
         {
+            InformationProtectionPolicy policy =
+                AzureCommunicator.RetrieveInformationProtectionPolicyAsync(Context.Tenant.GetId()).Result;
+
             foreach (SensitivityLabelModel sensitivityLabelModel in model.SensitivityLabels)
             {
                 Communicator.SetSensitivityLabel(model.ResourceGroupName, model.ServerName, model.DatabaseName,
@@ -59,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
             }
         }
 
-        internal IList<SensitivityLabelModel> GetSensitivityLabel(
+        internal IList<SensitivityLabelModel> GetCurrentSensitivityLabel(
             string resourceGroupName, string serverName, string databaseName,
             string schemaName, string tableName, string columnName)
         {
@@ -70,14 +73,10 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
         internal IList<SensitivityLabelModel> GetCurrentSensitivityLabels(
             string resourceGroupName, string serverName, string databaseName)
         {
-            Tuple<IDictionary<string, Guid>, IDictionary<string, Guid>> tuple =
-                AzureCommunicator.RetrieveInformationProtectionPolicyAsync(Context.Tenant.GetId()).Result;
-            IDictionary<string, Guid> sensitivityLabels = tuple.Item1;
-            IDictionary<string, Guid> informationTypes = tuple.Item2;
             return ToSensitivityLabelModelList(Communicator.GetCurrentSensitivityLabels(resourceGroupName, serverName, databaseName));
         }
 
-        internal IList<SensitivityLabelModel> GetManagedDatabaseSensitivityLabel(
+        internal IList<SensitivityLabelModel> GetManagedDatabaseCurrentSensitivityLabel(
             string resourceGroupName, string managedInstanceName, string databaseName,
             string schemaName, string tableName, string columnName)
         {
@@ -90,6 +89,19 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
             string resourceGroupName, string managedInstanceName, string databaseName)
         {
             return ToSensitivityLabelModelList(Communicator.GetManagedDatabaseCurrentSensitivityLabels(
+                resourceGroupName, managedInstanceName, databaseName));
+        }
+
+        internal IList<SensitivityLabelModel> GetRecommendedSensitivityLabels(
+            string resourceGroupName, string serverName, string databaseName)
+        {
+            return ToSensitivityLabelModelList(Communicator.GetRecommendedSensitivityLabels(resourceGroupName, serverName, databaseName));
+        }
+
+        internal IList<SensitivityLabelModel> GetManagedDatabaseRecommendedSensitivityLabels(
+            string resourceGroupName, string managedInstanceName, string databaseName)
+        {
+            return ToSensitivityLabelModelList(Communicator.GetManagedDatabaseRecommendedSensitivityLabels(
                 resourceGroupName, managedInstanceName, databaseName));
         }
 

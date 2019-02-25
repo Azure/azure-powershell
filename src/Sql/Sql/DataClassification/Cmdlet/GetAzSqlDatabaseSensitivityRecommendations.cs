@@ -3,7 +3,6 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataClassification.Model;
 using Microsoft.Azure.Commands.Sql.DataClassification.Services;
 using Microsoft.Azure.Commands.Sql.Database.Model;
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
@@ -45,12 +44,12 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         public override string DatabaseName { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ParentResourceParameterSet,
+            ParameterSetName = DefinitionsCommon.DatabaseObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = DefinitionsCommon.SqlDatabaseInputObjectHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlDatabaseModel InputObject { get; set; }
+            HelpMessage = DefinitionsCommon.SqlDatabaseObjectHelpMessage)]
+        [ValidateNotNull]
+        public AzureSqlDatabaseModel DatabaseObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -59,11 +58,11 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override SqlDatabaseSensitivityClassificationModel GetEntity()
         {
-            if (InputObject != null)
+            if (DatabaseObject != null)
             {
-                ResourceGroupName = InputObject.ResourceGroupName;
-                ServerName = InputObject.ServerName;
-                DatabaseName = InputObject.DatabaseName;
+                ResourceGroupName = DatabaseObject.ResourceGroupName;
+                ServerName = DatabaseObject.ServerName;
+                DatabaseName = DatabaseObject.DatabaseName;
             }
 
             return new SqlDatabaseSensitivityClassificationModel()
@@ -71,8 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
                 DatabaseName = DatabaseName,
-                SensitivityLabels = ModelAdapter.GetCurrentSensitivityLabels(
-                    ResourceGroupName, ServerName, DatabaseName)
+                SensitivityLabels = ModelAdapter.GetRecommendedSensitivityLabels(ResourceGroupName, ServerName, DatabaseName)
             };
         }
 

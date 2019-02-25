@@ -19,9 +19,9 @@ Get-AzSqlDatabaseSensitivityRecommendations [-ResourceGroupName] <String> [-Serv
  [-DatabaseName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ParentResourceParameterSet
+### DatabaseObjectParameterSet
 ```
-Get-AzSqlDatabaseSensitivityRecommendations -InputObject <AzureSqlDatabaseModel> [-AsJob]
+Get-AzSqlDatabaseSensitivityRecommendations -DatabaseObject <AzureSqlDatabaseModel> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -114,6 +114,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DatabaseObject
+The SQL database object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+Parameter Sets: DatabaseObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -126,21 +141,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The SQL database object.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
-Parameter Sets: ParentResourceParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
