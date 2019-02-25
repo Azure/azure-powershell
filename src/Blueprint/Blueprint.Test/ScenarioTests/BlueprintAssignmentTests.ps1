@@ -38,6 +38,25 @@ function Test-NewBlueprintAssignment
 	Assert-AreEqual $assignment.ProvisioningState $expectedProvisioningState
 }
 
+function Test-NewBlueprintAssignmentWithSystemAssignedIdentity
+{
+	$subscriptionId = "0b1f6471-1bf0-4dda-aec3-cb9272f09590"
+	$assignmentName = "PS-ScenarioTest-NewSystemAssignedIdentityAssignment"
+	$location = "West US"
+	$blueprintName = "PS-SimpleBlueprintDefinition"
+
+	#deploy blueprint
+	$deployment = New-AzDeployment -Name $blueprintName -Location $location -TemplateFile SubscriptionLevelSimpleBlueprint.json
+    Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+    $blueprint = Get-AzBlueprint -SubscriptionId $subscriptionId -Name $blueprintName
+	Assert-NotNull $blueprint
+	Assert-AreEqual $blueprintName $blueprint.Name
+	
+	$assignment = New-AzBlueprintAssignment -Name $assignmentName -Blueprint $blueprint -SubscriptionId $subscriptionId -Location $location
+	Assert-NotNull $assignment
+}
+
 function Test-SetBlueprintAssignment
 {
 	$mgId = "AzBlueprintAssignTest"
@@ -65,7 +84,7 @@ function Test-SetBlueprintAssignment
 	$assigned = Get-AzBlueprintAssignment -SubscriptionId $subscriptionId -Name $assignmentName
 	# Wait till the provisioning state changes to succeeded
 	$assigned = Get-AzBlueprintAssignment -SubscriptionId $subscriptionId -Name $assignmentName
-	while($assigned.ProvisioningState -eq "Creating" -or $assigned.ProvisioningState -eq "Deploying")
+	while($assigned.ProvisioningState -eq "Creating" -or $assigned.ProvisioningState -eq "Deploying" -or $assigned.ProvisioningState -eq "Waiting")
     {
         Wait-Seconds 10
         $assigned = Get-AzBlueprintAssignment -SubscriptionId $subscriptionId -Name $assignmentName

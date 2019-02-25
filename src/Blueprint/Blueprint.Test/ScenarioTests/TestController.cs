@@ -13,7 +13,7 @@ using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Blueprint;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using LegacyResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
 
 using Microsoft.Rest;
 
@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
         public GraphRbacManagementClient GraphRbacManagementClient { get; private set; }
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
         public ResourceManagementClient ResourceManagerClient { get; private set; }
+        public LegacyResourceManagementClient LegacyResourceManagementClient { get; private set; }
+
 
         public static TestController NewInstance => new TestController();
 
@@ -47,12 +49,14 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
             GraphRbacManagementClient = GetGraphRbacManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient(context);
             ResourceManagerClient = GetResourceManagementClient(context);
+            LegacyResourceManagementClient = GetLegacyResourceManagementClient(context);
 
             _helper.SetupManagementClients(
                 BlueprintManagementClient,
                 GraphRbacManagementClient,
                 AuthorizationManagementClient,
-                ResourceManagerClient);
+                ResourceManagerClient,
+                LegacyResourceManagementClient);
         }
 
         public void RunPowerShellTest(ServiceManagement.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
@@ -139,6 +143,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
         private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private LegacyResourceManagementClient GetLegacyResourceManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<LegacyResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

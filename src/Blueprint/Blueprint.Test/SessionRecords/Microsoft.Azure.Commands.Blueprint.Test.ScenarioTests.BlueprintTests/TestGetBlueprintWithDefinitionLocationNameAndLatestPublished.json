@@ -1,0 +1,71 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "//providers/Microsoft.Management/managementGroups/AzBlueprintPS/providers/Microsoft.Blueprint/blueprints?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "Ly9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZW1lbnQvbWFuYWdlbWVudEdyb3Vwcy9BekJsdWVwcmludFBTL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmx1ZXByaW50L2JsdWVwcmludHM/YXBpLXZlcnNpb249MjAxOC0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2731945d-9895-486e-ad6a-47ad986be3d7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Blueprint.BlueprintManagementClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "017ca905-c8ae-4da3-a63c-40e1cabe0214"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "70647a96-7a64-4c3a-9f0a-12bf094aefa6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190225T180638Z:70647a96-7a64-4c3a-9f0a-12bf094aefa6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 25 Feb 2019 18:06:37 GMT"
+        ],
+        "Content-Length": [
+          "1560"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"parameters\": {\r\n          \"applytaganditsdefaultvalue_tagName\": {\r\n            \"type\": \"string\",\r\n            \"metadata\": {\r\n              \"displayName\": \"Tag Name (Policy: Apply tag and its default value)\"\r\n            },\r\n            \"allowedValues\": []\r\n          },\r\n          \"applytaganditsdefaultvalue_tagValue\": {\r\n            \"type\": \"string\",\r\n            \"metadata\": {\r\n              \"displayName\": \"Tag Value (Policy: Apply tag and its default value)\"\r\n            },\r\n            \"allowedValues\": []\r\n          },\r\n          \"[Usergrouporapplicationname]:Owner_RoleAssignmentName\": {\r\n            \"type\": \"array\",\r\n            \"metadata\": {\r\n              \"displayName\": \"[User group or application name] ([User group or application name] : Owner)\",\r\n              \"strongType\": \"PrincipalId\"\r\n            }\r\n          }\r\n        },\r\n        \"resourceGroups\": {\r\n          \"ResourceGroup\": {\r\n            \"metadata\": {},\r\n            \"dependsOn\": []\r\n          }\r\n        },\r\n        \"targetScope\": \"subscription\",\r\n        \"status\": {\r\n          \"timeCreated\": \"2018-12-28T08:29:51-08:00\",\r\n          \"lastModified\": \"2019-02-25T09:58:02-08:00\"\r\n        },\r\n        \"description\": \"This is a test Blueprint for PowerShell cmdlets.\"\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintPS/providers/Microsoft.Blueprint/blueprints/PowershellTestBlueprint\",\r\n      \"type\": \"Microsoft.Blueprint/blueprints\",\r\n      \"name\": \"PowershellTestBlueprint\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "28cbf98f-381d-4425-9ac4-cf342dab9753"
+  }
+}
