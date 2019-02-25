@@ -45,6 +45,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             "Microsoft.Build",
             "Microsoft.Build.Framework",
             "Microsoft.Win32.Primitives",
+            "Microsoft.Win32.Registry",
             "mscorlib",
             "netstandard",
             "Microsoft.Win32.Primitives",
