@@ -16,6 +16,7 @@
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public int? RuleSequence { get; set; }
 
-        public List<PSApplicationGatewayRewriteRuleCondition>? Condition { get; set; }
+        public List<PSApplicationGatewayRewriteRuleCondition> Condition { get; set; }
 
         public PSApplicationGatewayRewriteRuleActionSet ActionSet { get; set; }
 
