@@ -159,11 +159,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzApplicationGatewayRewriteRule', 
                'New-AzApplicationGatewayRewriteRuleActionSet', 
                'New-AzApplicationGatewayRewriteRuleHeaderConfiguration', 
-<<<<<<< HEAD
                'Get-AzApplicationGatewayAvailableServerVariableAndHeader', 
-=======
-			   'New-AzApplicationGatewayRewriteRuleCondition', 
->>>>>>> f061fa0d8f... Commiting Dev and Test Changes for Conditions Support for header CRUD in AppGw v2
+               'New-AzApplicationGatewayRewriteRuleCondition', 
                'Add-AzApplicationGatewayRedirectConfiguration', 
                'Get-AzApplicationGatewayRedirectConfiguration', 
                'New-AzApplicationGatewayRedirectConfiguration', 
