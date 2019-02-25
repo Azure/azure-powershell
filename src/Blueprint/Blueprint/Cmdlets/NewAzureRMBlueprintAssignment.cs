@@ -65,10 +65,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         {
             try
             {
-                if (ShouldProcess(Name, string.Format(Resources.CreateAssignmentShouldProcessString, Name)))
-                {
-                    var subscriptionsList = SubscriptionId ?? new[] { DefaultContext.Subscription.Id };
+                var subscriptionsList = SubscriptionId ?? new[] { DefaultContext.Subscription.Id };
 
+                // TO-DO: Update should process string here.
+                if (ShouldProcess(string.Join(",", subscriptionsList), string.Format(Resources.CreateAssignmentShouldProcessString, Name)))
+                {
                     // If explicitly requested to use user assigned identity let's do that, otherwise let's default to system assigned
                     if (this.IsParameterBound(c => c.UserAssignedIdentity))
                     {
