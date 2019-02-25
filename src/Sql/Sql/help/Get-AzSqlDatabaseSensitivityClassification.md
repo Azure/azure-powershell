@@ -54,18 +54,18 @@ SensitivityLabels : {{
                         SchemaName: schema1,
                         TableName: table1,
                         ColumnName: column1,
-                        LabelName: label1,
+                        SensitivityLabel: label1,
                         InformationType: informationType1,
                     }, {
                         SchemaName: schema2,
                         TableName: table2,
                         ColumnName: column2,
-                        LabelName: label2,
+                        SensitivityLabel: label2,
                     }, {
                         SchemaName: schema3,
                         TableName: table3,
                         ColumnName: column3,
-                        LabelName: label3,
+                        SensitivityLabel: label3,
                     }}
 ```
 
@@ -80,18 +80,18 @@ SensitivityLabels : {{
                         SchemaName: schema1,
                         TableName: table1,
                         ColumnName: column1,
-                        LabelName: label1,
+                        SensitivityLabel: label1,
                         InformationType: informationType1,
                     }, {
                         SchemaName: schema2,
                         TableName: table2,
                         ColumnName: column2,
-                        LabelName: label2,
+                        SensitivityLabel: label2,
                     }, {
                         SchemaName: schema3,
                         TableName: table3,
                         ColumnName: column3,
-                        LabelName: label3,
+                        SensitivityLabel: label3,
                     }}
 ```
 
@@ -106,7 +106,7 @@ SensitivityLabels : {{
                         SchemaName: schema,
                         TableName: table,
                         ColumnName: column,
-                        LabelName: label,
+                        SensitivityLabel: label,
                         InformationType: informationType,
                     }}
 ```
@@ -122,7 +122,7 @@ SensitivityLabels : {{
                         SchemaName: schema,
                         TableName: table,
                         ColumnName: column,
-                        LabelName: label,
+                        SensitivityLabel: label,
                         InformationType: informationType,
                     }}
 ```

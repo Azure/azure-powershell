@@ -48,6 +48,11 @@ PS C:\> Remove-AzSqlDatabaseSensitivityClassification -ResourceGroupName resourc
 PS C:\> Get-AzSqlDatabaseSensitivityClassification -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Remove-AzSqlDatabaseSensitivityClassification
 ```
 
+### Example 3: Remove information type and sensitivity label of a column in an Azure SQL database using Piping.
+```powershell
+PS C:\> Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Remove-AzSqlDatabaseSensitivityClassification -SchemaName schema -TableName table -ColumnName column
+```
+
 ## PARAMETERS
 
 ### -AsJob
