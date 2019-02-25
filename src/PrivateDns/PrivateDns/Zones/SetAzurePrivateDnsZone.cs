@@ -50,8 +50,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
         [ValidateNotNullOrEmpty]
         public PSPrivateDnsZone PrivateZone { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.", ParameterSetName = FieldsParameterSetName)]
-        [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.", ParameterSetName = ResourceParameterSetName)]
+        [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.", ParameterSetName = ObjectParameterSetName)]
@@ -79,7 +78,6 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
 
                 zoneToUpdate = this.PrivateDnsClient.GetPrivateDnsZone(this.Name, this.ResourceGroupName);
                 zoneToUpdate.Etag = "*";
-                zoneToUpdate.Tags = this.Tag;
             }
             else if (this.ParameterSetName == ObjectParameterSetName)
             {
@@ -95,6 +93,8 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
             {
                 throw new PSArgumentException(string.Format(ProjectResources.Error_ZoneNotFound), this.Name);
             }
+
+            zoneToUpdate.Tags = this.Tag;
 
             if (zoneToUpdate.Name != null && zoneToUpdate.Name.EndsWith("."))
             {

@@ -36,10 +36,10 @@ This command creates a new private DNS zone named myzone.com in the specified re
 stores it in the $Zone variable. $Zone object looks something like this,
 
 Name                          : myzone.com
-ResourceId                    : "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/MyResourceGroup/PrivateZones/myzone.com"
+ResourceId                    : "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/PrivateZones/myzone.com"
 ResourceGroupName             : MyResourceGroup
 Location					  : 
-Etag                          : 00000002-0000-0000-6cd5-f11f2628d401
+Etag                          : xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Tags                          : {}
 NumberOfRecordSets            : 1
 MaxNumberOfRecordSets         : 5000
