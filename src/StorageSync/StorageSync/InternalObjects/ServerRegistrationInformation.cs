@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.StorageSync.InternalObjects
     public sealed class ServerRegistrationInformation
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServerRegistrationInformation"/> class.
+        /// Initializes a new instance of the <see cref="ServerRegistrationInformation" /> class.
         /// </summary>
         /// <param name="subscriptionId">The subscription identifier.</param>
         /// <param name="resourceGroupName">Name of the resource group.</param>

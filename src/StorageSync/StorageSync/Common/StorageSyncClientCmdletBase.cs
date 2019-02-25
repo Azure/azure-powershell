@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.StorageSync.Common.Converters;
 using Microsoft.Azure.Commands.StorageSync.Common.Exceptions;
+using Microsoft.Azure.Commands.StorageSync.Interfaces;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using System;
 using System.Collections.Generic;
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         private IStorageSyncClientWrapper storageSyncClientWrapper;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StorageSyncClientCmdletBase"/> class.
+        /// Initializes a new instance of the <see cref="StorageSyncClientCmdletBase" /> class.
         /// </summary>
         public StorageSyncClientCmdletBase()
         {
@@ -73,6 +74,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         protected virtual void InitializeComponent()
         {
+            DefaultProfile.DefaultContext.Tenant.Id = StorageSyncClientWrapper.StorageSyncResourceManager.GetTenantId() ?? DefaultProfile.DefaultContext.Tenant.Id;
         }
 
         /// <summary>
@@ -86,28 +88,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         /// <value>The action message.</value>
         protected virtual string ActionMessage { get; set; }
-
-        /// <summary>
-        /// The is playback mode
-        /// </summary>
-        private bool? isPlaybackMode;
-        /// <summary>
-        /// Gets a value indicating whether this instance is playback mode.
-        /// </summary>
-        /// <value><c>true</c> if this instance is playback mode; otherwise, <c>false</c>.</value>
-        public bool IsPlaybackMode
-        {
-            get
-            {
-                if (!isPlaybackMode.HasValue)
-                {
-                    string mode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
-
-                    isPlaybackMode = !"Record".Equals(mode, StringComparison.OrdinalIgnoreCase);
-                }
-                return isPlaybackMode.Value;
-            }
-        }
 
         /// <summary>
         /// Gets the subscription identifier.

@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     public class ResourceIdFormatterTest
     {
 
+        /// <summary>
+        /// Defines the test method ResourceIdFormatterTestSuccessful.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResourceIdFormatterTestSuccessful()
@@ -33,6 +36,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Xunit.Assert.Equal(expectedValue, actualValue);
         }
 
+        /// <summary>
+        /// Defines the test method ResourceIdFormatterTestFailed.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
 

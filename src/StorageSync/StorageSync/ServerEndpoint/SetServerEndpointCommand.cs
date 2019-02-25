@@ -156,17 +156,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           HelpMessage = HelpMessages.TierFilesOlderThanDaysParameter)]
         public int? TierFilesOlderThanDays { get; set; }
 
-        /// <summary>
-        /// Gets or sets the cloud seeded data file share URI.
-        /// </summary>
-        /// <value>The cloud seeded data file share URI.</value>
-        [Parameter(
-          Mandatory = false,
-          ValueFromPipelineByPropertyName = false,
-          HelpMessage = HelpMessages.OfflineDataTransferShareNameParameter)]
-        public string OfflineDataTransferShareName { get; set; }
-
-        /// <summary>
+         /// <summary>
         /// Gets or sets as job.
         /// </summary>
         /// <value>As job.</value>
@@ -227,8 +217,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     CloudTiering = CloudTiering.IsPresent ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
                     VolumeFreeSpacePercent = VolumeFreeSpacePercent,
                     TierFilesOlderThanDays = TierFilesOlderThanDays,
-                    OfflineDataTransfer = OfflineDataTransfer.IsPresent ? "on" : "off",
-                    OfflineDataTransferShareName = OfflineDataTransferShareName
+                    OfflineDataTransfer = OfflineDataTransfer.IsPresent ? "on" : "off"
                 };
 
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);

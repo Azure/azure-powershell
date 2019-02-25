@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzStorageSyncServer
 
 ## SYNOPSIS
-This command will use to get sync server.
+This command lists all servers registered to a given storage sync service.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzStorageSyncServer [-ParentResourceId] <String> [-ServerId <Guid>]
 ```
 
 ## DESCRIPTION
-This command will use to get sync server.
+This command lists all servers registered to a given storage sync service. It can be used to also list the attributes of each registered server.
 
 ## EXAMPLES
 
@@ -40,7 +40,7 @@ This command will use to get sync server.
 PS C:\> Get-AzStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
 ```
 
-This command gets a sync servers provided all the name of the dependent resources.
+This command gets all servers registered to a specific storage sync service.
 
 ## PARAMETERS
 

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="SystemValidationsProcessor"/> class.
+        /// Initializes a new instance of the <see cref="SystemValidationsProcessor" /> class.
         /// </summary>
         /// <param name="commandRunner">The command runner.</param>
         /// <param name="validations">The validations.</param>

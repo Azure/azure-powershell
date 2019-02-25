@@ -8,7 +8,7 @@ schema: 2.0.0
 # Unregister-AzStorageSyncServer
 
 ## SYNOPSIS
-This command will use to unregister storage sync server.
+Warning: Unregistering a server will result in cascading deletes of all server endpoints on this server. This command will unregister a server it's the storage sync service.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Unregister-AzStorageSyncServer [-ResourceGroupName] <String> [-StorageSyncServic
 ```
 
 ## DESCRIPTION
-This command will use to unregister storage sync server.
+This command will unregister a server from the storage sync service. Warning: Unregistering a server will result in cascading deletes of all server endpoints on this server. It should only be called when you are certain that no path on this server is to be synced anymore.
 
 ## EXAMPLES
 
@@ -42,7 +42,7 @@ PS C:\> $RegisteredServer = Get-AzStorageSyncServer -ResourceGroupName "myResour
 PS C:\> Unregister-AzStorageSyncServer -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -ServerId $RegisteredServer.ServerId
 ```
 
-This command will unregister the sync server.
+This command will unregister the server, causing cascading deletes of all server endpoints on this server.
 
 ## PARAMETERS
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Force to Delete the RegisteredServer
+Supply -Force to skip confirmation of this command.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Prompts for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

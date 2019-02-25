@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <param name="storageSyncServiceName">Name of the storage sync service.</param>
         private void TriggerCertificateRollover(string resourceGroupName, Guid subscriptionId, string storageSyncServiceName)
         {
-            using (ISyncServerCertificateRollover certificateRolloverClient = new SyncServerCertificateRolloverClient(InteropClientFactory.CreateEcsManagement(IsPlaybackMode)))
+            using (ISyncServerCertificateRollover certificateRolloverClient = new SyncServerCertificateRolloverClient(StorageSyncClientWrapper.StorageSyncResourceManager.CreateEcsManagement()))
             {
                 certificateRolloverClient.RolloverServerCertificate(
                     ManagementInteropConstants.CertificateProviderName,

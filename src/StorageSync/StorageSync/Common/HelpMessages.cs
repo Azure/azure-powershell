@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The storage account share name parameter
         /// </summary>
-        public const string StorageAccountShareNameParameter = "Storage Account Share Name (Azure File Share Name)";
+        public const string AzureFileShareNameParameter = "Storage Account Share Name (Azure File Share Name)";
         /// <summary>
         /// The storage account tenant identifier parameter
         /// </summary>

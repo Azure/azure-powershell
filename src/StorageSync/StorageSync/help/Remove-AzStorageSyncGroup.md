@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzStorageSyncGroup
 
 ## SYNOPSIS
-This command will use to remove sync group.
+This command will delete the specified sync group.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Remove-AzStorageSyncGroup [-ResourceId] <String> [-Force] [-PassThru] [-AsJob]
 ```
 
 ## DESCRIPTION
-This command will use to remove sync group.
+This command will delete the specified sync group. A sync group can only be removed when all of the contained endpoints are deleted first.
 
 ## EXAMPLES
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Force to Delete the Sync Group
+Supply -Force to skip confirmation of this command.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Prompts for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

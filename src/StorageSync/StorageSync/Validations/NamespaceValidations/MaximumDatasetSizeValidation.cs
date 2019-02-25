@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MaximumDatasetSizeValidation"/> class.
+        /// Initializes a new instance of the <see cref="MaximumDatasetSizeValidation" /> class.
         /// </summary>
         /// <param name="configuration">The configuration.</param>
         public MaximumDatasetSizeValidation(IConfiguration configuration) : base(configuration, "Namespace size limit", ValidationType.DatasetSize)

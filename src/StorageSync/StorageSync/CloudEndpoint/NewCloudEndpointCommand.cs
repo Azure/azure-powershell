@@ -139,9 +139,9 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         [Parameter(
           Mandatory = true,
           ValueFromPipelineByPropertyName = false,
-          HelpMessage = HelpMessages.StorageAccountShareNameParameter)]
+          HelpMessage = HelpMessages.AzureFileShareNameParameter)]
         [ValidateNotNullOrEmpty]
-        public string StorageAccountShareName { get; set; }
+        public string AzureFileShareName { get; set; }
 
         /// <summary>
         /// Gets or sets the storage account tenant identifier.
@@ -189,11 +189,8 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                     throw new PSArgumentException(nameof(StorageAccountResourceId));
                 }
 
-                if (!IsPlaybackMode)
-                {
-                    PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
-                    RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, StorageAccountResourceId);
-                }
+                PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
+                RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, StorageAccountResourceId);
 
                 var parentResourceIdentifier = default(ResourceIdentifier);
 
@@ -210,12 +207,9 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 var createParameters = new CloudEndpointCreateParameters()
                 {
                     StorageAccountResourceId = StorageAccountResourceId,
-                    StorageAccountShareName = StorageAccountShareName,
+                    StorageAccountShareName = AzureFileShareName,
                     StorageAccountTenantId = (StorageAccountTenantId ?? DefaultContext.Tenant?.Id)
                 };
-
-                // TODO : Remove when we record next.
-                createParameters.StorageAccountTenantId = "\"" + createParameters.StorageAccountTenantId + "\"";
 
                 string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;
                 string storageSyncServiceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0);

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzStorageSyncServerEndpoint
 
 ## SYNOPSIS
-This command will use to remove storage sync server endpoint.
+This command will delete the specified server endpoint. Sync to this location will stop immediately.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Remove-AzStorageSyncServerEndpoint [-ResourceId] <String> [-Force] [-PassThru] [
 ```
 
 ## DESCRIPTION
-This command will use to remove storage sync server endpoint.
+Removing a server endpoint is a destructive operation. This server location will stop syncing. This operation should not be performed to solve sync issues. If this server location (incl. it's files) is added again to the same sync group as a server endpoint, it can lead to conflict files and other unintended consequences. This command is intended for decommissioning only.
 
 ## EXAMPLES
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Force to Delete the ServerEndpoint
+Supply -Force to skip confirmation of this command.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Prompts for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="MaximumPathLengthValidation"/> class.
+        /// Initializes a new instance of the <see cref="MaximumPathLengthValidation" /> class.
         /// </summary>
         /// <param name="configuration">The configuration.</param>
         public MaximumPathLengthValidation(IConfiguration configuration) : base(configuration, "Files/Directories over the path length limit", ValidationType.PathLength)

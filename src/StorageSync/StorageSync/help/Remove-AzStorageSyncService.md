@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzStorageSyncService
 
 ## SYNOPSIS
-This command will use to remove the storage sync service.
+This command will delete the specified storage sync service.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Remove-AzStorageSyncService [-ResourceGroupName] <String> [-Name] <String> [-For
 ```
 
 ## DESCRIPTION
-This command will use to remove the storage sync service.
+This command will delete the specified storage sync service. A storage sync service can only be removed when all of the contained sync groups and registered servers are deleted first.
 
 ## EXAMPLES
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Force to Delete the Storage Sync Service
+Supply -Force to skip confirmation of this command.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Prompts for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

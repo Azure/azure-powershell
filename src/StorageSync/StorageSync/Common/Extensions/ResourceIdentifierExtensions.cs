@@ -29,13 +29,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
         /// <param name="resourceType">Type of the resource.</param>
         /// <param name="level">The level.</param>
         /// <returns>System.String.</returns>
-        /// <exception cref="ArgumentException">
-        /// Invalid argument {nameof(resourceIdentifier.ParentResource)} - ParentResource
+        /// <exception cref="ArgumentException">Invalid argument {nameof(resourceIdentifier.ParentResource)} - ParentResource
         /// or
         /// Invalid argument {nameof(level)} - level
         /// or
-        /// Invalid argument {nameof(resourceType)} - resourceType
-        /// </exception>
+        /// Invalid argument {nameof(resourceType)} - resourceType</exception>
         public static string GetParentResourceName(this ResourceIdentifier resourceIdentifier, string resourceType, int level = 0)
         {
             if (resourceIdentifier?.ParentResource == null)
