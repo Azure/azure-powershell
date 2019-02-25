@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
@@ -221,7 +222,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             }
             else if (string.Equals(this.ParameterSetName, NewByEditionAndComputeGenerationParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
-                string editionShort = Edition.Equals(Constants.GeneralPurposeEdition) ? "GP" : Edition.Equals(Constants.BusinessCriticalEdition) ? "BC" : "Unknown";
+                string editionShort = AzureSqlManagedInstanceAdapter.GetInstanceSkuPrefix(Edition);
                 Sku.Name = editionShort + "_" + ComputeGeneration;
             }
 

@@ -99,9 +99,8 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// <summary>
         /// Intializes the model adapter
         /// </summary>
-        /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The server adapter</returns>
-        protected override ImportExportDatabaseAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override ImportExportDatabaseAdapter InitModelAdapter()
         {
             return new ImportExportDatabaseAdapter(DefaultProfile.DefaultContext);
         }

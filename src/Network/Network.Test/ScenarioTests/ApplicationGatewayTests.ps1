@@ -644,12 +644,12 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 		# Get Application Gateway
 		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 
-        $rewriteRuleSet = Get-AzureRmApplicationGatewayRewriteRuleSet -Name $rewriteRuleSetName -ApplicationGateway $getgw
+        $rewriteRuleSet = Get-AzApplicationGatewayRewriteRuleSet -Name $rewriteRuleSetName -ApplicationGateway $getgw
         Assert-NotNull $rewriteRuleSet
         Assert-AreEqual $rewriteRuleSet.RewriteRules.Count 1
         Assert-NotNull $rewriteRuleSet.RewriteRules[0].ActionSet
 
-        $rewriteRuleSet = Get-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw
+        $rewriteRuleSet = Get-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw
         Assert-NotNull $rewriteRuleSet
         Assert-AreEqual $rewriteRuleSet.Count 1
 
@@ -685,8 +685,8 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 		Assert-NotNull $autoscaleConfig01
 		Assert-AreEqual $autoscaleConfig01.MinCapacity 3
 
-		Set-AzureRmApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw -MinCapacity 3 -MaxCapacity 10
-		$autoscaleConfig02 = Get-AzureRmApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw
+		Set-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw -MinCapacity 3 -MaxCapacity 10
+		$autoscaleConfig02 = Get-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw
 		Assert-NotNull $autoscaleConfig02
 		Assert-AreEqual $autoscaleConfig02.MinCapacity 3
 		Assert-AreEqual $autoscaleConfig02.MaxCapacity 10
@@ -701,29 +701,29 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 		$getgw01 = Set-AzApplicationGateway -ApplicationGateway $getgw
 
 		#Rewrite Rule Set
-        Assert-ThrowsLike { Add-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw01 -Name $rewriteRuleSetName -RewriteRule $rewriteRule } "*already exists*"
-		$rewriteRuleSet = Add-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw01 -Name $rewriteRuleSetName2 -RewriteRule $rewriteRule
-        $getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw01
+        Assert-ThrowsLike { Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw01 -Name $rewriteRuleSetName -RewriteRule $rewriteRule } "*already exists*"
+		$rewriteRuleSet = Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw01 -Name $rewriteRuleSetName2 -RewriteRule $rewriteRule
+        $getgw = Set-AzApplicationGateway -ApplicationGateway $getgw01
 
-        $rewriteRuleSet = Get-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw
+        $rewriteRuleSet = Get-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw
         Assert-NotNull $rewriteRuleSet
         Assert-AreEqual $rewriteRuleSet.Count 2
 
-        $rewriteRuleSet = Remove-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw01 -Name $rewriteRuleSetName2
-        $getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw01
+        $rewriteRuleSet = Remove-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw01 -Name $rewriteRuleSetName2
+        $getgw = Set-AzApplicationGateway -ApplicationGateway $getgw01
 
-        $rewriteRuleSet = Get-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw
+        $rewriteRuleSet = Get-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw
         Assert-NotNull $rewriteRuleSet
         Assert-AreEqual $rewriteRuleSet.Count 1
 
-		$headerConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "ghi" -HeaderValue "jkl"
-		$actionSet = New-AzureRmApplicationGatewayRewriteRuleActionSet -RequestHeaderConfiguration $headerConfiguration
-		$rewriteRule2 = New-AzureRmApplicationGatewayRewriteRule -Name $rewriteRuleName -ActionSet $actionSet
+		$headerConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "ghi" -HeaderValue "jkl"
+		$actionSet = New-AzApplicationGatewayRewriteRuleActionSet -RequestHeaderConfiguration $headerConfiguration
+		$rewriteRule2 = New-AzApplicationGatewayRewriteRule -Name $rewriteRuleName -ActionSet $actionSet
 
-        Assert-ThrowsLike { Set-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw -Name "fakeName" -RewriteRule $rewriteRule2 } "*does not exist*"
-        $rewriteRuleSet = Set-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw -Name $rewriteRuleSetName -RewriteRule $rewriteRule2
-        $getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw01
-        $rewriteRuleSet = Get-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw -Name $rewriteRuleSetName
+        Assert-ThrowsLike { Set-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw -Name "fakeName" -RewriteRule $rewriteRule2 } "*does not exist*"
+        $rewriteRuleSet = Set-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw -Name $rewriteRuleSetName -RewriteRule $rewriteRule2
+        $getgw = Set-AzApplicationGateway -ApplicationGateway $getgw01
+        $rewriteRuleSet = Get-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw -Name $rewriteRuleSetName
         Assert-AreEqual $rewriteRuleSet.RewriteRules[0].Name $rewriteRule2.Name
 
 		# check sku
@@ -764,6 +764,7 @@ function Test-ApplicationGatewayCRUD3
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
+	$identityName = Get-ResourceName
 	$vnetName = Get-ResourceName
 	$gwSubnetName = Get-ResourceName
 	$publicIpName = Get-ResourceName
@@ -790,6 +791,9 @@ function Test-ApplicationGatewayCRUD3
 		$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
 		$vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		# Create Managed Identity
+		$identity = New-AzUserAssignedIdentity -Name $identityName -Location $location -ResourceGroup $rgname
 
 		# Create public ip
 		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
@@ -821,8 +825,11 @@ function Test-ApplicationGatewayCRUD3
 		# security part
 		$sslPolicy = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 
+		# appgw identity
+		$appgwIdentity = New-AzApplicationGatewayIdentity -UserAssignedIdentity $identity.Id
+
 		# Create Application Gateway
-		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Zone 1,2 -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -SslPolicy $sslPolicy -TrustedRootCertificate $trustedRoot01 -AutoscaleConfiguration $autoscaleConfig
+		$appgw = New-AzApplicationGateway -Identity $appgwIdentity -Name $appgwName -ResourceGroupName $rgname -Zone 1,2 -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -SslPolicy $sslPolicy -TrustedRootCertificate $trustedRoot01 -AutoscaleConfiguration $autoscaleConfig
 
 		# Get Application Gateway
 		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
@@ -852,7 +859,7 @@ function Test-ApplicationGatewayCRUD3
 		Assert-NotNull $autoscaleConfig01
 		Assert-AreEqual $autoscaleConfig01.MinCapacity 3
 
-		# Next setup preparation
+		# Next: Manual sku gateway
 
 		# remove autoscale config
 		$getgw = Remove-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw -Force
@@ -867,6 +874,25 @@ function Test-ApplicationGatewayCRUD3
 		Assert-AreEqual $sku01.Capacity 3
 		Assert-AreEqual $sku01.Name Standard_v2
 		Assert-AreEqual $sku01.Tier Standard_v2
+
+		# Next: Set Identity on an existing gateway without identity
+		# First, Removing identity from the gateway
+		Remove-AzApplicationGatewayIdentity -ApplicationGateway $getgw01
+
+		# Set Application Gateway
+		$getgw02 = Set-AzApplicationGateway -ApplicationGateway $getgw01
+		Assert-Null $(Get-AzApplicationGatewayIdentity -ApplicationGateway $getgw01)
+
+		# Set identity
+		Set-AzApplicationGatewayIdentity -ApplicationGateway $getgw02 -UserAssignedIdentityId $identity.Id
+
+		# Set Application Gateway
+		$getgw03 = Set-AzApplicationGateway -ApplicationGateway $getgw02
+		$identity01 = Get-AzApplicationGatewayIdentity -ApplicationGateway $getgw03
+		Assert-AreEqual $identity01.UserAssignedIdentities.Count 1
+		Assert-NotNull $identity01.UserAssignedIdentities.Values[0].PrincipalId
+		Assert-NotNull $identity01.UserAssignedIdentities.Values[0].ClientId
+
 
 		# Stop Application Gateway
 		$getgw1 = Stop-AzApplicationGateway -ApplicationGateway $getgw01

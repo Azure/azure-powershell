@@ -13,7 +13,7 @@ Param(
 
 $ResourceManagerFolders = Get-ChildItem -Directory -Path "$PSScriptRoot\..\src" | Where-Object { $_.Name -ne 'lib' -and $_.Name -ne 'Package' }
 Import-Module "$PSScriptRoot\HelpGeneration\HelpGeneration.psm1"
-$UnfilteredHelpFolders = Get-ChildItem "help" -Path "$PSScriptRoot\.." -Recurse -Directory | where { $_.FullName -like "*$BuildConfig*" -and $_.FullName -notlike "*Stack*" }
+$UnfilteredHelpFolders = Get-ChildItem "help" -Path "$PSScriptRoot\..\artifacts" -Recurse -Directory | where { $_.FullName -like "*$BuildConfig*" -and $_.FullName -notlike "*Stack*" }
 $FilteredHelpFolders = $UnfilteredHelpFolders
 if (![string]::IsNullOrEmpty($FilteredModules))
 {
