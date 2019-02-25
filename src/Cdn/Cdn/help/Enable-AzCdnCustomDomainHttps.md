@@ -1,13 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
-schema: 2.0.0
----
-
----
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
-Module Name: Az.Cdn
 online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/enable-azcdncustomdomainhttps
 schema: 2.0.0
 ---
