@@ -69,7 +69,7 @@ namespace StaticAnalysis
                     throw new InvalidOperationException(string.Format("Please provide a valid installation directory; the provided directory '{0}' could not be found.", installDir));
                 }
 
-                var directories = new List<string> { installDir }.Where((d) => Directory.Exists(d)).ToList<string>();
+                var directories = new List<string>{ installDir }.Where((d) => Directory.Exists(d)).ToList<string>();
 
                 var reportsDirectory = Directory.GetCurrentDirectory();
                 bool logReportsDirectoryWarning = true;
@@ -133,7 +133,7 @@ namespace StaticAnalysis
                 analysisLogger.WriteReports();
                 analysisLogger.CheckForIssues(2);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 analysisLogger?.WriteError(ex.ToString());
                 throw ex;
