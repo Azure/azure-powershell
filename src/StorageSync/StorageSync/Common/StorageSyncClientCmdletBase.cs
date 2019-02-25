@@ -121,6 +121,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            // TODO Remove debug logs
+            this.WriteDebugWithTimestamp(StorageSyncClientWrapper.AfsAgentInstallerPath);
+            this.WriteDebugWithTimestamp(StorageSyncClientWrapper.AfsAgentVersion);
+
             StartTime = DateTime.Now;
             base.ExecuteCmdlet();
         }
