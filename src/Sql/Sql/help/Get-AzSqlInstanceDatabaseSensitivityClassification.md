@@ -26,15 +26,15 @@ Get-AzSqlInstanceDatabaseSensitivityClassification [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ParentResourceParameterSet
+### DatabaseObjectParameterSet
 ```
-Get-AzSqlInstanceDatabaseSensitivityClassification -InputObject <AzureSqlManagedDatabaseModel> [-AsJob]
+Get-AzSqlInstanceDatabaseSensitivityClassification -DatabaseObject <AzureSqlManagedDatabaseModel> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ParentResourceColumnParameterSet
+### DatabaseObjectColumnParameterSet
 ```
-Get-AzSqlInstanceDatabaseSensitivityClassification -InputObject <AzureSqlManagedDatabaseModel>
+Get-AzSqlInstanceDatabaseSensitivityClassification -DatabaseObject <AzureSqlManagedDatabaseModel>
  -SchemaName <String> -TableName <String> -ColumnName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -150,7 +150,7 @@ Name of column.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet, ParentResourceColumnParameterSet
+Parameter Sets: ColumnParameterSet, DatabaseObjectColumnParameterSet
 Aliases:
 
 Required: True
@@ -175,6 +175,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DatabaseObject
+The Azure SQL managed instance database object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
+Parameter Sets: DatabaseObjectParameterSet, DatabaseObjectColumnParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -187,21 +202,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The Azure SQL managed instance database object.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
-Parameter Sets: ParentResourceParameterSet, ParentResourceColumnParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -240,7 +240,7 @@ Name of schema.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet, ParentResourceColumnParameterSet
+Parameter Sets: ColumnParameterSet, DatabaseObjectColumnParameterSet
 Aliases:
 
 Required: True
@@ -255,7 +255,7 @@ Name of table.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet, ParentResourceColumnParameterSet
+Parameter Sets: ColumnParameterSet, DatabaseObjectColumnParameterSet
 Aliases:
 
 Required: True

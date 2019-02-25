@@ -20,10 +20,17 @@ Remove-AzSqlInstanceDatabaseSensitivityClassification [-ResourceGroupName] <Stri
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ParentResourceParameterSet
+### DatabaseObjectColumnParameterSet
+```
+Remove-AzSqlInstanceDatabaseSensitivityClassification -DatabaseObject <AzureSqlManagedDatabaseModel>
+ -SchemaName <String> -TableName <String> -ColumnName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ClassificationObjectParameterSet
 ```
 Remove-AzSqlInstanceDatabaseSensitivityClassification
- -InputObject <ManagedDatabaseSensitivityClassificationModel> [-AsJob]
+ -ClassificationObject <ManagedDatabaseSensitivityClassificationModel> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -59,12 +66,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ClassificationObject
+An object representing a SQL Managed Instance Database Sensitivity Classification.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.DataClassification.Model.ManagedDatabaseSensitivityClassificationModel
+Parameter Sets: ClassificationObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ColumnName
 Name of column.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet
+Parameter Sets: ColumnParameterSet, DatabaseObjectColumnParameterSet
 Aliases:
 
 Required: True
@@ -89,6 +111,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DatabaseObject
+The Azure SQL managed instance database object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
+Parameter Sets: DatabaseObjectColumnParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -101,21 +138,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The Azure SQL managed instance database object.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.DataClassification.Model.ManagedDatabaseSensitivityClassificationModel
-Parameter Sets: ParentResourceParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -154,7 +176,7 @@ Name of schema.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet
+Parameter Sets: ColumnParameterSet, DatabaseObjectColumnParameterSet
 Aliases:
 
 Required: True
@@ -169,7 +191,7 @@ Name of table.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet
+Parameter Sets: ColumnParameterSet, DatabaseObjectColumnParameterSet
 Aliases:
 
 Required: True

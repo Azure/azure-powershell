@@ -16,15 +16,24 @@ Sets the information types and sensitivity labels of columns in the Azure SQL ma
 ### ColumnParameterSet
 ```
 Set-AzSqlInstanceDatabaseSensitivityClassification [-ResourceGroupName] <String> [-InstanceName] <String>
- [-DatabaseName] <String> -SchemaName <String> -TableName <String> -ColumnName <String> [-LabelName <String>]
+ [-DatabaseName] <String> -SchemaName <String> -TableName <String> -ColumnName <String>
+ [-SensitivityLabel <String>] [-InformationType <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DatabaseObjectColumnParameterSet
+```
+Set-AzSqlInstanceDatabaseSensitivityClassification -DatabaseObject <AzureSqlManagedDatabaseModel>
+ -SchemaName <String> -TableName <String> -ColumnName <String> [-SensitivityLabel <String>]
  [-InformationType <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### ParentResourceParameterSet
+### ClassificationObjectParameterSet
 ```
-Set-AzSqlInstanceDatabaseSensitivityClassification -InputObject <ManagedDatabaseSensitivityClassificationModel>
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSqlInstanceDatabaseSensitivityClassification
+ -ClassificationObject <ManagedDatabaseSensitivityClassificationModel> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,12 +68,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ClassificationObject
+An object representing a SQL Managed Instance Database Sensitivity Classification.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.DataClassification.Model.ManagedDatabaseSensitivityClassificationModel
+Parameter Sets: ClassificationObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ColumnName
 Name of column.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet
+Parameter Sets: ColumnParameterSet, DatabaseObjectColumnParameterSet
 Aliases:
 
 Required: True
@@ -89,6 +113,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DatabaseObject
+The Azure SQL managed instance database object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
+Parameter Sets: DatabaseObjectColumnParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -109,28 +148,13 @@ A name that describes the information type of the data stored in the column.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet
+Parameter Sets: ColumnParameterSet, DatabaseObjectColumnParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InputObject
-The SQL instance database object.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.DataClassification.Model.ManagedDatabaseSensitivityClassificationModel
-Parameter Sets: ParentResourceParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -144,21 +168,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -LabelName
-A name that describes the sensitivity of the data stored in the column.
-
-```yaml
-Type: System.String
-Parameter Sets: ColumnParameterSet
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -199,10 +208,25 @@ Name of schema.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet
+Parameter Sets: ColumnParameterSet, DatabaseObjectColumnParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SensitivityLabel
+A name that describes the sensitivity of the data stored in the column.
+
+```yaml
+Type: System.String
+Parameter Sets: ColumnParameterSet, DatabaseObjectColumnParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -214,7 +238,7 @@ Name of table.
 
 ```yaml
 Type: System.String
-Parameter Sets: ColumnParameterSet
+Parameter Sets: ColumnParameterSet, DatabaseObjectColumnParameterSet
 Aliases:
 
 Required: True

@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.DataClassification.Model;
 using Microsoft.Azure.Commands.Sql.DataClassification.Services;
 using System.Collections.Generic;
@@ -45,7 +46,20 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         public override string DatabaseName { get; set; }
 
         [Parameter(
+            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = DefinitionsCommon.SqlDatabaseObjectHelpMessage)]
+        [ValidateNotNull]
+        public AzureSqlDatabaseModel DatabaseObject { get; set; }
+
+        [Parameter(
             ParameterSetName = DefinitionsCommon.ColumnParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = DefinitionsCommon.SchemaNameHelpMessage)]
+        [Parameter(
+            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = DefinitionsCommon.SchemaNameHelpMessage)]
@@ -57,6 +71,11 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = DefinitionsCommon.TableNameHelpMessage)]
+        [Parameter(
+            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = DefinitionsCommon.TableNameHelpMessage)]
         public string TableName { get; set; }
 
         [Parameter(
@@ -64,16 +83,21 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = DefinitionsCommon.ColumnNameHelpMessage)]
+        [Parameter(
+            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = DefinitionsCommon.ColumnNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ColumnName { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ParentResourceParameterSet,
+            ParameterSetName = DefinitionsCommon.ClassificationObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = DefinitionsCommon.SqlDatabaseInputObjectHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public SqlDatabaseSensitivityClassificationModel InputObject { get; set; }
+            HelpMessage = DefinitionsCommon.SqlDatabaseSensitivityClassificationObjectHelpMessage)]
+        [ValidateNotNull]
+        public SqlDatabaseSensitivityClassificationModel ClassificationObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -82,7 +106,14 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override SqlDatabaseSensitivityClassificationModel GetEntity()
         {
-            return InputObject ??
+            if (DatabaseObject != null)
+            {
+                ResourceGroupName = DatabaseObject.ResourceGroupName;
+                ServerName = DatabaseObject.ServerName;
+                DatabaseName = DatabaseObject.DatabaseName;
+            }
+
+            return ClassificationObject ??
             new SqlDatabaseSensitivityClassificationModel
             {
                 ResourceGroupName = ResourceGroupName,
@@ -102,7 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override DataClassificationAdapter InitModelAdapter()
         {
-            throw new System.NotImplementedException();
+            return new DataClassificationAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

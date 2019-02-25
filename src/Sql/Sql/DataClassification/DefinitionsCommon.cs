@@ -6,9 +6,10 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification
 {
     public class DefinitionsCommon
     {
-        internal const string ParentResourceColumnParameterSet = "ParentResourceColumnParameterSet";
+        internal const string DatabaseObjectColumnParameterSet = "DatabaseObjectColumnParameterSet";
         internal const string ColumnParameterSet = "ColumnParameterSet";
-        internal const string ParentResourceParameterSet = "ParentResourceParameterSet";
+        internal const string DatabaseObjectParameterSet = "DatabaseObjectParameterSet";
+        internal const string ClassificationObjectParameterSet = "ClassificationObjectParameterSet";
         internal const string DatabaseParameterSet = "DatabaseParameterSet";
         internal const string SqlDatabaseSensitivityClassification = "SqlDatabaseSensitivityClassification";
         internal const string SqlInstanceDatabaseSensitivityClassification = "SqlInstanceDatabaseSensitivityClassification";
@@ -16,13 +17,13 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification
         internal const string ServerNameHelpMessage = "SQL server name.";
         internal const string InstanceNameHelpMessage = "Azure SQL managed instance name.";
         internal const string DatabaseNameHelpMessage = "The name of the Azure SQL database.";
+        internal const string ManagedDatabaseNameHelpMessage = "The name of the Azure SQL managed instance database.";
         internal const string LabelNameHelpMessage = "A name that describes the sensitivity of the data stored in the column.";
         internal const string InformationTypeHelpMessage = "A name that describes the information type of the data stored in the column.";
-        internal const string ManagedDatabaseNameHelpMessage = "The name of the Azure SQL managed instance database.";
-        internal const string SqlDatabaseInputObjectHelpMessage = "The SQL database object.";
-        internal const string ManagedDatabaseInputObjectHelpMessage = "The Azure SQL managed instance database object.";
-        internal const string SqlDatabaseSensitivityClassificationInputObjectHelpMessage = "An object representing a SQL Database Sensitivity Classification.";
-        internal const string ManagedDatabaseSensitivityClassificationInputObjectHelpMessage = "An object representing a SQL Managed Instance Database Sensitivity Classification.";
+        internal const string SqlDatabaseObjectHelpMessage = "The SQL database object.";
+        internal const string ManagedDatabaseObjectHelpMessage = "The Azure SQL managed instance database object.";
+        internal const string SqlDatabaseSensitivityClassificationObjectHelpMessage = "An object representing a SQL Database Sensitivity Classification.";
+        internal const string ManagedDatabaseSensitivityClassificationObjectHelpMessage = "An object representing a SQL Managed Instance Database Sensitivity Classification.";
         internal const string PassThruHelpMessage = "Specifies whether to output the sensitivity classification model at end of cmdlet execution";
         internal const string AsJobHelpMessage = "Run cmdlet in the background";
         internal const string SchemaNameHelpMessage = "Name of schema.";

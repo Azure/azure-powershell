@@ -19,9 +19,9 @@ Get-AzSqlInstanceDatabaseSensitivityRecommendations [-ResourceGroupName] <String
  [-DatabaseName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ParentResourceParameterSet
+### DatabaseObjectParameterSet
 ```
-Get-AzSqlInstanceDatabaseSensitivityRecommendations -InputObject <AzureSqlManagedDatabaseModel> [-AsJob]
+Get-AzSqlInstanceDatabaseSensitivityRecommendations -DatabaseObject <AzureSqlManagedDatabaseModel> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-The name of the Azure SQL managed instance Database.
+The name of the Azure SQL managed instance database.
 
 ```yaml
 Type: System.String
@@ -111,6 +111,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DatabaseObject
+The Azure SQL managed instance database object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
+Parameter Sets: DatabaseObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -126,21 +141,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The Azure SQL managed instance database object.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
-Parameter Sets: ParentResourceParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

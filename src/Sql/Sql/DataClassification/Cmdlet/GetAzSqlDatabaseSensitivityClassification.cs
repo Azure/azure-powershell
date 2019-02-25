@@ -62,17 +62,17 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         public override string DatabaseName { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ParentResourceParameterSet,
+            ParameterSetName = DefinitionsCommon.DatabaseObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = DefinitionsCommon.SqlDatabaseInputObjectHelpMessage)]
+            HelpMessage = DefinitionsCommon.SqlDatabaseObjectHelpMessage)]
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ParentResourceColumnParameterSet,
+            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = DefinitionsCommon.SqlDatabaseInputObjectHelpMessage)]
+            HelpMessage = DefinitionsCommon.SqlDatabaseObjectHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public AzureSqlDatabaseModel InputObject { get; set; }
+        public AzureSqlDatabaseModel DatabaseObject { get; set; }
 
         [Parameter(
             ParameterSetName = DefinitionsCommon.ColumnParameterSet,
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = DefinitionsCommon.SchemaNameHelpMessage)]
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ParentResourceColumnParameterSet,
+            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = DefinitionsCommon.SchemaNameHelpMessage)]
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = DefinitionsCommon.TableNameHelpMessage)]
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ParentResourceColumnParameterSet,
+            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = DefinitionsCommon.TableNameHelpMessage)]
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = DefinitionsCommon.ColumnNameHelpMessage)]
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ParentResourceColumnParameterSet,
+            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = DefinitionsCommon.ColumnNameHelpMessage)]
@@ -119,34 +119,24 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override SqlDatabaseSensitivityClassificationModel GetEntity()
         {
-            if (InputObject != null)
+            if (DatabaseObject != null)
             {
-                ResourceGroupName = InputObject.ResourceGroupName;
-                ServerName = InputObject.ServerName;
-                DatabaseName = InputObject.DatabaseName;
+                ResourceGroupName = DatabaseObject.ResourceGroupName;
+                ServerName = DatabaseObject.ServerName;
+                DatabaseName = DatabaseObject.DatabaseName;
             }
 
-            SqlDatabaseSensitivityClassificationModel model = new SqlDatabaseSensitivityClassificationModel()
+            return new SqlDatabaseSensitivityClassificationModel()
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
-                DatabaseName = DatabaseName
+                DatabaseName = DatabaseName,
+                SensitivityLabels = ParameterSetName == DefinitionsCommon.ColumnParameterSet ||
+                    ParameterSetName == DefinitionsCommon.DatabaseObjectColumnParameterSet
+                    ? ModelAdapter.GetCurrentSensitivityLabel(
+                        ResourceGroupName, ServerName, DatabaseName, SchemaName, TableName, ColumnName)
+                    : ModelAdapter.GetCurrentSensitivityLabels(ResourceGroupName, ServerName, DatabaseName)
             };
-
-            if (ParameterSetName == DefinitionsCommon.ColumnParameterSet ||
-                ParameterSetName == DefinitionsCommon.ParentResourceColumnParameterSet)
-            {
-                model.SensitivityLabels = ModelAdapter.GetSensitivityLabel(
-                    model.ResourceGroupName, model.ServerName, model.DatabaseName,
-                    SchemaName, TableName, ColumnName);
-            }
-            else
-            {
-                model.SensitivityLabels = ModelAdapter.GetCurrentSensitivityLabels(
-                    model.ResourceGroupName, model.ServerName, model.DatabaseName);
-            }
-
-            return model;
         }
 
         protected override DataClassificationAdapter InitModelAdapter()
