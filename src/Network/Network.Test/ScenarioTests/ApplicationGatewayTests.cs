@@ -94,5 +94,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationGatewayCRUDRewriteRuleSet -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.nvadev)]
+        public void TestApplicationGatewayCRUDRewriteRuleSetWithConditions()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
     }
 }
