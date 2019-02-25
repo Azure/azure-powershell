@@ -1,0 +1,247 @@
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasebackupshorttermretentionpolicy
+schema: 2.0.0
+---
+
+# Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy
+
+## SYNOPSIS
+Sets a backup short term retention policy.
+
+## SYNTAX
+
+### PolicyByResourceInstanceDatabaseSet (Default)
+```
+Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> [-ResourceGroupName] <String>
+ [-InstanceName] <String> [-DatabaseName] <String> [[-DeletionDate] <DateTime>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PolicyByDatabaseObjectSet
+```
+Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32>
+ -AzureInstanceDatabase <AzureSqlManagedDatabaseModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### PolicyByDeletedDatabaseObjectSet
+```
+Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32>
+ -AzureInstanceDeletedDatabase <AzureSqlDeletedManagedDatabaseBackupModel>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PolicyByResourceIdSet
+```
+Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+## DESCRIPTION
+The **Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy** cmdlet gets the short term retention policy registered to this database.
+The policy is the retention period, in days, for point-in-time restore backups.
+
+## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourcegroup01 -InstanceName server01 -DatabaseName database01 -RetentionDays 35
+```
+
+This command sets the short term retention policy for database01 to 35 days.
+
+### Example 2
+```powershell
+PS C:\> Get-AzSqlDatabase -ResourceGroupName resourcegroup01 -InstanceName server01 -DatabaseName database01 | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 35
+```
+
+This command sets the short term retention policy for database01 to 35 days via piping in a database object.
+
+## PARAMETERS
+
+### -AzureInstanceDatabase
+The database object to get the policy for.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
+Parameter Sets: PolicyByDatabaseObjectSet
+Aliases: AzureSqlInstanceDatabase
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -AzureInstanceDeletedDatabase
+The deleted database object to get the policy for.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model.AzureSqlDeletedManagedDatabaseBackupModel
+Parameter Sets: PolicyByDeletedDatabaseObjectSet
+Aliases: AzureSqlInstanceDeletedDatabase
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DatabaseName
+The name of the Azure SQL Instance Database to retrieve backups for.
+
+```yaml
+Type: System.String
+Parameter Sets: PolicyByResourceInstanceDatabaseSet
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeletionDate
+The deletion date of the Azure SQL Instance Database to retrieve backups for, with millisecond precision (e.g. 2016-02-23T00:21:22.847Z)
+
+```yaml
+Type: System.Nullable`1[System.DateTime]
+Parameter Sets: PolicyByResourceInstanceDatabaseSet
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceName
+The name of the Azure SQL Managed Instance the database is in.
+
+```yaml
+Type: System.String
+Parameter Sets: PolicyByResourceInstanceDatabaseSet
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: PolicyByResourceInstanceDatabaseSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The short term retention policy resource Id.
+
+```yaml
+Type: System.String
+Parameter Sets: PolicyByResourceIdSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RetentionDays
+Days of backup retention.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
+
+### Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model.AzureSqlDeletedManagedDatabaseBackupModel
+
+### System.String
+
+## OUTPUTS
+
+### Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model.AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel
+
+## NOTES
+
+## RELATED LINKS

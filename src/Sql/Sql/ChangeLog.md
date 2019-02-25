@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Add support for restore an instance database from geo-redundant backups
+* Add support for backup short term retention on Managed Instance
 
 ## Version 1.3.0
 * Add support for SQL DB Hyperscale tier
