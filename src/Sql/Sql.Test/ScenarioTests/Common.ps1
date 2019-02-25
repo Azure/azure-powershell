@@ -35,6 +35,8 @@ function Get-SqlBlobAuditingTestEnvironmentParameters ($testSuffix)
 			  serverName = "blob-audit-cmdlet-server" + $testSuffix;
 			  databaseName = "blob-audit-cmdlet-db" + $testSuffix;
 			  storageAccount = "blobaudit" + $testSuffix
+			  eventHubNamespace = "audit-cmdlet-event-hub-ns" + $testSuffix
+			  workspaceName = "audit-cmdlet-workspace" +$testSuffix
 		}
 }
 
@@ -91,6 +93,8 @@ function Create-BlobAuditingTestEnvironment ($testSuffix, $location = "West Cent
 {
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	Create-TestEnvironmentWithParams $params $location $serverVersion
+	New-AzOperationalInsightsWorkspace -ResourceGroupName $params.rgname -Name $params.workspaceName -Sku "Standard" -Location "eastus"
+	New-AzEventHubNamespace -ResourceGroupName $params.rgname -NamespaceName $params.eventHubNamespace -Location $location
 }
 
 <#

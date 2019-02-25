@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [LocationCompleter("Microsoft.Compute/locations/logAnalytics")]
@@ -69,19 +69,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true)]
         public DateTime FromTime { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
+            Position = 2,
             Mandatory = true)]
         public DateTime ToTime { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 4,
+            Position = 3,
             Mandatory = true)]
         public string BlobContainerSasUri { get; set; }
 
