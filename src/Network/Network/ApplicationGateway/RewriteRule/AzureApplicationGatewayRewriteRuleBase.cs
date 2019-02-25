@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Condition of the rewrite rule")]
-        public PSApplicationGatewayRewriteRuleCondition Condition { get; set; }
+        public List<PSApplicationGatewayRewriteRuleCondition> Condition { get; set; }
 
         public override void ExecuteCmdlet()
         {
