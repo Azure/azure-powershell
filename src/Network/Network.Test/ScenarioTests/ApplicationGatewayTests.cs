@@ -92,10 +92,17 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestAvailableServerVariableAndHeader()
         {
             TestRunner.RunTestScript("Test-AvailableServerVariableAndHeader");
+=======
+        [Trait(Category.Owner, Category.nvadev)]
+        public void TestApplicationGatewayCRUDRewriteRuleSetWithConditions()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+>>>>>>> f061fa0d8f... Commiting Dev and Test Changes for Conditions Support for header CRUD in AppGw v2
         }
     }
 }
