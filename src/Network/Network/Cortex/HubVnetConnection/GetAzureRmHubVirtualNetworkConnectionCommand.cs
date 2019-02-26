@@ -85,13 +85,13 @@ namespace Microsoft.Azure.Commands.Network
                 ResourceGroupName = parsedResourceId.ResourceGroupName;
             }
 
-            if (!string.IsNullOrWhiteSpace(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 WriteObject(this.GetHubVirtualNetworkConnection(this.ResourceGroupName, this.ParentResourceName, this.Name));
             }
             else
             {
-                WriteObject(this.ListHubVnetConnections(this.ResourceGroupName, this.ParentResourceName), true);
+                WriteObject(SubResourceWildcardFilter(Name, this.ListHubVnetConnections(this.ResourceGroupName, this.ParentResourceName)), true);
             }
         }
     }
