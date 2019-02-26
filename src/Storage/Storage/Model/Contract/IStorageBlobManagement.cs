@@ -18,6 +18,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+    using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
     using System.Threading;
@@ -430,6 +431,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             BlobListingDetails blobListingDetails, int? maxResults, BlobContinuationToken currentToken,
             BlobRequestOptions options, OperationContext operationContext);
 
+        /// <summary>
+        /// Get the Table service properties
+        /// </summary>
+        /// <param name="account">Cloud storage account</param>
+        /// <param name="options">Request options</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <returns>The service properties of the specified service type</returns>
+        XTable.ServiceProperties GetStorageTableServiceProperties(XTable.TableRequestOptions options, XTable.OperationContext operationContext);
+
+        /// <summary>
+        /// Set Table service properties
+        /// </summary>
+        /// <param name="account">Cloud storage account</param>
+        /// <param name="properties">Service properties</param>
+        /// <param name="options">Request options</param>
+        /// <param name="operationContext">Operation context</param>
+        void SetStorageTableServiceProperties(XTable.ServiceProperties properties, XTable.TableRequestOptions options, XTable.OperationContext operationContext);
+        
         /// <summary>
         /// Returns the sku name and account kind for the specified account
         /// </summary>
