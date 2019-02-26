@@ -103,7 +103,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     azureWorkloadRecoveryConfig.RecoveryPoint = RecoveryPoint;
                     Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(RecoveryPoint.Id);
                     string containerUri = HelperUtils.GetContainerUri(keyValueDict, RecoveryPoint.Id);
-                    targetServer = containerUri.Split(new string[] { ";" }, StringSplitOptions.None)[3];
+                    try
+                    {
+                        targetServer = containerUri.Split(new string[] { ";" }, StringSplitOptions.None)[3];
+                    }
+                    catch
+                    {
+                        targetServer = containerUri.Split(new string[] { ";" }, StringSplitOptions.None)[1];
+                    }
                     string itemUri = HelperUtils.GetProtectedItemUri(keyValueDict, RecoveryPoint.Id);
                     parentName = itemUri.Split(new string[] { ";" }, StringSplitOptions.None)[1];
                     targetDb = itemUri.Split(new string[] { ";" }, StringSplitOptions.None)[2];
@@ -221,12 +228,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public string GetResourceId()
         {
-            ResourceIdentifier resourceIdentifier = new ResourceIdentifier();
-            resourceIdentifier.Subscription = ServiceClientAdapter.SubscriptionId;
-            resourceIdentifier.ResourceGroupName = RecoveryPoint.ContainerName.Split(new string[] { ";" }, StringSplitOptions.None)[1];
-            resourceIdentifier.ResourceType = "/VMAppContainer";
-            resourceIdentifier.ResourceName = RecoveryPoint.ContainerName.Split(new string[] { ";" }, StringSplitOptions.None)[2];
-            return resourceIdentifier.ToString();
+            try
+            {
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier();
+                resourceIdentifier.Subscription = ServiceClientAdapter.SubscriptionId;
+                resourceIdentifier.ResourceGroupName = RecoveryPoint.ContainerName.Split(new string[] { ";" }, StringSplitOptions.None)[1];
+                resourceIdentifier.ResourceType = "/VMAppContainer";
+                resourceIdentifier.ResourceName = RecoveryPoint.ContainerName.Split(new string[] { ";" }, StringSplitOptions.None)[2];
+                return resourceIdentifier.ToString();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public string GetItemId(string recoveryPointId)
