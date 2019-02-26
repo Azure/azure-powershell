@@ -18,6 +18,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
     using StorageClient = WindowsAzure.Storage.Shared.Protocol;
+    using XTable = Microsoft.Azure.Cosmos.Table;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
 
     /// <summary>
@@ -54,7 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         {
             if (ShouldProcess("ServiceProperties", VerbsCommon.Set))
             {
-                StorageClient.ServiceProperties serviceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
+                if (ServiceType != StorageServiceType.Table)
+                {
+                    StorageClient.ServiceProperties serviceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
 
                 serviceProperties.DefaultServiceVersion = this.DefaultServiceVersion;
 
@@ -64,6 +67,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 if (PassThru)
                 {
                     WriteObject(new PSSeriviceProperties(serviceProperties));
+                    }
+                }
+                else //Table use old XSCL
+                {
+                    XTable.ServiceProperties serviceProperties = Channel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
+
+                    if (!string.IsNullOrEmpty(DefaultServiceVersion))
+                    {
+                        serviceProperties.DefaultServiceVersion = this.DefaultServiceVersion;
+                    }
+
+                    Channel.SetStorageTableServiceProperties(serviceProperties,
+                        GetTableRequestOptions(), TableOperationContext);
+
+                    if (PassThru)
+                    {
+                        WriteObject(new PSSeriviceProperties(serviceProperties));
+                    }
                 }
             }
         }
