@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.privatedns/get-azprivatednsrecordset
 schema: 2.0.0
 ---
 
 # Get-AzPrivateDnsRecordSet
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a Private DNS record set.
 
 ## SYNTAX
 
@@ -31,16 +31,38 @@ Get-AzPrivateDnsRecordSet -ParentResourceId <String> [-Name <String>] [-RecordTy
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Get-AzPrivateDnsRecordSet cmdlet gets the Private Domain Name System (DNS) record set with the specified name and type, in the specified private zone. If you do not specify the Name or RecordType parameters, this cmdlet returns all record sets of the specified type in the private zone. If you specify the RecordType parameter but not the Name parameter, this cmdlet returns all record sets of the specified record type. You can use the pipeline operator to pass a PSPrivateDnsZone object to this cmdlet, or you can pass a PSPrivateDnsZone object as the Zone parameter, or alternatively you can specify the zone and resource group by name. You can also specify the private zone using the Resource Id of the private zone.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get record sets with a specified name and type
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>$RecordSet = Get-AzPrivateDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "www" -RecordType A
 ```
 
-{{ Add example description here }}
+This command gets the record set of record type A named www in the specified resource group and private zone, and then stores it in the $RecordSet variable. Because the Name and RecordType parameters are specified, only one RecordSet object is returned.
+
+### Example 2: Get record sets of a specified type
+```powershell
+PS C:\>$RecordSets = Get-AzPrivateDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -RecordType A
+```
+
+This command gets an array of all record sets of record type A in the private zone named myzone.com in the resource group named MyResourceGroup, and then stores them in the $RecordSets variable.
+
+### Example 3: Get all record sets in a private zone
+```powershell
+PS C:\>$RecordSets = Get-AzPrivateDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
+```
+
+This command gets an array of all record sets in the private zone named myzone.com in the resource group named MyResourceGroup, and then stores them in the $RecordSets variable.
+
+### Example 4: Get all record sets in a private zone, using a PSPrivateDnsZone object
+```powershell
+PS C:\> $Zone = Get-AzPrivateDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
+PS C:\> $RecordSets = Get-AzPrivateDnsRecordSet -Zone $Zone
+```
+
+This example is equivalent to Example 3 above. This time, the private zone is specified using a private zone object.
 
 ## PARAMETERS
 
@@ -48,7 +70,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -63,7 +85,7 @@ Accept wildcard characters: False
 The name of the records in this record set (relative to the name of the zone and without a terminating dot).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +100,7 @@ Accept wildcard characters: False
 Private DNS Zone ResourceID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 
@@ -93,7 +115,7 @@ Accept wildcard characters: False
 The type of DNS records in this record set.
 
 ```yaml
-Type: RecordType
+Type: System.Nullable`1[Microsoft.Azure.Management.PrivateDns.Models.RecordType]
 Parameter Sets: (All)
 Aliases:
 Accepted values: A, AAAA, CNAME, MX, PTR, SOA, SRV, TXT
@@ -109,7 +131,7 @@ Accept wildcard characters: False
 The resource group to which the zone belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
 Aliases:
 
@@ -124,7 +146,7 @@ Accept wildcard characters: False
 The DnsZone object representing the zone in which to create the record set.
 
 ```yaml
-Type: PSPrivateDnsZone
+Type: Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone
 Parameter Sets: Object
 Aliases:
 
@@ -139,7 +161,7 @@ Accept wildcard characters: False
 The zone in which to create the record set (without a terminating dot).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
 Aliases:
 
@@ -151,8 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -160,7 +181,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.String
 
-### System.Nullable`1[[Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### System.Nullable`1[[Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ## OUTPUTS
 

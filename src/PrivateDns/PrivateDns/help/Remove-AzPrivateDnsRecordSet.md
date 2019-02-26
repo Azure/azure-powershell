@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.privatedns/remove-azprivatednsrecordset
 schema: 2.0.0
 ---
 
 # Remove-AzPrivateDnsRecordSet
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Deletes a record set.
 
 ## SYNTAX
 
@@ -38,16 +38,31 @@ Remove-AzPrivateDnsRecordSet -ResourceId <String> [-PassThru] [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Remove-AzPrivateDnsRecordSet cmdlet deletes the specified record set from the specified zone. You cannot delete SOA records that are automatically created at the private zone apex. You can pass a RecordSet object to this cmdlet by using the pipeline operator or as a parameter or as a ResourceId. To identify a record set by name and type without using a RecordSet object, you must pass the zone as a PSPrivateDnsZone object to this cmdlet by using the pipeline operator or as a parameter, or alternatively you can specify the ZoneName and ResourceGroupName parameters. You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation. When specifying the record set using a RecordSet object, the record set is not deleted if it has been changed in Azure Private DNS since the local RecordSet object was retrieved. This provides protection for concurrent changes. You can suppress this by using the Overwrite parameter, which deletes the record set regardless of concurrent changes.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove a record set
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $RecordSet = Get-AzPrivateDnsRecordSet -Name "www" -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
+PS C:\> Remove-AzPrivateDnsRecordSet -RecordSet $RecordSet
 ```
 
-{{ Add example description here }}
+The first command gets the specified record set, and then stores it in the $RecordSet variable.The second command removes the record set in $RecordSet.
+
+### Example 2: Remove a record set and suppress all confirmation
+```powershell
+PS C:\> $RecordSet = Get-AzPrivateDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup"
+PS C:\> Remove-AzPrivateDnsRecordSet -RecordSet $RecordSet -Confirm:$False -Overwrite
+
+# Alternatively, the record set can be removed as follows.  In this case,
+# because the record set is specified by name rather than by object, the
+# Overwrite parameter is not applicable.
+
+PS C:\> Remove-AzPrivateDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Confirm:$False
+```
+
+The first command gets the specified record set. The second command deletes the record set, even if it has changed in the meantime. Confirmation prompts are suppressed.
 
 ## PARAMETERS
 
@@ -55,7 +70,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -70,7 +85,7 @@ Accept wildcard characters: False
 The name of the records in the record set (relative to the name of the zone and without a terminating dot).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields, Mixed
 Aliases:
 
@@ -85,7 +100,7 @@ Accept wildcard characters: False
 Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Object
 Aliases:
 
@@ -96,26 +111,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Private DNS RecprdSet ResourceID.
-
-```yaml
-Type: String
-Parameter Sets: ResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -PassThru
 {{Fill PassThru Description}}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 The record set in which to add the record.
 
 ```yaml
-Type: PSPrivateDnsRecordSet
+Type: Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet
 Parameter Sets: Object
 Aliases:
 
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 The type of Private DNS records in the record set.
 
 ```yaml
-Type: RecordType
+Type: Microsoft.Azure.Management.PrivateDns.Models.RecordType
 Parameter Sets: Fields, Mixed
 Aliases:
 Accepted values: A, AAAA, CNAME, MX, PTR, SOA, SRV, TXT
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 The resource group to which the zone belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
 Aliases:
 
@@ -172,11 +172,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+Private DNS RecprdSet ResourceID.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Zone
 The PrivateDnsZone object representing the zone in which to create the record set.
 
 ```yaml
-Type: PSPrivateDnsZone
+Type: Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone
 Parameter Sets: Mixed
 Aliases:
 
@@ -191,7 +206,7 @@ Accept wildcard characters: False
 The zone in which the record set exists (without a terminating dot).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
 Aliases:
 
@@ -206,7 +221,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -222,7 +237,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -234,8 +249,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
