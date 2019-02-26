@@ -1,5 +1,5 @@
-﻿#Requires -Module AzureRM.Resources
-#Requires -Module AzureRM.KeyVault
+#Requires -Module Az.Resources
+#Requires -Module Az.KeyVault
 
 Param(
   [Parameter(Mandatory = $true, 
@@ -52,8 +52,6 @@ $ErrorActionPreference = "Stop"
 # Section2:  Create AAD app if encryption is enabled using AAD. Fill in $aadClientSecret variable if AAD app was already created.
 ####################################################################################################################################
 
-    $azureResourcesModule = Get-Module 'AzureRM.Resources';
-
     if($aadAppName)
     {
         # Check if AAD app with $aadAppName was already created
@@ -68,15 +66,8 @@ $ErrorActionPreference = "Stop"
             $aadClientSecret = [Guid]::NewGuid().ToString();
             Write-Host "Creating new AAD application ($aadAppName)";
 
-            if($azureResourcesModule.Version.Major -ge 5)
-            {
-                $secureAadClientSecret = ConvertTo-SecureString -String $aadClientSecret -AsPlainText -Force;
-                $ADApp = New-AzADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $secureAadClientSecret;
-            }
-            else
-            {
-                $ADApp = New-AzADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $aadClientSecret;
-            }
+	    $secureAadClientSecret = ConvertTo-SecureString -String $aadClientSecret -AsPlainText -Force;
+	    $ADApp = New-AzADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $secureAadClientSecret;
 
             $servicePrincipal = New-AzADServicePrincipal -ApplicationId $ADApp.ApplicationId;
             $SvcPrincipals = (Get-AzADServicePrincipal -SearchString $aadAppName);
@@ -250,12 +241,6 @@ foreach($vm in $allVMs)
     }
     else
     {
-        if($azureResourcesModule.Version.Major -lt 6)
-        {
-            Write-Error "Please specify AAD application details, or install AzurePowershell version 6.0.0.0 or above to use AzureDiskEncryption without AAD";
-            return;
-        }
-
         if(-not $kek)
         {
             Set-AzVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';

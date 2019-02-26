@@ -317,7 +317,13 @@ function Test-AddAzureRmServiceFabricApplicationCertificateRollback
 	}
 	Catch [System.Exception]
 	{
-		Assert-AreEqual $true ($PSItem.Exception.Message -match 'is different from the location of the VM') "unexpected error message: $($PSItem.Exception.Message)"
+		$Exception = $PSitem.Exception
+		while ($Exception.InnerException -ne $null)
+		{
+			$Exception = $Exception.InnerException
+		}
+		
+		Assert-AreEqual $true ($Exception.Message -match 'is different from the location of the VM') ("unexpected error message: " + $Exception.Message )
 		$exceptionThrown = $true
 	}
 
