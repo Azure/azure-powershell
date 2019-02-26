@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
         [Ps1Xml(Target = ViewControl.List)]
         public string InformationType { get; set; }
 
-        public string LabelId { get; set; }
+        public string SensitivityLabelId { get; set; }
 
         public string InformationTypeId { get; set; }
 
@@ -31,12 +31,18 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
             foreach (var property in this.GetType().GetProperties())
             {
                 string name = property.Name;
+                if (name == "InformationTypeId" || name == "SensitivityLabelId")
+                {
+                    continue;
+                }
+
                 object value = property.GetValue(this);
                 if (value != null)
                 {
                     builder.AppendLine($"\t{name}: {value},");
                 }
             }
+
             builder.Append("}");
 
             return builder.ToString();
