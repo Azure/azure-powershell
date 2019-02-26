@@ -41,28 +41,12 @@ function Get-VirtualNetworkName
 
 <#
 .SYNOPSIS
-Gets the default location for a provider
-#>
-function Get-ProviderLocation($provider)
-{
-	$namespace = $provider.Split("/")[0]
-	if($provider.Contains("/"))
-	{
-		$type = $provider.Substring($namespace.Length + 1)
-		$location = Get-Location -ProviderNamespace $namespace -ResourceType $type -PreferredLocation "West US"
-		return $location
-	}
-	return "West US"
-}
-
-<#
-.SYNOPSIS
 Creates a resource group to use in tests
 #>
 function TestSetup-CreateResourceGroup
 {
     $resourceGroupName = Get-ResourceGroupName
-	$rglocation = Get-ProviderLocation "microsoft.compute"
+	$rglocation = "West US"
     $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation
 	return $resourceGroup
 }
@@ -74,7 +58,7 @@ Creates a virtual network to use in tests
 function TestSetup-CreateVirtualNetwork($resourceGroup)
 {
     $virtualNetworkName = Get-VirtualNetworkName
-	$location = Get-ProviderLocation "microsoft.network/virtualNetworks"
+	$location = Get-Location -ProviderNamespace "microsoft.network" -ResourceType "virtualNetworks" -PreferredLocation "West US"  
     $virtualNetwork = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $location -AddressPrefix "10.0.0.0/8"
 	return $virtualNetwork
 }

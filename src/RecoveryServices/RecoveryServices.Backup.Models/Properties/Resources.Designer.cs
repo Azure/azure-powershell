@@ -194,7 +194,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("AzureVMUnsupportedBackupManagementTypeException", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to The specified workload is already registered in the given resource ID.
+        /// </summary>
+        public static string AzureWorkloadAlreadyRegisteredException
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureWorkloadAlreadyRegisteredException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Provide SQLInstance or SQLAvailabilityGroup protectable item in TargetItem.
+        /// </summary>
+        public static string AzureWorkloadRestoreProtectableItemException
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureWorkloadAlreadyRegisteredException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to RetentionTime in retention schedule should be same as backup time specified in SchedulePolicy.
         /// </summary>
@@ -365,7 +387,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("DiscoveryFailureErrorCode", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to UnRegister operation failed with ErrorCode: {0}.
+        /// </summary>
+        public static string UnRegisterFailureErrorCode
+        {
+            get
+            {
+                return ResourceManager.GetString("UnRegisterFailureErrorCode", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Going to retry Discovery if retry count is not exceeded&quot;.
         /// </summary>
@@ -927,7 +960,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("RecoveryPointUnsupportedParamet", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Registering container.
+        /// </summary>
+        public static string RegisterContainerMessage
+        {
+            get {
+                return ResourceManager.GetString("RegisterContainerMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to disable protection for the container &apos;{0}&apos;.
+        /// </summary>
+        public static string RegisterContainerWarning
+        {
+            get {
+                return ResourceManager.GetString("RegisterContainerWarning", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Register operation failed with ErrorCode: {0}.
         /// </summary>
@@ -936,7 +989,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("RegisterFailureErrorCode", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Removing the protection policy.
         /// </summary>
