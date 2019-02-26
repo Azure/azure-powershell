@@ -216,6 +216,6 @@ If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation
 
 [Get-AzPrivateDnsVirtualNetworkLink](./Get-AzPrivateDnsVirtualNetworkLink.md)
 
-[New-AzPrivateDnsRecordSet](./New-AzPrivateDnsRecordSet.md)
+[Set-AzPrivateDnsVirtualNetworkLink](./Set-AzPrivateDnsVirtualNetworkLink.md)
 
 [Remove-AzPrivateDnsVirtualNetworkLink](./Remove-AzPrivateDnsVirtualNetworkLink.md)
