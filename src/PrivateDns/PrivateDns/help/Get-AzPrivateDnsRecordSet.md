@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzPrivateDnsRecordSet
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a Private DNS record set.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzPrivateDnsRecordSet -ParentResourceId <String> [-Name <String>] [-RecordTy
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Get-AzPrivateDnsRecordSet cmdlet gets the Private Domain Name System (DNS) record set with the specified name and type, in the specified private zone. If you do not specify the Name or RecordType parameters, this cmdlet returns all record sets of the specified type in the private zone. If you specify the RecordType parameter but not the Name parameter, this cmdlet returns all record sets of the specified record type. You can use the pipeline operator to pass a PSPrivateDnsZone object to this cmdlet, or you can pass a PSPrivateDnsZone object as the Zone parameter, or alternatively you can specify the zone and resource group by name. You can also specify the private zone using the Resource Id of the private zone.
 
 ## EXAMPLES
 

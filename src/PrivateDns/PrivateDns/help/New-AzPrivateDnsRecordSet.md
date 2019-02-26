@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPrivateDnsRecordSet
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a Private DNS record set.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzPrivateDnsRecordSet -ParentResourceId <String> -Name <String> -RecordType 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The New-AzPrivateDnsRecordSet cmdlet creates a new Private Domain Name System (DNS) record set with the specified name and type in the specified private zone. A RecordSet object is a set of Private DNS records with the same name and type. Note that the name is relative to the private zone and not the fully qualified name. The PrivateDnsRecord parameter specifies the records in the record set. This parameter takes an array of Private DNS records, constructed using New-AzPrivateDnsRecordConfig. You can use the pipeline operator to pass a PSPrivateDnsZone object to this cmdlet, or you can pass a PSPrivateDnsZone object as the Zone parameter, or you can specify the zone by its ResourceId, or alternatively you can specify the zone by name. You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation. If a matching RecordSet already exists (same name and record type), you must specify the Overwrite parameter, otherwise the cmdlet will not create a new RecordSet .
 
 ## EXAMPLES
 

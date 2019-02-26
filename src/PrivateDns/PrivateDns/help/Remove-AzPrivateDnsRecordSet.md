@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzPrivateDnsRecordSet
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Deletes a record set.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Remove-AzPrivateDnsRecordSet -ResourceId <String> [-PassThru] [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Remove-AzPrivateDnsRecordSet cmdlet deletes the specified record set from the specified zone. You cannot delete SOA records that are automatically created at the private zone apex. You can pass a RecordSet object to this cmdlet by using the pipeline operator or as a parameter or as a ResourceId. To identify a record set by name and type without using a RecordSet object, you must pass the zone as a PSPrivateDnsZone object to this cmdlet by using the pipeline operator or as a parameter, or alternatively you can specify the ZoneName and ResourceGroupName parameters. You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation. When specifying the record set using a RecordSet object, the record set is not deleted if it has been changed in Azure Private DNS since the local RecordSet object was retrieved. This provides protection for concurrent changes. You can suppress this by using the Overwrite parameter, which deletes the record set regardless of concurrent changes.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzPrivateDnsRecordConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Adds a Private DNS record to a local record set object.
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ Add-AzPrivateDnsRecordConfig -RecordSet <PSPrivateDnsRecordSet> -Cname <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Add-AzPrivateDnsRecordConfig cmdlet adds a Private Domain Name System (DNS) record to a RecordSet object. The RecordSet object is an offline object, and changes to it do not change the Private DNS responses until after you run the Set-AzPrivateDnsRecordSet cmdlet to persist the change to the Microsoft Azure Private DNS service. SOA records are created when a Private DNS zone is created, and are removed when the Private DNS zone is deleted. You cannot add or remove SOA records, but you can edit them. You can pass the RecordSet object to this cmdlet as a parameter or by using the pipeline operator.
 
 ## EXAMPLES
 
