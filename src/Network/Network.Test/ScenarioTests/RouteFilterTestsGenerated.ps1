@@ -72,6 +72,15 @@ function Test-RouteFilterCRUDMinimalParameters
         $listRouteFilter = Get-AzRouteFilter;
         Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
+		$listRouteFilter = Get-AzRouteFilter -ResourceGroupName "*"
+        Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+		$listRouteFilter = Get-AzRouteFilter -Name "*"
+        Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+		$listRouteFilter = Get-AzRouteFilter -ResourceGroupName "*" -Name "*"
+        Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
         # Remove RouteFilter
         $removeRouteFilter = Remove-AzRouteFilter -ResourceGroupName $rgname -Name $rname -PassThru -Force;
         Assert-AreEqual $true $removeRouteFilter;
