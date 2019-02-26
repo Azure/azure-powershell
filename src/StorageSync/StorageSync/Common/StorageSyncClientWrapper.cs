@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 resourceIdentifier.ResourceName,
                 odataQuery: new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(serverPrincipalId)));
             var roleAssignmentScope = storageAccountResourceId;
-            Guid roleAssignmentId = StorageSyncResourceManager.GetGuid(StorageSyncResourceManager.TestName);
+            Guid roleAssignmentId = StorageSyncResourceManager.GetGuid();
 
             RoleAssignment roleAssignment = roleAssignments.FirstOrDefault();
             if (roleAssignment == null)
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 };
 
                 roleAssignment = AuthorizationManagementClient.RoleAssignments.Create(roleAssignmentScope, roleAssignmentId.ToString(), createParameters);
-                StorageSyncResourceManager.WaitForAccessPropogation();
+                StorageSyncResourceManager.Wait();
 
             }
 

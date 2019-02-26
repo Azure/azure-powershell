@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.SyncGroupNameParameter)]
+        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
         [ValidateNotNullOrEmpty]
         public string SyncGroupName { get; set; }
 

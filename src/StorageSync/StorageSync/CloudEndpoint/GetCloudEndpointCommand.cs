@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
-    [Cmdlet(VerbsCommon.Get, StorageSyncNouns.NounAzureRmStorageSyncCloudEndpoint, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet), OutputType(typeof(PSCloudEndpoint))]
+    [Cmdlet(VerbsCommon.Get, StorageSyncNouns.NounAzureRmStorageSyncCloudEndpoint,
+        DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet), OutputType(typeof(PSCloudEndpoint))]
     public class GetCloudEndpointCommand : StorageSyncClientCmdletBase
     {
         /// <summary>
@@ -86,6 +87,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
            ValueFromPipeline = true,
            HelpMessage = HelpMessages.StorageSyncServiceObjectParameter)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
         [Alias(StorageSyncAliases.SyncGroupAlias)]
         public PSSyncGroup ParentObject { get; set; }
 

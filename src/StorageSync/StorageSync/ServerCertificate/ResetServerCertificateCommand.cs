@@ -176,11 +176,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <param name="storageSyncServiceName">Name of the storage sync service.</param>
         private void PerformTriggerRolloverInCloud(string certificateData, Guid serverId, string resourceGroupName, string storageSyncServiceName)
         {
-            WriteVerbose("Triggering certificate rollover on service");
+            WriteVerbose(StorageSyncResources.ResetCertificateMessage17);
 
             StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.TriggerRollover(resourceGroupName, storageSyncServiceName, serverId.ToString(), certificateData);
 
-            WriteVerbose("Certificate Rollover request completed on the service");
+            WriteVerbose(StorageSyncResources.ResetCertificateMessage18);
         }
     }
 }

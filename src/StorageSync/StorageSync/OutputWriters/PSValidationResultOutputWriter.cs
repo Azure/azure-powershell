@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Models;
+    using Microsoft.Azure.Commands.StorageSync.Properties;
 
     /// <summary>
     /// Class PSValidationResultOutputWriter.
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
                     }
                     break;
                 default:
-                    throw new ArgumentException($"{validationResult.Kind.GetType().Name} value {validationResult.Kind} is unsupported");
+                    throw new ArgumentException(string.Format(StorageSyncResources.UnsupportedErrorFormat, validationResult.Kind.GetType().Name, validationResult.Kind));
             }
         }
 

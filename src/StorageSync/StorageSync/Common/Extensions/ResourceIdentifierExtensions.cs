@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 
@@ -45,17 +46,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
 
             if (parentResourceTokens.Length % 2 != 0)
             {
-                throw new ArgumentException($"Invalid argument {nameof(resourceIdentifier.ParentResource)}", nameof(resourceIdentifier.ParentResource));
+                throw new ArgumentException(string.Format(StorageSyncResources.InvalidArgumentErrorFormat, nameof(resourceIdentifier.ParentResource)), nameof(resourceIdentifier.ParentResource));
             }
 
             if (parentResourceTokens.Length < 2 * (level + 1))
             {
-                throw new ArgumentException($"Invalid argument {nameof(level)}", nameof(level));
+                throw new ArgumentException(string.Format(StorageSyncResources.InvalidArgumentErrorFormat, nameof(level)), nameof(level));
             }
 
             if(!String.Equals(resourceType, parentResourceTokens[parentResourceTokens.Length - 2 * (level + 1)],StringComparison.OrdinalIgnoreCase))
             {
-                throw new ArgumentException($"Invalid argument {nameof(resourceType)}", nameof(resourceType));
+                throw new ArgumentException(string.Format(StorageSyncResources.InvalidArgumentErrorFormat, nameof(resourceType)), nameof(resourceType));
             }
 
             return parentResourceTokens[parentResourceTokens.Length - 2 * level - 1];

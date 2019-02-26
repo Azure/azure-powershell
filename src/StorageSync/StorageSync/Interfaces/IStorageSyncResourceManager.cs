@@ -31,9 +31,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// <summary>
         /// Gets the unique identifier.
         /// </summary>
-        /// <param name="testName">Name of the test.</param>
         /// <returns>Guid.</returns>
-        Guid GetGuid(string testName);
+        Guid GetGuid();
 
         /// <summary>
         /// Gets the afs agent installer path.
@@ -50,12 +49,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         bool TryGetAfsAgentVersion(out string afsAgentVersion);
 
         /// <summary>
-        /// Gets the name of the test.
-        /// </summary>
-        /// <value>The name of the test.</value>
-        string TestName { get; }
-
-        /// <summary>
         /// Updates the server registration data.
         /// </summary>
         /// <param name="pServerRegistrationData">The p server registration data.</param>
@@ -64,7 +57,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// <summary>
         /// Waits for access propogation.
         /// </summary>
-        void WaitForAccessPropogation();
+        void Wait();
 
         /// <summary>
         /// Gets the tenant identifier.

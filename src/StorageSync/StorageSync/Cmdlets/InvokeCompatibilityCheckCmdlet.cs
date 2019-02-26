@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
     using System.Diagnostics;
     using Interfaces;
     using Models;
+    using Microsoft.Azure.Commands.StorageSync.Properties;
 
     /// <summary>
     /// Class InvokeCompatibilityCheckCmdlet.
@@ -339,7 +340,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
                     else
                     {
                         string errorMessage = connector.GetLastError();
-                        WriteError(new ErrorRecord(new Exception($"Failed mounting network path {Path}. Error: {errorMessage}"), errorMessage, ErrorCategory.ConnectionError, Path));
+                        WriteError(new ErrorRecord(new Exception(
+                            string.Format(StorageSyncResources.InvokeCompatibilityCheckError1Format, Path,errorMessage)), errorMessage, ErrorCategory.ConnectionError, Path));
                     }
                 }
             }

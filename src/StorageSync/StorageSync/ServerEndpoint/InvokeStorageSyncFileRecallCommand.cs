@@ -32,7 +32,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
-    [Cmdlet(VerbsLifecycle.Invoke, StorageSyncNouns.NounAzureRmStorageSyncFileRecall, DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet), OutputType(typeof(void))]
+    [Cmdlet(VerbsLifecycle.Invoke, StorageSyncNouns.NounAzureRmStorageSyncFileRecall,
+        DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class InvokeStorageSyncFileRecallCommand : StorageSyncClientCmdletBase
     {
         /// <summary>
@@ -75,6 +76,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
            ValueFromPipelineByPropertyName = false,
            HelpMessage = HelpMessages.SyncGroupNameParameter)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
         public string SyncGroupName { get; set; }
 
         /// <summary>
