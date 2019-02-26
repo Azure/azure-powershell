@@ -114,6 +114,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
             HelpMessage = HelpMessages.ServerEndpointNameParameter)]
         [ValidateNotNullOrEmpty]
         [Alias(StorageSyncAliases.ServerEndpointNameAlias)]
+        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups/serverEndpoints", "ResourceGroupName", "StorageSyncServiceName", "SyncGroupName")]
         public string Name { get; set; }
 
         /// <summary>

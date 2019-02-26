@@ -111,6 +111,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
             ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.CloudEndpointNameParameter)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups/cloudEndpoints", "ResourceGroupName", "StorageSyncServiceName", "SyncGroupName")]
         public string Name { get; set; }
 
         /// <summary>

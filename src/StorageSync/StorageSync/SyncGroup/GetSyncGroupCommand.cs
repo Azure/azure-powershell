@@ -100,6 +100,7 @@ namespace Microsoft.Azure.Commands.StorageSync.SyncGroup
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.SyncGroupNameParameter)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
         [Alias(StorageSyncAliases.SyncGroupNameAlias)]
         public string Name { get; set; }
 
