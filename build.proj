@@ -49,7 +49,8 @@
     <LibrarySourceFolder>$(LibraryRoot)src</LibrarySourceFolder>
     <LibraryToolsFolder>$(LibraryRoot)tools</LibraryToolsFolder>
     <LibraryArtifactsFolder>$(LibraryRoot)artifacts</LibraryArtifactsFolder>
-    <LocalFeedFolder>$(LibraryToolsFolder)/LocalFeed</LocalFeedFolder>    <Configuration Condition=" '$(Configuration)' != 'Release'">Debug</Configuration>
+    <LocalFeedFolder>$(LibraryToolsFolder)/LocalFeed</LocalFeedFolder>
+    <Configuration Condition=" '$(Configuration)' != 'Release'">Debug</Configuration>
     <CodeSign>false</CodeSign>
     <!--Set this true only if you want to test the code sign workflow locally-->
     <DelaySign Condition =" '$(DelaySign)' == '' ">false</DelaySign>
