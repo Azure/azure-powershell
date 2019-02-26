@@ -16,20 +16,41 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
 {
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Class PSStorageSyncValidation.
+    /// </summary>
     public class PSStorageSyncValidation
     {
         #region Fields and Properties
+        /// <summary>
+        /// The computer name
+        /// </summary>
         public string ComputerName;
+        /// <summary>
+        /// The namespace path
+        /// </summary>
         public string NamespacePath;
+        /// <summary>
+        /// The namespace file count
+        /// </summary>
         public long NamespaceFileCount;
+        /// <summary>
+        /// The namespace directory count
+        /// </summary>
         public long NamespaceDirectoryCount;
+        /// <summary>
+        /// The results
+        /// </summary>
         public List<PSValidationResult> Results;
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PSStorageSyncValidation" /> class.
+        /// </summary>
         public PSStorageSyncValidation()
         {
-            this.Results = new List<PSValidationResult>();
+            Results = new List<PSValidationResult>();
         }
         #endregion
     }

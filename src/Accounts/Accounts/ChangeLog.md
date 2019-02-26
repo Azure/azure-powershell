@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add additional framework extensions for .Net Framework execution
 
 ## Version 1.3.0
 * Update to latest version of ClientRuntime
