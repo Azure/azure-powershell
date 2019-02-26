@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.privatedns/add-azprivatednsrecordconfig
 schema: 2.0.0
 ---
 
 # Add-AzPrivateDnsRecordConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Adds a Private DNS record to a local record set object.
 
 ## SYNTAX
 
@@ -55,16 +55,100 @@ Add-AzPrivateDnsRecordConfig -RecordSet <PSPrivateDnsRecordSet> -Cname <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Add-AzPrivateDnsRecordConfig cmdlet adds a Private Domain Name System (DNS) record to a RecordSet object. The RecordSet object is an offline object, and changes to it do not change the Private DNS responses until after you run the Set-AzPrivateDnsRecordSet cmdlet to persist the change to the Microsoft Azure Private DNS service. SOA records are created when a Private DNS zone is created, and are removed when the Private DNS zone is deleted. You cannot add or remove SOA records, but you can edit them. You can pass the RecordSet object to this cmdlet as a parameter or by using the pipeline operator.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Add an A record to a record set
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $RecordSet = Get-AzPrivateDnsRecordSet -Name www -RecordType A -ResouceGroupName MyResourceGroup -ZoneName myzone.com
+PS C:\> Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 1.2.3.4
+PS C:\> Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
+
+# You can also pipe the above sequence:
+
+PS C:\> Get-AzPrivateDnsRecordSet -Name www -RecordType A -ResouceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzPrivateDnsRecordConfig -Ipv4Address 1.2.3.4 | Set-AzPrivateDnsRecordSet
 ```
 
-{{ Add example description here }}
+This example adds an A record to an existing record set.
+
+### Example 2: Add an AAAA record to a record set
+```powershell
+PS C:\> $RecordSet = Get-AzPrivateDnsRecordSet -Name www -RecordType AAAAA -ResouceGroupName MyResourceGroup -ZoneName myzone.com
+PS C:\> Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Ipv6Address 2001:DB80:4009:1803::1005
+PS C:\> Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
+
+# You can also pipe the above sequence:
+
+PS C:\> Get-AzPrivateDnsRecordSet -Name www -RecordType AAAAA -ResouceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzPrivateDnsRecordConfig -Ipv6Address 2001:DB80:4009:1803::1005 | Set-AzPrivateDnsRecordSet
+```
+
+This example adds an AAAAA record to an existing record set.
+
+### Example 3: Add a CNAME record to a record set
+```powershell
+PS C:\> $RecordSet = Get-AzPrivateDnsRecordSet -Name www -RecordType CNAME -ResouceGroupName MyResourceGroup -ZoneName myzone.com
+PS C:\> Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Cname contoso.com
+PS C:\> Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
+
+# You can also pipe the above sequence:
+
+PS C:\> Get-AzPrivateDnsRecordSet -Name www -RecordType CNAME -ResouceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzPrivateDnsRecordConfig -Cname contoso.com | Set-AzPrivateDnsRecordSet
+```
+
+This example adds a CNAME record to an existing record set.
+
+### Example 4: Add a MX record to a record set
+```powershell
+PS C:\> $RecordSet = Get-AzPrivateDnsRecordSet -Name @ -RecordType MX -ResouceGroupName MyResourceGroup -ZoneName myzone.com
+PS C:\> Add-AzPrivateDnsRecordConfig -Exchange mail.microsoft.com -Preference 5 -RecordSet $RecordSet
+PS C:\> Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
+
+# You can also pipe the above sequence:
+
+PS C:\> Get-AzPrivateDnsRecordSet -Name "@" -RecordType MX -ResouceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzPrivateDnsRecordConfig -Exchange mail.microsoft.com -Preference 5 | Set-AzPrivateDnsRecordSet
+```
+
+This example adds a MX record to an existing record set.
+
+### Example 5: Add a PTR record to a record set
+```powershell
+PS C:\> $RecordSet = Get-AzPrivateDnsRecordSet -Name 4 -RecordType PTR -ResouceGroupName MyResourceGroup -ZoneName 3.2.1.in-addr.arpa
+PS C:\> Add-AzPrivateDnsRecordConfig -Ptrdname www.contoso.com -RecordSet $RecordSet
+PS C:\> Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
+
+# You can also pipe the above sequence:
+
+PS C:\> Get-AzPrivateDnsRecordSet -Name 4 -RecordType PTR -ResouceGroupName MyResourceGroup -ZoneName 3.2.1.in-addr.arpa | Add-AzPrivateDnsRecordConfig -Ptrdname www.contoso.com | Set-AzPrivateDnsRecordSet
+```
+
+This example adds a PTR record to an existing record set.
+
+### Example 6: Add a SRV record to a record set
+```powershell
+PS C:\> $RecordSet = Get-AzPrivateDnsRecordSet -Name _sip._tcp -RecordType SRV -ResouceGroupName MyResourceGroup-ZoneName myzone.com
+PS C:\> Add-AzPrivateDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target target.example.com
+PS C:\> Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
+
+# You can also pipe the above sequence:
+
+PS C:\> Get-AzPrivateDnsRecordSet -Name _sip._tcp -RecordType SRV -ResouceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzPrivateDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target target.example.com | Set-AzPrivateDnsRecordSet
+```
+
+This example adds a SRV record to an existing record set.
+
+### Example 7: Add a TXT record to a record set
+```powershell
+PS C:\> $RecordSet = Get-AzPrivateDnsRecordSet -Name text -RecordType TXT -ResouceGroupName MyResourceGroup -ZoneName myzone.com
+PS C:\> Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Value "This is a TXT Record"
+PS C:\> Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
+
+# You can also pipe the above sequence:
+
+PS C:\> Get-AzPrivateDnsRecordSet -Name text -RecordType TXT -ResouceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzPrivateDnsRecordConfig -Value "This is a TXT Record" | Set-AzPrivateDnsRecordSet
+```
+
+This example adds a TXT record to an existing record set.
 
 ## PARAMETERS
 
@@ -74,7 +158,7 @@ Must not be relative to the name of the zone.
 Must not have a terminating dot
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CNAME
 Aliases:
 
@@ -89,7 +173,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -106,7 +190,7 @@ Must not be relative to the name of the zone.
 Must not have a terminating dot
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: MX
 Aliases:
 
@@ -121,7 +205,7 @@ Accept wildcard characters: False
 The IPv4 address for the A record to add.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: A
 Aliases:
 
@@ -136,7 +220,7 @@ Accept wildcard characters: False
 The IPv6 address for the AAAA record to add.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AAAA
 Aliases:
 
@@ -151,7 +235,7 @@ Accept wildcard characters: False
 The port number for the SRV record to add.
 
 ```yaml
-Type: UInt16
+Type: System.UInt16
 Parameter Sets: SRV
 Aliases:
 
@@ -166,7 +250,7 @@ Accept wildcard characters: False
 The preference value for the MX record to add.
 
 ```yaml
-Type: UInt16
+Type: System.UInt16
 Parameter Sets: MX
 Aliases:
 
@@ -181,7 +265,7 @@ Accept wildcard characters: False
 The priority value SRV record to add.
 
 ```yaml
-Type: UInt16
+Type: System.UInt16
 Parameter Sets: SRV
 Aliases:
 
@@ -198,7 +282,7 @@ Must not be relative to the name of the zone.
 Must not have a terminating dot
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PTR
 Aliases:
 
@@ -213,7 +297,7 @@ Accept wildcard characters: False
 The record set in which to add the record.
 
 ```yaml
-Type: PSPrivateDnsRecordSet
+Type: Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet
 Parameter Sets: (All)
 Aliases:
 
@@ -230,7 +314,7 @@ Must not be relative to the name of the zone.
 Must not have a terminating dot
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SRV
 Aliases:
 
@@ -245,7 +329,7 @@ Accept wildcard characters: False
 The text value for the TXT record to add.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TXT
 Aliases:
 
@@ -260,7 +344,7 @@ Accept wildcard characters: False
 The weight value for the SRV record to add.
 
 ```yaml
-Type: UInt16
+Type: System.UInt16
 Parameter Sets: SRV
 Aliases:
 
@@ -272,8 +356,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

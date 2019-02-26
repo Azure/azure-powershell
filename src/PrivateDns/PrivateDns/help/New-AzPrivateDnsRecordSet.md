@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.privatedns/new-azprivatednsrecordset
 schema: 2.0.0
 ---
 
 # New-AzPrivateDnsRecordSet
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a Private DNS record set.
 
 ## SYNTAX
 
@@ -34,16 +34,119 @@ New-AzPrivateDnsRecordSet -ParentResourceId <String> -Name <String> -RecordType 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The New-AzPrivateDnsRecordSet cmdlet creates a new Private Domain Name System (DNS) record set with the specified name and type in the specified private zone. A RecordSet object is a set of Private DNS records with the same name and type. Note that the name is relative to the private zone and not the fully qualified name. The PrivateDnsRecord parameter specifies the records in the record set. This parameter takes an array of Private DNS records, constructed using New-AzPrivateDnsRecordConfig. You can use the pipeline operator to pass a PSPrivateDnsZone object to this cmdlet, or you can pass a PSPrivateDnsZone object as the Zone parameter, or you can specify the zone by its ResourceId, or alternatively you can specify the zone by name. You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation. If a matching RecordSet already exists (same name and record type), you must specify the Overwrite parameter, otherwise the cmdlet will not create a new RecordSet .
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a RecordSet of type A
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $Records = @()
+PS C:\> $Records += New-AzPrivateDnsRecordConfig -IPv4Address 1.2.3.4
+PS C:\> $RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+
+# When creating a RecordSet containing a single record, the above sequence can also be condensed into a single line:
+
+PS C:\> $RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords (New-AzPrivateDnsRecordConfig -IPv4Address 1.2.3.4)
+
+# To create a record set containing multiple records, use New-AzPrivateDnsRecordConfig to add each record to the $Records array,
+# then call New-AzPrivateDnsRecordSet, as follows:
+
+PS C:\> $Records = @()
+PS C:\> $Records += New-AzPrivateDnsRecordConfig -IPv4Address 1.2.3.4
+PS C:\> $Records += New-AzPrivateDnsRecordConfig -IPv4Address 5.6.7.8
+PS C:\> $RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
 ```
 
-{{ Add example description here }}
+This example creates a RecordSet named www in the private zone myzone.com. The record set is of type A and has a TTL of 1 hour (3600 seconds). It contains a single Private DNS record.
+
+### Example 2: Create a RecordSet of type AAAA
+```powershell
+PS C:\> $Records = @()
+PS C:\> $Records += New-AzPrivateDnsRecordConfig -Ipv6Address 2001:db8::1
+PS C:\> $RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType AAAA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+```
+
+This example creates a RecordSet named www in the private zone myzone.com. The record set is of type AAAA and has a TTL of 1 hour (3600 seconds). It contains a single Private DNS record. To create a RecordSet using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
+
+### Example 3: Create a RecordSet of type CNAME
+```powershell
+PS C:\> $Records = @()
+PS C:\> $Records += New-AzPrivateDnsRecordConfig -Exchange "mail.microsoft.com" -Preference 5
+PS C:\> $RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType AAAA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+```
+
+This example creates a RecordSet named www in the private zone myzone.com. The record set is of type CNAME and has a TTL of 1 hour (3600 seconds). It contains a single Private DNS record. To create a RecordSet using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
+
+### Example 4: Create a RecordSet of type MX
+```powershell
+PS C:\> $Records = @()
+PS C:\> $Records += New-AzPrivateDnsRecordConfig -Exchange "mail.microsoft.com" -Preference 5
+PS C:\> $RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType AAAA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+```
+
+This command creates a RecordSet named www in the private zone myzone.com. The record set is of type MX and has a TTL of 1 hour (3600 seconds). It contains a single Private DNS record. To create a RecordSet using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
+
+### Example 5: Create a RecordSet of type PTR
+```powershell
+PS C:\> $Records = @()
+PS C:\> $Records += New-AzPrivateDnsRecordConfig -Ptrdname www.contoso.com
+PS C:\> $RecordSet = New-AzPrivateDnsRecordSet -Name "4" -RecordType PTR -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "3.2.1.in-addr.arpa" -PrivateDnsRecords $Records
+```
+
+This command creates a RecordSet named 4 in the private zone 3.2.1.in-addr.arpa. The record set is of type PTR and has a TTL of 1 hour (3600 seconds). It contains a single Private DNS record. To create a RecordSet using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
+
+### Example 6: Create a RecordSet of type SRV
+```powershell
+PS C:\> $Records = @()
+PS C:\> $Records += New-AzPrivateDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target sipservice.contoso.com
+PS C:\> $RecordSet = New-AzPrivateDnsRecordSet -Name "_sip._tcp" -RecordType SRV -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+```
+
+This command creates a RecordSet named _sip._tcp in the private zone myzone.com. The record set is of type SRV and has a TTL of 1 hour (3600 seconds). It contains a single Private DNS record, pointing to the IP address 2001.2.3.4. The service (sip) and the protocol (tcp) are specified as part of the record set name, not as part of the record data. To create a RecordSet using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
+
+### Example 7: Create a RecordSet of type TXT
+```powershell
+PS C:\> $Records = @()
+PS C:\> $Records += New-AzPrivateDnsRecordConfig -Value "This is a TXT Record"
+PS C:\> $RecordSet = New-AzPrivateDnsRecordSet -Name "text" -RecordType TXT -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+```
+
+This command creates a RecordSet named text in the private zone myzone.com. The record set is of type TXT and has a TTL of 1 hour (3600 seconds). It contains a single Private DNS record. To create a RecordSet using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
+
+### Example 8:  Create a RecordSet at the zone apex
+```powershell
+PS C:\> $Records = @()
+PS C:\> $Records += New-AzPrivateDnsRecordConfig -Ipv4Address 1.2.3.4
+PS C:\> $RecordSet = New-AzPrivateDnsRecordSet -Name "@" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+```
+
+This command creates a RecordSet at the apex (or root) of the private zone myzone.com. To do this, the record set name is specified as "@" (including the double-quotes). You cannot create CNAME records at the apex of a zone. This is a constraint of the DNS standards; it is not a limitation of Azure Private DNS. To create a RecordSet using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
+
+### Example 9:  Create a wildcard Record Set
+
+```powershell
+PS C:\> $Records = @()
+PS C:\> $Records += New-AzPrivateDnsRecordConfig -Ipv4Address 1.2.3.4
+PS C:\> $RecordSet = New-AzPrivateDnsRecordSet -Name "*" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+```
+
+This command creates a RecordSet named * in the private zone myzone.com. This is a wildcard record set. To create a RecordSet using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
+
+### Example 10:  Create an empty Record Set
+
+```powershell
+PS C:\>$RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords @()
+```
+
+This command creates a RecordSet named * in the private zone myzone.com. The record set is of type A and has a TTL of 1 hour (3600 seconds). This is an empty record set, which acts as a placeholder to which you can later add records.
+
+### Example 11:  Create a record set and suppress all confirmation
+
+```powershell
+PS C:\>$RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords (New-AzDnsRecordConfig -Ipv4Address 1.2.3.4) -Confirm:$False -Overwrite
+```
+
+This command creates a RecordSet. The Overwrite parameter ensures that this record set overwrites any pre-existing record set with the same name and type (existing records in that record set are lost). The Confirm parameter with a value of $False suppresses the confirmation prompt.
 
 ## PARAMETERS
 
@@ -51,7 +154,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -66,7 +169,7 @@ Accept wildcard characters: False
 A hash table which represents resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +184,7 @@ Accept wildcard characters: False
 The name of the records in this record set (relative to the name of the zone and without a terminating dot).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +199,7 @@ Accept wildcard characters: False
 Do not fail if the record set already exists.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +214,7 @@ Accept wildcard characters: False
 Private DNS Zone ResourceID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 
@@ -126,7 +229,7 @@ Accept wildcard characters: False
 The private dns records that are part of this record set.
 
 ```yaml
-Type: PrivateDnsRecordBase[]
+Type: Microsoft.Azure.Commands.PrivateDns.Models.PrivateDnsRecordBase[]
 Parameter Sets: (All)
 Aliases:
 
@@ -141,7 +244,7 @@ Accept wildcard characters: False
 The type of Private DNS records in this record set.
 
 ```yaml
-Type: RecordType
+Type: Microsoft.Azure.Management.PrivateDns.Models.RecordType
 Parameter Sets: (All)
 Aliases:
 Accepted values: A, AAAA, CNAME, MX, PTR, SOA, SRV, TXT
@@ -157,7 +260,7 @@ Accept wildcard characters: False
 The resource group to which the zone belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
 Aliases:
 
@@ -172,7 +275,7 @@ Accept wildcard characters: False
 The TTL value of all the records in this record set.
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -187,7 +290,7 @@ Accept wildcard characters: False
 The PrivateDnsZone object representing the zone in which to create the record set.
 
 ```yaml
-Type: PSPrivateDnsZone
+Type: Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone
 Parameter Sets: Object
 Aliases:
 
@@ -202,7 +305,7 @@ Accept wildcard characters: False
 The zone in which to create the record set (without a terminating dot).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
 Aliases:
 
@@ -217,7 +320,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -233,7 +336,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -245,8 +348,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

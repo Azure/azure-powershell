@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.privatedns/set-azprivatednsrecordset
 schema: 2.0.0
 ---
 
 # Set-AzPrivateDnsRecordSet
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates a Private DNS record set.
 
 ## SYNTAX
 
@@ -18,16 +18,32 @@ Set-AzPrivateDnsRecordSet -RecordSet <PSPrivateDnsRecordSet> [-Overwrite]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Set-AzPrivateDnsRecordSet cmdlet updates a record set in the Azure Private DNS service from a local RecordSet object. You can pass a RecordSet object as a parameter or by using the pipeline operator. You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation. The record set is not updated if it has been changed in Azure Private DNS since the local RecordSet object was retrieved. This provides protection for concurrent changes. You can suppress this behavior using the Overwrite parameter, which updates the record set regardless of concurrent changes.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Update a record set
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $RecordSet = Get-AzPrivateDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A
+PS C:\> Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 172.16.0.0
+PS C:\> Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 172.31.255.255
+PS C:\> Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
+
+# These cmdlets can also be piped:
+
+PS C:\> Get-AzPrivateDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A | Add-AzPrivateDnsRecordConfig -Ipv4Address 172.16.0.0 | Add-AzPrivateDnsRecordConfig -Ipv4Address 172.31.255.255 | Set-AzPrivateDnsRecordSet
 ```
 
-{{ Add example description here }}
+The first command uses the Get-AzPrivateDnsRecordSet cmdlet to get the specified record set, and then stores it in the $RecordSet variable. The second and third commands are off-line operations to add two A records to the record set. The final command uses the Set-AzPrivateDnsRecordSet cmdlet to commit the update.
+
+### Example 2: Update an SOA record
+```powershell
+PS C:\> $RecordSet = Get-AzPrivateDnsRecordSet -Name "@" -RecordType SOA -Zone $Zone
+PS C:\> $RecordSet.Records[0].Email = "admin.myzone.com"
+PS C:\> Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
+```
+
+The first command uses the Get-AzPrivateDnsRecordSet cmdlet to get the specified record set, and then stores it in the $RecordSet variable. The second command updates the specified SOA record in $RecordSet. The final command uses the Set-AzPrivateDnsRecordSet cmdlet to propagate the update in $RecordSet.
 
 ## PARAMETERS
 
@@ -35,7 +51,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -50,7 +66,7 @@ Accept wildcard characters: False
 Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +81,7 @@ Accept wildcard characters: False
 The record set in which to add the record.
 
 ```yaml
-Type: PSPrivateDnsRecordSet
+Type: Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +96,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -96,7 +112,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -108,8 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
