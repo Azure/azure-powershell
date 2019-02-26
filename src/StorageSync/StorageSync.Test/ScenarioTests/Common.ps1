@@ -222,3 +222,20 @@ function IsLive
 {
     return [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback
 }
+
+<#
+.SYNOPSIS
+Create Azure file share if recording else return given azure file share name.
+#>
+function Ensure-AzureFileShareName
+{
+    if(IsLive)
+    {
+        $azureFileShare = New-AzureStorageShare -Name $azureFileShareName -Context $context
+        return $azureFileShare.Name
+    }
+    else 
+    {
+        return $azureFileShareName
+    }
+}

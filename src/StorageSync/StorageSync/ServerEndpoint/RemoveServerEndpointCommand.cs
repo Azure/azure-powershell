@@ -112,6 +112,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
             ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.ServerEndpointNameParameter)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups/serverEndpoints", "ResourceGroupName", "StorageSyncServiceName", "SyncGroupName")]
         public string Name { get; set; }
 
         /// <summary>

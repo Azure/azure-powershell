@@ -100,6 +100,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.RegisteredServerNameParameter)]
+        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/registeredServers", "ResourceGroupName", "StorageSyncServiceName")]
         [Alias(StorageSyncAliases.RegisteredServerNameAlias)]
         public Guid ServerId{ get; set; }
 

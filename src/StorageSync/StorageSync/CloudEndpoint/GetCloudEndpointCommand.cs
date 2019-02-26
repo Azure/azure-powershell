@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.SyncGroupNameParameter)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
         public string SyncGroupName { get; set; }
 
 
@@ -113,6 +114,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.CloudEndpointNameParameter)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups/cloudEndpoints", "ResourceGroupName", "StorageSyncServiceName", "SyncGroupName")]
         [Alias(StorageSyncAliases.CloudEndpointNameAlias)]
         public string Name { get; set; }
 
@@ -139,7 +141,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 string storageSyncServiceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0);
                 string parentResourceName = SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName;
 
-                 if (!this.IsParameterBound(c => c.Name))
+                if (!this.IsParameterBound(c => c.Name))
                 {
                     WriteObject(StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, parentResourceName));
                 }

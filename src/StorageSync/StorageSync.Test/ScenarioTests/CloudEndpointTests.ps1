@@ -53,17 +53,7 @@ function Test-CloudEndpoint
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
         Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
-        #TODO : Optimized the pattern to common code. https://github.com/Azure/azure-powershell/issues/8619
-        if(IsLive)
-        {
-            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
-            $azureFileShareName = $azureFileShare.Name 
-        }
-        else 
-        {
-                $azureFileShareName = $AzureFileShareName
-        }
-
+        $azureFileShareName = Ensure-AzureFileShareName $AzureFileShareName $context
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
@@ -169,16 +159,7 @@ function Test-NewCloudEndpoint
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
         Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
-        if(IsLive)
-        {
-            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
-            $azureFileShareName = $azureFileShare.Name 
-        }
-        else 
-        {
-                $azureFileShareName = $AzureFileShareName
-        }
-
+        $azureFileShareName = Ensure-AzureFileShareName $AzureFileShareName $context
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
@@ -256,16 +237,7 @@ function Test-GetCloudEndpoint
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
         Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
-        if(IsLive)
-        {
-            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
-            $azureFileShareName = $azureFileShare.Name 
-        }
-        else 
-        {
-                $azureFileShareName = $AzureFileShareName
-        }
-
+        $azureFileShareName = Ensure-AzureFileShareName $AzureFileShareName $context
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
@@ -350,16 +322,7 @@ function Test-GetCloudEndpoints
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
         Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
-        if(IsLive)
-        {
-            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
-            $azureFileShareName = $azureFileShare.Name 
-        }
-        else 
-        {
-                $azureFileShareName = $AzureFileShareName
-        }
-
+        $azureFileShareName = Ensure-AzureFileShareName $AzureFileShareName $context
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
@@ -447,16 +410,7 @@ function Test-GetCloudEndpointParentObject
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
         Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
-        if(IsLive)
-        {
-            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
-            $azureFileShareName = $azureFileShare.Name 
-        }
-        else 
-        {
-                $azureFileShareName = $AzureFileShareName
-        }
-
+        $azureFileShareName = Ensure-AzureFileShareName $AzureFileShareName $context
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
@@ -540,16 +494,7 @@ function Test-GetCloudEndpointParentResourceId
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
         Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
-        if(IsLive)
-        {
-            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
-            $azureFileShareName = $azureFileShare.Name 
-        }
-        else 
-        {
-                $azureFileShareName = $AzureFileShareName
-        }
-
+        $azureFileShareName = Ensure-AzureFileShareName $AzureFileShareName $context
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
@@ -633,16 +578,7 @@ function Test-RemoveCloudEndpoint
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
         Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
-        if(IsLive)
-        {
-            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
-            $azureFileShareName = $azureFileShare.Name 
-        }
-        else 
-        {
-                $azureFileShareName = $AzureFileShareName
-        }
-
+        $azureFileShareName = Ensure-AzureFileShareName $AzureFileShareName $context
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
@@ -722,16 +658,7 @@ function Test-RemoveCloudEndpointInputObject
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
         Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
-        if(IsLive)
-        {
-            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
-            $azureFileShareName = $azureFileShare.Name 
-        }
-        else 
-        {
-                $azureFileShareName = $AzureFileShareName
-        }
-
+        $azureFileShareName = Ensure-AzureFileShareName $AzureFileShareName $context
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
@@ -804,16 +731,7 @@ function Test-RemoveCloudEndpointResourceId
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
         Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
-        if(IsLive)
-        {
-            $azureFileShare = New-AzureStorageShare -Name $AzureFileShareName -Context $context
-            $azureFileShareName = $azureFileShare.Name 
-        }
-        else 
-        {
-                $azureFileShareName = $AzureFileShareName
-        }
-
+        $azureFileShareName = Ensure-AzureFileShareName $AzureFileShareName $context
         $storageAccountResourceId = $storageAccount.Id
 
         Write-Verbose "Resource: $cloudEndpointName | Loc: $resourceLocation | Type : CloudEndpoint"
