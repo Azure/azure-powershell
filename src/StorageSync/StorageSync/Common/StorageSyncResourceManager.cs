@@ -30,11 +30,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncResourceManager" />
     public class StorageSyncResourceManager : IStorageSyncResourceManager
     {
-        /// <summary>
-        /// Gets the name of the test.
-        /// </summary>
-        /// <value>The name of the test.</value>
-        public string TestName => null;
 
         /// <summary>
         /// Creates the ecs management.
@@ -64,9 +59,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// Gets the unique identifier.
         /// </summary>
-        /// <param name="testName">Name of the test.</param>
         /// <returns>Guid.</returns>
-        public Guid GetGuid(string testName) => Guid.NewGuid();
+        public Guid GetGuid() => Guid.NewGuid();
 
         /// <summary>
         /// Gets the afs agent version.
@@ -97,7 +91,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// Waits for access propogation.
         /// </summary>
-        public void WaitForAccessPropogation()
+        public void Wait()
         {
             System.Threading.Thread.Sleep(40 * 1000);
         }

@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     using Interfaces;
+    using Microsoft.Azure.Commands.StorageSync.Properties;
     using System;
     using System.Collections.Generic;
 
@@ -110,7 +111,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             // handle the case than this is actually network share.
             if (!root.Exists())
             {
-                throw new System.IO.DirectoryNotFoundException($"Cannot access directory: {root.FullName}. Ensure directory exists.");
+                throw new System.IO.DirectoryNotFoundException(string.Format(StorageSyncResources.NamespaceEnumeratorErrorFormat, root.FullName));
             }
 
             _namespaceInfo = new NamespaceInfo

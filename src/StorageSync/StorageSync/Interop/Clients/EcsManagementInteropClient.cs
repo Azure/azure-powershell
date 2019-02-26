@@ -16,6 +16,7 @@ using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Enums;
 using Commands.StorageSync.Interop.Exceptions;
 using Commands.StorageSync.Interop.Interfaces;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using System;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
@@ -587,7 +588,7 @@ namespace Commands.StorageSync.Interop.Clients
             //expected is 0
             if (HResult.Failed(hr) && throwOnError)
             {
-                throw new COMException($"CoSetProxyBlanket failed with HRESULT {hr:X}");
+                throw new COMException($"{StorageSyncResources.ComError1} {hr:X}");
             }
 
             return hr;

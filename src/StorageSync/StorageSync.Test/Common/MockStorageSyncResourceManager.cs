@@ -44,6 +44,12 @@ namespace StorageSync.Test.Common
         }
 
         /// <summary>
+        /// Gets the name of the test.
+        /// </summary>
+        /// <value>The name of the test.</value>
+        protected string TestName;
+
+        /// <summary>
         /// The is playback mode
         /// </summary>
         private bool? isPlaybackMode;
@@ -78,15 +84,6 @@ namespace StorageSync.Test.Common
         }
 
         /// <summary>
-        /// Gets the name of the test.
-        /// </summary>
-        /// <value>The name of the test.</value>
-        public string TestName
-        {
-            get;
-        }
-
-        /// <summary>
         /// Creates the ecs management.
         /// </summary>
         /// <returns>IEcsManagement.</returns>
@@ -95,9 +92,8 @@ namespace StorageSync.Test.Common
         /// <summary>
         /// Gets the unique identifier.
         /// </summary>
-        /// <param name="testName">Name of the test.</param>
         /// <returns>Guid.</returns>
-        public Guid GetGuid(string testName) => Microsoft.Azure.Test.HttpRecorder.HttpMockServer.GetAssetGuid(testName);
+        public Guid GetGuid() => Microsoft.Azure.Test.HttpRecorder.HttpMockServer.GetAssetGuid(TestName);
 
         /// <summary>
         /// Gets the afs agent installer path.
@@ -136,12 +132,9 @@ namespace StorageSync.Test.Common
         /// <summary>
         /// Waits for access propogation.
         /// </summary>
-        public void WaitForAccessPropogation()
+        public void Wait()
         {
-            if (!IsPlaybackMode)
-            {
-                System.Threading.Thread.Sleep(40 * 1000);
-            }
+            TestUtilities.Wait(40 * 1000);
         }
 
         public string GetTenantId()

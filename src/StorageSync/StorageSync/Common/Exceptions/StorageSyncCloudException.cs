@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.StorageSync.Models;
 using Newtonsoft.Json;
 using System.Net;
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Exceptions
         {
             if (cloudException == null)
             {
-                return "No information in the cloud exception.";
+                return StorageSyncResources.CloudNoInformationError;
             }
 
             var sb = new StringBuilder();
@@ -79,24 +80,25 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Exceptions
 
                 if (storageSyncError.Error != null)
                 {
-                    sb.AppendLine().AppendFormat("ErrorCode: {0}", storageSyncError.Error.Code);
-                    sb.AppendLine().AppendFormat("ErrorMessage: {0}", storageSyncError.Error.Message);
-                    sb.AppendLine().AppendFormat("ErrorTarget: {0}", storageSyncError.Error.Target);
+                    sb.AppendLine().AppendFormat($"{nameof(storageSyncError.Error.Code)}: {storageSyncError.Error.Code}");
+                    sb.AppendLine().AppendFormat($"{nameof(storageSyncError.Error.Message)}: {storageSyncError.Error.Message}");
+                    sb.AppendLine().AppendFormat($"{nameof(storageSyncError.Error.Target)}: {storageSyncError.Error.Target}");
                 }
 
             }
 
             if (!cloudException.Response.StatusCode.Equals(HttpStatusCode.OK))
             {
-                sb.AppendLine().AppendFormat("StatusCode: {0}", cloudException.Response.StatusCode.GetHashCode());
-                sb.AppendLine().AppendFormat("ReasonPhrase: {0}", cloudException.Response.ReasonPhrase);
+                sb.AppendLine().AppendFormat($"{nameof(cloudException.Response.StatusCode)}: {cloudException.Response.StatusCode.GetHashCode()}");
+                sb.AppendLine().AppendFormat($"{nameof(cloudException.Response.ReasonPhrase)}: {cloudException.Response.ReasonPhrase}");
+
                 if (cloudException.Response.Headers == null
                     || !cloudException.Response.Headers.ContainsKey(RequestIdHeaderInResponse))
                 {
                     return sb.ToString();
                 }
 
-                sb.AppendLine().AppendFormat($"OperationID : {cloudException.RequestId}");
+                sb.AppendLine().AppendFormat($"{nameof(cloudException.RequestId)} : {cloudException.RequestId}");
             }
 
             return sb.ToString();

@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
     using Validations;
     using System;
     using System.Collections.Generic;
+    using Microsoft.Azure.Commands.StorageSync.Properties;
 
     /// <summary>
     /// Class PSValidationResult.
@@ -111,7 +112,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
                 case ValidationType.PathLength:
                     return PSValidationType.PathLength;
                 default:
-                    throw new ArgumentException($"{value.GetType().Name} value {value} is unsupported");
+                    throw new ArgumentException(string.Format(StorageSyncResources.UnsupportedErrorFormat, value.GetType().Name, value));
             }
         }
 
@@ -132,7 +133,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
                 case ResultLevel.Warning:
                     return PSResultLevel.Warning;
                 default:
-                    throw new ArgumentException($"{value.GetType().Name} value {value} is unsupported");
+                    throw new ArgumentException(string.Format(StorageSyncResources.UnsupportedErrorFormat, value.GetType().Name, value));
             }
         }
 
@@ -151,7 +152,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
                 case ValidationKind.NamespaceValidation:
                     return PSValidationKind.NamespaceValidation;
                 default:
-                    throw new ArgumentException($"{value.GetType().Name} value {value} is unsupported");
+                    throw new ArgumentException(string.Format(StorageSyncResources.UnsupportedErrorFormat, value.GetType().Name, value));
             }
         }
 
