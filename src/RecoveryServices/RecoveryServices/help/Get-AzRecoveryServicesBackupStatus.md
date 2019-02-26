@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupstatus
@@ -20,7 +20,7 @@ Get-AzRecoveryServicesBackupStatus -Name <String> -ResourceGroupName <String> -T
 
 ### IdWorkload
 ```
-Get-AzureRmRecoveryServicesBackupStatus -Type <String> -ResourceId <String> -ProtectableObjName <String>
+Get-AzRecoveryServicesBackupStatus -Type <String> -ResourceId <String> -ProtectableObjectName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -78,7 +78,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProtectableObjName
+### -ProtectableObjectName
 Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.
 
 ```yaml

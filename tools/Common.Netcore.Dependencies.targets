@@ -1,53 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'"> 
-    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.19">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.19">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Aks" Version="1.0.25-preview">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Authentication.Abstractions" Version="1.0.25-preview">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Authorization" Version="1.0.25-preview">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Common" Version="1.0.25-preview">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Compute" Version="1.0.25-preview">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Graph.Rbac" Version="1.0.25-preview">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.KeyVault" Version="1.0.25-preview">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Network" Version="1.0.25-preview">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.ResourceManager" Version="1.0.25-preview">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Storage" Version="1.0.25-preview">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Storage.Management" Version="1.0.25-preview">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Strategies" Version="1.0.25-preview">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Websites" Version="1.0.25-preview">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
+  <ItemGroup > 
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.19"/>
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.19"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Aks" Version="1.0.25-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Authentication.Abstractions" Version="1.0.25-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Authorization" Version="1.0.25-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Common" Version="1.0.25-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Compute" Version="1.0.25-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Graph.Rbac" Version="1.0.25-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.KeyVault" Version="1.0.25-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Network" Version="1.0.25-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.ResourceManager" Version="1.0.25-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Storage" Version="1.0.25-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Storage.Management" Version="1.0.25-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Strategies" Version="1.0.25-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Websites" Version="1.0.25-preview"/>
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+  <ItemGroup Condition="'$(IsTestProject)' != 'true'">
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.4.0">
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
@@ -63,8 +33,6 @@
     <StorageToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.storage\1.0.25-preview\tools\</StorageToolsPath>
   </PropertyGroup>
   <ItemGroup Condition="'$(OmitJsonPackage)' != 'true'">
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3">
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3"/>
   </ItemGroup>
 </Project>

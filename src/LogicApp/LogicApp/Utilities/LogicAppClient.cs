@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Management.Logic.Models;
     using System;
+    using System.Linq;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
@@ -120,7 +121,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>Workflow object</returns>
         public IEnumerable<Workflow> ListWorkFlowByResourceGroupName(string resourceGroupName)
         {
-            return this.LogicManagementClient.Workflows.ListByResourceGroup(resourceGroupName);
+            var workflowsPage = this.LogicManagementClient.Workflows.ListByResourceGroup(resourceGroupName);
+            var workflows = workflowsPage.AsEnumerable();
+
+            while (!string.IsNullOrWhiteSpace(workflowsPage.NextPageLink))
+            {
+                workflowsPage = this.LogicManagementClient.Workflows.ListBySubscriptionNext(workflowsPage.NextPageLink);
+                workflows = workflows.Concat(workflowsPage);
+            }
+
+            return workflows;
         }
 
         /// <summary>
@@ -129,7 +139,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>Workflow object</returns>
         public IEnumerable<Workflow> ListWorkFlowBySubscription()
         {
-            return this.LogicManagementClient.Workflows.ListBySubscription();
+            var workflowsPage = this.LogicManagementClient.Workflows.ListBySubscription();
+            var workflows = workflowsPage.AsEnumerable();
+
+            while (!string.IsNullOrWhiteSpace(workflowsPage.NextPageLink))
+            {
+                workflowsPage = this.LogicManagementClient.Workflows.ListBySubscriptionNext(workflowsPage.NextPageLink);
+                workflows = workflows.Concat(workflowsPage);
+            }
+
+            return workflows;
         }
 
         /// <summary>
