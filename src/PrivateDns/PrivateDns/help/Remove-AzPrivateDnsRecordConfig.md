@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzPrivateDnsRecordConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a Private DNS record from a local record set object.
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ Remove-AzPrivateDnsRecordConfig -RecordSet <PSPrivateDnsRecordSet> -Cname <Strin
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Remove-AzPrivateDnsRecordConfig cmdlet removes a Private Domain Name System (DNS) record from a record set. The RecordSet object is an offline object, and changes to it do not change the Private DNS responses until after you run the Set-AzPrivateDnsRecordSet cmdlet to persist the change to the Microsoft Azure Private DNS service. To remove a record, all the fields for that record type must match exactly. You cannot add or remove SOA records. SOA records are automatically created when a Private DNS zone is created and automatically deleted when the Private DNS zone is deleted. You can pass the RecordSet object to this cmdlet as a parameter or by using the pipeline operator.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzPrivateDnsRecordSet
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates a Private DNS record set.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Set-AzPrivateDnsRecordSet -RecordSet <PSPrivateDnsRecordSet> [-Overwrite]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Set-AzPrivateDnsRecordSet cmdlet updates a record set in the Azure Private DNS service from a local RecordSet object. You can pass a RecordSet object as a parameter or by using the pipeline operator. You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation. The record set is not updated if it has been changed in Azure Private DNS since the local RecordSet object was retrieved. This provides protection for concurrent changes. You can suppress this behavior using the Overwrite parameter, which updates the record set regardless of concurrent changes.
 
 ## EXAMPLES
 

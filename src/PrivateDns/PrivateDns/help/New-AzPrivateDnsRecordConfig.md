@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPrivateDnsRecordConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new Private DNS record local object.
 
 ## SYNTAX
 
@@ -52,7 +52,7 @@ New-AzPrivateDnsRecordConfig -Cname <String> [-DefaultProfile <IAzureContextCont
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The New-AzPrivateDnsRecordConfig cmdlet creates a local PSPrivateDnsRecord object. An array of these objects is passed to the New-AzPrivateDnsRecordSet cmdlet using the PrivateDnsRecord parameter to specify the records to create in the record set.
 
 ## EXAMPLES
 
