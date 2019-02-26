@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             {
                 return blueprintClientWithVersion = blueprintClientWithVersion ?? new BlueprintClient(DefaultProfile.DefaultContext, new ApiExpandHandler());
             }
-            set => blueprintClient = value;
+            set => blueprintClientWithVersion = value;
         }
 
         /// <summary>

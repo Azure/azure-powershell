@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Blueprint.Common;
+using Microsoft.Azure.Commands.Blueprint.Models;
 using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
 using ParameterHelpMessages = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterHelpMessages;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintAssignment")]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintAssignment", DefaultParameterSetName = ParameterSetNames.BlueprintAssignmentsBySubscription), OutputType(typeof(PSBlueprintAssignment))]
     public class GetAzureRmBlueprintAssignment : BlueprintCmdletBase
     {
         #region Parameters
