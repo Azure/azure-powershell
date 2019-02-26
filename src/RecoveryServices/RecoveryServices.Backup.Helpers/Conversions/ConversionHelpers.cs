@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using System;
+using System.Collections.Generic;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
@@ -54,6 +54,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     typeof(ServiceClientModel.AzureStorageContainer))
                 {
                     containerModel = new AzureFileShareContainer(protectionContainer);
+                }
+                else if (protectionContainer.Properties.GetType() ==
+                    typeof(ServiceClientModel.AzureVMAppContainerProtectionContainer))
+                {
+                    containerModel = new AzureVmWorkloadContainer(protectionContainer);
                 }
             }
 
@@ -190,7 +195,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             ServiceClientModel.SimpleRetentionPolicy azureSqlRetentionPolicy =
                 (ServiceClientModel.SimpleRetentionPolicy)azureSqlPolicy.RetentionPolicy;
             sqlPolicyModel.RetentionPolicy =
-                PolicyHelpers.GetPSSimpleRetentionPolicy(azureSqlRetentionPolicy, null);
+                PolicyHelpers.GetPSSimpleRetentionPolicy(azureSqlRetentionPolicy, null, "AzureSql");
             return policyModel;
         }
 
@@ -236,6 +241,86 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return policyModel;
         }
 
+        public static PolicyBase GetPolicyModelForAzureVmWorkload(ServiceClientModel.ProtectionPolicyResource serviceClientResponse,
+           PolicyBase policyModel)
+        {
+            ServiceClientModel.AzureVmWorkloadProtectionPolicy azureVmWorkloadPolicy =
+                    (ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties;
+
+            foreach (var policy in azureVmWorkloadPolicy.SubProtectionPolicy)
+            {
+                if (string.Compare(policy.PolicyType, "Full") == 0)
+                {
+                    if (policy.SchedulePolicy.GetType() !=
+                        typeof(ServiceClientModel.SimpleSchedulePolicy))
+                    {
+                        Logger.Instance.WriteDebug("Unknown Schedule object received: " +
+                            policy.SchedulePolicy.GetType());
+                        Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                        return null;
+                    }
+                    if (policy.RetentionPolicy.GetType() !=
+                        typeof(ServiceClientModel.LongTermRetentionPolicy))
+                    {
+                        Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
+                            policy.RetentionPolicy.GetType());
+                        Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                        return null;
+                    }
+                }
+                else if (string.Compare(policy.PolicyType, "Differential") == 0)
+                {
+                    if (policy.SchedulePolicy.GetType() !=
+                        typeof(ServiceClientModel.SimpleSchedulePolicy))
+                    {
+                        Logger.Instance.WriteDebug("Unknown Schedule object received: " +
+                            policy.SchedulePolicy.GetType());
+                        Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                        return null;
+                    }
+                    if (policy.RetentionPolicy.GetType() !=
+                        typeof(ServiceClientModel.SimpleRetentionPolicy))
+                    {
+                        Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
+                            policy.RetentionPolicy.GetType());
+                        Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                        return null;
+                    }
+                }
+                else if (string.Compare(policy.PolicyType, "Log") == 0)
+                {
+                    if (policy.SchedulePolicy.GetType() !=
+                        typeof(ServiceClientModel.LogSchedulePolicy))
+                    {
+                        Logger.Instance.WriteDebug("Unknown Schedule object received: " +
+                            policy.SchedulePolicy.GetType());
+                        Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                        return null;
+                    }
+                    if (policy.RetentionPolicy.GetType() !=
+                        typeof(ServiceClientModel.SimpleRetentionPolicy))
+                    {
+                        Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
+                            policy.RetentionPolicy.GetType());
+                        Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                        return null;
+                    }
+                }
+            }
+
+            policyModel = new AzureVmWorkloadPolicy();
+            AzureVmWorkloadPolicy azureVmWorkloadPolicyModel = policyModel as AzureVmWorkloadPolicy;
+            azureVmWorkloadPolicyModel.WorkloadType = WorkloadType.MSSQL;
+            azureVmWorkloadPolicyModel.BackupManagementType = BackupManagementType.AzureWorkload;
+            azureVmWorkloadPolicyModel.IsCompression =
+                ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.IsCompression;
+            azureVmWorkloadPolicyModel.IsDifferentialBackupEnabled = false;
+            azureVmWorkloadPolicyModel.IsLogBackupEnabled = false;
+            GetPSSubProtectionPolicy(azureVmWorkloadPolicyModel, serviceClientResponse,
+                ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);
+            return policyModel;
+        }
+
         /// <summary>
         /// Helper function to convert ps backup policy model from service response.
         /// </summary>
@@ -262,6 +347,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 typeof(ServiceClientModel.AzureFileShareProtectionPolicy))
             {
                 policyModel = GetPolicyModelForAzureFileShare(serviceClientResponse, policyModel);
+            }
+            else if (serviceClientResponse.Properties.GetType() ==
+                typeof(ServiceClientModel.AzureVmWorkloadProtectionPolicy))
+            {
+                policyModel = GetPolicyModelForAzureVmWorkload(serviceClientResponse, policyModel);
             }
             else
             {
@@ -338,8 +428,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     itemModel = GetAzureFileShareItemModel(protectedItem);
                 }
+
+                if (protectedItem.Properties.GetType() ==
+                    typeof(ServiceClientModel.AzureVmWorkloadSQLDatabaseProtectedItem))
+                {
+                    itemModel = GetAzureVmWorkloadItemModel(protectedItem);
+                }
             }
 
+            return itemModel;
+        }
+
+        private static ItemBase GetAzureVmWorkloadItemModel(ServiceClientModel.ProtectedItemResource protectedItem)
+        {
+            ItemBase itemModel;
+            string policyName = null;
+            string policyId = ((ServiceClientModel.AzureVmWorkloadSQLDatabaseProtectedItem)protectedItem.Properties).PolicyId;
+            if (!string.IsNullOrEmpty(policyId))
+            {
+                Dictionary<UriEnums, string> keyValueDict =
+                HelperUtils.ParseUri(policyId);
+                policyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, policyId);
+            }
+
+            string containerUri = HelperUtils.GetContainerUri(
+                HelperUtils.ParseUri(protectedItem.Id),
+                protectedItem.Id);
+
+            itemModel = new AzureWorkloadSQLDatabaseProtectedItem(
+                protectedItem,
+                containerUri,
+                ContainerType.AzureVMAppContainer,
+                policyName);
             return itemModel;
         }
 
@@ -418,7 +538,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         /// <summary>
-        /// Helper function to convert ps backup policy item list from service response.
+        /// Helper function to convert ps protectable item from service response.
+        /// </summary>
+        public static ProtectableItemBase GetProtectableItemModel(ServiceClientModel.WorkloadProtectableItemResource protectableItem)
+        {
+            ProtectableItemBase itemModel = null;
+
+            if (protectableItem != null &&
+                protectableItem.Properties != null)
+            {
+                if (protectableItem.Properties.GetType().IsSubclassOf(typeof(ServiceClientModel.AzureVmWorkloadProtectableItem)))
+                {
+                    itemModel = GetAzureWorkloadProtectableItemModel(protectableItem);
+                }
+            }
+
+            return itemModel;
+        }
+
+        private static ProtectableItemBase GetAzureWorkloadProtectableItemModel(ServiceClientModel.WorkloadProtectableItemResource protectableItem)
+        {
+            ProtectableItemBase itemModel;
+
+            string containerUri = HelperUtils.GetContainerUri(
+                HelperUtils.ParseUri(protectableItem.Id),
+                protectableItem.Id);
+
+            itemModel = new AzureWorkloadProtectableItem(
+                protectableItem,
+                containerUri,
+                ContainerType.AzureVMAppContainer);
+
+            return itemModel;
+        }
+
+        /// <summary>
+        /// Helper function to convert ps item list from service response.
         /// </summary>
         public static List<ItemBase> GetItemModelList(IEnumerable<ServiceClientModel.ProtectedItemResource> protectedItems)
         {
@@ -427,6 +582,60 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             foreach (var protectedItem in protectedItems)
             {
                 itemModels.Add(GetItemModel(protectedItem));
+            }
+
+            return itemModels;
+        }
+
+        public static void GetPSSubProtectionPolicy(AzureVmWorkloadPolicy azureVmWorkloadPolicyModel,
+           ServiceClientModel.ProtectionPolicyResource serviceClientResponse, string timeZone)
+        {
+            foreach (var subProtectionPolicy in
+                ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).SubProtectionPolicy)
+            {
+                if (string.Compare(subProtectionPolicy.PolicyType, "Full") == 0)
+                {
+                    azureVmWorkloadPolicyModel.FullBackupSchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy(
+                        (ServiceClientModel.SimpleSchedulePolicy)subProtectionPolicy.SchedulePolicy,
+                        ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);
+
+                    azureVmWorkloadPolicyModel.FullBackupRetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy(
+                        (ServiceClientModel.LongTermRetentionPolicy)subProtectionPolicy.RetentionPolicy,
+                        ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);
+                }
+                else if (string.Compare(subProtectionPolicy.PolicyType, "Differential") == 0)
+                {
+                    azureVmWorkloadPolicyModel.DifferentialBackupSchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy(
+                        (ServiceClientModel.SimpleSchedulePolicy)subProtectionPolicy.SchedulePolicy,
+                        ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);
+                    azureVmWorkloadPolicyModel.DifferentialBackupRetentionPolicy = PolicyHelpers.GetPSSimpleRetentionPolicy(
+                        (ServiceClientModel.SimpleRetentionPolicy)subProtectionPolicy.RetentionPolicy,
+                        ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone, "AzureWorkload");
+                    azureVmWorkloadPolicyModel.IsDifferentialBackupEnabled = true;
+                }
+                else if (string.Compare(subProtectionPolicy.PolicyType, "Log") == 0)
+                {
+                    azureVmWorkloadPolicyModel.LogBackupSchedulePolicy = PolicyHelpers.GetPSLogSchedulePolicy((ServiceClientModel.LogSchedulePolicy)
+                    subProtectionPolicy.SchedulePolicy,
+                    ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);
+                    azureVmWorkloadPolicyModel.LogBackupRetentionPolicy = PolicyHelpers.GetPSSimpleRetentionPolicy((ServiceClientModel.SimpleRetentionPolicy)
+                    subProtectionPolicy.RetentionPolicy,
+                    ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone, "AzureWorkload");
+                    azureVmWorkloadPolicyModel.IsLogBackupEnabled = true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Helper function to convert ps protectable item list from service response.
+        /// </summary>
+        public static List<ProtectableItemBase> GetProtectableItemModelList(IEnumerable<ServiceClientModel.WorkloadProtectableItemResource> protectableItems)
+        {
+            List<ProtectableItemBase> itemModels = new List<ProtectableItemBase>();
+
+            foreach (var protectableItem in protectableItems)
+            {
+                itemModels.Add(GetProtectableItemModel(protectableItem));
             }
 
             return itemModels;

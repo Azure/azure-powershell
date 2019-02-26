@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue when retreiving certain monthly schedules in several Azure Automation cmdlets
 
 ## Version 1.1.1
 * Update help for Import-AzAutomationDscNodeConfiguration
