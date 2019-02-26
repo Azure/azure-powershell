@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The resource provider
         /// </summary>
-        public const string ResourceProvider = "Microsoft" + "." + ProductName;
+        public const string ResourceProvider = "Microsoft.StorageSync";
         /// <summary>
         /// The storage account resource provider
         /// </summary>
