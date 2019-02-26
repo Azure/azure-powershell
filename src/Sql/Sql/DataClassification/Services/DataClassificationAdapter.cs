@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
             return new SensitivityLabel
             {
                 LabelName = sensitivityLabelModel.SensitivityLabel,
-                LabelId = sensitivityLabelModel.LabelId,
+                LabelId = sensitivityLabelModel.SensitivityLabelId,
                 InformationType = sensitivityLabelModel.InformationType,
                 InformationTypeId = sensitivityLabelModel.InformationTypeId
             };
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                 SchemaName = idComponents[12],
                 TableName = idComponents[14],
                 ColumnName = idComponents[16],
-                LabelId = sensitivityLabel.LabelId,
+                SensitivityLabelId = sensitivityLabel.LabelId,
                 SensitivityLabel = sensitivityLabel.LabelName,
                 InformationType = sensitivityLabel.InformationType,
                 InformationTypeId = sensitivityLabel.InformationTypeId

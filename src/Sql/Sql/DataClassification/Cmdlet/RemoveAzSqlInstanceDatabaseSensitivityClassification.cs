@@ -12,7 +12,8 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
     [Cmdlet(
         VerbsCommon.Remove,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.SqlInstanceDatabaseSensitivityClassification,
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true),
+        OutputType(typeof(bool))]
     public class RemoveAzSqlInstanceDatabaseSensitivityClassification : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
     {
         [Parameter(
@@ -99,6 +100,11 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = DefinitionsCommon.PassThruHelpMessage)]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = DefinitionsCommon.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
@@ -131,6 +137,11 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         protected override DataClassificationAdapter InitModelAdapter()
         {
             return new DataClassificationAdapter(DefaultProfile.DefaultContext);
+        }
+
+        protected override bool WriteResult()
+        {
+            return PassThru;
         }
     }
 }
