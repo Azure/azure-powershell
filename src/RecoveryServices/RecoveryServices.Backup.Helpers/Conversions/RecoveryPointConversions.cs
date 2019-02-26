@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using System;
+using System.Collections.Generic;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
@@ -57,6 +57,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     result.Add(GetPSAzureFileRecoveryPoint(rp, item));
                 }
 
+                else if (rp.Properties.GetType().IsSubclassOf(typeof(ServiceClientModel.AzureWorkloadRecoveryPoint)))
+                {
+                    result.Add(GetPSAzureWorkloadRecoveryPoint(rp, item));
+                }
+
                 else if (rp.Properties.GetType() == typeof(ServiceClientModel.GenericRecoveryPoint))
                 {
                     result.Add(GetPSAzureGenericRecoveryPoint(rp, item));
@@ -90,6 +95,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 typeof(ServiceClientModel.AzureFileShareRecoveryPoint))
             {
                 result = GetPSAzureFileRecoveryPoint(rpResponse, item);
+            }
+
+            else if (rpResponse.Properties.GetType().IsSubclassOf(typeof(ServiceClientModel.AzureWorkloadRecoveryPoint)))
+            {
+                result = GetPSAzureWorkloadRecoveryPoint(rpResponse, item);
             }
 
             else if (rpResponse.Properties.GetType() ==
@@ -199,6 +209,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 Id = rp.Id,
                 WorkloadType = item.WorkloadType,
                 FileShareSnapshotUri = recoveryPoint.FileShareSnapshotUri,
+            };
+            return rpBase;
+        }
+
+        public static RecoveryPointBase GetPSAzureWorkloadRecoveryPoint(
+            ServiceClientModel.RecoveryPointResource rp, ItemBase item)
+        {
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
+
+            string containerName = IdUtils.GetNameFromUri(containerUri);
+            string protectedItemName = IdUtils.GetNameFromUri(protectedItemUri);
+
+            ServiceClientModel.AzureWorkloadSQLRecoveryPoint recoveryPoint =
+                        rp.Properties as ServiceClientModel.AzureWorkloadSQLRecoveryPoint;
+
+            DateTime recoveryPointTime = DateTime.MinValue;
+
+            if (recoveryPoint.RecoveryPointTimeInUTC.HasValue)
+            {
+                recoveryPointTime = (DateTime)recoveryPoint.RecoveryPointTimeInUTC;
+            }
+            else
+            {
+                throw new ArgumentNullException("RecoveryPointTime is null");
+            }
+
+            AzureWorkloadRecoveryPoint rpBase = new AzureWorkloadRecoveryPoint()
+            {
+                RecoveryPointId = rp.Name,
+                BackupManagementType = item.BackupManagementType,
+                ItemName = protectedItemName,
+                ContainerName = containerName,
+                ContainerType = item.ContainerType,
+                RecoveryPointTime = recoveryPointTime,
+                RecoveryPointType = recoveryPoint.Type,
+                Id = rp.Id,
+                WorkloadType = item.WorkloadType,
+                DataDirectoryPaths = recoveryPoint.ExtendedInfo != null ? recoveryPoint.ExtendedInfo.DataDirectoryPaths : null
             };
             return rpBase;
         }
