@@ -201,4 +201,19 @@
   <data name="Warning_DnsRecordsParamNeedsToBeSpecified" xml:space="preserve">
     <value>Usage of this cmdlet without DnsRecords parameter will be deprecated soon. If there is a need to create empty record set, please specify DnsRecords parameter with an empty array as value</value>
   </data>
+  <data name="Progress_CreatingNewVirtualNetworkLink" xml:space="preserve">
+    <value>Creating virtual network link ...</value>
+  </data>
+  <data name="Progress_RemovingLink" xml:space="preserve">
+    <value>Removing virtual network link ...</value>
+  </data>
+  <data name="Success_NewVirtualNetworkLink" xml:space="preserve">
+    <value>Link '{0}' was created in resource group '{1}'. Use Get-AzPrivateDnsVirtualNetworkLink to retrieve details about the created link.</value>
+  </data>
+  <data name="Success_RemoveLink" xml:space="preserve">
+    <value>Link '{0}' was removed from resource group '{1}'.</value>
+  </data>
+  <data name="Warning_InvalidLinkDetailsSpecified" xml:space="preserve">
+    <value>Invalid Link details specified.</value>
+  </data>
 </root>

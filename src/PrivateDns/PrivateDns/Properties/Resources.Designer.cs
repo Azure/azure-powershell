@@ -169,6 +169,15 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating virtual network link ....
+        /// </summary>
+        internal static string Progress_CreatingNewVirtualNetworkLink {
+            get {
+                return ResourceManager.GetString("Progress_CreatingNewVirtualNetworkLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating Private DNS zone ....
         /// </summary>
         internal static string Progress_CreatingNewZone {
@@ -192,6 +201,15 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         internal static string Progress_Modifying {
             get {
                 return ResourceManager.GetString("Progress_Modifying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing virtual network link ....
+        /// </summary>
+        internal static string Progress_RemovingLink {
+            get {
+                return ResourceManager.GetString("Progress_RemovingLink", resourceCulture);
             }
         }
         
@@ -241,6 +259,15 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Link &apos;{0}&apos; was created in resource group &apos;{1}&apos;. Use Get-AzPrivateDnsVirtualNetworkLink to retrieve details about the created link..
+        /// </summary>
+        internal static string Success_NewVirtualNetworkLink {
+            get {
+                return ResourceManager.GetString("Success_NewVirtualNetworkLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Private DNS Zone &apos;{0}&apos; was created in resource group &apos;{1}&apos;. The SOA  record for this zone have been created automatically. Use Get-AzPrivateDnsRecordSet to retrieve them.
         /// </summary>
         internal static string Success_NewZone {
@@ -286,6 +313,15 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Link &apos;{0}&apos; was removed from resource group &apos;{1}&apos;..
+        /// </summary>
+        internal static string Success_RemoveLink {
+            get {
+                return ResourceManager.GetString("Success_RemoveLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Record set &apos;{0}&apos; was removed from Private DNS zone &apos;{1}&apos;..
         /// </summary>
         internal static string Success_RemoveRecordSet {
@@ -309,6 +345,15 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         internal static string Warning_DnsRecordsParamNeedsToBeSpecified {
             get {
                 return ResourceManager.GetString("Warning_DnsRecordsParamNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Link details specified..
+        /// </summary>
+        internal static string Warning_InvalidLinkDetailsSpecified {
+            get {
+                return ResourceManager.GetString("Warning_InvalidLinkDetailsSpecified", resourceCulture);
             }
         }
     }

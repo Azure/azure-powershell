@@ -94,7 +94,10 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
                 throw new PSArgumentException(string.Format(ProjectResources.Error_ZoneNotFound), this.Name);
             }
 
-            zoneToUpdate.Tags = this.Tag;
+            if (this.Tag != null)
+            {
+                zoneToUpdate.Tags = this.Tag;
+            }
 
             if (zoneToUpdate.Name != null && zoneToUpdate.Name.EndsWith("."))
             {

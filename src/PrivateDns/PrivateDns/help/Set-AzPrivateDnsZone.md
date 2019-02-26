@@ -26,8 +26,8 @@ Set-AzPrivateDnsZone -ResourceId <String> [-Tag <Hashtable>] [-DefaultProfile <I
 
 ### Object
 ```
-Set-AzPrivateDnsZone -PrivateZone <PSPrivateDnsZone> [-Overwrite] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzPrivateDnsZone -PrivateZone <PSPrivateDnsZone> [-Tag <Hashtable>] [-Overwrite]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -160,7 +160,7 @@ A hash table which represents resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: Fields, ResourceId
+Parameter Sets: (All)
 Aliases:
 
 Required: False
