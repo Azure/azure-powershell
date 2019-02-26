@@ -14,8 +14,8 @@ Disables Custom Domain HTTPS.
 
 ### ByFieldsParameterSet (Default)
 ```
-Disable-AzCdnCustomDomainHttps -CustomDomainName <String> -EndpointName <String> -ProfileName <String>
- -ResourceGroupName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Disable-AzCdnCustomDomainHttps -ResourceGroupName <String> -ProfileName <String> -EndpointName <String>
+ -CustomDomainName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,14 +32,13 @@ Disable-AzCdnCustomDomainHttps -ResourceId <String> [-PassThru] [-DefaultProfile
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Disable-AzCdnCustomDomainHttps** cmdlet disables the secured HTTPS delivery of a CDN custom domain.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Disable-AzCdnCustomDomainHttps -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroupName
-true
+PS C:\> Disable-AzCdnCustomDomainHttps -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -CustomDomainName $customDomainName
 ```
 
 Disable secure delivery of the custom domain.
@@ -117,7 +116,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -152,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-ResourceId
+ResourceId of the Custom Domain
 
 ```yaml
 Type: System.String
@@ -205,8 +204,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain
 
 ### System.String
-
-### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

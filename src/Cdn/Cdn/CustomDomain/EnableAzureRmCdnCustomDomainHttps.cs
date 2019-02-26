@@ -28,37 +28,40 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnCustomDomainHttps", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class EnableAzureRmCdnCustomDomainHttps : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN custom domain display name.")]
-        [ValidateNotNullOrEmpty]
-        public string CustomDomainName { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN endpoint name.")]
-        [ValidateNotNullOrEmpty]
-        public string EndpointName { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN profile name.")]
-        [ValidateNotNullOrEmpty]
-        public string ProfileName { get; set; }
-
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group of the Azure CDN profile")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN profile name.")]
+        [ResourceNameCompleter("Microsoft.Cdn/profiles", nameof(ResourceGroupName))]
+        [ValidateNotNullOrEmpty]
+        public string ProfileName { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN endpoint name.")]
+        [ResourceNameCompleter("Microsoft.Cdn/profiles/endpoints", nameof(ResourceGroupName), nameof(ProfileName))]
+        [ValidateNotNullOrEmpty]
+        public string EndpointName { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN custom domain display name.")]
+        [ResourceNameCompleter("Microsoft.Cdn/profiles/endpoints/customdomains", nameof(ResourceGroupName), nameof(ProfileName), nameof(EndpointName))]
+        [ValidateNotNullOrEmpty]
+        public string CustomDomainName { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The custom domain object.", ParameterSetName = ObjectParameterSet)]
         [ValidateNotNull]
         public PSCustomDomain InputObject { get; set; }
 
-        [Parameter(ParameterSetName = ResourceIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ResourceId")]
+        [Parameter(ParameterSetName = ResourceIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ResourceId of the Custom Domain")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
+        [Parameter(Mandatory = false, HelpMessage = "Return object if specified.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName == ObjectParameterSet)
+            if (ParameterSetName.Equals(ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
             {
                 EndpointName = InputObject.EndpointName;
                 ProfileName = InputObject.ProfileName;
