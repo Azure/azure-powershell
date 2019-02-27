@@ -38,11 +38,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public Hashtable ResourceGroups { get; set; }
+        public Hashtable ResourceGroup { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.Parameters)]
         [ValidateNotNull]
-        public Hashtable Parameters { get; set; }
+        public Hashtable Parameter { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, HelpMessage = ParameterHelpMessages.SystemAssignedIdentity)]
         public SwitchParameter SystemAssignedIdentity { get; set; }
@@ -77,8 +77,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                             Location,
                             Blueprint.Id,
                             Lock,
-                            Parameters,
-                            ResourceGroups);
+                            Parameter,
+                            ResourceGroup);
 
                         foreach (var subscription in subscriptionsList)
                         {
@@ -97,8 +97,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                             Location,
                             Blueprint.Id,
                             Lock,
-                            Parameters,
-                            ResourceGroups);
+                            Parameter,
+                            ResourceGroup);
 
                         foreach (var subscription in subscriptionsList)
                         {

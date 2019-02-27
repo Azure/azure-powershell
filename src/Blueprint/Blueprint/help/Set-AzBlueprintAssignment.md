@@ -14,7 +14,7 @@ Update an existing blueprint assignment.
 
 ```
 Set-AzBlueprintAssignment -Name <String> -Blueprint <PSBlueprintBase> [-SubscriptionId <String[]>]
- -Location <String> [-ResourceGroups <Hashtable>] [-Parameters <Hashtable>] [-SystemAssignedIdentity]
+ -Location <String> [-ResourceGroup <Hashtable>] [-Parameter <Hashtable>] [-SystemAssignedIdentity]
  [-UserAssignedIdentity <String>] [-Lock <PSLockMode>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ Update an existing blueprint assignment.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -Parameters @{P1="v3"; P2="v4"} -SystemAssignedIdentity
+PS C:\> Set-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -Parameter @{P1="v3"; P2="v4"} -SystemAssignedIdentity
 ```
 
 Update an existing blueprint assignment of the blueprint definition `$blueprintObject` within the specified subscription, updating the parameters. Uses system-assigned identity. The location defines the region for creating the managed identity.
@@ -111,8 +111,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Parameters
-Artifact parameters.
+### -Parameter
+Artifact parameter.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -126,8 +126,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroups
-{{Fill ResourceGroups Description}}
+### -ResourceGroup
+{{Fill ResourceGroup Description}}
 
 ```yaml
 Type: System.Collections.Hashtable

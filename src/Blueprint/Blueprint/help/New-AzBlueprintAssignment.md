@@ -14,7 +14,7 @@ Assign a blueprint definition to a subscription.
 
 ```
 New-AzBlueprintAssignment -Name <String> -Blueprint <PSBlueprintBase> [-SubscriptionId <String[]>]
- -Location <String> [-ResourceGroups <Hashtable>] [-Parameters <Hashtable>] [-SystemAssignedIdentity]
+ -Location <String> [-ResourceGroup <Hashtable>] [-Parameter <Hashtable>] [-SystemAssignedIdentity]
  [-UserAssignedIdentity <String>] [-Lock <PSLockMode>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -26,26 +26,26 @@ Assign a blueprint definition to a subscription.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -ResourceGroups $rg -Parameters $params -SystemAssignedIdentity
+PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -ResourceGroup $rg -Parameter $params -SystemAssignedIdentity
 ```
-ResourceGroups format: @{RG1=@{name='rg_name';location='location'}}
+ResourceGroup format: @{RG1=@{name='rg_name';location='location'}}
 Example: $rg = @{ResourceGroup=@{name='storage_rg';location='eastus'}}
 
-Parameters format: @{P1='v1'; P2='v2'}
+Parameter format: @{P1='v1'; P2='v2'}
 Example: $param=@{audituseofclassicvirtualmachines_effect='Audit'}
 
 Create a new blueprint assignment of the blueprint definition `$blueprintObject` within the specified subscription using the defined parameter and resource group dictionary. Uses system-assigned identity. The location defines the region for creating the managed identity.
 
 ### Example 2
 ```powershell
-PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -Parameters @{P1="v1"; P2="v2"} -Lock AllResources
+PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -Parameter @{P1="v1"; P2="v2"} -Lock AllResources
 ```
 
 Create a new blueprint assignment of the blueprint definition `$blueprintObject` within the specified subscription using the defined parameter and resource group dictionary and configuring resource locking to **AllResources**. Defaults to using system-assigned identity.  The location defines the region for creating the managed identity.
 
 ### Example 3
 ```powershell
-PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -Parameters @{P1="v1"; P2="v2"} -UserAssignedIdentity "/subscriptions/00000000-1111-0000-1111-000000000000/resourceGroups/my-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-user-defined-identity"
+PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -Parameter @{P1="v1"; P2="v2"} -UserAssignedIdentity "/subscriptions/00000000-1111-0000-1111-000000000000/resourceGroups/my-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-user-defined-identity"
 ```
 
 Create a new blueprint assignment of the blueprint definition `$blueprintObject` within the specified subscription using the defined defined parameter and resource group dictionary using the specified user-assigned identity id.
@@ -130,7 +130,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Artifact parameters.
 
 ```yaml
