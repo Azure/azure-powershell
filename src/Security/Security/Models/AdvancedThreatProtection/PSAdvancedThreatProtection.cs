@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Security.Models.ThreatProtection
+namespace Microsoft.Azure.Commands.Security.Models.AdvancedThreatProtection
 {
-    public class PSThreatProtection
+    public class PSAdvancedThreatProtection
     {
         public string Id { get; set; }
 
-        public string Name { get; set; }
+        public bool IsEnabled { get; set; }
     }
 }
