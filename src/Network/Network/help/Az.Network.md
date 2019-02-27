@@ -143,13 +143,13 @@ Gets all available ssl options for ssl policy for Application Gateway.
 ### [Get-AzApplicationGatewayAvailableWafRuleSets](Get-AzApplicationGatewayAvailableWafRuleSets.md)
 Gets all available web application firewall rule sets.
 
-### [Get-AzApplicationGatewayAvailableServerVariables](Get-AzApplicationGatewayAvailableServerVariables.md)
+### [Get-AzApplicationGatewayAvailableServerVariable](Get-AzApplicationGatewayAvailableServerVariable.md)
 Gets all available application gateway server variables.
 
-### [Get-AzApplicationGatewayAvailableRequestHeaders](Get-AzApplicationGatewayAvailableRequestHeaders.md)
+### [Get-AzApplicationGatewayAvailableRequestHeader](Get-AzApplicationGatewayAvailableRequestHeader.md)
 Gets all available application gateway request headers.
 
-### [Get-AzApplicationGatewayAvailableResponseHeaders](Get-AzApplicationGatewayAvailableResponseHeaders.md)
+### [Get-AzApplicationGatewayAvailableResponseHeader](Get-AzApplicationGatewayAvailableResponseHeader.md)
 Gets all available application gateway response headers.
 
 ### [Get-AzApplicationGatewayBackendAddressPool](Get-AzApplicationGatewayBackendAddressPool.md)
@@ -178,6 +178,9 @@ Gets the HTTP listener of an application gateway.
 
 ### [Get-AzApplicationGatewayHttpListenerCustomError](Get-AzApplicationGatewayHttpListenerCustomError.md)
 Gets custom error(s) from a http listener of an application gateway.
+
+### [Get-AzApplicationGatewayIdentity](Get-AzApplicationGatewayIdentity.md)
+Get identity assigned to the application gateway.
 
 ### [Get-AzApplicationGatewayIPConfiguration](Get-AzApplicationGatewayIPConfiguration.md)
 Gets the IP configuration of an application gateway.
@@ -530,6 +533,9 @@ Creates a front-end port for an application gateway.
 ### [New-AzApplicationGatewayHttpListener](New-AzApplicationGatewayHttpListener.md)
 Creates an HTTP listener for an application gateway.
 
+### [New-AzApplicationGatewayIdentity](New-AzApplicationGatewayIdentity.md)
+Creates an identity object for an application gateway. This will hold reference to the user assigned identity.
+
 ### [New-AzApplicationGatewayIPConfiguration](New-AzApplicationGatewayIPConfiguration.md)
 Creates an IP configuration for an application gateway.
 
@@ -814,6 +820,9 @@ Removes an HTTP listener from an application gateway.
 ### [Remove-AzApplicationGatewayHttpListenerCustomError](Remove-AzApplicationGatewayHttpListenerCustomError.md)
 Removes a custom error from a http listener of an application gateway.
 
+### [Remove-AzApplicationGatewayIdentity](Remove-AzApplicationGatewayIdentity.md)
+Removes a identity from an application gateway.
+
 ### [Remove-AzApplicationGatewayIPConfiguration](Remove-AzApplicationGatewayIPConfiguration.md)
 Removes an IP configuration from an application gateway.
 
@@ -1047,6 +1056,9 @@ Modifies an HTTP listener for an application gateway.
 
 ### [Set-AzApplicationGatewayHttpListenerCustomError](Set-AzApplicationGatewayHttpListenerCustomError.md)
 Updates a custom error in a http listener of an application gateway.
+
+### [Set-AzApplicationGatewayIdentity](Set-AzApplicationGatewayIdentity.md)
+Updates a identity assigned to the application gateway.
 
 ### [Set-AzApplicationGatewayIPConfiguration](Set-AzApplicationGatewayIPConfiguration.md)
 Modifies an IP configuration for an application gateway.

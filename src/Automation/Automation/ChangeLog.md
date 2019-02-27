@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update help for Import-AzAutomationDscNodeConfiguration
+* Added configuration name validation to Import-AzAutomationDscConfiguration cmdlet
+* Improved error handling for Import-AzAutomationDscConfiguration cmdlet
 
 ## Version 1.1.0
 * Added support for Python 2 runbooks

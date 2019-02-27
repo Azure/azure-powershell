@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.0
 * Update to latest version of ClientRuntime
+
+## Version 1.2.1
+* Release with correct version of Authentication
+* Enable MSI Authentication in Azure Functions and WebApps
 
 ## Version 1.2.0
 * Add interactive and username/password authentication for Windows PowerShell 5.1 only

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.10.1'
+ModuleVersion = '0.10.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -30,7 +30,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Guest Configuration service cmdlets for Azure Resource Manager. Allows querying VM compliance statuses for initiatives (part of Azure Policy) of category "Guest configuration", compliance reasons, compliance status history. For more information, please visit: https://aka.ms/guestconfigcmdlets'
+Description = 'Microsoft Azure PowerShell - Guest Configuration service cmdlets for Azure Resource Manager. Allows querying VM compliance statuses for initiatives (part of Azure Policy) of category "Guest configuration", compliance reasons, compliance status history. For more information, please visit: https://aka.ms/guestconfigcmdlets '
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.2.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.GuestConfiguration.dll'
@@ -72,7 +72,7 @@ NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzVMGuestPolicyReport', 'Get-AzVMGuestPolicyStatusHistory'
+CmdletsToExport = 'Get-AzVMGuestPolicyStatus', 'Get-AzVMGuestPolicyStatusHistory'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -104,14 +104,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Initial release of Az.GuestConfiguration module. Provides these two cmdlets.
-  * Get-AzVMGuestPolicyReport
-    * Provides compliance status of a VM in a resource group, compliance reasons.
-  * Get-AzVMGuestPolicyStatusHistory:
-    * Provides historical compliance statuses of a VM in a resource group, for a maximum of past 14 days.'
+        ReleaseNotes = 'General bug fixes and Cmdlet Get-AzVMGuestPolicyReport renamed to Get-AzVMGuestPolicyStatus to keep it consistent with the Azure portal and to avoid user confusion.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        #Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
@@ -130,4 +126,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

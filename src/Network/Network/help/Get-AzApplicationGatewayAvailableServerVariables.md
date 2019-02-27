@@ -1,30 +1,30 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayavailableservervariables
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayavailableservervariable
 schema: 2.0.0
 ---
 
-# Get-AzApplicationGatewayAvailableServerVariables
+# Get-AzApplicationGatewayAvailableServerVariable
 
 ## SYNOPSIS
-Get all available server variables for application gateway.
+Gets all available server variables for application gateway.
 
 ## SYNTAX
 
 ```
-Get-AzApplicationGatewayAvailableServerVariables [-DefaultProfile <IAzureContextContainer>]
+Get-AzApplicationGatewayAvailableServerVariable [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzApplicationGatewayAvailableServerVariables cmdlet gets all available server variables for application gateway.
+The **Get-AzApplicationGatewayAvailableServerVariable** cmdlet gets all available server variables for application gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\>$availableServerVariables = Get-AzApplicationGatewayAvailableServerVariables
+PS C:\> $availableServerVariables = Get-AzApplicationGatewayAvailableServerVariable
 ```
 
 This command returns all the available server variables.
@@ -35,7 +35,7 @@ This command returns all the available server variables.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -47,8 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -56,9 +55,9 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableServerVariablesResult
+### System.String
 
 ## NOTES
-**List-AzApplicationGatewayAvailableServerVariables** is an alias for the **Get-AzApplicationGatewayAvailableServerVariables** cmdlet.
+**List-AzApplicationGatewayAvailableServerVariable** is an alias for the **Get-AzApplicationGatewayAvailableServerVariable** cmdlet.
 
 ## RELATED LINKS

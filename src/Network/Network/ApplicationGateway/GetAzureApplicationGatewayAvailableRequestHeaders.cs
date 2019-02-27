@@ -24,7 +24,7 @@ using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableRequestHeader"), OutputType(typeof(PSApplicationGatewayAvailableRequestHeadersResult))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableRequestHeader"), OutputType(typeof(string))]
     [Alias("List-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableRequestHeader")]
     public class GetAzureApplicationGatewayAvailableRequestHeaders : ApplicationGatewayBaseCmdlet
     {

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/update-azimage
@@ -12,9 +12,22 @@ Updates an image.
 
 ## SYNTAX
 
+### ObjectParameter (Default)
 ```
-Update-AzImage [-ResourceGroupName] <String> [-ImageName] <String> [-Image] <PSImage> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzImage [-Image] <PSImage> [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DefaultParameter
+```
+Update-AzImage [-ResourceGroupName] <String> [-ImageName] <String> [[-Image] <PSImage>] [-Tag <Hashtable>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdParameter
+```
+Update-AzImage [-ResourceId] <String> [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,9 +39,9 @@ Currently, only the Tags can be updated.
 ### Example 1
 ```
 PS C:\> $image = Get-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' 
-PS C:\> $image.Tags = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]";
-PS C:\> $image.Tags.Add("key1", "val1");
-PS C:\> Update-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' -Image $image;
+PS C:\> $image.Tags = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
+PS C:\> $image.Tags.Add("key1", "val1")
+PS C:\> Update-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' -Image $image
 ```
 
 This command updates the Tag value of the existing image 'Image01' in the resource group 'ResourceGroup01'.
@@ -36,7 +49,7 @@ This command updates the Tag value of the existing image 'Image01' in the resour
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background
+Run cmdlet in the background.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -70,11 +83,23 @@ Specifies a local image object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
-Parameter Sets: (All)
+Parameter Sets: ObjectParameter
 Aliases:
 
 Required: True
-Position: 3
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
+Parameter Sets: DefaultParameter
+Aliases:
+
+Required: False
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -85,11 +110,11 @@ Specifies the name of an image.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameter
 Aliases: Name
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -100,11 +125,41 @@ Specifies the name of a resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameter
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource Id for the image
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameter
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

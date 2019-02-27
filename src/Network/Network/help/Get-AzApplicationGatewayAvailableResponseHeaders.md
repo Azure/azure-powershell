@@ -1,30 +1,30 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayavailableresponseheaders
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayavailableresponseheader
 schema: 2.0.0
 ---
 
-# Get-AzApplicationGatewayAvailableResponseHeaders
+# Get-AzApplicationGatewayAvailableResponseHeader
 
 ## SYNOPSIS
-Get all available response headers for application gateway.
+Gets all available response headers for application gateway.
 
 ## SYNTAX
 
 ```
-Get-AzApplicationGatewayAvailableResponseHeaders [-DefaultProfile <IAzureContextContainer>]
+Get-AzApplicationGatewayAvailableResponseHeader [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzApplicationGatewayAvailableResponseHeaders cmdlet gets all available response headers for application gateway.
+The **Get-AzApplicationGatewayAvailableResponseHeader** cmdlet gets all available response headers for application gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\>$availableResponseHeaders = Get-AzApplicationGatewayAvailableResponseHeaders
+PS C:\> $availableResponseHeaders = Get-AzApplicationGatewayAvailableResponseHeader
 ```
 
 This command returns all the available response headers.
@@ -35,7 +35,7 @@ This command returns all the available response headers.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -47,8 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -56,9 +55,9 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableResponseHeadersResult
+### System.String
 
 ## NOTES
-**List-AzApplicationGatewayAvailableResponseHeaders** is an alias for the **Get-AzApplicationGatewayAvailableResponseHeaders** cmdlet.
+**List-AzApplicationGatewayAvailableResponseHeader** is an alias for the **Get-AzApplicationGatewayAvailableResponseHeader** cmdlet.
 
 ## RELATED LINKS
