@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/DG-suc-03?api-version=2017-05-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25zL0RHLXN1Yy0wMz9hcGktdmVyc2lvbj0yMDE3LTA1LTE1LXByZXZpZXc=",
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-wcus/providers/Microsoft.Automation/automationAccounts/JemalOMSAutomation/softwareUpdateConfigurations/DG-suc-03?api-version=2017-05-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL21tcy13Y3VzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvSmVtYWxPTVNBdXRvbWF0aW9uL3NvZnR3YXJlVXBkYXRlQ29uZmlndXJhdGlvbnMvREctc3VjLTAzP2FwaS12ZXJzaW9uPTIwMTctMDUtMTUtcHJldmlldw==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"updateConfiguration\": {\r\n      \"operatingSystem\": \"Windows\",\r\n      \"windows\": {\r\n        \"includedUpdateClassifications\": \"Security,Critical\",\r\n        \"rebootSetting\": \"Never\"\r\n      },\r\n      \"duration\": \"PT2H\",\r\n      \"azureVirtualMachines\": [\r\n        \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01\",\r\n        \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-02\"\r\n      ]\r\n    },\r\n    \"scheduleInfo\": {\r\n      \"startTime\": \"2019-02-03T14:04:37.7450195-08:00\",\r\n      \"expiryTime\": \"9999-12-31T15:59:59.9999999-08:00\",\r\n      \"expiryTimeOffsetMinutes\": 0.0,\r\n      \"isEnabled\": false,\r\n      \"nextRunOffsetMinutes\": 0.0,\r\n      \"frequency\": \"Onetime\",\r\n      \"creationTime\": \"0001-01-01T00:00:00-08:00\",\r\n      \"lastModifiedTime\": \"0001-01-01T00:00:00-08:00\"\r\n    },\r\n    \"tasks\": {\r\n      \"preTask\": {\r\n        \"source\": \"preTask\"\r\n      },\r\n      \"postTask\": {\r\n        \"parameters\": {\r\n          \"param1\": \"we made it!\"\r\n        },\r\n        \"source\": \"postTask\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"updateConfiguration\": {\r\n      \"operatingSystem\": \"Windows\",\r\n      \"windows\": {\r\n        \"includedUpdateClassifications\": \"Security,Critical\",\r\n        \"rebootSetting\": \"Never\"\r\n      },\r\n      \"duration\": \"PT2H\",\r\n      \"azureVirtualMachines\": [\r\n        \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/JemalNcusRg/providers/Microsoft.Compute/virtualMachines/JemalUbuntu\"\r\n      ]\r\n    },\r\n    \"scheduleInfo\": {\r\n      \"startTime\": \"2019-02-20T11:29:51.879861-08:00\",\r\n      \"expiryTime\": \"9999-12-31T15:59:59.9999999-08:00\",\r\n      \"expiryTimeOffsetMinutes\": 0.0,\r\n      \"isEnabled\": false,\r\n      \"nextRunOffsetMinutes\": 0.0,\r\n      \"frequency\": \"Onetime\",\r\n      \"creationTime\": \"0001-01-01T00:00:00-08:00\",\r\n      \"lastModifiedTime\": \"0001-01-01T00:00:00-08:00\"\r\n    },\r\n    \"tasks\": {\r\n      \"preTask\": {\r\n        \"source\": \"preTask\"\r\n      },\r\n      \"postTask\": {\r\n        \"parameters\": {\r\n          \"param1\": \"we made it!\"\r\n        },\r\n        \"source\": \"postTask\"\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1381193e-d09b-4054-9ba4-91fa8a00ab83"
+          "22468bea-1e1f-44d6-8261-9981d5cbd4bb"
         ],
         "Accept-Language": [
           "en-US"
@@ -16,16 +16,16 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.1.0"
         ],
         "x-ms-activity-id": [
-          "c9ae1b57-106b-4e42-b4e5-e72b94563102"
+          "f0f3ded6-37dd-469d-b389-9bf3fae5961f"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "1188"
+          "1044"
         ]
       },
       "ResponseHeaders": {
@@ -36,16 +36,16 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/DG-suc-03?api-version=2017-05-15-preview"
+          "https://management.azure.com/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-wcus/providers/Microsoft.Automation/automationAccounts/JemalOMSAutomation/softwareUpdateConfigurations/DG-suc-03?api-version=2017-05-15-preview"
         ],
         "x-ms-request-id": [
-          "c9ae1b57-106b-4e42-b4e5-e72b94563102"
+          "f0f3ded6-37dd-469d-b389-9bf3fae5961f"
         ],
         "x-ms-location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/DG-suc-03?api-version=2017-05-15-preview"
+          "https://management.azure.com/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-wcus/providers/Microsoft.Automation/automationAccounts/JemalOMSAutomation/softwareUpdateConfigurations/DG-suc-03?api-version=2017-05-15-preview"
         ],
         "ocp-location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/DG-suc-03?api-version=2017-05-15-preview"
+          "https://management.azure.com/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-wcus/providers/Microsoft.Automation/automationAccounts/JemalOMSAutomation/softwareUpdateConfigurations/DG-suc-03?api-version=2017-05-15-preview"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -63,19 +63,19 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "9bed9c64-764c-4a8f-b37a-2e76e11b42c0"
+          "671837a7-5e39-4aa6-bb26-a695e2f3e181"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190203T215439Z:9bed9c64-764c-4a8f-b37a-2e76e11b42c0"
+          "WESTUS2:20190220T192229Z:671837a7-5e39-4aa6-bb26-a695e2f3e181"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 03 Feb 2019 21:54:39 GMT"
+          "Wed, 20 Feb 2019 19:22:29 GMT"
         ],
         "Content-Length": [
-          "1580"
+          "1460"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -84,17 +84,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/DG-suc-03\",\r\n  \"name\": \"DG-suc-03\",\r\n  \"type\": null,\r\n  \"properties\": {\r\n    \"updateConfiguration\": {\r\n      \"operatingSystem\": \"Windows\",\r\n      \"windows\": {\r\n        \"includedUpdateClassifications\": \"Critical, Security\",\r\n        \"excludedKbNumbers\": null,\r\n        \"includedKbNumbers\": null,\r\n        \"rebootSetting\": \"Never\",\r\n        \"IsInvalidKbNumbers\": false\r\n      },\r\n      \"linux\": null,\r\n      \"targets\": null,\r\n      \"duration\": \"PT2H\",\r\n      \"azureVirtualMachines\": [\r\n        \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01\",\r\n        \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-02\"\r\n      ],\r\n      \"nonAzureComputerNames\": null\r\n    },\r\n    \"scheduleInfo\": {\r\n      \"description\": null,\r\n      \"startTime\": \"2019-02-03T14:04:00-08:00\",\r\n      \"startTimeOffsetMinutes\": 0.0,\r\n      \"expiryTime\": \"2019-02-03T14:04:00-08:00\",\r\n      \"expiryTimeOffsetMinutes\": 0.0,\r\n      \"isEnabled\": true,\r\n      \"nextRun\": \"2019-02-03T14:04:00-08:00\",\r\n      \"nextRunOffsetMinutes\": 0.0,\r\n      \"interval\": null,\r\n      \"frequency\": \"OneTime\",\r\n      \"creationTime\": \"2019-02-03T13:54:38.76-08:00\",\r\n      \"lastModifiedTime\": \"2019-02-03T13:54:38.76-08:00\",\r\n      \"timeZone\": \"UTC\",\r\n      \"advancedSchedule\": null\r\n    },\r\n    \"provisioningState\": \"Provisioning\",\r\n    \"createdBy\": \"{scrubbed}\",\r\n    \"error\": null,\r\n    \"tasks\": {\r\n      \"preTask\": {\r\n        \"source\": \"preTask\",\r\n        \"parameters\": {}\r\n      },\r\n      \"postTask\": {\r\n        \"source\": \"postTask\",\r\n        \"parameters\": {\r\n          \"param1\": \"we made it!\"\r\n        }\r\n      }\r\n    },\r\n    \"creationTime\": \"2018-11-06T15:49:30.143-08:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2019-02-03T13:54:39.54-08:00\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-wcus/providers/Microsoft.Automation/automationAccounts/JemalOMSAutomation/softwareUpdateConfigurations/DG-suc-03\",\r\n  \"name\": \"DG-suc-03\",\r\n  \"type\": null,\r\n  \"properties\": {\r\n    \"updateConfiguration\": {\r\n      \"operatingSystem\": \"Windows\",\r\n      \"windows\": {\r\n        \"includedUpdateClassifications\": \"Critical, Security\",\r\n        \"excludedKbNumbers\": null,\r\n        \"includedKbNumbers\": null,\r\n        \"rebootSetting\": \"Never\",\r\n        \"IsInvalidKbNumbers\": false\r\n      },\r\n      \"linux\": null,\r\n      \"targets\": null,\r\n      \"duration\": \"PT2H\",\r\n      \"azureVirtualMachines\": [\r\n        \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/JemalNcusRg/providers/Microsoft.Compute/virtualMachines/JemalUbuntu\"\r\n      ],\r\n      \"nonAzureComputerNames\": null\r\n    },\r\n    \"scheduleInfo\": {\r\n      \"description\": null,\r\n      \"startTime\": \"2019-02-20T11:29:00-08:00\",\r\n      \"startTimeOffsetMinutes\": 0.0,\r\n      \"expiryTime\": \"2019-02-20T11:29:00-08:00\",\r\n      \"expiryTimeOffsetMinutes\": 0.0,\r\n      \"isEnabled\": true,\r\n      \"nextRun\": \"2019-02-20T11:29:00-08:00\",\r\n      \"nextRunOffsetMinutes\": 0.0,\r\n      \"interval\": null,\r\n      \"frequency\": \"OneTime\",\r\n      \"creationTime\": \"2019-02-20T11:22:28.8133333-08:00\",\r\n      \"lastModifiedTime\": \"2019-02-20T11:22:28.8133333-08:00\",\r\n      \"timeZone\": \"UTC\",\r\n      \"advancedSchedule\": null\r\n    },\r\n    \"provisioningState\": \"Provisioning\",\r\n    \"createdBy\": \"{scrubbed}\",\r\n    \"error\": null,\r\n    \"tasks\": {\r\n      \"preTask\": {\r\n        \"source\": \"preTask\",\r\n        \"parameters\": {}\r\n      },\r\n      \"postTask\": {\r\n        \"source\": \"postTask\",\r\n        \"parameters\": {\r\n          \"param1\": \"we made it!\"\r\n        }\r\n      }\r\n    },\r\n    \"creationTime\": \"2019-02-20T11:22:28.8466667-08:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2019-02-20T11:22:29.58-08:00\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/DG-suc-03?api-version=2017-05-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25zL0RHLXN1Yy0wMz9hcGktdmVyc2lvbj0yMDE3LTA1LTE1LXByZXZpZXc=",
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-wcus/providers/Microsoft.Automation/automationAccounts/JemalOMSAutomation/softwareUpdateConfigurations/DG-suc-03?api-version=2017-05-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL21tcy13Y3VzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvSmVtYWxPTVNBdXRvbWF0aW9uL3NvZnR3YXJlVXBkYXRlQ29uZmlndXJhdGlvbnMvREctc3VjLTAzP2FwaS12ZXJzaW9uPTIwMTctMDUtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a13c4ed1-81b4-4d9f-93c3-c4ae0e0c5fc8"
+          "ada2c9a6-b820-41b6-8d8b-ca32771410f6"
         ],
         "Accept-Language": [
           "en-US"
@@ -103,10 +103,10 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.1.0"
         ],
         "x-ms-activity-id": [
-          "1581380b-9499-4343-b66a-670f217a741d"
+          "41583a0a-3942-4512-9cdd-9ec9dde5d160"
         ]
       },
       "ResponseHeaders": {
@@ -117,7 +117,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1581380b-9499-4343-b66a-670f217a741d"
+          "41583a0a-3942-4512-9cdd-9ec9dde5d160"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -135,19 +135,19 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "0e83b6ad-85d0-46e5-96cb-9e9159601344"
+          "bf657391-697c-49f9-9b9b-4cced4eaa2d7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190203T215439Z:0e83b6ad-85d0-46e5-96cb-9e9159601344"
+          "WESTUS2:20190220T192229Z:bf657391-697c-49f9-9b9b-4cced4eaa2d7"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 03 Feb 2019 21:54:39 GMT"
+          "Wed, 20 Feb 2019 19:22:29 GMT"
         ],
         "Content-Length": [
-          "1555"
+          "1812"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -156,12 +156,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/DG-suc-03\",\r\n  \"name\": \"DG-suc-03\",\r\n  \"type\": null,\r\n  \"properties\": {\r\n    \"updateConfiguration\": {\r\n      \"operatingSystem\": \"Windows\",\r\n      \"windows\": {\r\n        \"includedUpdateClassifications\": \"Critical, Security\",\r\n        \"excludedKbNumbers\": null,\r\n        \"includedKbNumbers\": null,\r\n        \"rebootSetting\": \"Never\",\r\n        \"IsInvalidKbNumbers\": false\r\n      },\r\n      \"linux\": null,\r\n      \"targets\": null,\r\n      \"duration\": \"PT2H\",\r\n      \"azureVirtualMachines\": [\r\n        \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01\",\r\n        \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-02\"\r\n      ],\r\n      \"nonAzureComputerNames\": null\r\n    },\r\n    \"scheduleInfo\": {\r\n      \"description\": null,\r\n      \"startTime\": \"2018-11-06T15:59:00-08:00\",\r\n      \"startTimeOffsetMinutes\": 0.0,\r\n      \"expiryTime\": \"2018-11-06T15:59:00-08:00\",\r\n      \"expiryTimeOffsetMinutes\": 0.0,\r\n      \"isEnabled\": true,\r\n      \"nextRun\": null,\r\n      \"nextRunOffsetMinutes\": 0.0,\r\n      \"interval\": null,\r\n      \"frequency\": \"OneTime\",\r\n      \"creationTime\": \"2018-11-06T15:49:29.3-08:00\",\r\n      \"lastModifiedTime\": \"2018-11-06T15:49:29.3-08:00\",\r\n      \"timeZone\": \"UTC\",\r\n      \"advancedSchedule\": null\r\n    },\r\n    \"provisioningState\": \"Provisioning\",\r\n    \"createdBy\": \"{scrubbed}\",\r\n    \"error\": null,\r\n    \"tasks\": {\r\n      \"preTask\": {\r\n        \"source\": \"preTask\",\r\n        \"parameters\": {}\r\n      },\r\n      \"postTask\": {\r\n        \"source\": \"postTask\",\r\n        \"parameters\": {\r\n          \"param1\": \"we made it!\"\r\n        }\r\n      }\r\n    },\r\n    \"creationTime\": \"2018-11-06T15:49:30.143-08:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2019-02-03T13:54:39.54-08:00\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-wcus/providers/Microsoft.Automation/automationAccounts/JemalOMSAutomation/softwareUpdateConfigurations/DG-suc-03\",\r\n  \"name\": \"DG-suc-03\",\r\n  \"type\": null,\r\n  \"properties\": {\r\n    \"updateConfiguration\": {\r\n      \"operatingSystem\": \"Windows\",\r\n      \"windows\": {\r\n        \"includedUpdateClassifications\": \"Critical, Security\",\r\n        \"excludedKbNumbers\": null,\r\n        \"includedKbNumbers\": null,\r\n        \"rebootSetting\": \"Never\",\r\n        \"IsInvalidKbNumbers\": false\r\n      },\r\n      \"linux\": null,\r\n      \"targets\": null,\r\n      \"duration\": \"PT2H\",\r\n      \"azureVirtualMachines\": [\r\n        \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/JemalNcusRg/providers/Microsoft.Compute/virtualMachines/JemalUbuntu\"\r\n      ],\r\n      \"nonAzureComputerNames\": null\r\n    },\r\n    \"scheduleInfo\": {\r\n      \"description\": null,\r\n      \"startTime\": \"2019-02-20T11:29:00-08:00\",\r\n      \"startTimeOffsetMinutes\": 0.0,\r\n      \"expiryTime\": \"2019-02-20T11:29:00-08:00\",\r\n      \"expiryTimeOffsetMinutes\": 0.0,\r\n      \"isEnabled\": true,\r\n      \"nextRun\": \"2019-02-20T11:29:00-08:00\",\r\n      \"nextRunOffsetMinutes\": 0.0,\r\n      \"interval\": null,\r\n      \"frequency\": \"OneTime\",\r\n      \"creationTime\": \"2019-02-20T11:22:28.8133333-08:00\",\r\n      \"lastModifiedTime\": \"2019-02-20T11:22:28.8133333-08:00\",\r\n      \"timeZone\": \"UTC\",\r\n      \"advancedSchedule\": null\r\n    },\r\n    \"provisioningState\": \"Failed\",\r\n    \"createdBy\": \"{scrubbed}\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": \"You have requested to create an update configuration on a machine that is not registered for Update Management.  Assure that the machine is registered for Update Management.  Machine Name(s) or Id(s): /subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/jemalncusrg/providers/Microsoft.Compute/virtualMachines/JemalUbuntu.\"\r\n    },\r\n    \"tasks\": {\r\n      \"preTask\": {\r\n        \"source\": \"preTask\",\r\n        \"parameters\": {}\r\n      },\r\n      \"postTask\": {\r\n        \"source\": \"postTask\",\r\n        \"parameters\": {\r\n          \"param1\": \"we made it!\"\r\n        }\r\n      }\r\n    },\r\n    \"creationTime\": \"2019-02-20T11:22:28.8466667-08:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2019-02-20T11:22:29.58-08:00\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d"
+    "SubscriptionId": "cd45f23b-b832-4fa4-a434-1bf7e6f14a5a"
   }
 }

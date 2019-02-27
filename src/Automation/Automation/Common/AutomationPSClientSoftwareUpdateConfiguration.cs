@@ -59,6 +59,21 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
                 }
 
+                IList<Sdk.NonAzureQueryProperties> nonAzureQueries = null;
+                if (updateConfig.Targets != null && updateConfig.Targets.NonAzureQueries != null && updateConfig.Targets.NonAzureQueries.Count > 0)
+                {
+                    nonAzureQueries = new List<Sdk.NonAzureQueryProperties>();
+                    foreach (var query in updateConfig.Targets.NonAzureQueries)
+                    {
+                        var nonAzureQueryProperty = new Sdk.NonAzureQueryProperties
+                        {
+                           FunctionAlias = query.FunctionAlias,
+                           WorkspaceId = query.WorkspaceResourceId
+                        };
+                        nonAzureQueries.Add(nonAzureQueryProperty);
+                    }
+                }
+
                 var sucParameters = new Sdk.SoftwareUpdateConfiguration()
                 {
                     ScheduleInfo = new Sdk.ScheduleProperties()
@@ -98,7 +113,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         ? null
                         : new Sdk.TargetProperties
                         {
-                            AzureQueries = azureQueries
+                            AzureQueries = azureQueries,
+                            NonAzureQueries = nonAzureQueries
                         }
                     },
                     Tasks = configuration.Tasks == null ? null : new Sdk.SoftwareUpdateConfigurationTasks
