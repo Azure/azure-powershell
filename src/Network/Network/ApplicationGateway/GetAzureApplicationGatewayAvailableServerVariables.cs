@@ -24,8 +24,8 @@ using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableServerVariables"), OutputType(typeof(PSApplicationGatewayAvailableServerVariablesResult))]
-    [Alias("List-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableServerVariables")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableServerVariable"), OutputType(typeof(PSApplicationGatewayAvailableServerVariablesResult))]
+    [Alias("List-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableServerVariable")]
     public class GetAzureApplicationGatewayAvailableServerVariables : ApplicationGatewayBaseCmdlet
     {
         public override void ExecuteCmdlet()

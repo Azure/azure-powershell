@@ -1531,7 +1531,7 @@ function Test-ApplicationGatewayCRUDSubItems2
 
 function Test-AvailableServerVariables
 {
-	$result = Get-AzApplicationGatewayAvailableServerVariables
+	$result = Get-AzApplicationGatewayAvailableServerVariable
 
 	Assert-NotNull $result
 	Assert-True { $result.Count -gt 0 }
@@ -1539,7 +1539,7 @@ function Test-AvailableServerVariables
 
 function Test-AvailableRequestHeaders
 {
-	$result = Get-AzApplicationGatewayAvailableRequestHeaders
+	$result = Get-AzApplicationGatewayAvailableRequestHeader
 
 	Assert-NotNull $result
 	Assert-True { $result.Count -gt 0 }
@@ -1547,7 +1547,7 @@ function Test-AvailableRequestHeaders
 
 function Test-AvailableResponseHeaders
 {
-	$result = Get-AzApplicationGatewayAvailableResponseHeaders
+	$result = Get-AzApplicationGatewayAvailableResponseHeader
 
 	Assert-NotNull $result
 	Assert-True { $result.Count -gt 0 }
