@@ -19,17 +19,11 @@ Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-ResourceGroupName] <St
  [<CommonParameters>]
 ```
 
-### PolicyByDatabaseObjectSet
-```
-Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -AzureInstanceDatabase <AzureSqlManagedDatabaseModel>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### PolicyByDeletedDatabaseObjectSet
+### PolicyByInputObjectSet
 ```
 Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy
- -AzureInstanceDeletedDatabase <AzureSqlDeletedManagedDatabaseBackupModel>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -AzureInstanceDatabaseObject <AzureSqlManagedDatabaseBaseModel> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### PolicyByResourceIdSet
@@ -60,28 +54,13 @@ This command gets the short term retention policy for database01 via piping in a
 
 ## PARAMETERS
 
-### -AzureInstanceDatabase
-The database object to get the policy for.
+### -AzureInstanceDatabaseObject
+The live or deleted database object to get/set the policy for.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
-Parameter Sets: PolicyByDatabaseObjectSet
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseBaseModel
+Parameter Sets: PolicyByInputObjectSet
 Aliases: AzureSqlInstanceDatabase
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -AzureInstanceDeletedDatabase
-The deleted database object to get the policy for.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model.AzureSqlDeletedManagedDatabaseBackupModel
-Parameter Sets: PolicyByDeletedDatabaseObjectSet
-Aliases: AzureSqlInstanceDeletedDatabase
 
 Required: True
 Position: Named

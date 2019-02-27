@@ -14,28 +14,21 @@ Sets a backup short term retention policy.
 
 ### PolicyByResourceInstanceDatabaseSet (Default)
 ```
-Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> [-ResourceGroupName] <String>
- [-InstanceName] <String> [-DatabaseName] <String> [[-DeletionDate] <DateTime>]
+Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-ResourceGroupName] <String> [-InstanceName] <String>
+ [-DatabaseName] <String> [[-DeletionDate] <DateTime>] [-RetentionDays] <Int32>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### PolicyByDatabaseObjectSet
+### PolicyByInputObjectSet
 ```
-Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32>
- -AzureInstanceDatabase <AzureSqlManagedDatabaseModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### PolicyByDeletedDatabaseObjectSet
-```
-Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32>
- -AzureInstanceDeletedDatabase <AzureSqlDeletedManagedDatabaseBackupModel>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy
+ -AzureInstanceDatabaseObject <AzureSqlManagedDatabaseBaseModel> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyByResourceIdSet
 ```
-Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> -ResourceId <String>
+Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -61,28 +54,13 @@ This command sets the short term retention policy for database01 to 35 days via 
 
 ## PARAMETERS
 
-### -AzureInstanceDatabase
-The database object to get the policy for.
+### -AzureInstanceDatabaseObject
+The live or deleted database object to get/set the policy for.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
-Parameter Sets: PolicyByDatabaseObjectSet
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseBaseModel
+Parameter Sets: PolicyByInputObjectSet
 Aliases: AzureSqlInstanceDatabase
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -AzureInstanceDeletedDatabase
-The deleted database object to get the policy for.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model.AzureSqlDeletedManagedDatabaseBackupModel
-Parameter Sets: PolicyByDeletedDatabaseObjectSet
-Aliases: AzureSqlInstanceDeletedDatabase
 
 Required: True
 Position: Named
@@ -186,7 +164,7 @@ Days of backup retention.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: PolicyByResourceInstanceDatabaseSet
 Aliases:
 
 Required: True

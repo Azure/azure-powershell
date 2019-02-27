@@ -47,25 +47,25 @@ function Test-ManagedLiveDatabaseShortTermRetentionPolicy
 
  		# Test default parameter set
 		$retention = 28
-		$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $databaseName -RetentionDays $retention
+		$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName -RetentionDays $retention
 		Assert-AreEqual $policy.Count 1
 		Assert-AreEqual $retention $policy.RetentionDays
-		$policy = Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $databaseName
+		$policy = Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName
 		Assert-AreEqual $policy.Count 1
 		Assert-AreEqual $retention $policy.RetentionDays
 
  		# Test InputObject
 		$retention = 21
-		$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -AzureSqlInstanceDatabaseObject $db -RetentionDays $retention
+		$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -AzureInstanceDatabaseObject $db[0] -RetentionDays $retention
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy.RetentionDays
-		$policy = Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -AzureSqlInstanceDatabaseObject $db
+		$policy = Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -AzureInstanceDatabaseObject $db[0]
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy.RetentionDays
 
  		# Test ResourceId
 		$retention = 14
-		$resourceId = $db.ResourceId + "/backupShortTermRetentionPolicies/default"
+		$resourceId = $db.Id + "/backupShortTermRetentionPolicies/default"
 		$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceId $resourceId -RetentionDays $retention
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy.RetentionDays
@@ -119,42 +119,40 @@ function Test-ManagedDeletedDatabaseShortTermRetentionPolicy
 
  		# Test default parameter set.
 		$retention = 35
-		$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $databaseName -RetentionDays $retention
+		$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName -RetentionDays $retention
 		Assert-AreEqual $policy.Count 1
 		Assert-AreEqual $retention $policy.RetentionDays
-		$policy = Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $databaseName
+		$policy = Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName
 		Assert-AreEqual $policy.Count 1
 		Assert-AreEqual $retention $policy.RetentionDays
 
 		# Test remove using all parameters
-		Remove-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $databaseName -Force
-		$all = $managedInstance | Get-AzSqlInstanceDatabase
-		Assert-AreEqual $all.Count 1
+		Remove-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Force
 
 		# Get deleted database
-		$deletedDatabases = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $databaseName 
+		$deletedDatabases = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName 
 
  		# Set retention to 29, test default parameter providing.
 		$retention = 29
-		$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $databaseName -DeletionDate $deletedDatabases[0].DeletionDate -RetentionDays $retention
+		$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName -DeletionDate $deletedDatabases[0].DeletionDate -RetentionDays $retention
 		Assert-AreEqual $policy.Count 1
 		Assert-AreEqual $retention $policy.RetentionDays
-		$policy = Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $databaseName
+		$policy = Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName -DeletionDate $deletedDatabases[0].DeletionDate
 		Assert-AreEqual $policy.Count 1
 		Assert-AreEqual $retention $policy.RetentionDays
 
  		# Test InputObject
 		$retention = 21
-		$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -AzureSqlInstanceDeletedDatabaseObject $deletedDatabases[0] -RetentionDays $retention
+		$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -AzureInstanceDatabaseObject $deletedDatabases[0] -RetentionDays $retention
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy.RetentionDays
-		$policy = Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -AzureSqlInstanceDeletedDatabaseObject $deletedDatabases[0]
+		$policy = Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -AzureInstanceDatabaseObject $deletedDatabases[0]
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy.RetentionDays
 
  		# Test ResourceId
 		$retention = 14
-		$resourceId = $deletedDatabases[0].ResourceId + "/backupShortTermRetentionPolicies/default"
+		$resourceId = $deletedDatabases[0].Id + "/backupShortTermRetentionPolicies/default"
 		$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceId $resourceId -RetentionDays $retention
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy.RetentionDays
