@@ -13,12 +13,12 @@ Disables the advanced threat protection policy for a storage account.
 ## SYNTAX
 
 ```
-DIsable-AzSecurityAdvancedThreatProtection -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Disable-AzSecurityAdvancedThreatProtection -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The `Disable-AzSecurityThreatProtection` cmdlet disables the threat protetion policy for a storage account.
+The `Disable-AzSecurityAdvancedThreatProtection` cmdlet disables the threat protetion policy for a storage account.
 To use this cmdlet, specify the *ResourceId* parameter.
 
 ## EXAMPLES
