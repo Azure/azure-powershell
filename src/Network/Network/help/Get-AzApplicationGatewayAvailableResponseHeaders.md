@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayavailableresponseheaders
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayavailableresponseheader
 schema: 2.0.0
 ---
 
-# Get-AzApplicationGatewayAvailableResponseHeaders
+# Get-AzApplicationGatewayAvailableResponseHeader
 
 ## SYNOPSIS
 Gets all available response headers for application gateway.
@@ -13,18 +13,18 @@ Gets all available response headers for application gateway.
 ## SYNTAX
 
 ```
-Get-AzApplicationGatewayAvailableResponseHeaders [-DefaultProfile <IAzureContextContainer>]
+Get-AzApplicationGatewayAvailableResponseHeader [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzApplicationGatewayAvailableResponseHeaders** cmdlet gets all available response headers for application gateway.
+The **Get-AzApplicationGatewayAvailableResponseHeader** cmdlet gets all available response headers for application gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> $availableResponseHeaders = Get-AzApplicationGatewayAvailableResponseHeaders
+PS C:\> $availableResponseHeaders = Get-AzApplicationGatewayAvailableResponseHeader
 ```
 
 This command returns all the available response headers.
@@ -58,6 +58,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ## NOTES
-**List-AzApplicationGatewayAvailableResponseHeaders** is an alias for the **Get-AzApplicationGatewayAvailableResponseHeaders** cmdlet.
+**List-AzApplicationGatewayAvailableResponseHeader** is an alias for the **Get-AzApplicationGatewayAvailableResponseHeader** cmdlet.
 
 ## RELATED LINKS
