@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using Microsoft.Azure.Commands.Blueprint.Common;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -23,10 +25,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
     public class TestController : RMTestBase
     {
         private readonly EnvironmentSetupHelper _helper;
-
-        private const string TenantIdKey = "TenantId";
-        private const string DomainKey = "Domain";
-        private const string SubscriptionIdKey = "SubscriptionId";
 
         public BlueprintManagementClient BlueprintManagementClient { get; private set; }
         public ServiceClientCredentials ClientCredentials { get; private set; }
@@ -121,7 +119,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
 
         private static BlueprintManagementClient GetBlueprintManagementClient(MockContext context)
         {
-            return context.GetServiceClient<BlueprintManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            var handler = new DelegatingHandler[] { new ApiExpandHandler()};
+
+            return context.GetServiceClient<BlueprintManagementClient>(TestEnvironmentFactory.GetTestEnvironment(), false, handler);
         }
 
         private static GraphRbacManagementClient GetGraphRbacManagementClient(MockContext context)
