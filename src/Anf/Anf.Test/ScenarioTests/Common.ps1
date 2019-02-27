@@ -129,13 +129,3 @@ function Clean-ResourceGroup($rgname)
 {
 	Remove-AzureRmResourceGroup -Name $rgname -Force
 }
-
-
-<#
-.SYNOPSIS
-Create a random string of given length with the provided prefix
-#>
-function RandomString($prefix, $size)
-{
-    return $prefix + -join ((65..90) + (97..122) | Get-Random -Count $size | % {[char]$_})
-}

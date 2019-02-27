@@ -21,11 +21,11 @@ function Test-VolumeCrud
 	$currentSub = (Get-AzureRmContext).Subscription	
 	$subsid = $currentSub.SubscriptionId
 
-	$resourceGroup = RandomString "pws-sdk-tests-rg" 5
-	$accName = RandomString "pws-sdk-acc-2" 5
-	$poolName = RandomString "pws-sdk-pool-1" 5
-	$volName1 = RandomString "pws-sdk-vol-1" 5
-	$volName2 = RandomString "pws-sdk-vol-2" 5
+	$resourceGroup = "pws-sdk-tests-rg-1"
+	$accName = "pws-sdk-acc-2"
+	$poolName = "pws-sdk-pool-1"
+	$volName1 = "pws-sdk-vol-1"
+	$volName2 = "pws-sdk-vol-2"
 	$gibibyte = 1024 * 1024 * 1024
 	$usageThreshold = 100 * $gibibyte
 	$doubleUsage = 2 * $usageThreshold

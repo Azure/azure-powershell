@@ -18,10 +18,10 @@ Test Pool CRUD operations
 #>
 function Test-PoolCrud
 {
-	$resourceGroup = RandomString "pws-sdk-tests-rg-" 5
-	$accName = RandomString "pws-sdk-acc-1" 5
-	$poolName1 = RandomString "pws-sdk-pool-1" 5
-	$poolName2 = RandomString "pws-sdk-pool-2" 5
+	$resourceGroup = "pws-sdk-tests-rg-1"
+	$accName = "pws-sdk-acc-1"
+	$poolName1 = "pws-sdk-pool-1" 
+	$poolName2 = "pws-sdk-pool-2" 
     $resourceLocation = "westus2"
 	$standardPoolSize = 4398046511104
 	$serviceLevel = "Premium"
