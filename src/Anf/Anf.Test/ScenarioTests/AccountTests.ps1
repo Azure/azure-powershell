@@ -18,9 +18,9 @@ Test Account CRUD operations
 #>
 function Test-AccountCrud
 {
-	$resourceGroup = RandomString "pws-sdk-tests-rg-" 5
-	$accName1 = RandomString "pws-sdk-acc-1" 5
-	$accName2 = RandomString "pws-sdk-acc-2" 5
+	$resourceGroup = "pws-sdk-tests-rg-1"
+	$accName1 = "pws-sdk-acc-1"
+	$accName2 = "pws-sdk-acc-2"
     $resourceLocation = "westus2"
 
 	try

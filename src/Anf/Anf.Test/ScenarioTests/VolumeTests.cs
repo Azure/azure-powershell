@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Anf.Test.ScenarioTests.ScenarioTest
@@ -27,7 +26,7 @@ namespace Microsoft.Azure.Commands.Anf.Test.ScenarioTests.ScenarioTest
             _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVolumeCrud()

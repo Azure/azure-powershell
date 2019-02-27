@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Anf.Test.ScenarioTests.ScenarioTest

@@ -21,12 +21,12 @@ function Test-SnapshotCrud
 	$currentSub = (Get-AzureRmContext).Subscription	
 	$subsid = $currentSub.SubscriptionId
 
-	$resourceGroup = RandomString "pws-sdk-tests-rg" 5
-	$accName = RandomString "pws-sdk-acc-2" 5
-	$poolName = RandomString "pws-sdk-pool-1" 5
-	$volName = RandomString "pws-sdk-vol-1" 5
-	$snName1 = RandomString "pws-sdk-snapshot-1" 5
-	$snName2 = RandomString "pws-sdk-snapshot-2" 5
+	$resourceGroup = "pws-sdk-tests-rg-1"
+	$accName = "pws-sdk-acc-2"
+	$poolName = "pws-sdk-pool-1"
+	$volName = "pws-sdk-vol-1"
+	$snName1 = "pws-sdk-snapshot-1"
+	$snName2 = "pws-sdk-snapshot-2"
 	$gibibyte = 1024 * 1024 * 1024
 	$usageThreshold = 100 * $gibibyte
 	$doubleUsage = 2 * $usageThreshold
