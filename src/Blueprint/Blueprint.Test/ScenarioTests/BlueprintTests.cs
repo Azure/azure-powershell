@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetBlueprintWithDefinitionLocationAndName");
         }
 
-        /*[Fact]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBlueprintWithDefinitionLocationNameAndVersion()
         {
@@ -55,6 +55,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
         public void TestGetBlueprintWithDefinitionLocationNameAndLatestPublished()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetBlueprintWithDefinitionLocationNameAndLatestPublished");
-        }*/
+        }
     }
 }
