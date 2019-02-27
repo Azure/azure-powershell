@@ -6,13 +6,13 @@
 
   <ItemGroup>
     <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(PackagesDirectory)Hyak.Common.1.0.3\lib\net45\Hyak.Common.dll</HintPath>
+      <HintPath>$(PackagesDirectory)Hyak.Common.1.2.2\lib\net452\Hyak.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(PackagesDirectory)Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+      <HintPath>$(PackagesDirectory)Microsoft.Azure.Common.2.2.1\lib\net452\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(PackagesDirectory)Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+      <HintPath>$(PackagesDirectory)Microsoft.Azure.Common.2.2.1\lib\net452\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
   </ItemGroup>
 
