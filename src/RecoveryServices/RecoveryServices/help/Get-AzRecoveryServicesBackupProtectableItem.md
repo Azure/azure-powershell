@@ -21,14 +21,15 @@ Get-AzRecoveryServicesBackupProtectableItem [[-Container] <ContainerBase>] [-Wor
 ### FilterParamSet
 ```
 Get-AzRecoveryServicesBackupProtectableItem [[-Container] <ContainerBase>] [-WorkloadType] <WorkloadType>
- [[-ItemType] <ProtectableItemType>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [[-ItemType] <ProtectableItemType>] [-Name <String>] [-ServerName <String>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### IdParamSet
 ```
-Get-AzRecoveryServicesBackupProtectableItem [-ParentID] <String> [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRecoveryServicesBackupProtectableItem [-ParentID] <String> [[-ItemType] <ProtectableItemType>]
+ [-Name <String>] [-ServerName <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,12 +84,27 @@ Protectable Item type.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ProtectableItemType
-Parameter Sets: FilterParamSet
+Parameter Sets: FilterParamSet, IdParamSet
 Aliases:
 Accepted values: SQLDataBase, SQLInstance, SQLAvailabilityGroup
 
 Required: False
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name
+
+```yaml
+Type: System.String
+Parameter Sets: FilterParamSet, IdParamSet
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -106,6 +122,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+Server Name
+
+```yaml
+Type: System.String
+Parameter Sets: FilterParamSet, IdParamSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
