@@ -35,12 +35,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Set this flag to ignore case on the pattern")]
-        public bool IgnoreCase { get; set; }
+        public SwitchParameter IgnoreCase { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Set this flag to negate the condition validation")]
-        public bool Negate { get; set; }
+        public SwitchParameter Negate { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -53,10 +53,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Variable = this.Variable,
                 Pattern = this.Pattern,
-                IgnoreCase = this.IgnoreCase,
-                Negate = this.Negate
+                IgnoreCase = (this.IgnoreCase.IsPresent) ? true : false,
+                Negate = (this.Negate.IsPresent) ? true : false
             };
-
             return rewriteRuleCondition;
         }
     }
