@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.NetApp" Version="0.9.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.7.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.8.1-preview" />
   </ItemGroup>
 
   <ItemGroup>
