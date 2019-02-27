@@ -113,29 +113,5 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AvailableResponseHeaders");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
-        public void TestAvailableServerVariables()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-AvailableServerVariables"));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
-        public void TestAvailableRequestHeaders()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-AvailableRequestHeaders"));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
-        public void TestAvailableResponseHeaders()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-AvailableResponseHeaders"));
-        }
     }
 }
