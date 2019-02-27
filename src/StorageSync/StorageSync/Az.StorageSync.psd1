@@ -54,7 +54,9 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = @()
+RequiredAssemblies = '.\Microsoft.Azure.Management.StorageSync.dll', 
+               '.\System.Management.dll',
+               '.\System.CodeDom.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -72,7 +74,12 @@ NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Invoke-AzStorageSyncCompatibilityCheck'
+CmdletsToExport = 'Invoke-AzStorageSyncCompatibilityCheck',
+                'New-AzStorageSyncService','Get-AzStorageSyncService','Remove-AzStorageSyncService',
+                'New-AzStorageSyncGroup','Get-AzStorageSyncGroup','Remove-AzStorageSyncGroup',
+                'New-AzStorageSyncCloudEndpoint','Get-AzStorageSyncCloudEndpoint','Remove-AzStorageSyncCloudEndpoint',
+                'New-AzStorageSyncServerEndpoint','Get-AzStorageSyncServerEndpoint','Remove-AzStorageSyncServerEndpoint','Set-AzStorageSyncServerEndpoint','Invoke-AzStorageSyncFileRecall',
+                'Register-AzStorageSyncServer','Unregister-AzStorageSyncServer','Get-AzStorageSyncServer','Reset-AzStorageSyncServerCertificate'
 
 # Variables to export from this module
 # VariablesToExport = @()
