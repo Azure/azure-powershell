@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
                 }
                 else
                 {
-                    results = ModelAdapter.ListDeletedDatabaseBackups(this.ResourceGroupName, this.InstanceName).Where(backup => backup.DatabaseName == DatabaseName).ToList();
+                    results = ModelAdapter.ListDeletedDatabaseBackups(this.ResourceGroupName, this.InstanceName).Where(backup => backup.Name == DatabaseName).ToList();
                 }
             }
             else

@@ -156,11 +156,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
                 return new AzureSqlDeletedManagedDatabaseBackupModel()
                 {
                     ResourceGroupName = resourceGroup,
-                    InstanceName = serverName,
-                    DatabaseName = deletedDatabaseBackup.DatabaseName,
+                    ManagedInstanceName = serverName,
+                    Name = deletedDatabaseBackup.DatabaseName,
                     CreationDate = deletedDatabaseBackup.CreationDate.Value,
                     DeletionDate = deletedDatabaseBackup.DeletionDate.Value,
-                    ResourceId = deletedDatabaseBackup.Id,
+                    Id = deletedDatabaseBackup.Id,
+                    EarliestRestorePoint = deletedDatabaseBackup.EarliestRestoreDate,
                 };
             }).ToList();
         }
@@ -178,11 +179,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
             return new AzureSqlDeletedManagedDatabaseBackupModel()
             {
                 ResourceGroupName = resourceGroup,
-                InstanceName = serverName,
-                DatabaseName = deletedDatabaseBackup.DatabaseName,
+                ManagedInstanceName = serverName,
+                Name = deletedDatabaseBackup.DatabaseName,
                 CreationDate = deletedDatabaseBackup.CreationDate.Value,
                 DeletionDate = deletedDatabaseBackup.DeletionDate.Value,
-                ResourceId = deletedDatabaseBackup.Id,
+                Id = deletedDatabaseBackup.Id,
+                EarliestRestorePoint = deletedDatabaseBackup.EarliestRestoreDate,
             };
         }
     }

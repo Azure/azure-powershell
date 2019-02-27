@@ -13,14 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet;
 using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model;
-using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
@@ -33,10 +30,80 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         OutputType(typeof(AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel))]
     public class SetAzureSqlManagedDatabaseBackupShortTermRetentionPolicy : AzureSqlManagedDatabaseBackupCmdletBase<AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel>
     {
+
+        /// <summary>
+        /// Gets or sets the Database object to get the policy for.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = PolicyByInputObjectSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The live or deleted database object to get/set the policy for.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("AzureSqlInstanceDatabase")]
+        public override AzureSqlManagedDatabaseBaseModel AzureInstanceDatabaseObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Database object to get the policy for.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = PolicyByResourceIdSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The short term retention policy resource Id.")]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = PolicyByResourceServerDatabaseSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the database server to use.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyByResourceServerDatabaseSet,
+            Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the Azure SQL Managed Instance the database is in.")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
+        [ValidateNotNullOrEmpty]
+        public override string InstanceName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the database to use.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyByResourceServerDatabaseSet,
+            Mandatory = true,
+            Position = 2,
+            HelpMessage = "The name of the Azure SQL Instance Database to retrieve backups for.")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", "ResourceGroupName", "InstanceName")]
+        [ValidateNotNullOrEmpty]
+        public override string DatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the deletion date of the database to use.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyByResourceServerDatabaseSet,
+            Mandatory = false,
+            Position = 3,
+            HelpMessage = "The deletion date of the Azure SQL Instance Database to retrieve backups for, with millisecond precision (e.g. 2016-02-23T00:21:22.847Z)")]
+        [ValidateNotNullOrEmpty]
+        public override DateTime? DeletionDate { get; set; }
+        
         /// <summary>
         /// Gets or sets the Week of Year for the Yearly Retention.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(ParameterSetName = PolicyByResourceServerDatabaseSet,
+            Mandatory = true,
             Position = 4,
             HelpMessage = "Days of backup retention.")]
         [ValidateNotNullOrEmpty]

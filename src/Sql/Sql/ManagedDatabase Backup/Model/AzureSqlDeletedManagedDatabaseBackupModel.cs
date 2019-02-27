@@ -13,42 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model
 {
     /// <summary>
     /// Represents an Azure Sql Database restorable deleted database
     /// </summary>
-    public class AzureSqlDeletedManagedDatabaseBackupModel
+    public class AzureSqlDeletedManagedDatabaseBackupModel : AzureSqlManagedDatabaseBaseModel
     {
-        /// <summary>
-        /// Gets or sets the name of the resource group
-        /// </summary>
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the server
-        /// </summary>
-        public string InstanceName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the database
-        /// </summary>
-        public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Gets or sets creation Date
-        /// </summary>
-        public DateTime CreationDate { get; set; }
-
         /// <summary>
         /// Gets or sets deletion Date
         /// </summary>
         public DateTime DeletionDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource ID
-        /// </summary>
-        public string ResourceId { get; set; }
     }
 }

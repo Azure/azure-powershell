@@ -38,43 +38,26 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         protected const string PolicyByResourceServerDatabaseSet = "PolicyByResourceInstanceDatabaseSet";
 
         /// <summary>
-        /// Parameter set for using a Database Input Database Object.
+        /// Parameter set for using a Database Input Object.
         /// </summary>
-        private const string PolicyByDatabaseObjectSet = "PolicyByDatabaseObjectSet";
-
-        /// <summary>
-        /// Parameter set for using a Deleted Database Input Object.
-        /// </summary>
-        private const string PolicyByDeletedDatabaseObjectSet = "PolicyByDeletedDatabaseObjectSet";
+        protected const string PolicyByInputObjectSet = "PolicyByInputObjectSet";
 
         /// <summary>
         /// Parameter set for using a resource Id.
         /// </summary>
-        private const string PolicyByResourceIdSet = "PolicyByResourceIdSet";
+        protected const string PolicyByResourceIdSet = "PolicyByResourceIdSet";
 
         /// <summary>
         /// Gets or sets the Database object to get the policy for.
         /// </summary>
         [Parameter(
-            ParameterSetName = PolicyByDatabaseObjectSet,
+            ParameterSetName = PolicyByInputObjectSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The database object to get the policy for.")]
+            HelpMessage = "The live or deleted database object to get/set the policy for.")]
         [ValidateNotNullOrEmpty]
         [Alias("AzureSqlInstanceDatabase")]
-        public AzureSqlManagedDatabaseModel AzureInstanceDatabase { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Deleted Database object to get the policy for.
-        /// </summary>
-        [Parameter(
-            ParameterSetName = PolicyByDeletedDatabaseObjectSet,
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = "The deleted database object to get the policy for.")]
-        [ValidateNotNullOrEmpty]
-        [Alias("AzureSqlInstanceDeletedDatabase")]
-        public AzureSqlDeletedManagedDatabaseBackupModel AzureInstanceDeletedDatabase { get; set; }
+        public virtual AzureSqlManagedDatabaseBaseModel AzureInstanceDatabaseObject { get; set; }
 
         /// <summary>
         /// Gets or sets the Database object to get the policy for.
@@ -85,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The short term retention policy resource Id.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public virtual string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource group to use.
@@ -109,7 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             HelpMessage = "The name of the Azure SQL Managed Instance the database is in.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string InstanceName { get; set; }
+        public virtual string InstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the database to use.
@@ -120,7 +103,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             HelpMessage = "The name of the Azure SQL Instance Database to retrieve backups for.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", "ResourceGroupName", "InstanceName")]
         [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
+        public virtual string DatabaseName { get; set; }
 
         /// <summary>
         /// Gets or sets the deletion date of the database to use.
@@ -130,8 +113,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             Position = 3,
             HelpMessage = "The deletion date of the Azure SQL Instance Database to retrieve backups for, with millisecond precision (e.g. 2016-02-23T00:21:22.847Z)")]
         [ValidateNotNullOrEmpty]
-        public DateTime? DeletionDate { get; set; }
-
+        public virtual DateTime? DeletionDate { get; set; }
         /// <summary>
         /// Initializes the adapter
         /// </summary>
@@ -143,18 +125,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
 
         public override void ExecuteCmdlet()
         {
-            if (AzureInstanceDatabase != null)
+            if (AzureInstanceDatabaseObject != null)
             {
-                this.ResourceGroupName = AzureInstanceDatabase.ResourceGroupName;
-                this.InstanceName = AzureInstanceDatabase.ManagedInstanceName;
-                this.DatabaseName = AzureInstanceDatabase.Name;
-            }
-            else if (AzureInstanceDeletedDatabase != null)
-            {
-                this.ResourceGroupName = AzureInstanceDeletedDatabase.ResourceGroupName;
-                this.InstanceName = AzureInstanceDeletedDatabase.InstanceName;
-                this.DatabaseName = AzureInstanceDeletedDatabase.DatabaseName;
-                this.DeletionDate = AzureInstanceDeletedDatabase.DeletionDate;
+                this.ResourceGroupName = AzureInstanceDatabaseObject.ResourceGroupName;
+                this.InstanceName = AzureInstanceDatabaseObject.ManagedInstanceName;
+                this.DatabaseName = AzureInstanceDatabaseObject.Name;
+                if (AzureInstanceDatabaseObject is AzureSqlDeletedManagedDatabaseBackupModel)
+                {
+                    this.DeletionDate = ((AzureSqlDeletedManagedDatabaseBackupModel)AzureInstanceDatabaseObject).DeletionDate;
+                }
             }
             else if (!string.IsNullOrEmpty(ResourceId))
             {
@@ -172,7 +151,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         /// rather than just a string, so a consumer could work all the way to the root resource easily.
         /// Leave as a TODO for now, as many other cmdlets consume that class, and I will work on it in separate change.
         /// </summary>
-        private void ParseResourceId()
+        internal void ParseResourceId()
         {
             string[] tokens = ResourceId.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
 
