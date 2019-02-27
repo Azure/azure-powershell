@@ -43,6 +43,16 @@ namespace Commands.Automation.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestCreateAndGetSoftwareUpdateConfigurationWithRebootOnly()
+        {
+            RunPowerShellTest(logger, "Test-CreateAndGetSoftwareUpdateConfigurationWithRebootOnly");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestCreateAndGetSoftwareUpdateConfigurationWithPrePost()
         {
             RunPowerShellTest(logger, "Test-CreateAndGetSoftwareUpdateConfigurationWithPrePost");

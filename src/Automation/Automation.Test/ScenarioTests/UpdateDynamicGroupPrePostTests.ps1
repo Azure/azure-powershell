@@ -12,16 +12,15 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$rg = "mo-resources-eus"
-$aa = "mo-aaa-eus2"
+$rg = "mms-wcus"
+$aa = "JemalOMSAutomation"
 $azureVMIdsW = @(
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01",
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02"
+        "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-wcus/providers/Microsoft.Compute/virtualMachines/JemalCmdlet1",
+        "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-wcus/providers/Microsoft.Compute/virtualMachines/JemalCmdlet2"
     )
 
 $azureVMIdsL = @(
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01",
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-02"
+        "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/JemalNcusRg/providers/Microsoft.Compute/virtualMachines/JemalUbuntu"
     )
 
 $nonAzurecomputers = @("server-01", "server-02")
@@ -60,17 +59,7 @@ function WaitForProvisioningState() {
                                        -StartTime $startTime `
                                        -ForUpdate
 
-    $params =  New-Object 'system.collections.generic.dictionary[string, string]'
-    $params.Add("param1",  "we made it!")
-
-    $preTask = @{
-        source = "preTask"
-    }
-
-    $postTask = @{
-        source = "postTask";
-        parameters = $params
-    }
+    $params = @{"param1"= "we made it!"}
 
     $suc = New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg `
                                                              -AutomationAccountName $aa `
@@ -79,8 +68,9 @@ function WaitForProvisioningState() {
                                                              -AzureVMResourceId $azureVMIdsL `
                                                              -Duration (New-TimeSpan -Hours 2) `
                                                              -IncludedUpdateClassification Security,Critical `
-                                                             -PreTask $preTask `
-                                                             -PostTask $postTask `
+                                                             -PreTaskRunbookName "preTask" `
+                                                             -PostTaskRunbookName "postTask" `
+                                                             -PostTaskRunbookParameter $params `
                                                              -RebootSetting "Never"
 
 
@@ -102,10 +92,42 @@ function WaitForProvisioningState() {
     Assert-AreEqual $sucGet.UpdateConfiguration.Windows.RebootSetting "Never" "Reboot setting is not set to Never"
 }
 
+function Test-CreateAndGetSoftwareUpdateConfigurationWithRebootOnly
+{
+    $name = "DG-suc-03"
+    $startTime = ([DateTime]::Now).AddMinutes(10)
+    $s = New-AzAutomationSchedule -ResourceGroupName $rg `
+                                       -AutomationAccountName $aa `
+                                       -Name $name `
+                                       -Description test-OneTime `
+                                       -OneTime `
+                                       -StartTime $startTime `
+                                       -ForUpdate
+
+    $suc = New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg `
+                                                             -AutomationAccountName $aa `
+                                                             -Schedule $s `
+                                                             -Window `
+                                                             -AzureVMResourceId $azureVMIdsW `
+                                                             -Duration (New-TimeSpan -Hours 2) `
+                                                             -RebootOnly
+
+    Assert-NotNull $suc "New-AzureRmAutomationSoftwareUpdateConfiguration returned null"
+    Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
+
+    $sucGet = Get-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName $rg `
+                                                                -AutomationAccountName $aa `
+                                                                -Name $name
+
+    Assert-NotNull $sucGet "Get-AzureRmAutomationSoftwareUpdateConfiguration returned null"
+    Assert-AreEqual $sucGet.Name $name "Name of created software update configuration didn't match given name"    
+    Assert-AreEqual $sucGet.UpdateConfiguration.Windows.RebootSetting "RebootOnly" "Reboot setting is not set to Never"
+}
+
 function Test-GetSoftwareUpdateConfigurationRunWithPrePost
 {
-    $sucName = 'prePostTest'
-    $sucrId = 'c7040393-1451-4be7-9ed1-999aa747a155'
+    $sucName = 'JemalUDWithPrepost'
+    $sucrId = '63f2a659-2cce-4830-afd8-dcd8b6a0a737'
 
     $sucr = Get-AzAutomationSoftwareUpdateRun  -ResourceGroupName $rg `
                                                              -AutomationAccountName $aa `
@@ -119,7 +141,7 @@ function Test-GetSoftwareUpdateConfigurationRunWithPrePost
     Assert-NotNull $sucr.Tasks.PostTask "PostTask is null"
     Assert-NotNull $sucr.Tasks.PreTask.JobId "PreTask jobId is null"
     Assert-NotNull $sucr.Tasks.PostTask.JobId "PostTask jobId is null"
-    Assert-AreEqual $sucr.Tasks.PostTask.source "postTask" "Post task didn't have the correct source name"
+    Assert-AreEqual $sucr.Tasks.PostTask.source "preTask" "Post task didn't have the correct source name"
     Assert-AreEqual $sucr.Tasks.PostTask.Status "Completed" "Post task didn't have the correct status"
     Assert-AreEqual $sucr.Tasks.PreTask.source "preTask" "Pre task didn't have the correct source name"
     Assert-AreEqual $sucr.Tasks.PreTask.Status "Completed" "Pre task didn't have the correct status"
@@ -140,24 +162,36 @@ function Test-CreateAndGetSoftwareUpdateConfigurationWithDynamicGroups
                                        -OneTime `
                                        -StartTime $startTime `
                                        -ForUpdate
-    
-    $query1Scope = @(
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01",
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-02"
+
+$query1Scope = @(
+        "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-wcus"
     )
 
     $query1Location =@("Japan East", "UK South")
-
-    $query1Tags = New-Object 'system.collections.generic.dictionary[string, system.Collections.Generic.List[String]]'
-    $query1Tags.Add("tag1",  @("tag1Value1", "tag1Value2"))
-    $query1Tags.Add("tag2", @("tag2Value1", "tag2Value2"))
     $query1FilterOperator = "All"
 
-    $AzureQuery1 = @{"Scope" = $query1Scope;
-                      "Locations" = $query1Location;
-                            "TagSettings" = @{"Tags" = $query1Tags;
-                                                 "FilterOperator" = $query1FilterOperator}}
-   $AzureQueries = @($AzureQuery1)
+    $tag1 = @{"tag1"= @("tag1Value1", "tag1Value2")}
+    $tag1.add("tag2", "tag2Value")
+    $azq = New-AzAutomationUpdateManagementAzureQuery -ResourceGroupName $rg `
+                                       -AutomationAccountName $aa `
+                                       -Scope $query1Scope `
+                                       -Locaton $query1Location `
+                                       -Tag $tag1
+
+
+   $AzureQueries = @($azq)
+
+    $nonAzureQuery1 = @{
+        FunctionAlias = "SavedSearch1";
+       WorkspaceResourceId = "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourcegroups/mms-wcus/providers/microsoft.operationalinsights/workspaces/jemalwcus2"
+    }
+
+    $nonAzureQuery2 = @{
+        FunctionAlias = "SavedSearch2";
+       WorkspaceResourceId = "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourcegroups/mms-wcus/providers/microsoft.operationalinsights/workspaces/jemalwcus2"
+    }
+
+    $NonAzureQueries = @($nonAzureQuery1, $nonAzureQuery2)
 
     $suc = New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg `
                                                              -AutomationAccountName $aa `
@@ -166,6 +200,7 @@ function Test-CreateAndGetSoftwareUpdateConfigurationWithDynamicGroups
                                                              -AzureVMResourceId $azureVMIdsL `
                                                              -Duration (New-TimeSpan -Hours 2) `
                                                              -AzureQuery $AzureQueries `
+                                                             -NonAzureQuery $NonAzureQueries `
                                                              -IncludedUpdateClassification Security,Critical 
 
 

@@ -1,8 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
-//
-// Copyright Microsoft Corporation
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
+﻿// you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 // http://www.apache.org/licenses/LICENSE-2.0
 // Unless required by applicable law or agreed to in writing, software
@@ -11,18 +7,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
 namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    public class UpdateTargets
+    public class NonAzureQueryProperties
     {
-        public IList<AzureQueryProperties> AzureQueries { get; set; }
-        public IList<NonAzureQueryProperties> NonAzureQueries { get; set; }
+        public string FunctionAlias { get; set; }
+        public string WorkspaceResourceId { get; set; }
     }
 }

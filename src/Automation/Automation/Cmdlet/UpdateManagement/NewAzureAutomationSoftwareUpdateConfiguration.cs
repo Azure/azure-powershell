@@ -24,6 +24,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
     using Microsoft.Azure.Commands.Automation.Model.UpdateManagement;
     using System.Linq;
     using Properties;
+    using System.Collections;
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationSoftwareUpdateConfiguration",
         SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.Windows)]
@@ -40,20 +42,32 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates that the software update configuration targeting Linux operating system machines.")]
         public SwitchParameter Linux { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates that the software update configuration will Only Reboot the machines.")]
+        public SwitchParameter RebootOnly { get; set; }
+
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Ids for azure virtual machines.")]
         public string[] AzureVMResourceId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Pre task.")]
-        public Task PreTask { get; set; }
+        public string PreTaskRunbookName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Post task.")]
-        public Task PostTask { get; set; }
+        public string PostTaskRunbookName { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Pre task parameter.")]
+        public Hashtable PreTaskRunbookParameters { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Post task parameter.")]
+        public Hashtable PostTaskRunbookParameters { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Non-Azure computer names.")]
         public string[] NonAzureComputer { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Dynamic update target groups.")]
         public AzureQueryProperties[] AzureQuery { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Dynamic update target groups.")]
+        public NonAzureQueryProperties[] NonAzureQuery { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Maximum duration for the update.")]
         public TimeSpan Duration { get; set; }
@@ -93,7 +107,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
             }
             var target = this.AzureQuery == null ? null : new UpdateTargets
             {
-                AzureQueries = this.AzureQuery.ToList()
+                AzureQueries = this.AzureQuery.ToList(),
+                NonAzureQueries = this.NonAzureQuery.ToList()
             };
 
             var resource = string.Format(CultureInfo.CurrentCulture, Resources.SoftwareUpdateConfigurationCreateOperation);
@@ -114,7 +129,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
                                 ExcludedKbNumbers = this.ExcludedKbNumber,
                                 IncludedKbNumbers = this.IncludedKbNumber,
                                 IncludedUpdateClassifications = this.IncludedUpdateClassification,
-                                rebootSetting = this.RebootSetting
+                                rebootSetting = this.RebootOnly.IsPresent ? RebootSetting.RebootOnly : this.RebootSetting
                             },
                         Linux = this.IsWindows
                             ? null
@@ -123,7 +138,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
                                 ExcludedPackageNameMasks = this.ExcludedPackageNameMask,
                                 IncludedPackageClassifications = this.IncludedPackageClassification,
                                 IncludedPackageNameMasks = this.IncludedPackageNameMask,
-                                rebootSetting = this.RebootSetting
+                                rebootSetting = this.RebootOnly.IsPresent ? RebootSetting.RebootOnly : this.RebootSetting
                             },
                         Duration = this.Duration,
                         AzureVirtualMachines = this.AzureVMResourceId,
@@ -132,8 +147,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
                     },
                     Tasks = new Tasks
                     {
-                        PreTask = this.PreTask,
-                        PostTask = this.PostTask
+                        PreTask = this.PreTaskRunbookName == null ? null : new Task
+                        {
+                            source = this.PreTaskRunbookName,
+                            parameters = TagsConversionHelper.CreateTagDictionary(this.PreTaskRunbookParameters, true)
+                        },
+                        PostTask = this.PreTaskRunbookName == null ? null : new Task
+                        {
+                            source = this.PostTaskRunbookName,
+                            parameters = TagsConversionHelper.CreateTagDictionary(this.PostTaskRunbookParameters, true)
+                        },
                     }
                 };
                 suc = this.AutomationClient.CreateSoftwareUpdateConfiguration(this.ResourceGroupName,

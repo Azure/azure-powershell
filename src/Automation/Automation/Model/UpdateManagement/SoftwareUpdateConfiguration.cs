@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
             } : null;
 
             IList<AzureQueryProperties> azureQueries = null;
-            if (suc.UpdateConfiguration.Targets != null && suc.UpdateConfiguration.Targets != null && suc.UpdateConfiguration.Targets.AzureQueries.Count > 0)
+            if (suc.UpdateConfiguration != null && suc.UpdateConfiguration.Targets != null && suc.UpdateConfiguration.Targets.AzureQueries != null && suc.UpdateConfiguration.Targets.AzureQueries.Count > 0)
             {
                 azureQueries = new List<AzureQueryProperties>();
 
@@ -119,11 +119,29 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
                 }
 
             }
+
+            IList<NonAzureQueryProperties> nonAzureQueries = null;
+            if (suc.UpdateConfiguration != null && suc.UpdateConfiguration.Targets != null && suc.UpdateConfiguration.Targets.NonAzureQueries != null && suc.UpdateConfiguration.Targets.NonAzureQueries.Count > 0)
+            {
+                nonAzureQueries = new List<NonAzureQueryProperties>();
+
+                foreach (var query in suc.UpdateConfiguration.Targets.NonAzureQueries)
+                {
+                    var nonAzureQuery = new NonAzureQueryProperties
+                    {
+                        FunctionAlias = query.FunctionAlias,
+                        WorkspaceResourceId = query.WorkspaceId
+                    };
+                    nonAzureQueries.Add(nonAzureQuery);
+                }
+            }
+
             var updateTarget = suc.UpdateConfiguration.Targets == null
                 ? null
                 : new UpdateTargets
                 {
-                    AzureQueries = azureQueries
+                    AzureQueries = azureQueries,
+                    NonAzureQueries = nonAzureQueries
                 };
 
             this.ScheduleConfiguration = new Schedule(resourceGroupName, automationAccountName, schedule);

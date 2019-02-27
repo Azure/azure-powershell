@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
 {
     public enum TagOperators
     {
-        All = 1,
+        All = 0,
         Any
     }
 }
