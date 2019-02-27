@@ -96,6 +96,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ItemType = "Protectable Item type.";
             public const string ItemId = "Input Id";
             public const string ItemObject = "Input Item";
+            public const string Name = "Name";
+            public const string ServerName = "Server Name";
         }
 
         internal static class RecoveryPoint
