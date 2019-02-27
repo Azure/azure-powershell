@@ -66,9 +66,10 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Metadata { get; set; }
 
+        [Alias("PrivateDnsRecords")]
         [Parameter(Mandatory = false, HelpMessage = "The private dns records that are part of this record set.")]
         [ValidateNotNull]
-        public PrivateDnsRecordBase[] PrivateDnsRecords { get; set; }
+        public PrivateDnsRecordBase[] PrivateDnsRecord { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not fail if the record set already exists.")]
         public SwitchParameter Overwrite { get; set; }
@@ -110,7 +111,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
                 this.WriteWarning($"Modifying zone name to remove terminating '.'.  Zone name used is \"{zoneName}\".");
             }
 
-            if (this.PrivateDnsRecords == null)
+            if (this.PrivateDnsRecord == null)
             {
                 this.WriteWarning(ProjectResources.Warning_PrivateDnsRecordsParamNeedsToBeSpecified);
             }
@@ -128,7 +129,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
                         this.RecordType,
                         this.Metadata,
                         this.Overwrite,
-                        this.PrivateDnsRecords);
+                        this.PrivateDnsRecord);
 
                     if (result != null)
                     {
