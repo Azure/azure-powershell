@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
                 Name, 
                 () => 
                 {
-                    var result = Client.RegenerateKeys(ResourceGroupName, Name, serial);
+                    var result = Client.SpatialAnchorsAccounts.RegenerateKeys(ResourceGroupName, Name, serial);
 
                     WriteObject(result);
                 });

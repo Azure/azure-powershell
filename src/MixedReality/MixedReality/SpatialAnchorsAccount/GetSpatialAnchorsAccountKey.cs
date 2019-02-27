@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
                 Name = InputObject.Name;
             }
 
-            var result = Client.GetKeys(ResourceGroupName, Name);
+            var result = Client.SpatialAnchorsAccounts.GetKeys(ResourceGroupName, Name);
 
             WriteObject(result);
         }
