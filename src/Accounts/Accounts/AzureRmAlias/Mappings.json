@@ -63,6 +63,24 @@
     "Export-AzAnalysisServicesInstanceLog": "Export-AzureAnalysisServicesInstanceLog",
     "Sync-AzAnalysisServicesInstance": "Sync-AzureAnalysisServicesInstance"
   },
+  "Az.Anf": {
+    "New-AzAnfAccount": "New-AzureRmAnfAccount",
+    "Remove-AzAnfAccount": "Remove-AzureRmAnfAccount",
+    "Get-AzAnfAccount": "Get-AzureRmAnfAccount",
+    "New-AzAnfPool": "New-AzureRmAnfPool",
+    "Set-AzAnfPool": "Set-AzureRmAnfPool",
+    "Remove-AzAnfPool": "Remove-AzureRmAnfPool",
+    "Get-AzAnfPool": "Get-AzureRmAnfPool",
+    "New-AzAnfVolume": "New-AzureRmAnfVolume",
+    "Update-AzAnfVolume": "Update-AzureRmAnfVolume",
+    "Set-AzAnfVolume": "Set-AzureRmAnfVolume",
+    "Remove-AzAnfVolume": "Remove-AzureRmAnfVolume",
+    "Get-AzAnfVolume": "Get-AzureRmAnfVolume",
+    "Get-AzAnfMountTarget": "Get-AzureRmAnfMountTarget",
+    "New-AzAnfSnapshot": "New-AzureRmAnfSnapshot",
+    "Remove-AzAnfSnapshot": "Remove-AzureRmAnfSnapshot",
+    "Get-AzAnfSnapshot": "Get-AzureRmAnfSnapshot"
+  },
   "Az.ApiManagement": {
     "Add-AzApiManagementRegion": "Add-AzureRmApiManagementRegion",
     "Get-AzApiManagementSsoToken": "Get-AzureRmApiManagementSsoToken",
