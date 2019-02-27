@@ -17,13 +17,7 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-
 ## Upcoming Release
-* Updated ADF .Net SDK version to 3.0.1
 
-## Version 1.0.1
-* Updated ADF .Net SDK version to 3.0.0
-
-## Version 1.0.0
-* General availability of `Az.DataFactory` module
-* Removed -LinkedServiceName parameter from Get-AzDataFactoryV2ActivityRun
+## Version 0.1.0
+* General availability of `Az.PrivateDns` module
