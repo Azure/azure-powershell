@@ -14,20 +14,22 @@
 
 using Commands.Security;
 using Microsoft.Azure.Commands.Security.Common;
-using Microsoft.Azure.Commands.Security.Models.Locations;
+using Microsoft.Azure.Commands.Security.Models.AdvancedThreatProtection;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.AdvancedThreatProtection
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityThreatProtection", DefaultParameterSetName = ParameterSetNames.ResourceId), OutputType(typeof(PSSecurityLocation))]
-    public class GetThreatProtectionPolicy : SecurityCenterCmdletBase
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdvancedThreatProtection", DefaultParameterSetName = ParameterSetNames.ResourceId, SupportsShouldProcess = true), OutputType(typeof(PSAdvancedThreatProtection))]
+    public class EnableAdvancedThreatProtection : SecurityCenterCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ResourceId)]
+
+        [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            var result = SecurityCenterClient.AdvancedThreatProtection.GetWithHttpMessagesAsync(ResourceId).GetAwaiter().GetResult().Body;
+            var result = SecurityCenterClient.AdvancedThreatProtection.CreateWithHttpMessagesAsync(ResourceId, true).GetAwaiter().GetResult().Body;
             WriteObject(result, enumerateCollection: true);
         }
     }
