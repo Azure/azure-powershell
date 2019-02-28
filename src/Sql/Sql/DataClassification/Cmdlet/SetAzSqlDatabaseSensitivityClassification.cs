@@ -1,6 +1,6 @@
-﻿using Hyak.Common;
-using Microsoft.Azure.Commands.Sql.DataClassification.Model;
+﻿using Microsoft.Azure.Commands.Sql.DataClassification.Model;
 using Microsoft.Azure.Commands.Sql.DataClassification.Services;
+using Microsoft.Rest.Azure;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
