@@ -57,6 +57,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSApplicationGatewayWebApplicationFirewallConfiguration WebApplicationFirewallConfiguration { get; set; }
 
+        public PSApplicationGatewayWebApplicationFirewallPolicy FirewallPolicy { get; set; }
+
         public PSApplicationGatewayAutoscaleConfiguration AutoscaleConfiguration { get; set; }
 
         public List<PSApplicationGatewayCustomError> CustomErrorConfigurations { get; set; }

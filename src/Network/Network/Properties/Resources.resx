@@ -381,4 +381,7 @@
   <data name="ApplicationGatewayRewriteRuleSetName" xml:space="preserve">
     <value>rewriteRuleSets</value>
   </data>
+  <data name="ApplicationGatewayFirewallPolicy" xml:space="preserve">
+    <value>firewallPolicy</value>
+  </data>
 </root>

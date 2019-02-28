@@ -355,6 +355,12 @@ namespace Microsoft.Azure.Commands.Network
                         }
                     }
                 }
+
+                // Normalize FirewallPolicy
+                if (applicationGateway.FirewallPolicy != null)
+                {
+                    applicationGateway.FirewallPolicy.Id = string.Empty;
+                }
             }
         }
     }
