@@ -721,7 +721,7 @@ namespace Microsoft.Azure.Commands.Network
                 // Application Gateways
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSApplicationGateway, MNM.ApplicationGateway>();
-                cfg.CreateMap<CNM.PSApplicationGatewaySku, MNM.ApplicationGatewaySku>();
+                cfg.CreateMap<CNM.PSApplicationGatewaySku, MNM.ApplicationGatewaySku>(); 
                 cfg.CreateMap<CNM.PSApplicationGatewaySslPolicy, MNM.ApplicationGatewaySslPolicy>()
                     .AfterMap((src, dest) =>
                     {

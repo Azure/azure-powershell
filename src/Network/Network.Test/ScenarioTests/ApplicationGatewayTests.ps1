@@ -623,7 +623,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 		#Rewrite Rule Set
 		$headerConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "abc" -HeaderValue "def"
 		$actionSet = New-AzApplicationGatewayRewriteRuleActionSet -RequestHeaderConfiguration $headerConfiguration
-		$rewriteRule = New-AzApplicationGatewayRewriteRule -Name $rewriteRuleName -ActionSet $actionSet
+		$rewriteRule = New-AzApplicationGatewayRewriteRule -Name $rewriteRuleName -ActionSet $actionSet -RuleSequence 100
 		$rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name $rewriteRuleSetName -RewriteRule $rewriteRule
 		
 		#rule
@@ -810,7 +810,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions
 
 		#Rewrite Rule Set
 		$headerConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "abc" -HeaderValue "def"
-		$condition = New-AzApplicationGatewayRewriteRuleCondition -Variable "date"
+		$condition = New-AzApplicationGatewayRewriteRuleCondition -Variable "http_req_date" -Pattern "Feb" -IgnoreCase
 		$actionSet = New-AzApplicationGatewayRewriteRuleActionSet -RequestHeaderConfiguration $headerConfiguration
 		$rewriteRule = New-AzApplicationGatewayRewriteRule -Name $rewriteRuleName -ActionSet $actionSet -RuleSequence 102 -Condition $condition
 		$rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name $rewriteRuleSetName -RewriteRule $rewriteRule
@@ -906,7 +906,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions
         Assert-AreEqual $rewriteRuleSet.Count 1
 
 		$headerConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "ghi" -HeaderValue "jkl"
-		$condition = New-AzApplicationGatewayRewriteRuleCondition -Variable "X-Forwarded-For"
+		$condition = New-AzApplicationGatewayRewriteRuleCondition -Variable "http_req_X-Forwarded-For"
 		$actionSet = New-AzureRmApplicationGatewayRewriteRuleActionSet -RequestHeaderConfiguration $headerConfiguration
 		$rewriteRule2 = New-AzureRmApplicationGatewayRewriteRule -Name $rewriteRuleName -ActionSet $actionSet -RuleSequence 101 -Condition $condition
 
