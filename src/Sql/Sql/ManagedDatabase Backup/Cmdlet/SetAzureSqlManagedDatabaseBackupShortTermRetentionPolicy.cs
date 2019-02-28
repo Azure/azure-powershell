@@ -102,8 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <summary>
         /// Gets or sets the Week of Year for the Yearly Retention.
         /// </summary>
-        [Parameter(ParameterSetName = PolicyByResourceServerDatabaseSet,
-            Mandatory = true,
+        [Parameter(Mandatory = true,
             Position = 4,
             HelpMessage = "Days of backup retention.")]
         [ValidateNotNullOrEmpty]
