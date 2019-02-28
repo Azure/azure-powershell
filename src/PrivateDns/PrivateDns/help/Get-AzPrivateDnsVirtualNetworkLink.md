@@ -22,7 +22,7 @@ Get-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String
 The **Get-AzPrivateDnsVirtualNetworkLink** cmdlet gets Private Domain Name System (DNS) virtual network links associated with a particular zone from the specified resource group.
 If you specify the *Name* parameter, a single **PSPrivateDnsLink** object is returned.
 If you do not specify the *Name* parameter, an array containing all of the links associated with the zone in the specified resource group is returned.
-You can use the **PrivateDnsLink** object to update the link.
+You can use the **PSPrivateDnsLink** object to update the link.
 
 ## EXAMPLES
 
@@ -37,7 +37,7 @@ ResourceId              : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/res
                           etwork/privateDnsZones/myzone.com/virtualNetworkLinks/mylink
 ResourceGroupName       : MyResourceGroup
 ZoneName                : myzone.com
-VirtualNetworkId        : /subscriptionsxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
+VirtualNetworkId        : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
                           etwork/virtualNetworks/myvirtualnetwork
 Location                :
 Etag                    : "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -45,7 +45,6 @@ Tags                    : {tag1}
 RegistrationEnabled     : True
 VirtualNetworkLinkState : Completed
 ProvisioningState       : Succeeded
-
 ```
 
 This example gets the link mylink associated with the Private DNS zone named myzone.com from the specified resource group, and then stores it in the $Link variable.
@@ -59,7 +58,7 @@ ResourceId              : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/res
                           etwork/privateDnsZones/myzone.com/virtualNetworkLinks/mylink1
 ResourceGroupName       : MyResourceGroup
 ZoneName                : myzone.com
-VirtualNetworkId        : /subscriptionsxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
+VirtualNetworkId        : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
                           etwork/virtualNetworks/myvirtualnetwork
 Location                :
 Etag                    : "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -73,7 +72,7 @@ ResourceId              : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/res
                           etwork/privateDnsZones/myzone.com/virtualNetworkLinks/mylink2
 ResourceGroupName       : MyResourceGroup
 ZoneName                : myzone.com
-VirtualNetworkId        : /subscriptionsxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
+VirtualNetworkId        : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
                           etwork/virtualNetworks/myvirtualnetwork
 Location                :
 Etag                    : "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -81,7 +80,6 @@ Tags                    : {tag1}
 RegistrationEnabled     : True
 VirtualNetworkLinkState : Completed
 ProvisioningState       : Succeeded
-
 ```
 
 This example gets all of the virtual network links associated with the Private DNS zone "myzone.com" in the specified resource group, and then stores it in the $Links variable.

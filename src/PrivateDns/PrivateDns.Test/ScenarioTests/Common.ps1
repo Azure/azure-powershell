@@ -93,6 +93,13 @@ function Create-VirtualNetworkLink([bool] $registrationEnabled)
 
 	$createdZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"}
 	$createdVirtualNetwork = TestSetup-CreateVirtualNetwork $resourceGroup
-	$createdLink = New-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Name $linkName -Tag @{tag1="value1"} -VirtualNetworkId $createdVirtualNetwork.Id -IsRegistrationEnabled $registrationEnabled
+	if($registrationEnabled)
+	{
+		$createdLink = New-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Name $linkName -Tag @{tag1="value1"} -VirtualNetworkId $createdVirtualNetwork.Id -EnableRegistration
+	}
+	else
+	{
+		$createdLink = New-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Name $linkName -Tag @{tag1="value1"} -VirtualNetworkId $createdVirtualNetwork.Id
+	}
 	return $createdLink
 }

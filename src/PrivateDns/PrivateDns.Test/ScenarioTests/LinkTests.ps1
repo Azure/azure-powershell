@@ -161,7 +161,7 @@ function Test-LinkAlreadyExistsCreateThrow
 	$createdLink1 = Create-VirtualNetworkLink $false
 
 	$message = "*exists already and hence cannot be created again*"
-	Assert-ThrowsLike { New-AzPrivateDnsVirtualNetworkLink -ZoneName $createdLink1.zoneName -ResourceGroupName $createdLink1.ResourceGroupName -Name $createdLink1.Name -Tag @{tag1="value2"} -VirtualNetworkId $createdLink1.VirtualNetworkId -IsRegistrationEnabled $false } $message
+	Assert-ThrowsLike { New-AzPrivateDnsVirtualNetworkLink -ZoneName $createdLink1.zoneName -ResourceGroupName $createdLink1.ResourceGroupName -Name $createdLink1.Name -Tag @{tag1="value2"} -VirtualNetworkId $createdLink1.VirtualNetworkId } $message
 
 	Remove-AzResourceGroup -Name $createdLink1.ResourceGroupName -Force
 }
@@ -192,7 +192,7 @@ Test link update with resource Id
 function Test-UpdateLinkRegistrationStatusWithResourceId
 {
 	$createdLink = Create-VirtualNetworkLink $false
-	$updatedLink = Set-AzPrivateDnsVirtualNetworkLink -ResourceId $createdLink.ResourceId -IsRegistrationEnabled $true -Tag @{}
+	$updatedLink = Set-AzPrivateDnsVirtualNetworkLink -ResourceId $createdLink.ResourceId -EnableRegistration -Tag @{}
 	
 	Assert-AreEqual $updatedLink.RegistrationEnabled $true
 	Assert-AreEqual 0 $updatedLink.Tags.Count
@@ -369,8 +369,8 @@ function Test-ListLinks
 	$createdVirtualNetwork1 = TestSetup-CreateVirtualNetwork $resourceGroup
 	$createdVirtualNetwork2 = TestSetup-CreateVirtualNetwork $resourceGroup
 	
-	$createdLink1 = New-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Name $linkName1 -Tag @{tag1="value1"} -VirtualNetworkId $createdVirtualNetwork1.Id -IsRegistrationEnabled $false
-	$createdLink2 = New-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Name $linkName2 -Tag @{tag1="value1"} -VirtualNetworkId $createdVirtualNetwork2.Id -IsRegistrationEnabled $true
+	$createdLink1 = New-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Name $linkName1 -Tag @{tag1="value1"} -VirtualNetworkId $createdVirtualNetwork1.Id
+	$createdLink2 = New-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Name $linkName2 -Tag @{tag1="value1"} -VirtualNetworkId $createdVirtualNetwork2.Id
 
 	$getLink = Get-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $createdLink1.ResourceGroupName
 	

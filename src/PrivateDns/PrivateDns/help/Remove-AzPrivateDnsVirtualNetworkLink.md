@@ -65,7 +65,7 @@ Accept wildcard characters: False
 
 ### -Link
 Specifies the link to delete.
-The **PrivateDnsLink** object passed can also be passed via the pipeline.
+The **PSPrivateDnsLink** object passed can also be passed via the pipeline.
 Alternatively, you can specify the link to delete by using the *Name* *ZoneName* and *ResourceGroupName* parameters.
 
 ```yaml
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 Specifies the name of the resource group that contains the link to remove.
 You must also specify the *ZoneName* and *Name* parameter.
-Alternatively, you can specify the DNS zone using a **PrivateDnsLink** object, passed via either the pipeline or the *Link* parameter.
+Alternatively, you can specify the DNS zone using a **PSPrivateDnsLink** object, passed via either the pipeline or the *Link* parameter.
 
 ```yaml
 Type: System.String
