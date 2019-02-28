@@ -26,6 +26,7 @@ using Microsoft.Rest.Azure.OData;
 using Microsoft.Win32;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -41,9 +42,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
     public class StorageSyncClientWrapper : IStorageSyncClientWrapper
     {
         /// <summary>
-        /// The kailani application identifier
+        /// The azure cloud kailani application identifier
         /// </summary>
-        public static Guid KailaniAppId = new Guid(StorageSyncResources.KailaniApplicationId);
+        private static Guid AzureCloudKailaniAppId = new Guid(StorageSyncResources.AzureCloudKailaniAppId);
+
+        /// <summary>
+        /// The azure us government kailani application identifier
+        /// </summary>
+        private static Guid AzureUSGovernmentKailaniAppId = new Guid(StorageSyncResources.AzureUSGovernmentKailaniAppId);
+
         /// <summary>
         /// The built in role definition identifier
         /// </summary>
@@ -147,6 +154,24 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         }
 
         /// <summary>
+        /// Gets the current application identifier.
+        /// </summary>
+        /// <value>The current application identifier.</value>
+        public Guid CurrentApplicationId
+        {
+            get
+            {
+                switch (AzureRmProfileProvider.Instance?.Profile?.DefaultContext?.Environment?.Name)
+                {
+                    case EnvironmentName.AzureUSGovernment:
+                        return AzureUSGovernmentKailaniAppId;
+                    default:
+                        return AzureCloudKailaniAppId;
+                }
+            }
+        }
+
+        /// <summary>
         /// The afs agent version
         /// </summary>
         private string _afsAgentVersion;
@@ -180,8 +205,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <returns>PSADServicePrincipal.</returns>
         public PSADServicePrincipal EnsureServicePrincipal()
         {
-            string applicationId = KailaniAppId.ToString();
-            var servicePrincipals = ActiveDirectoryClient.FilterServicePrincipals(new ODataQuery<ServicePrincipal>(s => s.AppId == applicationId));
+            string applicationId = CurrentApplicationId.ToString();
+            IEnumerable<PSADServicePrincipal> servicePrincipals = ActiveDirectoryClient.FilterServicePrincipals(new ODataQuery<ServicePrincipal>(s => s.AppId == applicationId));
             PSADServicePrincipal servicePrincipal = servicePrincipals.FirstOrDefault();
 
             if (servicePrincipal == null)
@@ -198,7 +223,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 
                 var createParameters = new CreatePSServicePrincipalParameters
                 {
-                    ApplicationId = KailaniAppId,
+                    ApplicationId = CurrentApplicationId,
                     AccountEnabled = true,
                     PasswordCredentials = new PSADPasswordCredential[]
                      {
