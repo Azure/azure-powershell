@@ -8,10 +8,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.5.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Blueprint" Version="0.10.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="1.1.1-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.1-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
 

@@ -57,10 +57,6 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Blueprint.dll',
-					'.\Microsoft.Azure.Graph.RBAC.dll',
-					'.\Microsoft.Azure.Management.Authorization.dll',
-					'.\Microsoft.Azure.Management.ManagementGroups.dll',
-					'.\Microsoft.Azure.Management.ResourceManager.dll',
 					'.\System.Security.Permissions.dll'
 
 
