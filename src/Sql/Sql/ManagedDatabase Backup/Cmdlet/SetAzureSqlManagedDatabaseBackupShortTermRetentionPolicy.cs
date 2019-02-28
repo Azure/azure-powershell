@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ParameterSetName = PolicyByInputObjectSet,
             Mandatory = true,
             ValueFromPipeline = true,
+            Position = 0,
             HelpMessage = "The live or deleted database object to get/set the policy for.")]
         [ValidateNotNullOrEmpty]
         [Alias("AzureSqlInstanceDatabase")]
@@ -50,6 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ParameterSetName = PolicyByResourceIdSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            Position = 0,
             HelpMessage = "The short term retention policy resource Id.")]
         [ValidateNotNullOrEmpty]
         public override string ResourceId { get; set; }
