@@ -18,6 +18,6 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
     {
         public const string ResourceProviderNamespace = "Microsoft.MixedReality";        
         public const string ResourceType = "SpatialAnchorsAccount";
-        public const string FullQualifiedResourceType = ResourceProviderNamespace  + "/" + ResourceType;
+        public const string FullQualifiedResourceType = ResourceProviderNamespace  + "/" + ResourceType + "s";
     };
 }
