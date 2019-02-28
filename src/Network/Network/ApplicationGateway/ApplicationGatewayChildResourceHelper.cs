@@ -91,6 +91,12 @@ namespace Microsoft.Azure.Commands.Network
                         NormalizeChildIds(value, rgname, name);
                     }
                 }
+
+                // Normalize FirewallPolicy
+                if (applicationGateway.FirewallPolicy != null)
+                {
+                    applicationGateway.FirewallPolicy.Id = string.Empty;
+                }
             }
         }
 
