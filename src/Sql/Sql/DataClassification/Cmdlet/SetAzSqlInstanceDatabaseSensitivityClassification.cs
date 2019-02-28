@@ -1,136 +1,48 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Hyak.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataClassification.Model;
 using Microsoft.Azure.Commands.Sql.DataClassification.Services;
 using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 {
     [Cmdlet(
         VerbsCommon.Set,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.SqlInstanceDatabaseSensitivityClassification,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DataClassificationCommon.SqlInstanceDatabaseSensitivityClassification,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
-    public class SetAzSqlInstanceDatabaseSensitivityClassification : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
+    public class SetAzSqlInstanceDatabaseSensitivityClassification : ModifyAzSqlInstanceDatabaseSensitivityClassificationCmdlet
     {
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = DefinitionsCommon.ResourceGroupNameHelpMessage)]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
-
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = DefinitionsCommon.InstanceNameHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string InstanceName { get; set; }
-
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = DefinitionsCommon.ManagedDatabaseNameHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
-
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = DefinitionsCommon.ManagedDatabaseObjectHelpMessage)]
-        [ValidateNotNull]
-        public AzureSqlManagedDatabaseModel DatabaseObject { get; set; }
-
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = DefinitionsCommon.SchemaNameHelpMessage)]
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = DefinitionsCommon.SchemaNameHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string SchemaName { get; set; }
-
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = DefinitionsCommon.TableNameHelpMessage)]
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = DefinitionsCommon.TableNameHelpMessage)]
-        public string TableName { get; set; }
-
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = DefinitionsCommon.ColumnNameHelpMessage)]
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = DefinitionsCommon.ColumnNameHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string ColumnName { get; set; }
-
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ColumnParameterSet,
+            ParameterSetName = DataClassificationCommon.ColumnParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = DefinitionsCommon.LabelNameHelpMessage)]
+            HelpMessage = DataClassificationCommon.LabelNameHelpMessage)]
         [Parameter(
-            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
+            ParameterSetName = DataClassificationCommon.DatabaseObjectColumnParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = DefinitionsCommon.LabelNameHelpMessage)]
+            HelpMessage = DataClassificationCommon.LabelNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string SensitivityLabel { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ColumnParameterSet,
+            ParameterSetName = DataClassificationCommon.ColumnParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = DefinitionsCommon.InformationTypeHelpMessage)]
+            HelpMessage = DataClassificationCommon.InformationTypeHelpMessage)]
         [Parameter(
-            ParameterSetName = DefinitionsCommon.DatabaseObjectColumnParameterSet,
+            ParameterSetName = DataClassificationCommon.DatabaseObjectColumnParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = DefinitionsCommon.InformationTypeHelpMessage)]
+            HelpMessage = DataClassificationCommon.InformationTypeHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string InformationType { get; set; }
-
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ClassificationObjectParameterSet,
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = DefinitionsCommon.ManagedDatabaseSensitivityClassificationObjectHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public ManagedDatabaseSensitivityClassificationModel ClassificationObject { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = DefinitionsCommon.PassThruHelpMessage)]
-        public SwitchParameter PassThru { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = DefinitionsCommon.AsJobHelpMessage)]
-        public SwitchParameter AsJob { get; set; }
 
         protected override ManagedDatabaseSensitivityClassificationModel GetEntity()
         {
@@ -140,26 +52,71 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
                 InstanceName = ClassificationObject.InstanceName;
                 DatabaseName = ClassificationObject.DatabaseName;
             }
+            else if (DatabaseObject != null)
+            {
+                ResourceGroupName = DatabaseObject.ResourceGroupName;
+                InstanceName = DatabaseObject.ManagedInstanceName;
+                DatabaseName = DatabaseObject.Name;
+            }
+
+            List<SensitivityLabelModel> sensitivityLabels = null;
+            try
+            {
+                sensitivityLabels = ParameterSetName == DataClassificationCommon.ColumnParameterSet
+                    || ParameterSetName == DataClassificationCommon.DatabaseObjectColumnParameterSet
+                    ? ModelAdapter.GetCurrentSensitivityLabel(ResourceGroupName, InstanceName, DatabaseName, SchemaName, TableName, ColumnName)
+                    : ModelAdapter.GetCurrentSensitivityLabels(ResourceGroupName, InstanceName, DatabaseName);
+            }
+            catch (CloudException e)
+            {
+                if (e.Response.StatusCode != HttpStatusCode.NotFound || e.Message != "The specified sensitivity label could not be found")
+                {
+                    throw;
+                }
+            }
 
             return new ManagedDatabaseSensitivityClassificationModel
             {
                 ResourceGroupName = ResourceGroupName,
                 InstanceName = InstanceName,
                 DatabaseName = DatabaseName,
-                SensitivityLabels = ParameterSetName == DefinitionsCommon.ColumnParameterSet ?
-                    ModelAdapter.GetManagedDatabaseCurrentSensitivityLabel(ResourceGroupName, InstanceName, DatabaseName, SchemaName, TableName, ColumnName) :
-                    ModelAdapter.GetManagedDatabaseCurrentSensitivityLabels(ResourceGroupName, InstanceName, DatabaseName)
+                SensitivityLabels = sensitivityLabels ?? new List<SensitivityLabelModel>()
             };
         }
 
-        protected override DataClassificationAdapter InitModelAdapter()
+        protected override ManagedDatabaseSensitivityClassificationModel ApplyUserInputToModel(ManagedDatabaseSensitivityClassificationModel model)
         {
-            return new DataClassificationAdapter(DefaultProfile.DefaultContext);
+            InformationProtectionPolicy informationProtectionPolicy = ModelAdapter.RetrieveInformationProtectionPolicyAsync().Result;
+            if (ParameterSetName == DataClassificationCommon.ColumnParameterSet ||
+                ParameterSetName == DataClassificationCommon.DatabaseObjectColumnParameterSet)
+            {
+                SensitivityLabelModel sensitivityLabelModel = model.SensitivityLabels.FirstOrDefault();
+                if (sensitivityLabelModel == null)
+                {
+                    sensitivityLabelModel = new SensitivityLabelModel
+                    {
+                        SchemaName = SchemaName,
+                        TableName = TableName,
+                        ColumnName = ColumnName,
+                    };
+
+                    model.SensitivityLabels.Add(sensitivityLabelModel);
+                }
+
+                sensitivityLabelModel.ApplyInput(InformationType, SensitivityLabel, informationProtectionPolicy);
+            }
+            else
+            {
+                model.ApplyModel(ClassificationObject, informationProtectionPolicy);
+            }
+
+            return model;
         }
 
-        protected override bool WriteResult()
+        protected override ManagedDatabaseSensitivityClassificationModel PersistChanges(ManagedDatabaseSensitivityClassificationModel entity)
         {
-            return PassThru;
+            ModelAdapter.SetSensitivityLabels(entity);
+            return null;
         }
     }
 }

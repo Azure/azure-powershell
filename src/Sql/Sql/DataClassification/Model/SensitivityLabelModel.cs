@@ -1,4 +1,7 @@
-﻿using Microsoft.WindowsAzure.Commands.Common.Attributes;
+﻿using Microsoft.Azure.Commands.Sql.DataClassification.Services;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using System;
+using System.Management.Automation;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
@@ -20,8 +23,10 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
         [Ps1Xml(Target = ViewControl.List)]
         public string InformationType { get; set; }
 
+        [Hidden]
         public string SensitivityLabelId { get; set; }
 
+        [Hidden]
         public string InformationTypeId { get; set; }
 
         public override string ToString()
@@ -46,6 +51,56 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
             builder.Append("}");
 
             return builder.ToString();
+        }
+
+        internal void ApplyModel(SensitivityLabelModel sensitivityLabel, InformationProtectionPolicy informationProtectionPolicy)
+        {
+            ApplyInput(sensitivityLabel.InformationType, sensitivityLabel.SensitivityLabel, informationProtectionPolicy);
+        }
+
+        internal void ApplyInput(string informationType, string sensitivityLabel, InformationProtectionPolicy informationProtectionPolicy)
+        {
+            if (string.IsNullOrEmpty(informationType) && string.IsNullOrEmpty(sensitivityLabel))
+            {
+                throw new Exception("Value is not specified neither for InformationType parameter nor for SensitivityLabel parameter");
+            }
+
+            ApplyInformationType(informationType, informationProtectionPolicy);
+            ApplySensitivityLabel(sensitivityLabel, informationProtectionPolicy);
+        }
+
+        private void ApplyInformationType(string newInformationType, InformationProtectionPolicy informationProtectionPolicy)
+        {
+            if (!string.IsNullOrEmpty(newInformationType) &&
+                !string.Equals(InformationType, newInformationType))
+            {
+                if (informationProtectionPolicy.InformationTypes.TryGetValue(newInformationType, out Guid informationTypeId))
+                {
+                    InformationType = newInformationType;
+                    InformationTypeId = informationTypeId.ToString();
+                }
+                else
+                {
+                    throw new Exception($"Information Type: {newInformationType} is not part of Information Protection Policy");
+                }
+            }
+        }
+
+        private void ApplySensitivityLabel(string newSensitivityLabel, InformationProtectionPolicy informationProtectionPolicy)
+        {
+            if (!string.IsNullOrEmpty(newSensitivityLabel) ||
+                !string.Equals(SensitivityLabel, newSensitivityLabel))
+            {
+                if (informationProtectionPolicy.SensitivityLabels.TryGetValue(newSensitivityLabel, out Guid sensitivityLabelId))
+                {
+                    SensitivityLabel = newSensitivityLabel;
+                    SensitivityLabelId = sensitivityLabelId.ToString();
+                }
+                else
+                {
+                    throw new Exception($"Sensitivity Label: {newSensitivityLabel} is not part of Information Protection Policy");
+                }
+            }
         }
     }
 }

@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                 schemaName, tableName, columnName);
         }
 
-        internal IList<SensitivityLabel> GetSensitivityLabel(string resourceGroupName, string serverName, string databaseName,
+        internal List<SensitivityLabel> GetSensitivityLabel(string resourceGroupName, string serverName, string databaseName,
             string schemaName, string tableName, string columnName)
         {
             SensitivityLabel sensitivityLabel =
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
             return ToList(sensitivityLabel);
         }
 
-        internal IList<SensitivityLabel> GetManagedDatabaseSensitivityLabel(string resourceGroupName, string managedInstanceName, string databaseName,
+        internal List<SensitivityLabel> GetManagedDatabaseSensitivityLabel(string resourceGroupName, string managedInstanceName, string databaseName,
             string schemaName, string tableName, string columnName)
         {
             SensitivityLabel sensitivityLabel =
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
             return ToList(sensitivityLabel);
         }
 
-        internal IList<SensitivityLabel> GetCurrentSensitivityLabels(string resourceGroupName,
+        internal List<SensitivityLabel> GetCurrentSensitivityLabels(string resourceGroupName,
             string serverName, string databaseName)
         {
             return IterateOverPages(
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                 nextPageLink => GetCurrentSqlManagementClient().SensitivityLabels.ListCurrentByDatabaseNext(nextPageLink));
         }
 
-        internal IList<SensitivityLabel> GetRecommendedSensitivityLabels(string resourceGroupName,
+        internal List<SensitivityLabel> GetRecommendedSensitivityLabels(string resourceGroupName,
             string serverName, string databaseName)
         {
             return IterateOverPages(
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                 nextPageLink => GetCurrentSqlManagementClient().SensitivityLabels.ListRecommendedByDatabaseNext(nextPageLink));
         }
 
-        internal IList<SensitivityLabel> GetManagedDatabaseCurrentSensitivityLabels(string resourceGroupName,
+        internal List<SensitivityLabel> GetManagedDatabaseCurrentSensitivityLabels(string resourceGroupName,
             string managedInstanceName, string databaseName)
         {
             return IterateOverPages(
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                 nextPageLink => GetCurrentSqlManagementClient().ManagedDatabaseSensitivityLabels.ListCurrentByDatabaseNext(nextPageLink));
         }
 
-        internal IList<SensitivityLabel> GetManagedDatabaseRecommendedSensitivityLabels(string resourceGroupName,
+        internal List<SensitivityLabel> GetManagedDatabaseRecommendedSensitivityLabels(string resourceGroupName,
             string managedInstanceName, string databaseName)
         {
             return IterateOverPages(
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                 nextPageLink => GetCurrentSqlManagementClient().ManagedDatabaseSensitivityLabels.ListRecommendedByDatabaseNext(nextPageLink));
         }
 
-        private IList<SensitivityLabel> IterateOverPages(
+        private List<SensitivityLabel> IterateOverPages(
             Func<IPage<SensitivityLabel>> listByDatabase,
             Func<string, IPage<SensitivityLabel>> listByNextPageLink)
         {

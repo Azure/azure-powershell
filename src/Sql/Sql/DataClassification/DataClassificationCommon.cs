@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Microsoft.Azure.Commands.Sql.DataClassification
+﻿namespace Microsoft.Azure.Commands.Sql.DataClassification
 {
-    public class DefinitionsCommon
+    public static class DataClassificationCommon
     {
         internal const string DatabaseObjectColumnParameterSet = "DatabaseObjectColumnParameterSet";
         internal const string ColumnParameterSet = "ColumnParameterSet";

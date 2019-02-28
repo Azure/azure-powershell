@@ -1,25 +1,19 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Hyak.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataClassification.Model;
 using Microsoft.Azure.Commands.Sql.DataClassification.Services;
 using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
+using System.Net;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DataClassificationCommon.SqlInstanceDatabaseSensitivityClassification),
-        OutputType(typeof(ManagedDatabaseSensitivityClassificationModel))]
-    public class GetAzSqlInstanceDatabaseSensitivityClassification : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
+    public abstract class ModifyAzSqlInstanceDatabaseSensitivityClassificationCmdlet : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
     {
-        [Parameter(
-            ParameterSetName = DataClassificationCommon.DatabaseParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = DataClassificationCommon.ResourceGroupNameHelpMessage)]
         [Parameter(
             ParameterSetName = DataClassificationCommon.ColumnParameterSet,
             Mandatory = true,
@@ -31,12 +25,6 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         public override string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = DataClassificationCommon.DatabaseParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = DataClassificationCommon.InstanceNameHelpMessage)]
-        [Parameter(
             ParameterSetName = DataClassificationCommon.ColumnParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -46,12 +34,6 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         public string InstanceName { get; set; }
 
         [Parameter(
-            ParameterSetName = DataClassificationCommon.DatabaseParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = DataClassificationCommon.ManagedDatabaseNameHelpMessage)]
-        [Parameter(
             ParameterSetName = DataClassificationCommon.ColumnParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -60,11 +42,6 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
-        [Parameter(
-            ParameterSetName = DataClassificationCommon.DatabaseObjectParameterSet,
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = DataClassificationCommon.ManagedDatabaseObjectHelpMessage)]
         [Parameter(
             ParameterSetName = DataClassificationCommon.DatabaseObjectColumnParameterSet,
             Mandatory = true,
@@ -95,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
             ParameterSetName = DataClassificationCommon.DatabaseObjectColumnParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = DataClassificationCommon.TableNameHelpMessage)]
+            HelpMessage = DataClassificationCommon.SchemaNameHelpMessage)]
         public string TableName { get; set; }
 
         [Parameter(
@@ -112,37 +89,27 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         public string ColumnName { get; set; }
 
         [Parameter(
+            ParameterSetName = DataClassificationCommon.ClassificationObjectParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = DataClassificationCommon.ManagedDatabaseSensitivityClassificationObjectHelpMessage)]
+        [ValidateNotNull]
+        public ManagedDatabaseSensitivityClassificationModel ClassificationObject { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = DataClassificationCommon.PassThruHelpMessage)]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = DataClassificationCommon.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
+        protected override DataClassificationAdapter InitModelAdapter() => new DataClassificationAdapter(DefaultProfile.DefaultContext);
 
-        protected override ManagedDatabaseSensitivityClassificationModel GetEntity()
-        {
-            if (DatabaseObject != null)
-            {
-                ResourceGroupName = DatabaseObject.ResourceGroupName;
-                InstanceName = DatabaseObject.ManagedInstanceName;
-                DatabaseName = DatabaseObject.Name;
-            }
+        protected override bool WriteResult() => PassThru;
 
-
-            return new ManagedDatabaseSensitivityClassificationModel()
-            {
-                ResourceGroupName = ResourceGroupName,
-                InstanceName = InstanceName,
-                DatabaseName = DatabaseName,
-                SensitivityLabels = ParameterSetName == DataClassificationCommon.ColumnParameterSet ||
-                    ParameterSetName == DataClassificationCommon.DatabaseObjectColumnParameterSet
-                    ? ModelAdapter.GetManagedDatabaseCurrentSensitivityLabel(
-                        ResourceGroupName, InstanceName, DatabaseName, SchemaName, TableName, ColumnName)
-                    : ModelAdapter.GetManagedDatabaseCurrentSensitivityLabels(ResourceGroupName, InstanceName, DatabaseName)
-            };
-        }
-
-        protected override DataClassificationAdapter InitModelAdapter()
-        {
-            throw new NotImplementedException();
-        }
+        protected override object TransformModelToOutputObject(ManagedDatabaseSensitivityClassificationModel model) => true;
     }
 }

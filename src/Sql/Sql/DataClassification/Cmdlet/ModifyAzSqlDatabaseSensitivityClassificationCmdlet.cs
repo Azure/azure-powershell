@@ -1,24 +1,19 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Hyak.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.DataClassification.Model;
 using Microsoft.Azure.Commands.Sql.DataClassification.Services;
+using System;
+using System.Collections.Generic;
 using System.Management.Automation;
+using System.Net;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DataClassificationCommon.SqlDatabaseSensitivityClassification),
-        OutputType(typeof(SqlDatabaseSensitivityClassificationModel))]
-    public class GetAzSqlDatabaseSensitivityClassification : AzureSqlDatabaseCmdletBase<SqlDatabaseSensitivityClassificationModel, DataClassificationAdapter>
+    public abstract class ModifyAzSqlDatabaseSensitivityClassificationCmdlet : AzureSqlDatabaseCmdletBase<SqlDatabaseSensitivityClassificationModel, DataClassificationAdapter>
     {
-        [Parameter(
-            ParameterSetName = DataClassificationCommon.DatabaseParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = DataClassificationCommon.ResourceGroupNameHelpMessage)]
         [Parameter(
             ParameterSetName = DataClassificationCommon.ColumnParameterSet,
             Mandatory = true,
@@ -30,12 +25,6 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         public override string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = DataClassificationCommon.DatabaseParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = DataClassificationCommon.ServerNameHelpMessage)]
-        [Parameter(
             ParameterSetName = DataClassificationCommon.ColumnParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -45,12 +34,6 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         [ValidateNotNullOrEmpty]
         public override string ServerName { get; set; }
 
-        [Parameter(
-            ParameterSetName = DataClassificationCommon.DatabaseParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = DataClassificationCommon.DatabaseNameHelpMessage)]
         [Parameter(
             ParameterSetName = DataClassificationCommon.ColumnParameterSet,
             Mandatory = true,
@@ -62,16 +45,11 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         public override string DatabaseName { get; set; }
 
         [Parameter(
-            ParameterSetName = DataClassificationCommon.DatabaseObjectParameterSet,
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = DataClassificationCommon.SqlDatabaseObjectHelpMessage)]
-        [Parameter(
             ParameterSetName = DataClassificationCommon.DatabaseObjectColumnParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = DataClassificationCommon.SqlDatabaseObjectHelpMessage)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public AzureSqlDatabaseModel DatabaseObject { get; set; }
 
         [Parameter(
@@ -113,35 +91,27 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         public string ColumnName { get; set; }
 
         [Parameter(
+            ParameterSetName = DataClassificationCommon.ClassificationObjectParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = DataClassificationCommon.SqlDatabaseSensitivityClassificationObjectHelpMessage)]
+        [ValidateNotNull]
+        public SqlDatabaseSensitivityClassificationModel ClassificationObject { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = DataClassificationCommon.PassThruHelpMessage)]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = DataClassificationCommon.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
-        protected override SqlDatabaseSensitivityClassificationModel GetEntity()
-        {
-            if (DatabaseObject != null)
-            {
-                ResourceGroupName = DatabaseObject.ResourceGroupName;
-                ServerName = DatabaseObject.ServerName;
-                DatabaseName = DatabaseObject.DatabaseName;
-            }
+        protected override DataClassificationAdapter InitModelAdapter() => new DataClassificationAdapter(DefaultProfile.DefaultContext);
 
-            return new SqlDatabaseSensitivityClassificationModel()
-            {
-                ResourceGroupName = ResourceGroupName,
-                ServerName = ServerName,
-                DatabaseName = DatabaseName,
-                SensitivityLabels = ParameterSetName == DataClassificationCommon.ColumnParameterSet ||
-                    ParameterSetName == DataClassificationCommon.DatabaseObjectColumnParameterSet
-                    ? ModelAdapter.GetCurrentSensitivityLabel(
-                        ResourceGroupName, ServerName, DatabaseName, SchemaName, TableName, ColumnName)
-                    : ModelAdapter.GetCurrentSensitivityLabels(ResourceGroupName, ServerName, DatabaseName)
-            };
-        }
+        protected override bool WriteResult() => PassThru;
 
-        protected override DataClassificationAdapter InitModelAdapter()
-        {
-            return new DataClassificationAdapter(DefaultProfile.DefaultContext);
-        }
+        protected override object TransformModelToOutputObject(SqlDatabaseSensitivityClassificationModel model) => true;
     }
 }
