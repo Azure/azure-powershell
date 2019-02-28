@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = DefaultParameterSet, HelpMessage = "Spatial Anchors Account Name.")]
-        [ResourceNameCompleter(FullQualifiedResourceType)]
+        [ResourceNameCompleter(FullQualifiedResourceType, nameof(ResourceGroupName))]
         [Alias("SpatialAnchorsAccountName", "AccountName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
 
         [Parameter(Mandatory = true, ParameterSetName = RegeneratePrimaryKeyParameterSetName, HelpMessage = NameHelpMessage)]
         [Parameter(Mandatory = true, ParameterSetName = RegenerateSecondaryKeyParameterSetName, HelpMessage = NameHelpMessage)]
-        [ResourceNameCompleter(FullQualifiedResourceType)]
+        [ResourceNameCompleter(FullQualifiedResourceType, nameof(ResourceGroupName))]
         [Alias("SpatialAnchorsAccountName", "AccountName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
