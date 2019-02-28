@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.0
 * Add support for restore an instance database from geo-redundant backups
 
 ## Version 1.3.0
