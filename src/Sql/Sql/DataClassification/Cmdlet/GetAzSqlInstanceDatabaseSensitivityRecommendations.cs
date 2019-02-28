@@ -14,44 +14,44 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
     public class GetAzSqlInstanceDatabaseSensitivityRecommendations : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
     {
         [Parameter(
-            ParameterSetName = DefinitionsCommon.DatabaseParameterSet,
+            ParameterSetName = DataClassificationCommon.DatabaseParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = DefinitionsCommon.ResourceGroupNameHelpMessage)]
+            HelpMessage = DataClassificationCommon.ResourceGroupNameHelpMessage)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.DatabaseParameterSet,
+            ParameterSetName = DataClassificationCommon.DatabaseParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = DefinitionsCommon.InstanceNameHelpMessage)]
+            HelpMessage = DataClassificationCommon.InstanceNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string InstanceName { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.DatabaseParameterSet,
+            ParameterSetName = DataClassificationCommon.DatabaseParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = DefinitionsCommon.ManagedDatabaseNameHelpMessage)]
+            HelpMessage = DataClassificationCommon.ManagedDatabaseNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.DatabaseObjectParameterSet,
+            ParameterSetName = DataClassificationCommon.DatabaseObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = DefinitionsCommon.ManagedDatabaseObjectHelpMessage)]
+            HelpMessage = DataClassificationCommon.ManagedDatabaseObjectHelpMessage)]
         [ValidateNotNull]
         public AzureSqlManagedDatabaseModel DatabaseObject { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = DefinitionsCommon.AsJobHelpMessage)]
+            HelpMessage = DataClassificationCommon.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
         protected override ManagedDatabaseSensitivityClassificationModel GetEntity()
