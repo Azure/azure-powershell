@@ -61,6 +61,24 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 9469b9f5-6722-4481-a2b2-14ed560b706f.
+        /// </summary>
+        internal static string AzureCloudKailaniAppId {
+            get {
+                return ResourceManager.GetString("AzureCloudKailaniAppId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ce88d19b-f69a-4c2e-ac8a-d1aa9db611e8.
+        /// </summary>
+        internal static string AzureUSGovernmentKailaniAppId {
+            get {
+                return ResourceManager.GetString("AzureUSGovernmentKailaniAppId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Certificate thumbprints not found. Check if server is registered..
         /// </summary>
         internal static string CertificateThumbprintNotFound {
@@ -138,15 +156,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         internal static string InvokeStorageSyncFileRecallActionMessage {
             get {
                 return ResourceManager.GetString("InvokeStorageSyncFileRecallActionMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 9469b9f5-6722-4481-a2b2-14ed560b706f.
-        /// </summary>
-        internal static string KailaniApplicationId {
-            get {
-                return ResourceManager.GetString("KailaniApplicationId", resourceCulture);
             }
         }
         
