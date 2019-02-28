@@ -13,7 +13,7 @@
 # ----------------------------------------------------------------------------------
 
 $TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
-$ResourcesPath = Join-Path $TestOutputRoot "ScenarioTests" "Resources"
+$ResourcesPath = Join-Path (Join-Path $TestOutputRoot "ScenarioTests") "Resources"
 
 <#
 .SYNOPSIS

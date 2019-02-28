@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.3.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.25.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.27.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.8.1-preview" />
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.2.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.19.0-preview" />
