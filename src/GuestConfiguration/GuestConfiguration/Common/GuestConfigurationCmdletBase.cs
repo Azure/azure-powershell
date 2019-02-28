@@ -280,8 +280,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
             var categoryMetadataDictionary = categoryMetadata.ToObject<Dictionary<string, object>>();
             if (categoryMetadataDictionary.ContainsKey("category"))
             {
-                var category = categoryMetadataDictionary["category"].ToString();
-                return category;
+                return categoryMetadataDictionary["category"].ToString();                
             }
 
             return string.Empty;

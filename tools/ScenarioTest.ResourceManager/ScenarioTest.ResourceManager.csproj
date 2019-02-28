@@ -8,8 +8,7 @@
     <IncludeCommonTestProject>false</IncludeCommonTestProject>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.GuestConfiguration" Version="1.1.0" />
+  <ItemGroup>    
     <PackageReference Include="Moq" Version="4.7.145" />
   </ItemGroup>
 
