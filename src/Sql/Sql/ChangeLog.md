@@ -18,8 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add support for restore an instance database from geo-redundant backups
+
+## Version 1.3.0
 * Add support for SQL DB Hyperscale tier
 * Fixed bug where restore could fail due to setting unnecessary properties in restore request
+
 
 ## Version 1.2.0
 * Add Get/Set AzSqlDatabaseBackupShortTermRetentionPolicy

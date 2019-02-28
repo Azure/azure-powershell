@@ -2,35 +2,28 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <OmitJsonPackage>true</OmitJsonPackage>
+    <IsTestProject>true</IsTestProject>
   </PropertyGroup>
   <Import Project="$(MSBuildThisFileDirectory)\Common.Netcore.Dependencies.targets" />
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.1-preview" >
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.13.3" >
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.7" >
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.7.6" >
-      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
-    </PackageReference>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.13.3" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.7" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.7.6" />
     <PackageReference Include="xunit" Version="2.4.0" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="xunit.runner.console" Version="2.4.0" />
-    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.0.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Management.Automation">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(windir)\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
     </Reference>
     <PackageReference Include="Newtonsoft.Json" version="10.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="1.1.0" />
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
