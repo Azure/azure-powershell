@@ -27,28 +27,28 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetBlueprintAssignment");
         }
 
-        [Fact]
+        [Fact(Skip = "Investigate auto-registration for RP")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewBlueprintAssignmentWithSystemAssignedIdentity()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewBlueprintAssignmentWithSystemAssignedIdentity");
         }
 
-        [Fact]
+        [Fact(Skip="Investigate auto-registration for RP")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewBlueprintAssignment()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewBlueprintAssignment");
         }
 
-        [Fact]
+        [Fact(Skip = "Investigate auto-registration for RP")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetBlueprintAssignment()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetBlueprintAssignment");
         }
 
-        [Fact]
+        [Fact(Skip = "Investigate auto-registration for RP")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveBlueprintAssignment()
         {
