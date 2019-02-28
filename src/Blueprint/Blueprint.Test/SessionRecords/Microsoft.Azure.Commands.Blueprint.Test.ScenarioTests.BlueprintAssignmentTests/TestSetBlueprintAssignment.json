@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "//providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1?api-version=2018-11-01-preview",
-      "EncodedRequestUri": "Ly9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZW1lbnQvbWFuYWdlbWVudEdyb3Vwcy9BekJsdWVwcmludEFzc2lnblRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5CbHVlcHJpbnQvYmx1ZXByaW50cy9GaWxpei1Qcy1UZXN0MT9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
+      "RequestUri": "//providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "Ly9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZW1lbnQvbWFuYWdlbWVudEdyb3Vwcy9BekJsdWVwcmludEFzc2lnblRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5CbHVlcHJpbnQvYmx1ZXByaW50cy9GaWxpei1Qcy1UZXN0MS92ZXJzaW9ucz9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ec0c03e3-8d1d-41be-ae41-03c48a9d3a45"
+          "58d3d4d3-d025-4c69-8e53-8bb830741859"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,19 +27,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "045d834c-0ef9-4c47-a423-fefa420b25b5"
+          "8dd0d42f-4a06-4958-bbd3-9693dedaf361"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11999"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "5e3d31ea-a626-4ec0-84d7-40e212803ea5"
+          "0efd8e7c-f782-4457-90e0-c593c3b5a076"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190225T212248Z:5e3d31ea-a626-4ec0-84d7-40e212803ea5"
+          "WESTUS2:20190228T202629Z:0efd8e7c-f782-4457-90e0-c593c3b5a076"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -48,10 +48,10 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 25 Feb 2019 21:22:48 GMT"
+          "Thu, 28 Feb 2019 20:26:29 GMT"
         ],
         "Content-Length": [
-          "956"
+          "1947"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -60,7 +60,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"type\": \"string\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Effect (Policy: Audit use of classic virtual machines)\"\r\n        },\r\n        \"defaultValue\": \"Audit\",\r\n        \"allowedValues\": [\r\n          \"Audit\",\r\n          \"Disabled\"\r\n        ]\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"metadata\": {\r\n          \"displayName\": \"filiz-ps-testrg\"\r\n        },\r\n        \"dependsOn\": []\r\n      }\r\n    },\r\n    \"targetScope\": \"subscription\",\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-03T09:12:58-08:00\",\r\n      \"lastModified\": \"2019-02-03T10:13:28-08:00\"\r\n    },\r\n    \"description\": \"testing\"\r\n  },\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1\",\r\n  \"type\": \"Microsoft.Blueprint/blueprints\",\r\n  \"name\": \"Filiz-Ps-Test1\"\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"blueprintName\": \"Filiz-Ps-Test1\",\r\n        \"parameters\": {},\r\n        \"resourceGroups\": {\r\n          \"ResourceGroup\": {\r\n            \"metadata\": {\r\n              \"displayName\": \"filiz-ps-testrg\"\r\n            },\r\n            \"dependsOn\": []\r\n          }\r\n        },\r\n        \"targetScope\": \"subscription\",\r\n        \"status\": {\r\n          \"timeCreated\": \"2019-02-03T09:13:27-08:00\",\r\n          \"lastModified\": \"2019-02-03T09:13:27-08:00\"\r\n        },\r\n        \"description\": \"testing\"\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/1.0\",\r\n      \"type\": \"Microsoft.Blueprint/blueprints/versions\",\r\n      \"name\": \"1.0\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"blueprintName\": \"Filiz-Ps-Test1\",\r\n        \"parameters\": {\r\n          \"audituseofclassicvirtualmachines_effect\": {\r\n            \"type\": \"string\",\r\n            \"metadata\": {\r\n              \"displayName\": \"Effect (Policy: Audit use of classic virtual machines)\"\r\n            },\r\n            \"defaultValue\": \"Audit\",\r\n            \"allowedValues\": [\r\n              \"Audit\",\r\n              \"Disabled\"\r\n            ]\r\n          }\r\n        },\r\n        \"resourceGroups\": {\r\n          \"ResourceGroup\": {\r\n            \"metadata\": {\r\n              \"displayName\": \"filiz-ps-testrg\"\r\n            },\r\n            \"dependsOn\": []\r\n          }\r\n        },\r\n        \"targetScope\": \"subscription\",\r\n        \"status\": {\r\n          \"timeCreated\": \"2019-02-03T10:13:34-08:00\",\r\n          \"lastModified\": \"2019-02-03T10:13:34-08:00\"\r\n        },\r\n        \"description\": \"testing\"\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n      \"type\": \"Microsoft.Blueprint/blueprints/versions\",\r\n      \"name\": \"2.0\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -70,7 +70,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0000abcd-a80f-4fbf-b9bb-e6478b1ccd27"
+          "37dc7bd9-5cd7-4ce9-84b5-67df552bd99e"
         ],
         "Accept-Language": [
           "en-US"
@@ -90,7 +90,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "307fac2c-906e-451f-af8a-addf3ef4046c"
+          "8e52fbc0-9263-4743-aad0-0bbecc981d80"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -99,10 +99,10 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "79674fd4-c99d-4f3d-a6fd-77c12ab97fe4"
+          "6b1002e1-defa-4932-8a8c-0b92d0eb7745"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190225T212249Z:79674fd4-c99d-4f3d-a6fd-77c12ab97fe4"
+          "WESTUS2:20190228T202630Z:6b1002e1-defa-4932-8a8c-0b92d0eb7745"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 25 Feb 2019 21:22:49 GMT"
+          "Thu, 28 Feb 2019 20:26:30 GMT"
         ],
         "Content-Length": [
           "194"
@@ -133,7 +133,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0f65e412-cd38-48a4-bff4-1e105e0cbfa8"
+          "03dea370-9f7b-4450-81cb-a0a0d573e5cf"
         ],
         "Accept-Language": [
           "en-US"
@@ -153,7 +153,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "acff1c76-3db8-4934-a0ca-8a504a1e0375"
+          "321cd312-6353-4509-9bd5-1d8649775e51"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -162,10 +162,10 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "7f6ad2c1-18ad-4bf5-8cf4-baad6724bf91"
+          "02115fc6-daf3-409d-9f77-22454cbf9be5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190225T212253Z:7f6ad2c1-18ad-4bf5-8cf4-baad6724bf91"
+          "WESTUS2:20190228T202635Z:02115fc6-daf3-409d-9f77-22454cbf9be5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -174,7 +174,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 25 Feb 2019 21:22:52 GMT"
+          "Thu, 28 Feb 2019 20:26:35 GMT"
         ],
         "Content-Length": [
           "1438"
@@ -186,7 +186,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {\r\n        \"principalId\": \"613933a9-4c82-49b6-b90c-9a4d18c6e3d3\",\r\n        \"clientId\": \"423694c8-02b8-41c9-af47-9efc9d24f763\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"creating\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-25T13:22:52-08:00\",\r\n      \"lastModified\": \"2019-02-25T13:22:52-08:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"PS-ScenarioTest-SetAssignment\"\r\n}",
+      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {\r\n        \"principalId\": \"613933a9-4c82-49b6-b90c-9a4d18c6e3d3\",\r\n        \"clientId\": \"423694c8-02b8-41c9-af47-9efc9d24f763\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"creating\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-28T12:26:34-08:00\",\r\n      \"lastModified\": \"2019-02-28T12:26:35-08:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"PS-ScenarioTest-SetAssignment\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -196,7 +196,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d55a4aab-bbea-41cb-804e-15e137f4b261"
+          "5e71dd88-918e-46a6-babc-07baf017c187"
         ],
         "Accept-Language": [
           "en-US"
@@ -216,7 +216,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3c33124e-7839-4800-bb08-7be4481c69fb"
+          "82e2d4da-3c31-449a-99d0-16c6f2d9d39e"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -225,10 +225,10 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "aa27f651-effa-4feb-bf9d-a1dd02f794ae"
+          "25090180-bde4-4ff6-a173-a9fdc3896a85"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190225T212253Z:aa27f651-effa-4feb-bf9d-a1dd02f794ae"
+          "WESTUS2:20190228T202635Z:25090180-bde4-4ff6-a173-a9fdc3896a85"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -237,7 +237,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 25 Feb 2019 21:22:52 GMT"
+          "Thu, 28 Feb 2019 20:26:35 GMT"
         ],
         "Content-Length": [
           "1438"
@@ -249,7 +249,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {\r\n        \"principalId\": \"613933a9-4c82-49b6-b90c-9a4d18c6e3d3\",\r\n        \"clientId\": \"423694c8-02b8-41c9-af47-9efc9d24f763\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"creating\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-25T13:22:52-08:00\",\r\n      \"lastModified\": \"2019-02-25T13:22:52-08:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"PS-ScenarioTest-SetAssignment\"\r\n}",
+      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {\r\n        \"principalId\": \"613933a9-4c82-49b6-b90c-9a4d18c6e3d3\",\r\n        \"clientId\": \"423694c8-02b8-41c9-af47-9efc9d24f763\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"creating\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-28T12:26:34-08:00\",\r\n      \"lastModified\": \"2019-02-28T12:26:35-08:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"PS-ScenarioTest-SetAssignment\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -259,7 +259,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0c6c87d4-7477-4028-998b-29a2f58a8819"
+          "62da77bb-a535-49a3-adc0-3349260baa89"
         ],
         "Accept-Language": [
           "en-US"
@@ -279,7 +279,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e8d19027-ee1e-48ec-8bc4-c00afbe40644"
+          "ca03e43b-f67a-4641-9641-cf254fa94994"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -288,10 +288,10 @@
           "11996"
         ],
         "x-ms-correlation-request-id": [
-          "bd1256d5-1354-4a3d-8494-f3bbc74e4d7e"
+          "8e21d26f-fac0-498b-b3b7-905ac5cea6fa"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190225T212303Z:bd1256d5-1354-4a3d-8494-f3bbc74e4d7e"
+          "WESTUS2:20190228T202646Z:8e21d26f-fac0-498b-b3b7-905ac5cea6fa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -300,10 +300,10 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 25 Feb 2019 21:23:02 GMT"
+          "Thu, 28 Feb 2019 20:26:45 GMT"
         ],
         "Content-Length": [
-          "1437"
+          "1439"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -312,7 +312,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {\r\n        \"principalId\": \"613933a9-4c82-49b6-b90c-9a4d18c6e3d3\",\r\n        \"clientId\": \"423694c8-02b8-41c9-af47-9efc9d24f763\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"waiting\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-25T13:22:52-08:00\",\r\n      \"lastModified\": \"2019-02-25T13:22:55-08:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"PS-ScenarioTest-SetAssignment\"\r\n}",
+      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {\r\n        \"principalId\": \"613933a9-4c82-49b6-b90c-9a4d18c6e3d3\",\r\n        \"clientId\": \"423694c8-02b8-41c9-af47-9efc9d24f763\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"succeeded\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-28T12:26:34-08:00\",\r\n      \"lastModified\": \"2019-02-28T12:26:44-08:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"PS-ScenarioTest-SetAssignment\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -322,7 +322,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ecbfc5e0-339c-4607-8765-aa46a32bb963"
+          "9dbe1186-c49d-47a7-8f4b-e41afd00ee04"
         ],
         "Accept-Language": [
           "en-US"
@@ -342,7 +342,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "07b8d3aa-3d73-4d14-86f1-d6952d3ba17f"
+          "99efe15f-bd55-47f2-a4f9-42c0bd6f90c0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -351,10 +351,10 @@
           "11995"
         ],
         "x-ms-correlation-request-id": [
-          "3784a642-383c-458e-93f6-5bf7bfa993fb"
+          "265e9bc8-ce9b-4aba-9fbc-9bb47228f6d4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190225T212313Z:3784a642-383c-458e-93f6-5bf7bfa993fb"
+          "WESTUS2:20190228T202646Z:265e9bc8-ce9b-4aba-9fbc-9bb47228f6d4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -363,133 +363,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 25 Feb 2019 21:23:12 GMT"
-        ],
-        "Content-Length": [
-          "1437"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {\r\n        \"principalId\": \"613933a9-4c82-49b6-b90c-9a4d18c6e3d3\",\r\n        \"clientId\": \"423694c8-02b8-41c9-af47-9efc9d24f763\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"waiting\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-25T13:22:52-08:00\",\r\n      \"lastModified\": \"2019-02-25T13:22:55-08:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"PS-ScenarioTest-SetAssignment\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "//subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment?api-version=2018-11-01-preview",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzI4Y2JmOThmLTM4MWQtNDQyNS05YWM0LWNmMzQyZGFiOTc1My9wcm92aWRlcnMvTWljcm9zb2Z0LkJsdWVwcmludC9ibHVlcHJpbnRBc3NpZ25tZW50cy9QUy1TY2VuYXJpb1Rlc3QtU2V0QXNzaWdubWVudD9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "d84b74c5-c07c-4420-bb53-f3142d61521b"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27129.04",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Blueprint.BlueprintManagementClient/0.10.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "3459a198-8554-47e0-929f-696263d1016b"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
-        ],
-        "x-ms-correlation-request-id": [
-          "6c35d244-fb6f-43db-8d9e-5fd11de32581"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20190225T212323Z:6c35d244-fb6f-43db-8d9e-5fd11de32581"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 25 Feb 2019 21:23:22 GMT"
-        ],
-        "Content-Length": [
-          "1437"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {\r\n        \"principalId\": \"613933a9-4c82-49b6-b90c-9a4d18c6e3d3\",\r\n        \"clientId\": \"423694c8-02b8-41c9-af47-9efc9d24f763\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"waiting\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-25T13:22:52-08:00\",\r\n      \"lastModified\": \"2019-02-25T13:22:55-08:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"PS-ScenarioTest-SetAssignment\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "//subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment?api-version=2018-11-01-preview",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzI4Y2JmOThmLTM4MWQtNDQyNS05YWM0LWNmMzQyZGFiOTc1My9wcm92aWRlcnMvTWljcm9zb2Z0LkJsdWVwcmludC9ibHVlcHJpbnRBc3NpZ25tZW50cy9QUy1TY2VuYXJpb1Rlc3QtU2V0QXNzaWdubWVudD9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "c0b6e836-7a86-4fe6-99a3-eb29d5753eac"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27129.04",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Blueprint.BlueprintManagementClient/0.10.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "30eb19f1-d4a6-4a4a-810b-83118633443c"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-correlation-request-id": [
-          "56b1991a-e2ad-4605-9a41-59298307bbbb"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20190225T212333Z:56b1991a-e2ad-4605-9a41-59298307bbbb"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 25 Feb 2019 21:23:32 GMT"
+          "Thu, 28 Feb 2019 20:26:45 GMT"
         ],
         "Content-Length": [
           "1439"
@@ -501,80 +375,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {\r\n        \"principalId\": \"613933a9-4c82-49b6-b90c-9a4d18c6e3d3\",\r\n        \"clientId\": \"423694c8-02b8-41c9-af47-9efc9d24f763\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"succeeded\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-25T13:22:52-08:00\",\r\n      \"lastModified\": \"2019-02-25T13:23:32-08:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"PS-ScenarioTest-SetAssignment\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "//subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment?api-version=2018-11-01-preview",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzI4Y2JmOThmLTM4MWQtNDQyNS05YWM0LWNmMzQyZGFiOTc1My9wcm92aWRlcnMvTWljcm9zb2Z0LkJsdWVwcmludC9ibHVlcHJpbnRBc3NpZ25tZW50cy9QUy1TY2VuYXJpb1Rlc3QtU2V0QXNzaWdubWVudD9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ae72cde1-fc19-4326-a060-da7a906800cf"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27129.04",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Blueprint.BlueprintManagementClient/0.10.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "83fb2370-e1f7-4c14-8bf3-25eac786c471"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
-        ],
-        "x-ms-correlation-request-id": [
-          "3b275ad6-bb59-48f6-a269-3726508ced75"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20190225T212333Z:3b275ad6-bb59-48f6-a269-3726508ced75"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 25 Feb 2019 21:23:32 GMT"
-        ],
-        "Content-Length": [
-          "1439"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {\r\n        \"principalId\": \"613933a9-4c82-49b6-b90c-9a4d18c6e3d3\",\r\n        \"clientId\": \"423694c8-02b8-41c9-af47-9efc9d24f763\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"succeeded\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-25T13:22:52-08:00\",\r\n      \"lastModified\": \"2019-02-25T13:23:32-08:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"PS-ScenarioTest-SetAssignment\"\r\n}",
+      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {\r\n        \"principalId\": \"613933a9-4c82-49b6-b90c-9a4d18c6e3d3\",\r\n        \"clientId\": \"423694c8-02b8-41c9-af47-9efc9d24f763\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"succeeded\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-28T12:26:34-08:00\",\r\n      \"lastModified\": \"2019-02-28T12:26:44-08:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"PS-ScenarioTest-SetAssignment\"\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "//subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment?api-version=2018-11-01-preview",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzI4Y2JmOThmLTM4MWQtNDQyNS05YWM0LWNmMzQyZGFiOTc1My9wcm92aWRlcnMvTWljcm9zb2Z0LkJsdWVwcmludC9ibHVlcHJpbnRBc3NpZ25tZW50cy9QUy1TY2VuYXJpb1Rlc3QtU2V0QXNzaWdubWVudD9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"locks\": {\r\n      \"mode\": \"None\"\r\n    }\r\n  },\r\n  \"location\": \"East US\"\r\n}",
+      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"locks\": {\r\n      \"mode\": \"None\"\r\n    }\r\n  },\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "646a647f-ce32-426f-85b0-8494d0a98978"
+          "8c3251f9-975b-424b-aa86-a43fd2aa63d7"
         ],
         "Accept-Language": [
           "en-US"
@@ -589,7 +400,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "758"
+          "771"
         ]
       },
       "ResponseHeaders": {
@@ -600,7 +411,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "d41b398b-c2a1-4288-9f94-67b17fe4854f"
+          "7df21188-7d52-40b0-86fe-1f4bc27b0e60"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -609,10 +420,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "2aabc675-a958-4b7d-a789-63b3eceaf57b"
+          "d5354580-06c7-4967-8214-e0395d135169"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190225T212252Z:2aabc675-a958-4b7d-a789-63b3eceaf57b"
+          "WESTUS2:20190228T202635Z:d5354580-06c7-4967-8214-e0395d135169"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -621,7 +432,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 25 Feb 2019 21:22:52 GMT"
+          "Thu, 28 Feb 2019 20:26:35 GMT"
         ],
         "Content-Length": [
           "1438"
@@ -633,17 +444,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {\r\n        \"principalId\": \"613933a9-4c82-49b6-b90c-9a4d18c6e3d3\",\r\n        \"clientId\": \"423694c8-02b8-41c9-af47-9efc9d24f763\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"creating\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-25T13:22:52-08:00\",\r\n      \"lastModified\": \"2019-02-25T13:22:52-08:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"PS-ScenarioTest-SetAssignment\"\r\n}",
+      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {\r\n        \"principalId\": \"613933a9-4c82-49b6-b90c-9a4d18c6e3d3\",\r\n        \"clientId\": \"423694c8-02b8-41c9-af47-9efc9d24f763\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"creating\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-28T12:26:34-08:00\",\r\n      \"lastModified\": \"2019-02-28T12:26:35-08:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"PS-ScenarioTest-SetAssignment\"\r\n}",
       "StatusCode": 201
     },
     {
       "RequestUri": "//subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment?api-version=2018-11-01-preview",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzI4Y2JmOThmLTM4MWQtNDQyNS05YWM0LWNmMzQyZGFiOTc1My9wcm92aWRlcnMvTWljcm9zb2Z0LkJsdWVwcmludC9ibHVlcHJpbnRBc3NpZ25tZW50cy9QUy1TY2VuYXJpb1Rlc3QtU2V0QXNzaWdubWVudD9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg-new\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"locks\": {\r\n      \"mode\": \"None\"\r\n    }\r\n  },\r\n  \"location\": \"East US\"\r\n}",
+      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg-new\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"locks\": {\r\n      \"mode\": \"None\"\r\n    }\r\n  },\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0995d210-ad72-464c-9a65-4db2edac2a4d"
+          "b059603a-ee4c-416d-b464-ab92463c04b6"
         ],
         "Accept-Language": [
           "en-US"
@@ -658,7 +469,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "762"
+          "775"
         ]
       },
       "ResponseHeaders": {
@@ -669,7 +480,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "535d4c7a-028d-4893-9357-bf8bdabce80f"
+          "cf328594-ca31-431f-a7c4-84dd79ab4a86"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -678,10 +489,10 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "d53fcb89-6601-4781-9018-6c19175c2014"
+          "baebaae9-ede4-4ae0-8fe0-158f16d969b0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190225T212335Z:d53fcb89-6601-4781-9018-6c19175c2014"
+          "WESTUS2:20190228T202648Z:baebaae9-ede4-4ae0-8fe0-158f16d969b0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -690,7 +501,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 25 Feb 2019 21:23:34 GMT"
+          "Thu, 28 Feb 2019 20:26:47 GMT"
         ],
         "Content-Length": [
           "1442"
@@ -702,7 +513,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {\r\n        \"principalId\": \"613933a9-4c82-49b6-b90c-9a4d18c6e3d3\",\r\n        \"clientId\": \"423694c8-02b8-41c9-af47-9efc9d24f763\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"creating\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg-new\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-25T13:23:35-08:00\",\r\n      \"lastModified\": \"2019-02-25T13:23:35-08:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"PS-ScenarioTest-SetAssignment\"\r\n}",
+      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity\": {\r\n        \"principalId\": \"613933a9-4c82-49b6-b90c-9a4d18c6e3d3\",\r\n        \"clientId\": \"423694c8-02b8-41c9-af47-9efc9d24f763\"\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"creating\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/Filiz-Ps-Test1/versions/2.0\",\r\n    \"parameters\": {\r\n      \"audituseofclassicvirtualmachines_effect\": {\r\n        \"value\": \"Audit\"\r\n      }\r\n    },\r\n    \"resourceGroups\": {\r\n      \"ResourceGroup\": {\r\n        \"name\": \"bp-testrg-new\",\r\n        \"location\": \"eastus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2019-02-28T12:26:48-08:00\",\r\n      \"lastModified\": \"2019-02-28T12:26:48-08:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprintAssignments/PS-ScenarioTest-SetAssignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"PS-ScenarioTest-SetAssignment\"\r\n}",
       "StatusCode": 201
     }
   ],

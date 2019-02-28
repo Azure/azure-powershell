@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using Microsoft.Azure.Commands.Blueprint.Cmdlets;
 using Microsoft.Azure.Commands.Blueprint.Common;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
@@ -16,7 +17,6 @@ using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Blueprint;
 using LegacyResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
-
 using Microsoft.Rest;
 
 
@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
         public ResourceManagementClient ResourceManagerClient { get; private set; }
         public LegacyResourceManagementClient LegacyResourceManagementClient { get; private set; }
-
 
         public static TestController NewInstance => new TestController();
 
@@ -101,6 +100,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath("AzureRM.Blueprint.psd1"),
+                    _helper.GetRMModulePath("AzureRM.Resources.psd1"),
                     "ScenarioTests\\" + callingClassName + ".ps1");
                 try
                 {
@@ -119,9 +119,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
 
         private static BlueprintManagementClient GetBlueprintManagementClient(MockContext context)
         {
-            var handler = new DelegatingHandler[] { new ApiExpandHandler()};
-
-            return context.GetServiceClient<BlueprintManagementClient>(TestEnvironmentFactory.GetTestEnvironment(), false, handler);
+            return context.GetServiceClient<BlueprintManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static GraphRbacManagementClient GetGraphRbacManagementClient(MockContext context)

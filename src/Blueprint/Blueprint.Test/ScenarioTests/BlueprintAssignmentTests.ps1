@@ -27,11 +27,10 @@ function Test-NewBlueprintAssignment
 	$rgs = @{ResourceGroup=$rg1}
 	$identity = "/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity"
 
-    $blueprint = Get-AzBlueprint -ManagementGroupId $mgId -Name $blueprintName
+    $blueprint = Get-AzBlueprint -ManagementGroupId $mgId -Name $blueprintName -LatestPublished
 	Assert-NotNull $blueprint
-	Assert-AreEqual $blueprintName $blueprint.Name
 	
-	$assignment = New-AzBlueprintAssignment -Name $assignmentName -Blueprint $blueprint -SubscriptionId $subscriptionId -Location $location -Parameters $params -ResourceGroups $rgs -UserAssignedIdentity $identity
+	$assignment = New-AzBlueprintAssignment -Name $assignmentName -Blueprint $blueprint -SubscriptionId $subscriptionId -Location $location -Parameter $params -ResourceGroup $rgs -UserAssignedIdentity $identity
 
 	$expectedProvisioningState = "Creating"
 	Assert-NotNull $assignment
@@ -49,9 +48,8 @@ function Test-NewBlueprintAssignmentWithSystemAssignedIdentity
 	$deployment = New-AzDeployment -Name $blueprintName -Location $location -TemplateFile SubscriptionLevelSimpleBlueprint.json
     Assert-AreEqual Succeeded $deployment.ProvisioningState
 
-    $blueprint = Get-AzBlueprint -SubscriptionId $subscriptionId -Name $blueprintName
+    $blueprint = Get-AzBlueprint -SubscriptionId $subscriptionId -Name $blueprintName -LatestPublished
 	Assert-NotNull $blueprint
-	Assert-AreEqual $blueprintName $blueprint.Name
 	
 	$assignment = New-AzBlueprintAssignment -Name $assignmentName -Blueprint $blueprint -SubscriptionId $subscriptionId -Location $location
 	Assert-NotNull $assignment
@@ -70,12 +68,11 @@ function Test-SetBlueprintAssignment
 	$identity = "/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity"
 
 	# Get the test blueprint
-    $blueprint = Get-AzBlueprint -ManagementGroupId $mgId -Name $blueprintName
+    $blueprint = Get-AzBlueprint -ManagementGroupId $mgId -Name $blueprintName -LatestPublished
 	Assert-NotNull $blueprint
-	Assert-AreEqual $blueprintName $blueprint.Name
 
 	# Assign blueprint
-	$assignment = New-AzBlueprintAssignment -Name $assignmentName -Blueprint $blueprint -SubscriptionId $subscriptionId -Location $location -Parameters $params -ResourceGroups $rgs -UserAssignedIdentity $identity
+	$assignment = New-AzBlueprintAssignment -Name $assignmentName -Blueprint $blueprint -SubscriptionId $subscriptionId -Location $location -Parameter $params -ResourceGroup $rgs -UserAssignedIdentity $identity
 	$expectedProvisioningState = "Creating"
 	Assert-NotNull $assignment
 	Assert-AreEqual $assignment.ProvisioningState $expectedProvisioningState
@@ -94,7 +91,7 @@ function Test-SetBlueprintAssignment
 	$newTestRg = "bp-testrg-new"
 	$rg1 = @{name= $newTestRg;location='eastus'}
 	$rgs = @{ResourceGroup=$rg1}
-	$assignment = Set-AzBlueprintAssignment -Name $assignmentName -Blueprint $blueprint -SubscriptionId $subscriptionId -Location $location -Parameters $params -ResourceGroups $rgs -UserAssignedIdentity $identity
+	$assignment = Set-AzBlueprintAssignment -Name $assignmentName -Blueprint $blueprint -SubscriptionId $subscriptionId -Location $location -Parameter $params -ResourceGroup $rgs -UserAssignedIdentity $identity
 	$expectedProvisioningState = "Creating"
 	Assert-NotNull $assignment
 	Assert-AreEqual $assignment.ProvisioningState $expectedProvisioningState
@@ -113,22 +110,21 @@ function Test-RemoveBlueprintAssignment
 	$identity = "/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/user-assigned-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/owner-identity"
 
 	# Get the test blueprint
-    $blueprint = Get-AzBlueprint -ManagementGroupId $mgId -Name $blueprintName
+    $blueprint = Get-AzBlueprint -ManagementGroupId $mgId -Name $blueprintName -LatestPublished
 	Assert-NotNull $blueprint
-	Assert-AreEqual $blueprintName $blueprint.Name
 
 	# Assign blueprint
-	$assignment = New-AzBlueprintAssignment -Name $assignmentName -Blueprint $blueprint -SubscriptionId $subscriptionId -Location $location -Parameters $params -ResourceGroups $rgs -UserAssignedIdentity $identity
+	$assignment = New-AzBlueprintAssignment -Name $assignmentName -Blueprint $blueprint -SubscriptionId $subscriptionId -Location $location -Parameter $params -ResourceGroup $rgs -UserAssignedIdentity $identity
 	$expectedProvisioningState = "Creating"
 	Assert-NotNull $assignment
 	Assert-AreEqual $assignment.ProvisioningState $expectedProvisioningState
 
 	# Retrieve assigned blueprint
 	$assigned = Get-AzBlueprintAssignment -SubscriptionId $subscriptionId -Name $assignmentName
-	while($assigned.ProvisioningState -eq "Creating" -or $assigned.ProvisioningState -eq "Deploying")
+	while($assigned.ProvisioningState -eq "Creating" -or $assigned.ProvisioningState -eq "Deploying" -or $assigned.ProvisioningState -eq "Waiting")
     {
         Wait-Seconds 10
-        $assigned = Get-AzBlueprintAssignment -SubscriptionId $subscriptionId -Name $assignmentName
+        $assigned = Get-AzBlueprintAssignment -SubscriptionId $subscriptionId -Name $assignmentName 
     }
 	
 	# remove assignment
