@@ -13,11 +13,13 @@
   <ItemGroup>
     <PreLoadAssemblies Include="$(RepoSrc)lib\Newtonsoft.Json.10.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Buffers.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Reflection.DispatchProxy.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.ServiceModel.Primitives.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Permissions.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Private.ServiceModel.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Net.Http.WinHttpHandler.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Private.ServiceModel.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Reflection.DispatchProxy.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.AccessControl.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Permissions.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Principal.Windows.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.ServiceModel.Primitives.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.Identity.Client\NetFx\Microsoft.Identity.Client.dll" />
     <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.Identity.Client\NetCore\Microsoft.Identity.Client.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />

@@ -49,19 +49,19 @@
     <LibrarySourceFolder>$(LibraryRoot)src</LibrarySourceFolder>
     <LibraryToolsFolder>$(LibraryRoot)tools</LibraryToolsFolder>
     <LibraryArtifactsFolder>$(LibraryRoot)artifacts</LibraryArtifactsFolder>
-    <LocalFeedFolder>$(LibraryToolsFolder)\LocalFeed</LocalFeedFolder>
+    <LocalFeedFolder>$(LibraryToolsFolder)/LocalFeed</LocalFeedFolder>
     <Configuration Condition=" '$(Configuration)' != 'Release'">Debug</Configuration>
     <CodeSign>false</CodeSign>
     <!--Set this true only if you want to test the code sign workflow locally-->
     <DelaySign Condition =" '$(DelaySign)' == '' ">false</DelaySign>
     <SignedOutputRootDir>$(LibraryRoot)signed</SignedOutputRootDir>
-    <PackageDirectory>$(LibraryRoot)\artifacts</PackageDirectory>
-    <TestOutputDirectory>$(PackageDirectory)\Test</TestOutputDirectory>
+    <PackageDirectory>$(LibraryRoot)artifacts</PackageDirectory>
+    <TestOutputDirectory>$(PackageDirectory)/Test</TestOutputDirectory>
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">$(LibrarySourceFolder)</NuGetPublishingSource>
     <Scope Condition="$(Scope) == ''" >All</Scope>
-    <BuildTasksPath>$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks\bin\$(Configuration)</BuildTasksPath>
-    <StackPackageFolder>$(LibrarySourceFolder)\Stack</StackPackageFolder>
+    <BuildTasksPath>$(LibraryToolsFolder)/BuildPackagesTask/Microsoft.Azure.Build.Tasks/bin/$(Configuration)</BuildTasksPath>
+    <StackPackageFolder>$(LibrarySourceFolder)/Stack</StackPackageFolder>
     <NetCore Condition="'$(NetCore)' != 'true'">false</NetCore>
   </PropertyGroup>
 
@@ -131,7 +131,7 @@
     <Message Importance="high" Text="Cleaning Cmdlets..." />
 
     <!-- Clean out the NuGet cache -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path (Join-Path ($env:USERPROFILE) .nuget packages) -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" ContinueOnError="WarnAndContinue" IgnoreExitCode="true" />
+    <Exec Command="dotnet nuget locals global-packages --clear" ContinueOnError="WarnAndContinue" IgnoreExitCode="true" />
 
     <!-- Remove Package, Publish, bin, obj, and TestResults directories -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path $(PackageDirectory) -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" ContinueOnError="WarnAndContinue" IgnoreExitCode="true" />
@@ -386,6 +386,7 @@
     <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
     <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
 
+    <Message Importance="High" Text="Creating test output directory at '$(TestOutputDirectory)'" />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <ItemGroup>
@@ -401,12 +402,7 @@
     <Exec Command="dotnet sln Azure.PowerShell.sln add $(LibraryRoot)tools/ScenarioTest.ResourceManager/ScenarioTest.ResourceManager.csproj $(LibraryRoot)tools/TestFx/TestFx.csproj" />
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
-    <Exec Command="dotnet test Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework $(Framework) --logger trx" />
-
-    <ItemGroup>
-      <TestResults Include="$(LibraryRoot)src/**/TestResults/*.trx" />
-    </ItemGroup>
-    <Copy SourceFiles="@(TestResults)" DestinationFolder="$(TestOutputDirectory)" />
+    <Exec Command="dotnet test Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework netcoreapp2.0 --logger trx --results-directory &quot;$(TestOutputDirectory)&quot;" />
 
     <OnError ExecuteTargets="TestFailureErrorMessage" />
   </Target>
