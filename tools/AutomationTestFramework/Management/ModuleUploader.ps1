@@ -19,9 +19,9 @@ function Upload-ModuleToStorage (
     Write-Verbose "Uploading module '$moduleName' to Storage container..."
     $zipName = "$moduleName.zip"
     $now = Get-Date
-    $context = (Get-AzureRmStorageAccount -ResourceGroupName $storage.ResourceGroupName -AccountName $storage.AccountName).Context
-    $null = Set-AzureStorageBlobContent -Container $storage.ContainerName -File "$modulePath\$zipName" -Blob $zipName -Context $context -Verbose:$false -Force -ErrorAction Stop
-    New-AzureStorageBlobSASToken -Container $storage.ContainerName -Blob $zipName -Context $context -Permission rwd -StartTime $now.AddHours(-1) -ExpiryTime $now.AddHours(1) -FullUri -ErrorAction Stop
+    $context = (Get-AzStorageAccount -ResourceGroupName $storage.ResourceGroupName -AccountName $storage.AccountName).Context
+    $null = Set-AzStorageBlobContent -Container $storage.ContainerName -File "$modulePath\$zipName" -Blob $zipName -Context $context -Verbose:$false -Force -ErrorAction Stop
+    New-AzStorageBlobSASToken -Container $storage.ContainerName -Blob $zipName -Context $context -Permission rwd -StartTime $now.AddHours(-1) -ExpiryTime $now.AddHours(1) -FullUri -ErrorAction Stop
     Write-Verbose "$zipName uploaded to Storage."
 }
 
@@ -39,7 +39,7 @@ function Poll-ModuleProvisionState ([hashtable] $automation, [string[]] $moduleL
         }
 
         foreach ($moduleName in @($moduleStatuses | Where-Object { $_.Success -eq $null } | ForEach-Object { $_.Name })) {
-            $provisionState = (Get-AzureRmAutomationModule `
+            $provisionState = (Get-AzAutomationModule `
                 -AutomationAccountName $automation.AccountName `
                 -ResourceGroupName $automation.ResourceGroupName `
                 -Name $moduleName `
@@ -68,19 +68,19 @@ function Upload-Modules(
     [hashtable] $signedModules,
     [string] $archiveDir) {
     
-    $signedModuleList = $signedModules.Profile + $signedModules.Storage + $signedModules.Other
+    $signedModuleList = $signedModules.Accounts + $signedModules.Other
     $nonSignedModules = @(Get-ChildItem $archiveDir -ErrorAction Stop `
         | ForEach-Object { $_.BaseName } `
         | Where-Object { $signedModuleList -inotcontains $_ })
 
-    @($signedModules.Profile, $signedModules.Storage, ($signedModules.Other + $nonSignedModules)) | ForEach-Object {
+    @($signedModules.Accounts, ($signedModules.Other + $nonSignedModules)) | ForEach-Object {
         $_ | ForEach-Object {
             $url = Upload-ModuleToStorage `
                 -storage $storage `
                 -modulePath $archiveDir `
                 -moduleName $_ `
             Write-Verbose "Adding module '$_' to Automation account..."
-            $null = New-AzureRmAutomationModule `
+            $null = New-AzAutomationModule `
                 -AutomationAccountName $automation.AccountName `
                 -ResourceGroupName $automation.ResourceGroupName `
                 -Name $_ `

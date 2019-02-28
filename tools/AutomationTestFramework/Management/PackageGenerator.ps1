@@ -77,7 +77,7 @@ function Create-SmokeTestModule(
 }
 
 # Remove version and rename extension .nupkg -> .zip
-# Example: AzureRM.Compute.3.3.2.nupkg -> AzureRM.Compute.zip
+# Example: Az.Compute.3.3.2.nupkg -> Az.Compute.zip
 function Convert-NupkgToZip (
     [string] $path,
     [string[]] $moduleList,
@@ -133,7 +133,7 @@ function Create-SignedModules([hashtable] $signedModules, [string] $modulesDir, 
     }
     Convert-NupkgToZip `
         -path $modulesDir `
-        -moduleList ($signedModules.Profile + $signedModules.Storage + $signedModules.Other) `
+        -moduleList ($signedModules.Accounts + $signedModules.Other) `
         -outputPath $archiveDir
     Write-Verbose "Signed module zips created in '$archiveDir'."
 }
