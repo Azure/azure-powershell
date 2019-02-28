@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Update examples for Connect-AzAccount
+* Add additional framework extensions for .Net Framework execution
 
 ## Version 1.3.0
 * Update to latest version of ClientRuntime

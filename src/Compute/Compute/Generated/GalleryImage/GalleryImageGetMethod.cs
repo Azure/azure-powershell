@@ -107,7 +107,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 2,
-            Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
