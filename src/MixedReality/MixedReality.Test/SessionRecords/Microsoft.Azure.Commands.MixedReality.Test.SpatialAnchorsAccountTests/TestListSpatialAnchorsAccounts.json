@@ -372,7 +372,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"K7qke4iRebTaOCiGmiX2T6OBTu/w7f++7oO/ilXG6z4=\",\r\n  \"secondaryKey\": \"YCVkrPQcOu4B91adbm35ZOAsM4IIZMXzjVvRPlG0HqE=\",\r\n  \"key1\": \"K7qke4iRebTaOCiGmiX2T6OBTu/w7f++7oO/ilXG6z4=\",\r\n  \"key2\": \"YCVkrPQcOu4B91adbm35ZOAsM4IIZMXzjVvRPlG0HqE=\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"K7qke4iRebTaOCiGmiX2T6OBTu/w7f++7oO/ilXG6z4=\",\r\n  \"secondaryKey\": \"YCVkrPQcOu4B91adbm35ZOAsM4IIZMXzjVvRPlG0HqE=\",\r\n}", // [SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="...")]
       "StatusCode": 200
     },
     {
@@ -438,7 +438,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"bJcdWWkcWxmWXt2alW4MRIJ3G2sZQ39GDLFp7ioImfs=\",\r\n  \"secondaryKey\": \"YCVkrPQcOu4B91adbm35ZOAsM4IIZMXzjVvRPlG0HqE=\",\r\n  \"key1\": \"bJcdWWkcWxmWXt2alW4MRIJ3G2sZQ39GDLFp7ioImfs=\",\r\n  \"key2\": \"YCVkrPQcOu4B91adbm35ZOAsM4IIZMXzjVvRPlG0HqE=\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"bJcdWWkcWxmWXt2alW4MRIJ3G2sZQ39GDLFp7ioImfs=\",\r\n  \"secondaryKey\": \"YCVkrPQcOu4B91adbm35ZOAsM4IIZMXzjVvRPlG0HqE=\",\r\n}", // [SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="...")]
       "StatusCode": 200
     },
     {
@@ -504,7 +504,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"bJcdWWkcWxmWXt2alW4MRIJ3G2sZQ39GDLFp7ioImfs=\",\r\n  \"secondaryKey\": \"7nHB1qMyi+SRuTJVlXSP1KNGfqA7vpiGipKKknLF31w=\",\r\n  \"key1\": \"bJcdWWkcWxmWXt2alW4MRIJ3G2sZQ39GDLFp7ioImfs=\",\r\n  \"key2\": \"7nHB1qMyi+SRuTJVlXSP1KNGfqA7vpiGipKKknLF31w=\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"bJcdWWkcWxmWXt2alW4MRIJ3G2sZQ39GDLFp7ioImfs=\",\r\n  \"secondaryKey\": \"7nHB1qMyi+SRuTJVlXSP1KNGfqA7vpiGipKKknLF31w=\",\r\n}", // [SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="...")]
       "StatusCode": 200
     },
     {
