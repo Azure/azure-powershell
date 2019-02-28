@@ -126,9 +126,6 @@
   <data name="InvokeStorageSyncFileRecallActionMessage" xml:space="preserve">
     <value>Invoke Storage Sync File Recall</value>
   </data>
-  <data name="AzureCloudKailaniAppId" xml:space="preserve">
-    <value>9469b9f5-6722-4481-a2b2-14ed560b706f</value>
-  </data>
   <data name="MissingAfsAgentInstallerPathErrorMessage" xml:space="preserve">
     <value>We cannot find the Storage Sync agent installed in the system. The given registry AfsAgentInstallerPath cannot be found.</value>
   </data>
@@ -269,8 +266,5 @@
   </data>
   <data name="UnsupportedErrorFormat" xml:space="preserve">
     <value>{0} value {1} is unsupported</value>
-  </data>
-  <data name="AzureUSGovernmentKailaniAppId" xml:space="preserve">
-    <value>ce88d19b-f69a-4c2e-ac8a-d1aa9db611e8</value>
   </data>
 </root>

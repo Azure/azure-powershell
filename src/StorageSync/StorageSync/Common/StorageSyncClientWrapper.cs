@@ -43,13 +43,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
     {
         /// <summary>
         /// The azure cloud kailani application identifier
+        /// TODO : Az.StorageSync Remove KailaniAppId(s) from Cmdlet code https://github.com/Azure/azure-powershell/issues/8652
         /// </summary>
-        private static Guid AzureCloudKailaniAppId = new Guid(StorageSyncResources.AzureCloudKailaniAppId);
+        private static Guid AzureCloudKailaniAppId = new Guid("9469b9f5-6722-4481-a2b2-14ed560b706f");
 
         /// <summary>
         /// The azure us government kailani application identifier
         /// </summary>
-        private static Guid AzureUSGovernmentKailaniAppId = new Guid(StorageSyncResources.AzureUSGovernmentKailaniAppId);
+        private static Guid AzureUSGovernmentKailaniAppId = new Guid("ce88d19b-f69a-4c2e-ac8a-d1aa9db611e8");
 
         /// <summary>
         /// The built in role definition identifier
