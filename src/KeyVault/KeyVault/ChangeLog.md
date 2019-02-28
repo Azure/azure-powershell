@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.2
+* Fix tagging on Set-AzKeyVaultSecret
+
 ## Version 1.0.1
 * Update incorrect online help URLs
 

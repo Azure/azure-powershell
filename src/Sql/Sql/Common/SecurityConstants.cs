@@ -41,21 +41,6 @@ namespace Microsoft.Azure.Commands.Sql.Common
         // Parameters Names:
         public const string StorageKeyType = "StorageKeyType";
 
-        public static readonly Dictionary<string, AuditEventType> AuditEventsToAuditEventType = new Dictionary
-            <string, AuditEventType>
-        {
-            {PlainSQL_Success, AuditEventType.PlainSQL_Success},
-            {PlainSQL_Failure, AuditEventType.PlainSQL_Failure},
-            {ParameterizedSQL_Success, AuditEventType.ParameterizedSQL_Success},
-            {ParameterizedSQL_Failure, AuditEventType.ParameterizedSQL_Failure},
-            {StoredProcedure_Success, AuditEventType.StoredProcedure_Success},
-            {StoredProcedure_Failure, AuditEventType.StoredProcedure_Failure},
-            {Login_Success, AuditEventType.Login_Success},
-            {Login_Failure, AuditEventType.Login_Failure},
-            {TransactionManagement_Success, AuditEventType.TransactionManagement_Success},
-            {TransactionManagement_Failure, AuditEventType.TransactionManagement_Failure}
-        };
-
         public const string Primary = "Primary";
         public const string Secondary = "Secondary";
 

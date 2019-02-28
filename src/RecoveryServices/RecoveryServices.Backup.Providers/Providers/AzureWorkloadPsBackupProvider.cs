@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return CreateorModifyPolicy().Body;
         }
 
-        public RestAzureNS.AzureOperationResponse DisableProtection()
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> DisableProtection()
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 resourceGroupName: vaultResourceGroupName);
         }
 
-        public RestAzureNS.AzureOperationResponse EnableProtection()
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableProtection()
         {
             return EnableOrModifyProtection();
         }
@@ -549,7 +549,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 resourceGroupName: resourceGroupName);
         }
 
-        private RestAzureNS.AzureOperationResponse EnableOrModifyProtection(bool disableWithRetentionData = false)
+        private RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableOrModifyProtection(bool disableWithRetentionData = false)
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
@@ -629,9 +629,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string containerName = (string)ProviderData[ContainerParams.Name];
             string backupManagementType = (string)ProviderData[ContainerParams.BackupManagementType];
             string workloadType = (string)ProviderData[ContainerParams.ContainerType];
+            ContainerBase containerBase =
+                (ContainerBase)ProviderData[ContainerParams.Container];
+            AzureVmWorkloadContainer container = (AzureVmWorkloadContainer)ProviderData[ContainerParams.Container];
 
             ProtectionContainerResource protectionContainerResource = null;
-            
+
             //Trigger Discovery
             ODataQuery<BMSRefreshContainersQueryObject> queryParam = new ODataQuery<BMSRefreshContainersQueryObject>(
                 q => q.BackupManagementType
@@ -644,18 +647,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 vmContainer => string.Compare(vmContainer.Name.Split(';').Last(),
                 containerName, true) == 0);
 
-            if (unregisteredVmContainer != null)
+            if (unregisteredVmContainer != null || container != null)
             {
                 protectionContainerResource =
-                        new ProtectionContainerResource(unregisteredVmContainer.Id,
-                        unregisteredVmContainer.Name);
+                        new ProtectionContainerResource(container != null ? container.Id : unregisteredVmContainer.Id,
+                        container != null ? container.Name : unregisteredVmContainer.Name);
                 AzureVMAppContainerProtectionContainer azureVMContainer = new AzureVMAppContainerProtectionContainer(
                     friendlyName: containerName,
                     backupManagementType: backupManagementType,
-                    sourceResourceId: unregisteredVmContainer.Properties.ContainerId,
-                    workloadType: workloadType.ToString());
+                    sourceResourceId: container != null ? container.SourceResourceId : unregisteredVmContainer.Properties.ContainerId,
+                    workloadType: workloadType.ToString(),
+                    operationType: container != null ? OperationType.Reregister : OperationType.Register);
                 protectionContainerResource.Properties = azureVMContainer;
-                AzureWorkloadProviderHelper.RegisterContainer(unregisteredVmContainer.Name,
+                AzureWorkloadProviderHelper.RegisterContainer(container != null ? container.Name : unregisteredVmContainer.Name,
                 protectionContainerResource,
                 vaultName,
                 vaultResourceGroupName);

@@ -13,9 +13,10 @@ Enables auto backup for a protectable item with a specified Backup protection po
 ## SYNTAX
 
 ```
-Enable-AzRecoveryServicesBackupAutoProtection [-InputItem] <String>
+Enable-AzRecoveryServicesBackupAutoProtection [-InputItem] <ProtectableItemBase>
  [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-Policy] <PolicyBase>
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +27,8 @@ The **Enable-AzRecoveryServicesBackupAutoProtection** cmdlet sets Azure auto Bac
 ### Example 1
 ```
 PS C:\> $Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy"
-PS C:\> Enable-AzRecoveryServicesAutoProtection -BackupManagementType “AzureWorkload” -WorkloadType “MSSQL” -InputItem <$ItemID> -Policy $Pol -VaultId $vault.ID
+PS C:\> $container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer
+PS C:\> Get-AzRecoveryServicesBackupProtectableItem -Container $container -WorkloadType "MSSQL" -ItemType "SQLInstance" | Enable-AzRecoveryServicesBackupAutoProtection -BackupManagementType "AzureWorkload" -WorkloadType "MSSQL" -Policy $Pol
 ```
 
 The first cmdlet gets a default policy object, and then stores it in the $Pol variable.
@@ -69,14 +71,29 @@ Accept wildcard characters: False
 Item Id
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ProtectableItemBase
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Return the result for auto protection.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
