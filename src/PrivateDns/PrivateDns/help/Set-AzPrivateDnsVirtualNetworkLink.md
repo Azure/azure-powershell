@@ -16,20 +16,19 @@ Sets/Updates a virtual network link associated with a private zone and a resourc
 ### Fields (Default)
 ```
 Set-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String> -Name <String>
- [-IsRegistrationEnabled <Boolean>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EnableRegistration] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Object
 ```
-Set-AzPrivateDnsVirtualNetworkLink [-IsRegistrationEnabled <Boolean>] [-Tag <Hashtable>]
- -Link <PSPrivateDnsLink> [-Overwrite] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzPrivateDnsVirtualNetworkLink -Link <PSPrivateDnsLink> [-EnableRegistration] [-Tag <Hashtable>]
+ [-Overwrite] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Set-AzPrivateDnsVirtualNetworkLink [-IsRegistrationEnabled <Boolean>] [-Tag <Hashtable>] -ResourceId <String>
+Set-AzPrivateDnsVirtualNetworkLink -ResourceId <String> [-EnableRegistration] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,14 +42,14 @@ When specifying the zone using a **PSPrivateDnsLink** object (passed via the pip
 
 ### Example 1: Set a link
 ```
-PS C:\>Set-AzPrivateDnsVirtualNetworkLink -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Name "mylink" -Tag @{} -IsRegistrationEnabled $true
+PS C:\>Set-AzPrivateDnsVirtualNetworkLink -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Name "mylink" -Tag @{} -EnableRegistration
 
 Name                    : mylink
 ResourceId              : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
                           etwork/privateDnsZones/myzone.com/virtualNetworkLinks/mylink
 ResourceGroupName       : MyResourceGroup
 ZoneName                : myzone.com
-VirtualNetworkId        : /subscriptionsxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
+VirtualNetworkId        : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
                           etwork/virtualNetworks/myvirtualnetwork
 Location                :
 Etag                    : "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -58,7 +57,6 @@ Tags                    : {}
 RegistrationEnabled     : True
 VirtualNetworkLinkState : Completed
 ProvisioningState       : Succeeded
-
 ```
 
 This command sets IsRegistrationEnabled to True for the link named mylink, linked to zone named myzone.com from the resource group named MyResourceGroup.
@@ -80,11 +78,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IsRegistrationEnabled
-Boolean that represents if registration is enabled on the link.
+### -EnableRegistration
+Switch parameter that represents if registration is enabled on the link.
 
 ```yaml
-Type: System.Boolean
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +95,7 @@ Accept wildcard characters: False
 
 ### -Link
 Specifies the virtual network link to delete.
-The **PrivateDnsLink** object passed can also be passed via the pipeline.
+The **PSPrivateDnsLink** object passed can also be passed via the pipeline.
 Alternatively, you can specify the link to delete by using the *Name* *ZoneName* and *ResourceGroupName* parameters.
 
 ```yaml
@@ -130,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -Overwrite
-When specifying the link using a **PrivateDnsLink** object (passed via the pipeline or *Link* parameter), the link is not deleted if it has been changed in Azure DNS since the local **PrivateDnsLink** object was retrieved.
+When specifying the link using a **PSPrivateDnsLink** object (passed via the pipeline or *Link* parameter), the link is not deleted if it has been changed in Azure DNS since the local **PSPrivateDnsLink** object was retrieved.
 This provides protection for concurrent link changes.
 This can be suppressed using the *Overwrite* parameter, which deletes the link regardless of concurrent changes.
 
@@ -149,7 +147,7 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 Specifies the name of the resource group that contains the link to remove.
 You must also specify the *ZoneName* and *Name* parameter.
-Alternatively, you can specify the virtual network link using a **PrivateDnsLink** object, passed via either the pipeline or the *Link* parameter.
+Alternatively, you can specify the virtual network link using a **PSPrivateDnsLink** object, passed via either the pipeline or the *Link* parameter.
 
 ```yaml
 Type: System.String

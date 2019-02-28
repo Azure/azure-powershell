@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
         [ValidateNotNullOrEmpty]
         public VirtualNetwork VirtualNetwork { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Boolean that represents if the link is registration enabled or not.")]
+        [Parameter(Mandatory = false, HelpMessage = "Switch parameter that represents if the link is registration enabled or not.")]
         [ValidateNotNullOrEmpty]
-        public bool IsRegistrationEnabled { get; set; }
+        public SwitchParameter EnableRegistration { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
                         this.ResourceGroupName,
                         this.ZoneName,
                         (this.VirtualNetwork != null) ? this.VirtualNetwork.Id : this.VirtualNetworkId,
-                        this.IsRegistrationEnabled,
+                        this.EnableRegistration.IsPresent,
                         this.Tag);
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteVerbose(string.Format(ProjectResources.Success_NewVirtualNetworkLink, this.Name, this.ResourceGroupName));

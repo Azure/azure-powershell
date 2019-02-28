@@ -16,14 +16,14 @@ Creates a new private DNS virtual network link.
 ### VirtualNetworkId (Default)
 ```
 New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String> -Name <String>
- -VirtualNetworkId <String> -IsRegistrationEnabled <Boolean> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -VirtualNetworkId <String> [-EnableRegistration] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Object
 ```
 New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String> -Name <String>
- -VirtualNetwork <VirtualNetwork> -IsRegistrationEnabled <Boolean> [-Tag <Hashtable>]
+ -VirtualNetwork <VirtualNetwork> [-EnableRegistration] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,7 +38,21 @@ whether the cmdlet prompts you for confirmation.
 
 ### Example 1: Create a Private DNS virtual network link
 ```
-PS C:\>$Link = New-AzPrivateDnsVirtualNetworkLink -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Name "mylink" -VirtualNetworkId "myvirtualnetwork" -IsRegistrationEnabled $true
+PS C:\>$Link = New-AzPrivateDnsVirtualNetworkLink -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Name "mylink" -VirtualNetworkId "myvirtualnetwork" -EnableRegistration
+
+Name                    : mylink
+ResourceId              : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
+                          etwork/privateDnsZones/myzone.com/virtualNetworkLinks/mylink
+ResourceGroupName       : MyResourceGroup
+ZoneName                : myzone.com
+VirtualNetworkId        : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
+                          etwork/virtualNetworks/myvirtualnetwork
+Location                :
+Etag                    : "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+Tags                    : {}
+RegistrationEnabled     : True
+VirtualNetworkLinkState : Completed
+ProvisioningState       : Succeeded
 ```
 
 This command creates a new virtual network link associated with the private DNS zone named myzone.com and virtual network "myvirtualnetwork" (which has already been created in the resource group) in the specified resource group, and then stores it in the $Link variable.
@@ -60,15 +74,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IsRegistrationEnabled
-Boolean that represents if the link is registration enabled or not.
+### -EnableRegistration
+Switch parameter that represents if the link is registration enabled or not.
 
 ```yaml
-Type: System.Boolean
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

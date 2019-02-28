@@ -44,24 +44,24 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Boolean that represents if registration is enabled on the link.")]
-        [ValidateNotNullOrEmpty]
-        public bool IsRegistrationEnabled { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
-        public Hashtable Tag { get; set; }
-
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The virtual network link object to set.", ParameterSetName = ObjectParameterSetName)]
         [ValidateNotNullOrEmpty]
         public PSPrivateDnsLink Link { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.", ParameterSetName = ObjectParameterSetName)]
-        public SwitchParameter Overwrite { get; set; }
-
-        [Parameter( ParameterSetName = ResourceParameterSetName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Private DNS Zone ResourceID.")]
+        [Parameter(ParameterSetName = ResourceParameterSetName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Private DNS Zone ResourceID.")]
         [ResourceIdCompleter("Microsoft.Network/privateDnsZones/virtualNetworkLinks")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Switch parameter that represents if registration is enabled on the link.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter EnableRegistration { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
+        public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.", ParameterSetName = ObjectParameterSetName)]
+        public SwitchParameter Overwrite { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -107,15 +107,10 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
                 linkToUpdate.Tags = this.Tag;
             }
 
-            if (this.IsRegistrationEnabled || linkToUpdate.RegistrationEnabled)
+            if (this.EnableRegistration.IsPresent)
             {
                 linkToUpdate.RegistrationEnabled = true;
             }
-            else
-            {
-                linkToUpdate.RegistrationEnabled = false;
-            }
-
 
             ConfirmAction(
                 ProjectResources.Progress_Modifying,
