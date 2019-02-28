@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.0.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -154,11 +154,16 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
                'Set-AzRecoveryServicesVaultContext', 
                'Backup-AzRecoveryServicesBackupItem', 
                'Get-AzRecoveryServicesBackupManagementServer', 
-               'Get-AzRecoveryServicesBackupContainer', 
+               'Get-AzRecoveryServicesBackupContainer',
+               'Register-AzRecoveryServicesBackupContainer', 
                'Unregister-AzRecoveryServicesBackupContainer', 
                'Disable-AzRecoveryServicesBackupProtection', 
-               'Enable-AzRecoveryServicesBackupProtection', 
-               'Get-AzRecoveryServicesBackupItem', 
+               'Enable-AzRecoveryServicesBackupProtection',
+               'Enable-AzRecoveryServicesBackupAutoProtection',
+               'Disable-AzRecoveryServicesBackupAutoProtection',
+               'Get-AzRecoveryServicesBackupItem',
+               'Get-AzRecoveryServicesBackupProtectableItem',
+               'Initialize-AzRecoveryServicesBackupProtectableItem',
                'Get-AzRecoveryServicesBackupJob', 
                'Get-AzRecoveryServicesBackupJobDetails', 
                'Stop-AzRecoveryServicesBackupJob', 
@@ -169,8 +174,10 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
                'New-AzRecoveryServicesBackupProtectionPolicy', 
                'Remove-AzRecoveryServicesBackupProtectionPolicy', 
                'Set-AzRecoveryServicesBackupProtectionPolicy', 
-               'Get-AzRecoveryServicesBackupRecoveryPoint', 
-               'Restore-AzRecoveryServicesBackupItem', 
+               'Get-AzRecoveryServicesBackupRecoveryPoint',
+               'Get-AzRecoveryServicesBackupRecoveryLogChain', 
+               'Restore-AzRecoveryServicesBackupItem',
+               'Get-AzRecoveryServicesBackupWorkloadRecoveryConfig',
                'Unregister-AzRecoveryServicesBackupManagementServer', 
                'Get-AzRecoveryServicesBackupRPMountScript', 
                'Disable-AzRecoveryServicesBackupRPMountScript', 
@@ -244,7 +251,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'General availability for Az.RecoveryServices module.'
+        ReleaseNotes = '* Release with updated Authentication dependency'
 
         # Prerelease string of this module
         # Prerelease = ''

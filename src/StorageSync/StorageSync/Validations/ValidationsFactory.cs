@@ -21,10 +21,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Class ValidationsFactory.
+    /// </summary>
     public static class ValidationsFactory
     {
         #region Public methods
 
+        /// <summary>
+        /// Gets the system validations.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
+        /// <param name="path">The path.</param>
+        /// <returns>IList&lt;ISystemValidation&gt;.</returns>
         public static IList<ISystemValidation> GetSystemValidations(Configuration configuration, string path)
         {
             return new List<ISystemValidation>()
@@ -34,6 +43,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             };
         }
 
+        /// <summary>
+        /// Gets the namespace validations.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
+        /// <returns>IList&lt;INamespaceValidation&gt;.</returns>
         public static IList<INamespaceValidation> GetNamespaceValidations(Configuration configuration)
         {
             return new List<INamespaceValidation>()
@@ -48,6 +62,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             };
         }
 
+        /// <summary>
+        /// Gets the validation descriptions.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
+        /// <returns>IList&lt;IValidationDescription&gt;.</returns>
         public static IList<IValidationDescription> GetValidationDescriptions(Configuration configuration)
         {
             List<IValidationDescription> validationDescriptions = new List<IValidationDescription>();
