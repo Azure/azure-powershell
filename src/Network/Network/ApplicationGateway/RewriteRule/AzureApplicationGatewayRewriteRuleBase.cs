@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Condition of the rewrite rule")]
+            HelpMessage = "Condition for the rewrite rule to execute")]
         public List<PSApplicationGatewayRewriteRuleCondition> Condition { get; set; }
 
         public override void ExecuteCmdlet()
