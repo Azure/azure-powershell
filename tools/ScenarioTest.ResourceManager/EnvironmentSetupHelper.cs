@@ -90,7 +90,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             module = GetModuleManifest(RmDirectory, "AzureRM.Network");
             LogIfNotNull($"Network Module path: {module}");
             RMNetworkModule = module;
-
+            module = GetModuleManifest(RmDirectory, "AzureRM.EventHub");
+            LogIfNotNull($"EventHub Module path: {module}");
+            RMEventHubModule = module;
+            module = GetModuleManifest(RmDirectory, "AzureRM.Monitor");
+            LogIfNotNull($"Monitor Module path: {module}");
+            RMMonitorModule = module;
             module = GetModuleManifest(StackRmDirectory, "AzureRM.Accounts");
             LogIfNotNull($"Stack Accounts Module path: {module}");
             StackRMProfileModule = module;
@@ -144,6 +149,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public string RMStorageModule { get; private set; }
 
         public string RMOperationalInsightsModule { get; private set; }
+
+        public string RMEventHubModule { get; private set; }
+
+        public string RMMonitorModule { get; private set; }
 
         //TODO: clarify (data plane should not be under ARM folder)
         public string RMStorageDataPlaneModule { get; private set; }
