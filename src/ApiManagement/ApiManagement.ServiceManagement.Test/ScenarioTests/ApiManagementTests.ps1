@@ -164,7 +164,7 @@ function Api-ImportExportWadlTest {
 
     $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
-    $wadlPath = Join-Path "$TestOutputRoot" "Resources" "WADLYahoo.xml"
+    $wadlPath = Join-Path (Join-Path "$TestOutputRoot" "Resources") "WADLYahoo.xml"
     $path = "wadlapi"
     $wadlApiId = getAssetName
 
@@ -198,7 +198,7 @@ function Api-ImportExportSwaggerTest {
 
     $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
-    $swaggerPath = Join-Path "$TestOutputRoot" "Resources" "SwaggerPetStoreV2.json"
+    $swaggerPath = Join-Path (Join-Path "$TestOutputRoot" "Resources") "SwaggerPetStoreV2.json"
     $swaggerUrl = "http://petstore.swagger.io/v2/swagger.json"
     $path1 = "swaggerapifromFile"
     $path2 = "swaggerapifromUrl"
@@ -254,7 +254,7 @@ function Api-ImportExportWsdlTest {
 
     $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
     $wsdlUrl = "http://fazioapisoap.azurewebsites.net/fazioService.svc?singleWSDL"   
-    $wsdlPath1 = Join-Path "$TestOutputRoot" "Resources" "Weather.wsdl"
+    $wsdlPath1 = Join-Path (Join-Path "$TestOutputRoot" "Resources") "Weather.wsdl"
     $path1 = "soapapifromFile"
     $path2 = "soapapifromUrl"
     $wsdlApiId1 = getAssetName
@@ -1091,10 +1091,10 @@ function Policy-CrudTest {
 
     # load from file get to pipeline scenarios
 
-    $tenantValidPath = Join-Path "$TestOutputRoot" "Resources" "TenantValidPolicy.xml"
-    $productValidPath = Join-Path "$TestOutputRoot" "Resources" "ProductValidPolicy.xml"
-    $apiValidPath = Join-Path "$TestOutputRoot" "Resources" "ApiValidPolicy.xml"
-    $operationValidPath = Join-Path "$TestOutputRoot" "Resources" "OperationValidPolicy.xml"
+    $tenantValidPath = Join-Path (Join-Path "$TestOutputRoot" "Resources") "TenantValidPolicy.xml"
+    $productValidPath = Join-Path (Join-Path "$TestOutputRoot" "Resources") "ProductValidPolicy.xml"
+    $apiValidPath = Join-Path (Join-Path "$TestOutputRoot" "Resources") "ApiValidPolicy.xml"
+    $operationValidPath = Join-Path (Join-Path "$TestOutputRoot" "Resources") "OperationValidPolicy.xml"
 
     $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
@@ -1285,7 +1285,7 @@ function Certificate-CrudTest {
 
     Assert-AreEqual 0 $certificates.Count
 
-    $certPath = Join-Path "$TestOutputRoot" "Resources" "powershelltest.pfx"
+    $certPath = Join-Path (Join-Path "$TestOutputRoot" "Resources") "powershelltest.pfx"
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $certPassword = 'Password'
     $certSubject = "CN=*.msitesting.net"
@@ -2122,7 +2122,7 @@ function BackendServiceFabric-CrudTest {
 
     # create certificate
     $certId = getAssetName    
-    $certPath = Join-Path "$TestOutputRoot" "Resources" "powershelltest.pfx"
+    $certPath = Join-Path (Join-Path "$TestOutputRoot" "Resources") "powershelltest.pfx"
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $certPassword = 'Password'
     $certSubject = "CN=*.msitesting.net"
@@ -2299,7 +2299,7 @@ function ApiRevision-CrudTest {
 
     $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
    
-    $swaggerPath = Join-Path "$TestOutputRoot" "Resources" "SwaggerPetStoreV2.json"
+    $swaggerPath = Join-Path (Join-Path "$TestOutputRoot" "Resources") "SwaggerPetStoreV2.json"
     $path1 = "swaggerapifromFile"
     $swaggerApiId1 = getAssetName
     $apiRevisionId = "2"

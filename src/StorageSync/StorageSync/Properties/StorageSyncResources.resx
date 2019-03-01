@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CertificateThumbprintNotFound" xml:space="preserve">
+    <value>Certificate thumbprints not found. Check if server is registered.</value>
+  </data>
+  <data name="GetSyncServerCertificateErrorMessageFormat" xml:space="preserve">
+    <value>COM Exception while loading certificate: HResult: {0} Message: {1}</value>
+  </data>
+  <data name="InvokeStorageSyncFileRecallActionMessage" xml:space="preserve">
+    <value>Invoke Storage Sync File Recall</value>
+  </data>
+  <data name="KailaniApplicationId" xml:space="preserve">
+    <value>9469b9f5-6722-4481-a2b2-14ed560b706f</value>
+  </data>
+  <data name="MissingAfsAgentInstallerPathErrorMessage" xml:space="preserve">
+    <value>We cannot find the Storage Sync agent installed in the system. The given registry AfsAgentInstallerPath cannot be found.</value>
+  </data>
+  <data name="MissingParentResourceIdErrorMessage" xml:space="preserve">
+    <value>The given parent resource is not in the required format. Please check the format and try again.</value>
+  </data>
+  <data name="MissingResourceIdErrorMessage" xml:space="preserve">
+    <value>The given resource is not in the required format. Please check the format and try again.</value>
+  </data>
+  <data name="NewCloudEndpointActionMessage" xml:space="preserve">
+    <value>Create a new Cloud Endpoint</value>
+  </data>
+  <data name="NewServerEndpointActionMessage" xml:space="preserve">
+    <value>Create a new Server Endpoint</value>
+  </data>
+  <data name="NewStorageSyncServiceActionMessage" xml:space="preserve">
+    <value>Create a new Storage Sync Service</value>
+  </data>
+  <data name="NewSyncGroupActionMessage" xml:space="preserve">
+    <value>Create a new Sync Group</value>
+  </data>
+  <data name="RegisterServerActionMessage" xml:space="preserve">
+    <value>Create a new Registered Server for Storage Sync Service</value>
+  </data>
+  <data name="RemoveCloudEndpointActionMessage" xml:space="preserve">
+    <value>Remove a given Cloud Endpoint</value>
+  </data>
+  <data name="RemoveCloudEndpointPromptFormat" xml:space="preserve">
+    <value>Remove Cloud Endpoint '{0}' and all content in it</value>
+  </data>
+  <data name="RemoveServerEndpointActionMessage" xml:space="preserve">
+    <value>Remove a given Server Endpoint</value>
+  </data>
+  <data name="RemoveServerEndpointPromptFormat" xml:space="preserve">
+    <value>Remove Server Endpoint '{0}' and all content in it</value>
+  </data>
+  <data name="RemoveStorageSyncServiceActionMessage" xml:space="preserve">
+    <value>Remove a given Storage Sync Service</value>
+  </data>
+  <data name="RemoveStorageSyncServicePromptFormat" xml:space="preserve">
+    <value>Remove Storage Sync Service '{0}' and all content in it</value>
+  </data>
+  <data name="RemoveSyncGroupActionMessage" xml:space="preserve">
+    <value>Remove a given Sync Group</value>
+  </data>
+  <data name="RemoveSyncGroupPromptFormat" xml:space="preserve">
+    <value>Remove Sync Group '{0}' and all content in it</value>
+  </data>
+  <data name="ResetServerCertificateActionMessage" xml:space="preserve">
+    <value>Reset Server Certificate for Storage sync service</value>
+  </data>
+  <data name="RolloverSecondaryCertificateErrorMessageFormat" xml:space="preserve">
+    <value>Failed to generate secondary certificate. HResult: {0}</value>
+  </data>
+  <data name="SetServerEndpointActionMessage" xml:space="preserve">
+    <value>Updating a Server endpoint</value>
+  </data>
+  <data name="UnregisterServerActionMessage" xml:space="preserve">
+    <value>Unregister a given Storage Sync Server</value>
+  </data>
+  <data name="UnregisterServerPromptFormat" xml:space="preserve">
+    <value>Unregister Storage Sync Server for Storage Sync Service '{0}' and all content in it</value>
+  </data>
+  <data name="ResetCertificateMessageFormat1" xml:space="preserve">
+    <value>Starting rollover certificate for ServerId: {serverId}</value>
+  </data>
+  <data name="ResetCertificateMessageFormat2" xml:space="preserve">
+    <value>Primary Certificate Thumbprint: {0} Secondary Certificate Thumbprint: {1}</value>
+  </data>
+  <data name="ResetCertificateMessageFormat3" xml:space="preserve">
+    <value>Succesfully retrieved secondary certificate with thumbprint: {0} from store with HResult: {1}</value>
+  </data>
+  <data name="ResetCertificateMessageFormat4" xml:space="preserve">
+    <value>Failed to retrieve the secondary certificate from store with HResult: {0}</value>
+  </data>
+  <data name="ResetCertificateMessageFormat5" xml:space="preserve">
+    <value>Generating new Secondary Certificate.. Current Thumbprint: {0}</value>
+  </data>
+  <data name="ResetCertificateMessageFormat6" xml:space="preserve">
+    <value>Primary and Secondary certificates are same. Cannot proceed to switch and delete certificate step. Primary Thumbprint: {0}</value>
+  </data>
+  <data name="ResetCertificateMessageFormat7" xml:space="preserve">
+    <value>Switching primary certificate to secondary and updating monitoring with latest certificate. Primary Certificate: {0} Secondary Certificate: {1}</value>
+  </data>
+  <data name="ResetCertificateMessageFormat8" xml:space="preserve">
+    <value>COM Exception while switching certificate: HResult:{0} MessageFormat:{1}</value>
+  </data>
+  <data name="ResetCertificateMessageFormat9" xml:space="preserve">
+    <value>Successfully switched to secondary certificate. Certificate: {0}</value>
+  </data>
+  <data name="ResetCertificateMessageFormat10" xml:space="preserve">
+    <value>Deleting old certificate  with thumbprint: {0}</value>
+  </data>
+  <data name="ResetCertificateMessageFormat11" xml:space="preserve">
+    <value>Successfully deleted the certificate from the store: {0}</value>
+  </data>
+  <data name="ResetCertificateMessageFormat12" xml:space="preserve">
+    <value>COM Exception during deletion of old Primary certificate: HResult:{0} MessageFormat:{1}. Ignoring the error..</value>
+  </data>
+  <data name="ResetCertificateMessageFormat13" xml:space="preserve">
+    <value>Validating Certificate with Thumbprint: {0}</value>
+  </data>
+  <data name="ResetCertificateMessageFormat14" xml:space="preserve">
+    <value>$"Certificate is expired. Current Time: {0} Certificate NotAfter: {1}";</value>
+  </data>
+  <data name="ResetCertificateMessageFormat15" xml:space="preserve">
+    <value>Certificate contains Private Key</value>
+  </data>
+  <data name="ResetCertificateMessageFormat16" xml:space="preserve">
+    <value>Successfully validated certificate with thumbprint: {0}</value>
+  </data>
+  <data name="CreateRoleAssignmentMessage" xml:space="preserve">
+    <value>Creating Role Assignment...</value>
+  </data>
+  <data name="CreateServicePrincipalMessage" xml:space="preserve">
+    <value>Creating Service Principal...</value>
+  </data>
+  <data name="CloudNoInformationError" xml:space="preserve">
+    <value>No information in the cloud exception.</value>
+  </data>
+  <data name="ComError1" xml:space="preserve">
+    <value>CoSetProxyBlanket failed with HRESULT</value>
+  </data>
+  <data name="InvalidArgumentErrorFormat" xml:space="preserve">
+    <value>Invalid argument {0}</value>
+  </data>
+  <data name="InvokeCompatibilityCheckError1Format" xml:space="preserve">
+    <value>Failed mounting network path {0}. Error: {1}</value>
+  </data>
+  <data name="NamespaceEnumeratorErrorFormat" xml:space="preserve">
+    <value>Cannot access directory: {0}. Ensure directory exists.</value>
+  </data>
+  <data name="ResetCertificateMessage17" xml:space="preserve">
+    <value>Triggering certificate rollover on service</value>
+  </data>
+  <data name="ResetCertificateMessage18" xml:space="preserve">
+    <value>Certificate Rollover request completed on the service</value>
+  </data>
+  <data name="UnsupportedErrorFormat" xml:space="preserve">
+    <value>{0} value {1} is unsupported</value>
+  </data>
+</root>
