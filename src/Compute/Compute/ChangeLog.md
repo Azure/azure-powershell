@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add wildcard support to Get cmdlets
 
 ## Version 1.4.0
 * Fix issue with ID parameter sets
@@ -30,7 +31,6 @@
 * AEM extension: Add support for UltraSSD and P60,P70 and P80 disks
 * Update help description for Set-AzVMBootDiagnostics
 * Update help description and example for Update-AzImage
-* Add wildcard support to Get cmdlets
 
 ## Version 1.2.0
 * Add Invoke-AzVMReimage cmdlet

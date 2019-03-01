@@ -302,7 +302,6 @@ function Test-Gallery
         Assert-AreEqual 2 $imageConfig.StorageProfile.DataDisks.Count;
 
         $image = New-AzImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname
-        #$sourceImageId = "/subscriptions/97f78232-382b-46a7-8a72-964d692c4f3f/resourceGroups/LONGLIVEDGALLERYSCUS/providers/Microsoft.Compute/images/gallerysourcewindows";
         $targetRegions = @(@{Name='South Central US';ReplicaCount=1},@{Name='East US';ReplicaCount=2},@{Name='Central US'});        
         $tag = @{test1 = "testval1"; test2 = "testval2" };
 
