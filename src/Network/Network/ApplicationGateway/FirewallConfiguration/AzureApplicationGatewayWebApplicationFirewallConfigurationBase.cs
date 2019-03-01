@@ -24,15 +24,14 @@ namespace Microsoft.Azure.Commands.Network
                Mandatory = true,
                HelpMessage = "Whether web application firewall functionality is enabled or not.")]
         [ValidateNotNullOrEmpty]
-        public bool Enabled { get; set; }
+        public virtual bool Enabled { get; set; }
 
         [Parameter(
                Mandatory = true,
                HelpMessage = "Web application firewall mode")]
         [ValidateSet("Detection", "Prevention", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public string FirewallMode { get; set; }
-
+        public virtual string FirewallMode { get; set; }
 
         [Parameter(
                Mandatory = false,
