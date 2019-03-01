@@ -37,7 +37,9 @@ Get-AzVMGuestPolicyStatus [-ReportId] <String> [-DefaultProfile <IAzureContextCo
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Get-AzVMGuestPolicyStatus cmdlet gets guest configuration policy statuses for an initiative of type "Guest Configuration" that is assigned to a VM.
+An initiative is a policy of definition type "Initiative".
+This cmdlet gets compliance statuses of the VM and reasons why it is non-compliant for the individual policies in the initiative.
 
 ## EXAMPLES
 
