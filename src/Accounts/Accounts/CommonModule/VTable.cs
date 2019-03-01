@@ -16,7 +16,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Net.Http;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -31,8 +30,6 @@ namespace Microsoft.Azure.Commands.Common
     /// </summary>
     public class VTable
     {
-        // public object GetParameterValue(string resourceId, string moduleName, System.Management.Automation.InvocationInfo invocationInfo, string name)
-
         /// <summary>
         /// The cmdlet will call this when it is trying to fill in a parameter value that it needs
         /// </summary>
@@ -41,6 +38,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="invocationInfo">The <see cref="System.Management.Automation.InvocationInfo" /> from the cmdlet</param>
         /// <param name="correlationId">The <see cref="string" /> containing the correlation id for the cmdlet</param>
         /// <param name="name">The <see cref="string" /> parameter name being asked for</param>
+        /// <example>public object GetParameterValue(string resourceId, string moduleName, System.Management.Automation.InvocationInfo invocationInfo, string name)</example>
         public GetParameterDelegate GetParameterValue;
 
         /// <summary>
@@ -77,16 +75,19 @@ namespace Microsoft.Azure.Commands.Common
         public NewRequestPipelineDelegate OnNewRequest;
 
         /// <summary>
-        ///  Called for well-known parameters that require argument completers
-        ///  </summary>
+        /// Called for well-known parameters that require argument completers
+        /// </summary>
         /// <param name="completerName">string - the type of completer requested (Resource, Location)</param>
         /// <param name="invocationInfo">The <see cref="System.Management.Automation.InvocationInfo" /> from the cmdlet</param>
         /// <param name="correlationId">The <see cref="string" /> containing the correlation id for the cmdlet (if available)</param>
         /// <param name="resourceTypes">An <see cref="System.String[]"/> containing resource (or resource types) being completed  </param >
         /// <param name="parentResourceParameterNames"> An <see cref="System.String[]"/> containing list of parent resource parameter names (if applicable)</param >
         /// <returns>A <c>string[]</c> containing the valid options for the completer.</returns>
-
         public ArgumentCompleterDelegate ArgumentCompleter;
-    }
 
+        /// <summary>
+        /// The name of the currently selected Azure profile
+        /// </summary>
+        public string ProfileName { get; internal set; }
+    }
 }

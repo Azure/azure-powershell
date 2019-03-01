@@ -13,15 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Management.Automation;
 using System.Net.Http;
-using System.Collections.Generic;
-using Microsoft.Azure.Commands.Profile.Models.Core;
-using System.IO;
-using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -36,7 +31,6 @@ namespace Microsoft.Azure.Commands.Common
     [Cmdlet(VerbsLifecycle.Register, @"AzModule")]
     public class RegisterAzModule : System.Management.Automation.PSCmdlet
     {
-
         protected override void ProcessRecord()
         {
             try
@@ -58,6 +52,9 @@ namespace Microsoft.Azure.Commands.Common
 
                     // Called for well-known parameters that require argument completers
                     ArgumentCompleter = ContextAdapter.Instance.CompleteArgument,
+
+                    // Gets the selected Azure profile from the context
+                    ProfileName = ContextAdapter.Instance.GetSelectedProfile()
                 });
             }
             catch (Exception exception)
