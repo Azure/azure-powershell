@@ -19,10 +19,10 @@
 -->
 ## Upcoming Release
 * Add additional framework extensions for .Net Framework execution
+* Update common packages to include new wildcard support functions
 
 ## Version 1.3.0
 * Update to latest version of ClientRuntime
-* Update common packages to include new wildcard support functions
 
 ## Version 1.2.1
 * Release with correct version of Authentication
