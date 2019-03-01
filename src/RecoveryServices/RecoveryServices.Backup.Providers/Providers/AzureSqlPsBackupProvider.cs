@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ServiceClientAdapter = serviceClientAdapter;
         }
 
-        public RestAzureNS.AzureOperationResponse EnableProtection()
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableProtection()
         {
             throw new NotImplementedException();
         }
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Triggers the disable protection operation for the given item
         /// </summary>
         /// <returns>The job response returned from the service</returns>
-        public RestAzureNS.AzureOperationResponse DisableProtection()
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> DisableProtection()
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
@@ -82,18 +82,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string containerUri = HelperUtils.GetContainerUri(keyValueDict, itemBase.Id);
             string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, itemBase.Id);
 
-            if (deleteBackupData)
-            {
-                return ServiceClientAdapter.DeleteProtectedItem(
+            throw new Exception(Resources.AzureSqlRetainDataException);
+        }
+
+        public RestAzureNS.AzureOperationResponse DisableProtectionWithDeleteData()
+        {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            bool deleteBackupData = (bool)ProviderData[ItemParams.DeleteBackupData];
+
+            ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
+            // do validations
+
+            ValidateAzureSQLDisableProtectionRequest(itemBase);
+
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(itemBase.Id);
+            string containerUri = HelperUtils.GetContainerUri(keyValueDict, itemBase.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, itemBase.Id);
+            return ServiceClientAdapter.DeleteProtectedItem(
                     containerUri,
                     protectedItemUri,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName);
-            }
-            else
-            {
-                throw new Exception(Resources.AzureSqlRetainDataException);
-            }
         }
 
         public RestAzureNS.AzureOperationResponse TriggerBackup()
@@ -485,6 +495,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return itemModels;
         }
 
+        public void RegisterContainer()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<PointInTimeBase> GetLogChains()
+        {
+            throw new NotImplementedException();
+        }
+
         #region private
         private void ValidateAzureSqlWorkloadType(CmdletModel.WorkloadType type)
         {
@@ -524,7 +544,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         typeof(CmdletModel.SimpleRetentionPolicy).ToString()));
             }
 
-            // call validation
             policy.Validate();
         }
 
