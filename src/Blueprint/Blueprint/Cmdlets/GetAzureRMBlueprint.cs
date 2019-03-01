@@ -1,4 +1,18 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -10,7 +24,7 @@ using ParameterHelpMessages = Microsoft.Azure.Commands.Blueprint.Common.Blueprin
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets 
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Blueprint", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSBlueprint))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Blueprint", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSBlueprint),typeof(PSPublishedBlueprint))]
     public class GetAzureRmBlueprint : BlueprintCmdletBase
     {
         #region Parameters
@@ -42,8 +56,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionNameAndLatestPublished, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.LatestPublishedFlag)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupNameAndLatestPublished, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.LatestPublishedFlag)]
+        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionNameAndLatestPublished, Mandatory = true, HelpMessage = ParameterHelpMessages.LatestPublishedFlag)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupNameAndLatestPublished, Mandatory = true, HelpMessage = ParameterHelpMessages.LatestPublishedFlag)]
         public SwitchParameter LatestPublished { get; set; }
 
         #endregion Parameters
@@ -51,7 +65,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         #region Cmdlet Overrides
         public override void ExecuteCmdlet()
         {
-
             var scope = GetCurrentScope();
 
             try
@@ -60,7 +73,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 {
                     case ParameterSetNames.ManagementGroupScope:
                         foreach (var bp in BlueprintClientWithVersion.ListBlueprints(scope))
-                            WriteObject(bp);
+                            WriteObject(bp, true);
 
                         break;
                     case ParameterSetNames.SubscriptionScope:
@@ -74,7 +87,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         queryScopes.Add(scope);
 
                         foreach (var bp in BlueprintClientWithVersion.ListBlueprints(queryScopes))
-                            WriteObject(bp);
+                            WriteObject(bp, true);
 
                         break;
                     case ParameterSetNames.BySubscriptionAndName: case ParameterSetNames.ByManagementGroupAndName:
