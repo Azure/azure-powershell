@@ -23,135 +23,159 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class ResourceTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public ResourceTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewSimpleResource()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-CreatesNewSimpleResource");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-CreatesNewSimpleResource");
         }
 
         [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewComplexResource()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-CreatesNewComplexResource");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-CreatesNewComplexResource");
         }
 
         [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesViaPiping()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetResourcesViaPiping");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetResourcesViaPiping");
         }
 
         [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesFromEmptyGroup()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetResourcesFromEmptyGroup");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetResourcesFromEmptyGroup");
         }
 
         [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesFromNonExisingGroup()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetResourcesFromNonExisingGroup");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetResourcesFromNonExisingGroup");
         }
 
         [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesForNonExisingType()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetResourcesForNonExisingType");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetResourcesForNonExisingType");
         }
 
         [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourceForNonExisingResource()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetResourceForNonExisingResource");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetResourceForNonExisingResource");
         }
 
         [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesViaPipingFromAnotherResource()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetResourcesViaPipingFromAnotherResource");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetResourcesViaPipingFromAnotherResource");
         }
 
         [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMoveAResourceTest()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-MoveAResource");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-MoveAResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMoveResourceFailed()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-MoveResourceFailed");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-MoveResourceFailed");
         }
 
-        [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAResourceTest()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-SetAResource");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-SetAResource");
         }
 
-        [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAResourceUsingPiping()
+        {
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-SetAResourceUsingPiping");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAResourceWithPatchTest()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-SetAResourceWithPatch");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-SetAResourceWithPatch");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFindAResourceTest()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-FindAResource");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-FindAResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFindAResourceByTag()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-FindAResource-ByTag");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-FindAResource-ByTag");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourceWithExpandProperties()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetResourceExpandProperties");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetResourceExpandProperties");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceByIdAndProperties()
+        {
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetResourceByIdAndProperties");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceByComponentsAndProperties()
+        {
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetResourceByComponentsAndProperties");
         }
 
         [Fact(Skip = "Zones are disabled for now.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManageResourceWithZones()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-ManageResourceWithZones");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-ManageResourceWithZones");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAResourceTest()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RemoveAResource");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RemoveAResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveASetOfResourcesTest()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RemoveASetOfResources");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RemoveASetOfResources");
         }
     }
 }

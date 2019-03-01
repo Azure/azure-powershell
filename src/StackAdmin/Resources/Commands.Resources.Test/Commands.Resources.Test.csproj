@@ -47,6 +47,9 @@
     <Reference Include="Microsoft.Azure.Insights">
       <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.Insights.0.10.0-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.Management.ManagementGroups, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ManagementGroups.1.1.1-preview\lib\net452\Microsoft.Azure.Management.ManagementGroups.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Features\GetAzureProviderFeatureCmdletTests.cs" />
@@ -61,6 +64,7 @@
     <Compile Include="ResourceGroups\SetAzureResourceGroupCommandTests.cs" />
     <Compile Include="RoleAssignment\RoleAssignmentUnitTests.cs" />
     <Compile Include="ScenarioTests\ActiveDirectoryTests.cs" />
+    <Compile Include="ScenarioTests\SubscriptionLevelDeploymentTests.cs" />
     <Content Include="ScenarioTests\ProviderFeatureTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -69,9 +73,11 @@
     </Content>
     <Compile Include="ScenarioTests\LocationTests.cs" />
     <Compile Include="ScenarioTests\ManagedApplicationTests.cs" />
+    <Compile Include="ScenarioTests\ManagementGroupsTests.cs" />
     <Compile Include="ScenarioTests\MoveResourceTest.cs" />
     <Compile Include="ScenarioTests\ManagedApplicationDefinitionTests.cs" />
     <Compile Include="ScenarioTests\ProviderFeatureTests.cs" />
+    <Compile Include="ScenarioTests\ProviderListBuilder.cs" />
     <Compile Include="ScenarioTests\ProviderTests.cs" />
     <Compile Include="ScenarioTests\ResourcesController.cs" />
     <Compile Include="ScenarioTests\DeploymentTests.cs" />
@@ -196,6 +202,9 @@
     <None Include="ScenarioTests\ManagedApplicationTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\ManagementGroupsTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\MoveResourceTest.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -220,6 +229,9 @@
     <None Include="ScenarioTests\RoleDefinitionTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\SubscriptionLevelDeploymentTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\TestCreateDeleteAppPasswordCredentials.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -232,8 +244,14 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\TestGetADUserWithMail.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\TestNewADServicePrincipalWithCustomScope.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\TestNewADServicePrincipalWithoutApp.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\TestNewADServicePrincipalWithReaderRole.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests\TestCrossResourceGroupDeploymentFromTemplateFile.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -259,10 +277,22 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests\TestNewDeploymentWithKeyVaultReference.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests\TestNewDeploymentWithKeyVaultReferenceInParameterObject.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests\TestNewDeploymentWithParameterObject.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests\TestSaveDeploymentTemplateFile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ResourceTests\TestSetAResourceUsingPiping.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.SubscriptionLevelDeploymentTests\TestDeploymentAsJob.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.SubscriptionLevelDeploymentTests\TestDeploymentEndToEnd.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.LocationTests\TestAzureLocation.json">
@@ -272,6 +302,42 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagedApplicationTests\TestManagedApplicationCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestGetManagementGroup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestGetManagementGroupWithExpand.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestGetManagementGroupWithExpandAndRecurse.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestNewManagementGroup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestNewManagementGroupWithDisplayName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestNewManagementGroupWithDisplayNameAndParentId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestNewManagementGroupWithParentId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestNewRemoveManagementGroupSubscription.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestRemoveManagementGroup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestUpdateManagementGroupWithDisplayName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestUpdateManagementGroupWithDisplayNameAndParentId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestUpdateManagementGroupWithParentId.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.MoveResourceTest\TestMoveAzureResource.json">
@@ -369,6 +435,12 @@
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ResourceTests\TestFindAResourceTest.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ResourceTests\TestGetResourceByComponentsAndProperties.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ResourceTests\TestGetResourceByIdAndProperties.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ResourceTests\TestGetResourceForNonExisingResource.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -581,6 +653,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="sampleTemplateThrowsNestedErrors.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.SubscriptionLevelDeploymentTests\TestStopDeployment.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="subscription_level_parameters.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="subscription_level_template.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="StorageAccountTemplate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
