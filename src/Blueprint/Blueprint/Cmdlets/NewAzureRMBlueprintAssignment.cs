@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public Hashtable ResourceGroup { get; set; }
+        public Hashtable ResourceGroupParameter { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.Parameters)]
         [ValidateNotNull]
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                             Blueprint.Id,
                             Lock,
                             Parameter,
-                            ResourceGroup);
+                            ResourceGroupParameter);
 
                         foreach (var subscription in subscriptionsList)
                         {
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                             Blueprint.Id,
                             Lock,
                             Parameter,
-                            ResourceGroup);
+                            ResourceGroupParameter);
 
                         foreach (var subscription in subscriptionsList)
                         {

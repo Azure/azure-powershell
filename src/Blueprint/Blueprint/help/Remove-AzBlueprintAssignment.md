@@ -12,7 +12,7 @@ Remove a blueprint assignment from a subscription.
 
 ## SYNTAX
 
-### DeleteBlueprintAssignmentByName
+### DeleteBlueprintAssignmentByName (Default)
 ```
 Remove-AzBlueprintAssignment [-SubscriptionId] <String> [-Name] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -20,12 +20,12 @@ Remove-AzBlueprintAssignment [-SubscriptionId] <String> [-Name] <String> [-PassT
 
 ### DeleteBlueprintAssignmentByObject
 ```
-Remove-AzBlueprintAssignment [-Assignment] <PSBlueprintAssignment> [-PassThru]
+Remove-AzBlueprintAssignment [-SubscriptionId] <String> [-InputObject] <PSBlueprintAssignment> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove a blueprint assignment from a subscription.
+Remove a blueprint that has been assigned to a subscription.
 
 ## EXAMPLES
 
@@ -37,21 +37,6 @@ PS C:\> Remove-AzBlueprintAssignment -Name "myAssignment" -Subscription 00000000
 Remove the blueprint assignment specified by name from the specified subscription. The cmdlet will prompt for confirmation before executing the command.
 
 ## PARAMETERS
-
-### -Assignment
-Blueprint assignment object.
-
-```yaml
-Type: Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment
-Parameter Sets: DeleteBlueprintAssignmentByObject
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -65,6 +50,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Blueprint assignment object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment
+Parameter Sets: DeleteBlueprintAssignmentByObject
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -104,6 +104,18 @@ Subscription Id the blueprint assignment is deployed to.
 ```yaml
 Type: System.String
 Parameter Sets: DeleteBlueprintAssignmentByName
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteBlueprintAssignmentByObject
 Aliases:
 
 Required: True

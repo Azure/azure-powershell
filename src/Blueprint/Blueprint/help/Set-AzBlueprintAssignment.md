@@ -31,6 +31,15 @@ PS C:\> Set-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObje
 
 Update an existing blueprint assignment of the blueprint definition `$blueprintObject` within the specified subscription, updating the parameters. Uses system-assigned identity. The location defines the region for creating the managed identity.
 
+Sample output:
+
+Name              : myAssignment
+BlueprintId       : /providers/Microsoft.Management/managementGroups/<mgname>/providers/Microsoft.Blueprint/blueprints/myAssignment/versions/v1
+Scope             : /subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753
+LastModified      : 2019-02-12
+LockMode          : None
+ProvisioningState : Creating
+
 ## PARAMETERS
 
 ### -Blueprint
