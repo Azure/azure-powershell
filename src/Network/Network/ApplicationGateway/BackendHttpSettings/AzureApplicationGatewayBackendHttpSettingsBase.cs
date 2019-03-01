@@ -31,21 +31,21 @@ namespace Microsoft.Azure.Commands.Network
                Mandatory = true,
                HelpMessage = "Port")]
         [ValidateNotNullOrEmpty]
-        public int Port { get; set; }
+        public virtual int Port { get; set; }
 
         [Parameter(
                Mandatory = true,
                HelpMessage = "Protocol")]
         [ValidateSet("Http", "Https", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public string Protocol { get; set; }
+        public virtual string Protocol { get; set; }
 
         [Parameter(
                Mandatory = true,
                HelpMessage = "Cookie Based Affinity")]
         [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public string CookieBasedAffinity { get; set; }
+        public virtual string CookieBasedAffinity { get; set; }
 
         [Parameter(
             Mandatory = false,

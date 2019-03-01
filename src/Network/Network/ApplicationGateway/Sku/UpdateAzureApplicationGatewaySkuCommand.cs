@@ -12,34 +12,54 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureApplicationGatewaySkuBase : NetworkBaseCmdlet
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewaySku"), OutputType(typeof(PSApplicationGateway))]
+    public class UpdateAzureApplicationGatewaySkuCommand : AzureApplicationGatewaySkuBase
     {
         [Parameter(
-               Mandatory = true,
+             Mandatory = true,
+             ValueFromPipeline = true,
+             HelpMessage = "The applicationGateway")]
+        public PSApplicationGateway ApplicationGateway { get; set; }
+
+        [Parameter(
+               Mandatory = false,
                HelpMessage = "The name of the SKU")]
         [ValidateSet("Standard_Small", "Standard_Medium", "Standard_Large", "WAF_Medium", "WAF_Large", "Standard_v2", "WAF_v2", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        public override string Name { get; set; }
 
         [Parameter(
-               Mandatory = true,
+               Mandatory = false,
                HelpMessage = "Application gateway tier")]
         [ValidateSet("Standard", "WAF", "Standard_v2", "WAF_v2", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public virtual string Tier { get; set; }
-
-        [Parameter(
-               HelpMessage = "Application gateway instance count")]
-        [ValidateNotNullOrEmpty]
-        public int? Capacity { get; set; }
+        public override string Tier { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (!string.IsNullOrEmpty(this.Name))
+            {
+                this.ApplicationGateway.Sku.Name = this.Name;
+            }
+
+            if (!string.IsNullOrEmpty(this.Name))
+            {
+                this.ApplicationGateway.Sku.Tier = this.Tier;
+            }
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(this.Capacity)))
+            {
+                this.ApplicationGateway.Sku.Capacity = this.Capacity;
+            }
+
+            WriteObject(this.ApplicationGateway);
         }
     }
 }

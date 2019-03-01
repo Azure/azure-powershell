@@ -22,13 +22,13 @@ namespace Microsoft.Azure.Commands.Network
                Mandatory = true,
                HelpMessage = "Whether connection draining is enabled or not.")]
         [ValidateNotNullOrEmpty]
-        public bool Enabled { get; set; }
+        public virtual bool Enabled { get; set; }
 
         [Parameter(
                Mandatory = true,
                HelpMessage = "The number of seconds connection draining is active. Acceptable values are from 1 second to 3600 seconds.")]
         [ValidateNotNullOrEmpty]
-        public int DrainTimeoutInSec { get; set; }
+        public virtual int DrainTimeoutInSec { get; set; }
 
         public override void ExecuteCmdlet()
         {

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Protocol used to send probe")]
         [ValidateSet("Http", "Https", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public string Protocol { get; set; }
+        public virtual string Protocol { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -43,25 +43,25 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            HelpMessage = "Relative path of probe. Valid path starts from '/'. Probe is sent to <Protocol>://<host>:<port><path>")]
         [ValidateNotNullOrEmpty]
-        public string Path { get; set; }
+        public virtual string Path { get; set; }
 
         [Parameter(
            Mandatory = true,
            HelpMessage = "Probe interval in seconds. This is the time interval between two consecutive probes")]
         [ValidateNotNullOrEmpty]
-        public int Interval { get; set; }
+        public virtual int Interval { get; set; }
 
         [Parameter(
            Mandatory = true,
            HelpMessage = "Probe timeout in seconds. Probe marked as failed if valid response is not received with this timeout period")]
         [ValidateNotNullOrEmpty]
-        public int Timeout { get; set; }
+        public virtual int Timeout { get; set; }
 
         [Parameter(
            Mandatory = true,
            HelpMessage = "Probe retry count. Backend server is marked down after consecutive probe failure count reaches UnhealthyThreshold")]
         [ValidateNotNullOrEmpty]
-        public int UnhealthyThreshold { get; set; }
+        public virtual int UnhealthyThreshold { get; set; }
 
         [Parameter(
            Mandatory = false,

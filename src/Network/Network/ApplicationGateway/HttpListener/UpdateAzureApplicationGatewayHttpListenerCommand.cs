@@ -14,82 +14,38 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureApplicationGatewayHttpListenerBase : NetworkBaseCmdlet
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayHttpListener", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSApplicationGateway))]
+    public class UpdateAzureApplicationGatewayHttpListenerCommand : AzureApplicationGatewayHttpListenerBase
     {
         [Parameter(
-                Mandatory = true,
-                HelpMessage = "The name of the HTTP listener")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+             Mandatory = true,
+             ValueFromPipeline = true,
+             HelpMessage = "The applicationGateway")]
+        public PSApplicationGateway ApplicationGateway { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResourceId",
-                HelpMessage = "ID of the application gateway FrontendIPConfiguration")]
-        [ValidateNotNullOrEmpty]
-        public string FrontendIPConfigurationId { get; set; }
-
-        [Parameter(
-                ParameterSetName = "SetByResource",
-                HelpMessage = "Application gateway FrontendIPConfiguration")]
-        [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayFrontendIPConfiguration FrontendIPConfiguration { get; set; }
-
-        [Parameter(
-                ParameterSetName = "SetByResourceId",
-                HelpMessage = "ID of the application gateway FrontendPort")]
-        [ValidateNotNullOrEmpty]
-        public string FrontendPortId { get; set; }
-
-        [Parameter(
-                ParameterSetName = "SetByResource",
-                HelpMessage = "Application gateway FrontendPort")]
-        [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayFrontendPort FrontendPort { get; set; }
-
-        [Parameter(
-                ParameterSetName = "SetByResourceId",
-                HelpMessage = "ID of the application gateway SslCertificate")]
-        [ValidateNotNullOrEmpty]
-        public string SslCertificateId { get; set; }
-
-        [Parameter(
-                ParameterSetName = "SetByResource",
-                HelpMessage = "Application gateway SslCertificate")]
-        [ValidateNotNullOrEmpty]
-        public PSApplicationGatewaySslCertificate SslCertificate { get; set; }
-
-        [Parameter(
-               HelpMessage = "Host name")]
-        [ValidateNotNullOrEmpty]
-        public string HostName { get; set; }
-
-        [Parameter(
-               HelpMessage = "RequireServerNameIndication")]
-        [ValidateSet("true", "false", IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public string RequireServerNameIndication { get; set; }
-
-        [Parameter(
-               Mandatory = true,
+               Mandatory = false,
                HelpMessage = "Protocol")]
         [ValidateSet("Http", "Https", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public virtual string Protocol { get; set; }
-
-        [Parameter(
-                HelpMessage = "Customer error of an application gateway")]
-        [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayCustomError[] CustomErrorConfiguration { get; set; }
+        public override string Protocol { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            var httpListener = this.ApplicationGateway.HttpListeners.SingleOrDefault
+                (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+            if (httpListener == null)
+            {
+                throw new ArgumentException("Http Listener with the specified name does not exist");
+            }
 
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
@@ -106,15 +62,18 @@ namespace Microsoft.Azure.Commands.Network
                     this.SslCertificateId = this.SslCertificate.Id;
                 }
             }
-        }
 
-        public PSApplicationGatewayHttpListener NewObject()
-        {
-            var httpListener = new PSApplicationGatewayHttpListener();
-            httpListener.Name = this.Name;
-            httpListener.Protocol = this.Protocol;
-            httpListener.HostName = this.HostName;
+            if (!string.IsNullOrEmpty(this.Protocol))
+            {
+                httpListener.Protocol = this.Protocol;
+            }
 
+            if (!string.IsNullOrEmpty(this.Protocol))
+            {
+                httpListener.HostName = this.HostName;
+            }
+
+            // TODO: check processing
             if (string.Equals(this.RequireServerNameIndication, "true", StringComparison.OrdinalIgnoreCase))
             {
                 httpListener.RequireServerNameIndication = true;
@@ -152,12 +111,7 @@ namespace Microsoft.Azure.Commands.Network
                 httpListener.CustomErrorConfigurations = this.CustomErrorConfiguration?.ToList();
             }
 
-            httpListener.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                this.NetworkClient.NetworkManagementClient.SubscriptionId,
-                                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayHttpListenerName,
-                                this.Name);
-
-            return httpListener;
+            WriteObject(this.ApplicationGateway);
         }
     }
 }

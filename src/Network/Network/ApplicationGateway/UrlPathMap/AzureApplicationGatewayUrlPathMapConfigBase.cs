@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
                Mandatory = true,
                HelpMessage = "List of path rules")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayPathRule[] PathRules { get; set; }
+        public virtual PSApplicationGatewayPathRule[] PathRules { get; set; }
 
         [Parameter(
                 ParameterSetName = "BackendSetByResourceId",

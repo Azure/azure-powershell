@@ -162,11 +162,18 @@ function Test-ApplicationGatewayCRUD
 		Assert-NotNull $poolSetting02.Probe
 		
 		# Test setting and removing connectiondraining
-		Set-AzApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02 -Enabled $False -DrainTimeoutInSec 3600
+		Set-AzApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02 -Enabled $True -DrainTimeoutInSec 3600
 		$connectionDraining02 = Get-AzApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02
 		Assert-NotNull $connectionDraining02
-		Assert-AreEqual $False $connectionDraining02.Enabled
+		Assert-AreEqual $True $connectionDraining02.Enabled
 		Assert-AreEqual 3600 $connectionDraining02.DrainTimeoutInSec
+
+		Update-AzApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02 -DrainTimeoutInSec 3650
+		$connectionDraining02 = Get-AzApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02
+		Assert-NotNull $connectionDraining02
+		Assert-AreEqual $True $connectionDraining02.Enabled
+		Assert-AreEqual 3650 $connectionDraining02.DrainTimeoutInSec
+
 		Remove-AzApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02
 		Assert-Null $poolSetting02.connectionDraining
 
@@ -362,7 +369,13 @@ function Test-ApplicationGatewayCRUD
 		Set-AzApplicationGatewayCustomError -ApplicationGateway $getgw -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url01
 		$updatedgw = Set-AzApplicationGateway -ApplicationGateway $getgw
 		$ce = Get-AzApplicationGatewayCustomError -ApplicationGateway $updatedgw -StatusCode HttpStatus403
+		Assert-AreEqual HttpStatus403 $ce.StatusCode
 		Assert-AreEqual $customError403Url01 $ce.CustomErrorPageUrl
+
+		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		Update-AzApplicationGatewaySku -ApplicationGateway $getgw -Capacity 3
+		$updatedgw = Set-AzApplicationGateway -ApplicationGateway $getgw
+		Assert-AreEqual 3 $updatedgw.Sku.Capacity
 
 		#Remove Custom Error from listener and appgw
 		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
@@ -1609,6 +1622,7 @@ function Test-ApplicationGatewayCRUDSubItems2
 	$rewriteRuleSetName = Get-ResourceName
 
 	$wafPolicy = Get-ResourceName
+	$maxCapacityUpd = 3
 
 	try
 	{
@@ -1667,8 +1681,10 @@ function Test-ApplicationGatewayCRUDSubItems2
 		$sslCert01Path = $basedir + "/ScenarioTests/Data/ApplicationGatewaySslCert1.pfx"
 		$sslCert = New-AzApplicationGatewaySslCertificate -Name $sslCert01Name -CertificateFile $sslCert01Path -Password $pw01
 
+		$sslPolicy = New-AzApplicationGatewaySslPolicy -PolicyType Predefined -PolicyName AppGwSslPolicy20170401
+
 		# Create Application Gateway
-		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01,$fp02 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig -UrlPathMap $urlPathMap,$urlPathMap2 -RedirectConfiguration $redirectConfig -Probe $probe -SslCertificate $sslCert -RewriteRuleSet $rewriteRuleSet
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01,$fp02 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig -UrlPathMap $urlPathMap,$urlPathMap2 -RedirectConfiguration $redirectConfig -Probe $probe -SslCertificate $sslCert -RewriteRuleSet $rewriteRuleSet -SslPolicy $sslPolicy
 
 		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
 		$certFilePath2 = $basedir + "/ScenarioTests/Data/TrustedRootCertificate.cer"
@@ -1778,6 +1794,47 @@ function Test-ApplicationGatewayCRUDSubItems2
 		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 
 		Assert-AreEqual $appgw.AutoscaleConfiguration.MinCapacity 2
+
+		Update-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $appgw -MaxCapacity $maxCapacityUpd
+		Update-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $appgw -Name $poolSetting01Name -CookieBasedAffinity Disabled
+		Update-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $appgw -FirewallMode Detection
+		Update-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw -Name $fipconfigName -PrivateIpAddress 10.0.0.7
+		Update-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener01Name -HostName TestHostName1
+		Update-AzApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName -Protocol Http -Path "/path/path123.htm"
+		Update-AzApplicationGatewayRedirectConfiguration -ApplicationGateway $appgw -Name $redirectName -IncludeQueryString $false
+		$listener03 = Get-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener03Name
+		Update-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name $rule01Name -HttpListener $listener03
+		Update-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name $urlPathMapName
+		Update-AzApplicationGatewaySslPolicy -ApplicationGateway $appgw -PolicyName AppGwSslPolicy20150501
+
+		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+
+		Assert-AreEqual $appgw.AutoscaleConfiguration.MinCapacity 2
+		Assert-AreEqual $appgw.AutoscaleConfiguration.MaxCapacity $maxCapacityUpd
+		Assert-AreEqual 443 $appgw.BackendHttpSettingsCollection[0].Port
+		Assert-AreEqual Https $appgw.BackendHttpSettingsCollection[0].Protocol
+		Assert-AreEqual Disabled $appgw.BackendHttpSettingsCollection[0].CookieBasedAffinity
+		Assert-AreEqual $false $appgw.BackendHttpSettingsCollection[0].PickHostNameFromBackendAddress
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.Enabled $true
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.FirewallMode "Detection"
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.RuleSetType "OWASP"
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.RuleSetVersion "2.2.9"
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.DisabledRuleGroups.Count 2
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.RequestBodyCheck $true
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.MaxRequestBodySizeInKb 80
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.FileUploadLimitInMb 70
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.Exclusions.Count 2
+		Assert-AreEqual "/path/path123.htm" $appgw.Probes[0].Path
+		Assert-AreEqual 89 $appgw.Probes[0].Interval
+		Assert-AreEqual 88 $appgw.Probes[0].Timeout
+		Assert-AreEqual 8 $appgw.Probes[0].UnhealthyThreshold
+		Assert-AreEqual 1 $appgw.Probes[0].MinServers
+		Assert-AreEqual Permanent $appgw.RedirectConfigurations[0].RedirectType
+		Assert-AreEqual $true $appgw.RedirectConfigurations[0].IncludePath
+		Assert-AreEqual $false $appgw.RedirectConfigurations[0].IncludeQueryString
+		Assert-AreEqual Basic $appgw.RequestRoutingRules[0].RuleType
+
+		Assert-AreEqual Predefined $appgw.SslPolicy.PolicyType
 
 		# Remove
 		Remove-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name $trustedRootCertName
