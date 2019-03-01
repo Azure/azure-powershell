@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
                 HelpMessage = "The type of redirect")]
         [ValidateSet("Permanent", "Found", "SeeOther", "Temporary", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public string RedirectType { get; set; }
+        public virtual string RedirectType { get; set; }
 
         [Parameter(
                 ParameterSetName = "SetByResourceId",

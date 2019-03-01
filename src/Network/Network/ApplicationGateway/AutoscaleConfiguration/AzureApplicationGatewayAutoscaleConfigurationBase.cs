@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             HelpMessage = "Minimum capacity units that will always be available [and charged] for application gateway.",
             Mandatory = true)]
-        public int MinCapacity { get; set; }
+        public virtual int MinCapacity { get; set; }
 
         [Parameter(
             HelpMessage = "Maximum capacity units that will always be available [and charged] for application gateway.",
