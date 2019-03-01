@@ -261,6 +261,7 @@ namespace Microsoft.Azure.Commands.Eventhub
                 Parameter1.CaptureDescription = new CaptureDescription();
                 Parameter1.CaptureDescription.Destination = new Destination();
                 Parameter1.CaptureDescription.Enabled = parameter.CaptureDescription.Enabled;
+                Parameter1.CaptureDescription.SkipEmptyArchives = parameter.CaptureDescription.SkipEmptyArchives;
                 Parameter1.CaptureDescription.Encoding = (Management.EventHub.Models.EncodingCaptureDescription?)parameter.CaptureDescription.Encoding;
                 Parameter1.CaptureDescription.IntervalInSeconds = parameter.CaptureDescription.IntervalInSeconds;
                 Parameter1.CaptureDescription.SizeLimitInBytes = parameter.CaptureDescription.SizeLimitInBytes;

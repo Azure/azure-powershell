@@ -20,11 +20,11 @@
     <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="2.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="4.4.1" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.19.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.ManagedServiceIdentity" Version="0.10.0-preview" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="ScenarioTests\Data\*.*" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="ScenarioTests\Generated\*.*" CopyToOutputDirectory="PreserveNewest" />
     <None Update="ScenarioTests\Utils\*.*" CopyToOutputDirectory="PreserveNewest" />
     <None Update="TestData\*.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
