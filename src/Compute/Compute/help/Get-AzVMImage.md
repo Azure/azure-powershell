@@ -50,7 +50,7 @@ Version        FilterExpression Skus               Offer         PublisherName  
 
 This command gets all the versions of VMImage that match the specified values.
 
-### Example 1: Get VMImage object
+### Example 2: Get VMImage object
 ```
 PS C:\> Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2012-R2-Datacenter" -Version 4.127.20180315
 
@@ -73,7 +73,7 @@ DataDiskImages   : []
 
 This command gets a specific version of VMImage that matches the specified values.
 
-### Example 1: Get VMImage objects
+### Example 3: Get VMImage objects
 ```
 PS C:\> Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2012-R2-Datacenter" -Version 4.127.2018*
 

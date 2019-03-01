@@ -75,7 +75,7 @@ Tags              : {}
 
 Get all galleries in rg1.
 
-### Example 2
+### Example 3
 ```powershell
 PS C:\> Get-AzGallery
 
@@ -115,7 +115,7 @@ Tags              : {}
 
 Get all galleries in subscription.
 
-### Example 2
+### Example 4
 ```powershell
 PS C:\> Get-AzGallery -Name gallery*
 

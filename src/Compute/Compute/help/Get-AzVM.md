@@ -204,7 +204,7 @@ TEST2                                                       test4         westus
 
 This command gets all the virtual machines in West US region.
 
-### Example 4: Get all virtual machines using filtering
+### Example 6: Get all virtual machines using filtering
 ```
 PS C:\> Get-AzVM -Name test*
 

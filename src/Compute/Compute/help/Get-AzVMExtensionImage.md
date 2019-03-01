@@ -79,7 +79,7 @@ FilterExpression :
 
 This command gets all the versions of the extension image for the specified location, publisher, type, and version starting with 12.
 
-### Example 2: Get the versions of an extension image with filter over version
+### Example 3: Get the versions of an extension image with filter over version
 ```
 PS C:\> Get-AzVMExtensionImage -Location "West US" -PublisherName "Chef.Bootstrap.WindowsAzure" -Type "ChefClient" -Version 1207.12.3.0
 
