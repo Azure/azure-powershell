@@ -2083,11 +2083,19 @@ function Test-VirtualMachineScaleSetAutoRollback
         Assert-AreEqual 2 $vmss.Sku.Capacity;
         Assert-AreEqual $false $vmss.VirtualMachineProfile.StorageProfile.OsDisk.WriteAcceleratorEnabled;
 
+        $vmssVMsStatus = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
+        $vmssVMsStatusFullOutput = $vmssVMsStatus | fc | Out-String;
+        Assert-True { $vmssVMsStatusFullOutput.Contains("InstanceView") };
+
         $vmss2 = $vmss | Update-AzVmss -DisableAutoRollback $true;
         Assert-True { $vmss2.UpgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback };
 
         $result = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -OSUpgradeHistory;
         Assert-Null $result
+
+        $vmssVMsStatus = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
+        $vmssVMsStatusFullOutput = $vmssVMsStatus | fc | Out-String;
+        Assert-True { $vmssVMsStatusFullOutput.Contains("InstanceView") };
     }
     finally
     {

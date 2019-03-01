@@ -18,54 +18,60 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
     using Validations;
     using System;
     using System.Collections.Generic;
+    using Microsoft.Azure.Commands.StorageSync.Properties;
 
-    public enum PSValidationKind
-    {
-        SystemValidation,
-        NamespaceValidation
-    }
-
-    public enum PSValidationType
-    {
-        FilenameCharacters,
-        Filename,
-        FilenameLength,
-        FileSize,
-        PathLength,
-        NodeDepth,
-        DatasetSize,
-        FileSystem,
-        OsVersion
-    }
-
-    public enum PSResultLevel
-    {
-        Error,
-        Warning,
-        Info
-    }
-
+    /// <summary>
+    /// Class PSValidationResult.
+    /// </summary>
     public class PSValidationResult
     {
         #region Fields and Properties
+        /// <summary>
+        /// Gets or sets the kind.
+        /// </summary>
+        /// <value>The kind.</value>
         public PSValidationKind Kind { get; set; }
+        /// <summary>
+        /// Gets or sets the type.
+        /// </summary>
+        /// <value>The type.</value>
         public PSValidationType Type { get; set; }
+        /// <summary>
+        /// Gets or sets the level.
+        /// </summary>
+        /// <value>The level.</value>
         public PSResultLevel Level { get; set; }
+        /// <summary>
+        /// Gets or sets the positions.
+        /// </summary>
+        /// <value>The positions.</value>
         public List<int> Positions { get; set; }
+        /// <summary>
+        /// Gets or sets the description.
+        /// </summary>
+        /// <value>The description.</value>
         public string Description { get; set; }
+        /// <summary>
+        /// Gets or sets the path.
+        /// </summary>
+        /// <value>The path.</value>
         public string Path { get; set; }
         #endregion
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PSValidationResult" /> class.
+        /// </summary>
+        /// <param name="result">The result.</param>
         public PSValidationResult(IValidationResult result)
         {
-            this.Kind = this.Convert(result.Kind);
-            this.Type = this.Convert(result.Type);
-            this.Level = this.Convert(result.Level);
-            this.Positions = result.Positions != null ? new List<int>(result.Positions) : null;
-            this.Description = result.Description;
-            this.Path = result.Path;
+            Kind = Convert(result.Kind);
+            Type = Convert(result.Type);
+            Level = Convert(result.Level);
+            Positions = result.Positions != null ? new List<int>(result.Positions) : null;
+            Description = result.Description;
+            Path = result.Path;
         }
 
         #endregion
@@ -77,6 +83,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
         #endregion
 
         #region Private methods
+        /// <summary>
+        /// Converts the specified value.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>PSValidationType.</returns>
+        /// <exception cref="ArgumentException"></exception>
         private PSValidationType Convert(ValidationType value)
         {
             switch (value)
@@ -100,10 +112,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
                 case ValidationType.PathLength:
                     return PSValidationType.PathLength;
                 default:
-                    throw new ArgumentException($"{value.GetType().Name} value {value} is unsupported");
+                    throw new ArgumentException(string.Format(StorageSyncResources.UnsupportedErrorFormat, value.GetType().Name, value));
             }
         }
 
+        /// <summary>
+        /// Converts the specified value.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>PSResultLevel.</returns>
+        /// <exception cref="ArgumentException"></exception>
         private PSResultLevel Convert(ResultLevel value)
         {
             switch (value)
@@ -115,10 +133,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
                 case ResultLevel.Warning:
                     return PSResultLevel.Warning;
                 default:
-                    throw new ArgumentException($"{value.GetType().Name} value {value} is unsupported");
+                    throw new ArgumentException(string.Format(StorageSyncResources.UnsupportedErrorFormat, value.GetType().Name, value));
             }
         }
 
+        /// <summary>
+        /// Converts the specified value.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>PSValidationKind.</returns>
+        /// <exception cref="ArgumentException"></exception>
         private PSValidationKind Convert(ValidationKind value)
         {
             switch (value)
@@ -128,7 +152,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
                 case ValidationKind.NamespaceValidation:
                     return PSValidationKind.NamespaceValidation;
                 default:
-                    throw new ArgumentException($"{value.GetType().Name} value {value} is unsupported");
+                    throw new ArgumentException(string.Format(StorageSyncResources.UnsupportedErrorFormat, value.GetType().Name, value));
             }
         }
 
