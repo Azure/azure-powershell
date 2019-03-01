@@ -43,7 +43,7 @@ function Test-LinkCrud
 	Assert-AreEqual $retrievedLink.ProvisioningState "Succeeded"
 	Assert-Null $retrievedLink.Type
 
-	$updatedLink = Set-AzPrivateDnsVirtualNetworkLink -ZoneName $createdLink.ZoneName -ResourceGroupName $createdLink.ResourceGroupName -Name $createdLink.Name -Tag @{tag1="value1";tag2="value2"}
+	$updatedLink = Update-AzPrivateDnsVirtualNetworkLink -ZoneName $createdLink.ZoneName -ResourceGroupName $createdLink.ResourceGroupName -Name $createdLink.Name -Tag @{tag1="value1";tag2="value2"}
 
 	Assert-NotNull $updatedLink
 	Assert-NotNull $updatedLink.Etag
@@ -106,7 +106,7 @@ function Test-LinkCrudWithPiping
 	Assert-AreEqual $retrievedLink.ProvisioningState "Succeeded"
 	Assert-Null $retrievedLink.Type
 
-	$updatedLink = $createdLink | Set-AzPrivateDnsVirtualNetworkLink -Tag @{tag1="value1";tag2="value2"}
+	$updatedLink = $createdLink | Update-AzPrivateDnsVirtualNetworkLink -Tag @{tag1="value1";tag2="value2"}
 
 	Assert-NotNull $updatedLink
 	Assert-NotNull $updatedLink.Etag
@@ -175,11 +175,11 @@ function Test-UpdateLinkRegistrationStatusWithPiping
 	$createdLink = Create-VirtualNetworkLink $false
 	
 	$createdLink.RegistrationEnabled = $true
-	$updatedLink = $createdLink | Set-AzPrivateDnsVirtualNetworkLink	
+	$updatedLink = $createdLink | Update-AzPrivateDnsVirtualNetworkLink	
 	Assert-AreEqual $updatedLink.RegistrationEnabled $true
 
 	$updatedLink.RegistrationEnabled = $false
-	$reUpdatedLink = $updatedLink | Set-AzPrivateDnsVirtualNetworkLink
+	$reUpdatedLink = $updatedLink | Update-AzPrivateDnsVirtualNetworkLink
 	Assert-AreEqual $updatedLink.RegistrationEnabled $false
 
 	Remove-AzResourceGroup -Name $createdLink.ResourceGroupName -Force
@@ -192,7 +192,7 @@ Test link update with resource Id
 function Test-UpdateLinkRegistrationStatusWithResourceId
 {
 	$createdLink = Create-VirtualNetworkLink $false
-	$updatedLink = Set-AzPrivateDnsVirtualNetworkLink -ResourceId $createdLink.ResourceId -EnableRegistration -Tag @{}
+	$updatedLink = Update-AzPrivateDnsVirtualNetworkLink -ResourceId $createdLink.ResourceId -IsRegistrationEnabled $true -Tag @{}
 	
 	Assert-AreEqual $updatedLink.RegistrationEnabled $true
 	Assert-AreEqual 0 $updatedLink.Tags.Count
@@ -226,7 +226,7 @@ function Test-UpdateLinkWithEtagMismatchThrow
 	$createdLink.RegistrationEnabled = $true
 	$createdLink.Etag = "gibberish"
 	
-	Assert-ThrowsLike { $createdLink | Set-AzPrivateDnsVirtualNetworkLink } "*(etag mismatch)*"
+	Assert-ThrowsLike { $createdLink | Update-AzPrivateDnsVirtualNetworkLink } "*(etag mismatch)*"
 
 	Remove-AzResourceGroup -Name $createdLink.ResourceGroupName -Force
 }
@@ -243,7 +243,7 @@ function Test-UpdateLinkWithEtagMismatchOverwrite
 	$createdLink.RegistrationEnabled = $true
 	$createdLink.Etag = "gibberish"
 	
-	$updatedLink = $createdLink | Set-AzPrivateDnsVirtualNetworkLink -Overwrite
+	$updatedLink = $createdLink | Update-AzPrivateDnsVirtualNetworkLink -Overwrite
 	Assert-AreEqual $updatedLink.RegistrationEnabled $true
 	Assert-AreEqual $updatedLink.ProvisioningState "Succeeded"
 
@@ -259,7 +259,7 @@ function Test-UpdateLinkZoneNotExistsThrow
 	$createdLink = Create-VirtualNetworkLink $false
 	
 	$message = "*The resource * under resource group * was not found*"
-	Assert-ThrowsLike { Set-AzPrivateDnsVirtualNetworkLink -ZoneName "nonexistingzone.com" -ResourceGroupName $createdLink.ResourceGroupName -Name $createdLink.Name -Tag @{tag1="value1";tag2="value2"} } $message
+	Assert-ThrowsLike { Update-AzPrivateDnsVirtualNetworkLink -ZoneName "nonexistingzone.com" -ResourceGroupName $createdLink.ResourceGroupName -Name $createdLink.Name -Tag @{tag1="value1";tag2="value2"} } $message
 
 	Remove-AzResourceGroup -Name $createdLink.ResourceGroupName -Force
 }
@@ -273,7 +273,7 @@ function Test-UpdateLinkLinkNotExistsThrow
 	$createdLink = Create-VirtualNetworkLink $false
 	
 	$message = "*The resource * under resource group * was not found*"
-	Assert-ThrowsLike { Set-AzPrivateDnsVirtualNetworkLink -ZoneName $createdLink.ZoneName -ResourceGroupName $createdLink.ResourceGroupName -Name "nonexistinglink" -Tag @{tag1="value1";tag2="value2"} } $message
+	Assert-ThrowsLike { Update-AzPrivateDnsVirtualNetworkLink -ZoneName $createdLink.ZoneName -ResourceGroupName $createdLink.ResourceGroupName -Name "nonexistinglink" -Tag @{tag1="value1";tag2="value2"} } $message
 
 	Remove-AzResourceGroup -Name $createdLink.ResourceGroupName -Force
 }
@@ -286,7 +286,7 @@ function Test-UpdateLinkWithNoChangesShouldNotThrow
 {
 	$createdLink = Create-VirtualNetworkLink $false
 	
-	$updatedLink = $createdLink | Set-AzPrivateDnsVirtualNetworkLink
+	$updatedLink = $createdLink | Update-AzPrivateDnsVirtualNetworkLink
 	Assert-AreEqual $updatedLink.ProvisioningState "Succeeded"
 
 	Remove-AzResourceGroup -Name $createdLink.ResourceGroupName -Force

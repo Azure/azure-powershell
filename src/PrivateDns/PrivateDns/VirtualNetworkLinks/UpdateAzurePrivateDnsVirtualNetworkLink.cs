@@ -22,19 +22,19 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
     /// <summary>
     /// Updates an existing zone.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsVirtualNetworkLink", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSetName), OutputType(typeof(PSPrivateDnsLink))]
-    public class SetAzurePrivateDnsVirtualNetworkLink : PrivateDnsBaseCmdlet
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsVirtualNetworkLink", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSetName), OutputType(typeof(PSPrivateDnsVirtualNetworkLink))]
+    public class UpdateAzurePrivateDnsVirtualNetworkLink : PrivateDnsBaseCmdlet
     {
         private const string FieldsParameterSetName = "Fields";
         private const string ObjectParameterSetName = "Object";
         private const string ResourceParameterSetName = "ResourceId";
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group in which the zone exists.", ParameterSetName = FieldsParameterSetName)]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group in which the Private DNS zone/Virtual Network link exists.", ParameterSetName = FieldsParameterSetName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The full name of the zone (without a terminating dot).", ParameterSetName = FieldsParameterSetName)]
+        [Parameter(Mandatory = true, HelpMessage = "The full name of the Private DNS zone (without a terminating dot).", ParameterSetName = FieldsParameterSetName)]
         [ResourceNameCompleter("Microsoft.Network/privateDnsZones", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ZoneName { get; set; }
@@ -46,28 +46,27 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The virtual network link object to set.", ParameterSetName = ObjectParameterSetName)]
         [ValidateNotNullOrEmpty]
-        public PSPrivateDnsLink Link { get; set; }
+        public PSPrivateDnsVirtualNetworkLink InputObject { get; set; }
 
         [Parameter(ParameterSetName = ResourceParameterSetName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Private DNS Zone ResourceID.")]
         [ResourceIdCompleter("Microsoft.Network/privateDnsZones/virtualNetworkLinks")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Switch parameter that represents if registration is enabled on the link.")]
+        [Parameter(Mandatory = false, HelpMessage = "Boolean that represents if registration is enabled on the virtual network link.")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter EnableRegistration { get; set; }
+        public bool? IsRegistrationEnabled { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.", ParameterSetName = ObjectParameterSetName)]
+        [Parameter(Mandatory = false, HelpMessage = "Switch parameter used to force update in case of mismatching Etags. Does not use the ETag field of the Link parameter for optimistic concurrency checks.", ParameterSetName = ObjectParameterSetName)]
         public SwitchParameter Overwrite { get; set; }
 
         public override void ExecuteCmdlet()
         {
-
-            PSPrivateDnsLink result = null;
-            PSPrivateDnsLink linkToUpdate = null;
+            PSPrivateDnsVirtualNetworkLink result = null;
+            PSPrivateDnsVirtualNetworkLink linkToUpdate = null;
 
             switch (this.ParameterSetName)
             {
@@ -76,17 +75,13 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
                 {
                     if (!string.IsNullOrEmpty(this.ResourceId))
                     {
-                        PrivateDnsUtils.GetResourceGroupNameZoneNameAndLinkNameFromLinkId(this.ResourceId, out var resourceGroupName, out var zoneName, out var linkName);
+                        PrivateDnsUtils.ParseVirtualNetworkId(this.ResourceId, out var resourceGroupName, out var zoneName, out var linkName);
                         this.ResourceGroupName = resourceGroupName;
                         this.ZoneName = zoneName;
                         this.Name = linkName;
                     }
 
-                    if (this.ZoneName.EndsWith("."))
-                    {
-                        this.ZoneName = this.ZoneName.TrimEnd('.');
-                        this.WriteWarning($"Modifying zone name to remove terminating '.'.  Zone name used is \"{this.ZoneName}\".");
-                    }
+                    this.ZoneName = TrimTrailingDotInZoneName(this.ZoneName);
 
                     linkToUpdate = this.PrivateDnsClient.GetPrivateDnsLink(this.Name, this.ResourceGroupName, this.ZoneName);
                     linkToUpdate.Etag = "*";
@@ -94,11 +89,11 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
                     break;
                 }
 
-                case ObjectParameterSetName when (string.IsNullOrWhiteSpace(this.Link.Etag) || this.Link.Etag == "*") && !this.Overwrite.IsPresent:
-                    throw new PSArgumentException(string.Format(ProjectResources.Error_EtagNotSpecified, typeof(PSPrivateDnsLink).Name));
+                case ObjectParameterSetName when (string.IsNullOrWhiteSpace(this.InputObject.Etag) || this.InputObject.Etag == "*") && !this.Overwrite.IsPresent:
+                    throw new PSArgumentException(string.Format(ProjectResources.Error_EtagNotSpecified, typeof(PSPrivateDnsVirtualNetworkLink).Name));
 
                 case ObjectParameterSetName:
-                    linkToUpdate = this.Link;
+                    linkToUpdate = this.InputObject;
                     break;
             }
 
@@ -107,9 +102,9 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
                 linkToUpdate.Tags = this.Tag;
             }
 
-            if (this.EnableRegistration.IsPresent)
+            if (this.IsRegistrationEnabled != null)
             {
-                linkToUpdate.RegistrationEnabled = true;
+                linkToUpdate.RegistrationEnabled = this.IsRegistrationEnabled.Value;
             }
 
             ConfirmAction(

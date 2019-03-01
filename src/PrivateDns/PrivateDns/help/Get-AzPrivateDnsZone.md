@@ -158,8 +158,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone
 
-## NOTES
-
 ## RELATED LINKS
 
 [New-AzPrivateDnsZone](./New-AzPrivateDnsZone.md)

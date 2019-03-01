@@ -38,7 +38,7 @@ whether the cmdlet prompts you for confirmation.
 
 ### Example 1: Create a Private DNS virtual network link
 ```
-PS C:\>$Link = New-AzPrivateDnsVirtualNetworkLink -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Name "mylink" -VirtualNetworkId "myvirtualnetwork" -EnableRegistration
+PS C:\>$Link = New-AzPrivateDnsVirtualNetworkLink -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Name "mylink" -VirtualNetworkId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork" -EnableRegistration
 
 Name                    : mylink
 ResourceId              : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetwork
-The resource id of the virtual network associated with the link.
+The virtual network object associated with the link.
 
 ```yaml
 Type: Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.VirtualNetwork
@@ -218,13 +218,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsLink
-
-## NOTES
-You can use the *Confirm* parameter to control whether this cmdlet prompts you for confirmation.
-By default, the cmdlet prompts you for confirmation if the $ConfirmPreference Windows PowerShell variable has a value of Medium or lower.
-If you specify *Confirm* or *Confirm:$True*, this cmdlet prompts you for confirmation before it runs.
-If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation.
+### Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink
 
 ## RELATED LINKS
 

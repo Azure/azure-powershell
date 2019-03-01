@@ -12,7 +12,7 @@ This topic displays help topics for the Azure private DNS Cmdlets.
 
 ## Az.PrivateDns Cmdlets
 ### [Get-AzPrivateDnsVirtualNetworkLink](Get-AzPrivateDnsVirtualNetworkLink.md)
-Gets a Private DNS virtual network link.
+Gets a virtual network link associated with the specified Private DNS zone.
 
 ### [Get-AzPrivateDnsZone](Get-AzPrivateDnsZone.md)
 Gets a Private DNS zone.
@@ -29,9 +29,9 @@ Removes a virtual network link from a resource group.
 ### [Remove-AzPrivateDnsZone](Remove-AzPrivateDnsZone.md)
 Removes a private DNS zone from a resource group.
 
-### [Set-AzPrivateDnsVirtualNetworkLink](Set-AzPrivateDnsVirtualNetworkLink.md)
-Sets/Updates a virtual network link associated with a private zone and a resource group.
-
 ### [Set-AzPrivateDnsZone](Set-AzPrivateDnsZone.md)
 Updates a Private DNS zone from a resource group.
+
+### [Update-AzPrivateDnsVirtualNetworkLink](Update-AzPrivateDnsVirtualNetworkLink.md)
+Updates a virtual network link associated with a private zone and a resource group.
 

@@ -28,12 +28,12 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
         private const string ResourceParameterSetName = "ResourceId";
         private const string ObjectParameterSetName = "Object";
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group in which the zone exists.", ParameterSetName = FieldsParameterSetName)]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group in which the Private DNS zone/virtual network link exists.", ParameterSetName = FieldsParameterSetName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The full name of the zone associated with this virtual network link.", ParameterSetName = FieldsParameterSetName)]
+        [Parameter(Mandatory = true, HelpMessage = "The full name of the Private DNS zone associated with this virtual network link.", ParameterSetName = FieldsParameterSetName)]
         [ResourceNameCompleter("Microsoft.Network/privateDnsZones", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ZoneName { get; set; }
@@ -43,16 +43,16 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The link object to remove.", ParameterSetName = ObjectParameterSetName)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The virtual network link object to remove.", ParameterSetName = ObjectParameterSetName)]
         [ValidateNotNullOrEmpty]
-        public PSPrivateDnsLink Link { get; set; }
+        public PSPrivateDnsVirtualNetworkLink InputObject { get; set; }
 
         [Parameter(ParameterSetName = ResourceParameterSetName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Private DNS Zone ResourceID.")]
         [ResourceIdCompleter("Microsoft.Network/privateDnsZones/virtualNetworkLinks")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the Zone parameter for optimistic concurrency checks.", ParameterSetName = ObjectParameterSetName)]
+        [Parameter(Mandatory = false, HelpMessage = "Switch parameter used to force update in case of mismatching Etags. Does not use the ETag field of the Link parameter for optimistic concurrency checks.", ParameterSetName = ObjectParameterSetName)]
         public SwitchParameter Overwrite { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -65,21 +65,20 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
 
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
-                PrivateDnsUtils.GetResourceGroupNameZoneNameAndLinkNameFromLinkId(this.ResourceId, out var resourceGroupName, out var zoneName, out var linkName);
+                PrivateDnsUtils.ParseVirtualNetworkId(this.ResourceId, out var resourceGroupName, out var zoneName, out var linkName);
                 this.ResourceGroupName = resourceGroupName;
                 this.ZoneName = zoneName;
                 this.Name = linkName;
             }
 
-            if (!string.IsNullOrEmpty(this.ZoneName) && this.ZoneName.EndsWith("."))
+            if (!string.IsNullOrEmpty((this.ZoneName)))
             {
-                this.ZoneName = this.ZoneName.TrimEnd('.');
-                this.WriteWarning($"Modifying zone name to remove terminating '.'.  Zone name used is \"{this.ZoneName}\".");
+                this.ZoneName = TrimTrailingDotInZoneName(this.ZoneName);
             }
 
             var linkToDelete = (this.ParameterSetName != ObjectParameterSetName)
                 ? this.PrivateDnsClient.GetLinkHandleNonExistentLink(this.ZoneName, this.ResourceGroupName, this.Name)
-                : this.Link;
+                : this.InputObject;
 
             if (linkToDelete == null)
             {
@@ -89,13 +88,12 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
 
             if ((string.IsNullOrWhiteSpace(linkToDelete.Etag) || linkToDelete.Etag == "*") && !overwrite)
             {
-                throw new PSArgumentException(string.Format(ProjectResources.Error_EtagNotSpecified, typeof(PSPrivateDnsLink).Name));
+                throw new PSArgumentException(string.Format(ProjectResources.Error_EtagNotSpecified, typeof(PSPrivateDnsVirtualNetworkLink).Name));
             }
 
-            if (linkToDelete.ZoneName != null && linkToDelete.ZoneName.EndsWith("."))
+            if (!string.IsNullOrEmpty((linkToDelete.ZoneName)))
             {
-                linkToDelete.ZoneName = linkToDelete.ZoneName.TrimEnd('.');
-                this.WriteWarning($"Modifying zone name to remove terminating '.'.  Zone name used is \"{linkToDelete.ZoneName}\".");
+                linkToDelete.ZoneName = TrimTrailingDotInZoneName(linkToDelete.ZoneName);
             }
 
             ConfirmAction(

@@ -9,7 +9,7 @@ schema: 2.0.0
 # Get-AzPrivateDnsVirtualNetworkLink
 
 ## SYNOPSIS
-Gets a Private DNS virtual network link.
+Gets a virtual network link associated with the specified Private DNS zone.
 
 ## SYNTAX
 
@@ -19,10 +19,10 @@ Get-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String
 ```
 
 ## DESCRIPTION
-The **Get-AzPrivateDnsVirtualNetworkLink** cmdlet gets Private Domain Name System (DNS) virtual network links associated with a particular zone from the specified resource group.
-If you specify the *Name* parameter, a single **PSPrivateDnsLink** object is returned.
+The **Get-AzPrivateDnsVirtualNetworkLink** cmdlet gets virtual network links associated with a particular Private DNS zone from the specified resource group.
+If you specify the *Name* parameter, a single **PSPrivateDnsVirtualNetworkLink** object is returned.
 If you do not specify the *Name* parameter, an array containing all of the links associated with the zone in the specified resource group is returned.
-You can use the **PSPrivateDnsLink** object to update the link.
+You can use the **PSPrivateDnsVirtualNetworkLink** object to update the link.
 
 ## EXAMPLES
 
@@ -47,7 +47,7 @@ VirtualNetworkLinkState : Completed
 ProvisioningState       : Succeeded
 ```
 
-This example gets the link mylink associated with the Private DNS zone named myzone.com from the specified resource group, and then stores it in the $Link variable.
+This example gets the virtual network link mylink associated with the Private DNS zone named myzone.com from the specified resource group, and then stores it in the $Link variable.
 
 ### Example 2: Get all of the links associated with a zone in a resource group.
 ```
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Private DNS virtual network link to get.
+Specifies the name of the virtual network link to get.
 If you do not specify a value for the *Name* parameter, this cmdlet gets all links associated with the specified Private DNS zone in the specified resource group.
 
 ```yaml
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group that contains the Private DNS link to get.
+Specifies the name of the resource group that contains the virtual network link to get.
 
 ```yaml
 Type: System.String
@@ -157,9 +157,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsLink
-
-## NOTES
+### Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink
 
 ## RELATED LINKS
 
