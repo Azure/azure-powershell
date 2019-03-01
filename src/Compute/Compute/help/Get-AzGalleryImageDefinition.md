@@ -139,7 +139,7 @@ Tags                : {}
 
 Get the gallery image definition that starts with "image".
 
-### Example 1
+### Example 3
 ```powershell
 PS C:\> Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1
 
