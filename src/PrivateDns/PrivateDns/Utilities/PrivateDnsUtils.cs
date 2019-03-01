@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Utilities
             resourceGroupName = identifier.ResourceGroupName;
         }
 
-        public static void GetResourceGroupNameZoneNameAndLinkNameFromLinkId(
+        public static void ParseVirtualNetworkId(
             string resourceId,
             out string resourceGroupName,
             out string zoneName,

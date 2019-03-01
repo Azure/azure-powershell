@@ -208,12 +208,15 @@
     <value>Removing virtual network link ...</value>
   </data>
   <data name="Success_NewVirtualNetworkLink" xml:space="preserve">
-    <value>Link '{0}' was created in resource group '{1}'. Use Get-AzPrivateDnsVirtualNetworkLink to retrieve details about the created link.</value>
+    <value>Virtual Network Link '{0}' was created in resource group '{1}'. Use Get-AzPrivateDnsVirtualNetworkLink to retrieve details about the created link.</value>
   </data>
   <data name="Success_RemoveLink" xml:space="preserve">
-    <value>Link '{0}' was removed from resource group '{1}'.</value>
+    <value>Virtual Network Link '{0}' was removed from resource group '{1}'.</value>
   </data>
   <data name="Warning_InvalidLinkDetailsSpecified" xml:space="preserve">
-    <value>Invalid Link details specified.</value>
+    <value>Invalid Virtual Network Link details specified.</value>
+  </data>
+  <data name="Progress_ModifyingZoneNameTrimDot" xml:space="preserve">
+    <value>Modifying Private DNS zone name to remove terminating '.'. Private DNS Zone name used is \"{0}\".</value>
   </data>
 </root>

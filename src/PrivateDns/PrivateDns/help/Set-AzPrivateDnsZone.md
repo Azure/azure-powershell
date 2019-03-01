@@ -214,11 +214,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone
 
-## NOTES
-Due to the potentially high impact of deleting a private DNS zone, by default, this cmdlet prompts for confirmation if the $ConfirmPreference Windows PowerShell variable has any value other than None.
-If you specify *Confirm* or *Confirm:$True*, this cmdlet prompts you for confirmation before it runs.
-If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation. 
-
 ## RELATED LINKS
 
 [Get-AzPrivateDnsZone](./Get-AzPrivateDnsZone.md)

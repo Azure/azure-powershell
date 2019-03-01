@@ -70,11 +70,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
                     this.Name = zoneName;
                 }
 
-                if (this.Name.EndsWith("."))
-                {
-                    this.Name = this.Name.TrimEnd('.');
-                    this.WriteWarning($"Modifying Private DNS zone name to remove terminating '.'.  Zone name used is \"{this.Name}\".");
-                }
+                this.Name = TrimTrailingDotInZoneName(this.Name);
 
                 zoneToUpdate = this.PrivateDnsClient.GetPrivateDnsZone(this.Name, this.ResourceGroupName);
                 zoneToUpdate.Etag = "*";
@@ -94,10 +90,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
                 throw new PSArgumentException(string.Format(ProjectResources.Error_ZoneNotFound), this.Name);
             }
 
-            if (this.Tag != null)
-            {
-                zoneToUpdate.Tags = this.Tag;
-            }
+            zoneToUpdate.Tags = this.Tag;
 
             if (zoneToUpdate.Name != null && zoneToUpdate.Name.EndsWith("."))
             {

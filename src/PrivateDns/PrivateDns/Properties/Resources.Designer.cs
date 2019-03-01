@@ -205,6 +205,15 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Modifying Private DNS zone name to remove terminating &apos;.&apos;. Private DNS Zone name used is \&quot;{0}\&quot;..
+        /// </summary>
+        internal static string Progress_ModifyingZoneNameTrimDot {
+            get {
+                return ResourceManager.GetString("Progress_ModifyingZoneNameTrimDot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing virtual network link ....
         /// </summary>
         internal static string Progress_RemovingLink {
@@ -259,7 +268,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Link &apos;{0}&apos; was created in resource group &apos;{1}&apos;. Use Get-AzPrivateDnsVirtualNetworkLink to retrieve details about the created link..
+        ///   Looks up a localized string similar to Virtual Network Link &apos;{0}&apos; was created in resource group &apos;{1}&apos;. Use Get-AzPrivateDnsVirtualNetworkLink to retrieve details about the created link..
         /// </summary>
         internal static string Success_NewVirtualNetworkLink {
             get {
@@ -313,7 +322,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Link &apos;{0}&apos; was removed from resource group &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Virtual Network Link &apos;{0}&apos; was removed from resource group &apos;{1}&apos;..
         /// </summary>
         internal static string Success_RemoveLink {
             get {
@@ -349,7 +358,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid Link details specified..
+        ///   Looks up a localized string similar to Invalid Virtual Network Link details specified..
         /// </summary>
         internal static string Warning_InvalidLinkDetailsSpecified {
             get {

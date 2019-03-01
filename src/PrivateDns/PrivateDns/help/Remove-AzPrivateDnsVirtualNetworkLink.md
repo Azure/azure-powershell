@@ -21,7 +21,7 @@ Remove-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <Str
 
 ### Object
 ```
-Remove-AzPrivateDnsVirtualNetworkLink -Link <PSPrivateDnsLink> [-Overwrite] [-PassThru]
+Remove-AzPrivateDnsVirtualNetworkLink -InputObject <PSPrivateDnsVirtualNetworkLink> [-Overwrite] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,9 +33,9 @@ Remove-AzPrivateDnsVirtualNetworkLink -ResourceId <String> [-PassThru]
 
 ## DESCRIPTION
 The **Remove-AzPrivateDnsVirtualNetworkLink** cmdlet permanently deletes a private Domain Name System (DNS) link from a specified resource group.
-You can pass a **PSPrivateDnsLink** object using the *Link* parameter or by using the pipeline operator, or alternatively you can specify the *Name* *ZoneName* and *ResourceGroupName* parameters.
+You can pass a **PSPrivateDnsVirtualNetworkLink** object using the *Link* parameter or by using the pipeline operator, or alternatively you can specify the *Name* *ZoneName* and *ResourceGroupName* parameters.
 You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
-When specifying the link using a **PSPrivateDnsLink** object (passed via the pipeline or *Link* parameter), the link is not deleted if it has been changed in Azure Private DNS since the local **PSPrivateDnsLink** object was retrieved. This provides protection for concurrent zone changes. This can be suppressed using the *Overwrite* parameter, which deletes the zone regardless of concurrent changes.
+When specifying the link using a **PSPrivateDnsVirtualNetworkLink** object (passed via the pipeline or *Link* parameter), the link is not deleted if it has been changed in Azure Private DNS since the local **PSPrivateDnsVirtualNetworkLink** object was retrieved. This provides protection for concurrent zone changes. This can be suppressed using the *Overwrite* parameter, which deletes the zone regardless of concurrent changes.
 
 ## EXAMPLES
 
@@ -63,13 +63,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Link
-Specifies the link to delete.
-The **PSPrivateDnsLink** object passed can also be passed via the pipeline.
-Alternatively, you can specify the link to delete by using the *Name* *ZoneName* and *ResourceGroupName* parameters.
+### -InputObject
+The virtual network link object to remove.
 
 ```yaml
-Type: Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsLink
+Type: Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink
 Parameter Sets: Object
 Aliases:
 
@@ -98,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Overwrite
-When specifying the zone using a **PSPrivateDnsLink** object (passed via the pipeline or *Link* parameter), the zone is not deleted if it has been changed in Azure DNS since the local **PSPrivateDnsLink** object was retrieved.
+When specifying the zone using a **PSPrivateDnsVirtualNetworkLink** object (passed via the pipeline or *Link* parameter), the zone is not deleted if it has been changed in Azure DNS since the local **PSPrivateDnsVirtualNetworkLink** object was retrieved.
 This provides protection for concurrent zone changes.
 This can be suppressed using the *Overwrite* parameter, which deletes the zone regardless of concurrent changes.
 
@@ -115,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-passthru
+Used for passing the result (boolean) of the operation delete virtual network link further down the pipeline.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -132,7 +130,7 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 Specifies the name of the resource group that contains the link to remove.
 You must also specify the *ZoneName* and *Name* parameter.
-Alternatively, you can specify the DNS zone using a **PSPrivateDnsLink** object, passed via either the pipeline or the *Link* parameter.
+Alternatively, you can specify the DNS zone using a **PSPrivateDnsVirtualNetworkLink** object, passed via either the pipeline or the *Link* parameter.
 
 ```yaml
 Type: System.String
@@ -214,18 +212,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsLink
+### Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink
 
 ### System.String
 
 ## OUTPUTS
 
 ### System.Boolean
-
-## NOTES
-Due to the potentially high impact of deleting a virtual network link, by default, this cmdlet prompts for confirmation if the $ConfirmPreference Windows PowerShell variable has any value other than None.
-If you specify *Confirm* or *Confirm:$True*, this cmdlet prompts you for confirmation before it runs.
-If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation. 
 
 ## RELATED LINKS
 

@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
 
     using System.Collections;
 
-    public class PSPrivateDnsLink
+    public class PSPrivateDnsVirtualNetworkLink
     {
         /// <summary>
         /// Gets or sets the name of the virtual network link.
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
 
         /// <summary>
         /// Gets the status of the virtual network link to the Private DNS
-        /// zone. Possible values are 'InProgress' and 'Done'. This is a
+        /// zone. Possible values are 'InProgress' and 'Completed'. This is a
         /// read-only property and any attempt to set this value will be
         /// ignored. Possible values include: 'InProgress', 'Completed'
         /// </summary>

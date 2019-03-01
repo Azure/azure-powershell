@@ -170,10 +170,14 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
                 Tags = TagsConversionHelper.CreateTagHashtable(zone.Tags),
                 NumberOfRecordSets = zone.NumberOfRecordSets,
                 MaxNumberOfRecordSets = zone.MaxNumberOfRecordSets,
+                NumberOfVirtualNetworkLinks = zone.NumberOfVirtualNetworkLinks,
+                MaxNumberOfVirtualNetworkLinks = zone.MaxNumberOfVirtualNetworkLinks,
+                NumberOfVirtualNetworkLinksWithRegistration = zone.NumberOfVirtualNetworkLinksWithRegistration,
+                MaxNumberOfVirtualNetworkLinksWithRegistration = zone.MaxNumberOfVirtualNetworkLinksWithRegistration,
             };
         }
 
-        public PSPrivateDnsLink CreatePrivateDnsLink(
+        public PSPrivateDnsVirtualNetworkLink CreatePrivateDnsLink(
             string name,
             string resourceGroupName,
             string zoneName,
@@ -202,7 +206,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
             return ToPrivateDnsLink(response);
         }
 
-        public PSPrivateDnsLink UpdatePrivateDnsLink(PSPrivateDnsLink link, bool overwrite)
+        public PSPrivateDnsVirtualNetworkLink UpdatePrivateDnsLink(PSPrivateDnsVirtualNetworkLink link, bool overwrite)
         {
             var response = this.PrivateDnsManagementClient.VirtualNetworkLinks.CreateOrUpdate(
                 link.ResourceGroupName,
@@ -225,7 +229,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
         }
 
         public void DeletePrivateDnsLink(
-            PSPrivateDnsLink link,
+            PSPrivateDnsVirtualNetworkLink link,
             bool overwrite)
         {
             this.PrivateDnsManagementClient.VirtualNetworkLinks.Delete(
@@ -235,14 +239,14 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
                 ifMatch: overwrite ? "*" : link.Etag);
         }
 
-        public PSPrivateDnsLink GetPrivateDnsLink(string name, string resourceGroupName, string zoneName)
+        public PSPrivateDnsVirtualNetworkLink GetPrivateDnsLink(string name, string resourceGroupName, string zoneName)
         {
             return ToPrivateDnsLink(this.PrivateDnsManagementClient.VirtualNetworkLinks.Get(resourceGroupName, zoneName, name));
         }
 
-        public List<PSPrivateDnsLink> ListPrivateDnsLinksInZone(string resourceGroupName, string zoneName)
+        public List<PSPrivateDnsVirtualNetworkLink> ListPrivateDnsLinksInZone(string resourceGroupName, string zoneName)
         {
-            var results = new List<PSPrivateDnsLink>();
+            var results = new List<PSPrivateDnsVirtualNetworkLink>();
             IPage<VirtualNetworkLink> getResponse = null;
             do
             {
@@ -254,9 +258,9 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
             return results;
         }
 
-        public PSPrivateDnsLink GetLinkHandleNonExistentLink(string zoneName, string resourceGroupName, string linkName)
+        public PSPrivateDnsVirtualNetworkLink GetLinkHandleNonExistentLink(string zoneName, string resourceGroupName, string linkName)
         {
-            PSPrivateDnsLink retrievedLink = null;
+            PSPrivateDnsVirtualNetworkLink retrievedLink = null;
             try
             {
                 retrievedLink = this.GetPrivateDnsLink(linkName, resourceGroupName, zoneName);
@@ -272,11 +276,11 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
             return retrievedLink;
         }
 
-        private static PSPrivateDnsLink ToPrivateDnsLink(VirtualNetworkLink link)
+        private static PSPrivateDnsVirtualNetworkLink ToPrivateDnsLink(VirtualNetworkLink link)
         {
-            PrivateDnsUtils.GetResourceGroupNameZoneNameAndLinkNameFromLinkId(link.Id, out var resourceGroupName, out var zoneName, out var linkName);
+            PrivateDnsUtils.ParseVirtualNetworkId(link.Id, out var resourceGroupName, out var zoneName, out var linkName);
 
-            return new PSPrivateDnsLink()
+            return new PSPrivateDnsVirtualNetworkLink()
             {
                 Name = link.Name,
                 ResourceId = link.Id,

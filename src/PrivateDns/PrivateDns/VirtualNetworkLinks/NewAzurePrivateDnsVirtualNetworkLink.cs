@@ -21,23 +21,23 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
     /// <summary>
     /// Creates a new zone.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsVirtualNetworkLink", SupportsShouldProcess = true, DefaultParameterSetName = IdParameterSetName), OutputType(typeof(PSPrivateDnsLink))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsVirtualNetworkLink", SupportsShouldProcess = true, DefaultParameterSetName = IdParameterSetName), OutputType(typeof(PSPrivateDnsVirtualNetworkLink))]
     public class NewAzurePrivateDnsVirtualNetworkLink : PrivateDnsBaseCmdlet
     {
         private const string IdParameterSetName = "VirtualNetworkId";
-        private const string ObjectParameterSetName = "Object";
+        private const string ObjectParameterSetName = "VirtualNetworkObject";
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group in which to create the zone.")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group in which to create the virtual network link. Should match resource group of the private DNS zone")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The full name of the zone associated with the link (without a terminating dot).")]
+        [Parameter(Mandatory = true, HelpMessage = "The full name of the Private DNS zone associated with the virtual network link (without a terminating dot).")]
         [ResourceNameCompleter("Microsoft.Network/privateDnsZones", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ZoneName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The full name of the link.")]
+        [Parameter(Mandatory = true, HelpMessage = "The full name of the virtual network link.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -45,11 +45,11 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkId { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource id of the virtual network associated with the link.", ParameterSetName = ObjectParameterSetName)]
+        [Parameter(Mandatory = true, HelpMessage = "The resource object of the virtual network associated with the link.", ParameterSetName = ObjectParameterSetName)]
         [ValidateNotNullOrEmpty]
         public VirtualNetwork VirtualNetwork { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Switch parameter that represents if the link is registration enabled or not.")]
+        [Parameter(Mandatory = false, HelpMessage = "Switch parameter that represents if the virtual network link is registration enabled or not.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter EnableRegistration { get; set; }
 
@@ -58,11 +58,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
 
         public override void ExecuteCmdlet()
         {
-            if (this.ZoneName.EndsWith("."))
-            {
-                this.ZoneName = this.ZoneName.TrimEnd('.');
-                this.WriteWarning($"Modifying zone name to remove terminating '.'.  Zone name used is \"{this.ZoneName}\".");
-            }
+            this.ZoneName = TrimTrailingDotInZoneName(this.ZoneName);
 
             ConfirmAction(
                 ProjectResources.Progress_CreatingNewVirtualNetworkLink,
