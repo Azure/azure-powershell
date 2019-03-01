@@ -30,6 +30,7 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
+ [-FirewallPolicy <PSApplicationGatewayWebApplicationFirewallPolicy>]
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
  [-Zone <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String>] [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
@@ -273,6 +274,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FirewallPolicy
+Firewall configuration
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallPolicy
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
