@@ -60,15 +60,15 @@ function Test-ExpressRoutePortCRUD
 
 		$vExpressRoutePort = Get-AzExpressRoutePort -ResourceGroupName "*"
         Assert-NotNull $vExpressRoutePort
-		Assert-True {$vExpressRoutePort -ge 0}
+		Assert-True {$vExpressRoutePort.Count -ge 0}
 
 		$vExpressRoutePort = Get-AzExpressRoutePort -Name "*"
         Assert-NotNull $vExpressRoutePort
-		Assert-True {$vExpressRoutePort -ge 0}
+		Assert-True {$vExpressRoutePort.Count -ge 0}
 
 		$vExpressRoutePort = Get-AzExpressRoutePort -ResourceGroupName "*" -Name "*"
         Assert-NotNull $vExpressRoutePort
-		Assert-True {$vExpressRoutePort -ge 0}
+		Assert-True {$vExpressRoutePort.Count -ge 0}
 
         # Get ExpressRoutePort
         $vExpressRoutePort = Get-AzureRmExpressRoutePort -ResourceId $vExpressRoutePort.Id
