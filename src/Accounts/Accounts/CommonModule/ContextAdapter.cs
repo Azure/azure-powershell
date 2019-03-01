@@ -130,6 +130,16 @@ namespace Microsoft.Azure.Commands.Common
                 authToken.AuthorizeRequest((type, token) => request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(type, token));
             }, outerToken);
         }
+
+        /// <summary>
+        /// Gets the currently selected profile from the context
+        /// </summary>
+        /// <returns>The name of the selected profile</returns>
+        internal string GetSelectedProfile()
+        {
+            // TODO: Implement profile support into the context and return it here.
+            return String.Empty;
+        }
     }
 
 }
