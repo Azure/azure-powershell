@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 2970E81E-A788-4829-B1FF-B522A91DE4B1
@@ -50,7 +50,7 @@ This command gets information for the feature named AllowPreReleaseRegions for t
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 Specifies the name of the feature to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetFeature
 Aliases:
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet gets all features.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ListAvailableParameterSet
 Aliases:
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 Specifies the namespace for which this cmdlet gets provider features.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListAvailableParameterSet
 Aliases:
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetFeature
 Aliases:
 
@@ -123,12 +123,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
-
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature]
 
 ## NOTES
 

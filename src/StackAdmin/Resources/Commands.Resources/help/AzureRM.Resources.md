@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.Resources
 Module Guid: ab3ca893-26fe-44b0-bd3c-8933df144d7b
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources
@@ -38,6 +38,12 @@ Retrieves a list of credentials associated with a service principal.
 ### [Get-AzureRmADUser](Get-AzureRmADUser.md)
 Filters active directory users.
 
+### [Get-AzureRmDeployment](Get-AzureRmDeployment.md)
+Gets a deployment at subscription scope.
+
+### [Get-AzureRmDeploymentOperation](Get-AzureRmDeploymentOperation.md)
+Gets the deployment operations for a deployment at subscription scope.
+
 ### [Get-AzureRmLocation](Get-AzureRmLocation.md)
 Gets all locations and the supported resource providers for each location.
 
@@ -46,6 +52,9 @@ Gets managed applications
 
 ### [Get-AzureRmManagedApplicationDefinition](Get-AzureRmManagedApplicationDefinition.md)
 Gets managed application definitions
+
+### [Get-AzureRmManagementGroup](Get-AzureRmManagementGroup.md)
+Gets Management Group(s)
 
 ### [Get-AzureRmPolicyAssignment](Get-AzureRmPolicyAssignment.md)
 Gets policy assignments.
@@ -112,11 +121,20 @@ Adds a credential to an existing service principal.
 ### [New-AzureRmADUser](New-AzureRmADUser.md)
 Creates a new active directory user.
 
+### [New-AzureRmDeployment](New-AzureRmDeployment.md)
+Creates a new deployment at subscription scope.
+
 ### [New-AzureRmManagedApplication](New-AzureRmManagedApplication.md)
 Creates an Azure managed application.
 
 ### [New-AzureRmManagedApplicationDefinition](New-AzureRmManagedApplicationDefinition.md)
 Creates a managed application definition.
+
+### [New-AzureRmManagementGroup](New-AzureRmManagementGroup.md)
+Creates a Management Group
+
+### [New-AzureRmManagementGroupSubscription](New-AzureRmManagementGroupSubscription.md)
+Adds a Subscription to a Management Group.
 
 ### [New-AzureRmPolicyAssignment](New-AzureRmPolicyAssignment.md)
 Creates a policy assignment.
@@ -176,11 +194,20 @@ Removes a credential from a service principal.
 ### [Remove-AzureRmADUser](Remove-AzureRmADUser.md)
 Deletes an active directory user.
 
+### [Remove-AzureRmDeployment](Remove-AzureRmDeployment.md)
+Removes a deployment at subscription scope.
+
 ### [Remove-AzureRmManagedApplication](Remove-AzureRmManagedApplication.md)
 Removes a managed application
 
 ### [Remove-AzureRmManagedApplicationDefinition](Remove-AzureRmManagedApplicationDefinition.md)
 Removes a managed application definition
+
+### [Remove-AzureRmManagementGroup](Remove-AzureRmManagementGroup.md)
+Removes a Management Group
+
+### [Remove-AzureRmManagementGroupSubscription](Remove-AzureRmManagementGroupSubscription.md)
+Removes a Subscription from a Management Group.
 
 ### [Remove-AzureRmPolicyAssignment](Remove-AzureRmPolicyAssignment.md)
 Removes a policy assignment.
@@ -210,6 +237,9 @@ Removes a role assignment to the specified principal who is assigned to a partic
 Deletes a custom role in Azure RBAC.
 The role to be deleted is specified using the Id property of the role.
 Delete will fail if there are existing role assignments made to the custom role.
+
+### [Save-AzureRmDeploymentTemplate](Save-AzureRmDeploymentTemplate.md)
+Gets the template for a deployment at subscription scope.
 
 ### [Save-AzureRmResourceGroupDeploymentTemplate](Save-AzureRmResourceGroupDeploymentTemplate.md)
 Saves a resource group deployment template to a file.
@@ -245,8 +275,14 @@ First, use the Get-AzureRmRoleDefinition command to retrieve the custom role tha
 Then, modify the properties that you wish to change.
 Finally, save the role definition using this command.
 
+### [Stop-AzureRmDeployment](Stop-AzureRmDeployment.md)
+Cancels a running deployment at subscription scope.
+
 ### [Stop-AzureRmResourceGroupDeployment](Stop-AzureRmResourceGroupDeployment.md)
 Cancels a resource group deployment.
+
+### [Test-AzureRmDeployment](Test-AzureRmDeployment.md)
+Validates a deployment template and parameters at subscription scope.
 
 ### [Test-AzureRmResourceGroupDeployment](Test-AzureRmResourceGroupDeployment.md)
 Validates a resource group deployment.
@@ -262,4 +298,7 @@ Updates an existing azure active directory service principal.
 
 ### [Update-AzureRmADUser](Update-AzureRmADUser.md)
 Updates an existing active directory user.
+
+### [Update-AzureRmManagementGroup](Update-AzureRmManagementGroup.md)
+Updates a Management Group
 

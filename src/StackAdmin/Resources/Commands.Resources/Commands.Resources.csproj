@@ -49,8 +49,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.ManagementGroups, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ManagementGroups.1.1.1-preview\lib\net452\Microsoft.Azure.Management.ManagementGroups.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.Management.ResourceManager.1.9.1-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -95,8 +98,28 @@
     <Compile Include="Gallery\OfferDetails.cs" />
     <Compile Include="Gallery\Plan.cs" />
     <Compile Include="Gallery\Product.cs" />
+    <Compile Include="ManagementGroups\Common\AzureManagementGroupsCmdletBase.cs" />
+    <Compile Include="ManagementGroups\Common\Constants.cs" />
+    <Compile Include="ManagementGroups\Common\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ManagementGroups\GetAzureRmManagementGroup.cs" />
+    <Compile Include="ManagementGroups\NewAzureRmManagementGroup.cs" />
+    <Compile Include="ManagementGroups\NewAzureRmManagementGroupSubscription.cs" />
+    <Compile Include="ManagementGroups\RemoveAzureRmManagementGroup.cs" />
+    <Compile Include="ManagementGroups\RemoveAzureRmManagementGroupSubscription.cs" />
+    <Compile Include="ManagementGroups\UpdateAzureRmManagementGroup.cs" />
+    <Compile Include="ManagementGroups\Common\Utility.cs" />
     <Compile Include="Models.Authorization\AuthorizationHelper.cs" />
     <Compile Include="Models.Authorization\FilterRoleDefinitionOptions.cs" />
+    <Compile Include="Models.Authorization\PSADCredentialWrapper.cs" />
+    <Compile Include="Models.Authorization\PSADServicePrincipalWrapper.cs" />
+    <Compile Include="Models.ManagementGroups\PSManagementGroup.cs" />
+    <Compile Include="Models.ManagementGroups\PSManagementGroupChildInfo.cs" />
+    <Compile Include="Models.ManagementGroups\PSManagementGroupInfo.cs" />
+    <Compile Include="Models.ManagementGroups\PSParentGroupInfo.cs" />
     <Compile Include="Models.ResourceGroups\BasePSResourceParameters.cs" />
     <Compile Include="Models.ResourceGroups\DeploymentVariable.cs" />
     <Compile Include="Models.ResourceGroups\FilterResourcesOptions.cs" />
@@ -151,14 +174,24 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Microsoft.Azure.Commands.ResourceManager.Cmdlets.generated.format.ps1xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="AzureRM.Resources.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ChangeLog.md" />
+    <None Include="help\*.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ManagementGroups\Common\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>

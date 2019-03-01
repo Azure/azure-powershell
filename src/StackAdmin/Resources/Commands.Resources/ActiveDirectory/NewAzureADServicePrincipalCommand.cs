@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
@@ -28,7 +29,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new service principal.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmADServicePrincipal", DefaultParameterSetName = "SimpleParameterSet", SupportsShouldProcess = true), OutputType(typeof(PSADServicePrincipal))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADServicePrincipal", DefaultParameterSetName = "SimpleParameterSet", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSADServicePrincipal), typeof(PSADServicePrincipalWrapper))]
     public class NewAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
     {
         private const string SimpleParameterSet = "SimpleParameterSet";
@@ -56,7 +58,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The display name for the application.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithKeyCredential,
             HelpMessage = "The display name for the application.")]
-        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The display name for the application.")]
+        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The display name for the application. If a display name is not provided, " +
+            "this value will default to 'azure-powershell-MM-dd-yyyy-HH-mm-ss', where the suffix is the time of application creation.")]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
@@ -96,8 +99,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ApplicationObjectWithPasswordPlain,
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
-        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The value for the password credential associated with the application.")]
+        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The value for the password credential associated with the application. If a " +
+            "password is not provided, a random GUID will be generated and used as the password.")]
         [ValidateNotNullOrEmpty]
+#if NETSTANDARD
+        [CmdletParameterBreakingChange("Password", ChangeDescription = "Password parameter will be removed in an upcoming breaking change release.  After this point, the password will always be automatically generated.")]
+#endif
         public SecureString Password { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
@@ -141,11 +148,14 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The end date till which password or key is valid. Default value is one year after the start date.")]
         public DateTime EndDate { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The scope that the service principal has permissions on.")]
+        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The scope that the service principal has permissions on. If a value for Role is provided, but " +
+            "no value is provided for Scope, then Scope will default to the current subscription.")]
         [ScopeCompleter]
         public string Scope { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The role that the service principal has over the scope.")]
+        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The role that the service principal has over the scope. If a value for Scope is provided, but " +
+            "no value is provided for Role, then Role will default to the 'Contributor' role.")]
+        [PSArgumentCompleter("Reader", "Contributor", "Owner")]
         public string Role { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "If set, will skip creating the default role assignment for the service principal.")]
@@ -172,7 +182,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             DateTime currentTime = DateTime.UtcNow;
             StartDate = currentTime;
-            EndDate = currentTime.AddYears(1);
         }
 
         public override void ExecuteCmdlet()
@@ -183,6 +192,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     CreateSimpleServicePrincipal();
                     return;
+                }
+
+                if (!this.IsParameterBound(c => c.EndDate))
+                {
+                    WriteVerbose(Resources.Properties.Resources.DefaultEndDateUsed);
+                    EndDate = StartDate.AddYears(1);
                 }
 
                 if (this.IsParameterBound(c => c.ApplicationObject))
@@ -287,7 +302,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             if (!this.IsParameterBound(c => c.EndDate))
             {
                 EndDate = StartDate.AddYears(1);
-                WriteVerbose("No end date provided - using the default value of one year after the start date.");
+                WriteVerbose(Resources.Properties.Resources.DefaultEndDateUsed);
             }
 
             if (!this.IsParameterBound(c => c.DisplayName))
@@ -345,16 +360,23 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
             };
 
-            if (ShouldProcess(target: createParameters.ApplicationId.ToString(), action: string.Format("Adding a new service principal to be associated with an application having AppId '{0}'", createParameters.ApplicationId)))
+            var shouldProcessMessage = SkipRoleAssignment() ?
+                                        string.Format("Adding a new service principal to be associated with an application " +
+                                                      "having AppId '{0}' with no permissions.", createParameters.ApplicationId) :
+                                        string.Format("Adding a new service principal to be associated with an application " +
+                                                      "having AppId '{0}' with '{1}' role over scope '{2}'.", createParameters.ApplicationId, this.Role, this.Scope);
+            if (ShouldProcess(target: createParameters.ApplicationId.ToString(), action: shouldProcessMessage))
             {
-                var servicePrincipal = ActiveDirectoryClient.CreateServicePrincipal(createParameters);
+                PSADServicePrincipalWrapper servicePrincipal = new PSADServicePrincipalWrapper(ActiveDirectoryClient.CreateServicePrincipal(createParameters));
+                servicePrincipal.Secret = Password;
                 WriteObject(servicePrincipal);
-                if (this.IsParameterBound(c => c.SkipAssignment))
+                if (SkipRoleAssignment())
                 {
                     WriteVerbose("Skipping role assignment for the service principal.");
                     return;
                 }
 
+                WriteWarning(string.Format("Assigning role '{0}' over scope '{1}' to the new service principal.", this.Role, this.Scope));
                 FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
                 {
                     Scope = this.Scope,
@@ -389,6 +411,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     }
                 }
             }
+        }
+
+        private bool SkipRoleAssignment()
+        {
+            return this.IsParameterBound(c => c.SkipAssignment) || (!this.IsParameterBound(c => c.Role) && !this.IsParameterBound(c => c.Scope));
         }
     }
 }

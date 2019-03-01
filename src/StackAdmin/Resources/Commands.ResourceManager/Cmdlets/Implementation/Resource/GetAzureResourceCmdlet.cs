@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Cmdlet to get existing resources.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmResource", DefaultParameterSetName = ByTagNameValueParameterSet), OutputType(typeof(PSResource))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Resource", DefaultParameterSetName = ByTagNameValueParameterSet), OutputType(typeof(PSResource))]
     public sealed class GetAzureResourceCmdlet : ResourceManagerCmdletBase
     {
         public const string ByResourceIdParameterSet = "ByResourceId";
@@ -128,12 +128,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 ResourceId = resourceId;
             }
 
-            if (!string.IsNullOrEmpty(ResourceId))
+            if (!string.IsNullOrEmpty(ResourceId) && IsValidResourceId(ResourceId))
             {
                 var resource = ResourceManagerSdkClient.GetById(ResourceId, DefaultApiVersion);
                 WriteObject(resource);
             }
-            else if (this.IsParameterBound(c => c.ApiVersion) || this.IsParameterBound(c => c.ExpandProperties))
+            else if (this.IsParameterBound(c => c.ApiVersion) || this.IsParameterBound(c => c.ExpandProperties) || !string.IsNullOrEmpty(ResourceId))
             {
                 this.RunCmdlet();
             }
@@ -188,17 +188,34 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 result = FilterResourceByWildcard(result);
             }
 
-            if (!string.IsNullOrEmpty(this.TagName))
+            if (!string.IsNullOrEmpty(this.TagName) && !string.IsNullOrEmpty(this.TagValue))
             {
-                result = result.Where(r => r.Tags != null && r.Tags.Keys != null && r.Tags.Keys.Where(k => string.Equals(k, this.TagName, StringComparison.OrdinalIgnoreCase)).Any());
+                result = result.Where(r => r.Tags != null &&
+                                           r.Tags.Keys != null &&
+                                           r.Tags.Keys.Where(k => string.Equals(k, this.TagName, StringComparison.OrdinalIgnoreCase))
+                                                      .Any(k => string.Equals(r.Tags[k], this.TagValue, StringComparison.OrdinalIgnoreCase)));
             }
-
-            if (!string.IsNullOrEmpty(this.TagValue))
+            else if (!string.IsNullOrEmpty(this.TagName))
             {
-                result = result.Where(r => r.Tags != null && r.Tags.Values != null && r.Tags.Values.Where(v => string.Equals(v, this.TagValue, StringComparison.OrdinalIgnoreCase)).Any());
+                result = result.Where(r => r.Tags != null &&
+                                           r.Tags.Keys != null &&
+                                           r.Tags.Keys.Where(k => string.Equals(k, this.TagName, StringComparison.OrdinalIgnoreCase))
+                                                      .Any());
+            }
+            else if (!string.IsNullOrEmpty(this.TagValue))
+            {
+                result = result.Where(r => r.Tags != null &&
+                                           r.Tags.Values != null &&
+                                           r.Tags.Values.Where(v => string.Equals(v, this.TagValue, StringComparison.OrdinalIgnoreCase))
+                                                        .Any());
             }
 
             WriteObject(result, true);
+        }
+
+        private bool IsValidResourceId(string resourceId)
+        {
+            return resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Length % 2 == 0;
         }
 
         private bool ShouldConstructResourceId(out string resourceId)

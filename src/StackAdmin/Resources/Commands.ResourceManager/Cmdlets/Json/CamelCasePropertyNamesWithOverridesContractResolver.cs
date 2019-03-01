@@ -55,14 +55,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
         {
             var contract = base.CreateDictionaryContract(objectType);
 
-// TODO: Remove IfDef code
-#if !NETSTANDARD
             var attributes = objectType.GetCustomAttributes(attributeType: typeof(JsonPreserveCaseDictionaryAttribute), inherit: true);
             if (attributes.Any())
             {
+#if NETSTANDARD
+                contract.DictionaryKeyResolver = keyName => keyName;
+#else
                 contract.PropertyNameResolver = propertyName => propertyName;
-            }
 #endif
+            }
 
             return contract;
         }

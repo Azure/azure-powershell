@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 6424B740-DBFB-490C-AEAA-EDD60952B435
@@ -22,9 +22,7 @@ Get-AzureRmProviderOperation [[-OperationSearchString] <String>] [-DefaultProfil
 The Get-AzureRmProviderOperation gets the operations exposed by Azure resource providers.
 Operations can be composed to create custom roles in Azure RBAC.
 The command takes as input an operation search string (with possible wildcard(*) character(s)) which determines the operations details to display.
-
 Use Get-AzureRmProviderOperation * to get all operations for all Azure resource providers.
-
 Use Get-AzureRmProviderOperation Microsoft.Compute/* to get all operations of Microsoft.Compute resource provider.
 
 ## EXAMPLES
@@ -50,7 +48,7 @@ PS C:\> Get-AzureRmProviderOperation */virtualMachines/*
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,7 +63,7 @@ Accept wildcard characters: False
 The operation search string (with possible wildcard (*) characters)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -81,8 +79,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
-Parameter 'OperationSearchString' accepts value of type 'String' from the pipeline
+### System.String
+Parameters: OperationSearchString (ByValue)
 
 ## OUTPUTS
 
