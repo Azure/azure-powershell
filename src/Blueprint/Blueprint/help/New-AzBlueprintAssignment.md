@@ -14,7 +14,7 @@ Assign a blueprint definition to a subscription.
 
 ```
 New-AzBlueprintAssignment -Name <String> -Blueprint <PSBlueprintBase> [-SubscriptionId <String[]>]
- -Location <String> [-ResourceGroup <Hashtable>] [-Parameter <Hashtable>] [-SystemAssignedIdentity]
+ -Location <String> [-ResourceGroupParameter <Hashtable>] [-Parameter <Hashtable>] [-SystemAssignedIdentity]
  [-UserAssignedIdentity <String>] [-Lock <PSLockMode>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -26,15 +26,25 @@ Assign a blueprint definition to a subscription.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -ResourceGroup $rg -Parameter $params -SystemAssignedIdentity
+PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -ResourceGroupParameter $rg -Parameter $params
 ```
-ResourceGroup format: @{RG1=@{name='rg_name';location='location'}}
-Example: $rg = @{ResourceGroup=@{name='storage_rg';location='eastus'}}
+
+ResourceGroupParameter format: @{RG1=@{name='rg_name';location='location'}}
+Example: $rg = @{ResourceGroup1=@{name='storage_rg';location='eastus'}}
 
 Parameter format: @{P1='v1'; P2='v2'}
-Example: $param=@{audituseofclassicvirtualmachines_effect='Audit'}
+Example: $param = @{audituseofclassicvirtualmachines_effect='Audit'}
 
 Create a new blueprint assignment of the blueprint definition `$blueprintObject` within the specified subscription using the defined parameter and resource group dictionary. Uses system-assigned identity. The location defines the region for creating the managed identity.
+
+Sample output:
+
+Name              : myAssignment
+BlueprintId       : /providers/Microsoft.Management/managementGroups/<mgname>/providers/Microsoft.Blueprint/blueprints/myAssignment/versions/v1
+Scope             : /subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753
+LastModified      : 2019-02-12
+LockMode          : None
+ProvisioningState : Creating
 
 ### Example 2
 ```powershell
@@ -63,7 +73,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -145,8 +155,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroups
-{{Fill ResourceGroups Description}}
+### -ResourceGroupParameter
+{{Fill ResourceGroupParameter Description}}
 
 ```yaml
 Type: System.Collections.Hashtable

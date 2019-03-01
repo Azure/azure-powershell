@@ -12,16 +12,16 @@ Get one or more blueprint assignments.
 
 ## SYNTAX
 
+### BlueprintAssignmentsBySubscription (Default)
+```
+Get-AzBlueprintAssignment [[-SubscriptionId] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ### BlueprintAssignmentByName
 ```
 Get-AzBlueprintAssignment [[-SubscriptionId] <String>] [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### BlueprintAssignmentsBySubscription
-```
-Get-AzBlueprintAssignment [[-SubscriptionId] <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +35,15 @@ PS C:\> Get-AzBlueprintAssignment -SubscriptionId 00000000-1111-0000-1111-000000
 ```
 
 Get the blueprint assignments within the specified subscription.
+
+Sample output:
+
+Name              : PS-SimpleBlueprintAssignment
+BlueprintId       : /providers/Microsoft.Management/managementGroups/<mgname>/providers/Microsoft.Blueprint/blueprints/ps-simpleblueprintassignment/versions/v1
+Scope             : /subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753
+LastModified      : 2019-02-11
+LockMode          : AllResourcesDoNotDelete
+ProvisioningState : Succeeded
 
 ### Example 2
 ```powershell

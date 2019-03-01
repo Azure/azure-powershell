@@ -70,6 +70,18 @@ PS> Get-AzBlueprint
 
 Get the blueprint definitions within the current subscription and the management group hierarchy of the subscription.
 
+Sample output:
+
+Name                 : PS-SimpleBlueprintDefinition
+Id                   : /subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprints/PS-SimpleBlueprintDefinition
+DefinitionLocationId : 28cbf98f-381d-4425-9ac4-cf342dab9753
+Versions             : {v1}
+Description          : first subscription level template
+LastModified         : 2019-02-10
+TargetScope          : Subscription
+Parameters           : {applytaganditsdefaultvalue_tagName, applytaganditsdefaultvalue_tagValue}
+ResourceGroup        : {TestRG2}
+
 ### Example 2
 ```powershell
 PS> Get-AzBlueprint -ManagementGroupName "myManagementGroupId"
@@ -133,9 +145,9 @@ Parameter Sets: BySubscriptionNameAndLatestPublished, ByManagementGroupNameAndLa
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

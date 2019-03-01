@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.DeleteBlueprintAssignmentByObject, Position = 1, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.BlueprintAssignmentObject)]
-        public PSBlueprintAssignment Assignment { get; set; }
+        public PSBlueprintAssignment InputObject { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         }
                         break;
                     case ParameterSetNames.DeleteBlueprintAssignmentByObject:
-                        if (ShouldProcess(SubscriptionId, string.Format(Resources.DeleteAssignmentShouldProcessString, Assignment.Name)))
+                        if (ShouldProcess(SubscriptionId, string.Format(Resources.DeleteAssignmentShouldProcessString, InputObject.Name)))
                         {
-                            var deletedAssignment = BlueprintClient.DeleteBlueprintAssignment(Assignment.Scope, Assignment.Name);
+                            var deletedAssignment = BlueprintClient.DeleteBlueprintAssignment(InputObject.Scope, InputObject.Name);
 
                             if (deletedAssignment != null && PassThru.IsPresent)
                             {
