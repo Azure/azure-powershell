@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateSet(AccountKind.Storage,
             AccountKind.StorageV2,
             AccountKind.BlobStorage,
+            AccountKind.BlockBlobStorage,
             IgnoreCase = true)]
         public string Kind { get; set; }
 
