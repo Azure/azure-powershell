@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSCertificateReference(enumerator.Current));
                     }
-                    this.certificateReferences = list.AsReadOnly();
+                    this.certificateReferences = list;
                 }
                 return this.certificateReferences;
             }
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSComputeNodeError(enumerator.Current));
                     }
-                    this.errors = list.AsReadOnly();
+                    this.errors = list;
                 }
                 return this.errors;
             }
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSTaskInformation(enumerator.Current));
                     }
-                    this.recentTasks = list.AsReadOnly();
+                    this.recentTasks = list;
                 }
                 return this.recentTasks;
             }

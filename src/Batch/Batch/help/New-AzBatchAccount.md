@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 82C7B128-8818-4390-B1A5-CB40AC9D53CA
@@ -30,7 +30,8 @@ PS C:\>New-AzBatchAccount -AccountName "pfuller" -ResourceGroupName "ResourceGro
 AccountName                  : pfuller
 Location                     : westus
 ResourceGroupName            : ResourceGroup03
-CoreQuota                    : 20
+DedicatedCoreQuota           : 20
+LowPriorityCoreQuota         : 20
 PoolQuota                    : 20
 ActiveJobAndJobScheduleQuota : 20
 Tags                         :

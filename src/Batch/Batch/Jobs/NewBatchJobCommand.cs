@@ -17,6 +17,7 @@ using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public OnAllTasksComplete? OnAllTasksComplete { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             NewJobParameters parameters = new NewJobParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
             {

@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Expand { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             ListPoolOptions options = new ListPoolOptions(this.BatchContext, this.AdditionalBehaviors)
             {

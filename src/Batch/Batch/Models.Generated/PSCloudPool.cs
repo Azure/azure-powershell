@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSCloudServiceConfiguration cloudServiceConfiguration;
         
-        private IList<PSMetadataItem> metadata;
+        private IDictionary metadata;
         
         private PSNetworkConfiguration networkConfiguration;
         
@@ -352,24 +352,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public IList<PSMetadataItem> Metadata
+        public IDictionary Metadata
         {
             get
             {
                 if (((this.metadata == null) 
                             && (this.omObject.Metadata != null)))
                 {
-                    List<PSMetadataItem> list;
-                    list = new List<PSMetadataItem>();
+                    Dictionary<string, string> dict;
+                    dict = new Dictionary<string, string>();
                     IEnumerator<Microsoft.Azure.Batch.MetadataItem> enumerator;
                     enumerator = this.omObject.Metadata.GetEnumerator();
                     for (
                     ; enumerator.MoveNext(); 
                     )
                     {
-                        list.Add(new PSMetadataItem(enumerator.Current));
+                        dict.Add(enumerator.Current.Name, enumerator.Current.Value);
                     }
-                    this.metadata = list;
+                    this.metadata = dict;
                 }
                 return this.metadata;
             }
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSResizeError(enumerator.Current));
                     }
-                    this.resizeErrors = list.AsReadOnly();
+                    this.resizeErrors = list;
                 }
                 return this.resizeErrors;
             }

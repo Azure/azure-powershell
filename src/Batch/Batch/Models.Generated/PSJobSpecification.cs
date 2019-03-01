@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.JobSpecification omObject;
         
-        private IList<PSEnvironmentSetting> commonEnvironmentSettings;
+        private IDictionary commonEnvironmentSettings;
         
         private PSJobConstraints constraints;
         
@@ -44,7 +44,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSJobReleaseTask jobReleaseTask;
         
-        private IList<PSMetadataItem> metadata;
+        private IDictionary metadata;
+        
+        private PSJobNetworkConfiguration networkConfiguration;
         
         private PSPoolInformation poolInformation;
         
@@ -67,24 +69,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public IList<PSEnvironmentSetting> CommonEnvironmentSettings
+        public IDictionary CommonEnvironmentSettings
         {
             get
             {
                 if (((this.commonEnvironmentSettings == null) 
                             && (this.omObject.CommonEnvironmentSettings != null)))
                 {
-                    List<PSEnvironmentSetting> list;
-                    list = new List<PSEnvironmentSetting>();
+                    Dictionary<string, string> dict;
+                    dict = new Dictionary<string, string>();
                     IEnumerator<Microsoft.Azure.Batch.EnvironmentSetting> enumerator;
                     enumerator = this.omObject.CommonEnvironmentSettings.GetEnumerator();
                     for (
                     ; enumerator.MoveNext(); 
                     )
                     {
-                        list.Add(new PSEnvironmentSetting(enumerator.Current));
+                        dict.Add(enumerator.Current.Name, enumerator.Current.Value);
                     }
-                    this.commonEnvironmentSettings = list;
+                    this.commonEnvironmentSettings = dict;
                 }
                 return this.commonEnvironmentSettings;
             }
@@ -214,24 +216,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public IList<PSMetadataItem> Metadata
+        public IDictionary Metadata
         {
             get
             {
                 if (((this.metadata == null) 
                             && (this.omObject.Metadata != null)))
                 {
-                    List<PSMetadataItem> list;
-                    list = new List<PSMetadataItem>();
+                    Dictionary<string, string> dict;
+                    dict = new Dictionary<string, string>();
                     IEnumerator<Microsoft.Azure.Batch.MetadataItem> enumerator;
                     enumerator = this.omObject.Metadata.GetEnumerator();
                     for (
                     ; enumerator.MoveNext(); 
                     )
                     {
-                        list.Add(new PSMetadataItem(enumerator.Current));
+                        dict.Add(enumerator.Current.Name, enumerator.Current.Value);
                     }
-                    this.metadata = list;
+                    this.metadata = dict;
                 }
                 return this.metadata;
             }
@@ -246,6 +248,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.Metadata = new List<Microsoft.Azure.Batch.MetadataItem>();
                 }
                 this.metadata = value;
+            }
+        }
+        
+        public PSJobNetworkConfiguration NetworkConfiguration
+        {
+            get
+            {
+                if (((this.networkConfiguration == null) 
+                            && (this.omObject.NetworkConfiguration != null)))
+                {
+                    this.networkConfiguration = new PSJobNetworkConfiguration(this.omObject.NetworkConfiguration);
+                }
+                return this.networkConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.NetworkConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.NetworkConfiguration = value.omObject;
+                }
+                this.networkConfiguration = value;
             }
         }
         

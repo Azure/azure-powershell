@@ -80,10 +80,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             PSJobSpecification jobSpec = new PSJobSpecification()
             {
                 DisplayName = "job display name",
-                CommonEnvironmentSettings = new List<PSEnvironmentSetting>()
+                CommonEnvironmentSettings = new Dictionary<string, string>
                 {
-                    new PSEnvironmentSetting("common1", "val1"),
-                    new PSEnvironmentSetting("common2", "val2")
+                    { "common1", "val1" },
+                    { "common2", "val2" }
                 },
                 JobManagerTask = new PSJobManagerTask("job manager", "cmd /c echo job manager"),
                 JobPreparationTask = new PSJobPreparationTask("cmd /c echo job prep"),
@@ -104,9 +104,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             };
             cmdlet.JobSchedule.Schedule = schedule;
 
-            cmdlet.JobSchedule.Metadata = new List<PSMetadataItem>()
+            cmdlet.JobSchedule.Metadata = new Dictionary<string, string>
             {
-                new PSMetadataItem("metadata1", "value1")
+                { "metadata1", "value1" }
             };
 
             // Store the request parameters
@@ -123,10 +123,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
 
             // Verify that the request parameters contain the updated properties
             Assert.Equal(jobSpec.CommonEnvironmentSettings.Count, requestParameters.JobSpecification.CommonEnvironmentSettings.Count);
-            Assert.Equal(jobSpec.CommonEnvironmentSettings[0].Name, requestParameters.JobSpecification.CommonEnvironmentSettings[0].Name);
-            Assert.Equal(jobSpec.CommonEnvironmentSettings[0].Value, requestParameters.JobSpecification.CommonEnvironmentSettings[0].Value);
-            Assert.Equal(jobSpec.CommonEnvironmentSettings[1].Name, requestParameters.JobSpecification.CommonEnvironmentSettings[1].Name);
-            Assert.Equal(jobSpec.CommonEnvironmentSettings[1].Value, requestParameters.JobSpecification.CommonEnvironmentSettings[1].Value);
+            Assert.Contains(
+                requestParameters.JobSpecification.CommonEnvironmentSettings,
+                setting => setting.Name == "common1" && setting.Value == jobSpec.CommonEnvironmentSettings["common1"].ToString());
+            Assert.Contains(
+                requestParameters.JobSpecification.CommonEnvironmentSettings,
+                setting => setting.Name == "common2" && setting.Value == jobSpec.CommonEnvironmentSettings["common2"].ToString());
             Assert.Equal(jobSpec.JobManagerTask.Id, requestParameters.JobSpecification.JobManagerTask.Id);
             Assert.Equal(jobSpec.JobPreparationTask.CommandLine, requestParameters.JobSpecification.JobPreparationTask.CommandLine);
             Assert.Equal(jobSpec.JobReleaseTask.CommandLine, requestParameters.JobSpecification.JobReleaseTask.CommandLine);
@@ -136,8 +138,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             Assert.Equal(schedule.RecurrenceInterval, requestParameters.Schedule.RecurrenceInterval);
             Assert.Equal(schedule.StartWindow, requestParameters.Schedule.StartWindow);
             Assert.Equal(cmdlet.JobSchedule.Metadata.Count, requestParameters.Metadata.Count);
-            Assert.Equal(cmdlet.JobSchedule.Metadata[0].Name, requestParameters.Metadata[0].Name);
-            Assert.Equal(cmdlet.JobSchedule.Metadata[0].Value, requestParameters.Metadata[0].Value);
+            Assert.Contains(
+                requestParameters.Metadata,
+                metadata => metadata.Name == "metadata1" && metadata.Value == cmdlet.JobSchedule.Metadata["metadata1"].ToString());
         }
     }
 }

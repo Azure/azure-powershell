@@ -59,7 +59,8 @@ namespace Microsoft.Azure.Commands.Batch.Test
             string id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup);
 
             BatchAccount resource = new BatchAccount(
-                coreQuota: DefaultQuotaCount,
+                dedicatedCoreQuota: DefaultQuotaCount,
+                lowPriorityCoreQuota: DefaultQuotaCount,
                 poolQuota: DefaultQuotaCount,
                 activeJobAndJobScheduleQuota: DefaultQuotaCount,
                 accountEndpoint: endpoint,

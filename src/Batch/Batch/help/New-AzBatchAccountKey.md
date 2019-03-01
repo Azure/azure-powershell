@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 486748AC-3932-4E0C-BBCC-2BC194E69DCC
@@ -28,17 +28,12 @@ The cmdlet returns a **BatchAccountContext** object that has its current **Prima
 ```
 PS C:\>New-AzBatchAccountKey -AccountName "pfuller" -KeyType "Primary"
 AccountName                  : pfuller
-
 Location                     : westus
-
 ResourceGroupName            : CmdletExampleRG
-
-CoreQuota                    : 20
-
+DedicatedCoreQuota           : 20
+LowPriorityCoreQuota         : 20
 PoolQuota                    : 20
-
 ActiveJobAndJobScheduleQuota : 20
-
 Tags                         : 
 TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
 ```

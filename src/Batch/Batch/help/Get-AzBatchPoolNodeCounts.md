@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchpoolnodecounts
@@ -42,8 +42,7 @@ The Get-AzBatchPoolNodeCounts cmdlet allows customers to get back node counts pe
 ## EXAMPLES
 
 ### Example 1
-
-```powershell
+```
 PS C:\> $batchContext = Get-AzBatchAccountKeys -AccountName "contosobatch"
 PS C:\> Get-AzBatchPoolNodeCounts -BatchContext $batchContext
 
@@ -56,8 +55,7 @@ contosopool2                   Idle: 1, Rebooting: 1, Total: 2                  
 List node counts per node state for pools under current batch account context.
 
 ### Example 2
-
-```powershell
+```
 PS C:\> Get-AzBatchPoolNodeCounts -BatchContext $batchContext -PoolId "contosopool1"
 
 PoolId                         Dedicated                                                    LowPriority

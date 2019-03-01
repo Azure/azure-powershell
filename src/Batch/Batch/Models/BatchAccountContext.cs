@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// <summary>
         /// The subscription Id that the account belongs to.
         /// </summary>
-        public string Subscription { get; private set; }
+        public string Subscription { get; internal set; }
 
         /// <summary>
         /// The provisioning state of the account resource.
@@ -101,9 +101,14 @@ namespace Microsoft.Azure.Commands.Batch
         }
 
         /// <summary>
-        /// The core quota for this Batch account.
+        /// The dedicated core quota for this Batch account.
         /// </summary>
-        public int CoreQuota { get; private set; }
+        public int DedicatedCoreQuota { get; private set; }
+
+        /// <summary>
+        /// The low priority core quota for this Batch account.
+        /// </summary>
+        public int LowPriorityCoreQuota { get; private set; }
 
         /// <summary>
         /// The pool quota for this Batch account.
@@ -201,7 +206,8 @@ namespace Microsoft.Azure.Commands.Batch
             this.Location = resource.Location;
             this.State = resource.ProvisioningState.ToString();
             this.Tags = TagsConversionHelper.CreateTagHashtable(resource.Tags);
-            this.CoreQuota = resource.CoreQuota;
+            this.DedicatedCoreQuota = resource.DedicatedCoreQuota;
+            this.LowPriorityCoreQuota = resource.LowPriorityCoreQuota;
             this.PoolQuota = resource.PoolQuota;
             this.ActiveJobAndJobScheduleQuota = resource.ActiveJobAndJobScheduleQuota;
             this.PoolAllocationMode = resource.PoolAllocationMode;
@@ -252,7 +258,8 @@ namespace Microsoft.Azure.Commands.Batch
 
         protected virtual BatchServiceClient CreateBatchRestClient(string url, ServiceClientCredentials creds, DelegatingHandler handler = default(DelegatingHandler))
         {
-            BatchServiceClient restClient = handler == null ? new BatchServiceClient(new Uri(url), creds) : new BatchServiceClient(new Uri(url), creds, handler);
+            BatchServiceClient restClient = handler == null ? new BatchServiceClient(creds) : new BatchServiceClient(creds, handler);
+            restClient.BatchUrl = url;
 
             restClient.HttpClient.DefaultRequestHeaders.UserAgent.Add(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.UserAgentValue);
 

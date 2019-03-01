@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Batch
 Module Guid: a8f00f40-1c1a-49b5-9db3-24076b75c3cf
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.batch
@@ -134,6 +134,9 @@ Creates a job schedule in the Batch service.
 ### [New-AzBatchPool](New-AzBatchPool.md)
 Creates a pool in the Batch service.
 
+### [New-AzBatchResourceFile](New-AzBatchResourceFile.md)
+Creates a Resource File for usage by `New-AzBatchTask`.
+
 ### [New-AzBatchTask](New-AzBatchTask.md)
 Creates a Batch task under a job.
 
@@ -193,9 +196,6 @@ Sets a job schedule.
 
 ### [Set-AzBatchPool](Set-AzBatchPool.md)
 Updates the properties of a pool.
-
-### [Set-AzBatchPoolOSVersion](Set-AzBatchPoolOSVersion.md)
-Changes the operating system version of the specified pool.
 
 ### [Set-AzBatchTask](Set-AzBatchTask.md)
 Updates the properties of a task.

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Thumbprint { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             CertificateOperationParameters parameters = new CertificateOperationParameters(this.BatchContext,
                 this.ThumbprintAlgorithm, this.Thumbprint, this.AdditionalBehaviors);

@@ -61,7 +61,9 @@ RequiredAssemblies = '.\Microsoft.Azure.Batch.dll',
                '.\Microsoft.Extensions.Primitives.dll', 
                '.\System.Runtime.CompilerServices.Unsafe.dll', 
                '.\Microsoft.WindowsAzure.Storage.dll', 
-               '.\Microsoft.AspNetCore.WebUtilities.dll'
+               '.\Microsoft.AspNetCore.WebUtilities.dll',
+               '.\Microsoft.Net.Http.Headers.dll',
+               '.\System.Text.Encodings.Web.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -103,7 +105,7 @@ CmdletsToExport = 'Remove-AzBatchAccount', 'Get-AzBatchAccount',
                'Disable-AzBatchAutoScale', 'Enable-AzBatchAutoScale', 
                'Get-AzBatchPoolStatistics', 'Get-AzBatchPoolUsageMetrics', 
                'Get-AzBatchPool', 'Get-AzBatchNodeAgentSku', 'New-AzBatchPool', 
-               'Remove-AzBatchPool', 'Set-AzBatchPool', 'Set-AzBatchPoolOSVersion', 
+               'Remove-AzBatchPool', 'Set-AzBatchPool',
                'Start-AzBatchPoolResize', 'Stop-AzBatchPoolResize', 
                'Test-AzBatchAutoScale', 'Get-AzBatchLocationQuotas', 
                'Get-AzBatchSubtask', 'Get-AzBatchTask', 'New-AzBatchTask', 
@@ -113,7 +115,8 @@ CmdletsToExport = 'Remove-AzBatchAccount', 'Get-AzBatchAccount',
                'Get-AzBatchJobSchedule', 'New-AzBatchJobSchedule', 
                'Remove-AzBatchJobSchedule', 'Get-AzBatchTaskCounts', 
                'Get-AzBatchPoolNodeCounts', 
-               'Start-AzBatchComputeNodeServiceLogUpload'
+               'Start-AzBatchComputeNodeServiceLogUpload',
+               'New-AzBatchResourceFile'
 
 # Variables to export from this module
 # VariablesToExport = @()

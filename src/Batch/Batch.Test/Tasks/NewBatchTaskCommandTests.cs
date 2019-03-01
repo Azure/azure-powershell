@@ -29,6 +29,7 @@ using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using OutputFileUploadCondition = Microsoft.Azure.Batch.Common.OutputFileUploadCondition;
+using ResourceFile = Microsoft.Azure.Batch.ResourceFile;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 {
@@ -96,11 +97,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             {
                 CommonResourceFiles = new List<PSResourceFile>()
                 {
-                    new PSResourceFile("https://some.blob", "myFile.txt")
+                    new PSResourceFile(ResourceFile.FromUrl("https://some.blob", "myFile.txt"))
                 }
             };
-            cmdlet.ResourceFiles = new Dictionary<string, string>();
-            cmdlet.ResourceFiles.Add("anotherFile.txt", "https://another.blob");
+            cmdlet.ResourceFiles = new PSResourceFile[]
+            {
+                new PSResourceFile(ResourceFile.FromUrl("anotherFile.txt", "https://another.blob"))
+            };
 
             TaskAddParameter requestParameters = null;
 
@@ -127,10 +130,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             Assert.Equal(cmdlet.MultiInstanceSettings.NumberOfInstances, requestParameters.MultiInstanceSettings.NumberOfInstances);
             Assert.Equal(cmdlet.MultiInstanceSettings.CoordinationCommandLine, requestParameters.MultiInstanceSettings.CoordinationCommandLine);
             Assert.Equal(cmdlet.MultiInstanceSettings.CommonResourceFiles.Count, requestParameters.MultiInstanceSettings.CommonResourceFiles.Count);
-            Assert.Equal(cmdlet.MultiInstanceSettings.CommonResourceFiles[0].BlobSource, requestParameters.MultiInstanceSettings.CommonResourceFiles[0].BlobSource);
+            Assert.Equal(cmdlet.MultiInstanceSettings.CommonResourceFiles[0].HttpUrl, requestParameters.MultiInstanceSettings.CommonResourceFiles[0].HttpUrl);
             Assert.Equal(cmdlet.MultiInstanceSettings.CommonResourceFiles[0].FilePath, requestParameters.MultiInstanceSettings.CommonResourceFiles[0].FilePath);
-            Assert.Equal(cmdlet.ResourceFiles.Count, requestParameters.ResourceFiles.Count);
-            Assert.Equal(cmdlet.ResourceFiles["anotherFile.txt"], requestParameters.ResourceFiles[0].BlobSource);
+            Assert.Equal(cmdlet.ResourceFiles.Length, requestParameters.ResourceFiles.Count);
+            Assert.Equal(cmdlet.ResourceFiles.Single().HttpUrl, requestParameters.ResourceFiles.Single().HttpUrl);
         }
 
         [Fact]
@@ -149,12 +152,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             cmdlet.JobId = "job-id";
 
-            string applicationId = "foo";
+            string applicationName = "foo";
             string applicationVersion = "beta";
 
             cmdlet.ApplicationPackageReferences = new[]
             {
-                new PSApplicationPackageReference { ApplicationId = applicationId, Version = applicationVersion} ,
+                new PSApplicationPackageReference { ApplicationId = applicationName, Version = applicationVersion} ,
             };
 
             // Don't go to the service on an Add CloudJob call
@@ -163,7 +166,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
                 request =>
                 {
                     var applicationPackageReference = request.Parameters.ApplicationPackageReferences.First();
-                    Assert.Equal(applicationId, applicationPackageReference.ApplicationId);
+                    Assert.Equal(applicationName, applicationPackageReference.ApplicationId);
                     Assert.Equal(applicationVersion, applicationPackageReference.Version);
                 });
 

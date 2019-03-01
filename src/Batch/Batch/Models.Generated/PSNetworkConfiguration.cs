@@ -50,6 +50,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
+        public Microsoft.Azure.Batch.Common.DynamicVNetAssignmentScope? DynamicVNetAssignmentScope
+        {
+            get
+            {
+                return this.omObject.DynamicVNetAssignmentScope;
+            }
+            set
+            {
+                this.omObject.DynamicVNetAssignmentScope = value;
+            }
+        }
+        
         public PSPoolEndpointConfiguration EndpointConfiguration
         {
             get

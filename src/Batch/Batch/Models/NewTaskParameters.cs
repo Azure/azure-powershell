@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// Resource files to add to the new task.
         /// </summary>
-        public IDictionary ResourceFiles { get; set; }
+        public PSResourceFile[] ResourceFiles { get; set; }
 
         /// <summary>
         /// Environment settings to add to the new task.

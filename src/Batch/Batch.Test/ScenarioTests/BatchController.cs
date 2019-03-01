@@ -30,7 +30,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class BatchController
     {
-        internal static string BatchAccount, BatchAccountKey, BatchAccountUrl, BatchResourceGroup;
+        internal static string BatchAccount;
+        internal static string BatchAccountKey;
+        internal static string BatchAccountUrl;
+        internal static string BatchResourceGroup;
+        internal static string Subscription;
 
         private readonly EnvironmentSetupHelper _helper;
 
@@ -154,8 +158,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     BatchResourceGroup = HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountResourceGroup];
                 }
             }
+            var result = context.GetServiceClient<BatchManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            Subscription = result.SubscriptionId;
 
-            return context.GetServiceClient<BatchManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return result;
         }
     }
 }

@@ -316,24 +316,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// Changes the operating system version of the specified pool.
-        /// </summary>
-        /// <param name="parameters">The parameters specifying the pool and target OS version.</param>
-        public void ChangeOSVersion(ChangeOSVersionParameters parameters)
-        {
-            if (parameters == null)
-            {
-                throw new ArgumentNullException("parameters");
-            }
-
-            string poolId = parameters.Pool == null ? parameters.PoolId : parameters.Pool.Id;
-
-            WriteVerbose(string.Format(Resources.ChangeOSVersion, poolId, parameters.TargetOSVersion));
-            PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
-            poolOperations.ChangeOSVersion(poolId, parameters.TargetOSVersion, parameters.AdditionalBehaviors);
-        }
-
-        /// <summary>
         /// Lists the usage metrics, aggregated by pool across individual time intervals, for the specified account.
         /// </summary>
         /// <param name="options">The options to use when aggregating usage for pools.</param>

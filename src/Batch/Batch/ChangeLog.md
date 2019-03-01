@@ -20,6 +20,26 @@
 
 ## Upcoming Release
 
+* Renamed `CoreQuota` on `BatchAccountContext` to `DedicatedCoreQuota`. There is also a new `LowPriorityCoreQuota`.
+  - This impacts **Get-AzBatchAccount**.
+* **New-AzBatchTask** `-ResourceFile` parameter now takes a collection of `PSResourceFile` objects, which can be constructed using the new **New-AzBatchResourceFile** cmdlet.
+* New **New-AzBatchResourceFile** cmdlet to help create `PSResourceFile` objects. These can be supplied to **New-AzBatchTask** on the `-ResourceFile` parameter.
+  - This supports two new kinds of resource file in addition to the existing `HttpUrl` way:
+    - `AutoStorageContainerName` based resource files download an entire auto-storage container to the Batch node.
+    - `StorageContainerUrl` based resource files download the container specified in the URL to the Batch node.
+* Removed `ApplicationPackages` property of `PSApplication` returned by **Get-AzBatchApplication**.
+  - The specific packages inside of an application now can be retrieved using **Get-AzBatchApplicationPackage**. For example: `Get-AzBatchApplication -AccountName myaccount -ResourceGroupName myresourcegroup -ApplicationId myapplication`.
+* Renamed `ApplicationId` to `ApplicationName` on **Get-AzBatchApplicationPackage**, **New-AzBatchApplicationPackage**, **Remove-AzBatchApplicationPackage**, **Get-AzBatchApplication**, **New-AzBatchApplication**, **Remove-AzBatchApplication**, and **Set-AzBatchApplication**.
+  - `ApplicationId` now is an alias of `ApplicationName`.
+* Added new `PSWindowsUserConfiguration` property to `PSUserAccount`.
+* Renamed `Version` to `Name` on `PSApplicationPackage`.
+* Renamed `BlobSource` to `HttpUrl` on `PSResourceFile`.
+* Removed `OSDisk` property from `PSVirtualMachineConfiguration`.
+* Removed **Set-AzBatchPoolOSVersion**. This operation is no longer supported.
+* Removed `TargetOSVersion` from `PSCloudServiceConfiguration`.
+* Renamed `CurrentOSVersion` to `OSVersion` on `PSCloudServiceConfiguration`.
+* Removed `DataEgressGiB` and `DataIngressGiB` from `PSPoolUsageMetrics`.
+
 ## Version 1.0.0
 * General availability of `Az.Batch` module
 * Added the ability to see what version of the Azure Batch Node Agent is running on each of the VMs in a pool, via the new `NodeAgentInformation` property on `PSComputeNode`.
