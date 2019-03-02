@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update examples for Connect-AzAccount
 
 ## Version 1.3.1
 * Add additional framework extensions for .Net Framework execution
