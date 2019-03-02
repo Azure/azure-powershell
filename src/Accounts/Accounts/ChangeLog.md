@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Update examples for Connect-AzAccount
 * Add additional framework extensions for .Net Framework execution
+* Update common packages to include new wildcard support functions
 
 ## Version 1.3.0
 * Update to latest version of ClientRuntime
