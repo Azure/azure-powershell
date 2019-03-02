@@ -25,7 +25,7 @@ function Create-TestContent([string] $path, [string] $tag = 'SmokeTest') {
     $sessionFunctions = Get-ChildItem function:
     foreach ($testFile in $testFiles) {
         # Get the function list from the script file
-        . "$path\$testFile"
+        . "$testFile"
         # https://sqljana.wordpress.com/2015/09/23/perform-set-operations-union-intersection-minus-complement-using-powershell/
         $scriptFunctions = Get-ChildItem function: | Where-Object { $sessionFunctions -inotcontains $_ }
         $testFunctions = $scriptFunctions | Where-Object { 

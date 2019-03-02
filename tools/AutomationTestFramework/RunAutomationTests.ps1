@@ -91,6 +91,9 @@ try {
 
     if($uploadPackages) {
         Write-Verbose '=== Upload Modules ========================'
+        Remove-HelperModulesFromAutomationAccount `
+            -automation $automation `
+            -moduleNames $helperModuleName, $testModuleName
         Upload-Modules `
             -automation $automation `
             -storage $storage `

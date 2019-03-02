@@ -40,13 +40,25 @@ function Create-SmokeTestModule(
     if (-not (Test-Path $archiveDir)) {
         $null = New-Item -ItemType directory -Path $archiveDir -ErrorAction Stop
     }
+    $files = New-Object System.Collections.ArrayList
+    Write-Verbose "Adding .ps1 common test files from /tools/ScenarioTest.ResourceManager..."
+    $rmCommonFileNames = 'Common.ps1', 'Assert.ps1'
+    'Common.ps1', 'Assert.ps1' | ForEach-Object {
+        $rmFilename = $_ 
+        $rmCommonFilePath = Join-Path $srcPath ".." "tools" "ScenarioTest.ResourceManager" $rmFilename
+        if(Test-Path $rmCommonFilePath){
+            $null = $files.Add((Copy-Item $rmCommonFilePath  (Join-Path $archiveDir $rmFilename) -PassThru -ErrorAction Stop))
+        } else {
+            Write-Warning "!!! Common resource management file not found: $rmCommonFilePath"
+        }
+    }
 
     Write-Verbose "Gathering .ps1 test file list from $srcPath..."
     $commonFileName = 'Common.ps1'
-    $files = New-Object System.Collections.ArrayList
     foreach($folder in Get-TestFolders $srcPath $projectList) {
         $null = $files.AddRange(@(Filter-TestFiles $folder.Path))
         $commonFilePath = Join-Path $folder.Path $commonFileName
+        Write-Host "== commonFilePath: $commonFilePath"
         if(Test-Path $commonFilePath){
             # Copy the file and change the name of it, since we can't have multiple Common.ps1 files in the same module.
             $null = $files.Add((Copy-Item $commonFilePath "$archiveDir\$($folder.Name)$commonFileName" -PassThru -ErrorAction Stop))
