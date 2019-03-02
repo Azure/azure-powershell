@@ -158,10 +158,14 @@ namespace Microsoft.Azure.Commands.Network
         public virtual PSApplicationGatewayWebApplicationFirewallConfiguration WebApplicationFirewallConfiguration { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Firewall configuration")]
-        public virtual PSApplicationGatewayWebApplicationFirewallPolicy FirewallPolicy { get; set; }
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "FirewallPolicyId")]
+        public string FirewallPolicyId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "SetByResource",
+            HelpMessage = "FirewallPolicy")]
+        public PSApplicationGatewayWebApplicationFirewallPolicy FirewallPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -223,6 +227,14 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
+            {
+                if (this.FirewallPolicy != null)
+                {
+                    this.FirewallPolicyId = this.FirewallPolicy.Id;
+                }
+            }
 
             var present = this.IsApplicationGatewayPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
@@ -327,9 +339,10 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.WebApplicationFirewallConfiguration = this.WebApplicationFirewallConfiguration;
             }
 
-            if (this.FirewallPolicy != null)
+            if (!string.IsNullOrEmpty(this.FirewallPolicyId))
             {
-                applicationGateway.FirewallPolicy = this.FirewallPolicy;
+                applicationGateway.FirewallPolicy = new PSResourceId();
+                applicationGateway.FirewallPolicy.Id = this.FirewallPolicyId;
             }
 
             if (this.AutoscaleConfiguration != null)

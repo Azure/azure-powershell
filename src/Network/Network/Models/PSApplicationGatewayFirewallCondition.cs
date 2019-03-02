@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public List<PSApplicationGatewayFirewallMatchVariable> MatchVariables { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
-        public string Operator { get; set; }
+        public string OperatorProperty { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
-        public bool? NegationCondition { get; set; }
+        public bool? NegationConditon { get; set; }
         public List<string> MatchValues { get; set; }
         public List<string> Transforms { get; set; }
 

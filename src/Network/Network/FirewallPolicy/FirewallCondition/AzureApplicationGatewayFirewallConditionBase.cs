@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "Describes operator to be matched.")]
+        [ValidateSet("IPMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "Regex", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Operator { get; set; }
 
@@ -47,9 +48,9 @@ namespace Microsoft.Azure.Commands.Network
         public string[] MatchValues { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "List of transforms.")]
-        [ValidateSet("Lowercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls", "HtmlEntityDecode", "RequestBody", IgnoreCase = true)]
+        [ValidateSet("Lowercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls", "HtmlEntityDecode", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string[] Transforms { get; set; }
 
@@ -63,8 +64,8 @@ namespace Microsoft.Azure.Commands.Network
             return new PSApplicationGatewayFirewallCondition()
             {
                 MatchVariables = this.MatchVariables?.ToList(),
-                Operator = this.Operator,
-                NegationCondition = this.NegationCondition,
+                OperatorProperty = this.Operator,
+                NegationConditon = this.NegationCondition,
                 MatchValues = this.MatchValues?.ToList(),
                 Transforms = this.Transforms?.ToList()
             };
