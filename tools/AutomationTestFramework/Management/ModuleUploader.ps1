@@ -26,7 +26,7 @@ function Upload-ModuleToStorage (
 }
 
 function Poll-ModuleProvisionState ([hashtable] $automation, [string[]] $moduleList) {
-    $waitSeconds = 10
+    $waitSeconds = 60
     $attemptMax = 20
     $attemptCount = 0
     $moduleStatuses = @($moduleList | ForEach-Object { @{Name = $_; Success = $null} })
@@ -61,12 +61,25 @@ function Poll-ModuleProvisionState ([hashtable] $automation, [string[]] $moduleL
 
     $moduleStatuses
 }
+function Remove-HelperModulesFromAutomationAccount(
+    [hashtable] $automation, 
+    [string[]] $moduleNames) {
+    $moduleNames | ForEach-Object {
+        try {
+            Write-Verbose "Removing module '$_' form Automation account..."
+            Remove-AzAutomationModule -AutomationAccountName $automation.AccountName -Name $_ -ResourceGroupName $automation.ResourceGroupName -Force -ErrorAction Stop
+        } catch {
+            # check if the error text is deferent from the "The module was not found."
+            Write-Warning "Remove-AzAutomationModule error message: $_"
+        }
+    }
+}
 
 function Upload-Modules(
     [hashtable] $automation,
     [hashtable] $storage,
     [hashtable] $signedModules,
-    [string] $archiveDir) {
+    [string] $archiveDir) {    
     
     $signedModuleList = $signedModules.Accounts + $signedModules.Other
     $nonSignedModules = @(Get-ChildItem $archiveDir -ErrorAction Stop `
@@ -96,3 +109,4 @@ function Upload-Modules(
     }
     Write-Verbose "Modules have been uploaded successfully."
 }
+

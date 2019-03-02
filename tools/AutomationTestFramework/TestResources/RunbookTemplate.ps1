@@ -21,4 +21,5 @@ Run-Test $testList %LOGIN-PARAMS%
 
 Write-Verbose 'Resolve-AzError Information'
 Write-Verbose '--------------------------------'
-Resolve-AzError | ConvertTo-Json | Write-Verbose
+#Resolve-AzError | ConvertTo-Json | Write-Verbose
+Resolve-AzError | Write-Verbose
