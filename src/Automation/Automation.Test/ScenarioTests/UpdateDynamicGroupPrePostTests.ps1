@@ -25,28 +25,6 @@ $azureVMIdsL = @(
 
 $nonAzurecomputers = @("server-01", "server-02")
 
-<#
-WaitForProvisioningState
-#>
-function WaitForProvisioningState() {
-    param([string] $Name, [string] $ExpectedState)
-    $state = ""
-    $timeoutInSeconds = 120
-    $retries = $timeoutInSeconds / 5
-    while($state -ne $ExpectedState -and $retries -gt 0) {
-        $suc = Get-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName $rg `
-                                                                -AutomationAccountName $aa `
-                                                                -Name $Name
-        $state = $suc.ProvisioningState
-        Write-Output "SoftwareUpdateConfiguration Provisioning state: $state"
-        sleep -Seconds 5
-        $retries = $retries - 1
-    } 
-
-    Assert-True {$retries -gt 0} "Timout waiting for provisioning state to reach '$ExpectedState'"
-}
-
-
  function Test-CreateAndGetSoftwareUpdateConfigurationWithPrePost
 {
     $name = "DG-suc-03"

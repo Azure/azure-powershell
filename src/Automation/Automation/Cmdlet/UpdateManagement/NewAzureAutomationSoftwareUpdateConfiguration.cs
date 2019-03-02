@@ -32,65 +32,65 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
     [OutputType(typeof(SoftwareUpdateConfiguration))]
     public class NewAzureAutomationSoftwareUpdateConfiguration : AzureAutomationBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Schedule object used for software update configuration.")]
+        [Parameter(Mandatory = true, HelpMessage = "Schedule object used for software update configuration.")]
         [ValidateNotNull]
         public Models.Schedule Schedule { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates that the software update configuration targeting windows operating system machines.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = true, HelpMessage = "Indicates that the software update configuration targeting windows operating system machines.")]
         public SwitchParameter Windows { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates that the software update configuration targeting Linux operating system machines.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Mandatory = true, HelpMessage = "Indicates that the software update configuration targeting Linux operating system machines.")]
         public SwitchParameter Linux { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates that the software update configuration will Only Reboot the machines.")]
+        [Parameter(Mandatory = false, HelpMessage = "Indicates that the software update configuration will Only Reboot the machines.")]
         public SwitchParameter RebootOnly { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Ids for azure virtual machines.")]
+        [Parameter(Mandatory = false, HelpMessage = "Resource Ids for azure virtual machines.")]
         public string[] AzureVMResourceId { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Pre task.")]
+        [Parameter(Mandatory = false, HelpMessage = "Pre task.")]
         public string PreTaskRunbookName { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Post task.")]
+        [Parameter(Mandatory = false, HelpMessage = "Post task.")]
         public string PostTaskRunbookName { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Pre task parameter.")]
-        public Hashtable PreTaskRunbookParameters { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Pre task parameter.")]
+        public Hashtable PreTaskRunbookParameter { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Post task parameter.")]
-        public Hashtable PostTaskRunbookParameters { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Post task parameter.")]
+        public Hashtable PostTaskRunbookParameter { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Non-Azure computer names.")]
+        [Parameter(Mandatory = false, HelpMessage = "Non-Azure computer names.")]
         public string[] NonAzureComputer { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Dynamic update target groups.")]
+        [Parameter(Mandatory = false, HelpMessage = "Dynamic group azure query.")]
         public AzureQueryProperties[] AzureQuery { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Dynamic update target groups.")]
+        [Parameter(Mandatory = false, HelpMessage = "Dynamic group non Azure query.")]
         public NonAzureQueryProperties[] NonAzureQuery { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Maximum duration for the update.")]
+        [Parameter(Mandatory = false, HelpMessage = "Maximum duration for the update.")]
         public TimeSpan Duration { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Maximum duration for the update.")]
+        [Parameter(Mandatory = false, HelpMessage = "Reboot Seeting.")]
         public RebootSetting RebootSetting { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Included Windows Update classifications.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = false, HelpMessage = "Included Windows Update classifications.")]
         public WindowsUpdateClasses[] IncludedUpdateClassification { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "KB numbers of excluded updates.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = false, HelpMessage = "KB numbers of excluded updates.")]
         public string[] ExcludedKbNumber { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "KB numbers of included updates.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = false, HelpMessage = "KB numbers of included updates.")]
         public string[] IncludedKbNumber { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Included Linux package classifications.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Mandatory = false, HelpMessage = "Included Linux package classifications.")]
         public LinuxPackageClasses[] IncludedPackageClassification { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Excluded Linux package masks.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Mandatory = false, HelpMessage = "Excluded Linux package masks.")]
         public string[] ExcludedPackageNameMask { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Included Linux package masks.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Mandatory = false, HelpMessage = "Included Linux package masks.")]
         public string[] IncludedPackageNameMask { get; set; }
 
         private bool IsWindows { get { return this.ParameterSetName == AutomationCmdletParameterSets.Windows; } }
@@ -150,12 +150,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
                         PreTask = this.PreTaskRunbookName == null ? null : new Task
                         {
                             source = this.PreTaskRunbookName,
-                            parameters = TagsConversionHelper.CreateTagDictionary(this.PreTaskRunbookParameters, true)
+                            parameters = TagsConversionHelper.CreateTagDictionary(this.PreTaskRunbookParameter, true)
                         },
                         PostTask = this.PreTaskRunbookName == null ? null : new Task
                         {
                             source = this.PostTaskRunbookName,
-                            parameters = TagsConversionHelper.CreateTagDictionary(this.PostTaskRunbookParameters, true)
+                            parameters = TagsConversionHelper.CreateTagDictionary(this.PostTaskRunbookParameter, true)
                         },
                     }
                 };
