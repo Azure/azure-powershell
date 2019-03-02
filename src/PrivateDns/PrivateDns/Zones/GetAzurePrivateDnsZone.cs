@@ -41,12 +41,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
         {
             if (!string.IsNullOrEmpty(this.Name))
             {
-                if (this.Name.EndsWith("."))
-                {
-                    this.Name = this.Name.TrimEnd('.');
-                    this.WriteWarning(
-                        $"Modifying Private DNS zone name to remove terminating '.'. Private Zone name used is \"{this.Name}\".");
-                }
+                this.Name = TrimTrailingDotInZoneName(this.Name);
 
                 if (!string.IsNullOrEmpty(this.ResourceGroupName))
                 {
