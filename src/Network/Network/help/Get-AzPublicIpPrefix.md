@@ -14,13 +14,7 @@ Gets a public IP prefix
 
 ### ListParameterSet (Default)
 ```
-Get-AzPublicIpPrefix [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### GetByNameParameterSet
-```
-Get-AzPublicIpPrefix -Name <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzPublicIpPrefix [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -63,10 +57,10 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: ListParameterSet
 Aliases: ResourceName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -82,18 +76,6 @@ Parameter Sets: ListParameterSet
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

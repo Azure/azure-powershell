@@ -14,14 +14,8 @@ Gets a virtual network tap
 
 ### ListParameterSet (Default)
 ```
-Get-AzVirtualNetworkTap [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### GetByNameParameterSet
-```
-Get-AzVirtualNetworkTap -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzVirtualNetworkTap [-ResourceGroupName <String>] [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
@@ -64,10 +58,10 @@ The name of the tap.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: ListParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -83,18 +77,6 @@ Parameter Sets: ListParameterSet
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
