@@ -26,6 +26,179 @@ The **Get-AzApplicationGateway** cmdlet gets an application gateway.
 ### Example 1: Get a specified application gateway
 ```
 PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+
+Sku                                 : Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySku
+SslPolicy                           :
+GatewayIPConfigurations             : {appGatewayFrontendIP}
+AuthenticationCertificates          : {}
+SslCertificates                     : {}
+TrustedRootCertificates             : {}
+FrontendIPConfigurations            : {appGatewayFrontendIP}
+FrontendPorts                       : {appGatewayFrontendPort}
+Probes                              : {}
+BackendAddressPools                 : {appGatewayBackendPool}
+BackendHttpSettingsCollection       : {appGatewayBackendHttpSettings}
+HttpListeners                       : {appGatewayHttpListener}
+UrlPathMaps                         : {}
+RequestRoutingRules                 : {rule1}
+RewriteRuleSets                     : {}
+RedirectConfigurations              : {}
+WebApplicationFirewallConfiguration :
+AutoscaleConfiguration              :
+CustomErrorConfigurations           : {}
+EnableHttp2                         :
+EnableFips                          :
+Zones                               : {}
+OperationalState                    : Running
+ProvisioningState                   : Succeeded
+Identity                            :
+GatewayIpConfigurationsText         : [
+                                        {
+                                          "Subnet": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/virtualNetworks/gw1Vnet/subnets/default"
+                                          },
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/gatewayIPConfigurations",
+                                          "Name": "appGatewayFrontendIP",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/gatewayIPConfigurations/a
+                                      ppGatewayFrontendIP"
+                                        }
+                                      ]
+AuthenticationCertificatesText      : []
+SslCertificatesText                 : []
+FrontendIpConfigurationsText        : [
+                                        {
+                                          "PrivateIPAllocationMethod": "Dynamic",
+                                          "PublicIPAddress": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/publicIPAddresses/ip1"
+                                          },
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/frontendIPConfigurations",
+                                          "Name": "appGatewayFrontendIP",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/frontendIPConfigurations/
+                                      appGatewayFrontendIP"
+                                        }
+                                      ]
+FrontendPortsText                   : [
+                                        {
+                                          "Port": 80,
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/frontendPorts",
+                                          "Name": "appGatewayFrontendPort",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/frontendPorts/appGatewayF
+                                      rontendPort"
+                                        }
+                                      ]
+BackendAddressPoolsText             : [
+                                        {
+                                          "BackendAddresses": [],
+                                          "BackendIpConfigurations": [],
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/backendAddressPools",
+                                          "Name": "appGatewayBackendPool",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/backendAddressPools/appGa
+                                      tewayBackendPool"
+                                        }
+                                      ]
+BackendHttpSettingsCollectionText   : [
+                                        {
+                                          "Port": 80,
+                                          "Protocol": "Http",
+                                          "CookieBasedAffinity": "Disabled",
+                                          "RequestTimeout": 30,
+                                          "ConnectionDraining": {
+                                            "Enabled": false,
+                                            "DrainTimeoutInSec": 1
+                                          },
+                                          "AuthenticationCertificates": [],
+                                          "TrustedRootCertificates": [],
+                                          "PickHostNameFromBackendAddress": false,
+                                          "ProvisioningState": "Succeeded",
+                                          "Type":
+                                      "Microsoft.Network/applicationGateways/backendHttpSettingsCollection",
+                                          "Name": "appGatewayBackendHttpSettings",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/backendHttpSettingsCollec
+                                      tion/appGatewayBackendHttpSettings"
+                                        }
+                                      ]
+HttpListenersText                   : [
+                                        {
+                                          "FrontendIpConfiguration": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/frontendIPConfiguration
+                                      s/appGatewayFrontendIP"
+                                          },
+                                          "FrontendPort": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/frontendPorts/appGatewa
+                                      yFrontendPort"
+                                          },
+                                          "Protocol": "Http",
+                                          "RequireServerNameIndication": false,
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/httpListeners",
+                                          "CustomErrorConfigurations": [],
+                                          "Name": "appGatewayHttpListener",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/httpListeners/appGatewayH
+                                      ttpListener"
+                                        }
+                                      ]
+RewriteRuleSetsText                 : []
+RequestRoutingRulesText             : [
+                                        {
+                                          "RuleType": "Basic",
+                                          "BackendAddressPool": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/backendAddressPools/app
+                                      GatewayBackendPool"
+                                          },
+                                          "BackendHttpSettings": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/backendHttpSettingsColl
+                                      ection/appGatewayBackendHttpSettings"
+                                          },
+                                          "HttpListener": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/httpListeners/appGatewa
+                                      yHttpListener"
+                                          },
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/requestRoutingRules",
+                                          "Name": "rule1",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/requestRoutingRules/rule1
+                                      "
+                                        }
+                                      ]
+ProbesText                          : []
+UrlPathMapsText                     : []
+IdentityText                        : null
+SslPolicyText                       : null
+ResourceGroupName                   : tjp-rg
+Location                            : westus
+ResourceGuid                        : 00000000-0000-0000-0000-000000000000
+Type                                : Microsoft.Network/applicationGateways
+Tag                                 : {}
+TagsTable                           :
+Name                                : ApplicationGateway01
+Etag                                : W/"00000000-0000-0000-0000-000000000000"
+Id                                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/provide
+                                      rs/Microsoft.Network/applicationGateways/ApplicationGateway01
 ```
 
 This command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.
@@ -33,6 +206,179 @@ This command gets the application gateway named ApplicationGateway01 that belong
 ### Example 2: Get a list of application gateways in a resource group
 ```
 PS C:\>$AppGwList = Get-AzApplicationGateway -ResourceGroupName "ResourceGroup01"
+
+Sku                                 : Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySku
+SslPolicy                           :
+GatewayIPConfigurations             : {appGatewayFrontendIP}
+AuthenticationCertificates          : {}
+SslCertificates                     : {}
+TrustedRootCertificates             : {}
+FrontendIPConfigurations            : {appGatewayFrontendIP}
+FrontendPorts                       : {appGatewayFrontendPort}
+Probes                              : {}
+BackendAddressPools                 : {appGatewayBackendPool}
+BackendHttpSettingsCollection       : {appGatewayBackendHttpSettings}
+HttpListeners                       : {appGatewayHttpListener}
+UrlPathMaps                         : {}
+RequestRoutingRules                 : {rule1}
+RewriteRuleSets                     : {}
+RedirectConfigurations              : {}
+WebApplicationFirewallConfiguration :
+AutoscaleConfiguration              :
+CustomErrorConfigurations           : {}
+EnableHttp2                         :
+EnableFips                          :
+Zones                               : {}
+OperationalState                    : Running
+ProvisioningState                   : Succeeded
+Identity                            :
+GatewayIpConfigurationsText         : [
+                                        {
+                                          "Subnet": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/virtualNetworks/gw1Vnet/subnets/default"
+                                          },
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/gatewayIPConfigurations",
+                                          "Name": "appGatewayFrontendIP",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/gatewayIPConfigurations/a
+                                      ppGatewayFrontendIP"
+                                        }
+                                      ]
+AuthenticationCertificatesText      : []
+SslCertificatesText                 : []
+FrontendIpConfigurationsText        : [
+                                        {
+                                          "PrivateIPAllocationMethod": "Dynamic",
+                                          "PublicIPAddress": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/publicIPAddresses/ip1"
+                                          },
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/frontendIPConfigurations",
+                                          "Name": "appGatewayFrontendIP",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/frontendIPConfigurations/
+                                      appGatewayFrontendIP"
+                                        }
+                                      ]
+FrontendPortsText                   : [
+                                        {
+                                          "Port": 80,
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/frontendPorts",
+                                          "Name": "appGatewayFrontendPort",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/frontendPorts/appGatewayF
+                                      rontendPort"
+                                        }
+                                      ]
+BackendAddressPoolsText             : [
+                                        {
+                                          "BackendAddresses": [],
+                                          "BackendIpConfigurations": [],
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/backendAddressPools",
+                                          "Name": "appGatewayBackendPool",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/backendAddressPools/appGa
+                                      tewayBackendPool"
+                                        }
+                                      ]
+BackendHttpSettingsCollectionText   : [
+                                        {
+                                          "Port": 80,
+                                          "Protocol": "Http",
+                                          "CookieBasedAffinity": "Disabled",
+                                          "RequestTimeout": 30,
+                                          "ConnectionDraining": {
+                                            "Enabled": false,
+                                            "DrainTimeoutInSec": 1
+                                          },
+                                          "AuthenticationCertificates": [],
+                                          "TrustedRootCertificates": [],
+                                          "PickHostNameFromBackendAddress": false,
+                                          "ProvisioningState": "Succeeded",
+                                          "Type":
+                                      "Microsoft.Network/applicationGateways/backendHttpSettingsCollection",
+                                          "Name": "appGatewayBackendHttpSettings",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/backendHttpSettingsCollec
+                                      tion/appGatewayBackendHttpSettings"
+                                        }
+                                      ]
+HttpListenersText                   : [
+                                        {
+                                          "FrontendIpConfiguration": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/frontendIPConfiguration
+                                      s/appGatewayFrontendIP"
+                                          },
+                                          "FrontendPort": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/frontendPorts/appGatewa
+                                      yFrontendPort"
+                                          },
+                                          "Protocol": "Http",
+                                          "RequireServerNameIndication": false,
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/httpListeners",
+                                          "CustomErrorConfigurations": [],
+                                          "Name": "appGatewayHttpListener",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/httpListeners/appGatewayH
+                                      ttpListener"
+                                        }
+                                      ]
+RewriteRuleSetsText                 : []
+RequestRoutingRulesText             : [
+                                        {
+                                          "RuleType": "Basic",
+                                          "BackendAddressPool": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/backendAddressPools/app
+                                      GatewayBackendPool"
+                                          },
+                                          "BackendHttpSettings": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/backendHttpSettingsColl
+                                      ection/appGatewayBackendHttpSettings"
+                                          },
+                                          "HttpListener": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/httpListeners/appGatewa
+                                      yHttpListener"
+                                          },
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/requestRoutingRules",
+                                          "Name": "rule1",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/requestRoutingRules/rule1
+                                      "
+                                        }
+                                      ]
+ProbesText                          : []
+UrlPathMapsText                     : []
+IdentityText                        : null
+SslPolicyText                       : null
+ResourceGroupName                   : tjp-rg
+Location                            : westus
+ResourceGuid                        : 00000000-0000-0000-0000-000000000000
+Type                                : Microsoft.Network/applicationGateways
+Tag                                 : {}
+TagsTable                           :
+Name                                : ApplicationGateway01
+Etag                                : W/"00000000-0000-0000-0000-000000000000"
+Id                                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/provide
+                                      rs/Microsoft.Network/applicationGateways/ApplicationGateway01
 ```
 
 This command gets a list of all the application gateways in the resource group named ResourceGroup01 and stores it in the $AppGwList variable.
@@ -40,9 +386,362 @@ This command gets a list of all the application gateways in the resource group n
 ### Example 3: Get a list of application gateways in a subscription
 ```
 PS C:\>$AppGwList = Get-AzApplicationGateway
+
+Sku                                 : Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySku
+SslPolicy                           :
+GatewayIPConfigurations             : {appGatewayFrontendIP}
+AuthenticationCertificates          : {}
+SslCertificates                     : {}
+TrustedRootCertificates             : {}
+FrontendIPConfigurations            : {appGatewayFrontendIP}
+FrontendPorts                       : {appGatewayFrontendPort}
+Probes                              : {}
+BackendAddressPools                 : {appGatewayBackendPool}
+BackendHttpSettingsCollection       : {appGatewayBackendHttpSettings}
+HttpListeners                       : {appGatewayHttpListener}
+UrlPathMaps                         : {}
+RequestRoutingRules                 : {rule1}
+RewriteRuleSets                     : {}
+RedirectConfigurations              : {}
+WebApplicationFirewallConfiguration :
+AutoscaleConfiguration              :
+CustomErrorConfigurations           : {}
+EnableHttp2                         :
+EnableFips                          :
+Zones                               : {}
+OperationalState                    : Running
+ProvisioningState                   : Succeeded
+Identity                            :
+GatewayIpConfigurationsText         : [
+                                        {
+                                          "Subnet": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/virtualNetworks/gw1Vnet/subnets/default"
+                                          },
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/gatewayIPConfigurations",
+                                          "Name": "appGatewayFrontendIP",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/gatewayIPConfigurations/a
+                                      ppGatewayFrontendIP"
+                                        }
+                                      ]
+AuthenticationCertificatesText      : []
+SslCertificatesText                 : []
+FrontendIpConfigurationsText        : [
+                                        {
+                                          "PrivateIPAllocationMethod": "Dynamic",
+                                          "PublicIPAddress": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/publicIPAddresses/ip1"
+                                          },
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/frontendIPConfigurations",
+                                          "Name": "appGatewayFrontendIP",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/frontendIPConfigurations/
+                                      appGatewayFrontendIP"
+                                        }
+                                      ]
+FrontendPortsText                   : [
+                                        {
+                                          "Port": 80,
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/frontendPorts",
+                                          "Name": "appGatewayFrontendPort",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/frontendPorts/appGatewayF
+                                      rontendPort"
+                                        }
+                                      ]
+BackendAddressPoolsText             : [
+                                        {
+                                          "BackendAddresses": [],
+                                          "BackendIpConfigurations": [],
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/backendAddressPools",
+                                          "Name": "appGatewayBackendPool",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/backendAddressPools/appGa
+                                      tewayBackendPool"
+                                        }
+                                      ]
+BackendHttpSettingsCollectionText   : [
+                                        {
+                                          "Port": 80,
+                                          "Protocol": "Http",
+                                          "CookieBasedAffinity": "Disabled",
+                                          "RequestTimeout": 30,
+                                          "ConnectionDraining": {
+                                            "Enabled": false,
+                                            "DrainTimeoutInSec": 1
+                                          },
+                                          "AuthenticationCertificates": [],
+                                          "TrustedRootCertificates": [],
+                                          "PickHostNameFromBackendAddress": false,
+                                          "ProvisioningState": "Succeeded",
+                                          "Type":
+                                      "Microsoft.Network/applicationGateways/backendHttpSettingsCollection",
+                                          "Name": "appGatewayBackendHttpSettings",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/backendHttpSettingsCollec
+                                      tion/appGatewayBackendHttpSettings"
+                                        }
+                                      ]
+HttpListenersText                   : [
+                                        {
+                                          "FrontendIpConfiguration": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/frontendIPConfiguration
+                                      s/appGatewayFrontendIP"
+                                          },
+                                          "FrontendPort": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/frontendPorts/appGatewa
+                                      yFrontendPort"
+                                          },
+                                          "Protocol": "Http",
+                                          "RequireServerNameIndication": false,
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/httpListeners",
+                                          "CustomErrorConfigurations": [],
+                                          "Name": "appGatewayHttpListener",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/httpListeners/appGatewayH
+                                      ttpListener"
+                                        }
+                                      ]
+RewriteRuleSetsText                 : []
+RequestRoutingRulesText             : [
+                                        {
+                                          "RuleType": "Basic",
+                                          "BackendAddressPool": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/backendAddressPools/app
+                                      GatewayBackendPool"
+                                          },
+                                          "BackendHttpSettings": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/backendHttpSettingsColl
+                                      ection/appGatewayBackendHttpSettings"
+                                          },
+                                          "HttpListener": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/httpListeners/appGatewa
+                                      yHttpListener"
+                                          },
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/requestRoutingRules",
+                                          "Name": "rule1",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/requestRoutingRules/rule1
+                                      "
+                                        }
+                                      ]
+ProbesText                          : []
+UrlPathMapsText                     : []
+IdentityText                        : null
+SslPolicyText                       : null
+ResourceGroupName                   : tjp-rg
+Location                            : westus
+ResourceGuid                        : 00000000-0000-0000-0000-000000000000
+Type                                : Microsoft.Network/applicationGateways
+Tag                                 : {}
+TagsTable                           :
+Name                                : ApplicationGateway01
+Etag                                : W/"00000000-0000-0000-0000-000000000000"
+Id                                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/provide
+                                      rs/Microsoft.Network/applicationGateways/ApplicationGateway01
 ```
 
 This command gets a list of all the application gateways in the subscription and stores it in the $AppGwList variable.
+
+### Example 3: Get a list of application gateways in a subscription using filtering
+```
+PS C:\>$AppGwList = Get-AzApplicationGateway -Name ApplicationGateway*
+
+Sku                                 : Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySku
+SslPolicy                           :
+GatewayIPConfigurations             : {appGatewayFrontendIP}
+AuthenticationCertificates          : {}
+SslCertificates                     : {}
+TrustedRootCertificates             : {}
+FrontendIPConfigurations            : {appGatewayFrontendIP}
+FrontendPorts                       : {appGatewayFrontendPort}
+Probes                              : {}
+BackendAddressPools                 : {appGatewayBackendPool}
+BackendHttpSettingsCollection       : {appGatewayBackendHttpSettings}
+HttpListeners                       : {appGatewayHttpListener}
+UrlPathMaps                         : {}
+RequestRoutingRules                 : {rule1}
+RewriteRuleSets                     : {}
+RedirectConfigurations              : {}
+WebApplicationFirewallConfiguration :
+AutoscaleConfiguration              :
+CustomErrorConfigurations           : {}
+EnableHttp2                         :
+EnableFips                          :
+Zones                               : {}
+OperationalState                    : Running
+ProvisioningState                   : Succeeded
+Identity                            :
+GatewayIpConfigurationsText         : [
+                                        {
+                                          "Subnet": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/virtualNetworks/gw1Vnet/subnets/default"
+                                          },
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/gatewayIPConfigurations",
+                                          "Name": "appGatewayFrontendIP",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/gatewayIPConfigurations/a
+                                      ppGatewayFrontendIP"
+                                        }
+                                      ]
+AuthenticationCertificatesText      : []
+SslCertificatesText                 : []
+FrontendIpConfigurationsText        : [
+                                        {
+                                          "PrivateIPAllocationMethod": "Dynamic",
+                                          "PublicIPAddress": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/publicIPAddresses/ip1"
+                                          },
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/frontendIPConfigurations",
+                                          "Name": "appGatewayFrontendIP",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/frontendIPConfigurations/
+                                      appGatewayFrontendIP"
+                                        }
+                                      ]
+FrontendPortsText                   : [
+                                        {
+                                          "Port": 80,
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/frontendPorts",
+                                          "Name": "appGatewayFrontendPort",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/frontendPorts/appGatewayF
+                                      rontendPort"
+                                        }
+                                      ]
+BackendAddressPoolsText             : [
+                                        {
+                                          "BackendAddresses": [],
+                                          "BackendIpConfigurations": [],
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/backendAddressPools",
+                                          "Name": "appGatewayBackendPool",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/backendAddressPools/appGa
+                                      tewayBackendPool"
+                                        }
+                                      ]
+BackendHttpSettingsCollectionText   : [
+                                        {
+                                          "Port": 80,
+                                          "Protocol": "Http",
+                                          "CookieBasedAffinity": "Disabled",
+                                          "RequestTimeout": 30,
+                                          "ConnectionDraining": {
+                                            "Enabled": false,
+                                            "DrainTimeoutInSec": 1
+                                          },
+                                          "AuthenticationCertificates": [],
+                                          "TrustedRootCertificates": [],
+                                          "PickHostNameFromBackendAddress": false,
+                                          "ProvisioningState": "Succeeded",
+                                          "Type":
+                                      "Microsoft.Network/applicationGateways/backendHttpSettingsCollection",
+                                          "Name": "appGatewayBackendHttpSettings",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/backendHttpSettingsCollec
+                                      tion/appGatewayBackendHttpSettings"
+                                        }
+                                      ]
+HttpListenersText                   : [
+                                        {
+                                          "FrontendIpConfiguration": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/frontendIPConfiguration
+                                      s/appGatewayFrontendIP"
+                                          },
+                                          "FrontendPort": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/frontendPorts/appGatewa
+                                      yFrontendPort"
+                                          },
+                                          "Protocol": "Http",
+                                          "RequireServerNameIndication": false,
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/httpListeners",
+                                          "CustomErrorConfigurations": [],
+                                          "Name": "appGatewayHttpListener",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/httpListeners/appGatewayH
+                                      ttpListener"
+                                        }
+                                      ]
+RewriteRuleSetsText                 : []
+RequestRoutingRulesText             : [
+                                        {
+                                          "RuleType": "Basic",
+                                          "BackendAddressPool": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/backendAddressPools/app
+                                      GatewayBackendPool"
+                                          },
+                                          "BackendHttpSettings": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/backendHttpSettingsColl
+                                      ection/appGatewayBackendHttpSettings"
+                                          },
+                                          "HttpListener": {
+                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                            ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/httpListeners/appGatewa
+                                      yHttpListener"
+                                          },
+                                          "ProvisioningState": "Succeeded",
+                                          "Type": "Microsoft.Network/applicationGateways/requestRoutingRules",
+                                          "Name": "rule1",
+                                          "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                          "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
+                                          ResourceGroup01/providers/Microsoft.Network/applicationGateways/ApplicationGateway01/requestRoutingRules/rule1
+                                      "
+                                        }
+                                      ]
+ProbesText                          : []
+UrlPathMapsText                     : []
+IdentityText                        : null
+SslPolicyText                       : null
+ResourceGroupName                   : tjp-rg
+Location                            : westus
+ResourceGuid                        : 00000000-0000-0000-0000-000000000000
+Type                                : Microsoft.Network/applicationGateways
+Tag                                 : {}
+TagsTable                           :
+Name                                : ApplicationGateway01
+Etag                                : W/"00000000-0000-0000-0000-000000000000"
+Id                                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/provide
+                                      rs/Microsoft.Network/applicationGateways/ApplicationGateway01
+```
+
+This command gets a list of all the application gateways in the subscription that start with "ApplicationGateway01" and stores it in the $AppGwList variable.
 
 ## PARAMETERS
 

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
