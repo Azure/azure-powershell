@@ -53,11 +53,7 @@ namespace Commands.Automation.Test
             RunPowerShellTest(logger, "Test-NewModule");
         }
 
-        // Playback error:
-        /* Message: System.Exception : Subscription Id is not present in the 
-         * recorded mock or in connection string (e.g. SubscriptionId=<subscriptionId>).
-         */
-        [Fact(Skip = "Test does not work on playback mode ")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.DesktopOnly)]
         [Trait(Category.Service, Category.Automation)]
         public void ImportModule()

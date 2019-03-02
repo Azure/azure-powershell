@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 * Update to latest version of ClientRuntime
+* Azure automation update management change to support the following new features :
+    Dynamic grouping
+    Pre-Post script
+    Reboot Setting
 
 ## Version 1.2.0
 * Add interactive and username/password authentication for Windows PowerShell 5.1 only
