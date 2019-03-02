@@ -23,6 +23,7 @@ using System.Security;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
@@ -145,7 +146,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The connection type used for connecting to the instance.")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter(Constants.ProxyOverrideDefault, Constants.ProxyOverrideProxy, Constants.ProxyOverrideRedirect)]
+        [PSArgumentCompleter(ManagedInstanceProxyOverride.Default, ManagedInstanceProxyOverride.Proxy, ManagedInstanceProxyOverride.Redirect)]
         public string ProxyOverride { get; set; }
 
         /// <summary>
