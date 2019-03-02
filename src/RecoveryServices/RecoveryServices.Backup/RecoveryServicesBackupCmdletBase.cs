@@ -44,6 +44,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         protected ResourcesNS.ResourceManagementClient RmClient { get; set; }
 
+        public const string GetGuidComponentName = "GetGuidComponent";
+
+        static string _guid;
+
+        protected static string GetGuid
+        {
+            get { return _guid; }
+            set { _guid = Guid.NewGuid().ToString(); }
+        }
+
         /// <summary>
         /// Initializes the service clients and the logging utility
         /// </summary>
@@ -53,6 +63,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
             WriteDebug("Inside Restore. Going to create ResourceClient.");
             RmClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+
+            // use dependency injection to override the behavior of GetGuid in a test context
+            var getGuidComponent = _guid;
+            if (AzureSession.Instance.TryGetComponent(GetGuidComponentName, out getGuidComponent))
+            {
+                _guid = getGuidComponent;
+            }
 
             WriteDebug("Client Created successfully");
 

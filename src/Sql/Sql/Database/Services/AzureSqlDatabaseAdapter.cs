@@ -23,6 +23,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
@@ -333,6 +334,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         ///    Edition              | SkuName
         ///    GeneralPurpose       | GP
         ///    BusinessCritical     | BC
+        ///    Hyperscale           | HS
         ///    Standard             | Standard
         ///    Basic                | Basic
         ///    Premium              | Premium
@@ -342,17 +344,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         public static string GetDatabaseSkuName(string tier)
         {
             if (string.IsNullOrWhiteSpace(tier))
-                return null;
-
-            switch(tier.ToLowerInvariant())
             {
-                case "generalpurpose":
-                    return "GP";
-                case "businesscritical":
-                    return "BC";
-                default:
-                    return tier;
+                return null;
             }
+
+            return SqlSkuUtils.GetVcoreSkuPrefix(tier) ?? tier;
         }
 
         /// <summary>
