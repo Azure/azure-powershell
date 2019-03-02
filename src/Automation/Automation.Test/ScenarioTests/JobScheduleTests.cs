@@ -12,25 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
 namespace Commands.Automation.Test
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.Automation.Test;
-    using Microsoft.Azure.ServiceManagement.Common.Models;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
-    public class JobScheduleTests : AutomationScenarioTestsBase
+    public class JobScheduleTests : AutomationTestRunner
     {
-        public XunitTracingInterceptor logger;
-
         public JobScheduleTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(logger);
         }
 
         // Playback error:
@@ -47,7 +38,7 @@ namespace Commands.Automation.Test
         [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestE2EJobSchedules()
         {
-            RunPowerShellTest(logger, "Test-E2EJobSchedules");
+            TestRunner.RunTestScript("Test-E2EJobSchedules");
         }
     }
 }

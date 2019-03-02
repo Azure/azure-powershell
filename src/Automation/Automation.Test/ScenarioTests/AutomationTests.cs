@@ -12,20 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Automation.Test
+namespace Commands.Automation.Test
 {
-    public class AutomationTests : AutomationScenarioTestsBase
+    public class AutomationTests : AutomationTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public AutomationTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Need x64 test framework.")]
@@ -33,7 +29,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationStartAndStopRunbook()
         {
-            RunPowerShellTest(_logger, "Test-AutomationStartAndStopRunbook -runbookPath ScenarioTests\\Resources\\Test-Workflow.ps1");
+            TestRunner.RunTestScript("Test-AutomationStartAndStopRunbook -runbookPath ScenarioTests\\Resources\\Test-Workflow.ps1");
         }
 
         [Fact(Skip = "Need x64 test framework.")]
@@ -41,7 +37,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationPublishAndEditRunbook()
         {
-            RunPowerShellTest(_logger, "Test-AutomationPublishAndEditRunbook -runbookPath ScenarioTests\\Resources\\Test-Workflow.ps1 -editRunbookPath Resources\\Automation\\Test-WorkflowV2.ps1");
+            TestRunner.RunTestScript("Test-AutomationPublishAndEditRunbook -runbookPath ScenarioTests\\Resources\\Test-Workflow.ps1 -editRunbookPath Resources\\Automation\\Test-WorkflowV2.ps1");
         }
 
         [Fact(Skip = "Need x64 test framework.")]
@@ -49,7 +45,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationConfigureRunbook()
         {
-            RunPowerShellTest(_logger, "Test-AutomationConfigureRunbook -runbookPath ScenarioTests\\Resources\\Write-DebugAndVerboseOutput.ps1");
+            TestRunner.RunTestScript("Test-AutomationConfigureRunbook -runbookPath ScenarioTests\\Resources\\Write-DebugAndVerboseOutput.ps1");
         }
 
         [Fact(Skip = "Need to re-record tests with latest version of automation library")]
@@ -57,7 +53,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAutomationSuspendAndResumeJob()
         {
-            RunPowerShellTest(_logger, "Test-AutomationSuspendAndResumeJob -runbookPath ScenarioTests\\Resources\\Use-WorkflowCheckpointSample.ps1");
+            TestRunner.RunTestScript("Test-AutomationSuspendAndResumeJob -runbookPath ScenarioTests\\Resources\\Use-WorkflowCheckpointSample.ps1");
         }
 
         [Fact(Skip = "Need to re-record tests with latest version of automation library")]
@@ -65,7 +61,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAutomationStartRunbookOnASchedule()
         {
-            RunPowerShellTest(_logger, "Test-AutomationStartRunbookOnASchedule -runbookPath ScenarioTests\\Resources\\Test-Workflow.ps1");
+            TestRunner.RunTestScript("Test-AutomationStartRunbookOnASchedule -runbookPath ScenarioTests\\Resources\\Test-Workflow.ps1");
         }
 
         [Fact(Skip = "Need x64 test framework.")]
@@ -73,7 +69,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationStartUnpublishedRunbook()
         {
-            RunPowerShellTest(_logger, "Test-AutomationStartUnpublishedRunbook -runbookPath ScenarioTests\\Resources\\Test-WorkFlowWithVariousParameters.ps1");
+            TestRunner.RunTestScript("Test-AutomationStartUnpublishedRunbook -runbookPath ScenarioTests\\Resources\\Test-WorkFlowWithVariousParameters.ps1");
         }
 
         [Fact(Skip = "Need x64 test framework.")]
@@ -81,7 +77,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationRunbookWithParameter()
         {
-            RunPowerShellTest(_logger, "Test-RunbookWithParameter -runbookPath ScenarioTests\\Resources\\fastJob.ps1 -type 'PowerShell' -parameters @{'nums'='[1,2,3,4,5,6,7]'} -expectedResult 28");
+            TestRunner.RunTestScript("Test-RunbookWithParameter -runbookPath ScenarioTests\\Resources\\fastJob.ps1 -type 'PowerShell' -parameters @{'nums'='[1,2,3,4,5,6,7]'} -expectedResult 28");
         }
 
         [Fact(Skip = "Need x64 test framework.")]
@@ -89,7 +85,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationPy2RunbookWithParameter()
         {
-            RunPowerShellTest(_logger, "Test-RunbookWithParameter -runbookPath ScenarioTests\\Resources\\fastJob.py -type 'Python2' -parameters @{'param1'='1';'param2'='2';'param3'='3';'param4'='4';'param5'='5';'param6'='6';'param7'='7'} -expectedResult 28");
+            TestRunner.RunTestScript("Test-RunbookWithParameter -runbookPath ScenarioTests\\Resources\\fastJob.py -type 'Python2' -parameters @{'param1'='1';'param2'='2';'param3'='3';'param4'='4';'param5'='5';'param6'='6';'param7'='7'} -expectedResult 28");
         }
     }
 }

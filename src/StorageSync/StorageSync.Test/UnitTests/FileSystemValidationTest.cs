@@ -25,8 +25,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     using Xunit;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
+    /// <summary>
+    /// Class FileSystemValidationTest.
+    /// </summary>
     public class FileSystemValidationTest
     {
+        /// <summary>
+        /// Defines the test method WhenFileSystemIsSupportedValidationResultIsSuccessful.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenFileSystemIsSupportedValidationResultIsSuccessful()
@@ -58,6 +64,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Assert.StrictEqual<Result>(Result.Success, validationResult.Result);
         }
 
+        /// <summary>
+        /// Defines the test method WhenFileSystemIsNotSupportedValidationResultIsError.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenFileSystemIsNotSupportedValidationResultIsError()
@@ -90,6 +99,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Assert.StrictEqual<Result>(Result.Fail, validationResult.Result);
         }
 
+        /// <summary>
+        /// Defines the test method WhenPathDoesNotSpecifiesDriveValidationResultIsUnableToRun.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenPathDoesNotSpecifiesDriveValidationResultIsUnableToRun()
@@ -122,6 +134,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Assert.StrictEqual<Result>(Result.Unavailable, validationResult.Result);
         }
 
+        /// <summary>
+        /// Defines the test method WhenCommandFailsValidationResultIsUnableToRun.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenCommandFailsValidationResultIsUnableToRun()
