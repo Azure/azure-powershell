@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add wildcard support to Get cmdlets
 
 ## Version 1.4.0
 * Fix issue with ID parameter sets

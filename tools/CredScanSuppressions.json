@@ -1131,6 +1131,14 @@
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
 	  {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiskRPTests\\TestDisk.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+	  {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiskRPTests\\TestSnapshot.json",
+      "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+    },
+    {
       "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSyncTests.CloudEndpointTests\\TestGetCloudEndpoint.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },

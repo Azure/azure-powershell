@@ -31,10 +31,184 @@ Get or list gallery image definitions.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $gallery -GalleryImageDefinitionName $image
+PS C:\> Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image1
+
+ResourceGroupName   : rg1
+Eula                : eula
+PrivacyStatementUri : Https://www.microsoft.com
+ReleaseNoteUri      : https://www.microsoft.com
+OsType              : Windows
+OsState             : Generalized
+EndOfLifeDate       : 2/18/2025 12:07:00 PM
+Identifier          :
+  Publisher         : PsSDKTeamTest
+  Offer             : testgalleryoffer1
+  Sku               : testgallerysku1
+Recommended         :
+  VCPUs             :
+    Min             : 2
+    Max             : 32
+  Memory            :
+    Min             : 1
+    Max             : 100
+Disallowed          :
+  DiskTypes[0]      : Standard_LRS
+PurchasePlan        :
+  Name              : PsSDKTestPlan
+  Publisher         : PSSDKTeam
+  Product           : PsSDKTestProductWindowsVm
+ProvisioningState   : Succeeded
+Id                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provi
+ders/Microsoft.Compute/galleries/gallery1/images/image1
+Name                : image1
+Type                : Microsoft.Compute/galleries/images
+Location            : eastus2
+Tags                : {}
 ```
 
 Get the gallery image definition.
+
+### Example 2
+```powershell
+PS C:\> Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image*
+
+ResourceGroupName   : rg1
+Eula                : eula
+PrivacyStatementUri : Https://www.microsoft.com
+ReleaseNoteUri      : https://www.microsoft.com
+OsType              : Windows
+OsState             : Generalized
+EndOfLifeDate       : 2/18/2025 12:07:00 PM
+Identifier          :
+  Publisher         : PsSDKTeamTest
+  Offer             : testgalleryoffer1
+  Sku               : testgallerysku1
+Recommended         :
+  VCPUs             :
+    Min             : 2
+    Max             : 32
+  Memory            :
+    Min             : 1
+    Max             : 100
+Disallowed          :
+  DiskTypes[0]      : Standard_LRS
+PurchasePlan        :
+  Name              : PsSDKTestPlan
+  Publisher         : PSSDKTeam
+  Product           : PsSDKTestProductWindowsVm
+ProvisioningState   : Succeeded
+Id                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provi
+ders/Microsoft.Compute/galleries/gallery1/images/image1
+Name                : image1
+Type                : Microsoft.Compute/galleries/images
+Location            : eastus2
+Tags                : {}
+
+ResourceGroupName   : rg1
+Eula                : eula
+PrivacyStatementUri : Https://www.microsoft.com
+ReleaseNoteUri      : https://www.microsoft.com
+OsType              : Windows
+OsState             : Generalized
+EndOfLifeDate       : 2/18/2025 12:07:00 PM
+Identifier          :
+  Publisher         : PsSDKTeamTest
+  Offer             : testgalleryoffer1
+  Sku               : testgallerysku1
+Recommended         :
+  VCPUs             :
+    Min             : 2
+    Max             : 32
+  Memory            :
+    Min             : 1
+    Max             : 100
+Disallowed          :
+  DiskTypes[0]      : Standard_LRS
+PurchasePlan        :
+  Name              : PsSDKTestPlan
+  Publisher         : PSSDKTeam
+  Product           : PsSDKTestProductWindowsVm
+ProvisioningState   : Succeeded
+Id                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provi
+ders/Microsoft.Compute/galleries/gallery1/images/image2
+Name                : image2
+Type                : Microsoft.Compute/galleries/images
+Location            : eastus2
+Tags                : {}
+```
+
+Get the gallery image definition that starts with "image".
+
+### Example 3
+```powershell
+PS C:\> Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1
+
+ResourceGroupName   : rg1
+Eula                : eula
+PrivacyStatementUri : Https://www.microsoft.com
+ReleaseNoteUri      : https://www.microsoft.com
+OsType              : Windows
+OsState             : Generalized
+EndOfLifeDate       : 2/18/2025 12:07:00 PM
+Identifier          :
+  Publisher         : PsSDKTeamTest
+  Offer             : testgalleryoffer1
+  Sku               : testgallerysku1
+Recommended         :
+  VCPUs             :
+    Min             : 2
+    Max             : 32
+  Memory            :
+    Min             : 1
+    Max             : 100
+Disallowed          :
+  DiskTypes[0]      : Standard_LRS
+PurchasePlan        :
+  Name              : PsSDKTestPlan
+  Publisher         : PSSDKTeam
+  Product           : PsSDKTestProductWindowsVm
+ProvisioningState   : Succeeded
+Id                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provi
+ders/Microsoft.Compute/galleries/gallery1/images/image1
+Name                : image1
+Type                : Microsoft.Compute/galleries/images
+Location            : eastus2
+Tags                : {}
+
+ResourceGroupName   : rg1
+Eula                : eula
+PrivacyStatementUri : Https://www.microsoft.com
+ReleaseNoteUri      : https://www.microsoft.com
+OsType              : Windows
+OsState             : Generalized
+EndOfLifeDate       : 2/18/2025 12:07:00 PM
+Identifier          :
+  Publisher         : PsSDKTeamTest
+  Offer             : testgalleryoffer1
+  Sku               : testgallerysku1
+Recommended         :
+  VCPUs             :
+    Min             : 2
+    Max             : 32
+  Memory            :
+    Min             : 1
+    Max             : 100
+Disallowed          :
+  DiskTypes[0]      : Standard_LRS
+PurchasePlan        :
+  Name              : PsSDKTestPlan
+  Publisher         : PSSDKTeam
+  Product           : PsSDKTestProductWindowsVm
+ProvisioningState   : Succeeded
+Id                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provi
+ders/Microsoft.Compute/galleries/gallery1/images/image2
+Name                : image2
+Type                : Microsoft.Compute/galleries/images
+Location            : eastus2
+Tags                : {}
+```
+
+Get the gallery image definitions in gallery1.
 
 ## PARAMETERS
 
