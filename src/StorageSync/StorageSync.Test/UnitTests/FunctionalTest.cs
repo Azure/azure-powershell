@@ -22,17 +22,29 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     using Xunit;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
+    /// <summary>
+    /// Class FunctionalTest.
+    /// </summary>
     public class FunctionalTest
     {
 
+        /// <summary>
+        /// The computer name
+        /// </summary>
         private readonly string _computerName;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FunctionalTest"/> class.
+        /// </summary>
         public FunctionalTest()
         {
             _computerName = "windows-2012-r2.redmond.corp.microsoft.com";
         }
 
+        /// <summary>
+        /// Defines the test method WhenComputerNameDoestNotExistsItThrows.
+        /// </summary>
         [Fact(Skip = "Depends on external artefacts")]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]  
+        [Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenComputerNameDoestNotExistsItThrows()
         {
             // Prepare
@@ -50,6 +62,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
 
         }
 
+        /// <summary>
+        /// Defines the test method WhenCredentialsAreIncorrectItThrows.
+        /// </summary>
         [Fact(Skip = "Depends on external artefacts")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenCredentialsAreIncorrectItThrows()
@@ -69,6 +84,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Assert.Contains("The user name or password is incorrect.", thrownException.Message);
         }
 
+        /// <summary>
+        /// Creates the secure string from.
+        /// </summary>
+        /// <param name="s">The s.</param>
+        /// <returns>SecureString.</returns>
         private SecureString CreateSecureStringFrom(string s)
         {
             SecureString ss = new SecureString();

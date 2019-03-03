@@ -32,10 +32,179 @@ Get or list gallery image versions.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $gallery -ImageDefinitionName $image -GalleryImageVersionName $version
+PS C:\> Get-AzGalleryImageVersion -ResourceGroupName rg1 -GalleryName gallery1 -ImageDefinitionName image1 -GalleryImageVersionName 1.0.0
+
+ResourceGroupName        : rg1
+PublishingProfile        :
+  TargetRegions[0]       :
+    Name                 : South Central US
+    RegionalReplicaCount : 1
+  TargetRegions[1]       :
+    Name                 : East US 2
+    RegionalReplicaCount : 2
+  TargetRegions[2]       :
+    Name                 : Central US
+    RegionalReplicaCount : 1
+  Source                 :
+    ManagedImage         :
+      Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/images/test1
+  ReplicaCount           : 1
+  ExcludeFromLatest      : False
+  PublishedDate          : 11/14/2018 12:00:00 AM
+  EndOfLifeDate          : 2/18/2025 12:07:00 PM
+ProvisioningState        : Succeeded
+StorageProfile           :
+  OsDiskImage            :
+    SizeInGB             : 127
+    HostCaching          : ReadWrite
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/galleries/gallery1/images/image1/versions/1.0.0
+Name                     : 1.0.0
+Type                     : Microsoft.Compute/galleries/images/versions
+Location                 : eastus2
+Tags                     : {}
 ```
 
 Get the gallery image version.
+
+### Example 2
+```powershell
+PS C:\> Get-AzGalleryImageVersion -ResourceGroupName rg1 -GalleryName gallery1 -ImageDefinitionName image1 -GalleryImageVersionName 1*
+
+ResourceGroupName        : rg1
+PublishingProfile        :
+  TargetRegions[0]       :
+    Name                 : South Central US
+    RegionalReplicaCount : 1
+  TargetRegions[1]       :
+    Name                 : East US 2
+    RegionalReplicaCount : 2
+  TargetRegions[2]       :
+    Name                 : Central US
+    RegionalReplicaCount : 1
+  Source                 :
+    ManagedImage         :
+      Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/images/test1
+  ReplicaCount           : 1
+  ExcludeFromLatest      : False
+  PublishedDate          : 11/14/2018 12:00:00 AM
+  EndOfLifeDate          : 2/18/2025 12:07:00 PM
+ProvisioningState        : Succeeded
+StorageProfile           :
+  OsDiskImage            :
+    SizeInGB             : 127
+    HostCaching          : ReadWrite
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/galleries/gallery1/images/image1/versions/1.0.0
+Name                     : 1.0.0
+Type                     : Microsoft.Compute/galleries/images/versions
+Location                 : eastus2
+Tags                     : {}
+
+ResourceGroupName        : rg1
+PublishingProfile        :
+  TargetRegions[0]       :
+    Name                 : South Central US
+    RegionalReplicaCount : 1
+  TargetRegions[1]       :
+    Name                 : East US 2
+    RegionalReplicaCount : 2
+  TargetRegions[2]       :
+    Name                 : Central US
+    RegionalReplicaCount : 1
+  Source                 :
+    ManagedImage         :
+      Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/images/test1
+  ReplicaCount           : 1
+  ExcludeFromLatest      : False
+  PublishedDate          : 11/14/2018 12:00:00 AM
+  EndOfLifeDate          : 2/18/2025 12:07:00 PM
+ProvisioningState        : Succeeded
+StorageProfile           :
+  OsDiskImage            :
+    SizeInGB             : 127
+    HostCaching          : ReadWrite
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/galleries/gallery1/images/image1/versions/1.1.0
+Name                     : 1.1.0
+Type                     : Microsoft.Compute/galleries/images/versions
+Location                 : eastus2
+Tags                     : {}
+```
+
+Get the gallery image versions that starts with "1".
+
+### Example 3
+```powershell
+PS C:\> Get-AzGalleryImageVersion -ResourceGroupName rg1 -GalleryName gallery1 -ImageDefinitionName image1
+
+ResourceGroupName        : rg1
+PublishingProfile        :
+  TargetRegions[0]       :
+    Name                 : South Central US
+    RegionalReplicaCount : 1
+  TargetRegions[1]       :
+    Name                 : East US 2
+    RegionalReplicaCount : 2
+  TargetRegions[2]       :
+    Name                 : Central US
+    RegionalReplicaCount : 1
+  Source                 :
+    ManagedImage         :
+      Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/images/test1
+  ReplicaCount           : 1
+  ExcludeFromLatest      : False
+  PublishedDate          : 11/14/2018 12:00:00 AM
+  EndOfLifeDate          : 2/18/2025 12:07:00 PM
+ProvisioningState        : Succeeded
+StorageProfile           :
+  OsDiskImage            :
+    SizeInGB             : 127
+    HostCaching          : ReadWrite
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/galleries/gallery1/images/image1/versions/1.0.0
+Name                     : 1.0.0
+Type                     : Microsoft.Compute/galleries/images/versions
+Location                 : eastus2
+Tags                     : {}
+
+ResourceGroupName        : rg1
+PublishingProfile        :
+  TargetRegions[0]       :
+    Name                 : South Central US
+    RegionalReplicaCount : 1
+  TargetRegions[1]       :
+    Name                 : East US 2
+    RegionalReplicaCount : 2
+  TargetRegions[2]       :
+    Name                 : Central US
+    RegionalReplicaCount : 1
+  Source                 :
+    ManagedImage         :
+      Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/images/test1
+  ReplicaCount           : 1
+  ExcludeFromLatest      : False
+  PublishedDate          : 11/14/2018 12:00:00 AM
+  EndOfLifeDate          : 2/18/2025 12:07:00 PM
+ProvisioningState        : Succeeded
+StorageProfile           :
+  OsDiskImage            :
+    SizeInGB             : 127
+    HostCaching          : ReadWrite
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/galleries/gallery1/images/image1/versions/1.1.0
+Name                     : 1.1.0
+Type                     : Microsoft.Compute/galleries/images/versions
+Location                 : eastus2
+Tags                     : {}
+```
+
+Get all gallery image versions.
 
 ## PARAMETERS
 

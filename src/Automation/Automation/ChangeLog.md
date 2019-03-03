@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue when retreiving certain monthly schedules in several Azure Automation cmdlets
+
+## Version 1.1.1
+* Update help for Import-AzAutomationDscNodeConfiguration
+* Added configuration name validation to Import-AzAutomationDscConfiguration cmdlet
+* Improved error handling for Import-AzAutomationDscConfiguration cmdlet
 
 ## Version 1.1.0
 * Added support for Python 2 runbooks

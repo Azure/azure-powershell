@@ -11,7 +11,7 @@
 
   <!-- Build -->
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;netstandard2.0</TargetFrameworks>
     <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</AssemblyName>
     <RootNamespace>$(AzAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
     <IsPackable>false</IsPackable>
@@ -23,6 +23,10 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineConstants>TRACE;RELEASE;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(IncludeCommonTestProject)' != 'false'">

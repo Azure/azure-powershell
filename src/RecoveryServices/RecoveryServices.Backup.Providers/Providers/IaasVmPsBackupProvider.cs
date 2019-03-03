@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdap
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
 using System;
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Triggers the enable protection operation for the given item
         /// </summary>
         /// <returns>The job response returned from the service</returns>
-        public RestAzureNS.AzureOperationResponse EnableProtection()
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableProtection()
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
@@ -168,7 +167,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Triggers the disable protection operation for the given item
         /// </summary>
         /// <returns>The job response returned from the service</returns>
-        public RestAzureNS.AzureOperationResponse DisableProtection()
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> DisableProtection()
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
@@ -186,48 +185,61 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
 
             bool isComputeAzureVM = false;
+            isComputeAzureVM = IsComputeAzureVM(item.VirtualMachineId);
 
-            if (deleteBackupData)
+            // construct Service Client protectedItem request
+
+            AzureIaaSVMProtectedItem properties;
+            if (isComputeAzureVM == false)
             {
-                return ServiceClientAdapter.DeleteProtectedItem(
+                properties = new AzureIaaSClassicComputeVMProtectedItem();
+            }
+            else
+            {
+                properties = new AzureIaaSComputeVMProtectedItem();
+            }
+
+            properties.PolicyId = string.Empty;
+            properties.ProtectionState = ProtectionState.ProtectionStopped;
+            properties.SourceResourceId = item.SourceResourceId;
+
+            ProtectedItemResource serviceClientRequest = new ProtectedItemResource()
+            {
+                Properties = properties,
+            };
+
+            return ServiceClientAdapter.CreateOrUpdateProtectedItem(
+                containerUri,
+                protectedItemUri,
+                serviceClientRequest,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+        }
+
+        public RestAzureNS.AzureOperationResponse DisableProtectionWithDeleteData()
+        {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            bool deleteBackupData = (bool)ProviderData[ItemParams.DeleteBackupData];
+
+            ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
+
+            AzureVmItem item = (AzureVmItem)ProviderData[ItemParams.Item];
+            // do validations
+
+            ValidateAzureVMDisableProtectionRequest(itemBase);
+
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
+
+            return ServiceClientAdapter.DeleteProtectedItem(
                                 containerUri,
                                 protectedItemUri,
                                 vaultName: vaultName,
                                 resourceGroupName: resourceGroupName);
-            }
-            else
-            {
-                isComputeAzureVM = IsComputeAzureVM(item.VirtualMachineId);
-
-                // construct Service Client protectedItem request
-
-                AzureIaaSVMProtectedItem properties;
-                if (isComputeAzureVM == false)
-                {
-                    properties = new AzureIaaSClassicComputeVMProtectedItem();
-                }
-                else
-                {
-                    properties = new AzureIaaSComputeVMProtectedItem();
-                }
-
-                properties.PolicyId = string.Empty;
-                properties.ProtectionState = ProtectionState.ProtectionStopped;
-                properties.SourceResourceId = item.SourceResourceId;
-
-                ProtectedItemResource serviceClientRequest = new ProtectedItemResource()
-                {
-                    Properties = properties,
-                };
-
-                return ServiceClientAdapter.CreateOrUpdateProtectedItem(
-                    containerUri,
-                    protectedItemUri,
-                    serviceClientRequest,
-                    vaultName: vaultName,
-                    resourceGroupName: resourceGroupName);
-            }
         }
+
 
         /// <summary>
         /// Triggers the backup operation for the given item
@@ -792,10 +804,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 CmdletModel.RetentionScheduleFormat.Weekly;
 
             //Initialize day based schedule
-            defaultRetention.MonthlySchedule.RetentionScheduleDaily = GetDailyRetentionFormat();
+            defaultRetention.MonthlySchedule.RetentionScheduleDaily = AzureWorkloadProviderHelper.GetDailyRetentionFormat();
 
             //Initialize Week based schedule
-            defaultRetention.MonthlySchedule.RetentionScheduleWeekly = GetWeeklyRetentionFormat();
+            defaultRetention.MonthlySchedule.RetentionScheduleWeekly = AzureWorkloadProviderHelper.GetWeeklyRetentionFormat();
 
             //Yearly retention policy
             defaultRetention.IsYearlyScheduleEnabled = true;
@@ -807,38 +819,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 CmdletModel.RetentionScheduleFormat.Weekly;
             defaultRetention.YearlySchedule.MonthsOfYear = new List<Month>();
             defaultRetention.YearlySchedule.MonthsOfYear.Add(Month.January);
-            defaultRetention.YearlySchedule.RetentionScheduleDaily = GetDailyRetentionFormat();
-            defaultRetention.YearlySchedule.RetentionScheduleWeekly = GetWeeklyRetentionFormat();
+            defaultRetention.YearlySchedule.RetentionScheduleDaily = AzureWorkloadProviderHelper.GetDailyRetentionFormat();
+            defaultRetention.YearlySchedule.RetentionScheduleWeekly = AzureWorkloadProviderHelper.GetWeeklyRetentionFormat();
             return defaultRetention;
 
         }
-
+        public void RegisterContainer()
+        {
+            throw new NotImplementedException();
+        }
 
         #region private
-
-        private static CmdletModel.DailyRetentionFormat GetDailyRetentionFormat()
-        {
-            CmdletModel.DailyRetentionFormat dailyRetention =
-                new CmdletModel.DailyRetentionFormat();
-            dailyRetention.DaysOfTheMonth = new List<CmdletModel.Day>();
-            CmdletModel.Day dayBasedRetention = new CmdletModel.Day();
-            dayBasedRetention.IsLast = false;
-            dayBasedRetention.Date = 1;
-            dailyRetention.DaysOfTheMonth.Add(dayBasedRetention);
-            return dailyRetention;
-        }
-
-        private static CmdletModel.WeeklyRetentionFormat GetWeeklyRetentionFormat()
-        {
-            CmdletModel.WeeklyRetentionFormat weeklyRetention =
-                new CmdletModel.WeeklyRetentionFormat();
-            weeklyRetention.DaysOfTheWeek = new List<System.DayOfWeek>();
-            weeklyRetention.DaysOfTheWeek.Add(System.DayOfWeek.Sunday);
-
-            weeklyRetention.WeeksOfTheMonth = new List<CmdletModel.WeekOfMonth>();
-            weeklyRetention.WeeksOfTheMonth.Add(CmdletModel.WeekOfMonth.First);
-            return weeklyRetention;
-        }
 
         private void ValidateAzureVMWorkloadType(CmdletModel.WorkloadType type)
         {
@@ -1259,6 +1250,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             return useOsa;
+        }
+
+        public List<PointInTimeBase> GetLogChains()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

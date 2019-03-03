@@ -63,46 +63,73 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 else if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName))
                 {
-                    var result = VirtualMachineScaleSetVMsClient.List(resourceGroupName, vmScaleSetName);
-                    var resultList = result.ToList();
-                    var nextPageLink = result.NextPageLink;
-                    while (!string.IsNullOrEmpty(nextPageLink))
+                    if (this.ParameterSetName.Equals("FriendMethod"))
                     {
-                        var pageResult = VirtualMachineScaleSetVMsClient.ListNext(nextPageLink);
-                        foreach (var pageItem in pageResult)
+                        var expand = new Microsoft.Rest.Azure.OData.ODataQuery<VirtualMachineScaleSetVM>();
+                        expand.Expand = "instanceView";
+
+                        var result = VirtualMachineScaleSetVMsClient.List(resourceGroupName, vmScaleSetName, expand);
+                        var resultList = result.ToList();
+                        var nextPageLink = result.NextPageLink;
+                        while (!string.IsNullOrEmpty(nextPageLink))
                         {
-                            resultList.Add(pageItem);
+                            var pageResult = VirtualMachineScaleSetVMsClient.ListNext(nextPageLink);
+                            foreach (var pageItem in pageResult)
+                            {
+                                resultList.Add(pageItem);
+                            }
+                            nextPageLink = pageResult.NextPageLink;
                         }
-                        nextPageLink = pageResult.NextPageLink;
+                        var psObject = new List<PSVirtualMachineScaleSetVMList>();
+                        foreach (var r in resultList)
+                        {
+                            psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVMList>(r));
+                        }
+                        WriteObject(psObject, true);
                     }
-                    var psObject = new List<PSVirtualMachineScaleSetVMList>();
-                    foreach (var r in resultList)
+                    else
                     {
-                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVMList>(r));
+                        var result = VirtualMachineScaleSetVMsClient.List(resourceGroupName, vmScaleSetName);
+                        var resultList = result.ToList();
+                        var nextPageLink = result.NextPageLink;
+                        while (!string.IsNullOrEmpty(nextPageLink))
+                        {
+                            var pageResult = VirtualMachineScaleSetVMsClient.ListNext(nextPageLink);
+                            foreach (var pageItem in pageResult)
+                            {
+                                resultList.Add(pageItem);
+                            }
+                            nextPageLink = pageResult.NextPageLink;
+                        }
+                        var psObject = new List<PSVirtualMachineScaleSetVMList>();
+                        foreach (var r in resultList)
+                        {
+                            psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVMList>(r));
+                        }
+                        WriteObject(psObject, true);
                     }
-                    WriteObject(psObject, true);
                 }
             });
         }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
             ParameterSetName = "FriendMethod",
-            Position = 1,
+            Position = 0,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
             ParameterSetName = "FriendMethod",
-            Position = 2,
+            Position = 1,
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
         [Alias("Name")]
@@ -110,11 +137,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
+            Position = 2,
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
             ParameterSetName = "FriendMethod",
-            Position = 3,
+            Position = 2,
             ValueFromPipelineByPropertyName = true)]
         public string InstanceId { get; set; }
 
