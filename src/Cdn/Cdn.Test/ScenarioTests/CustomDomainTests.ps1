@@ -162,15 +162,15 @@ Enable Https for custom domain with running endpoint
 function Test-CustomDomainEnableHttpsWithRunningEndpoint
 {
   # Hard-coding host and endpoint names due to requirement for DNS CNAME
-    $endpointName = "SslTestAkamaiEP"
-    $hostName = "ssltestakamai.dustydog.us"
+    $endpointName = "testVerizonEP"
+    $hostName = "testVerizon.dustydog.us"
 
     $customDomainName = getAssetName
 
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "Standard_Akamai"
+    $profileSku = "Standard_Verizon"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku -Tag $tags
 
@@ -198,6 +198,23 @@ function Test-CustomDomainEnableHttpsWithRunningEndpoint
     $customDomain = Get-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
     Assert-AreEqual $customDomain.CustomHttpsProvisioningState "Enabling"
+
+    Assert-ThrowsContains { $customDomain | Enable-AzCdnCustomDomainHttps } "BadRequest"
+
+    Assert-ThrowsContains {  $customDomain | Disable-AzCdnCustomDomainHttps } "BadRequest"
+
+    [int]$counter = 0
+    do {
+           SleepInRecordMode 600
+           $customDomain = Get-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    } while ($customDomain.CustomHttpsProvisioningState -ne "Enabled" -and $counter++ -lt 50)
+
+    $disabled = $customDomain | Disable-AzCdnCustomDomainHttps -PassThru
+    Assert-True{$disabled}
+
+    $customDomain = Get-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+    Assert-AreEqual $customDomain.CustomHttpsProvisioningState "Disabling"
 
     Assert-ThrowsContains { $customDomain | Enable-AzCdnCustomDomainHttps } "BadRequest"
 
