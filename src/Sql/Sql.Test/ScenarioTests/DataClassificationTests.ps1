@@ -16,7 +16,7 @@
 .SYNOPSIS
 Gets the values of the parameters used at the tests
 #>
-function Get-SqlDataClassificationManagedInstanceTestEnvironmentParameters ($testSuffix)
+function Get-ManagedDataClassificationTestEnvironmentParameters ($testSuffix)
 {
 	return @{ rgname = "sql-dc-cmdlet-test-rg" +$testSuffix;
 			  serverName = "sql-dc-cmdlet-server" +$testSuffix;
@@ -28,7 +28,7 @@ function Get-SqlDataClassificationManagedInstanceTestEnvironmentParameters ($tes
 .SYNOPSIS
 Creates the test environment needed to perform the tests
 #>
-function Create-DataClassificationManagedInstanceTestEnvironment ($testSuffix, $location = "West Central US")
+function Create-ManagedDataClassificationTestEnvironment ($testSuffix, $location = "West Central US")
 {
 	$params = Get-SqlDataClassificationManagedInstanceTestEnvironmentParameters $testSuffix
 	Create-BasicManagedTestEnvironmentWithParams $params $location
@@ -38,7 +38,7 @@ function Create-DataClassificationManagedInstanceTestEnvironment ($testSuffix, $
 .SYNOPSIS
 Removes the test environment that was needed to perform the tests
 #>
-function Remove-DataClassificationManagedInstanceTestEnvironment ($testSuffix)
+function Remove-ManagedDataClassificationTestEnvironment ($testSuffix)
 {
 	$params = Get-SqlDataClassificationManagedInstanceTestEnvironmentParameters $testSuffix
 	Remove-AzureRmResourceGroup -Name $params.rgname -Force
