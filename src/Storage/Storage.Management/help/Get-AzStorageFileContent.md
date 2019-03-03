@@ -122,10 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
-If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
-If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
+Specifies an Azure Storage context. To obtain a context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
