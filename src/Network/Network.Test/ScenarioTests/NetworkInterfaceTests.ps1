@@ -679,6 +679,23 @@ function Test-NetworkInterfaceIpv6
         Assert-Null $nic.IpConfigurations[1].Subnet
         Assert-AreEqual $nic.IpConfigurations[1].PrivateIpAddressVersion IPv6
 
+		# Update Ipconfig
+		$nic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname | Update-AzNetworkInterfaceIpConfig -Name $nic.IpConfigurations[0].Name -PrivateIpAddress "10.0.1.11" | Set-AzNetworkInterface
+		Assert-AreEqual 2 @($nic.IpConfigurations).Count
+
+		Assert-AreEqual $expectedNic.IpConfigurations[0].Name $nic.IpConfigurations[0].Name
+        Assert-NotNull $nic.IpConfigurations[0].PublicIpAddress
+        Assert-AreEqual $vnet.Subnets[0].Id $nic.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $nic.IpConfigurations[0].PrivateIpAddress
+		Assert-AreEqual 10.0.1.11 $nic.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual "Static" $nic.IpConfigurations[0].PrivateIpAllocationMethod
+		Assert-AreEqual $nic.IpConfigurations[0].PrivateIpAddressVersion IPv4
+
+		Assert-AreEqual $ipconfigName $nic.IpConfigurations[1].Name
+        Assert-Null $nic.IpConfigurations[1].PublicIpAddress
+        Assert-Null $nic.IpConfigurations[1].Subnet
+        Assert-AreEqual $nic.IpConfigurations[1].PrivateIpAddressVersion IPv6
+
 		# Set Ipconfig
 		$nic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname | Set-AzNetworkInterfaceIpConfig -Name $nic.IpConfigurations[0].Name -Subnet $vnet.Subnets[1] -PrivateIpAddress "10.0.2.10" | Set-AzNetworkInterface
 		Assert-AreEqual 2 @($nic.IpConfigurations).Count
@@ -687,6 +704,7 @@ function Test-NetworkInterfaceIpv6
         Assert-Null $nic.IpConfigurations[0].PublicIpAddress
         Assert-AreEqual $vnet.Subnets[1].Id $nic.IpConfigurations[0].Subnet.Id
         Assert-NotNull $nic.IpConfigurations[0].PrivateIpAddress
+		Assert-AreEqual 10.0.2.10 $nic.IpConfigurations[0].PrivateIpAddress
         Assert-AreEqual "Static" $nic.IpConfigurations[0].PrivateIpAllocationMethod
 		Assert-AreEqual $nic.IpConfigurations[0].PrivateIpAddressVersion IPv4
 
