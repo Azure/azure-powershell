@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
 
             if (zoneToUpdate.Name != null)
             {
-                TrimTrailingDotInZoneName(zoneToUpdate.Name);
+                zoneToUpdate.Name = TrimTrailingDotInZoneName(zoneToUpdate.Name);
             }
 
             ConfirmAction(
