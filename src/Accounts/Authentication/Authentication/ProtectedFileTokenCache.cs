@@ -74,12 +74,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             get
             {
-                return UserCache.Serialize();
+                return UserCache.SerializeMsalV3();
             }
 
             set
             {
-                UserCache.Deserialize(value);
+                UserCache.DeserializeMsalV3(value);
             }
         }
 
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                             _store.DeleteFile(cacheFileName);
                         }
 #else
-                        args.TokenCache.Deserialize(existingData);
+                        args.TokenCache.DeserializeMsalV3(existingData);
 #endif
                     }
                 }
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #if !NETSTANDARD
             var dataToWrite = ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser);
 #else
-            var dataToWrite = UserCache.Serialize();
+            var dataToWrite = UserCache.SerializeMsalV3();
 #endif
 
             lock(fileLock)
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #else
                         try
                         {
-                            UserCache.Deserialize(existingData);
+                            UserCache.DeserializeMsalV3(existingData);
                         }
                         catch (Exception ex)
                         {
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #if !NETSTANDARD
                 var dataToWrite = ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser);
 #else
-                var dataToWrite = UserCache.Serialize();
+                var dataToWrite = UserCache.SerializeMsalV3();
 #endif
                 _store.WriteFile(cacheFileName, dataToWrite);
             }

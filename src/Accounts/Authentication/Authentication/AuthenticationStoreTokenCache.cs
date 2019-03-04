@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             get
             {
-               return UserCache.Serialize();
+               return UserCache.SerializeMsalV3();
             }
 
             set
             {
-                UserCache.Deserialize(value);
+                UserCache.DeserializeMsalV3(value);
             }
         }
 
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 throw new ArgumentNullException("Cache");
             }
 
-            CacheData = cache.Serialize();
+            CacheData = cache.SerializeMsalV3();
             UserCache.SetAfterAccess(HandleAfterAccess);
         }
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             if (args.HasStateChanged)
             {
-                _store.CacheData = args.TokenCache.Serialize();
+                _store.CacheData = args.TokenCache.SerializeMsalV3();
             }
         }
 
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 var cache = Interlocked.Exchange(ref _store, null);
                 if (cache != null)
                 {
-                    cache.CacheData = UserCache.Serialize();
+                    cache.CacheData = UserCache.SerializeMsalV3();
                 }
             }
         }

@@ -13,11 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using System.Security;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Identity.Client;
+using Microsoft.Identity.Client.AppConfig;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -30,11 +32,25 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
             var upParameters = parameters as UsernamePasswordParameters;
             var scopes = new string[] { string.Format(AuthenticationHelpers.UserImpersonationScope, upParameters.Environment.ActiveDirectoryServiceEndpointResourceId) };
-            var publicClient = new PublicClientApplication(
-                AuthenticationHelpers.PowerShellClientId,
-                AuthenticationHelpers.GetAuthority(upParameters.Environment, upParameters.TenantId),
-                upParameters.TokenCache.GetUserCache() as TokenCache);
-            var response = publicClient.AcquireTokenByUsernamePasswordAsync(scopes, upParameters.UserId, upParameters.Password);
+            var publicClient = PublicClientApplicationBuilder.Create(AuthenticationHelpers.PowerShellClientId)
+                        .WithAuthority(AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId))
+                        .Build();
+
+            var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".Azure", "TokenCache.dat");
+            publicClient.UserTokenCache.SetAfterAccess(notificationArgs =>
+            {
+                if (notificationArgs.HasStateChanged)
+                {
+                    AzureSession.Instance.DataStore.WriteFile(filePath, notificationArgs.TokenCache.SerializeMsalV3());
+                }
+            });
+            publicClient.UserTokenCache.SetBeforeAccess(notificationArgs =>
+            {
+                notificationArgs.TokenCache.DeserializeMsalV3(AzureSession.Instance.DataStore.ReadFileAsBytes(filePath));
+            });
+
+            var response = publicClient.AcquireTokenByUsernamePassword(scopes, upParameters.UserId, upParameters.Password)
+                                       .ExecuteAsync();
             return AuthenticationResultToken.GetAccessTokenAsync(response);
         }
 

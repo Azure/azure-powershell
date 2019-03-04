@@ -13,14 +13,21 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public class InteractiveParameters : AuthenticationParameters
     {
+        public Action<string> PromptAction { get; set; }
+
         public InteractiveParameters(
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
-            string tenantId) : base(environment, tokenCache, tenantId) { }
+            string tenantId,
+            Action<string> promptAction) : base(environment, tokenCache, tenantId)
+        {
+            PromptAction = promptAction;
+        }
     }
 }

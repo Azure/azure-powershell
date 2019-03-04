@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #else
             public AdalSession()
             {
-                Logger.DefaultLoggingEnabled = false;
+
             }
 
             public override TraceLevel AuthenticationLegacyTraceLevel

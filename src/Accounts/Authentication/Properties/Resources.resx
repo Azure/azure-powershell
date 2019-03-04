@@ -226,7 +226,7 @@
     <value>[Common.Authentication]: Acquiring token using AdalConfiguration with Domain: '{0}', AdEndpoint: '{1}', ClientId: '{2}', ClientRedirectUri: {3}</value>
   </data>
   <data name="UPNAcquireTokenContextTrace" xml:space="preserve">
-    <value>[Common.Authentication]: Acquiring token using context with Authority '{0}', CorrelationId: '{1}', ValidateAuthority: '{2}'</value>
+    <value>[Common.Authentication]: Acquiring token using context with Authority '{0}', ClientId: '{1}'</value>
   </data>
   <data name="UPNExpiredTokenTrace" xml:space="preserve">
     <value>[Common.Authentication]: Token is expired</value>

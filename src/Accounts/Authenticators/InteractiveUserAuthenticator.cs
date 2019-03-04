@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 string.Empty,
                 AuthenticationHelpers.GetPromptBehavior(ShowDialog.Always),
                 AuthenticationHelpers.EnableEbdMagicCookie,
-                new UIParent(new ConsoleParentWindow()));
+                null); // new UIParent(new ConsoleParentWindow()));
             return AuthenticationResultToken.GetAccessToken(response);
         }
 

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 {
     internal static class AuthenticationHelpers
     {
-        internal const string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2",
+        internal const string PowerShellClientId = "04b07795-8ddb-461a-bbee-02f9e1bf7b46",
             PowerShellRedirectUri = "urn:ietf:wg:oauth:2.0:oob",
             EnableEbdMagicCookie = "site_id=501358&display=popup",
             UserImpersonationScope = "{0}/user_impersonation",
@@ -40,16 +40,16 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         /// </summary>
         /// <param name="showDialog"></param>
         /// <returns></returns>
-        internal static UIBehavior GetPromptBehavior(string showDialog)
+        internal static Prompt GetPromptBehavior(string showDialog)
         {
             switch (showDialog)
             {
                 case ShowDialog.Always:
-                    return UIBehavior.ForceLogin;
+                    return Prompt.ForceLogin;
                 case ShowDialog.Never:
-                    return UIBehavior.Never;
+                    return Prompt.NoPrompt;
                 default:
-                    return UIBehavior.SelectAccount;
+                    return Prompt.SelectAccount;
             }
         }
 

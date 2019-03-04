@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                         return new SilentParameters(environment, tokenCache, tenant, account.Id);
                     }
 
-                    return new InteractiveParameters(environment, tokenCache, tenant);
+                    return new InteractiveParameters(environment, tokenCache, tenant, promptAction);
                 }
 
                 return new UsernamePasswordParameters(environment, tokenCache, tenant, account.Id, password);
