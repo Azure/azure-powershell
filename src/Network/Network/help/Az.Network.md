@@ -1250,5 +1250,5 @@ Updates a VPN connection.
 Updates a scalable VPN gateway.
 
 ### [Update-AzVpnSite](Update-AzVpnSite.md)
-Updates a VPN site.
+Updates a VpnSite representing a customer branch to an intended goal state.
 
