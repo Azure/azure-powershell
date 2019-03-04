@@ -127,13 +127,13 @@ function Test-ExpressRouteCircuitStageCRUD
       $list = Get-AzExpressRouteCircuit -ResourceGroupName $rgname
       Assert-AreEqual 0 @($list).Count
 
-	  $list = Get-AzExpressRouteCircuit -ResourceGroupName "*"
+      $list = Get-AzExpressRouteCircuit -ResourceGroupName "*"
       Assert-AreEqual 0 @($list).Count
 
-	  $list = Get-AzExpressRouteCircuit -Name "*"
+      $list = Get-AzExpressRouteCircuit -Name "*"
       Assert-AreEqual 0 @($list).Count
 
-	  $list = Get-AzExpressRouteCircuit -ResourceGroupName "*" -Name "*"
+      $list = Get-AzExpressRouteCircuit -ResourceGroupName "*" -Name "*"
       Assert-AreEqual 0 @($list).Count
       
     }

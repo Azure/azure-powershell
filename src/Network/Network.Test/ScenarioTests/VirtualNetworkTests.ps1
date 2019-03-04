@@ -68,13 +68,13 @@ function Test-VirtualNetworkCRUD
         $listAll = Get-AzvirtualNetwork
         Assert-NotNull $listAll
 
-		$listAll = Get-AzvirtualNetwork -ResourceGroupName "*"
+        $listAll = Get-AzvirtualNetwork -ResourceGroupName "*"
         Assert-NotNull $listAll
 
-		$listAll = Get-AzvirtualNetwork -Name "*"
+        $listAll = Get-AzvirtualNetwork -Name "*"
         Assert-NotNull $listAll
 
-		$listAll = Get-AzvirtualNetwork -ResourceGroupName "*" -Name "*"
+        $listAll = Get-AzvirtualNetwork -ResourceGroupName "*" -Name "*"
         Assert-NotNull $listAll
 
         # Test virtual network private ip address - available - TestByResource
@@ -542,7 +542,7 @@ function Test-VirtualNetworkPeeringCRUD
         Assert-Null $listPeer[0].RemoteGateways
         Assert-Null $listPeer[0].$peer.RemoteVirtualNetworkAddressSpace
 
-		# List Peer
+        # List Peer
         $listPeer = Get-AzVirtualNetworkPeering -Name "*" -VirtualNetworkName $vnet1Name -ResourceGroupName $rgname
         
         Assert-AreEqual 1 @($listPeer).Count
@@ -942,13 +942,13 @@ function Test-VirtualNetworkSubnetServiceEndpointPolicies
         $getserviceEndpointPolicyListAll = Get-AzServiceEndpointPolicy;
         Assert-NotNull $getserviceEndpointPolicyListAll;
 
-		$getserviceEndpointPolicyListAll = Get-AzServiceEndpointPolicy -ResourceGroupName "*"
+        $getserviceEndpointPolicyListAll = Get-AzServiceEndpointPolicy -ResourceGroupName "*"
         Assert-NotNull $getserviceEndpointPolicyListAll;
 
-		$getserviceEndpointPolicyListAll = Get-AzServiceEndpointPolicy -Name "*"
+        $getserviceEndpointPolicyListAll = Get-AzServiceEndpointPolicy -Name "*"
         Assert-NotNull $getserviceEndpointPolicyListAll;
 
-		$getserviceEndpointPolicyListAll = Get-AzServiceEndpointPolicy -ResourceGroupName "*" -Name "*"
+        $getserviceEndpointPolicyListAll = Get-AzServiceEndpointPolicy -ResourceGroupName "*" -Name "*"
         Assert-NotNull $getserviceEndpointPolicyListAll;
 
         $getserviceEndpointPolicy = Get-AzServiceEndpointPolicy -ResourceId $serviceEndpointPolicy.Id;

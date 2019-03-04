@@ -74,14 +74,14 @@ function Test-NetworkWatcherCRUD
 		
         Assert-AreEqual 1 @($listNWByRg).Count
 
-		$listNW = Get-AzNetworkWatcher -ResourceGroupName "*"
-		Assert-True { $listNW.Count -ge 0 }
+        $listNW = Get-AzNetworkWatcher -ResourceGroupName "*"
+        Assert-True { $listNW.Count -ge 0 }
 
-		$listNW = Get-AzNetworkWatcher -Name "*"
-		Assert-True { $listNW.Count -ge 0 }
+        $listNW = Get-AzNetworkWatcher -Name "*"
+        Assert-True { $listNW.Count -ge 0 }
 
-		$listNW = Get-AzNetworkWatcher -ResourceGroupName "*" -Name "*"
-		Assert-True { $listNW.Count -ge 0 }
+        $listNW = Get-AzNetworkWatcher -ResourceGroupName "*" -Name "*"
+        Assert-True { $listNW.Count -ge 0 }
 		
         # Delete Network Watcher
         $job = Remove-AzNetworkWatcher -ResourceGroupName $rgname -name $nwName -AsJob

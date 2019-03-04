@@ -92,13 +92,13 @@ function Test-LoadBalancerCRUD-Public
         Assert-AreEqual $expectedLb.Probes[0].Etag $list[0].Probes[0].Etag
         Assert-AreEqual $expectedLb.LoadBalancingRules[0].Etag $list[0].LoadBalancingRules[0].Etag
 
-		$list = Get-AzLoadBalancer -ResourceGroupName "*"
+        $list = Get-AzLoadBalancer -ResourceGroupName "*"
         Assert-True { @($list).Count -ge 0 }
 
-		$list = Get-AzLoadBalancer -Name "*"
+        $list = Get-AzLoadBalancer -Name "*"
         Assert-True { @($list).Count -ge 0 }
 
-		$list = Get-AzLoadBalancer -ResourceGroupName "*" -Name "*"
+        $list = Get-AzLoadBalancer -ResourceGroupName "*" -Name "*"
         Assert-True { @($list).Count -ge 0 }
 
         # Delete

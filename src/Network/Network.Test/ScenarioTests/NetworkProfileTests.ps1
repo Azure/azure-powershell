@@ -66,13 +66,13 @@ function Test-NetworkProfileCRUDMinimalParameters
         $vNetworkProfilesAll = Get-AzureRmNetworkProfile;
         Assert-NotNull $vNetworkProfilesAll;
 
-		$vNetworkProfilesAll = Get-AzureRmNetworkProfile -ResourceGroupName "*";
+        $vNetworkProfilesAll = Get-AzureRmNetworkProfile -ResourceGroupName "*";
         Assert-NotNull $vNetworkProfilesAll;
 
-		$vNetworkProfilesAll = Get-AzureRmNetworkProfile -Name "*"
+        $vNetworkProfilesAll = Get-AzureRmNetworkProfile -Name "*"
         Assert-NotNull $vNetworkProfilesAll;
 
-		$vNetworkProfilesAll = Get-AzureRmNetworkProfile -ResourceGroupName "*" -Name "*"
+        $vNetworkProfilesAll = Get-AzureRmNetworkProfile -ResourceGroupName "*" -Name "*"
         Assert-NotNull $vNetworkProfilesAll;
 
         # Remove NetworkProfile

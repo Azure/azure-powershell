@@ -144,10 +144,10 @@ function Test-AzureFirewallCRUD
         $listAll = Get-AzureRmFirewall -Name "*"
         Assert-NotNull $listAll
 
-		$listAll = Get-AzureRmFirewall -ResourceGroupName "*"
+        $listAll = Get-AzureRmFirewall -ResourceGroupName "*"
         Assert-NotNull $listAll
 
-		$listAll = Get-AzureRmFirewall -ResourceGroupName "*" -Name "*"
+        $listAll = Get-AzureRmFirewall -ResourceGroupName "*" -Name "*"
         Assert-NotNull $listAll
 
         # Create Application Rules
