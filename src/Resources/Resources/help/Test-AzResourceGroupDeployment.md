@@ -102,6 +102,15 @@ The **Test-AzResourceGroupDeployment** cmdlet determines whether an Azure resour
 
 ## EXAMPLES
 
+### Example 1: Test deployment with a custom template object and parameter file
+```
+PS C:\> $TemplateFileText = [System.IO.File]::ReadAllText("D:\Azure\Templates\EngineeringSite.json")
+PS C:\> $TemplateObject = ConvertFrom-Json $TemplateFileText -AsHashtable
+PS C:\> Test-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\EngSiteParams.json"
+```
+
+This command tests a deployment in the given resource group using the an in-memory hashtable created from the given template file and a parameter file.
+
 ## PARAMETERS
 
 ### -ApiVersion
