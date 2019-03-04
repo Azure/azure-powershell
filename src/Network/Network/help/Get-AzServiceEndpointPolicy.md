@@ -43,6 +43,13 @@ $policyList = Get-AzServiceEndpointPolicy -ResourceGroupName "ResourceGroup01"
 
 This command gets a list of all the service endpoint policies in the resource group named ResourceGroup01 and stores it in the $policyList variable.
 
+### Example 3
+```
+$policyList = Get-AzServiceEndpointPolicy -ResourceGroupName "ServiceEndpointPolicy*"
+```
+
+This command gets a list of all the service endpoint policies that start with "ServiceEndpointPolicy".
+
 ## PARAMETERS
 
 ### -DefaultProfile

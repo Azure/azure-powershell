@@ -53,7 +53,7 @@ In this example we create a packet capture named "PacketCaptureTest" with multip
 We then call Get-AzNetworkWatcherPacketCapture to retrieve the status of the capture session. 
 Note: The Azure Network Watcher extension must be installed on the target virtual machine to create packet captures.
 
-### Example 1: Create a Packet Capture with multiple filters and retrieve its status
+### Example 2: Create a Packet Capture with multiple filters and retrieve its status
 ```
 Get-AzNetworkWatcherPacketCapture -ResourceGroupName rg1 -NetworkWatcherName nw1 -PacketCaptureName PacketCapture*
 ```

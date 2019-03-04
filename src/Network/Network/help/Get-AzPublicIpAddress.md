@@ -46,10 +46,65 @@ The **Get-AzPublicIPAddress** cmdlet gets one or more public IP addresses in a r
 
 ### 1: Get a public IP resource
 ```
-$publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+Get-AzPublicIpAddress -Name myPublicIp1 -ResourceGroupName myRg
+
+Name                     : myPublicIp1
+ResourceGroupName        : myRg
+Location                 : westus2
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRg/providers/Microsoft
+                           .Network/publicIPAddresses/myPublicIp1
+Etag                     : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid             : 00000000-0000-0000-0000-000000000000
+ProvisioningState        : Succeeded
+Tags                     :
+PublicIpAllocationMethod : Dynamic
+IpAddress                : Not Assigned
+PublicIpAddressVersion   : IPv4
+IdleTimeoutInMinutes     : 4
+IpConfiguration          : {
+                             "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRg/providers/
+                           Microsoft.Network/networkInterfaces/ps-azure-env407/ipConfigurations/ipconfig1"
+                           }
+DnsSettings              : null
+Zones                    : {}
+Sku                      : {
+                             "Name": "Basic"
+                           }
+IpTags                   : []
 ```
 
-This command gets a public IP address resource with name $publicIPName in the resource group $rgName.
+This command gets a public IP address resource with name myPublicIp in the resource group myRg.
+
+### 2: Get public IP resources using filtering
+```
+Get-AzPublicIpAddress -Name myPublicIp*
+
+Name                     : myPublicIp1
+ResourceGroupName        : myRg
+Location                 : westus2
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRg/providers/Microsoft
+                           .Network/publicIPAddresses/myPublicIp1
+Etag                     : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid             : 00000000-0000-0000-0000-000000000000
+ProvisioningState        : Succeeded
+Tags                     :
+PublicIpAllocationMethod : Dynamic
+IpAddress                : Not Assigned
+PublicIpAddressVersion   : IPv4
+IdleTimeoutInMinutes     : 4
+IpConfiguration          : {
+                             "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRg/providers/
+                           Microsoft.Network/networkInterfaces/ps-azure-env407/ipConfigurations/ipconfig1"
+                           }
+DnsSettings              : null
+Zones                    : {}
+Sku                      : {
+                             "Name": "Basic"
+                           }
+IpTags                   : []
+```
+
+This command gets all public IP address resources whose name starts with myPublicIp.
 
 ## PARAMETERS
 
