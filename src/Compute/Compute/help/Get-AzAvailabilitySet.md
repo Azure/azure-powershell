@@ -27,6 +27,22 @@ You can specify the name of a specific availability set to get.
 ### Example 1: Get a specific availability set
 ```
 PS C:\> Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03"
+
+ResourceGroupName         : ResourceGroup11
+Id                        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup11/providers/
+                            Microsoft.Compute/availabilitySets/AvailabilitySet03
+Name                      : AvailabilitySet03
+Type                      : Microsoft.Compute/availabilitySets
+Location                  : eastus
+Managed                   : False
+Sku                       : Classic
+Tags                      : {
+                              "a": "b"
+                            }
+PlatformFaultDomainCount  : 3
+PlatformUpdateDomainCount : 2
+Statuses                  : []
+VirtualMachinesReferences : []
 ```
 
 This command gets the availability set named AvailablitySet03 in the resource group named ResourceGroup11.
@@ -34,9 +50,138 @@ This command gets the availability set named AvailablitySet03 in the resource gr
 ### Example 2: Get all availability sets
 ```
 PS C:\> Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11"
+
+ResourceGroupName         : ResourceGroup11
+Id                        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup11/providers/
+                            Microsoft.Compute/availabilitySets/AvailabilitySet02
+Name                      : AvailabilitySet02
+Type                      : Microsoft.Compute/availabilitySets
+Location                  : eastus
+Managed                   : False
+Sku                       : Classic
+Tags                      : {
+                              "a": "b"
+                            }
+PlatformFaultDomainCount  : 3
+PlatformUpdateDomainCount : 2
+Statuses                  : []
+VirtualMachinesReferences : []
+
+
+ResourceGroupName         : ResourceGroup11
+Id                        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup11/providers/
+                            Microsoft.Compute/availabilitySets/AvailabilitySet03
+Name                      : AvailabilitySet03
+Type                      : Microsoft.Compute/availabilitySets
+Location                  : eastus
+Managed                   : False
+Sku                       : Classic
+Tags                      : {
+                              "a": "b"
+                            }
+PlatformFaultDomainCount  : 3
+PlatformUpdateDomainCount : 2
+Statuses                  : []
+VirtualMachinesReferences : []
+
+ResourceGroupName         : ResourceGroup11
+Id                        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup11/providers/
+                            Microsoft.Compute/availabilitySets/AvailabilitySet10
+Name                      : AvailabilitySet10
+Type                      : Microsoft.Compute/availabilitySets
+Location                  : eastus
+Managed                   : False
+Sku                       : Classic
+Tags                      : {
+                              "a": "b"
+                            }
+PlatformFaultDomainCount  : 3
+PlatformUpdateDomainCount : 2
+Statuses                  : []
+VirtualMachinesReferences : []
 ```
 
 This command gets all the availability sets in the resource group named ResourceGroup11.
+
+### Example 3: Get all availability sets with filtering
+```
+PS C:\> Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup1*" -Name "AvailabilitySet0*"
+
+ResourceGroupName         : ResourceGroup11
+Id                        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup11/providers/
+                            Microsoft.Compute/availabilitySets/AvailabilitySet02
+Name                      : AvailabilitySet02
+Type                      : Microsoft.Compute/availabilitySets
+Location                  : eastus
+Managed                   : False
+Sku                       : Classic
+Tags                      : {
+                              "a": "b"
+                            }
+PlatformFaultDomainCount  : 3
+PlatformUpdateDomainCount : 2
+Statuses                  : []
+VirtualMachinesReferences : []
+
+
+ResourceGroupName         : ResourceGroup11
+Id                        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup11/providers/
+                            Microsoft.Compute/availabilitySets/AvailabilitySet03
+Name                      : AvailabilitySet03
+Type                      : Microsoft.Compute/availabilitySets
+Location                  : eastus
+Managed                   : False
+Sku                       : Classic
+Tags                      : {
+                              "a": "b"
+                            }
+PlatformFaultDomainCount  : 3
+PlatformUpdateDomainCount : 2
+Statuses                  : []
+VirtualMachinesReferences : []
+```
+
+This command gets all the availability sets in the resource group named ResourceGroup11 that start with "AvailabilitySet0".
+
+### Example 4: Get all availability sets with name starting with AvailabilitySet0
+```
+PS C:\> Get-AzAvailabilitySet -Name AvailabilitySet0*
+
+ResourceGroupName         : ResourceGroup11
+Id                        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup11/providers/
+                            Microsoft.Compute/availabilitySets/AvailabilitySet02
+Name                      : AvailabilitySet02
+Type                      : Microsoft.Compute/availabilitySets
+Location                  : eastus
+Managed                   : False
+Sku                       : Classic
+Tags                      : {
+                              "a": "b"
+                            }
+PlatformFaultDomainCount  : 3
+PlatformUpdateDomainCount : 2
+Statuses                  : []
+VirtualMachinesReferences : []
+
+
+ResourceGroupName         : ResourceGroup12
+Id                        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup12/providers/
+                            Microsoft.Compute/availabilitySets/AvailabilitySet03
+Name                      : AvailabilitySet03
+Type                      : Microsoft.Compute/availabilitySets
+Location                  : eastus
+Managed                   : False
+Sku                       : Classic
+Tags                      : {
+                              "a": "b"
+                            }
+PlatformFaultDomainCount  : 3
+PlatformUpdateDomainCount : 2
+Statuses                  : []
+VirtualMachinesReferences : []
+```
+
+This command gets all the availability sets that start with "AvailabilitySet0".
 
 ## PARAMETERS
 

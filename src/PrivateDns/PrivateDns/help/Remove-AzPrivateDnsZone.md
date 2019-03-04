@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Used for passing the deleted private zone further down the pipeline.
+Used for passing the result (boolean) of the operation delete private zone further down the pipeline.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -204,11 +204,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.Boolean
-
-## NOTES
-Due to the potentially high impact of deleting a DNS zone, by default, this cmdlet prompts for confirmation if the $ConfirmPreference Windows PowerShell variable has any value other than None.
-If you specify *Confirm* or *Confirm:$True*, this cmdlet prompts you for confirmation before it runs.
-If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation. 
 
 ## RELATED LINKS
 

@@ -40,11 +40,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
 
         public override void ExecuteCmdlet()
         {
-            if (this.Name.EndsWith("."))
-            {
-                this.Name = this.Name.TrimEnd('.');
-                this.WriteWarning($"Modifying Private DNS zone name to remove terminating '.'.  Zone name used is \"{this.Name}\".");
-            }
+            this.Name = TrimTrailingDotInZoneName(this.Name);
 
             ConfirmAction(
                 ProjectResources.Progress_CreatingNewZone,
