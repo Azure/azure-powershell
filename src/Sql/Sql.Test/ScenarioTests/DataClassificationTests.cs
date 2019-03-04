@@ -8,17 +8,15 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class DataClassificationTests : SqlTestsBase
     {
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient);
-        }
-
         public DataClassificationTests(ITestOutputHelper output) : base(output)
         {
         }
 
-
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDataClassificationOnSqlDatabase()
+        {
+            RunPowerShellTest("Test-DataClassificationOnSqlDatabase");
+        }
     }
 }
