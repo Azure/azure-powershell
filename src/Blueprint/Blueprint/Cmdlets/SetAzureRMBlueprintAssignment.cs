@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                             Blueprint.Id,
                             Lock,
                             Parameter,
-                            ResourceGroup);
+                            ResourceGroupParameter);
 
                         foreach (var subscription in subscriptionsList)
                         {
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                             Blueprint.Id,
                             Lock,
                             Parameter,
-                            ResourceGroup);
+                            ResourceGroupParameter);
 
                         foreach (var subscription in subscriptionsList)
                         {
