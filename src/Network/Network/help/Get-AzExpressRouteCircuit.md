@@ -124,7 +124,7 @@ AllowClassicOperations           : False
 GatewayManagerEtag               :
 ```
 
-Get a specific ExpressRoute circuit with Name "testrg" and ResourceGroupName "test"
+Get all ExpressRoute circuits whose name starts with "test".
 
 ## PARAMETERS
 
