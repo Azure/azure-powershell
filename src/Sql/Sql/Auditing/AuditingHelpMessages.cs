@@ -10,6 +10,8 @@
 
         public const string DatabaseInputObjectHelpMessage = "The database object to manage its audit policy.";
 
+        public const string ServerInputObjectHelpMessage = "The server object to manage its audit policy.";
+
         public const string StateHelpMessage = "The state of the policy.";
 
         public const string AuditStorageAccountNameHelpMessage = "The name of the storage account.";
@@ -22,7 +24,7 @@
 
         public const string PredicateExpressionHelpMessage = "The T-SQL predicate (WHERE clause) used to filter audit logs.";
 
-        public const string EventHubNameHelpMessage = "The name of the event hub. If none is specified when providing EventHubAuthorizationRuleId, the default event hub will be selected.";
+        public const string EventHubNameHelpMessage = "The name of the event hub. If none is specified when providing EventHubAuthorizationRuleResourceId, the default event hub will be selected.";
 
         public const string EventHubAuthorizationRuleIdHelpMessage = "The resource Id for the event hub authorization rule";
 

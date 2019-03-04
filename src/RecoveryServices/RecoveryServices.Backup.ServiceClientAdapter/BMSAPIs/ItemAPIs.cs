@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="protectedItemName">Name of the item</param>
         /// <param name="request">Protected item create or update request</param>
         /// <returns>Job created in the service for this operation</returns>
-        public RestAzureNS.AzureOperationResponse CreateOrUpdateProtectedItem(
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> CreateOrUpdateProtectedItem(
             string containerName,
             string protectedItemName,
             ProtectedItemResource request,
@@ -180,7 +180,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <summary>
         /// Creates a new protection intent or updates an already existing protection intent
         /// </summary>
-        /// <param name="containerName">Name of the container which this item belongs to</param>
         /// <param name="protectedItemName">Name of the item</param>
         /// <param name="request">Protected item create or update request</param>
         /// <returns>Job created in the service for this operation</returns>
@@ -197,6 +196,53 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                  protectedItemName,
                  request,
                  cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
+        }
+
+        /// <summary>
+        /// Deletes a protection intent
+        /// </summary>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="request">Protected item create or update request</param>
+        /// <returns>Job created in the service for this operation</returns>
+        public RestAzureNS.AzureOperationResponse DeleteProtectionIntent(
+            string protectedItemName,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            return BmsAdapter.Client.ProtectionIntent.DeleteWithHttpMessagesAsync(
+                 vaultName ?? BmsAdapter.GetResourceName(),
+                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                 AzureFabricName,
+                 protectedItemName,
+                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
+        }
+
+        /// <summary>
+        /// List protection intents
+        /// </summary>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="request">Protected item create or update request</param>
+        /// <returns>Job created in the service for this operation</returns>
+        public List<ProtectionIntentResource> ListProtectionIntent(
+            ODataQuery<ProtectionIntentQueryObject> queryFilter,
+            string skipToken = default(string),
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            Func<RestAzureNS.IPage<ProtectionIntentResource>> listAsync =
+                () => BmsAdapter.Client.BackupProtectionIntent.ListWithHttpMessagesAsync(
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    queryFilter,
+                    skipToken,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            Func<string, RestAzureNS.IPage<ProtectionIntentResource>> listNextAsync =
+                nextLink => BmsAdapter.Client.BackupProtectionIntent.ListNextWithHttpMessagesAsync(
+                    nextLink,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            return HelperUtils.GetPagedList(listAsync, listNextAsync);
         }
     }
 }

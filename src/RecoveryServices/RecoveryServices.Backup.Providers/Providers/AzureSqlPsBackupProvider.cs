@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ServiceClientAdapter = serviceClientAdapter;
         }
 
-        public RestAzureNS.AzureOperationResponse EnableProtection()
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableProtection()
         {
             throw new NotImplementedException();
         }
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Triggers the disable protection operation for the given item
         /// </summary>
         /// <returns>The job response returned from the service</returns>
-        public RestAzureNS.AzureOperationResponse DisableProtection()
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> DisableProtection()
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];

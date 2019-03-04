@@ -48,5 +48,48 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public const string NoAgreementTypeParameterWarningMessage = "By default, you are using the X12 agreement type. Please provide a value for AgreementType if you would like to specify the agreement type. Possible values are X12 and Edifact.";
 
         public const string DeprecatedContentTypeMessage = "ContentType is being deprecated without being replaced. It will be inferred from MapType";
+
+        #region Help Messages
+
+        #region General
+
+        public const string ResourceGroupHelpMessage = "The resource group name.";
+        public const string IntegrationAccountNameHelpMessage = "The integration account name.";
+        public const string IntegrationAccountObjectHelpMessage = "An integration account object.";
+        public const string IntegrationAccountResourceIdHelpMessage = "The integration account resource id.";
+
+        #endregion
+
+        #region Assemblies
+
+        public const string AssemblyResourceIdHelpMessage = "The integration account assembly resource id.";
+        public const string AssemblyInputObjectHelpMessage = "An integration account assembly.";
+        public const string AssemblyMetadataHelpMessage = "The integration account assembly metadata.";
+        public const string AssemblyContentLinkHelpMessage = "A publicly accessible link to the integration account assembly data.";
+        public const string AssemblyFileDataHelpMessage = "The integration account assembly byte data.";
+        public const string AssemblyNameHelpMessage = "The integration account assembly name.";
+        public const string AssemblyFilePathHelpMessage = "The integration account assembly file path.";
+
+        #endregion
+
+        #region Batch Configurations
+
+        public const string BatchConfigurationResourceIdHelpMessage = "The integration account batch configuration resource id.";
+        public const string BatchConfigurationInputObjectHelpMessage = "An integration account batch configuration.";
+        public const string BatchConfigurationMetadataHelpMessage = "The integration account batch configuration metadata.";
+        public const string BatchConfigurationScheduleStartTimeHelpMessage = "The integration account batch configuration schedule start time.";
+        public const string BatchConfigurationScheduleTimeZoneHelpMessage = "The integration account batch configuration schedule time zone.";
+        public const string BatchConfigurationScheduleFrequencyHelpMessage = "The integration account batch configuration schedule frequency.";
+        public const string BatchConfigurationScheduleIntervalHelpMessage = "The integration account batch configuration schedule interval.";
+        public const string BatchConfigurationBatchSizeHelpMessage = "The integration account batch configuration batch size.";
+        public const string BatchConfigurationMessageCountHelpMessage = "The integration account batch configuration message count.";
+        public const string BatchConfigurationBatchGroupNameHelpMessage = "The integration account batch configuration group name.";
+        public const string BatchConfigurationDefinitionHelpMessage = "The integration account batch configuration definition.";
+        public const string BatchConfigurationFilePathHelpMessage = "The integration account batch configuration file path.";
+        public const string BatchConfigurationNameHelpMessage = "The integration account batch configuration name.";
+
+        #endregion
+
+        #endregion
     }
 }

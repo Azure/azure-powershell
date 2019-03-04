@@ -14,15 +14,21 @@ Get protectable items from a container.
 
 ### NoFilterParamSet (Default)
 ```
-Get-AzRecoveryServicesBackupProtectableItem [-Container] <ContainerBase> [-WorkloadType] <WorkloadType>
+Get-AzRecoveryServicesBackupProtectableItem [[-Container] <ContainerBase>] [-WorkloadType] <WorkloadType>
  [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FilterParamSet
 ```
-Get-AzRecoveryServicesBackupProtectableItem [-Container] <ContainerBase> [-WorkloadType] <WorkloadType>
+Get-AzRecoveryServicesBackupProtectableItem [[-Container] <ContainerBase>] [-WorkloadType] <WorkloadType>
  [[-ItemType] <ProtectableItemType>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
+```
+
+### IdParamSet
+```
+Get-AzRecoveryServicesBackupProtectableItem [-ParentID] <String> [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +40,7 @@ A container that is registered to an Azure Recovery Services vault can have one 
 ### Example 1
 ```
 PS C:\>$Container = Get-AzRecoveryServicesBackupContainer -ContainerType MSSQL -Status Registered
-PS C:\> $Item = Get-AzRecoveryServicesProtectableItem -Container $Container -ItemType “SQLDatabase” -VaultId $vault.ID
+PS C:\> $Item = Get-AzRecoveryServicesProtectableItem -Container $Container -ItemType "SQLDatabase" -VaultId $vault.ID
 ```
 
 The first command gets the container of type MSSQL, and then stores it in the $Container variable.
@@ -47,10 +53,10 @@ Container where the item resides
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
-Parameter Sets: (All)
+Parameter Sets: NoFilterParamSet, FilterParamSet
 Aliases:
 
-Required: True
+Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -88,6 +94,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ParentID
+Parent ID
+
+```yaml
+Type: System.String
+Parameter Sets: IdParamSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VaultId
 ARM ID of the Recovery Services Vault.
 
@@ -108,7 +129,7 @@ Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
-Parameter Sets: (All)
+Parameter Sets: NoFilterParamSet, FilterParamSet
 Aliases:
 Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
 

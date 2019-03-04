@@ -135,7 +135,7 @@ PS C:\>Set-AzSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup0
 PS C:\>Set-AzSqlServerAuditing -State Disabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -LogAnalytics
 ```
 
-### Example 9: Disable, through pipeline, the log analytics auditing policy of an Azure SQL server
+### Example 10: Disable, through pipeline, the log analytics auditing policy of an Azure SQL server
 ```
 PS C:\>Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Set-AzSqlServerAuditing -LogAnalytics -State Disabled
 ```
@@ -163,7 +163,6 @@ The recommended set of action groups to use is the following combination - this 
 "BATCH_COMPLETED_GROUP",  
 "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",  
 "FAILED_DATABASE_AUTHENTICATION_GROUP"  
-
 This above combination is also the set that is configured by default. These groups cover all SQL statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs.
 For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.
 
@@ -256,7 +255,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The server object
+The server object to manage its audit policy.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
@@ -377,9 +376,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountName
-The name of the storage account. Wildcard characters are not permitted.  
-This parameter is not required.  
-If you do not specify this parameter, the cmdlet uses the storage account that was defined previously as part of the auditing policy.
+The name of the storage account.
 
 ```yaml
 Type: System.String
@@ -406,7 +403,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountSubscriptionId
-Specifies storage account subscription id
+The storage account subscription id
 
 ```yaml
 Type: System.Guid

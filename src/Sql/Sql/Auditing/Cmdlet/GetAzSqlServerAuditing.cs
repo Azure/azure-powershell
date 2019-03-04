@@ -13,17 +13,32 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
+    [CmdletOutputBreakingChange(
+        typeof(DatabaseBlobAuditingSettingsModel),
+        ReplacementCmdletOutputTypeName = "Microsoft.Azure.Commands.Sql.Auditing.Model.ServerAuditingSettingsModel")]
     [Cmdlet(
         VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ServerAuditingCmdletsSuffix,
+        DefaultParameterSetName = DefinitionsCommon.BlobStorageParameterSetName,
         SupportsShouldProcess = true),
         OutputType(typeof(ServerBlobAuditingSettingsModel))]
     public class GetAzSqlServerAuditing : SqlServerAuditingSettingsCmdletBase
     {
+        protected override ServerBlobAuditingSettingsModel GetEntity()
+        {
+            TraceWarningIfParameterAreUsed(
+                $"{VerbsCommon.Get}-{ResourceManager.Common.AzureRMConstants.AzureRMPrefix}{DefinitionsCommon.ServerAuditingCmdletsSuffix}",
+                DefinitionsCommon.WhatIfParameterName,
+                DefinitionsCommon.ConfirmParameterName);
+
+            return base.GetEntity();
+        }
+
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
@@ -31,6 +46,25 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         protected override ServerBlobAuditingSettingsModel PersistChanges(ServerBlobAuditingSettingsModel model)
         {
             return null;
+        }
+
+        private void TraceWarningIfParameterAreUsed(string cmdletName, params string[] parametersNames)
+        {
+            bool wasHeaderWritten = false;
+            foreach (string parameterName in parametersNames)
+            {
+                if (MyInvocation.BoundParameters.ContainsKey(parameterName))
+                {
+                    if (!wasHeaderWritten)
+                    {
+                        WriteWarning($"Breaking changes in the cmdlet '{cmdletName}' :");
+                        wasHeaderWritten = true;
+                    }
+
+                    WriteWarning($" - The parameter '{parameterName}' is changing");
+                    WriteWarning("   Change description: Parameter is being deprecated without being replaced");
+                }
+            }
         }
     }
 }

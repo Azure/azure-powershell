@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (string.IsNullOrEmpty(this.SchemaDefinition))
             {
-                this.SchemaDefinition = CmdletHelper.GetContentFromFile(this.TryResolvePath(this.SchemaFilePath));
+                this.SchemaDefinition = CmdletHelper.GetStringContentFromFile(this.TryResolvePath(this.SchemaFilePath));
             }
 
             this.WriteObject(

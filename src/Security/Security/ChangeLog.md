@@ -19,5 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 0.7.2
+* Add new cmdlets: Get-AzSecurityThreatProtection and Set-AzSecurityThreatProtection
+
 ## Version 0.7.0
 * Update Set-AzSecurityContact. Phone, AlertAdmin, NotifyOnAlert parameters are no longer mandatory

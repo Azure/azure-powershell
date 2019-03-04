@@ -14,6 +14,9 @@ This topic displays help topics for the Azure Recovery Services cmdlets.
 ### [Backup-AzRecoveryServicesBackupItem](Backup-AzRecoveryServicesBackupItem.md)
 Starts a backup for a Backup item.
 
+### [Disable-AzRecoveryServicesBackupAutoProtection](Disable-AzRecoveryServicesBackupAutoProtection.md)
+Disables auto backup for a protectable item.
+
 ### [Disable-AzRecoveryServicesBackupProtection](Disable-AzRecoveryServicesBackupProtection.md)
 Disables protection for a Backup-protected item.
 
@@ -24,7 +27,7 @@ Dismounts all the files of the recovery point.
 Edits a Site Recovery plan.
 
 ### [Enable-AzRecoveryServicesBackupAutoProtection](Enable-AzRecoveryServicesBackupAutoProtection.md)
-Enables auto protectection for an item with a specified Backup protection policy.
+Enables auto backup for a protectable item with a specified Backup protection policy.
 
 ### [Enable-AzRecoveryServicesBackupProtection](Enable-AzRecoveryServicesBackupProtection.md)
 Enables backup for an item with a specified Backup protection policy.
