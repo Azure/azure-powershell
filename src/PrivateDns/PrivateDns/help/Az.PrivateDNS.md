@@ -47,12 +47,12 @@ Removes a virtual network link from a resource group.
 ### [Remove-AzPrivateDnsZone](Remove-AzPrivateDnsZone.md)
 Removes a private DNS zone from a resource group.
 
-### [Set-AzPrivateDnsRecordSet](Set-AzPrivateDnsRecordSet.md)
+### [Update-AzPrivateDnsRecordSet](Update-AzPrivateDnsRecordSet.md)
 Updates a record set in a Private DNS zone.
-
-### [Set-AzPrivateDnsZone](Set-AzPrivateDnsZone.md)
-Updates a Private DNS zone from a resource group.
 
 ### [Update-AzPrivateDnsVirtualNetworkLink](Update-AzPrivateDnsVirtualNetworkLink.md)
 Updates a virtual network link associated with a private zone and a resource group.
+
+### [Update-AzPrivateDnsZone](Update-AzPrivateDnsZone.md)
+Updates a Private DNS zone from a resource group.
 

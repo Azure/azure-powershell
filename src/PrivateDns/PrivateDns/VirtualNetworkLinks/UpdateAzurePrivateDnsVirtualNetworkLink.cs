@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
     /// <summary>
     /// Updates an existing zone.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsVirtualNetworkLink", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSetName), OutputType(typeof(PSPrivateDnsVirtualNetworkLink))]
-    public class SetAzurePrivateDnsVirtualNetworkLink : PrivateDnsBaseCmdlet
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsVirtualNetworkLink", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSetName), OutputType(typeof(PSPrivateDnsVirtualNetworkLink))]
+    public class UpdateAzurePrivateDnsVirtualNetworkLink : PrivateDnsBaseCmdlet
     {
         private const string FieldsParameterSetName = "Fields";
         private const string ObjectParameterSetName = "Object";
