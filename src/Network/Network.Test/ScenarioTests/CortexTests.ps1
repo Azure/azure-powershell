@@ -336,7 +336,7 @@ function Test-CortexExpressRouteCRUD
         Assert-NotNull $expressRouteGateways
         Assert-True { $expressRouteGateways.Count -gt 0 }
 
-        $expressRouteGateways = Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName
+		$expressRouteGateways = Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName
         Assert-NotNull $expressRouteGateways
         Assert-True { $expressRouteGateways.Count -gt 0 }
 

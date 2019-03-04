@@ -874,14 +874,14 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
         Assert-AreEqual "Succeeded" $list[0].ProvisioningState
         Assert-AreEqual $actualNic.Etag $list[0].Etag
 
-		$list = Get-AzNetworkInterface -ResourceGroupName "*" -Name "*"
-		Assert-True { $list.Count -ge 0 }
+        $list = Get-AzNetworkInterface -ResourceGroupName "*" -Name "*"
+        Assert-True { $list.Count -ge 0 }
 
-		$list = Get-AzNetworkInterface -Name "*"
-		Assert-True { $list.Count -ge 0 }
+        $list = Get-AzNetworkInterface -Name "*"
+        Assert-True { $list.Count -ge 0 }
 
-		$list = Get-AzNetworkInterface -ResourceGroupName "*"
-		Assert-True { $list.Count -ge 0 }
+        $list = Get-AzNetworkInterface -ResourceGroupName "*"
+        Assert-True { $list.Count -ge 0 }
 
         # Delete NetworkInterface
         $delete = Remove-AzNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
@@ -958,7 +958,7 @@ function Test-NetworkInterfaceTapConfigurationCRUD
         $tapConfigs = Get-AzNetworkInterfaceTapConfig -ResourceGroupName $rgname -NetworkInterfaceName $sourceNicName
         Assert-NotNull $tapConfigs
 
-		$tapConfigs = Get-AzNetworkInterfaceTapConfig -ResourceGroupName $rgname -NetworkInterfaceName $sourceNicName -Name "*"
+        $tapConfigs = Get-AzNetworkInterfaceTapConfig -ResourceGroupName $rgname -NetworkInterfaceName $sourceNicName -Name "*"
         Assert-NotNull $tapConfigs
 
         $tapConfig = Get-AzNetworkInterfaceTapConfig -ResourceId $tapConfig.Id
