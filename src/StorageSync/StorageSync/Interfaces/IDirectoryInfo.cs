@@ -16,10 +16,27 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
 {
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Interface IDirectoryInfo
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.INamedObjectInfo" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.INamedObjectInfo" />
     public interface IDirectoryInfo : INamedObjectInfo
     {
+        /// <summary>
+        /// Existses this instance.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         bool Exists();
+        /// <summary>
+        /// Enumerates the files.
+        /// </summary>
+        /// <returns>IEnumerable&lt;IFileInfo&gt;.</returns>
         IEnumerable<IFileInfo> EnumerateFiles();
+        /// <summary>
+        /// Enumerates the directories.
+        /// </summary>
+        /// <returns>IEnumerable&lt;IDirectoryInfo&gt;.</returns>
         IEnumerable<IDirectoryInfo> EnumerateDirectories();
     }   
 }

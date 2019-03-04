@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.PrivateDns.Models
 {
     using Microsoft.Azure.Commands.ResourceManager.Common;
+    using ProjectResources = Microsoft.Azure.Commands.PrivateDns.Properties.Resources;
 
     public abstract class PrivateDnsBaseCmdlet : AzureRMCmdlet
     {
@@ -25,6 +26,14 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
             get => _client ?? (_client = new PrivateDnsClient(DefaultContext));
 
             set => _client = value;
+        }
+
+        public string TrimTrailingDotInZoneName(string zoneName)
+        {
+            if (!zoneName.EndsWith(".")) return zoneName;
+
+            this.WriteWarning(string.Format(ProjectResources.Progress_ModifyingZoneNameTrimDot, zoneName));
+            return zoneName.TrimEnd('.');
         }
     }
 }
