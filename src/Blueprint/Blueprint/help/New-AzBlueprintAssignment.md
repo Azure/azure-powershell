@@ -29,8 +29,8 @@ Assign a blueprint definition to a subscription.
 PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -ResourceGroupParameter $rg -Parameter $params
 ```
 
-ResourceGroupParameter format: @{RG1=@{name='rg_name';location='location'}}
-Example: $rg = @{ResourceGroup1=@{name='storage_rg';location='eastus'}}
+ResourceGroupParameter format: @{ResourceGroup=@{name='<value>';location='<value>'}}
+Example: $rg = @{ResourceGroup=@{name='storage_rg';location='eastus'};ResourceGroup2=@{name='another_rg';location='eastus'}}
 
 Parameter format: @{P1='v1'; P2='v2'}
 Example: $param = @{audituseofclassicvirtualmachines_effect='Audit'}
