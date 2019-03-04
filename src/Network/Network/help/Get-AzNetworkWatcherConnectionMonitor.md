@@ -75,7 +75,7 @@ Tags                        : {
 
 In this example we get connection monitor by name in the specified location.
 
-### Example 2: Get connection monitor by name in the specified location
+### Example 2: Get connection monitors using filtering
 ```
 PS C:\> Get-AzNetworkWatcherConnectionMonitor -ResourceGroupName NetworkWatcherRG -NetworkWatcherName NetworkWatcher_centraluseuap -Name cm*
 

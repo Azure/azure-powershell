@@ -46,7 +46,7 @@ BgpSettings              : null
 
 Returns the object of the Local Network Gateway with the name "myLocalGW1" within the resource group "myRG"
 
-### 1: Get a Local Network Gateway
+### 2: Get Local Network Gateways using filtering
 ```
 Get-AzLocalNetworkGateway -Name myLocalGW* -ResourceGroupName myRG
 

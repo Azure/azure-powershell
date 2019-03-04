@@ -44,7 +44,7 @@ PS C:\> Get-AzExpressRoutePort -Name test*
 
 Gets all of the ExpressRoutePort objects whose name starts with "test".
 
-### Example 2
+### Example 3
 ```powershell
 PS C:\> Get-AzExpressRoutePort -ResourceId $id
 ```

@@ -75,7 +75,7 @@ Once the gateway has been created, it is connected to the VpnSite using the New-
 
 Then it gets the connection using the connection name.
 
-### Example 1
+### Example 2
 
 ```powershell
 PS C:\> Get-AzVpnConnection -ResourceGroupName ps9361 -ParentResourceName testvpngw -Name test*

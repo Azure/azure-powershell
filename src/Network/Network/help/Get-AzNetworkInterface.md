@@ -167,7 +167,7 @@ MacAddress                  :
 
 This command gets all network interfaces in the resource group named ResourceGroup1 that has a provisioning state of succeeded.
 
-### Example 1: Get network interfaces using filtering
+### Example 3: Get network interfaces using filtering
 ```
 PS C:\> Get-AzNetworkInterface -Name test*
 
