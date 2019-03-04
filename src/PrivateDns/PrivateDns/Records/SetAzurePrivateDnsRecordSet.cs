@@ -54,6 +54,6 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
                 WriteVerbose(ProjectResources.Success);
                 WriteObject(result);
             });
-            }
+        }
     }
-    }
+}

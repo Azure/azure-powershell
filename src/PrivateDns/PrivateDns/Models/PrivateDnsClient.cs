@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.PrivateDns.Utilities;
-
 namespace Microsoft.Azure.Commands.PrivateDns.Models
 {
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Management.Automation;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.PrivateDns.Utilities;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.PrivateDns;
     using Microsoft.Azure.Management.PrivateDns.Models;
@@ -325,7 +325,6 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
             Hashtable tags,
             PSPrivateDnsRecordBase[] resourceRecords)
         {
-
             var properties = new RecordSet
             {
                 Metadata = TagsConversionHelper.CreateTagDictionary(tags, validate: true),
@@ -391,7 +390,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
         {
             properties.AaaaRecords = recordType == RecordType.AAAA ? new List<Sdk.AaaaRecord>() : null;
             properties.ARecords = recordType == RecordType.A ? new List<Sdk.ARecord>() : null;
-            properties.CnameRecord = recordType == RecordType.CNAME ? new Sdk.CnameRecord(String.Empty) : null;
+            properties.CnameRecord = recordType == RecordType.CNAME ? new Sdk.CnameRecord(string.Empty) : null;
             properties.MxRecords = recordType == RecordType.MX ? new List<Sdk.MxRecord>() : null;
             properties.PtrRecords = recordType == RecordType.PTR ? new List<Sdk.PtrRecord>() : null;
             properties.SoaRecord = null;
@@ -401,6 +400,13 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
 
         public PSPrivateDnsRecordSet UpdatePrivateDnsRecordSet(PSPrivateDnsRecordSet recordSet, bool overwrite)
         {
+            var getRecordSet = GetPrivateDnsRecordSet(recordSet.Name, recordSet.ZoneName, recordSet.ResourceGroupName,
+                recordSet.RecordType);
+            if (getRecordSet.IsAutoRegistered == true)
+            {
+                throw new PSArgumentException(ProjectResources.Error_RecordSetIsAutoRegistered);
+            }
+
             var response = this.PrivateDnsManagementClient.RecordSets.CreateOrUpdate(
                 recordSet.ResourceGroupName,
                 recordSet.ZoneName,
