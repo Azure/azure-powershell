@@ -14,7 +14,7 @@ Creates a new custom rule for the application gateway firewall policy.
 
 ```
 New-AzApplicationGatewayFirewallCustomRule -Name <String> -Priority <Int32> -RuleType <String>
- -MatchConditions <PSApplicationGatewayFirewallCondition[]> -Action <String>
+ -MatchCondition <PSApplicationGatewayFirewallCondition[]> -Action <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ The command creates a new custom rule with name of example-rule, priority 1 and 
 Type of Actions.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Allow, Block, Log
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -63,11 +63,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MatchConditions
+### -MatchCondition
 List of match conditions.
 
 ```yaml
-Type: PSApplicationGatewayFirewallCondition[]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCondition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 The Name of the Rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +98,7 @@ Describes priority of the rule.
 Rules with a lower value will be evaluated before rules with a higher value.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Describes type of rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: MatchRule
@@ -126,8 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

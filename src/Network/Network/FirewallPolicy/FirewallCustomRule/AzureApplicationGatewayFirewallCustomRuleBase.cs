@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "List of match conditions.")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayFirewallCondition[] MatchConditions { get; set; }
+        public PSApplicationGatewayFirewallCondition[] MatchCondition { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 Priority = this.Priority,
                 RuleType = this.RuleType,
-                MatchConditions = this.MatchConditions?.ToList(),
+                MatchConditions = this.MatchCondition?.ToList(),
                 Action = this.Action
             };
         }

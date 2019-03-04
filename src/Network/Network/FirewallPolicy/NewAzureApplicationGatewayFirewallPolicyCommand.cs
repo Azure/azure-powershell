@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of CustomRules")]
-        public PSApplicationGatewayFirewallCustomRule[] CustomRules { get; set; }
+        public PSApplicationGatewayFirewallCustomRule[] CustomRule { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
             firewallPolicy.Name = this.Name;
             firewallPolicy.ResourceGroupName = this.ResourceGroupName;
             firewallPolicy.Location = this.Location;
-            firewallPolicy.CustomRules = this.CustomRules?.ToList();
+            firewallPolicy.CustomRules = this.CustomRule?.ToList();
 
             // Map to the sdk object
             var firewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.WebApplicationFirewallPolicy>(firewallPolicy);

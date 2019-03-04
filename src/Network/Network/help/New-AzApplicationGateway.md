@@ -30,6 +30,52 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
+ [-FirewallPolicyId <String>] [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
+ [-EnableHttp2] [-EnableFIPS] [-Zone <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String>] [-Force]
+ [-AsJob] [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByResourceId
+```
+New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <String>
+ -Sku <PSApplicationGatewaySku> [-SslPolicy <PSApplicationGatewaySslPolicy>]
+ -GatewayIPConfigurations <PSApplicationGatewayIPConfiguration[]>
+ [-SslCertificates <PSApplicationGatewaySslCertificate[]>]
+ [-AuthenticationCertificates <PSApplicationGatewayAuthenticationCertificate[]>]
+ [-TrustedRootCertificate <PSApplicationGatewayTrustedRootCertificate[]>]
+ [-FrontendIPConfigurations <PSApplicationGatewayFrontendIPConfiguration[]>]
+ -FrontendPorts <PSApplicationGatewayFrontendPort[]> [-Probes <PSApplicationGatewayProbe[]>]
+ -BackendAddressPools <PSApplicationGatewayBackendAddressPool[]>
+ -BackendHttpSettingsCollection <PSApplicationGatewayBackendHttpSettings[]>
+ -HttpListeners <PSApplicationGatewayHttpListener[]> [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ -RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>
+ [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
+ [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
+ [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
+ [-FirewallPolicyId <String>] [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
+ [-EnableHttp2] [-EnableFIPS] [-Zone <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String>] [-Force]
+ [-AsJob] [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByResource
+```
+New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <String>
+ -Sku <PSApplicationGatewaySku> [-SslPolicy <PSApplicationGatewaySslPolicy>]
+ -GatewayIPConfigurations <PSApplicationGatewayIPConfiguration[]>
+ [-SslCertificates <PSApplicationGatewaySslCertificate[]>]
+ [-AuthenticationCertificates <PSApplicationGatewayAuthenticationCertificate[]>]
+ [-TrustedRootCertificate <PSApplicationGatewayTrustedRootCertificate[]>]
+ [-FrontendIPConfigurations <PSApplicationGatewayFrontendIPConfiguration[]>]
+ -FrontendPorts <PSApplicationGatewayFrontendPort[]> [-Probes <PSApplicationGatewayProbe[]>]
+ -BackendAddressPools <PSApplicationGatewayBackendAddressPool[]>
+ -BackendHttpSettingsCollection <PSApplicationGatewayBackendHttpSettings[]>
+ -HttpListeners <PSApplicationGatewayHttpListener[]> [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ -RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>
+ [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
+ [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
+ [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-FirewallPolicy <PSApplicationGatewayWebApplicationFirewallPolicy>]
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
  [-Zone <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String>] [-Force] [-AsJob]
@@ -282,13 +328,28 @@ Firewall configuration
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallPolicy
-Parameter Sets: (All)
+Parameter Sets: SetByResource
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FirewallPolicyId
+FirewallPolicyId
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
