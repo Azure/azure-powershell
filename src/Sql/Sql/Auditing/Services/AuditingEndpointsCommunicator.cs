@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 }
             }
 
-            if (settings.Logs.FirstOrDefault(l => string.Equals(l.Category, DefinitionsCommon.SQLSecurityAuditCategory)) == null)
+            if (!settings.Logs.Any(l => string.Equals(l.Category, DefinitionsCommon.SQLSecurityAuditCategory)))
             {
                 settings.Logs.Add(new LogSettings(true, DefinitionsCommon.SQLSecurityAuditCategory));
             }
