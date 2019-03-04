@@ -19,7 +19,8 @@ Login-AutomationConnection %LOGIN-PARAMS%
 %TEST-LIST%
 Run-Test $testList %LOGIN-PARAMS%
 
+$azErrors = Resolve-AzError
+$azErrors
 Write-Verbose 'Resolve-AzError Information'
 Write-Verbose '--------------------------------'
-#Resolve-AzError | ConvertTo-Json | Write-Verbose
-Resolve-AzError | Write-Verbose
+$azErrors | ConvertTo-Json | Write-Verbose
