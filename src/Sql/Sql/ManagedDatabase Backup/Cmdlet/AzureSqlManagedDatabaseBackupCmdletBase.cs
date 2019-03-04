@@ -56,8 +56,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "The live or deleted database object to get/set the policy for.")]
         [ValidateNotNullOrEmpty]
-        [Alias("AzureSqlInstanceDatabase")]
-        public virtual AzureSqlManagedDatabaseBaseModel AzureInstanceDatabaseObject { get; set; }
+        [Alias("AzureSqlInstanceDatabase", "AzureInstanceDatabaseObject")]
+        public virtual AzureSqlManagedDatabaseBaseModel InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the Database object to get the policy for.
@@ -76,7 +76,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         [Parameter(
             ParameterSetName = PolicyByResourceServerDatabaseSet,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
@@ -110,7 +109,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = PolicyByResourceServerDatabaseSet,
             Mandatory = false,
-            Position = 3,
             HelpMessage = "The deletion date of the Azure SQL Instance Database to retrieve backups for, with millisecond precision (e.g. 2016-02-23T00:21:22.847Z)")]
         [ValidateNotNullOrEmpty]
         public virtual DateTime? DeletionDate { get; set; }
@@ -125,14 +123,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
 
         public override void ExecuteCmdlet()
         {
-            if (AzureInstanceDatabaseObject != null)
+            if (InputObject != null)
             {
-                this.ResourceGroupName = AzureInstanceDatabaseObject.ResourceGroupName;
-                this.InstanceName = AzureInstanceDatabaseObject.ManagedInstanceName;
-                this.DatabaseName = AzureInstanceDatabaseObject.Name;
-                if (AzureInstanceDatabaseObject is AzureSqlDeletedManagedDatabaseBackupModel)
+                this.ResourceGroupName = InputObject.ResourceGroupName;
+                this.InstanceName = InputObject.ManagedInstanceName;
+                this.DatabaseName = InputObject.Name;
+                if (InputObject is AzureSqlDeletedManagedDatabaseBackupModel)
                 {
-                    this.DeletionDate = ((AzureSqlDeletedManagedDatabaseBackupModel)AzureInstanceDatabaseObject).DeletionDate;
+                    this.DeletionDate = ((AzureSqlDeletedManagedDatabaseBackupModel)InputObject).DeletionDate;
                 }
             }
             else if (!string.IsNullOrEmpty(ResourceId))

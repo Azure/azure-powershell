@@ -370,7 +370,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 
-### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedRecoverableDatabaseModel
+### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlRecoverableManagedDatabaseModel
 
 ### System.String
 

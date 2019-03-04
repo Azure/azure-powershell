@@ -15,20 +15,19 @@ Sets a backup short term retention policy.
 ### PolicyByResourceInstanceDatabaseSet (Default)
 ```
 Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-ResourceGroupName] <String> [-InstanceName] <String>
- [-DatabaseName] <String> [[-DeletionDate] <DateTime>] [-RetentionDays] <Int32>
+ [-DatabaseName] <String> [-DeletionDate <DateTime>] [-RetentionDays] <Int32>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyByInputObjectSet
 ```
-Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy
- -AzureInstanceDatabaseObject <AzureSqlManagedDatabaseBaseModel> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-InputObject] <AzureSqlManagedDatabaseBaseModel>
+ [-RetentionDays] <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyByResourceIdSet
 ```
-Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceId <String>
+Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-ResourceId] <String> [-RetentionDays] <Int32>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -41,6 +40,11 @@ The policy is the retention period, in days, for point-in-time restore backups.
 ### Example 1
 ```powershell
 PS C:\> Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourcegroup01 -InstanceName server01 -DatabaseName database01 -RetentionDays 35
+ResourceGroupName : resourcegroup01
+InstanceName      : instance01
+DatabaseName      : database01
+DeletionDate      :
+RetentionDays     : 35
 ```
 
 This command sets the short term retention policy for database01 to 35 days.
@@ -48,26 +52,34 @@ This command sets the short term retention policy for database01 to 35 days.
 ### Example 2
 ```powershell
 PS C:\> Get-AzSqlDatabase -ResourceGroupName resourcegroup01 -InstanceName server01 -DatabaseName database01 | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 35
+ResourceGroupName : resourcegroup01
+InstanceName      : instance01
+DatabaseName      : database01
+DeletionDate      :
+RetentionDays     : 35
 ```
 
 This command sets the short term retention policy for database01 to 35 days via piping in a database object.
 
-## PARAMETERS
+### Example 3
+```powershell
+PS C:\> Set-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -InstanceName "ContosoServer" -DatabaseName "DB1" | Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 8
+ResourceGroupName : resourcegroup01
+InstanceName      : instance01
+DatabaseName      : database01
+DeletionDate      : 2019-03-03 12:00:17 AM
+RetentionDays     : 8
 
-### -AzureInstanceDatabaseObject
-The live or deleted database object to get/set the policy for.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseBaseModel
-Parameter Sets: PolicyByInputObjectSet
-Aliases: AzureSqlInstanceDatabase
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+ResourceGroupName : resourcegroup01
+InstanceName      : instance01
+DatabaseName      : database01
+DeletionDate      : 2019-03-02 11:00:16 PM
+RetentionDays     : 8
 ```
+
+This command sets the short term retention policy for all deleted databases named DB1 via piping in a deleted database object. Note you can only reduce retention period on deleted databases.
+
+## PARAMETERS
 
 ### -DatabaseName
 The name of the Azure SQL Instance Database to retrieve backups for.
@@ -108,9 +120,24 @@ Parameter Sets: PolicyByResourceInstanceDatabaseSet
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The live or deleted database object to get/set the policy for.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseBaseModel
+Parameter Sets: PolicyByInputObjectSet
+Aliases: AzureSqlInstanceDatabase, AzureInstanceDatabaseObject
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -140,7 +167,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -153,7 +180,7 @@ Parameter Sets: PolicyByResourceIdSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -164,11 +191,11 @@ Days of backup retention.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: PolicyByResourceInstanceDatabaseSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -210,9 +237,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
-
-### Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model.AzureSqlDeletedManagedDatabaseBackupModel
+### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseBaseModel
 
 ### System.String
 

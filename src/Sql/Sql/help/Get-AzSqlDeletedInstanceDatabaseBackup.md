@@ -14,8 +14,8 @@ Gets a deleted database that you can restore.
 
 ```
 Get-AzSqlDeletedInstanceDatabaseBackup [-ResourceGroupName] <String> [-InstanceName] <String>
- [[-DatabaseName] <String>] [[-DeletionDate] <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [[-DatabaseName] <String>] [[-DeletionDate] <DateTime>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,13 +27,61 @@ This cmdlet is also supported by the SQL Instance Stretch Database service on Az
 ### Example 1: Get all deleted database backups on a server
 ```powershell
 PS C:\>Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -InstanceName "ContosoServer"
+DeletionDate         : 2019-03-03 12:00:17 AM
+ResourceGroupName    : ContosoResourceGroup
+ManagedInstanceName  : ContosoServer
+Name                 : DB1
+CreationDate         : 2019-03-02 11:00:51 PM
+EarliestRestorePoint : 2019-03-02 11:05:30 PM
+Id                   : /subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ContosoResourceGroup/providers/Microsoft.
+                       Sql/managedInstances/ContosoServer/restorableDroppedDatabases/DB1,13196044
+                       8170400000
+
+DeletionDate         : 2019-03-02 11:00:16 PM
+ResourceGroupName    : ContosoResourceGroup
+ManagedInstanceName  : ContosoServer
+Name                 : DB1
+CreationDate         : 2019-03-02 10:00:51 PM
+EarliestRestorePoint : 2019-03-02 10:05:29 PM
+Id                   : /subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ContosoResourceGroup/providers/Microsoft.
+                       Sql/managedInstances/ContosoServer/restorableDroppedDatabases/DB1,13196041
+                       2168670000
+
+DeletionDate         : 2019-03-04 04:00:08 AM
+ResourceGroupName    : ContosoResourceGroup
+ManagedInstanceName  : ContosoServer
+Name                 : DB3
+CreationDate         : 2019-03-04 03:00:31 AM
+EarliestRestorePoint : 2019-03-04 03:05:23 AM
+Id                   : /subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ContosoResourceGroup/providers/Microsoft.
+                       Sql/managedInstances/ContosoServer/restorableDroppedDatabases/DB3,13196145
+                       6082100000
 ```
 
 This command gets all deleted database backups on a server.
 
 ### Example 2: Get a specified deleted database backup
 ```powershell
-PS C:\>Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -InstanceName "ContosoServer" -DatabaseName "ContosoDatabase"
+PS C:\>Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -InstanceName "ContosoServer" -DatabaseName "DB1"
+DeletionDate         : 2019-03-03 12:00:17 AM
+ResourceGroupName    : ContosoResourceGroup
+ManagedInstanceName  : ContosoServer
+Name                 : DB1
+CreationDate         : 2019-03-02 11:00:51 PM
+EarliestRestorePoint : 2019-03-02 11:05:30 PM
+Id                   : /subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ContosoResourceGroup/providers/Microsoft.
+                       Sql/managedInstances/ContosoServer/restorableDroppedDatabases/DB1,13196044
+                       8170400000
+
+DeletionDate         : 2019-03-02 11:00:16 PM
+ResourceGroupName    : ContosoResourceGroup
+ManagedInstanceName  : ContosoServer
+Name                 : DB1
+CreationDate         : 2019-03-02 10:00:51 PM
+EarliestRestorePoint : 2019-03-02 10:05:29 PM
+Id                   : /subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ContosoResourceGroup/providers/Microsoft.
+                       Sql/managedInstances/ContosoServer/restorableDroppedDatabases/DB1,13196041
+                       2168670000
 ```
 
 ## PARAMETERS
@@ -49,7 +97,7 @@ Aliases:
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -79,7 +127,7 @@ Aliases:
 Required: False
 Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -94,7 +142,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -109,37 +157,6 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -149,9 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### None
 
 ## OUTPUTS
 

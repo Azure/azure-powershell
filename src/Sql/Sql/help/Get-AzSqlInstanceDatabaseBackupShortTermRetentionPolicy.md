@@ -15,15 +15,14 @@ Gets a backup short term retention policy.
 ### PolicyByResourceInstanceDatabaseSet (Default)
 ```
 Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-ResourceGroupName] <String> [-InstanceName] <String>
- [-DatabaseName] <String> [[-DeletionDate] <DateTime>] [-DefaultProfile <IAzureContextContainer>]
+ [-DatabaseName] <String> [-DeletionDate <DateTime>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### PolicyByInputObjectSet
 ```
-Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy
- -AzureInstanceDatabaseObject <AzureSqlManagedDatabaseBaseModel> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -InputObject <AzureSqlManagedDatabaseBaseModel>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### PolicyByResourceIdSet
@@ -41,6 +40,11 @@ The policy is the retention period, in days, for point-in-time restore backups.
 ### Example 1
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourcegroup01 -InstanceName instance01 -DatabaseName database01
+ResourceGroupName : resourcegroup01
+InstanceName      : instance01
+DatabaseName      : database01
+DeletionDate      :
+RetentionDays     : 7
 ```
 
 This command gets the short term retention policy for database01.
@@ -48,26 +52,34 @@ This command gets the short term retention policy for database01.
 ### Example 2
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabase -ResourceGroupName resourcegroup01 -InstanceName instance01 -DatabaseName database01 | Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy
+ResourceGroupName : resourcegroup01
+InstanceName      : instance01
+DatabaseName      : database01
+DeletionDate      :
+RetentionDays     : 7
 ```
 
 This command gets the short term retention policy for database01 via piping in a database object.
 
-## PARAMETERS
+### Example 3
+```powershell
+PS C:\> Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -InstanceName "ContosoServer" -DatabaseName "DB1" | Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy
+ResourceGroupName : resourcegroup01
+InstanceName      : instance01
+DatabaseName      : database01
+DeletionDate      : 2019-03-03 12:00:17 AM
+RetentionDays     : 7
 
-### -AzureInstanceDatabaseObject
-The live or deleted database object to get/set the policy for.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseBaseModel
-Parameter Sets: PolicyByInputObjectSet
-Aliases: AzureSqlInstanceDatabase
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+ResourceGroupName : resourcegroup01
+InstanceName      : instance01
+DatabaseName      : database01
+DeletionDate      : 2019-03-02 11:00:16 PM
+RetentionDays     : 7
 ```
+
+This command gets the short term retention policy for all deleted databases named database01 via piping in a deleted database object.
+
+## PARAMETERS
 
 ### -DatabaseName
 The name of the Azure SQL Instance Database to retrieve backups for.
@@ -109,9 +121,24 @@ Parameter Sets: PolicyByResourceInstanceDatabaseSet
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The live or deleted database object to get/set the policy for.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseBaseModel
+Parameter Sets: PolicyByInputObjectSet
+Aliases: AzureSqlInstanceDatabase, AzureInstanceDatabaseObject
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -141,7 +168,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -165,9 +192,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
-
-### Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model.AzureSqlDeletedManagedDatabaseBackupModel
+### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseBaseModel
 
 ### System.String
 

@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDeletedInstanceDatabaseBackup", SupportsShouldProcess = true)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDeletedInstanceDatabaseBackup")]
     [OutputType(typeof(AzureSqlDeletedManagedDatabaseBackupModel))]
     public class GetAzureSqlDeletedManagedDatabaseBackup : AzureSqlDeletedManagedDatabaseBackupCmdletBase
     {

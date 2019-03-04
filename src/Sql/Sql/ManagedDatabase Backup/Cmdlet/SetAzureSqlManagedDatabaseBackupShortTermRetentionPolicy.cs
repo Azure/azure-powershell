@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             Position = 0,
             HelpMessage = "The live or deleted database object to get/set the policy for.")]
         [ValidateNotNullOrEmpty]
-        [Alias("AzureSqlInstanceDatabase")]
-        public override AzureSqlManagedDatabaseBaseModel AzureInstanceDatabaseObject { get; set; }
+        [Alias("AzureSqlInstanceDatabase", "AzureInstanceDatabaseObject")]
+        public override AzureSqlManagedDatabaseBaseModel InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the Database object to get the policy for.
@@ -62,7 +62,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(
             ParameterSetName = PolicyByResourceServerDatabaseSet,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
@@ -96,7 +95,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = PolicyByResourceServerDatabaseSet,
             Mandatory = false,
-            Position = 3,
             HelpMessage = "The deletion date of the Azure SQL Instance Database to retrieve backups for, with millisecond precision (e.g. 2016-02-23T00:21:22.847Z)")]
         [ValidateNotNullOrEmpty]
         public override DateTime? DeletionDate { get; set; }
@@ -105,7 +103,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets the Week of Year for the Yearly Retention.
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 4,
+            Position = 3,
             HelpMessage = "Days of backup retention.")]
         [ValidateNotNullOrEmpty]
         public int RetentionDays { get; set; }
