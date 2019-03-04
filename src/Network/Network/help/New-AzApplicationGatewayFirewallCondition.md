@@ -13,8 +13,8 @@ Creates a match condition for custom rule
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallCondition -MatchVariables <PSApplicationGatewayFirewallMatchVariable[]>
- -Operator <String> [-NegationCondition <Boolean>] -MatchValues <String[]> -Transforms <String[]>
+New-AzApplicationGatewayFirewallCondition -MatchVariable <PSApplicationGatewayFirewallMatchVariable[]>
+ -Operator <String> [-NegationCondition <Boolean>] -MatchValue <String[]> [-Transform <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ The command creates a new match condition using the match variable defined in th
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -47,11 +47,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MatchValues
+### -MatchValue
 Match value.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -62,11 +62,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MatchVariables
+### -MatchVariable
 List of match variables.
 
 ```yaml
-Type: PSApplicationGatewayFirewallMatchVariable[]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallMatchVariable[]
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 Describes if this is negate condition or not.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -96,9 +96,10 @@ Accept wildcard characters: False
 Describes operator to be matched.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: IPMatch, Equal, Contains, LessThan, GreaterThan, LessThanOrEqual, GreaterThanOrEqual, BeginsWith, EndsWith, Regex
 
 Required: True
 Position: Named
@@ -107,16 +108,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Transforms
+### -Transform
 List of transforms.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Lowercase, Trim, UrlDecode, UrlEncode, RemoveNulls, HtmlEntityDecode, RequestBody
+Accepted values: Lowercase, Trim, UrlDecode, UrlEncode, RemoveNulls, HtmlEntityDecode
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -124,8 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

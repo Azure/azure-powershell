@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "List of match variables.")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayFirewallMatchVariable[] MatchVariables { get; set; }
+        public PSApplicationGatewayFirewallMatchVariable[] MatchVariable { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -45,14 +45,14 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "Match value.")]
         [ValidateNotNullOrEmpty]
-        public string[] MatchValues { get; set; }
+        public string[] MatchValue { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "List of transforms.")]
         [ValidateSet("Lowercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls", "HtmlEntityDecode", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public string[] Transforms { get; set; }
+        public string[] Transform { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -63,11 +63,11 @@ namespace Microsoft.Azure.Commands.Network
         {
             return new PSApplicationGatewayFirewallCondition()
             {
-                MatchVariables = this.MatchVariables?.ToList(),
+                MatchVariables = this.MatchVariable?.ToList(),
                 OperatorProperty = this.Operator,
                 NegationConditon = this.NegationCondition,
-                MatchValues = this.MatchValues?.ToList(),
-                Transforms = this.Transforms?.ToList()
+                MatchValues = this.MatchValue?.ToList(),
+                Transforms = this.Transform?.ToList()
             };
         }
     }
