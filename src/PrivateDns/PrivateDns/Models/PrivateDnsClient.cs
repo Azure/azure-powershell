@@ -170,6 +170,128 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
                 Tags = TagsConversionHelper.CreateTagHashtable(zone.Tags),
                 NumberOfRecordSets = zone.NumberOfRecordSets,
                 MaxNumberOfRecordSets = zone.MaxNumberOfRecordSets,
+                NumberOfVirtualNetworkLinks = zone.NumberOfVirtualNetworkLinks,
+                MaxNumberOfVirtualNetworkLinks = zone.MaxNumberOfVirtualNetworkLinks,
+                NumberOfVirtualNetworkLinksWithRegistration = zone.NumberOfVirtualNetworkLinksWithRegistration,
+                MaxNumberOfVirtualNetworkLinksWithRegistration = zone.MaxNumberOfVirtualNetworkLinksWithRegistration,
+            };
+        }
+
+        public PSPrivateDnsVirtualNetworkLink CreatePrivateDnsLink(
+            string name,
+            string resourceGroupName,
+            string zoneName,
+            string virtualNetworkId,
+            bool isRegistrationEnabled,
+            Hashtable tags)
+        {
+            var response = this.PrivateDnsManagementClient.VirtualNetworkLinks.CreateOrUpdate(
+                resourceGroupName,
+                zoneName,
+                name,
+                new VirtualNetworkLink
+                {
+                    Location = DnsResourceLocation,
+                    Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true),
+                    VirtualNetwork = new SubResource()
+                    {
+                        Id = virtualNetworkId,
+                    },
+                    RegistrationEnabled = isRegistrationEnabled,
+
+                },
+                ifMatch: null,
+                ifNoneMatch: "*");
+
+            return ToPrivateDnsLink(response);
+        }
+
+        public PSPrivateDnsVirtualNetworkLink UpdatePrivateDnsLink(PSPrivateDnsVirtualNetworkLink link, bool overwrite)
+        {
+            var response = this.PrivateDnsManagementClient.VirtualNetworkLinks.CreateOrUpdate(
+                link.ResourceGroupName,
+                link.ZoneName,
+                link.Name,
+                new VirtualNetworkLink
+                {
+                    Location = DnsResourceLocation,
+                    Tags = TagsConversionHelper.CreateTagDictionary(link.Tags, validate: true),
+                    VirtualNetwork = new SubResource()
+                    {
+                        Id = link.VirtualNetworkId,
+                    },
+                    RegistrationEnabled = link.RegistrationEnabled,
+                },
+                ifMatch: overwrite ? null : link.Etag,
+                ifNoneMatch: null);
+
+            return ToPrivateDnsLink(response);
+        }
+
+        public void DeletePrivateDnsLink(
+            PSPrivateDnsVirtualNetworkLink link,
+            bool overwrite)
+        {
+            this.PrivateDnsManagementClient.VirtualNetworkLinks.Delete(
+                link.ResourceGroupName,
+                link.ZoneName,
+                link.Name,
+                ifMatch: overwrite ? "*" : link.Etag);
+        }
+
+        public PSPrivateDnsVirtualNetworkLink GetPrivateDnsLink(string name, string resourceGroupName, string zoneName)
+        {
+            return ToPrivateDnsLink(this.PrivateDnsManagementClient.VirtualNetworkLinks.Get(resourceGroupName, zoneName, name));
+        }
+
+        public List<PSPrivateDnsVirtualNetworkLink> ListPrivateDnsLinksInZone(string resourceGroupName, string zoneName)
+        {
+            var results = new List<PSPrivateDnsVirtualNetworkLink>();
+            IPage<VirtualNetworkLink> getResponse = null;
+            do
+            {
+                getResponse = getResponse?.NextPageLink != null ? this.PrivateDnsManagementClient.VirtualNetworkLinks.ListNext(getResponse.NextPageLink) : this.PrivateDnsManagementClient.VirtualNetworkLinks.List(resourceGroupName, zoneName);
+
+                results.AddRange(getResponse.Select(ToPrivateDnsLink));
+            } while (getResponse?.NextPageLink != null);
+
+            return results;
+        }
+
+        public PSPrivateDnsVirtualNetworkLink GetLinkHandleNonExistentLink(string zoneName, string resourceGroupName, string linkName)
+        {
+            PSPrivateDnsVirtualNetworkLink retrievedLink = null;
+            try
+            {
+                retrievedLink = this.GetPrivateDnsLink(linkName, resourceGroupName, zoneName);
+            }
+            catch (CloudException exception)
+            {
+                if (exception.Body.Code != "ResourceNotFound")
+                {
+                    throw;
+                }
+            }
+
+            return retrievedLink;
+        }
+
+        private static PSPrivateDnsVirtualNetworkLink ToPrivateDnsLink(VirtualNetworkLink link)
+        {
+            PrivateDnsUtils.ParseVirtualNetworkId(link.Id, out var resourceGroupName, out var zoneName, out var linkName);
+
+            return new PSPrivateDnsVirtualNetworkLink()
+            {
+                Name = link.Name,
+                ResourceId = link.Id,
+                ResourceGroupName = resourceGroupName,
+                ZoneName = zoneName,
+                Etag = link.Etag,
+                Tags = TagsConversionHelper.CreateTagHashtable(link.Tags),
+                VirtualNetworkId = link.VirtualNetwork.Id,
+                RegistrationEnabled = link.RegistrationEnabled != null && (bool)link.RegistrationEnabled,
+                ProvisioningState = link.ProvisioningState,
+                VirtualNetworkLinkState = link.VirtualNetworkLinkState,
             };
         }
     }
