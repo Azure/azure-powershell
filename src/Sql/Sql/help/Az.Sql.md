@@ -110,6 +110,12 @@ Retrieves the distinct restore points from which a SQL Data Warehouse can be res
 ### [Get-AzSqlDatabaseSecureConnectionPolicy](Get-AzSqlDatabaseSecureConnectionPolicy.md)
 Gets the secure connection policy for a database.
 
+### [Get-AzSqlDatabaseSensitivityClassification](Get-AzSqlDatabaseSensitivityClassification.md)
+Gets the sensitivity classification of a database, or a column in the database.
+
+### [Get-AzSqlDatabaseSensitivityRecommendations](Get-AzSqlDatabaseSensitivityRecommendations.md)
+Gets the sensitivity recommendations of a database.
+
 ### [Get-AzSqlDatabaseThreatDetectionPolicy](Get-AzSqlDatabaseThreatDetectionPolicy.md)
 Gets the threat detection policy for a database.
 
@@ -160,6 +166,12 @@ Gets Advanced Data Security policy of a managed instance.
 
 ### [Get-AzSqlInstanceDatabase](Get-AzSqlInstanceDatabase.md)
 Returns information about Azure SQL Managed Instance database.
+
+### [Get-AzSqlInstanceDatabaseSensitivityClassification](Get-AzSqlInstanceDatabaseSensitivityClassification.md)
+Gets the sensitivity classification of a managed database, or a column in the database.
+
+### [Get-AzSqlInstanceDatabaseSensitivityRecommendations](Get-AzSqlInstanceDatabaseSensitivityRecommendations.md)
+Gets the sensitivity recommendations of a managed database.
 
 ### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Gets the vulnerability assessment rule baseline.
@@ -323,6 +335,9 @@ Removes given restore point from a SQL Database.
 ### [Remove-AzSqlDatabaseSecondary](Remove-AzSqlDatabaseSecondary.md)
 Terminates data replication between a SQL Database and the specified secondary database.
 
+### [Remove-AzSqlDatabaseSensitivityClassification](Remove-AzSqlDatabaseSensitivityClassification.md)
+Removes the sensitivity classification of columns in the database.
+
 ### [Remove-AzSqlDatabaseThreatDetectionPolicy](Remove-AzSqlDatabaseThreatDetectionPolicy.md)
 Removes the threat detection policy from a database.
 
@@ -334,6 +349,9 @@ Removes an Azure SQL Managed Database Instance.
 
 ### [Remove-AzSqlInstanceDatabase](Remove-AzSqlInstanceDatabase.md)
 Removes an Azure SQL Managed Instance database.
+
+### [Remove-AzSqlInstanceDatabaseSensitivityClassification](Remove-AzSqlInstanceDatabaseSensitivityClassification.md)
+Removes the sensitivity classification of columns in the managed database.
 
 ### [Remove-AzSqlServer](Remove-AzSqlServer.md)
 Removes an Azure SQL Database server.
@@ -410,6 +428,9 @@ Updates the state of an Azure SQL Database recommended action.
 ### [Set-AzSqlDatabaseSecondary](Set-AzSqlDatabaseSecondary.md)
 Switches a secondary database to be primary in order to initiate failover.
 
+### [Set-AzSqlDatabaseSensitivityClassification](Set-AzSqlDatabaseSensitivityClassification.md)
+Sets the sensitivity classification of a database.
+
 ### [Set-AzSqlDatabaseThreatDetectionPolicy](Set-AzSqlDatabaseThreatDetectionPolicy.md)
 Sets a threat detection policy on a database.
 
@@ -430,6 +451,9 @@ Updates the state of an Azure SQL Elastic Pool recommended action.
 
 ### [Set-AzSqlInstance](Set-AzSqlInstance.md)
 Sets properties for an Azure SQL Database Managed Instance.
+
+### [Set-AzSqlInstanceDatabaseSensitivityClassification](Set-AzSqlInstanceDatabaseSensitivityClassification.md)
+Sets the sensitivity classification of a managed database.
 
 ### [Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
