@@ -1,6 +1,8 @@
 ﻿using Microsoft.Azure.Commands.Sql.DataClassification.Services;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Text;
 
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
                 }
                 else
                 {
-                    throw new Exception($"Information Type: {newInformationType} is not part of Information Protection Policy");
+                    throw new Exception($"Information Type '{newInformationType}' is not part of Information Protection Policy. Please add '{newInformationType}' to the Information Protection Policy, or use one of the following: {ToString(informationProtectionPolicy.SensitivityLabels.Keys)}");
                 }
             }
         }
@@ -98,9 +100,14 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
                 }
                 else
                 {
-                    throw new Exception($"Sensitivity Label: {newSensitivityLabel} is not part of Information Protection Policy");
+                    throw new Exception($"Sensitivity Label '{newSensitivityLabel}' is not part of Information Protection Policy. Please add '{newSensitivityLabel}' to the Information Protection Policy, or use one of the following: {ToString(informationProtectionPolicy.InformationTypes.Keys)}");
                 }
             }
+        }
+
+        private static string ToString(ICollection<string> collection)
+        {
+            return string.Join(", ", collection.Select(it => $"'{it}'"));
         }
     }
 }
