@@ -58,7 +58,6 @@ function Create-SmokeTestModule(
     foreach($folder in Get-TestFolders $srcPath $projectList) {
         $null = $files.AddRange(@(Filter-TestFiles $folder.Path))
         $commonFilePath = Join-Path $folder.Path $commonFileName
-        Write-Host "== commonFilePath: $commonFilePath"
         if(Test-Path $commonFilePath){
             # Copy the file and change the name of it, since we can't have multiple Common.ps1 files in the same module.
             $null = $files.Add((Copy-Item $commonFilePath "$archiveDir\$($folder.Name)$commonFileName" -PassThru -ErrorAction Stop))
