@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
     /// <summary>
     /// Gets Vm Guest Policy reports (GuestConfiguration policy reports)
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "VMGuestPolicyStatusHistory")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "VMGuestPolicyStatusHistory", DefaultParameterSetName = ParameterSetNames.InitiativeIdScope)]
     [OutputType(typeof(PolicyStatus))]
     public class GetAzVMGuestPolicyStatusHistory : GuestConfigurationCmdletBase
     {
