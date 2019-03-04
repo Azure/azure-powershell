@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
                 return newLabels;
             }
 
-            SortComparer comparer = new SortComparer();
+            IComparer<SensitivityLabelModel> comparer = new SortComparer();
             existingLabels.Sort(comparer);
             newLabels.Sort(comparer);
 
