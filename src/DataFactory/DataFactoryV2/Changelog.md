@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated ADF .Net SDK version to 3.0.1
 
 ## Version 1.0.1
 * Updated ADF .Net SDK version to 3.0.0

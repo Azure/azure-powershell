@@ -11,11 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.25.0-preview" />
+   <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.27.0-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
     <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.21.0-preview" />
   </ItemGroup>
-
+ 
   <ItemGroup>
     <ProjectReference Include="..\Sql.LegacySdk\Sql.LegacySdk.csproj" />
   </ItemGroup>
