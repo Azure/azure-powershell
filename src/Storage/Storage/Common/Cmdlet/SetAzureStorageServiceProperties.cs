@@ -20,6 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     using StorageClient = WindowsAzure.Storage.Shared.Protocol;
     using XTable = Microsoft.Azure.Cosmos.Table;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 
     /// <summary>
     /// Modify Azure Storage service properties
@@ -71,14 +72,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 }
                 else //Table use old XSCL
                 {
-                    XTable.ServiceProperties serviceProperties = Channel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
+                    StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
+                    XTable.ServiceProperties serviceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
 
                     if (!string.IsNullOrEmpty(DefaultServiceVersion))
                     {
                         serviceProperties.DefaultServiceVersion = this.DefaultServiceVersion;
                     }
 
-                    Channel.SetStorageTableServiceProperties(serviceProperties,
+                    tableChannel.SetStorageTableServiceProperties(serviceProperties,
                         GetTableRequestOptions(), TableOperationContext);
 
                     if (PassThru)

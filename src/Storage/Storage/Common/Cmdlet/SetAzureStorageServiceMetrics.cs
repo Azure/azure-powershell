@@ -20,6 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 
     /// <summary>
     /// Show azure storage service properties
@@ -213,7 +214,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             }
             else //Table use old XSCL
             {
-                XTable.ServiceProperties currentServiceProperties = Channel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
+                StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
+                XTable.ServiceProperties currentServiceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
 
                 // Premium Account not support classic metrics and logging
                 if ((MetricsType == ServiceMetricsType.Hour && currentServiceProperties.HourMetrics == null)
@@ -245,7 +247,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                         break;
                 }
 
-                Channel.SetStorageTableServiceProperties(serviceProperties,
+                tableChannel.SetStorageTableServiceProperties(serviceProperties,
                     GetTableRequestOptions(), TableOperationContext);
 
                 if (PassThru)

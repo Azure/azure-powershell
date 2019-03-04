@@ -521,48 +521,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             }
         }
 
-
-
-        /// <summary>
-        /// Get the Table service properties
-        /// </summary>
-        /// <param name="account">Cloud storage account</param>
-        /// <param name="options">Request options</param>
-        /// <param name="operationContext">Operation context</param>
-        /// <returns>The service properties of the specified service type</returns>
-        public XTable.ServiceProperties GetStorageTableServiceProperties(XTable.TableRequestOptions options, XTable.OperationContext operationContext)
-        {
-            XTable.CloudStorageAccount account = StorageContext.TableStorageAccount;
-            try
-            {
-                return account.CreateCloudTableClient().GetServicePropertiesAsync(options, operationContext).Result;
-            }
-            catch (AggregateException e) when (e.InnerException is XTable.StorageException)
-            {
-                throw e.InnerException;
-            }
-        }
-
-        /// <summary>
-        /// Set Table service properties
-        /// </summary>
-        /// <param name="account">Cloud storage account</param>
-        /// <param name="properties">Service properties</param>
-        /// <param name="options">Request options</param>
-        /// <param name="operationContext">Operation context</param>
-        public void SetStorageTableServiceProperties(XTable.ServiceProperties properties, XTable.TableRequestOptions options, XTable.OperationContext operationContext)
-        {
-            XTable.CloudStorageAccount account = StorageContext.TableStorageAccount;
-            try
-            {
-                Task.Run(() => account.CreateCloudTableClient().SetServicePropertiesAsync(properties, options, operationContext)).Wait();
-            }
-            catch (AggregateException e) when (e.InnerException is XTable.StorageException)
-            {
-                throw e.InnerException;
-            }
-        }
-
         /// <summary>
         /// Get the SAS token for an account.
         /// </summary>

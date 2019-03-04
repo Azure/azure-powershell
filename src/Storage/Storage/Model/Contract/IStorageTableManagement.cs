@@ -103,5 +103,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">context</param>
         /// <returns></returns>
         Task SetTablePermissionsAsync(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions = null, XTable.OperationContext operationContext = null);
+
+        /// <summary>
+        /// Get the Table service properties
+        /// </summary>
+        /// <param name="account">Cloud storage account</param>
+        /// <param name="options">Request options</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <returns>The service properties of the specified service type</returns>
+        XTable.ServiceProperties GetStorageTableServiceProperties(XTable.TableRequestOptions options, XTable.OperationContext operationContext);
+
+        /// <summary>
+        /// Set Table service properties
+        /// </summary>
+        /// <param name="account">Cloud storage account</param>
+        /// <param name="properties">Service properties</param>
+        /// <param name="options">Request options</param>
+        /// <param name="operationContext">Operation context</param>
+        void SetStorageTableServiceProperties(XTable.ServiceProperties properties, XTable.TableRequestOptions options, XTable.OperationContext operationContext);
     }
 }

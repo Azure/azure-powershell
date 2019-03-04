@@ -19,6 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 
     /// <summary>
     /// Show Azure Storage service properties
@@ -52,7 +53,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             }
             else //Table use old XSCL
             {
-                XTable.ServiceProperties serviceProperties = Channel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
+                StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
+                XTable.ServiceProperties serviceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
                 WriteObject(new PSSeriviceProperties(serviceProperties));
             }
         }
