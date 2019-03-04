@@ -61,5 +61,27 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
         ///Gets or sets the max number of records for this zone
         /// </summary>
         public long? MaxNumberOfRecordSets { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of records for this zone
+        /// </summary>
+        public long? NumberOfVirtualNetworkLinks { get; set; }
+
+        /// <summary>
+        ///Gets or sets the max number of records for this zone
+        /// </summary>
+        public long? MaxNumberOfVirtualNetworkLinks { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of records for this zone
+        /// </summary>
+        public long? NumberOfVirtualNetworkLinksWithRegistration { get; set; }
+
+        /// <summary>
+        ///Gets or sets the max number of records for this zone
+        /// </summary>
+        public long? MaxNumberOfVirtualNetworkLinksWithRegistration { get; set; }
+
+
     }
 }

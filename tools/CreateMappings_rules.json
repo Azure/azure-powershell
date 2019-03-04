@@ -143,5 +143,7 @@
     { "regex": "Search", "alias": "Search" },
     { "regex": "Security", "alias": "Security" },
     { "regex": "Kusto", "alias": "Kusto" },
-    { "regex": "Advisor", "alias": "Advisor" }
+    { "regex": "Advisor", "alias": "Advisor" },
+    { "regex": "MixedReality", "group": "Mixed Reality", "alias": "Mixed Reality" },
+    { "regex": "SpatialAnchors", "group": "Mixed Reality", "alias": "Mixed Reality" }
 ]

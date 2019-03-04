@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
         [Alias("PrivateDnsRecords")]
         [Parameter(Mandatory = false, HelpMessage = "The private dns records that are part of this record set.")]
         [ValidateNotNull]
-        public PrivateDnsRecordBase[] PrivateDnsRecord { get; set; }
+        public PSPrivateDnsRecordBase[] PrivateDnsRecord { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not fail if the record set already exists.")]
         public SwitchParameter Overwrite { get; set; }
@@ -105,11 +105,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
                 this.WriteWarning(string.Format(ProjectResources.Error_RecordSetNameEndsWithZoneName, this.Name, zoneName));
             }
 
-            if (zoneName != null && zoneName.EndsWith("."))
-            {
-                zoneName = zoneName.TrimEnd('.');
-                this.WriteWarning($"Modifying zone name to remove terminating '.'.  Zone name used is \"{zoneName}\".");
-            }
+            zoneName = TrimTrailingDotInZoneName(zoneName);
 
             if (this.PrivateDnsRecord == null)
             {

@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
         /// <summary>
         /// Gets or sets the list of records in this record set.
         /// </summary>
-        public List<PrivateDnsRecordBase> Records { get; set; }
+        public List<PSPrivateDnsRecordBase> Records { get; set; }
 
         /// <summary>
         /// Gets or sets the tags of this record set.
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
         /// <summary>
         /// Gets or sets the provisioning state of the record set
         /// </summary>
-        public string ProvisioningState { get; set; }
+        public bool? IsAutoRegistered { get; set; }
 
         /// <summary>
         /// Returns a deep copy of this record set
@@ -85,18 +85,18 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
             var clone = new PSPrivateDnsRecordSet
             {
                 Name = this.Name,
-                ProvisioningState = this.ProvisioningState,
                 Id = this.Id,
                 ZoneName = this.ZoneName,
                 ResourceGroupName = this.ResourceGroupName,
                 Ttl = this.Ttl,
                 Etag = this.Etag,
-                RecordType = this.RecordType
+                RecordType = this.RecordType,
+                IsAutoRegistered = this.IsAutoRegistered
             };
 
             if (this.Records != null)
             {
-                clone.Records = this.Records.Select(record => record.Clone()).Cast<PrivateDnsRecordBase>().ToList();
+                clone.Records = this.Records.Select(record => record.Clone()).Cast<PSPrivateDnsRecordBase>().ToList();
             }
 
             if (this.Metadata != null)
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     /// <summary>
     /// Represents a Private DNS record that is part of a <see cref="PSPrivateDnsRecordSet"/>.
     /// </summary>
-    public abstract class PrivateDnsRecordBase : ICloneable
+    public abstract class PSPrivateDnsRecordBase : ICloneable
     {
         public abstract object Clone();
 
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
 
         internal abstract object ToMamlRecord();
 
-        internal static PrivateDnsRecordBase FromMamlRecord(object record)
+        internal static PSPrivateDnsRecordBase FromMamlRecord(object record)
         {
             switch (record)
             {
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     /// <summary>
     /// Represents a Private DNS record of type A that is part of a <see cref="PSPrivateDnsRecordSet"/>.
     /// </summary>
-    public class ARecord : PrivateDnsRecordBase
+    public class ARecord : PSPrivateDnsRecordBase
     {
         /// <summary>
         /// Gets or sets the IPv4 address of this A record in string notation
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     /// <summary>
     /// Represents a Private DNS record of type AAAA that is part of a <see cref="PSPrivateDnsRecordSet"/>.
     /// </summary>
-    public class AaaaRecord : PrivateDnsRecordBase
+    public class AaaaRecord : PSPrivateDnsRecordBase
     {
         /// <summary>
         /// Gets or sets the IPv6 address of this AAAA record in string notation.
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     /// <summary>
     /// Represents a Private DNS record of type CNAME that is part of a <see cref="PSPrivateDnsRecordSet"/>.
     /// </summary>
-    public class CnameRecord : PrivateDnsRecordBase
+    public class CnameRecord : PSPrivateDnsRecordBase
     {
         /// <summary>
         /// Gets or sets the canonical name for this CNAME record without a terminating dot.
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
         }
 
         /// <summary>
-        /// Cerates a deep copy of this object
+        /// Creates a deep copy of this object
         /// </summary>
         /// <returns>A clone of this object</returns>
         public override object Clone()
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     /// <summary>
     /// Represents a Private DNS record of type TXT that is part of a <see cref="PSPrivateDnsRecordSet"/>.
     /// </summary>
-    public class TxtRecord : PrivateDnsRecordBase
+    public class TxtRecord : PSPrivateDnsRecordBase
     {
         /// <summary>
         /// Gets or sets the text value of this TXT record.
@@ -339,11 +339,11 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
 
         internal override object ToMamlRecord()
         {
-            char[] letters = this.Value.ToCharArray();
+            var letters = this.Value.ToCharArray();
             var splitValues = new List<string>();
 
-            int remaining = letters.Length;
-            int begin = 0;
+            var remaining = letters.Length;
+            var begin = 0;
             while (remaining > 0)
             {
                 if (remaining < TxtRecordChunkSize)
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     /// <summary>
     /// Represents a Private DNS record of type MX that is part of a <see cref="DnsRecordSet"/>.
     /// </summary>
-    public class MxRecord : PrivateDnsRecordBase
+    public class MxRecord : PSPrivateDnsRecordBase
     {
         /// <summary>
         /// Gets or sets the preference metric for this MX record.
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
 
         public override string ToString()
         {
-            return string.Format("[{0},{1}]", Preference, Exchange);
+            return $"[{Preference},{Exchange}]";
         }
 
         internal override object ToMamlRecord()
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     /// <summary>
     /// Represents a Private DNS record of type SRV that is part of a <see cref="DnsRecordSet"/>.
     /// </summary>
-    public class SrvRecord : PrivateDnsRecordBase
+    public class SrvRecord : PSPrivateDnsRecordBase
     {
         /// <summary>
         /// Gets or sets the domain name of the target for this SRV record, without a terminating dot.
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     /// <summary>
     /// Represents a Private DNS record of type SOA that is part of a <see cref="DnsRecordSet"/>.
     /// </summary>
-    public class SoaRecord : PrivateDnsRecordBase
+    public class SoaRecord : PSPrivateDnsRecordBase
     {
         /// <summary>
         /// Gets or sets the domain name of the authoritative name server for this SOA record, without a temrinating dot.
@@ -552,7 +552,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     /// <summary>
     /// Represents a Private DNS record of type PTR that is part of a <see cref="DnsRecordSet"/>.
     /// </summary>
-    public class PtrRecord : PrivateDnsRecordBase
+    public class PtrRecord : PSPrivateDnsRecordBase
     {
         /// <summary>
         /// Gets or sets the ptr for this record.

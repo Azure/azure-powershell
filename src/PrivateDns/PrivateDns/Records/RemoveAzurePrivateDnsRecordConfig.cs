@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
     /// <summary>
     /// Removes a record from a record set object.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsRecordConfig"), OutputType(typeof(PSPrivateDnsRecordSet))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsRecordConfig", DefaultParameterSetName = PrivateDnsUtils.ARecord), OutputType(typeof(PSPrivateDnsRecordSet))]
     public class RemoveAzurePrivateDnsRecordConfig : PrivateDnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The record set from which to remove the record.")]

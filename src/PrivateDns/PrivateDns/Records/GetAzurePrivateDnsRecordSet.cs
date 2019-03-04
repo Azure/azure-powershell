@@ -20,41 +20,56 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
     using Microsoft.Azure.Management.PrivateDns.Models;
     using Microsoft.Azure.Commands.PrivateDns.Utilities;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using ProjectResources = Microsoft.Azure.Commands.PrivateDns.Properties.Resources;
 
     /// <summary>
     /// Gets one or more existing record sets.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsRecordSet", DefaultParameterSetName = FieldsParameterSetName), OutputType(typeof(PSPrivateDnsRecordSet))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsRecordSet", DefaultParameterSetName = FieldsWithNoNameParameterSetName), OutputType(typeof(PSPrivateDnsRecordSet))]
     public class GetAzurePrivateDnsRecordSet : PrivateDnsBaseCmdlet
     {
+        private const string FieldsWithNoNameParameterSetName = "FieldsWithNoName";
+        private const string ObjectWithNoNameParameterSetName = "ObjectWithNoName";
+        private const string ResourceWithNoNameParameterSetName = "ResourceIdWithNoName";
         private const string FieldsParameterSetName = "Fields";
         private const string ObjectParameterSetName = "Object";
         private const string ResourceParameterSetName = "ResourceId";
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group to which the zone belongs.", ParameterSetName = FieldsParameterSetName)]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group to which the zone belongs.", ParameterSetName = FieldsWithNoNameParameterSetName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The zone in which to create the record set (without a terminating dot).", ParameterSetName = FieldsParameterSetName)]
+        [Parameter(Mandatory = true, HelpMessage = "The zone in which to create the record set (without a terminating dot).", ParameterSetName = FieldsWithNoNameParameterSetName)]
         [ResourceNameCompleter("Microsoft.Network/privateDnsZones", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ZoneName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The DnsZone object representing the zone in which to create the record set.", ParameterSetName = ObjectParameterSetName)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The DnsZone object representing the zone in which to create the record set.", ParameterSetName = ObjectWithNoNameParameterSetName)]
         [ValidateNotNullOrEmpty]
         public PSPrivateDnsZone Zone { get; set; }
 
         [Parameter(ParameterSetName = ResourceParameterSetName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Private DNS Zone ResourceID.")]
+        [Parameter(ParameterSetName = ResourceWithNoNameParameterSetName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Private DNS Zone ResourceID.")]
         [ResourceIdCompleter("Microsoft.Network/privateDnsZones")]
         [ValidateNotNullOrEmpty]
         public string ParentResourceId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The name of the records in this record set (relative to the name of the zone and without a terminating dot).")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the records in this record set (relative to the name of the zone and without a terminating dot).", ParameterSetName = FieldsParameterSetName)]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the records in this record set (relative to the name of the zone and without a terminating dot).", ParameterSetName = ObjectParameterSetName)]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the records in this record set (relative to the name of the zone and without a terminating dot).", ParameterSetName = ResourceParameterSetName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of DNS records in this record set.")]
+        [Parameter(Mandatory = false, HelpMessage = "The type of DNS records in this record set.", ParameterSetName = FieldsWithNoNameParameterSetName)]
+        [Parameter(Mandatory = false, HelpMessage = "The type of DNS records in this record set.", ParameterSetName = ObjectWithNoNameParameterSetName)]
+        [Parameter(Mandatory = false, HelpMessage = "The type of DNS records in this record set.", ParameterSetName = ResourceWithNoNameParameterSetName)]
+        [Parameter(Mandatory = true, HelpMessage = "The type of DNS records in this record set.", ParameterSetName = FieldsParameterSetName)]
+        [Parameter(Mandatory = true, HelpMessage = "The type of DNS records in this record set.", ParameterSetName = ObjectParameterSetName)]
+        [Parameter(Mandatory = true, HelpMessage = "The type of DNS records in this record set.", ParameterSetName = ResourceParameterSetName)]
         [ValidateNotNullOrEmpty]
         public RecordType? RecordType { get; set; }
 
@@ -66,10 +81,12 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
             switch (this.ParameterSetName)
             {
                 case FieldsParameterSetName:
+                case FieldsWithNoNameParameterSetName:
                     zoneName = this.ZoneName;
                     resourceGroupName = this.ResourceGroupName;
                     break;
                 case ResourceParameterSetName:
+                case ResourceWithNoNameParameterSetName:
                     PrivateDnsUtils.GetResourceGroupNameAndZoneNameFromResourceId(this.ParentResourceId, out resourceGroupName, out zoneName);
                     break;
                 default:
@@ -78,17 +95,13 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
                     break;
             }
 
-            if (zoneName != null && zoneName.EndsWith("."))
-            {
-                zoneName = zoneName.TrimEnd('.');
-                this.WriteWarning($"Modifying zone name to remove terminating '.'.  Zone name used is \"{zoneName}\".");
-            }
+            zoneName = TrimTrailingDotInZoneName(zoneName);
 
             if (this.Name != null)
             {
                 if (this.RecordType == null)
                 {
-                    throw new PSArgumentException("If you specify the Name parameter you must also specify the RecordType parameter.");
+                    throw new PSArgumentException(ProjectResources.Error_RecordTypeNotSpecified);
                 }
 
                 var result = this.PrivateDnsClient.GetPrivateDnsRecordSet(this.Name, zoneName, resourceGroupName, this.RecordType.Value);
@@ -99,10 +112,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
                 List<PSPrivateDnsRecordSet> result = null;
                 result = this.RecordType == null ? this.PrivateDnsClient.ListRecordSets(zoneName, resourceGroupName) : this.PrivateDnsClient.ListRecordSets(zoneName, resourceGroupName, this.RecordType.Value);
 
-                foreach (var r in result)
-                {
-                    this.WriteObject(r);
-                }
+                this.WriteObject(result, true);
             }
 
         }

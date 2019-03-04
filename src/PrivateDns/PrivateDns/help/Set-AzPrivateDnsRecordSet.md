@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzPrivateDnsRecordSet
 
 ## SYNOPSIS
-Updates a Private DNS record set.
+Updates a record set in a Private DNS zone.
 
 ## SYNTAX
 
@@ -32,6 +32,18 @@ PS C:\> Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
 # These cmdlets can also be piped:
 
 PS C:\> Get-AzPrivateDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A | Add-AzPrivateDnsRecordConfig -Ipv4Address 172.16.0.0 | Add-AzPrivateDnsRecordConfig -Ipv4Address 172.31.255.255 | Set-AzPrivateDnsRecordSet
+
+Id                : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Netwo
+                    rk/privateDnsZones/myzone.com/A/www
+Name              : www
+ZoneName          : myzone.com
+ResourceGroupName : MyResourceGroup
+Ttl               : 3600
+Etag              : xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+RecordType        : A
+Records           : {1.2.3.4, 172.16.0.0, 172.31.255.255}
+Metadata          :
+IsAutoRegistered  :
 ```
 
 The first command uses the Get-AzPrivateDnsRecordSet cmdlet to get the specified record set, and then stores it in the $RecordSet variable. The second and third commands are off-line operations to add two A records to the record set. The final command uses the Set-AzPrivateDnsRecordSet cmdlet to commit the update.
@@ -41,6 +53,18 @@ The first command uses the Get-AzPrivateDnsRecordSet cmdlet to get the specified
 PS C:\> $RecordSet = Get-AzPrivateDnsRecordSet -Name "@" -RecordType SOA -Zone $Zone
 PS C:\> $RecordSet.Records[0].Email = "admin.myzone.com"
 PS C:\> Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
+
+Id                : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Micros
+                    oft.Network/privateDnsZones/myzone.com/SOA/@
+Name              : @
+ZoneName          : myzone.com
+ResourceGroupName : Myresourcegroup
+Ttl               : 3600
+Etag              : xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+RecordType        : SOA
+Records           : {[internal.cloudapp.net,admin.myzone.com,3600,300,2419200,300]}
+Metadata          :
+IsAutoRegistered  :
 ```
 
 The first command uses the Get-AzPrivateDnsRecordSet cmdlet to get the specified record set, and then stores it in the $RecordSet variable. The second command updates the specified SOA record in $RecordSet. The final command uses the Set-AzPrivateDnsRecordSet cmdlet to propagate the update in $RecordSet.

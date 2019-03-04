@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 string resourceGroupName = this.ResourceGroupName;
                 string vmScaleSetName = this.VMScaleSetName;
 
-                if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName))
+                if (ShouldGetByName(resourceGroupName, vmScaleSetName))
                 {
                     if (this.ParameterSetName.Equals("FriendMethod"))
                     {
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         WriteObject(psObject);
                     }
                 }
-                else if (!string.IsNullOrEmpty(resourceGroupName))
+                else if (ShouldListByResourceGroup(resourceGroupName, vmScaleSetName))
                 {
                     var result = VirtualMachineScaleSetsClient.List(resourceGroupName);
                     var resultList = result.ToList();
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
                     }
-                    WriteObject(psObject, true);
+                    WriteObject(TopLevelWildcardFilter(resourceGroupName, vmScaleSetName, psObject), true);
                 }
                 else
                 {
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
                     }
-                    WriteObject(psObject, true);
+                    WriteObject(TopLevelWildcardFilter(resourceGroupName, vmScaleSetName, psObject), true);
                 }
             });
         }

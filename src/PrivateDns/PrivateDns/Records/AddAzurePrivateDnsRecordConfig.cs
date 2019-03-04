@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
     /// <summary>
     /// Adds a record to a record set object.
     /// </summary>
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsRecordConfig"), OutputType(typeof(PSPrivateDnsRecordSet))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsRecordConfig", DefaultParameterSetName = PrivateDnsUtils.ARecord), OutputType(typeof(PSPrivateDnsRecordSet))]
     public class AddAzurePrivateDnsRecordConfig : PrivateDnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The record set in which to add the record.")]
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
 
             if (result.Records == null)
             {
-                result.Records = new List<PrivateDnsRecordBase>();
+                result.Records = new List<PSPrivateDnsRecordBase>();
             }
 
             switch (result.RecordType)

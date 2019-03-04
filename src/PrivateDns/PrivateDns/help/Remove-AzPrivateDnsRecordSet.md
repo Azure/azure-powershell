@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzPrivateDnsRecordSet
 
 ## SYNOPSIS
-Deletes a record set.
+Deletes a record set from a Private DNS zone.
 
 ## SYNTAX
 
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Used for passing the result (boolean) of the operation delete private zone further down the pipeline.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
