@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.AdvancedThreatProtection
 {
-    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdvancedThreatProtection", DefaultParameterSetName = ParameterSetNames.ResourceId), OutputType(typeof(PSAdvancedThreatProtection))]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdvancedThreatProtection", SupportsShouldProcess = false, DefaultParameterSetName = ParameterSetNames.ResourceId), OutputType(typeof(PSAdvancedThreatProtection))]
     public class EnableAdvancedThreatProtection : SecurityCenterCmdletBase
     {
 

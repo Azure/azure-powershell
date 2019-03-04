@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.security/d
 schema: 2.0.0
 ---
 
-# DIsable-AzSecurityAdvancedThreatProtection
+# Disable-AzSecurityAdvancedThreatProtection
 
 ## SYNOPSIS
 Disables the advanced threat protection policy for a storage account.

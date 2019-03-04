@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Security.Models.AdvancedThreatProtection;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.AdvancedThreatProtection
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdvancedThreatProtection", DefaultParameterSetName = ParameterSetNames.ResourceId), OutputType(typeof(PSAdvancedThreatProtection))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdvancedThreatProtection", SupportsShouldProcess = false, DefaultParameterSetName = ParameterSetNames.ResourceId), OutputType(typeof(PSAdvancedThreatProtection))]
     public class GetAdvancedThreatProtection : SecurityCenterCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ResourceId)]
