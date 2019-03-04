@@ -50,5 +50,17 @@ namespace Microsoft.Azure.Commands.PrivateDns.Utilities
             var identifier = new ResourceIdentifier(resourceId);
             resourceGroupName = identifier.ResourceGroupName;
         }
+
+        public static void ParseVirtualNetworkId(
+            string resourceId,
+            out string resourceGroupName,
+            out string zoneName,
+            out string linkName)
+        {
+            var identifier = new ResourceIdentifier(resourceId);
+            resourceGroupName = identifier.ResourceGroupName;
+            linkName = identifier.ResourceName;
+            zoneName = identifier.ParentResource.Split('/').Last();
+        }
     }
 }

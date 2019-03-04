@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
     /// <summary>
     /// Constructs an in-memory dns record object
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsRecordConfig"), OutputType(typeof(PrivateDnsRecordBase))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsRecordConfig", DefaultParameterSetName = PrivateDnsUtils.ARecord), OutputType(typeof(PSPrivateDnsRecordSet))]
     public class NewAzureRmDnsRecordConfig : PrivateDnsBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The IPv4 address for the A record to add.", ParameterSetName = PrivateDnsUtils.ARecord)]
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
 
         [Parameter(Mandatory = true, HelpMessage = "The text value for the TXT record to add.", ParameterSetName = PrivateDnsUtils.TxtRecord)]
         [ValidateNotNullOrEmpty]
-        [ValidateLength(PrivateDnsRecordBase.TxtRecordMinLength, PrivateDnsRecordBase.TxtRecordMaxLength)]
+        [ValidateLength(PSPrivateDnsRecordBase.TxtRecordMinLength, PSPrivateDnsRecordBase.TxtRecordMaxLength)]
         public string Value { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The priority value SRV record to add.", ParameterSetName = PrivateDnsUtils.SrvRecord)]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
 
         public override void ExecuteCmdlet()
         {
-            PrivateDnsRecordBase result = null;
+            PSPrivateDnsRecordBase result = null;
             switch (this.ParameterSetName)
             {
                 case PrivateDnsUtils.ARecord:

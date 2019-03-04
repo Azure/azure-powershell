@@ -67,10 +67,9 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
                 this.Name = zoneName;
             }
 
-            if (!string.IsNullOrEmpty(this.Name) && this.Name.EndsWith("."))
+            if (!string.IsNullOrEmpty(this.Name))
             {
-                this.Name = this.Name.TrimEnd('.');
-                this.WriteWarning($"Modifying Private DNS zone name to remove terminating '.'.  Zone name used is \"{this.Name}\".");
+                this.Name = TrimTrailingDotInZoneName(this.Name);
             }
 
             var zoneToDelete = (this.ParameterSetName != ObjectParameterSetName)
@@ -87,10 +86,9 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
                 throw new PSArgumentException(string.Format(ProjectResources.Error_EtagNotSpecified, typeof(PSPrivateDnsZone).Name));
             }
 
-            if (zoneToDelete.Name != null && zoneToDelete.Name.EndsWith("."))
+            if (zoneToDelete.Name != null)
             {
-                zoneToDelete.Name = zoneToDelete.Name.TrimEnd('.');
-                this.WriteWarning($"Modifying Private DNS zone name to remove terminating '.'.  Zone name used is \"{zoneToDelete.Name}\".");
+                zoneToDelete.Name = TrimTrailingDotInZoneName(zoneToDelete.Name);
             }
 
             ConfirmAction(

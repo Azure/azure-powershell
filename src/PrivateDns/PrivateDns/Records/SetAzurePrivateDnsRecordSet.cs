@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
         [ValidateNotNullOrEmpty]
         public PSPrivateDnsRecordSet RecordSet { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.")]
+        [Parameter(Mandatory = false, HelpMessage = "Does not use the ETag field of the RecordSet parameter for optimistic concurrency checks.")]
         public SwitchParameter Overwrite { get; set; }
 
         public override void ExecuteCmdlet()
@@ -39,10 +39,9 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
             }
 
             var recordSetToUpdate = (PSPrivateDnsRecordSet)this.RecordSet.Clone();
-                    if (recordSetToUpdate.ZoneName != null && recordSetToUpdate.ZoneName.EndsWith("."))
+                    if (recordSetToUpdate.ZoneName != null)
                     {
-                        recordSetToUpdate.ZoneName = recordSetToUpdate.ZoneName.TrimEnd('.');
-                        this.WriteWarning($"Modifying zone name to remove terminating '.'.  Zone name used is \"{recordSetToUpdate.ZoneName}\".");
+                        recordSetToUpdate.ZoneName = TrimTrailingDotInZoneName(recordSetToUpdate.ZoneName);
                     }
 
             ConfirmAction(

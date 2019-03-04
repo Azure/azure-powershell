@@ -11,6 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageSync.Test", "Storage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management", "..\Storage\Storage.Management\Storage.Management.csproj", "{51D839F6-6060-4D69-9303-160A6C595198}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage", "..\Storage\Storage\Storage.csproj", "{75AC293A-A199-49C9-8F79-CF57DB2E6BFD}"
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{FF81DC73-B8EC-4082-8841-4FBF2B16E7CE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{3E016018-D65D-4336-9F64-17DA97783AD0}"
@@ -37,6 +40,14 @@ Global
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51D839F6-6060-4D69-9303-160A6C595198}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51D839F6-6060-4D69-9303-160A6C595198}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51D839F6-6060-4D69-9303-160A6C595198}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51D839F6-6060-4D69-9303-160A6C595198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75AC293A-A199-49C9-8F79-CF57DB2E6BFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75AC293A-A199-49C9-8F79-CF57DB2E6BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75AC293A-A199-49C9-8F79-CF57DB2E6BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75AC293A-A199-49C9-8F79-CF57DB2E6BFD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FF81DC73-B8EC-4082-8841-4FBF2B16E7CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FF81DC73-B8EC-4082-8841-4FBF2B16E7CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF81DC73-B8EC-4082-8841-4FBF2B16E7CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -59,6 +70,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{04542E7D-F411-4972-A5C7-25240A4A5D31} = {5CEE0796-C522-44B6-B6F1-97BFD241E998}
+		{51D839F6-6060-4D69-9303-160A6C595198} = {5CEE0796-C522-44B6-B6F1-97BFD241E998}
+		{75AC293A-A199-49C9-8F79-CF57DB2E6BFD} = {5CEE0796-C522-44B6-B6F1-97BFD241E998}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5BE41351-2BE2-4B6B-88F0-C0669D3D5EB6}

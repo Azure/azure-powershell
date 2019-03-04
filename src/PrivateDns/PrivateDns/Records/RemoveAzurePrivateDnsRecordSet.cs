@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
         [ValidateNotNullOrEmpty]
         public RecordType RecordType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.", ParameterSetName = ObjectParameterSetName)]
+        [Parameter(Mandatory = false, HelpMessage = "Does not use the ETag field of the RecordSet parameter for optimistic concurrency checks.", ParameterSetName = ObjectParameterSetName)]
         public SwitchParameter Overwrite { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -85,8 +85,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
                     if (this.Name.EndsWith("."))
                     {
                         this.Name = this.Name.TrimEnd('.');
-                        this.WriteWarning(
-                            $"Modifying RecordSet name to remove terminating '.'.  RecordSet name used is \"{this.Name}\".");
+                        this.WriteWarning(string.Format(ProjectResources.Progress_ModifyingRecordSetNameTrimDot, this.Name));
                     }
 
                     recordSetToDelete = new PSPrivateDnsRecordSet
@@ -122,11 +121,9 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
                 }
             }
 
-            if (recordSetToDelete?.ZoneName != null && recordSetToDelete.ZoneName.EndsWith("."))
+            if (recordSetToDelete?.ZoneName != null)
             {
-                recordSetToDelete.ZoneName = recordSetToDelete.ZoneName.TrimEnd('.');
-                this.WriteWarning(
-                    $"Modifying zone name to remove terminating '.'.  Zone name used is \"{recordSetToDelete.ZoneName}\".");
+                recordSetToDelete.ZoneName = TrimTrailingDotInZoneName(recordSetToDelete.ZoneName);
             }
 
             var overwrite = this.Overwrite.IsPresent || this.ParameterSetName != ObjectParameterSetName;
