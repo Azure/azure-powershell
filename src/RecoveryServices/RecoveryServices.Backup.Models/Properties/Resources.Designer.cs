@@ -960,7 +960,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("RecoveryPointUnsupportedParamet", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Registering container.
+        /// </summary>
+        public static string RegisterContainerMessage
+        {
+            get {
+                return ResourceManager.GetString("RegisterContainerMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to disable protection for the container &apos;{0}&apos;.
+        /// </summary>
+        public static string RegisterContainerWarning
+        {
+            get {
+                return ResourceManager.GetString("RegisterContainerWarning", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Register operation failed with ErrorCode: {0}.
         /// </summary>
@@ -969,7 +989,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("RegisterFailureErrorCode", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Removing the protection policy.
         /// </summary>

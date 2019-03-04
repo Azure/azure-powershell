@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added Sql server in Azure VM support
+* SDK Update
 
 ## Version 1.0.1
 * Release with updated Authentication dependency

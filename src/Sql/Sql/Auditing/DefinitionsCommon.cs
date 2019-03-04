@@ -5,6 +5,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
 {
     public static class DefinitionsCommon
     {
+        internal const string WhatIfParameterName = "WhatIf";
+        internal const string ConfirmParameterName = "Confirm";
         internal const string StorageAccountNameParameterName = "StorageAccountName";
         internal const string ServerAuditingCmdletsSuffix = "SqlServerAuditing";
         internal const string DatabaseAuditingCmdletsSuffix = "SqlDatabaseAuditing";
