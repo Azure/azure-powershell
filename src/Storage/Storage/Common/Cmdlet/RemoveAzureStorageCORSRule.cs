@@ -16,6 +16,7 @@ using Microsoft.WindowsAzure.Storage.Shared.Protocol;
 using XTable = Microsoft.Azure.Cosmos.Table;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
@@ -52,13 +53,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             }
             else //Table use old XSCL
             {
-                XTable.ServiceProperties currentServiceProperties = Channel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
+                StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
+                XTable.ServiceProperties currentServiceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
                 XTable.ServiceProperties serviceProperties = new XTable.ServiceProperties();
                 serviceProperties.Clean();
                 serviceProperties.Cors = currentServiceProperties.Cors;
                 serviceProperties.Cors.CorsRules.Clear();
 
-                Channel.SetStorageTableServiceProperties(serviceProperties,
+                tableChannel.SetStorageTableServiceProperties(serviceProperties,
                     GetTableRequestOptions(), TableOperationContext);
             }
         }

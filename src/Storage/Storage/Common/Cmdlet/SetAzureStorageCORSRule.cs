@@ -22,6 +22,7 @@ using System.Management.Automation;
 using System.Net;
 using System.Security.Permissions;
 using SharedProtocol = Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
@@ -113,7 +114,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 
                 try
                 {
-                    Channel.SetStorageTableServiceProperties(serviceProperties,
+                    StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
+                    tableChannel.SetStorageTableServiceProperties(serviceProperties,
                         GetTableRequestOptions(), TableOperationContext);
                 }
                 catch (XTable.StorageException se)

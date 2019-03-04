@@ -711,16 +711,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
             throw new NotImplementedException();
         }
 
-        public Azure.Cosmos.Table.ServiceProperties GetStorageTableServiceProperties(XTable.TableRequestOptions options, XTable.OperationContext operationContext)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetStorageTableServiceProperties(Azure.Cosmos.Table.ServiceProperties properties, XTable.TableRequestOptions options, XTable.OperationContext operationContext)
-        {
-            throw new NotImplementedException();
-        }
-
         public AccountProperties GetAccountProperties()
         {
             throw new NotImplementedException();
