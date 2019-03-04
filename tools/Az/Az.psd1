@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.0'; }, 
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.1'; }, 
                @{ModuleName = 'Az.Aks'; RequiredVersion = '1.0.1'; }, 
                @{ModuleName = 'Az.AnalysisServices'; RequiredVersion = '1.0.2'; }, 
                @{ModuleName = 'Az.ApiManagement'; RequiredVersion = '1.0.0'; }, 
@@ -93,7 +93,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.0'; },
                @{ModuleName = 'Az.ServiceBus'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.ServiceFabric'; RequiredVersion = '1.0.1'; }, 
                @{ModuleName = 'Az.SignalR'; RequiredVersion = '1.0.2'; }, 
-               @{ModuleName = 'Az.Sql'; RequiredVersion = '1.3.0'; }, 
+               @{ModuleName = 'Az.Sql'; RequiredVersion = '1.4.0'; }, 
                @{ModuleName = 'Az.Storage'; RequiredVersion = '1.0.2'; }, 
                @{ModuleName = 'Az.StreamAnalytics'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.TrafficManager'; RequiredVersion = '1.0.1'; }, 

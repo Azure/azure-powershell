@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix for ListWorkflows only retrieving the first page of results
 
 ## Version 1.2.0
 * Add in Basic sku for Integration Accounts
