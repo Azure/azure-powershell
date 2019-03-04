@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
 
         private static string ToString(ICollection<string> collection)
         {
-            return string.Join(", ", collection.Select(it => $"'{it}'"));
+            return string.Join(", ", collection.Select(s => $"'{s}'"));
         }
     }
 }
