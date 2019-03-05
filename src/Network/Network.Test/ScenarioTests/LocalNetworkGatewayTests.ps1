@@ -69,9 +69,6 @@ function Test-LocalNetworkGatewayCRUD
 	  $list = Get-AzLocalNetworkGateway -ResourceGroupName "*" -Name "*"
 	  Assert-True { $list.Count -ge 0 }
 
-	  $list = Get-AzLocalNetworkGateway -Name "*"
-	  Assert-True { $list.Count -ge 0 }
-
 	  $list = Get-AzLocalNetworkGateway -ResourceGroupName "*"
 	  Assert-True { $list.Count -ge 0 }
 
