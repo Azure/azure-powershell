@@ -28,7 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement.PowerShell">
-      <HintPath>$(RepoTools)LocalFeed\Microsoft.WindowsAzure.Storage.DataMovement.PowerShell.dll</HintPath>
+      <HintPath>$(RepoSrc)lib\Microsoft.WindowsAzure.Storage.DataMovement.PowerShell.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
