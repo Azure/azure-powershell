@@ -5,9 +5,8 @@ dotnet: 2.1.400
 dist: trusty
 
 env:
-  - NAME="azure-powershell-core" CONFIG="Debug"
-  - TESTS_TO_RUN="Core"
-  - TESTS_TO_RUN="NonCore"
+  - NAME="azure-powershell-core" CONFIG="Debug" TESTS_TO_RUN="Core"
+  - NAME="azure-powershell-core" CONFIG="Debug" TESTS_TO_RUN="NonCore"
 
 services:
  - docker
