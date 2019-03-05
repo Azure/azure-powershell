@@ -24,9 +24,4 @@
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageQueue.cs" Link="Common\AzureStorageQueue.cs" />
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageTable.cs" Link="Common\AzureStorageTable.cs" />
   </ItemGroup>
-
-  <Target Name="CopyFiles" AfterTargets="Build">
-    <Copy SourceFiles="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Mono.Posix.NETStandard.dll" DestinationFolder="$(TargetDir)" />
-  </Target>
-
 </Project>
