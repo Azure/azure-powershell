@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRecoveryServicesBackupProtectableItem
 
 ## SYNOPSIS
-Get protectable items from a container.
+This command will retrieve all protectable items within a certain container or across all registered containers. It will consist of all the elements of the hierarchy of the application. Returns DBs and their upper tier entities like Instance, AvailabilityGroup etc.
 
 ## SYNTAX
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -ItemType
-Protectable Item type.
+Specifies the type of protectable item. Applicable values: (SQLDataBase, SQLInstance, SQLAvailabilityGroup).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ProtectableItemType
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Specifies the name of the Database, Instance or AvailabilityGroup.
 
 ```yaml
 Type: System.String
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentID
-Parent ID
+Specified the ARM ID of an Instance or AG.
 
 ```yaml
 Type: System.String
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-Server Name
+Specifies the name of the server to which the item belongs.
 
 ```yaml
 Type: System.String
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
-Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles).
+Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles, MSSQL).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
