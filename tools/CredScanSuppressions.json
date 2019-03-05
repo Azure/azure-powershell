@@ -1201,6 +1201,10 @@
     {
       "file": "\\src\\DataMigration\\DataMigration.Test\\SessionRecords\\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\\TestMigrateSqlSqlDbMiSync.json",
       "_justification": "Legitimate session record, Key will be revoked after test"
+    },
+    {
+      "file": "\\src\\Network\\Network.Test\\SessionRecords\\Microsoft.Azure.Commands.ScenarioTest.NetworkWatcherAPITests\\TestTroubleshoot.json",
+      "_justification": "Legitimate session record, resource removed at end of test"
     }
   ]
 }
