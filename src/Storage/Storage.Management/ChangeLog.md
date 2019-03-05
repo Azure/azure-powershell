@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Upgrade to Storage Client Library 9.4.2 and Microsoft.Azure.Cosmos.Table 0.10.1-preview
+* Support Kind BlockBlobStorage when create Storage account
+       - New-AzStorageAccount
 
 ## Version 1.0.2
 * Update incorrect online help URLs
