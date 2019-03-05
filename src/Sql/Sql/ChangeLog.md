@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 * Add Vulnerability Assessment cmdlets on Server and Managed Instance
+* Updating AuditingEndpointsCommunicator.
+    - Fixing the behavior of an edge case while creating new diagnostic settings.
+    
+## Version 1.4.0
+* Add support for restore an instance database from geo-redundant backups
 
 ## Version 1.3.0
 * Add support for SQL DB Hyperscale tier

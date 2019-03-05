@@ -232,6 +232,15 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Record set &apos;{0}&apos; was created in zone &apos;{1}&apos;. Use Add-AzDnsRecordConfig to add more {2} records to it and Set-AzDnsRecordSet to save your changes..
+        /// </summary>
+        internal static string Success_NewRecordSetHasRecords {
+            get {
+                return ResourceManager.GetString("Success_NewRecordSetHasRecords", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Zone &apos;{0}&apos; was created in resource group &apos;{1}&apos;. The SOA and authoritative NS records for this zone have been created automatically. Use Get-AzDnsRecordSet to retrieve them.
         /// </summary>
         internal static string Success_NewZone {
