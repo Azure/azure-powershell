@@ -516,6 +516,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     {
                         return new SilentParameters(environment, tokenCache, tenant, account.Id);
                     }
+                    else if (account.IsPropertySet("UseDeviceAuth"))
+                    {
+                        return new DeviceCodeParameters(environment, tokenCache, tenant);
+                    }
 
                     return new InteractiveParameters(environment, tokenCache, tenant, promptAction);
                 }

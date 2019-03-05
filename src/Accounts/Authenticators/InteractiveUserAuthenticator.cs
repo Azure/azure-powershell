@@ -13,11 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Security;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Identity.Client;
+using Microsoft.Identity.Client.AppConfig;
+using Microsoft.Identity.Client.Extensibility;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -26,21 +29,62 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     /// </summary>
     public class InteractiveUserAuthenticator : DelegatingAuthenticator
     {
-        public async override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
+        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
             var interactiveParameters = parameters as InteractiveParameters;
-            var scopes = new string[] { string.Format(AuthenticationHelpers.UserImpersonationScope, interactiveParameters.Environment.ActiveDirectoryServiceEndpointResourceId) };
-            var publicClient = new PublicClientApplication(
-                AuthenticationHelpers.PowerShellClientId,
-                AuthenticationHelpers.GetAuthority(interactiveParameters.Environment, interactiveParameters.TenantId),
-                interactiveParameters.TokenCache.GetUserCache() as TokenCache);
-            var response = await publicClient.AcquireTokenAsync(
-                scopes,
-                string.Empty,
-                AuthenticationHelpers.GetPromptBehavior(ShowDialog.Always),
-                AuthenticationHelpers.EnableEbdMagicCookie,
-                null); // new UIParent(new ConsoleParentWindow()));
-            return AuthenticationResultToken.GetAccessToken(response);
+            IPublicClientApplication publicClient = null;
+            var scopes = new string[] { string.Format(AuthenticationHelpers.UserImpersonationScope, parameters.Environment.ActiveDirectoryServiceEndpointResourceId) };
+            TcpListener listener = null;
+            var replyUrl = string.Empty;
+            var port = 8399;
+            try
+            {
+                while (++port < 9000)
+                {
+                    try
+                    {
+                        listener = new TcpListener(IPAddress.Loopback, port);
+                        listener.Start();
+                        replyUrl = string.Format("http://localhost:{0}/", port);
+                        listener.Stop();
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        interactiveParameters.PromptAction(string.Format("Port {0} is taken with exception '{1}'; trying to connect to the next port.", port, ex.Message));
+                        listener?.Stop();
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(replyUrl))
+                {
+                    publicClient = PublicClientApplicationBuilder.Create(AuthenticationHelpers.PowerShellClientId)
+                        .WithAuthority(AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId))
+                        .WithRedirectUri(replyUrl)
+                        .Build();
+
+                    publicClient.UserTokenCache.SetAfterAccess(notificationArgs =>
+                    {
+                        if (notificationArgs.HasStateChanged)
+                        {
+                            interactiveParameters.TokenCache.CacheData = notificationArgs.TokenCache.SerializeMsalV3();
+                        }
+                    });
+
+                    publicClient.UserTokenCache.SetBeforeAccess(notificationArgs =>
+                    {
+                        notificationArgs.TokenCache.DeserializeMsalV3(interactiveParameters.TokenCache.CacheData);
+                    });
+
+                    var interactiveResponse = publicClient.AcquireTokenInteractive(scopes, null)
+                        .WithCustomWebUi(new CustomWebUi(listener, interactiveParameters.PromptAction))
+                        .ExecuteAsync();
+                    return AuthenticationResultToken.GetAccessTokenAsync(interactiveResponse);
+                }
+            }
+            catch { }
+
+            return null;
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
