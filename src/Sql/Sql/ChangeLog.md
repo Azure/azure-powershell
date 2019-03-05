@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Updating AuditingEndpointsCommunicator.
+    - Fixing the behavior of an edge case while creating new diagnostic settings.
 ## Version 1.4.0
 * Add support for restore an instance database from geo-redundant backups
 
