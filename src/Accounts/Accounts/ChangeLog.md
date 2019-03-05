@@ -18,11 +18,22 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update examples for Connect-AzAccount
+
+## Version 1.3.1
+* Add additional framework extensions for .Net Framework execution
+* Update common packages to include new wildcard support functions
+
+## Version 1.3.0
 * Update to latest version of ClientRuntime
 * Azure automation update management change to support the following new features :
     Dynamic grouping
     Pre-Post script
     Reboot Setting
+
+## Version 1.2.1
+* Release with correct version of Authentication
+* Enable MSI Authentication in Azure Functions and WebApps
 
 ## Version 1.2.0
 * Add interactive and username/password authentication for Windows PowerShell 5.1 only

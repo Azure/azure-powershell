@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (string.IsNullOrEmpty(this.Version))
+                if (string.IsNullOrEmpty(this.Version) || WildcardPattern.ContainsWildcardCharacters(this.Version))
                 {
                     var filter = new ODataQuery<VirtualMachineExtensionImage>(this.FilterExpression);
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Compute
                                      FilterExpression = this.FilterExpression
                                  };
 
-                    WriteObject(images, true);
+                    WriteObject(SubResourceWildcardFilter(Version, images), true);
                 }
                 else
                 {

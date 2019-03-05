@@ -13,22 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class ApplicationGatewayTests : RMTestBase
+    public class ApplicationGatewayTests : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public ApplicationGatewayTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -36,7 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestAvailableSslOptions()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-AvailableSslOptions"));
+            TestRunner.RunTestScript("Test-AvailableSslOptions");
         }
 
         [Fact]
@@ -44,7 +39,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestAvailableWafRuleSets()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-AvailableWafRuleSets"));
+            TestRunner.RunTestScript("Test-AvailableWafRuleSets");
         }
 
         [Fact]
@@ -52,7 +47,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestApplicationGatewayCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationGatewayCRUD -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUD -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
 
         [Fact]
@@ -60,7 +55,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestApplicationGatewayCRUD2()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationGatewayCRUD2 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUD2 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
 
         [Fact]
@@ -68,7 +63,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestApplicationGatewayCRUD3()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationGatewayCRUD3 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUD3 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
 
         [Fact]
@@ -76,7 +71,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestApplicationGatewayCRUDSubItems()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationGatewayCRUDSubItems -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUDSubItems -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
 
         [Fact]
@@ -84,7 +79,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestApplicationGatewayCRUDSubItems2()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationGatewayCRUDSubItems2 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUDSubItems2 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
 
         [Fact]
@@ -92,7 +87,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.nvadev)]
         public void TestApplicationGatewayCRUDRewriteRuleSet()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationGatewayCRUDRewriteRuleSet -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUDRewriteRuleSet -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
     }
 }
