@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.2
 * Update examples for Connect-AzAccount
 
 ## Version 1.3.1

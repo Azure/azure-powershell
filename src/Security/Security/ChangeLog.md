@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* GA release of Az.Security
+
 ## Version 0.7.2
 * Add new cmdlets: Get-AzSecurityThreatProtection and Set-AzSecurityThreatProtection
 

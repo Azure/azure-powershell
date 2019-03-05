@@ -1,4 +1,43 @@
-﻿## 1.4.0 - February 2019
+## 1.5.0 - March 2019
+#### General
+* Az.Security module is now GA and included with Az
+
+#### Az.Accounts
+* Update examples for Connect-AzAccount
+
+#### Az.Automation
+* Fixed issue when retreiving certain monthly schedules in several Azure Automation cmdlets
+
+#### Az.Cdn
+* Added new Powershell cmdlets for Enable/Disable Custom Domain Https and deprecated the old ones
+
+#### Az.Compute
+* Add wildcard support to Get cmdlets
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 3.0.1
+
+#### Az.LogicApp
+* Fix for ListWorkflows only retrieving the first page of results
+
+#### Az.Network
+* Add wildcard support to Network cmdlets
+
+#### Az.RecoveryServices
+* Added Sql server in Azure VM support
+* SDK Update
+* Removed VMappContainer check in Get-ProtectableItem
+* Added Name and ServerName as parameters for Get-ProtectableItem
+
+#### Az.Sql
+* Updating AuditingEndpointsCommunicator.
+    - Fixing the behavior of an edge case while creating new diagnostic settings.
+
+#### Az.Storage
+* Support Kind BlockBlobStorage when create Storage account
+       - New-AzStorageAccount
+
+## 1.4.0 - February 2019
 #### Az.AnalysisServices
 * Deprecated AddAzureASAccount cmdlet
 
