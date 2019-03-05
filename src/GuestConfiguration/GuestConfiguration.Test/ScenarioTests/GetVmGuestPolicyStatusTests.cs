@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void IdScope()
+        public void ReportIdScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-IdScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-ReportIdScope");
         }
     }
 }
