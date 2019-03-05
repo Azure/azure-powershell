@@ -22,14 +22,13 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AdvancedThreatProtection
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdvancedThreatProtection", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.ResourceId), OutputType(typeof(PSAdvancedThreatProtection))]
     public class EnableAdvancedThreatProtection : SecurityCenterCmdletBase
     {
-
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var result = SecurityCenterClient.AdvancedThreatProtection.CreateWithHttpMessagesAsync(ResourceId, true).GetAwaiter().GetResult().Body;
+            var result = SecurityCenterClient.AdvancedThreatProtection.CreateWithHttpMessagesAsync(ResourceId, isEnabled: true).GetAwaiter().GetResult().Body;
             WriteObject(result, enumerateCollection: true);
         }
     }

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AdvancedThreatProtection
 
         public override void ExecuteCmdlet()
         {
-            var result = SecurityCenterClient.AdvancedThreatProtection.CreateWithHttpMessagesAsync(ResourceId, false).GetAwaiter().GetResult().Body;
+            var result = SecurityCenterClient.AdvancedThreatProtection.CreateWithHttpMessagesAsync(ResourceId, isEnabled: false).GetAwaiter().GetResult().Body;
             WriteObject(result, enumerateCollection: true);
         }
     }
