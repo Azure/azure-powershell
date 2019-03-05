@@ -63,7 +63,7 @@ From the [Strongly Encouraged Development Guidelines](https://docs.microsoft.com
 
 #### Noun Prefix
 
-For ARM cmdlets, the noun must be prefixed with `Az`. For RDFE and data plane cmdlets, the noun must be prefixed with `Azure`.
+For ARM cmdlets, the noun must be prefixed with `Az`.
 
 #### Specific Noun and Noun Singularity
 
