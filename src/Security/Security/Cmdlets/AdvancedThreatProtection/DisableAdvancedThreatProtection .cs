@@ -19,11 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.AdvancedThreatProtection
 {
-    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdvancedThreatProtection", SupportsShouldProcess = false, DefaultParameterSetName = ParameterSetNames.ResourceId), OutputType(typeof(PSAdvancedThreatProtection))]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAdvancedThreatProtection", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.ResourceId), OutputType(typeof(PSAdvancedThreatProtection))]
     public class DisableAdvancedThreatProtection : SecurityCenterCmdletBase
     {
-
-        [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
