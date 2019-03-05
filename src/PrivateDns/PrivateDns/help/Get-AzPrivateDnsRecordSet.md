@@ -12,16 +12,16 @@ Gets a record set from a Private DNS zone.
 
 ## SYNTAX
 
-### Fields (Default)
-```
-Get-AzPrivateDnsRecordSet -ResourceGroupName <String> -ZoneName <String> -Name <String>
- -RecordType <RecordType> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### FieldsWithNoName
+### FieldsWithNoName (Default)
 ```
 Get-AzPrivateDnsRecordSet -ResourceGroupName <String> -ZoneName <String> [-RecordType <RecordType>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### Fields
+```
+Get-AzPrivateDnsRecordSet -ResourceGroupName <String> -ZoneName <String> -Name <String>
+ -RecordType <RecordType> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Object
@@ -218,19 +218,6 @@ The type of DNS records in this record set.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Management.PrivateDns.Models.RecordType]
-Parameter Sets: Fields, Object, ResourceId
-Aliases:
-Accepted values: A, AAAA, CNAME, MX, PTR, SOA, SRV, TXT
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.Nullable`1[Microsoft.Azure.Management.PrivateDns.Models.RecordType]
 Parameter Sets: FieldsWithNoName, ObjectWithNoName, ResourceIdWithNoName
 Aliases:
 Accepted values: A, AAAA, CNAME, MX, PTR, SOA, SRV, TXT
@@ -242,12 +229,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Management.PrivateDns.Models.RecordType]
+Parameter Sets: Fields, Object, ResourceId
+Aliases:
+Accepted values: A, AAAA, CNAME, MX, PTR, SOA, SRV, TXT
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group to which the zone belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Fields, FieldsWithNoName
+Parameter Sets: FieldsWithNoName, Fields
 Aliases:
 
 Required: True
@@ -277,7 +277,7 @@ The zone in which to create the record set (without a terminating dot).
 
 ```yaml
 Type: System.String
-Parameter Sets: Fields, FieldsWithNoName
+Parameter Sets: FieldsWithNoName, Fields
 Aliases:
 
 Required: True

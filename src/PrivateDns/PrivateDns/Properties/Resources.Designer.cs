@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The input provided belongs to an auto registered Record Set. Manual operations on this type of record set is not allowed..
+        /// </summary>
+        internal static string Error_RecordSetIsAutoRegistered {
+            get {
+                return ResourceManager.GetString("Error_RecordSetIsAutoRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The relative record set name &quot;{0}&quot; includes the Private DNS zone name &quot;{1}&quot;. This will result in the set name &quot;{0}.{1}&quot;..
         /// </summary>
         internal static string Error_RecordSetNameEndsWithZoneName {
@@ -223,7 +232,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modifying RecordSet name to remove terminating &apos;.&apos;.  RecordSet name used is \&quot;{0}\&quot;..
+        ///   Looks up a localized string similar to Modifying RecordSet name to remove terminating &apos;.&apos;. RecordSet name used is \&quot;{0}\&quot;..
         /// </summary>
         internal static string Progress_ModifyingRecordSetNameTrimDot {
             get {
@@ -381,15 +390,6 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         internal static string Warning_InvalidLinkDetailsSpecified {
             get {
                 return ResourceManager.GetString("Warning_InvalidLinkDetailsSpecified", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Usage of this cmdlet without PrivateDnsRecords parameter will be deprecated soon. If there is a need to create empty record set, please specify PrivateDnsRecords parameter with an empty array as value.
-        /// </summary>
-        internal static string Warning_PrivateDnsRecordsParamNeedsToBeSpecified {
-            get {
-                return ResourceManager.GetString("Warning_PrivateDnsRecordsParamNeedsToBeSpecified", resourceCulture);
             }
         }
     }

@@ -107,11 +107,6 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
 
             zoneName = TrimTrailingDotInZoneName(zoneName);
 
-            if (this.PrivateDnsRecord == null)
-            {
-                this.WriteWarning(ProjectResources.Warning_PrivateDnsRecordsParamNeedsToBeSpecified);
-            }
-
             ConfirmAction(
                 ProjectResources.Progress_CreatingRecordSet,
                 this.Name,

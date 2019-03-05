@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
     /// <summary>
     /// Updates an existing record set.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsRecordSet", SupportsShouldProcess = true), OutputType(typeof(PSPrivateDnsRecordSet))]
-    public class SetAzurePrivateDnsRecordSet : PrivateDnsBaseCmdlet
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsRecordSet", SupportsShouldProcess = true), OutputType(typeof(PSPrivateDnsRecordSet))]
+    public class UpdateAzurePrivateDnsRecordSet : PrivateDnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The record set in which to add the record.")]
         [ValidateNotNullOrEmpty]
@@ -54,6 +54,6 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
                 WriteVerbose(ProjectResources.Success);
                 WriteObject(result);
             });
-            }
+        }
     }
-    }
+}
