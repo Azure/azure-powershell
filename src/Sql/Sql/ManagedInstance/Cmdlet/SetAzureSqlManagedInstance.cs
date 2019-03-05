@@ -137,7 +137,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "Whether or not the public data endpoint is enabled for the instance.")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter(Constants.True, Constants.False)]
         public bool? PublicDataEndpointEnabled { get; set; }
 
         /// <summary>
