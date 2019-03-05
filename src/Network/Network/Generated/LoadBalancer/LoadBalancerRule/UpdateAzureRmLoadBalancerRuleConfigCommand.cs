@@ -39,8 +39,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerInboundNatRuleConfig", DefaultParameterSetName = "SetByResourceParent", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
-    public partial class AddAzureRmLoadBalancerInboundNatRuleConfigCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerRuleConfig", DefaultParameterSetName = "SetByResourceParent", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
+    public partial class UpdateAzureRmLoadBalancerRuleConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -85,8 +85,8 @@ namespace Microsoft.Azure.Commands.Network
         public string LoadBalancerName { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "Name of the inbound nat rule.")]
+            Mandatory = false,
+            HelpMessage = "Name of the load balancing rule.")]
         public string Name { get; set; }
 
         [Parameter(
@@ -102,13 +102,24 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.",
+            HelpMessage = "The load distribution policy for this rule.",
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter(
+            "Default",
+            "SourceIP",
+            "SourceIPProtocol"
+        )]
+        public string LoadDistribution { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values are between 0 and 65534. Note that value 0 enables 'Any Port'",
             ValueFromPipelineByPropertyName = true)]
         public int FrontendPort { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The port used for the internal endpoint. Acceptable values range from 1 to 65535.",
+            HelpMessage = "The port used for internal connections on the endpoint. Acceptable values are between 0 and 65535. Note that value 0 enables 'Any Port'",
             ValueFromPipelineByPropertyName = true)]
         public int BackendPort { get; set; }
 
@@ -130,27 +141,50 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResourceIdParent",
-            HelpMessage = "A reference to frontend IP addresses.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "Configures SNAT for the VMs in the backend pool to use the publicIP address specified in the frontend of the load balancing rule.")]
+        public SwitchParameter DisableOutboundSNAT { get; set; }
+
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResourceIdParentName",
+            ParameterSetName = "SetByResourceId",
             HelpMessage = "A reference to frontend IP addresses.",
             ValueFromPipelineByPropertyName = true)]
         public string FrontendIpConfigurationId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResourceParent",
-            HelpMessage = "A reference to frontend IP addresses.",
-            ValueFromPipelineByPropertyName = true)]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = "SetByResourceParentName",
+            ParameterSetName = "SetByResource",
             HelpMessage = "A reference to frontend IP addresses.",
             ValueFromPipelineByPropertyName = true)]
         public PSFrontendIPConfiguration FrontendIpConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "A reference to a pool of DIPs. Inbound traffic is randomly load balanced across IPs in the backend IPs.",
+            ValueFromPipelineByPropertyName = true)]
+        public string BackendAddressPoolId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "A reference to a pool of DIPs. Inbound traffic is randomly load balanced across IPs in the backend IPs.",
+            ValueFromPipelineByPropertyName = true)]
+        public PSBackendAddressPool BackendAddressPool { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "The reference of the load balancer probe used by the load balancing rule.",
+            ValueFromPipelineByPropertyName = true)]
+        public string ProbeId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "The reference of the load balancer probe used by the load balancing rule.",
+            ValueFromPipelineByPropertyName = true)]
+        public PSProbe Probe { get; set; }
 
 
         public override void Execute()
@@ -172,16 +206,12 @@ namespace Microsoft.Azure.Commands.Network
                 this.LoadBalancer.Tag = TagsConversionHelper.CreateTagHashtable(vLoadBalancer.Tags);
             }
 
-            var existingInboundNatRule = this.LoadBalancer.InboundNatRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-            if (existingInboundNatRule != null)
+            var vLoadBalancingRulesIndex = this.LoadBalancer.LoadBalancingRules.IndexOf(
+                this.LoadBalancer.LoadBalancingRules.SingleOrDefault(
+                    resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase)));
+            if (vLoadBalancingRulesIndex == -1)
             {
-                throw new ArgumentException("InboundNatRule with the specified name already exists");
-            }
-
-            // InboundNatRules
-            if (this.LoadBalancer.InboundNatRules == null)
-            {
-                this.LoadBalancer.InboundNatRules = new List<PSInboundNatRule>();
+                throw new ArgumentException("LoadBalancingRules with the specified name does not exist");
             }
 
             if (string.Equals(ParameterSetName, "SetByResourceParent") ||
@@ -191,36 +221,81 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.FrontendIpConfigurationId = this.FrontendIpConfiguration.Id;
                 }
+                if (this.BackendAddressPool != null)
+                {
+                    this.BackendAddressPoolId = this.BackendAddressPool.Id;
+                }
+                if (this.Probe != null)
+                {
+                    this.ProbeId = this.Probe.Id;
+                }
+            }
+            var vLoadBalancingRules = LoadBalancer.LoadBalancingRules[vLoadBalancingRulesIndex];
+
+            if(!string.IsNullOrEmpty(this.Protocol))
+            {
+                vLoadBalancingRules.Protocol = this.Protocol;
+            }
+            if(!string.IsNullOrEmpty(this.LoadDistribution))
+            {
+                vLoadBalancingRules.LoadDistribution = this.LoadDistribution;
+            }
+            if(MyInvocation.BoundParameters.ContainsKey(nameof(this.FrontendPort)))
+            {
+                vLoadBalancingRules.FrontendPort = this.FrontendPort;
+            }
+            if(MyInvocation.BoundParameters.ContainsKey(nameof(this.BackendPort)))
+            {
+                vLoadBalancingRules.BackendPort = this.BackendPort;
+            }
+            if(MyInvocation.BoundParameters.ContainsKey(nameof(this.IdleTimeoutInMinutes)))
+            {
+                vLoadBalancingRules.IdleTimeoutInMinutes = this.MyInvocation.BoundParameters.ContainsKey("IdleTimeoutInMinutes") ? this.IdleTimeoutInMinutes : 4;
+            }
+            if(MyInvocation.BoundParameters.ContainsKey(nameof(this.EnableFloatingIP)))
+            {
+                vLoadBalancingRules.EnableFloatingIP = this.EnableFloatingIP;
+            }
+            if(MyInvocation.BoundParameters.ContainsKey(nameof(this.EnableTcpReset)))
+            {
+                vLoadBalancingRules.EnableTcpReset = this.EnableTcpReset;
+            }
+            if(MyInvocation.BoundParameters.ContainsKey(nameof(this.DisableOutboundSNAT)))
+            {
+                vLoadBalancingRules.DisableOutboundSNAT = this.DisableOutboundSNAT;
+            }
+            if(!string.IsNullOrEmpty(this.Name))
+            {
+                vLoadBalancingRules.Name = this.Name;
             }
 
-            var vInboundNatRules = new PSInboundNatRule();
-
-            vInboundNatRules.Protocol = this.Protocol;
-            vInboundNatRules.FrontendPort = this.FrontendPort;
-            vInboundNatRules.BackendPort = this.BackendPort;
-            vInboundNatRules.IdleTimeoutInMinutes = this.MyInvocation.BoundParameters.ContainsKey("IdleTimeoutInMinutes") ? this.IdleTimeoutInMinutes : 4;
-            vInboundNatRules.EnableFloatingIP = this.EnableFloatingIP;
-            vInboundNatRules.EnableTcpReset = this.EnableTcpReset;
-            vInboundNatRules.Name = this.Name;
             if(!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
             {
                 // FrontendIPConfiguration
-                if (vInboundNatRules.FrontendIPConfiguration == null)
+                if (vLoadBalancingRules.FrontendIPConfiguration == null)
                 {
-                    vInboundNatRules.FrontendIPConfiguration = new PSResourceId();
+                    vLoadBalancingRules.FrontendIPConfiguration = new PSResourceId();
                 }
-                vInboundNatRules.FrontendIPConfiguration.Id = this.FrontendIpConfigurationId;
+                vLoadBalancingRules.FrontendIPConfiguration.Id = this.FrontendIpConfigurationId;
             }
-            var generatedId = string.Format(
-                "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
-                this.NetworkClient.NetworkManagementClient.SubscriptionId,
-                this.LoadBalancer.ResourceGroupName,
-                this.LoadBalancer.Name,
-                "InboundNatRules",
-                this.Name);
-            vInboundNatRules.Id = generatedId;
-
-            this.LoadBalancer.InboundNatRules.Add(vInboundNatRules);
+            if(!string.IsNullOrEmpty(this.BackendAddressPoolId))
+            {
+                // BackendAddressPool
+                if (vLoadBalancingRules.BackendAddressPool == null)
+                {
+                    vLoadBalancingRules.BackendAddressPool = new PSResourceId();
+                }
+                vLoadBalancingRules.BackendAddressPool.Id = this.BackendAddressPoolId;
+            }
+            if(!string.IsNullOrEmpty(this.ProbeId))
+            {
+                // Probe
+                if (vLoadBalancingRules.Probe == null)
+                {
+                    vLoadBalancingRules.Probe = new PSResourceId();
+                }
+                vLoadBalancingRules.Probe.Id = this.ProbeId;
+            }
             WriteObject(this.LoadBalancer, true);
         }
     }
