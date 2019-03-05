@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.PrivateDns.Utilities;
-
 namespace Microsoft.Azure.Commands.PrivateDns.Models
 {
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Management.Automation;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.PrivateDns.Utilities;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.PrivateDns;
     using Microsoft.Azure.Management.PrivateDns.Models;
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
 
         public PSPrivateDnsZone UpdatePrivateDnsZone(PSPrivateDnsZone zone, bool overwrite)
         {
-            var response = this.PrivateDnsManagementClient.PrivateZones.CreateOrUpdate(
+            var response = this.PrivateDnsManagementClient.PrivateZones.Update(
                 zone.ResourceGroupName,
                 zone.Name,
                 new PrivateZone
@@ -89,8 +89,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
                     Location = DnsResourceLocation,
                     Tags = TagsConversionHelper.CreateTagDictionary(zone.Tags, validate: true),
                 },
-                ifMatch: overwrite ? null : zone.Etag,
-                ifNoneMatch: null);
+                ifMatch: overwrite ? null : zone.Etag);
 
             return ToPrivateDnsZone(response);
         }
@@ -208,7 +207,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
 
         public PSPrivateDnsVirtualNetworkLink UpdatePrivateDnsLink(PSPrivateDnsVirtualNetworkLink link, bool overwrite)
         {
-            var response = this.PrivateDnsManagementClient.VirtualNetworkLinks.CreateOrUpdate(
+            var response = this.PrivateDnsManagementClient.VirtualNetworkLinks.Update(
                 link.ResourceGroupName,
                 link.ZoneName,
                 link.Name,
@@ -222,8 +221,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
                     },
                     RegistrationEnabled = link.RegistrationEnabled,
                 },
-                ifMatch: overwrite ? null : link.Etag,
-                ifNoneMatch: null);
+                ifMatch: overwrite ? null : link.Etag);
 
             return ToPrivateDnsLink(response);
         }
@@ -325,7 +323,6 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
             Hashtable tags,
             PSPrivateDnsRecordBase[] resourceRecords)
         {
-
             var properties = new RecordSet
             {
                 Metadata = TagsConversionHelper.CreateTagDictionary(tags, validate: true),
@@ -391,7 +388,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
         {
             properties.AaaaRecords = recordType == RecordType.AAAA ? new List<Sdk.AaaaRecord>() : null;
             properties.ARecords = recordType == RecordType.A ? new List<Sdk.ARecord>() : null;
-            properties.CnameRecord = recordType == RecordType.CNAME ? new Sdk.CnameRecord(String.Empty) : null;
+            properties.CnameRecord = recordType == RecordType.CNAME ? new Sdk.CnameRecord(string.Empty) : null;
             properties.MxRecords = recordType == RecordType.MX ? new List<Sdk.MxRecord>() : null;
             properties.PtrRecords = recordType == RecordType.PTR ? new List<Sdk.PtrRecord>() : null;
             properties.SoaRecord = null;
@@ -401,7 +398,14 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
 
         public PSPrivateDnsRecordSet UpdatePrivateDnsRecordSet(PSPrivateDnsRecordSet recordSet, bool overwrite)
         {
-            var response = this.PrivateDnsManagementClient.RecordSets.CreateOrUpdate(
+            var getRecordSet = GetPrivateDnsRecordSet(recordSet.Name, recordSet.ZoneName, recordSet.ResourceGroupName,
+                recordSet.RecordType);
+            if (getRecordSet?.IsAutoRegistered == true)
+            {
+                throw new PSArgumentException(ProjectResources.Error_RecordSetIsAutoRegistered);
+            }
+
+            var response = this.PrivateDnsManagementClient.RecordSets.Update(
                 recordSet.ResourceGroupName,
                 recordSet.ZoneName,
                 recordSet.RecordType,
@@ -443,8 +447,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
                             ? GetMamlRecords<CnameRecord, Sdk.CnameRecord>(recordSet.Records).SingleOrDefault()
                             : null,
                 },
-                ifMatch: overwrite ? "*" : recordSet.Etag,
-                ifNoneMatch: null);
+                ifMatch: overwrite ? "*" : recordSet.Etag);
 
             return GetPowerShellRecordSet(recordSet.ZoneName, recordSet.ResourceGroupName, response);
         }

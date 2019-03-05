@@ -80,7 +80,6 @@ RecordType        : A
 Records           : {1.2.3.4, 5.6.7.8}
 Metadata          :
 IsAutoRegistered  :
-
 ```
 
 This example creates a RecordSet named www in the private zone myzone.com. The record set is of type A and has a TTL of 1 hour (3600 seconds). It contains a single Private DNS record.
@@ -228,7 +227,6 @@ RecordType        : A
 Records           : {1.2.3.4}
 Metadata          :
 IsAutoRegistered  :
-
 ```
 
 This command creates a RecordSet at the apex (or root) of the private zone myzone.com. To do this, the record set name is specified as "@" (including the double-quotes). You cannot create CNAME records at the apex of a zone. This is a constraint of the DNS standards; it is not a limitation of Azure Private DNS. To create a RecordSet using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.

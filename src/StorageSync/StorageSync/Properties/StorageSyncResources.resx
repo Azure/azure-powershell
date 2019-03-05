@@ -126,9 +126,6 @@
   <data name="InvokeStorageSyncFileRecallActionMessage" xml:space="preserve">
     <value>Invoke Storage Sync File Recall</value>
   </data>
-  <data name="KailaniApplicationId" xml:space="preserve">
-    <value>9469b9f5-6722-4481-a2b2-14ed560b706f</value>
-  </data>
   <data name="MissingAfsAgentInstallerPathErrorMessage" xml:space="preserve">
     <value>We cannot find the Storage Sync agent installed in the system. The given registry AfsAgentInstallerPath cannot be found.</value>
   </data>

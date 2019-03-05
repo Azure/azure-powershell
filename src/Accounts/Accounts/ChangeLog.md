@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Update examples for Connect-AzAccount
+
+## Version 1.3.1
 * Add additional framework extensions for .Net Framework execution
 * Update common packages to include new wildcard support functions
 

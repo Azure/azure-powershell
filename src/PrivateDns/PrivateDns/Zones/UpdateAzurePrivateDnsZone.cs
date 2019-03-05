@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
     /// <summary>
     /// Updates an existing zone.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsZone", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSetName), OutputType(typeof(PSPrivateDnsZone))]
-    public class SetAzurePrivateDnsZone : PrivateDnsBaseCmdlet
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsZone", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSetName), OutputType(typeof(PSPrivateDnsZone))]
+    public class UpdateAzurePrivateDnsZone : PrivateDnsBaseCmdlet
     {
         private const string FieldsParameterSetName = "Fields";
         private const string ObjectParameterSetName = "Object";

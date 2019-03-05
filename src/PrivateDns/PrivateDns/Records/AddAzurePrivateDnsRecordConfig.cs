@@ -77,7 +77,6 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
         [ValidateNotNullOrEmpty]
         public string Cname { get; set; }
 
-
         public override void ExecuteCmdlet()
         {
             var result = this.RecordSet;
