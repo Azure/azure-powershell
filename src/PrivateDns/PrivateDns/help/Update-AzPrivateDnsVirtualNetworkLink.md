@@ -98,7 +98,7 @@ Accept wildcard characters: False
 Boolean that represents if registration is enabled on the virtual network link.
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -250,6 +250,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink
+
+## NOTES
 
 ## RELATED LINKS
 

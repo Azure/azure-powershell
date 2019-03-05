@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
     /// <summary>
     /// Updates an existing zone.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsZone", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSetName), OutputType(typeof(PSPrivateDnsZone))]
-    public class SetAzurePrivateDnsZone : PrivateDnsBaseCmdlet
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateDnsZone", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSetName), OutputType(typeof(PSPrivateDnsZone))]
+    public class UpdateAzurePrivateDnsZone : PrivateDnsBaseCmdlet
     {
         private const string FieldsParameterSetName = "Fields";
         private const string ObjectParameterSetName = "Object";
@@ -92,11 +92,11 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
 
             zoneToUpdate.Tags = this.Tag;
 
-            if (zoneToUpdate.Name != null && zoneToUpdate.Name.EndsWith("."))
+            if (zoneToUpdate.Name != null)
             {
-                zoneToUpdate.Name = zoneToUpdate.Name.TrimEnd('.');
-                this.WriteWarning($"Modifying Private DNS zone name to remove terminating '.'.  Zone name used is \"{zoneToUpdate.Name}\".");
+                zoneToUpdate.Name = TrimTrailingDotInZoneName(zoneToUpdate.Name);
             }
+
             ConfirmAction(
                 ProjectResources.Progress_Modifying,
                 zoneToUpdate?.Name,
