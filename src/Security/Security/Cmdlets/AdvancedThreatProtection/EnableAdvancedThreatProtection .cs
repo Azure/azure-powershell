@@ -28,8 +28,11 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AdvancedThreatProtection
 
         public override void ExecuteCmdlet()
         {
-            var result = SecurityCenterClient.AdvancedThreatProtection.CreateWithHttpMessagesAsync(ResourceId, isEnabled: true).GetAwaiter().GetResult().Body;
-            WriteObject(result, enumerateCollection: true);
+            if (ShouldProcess(target: ResourceId, action: $"Enabling advanced threat protection policy for '{ResourceId}'."))
+            {
+                var result = SecurityCenterClient.AdvancedThreatProtection.CreateWithHttpMessagesAsync(ResourceId, isEnabled: true).GetAwaiter().GetResult().Body;
+                WriteObject(result, enumerateCollection: true);
+            }
         }
     }
 }
