@@ -63,7 +63,7 @@ This command sets the short term retention policy for database01 to 35 days via 
 
 ### Example 3
 ```powershell
-PS C:\> Set-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -InstanceName "ContosoServer" -DatabaseName "DB1" | Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 8
+PS C:\> Set-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -InstanceName "ContosoServer" -DatabaseName "DB1" | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 8
 ResourceGroupName : resourcegroup01
 InstanceName      : instance01
 DatabaseName      : database01

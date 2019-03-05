@@ -12,9 +12,16 @@ Gets a deleted database that you can restore.
 
 ## SYNTAX
 
+### DeletedDatabaseList
 ```
 Get-AzSqlDeletedInstanceDatabaseBackup [-ResourceGroupName] <String> [-InstanceName] <String>
- [[-DatabaseName] <String>] [[-DeletionDate] <DateTime>] [-DefaultProfile <IAzureContextContainer>]
+ [[-DatabaseName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### DeletedDatabaseByNameAndDeletedTime
+```
+Get-AzSqlDeletedInstanceDatabaseBackup [-ResourceGroupName] <String> [-InstanceName] <String>
+ [-DatabaseName] <String> [-DeletionDate] <DateTime> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -33,7 +40,7 @@ ManagedInstanceName  : ContosoServer
 Name                 : DB1
 CreationDate         : 2019-03-02 11:00:51 PM
 EarliestRestorePoint : 2019-03-02 11:05:30 PM
-Id                   : /subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ContosoResourceGroup/providers/Microsoft.
+Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoResourceGroup/providers/Microsoft.
                        Sql/managedInstances/ContosoServer/restorableDroppedDatabases/DB1,13196044
                        8170400000
 
@@ -43,7 +50,7 @@ ManagedInstanceName  : ContosoServer
 Name                 : DB1
 CreationDate         : 2019-03-02 10:00:51 PM
 EarliestRestorePoint : 2019-03-02 10:05:29 PM
-Id                   : /subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ContosoResourceGroup/providers/Microsoft.
+Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoResourceGroup/providers/Microsoft.
                        Sql/managedInstances/ContosoServer/restorableDroppedDatabases/DB1,13196041
                        2168670000
 
@@ -53,7 +60,7 @@ ManagedInstanceName  : ContosoServer
 Name                 : DB3
 CreationDate         : 2019-03-04 03:00:31 AM
 EarliestRestorePoint : 2019-03-04 03:05:23 AM
-Id                   : /subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ContosoResourceGroup/providers/Microsoft.
+Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoResourceGroup/providers/Microsoft.
                        Sql/managedInstances/ContosoServer/restorableDroppedDatabases/DB3,13196145
                        6082100000
 ```
@@ -69,7 +76,7 @@ ManagedInstanceName  : ContosoServer
 Name                 : DB1
 CreationDate         : 2019-03-02 11:00:51 PM
 EarliestRestorePoint : 2019-03-02 11:05:30 PM
-Id                   : /subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ContosoResourceGroup/providers/Microsoft.
+Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoResourceGroup/providers/Microsoft.
                        Sql/managedInstances/ContosoServer/restorableDroppedDatabases/DB1,13196044
                        8170400000
 
@@ -79,7 +86,7 @@ ManagedInstanceName  : ContosoServer
 Name                 : DB1
 CreationDate         : 2019-03-02 10:00:51 PM
 EarliestRestorePoint : 2019-03-02 10:05:29 PM
-Id                   : /subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ContosoResourceGroup/providers/Microsoft.
+Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoResourceGroup/providers/Microsoft.
                        Sql/managedInstances/ContosoServer/restorableDroppedDatabases/DB1,13196041
                        2168670000
 ```
@@ -91,10 +98,22 @@ The name of the Azure SQL Instance Database to retrieve backups for.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DeletedDatabaseList
 Aliases:
 
 Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: DeletedDatabaseByNameAndDeletedTime
+Aliases:
+
+Required: True
 Position: 2
 Default value: None
 Accept pipeline input: False
@@ -121,10 +140,10 @@ The deletion date of the Azure SQL Instance Database to retrieve backups for, wi
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
-Parameter Sets: (All)
+Parameter Sets: DeletedDatabaseByNameAndDeletedTime
 Aliases:
 
-Required: False
+Required: True
 Position: 3
 Default value: None
 Accept pipeline input: False

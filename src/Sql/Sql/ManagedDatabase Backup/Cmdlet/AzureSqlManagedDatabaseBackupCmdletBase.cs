@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
 using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model;
 using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services;
+using Microsoft.Azure.Commands.Sql.Properties;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -156,7 +157,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             // "/subscriptions/<subId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/managedInstances/<managedInstance>/databases/<database>/backupShortTermRetentionPolicies/default"
             if (tokens.Length != BackupShortTermRetentionPolicyResourceIdSegmentsLength)
             {
-                throw new ArgumentException("Invalid format of the resource identifier.", "ResourceId");
+                throw new ArgumentException(Resources.InvalidFormatResourceId, "ResourceId");
             }
 
             // Convert tokens into TYPE:NAME key value pairs, ignoring case
@@ -169,7 +170,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
                 segments[type] = name;
             }
 
-            try
+            try 
             {
                 this.ResourceGroupName = segments["resourceGroups"];
                 this.InstanceName = segments["managedInstances"];
@@ -188,13 +189,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
                     }
                     else
                     {
-                        throw new ArgumentException("Invalid format of the resource identifier.", "ResourceId");
+                        throw new ArgumentException(Resources.InvalidFormatResourceId, "ResourceId");
                     }
                 }
             }
             catch (KeyNotFoundException)
             {
-                throw new ArgumentException("Invalid format of the resource identifier.", "ResourceId");
+                throw new ArgumentException(Resources.InvalidFormatResourceId, "ResourceId");
             }
         }
     }
