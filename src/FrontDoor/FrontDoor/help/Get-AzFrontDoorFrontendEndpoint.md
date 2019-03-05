@@ -5,40 +5,46 @@ online version:
 schema: 2.0.0
 ---
 
-# Disable-AzFrontDoorCustomDomainHttps
+# Get-AzFrontDoorFrontendEndpoint
 
 ## SYNOPSIS
-Disable HTTPS for a custom domain
+Get a front door frontend endpoint.
 
 ## SYNTAX
 
-### ByFieldsParameterSet (Default)
 ```
-Disable-AzFrontDoorCustomDomainHttps -ResourceGroupName <String> -FrontDoorName <String>
- -FrontendEndpointName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ResourceIdParameterSet
-```
-Disable-AzFrontDoorCustomDomainHttps -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### ByObjectParameterSet
-```
-Disable-AzFrontDoorCustomDomainHttps -InputObject <PSFrontendEndpoint>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzFrontDoorFrontendEndpoint -ResourceGroupName <String> -FrontDoorName <String> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzFrontDoorCustomDomainHttps** disables HTTPS for a custom domain.
+The **Get-AzFrontDoorFrontendEndpoint** cmdlet gets all existing Front Door frontend endpoints in the current frontdoor resource that matches provided information.
 
 ## EXAMPLES
 
-### Example 1: Disable HTTPS for a custom domain with FrontdoorName and ResourceGroupName.
+### Example 1: Get all frontend endpoints in resource "frontdoor1" which is part of resource group "rg1"
 ```powershell
-PS C:\> Disable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz"
+PS C:\> Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "rg1" -FrontDoorName "frontdoor1"
+
+
+HostName                         : frontdoor1.azurefd.net
+SessionAffinityEnabledState      : Disabled
+SessionAffinityTtlSeconds        : 0
+WebApplicationFirewallPolicyLink :
+Backends                         :
+CustomHttpsProvisioningState     :
+CustomHttpsProvisioningSubstate  :
+CertificateSource                :
+ProtocolType                     :
+Vault                            :
+SecretName                       :
+SecretVersion                    :
+CertificateType                  :
+ResourceState                    : Enabled
+Id                               : /subscriptions/{guid}/resourcegroups/resourcegroup1
+                                   /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontdoor1-azurefd-net
+Name                             : frontdoor1-azurefd-net
+Type                             : Microsoft.Network/frontdoors/frontendendpoints
 
 HostName                         : frontendpointname1.custom.xyz
 SessionAffinityEnabledState      : Disabled
@@ -58,15 +64,17 @@ Id                               : /subscriptions/{guid}/resourcegroups/resource
                                    /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontendpointname1-custom-xyz
 Name                             : frontendpointname1-custom-xyz
 Type                             : Microsoft.Network/frontdoors/frontendendpoints
+
 ```
 
-Disable HTTPS for a custom domain with FrontdoorName and ResourceGroupName.
+Get all frontend endpoints in resource "frontdoor1" which is part of resource group "rg1"
 
-### Example 2: Disable HTTPS for a custom domain with PSFrontendEndpoint object.
+### Example 2: Get frontend endpoint with name "frontdoor1-azurefd-net" in resource "frontdoor1" which is part of resource group "rg1"
 ```powershell
-PS C:\> Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" | Disable-AzFrontDoorCustomDomainHttps -InputObject $frontendEndpointObj 
+PS C:\> Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "rg1" -FrontDoorName "frontdoor1" -Name "frontdoor1-azurefd-net"
 
-HostName                         : frontendpointname1.custom.xyz
+
+HostName                         : frontdoor1.azurefd.net
 SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
 WebApplicationFirewallPolicyLink :
@@ -81,38 +89,12 @@ SecretVersion                    :
 CertificateType                  :
 ResourceState                    : Enabled
 Id                               : /subscriptions/{guid}/resourcegroups/resourcegroup1
-                                   /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontendpointname1-custom-xyz
-Name                             : frontendpointname1-custom-xyz
+                                   /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontdoor1-azurefd-net
+Name                             : frontdoor1-azurefd-net
 Type                             : Microsoft.Network/frontdoors/frontendendpoints
 ```
 
-Disable HTTPS for a custom domain with PSFrontendEndpoint object.
-
-### Example 2: Disable HTTPS for a custom domain with ResourceId.
-```powershell
-PS C:\> Disable-AzFrontDoorCustomDomainHttps -ResourceId $resourceId 
-
-HostName                         : frontendpointname1.custom.xyz
-SessionAffinityEnabledState      : Disabled
-SessionAffinityTtlSeconds        : 0
-WebApplicationFirewallPolicyLink :
-Backends                         :
-CustomHttpsProvisioningState     :
-CustomHttpsProvisioningSubstate  :
-CertificateSource                :
-ProtocolType                     :
-Vault                            :
-SecretName                       :
-SecretVersion                    :
-CertificateType                  :
-ResourceState                    : Enabled
-Id                               : /subscriptions/{guid}/resourcegroups/resourcegroup1
-                                   /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontendpointname1-custom-xyz
-Name                             : frontendpointname1-custom-xyz
-Type                             : Microsoft.Network/frontdoors/frontendendpoints
-```
-
-Disable HTTPS for a custom domain with PSFrontendEndpoint object.
+Get all frontend endpoints in resource "frontdoor1" which is part of resource group "rg1"
 
 ## PARAMETERS
 
@@ -132,11 +114,11 @@ Accept wildcard characters: False
 ```
 
 ### -FrontDoorName
-The name of the Front Door.
+Front Door name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -146,90 +128,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FrontendEndpointName
+### -Name
 Frontend endpoint name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The Frontend endpoint object to update.
-
-```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group to which the Front Door belongs.
+The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Resource Id of the Front Door endpoint to disable https
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -241,7 +163,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 
