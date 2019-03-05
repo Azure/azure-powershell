@@ -12,7 +12,8 @@ Module with cmdlets that will enable users to understand the compliance state of
 
 ## Az.GuestConfiguration Cmdlets
 ### [Get-AzVMGuestPolicyStatus](Get-AzVMGuestPolicyStatus.md)
-Gets guest configuration policy reports for an initiative of type "Guest Configuration" that is assigned to a VM. An initiative is a policy of definition type "Initiative".
+Gets guest configuration policy statuses (detailed) for an initiative of type "Guest Configuration" that is assigned to a VM.
+An initiative is a policy of definition type "Initiative".
 
 ### [Get-AzVMGuestPolicyStatusHistory](Get-AzVMGuestPolicyStatusHistory.md)
 Gets guest configuration policy compliance status history for an initiative of type "Guest Configuration" that is assigned to a VM.
