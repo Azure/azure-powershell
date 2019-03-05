@@ -18,10 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+- Support Custom policy reports retrieval through the cmd-lets
+- Add versioning information to the reports
+
+## Version 0.10.2
+- General bug fixes.
+- Rename cmdlet Get-AzVMGuestPolicyReport to Get-AzVMGuestPolicyStatus to keep it consistent with the Azure portal and to avoid user confusion.
 
 ## Version 0.10.1
 * Initial release of Az.GuestConfiguration module. Provides these two cmdlets.
-  * Get-AzVMGuestPolicyReport
+  * Get-AzVMGuestPolicyStatus
     * Provides compliance status of a VM in a resource group, compliance reasons.
   * Get-AzVMGuestPolicyStatusHistory:
     * Provides historical compliance statuses of a VM in a resource group, for a maximum of past 14 days.

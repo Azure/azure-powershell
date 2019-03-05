@@ -21,6 +21,7 @@ Get-AzVirtualNetworkGatewayConnection [-Name <String>] -ResourceGroupName <Strin
 ## DESCRIPTION
 The Virtual Network Gateway Connection is the object representing the IPsec tunnel (Site-to-Site or Vnet-to-Vnet) connected to your Virtual Network Gateway in Azure.
 The **Get-AzVirtualNetworkGatewayConnection** cmdlet returns the object of your connection based on Name and Resource Group Name.
+If the **Get-AzVirtualNetworkGatewayConnection** cmdlet is issued without specifying the -Name parameter, the output will not show ConnectionStatus and SharedKey details.
 
 ## EXAMPLES
 
