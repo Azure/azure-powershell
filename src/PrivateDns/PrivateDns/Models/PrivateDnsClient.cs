@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
 
         public PSPrivateDnsZone UpdatePrivateDnsZone(PSPrivateDnsZone zone, bool overwrite)
         {
-            var response = this.PrivateDnsManagementClient.PrivateZones.Update(
+            var response = this.PrivateDnsManagementClient.PrivateZones.CreateOrUpdate(
                 zone.ResourceGroupName,
                 zone.Name,
                 new PrivateZone
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
 
         public PSPrivateDnsVirtualNetworkLink UpdatePrivateDnsLink(PSPrivateDnsVirtualNetworkLink link, bool overwrite)
         {
-            var response = this.PrivateDnsManagementClient.VirtualNetworkLinks.Update(
+            var response = this.PrivateDnsManagementClient.VirtualNetworkLinks.CreateOrUpdate(
                 link.ResourceGroupName,
                 link.ZoneName,
                 link.Name,
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
                 throw new PSArgumentException(ProjectResources.Error_RecordSetIsAutoRegistered);
             }
 
-            var response = this.PrivateDnsManagementClient.RecordSets.Update(
+            var response = this.PrivateDnsManagementClient.RecordSets.CreateOrUpdate(
                 recordSet.ResourceGroupName,
                 recordSet.ZoneName,
                 recordSet.RecordType,
