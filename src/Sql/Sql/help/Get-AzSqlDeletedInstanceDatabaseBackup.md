@@ -12,16 +12,16 @@ Gets a deleted database that you can restore.
 
 ## SYNTAX
 
-### DeletedDatabaseList
+### DeletedDatabaseList (Default)
 ```
 Get-AzSqlDeletedInstanceDatabaseBackup [-ResourceGroupName] <String> [-InstanceName] <String>
- [[-DatabaseName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DatabaseName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DeletedDatabaseByNameAndDeletedTime
 ```
 Get-AzSqlDeletedInstanceDatabaseBackup [-ResourceGroupName] <String> [-InstanceName] <String>
- [-DatabaseName] <String> [-DeletionDate] <DateTime> [-DefaultProfile <IAzureContextContainer>]
+ -DatabaseName <String> [-DeletionDate] <DateTime> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -102,7 +102,7 @@ Parameter Sets: DeletedDatabaseList
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -114,7 +114,7 @@ Parameter Sets: DeletedDatabaseByNameAndDeletedTime
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
