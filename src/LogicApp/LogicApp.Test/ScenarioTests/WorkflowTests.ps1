@@ -199,10 +199,9 @@ function Test-CreateAndGetLogicAppUsingDefinitionWithActions
 	Assert-True { $workflow5.Length -ge 1 }
 
 	# Test 6: Get workflow with just name parameter
-	# refortie (1/31/19): TODO Test is disabled for now, we only return the first page on get logic app by subscription
-	# $workflow6 = Get-AzLogicApp -Name $workflowName
-	# Assert-NotNull $workflow6
-	# Assert-True { $workflow6.Length -ge 1 }
+	$workflow6 = Get-AzLogicApp -Name $workflowName
+	Assert-NotNull $workflow6
+	Assert-True { $workflow6.Length -ge 1 }
 
 	# Test 7: Get non-existing logic app using get cmdlet
 	try
