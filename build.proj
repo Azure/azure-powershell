@@ -60,6 +60,7 @@
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">$(LibrarySourceFolder)</NuGetPublishingSource>
     <Scope Condition="$(Scope) == ''" >All</Scope>
+    <TestsToRun Condition="$(TestsToRun) == ''" >All</TestsToRun>
     <BuildTasksPath>$(LibraryToolsFolder)/BuildPackagesTask/Microsoft.Azure.Build.Tasks/bin/$(Configuration)</BuildTasksPath>
     <StackPackageFolder>$(LibrarySourceFolder)/Stack</StackPackageFolder>
     <NetCore Condition="'$(NetCore)' != 'true'">false</NetCore>
@@ -379,6 +380,9 @@
     <PropertyGroup Condition="'$(ExcludeAuthenticators)' == 'true'">
       <AuthenticatorExclusions>$(LibraryRoot)src/**/Authenticators.csproj;</AuthenticatorExclusions>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(TestsToRun)' != 'All'" >
+      <CoreTests>$(LibraryRoot)src/Compute/Compute.Test/Compute.Test.csproj;$(LibraryRoot)src/Network/Network.Test/Network.Test.csproj;$(LibraryRoot)src/Resources/Resources.Test/Resources.Test.csproj;$(LibraryRoot)src/Sql/Sql.Test/Sql.Test.csproj;$(LibraryRoot)src/Websites/Websites.Test/Websites.Test.csproj;</CoreTests>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Framework)' == ''">
         <Framework>netcoreapp2.0</Framework>
     </PropertyGroup>
@@ -390,7 +394,9 @@
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <ItemGroup>
-      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(AuthenticatorExclusions)"/>
+      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(AuthenticatorExclusions)" Condition="'$(TestsToRun)' == 'All'" />
+      <ModuleCsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(AuthenticatorExclusions)$(CoreTests)" Condition="'$(TestsToRun)' == 'NonCore'" />
+      <ModuleCsprojFiles Include="$(CoreTests)" Condition="'$(TestsToRun)' == 'Core'" />
     </ItemGroup>
     <!-- https://stackoverflow.com/a/35477012/294804 -->
     <ItemGroup>
