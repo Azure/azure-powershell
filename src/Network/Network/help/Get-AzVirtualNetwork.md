@@ -33,9 +33,56 @@ The **Get-AzVirtualNetwork** cmdlet gets one or more virtual networks n a resour
 ### 1: Retrieve a virtual network
 ```
 Get-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup
+
+Name                   : MyVirtualNetwork1
+ResourceGroupName      : TestResourceGroup
+Location               : eastus
+Id                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup
+                         /providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork1
+Etag                   : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid           : 00000000-0000-0000-0000-000000000000
+ProvisioningState      : Succeeded
+Tags                   :
+AddressSpace           : {
+                           "AddressPrefixes": [
+                             "xx.x.x.x/x"
+                           ]
+                         }
+DhcpOptions            : {}
+Subnets                : []
+VirtualNetworkPeerings : []
+EnableDdosProtection   : false
+DdosProtectionPlan     : null
 ```
 
 This command gets the virtual network named MyVirtualNetwork in the resource group TestResourceGroup
+
+### 2: List virtual networks using filter
+```
+Get-AzVirtualNetwork -Name MyVirtualNetwork*
+
+Name                   : MyVirtualNetwork1
+ResourceGroupName      : TestResourceGroup
+Location               : eastus
+Id                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup
+                         /providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork1
+Etag                   : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid           : 00000000-0000-0000-0000-000000000000
+ProvisioningState      : Succeeded
+Tags                   :
+AddressSpace           : {
+                           "AddressPrefixes": [
+                             "xx.x.x.x/x"
+                           ]
+                         }
+DhcpOptions            : {}
+Subnets                : []
+VirtualNetworkPeerings : []
+EnableDdosProtection   : false
+DdosProtectionPlan     : null
+```
+
+This command gets all virtual networks that start with "MyVirtualNetwork".
 
 ## PARAMETERS
 
