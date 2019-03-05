@@ -1,55 +1,52 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-ms.assetid: 5727E2CA-0A0B-4050-9F4A-7E06758D9B53
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/remove-azcdncustomdomain
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/disable-azcdncustomdomainhttps
 schema: 2.0.0
 ---
 
-# Remove-AzCdnCustomDomain
+# Disable-AzCdnCustomDomainHttps
 
 ## SYNOPSIS
-Removes a custom domain.
+Disables Custom Domain HTTPS.
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Remove-AzCdnCustomDomain -CustomDomainName <String> -EndpointName <String> -ProfileName <String>
- -ResourceGroupName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Disable-AzCdnCustomDomainHttps -ResourceGroupName <String> -ProfileName <String> -EndpointName <String>
+ -CustomDomainName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzCdnCustomDomain -CdnCustomDomain <PSCustomDomain> [-PassThru]
+Disable-AzCdnCustomDomainHttps -InputObject <PSCustomDomain> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByResourceIdParameterSet
+```
+Disable-AzCdnCustomDomainHttps -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Remove-AzCdnCustomDomain** cmdlet removes the custom domain from an Azure Content Delivery Network (CDN) endpoint.
+The **Disable-AzCdnCustomDomainHttps** cmdlet disables the secured HTTPS delivery of a CDN custom domain.
 
 ## EXAMPLES
 
-## PARAMETERS
-
-### -CdnCustomDomain
-Specifies the custom domain that this cmdlet removes.
-
-```yaml
-Type: Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+### Example 1
+```powershell
+PS C:\> Disable-AzCdnCustomDomainHttps -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -CustomDomainName $customDomainName
 ```
 
+Disable secure delivery of the custom domain.
+
+## PARAMETERS
+
 ### -CustomDomainName
-Specifies the resource name of the custom domain that this cmdlet removes.
+Azure CDN custom domain display name.
 
 ```yaml
 Type: System.String
@@ -64,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -79,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -EndpointName
-Specifies the name of the endpoint from which this cmdlet removes a custom domain.
+Azure CDN endpoint name.
 
 ```yaml
 Type: System.String
@@ -93,9 +90,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The custom domain object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain
+Parameter Sets: ByObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PassThru
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
+Return object if specified.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -105,12 +116,12 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Specifies the name of the profile from which this cmdlet removes a custom domain.
+Azure CDN profile name.
 
 ```yaml
 Type: System.String
@@ -125,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group from which this cmdlet removes a custom domain.
+The resource group of the Azure CDN profile
 
 ```yaml
 Type: System.String
@@ -139,6 +150,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+ResourceId of the Custom Domain
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -149,7 +175,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -165,7 +191,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -177,7 +203,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain
 
-### System.Management.Automation.SwitchParameter
+### System.String
 
 ## OUTPUTS
 
@@ -186,11 +212,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzCdnCustomDomain](./Get-AzCdnCustomDomain.md)
-
-[New-AzCdnCustomDomain](./New-AzCdnCustomDomain.md)
-
-[Test-AzCdnCustomDomain](./Test-AzCdnCustomDomain.md)
-
-

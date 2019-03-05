@@ -17,10 +17,13 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
+* Added new Powershell cmdlets for Enable/Disable Custom Domain Https and deprecated the old ones
 
 ## Version 1.0.1
 * Update incorrect online help URLs
 
 ## Version 1.0.0
 * General availability of `Az.Cdn` module
+
