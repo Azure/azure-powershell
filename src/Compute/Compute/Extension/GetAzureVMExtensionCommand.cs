@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("ExtensionName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name.")]
@@ -65,16 +66,32 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (Status.IsPresent)
+                if (!string.IsNullOrEmpty(Name))
                 {
-                    var result = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
-                    WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
+                    if (Status.IsPresent)
+                    {
+                        var result = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
+                        WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
+                    }
+                    else
+                    {
+                        var result = this.VirtualMachineExtensionClient.GetWithHttpMessagesAsync(this.ResourceGroupName,
+                            this.VMName, this.Name).GetAwaiter().GetResult();
+                        WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
+                    }
                 }
                 else
                 {
-                    var result = this.VirtualMachineExtensionClient.GetWithHttpMessagesAsync(this.ResourceGroupName,
-                        this.VMName, this.Name).GetAwaiter().GetResult();
-                    WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
+                    if (Status.IsPresent)
+                    {
+                        var result = this.VirtualMachineExtensionClient.ListWithInstanceView(this.ResourceGroupName, this.VMName).Body.Value;
+                        WriteObject(result.ToList().Select(t => t.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName)), true);
+                    }
+                    else
+                    {
+                        var result = this.VirtualMachineExtensionClient.ListWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter().GetResult().Body.Value;
+                        WriteObject(result.ToList().Select(t => t.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName)), true);
+                    }
                 }
             });
         }

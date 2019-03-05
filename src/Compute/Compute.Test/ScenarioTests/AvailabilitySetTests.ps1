@@ -40,12 +40,39 @@ function Test-AvailabilitySet
             $avsetname = $asetName + $i;
             New-AzAvailabilitySet -ResourceGroupName $rgname -Name $avsetname -Location $loc -PlatformUpdateDomainCount $nonDefaultUD -PlatformFaultDomainCount $nonDefaultFD -Sku 'Classic' -Tag @{"a"="b"};
         }
+        
+        $wildcardRgQuery = ($rgname -replace ".$") + "*"
+        $wildcardNameQuery = ($asetName -replace ".$") + "*"
 
         $asets = Get-AzAvailabilitySet;
         Assert-NotNull $asets;
         Assert-True {$asets.Count -gt 200}
 
         $asets = Get-AzAvailabilitySet -ResourceGroupName $rgname;
+        Assert-NotNull $asets;
+        Assert-AreEqual $asetName $asets[0].Name;
+        
+        $asets = Get-AzAvailabilitySet -ResourceGroupName $wildcardRgQuery;
+        Assert-NotNull $asets;
+        Assert-AreEqual $asetName $asets[0].Name;
+        
+        $asets = Get-AzAvailabilitySet -Name $wildcardNameQuery;
+        Assert-NotNull $asets;
+        Assert-AreEqual $asetName $asets[0].Name;
+        
+        $asets = Get-AzAvailabilitySet -Name $asetName;
+        Assert-NotNull $asets;
+        Assert-AreEqual $asetName $asets[0].Name;
+        
+        $asets = Get-AzAvailabilitySet -ResourceGroupName $wildcardRgQuery -Name $asetName;
+        Assert-NotNull $asets;
+        Assert-AreEqual $asetName $asets[0].Name;
+        
+        $asets = Get-AzAvailabilitySet -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery;
+        Assert-NotNull $asets;
+        Assert-AreEqual $asetName $asets[0].Name;
+        
+        $asets = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $wildcardNameQuery;
         Assert-NotNull $asets;
         Assert-AreEqual $asetName $asets[0].Name;
 

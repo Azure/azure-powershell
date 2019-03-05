@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+- Support Custom policy reports retrieval through the cmd-lets
+- Add versioning information to the reports
 
 ## Version 0.10.2
 - General bug fixes.
