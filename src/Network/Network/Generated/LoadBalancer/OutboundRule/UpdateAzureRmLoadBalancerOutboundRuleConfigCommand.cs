@@ -39,11 +39,53 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerOutboundRuleConfig", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = true), OutputType(typeof(PSOutboundRule))]
-    public partial class NewAzureRmLoadBalancerOutboundRuleConfigCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerOutboundRuleConfig", DefaultParameterSetName = "SetByResourceParent", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
+    public partial class UpdateAzureRmLoadBalancerOutboundRuleConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceIdParent",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceParent",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public PSLoadBalancer LoadBalancer { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceIdParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Resource group name",
+            ParameterSetName = "SetByResourceParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceIdParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Load Balancer name",
+            ParameterSetName = "SetByResourceParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string LoadBalancerName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Name of the outbound rule.")]
         public string Name { get; set; }
 
@@ -54,7 +96,7 @@ namespace Microsoft.Azure.Commands.Network
         public int AllocatedOutboundPort { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Protocol - TCP, UDP or All",
             ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter(
@@ -76,20 +118,20 @@ namespace Microsoft.Azure.Commands.Network
         public int IdleTimeoutInMinutes { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The Frontend IP addresses of the load balancer.",
             ValueFromPipelineByPropertyName = true)]
         public PSResourceId[] FrontendIpConfiguration { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = "SetByResourceId",
             HelpMessage = "A reference to a pool of DIPs. Outbound traffic is randomly load balanced across IPs in the backend IPs.",
             ValueFromPipelineByPropertyName = true)]
         public string BackendAddressPoolId { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = "SetByResource",
             HelpMessage = "A reference to a pool of DIPs. Outbound traffic is randomly load balanced across IPs in the backend IPs.",
             ValueFromPipelineByPropertyName = true)]
@@ -98,21 +140,62 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            if(string.Equals(ParameterSetName, "SetByResourceParentName") ||
+               string.Equals(ParameterSetName, "SetByResourceIdParentName"))
+            {
+                LoadBalancer vLoadBalancer;
+                try
+                {
+                    vLoadBalancer = this.NetworkClient.NetworkManagementClient.LoadBalancers.Get(ResourceGroupName, LoadBalancerName);
+                }
+                catch (Microsoft.Rest.Azure.CloudException exception)
+                {
+                    throw exception;
+                }
+                this.LoadBalancer = NetworkResourceManagerProfile.Mapper.Map<CNM.PSLoadBalancer>(vLoadBalancer);
+                this.LoadBalancer.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(vLoadBalancer.Id);
+                this.LoadBalancer.Tag = TagsConversionHelper.CreateTagHashtable(vLoadBalancer.Tags);
+            }
 
-            if (string.Equals(ParameterSetName, "SetByResource"))
+            var vOutboundRulesIndex = this.LoadBalancer.OutboundRules.IndexOf(
+                this.LoadBalancer.OutboundRules.SingleOrDefault(
+                    resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase)));
+            if (vOutboundRulesIndex == -1)
+            {
+                throw new ArgumentException("OutboundRules with the specified name does not exist");
+            }
+
+            if (string.Equals(ParameterSetName, "SetByResourceParent") ||
+                string.Equals(ParameterSetName, "SetByResourceParentName"))
             {
                 if (this.BackendAddressPool != null)
                 {
                     this.BackendAddressPoolId = this.BackendAddressPool.Id;
                 }
             }
-            var vOutboundRules = new PSOutboundRule();
+            var vOutboundRules = LoadBalancer.OutboundRules[vOutboundRulesIndex];
 
-            vOutboundRules.AllocatedOutboundPorts = this.AllocatedOutboundPort;
-            vOutboundRules.Protocol = this.Protocol;
-            vOutboundRules.EnableTcpReset = this.EnableTcpReset;
-            vOutboundRules.IdleTimeoutInMinutes = this.MyInvocation.BoundParameters.ContainsKey("IdleTimeoutInMinutes") ? this.IdleTimeoutInMinutes : 4;
-            vOutboundRules.Name = this.Name;
+            if(MyInvocation.BoundParameters.ContainsKey(nameof(this.AllocatedOutboundPort)))
+            {
+                vOutboundRules.AllocatedOutboundPorts = this.AllocatedOutboundPort;
+            }
+            if(!string.IsNullOrEmpty(this.Protocol))
+            {
+                vOutboundRules.Protocol = this.Protocol;
+            }
+            if(MyInvocation.BoundParameters.ContainsKey(nameof(this.EnableTcpReset)))
+            {
+                vOutboundRules.EnableTcpReset = this.EnableTcpReset;
+            }
+            if(MyInvocation.BoundParameters.ContainsKey(nameof(this.IdleTimeoutInMinutes)))
+            {
+                vOutboundRules.IdleTimeoutInMinutes = this.MyInvocation.BoundParameters.ContainsKey("IdleTimeoutInMinutes") ? this.IdleTimeoutInMinutes : 4;
+            }
+            if(!string.IsNullOrEmpty(this.Name))
+            {
+                vOutboundRules.Name = this.Name;
+            }
+
             if(this.FrontendIpConfiguration?.ToList() != null && this.FrontendIpConfiguration?.ToList().Count > 0)
             {
                 vOutboundRules.FrontendIpConfigurations = new List<PSResourceId>();
@@ -134,16 +217,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 vOutboundRules.BackendAddressPool.Id = this.BackendAddressPoolId;
             }
-            var generatedId = string.Format(
-                "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
-                this.NetworkClient.NetworkManagementClient.SubscriptionId,
-                Microsoft.Azure.Commands.Network.Properties.Resources.ResourceGroupNotSet,
-                Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerNameNotSet,
-                "OutboundRules",
-                this.Name);
-            vOutboundRules.Id = generatedId;
-
-            WriteObject(vOutboundRules, true);
+            WriteObject(this.LoadBalancer, true);
         }
     }
 }

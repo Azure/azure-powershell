@@ -24,8 +24,12 @@
 // Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
+using AutoMapper;
+using CNM = Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
@@ -35,15 +39,50 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerRuleConfig", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerRuleConfig", DefaultParameterSetName = "SetByResourceParent", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
     public partial class AddAzureRmLoadBalancerRuleConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceIdParent",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceParent",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         public PSLoadBalancer LoadBalancer { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceIdParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Resource group name",
+            ParameterSetName = "SetByResourceParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceIdParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Load Balancer name",
+            ParameterSetName = "SetByResourceParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string LoadBalancerName { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -107,42 +146,72 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResourceId",
+            ParameterSetName = "SetByResourceIdParent",
+            HelpMessage = "A reference to frontend IP addresses.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceIdParentName",
             HelpMessage = "A reference to frontend IP addresses.",
             ValueFromPipelineByPropertyName = true)]
         public string FrontendIpConfigurationId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResource",
+            ParameterSetName = "SetByResourceParent",
+            HelpMessage = "A reference to frontend IP addresses.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceParentName",
             HelpMessage = "A reference to frontend IP addresses.",
             ValueFromPipelineByPropertyName = true)]
         public PSFrontendIPConfiguration FrontendIpConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResourceId",
+            ParameterSetName = "SetByResourceIdParent",
+            HelpMessage = "A reference to a pool of DIPs. Inbound traffic is randomly load balanced across IPs in the backend IPs.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceIdParentName",
             HelpMessage = "A reference to a pool of DIPs. Inbound traffic is randomly load balanced across IPs in the backend IPs.",
             ValueFromPipelineByPropertyName = true)]
         public string BackendAddressPoolId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResource",
+            ParameterSetName = "SetByResourceParent",
+            HelpMessage = "A reference to a pool of DIPs. Inbound traffic is randomly load balanced across IPs in the backend IPs.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceParentName",
             HelpMessage = "A reference to a pool of DIPs. Inbound traffic is randomly load balanced across IPs in the backend IPs.",
             ValueFromPipelineByPropertyName = true)]
         public PSBackendAddressPool BackendAddressPool { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResourceId",
+            ParameterSetName = "SetByResourceIdParent",
+            HelpMessage = "The reference of the load balancer probe used by the load balancing rule.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceIdParentName",
             HelpMessage = "The reference of the load balancer probe used by the load balancing rule.",
             ValueFromPipelineByPropertyName = true)]
         public string ProbeId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResource",
+            ParameterSetName = "SetByResourceParent",
+            HelpMessage = "The reference of the load balancer probe used by the load balancing rule.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceParentName",
             HelpMessage = "The reference of the load balancer probe used by the load balancing rule.",
             ValueFromPipelineByPropertyName = true)]
         public PSProbe Probe { get; set; }
@@ -150,6 +219,22 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            if(string.Equals(ParameterSetName, "SetByResourceParentName") ||
+               string.Equals(ParameterSetName, "SetByResourceIdParentName"))
+            {
+                LoadBalancer vLoadBalancer;
+                try
+                {
+                    vLoadBalancer = this.NetworkClient.NetworkManagementClient.LoadBalancers.Get(ResourceGroupName, LoadBalancerName);
+                }
+                catch (Microsoft.Rest.Azure.CloudException exception)
+                {
+                    throw exception;
+                }
+                this.LoadBalancer = NetworkResourceManagerProfile.Mapper.Map<CNM.PSLoadBalancer>(vLoadBalancer);
+                this.LoadBalancer.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(vLoadBalancer.Id);
+                this.LoadBalancer.Tag = TagsConversionHelper.CreateTagHashtable(vLoadBalancer.Tags);
+            }
 
             var existingLoadBalancingRule = this.LoadBalancer.LoadBalancingRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
             if (existingLoadBalancingRule != null)
@@ -163,7 +248,8 @@ namespace Microsoft.Azure.Commands.Network
                 this.LoadBalancer.LoadBalancingRules = new List<PSLoadBalancingRule>();
             }
 
-            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
+            if (string.Equals(ParameterSetName, "SetByResourceParent") ||
+                string.Equals(ParameterSetName, "SetByResourceParentName"))
             {
                 if (this.FrontendIpConfiguration != null)
                 {

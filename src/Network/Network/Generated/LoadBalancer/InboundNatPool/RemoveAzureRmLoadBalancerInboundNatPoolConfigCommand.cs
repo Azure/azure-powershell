@@ -24,7 +24,11 @@
 // Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
+using AutoMapper;
+using CNM = Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
@@ -34,15 +38,32 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerInboundNatPoolConfig", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerInboundNatPoolConfig", DefaultParameterSetName = "ByParentResource", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
     public partial class RemoveAzureRmLoadBalancerInboundNatPoolConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "ByParentResource",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         public PSLoadBalancer LoadBalancer { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Resource group name",
+            ParameterSetName = "ByParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Load Balancer name",
+            ParameterSetName = "ByParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string LoadBalancerName { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -52,6 +73,21 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            if(string.Equals(ParameterSetName, "ByParentName"))
+            {
+                LoadBalancer vLoadBalancer;
+                try
+                {
+                    vLoadBalancer = this.NetworkClient.NetworkManagementClient.LoadBalancers.Get(ResourceGroupName, LoadBalancerName);
+                }
+                catch (Microsoft.Rest.Azure.CloudException exception)
+                {
+                    throw exception;
+                }
+                this.LoadBalancer = NetworkResourceManagerProfile.Mapper.Map<CNM.PSLoadBalancer>(vLoadBalancer);
+                this.LoadBalancer.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(vLoadBalancer.Id);
+                this.LoadBalancer.Tag = TagsConversionHelper.CreateTagHashtable(vLoadBalancer.Tags);
+            }
 
             // InboundNatPools
             if (this.LoadBalancer.InboundNatPools == null)
