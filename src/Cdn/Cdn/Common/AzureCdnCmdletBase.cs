@@ -15,10 +15,9 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Cdn;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Cdn.Common
 {
@@ -33,6 +32,7 @@ namespace Microsoft.Azure.Commands.Cdn.Common
 
         public const string ObjectParameterSet = "ByObjectParameterSet";
         public const string FieldsParameterSet = "ByFieldsParameterSet";
+        public const string ResourceIdParameterSet = "ByResourceIdParameterSet";
 
         /// <summary>
         /// Gets or sets the Cdn management client.

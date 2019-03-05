@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Cdn.dll'
@@ -83,7 +83,8 @@ CmdletsToExport = 'Get-AzCdnProfile', 'Get-AzCdnProfileSsoUrl', 'New-AzCdnProfil
                'Stop-AzCdnEndpoint', 'Test-AzCdnCustomDomain', 
                'Get-AzCdnCustomDomain', 'New-AzCdnCustomDomain', 
                'Remove-AzCdnCustomDomain', 'Enable-AzCdnCustomDomain', 
-               'Disable-AzCdnCustomDomain', 'Get-AzCdnProfileResourceUsage', 
+               'Disable-AzCdnCustomDomain', 'Enable-AzCdnCustomDomainHttps',
+               'Disable-AzCdnCustomDomainHttps', 'Get-AzCdnProfileResourceUsage', 
                'Confirm-AzCdnEndpointProbeUrl', 'Get-AzCdnEndpointResourceUsage', 
                'Get-AzCdnProfileSupportedOptimizationType', 
                'Get-AzCdnSubscriptionResourceUsage', 'Get-AzCdnEdgeNodes'
