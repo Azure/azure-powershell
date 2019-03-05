@@ -18,11 +18,11 @@ Get-AzFrontDoorFrontendEndpoint -ResourceGroupName <String> -FrontDoorName <Stri
 ```
 
 ## DESCRIPTION
-The **Get-AzFrontDoorFrontendEndpoint** cmdlet gets all existing Front Door frontend endpoints in the current frontdoor resource that matches provided information.
+The **Get-AzFrontDoorFrontendEndpoint** cmdlet gets all existing frontend endpoints in the current Front Door resource that matches provided information.
 
 ## EXAMPLES
 
-### Example 1: Get all frontend endpoints in resource "frontdoor1" which is part of resource group "rg1"
+### Example 1: Get all frontend endpoints in Front Door "frontdoor1" which is part of resource group "rg1".
 ```powershell
 PS C:\> Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "rg1" -FrontDoorName "frontdoor1"
 
@@ -67,9 +67,9 @@ Type                             : Microsoft.Network/frontdoors/frontendendpoint
 
 ```
 
-Get all frontend endpoints in resource "frontdoor1" which is part of resource group "rg1"
+Get all frontend endpoints in Front Door "frontdoor1" which is part of resource group "rg1".
 
-### Example 2: Get frontend endpoint with name "frontdoor1-azurefd-net" in resource "frontdoor1" which is part of resource group "rg1"
+### Example 2: Get frontend endpoint with name "frontdoor1-azurefd-net" in Front Door "frontdoor1" which is part of resource group "rg1"
 ```powershell
 PS C:\> Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "rg1" -FrontDoorName "frontdoor1" -Name "frontdoor1-azurefd-net"
 
@@ -94,7 +94,7 @@ Name                             : frontdoor1-azurefd-net
 Type                             : Microsoft.Network/frontdoors/frontendendpoints
 ```
 
-Get all frontend endpoints in resource "frontdoor1" which is part of resource group "rg1"
+Get frontend endpoint with name "frontdoor1-azurefd-net" in Front Door "frontdoor1" which is part of resource group "rg1"
 
 ## PARAMETERS
 

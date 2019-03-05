@@ -36,7 +36,7 @@ The **Disable-AzFrontDoorCustomDomainHttps** disables HTTPS for a custom domain.
 
 ## EXAMPLES
 
-### Example 1: Disable HTTPS for a custom domain with FrontdoorName and ResourceGroupName.
+### Example 1: Disable HTTPS for a custom domain with FrontDoorName and ResourceGroupName.
 ```powershell
 PS C:\> Disable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz"
 
@@ -60,7 +60,7 @@ Name                             : frontendpointname1-custom-xyz
 Type                             : Microsoft.Network/frontdoors/frontendendpoints
 ```
 
-Disable HTTPS for a custom domain with FrontdoorName and ResourceGroupName.
+Disable HTTPS for a custom domain "frontendpointname1-custom-xyz" with FrontDoorName as "frontdoor1" and ResourceGroupName as "resourcegroup1".
 
 ### Example 2: Disable HTTPS for a custom domain with PSFrontendEndpoint object.
 ```powershell
@@ -112,7 +112,7 @@ Name                             : frontendpointname1-custom-xyz
 Type                             : Microsoft.Network/frontdoors/frontendendpoints
 ```
 
-Disable HTTPS for a custom domain with PSFrontendEndpoint object.
+Disable HTTPS for a custom domain "frontendpointname1-custom-xyz" with ResourceId as $resourceId.
 
 ## PARAMETERS
 
