@@ -8,7 +8,7 @@ schema: 2.0.0
 # Enable-AzFrontDoorCustomDomainHttps
 
 ## SYNOPSIS
-Enable HTTPS for a custom domain using frontdoor managed certificate or using own certificate from Azure keyvault.
+Enable HTTPS for a custom domain using Front Door managed certificate or using own certificate from Azure Key Vault.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ The **Enable-AzFrontDoorCustomDomainHttps** enables HTTPS for a custom domain.
 
 ## EXAMPLES
 
-### Example 1: Enable HTTPS for a custom domain with FrontdoorName and ResourceGroupName using frontdoor managed certificate.
+### Example 1: Enable HTTPS for a custom domain with FrontDoorName and ResourceGroupName using Front Door managed certificate.
 ```powershell
 PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -CertificateSource FrontDoor
 
@@ -65,9 +65,9 @@ Name                             : frontendpointname1-custom-xyz
 Type                             : Microsoft.Network/frontdoors/frontendendpoints
 ```
 
-Enable HTTPS for a custom domain with FrontdoorName and ResourceGroupName using frontdoor managed certificate.
+Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" that is part of Front Door "frontdoor1" in resource group "resourcegroup1" using Front Door managed certificate.
 
-### Example 1: Enable HTTPS for a custom domain with FrontdoorName and ResourceGroupName using own certificate in keyvault.
+### Example 2: Enable HTTPS for a custom domain with FrontDoorName and ResourceGroupName using own certificate in Key Vault.
 ```powershell
 PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -CertificateSource AzureKeyVault -Vault $vaultId -secretName $secretName -SecretVersion $secretVersion
 
@@ -92,9 +92,9 @@ Name                             : frontendpointname1-custom-xyz
 Type                             : Microsoft.Network/frontdoors/frontendendpoints
 ```
 
-Enable HTTPS for a custom domain with FrontdoorName and ResourceGroupName using own certificate in keyvault.
+Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" that is part of Front Door "frontdoor1" in resource group "resourcegroup1" using Front Door managed certificate.
 
-### Example 3: Enable HTTPS for a custom domain with PSFrontendEndpoint object.
+### Example 3: Enable HTTPS for a custom domain with PSFrontendEndpoint object using Front Door managed certificate.
 ```powershell
 PS C:\> Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" | Enable-AzFrontDoorCustomDomainHttps -CertificateSource FrontDoor
 
@@ -119,9 +119,9 @@ Name                             : frontendpointname1-custom-xyz
 Type                             : Microsoft.Network/frontdoors/frontendendpoints
 ```
 
-Enable HTTPS for a custom domain with PSFrontendEndpoint object.
+Enable HTTPS for a custom domain with PSFrontendEndpoint object using Front Door managed certificate.
 
-### Example 3: Enable HTTPS for a custom domain with resource id using frontdoor managed certificate.
+### Example 4: Enable HTTPS for a custom domain with resource id using Front Door managed certificate.
 ```powershell
 PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceId $resourceId -CertificateSource FrontDoor
 
@@ -146,7 +146,7 @@ Name                             : frontendpointname1-custom-xyz
 Type                             : Microsoft.Network/frontdoors/frontendendpoints
 ```
 
-Enable HTTPS for a custom domain with resourceid using frontdoor managed certificate.
+Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" with resource id $resourceId using Front Door managed certificate.
 
 ## PARAMETERS
 
