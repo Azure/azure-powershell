@@ -27,3 +27,28 @@
 
 # Upcoming Breaking Changes
 
+## Resource Group Pricing Configuration in Microsoft.Security is deprecated
+
+The following cmdlets were affected this release:
+
+**Get-AzSecurityPricing**
+- ResourceGroupName parameter is deprecated without replacement
+
+```powershell
+# Old
+# Get-SecurityPricing -ResourceGroupName "rg1"
+
+# New
+# Get-SecurityPricing
+```
+
+**Set-SecurityPricing**
+- ResourceGroupName parameter is deprecated without replacement
+
+```powershell
+# Old
+# Set-SecurityPricing -ResourceGroupName "rg1" -Name "rg1" -PricingTier "Standard"
+
+# New
+# Set-SecurityPricing -Name "VirtualMachines" -PricingTier "Standard"
+```
