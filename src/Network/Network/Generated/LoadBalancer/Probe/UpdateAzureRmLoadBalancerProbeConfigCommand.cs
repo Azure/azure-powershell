@@ -39,11 +39,38 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerProbeConfig", SupportsShouldProcess = true), OutputType(typeof(PSProbe))]
-    public partial class NewAzureRmLoadBalancerProbeConfigCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerProbeConfig", DefaultParameterSetName = "ByParentResource", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
+    public partial class UpdateAzureRmLoadBalancerProbeConfigCommand : NetworkBaseCmdlet
     {
+
         [Parameter(
             Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "ByParentResource",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public PSLoadBalancer LoadBalancer { get; set; }
+
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Resource group name",
+            ParameterSetName = "ByParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string ResourceGroupName { get; set; }
+
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Load Balancer name",
+            ParameterSetName = "ByParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string LoadBalancerName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Name of the probe.")]
         public string Name { get; set; }
 
@@ -59,19 +86,19 @@ namespace Microsoft.Azure.Commands.Network
         public string Protocol { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The port for communicating the probe. Possible values range from 1 to 65535, inclusive.",
             ValueFromPipelineByPropertyName = true)]
         public int Port { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The interval, in seconds, for how frequently to probe the endpoint for health status. Typically, the interval is slightly less than half the allocated timeout period (in seconds) which allows two full probes before taking the instance out of rotation. The default value is 15, the minimum value is 5.",
             ValueFromPipelineByPropertyName = true)]
         public int IntervalInSeconds { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The number of probes where if no response, will result in stopping further traffic from being delivered to the endpoint. This values allows endpoints to be taken out of rotation faster or slower than the typical times used in Azure.",
             ValueFromPipelineByPropertyName = true)]
         public int ProbeCount { get; set; }
@@ -85,24 +112,57 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            var vProbes = new PSProbe();
+            if(string.Equals(ParameterSetName, "ByParentName"))
+            {
+                LoadBalancer vLoadBalancer;
+                try
+                {
+                    vLoadBalancer = this.NetworkClient.NetworkManagementClient.LoadBalancers.Get(ResourceGroupName, LoadBalancerName);
+                }
+                catch (Microsoft.Rest.Azure.CloudException exception)
+                {
+                    throw exception;
+                }
+                this.LoadBalancer = NetworkResourceManagerProfile.Mapper.Map<CNM.PSLoadBalancer>(vLoadBalancer);
+                this.LoadBalancer.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(vLoadBalancer.Id);
+                this.LoadBalancer.Tag = TagsConversionHelper.CreateTagHashtable(vLoadBalancer.Tags);
+            }
 
-            vProbes.Protocol = this.Protocol;
-            vProbes.Port = this.Port;
-            vProbes.IntervalInSeconds = this.IntervalInSeconds;
-            vProbes.NumberOfProbes = this.ProbeCount;
-            vProbes.RequestPath = this.RequestPath;
-            vProbes.Name = this.Name;
-            var generatedId = string.Format(
-                "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
-                this.NetworkClient.NetworkManagementClient.SubscriptionId,
-                Microsoft.Azure.Commands.Network.Properties.Resources.ResourceGroupNotSet,
-                Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerNameNotSet,
-                "Probes",
-                this.Name);
-            vProbes.Id = generatedId;
+            var vProbesIndex = this.LoadBalancer.Probes.IndexOf(
+                this.LoadBalancer.Probes.SingleOrDefault(
+                    resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase)));
+            if (vProbesIndex == -1)
+            {
+                throw new ArgumentException("Probes with the specified name does not exist");
+            }
+            var vProbes = LoadBalancer.Probes[vProbesIndex];
 
-            WriteObject(vProbes, true);
+            if(!string.IsNullOrEmpty(this.Protocol))
+            {
+                vProbes.Protocol = this.Protocol;
+            }
+            if(MyInvocation.BoundParameters.ContainsKey(nameof(this.Port)))
+            {
+                vProbes.Port = this.Port;
+            }
+            if(MyInvocation.BoundParameters.ContainsKey(nameof(this.IntervalInSeconds)))
+            {
+                vProbes.IntervalInSeconds = this.IntervalInSeconds;
+            }
+            if(MyInvocation.BoundParameters.ContainsKey(nameof(this.ProbeCount)))
+            {
+                vProbes.NumberOfProbes = this.ProbeCount;
+            }
+            if(!string.IsNullOrEmpty(this.RequestPath))
+            {
+                vProbes.RequestPath = this.RequestPath;
+            }
+            if(!string.IsNullOrEmpty(this.Name))
+            {
+                vProbes.Name = this.Name;
+            }
+
+            WriteObject(this.LoadBalancer, true);
         }
     }
 }

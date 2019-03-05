@@ -24,7 +24,11 @@
 // Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
+using AutoMapper;
+using CNM = Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
@@ -34,15 +38,86 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerFrontendIpConfig", DefaultParameterSetName = "SetByResourceSubnet", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerFrontendIpConfig", DefaultParameterSetName = "SetByResourceSubnetParent", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
     public partial class SetAzureRmLoadBalancerFrontendIpConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceSubnetParent",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceIdSubnetParent",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceIdPublicIpAddressParent",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourcePublicIpAddressParent",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         public PSLoadBalancer LoadBalancer { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceSubnetParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceIdSubnetParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceIdPublicIpAddressParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourcePublicIpAddressParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceSubnetParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceIdSubnetParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourceIdPublicIpAddressParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The reference of the load balancer resource.",
+            ParameterSetName = "SetByResourcePublicIpAddressParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string LoadBalancerName { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -51,12 +126,22 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResourceSubnet",
+            ParameterSetName = "SetByResourceSubnetParent",
             HelpMessage = "The private IP address of the IP configuration.",
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResourceIdSubnet",
+            ParameterSetName = "SetByResourceSubnetParentName",
+            HelpMessage = "The private IP address of the IP configuration.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceIdSubnetParent",
+            HelpMessage = "The private IP address of the IP configuration.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceIdSubnetParentName",
             HelpMessage = "The private IP address of the IP configuration.",
             ValueFromPipelineByPropertyName = true)]
         public string PrivateIpAddress { get; set; }
@@ -69,28 +154,48 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "SetByResourceIdSubnet",
+            ParameterSetName = "SetByResourceIdSubnetParent",
+            HelpMessage = "The reference of the subnet resource.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "SetByResourceIdSubnetParentName",
             HelpMessage = "The reference of the subnet resource.",
             ValueFromPipelineByPropertyName = true)]
         public string SubnetId { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "SetByResourceSubnet",
+            ParameterSetName = "SetByResourceSubnetParent",
+            HelpMessage = "The reference of the subnet resource.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "SetByResourceSubnetParentName",
             HelpMessage = "The reference of the subnet resource.",
             ValueFromPipelineByPropertyName = true)]
         public PSSubnet Subnet { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "SetByResourceIdPublicIpAddress",
+            ParameterSetName = "SetByResourceIdPublicIpAddressParent",
+            HelpMessage = "The reference of the Public IP resource.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "SetByResourceIdPublicIpAddressParentName",
             HelpMessage = "The reference of the Public IP resource.",
             ValueFromPipelineByPropertyName = true)]
         public string PublicIpAddressId { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "SetByResourcePublicIpAddress",
+            ParameterSetName = "SetByResourcePublicIpAddressParent",
+            HelpMessage = "The reference of the Public IP resource.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "SetByResourcePublicIpAddressParentName",
             HelpMessage = "The reference of the Public IP resource.",
             ValueFromPipelineByPropertyName = true)]
         public PSPublicIpAddress PublicIpAddress { get; set; }
@@ -98,6 +203,24 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            if(string.Equals(ParameterSetName, "SetByResourceSubnetParentName") ||
+               string.Equals(ParameterSetName, "SetByResourceIdSubnetParentName") ||
+               string.Equals(ParameterSetName, "SetByResourcePublicIpAddressParentName") ||
+               string.Equals(ParameterSetName, "SetByResourceIdPublicIpAddressParentName"))
+            {
+                LoadBalancer vLoadBalancer;
+                try
+                {
+                    vLoadBalancer = this.NetworkClient.NetworkManagementClient.LoadBalancers.Get(ResourceGroupName, LoadBalancerName);
+                }
+                catch (Microsoft.Rest.Azure.CloudException exception)
+                {
+                    throw exception;
+                }
+                this.LoadBalancer = NetworkResourceManagerProfile.Mapper.Map<CNM.PSLoadBalancer>(vLoadBalancer);
+                this.LoadBalancer.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(vLoadBalancer.Id);
+                this.LoadBalancer.Tag = TagsConversionHelper.CreateTagHashtable(vLoadBalancer.Tags);
+            }
 
             var vFrontendIPConfigurationsIndex = this.LoadBalancer.FrontendIpConfigurations.IndexOf(
                 this.LoadBalancer.FrontendIpConfigurations.SingleOrDefault(
@@ -107,7 +230,8 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("FrontendIPConfigurations with the specified name does not exist");
             }
 
-            if (string.Equals(ParameterSetName, "SetByResourceSubnet"))
+            if (string.Equals(ParameterSetName, "SetByResourceSubnetParent") ||
+                string.Equals(ParameterSetName, "SetByResourceIdSubnetParentName"))
             {
                 if (this.Subnet != null)
                 {
@@ -115,7 +239,8 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            if (string.Equals(ParameterSetName, "SetByResourcePublicIpAddress"))
+            if (string.Equals(ParameterSetName, "SetByResourcePublicIpAddressParent") ||
+                string.Equals(ParameterSetName, "SetByResourceIdPublicIpAddressParentName"))
             {
                 if (this.PublicIpAddress != null)
                 {

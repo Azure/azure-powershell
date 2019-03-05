@@ -38,8 +38,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerFrontendIpConfig", DefaultParameterSetName = "SetByResourceSubnetParent", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
-    public partial class AddAzureRmLoadBalancerFrontendIpConfigCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerFrontendIpConfig", DefaultParameterSetName = "SetByResourceSubnetParent", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
+    public partial class UpdateAzureRmLoadBalancerFrontendIpConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -120,28 +120,18 @@ namespace Microsoft.Azure.Commands.Network
         public string LoadBalancerName { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Name of the frontend ip configuration.")]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResourceSubnetParent",
+            ParameterSetName = "SetByResourceSubnet",
             HelpMessage = "The private IP address of the IP configuration.",
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResourceSubnetParentName",
-            HelpMessage = "The private IP address of the IP configuration.",
-            ValueFromPipelineByPropertyName = true)]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = "SetByResourceIdSubnetParent",
-            HelpMessage = "The private IP address of the IP configuration.",
-            ValueFromPipelineByPropertyName = true)]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = "SetByResourceIdSubnetParentName",
+            ParameterSetName = "SetByResourceIdSubnet",
             HelpMessage = "The private IP address of the IP configuration.",
             ValueFromPipelineByPropertyName = true)]
         public string PrivateIpAddress { get; set; }
@@ -153,49 +143,29 @@ namespace Microsoft.Azure.Commands.Network
         public string[] Zone { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = "SetByResourceIdSubnetParent",
-            HelpMessage = "The reference of the subnet resource.",
-            ValueFromPipelineByPropertyName = true)]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = "SetByResourceIdSubnetParentName",
+            Mandatory = false,
+            ParameterSetName = "SetByResourceIdSubnet",
             HelpMessage = "The reference of the subnet resource.",
             ValueFromPipelineByPropertyName = true)]
         public string SubnetId { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = "SetByResourceSubnetParent",
-            HelpMessage = "The reference of the subnet resource.",
-            ValueFromPipelineByPropertyName = true)]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = "SetByResourceSubnetParentName",
+            Mandatory = false,
+            ParameterSetName = "SetByResourceSubnet",
             HelpMessage = "The reference of the subnet resource.",
             ValueFromPipelineByPropertyName = true)]
         public PSSubnet Subnet { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = "SetByResourceIdPublicIpAddressParent",
-            HelpMessage = "The reference of the Public IP resource.",
-            ValueFromPipelineByPropertyName = true)]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = "SetByResourceIdPublicIpAddressParentName",
+            Mandatory = false,
+            ParameterSetName = "SetByResourceIdPublicIpAddress",
             HelpMessage = "The reference of the Public IP resource.",
             ValueFromPipelineByPropertyName = true)]
         public string PublicIpAddressId { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = "SetByResourcePublicIpAddressParent",
-            HelpMessage = "The reference of the Public IP resource.",
-            ValueFromPipelineByPropertyName = true)]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = "SetByResourcePublicIpAddressParentName",
+            Mandatory = false,
+            ParameterSetName = "SetByResourcePublicIpAddress",
             HelpMessage = "The reference of the Public IP resource.",
             ValueFromPipelineByPropertyName = true)]
         public PSPublicIpAddress PublicIpAddress { get; set; }
@@ -222,16 +192,12 @@ namespace Microsoft.Azure.Commands.Network
                 this.LoadBalancer.Tag = TagsConversionHelper.CreateTagHashtable(vLoadBalancer.Tags);
             }
 
-            var existingFrontendIpConfiguration = this.LoadBalancer.FrontendIpConfigurations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-            if (existingFrontendIpConfiguration != null)
+            var vFrontendIPConfigurationsIndex = this.LoadBalancer.FrontendIpConfigurations.IndexOf(
+                this.LoadBalancer.FrontendIpConfigurations.SingleOrDefault(
+                    resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase)));
+            if (vFrontendIPConfigurationsIndex == -1)
             {
-                throw new ArgumentException("FrontendIpConfiguration with the specified name already exists");
-            }
-
-            // FrontendIpConfigurations
-            if (this.LoadBalancer.FrontendIpConfigurations == null)
-            {
-                this.LoadBalancer.FrontendIpConfigurations = new List<PSFrontendIPConfiguration>();
+                throw new ArgumentException("FrontendIPConfigurations with the specified name does not exist");
             }
 
             if (string.Equals(ParameterSetName, "SetByResourceSubnetParent") ||
@@ -251,10 +217,13 @@ namespace Microsoft.Azure.Commands.Network
                     this.PublicIpAddressId = this.PublicIpAddress.Id;
                 }
             }
+            var vFrontendIpConfigurations = LoadBalancer.FrontendIpConfigurations[vFrontendIPConfigurationsIndex];
 
-            var vFrontendIpConfigurations = new PSFrontendIPConfiguration();
+            if(!string.IsNullOrEmpty(this.PrivateIpAddress))
+            {
+                vFrontendIpConfigurations.PrivateIpAddress = this.PrivateIpAddress;
+            }
 
-            vFrontendIpConfigurations.PrivateIpAddress = this.PrivateIpAddress;
             if(!string.IsNullOrEmpty(vFrontendIpConfigurations.PrivateIpAddress))
             {
                 vFrontendIpConfigurations.PrivateIpAllocationMethod = "Static";
@@ -263,9 +232,15 @@ namespace Microsoft.Azure.Commands.Network
             {
                 vFrontendIpConfigurations.PrivateIpAllocationMethod = "Dynamic";
             }
+            if(!string.IsNullOrEmpty(this.Name))
+            {
+                vFrontendIpConfigurations.Name = this.Name;
+            }
+            if(this.Zone != null && this.Zone.Length > 0)
+            {
+                vFrontendIpConfigurations.Zones = this.Zone?.ToList();
+            }
 
-            vFrontendIpConfigurations.Name = this.Name;
-            vFrontendIpConfigurations.Zones = this.Zone?.ToList();
             if(!string.IsNullOrEmpty(this.SubnetId))
             {
                 // Subnet
@@ -284,16 +259,6 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 vFrontendIpConfigurations.PublicIpAddress.Id = this.PublicIpAddressId;
             }
-            var generatedId = string.Format(
-                "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
-                this.NetworkClient.NetworkManagementClient.SubscriptionId,
-                this.LoadBalancer.ResourceGroupName,
-                this.LoadBalancer.Name,
-                "FrontendIpConfigurations",
-                this.Name);
-            vFrontendIpConfigurations.Id = generatedId;
-
-            this.LoadBalancer.FrontendIpConfigurations.Add(vFrontendIpConfigurations);
             WriteObject(this.LoadBalancer, true);
         }
     }
