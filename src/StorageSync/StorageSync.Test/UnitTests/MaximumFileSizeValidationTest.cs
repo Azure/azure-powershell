@@ -18,9 +18,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
-    
+
+    /// <summary>
+    /// Class MaximumFileSizeValidationTest.
+    /// </summary>
     public class MaximumFileSizeValidationTest
     {
+        /// <summary>
+        /// Defines the test method WhenFileIsTooBigValidationResultIsError.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenFileIsTooBigValidationResultIsError()
@@ -39,6 +45,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             AssertExtension.ValidationResultIsError(validationResult, "A file bigger than maximum file size does not trigger an error.");
         }
 
+        /// <summary>
+        /// Defines the test method WhenFileIsSizeIsEqualToMaxSizeValidationResultIsSuccess.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenFileIsSizeIsEqualToMaxSizeValidationResultIsSuccess()
@@ -56,6 +65,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             AssertExtension.ValidationResultIsSuccess(validationResult, "A file with size equal to maximum file size triggers an error.");
         }
 
+        /// <summary>
+        /// Defines the test method WhenFileIsSizeIsLessThanMaxSizeValidationResultIsSuccess.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenFileIsSizeIsLessThanMaxSizeValidationResultIsSuccess()
@@ -74,6 +86,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             AssertExtension.ValidationResultIsSuccess(validationResult, "A file with size less than maximum file size triggers an error.");
         }
 
+        /// <summary>
+        /// Defines the test method DirectoriesValidationResultIsSuccess.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void DirectoriesValidationResultIsSuccess()
