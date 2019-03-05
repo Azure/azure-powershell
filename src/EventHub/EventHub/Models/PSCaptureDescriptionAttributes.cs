@@ -59,6 +59,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 Destination = new PSDestinationAttributes(captureDescResource.Destination);
             else
                 Destination = null;
+            SkipEmptyArchives = captureDescResource.SkipEmptyArchives;
         }
         
         /// <summary>
@@ -87,6 +88,12 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// 10485760 to 524288000 bytes
         /// </summary>
         public int? SizeLimitInBytes { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value that indicates whether to Skip Empty Archives is
+        /// enabled.
+        /// </summary>
+        public bool? SkipEmptyArchives { get; set; }
 
         /// <summary>
         /// Gets or sets properties of Destination where capture will be

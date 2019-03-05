@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support Kind BlockBlobStorage when create Storage account
+       - New-AzStorageAccount
 
 ## Version 1.0.2
 * Update incorrect online help URLs

@@ -101,10 +101,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSDiskUpdate, FROM.DiskUpdate>();
                 cfg.CreateMap<FROM.Snapshot, FROM.SnapshotUpdate>();
                 cfg.CreateMap<FROM.SnapshotUpdate, FROM.Snapshot>();
-                cfg.CreateMap<FROM.DiskSku, FROM.SnapshotSku>()
-                    .ForMember(c => c.Name, o => o.MapFrom(r => r.Name.ToString()));
-                cfg.CreateMap<FROM.SnapshotSku, FROM.DiskSku>()
-                    .ForMember(c => c.Name, o => o.MapFrom(r => r.Name.ToString()));
                 cfg.CreateMap<FROM.SnapshotUpdate, TO.PSSnapshotUpdate>();
                 cfg.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>();
                 cfg.CreateMap<FROM.ContainerService, TO.PSContainerService>();
