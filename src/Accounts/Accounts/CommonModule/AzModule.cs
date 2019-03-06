@@ -38,16 +38,18 @@ namespace Microsoft.Azure.Commands.Common
     {
         ICommandRuntime _runtime;
         IDictionary<string, AzurePSQoSEvent> _telemetryEvents;
-        MetricHelper _metricHelper;
+        TelemetryProvider _metricHelper;
         AdalLogger _logger;
-        ConcurrentQueue<string> _adalMessages;
+        ConcurrentQueue<string> _debugMessages;
+        ConcurrentQueue<string> _warningMessages;
         public AzModule(ICommandRuntime runtime)
         {
             _runtime = runtime;
             _telemetryEvents = new Dictionary<string, AzurePSQoSEvent>(StringComparer.OrdinalIgnoreCase);
-            _metricHelper = new MetricHelper(new Authentication.Abstractions.AzurePSDataCollectionProfile(true));
-            _adalMessages = new ConcurrentQueue<string>();
-            _logger = new AdalLogger((message) => _adalMessages.CheckAndEnqueue(message));
+            _warningMessages = new ConcurrentQueue<string>();
+            _debugMessages = new ConcurrentQueue<string>();
+            _logger = new AdalLogger((message) => _debugMessages.CheckAndEnqueue(message));
+            _metricHelper = TelemetryProvider.Create((message) => _warningMessages.CheckAndEnqueue(message), (message) => _debugMessages.CheckAndEnqueue(message));
         }
 
         /// <summary>
@@ -79,7 +81,7 @@ namespace Microsoft.Azure.Commands.Common
         public async Task EventListener(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, InvocationInfo invocationInfo, string parameterSetName, string correlationId, string processRecordId, System.Exception exception)
         {
             /// Drain the queue of ADAL events whenever an event is fired
-            DrainQueue(signal, cancellationToken);
+            DrainMessages(signal, cancellationToken);
             switch (id)
             {
                 case Events.BeforeCall:
@@ -123,7 +125,7 @@ namespace Microsoft.Azure.Commands.Common
                             qos.IsSuccess = qos.Exception == null;
                             await signal(Events.Debug, cancellationToken, 
                                 () => EventHelper.CreateLogEvent($"[{id}]: Sending new QosEvent for command '{qos.CommandName}': {qos.ToString()}"));
-                            _metricHelper.LogQoSEvent(qos, true, true);
+                            _metricHelper.LogEvent(qos);
                             _telemetryEvents.Remove(processRecordId);
                         }
                     }
@@ -140,7 +142,7 @@ namespace Microsoft.Azure.Commands.Common
                                 () => EventHelper.CreateLogEvent($"[{id}]: Sending new QosEvent for command '{qos.CommandName}': {qos.ToString()}"));
                             qos.IsSuccess = false;
                             qos.Exception = exception;
-                            _metricHelper.LogQoSEvent(qos, true, true);
+                            _metricHelper.LogEvent(qos);
                             _telemetryEvents.Remove(processRecordId);
                         }
                     }
@@ -166,7 +168,7 @@ namespace Microsoft.Azure.Commands.Common
 
                     break;
                 default:
-                    getEventData.Print(signal, cancellationToken, Events.Debug, id);
+                    getEventData.Print(signal, cancellationToken, Events.Information, id);
                     break;
             }
         }
@@ -199,11 +201,18 @@ namespace Microsoft.Azure.Commands.Common
                     _logger = null;
                 }
 
-                if (_adalMessages != null)
+                if (_warningMessages != null)
                 {
                     string message;
-                    while (_adalMessages.TryDequeue(out message)) ;
-                    _adalMessages = null;
+                    while (_warningMessages.TryDequeue(out message)) ;
+                    _warningMessages = null;
+                }
+
+                if (_debugMessages != null)
+                {
+                    string message;
+                    while (_debugMessages.TryDequeue(out message)) ;
+                    _debugMessages = null;
                 }
             }
         }
@@ -219,17 +228,23 @@ namespace Microsoft.Azure.Commands.Common
                 SessionId = correlationId,
                 ParameterSetName = parameterSetName,
                 InvocationName = invocationInfo.InvocationName,
-                InputFromPipeline = invocationInfo.PipelineLength > 0
+                InputFromPipeline = invocationInfo.PipelineLength > 0,
             };
         }
 
-        private async void DrainQueue(SignalDelegate signal, CancellationToken token)
+        private async void DrainMessages(SignalDelegate signal, CancellationToken token)
         {
             string message;
-            while (_adalMessages.TryDequeue(out message) && !token.IsCancellationRequested)
+            while (_warningMessages.TryDequeue(out message) && !token.IsCancellationRequested)
+            {
+                await signal(Events.Warning, token, () => EventHelper.CreateLogEvent(message));
+            }
+
+            while (_debugMessages.TryDequeue(out message) && !token.IsCancellationRequested)
             {
                 await signal(Events.Debug, token, () => EventHelper.CreateLogEvent(message));
             }
+
         }
     }
 
