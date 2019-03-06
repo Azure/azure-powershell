@@ -159,6 +159,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzApplicationGatewayRewriteRule', 
                'New-AzApplicationGatewayRewriteRuleActionSet', 
                'New-AzApplicationGatewayRewriteRuleHeaderConfiguration', 
+			   'Get-AzApplicationGatewayAvailableServerVariableAndHeader',
                'Add-AzApplicationGatewayRedirectConfiguration', 
                'Get-AzApplicationGatewayRedirectConfiguration', 
                'New-AzApplicationGatewayRedirectConfiguration', 
@@ -392,7 +393,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'List-AzApplicationGatewayAvailableWafRuleSets', 
                'List-AzApplicationGatewayAvailableSslOptions', 
-               'List-AzApplicationGatewaySslPredefinedPolicy'
+               'List-AzApplicationGatewaySslPredefinedPolicy',
+			   'List-AzApplicationGatewayAvailableServerVariableAndHeader'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
