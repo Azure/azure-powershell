@@ -72,6 +72,18 @@ function Test-ApplicationSecurityGroupCRUDMinimalParameters
         $listApplicationSecurityGroup = Get-AzApplicationSecurityGroup;
         Assert-NotNull ($listApplicationSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
+        # Get all ApplicationSecurityGroups in subscription wildcard for resource group
+        $listApplicationSecurityGroup = Get-AzApplicationSecurityGroup -ResourceGroupName "*";
+        Assert-NotNull ($listApplicationSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ApplicationSecurityGroups in subscription wildcard for name
+        $listApplicationSecurityGroup = Get-AzApplicationSecurityGroup -Name "*";
+        Assert-NotNull ($listApplicationSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ApplicationSecurityGroups in subscription wildcard for both resource group and name
+        $listApplicationSecurityGroup = Get-AzApplicationSecurityGroup -ResourceGroupName "*" -Name "*";
+        Assert-NotNull ($listApplicationSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
         # Remove ApplicationSecurityGroup
         $job = Remove-AzApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
         $job | Wait-Job;
@@ -126,6 +138,18 @@ function Test-ApplicationSecurityGroupCRUDAllParameters
 
         # Get all ApplicationSecurityGroups in subscription
         $listApplicationSecurityGroup = Get-AzApplicationSecurityGroup;
+        Assert-NotNull ($listApplicationSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ApplicationSecurityGroups in subscription wildcard for resource group
+        $listApplicationSecurityGroup = Get-AzApplicationSecurityGroup -ResourceGroupName "*";
+        Assert-NotNull ($listApplicationSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ApplicationSecurityGroups in subscription wildcard for name
+        $listApplicationSecurityGroup = Get-AzApplicationSecurityGroup -Name "*";
+        Assert-NotNull ($listApplicationSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ApplicationSecurityGroups in subscription wildcard for both resource group and name
+        $listApplicationSecurityGroup = Get-AzApplicationSecurityGroup -ResourceGroupName "*" -Name "*";
         Assert-NotNull ($listApplicationSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove ApplicationSecurityGroup
