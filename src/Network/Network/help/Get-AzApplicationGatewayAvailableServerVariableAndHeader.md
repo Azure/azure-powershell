@@ -13,8 +13,8 @@ Get the supported server variables and available request and response headers.
 ## SYNTAX
 
 ```
-Get-AzApplicationGatewayAvailableServerVariableAndHeader [-ServerVariables] [-RequestHeaders]
- [-ResponseHeaders] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzApplicationGatewayAvailableServerVariableAndHeader [-ServerVariable] [-RequestHeader]
+ [-ResponseHeader] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,35 +24,35 @@ The **Get-AzApplicationGatewayAvailableServerVariableAndHeader** cmdlet gets the
 
 ### Example 1
 ```
-PS C:\>$availableServerVariables = Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariables
+PS C:\>Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariable
 ```
 
 This commands returns all the available server variables.
 
 ### Example 2
 ```
-PS C:\>$availableRuleSets = Get-AzApplicationGatewayAvailableServerVariableAndHeader -RequestHeaders
+PS C:\>Get-AzApplicationGatewayAvailableServerVariableAndHeader -RequestHeader
 ```
 
 This commands returns all the available request headers.
 
 ### Example 3
 ```
-PS C:\>$availableRuleSets = Get-AzApplicationGatewayAvailableServerVariableAndHeader -ResponseHeaders
+PS C:\>Get-AzApplicationGatewayAvailableServerVariableAndHeader -ResponseHeader
 ```
 
 This commands returns all the available response headers.
 
 ### Example 4
 ```
-PS C:\>$availableRuleSets = Get-AzApplicationGatewayAvailableServerVariableAndHeader - ServerVariables -RequestHeaders -ResponseHeaders
+PS C:\>Get-AzApplicationGatewayAvailableServerVariableAndHeader - ServerVariable -RequestHeader -ResponseHeader
 ```
 
 This commands returns all the available server variables, request and response headers.
 
 ### Example 5
 ```
-PS C:\>$availableRuleSets = Get-AzApplicationGatewayAvailableServerVariableAndHeader
+PS C:\>Get-AzApplicationGatewayAvailableServerVariableAndHeader
 ```
 
 This commands returns all the available server variables, request and response headers.
@@ -74,7 +74,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RequestHeaders
+### -RequestHeader
 Application Gateway available request headers.
 
 ```yaml
@@ -89,7 +89,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResponseHeaders
+### -ResponseHeader
 Application Gateway available response headers.
 
 ```yaml
@@ -104,7 +104,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServerVariables
+### -ServerVariable
 Application Gateway available server variables.
 
 ```yaml
