@@ -32,29 +32,17 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Application Gateway available server variables.")]
-        public SwitchParameter ServerVariables {
-            get { return isServerVariableRequested; }
-            set { isServerVariableRequested = value; }
-        }
-        private bool isServerVariableRequested;
+        public SwitchParameter ServerVariables;
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Application Gateway available request headers.")]
-        public SwitchParameter RequestHeaders {
-            get { return isRequestHeaderRequested; }
-            set { isRequestHeaderRequested = value; }
-        }
-        private bool isRequestHeaderRequested;
+        public SwitchParameter RequestHeaders;
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Application Gateway available response headers.")]
-        public SwitchParameter ResponseHeaders {
-            get { return isResponseHeaderRequested; }
-            set { isResponseHeaderRequested = value; }
-        }
-        private bool isResponseHeaderRequested;
+        public SwitchParameter ResponseHeaders;
 
         public override void ExecuteCmdlet()
         {
@@ -63,33 +51,23 @@ namespace Microsoft.Azure.Commands.Network
             IList<string> availableRequestHeader;
             IList<string> availableResponseHeader;
             Dictionary<string, IList<string>> AvailableServerVariableAndHeaderResponse = new Dictionary<string, IList<string>>();
+            bool getAllData = ((!this.ServerVariables.IsPresent && !this.RequestHeaders.IsPresent && !this.ResponseHeaders.IsPresent) ||
+                (this.ServerVariables.IsPresent && this.RequestHeaders.IsPresent && this.ResponseHeaders.IsPresent));
 
-            if (!isServerVariableRequested && !isRequestHeaderRequested && !isResponseHeaderRequested)
+            if(getAllData || this.ServerVariables.IsPresent)
             {
                 availableServerVariable = this.ApplicationGatewayClient.ListAvailableServerVariables();
-                availableRequestHeader = this.ApplicationGatewayClient.ListAvailableRequestHeaders();
-                availableResponseHeader = this.ApplicationGatewayClient.ListAvailableResponseHeaders();
                 AvailableServerVariableAndHeaderResponse.Add("AvailableServerVariable", availableServerVariable);
-                AvailableServerVariableAndHeaderResponse.Add("AvailableRequestHeader", availableRequestHeader);
-                AvailableServerVariableAndHeaderResponse.Add("AvailableResponseHeader", availableResponseHeader);
             }
-            else
+            if (getAllData || this.RequestHeaders.IsPresent)
             {
-                if (isServerVariableRequested)
-                {
-                    availableServerVariable = this.ApplicationGatewayClient.ListAvailableServerVariables();
-                    AvailableServerVariableAndHeaderResponse.Add("AvailableServerVariable", availableServerVariable);
-                }
-                if (isRequestHeaderRequested)
-                {
-                    availableRequestHeader = this.ApplicationGatewayClient.ListAvailableRequestHeaders();
-                    AvailableServerVariableAndHeaderResponse.Add("AvailableRequestHeader", availableRequestHeader);
-                }
-                if (isResponseHeaderRequested)
-                {
-                    availableResponseHeader = this.ApplicationGatewayClient.ListAvailableResponseHeaders();
-                    AvailableServerVariableAndHeaderResponse.Add("AvailableResponseHeader", availableResponseHeader);
-                }
+                availableRequestHeader = this.ApplicationGatewayClient.ListAvailableRequestHeaders();
+                AvailableServerVariableAndHeaderResponse.Add("AvailableRequestHeader", availableRequestHeader);
+            }
+            if (getAllData || this.ResponseHeaders.IsPresent)
+            {
+                availableResponseHeader = this.ApplicationGatewayClient.ListAvailableResponseHeaders();
+                AvailableServerVariableAndHeaderResponse.Add("AvailableResponseHeader", availableResponseHeader);
             }
 
             WriteObject(AvailableServerVariableAndHeaderResponse);
