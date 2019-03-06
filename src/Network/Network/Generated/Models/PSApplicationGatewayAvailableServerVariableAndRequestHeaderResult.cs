@@ -32,12 +32,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public partial class PSApplicationGatewayAvailableServerVariableAndRequestHeaderResult
     {
-        public Dictionary<string, List<string>> Value { get; set; }
-
-        [JsonIgnore]
-        public string ValueText
-        {
-            get { return JsonConvert.SerializeObject(Value, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
+        public IList<string> AvailableServerVariables { get; set; }
+        public IList<string> AvailableRequestHeaders { get; set; }
+        public IList<string> AvailableResponseHeaders { get; set; }
     }
 }
