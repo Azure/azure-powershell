@@ -63,21 +63,26 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                         .WithRedirectUri(replyUrl)
                         .Build();
 
+                    var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".Azure", "TokenCache.dat");
+                    if (!AzureSession.Instance.DataStore.FileExists(filePath))
+                    {
+                        AzureSession.Instance.DataStore.WriteFile(filePath, new byte[] { });
+                    }
+
                     publicClient.UserTokenCache.SetAfterAccess(notificationArgs =>
                     {
                         if (notificationArgs.HasStateChanged)
                         {
-                            interactiveParameters.TokenCache.CacheData = notificationArgs.TokenCache.SerializeMsalV3();
+                            AzureSession.Instance.DataStore.WriteFile(filePath, notificationArgs.TokenCache.SerializeMsalV3());
                         }
                     });
-
                     publicClient.UserTokenCache.SetBeforeAccess(notificationArgs =>
                     {
-                        notificationArgs.TokenCache.DeserializeMsalV3(interactiveParameters.TokenCache.CacheData);
+                        notificationArgs.TokenCache.DeserializeMsalV3(AzureSession.Instance.DataStore.ReadFileAsBytes(filePath));
                     });
 
                     var interactiveResponse = publicClient.AcquireTokenInteractive(scopes, null)
-                        .WithCustomWebUi(new CustomWebUi(listener, interactiveParameters.PromptAction))
+                        .WithCustomWebUi(new CustomWebUi(interactiveParameters.PromptAction))
                         .ExecuteAsync();
                     return AuthenticationResultToken.GetAccessTokenAsync(interactiveResponse);
                 }

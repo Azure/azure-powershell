@@ -17,13 +17,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Identity.Client;
 using System;
 using System.IO;
-using System.Security.Cryptography;
 
-#if NETSTANDARD
 namespace Microsoft.Azure.Commands.Common.Authentication.Core
-#else
-namespace Microsoft.Azure.Commands.Common.Authentication
-#endif
 {
     /// <summary>
     /// An implementation of the Adal token cache that stores the cache items
@@ -32,13 +27,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public class ProtectedFileTokenCache : IAzureTokenCache
     {
         private static readonly string CacheFileName = Path.Combine(
-#if !NETSTANDARD
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                Resources.OldAzureDirectoryName,
-#else
                 Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
                 Resources.AzureDirectoryName,
-#endif
                  "TokenCache.dat");
 
         private static readonly object fileLock = new object();
@@ -146,18 +136,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     var existingData = _store.ReadFileAsBytes(cacheFileName);
                     if (existingData != null)
                     {
-#if !NETSTANDARD
-                        try
-                        {
-                            Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
-                        }
-                        catch (CryptographicException)
-                        {
-                            _store.DeleteFile(cacheFileName);
-                        }
-#else
                         args.TokenCache.DeserializeMsalV3(existingData);
-#endif
                     }
                 }
             }
@@ -170,12 +149,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 cacheFileName = ProtectedFileTokenCache.CacheFileName;
             }
 
-#if !NETSTANDARD
-            var dataToWrite = ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser);
-#else
             var dataToWrite = UserCache.SerializeMsalV3();
-#endif
-
             lock(fileLock)
             {
                 if (args.HasStateChanged)
@@ -194,16 +168,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     var existingData = _store.ReadFileAsBytes(cacheFileName);
                     if (existingData != null)
                     {
-#if !NETSTANDARD
-                        try
-                        {
-                            Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
-                        }
-                        catch (CryptographicException)
-                        {
-                            _store.DeleteFile(cacheFileName);
-                        }
-#else
                         try
                         {
                             UserCache.DeserializeMsalV3(existingData);
@@ -212,16 +176,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                         {
                             string message = ex?.Message;
                         }
-#endif
                     }
                 }
 
                 // Eagerly create cache file.
-#if !NETSTANDARD
-                var dataToWrite = ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser);
-#else
                 var dataToWrite = UserCache.SerializeMsalV3();
-#endif
                 _store.WriteFile(cacheFileName, dataToWrite);
             }
         }
@@ -232,6 +191,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 _store.DeleteFile(CacheFileName);
             }
+
+            var dataToWrite = UserCache.SerializeMsalV3();
+            _store.WriteFile(CacheFileName, dataToWrite);
         }
     }
 }

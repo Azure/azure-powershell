@@ -24,13 +24,13 @@ using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public class CustomWebUi : ICustomWebUi
     {
-        private TcpListener _listener;
         private Action<string> _promptAction;
 
         private const string CloseWindowSuccessHtml = @"<html>
@@ -40,41 +40,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication
   </body>
 </html>";
 
-        public CustomWebUi(TcpListener listener, Action<string> promptAction)
+        public CustomWebUi(Action<string> promptAction)
         {
-            _listener = listener;
             _promptAction = promptAction;
         }
 
-        /// <summary>
-        ///     Method called by MSAL.NET to delegate the authentication code Web with with the STS
-        /// </summary>
-        /// <param name="authorizationUri">
-        ///     URI computed by MSAL.NET that will let the UI extension
-        ///     navigate to the STS authorization endpoint in order to sign-in the user and have them consent
-        /// </param>
-        /// <param name="redirectUri">
-        ///     The redirect Uri that was configured. The auth code will be appended to this redirect uri and the browser
-        ///     will redirect to it.
-        /// </param>
-        /// <returns>
-        ///     The URI returned back from the STS authorization endpoint. This URI contains a code=CODE
-        ///     parameters that MSAL.NET will extract and redeem.
-        /// </returns>
-        /// <remarks>
-        ///     The authorizationUri is crafted to leverage PKCE in order to protect the token from a man
-        ///     in the middle attack. Only MSAL.NET can redeem the code.
-        ///
-        ///     In the event of cancellation, the implementer should return OperationCanceledException.
-        ///     In the event of failure, the implementer should throw MsalCustomWebUiFailedException.
-        /// </remarks>
-        public async Task<Uri> AcquireAuthorizationCodeAsync(Uri authorizationUri, Uri redirectUri)
+        public async Task<Uri> AcquireAuthorizationCodeAsync(Uri authorizationUri, Uri redirectUri, CancellationToken cancellationToken)
         {
             if (!OpenBrowser(authorizationUri.ToString()))
             {
                 Console.WriteLine("Unable to launch a browser for authorization code login. Reverting to device code login.");
             }
 
+            Console.WriteLine("We have launched a browser for you to login. For the old experience with device code flow, please run 'Connect-AzAccount -UseDeviceAuthentication'.");
             TcpListener listener = new TcpListener(IPAddress.Loopback, redirectUri.Port);
             listener.Start();
             using (TcpClient client = await listener.AcceptTcpClientAsync().ConfigureAwait(false))
@@ -110,15 +88,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     throw new PlatformNotSupportedException(RuntimeInformation.OSDescription);
                 }
             }
-            catch (MsalCustomWebUiFailedException ex)
+            catch
             {
-                _promptAction(ex.ToString());
-                throw ex;
-            }
-            catch (MsalServiceException ex)
-            {
-                _promptAction(ex.ToString());
-                throw ex;
+                return false;
             }
 
             return true;
