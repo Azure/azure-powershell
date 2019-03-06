@@ -97,7 +97,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 {
                     Instance._loggers.Add(logger);
                     LoggerCallbackHandler.Callback = Instance;
-                    LoggerCallbackHandler.UseDefaultLogging = true;
                 }
             }
 
