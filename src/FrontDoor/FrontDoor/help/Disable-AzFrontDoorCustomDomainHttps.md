@@ -45,10 +45,10 @@ SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
 WebApplicationFirewallPolicyLink :
 Backends                         :
-CustomHttpsProvisioningState     :
-CustomHttpsProvisioningSubstate  :
-CertificateSource                :
-ProtocolType                     :
+CustomHttpsProvisioningState     : Disabling
+CustomHttpsProvisioningSubstate  : DeletingCertificate
+CertificateSource                : FrontDoor
+ProtocolType                     : ServerNameIndication
 Vault                            :
 SecretName                       :
 SecretVersion                    :
@@ -71,10 +71,10 @@ SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
 WebApplicationFirewallPolicyLink :
 Backends                         :
-CustomHttpsProvisioningState     :
-CustomHttpsProvisioningSubstate  :
-CertificateSource                :
-ProtocolType                     :
+CustomHttpsProvisioningState     : Disabling
+CustomHttpsProvisioningSubstate  : DeletingCertificate
+CertificateSource                : FrontDoor
+ProtocolType                     : ServerNameIndication
 Vault                            :
 SecretName                       :
 SecretVersion                    :
@@ -97,10 +97,10 @@ SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
 WebApplicationFirewallPolicyLink :
 Backends                         :
-CustomHttpsProvisioningState     :
-CustomHttpsProvisioningSubstate  :
-CertificateSource                :
-ProtocolType                     :
+CustomHttpsProvisioningState     : Disabling
+CustomHttpsProvisioningSubstate  : DeletingCertificate
+CertificateSource                : FrontDoor
+ProtocolType                     : ServerNameIndication
 Vault                            :
 SecretName                       :
 SecretVersion                    :
