@@ -234,6 +234,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             public AdalSession()
             {
                 AdalLogger = new AdalLogger(WriteToTraceListeners);
+                LoggerCallbackHandler.UseDefaultLogging = false;
             }
 
             public override TraceLevel AuthenticationLegacyTraceLevel
