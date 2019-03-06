@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultmanagedstoragesasdefinition
@@ -62,6 +62,31 @@ Tags        :
 ```
 
 Gets the details of SAS Definition 'accountsas' associated with Key Vault managed Storage Account 'mystorageaccount' managed by vault 'myvault'.
+
+### Example 3: List all Key Vault managed Storage SAS Definitions using filtering
+```powershell
+PS C:\> Get-AzKeyVaultManagedStorageSasDefinition -VaultName 'myvault' -AccountName 'mystorageaccount' -Name "account*"
+
+Id          : https://myvault.vault.azure.net:443/storage/mystorageaccount/sas/accountsas1
+Vault Name  : myvault
+AccountName : mystorageaccount
+Name        : accountsas1
+Enabled     : True
+Created     : 5/24/2018 9:11:08 PM
+Updated     : 5/24/2018 9:11:08 PM
+Tags        :
+
+Id          : https://myvault.vault.azure.net:443/storage/mystorageaccount/sas/accountsas2
+Vault Name  : myvault
+AccountName : mystorageaccount
+Name        : accountsas2
+Enabled     : True
+Created     : 5/24/2018 9:11:08 PM
+Updated     : 5/24/2018 9:11:08 PM
+Tags        :
+```
+
+Lists all the SAS definitions associated with Key Vault managed Storage Account 'mystorageaccount' managed by vault 'myvault' that start with "account".
 
 ## PARAMETERS
 
