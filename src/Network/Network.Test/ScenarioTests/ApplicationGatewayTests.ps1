@@ -1417,6 +1417,8 @@ function Test-ApplicationGatewayCRUDSubItems2
 	$rewriteRuleName = Get-ResourceName
 	$rewriteRuleSetName = Get-ResourceName
 
+	$wafPolicy = Get-ResourceName
+
 	try
 	{
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
@@ -1532,6 +1534,47 @@ function Test-ApplicationGatewayCRUDSubItems2
 		$exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig -Variable "RequestArgNames" -Operator "Equals" -Selector "a"
 		Set-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $appgw -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "2.2.9" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2 -RequestBodyCheck $true -MaxRequestBodySizeInKb 80 -FileUploadLimitInMb 70 -Exclusion $exclusion1,$exclusion2
 		Set-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name $trustedRootCertName -CertificateFile $certFilePath2
+		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+
+		# WAF Policy and Custom Rule
+		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector User-Agent
+		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Contains -MatchValue "ABC" -Transform Lowercase -NegationCondition $False
+		$rule = New-AzApplicationGatewayFirewallCustomRule -Name BlockChrome -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -Location $location
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
+		$policy.CustomRules = $rule
+		Set-AzApplicationGatewayFirewallPolicy -ApplicationGatewayFirewallPolicy $policy
+		# Get Application Gateway
+		$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$appgw.FirewallPolicy = $policy
+		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+
+		$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
+
+		# First Check firewall configuraiton
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.Enabled $true
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.FirewallMode "Prevention"
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.RuleSetType "OWASP"
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.RuleSetVersion "2.2.9"
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.DisabledRuleGroups.Count 2
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.RequestBodyCheck $true
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.MaxRequestBodySizeInKb 80
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.FileUploadLimitInMb 70
+		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.Exclusions.Count 2
+
+		# Second check firewll policy
+		Assert-AreEqual $policy.Id $appgw.FirewallPolicy.Id
+		Assert-AreEqual $policy.CustomRules[0].Name $rule.Name
+		Assert-AreEqual $policy.CustomRules[0].RuleType $rule.RuleType
+		Assert-AreEqual $policy.CustomRules[0].Action $rule.Action
+		Assert-AreEqual $policy.CustomRules[0].Priority $rule.Priority
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].OperatorProperty $rule.MatchConditions[0].OperatorProperty
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].Transforms[0] $rule.MatchConditions[0].Transforms[0]
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].NegationConditon $rule.MatchConditions[0].NegationConditon
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchValues[0] $rule.MatchConditions[0].MatchValues[0]
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $rule.MatchConditions[0].MatchVariables[0].VariableName
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $rule.MatchConditions[0].MatchVariables[0].Selector
 
 		# Set non-exiting
 		Assert-ThrowsLike { Set-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus408 -CustomErrorPageUrl $customError403Url02 } "*does not exist*"
@@ -1546,15 +1589,6 @@ function Test-ApplicationGatewayCRUDSubItems2
 		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 
 		Assert-AreEqual $appgw.AutoscaleConfiguration.MinCapacity 2
-		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.Enabled $true
-		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.FirewallMode "Prevention"
-		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.RuleSetType "OWASP"
-		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.RuleSetVersion "2.2.9"
-		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.DisabledRuleGroups.Count 2
-		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.RequestBodyCheck $true
-		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.MaxRequestBodySizeInKb 80
-		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.FileUploadLimitInMb 70
-		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.Exclusions.Count 2
 
 		# Remove
 		Remove-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name $trustedRootCertName
