@@ -483,6 +483,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
+### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
+
+### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]
+
+### System.Management.Automation.SwitchParameter
+
+### System.Guid
+
+### System.Nullable`1[[System.UInt32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.Auditing.Model.ServerBlobAuditingSettingsModel

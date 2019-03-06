@@ -15,24 +15,39 @@
 
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
+namespace ScenarioTests
 {
-    public class StorageSyncTests : RMTestBase
+    /// <summary>
+    /// Class StorageSyncTests.
+    /// </summary>
+    public class StorageSyncTests
     {
+        /// <summary>
+        /// The logger
+        /// </summary>
+        private readonly XunitTracingInterceptor _logger;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageSyncTests"/> class.
+        /// </summary>
+        /// <param name="output">The output.</param>
         public StorageSyncTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
+        /// <summary>
+        /// Defines the test method TestStorageSync.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageSync()
         {
-            TestController.NewInstance.RunPsTest("Test-StorageSync");
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageSync");
         }
     }
 }

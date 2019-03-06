@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.0
 * Add cmdlets for ADL deleted item enumerate and restore
 
 ## Version 1.0.2

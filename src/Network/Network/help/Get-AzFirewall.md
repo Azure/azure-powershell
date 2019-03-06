@@ -26,6 +26,68 @@ The **Get-AzFirewall** cmdlet gets one or more Firewalls in a resource group.
 ### 1:  Retrieve all Firewalls in a resource group
 ```
 Get-AzFirewall -ResourceGroupName rgName
+
+Name                       : azFw
+ResourceGroupName          : rgName
+Location                   : westcentralus
+Id                         : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/providers/Micros
+                             oft.Network/azureFirewalls/azFw
+Etag                       : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid               :
+ProvisioningState          : Succeeded
+Tags                       :
+IpConfigurations           : [
+                               {
+                                 "Name": "AzureFirewallIpConfiguration",
+                                 "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                 "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/provi
+                             ders/Microsoft.Network/azureFirewalls/azFw/azureFirewallIpConfigurations/AzureFirewallIp
+                             Configuration",
+                                 "PrivateIPAddress": "x.x.x.x",
+                                 "Subnet": {
+                                   "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/pro
+                             viders/Microsoft.Network/virtualNetworks/vnetname/subnets/AzureFirewallSubnet"
+                                 },
+                                 "PublicIpAddress": {
+                                   "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/pro
+                             viders/Microsoft.Network/publicIPAddresses/publicipname"
+                                 }
+                               }
+                             ]
+ApplicationRuleCollections : []
+NatRuleCollections         : []
+NetworkRuleCollections     : []
+
+Name                       : azFw1
+ResourceGroupName          : rgName
+Location                   : westcentralus
+Id                         : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/providers/Micros
+                             oft.Network/azureFirewalls/azFw1
+Etag                       : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid               :
+ProvisioningState          : Succeeded
+Tags                       :
+IpConfigurations           : [
+                               {
+                                 "Name": "AzureFirewallIpConfiguration",
+                                 "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                 "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/provi
+                             ders/Microsoft.Network/azureFirewalls/azFw1/azureFirewallIpConfigurations/AzureFirewallIp
+                             Configuration",
+                                 "PrivateIPAddress": "x.x.x.x",
+                                 "Subnet": {
+                                   "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/pro
+                             viders/Microsoft.Network/virtualNetworks/vnetname/subnets/AzureFirewallSubnet"
+                                 },
+                                 "PublicIpAddress": {
+                                   "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/pro
+                             viders/Microsoft.Network/publicIPAddresses/publicipname"
+                                 }
+                               }
+                             ]
+ApplicationRuleCollections : []
+NatRuleCollections         : []
+NetworkRuleCollections     : []
 ```
 
 This example retrieves all Firewalls in resource group "rgName".
@@ -33,11 +95,111 @@ This example retrieves all Firewalls in resource group "rgName".
 ### 2:  Retrieve a Firewall by name
 ```
 Get-AzFirewall -ResourceGroupName rgName -Name azFw
+
+Name                       : azFw
+ResourceGroupName          : rgName
+Location                   : westcentralus
+Id                         : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/providers/Micros
+                             oft.Network/azureFirewalls/azFw
+Etag                       : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid               :
+ProvisioningState          : Succeeded
+Tags                       :
+IpConfigurations           : [
+                               {
+                                 "Name": "AzureFirewallIpConfiguration",
+                                 "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                 "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/provi
+                             ders/Microsoft.Network/azureFirewalls/azFw/azureFirewallIpConfigurations/AzureFirewallIp
+                             Configuration",
+                                 "PrivateIPAddress": "x.x.x.x",
+                                 "Subnet": {
+                                   "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/pro
+                             viders/Microsoft.Network/virtualNetworks/vnetname/subnets/AzureFirewallSubnet"
+                                 },
+                                 "PublicIpAddress": {
+                                   "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/pro
+                             viders/Microsoft.Network/publicIPAddresses/publicipname"
+                                 }
+                               }
+                             ]
+ApplicationRuleCollections : []
+NatRuleCollections         : []
+NetworkRuleCollections     : []
 ```
 
 This example retrieves Firewall named "azFw" in resource group "rgName".
 
-### 3:  Retrieve a firewall and then add a application rule collection to the Firewall
+### 3:  Retrieve all Firewalls with filtering
+```
+Get-AzFirewall -Name azFw*
+
+Name                       : azFw
+ResourceGroupName          : rgName
+Location                   : westcentralus
+Id                         : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/providers/Micros
+                             oft.Network/azureFirewalls/azFw
+Etag                       : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid               :
+ProvisioningState          : Succeeded
+Tags                       :
+IpConfigurations           : [
+                               {
+                                 "Name": "AzureFirewallIpConfiguration",
+                                 "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                 "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/provi
+                             ders/Microsoft.Network/azureFirewalls/azFw/azureFirewallIpConfigurations/AzureFirewallIp
+                             Configuration",
+                                 "PrivateIPAddress": "x.x.x.x",
+                                 "Subnet": {
+                                   "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/pro
+                             viders/Microsoft.Network/virtualNetworks/vnetname/subnets/AzureFirewallSubnet"
+                                 },
+                                 "PublicIpAddress": {
+                                   "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/pro
+                             viders/Microsoft.Network/publicIPAddresses/publicipname"
+                                 }
+                               }
+                             ]
+ApplicationRuleCollections : []
+NatRuleCollections         : []
+NetworkRuleCollections     : []
+
+Name                       : azFw1
+ResourceGroupName          : rgName
+Location                   : westcentralus
+Id                         : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/providers/Micros
+                             oft.Network/azureFirewalls/azFw1
+Etag                       : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid               :
+ProvisioningState          : Succeeded
+Tags                       :
+IpConfigurations           : [
+                               {
+                                 "Name": "AzureFirewallIpConfiguration",
+                                 "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                 "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/provi
+                             ders/Microsoft.Network/azureFirewalls/azFw1/azureFirewallIpConfigurations/AzureFirewallIp
+                             Configuration",
+                                 "PrivateIPAddress": "x.x.x.x",
+                                 "Subnet": {
+                                   "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/pro
+                             viders/Microsoft.Network/virtualNetworks/vnetname/subnets/AzureFirewallSubnet"
+                                 },
+                                 "PublicIpAddress": {
+                                   "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/pro
+                             viders/Microsoft.Network/publicIPAddresses/publicipname"
+                                 }
+                               }
+                             ]
+ApplicationRuleCollections : []
+NatRuleCollections         : []
+NetworkRuleCollections     : []
+```
+
+This example retrieves all Firewalls that start with "azFw"
+
+### 4:  Retrieve a firewall and then add a application rule collection to the Firewall
 ```
 $azFw=Get-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
 $appRule = New-AzFirewallApplicationRule -Name R1 -Protocol "http:80","https:443" -TargetFqdn "*google.com", "*microsoft.com" -SourceAddress "10.0.0.0"
@@ -47,7 +209,7 @@ $azFw.AddApplicationRuleCollection($appRuleCollection)
 
 This example retrieves a firewall, then adds a application rule collection to the firewall by calling method AddApplicationRuleCollection.
 
-### 4:  Retrieve a firewall and then add a network rule collection to the Firewall
+### 5:  Retrieve a firewall and then add a network rule collection to the Firewall
 ```
 $azFw=Get-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
 $netRule = New-AzFirewallNetworkRule -Name "all-udp-traffic" -Description "Rule for all UDP traffic" -Protocol "Udp" -SourceAddress "*" -DestinationAddress "*" -DestinationPort "*"
@@ -57,7 +219,7 @@ $azFw.AddNetworkRuleCollection($netRuleCollection)
 
 This example retrieves a firewall, then adds a network rule collection to the firewall by calling method AddNetworkRuleCollection.
 
-### 5:  Retrieve a firewall and then retrieve a application rule collection by name from the Firewall
+### 6:  Retrieve a firewall and then retrieve a application rule collection by name from the Firewall
 ```
 $azFw=Get-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
 $getAppRc=$azFw.GetApplicationRuleCollectionByName("MyAppRuleCollection")
@@ -66,7 +228,7 @@ $getAppRc=$azFw.GetApplicationRuleCollectionByName("MyAppRuleCollection")
 This example retrieves a firewall and then gets a rule collection by name, calling method GetApplicationRuleCollectionByName on the 
 firewall object. The rule collection name for method GetApplicationRuleCollectionByName is case-insensitive.
 
-### 6:  Retrieve a firewall and then retrieve a network rule collection by name from the Firewall
+### 7:  Retrieve a firewall and then retrieve a network rule collection by name from the Firewall
 ```
 $azFw=Get-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
 $getNetRc=$azFw.GetNetworkRuleCollectionByName("MyNetworkRuleCollection")
@@ -75,7 +237,7 @@ $getNetRc=$azFw.GetNetworkRuleCollectionByName("MyNetworkRuleCollection")
 This example retrieves a firewall and then gets a rule collection by name, calling method GetNetworkRuleCollectionByName on the 
 firewall object. The rule collection name for method GetNetworkRuleCollectionByName is case-insensitive.
 
-### 7:  Retrieve a firewall and then remove a application rule collection by name from the Firewall
+### 8:  Retrieve a firewall and then remove a application rule collection by name from the Firewall
 ```
 $azFw=Get-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
 $azFw.RemoveApplicationRuleCollectionByName("MyAppRuleCollection")
@@ -84,7 +246,7 @@ $azFw.RemoveApplicationRuleCollectionByName("MyAppRuleCollection")
 This example retrieves a firewall and then removes a rule collection by name, calling method RemoveApplicationRuleCollectionByName on the 
 firewall object. The rule collection name for method RemoveApplicationRuleCollectionByName is case-insensitive.
 
-### 8:  Retrieve a firewall and then remove a network rule collection by name from the Firewall
+### 9:  Retrieve a firewall and then remove a network rule collection by name from the Firewall
 ```
 $azFw=Get-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
 $azFw.RemoveNetworkRuleCollectionByName("MyNetworkRuleCollection")
@@ -93,7 +255,7 @@ $azFw.RemoveNetworkRuleCollectionByName("MyNetworkRuleCollection")
 This example retrieves a firewall and then removes a rule collection by name, calling method RemoveNetworkRuleCollectionByName on the 
 firewall object. The rule collection name for method RemoveNetworkRuleCollectionByName is case-insensitive.
 
-### 9:  Retrieve a firewall and then allocate the firewall
+### 10:  Retrieve a firewall and then allocate the firewall
 ```
 $vnet=Get-AzVirtualNetwork -Name "vnet" -ResourceGroupName "rgName"
 $publicIp=Get-AzPublicIpAddress -Name "firewallpip" -ResourceGroupName "rgName"

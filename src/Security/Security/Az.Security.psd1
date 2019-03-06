@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.SecurityCenter.dll'
@@ -86,8 +86,9 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Remove-AzSecurityContact', 'Get-AzSecurityTask', 
                'Get-AzSecurityWorkspaceSetting', 'Set-AzSecurityWorkspaceSetting', 
                'Remove-AzSecurityWorkspaceSetting',
-               'Get-AzSecurityThreatProtection',
-               'Set-AzSecurityThreatProtection'
+               'Get-AzSecurityAdvancedThreatProtection',
+               'Enable-AzSecurityAdvancedThreatProtection',
+               'Disable-AzSecurityAdvancedThreatProtection'
 
 # Variables to export from this module
 # VariablesToExport = @()

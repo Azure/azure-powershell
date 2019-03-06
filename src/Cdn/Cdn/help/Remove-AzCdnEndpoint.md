@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: 7ADF4CDE-638B-4E00-88B1-688702B084A5
