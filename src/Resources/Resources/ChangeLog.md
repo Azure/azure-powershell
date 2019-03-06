@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update wildcard support for Get-AzResource and Get-AzResourceGroup
 
 ## Version 1.1.3
 * Fix for issue https://github.com/Azure/azure-powershell/issues/8166
