@@ -1,10 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   
-  <PropertyGroup>
-    <IncludeCommonTestProject>false</IncludeCommonTestProject>
-  </PropertyGroup>
-
-  <Import Project="$(MSBuildThisFileDirectory)..\..\src\Az.Test.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\Repo.props" />
+  <Import Project="$(RepoTools)Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
     <AssemblyName>Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager</AssemblyName>
