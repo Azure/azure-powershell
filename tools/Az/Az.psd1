@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.2'; },
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0'; },
                @{ModuleName = 'Az.Aks'; RequiredVersion = '1.0.1'; },
                @{ModuleName = 'Az.AnalysisServices'; RequiredVersion = '1.0.2'; },
                @{ModuleName = 'Az.ApiManagement'; RequiredVersion = '1.0.0'; },
@@ -89,7 +89,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.2'; },
                @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '1.1.0'; },
                @{ModuleName = 'Az.RedisCache'; RequiredVersion = '1.0.0'; },
                @{ModuleName = 'Az.Relay'; RequiredVersion = '1.0.0'; },
-               @{ModuleName = 'Az.Resources'; RequiredVersion = '1.1.3'; },
+               @{ModuleName = 'Az.Resources'; RequiredVersion = '1.2.0'; },
                @{ModuleName = 'Az.Security'; RequiredVersion = '1.0.0'; },
                @{ModuleName = 'Az.ServiceBus'; RequiredVersion = '1.0.0'; },
                @{ModuleName = 'Az.ServiceFabric'; RequiredVersion = '1.0.1'; },
@@ -159,10 +159,12 @@ General
 * Az.Security module is now GA and included with Az
 
 Az.Accounts
+* Add ''Register-AzModule'' command to suppoirt AutoRest generated cmdlets
 * Update examples for Connect-AzAccount
 
 Az.Automation
 * Fixed issue when retreiving certain monthly schedules in several Azure Automation cmdlets
+* Fix Get-AzAutomationDscNode returning just top 20 nodes. Now it returns all nodes
 
 Az.Cdn
 * Added new Powershell cmdlets for Enable/Disable Custom Domain Https and deprecated the old ones
@@ -184,6 +186,13 @@ Az.RecoveryServices
 * SDK Update
 * Removed VMappContainer check in Get-ProtectableItem
 * Added Name and ServerName as parameters for Get-ProtectableItem
+
+* Add ''-TemplateObject'' parameter to deployment cmdlets
+    - More information here: https://github.com/Azure/azure-powershell/issues/2933
+* Fix issue when piping the result of ''Get-AzResource'' to ''Set-AzResource''
+    - More information here: https://github.com/Azure/azure-powershell/issues/8240
+* Fix issue with JSON data type change when running ''Set-AzResource''
+    - More information here: https://github.com/Azure/azure-powershell/issues/7930
 
 Az.Sql
 * Updating AuditingEndpointsCommunicator.

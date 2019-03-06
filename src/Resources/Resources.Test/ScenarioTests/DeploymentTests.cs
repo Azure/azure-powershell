@@ -32,25 +32,29 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ValidateDeployment");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void TestNewDeploymentFromTemplateFile()
         {
             TestRunner.RunTestScript("Test-NewDeploymentFromTemplateFile");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
-        [Trait("Re-record", "ClientRuntime changes")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentFromTemplateObject()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentFromTemplateObject");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNestedDeploymentFromTemplateFile()
         {
             TestRunner.RunTestScript("Test-NestedDeploymentFromTemplateFile");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void TestCrossResourceGroupDeploymentFromTemplateFile()
         {
             TestRunner.RunTestScript("Test-CrossResourceGroupDeploymentFromTemplateFile");
@@ -94,9 +98,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewDeploymentWithParameterObject");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void TestNewDeploymentWithDynamicParameters()
         {
             TestRunner.RunTestScript("Test-NewDeploymentWithDynamicParameters");
