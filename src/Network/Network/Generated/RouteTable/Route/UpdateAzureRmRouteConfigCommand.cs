@@ -39,8 +39,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteConfig", DefaultParameterSetName = "ByParentResource", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
-    public partial class AddAzureRmRouteConfigCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteConfig", DefaultParameterSetName = "ByParentResource", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
+    public partial class UpdateAzureRmRouteConfigCommand : NetworkBaseCmdlet
     {
 
         [Parameter(
@@ -118,25 +118,32 @@ namespace Microsoft.Azure.Commands.Network
                 this.RouteTable.Tag = TagsConversionHelper.CreateTagHashtable(vRouteTable.Tags);
             }
 
-            var existingRoute = this.RouteTable.Routes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-            if (existingRoute != null)
+            var vRoutesIndex = this.RouteTable.Routes.IndexOf(
+                this.RouteTable.Routes.SingleOrDefault(
+                    resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase)));
+            if (vRoutesIndex == -1)
             {
-                throw new ArgumentException("Route with the specified name already exists");
+                throw new ArgumentException("Routes with the specified name does not exist");
+            }
+            var vRoutes = RouteTable.Routes[vRoutesIndex];
+
+            if(!string.IsNullOrEmpty(this.AddressPrefix))
+            {
+                vRoutes.AddressPrefix = this.AddressPrefix;
+            }
+            if(!string.IsNullOrEmpty(this.NextHopType))
+            {
+                vRoutes.NextHopType = this.NextHopType;
+            }
+            if(!string.IsNullOrEmpty(this.NextHopIpAddress))
+            {
+                vRoutes.NextHopIpAddress = this.NextHopIpAddress;
+            }
+            if(!string.IsNullOrEmpty(this.Name))
+            {
+                vRoutes.Name = this.Name;
             }
 
-            // Routes
-            if (this.RouteTable.Routes == null)
-            {
-                this.RouteTable.Routes = new List<PSRoute>();
-            }
-
-            var vRoutes = new PSRoute();
-
-            vRoutes.AddressPrefix = this.AddressPrefix;
-            vRoutes.NextHopType = this.NextHopType;
-            vRoutes.NextHopIpAddress = this.NextHopIpAddress;
-            vRoutes.Name = this.Name;
-            this.RouteTable.Routes.Add(vRoutes);
             WriteObject(this.RouteTable, true);
         }
     }
