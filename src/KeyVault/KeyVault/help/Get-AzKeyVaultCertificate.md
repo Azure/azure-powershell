@@ -205,6 +205,7 @@ Version   :
 Id        : https://ContosoKV01.vault.azure.net:443/certificates/test2
 
 This command gets all certificates starting with "test" from the key vault named ContosoKV01.
+```
 
 ## PARAMETERS
 
