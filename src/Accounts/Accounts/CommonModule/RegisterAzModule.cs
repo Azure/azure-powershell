@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Commands.Common
     /// <summary>
     /// Return runtime services for generated cmdlets
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, @"AzModule")]
+    [OutputType(typeof(VTable))]
+    [Cmdlet(VerbsLifecycle.Register, @"AzModule", SupportsShouldProcess =true)]
     public class RegisterAzModule : PSCmdlet
     {
         protected override void ProcessRecord()
