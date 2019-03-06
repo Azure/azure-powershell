@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Network
         public string LoadBalancerName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "Name of the load balancing rule.")]
         public string Name { get; set; }
 
@@ -146,42 +146,72 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResourceId",
+            ParameterSetName = "SetByResourceIdParent",
+            HelpMessage = "A reference to frontend IP addresses.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceIdParentName",
             HelpMessage = "A reference to frontend IP addresses.",
             ValueFromPipelineByPropertyName = true)]
         public string FrontendIpConfigurationId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResource",
+            ParameterSetName = "SetByResourceParent",
+            HelpMessage = "A reference to frontend IP addresses.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceParentName",
             HelpMessage = "A reference to frontend IP addresses.",
             ValueFromPipelineByPropertyName = true)]
         public PSFrontendIPConfiguration FrontendIpConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResourceId",
+            ParameterSetName = "SetByResourceIdParent",
+            HelpMessage = "A reference to a pool of DIPs. Inbound traffic is randomly load balanced across IPs in the backend IPs.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceIdParentName",
             HelpMessage = "A reference to a pool of DIPs. Inbound traffic is randomly load balanced across IPs in the backend IPs.",
             ValueFromPipelineByPropertyName = true)]
         public string BackendAddressPoolId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResource",
+            ParameterSetName = "SetByResourceParent",
+            HelpMessage = "A reference to a pool of DIPs. Inbound traffic is randomly load balanced across IPs in the backend IPs.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceParentName",
             HelpMessage = "A reference to a pool of DIPs. Inbound traffic is randomly load balanced across IPs in the backend IPs.",
             ValueFromPipelineByPropertyName = true)]
         public PSBackendAddressPool BackendAddressPool { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResourceId",
+            ParameterSetName = "SetByResourceIdParent",
+            HelpMessage = "The reference of the load balancer probe used by the load balancing rule.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceIdParentName",
             HelpMessage = "The reference of the load balancer probe used by the load balancing rule.",
             ValueFromPipelineByPropertyName = true)]
         public string ProbeId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResource",
+            ParameterSetName = "SetByResourceParent",
+            HelpMessage = "The reference of the load balancer probe used by the load balancing rule.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceParentName",
             HelpMessage = "The reference of the load balancer probe used by the load balancing rule.",
             ValueFromPipelineByPropertyName = true)]
         public PSProbe Probe { get; set; }

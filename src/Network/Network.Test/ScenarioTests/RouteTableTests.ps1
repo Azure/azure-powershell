@@ -292,6 +292,17 @@ function Test-RouteTableRouteCRUD
 		Assert-AreEqual $list[1].NextHopType $route.NextHopType
 		Assert-Null $list[1].NextHopIpAddress
 
+		$getRT = Get-AzRouteTable -name $routeTableName -ResourceGroupName $rgName | Update-AzRouteConfig -name "route1" -AddressPrefix "192.168.5.0/24" | Set-AzRouteTable
+
+		# get route
+		$route = $getRT | Get-AzRouteConfig -name "route1"
+
+		#verification
+		Assert-AreEqual $route.Name "route1"
+		Assert-AreEqual $route.AddressPrefix 192.168.5.0/24
+		Assert-AreEqual VirtualAppliance $route.NextHopType
+		Assert-AreEqual 23.108.1.1 $route.NextHopIpAddress
+
 		# set route
 		$getRT = Get-AzRouteTable -name $routeTableName -ResourceGroupName $rgName | Set-AzRouteConfig -name "route2" -AddressPrefix "192.168.3.0/24" -NextHopType "VnetLocal" | Set-AzRouteTable
 
