@@ -24,6 +24,8 @@
 * Fix for issue https://github.com/Azure/azure-powershell/issues/8235
 * Fix for issue https://github.com/Azure/azure-powershell/issues/6219
 * Fix bug preventing repeat creation of KeyCredentials
+* Add `-TemplateObject` parameter to deployment cmdlets
+    - More information here: https://github.com/Azure/azure-powershell/issues/2933
 * Fix issue when piping the result of `Get-AzResource` to `Set-AzResource`
     - More information here: https://github.com/Azure/azure-powershell/issues/8240
 * Fix issue with JSON data type change when running `Set-AzResource`
