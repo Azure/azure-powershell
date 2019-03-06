@@ -1550,3 +1550,30 @@ function Test-ApplicationGatewayCRUDSubItems2
 		Clean-ResourceGroup $rgname
 	}
 }
+
+function Test-AvailableServerVariableAndHeader
+{
+	#Get server variables, request headers and response headers
+	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader
+
+	Assert-NotNull $result
+	Assert-True { $result.Count -gt 0 }
+
+	#Get server variables only
+	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariables
+
+	Assert-NotNull $result
+	Assert-True { $result.Count -gt 0 }
+
+	#Get request headers only
+	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader -RequestHeaders
+
+	Assert-NotNull $result
+	Assert-True { $result.Count -gt 0 }
+
+	#Get response headers only
+	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader -ResponseHeaders
+
+	Assert-NotNull $result
+	Assert-True { $result.Count -gt 0 }
+}
