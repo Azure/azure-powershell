@@ -1,12 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   
   <PropertyGroup>
-    <AssemblyName>Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager</AssemblyName>
-    <RootNamespace>$(LegacyAssemblyPrefix)ScenarioTest</RootNamespace>
     <IncludeCommonTestProject>false</IncludeCommonTestProject>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\src\Az.Test.props" />
+
+  <PropertyGroup>
+    <AssemblyName>Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager</AssemblyName>
+    <RootNamespace>$(LegacyAssemblyPrefix)ScenarioTest</RootNamespace>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Moq" Version="4.7.145" />
