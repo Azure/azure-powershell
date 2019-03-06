@@ -17,22 +17,24 @@ Enable HTTPS for a custom domain using Front Door managed certificate or using o
 Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName <String> -FrontDoorName <String>
  -FrontendEndpointName <String> -CertificateSource <PSCertificateSource> [-Vault <String>]
  [-SecretName <String>] [-SecretVersion <String>] [-CertificateType <PSCertificateType>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProtocolType <PSProtocolType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Enable-AzFrontDoorCustomDomainHttps -ResourceId <String> -CertificateSource <PSCertificateSource>
  [-Vault <String>] [-SecretName <String>] [-SecretVersion <String>] [-CertificateType <PSCertificateType>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProtocolType <PSProtocolType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Enable-AzFrontDoorCustomDomainHttps -CertificateSource <PSCertificateSource> [-Vault <String>]
  [-SecretName <String>] [-SecretVersion <String>] [-CertificateType <PSCertificateType>]
- -InputObject <PSFrontendEndpoint> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ProtocolType <PSProtocolType>] -InputObject <PSFrontendEndpoint> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -239,6 +241,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProtocolType
+The TLS extension protocol that is used for secure delivery
+
+```yaml
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSProtocolType
+Parameter Sets: (All)
+Aliases:
+Accepted values: ServerNameIndication, IPBased
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
