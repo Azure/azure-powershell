@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed issue when retreiving certain monthly schedules in several Azure Automation cmdlets
+* Fix Get-AzAutomationDscNode returning just top 20 nodes. Now it returns all nodes
 
 ## Version 1.1.1
 * Update help for Import-AzAutomationDscNodeConfiguration
