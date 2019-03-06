@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.2
 * Add new cmdlets: Get-AzSecurityThreatProtection and Set-AzSecurityThreatProtection
 
 ## Version 0.7.0

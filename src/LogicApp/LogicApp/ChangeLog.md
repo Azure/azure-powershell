@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix for ListWorkflows only retrieving the first page of results
+
+## Version 1.2.0
 * Add in Basic sku for Integration Accounts
 * Add in XSLT 2.0, XSLT 3.0 and Liquid Map Types
 * New cmdlets for Integration Account Assemblies

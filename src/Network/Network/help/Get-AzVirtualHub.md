@@ -19,7 +19,7 @@ Get-AzVirtualHub [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 
 ### ListByResourceGroupName
 ```
-Get-AzVirtualHub -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzVirtualHub [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -51,6 +51,36 @@ ProvisioningState         : Succeeded
 The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have the address space "10.0.1.0/24".
 
 It then gets the virtual hub using its ResourceGroupName and ResourceName.
+
+### Example 2
+
+```powershell
+PS C:\> Get-AzVirtualHub -Name westushub*
+
+VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+ResourceGroupName         : testRG
+Name                      : westushub1
+Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub1
+AddressPrefix             : 10.0.1.0/24
+RouteTable                : 
+VirtualNetworkConnections : {}
+Location                  : West US
+Type                      : Microsoft.Network/virtualHubs
+ProvisioningState         : Succeeded
+
+VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+ResourceGroupName         : testRG
+Name                      : westushub2
+Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub2
+AddressPrefix             : 10.0.1.0/24
+RouteTable                : 
+VirtualNetworkConnections : {}
+Location                  : West US
+Type                      : Microsoft.Network/virtualHubs
+ProvisioningState         : Succeeded
+```
+
+This cmdlet gets the virtual hub using filtering.
 
 ## PARAMETERS
 
@@ -92,7 +122,7 @@ Type: System.String
 Parameter Sets: ListByResourceGroupName
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
