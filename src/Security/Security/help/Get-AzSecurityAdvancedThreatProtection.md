@@ -1,39 +1,38 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/get-azsecuritythreatprotection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/get-azsecurityadvancedthreatprotection
 schema: 2.0.0
 ---
 
-# Get-AzSecurityThreatProtection
+# Get-AzSecurityAdvancedThreatProtection
 
 ## SYNOPSIS
-Gets the threat protection policy for a storage account.
+Gets the advanced threat protection policy for a storage account.
 
 ## SYNTAX
 
 ```
-Get-AzSecurityThreatProtection -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSecurityAdvancedThreatProtection -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The "Get-AzSecurityThreatProtection" cmdlet gets the threat protection policy of a storage account.
+The `Get-AzSecurityAdvancedThreatProtection` cmdlet gets the threat protection policy for a storage account.
 To use this cmdlet, specify the *ResourceId* parameter.
-
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecurityThreatProtection -ResourceId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
+PS C:\> Get-AzSecurityAdvancedThreatProtection -ResourceId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
 
 IsEnabled Id
 --------- --
     False  "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
 ```
 
-This command gets the threat protection policy for resource id "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/".
+This command gets the advanced threat protection policy for resource id `"/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"`.
 
 ## PARAMETERS
 
@@ -76,7 +75,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Security.Models.Locations.PSSecurityLocation
+### Microsoft.Azure.Commands.Security.Models.AdvancedThreatProtection.PSAdvancedThreatProtection
 
 ## NOTES
 

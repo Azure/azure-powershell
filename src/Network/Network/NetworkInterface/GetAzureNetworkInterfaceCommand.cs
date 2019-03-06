@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 PSNetworkInterface networkInterface;
 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<MNM.NetworkInterface> nicPage;
-                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                if (ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     if (ParameterSetName.Contains("ScaleSetNic"))
                     {
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Network
                     psNetworkInterfaces.Add(psNic);
                 }
 
-                WriteObject(psNetworkInterfaces, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psNetworkInterfaces), true);
             }
         }
     }

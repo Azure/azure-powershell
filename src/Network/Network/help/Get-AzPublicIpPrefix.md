@@ -14,13 +14,7 @@ Gets a public IP prefix
 
 ### ListParameterSet (Default)
 ```
-Get-AzPublicIpPrefix [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### GetByNameParameterSet
-```
-Get-AzPublicIpPrefix -Name <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzPublicIpPrefix [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -36,10 +30,57 @@ The **Get-AzPublicIpPrefix** cmdlet gets one or more public IP prefixes in a res
 
 ### Example 1
 ```powershell
-PS C:\> $publicIpPrefix = Get-AzPublicIpPrefix -ResourceGroupName $rgname -Name $prefixName
+PS C:\> Get-AzPublicIpPrefix -ResourceGroupName myRg -Name myPublicIpPrefix1
+
+Name                   : myPublicIpPrefix1
+ResourceGroupName      : myRg
+Location               : westus
+Id                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRg/providers/Mic
+                         rosoft.Network/publicIPPrefixes/myPublicIpPrefix1
+Etag                   : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid           : 00000000-0000-0000-0000-000000000000
+ProvisioningState      : Succeeded
+Tags                   :
+PublicIpAddressVersion : IPv4
+PrefixLength           : 28
+IPPrefix               : xx.xx.xx.xx/xx
+IdleTimeoutInMinutes   :
+Zones                  : {}
+Sku                    : {
+                           "Name": "Standard"
+                         }
+IpTags                 : []
+PublicIpAddresses      : []
 ```
 
-This command gets a public IP prefix resource with $prefixName in resource group $rgName
+This command gets a public IP prefix resource with myPublicIpPrefix1 in resource group myRg
+
+### Example 2
+```powershell
+PS C:\> Get-AzPublicIpPrefix -Name myPublicIpPrefix*
+
+Name                   : myPublicIpPrefix1
+ResourceGroupName      : myRg
+Location               : westus
+Id                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRg/providers/Mic
+                         rosoft.Network/publicIPPrefixes/myPublicIpPrefix1
+Etag                   : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid           : 00000000-0000-0000-0000-000000000000
+ProvisioningState      : Succeeded
+Tags                   :
+PublicIpAddressVersion : IPv4
+PrefixLength           : 28
+IPPrefix               : xx.xx.xx.xx/xx
+IdleTimeoutInMinutes   :
+Zones                  : {}
+Sku                    : {
+                           "Name": "Standard"
+                         }
+IpTags                 : []
+PublicIpAddresses      : []
+```
+
+This command gets all public IP prefix resources that start with myPublicIpPrefix.
 
 ## PARAMETERS
 
@@ -63,10 +104,10 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: ListParameterSet
 Aliases: ResourceName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -82,18 +123,6 @@ Parameter Sets: ListParameterSet
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
