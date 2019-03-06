@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  
-  <Import Project="$(MSBuildThisFileDirectory)..\..\src\Az.Test.props" />
-
+ 
   <PropertyGroup>
     <AssemblyName>Microsoft.Azure.PowerShell.TestFx</AssemblyName>
     <RootNamespace>$(LegacyAssemblyPrefix)TestFx</RootNamespace>
     <IncludeCommonTestProject>false</IncludeCommonTestProject>
   </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\src\Az.Test.props" />
 
   <ItemGroup>
     <PackageReference Include="Moq" Version="4.7.145" />
