@@ -1562,7 +1562,7 @@ function Test-AvailableServerVariableAndHeader
 	Assert-True { $result.AvailableResponseHeader.Count -gt 0 }
 
 	#Get server variables, request headers and response headers
-	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariables -RequestHeaders -ResponseHeaders
+	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariable -RequestHeader -ResponseHeader
 
 	Assert-NotNull $result
 	Assert-True { $result.AvailableServerVariable.Count -gt 0 }
@@ -1570,19 +1570,19 @@ function Test-AvailableServerVariableAndHeader
 	Assert-True { $result.AvailableResponseHeader.Count -gt 0 }
 
 	#Get server variables only
-	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariables
+	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariable
 
 	Assert-NotNull $result
 	Assert-True { $result.AvailableServerVariable.Count -gt 0 }
 
 	#Get request headers only
-	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader -RequestHeaders
+	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader -RequestHeader
 
 	Assert-NotNull $result
 	Assert-True { $result.AvailableRequestHeader.Count -gt 0 }
 
 	#Get response headers only
-	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader -ResponseHeaders
+	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader -ResponseHeader
 
 	Assert-NotNull $result
 	Assert-True { $result.AvailableResponseHeader.Count -gt 0 }
