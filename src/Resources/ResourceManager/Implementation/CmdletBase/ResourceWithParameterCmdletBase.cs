@@ -91,6 +91,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the template.")]
         [Parameter(ParameterSetName = ParameterlessTemplateObjectParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the template.")]
+        [ValidateNotNull]
         public Hashtable TemplateObject { get; set; }
 
         [Parameter(ParameterSetName = TemplateFileParameterObjectParameterSetName,
