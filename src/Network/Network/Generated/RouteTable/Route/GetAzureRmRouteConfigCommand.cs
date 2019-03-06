@@ -24,8 +24,12 @@
 // Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
+using AutoMapper;
+using CNM = Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
@@ -35,15 +39,32 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteConfig"), OutputType(typeof(PSRoute))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteConfig", DefaultParameterSetName = "ByParentResource"), OutputType(typeof(PSRoute))]
     public partial class GetAzureRmRouteConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             HelpMessage = "The reference of the route table resource.",
+            ParameterSetName = "ByParentResource",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         public PSRouteTable RouteTable { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Resource group name",
+            ParameterSetName = "ByParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Route Table name",
+            ParameterSetName = "ByParentName",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string RouteTableName { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -54,6 +75,21 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+            if(string.Equals(ParameterSetName, "ByParentName"))
+            {
+                RouteTable vRouteTable;
+                try
+                {
+                    vRouteTable = this.NetworkClient.NetworkManagementClient.RouteTables.Get(ResourceGroupName, RouteTableName);
+                }
+                catch (Microsoft.Rest.Azure.CloudException exception)
+                {
+                    throw exception;
+                }
+                this.RouteTable = NetworkResourceManagerProfile.Mapper.Map<CNM.PSRouteTable>(vRouteTable);
+                this.RouteTable.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(vRouteTable.Id);
+                this.RouteTable.Tag = TagsConversionHelper.CreateTagHashtable(vRouteTable.Tags);
+            }
 
             if(!string.IsNullOrEmpty(this.Name))
             {

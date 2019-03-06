@@ -965,6 +965,13 @@ function Test-LoadBalancerChildResource
         Assert-AreEqual $vnet.Subnets[0].Id $lb.FrontendIPConfigurations[1].Subnet.Id
         Assert-AreEqual "10.0.1.5" $lb.FrontendIPConfigurations[1].PrivateIpAddress
 
+        $lb = $lb | Update-AzLoadBalancerFrontendIpConfig -Name $frontendName2 -PrivateIpAddress "10.0.1.6"
+        Assert-AreEqual 2 @($lb.FrontendIPConfigurations).Count
+        Assert-AreEqual $frontendName2 $lb.FrontendIPConfigurations[1].Name
+        Assert-AreEqual "Static" $lb.FrontendIPConfigurations[1].PrivateIPAllocationMethod
+        Assert-AreEqual $vnet.Subnets[0].Id $lb.FrontendIPConfigurations[1].Subnet.Id
+        Assert-AreEqual "10.0.1.6" $lb.FrontendIPConfigurations[1].PrivateIpAddress
+
         $frontendIpconfig = $lb | Get-AzLoadBalancerFrontendIpConfig -Name $frontendName2
         $frontendIpconfigList = $lb | Get-AzLoadBalancerFrontendIpConfig
         Assert-AreEqual 2 @($frontendIpconfigList).Count
@@ -979,8 +986,8 @@ function Test-LoadBalancerChildResource
         # Test BackendAddressPool cmdlets
         $backendAddressPoolName2 = Get-ResourceName
         $job =  Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Add-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName2 | Set-AzLoadBalancer -AsJob
-		$job | Wait-Job
-		$lb = $job | Receive-Job
+        $job | Wait-Job
+        $lb = $job | Receive-Job
 
         Assert-AreEqual 2 @($lb.BackendAddressPools).Count
         Assert-AreEqual $backendAddressPoolName2 $lb.BackendAddressPools[1].Name
@@ -1010,6 +1017,18 @@ function Test-LoadBalancerChildResource
         Assert-AreEqual $probeName2 $lb.Probes[1].Name
         Assert-AreEqual "healthcheck2.aspx" $lb.Probes[1].RequestPath
         Assert-AreEqual 85 $lb.Probes[1].Port
+        Assert-AreEqual 16 $lb.Probes[1].IntervalInSeconds
+        Assert-AreEqual 3 $lb.Probes[1].NumberOfProbes
+        Assert-AreEqual http $lb.Probes[1].Protocol
+
+        $lb =  Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Update-AzLoadBalancerProbeConfig -Name $probeName2 -IntervalInSeconds 17 | Set-AzLoadBalancer
+        Assert-AreEqual 2 @($lb.Probes).Count
+        Assert-AreEqual $probeName2 $lb.Probes[1].Name
+        Assert-AreEqual "healthcheck2.aspx" $lb.Probes[1].RequestPath
+        Assert-AreEqual 85 $lb.Probes[1].Port
+        Assert-AreEqual 17 $lb.Probes[1].IntervalInSeconds
+        Assert-AreEqual 3 $lb.Probes[1].NumberOfProbes
+        Assert-AreEqual http $lb.Probes[1].Protocol
 
         $probeConfig = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzLoadBalancerProbeConfig -Name $probeName2
         $probeConfigList = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzLoadBalancerProbeConfig
@@ -1038,6 +1057,15 @@ function Test-LoadBalancerChildResource
         Assert-AreEqual 3352 $lb.InboundNatRules[1].FrontendPort
         Assert-AreEqual 3351 $lb.InboundNatRules[1].BackendPort
         Assert-AreEqual false $lb.InboundNatRules[1].EnableFloatingIP
+        Assert-AreEqual 17 $lb.InboundNatRules[1].IdleTimeoutInMinutes
+
+        $lb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Update-AzLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName2 -IdleTimeoutInMinutes 16 | Set-AzLoadBalancer
+        Assert-AreEqual 2 @($lb.InboundNatRules).Count
+        Assert-AreEqual $inboundNatRuleName2 $lb.InboundNatRules[1].Name
+        Assert-AreEqual 3352 $lb.InboundNatRules[1].FrontendPort
+        Assert-AreEqual 3351 $lb.InboundNatRules[1].BackendPort
+        Assert-AreEqual false $lb.InboundNatRules[1].EnableFloatingIP
+        Assert-AreEqual 16 $lb.InboundNatRules[1].IdleTimeoutInMinutes
 
         $inboundNatRuleConfig = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName2
         $inboundNatRuleConfigList = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzLoadBalancerInboundNatRuleConfig
@@ -1068,6 +1096,16 @@ function Test-LoadBalancerChildResource
         Assert-AreEqual 84 $lb.LoadBalancingRules[1].BackendPort
         Assert-AreEqual true $lb.LoadBalancingRules[1].EnableFloatingIP
         Assert-AreEqual "Default" $lb.LoadBalancingRules[1].LoadDistribution
+        Assert-AreEqual 17 $lb.LoadBalancingRules[1].IdleTimeoutInMinutes
+
+        $lb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Update-AzLoadBalancerRuleConfig -Name $lbruleName2 -IdleTimeoutInMinutes 15 -EnableFloatingIP | Set-AzLoadBalancer
+        Assert-AreEqual 2 @($lb.LoadBalancingRules).Count
+        Assert-AreEqual $lbruleName2 $lb.LoadBalancingRules[1].Name
+        Assert-AreEqual 84 $lb.LoadBalancingRules[1].FrontendPort
+        Assert-AreEqual 84 $lb.LoadBalancingRules[1].BackendPort
+        Assert-AreEqual true $lb.LoadBalancingRules[1].EnableFloatingIP
+        Assert-AreEqual "Default" $lb.LoadBalancingRules[1].LoadDistribution
+        Assert-AreEqual 15 $lb.LoadBalancingRules[1].IdleTimeoutInMinutes
 
         $lbruleConfig = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzLoadBalancerRuleConfig -Name $lbruleName2
         $lbruleConfigList = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzLoadBalancerRuleConfig
@@ -1395,7 +1433,7 @@ function Test-LoadBalancer-NicAssociationDuringCreate
 .SYNOPSIS
 Tests creating new internal Load balancer and CRUD inbound nat pools on the load balancer
 #>
-function Test-LoadBalancerInboundNatPoolConfigCRUD-InternalLB  
+function Test-LoadBalancerInboundNatPoolConfigCRUD-InternalLB
 {
     # Setup
     $rgname = Get-ResourceGroupName
@@ -1407,7 +1445,7 @@ function Test-LoadBalancerInboundNatPoolConfigCRUD-InternalLB
     $frontendName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement "West US"
     $location = Get-ProviderLocation "Microsoft.Network/loadBalancers" "West US"
-    
+
     try 
     {
         # Create the resource group
@@ -1453,6 +1491,14 @@ function Test-LoadBalancerInboundNatPoolConfigCRUD-InternalLB
         Assert-AreEqual 3363 $lb.InboundNatPools[1].FrontendPortRangeStart
         Assert-AreEqual 3364 $lb.InboundNatPools[1].FrontendPortRangeEnd
         Assert-AreEqual 3373 $lb.InboundNatPools[1].BackendPort
+        Assert-AreEqual Tcp $lb.InboundNatPools[1].Protocol
+
+        $lb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Update-AzLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName2 -BackendPort 3374 | Set-AzLoadBalancer
+        Assert-AreEqual 2 @($lb.InboundNatPools).Count
+        Assert-AreEqual $inboundNatPoolName2 $lb.InboundNatPools[1].Name
+        Assert-AreEqual 3363 $lb.InboundNatPools[1].FrontendPortRangeStart
+        Assert-AreEqual 3364 $lb.InboundNatPools[1].FrontendPortRangeEnd
+        Assert-AreEqual 3374 $lb.InboundNatPools[1].BackendPort
         Assert-AreEqual Tcp $lb.InboundNatPools[1].Protocol
 
 
@@ -2173,6 +2219,7 @@ function Test-LoadBalancerCRUD-PublicStandardSku
     $probeName = Get-ResourceName
     $inboundNatRuleName = Get-ResourceName
     $lbruleName = Get-ResourceName
+    $outboundRuleName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $location = Get-ProviderLocation $resourceTypeParent
@@ -2234,6 +2281,22 @@ function Test-LoadBalancerCRUD-PublicStandardSku
         Assert-AreEqual $expectedLb.InboundNatRules[0].Etag $list[0].InboundNatRules[0].Etag
         Assert-AreEqual $expectedLb.Probes[0].Etag $list[0].Probes[0].Etag
         Assert-AreEqual $expectedLb.LoadBalancingRules[0].Etag $list[0].LoadBalancingRules[0].Etag
+
+        $lb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Add-AzLoadBalancerOutboundRuleConfig -Name $outboundRuleName -BackendAddressPool $expectedLb.BackendAddressPools[0] -FrontendIPConfiguration $expectedLb.FrontendIPConfigurations[0] -Protocol Tcp -AllocatedOutboundPort 48 -IdleTimeoutInMinutes 16 | Set-AzLoadBalancer
+
+        Assert-AreEqual 1 @($lb.OutboundRules).Count
+        Assert-AreEqual $outboundRuleName $lb.OutboundRules[0].Name
+        Assert-AreEqual Tcp $lb.OutboundRules[0].Protocol
+        Assert-AreEqual 48 $lb.OutboundRules[0].AllocatedOutboundPorts
+        Assert-AreEqual 16 $lb.OutboundRules[0].IdleTimeoutInMinutes
+
+        $lb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Update-AzLoadBalancerOutboundRuleConfig -Name $outboundRuleName -IdleTimeoutInMinutes 17 | Set-AzLoadBalancer
+
+        Assert-AreEqual 1 @($lb.OutboundRules).Count
+        Assert-AreEqual $outboundRuleName $lb.OutboundRules[0].Name
+        Assert-AreEqual Tcp $lb.OutboundRules[0].Protocol
+        Assert-AreEqual 48 $lb.OutboundRules[0].AllocatedOutboundPorts
+        Assert-AreEqual 17 $lb.OutboundRules[0].IdleTimeoutInMinutes
 
         # Delete
         $deleteLb = Remove-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force

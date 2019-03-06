@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Network
         public string LoadBalancerName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "Name of the outbound rule.")]
         public string Name { get; set; }
 
@@ -125,14 +125,24 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResourceId",
+            ParameterSetName = "SetByResourceIdParent",
+            HelpMessage = "A reference to a pool of DIPs. Outbound traffic is randomly load balanced across IPs in the backend IPs.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceIdParentName",
             HelpMessage = "A reference to a pool of DIPs. Outbound traffic is randomly load balanced across IPs in the backend IPs.",
             ValueFromPipelineByPropertyName = true)]
         public string BackendAddressPoolId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResource",
+            ParameterSetName = "SetByResourceParent",
+            HelpMessage = "A reference to a pool of DIPs. Outbound traffic is randomly load balanced across IPs in the backend IPs.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceParentName",
             HelpMessage = "A reference to a pool of DIPs. Outbound traffic is randomly load balanced across IPs in the backend IPs.",
             ValueFromPipelineByPropertyName = true)]
         public PSBackendAddressPool BackendAddressPool { get; set; }
