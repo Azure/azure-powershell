@@ -32,17 +32,17 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Application Gateway available server variables.")]
-        public SwitchParameter ServerVariables;
+        public SwitchParameter ServerVariable;
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Application Gateway available request headers.")]
-        public SwitchParameter RequestHeaders;
+        public SwitchParameter RequestHeader;
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Application Gateway available response headers.")]
-        public SwitchParameter ResponseHeaders;
+        public SwitchParameter ResponseHeader;
 
         public override void ExecuteCmdlet()
         {
@@ -51,20 +51,20 @@ namespace Microsoft.Azure.Commands.Network
             IList<string> availableRequestHeader;
             IList<string> availableResponseHeader;
             Dictionary<string, IList<string>> AvailableServerVariableAndHeaderResponse = new Dictionary<string, IList<string>>();
-            bool getAllData = ((!this.ServerVariables.IsPresent && !this.RequestHeaders.IsPresent && !this.ResponseHeaders.IsPresent) ||
-                (this.ServerVariables.IsPresent && this.RequestHeaders.IsPresent && this.ResponseHeaders.IsPresent));
+            bool getAllData = ((!this.ServerVariable.IsPresent && !this.RequestHeader.IsPresent && !this.ResponseHeader.IsPresent) ||
+                (this.ServerVariable.IsPresent && this.RequestHeader.IsPresent && this.ResponseHeader.IsPresent));
 
-            if(getAllData || this.ServerVariables.IsPresent)
+            if(getAllData || this.ServerVariable.IsPresent)
             {
                 availableServerVariable = this.ApplicationGatewayClient.ListAvailableServerVariables();
                 AvailableServerVariableAndHeaderResponse.Add("AvailableServerVariable", availableServerVariable);
             }
-            if (getAllData || this.RequestHeaders.IsPresent)
+            if (getAllData || this.RequestHeader.IsPresent)
             {
                 availableRequestHeader = this.ApplicationGatewayClient.ListAvailableRequestHeaders();
                 AvailableServerVariableAndHeaderResponse.Add("AvailableRequestHeader", availableRequestHeader);
             }
-            if (getAllData || this.ResponseHeaders.IsPresent)
+            if (getAllData || this.ResponseHeader.IsPresent)
             {
                 availableResponseHeader = this.ApplicationGatewayClient.ListAvailableResponseHeaders();
                 AvailableServerVariableAndHeaderResponse.Add("AvailableResponseHeader", availableResponseHeader);
