@@ -28,6 +28,12 @@ function Test-AvailableSslOptions
 	Assert-NotNull $result
 	Assert-NotNull $result.MinProtocolVersion
 	Assert-True { $result.CipherSuites -gt 0 }
+
+	$result = Get-AzApplicationGatewaySslPredefinedPolicy -Name AppGwSslPolicy*
+	Assert-NotNull $result
+	Assert-True { $result.Count -gt 0 }
+	Assert-NotNull $result[0].MinProtocolVersion
+	Assert-True { $result[0].CipherSuites -gt 0 }
 }
 
 function Test-AvailableWafRuleSets
@@ -193,6 +199,21 @@ function Test-ApplicationGatewayCRUD
 
 		# Get Application Gateway
 		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+
+		Assert-AreEqual "Running" $getgw.OperationalState
+		Compare-ConnectionDraining $poolSetting01 $getgw.BackendHttpSettingsCollection[0]
+		Compare-ConnectionDraining $poolSetting02 $getgw.BackendHttpSettingsCollection[1]
+		Compare-WebApplicationFirewallConfiguration $firewallConfig $getgw.WebApplicationFirewallConfiguration
+
+		# List ApplicationGateway
+		$getgw = Get-AzApplicationGateway -Name $appgwName
+
+		Assert-AreEqual "Running" $getgw[0].OperationalState
+		Compare-ConnectionDraining $poolSetting01 $getgw[0].BackendHttpSettingsCollection[0]
+		Compare-ConnectionDraining $poolSetting02 $getgw[0].BackendHttpSettingsCollection[1]
+		Compare-WebApplicationFirewallConfiguration $firewallConfig $getgw[0].WebApplicationFirewallConfiguration
+
+		$getgw = Get-AzApplicationGateway -Name ($appgwName + "*")
 
 		Assert-AreEqual "Running" $getgw.OperationalState
 		Compare-ConnectionDraining $poolSetting01 $getgw.BackendHttpSettingsCollection[0]

@@ -32,11 +32,75 @@ The **Get-AzLoadBalancer** cmdlet gets one or more Azure load balancers that are
 
 ### Example 1: Get a load balancer
 ```
-PS C:\>Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+PS C:\> Get-AzLoadBalancer -Name "MyLoadBalancer1" -ResourceGroupName "MyResourceGroup"
+
+Name                     : MyLoadBalancer1
+ResourceGroupName        : MyResourceGroup
+Location                 : australiaeast
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/M
+                           icrosoft.Network/loadBalancers/MyLoadBalancer1
+Etag                     : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid             : 00000000-0000-0000-0000-000000000000
+ProvisioningState        : Succeeded
+Tags                     :
+FrontendIpConfigurations : []
+BackendAddressPools      : []
+LoadBalancingRules       : []
+Probes                   : []
+InboundNatRules          : []
+InboundNatPools          : []
+Sku                      : {
+                             "Name": "Basic"
+                           }
 ```
 
 This command gets the load balancer named MyLoadBalancer.
 A load balancer must exist before you can run this cmdlet.
+
+### Example 2: List load balancers using filtering
+```
+PS C:\> Get-AzLoadBalancer -Name MyLoadBalancer*
+
+Name                     : MyLoadBalancer1
+ResourceGroupName        : MyResourceGroup
+Location                 : australiaeast
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/M
+                           icrosoft.Network/loadBalancers/MyLoadBalancer1
+Etag                     : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid             : 00000000-0000-0000-0000-000000000000
+ProvisioningState        : Succeeded
+Tags                     :
+FrontendIpConfigurations : []
+BackendAddressPools      : []
+LoadBalancingRules       : []
+Probes                   : []
+InboundNatRules          : []
+InboundNatPools          : []
+Sku                      : {
+                             "Name": "Basic"
+                           }
+
+Name                     : MyLoadBalancer2
+ResourceGroupName        : MyResourceGroup
+Location                 : australiaeast
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/M
+                           icrosoft.Network/loadBalancers/MyLoadBalancer2
+Etag                     : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid             : 00000000-0000-0000-0000-000000000000
+ProvisioningState        : Succeeded
+Tags                     :
+FrontendIpConfigurations : []
+BackendAddressPools      : []
+LoadBalancingRules       : []
+Probes                   : []
+InboundNatRules          : []
+InboundNatPools          : []
+Sku                      : {
+                             "Name": "Basic"
+                           }
+```
+
+This command gets all load balancers with a name that starts with "MyLoadBalancer"
 
 ## PARAMETERS
 

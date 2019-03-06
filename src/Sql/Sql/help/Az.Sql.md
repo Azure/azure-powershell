@@ -143,6 +143,9 @@ Gets the vulnerability assessment settings of a database.
 ### [Get-AzSqlDeletedDatabaseBackup](Get-AzSqlDeletedDatabaseBackup.md)
 Gets a deleted database that you can restore.
 
+### [Get-AzSqlDeletedInstanceDatabaseBackup](Get-AzSqlDeletedInstanceDatabaseBackup.md)
+Gets a deleted database that you can restore.
+
 ### [Get-AzSqlElasticPool](Get-AzSqlElasticPool.md)
 Gets elastic pools and their property values in an Azure SQL Database.
 
@@ -451,6 +454,9 @@ Updates the state of an Azure SQL Elastic Pool recommended action.
 
 ### [Set-AzSqlInstance](Set-AzSqlInstance.md)
 Sets properties for an Azure SQL Database Managed Instance.
+
+### [Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy](Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy.md)
+Sets a backup short term retention policy.
 
 ### [Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.

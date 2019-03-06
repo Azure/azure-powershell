@@ -92,13 +92,13 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
                 this.ExpressRouteGatewayName = parsedResourceId.ResourceName;
             }
 
-            if (!string.IsNullOrWhiteSpace(this.Name))
+            if (!string.IsNullOrWhiteSpace(this.Name) && !WildcardPattern.ContainsWildcardCharacters(Name))
             {
                 WriteObject(this.GetExpressRouteConnection(this.ResourceGroupName, this.ExpressRouteGatewayName, this.Name));
             }
             else
             {
-                WriteObject(this.ListExpressRouteConnections(this.ResourceGroupName, this.ExpressRouteGatewayName), true);
+                WriteObject(SubResourceWildcardFilter(Name, this.ListExpressRouteConnections(this.ResourceGroupName, this.ExpressRouteGatewayName)), true);
             }
         }
     }

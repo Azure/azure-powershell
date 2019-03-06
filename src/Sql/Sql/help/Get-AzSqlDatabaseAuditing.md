@@ -311,6 +311,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
+### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+
+### System.Management.Automation.SwitchParameter
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.Auditing.Model.DatabaseBlobAuditingSettingsModel
