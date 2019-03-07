@@ -32,8 +32,8 @@ SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
 WebApplicationFirewallPolicyLink :
 Backends                         :
-CustomHttpsProvisioningState     :
-CustomHttpsProvisioningSubstate  :
+CustomHttpsProvisioningState     : Disabled
+CustomHttpsProvisioningSubstate  : None
 CertificateSource                :
 ProtocolType                     :
 Vault                            :
@@ -51,8 +51,8 @@ SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
 WebApplicationFirewallPolicyLink :
 Backends                         :
-CustomHttpsProvisioningState     :
-CustomHttpsProvisioningSubstate  :
+CustomHttpsProvisioningState     : Disabled
+CustomHttpsProvisioningSubstate  : None
 CertificateSource                :
 ProtocolType                     :
 Vault                            :
@@ -64,7 +64,6 @@ Id                               : /subscriptions/{guid}/resourcegroups/resource
                                    /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontendpointname1-custom-xyz
 Name                             : frontendpointname1-custom-xyz
 Type                             : Microsoft.Network/frontdoors/frontendendpoints
-
 ```
 
 Get all frontend endpoints in Front Door "frontdoor1" which is part of resource group "rg1".
@@ -79,8 +78,8 @@ SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
 WebApplicationFirewallPolicyLink :
 Backends                         :
-CustomHttpsProvisioningState     :
-CustomHttpsProvisioningSubstate  :
+CustomHttpsProvisioningState     : Disabled
+CustomHttpsProvisioningSubstate  : None
 CertificateSource                :
 ProtocolType                     :
 Vault                            :
