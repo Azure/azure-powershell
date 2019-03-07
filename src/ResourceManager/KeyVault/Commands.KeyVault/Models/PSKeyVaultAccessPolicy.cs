@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+// TODO: Remove IfDef
 #if NETSTANDARD
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 #else
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public Guid? ApplicationId { get; private set; }
         public string DisplayName { get; private set; }
 
-        public string ApplicationIdDisplayName { get { return this.ApplicationId.HasValue ? this.ApplicationId.Value.ToString() : string.Empty; } }
+        public string ApplicationIdDisplayName { get { return ApplicationId.HasValue ? ApplicationId.Value.ToString() : string.Empty; } }
 
         public List<string> PermissionsToKeys { get; private set; }
 

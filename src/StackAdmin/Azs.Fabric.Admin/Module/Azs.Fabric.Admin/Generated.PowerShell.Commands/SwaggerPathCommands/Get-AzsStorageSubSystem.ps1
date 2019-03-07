@@ -5,19 +5,16 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-    Returns a list of all storage volumes at a location.
+    Returns a list of all storage subsystems for a location.
 
 .DESCRIPTION
-    Returns a list of all storage volumes at a location.
+    Returns a list of all storage subsystems for a location.
 
 .PARAMETER Name
-    Name of the storage volume.
+    Name of the storage subsystem.
 
-.PARAMETER StoragePool
-    Storage pool name.
-
-.PARAMETER StorageSystem
-    Storage system in which the infrastructure volume is located.
+.PARAMETER ScaleUnit
+    Name of the scale unit.
 
 .PARAMETER Location
     Location of the resource.
@@ -39,22 +36,23 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-    PS C:\> Get-AzsInfrastructureVolume -StoragePool SU1_Pool -StorageSystem S-Cluster.azurestack.local
+    PS C:\> Get-AzsStorageSubSystem -ScaleUnit S-Cluster
 
-    Get a list of all storage volumes at a given location.
+    Get all storage subsystems from a location.
 
 .EXAMPLE
 
-    PS C:\> Get-AzsInfrastructureVolume -StoragePool SU1_Pool -StorageSystem S-Cluster.azurestack.local -Name a42d219b
+    PS C:\> Get-AzsStorageSubSystem -ScaleUnit S-Cluster -Name S-Cluster.azurestack.local
 
-    Get a storage volume by name at a given location.
+    Get a storage subsystem given a location and name.
 
 #>
-function Get-AzsInfrastructureVolume {
-    [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.Volume])]
+function Get-AzsStorageSubSystem {
+    [OutputType([Microsoft.AzureStack.Management.Fabric.Admin.Models.StorageSubSystem])]
     [CmdletBinding(DefaultParameterSetName = 'List')]
     param(
-        [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
+
+        [Parameter(Mandatory = $true, ParameterSetName = 'Get', Position = 0)]
         [ValidateNotNullOrEmpty()]
         [System.String]
         $Name,
@@ -63,21 +61,15 @@ function Get-AzsInfrastructureVolume {
         [Parameter(Mandatory = $true, ParameterSetName = 'List')]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        $StoragePool,
+        $ScaleUnit,
 
-        [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
-        [Parameter(Mandatory = $true, ParameterSetName = 'List')]
-        [ValidateNotNullOrEmpty()]
-        [System.String]
-        $StorageSystem,
-
-        [Parameter(Mandatory = $false, ParameterSetName = 'Get')]
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'Get')]
         [System.String]
         $Location,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'Get')]
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'Get')]
         [ValidateLength(1, 90)]
         [System.String]
         $ResourceGroupName,
@@ -113,9 +105,8 @@ function Get-AzsInfrastructureVolume {
     }
 
     Process {
-
-        $StoragePool = Get-ResourceNameSuffix -ResourceName $StoragePool
-        $StorageSystem = Get-ResourceNameSuffix -ResourceName $StorageSystem
+        
+        $ScaleUnit = Get-ResourceNameSuffix -ResourceName $ScaleUnit
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Fabric.Admin.FabricAdminClient'
@@ -139,7 +130,7 @@ function Get-AzsInfrastructureVolume {
 
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
-                IdTemplate = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/storageSubSystems/{storageSubSystem}/storagePools/{storagePool}/volumes/{volume}'
+                IdTemplate = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnits/{scaleUnit}/storageSubSystems/{storageSubSystem}'
             }
 
             $GetArmResourceIdParameterValue_params['Id'] = $ResourceId
@@ -147,9 +138,8 @@ function Get-AzsInfrastructureVolume {
 
             $ResourceGroupName = $ArmResourceIdParameterValues['resourceGroupName']
             $location = $ArmResourceIdParameterValues['location']
-            $StorageSystem = $ArmResourceIdParameterValues['storageSubSystem']
-            $storagePool = $ArmResourceIdParameterValues['storagePool']
-            $Name = $ArmResourceIdParameterValues['volume']
+            $ScaleUnit = $ArmResourceIdParameterValues['scaleUnit']
+            $Name = $ArmResourceIdParameterValues['storageSubSystem']
         } else {
             if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
@@ -167,12 +157,12 @@ function Get-AzsInfrastructureVolume {
             })
         $applicableFilters = Get-ApplicableFilters -Filters $filterInfos
         if ($applicableFilters | Where-Object { $_.Strict }) {
-            Write-Verbose -Message 'Performing server-side call ''Get-AzsInfrastructureVolume -'''
+            Write-Verbose -Message 'Performing server-side call ''Get-AzsStorageSubSystem -'''
             $serverSideCall_params = @{
 
             }
 
-            $serverSideResults = Get-AzsInfrastructureVolume @serverSideCall_params
+            $serverSideResults = Get-AzsStorageSubSystem @serverSideCall_params
             foreach ($serverSideResult in $serverSideResults) {
                 $valid = $true
                 foreach ($applicableFilter in $applicableFilters) {
@@ -191,11 +181,11 @@ function Get-AzsInfrastructureVolume {
         if ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $FabricAdminClient.'
-            $TaskResult = $FabricAdminClient.Volumes.GetWithHttpMessagesAsync($ResourceGroupName, $Location, $StorageSystem, $StoragePool, $Name)
+            $TaskResult = $FabricAdminClient.StorageSubSystems.GetWithHttpMessagesAsync($ResourceGroupName, $Location, $ScaleUnit, $Name)
         } elseif ('List' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $FabricAdminClient.'
-            $TaskResult = $FabricAdminClient.Volumes.ListWithHttpMessagesAsync($ResourceGroupName, $Location, $StorageSystem, $StoragePool, $(if ($oDataQuery) {
-                        New-Object -TypeName "Microsoft.Rest.Azure.OData.ODataQuery``1[Microsoft.AzureStack.Management.Fabric.Admin.Models.Volume]" -ArgumentList $oDataQuery
+            $TaskResult = $FabricAdminClient.StorageSubSystems.ListWithHttpMessagesAsync($ResourceGroupName, $Location, $ScaleUnit, $(if ($oDataQuery) {
+                        New-Object -TypeName "Microsoft.Rest.Azure.OData.ODataQuery``1[Microsoft.AzureStack.Management.Fabric.Admin.Models.StorageSubSystem]" -ArgumentList $oDataQuery
                     } else {
                         $null
                     }))
@@ -223,13 +213,13 @@ function Get-AzsInfrastructureVolume {
                 'Result' = $null
             }
             $GetTaskResult_params['PageResult'] = $PageResult
-            $GetTaskResult_params['PageType'] = 'Microsoft.Rest.Azure.IPage[Microsoft.AzureStack.Management.Fabric.Admin.Models.Volume]' -as [Type]
+            $GetTaskResult_params['PageType'] = 'Microsoft.Rest.Azure.IPage[Microsoft.AzureStack.Management.Fabric.Admin.Models.StorageSubSystem]' -as [Type]
             Get-TaskResult @GetTaskResult_params
 
             Write-Verbose -Message 'Flattening paged results.'
             while ($PageResult -and ($PageResult.ContainsKey('Page')) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
                 Write-Debug -Message "Retrieving next page: $($PageResult.Page.'nextPageLink')"
-                $TaskResult = $FabricAdminClient.Volumes.ListNextWithHttpMessagesAsync($PageResult.Page.'nextPageLink')
+                $TaskResult = $FabricAdminClient.StorageSubSystems.ListNextWithHttpMessagesAsync($PageResult.Page.'nextPageLink')
                 $PageResult.Page = $null
                 $GetTaskResult_params['TaskResult'] = $TaskResult
                 $GetTaskResult_params['PageResult'] = $PageResult

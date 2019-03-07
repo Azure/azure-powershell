@@ -26,7 +26,7 @@ The **Add-AzureRmApplicationGatewayCustomError** cmdlet adds a custom error to a
 ### Example 1: Adds custom error to http listener level
 ```powershell
 PS C:\> $customError502Url = "https://mycustomerrorpages.blob.core.windows.net/errorpages/502.htm"
-PS C:\> $updatedlistener = Add-AzureRmApplicationGatewayCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url
+PS C:\> $updatedlistener = Add-AzureRmApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url
 ```
 
 This command adds a custom error of http status code 502 to the http listener $listener01, and return the updated listener.

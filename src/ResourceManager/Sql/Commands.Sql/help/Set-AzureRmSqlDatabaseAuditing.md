@@ -58,12 +58,12 @@ PS C:\>Set-AzureRmSqlDatabaseAuditing -State Disabled -ResourceGroupName "Resour
 PS C:\>Set-AzureRmSqlDatabaseAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -StorageAccountSubscriptionId "7fe3301d-31d3-4668-af5e-211a890ba6e3"
 ```
 
-### Example 4: Enable the extended auditing policy of an Azure SQL database
+### Example 4: Enable the auditing policy of an Azure SQL database with advanced filtering using a T-SQL predicate.
 ```
 PS C:\>Set-AzureRmSqlDatabaseAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -DatabaseName "Database01" -PredicateExpression "statement <> 'select 1'"
 ```
 
-### Example 5: Remove the extended auditing policy of an Azure SQL database, and set an auditing policy instead of it.
+### Example 5: Remove the advanced filtering setting from the auditing policy of an Azure SQL database.
 ```
 PS C:\>Set-AzureRmSqlDatabaseAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -DatabaseName "Database01" -PredicateExpression ""
 ```
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 ```
 
 ### -PredicateExpression
-The statement of the Where Clause used to filter audit logs.
+The T-SQL predicate (WHERE clause) used to filter audit logs.
 
 ```yaml
 Type: System.String

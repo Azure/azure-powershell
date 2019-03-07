@@ -24,10 +24,11 @@ Restore-AzureRmRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPo
 ### AzureFileParameterSet
 ```
 Restore-AzureRmRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
- [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String>
- -ResolveConflict <RestoreFSResolveConfictOption> [-SourceFilePath <String>] [-SourceFileType <SourceFileType>]
- [-TargetStorageAccountName <String>] [-TargetFileShareName <String>] [-TargetFolder <String>]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-StorageAccountName] <String>] [[-StorageAccountResourceGroupName] <String>]
+ -ResolveConflict <RestoreFSResolveConflictOption> [-SourceFilePath <String>]
+ [-SourceFileType <SourceFileType>] [-TargetStorageAccountName <String>] [-TargetFileShareName <String>]
+ [-TargetFolder <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +99,7 @@ Accept wildcard characters: False
 In case the restored item also exists in the destination, use this to indicate whether to overwrite or not.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RestoreFSResolveConfictOption
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RestoreFSResolveConflictOption
 Parameter Sets: AzureFileParameterSet
 Aliases:
 
@@ -145,10 +146,22 @@ As a part of the restore process, this cmdlet stores the disks and the configura
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AzureVMParameterSet
 Aliases:
 
 Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: AzureFileParameterSet
+Aliases:
+
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
@@ -161,10 +174,22 @@ As a part of the restore process, this cmdlet stores the disks and the configura
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AzureVMParameterSet
 Aliases:
 
 Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: AzureFileParameterSet
+Aliases:
+
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False

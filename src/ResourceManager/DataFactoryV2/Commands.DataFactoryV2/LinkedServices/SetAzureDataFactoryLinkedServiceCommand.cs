@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             ByResourceId();

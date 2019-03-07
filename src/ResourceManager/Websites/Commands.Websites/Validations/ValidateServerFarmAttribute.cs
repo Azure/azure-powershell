@@ -17,10 +17,6 @@ using System;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
 
-#if NETSTANDARD
-using ServerFarmWithRichSku = Microsoft.Azure.Management.WebSites.Models.AppServicePlan;
-#endif
-
 namespace Microsoft.Azure.Commands.WebApps.Validations
 {
     public class ValidateServerFarmAttribute : ValidateArgumentsAttribute
@@ -36,7 +32,7 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
             ValidateSku(serverFarm.Sku);
         }
 
-        private void ValidateSku(SkuDescription sku)
+        private static void ValidateSku(SkuDescription sku)
         {
             if (sku == null)
             {

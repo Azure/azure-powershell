@@ -70,6 +70,9 @@
     <None Include="help\New-AzureRmIotCentralApp.md" />
     <None Include="help\Remove-AzureRmIotCentralApp.md" />
     <None Include="help\Set-AzureRmIotCentralApp.md" />
+    <None Include="Microsoft.Azure.Commands.IotCentral.generated.format.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.1.6
 * Update dependencies for type mapping issue
 
 ## Version 6.1.5

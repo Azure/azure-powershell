@@ -19,9 +19,6 @@ using System.Management.Automation;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 
-#if NETSTANDARD
-using ServerFarmWithRichSku = Microsoft.Azure.Management.WebSites.Models.AppServicePlan;
-#endif
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 {
     /// <summary>

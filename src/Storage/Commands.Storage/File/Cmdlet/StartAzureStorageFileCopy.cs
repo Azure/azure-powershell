@@ -188,8 +188,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             if (destChannel == null)
             {
-                AzureStorageContext context = null;
-
                 if (ContainerNameParameterSet == this.ParameterSetName ||
                     ContainerParameterSet == this.ParameterSetName ||
                     BlobFilePathParameterSet == this.ParameterSetName ||
@@ -198,14 +196,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     FileFilePathParameterSet == this.ParameterSetName ||
                     UriFilePathParameterSet == this.ParameterSetName)
                 {
-                    context = this.GetCmdletStorageContext(DestContext);
+                    if (DestContext == null)
+                    {
+                        if (Channel != null)
+                        {
+                            destChannel = Channel;
+                        }
+                        else
+                        {
+                            destChannel = base.CreateChannel();
+                        }
+                    }
+                    else
+                    {
+                        destChannel = new StorageFileManagement(this.GetCmdletStorageContext(DestContext));
+                    }
                 }
                 else
                 {
-                    context = AzureStorageContext.EmptyContextInstance;
+                    destChannel = base.CreateChannel();
                 }
-
-                destChannel = new StorageFileManagement(context);
             }
 
             return destChannel;

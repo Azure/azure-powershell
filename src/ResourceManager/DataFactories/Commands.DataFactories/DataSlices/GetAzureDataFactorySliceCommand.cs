@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.DataFactories
             }
         }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ByFactoryObject)

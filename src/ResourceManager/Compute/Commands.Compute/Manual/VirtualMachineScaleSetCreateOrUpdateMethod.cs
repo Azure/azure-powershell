@@ -112,6 +112,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [ValidateNotNullOrEmpty]
         public string UserAssignedIdentity { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        public SwitchParameter EnableUltraSSD { get; set; }
+
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = false,
@@ -256,6 +259,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         : (UpgradeMode?)null,
                     dataDisks: _cmdlet.DataDiskSizeInGb,
                     zones: _cmdlet.Zone,
+                    ultraSSDEnabled : _cmdlet.EnableUltraSSD.IsPresent,
                     identity: _cmdlet.GetVmssIdentityFromArgs(),
                     singlePlacementGroup : _cmdlet.SinglePlacementGroup.IsPresent);
             }

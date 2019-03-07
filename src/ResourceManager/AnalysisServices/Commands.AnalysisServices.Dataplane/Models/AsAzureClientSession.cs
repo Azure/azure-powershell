@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
-using Enumerable = System.Linq.Enumerable;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -34,31 +33,26 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         public static readonly Uri RedirectUri = new Uri("urn:ietf:wg:oauth:2.0:oob");
         public static string DefaultRolloutEnvironmentKey = "asazure.windows.net";
 
-        public static Dictionary<string, AsAzureAuthInfo> AsAzureRolloutEnvironmentMapping = new Dictionary<string, AsAzureAuthInfo>()
-            {
-             { "asazure.windows.net", new AsAzureAuthInfo()
+        public static Dictionary<string, AsAzureAuthInfo> AsAzureRolloutEnvironmentMapping = new Dictionary<string, AsAzureAuthInfo>
+        {
+             { "asazure.windows.net", new AsAzureAuthInfo
                 {
                  AuthorityUrl = "https://login.windows.net" ,
                  DefaultResourceUriSuffix = "*.asazure.windows.net"
                 }
              },
-             { "asazure-int.windows.net", new AsAzureAuthInfo()
+             { "asazure-int.windows.net", new AsAzureAuthInfo
                 {
                     AuthorityUrl = "https://login.windows-ppe.net" ,
                     DefaultResourceUriSuffix = "*.asazure-int.windows.net"
                 }
              }
-            };
+        };
 
         /// <summary>
         /// Gets or sets the token cache store.
         /// </summary>
         public static TokenCache TokenCache { get; set; }
-
-        /// <summary>
-        /// As Azure Profile
-        /// </summary>
-        private AsAzureProfile _profile;
 
         private IAsAzureAuthenticationProvider _asAzureAuthenticationProvider;
 
@@ -70,7 +64,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         private AsAzureClientSession()
         {
             TokenCache = new TokenCache();
-            _profile = new AsAzureProfile();
+            Profile = new AsAzureProfile();
             _asAzureAuthenticationProvider = new AsAzureAuthenticationProvider();
         }
 
@@ -81,63 +75,61 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public static AsAzureClientSession Instance { get; private set; }
 
-        public AsAzureProfile Profile
-        {
-            get { return _profile; }
-            set
-            {
-                _profile = value;
-            }
-        }
-
+        /// <summary>
+        /// As Azure Profile
+        /// </summary>
+        public AsAzureProfile Profile { get; set; }
+// TODO: Remove IfDef
 #if NETSTANDARD
-        public AsAzureProfile Login(AsAzureContext asAzureContext, SecureString password, Action<string> promptAction)
+        public AsAzureProfile Login(AsAzureContext asAzureContext, SecureString password, Action<string> promptAction = null)
 #else
         public AsAzureProfile Login(AsAzureContext asAzureContext, SecureString password)
 #endif
         {
             var resourceUri = new UriBuilder(Uri.UriSchemeHttps, GetResourceUriSuffix(asAzureContext.Environment.Name)).ToString();
             resourceUri = resourceUri.TrimEnd('/');
+// TODO: Remove IfDef
 #if NETSTANDARD
             _asAzureAuthenticationProvider.GetAadAuthenticatedToken(asAzureContext, password, promptAction, AsAzureClientId, resourceUri, RedirectUri);
 #else
             _asAzureAuthenticationProvider.GetAadAuthenticatedToken(asAzureContext, password, password == null ? PromptBehavior.Always : PromptBehavior.Auto, AsAzureClientId, resourceUri, RedirectUri);
 #endif
 
-            _profile.Context.TokenCache = AsAzureClientSession.TokenCache.Serialize();
+            Profile.Context.TokenCache = TokenCache.Serialize();
 
-            if (!_profile.Environments.ContainsKey(asAzureContext.Environment.Name))
+            if (!Profile.Environments.ContainsKey(asAzureContext.Environment.Name))
             {
-                _profile.Environments.Add(asAzureContext.Environment.Name, asAzureContext.Environment);
+                Profile.Environments.Add(asAzureContext.Environment.Name, asAzureContext.Environment);
             }
 
-            return _profile;
+            return Profile;
         }
 
         public AsAzureProfile Login(AsAzureContext asAzureContext)
         {
             var resourceUri = new UriBuilder(Uri.UriSchemeHttps, GetResourceUriSuffix(asAzureContext.Environment.Name)).ToString();
             resourceUri = resourceUri.TrimEnd('/');
+// TODO: Remove IfDef
 #if NETSTANDARD
             _asAzureAuthenticationProvider.GetAadAuthenticatedToken(asAzureContext, null, null, AsAzureClientId, resourceUri, RedirectUri);
 #else
             _asAzureAuthenticationProvider.GetAadAuthenticatedToken(asAzureContext, null, PromptBehavior.RefreshSession, AsAzureClientId, resourceUri, RedirectUri);
 #endif
 
-            _profile.Context.TokenCache = AsAzureClientSession.TokenCache.Serialize();
+            Profile.Context.TokenCache = TokenCache.Serialize();
 
-            if (!_profile.Environments.ContainsKey(asAzureContext.Environment.Name))
+            if (!Profile.Environments.ContainsKey(asAzureContext.Environment.Name))
             {
-                _profile.Environments.Add(asAzureContext.Environment.Name, asAzureContext.Environment);
+                Profile.Environments.Add(asAzureContext.Environment.Name, asAzureContext.Environment);
             }
 
-            return _profile;
+            return Profile;
         }
 
         public static string GetAuthorityUrlForEnvironment(AsAzureEnvironment environment)
         {
             var environmentKey = AsAzureRolloutEnvironmentMapping.Keys.FirstOrDefault(s => environment.Name.Contains(s));
-            AsAzureAuthInfo authInfo = null;
+            AsAzureAuthInfo authInfo;
             if (string.IsNullOrEmpty(environmentKey) || !AsAzureRolloutEnvironmentMapping.TryGetValue(environmentKey, out authInfo))
             {
                 throw new ArgumentException(Properties.Resources.UnknownEnvironment);
@@ -148,9 +140,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public void SetCurrentContext(AsAzureAccount azureAccount, AsAzureEnvironment asEnvironment)
         {
-            _profile.Context = new AsAzureContext(azureAccount, asEnvironment)
+            Profile.Context = new AsAzureContext(azureAccount, asEnvironment)
             {
-                TokenCache = AsAzureClientSession.TokenCache.Serialize()
+                TokenCache = TokenCache.Serialize()
             };
         }
 
@@ -167,12 +159,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             }
 
             var authoInfo = AsAzureRolloutEnvironmentMapping.FirstOrDefault(kv => kv.Key.Equals(environmentName)).Value;
-            if (authoInfo != null)
-            {
-                return authoInfo.DefaultResourceUriSuffix;
-            }
-
-            return environmentName;
+            return authoInfo != null ? authoInfo.DefaultResourceUriSuffix : environmentName;
         }
     }
 }

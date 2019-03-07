@@ -24,11 +24,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 
-#if NETSTANDARD
-using ServerFarmWithRichSku = Microsoft.Azure.Management.WebSites.Models.AppServicePlan;
-using ServerFarmCollection = System.Collections.Generic.IList<Microsoft.Azure.Management.WebSites.Models.AppServicePlan>;
-#endif
-
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 {
     /// <summary>
@@ -96,7 +91,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 
             WriteProgress(progressRecord);
 
-            var serverFarmResources = this.ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions()
+            var serverFarmResources = ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
             {
                 ResourceType = "Microsoft.Web/ServerFarms"
             }).Where(sf => string.Equals(sf.Name, Name, StringComparison.OrdinalIgnoreCase)).ToArray();
@@ -142,7 +137,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 
             WriteProgress(progressRecord);
 
-            var resourceGroups = this.ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions()
+            var resourceGroups = ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
             {
                 ResourceType = "Microsoft.Web/ServerFarms"
             }).Select(sf => sf.ResourceGroupName).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
@@ -155,7 +150,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 try
                 {
                     var result = WebsitesClient.ListAppServicePlans(rg);
-                    if (result != null && result != null)
+                    if (result != null)
                     {
                         foreach(var item in result)
                         {
@@ -184,7 +179,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 
             WriteProgress(progressRecord);
 
-            var serverFarmResources = this.ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions()
+            var serverFarmResources = ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
             {
                 ResourceType = "Microsoft.Web/ServerFarms"
             }).Where(sf => string.Equals(sf.Location, Location.Replace(" ", string.Empty), StringComparison.OrdinalIgnoreCase)).ToArray();

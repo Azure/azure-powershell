@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.5.0'
+ModuleVersion = '0.6.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,11 +51,13 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.5.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.6.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.DataFactories.dll', 
-    '.\Microsoft.DataTransfer.Gateway.Encryption.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.DataFactories.dll',
+    '.\Microsoft.DataTransfer.Gateway.Encryption.dll',
+    '.\System.IO.FileSystem.AccessControl.dll',
+    '.\Microsoft.WindowsAzure.Storage.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

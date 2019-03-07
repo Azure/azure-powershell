@@ -24,9 +24,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 
-#if NETSTANDARD
-using ServerFarmWithRichSku = Microsoft.Azure.Management.WebSites.Models.AppServicePlan;
-#endif
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
@@ -97,7 +94,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             WriteProgress(progressRecord);
 
-            var sites = this.ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions()
+            var sites = ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
             {
                 ResourceType = "Microsoft.Web/Sites"
             }).Where(s => string.Equals(s.Name, Name, StringComparison.OrdinalIgnoreCase)).ToArray();
@@ -154,7 +151,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             WriteProgress(progressRecord);
 
-            var resourceGroups = this.ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions()
+            var resourceGroups = ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
             {
                 ResourceType = "Microsoft.Web/Sites"
             }).Select(s => s.ResourceGroupName).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
@@ -196,7 +193,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             WriteProgress(progressRecord);
 
-            var sites = this.ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions()
+            var sites = ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
             {
                 ResourceType = "Microsoft.Web/Sites"
             }).Where(s => string.Equals(s.Location, Location.Replace(" ", string.Empty), StringComparison.OrdinalIgnoreCase)).ToArray();

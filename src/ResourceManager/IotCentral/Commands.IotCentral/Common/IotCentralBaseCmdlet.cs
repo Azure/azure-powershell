@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
         protected const string InputObjectParameterSet = "InputObjectParameterSet";
 
+        protected const string resourceType = "IoTApps";
+
         [Parameter(
             Mandatory = true,
             Position = 0,

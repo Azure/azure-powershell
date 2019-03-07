@@ -33,6 +33,83 @@ function Test-SimpleNewVm
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
+        Assert-False { $x.AdditionalCapabilities.UltraSSDEnabled };
+
+        $nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
+        Assert-NotNull $nic
+        Assert-False { $nic.EnableAcceleratedNetworking }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm
+#>
+function Test-SimpleNewVmFromSIGImage
+{
+    #This test needs to be run form the following subscription in record mode :
+	# 9e223dbe-3399-4e19-88eb-0975f02ac87f
+	#The vm needs to be created in the one of the following regions :
+	# "South Central US", "East US 2" and "Central US"
+	#To see more information on the steps to create a new SIG image go here: https://aka.ms/AA37jbt
+    # Setup
+    $vmname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        # Common
+        $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Location "East US 2" -Size "Standard_D2s_v3" -Image "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/SIGTestGroupoDoNotDelete/providers/Microsoft.Compute/galleries/SIGTestGalleryDoNotDelete/images/SIGTestImageWindowsDoNotDelete" 
+
+        Assert-AreEqual $vmname $x.Name;
+        Assert-Null $x.Identity
+        Assert-False { $x.AdditionalCapabilities.UltraSSDEnabled };
+
+        $nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
+        Assert-NotNull $nic
+        Assert-False { $nic.EnableAcceleratedNetworking }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm with ultraSSD
+#>
+function Test-SimpleNewVmWithUltraSSD
+{
+    # Setup
+    $vmname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        # Common
+		#As of now the ultrasd feature is only supported in east us 2 and in the size Standard_D2s_v3, on the features GA the restriction will be lifted
+		#Use the follwing command to figure out the one to use 
+		#Get-AzureRmComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }
+        $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Location "east US 2" -EnableUltraSSD -Zone 3 -Size "Standard_D2s_v3"
+
+        Assert-AreEqual $vmname $x.Name;
+        Assert-Null $x.Identity
+		Assert-True { $x.AdditionalCapabilities.UltraSSDEnabled };
 
         $nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
         Assert-NotNull $nic

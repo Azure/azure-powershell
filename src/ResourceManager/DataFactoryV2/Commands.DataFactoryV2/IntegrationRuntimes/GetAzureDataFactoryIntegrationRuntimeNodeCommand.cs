@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpIntegrationRuntimeNodeIpAddress)]
         public SwitchParameter IpAddress { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             this.ByResourceId();

@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            ApplicationPackage response = BatchManagementClient.ApplicationPackage.Get(
+            var response = BatchManagementClient.ApplicationPackage.Get(
                 resourceGroupName,
                 accountName,
                 applicationId,
                 version);
 
-            return this.ConvertGetApplicationPackageResponseToApplicationPackage(response);
+            return ConvertGetApplicationPackageResponseToApplicationPackage(response);
         }
 
         public virtual PSApplicationPackage UploadAndActivateApplicationPackage(
@@ -117,8 +117,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             try
             {
-                CloudBlockBlob blob = new CloudBlockBlob(new Uri(storageUrl));
-#if NETSTANDARD 
+                var blob = new CloudBlockBlob(new Uri(storageUrl));
+// TODO: Remove IfDef
+#if NETSTANDARD
                 Task.Run(() => blob.UploadFromFileAsync(filePath)).Wait();
 #else
                 blob.UploadFromFile(filePath, FileMode.Open);
@@ -161,7 +162,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             catch (Exception exception)
             {
-                string message = string.Format(errorMessageFormat, applicationId, version, exception.Message);
+                var message = string.Format(errorMessageFormat, applicationId, version, exception.Message);
                 throw new NewApplicationPackageException(message, exception);
             }
         }
@@ -171,7 +172,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             try
             {
                 // Checks to see if the package exists
-                ApplicationPackage response = BatchManagementClient.ApplicationPackage.Get(
+                var response = BatchManagementClient.ApplicationPackage.Get(
                     resourceGroupName,
                     accountName,
                     applicationId,
@@ -192,7 +193,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             try
             {
-                ApplicationPackage addResponse = BatchManagementClient.ApplicationPackage.Create(
+                var addResponse = BatchManagementClient.ApplicationPackage.Create(
                     resourceGroupName,
                     accountName,
                     applicationId,
@@ -209,9 +210,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
 
-        private PSApplicationPackage ConvertGetApplicationPackageResponseToApplicationPackage(ApplicationPackage response)
+        private static PSApplicationPackage ConvertGetApplicationPackageResponseToApplicationPackage(ApplicationPackage response)
         {
-            return new PSApplicationPackage()
+            return new PSApplicationPackage
             {
                 Format = response.Format,
                 StorageUrl = response.StorageUrl,
@@ -219,7 +220,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 State = response.State.Value,
                 Id = response.Id,
                 Version = response.Version,
-                LastActivationTime = response.LastActivationTime,
+                LastActivationTime = response.LastActivationTime
             };
         }
 
@@ -230,7 +231,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 Format = applicationPackage.Format,
                 LastActivationTime = applicationPackage.LastActivationTime,
                 State = applicationPackage.State.Value,
-                Version = applicationPackage.Version,
+                Version = applicationPackage.Version
             }).ToList();
         }
     }

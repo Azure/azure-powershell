@@ -15,6 +15,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+// TODO: Remove IfDef
 #if NETSTANDARD
 using System.Runtime.Loader;
 #endif
@@ -66,23 +67,27 @@ namespace Tools.Common.Loaders
             }
 
             AssemblyMetadata result = null;
+// TODO: Remove IfDef
+#if NETSTANDARD
             try
             {
-#if !NETSTANDARD
-                return new AssemblyMetadata(Assembly.ReflectionOnlyLoadFrom(assemblyPath));
-#else
                 return new AssemblyMetadata(AssemblyLoadContext.Default.LoadFromAssemblyPath(assemblyPath));
             }
-            catch(System.IO.FileLoadException ex) when (ex != null && string.Equals(ex.Message, "Assembly with same name is already loaded"))
+            catch(System.IO.FileLoadException ex) when (string.Equals(ex.Message, "Assembly with same name is already loaded"))
             {
                 var assemblyName = AssemblyLoadContext.GetAssemblyName(assemblyPath);
-                var assembly = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.GetName().Name == assemblyName?.Name).FirstOrDefault();
+                var assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name == assemblyName?.Name);
                 if (assembly != null)
                 {
                     result = new AssemblyMetadata(assembly);
                 }
-#endif
             }
+#else
+            try
+            {
+                return new AssemblyMetadata(Assembly.ReflectionOnlyLoadFrom(assemblyPath));
+            }
+#endif
             catch
             {
             }

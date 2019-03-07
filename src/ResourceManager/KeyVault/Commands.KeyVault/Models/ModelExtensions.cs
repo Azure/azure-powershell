@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+// TODO: Remove IfDef
 #if NETSTANDARD
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 #else
@@ -26,34 +27,30 @@ using PSModels = Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    static class ModelExtensions
+    internal static class ModelExtensions
     {
-
         public static string ConstructAccessPoliciesTableAsTable(IEnumerable<PSModels.PSKeyVaultAccessPolicy> policies)
         {
-            StringBuilder sb = new StringBuilder();
+            if (policies == null || !policies.Any()) return string.Empty;
 
-            if (policies != null && policies.Any())
+            const string rowFormat = "{0, -43}  {1, -43}  {2, -43} {3, -43} {4, -43} {5, -43} {6, -43}\r\n";
+            var sb = new StringBuilder();
+            sb.AppendLine();
+            sb.AppendFormat( rowFormat, "Tenant ID", "Object ID", "Application ID", "Permissions to keys", "Permissions to secrets", "Permissions to certificates", "Permissions to (Key Vault Managed) storage" );
+            sb.AppendFormat(rowFormat,
+                GeneralUtilities.GenerateSeparator("Tenant ID".Length, "="),
+                GeneralUtilities.GenerateSeparator("Object ID".Length, "="),
+                GeneralUtilities.GenerateSeparator("Application ID".Length, "="),
+                GeneralUtilities.GenerateSeparator("Permissions To Keys".Length, "="),
+                GeneralUtilities.GenerateSeparator("Permissions To Secrets".Length, "="),
+                GeneralUtilities.GenerateSeparator("Permissions To Certificates".Length, "="),
+                GeneralUtilities.GenerateSeparator("Permissions To (Key Vault Managed) Storage".Length, "="));
+
+            foreach (var policy in policies)
             {
-                string rowFormat = "{0, -43}  {1, -43}  {2, -43} {3, -43} {4, -43} {5, -43} {6, -43}\r\n";
-                sb.AppendLine();
-                sb.AppendFormat( rowFormat, "Tenant ID", "Object ID", "Application ID", "Permissions to keys", "Permissions to secrets", "Permissions to certificates", "Permissions to (Key Vault Managed) storage" );
-                sb.AppendFormat(rowFormat,
-                    GeneralUtilities.GenerateSeparator("Tenant ID".Length, "="),
-                    GeneralUtilities.GenerateSeparator("Object ID".Length, "="),
-                    GeneralUtilities.GenerateSeparator("Application ID".Length, "="),
-                    GeneralUtilities.GenerateSeparator("Permissions To Keys".Length, "="),
-                    GeneralUtilities.GenerateSeparator("Permissions To Secrets".Length, "="),
-                    GeneralUtilities.GenerateSeparator("Permissions To Certificates".Length, "="),
-                    GeneralUtilities.GenerateSeparator("Permissions To (Key Vault Managed) Storage".Length, "="));
-
-                foreach (var policy in policies)
-                {
-                    sb.AppendFormat(rowFormat, policy.TenantId.ToString(), policy.DisplayName, policy.ApplicationIdDisplayName,
-                        TrimWithEllipsis(policy.PermissionsToKeysStr, 40), TrimWithEllipsis(policy.PermissionsToSecretsStr, 40),
-                        TrimWithEllipsis( policy.PermissionsToCertificatesStr, 40 ), TrimWithEllipsis( policy.PermissionsToStorageStr, 40 ) );
-                }
-
+                sb.AppendFormat(rowFormat, policy.TenantId.ToString(), policy.DisplayName, policy.ApplicationIdDisplayName,
+                    TrimWithEllipsis(policy.PermissionsToKeysStr, 40), TrimWithEllipsis(policy.PermissionsToSecretsStr, 40),
+                    TrimWithEllipsis( policy.PermissionsToCertificatesStr, 40 ), TrimWithEllipsis( policy.PermissionsToStorageStr, 40 ) );
             }
 
             return sb.ToString();
@@ -61,41 +58,37 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public static string ConstructAccessPoliciesList(IEnumerable<PSModels.PSKeyVaultAccessPolicy> policies)
         {
-            StringBuilder sb = new StringBuilder();
+            if (policies == null || !policies.Any()) return string.Empty;
 
-            if (policies != null && policies.Any())
+            var sb = new StringBuilder();
+            sb.AppendLine();
+            foreach(var policy in policies)
             {
+                sb.AppendFormat( "{0, -43}: {1}\r\n", "Tenant ID", policy.TenantName );
+                sb.AppendFormat( "{0, -43}: {1}\r\n", "Object ID", policy.ObjectId );
+                sb.AppendFormat( "{0, -43}: {1}\r\n", "Application ID", policy.ApplicationIdDisplayName );
+                sb.AppendFormat( "{0, -43}: {1}\r\n", "Display Name", policy.DisplayName );
+                sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Keys", policy.PermissionsToKeysStr );
+                sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Secrets", policy.PermissionsToSecretsStr );
+                sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Certificates", policy.PermissionsToCertificatesStr );
+                sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to (Key Vault Managed) Storage", policy.PermissionsToStorageStr );
                 sb.AppendLine();
-                foreach(var policy in policies)
-                {
-                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Tenant ID", policy.TenantName );
-                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Object ID", policy.ObjectId );
-                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Application ID", policy.ApplicationIdDisplayName );
-                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Display Name", policy.DisplayName );
-                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Keys", policy.PermissionsToKeysStr );
-                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Secrets", policy.PermissionsToSecretsStr );
-                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Certificates", policy.PermissionsToCertificatesStr );
-                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to (Key Vault Managed) Storage", policy.PermissionsToStorageStr );
-                    sb.AppendLine();
-                }
             }
             return sb.ToString();
         }
 
         public static string ConstructNetworkRuleSet(PSModels.PSKeyVaultNetworkRuleSet ruleSet)
         {
-            StringBuilder sb = new StringBuilder();
+            if (ruleSet == null) return string.Empty;
 
-            if (ruleSet != null)
-            {
-                sb.AppendLine();
+            var sb = new StringBuilder();
+            sb.AppendLine();
 
-                sb.AppendFormat("{0, -43}: {1}\r\n", "Default Action", ruleSet.DefaultAction);
-                sb.AppendFormat("{0, -43}: {1}\r\n", "Bypass", ruleSet.Bypass);
+            sb.AppendFormat("{0, -43}: {1}\r\n", "Default Action", ruleSet.DefaultAction);
+            sb.AppendFormat("{0, -43}: {1}\r\n", "Bypass", ruleSet.Bypass);
 
-                sb.AppendFormat("{0, -43}: {1}\r\n", "IP Rules", ruleSet.IpAddressRangesText);
-                sb.AppendFormat("{0, -43}: {1}\r\n", "Virtual Network Rules", ruleSet.VirtualNetworkResourceIdsText);
-            }
+            sb.AppendFormat("{0, -43}: {1}\r\n", "IP Rules", ruleSet.IpAddressRangesText);
+            sb.AppendFormat("{0, -43}: {1}\r\n", "Virtual Network Rules", ruleSet.VirtualNetworkResourceIdsText);
 
             return sb.ToString();
         }
@@ -112,14 +105,15 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public static string GetDisplayNameForADObject(string objectId, ActiveDirectoryClient adClient)
         {
-            string displayName = "";
-            string upnOrSpn = "";
+            var displayName = "";
+            var upnOrSpn = "";
 
             if (adClient == null || string.IsNullOrWhiteSpace(objectId))
                 return displayName;
 
             try
             {
+// TODO: Remove IfDef
 #if NETSTANDARD
                 var obj = adClient.GetObjectsByObjectId(new List<string> { objectId }).FirstOrDefault();
                 if (obj != null)
@@ -166,7 +160,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                         upnOrSpn = group.MailNickname;
                     }
                 }
-
 #endif
             }
             catch

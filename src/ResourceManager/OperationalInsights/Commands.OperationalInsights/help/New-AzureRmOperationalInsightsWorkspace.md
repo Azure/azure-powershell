@@ -156,6 +156,7 @@ Specifies the service tier of the workspace.
 Valid values are: 
 - free
 - standard
+- standalone
 - premium
 
 ```yaml
@@ -235,6 +236,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 
 ## NOTES
+
+A new pricing model has been released. If you are a CSP that means that you have to use "standalone" for the sku. Behind the scenes, the sku will be changed to pergb2018. For more information, please see the following: https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#new-pricing-model
 
 ## RELATED LINKS
 

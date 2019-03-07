@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
     {
         protected override int ActivityId => 2;
         protected override string ActivityDescription => "Analyzing storage sync compatibility";
-        protected override string ActivityStatus => "Preparing to run the analyzis";
+        protected override string ActivityStatus => "Preparing to run the analysis";
 
         public NamespaceEstimationProgressReporter(ICmdlet cmdlet) : base(cmdlet, withProgressBar: false)
         {

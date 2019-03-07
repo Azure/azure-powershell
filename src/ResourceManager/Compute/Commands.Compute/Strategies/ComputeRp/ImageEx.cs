@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
@@ -92,7 +93,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 var resourceId = ResourceId.TryParse(imageName);
                 if (resourceId == null
                     || resourceId.ResourceType.Namespace != ComputeStrategy.Namespace
-                    || resourceId.ResourceType.Provider != "images")
+                    || ( resourceId.ResourceType.Provider != "images")
+                       && resourceId.ResourceType.Provider != "galleries")
                 {
                     throw new ArgumentException(string.Format(Resources.ComputeInvalidImageName, imageName));
                 }
@@ -102,7 +104,14 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     throw new ArgumentException(Resources.ComputeMismatchSubscription);
                 }
 
-                return await compute.GetImageAndOsTypeAsync(resourceId.ResourceGroupName, resourceId.Name);
+                if (resourceId.ResourceType.Provider == "galleries")
+                {
+                    return await compute.GetGalleryImageAndOsTypeAsync(resourceId.ResourceGroupName, imageName);
+                }
+                else
+                {
+                    return await compute.GetImageAndOsTypeAsync(resourceId.ResourceGroupName, resourceId.Name);
+                }
             }
             else
             {
@@ -145,6 +154,62 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 localImage.StorageProfile.OsDisk.OsType,
                 new ImageReference { Id = localImage.Id },
                 localImage.StorageProfile.DataDisks.GetLuns());
+        }
+
+        static async Task<ImageAndOsType> GetGalleryImageAndOsTypeAsync(
+            this ComputeManagementClient compute, string resourceGroupName, string resourceId)
+        {
+            ImageReference imageRef = null;
+            var versionPresent = (resourceId.IndexOf(VERSION_STRING, StringComparison.InvariantCultureIgnoreCase) >= 0);
+            if (versionPresent)
+            {
+                var localImageVersion = await compute.GalleryImageVersions.GetAsync(resourceGroupName, GetGaleryName(resourceId), GetImageName(resourceId), GetImageVersion(resourceId));
+                imageRef = new ImageReference { Id = localImageVersion.Id };
+            }
+
+            var localImage = await compute.GalleryImages.GetAsync(resourceGroupName, GetGaleryName(resourceId), GetImageName(resourceId));
+            if (imageRef == null)
+            {
+                imageRef = new ImageReference { Id = localImage.Id };
+            }
+
+            return new ImageAndOsType(
+                localImage.OsType,
+                imageRef,
+                null);
+        }
+
+        const string RESOURCE_NAME_STRING = "Microsoft.Compute/Galleries";
+        const string INSTANCE_NAME_STRING = "Images";
+        const string VERSION_STRING = "Versions";
+
+        //Added the following two fuinctions from https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Compute/Commands.Compute/Generated/ComputeAutomationBaseCmdlet.cs#L319
+        //To be able to get the gallery name and gallery image name from the provided gallery image reaource ID.
+        static string GetGaleryName(string resourceId)
+        {
+            if (string.IsNullOrEmpty(resourceId)) { return null; }
+            Regex r = new Regex(@"(.*?)/" + RESOURCE_NAME_STRING + @"/(?<rgname>\S+)/" + INSTANCE_NAME_STRING + @"/(?<instanceId>\S+)", RegexOptions.IgnoreCase);
+            Match m = r.Match(resourceId);
+            return m.Success ? m.Groups["rgname"].Value : null;
+        }
+
+        static string GetImageName(string resourceId)
+        {
+            var versionPresent = (resourceId.IndexOf(VERSION_STRING, StringComparison.InvariantCultureIgnoreCase) >= 0);
+            if (string.IsNullOrEmpty(resourceId)) { return null; }
+            Regex r = (versionPresent)
+                    ? new Regex(@"(.*?)/" + RESOURCE_NAME_STRING + @"/(?<rgname>\S+)/" + INSTANCE_NAME_STRING + @"/(?<instanceId>\S+)/" + VERSION_STRING + @"/(?<version>\S+)", RegexOptions.IgnoreCase)
+                    : new Regex(@"(.*?)/" + RESOURCE_NAME_STRING + @"/(?<rgname>\S+)/" + INSTANCE_NAME_STRING + @"/(?<instanceId>\S+)", RegexOptions.IgnoreCase);
+            Match m = r.Match(resourceId);
+            return m.Success ? m.Groups["instanceId"].Value : null;
+        }
+
+        static string GetImageVersion(string resourceId)
+        {
+            if (string.IsNullOrEmpty(resourceId)) { return null; }
+            Regex r = new Regex(@"(.*?)/" + RESOURCE_NAME_STRING + @"/(?<rgname>\S+)/" + INSTANCE_NAME_STRING + @"/(?<instanceId>\S+)/" + VERSION_STRING + @"/(?<version>\S+)", RegexOptions.IgnoreCase);
+            Match m = r.Match(resourceId);
+            return m.Success ? m.Groups["version"].Value : null;
         }
     }
 }

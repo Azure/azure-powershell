@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.DataFactories
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "Directory to download the log. Default is current directory.")]
         public string Output { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ByFactoryObject)
@@ -60,12 +59,12 @@ namespace Microsoft.Azure.Commands.DataFactories
                 ResourceGroupName = DataFactory.ResourceGroupName;
             }
 
-            Uri runLogUri =
+            var runLogUri =
                 DataFactoryClient.GetDataSliceRunLogsSharedAccessSignature(
                     ResourceGroupName, DataFactoryName, Id);
             if (DownloadLogs.IsPresent)
             {
-                string directory = string.IsNullOrWhiteSpace(Output)
+                var directory = string.IsNullOrWhiteSpace(Output)
                     ? Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
                     : Output;
 
@@ -76,7 +75,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 
                 try
                 {
-                    DataFactoryClient.DownloadFileToBlob(new BlobDownloadParameters()
+                    DataFactoryClient.DownloadFileToBlob(new BlobDownloadParameters
                     {
                         Directory = directory,
                         SasUri = runLogUri,
@@ -93,24 +92,20 @@ namespace Microsoft.Azure.Commands.DataFactories
             WriteObject(new PSRunLogInfo(runLogUri));
         }
 
-        private bool HaveWriteAccess(string directory)
+        private static bool HaveWriteAccess(string directory)
         {
-            bool writeAllow = false;
-            bool writeDeny = false;
+            var writeAllow = false;
+            var writeDeny = false;
             try
             {
+// TODO: Remove IfDef
 #if NETSTANDARD
                 //https://stackoverflow.com/a/41019841/294804
                 var accessControlList = new DirectorySecurity(directory, AccessControlSections.All);
 #else
-                DirectorySecurity accessControlList = Directory.GetAccessControl(directory);
+                var accessControlList = Directory.GetAccessControl(directory);
 #endif
-                if (accessControlList == null)
-                {
-                    return false;
-                }
-
-                var rules = accessControlList.GetAccessRules(true, true, typeof(System.Security.Principal.SecurityIdentifier));
+                var rules = accessControlList?.GetAccessRules(true, true, typeof(System.Security.Principal.SecurityIdentifier));
 
                 if (rules == null)
                 {
@@ -128,7 +123,6 @@ namespace Microsoft.Azure.Commands.DataFactories
                     {
                         writeAllow = true;
                     }
-
                     else if (rule.AccessControlType == AccessControlType.Deny)
                     {
                         writeDeny = true;

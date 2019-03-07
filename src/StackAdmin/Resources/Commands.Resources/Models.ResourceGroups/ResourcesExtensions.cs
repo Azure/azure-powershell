@@ -27,6 +27,7 @@ using Newtonsoft.Json;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Commands.Resources.Models;
+// TODO: Remove IfDef code
 #if !NETSTANDARD
 using Microsoft.Azure.Commands.Resources.Models.Gallery;
 #endif
@@ -35,6 +36,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
 {
     public static class ResourcesExtensions
     {
+// TODO: Remove IfDef code
 #if !NETSTANDARD
         public static PSGalleryItem ToPSGalleryItem(this GalleryItem gallery)
         {

@@ -24,8 +24,9 @@ Set-AzureRmWebApp [[-AppServicePlan] <String>] [[-DefaultDocuments] <String[]>]
  [[-AutoSwapSlotName] <String>] [-ContainerImageName <String>] [-ContainerRegistryUrl <String>]
  [-ContainerRegistryUser <String>] [-ContainerRegistryPassword <SecureString>]
  [-EnableContainerContinuousDeployment <Boolean>] [-HostNames <String[]>] [-NumberOfWorkers <Int32>] [-AsJob]
- [-AssignIdentity <Boolean>] [-HttpsOnly <Boolean>] [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AssignIdentity <Boolean>] [-HttpsOnly <Boolean>] [-AzureStoragePath <WebAppAzureStoragePath[]>]
+ [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] 
+ [<CommonParameters>]
 ```
 
 ### S2
@@ -465,6 +466,21 @@ Aliases:
 
 Required: False
 Position: 13
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureStoragePath
+Azure Storage to mount inside a Web App for Container. Use New-AzureRmWebAppAzureStoragePath to create it
+
+```yaml
+Type: Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]
+Parameter Sets: S1
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

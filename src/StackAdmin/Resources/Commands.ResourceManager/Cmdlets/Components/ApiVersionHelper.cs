@@ -26,10 +26,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-#if !NETSTANDARD    
-    using System.Runtime.Caching;
-#else
+// TODO: Remove IfDef
+#if NETSTANDARD
     using Microsoft.Extensions.Caching.Memory;
+#else
+    using System.Runtime.Caching;
 #endif  
     
     /// <summary>
@@ -145,10 +146,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
             static ApiVersionCache()
             {
-#if !NETSTANDARD
-                _cache = MemoryCache.Default;
-#else
+// TODO: Remove IfDef
+#if NETSTANDARD
                 _cache = new MemoryCache(new MemoryCacheOptions());
+#else
+                _cache = MemoryCache.Default;
 #endif
             }
             /// <summary>

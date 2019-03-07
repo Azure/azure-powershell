@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.1.0
 * Swagger based Azure Automation cmdlets
 * Added Update Management cmdlets
 * Added Source Control cmdlets
@@ -35,6 +37,7 @@
 
 ## Version 5.1.2
 * Renamed cmdlet DLL filename to Microsoft.Azure.Commands.Automation.dll
+* Minor changes for upcoming AzureRM to Az transition
 
 ## Version 5.1.1
 * Fixed issue with default resource groups not being set.

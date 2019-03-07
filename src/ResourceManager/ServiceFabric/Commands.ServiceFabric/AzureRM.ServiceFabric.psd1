@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.3.13'
+ModuleVersion = '0.3.14'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.KeyVault.dll', 
@@ -123,11 +123,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fix add certificate to Linux Vmss.
-* Fix ''Add-AzureRmServiceFabricClusterCertificate''
-    - Using correct thumbprint from new certificate (Azure/service-fabric-issues#932).
-    - Display exception correctly (Azure/service-fabric-issues#1054).
-* Fix ''Update-AzureRmServiceFabricDurability'' to update cluster configuration before starting Vmss CreateOrUpdate operation.'
+        ReleaseNotes = '* Add deprecation messages for upcoming breaking changes'
 
         # Prerelease string of this module
         # Prerelease = ''

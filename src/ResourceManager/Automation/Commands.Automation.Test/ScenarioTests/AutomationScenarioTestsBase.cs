@@ -50,12 +50,13 @@ namespace Microsoft.Azure.Commands.Automation.Test
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
+
             HttpMockServer.RecordsDirectory = GetSessionRecordsDirectory();
             using (var context = MockContext.Start(callingClassType, mockName))
             {
                 SetupManagementClients(context);
 
-                var callingClassName = callingClassType?
+                var callingClassName = callingClassType ?
                     .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                     .Last();
 
@@ -88,7 +89,6 @@ namespace Microsoft.Azure.Commands.Automation.Test
         {
             // Note: if you are developing new tests, set the recording directory to a local path.
             //       this is the location where the json files will be created.
-            // var recordsDirectory = Path.Combine("e:\\", "SessionRecords");
             var recordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             return recordsDirectory;
         }

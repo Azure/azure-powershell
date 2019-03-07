@@ -26,3 +26,6 @@ Returns a list of each resource's health under a service.
 ### [Get-AzsRPHealth](Get-AzsRPHealth.md)
 Returns a list of each service's health.
 
+### [Repair-AzsAlert](Repair-AzsAlert.md)
+Repairs the given alert.
+
