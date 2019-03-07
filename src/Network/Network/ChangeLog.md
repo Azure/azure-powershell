@@ -19,6 +19,11 @@
 --->
 ## Upcoming Release
 * Add wildcard support to Network cmdlets
+* Add ResourceId parameter to Get-AzNetworkInterface
+* Improved error handling for Get-AzVpnClientRevokedCertificate, Get-AzVpnClientRootCertificate
+* Improved Subnet, Primary, PrivateIpAddressVersion parameters processing in
+    - Add-AzNetworkInterfaceIpConfig
+    - Set-AzNetworkInterfaceIpConfig
 
 ## Version 1.2.1
 * Update help example for Add-AzApplicationGatewayCustomError

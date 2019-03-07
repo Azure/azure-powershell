@@ -25,7 +25,6 @@
 // </auto-generated>
 
 using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -33,8 +32,6 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class UsageTestsGenerated : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public UsageTestsGenerated(Xunit.Abstractions.ITestOutputHelper output)
             : base(output)
         {
