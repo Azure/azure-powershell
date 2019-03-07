@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public partial class PSApplicationGatewayAvailableServerVariableAndRequestHeaderResult
     {
-        public IList<string> AvailableServerVariables { get; set; }
-        public IList<string> AvailableRequestHeaders { get; set; }
-        public IList<string> AvailableResponseHeaders { get; set; }
+        public IList<string> AvailableServerVariable { get; set; }
+        public IList<string> AvailableRequestHeader { get; set; }
+        public IList<string> AvailableResponseHeader { get; set; }
     }
 }

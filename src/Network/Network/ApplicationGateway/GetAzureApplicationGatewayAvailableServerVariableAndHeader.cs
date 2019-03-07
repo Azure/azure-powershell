@@ -47,27 +47,21 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            IList<string> availableServerVariable;
-            IList<string> availableRequestHeader;
-            IList<string> availableResponseHeader;
-            Dictionary<string, IList<string>> AvailableServerVariableAndHeaderResponse = new Dictionary<string, IList<string>>();
+            var AvailableServerVariableAndHeaderResponse = new PSApplicationGatewayAvailableServerVariableAndRequestHeaderResult();
             bool getAllData = ((!this.ServerVariable.IsPresent && !this.RequestHeader.IsPresent && !this.ResponseHeader.IsPresent) ||
                 (this.ServerVariable.IsPresent && this.RequestHeader.IsPresent && this.ResponseHeader.IsPresent));
 
             if(getAllData || this.ServerVariable.IsPresent)
             {
-                availableServerVariable = this.ApplicationGatewayClient.ListAvailableServerVariables();
-                AvailableServerVariableAndHeaderResponse.Add("AvailableServerVariable", availableServerVariable);
+                AvailableServerVariableAndHeaderResponse.AvailableServerVariable = this.ApplicationGatewayClient.ListAvailableServerVariables();
             }
             if (getAllData || this.RequestHeader.IsPresent)
             {
-                availableRequestHeader = this.ApplicationGatewayClient.ListAvailableRequestHeaders();
-                AvailableServerVariableAndHeaderResponse.Add("AvailableRequestHeader", availableRequestHeader);
+                AvailableServerVariableAndHeaderResponse.AvailableRequestHeader = this.ApplicationGatewayClient.ListAvailableRequestHeaders();
             }
             if (getAllData || this.ResponseHeader.IsPresent)
             {
-                availableResponseHeader = this.ApplicationGatewayClient.ListAvailableResponseHeaders();
-                AvailableServerVariableAndHeaderResponse.Add("AvailableResponseHeader", availableResponseHeader);
+                AvailableServerVariableAndHeaderResponse.AvailableResponseHeader = this.ApplicationGatewayClient.ListAvailableResponseHeaders();
             }
 
             WriteObject(AvailableServerVariableAndHeaderResponse);
