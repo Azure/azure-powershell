@@ -162,30 +162,30 @@ function Test-CortexCRUD
 		Assert-AreEqual $hubVnetConnectionName $hubVnetConnection.Name
         $hubVnetConnections = Get-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName
         Assert-NotNull $hubVnetConnections
-
-		$hubVnetConnections = Get-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "*"
+        $hubVnetConnections = Get-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "*"
         Assert-NotNull $hubVnetConnections
+
+        # Clean up
+        $delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+        Assert-AreEqual $True $delete
 	}
 	finally
 	{
-		$delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -Force -PassThru
-		Assert-AreEqual $True $delete
-
-		$delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
-		Assert-AreEqual $True $delete
-
-		$delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Force -PassThru
-		Assert-AreEqual $True $delete
-
-		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Force -PassThru
-		Assert-AreEqual $True $delete
-
-		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
-		Assert-AreEqual $True $delete
-
-		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
-		Assert-AreEqual $True $delete
-
 		Clean-ResourceGroup $rgname
 	}
 }
