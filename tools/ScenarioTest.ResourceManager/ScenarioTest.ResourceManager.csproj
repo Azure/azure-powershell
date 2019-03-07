@@ -6,7 +6,20 @@
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;netstandard2.0</TargetFrameworks>
     <AssemblyName>Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager</AssemblyName>
-    <RootNamespace>$(LegacyAssemblyPrefix)ScenarioTest</RootNamespace>
+    <RootNamespace>Microsoft.Azure.Commands.ScenarioTest</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <IsPackable>false</IsPackable>
+    <CopyLocalLockFileAssemblies Condition="'$(TargetFramework)' == 'netstandard2.0'">true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,22 +32,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assert.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <BuildAction>Content</BuildAction>
-    </Content>
-    <Content Include="Common.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <BuildAction>Content</BuildAction>
-    </Content>
-    <Content Include="AzureRM.Resources.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <BuildAction>Content</BuildAction>
-    </Content>
-    <Content Include="AzureRM.Storage.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <BuildAction>Content</BuildAction>
-    </Content>
+    <Content Include="Assert.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Common.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="AzureRM.Resources.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="AzureRM.Storage.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
