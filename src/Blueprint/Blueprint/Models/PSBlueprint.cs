@@ -27,9 +27,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
         public string DefinitionLocationId { get; set; }
         public string Scope { get; set; }
         public object Versions { get; set; }
-        public List<string> ParametersDisplayList { get; set; }
-        public List<string> ResourceGroupDisplayList { get; set; }
-        public List<string> VersionList { get; set; }
 
         /// <summary>
         /// Create a PSBlueprint object from a BlueprintModel.
@@ -51,10 +48,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 TargetScope = PSBlueprintTargetScope.Unknown,
                 Parameters = new Dictionary<string, PSParameterDefinition>(),
                 ResourceGroups = new Dictionary<string, PSResourceGroupDefinition>(),
-                Versions = model.Versions,
-                ParametersDisplayList = new List<string>(),
-                ResourceGroupDisplayList = new List<string>(),
-                VersionList = new List<string>()
+                Versions = model.Versions
             };
 
             if (DateTime.TryParse(model.Status.TimeCreated, out DateTime timeCreated))
@@ -96,7 +90,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                     AllowedValues = (item.Value.AllowedValues != null) ? item.Value.AllowedValues.ToList() : null
                 };
                 psBlueprint.Parameters.Add(item.Key, definition);
-                psBlueprint.ParametersDisplayList.Add(item.Key);
             }
 
             foreach (var item in model.ResourceGroups)
@@ -111,20 +104,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                         StrongType = item.Value.StrongType,
                         DependsOn = item.Value.DependsOn.ToList()
                     });
-                psBlueprint.ResourceGroupDisplayList.Add(item.Key);
             }
-
-            if (psBlueprint.Versions != null)
-            {
-                var versionJson = psBlueprint.Versions.ToString();
-                var versionDictionary = JsonConvert.DeserializeObject<Hashtable>(versionJson);
-
-                foreach (var k in versionDictionary.Keys)
-                {
-                    psBlueprint.VersionList.Add(k.ToString());
-                }
-            }
-
+            
             return psBlueprint;
         }
     }

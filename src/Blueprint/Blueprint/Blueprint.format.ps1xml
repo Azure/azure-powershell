@@ -52,17 +52,11 @@
               </ListItem>
               <ListItem>
                 <Label>Parameters</Label>
-                <PropertyName>ParametersDisplayList</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.ParametersDisplayList</ScriptBlock>
-                </ItemSelectionCondition>
+                <ScriptBlock>$_.Parameters.Keys</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>ResourceGroup</Label>
-                <PropertyName>ResourceGroupDisplayList</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.ResourceGroupDisplayList</ScriptBlock>
-                </ItemSelectionCondition>
+                <Label>ResourceGroups</Label>
+                <ScriptBlock> $_.ResourceGroups.Keys </ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -91,13 +85,9 @@
                 <PropertyName>DefinitionLocationId</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Versions</Label>
                 <PropertyName>Versions</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>
-                    $_.VersionList -ne $null
-                  </ScriptBlock>
-                </ItemSelectionCondition>
-              </ListItem>
+               </ListItem>
               <ListItem>
                 <PropertyName>Description</PropertyName>
                 <ItemSelectionCondition>
@@ -116,17 +106,11 @@
               </ListItem>
               <ListItem>
                 <Label>Parameters</Label>
-                <PropertyName>ParametersDisplayList</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.ParametersDisplayList</ScriptBlock>
-                </ItemSelectionCondition>
+                <ScriptBlock>$_.Parameters.Keys</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>ResourceGroup</Label>
-                <PropertyName>ResourceGroupDisplayList</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.ResourceGroupDisplayList</ScriptBlock>
-                </ItemSelectionCondition>
+                <Label>ResourceGroups</Label>
+                <ScriptBlock> $_.ResourceGroups.Keys </ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -173,6 +157,14 @@
               <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Parameters</Label>
+                <ScriptBlock>$_.Parameters.Keys</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGroups</Label>
+                <ScriptBlock> $_.ResourceGroups.Keys </ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>
