@@ -155,7 +155,7 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = '1.5.0 - March 2019
 Az.Accounts
-* Add ''Register-AzModule'' command to suppoirt AutoRest generated cmdlets
+* Add ''Register-AzModule'' command to support AutoRest generated cmdlets
 * Update examples for Connect-AzAccount
 
 Az.Automation
