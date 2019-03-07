@@ -1,7 +1,4 @@
 ## 1.5.0 - March 2019
-#### General
-* Az.Security module is now GA and included with Az
-
 #### Az.Accounts
 * Add 'Register-AzModule' command to suppoirt AutoRest generated cmdlets
 * Update examples for Connect-AzAccount
