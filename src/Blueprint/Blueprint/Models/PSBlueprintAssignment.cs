@@ -34,8 +34,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
         public PSAssignmentStatus Status { get; set; }
         public PSAssignmentLockSettings Locks { get; set; }
         public PSAssignmentProvisioningState ProvisioningState {get; set; }
-        public List<string> ParametersDisplayList { get; set; }
-        public List<string> ResourceGroupDisplayList { get; set; }
 
         /// <summary>
         /// Create a PSBluprintAssignment object from an Assignment model.
@@ -66,9 +64,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 Status = new PSAssignmentStatus(),
                 Locks = new PSAssignmentLockSettings {Mode = PSLockMode.None},
                 Parameters = new Dictionary<string, PSParameterValueBase>(),
-                ResourceGroups = new Dictionary<string, PSResourceGroupValue>(),
-                ParametersDisplayList = new List<string>(),
-                ResourceGroupDisplayList = new List<string>()
+                ResourceGroups = new Dictionary<string, PSResourceGroupValue>()
             };
 
             if (DateTime.TryParse(assignment.Status.TimeCreated, out DateTime timeCreated))
@@ -110,14 +106,12 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
             foreach (var item in assignment.Parameters)
             {
                 psAssignment.Parameters.Add(item.Key, new PSParameterValueBase {Description = item.Value.Description});
-                psAssignment.ParametersDisplayList.Add(item.Key);
             }
 
             foreach (var item in assignment.ResourceGroups)
             {
                 psAssignment.ResourceGroups.Add(item.Key,
                     new PSResourceGroupValue {Name = item.Value.Name, Location = item.Value.Location});
-                psAssignment.ResourceGroupDisplayList.Add(item.Key);
             }
 
             if (assignment.Identity.UserAssignedIdentities != null)

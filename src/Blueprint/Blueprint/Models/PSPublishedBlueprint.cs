@@ -26,8 +26,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
         public string DefinitionLocationId { get; set; }
         public string BlueprintName { get; set; }
         public string ChangeNotes { get; set; }
-        public List<string> ParametersDisplayList { get; set; }
-        public List<string> ResourceGroupDisplayList { get; set; }
 
         /// <summary>
         /// Create a PSPublishedBlueprint object from a PublishedBlueprint.
@@ -50,9 +48,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 Parameters = new Dictionary<string, PSParameterDefinition>(),
                 ResourceGroups = new Dictionary<string, PSResourceGroupDefinition>(),
                 BlueprintName = model.BlueprintName,
-                ChangeNotes = model.ChangeNotes,
-                ParametersDisplayList = new List<string>(),
-                ResourceGroupDisplayList = new List<string>()
+                ChangeNotes = model.ChangeNotes
             };
 
             if (DateTime.TryParse(model.Status.TimeCreated, out DateTime timeCreated))
@@ -94,7 +90,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                                                 DefaultValue = item.Value.DefaultValue,
                                                 AllowedValues = (item.Value.AllowedValues != null) ? item.Value.AllowedValues.ToList() : null
                                             });
-                psBlueprint.ParametersDisplayList.Add(item.Key);
             }
 
             foreach (var item in model.ResourceGroups)
@@ -109,7 +104,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                                                     StrongType = item.Value.StrongType,
                                                     DependsOn = item.Value.DependsOn.ToList()
                                                 });
-                psBlueprint.ResourceGroupDisplayList.Add(item.Key);
             }
 
             return psBlueprint;
