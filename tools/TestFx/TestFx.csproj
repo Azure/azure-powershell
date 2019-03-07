@@ -4,6 +4,7 @@
   <Import Project="$(RepoTools)Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;netstandard2.0</TargetFrameworks>
     <AssemblyName>Microsoft.Azure.PowerShell.TestFx</AssemblyName>
     <RootNamespace>$(LegacyAssemblyPrefix)TestFx</RootNamespace>
   </PropertyGroup>
