@@ -4,14 +4,13 @@
   <Import Project="$(RepoTools)Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
     <AssemblyName>Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ScenarioTest</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
     <IsPackable>false</IsPackable>
-    <CopyLocalLockFileAssemblies Condition="'$(TargetFramework)' == 'netstandard2.0'">true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
