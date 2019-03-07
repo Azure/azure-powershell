@@ -112,7 +112,7 @@ function Test-ExpressRouteCircuitStageCRUD
       $circuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
 
       $actual = Get-AzExpressRouteCircuitStats -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name 
-      Assert-True { $null -ne $actual.PrimaryBytesIn }
+      Assert-AreEqual $actual.PrimaryBytesIn 0
 
 	  #move
 	  $job = Move-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname -Location $location -ServiceKey $circuit.ServiceKey -Force -AsJob
