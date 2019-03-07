@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '0.7.3'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -123,7 +123,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* GA release of Az.Security'
+        ReleaseNotes = '* Split ''Set-AzSecurityThreatProtection'' into two new cmdlets:
+    - ''Disable-AzSecurityAdvancedThreatProtection''
+    - ''Enable-AzSecurityAdvancedThreatProtection''
+* Rename ''Get-AzSecurityThreatProtection'' to ''Get-AzSecurityAdvancedThreatProtection'''
 
         # Prerelease string of this module
         # Prerelease = ''

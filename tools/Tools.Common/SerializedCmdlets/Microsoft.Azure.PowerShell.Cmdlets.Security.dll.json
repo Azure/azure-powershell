@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.WorkspaceSettings",
             "Name": "Microsoft.Azure.Commands.Security.Models.WorkspaceSettings.PSSecurityWorkspaceSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.WorkspaceSettings.PSSecurityWorkspaceSetting, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.WorkspaceSettings.PSSecurityWorkspaceSetting, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -391,7 +391,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.WorkspaceSettings",
             "Name": "Microsoft.Azure.Commands.Security.Models.WorkspaceSettings.PSSecurityWorkspaceSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.WorkspaceSettings.PSSecurityWorkspaceSetting, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.WorkspaceSettings.PSSecurityWorkspaceSetting, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -687,7 +687,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Security.Models.WorkspaceSettings",
                   "Name": "Microsoft.Azure.Commands.Security.Models.WorkspaceSettings.PSSecurityWorkspaceSetting",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.WorkspaceSettings.PSSecurityWorkspaceSetting, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.WorkspaceSettings.PSSecurityWorkspaceSetting, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Id": "System.String",
                     "Name": "System.String",
@@ -891,7 +891,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.WorkspaceSettings",
             "Name": "Microsoft.Azure.Commands.Security.Models.WorkspaceSettings.PSSecurityWorkspaceSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.WorkspaceSettings.PSSecurityWorkspaceSetting, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.WorkspaceSettings.PSSecurityWorkspaceSetting, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -1207,7 +1207,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.Tasks",
             "Name": "Microsoft.Azure.Commands.Security.Models.Tasks.PSSecurityTask",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Tasks.PSSecurityTask, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Tasks.PSSecurityTask, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -1707,7 +1707,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.SecurityContacts",
             "Name": "Microsoft.Azure.Commands.Security.Models.SecurityContacts.PSSecurityContact",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.SecurityContacts.PSSecurityContact, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.SecurityContacts.PSSecurityContact, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -2086,7 +2086,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.SecurityContacts",
             "Name": "Microsoft.Azure.Commands.Security.Models.SecurityContacts.PSSecurityContact",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.SecurityContacts.PSSecurityContact, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.SecurityContacts.PSSecurityContact, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -2384,7 +2384,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Security.Models.SecurityContacts",
                   "Name": "Microsoft.Azure.Commands.Security.Models.SecurityContacts.PSSecurityContact",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.SecurityContacts.PSSecurityContact, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.SecurityContacts.PSSecurityContact, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Id": "System.String",
                     "Name": "System.String",
@@ -2590,7 +2590,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.SecurityContacts",
             "Name": "Microsoft.Azure.Commands.Security.Models.SecurityContacts.PSSecurityContact",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.SecurityContacts.PSSecurityContact, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.SecurityContacts.PSSecurityContact, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -2992,7 +2992,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.Pricings",
             "Name": "Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -3491,7 +3491,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.Pricings",
             "Name": "Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -3600,7 +3600,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.Pricings",
             "Name": "Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -3901,7 +3901,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Security.Models.Pricings",
                   "Name": "Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Id": "System.String",
                     "Name": "System.String",
@@ -4056,7 +4056,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.Locations",
             "Name": "Microsoft.Azure.Commands.Security.Models.Locations.PSSecurityLocation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Locations.PSSecurityLocation, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Locations.PSSecurityLocation, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String"
@@ -4376,7 +4376,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
             "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicy, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicy, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Requests": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyRequest]",
               "VirtualMachines": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine]",
@@ -4943,7 +4943,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
             "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicy, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicy, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Requests": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyRequest]",
               "VirtualMachines": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine]",
@@ -5289,7 +5289,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
                   "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicy, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicy, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Requests": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyRequest]",
                     "VirtualMachines": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine]",
@@ -5495,7 +5495,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
             "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicy, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicy, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Requests": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyRequest]",
               "VirtualMachines": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine]",
@@ -5607,7 +5607,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
             "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine[], Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine[], Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine",
             "GenericTypeArguments": [],
@@ -5754,7 +5754,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
                   "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine[], Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine[], Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine",
                   "GenericTypeArguments": [],
@@ -5897,7 +5897,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
             "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicy, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicy, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Requests": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyRequest]",
               "VirtualMachines": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine]",
@@ -6009,7 +6009,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
             "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[], Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[], Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine",
             "GenericTypeArguments": [],
@@ -6045,7 +6045,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Cmdlets.JitNetworkAccessPolicies",
             "Name": "Microsoft.Azure.Commands.Security.Cmdlets.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateInputObject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Cmdlets.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateInputObject, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Cmdlets.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateInputObject, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "VirtualMachine": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[]",
               "Name": "System.String",
@@ -6211,7 +6211,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
                   "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[], Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[], Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine",
                   "GenericTypeArguments": [],
@@ -6279,7 +6279,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
                   "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[], Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[], Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine",
                   "GenericTypeArguments": [],
@@ -6371,7 +6371,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Security.Cmdlets.JitNetworkAccessPolicies",
                   "Name": "Microsoft.Azure.Commands.Security.Cmdlets.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateInputObject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Cmdlets.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateInputObject, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Cmdlets.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateInputObject, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "VirtualMachine": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[]",
                     "Name": "System.String",
@@ -6527,7 +6527,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.ExternalSecuritySolutions",
             "Name": "Microsoft.Azure.Commands.Security.Models.ExternalSecuritySolutions.PSSecurityExternalSecuritySolution",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.ExternalSecuritySolutions.PSSecurityExternalSecuritySolution, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.ExternalSecuritySolutions.PSSecurityExternalSecuritySolution, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -7000,7 +7000,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.DiscoveredSecuritySolutions",
             "Name": "Microsoft.Azure.Commands.Security.Models.DiscoveredSecuritySolutions.PSSecurityDiscoveredSecuritySolution",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.DiscoveredSecuritySolutions.PSSecurityDiscoveredSecuritySolution, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.DiscoveredSecuritySolutions.PSSecurityDiscoveredSecuritySolution, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -7408,7 +7408,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.Compliances",
             "Name": "Microsoft.Azure.Commands.Security.Models.Compliances.PSSecurityCompliance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Compliances.PSSecurityCompliance, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Compliances.PSSecurityCompliance, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AssessmentResult": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Security.Models.Compliances.PSSecurityComplianceSegment]",
               "AssessmentTimestampUtcDate": "System.DateTime",
@@ -7731,7 +7731,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings",
             "Name": "Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings.PSSecurityAutoProvisioningSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings.PSSecurityAutoProvisioningSetting, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings.PSSecurityAutoProvisioningSetting, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -8052,7 +8052,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings",
             "Name": "Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings.PSSecurityAutoProvisioningSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings.PSSecurityAutoProvisioningSetting, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings.PSSecurityAutoProvisioningSetting, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -8161,7 +8161,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings",
             "Name": "Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings.PSSecurityAutoProvisioningSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings.PSSecurityAutoProvisioningSetting, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings.PSSecurityAutoProvisioningSetting, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -8438,7 +8438,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings",
                   "Name": "Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings.PSSecurityAutoProvisioningSetting",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings.PSSecurityAutoProvisioningSetting, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings.PSSecurityAutoProvisioningSetting, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Id": "System.String",
                     "Name": "System.String",
@@ -8593,7 +8593,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.Alerts",
             "Name": "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
               "ConfidenceReasons": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertConfidenceReason]",
@@ -9287,7 +9287,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.Alerts",
             "Name": "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
               "ConfidenceReasons": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertConfidenceReason]",
@@ -9862,7 +9862,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Security.Models.Alerts",
                   "Name": "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
                     "ConfidenceReasons": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertConfidenceReason]",
@@ -10085,7 +10085,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.AdvancedThreatProtection",
             "Name": "Microsoft.Azure.Commands.Security.Models.AdvancedThreatProtection.PSAdvancedThreatProtection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.AdvancedThreatProtection.PSAdvancedThreatProtection, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.AdvancedThreatProtection.PSAdvancedThreatProtection, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsEnabled": "System.Boolean",
               "Id": "System.String"
@@ -10315,7 +10315,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.AdvancedThreatProtection",
             "Name": "Microsoft.Azure.Commands.Security.Models.AdvancedThreatProtection.PSAdvancedThreatProtection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.AdvancedThreatProtection.PSAdvancedThreatProtection, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.AdvancedThreatProtection.PSAdvancedThreatProtection, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsEnabled": "System.Boolean",
               "Id": "System.String"
@@ -10545,7 +10545,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Security.Models.AdvancedThreatProtection",
             "Name": "Microsoft.Azure.Commands.Security.Models.AdvancedThreatProtection.PSAdvancedThreatProtection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.AdvancedThreatProtection.PSAdvancedThreatProtection, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.AdvancedThreatProtection.PSAdvancedThreatProtection, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsEnabled": "System.Boolean",
               "Id": "System.String"
@@ -11066,7 +11066,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyRequest]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyRequest]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyRequest, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyRequest, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11078,7 +11078,7 @@
     "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyRequest": {
       "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
       "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyRequest",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyRequest, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyRequest, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "VirtualMachines": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessRequestVirtualMachine]",
         "StartTimeUtc": "System.DateTime",
@@ -11124,7 +11124,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessRequestVirtualMachine]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessRequestVirtualMachine]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessRequestVirtualMachine, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessRequestVirtualMachine, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11136,7 +11136,7 @@
     "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessRequestVirtualMachine": {
       "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
       "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessRequestVirtualMachine",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessRequestVirtualMachine, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessRequestVirtualMachine, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Ports": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachinePort]",
         "Id": "System.String"
@@ -11181,7 +11181,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachinePort]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachinePort]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachinePort, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachinePort, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11193,7 +11193,7 @@
     "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachinePort": {
       "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
       "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachinePort",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachinePort, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachinePort, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AllowedSourceAddressPrefixes": "System.Collections.Generic.IList`1[System.String]",
         "EndTimeUtc": "System.DateTime",
@@ -11252,7 +11252,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11264,7 +11264,7 @@
     "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine": {
       "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
       "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Ports": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPortRule[]",
         "Id": "System.String"
@@ -11309,7 +11309,7 @@
     "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPortRule[]": {
       "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
       "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPortRule[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPortRule[], Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPortRule[], Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPortRule",
       "GenericTypeArguments": [],
@@ -11319,7 +11319,7 @@
     "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPortRule": {
       "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
       "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPortRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPortRule, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPortRule, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AllowedSourceAddressPrefixes": "System.Collections.Generic.IList`1[System.String]",
         "Number": "System.Int32",
@@ -11367,7 +11367,7 @@
     "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine": {
       "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
       "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Ports": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiatePort[]",
         "Id": "System.String"
@@ -11412,7 +11412,7 @@
     "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiatePort[]": {
       "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
       "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiatePort[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiatePort[], Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiatePort[], Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiatePort",
       "GenericTypeArguments": [],
@@ -11422,7 +11422,7 @@
     "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiatePort": {
       "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
       "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiatePort",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiatePort, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiatePort, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EndTimeUtc": "System.DateTime",
         "Number": "System.Int32",
@@ -11468,7 +11468,7 @@
     "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[]": {
       "Namespace": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies",
       "Name": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[], Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[], Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine",
       "GenericTypeArguments": [],
@@ -11478,7 +11478,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Security.Models.Compliances.PSSecurityComplianceSegment]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Security.Models.Compliances.PSSecurityComplianceSegment]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Security.Models.Compliances.PSSecurityComplianceSegment, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Security.Models.Compliances.PSSecurityComplianceSegment, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11490,7 +11490,7 @@
     "Microsoft.Azure.Commands.Security.Models.Compliances.PSSecurityComplianceSegment": {
       "Namespace": "Microsoft.Azure.Commands.Security.Models.Compliances",
       "Name": "Microsoft.Azure.Commands.Security.Models.Compliances.PSSecurityComplianceSegment",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Compliances.PSSecurityComplianceSegment, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Compliances.PSSecurityComplianceSegment, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Percentage": "System.Double",
         "SegmentType": "System.String"
@@ -11558,7 +11558,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertConfidenceReason]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertConfidenceReason]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertConfidenceReason, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertConfidenceReason, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11570,7 +11570,7 @@
     "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertConfidenceReason": {
       "Namespace": "Microsoft.Azure.Commands.Security.Models.Alerts",
       "Name": "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertConfidenceReason",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertConfidenceReason, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertConfidenceReason, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Type": "System.String",
         "Reason": "System.String"
@@ -11615,7 +11615,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertEntity]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertEntity]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertEntity, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertEntity, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11627,7 +11627,7 @@
     "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertEntity": {
       "Namespace": "Microsoft.Azure.Commands.Security.Models.Alerts",
       "Name": "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertEntity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertEntity, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertEntity, Microsoft.Azure.PowerShell.Cmdlets.Security, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Type": "System.String"
       },

@@ -90,7 +90,6 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0'; },
                @{ModuleName = 'Az.RedisCache'; RequiredVersion = '1.0.0'; },
                @{ModuleName = 'Az.Relay'; RequiredVersion = '1.0.0'; },
                @{ModuleName = 'Az.Resources'; RequiredVersion = '1.2.0'; },
-               @{ModuleName = 'Az.Security'; RequiredVersion = '1.0.0'; },
                @{ModuleName = 'Az.ServiceBus'; RequiredVersion = '1.0.0'; },
                @{ModuleName = 'Az.ServiceFabric'; RequiredVersion = '1.0.1'; },
                @{ModuleName = 'Az.SignalR'; RequiredVersion = '1.0.2'; },
@@ -155,9 +154,6 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '1.5.0 - March 2019
-General
-* Az.Security module is now GA and included with Az
-
 Az.Accounts
 * Add ''Register-AzModule'' command to suppoirt AutoRest generated cmdlets
 * Update examples for Connect-AzAccount

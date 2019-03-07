@@ -19,8 +19,11 @@
 -->
 ## Upcoming Release
 
-## Version 1.0.0
-* GA release of Az.Security
+## Version 0.7.3
+* Split `Set-AzSecurityThreatProtection` into two new cmdlets:
+    - `Disable-AzSecurityAdvancedThreatProtection`
+    - `Enable-AzSecurityAdvancedThreatProtection`
+* Rename `Get-AzSecurityThreatProtection` to `Get-AzSecurityAdvancedThreatProtection`
 
 ## Version 0.7.2
 * Add new cmdlets: Get-AzSecurityThreatProtection and Set-AzSecurityThreatProtection
