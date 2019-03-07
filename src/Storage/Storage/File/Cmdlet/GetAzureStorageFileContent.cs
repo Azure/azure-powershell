@@ -113,6 +113,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         public override void ExecuteCmdlet()
         {
+            if (AsJob.IsPresent)
+            {
+                BeginProcessingImplement();
+            }
+
             CloudFile fileToBeDownloaded;
             string[] path = NamingUtil.ValidatePath(this.Path, true);
             switch (this.ParameterSetName)
@@ -138,8 +143,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
             }
 
-            string resolvedDestination = this.GetUnresolvedProviderPathFromPSPath(
+            // With -asjob, only absolute path works, so Destination must be absolute path.
+            if (AsJob.IsPresent && !System.IO.Path.IsPathRooted(this.Destination))
+            {
+                throw new System.ArgumentException(string.Format(Resources.InvalidPathForAsJob, "Destination", this.Destination), "Destination");
+            }
+            string resolvedDestination = this.Destination;
+            if (!AsJob.IsPresent)
+            {
+                resolvedDestination = this.GetUnresolvedProviderPathFromPSPath(
                 string.IsNullOrWhiteSpace(this.Destination) ? "." : this.Destination);
+            }
 
             FileMode mode = this.Force ? FileMode.Create : FileMode.CreateNew;
             string targetFile;
@@ -192,6 +206,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         this.OutputStream.WriteObject(taskId, fileToBeDownloaded);
                     }
                 });
+            }
+
+            if (AsJob.IsPresent)
+            {
+                EndProcessingImplement();
             }
         }
     }

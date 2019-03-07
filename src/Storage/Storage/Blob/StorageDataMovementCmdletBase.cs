@@ -43,6 +43,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         protected bool overwrite;
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public virtual SwitchParameter AsJob { get; set; }
+
         /// <summary>
         /// Confirm the overwrite operation
         /// </summary>
@@ -78,6 +81,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         protected override void BeginProcessing()
         {
+            if (!AsJob.IsPresent)
+            {
+                BeginProcessingImplement();
+            }
+        }
+
+        protected void BeginProcessingImplement()
+        {
             base.BeginProcessing();
             OutputStream.ConfirmWriter = (s1, s2, s3) => ShouldContinue(s2, s3);
 
@@ -112,6 +123,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
 
         protected override void EndProcessing()
+        {
+            if (!AsJob.IsPresent)
+            {
+                EndProcessingImplement();
+            }
+        }
+
+        protected virtual void EndProcessingImplement()
         {
             try
             {

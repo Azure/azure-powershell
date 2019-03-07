@@ -48,6 +48,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             set;
         }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public virtual SwitchParameter AsJob { get; set; }
+        
         /// <summary>
         /// Confirm the overwrite operation
         /// </summary>
@@ -72,6 +75,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
         protected override void BeginProcessing()
         {
+            if (!AsJob.IsPresent)
+            {
+                BeginProcessingImplement();
+            }
+        }
+
+        protected void BeginProcessingImplement()
+        {
             base.BeginProcessing();
 
             this.TransferManager = TransferManagerFactory.CreateTransferManager(this.GetCmdletConcurrency());
@@ -79,6 +90,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         }
 
         protected override void EndProcessing()
+        {
+            if (!AsJob.IsPresent)
+            {
+                EndProcessingImplement();
+            }
+        }
+
+        protected  void EndProcessingImplement()
         {
             try
             {
