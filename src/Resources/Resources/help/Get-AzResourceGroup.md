@@ -66,6 +66,13 @@ PS C:\> Get-AzResourceGroup -Location westus2 |
 PS C:\> Get-AzResourceGroup | Where ResourceGroupName -like WebServer*
 ```
 
+### Example 6: Get a resource group by name
+```
+PS C:\> Get-AzResourceGroup -Name "EngineerBlog*"
+```
+
+This command gets the Azure resource group in your subscription that start with "EngineerBlog".
+
 ## PARAMETERS
 
 ### -ApiVersion

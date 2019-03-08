@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -386,7 +387,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Normalize the IDs
-            ApplicationGatewayChildResourceHelper.NormalizeChildResourcesId(applicationGateway);
+            ApplicationGatewayChildResourceHelper.NormalizeChildIds(applicationGateway, this.ResourceGroupName, this.Name);
 
             // Map to the sdk object
             var appGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ApplicationGateway>(applicationGateway);

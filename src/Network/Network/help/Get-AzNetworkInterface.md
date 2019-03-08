@@ -38,6 +38,17 @@ Get-AzNetworkInterface -Name <String> -ResourceGroupName <String> -VirtualMachin
  [<CommonParameters>]
 ```
 
+### GetByResourceIdExpandParameterSet
+```
+Get-AzNetworkInterface -ResourceId <String> -ExpandResource <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### GetByResourceIdNoExpandParameterSet
+```
+Get-AzNetworkInterface -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzNetworkInterface** cmdlet gets an Azure network interface or a list of Azure network interfaces in a resource group.
 
@@ -249,7 +260,7 @@ Accept wildcard characters: False
 ### -ExpandResource
 ```yaml
 Type: System.String
-Parameter Sets: ExpandStandAloneNic, ExpandScaleSetNic
+Parameter Sets: ExpandStandAloneNic, ExpandScaleSetNic, GetByResourceIdExpandParameterSet
 Aliases:
 
 Required: True
@@ -310,6 +321,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The Azure resource manager id of the network interface.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByResourceIdExpandParameterSet, GetByResourceIdNoExpandParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
