@@ -31,23 +31,24 @@ Get one or more blueprint assignments. Blueprint assignments exist at the subscr
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzBlueprintAssignment -SubscriptionId 00000000-1111-0000-1111-000000000000
+PS C:\> Get-AzBlueprintAssignment -SubscriptionId "00000000-1111-0000-1111-000000000000"
+
+Name              : Assignment-PS-BlueprintDefinition
+Id                : /subscriptions/00000000-1111-0000-1111-000000000000/providers/Microsoft.Blueprint/blueprintAssignments/Assignment-PS-BlueprintDefinition
+Scope             : /subscriptions/00000000-1111-0000-1111-000000000000
+LastModified      : 2019-01-08
+LockMode          : AllResourcesReadOnly
+ProvisioningState : Succeeded
+Parameters        : {applytaganditsdefaultvalue_tagName, applytaganditsdefaultvalue_tagValue}
+ResourceGroups    : ResourceGroup
+
 ```
 
 Get the blueprint assignments within the specified subscription.
 
-Sample output:
-
-Name              : PS-SimpleBlueprintAssignment
-BlueprintId       : /providers/Microsoft.Management/managementGroups/<mgname>/providers/Microsoft.Blueprint/blueprints/ps-simpleblueprintassignment/versions/v1
-Scope             : /subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753
-LastModified      : 2019-02-11
-LockMode          : AllResourcesDoNotDelete
-ProvisioningState : Succeeded
-
 ### Example 2
 ```powershell
-PS C:\> Get-AzBlueprintAssignment -SubscriptionId 00000000-1111-0000-1111-000000000000 -Name "myAssignmentName"
+PS C:\> Get-AzBlueprintAssignment -SubscriptionId "00000000-1111-0000-1111-000000000000" -Name "myAssignmentName"
 ```
 
 Get the blueprint assignment with the given name within the specified subscription.

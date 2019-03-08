@@ -85,6 +85,16 @@ ResourceGroup        : {TestRG2}
 ### Example 2
 ```powershell
 PS> Get-AzBlueprint -ManagementGroupId "myManagementGroupId"
+
+Name                 : PS-MG-BlueprintDefinition
+Id                   : /providers/Microsoft.Management/managementGroups/myManagementGroupId/providers/Microsoft.Blueprint/blueprints/PS-MG-BlueprintDefinition
+DefinitionLocationId : myManagementGroupId
+Versions             : {1.0, 2.0, 3.0, 4.0}
+LastModified         : 2019-03-04
+TargetScope          : Subscription
+Parameters           : {enforcetaganditsvalue_tagName, enforcetaganditsvalue_tagValue, [Usergrouporapplicationname]:Contributor_RoleAssignmentName,
+                       [Usergrouporapplicationname]:Owner_RoleAssignmentName}
+ResourceGroups       : {ResourceGroup, ResourceGroup2}
 ```
 
 Gets the blueprint definitions within the specified management group.
@@ -92,6 +102,16 @@ Gets the blueprint definitions within the specified management group.
 ### Example 3
 ```powershell
 PS> Get-AzBlueprint -SubscriptionId "00000000-1111-0000-1111-000000000000"
+
+Name                 : PS-BlueprintDefinition
+Id                   : /subscriptions/00000000-1111-0000-1111-000000000000/providers/Microsoft.Blueprint/blueprints/PS-BlueprintDefinition
+DefinitionLocationId : 00000000-1111-0000-1111-000000000000
+Versions             : {1.0}
+Description          : Powershell test blueprint
+LastModified         : 2019-02-01
+TargetScope          : Subscription
+Parameters           : {storageData_storageAccountType, storageData_location, allowedlocations_listOfAllowedLocations}
+ResourceGroups       : ResourceGroup
 ```
 
 Get the blueprint definitions within the specified subscription and the management group hierarchy of the subscription.

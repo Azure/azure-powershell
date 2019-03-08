@@ -27,25 +27,27 @@ Assign a blueprint definition to a subscription.
 ### Example 1
 ```powershell
 PS C:\> $blueprintObject =  Get-AzBlueprint -SubscriptionId "00000000-1111-0000-1111-000000000000" -Name "myBlueprintName"
-PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -ResourceGroupParameter $rg -Parameter $params
-```
-
-ResourceGroupParameter format: @{ResourceGroup=@{name='<value>';location='<value>'}}
-Example: $rg = @{ResourceGroup=@{name='storage_rg';location='eastus'};ResourceGroup2=@{name='another_rg';location='eastus'}}
-
-Parameter format: @{P1='v1'; P2='v2'}
-Example: $param = @{audituseofclassicvirtualmachines_effect='Audit'}
-
-Create a new blueprint assignment of the blueprint definition `$blueprintObject` within the specified subscription using the defined parameter and resource group dictionary. Uses system-assigned identity. The location defines the region for creating the managed identity.
-
-Sample output:
+PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId "00000000-1111-0000-1111-000000000000" -Location "location" -ResourceGroupParameter $rg -Parameter $params
 
 Name              : myAssignment
-BlueprintId       : /providers/Microsoft.Management/managementGroups/<mgname>/providers/Microsoft.Blueprint/blueprints/myAssignment/versions/v1
-Scope             : /subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753
-LastModified      : 2019-02-12
-LockMode          : None
+Id                : /subscriptions/00000000-1111-0000-1111-000000000000/providers/Microsoft.Blueprint/blueprintAssignments/Assignment-PS-BlueprintDefinition
+Scope             : /subscriptions/00000000-1111-0000-1111-000000000000
+LastModified      : 2019-01-08
+LockMode          : AllResourcesReadOnly
 ProvisioningState : Creating
+Parameters        : {applytaganditsdefaultvalue_tagName, applytaganditsdefaultvalue_tagValue}
+ResourceGroups    : ResourceGroup
+
+-----------------------------------------------------------------------------------------------------------------------------
+ResourceGroupParameter format: @{ResourceGroup=@{name='<value>';location='<value>'}} 
+Example: $rg = @{ResourceGroup=@{name='storage_rg';location='eastus'};ResourceGroup2=@{name='another_rg';location='eastus'}}
+
+Parameter format: @{P1="v1"; P2="v2"}
+Example: $params = @{applytaganditsdefaultvalue_tagName="Department_Cost_Center"; applytaganditsdefaultvalue_tagValue="Contoso/RnD/Dev/986754"}
+-----------------------------------------------------------------------------------------------------------------------------
+```
+
+Create a new blueprint assignment of the blueprint definition `$blueprintObject` within the specified subscription using the defined parameter and resource group dictionary. Uses system-assigned identity. The location defines the region for creating the managed identity.
 
 ### Example 2
 ```powershell
