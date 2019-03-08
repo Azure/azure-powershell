@@ -131,8 +131,8 @@
                 <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>BlueprintId</Label>
-                <PropertyName>BlueprintId</PropertyName>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Scope</Label>
