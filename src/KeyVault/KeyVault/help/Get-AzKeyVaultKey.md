@@ -242,6 +242,7 @@ Created        : 5/24/2018 6:09:44 PM
 Updated        : 5/24/2018 6:09:44 PM
 Purge Disabled : False
 Tags           :
+```
 
 This command gets all the keys in the key vault named Contoso that start with "test".
 
