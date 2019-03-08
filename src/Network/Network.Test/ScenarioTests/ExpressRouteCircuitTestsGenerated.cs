@@ -42,7 +42,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitCRUDMinimalParameters()
         {
-           TestRunner.RunTestScript("Test-ExpressRouteCircuitCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitCRUDMinimalParameters");
         }
 
         [Fact]
@@ -50,7 +50,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitCRUDAllParameters()
         {
-           TestRunner.RunTestScript("Test-ExpressRouteCircuitCRUDAllParameters");
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitCRUDAllParameters");
         }
 
         [Fact]
@@ -58,7 +58,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitAuthorizationCRUDMinimalParameters()
         {
-           TestRunner.RunTestScript("Test-ExpressRouteCircuitAuthorizationCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitAuthorizationCRUDMinimalParameters");
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitPeeringCRUDMinimalParameters()
         {
-           TestRunner.RunTestScript("Test-ExpressRouteCircuitPeeringCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitPeeringCRUDMinimalParameters");
         }
 
         [Fact]
@@ -74,7 +74,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitPeeringCRUDAllParameters()
         {
-           TestRunner.RunTestScript("Test-ExpressRouteCircuitPeeringCRUDAllParameters");
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitPeeringCRUDAllParameters");
         }
     }
 }

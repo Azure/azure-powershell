@@ -20,6 +20,8 @@
 ## Upcoming Release
 * Added Sql server in Azure VM support
 * SDK Update
+* Removed VMappContainer check in Get-ProtectableItem
+* Added Name and ServerName as parameters for Get-ProtectableItem
 
 ## Version 1.0.1
 * Release with updated Authentication dependency

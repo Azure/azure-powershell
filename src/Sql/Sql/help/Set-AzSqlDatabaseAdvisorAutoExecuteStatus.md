@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 50E09DF7-F5B5-4668-9520-73D562E91800

@@ -25,6 +25,25 @@ The **Get-AzDisk** cmdlet gets the properties of a Managed disk.
 ### Example 1
 ```
 PS C:\> Get-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01'
+
+ResourceGroupName  : ResourceGroup01
+ManagedBy          :
+Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones              :
+TimeCreated        : 6/29/2018 4:26:27 PM
+OsType             : Windows
+CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB         : 127
+EncryptionSettings :
+ProvisioningState  : Succeeded
+DiskIOPSReadWrite  : 500
+DiskMBpsReadWrite  : 100
+Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compu
+                     te/disks/Disk01
+Name               : Disk01
+Type               : Microsoft.Compute/disks
+Location           : westus2
+Tags               : {}
 ```
 
 This command gets the properties of the disk named 'Disk01' in the resource group 'ResourceGroup01'.
@@ -32,6 +51,44 @@ This command gets the properties of the disk named 'Disk01' in the resource grou
 ### Example 2
 ```
 PS C:\> Get-AzDisk -ResourceGroupName 'ResourceGroup01'
+
+ResourceGroupName  : ResourceGroup01
+ManagedBy          :
+Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones              :
+TimeCreated        : 6/29/2018 4:26:27 PM
+OsType             : Windows
+CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB         : 127
+EncryptionSettings :
+ProvisioningState  : Succeeded
+DiskIOPSReadWrite  : 500
+DiskMBpsReadWrite  : 100
+Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compu
+                     te/disks/win1_OsDisk_1
+Name               : win1_OsDisk_1
+Type               : Microsoft.Compute/disks
+Location           : westus2
+Tags               : {}
+
+ResourceGroupName  : ResourceGroup01
+ManagedBy          :
+Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones              :
+TimeCreated        : 6/29/2018 4:27:27 PM
+OsType             : Windows
+CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB         : 127
+EncryptionSettings :
+ProvisioningState  : Succeeded
+DiskIOPSReadWrite  : 500
+DiskMBpsReadWrite  : 100
+Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compu
+                     te/disks/win1_OsDisk_2
+Name               : win1_OsDisk_2
+Type               : Microsoft.Compute/disks
+Location           : westus2
+Tags               : {}
 ```
 
 This command gets the properties of all disks in the resource group 'ResourceGroup01'.
@@ -39,9 +96,92 @@ This command gets the properties of all disks in the resource group 'ResourceGro
 ### Example 3
 ```
 PS C:\> Get-AzDisk
+
+ResourceGroupName  : ResourceGroup01
+ManagedBy          :
+Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones              :
+TimeCreated        : 6/29/2018 4:26:27 PM
+OsType             : Windows
+CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB         : 127
+EncryptionSettings :
+ProvisioningState  : Succeeded
+DiskIOPSReadWrite  : 500
+DiskMBpsReadWrite  : 100
+Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compu
+                     te/disks/win1_OsDisk_1
+Name               : win1_OsDisk_1
+Type               : Microsoft.Compute/disks
+Location           : westus2
+Tags               : {}
+
+ResourceGroupName  : ResourceGroup02
+ManagedBy          :
+Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones              :
+TimeCreated        : 6/29/2018 4:27:27 PM
+OsType             : Windows
+CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB         : 127
+EncryptionSettings :
+ProvisioningState  : Succeeded
+DiskIOPSReadWrite  : 500
+DiskMBpsReadWrite  : 100
+Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup02/providers/Microsoft.Compu
+                     te/disks/win1_OsDisk_2
+Name               : win1_OsDisk_2
+Type               : Microsoft.Compute/disks
+Location           : westus2
+Tags               : {}
 ```
 
 This command gets the properties of all disks under the subscription.
+
+### Example 4
+```
+PS C:\> Get-AzDisk -Name win_OsDisk*
+
+ResourceGroupName  : ResourceGroup01
+ManagedBy          :
+Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones              :
+TimeCreated        : 6/29/2018 4:26:27 PM
+OsType             : Windows
+CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB         : 127
+EncryptionSettings :
+ProvisioningState  : Succeeded
+DiskIOPSReadWrite  : 500
+DiskMBpsReadWrite  : 100
+Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compu
+                     te/disks/win1_OsDisk_1
+Name               : win1_OsDisk_1
+Type               : Microsoft.Compute/disks
+Location           : westus2
+Tags               : {}
+
+ResourceGroupName  : ResourceGroup02
+ManagedBy          :
+Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones              :
+TimeCreated        : 6/29/2018 4:27:27 PM
+OsType             : Windows
+CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB         : 127
+EncryptionSettings :
+ProvisioningState  : Succeeded
+DiskIOPSReadWrite  : 500
+DiskMBpsReadWrite  : 100
+Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup02/providers/Microsoft.Compu
+                     te/disks/win1_OsDisk_2
+Name               : win1_OsDisk_2
+Type               : Microsoft.Compute/disks
+Location           : westus2
+Tags               : {}
+```
+
+This command gets the properties of all disks under the subscription name starting with win1_OsDisk.
 
 ## PARAMETERS
 

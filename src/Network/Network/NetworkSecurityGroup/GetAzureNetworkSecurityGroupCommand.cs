@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var nsg = this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name, this.ExpandResource);
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<NetworkSecurityGroup> nsgPage;
-                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                if (ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     nsgPage = this.NetworkSecurityGroupClient.List(this.ResourceGroupName);
                 }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
                     psNsgs.Add(psNsg);
                 }
 
-                WriteObject(psNsgs, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psNsgs), true);
             }
         }
     }

@@ -23,6 +23,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -90,6 +91,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
+                if (!OriginalWorkloadRestore.IsPresent && !AlternateWorkloadRestore.IsPresent)
+                {
+                    throw new ArgumentException(string.Format(Resources.AzureWorkloadRestoreLocationException));
+                }
+
                 AzureWorkloadRecoveryConfig azureWorkloadRecoveryConfig = new AzureWorkloadRecoveryConfig();
                 azureWorkloadRecoveryConfig.SourceResourceId = Item != null ? Item.SourceResourceId : GetResourceId();
                 DateTime currentTime = DateTime.Now;
@@ -103,7 +109,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     azureWorkloadRecoveryConfig.RecoveryPoint = RecoveryPoint;
                     Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(RecoveryPoint.Id);
                     string containerUri = HelperUtils.GetContainerUri(keyValueDict, RecoveryPoint.Id);
-                    targetServer = containerUri.Split(new string[] { ";" }, StringSplitOptions.None)[3];
+                    try
+                    {
+                        targetServer = containerUri.Split(new string[] { ";" }, StringSplitOptions.None)[3];
+                    }
+                    catch
+                    {
+                        targetServer = containerUri.Split(new string[] { ";" }, StringSplitOptions.None)[1];
+                    }
                     string itemUri = HelperUtils.GetProtectedItemUri(keyValueDict, RecoveryPoint.Id);
                     parentName = itemUri.Split(new string[] { ";" }, StringSplitOptions.None)[1];
                     targetDb = itemUri.Split(new string[] { ";" }, StringSplitOptions.None)[2];
@@ -138,7 +151,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 else if (AlternateWorkloadRestore.IsPresent && Item == null)
                 {
                     if (string.Compare(((AzureWorkloadProtectableItem)TargetItem).ProtectableItemType,
-                        ProtectableItemType.SQLDataBase.ToString()) == 0)
+                        ProtectableItemType.SQLInstance.ToString()) != 0)
                     {
                         throw new ArgumentException(string.Format(Resources.AzureWorkloadRestoreProtectableItemException));
                     }
@@ -152,17 +165,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
                     List<SQLDataDirectoryMapping> targetPhysicalPath = new List<SQLDataDirectoryMapping>();
 
-                    string itemId = GetItemId(RecoveryPoint.Id);
-                    IList<SQLDataDirectory> dataDirectoryPaths = GetRpDetails(vaultName, resourceGroupName);
-                    foreach (var dataDirectoryPath in dataDirectoryPaths)
+                    //Get target workload item
+                    ODataQuery<BMSWorkloadItemQueryObject> queryParams = null;
+                    string backupManagementType = ServiceClientModel.BackupManagementType.AzureWorkload;
+                    queryParams = new ODataQuery<BMSWorkloadItemQueryObject>(
+                    q => q.WorkloadItemType == WorkloadItemType.SQLInstance &&
+                    q.BackupManagementType == backupManagementType);
+
+                    var itemResponses = ServiceClientAdapter.ListWorkloadItem(
+                        TargetItem.ContainerName,
+                        queryParams,
+                        vaultName: vaultName,
+                        resourceGroupName: resourceGroupName);
+
+                    foreach (var itemResponse in itemResponses)
                     {
-                        targetPhysicalPath.Add(new SQLDataDirectoryMapping()
+                        if (string.Compare(((AzureVmWorkloadSQLInstanceWorkloadItem)itemResponse.Properties).FriendlyName,
+                            ((AzureWorkloadProtectableItem)TargetItem).FriendlyName) == 0 &&
+                            string.Compare(((AzureVmWorkloadSQLInstanceWorkloadItem)itemResponse.Properties).ServerName,
+                            ((AzureWorkloadProtectableItem)TargetItem).ServerName) == 0)
                         {
-                            MappingType = dataDirectoryPath.Type,
-                            SourceLogicalName = dataDirectoryPath.LogicalName,
-                            SourcePath = dataDirectoryPath.Path,
-                            TargetPath = GetTargetPath(dataDirectoryPath.Path, dataDirectoryPath.LogicalName, offset)
-                        });
+                            string itemId = GetItemId(RecoveryPoint.Id);
+                            IList<SQLDataDirectory> dataDirectoryPaths = GetRpDetails(vaultName, resourceGroupName);
+                            foreach (var dataDirectoryPath in dataDirectoryPaths)
+                            {
+                                targetPhysicalPath.Add(new SQLDataDirectoryMapping()
+                                {
+                                    MappingType = dataDirectoryPath.Type,
+                                    SourceLogicalName = dataDirectoryPath.LogicalName,
+                                    SourcePath = dataDirectoryPath.Path,
+                                    TargetPath = GetTargetPath(dataDirectoryPath.Path, dataDirectoryPath.LogicalName, dataDirectoryPath.Type,
+                                    ((AzureVmWorkloadSQLInstanceWorkloadItem)itemResponse.Properties).DataDirectoryPaths
+                                    as List<SQLDataDirectory>, offset)
+                                });
+                            }
+                            break;
+                        }
                     }
                     azureWorkloadRecoveryConfig.targetPhysicalPath = targetPhysicalPath;
                     azureWorkloadRecoveryConfig.ContainerId = GetContainerId(TargetItem.Id);
@@ -184,16 +222,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
                     List<SQLDataDirectoryMapping> targetPhysicalPath = new List<SQLDataDirectoryMapping>();
 
-                    List<SQLDataDirectory> dataDirectory = GetDataDirectory(vaultName, resourceGroupName, Item.Id, PointInTime);
-                    foreach (var dataDirectoryPath in dataDirectory)
+                    //Get target workload item
+                    ODataQuery<BMSWorkloadItemQueryObject> queryParams = null;
+                    string backupManagementType = ServiceClientModel.BackupManagementType.AzureWorkload;
+                    queryParams = new ODataQuery<BMSWorkloadItemQueryObject>(
+                    q => q.WorkloadItemType == WorkloadItemType.SQLInstance &&
+                    q.BackupManagementType == backupManagementType);
+
+                    var itemResponses = ServiceClientAdapter.ListWorkloadItem(
+                        TargetItem.ContainerName,
+                        queryParams,
+                        vaultName: vaultName,
+                        resourceGroupName: resourceGroupName);
+
+                    foreach (var itemResponse in itemResponses)
                     {
-                        targetPhysicalPath.Add(new SQLDataDirectoryMapping()
+                        if (string.Compare(((AzureVmWorkloadSQLInstanceWorkloadItem)itemResponse.Properties).FriendlyName,
+                            ((AzureWorkloadProtectableItem)TargetItem).FriendlyName) == 0 &&
+                            string.Compare(((AzureVmWorkloadSQLInstanceWorkloadItem)itemResponse.Properties).ServerName,
+                            ((AzureWorkloadProtectableItem)TargetItem).ServerName) == 0)
                         {
-                            MappingType = dataDirectoryPath.Type,
-                            SourceLogicalName = dataDirectoryPath.LogicalName,
-                            SourcePath = dataDirectoryPath.Path,
-                            TargetPath = GetTargetPath(dataDirectoryPath.Path, dataDirectoryPath.LogicalName, offset)
-                        });
+                            List<SQLDataDirectory> dataDirectory = GetDataDirectory(vaultName, resourceGroupName, Item.Id, PointInTime);
+                            foreach (var dataDirectoryPath in dataDirectory)
+                            {
+                                targetPhysicalPath.Add(new SQLDataDirectoryMapping()
+                                {
+                                    MappingType = dataDirectoryPath.Type,
+                                    SourceLogicalName = dataDirectoryPath.LogicalName,
+                                    SourcePath = dataDirectoryPath.Path,
+                                    TargetPath = GetTargetPath(dataDirectoryPath.Path, dataDirectoryPath.LogicalName, dataDirectoryPath.Type,
+                                    ((AzureVmWorkloadSQLInstanceWorkloadItem)itemResponse.Properties).DataDirectoryPaths
+                                    as List<SQLDataDirectory>, offset)
+                                });
+                            }
+                            break;
+                        }
                     }
 
                     Models.AzureWorkloadRecoveryPoint azureWorkloadRecoveryPoint = new Models.AzureWorkloadRecoveryPoint()
@@ -211,22 +274,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             });
         }
 
-        public string GetTargetPath(string path, string name, int offset)
+        public string GetTargetPath(string path, string name, string type, List<SQLDataDirectory> DataDirectoryPaths, int offset)
         {
-            List<string> parts = new List<string>(path.Split(new string[] { "\\" }, StringSplitOptions.None));
-            int len = parts.Count();
-            parts[len - 1] = name + "_" + offset.ToString() + parts[len - 1].Substring(parts[len - 1].Length - 4);
-            return string.Join("\\", parts);
+            SQLDataDirectory sqlDataDirectory = DataDirectoryPaths.Find(
+                dataDirectoryPaths => string.Compare(dataDirectoryPaths.Type,
+                type, true) == 0);
+            List<string> pathParts = new List<string>(path.Split(new string[] { "\\" }, StringSplitOptions.None));
+            int len = pathParts.Count();
+            List<string> fileNameParts = new List<string>(pathParts[len - 1].Split(new string[] { "." }, StringSplitOptions.None));
+            string newFileName = name + "_" + offset.ToString() + "." + fileNameParts[1];
+            return sqlDataDirectory.Path + newFileName;
         }
 
         public string GetResourceId()
         {
-            ResourceIdentifier resourceIdentifier = new ResourceIdentifier();
-            resourceIdentifier.Subscription = ServiceClientAdapter.SubscriptionId;
-            resourceIdentifier.ResourceGroupName = RecoveryPoint.ContainerName.Split(new string[] { ";" }, StringSplitOptions.None)[1];
-            resourceIdentifier.ResourceType = "/VMAppContainer";
-            resourceIdentifier.ResourceName = RecoveryPoint.ContainerName.Split(new string[] { ";" }, StringSplitOptions.None)[2];
-            return resourceIdentifier.ToString();
+            try
+            {
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier();
+                resourceIdentifier.Subscription = ServiceClientAdapter.SubscriptionId;
+                resourceIdentifier.ResourceGroupName = RecoveryPoint.ContainerName.Split(new string[] { ";" }, StringSplitOptions.None)[1];
+                resourceIdentifier.ResourceType = "/VMAppContainer";
+                resourceIdentifier.ResourceName = RecoveryPoint.ContainerName.Split(new string[] { ";" }, StringSplitOptions.None)[2];
+                return resourceIdentifier.ToString();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public string GetItemId(string recoveryPointId)

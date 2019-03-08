@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: F23D9274-63B9-4654-897B-6E84757774D2
@@ -19,7 +19,7 @@ Remove-AzApiManagementApi -Context <PsApiManagementContext> -ApiId <String> [-Pa
 ```
 
 ## DESCRIPTION
-The **Remove-AzAzureRmApiManagementApi** cmdlet removes an existing API.
+The **Remove-AzApiManagementApi** cmdlet removes an existing API.
 
 ## EXAMPLES
 

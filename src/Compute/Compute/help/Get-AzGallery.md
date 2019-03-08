@@ -30,7 +30,7 @@ Get or list galleries.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzGallery -ResourceGroupName $rgname -GalleryName $galleryName
+PS C:\> Get-AzGallery -ResourceGroupName rg1 -GalleryName gallery1
 
 ResourceGroupName : rg1
 Description       : Gallery created by Powershell.
@@ -44,7 +44,116 @@ Location          : southcentralus
 Tags              : {}
 ```
 
-Get the gallery.
+Get the gallery "gallery1"
+
+### Example 2
+```powershell
+PS C:\> Get-AzGallery -ResourceGroupName rg1
+
+ResourceGroupName : rg1
+Description       : Gallery created by Powershell.
+Identifier        : 
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+ProvisioningState : Succeeded
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/galleries/gallery1
+Name              : gallery1
+Type              : Microsoft.Compute/galleries
+Location          : southcentralus
+Tags              : {}
+
+ResourceGroupName : rg1
+Description       : Gallery created by Powershell.
+Identifier        : 
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+ProvisioningState : Succeeded
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/galleries/gallery2
+Name              : gallery2
+Type              : Microsoft.Compute/galleries
+Location          : southcentralus
+Tags              : {}
+```
+
+Get all galleries in rg1.
+
+### Example 3
+```powershell
+PS C:\> Get-AzGallery
+
+ResourceGroupName : rg1
+Description       : Gallery created by Powershell.
+Identifier        : 
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+ProvisioningState : Succeeded
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/galleries/gallery1
+Name              : gallery1
+Type              : Microsoft.Compute/galleries
+Location          : southcentralus
+Tags              : {}
+
+ResourceGroupName : rg1
+Description       : Gallery created by Powershell.
+Identifier        : 
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+ProvisioningState : Succeeded
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/galleries/gallery2
+Name              : gallery2
+Type              : Microsoft.Compute/galleries
+Location          : southcentralus
+Tags              : {}
+
+ResourceGroupName : rg2
+Description       : Gallery created by Powershell.
+Identifier        : 
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+ProvisioningState : Succeeded
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg2/providers/Microsoft.Compute/galleries/gallery3
+Name              : gallery3
+Type              : Microsoft.Compute/galleries
+Location          : southcentralus
+Tags              : {}
+```
+
+Get all galleries in subscription.
+
+### Example 4
+```powershell
+PS C:\> Get-AzGallery -Name gallery*
+
+ResourceGroupName : rg1
+Description       : Gallery created by Powershell.
+Identifier        : 
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+ProvisioningState : Succeeded
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/galleries/gallery1
+Name              : gallery1
+Type              : Microsoft.Compute/galleries
+Location          : southcentralus
+Tags              : {}
+
+ResourceGroupName : rg1
+Description       : Gallery created by Powershell.
+Identifier        : 
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+ProvisioningState : Succeeded
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/galleries/gallery2
+Name              : gallery2
+Type              : Microsoft.Compute/galleries
+Location          : southcentralus
+Tags              : {}
+
+ResourceGroupName : rg2
+Description       : Gallery created by Powershell.
+Identifier        : 
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+ProvisioningState : Succeeded
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg2/providers/Microsoft.Compute/galleries/gallery3
+Name              : gallery3
+Type              : Microsoft.Compute/galleries
+Location          : southcentralus
+Tags              : {}
+```
+
+Get all galleries in subscription that start with "gallery".
 
 ## PARAMETERS
 

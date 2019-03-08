@@ -754,6 +754,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No revoked certificates found on VirtualNetworkGateway {0}.
+        /// </summary>
+        internal static string VirtualNetworkGatewayNoRevokedCertificate {
+            get {
+                return ResourceManager.GetString("VirtualNetworkGatewayNoRevokedCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No root certificates found on VirtualNetworkGateway {0}.
+        /// </summary>
+        internal static string VirtualNetworkGatewayNoRootCertificate {
+            get {
+                return ResourceManager.GetString("VirtualNetworkGatewayNoRootCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A remote virtual network reference is required to create a HubVirtualNetworkConnection..
         /// </summary>
         internal static string VirtualNetworkReferenceRequiredToCreateHubVnetConnection {

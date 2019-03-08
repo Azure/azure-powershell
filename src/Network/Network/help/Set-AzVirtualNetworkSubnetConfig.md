@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzVirtualNetworkSubnetConfig
 
 ## SYNOPSIS
-Configures the goal state for a subnet configuration in a virtual network.
+Updates a subnet configuration for a virtual network.
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Set-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwor
 ```
 
 ## DESCRIPTION
-The **Set-AzVirtualNetworkSubnetConfig** cmdlet configures the goal state for a subnet configuration in an Azure virtual network.
+The **Set-AzVirtualNetworkSubnetConfig** cmdlet updates a subnet configuration for a virtual network.
 
 ## EXAMPLES
 

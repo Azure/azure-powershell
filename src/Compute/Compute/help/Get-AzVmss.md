@@ -42,10 +42,111 @@ Specify the *InstanceView* parameter to get only the instance view of a virtual 
 ### Example 1: Get the properties of a VMSS
 ```
 PS C:\> Get-AzVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
+
+ResourceGroupName                           : Group001
+Sku                                         :
+  Name                                      : Standard_DS1_v2
+  Tier                                      : Standard
+  Capacity                                  : 2
+UpgradePolicy                               :
+  Mode                                      : Manual
+VirtualMachineProfile                       :
+  OsProfile                                 :
+    ComputerNamePrefix                      : test
+    AdminUsername                           : contoso
+    WindowsConfiguration                    :
+      ProvisionVMAgent                      : True
+      EnableAutomaticUpdates                : True
+  StorageProfile                            :
+    ImageReference                          :
+      Publisher                             : MicrosoftWindowsServer
+      Offer                                 : WindowsServer
+      Sku                                   : 2016-Datacenter
+      Version                               : latest
+    OsDisk                                  :
+      Caching                               : None
+      CreateOption                          : FromImage
+      ManagedDisk                           :
+        StorageAccountType                  : Premium_LRS
+  NetworkProfile                            :
+    NetworkInterfaceConfigurations[0]       :
+      Name                                  : Group001
+      Primary                               : True
+      EnableAcceleratedNetworking           : False
+      NetworkSecurityGroup                  :
+        Id                                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/Group001
+/providers/Microsoft.Network/networkSecurityGroups/Group001
+      DnsSettings                           :
+      IpConfigurations[0]                   :
+        Name                                : Group001
+        Subnet                              :
+          Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/group001
+/providers/Microsoft.Network/virtualNetworks/Group001/subnets/Group001
+        PrivateIPAddressVersion             : IPv4
+        LoadBalancerBackendAddressPools[0]  :
+          Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/group001
+/providers/Microsoft.Network/loadBalancers/Group001/backendAddressPools/Group001
+        LoadBalancerInboundNatPools[0]      :
+          Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/group001
+/providers/Microsoft.Network/loadBalancers/Group001/inboundNatPools/Group001
+        LoadBalancerInboundNatPools[1]      :
+          Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/group001
+/providers/Microsoft.Network/loadBalancers/Group001/inboundNatPools/Group001
+      EnableIPForwarding                    : False
+ProvisioningState                           : Succeeded
+Overprovision                               : True
+UniqueId                                    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SinglePlacementGroup                        : False
+Id                                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/Group001/
+providers/Microsoft.Compute/virtualMachineScaleSets/VMSS001
+Name                                        : VMSS001
+Type                                        : Microsoft.Compute/virtualMachineScaleSets
+Location                                    : eastus
+Tags                                        : {}
 ```
 
 This command gets the properties of the VMSS named VMSS001 that belongs to the resource group named Group001.
 Since the command does not specify the *InstanceView* switch parameter, the cmdlet gets the model view of the virtual machine scale set.
+
+### Example 2: Get all Vmss in a resource group
+```
+PS C:\> Get-AzVmss -ResourceGroupName "Group001"
+
+ResourceGroupName                               Name       Location             Sku Capacity ProvisioningState
+-----------------                               ----       --------             --- -------- -----------------
+Group001                                       VMSS001      eastus Standard_DS1_v2        2         Succeeded
+Group001                                       VMSS002      eastus     Standard_A1        2         Succeeded
+```
+
+Get all Vmss in resource group "Group001"
+
+### Example 3: Get all Vmss in a subscription
+```
+PS C:\> Get-AzVmss
+
+ResourceGroupName                               Name       Location             Sku Capacity ProvisioningState
+-----------------                               ----       --------             --- -------- -----------------
+Group001                                       VMSS001      eastus Standard_DS1_v2        2         Succeeded
+Group001                                       VMSS002      eastus     Standard_A1        2         Succeeded
+Group002                                       VMSS003      eastus     Standard_A1        1         Succeeded
+Group002                                       VMSS004      eastus Standard_DS1_v2        2         Succeeded
+```
+
+Get all Vmss in subscription.
+
+### Example 4: Get all Vmss using filtering
+```
+PS C:\> Get-AzVmss -Name VMSS00*
+
+ResourceGroupName                               Name       Location             Sku Capacity ProvisioningState
+-----------------                               ----       --------             --- -------- -----------------
+Group001                                       VMSS001      eastus Standard_DS1_v2        2         Succeeded
+Group001                                       VMSS002      eastus     Standard_A1        2         Succeeded
+Group002                                       VMSS003      eastus     Standard_A1        1         Succeeded
+Group002                                       VMSS004      eastus Standard_DS1_v2        2         Succeeded
+```
+
+Get all Vmss in subscription that start with "VMSS00".
 
 ## PARAMETERS
 

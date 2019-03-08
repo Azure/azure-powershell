@@ -49,6 +49,8 @@
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">$(LibrarySourceFolder)</NuGetPublishingSource>
     <Scope Condition="$(Scope) == ''" >All</Scope>
+    <TestsToRun Condition="$(TestsToRun) == ''" >All</TestsToRun>
+    <CoreTests Condition="'$(TestsToRun)' != 'All'">$(LibraryRoot)src/Compute/Compute.Test/Compute.Test.csproj;$(LibraryRoot)src/Network/Network.Test/Network.Test.csproj;$(LibraryRoot)src/Resources/Resources.Test/Resources.Test.csproj;$(LibraryRoot)src/Sql/Sql.Test/Sql.Test.csproj;$(LibraryRoot)src/Websites/Websites.Test/Websites.Test.csproj;</CoreTests>
     <NetCore Condition="'$(NetCore)' != 'false'">true</NetCore>
     <RunStaticAnalysis Condition="'$(RunStaticAnalysis)' != 'false'">true</RunStaticAnalysis>
     <Scope Condition="$(NetCore) == 'true'">Netcore</Scope>
@@ -148,7 +150,9 @@
     <Exec Command="dotnet new sln -n Azure.PowerShell -o $(RepoArtifacts) --force" />
     <ItemGroup>
       <CsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(LibraryRoot)src/**/*.Test.csproj;$(LibraryRoot)src/**/Authenticators.csproj" />
-      <CsprojFiles Include="$(LibraryRoot)src/**/*.Test.csproj" Condition="'$(CodeSign)' == 'false'" />
+      <CsprojFiles Include="$(LibraryRoot)src/**/*.Test.csproj" Condition="'$(CodeSign)' == 'false' and '$(TestsToRun)' == 'All'" />
+      <CsprojFiles Include="$(LibraryRoot)src/**/*.Test.csproj" Exclude="$(CoreTests)" Condition="'$(CodeSign)' == 'false' and '$(TestsToRun)' == 'NonCore'" />
+      <CsprojFiles Include="$(CoreTests)" Condition="'$(CodeSign)' == 'false' and '$(TestsToRun)' == 'Core'" />
       <CsprojFiles Include="$(LibraryRoot)src/**/Authenticators.csproj" Condition="'$([MSBuild]::IsOsPlatform(&quot;Windows&quot;))' == 'true'" />
     </ItemGroup>
     <!-- https://github.com/dotnet/cli/issues/6295#issuecomment-346973582 -->
