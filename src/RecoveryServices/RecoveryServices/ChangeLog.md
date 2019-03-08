@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.0
 * Added Sql server in Azure VM support
 * SDK Update
 * Removed VMappContainer check in Get-ProtectableItem
