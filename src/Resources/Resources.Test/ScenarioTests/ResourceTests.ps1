@@ -599,6 +599,83 @@ function Test-GetResourceByIdAndProperties
 
 <#
 .SYNOPSIS
+Tests listing child resources by resource id (e.g., /subscriptions/{{sub}}/resourceGroups/{{rg}}/Microsoft.Web/sites/{{site}}/slots)
+#>
+function Test-GetChildResourcesById
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $location = "West US 2"
+    $siteType = "Microsoft.Web/sites"
+    $slotType = "Microsoft.Web/sites/slots"
+
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $location
+        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile webapp-with-slots-azuredeploy.json -TemplateParameterFile webapp-with-slots-azuredeploy.parameters.json
+
+	    Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+        $sites = Get-AzResource -ResourceGroupName $rgname -ResourceType $siteType
+        $slots = Get-AzResource -ResourceGroupName $rgname -ResourceType $slotType
+
+        Assert-NotNull $sites
+        Assert-NotNull $slots
+        Assert-AreEqual $sites.Count 1
+        Assert-AreEqual $slots.Count 4
+
+        $resourceId = $sites.ResourceId + "/slots"
+        $slots = Get-AzResource -ResourceId $resourceId
+        Assert-NotNull $slots
+        Assert-AreEqual $slots.Count 4
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests updating a nested resource by piping the result from Get-AzResource into Set-AzResource
+#>
+function Test-SetNestedResourceByPiping
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $location = "West US 2"
+    $siteType = "Microsoft.Web/sites"
+    $configType = "Microsoft.Web/sites/config"
+    $apiVersion = "2018-02-01"
+
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $location
+        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile webapp-with-slots-azuredeploy.json -TemplateParameterFile webapp-with-slots-azuredeploy.parameters.json
+	    Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+        $sites = Get-AzResource -ResourceGroupName $rgname -ResourceType $siteType
+        Assert-NotNull $sites
+
+        $siteName = $sites.Name
+        $config = Get-AzResource -ResourceGroupName $rgname -ResourceType $configType -Name $siteName -ApiVersion $apiVersion
+        Assert-NotNull $config
+
+        $result = $config | Set-AzResource -ApiVersion $apiVersion -Force
+        Assert-NotNull $result
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests getting a resource by its components and its properties
 #>
 function Test-GetResourceByComponentsAndProperties
