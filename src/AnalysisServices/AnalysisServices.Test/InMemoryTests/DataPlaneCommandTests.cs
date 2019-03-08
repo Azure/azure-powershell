@@ -625,7 +625,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             // Act
             addCmdlet.InvokeBeginProcessing();
             addCmdlet.ExecuteCmdlet();
-            AsAzureClientSession.TokenCache.Deserialize(Encoding.ASCII.GetBytes(testToken));
+            AsAzureClientSession.TokenCache.DeserializeMsalV3(Encoding.ASCII.GetBytes(testToken));
             addCmdlet.InvokeEndProcessing();
         }
     }

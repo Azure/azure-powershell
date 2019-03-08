@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             _asAzureAuthenticationProvider.GetAadAuthenticatedToken(asAzureContext, password, password == null ? PromptBehavior.Always : PromptBehavior.Auto, AsAzureClientId, resourceUri, RedirectUri);
 #endif
 
-            Profile.Context.TokenCache = TokenCache.Serialize();
+            Profile.Context.TokenCache = TokenCache.SerializeMsalV3();
 
             if (!Profile.Environments.ContainsKey(asAzureContext.Environment.Name))
             {
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             _asAzureAuthenticationProvider.GetAadAuthenticatedToken(asAzureContext, null, PromptBehavior.RefreshSession, AsAzureClientId, resourceUri, RedirectUri);
 #endif
 
-            Profile.Context.TokenCache = TokenCache.Serialize();
+            Profile.Context.TokenCache = TokenCache.SerializeMsalV3();
 
             if (!Profile.Environments.ContainsKey(asAzureContext.Environment.Name))
             {
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         {
             Profile.Context = new AsAzureContext(azureAccount, asEnvironment)
             {
-                TokenCache = TokenCache.Serialize()
+                TokenCache = TokenCache.SerializeMsalV3()
             };
         }
 
