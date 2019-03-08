@@ -15,7 +15,7 @@ Enable HTTPS for a custom domain using Front Door managed certificate or using o
 ### ByFieldsParameterSet (Default)
 ```
 Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName <String> -FrontDoorName <String>
- -FrontendEndpointName <String> -CertificateSource <PSCertificateSource> [-Vault <String>]
+ -FrontendEndpointName <String> -CertificateSource <PSCertificateSource> [-VaultId <String>]
  [-SecretName <String>] [-SecretVersion <String>] [-CertificateType <PSCertificateType>]
  [-ProtocolType <PSProtocolType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -24,14 +24,14 @@ Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName <String> -FrontDoorName <
 ### ResourceIdParameterSet
 ```
 Enable-AzFrontDoorCustomDomainHttps -ResourceId <String> -CertificateSource <PSCertificateSource>
- [-Vault <String>] [-SecretName <String>] [-SecretVersion <String>] [-CertificateType <PSCertificateType>]
+ [-VaultId <String>] [-SecretName <String>] [-SecretVersion <String>] [-CertificateType <PSCertificateType>]
  [-ProtocolType <PSProtocolType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Enable-AzFrontDoorCustomDomainHttps -CertificateSource <PSCertificateSource> [-Vault <String>]
+Enable-AzFrontDoorCustomDomainHttps -CertificateSource <PSCertificateSource> [-VaultId <String>]
  [-SecretName <String>] [-SecretVersion <String>] [-CertificateType <PSCertificateType>]
  [-ProtocolType <PSProtocolType>] -InputObject <PSFrontendEndpoint> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -320,8 +320,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vault
-The Key Vault containing the SSL certificate
+### -VaultId
+The Key Vault id containing the SSL certificate
 
 ```yaml
 Type: System.String
