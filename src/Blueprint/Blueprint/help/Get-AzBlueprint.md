@@ -84,7 +84,7 @@ ResourceGroup        : {TestRG2}
 
 ### Example 2
 ```powershell
-PS> Get-AzBlueprint -ManagementGroupName "myManagementGroupId"
+PS> Get-AzBlueprint -ManagementGroupId "myManagementGroupId"
 ```
 
 Gets the blueprint definitions within the specified management group.
@@ -105,14 +105,14 @@ Get the blueprint definition with the given name within the specified subscripti
 
 ### Example 5
 ```powershell
-PS> Get-AzBlueprint -ManagementGroupName "myManagementGroupId" -Name "myBlueprintName" -Version "myBlueprintVersion"
+PS> Get-AzBlueprint -ManagementGroupId "myManagementGroupId" -Name "myBlueprintName" -Version "myBlueprintVersion"
 ```
 
 Get the blueprint definition with the given name and version within the specified management group.
 
 ### Example 6
 ```powershell
-PS> Get-AzBlueprint -ManagementGroupName "myManagementGroupId" -Name "myBlueprintName" -LatestPublished
+PS> Get-AzBlueprint -ManagementGroupId "myManagementGroupId" -Name "myBlueprintName" -LatestPublished
 ```
 
 Get the lastest published blueprint definition with the given name within the specified management group.

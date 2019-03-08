@@ -26,6 +26,7 @@ Assign a blueprint definition to a subscription.
 
 ### Example 1
 ```powershell
+PS C:\> $blueprintObject =  Get-AzBlueprint -SubscriptionId "00000000-1111-0000-1111-000000000000" -Name "myBlueprintName"
 PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "location" -ResourceGroupParameter $rg -Parameter $params
 ```
 
