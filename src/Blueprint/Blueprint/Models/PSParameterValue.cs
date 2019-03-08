@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Blueprint.Models
 {
-    class PSParameterValue : PSParameterValueBase
+    public class PSParameterValue : PSParameterValueBase
     {
         public object Value { get; set; }
     }
