@@ -142,15 +142,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 9469b9f5-6722-4481-a2b2-14ed560b706f.
-        /// </summary>
-        internal static string KailaniApplicationId {
-            get {
-                return ResourceManager.GetString("KailaniApplicationId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to We cannot find the Storage Sync agent installed in the system. The given registry AfsAgentInstallerPath cannot be found..
         /// </summary>
         internal static string MissingAfsAgentInstallerPathErrorMessage {

@@ -7,16 +7,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "721c5957-c921-42e3-9463-c5402530d31c"
+          "6feaf6fa-c0f0-4608-96fd-74c17c71ef6a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27207.03",
+          "FxVersion/4.6.27129.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.6.3.9600.",
-          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/1.0.0"
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/1.1.0"
         ]
       },
       "ResponseHeaders": {
@@ -39,19 +39,19 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "be49260c-589a-4dfb-a2dd-143b23115d75"
+          "8ddc4449-a5b4-4cc2-8271-7436d1b8f0b2"
         ],
         "x-ms-correlation-request-id": [
-          "be49260c-589a-4dfb-a2dd-143b23115d75"
+          "8ddc4449-a5b4-4cc2-8271-7436d1b8f0b2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190221T190455Z:be49260c-589a-4dfb-a2dd-143b23115d75"
+          "WESTUS2:20190222T181823Z:8ddc4449-a5b4-4cc2-8271-7436d1b8f0b2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 21 Feb 2019 19:04:54 GMT"
+          "Fri, 22 Feb 2019 18:18:23 GMT"
         ],
         "Content-Length": [
           "3883"
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication\",\r\n      \"name\": \"WhitelistedApplication\",\r\n      \"properties\": {\r\n        \"complianceStatus\": \"NonCompliant\",\r\n        \"assignmentHash\": \"69F892A374D1B02FD2F7C321E0B76DADE037703E7D3E2F8109B7496B31F53FFC.E381A1748D08855C4004123F85A5DAE5D26E33B38FFDAACE715AB39B88F8BF04\",\r\n        \"latestReportId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication/reports/7955db53-6cf0-40b8-8eb8-a7393077ac04\",\r\n        \"lastComplianceStatusChecked\": \"2019-02-21T15:59:11Z\",\r\n        \"context\": null,\r\n        \"guestConfiguration\": {\r\n          \"kind\": null,\r\n          \"name\": \"WhitelistedApplication\",\r\n          \"version\": \"1.*\",\r\n          \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/WhitelistedApplication/WhitelistedApplication_1.5.0.0.zip\",\r\n          \"contentHash\": \"69F892A374D1B02FD2F7C321E0B76DADE037703E7D3E2F8109B7496B31F53FFC\",\r\n          \"contentType\": null,\r\n          \"configurationParameter\": [\r\n            {\r\n              \"name\": \"[InstalledApplication]bwhitelistedapp;Name\",\r\n              \"value\": \"*Chrome*\"\r\n            }\r\n          ],\r\n          \"configurationSetting\": null\r\n        },\r\n        \"provisioningState\": null\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditSecureProtocol\",\r\n      \"name\": \"AuditSecureProtocol\",\r\n      \"properties\": {\r\n        \"complianceStatus\": \"Compliant\",\r\n        \"assignmentHash\": \"98ACBE11E578A78AC17C43A19045E3E80D08E764CC90C4B3BC1BFD48E8243140.E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855\",\r\n        \"latestReportId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditSecureProtocol/reports/edc75cbe-20aa-4466-8510-9dadfe438480\",\r\n        \"lastComplianceStatusChecked\": \"2019-02-21T15:59:10Z\",\r\n        \"context\": null,\r\n        \"guestConfiguration\": {\r\n          \"kind\": null,\r\n          \"name\": \"AuditSecureProtocol\",\r\n          \"version\": \"1.*\",\r\n          \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/AuditSecureProtocol/AuditSecureProtocol_1.1.0.0.zip\",\r\n          \"contentHash\": \"98ACBE11E578A78AC17C43A19045E3E80D08E764CC90C4B3BC1BFD48E8243140\",\r\n          \"contentType\": null,\r\n          \"configurationParameter\": [],\r\n          \"configurationSetting\": null\r\n        },\r\n        \"provisioningState\": null\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/NotInstalledApplication\",\r\n      \"name\": \"NotInstalledApplication\",\r\n      \"properties\": {\r\n        \"complianceStatus\": \"Compliant\",\r\n        \"assignmentHash\": \"520E428984E2C33C0BCC7BC1CF8982D6AF065B14BD8D36DA5082D7BE7FF4E578.2C5D17ECE6FA069B3EBC5A9C1790E443FB8CD58E0B2332E4F8BAE86C915DA89A\",\r\n        \"latestReportId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/NotInstalledApplication/reports/4f0d1bab-d212-48f8-8865-08fafb58edf4\",\r\n        \"lastComplianceStatusChecked\": \"2019-02-21T15:59:14Z\",\r\n        \"context\": null,\r\n        \"guestConfiguration\": {\r\n          \"kind\": null,\r\n          \"name\": \"NotInstalledApplication\",\r\n          \"version\": \"1.*\",\r\n          \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/NotInstalledApplication/NotInstalledApplication_1.0.0.0.zip\",\r\n          \"contentHash\": \"520E428984E2C33C0BCC7BC1CF8982D6AF065B14BD8D36DA5082D7BE7FF4E578\",\r\n          \"contentType\": null,\r\n          \"configurationParameter\": [\r\n            {\r\n              \"name\": \"[InstalledApplication]NotInstalledApplicationResource1;Name\",\r\n              \"value\": \"*Chrome*\"\r\n            }\r\n          ],\r\n          \"configurationSetting\": null\r\n        },\r\n        \"provisioningState\": null\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication\",\r\n      \"name\": \"WhitelistedApplication\",\r\n      \"properties\": {\r\n        \"complianceStatus\": \"NonCompliant\",\r\n        \"assignmentHash\": \"69F892A374D1B02FD2F7C321E0B76DADE037703E7D3E2F8109B7496B31F53FFC.E381A1748D08855C4004123F85A5DAE5D26E33B38FFDAACE715AB39B88F8BF04\",\r\n        \"latestReportId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication/reports/6379d52a-55e6-40c3-847e-df5ab9a52ed3\",\r\n        \"lastComplianceStatusChecked\": \"2019-02-22T16:44:29Z\",\r\n        \"context\": null,\r\n        \"guestConfiguration\": {\r\n          \"kind\": null,\r\n          \"name\": \"WhitelistedApplication\",\r\n          \"version\": \"1.*\",\r\n          \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/WhitelistedApplication/WhitelistedApplication_1.5.0.0.zip\",\r\n          \"contentHash\": \"69F892A374D1B02FD2F7C321E0B76DADE037703E7D3E2F8109B7496B31F53FFC\",\r\n          \"contentType\": null,\r\n          \"configurationParameter\": [\r\n            {\r\n              \"name\": \"[InstalledApplication]bwhitelistedapp;Name\",\r\n              \"value\": \"*Chrome*\"\r\n            }\r\n          ],\r\n          \"configurationSetting\": null\r\n        },\r\n        \"provisioningState\": null\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditSecureProtocol\",\r\n      \"name\": \"AuditSecureProtocol\",\r\n      \"properties\": {\r\n        \"complianceStatus\": \"Compliant\",\r\n        \"assignmentHash\": \"98ACBE11E578A78AC17C43A19045E3E80D08E764CC90C4B3BC1BFD48E8243140.E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855\",\r\n        \"latestReportId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditSecureProtocol/reports/ae8484cc-e56c-4357-a8a8-ee9e2ece5bd3\",\r\n        \"lastComplianceStatusChecked\": \"2019-02-22T16:45:06Z\",\r\n        \"context\": null,\r\n        \"guestConfiguration\": {\r\n          \"kind\": null,\r\n          \"name\": \"AuditSecureProtocol\",\r\n          \"version\": \"1.*\",\r\n          \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/AuditSecureProtocol/AuditSecureProtocol_1.1.0.0.zip\",\r\n          \"contentHash\": \"98ACBE11E578A78AC17C43A19045E3E80D08E764CC90C4B3BC1BFD48E8243140\",\r\n          \"contentType\": null,\r\n          \"configurationParameter\": [],\r\n          \"configurationSetting\": null\r\n        },\r\n        \"provisioningState\": null\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/NotInstalledApplication\",\r\n      \"name\": \"NotInstalledApplication\",\r\n      \"properties\": {\r\n        \"complianceStatus\": \"Compliant\",\r\n        \"assignmentHash\": \"520E428984E2C33C0BCC7BC1CF8982D6AF065B14BD8D36DA5082D7BE7FF4E578.2C5D17ECE6FA069B3EBC5A9C1790E443FB8CD58E0B2332E4F8BAE86C915DA89A\",\r\n        \"latestReportId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/NotInstalledApplication/reports/f042b547-c7cd-41e2-9915-35a28ba8e909\",\r\n        \"lastComplianceStatusChecked\": \"2019-02-22T16:45:09Z\",\r\n        \"context\": null,\r\n        \"guestConfiguration\": {\r\n          \"kind\": null,\r\n          \"name\": \"NotInstalledApplication\",\r\n          \"version\": \"1.*\",\r\n          \"contentUri\": \"https://oaasguestconfigwcuss1.blob.core.windows.net/builtinconfig/NotInstalledApplication/NotInstalledApplication_1.0.0.0.zip\",\r\n          \"contentHash\": \"520E428984E2C33C0BCC7BC1CF8982D6AF065B14BD8D36DA5082D7BE7FF4E578\",\r\n          \"contentType\": null,\r\n          \"configurationParameter\": [\r\n            {\r\n              \"name\": \"[InstalledApplication]NotInstalledApplicationResource1;Name\",\r\n              \"value\": \"*Chrome*\"\r\n            }\r\n          ],\r\n          \"configurationSetting\": null\r\n        },\r\n        \"provisioningState\": null\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -73,15 +73,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1c5a0ef1-8375-4cd0-b10d-88a68778415b"
+          "1b9fe9b4-c5a5-4020-a090-909c4ab51aa5"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27207.03",
+          "FxVersion/4.6.27129.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
           "Microsoft.Azure.Management.Internal.ResourceManager.Version2018.05.01.PolicyClient/1.1.16"
         ]
       },
@@ -96,16 +96,16 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11999"
+          "11998"
         ],
         "x-ms-request-id": [
-          "westus2:6cc07618-9ef3-40d4-ac0e-999848a404f3"
+          "westus2:f2a68cc0-da56-4086-be53-04969e90a959"
         ],
         "x-ms-correlation-request-id": [
-          "ee268420-ed4a-4689-bb39-02cd419e9535"
+          "5f513fee-2152-470e-9d23-a0e9cb927b00"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190221T190455Z:ee268420-ed4a-4689-bb39-02cd419e9535"
+          "WESTUS2:20190222T181823Z:5f513fee-2152-470e-9d23-a0e9cb927b00"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -114,7 +114,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 21 Feb 2019 19:04:54 GMT"
+          "Fri, 22 Feb 2019 18:18:23 GMT"
         ],
         "Content-Length": [
           "1350"
@@ -136,15 +136,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4700f6de-9081-401c-9b39-7ca4669a1b32"
+          "479622b8-623c-4ce1-9619-0c69e58ad197"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27207.03",
+          "FxVersion/4.6.27129.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
           "Microsoft.Azure.Management.Internal.ResourceManager.Version2018.05.01.PolicyClient/1.1.16"
         ]
       },
@@ -159,16 +159,16 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11998"
+          "11997"
         ],
         "x-ms-request-id": [
-          "westus2:e7738267-1c78-4341-9ac6-b6b9545630e5"
+          "westus2:1c9b4b9e-548b-4108-b773-67d0f215da15"
         ],
         "x-ms-correlation-request-id": [
-          "f0bf6fdd-191e-4eaa-ab01-c30e9653b7a0"
+          "c30b8919-7f40-4bca-a26d-6f9922bcc4c2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190221T190455Z:f0bf6fdd-191e-4eaa-ab01-c30e9653b7a0"
+          "WESTUS2:20190222T181824Z:c30b8919-7f40-4bca-a26d-6f9922bcc4c2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -177,7 +177,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 21 Feb 2019 19:04:55 GMT"
+          "Fri, 22 Feb 2019 18:18:23 GMT"
         ],
         "Content-Length": [
           "4806"
@@ -199,15 +199,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9aee770f-7162-4ecf-8c5e-6f70fd633c26"
+          "12e7f8a7-36b2-436b-9486-acd4ac8d6f4e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27207.03",
+          "FxVersion/4.6.27129.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
           "Microsoft.Azure.Management.Internal.ResourceManager.Version2018.05.01.PolicyClient/1.1.16"
         ]
       },
@@ -222,16 +222,16 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11997"
+          "11996"
         ],
         "x-ms-request-id": [
-          "westus2:e96432f7-5b8a-4d3a-a59b-5719f975e9cc"
+          "westus2:ca7a8745-c6b7-4db5-b7dd-0a940c85433e"
         ],
         "x-ms-correlation-request-id": [
-          "fbd451e4-7ef5-4f22-b2de-fe9e680a2f21"
+          "c3226ec4-a035-42bd-a20a-d3408c1bdcfe"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190221T190455Z:fbd451e4-7ef5-4f22-b2de-fe9e680a2f21"
+          "WESTUS2:20190222T181824Z:c3226ec4-a035-42bd-a20a-d3408c1bdcfe"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -240,7 +240,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 21 Feb 2019 19:04:55 GMT"
+          "Fri, 22 Feb 2019 18:18:23 GMT"
         ],
         "Content-Length": [
           "981"
@@ -256,22 +256,88 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication/reports/7955db53-6cf0-40b8-8eb8-a7393077ac04?api-version=2018-11-20",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Jlc291cmNlR3JvdXBzL3ZpdmdhL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvVml2MTgwOVNEREMvcHJvdmlkZXJzL01pY3Jvc29mdC5HdWVzdENvbmZpZ3VyYXRpb24vZ3Vlc3RDb25maWd1cmF0aW9uQXNzaWdubWVudHMvV2hpdGVsaXN0ZWRBcHBsaWNhdGlvbi9yZXBvcnRzLzc5NTVkYjUzLTZjZjAtNDBiOC04ZWI4LWE3MzkzMDc3YWMwND9hcGktdmVyc2lvbj0yMDE4LTExLTIw",
+      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication/reports/6379d52a-55e6-40c3-847e-df5ab9a52ed3?api-version=2018-11-20",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Jlc291cmNlR3JvdXBzL3ZpdmdhL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvVml2MTgwOVNEREMvcHJvdmlkZXJzL01pY3Jvc29mdC5HdWVzdENvbmZpZ3VyYXRpb24vZ3Vlc3RDb25maWd1cmF0aW9uQXNzaWdubWVudHMvV2hpdGVsaXN0ZWRBcHBsaWNhdGlvbi9yZXBvcnRzLzYzNzlkNTJhLTU1ZTYtNDBjMy04NDdlLWRmNWFiOWE1MmVkMz9hcGktdmVyc2lvbj0yMDE4LTExLTIw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "13894639-2cf6-4a35-92f4-9b56e9505087"
+          "b4515e44-ba83-4cd2-8f25-eceec148e889"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27207.03",
+          "FxVersion/4.6.27129.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.6.3.9600.",
-          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/1.0.0"
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/1.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "5968cd6c-1417-42a1-a3f9-4c5e40624a2b"
+        ],
+        "x-ms-correlation-request-id": [
+          "5968cd6c-1417-42a1-a3f9-4c5e40624a2b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190222T181824Z:5968cd6c-1417-42a1-a3f9-4c5e40624a2b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 22 Feb 2019 18:18:23 GMT"
+        ],
+        "Content-Length": [
+          "1667"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication/reports/6379d52a-55e6-40c3-847e-df5ab9a52ed3\",\r\n  \"name\": \"6379d52a-55e6-40c3-847e-df5ab9a52ed3\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"NonCompliant\",\r\n    \"assignment\": {\r\n      \"name\": \"WhitelistedApplication\",\r\n      \"configuration\": {\r\n        \"name\": \"WhitelistedApplication\",\r\n        \"version\": \"1.5.0.0\"\r\n      }\r\n    },\r\n    \"reportId\": \"6379d52a-55e6-40c3-847e-df5ab9a52ed3\",\r\n    \"vm\": {\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC\",\r\n      \"uuid\": \"5f1486e6-45c1-4ff1-b892-5b6989e78b68\"\r\n    },\r\n    \"details\": {\r\n      \"complianceStatus\": \"NonCompliant\",\r\n      \"startTime\": \"2019-02-22T16:44:27Z\",\r\n      \"endTime\": \"2019-02-22T16:44:29Z\",\r\n      \"jobId\": \"6379d52a-55e6-40c3-847e-df5ab9a52ed3\",\r\n      \"resources\": [\r\n        {\r\n          \"complianceStatus\": \"NonCompliant\",\r\n          \"reasons\": [\r\n            {\r\n              \"phrase\": \"The following applications are not installed: '*Chrome*'.\",\r\n              \"code\": \"UserApplication:InstalledApplication:ApplicationNotInstalled\"\r\n            }\r\n          ],\r\n          \"properties\": {\r\n            \"ApplicationInfo\": [\r\n              {\r\n                \"Ensure\": \"Absent\",\r\n                \"Name\": \"*Chrome*\"\r\n              }\r\n            ],\r\n            \"ConfigurationName\": \"WhitelistedApplication\",\r\n            \"DependsOn\": null,\r\n            \"Ensure\": \"Absent\",\r\n            \"ModuleName\": \"UserApplication\",\r\n            \"ModuleVersion\": \"1.0.0.3\",\r\n            \"Name\": \"*Chrome*\",\r\n            \"PsDscRunAsCredential\": null,\r\n            \"Reasons\": [\r\n              {\r\n                \"Code\": \"UserApplication:InstalledApplication:ApplicationNotInstalled\",\r\n                \"Phrase\": \"The following applications are not installed: '*Chrome*'.\"\r\n              }\r\n            ],\r\n            \"ResourceId\": \"[InstalledApplication]bwhitelistedapp\",\r\n            \"SourceInfo\": null\r\n          }\r\n        }\r\n      ],\r\n      \"operationType\": \"Consistency\"\r\n    },\r\n    \"startTime\": \"2019-02-22T16:44:27Z\",\r\n    \"endTime\": \"2019-02-22T16:44:29Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication/reports/6379d52a-55e6-40c3-847e-df5ab9a52ed3?api-version=2018-11-20",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Jlc291cmNlR3JvdXBzL3ZpdmdhL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvVml2MTgwOVNEREMvcHJvdmlkZXJzL01pY3Jvc29mdC5HdWVzdENvbmZpZ3VyYXRpb24vZ3Vlc3RDb25maWd1cmF0aW9uQXNzaWdubWVudHMvV2hpdGVsaXN0ZWRBcHBsaWNhdGlvbi9yZXBvcnRzLzYzNzlkNTJhLTU1ZTYtNDBjMy04NDdlLWRmNWFiOWE1MmVkMz9hcGktdmVyc2lvbj0yMDE4LTExLTIw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "89b708c7-450d-4275-a9ee-1097b2f2a521"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/1.1.0"
         ]
       },
       "ResponseHeaders": {
@@ -294,19 +360,19 @@
           "11997"
         ],
         "x-ms-request-id": [
-          "528c2164-ce4c-42d0-bb43-33b11ef322d8"
+          "1a6ae246-32f4-4724-97ac-6c2bba7fab0f"
         ],
         "x-ms-correlation-request-id": [
-          "528c2164-ce4c-42d0-bb43-33b11ef322d8"
+          "1a6ae246-32f4-4724-97ac-6c2bba7fab0f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190221T190455Z:528c2164-ce4c-42d0-bb43-33b11ef322d8"
+          "WESTUS2:20190222T181824Z:1a6ae246-32f4-4724-97ac-6c2bba7fab0f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 21 Feb 2019 19:04:55 GMT"
+          "Fri, 22 Feb 2019 18:18:24 GMT"
         ],
         "Content-Length": [
           "1667"
@@ -318,73 +384,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication/reports/7955db53-6cf0-40b8-8eb8-a7393077ac04\",\r\n  \"name\": \"7955db53-6cf0-40b8-8eb8-a7393077ac04\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"NonCompliant\",\r\n    \"assignment\": {\r\n      \"name\": \"WhitelistedApplication\",\r\n      \"configuration\": {\r\n        \"name\": \"WhitelistedApplication\",\r\n        \"version\": \"1.5.0.0\"\r\n      }\r\n    },\r\n    \"reportId\": \"7955db53-6cf0-40b8-8eb8-a7393077ac04\",\r\n    \"vm\": {\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC\",\r\n      \"uuid\": \"5f1486e6-45c1-4ff1-b892-5b6989e78b68\"\r\n    },\r\n    \"details\": {\r\n      \"complianceStatus\": \"NonCompliant\",\r\n      \"startTime\": \"2019-02-21T15:58:33Z\",\r\n      \"endTime\": \"2019-02-21T15:59:11Z\",\r\n      \"jobId\": \"7955db53-6cf0-40b8-8eb8-a7393077ac04\",\r\n      \"resources\": [\r\n        {\r\n          \"complianceStatus\": \"NonCompliant\",\r\n          \"reasons\": [\r\n            {\r\n              \"phrase\": \"The following applications are not installed: '*Chrome*'.\",\r\n              \"code\": \"UserApplication:InstalledApplication:ApplicationNotInstalled\"\r\n            }\r\n          ],\r\n          \"properties\": {\r\n            \"ApplicationInfo\": [\r\n              {\r\n                \"Ensure\": \"Absent\",\r\n                \"Name\": \"*Chrome*\"\r\n              }\r\n            ],\r\n            \"ConfigurationName\": \"WhitelistedApplication\",\r\n            \"DependsOn\": null,\r\n            \"Ensure\": \"Absent\",\r\n            \"ModuleName\": \"UserApplication\",\r\n            \"ModuleVersion\": \"1.0.0.3\",\r\n            \"Name\": \"*Chrome*\",\r\n            \"PsDscRunAsCredential\": null,\r\n            \"Reasons\": [\r\n              {\r\n                \"Code\": \"UserApplication:InstalledApplication:ApplicationNotInstalled\",\r\n                \"Phrase\": \"The following applications are not installed: '*Chrome*'.\"\r\n              }\r\n            ],\r\n            \"ResourceId\": \"[InstalledApplication]bwhitelistedapp\",\r\n            \"SourceInfo\": null\r\n          }\r\n        }\r\n      ],\r\n      \"operationType\": \"Consistency\"\r\n    },\r\n    \"startTime\": \"2019-02-21T15:58:33Z\",\r\n    \"endTime\": \"2019-02-21T15:59:11Z\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication/reports/7955db53-6cf0-40b8-8eb8-a7393077ac04?api-version=2018-11-20",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Jlc291cmNlR3JvdXBzL3ZpdmdhL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvVml2MTgwOVNEREMvcHJvdmlkZXJzL01pY3Jvc29mdC5HdWVzdENvbmZpZ3VyYXRpb24vZ3Vlc3RDb25maWd1cmF0aW9uQXNzaWdubWVudHMvV2hpdGVsaXN0ZWRBcHBsaWNhdGlvbi9yZXBvcnRzLzc5NTVkYjUzLTZjZjAtNDBiOC04ZWI4LWE3MzkzMDc3YWMwND9hcGktdmVyc2lvbj0yMDE4LTExLTIw",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "86bbca63-f66d-4566-b9aa-400ba6b150a1"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.6.3.9600.",
-          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
-        ],
-        "x-ms-request-id": [
-          "bc7e7f43-68b7-433e-96dd-f493b0608426"
-        ],
-        "x-ms-correlation-request-id": [
-          "bc7e7f43-68b7-433e-96dd-f493b0608426"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20190221T190456Z:bc7e7f43-68b7-433e-96dd-f493b0608426"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 21 Feb 2019 19:04:55 GMT"
-        ],
-        "Content-Length": [
-          "1667"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication/reports/7955db53-6cf0-40b8-8eb8-a7393077ac04\",\r\n  \"name\": \"7955db53-6cf0-40b8-8eb8-a7393077ac04\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"NonCompliant\",\r\n    \"assignment\": {\r\n      \"name\": \"WhitelistedApplication\",\r\n      \"configuration\": {\r\n        \"name\": \"WhitelistedApplication\",\r\n        \"version\": \"1.5.0.0\"\r\n      }\r\n    },\r\n    \"reportId\": \"7955db53-6cf0-40b8-8eb8-a7393077ac04\",\r\n    \"vm\": {\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC\",\r\n      \"uuid\": \"5f1486e6-45c1-4ff1-b892-5b6989e78b68\"\r\n    },\r\n    \"details\": {\r\n      \"complianceStatus\": \"NonCompliant\",\r\n      \"startTime\": \"2019-02-21T15:58:33Z\",\r\n      \"endTime\": \"2019-02-21T15:59:11Z\",\r\n      \"jobId\": \"7955db53-6cf0-40b8-8eb8-a7393077ac04\",\r\n      \"resources\": [\r\n        {\r\n          \"complianceStatus\": \"NonCompliant\",\r\n          \"reasons\": [\r\n            {\r\n              \"phrase\": \"The following applications are not installed: '*Chrome*'.\",\r\n              \"code\": \"UserApplication:InstalledApplication:ApplicationNotInstalled\"\r\n            }\r\n          ],\r\n          \"properties\": {\r\n            \"ApplicationInfo\": [\r\n              {\r\n                \"Ensure\": \"Absent\",\r\n                \"Name\": \"*Chrome*\"\r\n              }\r\n            ],\r\n            \"ConfigurationName\": \"WhitelistedApplication\",\r\n            \"DependsOn\": null,\r\n            \"Ensure\": \"Absent\",\r\n            \"ModuleName\": \"UserApplication\",\r\n            \"ModuleVersion\": \"1.0.0.3\",\r\n            \"Name\": \"*Chrome*\",\r\n            \"PsDscRunAsCredential\": null,\r\n            \"Reasons\": [\r\n              {\r\n                \"Code\": \"UserApplication:InstalledApplication:ApplicationNotInstalled\",\r\n                \"Phrase\": \"The following applications are not installed: '*Chrome*'.\"\r\n              }\r\n            ],\r\n            \"ResourceId\": \"[InstalledApplication]bwhitelistedapp\",\r\n            \"SourceInfo\": null\r\n          }\r\n        }\r\n      ],\r\n      \"operationType\": \"Consistency\"\r\n    },\r\n    \"startTime\": \"2019-02-21T15:58:33Z\",\r\n    \"endTime\": \"2019-02-21T15:59:11Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/WhitelistedApplication/reports/6379d52a-55e6-40c3-847e-df5ab9a52ed3\",\r\n  \"name\": \"6379d52a-55e6-40c3-847e-df5ab9a52ed3\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"NonCompliant\",\r\n    \"assignment\": {\r\n      \"name\": \"WhitelistedApplication\",\r\n      \"configuration\": {\r\n        \"name\": \"WhitelistedApplication\",\r\n        \"version\": \"1.5.0.0\"\r\n      }\r\n    },\r\n    \"reportId\": \"6379d52a-55e6-40c3-847e-df5ab9a52ed3\",\r\n    \"vm\": {\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/vivga/providers/Microsoft.Compute/virtualMachines/Viv1809SDDC\",\r\n      \"uuid\": \"5f1486e6-45c1-4ff1-b892-5b6989e78b68\"\r\n    },\r\n    \"details\": {\r\n      \"complianceStatus\": \"NonCompliant\",\r\n      \"startTime\": \"2019-02-22T16:44:27Z\",\r\n      \"endTime\": \"2019-02-22T16:44:29Z\",\r\n      \"jobId\": \"6379d52a-55e6-40c3-847e-df5ab9a52ed3\",\r\n      \"resources\": [\r\n        {\r\n          \"complianceStatus\": \"NonCompliant\",\r\n          \"reasons\": [\r\n            {\r\n              \"phrase\": \"The following applications are not installed: '*Chrome*'.\",\r\n              \"code\": \"UserApplication:InstalledApplication:ApplicationNotInstalled\"\r\n            }\r\n          ],\r\n          \"properties\": {\r\n            \"ApplicationInfo\": [\r\n              {\r\n                \"Ensure\": \"Absent\",\r\n                \"Name\": \"*Chrome*\"\r\n              }\r\n            ],\r\n            \"ConfigurationName\": \"WhitelistedApplication\",\r\n            \"DependsOn\": null,\r\n            \"Ensure\": \"Absent\",\r\n            \"ModuleName\": \"UserApplication\",\r\n            \"ModuleVersion\": \"1.0.0.3\",\r\n            \"Name\": \"*Chrome*\",\r\n            \"PsDscRunAsCredential\": null,\r\n            \"Reasons\": [\r\n              {\r\n                \"Code\": \"UserApplication:InstalledApplication:ApplicationNotInstalled\",\r\n                \"Phrase\": \"The following applications are not installed: '*Chrome*'.\"\r\n              }\r\n            ],\r\n            \"ResourceId\": \"[InstalledApplication]bwhitelistedapp\",\r\n            \"SourceInfo\": null\r\n          }\r\n        }\r\n      ],\r\n      \"operationType\": \"Consistency\"\r\n    },\r\n    \"startTime\": \"2019-02-22T16:44:27Z\",\r\n    \"endTime\": \"2019-02-22T16:44:29Z\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],

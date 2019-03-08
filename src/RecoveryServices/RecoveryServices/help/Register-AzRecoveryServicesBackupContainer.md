@@ -8,7 +8,7 @@ schema: 2.0.0
 # Register-AzRecoveryServicesBackupContainer
 
 ## SYNOPSIS
-Registers a protectable container.
+This command allows Azure Backup to convert the ‘Resource’ to a ‘Backup Container’ which is then registered to the given Recovery services vault. The Azure Backup service can then discover workloads of the given workload type within this container to be protected later.
 
 ## SYNTAX
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Azure VM Id
+ID of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.
 
 ```yaml
 Type: System.String
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
-Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles).
+Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles, MSSQL).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType

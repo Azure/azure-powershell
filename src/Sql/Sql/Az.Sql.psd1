@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.3.0'
+ModuleVersion = '1.4.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Sql.dll', 
@@ -200,7 +200,10 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Enable-AzSqlInstanceAdvancedDataSecurity', 
                'Disable-AzSqlInstanceAdvancedDataSecurity', 
                'Get-AzSqlInstanceAdvancedDataSecurityPolicy',
-               'Get-AzSqlInstanceDatabaseGeoBackup'
+               'Get-AzSqlInstanceDatabaseGeoBackup',
+               'Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy', 
+               'Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy', 
+               'Get-AzSqlDeletedInstanceDatabaseBackup'
 
 # Variables to export from this module
 # VariablesToExport = @()
