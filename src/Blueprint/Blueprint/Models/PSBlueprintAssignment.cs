@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common.Properties;
+using Microsoft.Azure.Commands.Blueprint.Common;
 using Microsoft.Azure.Management.Blueprint.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Resources = Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Blueprint.Models
 {
@@ -105,7 +105,14 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
 
             foreach (var item in assignment.Parameters)
             {
-                psAssignment.Parameters.Add(item.Key, new PSParameterValueBase {Description = item.Value.Description});
+                var paramObj = item.Value as ParameterValue;
+
+                if (paramObj == null || !paramObj.GetType().Equals(typeof(ParameterValue)))
+                {
+                    throw new NotSupportedException(string.Format(Resources.SecureStringsNotSupported, psAssignment.Name));
+                }
+
+                psAssignment.Parameters.Add(item.Key, new PSParameterValue { Description = paramObj.Description, Value = paramObj.Value});
             }
 
             foreach (var item in assignment.ResourceGroups)

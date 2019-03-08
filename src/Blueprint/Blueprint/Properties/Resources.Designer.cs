@@ -106,6 +106,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Secure strings are not supported at this time. {0}&apos;.
+        /// </summary>
+        internal static string SecureStringsNotSupported {
+            get {
+                return ResourceManager.GetString("SecureStringsNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update blueprint assignment &apos;{0}&apos;.
         /// </summary>
         internal static string UpdateAssignmentShouldProcessString {

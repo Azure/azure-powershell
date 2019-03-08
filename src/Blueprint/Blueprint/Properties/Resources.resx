@@ -132,6 +132,9 @@
   <data name="ResourceProviderRegistrationFailed" xml:space="preserve">
     <value>Could not register the resource provider '{0}'</value>
   </data>
+  <data name="SecureStringsNotSupported" xml:space="preserve">
+    <value>Secure strings are not supported at this time. {0}'</value>
+  </data>
   <data name="UpdateAssignmentShouldProcessString" xml:space="preserve">
     <value>Update blueprint assignment '{0}'</value>
   </data>
