@@ -81,7 +81,7 @@
 
     { "regex": "EventHub", "alias": "Event Hub" },
 
-    { "regex": "HDInsight", "alias": "HD Insights" },
+    { "regex": "HDInsight", "alias": "HDInsight" },
 
     { "regex": "LogicApp", "alias": "Logic Apps" },
 
