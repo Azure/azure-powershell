@@ -110,13 +110,10 @@ namespace Microsoft.Azure.Commands.KeyVault
                                                     ActiveDirectoryClient);
                         WriteObject(FilterByTag(vault, Tag));
                     }
-
                     else
                     {
                         WriteObject(TopLevelWildcardFilter(ResourceGroupName, VaultName, ListVaults(ResourceGroupName, Tag)), true);
-                        break;
                     }
-                    
                     
                     break;
 
