@@ -143,6 +143,9 @@ Gets all available ssl options for ssl policy for Application Gateway.
 ### [Get-AzApplicationGatewayAvailableWafRuleSets](Get-AzApplicationGatewayAvailableWafRuleSets.md)
 Gets all available web application firewall rule sets.
 
+### [Get-AzApplicationGatewayAvailableServerVariableAndHeader](Get-AzApplicationGatewayAvailableServerVariableAndHeader.md)
+Gets all available server variables, request and response headers.
+
 ### [Get-AzApplicationGatewayBackendAddressPool](Get-AzApplicationGatewayBackendAddressPool.md)
 Gets a back-end address pool for an application gateway.
 
@@ -1248,3 +1251,4 @@ Updates a scalable VPN gateway.
 
 ### [Update-AzVpnSite](Update-AzVpnSite.md)
 Updates a VPN site.
+
