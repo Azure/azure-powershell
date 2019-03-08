@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FirewallConfig": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
               "GatewayInfo": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway",
@@ -257,7 +257,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnablePowerBIService": "System.Boolean",
               "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -338,7 +338,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -421,7 +421,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -498,7 +498,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FirewallRuleName": "System.String",
               "RangeStart": "System.String",
@@ -782,7 +782,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FirewallConfig": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
               "GatewayInfo": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway",
@@ -1014,7 +1014,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnablePowerBIService": "System.Boolean",
               "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -1352,7 +1352,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
                   "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EnablePowerBIService": "System.Boolean",
                     "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -1497,7 +1497,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FirewallConfig": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
               "GatewayInfo": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway",
@@ -1782,7 +1782,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FirewallConfig": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
               "GatewayInfo": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway",
@@ -2067,7 +2067,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FirewallConfig": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
               "GatewayInfo": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway",
@@ -2317,7 +2317,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnablePowerBIService": "System.Boolean",
               "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -2649,7 +2649,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
                   "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EnablePowerBIService": "System.Boolean",
                     "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -3004,7 +3004,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
                   "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EnablePowerBIService": "System.Boolean",
                     "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -3335,7 +3335,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
                   "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EnablePowerBIService": "System.Boolean",
                     "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -3666,7 +3666,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
                   "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EnablePowerBIService": "System.Boolean",
                     "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -3787,7 +3787,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FirewallConfig": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
               "GatewayInfo": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway",
@@ -4398,7 +4398,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EnablePowerBIService": "System.Boolean",
         "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -4452,7 +4452,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4464,7 +4464,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "FirewallRuleName": "System.String",
         "RangeStart": "System.String",
@@ -4533,7 +4533,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "GatewayResourceId": "System.String",
         "GatewayObjectId": "System.String",
@@ -4579,7 +4579,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Capacity": "System.Int32",
         "Tier": "System.String",

@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -249,7 +249,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CurrentValue": "System.Int32",
               "Limit": "System.Int32",
@@ -341,7 +341,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -532,7 +532,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
                     "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -693,7 +693,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSsoUri",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSsoUri, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSsoUri, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SsoUriValue": "System.String"
             },
@@ -782,7 +782,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -973,7 +973,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
                     "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -1134,7 +1134,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSOptimizationType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSOptimizationType, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSOptimizationType, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1226,7 +1226,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -1417,7 +1417,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
                     "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -1578,7 +1578,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -1675,7 +1675,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1901,7 +1901,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2164,7 +2164,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -2224,7 +2224,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2242,7 +2242,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2347,7 +2347,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2371,7 +2371,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2439,7 +2439,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
                     "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -2505,7 +2505,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2529,7 +2529,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2597,7 +2597,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2621,7 +2621,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2696,7 +2696,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -2757,7 +2757,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -2856,7 +2856,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
                     "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -2973,7 +2973,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -3108,7 +3108,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -3428,7 +3428,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -3582,7 +3582,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -3645,7 +3645,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -3746,7 +3746,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState",
                     "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -3865,7 +3865,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSValidateProbeOutput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSValidateProbeOutput, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSValidateProbeOutput, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsValid": "System.Nullable`1[System.Boolean]",
               "ErrorCode": "System.String",
@@ -4052,7 +4052,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -4180,7 +4180,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -4463,7 +4463,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
                     "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -4604,7 +4604,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSCheckNameAvailabilityOutput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSCheckNameAvailabilityOutput, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSCheckNameAvailabilityOutput, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NameAvailable": "System.Boolean",
               "Reason": "System.String",
@@ -4791,7 +4791,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CurrentValue": "System.Int32",
               "Limit": "System.Int32",
@@ -4901,7 +4901,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -5197,7 +5197,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -5351,7 +5351,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -5479,7 +5479,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -5671,7 +5671,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -5803,7 +5803,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter",
             "GenericTypeArguments": [],
@@ -5821,7 +5821,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Rules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]",
               "Description": "System.String"
@@ -6105,7 +6105,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -6279,7 +6279,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter",
                   "GenericTypeArguments": [],
@@ -6303,7 +6303,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Rules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]",
                     "Description": "System.String"
@@ -6676,7 +6676,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -6850,7 +6850,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter",
                   "GenericTypeArguments": [],
@@ -6874,7 +6874,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Rules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]",
                     "Description": "System.String"
@@ -7001,7 +7001,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
                     "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -7241,7 +7241,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -7415,7 +7415,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter",
                   "GenericTypeArguments": [],
@@ -7439,7 +7439,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Rules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]",
                     "Description": "System.String"
@@ -7646,7 +7646,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -7737,7 +7737,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7890,7 +7890,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7958,7 +7958,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -8061,7 +8061,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8153,7 +8153,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8301,7 +8301,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -8374,7 +8374,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8392,7 +8392,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8521,7 +8521,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8545,7 +8545,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8613,7 +8613,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -8692,7 +8692,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8716,7 +8716,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8784,7 +8784,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8808,7 +8808,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8883,7 +8883,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -8957,7 +8957,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -9069,7 +9069,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -9272,7 +9272,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -9345,7 +9345,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -9474,7 +9474,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9542,7 +9542,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -9621,7 +9621,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9689,7 +9689,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9837,7 +9837,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -9910,7 +9910,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -10039,7 +10039,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10107,7 +10107,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -10186,7 +10186,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10254,7 +10254,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10329,7 +10329,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSValidateCustomDomainOutput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSValidateCustomDomainOutput, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSValidateCustomDomainOutput, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomDomainValidated": "System.Boolean",
               "Reason": "System.String",
@@ -10438,7 +10438,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -10708,7 +10708,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -11005,7 +11005,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -11096,7 +11096,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -11249,7 +11249,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11317,7 +11317,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -11420,7 +11420,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11512,7 +11512,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11587,7 +11587,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.EdgeNodes",
             "Name": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSEdgeNode",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSEdgeNode, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSEdgeNode, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpAddressGroups": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup]"
             },
@@ -11730,7 +11730,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CurrentValue": "System.Int32",
               "Limit": "System.Int32",
@@ -11967,9 +11967,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
+              "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
+              "CustomHttpsProvisioningSubstate": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
               "HostName": "System.String",
               "ValidationData": "System.String",
@@ -12028,7 +12030,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -12181,7 +12183,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12249,9 +12251,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
+                    "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
+                    "CustomHttpsProvisioningSubstate": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate",
                     "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
                     "HostName": "System.String",
                     "ValidationData": "System.String",
@@ -12316,7 +12320,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12384,7 +12388,704 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Disable",
+      "NounName": "AzCdnCustomDomainHttps",
+      "Name": "Disable-AzCdnCustomDomainHttps",
+      "ClassName": "Microsoft.Azure.Commands.Cdn.CustomDomain.DisableAzureRmCdnCustomDomainHttps",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "ByFieldsParameterSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Boolean",
+            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ProfileName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "EndpointName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "CustomDomainName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
+            "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
+              "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
+              "CustomHttpsProvisioningSubstate": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate",
+              "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
+              "HostName": "System.String",
+              "ValidationData": "System.String",
+              "ResourceGroupName": "System.String",
+              "ProfileName": "System.String",
+              "EndpointName": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "PassThru",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "ByFieldsParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProfileName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EndpointName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CustomDomainName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ByObjectParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
+                  "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
+                    "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
+                    "CustomHttpsProvisioningSubstate": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate",
+                    "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
+                    "HostName": "System.String",
+                    "ValidationData": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ProfileName": "System.String",
+                    "EndpointName": "System.String",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ByResourceIdParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12550,9 +13251,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
+              "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
+              "CustomHttpsProvisioningSubstate": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
               "HostName": "System.String",
               "ValidationData": "System.String",
@@ -12611,7 +13314,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -12764,7 +13467,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12832,9 +13535,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
+                    "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
+                    "CustomHttpsProvisioningSubstate": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate",
                     "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
                     "HostName": "System.String",
                     "ValidationData": "System.String",
@@ -12899,7 +13604,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12967,7 +13672,704 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Enable",
+      "NounName": "AzCdnCustomDomainHttps",
+      "Name": "Enable-AzCdnCustomDomainHttps",
+      "ClassName": "Microsoft.Azure.Commands.Cdn.CustomDomain.EnableAzureRmCdnCustomDomainHttps",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "ByFieldsParameterSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Boolean",
+            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ProfileName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "EndpointName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "CustomDomainName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
+            "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
+              "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
+              "CustomHttpsProvisioningSubstate": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate",
+              "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
+              "HostName": "System.String",
+              "ValidationData": "System.String",
+              "ResourceGroupName": "System.String",
+              "ProfileName": "System.String",
+              "EndpointName": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "PassThru",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "ByFieldsParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProfileName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EndpointName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CustomDomainName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ByObjectParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
+                  "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
+                    "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
+                    "CustomHttpsProvisioningSubstate": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate",
+                    "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
+                    "HostName": "System.String",
+                    "ValidationData": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ProfileName": "System.String",
+                    "EndpointName": "System.String",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ByResourceIdParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13042,9 +14444,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
+              "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
+              "CustomHttpsProvisioningSubstate": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
               "HostName": "System.String",
               "ValidationData": "System.String",
@@ -13176,7 +14580,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -13496,7 +14900,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -13650,9 +15054,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
+              "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
+              "CustomHttpsProvisioningSubstate": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
               "HostName": "System.String",
               "ValidationData": "System.String",
@@ -13802,7 +15208,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -14170,7 +15576,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -14439,9 +15845,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
+              "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
+              "CustomHttpsProvisioningSubstate": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
               "HostName": "System.String",
               "ValidationData": "System.String",
@@ -14500,7 +15908,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -14653,7 +16061,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14721,9 +16129,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
+                    "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
+                    "CustomHttpsProvisioningSubstate": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate",
                     "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
                     "HostName": "System.String",
                     "ValidationData": "System.String",
@@ -14788,7 +16198,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14856,7 +16266,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15062,7 +16472,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -15177,7 +16587,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName"
       },
@@ -15221,7 +16631,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -15316,7 +16726,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -15611,7 +17021,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -15718,7 +17128,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Rules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]",
         "Description": "System.String"
@@ -15763,7 +17173,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15775,7 +17185,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Actions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction]",
         "Conditions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition]",
@@ -15821,7 +17231,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15833,7 +17243,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -15875,7 +17285,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15887,7 +17297,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -15929,7 +17339,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -16024,7 +17434,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -16119,7 +17529,7 @@
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin]",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16131,7 +17541,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "HttpPort": "System.Nullable`1[System.Int32]",
         "HttpsPort": "System.Nullable`1[System.Int32]",
@@ -16178,7 +17588,7 @@
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16190,7 +17600,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Action": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilterAction",
         "RelativePath": "System.String",
@@ -16236,7 +17646,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilterAction": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilterAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilterAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilterAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -16353,7 +17763,7 @@
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup]",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16365,7 +17775,7 @@
     "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.EdgeNodes",
       "Name": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Ipv4Addresses": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress]",
         "Ipv6Addresses": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress]",
@@ -16411,7 +17821,7 @@
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress]",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16423,7 +17833,7 @@
     "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.EdgeNodes",
       "Name": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "PrefixLength": "System.Int32",
         "BaseIpAddress": "System.String"
@@ -16468,7 +17878,197 @@
     "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState": {
+      "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
+      "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate": {
+      "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
+      "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
