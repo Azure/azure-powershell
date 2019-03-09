@@ -102,7 +102,7 @@ function Test-AzureFirewallCRUD
         # Create public ip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
 
-        # Create AzureFirewall (with no rules)
+        # Create AzureFirewall (with no rules, ThreatIntel is in Alert mode by default)
         $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName
 
         # Get AzureFirewall
@@ -114,6 +114,7 @@ function Test-AzureFirewallCRUD
         Assert-NotNull $getAzureFirewall.Location
         Assert-AreEqual (Normalize-Location $location) $getAzureFirewall.Location
         Assert-NotNull $getAzureFirewall.Etag
+		Assert-AreEqual "Alert" $getAzureFirewall.ThreatIntelMode
         Assert-AreEqual 1 @($getAzureFirewall.IpConfigurations).Count
         Assert-NotNull $getAzureFirewall.IpConfigurations[0].Subnet.Id
         Assert-NotNull $getAzureFirewall.IpConfigurations[0].PublicIpAddress.Id
@@ -203,6 +204,9 @@ function Test-AzureFirewallCRUD
         # Add NetworkRuleCollections to the Firewall using method AddNetworkRuleCollection
         $azureFirewall.AddNetworkRuleCollection($netRc)
 
+		# Update ThreatIntel mode
+		$azureFirewall.ThreatIntelMode = "Deny"
+
         # Set AzureFirewall
         Set-AzFirewall -AzureFirewall $azureFirewall
 
@@ -216,6 +220,7 @@ function Test-AzureFirewallCRUD
         Assert-NotNull $getAzureFirewall.Location
         Assert-AreEqual $location $getAzureFirewall.Location
         Assert-NotNull $getAzureFirewall.Etag
+		Assert-AreEqual "Deny" $getAzureFirewall.ThreatIntelMode
 
         Assert-AreEqual 1 @($getAzureFirewall.IpConfigurations).Count
         Assert-NotNull $azureFirewallIpConfiguration[0].Subnet.Id
