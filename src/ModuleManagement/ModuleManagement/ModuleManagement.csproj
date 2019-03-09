@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>ModuleManagement</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\Repo.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Shared.props" />
+
+  <!-- Build -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName)</AssemblyName>
+    <RootNamespace>$(AzAssemblyPrefix)$(PsModuleName)</RootNamespace>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DelaySign>false</DelaySign>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>$(RepoSrc)MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+  </PropertyGroup>
+
+  <!-- Assets -->
+  <ItemGroup>
+    <None Update="Az.$(PsModuleName).psd1" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Az.$(PsModuleName).psm1" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Cmdlets\*.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="help\*.md" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
