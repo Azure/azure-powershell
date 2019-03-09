@@ -25,6 +25,30 @@ The **Get-AzApplicationSecurityGroup** cmdlet gets an application security group
 ### Example 1: Retrieve all application security groups.
 ```
 PS C:\> Get-AzApplicationSecurityGroup
+
+ProvisioningState : Succeeded
+ResourceGroupName : MyResourceGroup
+Location          : southcentralus
+ResourceGuid      :
+Type              : Microsoft.Network/applicationSecurityGroups
+Tag               : {}
+TagsTable         :
+Name              : MyApplicationSecurityGroup1
+Etag              : W/"00000000-0000-0000-0000-000000000000"
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsof
+                    t.Network/applicationSecurityGroups/MyApplicationSecurityGroup1
+
+ProvisioningState : Succeeded
+ResourceGroupName : MyResourceGroup
+Location          : southcentralus
+ResourceGuid      :
+Type              : Microsoft.Network/applicationSecurityGroups
+Tag               : {}
+TagsTable         :
+Name              : MyApplicationSecurityGroup2
+Etag              : W/"00000000-0000-0000-0000-000000000000"
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsof
+                    t.Network/applicationSecurityGroups/MyApplicationSecurityGroup2
 ```
 
 The command above returns the all application security groups in the subscription.
@@ -32,16 +56,83 @@ The command above returns the all application security groups in the subscriptio
 ### Example 2: Retrieve application security groups in a resource group.
 ```
 PS C:\> Get-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup
+
+ProvisioningState : Succeeded
+ResourceGroupName : MyResourceGroup
+Location          : southcentralus
+ResourceGuid      :
+Type              : Microsoft.Network/applicationSecurityGroups
+Tag               : {}
+TagsTable         :
+Name              : MyApplicationSecurityGroup1
+Etag              : W/"00000000-0000-0000-0000-000000000000"
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsof
+                    t.Network/applicationSecurityGroups/MyApplicationSecurityGroup1
+
+ProvisioningState : Succeeded
+ResourceGroupName : MyResourceGroup
+Location          : southcentralus
+ResourceGuid      :
+Type              : Microsoft.Network/applicationSecurityGroups
+Tag               : {}
+TagsTable         :
+Name              : MyApplicationSecurityGroup2
+Etag              : W/"00000000-0000-0000-0000-000000000000"
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsof
+                    t.Network/applicationSecurityGroups/MyApplicationSecurityGroup2
 ```
 
 The command above returns all application security groups that belong to the resource group MyResourceGroup.
 
 ### Example 3: Retrieve a specific application security group.
 ```
-PS C:\> Get-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name MyApplicationSecurityGroup
+PS C:\> Get-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name MyApplicationSecurityGroup1
+
+ProvisioningState : Succeeded
+ResourceGroupName : MyResourceGroup
+Location          : southcentralus
+ResourceGuid      :
+Type              : Microsoft.Network/applicationSecurityGroups
+Tag               : {}
+TagsTable         :
+Name              : MyApplicationSecurityGroup1
+Etag              : W/"00000000-0000-0000-0000-000000000000"
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsof
+                    t.Network/applicationSecurityGroups/MyApplicationSecurityGroup1
 ```
 
 The command above returns the application security group MyApplicationSecurityGroup under the resource group MyResourceGroup.
+
+### Example 4: Retrieve application security groups using filtering.
+```
+PS C:\> Get-AzApplicationSecurityGroup -Name MyApplicationSecurityGroup*
+
+ProvisioningState : Succeeded
+ResourceGroupName : MyResourceGroup
+Location          : southcentralus
+ResourceGuid      :
+Type              : Microsoft.Network/applicationSecurityGroups
+Tag               : {}
+TagsTable         :
+Name              : MyApplicationSecurityGroup1
+Etag              : W/"00000000-0000-0000-0000-000000000000"
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsof
+                    t.Network/applicationSecurityGroups/MyApplicationSecurityGroup1
+
+ProvisioningState : Succeeded
+ResourceGroupName : MyResourceGroup
+Location          : southcentralus
+ResourceGuid      :
+Type              : Microsoft.Network/applicationSecurityGroups
+Tag               : {}
+TagsTable         :
+Name              : MyApplicationSecurityGroup2
+Etag              : W/"00000000-0000-0000-0000-000000000000"
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsof
+                    t.Network/applicationSecurityGroups/MyApplicationSecurityGroup2
+```
+
+The command above returns all application security groups that start with "MyApplicationSecurityGroup".
 
 ## PARAMETERS
 

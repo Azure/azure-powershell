@@ -12,15 +12,9 @@ Gets the properties of a Network Watcher
 
 ## SYNTAX
 
-### Get
-```
-Get-AzNetworkWatcher -Name <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
 ### List
 ```
-Get-AzNetworkWatcher [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzNetworkWatcher [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -47,6 +41,27 @@ ProvisioningState : Succeeded
 ```
 
 Gets the Network Watcher named NetworkWatcher_westcentralus in the resource group NetworkWatcherRG.
+
+### Example 2: List Network Watchers using filtering
+```
+Get-AzNetworkWatcher -Name NetworkWatcher*
+
+Name              : NetworkWatcher_westcentralus1
+Id                : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus1
+Etag              : W/"ac624778-0214-49b9-a04c-794863485fa6"
+Location          : westcentralus
+Tags              : 
+ProvisioningState : Succeeded
+
+Name              : NetworkWatcher_westcentralus2
+Id                : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus2
+Etag              : W/"ac624778-0214-49b9-a04c-794863485fa6"
+Location          : westcentralus
+Tags              : 
+ProvisioningState : Succeeded
+```
+
+Gets the Network Watchers that start with "NetworkWatcher"
 
 ## PARAMETERS
 
@@ -85,10 +100,10 @@ The network watcher name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: List
 Aliases: ResourceName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -97,18 +112,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ```yaml
 Type: System.String

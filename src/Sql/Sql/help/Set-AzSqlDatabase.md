@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 2E4F5C27-C50F-4133-B193-BC477BCD6778
@@ -221,8 +221,8 @@ Accept wildcard characters: False
 
 ### -LicenseType
 The license type for the Azure Sql database. Possible values are:
-- BasePrice – Azure Hybrid Benefit (AHB) discounted pricing for existing SQL Server license owners is applied. Database price will be discounted for existing SQL Server license owners.
-- LicenseIncluded – Azure Hybrid Benefit (AHB) discount pricing for existing SQL Server license owners is not applied. Database price will include a new SQL Server license costs.
+- BasePrice - Azure Hybrid Benefit (AHB) discounted pricing for existing SQL Server license owners is applied. Database price will be discounted for existing SQL Server license owners.
+- LicenseIncluded - Azure Hybrid Benefit (AHB) discount pricing for existing SQL Server license owners is not applied. Database price will include a new SQL Server license costs.
 
 ```yaml
 Type: System.String
