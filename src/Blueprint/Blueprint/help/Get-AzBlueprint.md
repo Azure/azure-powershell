@@ -66,21 +66,21 @@ Get one or more blueprint definitions. Blueprint definitions exist at the manage
 ### Example 1
 ```powershell
 PS> Get-AzBlueprint
+
+Name                 : PS-BlueprintDefinition
+Id                   : /subscriptions/00000000-1111-0000-1111-000000000000/providers/Microsoft.Blueprint/blueprints/PS-BlueprintDefinition
+DefinitionLocationId : 00000000-1111-0000-1111-000000000000
+Versions             : {1.0}
+Description          : Powershell test blueprint
+LastModified         : 2019-02-01
+TargetScope          : Subscription
+Parameters           : {storageData_storageAccountType, storageData_location, allowedlocations_listOfAllowedLocations}
+ResourceGroups       : ResourceGroup
+
 ```
 
 Get the blueprint definitions within the current subscription and the management group hierarchy of the subscription.
 
-Sample output:
-
-Name                 : PS-SimpleBlueprintDefinition
-Id                   : /subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprints/PS-SimpleBlueprintDefinition
-DefinitionLocationId : 28cbf98f-381d-4425-9ac4-cf342dab9753
-Versions             : {v1}
-Description          : first subscription level template
-LastModified         : 2019-02-10
-TargetScope          : Subscription
-Parameters           : {applytaganditsdefaultvalue_tagName, applytaganditsdefaultvalue_tagValue}
-ResourceGroup        : {TestRG2}
 
 ### Example 2
 ```powershell
@@ -97,7 +97,7 @@ Parameters           : {enforcetaganditsvalue_tagName, enforcetaganditsvalue_tag
 ResourceGroups       : {ResourceGroup, ResourceGroup2}
 ```
 
-Gets the blueprint definitions within the specified management group.
+Get the blueprint definitions within the specified management group.
 
 ### Example 3
 ```powershell
