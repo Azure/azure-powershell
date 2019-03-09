@@ -80,6 +80,18 @@ function Test-RouteTableCRUDMinimalParameters
         $listRouteTable = Get-AzRouteTable;
         Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
+        # Get all RouteTables in subscription wildcard for resource group
+        $listRouteTable = Get-AzRouteTable -ResourceGroupName "*";
+        Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all RouteTables in subscription wildcard for name
+        $listRouteTable = Get-AzRouteTable -Name "*";
+        Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all RouteTables in subscription wildcard for both resource group and name
+        $listRouteTable = Get-AzRouteTable -ResourceGroupName "*" -Name "*";
+        Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
         # Remove RouteTable
         $job = Remove-AzRouteTable -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
         $job | Wait-Job;
@@ -146,6 +158,18 @@ function Test-RouteTableCRUDAllParameters
         $listRouteTable = Get-AzRouteTable;
         Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
+        # Get all RouteTables in subscription wildcard for resource group
+        $listRouteTable = Get-AzRouteTable -ResourceGroupName "*";
+        Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all RouteTables in subscription wildcard for name
+        $listRouteTable = Get-AzRouteTable -Name "*";
+        Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all RouteTables in subscription wildcard for both resource group and name
+        $listRouteTable = Get-AzRouteTable -ResourceGroupName "*" -Name "*";
+        Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
         # Set RouteTable
         $vRouteTable.Tag = $TagSet;
         $vRouteTable = Set-AzRouteTable -RouteTable $vRouteTable;
@@ -167,6 +191,18 @@ function Test-RouteTableCRUDAllParameters
 
         # Get all RouteTables in subscription
         $listRouteTable = Get-AzRouteTable;
+        Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all RouteTables in subscription wildcard for resource group
+        $listRouteTable = Get-AzRouteTable -ResourceGroupName "*";
+        Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all RouteTables in subscription wildcard for name
+        $listRouteTable = Get-AzRouteTable -Name "*";
+        Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all RouteTables in subscription wildcard for both resource group and name
+        $listRouteTable = Get-AzRouteTable -ResourceGroupName "*" -Name "*";
         Assert-NotNull ($listRouteTable | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove RouteTable
@@ -271,7 +307,7 @@ function Test-RouteCRUDMinimalParameters
         # Remove Route
         $vRouteTable = Remove-AzRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
         $vRouteTable = Remove-AzRouteConfig -RouteTable $vRouteTable -Name $rname;
-        # Additional call to test handling of already deleted subresource
+        # Additional call to test handling of already deleted child resource
         $vRouteTable = Remove-AzRouteConfig -RouteTable $vRouteTable -Name $rname;
         # Update parent resource
         $vRouteTable = Set-AzRouteTable -RouteTable $vRouteTable;
@@ -380,7 +416,7 @@ function Test-RouteCRUDAllParameters
         # Remove Route
         $vRouteTable = Remove-AzRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
         $vRouteTable = Remove-AzRouteConfig -RouteTable $vRouteTable -Name $rname;
-        # Additional call to test handling of already deleted subresource
+        # Additional call to test handling of already deleted child resource
         $vRouteTable = Remove-AzRouteConfig -RouteTable $vRouteTable -Name $rname;
         # Update parent resource
         $vRouteTable = Set-AzRouteTable -RouteTable $vRouteTable;
