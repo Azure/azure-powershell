@@ -19,13 +19,12 @@ namespace Commands.Automation.Test
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-    public class UpdateDynamicGroupPrePostTests : AutomationScenarioTestsBase
+    public class UpdateDynamicGroupPrePostTests : AutomationTestRunner
     {
         public XunitTracingInterceptor logger;
         public UpdateDynamicGroupPrePostTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(logger);
         }
 
         [Fact]
@@ -35,7 +34,7 @@ namespace Commands.Automation.Test
         [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestCreateAndGetSoftwareUpdateConfigurationWithDynamicGroups()
         {
-            RunPowerShellTest(logger, "Test-CreateAndGetSoftwareUpdateConfigurationWithDynamicGroups");
+            TestRunner.RunTestScript("Test-CreateAndGetSoftwareUpdateConfigurationWithDynamicGroups");
         }
 
         [Fact]
@@ -45,7 +44,7 @@ namespace Commands.Automation.Test
         [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestCreateAndGetSoftwareUpdateConfigurationWithRebootOnly()
         {
-            RunPowerShellTest(logger, "Test-CreateAndGetSoftwareUpdateConfigurationWithRebootOnly");
+            TestRunner.RunTestScript("Test-CreateAndGetSoftwareUpdateConfigurationWithRebootOnly");
         }
 
         [Fact]
@@ -55,7 +54,7 @@ namespace Commands.Automation.Test
         [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestCreateAndGetSoftwareUpdateConfigurationWithPrePost()
         {
-            RunPowerShellTest(logger, "Test-CreateAndGetSoftwareUpdateConfigurationWithPrePost");
+            TestRunner.RunTestScript("Test-CreateAndGetSoftwareUpdateConfigurationWithPrePost");
         }
 
         [Fact]
@@ -65,7 +64,7 @@ namespace Commands.Automation.Test
         [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestGetSoftwareUpdateConfigurationRunWithPrePost()
         {
-            RunPowerShellTest(logger, "Test-GetSoftwareUpdateConfigurationRunWithPrePost");
+            TestRunner.RunTestScript("Test-GetSoftwareUpdateConfigurationRunWithPrePost");
         }
 
     }
