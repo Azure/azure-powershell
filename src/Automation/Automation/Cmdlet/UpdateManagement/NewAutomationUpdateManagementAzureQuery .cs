@@ -30,17 +30,17 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
     [OutputType(typeof(AzureQueryProperties))]
     public class NewAutomationUpdateManagementAzureQuery : AzureAutomationBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Ids for azure virtual machines.")]
+        [Parameter(Mandatory = true, HelpMessage = "Resource Ids for azure virtual machines.")]
         [ValidateNotNull]
         public string[] Scope { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Ids for azure virtual machines.")]
+        [Parameter(Mandatory = false, HelpMessage = "List of locations for azure virtual machines.")]
         public string[] Locaton { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Ids for azure virtual machines.")]
+        [Parameter(Mandatory = false,  HelpMessage = "Tag for azure virtual machines.")]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Ids for azure virtual machines.")]
+        [Parameter(Mandatory = false, HelpMessage = "Tag filter operator.")]
         public TagOperators FilterOperator { get; set; }
 
 

@@ -2,13 +2,14 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 online version:
+https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationupdatemanagementazurequery
 schema: 2.0.0
 ---
 
 # New-AzAutomationUpdateManagementAzureQuery
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates azure automation software update configuration azure query object.
 
 ## SYNTAX
 
@@ -19,16 +20,57 @@ New-AzAutomationUpdateManagementAzureQuery -Scope <String[]> [-Locaton <String[]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Creates a software update configuration azure queries object that will be used to create a software update configuration which will runs on a schedule to update a list of dynamically resolved list of azure virtual machines.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\>$query1Scope = @(        
+"/subscriptions/22e2445a-0984-4fa5-86a4-0280d76c4b2c/resourceGroups/resourceGroupName",
+"/subscriptions/32e2445a-0984-4fa5-86a4-0280d76c4b2d/"
+    )
+PS C:\>$query1Location =@("Japan East", "UK South")
+PS C:\>$query1FilterOperator = "All"
+PS C:\>$tag1 = @{"tag1"= @("tag1Value1", "tag1Value2")}
+PS C:\>$tag1.add("tag2", "tag2Value")
+PS C:\>$azq = New-AzAutomationUpdateManagementAzureQuery -ResourceGroupName "mygroup" `
+                                       -AutomationAccountName "myaccount" `
+                                       -Scope $query1Scope `
+                                       -Locaton $query1Location `
+                                       -Tag $tag1
+PS C:\>$AzureQueries = @($azq)
+PS C:\> $startTime = [DateTimeOffset]"2018-09-13T21:00"
 
-{{ Add example description here }}
+PS C:\> $duration = New-TimeSpan -Hours 2
+PS C:\> $schedule = New-AzAutomationSchedule -ResourceGroupName "mygroup" `
+                                                  -AutomationAccountName "myaccount" `
+                                                  -Name MyWeeklySchedule `
+                                                  -StartTime $startTime `
+                                                  -DaysOfWeek Saturday `
+                                                  -WeekInterval 1 `
+                                                  -ForUpdateConfiguration
+
+New-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" `
+                                                 -AutomationAccountName "myaccount" `
+                                                 -Schedule $schedule `
+                                                 -Windows `                                                 
+                                                 -AzureQuery $AzureQueries `
+                                                 -IncludedUpdateClassification Critical `
+                                                 -Duration $duration
+
+UpdateConfiguration   : Microsoft.Azure.Commands.Automation.Model.UpdateManagement.UpdateConfiguration
+ScheduleConfiguration : Microsoft.Azure.Commands.Automation.Model.Schedule
+ProvisioningState     : Provisioning
+ErrorInfo             :
+ResourceGroupName     : mygroup
+AutomationAccountName : myaccount
+Name                  : MyWeeklySchedule
+CreationTime          : 9/14/2018 3:53:27 AM +00:00
+LastModifiedTime      : 9/14/2018 3:53:27 AM +00:00
+Description           :
+
+```
 
 ## PARAMETERS
 
@@ -63,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -FilterOperator
-Resource Ids for azure virtual machines.
+Tag filter operator.
 
 ```yaml
 Type: TagOperators
@@ -74,12 +116,11 @@ Accepted values: All, Any
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Locaton
-Resource Ids for azure virtual machines.
+List of locations for azure virtual machines.
 
 ```yaml
 Type: String[]
@@ -89,7 +130,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -119,12 +159,11 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource Ids for azure virtual machines.
+Tag for azure virtual machines.
 
 ```yaml
 Type: Hashtable
@@ -134,7 +173,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
