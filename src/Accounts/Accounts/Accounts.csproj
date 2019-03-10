@@ -26,7 +26,6 @@
     <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetCore\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.DataMovement.dll" />
-    <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Mono.Posix.NETStandard.dll" />
   </ItemGroup>
 
   <ItemGroup>
