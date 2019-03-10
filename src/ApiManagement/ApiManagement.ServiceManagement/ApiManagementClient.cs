@@ -2238,6 +2238,43 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 loggerUpdateParameters,
                 "*");
         }
+
+        public PsApiManagementLogger SetLoggerToDiagnosticApi(PsApiManagementContext context,
+                                string apiId,
+                                string loggerId,
+                                string diagnosticId)
+        {
+            var loggerContract = Client.ApiDiagnosticLogger.CreateOrUpdate(context.ResourceGroupName,
+                                                      context.ServiceName,
+                                                      apiId,
+                                                      diagnosticId,
+                                                      loggerId);
+            return Mapper.Map<PsApiManagementLogger>(loggerContract);
+
+        }
+
+        public void RemoveLoggerFromDiagnosticApi(PsApiManagementContext context,
+                        string apiId,
+                        string loggerId,
+                        string diagnosticId)
+        {
+            Client.ApiDiagnosticLogger.Delete(context.ResourceGroupName,
+                                                      context.ServiceName,
+                                                      apiId,
+                                                      diagnosticId,
+                                                      loggerId);
+        }
+
+        public IList<PsApiManagementLogger> GetApiDiagnosticLoggersList(PsApiManagementContext context,
+                        string apiId,
+                        string diagnosticId)
+        {
+            var results = ListPagedAndMap<PsApiManagementLogger, LoggerContract>(
+                () => Client.ApiDiagnosticLogger.ListByService(context.ResourceGroupName, context.ServiceName, apiId, diagnosticId),
+                nextLink => Client.Logger.ListByServiceNext(nextLink));
+
+            return results;
+        }
         #endregion
 
         #region Properties
