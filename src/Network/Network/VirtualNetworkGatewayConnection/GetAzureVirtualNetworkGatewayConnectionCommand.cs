@@ -44,13 +44,13 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var vnetGatewayConnection = this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name);
 
                 WriteObject(vnetGatewayConnection);
             }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
+            else if (ShouldListByResourceGroup(ResourceGroupName, Name))
             {
                 var connectionPage = this.VirtualNetworkGatewayConnectionClient.List(this.ResourceGroupName);
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
                     psVnetGatewayConnections.Add(psVnetGatewayConnection);
                 }
 
-                WriteObject(psVnetGatewayConnections, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psVnetGatewayConnections), true);
             }
         }
     }

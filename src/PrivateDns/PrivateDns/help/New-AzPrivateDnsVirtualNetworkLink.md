@@ -20,7 +20,7 @@ New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Object
+### VirtualNetworkObject
 ```
 New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String> -Name <String>
  -VirtualNetwork <VirtualNetwork> [-EnableRegistration] [-Tag <Hashtable>]
@@ -139,7 +139,7 @@ The virtual network object associated with the link.
 
 ```yaml
 Type: Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.VirtualNetwork
-Parameter Sets: Object
+Parameter Sets: VirtualNetworkObject
 Aliases:
 
 Required: True
@@ -219,6 +219,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink
+
+## NOTES
 
 ## RELATED LINKS
 

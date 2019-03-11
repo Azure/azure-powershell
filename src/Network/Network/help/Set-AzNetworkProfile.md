@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzNetworkProfile
 
 ## SYNOPSIS
-Sets the goal state for an existing network profile
+Updates a network profile.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Set-AzNetworkProfile -NetworkProfile <PSNetworkProfile> [-AsJob] [-DefaultProfil
 ```
 
 ## DESCRIPTION
-The **Set-AzPublicIpPrefix** cmdlet sets the goal state for a network profile.
+The **Set-AzPublicIpPrefix** cmdlet updates a network profile.
 
 ## EXAMPLES
 
