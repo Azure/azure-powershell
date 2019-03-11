@@ -24,6 +24,8 @@
 * Improved Subnet, Primary, PrivateIpAddressVersion parameters processing in
     - Add-AzNetworkInterfaceIpConfig
     - Set-AzNetworkInterfaceIpConfig
+* Add Threat Intelligence support for Azure Firewall
+* Add Alert action type for Azure Firewall Network and Application Rule Collections
 
 ## Version 1.2.1
 * Update help example for Add-AzApplicationGatewayCustomError
