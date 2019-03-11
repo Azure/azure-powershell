@@ -60,6 +60,15 @@ function Test-VirtualNetworkTapCRUDUsingIpConfig
         Assert-AreEqual $vVirtualNetworkTap.Name $rname;
         Assert-AreEqual $vVirtualNetworkTap.DestinationNetworkInterfaceIPConfiguration.Id $DestinationEndpoint.Id
 
+        $list = Get-AzVirtualNetworkTap -ResourceGroupName "*"
+        Assert-True { $list.Count -ge 0 }
+
+        $list = Get-AzVirtualNetworkTap -Name "*"
+        Assert-True { $list.Count -ge 0 }
+
+        $list = Get-AzVirtualNetworkTap -ResourceGroupName "*" -Name "*"
+        Assert-True { $list.Count -ge 0 }
+
         $vVirtualNetworkTaps = Get-AzureRmVirtualNetworkTap -ResourceGroupName $rgname;
         Assert-NotNull $vVirtualNetworkTaps;
 

@@ -25,10 +25,106 @@ operate on ExpressRoute circuits.
 
 ## EXAMPLES
 
-### Example 1: Get the ExpressRoute circuit to be deleted
+### Example 1: Get the ExpressRoute circuit
 ```
-Get-AzExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg | Remove-AzExpressRouteCircuit
+Get-AzExpressRouteCircuit -ResourceGroupName testrg -Name test
+
+Name                             : test
+ResourceGroupName                : testrg
+Location                         : southcentralus
+Id                               : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/pro
+                                   viders/Microsoft.Network/expressRouteCircuits/test
+Etag                             : W/"00000000-0000-0000-0000-000000000000"
+ProvisioningState                : Succeeded
+Sku                              : {
+                                     "Name": "Standard_UnlimitedData",
+                                     "Tier": "Standard",
+                                     "Family": "UnlimitedData"
+                                   }
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : NotProvisioned
+ServiceProviderNotes             :
+ServiceProviderProperties        : {
+                                     "ServiceProviderName": "AT&T",
+                                     "PeeringLocation": "Silicon Valley",
+                                     "BandwidthInMbps": 50
+                                   }
+ExpressRoutePort                 : null
+BandwidthInGbps                  :
+Stag                             :
+ServiceKey                       : 00000000-0000-0000-0000-000000000000
+Peerings                         : []
+Authorizations                   : []
+AllowClassicOperations           : False
+GatewayManagerEtag               :
 ```
+
+Get a specific ExpressRoute circuit with Name "testrg" and ResourceGroupName "test"
+
+### Example 2: List the ExpressRoute circuits using filtering
+```
+Get-AzExpressRouteCircuit -Name test*
+
+Name                             : test1
+ResourceGroupName                : testrg
+Location                         : southcentralus
+Id                               : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/pro
+                                   viders/Microsoft.Network/expressRouteCircuits/test1
+Etag                             : W/"00000000-0000-0000-0000-000000000000"
+ProvisioningState                : Succeeded
+Sku                              : {
+                                     "Name": "Standard_UnlimitedData",
+                                     "Tier": "Standard",
+                                     "Family": "UnlimitedData"
+                                   }
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : NotProvisioned
+ServiceProviderNotes             :
+ServiceProviderProperties        : {
+                                     "ServiceProviderName": "AT&T",
+                                     "PeeringLocation": "Silicon Valley",
+                                     "BandwidthInMbps": 50
+                                   }
+ExpressRoutePort                 : null
+BandwidthInGbps                  :
+Stag                             :
+ServiceKey                       : 00000000-0000-0000-0000-000000000000
+Peerings                         : []
+Authorizations                   : []
+AllowClassicOperations           : False
+GatewayManagerEtag               :
+
+Name                             : test2
+ResourceGroupName                : testrg
+Location                         : southcentralus
+Id                               : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/pro
+                                   viders/Microsoft.Network/expressRouteCircuits/test2
+Etag                             : W/"00000000-0000-0000-0000-000000000000"
+ProvisioningState                : Succeeded
+Sku                              : {
+                                     "Name": "Standard_UnlimitedData",
+                                     "Tier": "Standard",
+                                     "Family": "UnlimitedData"
+                                   }
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : NotProvisioned
+ServiceProviderNotes             :
+ServiceProviderProperties        : {
+                                     "ServiceProviderName": "AT&T",
+                                     "PeeringLocation": "Silicon Valley",
+                                     "BandwidthInMbps": 50
+                                   }
+ExpressRoutePort                 : null
+BandwidthInGbps                  :
+Stag                             :
+ServiceKey                       : 00000000-0000-0000-0000-000000000000
+Peerings                         : []
+Authorizations                   : []
+AllowClassicOperations           : False
+GatewayManagerEtag               :
+```
+
+Get all ExpressRoute circuits whose name starts with "test".
 
 ## PARAMETERS
 

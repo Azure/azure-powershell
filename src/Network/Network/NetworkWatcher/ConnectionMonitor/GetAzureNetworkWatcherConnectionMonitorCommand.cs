@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.Network
                 networkWatcherName = networkWatcher.Name;
             }
 
-            if (!string.IsNullOrEmpty(connectionMonitorName))
+            if (ShouldGetByName(resourceGroupName, connectionMonitorName))
             {
                 PSConnectionMonitorResult connectionMonitor = new PSConnectionMonitorResult();
                 connectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, connectionMonitorName);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Network
                     PSConnectionMonitorResult psConnectionMonitor = NetworkResourceManagerProfile.Mapper.Map<PSConnectionMonitorResult>(cm);
                     psConnectionMonitorList.Add(psConnectionMonitor);
                 }
-                WriteObject(psConnectionMonitorList, true);
+                WriteObject(SubResourceWildcardFilter(Name, psConnectionMonitorList), true);
             }
         }
     }

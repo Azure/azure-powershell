@@ -50,7 +50,16 @@ function Test-EmptyRouteTable
         Assert-AreEqual $list[0].ResourceGroupName $getRT.ResourceGroupName
         Assert-AreEqual $list[0].Name $getRT.Name
         Assert-AreEqual $list[0].Etag $getRT.Etag
-        Assert-AreEqual @($list[0].Routes).Count @($getRT.Routes).Count              
+        Assert-AreEqual @($list[0].Routes).Count @($getRT.Routes).Count     
+		
+        $list = Get-AzRouteTable -ResourceGroupName "*"
+        Assert-True { $list.Count -ge 0 }
+
+        $list = Get-AzRouteTable -Name "*"
+        Assert-True { $list.Count -ge 0 }
+
+        $list = Get-AzRouteTable -ResourceGroupName "*" -Name "*"
+        Assert-True { $list.Count -ge 0 }
 
         # Delete NetworkSecurityGroup
         $job = Remove-AzRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Force -AsJob

@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if(!string.IsNullOrEmpty(this.Name))
+            if(ShouldGetByName(ResourceGroupName, Name))
             {
                 var vLoadBalancer = this.NetworkClient.NetworkManagementClient.LoadBalancers.Get(ResourceGroupName, Name, ExpandResource);
                 var vLoadBalancerModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSLoadBalancer>(vLoadBalancer);
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<LoadBalancer> vLoadBalancerPage;
-                if(!string.IsNullOrEmpty(this.ResourceGroupName))
+                if(ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     vLoadBalancerPage = this.NetworkClient.NetworkManagementClient.LoadBalancers.List(this.ResourceGroupName);
                 }
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Network
                     vLoadBalancerModel.Tag = TagsConversionHelper.CreateTagHashtable(vLoadBalancer.Tags);
                     psLoadBalancerList.Add(vLoadBalancerModel);
                 }
-                WriteObject(psLoadBalancerList, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psLoadBalancerList), true);
             }
         }
     }

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network
     public class GetAzureRmVirtualWanCommand : VirtualWanBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = "ListByResourceGroupName",
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -47,14 +47,14 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
             
-            if (!string.IsNullOrEmpty(this.Name) && ParameterSetName.Equals("ListByResourceGroupName"))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var virtualWan = this.GetVirtualWan(this.ResourceGroupName, this.Name);
                 WriteObject(virtualWan);
             }
             else
             {
-                WriteObject(this.ListVirtualWans(this.ResourceGroupName), true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, this.ListVirtualWans(this.ResourceGroupName)), true);
             }
         }
     }
