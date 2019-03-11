@@ -76,7 +76,6 @@ LastModified         : 2019-02-01
 TargetScope          : Subscription
 Parameters           : {storageData_storageAccountType, storageData_location, allowedlocations_listOfAllowedLocations}
 ResourceGroups       : ResourceGroup
-
 ```
 
 Get the blueprint definitions within the current subscription and the management group hierarchy of the subscription.
