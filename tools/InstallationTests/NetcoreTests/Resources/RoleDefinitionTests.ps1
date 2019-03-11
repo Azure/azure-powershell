@@ -134,7 +134,7 @@ function Test-RDRemove
     # Create a role definition at RG Scope.
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("65E1D983-ECF4-42D4-8C08-5B1FD6E86335")
 
-	$subscription = Get-AzureRmSubscription
+	$subscription = $(Get-AzureRmContext).Subscription
 	$resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
 	
 	$scope = "/subscriptions/" + $subscription[0].SubscriptionId
@@ -172,7 +172,7 @@ function Test-RDGet
     # Setup
     Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
 	
-	$subscription = Get-AzureRmSubscription
+	$subscription = $(Get-AzureRmContext).Subscription
 
 	$resource = Get-AzureRmResource | Select-Object -Last 1 -Wait
     Assert-NotNull $resource "Cannot find any resource to continue test execution."

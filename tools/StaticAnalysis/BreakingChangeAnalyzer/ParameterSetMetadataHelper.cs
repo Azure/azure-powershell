@@ -16,6 +16,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Tools.Common.Loggers;
 using Tools.Common.Models;
+#if NETSTANDARD
+using StaticAnalysis.Netcore.Properties;
+#else
+using StaticAnalysis.Properties;
+#endif
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
 {
@@ -142,9 +147,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         cmdlet: cmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.RemovedParameterSet,
-                        description: string.Format(Properties.Resources.RemovedParameterSetDescription,
+                        description: string.Format(Resources.RemovedParameterSetDescription,
                             oldParameterSet.Name, cmdlet.Name),
-                        remediation: string.Format(Properties.Resources.RemovedParameterSetRemediation,
+                        remediation: string.Format(Resources.RemovedParameterSetRemediation,
                             oldParameterSet.Name, cmdlet.Name));
                 }
             }

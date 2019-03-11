@@ -49,7 +49,7 @@ namespace StaticAnalysis.HelpAnalyzer
         {
             var assemblyRegexes = new[]
             {
-                new Regex("Microsoft.Azure.Commands.[^.]+.dll$"),
+                new Regex("Microsoft.Azure.PowerShell.Cmdlets.[^.]+.dll$"),
                 new Regex("Microsoft.WindowsAzure.Commands.[^.]+.dll$"),
                 new Regex(".Cmdlets.dll$")
             };

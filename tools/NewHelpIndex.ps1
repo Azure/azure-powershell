@@ -31,29 +31,29 @@ param(
     [string] $OutputFile = "$PSScriptRoot/index.json"
 )
 
-Import-LocalizedData -BindingVariable "AzureRMpsd1" -BaseDirectory $PSScriptRoot/AzureRM -FileName "AzureRM.psd1"
+Import-LocalizedData -BindingVariable "Azpsd1" -BaseDirectory $PSScriptRoot/Az -FileName "Az.psd1"
 
 if ([string]::isNullOrEmpty($Version))
 {
-    $Version = $AzureRMpsd1.ModuleVersion
-    Write-Host "Using version obtained from AzureRM.psd1: $Version." -ForegroundColor Green;
+    $Version = $Azpsd1.ModuleVersion
+    Write-Host "Using version obtained from Az.psd1: $Version." -ForegroundColor Green;
 }
 
 if ([string]::isNullOrEmpty($SourceBaseUri))
 {
-    $tag = $AzureRMpsd1.PrivateData.PSData.ReleaseNotes.Split("`n")[0].Replace(" ", "").Trim("`r")
+    $tag = $Azpsd1.PrivateData.PSData.ReleaseNotes.Split("`n")[0].Replace(" ", "").Trim("`r")
     $SourceBaseUri = "https://github.com/Azure/azure-powershell/tree/v$tag"
     Write-Host "Using default SourceBaseUri: $SourceBaseUri." -ForegroundColor Green;
 }
 
 if ([string]::isNullOrEmpty($EditBaseUri))
 {
-    $EditBaseUri = "https://github.com/Azure/azure-powershell/blob/preview"
+    $EditBaseUri = "https://github.com/Azure/azure-powershell/blob/master"
     Write-Host "Using default EditBaseUri: $EditBaseUri." -ForegroundColor Green;
 }
 
 $output = @{}
-$output.Add("name", "AzureRM")
+$output.Add("name", "Az")
 $output.Add("target", "$Target")
 $output.Add("version", "$Version")
 
@@ -65,28 +65,12 @@ $labelMapping = Get-Content -Raw $OutputFile/../groupMapping.json | ConvertFrom-
 
 $RMpsd1s = @()
 $HelpFolders = @()
-if ($Target -eq "Latest")
-{
-    $resourceManagerPath = "$PSScriptRoot/../src/Package/$BuildConfig/ResourceManager/AzureResourceManager/"
-    $storagePath = "$PSScriptRoot/../src/Package/$BuildConfig/Storage"
 
-    $RMpsd1s += Get-ChildItem -Path $resourceManagerPath -Depth 2 | Where-Object { $_.Name -like "*.psd1" -and $_.FullName -notlike "*dll-Help*" }
-    $RMpsd1s += Get-ChildItem -Path $storagePath -Depth 2 | Where-Object { $_.Name -like "*.psd1"-and $_.FullName -notlike "*dll-Help*" }
-    
-    $HelpFolders += Get-ChildItem -Path "$PSScriptRoot/../src/ResourceManager" -Recurse -Directory | where { $_.Name -eq "help" -and $_.FullName -notlike "*\Stack\*" }
-    $HelpFolders += Get-ChildItem -Path "$PSScriptRoot/../src/Storage" -Recurse -Directory | where { $_.Name -eq "help" -and $_.FullName -notlike "*\Stack\*" }
-}
-else 
-{
-    $resourceManagerPath = "$PSScriptRoot/../src/Stack/$BuildConfig/ResourceManager/AzureResourceManager/"
-    $storagePath = "$PSScriptRoot/../src/Stack/$BuildConfig/Storage"
+$resourceManagerPath = "$PSScriptRoot/../artifacts/$BuildConfig/"
 
-    $RMpsd1s += Get-ChildItem -Path $resourceManagerPath -Depth 2 | Where-Object { $_.Name -like "*.psd1" -and $_.FullName -notlike "*dll-Help*" }
-    $RMpsd1s += Get-ChildItem -Path $storagePath -Depth 2 | Where-Object { $_.Name -like "*.psd1"-and $_.FullName -notlike "*dll-Help*" }
-    
-    $HelpFolders += Get-ChildItem -Path "$PSScriptRoot/../src/ResourceManager" -Recurse -Directory | where { $_.Name -eq "help" -and $_.FullName -like "*\Stack\*" }
-    $HelpFolders += Get-ChildItem -Path "$PSScriptRoot/../src/Storage" -Recurse -Directory | where { $_.Name -eq "help" -and $_.FullName -like "*\Stack\*" }
-}
+$RMpsd1s += Get-ChildItem -Path $resourceManagerPath -Depth 2 | Where-Object { $_.Name -like "*.psd1" -and $_.FullName -notlike "*dll-Help*" }
+
+$HelpFolders += Get-ChildItem -Path "$PSScriptRoot/../src" -Recurse -Directory | where { $_.Name -eq "help" -and $_.FullName -notlike "*\Stack\*" -and $_.FullName -notlike "*\bin\*"}
 
 # Map the name of the cmdlet to the location of the help file
 $HelpFileMapping = @{}

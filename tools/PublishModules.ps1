@@ -104,13 +104,9 @@ function Get-Directories {
     )
 
     PROCESS {
-        $packageFolder = "$PSScriptRoot\..\src\Package"
+        $packageFolder = "$PSScriptRoot\..\artifacts"
 
-        if ($Scope -eq "Stack") {
-            $packageFolder = "$PSScriptRoot\..\src\Stack"
-        }
-
-        $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
+        $resourceManagerRootFolder = "$packageFolder\$buildConfig"
 
         Write-Output -InputObject $packageFolder, $resourceManagerRootFolder
     }
@@ -242,7 +238,7 @@ function Get-ClientModules {
         if ($Scope -in $AllScopes -or $PublishLocal) {
             if ($Scope -eq "Netcore")
             {
-                $targets += "$resourceManagerRootFolder\Az.Profile"
+                $targets += "$resourceManagerRootFolder\Az.Accounts"
             }
             else
             {
@@ -274,7 +270,7 @@ function Get-ClientModules {
             }
 
             # We should ignore these, they are handled separatly.
-            $excludedModules = @('AzureRM.Profile', 'Azure.Storage', 'Az.Profile')
+            $excludedModules = @('AzureRM.Profile', 'Azure.Storage', 'Az.Accounts')
 
             # Add all modules for AzureRM for Azure
             foreach ($module in $resourceManagerModules) {
@@ -859,7 +855,7 @@ Get-PackageProvider -Name NuGet -Force
 Write-Host " "
 
 # NOTE: Can only be Azure or Azure Stack, not both.
-$packageFolder = "$PSScriptRoot\..\src\Package"
+$packageFolder = "$PSScriptRoot\..\artifacts"
 if ($Scope -eq 'Stack') {
     $packageFolder = "$PSScriptRoot\..\src\Stack"
 }
@@ -870,10 +866,11 @@ if ($PublishLocal) {
     if ($Scope -eq 'Stack') {
         $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "Stack")
     } else {
-        $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "Package")
+        $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "..\artifacts")
     }
 }
 
+$null = New-Item -ItemType Directory -Force -Path $tempRepoPath
 $tempRepoName = ([System.Guid]::NewGuid()).ToString()
 $repo = Get-PSRepository | Where-Object { $_.SourceLocation -eq $tempRepoPath }
 if ($repo -ne $null) {

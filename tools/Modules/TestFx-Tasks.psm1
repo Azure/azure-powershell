@@ -1,38 +1,27 @@
 ﻿Function New-TestCredential
 {
     [CmdletBinding(
-        DefaultParameterSetName='SpnParamSet', 
         SupportsShouldProcess=$true
         )]
     param(
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal/ClientId you would like to use')]   
         [ValidateNotNullOrEmpty()]
         [string]$ServicePrincipalDisplayName,
 
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use')]
-        [ValidateNotNullOrEmpty()]
-        [securestring]$ServicePrincipalSecret,
-
-        [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "UserId (OrgId) you would like to use")]
-        [ValidateNotNullOrEmpty()]
-        [string]$UserId,
-
-        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
-        [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
+        [Parameter(Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
         [ValidateNotNullOrEmpty()]
         [string]$SubscriptionId,
 
-        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage='AADTenant/TenantId you would like to use')]
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='AADTenant/TenantId you would like to use')]
+        [Parameter(Mandatory=$true, HelpMessage='AADTenant/TenantId you would like to use')]
         [ValidateNotNullOrEmpty()]
         [string]$TenantId,
 
-        [Parameter(ParameterSetName='CreateSpnParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage = "Record tests, Playback tests, or neither")]
-        [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "Record tests, Playback tests, or neither")]
+        [Parameter(Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
         [ValidateSet("Playback", "Record", "None")]
         [string]$RecordMode,
+
+        [Parameter(Mandatory=$false, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use (required for existing Service Principal)')]
+        [ValidateNotNullOrEmpty()]
+        [securestring]$ServicePrincipalSecret,
 
         [Parameter(Mandatory=$false, HelpMessage="Environment you would like to run in")]
         [ValidateSet("Prod", "Dogfood", "Current", "Next", "Custom")]
@@ -81,15 +70,20 @@
     $credentials.Environment = $TargetEnvironment
 
     if ([string]::IsNullOrEmpty($ServicePrincipalDisplayName) -eq $false) {
-        $existingServicePrincipal = Get-AzureRmADServicePrincipal -SearchString $ServicePrincipalDisplayName | Where-Object {$_.DisplayName -eq $ServicePrincipalDisplayName}
+        $existingServicePrincipal = Get-AzADServicePrincipal -SearchString $ServicePrincipalDisplayName | Where-Object {$_.DisplayName -eq $ServicePrincipalDisplayName}
         if ($existingServicePrincipal -eq $null -and ($Force -or $PSCmdlet.ShouldContinue("ServicePrincipal `"" + $ServicePrincipalDisplayName + "`" does not exist, would you like to create a new ServicePrincipal with this name?", "Create ServicePrincipal?")))
         {
+            if (![string]::IsNullOrEmpty($ServicePrincipalSecret))
+            {
+                Write-Warning "Service Principal secrets are randomly generated, so provided secret value will not be used during creation."
+            }
+
             if ($TargetEnvironment -ne 'Prod')
             {
                 throw "To create a new Service Principal you must be in Prod. Please run again with `$TargetEnvironment set to 'Prod'"
             }
             $Scope = "/subscriptions/" + $SubscriptionId
-            $NewServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ServicePrincipalDisplayName -Password $ServicePrincipalSecret
+            $NewServicePrincipal = New-AzADServicePrincipal -DisplayName $ServicePrincipalDisplayName
             Write-Host "New ServicePrincipal created: " + $NewServicePrincipal.ApplicationId
     
             $NewRole = $null
@@ -98,12 +92,13 @@
             {
                 # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
                 Start-Sleep 5
-                New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $NewServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
-                $NewRole = Get-AzureRMRoleAssignment -ObjectId $NewServicePrincipal.Id -ErrorAction SilentlyContinue
+                New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $NewServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
+                $NewRole = Get-AzRoleAssignment -ObjectId $NewServicePrincipal.Id -ErrorAction SilentlyContinue
                 $Retries++;
             }
             
             $credentials.ServicePrincipal = $NewServicePrincipal.ApplicationId
+            $ServicePrincipalSecret = $NewServicePrincipal.Secret
             $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($ServicePrincipalSecret)
             $UnsecurePassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
             $credentials.ServicePrincipalSecret = $UnsecurePassword
@@ -111,15 +106,15 @@
         
         else
         {
+            if ([string]::IsNullOrEmpty($ServicePrincipalSecret))
+            {
+                throw "Service Principal secret required for existing Service Principal."
+            }
             $credentials.ServicePrincipal = $existingServicePrincipal.ApplicationId
             $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($ServicePrincipalSecret)
             $UnsecurePassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
             $credentials.ServicePrincipalSecret = $UnsecurePassword
         }
-    }
-
-    if ([string]::IsNullOrEmpty($UserId) -eq $false) {
-        $credentials.UserId = $UserId
     }
 
     if ([string]::IsNullOrEmpty($TenantId) -eq $false) {
@@ -191,31 +186,25 @@ In order to successfully run a test, you will need SubscriptionId, TenantId
 This cmdlet will only prompt you for Subscription and Tenant information, rest all other parameters are optional
 
 #>
-    [CmdletBinding(DefaultParameterSetName='UserIdParamSet')]
+    [CmdletBinding()]
     param(
-        [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "UserId (OrgId) you would like to use")]
-        [ValidateNotNullOrEmpty()]
-        [string]$UserId,
-
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal/ClientId you would like to use')]   
+        [Parameter(Mandatory=$true, HelpMessage='ServicePrincipal/ClientId you would like to use')]   
         [ValidateNotNullOrEmpty()]
         [string]$ServicePrincipalId,
 
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use')]
+        [Parameter(Mandatory=$true, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use')]
         [ValidateNotNullOrEmpty()]
         [string]$ServicePrincipalSecret,
 
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
-        [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
+        [Parameter(Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
         [ValidateNotNullOrEmpty()]
         [string]$SubscriptionId,
 
-        [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage='AADTenant/TenantId you would like to use')]
+        [Parameter(Mandatory=$true, HelpMessage='AADTenant/TenantId you would like to use')]
         [ValidateNotNullOrEmpty()]
         [string]$TenantId,
 
-	    [Parameter(ParameterSetName='SpnParamSet', Mandatory=$true, HelpMessage = "Would you like to record or playback your tests?")]
-        [Parameter(ParameterSetName='UserIdParamSet', Mandatory=$true, HelpMessage = "Would you like to record or playback your tests?")]
+	    [Parameter(Mandatory=$true, HelpMessage = "Would you like to record or playback your tests?")]
         [ValidateSet("Playback", "Record", "None")]
         [string]$RecordMode='Playback',
 
@@ -236,11 +225,6 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
     )
 
     $formattedConnStr = [string]::Format("SubscriptionId={0};HttpRecorderMode={1};Environment={2}", $SubscriptionId, $RecordMode, $TargetEnvironment)
-
-    if([string]::IsNullOrEmpty($UserId) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";UserId={0}"), $UserId)
-    }
 
     if([string]::IsNullOrEmpty($TenantId) -eq $false)
     {
@@ -314,7 +298,7 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
     }
 
     Write-Host "Below connection string is ready to be set"
-    Print-ConnectionString $UserId $SubscriptionId $TenantId $ServicePrincipal $ServicePrincipalSecret $RecordMode $TargetEnvironment
+    Print-ConnectionString $SubscriptionId $TenantId $ServicePrincipal $ServicePrincipalSecret $RecordMode $TargetEnvironment
 
     #Set connection string to Environment variable
     $env:TEST_CSM_ORGID_AUTHENTICATION=$formattedConnStr
@@ -323,23 +307,16 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
 
     # Retrieve the environment variable
     Write-Host ""
-    Write-Host "Below connection string was set. Start Visual Studio by typing devenv" -ForegroundColor Green
+    Write-Host "Below connection string was set. Please open your service's solution in Visual Studio and run your tests from the Test Explorer." -ForegroundColor Green
     [Environment]::GetEnvironmentVariable($envVariableName)
     Write-Host ""
     
     Write-Host "If your needs demand you to set connection string differently, for all the supported Key/Value pairs in connection string"
-    Write-Host "Please visit https://github.com/Azure/azure-powershell/blob/dev/documentation/Using-Azure-TestFramework.md" -ForegroundColor Yellow
+    Write-Host "Please visit https://github.com/Azure/azure-powershell/blob/master/documentation/testing-docs/using-azure-test-framework.md" -ForegroundColor Yellow
 }
 
 Function Print-ConnectionString([string]$uid, [string]$subId, [string]$aadTenant, [string]$spn, [string]$spnSecret, [string]$recordMode, [string]$targetEnvironment)
 {
-
-    if([string]::IsNullOrEmpty($uid) -eq $false)
-    {
-        Write-Host "UserId=" -ForegroundColor Green -NoNewline
-        Write-Host $uid";" -NoNewline 
-    }
-
     if([string]::IsNullOrEmpty($subId) -eq $false)
     {
         Write-Host "SubscriptionId=" -ForegroundColor Green -NoNewline
