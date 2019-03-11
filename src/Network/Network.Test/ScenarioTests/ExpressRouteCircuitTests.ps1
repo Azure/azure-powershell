@@ -110,9 +110,9 @@ function Test-ExpressRouteCircuitStageCRUD
       # set
       $circuit.AllowClassicOperations = $false
       $circuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
-	  
-	  		$actual = Get-AzExpressRouteCircuitStats -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name 
-			Assert-AreEqual $actual.PrimaryBytesIn 0
+
+      $actual = Get-AzExpressRouteCircuitStats -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name 
+      Assert-AreEqual $actual.PrimaryBytesIn 0
 
 	  #move
 	  $job = Move-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname -Location $location -ServiceKey $circuit.ServiceKey -Force -AsJob
@@ -123,10 +123,19 @@ function Test-ExpressRouteCircuitStageCRUD
 	  $job | Wait-Job
 	  $delete = $job | Receive-Job
       Assert-AreEqual true $delete
-		      
+
+      # Check that the circuit was deleted
       $list = Get-AzExpressRouteCircuit -ResourceGroupName $rgname
-      Assert-AreEqual 0 @($list).Count
-      
+      Assert-Null ($list | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $circuitName });
+
+      $list = Get-AzExpressRouteCircuit -ResourceGroupName "*"
+      Assert-Null ($list | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $circuitName });
+
+      $list = Get-AzExpressRouteCircuit -Name "*"
+      Assert-Null ($list | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $circuitName });
+
+      $list = Get-AzExpressRouteCircuit -ResourceGroupName "*" -Name "*"
+      Assert-Null ($list | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $circuitName });
     }
     finally
     {

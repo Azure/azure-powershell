@@ -33,7 +33,8 @@ You can get a single route table, or get all the route tables in a resource grou
 
 ### Example 1: Get a route table
 ```
-PS C:\>Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01"
+PS C:\> Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01"
+
 Name              : routetable01
 ResourceGroupName : ResourceGroup11
 Location          : eastus
@@ -58,6 +59,57 @@ Subnets           : []
 ```
 
 This command gets the route table named RouteTable01 in the resource group named ResourceGroup11.
+
+### Example 2: List route tables using filtering
+```
+PS C:\> Get-AzRouteTable -Name RouteTable*
+
+Name              : routetable01
+ResourceGroupName : ResourceGroup11
+Location          : eastus
+Id                : /subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/ResourceGroup11/providers/Microsoft.Networ
+                    k/routeTables/routetable01
+Etag              : W/"db5f4e12-3f34-465b-92dd-0ab3bf6fc274"
+ProvisioningState : Succeeded
+Tags              : 
+Routes            : [
+                      {
+                        "Name": "route07",
+                        "Etag": "W/\"db5f4e12-3f34-465b-92dd-0ab3bf6fc274\"",
+                        "Id": "/subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/ResourceGroup11/providers/Micro
+                    soft.Network/routeTables/routetable01/routes/route07",
+                        "AddressPrefix": "10.1.0.0/16",
+                        "NextHopType": "VnetLocal",
+                        "NextHopIpAddress": null, 
+                        "ProvisioningState": "Succeeded"
+                      }
+                    ] 
+Subnets           : []
+
+Name              : routetable02
+ResourceGroupName : ResourceGroup11
+Location          : eastus
+Id                : /subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/ResourceGroup11/providers/Microsoft.Networ
+                    k/routeTables/routetable02
+Etag              : W/"db5f4e12-3f34-465b-92dd-0ab3bf6fc274"
+ProvisioningState : Succeeded
+Tags              : 
+Routes            : [
+                      {
+                        "Name": "route07",
+                        "Etag": "W/\"db5f4e12-3f34-465b-92dd-0ab3bf6fc274\"",
+                        "Id": "/subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/ResourceGroup11/providers/Micro
+                    soft.Network/routeTables/routetable02/routes/route07",
+                        "AddressPrefix": "10.1.0.0/16",
+                        "NextHopType": "VnetLocal",
+                        "NextHopIpAddress": null, 
+                        "ProvisioningState": "Succeeded"
+                      }
+                    ] 
+Subnets           : []
+```
+
+This command gets all route tables whose name starts with "RouteTable"
 
 ## PARAMETERS
 

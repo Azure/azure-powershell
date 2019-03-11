@@ -25,18 +25,13 @@ namespace Microsoft.Azure.Commands.Network
     public class GetAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = "GetByNameParameterSet",
+            Mandatory = false,
+            ParameterSetName = "ListParameterSet",
             HelpMessage = "The name of the service endpoint policy")]
         [ResourceNameCompleter("Microsoft.Network/serviceEndpointPolicies", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.",
-           ParameterSetName = "GetByNameParameterSet")]
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
@@ -66,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.Name = resourceIdentifier.ResourceName;
                 }
 
-                if (!string.IsNullOrEmpty(this.Name))
+                if (ShouldGetByName(ResourceGroupName, Name))
                 {
                     PSServiceEndpointPolicy serviceEndpointPolicy;
                     serviceEndpointPolicy = this.GetServiceEndpointPolicy(this.ResourceGroupName, this.Name);
@@ -75,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
                 else
                 {
                     IEnumerable<PSServiceEndpointPolicy> serviceEndpointPolicies = null;
-                    if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                    if (ShouldListByResourceGroup(ResourceGroupName, Name))
                     {
                         serviceEndpointPolicies = ListServiceEndpointPolicies(this.ResourceGroupName);
                     }
@@ -84,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
                         serviceEndpointPolicies = ListServiceEndpointPolicies(string.Empty);
                     }
 
-                    WriteObject(serviceEndpointPolicies, true);
+                    WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, serviceEndpointPolicies), true);
                 }
             }
         }

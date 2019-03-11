@@ -244,5 +244,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             return HelperUtils.GetPagedList(listAsync, listNextAsync);
         }
+
+        /// <summary>
+        /// Lists workload items according to the query filter and the pagination params
+        /// </summary>
+        /// <param name="containrName">Query filter</param>
+        /// <param name="queryFilter">Query filter</param>
+        /// <param name="skipToken">Skip token for pagination</param>
+        /// <returns>List of protectable items</returns>
+        public List<WorkloadItemResource> ListWorkloadItem(
+            string containerName,
+            ODataQuery<BMSWorkloadItemQueryObject> queryFilter,
+            string skipToken = default(string),
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            Func<RestAzureNS.IPage<WorkloadItemResource>> listAsync =
+                () => BmsAdapter.Client.BackupWorkloadItems.ListWithHttpMessagesAsync(
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    AzureFabricName,
+                    containerName,
+                    queryFilter,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            Func<string, RestAzureNS.IPage<WorkloadItemResource>> listNextAsync =
+                nextLink => BmsAdapter.Client.BackupWorkloadItems.ListNextWithHttpMessagesAsync(
+                    nextLink,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            return HelperUtils.GetPagedList(listAsync, listNextAsync);
+        }
     }
 }

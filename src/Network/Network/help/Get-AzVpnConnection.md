@@ -64,7 +64,7 @@ ConnectionBandwidth       : 20
 EnableBgp                 : False
 ProvisioningState         : testConnection
 Name                      : ps9709
-Etag                      : W/"4580a2e2-2fab-4cff-88eb-92013a76b5a8"
+Etag                      : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 Id                        : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection
 ```
 
@@ -74,6 +74,42 @@ A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
 Once the gateway has been created, it is connected to the VpnSite using the New-AzVpnConnection command.
 
 Then it gets the connection using the connection name.
+
+### Example 2
+
+```powershell
+PS C:\> Get-AzVpnConnection -ResourceGroupName ps9361 -ParentResourceName testvpngw -Name test*
+
+RemoteVpnSite             : Microsoft.Azure.Commands.Network.Models.PSResourceId
+SharedKey                 :
+VpnConnectionProtocolType : IKEv2
+ConnectionStatus          :
+EgressBytesTransferred    : 0
+IngressBytesTransferred   : 0
+IpsecPolicies             : {}
+ConnectionBandwidth       : 20
+EnableBgp                 : False
+ProvisioningState         : testConnection
+Name                      : ps9709
+Etag                      : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+Id                        : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection1
+
+RemoteVpnSite             : Microsoft.Azure.Commands.Network.Models.PSResourceId
+SharedKey                 :
+VpnConnectionProtocolType : IKEv2
+ConnectionStatus          :
+EgressBytesTransferred    : 0
+IngressBytesTransferred   : 0
+IpsecPolicies             : {}
+ConnectionBandwidth       : 20
+EnableBgp                 : False
+ProvisioningState         : testConnection
+Name                      : ps9709
+Etag                      : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+Id                        : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection2
+```
+
+This cmdlet gets all connections that start with "test".
 
 ## PARAMETERS
 

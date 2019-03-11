@@ -68,6 +68,15 @@ function Test-VirtualNetworkCRUD
         $listAll = Get-AzvirtualNetwork
         Assert-NotNull $listAll
 
+        $listAll = Get-AzvirtualNetwork -ResourceGroupName "*"
+        Assert-NotNull $listAll
+
+        $listAll = Get-AzvirtualNetwork -Name "*"
+        Assert-NotNull $listAll
+
+        $listAll = Get-AzvirtualNetwork -ResourceGroupName "*" -Name "*"
+        Assert-NotNull $listAll
+
         # Test virtual network private ip address - available - TestByResource
         $testResponse1 = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Test-AzPrivateIPAddressAvailability -IPAddress "10.0.1.10"
         Assert-AreEqual true $testResponse1.Available
@@ -532,6 +541,22 @@ function Test-VirtualNetworkPeeringCRUD
         Assert-AreEqual $listPeer[0].UseRemoteGateways $false
         Assert-Null $listPeer[0].RemoteGateways
         Assert-Null $listPeer[0].$peer.RemoteVirtualNetworkAddressSpace
+
+        # List Peer
+        $listPeer = Get-AzVirtualNetworkPeering -Name "*" -VirtualNetworkName $vnet1Name -ResourceGroupName $rgname
+        
+        Assert-AreEqual 1 @($listPeer).Count
+        Assert-AreEqual $listPeer[0].ResourceGroupName $rgname    
+        Assert-AreEqual $listPeer[0].Name $peerName    
+        Assert-AreEqual $listPeer[0].VirtualNetworkName $vnet1Name
+        Assert-AreEqual "Succeeded" $listPeer[0].ProvisioningState 
+        Assert-AreEqual $listPeer[0].RemoteVirtualNetwork.Id $vnet2.Id
+        Assert-AreEqual $listPeer[0].AllowVirtualNetworkAccess True
+        Assert-AreEqual $listPeer[0].AllowForwardedTraffic True
+        Assert-AreEqual $listPeer[0].AllowGatewayTransit $false
+        Assert-AreEqual $listPeer[0].UseRemoteGateways $false
+        Assert-Null $listPeer[0].RemoteGateways
+        Assert-Null $listPeer[0].$peer.RemoteVirtualNetworkAddressSpace
         
         # Set Peer
         $getPeer.AllowForwardedTraffic = $false
@@ -915,6 +940,15 @@ function Test-VirtualNetworkSubnetServiceEndpointPolicies
         Assert-NotNull $getserviceEndpointPolicyList;
 
         $getserviceEndpointPolicyListAll = Get-AzServiceEndpointPolicy;
+        Assert-NotNull $getserviceEndpointPolicyListAll;
+
+        $getserviceEndpointPolicyListAll = Get-AzServiceEndpointPolicy -ResourceGroupName "*"
+        Assert-NotNull $getserviceEndpointPolicyListAll;
+
+        $getserviceEndpointPolicyListAll = Get-AzServiceEndpointPolicy -Name "*"
+        Assert-NotNull $getserviceEndpointPolicyListAll;
+
+        $getserviceEndpointPolicyListAll = Get-AzServiceEndpointPolicy -ResourceGroupName "*" -Name "*"
         Assert-NotNull $getserviceEndpointPolicyListAll;
 
         $getserviceEndpointPolicy = Get-AzServiceEndpointPolicy -ResourceId $serviceEndpointPolicy.Id;
