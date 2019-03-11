@@ -1,4 +1,50 @@
-﻿## 1.4.0 - February 2019
+## 1.5.0 - March 2019
+#### Az.Accounts
+* Add 'Register-AzModule' command to support AutoRest generated cmdlets
+* Update examples for Connect-AzAccount
+
+#### Az.Automation
+* Fixed issue when retreiving certain monthly schedules in several Azure Automation cmdlets
+* Fix Get-AzAutomationDscNode returning just top 20 nodes. Now it returns all nodes
+
+#### Az.Cdn
+* Added new Powershell cmdlets for Enable/Disable Custom Domain Https and deprecated the old ones
+
+#### Az.Compute
+* Add wildcard support to Get cmdlets
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 3.0.1
+
+#### Az.LogicApp
+* Fix for ListWorkflows only retrieving the first page of results
+
+#### Az.Network
+* Add wildcard support to Network cmdlets
+
+#### Az.RecoveryServices
+* Added Sql server in Azure VM support
+* SDK Update
+* Removed VMappContainer check in Get-ProtectableItem
+* Added Name and ServerName as parameters for Get-ProtectableItem
+
+#### Az.Resources
+* Add `-TemplateObject` parameter to deployment cmdlets
+    - More information here: https://github.com/Azure/azure-powershell/issues/2933
+* Fix issue when piping the result of `Get-AzResource` to `Set-AzResource`
+    - More information here: https://github.com/Azure/azure-powershell/issues/8240
+* Fix issue with JSON data type change when running `Set-AzResource`
+    - More information here: https://github.com/Azure/azure-powershell/issues/7930
+
+#### Az.Sql
+* Updating AuditingEndpointsCommunicator.
+    - Fixing the behavior of an edge case while creating new diagnostic settings.
+
+#### Az.Storage
+* Support Kind BlockBlobStorage when create Storage account
+       - New-AzStorageAccount
+
+## 1.4.0 - February 2019
 #### Az.AnalysisServices
 * Deprecated AddAzureASAccount cmdlet
 
@@ -20,7 +66,7 @@
 * Add cmdlets for ADL deleted item enumerate and restore
 
 #### Az.EventHub
-* Added new boolean property SkipEmptyArchives to Skip Empty Archives in CaptureDescription class of Eventhub 
+* Added new boolean property SkipEmptyArchives to Skip Empty Archives in CaptureDescription class of Eventhub
 
 #### Az.KeyVault
 * Fix tagging on Set-AzKeyVaultSecret
@@ -48,8 +94,8 @@
 
 #### Az.OperationalInsights
 * Additional support for New and Get ApplicationInsights data source.
-    - Added new 'ApplicationInsights' kind to support Get specific and Get all ApplicationInsights data sources for given workspace. 
-    - Added New-AzOperationalInsightsApplicationInsightsDataSource cmdlet for creating data source by given Application-Insights resource parameters: subscription Id, resourceGroupName and name. 
+    - Added new 'ApplicationInsights' kind to support Get specific and Get all ApplicationInsights data sources for given workspace.
+    - Added New-AzOperationalInsightsApplicationInsightsDataSource cmdlet for creating data source by given Application-Insights resource parameters: subscription Id, resourceGroupName and name.
 
 #### Az.Resources
 * Fix for issue https://github.com/Azure/azure-powershell/issues/8166
@@ -80,9 +126,9 @@ General availability for Az.AnalysisServices module.
 General availability for Az.RecoveryServices module.
 
 #### Az.Resources
-* Fix tagging for resource groups 
+* Fix tagging for resource groups
     - More information here: https://github.com/Azure/azure-powershell/issues/8166
-* Fix issue where `Get-AzureRmRoleAssignment` doesn't respect -ErrorAction 
+* Fix issue where `Get-AzureRmRoleAssignment` doesn't respect -ErrorAction
     - More information here: https://github.com/Azure/azure-powershell/issues/8235
 
 #### Az.Sql

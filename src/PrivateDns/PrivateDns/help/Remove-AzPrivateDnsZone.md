@@ -205,6 +205,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Boolean
 
+## NOTES
+
 ## RELATED LINKS
 
 [Get-AzPrivateDnsZone](./Get-AzPrivateDnsZone.md)

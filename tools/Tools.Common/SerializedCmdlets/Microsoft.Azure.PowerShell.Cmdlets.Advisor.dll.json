@@ -123,7 +123,7 @@
               "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "SuppressionIds": "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]",
               "LastUpdated": "System.Nullable`1[System.DateTime]",
-              "Id": "System.String",
+              "ResourceId": "System.String",
               "Category": "System.String",
               "Impact": "System.String",
               "ImpactedField": "System.String",
@@ -173,7 +173,7 @@
           "ValidateSet": [],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "RecommendationName",
@@ -453,7 +453,7 @@
                     "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "SuppressionIds": "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]",
                     "LastUpdated": "System.Nullable`1[System.DateTime]",
-                    "Id": "System.String",
+                    "ResourceId": "System.String",
                     "Category": "System.String",
                     "Impact": "System.String",
                     "ImpactedField": "System.String",
@@ -503,7 +503,7 @@
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
+                "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
               "Position": 0,
@@ -619,7 +619,7 @@
               "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "SuppressionIds": "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]",
               "LastUpdated": "System.Nullable`1[System.DateTime]",
-              "Id": "System.String",
+              "ResourceId": "System.String",
               "Category": "System.String",
               "Impact": "System.String",
               "ImpactedField": "System.String",
@@ -703,7 +703,7 @@
               "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "SuppressionIds": "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]",
               "LastUpdated": "System.Nullable`1[System.DateTime]",
-              "Id": "System.String",
+              "ResourceId": "System.String",
               "Category": "System.String",
               "Impact": "System.String",
               "ImpactedField": "System.String",
@@ -753,7 +753,7 @@
           "ValidateSet": [],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "RecommendationName",
@@ -893,7 +893,7 @@
                     "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "SuppressionIds": "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]",
                     "LastUpdated": "System.Nullable`1[System.DateTime]",
-                    "Id": "System.String",
+                    "ResourceId": "System.String",
                     "Category": "System.String",
                     "Impact": "System.String",
                     "ImpactedField": "System.String",
@@ -943,7 +943,7 @@
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
+                "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
               "Position": 0,
@@ -1359,7 +1359,7 @@
               "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "SuppressionIds": "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]",
               "LastUpdated": "System.Nullable`1[System.DateTime]",
-              "Id": "System.String",
+              "ResourceId": "System.String",
               "Category": "System.String",
               "Impact": "System.String",
               "ImpactedField": "System.String",
@@ -1472,24 +1472,6 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "Refresh",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzContext",
@@ -1582,30 +1564,6 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Refresh",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzContext",
@@ -1685,30 +1643,6 @@
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Refresh",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1821,7 +1755,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "InputObjectLowCpuExcludeParameterSet",
+      "DefaultParameterSetName": "InputObjectRgExcludeParameterSet",
       "OutputTypes": [
         {
           "Type": {
@@ -1883,7 +1817,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2037,7 +1971,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2196,7 +2130,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],

@@ -66,6 +66,12 @@ function Test-LocalNetworkGatewayCRUD
 	  Assert-AreEqual $bgpPeeringAddress $expected.BgpSettings.BgpPeeringAddress
 	  Assert-AreEqual $peerWeight $expected.BgpSettings.PeerWeight
 
+	  $list = Get-AzLocalNetworkGateway -ResourceGroupName "*" -Name "*"
+	  Assert-True { $list.Count -ge 0 }
+
+	  $list = Get-AzLocalNetworkGateway -ResourceGroupName "*"
+	  Assert-True { $list.Count -ge 0 }
+
 	  # Update BGP settings
 	  $asn = 1337
 	  $actual = Set-AzLocalNetworkGateway -LocalNetworkGateway $expected -Asn $asn

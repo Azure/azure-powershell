@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzNetworkInterface
 
 ## SYNOPSIS
-Sets the goal state for a network interface.
+Updates a network interface.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Set-AzNetworkInterface -NetworkInterface <PSNetworkInterface> [-AsJob]
 ```
 
 ## DESCRIPTION
-The **Set-AzNetworkInterface** sets the goal state for an Azure network interface.
+The **Set-AzNetworkInterface** updates a network interface.
 
 ## EXAMPLES
 
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkInterface
-Specifies a **NetworkInterface** object that represents the goal state for a network interface.
+Specifies a network interface object representing the state to which the network interface should be set.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNetworkInterface
