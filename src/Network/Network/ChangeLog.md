@@ -18,6 +18,8 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+
+## Version 1.4.0
 * Add ResourceId parameter to Get-AzNetworkInterface
 * Improved error handling for Get-AzVpnClientRevokedCertificate, Get-AzVpnClientRootCertificate
 * Improved Subnet, Primary, PrivateIpAddressVersion parameters processing in
