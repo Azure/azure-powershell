@@ -66,7 +66,7 @@ function Remove-HelperModulesFromAutomationAccount(
     [string[]] $moduleNames) {
     $moduleNames | ForEach-Object {
         try {
-            Write-Verbose "Removing module '$_' form Automation account..."
+            Write-Verbose "Removing module '$_' from Automation account..."
             Remove-AzAutomationModule -AutomationAccountName $automation.AccountName -Name $_ -ResourceGroupName $automation.ResourceGroupName -Force -ErrorAction Stop
         } catch {
             # check if the error text is deferent from the "The module was not found."
