@@ -15,26 +15,47 @@ Enable HTTPS for a custom domain using Front Door managed certificate or using o
 ### ByFieldsParameterSet (Default)
 ```
 Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName <String> -FrontDoorName <String>
- -FrontendEndpointName <String> -CertificateSource <PSCertificateSource> [-VaultId <String>]
- [-SecretName <String>] [-SecretVersion <String>] [-CertificateType <PSCertificateType>]
+ -FrontendEndpointName <String> -CertificateSource <PSCertificateSource> [-CertificateType <PSCertificateType>]
  [-ProtocolType <PSProtocolType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### ByFieldsWithVaultParameterSet
+```
+Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName <String> -FrontDoorName <String>
+ -FrontendEndpointName <String> -CertificateSource <PSCertificateSource> -VaultId <String> -SecretName <String>
+ -SecretVersion <String> [-CertificateType <PSCertificateType>] [-ProtocolType <PSProtocolType>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdParameterSet
 ```
 Enable-AzFrontDoorCustomDomainHttps -ResourceId <String> -CertificateSource <PSCertificateSource>
- [-VaultId <String>] [-SecretName <String>] [-SecretVersion <String>] [-CertificateType <PSCertificateType>]
+ [-CertificateType <PSCertificateType>] [-ProtocolType <PSProtocolType>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdWithVaultParameterSet
+```
+Enable-AzFrontDoorCustomDomainHttps -ResourceId <String> -CertificateSource <PSCertificateSource>
+ -VaultId <String> -SecretName <String> -SecretVersion <String> [-CertificateType <PSCertificateType>]
  [-ProtocolType <PSProtocolType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Enable-AzFrontDoorCustomDomainHttps -CertificateSource <PSCertificateSource> [-VaultId <String>]
- [-SecretName <String>] [-SecretVersion <String>] [-CertificateType <PSCertificateType>]
- [-ProtocolType <PSProtocolType>] -InputObject <PSFrontendEndpoint> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzFrontDoorCustomDomainHttps -InputObject <PSFrontendEndpoint> -CertificateSource <PSCertificateSource>
+ [-CertificateType <PSCertificateType>] [-ProtocolType <PSProtocolType>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByObjectWithVaultParameterSet
+```
+Enable-AzFrontDoorCustomDomainHttps -InputObject <PSFrontendEndpoint> -CertificateSource <PSCertificateSource>
+ -VaultId <String> -SecretName <String> -SecretVersion <String> [-CertificateType <PSCertificateType>]
+ [-ProtocolType <PSProtocolType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +65,7 @@ The **Enable-AzFrontDoorCustomDomainHttps** enables HTTPS for a custom domain.
 
 ### Example 1: Enable HTTPS for a custom domain with FrontDoorName and ResourceGroupName using Front Door managed certificate.
 ```powershell
-PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -CertificateSource FrontDoor
+PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz"
 
 
 HostName                         : frontendpointname1.custom.xyz
@@ -71,7 +92,7 @@ Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" that is part of
 
 ### Example 2: Enable HTTPS for a custom domain with FrontDoorName and ResourceGroupName using own certificate in Key Vault.
 ```powershell
-PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -CertificateSource AzureKeyVault -Vault $vaultId -secretName $secretName -SecretVersion $secretVersion
+PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -Vault $vaultId -secretName $secretName -SecretVersion $secretVersion
 
 
 HostName                         : frontendpointname1.custom.xyz
@@ -98,7 +119,7 @@ Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" that is part of
 
 ### Example 3: Enable HTTPS for a custom domain with PSFrontendEndpoint object using Front Door managed certificate.
 ```powershell
-PS C:\> Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" | Enable-AzFrontDoorCustomDomainHttps -CertificateSource FrontDoor
+PS C:\> Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" | Enable-AzFrontDoorCustomDomainHttps 
 
 
 HostName                         : frontendpointname1.custom.xyz
@@ -125,7 +146,7 @@ Enable HTTPS for a custom domain with PSFrontendEndpoint object using Front Door
 
 ### Example 4: Enable HTTPS for a custom domain with resource id using Front Door managed certificate.
 ```powershell
-PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceId $resourceId -CertificateSource FrontDoor
+PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceId $resourceId
 
 
 HostName                         : frontendpointname1.custom.xyz
@@ -204,7 +225,7 @@ The name of the Front Door.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByFieldsWithVaultParameterSet
 Aliases:
 
 Required: True
@@ -219,7 +240,7 @@ Frontend endpoint name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByFieldsWithVaultParameterSet
 Aliases:
 
 Required: True
@@ -234,7 +255,7 @@ The Frontend endpoint object to update.
 
 ```yaml
 Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint
-Parameter Sets: ByObjectParameterSet
+Parameter Sets: ByObjectParameterSet, ByObjectWithVaultParameterSet
 Aliases:
 
 Required: True
@@ -265,7 +286,7 @@ The resource group to which the Front Door belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByFieldsWithVaultParameterSet
 Aliases:
 
 Required: True
@@ -280,7 +301,7 @@ Resource Id of the Front Door endpoint to enable https
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdParameterSet
+Parameter Sets: ByResourceIdParameterSet, ByResourceIdWithVaultParameterSet
 Aliases:
 
 Required: True
@@ -295,10 +316,10 @@ The name of the Key Vault secret representing the full certificate PFX
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithVaultParameterSet, ByResourceIdWithVaultParameterSet, ByObjectWithVaultParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -310,10 +331,10 @@ The version of the Key Vault secret representing the full certificate PFX
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithVaultParameterSet, ByResourceIdWithVaultParameterSet, ByObjectWithVaultParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -325,10 +346,10 @@ The Key Vault id containing the SSL certificate
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithVaultParameterSet, ByResourceIdWithVaultParameterSet, ByObjectWithVaultParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
