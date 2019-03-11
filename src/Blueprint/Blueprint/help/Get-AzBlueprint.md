@@ -72,7 +72,7 @@ Id                   : /subscriptions/00000000-1111-0000-1111-000000000000/provi
 DefinitionLocationId : 00000000-1111-0000-1111-000000000000
 Versions             : {1.0}
 Description          : Powershell test blueprint
-LastModified         : 2019-02-01
+TimeCreated          : 2019-02-01
 TargetScope          : Subscription
 Parameters           : {storageData_storageAccountType, storageData_location, allowedlocations_listOfAllowedLocations}
 ResourceGroups       : ResourceGroup
@@ -89,7 +89,7 @@ Name                 : PS-MG-BlueprintDefinition
 Id                   : /providers/Microsoft.Management/managementGroups/myManagementGroupId/providers/Microsoft.Blueprint/blueprints/PS-MG-BlueprintDefinition
 DefinitionLocationId : myManagementGroupId
 Versions             : {1.0, 2.0, 3.0, 4.0}
-LastModified         : 2019-03-04
+TimeCreated          : 2019-03-04
 TargetScope          : Subscription
 Parameters           : {enforcetaganditsvalue_tagName, enforcetaganditsvalue_tagValue, [Usergrouporapplicationname]:Contributor_RoleAssignmentName,
                        [Usergrouporapplicationname]:Owner_RoleAssignmentName}
@@ -107,7 +107,7 @@ Id                   : /subscriptions/00000000-1111-0000-1111-000000000000/provi
 DefinitionLocationId : 00000000-1111-0000-1111-000000000000
 Versions             : {1.0}
 Description          : Powershell test blueprint
-LastModified         : 2019-02-01
+TimeCreated          : 2019-02-01
 TargetScope          : Subscription
 Parameters           : {storageData_storageAccountType, storageData_location, allowedlocations_listOfAllowedLocations}
 ResourceGroups       : ResourceGroup
