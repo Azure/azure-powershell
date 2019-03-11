@@ -105,7 +105,7 @@ jobs:
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:Test /p:Configuration=$(Configuration)'
+      arguments: 'build.proj /t:Test /p:Configuration=$(Configuration);Framework=netcoreapp2.1'
 
   - task: PublishPipelineArtifact@0
     displayName: 'Save test'

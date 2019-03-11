@@ -1,25 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IncludeCommonTestProject>false</IncludeCommonTestProject>
+  </PropertyGroup>
   
   <Import Project="$(MSBuildThisFileDirectory)..\..\src\Az.Test.props" />
 
   <PropertyGroup>
     <AssemblyName>Microsoft.Azure.PowerShell.TestFx</AssemblyName>
     <RootNamespace>$(LegacyAssemblyPrefix)TestFx</RootNamespace>
-    <IncludeCommonTestProject>false</IncludeCommonTestProject>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Moq" Version="4.7.145" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
     <ProjectReference Include="$(RepoSrc)Accounts\Authentication\Authentication.csproj" />
     <ProjectReference Include="$(RepoSrc)Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="*.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
