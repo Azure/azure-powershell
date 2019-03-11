@@ -101,6 +101,18 @@ function Test-LoadBalancerCRUDMinimalParameters
         $listLoadBalancer = Get-AzLoadBalancer;
         Assert-NotNull ($listLoadBalancer | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
+        # Get all LoadBalancers in subscription wildcard for resource group
+        $listLoadBalancer = Get-AzLoadBalancer -ResourceGroupName "*";
+        Assert-NotNull ($listLoadBalancer | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all LoadBalancers in subscription wildcard for name
+        $listLoadBalancer = Get-AzLoadBalancer -Name "*";
+        Assert-NotNull ($listLoadBalancer | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all LoadBalancers in subscription wildcard for both resource group and name
+        $listLoadBalancer = Get-AzLoadBalancer -ResourceGroupName "*" -Name "*";
+        Assert-NotNull ($listLoadBalancer | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
         # Remove LoadBalancer
         $job = Remove-AzLoadBalancer -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
         $job | Wait-Job;
@@ -191,6 +203,18 @@ function Test-LoadBalancerCRUDAllParameters
         $listLoadBalancer = Get-AzLoadBalancer;
         Assert-NotNull ($listLoadBalancer | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
+        # Get all LoadBalancers in subscription wildcard for resource group
+        $listLoadBalancer = Get-AzLoadBalancer -ResourceGroupName "*";
+        Assert-NotNull ($listLoadBalancer | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all LoadBalancers in subscription wildcard for name
+        $listLoadBalancer = Get-AzLoadBalancer -Name "*";
+        Assert-NotNull ($listLoadBalancer | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all LoadBalancers in subscription wildcard for both resource group and name
+        $listLoadBalancer = Get-AzLoadBalancer -ResourceGroupName "*" -Name "*";
+        Assert-NotNull ($listLoadBalancer | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
         # Set LoadBalancer
         $vLoadBalancer.Tag = $TagSet;
         $vLoadBalancer = Set-AzLoadBalancer -LoadBalancer $vLoadBalancer;
@@ -212,6 +236,18 @@ function Test-LoadBalancerCRUDAllParameters
 
         # Get all LoadBalancers in subscription
         $listLoadBalancer = Get-AzLoadBalancer;
+        Assert-NotNull ($listLoadBalancer | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all LoadBalancers in subscription wildcard for resource group
+        $listLoadBalancer = Get-AzLoadBalancer -ResourceGroupName "*";
+        Assert-NotNull ($listLoadBalancer | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all LoadBalancers in subscription wildcard for name
+        $listLoadBalancer = Get-AzLoadBalancer -Name "*";
+        Assert-NotNull ($listLoadBalancer | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all LoadBalancers in subscription wildcard for both resource group and name
+        $listLoadBalancer = Get-AzLoadBalancer -ResourceGroupName "*" -Name "*";
         Assert-NotNull ($listLoadBalancer | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove LoadBalancer
@@ -507,7 +543,7 @@ function Test-BackendAddressPoolCRUDMinimalParameters
         # Remove BackendAddressPool
         $vLoadBalancer = Remove-AzLoadBalancerBackendAddressPoolConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
         $vLoadBalancer = Remove-AzLoadBalancerBackendAddressPoolConfig -LoadBalancer $vLoadBalancer -Name $rname;
-        # Additional call to test handling of already deleted subresource
+        # Additional call to test handling of already deleted child resource
         $vLoadBalancer = Remove-AzLoadBalancerBackendAddressPoolConfig -LoadBalancer $vLoadBalancer -Name $rname;
         # Update parent resource
         $vLoadBalancer = Set-AzLoadBalancer -LoadBalancer $vLoadBalancer;
@@ -648,7 +684,7 @@ function Test-LoadBalancingRuleCRUDMinimalParameters
         # Remove LoadBalancingRule
         $vLoadBalancer = Remove-AzLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
         $vLoadBalancer = Remove-AzLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
-        # Additional call to test handling of already deleted subresource
+        # Additional call to test handling of already deleted child resource
         $vLoadBalancer = Remove-AzLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
         # Update parent resource
         $vLoadBalancer = Set-AzLoadBalancer -LoadBalancer $vLoadBalancer;
@@ -820,7 +856,7 @@ function Test-LoadBalancingRuleCRUDAllParameters
         # Remove LoadBalancingRule
         $vLoadBalancer = Remove-AzLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
         $vLoadBalancer = Remove-AzLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
-        # Additional call to test handling of already deleted subresource
+        # Additional call to test handling of already deleted child resource
         $vLoadBalancer = Remove-AzLoadBalancerRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
         # Update parent resource
         $vLoadBalancer = Set-AzLoadBalancer -LoadBalancer $vLoadBalancer;
@@ -944,7 +980,7 @@ function Test-ProbeCRUDMinimalParameters
         # Remove Probe
         $vLoadBalancer = Remove-AzLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
         $vLoadBalancer = Remove-AzLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rname;
-        # Additional call to test handling of already deleted subresource
+        # Additional call to test handling of already deleted child resource
         $vLoadBalancer = Remove-AzLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rname;
         # Update parent resource
         $vLoadBalancer = Set-AzLoadBalancer -LoadBalancer $vLoadBalancer;
@@ -1076,7 +1112,7 @@ function Test-ProbeCRUDAllParameters
         # Remove Probe
         $vLoadBalancer = Remove-AzLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
         $vLoadBalancer = Remove-AzLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rname;
-        # Additional call to test handling of already deleted subresource
+        # Additional call to test handling of already deleted child resource
         $vLoadBalancer = Remove-AzLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rname;
         # Update parent resource
         $vLoadBalancer = Set-AzLoadBalancer -LoadBalancer $vLoadBalancer;
@@ -1202,7 +1238,7 @@ function Test-InboundNatRuleCRUDMinimalParameters
         # Remove InboundNatRule
         $vLoadBalancer = Remove-AzLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
         $vLoadBalancer = Remove-AzLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
-        # Additional call to test handling of already deleted subresource
+        # Additional call to test handling of already deleted child resource
         $vLoadBalancer = Remove-AzLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
         # Update parent resource
         $vLoadBalancer = Set-AzLoadBalancer -LoadBalancer $vLoadBalancer;
@@ -1356,7 +1392,7 @@ function Test-InboundNatRuleCRUDAllParameters
         # Remove InboundNatRule
         $vLoadBalancer = Remove-AzLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
         $vLoadBalancer = Remove-AzLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
-        # Additional call to test handling of already deleted subresource
+        # Additional call to test handling of already deleted child resource
         $vLoadBalancer = Remove-AzLoadBalancerInboundNatRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
         # Update parent resource
         $vLoadBalancer = Set-AzLoadBalancer -LoadBalancer $vLoadBalancer;
@@ -1489,7 +1525,7 @@ function Test-InboundNatPoolCRUDMinimalParameters
         # Remove InboundNatPool
         $vLoadBalancer = Remove-AzLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
         $vLoadBalancer = Remove-AzLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rname;
-        # Additional call to test handling of already deleted subresource
+        # Additional call to test handling of already deleted child resource
         $vLoadBalancer = Remove-AzLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rname;
         # Update parent resource
         $vLoadBalancer = Set-AzLoadBalancer -LoadBalancer $vLoadBalancer;
@@ -1643,7 +1679,7 @@ function Test-InboundNatPoolCRUDAllParameters
         # Remove InboundNatPool
         $vLoadBalancer = Remove-AzLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
         $vLoadBalancer = Remove-AzLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rname;
-        # Additional call to test handling of already deleted subresource
+        # Additional call to test handling of already deleted child resource
         $vLoadBalancer = Remove-AzLoadBalancerInboundNatPoolConfig -LoadBalancer $vLoadBalancer -Name $rname;
         # Update parent resource
         $vLoadBalancer = Set-AzLoadBalancer -LoadBalancer $vLoadBalancer;
@@ -1771,7 +1807,7 @@ function Test-OutboundRuleCRUDMinimalParameters
         # Remove OutboundRule
         $vLoadBalancer = Remove-AzLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
         $vLoadBalancer = Remove-AzLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
-        # Additional call to test handling of already deleted subresource
+        # Additional call to test handling of already deleted child resource
         $vLoadBalancer = Remove-AzLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
         # Update parent resource
         $vLoadBalancer = Set-AzLoadBalancer -LoadBalancer $vLoadBalancer;
@@ -1920,7 +1956,7 @@ function Test-OutboundRuleCRUDAllParameters
         # Remove OutboundRule
         $vLoadBalancer = Remove-AzLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
         $vLoadBalancer = Remove-AzLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
-        # Additional call to test handling of already deleted subresource
+        # Additional call to test handling of already deleted child resource
         $vLoadBalancer = Remove-AzLoadBalancerOutboundRuleConfig -LoadBalancer $vLoadBalancer -Name $rname;
         # Update parent resource
         $vLoadBalancer = Set-AzLoadBalancer -LoadBalancer $vLoadBalancer;
