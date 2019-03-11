@@ -43,8 +43,8 @@
                 </ItemSelectionCondition>
               </ListItem>
               <ListItem>
-                <Label>LastModified</Label>
-                <ScriptBlock>$_.Status.LastModified.ToString("yyyy-MM-dd")</ScriptBlock>
+                <Label>TimeCreated</Label>
+                <ScriptBlock>$_.Status.TimeCreated.ToString("yyyy-MM-dd")</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>TargetScope</Label>
@@ -97,8 +97,8 @@
                 </ItemSelectionCondition>
               </ListItem>
               <ListItem>
-                <Label>LastModified</Label>
-                <ScriptBlock>$_.Status.LastModified.ToString("yyyy-MM-dd")</ScriptBlock>
+                <Label>TimeCreated</Label>
+                <ScriptBlock>$_.Status.TimeCreated.ToString("yyyy-MM-dd")</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>TargetScope</Label>

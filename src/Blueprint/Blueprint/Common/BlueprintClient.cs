@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             {
                 if (latest == null)
                     latest = blueprint;
-                else if (CompareDates(blueprint.Status.LastModified, latest.Status.LastModified) > 0)
+                else if (CompareDates(blueprint.Status.TimeCreated, latest.Status.TimeCreated) > 0)
                     latest = blueprint;
             }
 
