@@ -13,9 +13,17 @@ Adds a probe configuration to a load balancer.
 
 ## SYNTAX
 
+### ByParentResource (Default)
 ```
 Add-AzLoadBalancerProbeConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>] -Port <Int32>
  -IntervalInSeconds <Int32> -ProbeCount <Int32> [-RequestPath <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByParentName
+```
+Add-AzLoadBalancerProbeConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-Protocol <String>] -Port <Int32> -IntervalInSeconds <Int32> -ProbeCount <Int32> [-RequestPath <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -69,7 +77,22 @@ This cmdlet adds a probe configuration to the load balancer that this parameter 
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
-Parameter Sets: (All)
+Parameter Sets: ByParentResource
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -LoadBalancerName
+Load Balancer name
+
+```yaml
+Type: System.String
+Parameter Sets: ByParentName
 Aliases:
 
 Required: True
@@ -152,6 +175,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource group name
+
+```yaml
+Type: System.String
+Parameter Sets: ByParentName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

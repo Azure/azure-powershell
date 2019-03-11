@@ -1,64 +1,60 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azloadbalanceroutboundruleconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/update-azloadbalanceroutboundruleconfig
 schema: 2.0.0
 ---
 
-# Set-AzLoadBalancerOutboundRuleConfig
+# Update-AzLoadBalancerOutboundRuleConfig
 
 ## SYNOPSIS
-Sets an outbound rule configuration for a load balancer.
+Incrementally updates outbound rule of a load balancer.
 
 ## SYNTAX
 
 ### SetByResourceParent (Default)
 ```
-Set-AzLoadBalancerOutboundRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String>
- [-AllocatedOutboundPort <Int32>] -Protocol <String> [-EnableTcpReset] [-IdleTimeoutInMinutes <Int32>]
- -FrontendIpConfiguration <PSResourceId[]> -BackendAddressPool <PSBackendAddressPool>
+Update-AzLoadBalancerOutboundRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String>
+ [-AllocatedOutboundPort <Int32>] [-Protocol <String>] [-EnableTcpReset] [-IdleTimeoutInMinutes <Int32>]
+ [-FrontendIpConfiguration <PSResourceId[]>] [-BackendAddressPool <PSBackendAddressPool>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParent
 ```
-Set-AzLoadBalancerOutboundRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String>
- [-AllocatedOutboundPort <Int32>] -Protocol <String> [-EnableTcpReset] [-IdleTimeoutInMinutes <Int32>]
- -FrontendIpConfiguration <PSResourceId[]> -BackendAddressPoolId <String>
+Update-AzLoadBalancerOutboundRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String>
+ [-AllocatedOutboundPort <Int32>] [-Protocol <String>] [-EnableTcpReset] [-IdleTimeoutInMinutes <Int32>]
+ [-FrontendIpConfiguration <PSResourceId[]>] [-BackendAddressPoolId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParentName
 ```
-Set-AzLoadBalancerOutboundRuleConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
- [-AllocatedOutboundPort <Int32>] -Protocol <String> [-EnableTcpReset] [-IdleTimeoutInMinutes <Int32>]
- -FrontendIpConfiguration <PSResourceId[]> -BackendAddressPoolId <String>
+Update-AzLoadBalancerOutboundRuleConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-AllocatedOutboundPort <Int32>] [-Protocol <String>] [-EnableTcpReset] [-IdleTimeoutInMinutes <Int32>]
+ [-FrontendIpConfiguration <PSResourceId[]>] [-BackendAddressPoolId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceParentName
 ```
-Set-AzLoadBalancerOutboundRuleConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
- [-AllocatedOutboundPort <Int32>] -Protocol <String> [-EnableTcpReset] [-IdleTimeoutInMinutes <Int32>]
- -FrontendIpConfiguration <PSResourceId[]> -BackendAddressPool <PSBackendAddressPool>
+Update-AzLoadBalancerOutboundRuleConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-AllocatedOutboundPort <Int32>] [-Protocol <String>] [-EnableTcpReset] [-IdleTimeoutInMinutes <Int32>]
+ [-FrontendIpConfiguration <PSResourceId[]>] [-BackendAddressPool <PSBackendAddressPool>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzLoadBalancerOutboundRuleConfig** cmdlet sets an outbound rule configuration for an Azure load balancer.
+The **Update-AzLoadBalancerOutboundRuleConfig** incrementally updates outbound rule of a load balancer. I.e. only the specified parameters values are changed and values of the unspecified properties are kept unlike of Set-AzLoadBalancerOutboundRuleConfig cmdlet.
 
 ## EXAMPLES
 
-### Example 1: Modify the outbound rule configuration on a load balancer
+### Example 1
 ```powershell
-PS C:\>$slb = Get-AzLoadBalancer -ResourceGroupName "MyResourceGroup" -Name "MyLoadBalancer"
-PS C:\>$slb | Add-AzLoadBalancerOutboundRuleConfig -Name "NewRule" -Protocol "Tcp" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -BackendAddressPool $slb.BackendAddressPools[0] -IdleTimeoutInMinutes 5
-PS C:\>$slb | Set-AzLoadBalancerOutboundRuleConfig -Name "NewRule" -Protocol "Tcp" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -BackendAddressPool $slb.BackendAddressPools[0] -IdleTimeoutInMinutes 10
+PS C:> Update-AzLoadBalancerOutboundRuleConfig -LoadBalancer $lb -Name $outboundRuleName -IdleTimeoutInMinutes 17
 ```
 
-The first command gets the load balancer named MyLoadBalancer, and then stores it in the $slb variable.
-The second command uses the pipeline operator to pass the load balancer in $slb to Add-AzLoadBalancerOutboundRuleConfig, which adds an outbound rule configuration to it.
-The third command passes the load balancer to **Set-AzLoadBalancerOutboundRuleConfig**, which saves and updates the outbound rule configuration.
+This command updates outbound rule timeout in minutes keeping other properties unchanged.
 
 ## PARAMETERS
 
@@ -86,7 +82,7 @@ Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
 Parameter Sets: SetByResourceParent, SetByResourceParentName
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -102,7 +98,7 @@ Type: System.String
 Parameter Sets: SetByResourceIdParent, SetByResourceIdParentName
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -148,7 +144,7 @@ Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -223,7 +219,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -283,9 +279,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 
-### System.Int32
-
 ### System.String
+
+### System.Int32
 
 ### Microsoft.Azure.Commands.Network.Models.PSResourceId[]
 
@@ -298,11 +294,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Add-AzLoadBalancerOutboundRuleConfig](./Add-AzLoadBalancerOutboundRuleConfig.md)
-
-[Get-AzLoadBalancerOutboundRuleConfig](./Get-AzLoadBalancerOutboundRuleConfig.md)
-
-[New-AzLoadBalancerOutboundRuleConfig](./New-AzLoadBalancerOutboundRuleConfig.md)
-
-[Remove-AzLoadBalancerOutboundRuleConfig](./Remove-AzLoadBalancerOutboundRuleConfig.md)

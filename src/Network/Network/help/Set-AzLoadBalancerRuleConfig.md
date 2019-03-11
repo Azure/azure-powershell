@@ -13,7 +13,7 @@ Updates a rule configuration for a load balancer.
 
 ## SYNTAX
 
-### SetByResource (Default)
+### SetByResourceParent (Default)
 ```
 Set-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>]
  [-LoadDistribution <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>]
@@ -22,13 +22,31 @@ Set-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Pro
  [-Probe <PSProbe>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetByResourceId
+### SetByResourceIdParent
 ```
 Set-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>]
  [-LoadDistribution <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>]
  [-EnableFloatingIP] [-EnableTcpReset] [-DisableOutboundSNAT] [-FrontendIpConfigurationId <String>]
  [-BackendAddressPoolId <String>] [-ProbeId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### SetByResourceIdParentName
+```
+Set-AzLoadBalancerRuleConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-Protocol <String>] [-LoadDistribution <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>]
+ [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [-EnableTcpReset] [-DisableOutboundSNAT]
+ [-FrontendIpConfigurationId <String>] [-BackendAddressPoolId <String>] [-ProbeId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByResourceParentName
+```
+Set-AzLoadBalancerRuleConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-Protocol <String>] [-LoadDistribution <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>]
+ [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [-EnableTcpReset] [-DisableOutboundSNAT]
+ [-FrontendIpConfiguration <PSFrontendIPConfiguration>] [-BackendAddressPool <PSBackendAddressPool>]
+ [-Probe <PSProbe>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +73,7 @@ Specifies a **BackendAddressPool** object to associate with a load balancer rule
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
-Parameter Sets: SetByResource
+Parameter Sets: SetByResourceParent, SetByResourceParentName
 Aliases:
 
 Required: False
@@ -70,7 +88,7 @@ Specifies the ID of a **BackendAddressPool** object to associate with a load bal
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceId
+Parameter Sets: SetByResourceIdParent, SetByResourceIdParentName
 Aliases:
 
 Required: False
@@ -160,7 +178,7 @@ Specifies a list of front-end IP addresses to associate with a load balancer rul
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration
-Parameter Sets: SetByResource
+Parameter Sets: SetByResourceParent, SetByResourceParentName
 Aliases:
 
 Required: False
@@ -175,7 +193,7 @@ Specifies the ID for a front-end IP address configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceId
+Parameter Sets: SetByResourceIdParent, SetByResourceIdParentName
 Aliases:
 
 Required: False
@@ -221,7 +239,22 @@ This cmdlet updates a rule configuration for the load balancer that this paramet
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
-Parameter Sets: (All)
+Parameter Sets: SetByResourceParent, SetByResourceIdParent
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -LoadBalancerName
+The reference of the load balancer resource.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceIdParentName, SetByResourceParentName
 Aliases:
 
 Required: True
@@ -267,7 +300,7 @@ Specifies a probe to associate with a load balancer rule configuration.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSProbe
-Parameter Sets: SetByResource
+Parameter Sets: SetByResourceParent, SetByResourceParentName
 Aliases:
 
 Required: False
@@ -282,7 +315,7 @@ Specifies the ID of the probe to associate with a load balancer rule configurati
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceId
+Parameter Sets: SetByResourceIdParent, SetByResourceIdParentName
 Aliases:
 
 Required: False
@@ -305,6 +338,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The reference of the load balancer resource.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceIdParentName, SetByResourceParentName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

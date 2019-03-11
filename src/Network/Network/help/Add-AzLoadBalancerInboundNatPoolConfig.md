@@ -13,7 +13,7 @@ Adds an inbound NAT pool to a load balancer.
 
 ## SYNTAX
 
-### SetByResource (Default)
+### SetByResourceParent (Default)
 ```
 Add-AzLoadBalancerInboundNatPoolConfig -LoadBalancer <PSLoadBalancer> -Name <String> -Protocol <String>
  -FrontendPortRangeStart <Int32> -FrontendPortRangeEnd <Int32> -BackendPort <Int32>
@@ -22,12 +22,29 @@ Add-AzLoadBalancerInboundNatPoolConfig -LoadBalancer <PSLoadBalancer> -Name <Str
  [-Confirm] [<CommonParameters>]
 ```
 
-### SetByResourceId
+### SetByResourceIdParent
 ```
 Add-AzLoadBalancerInboundNatPoolConfig -LoadBalancer <PSLoadBalancer> -Name <String> -Protocol <String>
  -FrontendPortRangeStart <Int32> -FrontendPortRangeEnd <Int32> -BackendPort <Int32>
  [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [-EnableTcpReset] [-FrontendIpConfigurationId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByResourceIdParentName
+```
+Add-AzLoadBalancerInboundNatPoolConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ -Protocol <String> -FrontendPortRangeStart <Int32> -FrontendPortRangeEnd <Int32> -BackendPort <Int32>
+ [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [-EnableTcpReset] [-FrontendIpConfigurationId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByResourceParentName
+```
+Add-AzLoadBalancerInboundNatPoolConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ -Protocol <String> -FrontendPortRangeStart <Int32> -FrontendPortRangeEnd <Int32> -BackendPort <Int32>
+ [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [-EnableTcpReset]
+ [-FrontendIpConfiguration <PSFrontendIPConfiguration>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +122,7 @@ Accept wildcard characters: False
 ### -FrontendIpConfiguration
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration
-Parameter Sets: SetByResource
+Parameter Sets: SetByResourceParent, SetByResourceParentName
 Aliases:
 
 Required: False
@@ -118,7 +135,7 @@ Accept wildcard characters: False
 ### -FrontendIpConfigurationId
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceId
+Parameter Sets: SetByResourceIdParent, SetByResourceIdParentName
 Aliases:
 
 Required: False
@@ -172,7 +189,22 @@ Accept wildcard characters: False
 ### -LoadBalancer
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
-Parameter Sets: (All)
+Parameter Sets: SetByResourceParent, SetByResourceIdParent
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -LoadBalancerName
+The reference of the load balancer resource.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceIdParentName, SetByResourceParentName
 Aliases:
 
 Required: True
@@ -205,6 +237,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The reference of the load balancer resource.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceIdParentName, SetByResourceParentName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

@@ -13,8 +13,15 @@ Gets the rule configuration for a load balancer.
 
 ## SYNTAX
 
+### ByParentResource (Default)
 ```
 Get-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByParentName
+```
+Get-AzLoadBalancerRuleConfig -ResourceGroupName <String> -LoadBalancerName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -54,7 +61,22 @@ Specifies the load balancer that is associated with the rule configuration to ge
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
-Parameter Sets: (All)
+Parameter Sets: ByParentResource
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -LoadBalancerName
+Load Balancer name
+
+```yaml
+Type: System.String
+Parameter Sets: ByParentName
 Aliases:
 
 Required: True
@@ -76,6 +98,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource group name
+
+```yaml
+Type: System.String
+Parameter Sets: ByParentName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

@@ -12,7 +12,7 @@ Adds an outbound rule configuration to a load balancer.
 
 ## SYNTAX
 
-### SetByResource (Default)
+### SetByResourceParent (Default)
 ```
 Add-AzLoadBalancerOutboundRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String>
  [-AllocatedOutboundPort <Int32>] -Protocol <String> [-EnableTcpReset] [-IdleTimeoutInMinutes <Int32>]
@@ -20,11 +20,27 @@ Add-AzLoadBalancerOutboundRuleConfig -LoadBalancer <PSLoadBalancer> -Name <Strin
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetByResourceId
+### SetByResourceIdParent
 ```
 Add-AzLoadBalancerOutboundRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String>
  [-AllocatedOutboundPort <Int32>] -Protocol <String> [-EnableTcpReset] [-IdleTimeoutInMinutes <Int32>]
  -FrontendIpConfiguration <PSResourceId[]> -BackendAddressPoolId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByResourceIdParentName
+```
+Add-AzLoadBalancerOutboundRuleConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-AllocatedOutboundPort <Int32>] -Protocol <String> [-EnableTcpReset] [-IdleTimeoutInMinutes <Int32>]
+ -FrontendIpConfiguration <PSResourceId[]> -BackendAddressPoolId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByResourceParentName
+```
+Add-AzLoadBalancerOutboundRuleConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-AllocatedOutboundPort <Int32>] -Protocol <String> [-EnableTcpReset] [-IdleTimeoutInMinutes <Int32>]
+ -FrontendIpConfiguration <PSResourceId[]> -BackendAddressPool <PSBackendAddressPool>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -65,7 +81,7 @@ Outbound traffic is randomly load balanced across IPs in the backend IPs.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
-Parameter Sets: SetByResource
+Parameter Sets: SetByResourceParent, SetByResourceParentName
 Aliases:
 
 Required: True
@@ -81,7 +97,7 @@ Outbound traffic is randomly load balanced across IPs in the backend IPs.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceId
+Parameter Sets: SetByResourceIdParent, SetByResourceIdParentName
 Aliases:
 
 Required: True
@@ -157,7 +173,22 @@ The reference of the load balancer resource.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
-Parameter Sets: (All)
+Parameter Sets: SetByResourceParent, SetByResourceIdParent
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -LoadBalancerName
+The reference of the load balancer resource.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceIdParentName, SetByResourceParentName
 Aliases:
 
 Required: True
@@ -194,6 +225,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The reference of the load balancer resource.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceIdParentName, SetByResourceParentName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

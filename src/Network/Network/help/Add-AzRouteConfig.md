@@ -13,10 +13,18 @@ Adds a route to a route table.
 
 ## SYNTAX
 
+### ByParentResource (Default)
 ```
 Add-AzRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-AddressPrefix <String>] [-NextHopType <String>]
  [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### ByParentName
+```
+Add-AzRouteConfig -ResourceGroupName <String> -RouteTableName <String> [-Name <String>]
+ [-AddressPrefix <String>] [-NextHopType <String>] [-NextHopIpAddress <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -175,12 +183,42 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+Resource group name
+
+```yaml
+Type: System.String
+Parameter Sets: ByParentName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
 ### -RouteTable
 Specifies the route table to which this cmdlet adds a route.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSRouteTable
-Parameter Sets: (All)
+Parameter Sets: ByParentResource
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -RouteTableName
+Route Table name
+
+```yaml
+Type: System.String
+Parameter Sets: ByParentName
 Aliases:
 
 Required: True
