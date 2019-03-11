@@ -1,96 +1,89 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-ms.assetid: C23BEF37-D472-43EC-90AA-F8742247ABA2
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azloadbalancerfrontendipconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/update-azloadbalancerfrontendipconfig
 schema: 2.0.0
 ---
 
-# Set-AzLoadBalancerFrontendIpConfig
+# Update-AzLoadBalancerFrontendIpConfig
 
 ## SYNOPSIS
-Updates a front-end IP configuration for a load balancer.
+Incrementally updates frontend ip configuration of a load balancer.
 
 ## SYNTAX
 
 ### SetByResourceSubnetParent (Default)
 ```
-Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-PrivateIpAddress <String>]
- [-Zone <String[]>] -Subnet <PSSubnet> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
+ [-PrivateIpAddress <String>] [-Zone <String[]>] [-Subnet <PSSubnet>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdSubnetParent
 ```
-Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-PrivateIpAddress <String>]
- [-Zone <String[]>] -SubnetId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
+ [-PrivateIpAddress <String>] [-Zone <String[]>] [-SubnetId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdPublicIpAddressParent
 ```
-Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
- -PublicIpAddressId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
+ [-PublicIpAddressId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetByResourcePublicIpAddressParent
 ```
-Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
- -PublicIpAddress <PSPublicIpAddress> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
+ [-PublicIpAddress <PSPublicIpAddress>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetByResourceSubnetParentName
 ```
-Set-AzLoadBalancerFrontendIpConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
- [-PrivateIpAddress <String>] [-Zone <String[]>] -Subnet <PSSubnet> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzLoadBalancerFrontendIpConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-PrivateIpAddress <String>] [-Zone <String[]>] [-Subnet <PSSubnet>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdSubnetParentName
 ```
-Set-AzLoadBalancerFrontendIpConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
- [-PrivateIpAddress <String>] [-Zone <String[]>] -SubnetId <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzLoadBalancerFrontendIpConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-PrivateIpAddress <String>] [-Zone <String[]>] [-SubnetId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdPublicIpAddressParentName
 ```
-Set-AzLoadBalancerFrontendIpConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
- [-Zone <String[]>] -PublicIpAddressId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzLoadBalancerFrontendIpConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-Zone <String[]>] [-PublicIpAddressId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourcePublicIpAddressParentName
 ```
-Set-AzLoadBalancerFrontendIpConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
- [-Zone <String[]>] -PublicIpAddress <PSPublicIpAddress> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Update-AzLoadBalancerFrontendIpConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-Zone <String[]>] [-PublicIpAddress <PSPublicIpAddress>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzLoadBalancerFrontendIpConfig** cmdlet updates a front-end IP configuration for a load balancer.
+The **Update-AzLoadBalancerFrontendIpConfig** incrementally updates frontend ip configuration of a load balancer. I.e. only the specified parameters values are changed and values of the unspecified properties are kept unlike of Set-AzLoadBalancerFrontendIpConfig cmdlet.
 
 ## EXAMPLES
 
-### Example 1: Modify the front-end IP configuration of a load balancer
-```
-PS C:\>$Subnet = Get-AzVirtualNetwork -Name "MyVnet" -ResourceGroupName "MyResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "Subnet"
-PS C:\> $slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> $slb | Add-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -Subnet $Subnet
-PS C:\> $slb | Set-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -Subnet $Subnet
+### Example 1
+```powershell
+PS C:> Update-AzLoadBalancerFrontendIpConfig -LoadBalancer $lb -Name $frontendName2 -PrivateIpAddress "10.0.1.6"
 ```
 
-The first command gets the virtual subnet named Subnet, and then stores it in the $Subnet variable.
-The second command gets the associated load balancer named MyLoadBalancer, and then stores it in the $slb variable.
-The third command uses the pipeline operator to pass the load balancer in $slb to Add-AzLoadBalancerFrontendIpConfig, which creates a front-end IP configuration named NewFrontend for $slb.
-The fourth command passes the load balancer in $slb to **Set-AzLoadBalancerFrontendIpConfig**, which saves and updates the front-end IP configuration.
+This command updates private ip address of frontend ip configuration keeping other properties unchanged.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -105,8 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -LoadBalancer
-Specifies a load balancer.
-This cmdlet updates a front-end configuration for the load balancer that this parameter specifies.
+The reference of the load balancer resource.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
@@ -136,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the front-end IP configuration to set.
+Name of the frontend ip configuration.
 
 ```yaml
 Type: System.String
@@ -151,8 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateIpAddress
-Specifies the private IP address of the load balancer that is associated with the front-end IP configuration to set.
-Specify this parameter only if you also specify the *Subnet* parameter.
+The private IP address of the IP configuration.
 
 ```yaml
 Type: System.String
@@ -167,14 +158,14 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIpAddress
-Specifies the **PublicIpAddress** object that is associated with the front-end IP configuration to set.
+The reference of the Public IP resource.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
 Parameter Sets: SetByResourcePublicIpAddressParent, SetByResourcePublicIpAddressParentName
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -182,14 +173,14 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIpAddressId
-Specifies the ID of the **PublicIpAddress** object that is associated with the front-end IP configuration that this cmdlet sets.
+The reference of the Public IP resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: SetByResourceIdPublicIpAddressParent, SetByResourceIdPublicIpAddressParentName
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -212,14 +203,14 @@ Accept wildcard characters: False
 ```
 
 ### -Subnet
-Specifies the **Subnet** object that contains the front-end IP configuration that this cmdlet sets.
+The reference of the subnet resource.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
 Parameter Sets: SetByResourceSubnetParent, SetByResourceSubnetParentName
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -227,14 +218,14 @@ Accept wildcard characters: False
 ```
 
 ### -SubnetId
-Specifies the ID of the subnet that contains the front-end IP configuration that this cmdlet sets.
+The reference of the subnet resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: SetByResourceIdSubnetParent, SetByResourceIdSubnetParentName
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -272,7 +263,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -308,17 +300,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Add-AzLoadBalancerFrontendIpConfig](./Add-AzLoadBalancerFrontendIpConfig.md)
-
-[Get-AzLoadBalancer](./Get-AzLoadBalancer.md)
-
-[Get-AzLoadBalancerFrontendIpConfig](./Get-AzLoadBalancerFrontendIpConfig.md)
-
-[Get-AzVirtualNetwork](./Get-AzVirtualNetwork.md)
-
-[New-AzLoadBalancerFrontendIpConfig](./New-AzLoadBalancerFrontendIpConfig.md)
-
-[Remove-AzLoadBalancerFrontendIpConfig](./Remove-AzLoadBalancerFrontendIpConfig.md)
-
-

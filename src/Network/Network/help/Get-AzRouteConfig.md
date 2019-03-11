@@ -13,9 +13,16 @@ Gets routes from a route table.
 
 ## SYNTAX
 
+### ByParentResource (Default)
 ```
 Get-AzRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
+```
+
+### ByParentName
+```
+Get-AzRouteConfig -ResourceGroupName <String> -RouteTableName <String> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,12 +79,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+Resource group name
+
+```yaml
+Type: System.String
+Parameter Sets: ByParentName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
 ### -RouteTable
 Specifies the route table from which this cmdlet gets routes.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSRouteTable
-Parameter Sets: (All)
+Parameter Sets: ByParentResource
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -RouteTableName
+Route Table name
+
+```yaml
+Type: System.String
+Parameter Sets: ByParentName
 Aliases:
 
 Required: True

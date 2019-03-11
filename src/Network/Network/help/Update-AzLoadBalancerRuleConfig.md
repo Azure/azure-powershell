@@ -1,21 +1,20 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-ms.assetid: 2AE5E9B8-7344-407B-9317-47709F10FCD8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azloadbalancerruleconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/update-azloadbalancerruleconfig
 schema: 2.0.0
 ---
 
-# Add-AzLoadBalancerRuleConfig
+# Update-AzLoadBalancerRuleConfig
 
 ## SYNOPSIS
-Adds a rule configuration to a load balancer.
+Incrementally updates load balancing rule of a load balancer.
 
 ## SYNTAX
 
 ### SetByResourceParent (Default)
 ```
-Add-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>]
+Update-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>]
  [-LoadDistribution <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>]
  [-EnableFloatingIP] [-EnableTcpReset] [-DisableOutboundSNAT]
  [-FrontendIpConfiguration <PSFrontendIPConfiguration>] [-BackendAddressPool <PSBackendAddressPool>]
@@ -24,7 +23,7 @@ Add-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Pro
 
 ### SetByResourceIdParent
 ```
-Add-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>]
+Update-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>]
  [-LoadDistribution <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>]
  [-EnableFloatingIP] [-EnableTcpReset] [-DisableOutboundSNAT] [-FrontendIpConfigurationId <String>]
  [-BackendAddressPoolId <String>] [-ProbeId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -33,7 +32,7 @@ Add-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Pro
 
 ### SetByResourceIdParentName
 ```
-Add-AzLoadBalancerRuleConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+Update-AzLoadBalancerRuleConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
  [-Protocol <String>] [-LoadDistribution <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>]
  [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [-EnableTcpReset] [-DisableOutboundSNAT]
  [-FrontendIpConfigurationId <String>] [-BackendAddressPoolId <String>] [-ProbeId <String>]
@@ -42,7 +41,7 @@ Add-AzLoadBalancerRuleConfig -ResourceGroupName <String> -LoadBalancerName <Stri
 
 ### SetByResourceParentName
 ```
-Add-AzLoadBalancerRuleConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+Update-AzLoadBalancerRuleConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
  [-Protocol <String>] [-LoadDistribution <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>]
  [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [-EnableTcpReset] [-DisableOutboundSNAT]
  [-FrontendIpConfiguration <PSFrontendIPConfiguration>] [-BackendAddressPool <PSBackendAddressPool>]
@@ -50,25 +49,22 @@ Add-AzLoadBalancerRuleConfig -ResourceGroupName <String> -LoadBalancerName <Stri
 ```
 
 ## DESCRIPTION
-The **Add-AzLoadBalancerRuleConfig** cmdlet adds a rule configuration to an Azure load balancer.
+The **Update-AzLoadBalancerRuleConfig** incrementally updates load balancing rule of a load balancer. I.e. only the specified parameters values are changed and values of the unspecified properties are kept unlike of Set-AzLoadBalancerRuleConfig cmdlet.
 
 ## EXAMPLES
 
-### Example 1: Add a rule configuration to a load balancer
-```
-PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> $slb | Add-AzLoadBalancerRuleConfig -Name "NewRule" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol "Tcp" -FrontendPort 3350 -BackendPort 3350 -EnableFloatingIP
-PS C:\>$slb | Set-AzLoadBalancer
+### Example 1
+```powershell
+PS C:> Update-AzLoadBalancerRuleConfig -LoadBalancer $lb -Name $lbruleName2 -IdleTimeoutInMinutes 15 -EnableFloatingIP
 ```
 
-The first command gets the load balancer named MyLoadBalancer, and then stores it in the variable $slb.
-The second command uses the pipeline operator to pass the load balancer in $slb to **Add-AzLoadBalancerRuleConfig**, which adds the rule configuration named NewRule.
-The third command will update the load balancer in azure with the new Load Balancer Rule Config.
+This command updates idle timeout in minutes and state of EnableFloatingIP flag keeping all other properties unchanged.
 
 ## PARAMETERS
 
 ### -BackendAddressPool
-Specifies the backend address pool to associate with a load balancer rule configuration.
+A reference to a pool of DIPs.
+Inbound traffic is randomly load balanced across IPs in the backend IPs.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
@@ -83,7 +79,8 @@ Accept wildcard characters: False
 ```
 
 ### -BackendAddressPoolId
-Specifies the ID of a **BackendAddressPool** object to associate with a load balancer rule configuration.
+A reference to a pool of DIPs.
+Inbound traffic is randomly load balanced across IPs in the backend IPs.
 
 ```yaml
 Type: System.String
@@ -98,7 +95,9 @@ Accept wildcard characters: False
 ```
 
 ### -BackendPort
-Specifies the backend port for traffic that is matched by a load balancer rule configuration.
+The port used for internal connections on the endpoint.
+Acceptable values are between 0 and 65535.
+Note that value 0 enables 'Any Port'
 
 ```yaml
 Type: System.Int32
@@ -113,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -143,7 +142,9 @@ Accept wildcard characters: False
 ```
 
 ### -EnableFloatingIP
-Indicates that this cmdlet enables a floating IP address for a rule configuration.
+Configures a virtual machine's endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group.
+This setting is required when using the SQL AlwaysOn Availability Groups in SQL server.
+This setting can't be changed after you create the endpoint.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -158,7 +159,8 @@ Accept wildcard characters: False
 ```
 
 ### -EnableTcpReset
-Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
+Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination.
+This element is only used when the protocol is set to TCP.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -173,7 +175,7 @@ Accept wildcard characters: False
 ```
 
 ### -FrontendIpConfiguration
-Specifies a list of front-end IP addresses to associate with a load balancer rule configuration.
+A reference to frontend IP addresses.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration
@@ -188,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -FrontendIpConfigurationId
-Specifies the ID for a front-end IP address configuration.
+A reference to frontend IP addresses.
 
 ```yaml
 Type: System.String
@@ -203,7 +205,10 @@ Accept wildcard characters: False
 ```
 
 ### -FrontendPort
-Specifies the front-end port that is matched by a load balancer rule configuration.
+The port for the external endpoint.
+Port numbers for each rule must be unique within the Load Balancer.
+Acceptable values are between 0 and 65534.
+Note that value 0 enables 'Any Port'
 
 ```yaml
 Type: System.Int32
@@ -218,7 +223,10 @@ Accept wildcard characters: False
 ```
 
 ### -IdleTimeoutInMinutes
-Specifies the length of time, in minutes, that the state of conversations is maintained in the load balancer.
+The timeout for the TCP idle connection.
+The value can be set between 4 and 30 minutes.
+The default value is 4 minutes.
+This element is only used when the protocol is set to TCP.
 
 ```yaml
 Type: System.Int32
@@ -233,8 +241,7 @@ Accept wildcard characters: False
 ```
 
 ### -LoadBalancer
-Specifies a **LoadBalancer** object.
-This cmdlet adds a rule configuration to the load balancer that this parameter specifies.
+The reference of the load balancer resource.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
@@ -264,7 +271,7 @@ Accept wildcard characters: False
 ```
 
 ### -LoadDistribution
-Specifies a load distribution.
+The load distribution policy for this rule.
 
 ```yaml
 Type: System.String
@@ -279,7 +286,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the load balancer rule configuration.
+Name of the load balancing rule.
 
 ```yaml
 Type: System.String
@@ -294,7 +301,7 @@ Accept wildcard characters: False
 ```
 
 ### -Probe
-Specifies a probe to associate with a load balancer rule configuration.
+The reference of the load balancer probe used by the load balancing rule.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSProbe
@@ -309,7 +316,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProbeId
-Specifies the ID of the probe to associate with a load balancer rule configuration.
+The reference of the load balancer probe used by the load balancing rule.
 
 ```yaml
 Type: System.String
@@ -324,8 +331,7 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Specfies the protocol that is matched by a load balancer rule.
-The acceptable values for this parameter are: Tcp or Udp.
+The transport protocol for the endpoint.
 
 ```yaml
 Type: System.String
@@ -370,7 +376,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -408,15 +415,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzLoadBalancer](./Get-AzLoadBalancer.md)
-
-[Get-AzLoadBalancerRuleConfig](./Get-AzLoadBalancerRuleConfig.md)
-
-[New-AzLoadBalancerRuleConfig](./New-AzLoadBalancerRuleConfig.md)
-
-[Remove-AzLoadBalancerRuleConfig](./Remove-AzLoadBalancerRuleConfig.md)
-
-[Set-AzLoadBalancerRuleConfig](./Set-AzLoadBalancerRuleConfig.md)
-
-
