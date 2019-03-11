@@ -13,32 +13,60 @@ Adds a front-end IP configuration to a load balancer.
 
 ## SYNTAX
 
-### SetByResourceSubnet (Default)
+### SetByResourceSubnetParent (Default)
 ```
 Add-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-PrivateIpAddress <String>]
  [-Zone <String[]>] -Subnet <PSSubnet> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### SetByResourceIdSubnet
+### SetByResourceIdSubnetParent
 ```
 Add-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-PrivateIpAddress <String>]
  [-Zone <String[]>] -SubnetId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### SetByResourceIdPublicIpAddress
+### SetByResourceIdPublicIpAddressParent
 ```
 Add-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
  -PublicIpAddressId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### SetByResourcePublicIpAddress
+### SetByResourcePublicIpAddressParent
 ```
 Add-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
  -PublicIpAddress <PSPublicIpAddress> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### SetByResourceSubnetParentName
+```
+Add-AzLoadBalancerFrontendIpConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-PrivateIpAddress <String>] [-Zone <String[]>] -Subnet <PSSubnet> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByResourceIdSubnetParentName
+```
+Add-AzLoadBalancerFrontendIpConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-PrivateIpAddress <String>] [-Zone <String[]>] -SubnetId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByResourceIdPublicIpAddressParentName
+```
+Add-AzLoadBalancerFrontendIpConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-Zone <String[]>] -PublicIpAddressId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### SetByResourcePublicIpAddressParentName
+```
+Add-AzLoadBalancerFrontendIpConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-Zone <String[]>] -PublicIpAddress <PSPublicIpAddress> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +126,22 @@ This cmdlet adds a front-end IP configuration to the load balancer that this par
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
-Parameter Sets: (All)
+Parameter Sets: SetByResourceSubnetParent, SetByResourceIdSubnetParent, SetByResourceIdPublicIpAddressParent, SetByResourcePublicIpAddressParent
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -LoadBalancerName
+The reference of the load balancer resource.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceSubnetParentName, SetByResourceIdSubnetParentName, SetByResourceIdPublicIpAddressParentName, SetByResourcePublicIpAddressParentName
 Aliases:
 
 Required: True
@@ -128,7 +171,7 @@ Specifies the private IP address to associate with a front-end IP configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceSubnet, SetByResourceIdSubnet
+Parameter Sets: SetByResourceSubnetParent, SetByResourceIdSubnetParent, SetByResourceSubnetParentName, SetByResourceIdSubnetParentName
 Aliases:
 
 Required: False
@@ -143,7 +186,7 @@ Specifies the public IP address to associate with a front-end IP configuration.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
-Parameter Sets: SetByResourcePublicIpAddress
+Parameter Sets: SetByResourcePublicIpAddressParent, SetByResourcePublicIpAddressParentName
 Aliases:
 
 Required: True
@@ -158,7 +201,7 @@ Specifes the ID of the public IP address in which to add a front-end IP configur
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceIdPublicIpAddress
+Parameter Sets: SetByResourceIdPublicIpAddressParent, SetByResourceIdPublicIpAddressParentName
 Aliases:
 
 Required: True
@@ -168,12 +211,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+The reference of the load balancer resource.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceSubnetParentName, SetByResourceIdSubnetParentName, SetByResourceIdPublicIpAddressParentName, SetByResourcePublicIpAddressParentName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
 ### -Subnet
 Specifies the subnet object in which to add a front-end IP configuration.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
-Parameter Sets: SetByResourceSubnet
+Parameter Sets: SetByResourceSubnetParent, SetByResourceSubnetParentName
 Aliases:
 
 Required: True
@@ -188,7 +246,7 @@ Specifies the ID of the subnet in which to add a front-end IP configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceIdSubnet
+Parameter Sets: SetByResourceIdSubnetParent, SetByResourceIdSubnetParentName
 Aliases:
 
 Required: True

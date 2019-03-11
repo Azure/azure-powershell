@@ -13,7 +13,7 @@ Adds an inbound NAT rule configuration to a load balancer.
 
 ## SYNTAX
 
-### SetByResource (Default)
+### SetByResourceParent (Default)
 ```
 Add-AzLoadBalancerInboundNatRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>]
  [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP]
@@ -21,12 +21,28 @@ Add-AzLoadBalancerInboundNatRuleConfig -LoadBalancer <PSLoadBalancer> -Name <Str
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetByResourceId
+### SetByResourceIdParent
 ```
 Add-AzLoadBalancerInboundNatRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>]
  [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP]
  [-EnableTcpReset] [-FrontendIpConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### SetByResourceIdParentName
+```
+Add-AzLoadBalancerInboundNatRuleConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-Protocol <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>]
+ [-EnableFloatingIP] [-EnableTcpReset] [-FrontendIpConfigurationId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByResourceParentName
+```
+Add-AzLoadBalancerInboundNatRuleConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-Protocol <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>]
+ [-EnableFloatingIP] [-EnableTcpReset] [-FrontendIpConfiguration <PSFrontendIPConfiguration>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,7 +126,7 @@ Specifies a list of front-end IP addresses to associate with an inbound NAT rule
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration
-Parameter Sets: SetByResource
+Parameter Sets: SetByResourceParent, SetByResourceParentName
 Aliases:
 
 Required: False
@@ -125,7 +141,7 @@ Specifies an ID for a front-end IP address configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceId
+Parameter Sets: SetByResourceIdParent, SetByResourceIdParentName
 Aliases:
 
 Required: False
@@ -171,7 +187,22 @@ This cmdlet adds an inbound NAT rule configuration to the load balancer that thi
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
-Parameter Sets: (All)
+Parameter Sets: SetByResourceParent, SetByResourceIdParent
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -LoadBalancerName
+The reference of the load balancer resource.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceIdParentName, SetByResourceParentName
 Aliases:
 
 Required: True
@@ -209,6 +240,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The reference of the load balancer resource.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceIdParentName, SetByResourceParentName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

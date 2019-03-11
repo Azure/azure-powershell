@@ -1804,7 +1804,7 @@ function Test-ApplicationGatewayCRUDSubItems2
 		Update-AzApplicationGatewayRedirectConfiguration -ApplicationGateway $appgw -Name $redirectName -IncludeQueryString $false
 		$listener03 = Get-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener03Name
 		Update-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name $rule01Name -HttpListener $listener03
-		Update-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name $urlPathMapName
+		Update-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name $urlPathMapName -PathRules $imagePathRule
 		Update-AzApplicationGatewaySslPolicy -ApplicationGateway $appgw -PolicyName AppGwSslPolicy20150501
 
 		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw

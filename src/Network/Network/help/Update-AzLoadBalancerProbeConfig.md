@@ -1,53 +1,47 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-ms.assetid: C8B91455-C1A7-43BD-9E63-A20E2694371F
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azloadbalancerprobeconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/update-azloadbalancerprobeconfig
 schema: 2.0.0
 ---
 
-# Set-AzLoadBalancerProbeConfig
+# Update-AzLoadBalancerProbeConfig
 
 ## SYNOPSIS
-Updates a probe configuration for a load balancer.
+Incrementally updates probe of a load balancer.
 
 ## SYNTAX
 
 ### ByParentResource (Default)
 ```
-Set-AzLoadBalancerProbeConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>] -Port <Int32>
- -IntervalInSeconds <Int32> -ProbeCount <Int32> [-RequestPath <String>]
+Update-AzLoadBalancerProbeConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>]
+ [-Port <Int32>] [-IntervalInSeconds <Int32>] [-ProbeCount <Int32>] [-RequestPath <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentName
 ```
-Set-AzLoadBalancerProbeConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
- [-Protocol <String>] -Port <Int32> -IntervalInSeconds <Int32> -ProbeCount <Int32> [-RequestPath <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzLoadBalancerProbeConfig -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
+ [-Protocol <String>] [-Port <Int32>] [-IntervalInSeconds <Int32>] [-ProbeCount <Int32>]
+ [-RequestPath <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzLoadBalancerProbeConfig** cmdlet updates a probe configuration for a load balancer.
+The **Update-AzLoadBalancerProbeConfig** incrementally updates probe of a load balancer. I.e. only the specified parameters values are changed and values of the unspecified properties are kept unlike of Set-AzLoadBalancerProbeConfig cmdlet.
 
 ## EXAMPLES
 
-### Example 1: Modify the probe configuration on a load balancer
-```
-PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> $slb | Add-AzLoadBalancerProbeConfig -Name "NewProbe" -Protocol "http" -Port 80 -IntervalInSeconds 15 -ProbeCount 2 -RequestPath "healthcheck.aspx" 
-PS C:\> $slb | Set-AzLoadBalancerProbeConfig -Name "NewProbe" -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+### Example 1
+```powershell
+PS C:> Update-AzLoadBalancerProbeConfig -LoadBalancer $lb -Name $probeName2 -IntervalInSeconds 17
 ```
 
-The first command gets the loadbalancer named MyLoadBalancer, and then stores it in the $slb variable.
-The second command uses the pipeline operator to pass the load balancer in $slb to Add-AzLoadBalancerProbeConfig, which adds a new probe configuration to it.
-The third command passes the load balancer to **Set-AzLoadBalancerProbeConfig**, which sets the new configuration.
-Note that it is necessary to specify several of the same parameters that were specified in the previous command because they are required by the current cmdlet.
+This command changes probe interval in seconds keeping other properties unchanged.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -62,14 +56,16 @@ Accept wildcard characters: False
 ```
 
 ### -IntervalInSeconds
-Specifies the interval, in seconds, between probes to each instance of the load-balanced service.
+The interval, in seconds, for how frequently to probe the endpoint for health status.
+Typically, the interval is slightly less than half the allocated timeout period (in seconds) which allows two full probes before taking the instance out of rotation.
+The default value is 15, the minimum value is 5.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -77,8 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -LoadBalancer
-Specifies a load balancer.
-This cmdlet updates a probe configuration for the load balancer that this parameter specifies.
+The reference of the load balancer resource.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
@@ -108,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the probe configuration that this cmdlet sets.
+Name of the probe.
 
 ```yaml
 Type: System.String
@@ -123,14 +118,15 @@ Accept wildcard characters: False
 ```
 
 ### -Port
-Specifies the port on which probes should connect to a load-balanced service.
+The port for communicating the probe.
+Possible values range from 1 to 65535, inclusive.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -138,14 +134,15 @@ Accept wildcard characters: False
 ```
 
 ### -ProbeCount
-Specifies the number of per-instance consecutive failures for an instance to be considered unhealthy.
+The number of probes where if no response, will result in stopping further traffic from being delivered to the endpoint.
+This values allows endpoints to be taken out of rotation faster or slower than the typical times used in Azure.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -153,8 +150,9 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Specifies the protocol to use for the probing.
-The acceptable values for this parameter are: Tcp or Http.
+The protocol of the end point.
+If 'Tcp' is specified, a received ACK is required for the probe to be successful.
+If 'Http' or 'Https' is specified, a 200 OK response from the specifies URI is required for the probe to be successful.
 
 ```yaml
 Type: System.String
@@ -169,7 +167,10 @@ Accept wildcard characters: False
 ```
 
 ### -RequestPath
-Specifies the path in the load-balanced service to probe to determine health.
+The URI used for requesting health status from the VM.
+Path is required if a protocol is set to http.
+Otherwise, it is not allowed.
+There is no default value.
 
 ```yaml
 Type: System.String
@@ -214,7 +215,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -246,15 +248,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Add-AzLoadBalancerProbeConfig](./Add-AzLoadBalancerProbeConfig.md)
-
-[Get-AzLoadBalancer](./Get-AzLoadBalancer.md)
-
-[Get-AzLoadBalancerProbeConfig](./Get-AzLoadBalancerProbeConfig.md)
-
-[New-AzLoadBalancerProbeConfig](./New-AzLoadBalancerProbeConfig.md)
-
-[Remove-AzLoadBalancerProbeConfig](./Remove-AzLoadBalancerProbeConfig.md)
-
-

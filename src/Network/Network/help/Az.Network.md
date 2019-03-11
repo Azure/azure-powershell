@@ -137,14 +137,14 @@ Gets an authentication certificate for an application gateway.
 ### [Get-AzApplicationGatewayAutoscaleConfiguration](Get-AzApplicationGatewayAutoscaleConfiguration.md)
 Gets the Autoscale Configuration of the Application Gateway.
 
+### [Get-AzApplicationGatewayAvailableServerVariableAndHeader](Get-AzApplicationGatewayAvailableServerVariableAndHeader.md)
+Get the supported server variables and available request and response headers.
+
 ### [Get-AzApplicationGatewayAvailableSslOption](Get-AzApplicationGatewayAvailableSslOption.md)
 Gets all available ssl options for ssl policy for Application Gateway.
 
 ### [Get-AzApplicationGatewayAvailableWafRuleSet](Get-AzApplicationGatewayAvailableWafRuleSet.md)
 Gets all available web application firewall rule sets.
-
-### [Get-AzApplicationGatewayAvailableServerVariableAndHeader](Get-AzApplicationGatewayAvailableServerVariableAndHeader.md)
-Gets all available server variables, request and response headers.
 
 ### [Get-AzApplicationGatewayBackendAddressPool](Get-AzApplicationGatewayBackendAddressPool.md)
 Gets a back-end address pool for an application gateway.
@@ -1258,8 +1258,83 @@ Returns whether the packet is allowed or denied to or from a particular destinat
 ### [Test-AzPrivateIPAddressAvailability](Test-AzPrivateIPAddressAvailability.md)
 Test availability of a private IP address in a virtual network.
 
+### [Update-AzApplicationGatewayAutoscaleConfiguration](Update-AzApplicationGatewayAutoscaleConfiguration.md)
+Incrementally updates autoscale configuration of an application gateway.
+
+### [Update-AzApplicationGatewayBackendHttpSettings](Update-AzApplicationGatewayBackendHttpSettings.md)
+Incrementally updates backend http settings of an application gateway.
+
+### [Update-AzApplicationGatewayConnectionDraining](Update-AzApplicationGatewayConnectionDraining.md)
+Incrementally updates connection draining of an application gateway.
+
+### [Update-AzApplicationGatewayFrontendIPConfig](Update-AzApplicationGatewayFrontendIPConfig.md)
+Incrementally updates frontend ip configuration of an application gateway.
+
+### [Update-AzApplicationGatewayHttpListener](Update-AzApplicationGatewayHttpListener.md)
+Incrementally updates http listener of an application gateway.
+
+### [Update-AzApplicationGatewayProbeConfig](Update-AzApplicationGatewayProbeConfig.md)
+Incrementally updates probe of an application gateway.
+
+### [Update-AzApplicationGatewayRedirectConfiguration](Update-AzApplicationGatewayRedirectConfiguration.md)
+Incrementally updates redirect configuration of an application gateway.
+
+### [Update-AzApplicationGatewayRequestRoutingRule](Update-AzApplicationGatewayRequestRoutingRule.md)
+Incrementally updates request routing rule of an application gateway.
+
+### [Update-AzApplicationGatewaySku](Update-AzApplicationGatewaySku.md)
+Incrementally updates sku of an application gateway.
+
+### [Update-AzApplicationGatewaySslPolicy](Update-AzApplicationGatewaySslPolicy.md)
+Incrementally updates SSL policy of an application gateway.
+
+### [Update-AzApplicationGatewayUrlPathMapConfig](Update-AzApplicationGatewayUrlPathMapConfig.md)
+Incrementally updates URL path map configuration of an application gateway.
+
+### [Update-AzApplicationGatewayWebApplicationFirewallConfiguration](Update-AzApplicationGatewayWebApplicationFirewallConfiguration.md)
+Incrementally updates web application firewall configuration of an application gateway.
+
+### [Update-AzExpressRouteCircuitPeeringConfig](Update-AzExpressRouteCircuitPeeringConfig.md)
+Incrementally updates peering of an express route circuit.
+
+### [Update-AzLoadBalancerFrontendIpConfig](Update-AzLoadBalancerFrontendIpConfig.md)
+Incrementally updates frontend ip configuration of a load balancer.
+
+### [Update-AzLoadBalancerInboundNatPoolConfig](Update-AzLoadBalancerInboundNatPoolConfig.md)
+Incrementally updates inbound nat pool of a load balancer.
+
+### [Update-AzLoadBalancerInboundNatRuleConfig](Update-AzLoadBalancerInboundNatRuleConfig.md)
+Incrementally updates inbound nat rule of a load balancer.
+
+### [Update-AzLoadBalancerOutboundRuleConfig](Update-AzLoadBalancerOutboundRuleConfig.md)
+Incrementally updates outbound rule of a load balancer.
+
+### [Update-AzLoadBalancerProbeConfig](Update-AzLoadBalancerProbeConfig.md)
+Incrementally updates probe of a load balancer.
+
+### [Update-AzLoadBalancerRuleConfig](Update-AzLoadBalancerRuleConfig.md)
+Incrementally updates load balancing rule of a load balancer.
+
+### [Update-AzNetworkInterfaceIpConfig](Update-AzNetworkInterfaceIpConfig.md)
+Incrementally updates ip configuration rule of a network interface.
+
+### [Update-AzNetworkSecurityRuleConfig](Update-AzNetworkSecurityRuleConfig.md)
+Incrementally updates security rule of a network security group.
+
+### [Update-AzRouteConfig](Update-AzRouteConfig.md)
+Incrementally updates route of a route table.
+
+### [Update-AzRouteFilterRuleConfig](Update-AzRouteFilterRuleConfig.md)
+Incrementally updates route filter rule of a route filter.
+
+### [Update-AzServiceEndpointPolicyDefinition](Update-AzServiceEndpointPolicyDefinition.md)
+Incrementally updates service endpoint policy definition of a service endpoint policy.
+
 ### [Update-AzVirtualHub](Update-AzVirtualHub.md)
 Updates a virtual hub.
+
+### [Update-AzVirtualNetworkSubnetConfig](Update-AzVirtualNetworkSubnetConfig.md)
+Incrementally updates subnet of an virtual network.
 
 ### [Update-AzVirtualWan](Update-AzVirtualWan.md)
 Updates an Azure Virtual WAN.
