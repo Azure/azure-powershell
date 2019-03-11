@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.3
+* Support Kind BlockBlobStorage when create Storage account
+       - New-AzStorageAccount
+
 ## Version 1.0.2
 * Update incorrect online help URLs
 * Give detail error message when get/set classic Logging/Metric on Premium Storage Account, since Premium Storage Account not supoort classic Logging/Metric.

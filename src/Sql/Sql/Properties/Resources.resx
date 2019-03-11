@@ -447,4 +447,7 @@
   <data name="ScanIdManagedDatabaseParameterIsRequired" xml:space="preserve">
     <value>ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzSqlInstanceDatabaseVulnerabilityAssessmentScanRecord output via pipe.</value>
   </data>
+  <data name="InvalidFormatResourceId" xml:space="preserve">
+    <value>Invalid format of the resource identifier.</value>
+  </data>
 </root>

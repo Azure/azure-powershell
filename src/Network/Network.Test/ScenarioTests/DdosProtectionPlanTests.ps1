@@ -48,6 +48,22 @@ function Test-DdosProtectionPlanCRUD
         Assert-NotNull $ddosProtectionPlanGet.Etag
         Assert-Null $ddosProtectionPlanGet.VirtualMachines
 
+        $ddosProtectionPlanList = Get-AzDdosProtectionPlan -ResourceGroupName $rgName
+        Assert-NotNull $ddosProtectionPlanList
+        Assert-True {$ddosProtectionPlanList.Count -ge 0}
+
+        $ddosProtectionPlanList = Get-AzDdosProtectionPlan -ResourceGroupName "*"
+        Assert-NotNull $ddosProtectionPlanList
+        Assert-True {$ddosProtectionPlanList.Count -ge 0}
+
+        $ddosProtectionPlanList = Get-AzDdosProtectionPlan -Name "*"
+        Assert-NotNull $ddosProtectionPlanList
+        Assert-True {$ddosProtectionPlanList.Count -ge 0}
+
+        $ddosProtectionPlanList = Get-AzDdosProtectionPlan -ResourceGroupName "*" -Name "*"
+        Assert-NotNull $ddosProtectionPlanList
+        Assert-True {$ddosProtectionPlanList.Count -ge 0}
+
         # Remove the DDoS protection plan
         $ddosProtectionPlanDelete = Remove-AzDdosProtectionPlan -Name $ddosProtectionPlanName -ResourceGroupName $rgName -PassThru
         Assert-AreEqual $true $ddosProtectionPlanDelete

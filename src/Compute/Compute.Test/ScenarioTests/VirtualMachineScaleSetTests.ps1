@@ -74,7 +74,7 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = 'eastus2';
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # SRP
@@ -212,8 +212,41 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         Assert-True { $output.Contains("VirtualMachineProfile") };
 
         # List All
+        $wildcardRgQuery = ($rgname -replace ".$") + "*"
+        $wildcardNameQuery = ($vmssName -replace ".$") + "*"
+
         Write-Verbose ('Running Command : ' + 'Get-AzVmss ListAll');
         $vmssList = Get-AzVmss;
+        Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
+        $output = $vmssList | Out-String;
+        Write-Verbose ($output);
+        Assert-False { $output.Contains("VirtualMachineProfile") };
+        
+        $vmssList = Get-AzVmss -ResourceGroupName $wildcardRgQuery;
+        Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
+        $output = $vmssList | Out-String;
+        Write-Verbose ($output);
+        Assert-False { $output.Contains("VirtualMachineProfile") };
+        
+        $vmssList = Get-AzVmss -VMScaleSetName $wildcardNameQuery;
+        Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
+        $output = $vmssList | Out-String;
+        Write-Verbose ($output);
+        Assert-False { $output.Contains("VirtualMachineProfile") };
+        
+        $vmssList = Get-AzVmss -VMScaleSetName $vmssName;
+        Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
+        $output = $vmssList | Out-String;
+        Write-Verbose ($output);
+        Assert-False { $output.Contains("VirtualMachineProfile") };
+        
+        $vmssList = Get-AzVmss -ResourceGroupName $wildcardRgQuery -VMScaleSetName $vmssName;
+        Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
+        $output = $vmssList | Out-String;
+        Write-Verbose ($output);
+        Assert-False { $output.Contains("VirtualMachineProfile") };
+        
+        $vmssList = Get-AzVmss -ResourceGroupName $wildcardRgQuery -VMScaleSetName $wildcardNameQuery;
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
         $output = $vmssList | Out-String;
         Write-Verbose ($output);
@@ -222,6 +255,13 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         # List from RG
         Write-Verbose ('Running Command : ' + 'Get-AzVmss List');
         $vmssList = Get-AzVmss -ResourceGroupName $rgname;
+        Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
+        $output = $vmssList | Out-String;
+        Write-Verbose ($output);
+        Assert-False { $output.Contains("VirtualMachineProfile") };
+        
+        Write-Verbose ('Running Command : ' + 'Get-AzVmss List');
+        $vmssList = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $wildcardNameQuery;
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
         $output = $vmssList | Out-String;
         Write-Verbose ($output);

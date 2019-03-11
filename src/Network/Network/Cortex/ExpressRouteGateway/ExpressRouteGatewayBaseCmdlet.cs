@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public List<PSExpressRouteGateway> ListExpressRouteGateways(string resourceGroupName)
         {
-            var expressRouteGateways = string.IsNullOrWhiteSpace(resourceGroupName) ?
+            var expressRouteGateways = ShouldListBySubscription(resourceGroupName, null) ?
                 this.ExpressRouteGatewayClient.ListBySubscription() :                                              //// List by sub id
                 this.ExpressRouteGatewayClient.ListByResourceGroup(resourceGroupName);               //// List by RG name
 

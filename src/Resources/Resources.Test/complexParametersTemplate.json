@@ -42,7 +42,7 @@
   "variables": { },
   "resources": [{
         "type": "Microsoft.Storage/storageAccounts",
-        "name": "[concat('tianotest010', parameters('appSku').code, parameters('ranks')[0])]",
+        "name": "[concat('tianotest011', parameters('appSku').code, parameters('ranks')[0])]",
         "apiVersion": "2015-06-15",
         "location": "[resourceGroup().location]",
         "properties": {

@@ -20,6 +20,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.5.0
+* Add wildcard support to Get cmdlets
+
 ## Version 1.4.0
 * Fix issue with ID parameter sets
 * Update Get-AzVMExtension to list all installed extension if Name parameter is not provided
