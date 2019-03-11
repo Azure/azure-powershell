@@ -19,7 +19,7 @@ Disable-AzFrontDoorCustomDomainHttps -ResourceGroupName <String> -FrontDoorName 
  [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### ByResourceIdParameterSet
 ```
 Disable-AzFrontDoorCustomDomainHttps -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -196,7 +196,7 @@ Resource Id of the Front Door endpoint to disable https
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdParameterSet
+Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
 Required: True
