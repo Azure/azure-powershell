@@ -76,7 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private string ContainerName = String.Empty;
 
         [Alias("Path")]
-        [Parameter(HelpMessage = "File Path")]
+        [Parameter(HelpMessage = "File Path. With -Asjob, it must be an absolute Path.")]
         public string Destination
         {
             get { return FileName; }
