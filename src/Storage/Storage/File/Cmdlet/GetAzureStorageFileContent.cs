@@ -85,19 +85,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(
             Position = 2,
             ParameterSetName = LocalConstants.ShareNameParameterSetName,
-            HelpMessage = "Path to the local file or directory when the downloaded file would be put.")]
+            HelpMessage = "Path to the local file or directory when the downloaded file would be put. With -Asjob, it must be an absolute Path.")]
         [Parameter(
             Position = 2,
             ParameterSetName = LocalConstants.ShareParameterSetName,
-            HelpMessage = "Path to the local file or directory when the downloaded file would be put.")]
+            HelpMessage = "Path to the local file or directory when the downloaded file would be put. With -Asjob, it must be an absolute Path.")]
         [Parameter(
             Position = 2,
             ParameterSetName = LocalConstants.DirectoryParameterSetName,
-            HelpMessage = "Path to the local file or directory when the downloaded file would be put.")]
+            HelpMessage = "Path to the local file or directory when the downloaded file would be put. With -Asjob, it must be an absolute Path.")]
         [Parameter(
             Position = 1,
             ParameterSetName = LocalConstants.FileParameterSetName,
-            HelpMessage = "Path to the local file or directory when the downloaded file would be put.")]
+            HelpMessage = "Path to the local file or directory when the downloaded file would be put. With -Asjob, it must be an absolute Path.")]
         [ValidateNotNullOrEmpty]
         public string Destination { get; set; }
 
@@ -152,7 +152,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             if (!AsJob.IsPresent)
             {
                 resolvedDestination = this.GetUnresolvedProviderPathFromPSPath(
-                string.IsNullOrWhiteSpace(this.Destination) ? "." : this.Destination);
+                    string.IsNullOrWhiteSpace(this.Destination) ? "." : this.Destination);
             }
 
             FileMode mode = this.Force ? FileMode.Create : FileMode.CreateNew;

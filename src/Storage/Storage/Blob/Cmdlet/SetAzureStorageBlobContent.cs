@@ -67,11 +67,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         private const string AppendBlobType = "Append";
 
         [Alias("FullName")]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path",
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path. With -Asjob, it must be an absolute Path.",
             ValueFromPipelineByPropertyName = true, ParameterSetName = ManualParameterSet)]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path",
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path. With -Asjob, it must be an absolute Path.",
             ParameterSetName = ContainerParameterSet)]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path",
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path. With -Asjob, it must be an absolute Path.",
             ParameterSetName = BlobParameterSet)]
         public string File
         {
