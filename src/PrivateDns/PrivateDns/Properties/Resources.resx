@@ -198,7 +198,34 @@
   <data name="Success_RemoveZone" xml:space="preserve">
     <value>Private DNS Zone '{0}' was removed from resource group '{1}'. The SOA record for this zone has also been deleted.</value>
   </data>
-  <data name="Warning_DnsRecordsParamNeedsToBeSpecified" xml:space="preserve">
-    <value>Usage of this cmdlet without DnsRecords parameter will be deprecated soon. If there is a need to create empty record set, please specify DnsRecords parameter with an empty array as value</value>
+  <data name="Error_RemoveRecordTypeNotAllowed" xml:space="preserve">
+    <value>Removal of a record of type {0} from a record set of type {1} is not allowed.</value>
+  </data>
+  <data name="Progress_CreatingNewVirtualNetworkLink" xml:space="preserve">
+    <value>Creating virtual network link ...</value>
+  </data>
+  <data name="Progress_RemovingLink" xml:space="preserve">
+    <value>Removing virtual network link ...</value>
+  </data>
+  <data name="Success_NewVirtualNetworkLink" xml:space="preserve">
+    <value>Virtual Network Link '{0}' was created in resource group '{1}'. Use Get-AzPrivateDnsVirtualNetworkLink to retrieve details about the created link.</value>
+  </data>
+  <data name="Success_RemoveLink" xml:space="preserve">
+    <value>Virtual Network Link '{0}' was removed from resource group '{1}'.</value>
+  </data>
+  <data name="Warning_InvalidLinkDetailsSpecified" xml:space="preserve">
+    <value>Invalid Virtual Network Link details specified.</value>
+  </data>
+  <data name="Progress_ModifyingZoneNameTrimDot" xml:space="preserve">
+    <value>Modifying Private DNS zone name to remove terminating '.'. Private DNS Zone name used is \"{0}\".</value>
+  </data>
+  <data name="Error_RecordTypeNotSpecified" xml:space="preserve">
+    <value>If you specify the Name parameter you must also specify the RecordType parameter.</value>
+  </data>
+  <data name="Progress_ModifyingRecordSetNameTrimDot" xml:space="preserve">
+    <value>Modifying RecordSet name to remove terminating '.'. RecordSet name used is \"{0}\".</value>
+  </data>
+  <data name="Error_RecordSetIsAutoRegistered" xml:space="preserve">
+    <value>The input provided belongs to an auto registered Record Set. Manual operations on this type of record set is not allowed.</value>
   </data>
 </root>

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var azureFirewall = this.GetAzureFirewall(this.ResourceGroupName, this.Name);
 
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                IPage<AzureFirewall> azureFirewallPage = string.IsNullOrEmpty(this.ResourceGroupName)
+                IPage<AzureFirewall> azureFirewallPage = ShouldListBySubscription(ResourceGroupName, Name)
                     ? this.AzureFirewallClient.ListAll()
                     : this.AzureFirewallClient.List(this.ResourceGroupName);
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
                     return psAzureFirewall;
                 }).ToList();
 
-                WriteObject(psAzureFirewalls, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psAzureFirewalls), true);
             }
         }
     }

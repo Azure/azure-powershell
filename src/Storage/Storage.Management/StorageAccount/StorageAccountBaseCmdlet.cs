@@ -60,6 +60,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             internal const string Storage = "Storage";
             internal const string StorageV2 = "StorageV2";
             internal const string BlobStorage = "BlobStorage";
+            internal const string BlockBlobStorage = "BlockBlobStorage";
         }
         protected struct AccountAccessTier
         {
