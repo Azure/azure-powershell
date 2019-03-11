@@ -14,8 +14,7 @@
 
 function Login-AutomationConnection([string] $connectionName, [string] $subscriptionName) {
 	
-	Enable-AzureRMAlias -Scope Process
-	
+	Enable-AzureRMAlias -Scope Process	
 	if ([string]::IsNullOrEmpty($connectionName)) {
 		$connectionName = 'AzureRunAsConnection';
 		Write-Output "Parameter 'connectionName' is not set - will use the default connection name $connectionName"
