@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.10.3
 - Support Custom policy reports retrieval through the cmd-lets
 - Add versioning information to the reports
 

@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Provide SQLInstance or SQLAvailabilityGroup protectable item in TargetItem.
+        ///   Looks up a localized string similar to Provide SQLInstance protectable item in TargetItem.
         /// </summary>
         public static string AzureWorkloadRestoreProtectableItemException
         {
@@ -216,6 +216,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("AzureWorkloadAlreadyRegisteredException", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide the target of the restore operation using the switch -OriginalWorkloadRestore or -AlternateWorkloadRestore.
+        /// </summary>
+        public static string AzureWorkloadRestoreLocationException
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureWorkloadAlreadyRegisteredException", resourceCulture);
+            }
+        }        
 
         /// <summary>
         ///   Looks up a localized string similar to RetentionTime in retention schedule should be same as backup time specified in SchedulePolicy.

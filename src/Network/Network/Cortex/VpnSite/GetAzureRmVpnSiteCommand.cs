@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network
     public class GetAzureRmVpnSiteCommand : VpnSiteBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = "ListByResourceGroupName",
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
             
-            if (!string.IsNullOrWhiteSpace(this.Name) && ParameterSetName.Equals("ListByResourceGroupName"))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 WriteObject(this.GetVpnSite(this.ResourceGroupName, this.Name));
             }
             else
             {
-                WriteObject(this.ListVpnSites(this.ResourceGroupName), true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, this.ListVpnSites(this.ResourceGroupName)), true);
             }
         }
     }

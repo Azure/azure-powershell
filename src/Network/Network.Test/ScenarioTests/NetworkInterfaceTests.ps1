@@ -72,14 +72,24 @@ function Test-NetworkInterfaceExpandResource
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 
         # Get Nic with expanded Subnet
-		$nic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -ExpandResource "IpConfigurations/Subnet"
-		Assert-Null $nic.IpConfigurations[0].PublicIpAddress.Name
-		Assert-NotNull $nic.IpConfigurations[0].Subnet.Name
+        $nic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -ExpandResource "IpConfigurations/Subnet"
+        Assert-Null $nic.IpConfigurations[0].PublicIpAddress.Name
+        Assert-NotNull $nic.IpConfigurations[0].Subnet.Name
 
-		# Get Nic with expanded PublicIPAddress
-		$nic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -ExpandResource "IpConfigurations/PublicIPAddress"
-		Assert-NotNull $nic.IpConfigurations[0].PublicIpAddress.Name
-		Assert-Null $nic.IpConfigurations[0].Subnet.Name
+        # Get Nic with expanded PublicIPAddress
+        $nic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -ExpandResource "IpConfigurations/PublicIPAddress"
+        Assert-NotNull $nic.IpConfigurations[0].PublicIpAddress.Name
+        Assert-Null $nic.IpConfigurations[0].Subnet.Name
+
+        # Get Nic with expanded Subnet
+        $nic = Get-AzNetworkInterface -ResourceId $expectedNic.Id -ExpandResource "IpConfigurations/Subnet"
+        Assert-Null $nic.IpConfigurations[0].PublicIpAddress.Name
+        Assert-NotNull $nic.IpConfigurations[0].Subnet.Name
+
+        # Get Nic with expanded PublicIPAddress
+        $nic = Get-AzNetworkInterface -ResourceId $expectedNic.Id -ExpandResource "IpConfigurations/PublicIPAddress"
+        Assert-NotNull $nic.IpConfigurations[0].PublicIpAddress.Name
+        Assert-Null $nic.IpConfigurations[0].Subnet.Name
 
         # Delete NetworkInterface
         $delete = Remove-AzNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
@@ -139,7 +149,19 @@ function Test-NetworkInterfaceCRUD
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
         Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
 
-        
+        $expectedNic = Get-AzNetworkInterface -ResourceId $actualNic.Id
+
+        Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName
+        Assert-AreEqual $expectedNic.Name $actualNic.Name
+        Assert-AreEqual $expectedNic.Location $actualNic.Location
+        Assert-NotNull $expectedNic.ResourceGuid
+        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
+
         # Check publicIp address reference
         $publicip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName
         Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $publicip.Id
@@ -874,6 +896,15 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
         Assert-AreEqual "Succeeded" $list[0].ProvisioningState
         Assert-AreEqual $actualNic.Etag $list[0].Etag
 
+        $list = Get-AzNetworkInterface -ResourceGroupName "*" -Name "*"
+        Assert-True { $list.Count -ge 0 }
+
+        $list = Get-AzNetworkInterface -Name "*"
+        Assert-True { $list.Count -ge 0 }
+
+        $list = Get-AzNetworkInterface -ResourceGroupName "*"
+        Assert-True { $list.Count -ge 0 }
+
         # Delete NetworkInterface
         $delete = Remove-AzNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
         Assert-AreEqual true $delete
@@ -947,6 +978,9 @@ function Test-NetworkInterfaceTapConfigurationCRUD
         Assert-AreEqual $tapConfig.Name $rname
 
         $tapConfigs = Get-AzNetworkInterfaceTapConfig -ResourceGroupName $rgname -NetworkInterfaceName $sourceNicName
+        Assert-NotNull $tapConfigs
+
+        $tapConfigs = Get-AzNetworkInterfaceTapConfig -ResourceGroupName $rgname -NetworkInterfaceName $sourceNicName -Name "*"
         Assert-NotNull $tapConfigs
 
         $tapConfig = Get-AzNetworkInterfaceTapConfig -ResourceId $tapConfig.Id
