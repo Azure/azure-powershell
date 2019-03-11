@@ -41,7 +41,6 @@ LockMode          : AllResourcesReadOnly
 ProvisioningState : Succeeded
 Parameters        : {applytaganditsdefaultvalue_tagName, applytaganditsdefaultvalue_tagValue}
 ResourceGroups    : ResourceGroup
-
 ```
 
 Get the blueprint assignments within the specified subscription.
