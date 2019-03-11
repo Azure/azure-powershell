@@ -75,6 +75,40 @@ Tags                        : {
 
 In this example we get connection monitor by name in the specified location.
 
+### Example 2: Get connection monitors using filtering
+```
+PS C:\> Get-AzNetworkWatcherConnectionMonitor -ResourceGroupName NetworkWatcherRG -NetworkWatcherName NetworkWatcher_centraluseuap -Name cm*
+
+
+Name                        : cm
+Id                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGro
+                              ups/NetworkWatcherRG/providers/Microsoft.Network/networkWatcher
+                              s/NetworkWatcher_centraluseuap/connectionMonitors/cm
+Etag                        : W/"40961b58-e379-4204-a47b-0c477739b095"
+ProvisioningState           : Succeeded
+Source                      : {
+                                "ResourceId": "/subscriptions/96e68903-0a56-4819-9987-8d08ad6
+                              a1f99/resourceGroups/VarunRgCentralUSEUAP/providers/Microsoft.C
+                              ompute/virtualMachines/irinavm",
+                                "Port": 0
+                              }
+Destination                 : {
+                                "Address": "google.com",
+                                "Port": 80
+                              }
+MonitoringIntervalInSeconds : 60
+AutoStart                   : True
+StartTime                   : 1/12/2018 7:19:28 PM
+MonitoringStatus            : Stopped
+Location                    : centraluseuap
+Type                        : Microsoft.Network/networkWatchers/connectionMonitors
+Tags                        : {
+                                "key1": "value1"
+                              }
+```
+
+In this example we get all connection monitors in NetworkWatcher_centraluseuap that start with "cm"
+
 ## PARAMETERS
 
 ### -DefaultProfile

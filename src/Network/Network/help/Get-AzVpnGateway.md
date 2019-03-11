@@ -19,7 +19,7 @@ Get-AzVpnGateway [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 
 ### ListByResourceGroupName
 ```
-Get-AzVpnGateway -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzVpnGateway [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -52,6 +52,34 @@ The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hu
 A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
 
 It then gets the VpnGateway using its resourceGroupName and the gateway name.
+
+### Example 2
+
+```powershell
+PS C:\> Get-AzVpnGateway -Name test*
+
+ResourceGroupName   : testRG
+Name                : test1
+Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/vpnGateways/test1
+Location            : West US
+VpnGatewayScaleUnit : 2
+VirtualHub          : /subscriptions/{subscriptionId}/resourceGroups/Ali_pS_Test/providers/Microsoft.Network/virtualHubs/westushub
+BgpSettings         : {}
+Type                : Microsoft.Network/vpnGateways
+ProvisioningState   : Succeeded
+
+ResourceGroupName   : testRG
+Name                : test2
+Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/vpnGateways/test2
+Location            : West US
+VpnGatewayScaleUnit : 2
+VirtualHub          : /subscriptions/{subscriptionId}/resourceGroups/Ali_pS_Test/providers/Microsoft.Network/virtualHubs/westushub
+BgpSettings         : {}
+Type                : Microsoft.Network/vpnGateways
+ProvisioningState   : Succeeded
+```
+
+This cmdlet gets all Gateways that start with "test".
 
 ## PARAMETERS
 
@@ -93,7 +121,7 @@ Type: System.String
 Parameter Sets: ListByResourceGroupName
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -31,14 +31,8 @@ namespace Microsoft.Azure.Commands.Network.Automation
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DdosProtectionPlan"), OutputType(typeof(PSDdosProtectionPlan))]
     public partial class GetAzureRmDdosProtectionPlan : NetworkBaseCmdlet
     {
-        internal const string GetByNameGroupParameterSet = "GetByNameAndGroup";
         internal const string ListParameterSet = "List";
 
-        [Parameter(
-            ParameterSetName = GetByNameGroupParameterSet,
-            Mandatory = true,
-            HelpMessage = "Specifies the name of the DDoS protection plan resource group.",
-            ValueFromPipelineByPropertyName = true)]
         [Parameter(
             ParameterSetName = ListParameterSet,
             Mandatory = false,
@@ -50,8 +44,8 @@ namespace Microsoft.Azure.Commands.Network.Automation
 
         [Alias("ResourceName")]
         [Parameter(
-            ParameterSetName = GetByNameGroupParameterSet,
-            Mandatory = true,
+            ParameterSetName = ListParameterSet,
+            Mandatory = false,
             HelpMessage = "Specifies the name of the DDoS protection plan.",
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Network/ddosProtectionPlans", "ResourceGroupName")]
@@ -62,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
         {
             base.Execute();
 
-            if(!string.IsNullOrEmpty(this.Name))
+            if(ShouldGetByName(ResourceGroupName, Name))
             {
                 var vDdosProtectionPlan = this.NetworkClient.NetworkManagementClient.DdosProtectionPlans.Get(ResourceGroupName, Name);
                 var vDdosProtectionPlanModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSDdosProtectionPlan>(vDdosProtectionPlan);
@@ -73,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             else
             {
                 IPage<DdosProtectionPlan> vDdosProtectionPlanPage;
-                if(!string.IsNullOrEmpty(this.ResourceGroupName))
+                if(ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     vDdosProtectionPlanPage = this.NetworkClient.NetworkManagementClient.DdosProtectionPlans.ListByResourceGroup(this.ResourceGroupName);
                 }
@@ -92,7 +86,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
                     vDdosProtectionPlanModel.Tag = TagsConversionHelper.CreateTagHashtable(vDdosProtectionPlan.Tags);
                     psDdosProtectionPlanList.Add(vDdosProtectionPlanModel);
                 }
-                WriteObject(psDdosProtectionPlanList);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psDdosProtectionPlanList), true);
             }
         }
     }
