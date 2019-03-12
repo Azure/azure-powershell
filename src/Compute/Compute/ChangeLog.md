@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix issue with path resolution in Get-AzVmBootDiagnosticsData
 
 ## Version 1.5.0
 * Add wildcard support to Get cmdlets
