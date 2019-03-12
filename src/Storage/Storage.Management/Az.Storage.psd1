@@ -57,7 +57,17 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Storage.dll', 
-               '.\Microsoft.WindowsAzure.Storage.dll'
+               '.\Microsoft.Azure.Storage.Common.dll',
+               '.\Microsoft.Azure.Storage.Blob.dll',
+               '.\Microsoft.Azure.Storage.File.dll',
+               '.\Microsoft.Azure.Storage.Queue.dll',
+               '.\Microsoft.Azure.Cosmos.Table.dll',
+               '.\Microsoft.Azure.DocumentDB.Core.dll',
+               '.\Microsoft.WindowsAzure.Storage.DataMovement.PowerShell.dll',
+               '.\Microsoft.Azure.DocumentDB.Core.dll',
+               '.\Microsoft.OData.Core.dll',
+               '.\Microsoft.OData.Edm.dll',
+               '.\Microsoft.Spatial.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

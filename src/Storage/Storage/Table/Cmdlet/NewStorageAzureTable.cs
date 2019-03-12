@@ -17,7 +17,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage.Table;
+    using Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -65,7 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
             TableRequestOptions requestOptions = RequestOptions;
             CloudTable table = Channel.GetTableReference(name);
-            bool created = Channel.CreateTableIfNotExists(table, requestOptions, OperationContext);
+            bool created = Channel.CreateTableIfNotExists(table, requestOptions, TableOperationContext);
 
             if (!created)
             {
