@@ -1,10 +1,12 @@
 ## ShouldProcess
 
-From [Cmdlet Attribute Declaration](https://msdn.microsoft.com/en-us/library/system.management.automation.cmdletcommonmetadataattribute.supportsshouldprocess(v=vs.85).aspx):
+From [_Cmdlet Attribute Declaration_](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/cmdlet-attribute-declaration):
 
-> _All commands that change the system should include the **SupportsShouldProcess** keyword when declaring the attribute. If the ShouldProcess method returns true, the command should perform its action. If the ShouldProcess method returns false, the action should not be taken._
-> 
-> _If a command supports the ShouldProcess method, the **Confirm** and **WhatIf** parameters are added to the command by the Windows PowerShell runtime._
+> _All cmdlets that change resources outside of PowerShell should include the `SupportsShouldProcess` keyword when the `Cmdlet` attribute is declared, which allows the cmdlet to call the `ShouldProcess` method before the cmdlet performs its action. If the `ShouldProcess` call returns false, the action should not be taken._
+>
+> _The `-Confirm` and `-WhatIf` cmdlet parameters are available only for cmdlets that support `ShouldProcess` calls._
+
+Below is an example of the declaration of this property in the `Cmdlet` attribute and the subsequent call to `ShouldProcess` in the body of the cmdlet:
 
 ```cs
 [Cmdlet(VerbsCommon.Remove, "Foo", SupportsShouldProcess = true)]
@@ -89,18 +91,18 @@ void ConfirmAction(bool force, string continueMessage, string processMessage, st
 
 ## ConfirmImpact
 
-From [Cmdlet Attribute Declaration](https://msdn.microsoft.com/en-us/library/system.management.automation.confirmimpact(v=vs.85).aspx):
+From [_Cmdlet Attribute Declaration_](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/cmdlet-attribute-declaration):
 
-> _Defines the impact level of the action performed by the cmdlet. For example, cmdlets may have a high, medium, or low risk of losing data._
+> _Specifies when the action of the cmdlet should be confirmed by a call to the `ShouldProcess` method. `ShouldProcess` will only be called when the `ConfirmImpact` value of the cmdlet (by default, Medium) is equal to or greater than the value of the `$ConfirmPreference` variable. This parameter should be specified only when the `SupportsShouldProcess` parameter is specified._
 
-Below are the possible `ConfirmImpact` values
+Below are the possible `ConfirmImpact` values:
 
-| Member name          | Description                                                                                                    |
-|----------------------|----------------------------------------------------------------------------------------------------------------|
-| High   | This action is potentially highly "destructive" and should be confirmed by default unless otherwise specified. |
-| Low   | This action only needs to be confirmed when the user has requested the low-impact changes must be confirmed.   |
-| Medium | This action should be confirmed in most scenarios where confirmation is requested.                             |
-| None  | There is never any need to confirm this action.                                                                |
+| Member name | Description                                                                                                    |
+|-------------|----------------------------------------------------------------------------------------------------------------|
+| High        | This action is potentially highly "destructive" and should be confirmed by default unless otherwise specified. |
+| Low         | This action only needs to be confirmed when the user has requested the low-impact changes must be confirmed.   |
+| Medium      | This action should be confirmed in most scenarios where confirmation is requested.                             |
+| None        | There is never any need to confirm this action.                                                                |
 
 ```cs
 [Cmdlet(VerbsCommon.Remove, "Foo", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium)]
