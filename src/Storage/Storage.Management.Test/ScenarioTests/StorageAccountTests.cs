@@ -162,5 +162,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-PipingNewUpdateAccount");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureStorageAccountBlockBlobStorage()
+        {
+            TestRunner.RunTestScript("Test-NewAzureStorageAccountBlockBlobStorage");
+        }
     }
 }
