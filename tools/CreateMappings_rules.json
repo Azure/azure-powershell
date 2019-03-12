@@ -46,7 +46,8 @@
     { "regex": "DataFactories", "group": "Data Factories", "alias": "Data Factories" },
 
     { "regex": "Storage", "alias": "Storage" },
-
+    { "regex": "StorageSync", "alias": "StorageSync" },
+	
     { "regex": "Relay", "alias": "Relay" },
 
     { "regex": "ServiceBus", "alias": "Service Bus" },
