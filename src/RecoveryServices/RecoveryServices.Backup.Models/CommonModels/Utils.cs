@@ -218,6 +218,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                     return BackupManagementType.AzureSQL;
                 case ServiceClientModel.BackupManagementType.AzureStorage:
                     return BackupManagementType.AzureStorage;
+                case ServiceClientModel.BackupManagementType.AzureWorkload:
+                    return BackupManagementType.AzureWorkload;
                 default:
                     throw new Exception("Unsupported BackupManagmentType: " + backupManagementType);
             }
@@ -248,6 +250,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return ContainerType.AzureStorage;
             }
+            else if (containerType ==
+                ServiceClientModel.BackupManagementType.AzureWorkload)
+            {
+                return ContainerType.AzureVMAppContainer;
+            }
             else
             {
                 throw new Exception("Unsupported ContainerType: " + containerType);
@@ -265,13 +272,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return WorkloadType.AzureVM;
             }
-            if (workloadType == ServiceClientModel.WorkloadType.AzureSqlDb.ToString())
+            else if (workloadType == ServiceClientModel.WorkloadType.AzureSqlDb.ToString())
             {
                 return WorkloadType.AzureSQLDatabase;
             }
-            if (workloadType == ServiceClientModel.WorkloadType.AzureFileShare)
+            else if (workloadType == ServiceClientModel.WorkloadType.AzureFileShare)
             {
                 return WorkloadType.AzureFiles;
+            }
+            else if (workloadType == ServiceClientModel.WorkloadType.SQLDataBase)
+            {
+                return WorkloadType.MSSQL;
+            }
+            else if (workloadType == "SQL")
+            {
+                return WorkloadType.MSSQL;
             }
             else
             {
@@ -290,13 +305,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return ServiceClientModel.WorkloadType.VM;
             }
-            if (workloadType == WorkloadType.AzureSQLDatabase.ToString())
+            else if (workloadType == WorkloadType.AzureSQLDatabase.ToString())
             {
                 return ServiceClientModel.WorkloadType.AzureSqlDb;
             }
-            if (workloadType == WorkloadType.AzureFiles.ToString())
+            else if (workloadType == WorkloadType.AzureFiles.ToString())
             {
                 return ServiceClientModel.WorkloadType.AzureFileShare;
+            }
+            else if (workloadType == WorkloadType.MSSQL.ToString())
+            {
+                return ServiceClientModel.WorkloadType.SQLDataBase;
             }
             else
             {
@@ -315,9 +334,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return "Microsoft.Compute/virtualMachines";
             }
-            if (workloadType == WorkloadType.AzureFiles.ToString())
+            else if (workloadType == WorkloadType.AzureFiles.ToString())
             {
                 return "Microsoft.Storage/storageAccounts";
+            }
+            else if (workloadType == WorkloadType.MSSQL.ToString())
+            {
+                return "VMAppContainer";
             }
 
             throw new Exception("Unsupported WorkloadType: " + workloadType);
@@ -335,9 +358,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return WorkloadType.AzureVM.ToString();
             }
-            if (string.Compare(armType, "Microsoft.Storage/storageAccounts", ignoreCase: true) == 0)
+            else if (string.Compare(armType, "Microsoft.Storage/storageAccounts", ignoreCase: true) == 0)
             {
                 return WorkloadType.AzureFiles.ToString();
+            }
+            else if (string.Compare(armType, "VMAppContainer", ignoreCase: true) == 0)
+            {
+                return WorkloadType.MSSQL.ToString();
             }
 
             throw new Exception("Unsupported ArmType: " + armType);

@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.3
+* Split `Set-AzSecurityThreatProtection` into two new cmdlets:
+    - `Disable-AzSecurityAdvancedThreatProtection`
+    - `Enable-AzSecurityAdvancedThreatProtection`
+* Rename `Get-AzSecurityThreatProtection` to `Get-AzSecurityAdvancedThreatProtection`
+
+## Version 0.7.2
 * Add new cmdlets: Get-AzSecurityThreatProtection and Set-AzSecurityThreatProtection
 
 ## Version 0.7.0

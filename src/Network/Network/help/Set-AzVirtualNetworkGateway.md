@@ -39,17 +39,17 @@ The **Set-AzVirtualNetworkGateway** cmdlet updates a virtual network gateway.
 
 ## EXAMPLES
 
-### Example 1: Set the goal state a virtual network gateway
+### Example 1: Update a virtual network gateway's ASN
 ```
 PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
 PS C:\> Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -Asn 1337
 ```
 
 The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
-The second command sets the goal state for the virtual network gateway stored in variable $Gateway.
+The second command updates the virtual network gateway stored in variable $Gateway.
 The command also sets the ASN to 1337.
 
-### Example 2: Set the goal state a virtual network gateway
+### Example 2: Add IPsec policy to a virtual network gateway
 ```
 PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
 PS C:\> $vpnclientipsecpolicy = New-AzVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTimeSeconds 86472 -SADataSizeKilobytes 429497 -IkeEncryption AES256 -IkeIntegrity SHA256 -DhGroup DHGroup2 -PfsGroup None
@@ -58,7 +58,7 @@ PS C:\> $gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -
 
 The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
 The second command creates the Vpn ipsec policy object as per specified ipsec parameters.
-The third command sets the goal state for the virtual network gateway stored in variable $Gateway.
+The third command updates the virtual network gateway stored in variable $Gateway.
 The command also sets the custom vpn ipsec policy specified in the $vpnclientipsecpolicy object on Virtual network gateway.
 
 ## PARAMETERS
