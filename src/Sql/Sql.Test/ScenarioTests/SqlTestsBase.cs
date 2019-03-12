@@ -27,9 +27,9 @@ using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit.Abstractions;
-using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Management.OperationalInsights;
+using Microsoft.Azure.Management.Monitor.Version2018_09_01;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
