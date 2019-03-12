@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Replace dependency on Monitor SDK with common code
 
 ## Version 1.5.0
 * Updating AuditingEndpointsCommunicator.
