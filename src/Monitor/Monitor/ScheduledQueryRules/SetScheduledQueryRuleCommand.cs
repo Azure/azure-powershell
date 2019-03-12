@@ -13,11 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Monitor.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
+using ActivityLogAlertResource = Microsoft.Azure.Management.Monitor.Models.ActivityLogAlertResource;
 
 namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 {
@@ -25,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
     /// Updates a ScheduledQueryRule object
     /// </summary>
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule", SupportsShouldProcess = true), OutputType(typeof(PSScheduledQueryRuleResource))]
-    public class SetScheduledQueryRuleCommand : MonitorCmdletBase
+    public class SetScheduledQueryRuleCommand : ManagementCmdletBase
     {
 
         private const string ByInputObject = "ByInputObject";
@@ -106,7 +111,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         [Parameter(ParameterSetName = ByRuleName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource tags")]
         [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource tags")]
         [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource tags")]
-        public string Tags { get; set; }
+        public IDictionary<string, string> Tags { get; set; }
 
         //
         // Summary:
@@ -122,6 +127,96 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         protected override void ProcessRecordInternal()
         {
+            ResourceIdentifier resourceIdentifier = null;
+            ScheduledQueryRuleResource requestBody = null;
+
+            // ByInputObject parameter set
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                resourceIdentifier = new ResourceIdentifier(this.InputObject.Id);
+                this.RuleName = resourceIdentifier.ResourceName;
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+
+                requestBody = UpdateScheduledQueryRuleResource(this.InputObject);
+            }
+            else
+            {
+                // ByRuleName and ByResourceId parameter sets
+                if (this.IsParameterBound(c => c.ResourceId))
+                {
+                    resourceIdentifier = new ResourceIdentifier(ResourceId);
+                    this.RuleName = resourceIdentifier.ResourceName;
+                    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                }
+
+                try
+                {
+                    // Allowing only updates with Set-* command
+                    requestBody = new ScheduledQueryRuleResource(
+                        this.MonitorManagementClient.ScheduledQueryRules.GetWithHttpMessagesAsync(this.ResourceGroupName, this.RuleName).Result.Body);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error in retrieving Log Alert Rule", ex);
+                }
+
+                requestBody = UpdateScheduledQueryRuleResource(requestBody);
+            }
+
+            try
+            {
+                if (ShouldProcess(this.RuleName, string.Format("Updating Log Alert Rule '{0}' in resource group '{1}'.", this.RuleName, this.ResourceGroupName)))
+                {
+                    // Update the Log Alert rule
+                    WriteObject(
+                        this.MonitorManagementClient.ScheduledQueryRules.CreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName, this.RuleName, requestBody));
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in updating Log Alert Rule", ex);
+            }
+        }
+
+        private ScheduledQueryRuleResource UpdateScheduledQueryRuleResource(ScheduledQueryRuleResource requestBody)
+        {
+            if (this.MyInvocation.BoundParameters.ContainsKey("Location") || this.Location != null)
+            {
+                requestBody.Location = this.Location;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("Action") || this.Action != null)
+            {
+                requestBody.Action = this.Action;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("Source") || this.Source != null)
+            {
+                requestBody.Source = this.Source;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("Enabled") || this.Enabled != null)
+            {
+                requestBody.Enabled = this.Enabled;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("Description") || this.Description != null)
+            {
+                requestBody.Description = this.Description;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("Schedule") || this.Schedule != null)
+            {
+                requestBody.Schedule = this.Schedule;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("Tags") || this.Tags != null)
+            {
+                requestBody.Tags = this.Tags;
+            }
+
+            return requestBody;
         }
     }
 }

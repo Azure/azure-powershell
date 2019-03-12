@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         #region Cmdlet parameters
 
-        [Parameter(Mandatory = true, HelpMessage = "The AzNS action details")]
+        [Parameter(Mandatory = false, HelpMessage = "The AzNS action details")]
         [ValidateNotNullOrEmpty]
         public PSScheduledQueryRuleAznsAction AznsAction { get; set; }
 

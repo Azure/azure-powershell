@@ -18,6 +18,8 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 {
@@ -68,6 +70,65 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         protected override void ProcessRecordInternal()
         {
+
+                    //string resourceGroupName = this.ResourceGroupName;
+                    //string ruleName = this.RuleName;
+
+                    //// Using value from the pipe
+                    //if (this.MyInvocation.BoundParameters.ContainsKey("InputObject") || this.InputObject != null)
+                    //{
+                    //    ScheduledQueryRuleUtilities.ProcessPipeObject(
+                    //        inputObject: this.InputObject,
+                    //        resourceGroupName: out resourceGroupName,
+                    //        ruleName: out ruleName);
+                    //}
+                    //else if (this.MyInvocation.BoundParameters.ContainsKey("ResourceId") ||
+                    //         !string.IsNullOrWhiteSpace(this.ResourceId))
+                    //{
+                    //    ScheduledQueryRuleUtilities.ProcessPipeObject(
+                    //        resourceId: this.ResourceId,
+                    //        resourceGroupName: out resourceGroupName,
+                    //        ruleName: out ruleName);
+                    //}
+
+                    //this.MonitorManagementClient.ScheduledQueryRules.DeleteWithHttpMessagesAsync(
+                    //    resourceGroupName: resourceGroupName, ruleName: ruleName);
+
+                   
+
+                    if (this.IsParameterBound(c => c.InputObject))
+                    {
+                        var resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                        this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                        this.RuleName = this.InputObject.Name;
+                    }
+
+                    if (this.IsParameterBound(c => c.ResourceId))
+                    {
+                        var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                        this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                        this.RuleName = resourceIdentifier.ResourceName;
+                    }
+
+            if (this.ShouldProcess(this.RuleName,
+                string.Format("Deleting Log Alert Rule '{0}' in resource group {0}", this.RuleName,
+                    this.ResourceGroupName)))
+            {
+                try
+                {
+                    this.MonitorManagementClient.ScheduledQueryRules.DeleteWithHttpMessagesAsync(this.ResourceGroupName,
+                        this.RuleName);
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error occured while removing the Log ALert Rule", ex);
+                }
+            }
+
         }
     }
 }

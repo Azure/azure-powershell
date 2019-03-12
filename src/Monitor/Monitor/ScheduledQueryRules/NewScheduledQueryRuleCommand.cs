@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.Monitor.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 {
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
     /// Create a ScheduledQueryRule Source object
     /// </summary>
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule"), OutputType(typeof(PSScheduledQueryRuleResource))]
-    public class NewScheduledQueryRuleCommand : MonitorCmdletBase
+    public class NewScheduledQueryRuleCommand : ManagementCmdletBase
     {
 
         #region Cmdlet parameters
@@ -42,6 +43,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         [Parameter(Mandatory = false, HelpMessage = "The scheduled query rule schedule")]
         [ValidateNotNullOrEmpty]
         public PSScheduledQueryRuleSchedule Schedule { get; set; }
+
         //
         // Summary:
         //     Gets or sets action needs to be taken on rule execution.
@@ -72,7 +74,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         // Summary:
         //     Resource tags
         [Parameter(Mandatory = false, HelpMessage = "The duration in minutes for which alert should be throttled")]
-        public string Tags { get; set; }
+        public IDictionary<string, string> Tags;
 
         //
         // Summary:
@@ -80,9 +82,37 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         [Parameter(Mandatory = false, HelpMessage = "The azure alert state - valid values - true, false")]
         public string Enabled { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ResourceGroupName parameter of the cmdlet
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
         #endregion
         protected override void ProcessRecordInternal()
         {
+            PSScheduledQueryRuleResource response = null;
+
+            try
+            {
+                var parameters = new LogSearchRuleResource(location: Location, source: Source, schedule: Schedule,
+                    action: Action, tags: Tags, description: Description, enabled: Enabled);
+
+                parameters.Validate(); //validate does not allow schedule to be null, while it is optional for us
+
+                var result = this.MonitorManagementClient.ScheduledQueryRules
+                    .CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: ResourceGroupName, ruleName: RuleName,
+                        parameters: parameters).Result;
+
+                response = new PSScheduledQueryRuleResource(result.Body);
+                WriteObject(response);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error occured while creating Log Alert rule", ex);
+            }       
         }
     }
 }
