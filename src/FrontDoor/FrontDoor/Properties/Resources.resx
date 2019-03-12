@@ -172,6 +172,6 @@
     <value>Enable HTTPS for a custom domain?</value>
   </data>
   <data name="Error_InvalidResourceId" xml:space="preserve">
-    <value>Invalid - resource id {0}</value>
+    <value>Invalid resource id - {0}</value>
   </data>
 </root>

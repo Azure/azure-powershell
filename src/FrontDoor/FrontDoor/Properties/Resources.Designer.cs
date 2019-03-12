@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid - resource id {0}.
+        ///   Looks up a localized string similar to Invalid resource id - {0}.
         /// </summary>
         internal static string Error_InvalidResourceId {
             get {
