@@ -67,6 +67,22 @@ namespace Microsoft.Azure.Commands.Management.Storage
             internal const string Hot = "Hot";
             internal const string Cool = "Cool";
         }
+        protected struct AzureBlobType
+        {
+            internal const string BlockBlob = "blockBlob";
+            internal const string PageBlob = "pageBlob";
+            internal const string AppendBlob = "appendBlob";
+        }
+        protected struct ManagementPolicyAction
+        {
+            internal const string TierToCool = "TierToCool";
+            internal const string TierToArchive = "TierToArchive";
+            internal const string Delete = "Delete";
+        }
+        protected struct ManagementPolicyVersion
+        {
+            internal const string Version10 = "1.0 ";
+        }
 
         [Flags]
         public enum EncryptionSupportServiceEnum
