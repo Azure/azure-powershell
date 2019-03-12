@@ -13,19 +13,21 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Monitor.Models;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 {
     /// <summary>
     /// Get all ScheduledQueryRule objects in a subscription, resource group or by rule name
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule"), OutputType(typeof(PSScheduledQueryRuleResource))]
-    public class GetScheduledQueryRuleCommand : MonitorCmdletBase
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule", DefaultParameterSetName = ByRuleName), OutputType(typeof(PSScheduledQueryRuleResource))]
+    public class GetScheduledQueryRuleCommand : ManagementCmdletBase
     {
         private const string BySubscriptionOrResourceGroup = "BySubscriptionOrResourceGroup";
         private const string ByRuleName = "ByRuleName";
@@ -51,6 +53,82 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         protected override void ProcessRecordInternal()
         {
+            //List<PSScheduledQueryRuleResource> output = null;
+
+            try
+            {
+            //    if (ParameterSetName.Equals(BySubscriptionOrResourceGroup))
+            //    {
+
+            //        if (string.IsNullOrWhiteSpace(this.ResourceGroupName))
+            //        {
+
+            //            // Retrieve all log alerts by subscription
+            //            output = this.MonitorManagementClient.ScheduledQueryRules.ListBySubscription()
+            //                .Select(e => new PSScheduledQueryRuleResource(e))
+            //                .ToList();
+
+            //        }
+            //        else
+            //        {
+            //            // Retrieve all log alerts for the resource groups
+            //            output = this.MonitorManagementClient.ScheduledQueryRules
+            //                .ListByResourceGroup(resourceGroupName: this.ResourceGroupName)
+            //                .Select(e => new PSScheduledQueryRuleResource(e))
+            //                .ToList();
+            //        }
+            //    }
+            //    else
+            //    {
+            //        if (ParameterSetName.Equals(ByResourceId))
+            //        {
+            //            // Resource Id provided, retrieve that alert by name
+            //            string resourceGroupName = null;
+            //            string ruleName = null;
+
+            //            ScheduledQueryRuleUtilities.ProcessPipeObject(ResourceId, out resourceGroupName, out ruleName);
+
+            //            this.ResourceGroupName = resourceGroupName;
+            //            this.RuleName = ruleName;
+            //        }
+
+            //        // Retrieve a log alert by name, ParameterSetName = ByRuleName
+            //        output = new List<PSScheduledQueryRuleResource>
+            //        {
+            //            new PSScheduledQueryRuleResource(
+            //                this.MonitorManagementClient.ScheduledQueryRules.Get(
+            //                    resourceGroupName: this.ResourceGroupName, ruleName: this.RuleName))
+            //        };
+            //    }
+
+
+                if (this.IsParameterBound(c => c.ResourceId))
+                {
+                    var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    this.RuleName = resourceIdentifier.ResourceName;
+                }
+
+                if (!string.IsNullOrEmpty(this.RuleName))
+                {
+                    var result = new PSScheduledQueryRuleResource(this.MonitorManagementClient.ScheduledQueryRules.GetWithHttpMessagesAsync(this.ResourceGroupName, this.RuleName).Result.Body);
+                    WriteObject(result);
+                }
+                else if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                {
+                    var result = this.MonitorManagementClient.ScheduledQueryRules.ListByResourceGroupWithHttpMessagesAsync(this.ResourceGroupName).Result.Body.Select(f => new PSScheduledQueryRuleResource(f));
+                    WriteObject(result, true);
+                }
+                else
+                {
+                    var result = this.MonitorManagementClient.ScheduledQueryRules.ListBySubscriptionWithHttpMessagesAsync().Result.Body.Select(f => new PSScheduledQueryRuleResource(f));
+                    WriteObject(result, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error occured while getting Log Alert rules", ex);
+            }
         }
     }
 }

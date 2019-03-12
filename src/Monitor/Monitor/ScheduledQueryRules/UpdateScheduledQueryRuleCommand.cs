@@ -18,14 +18,20 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 {
     /// <summary>
     /// Updates a ScheduledQueryRule object
     /// </summary>
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule", SupportsShouldProcess = true), OutputType(typeof(PSScheduledQueryRuleResource))]
-    public class UpdateScheduledQueryRuleCommand : MonitorCmdletBase
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule",
+         SupportsShouldProcess = true), OutputType(typeof(PSScheduledQueryRuleResource))]
+    public class UpdateScheduledQueryRuleCommand : ManagementCmdletBase
     {
 
         private const string ByInputObject = "ByInputObject";
@@ -34,25 +40,29 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         #region Cmdlet parameters
 
-        [Parameter(ParameterSetName = ByInputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The Scheduled Query Rule resource")]
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = true, ValueFromPipeline = true,
+            HelpMessage = "The Scheduled Query Rule resource")]
         [ValidateNotNull]
         public PSScheduledQueryRuleResource InputObject { get; set; }
 
-        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource Id")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         /// <summary>
         /// Alert name
         /// </summary>
-        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert name")]
+        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The alert name")]
         [ValidateNotNullOrEmpty]
         public string RuleName { get; set; }
 
         /// <summary>
         /// The resource group name
         /// </summary>
-        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -60,9 +70,12 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         /// <summary>
         /// Alert status - enabled or not, supported values - "true", "false"
         /// </summary>
-        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, HelpMessage = "The azure alert state - valid values - true, false")]
-        [Parameter(ParameterSetName = ByInputObject, Mandatory = true, HelpMessage = "The azure alert state - valid values - true, false")]
-        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, HelpMessage = "The azure alert state - valid values - true, false")]
+        [Parameter(ParameterSetName = ByRuleName, Mandatory = true,
+            HelpMessage = "The azure alert state - valid values - true, false")]
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = true,
+            HelpMessage = "The azure alert state - valid values - true, false")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true,
+            HelpMessage = "The azure alert state - valid values - true, false")]
         [ValidateSet("true", "false")]
         public string Enabled { get; set; }
 
@@ -70,6 +83,55 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         protected override void ProcessRecordInternal()
         {
+            ResourceIdentifier resourceIdentifier = null;
+            ScheduledQueryRuleResource resource = null;
+
+            // ByInputObject parameter set
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.RuleName = resourceIdentifier.ResourceName;
+
+            }
+
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.RuleName = resourceIdentifier.ResourceName;
+            }
+
+            try
+            {
+                resource = new ScheduledQueryRuleResource(
+                    this.MonitorManagementClient.ScheduledQueryRules.GetWithHttpMessagesAsync(this.ResourceGroupName, this.RuleName).Result.Body);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in getting Log Alert Rule", ex);
+            }
+
+            // Update of only Enabled field is supported
+            LogSearchRuleResourcePatch parameters = new LogSearchRuleResourcePatch(resource.Tags, this.Enabled);
+
+            if (ShouldProcess(this.RuleName,
+                string.Format("Updating Log Alert Rule '{0}' in resource group '{1}'.", this.RuleName,
+                    this.ResourceGroupName)))
+            {
+                try
+                {
+                    WriteObject(new PSScheduledQueryRuleResource(
+                        this.MonitorManagementClient.ScheduledQueryRules.UpdateWithHttpMessagesAsync(this.ResourceGroupName,
+                            this.RuleName,
+                            parameters).Result.Body));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error in updating Log Alert Rule", ex);
+                }
+
+            }
         }
     }
 }

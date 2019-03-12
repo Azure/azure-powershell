@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
     /// Create a ScheduledQueryRule Source object
     /// </summary>
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRuleSource"), OutputType(typeof(PSScheduledQueryRuleSource))]
-    public class NewScheduledQueryRuleSourceCommand : MonitorCmdletBase
+    public class NewScheduledQueryRuleSourceCommand : ManagementCmdletBase
     {
 
         #region Cmdlet parameters
