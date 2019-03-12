@@ -102,13 +102,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             Task<IAccessToken> authToken;
-            if (Builder.Authenticator.TryAuthenticate(GetAuthenticationParameters(account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId), out authToken))
+            var processAuthenticator = Builder.Authenticator;
+            while (processAuthenticator != null && processAuthenticator.TryAuthenticate(GetAuthenticationParameters(account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId), out authToken))
             {
-                token = authToken.ConfigureAwait(false).GetAwaiter().GetResult();
+                token = authToken?.ConfigureAwait(false).GetAwaiter().GetResult();
                 if (token != null)
                 {
                     account.Id = token.UserId;
+                    break;
                 }
+
+                processAuthenticator = processAuthenticator.Next;
             }
 
             return token;

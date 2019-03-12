@@ -191,9 +191,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Core
             {
                 _store.DeleteFile(CacheFileName);
             }
-
-            var dataToWrite = UserCache.SerializeMsalV3();
-            _store.WriteFile(CacheFileName, dataToWrite);
         }
     }
 }

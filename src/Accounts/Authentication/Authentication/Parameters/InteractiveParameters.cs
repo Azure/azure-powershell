@@ -17,7 +17,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public class InteractiveParameters : AuthenticationParameters
+    public class InteractiveParameters : DeviceCodeParameters
     {
         public Action<string> PromptAction { get; set; }
 

@@ -87,7 +87,10 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                     return AuthenticationResultToken.GetAccessTokenAsync(interactiveResponse);
                 }
             }
-            catch { }
+            catch
+            {
+                interactiveParameters.PromptAction("Unable to authenticate using interactive login. Defaulting back to device code flow.");
+            }
 
             return null;
         }
