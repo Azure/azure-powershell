@@ -15,7 +15,7 @@ In this folder, you will find best practices and design guidelines for different
     - [Module Dependencies](./module-best-practices.md#module-dependencies)
 - [Parameter Best Practices](./parameter-best-practices.md)
     - [Parameter Guidelines](./parameter-best-practices.md#parameter-guidelines)
-        - [Parameter Naming Conventions(./parameter-best-practices.md#parameter-naming-conventions)]
+        - [Parameter Naming Conventions](./parameter-best-practices.md#parameter-naming-conventions)
         - [Parameter Types](./parameter-best-practices.md#parameter-types)
         - [Argument Completers](./parameter-best-practices.md#argument-completers)
     - [Parameter Set Guidelines](./parameter-best-practices.md#parameter-set-guidelines)
