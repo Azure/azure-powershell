@@ -18,3 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.2
+* Add new cmdlets to enable/disable HTTPS for a custom domain
+* Add new cmdlet to get frontend endpoint
