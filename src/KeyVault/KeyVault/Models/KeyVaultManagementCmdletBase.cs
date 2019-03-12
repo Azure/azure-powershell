@@ -126,32 +126,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             return listResult;
         }
 
-        protected PSKeyVault FilterByTag(PSKeyVault keyvault, Hashtable tag)
+        protected PSKeyVault FilterByTag(PSKeyVault keyVault, Hashtable tag)
         {
-            var tagValuePair = new PSTagValuePair();
-            if (tag != null && tag.Count > 0)
-            {
-                tagValuePair = TagsConversionHelper.Create(tag);
-                if (tagValuePair == null)
-                {
-                    throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidTagFormat);
-                }
-            }
-
-            List<PSKeyVault> listResult = new List<PSKeyVault>();
-            listResult.Add(keyvault);
-
-            if (!string.IsNullOrEmpty(tagValuePair.Name))
-            {
-                listResult = listResult.Where(r => r.Tags?.Keys != null && r.Tags.ConvertToDictionary().Keys.Any(k => string.Equals(k, tagValuePair.Name, StringComparison.OrdinalIgnoreCase))).ToList();
-            }
-
-            if (!string.IsNullOrEmpty(tagValuePair.Value))
-            {
-                listResult = listResult.Where(r => r.Tags?.Values != null && r.Tags.ConvertToDictionary().Values.Any(v => string.Equals(v, tagValuePair.Value, StringComparison.OrdinalIgnoreCase))).ToList();
-            }
-
-            return listResult.Count == 0 ? null : listResult.First();
+            return (PSKeyVault) FilterByTag(new List<PSKeyVaultIdentityItem> { keyVault }, tag).FirstOrDefault();
         }
 
         protected List<PSKeyVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag)
