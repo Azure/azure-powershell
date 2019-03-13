@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/get-azeventgriddomainkey
 schema: 2.0.0
 ---
 
 # Get-AzEventGridDomainKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the shared access keys used to publish events to an Event Grid domain.
 
 ## SYNTAX
 
@@ -30,16 +30,23 @@ Get-AzEventGridDomainKey [-ResourceId] <String> [-DefaultProfile <IAzureContextC
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Gets the shared access keys used to publish events to an Event Grid domain.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+```
+PS C:\> Get-AzEventGridDomainKey -ResourceGroup MyResourceGroupName -Name Domain1
 ```
 
-{{ Add example description here }}
+Gets the shared access keys of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+
+### Example 2
+```
+PS C:\> Get-AzEventGridDomain -ResourceGroup MyResourceGroupName -Name Domain1 | Get-AzEventGridDomainKey
+```
+
+Gets the shared access keys of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

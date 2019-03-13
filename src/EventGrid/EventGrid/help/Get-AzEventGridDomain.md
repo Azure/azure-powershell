@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/get-azeventgriddomain
 schema: 2.0.0
 ---
 
 # Get-AzEventGridDomain
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the details of an Event Grid domain, or gets a list of all Event Grid domains in the current Azure subscription.
 
 ## SYNTAX
 
@@ -30,16 +30,39 @@ Get-AzEventGridDomain [-ResourceId] <String> [-DefaultProfile <IAzureContextCont
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Get-AzEventGridDomain cmdlet gets either the details of a specified Event Grid domain, or a list of all Event Grid domains in the current Azure subscription.
+If the domain name is provided, the details of a single Event Grid domain is returned.
+If the domain name is not provided, a list of domains is returned.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+```
+PS C:\> Get-AzEventGridDomain -ResourceGroup MyResourceGroupName -Name Domain1
 ```
 
-{{ Add example description here }}
+Gets the details of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+
+### Example 2
+```
+PS C:\> Get-AzEventGridDomain -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1"
+```
+
+Gets the details of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+
+### Example 3
+```
+PS C:\> Get-AzEventGridDomain -ResourceGroup MyResourceGroupName
+```
+
+List all the Event Grid domains in resource group \`MyResourceGroupName\`.
+
+### Example 4
+```
+PS C:\> Get-AzEventGridDomain
+```
+
+List all the Event Grid domains in the subscription.
 
 ## PARAMETERS
 

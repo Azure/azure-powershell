@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/new-azeventgriddomain
 schema: 2.0.0
 ---
 
 # New-AzEventGridDomain
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new Azure Event Grid Domain.
 
 ## SYNTAX
 
@@ -19,16 +19,30 @@ New-AzEventGridDomain [-ResourceGroupName] <String> [-Name] <String> [-Location]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Creates a new Azure Event Grid Domain. Once the domain is created, an application can publish events to the topic endpoint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2
 ```
 
-{{ Add example description here }}
+Creates an Event Grid domain \`Domain1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\`.
+
+### Example 2
+```powershell
+PS C:\> New-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2 -Tag @{ Department="Finance"; Environment="Test" }
+```
+
+Creates an Event Grid domain \`Domain1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\` with the specified tags "Department" and "Environment".
+
+### Example 2
+```
+PS C:\> New-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2 --Tag @{ Department="Finance"; Environment="Test" } -InputSchema customeventschema -InputMappingField @{id="CustomIdField"; topic="CustomTopicField"; eventtime="CustomEventTimeField"; subject="CustomSubjectField"; eventtype="CustomEventTypeField"; dataversion="CustomDataVersionField"} -InputMappingDefaultValue @{subject="CustomSubjectDefaultValue"; eventtype="CustomEventTypeDefaultValue"; dataversion="CustomDataVersionDefaultValue"}
+```
+
+Creates an Event Grid domain \`Domain1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\` with the specified tags "Department" and "Environment" with the specified customeventschema Input Schema along with the corresponding input mapping fields and default values that are used for input mapping.
 
 ## PARAMETERS
 

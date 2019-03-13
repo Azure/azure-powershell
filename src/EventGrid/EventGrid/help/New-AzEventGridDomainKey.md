@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/new-azeventgriddomainkey
 schema: 2.0.0
 ---
 
 # New-AzEventGridDomainKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Regenerates the shared access key for an Azure Event Grid Domain.
 
 ## SYNTAX
 
@@ -31,16 +31,32 @@ New-AzEventGridDomainKey [-KeyName] <String> [-ResourceId] <String> [-DefaultPro
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Regenerates the shared access key for an Azure Event Grid Domain.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+```
+PS C:\> New-AzEventGridDomainKey -ResourceGroup MyResourceGroupName -DomainName Domain1 -KeyName key1
 ```
 
-{{ Add example description here }}
+Regenerate the key corresponding to key \'key1'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+
+### Example 2
+```
+PS C:\> Get-AzEventGridDomain -ResourceGroup MyResourceGroupName -Name Domain1 | New-AzEventGridTopicKey -KeyName "key1"
+```
+
+Regenerate the key corresponding to key \'key1'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+
+### Example 3
+```
+PS C:\> New-AzEventGridDomainKey -ResourceId /subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1 -KeyName Key2
+```
+
+Regenerate the key corresponding to key \'key2'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` using its full resource Id.
+
+
 
 ## PARAMETERS
 

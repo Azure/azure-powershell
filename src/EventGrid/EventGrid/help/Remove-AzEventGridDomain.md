@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/remove-azeventgriddomain
 schema: 2.0.0
 ---
 
 # Remove-AzEventGridDomain
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes an Azure Event Grid Domain.
 
 ## SYNTAX
 
@@ -31,16 +31,23 @@ Remove-AzEventGridDomain [-InputObject] <PSDomain> [-PassThru] [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Removes an Azure Event Grid Domain.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1
 ```
 
-{{ Add example description here }}
+Removes the Event Grid topic \`Domain1\` in resource group \`MyResourceGroupName\`.
+
+### Example 2
+```
+PS C:\> Get-AzResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/Domains/Domain1" | Remove-AzEventGridDomain
+```
+
+Removes the Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 
