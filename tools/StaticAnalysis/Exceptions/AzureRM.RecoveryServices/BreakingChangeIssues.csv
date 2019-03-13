@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Microsoft.Azure.Commands.RecoveryServices.ARM.dll","Microsoft.Azure.Commands.RecoveryServices.GetAzureRmRecoveryServicesVaults","Get-AzureRmRecoveryServicesVault","0","1020","The cmdlet 'Get-AzureRmRecoveryServicesVault' no longer has output type 'System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.ARSVault]'.","Make cmdlet 'Get-AzureRmRecoveryServicesVault' return type 'System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.ARSVault]'."

@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Microsoft.Azure.Commands.Dns.dll","Microsoft.Azure.Commands.Dns.NewAzureDnsRecordSet","New-AzureRmDnsRecordSet","0","1050","The parameter set '__AllParameterSets' for cmdlet 'New-AzureRmDnsRecordSet' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'New-AzureRmDnsRecordSet'."

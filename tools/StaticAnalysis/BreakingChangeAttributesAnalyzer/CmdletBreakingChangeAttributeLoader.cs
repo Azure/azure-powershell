@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Management.Automation;
+// TODO: Remove IfDef code
 #if !NETSTANDARD
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 #endif
@@ -32,7 +33,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
 
         public void FilterCmdlets(Func<string, bool> cmdletFilter)
         {
-            CmdletList = CmdletList.Where<BreakingChangeAttributesInCmdlet>((cmdlet) => cmdletFilter(cmdlet.CmdletName)).ToList<BreakingChangeAttributesInCmdlet>();
+            CmdletList = CmdletList.Where(cmdlet => cmdletFilter(cmdlet.CmdletName)).ToList();
         }
     }
 
@@ -40,6 +41,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
     {
         public Type CmdletType { get; set; }
         public string CmdletName { get; set; }
+// TODO: Remove IfDef code
 #if !NETSTANDARD
         public List<GenericBreakingChangeAttribute> BreakingChangeAttributes { get; set; }
 #endif
@@ -54,7 +56,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
         /// <returns></returns>
         public BreakingChangeAttributesInModule GetModuleBreakingChangeAttributes(string assemblyPath)
         {
-            List<BreakingChangeAttributesInCmdlet> results = new List<BreakingChangeAttributesInCmdlet>();
+            var results = new List<BreakingChangeAttributesInCmdlet>();
 
             try
             {
@@ -62,6 +64,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
                 foreach (var type in assembly.GetCmdletTypes())
                 {
                     var cmdlet = type.GetAttribute<CmdletAttribute>();
+// TODO: Remove IfDef code
 #if !NETSTANDARD
                     var attributes = type.GetAttributes<GenericBreakingChangeAttribute>();
 
@@ -71,10 +74,11 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
                     {
                         CmdletType = type,
                         CmdletName = cmdlet.VerbName + "-" + cmdlet.NounName,
+// TODO: Remove IfDef code
 #if !NETSTANDARD
                         BreakingChangeAttributes = attributes.ToList()
 #endif
-                        };
+                    };
 
                     results.Add(cmdletMetadata);
                 }
@@ -84,17 +88,14 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
                 throw ex;
             }
 
-            if (results.Count() > 0)
-            {
-                var attributesInTheModule = new BreakingChangeAttributesInModule();
+            if (!results.Any()) return null;
 
-                attributesInTheModule.ModuleName = assemblyPath;
-                attributesInTheModule.CmdletList = results;
-                return attributesInTheModule;
-            } else
+            var attributesInTheModule = new BreakingChangeAttributesInModule
             {
-                return null;
-            }
+                ModuleName = assemblyPath, CmdletList = results
+            };
+
+            return attributesInTheModule;
         }
     }
 }
