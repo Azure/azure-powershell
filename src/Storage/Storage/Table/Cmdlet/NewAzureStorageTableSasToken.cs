@@ -17,7 +17,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Table;
+    using Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
         [ValidateNotNull]
-        public SharedAccessProtocol? Protocol { get; set; }
+        public Microsoft.Azure.Cosmos.Table.SharedAccessProtocol? Protocol { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted by Azure Storage.")]
         [ValidateNotNullOrEmpty]
@@ -131,7 +131,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             SetupAccessPolicy(policy, shouldSetExpiryTime);
             ValidatePkAndRk(StartPartitionKey, StartRowKey, EndPartitionKey, EndRowKey);
             string sasToken = table.GetSharedAccessSignature(policy, accessPolicyIdentifier, StartPartitionKey,
-                                StartRowKey, EndPartitionKey, EndRowKey, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
+                                StartRowKey, EndPartitionKey, EndRowKey, Protocol, Util.SetupTableIPAddressOrRangeForSAS(IPAddressOrRange));
 
             if (FullUri)
             {

@@ -1,4 +1,13 @@
 ## 1.5.0 - March 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added wildcard support to Get cmdlets for Az.Compute and Az.Network
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+* Az.LogicApp: New cmdlets for Integration Account Assemblies and Batch Configuration
+
 #### Az.Accounts
 * Add 'Register-AzModule' command to support AutoRest generated cmdlets
 * Update examples for Connect-AzAccount
@@ -45,6 +54,14 @@
        - New-AzStorageAccount
 
 ## 1.4.0 - February 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+* Az.LogicApp: New cmdlets for Integration Account Assemblies and Batch Configuration
+
 #### Az.AnalysisServices
 * Deprecated AddAzureASAccount cmdlet
 
@@ -111,6 +128,13 @@
 * Correct example in Get-AzWebAppSlotMetrics
 
 ## 1.3.0 - February 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+
 #### Az.Accounts
 * Update to latest version of ClientRuntime
 
@@ -137,6 +161,13 @@ General availability for Az.RecoveryServices module.
 * Fixed null ref exception in Get-AzSqlCapability
 
 ## 1.2.1 - January 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+
 #### Az.Accounts
 * Release with correct version of Authentication
 
@@ -148,6 +179,13 @@ General availability for Az.RecoveryServices module.
 
 
 ## 1.2.0 - January 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+
 #### Az.Accounts
 * Add interactive and username/password authentication for Windows PowerShell 5.1 only
 * Update incorrect online help URLs
@@ -227,6 +265,11 @@ General availability for Az.RecoveryServices module.
 * Fixes 'New-AzWebAppSSLBinding' to not overwrite the tags on binding an SSL certificate to an app
 
 ## 1.1.0 - January 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+
 #### Az.Accounts
 * Add 'Local' Scope to Enable-AzureRmAlias
 
@@ -284,8 +327,7 @@ General availability for Az.RecoveryServices module.
 * Fix backward compatibility issue with Az.Accounts module
 
 ## Version 1.0.0 - December 2018
-
-#### General
-
+### Highlights since the last major release
 * General availability of `Az` module
 * For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
