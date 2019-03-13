@@ -1,53 +1,46 @@
 ---
-external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
-Module Name: AzureRM.EventGrid
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/remove-azurermeventgriddomain
+external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+Module Name: Az.EventGrid
+online version:
 schema: 2.0.0
 ---
 
-# Remove-AzureRmEventGridDomain
+# Remove-AzEventGridDomain
 
 ## SYNOPSIS
-Removes an Azure Event Grid Domain.
+{{Fill in the Synopsis}}
 
 ## SYNTAX
 
 ### DomainNameParameterSet (Default)
 ```
-Remove-AzureRmEventGridDomain [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
+Remove-AzEventGridDomain [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
-Remove-AzureRmEventGridDomain [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzEventGridDomain [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DomainInputObjectParameterSet
 ```
-Remove-AzureRmEventGridDomain [-InputObject] <PSDomain> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzEventGridDomain [-InputObject] <PSDomain> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes an Azure Event Grid Domain.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzureRmEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1
+PS C:\> {{ Add example code here }}
 ```
 
-Removes the Event Grid topic \`Domain1\` in resource group \`MyResourceGroupName\`.
-
-### Example 2
-```
-PS C:\> Get-AzureRmResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/Domains/Domain1" | Remove-AzureRmEventGridDomain
-```
-
-Removes the Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -55,9 +48,9 @@ Removes the Event Grid domain \`Domain1\` in resource group \`MyResourceGroupNam
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -70,7 +63,7 @@ Accept wildcard characters: False
 EventGrid Domain object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
+Type: PSDomain
 Parameter Sets: DomainInputObjectParameterSet
 Aliases:
 
@@ -85,7 +78,7 @@ Accept wildcard characters: False
 EventGrid domain name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: DomainNameParameterSet
 Aliases: DomainName
 
@@ -97,10 +90,10 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns the status of the Remove operation. By default, this cmdlet does not generate any output.
+{{Fill PassThru Description}}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -115,7 +108,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: DomainNameParameterSet
 Aliases: ResourceGroup
 
@@ -130,7 +123,7 @@ Accept wildcard characters: False
 Resource Identifier representing the Event Grid Domain.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceIdEventSubscriptionParameterSet
 Aliases:
 
@@ -145,7 +138,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -161,7 +154,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -173,7 +166,8 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -86,19 +86,7 @@ The name of the key that needs to be regenerated
 
 ```yaml
 Type: System.String
-Parameter Sets: TopicNameParameterSet, ResourceIdEventSubscriptionParameterSet
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: TopicInputObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True

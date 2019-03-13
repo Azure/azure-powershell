@@ -1,60 +1,46 @@
 ---
-external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
-Module Name: AzureRM.EventGrid
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/new-azurermeventgriddomainkey
+external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+Module Name: Az.EventGrid
+online version:
 schema: 2.0.0
 ---
 
-# New-AzureRmEventGridDomainKey
+# New-AzEventGridDomainKey
 
 ## SYNOPSIS
-Regenerates the shared access key for an Azure Event Grid Domain.
+{{Fill in the Synopsis}}
 
 ## SYNTAX
 
 ### DomainNameParameterSet (Default)
 ```
-New-AzureRmEventGridDomainKey [-ResourceGroupName] <String> [-DomainName] <String> [-KeyName] <String>
+New-AzEventGridDomainKey [-ResourceGroupName] <String> [-DomainName] <String> [-KeyName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DomainInputObjectParameterSet
 ```
-New-AzureRmEventGridDomainKey [-KeyName] <String> [-InputObject] <PSDomain>
+New-AzEventGridDomainKey [-KeyName] <String> [-InputObject] <PSDomain>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
-New-AzureRmEventGridDomainKey [-KeyName] <String> [-ResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzEventGridDomainKey [-KeyName] <String> [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Regenerates the shared access key for an Azure Event Grid Domain.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzureRmEventGridDomainKey -ResourceGroup MyResourceGroupName -DomainName Domain1 -KeyName key1
-```
-
-Regenerate the key corresponding to key \'key1'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
-
-### Example 2
-```
-PS C:\> Get-AzureRmEventGridDomain -ResourceGroup MyResourceGroupName -Name Domain1 | New-AzureRmEventGridTopicKey -KeyName "key1"
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-Regenerate the key corresponding to key \'key1'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
-
-### Example 3
-```
-PS C:\> New-AzureRmEventGridDomainKey -ResourceId /subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1 -KeyName Key2
-```
-
-Regenerate the key corresponding to key \'key2'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` using its full resource Id.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -62,9 +48,9 @@ Regenerate the key corresponding to key \'key2'\ of Event Grid domain \`Domain1\
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -77,7 +63,7 @@ Accept wildcard characters: False
 EventGrid domain name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: DomainNameParameterSet
 Aliases:
 
@@ -92,7 +78,7 @@ Accept wildcard characters: False
 EventGrid Domain object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
+Type: PSDomain
 Parameter Sets: DomainInputObjectParameterSet
 Aliases:
 
@@ -107,20 +93,8 @@ Accept wildcard characters: False
 The name of the key that needs to be regenerated
 
 ```yaml
-Type: System.String
-Parameter Sets: DomainNameParameterSet, ResourceIdEventSubscriptionParameterSet
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: DomainInputObjectParameterSet
+Type: String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -134,7 +108,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: DomainNameParameterSet
 Aliases: ResourceGroup
 
@@ -149,7 +123,7 @@ Accept wildcard characters: False
 Resource Identifier representing the Event Grid Domain.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceIdEventSubscriptionParameterSet
 Aliases:
 
@@ -164,7 +138,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -180,7 +154,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -192,7 +166,8 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

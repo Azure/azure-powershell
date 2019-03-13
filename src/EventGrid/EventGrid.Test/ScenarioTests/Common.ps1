@@ -46,7 +46,7 @@ Get EventSubscription Webhook Endpoint
 #>
 function Get-EventSubscriptionWebhookEndpoint
 {
-    return "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
+    return "https://devexpfuncappdestination.azurewebsites.net/runtime/webhooks/EventGrid?functionName=EventGridTrigger1&code=A8ZhLmbJz2DWI5fcdRJnQU57yID4ZRanNZhMGdrLkpBCQLalud2INw=="
 }
 
 <#
@@ -73,7 +73,7 @@ Get EventSubscription Webhook Endpoint
 #>
 function Get-EventSubscriptionWebhookBaseEndpoint
 {
-    return "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1"
+    return "https://devexpfuncappdestination.azurewebsites.net/runtime/webhooks/EventGrid"
 }
 
 <#

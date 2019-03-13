@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_CustomTopic2");
         }
 
-        [Fact]
+        [Fact(Skip = "Service team will re-record test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscriptionToAzureSubscription()
         {
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Resource");
         }
 
-        [Fact]
+        [Fact(Skip = "Service team will re-record test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_Deadletter()
         {
