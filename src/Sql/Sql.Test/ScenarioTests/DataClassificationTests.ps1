@@ -443,7 +443,7 @@ Creates the test environment needed to perform the tests
 #>
 function Create-ManagedDataClassificationTestEnvironment ($testSuffix, $location = "West Central US")
 {
-	$params = Get-DataClassificationTestEnvironmentParameters $testSuffix
+	$params = Get-DataClassificationManagedTestEnvironmentParameters $testSuffix
 	Create-BasicManagedTestEnvironmentWithParams $params $location
 }
 
