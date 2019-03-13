@@ -61,8 +61,8 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
             {
                 sensitivityLabels = ParameterSetName == DataClassificationCommon.ColumnParameterSet
                     || ParameterSetName == DataClassificationCommon.DatabaseObjectColumnParameterSet
-                    ? ModelAdapter.GetCurrentSensitivityLabel(ResourceGroupName, InstanceName, DatabaseName, SchemaName, TableName, ColumnName)
-                    : ModelAdapter.GetCurrentSensitivityLabels(ResourceGroupName, InstanceName, DatabaseName);
+                    ? ModelAdapter.GetManagedDatabaseCurrentSensitivityLabel(ResourceGroupName, InstanceName, DatabaseName, SchemaName, TableName, ColumnName)
+                    : ModelAdapter.GetManagedDatabaseCurrentSensitivityLabels(ResourceGroupName, InstanceName, DatabaseName);
             }
             catch (CloudException e)
             {
