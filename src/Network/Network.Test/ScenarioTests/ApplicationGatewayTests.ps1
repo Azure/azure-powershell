@@ -1486,12 +1486,8 @@ function Test-ApplicationGatewayCRUDSubItems2
 		# Add to test Remove
 		Add-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $appgw -Name $poolSetting02Name -Port 1234 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 42 -HostName test -Path /test -AffinityCookieName test
 		$fipconfig = Get-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw -Name $fipconfigName
-		$fp02 = Get-AzApplicationGatewayFrontendPort -ApplicationGateway $appgw -Name $frontendPort02Name 
-		$sslCert = Get-AzApplicationGatewaySslCertificate -ApplicationGateway $appgw -Name $sslCert01Name
 		Add-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener02Name -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp02 -HostName TestHostName -RequireServerNameIndication true -SslCertificate $sslCert
 		$listener02 = Get-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener02Name
-		$fp02 = Get-AzApplicationGatewayFrontendPort -ApplicationGateway $appgw -Name $frontendPort02Name 
-		$sslCert = Get-AzApplicationGatewaySslCertificate -ApplicationGateway $appgw -Name $sslCert01Name
 		Add-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener03Name -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp02 -HostName TestName -SslCertificate $sslCert
 		$urlPathMap = Get-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name $urlPathMapName
 		Add-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType PathBasedRouting -HttpListener $listener02 -UrlPathMap $urlPathMap
@@ -1574,4 +1570,41 @@ function Test-ApplicationGatewayCRUDSubItems2
 		# Cleanup
 		Clean-ResourceGroup $rgname
 	}
+}
+
+function Test-AvailableServerVariableAndHeader
+{
+	#Get server variables, request headers and response headers
+	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader
+
+	Assert-NotNull $result
+	Assert-True { $result.AvailableServerVariable.Count -gt 0 }
+	Assert-True { $result.AvailableRequestHeader.Count -gt 0 }
+	Assert-True { $result.AvailableResponseHeader.Count -gt 0 }
+
+	#Get server variables, request headers and response headers
+	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariable -RequestHeader -ResponseHeader
+
+	Assert-NotNull $result
+	Assert-True { $result.AvailableServerVariable.Count -gt 0 }
+	Assert-True { $result.AvailableRequestHeader.Count -gt 0 }
+	Assert-True { $result.AvailableResponseHeader.Count -gt 0 }
+
+	#Get server variables only
+	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariable
+
+	Assert-NotNull $result
+	Assert-True { $result.AvailableServerVariable.Count -gt 0 }
+
+	#Get request headers only
+	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader -RequestHeader
+
+	Assert-NotNull $result
+	Assert-True { $result.AvailableRequestHeader.Count -gt 0 }
+
+	#Get response headers only
+	$result = Get-AzApplicationGatewayAvailableServerVariableAndHeader -ResponseHeader
+
+	Assert-NotNull $result
+	Assert-True { $result.AvailableResponseHeader.Count -gt 0 }
 }

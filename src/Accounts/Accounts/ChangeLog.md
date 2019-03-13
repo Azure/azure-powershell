@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.0
+* Add 'Register-AzModule' command to support AutoRest generated cmdlets
 * Update examples for Connect-AzAccount
 
 ## Version 1.3.1

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzExpressRouteConnection
 
 ## SYNOPSIS
-Updates a ExpressRouteConnection object to a goal state.
+Updates an express route connection created between an express route gateway and on-premise express route circuit peering.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Set-AzExpressRouteConnection -InputObject <PSExpressRouteConnection> [-Authoriza
 ```
 
 ## DESCRIPTION
-Modifies properties of an ExpressRouteConnection created between an ExpressRoute gateway and an on premise ExpressRoute circuit peering.
+The **Set-AzExpressRouteConnection** cmdlet updates an express route connection created between an express route gateway and on-premise express route circuit peering.
 
 ## EXAMPLES
 
