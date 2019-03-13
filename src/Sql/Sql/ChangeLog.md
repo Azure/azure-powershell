@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Add Vulnerability Assessment cmdlets on Server and Managed Instance
+
+## Version 1.5.0
 * Updating AuditingEndpointsCommunicator.
     - Fixing the behavior of an edge case while creating new diagnostic settings.
     
