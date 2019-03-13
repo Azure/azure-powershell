@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Resources
 Module Guid: ab3ca893-26fe-44b0-bd3c-8933df144d7b
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.resources
@@ -130,7 +130,7 @@ Adds a credential to an existing service principal.
 Creates a new active directory user.
 
 ### [New-AzDeployment](New-AzDeployment.md)
-Creat a deployment
+Create a deployment
 
 ### [New-AzManagedApplication](New-AzManagedApplication.md)
 Creates an Azure managed application.

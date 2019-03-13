@@ -10,6 +10,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using XTable = Microsoft.Azure.Cosmos.Table;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,36 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
                 this.Cors = PSCorsRule.ParseCorsRules(properties.Cors);
                 this.DeleteRetentionPolicy = PSDeleteRetentionPolicy.ParsePSDeleteRetentionPolicy(properties.DeleteRetentionPolicy);
                 this.StaticWebsite = PSStaticWebsiteProperties.ParsePSStaticWebsiteProperties(properties.StaticWebsite);
+            }
+        }  
+        
+        //
+        // Summary:
+        //     Initializes a new instance of the PSSeriviceProperties class from old XSCL service properties.
+        public PSSeriviceProperties(XTable.ServiceProperties properties)
+        {
+            if (properties != null)
+            {
+                this.Logging = new LoggingProperties()
+                {
+                    Version = properties.Logging.Version,
+                    RetentionDays = properties.Logging.RetentionDays,
+                    LoggingOperations = (LoggingOperations)Enum.Parse(typeof(LoggingOperations), properties.Logging.LoggingOperations.ToString(), true),
+                };
+                this.HourMetrics = new MetricsProperties()
+                {
+                    Version = properties.HourMetrics.Version,
+                    RetentionDays = properties.HourMetrics.RetentionDays,
+                    MetricsLevel = (MetricsLevel)Enum.Parse(typeof(MetricsLevel), properties.HourMetrics.MetricsLevel.ToString(), true),
+                };
+                this.MinuteMetrics = new MetricsProperties()
+                {
+                    Version = properties.MinuteMetrics.Version,
+                    RetentionDays = properties.MinuteMetrics.RetentionDays,
+                    MetricsLevel = (MetricsLevel)Enum.Parse(typeof(MetricsLevel), properties.MinuteMetrics.MetricsLevel.ToString(), true),
+                };
+                this.DefaultServiceVersion = properties.DefaultServiceVersion;
+                this.Cors = PSCorsRule.ParseCorsRules(properties.Cors);
             }
         }
 
