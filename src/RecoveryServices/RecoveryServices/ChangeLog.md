@@ -24,6 +24,7 @@
 * SDK Update
 * Removed VMappContainer check in Get-ProtectableItem
 * Added Name and ServerName as parameters for Get-ProtectableItem
+* Updated internal API for triggering adhoc inquiry
 
 ## Version 1.0.1
 * Release with updated Authentication dependency
