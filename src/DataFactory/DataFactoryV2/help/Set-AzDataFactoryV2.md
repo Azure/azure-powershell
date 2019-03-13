@@ -26,18 +26,17 @@ Set-AzDataFactoryV2 [-ResourceId] <String> -Location <String> [-Tag <Hashtable>]
 
 ### ByResourceIdFactoryRepoVstsConfig
 ```
-Set-AzDataFactoryV2 [[-ResourceId] <String>] -Location <String> [-Tag <Hashtable>] [-Force]
- -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
- [-LastCommitId <String>] -ProjectName <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzDataFactoryV2 [-ResourceId] <String> -Location <String> [-Tag <Hashtable>] [-Force] -AccountName <String>
+ -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String> [-LastCommitId <String>]
+ -ProjectName <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdFactoryRepoGitConfig
 ```
-Set-AzDataFactoryV2 [[-ResourceId] <String>] -Location <String> [-Tag <Hashtable>] [-Force]
- -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
- [-LastCommitId <String>] -HostName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzDataFactoryV2 [-ResourceId] <String> -Location <String> [-Tag <Hashtable>] [-Force] -AccountName <String>
+ -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String> [-LastCommitId <String>]
+ -HostName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFactoryNameFactoryRepoGitConfig
@@ -244,7 +243,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -256,7 +255,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -271,7 +270,7 @@ Aliases: DataFactoryName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -328,7 +327,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -337,25 +336,13 @@ The Azure resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
+Parameter Sets: ByResourceId, ByResourceIdFactoryRepoVstsConfig, ByResourceIdFactoryRepoGitConfig
 Aliases: Id, DataFactoryId
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceIdFactoryRepoVstsConfig, ByResourceIdFactoryRepoGitConfig
-Aliases: Id, DataFactoryId
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -391,13 +378,25 @@ The tags of the data factory.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: ByFactoryName, ByResourceId, ByResourceIdFactoryRepoVstsConfig, ByResourceIdFactoryRepoGitConfig, ByFactoryNameFactoryRepoGitConfig, ByFactoryNameFactoryRepoVstsConfig
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: ByInputObject, ByInputObjectFactoryRepoVstsConfig, ByInputObjectFactoryRepoGitConfig
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

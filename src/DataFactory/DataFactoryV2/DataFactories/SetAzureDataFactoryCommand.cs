@@ -30,16 +30,19 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             ParameterSetName = ParameterSetNames.ByResourceId,
             Position = 0,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpResourceId)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceIdFactoryRepoVstsConfig,
             Position = 0,
-            Mandatory = false,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpResourceId)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceIdFactoryRepoGitConfig,
             Position = 0,
-            Mandatory = false,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpResourceId)]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.Id, Constants.DataFactoryId)]
@@ -51,16 +54,19 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             ParameterSetName = ParameterSetNames.ByFactoryName,
             Position = 0,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpResourceGroup)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryNameFactoryRepoGitConfig,
             Position = 0,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpResourceGroup)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryNameFactoryRepoVstsConfig,
             Position = 0,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpResourceGroup)]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
@@ -72,16 +78,19 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             ParameterSetName = ParameterSetNames.ByFactoryName,
             Position = 1,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpFactoryName)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryNameFactoryRepoGitConfig,
             Position = 1,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpFactoryName)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryNameFactoryRepoVstsConfig,
             Position = 1,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpFactoryName)]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.DataFactoryName)]
@@ -123,27 +132,39 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpFactoryLocation)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryName,
+            Position = 2,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpFactoryLocation)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryNameFactoryRepoGitConfig,
+            Position = 2,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpFactoryLocation)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryNameFactoryRepoVstsConfig,
+            Position = 2,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpFactoryLocation)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceId,
+            Position = 1,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpFactoryLocation)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceIdFactoryRepoVstsConfig,
+            Position = 1,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpFactoryLocation)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceIdFactoryRepoGitConfig,
+            Position = 1,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpFactoryLocation)]
         [ValidateNotNullOrEmpty]
         [LocationCompleter(Constants.DataFactoryQualifiedType)]
@@ -165,26 +186,38 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpTagsForFactory)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryName,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = Constants.HelpTagsForFactory)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryNameFactoryRepoGitConfig,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = Constants.HelpTagsForFactory)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryNameFactoryRepoVstsConfig,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = Constants.HelpTagsForFactory)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceId,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = Constants.HelpTagsForFactory)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceIdFactoryRepoVstsConfig,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = Constants.HelpTagsForFactory)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceIdFactoryRepoGitConfig,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = Constants.HelpTagsForFactory)]
         #endregion // Attributes
