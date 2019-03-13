@@ -16431,6 +16431,7 @@
         "Destination": "Microsoft.Azure.Commands.EventHub.Models.PSDestinationAttributes",
         "Encoding": "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.EnumEncodingCaptureDescription]",
         "Enabled": "System.Nullable`1[System.Boolean]",
+        "SkipEmptyArchives": "System.Nullable`1[System.Boolean]",
         "IntervalInSeconds": "System.Nullable`1[System.Int32]",
         "SizeLimitInBytes": "System.Nullable`1[System.Int32]"
       },
