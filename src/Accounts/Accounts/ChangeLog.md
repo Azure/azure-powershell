@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Azure automation update management change to support the following new features :
+    * Dynamic grouping
+    * Pre-Post script
+    * Reboot Setting
 
 ## Version 1.4.0
 * Add 'Register-AzModule' command to support AutoRest generated cmdlets
@@ -29,10 +33,6 @@
 
 ## Version 1.3.0
 * Update to latest version of ClientRuntime
-* Azure automation update management change to support the following new features :
-    Dynamic grouping
-    Pre-Post script
-    Reboot Setting
 
 ## Version 1.2.1
 * Release with correct version of Authentication
