@@ -39,16 +39,24 @@ function Get-AzReleaseHighlights
 	$releaseVersionFound = $false
 	$versionCount = 0
 
+	if ($Version -eq $null) {
+		$AzModule = $env:PSModulePath -split ';' | ForEach-Object { Get-ChildItem -Path $_ } | Where-Object { $_.Name -eq "Az"}
+		$Versions = $AzModule | ForEach-Object { Get-ChildItem -Path $_.FullName } | ForEach-Object { [System.Version]::Parse($_.Name) } | Sort-Object
+		if ($Versions -eq $null)
+		{
+			$Latest = $true
+		}
+		else
+		{
+			$Version = [System.Version]::Parse($Versions[-1])
+		}
+	}
+	
 	if ($Latest) {
 		$isVersionSection = $true
 		$first, $rest = $page
 		$page = $rest
 		$releaseVersionFound = $true
-	}
-	elseif ($Version -eq $null) {
-		$AzModule = $env:PSModulePath -split ';' | ForEach-Object { Get-ChildItem -Path $_ } | Where-Object { $_.Name -eq "Az"}
-		$Versions = $AzModule | ForEach-Object { Get-ChildItem -Path $_.FullName } | ForEach-Object { [System.Version]::Parse($_.Name) } | Sort-Object
-		$Version = [System.Version]::Parse($Versions[-1])
 	}
 
 	$page | ForEach-Object { 
@@ -65,8 +73,7 @@ function Get-AzReleaseHighlights
 		}
 		elseif ($isVersionSection)
 		{
-			#if ($_ -like "*### Highlights*" ) {
-			if ($_ -like "*#### Az.Compute*") {
+			if ($_ -like "*### Highlights*" ) {
 				$isHighlightsSection = $true
 			}
 			elseif ($_ -like "*### *")
@@ -83,15 +90,14 @@ function Get-AzReleaseHighlights
 		Write-Warning "Version $Version was not found."
 	}
 
-	if ($Online) {
-		Write-Output $versionCount
+	if ($Online -and $releaseVersionFound) {
 		if ($versionCount -eq 0)
 		{
-			Start-Process "https://github.com/Azure/azure-powershell/blob/master/ChangeLog.md#azcompute"
+			Start-Process "https://github.com/Azure/azure-powershell/blob/master/ChangeLog.md#highlights-since-the-last-major-release"
 		}
 		else
 		{
-			Start-Process "https://github.com/Azure/azure-powershell/blob/master/ChangeLog.md#azcompute-$versionCount"
+			Start-Process "https://github.com/Azure/azure-powershell/blob/master/ChangeLog.md#highlights-since-the-last-major-release-$versionCount"
 		}
 	}
 }
