@@ -62,7 +62,7 @@ function Test-BasicDataClassificationOnSqlManagedDatabase
 	finally
 	{
 		# Cleanup
-		Remove-DataClassificationTestEnvironmentParameters $testSuffix
+		Remove-DataClassificationManagedTestEnvironment $testSuffix
 	}
 }
 
@@ -206,7 +206,7 @@ function Test-DataClassificationOnSqlManagedDatabase
 	finally
 	{
 		# Cleanup
-		Remove-DataClassificationTestEnvironmentParameters $testSuffix
+		Remove-DataClassificationManagedTestEnvironment $testSuffix
 	}
 }
 
@@ -350,7 +350,7 @@ function Test-DataClassificationOnSqlDatabase
 	finally
 	{
 		# Cleanup
-		Remove-DataClassificationTestEnvironmentParameters $testSuffix
+		Remove-DataClassificationTestEnvironment $testSuffix
 	}
 }
 
@@ -399,7 +399,7 @@ function Test-ErrorIsThrownWhenInvalidClassificationIsSet
 	finally
 	{
 		# Cleanup
-		Remove-DataClassificationTestEnvironmentParameters $testSuffix
+		Remove-DataClassificationTestEnvironment $testSuffix
 	}
 }
 
@@ -429,7 +429,7 @@ Gets the values of the parameters used at the tests
 #>
 function Get-DataClassificationManagedTestEnvironmentParameters ($testSuffix)
 {
-	return @{ rgname = "dc-cmdlet-test-rg" +$testSuffix;
+	return @{ rgname = "cl_one";
 			  serverName = "dc-cmdlet-server" +$testSuffix;
 			  databaseName = "dc-cmdlet-db" + $testSuffix;
 			  loginName = "testlogin";
@@ -443,15 +443,45 @@ Creates the test environment needed to perform the tests
 #>
 function Create-ManagedDataClassificationTestEnvironment ($testSuffix, $location = "West Central US")
 {
-	$params = Get-DataClassificationManagedTestEnvironmentParameters $testSuffix
-	Create-BasicManagedTestEnvironmentWithParams $params $location
+	$params = Get-DataClassificationTestEnvironmentParameters $testSuffix
+	
+	New-AzureRmResourceGroup -Name $params.rgname -Location $location
+	
+	# Setup VNET 
+	$vnetName = "cl_initial"
+	$subnetName = "Cool"
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $location
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
+	
+	$credentials = Get-ServerCredential
+ 	$licenseType = "BasePrice"
+  	$storageSizeInGB = 32
+ 	$vCore = 16
+ 	$skuName = "GP_Gen4"
+	$collation = "SQL_Latin1_General_CP1_CI_AS"
+
+	$managedInstance = New-AzSqlInstance -ResourceGroupName $params.rgname -Name $params.serverName `
+ 			-Location $location -AdministratorCredential $credentials -SubnetId $subnetId `
+  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName
+
+	New-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName -Collation $collation
 }
 
 <#
 .SYNOPSIS
 Removes the test environment that was needed to perform the tests
 #>
-function Remove-DataClassificationTestEnvironmentParameters ($testSuffix)
+function Remove-DataClassificationManagedTestEnvironment ($testSuffix)
+{
+	$params = Get-DataClassificationManagedTestEnvironmentParameters $testSuffix
+	Remove-AzureRmResourceGroup -Name $params.rgname -Force
+}
+
+<#
+.SYNOPSIS
+Removes the test environment that was needed to perform the tests
+#>
+function Remove-DataClassificationTestEnvironment ($testSuffix)
 {
 	$params = Get-DataClassificationTestEnvironmentParameters $testSuffix
 	Remove-AzureRmResourceGroup -Name $params.rgname -Force
