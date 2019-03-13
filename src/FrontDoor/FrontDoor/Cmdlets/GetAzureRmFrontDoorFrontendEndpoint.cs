@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the Get-FrontDoorFrontendEndpoint cmdlet.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorFrontendEndpoint"), OutputType(typeof(PSFrontendEndpoint))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorFrontendEndpoint", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSFrontendEndpoint))]
     public class GetAzureRmFrontDoorFrontendEndpoint : AzureFrontDoorCmdletBase
     {
         /// <summary>
