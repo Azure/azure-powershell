@@ -32,6 +32,13 @@ Get-AzVirtualNetworkGatewayConnection -Name myTunnel -ResourceGroupName myRG
 
 Returns the object of the Virtual Network Gateway Connection with the name "myTunnel" within the resource group "myRG"
 
+### 2: Get all Virtual Network Gateway Connections using filtering
+```
+Get-AzVirtualNetworkGatewayConnection -Name myTunnel* -ResourceGroupName myRG
+```
+
+Returns all Virtual Network Gateway Connections that start with "myTunnel" within the resource group "myRG"
+
 ## PARAMETERS
 
 ### -DefaultProfile

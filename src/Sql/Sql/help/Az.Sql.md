@@ -71,6 +71,9 @@ Gets the auditing settings of an Azure SQL database.
 ### [Get-AzSqlDatabaseBackupLongTermRetentionPolicy](Get-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 Gets a database long term retention policy.
 
+### [Get-AzSqlDatabaseBackupShortTermRetentionPolicy](Get-AzSqlDatabaseBackupShortTermRetentionPolicy.md)
+Gets a backup short term retention policy.
+
 ### [Get-AzSqlDatabaseDataMaskingPolicy](Get-AzSqlDatabaseDataMaskingPolicy.md)
 Gets the data masking policy for a database.
 
@@ -140,6 +143,9 @@ Gets the vulnerability assessment settings of a database.
 ### [Get-AzSqlDeletedDatabaseBackup](Get-AzSqlDeletedDatabaseBackup.md)
 Gets a deleted database that you can restore.
 
+### [Get-AzSqlDeletedInstanceDatabaseBackup](Get-AzSqlDeletedInstanceDatabaseBackup.md)
+Gets a deleted database that you can restore.
+
 ### [Get-AzSqlElasticPool](Get-AzSqlElasticPool.md)
 Gets elastic pools and their property values in an Azure SQL Database.
 
@@ -166,6 +172,12 @@ Gets Advanced Data Security policy of a managed instance.
 
 ### [Get-AzSqlInstanceDatabase](Get-AzSqlInstanceDatabase.md)
 Returns information about Azure SQL Managed Instance database.
+
+### [Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy](Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy.md)
+Gets a backup short term retention policy.
+
+### [Get-AzSqlInstanceDatabaseGeoBackup](Get-AzSqlInstanceDatabaseGeoBackup.md)
+Returns information about Azure SQL Managed Instance database redundant backup.
 
 ### [Get-AzSqlInstanceDatabaseSensitivityClassification](Get-AzSqlInstanceDatabaseSensitivityClassification.md)
 Gets the sensitivity classification of a managed database, or a column in the database.
@@ -410,6 +422,9 @@ Changes the auditing settings for an Azure SQL database.
 ### [Set-AzSqlDatabaseBackupLongTermRetentionPolicy](Set-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 Sets a server long term retention policy.
 
+### [Set-AzSqlDatabaseBackupShortTermRetentionPolicy](Set-AzSqlDatabaseBackupShortTermRetentionPolicy.md)
+Sets a backup short term retention policy.
+
 ### [Set-AzSqlDatabaseDataMaskingPolicy](Set-AzSqlDatabaseDataMaskingPolicy.md)
 Sets data masking for a database.
 
@@ -451,6 +466,9 @@ Updates the state of an Azure SQL Elastic Pool recommended action.
 
 ### [Set-AzSqlInstance](Set-AzSqlInstance.md)
 Sets properties for an Azure SQL Database Managed Instance.
+
+### [Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy](Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy.md)
+Sets a backup short term retention policy.
 
 ### [Set-AzSqlInstanceDatabaseSensitivityClassification](Set-AzSqlInstanceDatabaseSensitivityClassification.md)
 Sets the sensitivity classification of a managed database.

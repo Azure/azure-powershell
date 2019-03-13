@@ -38,6 +38,7 @@ using Newtonsoft.Json.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -433,7 +434,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
-                deployment.Properties.Template = JObject.Parse(FileUtilities.DataStore.ReadFileAsText(parameters.TemplateFile));
+                if (!string.IsNullOrEmpty(parameters.TemplateFile))
+                {
+                    deployment.Properties.Template = JObject.Parse(FileUtilities.DataStore.ReadFileAsText(parameters.TemplateFile));
+                }
+                else
+                {
+                    deployment.Properties.Template = JObject.Parse(JsonConvert.SerializeObject(parameters.TemplateObject));
+                }
             }
 
             if (Uri.IsWellFormedUriString(parameters.ParameterUri, UriKind.Absolute))
@@ -649,7 +657,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
 
-            if (string.IsNullOrEmpty(name) || name.Contains("*"))
+            if (string.IsNullOrEmpty(name) || WildcardPattern.ContainsWildcardCharacters(name))
             {
                 List<ResourceGroup> resourceGroups = new List<ResourceGroup>();
 
@@ -664,24 +672,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
                 if (!string.IsNullOrEmpty(name))
                 {
-                    if (name.StartsWith("*"))
-                    {
-                        name = name.TrimStart('*');
-                        if (name.EndsWith("*"))
-                        {
-                            name = name.TrimEnd('*');
-                            resourceGroups = resourceGroups.Where(g => g.Name.Contains(name)).ToList();
-                        }
-                        else
-                        {
-                            resourceGroups = resourceGroups.Where(g => g.Name.EndsWith(name)).ToList();
-                        }
-                    }
-                    else if (name.EndsWith("*"))
-                    {
-                        name = name.TrimEnd('*');
-                        resourceGroups = resourceGroups.Where(g => g.Name.StartsWith(name)).ToList();
-                    }
+                    WildcardPattern pattern = new WildcardPattern(name, WildcardOptions.IgnoreCase);
+                    resourceGroups = resourceGroups.Where(t => pattern.IsMatch(t.Name)).ToList();
                 }
 
                 resourceGroups = !string.IsNullOrEmpty(location)
@@ -927,7 +919,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
 
             this.BeginDeployment(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
-            
+
             WriteVerbose(string.Format(ProjectResources.CreatedDeployment, parameters.DeploymentName));
             DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
 

@@ -449,5 +449,7 @@
   </data>
   <data name="DataClassificationFailedToRetrieveInformationProtectionPolicy" xml:space="preserve">
     <value>Failed to retrieve information protection policy of tenant {0}.</value>
+  <data name="InvalidFormatResourceId" xml:space="preserve">
+    <value>Invalid format of the resource identifier.</value>
   </data>
 </root>

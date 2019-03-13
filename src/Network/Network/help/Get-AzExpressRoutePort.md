@@ -39,6 +39,13 @@ Gets the ExpressRoutePort object with name $PortName in resource group $rg in yo
 
 ### Example 2
 ```powershell
+PS C:\> Get-AzExpressRoutePort -Name test*
+```
+
+Gets all of the ExpressRoutePort objects whose name starts with "test".
+
+### Example 3
+```powershell
 PS C:\> Get-AzExpressRoutePort -ResourceId $id
 ```
 

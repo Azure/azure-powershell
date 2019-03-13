@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name = resourceInfo.ResourceName;
             }
 
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var vExpressRoutePort = this.NetworkClient.NetworkManagementClient.ExpressRoutePorts.Get(ResourceGroupName, Name);
                 var vExpressRoutePortModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSExpressRoutePort>(vExpressRoutePort);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<ExpressRoutePort> vExpressRoutePortPage;
-                if(!string.IsNullOrEmpty(this.ResourceGroupName))
+                if(ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     vExpressRoutePortPage = this.NetworkClient.NetworkManagementClient.ExpressRoutePorts.ListByResourceGroup(this.ResourceGroupName);
                 }
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network
                     vExpressRoutePortModel.Tag = TagsConversionHelper.CreateTagHashtable(vExpressRoutePort.Tags);
                     psExpressRoutePortList.Add(vExpressRoutePortModel);
                 }
-                WriteObject(psExpressRoutePortList, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psExpressRoutePortList), true);
             }
         }
     }
