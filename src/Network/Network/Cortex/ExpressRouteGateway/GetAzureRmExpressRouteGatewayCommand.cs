@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (ParameterSetName.Equals("ListByResourceGroupName") && !string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var expressRouteGateway = this.GetExpressRouteGateway(this.ResourceGroupName, this.Name);
                 WriteObject(expressRouteGateway);
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 //// ResourceName has not been specified - List all gateways
-                WriteObject(this.ListExpressRouteGateways(this.ResourceGroupName), true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, this.ListExpressRouteGateways(this.ResourceGroupName)), true);
             }
         }
     }

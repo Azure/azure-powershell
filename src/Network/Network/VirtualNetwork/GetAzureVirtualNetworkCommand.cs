@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
         {
 
             base.Execute();
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var vnet = this.GetVirtualNetwork(this.ResourceGroupName, this.Name, this.ExpandResource);
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<Microsoft.Azure.Management.Network.Models.VirtualNetwork> vnetPage;
-                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                if (ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     vnetPage = this.VirtualNetworkClient.List(this.ResourceGroupName);
                 }
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Network
                     psVnets.Add(psVnet);
                 }
 
-                WriteObject(psVnets, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psVnets), true);
             }
         }
     }

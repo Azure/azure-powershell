@@ -141,6 +141,15 @@ function Test-AzureFirewallCRUD
         $listAll = Get-AzureRmFirewall
         Assert-NotNull $listAll
 
+        $listAll = Get-AzureRmFirewall -Name "*"
+        Assert-NotNull $listAll
+
+        $listAll = Get-AzureRmFirewall -ResourceGroupName "*"
+        Assert-NotNull $listAll
+
+        $listAll = Get-AzureRmFirewall -ResourceGroupName "*" -Name "*"
+        Assert-NotNull $listAll
+
         # Create Application Rules
         $appRule = New-AzFirewallApplicationRule -Name $appRule1Name -Description $appRule1Desc -Protocol $appRule1Protocol1, $appRule1Protocol2 -TargetFqdn $appRule1Fqdn1, $appRule1Fqdn2 -SourceAddress $appRule1SourceAddress1
 

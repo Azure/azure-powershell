@@ -212,7 +212,51 @@ function Test-VirtualMachine
         Assert-NotNull $a
         Assert-True{$a.Contains("NIC");}
         Assert-AreNotEqual $vms $null;
-
+        
+        $wildcardRgQuery = ($rgname -replace ".$") + "*"
+        $wildcardNameQuery = ($vmname -replace ".$") + "*"
+        
+        $vms = Get-AzVM;
+        $a = $vms | Out-String;
+        Assert-NotNull $a
+        Assert-AreNotEqual $vms $null;
+        
+        $vms = Get-AzVM -ResourceGroupName $wildcardRgQuery;
+        $a = $vms | Out-String;
+        Assert-NotNull $a
+        Assert-True{$a.Contains("NIC");}
+        Assert-AreNotEqual $vms $null;
+        
+        $vms = Get-AzVM -Name $vmname;
+        $a = $vms | Out-String;
+        Assert-NotNull $a
+        Assert-True{$a.Contains("NIC");}
+        Assert-AreNotEqual $vms $null;
+        
+        $vms = Get-AzVM -Name $wildcardNameQuery;
+        $a = $vms | Out-String;
+        Assert-NotNull $a
+        Assert-True{$a.Contains("NIC");}
+        Assert-AreNotEqual $vms $null;
+        
+        $vms = Get-AzVM -ResourceGroupName $wildcardRgQuery -Name $vmname;
+        $a = $vms | Out-String;
+        Assert-NotNull $a
+        Assert-True{$a.Contains("NIC");}
+        Assert-AreNotEqual $vms $null;
+        
+        $vms = Get-AzVM -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery;
+        $a = $vms | Out-String;
+        Assert-NotNull $a
+        Assert-True{$a.Contains("NIC");}
+        Assert-AreNotEqual $vms $null;
+        
+        $vms = Get-AzVM -ResourceGroupName $rgname -Name $wildcardNameQuery;
+        $a = $vms | Out-String;
+        Assert-NotNull $a
+        Assert-True{$a.Contains("NIC");}
+        Assert-AreNotEqual $vms $null;
+        
         Assert-NotNull $vms[0]
         # VM Compact output
         $a = $vms[0] | Format-Custom | Out-String;
@@ -581,7 +625,7 @@ function Test-VirtualMachineImageList
                         $skus = $s3 | select -ExpandProperty Skus;
                         foreach ($sku in $skus)
                         {
-                            $s4 = Get-AzVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku;
+                            $s4 = Get-AzVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -Version "*";
                             if ($s4.Count -gt 0)
                             {
                                 $versions = $s4 | select -ExpandProperty Version;
@@ -624,7 +668,7 @@ function Test-VirtualMachineImageList
             {
                 foreach ($type in $types)
                 {
-                    $s2 = Get-AzVMExtensionImage -Location $locStr -PublisherName $pub -Type $type -FilterExpression "startswith(name,'1')";
+                    $s2 = Get-AzVMExtensionImage -Location $locStr -PublisherName $pub -Type $type -FilterExpression "startswith(name,'1')" -Version "*";
                     $versions = $s2 | select -ExpandProperty Version;
                     foreach ($ver in $versions)
                     {

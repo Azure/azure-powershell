@@ -77,6 +77,14 @@ function Test-NetworkSecurityGroupCRUD
         Assert-AreEqual $list[0].DefaultSecurityRules[4].Name $getNsg.DefaultSecurityRules[4].Name
         Assert-AreEqual $list[0].DefaultSecurityRules[5].Name $getNsg.DefaultSecurityRules[5].Name
 
+        $list = Get-AzNetworkSecurityGroup -ResourceGroupName "*"
+        Assert-True { $list.Count -ge 0 }
+
+        $list = Get-AzNetworkSecurityGroup -Name "*"
+        Assert-True { $list.Count -ge 0 }
+
+        $list = Get-AzNetworkSecurityGroup -ResourceGroupName "*" -Name "*"
+        Assert-True { $list.Count -ge 0 }
 
         # Add NSG to a subnet
         $vnet = $vnet | Set-AzVirtualNetworkSubnetConfig -name $subnetName -AddressPrefix "10.0.1.0/24" -NetworkSecurityGroup $nsg | Set-AzVirtualNetwork

@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (!string.IsNullOrEmpty(Id) && string.IsNullOrEmpty(Name))
                 {
                     ResourceIdentifier parsedId = new ResourceIdentifier(Id);
+                    this.ResourceGroupName = parsedId.ResourceGroupName;
                     this.Name = parsedId.ResourceName;
                 }
 

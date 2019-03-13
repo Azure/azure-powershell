@@ -8,7 +8,7 @@
     <IncludeCommonTestProject>false</IncludeCommonTestProject>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup>    
     <PackageReference Include="Moq" Version="4.7.145" />
   </ItemGroup>
 
