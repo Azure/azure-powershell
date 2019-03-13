@@ -16,7 +16,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage.Table;
+    using Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -90,14 +90,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             TableRequestOptions requestOptions = RequestOptions;
             CloudTable table = Channel.GetTableReference(name);
 
-            if (!Channel.DoesTableExist(table, requestOptions, OperationContext))
+            if (!Channel.DoesTableExist(table, requestOptions, TableOperationContext))
             {
                 throw new ResourceNotFoundException(String.Format(Resources.TableNotFound, name));
             }
 
             if (force || TableIsEmpty(table) || ShouldContinue(string.Format("Remove table and all content in it: {0}", name), ""))
             {
-                Channel.Delete(table, requestOptions, OperationContext);
+                Channel.Delete(table, requestOptions, TableOperationContext);
                 return true;
             }
             else

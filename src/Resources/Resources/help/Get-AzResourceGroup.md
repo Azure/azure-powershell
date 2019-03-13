@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 5B17A241-BF36-48A6-BC29-4C32C08F5F94
@@ -65,6 +65,13 @@ PS C:\> Get-AzResourceGroup -Location westus2 |
 ```
 PS C:\> Get-AzResourceGroup | Where ResourceGroupName -like WebServer*
 ```
+
+### Example 6: Get a resource group by name
+```
+PS C:\> Get-AzResourceGroup -Name "EngineerBlog*"
+```
+
+This command gets the Azure resource group in your subscription that start with "EngineerBlog".
 
 ## PARAMETERS
 

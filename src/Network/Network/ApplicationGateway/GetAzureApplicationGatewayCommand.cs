@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var applicationGateway = this.GetApplicationGateway(this.ResourceGroupName, this.Name);
 
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<ApplicationGateway> appGatewayPage;
-                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                if (ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     appGatewayPage = this.ApplicationGatewayClient.List(this.ResourceGroupName);
                 }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
                     psApplicationGateways.Add(psAppGw);
                 }
 
-                WriteObject(psApplicationGateways, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psApplicationGateways), true);
             }
         }
     }

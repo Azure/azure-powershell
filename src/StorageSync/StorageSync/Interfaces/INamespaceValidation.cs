@@ -14,10 +14,28 @@
 
 namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
 {
+    /// <summary>
+    /// Interface INamespaceValidation
+    /// </summary>
     public interface INamespaceValidation
     {
+        /// <summary>
+        /// Validates the specified node.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         IValidationResult Validate(IFileInfo node);
+        /// <summary>
+        /// Validates the specified node.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         IValidationResult Validate(IDirectoryInfo node);
+        /// <summary>
+        /// Validates the specified namespace information.
+        /// </summary>
+        /// <param name="namespaceInfo">The namespace information.</param>
+        /// <returns>IValidationResult.</returns>
         IValidationResult Validate(INamespaceInfo namespaceInfo);
     }
 }

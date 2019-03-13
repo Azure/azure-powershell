@@ -59,6 +59,9 @@ function Test-VirtualNetworkExpressRouteGatewayCRUD
       Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $list[0].Name $actual.Name	
       Assert-AreEqual $list[0].Location $actual.Location
+
+      $list = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -Name "*"
+      Assert-True { $list.Count -ge 0 }
       
       # Delete virtualNetworkGateway
       $delete = Remove-AzVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force

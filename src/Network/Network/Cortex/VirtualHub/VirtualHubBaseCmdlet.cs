@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public List<PSVirtualHub> ListVirtualHubs(string resourceGroupName)
         {
-            var virtualHubs = string.IsNullOrWhiteSpace(resourceGroupName) ?
+            var virtualHubs = ShouldListBySubscription(resourceGroupName, null) ?
                 this.VirtualHubClient.List() :                                       //// List by SubId
                 this.VirtualHubClient.ListByResourceGroup(resourceGroupName);        //// List by RG Name
 
