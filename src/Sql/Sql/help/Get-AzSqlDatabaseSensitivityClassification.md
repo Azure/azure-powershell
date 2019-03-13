@@ -40,6 +40,7 @@ Get-AzSqlDatabaseSensitivityClassification -DatabaseObject <AzureSqlDatabaseMode
 ```
 
 ## DESCRIPTION
+The Get-AzSqlDatabaseSensitivityClassification cmdlet returns the current information types and sensitivity labels of columns in the Azure SQL database.
 
 ## EXAMPLES
 
