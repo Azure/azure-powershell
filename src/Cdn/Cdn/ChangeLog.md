@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.1.0
 * Added new Powershell cmdlets for Enable/Disable Custom Domain Https and deprecated the old ones
 
 ## Version 1.0.1
