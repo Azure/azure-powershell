@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVpnConnection
 
 ## SYNOPSIS
-Updates a VpnConnection object to a goal state.
+Updates a VPN connection.
 
 ## SYNTAX
 
@@ -35,7 +35,8 @@ Update-AzVpnConnection -InputObject <PSVpnConnection> [-SharedKey <SecureString>
 ```
 
 ## DESCRIPTION
-Creates a IPSec connection that connects a VpnGateway to a remote customer branch represented in RM as a VpnSite.
+The **Update-AzVpnConnection** cmdlet updates a VPN connection.  
+VPN connection creates an IPsec connection that connects a VPN gateway to a remote customer branch represented in Azure as a VPN site.
 
 ## EXAMPLES
 

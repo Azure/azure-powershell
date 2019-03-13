@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The input provided belongs to an auto registered Record Set. Manual operations on this type of record set is not allowed..
+        /// </summary>
+        internal static string Error_RecordSetIsAutoRegistered {
+            get {
+                return ResourceManager.GetString("Error_RecordSetIsAutoRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The relative record set name &quot;{0}&quot; includes the Private DNS zone name &quot;{1}&quot;. This will result in the set name &quot;{0}.{1}&quot;..
         /// </summary>
         internal static string Error_RecordSetNameEndsWithZoneName {
@@ -142,11 +151,29 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If you specify the Name parameter you must also specify the RecordType parameter..
+        /// </summary>
+        internal static string Error_RecordTypeNotSpecified {
+            get {
+                return ResourceManager.GetString("Error_RecordTypeNotSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot remove a record of type {0} from a record set of type {1}. The types must match..
         /// </summary>
         internal static string Error_RemoveRecordTypeMismatch {
             get {
                 return ResourceManager.GetString("Error_RemoveRecordTypeMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removal of a record of type {0} from a record set of type {1} is not allowed..
+        /// </summary>
+        internal static string Error_RemoveRecordTypeNotAllowed {
+            get {
+                return ResourceManager.GetString("Error_RemoveRecordTypeNotAllowed", resourceCulture);
             }
         }
         
@@ -201,6 +228,15 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         internal static string Progress_Modifying {
             get {
                 return ResourceManager.GetString("Progress_Modifying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modifying RecordSet name to remove terminating &apos;.&apos;. RecordSet name used is \&quot;{0}\&quot;..
+        /// </summary>
+        internal static string Progress_ModifyingRecordSetNameTrimDot {
+            get {
+                return ResourceManager.GetString("Progress_ModifyingRecordSetNameTrimDot", resourceCulture);
             }
         }
         
@@ -345,15 +381,6 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
         internal static string Success_RemoveZone {
             get {
                 return ResourceManager.GetString("Success_RemoveZone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Usage of this cmdlet without DnsRecords parameter will be deprecated soon. If there is a need to create empty record set, please specify DnsRecords parameter with an empty array as value.
-        /// </summary>
-        internal static string Warning_DnsRecordsParamNeedsToBeSpecified {
-            get {
-                return ResourceManager.GetString("Warning_DnsRecordsParamNeedsToBeSpecified", resourceCulture);
             }
         }
         

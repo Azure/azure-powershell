@@ -304,6 +304,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid format of the resource identifier..
+        /// </summary>
+        internal static string InvalidFormatResourceId {
+            get {
+                return ResourceManager.GetString("InvalidFormatResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please use Set-AzEnvironment to set a valid GraphEndpoint for the current AzureEnvironment..
         /// </summary>
         internal static string InvalidGraphEndpoint {

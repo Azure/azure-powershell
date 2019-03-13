@@ -144,7 +144,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public string RMResourceModule { get; private set; }
 
-        public string RMInsightsModule { get; private set; } 
+        public string RMInsightsModule { get; private set; }
 
         public string RMStorageModule { get; private set; }
 
@@ -198,7 +198,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 if (Directory.Exists(baseDirectory))
                 {
                     result = Directory.EnumerateDirectories(baseDirectory).FirstOrDefault(
-                        (dir) => ! string.IsNullOrWhiteSpace(dir) 
+                        (dir) => ! string.IsNullOrWhiteSpace(dir)
                         && (dir.EndsWith("Debug", StringComparison.OrdinalIgnoreCase)
                         || dir.EndsWith("Release", StringComparison.OrdinalIgnoreCase)));
                     if (result != null)
@@ -222,7 +222,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             string configDirectory = GetConfigDirectory(targetDirectory);
             return (string.IsNullOrEmpty(configDirectory)) ? null : Path.Combine(configDirectory, "Storage");
         }
-        
+
         private static string GetModuleManifest(string baseDirectory, string desktopModuleName)
         {
             if (string.IsNullOrWhiteSpace(baseDirectory) || string.IsNullOrWhiteSpace(desktopModuleName))

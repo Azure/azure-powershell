@@ -17,6 +17,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.WindowsAzure.Commands.Common.Storage.Properties;
     using Microsoft.WindowsAzure.Storage;
+    using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
 
@@ -66,6 +67,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// Storage account in context
         /// </summary>
         public virtual CloudStorageAccount StorageAccount { get; protected set; }
+
+        /// <summary>
+        /// Storage account in context
+        /// </summary>
+        public virtual XTable.CloudStorageAccount TableStorageAccount { get; protected set; }
 
         /// <summary>
         /// Endpoint suffix (everything after "table.", "blob." or "queue.")
@@ -133,6 +139,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         public AzureStorageContext(CloudStorageAccount account, string accountName = null)
         {
             StorageAccount = account;
+            TableStorageAccount = XTable.CloudStorageAccount.Parse(StorageAccount.ToString(true));
 
             if (account.BlobEndpoint != null)
             {
