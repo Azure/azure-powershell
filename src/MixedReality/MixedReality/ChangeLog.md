@@ -19,4 +19,6 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.1
+
 * General availability of `Az.MixedReality` module
