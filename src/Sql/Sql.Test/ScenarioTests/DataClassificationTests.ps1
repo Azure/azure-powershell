@@ -441,9 +441,9 @@ function Get-DataClassificationManagedTestEnvironmentParameters ($testSuffix)
 .SYNOPSIS
 Creates the test environment needed to perform the tests
 #>
-function Create-ManagedDataClassificationTestEnvironment ($testSuffix, $location = "West Central US")
+function Create-ManagedDataClassificationTestEnvironment ($testSuffix, $location = "North Europe")
 {
-	$params = Get-DataClassificationTestEnvironmentParameters $testSuffix
+	$params = Get-DataClassificationManagedTestEnvironmentParameters $testSuffix
 	
 	New-AzureRmResourceGroup -Name $params.rgname -Location $location
 	
