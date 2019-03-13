@@ -15,47 +15,44 @@ Enable HTTPS for a custom domain using Front Door managed certificate or using o
 ### ByFieldsParameterSet (Default)
 ```
 Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName <String> -FrontDoorName <String>
- -FrontendEndpointName <String> -CertificateSource <PSCertificateSource> [-CertificateType <PSCertificateType>]
- [-ProtocolType <PSProtocolType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -FrontendEndpointName <String> [-CertificateType <PSCertificateType>] [-ProtocolType <PSProtocolType>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFieldsWithVaultParameterSet
 ```
 Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName <String> -FrontDoorName <String>
- -FrontendEndpointName <String> -CertificateSource <PSCertificateSource> -VaultId <String> -SecretName <String>
- -SecretVersion <String> [-CertificateType <PSCertificateType>] [-ProtocolType <PSProtocolType>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -FrontendEndpointName <String> -VaultId <String> -SecretName <String> -SecretVersion <String>
+ [-ProtocolType <PSProtocolType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Enable-AzFrontDoorCustomDomainHttps -ResourceId <String> -CertificateSource <PSCertificateSource>
- [-CertificateType <PSCertificateType>] [-ProtocolType <PSProtocolType>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzFrontDoorCustomDomainHttps -ResourceId <String> [-CertificateType <PSCertificateType>]
+ [-ProtocolType <PSProtocolType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdWithVaultParameterSet
 ```
-Enable-AzFrontDoorCustomDomainHttps -ResourceId <String> -CertificateSource <PSCertificateSource>
- -VaultId <String> -SecretName <String> -SecretVersion <String> [-CertificateType <PSCertificateType>]
- [-ProtocolType <PSProtocolType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Enable-AzFrontDoorCustomDomainHttps -ResourceId <String> -VaultId <String> -SecretName <String>
+ -SecretVersion <String> [-ProtocolType <PSProtocolType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Enable-AzFrontDoorCustomDomainHttps -InputObject <PSFrontendEndpoint> -CertificateSource <PSCertificateSource>
- [-CertificateType <PSCertificateType>] [-ProtocolType <PSProtocolType>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzFrontDoorCustomDomainHttps -InputObject <PSFrontendEndpoint> [-CertificateType <PSCertificateType>]
+ [-ProtocolType <PSProtocolType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectWithVaultParameterSet
 ```
-Enable-AzFrontDoorCustomDomainHttps -InputObject <PSFrontendEndpoint> -CertificateSource <PSCertificateSource>
- -VaultId <String> -SecretName <String> -SecretVersion <String> [-CertificateType <PSCertificateType>]
- [-ProtocolType <PSProtocolType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Enable-AzFrontDoorCustomDomainHttps -InputObject <PSFrontendEndpoint> -VaultId <String> -SecretName <String>
+ -SecretVersion <String> [-ProtocolType <PSProtocolType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -173,28 +170,12 @@ Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" with resource i
 
 ## PARAMETERS
 
-### -CertificateSource
-The source of the SSL certificate
-
-```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource
-Parameter Sets: (All)
-Aliases:
-Accepted values: AzureKeyVault, FrontDoor
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CertificateType
 The type of the certificate used for secure connections to a frontendEndpoint
 
 ```yaml
 Type: Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateType
-Parameter Sets: (All)
+Parameter Sets: ByFieldsParameterSet, ByResourceIdParameterSet, ByObjectParameterSet
 Aliases:
 Accepted values: Shared, Dedicated
 
