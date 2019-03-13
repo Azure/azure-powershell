@@ -292,7 +292,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 taskId,
                 destFile,
                 () => this.ConfirmOverwrite(blob.SnapshotQualifiedUri.ToString(), destFile.SnapshotQualifiedUri.ToString()),
-                () => destFile.StartCopyAsync(blob.GenerateCopySourceBlob(), null, null, this.RequestOptions, this.OperationContext));
+                () => destFile.StartCopyAsync(blob.GenerateUriWithCredentials(), null, null, this.RequestOptions, this.OperationContext));
 
             this.RunTask(taskGenerator);
         }
