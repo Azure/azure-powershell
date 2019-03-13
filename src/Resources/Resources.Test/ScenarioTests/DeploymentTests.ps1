@@ -21,13 +21,12 @@ function Test-ValidateDeployment
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
-	$location = Get-ProviderLocation "Microsoft.Web/sites"
+	$location = "West US 2"
 
 	# Test
-	New-AzResourceGroup -Name $rgname -Location $rglocation
+	New-AzResourceGroup -Name $rgname -Location $location
 
-	$list = Test-AzureResourceGroupTemplate -ResourceGroupName $rgname -TemplateFile Build2014_Website_App.json -siteName $rname -hostingPlanName $rname -siteLocation $location -sku Free -workerSize 0
+	$list = Test-AzResourceGroupDeployment -ResourceGroupName $rgname -TemplateFile Build2014_Website_App.json -siteName $rname -hostingPlanName $rname -siteLocation $location -sku Free -workerSize 0
 
 	# Assert
 	Assert-AreEqual 0 @($list).Count
@@ -36,15 +35,13 @@ function Test-ValidateDeployment
 <#
 .SYNOPSIS
 Tests deployment via template file and parameter object.
-.DESCRIPTION
-Smoke[Broken]Test
 #>
 function Test-NewDeploymentFromTemplateFile
 {
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
+	$rglocation = "West US 2"
 
 	try
 	{
@@ -55,6 +52,39 @@ function Test-NewDeploymentFromTemplateFile
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+		$subId = (Get-AzContext).Subscription.SubscriptionId
+		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
+		$getById = Get-AzResourceGroupDeployment -Id $deploymentId
+		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-NewDeploymentFromTemplateObject
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $path = (Get-Item ".\").FullName
+        $file = Join-Path $path "sampleDeploymentTemplate.json"
+        $templateObject = ConvertFrom-Json ([System.IO.File]::ReadAllText($file)) -AsHashtable
+        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateObject $templateObject -TemplateParameterFile sampleDeploymentTemplateParams.json
+
+        # Assert
+        Assert-AreEqual Succeeded $deployment.ProvisioningState
 
 		$subId = (Get-AzContext).Subscription.SubscriptionId
 		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
@@ -81,7 +111,7 @@ function Test-CrossResourceGroupDeploymentFromTemplateFile
 	$rgname = Get-ResourceGroupName
 	$rgname2 = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
+	$rglocation = "West US 2"
 
 	try
 	{
@@ -153,7 +183,7 @@ function Test-NestedDeploymentFromTemplateFile
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
+	$rglocation = "West US 2"
 
 	try
 	{
@@ -189,7 +219,7 @@ function Test-SaveDeploymentTemplateFile
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
+	$rglocation = "West US 2"
 
 	try
 	{
@@ -346,7 +376,7 @@ function Test-NewDeploymentWithDynamicParameters
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
+	$rglocation = "West US 2"
 
 	try
 	{
