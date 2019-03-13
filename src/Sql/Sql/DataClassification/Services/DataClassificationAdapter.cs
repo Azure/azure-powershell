@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
 
         internal void RemoveManagedDatabaseSensitivityLabels(ManagedDatabaseSensitivityClassificationModel model)
         {
-            ModifySensitivityLabels(model, sensitivityLabelModel => Communicator.DeleteSensitivityLabel(
+            ModifySensitivityLabels(model, sensitivityLabelModel => Communicator.DeleteManagedDatabaseSensitivityLabel(
                 model.ResourceGroupName,
                 model.InstanceName,
                 model.DatabaseName,

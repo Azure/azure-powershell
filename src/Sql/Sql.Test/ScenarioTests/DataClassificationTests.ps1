@@ -16,12 +16,12 @@
 .SYNOPSIS
 Tests end to end scenario of Data Classification on a SQL managed database.
 #>
-function Test-DataClassificationOnSqlManagedDatabase
+function Test-BasicDataClassificationOnSqlManagedDatabase
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-ManagedDataClassificationTestEnvironment
-	$params = Get-DataClassificationTestEnvironmentParameters $testSuffix
+	Create-ManagedDataClassificationTestEnvironment $testSuffix
+	$params = Get-DataClassificationManagedTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -33,7 +33,7 @@ function Test-DataClassificationOnSqlManagedDatabase
 		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
 
 		# Get, using pipeline, recommended sensitivity labels, and verify.
-		$recommendations = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendations 
+		$recommendations = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendations 
 		Assert-AreEqual 0 ($recommendations.SensitivityLabels).count
 		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
 		Assert-AreEqual $params.serverName $recommendations.InstanceName
@@ -47,17 +47,161 @@ function Test-DataClassificationOnSqlManagedDatabase
 		Assert-AreEqual $params.databaseName $allClassifications.DatabaseName
 		
 		# Get, using pipeline, sensitivity classifications and verify.
-		$allClassifications = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityClassification
+		$allClassifications = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityClassification
 		Assert-AreEqual 0 ($allClassifications.SensitivityLabels).count
 		Assert-AreEqual $params.rgname $allClassifications.ResourceGroupName
 		Assert-AreEqual $params.serverName $allClassifications.InstanceName
 		Assert-AreEqual $params.databaseName $allClassifications.DatabaseName
 
 		# Classify as recommended and verify.
-		Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendations | Set-AzSqlInstanceDatabaseSensitivityClassification
+		Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendations | Set-AzSqlInstanceDatabaseSensitivityClassification
 		
 		# Remove classified columns.
-		Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityClassification | Remove-AzSqlInstanceDatabaseSensitivityClassification
+		Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityClassification | Remove-AzSqlInstanceDatabaseSensitivityClassification
+	}
+	finally
+	{
+		# Cleanup
+		Remove-DataClassificationTestEnvironmentParameters $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
+Tests end to end scenario of Data Classification on a SQL managed database.
+#>
+function Test-DataClassificationOnSqlManagedDatabase
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-ManagedDataClassificationTestEnvironment $testSuffix
+	$params = Get-DataClassificationManagedTestEnvironmentParameters $testSuffix
+
+	try
+	{
+		# Get recommended sensitivity labels, and verify.
+		$recommendations = Get-AzSqlInstanceDatabaseSensitivityRecommendations -ResourceGroupName $params.rgname -InstanceName $params.ServerName -DatabaseName $params.databaseName
+		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
+		Assert-AreEqual $params.ServerName $recommendations.InstanceName
+		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
+		
+		$recommendationsCount = ($recommendations.SensitivityLabels).count
+		Assert-AreEqual 4 $recommendationsCount
+		
+		$firstRecommendation = ($recommendations.SensitivityLabels)[0]
+		$firstSchemaName = $firstRecommendation.SchemaName
+		$firstTableName = $firstRecommendation.TableName
+		$firstColumnName = $firstRecommendation.ColumnName
+		$firstInformationType = $firstRecommendation.InformationType
+		$firstSensitivityLabel = $firstRecommendation.SensitivityLabel
+
+		Assert-AreEqual "dbo" $firstSchemaName
+		Assert-AreEqual "Persons" $firstTableName
+		Assert-NotNullOrEmpty $firstColumnName
+		Assert-NotNullOrEmpty $firstInformationType
+		Assert-NotNullOrEmpty $firstSensitivityLabel
+
+		$secondRecommendation = ($recommendations.SensitivityLabels)[1]
+		$secondSchemaName = $secondRecommendation.SchemaName
+		$secondTableName = $secondRecommendation.TableName
+		$secondColumnName = $secondRecommendation.ColumnName
+		$secondInformationType = $secondRecommendation.InformationType
+		$secondSensitivityLabel = $secondRecommendation.SensitivityLabel
+
+		Assert-AreEqual "dbo" $secondSchemaName
+		Assert-AreEqual "Persons" $secondTableName
+		Assert-NotNullOrEmpty $secondColumnName
+		Assert-NotNullOrEmpty $secondInformationType
+		Assert-NotNullOrEmpty $secondSensitivityLabel
+
+		# Set first two sensitivity labels as recommended and verify.
+		# Second label is set using pipeline.
+		Set-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName $params.rgname -InstanceName $params.ServerName -DatabaseName $params.databaseName -SchemaName $firstSchemaName -TableName $firstTableName -ColumnName $firstColumnName -InformationType $firstInformationType -SensitivityLabel $firstSensitivityLabel
+		Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Set-AzSqlInstanceDatabaseSensitivityClassification -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName -InformationType $secondInformationType -SensitivityLabel $secondSensitivityLabel
+		
+		$allClassifications = Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName $params.rgname -InstanceName $params.ServerName -DatabaseName $params.databaseName
+		$allClassificationsCount = ($allClassifications.SensitivityLabels).count
+		Assert-AreEqual 2 $allClassificationsCount
+		Assert-AreEqual $params.rgname $allClassifications.ResourceGroupName
+		Assert-AreEqual $params.ServerName $allClassifications.InstanceName
+		Assert-AreEqual $params.databaseName $allClassifications.DatabaseName
+		
+		$firstClassification = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityClassification -SchemaName $firstSchemaName -TableName $firstTableName -ColumnName $firstColumnName
+		Assert-AreEqual 1 ($firstClassification.SensitivityLabels).count
+		$classification = ($firstClassification.SensitivityLabels)[0]
+		Assert-AreEqual $firstSchemaName $classification.SchemaName
+		Assert-AreEqual $firstTableName $classification.TableName
+		Assert-AreEqual $firstColumnName $classification.ColumnName
+		Assert-AreEqual $firstInformationType $classification.InformationType
+		Assert-AreEqual $firstSensitivityLabel $classification.SensitivityLabel
+		
+		$secondClassification = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityClassification -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName
+		Assert-AreEqual 1 ($secondClassification.SensitivityLabels).count
+		$classification = ($secondClassification.SensitivityLabels)[0]
+		Assert-AreEqual $secondSchemaName $classification.SchemaName
+		Assert-AreEqual $secondTableName $classification.TableName
+		Assert-AreEqual $secondColumnName $classification.ColumnName
+		Assert-AreEqual $secondInformationType $classification.InformationType
+		Assert-AreEqual $secondSensitivityLabel $classification.SensitivityLabel
+		
+		# Get, using pipeline, recommended sensitivity labels, and verify.
+		$recommendations = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendations
+		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
+		Assert-AreEqual $params.ServerName $recommendations.InstanceName
+		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
+		Assert-AreEqual 2 ($recommendations.SensitivityLabels).count
+		
+		# Remove second classification and verify
+		Remove-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName $params.rgname -InstanceName $params.ServerName -DatabaseName $params.databaseName -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName
+		
+		$allClassifications = Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName $params.rgname -InstanceName $params.ServerName -DatabaseName $params.databaseName
+		$allClassificationsCount = ($allClassifications.SensitivityLabels).count
+		Assert-AreEqual 1 $allClassificationsCount
+		Assert-AreEqual $params.rgname $allClassifications.ResourceGroupName
+		Assert-AreEqual $params.ServerName $allClassifications.InstanceName
+		Assert-AreEqual $params.databaseName $allClassifications.DatabaseName
+		 
+		# Get, using pipeline, recommended sensitivity labels, and verify.
+		$recommendations = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendations
+		Assert-AreEqual 3 ($recommendations.SensitivityLabels).count
+		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
+		Assert-AreEqual $params.ServerName $recommendations.InstanceName
+		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
+		
+		# Classify, using pipeline, all recommended columns, and verify.
+		Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendations | Set-AzSqlInstanceDatabaseSensitivityClassification
+		
+		$recommendations = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendations
+		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
+		Assert-AreEqual $params.ServerName $recommendations.InstanceName
+		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
+		Assert-AreEqual 0 ($recommendations.SensitivityLabels).count
+		
+		$allClassifications = Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName $params.rgname -InstanceName $params.ServerName -DatabaseName $params.databaseName
+		$allClassificationsCount = ($allClassifications.SensitivityLabels).count
+		Assert-AreEqual 4 $allClassificationsCount
+		Assert-AreEqual $params.rgname $allClassifications.ResourceGroupName
+		Assert-AreEqual $params.ServerName $allClassifications.InstanceName
+		Assert-AreEqual $params.databaseName $allClassifications.DatabaseName
+		
+		# Remove, using pipeline, second classification and verify
+		Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Remove-AzSqlInstanceDatabaseSensitivityClassification -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName
+		
+		$allClassifications = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityClassification
+		$allClassificationsCount = ($allClassifications.SensitivityLabels).count
+		Assert-AreEqual 3 $allClassificationsCount
+		Assert-AreEqual $params.rgname $allClassifications.ResourceGroupName
+		Assert-AreEqual $params.ServerName $allClassifications.InstanceName
+		Assert-AreEqual $params.databaseName $allClassifications.DatabaseName
+		
+		# Remove, using pipeline, all classifications, and verify.
+		Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityClassification | Remove-AzSqlInstanceDatabaseSensitivityClassification
+		$allClassifications = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityClassification
+		$allClassificationsCount = ($allClassifications.SensitivityLabels).count
+		Assert-AreEqual 0 $allClassificationsCount
+		Assert-AreEqual $params.rgname $allClassifications.ResourceGroupName
+		Assert-AreEqual $params.ServerName $allClassifications.InstanceName
+		Assert-AreEqual $params.databaseName $allClassifications.DatabaseName
 	}
 	finally
 	{
@@ -270,6 +414,20 @@ function Assert-NotNullOrEmpty ($str)
 Gets the values of the parameters used at the tests
 #>
 function Get-DataClassificationTestEnvironmentParameters ($testSuffix)
+{
+	return @{ rgname = "dc-cmdlet-test-rg" +$testSuffix;
+			  serverName = "dc-cmdlet-server" +$testSuffix;
+			  databaseName = "dc-cmdlet-db" + $testSuffix;
+			  loginName = "testlogin";
+			  pwd = "testp@ssMakingIt1007Longer";
+		}
+}
+
+<#
+.SYNOPSIS
+Gets the values of the parameters used at the tests
+#>
+function Get-DataClassificationManagedTestEnvironmentParameters ($testSuffix)
 {
 	return @{ rgname = "dc-cmdlet-test-rg" +$testSuffix;
 			  serverName = "dc-cmdlet-server" +$testSuffix;

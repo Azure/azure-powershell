@@ -32,12 +32,5 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-ErrorIsThrownWhenInvalidClassificationIsSet");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDataClassificationOnSqlManagedDatabase()
-        {
-            RunPowerShellTest("Test-DataClassificationOnSqlManagedDatabase");
-        }
     }
 }
