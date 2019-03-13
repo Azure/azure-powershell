@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// starts azure automation compilation job
     /// </summary>
-    [GenericBreakingChange("Behavior changed", ChangeDescription = "Cmdlet returns control to pipeline before compilation job has completed. Refer to https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile#compiling-a-dsc-configuration-with-windows-powershell")]
     [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationDscCompilationJob", SupportsShouldProcess = true)]
     [OutputType(typeof(CompilationJob))]
     public class StartAzureAutomationDscCompilationJob : AzureAutomationBaseCmdlet
