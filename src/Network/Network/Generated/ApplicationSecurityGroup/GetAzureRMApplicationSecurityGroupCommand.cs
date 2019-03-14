@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if(!string.IsNullOrEmpty(this.Name))
+            if(ShouldGetByName(ResourceGroupName, Name))
             {
                 var vApplicationSecurityGroup = this.NetworkClient.NetworkManagementClient.ApplicationSecurityGroups.Get(ResourceGroupName, Name);
                 var vApplicationSecurityGroupModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSApplicationSecurityGroup>(vApplicationSecurityGroup);
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<ApplicationSecurityGroup> vApplicationSecurityGroupPage;
-                if(!string.IsNullOrEmpty(this.ResourceGroupName))
+                if(ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     vApplicationSecurityGroupPage = this.NetworkClient.NetworkManagementClient.ApplicationSecurityGroups.List(this.ResourceGroupName);
                 }
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Network
                     vApplicationSecurityGroupModel.Tag = TagsConversionHelper.CreateTagHashtable(vApplicationSecurityGroup.Tags);
                     psApplicationSecurityGroupList.Add(vApplicationSecurityGroupModel);
                 }
-                WriteObject(psApplicationSecurityGroupList, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psApplicationSecurityGroupList), true);
             }
         }
     }

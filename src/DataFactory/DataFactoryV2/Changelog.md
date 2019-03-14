@@ -20,6 +20,12 @@
 
 ## Upcoming Release
 
+## Version 1.0.2
+* Updated ADF .Net SDK version to 3.0.1
+
+## Version 1.0.1
+* Updated ADF .Net SDK version to 3.0.0
+
 ## Version 1.0.0
 * General availability of `Az.DataFactory` module
 * Removed -LinkedServiceName parameter from Get-AzDataFactoryV2ActivityRun

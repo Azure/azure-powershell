@@ -78,6 +78,15 @@ namespace Microsoft.Azure.Commands.Kusto.Models
                 return (_cluster.Sku != null) ? _cluster.Sku.Name : null;
             }
         }
+
+        public int? Capacity
+        {
+            get
+            {
+                return (_cluster.Sku != null) ? _cluster.Sku.Capacity : null;
+            }
+        }
+
         public string ProvisioningState
         {
             get
@@ -101,6 +110,23 @@ namespace Microsoft.Azure.Commands.Kusto.Models
             get
             {
                 return _cluster.Tags != null ? new Dictionary<string, string>(_cluster.Tags) : new Dictionary<string, string>();
+            }
+        }
+
+        public string Uri
+        {
+            get
+            {
+                return _cluster.Uri;
+
+            }
+        }
+
+        public string DataIngestionUri
+        {
+            get
+            {
+                return _cluster.DataIngestionUri;
             }
         }
     }

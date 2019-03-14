@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 13EF1028-43DE-424D-8185-EC45B5CEF2C1
@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzNetworkInterfaceIpConfig
 
 ## SYNOPSIS
-Sets the goal state for an Azure network interface IP configuration.
+Updates an IP configuration for a network interface.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Set-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterf
 ```
 
 ## DESCRIPTION
-The **Set-AzNetworkInterfaceIpConfig** cmdlet sets the goal state for an Azure network interface IP configuration.
+The **Set-AzNetworkInterfaceIpConfig** cmdlet updates an IP configuration for a network interface.
 
 ## EXAMPLES
 
@@ -389,5 +389,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzNetworkInterfaceIpConfig](./New-AzNetworkInterfaceIpConfig.md)
 
 [Remove-AzNetworkInterfaceIpConfig](./Remove-AzNetworkInterfaceIpConfig.md)
-
-

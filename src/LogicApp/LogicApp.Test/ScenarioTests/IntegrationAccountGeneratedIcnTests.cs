@@ -33,43 +33,33 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountGeneratedIcn command to get the integration account generated interchange control number.
+        /// Test Get-AzIntegrationAccountGeneratedIcn command to get the integration account generated interchange control number.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetIAGeneratedIcnWithoutAgreementType()
+        public void TestGetGeneratedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountGeneratedControlNumber-NoAgreementType");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetGeneratedControlNumber");
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountGeneratedIcn command to get the integration account generated interchange control number.
+        /// Test Set-AzIntegrationAccountGeneratedIcn command to update the integration account generated interchange control number.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetIntegrationAccountGeneratedIcn()
+        public void TestUpdateGeneratedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountGeneratedControlNumber");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateGeneratedControlNumber");
         }
 
         /// <summary>
-        /// Test Set-AzureRmIntegrationAccountGeneratedIcn command to update the integration account generated interchange control number.
+        /// Test Get-AzIntegrationAccountGeneratedIcn command to get all the integration account generated interchange control numbers.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateIntegrationAccountGeneratedIcn()
+        public void TestListGeneratedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountGenCN");
-        }
-
-        /// <summary>
-        /// Test Get-AzureRmIntegrationAccountGeneratedIcn command to get all the integration account generated interchange control numbers.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListIntegrationAccountGeneratedIcn()
-        {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-ListIntegrationAccountGenCN");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-ListGeneratedControlNumber");
         }
     }
 }

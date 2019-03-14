@@ -20,7 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using Microsoft.WindowsAzure.Storage.File;
     using Microsoft.WindowsAzure.Storage.Queue;
     using Microsoft.WindowsAzure.Storage.Queue.Protocol;
-    using Microsoft.WindowsAzure.Storage.Table;
+    using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
 
@@ -135,18 +135,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <param name="policy">SharedAccessBlobPolicy object</param>
         /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
         internal static bool ValidateTableAccessPolicy(IStorageTableManagement channel,
-            string tableName, SharedAccessTablePolicy policy, string policyIdentifier)
+            string tableName, XTable.SharedAccessTablePolicy policy, string policyIdentifier)
         {
             if (string.IsNullOrEmpty(policyIdentifier)) return true;
-            CloudTable table = channel.GetTableReference(tableName);
-            TableRequestOptions options = null;
-            OperationContext context = null;
-            TablePermissions permission = channel.GetTablePermissions(table, options, context);
+            XTable.CloudTable table = channel.GetTableReference(tableName);
+            XTable.TableRequestOptions options = null;
+            XTable.OperationContext context = null;
+            XTable.TablePermissions permission = channel.GetTablePermissions(table, options, context);
 
-            SharedAccessTablePolicy sharedAccessPolicy =
-                GetExistingPolicy<SharedAccessTablePolicy>(permission.SharedAccessPolicies, policyIdentifier);
+            XTable.SharedAccessTablePolicy sharedAccessPolicy =
+                GetExistingPolicy<XTable.SharedAccessTablePolicy>(permission.SharedAccessPolicies, policyIdentifier);
 
-            if (policy.Permissions != SharedAccessTablePermissions.None)
+            if (policy.Permissions != XTable.SharedAccessTablePermissions.None)
             {
                 throw new ArgumentException(Resources.SignedPermissionsMustBeOmitted);
             }

@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Compute
 Module Guid: 0a83c907-1ffb-4d87-a492-c65ac7d7ed37
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.compute
@@ -162,7 +162,7 @@ Gets the VMImage publishers.
 Gets VMImage SKUs.
 
 ### [Get-AzVMRunCommandDocument](Get-AzVMRunCommandDocument.md)
-Get run command document.
+Get a run command document.
 
 ### [Get-AzVMSize](Get-AzVMSize.md)
 Gets available virtual machine sizes.
@@ -197,8 +197,11 @@ Grants an access to a disk.
 ### [Grant-AzSnapshotAccess](Grant-AzSnapshotAccess.md)
 Grants an access to a snapshot.
 
+### [Invoke-AzVMReimage](Invoke-AzVMReimage.md)
+Reimage an Azure virtual machine.
+
 ### [Invoke-AzVMRunCommand](Invoke-AzVMRunCommand.md)
-Run command on the VM.
+Run a command on the VM.
 
 ### [Invoke-AzVmssVMRunCommand](Invoke-AzVmssVMRunCommand.md)
 Run command on the Virtual Machine Scale Set VM.

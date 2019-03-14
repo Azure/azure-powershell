@@ -16,13 +16,29 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     using Interfaces;
 
+    /// <summary>
+    /// Class AfsFileInfo.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.AfsNamedObjectInfo" />
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.IFileInfo" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.AfsNamedObjectInfo" />
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.IFileInfo" />
     class AfsFileInfo : AfsNamedObjectInfo, IFileInfo
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AfsFileInfo" /> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="length">The length.</param>
         public AfsFileInfo(string name, long length) : base(name)
         {
-            this.Length = length;
+            Length = length;
         }
 
+        /// <summary>
+        /// Gets the length.
+        /// </summary>
+        /// <value>The length.</value>
         public long Length { get; private set; }
     }
 }

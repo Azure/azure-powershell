@@ -12,21 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
 namespace Commands.Automation.Test
 {
-    using Microsoft.Azure.Commands.Automation.Test;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.ServiceManagement.Common.Models;
-    using Xunit;
-
-    public class HybridWorkerGroupTests : AutomationScenarioTestsBase
+    public class HybridWorkerGroupTests : AutomationTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public HybridWorkerGroupTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -34,7 +29,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void E2EHybridWorkerGroup()
         {
-            RunPowerShellTest(_logger, "Test-E2EHybridWorkerGroup");
+            TestRunner.RunTestScript("Test-E2EHybridWorkerGroup");
         }
     }
 }

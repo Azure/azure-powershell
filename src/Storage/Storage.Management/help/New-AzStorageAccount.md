@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: A3DA1205-B8FB-4B4C-9C40-AD303D038EDF
@@ -191,7 +191,7 @@ The default value is Storage.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Storage, StorageV2, BlobStorage
+Accepted values: Storage, StorageV2, BlobStorage, BlockBlobStorage
 
 Required: False
 Position: Named

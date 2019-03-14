@@ -18,7 +18,7 @@ List billing periods
 #>
 function Test-ListBillingPeriods
 {
-    $billingPeriods = Get-AzureRmBillingPeriod
+    $billingPeriods = Get-AzBillingPeriod
 
     Assert-True {$billingPeriods.Count -ge 1}
 	Assert-NotNull $billingPeriods[0].Name
@@ -34,7 +34,7 @@ List billing periods with MaxCount
 #>
 function Test-ListBillingPeriodsWithMaxCount
 {
-    $billingPeriods = Get-AzureRmBillingPeriod -MaxCount 1
+    $billingPeriods = Get-AzBillingPeriod -MaxCount 1
 
     Assert-True {$billingPeriods.Count -eq 1}
 	Assert-NotNull $billingPeriods[0].Name
@@ -50,13 +50,13 @@ Get billing period with specified name
 #>
 function Test-GetBillingPeriodWithName
 {
-    $billingPeriods = Get-AzureRmBillingPeriod | where { $_.InvoiceNames.Count -eq 1 }
+    $billingPeriods = Get-AzBillingPeriod | where { $_.InvoiceNames.Count -eq 1 }
     Assert-True {$billingPeriods.Count -ge 1}
 
 	$billingPeriodName = $billingPeriods[0].Name
 	$billingInvoiceName = $billingPeriods[0].InvoiceNames[0]
 
-    $billingPeriod = Get-AzureRmBillingPeriod -Name $billingPeriodName
+    $billingPeriod = Get-AzBillingPeriod -Name $billingPeriodName
 
 	Assert-AreEqual $billingPeriodName $billingPeriod.Name
 	Assert-NotNull $billingPeriod.Id
@@ -74,11 +74,11 @@ Get billing period with specified names
 #>
 function Test-GetBillingPeriodWithNames
 {
-    $sampleBillingPeriods = Get-AzureRmBillingPeriod
+    $sampleBillingPeriods = Get-AzBillingPeriod
     Assert-True {$sampleBillingPeriods.Count -gt 1}
 
 	$billingPeriodNames = $sampleBillingPeriods | %{ $_.Name }
-    $billingPeriods = Get-AzureRmBillingPeriod -Name $billingPeriodNames
+    $billingPeriods = Get-AzBillingPeriod -Name $billingPeriodNames
 
     Assert-AreEqual $sampleBillingPeriods.Count $billingPeriods.Count
 	Foreach($billingPeriod in $billingPeriods)

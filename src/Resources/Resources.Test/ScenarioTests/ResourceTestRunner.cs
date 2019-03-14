@@ -54,21 +54,23 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 {
                     {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-07-01"},
                 })
+                .WithMockContextAction(() =>
+                {
+                    var credentials = HttpMockServer.Mode != HttpRecorderMode.Playback
+                        ? new Func<SubscriptionCloudCredentialsAdapter>(() =>
+                            {
+                                var testEnvironment = TestEnvironmentFactory.GetTestEnvironment();
+                                return new SubscriptionCloudCredentialsAdapter(
+                                    testEnvironment.TokenInfo[TokenAudience.Management],
+                                    testEnvironment.SubscriptionId);
+                            })()
+                        : new SubscriptionCloudCredentialsAdapter(
+                            new TokenCredentials("foo"),
+                            Guid.Empty.ToString());
+
+                    HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(credentials);
+                })
                 .Build();
-
-            var credentials = HttpMockServer.Mode == HttpRecorderMode.Record
-                ? new Func<SubscriptionCloudCredentialsAdapter>(() =>
-                    {
-                        var testEnvironment = TestEnvironmentFactory.GetTestEnvironment();
-                        return new SubscriptionCloudCredentialsAdapter(
-                            testEnvironment.TokenInfo[TokenAudience.Management],
-                            testEnvironment.SubscriptionId);
-                    }) ()
-                : new SubscriptionCloudCredentialsAdapter(
-                    new TokenCredentials("foo"),
-                    Guid.Empty.ToString());
-
-            HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(credentials);
         }
     }
 

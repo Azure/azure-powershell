@@ -92,5 +92,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets the maximum storage size in GB.
         /// </summary>
         public int? StorageSizeInGB { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Managed Instance collation
+        /// </summary>
+        public string Collation { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not the public data endpoint is enabled.
+        /// </summary>
+        public bool? PublicDataEndpointEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets connection type used for connecting to the instance.
+        /// Possible values include: 'Proxy', 'Redirect', 'Default'
+        /// </summary>
+        public string ProxyOverride { get; set; }
     }
 }
