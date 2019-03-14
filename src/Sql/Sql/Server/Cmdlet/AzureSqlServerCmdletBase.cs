@@ -26,9 +26,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <summary>
         /// Intializes the model adapter
         /// </summary>
-        /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The server adapter</returns>
-        protected override AzureSqlServerAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlServerAdapter InitModelAdapter()
         {
             return new AzureSqlServerAdapter(DefaultContext);
         }

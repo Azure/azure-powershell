@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/enable-azcdncustomain
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/enable-azcdncustomdomain
 schema: 2.0.0
 ---
 
 # Enable-AzCdnCustomDomain
 
 ## SYNOPSIS
-Enables custom HTTPS.
+Enables Custom Domain HTTPS (Deprecated).
 
 ## SYNTAX
 

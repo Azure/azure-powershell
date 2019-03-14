@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 6E967F9C-949E-4485-9B57-FC4F523D5DC9
@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzRouteConfig
 
 ## SYNOPSIS
-Sets the goal state for a route.
+Updates a route configuration for a route table.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Set-AzRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-AddressPrefix <S
 ```
 
 ## DESCRIPTION
-The **Set-AzRouteConfig** cmdlet sets the goal state for an Azure route.
+The **Set-AzRouteConfig** cmdlet updates a route configuration for a route table.
 
 ## EXAMPLES
 

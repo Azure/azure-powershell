@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             PSDeploymentCmdletParameters parameters = new PSDeploymentCmdletParameters()
             {
                 ResourceGroupName = ResourceGroupName,
-                TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                TemplateFile = TemplateUri ?? this.ResolvePath(TemplateFile),
+                TemplateObject = TemplateObject,
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 ParameterUri = TemplateParameterUri,
                 OnErrorDeployment = RollbackToLastDeployment || !string.IsNullOrEmpty(RollBackDeploymentName)

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 75E30205-97AD-44E3-A61F-62B81ADB532C
@@ -176,5 +176,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzLocalNetworkGateway](./New-AzLocalNetworkGateway.md)
 
 [Set-AzLocalNetworkGateway](./Set-AzLocalNetworkGateway.md)
-
-

@@ -95,7 +95,7 @@ function Get-TestResourcesDeployment([string]$rgn)
 "@;
 
         $st = Set-Content -Path $paramFile -Value $paramContent -Force;
-        New-AzureRmResourceGroupDeployment  -Name "${rgn}" -ResourceGroupName "$rgn" -TemplateFile "$templateFile" -TemplateParameterFile $paramFile
+        New-AzResourceGroupDeployment  -Name "${rgn}" -ResourceGroupName "$rgn" -TemplateFile "$templateFile" -TemplateParameterFile $paramFile
 }
 
 function Get-NrpResourceName
@@ -115,14 +115,13 @@ Get existing Network Watcher.
 function Get-CreateTestNetworkWatcher($location, $nwName, $nwRgName)
 {
     $nw = $null
-    # TODO: replace with Normalize-Location after PR is merged: https://github.com/Azure/azure-powershell-common/pull/90
-    $testLocation = $location.ToLower() -replace '[^a-z0-9]'
+    $canonicalLocation = Normalize-Location $location
 
     # Get Network Watcher
-    $nwlist = Get-AzureRmNetworkWatcher
+    $nwlist = Get-AzNetworkWatcher
     foreach ($i in $nwlist)
     {
-        if($i.Location -eq $testLocation)
+        if($i.Location -eq $canonicalLocation)
         {
             $nw = $i
             break
@@ -132,7 +131,7 @@ function Get-CreateTestNetworkWatcher($location, $nwName, $nwRgName)
     # Create Network Watcher if no existing nw
     if(!$nw)
     {
-        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+        $nw = New-AzNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
     }
 
     return $nw
@@ -166,25 +165,25 @@ function Test-GetTopology
         . ".\AzureRM.Resources.ps1"
 
         # Create Resource group
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
         
         # Deploy resources
         Get-TestResourcesDeployment -rgn "$resourceGroupName"
         
 		# Create Resource group for Network Watcher
-        New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
         
         # Get Network Watcher
 		$nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
 
         # Get topology in the resource group $resourceGroupName
-        $topology = Get-AzureRmNetworkWatcherTopology -NetworkWatcher $nw -TargetResourceGroupName $resourceGroupName
+        $topology = Get-AzNetworkWatcherTopology -NetworkWatcher $nw -TargetResourceGroupName $resourceGroupName
 
         #Get Vm
-        $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName
 
         #Get nic
-        $nic = Get-AzureRmNetworkInterface -ResourceGroupName $resourceGroupName
+        $nic = Get-AzNetworkInterface -ResourceGroupName $resourceGroupName
     }
     finally
     {
@@ -215,31 +214,31 @@ function Test-GetSecurityGroupView
         . ".\AzureRM.Resources.ps1"
 
         # Create Resource group
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Deploy resources
         Get-TestResourcesDeployment -rgn "$resourceGroupName"
         
         # Create Resource group for Network Watcher
-        New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
         
         # Get Network Watcher
 		$nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
         
         #Get Vm
-        $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName
         
         #Get network security group
-        $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroupName
+        $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName $resourceGroupName
         
         # Set security rule
-        $nsg[0] | Add-AzureRmNetworkSecurityRuleConfig -Name scr1 -Description "test" -Protocol Tcp -SourcePortRange * -DestinationPortRange 80 -SourceAddressPrefix * -DestinationAddressPrefix * -Access Deny -Priority 122 -Direction Outbound
-        $nsg[0] | Set-AzureRmNetworkSecurityGroup
+        $nsg[0] | Add-AzNetworkSecurityRuleConfig -Name scr1 -Description "test" -Protocol Tcp -SourcePortRange * -DestinationPortRange 80 -SourceAddressPrefix * -DestinationAddressPrefix * -Access Deny -Priority 122 -Direction Outbound
+        $nsg[0] | Set-AzNetworkSecurityGroup
 
         Wait-Seconds 300
 
         # Get nsg rules for the target VM
-        $job = Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $nw -Target $vm.Id -AsJob
+        $job = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $nw -Target $vm.Id -AsJob
         $job | Wait-Job
         $nsgView = $job | Receive-Job
 
@@ -278,28 +277,28 @@ function Test-GetNextHop
         . ".\AzureRM.Resources.ps1"
 
         # Create Resource group
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Deploy resources
         Get-TestResourcesDeployment -rgn "$resourceGroupName"
         
         # Create Resource group for Network Watcher
-        New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
         
         # Get Network Watcher
 		$nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
         
         #Get Vm
-        $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName
         
         #Get pablic IP address
-        $address = Get-AzureRmPublicIpAddress -ResourceGroupName $resourceGroupName
+        $address = Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName
 
         #Get next hop
-        $job = Get-AzureRmNetworkWatcherNextHop -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -DestinationIPAddress 10.1.3.6 -SourceIPAddress $address.IpAddress -AsJob
+        $job = Get-AzNetworkWatcherNextHop -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -DestinationIPAddress 10.1.3.6 -SourceIPAddress $address.IpAddress -AsJob
         $job | Wait-Job
         $nextHop1 = $job | Receive-Job
-        $nextHop2 = Get-AzureRmNetworkWatcherNextHop -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -DestinationIPAddress 12.11.12.14 -SourceIPAddress $address.IpAddress
+        $nextHop2 = Get-AzNetworkWatcherNextHop -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -DestinationIPAddress 12.11.12.14 -SourceIPAddress $address.IpAddress
     
         #Verification
         Assert-AreEqual $nextHop1.NextHopType None
@@ -334,45 +333,101 @@ function Test-VerifyIPFlow
         . ".\AzureRM.Resources.ps1"
 
         # Create Resource group
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Deploy resources
         Get-TestResourcesDeployment -rgn "$resourceGroupName"
         
         # Create Resource group for Network Watcher
-        New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
         
         # Get Network Watcher
 		$nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
         
         #Get network security group
-        $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroupName
+        $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName $resourceGroupName
 
         # Set security rules
-        $nsg[0] | Add-AzureRmNetworkSecurityRuleConfig -Name scr1 -Description "test1" -Protocol Tcp -SourcePortRange * -DestinationPortRange 80 -SourceAddressPrefix * -DestinationAddressPrefix * -Access Deny -Priority 122 -Direction Outbound
-        $nsg[0] | Set-AzureRmNetworkSecurityGroup
+        $nsg[0] | Add-AzNetworkSecurityRuleConfig -Name scr1 -Description "test1" -Protocol Tcp -SourcePortRange * -DestinationPortRange 80 -SourceAddressPrefix * -DestinationAddressPrefix * -Access Deny -Priority 122 -Direction Outbound
+        $nsg[0] | Set-AzNetworkSecurityGroup
 
-        $nsg[0] | Add-AzureRmNetworkSecurityRuleConfig -Name sr2 -Description "test2" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 123 -Direction Inbound
-        $nsg[0] | Set-AzureRmNetworkSecurityGroup
+        $nsg[0] | Add-AzNetworkSecurityRuleConfig -Name sr2 -Description "test2" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 123 -Direction Inbound
+        $nsg[0] | Set-AzNetworkSecurityGroup
 
         Wait-Seconds 300
 
         #Get Vm
-        $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName
         
         #Get private Ip address of nic
-        $nic = Get-AzureRmNetworkInterface -ResourceGroupName $resourceGroupName
+        $nic = Get-AzNetworkInterface -ResourceGroupName $resourceGroupName
         $address = $nic[0].IpConfigurations[0].PrivateIpAddress
 
         #Verify IP Flow
-        $job = Test-AzureRmNetworkWatcherIPFlow -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -Direction Inbound -Protocol Tcp -RemoteIPAddress 121.11.12.14 -LocalIPAddress $address -LocalPort 50 -RemotePort 40 -AsJob
+        $job = Test-AzNetworkWatcherIPFlow -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -Direction Inbound -Protocol Tcp -RemoteIPAddress 121.11.12.14 -LocalIPAddress $address -LocalPort 50 -RemotePort 40 -AsJob
         $job | Wait-Job
         $verification1 = $job | Receive-Job
-        $verification2 = Test-AzureRmNetworkWatcherIPFlow -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -Direction Outbound -Protocol Tcp -RemoteIPAddress 12.11.12.14 -LocalIPAddress $address -LocalPort 80 -RemotePort 80
+        $verification2 = Test-AzNetworkWatcherIPFlow -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -Direction Outbound -Protocol Tcp -RemoteIPAddress 12.11.12.14 -LocalIPAddress $address -LocalPort 80 -RemotePort 80
 
         #Verification
         Assert-AreEqual $verification2.Access Deny
         Assert-AreEqual $verification2.RuleName securityRules/scr1
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+        Clean-ResourceGroup $nwRgName
+    }
+}
+
+<#
+.SYNOPSIS
+Test NetworkConfigurationDiagnostic NetworkWatcher API.
+#>
+function Test-NetworkConfigurationDiagnostic
+{
+    # Setup
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
+    $nwRgName = Get-NrpResourceGroupName
+    $securityGroupName = Get-NrpResourceName
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US"
+    
+    try 
+    {
+        . ".\AzureRM.Resources.ps1"
+
+        # Create Resource group
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+
+        # Deploy resources
+        Get-TestResourcesDeployment -rgn "$resourceGroupName"
+        
+        # Create Resource group for Network Watcher
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
+        
+        # Get Network Watcher
+        $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
+        
+        #Get network security group
+        $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName $resourceGroupName
+
+        #Get Vm
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName
+
+        #Invoke network configuration diagnostic
+        $profile = New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile -Direction Inbound -Protocol Tcp -Source 10.1.1.4 -Destination * -DestinationPort 50 
+        $result1 = Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcher $nw -TargetResourceId $vm.Id -Profile $profile
+        $result2 = Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcher $nw -TargetResourceId $vm.Id -Profile $profile -VerbosityLevel Full
+
+        #Verification
+        Assert-AreEqual $result1.results[0].profile.direction Inbound
+        Assert-AreEqual $result1.results[0].profile.protocol Tcp
+        Assert-AreEqual $result1.results[0].profile.source 10.1.1.4
+        Assert-AreEqual $result1.results[0].profile.destinationPort 50
+        Assert-AreEqual $result1.results[0].networkSecurityGroupResult.securityRuleAccessResult Deny
     }
     finally
     {
@@ -405,39 +460,39 @@ function Test-PacketCapture
         . ".\AzureRM.Resources.ps1"
 
         # Create Resource group
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Deploy resources
         Get-TestResourcesDeployment -rgn "$resourceGroupName"
         
         # Create Resource group for Network Watcher
-        New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
         
         # Get Network Watcher
 		$nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
 
         #Get Vm
-        $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName
         
         #Install networkWatcherAgent on Vm
-        Set-AzureRmVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
+        Set-AzVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
 
         #Create filters for packet capture
-        $f1 = New-AzureRmPacketCaptureFilterConfig -Protocol Tcp -RemoteIPAddress 127.0.0.1-127.0.0.255 -LocalPort 80 -RemotePort 80-120
-        $f2 = New-AzureRmPacketCaptureFilterConfig -LocalIPAddress 127.0.0.1;127.0.0.5
+        $f1 = New-AzPacketCaptureFilterConfig -Protocol Tcp -RemoteIPAddress 127.0.0.1-127.0.0.255 -LocalPort 80 -RemotePort 80-120
+        $f2 = New-AzPacketCaptureFilterConfig -LocalIPAddress 127.0.0.1;127.0.0.5
 
         #Create packet capture
-        $job = New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -TargetVirtualMachineId $vm.Id -LocalFilePath C:\tmp\Capture.cap -Filter $f1, $f2 -AsJob
+        $job = New-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -TargetVirtualMachineId $vm.Id -LocalFilePath C:\tmp\Capture.cap -Filter $f1, $f2 -AsJob
         $job | Wait-Job
-        New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2 -TargetVirtualMachineId $vm.Id -LocalFilePath C:\tmp\Capture.cap -TimeLimitInSeconds 1
+        New-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2 -TargetVirtualMachineId $vm.Id -LocalFilePath C:\tmp\Capture.cap -TimeLimitInSeconds 1
         Start-Sleep -s 2
 
         #Get packet capture
-        $job = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
+        $job = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
         $job | Wait-Job
         $pc1 = $job | Receive-Job
-        $pc2 = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2
-        $pcList = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw
+        $pc2 = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2
+        $pcList = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName "*"
 
         #Verification
         Assert-AreEqual $pc1.Name $pcName1
@@ -453,22 +508,22 @@ function Test-PacketCapture
         Assert-AreEqual $pcList.Count 2
 
         #Stop packet capture
-        $job = Stop-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
+        $job = Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
         $job | Wait-Job
 
         #Get packet capture
-        $pc1 = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1
+        $pc1 = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1
 
         #Remove packet capture
-        $job = Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
+        $job = Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
         $job | Wait-Job
 
         #List packet captures
-        $pcList = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw
+        $pcList = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw
         Assert-AreEqual $pcList.Count 1
 
         #Remove packet capture
-        Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2
+        Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2
 
     }
     finally
@@ -501,23 +556,23 @@ function Test-Troubleshoot
     try 
     {
         # Create Resource group
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Create the Virtual Network
-        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
-        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-        $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
-        $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+        $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
  
         # Create the publicip
-        $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $resourceGroupName -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $resourceGroupName -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
  
         # Create & Get virtualnetworkgateway
-        $vnetIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
-        $gw = New-AzureRmVirtualNetworkGateway -ResourceGroupName $resourceGroupName -Name $gwName -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false
+        $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+        $gw = New-AzVirtualNetworkGateway -ResourceGroupName $resourceGroupName -Name $gwName -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false
         
         # Create Resource group for Network Watcher
-        New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
 
 		# Get Network Watcher
 		$nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
@@ -527,16 +582,16 @@ function Test-Troubleshoot
         $stotype = 'Standard_GRS'
         $containerName = 'cont' + $resourceGroupName
 
-        New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype;
-        $key = Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $stoname
-        $context = New-AzureStorageContext -StorageAccountName $stoname -StorageAccountKey $key[0].Value
-        New-AzureStorageContainer -Name $containerName -Context $context
-        $container = Get-AzureStorageContainer -Name $containerName -Context $context
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype;
+        $key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $stoname
+        $context = New-AzStorageContext -StorageAccountName $stoname -StorageAccountKey $key[0].Value
+        New-AzStorageContainer -Name $containerName -Context $context
+        $container = Get-AzStorageContainer -Name $containerName -Context $context
 
-        $sto = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname;
+        $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname;
 
-        Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcher $nw -TargetResourceId $gw.Id -StorageId $sto.Id -StoragePath $container.CloudBlobContainer.StorageUri.PrimaryUri.AbsoluteUri;
-		$result = Get-AzureRmNetworkWatcherTroubleshootingResult -NetworkWatcher $nw -TargetResourceId $gw.Id
+        Start-AzNetworkWatcherResourceTroubleshooting -NetworkWatcher $nw -TargetResourceId $gw.Id -StorageId $sto.Id -StoragePath $container.CloudBlobContainer.StorageUri.PrimaryUri.AbsoluteUri;
+		$result = Get-AzNetworkWatcherTroubleshootingResult -NetworkWatcher $nw -TargetResourceId $gw.Id
 
 		# Validation
         Assert-AreEqual $result.code "UnHealthy"
@@ -573,16 +628,16 @@ function Test-FlowLog
     try 
     {
         # Create Resource group
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Create NetworkSecurityGroup
-        $nsg = New-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $resourceGroupName -Location $location
+        $nsg = New-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $resourceGroupName -Location $location
 
         # Get NetworkSecurityGroup
-        $getNsg = Get-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $resourceGroupName
+        $getNsg = Get-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $resourceGroupName
         
         # Create Resource group for Network Watcher
-        New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
         
         # Get Network Watcher
 		$nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
@@ -591,22 +646,22 @@ function Test-FlowLog
 		$stoname = 'sto' + $stoname
         $stotype = 'Standard_GRS'
 
-        New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype;
-        $sto = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname;
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype;
+        $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname;
 
 		# create workspace
 		$workspaceName = 'tawspace' + $workspaceName
 		$workspaceSku = 'free'
 
-		New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -Location $workspaceLocation -Sku $workspaceSku;
-		$workspace = Get-AzureRmOperationalInsightsWorkspace -Name $workspaceName -ResourceGroupName $resourceGroupName
+		New-AzOperationalInsightsWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -Location $workspaceLocation -Sku $workspaceSku;
+		$workspace = Get-AzOperationalInsightsWorkspace -Name $workspaceName -ResourceGroupName $resourceGroupName
 		
 		# set operation
-        $job = Set-AzureRmNetworkWatcherConfigFlowLog -NetworkWatcher $nw -TargetResourceId $getNsg.Id -EnableFlowLog $true -StorageAccountId $sto.Id -EnableTrafficAnalytics:$true -Workspace $workspace -AsJob -FormatType $flowlogFormatType -FormatVersion $flowlogFormatVersion -TrafficAnalyticsInterval $trafficAnalyticsInterval
+        $job = Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $nw -TargetResourceId $getNsg.Id -EnableFlowLog $true -StorageAccountId $sto.Id -EnableTrafficAnalytics:$true -Workspace $workspace -AsJob -FormatType $flowlogFormatType -FormatVersion $flowlogFormatVersion -TrafficAnalyticsInterval $trafficAnalyticsInterval
         $job | Wait-Job
         $config = $job | Receive-Job
 		# get operation
-        $job = Get-AzureRmNetworkWatcherFlowLogStatus -NetworkWatcher $nw -TargetResourceId $getNsg.Id -AsJob
+        $job = Get-AzNetworkWatcherFlowLogStatus -NetworkWatcher $nw -TargetResourceId $getNsg.Id -AsJob
         $job | Wait-Job
         $status = $job | Receive-Job
 
@@ -669,28 +724,28 @@ function Test-ConnectivityCheck
         . ".\AzureRM.Resources.ps1"
 
         # Create Resource group
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Deploy resources
         Get-TestResourcesDeployment -rgn "$resourceGroupName"
         
         # Create Resource group for Network Watcher
-        New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
         
         # Get Network Watcher
 		$nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
 
         # Get Vm
-        $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName
         
         # Install networkWatcherAgent on Vm
-        Set-AzureRmVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher"
+        Set-AzVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher"
 
 		# Set up protocol configuration
-		$config = New-AzureRMNetworkWatcherProtocolConfiguration -Protocol "Http" -Method "Get" -Header @{"accept"="application/json"} -ValidStatusCode @(200,202,204)
+		$config = New-AzNetworkWatcherProtocolConfiguration -Protocol "Http" -Method "Get" -Header @{"accept"="application/json"} -ValidStatusCode @(200,202,204)
 
         # Connectivity check
-        $job = Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $nw -SourceId $vm.Id -DestinationAddress "bing.com" -DestinationPort 80 -ProtocolConfiguration $config -AsJob
+        $job = Test-AzNetworkWatcherConnectivity -NetworkWatcher $nw -SourceId $vm.Id -DestinationAddress "bing.com" -DestinationPort 80 -ProtocolConfiguration $config -AsJob
         $job | Wait-Job
         $check = $job | Receive-Job
 
@@ -704,9 +759,9 @@ function Test-ConnectivityCheck
     }
     finally
     {
-		Assert-ThrowsContains { Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $nw -SourceId $vm.Id -DestinationId $vm.Id -DestinationPort 80 } "Connectivity check destination resource id must not be the same as source";
-		Assert-ThrowsContains { Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $nw -SourceId $vm.Id -DestinationPort 80 } "Connectivity check missing destination resource id or address";
-		Assert-ThrowsContains { Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $nw -SourceId $vm.Id -DestinationAddress "bing.com" } "Connectivity check missing destination port";
+		Assert-ThrowsContains { Test-AzNetworkWatcherConnectivity -NetworkWatcher $nw -SourceId $vm.Id -DestinationId $vm.Id -DestinationPort 80 } "Connectivity check destination resource id must not be the same as source";
+		Assert-ThrowsContains { Test-AzNetworkWatcherConnectivity -NetworkWatcher $nw -SourceId $vm.Id -DestinationPort 80 } "Connectivity check missing destination resource id or address";
+		Assert-ThrowsContains { Test-AzNetworkWatcherConnectivity -NetworkWatcher $nw -SourceId $vm.Id -DestinationAddress "bing.com" } "Connectivity check missing destination port";
 
         # Cleanup
         Clean-ResourceGroup $resourceGroupName
@@ -729,16 +784,16 @@ function Test-ReachabilityReport
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
 
         # Get Network Watcher
         $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $rgName
 
-        $job = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -StartTime "2017-10-05" -EndTime "2017-10-10" -AsJob
+        $job = Get-AzNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -StartTime "2017-10-05" -EndTime "2017-10-10" -AsJob
         $job | Wait-Job
         $report1 = $job | Receive-Job
-        $report2 = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -StartTime "2017-10-05" -EndTime "2017-10-10"
-        $report3 = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -City "seattle" -StartTime "2017-10-05" -EndTime "2017-10-10"
+        $report2 = Get-AzNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -StartTime "2017-10-05" -EndTime "2017-10-10"
+        $report3 = Get-AzNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -City "seattle" -StartTime "2017-10-05" -EndTime "2017-10-10"
 
         Assert-AreEqual $report1.AggregationLevel "Country"
         Assert-AreEqual $report1.ProviderLocation.Country "United States"
@@ -772,16 +827,16 @@ function Test-ProvidersList
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
 
         # Get Network Watcher
         $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $rgname
 
-        $job = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -AsJob
+        $job = Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -AsJob
         $job | Wait-Job
         $list1 = $job | Receive-Job
-        $list2 = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington"
-        $list3 = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -City "seattle"
+        $list2 = Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington"
+        $list3 = Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -City "seattle"
 
         Assert-AreEqual $list1.Countries.CountryName "United States"
         Assert-AreEqual $list2.Countries.CountryName "United States"
@@ -811,31 +866,33 @@ function Test-ConnectionMonitor
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     $cmName1 = Get-NrpResourceName
     $cmName2 = Get-NrpResourceName
-	
+    # We need location version w/o spaces to work with ByLocationParamSet
+    $locationMod = ($location -replace " ","").ToLower()
+
     try 
     {
         . ".\AzureRM.Resources.ps1"
 
         # Create Resource group
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Deploy resources
         Get-TestResourcesDeployment -rgn "$resourceGroupName"
 
-		# Create Resource group for Network Watcher
-        New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
+        # Create Resource group for Network Watcher
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
         
-		# Get Network Watcher
-		$nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
+        # Get Network Watcher
+        $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
 
         #Get Vm
-        $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName
         
         #Install networkWatcherAgent on Vm
-		Set-AzureRmVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
+        Set-AzVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
 
         #Create connection monitor
-        $job1 = New-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -AsJob
+        $job1 = New-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -AsJob
         $job1 | Wait-Job
         $cm1 = $job1 | Receive-Job
 
@@ -845,7 +902,7 @@ function Test-ConnectionMonitor
         Assert-AreEqual $cm1.Destination.Address bing.com
         Assert-AreEqual $cm1.Destination.Port 80
 
-        $job2 = New-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2 -SourceResourceId $vm.Id -DestinationAddress google.com -DestinationPort 80 -AsJob
+        $job2 = New-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2 -SourceResourceId $vm.Id -DestinationAddress google.com -DestinationPort 80 -AsJob
         $job2 | Wait-Job
         $cm2 = $job2 | Receive-Job
 
@@ -856,34 +913,137 @@ function Test-ConnectionMonitor
         Assert-AreEqual $cm2.Destination.Port 80
         Assert-AreEqual $cm2.MonitoringStatus Running
 
-        #Stop connection monitor
-        Stop-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
+        # Need to run stop before Set operations
 
-        #Get connection monitor
-        $cm2 = Get-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
+        Stop-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1
+        $cm1 = Set-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 81 -ConfigureOnly -MonitoringIntervalInSeconds 50
+        Assert-AreEqual $cm1.Destination.Port 81
+        Assert-AreEqual $cm1.MonitoringIntervalInSeconds 50
 
-        #Validation
+        Stop-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1
+        $cm1 = Set-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 81 -MonitoringIntervalInSeconds 50
+        Assert-AreEqual $cm1.Destination.Address test.com
+
+        Stop-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1
+        $cm1 = Set-AzNetworkWatcherConnectionMonitor -ResourceId $cm1.Id -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 80 -MonitoringIntervalInSeconds 50
+        Assert-AreEqual $cm1.Destination.Port 80
+
+        Stop-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1
+        $cm1Job = Set-AzNetworkWatcherConnectionMonitor -InputObject $cm1 -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 81 -MonitoringIntervalInSeconds 42 -AsJob
+        $cm1Job | Wait-Job
+        $cm1 = $cm1Job | Receive-Job
+        Assert-AreEqual $cm1.MonitoringIntervalInSeconds 42
+
+        Stop-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1
+        $cm1 = Set-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 80 -MonitoringIntervalInSeconds 42
+        Assert-AreEqual $cm1.Destination.Port 80
+
+        # Stop connection monitor
+        $stopJob = Stop-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2 -AsJob -PassThru
+        $stopJob | Wait-Job
+        $stopResult = $stopJob | Receive-Job
+        Assert-AreEqual true $stopResult
+        $cm2 = Get-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
         Assert-AreEqual $cm2.MonitoringStatus Stopped
 
-        #Start connection monitor
-        Start-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
-
-        #Get connection monitor
-        $cm2 = Get-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
-
-        #Validation
+        # Start connection monitor
+        $startJob = Start-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2 -AsJob -PassThru
+        $startJob | Wait-Job
+        $startResult = $startJob | Receive-Job
+        Assert-AreEqual true $startResult
+        $cm2 = Get-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
         Assert-AreEqual $cm2.MonitoringStatus Running
 
+        # Stop connection monitor by Location
+        Stop-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cm2.Name
+        $cm2 = Get-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cm2.Name
+        Assert-AreEqual $cm2.MonitoringStatus Stopped
+        
+        # Start connection monitor by location
+        Start-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cm2.Name
+        $cm2 = Get-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cm2.Name
+        Assert-AreEqual $cm2.MonitoringStatus Running
+
+        # Stop connection monitor by Id
+        Stop-AzNetworkWatcherConnectionMonitor -ResourceId $cm2.Id
+        $cm2 = Get-AzNetworkWatcherConnectionMonitor -ResourceId $cm2.Id
+        Assert-AreEqual $cm2.MonitoringStatus Stopped
+
+        # Start connection monitor by Id
+        Start-AzNetworkWatcherConnectionMonitor -ResourceId $cm2.Id
+        $cm2 = Get-AzNetworkWatcherConnectionMonitor -ResourceId $cm2.Id
+        Assert-AreEqual $cm2.MonitoringStatus Running
+
+        # Stop connection monitor by object
+        Stop-AzNetworkWatcherConnectionMonitor -InputObject $cm2
+        $cm2 = Get-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
+        Assert-AreEqual $cm2.MonitoringStatus Stopped
+
+        # Start connection monitor by object
+        Start-AzNetworkWatcherConnectionMonitor -InputObject $cm2
+        $cm2 = Get-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
+        Assert-AreEqual $cm2.MonitoringStatus Running
+
+        # Get List
+        $cms = Get-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name "*"
+        Assert-NotNull $cms
+
         #Query connection monitor
-        Get-AzureRmNetworkWatcherConnectionMonitorReport -NetworkWatcher $nw -Name $cmName1
+        $report = Get-AzNetworkWatcherConnectionMonitorReport -NetworkWatcher $nw -Name $cmName1
+        Assert-NotNull $report
+
+        $report = Get-AzNetworkWatcherConnectionMonitorReport -Location $locationMod -Name $cmName1
+        Assert-NotNull $report
+
+        $report = Get-AzNetworkWatcherConnectionMonitorReport -ResourceId $cm1.Id
+        Assert-NotNull $report
+
+        $reportJob = Get-AzNetworkWatcherConnectionMonitorReport -InputObject $cm1 -AsJob
+        $reportJob | Wait-Job
+        $report = $reportJob | Receive-Job
+        Assert-NotNull $report
 
         #Remove connection monitor
-        Remove-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1
+        Remove-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1
+
+        #Create connection monitor
+        $job1 = New-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
+        $job1 | Wait-Job
+        ###
+        $cm1 = $job1 | Receive-Job
+        Remove-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1
+
+        $job1 = New-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
+        $job1 | Wait-Job
+        $cm1 = $job1 | Receive-Job
+
+        Remove-AzNetworkWatcherConnectionMonitor -ResourceId $cm1.Id
+
+        $job1 = New-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
+        $job1 | Wait-Job
+        $cm1 = $job1 | Receive-Job
+
+        $rmJob = Remove-AzNetworkWatcherConnectionMonitor -InputObject $cm1 -AsJob -PassThru
+        $rmJob | Wait-Job
+        $result = $rmJob | Receive-Job
+
+        Assert-ThrowsLike { Set-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name "fakeName" -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 80 -MonitoringIntervalInSeconds 42 } "*not*found*"
+
+        # TODO: check if really deleted
+        Remove-AzNetworkWatcher -ResourceGroupName $nw.ResourceGroupName -Name $nw.Name
+
+        Assert-ThrowsLike { New-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 } "*There is no*"
+        Assert-ThrowsLike { Remove-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 } "*There is no*"
+        Assert-ThrowsLike { Get-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 } "*There is no*"
+        Assert-ThrowsLike { Set-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 80 -MonitoringIntervalInSeconds 42 } "*There is no*"
+        Assert-ThrowsLike { Get-AzNetworkWatcherConnectionMonitorReport -Location $locationMod -Name $cmName1 } "*There is no*"
+        Assert-ThrowsLike { Stop-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 } "*There is no*"
+        Assert-ThrowsLike { Start-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 } "*There is no*"
     }
     finally
     {
         # Cleanup
         Clean-ResourceGroup $resourceGroupName
         Clean-ResourceGroup $nwRgName
-    }  
+    }
 }

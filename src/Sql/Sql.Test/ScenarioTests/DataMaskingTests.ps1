@@ -27,44 +27,44 @@ function Test-DatabaseDataMaskingPrivilegedUsersChanges
 	try
 	{
 		# Defualt policy should be in disabled state
-		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+		$policy = Get-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual "Disabled" $policy.DataMaskingState
 
 
 		# Test adding a privileged login
-		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedUsers "public" -DataMaskingState "Enabled"
-		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+		Set-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedUsers "public" -DataMaskingState "Enabled"
+		$policy = Get-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual "public;" $policy.PrivilegedUsers
 		Assert-AreEqual "Enabled" $policy.DataMaskingState
 
 		# Test removing a privileged login while having enabled policy
-		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedUsers "" 
-		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+		Set-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedUsers "" 
+		$policy = Get-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
 	    Assert-AreEqual "" $policy.PrivilegedUsers
 
 		# Test disabling a policy
-		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -DataMaskingState "Disabled" 
-		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+		Set-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -DataMaskingState "Disabled" 
+		$policy = Get-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
 	    Assert-AreEqual "" $policy.PrivilegedUsers
 
 		# Test adding a privileged login while being disabled
-		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedUsers "public" 
-		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+		Set-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedUsers "public" 
+		$policy = Get-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual "" $policy.PrivilegedUsers
 
 		# Test removing a privileged login while being disabled
-		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedUsers ""  
-		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+		Set-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedUsers ""  
+		$policy = Get-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual "" $policy.PrivilegedUsers
@@ -91,17 +91,17 @@ function Test-DatabaseDataMaskingBasicRuleLifecycle
 	try
 	{
 		# Test
-		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+		Set-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 
-		$ruleCountBefore = (Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
+		$ruleCountBefore = (Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
 		$ruleCountBefore = if ( !$ruleCountBefore ) {0} else {$ruleCountBefore}
-		New-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingFunction "Default" -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1
-		$ruleCountAfter = (Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
+		New-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingFunction "Default" -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1
+		$ruleCountAfter = (Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
 		$ruleCountAfter = if ( !$ruleCountAfter ) {0} else {$ruleCountAfter}
 
 		# Assert
 		Assert-AreEqual ($ruleCountBefore + 1) $ruleCountAfter
-		$rule = Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1
+		$rule = Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1
 
 		# Assert
 		Assert-AreEqual $rule.ResourceGroupName $params.rgname
@@ -112,8 +112,8 @@ function Test-DatabaseDataMaskingBasicRuleLifecycle
 		Assert-AreEqual $rule.TableName $params.table1
 		Assert-AreEqual $rule.ColumnName $params.column1
 
-		Set-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName  -MaskingFunction "Email" -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1
-		$rule = Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1
+		Set-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName  -MaskingFunction "Email" -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1
+		$rule = Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1
 
 		# Assert
 		Assert-AreEqual $rule.ResourceGroupName $params.rgname
@@ -124,8 +124,8 @@ function Test-DatabaseDataMaskingBasicRuleLifecycle
 		Assert-AreEqual $rule.TableName $params.table1
 		Assert-AreEqual $rule.ColumnName $params.column1
 
-		Set-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1 -MaskingFunction "Default"
-		$rule = Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+		Set-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1 -MaskingFunction "Default"
+		$rule = Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 
 			# Assert
 		Assert-AreEqual $rule.ResourceGroupName $params.rgname
@@ -136,10 +136,10 @@ function Test-DatabaseDataMaskingBasicRuleLifecycle
 		Assert-AreEqual $rule.TableName $params.table1
 		Assert-AreEqual $rule.ColumnName $params.column1
 
-		$ruleCountBefore = (Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
+		$ruleCountBefore = (Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
 		$ruleCountBefore = if ( !$ruleCountBefore ) {0} else {$ruleCountBefore}
-		Remove-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1 -Force
-		$ruleCountAfter = (Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
+		Remove-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1 -Force
+		$ruleCountAfter = (Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
 		$ruleCountAfter = if ( !$ruleCountAfter ) {0} else {$ruleCountAfter}		
 	}
 	finally
@@ -164,18 +164,18 @@ function Test-DatabaseDataMaskingNumberRuleLifecycle
 	try
 	{
 		# Test
-		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+		Set-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 
-		$ruleCountBefore = (Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
+		$ruleCountBefore = (Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
 		$ruleCountBefore = if ( !$ruleCountBefore ) {0} else {$ruleCountBefore}
-		New-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingFunction "Number" -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.columnInt -NumberFrom 12 -NumberTo 56
-		$ruleCountAfter = (Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
+		New-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingFunction "Number" -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.columnInt -NumberFrom 12 -NumberTo 56
+		$ruleCountAfter = (Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
 		$ruleCountAfter = if ( !$ruleCountAfter ) {0} else {$ruleCountAfter}
 
 		# Assert
 		Assert-AreEqual ($ruleCountBefore + 1) $ruleCountAfter
 
-		$rule = Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.columnInt
+		$rule = Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.columnInt
 
 		# Assert
 		Assert-AreEqual $rule.ResourceGroupName $params.rgname
@@ -189,8 +189,8 @@ function Test-DatabaseDataMaskingNumberRuleLifecycle
 		Assert-AreEqual $rule.NumberTo 56
 		
 
-		Set-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.columnInt -NumberFrom 15 -NumberTo 34
-		$rule = Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.columnInt
+		Set-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.columnInt -NumberFrom 15 -NumberTo 34
+		$rule = Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.columnInt
 
 		# Assert
 		Assert-AreEqual $rule.ResourceGroupName $params.rgname
@@ -204,10 +204,10 @@ function Test-DatabaseDataMaskingNumberRuleLifecycle
 		Assert-AreEqual $rule.NumberTo 34
 
 
-		$ruleCountBefore = (Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
+		$ruleCountBefore = (Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
 		$ruleCountBefore = if ( !$ruleCountBefore ) {0} else {$ruleCountBefore}
-		Remove-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1 -Force
-		$ruleCountAfter = (Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
+		Remove-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1 -Force
+		$ruleCountAfter = (Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
 		$ruleCountAfter = if ( !$ruleCountAfter ) {0} else {$ruleCountAfter}
 
 		# Assert
@@ -236,18 +236,18 @@ function Test-DatabaseDataMaskingTextRuleLifecycle
 	try
 	{
 		# Test
-		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+		Set-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 
-		$ruleCountBefore = (Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
+		$ruleCountBefore = (Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
 		$ruleCountBefore = if ( !$ruleCountBefore ) {0} else {$ruleCountBefore}
-		New-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingFunction "Text" -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1 -PrefixSize 1 -ReplacementString "AAA" -SuffixSize 3
-		$ruleCountAfter = (Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
+		New-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingFunction "Text" -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1 -PrefixSize 1 -ReplacementString "AAA" -SuffixSize 3
+		$ruleCountAfter = (Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
 		$ruleCountAfter = if ( !$ruleCountAfter ) {0} else {$ruleCountAfter}
 
 		# Assert
 		Assert-AreEqual ($ruleCountBefore + 1) $ruleCountAfter
 
-		$rule = Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1
+		$rule = Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1
 
 		# Assert
 		Assert-AreEqual $rule.ResourceGroupName $params.rgname
@@ -261,8 +261,8 @@ function Test-DatabaseDataMaskingTextRuleLifecycle
 		Assert-AreEqual $rule.ReplacementString "AAA"
 		Assert-AreEqual $rule.SuffixSize 3
 	
-		Set-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1 -PrefixSize 4 -ReplacementString "BBB" -SuffixSize 2
-		$rule = Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+		Set-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1 -PrefixSize 4 -ReplacementString "BBB" -SuffixSize 2
+		$rule = Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 
 		# Assert
 		Assert-AreEqual $rule.ResourceGroupName $params.rgname
@@ -277,10 +277,10 @@ function Test-DatabaseDataMaskingTextRuleLifecycle
 		Assert-AreEqual $rule.SuffixSize 2
 
 
-		$ruleCountBefore = (Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
+		$ruleCountBefore = (Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
 		$ruleCountBefore = if ( !$ruleCountBefore ) {0} else {$ruleCountBefore}
-		Remove-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1 -Force
-		$ruleCountAfter = (Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
+		Remove-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1 -Force
+		$ruleCountAfter = (Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
 		$ruleCountAfter = if ( !$ruleCountAfter ) {0} else {$ruleCountAfter}
 
 		# Assert
@@ -308,14 +308,14 @@ function Test-DatabaseDataMaskingRuleCreationFailures
 	try
 	{
 		# Test
-		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+		Set-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 		# Assert
-		Assert-Throws { New-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName "NONEXISTING" -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingFunction "Default" -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1} 
-		Assert-Throws { New-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName "NONEXISTING"  -DatabaseName $params.databaseName -MaskingFunction "Default" -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1} 
-		Assert-Throws { New-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName "NONEXISTING" -MaskingFunction "Default" -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1} 
-		Assert-Throws { New-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingFunction "Default" -SchemaName "NONEXISTING" -TableName  $params.table1 -ColumnName $params.column1} 
-		Assert-Throws { New-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingFunction "Default" -SchemaName "dbo" -TableName  "NONEXISTING" -ColumnName $params.column1} 
-		Assert-Throws { New-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingFunction "Default" -SchemaName "dbo" -TableName  $params.table1 "NONEXISTING"} 
+		Assert-Throws { New-AzSqlDatabaseDataMaskingRule -ResourceGroupName "NONEXISTING" -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingFunction "Default" -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1} 
+		Assert-Throws { New-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName "NONEXISTING"  -DatabaseName $params.databaseName -MaskingFunction "Default" -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1} 
+		Assert-Throws { New-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName "NONEXISTING" -MaskingFunction "Default" -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1} 
+		Assert-Throws { New-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingFunction "Default" -SchemaName "NONEXISTING" -TableName  $params.table1 -ColumnName $params.column1} 
+		Assert-Throws { New-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingFunction "Default" -SchemaName "dbo" -TableName  "NONEXISTING" -ColumnName $params.column1} 
+		Assert-Throws { New-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingFunction "Default" -SchemaName "dbo" -TableName  $params.table1 "NONEXISTING"} 
 	}
 	finally
 	{
@@ -339,15 +339,15 @@ function Test-DatabaseDataMaskingRuleCreationWithoutPolicy
 	try
 	{
 		# Test
-		$ruleCountBefore = (Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
+		$ruleCountBefore = (Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
 		$ruleCountBefore = if ( !$ruleCountBefore ) {0} else {$ruleCountBefore}
-		New-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingFunction "Default" -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1
-		$ruleCountAfter = (Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
+		New-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingFunction "Default" -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1
+		$ruleCountAfter = (Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
 		$ruleCountAfter = if ( !$ruleCountAfter ) {0} else {$ruleCountAfter}
 
 		# Assert
 		Assert-AreEqual ($ruleCountBefore + 1) $ruleCountAfter
-		$rule = Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1
+		$rule = Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1
 
 		# Assert
 		Assert-AreEqual $rule.ResourceGroupName $params.rgname
@@ -359,12 +359,12 @@ function Test-DatabaseDataMaskingRuleCreationWithoutPolicy
 		Assert-AreEqual $rule.ColumnName $params.column1
 
 		$ruleCountBefore = $ruleCountAfter
-		Remove-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1 -Force
-		$ruleCountAfter = (Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
+		Remove-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -SchemaName "dbo" -TableName  $params.table1 -ColumnName $params.column1 -Force
+		$ruleCountAfter = (Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
 		$ruleCountAfter = if ( !$ruleCountAfter ) {0} else {$ruleCountAfter}
 		
 		# Assert
-		Assert-Throws {Get-AzureRmSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -RuleId $ruleId}
+		Assert-Throws {Get-AzSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -RuleId $ruleId}
 		Assert-AreEqual ($ruleCountBefore - 1) $ruleCountAfter
 	}
 	finally

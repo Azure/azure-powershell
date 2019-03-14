@@ -24,7 +24,7 @@ List monthly reservation summaries with reservation order Id
 #>
 function Test-ListReservationSummariesMonthlyWithOrderId
 {
-    $reservationSummaries = Get-AzureRmConsumptionReservationSummary -Grain monthly -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b
+    $reservationSummaries = Get-AzConsumptionReservationSummary -Grain monthly -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b
 	Assert-NotNull $reservationSummaries	
 	Foreach($reservationSummary in $reservationSummaries)
 	{
@@ -49,7 +49,7 @@ List monthly reservation summaries with reservation order Id and reservation Id
 #>
 function Test-ListReservationSummariesMonthlyWithOrderIdAndId
 {
-    $reservationSummaries = Get-AzureRmConsumptionReservationSummary -Grain monthly -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -ReservationId f37f4b70-52ba-4344-a8bd-28abfd21d640
+    $reservationSummaries = Get-AzConsumptionReservationSummary -Grain monthly -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -ReservationId f37f4b70-52ba-4344-a8bd-28abfd21d640
 	Assert-NotNull $reservationSummaries	
 	Foreach($reservationSummary in $reservationSummaries)
 	{
@@ -74,7 +74,7 @@ List daily reservation summaries with reservation order Id
 #>
 function Test-ListReservationSummariesDailyWithOrderId
 {
-    $reservationSummaries = Get-AzureRmConsumptionReservationSummary -Grain daily -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -StartDate 2017-10-01 -EndDate 2017-12-07
+    $reservationSummaries = Get-AzConsumptionReservationSummary -Grain daily -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -StartDate 2017-10-01 -EndDate 2017-12-07
 	Assert-NotNull $reservationSummaries	
 	Foreach($reservationSummary in $reservationSummaries)
 	{
@@ -99,7 +99,7 @@ List daily reservation summaries with reservation order Id and reservation Id
 #>
 function Test-ListReservationSummariesDailyWithOrderIdAndId
 {
-    $reservationSummaries = Get-AzureRmConsumptionReservationSummary -Grain daily -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -ReservationId f37f4b70-52ba-4344-a8bd-28abfd21d640 -StartDate 2017-10-01 -EndDate 2017-12-07
+    $reservationSummaries = Get-AzConsumptionReservationSummary -Grain daily -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -ReservationId f37f4b70-52ba-4344-a8bd-28abfd21d640 -StartDate 2017-10-01 -EndDate 2017-12-07
 	Assert-NotNull $reservationSummaries	
 	Foreach($reservationSummary in $reservationSummaries)
 	{
@@ -124,7 +124,7 @@ List reservation details with reservation order Id
 #>
 function Test-ListReservationDetailsWithOrderId
 {
-    $reservationDetails = Get-AzureRmConsumptionReservationDetail -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -StartDate 2017-10-01 -EndDate 2017-12-07
+    $reservationDetails = Get-AzConsumptionReservationDetail -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -StartDate 2017-10-01 -EndDate 2017-12-07
 	Assert-NotNull $reservationDetails	
 	Foreach($reservationDetail in $reservationDetails)
 	{
@@ -148,7 +148,7 @@ List reservation details with reservation order Id and reservation Id
 #>
 function Test-ListReservationDetailsWithOrderIdAndId
 {
-    $reservationDetails = Get-AzureRmConsumptionReservationDetail -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -ReservationId f37f4b70-52ba-4344-a8bd-28abfd21d640 -StartDate 2017-10-01 -EndDate 2017-12-07
+    $reservationDetails = Get-AzConsumptionReservationDetail -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -ReservationId f37f4b70-52ba-4344-a8bd-28abfd21d640 -StartDate 2017-10-01 -EndDate 2017-12-07
 	Assert-NotNull $reservationDetails	
 	Foreach($reservationDetail in $reservationDetails)
 	{

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: D1D51DEF-05DE-45C4-9013-A02A5B248EAC
@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzVirtualNetworkSubnetConfig
 
 ## SYNOPSIS
-Configures the goal state for a subnet configuration in a virtual network.
+Updates a subnet configuration for a virtual network.
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Set-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwor
 ```
 
 ## DESCRIPTION
-The **Set-AzVirtualNetworkSubnetConfig** cmdlet configures the goal state for a subnet configuration in an Azure virtual network.
+The **Set-AzVirtualNetworkSubnetConfig** cmdlet updates a subnet configuration for a virtual network.
 
 ## EXAMPLES
 
@@ -282,5 +282,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzVirtualNetworkSubnetConfig](./New-AzVirtualNetworkSubnetConfig.md)
 
 [Remove-AzVirtualNetworkSubnetConfig](./Remove-AzVirtualNetworkSubnetConfig.md)
-
-
