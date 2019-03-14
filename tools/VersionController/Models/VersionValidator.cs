@@ -182,7 +182,7 @@ namespace VersionController.Models
             }
 
             Version version = _metadataHelper.GetVersionBumpUsingGallery();
-            if (string.Equals(moduleName, "AzureRM.Profile"))
+            if (string.Equals(moduleName, "Az.Accounts"))
             {
                 var commonCodeVersion = _metadataHelper.GetVersionBumpForCommonCode();
                 if (commonCodeVersion == Version.MAJOR)
@@ -250,7 +250,7 @@ namespace VersionController.Models
         }
 
         /// <summary>
-        /// Get the releases notes for the current release from a change log.
+        /// Get the releases notes for the upcoming release from a change log.
         /// </summary>
         /// <returns></returns>
         private string GetReleaseNotes()
@@ -285,6 +285,7 @@ namespace VersionController.Models
             string manifestReleaseNotes = string.Empty;
             using (PowerShell powershell = PowerShell.Create())
             {
+                powershell.AddScript("Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;");
                 powershell.AddScript("$manifest = Test-ModuleManifest -Path " + outputModuleManifestPath + ";$manifest.Version;$manifest.ReleaseNotes");
                 var cmdletResult = powershell.Invoke();
                 manifestVersion = cmdletResult[0].ToString();
@@ -305,7 +306,7 @@ namespace VersionController.Models
         }
 
         /// <summary>
-        /// Validate that the current module version was updated in AzureRM.psd1.
+        /// Validate that the current module version was updated in Az.psd1.
         /// </summary>
         private void ValidateRollupModuleManifest()
         {
@@ -313,7 +314,7 @@ namespace VersionController.Models
             var moduleName = _fileHelper.ModuleName;
             if (_isPreview)
             {
-                Console.WriteLine("Skipping AzureRM bump validation since " + moduleName + " is a preview module.");
+                Console.WriteLine("Skipping Az bump validation since " + moduleName + " is a preview module.");
                 return;
             }
 
@@ -321,10 +322,10 @@ namespace VersionController.Models
             var pattern = @"ModuleName(\s*)=(\s*)(['\""])" + moduleName + @"(['\""])(\s*);(\s*)RequiredVersion(\s*)=(\s*)(['\""])" + _localVersion + @"(['\""])";
             if (!file.Where(l => Regex.IsMatch(l, pattern)).Any())
             {
-                throw new Exception("The AzureRM.psd1 module manifest file has not updated required module " + moduleName + " to version " + _localVersion);
+                throw new Exception("The Az.psd1 module manifest file has not updated required module " + moduleName + " to version " + _localVersion);
             }
 
-            Console.WriteLine("Validated change in RequiredModules for AzureRM.psd1.");
+            Console.WriteLine("Validated change in RequiredModules for Az.psd1.");
         }
 
         /// <summary>
@@ -368,6 +369,7 @@ namespace VersionController.Models
             IList<string> nestedModules = null;
             using (PowerShell powershell = PowerShell.Create())
             {
+                powershell.AddScript("Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;");
                 powershell.AddScript("(Test-ModuleManifest -Path " + outputModuleManifestPath + ").NestedModules");
                 var cmdletResult = powershell.Invoke();
                 nestedModules = cmdletResult.Select(c => c.ToString()).ToList();
@@ -410,7 +412,7 @@ namespace VersionController.Models
         private void DeleteGalleryModule()
         {
             var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
-            var directories = Directory.GetDirectories(outputModuleDirectory, "Azure*.*", SearchOption.TopDirectoryOnly);
+            var directories = Directory.GetDirectories(outputModuleDirectory, "Az*.*", SearchOption.TopDirectoryOnly);
             foreach (var directory in directories)
             {
                 try

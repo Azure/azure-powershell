@@ -398,7 +398,7 @@ namespace NetCoreCsProjSync
                     new NewReference
                     {
                         Include = newDllReferenceInclude,
-                        HintPath = $"..\\..\\..\\Package\\$(Configuration)\\ResourceManager\\AzureResourceManager\\AzureRM.{projectName}.Netcore\\{newDllReferenceInclude}.dll"
+                        HintPath = $"..\\..\\..\\..\\artifacts\\$(Configuration)\\AzureRM.{projectName}.Netcore\\{newDllReferenceInclude}.dll"
                     }
                 }
             };

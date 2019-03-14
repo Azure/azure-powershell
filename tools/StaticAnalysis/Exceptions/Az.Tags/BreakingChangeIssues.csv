@@ -1,2 +1,1 @@
 "AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Microsoft.Azure.Commands.Tags.dll","Microsoft.Azure.Commands.Tags.Tag.GetAzureTagCommand","Get-AzureRmTag","0","1020","The cmdlet 'Get-AzureRmTag' no longer has output type 'System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag]'.","Make cmdlet 'Get-AzureRmTag' return type 'System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag]'."

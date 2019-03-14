@@ -46,7 +46,6 @@
       <FilesToSign Include="$(FrameworkDir)$(FrameworkVersion)\Microsoft.foo.dll"/>
       <FilesToSign Include="$(FrameworkDir)$(FrameworkVersion)\Microsoft.VisualBasic.Activities.Compiler.dll"/>
       <FilesToSign Include="$(FrameworkDir)$(FrameworkVersion)\Microsoft.Common.targets"/>
-      <FilesToSign Include="$(MSBuildProgramFiles32)\Microsoft SDKs\Azure\PowerShell\ResourceManager\AzureResourceManager\AzureRM.Compute\AzureRmProfileStartup.ps1"/>
     </ItemGroup>
     <VerifyAuthenticodeSignatureTask FilesToCheckAuthCodeSignature="@(FilesToSign)"  ContinueOnError="true">
       <Output TaskParameter="AuthCodeSignTaskErrorsDetected" PropertyName="AuthTaskFailed" />

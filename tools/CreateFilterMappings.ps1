@@ -111,12 +111,12 @@ function Create-Key
 Creates a mapping from a solution file to the projects it references. For example:
 
 {
-    "C:\\azure-powershell\\src\\ResourceManager\\Aks\\Aks.sln":[
+    "C:\\azure-powershell\\src\\Aks\\Aks.sln":[
         "Commands.Aks",
         "Commands.Resources.Rest",
         "Commands.Resources"
     ],
-    "C:\\azure-powershell\\src\\ResourceManager\\AnalysisServices\\AnalysisServices.sln":[
+    "C:\\azure-powershell\\src\\AnalysisServices\\AnalysisServices.sln":[
         "Commands.AnalysisServices",
         "Commands.AnalysisServices.Dataplane"
     ],
@@ -166,13 +166,13 @@ Creates a mapping from a project to its parent solution. For example:
 
 {
     "Commands.Aks":[
-        "C:\\azure-powershell\\src\\ResourceManager\\Aks\\Aks.sln"
+        "C:\\azure-powershell\\src\\Aks\\Aks.sln"
     ],
     "Commands.AnalysisServices":[
-        "C:\\azure-powershell\\src\\ResourceManager\\AnalysisServices\\AnalysisServices.sln"
+        "C:\\azure-powershell\\src\\AnalysisServices\\AnalysisServices.sln"
     ],
     "Commands.AnalysisServices.Dataplane":[
-        "C:\\azure-powershell\\src\\ResourceManager\\AnalysisServices\\AnalysisServices.sln"
+        "C:\\azure-powershell\\src\\AnalysisServices\\AnalysisServices.sln"
     ],
     ...
 }
@@ -191,7 +191,7 @@ function Create-ProjectToSolutionMappings
 }
 
 <#
-Map a project to the solution file it should be build with (e.g., Commands.Compute --> src/ResourceManager/Compute/Compute.sln)
+Map a project to the solution file it should be build with (e.g., Commands.Compute --> src/Compute/Compute.sln)
 #>
 function Add-SolutionReference
 {
@@ -220,11 +220,7 @@ Creates the ModuleMappings.json file used during the build to filter StaticAnaly
 #>
 function Create-ModuleMappings
 {
-    $PathsToIgnore = @(
-        "src/Common",
-        "src/ResourceManager/Common",
-        "tools"
-    )
+    $PathsToIgnore = @("tools")
 
     $CustomMappings = @{
         "src/ServiceManagement" = @( "Azure" );
@@ -233,10 +229,10 @@ function Create-ModuleMappings
 
     $Mappings = Initialize-Mappings -PathsToIgnore $PathsToIgnore -CustomMappings $CustomMappings
 
-    $FilteredServiceFolders = $Script:ServiceFolders | where { $_.FullName -notlike "*src/ResourceManager/Common*" }
+    $FilteredServiceFolders = $Script:ServiceFolders
     foreach ($ServiceFolder in $FilteredServiceFolders)
     {
-        $Key = "src/ResourceManager/$($ServiceFolder.Name)"
+        $Key = "src/$($ServiceFolder.Name)"
         $ModuleManifestFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.psd1" -Recurse | where { $_.FullName -notlike "*Stack*" -and $_.Name -like "*Azure*" -and $_.FullName -notlike "*Test*" }
         if ($ModuleManifestFiles -ne $null)
         {
@@ -254,11 +250,7 @@ Creates the SolutionMappings.json file used during the build to filter the build
 #>
 function Create-SolutionMappings
 {
-    $PathsToIgnore = @(
-        "src/Common",
-        "src/ResourceManager/Common",
-        "tools"
-    )
+    $PathsToIgnore = @("tools")
 
     $CustomMappings = @{}
 
@@ -299,19 +291,8 @@ function Add-SolutionMappings
             foreach ($Solution in $Script:ProjectToSolutionMappings[$Project])
             {
                 $Solution = $Solution -replace "\\","\"
-                while ($true)
-                {
-                    $Index = $Solution.IndexOf("\")
-                    if ($Solution.Substring(0, $Index) -eq "src")
-                    {
-                        $Solution = ".\" + $Solution
-                        break
-                    }
-
-                    $Solution = $Solution.Substring($Index + 1)
-                }
-
-                $Values.Add($Solution) | Out-Null
+                $SolutionPath = "." + $Solution.Substring($Script:RootPath.length)
+                $Values.Add($SolutionPath) | Out-Null
             }
         }
 
@@ -332,11 +313,8 @@ function Create-TestMappings
         [hashtable]$SolutionMappings
     )
 
-    $PathsToIgnore = @(
-        "src/Common",
-        "src/ResourceManager/Common",
-        "tools"
-    )
+    $PathsToIgnore = @("tools")
+
     $CustomMappings = @{
         "tools/BuildPackagesTask" =                        @( ".\tools\BuildPackagesTask\Microsoft.Azure.Build.Tasks.Test\bin\Debug\Microsoft.Azure.Build.Tasks.Test.dll" );
         "tools/RepoTasks" =                                @( ".\tools\RepoTasks\RepoTasks.Cmdlets.Tests\bin\Debug\RepoTasks.Cmdlets.Tests.dll" );
@@ -395,20 +373,8 @@ function Add-TestDllMappings
             $AssemblyName = Get-AssemblyName -TestCsprojPath $TestProject.FullName
             if ($AssemblyName -ne $null)
             {
-                $TestBasePath = $TestProject.Directory.FullName
-                while ($true)
-                {
-                    $Index = $TestBasePath.IndexOf("\")
-                    if ($TestBasePath.Substring(0, $Index) -eq "src")
-                    {
-                        $TestBasePath = ".\" + $TestBasePath
-                        break
-                    }
-
-                    $TestBasePath = $TestBasePath.Substring($Index + 1)
-                }
-
-                $TestDllPath = $TestBasePath + "\bin\Debug\$AssemblyName.dll"
+                $TestBasePath = $TestProject.Directory.FullName.Substring($Script:RootPath.length)
+                $TestDllPath = "." + $TestBasePath + "\bin\Debug\$AssemblyName.dll"
                 $SolutionKeys | % { $Mappings[$_] += $TestDllPath }
             }
         }
@@ -453,8 +419,7 @@ function Add-TestMappings
 
 $Script:RootPath = (Get-Item -Path $PSScriptRoot).Parent.FullName
 $Script:SrcPath = Join-Path -Path $Script:RootPath -ChildPath "src"
-$Script:ResourceManagerPath = Join-Path $Script:SrcPath -ChildPath "ResourceManager"
-$Script:ServiceFolders = Get-ChildItem -Path $Script:ResourceManagerPath -Directory
+$Script:ServiceFolders = Get-ChildItem -Path $Script:SrcPath -Directory
 $Script:ServiceManagementPath = Join-Path -Path $Script:SrcPath -ChildPath "ServiceManagement"
 $Script:StoragePath = Join-Path -Path $Script:SrcPath -ChildPath "Storage"
 $Script:SolutionToProjectMappings = Create-SolutionToProjectMappings

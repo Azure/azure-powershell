@@ -14,14 +14,14 @@ Our team trends to make the cmdlets output more convenient and consistent across
 
 # How table view output works by default.
 
- As an example let's consider [Get-AzureRmSubscription](https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Profile/Commands.Profile/Subscription/GetAzureRMSubscription.cs) cmdlet. 
+ As an example let's consider [Get-AzSubscription](https://github.com/Azure/azure-powershell/blob/master/src/Accounts/Accounts/Subscription/GetAzureRMSubscription.cs) cmdlet. 
 
 The cmdlet class specifies the ```PSAzureSubscription``` class as an output type with the **OutputType attribute**:
 
 ```Cs
 namespace Microsoft.Azure.Commands.Profile
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSubscription", DefaultParameterSetName = ListByIdInTenantParameterSet),
+    [Cmdlet(VerbsCommon.Get, "AzSubscription", DefaultParameterSetName = ListByIdInTenantParameterSet),
         OutputType(typeof(PSAzureSubscription))]
     public class GetAzureRMSubscriptionCommand : AzureRmLongRunningCmdlet
     {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Profile
 // omitted for brevity the rest of the definition.
 ```
 
-The [PSAzureSubscription](https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Common/Commands.Common.Authentication.ResourceManager/Models/PSAzureSubscription.cs) class contains several public properties. 
+The [PSAzureSubscription](https://github.com/Azure/azure-powershell-common/blob/master/src/Authentication.ResourceManager/Models/PSAzureSubscription.cs) class contains several public properties. 
 
 * Id
 * Name
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
 PowerShell uses these properties for the cmdlet table formated output:
 
 ```PowerShell
-PS C:\> Get-AzureRmSubscription | Format-Table
+PS C:\> Get-AzSubscription | Format-Table
 
 Id                                   Name                      State   SubscriptionId                       TenantId                             CurrentStorageAcc
                                                                                                                                                  ountName
@@ -115,14 +115,14 @@ To provide a better PowerShell Azure cmdlets output experience we worked out a m
 2. Run the New-FormatPs1Xml cmdlet to generate the format.ps1xml file.
 
 ---
- We presume that for the [output type](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/azure-powershell-design-guidelines.md#output-type) you created a new class that, for example,  wraps a returning .NET SDK type, rather than PSObject.
+ We presume that for the [output type](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/azure-powershell-design-guidelines.md#output-type) you created a new class that, for example,  wraps a returning .NET SDK type, rather than PSObject.
 
 ---
 
 
 #  Ps1XmlAttribute attribute.
 
-The key element of the mechanism is the **Ps1XmlAttribute** attribute located in the [Commands.Common](https://github.com/Azure/azure-powershell/blob/preview/src/Common/Commands.Common/Attributes/Ps1XmlAttribute.cs) project. Below is the attribute definition:
+The key element of the mechanism is the **Ps1XmlAttribute** attribute located in the [Commands.Common](https://github.com/Azure/azure-powershell-common/blob/master/src/Common/Attributes/Ps1XmlAttribute.cs) project. Below is the attribute definition:
 
 ```Cs
 namespace Microsoft.WindowsAzure.Commands.Common.Attributes
@@ -180,10 +180,10 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
 // code omitted for brevity
 
-        [Ps1Xml(Label = "Subscription Id", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "SubscriptionId", Target = ViewControl.Table)]
         public string Id { get; set; }
 
-        [Ps1Xml(Label = "Subscription Name", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table)]
         public string Name { get; set; }
 
         [Ps1Xml(Label = "State", Target = ViewControl.Table)]
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
         public string SubscriptionId { get { return Id; } }
 
-        [Ps1Xml(Label = "Tenant Id", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "TenantId", Target = ViewControl.Table)]
         public string TenantId
         {
             get
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
   ```
 * If **Label** is not specified - the property name will be used. 
 
-* Since the **Ps1Xml attribute** definition is located in the [Commands.Common](https://github.com/Azure/azure-powershell/tree/preview/src/Common/Commands.Common) project and the Command.Common project is likely referenced from your project - to make the attribute visible - you only need to add ```using Microsoft.WindowsAzure.Commands.Common.Attributes;``` statement.
+* Since the **Ps1Xml attribute** definition is located in the [Commands.Common](https://github.com/Azure/azure-powershell-common/tree/master/src/Common) project and the Command.Common project is likely referenced from your project - to make the attribute visible - you only need to add ```using Microsoft.WindowsAzure.Commands.Common.Attributes;``` statement.
 
 ## Properties of complex types.
 
@@ -260,8 +260,8 @@ To specify what goes into the table view - use the **ScriptBlock** attribute pro
     {
         // code omitted for brevity
 
-        [Ps1Xml(Label = "Account Id", Target = ViewControl.Table, ScriptBlock = "$_.Account.Id")]
-        [Ps1Xml(Label = "Account Type", Target = ViewControl.Table, ScriptBlock = "$_.Account.Type")]
+        [Ps1Xml(Label = "Account.Id", Target = ViewControl.Table, ScriptBlock = "$_.Account.Id")]
+        [Ps1Xml(Label = "Account.Type", Target = ViewControl.Table, ScriptBlock = "$_.Account.Type")]
         public IAzureAccount Account { get; set; }
 
         // code omitted for brevity
@@ -272,8 +272,8 @@ Note: **$_** symbol in PowerShell means the same as **this** key word means in C
 
 These two attribute will result in 2 column in the table view:
 ```Ps
-    Account Id  Account Type
-    ==========  ============
+    Account.Id   Account.Type
+    ==========   ============
 ```
 ## GroupBy a property.
 
@@ -284,7 +284,7 @@ public class PSAzureSubscription : IAzureSubscription
 
 // code omitted for brevity
 
-    [Ps1Xml(Label = "Subscription Id", Target = ViewControl.Table, GroupByThis = true)]
+    [Ps1Xml(Label = "SubscriptionId", Target = ViewControl.Table, GroupByThis = true)]
     public string Id { get; set; }
 
 // code omitted for brevity 
@@ -298,7 +298,7 @@ public class PSAzureSubscription : IAzureSubscription
 
 // code omitted for brevity
 
-    [Ps1Xml(Label = "Subscription Name", Target = ViewControl.Table, Position = 0)]
+    [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
     public string Name { get; set; }
 
 // code omitted for brevity 
@@ -309,64 +309,81 @@ This will place the column at the very beginning of the table.
 
 # How to generate format.ps1xml file.
 
-1. First of all you need to [build](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/azure-powershell-developer-guide.md#building-the-environment) PowerShell Azure:
+## Let's consider how to generate a format.ps1xml file for the Az.Storage and Az.Account modules.
+1. Start PowerShell 6
+2. Build and import the FormatPs1XmlGenerator module.
+    * Go to the generator directory
+    ```Powershell
+    PS C:\Users\you> cd E:\git\azure-powershell\tools\FormatPs1XmlGenerator\
+    ```
+    * Build the generator solution
+    ```Powershell
+    PS E:\git\azure-powershell\tools\FormatPs1XmlGenerator> dotnet build
+    ```
+    * Import the generator module
+    ```Powershell
+    PS E:\git\azure-powershell\tools\FormatPs1XmlGenerator> Import-Module .\FormatPs1XmlGenerator\bin\Debug\FormatPs1XmlGenerator.psd1
+    ```
 
-```Powershell
-PS E:\git\azure-powershell> msbuild build.proj /p:SkipHelp=true
-```
+3. Build the Az.Storage module.
+    * Go to the Storage directory
+    ```Powershell
+    PS C:\Users\you>cd E:\git\azure-powershell\src\Storage
+    ```
+    * Build the module
+    ```Powershell
+    PS E:\git\azure-powershell\src\Storage>dotnet build
+    ```
+    * Go to the repository root folder
+    ```Powershell
+    PS E:\git\azure-powershell\src\Storage>cd E:\git\azure-powershell\
+    ```
+    * Check the artifacts folder - all built modules should be there. Since Az.Storage depends on the Az.Accounts module both Az.Accounts and Az.Storage modules should be there:
+    ```Powershell
+    PS E:\git\azure-powershell> ls .\artifacts\Debug\
 
-* After the build is completed you can find build artifacts in the ```.\src\Package\Debug``` folder:
 
-```Powershell
-PS E:\git\azure-powershell> ls .\src\Package\Debug\
+    Directory: E:\git\azure-powershell\artifacts\Debug
 
 
-    Directory: E:\git\azure-powershell\src\Package\Debug
+    Mode                LastWriteTime         Length Name
+    ----                -------------         ------ ----
+    d-----        1/29/2019   2:18 PM                Az.Accounts
+    d-----        1/29/2019   2:18 PM                Az.Storage
+    ```
+4. Run the **New-FormatPs1Xml** cmdlet. 
+    * The cmdlet has one required parameter **-ModulePath** - a path to a module manifest (psd1) file.
+    * Also with the cmdlet we need to use **-OnlyMarkedProperties** switch.
+    * You may also want to specify an output path for the generated file with the **-OutputPath** argument. If not specified this is current folder.
+    * After a successful run the cmdlet outputs the full path to the generated format.ps1xml file.
 
-
-Mode                LastWriteTime         Length Name
-----                -------------         ------ ----
-d-----        4/25/2018   4:37 PM                ResourceManager
-d-----        4/25/2018   4:35 PM                ServiceManagement
-d-----        4/25/2018   4:35 PM                Storage
--a----        4/25/2018   4:31 PM          11384 AzureRM.psd1
--a----        4/25/2018   4:50 PM           8708 AzureRM.psm1
-
-```
-
-2. Import the **RepoTask cmdlets**:
-
-```PowerShell
-PS E:\git\azure-powershell> Import-Module E:\git\azure-powershell\tools\RepoTasks\RepoTasks.Cmdlets\bin\Debug\RepoTasks.Cmdlets.dll
-```
-3. Run the **New-FormatPs1Xml** cmdlet. 
-* The cmdlet has one required argument **-ModulePath** - a path to a module manifest (psd1) file. Since in our example we are using the Get-AzureRmSubscription cmdlet from the AzureRM.Profile module we need to specify path to the AzureRm.Profile module manifest which is 
-```
-E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1 
-``` 
-* Also with the cmdlet we need to use **-OnlyMarkedProperties** switch.
-* You may also want to specify an output path for the generated file with the **-OutputPath** argument. If not specified this is current folder.
-
-```
-PS E:\git\azure-powershell> New-FormatPs1Xml -ModulePath .\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1 -OnlyMarkedProperties
-
-E:\git\azure-powershell\Microsoft.Azure.Commands.Profile.generated.format.ps1xml
-```
-* After a successful run the cmdlet outputs the full path to the generated format.ps1xml file.
+    * Below is an example of how to generate a format.ps1xml file for the ```Az.Storage``` module:
+    ```Powershell
+    PS E:\git\azure-powershell> New-FormatPs1Xml -OnlyMarkedProperties -ModulePath .\artifacts\Debug\Az.Storage\Az.Storage.psd1
+    E:\git\azure-powershell\Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.generated.format.ps1xml
+    E:\git\azure-powershell\Microsoft.Azure.PowerShell.Cmdlets.Storage.generated.format.ps1xml
+    ```
+    * Below is an example of how to generate a format.ps1xml file for the ```Az.Account``` module:
+    ```powershell
+    PS E:\git\azure-powershell> New-FormatPs1Xml -OnlyMarkedProperties -ModulePath .\artifacts\Debug\Az.Accounts\Az.Accounts.psd1
+    E:\git\azure-powershell\Microsoft.Azure.PowerShell.Cmdlets.Accounts.generated.format.ps1xml
+    PS E:\git\azure-powershell>
+    ```
 
 # How to test the format.ps1xml file.
 
-**Note:** All the paths used in the example in the section are under **_azure-powershell/src/Package/Debug_**
+## Let's take a look at how to check the newly created format.ps1xml file for the ```Az.Account``` module.
+**Note:** All the paths used in the example in the section are under **_azure-powershell/artifacts/Debug_**
 
 1. **Copy** the generated format.ps1xml file to the built module folder (this is where your module manifest file psd1 is located). In our example the module folder is 
 ```
-E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile
+E:\git\azure-powershell\artifacts\Debug\Az.Accounts
 ```
 
 2. Modify your module manifest file. 
-* In our example the module manifest is AzureRM.Profile.psd1: 
+* In our example the module manifest is Az.Accounts.psd1: 
 ```
-E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1 
+E:\git\azure-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1 
 ``` 
 
 * In the module manifest file there is a variable called **FormatsToProcess** to reference format.ps1xml files.
@@ -387,16 +404,16 @@ FunctionsToExport = @()
 
 # script omitted for brevity
 ```
-3. Open a **PowerShell window** and **import** your module. In our example it is AzureRm.Profile:
+3. Open a **PowerShell window** and **import** your module. In our example it is Az.Accounts:
 ```Powershell
-PS C:\> Import-Module E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1
+PS C:\> Import-Module E:\git\azure-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1
 ```
 
 4. Try your cmdlet out. In our example it is Get-AuzreRmSubsription:
 ```Powershell
-PS C:\> Get-AzureRmSubscription
+PS C:\> Get-AzSubscription
 
-Subscription Id                      Subscription Name         State   Tenant Id
+SubscriptionId                       Name                      State   TenantId
 ---------------                      -----------------         -----   ---------
 c9cbd920-c00c-427c-852b-c329e824c3a8 Azure SDK Powershell Test Enabled 72f988bf-86f1-41af-91ab-7a64d1d63df5
 6b085460-5f21-477e-ba44-4cd9fbd030ef Azure SDK Infrastructure  Enabled 72f988bf-86f1-41af-91ab-7a64d1d63df5
@@ -406,47 +423,22 @@ c9cbd920-c00c-427c-852b-c329e824c3a8 Azure SDK Powershell Test Enabled 72f988bf-
 
 # How to add the format.ps1xml file to your project.
 
-**Note:** All the paths used in the example in the section are under **_azure-powershell/src/ResourceManager/Profile_**
+**Note:** All the paths used in the example in the section are under **_azure-powershell/src/Accounts_**
 
+1. Copy the generated file into your project source folder. In our example this is [src/Accounts/Accounts](https://github.com/Azure/azure-powershell/tree/master/src/Accounts/Accounts) folder.
 
-1. Copy the generated file into your project source folder. In our example this is [src/ResourceManager/Profile/Commands.Profile](https://github.com/Azure/azure-powershell/tree/preview/src/ResourceManager/Profile/Commands.Profile) folder.
+2. Reference the generated format.ps1xml file form your project. In our example this is [Accounts.csproj](https://github.com/Azure/azure-powershell/blob/master/src/Accounts/Accounts/Accounts.csproj) file.
+- **Note**: This is now automatically referenced based on `Az.props` being imported in your csproj file.
 
-2. Reference the generated format.ps1xml file form your project. In our example this is [Commands.Profile.csproj](https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Profile/Commands.Profile/Commands.Profile.csproj) file:
-
-```Xml
-  <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.Profile.generated.format.ps1xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Microsoft.Azure.Commands.Profile.format.ps1xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="..\AzureRM.Profile.psd1">
-      <Link>AzureRM.Profile.psd1</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <Content Include="Microsoft.Azure.Commands.Profile.types.ps1xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
-    <None Include="StartupScripts\*.ps1">
-      <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
-    </None>
-  </ItemGroup>
-```
-3. Add the generated format.ps1xml file to your source module manifest **FormatsToProcess** variable. In our example this is [src/ResourceManager/Profile/AzureRM.Profile.psd1](https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Profile/AzureRM.Profile.psd1) file:
+3. Add the generated format.ps1xml file to your source module manifest **FormatsToProcess** variable. In our example this is [src/Accounts/Az.Accounts.psd1](https://github.com/Azure/azure-powershell/blob/master/src/Accounts/Az.Accounts.psd1) file:
 ```Powershell
 # script omitted for brevity
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.Profile.generated.format.ps1xml', '.\Microsoft.Azure.Commands.Profile.format.ps1xml'
+FormatsToProcess = '.\Accounts.generated.format.ps1xml', '.\Accounts.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.Profile.dll')
+NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Profile.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
