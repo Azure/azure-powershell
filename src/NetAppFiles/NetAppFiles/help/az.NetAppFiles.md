@@ -1,14 +1,14 @@
 ---
 Module Name: az.NetAppFiles
 Module Guid: e20e99dc-6df9-479b-8504-2960f0088f00
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.anf
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles
 Help Version: 0.9.0.0
 Locale: en-US
 ---
 
 # az.NetAppFiles Module
 ## Description
-The topics in this section document the Azure PowerShell cmdlets for Azure NetApp Files in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.Anf namespace.
+The topics in this section document the Azure PowerShell cmdlets for Azure NetApp Files in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.NetAppFiles namespace.
 
 ## az.NetAppFiles Cmdlets
 ### [Get-AzNetAppFilesAccount](Get-AzNetAppFilesAccount.md)
