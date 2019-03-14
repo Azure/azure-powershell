@@ -13,7 +13,7 @@ Sets the information types and sensitivity labels of columns in the Azure SQL ma
 
 ## SYNTAX
 
-### ColumnParameterSet
+### ColumnParameterSet (Default)
 ```
 Set-AzSqlInstanceDatabaseSensitivityClassification [-ResourceGroupName] <String> [-InstanceName] <String>
  [-DatabaseName] <String> -SchemaName <String> -TableName <String> -ColumnName <String>
