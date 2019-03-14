@@ -22,6 +22,8 @@ using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -104,6 +106,20 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            HelpMessage = "The Azure resource manager id of the network interface.",
+            ParameterSetName = "GetByResourceIdExpandParameterSet",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The Azure resource manager id of the network interface.",
+            ParameterSetName = "GetByResourceIdNoExpandParameterSet",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource reference to be expanded.",
             ParameterSetName = "ExpandStandAloneNic")]
@@ -112,6 +128,11 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource reference to be expanded.",
             ParameterSetName = "ExpandScaleSetNic")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource reference to be expanded.",
+            ParameterSetName = "GetByResourceIdExpandParameterSet")]
         [ValidateNotNullOrEmpty]
         public string ExpandResource { get; set; }
 
@@ -119,7 +140,14 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (!string.IsNullOrEmpty(this.Name))
+            if (this.IsParameterBound(p => p.ResourceId))
+            {
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
+            }
+
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 PSNetworkInterface networkInterface;
 
@@ -137,7 +165,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<MNM.NetworkInterface> nicPage;
-                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                if (ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     if (ParameterSetName.Contains("ScaleSetNic"))
                     {
@@ -180,7 +208,7 @@ namespace Microsoft.Azure.Commands.Network
                     psNetworkInterfaces.Add(psNic);
                 }
 
-                WriteObject(psNetworkInterfaces, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psNetworkInterfaces), true);
             }
         }
     }

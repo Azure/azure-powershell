@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
 online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/get-azsubscription
@@ -47,7 +47,7 @@ the current account.
 
 ### Example 2: Get all subscriptions for a specific tenant
 ```
-PS C:\>Get-AzSubscription -TenantId "xxxx-xxxx-xxxx-xxxx"
+PS C:\>Get-AzSubscription -TenantId "aaaa-aaaa-aaaa-aaaa"
 
 Name                               Id                      TenantId                        State
 ----                               --                      --------                        -----

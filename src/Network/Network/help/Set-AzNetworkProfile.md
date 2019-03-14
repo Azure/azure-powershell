@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznetworkprofile
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzNetworkProfile
 
 ## SYNOPSIS
-Sets the goal state for an existing network profile
+Updates a network profile.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Set-AzNetworkProfile -NetworkProfile <PSNetworkProfile> [-AsJob] [-DefaultProfil
 ```
 
 ## DESCRIPTION
-The **Set-AzPublicIpPrefix** cmdlet sets the goal state for a network profile.
+The **Set-AzPublicIpPrefix** cmdlet updates a network profile.
 
 ## EXAMPLES
 
@@ -127,3 +127,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkProfile](./Get-AzNetworkProfile.md)
+
+[New-AzNetworkProfile](./New-AzNetworkProfile.md)
+
+[Remove-AzNetworkProfile](./Remove-AzNetworkProfile.md)

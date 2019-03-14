@@ -18,7 +18,34 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update wildcard support for Get-AzResource and Get-AzResourceGroup
+
+## Version 1.2.0
+* Add `-TemplateObject` parameter to deployment cmdlets
+    - More information here: https://github.com/Azure/azure-powershell/issues/2933
+* Fix issue when piping the result of `Get-AzResource` to `Set-AzResource`
+    - More information here: https://github.com/Azure/azure-powershell/issues/8240
+* Fix issue with JSON data type change when running `Set-AzResource`
+    - More information here: https://github.com/Azure/azure-powershell/issues/7930
+
+## Version 1.1.3
+* Fix for issue https://github.com/Azure/azure-powershell/issues/8166
+* Fix for issue https://github.com/Azure/azure-powershell/issues/8235
+* Fix for issue https://github.com/Azure/azure-powershell/issues/6219
+* Fix bug preventing repeat creation of KeyCredentials
+
+## Version 1.1.2
+* Fix tagging for resource groups
+    - More information here: https://github.com/Azure/azure-powershell/issues/8166
+* Fix issue where `Get-AzureRmRoleAssignment` doesn't respect -ErrorAction
+    - More information here: https://github.com/Azure/azure-powershell/issues/8235
+
+## Version 1.1.1
 * Fix incorrect examples in `New-AzADAppCredential` and `New-AzADSpCredential` reference documentation
+* Fix issue where path for `-TemplateFile` parameter was not being resolved before executing resource group deployment cmdlets
+* Az.Resources: Correct documentation for New-AzureRmPolicyDefinition -Mode default value
+* Az.Resources: Fix for issue https://github.com/Azure/azure-powershell/issues/7522
+* Az.Resources: Fix for issue https://github.com/Azure/azure-powershell/issues/5747
 * Fix formatting issue with `PSResourceGroupDeployment` object
     - More information here: https://github.com/Azure/azure-powershell/issues/2123
 

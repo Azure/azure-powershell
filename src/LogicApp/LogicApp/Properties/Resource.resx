@@ -117,11 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Assembly" xml:space="preserve">
+    <value>Assembly</value>
+  </data>
+  <data name="BatchConfiguration" xml:space="preserve">
+    <value>Batch Configuration</value>
+  </data>
+  <data name="BatchConfigurationParameterNeedsToBeSpecified" xml:space="preserve">
+    <value>At least one release criteria must be provided.</value>
+  </data>
   <data name="CancelLogicAppRunMessage" xml:space="preserve">
     <value>Cancelling the LogicApp run.</value>
   </data>
   <data name="CancelLogicAppRunWarning" xml:space="preserve">
     <value>Are you sure you want to cancel the LogicApp run.</value>
+  </data>
+  <data name="CreateIntegrationAccountArtifactMessage" xml:space="preserve">
+    <value>Creating {0} '{1}' in resource group '{2}'.</value>
   </data>
   <data name="DefinitionMissingWarning" xml:space="preserve">
     <value>Definition content needs to be specified.</value>
@@ -153,6 +165,9 @@
   <data name="ReceivedControlNumberInvalidFormat" xml:space="preserve">
     <value>The existing received control number '{0}' for agreement '{1}' is not in a valid format.</value>
   </data>
+  <data name="RemoveIntegrationAccountArtifactMessage" xml:space="preserve">
+    <value>Removing {0} '{1}' in resource group '{2}'.</value>
+  </data>
   <data name="RemoveResourceMessage" xml:space="preserve">
     <value>Removing '{0}' '{1}'.</value>
   </data>
@@ -167,6 +182,9 @@
   </data>
   <data name="UpdateGeneratedControlNumberMessage" xml:space="preserve">
     <value>Updating the generated control number for '{0}' '{1}'.</value>
+  </data>
+  <data name="UpdateIntegrationAccountArtifactMessage" xml:space="preserve">
+    <value>Updating {0} '{1}' in resource group '{2}'.</value>
   </data>
   <data name="UpdateReceivedControlNumberMessage" xml:space="preserve">
     <value>Updating the recevied control number '{0}' for '{1}' '{2}'.</value>

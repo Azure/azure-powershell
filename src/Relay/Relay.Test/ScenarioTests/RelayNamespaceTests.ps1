@@ -27,23 +27,23 @@ function RelayNamespaceTests
  
     Write-Debug "Create resource group"
     Write-Debug "ResourceGroup name : $resourceGroupName"
-	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force 
+	New-AzResourceGroup -Name $resourceGroupName -Location $location -Force 
 
     Write-Debug "Create resource group"
     Write-Debug "ResourceGroup name : $secondResourceGroup"
-	New-AzureRmResourceGroup -Name $secondResourceGroup -Location $location -Force 
+	New-AzResourceGroup -Name $secondResourceGroup -Location $location -Force 
      
      
     Write-Debug " Create new Relay namespace"
     Write-Debug "NamespaceName : $namespaceName" 
-    $result = New-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName -Location $location
+    $result = New-AzRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName -Location $location
     Wait-Seconds 15
 	
 	# Assert 
 	Assert-True {$result.ProvisioningState -eq "Succeeded"}
 	
     Write-Debug "Namespace name : $namespaceName2" 
-    $result1 = New-AzureRmRelayNamespace -ResourceGroupName $secondResourceGroup -Name $namespaceName2 -Location $location
+    $result1 = New-AzRelayNamespace -ResourceGroupName $secondResourceGroup -Name $namespaceName2 -Location $location
     Wait-Seconds 15
 
 	# Assert 
@@ -52,17 +52,17 @@ function RelayNamespaceTests
    Try
    {
 		Write-Debug "Get the created namespace within the resource group"
-		$createdNamespace = Get-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
+		$createdNamespace = Get-AzRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
    
-		Assert-True {$createdNamespace.Name -eq $namespaceName} "Get-AzureRmRelayNamespace Namespace created earlier is not found. "      
+		Assert-True {$createdNamespace.Name -eq $namespaceName} "Get-AzRelayNamespace Namespace created earlier is not found. "      
 
 		Write-Debug "Get all the namespaces created in the resourceGroup"
-		$allCreatedNamespace = Get-AzureRmRelayNamespace -ResourceGroupName $secondResourceGroup 
+		$allCreatedNamespace = Get-AzRelayNamespace -ResourceGroupName $secondResourceGroup 
 
-		Assert-True {$allCreatedNamespace[0].Name -eq $namespaceName2} "Get-AzureRmRelayNamespace - ResourceGroup Namespace created earlier is not found"
+		Assert-True {$allCreatedNamespace[0].Name -eq $namespaceName2} "Get-AzRelayNamespace - ResourceGroup Namespace created earlier is not found"
     
 		Write-Debug "Get all the namespaces created in the subscription"
-		$allCreatedNamespace = Get-AzureRmRelayNamespace 
+		$allCreatedNamespace = Get-AzRelayNamespace 
 
 		$found = 0
 		for ($i = 0; $i -lt $allCreatedNamespace.Items.Count; $i++)
@@ -80,16 +80,16 @@ function RelayNamespaceTests
 			}
 		}
 
-		Assert-True {$found -eq 0} "Get-AzureRmRelayNamespace - Subscription Namespaces created earlier is not found."    
+		Assert-True {$found -eq 0} "Get-AzRelayNamespace - Subscription Namespaces created earlier is not found."    
    }
    Finally
    {
 		Write-Debug " Delete namespaces"
-		Remove-AzureRmRelayNamespace -ResourceGroupName $secondResourceGroup -Name $namespaceName2
-		Remove-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
+		Remove-AzRelayNamespace -ResourceGroupName $secondResourceGroup -Name $namespaceName2
+		Remove-AzRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 
 		Write-Debug " Delete resourcegroup"
-		Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+		Remove-AzResourceGroup -Name $resourceGroupName -Force
    }
 
     

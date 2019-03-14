@@ -1,0 +1,1763 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourcegroups/ps4620?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlZ3JvdXBzL3BzNDYyMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "49c14736-6133-4ed2-83cb-284c06c628ec"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.17"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-request-id": [
+          "1b56bc82-8bcc-4872-91cb-d8dbb4925bc3"
+        ],
+        "x-ms-correlation-request-id": [
+          "1b56bc82-8bcc-4872-91cb-d8dbb4925bc3"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214857Z:1b56bc82-8bcc-4872-91cb-d8dbb4925bc3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:48:57 GMT"
+        ],
+        "Content-Length": [
+          "165"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620\",\r\n  \"name\": \"ps4620\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc1pvbmVzL3BzMTA0MC5wc3Rlc3QudGVzdD9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"global\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ac41a620-82d5-47c5-89c3-6e94fe39d681"
+        ],
+        "If-None-Match": [
+          "*"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "28"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationResults/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01"
+        ],
+        "Retry-After": [
+          "3"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net:443/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01"
+        ],
+        "x-ms-request-id": [
+          "ac41a620-82d5-47c5-89c3-6e94fe39d681"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "9ce51679-c775-4509-b853-5fcb7fd24644"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214858Z:9ce51679-c775-4509-b853-5fcb7fd24644"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:48:57 GMT"
+        ],
+        "Content-Length": [
+          "2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc09wZXJhdGlvblN0YXR1c2VzL1JuSnZiblJGYm1SQmMzbHVZMDl3WlhKaGRHbHZianRWY0hObGNuUlFjbWwyWVhSbFJHNXpXbTl1WlRzelpEQTVNelkyWVMweU1tWmlMVFEwT1dFdE9UTXhPUzB3WlRBd05URXlNV05oTnpFPT9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationResults/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01"
+        ],
+        "Retry-After": [
+          "3"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net:443/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01"
+        ],
+        "x-ms-request-id": [
+          "a9e84389-2f65-431e-9a2e-96b7a60c81c9"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11971"
+        ],
+        "x-ms-correlation-request-id": [
+          "8d80f2eb-d189-4998-a6c8-af19a03c9cbf"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214902Z:8d80f2eb-d189-4998-a6c8-af19a03c9cbf"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:01 GMT"
+        ],
+        "Content-Length": [
+          "23"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc09wZXJhdGlvblN0YXR1c2VzL1JuSnZiblJGYm1SQmMzbHVZMDl3WlhKaGRHbHZianRWY0hObGNuUlFjbWwyWVhSbFJHNXpXbTl1WlRzelpEQTVNelkyWVMweU1tWmlMVFEwT1dFdE9UTXhPUzB3WlRBd05URXlNV05oTnpFPT9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationResults/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01"
+        ],
+        "Retry-After": [
+          "3"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net:443/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01"
+        ],
+        "x-ms-request-id": [
+          "901b6818-e21e-4bec-a6a0-c9e8971ff02a"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11970"
+        ],
+        "x-ms-correlation-request-id": [
+          "62a74996-ad5e-4809-b7b7-ffcbf90647cb"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214905Z:62a74996-ad5e-4809-b7b7-ffcbf90647cb"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:04 GMT"
+        ],
+        "Content-Length": [
+          "23"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc09wZXJhdGlvblN0YXR1c2VzL1JuSnZiblJGYm1SQmMzbHVZMDl3WlhKaGRHbHZianRWY0hObGNuUlFjbWwyWVhSbFJHNXpXbTl1WlRzelpEQTVNelkyWVMweU1tWmlMVFEwT1dFdE9UTXhPUzB3WlRBd05URXlNV05oTnpFPT9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationResults/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01"
+        ],
+        "Retry-After": [
+          "3"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net:443/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01"
+        ],
+        "x-ms-request-id": [
+          "37cecf7d-0365-4a07-b8b8-ceaf961e12a0"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11969"
+        ],
+        "x-ms-correlation-request-id": [
+          "f888190b-84d6-4d99-9220-cba14fc1ecfa"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214908Z:f888190b-84d6-4d99-9220-cba14fc1ecfa"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:08 GMT"
+        ],
+        "Content-Length": [
+          "23"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc09wZXJhdGlvblN0YXR1c2VzL1JuSnZiblJGYm1SQmMzbHVZMDl3WlhKaGRHbHZianRWY0hObGNuUlFjbWwyWVhSbFJHNXpXbTl1WlRzelpEQTVNelkyWVMweU1tWmlMVFEwT1dFdE9UTXhPUzB3WlRBd05URXlNV05oTnpFPT9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationResults/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01"
+        ],
+        "Retry-After": [
+          "3"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net:443/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01"
+        ],
+        "x-ms-request-id": [
+          "69a66d3b-84a0-484d-a22f-d789acfbd0f8"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11968"
+        ],
+        "x-ms-correlation-request-id": [
+          "4a4e82b1-044f-4c70-847a-711a58c1cd3c"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214911Z:4a4e82b1-044f-4c70-847a-711a58c1cd3c"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:11 GMT"
+        ],
+        "Content-Length": [
+          "23"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc09wZXJhdGlvblN0YXR1c2VzL1JuSnZiblJGYm1SQmMzbHVZMDl3WlhKaGRHbHZianRWY0hObGNuUlFjbWwyWVhSbFJHNXpXbTl1WlRzelpEQTVNelkyWVMweU1tWmlMVFEwT1dFdE9UTXhPUzB3WlRBd05URXlNV05oTnpFPT9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationResults/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01"
+        ],
+        "Retry-After": [
+          "3"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net:443/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01"
+        ],
+        "x-ms-request-id": [
+          "d2d1ae6d-9125-4e40-a2dc-038ac00bc710"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11967"
+        ],
+        "x-ms-correlation-request-id": [
+          "d84598c5-9fd0-43a6-af35-ace0a07b3050"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214915Z:d84598c5-9fd0-43a6-af35-ace0a07b3050"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:14 GMT"
+        ],
+        "Content-Length": [
+          "23"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtVcHNlcnRQcml2YXRlRG5zWm9uZTszZDA5MzY2YS0yMmZiLTQ0OWEtOTMxOS0wZTAwNTEyMWNhNzE=?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc09wZXJhdGlvblN0YXR1c2VzL1JuSnZiblJGYm1SQmMzbHVZMDl3WlhKaGRHbHZianRWY0hObGNuUlFjbWwyWVhSbFJHNXpXbTl1WlRzelpEQTVNelkyWVMweU1tWmlMVFEwT1dFdE9UTXhPUzB3WlRBd05URXlNV05oTnpFPT9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "4890aae0-00dd-4b25-9a7d-d0ddc8a2e150"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11966"
+        ],
+        "x-ms-correlation-request-id": [
+          "6083a17e-50cf-4bb4-888a-45c9b5a9f9c8"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214918Z:6083a17e-50cf-4bb4-888a-45c9b5a9f9c8"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:18 GMT"
+        ],
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc1pvbmVzL3BzMTA0MC5wc3Rlc3QudGVzdD9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "ETag": [
+          "f8c88ca7-b8c9-400c-a5ed-c93f57065cf3"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "2a0aca28-44f8-4f10-99b9-a250a2d550d4"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11991"
+        ],
+        "x-ms-correlation-request-id": [
+          "daa005c3-3fcd-4d1f-9099-aa32c4a8e4ce"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214918Z:daa005c3-3fcd-4d1f-9099-aa32c4a8e4ce"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:18 GMT"
+        ],
+        "Content-Length": [
+          "557"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test\",\r\n  \"name\": \"ps1040.pstest.test\",\r\n  \"type\": \"Microsoft.Network/privateDnsZones\",\r\n  \"etag\": \"f8c88ca7-b8c9-400c-a5ed-c93f57065cf3\",\r\n  \"location\": \"global\",\r\n  \"properties\": {\r\n    \"maxNumberOfRecordSets\": 5000,\r\n    \"maxNumberOfVirtualNetworkLinks\": 10,\r\n    \"maxNumberOfVirtualNetworkLinksWithRegistration\": 1,\r\n    \"numberOfRecordSets\": 1,\r\n    \"numberOfVirtualNetworkLinks\": 0,\r\n    \"numberOfVirtualNetworkLinksWithRegistration\": 0,\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc1pvbmVzL3BzMTA0MC5wc3Rlc3QudGVzdD9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4708c3e4-2795-4666-bc0a-e5779ce021ea"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "ETag": [
+          "f8c88ca7-b8c9-400c-a5ed-c93f57065cf3"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "4708c3e4-2795-4666-bc0a-e5779ce021ea"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11990"
+        ],
+        "x-ms-correlation-request-id": [
+          "2c249a58-e8b8-4975-8f02-e85ec6da4d45"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214921Z:2c249a58-e8b8-4975-8f02-e85ec6da4d45"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:21 GMT"
+        ],
+        "Content-Length": [
+          "557"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test\",\r\n  \"name\": \"ps1040.pstest.test\",\r\n  \"type\": \"Microsoft.Network/privateDnsZones\",\r\n  \"etag\": \"f8c88ca7-b8c9-400c-a5ed-c93f57065cf3\",\r\n  \"location\": \"global\",\r\n  \"properties\": {\r\n    \"maxNumberOfRecordSets\": 5000,\r\n    \"maxNumberOfVirtualNetworkLinks\": 10,\r\n    \"maxNumberOfVirtualNetworkLinksWithRegistration\": 1,\r\n    \"numberOfRecordSets\": 1,\r\n    \"numberOfVirtualNetworkLinks\": 0,\r\n    \"numberOfVirtualNetworkLinksWithRegistration\": 0,\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX/ps1406?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc1pvbmVzL3BzMTA0MC5wc3Rlc3QudGVzdC9NWC9wczE0MDY/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"ttl\": 100,\r\n    \"mxRecords\": []\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3b742fe4-76c7-4465-89d1-7b6c3b4c7757"
+        ],
+        "If-None-Match": [
+          "*"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "66"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "ETag": [
+          "d3aa3038-9bf4-46f8-be57-d744da853999"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "3b742fe4-76c7-4465-89d1-7b6c3b4c7757"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "2abcb285-8ca7-4c25-aa7a-48da6b971f45"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214919Z:2abcb285-8ca7-4c25-aa7a-48da6b971f45"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:19 GMT"
+        ],
+        "Content-Length": [
+          "351"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX/ps1406\",\r\n  \"name\": \"ps1406\",\r\n  \"type\": \"Microsoft.Network/privateDnsZones/MX\",\r\n  \"etag\": \"d3aa3038-9bf4-46f8-be57-d744da853999\",\r\n  \"properties\": {\r\n    \"fqdn\": \"ps1406.ps1040.pstest.test.\",\r\n    \"ttl\": 100,\r\n    \"mxRecords\": []\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX/ps1406?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc1pvbmVzL3BzMTA0MC5wc3Rlc3QudGVzdC9NWC9wczE0MDY/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"ttl\": 100,\r\n    \"mxRecords\": [\r\n      {\r\n        \"preference\": 1,\r\n        \"exchange\": \"mail1.theg.com\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1643b193-2346-46d5-873c-748825676314"
+        ],
+        "If-Match": [
+          "d3aa3038-9bf4-46f8-be57-d744da853999"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "154"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "ETag": [
+          "7bef5d69-b459-4f7b-b583-5f0d14c95159"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "1643b193-2346-46d5-873c-748825676314"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "89782243-718d-450c-9e94-735bd1774978"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214920Z:89782243-718d-450c-9e94-735bd1774978"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:19 GMT"
+        ],
+        "Content-Length": [
+          "395"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX/ps1406\",\r\n  \"name\": \"ps1406\",\r\n  \"type\": \"Microsoft.Network/privateDnsZones/MX\",\r\n  \"etag\": \"7bef5d69-b459-4f7b-b583-5f0d14c95159\",\r\n  \"properties\": {\r\n    \"fqdn\": \"ps1406.ps1040.pstest.test.\",\r\n    \"ttl\": 100,\r\n    \"mxRecords\": [\r\n      {\r\n        \"exchange\": \"mail1.theg.com\",\r\n        \"preference\": 1\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX/ps1406?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc1pvbmVzL3BzMTA0MC5wc3Rlc3QudGVzdC9NWC9wczE0MDY/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"ttl\": 100,\r\n    \"mxRecords\": [\r\n      {\r\n        \"preference\": 1,\r\n        \"exchange\": \"mail1.theg.com\"\r\n      },\r\n      {\r\n        \"preference\": 10,\r\n        \"exchange\": \"mail2.theg.com\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9ee16e4c-6b50-444e-9c67-4a83fab641f7"
+        ],
+        "If-Match": [
+          "7bef5d69-b459-4f7b-b583-5f0d14c95159"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "238"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "ETag": [
+          "211e3cb2-5f39-417f-b011-782fb99eb55a"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "9ee16e4c-6b50-444e-9c67-4a83fab641f7"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "b0f6c1ab-79a3-452a-aa7f-8105806b95ba"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214920Z:b0f6c1ab-79a3-452a-aa7f-8105806b95ba"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:20 GMT"
+        ],
+        "Content-Length": [
+          "441"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX/ps1406\",\r\n  \"name\": \"ps1406\",\r\n  \"type\": \"Microsoft.Network/privateDnsZones/MX\",\r\n  \"etag\": \"211e3cb2-5f39-417f-b011-782fb99eb55a\",\r\n  \"properties\": {\r\n    \"fqdn\": \"ps1406.ps1040.pstest.test.\",\r\n    \"ttl\": 100,\r\n    \"mxRecords\": [\r\n      {\r\n        \"exchange\": \"mail1.theg.com\",\r\n        \"preference\": 1\r\n      },\r\n      {\r\n        \"exchange\": \"mail2.theg.com\",\r\n        \"preference\": 10\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc1pvbmVzL3BzMTA0MC5wc3Rlc3QudGVzdC9NWD9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b6310980-347f-47e8-9cf0-ca4f3873da42"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "b6310980-347f-47e8-9cf0-ca4f3873da42"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "85f0adab-1155-4eb4-b705-9109b405bb26"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214919Z:85f0adab-1155-4eb4-b705-9109b405bb26"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:19 GMT"
+        ],
+        "Content-Length": [
+          "363"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX/ps1406\",\r\n      \"name\": \"ps1406\",\r\n      \"type\": \"Microsoft.Network/privateDnsZones/MX\",\r\n      \"etag\": \"d3aa3038-9bf4-46f8-be57-d744da853999\",\r\n      \"properties\": {\r\n        \"fqdn\": \"ps1406.ps1040.pstest.test.\",\r\n        \"ttl\": 100,\r\n        \"mxRecords\": []\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX/ps1406?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc1pvbmVzL3BzMTA0MC5wc3Rlc3QudGVzdC9NWC9wczE0MDY/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cf1d3d97-8d61-4fff-afaf-218ec8d9f504"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "ETag": [
+          "d3aa3038-9bf4-46f8-be57-d744da853999"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "cf1d3d97-8d61-4fff-afaf-218ec8d9f504"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "df5c9c31-e866-42db-8cb0-f3efc3a5a8f7"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214919Z:df5c9c31-e866-42db-8cb0-f3efc3a5a8f7"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:19 GMT"
+        ],
+        "Content-Length": [
+          "351"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX/ps1406\",\r\n  \"name\": \"ps1406\",\r\n  \"type\": \"Microsoft.Network/privateDnsZones/MX\",\r\n  \"etag\": \"d3aa3038-9bf4-46f8-be57-d744da853999\",\r\n  \"properties\": {\r\n    \"fqdn\": \"ps1406.ps1040.pstest.test.\",\r\n    \"ttl\": 100,\r\n    \"mxRecords\": []\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX/ps1406?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc1pvbmVzL3BzMTA0MC5wc3Rlc3QudGVzdC9NWC9wczE0MDY/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "77dc4443-f316-4314-8ec8-726801c060fc"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "ETag": [
+          "7bef5d69-b459-4f7b-b583-5f0d14c95159"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "77dc4443-f316-4314-8ec8-726801c060fc"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "f79d6cde-118d-4f41-be3d-2e5f4d579a55"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214920Z:f79d6cde-118d-4f41-be3d-2e5f4d579a55"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:20 GMT"
+        ],
+        "Content-Length": [
+          "395"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX/ps1406\",\r\n  \"name\": \"ps1406\",\r\n  \"type\": \"Microsoft.Network/privateDnsZones/MX\",\r\n  \"etag\": \"7bef5d69-b459-4f7b-b583-5f0d14c95159\",\r\n  \"properties\": {\r\n    \"fqdn\": \"ps1406.ps1040.pstest.test.\",\r\n    \"ttl\": 100,\r\n    \"mxRecords\": [\r\n      {\r\n        \"exchange\": \"mail1.theg.com\",\r\n        \"preference\": 1\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX/ps1406?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc1pvbmVzL3BzMTA0MC5wc3Rlc3QudGVzdC9NWC9wczE0MDY/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bfbe8e1e-b8de-4aa5-b0a7-9bfab1ec32b0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "ETag": [
+          "7bef5d69-b459-4f7b-b583-5f0d14c95159"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "bfbe8e1e-b8de-4aa5-b0a7-9bfab1ec32b0"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "99123bdd-dd6c-48e0-bcf3-7999b88fd0d3"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214920Z:99123bdd-dd6c-48e0-bcf3-7999b88fd0d3"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:20 GMT"
+        ],
+        "Content-Length": [
+          "395"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX/ps1406\",\r\n  \"name\": \"ps1406\",\r\n  \"type\": \"Microsoft.Network/privateDnsZones/MX\",\r\n  \"etag\": \"7bef5d69-b459-4f7b-b583-5f0d14c95159\",\r\n  \"properties\": {\r\n    \"fqdn\": \"ps1406.ps1040.pstest.test.\",\r\n    \"ttl\": 100,\r\n    \"mxRecords\": [\r\n      {\r\n        \"exchange\": \"mail1.theg.com\",\r\n        \"preference\": 1\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX/ps1406?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc1pvbmVzL3BzMTA0MC5wc3Rlc3QudGVzdC9NWC9wczE0MDY/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fce92b11-3bd3-41d4-a99a-ac093490301f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "ETag": [
+          "211e3cb2-5f39-417f-b011-782fb99eb55a"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "fce92b11-3bd3-41d4-a99a-ac093490301f"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "14201cdd-5531-4dda-9c88-22e9f3bbd745"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214921Z:14201cdd-5531-4dda-9c88-22e9f3bbd745"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:20 GMT"
+        ],
+        "Content-Length": [
+          "441"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX/ps1406\",\r\n  \"name\": \"ps1406\",\r\n  \"type\": \"Microsoft.Network/privateDnsZones/MX\",\r\n  \"etag\": \"211e3cb2-5f39-417f-b011-782fb99eb55a\",\r\n  \"properties\": {\r\n    \"fqdn\": \"ps1406.ps1040.pstest.test.\",\r\n    \"ttl\": 100,\r\n    \"mxRecords\": [\r\n      {\r\n        \"exchange\": \"mail1.theg.com\",\r\n        \"preference\": 1\r\n      },\r\n      {\r\n        \"exchange\": \"mail2.theg.com\",\r\n        \"preference\": 10\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test/MX/ps1406?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc1pvbmVzL3BzMTA0MC5wc3Rlc3QudGVzdC9NWC9wczE0MDY/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1cdfc4c4-ae10-4937-b58c-a28a02e1c7bb"
+        ],
+        "If-Match": [
+          "211e3cb2-5f39-417f-b011-782fb99eb55a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "1cdfc4c4-ae10-4937-b58c-a28a02e1c7bb"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "443ad461-1f64-415e-a600-04febae09ac6"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214921Z:443ad461-1f64-415e-a600-04febae09ac6"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:21 GMT"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsZones/ps1040.pstest.test?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc1pvbmVzL3BzMTA0MC5wc3Rlc3QudGVzdD9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3cffa795-af39-4c2f-b0c6-86e2be6b1c05"
+        ],
+        "If-Match": [
+          "*"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationResults/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtEZWxldGVQcml2YXRlRG5zWm9uZTs2ZjliZDliMS0wODU1LTQ1YmMtOGNjNi1jMGY3NmRkZDhhZTE=?api-version=2018-09-01"
+        ],
+        "Retry-After": [
+          "3"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net:443/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtEZWxldGVQcml2YXRlRG5zWm9uZTs2ZjliZDliMS0wODU1LTQ1YmMtOGNjNi1jMGY3NmRkZDhhZTE=?api-version=2018-09-01"
+        ],
+        "x-ms-request-id": [
+          "3cffa795-af39-4c2f-b0c6-86e2be6b1c05"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "abe84c1a-38f9-4f72-92d8-9b8c85beae7e"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214922Z:abe84c1a-38f9-4f72-92d8-9b8c85beae7e"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:22 GMT"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtEZWxldGVQcml2YXRlRG5zWm9uZTs2ZjliZDliMS0wODU1LTQ1YmMtOGNjNi1jMGY3NmRkZDhhZTE=?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc09wZXJhdGlvblN0YXR1c2VzL1JuSnZiblJGYm1SQmMzbHVZMDl3WlhKaGRHbHZianRFWld4bGRHVlFjbWwyWVhSbFJHNXpXbTl1WlRzMlpqbGlaRGxpTVMwd09EVTFMVFExWW1NdE9HTmpOaTFqTUdZM05tUmtaRGhoWlRFPT9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationResults/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtEZWxldGVQcml2YXRlRG5zWm9uZTs2ZjliZDliMS0wODU1LTQ1YmMtOGNjNi1jMGY3NmRkZDhhZTE=?api-version=2018-09-01"
+        ],
+        "Retry-After": [
+          "3"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net:443/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtEZWxldGVQcml2YXRlRG5zWm9uZTs2ZjliZDliMS0wODU1LTQ1YmMtOGNjNi1jMGY3NmRkZDhhZTE=?api-version=2018-09-01"
+        ],
+        "x-ms-request-id": [
+          "08be0410-5b17-4180-bd84-2037c20136e8"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11965"
+        ],
+        "x-ms-correlation-request-id": [
+          "a83f099a-8636-4983-a36a-fbdb13d393af"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214925Z:a83f099a-8636-4983-a36a-fbdb13d393af"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:24 GMT"
+        ],
+        "Content-Length": [
+          "23"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtEZWxldGVQcml2YXRlRG5zWm9uZTs2ZjliZDliMS0wODU1LTQ1YmMtOGNjNi1jMGY3NmRkZDhhZTE=?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc09wZXJhdGlvblN0YXR1c2VzL1JuSnZiblJGYm1SQmMzbHVZMDl3WlhKaGRHbHZianRFWld4bGRHVlFjbWwyWVhSbFJHNXpXbTl1WlRzMlpqbGlaRGxpTVMwd09EVTFMVFExWW1NdE9HTmpOaTFqTUdZM05tUmtaRGhoWlRFPT9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "8f4c6de0-8422-4c9d-afa3-907f8c512cbd"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11964"
+        ],
+        "x-ms-correlation-request-id": [
+          "98bd1f84-1384-49dc-ad2b-d88f7fac0f1a"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214928Z:98bd1f84-1384-49dc-ad2b-d88f7fac0f1a"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:28 GMT"
+        ],
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/ps4620/providers/Microsoft.Network/privateDnsOperationResults/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtEZWxldGVQcml2YXRlRG5zWm9uZTs2ZjliZDliMS0wODU1LTQ1YmMtOGNjNi1jMGY3NmRkZDhhZTE=?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlR3JvdXBzL3BzNDYyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHJpdmF0ZURuc09wZXJhdGlvblJlc3VsdHMvUm5KdmJuUkZibVJCYzNsdVkwOXdaWEpoZEdsdmJqdEVaV3hsZEdWUWNtbDJZWFJsUkc1eldtOXVaVHMyWmpsaVpEbGlNUzB3T0RVMUxUUTFZbU10T0dOak5pMWpNR1kzTm1Sa1pEaGhaVEU9P2FwaS12ZXJzaW9uPTIwMTgtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PrivateDns.PrivateDnsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "6adf7753-6eb2-4656-9194-b8090d66a59b"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "69cfc6a6-65be-4216-925b-7f631b4032b3"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214929Z:69cfc6a6-65be-4216-925b-7f631b4032b3"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:28 GMT"
+        ],
+        "Content-Length": [
+          "2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourcegroups/ps4620?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L3Jlc291cmNlZ3JvdXBzL3BzNDYyMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3d3bcbac-3c7e-4bd4-a9f9-c230146d3e0d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.17"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ2MjAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14990"
+        ],
+        "x-ms-request-id": [
+          "093976b3-81ce-4f6f-810a-13ea8aa3a95a"
+        ],
+        "x-ms-correlation-request-id": [
+          "093976b3-81ce-4f6f-810a-13ea8aa3a95a"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214930Z:093976b3-81ce-4f6f-810a-13ea8aa3a95a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:30 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ2MjAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpRMk1qQXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.17"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ2MjAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14984"
+        ],
+        "x-ms-request-id": [
+          "4cce93be-eb68-4b4f-a885-5bcf8f7e0a57"
+        ],
+        "x-ms-correlation-request-id": [
+          "4cce93be-eb68-4b4f-a885-5bcf8f7e0a57"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T214946Z:4cce93be-eb68-4b4f-a885-5bcf8f7e0a57"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:49:45 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ2MjAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpRMk1qQXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.17"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14983"
+        ],
+        "x-ms-request-id": [
+          "3f232088-6dd5-4f8a-89d6-e5a168cd33e1"
+        ],
+        "x-ms-correlation-request-id": [
+          "3f232088-6dd5-4f8a-89d6-e5a168cd33e1"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T215001Z:3f232088-6dd5-4f8a-89d6-e5a168cd33e1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:50:01 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ2MjAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU1YTQ2YjEtZGUwYi00ZWMzLWE1ZDctZGRhOTA4YjRlMDc2L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpRMk1qQXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.17"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14982"
+        ],
+        "x-ms-request-id": [
+          "813fa75f-15ad-49c2-adfe-382243368b5e"
+        ],
+        "x-ms-correlation-request-id": [
+          "813fa75f-15ad-49c2-adfe-382243368b5e"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190308T215001Z:813fa75f-15ad-49c2-adfe-382243368b5e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 08 Mar 2019 21:50:01 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-RecordSetNewRecordNoName": [
+      "ps1040",
+      "ps1406",
+      "ps4620"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "0e5a46b1-de0b-4ec3-a5d7-dda908b4e076"
+  }
+}

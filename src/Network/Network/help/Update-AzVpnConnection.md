@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/update-azvpnconnection
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVpnConnection
 
 ## SYNOPSIS
-Updates a VpnConnection object to a goal state.
+Updates a VPN connection.
 
 ## SYNTAX
 
@@ -35,7 +35,8 @@ Update-AzVpnConnection -InputObject <PSVpnConnection> [-SharedKey <SecureString>
 ```
 
 ## DESCRIPTION
-Creates a IPSec connection that connects a VpnGateway to a remote customer branch represented in RM as a VpnSite.
+The **Update-AzVpnConnection** cmdlet updates a VPN connection.  
+VPN connection creates an IPsec connection that connects a VPN gateway to a remote customer branch represented in Azure as a VPN site.
 
 ## EXAMPLES
 
@@ -329,3 +330,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzVpnConnection](./Get-AzVpnConnection.md)
+
+[New-AzVpnConnection](./New-AzVpnConnection.md)
+
+[Remove-AzVpnConnection](./Remove-AzVpnConnection.md)

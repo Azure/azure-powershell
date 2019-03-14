@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var circuit = this.GetExpressRouteCircuit(this.ResourceGroupName, this.Name);
 
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<ExpressRouteCircuit> circuitPage;
-                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                if (ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     circuitPage = this.ExpressRouteCircuitClient.List(this.ResourceGroupName);
                 }
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
                     psCircuits.Add(psVnet);
                 }
 
-                WriteObject(psCircuits, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psCircuits), true);
             }
         }
     }
