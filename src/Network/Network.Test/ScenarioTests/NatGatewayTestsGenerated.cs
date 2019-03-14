@@ -24,23 +24,17 @@
 // Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
-using System;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class NatGatewayTestsGenerated : RMTestBase
+    public class NatGatewayTestsGenerated : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public NatGatewayTestsGenerated(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -48,7 +42,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNatGatewayCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NatGatewayCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-NatGatewayCRUDMinimalParameters");
         }
 
         [Fact]
@@ -56,7 +50,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNatGatewayCRUDAllParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NatGatewayCRUDAllParameters");
+            TestRunner.RunTestScript("Test-NatGatewayCRUDAllParameters");
         }
     }
 }

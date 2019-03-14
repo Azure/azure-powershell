@@ -50,36 +50,48 @@ function Test-NatGatewayCRUDMinimalParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create NatGateway
-        $vNatGateway = New-AzureRmNatGateway -ResourceGroupName $rgname -Name $rname -Location $location;
+        $vNatGateway = New-AzNatGateway -ResourceGroupName $rgname -Name $rname -Location $location;
         Assert-NotNull $vNatGateway;
-        Assert-True { Check-CmdletReturnType "New-AzureRmNatGateway" $vNatGateway };
+        Assert-True { Check-CmdletReturnType "New-AzNatGateway" $vNatGateway };
         Assert-AreEqual $rname $vNatGateway.Name;
 
         # Get NatGateway
-        $vNatGateway = Get-AzureRmNatGateway -ResourceGroupName $rgname -Name $rname;
+        $vNatGateway = Get-AzNatGateway -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vNatGateway;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmNatGateway" $vNatGateway };
+        Assert-True { Check-CmdletReturnType "Get-AzNatGateway" $vNatGateway };
         Assert-AreEqual $rname $vNatGateway.Name;
 
         # Get all NatGateways in resource group
-        $listNatGateway = Get-AzureRmNatGateway -ResourceGroupName $rgname;
+        $listNatGateway = Get-AzNatGateway -ResourceGroupName $rgname;
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all NatGateways in subscription
-        $listNatGateway = Get-AzureRmNatGateway;
+        $listNatGateway = Get-AzNatGateway;
+        Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all NatGateways in subscription wildcard for resource group
+        $listNatGateway = Get-AzNatGateway -ResourceGroupName "*";
+        Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all NatGateways in subscription wildcard for name
+        $listNatGateway = Get-AzNatGateway -Name "*";
+        Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all NatGateways in subscription wildcard for both resource group and name
+        $listNatGateway = Get-AzNatGateway -ResourceGroupName "*" -Name "*";
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove NatGateway
-        $job = Remove-AzureRmNatGateway -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job = Remove-AzNatGateway -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeNatGateway = $job | Receive-Job;
         Assert-AreEqual $true $removeNatGateway;
 
         # Get NatGateway should fail
-        Assert-ThrowsContains { Get-AzureRmNatGateway -ResourceGroupName $rgname -Name $rname } "not found";
+        Assert-ThrowsContains { Get-AzNatGateway -ResourceGroupName $rgname -Name $rname } "not found";
     }
     finally
     {
@@ -108,69 +120,93 @@ function Test-NatGatewayCRUDAllParameters
 
     try
     {
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create NatGateway
-        $vNatGateway = New-AzureRmNatGateway -ResourceGroupName $rgname -Name $rname -Location $location -IdleTimeoutInMinutes $IdleTimeoutInMinutes -Tag $Tag;
+        $vNatGateway = New-AzNatGateway -ResourceGroupName $rgname -Name $rname -Location $location -IdleTimeoutInMinutes $IdleTimeoutInMinutes -Tag $Tag;
         Assert-NotNull $vNatGateway;
-        Assert-True { Check-CmdletReturnType "New-AzureRmNatGateway" $vNatGateway };
+        Assert-True { Check-CmdletReturnType "New-AzNatGateway" $vNatGateway };
         Assert-AreEqual $rname $vNatGateway.Name;
         Assert-AreEqual $IdleTimeoutInMinutes $vNatGateway.IdleTimeoutInMinutes;
         Assert-AreEqualObjectProperties $Tag $vNatGateway.Tag;
 
         # Get NatGateway
-        $vNatGateway = Get-AzureRmNatGateway -ResourceGroupName $rgname -Name $rname;
+        $vNatGateway = Get-AzNatGateway -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vNatGateway;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmNatGateway" $vNatGateway };
+        Assert-True { Check-CmdletReturnType "Get-AzNatGateway" $vNatGateway };
         Assert-AreEqual $rname $vNatGateway.Name;
         Assert-AreEqual $IdleTimeoutInMinutes $vNatGateway.IdleTimeoutInMinutes;
         Assert-AreEqualObjectProperties $Tag $vNatGateway.Tag;
 
         # Get all NatGateways in resource group
-        $listNatGateway = Get-AzureRmNatGateway -ResourceGroupName $rgname;
+        $listNatGateway = Get-AzNatGateway -ResourceGroupName $rgname;
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all NatGateways in subscription
-        $listNatGateway = Get-AzureRmNatGateway;
+        $listNatGateway = Get-AzNatGateway;
+        Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all NatGateways in subscription wildcard for resource group
+        $listNatGateway = Get-AzNatGateway -ResourceGroupName "*";
+        Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all NatGateways in subscription wildcard for name
+        $listNatGateway = Get-AzNatGateway -Name "*";
+        Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all NatGateways in subscription wildcard for both resource group and name
+        $listNatGateway = Get-AzNatGateway -ResourceGroupName "*" -Name "*";
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Set NatGateway
         $vNatGateway.IdleTimeoutInMinutes = $IdleTimeoutInMinutesSet;
         $vNatGateway.Tag = $TagSet;
-        $vNatGateway = Set-AzureRmNatGateway -NatGateway $vNatGateway;
+        $vNatGateway = Set-AzNatGateway -NatGateway $vNatGateway;
         Assert-NotNull $vNatGateway;
-        Assert-True { Check-CmdletReturnType "Set-AzureRmNatGateway" $vNatGateway };
+        Assert-True { Check-CmdletReturnType "Set-AzNatGateway" $vNatGateway };
         Assert-AreEqual $rname $vNatGateway.Name;
         Assert-AreEqual $IdleTimeoutInMinutesSet $vNatGateway.IdleTimeoutInMinutes;
         Assert-AreEqualObjectProperties $TagSet $vNatGateway.Tag;
 
         # Get NatGateway
-        $vNatGateway = Get-AzureRmNatGateway -ResourceGroupName $rgname -Name $rname;
+        $vNatGateway = Get-AzNatGateway -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vNatGateway;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmNatGateway" $vNatGateway };
+        Assert-True { Check-CmdletReturnType "Get-AzNatGateway" $vNatGateway };
         Assert-AreEqual $rname $vNatGateway.Name;
         Assert-AreEqual $IdleTimeoutInMinutesSet $vNatGateway.IdleTimeoutInMinutes;
         Assert-AreEqualObjectProperties $TagSet $vNatGateway.Tag;
 
         # Get all NatGateways in resource group
-        $listNatGateway = Get-AzureRmNatGateway -ResourceGroupName $rgname;
+        $listNatGateway = Get-AzNatGateway -ResourceGroupName $rgname;
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all NatGateways in subscription
-        $listNatGateway = Get-AzureRmNatGateway;
+        $listNatGateway = Get-AzNatGateway;
+        Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all NatGateways in subscription wildcard for resource group
+        $listNatGateway = Get-AzNatGateway -ResourceGroupName "*";
+        Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all NatGateways in subscription wildcard for name
+        $listNatGateway = Get-AzNatGateway -Name "*";
+        Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all NatGateways in subscription wildcard for both resource group and name
+        $listNatGateway = Get-AzNatGateway -ResourceGroupName "*" -Name "*";
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove NatGateway
-        $job = Remove-AzureRmNatGateway -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job = Remove-AzNatGateway -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeNatGateway = $job | Receive-Job;
         Assert-AreEqual $true $removeNatGateway;
 
         # Get NatGateway should fail
-        Assert-ThrowsContains { Get-AzureRmNatGateway -ResourceGroupName $rgname -Name $rname } "not found";
+        Assert-ThrowsContains { Get-AzNatGateway -ResourceGroupName $rgname -Name $rname } "not found";
 
         # Set NatGateway should fail
-        Assert-ThrowsContains { Set-AzureRmNatGateway -NatGateway $vNatGateway } "not found";
+        Assert-ThrowsContains { Set-AzNatGateway -NatGateway $vNatGateway } "not found";
     }
     finally
     {

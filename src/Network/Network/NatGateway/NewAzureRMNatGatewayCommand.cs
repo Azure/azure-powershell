@@ -82,13 +82,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "An array of public ip addresses associated with the nat gateway resource.",
             ValueFromPipelineByPropertyName = true)]
-        public PSPublicIpAddresses[] PublicIpAddress { get; set; }
+        public PSResourceId[] PublicIpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "An array of public ip prefixes associated with the nat gateway resource.",
             ValueFromPipelineByPropertyName = true)]
-        public PSPublicIpPrefixes[] PublicIpPrefix { get; set; }
+        public PSResourceId[] PublicIpPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -106,37 +106,13 @@ namespace Microsoft.Azure.Commands.Network
             PSNatGatewaySku vSku = null;
 
             // PublicIpAddresses
-            List<PSPublicIpAddresses> vPublicIpAddresses = null;
+            List<PSResourceId> vPublicIpAddresses = null;
 
             // PublicIpPrefixes
-            List<PSPublicIpPrefixes> vPublicIpPrefixes = null;
+            List<PSResourceId> vPublicIpPrefixes = null;
 
-            if (this.PublicIpAddress?.ToList() != null)
-            {
-                if (vPublicIpAddresses == null)
-                {
-                    vPublicIpAddresses = new List<PSPublicIpAddresses>();
-                }
-                if (vPublicIpAddresses.PublicIpAddresses == null)
-                {
-                    vPublicIpAddresses.PublicIpAddresses = new List<Microsoft.Azure.Management.Network.Models.PSPublicIpAddresses>();
-                }
-                vPublicIpAddresses.PublicIpAddresses.PublicIpAddresses = this.PublicIpAddress?.ToList();
-            }
-
-            if (this.PublicIpPrefix?.ToList() != null)
-            {
-                if (vPublicIpPrefixes == null)
-                {
-                    vPublicIpPrefixes = new List<PublicIpPrefixes>();
-                }
-                if (vPublicIpPrefixes.PublicIpPrefixes == null)
-                {
-                    vPublicIpPrefixes.PublicIpPrefixes = new List<Microsoft.Azure.Management.Network.Models.PublicIpPrefixes>();
-                }
-                vPublicIpPrefixes.PublicIpPrefixes.PublicIpPrefixes = this.PublicIpPrefix?.ToList();
-            }
-
+            vPublicIpAddresses = this.PublicIpAddress?.ToList();
+            vPublicIpPrefixes = this.PublicIpPrefix?.ToList();
 
             var vNatGateway = new PSNatGateway
             {
