@@ -43,14 +43,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 string resourceGroupName = this.ResourceGroupName;
                 string containerServiceName = this.Name;
 
-                if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(containerServiceName))
+                if (ShouldGetByName(ResourceGroupName, Name))
                 {
                     var result = ContainerServicesClient.Get(resourceGroupName, containerServiceName);
                     var psObject = new PSContainerService();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<ContainerService, PSContainerService>(result, psObject);
                     WriteObject(psObject);
                 }
-                else if (!string.IsNullOrEmpty(resourceGroupName))
+                else if (ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     var result = ContainerServicesClient.ListByResourceGroup(resourceGroupName);
                     var resultList = result.ToList();
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<ContainerService, PSContainerServiceList>(r));
                     }
-                    WriteObject(psObject, true);
+                    WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psObject), true);
                 }
                 else
                 {
@@ -90,21 +90,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<ContainerService, PSContainerServiceList>(r));
                     }
-                    WriteObject(psObject, true);
+                    WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psObject), true);
                 }
             });
         }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.ContainerService/containerServices", "ResourceGroupName")]
         public string Name { get; set; }

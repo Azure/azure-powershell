@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Test Get-AzureRmApplicationInsights
+Test Get-AzApplicationInsights
 #>
 function Test-GetApplicationInsights
 {
@@ -27,22 +27,22 @@ function Test-GetApplicationInsights
 		$appName = "app" + $rgname;
         $loc = Get-ProviderLocation ResourceManagement;
 		$kind = "web";
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc;
 
-        $app = New-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind
+        $app = New-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind
 
         Assert-AreEqual $app.Name $appName
         Assert-AreEqual $app.Kind $kind
         Assert-NotNull $app.InstrumentationKey
 
-        $apps = Get-AzureRmApplicationInsights -ResourceGroupName $rgname;
+        $apps = Get-AzApplicationInsights -ResourceGroupName $rgname;
 
 		Assert-AreEqual $apps.count 1
         Assert-AreEqual $apps[0].Name $appName
         Assert-AreEqual $apps[0].Kind $kind
         Assert-NotNull $apps[0].InstrumentationKey
 
-        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
+        Remove-AzApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {
@@ -53,7 +53,7 @@ function Test-GetApplicationInsights
 
 <#
 .SYNOPSIS
-Test New-AzureRmApplicationInsights
+Test New-AzApplicationInsights
 #>
 function Test-NewApplicationInsights
 {
@@ -66,21 +66,21 @@ function Test-NewApplicationInsights
 		$appName = "app" + $rgname;
         $loc = Get-ProviderLocation ResourceManagement;
 		$kind = "web";
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc;
 
-        $app = New-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind
+        $app = New-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind
 
         Assert-AreEqual $app.Name $appName
         Assert-AreEqual $app.Kind $kind
         Assert-NotNull $app.InstrumentationKey
 
-        $app = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
+        $app = Get-AzApplicationInsights -ResourceGroupName $rgname -Name $appName;
 		
         Assert-AreEqual $app.Name $appName
         Assert-AreEqual $app.Kind $kind
         Assert-NotNull $app.InstrumentationKey
 
-        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
+        Remove-AzApplicationInsights -ResourceGroupName $rgname -Name $appName;
     }
     finally
     {
@@ -91,7 +91,7 @@ function Test-NewApplicationInsights
 
 <#
 .SYNOPSIS
-Test Remove-AzureRmApplicationInsights
+Test Remove-AzApplicationInsights
 #>
 function Test-RemoveApplicationInsights
 {
@@ -104,19 +104,19 @@ function Test-RemoveApplicationInsights
 		$appName = "app" + $rgname;
         $loc = Get-ProviderLocation ResourceManagement;
 		$kind = "web";
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind
 
-        $app = Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
+        $app = Get-AzApplicationInsights -ResourceGroupName $rgname -Name $appName;
 		
 		Assert-NotNull $app
         Assert-AreEqual $app.Name $appName
         Assert-AreEqual $app.Kind $kind
         Assert-NotNull $app.InstrumentationKey
 
-        Remove-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName;
+        Remove-AzApplicationInsights -ResourceGroupName $rgname -Name $appName;
 
-		Assert-ThrowsContains { Get-AzureRmApplicationInsights -ResourceGroupName $rgname -Name $appName } "not found"
+		Assert-ThrowsContains { Get-AzApplicationInsights -ResourceGroupName $rgname -Name $appName } "not found"
     }
     finally
     {

@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     var parameters = new ThrottledRequestsInput();
                     parameters.GroupByOperationName = this.GroupByOperationName;
-                    parameters.FromTime = this.FromTime;
-                    parameters.GroupByThrottlePolicy = this.GroupByThrottlePolicy;
                     parameters.BlobContainerSasUri = this.BlobContainerSasUri;
-                    parameters.GroupByResourceName = this.GroupByResourceName;
+                    parameters.FromTime = this.FromTime;
                     parameters.ToTime = this.ToTime;
+                    parameters.GroupByResourceName = this.GroupByResourceName;
+                    parameters.GroupByThrottlePolicy = this.GroupByThrottlePolicy;
                     string location = this.Location.Canonicalize();
 
                     var result = LogAnalyticsClient.ExportThrottledRequests(parameters, location);
@@ -61,25 +61,34 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Mandatory = false)]
-        public SwitchParameter GroupByOperationName { get; set; }
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [LocationCompleter("Microsoft.Compute/locations/logAnalytics")]
+        public string Location { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true)]
         public DateTime FromTime { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Mandatory = false)]
-        public SwitchParameter GroupByThrottlePolicy { get; set; }
+            Position = 2,
+            Mandatory = true)]
+        public DateTime ToTime { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 4,
+            Position = 3,
             Mandatory = true)]
         public string BlobContainerSasUri { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Mandatory = false)]
+        public SwitchParameter GroupByOperationName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
@@ -88,17 +97,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
-            Mandatory = true)]
-        public DateTime ToTime { get; set; }
-
-        [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 1,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
-        [LocationCompleter("Microsoft.Compute/locations/logAnalytics")]
-        public string Location { get; set; }
+            Mandatory = false)]
+        public SwitchParameter GroupByThrottlePolicy { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }

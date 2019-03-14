@@ -474,11 +474,29 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                 sla.IOPS = 7500;
                 sla.TP = 250;
             }
-            else if (diskSize > 0 && diskSize <= 4095)
+            else if (diskSize > 0 && diskSize <= (4 * 1024))
             {
                 // P50
                 sla.IOPS = 7500;
                 sla.TP = 250;
+            }
+            else if (diskSize > 0 && diskSize <= (8 * 1024))
+            {
+                // P60
+                sla.IOPS = 12500;
+                sla.TP = 480;
+            }
+            else if (diskSize > 0 && diskSize <= (16 * 1024))
+            {
+                // P70
+                sla.IOPS = 15000;
+                sla.TP = 750;
+            }
+            else if (diskSize > 0 && diskSize <= (32 * 1024))
+            {
+                // P80
+                sla.IOPS = 20000;
+                sla.TP = 750;
             }
             else
             {

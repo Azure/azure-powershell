@@ -1,5 +1,5 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Management.CognitiveServices.dll-Help.xml
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
 ms.assetid: 87A79215-5688-474D-822A-6B84B3D10E3F
 online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/remove-azcognitiveservicesaccount

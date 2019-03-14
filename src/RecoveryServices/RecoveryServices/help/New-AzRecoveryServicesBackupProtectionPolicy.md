@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: C2A7F37B-5713-4430-B83F-C6745692396D
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices.backup/new-azrecoveryservicesbackupprotectionpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/new-azrecoveryservicesbackupprotectionpolicy
 schema: 2.0.0
 ---
 
@@ -62,7 +62,7 @@ The acceptable values for this parameter are:
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage
+Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
 
 Required: False
 Position: 3
@@ -158,7 +158,7 @@ The acceptable values for this parameter are:
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, AzureSQLDatabase, AzureFiles
+Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
 
 Required: True
 Position: 2

@@ -18,7 +18,7 @@ Run simple query
 #>
 function Search-AzureRmGraph-Query
 {
-	$queryResult = Search-AzureRmGraph "project id, tags, properties | limit 2"
+	$queryResult = Search-AzGraph "project id, tags, properties | limit 2"
 
 	Assert-IsInstance $queryResult Object[]
 	Assert-AreEqual $queryResult.Count 2
@@ -51,7 +51,7 @@ Run paged query
 function Search-AzureRmGraph-PagedQuery
 {
 	# Page size was artificially set to 2 rows
-	$queryResult = Search-AzureRmGraph "project id" -First 3 -Skip 2
+	$queryResult = Search-AzGraph "project id" -First 3 -Skip 2
 
 	Assert-IsInstance $queryResult Object[]
 	Assert-AreEqual $queryResult.Count 3
@@ -88,9 +88,9 @@ function Search-AzureRmGraph-Subscriptions
 	$mockedSubscriptionId = "00000000-0000-0000-0000-000000000000"
 	$query = "distinct subscriptionId | order by subscriptionId asc"
 
-	$queryResultNoSubs = Search-AzureRmGraph $query
-	$queryResultOneSub = Search-AzureRmGraph $query -Subscription $testSubId1
-	$queryResultMultipleSubs = Search-AzureRmGraph $query -Subscription @($testSubId1, $testSubId2)
+	$queryResultNoSubs = Search-AzGraph $query
+	$queryResultOneSub = Search-AzGraph $query -Subscription $testSubId1
+	$queryResultMultipleSubs = Search-AzGraph $query -Subscription @($testSubId1, $testSubId2)
 
 	Assert-IsInstance $queryResultNoSubs System.Management.Automation.PSCustomObject
 	Assert-AreEqual $queryResultNoSubs.subscriptionId $mockedSubscriptionId
@@ -130,7 +130,7 @@ function Search-AzureRmGraph-QueryError
 
 	try
 	{
-		Search-AzureRmGraph "where where"
+		Search-AzGraph "where where"
 		Assert-True $false  # Expecting an error
 	}
 	catch [Exception]

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkprofile
@@ -43,9 +43,64 @@ The **Get-AzNetworkProfile** cmdlet retrieves an existing network profile top le
 ### Example 1
 ```powershell
 $networkProfile = Get-AzNetworkProfile -Name np1 -ResourceGroupName rg1
+
+ProvisioningState                           : Succeeded
+ContainerNetworkInterfaces                  : {}
+ContainerNetworkInterfaceConfigurations     : {}
+ContainerNetworkInterfacesText              : []
+ContainerNetworkInterfaceConfigurationsText : []
+ResourceGroupName                           : rg1
+Location                                    : westus
+ResourceGuid                                : 00000000-0000-0000-0000-000000000000
+Type                                        : Microsoft.Network/networkProfiles
+Tag                                         :
+TagsTable                                   :
+Name                                        : np1
+Etag                                        : W/"00000000-0000-0000-0000-000000000000"
+Id                                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1
+                                              /providers/Microsoft.Network/networkProfiles/np1
 ```
 
 This retrieves the network profile np1 in resource group rg1
+
+### Example 2
+```powershell
+$networkProfile = Get-AzNetworkProfile -Name np*
+
+ProvisioningState                           : Succeeded
+ContainerNetworkInterfaces                  : {}
+ContainerNetworkInterfaceConfigurations     : {}
+ContainerNetworkInterfacesText              : []
+ContainerNetworkInterfaceConfigurationsText : []
+ResourceGroupName                           : rg1
+Location                                    : westus
+ResourceGuid                                : 00000000-0000-0000-0000-000000000000
+Type                                        : Microsoft.Network/networkProfiles
+Tag                                         :
+TagsTable                                   :
+Name                                        : np1
+Etag                                        : W/"00000000-0000-0000-0000-000000000000"
+Id                                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1
+                                              /providers/Microsoft.Network/networkProfiles/np1
+
+ProvisioningState                           : Succeeded
+ContainerNetworkInterfaces                  : {}
+ContainerNetworkInterfaceConfigurations     : {}
+ContainerNetworkInterfacesText              : []
+ContainerNetworkInterfaceConfigurationsText : []
+ResourceGroupName                           : rg1
+Location                                    : westus
+ResourceGuid                                : 00000000-0000-0000-0000-000000000000
+Type                                        : Microsoft.Network/networkProfiles
+Tag                                         :
+TagsTable                                   :
+Name                                        : np2
+Etag                                        : W/"00000000-0000-0000-0000-000000000000"
+Id                                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1
+                                              /providers/Microsoft.Network/networkProfiles/np2
+```
+
+This retrieves the network profiles that start with "np"
 
 ## PARAMETERS
 
@@ -162,3 +217,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetworkProfile](./New-AzNetworkProfile.md)
+
+[Remove-AzNetworkProfile](./Remove-AzNetworkProfile.md)
+
+[Set-AzNetworkProfile](./Set-AzNetworkProfile.md)

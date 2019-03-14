@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +26,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGateway", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGateway", DefaultParameterSetName = "IdentityByUserAssignedIdentityId", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
     public class NewAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -182,7 +184,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
+        [CmdletParameterBreakingChange("UserAssignedIdentityId", ReplaceMentCmdletParameterName = "Identity")]
         [Parameter(
+            ParameterSetName = "IdentityByUserAssignedIdentityId",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "ResourceId of the user assigned identity to be assigned to Application Gateway.")]
@@ -190,10 +194,17 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("UserAssignedIdentity")]
         public string UserAssignedIdentityId { get; set; }
 
+        [Parameter(
+            ParameterSetName = "IdentityByIdentityObject",
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Application Gateway Identity to be assigned to Application Gateway.")]
+        [ValidateNotNullOrEmpty]
+        public PSManagedServiceIdentity Identity { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
+            HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -341,6 +352,10 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 };
             }
+            else if (this.Identity != null)
+            {
+                applicationGateway.Identity = this.Identity;
+            }
 
             if (this.CustomErrorConfiguration != null)
             {
@@ -348,7 +363,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Normalize the IDs
-            ApplicationGatewayChildResourceHelper.NormalizeChildResourcesId(applicationGateway);
+            ApplicationGatewayChildResourceHelper.NormalizeChildIds(applicationGateway, this.ResourceGroupName, this.Name);
 
             // Map to the sdk object
             var appGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ApplicationGateway>(applicationGateway);

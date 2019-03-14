@@ -156,25 +156,45 @@ When adding a new project, please follow these guidelines:
 
 Add a new folder under `src` with your service specific name (_e.g.,_ `Compute`, `Sql`, `Websites`).
 
-We recommend copying an existing module. For example, go to `src/Media` and copy the contents of this folder. Paste these to your service folder you just created. **Rename** the following:
-- The folders to `Commands.<SERVICE>` and `Commands.<SERVICE>.Test`
+We recommend copying an existing module. For example, go to `src/Cdn` and copy the contents of this folder. Paste these to your service folder you just created. **Rename** the following:
+- The folders to `<SERVICE>` and `<SERVICE>.Test`
 - The solution to `<SERVICE>.sln`
-- The projects (within each folder) to `Commands.<SERVICE>.csproj` and `Commands.<SERVICE>.Test.csproj`
-- The PSD1 file (in the `Commands.<SERVICE>` folder) to `Az.<SERVICE>.psd1`
+- The projects (within each folder) to `<SERVICE>.csproj` and `<SERVICE>.Test.csproj`
+- The PSD1 file (in the `<SERVICE>` folder) to `Az.<SERVICE>.psd1`
 
 Now, you'll need to edit the solution file. Open the `<SERVICE>.sln` in your text editor of choice. Edit these lines to use your `<SERVICE>` name:
-- Update the `"Commands.<SERVICE>.Netcore", "Commands.<SERVICE>\Commands.<SERVICE>.Netcore.csproj"`
-- Update the `"Commands.<SERVICE>.Test.Netcore", "Commands.<SERVICE>.Test\Commands.Media.Test.Netcore.csproj"`
+- Update the `"<SERVICE>", "<SERVICE>\<SERVICE>.csproj"`
+- Update the `"<SERVICE>.Test", "<SERVICE>.Test\<SERVICE>.Test.csproj"`
+- **Note**: Leave the `"Accounts", "..\Accounts\Accounts\Accounts.csproj"` entry as is. All modules depend on `Accounts`.
 
-After the solution file is updated, save and close it. Now, open the solution file in Visual Studio. Right click on the `Commands.<SERVICE>` project in the `Solution Explorer` and select `Unload project`. Right click on the unloaded project and select `Edit Commands.<SERVICE>.csproj`. Once opened, ensure that the following things are changed:
-- The `AssemblyNamespace` and `RootNamespace` attributes of the project _must_ be changed to `Microsoft.Azure.PowerShell.Cmdlets.<SERVICE>`. If these changes are not made, then the assembly produced from this project is not be signed and results in errors when users try to use your module.
-- Change the particular `<ItemGroup>` containing `<None Include="Az.<SERVICE>.psd1">`
+After the solution file is updated, save and close it. Now, open the solution file in Visual Studio. Right click on the `<SERVICE>` project in the `Solution Explorer` and select `Unload project`. Right click on the unloaded project and select `Edit <SERVICE>.csproj`. Once opened, ensure that the following things are changed:
+- Update this entry to use your service name (what you used as `<SERVICE>` above):
+```xml
+  <PropertyGroup>
+    <PsModuleName>Cdn</PsModuleName>
+  </PropertyGroup>
+```
+- **Remove the entry**:
+```xml
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
+  </PropertyGroup>
+```
+**Note**: This is not needed since this is a new project and does not use legacy namespace conventions.
+  
+- Update this entry to use your SDK:
+```xml
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.Cdn" Version="4.0.2-preview" />
+  </ItemGroup>
+```
+If you have not generated your AutoRest SDK yet, remove this entry for now.
 
 Right click on the project and select `Reload project`, and then build the solution by either right clicking on the solution and selecting `Rebuild Solution` or, from the top of Visual Studio, selecting `Build > Rebuild Solution`. If the build does not succeed, open the `.csproj` file and ensure there are no errors.
 
 ### Adding Project References
 
-There are a few existing projects that need to be added before developing any cmdlets. To add a project to the solution, right click on the solution in `Solution Explorer` and select `Add > Existing Project`. This allows you to navigate through folders to find the `.csproj` of the project you want to add. Once a project is added to your solution, you can add it as a reference to the `Commands.<SERVICE>` project by right clicking on `Commands.<SERVICE>` and selecting `Add > Reference`. This opens the `Reference Manager` window, and once you have selected the `Projects > Solution` option on the left side of the window, you are able to select which projects you want to reference in `Commands.<SERVICE>` by checking the box to the left of the name.
+There are a few existing projects that need to be added before developing any cmdlets. To add a project to the solution, right click on the solution in `Solution Explorer` and select `Add > Existing Project`. This allows you to navigate through folders to find the `.csproj` of the project you want to add. Once a project is added to your solution, you can add it as a reference to the `<SERVICE>` project by right clicking on `<SERVICE>` and selecting `Add > Reference`. This opens the `Reference Manager` window, and once you have selected the `Projects > Solution` option on the left side of the window, you are able to select which projects you want to reference in `<SERVICE>` by checking the box to the left of the name.
 
 # Creating Cmdlets
 
@@ -224,8 +244,11 @@ Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-
 
 ### Adding Scenario Tests
 
-- Create a new class in `Commands.<SERVICE>.Test`
-- Create a ps1 file in the same folder that contains the actual tests ([see sample](../../src/Media/Commands.Media.Test/ScenarioTests))
+- Create a new class in `<SERVICE>.Test`
+    - Add `[Fact]` as an attribute to every test
+    - Add `[Trait(Category.AcceptanceType, Category.CheckIn)]` as an attribute to any test that should be run during CI in Playback mode.
+    - Add `[Trait(Category.AcceptanceType, Category.LiveOnly)]` as an attribute to any test that cannot be run in Playback mode (for example, if a test depends on a Dataplane SDK).
+- Create a ps1 file in the same folder that contains the actual tests ([see sample](../../src/Media/Media.Test/ScenarioTests))
     - Use `Assert-AreEqual x y` to verify that values are the same
     - Use `Assert-AreNotEqual x y` to verify that values are not the same
     - Use `Assert-Throws scriptblock message` to verify an exception is being thrown
@@ -236,7 +259,7 @@ Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-
     - Use `Assert-Null object` to verify that an object is null
     - Use `Assert-NotNull object` to verify that an object is not null
     - Use `Assert-Exists path` to verify that a file exists
-    - Use `Assert-AreEqualArray a1 a2` to verify that arrays are the sam
+    - Use `Assert-AreEqualArray a1 a2` to verify that arrays are the same
 
 ### Using Active Directory
 
@@ -250,14 +273,8 @@ Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-
 
 ### AD Scenario Tests
 
-Create these environment variables for the AD scenario tests:
+Create this environment variables for the AD scenario tests:
 
-- `AZURE_LIVEID` should be UserId and Password for a valid LiveId account.
-  - `AZURE_LIVEID=UserId=<user@hotmail.com>;Password=<Password>`
-- `AZURE_ORGID_FPO` should be an orgid and password for an account that does not have any subscriptions or role assignments associated with it. It is supposed to be a foreign principal in your current tenant.
-  - `AZURE_ORGID_FPO=UserId=<user@orgid.com>;Password=<Password>`
--  `AZURE_ORGID_ONE_TENANT_ONE_SUBSCRIPTION` should be an account that is in a single tenant and has access to the subscription managed by that AD tenant.
-  - `AZURE_ORGID_ONE_TENANT_ONE_SUBSCRIPTION=UserId=<user@orgid.com>;Password=<Password>;SubscriptionId=<SubscriptionId>;AADAuthEndpoint=https://login.windows.net/`
 - `AZURE_SERVICE_PRINCIPAL` should be a service principal - an application defined in the subscription's tenant - that has management access to the subscription (or at least to a resource group in the tenant)
   - `AZURE_SERVICE_PRINCIPAL=UserId=<UserGuid>;Password=<Password>;AADTenant=<TenantGuid>;SubscriptionId=<SubscriptionId>`
 
@@ -267,7 +284,7 @@ Create these environment variables for the AD scenario tests:
 - Run the test in Visual Studio in the Test Explorer window and make sure you got a generated JSON file that matches the test name in the bin folder under the `SessionRecords` folder
 - Copy this `SessionRecords` folder and place it inside the test project
   - Inside Visual Studio, add all of the generated JSON files, making sure to change the "Copy to Output Directory" property for each one to "Copy if newer"
-  -  Make sure that all of these JSON files appear in your `Commands.<SERVICE>.Test.csproj` file
+  -  Make sure that all of these JSON files appear in your `<SERVICE>.Test.csproj` file
 
 # After Development
 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressrouteport
@@ -38,6 +38,13 @@ PS C:\> Get-AzExpressRoutePort -Name $PortName -ResourceGroupName $rg
 Gets the ExpressRoutePort object with name $PortName in resource group $rg in your subscription.
 
 ### Example 2
+```powershell
+PS C:\> Get-AzExpressRoutePort -Name test*
+```
+
+Gets all of the ExpressRoutePort objects whose name starts with "test".
+
+### Example 3
 ```powershell
 PS C:\> Get-AzExpressRoutePort -ResourceId $id
 ```
@@ -120,3 +127,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzExpressRoutePort](./New-AzExpressRoutePort.md)
+
+[Remove-AzExpressRoutePort](./Remove-AzExpressRoutePort.md)
+
+[Set-AzExpressRoutePort](./Set-AzExpressRoutePort.md)

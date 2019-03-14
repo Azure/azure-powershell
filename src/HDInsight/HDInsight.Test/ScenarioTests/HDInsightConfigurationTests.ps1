@@ -18,54 +18,54 @@
     Tests pipelining with creating the config
 #>
     function Test-ConfigurationPipelining{
-        #test New-AzureRmHDInsightClusterConfig		
-		$config = New-AzureRmHDInsightClusterConfig -ClusterType Hadoop -ClusterTier Standard
+        #test New-AzHDInsightClusterConfig		
+		$config = New-AzHDInsightClusterConfig -ClusterType Hadoop -ClusterTier Standard
 		Assert-NotNull $config.ClusterType
 		Assert-NotNull $config.ClusterTier
 		
-		#test Add-AzureRmHDInsightStorage
+		#test Add-AzHDInsightStorage
 		Assert-AreEqual $config.AdditionalStorageAccounts.Count 0
-		$config = $config | Add-AzureRmHDInsightStorage -StorageAccountName fakestorageaccount -StorageAccountKey STORAGEACCOUNTKEY==
+		$config = $config | Add-AzHDInsightStorage -StorageAccountName fakestorageaccount -StorageAccountKey STORAGEACCOUNTKEY==
 		Assert-AreEqual $config.AdditionalStorageAccounts.Count 1
 		
-		#test Add-AzureRmHDInsightConfigValues
+		#test Add-AzHDInsightConfigValues
 		Assert-AreEqual $config.Configurations.Count 0
 		Assert-Null $config.Configurations["core-site"]
 		$coreconfig = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
 		$coreconfig.Add('coreconfig', 'corevalue')
 		Assert-Null $config.Configurations["core-site"]
-		$config = $config | Add-AzureRmHDInsightConfigValues -Core $coreconfig
+		$config = $config | Add-AzHDInsightConfigValues -Core $coreconfig
 		Assert-NotNull $config.Configurations["core-site"]
 
 		$oozieconfig = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
 		$oozieconfig.Add('oozieconfig', 'oozievalue')
 		Assert-Null $config.Configurations["oozie-site"]
-		$config = $config | Add-AzureRmHDInsightConfigValues -OozieSite $coreconfig
+		$config = $config | Add-AzHDInsightConfigValues -OozieSite $coreconfig
 		Assert-NotNull $config.Configurations["oozie-site"]
 
-		#test Add-AzureRmHDInsightMetastore
+		#test Add-AzHDInsightMetastore
 		Assert-Null $config.OozieMetastore
 		Assert-Null $config.HiveMetastore
 		$secpasswd = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
 		$mycreds = New-Object System.Management.Automation.PSCredential ("username", $secpasswd)
-		$config = $config | Add-AzureRmHDInsightMetastore -MetastoreType HiveMetastore -SqlAzureServerName server.server.server -DatabaseName dbname -Credential $mycreds
+		$config = $config | Add-AzHDInsightMetastore -MetastoreType HiveMetastore -SqlAzureServerName server.server.server -DatabaseName dbname -Credential $mycreds
 		Assert-NotNull $config.HiveMetastore
 		Assert-Null $config.OozieMetastore
 
-		#test Add-AzureRmHDInsightScriptAction
+		#test Add-AzHDInsightScriptAction
 		Assert-AreEqual $config.ScriptActions.Count 0
 		Assert-Null $config.ScriptActions["WorkerNode"]
-		$config = $config | Add-AzureRmHDInsightScriptAction -NodeType WorkerNode -Uri "http://uri.com" -Name "scriptaction" -Parameters "parameters"
+		$config = $config | Add-AzHDInsightScriptAction -NodeType WorkerNode -Uri "http://uri.com" -Name "scriptaction" -Parameters "parameters"
 		Assert-AreEqual $config.ScriptActions.Count 1
 		Assert-AreEqual $config.ScriptActions["WorkerNode"].Count 1
-		$config = $config | Add-AzureRmHDInsightScriptAction -NodeType WorkerNode -Uri "http://uri.com" -Name "scriptaction2" -Parameters "parameters"
+		$config = $config | Add-AzHDInsightScriptAction -NodeType WorkerNode -Uri "http://uri.com" -Name "scriptaction2" -Parameters "parameters"
 		Assert-AreEqual $config.ScriptActions.Count 1
 		Assert-AreEqual $config.ScriptActions["WorkerNode"].Count 2
 
-		#test Set-AzureRmHDInsightDefaultStorage
+		#test Set-AzHDInsightDefaultStorage
 		Assert-Null $config.DefaultStorageAccountName
 		Assert-Null $config.DefaultStorageAccountKey
-		$config = $config | Set-AzureRmHDInsightDefaultStorage -StorageAccountName fakedefaultaccount -StorageAccountKey DEFAULTACCOUNTKEY==
+		$config = $config | Set-AzHDInsightDefaultStorage -StorageAccountName fakedefaultaccount -StorageAccountKey DEFAULTACCOUNTKEY==
 		Assert-NotNull $config.DefaultStorageAccountName
 		Assert-NotNull $config.DefaultStorageAccountKey
     }

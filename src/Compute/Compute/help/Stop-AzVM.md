@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 7C3CF963-6F1A-444C-B90C-C1D24F89204D
@@ -21,7 +21,7 @@ Stop-AzVM [-Name] <String> [-Force] [-StayProvisioned] [-ResourceGroupName] <Str
 
 ### IdParameterSetName
 ```
-Stop-AzVM [-Name] <String> [-Force] [-StayProvisioned] [-Id] <String> [-AsJob]
+Stop-AzVM [[-Name] <String>] [-Force] [-StayProvisioned] [-Id] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -104,10 +104,22 @@ The virtual machine name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceGroupNameParameterSetName
 Aliases:
 
 Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: IdParameterSetName
+Aliases:
+
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)

@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 12F8A120-7282-4844-90E0-1C3393336E8A
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices.backup/get-azrecoveryservicesbackupjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob
 schema: 2.0.0
 ---
 
@@ -77,7 +77,7 @@ Currently, only AzureVM, AzureStorage is supported.
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage
+Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
 
 Required: False
 Position: Named

@@ -332,6 +332,10 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     if (string.IsNullOrWhiteSpace(this.ObjectId))
                     {
+                        if (ActiveDirectoryClient == null)
+                        {
+                            throw new Exception(Resources.ActiveDirectoryClientNull);
+                        }
                         ObjectId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.EmailAddress, this.ServicePrincipalName);
                     }
                     updatedPolicies = existingVault.AccessPolicies.Where(ap => !ShallBeRemoved(ap, ObjectId, this.ApplicationId)).ToArray();

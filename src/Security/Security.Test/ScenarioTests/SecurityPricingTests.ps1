@@ -18,19 +18,7 @@ Get Azure Security Center pricing settings on a subscription and its overrides
 #>
 function Get-AzureRmSecurityPricing-SubscriptionScope
 {
-    $pricings = Get-AzureRmSecurityPricing
-	Validate-Pricings $pricings
-}
-
-<#
-.SYNOPSIS
-Get Azure Security Center pricing settings override on a resource group
-#>
-function Get-AzureRmSecurityPricing-ResourceGroupScope
-{
-	$rgName = Get-TestResourceGroupName
-
-    $pricings = Get-AzureRmSecurityPricing -ResourceGroupName $rgName
+    $pricings = Get-AzSecurityPricing
 	Validate-Pricings $pricings
 }
 
@@ -40,19 +28,7 @@ Get Azure Security Center pricing settings on a subscription
 #>
 function Get-AzureRmSecurityPricing-SubscriptionLevelResource
 {
-    $pricings = Get-AzureRmSecurityPricing -Name "default"
-	Validate-Pricings $pricings
-}
-
-<#
-.SYNOPSIS
-Get Azure Security Center pricing settings override on a resource group
-#>
-function Get-AzureRmSecurityPricing-ResourceGroupLevelResource
-{
-	$rgName = Get-TestResourceGroupName
-
-    $pricings = Get-AzureRmSecurityPricing -ResourceGroupName $rgName -Name $rgName
+    $pricings = Get-AzSecurityPricing -Name "VirtualMachines"
 	Validate-Pricings $pricings
 }
 
@@ -62,9 +38,9 @@ Get Azure Security Center pricing settings by a resource ID
 #>
 function Get-AzureRmSecurityPricing-ResourceId
 {
-	$pricing = Get-AzureRmSecurityPricing | Select -First 1
+	$pricing = Get-AzSecurityPricing | Select -First 1
 
-    $fetchedPricing = Get-AzureRmSecurityPricing -ResourceId $pricing.Id
+    $fetchedPricing = Get-AzSecurityPricing -ResourceId $pricing.Id
 	Validate-Pricing $fetchedPricing
 }
 
@@ -74,18 +50,7 @@ Set an Azure Security Center pricing setting
 #>
 function Set-AzureRmSecurityPricing-SubscriptionLevelResource
 {
-    Set-AzureRmSecurityPricing -Name "default" -PricingTier "Standard"
-}
-
-<#
-.SYNOPSIS
-Set an Azure Security Center pricing setting override
-#>
-function Set-AzureRmSecurityPricing-ResourceGroupLevelResource
-{
-	$rgName = Get-TestResourceGroupName
-
-    Set-AzureRmSecurityPricing -ResourceGroupName $rgName -Name $rgName -PricingTier "Standard"
+    Set-AzSecurityPricing -Name "VirtualMachines" -PricingTier "Standard"
 }
 
 <#
