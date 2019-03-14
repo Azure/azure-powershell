@@ -26,13 +26,14 @@ namespace Microsoft.Azure.Commands.Security.Models.Pricings
             {
                 Id = value.Id,
                 Name = value.Name,
-                PricingTier = value.PricingTier
+                PricingTier = value.PricingTier,
+                FreeTrialRemainingTime = value.FreeTrialRemainingTime
             };
         }
 
-        public static List<PSSecurityPricing> ConvertToPSType(this IEnumerable<Pricing> value)
+        public static List<PSSecurityPricing> ConvertToPSType(this PricingList value)
         {
-            return value.Select(pricing => pricing.ConvertToPSType()).ToList();
+            return value.Value.Select(pricing => pricing.ConvertToPSType()).ToList();
         }
     }
 }
