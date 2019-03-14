@@ -177,6 +177,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+To run this command you need to be an administrator on the machine it is running on and be in an elevated powershell session. This is because before the certificate is uploaded the cmdlet uses the local X.509 machine store to retrive the thumbprint an key. If you try to run this without an elevated prompt yoou will get an error `Access denied`.
+
 ## RELATED LINKS
 
 [Get-AzureRmAutomationCertificate](./Get-AzureRMAutomationCertificate.md)
