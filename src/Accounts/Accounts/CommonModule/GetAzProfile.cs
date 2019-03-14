@@ -17,6 +17,7 @@ using System.Collections;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using static Microsoft.Azure.Commands.Common.Profile;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -30,23 +31,21 @@ namespace Microsoft.Azure.Commands.Common
     {
         [Parameter(Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        public string ModuleName { get; set; }
+        public string[] ModuleName { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter ListAvailable { get; set; }
 
         protected override void ProcessRecord()
         {
             try
             {
-                var isForModule = this.IsBound(nameof(ModuleName)) && !String.IsNullOrEmpty(ModuleName);
-                var profiles = isForModule ? new string[] {} : new []{ ContextAdapter.Instance.SelectedProfile };
-                if (isForModule)
-                {
-                    var module = InvokeCommand.NewScriptBlock($"Get-Module -Name {ModuleName}").Invoke().FirstOrDefault();
-                    var moduleInfo = module?.BaseObject as PSModuleInfo;
-                    var moduleProfileInfo = ((moduleInfo?.PrivateData as Hashtable)?["PSData"] as Hashtable)?["Profiles"];
-                    var moduleProfiles = moduleProfileInfo as object[] ?? (moduleProfileInfo != null ? new []{ moduleProfileInfo } : null);
-                    profiles = moduleProfiles != null && moduleProfiles.Any() ? moduleProfiles.Cast<string>().ToArray() : profiles;
-                }
-
+                var includesModuleNames = this.IsBound(nameof(ModuleName));
+                var isListAvailable = this.IsBound(nameof(ListAvailable));
+                var moduleNames = includesModuleNames ? ModuleName : new string[] { };
+                var profiles = includesModuleNames || isListAvailable
+                    ? GetProfiles(InvokeCommand, isListAvailable, moduleNames)
+                    : new []{ ContextAdapter.Instance.SelectedProfile };
                 if (profiles.Any() && !profiles.All(String.IsNullOrEmpty))
                 {
                     WriteObject(profiles, true);
