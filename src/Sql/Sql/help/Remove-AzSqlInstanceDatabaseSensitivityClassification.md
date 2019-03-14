@@ -13,7 +13,7 @@ Removes the information types and sensitivity labels of columns in the Azure SQL
 
 ## SYNTAX
 
-### ColumnParameterSet (Default)
+### ColumnParameterSet
 ```
 Remove-AzSqlInstanceDatabaseSensitivityClassification [-ResourceGroupName] <String> [-InstanceName] <String>
  [-DatabaseName] <String> -SchemaName <String> -TableName <String> -ColumnName <String> [-PassThru] [-AsJob]

@@ -13,7 +13,7 @@ Gets the recommended information types and sensitivity labels of columns in the 
 
 ## SYNTAX
 
-### DatabaseParameterSet (Default)
+### DatabaseParameterSet
 ```
 Get-AzSqlDatabaseSensitivityRecommendations [-ResourceGroupName] <String> [-ServerName] <String>
  [-DatabaseName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]

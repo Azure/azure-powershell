@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
     [Cmdlet(
         VerbsCommon.Remove,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DataClassificationCommon.SqlDatabaseSensitivityClassification,
-        DefaultParameterSetName = DataClassificationCommon.ColumnParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
     public class RemoveAzSqlDatabaseSensitivityClassification : ModifyAzSqlDatabaseSensitivityClassificationCmdlet

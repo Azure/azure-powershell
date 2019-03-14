@@ -13,7 +13,7 @@ Gets the current information types and sensitivity labels of columns in the data
 
 ## SYNTAX
 
-### DatabaseParameterSet (Default)
+### DatabaseParameterSet
 ```
 Get-AzSqlDatabaseSensitivityClassification [-ResourceGroupName] <String> [-ServerName] <String>
  [-DatabaseName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
