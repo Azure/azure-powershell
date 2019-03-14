@@ -44,12 +44,12 @@ namespace Microsoft.Azure.Commands.Network
     public partial class GetAzureRmNatGateway : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The resource group name of the nat gateway.",
             ParameterSetName = "Expand",
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The resource group name of the nat gateway.",
             ParameterSetName = "NoExpand",
             ValueFromPipelineByPropertyName = true)]
@@ -59,12 +59,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The name of the nat gateway.",
             ParameterSetName = "Expand",
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The name of the nat gateway.",
             ParameterSetName = "NoExpand",
             ValueFromPipelineByPropertyName = true)]
@@ -73,7 +73,12 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
+            HelpMessage = "The resource reference to be expanded.",
+            ParameterSetName = "Expand",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The resource reference to be expanded.",
             ParameterSetName = "Expand",
             ValueFromPipelineByPropertyName = true)]
