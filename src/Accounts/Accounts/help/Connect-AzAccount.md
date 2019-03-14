@@ -15,13 +15,21 @@ Connect to Azure with an authenticated account for use with Azure Resource Manag
 ### UserWithSubscriptionId (Default)
 ```
 Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-Subscription <String>] [-ContextName <String>]
- [-SkipContextPopulation] [-Force] [-Scope <ContextModificationScope>]
+ [-SkipContextPopulation] [-UseDeviceAuthentication] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalWithSubscriptionId
 ```
 Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-ServicePrincipal] -Tenant <String>
+ [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-Force]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UserWithCredential
+```
+Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-Tenant <String>]
  [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-Force]
  [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -74,11 +82,26 @@ This command connects to an Azure account.
 To run Azure Resource Manager cmdlets with this account, you must provide Microsoft account or organizational ID credentials at the prompt.
 If multi-factor authentication is enabled for your credentials, you must log in using the interactive option or use service principal authentication.
 
-### Example 2: Connect to an Azure service principal account
+### Example 2: (Windows PowerShell 5.1 only) Connect to an Azure account using organizational ID credentials
 ```powershell
 PS C:\> $Credential = Get-Credential
+PS C:\> Connect-AzAccount -Credential $Credential
 
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
+```
+
+This scenario works only in Windows PowerShell 5.1. The first command will prompt for user credentials (username and password), and then stores them in the $Credential variable.
+The second command connects to an Azure account using the credentials stored in $Credential.
+This account authenticates with Azure Resource Manager using organizational ID credentials.
+You cannot use multi-factor authentication or Microsoft account credentials to run Azure Resource Manager cmdlets with this account.
+
+### Example 3: Connect to an Azure service principal account
+```powershell
+PS C:\> $Credential = Get-Credential
 PS C:\> Connect-AzAccount -Credential $Credential -Tenant "xxxx-xxxx-xxxx-xxxx" -ServicePrincipal
+
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
 xxxx-xxxx-xxxx-xxxx    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
@@ -91,6 +114,7 @@ The ServicePrincipal switch parameter indicates that the account authenticates a
 ### Example 3: Use an interactive login to connect to an account for a specific tenant and subscription
 ```powershell
 PS C:\> Connect-AzAccount -Tenant "xxxx-xxxx-xxxx-xxxx" -SubscriptionId "yyyy-yyyy-yyyy-yyyy"
+
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
 azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
@@ -100,7 +124,7 @@ This command connects to an Azure account and configured AzureRM PowerShell to r
 
 ### Example 4: Add an Account Using Managed Service Identity Login
 ```powershell
-PS C:\> Connect-AzAccount -MSI
+PS C:\> Connect-AzAccount -Identity
 
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
@@ -110,7 +134,35 @@ MSI@50342              Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 This command connects using the managed service identity of the host environment (for example, if executed on a
 VirtualMachine with an assigned Managed Service Identity, this will allow the code to login using that assigned identity)
 
-### Example 5: Add an account using certificates
+### Example 5: Add an Account Using Managed Service Identity Login and ClientId
+```powershell
+PS C:\> $identity = Get-AzUserAssignedIdentity -ResourceGroupName "myResourceGroup" -Name "myUserAssignedIdentity"
+PS C:\> Get-AzVM -ResourceGroupName contoso -Name testvm | Update-AzVM -IdentityType UserAssigned -IdentityId $identity.Id
+PS C:\> Connect-AzAccount -Identity -AccountId $identity.ClientId # Run on the "testvm" virtual machine
+
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+yyyy-yyyy-yyyy-yyyy    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
+```
+
+This command connects using the managed service identity of "myUserAssignedIdentity" by adding the User Assigned Identity to the Virtual Machine, then connecting using the ClientId of the User Assigned Identity.
+More information about configuring Managed Identities can be found here: https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.
+
+### Example 6: Add an Account Using Managed Service Identity Login and ClientId
+```powershell
+PS C:\> $identity = Get-AzUserAssignedIdentity -ResourceGroupName "myResourceGroup" -Name "myUserAssignedIdentity"
+PS C:\> Get-AzVM -ResourceGroupName contoso -Name testvm | Update-AzVM -IdentityType UserAssigned -IdentityId $identity.Id
+PS C:\> Connect-AzAccount -Identity -AccountId $identity.Id # Run on the "testvm" virtual machine
+
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+yyyy-yyyy-yyyy-yyyy    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
+```
+
+This command connects using the managed service identity of "myUserAssignedIdentity" by adding the User Assigned Identity to the Virtual Machine, then connecting using the Id of the User Assigned Identity.
+More information about configuring Managed Identities can be found here: https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.
+
+### Example 7: Add an account using certificates
 ```powershell
 # For more information on creating a self-signed certificate
 # and giving it proper permissions, please see the following:
@@ -131,7 +183,26 @@ TenantId         : 4cd76576-b611-43d0-8f2b-adcb139531bf
 Environment      : AzureCloud
 ```
 
-This command connects to an Azure account using certificate-based service principal authentication. Theservice principal used for authentication should have been created with the given certificate.
+This command connects to an Azure account using certificate-based service principal authentication. The service principal used for authentication should have been created with the given certificate.
+
+### Example 8: Add an account using AccessToken authentication
+```powershell
+PS C:\> $url = "https://login.windows.net/<TenantId>/oauth2/token"
+PS C:\> $body = "grant_type=refresh_token&refresh_token=<refreshtoken>" # Refresh token obtained from ~/.azure/TokenCache.dat
+PS C:\> $response = Invoke-RestMethod $url -Method POST -Body $body
+PS C:\> $AccessToken = $response.access_token
+PS C:\> $body1 = $body + "&resource=https%3A%2F%2Fvault.azure.net"
+PS C:\> $response = Invoke-RestMethod $url -Method POST -Body $body1
+PS C:\> $body2 = $body + "&resource=https%3A%2F%2Fgraph.windows.net"
+PS C:\> $GraphAccessToken = $response.access_token
+PS C:\> Connect-AzAccount -AccountId "azureuser@contoso.com" -AccessToken $AccessToken -KeyVaultAccessToken $KeyVaultAccessToken -GraphAccessToken $GraphAccessToken -Tenant "xxxx-xxxx-xxxx-xxxx" -SubscriptionId "yyyy-yyyy-yyyy-yyyy"
+
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
+```
+
+This command connects to an Azure account specified in "AccountId" using the AccessToken and KeyVaultAccessToken provided.
 
 ## PARAMETERS
 
@@ -151,7 +222,8 @@ Accept wildcard characters: False
 ```
 
 ### -AccountId
-Account Id for access token
+Account Id for access token in AccessToken parameter set. 
+Account Id for managed service in ManagedService parameter set. Can be a managed service resource Id, or the associated client id. To use the SystemAssigned identity, leave this field blank.
 
 ```yaml
 Type: System.String
@@ -229,7 +301,7 @@ The PSCredential object provides the user ID and password for organizational ID 
 
 ```yaml
 Type: System.Management.Automation.PSCredential
-Parameter Sets: ServicePrincipalWithSubscriptionId
+Parameter Sets: ServicePrincipalWithSubscriptionId, UserWithCredential
 Aliases:
 
 Required: True
@@ -467,7 +539,7 @@ Optional tenant name or ID
 
 ```yaml
 Type: System.String
-Parameter Sets: UserWithSubscriptionId, AccessTokenWithSubscriptionId, ManagedServiceLogin
+Parameter Sets: UserWithSubscriptionId, UserWithCredential, AccessTokenWithSubscriptionId, ManagedServiceLogin
 Aliases: Domain, TenantId
 
 Required: False
@@ -483,6 +555,21 @@ Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateW
 Aliases: Domain, TenantId
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseDeviceAuthentication
+Use device code authentication instead of a browser control
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UserWithSubscriptionId
+Aliases: DeviceCode, DeviceAuth, Device
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

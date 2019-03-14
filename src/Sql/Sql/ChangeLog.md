@@ -18,7 +18,30 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.0
+* Updating AuditingEndpointsCommunicator.
+    - Fixing the behavior of an edge case while creating new diagnostic settings.
+## Version 1.4.0
+* Add support for restore an instance database from geo-redundant backups
+* Add support for backup short term retention on Managed Instance
+
+## Version 1.3.0
+* Add support for SQL DB Hyperscale tier
+* Fixed bug where restore could fail due to setting unnecessary properties in restore request
+
+
+## Version 1.2.0
+* Add Get/Set AzSqlDatabaseBackupShortTermRetentionPolicy
+* Fix issue where not being logged into Azure account would result in nullref exception when executing SQL cmdlets
+* Fixed null ref exception in Get-AzSqlCapability
+* Support Database/Server auditing to event hub and log analytics.
+
+## Version 1.1.0
 * Update incorrect online help URLs
+* Updated parameter description for LicenseType parameter with possible values
+* Fix for updating managed instance identity not working when it is the only updated property
+* Support for custom collation on managed instance
 
 ## Version 1.0.1
 * Converted the Storage management client dependency to the common SDK implementation.

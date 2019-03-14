@@ -36,9 +36,8 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
         /// <summary>
         /// Intializes the model adapter
         /// </summary>
-        /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The server adapter</returns>
-        protected override AzureSqlServerVirtualNetworkRuleAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlServerVirtualNetworkRuleAdapter InitModelAdapter()
         {
             return new AzureSqlServerVirtualNetworkRuleAdapter(DefaultProfile.DefaultContext);
         }

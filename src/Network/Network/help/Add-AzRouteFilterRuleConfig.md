@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azroutefilterruleconfig
@@ -190,13 +190,16 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 [Get-AzRouteFilterRuleConfig](./Get-AzRouteFilterRuleConfig.md)
 
+[New-AzRouteFilterRuleConfig](./New-AzRouteFilterRuleConfig.md)
+
+[Remove-AzRouteFilterRuleConfig](./Remove-AzRouteFilterRuleConfig.md)
+
+[Set-AzRouteFilterRuleConfig](./Set-AzRouteFilterRuleConfig.md)
+
 [Get-AzRouteFilter](./Get-AzRouteFilter.md)
 
-[New-AzRouteFilterRuleConfigConfig](./New-AzRouteFilterRuleConfigConfig.md)
+[New-AzRouteFilter](./New-AzRouteFilter.md)
 
-[Remove-AzRouteFilterRuleConfigConfig](./Remove-AzRouteFilterRuleConfigConfig.md)
-
-[Set-AzRouteFilterRuleConfigConfig](./Set-AzRouteFilterRuleConfigConfig.md)
+[Remove-AzRouteFilter](./Remove-AzRouteFilter.md)
 
 [Set-AzRouteFilter](./Set-AzRouteFilter.md)
-

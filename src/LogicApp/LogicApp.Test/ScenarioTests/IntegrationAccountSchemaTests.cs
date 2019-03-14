@@ -35,54 +35,53 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test New-AzureRmIntegrationAccountSchema command to create a new integration account schema.
+        /// Test New-AzIntegrationAccountSchema command to create a new integration account schema.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateIntegrationAccountSchema()
+        public void TestCreateSchema()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountSchema");
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountSchema command to get the integration account schema.
+        /// Test Get-AzIntegrationAccountSchema command to get the integration account schema.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetIntegrationAccountSchema()
+        public void TestGetSchema()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountSchema");
         }
 
         /// <summary>
-        /// Test Remove-AzureRmIntegrationAccountSchema command to remove the integration account schema.
+        /// Test Remove-AzIntegrationAccountSchema command to remove the integration account schema.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveIntegrationAccountSchema()
+        public void TestRemoveSchema()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccountSchema");
-        }        
+        }
 
         /// <summary>
-        /// Test Set-AzureRmIntegrationAccountSchema command to update the integration account schema.
+        /// Test Set-AzIntegrationAccountSchema command to update the integration account schema.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateIntegrationAccountSchema()
+        public void TestUpdateSchema()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountSchema");
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountSchema command to get all the integration account schema.
+        /// Test Get-AzIntegrationAccountSchema command to get all the integration account schema.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListIntegrationAccountSchema()
+        public void TestListSchema()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-ListIntegrationAccountSchema");
         }
     }
 }
-

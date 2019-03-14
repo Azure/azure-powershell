@@ -21,8 +21,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     using Moq;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
+    /// <summary>
+    /// Class SystemValidationsProcessorTest.
+    /// </summary>
     public class SystemValidationsProcessorTest
     {
+        /// <summary>
+        /// Defines the test method AllOutputWritersReceiveTheValidationResults.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void AllOutputWritersReceiveTheValidationResults()

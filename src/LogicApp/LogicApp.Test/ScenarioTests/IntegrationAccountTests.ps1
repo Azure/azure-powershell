@@ -14,113 +14,119 @@
 
 <#
 .SYNOPSIS
-Test New-AzureRmIntegrationAccount command
+Test New-AzIntegrationAccount command
 #>
 function Test-CreateIntegrationAccount
 {
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname	
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts"
 
-	$location = Get-LocationName
-	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
-	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
-	
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+	$integrationAccountNameBasic = "IA-Basic-" + (getAssetname)
+	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameBasic -Location $location -Sku "Basic"
+	Assert-AreEqual $integrationAccountNameBasic $integrationAccount.Name 
+ 
+	$integrationAccountNameStandard = "IA-Standard-" + (getAssetname)
+	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameStandard -Location $location -Sku "Standard"
+	Assert-AreEqual $integrationAccountNameStandard $integrationAccount.Name 
+
+	$integrationAccountNameStandard2 = "IA-Standard2-" + (getAssetname)
+	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameStandard2 -Location $location -Sku "standard"
+	Assert-AreEqual $integrationAccountNameStandard2 $integrationAccount.Name 
+ 
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameBasic -Force
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameStandard -Force
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameStandard2 -Force
 }
 
 <#
 .SYNOPSIS
-Test Get-AzureRmIntegrationAccount command
+Test Get-AzIntegrationAccount command
 #>
-function Test-CreateAndGetIntegrationAccount
+function Test-GetIntegrationAccount
 {
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
-	$location = Get-LocationName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts"
 
-	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
+	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
 	
-	$integrationAccount = Get-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
+	$integrationAccount = Get-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
 
-	$integrationAccounts = Get-AzureRmIntegrationAccount
+	$integrationAccounts = Get-AzIntegrationAccount
 	Assert-True { $integrationAccounts.Count -gt 0 }
 
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force 	
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 <#
 .SYNOPSIS
-Test Remove-AzureRmIntegrationAccount command
+Test Remove-AzIntegrationAccount command
 #>
 function Test-RemoveIntegrationAccount
 {
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
-	$location = Get-LocationName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts"
 
-	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
+	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
-	
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 
 <#
 .SYNOPSIS
-Test Update-AzureRmIntegrationAccount command
+Test Update-AzIntegrationAccount command
 #>
 function Test-UpdateIntegrationAccount
 {
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
-	$location = Get-LocationName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts"
 
-	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
+	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
 
-	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+	$updatedIntegrationAccount = Set-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 	Assert-AreEqual $updatedIntegrationAccount.Name $integrationAccount.Name 
 
-	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"  -Force
+	$updatedIntegrationAccount = Set-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"  -Force
 	Assert-AreEqual $updatedIntegrationAccount.Name $integrationAccount.Name 
 
-	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Sku "Standard" -Force
+	$updatedIntegrationAccount = Set-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Sku "Standard" -Force
 	Assert-AreEqual $updatedIntegrationAccount.Name $integrationAccount.Name 
 
-	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Force
+	$updatedIntegrationAccount = Set-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Force
 	Assert-AreEqual $updatedIntegrationAccount.Name $integrationAccount.Name 
-	
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 <#
 .SYNOPSIS
-Test Get-AzureRmIntegrationAccountCallbackUrl command
+Test Get-AzIntegrationAccountCallbackUrl command
 #>
 function Test-GetIntegrationAccountCallbackUrl
 {
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
-	$location = Get-LocationName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts"
 
-	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
+	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name
 
 	[datetime]$date = Get-Date
 	$date.AddDays(100)
 
-	$callbackUrl = Get-AzureRmIntegrationAccountCallbackUrl -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Notafter $date
+	$callbackUrl = Get-AzIntegrationAccountCallbackUrl -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Notafter $date
 	Assert-NotNull $callbackUrl 
 
-	$callbackUrl1 = Get-AzureRmIntegrationAccountCallbackUrl -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
+	$callbackUrl1 = Get-AzIntegrationAccountCallbackUrl -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
 	Assert-NotNull $callbackUrl1 
-	
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+
+	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }

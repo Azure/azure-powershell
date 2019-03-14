@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 40E56EC1-3327-4DFF-8262-E2EEBB5E4447
@@ -28,7 +28,7 @@ The **Set-AzFirewall** cmdlet updates an Azure Firewall.
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
 $ruleCollection = $azFw.GetApplicationRuleCollectionByName("ruleCollectionName")
 $ruleCollection.Priority = 101
-Set-AzFirewall -Firewall $azFw
+Set-AzFirewall -AzureFirewall $azFw
 ```
 
 This example updates the priority of an existing rule collection of an Azure Firewall.
