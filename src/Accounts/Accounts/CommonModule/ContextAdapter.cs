@@ -37,10 +37,25 @@ namespace Microsoft.Azure.Commands.Common
     /// </summary>
     internal class ContextAdapter
     {
-        IProfileProvider _provider = AzureRmProfileProvider.Instance;
-        IAuthenticationFactory _authenticator = AzureSession.Instance.AuthenticationFactory;
+        private readonly IProfileProvider _provider = AzureRmProfileProvider.Instance;
+        private readonly IAuthenticationFactory _authenticator = AzureSession.Instance.AuthenticationFactory;
 
         internal static ContextAdapter Instance => new ContextAdapter();
+
+        /// <summary>
+        /// The name of the selected profile
+        /// </summary>
+        internal string SelectedProfile
+        {
+            get => _provider.Profile?.DefaultContext?.VersionProfile ?? string.Empty;
+            set
+            {
+                if (_provider.Profile?.DefaultContext != null)
+                {
+                    _provider.Profile.DefaultContext.VersionProfile = value;
+                }
+            }
+        }
 
         /// <summary>
         /// Implementation of the OnNewRequest Event
@@ -145,7 +160,7 @@ namespace Microsoft.Azure.Commands.Common
         }
 
         /// <summary>
-        /// Pipelien step for authenticating requests
+        /// Pipeline step for authenticating requests
         /// </summary>
         /// <param name="context"></param>
         /// <param name="resourceId"></param>
@@ -159,16 +174,6 @@ namespace Microsoft.Azure.Commands.Common
                 var authToken = _authenticator.Authenticate(context.Account, context.Environment, context.Tenant.Id, null, "Never", null, resourceId);
                 authToken.AuthorizeRequest((type, token) => request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(type, token));
             }, outerToken);
-        }
-
-        /// <summary>
-        /// Gets the currently selected profile from the context
-        /// </summary>
-        /// <returns>The name of the selected profile</returns>
-        internal string GetSelectedProfile()
-        {
-            // TODO: Implement profile support into the context and return it here.
-            return _provider?.Profile?.DefaultContext?.VersionProfile ?? string.Empty;
         }
 
         private static IAzureContext GetDefaultContext(IProfileProvider provider, InvocationInfo invocationInfo)
@@ -198,8 +203,8 @@ namespace Microsoft.Azure.Commands.Common
         /// Resolve an array of parameter names into their bound parameter values
         /// </summary>
         /// <param name="parameterNames">The set of parameter names to resolve</param>
-        /// <param name="info">The invoication information for the cmdket</param>
-        /// <returns>Resolved parameter names if all parameters could be matched.  Othrwise an empty array</returns>
+        /// <param name="info">The invocation information for the cmdlet</param>
+        /// <returns>Resolved parameter names if all parameters could be matched. Otherwise an empty array</returns>
         private static T[] ResolveParameterValues<T>(string[] parameterNames, InvocationInfo info) where T:  class
         {
             var outputList = new List<T>();
