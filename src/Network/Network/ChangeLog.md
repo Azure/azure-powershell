@@ -65,6 +65,33 @@
 ## Version 1.5.0
 * Add Threat Intelligence support for Azure Firewall
 * Add Application Gateway Firewall Policy top level resource and Custom Rules
+* Added Update cmdlets which work like incremental Set i.e. you needn't to re-specify all the parameters to avoid nullifying of the corresponding properties
+    - New cmdlets added:
+        - Update-AzApplicationGatewayAutoscaleConfiguration
+        - Update-AzApplicationGatewayBackendHttpSettings
+        - Update-AzApplicationGatewayConnectionDraining
+        - Update-AzApplicationGatewayWebApplicationFirewallConfiguration
+        - Update-AzApplicationGatewayFrontendIPConfig
+        - Update-AzApplicationGatewayHttpListener
+        - Update-AzApplicationGatewayProbeConfig
+        - Update-AzApplicationGatewayRequestRoutingRule
+        - Update-AzApplicationGatewayRedirectConfiguration
+        - Update-AzApplicationGatewaySku
+        - Update-AzApplicationGatewaySslPolicy
+        - Update-AzApplicationGatewayUrlPathMapConfig
+        - Update-AzLoadBalancerInboundNatPoolConfig
+        - Update-AzExpressRouteCircuitPeeringConfig
+        - Update-AzNetworkInterfaceIpConfig
+        - Update-AzRouteConfig
+        - Update-AzLoadBalancerFrontendIpConfig
+        - Update-AzLoadBalancerInboundNatRuleConfig
+        - Update-AzRouteFilterRuleConfig
+        - Update-AzLoadBalancerRuleConfig
+        - Update-AzLoadBalancerProbeConfig
+        - Update-AzLoadBalancerOutboundRuleConfig
+        - Update-AzNetworkSecurityRuleConfig
+        - Update-AzVirtualNetworkSubnetConfig
+        - Update-AzServiceEndpointPolicyDefinition
 
 
 ## Version 1.4.0
