@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Updated ScheduleRunDays in SchedulePolicy object according to timezone
 
 ## Version 1.2.0
 * Added SnapshotRetentionInDays in Azure VM policy to support Instant RP
