@@ -82,13 +82,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "An array of public ip addresses associated with the nat gateway resource.",
             ValueFromPipelineByPropertyName = true)]
-        public PSResourceId[] PublicIpAddress { get; set; }
+        public PSPublicIpAddresses[] PublicIpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "An array of public ip prefixes associated with the nat gateway resource.",
             ValueFromPipelineByPropertyName = true)]
-        public PSResourceId[] PublicIpPrefix { get; set; }
+        public PSPublicIpPrefixes[] PublicIpPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -106,20 +106,20 @@ namespace Microsoft.Azure.Commands.Network
             PSNatGatewaySku vSku = null;
 
             // PublicIpAddresses
-            List<PSSubResource> vPublicIpAddresses = null;
+            List<PSPublicIpAddresses> vPublicIpAddresses = null;
 
             // PublicIpPrefixes
-            List<PSSubResource> vPublicIpPrefixes = null;
+            List<PSPublicIpPrefixes> vPublicIpPrefixes = null;
 
             if (this.PublicIpAddress?.ToList() != null)
             {
                 if (vPublicIpAddresses == null)
                 {
-                    vPublicIpAddresses = new List<PSSubResource>();
+                    vPublicIpAddresses = new List<PSPublicIpAddresses>();
                 }
                 if (vPublicIpAddresses.PublicIpAddresses == null)
                 {
-                    vPublicIpAddresses.PublicIpAddresses = new List<Microsoft.Azure.Management.Network.Models.SubResource>();
+                    vPublicIpAddresses.PublicIpAddresses = new List<Microsoft.Azure.Management.Network.Models.PSPublicIpAddresses>();
                 }
                 vPublicIpAddresses.PublicIpAddresses.PublicIpAddresses = this.PublicIpAddress?.ToList();
             }
@@ -128,11 +128,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (vPublicIpPrefixes == null)
                 {
-                    vPublicIpPrefixes = new List<PSSubResource>();
+                    vPublicIpPrefixes = new List<PublicIpPrefixes>();
                 }
                 if (vPublicIpPrefixes.PublicIpPrefixes == null)
                 {
-                    vPublicIpPrefixes.PublicIpPrefixes = new List<Microsoft.Azure.Management.Network.Models.SubResource>();
+                    vPublicIpPrefixes.PublicIpPrefixes = new List<Microsoft.Azure.Management.Network.Models.PublicIpPrefixes>();
                 }
                 vPublicIpPrefixes.PublicIpPrefixes.PublicIpPrefixes = this.PublicIpPrefix?.ToList();
             }

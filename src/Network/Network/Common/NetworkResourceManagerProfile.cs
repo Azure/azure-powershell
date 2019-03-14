@@ -73,10 +73,6 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.NatGateway, CNM.PSNatGateway>();
                 cfg.CreateMap<CNM.PSNatGatewaySku, MNM.NatGatewaySku>();
                 cfg.CreateMap<MNM.NatGatewaySku, CNM.PSNatGatewaySku>();
-                cfg.CreateMap<CNM.PSSubResource, MNM.SubResource>();
-                cfg.CreateMap<MNM.SubResource, CNM.PSSubResource>();
-                cfg.CreateMap<CNM.PSTagsObject, MNM.TagsObject>();
-                cfg.CreateMap<MNM.TagsObject, CNM.PSTagsObject>();
 
 
                 // Bgp Service Community
