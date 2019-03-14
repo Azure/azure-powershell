@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Gets or sets the frontend endpoint name.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Frontend endpoint name.")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsParameterSet, HelpMessage = "Frontend endpoint name.")]
+        [Parameter(Mandatory = false, ParameterSetName = ObjectParameterSet, HelpMessage = "Frontend endpoint name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
