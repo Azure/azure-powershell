@@ -13,7 +13,7 @@ Gets the current information types and sensitivity labels of columns in the Azur
 
 ## SYNTAX
 
-### DatabaseParameterSet
+### DatabaseParameterSet (Default)
 ```
 Get-AzSqlInstanceDatabaseSensitivityClassification [-ResourceGroupName] <String> [-InstanceName] <String>
  [-DatabaseName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]

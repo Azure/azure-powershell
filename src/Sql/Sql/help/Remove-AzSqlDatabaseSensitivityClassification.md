@@ -13,7 +13,7 @@ Removes the information types and sensitivity labels of columns in the database.
 
 ## SYNTAX
 
-### ColumnParameterSet
+### ColumnParameterSet (Default)
 ```
 Remove-AzSqlDatabaseSensitivityClassification [-ResourceGroupName] <String> [-ServerName] <String>
  [-DatabaseName] <String> -SchemaName <String> -TableName <String> -ColumnName <String> [-PassThru] [-AsJob]

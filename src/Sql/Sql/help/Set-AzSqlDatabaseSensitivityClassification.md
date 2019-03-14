@@ -13,7 +13,7 @@ Sets the information types and sensitivity labels of columns in the database.
 
 ## SYNTAX
 
-### ColumnParameterSet
+### ColumnParameterSet (Default)
 ```
 Set-AzSqlDatabaseSensitivityClassification [-ResourceGroupName] <String> [-ServerName] <String>
  [-DatabaseName] <String> -SchemaName <String> -TableName <String> -ColumnName <String>
