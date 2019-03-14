@@ -88,7 +88,7 @@ Type                             : Microsoft.Network/frontdoors/frontendendpoint
 
 Disable HTTPS for a custom domain with PSFrontendEndpoint object.
 
-### Example 2: Disable HTTPS for a custom domain with ResourceId.
+### Example 3: Disable HTTPS for a custom domain with ResourceId.
 ```powershell
 PS C:\> Disable-AzFrontDoorCustomDomainHttps -ResourceId $resourceId 
 

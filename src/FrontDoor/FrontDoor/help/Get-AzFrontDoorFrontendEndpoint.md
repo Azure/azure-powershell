@@ -12,7 +12,7 @@ Get a front door frontend endpoint.
 
 ## SYNTAX
 
-### ByFieldsParameterSet
+### ByFieldsParameterSet (Default)
 ```
 Get-AzFrontDoorFrontendEndpoint -ResourceGroupName <String> -FrontDoorName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]

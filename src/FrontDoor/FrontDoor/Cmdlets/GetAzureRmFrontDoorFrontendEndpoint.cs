@@ -1,4 +1,18 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
 using System.Collections;
 using System.Management.Automation;
 using System.Net;
@@ -52,7 +66,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Resource Id of the Front Door
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Id of the Front Door")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Id of the Front Door frontend endpoint")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -67,12 +81,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             else if(ParameterSetName == ResourceIdParameterSet)
             {
                 ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
-                if (!ResourceIdentifierExtensions.IsFrontDoorResourceType(identifier))
+                if (!ResourceIdentifierExtensions.IsFrontendEndpointResourceType(identifier))
                 {
                     throw new PSArgumentException(string.Format(Resources.Error_InvalidResourceId, ResourceId));
                 }
                 ResourceGroupName = identifier.ResourceGroupName;
-                FrontDoorName = identifier.ResourceName;
+                Name = identifier.ResourceName;
+                FrontDoorName = ResourceIdentifierExtensions.GetFrontDoorName(identifier);
             }
 
             if (Name == null)

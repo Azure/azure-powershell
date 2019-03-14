@@ -99,20 +99,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = true, ParameterSetName = ObjectWithVaultParameterSet, HelpMessage = "The version of the Key Vault secret representing the full certificate PFX")]
         public string SecretVersion { get; set; }
 
-        /// <summary>
-        /// The type of the certificate used for secure connections to a frontendEndpoint
-        /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = FieldsParameterSet, HelpMessage = "The type of the certificate used for secure connections to a frontendEndpoint")]
-        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "The type of the certificate used for secure connections to a frontendEndpoint")]
-        [Parameter(Mandatory = false, ParameterSetName = ObjectParameterSet, HelpMessage = "The type of the certificate used for secure connections to a frontendEndpoint")]
-        public PSCertificateType CertificateType { get; set; } = PSCertificateType.Shared;
-
-        /// <summary>
-        /// Defines the TLS extension protocol that is used for secure delivery
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The TLS extension protocol that is used for secure delivery")]
-        public PSProtocolType ProtocolType { get; set; } = PSProtocolType.ServerNameIndication;
-
         public override void ExecuteCmdlet()
         {
             try
@@ -141,7 +127,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 if (ParameterSetName == FieldsParameterSet || ParameterSetName == ResourceIdParameterSet || ParameterSetName == ObjectParameterSet)
                 {
                     customHttpsConfiguration.CertificateSource = PSCertificateSource.FrontDoor.ToString();
-                    customHttpsConfiguration.CertificateType = CertificateType.ToString();
+                    customHttpsConfiguration.CertificateType = PSCertificateType.Shared.ToString();
                 }
                 else if (ParameterSetName == FieldsWithVaultParameterSet || ParameterSetName == ResourceIdWithVaultParameterSet || ParameterSetName == ObjectWithVaultParameterSet)
                 {
@@ -151,7 +137,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     customHttpsConfiguration.SecretVersion = SecretVersion;
                 }
 
-                customHttpsConfiguration.ProtocolType = ProtocolType.ToString();
+                customHttpsConfiguration.ProtocolType = PSProtocolType.ServerNameIndication.ToString();
                 
                 if (ShouldProcess(Resources.FrontDoorTarget, string.Format(Resources.EnableCustomDomainHttpsWarning, FrontendEndpointName)))
                 {
