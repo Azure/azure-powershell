@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/test-azdeployment
@@ -18,6 +18,12 @@ Test-AzDeployment -Location <String> -TemplateFile <String> [-ApiVersion <String
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ByTemplateObjectAndParameterObject
+```
+Test-AzDeployment -Location <String> -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable>
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ByTemplateFileAndParameterObject
 ```
 Test-AzDeployment -Location <String> -TemplateParameterObject <Hashtable> -TemplateFile <String>
@@ -27,6 +33,12 @@ Test-AzDeployment -Location <String> -TemplateParameterObject <Hashtable> -Templ
 ### ByTemplateUriAndParameterObject
 ```
 Test-AzDeployment -Location <String> -TemplateParameterObject <Hashtable> -TemplateUri <String>
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByTemplateObjectAndParameterFile
+```
+Test-AzDeployment -Location <String> -TemplateParameterFile <String> -TemplateObject <Hashtable>
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -42,6 +54,12 @@ Test-AzDeployment -Location <String> -TemplateParameterFile <String> -TemplateUr
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ByTemplateObjectAndParameterUri
+```
+Test-AzDeployment -Location <String> -TemplateParameterUri <String> -TemplateObject <Hashtable>
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ByTemplateFileAndParameterUri
 ```
 Test-AzDeployment -Location <String> -TemplateParameterUri <String> -TemplateFile <String>
@@ -52,6 +70,12 @@ Test-AzDeployment -Location <String> -TemplateParameterUri <String> -TemplateFil
 ```
 Test-AzDeployment -Location <String> -TemplateParameterUri <String> -TemplateUri <String>
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByTemplateObjectWithNoParameters
+```
+Test-AzDeployment -Location <String> -TemplateObject <Hashtable> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
@@ -67,10 +91,19 @@ The **Test-AzDeployment** cmdlet determines whether a deployment template and it
 
 ### Example 1: Test deployment with a custom template and parameter file
 ```
-PS C:\>Test-AzDeployment -Location "West US" -TemplateFile "D:\Azure\Templates\EngineeringSite.json" -TemplateParameterFile "D:\Azure\Templates\EngSiteParms.json"
+PS C:\> Test-AzDeployment -Location "West US" -TemplateFile "D:\Azure\Templates\EngineeringSite.json" -TemplateParameterFile "D:\Azure\Templates\EngSiteParms.json"
 ```
 
 This command tests a deployment at the current subscription scope using the given template file and parameters file.
+
+### Example 2: Test deployment with a custom template object and parameter file
+```
+PS C:\> $TemplateFileText = [System.IO.File]::ReadAllText("D:\Azure\Templates\EngineeringSite.json")
+PS C:\> $TemplateObject = ConvertFrom-Json $TemplateFileText -AsHashtable
+PS C:\> Test-AzDeployment -Location "West US" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\EngSiteParams.json"
+```
+
+This command tests a deployment at the current subscription scope using the an in-memory hashtable created from the given template file and a parameter file.
 
 ## PARAMETERS
 
@@ -150,12 +183,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -TemplateObject
+A hash table which represents the template.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: ByTemplateObjectAndParameterObject, ByTemplateObjectAndParameterFile, ByTemplateObjectAndParameterUri, ByTemplateObjectWithNoParameters
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -TemplateParameterFile
 A file that has the template parameters.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile
+Parameter Sets: ByTemplateObjectAndParameterFile, ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile
 Aliases:
 
 Required: True
@@ -170,7 +218,7 @@ A hash table which represents the parameters.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: ByTemplateFileAndParameterObject, ByTemplateUriAndParameterObject
+Parameter Sets: ByTemplateObjectAndParameterObject, ByTemplateFileAndParameterObject, ByTemplateUriAndParameterObject
 Aliases:
 
 Required: True
@@ -185,7 +233,7 @@ Uri to the template parameter file.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateFileAndParameterUri, ByTemplateUriAndParameterUri
+Parameter Sets: ByTemplateObjectAndParameterUri, ByTemplateFileAndParameterUri, ByTemplateUriAndParameterUri
 Aliases:
 
 Required: True

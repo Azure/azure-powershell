@@ -20,7 +20,7 @@ function Test-LocationCompleter
 {
 	$resourceTypes = @("Microsoft.Batch/operations")
 	$locations = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.LocationCompleterAttribute]::FindLocations($resourceTypes, -1)
-	$expectedResourceType = (Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Batch").ResourceTypes | Where-Object {$_.ResourceType -eq "operations"}
+	$expectedResourceType = (Get-AzResourceProvider -ProviderNamespace "Microsoft.Batch").ResourceTypes | Where-Object {$_.ResourceType -eq "operations"}
 	$expectedLocations = $expectedResourceType.Locations | ForEach-Object {"`'" + $_ + "`'"}
 	Assert-AreEqualArray $locations $expectedLocations
 }
@@ -33,7 +33,7 @@ Tests resource group completer
 function Test-ResourceGroupCompleter
 {
 	$resourceGroups = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleterAttribute]::GetResourceGroups(-1)
-	$expectResourceGroups = Get-AzureRmResourceGroup | ForEach-Object {$_.Name}
+	$expectResourceGroups = Get-AzResourceGroup | ForEach-Object {$_.Name}
 	Assert-AreEqualArray $resourceGroups $expectResourceGroups
 }
 
@@ -44,7 +44,7 @@ Tests resource id completer
 function Test-ResourceIdCompleter
 {
     $resourceType = "Microsoft.Storage/storageAccounts"
-    $expectResourceIds = Get-AzureRmResource -ResourceType $resourceType | ForEach-Object {$_.Id}
+    $expectResourceIds = Get-AzResource -ResourceType $resourceType | ForEach-Object {$_.Id}
     # take data from Azure and put to cache
     $resourceIds = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceIdCompleterAttribute]::GetResourceIds($resourceType)
     Assert-AreEqualArray $resourceIds $expectResourceIds

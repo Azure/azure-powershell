@@ -28,7 +28,7 @@ function Test-CreateServerCommunicationLink
 	try
 	{
 		$linkName = Get-ElasticPoolName
-		$ep1 = New-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$ep1 = New-AzSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-LinkName $linkName -PartnerServer $server2.ServerName
 
 		Assert-NotNull $ep1
@@ -55,7 +55,7 @@ function Test-GetServerCommunicationLink
 	$server2 = Create-ServerForTest $rg $locationOverride
 
 	$linkName = Get-ElasticPoolName
-	$job = New-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
+	$job = New-AzSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
 		-LinkName $linkName -PartnerServer $server2.ServerName -AsJob
 	$job | Wait-Job
 	$ep1 = $job.Output
@@ -66,13 +66,13 @@ function Test-GetServerCommunicationLink
 	
 	try
 	{
-		$gep1 = Get-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		$gep1 = Get-AzSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-LinkName $ep1.Name 
 		Assert-NotNull $gep1
 		Assert-AreEqual $linkName $gep1.Name
 		Assert-AreEqual $server2.ServerName $gep1.PartnerServer
 
-		$all = $server1 | Get-AzureRmSqlServerCommunicationLink
+		$all = $server1 | Get-AzSqlServerCommunicationLink
 		Assert-AreEqual $all.Count 1
 	}
 	finally
@@ -95,15 +95,15 @@ function Test-RemoveServerCommunicationLink
 	$server2 = Create-ServerForTest $rg $locationOverride
 
 	$linkName = Get-ElasticPoolName
-	$ep1 = New-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
+	$ep1 = New-AzSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
 		-LinkName $linkName -PartnerServer $server2.ServerName
 	Assert-NotNull $ep1
 	
 	try
 	{
-		Remove-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName -LinkName $ep1.Name -Force
+		Remove-AzSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName -LinkName $ep1.Name -Force
 		
-		$all = $server1 | Get-AzureRmSqlServerCommunicationLink
+		$all = $server1 | Get-AzSqlServerCommunicationLink
 		Assert-AreEqual $all.Count 0
 	}
 	finally

@@ -32,7 +32,7 @@ function Test-CreateServer
 	try
 	{
 		# With all parameters
-		$job = New-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName `
+		$job = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName `
 			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -AsJob
 		$job | Wait-Job
 		$server1 = $job.Output
@@ -66,7 +66,7 @@ function Test-UpdateServer
 		$serverPassword = "n3wc00lP@55w0rd"
 		$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
 
-		$server1 = Set-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+		$server1 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
 			-SqlAdministratorPassword $secureString
 		
 		Assert-AreEqual $server1.ServerName $server.ServerName
@@ -78,7 +78,7 @@ function Test-UpdateServer
 		$serverPassword = "n3wc00lP@55w0rd!!!"
 		$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
 
-		$server2 = $server | Set-AzureRmSqlServer -SqlAdministratorPassword $secureString
+		$server2 = $server | Set-AzSqlServer -SqlAdministratorPassword $secureString
 		Assert-AreEqual $server2.ServerName $server.ServerName
 		Assert-AreEqual $server2.ServerVersion $server.ServerVersion
 		Assert-AreEqual $server2.SqlAdministratorLogin $server.SqlAdministratorLogin
@@ -108,22 +108,22 @@ function Test-GetServer
 	try
 	{
 		# Test using parameters
-		$resp1 = Get-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName
+		$resp1 = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName
 		Assert-AreEqual $server1.ServerName $resp1.ServerName
 		Assert-AreEqual $server1.SqlAdministratorLogin $resp1.SqlAdministratorLogin
 		Assert-StartsWith ($server1.ServerName + ".") $server1.FullyQualifiedDomainName
 		
 		# Test piping
-		$resp2 = $server2 | Get-AzureRmSqlServer
+		$resp2 = $server2 | Get-AzSqlServer
 		Assert-AreEqual $server2.ServerName $resp2.ServerName
 		Assert-AreEqual $server2.SqlAdministratorLogin $resp2.SqlAdministratorLogin
 		Assert-StartsWith ($server1.ServerName + ".") $server1.FullyQualifiedDomainName
 		
-		$all = Get-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName
+		$all = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual 2 $all.Count
 
 		# Test getting all servers in all resource groups
-		$all2 = Get-AzureRmSqlServer
+		$all2 = Get-AzSqlServer
 
 		# It is possible that there were existing servers in the subscription when the test was recorded, so make sure
 		# that the servers that we created are retrieved and ignore the other ones.
@@ -152,12 +152,12 @@ function Test-RemoveServer
 	try
 	{
 		# Test using parameters
-		Remove-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName -Force
+		Remove-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName -Force
 		
 		# Test piping
-		$server2 | Remove-AzureRmSqlServer -Force
+		$server2 | Remove-AzSqlServer -Force
 
-		$all = Get-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName
+		$all = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $all.Count 0
 	}
 	finally
@@ -182,7 +182,7 @@ function Test-CreateServerWithIdentity
 
 	try
 	{
-		$server1 = New-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location "northeurope" -SqlAdministratorCredentials $credentials -AssignIdentity
+		$server1 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location "northeurope" -SqlAdministratorCredentials $credentials -AssignIdentity
 		Assert-AreEqual $server1.ServerName $serverName
 		Assert-AreEqual $server1.Identity.Type SystemAssigned
 		Assert-NotNull $server1.Identity.PrincipalId
@@ -209,7 +209,7 @@ function Test-UpdateServerWithIdentity
 		$serverPassword = "n3wc00lP@55w0rd"
 		$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
 
-		$server1 = Set-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -SqlAdministratorPassword $secureString -AssignIdentity
+		$server1 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -SqlAdministratorPassword $secureString -AssignIdentity
 		Assert-AreEqual $server1.ServerName $server.ServerName
 		Assert-AreEqual $server1.Identity.Type SystemAssigned
 		Assert-NotNull $server1.Identity.PrincipalId
@@ -237,7 +237,7 @@ function Test-UpdateServerWithoutIdentity
 	try
 	{
 		# Create a server with identity
-		$server1 = New-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location "northeurope" -SqlAdministratorCredentials $credentials -AssignIdentity
+		$server1 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location "northeurope" -SqlAdministratorCredentials $credentials -AssignIdentity
 		Assert-AreEqual $server1.ServerName $serverName
 		Assert-AreEqual $server1.Identity.Type SystemAssigned
 		Assert-NotNull $server1.Identity.PrincipalId
@@ -245,7 +245,7 @@ function Test-UpdateServerWithoutIdentity
 		# Update server without "AssignIdentity" switch and validate identity still exists
 		$newPassword = "n3wc00lP@55w0rd"
 		$secureString = ConvertTo-SecureString $newPassword -AsPlainText -Force
-		$server2 = Set-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName -SqlAdministratorPassword $secureString
+		$server2 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName -SqlAdministratorPassword $secureString
 		Assert-AreEqual $server2.Identity.Type SystemAssigned
 		Assert-NotNull $server2.Identity.PrincipalId
 	}

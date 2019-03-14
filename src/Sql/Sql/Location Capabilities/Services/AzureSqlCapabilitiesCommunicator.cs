@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         public AzureSqlCapabilitiesCommunicator(IAzureContext context)
         {
             Context = context;
-            if (context.Subscription != Subscription)
+            if (context?.Subscription != Subscription)
             {
-                Subscription = context.Subscription;
+                Subscription = context?.Subscription;
                 SqlClient = null;
             }
         }

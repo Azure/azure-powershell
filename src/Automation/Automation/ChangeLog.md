@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.2
+* Fixed issue when retreiving certain monthly schedules in several Azure Automation cmdlets
+* Fix Get-AzAutomationDscNode returning just top 20 nodes. Now it returns all nodes
+
+## Version 1.1.1
+* Update help for Import-AzAutomationDscNodeConfiguration
+* Added configuration name validation to Import-AzAutomationDscConfiguration cmdlet
+* Improved error handling for Import-AzAutomationDscConfiguration cmdlet
+
+## Version 1.1.0
+* Added support for Python 2 runbooks
 * Update incorrect online help URLs
 
 ## Version 1.0.0

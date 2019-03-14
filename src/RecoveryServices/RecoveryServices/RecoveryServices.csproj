@@ -15,4 +15,8 @@
     <PackageReference Include="System.Security.Cryptography.Cng" Version="4.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Accounts\Authentication\Authentication.csproj" />
+  </ItemGroup>
+
 </Project>
