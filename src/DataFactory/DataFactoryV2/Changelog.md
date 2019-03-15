@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 
+## Upcoming Release 2019-04-09
+* Updated Set-AzDataFactoryV2 cmdlet with extra parameters for RepoConfiguration related settings.
+
 ## Upcoming Release
 * Updated ADF .Net SDK version to 3.0.1
 
