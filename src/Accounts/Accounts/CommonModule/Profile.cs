@@ -14,6 +14,8 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using Pwsh = System.Management.Automation.PowerShell;
@@ -25,29 +27,41 @@ namespace Microsoft.Azure.Commands.Common
     /// </summary>
     internal static class Profile
     {
-        public static string[] GetProfiles(CommandInvocationIntrinsics invokeCommand, bool listAvailable, params string[] moduleNames)
+        public static string[] GetProfiles(CommandInvocationIntrinsics invokeCommand, bool listAvailable = false, params string[] moduleNames) =>
+            GetModules(invokeCommand, listAvailable, moduleNames).SelectMany(GetProfiles).Distinct().ToArray();
+
+        internal static PSModuleInfo[] GetModules(CommandInvocationIntrinsics invokeCommand, bool listAvailable = false, params string[] moduleNames)
         {
             var command = "Get-Module";
-            command += moduleNames != null && moduleNames.Any() ? $" -Name {String.Join(", ", moduleNames.Select(mn => $"'{mn}'"))}" : String.Empty;
+            command += moduleNames != null && moduleNames.Any() ? $" -Name {CommaSeparatedQuotedList(moduleNames)}" : String.Empty;
             command += listAvailable ? " -ListAvailable" : String.Empty;
-
-            var profiles = new string[] { };
             var modules = listAvailable ? Pwsh.Create().AddScript(command).Invoke<PSObject>() : invokeCommand.NewScriptBlock(command).Invoke();
-            if (modules != null && modules.Any())
-            {
-                profiles = modules.SelectMany(GetProfiles).Distinct().ToArray();
-            }
-
-            return profiles;
+            return modules != null ? modules.Select(m => m?.BaseObject as PSModuleInfo).Where(m => m != null).ToArray() : new PSModuleInfo[] { };
         }
 
-        private static string[] GetProfiles(PSObject module)
+        internal static string[] GetProfiles(PSModuleInfo moduleInfo)
         {
-            var profiles = new string[] { };
-            var moduleInfo = module?.BaseObject as PSModuleInfo;
             var moduleProfileInfo = ((moduleInfo?.PrivateData as Hashtable)?["PSData"] as Hashtable)?["Profiles"];
             var moduleProfiles = moduleProfileInfo as object[] ?? (moduleProfileInfo != null ? new[] { moduleProfileInfo } : null);
-            return moduleProfiles != null && moduleProfiles.Any() ? moduleProfiles.Cast<string>().ToArray() : profiles;
+            return moduleProfiles != null && moduleProfiles.Any() ? moduleProfiles.Cast<string>().ToArray() : new string[] { };
+        }
+
+        internal static void ReloadModules(CommandInvocationIntrinsics invokeCommand, params PSModuleInfo[] moduleInfos)
+        {
+            var modulePaths = CommaSeparatedQuotedList(moduleInfos.Select(GetModulePath).ToArray());
+            if (!String.IsNullOrEmpty(modulePaths))
+            {
+                var command = $"Remove-Module -Name {modulePaths}; Import-Module -Name {modulePaths}";
+                invokeCommand.NewScriptBlock(command).Invoke();
+            }
+        }
+
+        private static string CommaSeparatedQuotedList(params string[] items) => String.Join(", ", items.Where(i => !String.IsNullOrEmpty(i)).Select(i => $"'{i}'"));
+
+        private static string GetModulePath(PSModuleInfo moduleInfo)
+        {
+            var scriptPsd1 = Path.Combine(moduleInfo.ModuleBase, $"{moduleInfo.Name}.psd1");
+            return moduleInfo.ModuleType == ModuleType.Script && File.Exists(scriptPsd1) ? scriptPsd1 : moduleInfo.Path;
         }
     }
 }
