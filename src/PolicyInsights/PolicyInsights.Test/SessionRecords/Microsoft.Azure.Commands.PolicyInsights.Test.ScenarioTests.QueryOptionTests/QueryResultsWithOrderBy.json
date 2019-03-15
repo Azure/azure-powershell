@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$top=10&$orderby=Timestamp%20asc%2C%20PolicyDefinitionAction%2C%20PolicyAssignmentId%20asc",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvcG9saWN5U3RhdGVzL2xhdGVzdC9xdWVyeVJlc3VsdHM/YXBpLXZlcnNpb249MjAxOC0wNC0wNCYkdG9wPTEwJiRvcmRlcmJ5PVRpbWVzdGFtcCUyMGFzYyUyQyUyMFBvbGljeURlZmluaXRpb25BY3Rpb24lMkMlMjBQb2xpY3lBc3NpZ25tZW50SWQlMjBhc2M=",
+      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-07-01-preview&$top=10&$orderby=Timestamp%20asc%2C%20PolicyDefinitionAction%2C%20PolicyAssignmentId%20asc",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvcG9saWN5U3RhdGVzL2xhdGVzdC9xdWVyeVJlc3VsdHM/YXBpLXZlcnNpb249MjAxOC0wNy0wMS1wcmV2aWV3JiR0b3A9MTAmJG9yZGVyYnk9VGltZXN0YW1wJTIwYXNjJTJDJTIwUG9saWN5RGVmaW5pdGlvbkFjdGlvbiUyQyUyMFBvbGljeUFzc2lnbm1lbnRJZCUyMGFzYw==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
