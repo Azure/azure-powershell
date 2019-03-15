@@ -1,5 +1,7 @@
 ## `Get-*` cmdlet example
 
+_Note_: for the below examples, the string "TopLevelResource" would be replaced with the name of your top-level resource (_e.g._, "VirtualMachine", "VirtualNetwork", "SqlServer"), and the string "ChildResource" would be replaced with the name of your child resource (_e.g._, "VirtualMachineExtension", "VirtualNetworkPeering", "SqlDatabase")
+
 ### Top-level resource
 
 All top-level resources should have a `Get-*` cmdlet that allows users to list the resources in their subscription or a resource group, as well as get a specific resource. In addition, users should be able to provide the resource id of the resource they want to get, and the cmdlet will parse the string to get the necessary identity information.
