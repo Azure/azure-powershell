@@ -38,7 +38,8 @@ PS C:\>New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAcco
 
 This command creates the new ANF volume "MyAnfVolume" within the pool "MyAnfPool".
 
-```
+Output:
+
 Location          : westus2
 Id                : /subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount/capacityPools/MyAnfPool/volumes/MyAnfVolume
 Name              : MyAnfAccount/MyAnfPool/MyAnfVolume
@@ -50,7 +51,6 @@ ServiceLevel      : Premium
 UsageThreshold    : 1099511627776
 ProvisioningState : Succeeded
 SubnetId          : /subscriptions/f557b96d-2308-4a18-aae1-b8f7e7e70cc7/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/default
-```
 
 ## PARAMETERS
 

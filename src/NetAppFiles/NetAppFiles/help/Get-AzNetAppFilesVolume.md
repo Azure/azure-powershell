@@ -40,9 +40,10 @@ The **Get-AzNetAppFilesVolume** cmdlet gets details of an ANF volume.
 PS C:\>Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume"
 ```
 
-This command gets the volume named MyAnfVolume from the pool "MyAnfPool".
+This command gets the volume named MyAnfVolume from the pool "MyAnfPool". 
 
-```
+Output:
+
 ResourceGroupName : MyRG
 Location          : westus2
 Id                : /subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount/capacityPools/MyAnfPool/volumes/MyAnfVolume
@@ -55,7 +56,6 @@ ServiceLevel      : Premium
 UsageThreshold    : 1099511627776
 ProvisioningState : Succeeded
 SubnetId          : /subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyRG-vnet/subnets/default
-```
 
 ## PARAMETERS
 

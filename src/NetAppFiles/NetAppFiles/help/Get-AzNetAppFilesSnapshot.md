@@ -43,7 +43,8 @@ PS C:\>Get-AzNetAppFilesSnapshot -ResourceGroupName "MyRG" -AccountName "MyAnfAc
 
 This command gets the snapshot named MyAnfSnapshot from the volume "MyAnfVolume".
 
-```
+Output:
+
 ResourceGroupName : MyRG
 Location          : westus2
 Id                : /subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount/capacityPools/MyAnfPool/volumes/MyAnfVolume/snapshots/MyAnfSnapshot
@@ -54,7 +55,6 @@ FileSystemId      : 3e2773a7-2a72-d003-0637-1a8b1fa3eaaf
 SnapshotId        : ca7c4ebd-91cb-0e30-91f5-9154050033df
 CreationDate      :
 ProvisioningState : Succeeded
-```
 
 ## PARAMETERS
 
