@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 if (ParameterSetName == FieldsParameterSet || ParameterSetName == ResourceIdParameterSet || ParameterSetName == ObjectParameterSet)
                 {
                     customHttpsConfiguration.CertificateSource = PSCertificateSource.FrontDoor.ToString();
-                    customHttpsConfiguration.CertificateType = PSCertificateType.Shared.ToString();
+                    customHttpsConfiguration.CertificateType = PSCertificateType.Dedicated.ToString();
                 }
                 else if (ParameterSetName == FieldsWithVaultParameterSet || ParameterSetName == ResourceIdWithVaultParameterSet || ParameterSetName == ObjectWithVaultParameterSet)
                 {
