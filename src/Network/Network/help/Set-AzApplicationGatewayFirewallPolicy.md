@@ -12,10 +12,25 @@ Updates an application gateway firewall policy.
 
 ## SYNTAX
 
+### ByFactoryObject (Default)
 ```
-Set-AzApplicationGatewayFirewallPolicy
- -ApplicationGatewayFirewallPolicy <PSApplicationGatewayWebApplicationFirewallPolicy> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzApplicationGatewayFirewallPolicy -InputObject <PSApplicationGatewayWebApplicationFirewallPolicy>
+ [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByFactoryName
+```
+Set-AzApplicationGatewayFirewallPolicy -Name <String> -ResourceGroupName <String>
+ [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Set-AzApplicationGatewayFirewallPolicy -ResourceId <String>
+ [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,21 +47,6 @@ This command updates the application gateway firewall policy with settings in th
 
 ## PARAMETERS
 
-### -ApplicationGatewayFirewallPolicy
-The applicationGatewayFirewallPolicy
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallPolicy
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -AsJob
 Run cmdlet in the background
 
@@ -62,6 +62,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CustomRule
+The list of CustomRules
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCustomRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -74,6 +89,66 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The applicationGatewayFirewallPolicy
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallPolicy
+Parameter Sets: ByFactoryObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The Firewall Policy Name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFactoryName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFactoryName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The Azure resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
