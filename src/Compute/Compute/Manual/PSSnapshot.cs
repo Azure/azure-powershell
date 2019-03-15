@@ -19,21 +19,20 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSDiskUpdate
+    public partial class PSSnapshot
     {
-        public OperatingSystemTypes? OsType { get; set; }
-        public int? DiskSizeGB { get; set; }
-        public EncryptionSettingsCollection EncryptionSettingsCollection { get; set; }
-        public long? DiskIOPSReadWrite { get; set; }
-        public int? DiskMBpsReadWrite { get; set; }
-        public IDictionary<string, string> Tags { get; set; }
-        public DiskSku Sku { get; set; }
-
+        public EncryptionSettings EncryptionSettings
+        {
+            get
+            {
+                return (this.EncryptionSettingsCollection == null)
+                       ? null
+                       : new EncryptionSettings(this.EncryptionSettingsCollection);
+            }
+        }
     }
 }
