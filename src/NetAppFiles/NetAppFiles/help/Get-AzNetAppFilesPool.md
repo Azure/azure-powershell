@@ -42,7 +42,8 @@ PS C:\>Get-AzAnfPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name
 
 This command gets the account named MyAnfPool from the account "MyAnfAccount".
 
-```
+Output:
+
 Location          : westus2
 Id                : /subscriptions/subsID/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount/capacityPools/MyAnfPool
 Name              : MyAnfAccount/MyAnfPool
@@ -52,7 +53,6 @@ PoolId            : a3a53a09-fd70-37ab-39dc-392a04cba525
 Size              : 4398046511104
 ServiceLevel      : Premium
 ProvisioningState : Succeeded
-```
 
 ## PARAMETERS
 
