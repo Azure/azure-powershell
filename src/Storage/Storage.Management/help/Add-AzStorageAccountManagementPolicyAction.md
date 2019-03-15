@@ -18,7 +18,7 @@ Add-AzStorageAccountManagementPolicyAction -BaseBlobAction <String> -DaysAfterMo
  [-InputObject <PSManagementPolicyActionGroup>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Sanpshot
+### Snapshot
 ```
 Add-AzStorageAccountManagementPolicyAction -SnapshotAction <String> -DaysAfterCreationGreaterThan <Int32>
  [-InputObject <PSManagementPolicyActionGroup>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -29,15 +29,25 @@ The **Add-AzStorageAccountManagementPolicyAction** cmdlet adds an action to the 
 
 ## EXAMPLES
 
-### Example 1: Creates a ManagementPolicy Action Group object with 4 actions
+### Example 1: Creates a ManagementPolicy Action Group object with 4 actions, then add it to a management policy rule and set to a Storage account
 ```
 PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
 PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 50  -InputObject $action
 PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToCool -daysAfterModificationGreaterThan 30 -InputObject $action
 PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -SnapshotAction Delete -daysAfterCreationGreaterThan 100 -InputObject $action
+PS C:\>$action 
+
+BaseBlob.TierToCool.DaysAfterModificationGreaterThan    : 30
+BaseBlob.TierToArchive.DaysAfterModificationGreaterThan : 50
+BaseBlob.Delete.DaysAfterModificationGreaterThan        : 100
+Snapshot.Delete.DaysAfterCreationGreaterThan            : 100
+
+PS C:\>$filter = New-AzStorageAccountManagementPolicyFilter
+PS C:\>$rule = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
+PS C:\>$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Rule $rule
 ```
 
-The first command create a ManagementPolicy Action Group object, the following 3 commands add 3 actions to the object.
+The first command create a ManagementPolicy Action Group object, the following 3 commands add 3 actions to the object. Then add it to a management policy rule and set to a Storage account.
 
 ## PARAMETERS
 
@@ -62,7 +72,7 @@ Integer value indicating the age in days after creation.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: Sanpshot
+Parameter Sets: Snapshot
 Aliases:
 
 Required: True
@@ -123,7 +133,7 @@ The management policy action for snapshot.
 
 ```yaml
 Type: System.String
-Parameter Sets: Sanpshot
+Parameter Sets: Snapshot
 Aliases:
 Accepted values: Delete
 

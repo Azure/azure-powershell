@@ -21,11 +21,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountManagementPolicyFilter"), OutputType(typeof(PSManagementPolicyRuleFilter))]
-
     public class NewAzureStorageAccountManagementPolicyFilterCommand : StorageAccountBaseCmdlet
     {
-        private string[] blobType = new string[] { AzureBlobType.BlockBlob };
-
         [Parameter(Mandatory = false,
             HelpMessage = "An array of strings for prefixes to be match. A prefix string must start with a container name.")]
         [ValidateNotNullOrEmpty]
@@ -35,9 +32,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             base.ExecuteCmdlet();
 
+            string[] blobType = new string[] { AzureBlobType.BlockBlob };
             PSManagementPolicyRuleFilter filter = new PSManagementPolicyRuleFilter()
             {
-                BlobTypes = this.blobType,
+                BlobTypes = blobType,
                 PrefixMatch = this.PrefixMatch,
             };
 

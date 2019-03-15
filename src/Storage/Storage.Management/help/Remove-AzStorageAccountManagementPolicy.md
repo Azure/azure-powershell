@@ -15,24 +15,24 @@ Removes the management policy of an Azure Storage account.
 ### AccountName (Default)
 ```
 Remove-AzStorageAccountManagementPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Remove-AzStorageAccountManagementPolicy -StorageAccount <PSStorageAccount>
+Remove-AzStorageAccountManagementPolicy -StorageAccount <PSStorageAccount> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountResourceId
 ```
-Remove-AzStorageAccountManagementPolicy [-StorageAccountResourceId] <String>
+Remove-AzStorageAccountManagementPolicy [-StorageAccountResourceId] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyObject
 ```
-Remove-AzStorageAccountManagementPolicy [-InputObject] <PSManagementPolicy>
+Remove-AzStorageAccountManagementPolicy [-InputObject] <PSManagementPolicy> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -77,6 +77,22 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Indicates that this cmdlet returns a **Boolean** that reflects the success of the operation.
+By default, this cmdlet does not return a value.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -179,6 +195,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ## OUTPUTS
+
+### System.Boolean
 
 ## NOTES
 

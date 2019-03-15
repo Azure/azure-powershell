@@ -25,7 +25,6 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountManagementPolicy", SupportsShouldProcess = true, DefaultParameterSetName = AccountNamePolicyRuleParameterSet), OutputType(typeof(PSManagementPolicy))]
-
     public class SetAzureStorageAccountManagementPolicyCommand : StorageAccountBaseCmdlet
     {
         /// <summary>
@@ -82,6 +81,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             HelpMessage = "Storage Account Name.",
            ParameterSetName = AccountNamePolicyObjectParameterSet)]
+        [ResourceNameCompleter("Microsoft.Storage/storageAccounts", nameof(ResourceGroupName))]
         [Alias(AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
@@ -100,11 +100,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Resource Id.",
            ParameterSetName = AccountResourceIdPolicyRuleParameterSet)]
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Resource Id.",
            ParameterSetName = AccountResourceIdPolicyObjectParameterSet)]
         [ValidateNotNullOrEmpty]

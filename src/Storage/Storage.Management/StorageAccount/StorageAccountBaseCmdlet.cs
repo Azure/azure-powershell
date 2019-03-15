@@ -79,10 +79,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             internal const string TierToArchive = "TierToArchive";
             internal const string Delete = "Delete";
         }
-        protected struct ManagementPolicyVersion
-        {
-            internal const string Version10 = "1.0 ";
-        }
 
         [Flags]
         public enum EncryptionSupportServiceEnum

@@ -21,7 +21,6 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountManagementPolicyRule"), OutputType(typeof(PSManagementPolicyRule))]
-
     public class NewAzureStorageAccountManagementPolicyRuleCommand : StorageAccountBaseCmdlet
     {
         [Parameter(Mandatory = true,
@@ -54,7 +53,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 Name = this.Name,
                 Enabled = Disabled.IsPresent ? false : true,
-                Definition = new PSManagementPolicyDefination()
+                Definition = new PSManagementPolicyDefinition()
                 {
                     Actions = this.Action,
                     Filters = this.Filter

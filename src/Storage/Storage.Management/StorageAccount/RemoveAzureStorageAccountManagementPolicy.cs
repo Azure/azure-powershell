@@ -21,8 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountManagementPolicy", SupportsShouldProcess = true, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(void))]
-
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountManagementPolicy", SupportsShouldProcess = true, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(bool))]
     public class RemoveAzureStorageAccountManagementPolicyCommand : StorageAccountBaseCmdlet
     {
         /// <summary>
@@ -59,6 +58,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             HelpMessage = "Storage Account Name.",
            ParameterSetName = AccountNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.Storage/storageAccounts", nameof(ResourceGroupName))]
         [Alias(AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Resource Id.",
            ParameterSetName = AccountResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -86,6 +87,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ParameterSetName = PolicyObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSManagementPolicy InputObject { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -112,10 +116,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         break;
                 }
 
-
                 this.StorageClient.ManagementPolicies.Delete(
-                 this.ResourceGroupName,
-                 this.StorageAccountName);
+                    this.ResourceGroupName,
+                    this.StorageAccountName);
+
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(true);
+                }
             }
         }
     }
