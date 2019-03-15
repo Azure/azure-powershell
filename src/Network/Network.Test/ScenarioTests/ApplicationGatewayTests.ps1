@@ -1539,7 +1539,7 @@ function Test-ApplicationGatewayCRUDSubItems2
 		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -Location $location
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
 		$policy.CustomRules = $rule
-		Set-AzApplicationGatewayFirewallPolicy -ApplicationGatewayFirewallPolicy $policy
+		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
 		# Get Application Gateway
 		$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 		$appgw.FirewallPolicy = $policy
