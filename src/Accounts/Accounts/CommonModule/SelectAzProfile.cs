@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using static Microsoft.Azure.Commands.Common.Profile;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -35,6 +37,8 @@ namespace Microsoft.Azure.Commands.Common
                 if(this.IsBound(nameof(ProfileName)) && !String.IsNullOrEmpty(ProfileName))
                 {
                     ContextAdapter.Instance.SelectedProfile = ProfileName;
+                    var modules = GetModules(InvokeCommand).Where(m => GetProfiles(m).Contains(ProfileName)).ToArray();
+                    ReloadModules(InvokeCommand, modules);
                 }
             }
             catch (Exception exception)
