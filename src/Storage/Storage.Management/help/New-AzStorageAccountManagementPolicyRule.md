@@ -22,7 +22,7 @@ The **New-AzStorageAccountManagementPolicyRule** cmdlet creates a ManagementPoli
 
 ## EXAMPLES
 
-### Example 1: Creates a ManagementPolicy rule object
+### Example 1: Creates a ManagementPolicy rule object, then set to a Storage Account
 ```
 PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
 PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 50  -InputObject $action
@@ -32,9 +32,44 @@ PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -SnapshotAction Dele
 PS C:\>$filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch blobprefix1,blobprefix2
 
 PS C:\>$rule = New-AzStorageAccountManagementPolicyRule -Name rule1 -Action $action -Filter $filter
+PS C:\>$rule
+
+Enabled    : True
+Name       : rule1
+Definition : {
+                 "Actions":  {
+                                 "BaseBlob":  {
+                                                  "TierToCool":  {
+                                                                     "DaysAfterModificationGreaterThan":  30
+                                                                 },
+                                                  "TierToArchive":  {
+                                                                        "DaysAfterModificationGreaterThan":  50
+                                                                    },
+                                                  "Delete":  {
+                                                                 "DaysAfterModificationGreaterThan":  100
+                                                             }
+                                              },
+                                 "Snapshot":  {
+                                                  "Delete":  {
+                                                                 "DaysAfterCreationGreaterThan":  100
+                                                             }
+                                              }
+                             },
+                 "Filters":  {
+                                 "PrefixMatch":  [
+                                                     "blobprefix1",
+                                                     "blobprefix2"
+                                                 ],
+                                 "BlobTypes":  [
+                                                   "blockBlob"
+                                               ]
+                             }
+             }
+
+PS C:\>$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Rule $rule
 ```
 
-This command create a ManagementPolicy rule object, with a ManagementPolicy action group object contains 4 actions, a ManagementPolicy rule filter object.
+This command create a ManagementPolicy rule object, with a ManagementPolicy action group object contains 4 actions, a ManagementPolicy rule filter object, then set the rule to a Storage Account.
 
 ## PARAMETERS
 

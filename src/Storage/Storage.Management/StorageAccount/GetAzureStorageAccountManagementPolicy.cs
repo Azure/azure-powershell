@@ -22,7 +22,6 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountManagementPolicy", DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSManagementPolicy))]
-
     public class GetAzureStorageAccountManagementPolicyCommand : StorageAccountBaseCmdlet
     {
         /// <summary>
@@ -54,6 +53,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             HelpMessage = "Storage Account Name.",
            ParameterSetName = AccountNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.Storage/storageAccounts", nameof(ResourceGroupName))]
         [Alias(AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Resource Id.",
            ParameterSetName = AccountResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]

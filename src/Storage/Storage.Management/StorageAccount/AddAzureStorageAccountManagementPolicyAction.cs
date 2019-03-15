@@ -22,11 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountManagementPolicyAction", DefaultParameterSetName = BaseBlobParameterSet), OutputType(typeof(PSManagementPolicyActionGroup))]
-
     public class AddAzureStorageAccountManagementPolicyActionCommand : StorageAccountBaseCmdlet
     {
         protected const string BaseBlobParameterSet = "BaseBlob";
-        protected const string SanpshotParameterSet = "Sanpshot";
+        protected const string SnapshotParameterSet = "Snapshot";
 
         [Parameter(Mandatory = true,
             HelpMessage = "The management policy action for baseblob.",
@@ -39,14 +38,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(Mandatory = true,
             HelpMessage = "The management policy action for snapshot.",
-            ParameterSetName = SanpshotParameterSet)]
+            ParameterSetName = SnapshotParameterSet)]
         [ValidateSet(ManagementPolicyAction.Delete,
             IgnoreCase = true)]
         public string SnapshotAction { get; set; }
 
         [Parameter(Mandatory = true,
             HelpMessage = "Integer value indicating the age in days after creation.",
-            ParameterSetName = SanpshotParameterSet)]
+            ParameterSetName = SnapshotParameterSet)]
         [ValidateNotNullOrEmpty]
         public int DaysAfterCreationGreaterThan { get; set; }
 
@@ -93,7 +92,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid BaseBlobAction: {0}", this.BaseBlobAction));
                     }
                     break;
-                case SanpshotParameterSet:
+                case SnapshotParameterSet:
                     if (action.Snapshot is null)
                     {
                         action.Snapshot = new PSManagementPolicySnapShot();

@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public bool? Enabled { get; set; }
         public string Name { get; set; }
-        public PSManagementPolicyDefination Definition { get; set; }
+        public PSManagementPolicyDefinition Definition { get; set; }
 
         public PSManagementPolicyRule()
         {
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             this.Enabled = rule.Enabled;
             this.Name = rule.Name;
-            this.Definition = rule.Definition is null ? null : new PSManagementPolicyDefination(rule.Definition);
+            this.Definition = rule.Definition is null ? null : new PSManagementPolicyDefinition(rule.Definition);
         }
 
         public ManagementPolicyRule ParseManagementPolicyRule()
@@ -113,16 +113,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     /// <summary>
     /// Wrapper of SDK type ManagementPolicyDefinition
     /// </summary>
-    public class PSManagementPolicyDefination
+    public class PSManagementPolicyDefinition
     {
         public PSManagementPolicyActionGroup Actions { get; set; }
         public PSManagementPolicyRuleFilter Filters { get; set; }
 
-        public PSManagementPolicyDefination()
+        public PSManagementPolicyDefinition()
         {
         }
 
-        public PSManagementPolicyDefination(ManagementPolicyDefinition defination)
+        public PSManagementPolicyDefinition(ManagementPolicyDefinition defination)
         {
             this.Actions = defination.Actions is null ? null : new PSManagementPolicyActionGroup(defination.Actions);
             this.Filters = defination.Filters is null ? null : new PSManagementPolicyRuleFilter(defination.Filters);
