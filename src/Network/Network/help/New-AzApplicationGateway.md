@@ -684,6 +684,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Collections.Hashtable
 
+### Microsoft.Azure.Commands.Network.Models.PSManagedServiceIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway

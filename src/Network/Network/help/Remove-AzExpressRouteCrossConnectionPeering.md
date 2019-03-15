@@ -145,8 +145,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSExpressRouteCrossConnection
-Parameter 'ExpressRouteCrossConnection' accepts value of type 'PSExpressRouteCrossConnection' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCrossConnection
 
 ## OUTPUTS
 

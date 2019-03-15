@@ -233,7 +233,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSVirtualHub
+### Microsoft.Azure.Commands.Network.Models.PSExpressRouteGateway
 
 ### System.String
 
