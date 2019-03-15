@@ -27,17 +27,18 @@ namespace Microsoft.Azure.Commands.Common
     public class SelectAzProfile : PSCmdlet
     {
         [Parameter(Mandatory = true)]
+        [Alias("ProfileName")]
         [ValidateNotNullOrEmpty]
-        public string ProfileName { get; set; }
+        public string Name { get; set; }
 
         protected override void ProcessRecord()
         {
             try
             {
-                if(this.IsBound(nameof(ProfileName)) && !String.IsNullOrEmpty(ProfileName))
+                if(this.IsBound(nameof(Name)) && !String.IsNullOrEmpty(Name))
                 {
-                    ContextAdapter.Instance.SelectedProfile = ProfileName;
-                    var modules = GetModules(InvokeCommand).Where(m => GetProfiles(m).Contains(ProfileName)).ToArray();
+                    ContextAdapter.Instance.SelectedProfile = Name;
+                    var modules = GetModules(InvokeCommand).Where(m => GetProfiles(m).Contains(Name)).ToArray();
                     ReloadModules(InvokeCommand, modules);
                 }
             }
