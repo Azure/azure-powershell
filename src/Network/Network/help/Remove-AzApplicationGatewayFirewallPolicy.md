@@ -12,9 +12,23 @@ Removes an application gateway firewall policy.
 
 ## SYNTAX
 
+### ByFactoryName (Default)
 ```
 Remove-AzApplicationGatewayFirewallPolicy -Name <String> -ResourceGroupName <String> [-Force] [-PassThru]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByFactoryObject
+```
+Remove-AzApplicationGatewayFirewallPolicy -InputObject <PSApplicationGatewayWebApplicationFirewallPolicy>
+ [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Remove-AzApplicationGatewayFirewallPolicy -ResourceId <String> [-Force] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,12 +90,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The firewall policy object
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallPolicy
+Parameter Sets: ByFactoryObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFactoryName
 Aliases: ResourceName
 
 Required: True
@@ -112,7 +141,22 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFactoryName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The Azure resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
 Aliases:
 
 Required: True
