@@ -12,17 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallPolicy", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallPolicy", DefaultParameterSetName = "ByFactoryName", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureApplicationGatewayFirewallPolicyCommand : ApplicationGatewayFirewallPolicyBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByFactoryName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
@@ -31,12 +35,29 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Name { get; set; }
 
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByFactoryName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByFactoryObject,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The firewall policy object")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayWebApplicationFirewallPolicy InputObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure resource ID.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -51,6 +72,18 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
+            {
+                Name = InputObject.Name;
+                ResourceGroupName = InputObject.ResourceGroupName;
+            }
+            else if (ParameterSetName.Equals(ParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase))
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                Name = parsedResourceId.ResourceName;
+                ResourceGroupName = parsedResourceId.ResourceGroupName;
+            }
+
             base.Execute();
             ConfirmAction(
                 Force.IsPresent,
