@@ -1,0 +1,29 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "resources": [
+    {
+      "location": "Central US",
+      "apiVersion": "2018-09-01-preview",
+      "type": "Microsoft.DeploymentManager/rollouts",
+      "name": "adm-powershell-tests-invalidRollout",
+      "Identity": {
+        "type": "userAssigned",
+        "identityIds": [
+          "/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourcegroups/adm-sdk-tests/providers/Microsoft.ManagedIdentity/userassignedidentities/admsdktests"
+        ]
+      },
+      "properties": {
+        "buildVersion": "1.0.0",
+        "targetServiceTopologyId": "/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourcegroups/adm-powershell-test-rg/providers/Microsoft.DeploymentManager/serviceTopologies/powershell-sdk-tests",
+        "artifactSourceId": "/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourcegroups/adm-powershell-test-rg/providers/Microsoft.DeploymentManager/artifactSources/powershell-sdk-tests-functional",
+        "stepGroups": [
+          {
+            "name": "PilotRegion",
+            "deploymentTargetId": "/serviceTopologies/powershell-sdk-tests/services/Contoso_Service/serviceUnits/Contoso_WebApp_Invalid"
+          }
+        ]
+      }
+    }
+  ],
+  "contentVersion": "1.0.0.0"
+}
