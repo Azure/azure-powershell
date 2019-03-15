@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
 online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/remove-azfrontdoorfirewallpolicy
@@ -24,7 +24,7 @@ Remove-AzFrontDoorFireWallPolicy -InputObject <PSPolicy> [-PassThru] [-DefaultPr
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### ByResourceIdParameterSet
 ```
 Remove-AzFrontDoorFireWallPolicy -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -131,7 +131,7 @@ Resource Id of the WAF policy to delete
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdParameterSet
+Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
 Required: True
