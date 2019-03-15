@@ -29,14 +29,14 @@ PS C:\>New-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount" -
 
 This command creates the new ANF account "MyAnfAccount".
 
-```
+Output:
+
 Location          : westus2
 Id                : /subscriptions/mySubs/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount
 Name              : MyAnfAccount
 Type              : Microsoft.NetApp/netAppAccounts
 Tags              :
 ProvisioningState : Succeeded
-```
 
 ## PARAMETERS
 

@@ -36,14 +36,14 @@ PS C:\>Get-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount"
 
 This command gets the account named MyAnfAccount.
 
-```
+Output:
+
 Location          : westus2
 Id                : /subscriptions/mySubs/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount
 Name              : MyAnfAccount
 Type              : Microsoft.NetApp/netAppAccounts
 Tags              :
 ProvisioningState : Succeeded
-```
 
 ## PARAMETERS
 
