@@ -24,6 +24,8 @@ public class RemoveFoo
 }
 ```
 
+Please see the example cmdlets found in our [`examples`](../examples) folder for additional implementations of `ShouldProcess`.
+
 By default, `ShouldProcess` interacts with the cmdlet `ConfirmImpact` and the user's `$ConfirmPreference` setting to decide whether to prompt the user before continuing cmdlet processing. The `$ConfirmPreference` determines the level at which confirmation automatically occurs, and no prompt is shown. If the `ConfirmImpact` specified in a cmdlet is at or below the level of `$ConfirmPreference`, then processing occurs automatically without displaying a prompt. Since both `ConfirmImpact` and `$ConfirmPreference` are set by default to `Medium`, this means that, by default, no confirmation prompt is shown and the cmdlet executes normally.
 
 PowerShell has several tools that allow users to explore and control what happens during execution of cmdlets, and this change in implementation allows them to use these tools.

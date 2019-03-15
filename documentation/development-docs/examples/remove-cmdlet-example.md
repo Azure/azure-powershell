@@ -1,5 +1,7 @@
 ## `Remove-*` cmdlet example
 
+_Note_: for the below examples, the string "TopLevelResource" would be replaced with the name of your top-level resource (_e.g._, "VirtualMachine", "VirtualNetwork", "SqlServer"), and the string "ChildResource" would be replaced with the name of your child resource (_e.g._, "VirtualMachineExtension", "VirtualNetworkPeering", "SqlDatabase")
+
 ### Top-level resource
 
 All top-level resources should have a `Remove-*` cmdlet that allows users to delete a specific resource. The user can delete a resource by providing all identity properties, the resource id, or the object representation of the resource. This cmdlet should implement `SupportsShouldProcess` to allow users to provide the `-WhatIf` parameter and see what the result of executing the cmdlet is without the resource actually being deleted. This cmdlet should also implement the [`-PassThru`](../design-guidelines/cmdlet-best-practices.md#returning-no-output) parameter, which allows the user to receive output when no output would normally be provided.
