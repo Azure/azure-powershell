@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.DeploymentManager\Commands.DeploymentManager.csproj" />
+    <ProjectReference Include="..\DeploymentManager\DeploymentManager.csproj" />
   </ItemGroup>
 
 </Project>
