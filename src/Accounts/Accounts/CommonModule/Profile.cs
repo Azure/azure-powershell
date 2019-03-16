@@ -48,10 +48,12 @@ namespace Microsoft.Azure.Commands.Common
 
         internal static void ReloadModules(CommandInvocationIntrinsics invokeCommand, params PSModuleInfo[] moduleInfos)
         {
-            var modulePaths = CommaSeparatedQuotedList(moduleInfos.Select(GetModulePath).ToArray());
-            if (!String.IsNullOrEmpty(modulePaths))
+            var modules = moduleInfos.Select(mi => (Path: GetModulePath(mi), Name: mi.Name)).ToArray();
+            var modulePaths = CommaSeparatedQuotedList(modules.Select(m => m.Path).ToArray());
+            var moduleNames = CommaSeparatedQuotedList(modules.Select(m => m.Name).ToArray());
+            if (!String.IsNullOrEmpty(modulePaths) && !String.IsNullOrEmpty(moduleNames))
             {
-                var command = $"Remove-Module -Name {modulePaths}; Import-Module -Name {modulePaths}";
+                var command = $"Remove-Module -Name {moduleNames}; Import-Module -Name {modulePaths}";
                 invokeCommand.NewScriptBlock(command).Invoke();
             }
         }
