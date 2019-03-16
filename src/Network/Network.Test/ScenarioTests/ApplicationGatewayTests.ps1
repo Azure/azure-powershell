@@ -823,7 +823,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions
 
 		# backend part
 		# trusted root cert part
-		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
+		$certFilePath = Join-Path $basedir "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
 		$trustedRoot01 = New-AzApplicationGatewayTrustedRootCertificate -Name $trustedRootCertName -CertificateFile $certFilePath
 		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
 		$probeHttp = New-AzApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
