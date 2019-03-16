@@ -20,11 +20,11 @@ using System;
 using System.IO;
 using System.Linq;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-using Microsoft.Azure.Management.Storage;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.DeploymentManager;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests
 {

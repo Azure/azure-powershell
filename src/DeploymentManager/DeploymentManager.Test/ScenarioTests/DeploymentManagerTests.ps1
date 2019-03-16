@@ -13,7 +13,7 @@ function Test-EndToEndFunctionalTests
 	$location = "Central US"
 
     # Create resource group
-    $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -Location $location
 	Assert-NotNull $resourceGroup "Created resource group is null."
 
 	$artifactSource = New-ArtifactSource $resourceGroupName $artifactSourceName
@@ -21,12 +21,12 @@ function Test-EndToEndFunctionalTests
 	# Test all service topology and rollout operation
 	Test-ServiceTopology $resourceGroupName $location $artifactSource $updatedArtifactSourceName $subscriptionId
 
-	Remove-AzureRmDeploymentManagerArtifactSource -ResourceGroupName $resourceGroupName -Name $artifactSourceName -Force
+	Remove-AzDeploymentManagerArtifactSource -ResourceGroupName $resourceGroupName -Name $artifactSourceName -Force
 
 	$getArtifactSource = $null
 	try
 	{
-		$getArtifactSource = Get-AzureRmDeploymentManagerArtifactSource -ResourceGroupName $resourceGroupName -Name $artifactSourceName 
+		$getArtifactSource = Get-AzDeploymentManagerArtifactSource -ResourceGroupName $resourceGroupName -Name $artifactSourceName 
 	}
 	catch 
 	{
@@ -50,9 +50,9 @@ function Test-ServiceTopology
 
 	$serviceTopologyName = "powershell-sdk-tests"
 
-	$serviceTopology = New-AzureRmDeploymentManagerServiceTopology -ResourceGroupName $resourceGroupName -Location $location -Name $serviceTopologyName -ArtifactSourceId $artifactSource.Id
+	$serviceTopology = New-AzDeploymentManagerServiceTopology -ResourceGroupName $resourceGroupName -Location $location -Name $serviceTopologyName -ArtifactSourceId $artifactSource.Id
 	Validate-Topology $serviceTopology $resourceGroupName $location $serviceTopologyName $artifactSource.Id
-	$getResponse = Get-AzureRmDeploymentManagerServiceTopology -ResourceGroupName $resourceGroupName -Name $serviceTopologyName
+	$getResponse = Get-AzDeploymentManagerServiceTopology -ResourceGroupName $resourceGroupName -Name $serviceTopologyName
 
 	Validate-Topology $getResponse $resourceGroupName $location $serviceTopologyName $artifactSource.Id
 
@@ -63,15 +63,15 @@ function Test-ServiceTopology
 	$updatedArtifactSource = New-ArtifactSource $resourceGroupName $updatedArtifactSourceName
 	$getResponse.ArtifactSourceId = $updatedArtifactSource.Id
 
-	$updatedServiceTopology = Set-AzureRmDeploymentManagerServiceTopology $getResponse
+	$updatedServiceTopology = Set-AzDeploymentManagerServiceTopology $getResponse
 	Validate-Topology $updatedServiceTopology $resourceGroupName $location $serviceTopologyName $updatedArtifactSource.Id
 
 	# Test Set-ServiceTopology 
-	Remove-AzureRmDeploymentManagerServiceTopology -ResourceGroupName $resourceGroupName -Name $serviceTopologyName -Force
+	Remove-AzDeploymentManagerServiceTopology -ResourceGroupName $resourceGroupName -Name $serviceTopologyName -Force
 	$getResponse = $null
 	try
 	{
-		$getResponse = Get-AzureRmDeploymentManagerServiceTopology -ResourceGroupName $resourceGroupName -Name $serviceTopologyName
+		$getResponse = Get-AzDeploymentManagerServiceTopology -ResourceGroupName $resourceGroupName -Name $serviceTopologyName
 	}
 	catch 
 	{
@@ -113,11 +113,11 @@ function Test-Service
 	$targetLocation = "East US 2"
 	$targetSubscriptionId = "53012dcb-5039-4e96-8e6c-5d913da1cdb5"
 
-	$service = New-AzureRmDeploymentManagerService -ResourceGroupName $resourceGroupName -Location $location -Name $serviceName -ServiceTopology $serviceTopology -TargetLocation $targetLocation -TargetSubscriptionId $targetSubscriptionId
+	$service = New-AzDeploymentManagerService -ResourceGroupName $resourceGroupName -Location $location -Name $serviceName -ServiceTopology $serviceTopology -TargetLocation $targetLocation -TargetSubscriptionId $targetSubscriptionId
 
 	Validate-Service $service $resourceGroupName $location $serviceTopology.Name $serviceName $targetLocation $targetSubscriptionId
 
-	$getResponse = Get-AzureRmDeploymentManagerService -ResourceGroupName $resourceGroupName -Name $serviceName -ServiceTopologyName $serviceTopology.Name
+	$getResponse = Get-AzDeploymentManagerService -ResourceGroupName $resourceGroupName -Name $serviceName -ServiceTopologyName $serviceTopology.Name
 
 	Validate-Service $getResponse $resourceGroupName $location $serviceTopology.Name $serviceName $targetLocation $targetSubscriptionId
 
@@ -126,18 +126,18 @@ function Test-Service
 
 	# Test Set-Service
 	$getResponse.TargetSubscriptionId = "1e591dc1-b014-4754-b53b-58b67bcab1cd"
-	$updatedService = Set-AzureRmDeploymentManagerService $getResponse
+	$updatedService = Set-AzDeploymentManagerService $getResponse
 
 	Validate-Service $updatedService $resourceGroupName $location $serviceTopologyName $serviceName $targetLocation $getResponse.TargetSubscriptionId
 
 	# Test Remove-Service
-	Remove-AzureRmDeploymentManagerService -ResourceGroupName $resourceGroupName -Name $serviceName -ServiceTopologyName $serviceTopology.Name -Force
+	Remove-AzDeploymentManagerService -ResourceGroupName $resourceGroupName -Name $serviceName -ServiceTopologyName $serviceTopology.Name -Force
 
 	$getResponse = $null
 
 	try
 	{
-		$getResponse = Get-AzureRmDeploymentManagerService -ResourceGroupName $resourceGroupName -Name $serviceName -ServiceTopologyName $serviceTopology.Name
+		$getResponse = Get-AzDeploymentManagerService -ResourceGroupName $resourceGroupName -Name $serviceName -ServiceTopologyName $serviceTopology.Name
 	}
 	catch 
 	{
@@ -185,7 +185,7 @@ function Test-ServiceUnit
 	$parametersArtifactSourceRelativePath = "Parameters/WebApp.Parameters.json"
     $templateArtifactSourceRelativePath = "Templates/WebApp.Template.json"
 
-	$serviceUnit = New-AzureRmDeploymentManagerServiceUnit `
+	$serviceUnit = New-AzDeploymentManagerServiceUnit `
 		-ResourceGroupName $resourceGroupName `
 		-Location $location `
 		-ServiceTopology $serviceTopology `
@@ -198,7 +198,7 @@ function Test-ServiceUnit
 
 	Validate-ServiceUnit $serviceUnit $resourceGroupName $location $serviceTopology.Name $service.Name $serviceUnitName $targetResourceGroup $deploymentMode $templateArtifactSourceRelativePath $parametersArtifactSourceRelativePath
 
-	$getResponse = Get-AzureRmDeploymentManagerServiceUnit  `
+	$getResponse = Get-AzDeploymentManagerServiceUnit  `
 		-ResourceGroupName $resourceGroupName  `
 		-ServiceTopologyName $serviceTopology.Name `
 		-ServiceName $serviceName `
@@ -211,7 +211,7 @@ function Test-ServiceUnit
 		$invalidParametersArtifactSourceRelativePath = "Parameters/WebApp.Invalid.Parameters.json"
 		$invalidServiceUnitName = "Contoso_WebApp_Invalid"
 
-		$invalidServiceUnit = New-AzureRmDeploymentManagerServiceUnit   `
+		$invalidServiceUnit = New-AzDeploymentManagerServiceUnit   `
 			-ResourceGroupName $resourceGroupName  `
 			-Location $location  `
 			-ServiceTopology $serviceTopology  `
@@ -231,20 +231,20 @@ function Test-ServiceUnit
 	$getResponse.ParametersArtifactSourceRelativePath = "Parameters/WebApp.Parameters.Dup.json"
 	$getResponse.TemplateArtifactSourceRelativePath = "Templates/WebApp.Template.Dup.json"
 
-	$updatedServiceUnit = Set-AzureRmDeploymentManagerServiceUnit $getResponse
+	$updatedServiceUnit = Set-AzDeploymentManagerServiceUnit $getResponse
 
 	Validate-ServiceUnit $updatedServiceUnit $resourceGroupName $location $serviceTopology.Name $service.Name $serviceUnitName $targetResourceGroup $getResponse.DeploymentMode $getResponse.TemplateArtifactSourceRelativePath $getResponse.ParametersArtifactSourceRelativePath
 
 	# Test Remove-ServiceUnit
-	Remove-AzureRmDeploymentManagerServiceUnit -ResourceGroupName $resourceGroupName -ServiceTopologyName $serviceTopology.Name -ServiceName $service.Name -Name $serviceUnitName -Force
+	Remove-AzDeploymentManagerServiceUnit -ResourceGroupName $resourceGroupName -ServiceTopologyName $serviceTopology.Name -ServiceName $service.Name -Name $serviceUnitName -Force
 
 	# Remove second service unit created for failure rollout case
-	Remove-AzureRmDeploymentManagerServiceUnit -ResourceGroupName $resourceGroupName -ServiceTopologyName $serviceTopology.Name -ServiceName $service.Name -Name $invalidServiceUnitName -Force
+	Remove-AzDeploymentManagerServiceUnit -ResourceGroupName $resourceGroupName -ServiceTopologyName $serviceTopology.Name -ServiceName $service.Name -Name $invalidServiceUnitName -Force
 
 	$getResponse = $null
 	try
 	{
-		$getResponse = Get-AzureRmDeploymentManagerServiceUnit -ResourceGroupName $resourceGroupName -ServiceTopologyName $serviceTopology.Name -ServiceName $service.Name -Name $serviceUnitName
+		$getResponse = Get-AzDeploymentManagerServiceUnit -ResourceGroupName $resourceGroupName -ServiceTopologyName $serviceTopology.Name -ServiceName $service.Name -Name $serviceUnitName
 	}
 	catch 
 	{
@@ -294,10 +294,10 @@ function Test-Steps
 	$duration = "PT5M"
 	$updatedDuration = "PT10M"
 
-	$step = New-AzureRmDeploymentManagerStep -Name $stepName -ResourceGroupName $resourceGroupName -Location $location -Duration $duration
+	$step = New-AzDeploymentManagerStep -Name $stepName -ResourceGroupName $resourceGroupName -Location $location -Duration $duration
 	Validate-Step $step $stepName $location $resourceGroupName $duration
 
-	$getResponse = Get-AzureRmDeploymentManagerStep -ResourceGroupName $resourceGroupName -Name $stepName
+	$getResponse = Get-AzDeploymentManagerStep -ResourceGroupName $resourceGroupName -Name $stepName
 	Validate-Step $getResponse $stepName $location $resourceGroupName $duration
 
 	Test-Rollout $resourceGroupName $location $serviceTopology $artifactSource $serviceUnit
@@ -305,16 +305,16 @@ function Test-Steps
 	# Test Set-Step
 	$getResponse.StepProperties.Duration = $updatedDuration
 
-	$updatedStep = Set-AzureRmDeploymentManagerStep $getResponse
+	$updatedStep = Set-AzDeploymentManagerStep $getResponse
 	Validate-Step $updatedStep $stepName $location $resourceGroupName $updatedDuration
 
 	# Test Remove-Step 
-	Remove-AzureRmDeploymentManagerStep -ResourceGroupName $resourceGroupName -Name $stepName -Force
+	Remove-AzDeploymentManagerStep -ResourceGroupName $resourceGroupName -Name $stepName -Force
 	$getResponse = $null
 
 	try
 	{
-		$getResponse = Get-AzureRmDeploymentManagerStep -ResourceGroupName $resourceGroupName -Name $stepName
+		$getResponse = Get-AzDeploymentManagerStep -ResourceGroupName $resourceGroupName -Name $stepName
 	}
 	catch 
 	{
@@ -355,38 +355,38 @@ function Test-Rollout
 	$rolloutName = "adm-powershell-tests-rollout"
 	$failedRolloutName = "adm-powershell-tests-invalidRollout"
 
-	New-AzureRmResourceGroup -Name $rolloutName -Location $location
-	New-AzureRmResourceGroup -Name $failedRolloutName -Location $location
+	New-AzResourceGroup -Name $rolloutName -Location $location
+	New-AzResourceGroup -Name $failedRolloutName -Location $location
 
-	$deployment = New-AzureRmResourceGroupDeployment -Name $rolloutName -ResourceGroupName $rolloutName -TemplateFile ".\ScenarioTests\CreateRollout.json"
+	$deployment = New-AzResourceGroupDeployment -Name $rolloutName -ResourceGroupName $rolloutName -TemplateFile ".\ScenarioTests\CreateRollout.json"
 
-	$getResponse = Get-AzureRmDeploymentManagerRollout -ResourceGroupName $rolloutName -Name $rolloutName
+	$getResponse = Get-AzDeploymentManagerRollout -ResourceGroupName $rolloutName -Name $rolloutName
 	Validate-Rollout $getResponse $rolloutName $location $rolloutName @('Running') $serviceTopology $artifactSource
 
 	# Test Stop-Rollout
-	$canceledRollout = Stop-AzureRmDeploymentManagerRollout -Rollout $getResponse -Force
+	$canceledRollout = Stop-AzDeploymentManagerRollout -Rollout $getResponse -Force
 	Validate-Rollout $canceledRollout $rolloutName $location $rolloutName @('Canceling', 'Canceled') $serviceTopology $artifactSource
 
 	# Wait for rollout to finish
 	while ($canceledRollout.Status -eq "Canceling")
 	{
 		Start-TestSleep 120000
-		$canceledRollout = Get-AzureRmDeploymentManagerRollout -ResourceGroupName $rolloutName -Name $rolloutName
+		$canceledRollout = Get-AzDeploymentManagerRollout -ResourceGroupName $rolloutName -Name $rolloutName
 	}
 
 	Assert-AreEqual "Canceled" $canceledRollout.Status
 
-	$failedDeployment = New-AzureRmResourceGroupDeployment -Name $failedRolloutName -ResourceGroupName $failedRolloutName -TemplateFile ".\ScenarioTests\CreateRollout_FailureRollout.json"
+	$failedDeployment = New-AzResourceGroupDeployment -Name $failedRolloutName -ResourceGroupName $failedRolloutName -TemplateFile ".\ScenarioTests\CreateRollout_FailureRollout.json"
 
 	$ErrorActionPreference = "SilentlyContinue"
 	$Error.Clear()
-	$failedRollout = Get-AzureRmDeploymentManagerRollout -ResourceGroupName $failedRolloutName -Name $failedRolloutName 2>$null
+	$failedRollout = Get-AzDeploymentManagerRollout -ResourceGroupName $failedRolloutName -Name $failedRolloutName 2>$null
 
 	# Wait for the invalid rollout to fail
 	while ($failedRollout.Status -eq "Running")
 	{
 		Start-TestSleep 60000
-		$failedRollout = Get-AzureRmDeploymentManagerRollout -ResourceGroupName $failedRolloutName -Name $failedRolloutName 2>$null
+		$failedRollout = Get-AzDeploymentManagerRollout -ResourceGroupName $failedRolloutName -Name $failedRolloutName 2>$null
 	}
 
 	$Error.Clear()
@@ -395,11 +395,11 @@ function Test-Rollout
 
 	# Write-Verbose "Completed assert on failed rollout. Restarting rollout"
 
-	$restartRollout = Restart-AzureRmDeploymentManagerRollout -ResourceGroupName $failedRolloutName -Name $failedRolloutName -SkipSucceeded
+	$restartRollout = Restart-AzDeploymentManagerRollout -ResourceGroupName $failedRolloutName -Name $failedRolloutName -SkipSucceeded
 	Validate-Rollout $restartRollout $failedRolloutName $location $failedRolloutName @('Running') $serviceTopology $artifactSource $true 1
 
-	Remove-AzureRmDeploymentManagerRollout -ResourceGroupName $rolloutName -Name $rolloutName -Force
-	$getResponse = Get-AzureRmDeploymentManagerRollout -ResourceGroupName $rolloutName -Name $rolloutName
+	Remove-AzDeploymentManagerRollout -ResourceGroupName $rolloutName -Name $rolloutName -Force
+	$getResponse = Get-AzDeploymentManagerRollout -ResourceGroupName $rolloutName -Name $rolloutName
 	Assert-Null $getResponse
 }
 
@@ -442,7 +442,7 @@ function New-ArtifactSource
 
 	$sasKeyForContainer = ""
 	Get-SasForContainer $storageAccountResourceGroup $storageAccountName $containerName ([ref]$sasKeyForContainer)
-    $artifactSource = New-AzureRmDeploymentManagerArtifactSource -ResourceGroupName $resourceGroupName -Name $artifactSourceName -Location $location -SasUri $sasKeyForContainer -ArtifactRoot $artifactRoot
+    $artifactSource = New-AzDeploymentManagerArtifactSource -ResourceGroupName $resourceGroupName -Name $artifactSourceName -Location $location -SasUri $sasKeyForContainer -ArtifactRoot $artifactRoot
 
     Assert-AreEqual $artifactSourceName $artifactSource.Name
     Assert-AreEqual $resourceGroupName $artifactSource.ResourceGroupName
@@ -465,10 +465,10 @@ function Get-SasForContainer
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
     {
         # Get storage account context
-        $storageAccountContext = New-AzureStorageContext -StorageAccountName $storageName -StorageAccountKey (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageName).Value[0]
+        $storageAccountContext = New-AzStorageContext -StorageAccountName $storageName -StorageAccountKey (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageName).Value[0]
 
         # Get SAS token for container
-        $sasKeyForContainer.Value = New-AzureStorageContainerSASToken -Name $storageContainerName -Permission "rl" -StartTime ([System.DateTime]::Now).AddHours(-20) -ExpiryTime ([System.DateTime]::Now).AddHours(48) -Context $storageAccountContext -FullUri
+        $sasKeyForContainer.Value = New-AzStorageContainerSASToken -Name $storageContainerName -Permission "rl" -StartTime ([System.DateTime]::Now).AddHours(-20) -ExpiryTime ([System.DateTime]::Now).AddHours(48) -Context $storageAccountContext -FullUri
     }
     else
     {
