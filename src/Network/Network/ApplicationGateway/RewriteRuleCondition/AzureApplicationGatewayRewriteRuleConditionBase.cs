@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Variable = this.Variable,
                 Pattern = this.Pattern,
-                IgnoreCase = (this.IgnoreCase.IsPresent) ? true : false,
-                Negate = (this.Negate.IsPresent) ? true : false
+                IgnoreCase = this.IgnoreCase.IsPresent,
+                Negate = this.Negate.IsPresent
             };
             return rewriteRuleCondition;
         }
