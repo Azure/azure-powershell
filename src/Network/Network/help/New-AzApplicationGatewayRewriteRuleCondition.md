@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayrewriteruleheadercondition
 schema: 2.0.0
 ---
 
 # New-AzApplicationGatewayRewriteRuleCondition
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Adds a condition to the RewriteRule for an application gateway.
 
 ## SYNTAX
 
@@ -18,16 +18,15 @@ New-AzApplicationGatewayRewriteRuleCondition -Variable <String> [-Pattern <Strin
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+**The AzApplicationGatewayRewriteRuleCondition** cmdlet creates a rewrite rule condition for an Azure application gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $condition = New-AzApplicationGatewayRewriteRuleCondition -Variable "var_request_uri" -Pattern "http" -IgnoreCase
 ```
-
-{{ Add example description here }}
+This command creates a condition in a rewrite rule and stores the result in the variable named $condition.
 
 ## PARAMETERS
 
@@ -121,3 +120,16 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## NOTES
 
 ## RELATED LINKS
+[Add-AzApplicationGatewayRewriteRuleSet](./Add-AzApplicationGatewayRewriteRuleSet.md)
+
+[Get-AzApplicationGatewayRewriteRuleSet](./Get-AzApplicationGatewayRewriteRuleSet.md)
+
+[New-AzApplicationGatewayRewriteRuleSet](./New-AzApplicationGatewayRewriteRuleSet.md)
+
+[Remove-AzApplicationGatewayRewriteRuleSet](./Remove-AzApplicationGatewayRewriteRuleSet.md)
+
+[Set-AzApplicationGatewayRewriteRuleSet](./Set-AzApplicationGatewayRewriteRuleSet.md)
+
+[New-AzApplicationGatewayRewriteRule](./New-AzApplicationGatewayRewriteRule.md)
+
+[New-AzApplicationGatewayRewriteRuleActionSet](./New-AzApplicationGatewayRewriteRuleActionSet.md)
