@@ -58,7 +58,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
             DetectionType.Unsafe_Action,
             DetectionType.Data_Exfiltration,
             DetectionType.Access_Anomaly)]
-
         public string[] ExcludedDetectionType { get; set; }
 
         /// <summary>
