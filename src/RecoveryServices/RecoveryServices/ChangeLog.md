@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Added SnapshotRetentionInDays in Azure VM policy to support Instant RP
+ 
 ## Version 1.1.0
 * Added Sql server in Azure VM support
 * SDK Update

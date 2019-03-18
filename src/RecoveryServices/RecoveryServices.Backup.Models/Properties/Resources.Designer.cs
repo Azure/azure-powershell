@@ -562,7 +562,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("ILRTargetLocationInvalid", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to For SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly.
+        /// </summary>
+        public static string InstantRPRetentionDaysException
+        {
+            get {
+                return ResourceManager.GetString("InstantRPRetentionDaysException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Azure VM name can not be null or empty.
         /// </summary>
