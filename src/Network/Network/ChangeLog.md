@@ -21,6 +21,7 @@
 * Add Threat Intelligence support for Azure Firewall
 * Add Alert action type for Azure Firewall Network and Application Rule Collections
 * Add Application Gateway Firewall Policy top level resource and Custom Rules
+* Add Local SkuTier to New-AzureExpressRouteCircuit.
 
 ## Version 1.4.0
 * Add ResourceId parameter to Get-AzNetworkInterface
