@@ -52,6 +52,8 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
 
+        public const String ChangeDesc = "SkuTier Basic is being replaced with Local.";
+        [CmdletParameterBreakingChange("SkuTier", ChangeDescription = ChangeDesc)]
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true)]
