@@ -25,7 +25,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallPolicy", DefaultParameterSetName = "ByFactoryObject"), OutputType(typeof(PSApplicationGatewayWebApplicationFirewallPolicy))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallPolicy", DefaultParameterSetName = "ByFactoryObject", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGatewayWebApplicationFirewallPolicy))]
     public class SetAzureApplicationGatewayFirewallPolicyCommand : ApplicationGatewayFirewallPolicyBaseCmdlet
     {
         [Parameter(
@@ -70,44 +70,47 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
+            if (ShouldProcess(Name, Properties.Resources.OverwritingResourceMessage))
             {
-                Name = InputObject.Name;
-                ResourceGroupName = InputObject.ResourceGroupName;
+                if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
+                {
+                    Name = InputObject.Name;
+                    ResourceGroupName = InputObject.ResourceGroupName;
+                }
+                else if (ParameterSetName.Equals(ParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase))
+                {
+                    var parsedResourceId = new ResourceIdentifier(ResourceId);
+                    Name = parsedResourceId.ResourceName;
+                    ResourceGroupName = parsedResourceId.ResourceGroupName;
+                }
+
+                base.ExecuteCmdlet();
+
+                if (!this.IsApplicationGatewayFirewallPolicyPresent(ResourceGroupName, Name))
+                {
+                    throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                }
+
+                var firewallPolicy = this.GetApplicationGatewayFirewallPolicy(ResourceGroupName, Name);
+                if (this.CustomRule != null)
+                {
+                    firewallPolicy.CustomRules = this.CustomRule.ToList();
+                }
+                else if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
+                {
+                    firewallPolicy = InputObject;
+                }
+
+                // Map to the sdk object
+                var firewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.WebApplicationFirewallPolicy>(firewallPolicy);
+                firewallPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(firewallPolicy.Tag, validate: true);
+
+                // Execute the Create VirtualNetwork call
+                this.ApplicationGatewayFirewallPolicyClient.CreateOrUpdate(ResourceGroupName, Name, firewallPolicyModel);
+
+                var getApplicationGatewayFirewallPolicy = this.GetApplicationGatewayFirewallPolicy(ResourceGroupName, Name);
+                WriteObject(getApplicationGatewayFirewallPolicy);
             }
-            else if (ParameterSetName.Equals(ParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase))
-            {
-                var parsedResourceId = new ResourceIdentifier(ResourceId);
-                Name = parsedResourceId.ResourceName;
-                ResourceGroupName = parsedResourceId.ResourceGroupName;
-            }
-
-            base.ExecuteCmdlet();
-
-            if (!this.IsApplicationGatewayFirewallPolicyPresent(ResourceGroupName, Name))
-            {
-                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
-            }
-
-            var firewallPolicy = this.GetApplicationGatewayFirewallPolicy(ResourceGroupName, Name);
-            if (this.CustomRule != null )
-            {
-                firewallPolicy.CustomRules = this.CustomRule.ToList();
-            }
-            else if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
-            {
-                firewallPolicy = InputObject;
-            }
-
-            // Map to the sdk object
-            var firewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.WebApplicationFirewallPolicy>(firewallPolicy);
-            firewallPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(firewallPolicy.Tag, validate: true);
-
-            // Execute the Create VirtualNetwork call
-            this.ApplicationGatewayFirewallPolicyClient.CreateOrUpdate(ResourceGroupName, Name, firewallPolicyModel);
-
-            var getApplicationGatewayFirewallPolicy = this.GetApplicationGatewayFirewallPolicy(ResourceGroupName, Name);
-            WriteObject(getApplicationGatewayFirewallPolicy);
         }
     }
 }
