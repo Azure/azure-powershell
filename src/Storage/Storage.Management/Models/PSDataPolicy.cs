@@ -37,18 +37,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.LastModifiedTime = policy.LastModifiedTime;
             this.Rules = PSManagementPolicyRule.GetPSManagementPolicyRules(policy.Policy.Rules);
         }
-        [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.List, Position = 0)]
+        [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 0)]
         public string ResourceGroupName { get; set; }
-        [Ps1Xml(Label = "StorageAccountName", Target = ViewControl.List, Position = 1)]
+        [Ps1Xml(Label = "StorageAccountName", Target = ViewControl.Table, Position = 1)]
         public string StorageAccountName { get; set; }
-        [Ps1Xml(Label = "Id", Target = ViewControl.List, Position = 2)]
         public string Id { get; set; }
         public string Name { get; set; }
-        [Ps1Xml(Label = "Type", Target = ViewControl.List, Position = 3)]
         public string Type { get; set; }
-        [Ps1Xml(Label = "LastModifiedTime", Target = ViewControl.List, Position = 4)]
+        [Ps1Xml(Label = "LastModifiedTime", Target = ViewControl.Table, Position = 2)]
         public DateTime? LastModifiedTime { get; set; }
-        [Ps1Xml(Label = "Rules", Target = ViewControl.List, ScriptBlock = "ConvertTo-Json $_ -Depth 10", Position = 5)]
+        [Ps1Xml(Label = "Rules", Target = ViewControl.Table, Position = 3)]
         public PSManagementPolicyRule[] Rules { get; set; }
     }
 
@@ -183,7 +181,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     /// </summary>
     public class PSManagementPolicyActionGroup
     {
+        [Ps1Xml(Label = "BaseBlob.TierToCool", Target = ViewControl.Table, ScriptBlock = "$_.BaseBlob.TierToCool.DaysAfterModificationGreaterThan",  Position = 0)]
+        [Ps1Xml(Label = "BaseBlob.TierToArchive", Target = ViewControl.Table, ScriptBlock = "$_.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan",  Position = 1)]
+        [Ps1Xml(Label = "BaseBlob.Delete", Target = ViewControl.Table, ScriptBlock = "$_.BaseBlob.Delete.DaysAfterModificationGreaterThan", Position = 2)]
         public PSManagementPolicyBaseBlob BaseBlob { get; set; }
+        [Ps1Xml(Label = "Snapshot.Delete", Target = ViewControl.Table, ScriptBlock = "$_.Snapshot.Delete.DaysAfterModificationGreaterThan", Position = 3)]
         public PSManagementPolicySnapShot Snapshot { get; set; }
 
         public PSManagementPolicyActionGroup()

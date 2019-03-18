@@ -70,69 +70,10 @@ PS C:\>$rule2 = New-AzStorageAccountManagementPolicyRule -Name Test2 -Action $ac
 
 PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Rule $rule1,$rule2
 
+ResourceGroupName StorageAccountName LastModifiedTime     Rules        
+----------------- ------------------ ----------------     -----        
+myresourcegroup   mystorageaccount   3/18/2019 7:26:39 AM {Test, Test2}
 
-ResourceGroupName  : myresourcegroup
-StorageAccountName : mystorageaccount
-Id                 : /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/managementPolicies/default
-Type               : Microsoft.Storage/storageAccounts/managementPolicies
-LastModifiedTime   : 3/12/2019 10:29:29 AM
-Rules              : [
-                         {
-                             "Enabled":  true,
-                             "Name":  "Test",
-                             "Definition":  {
-                                                "Actions":  {
-                                                                "BaseBlob":  {
-                                                                                 "TierToCool":  {
-                                                                                                    "DaysAfterModificationGreaterThan":  30
-                                                                                                },
-                                                                                 "TierToArchive":  {
-                                                                                                       "DaysAfterModificationGreaterThan":  50
-                                                                                                   },
-                                                                                 "Delete":  {
-                                                                                                "DaysAfterModificationGreaterThan":  100
-                                                                                            }
-                                                                             },
-                                                                "Snapshot":  {
-                                                                                 "Delete":  {
-                                                                                                "DaysAfterCreationGreaterThan":  100
-                                                                                            }
-                                                                             }
-                                                            },
-                                                "Filters":  {
-                                                                "PrefixMatch":  [
-                                                                                    "prefix1",
-                                                                                    "prefix2"
-                                                                                ],
-                                                                "BlobTypes":  [
-                                                                                  "blockBlob"
-                                                                              ]
-                                                            }
-                                            }
-                         },
-                         {
-                             "Enabled":  true,
-                             "Name":  "Test2",
-                             "Definition":  {
-                                                "Actions":  {
-                                                                "BaseBlob":  {
-                                                                                 "TierToCool":  null,
-                                                                                 "TierToArchive":  null,
-                                                                                 "Delete":  {
-                                                                                                "DaysAfterModificationGreaterThan":  100
-                                                                                            }
-                                                                             },
-                                                                "Snapshot":  null
-                                                            },
-                                                "Filters":  {
-                                                                "PrefixMatch":  null,
-                                                                "BlobTypes":  [
-                                                                                  "blockBlob"
-                                                                              ]
-                                                            }
-                                            }
-                         }
-                     ]
 ```
 
 This command first create 2 ManagementPolicy rule objects, then creates or updates the management policy of a Storage account with the 2 ManagementPolicy rule objects.
@@ -176,69 +117,10 @@ PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup"
     })
 })
 
+ResourceGroupName StorageAccountName LastModifiedTime     Rules        
+----------------- ------------------ ----------------     -----        
+myresourcegroup   mystorageaccount   3/18/2019 7:26:39 AM {Test, Test2}
 
-ResourceGroupName  : myresourcegroup
-StorageAccountName : mystorageaccount
-Id                 : /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/managementPolicies/default
-Type               : Microsoft.Storage/storageAccounts/managementPolicies
-LastModifiedTime   : 3/12/2019 10:24:55 AM
-Rules              : [
-                         {
-                             "Enabled":  true,
-                             "Name":  "Test",
-                             "Definition":  {
-                                                "Actions":  {
-                                                                "BaseBlob":  {
-                                                                                 "TierToCool":  {
-                                                                                                    "DaysAfterModificationGreaterThan":  30
-                                                                                                },
-                                                                                 "TierToArchive":  {
-                                                                                                       "DaysAfterModificationGreaterThan":  50
-                                                                                                   },
-                                                                                 "Delete":  {
-                                                                                                "DaysAfterModificationGreaterThan":  100
-                                                                                            }
-                                                                             },
-                                                                "Snapshot":  {
-                                                                                 "Delete":  {
-                                                                                                "DaysAfterCreationGreaterThan":  100
-                                                                                            }
-                                                                             }
-                                                            },
-                                                "Filters":  {
-                                                                "PrefixMatch":  [
-                                                                                    "prefix1",
-                                                                                    "prefix2"
-                                                                                ],
-                                                                "BlobTypes":  [
-                                                                                  "blockBlob"
-                                                                              ]
-                                                            }
-                                            }
-                         },
-                         {
-                             "Enabled":  true,
-                             "Name":  "Test2",
-                             "Definition":  {
-                                                "Actions":  {
-                                                                "BaseBlob":  {
-                                                                                 "TierToCool":  {
-                                                                                                    "DaysAfterModificationGreaterThan":  80
-                                                                                                },
-                                                                                 "TierToArchive":  null,
-                                                                                 "Delete":  null
-                                                                             },
-                                                                "Snapshot":  null
-                                                            },
-                                                "Filters":  {
-                                                                "PrefixMatch":  null,
-                                                                "BlobTypes":  [
-                                                                                  "blockBlob"
-                                                                              ]
-                                                            }
-                                            }
-                         }
-                     ]
 ```
 
 This command creates or updates the management policy of a Storage account with a json format policy.

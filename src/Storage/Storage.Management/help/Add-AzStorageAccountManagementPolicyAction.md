@@ -37,10 +37,9 @@ PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Tier
 PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -SnapshotAction Delete -daysAfterCreationGreaterThan 100 -InputObject $action
 PS C:\>$action 
 
-BaseBlob.TierToCool.DaysAfterModificationGreaterThan    : 30
-BaseBlob.TierToArchive.DaysAfterModificationGreaterThan : 50
-BaseBlob.Delete.DaysAfterModificationGreaterThan        : 100
-Snapshot.Delete.DaysAfterCreationGreaterThan            : 100
+BaseBlob.TierToCool BaseBlob.TierToArchive BaseBlob.Delete Snapshot.Delete
+------------------- ---------------------- --------------- ---------------
+30                  50                     100             100            
 
 PS C:\>$filter = New-AzStorageAccountManagementPolicyFilter
 PS C:\>$rule = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter

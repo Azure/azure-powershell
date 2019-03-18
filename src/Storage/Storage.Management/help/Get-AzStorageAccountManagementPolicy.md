@@ -39,68 +39,10 @@ The **Get-AzStorageAccountManagementPolicy** cmdlet gets the management policy o
 ```
 PS C:\>Get-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
 
-ResourceGroupName  : myresourcegroup
-StorageAccountName : mystorageaccount
-Id                 : /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/managementPolicies/default
-Type               : Microsoft.Storage/storageAccounts/managementPolicies
-LastModifiedTime   : 3/12/2019 7:04:05 AM
-Rules              : [
-                         {
-                             "Enabled":  true,
-                             "Name":  "Test",
-                             "Definition":  {
-                                                "Actions":  {
-                                                                "BaseBlob":  {
-                                                                                 "TierToCool":  {
-                                                                                                    "DaysAfterModificationGreaterThan":  30
-                                                                                                },
-                                                                                 "TierToArchive":  {
-                                                                                                       "DaysAfterModificationGreaterThan":  50
-                                                                                                   },
-                                                                                 "Delete":  {
-                                                                                                "DaysAfterModificationGreaterThan":  100
-                                                                                            }
-                                                                             },
-                                                                "Snapshot":  {
-                                                                                 "Delete":  {
-                                                                                                "DaysAfterCreationGreaterThan":  100
-                                                                                            }
-                                                                             }
-                                                            },
-                                                "Filters":  {
-                                                                "PrefixMatch":  [
-                                                                                    "prefix1",
-                                                                                    "prefix2"
-                                                                                ],
-                                                                "BlobTypes":  [
-                                                                                  "blockBlob"
-                                                                              ]
-                                                            }
-                                            }
-                         },
-                         {
-                             "Enabled":  true,
-                             "Name":  "Test2",
-                             "Definition":  {
-                                                "Actions":  {
-                                                                "BaseBlob":  {
-                                                                                 "TierToCool":  null,
-                                                                                 "TierToArchive":  null,
-                                                                                 "Delete":  {
-                                                                                                "DaysAfterModificationGreaterThan":  100
-                                                                                            }
-                                                                             },
-                                                                "Snapshot":  null
-                                                            },
-                                                "Filters":  {
-                                                                "PrefixMatch":  null,
-                                                                "BlobTypes":  [
-                                                                                  "blockBlob"
-                                                                              ]
-                                                            }
-                                            }
-                         }
-                     ]
+ResourceGroupName StorageAccountName LastModifiedTime     Rules        
+----------------- ------------------ ----------------     -----        
+myresourcegroup   mystorageaccount   3/18/2019 7:26:39 AM {Test, Test2}
+
 ```
 
 This command gets the management policy of a Storage account.

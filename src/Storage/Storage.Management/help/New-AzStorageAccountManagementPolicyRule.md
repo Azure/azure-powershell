@@ -34,37 +34,9 @@ PS C:\>$filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch blobpre
 PS C:\>$rule = New-AzStorageAccountManagementPolicyRule -Name rule1 -Action $action -Filter $filter
 PS C:\>$rule
 
-Enabled    : True
-Name       : rule1
-Definition : {
-                 "Actions":  {
-                                 "BaseBlob":  {
-                                                  "TierToCool":  {
-                                                                     "DaysAfterModificationGreaterThan":  30
-                                                                 },
-                                                  "TierToArchive":  {
-                                                                        "DaysAfterModificationGreaterThan":  50
-                                                                    },
-                                                  "Delete":  {
-                                                                 "DaysAfterModificationGreaterThan":  100
-                                                             }
-                                              },
-                                 "Snapshot":  {
-                                                  "Delete":  {
-                                                                 "DaysAfterCreationGreaterThan":  100
-                                                             }
-                                              }
-                             },
-                 "Filters":  {
-                                 "PrefixMatch":  [
-                                                     "blobprefix1",
-                                                     "blobprefix2"
-                                                 ],
-                                 "BlobTypes":  [
-                                                   "blockBlob"
-                                               ]
-                             }
-             }
+Enabled Name  Definition                                                                     
+------- ----  ----------                                                                     
+   True rule1 Microsoft.Azure.Commands.Management.Storage.Models.PSManagementPolicyDefinition
 
 PS C:\>$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Rule $rule
 ```
