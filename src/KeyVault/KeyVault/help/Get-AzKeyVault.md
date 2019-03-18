@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: A7C287C4-E9FD-407A-91BD-EFA17C33FC8B
@@ -13,14 +13,9 @@ Gets key vaults.
 
 ## SYNTAX
 
-### ListAllVaultsInSubscription (Default)
+### GetVaultByName (Default)
 ```
-Get-AzKeyVault [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetVaultByName
-```
-Get-AzKeyVault [[-VaultName] <String>] [[-ResourceGroupName] <String>]
+Get-AzKeyVault [[-VaultName] <String>] [[-ResourceGroupName] <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -165,6 +160,27 @@ Tags                 :
 This command gets the deleted key vault information named myvault4 in your current
 subscription and in westus region.
 
+### Example 6: Get key vaults using filtering
+```powershell
+PS C:\> Get-AzKeyVault -VaultName 'myvault*'
+
+Vault Name          : myvault2
+Resource Group Name : myrg1
+Location            : westus
+Resource ID         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg1/providers/Microsoft.Ke
+                      yVault/vaults/myvault2
+Tags                :
+
+Vault Name          : myvault3
+Resource Group Name : myrg1
+Location            : westus
+Resource ID         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg1/providers/Microsoft.Ke
+                      yVault/vaults/myvault3
+Tags                :
+```
+
+This command gets all the key vaults in the subscription that start with "myvault".
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -233,7 +249,7 @@ Key-value pairs in the form of a hash table. For example:
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: ListAllVaultsInSubscription
+Parameter Sets: GetVaultByName
 Aliases:
 
 Required: False

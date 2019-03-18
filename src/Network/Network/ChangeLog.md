@@ -18,14 +18,19 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
-* Add wildcard support to Network cmdlets
+* Add Threat Intelligence support for Azure Firewall
+* Add Alert action type for Azure Firewall Network and Application Rule Collections
+* Add Application Gateway Firewall Policy top level resource and Custom Rules
+
+## Version 1.4.0
 * Add ResourceId parameter to Get-AzNetworkInterface
 * Improved error handling for Get-AzVpnClientRevokedCertificate, Get-AzVpnClientRootCertificate
 * Improved Subnet, Primary, PrivateIpAddressVersion parameters processing in
     - Add-AzNetworkInterfaceIpConfig
     - Set-AzNetworkInterfaceIpConfig
-* Add Threat Intelligence support for Azure Firewall
-* Add Alert action type for Azure Firewall Network and Application Rule Collections
+
+## Version 1.3.0
+* Add wildcard support to Network cmdlets
 
 ## Version 1.2.1
 * Update help example for Add-AzApplicationGatewayCustomError

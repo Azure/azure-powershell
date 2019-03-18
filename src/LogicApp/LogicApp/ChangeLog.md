@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.1
 * Fix for ListWorkflows only retrieving the first page of results
 
 ## Version 1.2.0

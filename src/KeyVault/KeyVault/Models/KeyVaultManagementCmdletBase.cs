@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             set { _resourceClient = value; }
         }
 
-        protected List<PSKeyVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag)
+        protected List<PSKeyVaultIdentityItem> FilterByTag(List<PSKeyVaultIdentityItem> listResult, Hashtable tag)
         {
             var tagValuePair = new PSTagValuePair();
             if (tag != null && tag.Count > 0)
@@ -112,9 +112,30 @@ namespace Microsoft.Azure.Commands.KeyVault
                     throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidTagFormat);
                 }
             }
+
+            if (!string.IsNullOrEmpty(tagValuePair.Name))
+            {
+                listResult = listResult.Where(r => r.Tags?.Keys != null && r.Tags.ConvertToDictionary().Keys.Any(k => string.Equals(k, tagValuePair.Name, StringComparison.OrdinalIgnoreCase))).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(tagValuePair.Value))
+            {
+                listResult = listResult.Where(r => r.Tags?.Values != null && r.Tags.ConvertToDictionary().Values.Any(v => string.Equals(v, tagValuePair.Value, StringComparison.OrdinalIgnoreCase))).ToList();
+            }
+
+            return listResult;
+        }
+
+        protected PSKeyVault FilterByTag(PSKeyVault keyVault, Hashtable tag)
+        {
+            return (PSKeyVault) FilterByTag(new List<PSKeyVaultIdentityItem> { keyVault }, tag).FirstOrDefault();
+        }
+
+        protected List<PSKeyVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag)
+        {
             IEnumerable<PSKeyVaultIdentityItem> listResult;
             var resourceType = KeyVaultManagementClient.VaultsResourceType;
-            if (resourceGroupName != null)
+            if (ShouldListByResourceGroup(resourceGroupName, null))
             {
                 listResult = ListByResourceGroup(resourceGroupName,
                     new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
@@ -127,21 +148,13 @@ namespace Microsoft.Azure.Commands.KeyVault
                         r => r.ResourceType == resourceType));
             }
 
-            if (!string.IsNullOrEmpty(tagValuePair.Name))
-            {
-                listResult = listResult.Where(r => r.Tags?.Keys != null && r.Tags.ConvertToDictionary().Keys.Any(k => string.Equals(k, tagValuePair.Name, StringComparison.OrdinalIgnoreCase)));
-            }
-
-            if (!string.IsNullOrEmpty(tagValuePair.Value))
-            {
-                listResult = listResult.Where(r => r.Tags?.Values != null && r.Tags.ConvertToDictionary().Values.Any(v => string.Equals(v, tagValuePair.Value, StringComparison.OrdinalIgnoreCase)));
-            }
-
             var vaults = new List<PSKeyVaultIdentityItem>();
             if (listResult != null)
             {
                 vaults.AddRange(listResult);
             }
+
+            vaults = FilterByTag(vaults, tag);
 
             return vaults;
         }

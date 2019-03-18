@@ -13,14 +13,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
-    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.8.1" />
+    <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="0.10.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="9.4.2" />
+    <PackageReference Include="Microsoft.Azure.Storage.File" Version="9.4.2" />
+    <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="9.4.2" />
+    <PackageReference Include="Microsoft.Azure.KeyVault.Core" Version="2.0.4" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.2.1" />
     <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Storage\Storage.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement.PowerShell">
+      <HintPath>$(RepoSrc)lib\Microsoft.WindowsAzure.Storage.DataMovement.PowerShell.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
