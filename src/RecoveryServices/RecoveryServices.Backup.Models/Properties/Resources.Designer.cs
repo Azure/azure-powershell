@@ -993,7 +993,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to disable protection for the container &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to register the container &apos;{0}&apos;.
         /// </summary>
         public static string RegisterContainerWarning
         {
