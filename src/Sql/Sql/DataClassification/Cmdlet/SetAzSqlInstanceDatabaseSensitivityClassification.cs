@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
     [Cmdlet(
         VerbsCommon.Set,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DataClassificationCommon.SqlInstanceDatabaseSensitivityClassification,
+        DefaultParameterSetName = DataClassificationCommon.ClassificationObjectParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
     public class SetAzSqlInstanceDatabaseSensitivityClassification : ModifyAzSqlInstanceDatabaseSensitivityClassificationCmdlet

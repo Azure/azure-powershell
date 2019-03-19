@@ -13,16 +13,16 @@ Gets the recommended information types and sensitivity labels of columns in the 
 
 ## SYNTAX
 
+### DatabaseObjectParameterSet (Default)
+```
+Get-AzSqlInstanceDatabaseSensitivityRecommendations -DatabaseObject <AzureSqlManagedDatabaseModel> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### DatabaseParameterSet
 ```
 Get-AzSqlInstanceDatabaseSensitivityRecommendations [-ResourceGroupName] <String> [-InstanceName] <String>
  [-DatabaseName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### DatabaseObjectParameterSet
-```
-Get-AzSqlInstanceDatabaseSensitivityRecommendations -DatabaseObject <AzureSqlManagedDatabaseModel> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

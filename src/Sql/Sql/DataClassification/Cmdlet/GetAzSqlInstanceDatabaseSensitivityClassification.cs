@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 {
     [Cmdlet(
         VerbsCommon.Get,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DataClassificationCommon.SqlInstanceDatabaseSensitivityClassification),
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DataClassificationCommon.SqlInstanceDatabaseSensitivityClassification,
+        DefaultParameterSetName = DataClassificationCommon.DatabaseObjectParameterSet),
         OutputType(typeof(ManagedDatabaseSensitivityClassificationModel))]
     public class GetAzSqlInstanceDatabaseSensitivityClassification : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
     {
