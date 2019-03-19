@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             ValueFromPipeline = true,
             HelpMessage = Constants.HelpFactoryObject)]
         [Parameter(
-            ParameterSetName = ParameterSetNames.ByFactoryNameFactoryRepoGitConfig,
+            ParameterSetName = ParameterSetNames.ByInputObjectFactoryRepoGitConfig,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = Constants.HelpFactoryObject)]
