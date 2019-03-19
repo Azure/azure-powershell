@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 ActionSet = this.ActionSet,
                 RuleSequence = (this.RuleSequence == 0) ? 100 : this.RuleSequence,
-                Condition = this.Condition?.ToList()
+                Conditions = this.Condition?.ToList()
             };
             return rewriteRule;
         }

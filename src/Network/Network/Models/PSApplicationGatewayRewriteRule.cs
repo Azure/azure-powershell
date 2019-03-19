@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public int? RuleSequence { get; set; }
 
-        public List<PSApplicationGatewayRewriteRuleCondition> Condition { get; set; }
+        public List<PSApplicationGatewayRewriteRuleCondition> Conditions { get; set; }
 
         public PSApplicationGatewayRewriteRuleActionSet ActionSet { get; set; }
 
@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string ConditionText
+        public string ConditionsText
         {
-            get { return JsonConvert.SerializeObject(Condition, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(Conditions, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
