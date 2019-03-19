@@ -21,6 +21,7 @@
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,6 +30,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+    [CmdletOutputBreakingChange(typeof(PSSnapshotUpdate),
+                                DeprecatedOutputProperties = new string[] { "EncryptionSettings" },
+                                NewOutputProperties = new string[] { "EncryptionSettingsCollection" })]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotUpdateDiskEncryptionKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshotUpdate))]
     public partial class SetAzureRmSnapshotUpdateDiskEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
@@ -62,39 +66,46 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
+            // EncryptionSettingsCollection
+            if (this.SnapshotUpdate.EncryptionSettingsCollection == null)
+            {
+                this.SnapshotUpdate.EncryptionSettingsCollection = new EncryptionSettingsCollection();
+            }
+
+            // EncryptionSettings
+            if (this.SnapshotUpdate.EncryptionSettingsCollection.EncryptionSettings == null)
+            {
+                this.SnapshotUpdate.EncryptionSettingsCollection.EncryptionSettings = new List<EncryptionSettingsElement>();
+            }
+
+            if (this.SnapshotUpdate.EncryptionSettingsCollection.EncryptionSettings.Count == 0)
+            {
+                this.SnapshotUpdate.EncryptionSettingsCollection.EncryptionSettings.Add(new EncryptionSettingsElement());
+            }
+
             if (this.MyInvocation.BoundParameters.ContainsKey("SecretUrl"))
             {
-                // EncryptionSettings
-                if (this.SnapshotUpdate.EncryptionSettings == null)
-                {
-                    this.SnapshotUpdate.EncryptionSettings = new EncryptionSettings();
-                }
                 // DiskEncryptionKey
-                if (this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey == null)
+                if (this.SnapshotUpdate.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey = new KeyVaultAndSecretReference();
+                    this.SnapshotUpdate.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey = new KeyVaultAndSecretReference();
                 }
-                this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey.SecretUrl = this.SecretUrl;
+                this.SnapshotUpdate.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl = this.SecretUrl;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("SourceVaultId"))
             {
-                // EncryptionSettings
-                if (this.SnapshotUpdate.EncryptionSettings == null)
-                {
-                    this.SnapshotUpdate.EncryptionSettings = new EncryptionSettings();
-                }
                 // DiskEncryptionKey
-                if (this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey == null)
+                if (this.SnapshotUpdate.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey = new KeyVaultAndSecretReference();
+                    this.SnapshotUpdate.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey = new KeyVaultAndSecretReference();
                 }
                 // SourceVault
-                if (this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey.SourceVault == null)
+                if (this.SnapshotUpdate.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey.SourceVault = new SourceVault();
+                    this.SnapshotUpdate.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault = new SourceVault();
                 }
-                this.SnapshotUpdate.EncryptionSettings.DiskEncryptionKey.SourceVault.Id = this.SourceVaultId;
+                this.SnapshotUpdate.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id = this.SourceVaultId;
             }
 
             WriteObject(this.SnapshotUpdate);

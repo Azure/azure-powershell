@@ -955,7 +955,10 @@
     "Set-AzFrontDoorFireWallPolicy": "Set-AzureRmFrontDoorFireWallPolicy",
     "Remove-AzFrontDoorFireWallPolicy": "Remove-AzureRmFrontDoorFireWallPolicy",
     "New-AzFrontDoorRuleGroupOverrideObject": "New-AzureRmFrontDoorRuleGroupOverrideObject",
-    "Remove-AzFrontDoorContent": "Remove-AzureRmFrontDoorContent"
+    "Remove-AzFrontDoorContent": "Remove-AzureRmFrontDoorContent",
+    "Enable-AzFrontDoorCustomDomainHttps": "Enable-AzureRmFrontDoorCustomDomainHttps",
+    "Disable-AzFrontDoorCustomDomainHttps": "Disable-AzureRmFrontDoorCustomDomainHttps",
+    "Get-AzFrontDoorFrontendEndpoint": "Get-AzureRmFrontDoorFrontendEndpoint"
   },
   "Az.HDInsight": {
     "Get-AzHDInsightJob": "Get-AzureRmHDInsightJob",
