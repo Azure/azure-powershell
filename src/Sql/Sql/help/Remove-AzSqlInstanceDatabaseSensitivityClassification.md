@@ -13,6 +13,13 @@ Removes the information types and sensitivity labels of columns in the Azure SQL
 
 ## SYNTAX
 
+### ClassificationObjectParameterSet (Default)
+```
+Remove-AzSqlInstanceDatabaseSensitivityClassification
+ -ClassificationObject <ManagedDatabaseSensitivityClassificationModel> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ColumnParameterSet
 ```
 Remove-AzSqlInstanceDatabaseSensitivityClassification [-ResourceGroupName] <String> [-InstanceName] <String>
@@ -24,13 +31,6 @@ Remove-AzSqlInstanceDatabaseSensitivityClassification [-ResourceGroupName] <Stri
 ```
 Remove-AzSqlInstanceDatabaseSensitivityClassification -DatabaseObject <AzureSqlManagedDatabaseModel>
  -SchemaName <String> -TableName <String> -ColumnName <String> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ClassificationObjectParameterSet
-```
-Remove-AzSqlInstanceDatabaseSensitivityClassification
- -ClassificationObject <ManagedDatabaseSensitivityClassificationModel> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

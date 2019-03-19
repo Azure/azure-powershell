@@ -13,24 +13,24 @@ Sets the information types and sensitivity labels of columns in the database.
 
 ## SYNTAX
 
+### ClassificationObjectParameterSet (Default)
+```
+Set-AzSqlDatabaseSensitivityClassification -ClassificationObject <SqlDatabaseSensitivityClassificationModel>
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ColumnParameterSet
 ```
-Set-AzSqlDatabaseSensitivityClassification [-ResourceGroupName] <String> [-ServerName] <String>
- [-DatabaseName] <String> -SchemaName <String> -TableName <String> -ColumnName <String>
- [-SensitivityLabel <String>] [-InformationType <String>] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSqlDatabaseSensitivityClassification [-SensitivityLabel <String>] [-InformationType <String>]
+ [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String> -SchemaName <String>
+ -TableName <String> -ColumnName <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DatabaseObjectColumnParameterSet
 ```
-Set-AzSqlDatabaseSensitivityClassification -DatabaseObject <AzureSqlDatabaseModel> -SchemaName <String>
- -TableName <String> -ColumnName <String> [-SensitivityLabel <String>] [-InformationType <String>] [-PassThru]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ClassificationObjectParameterSet
-```
-Set-AzSqlDatabaseSensitivityClassification -ClassificationObject <SqlDatabaseSensitivityClassificationModel>
+Set-AzSqlDatabaseSensitivityClassification [-SensitivityLabel <String>] [-InformationType <String>]
+ -DatabaseObject <AzureSqlDatabaseModel> -SchemaName <String> -TableName <String> -ColumnName <String>
  [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

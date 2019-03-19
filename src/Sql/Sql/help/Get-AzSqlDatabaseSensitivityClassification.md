@@ -13,6 +13,12 @@ Gets the current information types and sensitivity labels of columns in the data
 
 ## SYNTAX
 
+### DatabaseObjectParameterSet (Default)
+```
+Get-AzSqlDatabaseSensitivityClassification -DatabaseObject <AzureSqlDatabaseModel> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### DatabaseParameterSet
 ```
 Get-AzSqlDatabaseSensitivityClassification [-ResourceGroupName] <String> [-ServerName] <String>
@@ -23,12 +29,6 @@ Get-AzSqlDatabaseSensitivityClassification [-ResourceGroupName] <String> [-Serve
 ```
 Get-AzSqlDatabaseSensitivityClassification [-ResourceGroupName] <String> [-ServerName] <String>
  [-DatabaseName] <String> -SchemaName <String> -TableName <String> -ColumnName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### DatabaseObjectParameterSet
-```
-Get-AzSqlDatabaseSensitivityClassification -DatabaseObject <AzureSqlDatabaseModel> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
