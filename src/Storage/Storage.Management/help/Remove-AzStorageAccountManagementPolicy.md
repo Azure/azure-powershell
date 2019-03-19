@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.storage/remove-Azstorageaccountmanagementpolicy
 schema: 2.0.0
@@ -15,18 +15,24 @@ Removes the management policy of an Azure Storage account.
 ### AccountName (Default)
 ```
 Remove-AzStorageAccountManagementPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Remove-AzStorageAccountManagementPolicy -StorageAccount <PSStorageAccount>
+Remove-AzStorageAccountManagementPolicy -StorageAccount <PSStorageAccount> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AccountResourceId
+```
+Remove-AzStorageAccountManagementPolicy [-StorageAccountResourceId] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyObject
 ```
-Remove-AzStorageAccountManagementPolicy -InputObject <PSManagementPolicy>
+Remove-AzStorageAccountManagementPolicy [-InputObject] <PSManagementPolicy> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -48,9 +54,9 @@ This command removes the management policy of a Storage account.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -68,9 +74,25 @@ Parameter Sets: PolicyObject
 Aliases: ManagementPolicy
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Indicates that this cmdlet returns a **Boolean** that reflects the success of the operation.
+By default, this cmdlet does not return a value.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -119,6 +141,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StorageAccountResourceId
+Storage Account Resource Id.
+
+```yaml
+Type: System.String
+Parameter Sets: AccountResourceId
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -158,6 +195,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ## OUTPUTS
+
+### System.Boolean
 
 ## NOTES
 

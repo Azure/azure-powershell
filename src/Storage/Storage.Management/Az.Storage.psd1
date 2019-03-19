@@ -153,10 +153,13 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
     'Set-AzRmStorageContainerImmutabilityPolicy',
     'Get-AzRmStorageContainerImmutabilityPolicy',
     'Remove-AzRmStorageContainerImmutabilityPolicy',
-    'Lock-AzRmStorageContainerImmutabilityPolicy',
-    'Set-AzStorageAccountManagementPolicy', 
-    'Get-AzStorageAccountManagementPolicy', 
+    'Lock-AzRmStorageContainerImmutabilityPolicy',	
+    'Set-AzStorageAccountManagementPolicy',
+    'Get-AzStorageAccountManagementPolicy',
     'Remove-AzStorageAccountManagementPolicy',
+    'New-AzStorageAccountManagementPolicyFilter',
+    'New-AzStorageAccountManagementPolicyRule',
+    'Add-AzStorageAccountManagementPolicyAction',
     'Invoke-AzStorageAccountFailover'
 
 # Variables to export from this module

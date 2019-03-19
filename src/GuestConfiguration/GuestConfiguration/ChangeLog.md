@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix cmdlets failure when an initiative definition in subscription does not have category set.
 
 ## Version 0.10.3
 - Support Custom policy reports retrieval through the cmd-lets

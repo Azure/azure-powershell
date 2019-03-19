@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Container model object to be unregistered from the vault.
         /// </summary>
         [Parameter(Mandatory = true, Position = 1,
-            HelpMessage = ParamHelpMsgs.Container.RegisteredContainer)]
+            HelpMessage = ParamHelpMsgs.Container.RegisteredContainer, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ContainerBase Container { get; set; }
 
