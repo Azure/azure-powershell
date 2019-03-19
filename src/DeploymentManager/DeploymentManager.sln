@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeploymentManager", "DeploymentManager\DeploymentManager.csproj", "{F022ED20-7D3B-4BF4-88AF-F97CC50484DA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1AA03B6B-C412-4D54-A8bE-FAA02234662B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeploymentManager.Test", "DeploymentManager.Test\DeploymentManager.Test.csproj", "{4AE5705F-62CF-461D-B72E-DD9DCD9B3609}"
 EndProject
@@ -57,6 +57,9 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4AE5705F-62CF-461D-B72E-DD9DCD9B3609} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+	EndGlobalSection	
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C50F967F-CC90-485A-AEED-2886F3D3066E}
 	EndGlobalSection
