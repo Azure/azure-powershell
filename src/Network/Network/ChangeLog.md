@@ -20,6 +20,8 @@
 ## Upcoming Release
 * Add Threat Intelligence support for Azure Firewall
 * Add Alert action type for Azure Firewall Network and Application Rule Collections
+* Add Application Gateway Firewall Policy top level resource and Custom Rules
+
 * Added support for conditions in RewriteRules in the Application Gateway
     - New cmdlets added:
         - New-AzApplicationGatewayRewriteRuleCondition
