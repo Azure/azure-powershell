@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.1
 * Azure automation update management change to support the following new features :
     * Dynamic grouping
     * Pre-Post script

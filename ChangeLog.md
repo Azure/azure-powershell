@@ -1,3 +1,50 @@
+## 1.6.0 - March 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added wildcard support to Get cmdlets for Az.Compute and Az.Network
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+* Az.LogicApp: New cmdlets for Integration Account Assemblies and Batch Configuration
+
+#### Az.Accounts
+* Azure automation update management change to support the following new features :
+    * Dynamic grouping
+    * Pre-Post script
+    * Reboot Setting
+
+#### Az.Compute
+* Fix issue with path resolution in Get-AzVmBootDiagnosticsData
+* Update Compute client library to 25.0.0.
+
+#### Az.KeyVault
+* Added wildcard support to KeyVault cmdlets
+
+#### Az.Network
+* Add ResourceId parameter to Get-AzNetworkInterface
+* Improved error handling for Get-AzVpnClientRevokedCertificate, Get-AzVpnClientRootCertificate
+* Improved Subnet, Primary, PrivateIpAddressVersion parameters processing in
+    - Add-AzNetworkInterfaceIpConfig
+    - Set-AzNetworkInterfaceIpConfig
+
+#### Az.RecoveryServices
+* Added SnapshotRetentionInDays in Azure VM policy to support Instant RP
+* Added pipe support for unregister container
+
+#### Az.Resources
+* Update wildcard support for Get-AzResource and Get-AzResourceGroup
+* Update credentials used when making generic calls to ARM
+
+#### Az.Storage
+* Support Get/Set/Remove Management Policy on a Storage account
+    - Set-AzStorageAccountManagementPolicy
+    - Get-AzStorageAccountManagementPolicy
+    - Remove-AzStorageAccountManagementPolicy
+    - Add-AzStorageAccountManagementPolicyAction
+    - New-AzStorageAccountManagementPolicyFilter
+    - New-AzStorageAccountManagementPolicyRule
+
 ## 1.5.0 - March 2019
 ### Highlights since the last major release
 * General availability of `Az` module
