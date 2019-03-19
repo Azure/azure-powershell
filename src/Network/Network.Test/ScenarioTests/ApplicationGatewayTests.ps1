@@ -858,7 +858,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions
         Assert-NotNull $rewriteRuleSet
         Assert-AreEqual $rewriteRuleSet.RewriteRules.Count 1
         Assert-NotNull $rewriteRuleSet.RewriteRules[0].ActionSet
-		Assert-NotNull $rewriteRuleSet.RewriteRules[0].Condition
+		Assert-NotNull $rewriteRuleSet.RewriteRules[0].Conditions
 
         $rewriteRuleSet = Get-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw
         Assert-NotNull $rewriteRuleSet
