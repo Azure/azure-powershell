@@ -490,4 +490,7 @@
     <value>Removing Azure Automation Software Update Configuration.</value>
     <comment>Automation</comment>
   </data>
+  <data name="SoftwareUpdateConfigurationInvalidTagFormat" xml:space="preserve">
+    <value>The Tag format is invalid. Valid Tag format is hashtable with string key and value of String or array of string.</value>
+  </data>
 </root>

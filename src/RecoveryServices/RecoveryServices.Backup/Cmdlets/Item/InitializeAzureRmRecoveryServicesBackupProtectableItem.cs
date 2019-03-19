@@ -76,8 +76,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 var operationStatus = TrackingHelpers.GetOperationResult(
                inquiryResponse,
                operationId =>
-                   ServiceClientAdapter.GetContainerRefreshOrInquiryOperationResult(
+                   ServiceClientAdapter.GetRegisterContainerOperationResult(
                        operationId,
+                       Container.Name,
                        vaultName: vaultName,
                        resourceGroupName: vaultResourceGroupName));
 
