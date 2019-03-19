@@ -214,6 +214,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             RunPowerShellTest("ApiRevision-CrudTest");
         }
 
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiDiagnosticLoggerTest()
+        {
+            RunPowerShellTest("ApiDiagnosticLogger-CrudTest");
+        }
+
         private void RunPowerShellTest(params string[] scripts)
         {
             var sf = new StackTrace().GetFrame(1);

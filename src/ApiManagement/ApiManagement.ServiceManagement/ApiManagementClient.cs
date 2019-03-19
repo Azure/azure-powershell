@@ -2244,6 +2244,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                                 string loggerId,
                                 string diagnosticId)
         {
+            DiagnosticContract diagnosticParam = new DiagnosticContract(true);
+            var diagnostic = Client.ApiDiagnostic.CreateOrUpdate(context.ResourceGroupName,
+                                                      context.ServiceName,
+                                                      apiId,
+                                                      diagnosticId,
+                                                      diagnosticParam
+                                                      );
+           
             var loggerContract = Client.ApiDiagnosticLogger.CreateOrUpdate(context.ResourceGroupName,
                                                       context.ServiceName,
                                                       apiId,
@@ -2258,11 +2266,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                         string loggerId,
                         string diagnosticId)
         {
-            Client.ApiDiagnosticLogger.Delete(context.ResourceGroupName,
+            var ifmatch = "*";
+            Client.ApiDiagnostic.Delete(context.ResourceGroupName,
                                                       context.ServiceName,
                                                       apiId,
                                                       diagnosticId,
-                                                      loggerId);
+                                                      ifmatch
+                                                      );
+
+    
         }
 
         public IList<PsApiManagementLogger> GetApiDiagnosticLoggersList(PsApiManagementContext context,

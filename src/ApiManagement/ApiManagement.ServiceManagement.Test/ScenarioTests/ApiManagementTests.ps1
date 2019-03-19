@@ -2378,3 +2378,44 @@ function ApiRevision-CrudTest {
         Assert-True {$removed}
     }
 }
+
+<#
+.SYNOPSIS
+Tests CRUD operations of Diagnostic.
+#>
+function ApiDiagnosticLogger-CrudTest {
+    Param($resourceGroupName, $serviceName)
+
+    $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+
+    # create logger
+    $loggerId = getAssetName
+    $appInsightsLoggerId = getAssetName
+	$diagnosticId = "applicationinsights"
+    $instrumentationKey = "8a0a9a1e-6a70-455d-83ff-0c4947cbad6c";
+    try {        
+        # create an Application Insights Logger
+        $appInsightsLoggerDescription = getAssetName
+        $applogger = New-AzApiManagementLogger -Context $context -LoggerId $appInsightsLoggerId -InstrumentationKey $instrumentationKey -Description $appInsightsLoggerDescription
+        Assert-NotNull $applogger
+        Assert-AreEqual 'ApplicationInsights' $applogger.Type
+        Assert-AreEqual $appInsightsLoggerId $applogger.LoggerId
+        Assert-AreEqual $appInsightsLoggerDescription $applogger.Description
+		
+		#Get All apis
+		$apis = Get-AzApiManagementApi -Context $context
+		$apiId = $apis[0].ApiId
+
+		$apiLogger = Set-AzApiManagementApiDiagnostic -Context $context -ApiId $apiId -LoggerId $appInsightsLoggerId -DiagnosticId $diagnosticId -PassThru
+		Assert-NotNull $apiLogger
+
+		$diagnosticLoggers = Get-AzApiManagementApiLoggers -Context $context -ApiId $apiId -DiagnosticId $diagnosticId
+
+        Assert-NotNull $diagnosticLoggers
+        Assert-AreEqual 1 $diagnosticLoggers.Count
+    }
+    finally {
+        $removed = Remove-AzApiManagementApiDiagnostic -Context $context -ApiId $apiId -LoggerId $appInsightsLoggerId -DiagnosticId $diagnosticId -PassThru
+        Assert-True {$removed}
+    }
+}

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "The identifier of the Release.")]
+            HelpMessage = "The identifier of the diagnostic.")]
         public String DiagnosticId { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

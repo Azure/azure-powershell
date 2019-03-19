@@ -50,16 +50,21 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [ValidateNotNullOrEmpty]
         public String DiagnosticId { get; set; }
 
+        [Parameter(
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false,
+           HelpMessage = "If specified then instance of " +
+                         "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger type " +
+                         " representing the logger will be written to output.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
         {
             Client.RemoveLoggerFromDiagnosticApi(Context, ApiId, LoggerId, DiagnosticId);
 
-            if (PassThru)
+            if (PassThru.IsPresent)
             {
-                var @logger = Client.LoggerById(Context, LoggerId);
-                WriteObject(@logger);
+                WriteObject(true);
             }
         }
     }
