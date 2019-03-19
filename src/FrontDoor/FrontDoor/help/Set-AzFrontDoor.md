@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
 online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/set-azfrontdoor
@@ -29,7 +29,7 @@ Set-AzFrontDoor -InputObject <PSFrontDoor> [-RoutingRule <PSRoutingRule[]>] [-Ba
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### ByResourceIdParameterSet
 ```
 Set-AzFrontDoor -ResourceId <String> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
  [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
@@ -254,7 +254,7 @@ Resource Id of the Front Door to update
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdParameterSet
+Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
 Required: True

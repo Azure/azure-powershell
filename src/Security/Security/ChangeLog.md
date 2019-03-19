@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Deprecate ResourceGroupName parameter in commands: Get-AzSecurityPricing and Set-AzSecurityPricing
 
 ## Version 0.7.3
 * Split `Set-AzSecurityThreatProtection` into two new cmdlets:

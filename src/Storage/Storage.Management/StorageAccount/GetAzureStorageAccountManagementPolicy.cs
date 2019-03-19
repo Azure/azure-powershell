@@ -14,16 +14,14 @@
 
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageAccountManagementPolicyNounStr, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSManagementPolicy))]
-#if NETSTANDARD
-    [Alias("Get-" + "AzureRm" + StorageAccountManagementPolicyNounStr)]
-#endif
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountManagementPolicy", DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSManagementPolicy))]
     public class GetAzureStorageAccountManagementPolicyCommand : StorageAccountBaseCmdlet
     {
         /// <summary>
@@ -35,6 +33,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// Account object parameter set 
         /// </summary>
         private const string AccountObjectParameterSet = "AccountObject";
+
+        /// <summary>
+        /// Account ResourceId  parameter set 
+        /// </summary>
+        private const string AccountResourceIdParameterSet = "AccountResourceId";
 
         [Parameter(
          Position = 0,
@@ -50,9 +53,19 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             HelpMessage = "Storage Account Name.",
            ParameterSetName = AccountNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.Storage/storageAccounts", nameof(ResourceGroupName))]
         [Alias(AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Storage Account Resource Id.",
+           ParameterSetName = AccountResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string StorageAccountResourceId { get; set; }
 
         [Parameter(Mandatory = true,
             HelpMessage = "Storage account object",
@@ -65,13 +78,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             base.ExecuteCmdlet();
 
-            if (ParameterSetName == AccountObjectParameterSet)
+            switch (ParameterSetName)
             {
-                this.ResourceGroupName = StorageAccount.ResourceGroupName;
-                this.StorageAccountName = StorageAccount.StorageAccountName;
+                case AccountObjectParameterSet:
+                    this.ResourceGroupName = StorageAccount.ResourceGroupName;
+                    this.StorageAccountName = StorageAccount.StorageAccountName;
+                    break;
+                case AccountResourceIdParameterSet:
+                    ResourceIdentifier accountResource = new ResourceIdentifier(StorageAccountResourceId);
+                    this.ResourceGroupName = accountResource.ResourceGroupName;
+                    this.StorageAccountName = accountResource.ResourceName;
+                    break;
+                default:
+                    // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
+                    break;
             }
 
-            StorageAccountManagementPolicies managementPolicy = this.StorageClient.ManagementPolicies.Get(
+            ManagementPolicy managementPolicy = this.StorageClient.ManagementPolicies.Get(
                  this.ResourceGroupName,
                  this.StorageAccountName);
 

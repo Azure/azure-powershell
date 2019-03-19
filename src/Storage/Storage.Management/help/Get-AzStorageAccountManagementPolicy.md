@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.storage/get-Azstorageaccountmanagementpolicy
 schema: 2.0.0
@@ -15,6 +15,12 @@ Gets the management policy of an Azure Storage account.
 ### AccountName (Default)
 ```
 Get-AzStorageAccountManagementPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### AccountResourceId
+```
+Get-AzStorageAccountManagementPolicy [-StorageAccountResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -35,47 +41,66 @@ PS C:\>Get-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup"
 
 ResourceGroupName  : myresourcegroup
 StorageAccountName : mystorageaccount
-Id                 : /subscriptions/********-****-****-****-************/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/managementPolicies/default
-Name               : DefaultManagementPolicy
+Id                 : /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/managementPolicies/default
 Type               : Microsoft.Storage/storageAccounts/managementPolicies
-Policy             : {
-                       "version": "0.5",
-                       "rules": [
+LastModifiedTime   : 3/12/2019 7:04:05 AM
+Rules              : [
                          {
-                           "name": "olcmtest",
-                           "type": "Lifecycle",
-                           "definition": {
-                             "filters": {
-                               "blobTypes": [
-                                 "blockBlob"
-                               ],
-                               "prefixMatch": [
-                                 "olcmtestcontainer"
-                               ]
-                             },
-                             "actions": {
-                               "baseBlob": {
-                                 "tierToCool": {
-                                   "daysAfterModificationGreaterThan": 1000
-                                 },
-                                 "tierToArchive": {
-                                   "daysAfterModificationGreaterThan": 90
-                                 },
-                                 "delete": {
-                                   "daysAfterModificationGreaterThan": 1000
-                                 }
-                               },
-                               "snapshot": {
-                                 "delete": {
-                                   "daysAfterCreationGreaterThan": 5000
-                                 }
-                               }
-                             }
-                           }
+                             "Enabled":  true,
+                             "Name":  "Test",
+                             "Definition":  {
+                                                "Actions":  {
+                                                                "BaseBlob":  {
+                                                                                 "TierToCool":  {
+                                                                                                    "DaysAfterModificationGreaterThan":  30
+                                                                                                },
+                                                                                 "TierToArchive":  {
+                                                                                                       "DaysAfterModificationGreaterThan":  50
+                                                                                                   },
+                                                                                 "Delete":  {
+                                                                                                "DaysAfterModificationGreaterThan":  100
+                                                                                            }
+                                                                             },
+                                                                "Snapshot":  {
+                                                                                 "Delete":  {
+                                                                                                "DaysAfterCreationGreaterThan":  100
+                                                                                            }
+                                                                             }
+                                                            },
+                                                "Filters":  {
+                                                                "PrefixMatch":  [
+                                                                                    "prefix1",
+                                                                                    "prefix2"
+                                                                                ],
+                                                                "BlobTypes":  [
+                                                                                  "blockBlob"
+                                                                              ]
+                                                            }
+                                            }
+                         },
+                         {
+                             "Enabled":  true,
+                             "Name":  "Test2",
+                             "Definition":  {
+                                                "Actions":  {
+                                                                "BaseBlob":  {
+                                                                                 "TierToCool":  null,
+                                                                                 "TierToArchive":  null,
+                                                                                 "Delete":  {
+                                                                                                "DaysAfterModificationGreaterThan":  100
+                                                                                            }
+                                                                             },
+                                                                "Snapshot":  null
+                                                            },
+                                                "Filters":  {
+                                                                "PrefixMatch":  null,
+                                                                "BlobTypes":  [
+                                                                                  "blockBlob"
+                                                                              ]
+                                                            }
+                                            }
                          }
-                       ]
-                     }
-LastModifiedTime   : 5/28/2018 10:05:51 AM
+                     ]
 ```
 
 This command gets the management policy of a Storage account.
@@ -86,9 +111,9 @@ This command gets the management policy of a Storage account.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -137,6 +162,21 @@ Aliases: AccountName
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountResourceId
+Storage Account Resource Id.
+
+```yaml
+Type: System.String
+Parameter Sets: AccountResourceId
+Aliases:
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
