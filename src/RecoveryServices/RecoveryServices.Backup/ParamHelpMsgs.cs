@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 " Azure Backup service (for example: resource name of the VM).";
             public const string ResourceId = "ID of the Azure Resource containing items to be protected by Azure Backup service. Currently, only Azure VM resource IDs are supported.";
             public const string ContainerObj = "Container object that needs to be re registered.";
+            public const string ForceOption = "Force registers container (prevents confirmation dialog). This parameter is optional.";
         }
 
         internal static class Common
