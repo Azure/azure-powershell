@@ -23,35 +23,35 @@ function Test-AccountCrud
     try
     {
         # create the resource group
-        New-AzureRmResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
 
         # create and check account 1
         $newTagName = "tag1"
         $newTagValue = "tagValue1"
-        $retrievedAcc = New-AzureRmNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue}
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue}
         Assert-AreEqual $accName1 $retrievedAcc.Name
         Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
         Assert-AreEqual "tagValue1" $retrievedAcc.Tags[$newTagName].ToString()
 
         # create and check account 2 using the Confirm flag
-        $retrievedAcc = New-AzureRmNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName2 -Confirm:$false
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName2 -Confirm:$false
         Assert-AreEqual $accName2 $retrievedAcc.Name
 		
         # create and check account 3 using the WhatIf - it should not be created
-        $retrievedAcc = New-AzureRmNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName3 -WhatIf
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName3 -WhatIf
 
         # get and check accounts by group (list)
-        $retrievedAcc = Get-AzureRmNetAppFilesAccount -ResourceGroupName $resourceGroup
+        $retrievedAcc = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup
         Assert-AreEqual $accName1 $retrievedAcc[0].Name
         Assert-AreEqual $accName2 $retrievedAcc[1].Name
         Assert-AreEqual 2 $retrievedAcc.Length
 
         # get and check an account by name
-        $retrievedAcc = Get-AzureRmNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accName1
+        $retrievedAcc = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accName1
         Assert-AreEqual $accName1 $retrievedAcc.Name
 
         # get and check the account again using the resource id just obtained
-        $retrievedAccById = Get-AzureRmNetAppFilesAccount -ResourceId $retrievedAcc.Id
+        $retrievedAccById = Get-AzNetAppFilesAccount -ResourceId $retrievedAcc.Id
         Assert-AreEqual $accName1 $retrievedAccById.Name
 
         # update and check the account (tags)
@@ -59,15 +59,15 @@ function Test-AccountCrud
         # there is no implemented cmdlet
 
         # delete one account retrieved by id and one by name and check removed
-        Remove-AzureRmNetAppFilesAccount -ResourceId $retrievedAccById.Id
+        Remove-AzNetAppFilesAccount -ResourceId $retrievedAccById.Id
 
         # but test the WhatIf first
-        Remove-AzureRmNetAppFilesAccount -ResourceGroupName $resourceGroup -AccountName $accName2 -WhatIf
-        $retrievedAcc = Get-AzureRmNetAppFilesAccount -ResourceGroupName $resourceGroup
+        Remove-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -AccountName $accName2 -WhatIf
+        $retrievedAcc = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup
         Assert-AreEqual 1 $retrievedAcc.Length
 
-        Remove-AzureRmNetAppFilesAccount -ResourceGroupName $resourceGroup -AccountName $accName2
-        $retrievedAcc = Get-AzureRmNetAppFilesAccount -ResourceGroupName $resourceGroup
+        Remove-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -AccountName $accName2
+        $retrievedAcc = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup
         Assert-AreEqual 0 $retrievedAcc.Length
     }
     finally
@@ -91,7 +91,7 @@ function Test-AccountPipelines
     try
     {
         # create the resource group
-        New-AzureRmResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
 
         New-AnfAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 | Remove-AnfAccount
 

@@ -41,65 +41,65 @@ function Test-VolumeCrud
     try
     {
         # create the resource group
-        New-AzureRmResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
 		
         # create virtual network
-        $virtualNetwork = New-AzureRmVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
-        $delegation = New-AzureRmDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
-        Add-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzureRmVirtualNetwork
+        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
+        $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
+        Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
         # create account
-        $retrievedAcc = New-AzureRmNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName 
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName 
 	    
         # create pool
-        $retrievedPool = New-AzureRmNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -PoolSize $poolSize -ServiceLevel $serviceLevel
+        $retrievedPool = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -PoolSize $poolSize -ServiceLevel $serviceLevel
         
         # create first volume and check
         $newTagName = "tag1"
         $newTagValue = "tagValue1"
-        $retrievedVolume = New-AzureRmNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -Tag @{$newTagName = $newTagValue}
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -Tag @{$newTagName = $newTagValue}
         Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
         Assert-AreEqual $serviceLevel $retrievedVolume.ServiceLevel
         Assert-AreEqual True $retrievedVolume.Tags.ContainsKey($newTagName)
         Assert-AreEqual "tagValue1" $retrievedVolume.Tags[$newTagName].ToString()
 		
         # create second volume and check using the confirm flag
-        $retrievedVolume = New-AzureRmNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName2 -CreationToken $volName2 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -Confirm:$false
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName2 -CreationToken $volName2 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -Confirm:$false
         Assert-AreEqual "$accName/$poolName/$volName2" $retrievedVolume.Name
         Assert-AreEqual $serviceLevel $retrievedVolume.ServiceLevel
 
         # create and check a third volume  using the WhatIf - it should not be created
-        $retrievedVolume = New-AzureRmNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName3 -CreationToken $volName2 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -WhatIf
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName3 -CreationToken $volName2 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -WhatIf
 
         # get and check volumes by group (list)
-        $retrievedVolume = Get-AzureRmNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName
+        $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName
         Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume[0].Name
         Assert-AreEqual "$accName/$poolName/$volName2" $retrievedVolume[1].Name
         Assert-AreEqual 2 $retrievedVolume.Length
 
         # get and check a volume by name
-        $retrievedVolume = Get-AzureRmNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
+        $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
         Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
 		
         # get and check the volume again using the resource id just obtained
-        $retrievedVolumeById = Get-AzureRmNetAppFilesVolume -ResourceId $retrievedVolume.Id
+        $retrievedVolumeById = Get-AzNetAppFilesVolume -ResourceId $retrievedVolume.Id
         Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolumeById.Name
 
         # update (patch) and check the volume
-        $retrievedVolume = Update-AzureRmNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -UsageThreshold $doubleUsage
+        $retrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -UsageThreshold $doubleUsage
         Assert-AreEqual "Premium" $retrievedVolume.ServiceLevel  # unchanged/not part of the patch
         Assert-AreEqual $doubleUsage $retrievedVolume.usageThreshold
 		
         # delete one volume retrieved by id and one by name and check removed
-        Remove-AzureRmNetAppFilesVolume -ResourceId $retrievedVolumeById.Id
+        Remove-AzNetAppFilesVolume -ResourceId $retrievedVolumeById.Id
 
         # but test the WhatIf first
-        Remove-AzureRmNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -Name $volName2 -WhatIf
-        $retrievedVolume = Get-AzureRmNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName
+        Remove-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -Name $volName2 -WhatIf
+        $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName
         Assert-AreEqual 1 $retrievedVolume.Length
 
-        Remove-AzureRmNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName2
-        $retrievedVolume = Get-AzureRmNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName
+        Remove-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName2
+        $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName
         Assert-AreEqual 0 $retrievedVolume.Length
     }
     finally
@@ -136,12 +136,12 @@ function Test-VolumePipelines
     try
     {
         # create the resource group
-        New-AzureRmResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
 		
         # create virtual network
-        $virtualNetwork = New-AzureRmVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
-        $delegation = New-AzureRmDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
-        Add-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzureRmVirtualNetwork
+        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
+        $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
+        Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
         # create account
         $retrievedAcc = New-AnfAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName 

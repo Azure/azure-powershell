@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
     [Cmdlet(
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesSnapshot",
-        SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesSnapshot))]
     [Alias("Get-AnfSnapshot")]
     public class GetAzureRmNetAppFilesSnapshot : AzureNetAppFilesCmdletBase

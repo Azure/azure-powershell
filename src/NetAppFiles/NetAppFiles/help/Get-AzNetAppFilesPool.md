@@ -15,19 +15,18 @@ Gets details of an Azure NetApp Files (ANF) pool.
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzNetAppFilesPool -ResourceGroupName <String> -AccountName <String> [-Name <String> | -PoolName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzNetAppFilesPool -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzNetAppFilesPool -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Get-AzNetAppFilesPool [-AccountInputObject <PSNetAppFilesAccount>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,9 +37,6 @@ The **Get-AzNetAppFilesPool** cmdlet gets details of an ANF pool.
 ### Example 1: Get an ANF pool
 ```
 PS C:\>Get-AzAnfPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfPool"
-```
-
-This command gets the account named MyAnfPool from the account "MyAnfAccount".
 
 Output:
 
@@ -53,6 +49,9 @@ PoolId            : a3a53a09-fd70-37ab-39dc-392a04cba525
 Size              : 4398046511104
 ServiceLevel      : Premium
 ProvisioningState : Succeeded
+```
+
+This command gets the account named MyAnfPool from the account "MyAnfAccount".
 
 ## PARAMETERS
 
@@ -143,37 +142,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -15,13 +15,12 @@ Gets details of an Azure NetApp Files (ANF) account.
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzNetAppFilesAccount -ResourceGroupName <String> [-Name <String> | -AccountName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzNetAppFilesAccount -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzNetAppFilesAccount -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,9 +31,6 @@ The **Get-AzNetAppFilesAccount** cmdlet gets details of an ANF account.
 ### Example 1: Get an ANF account
 ```
 PS C:\>Get-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount"
-```
-
-This command gets the account named MyAnfAccount.
 
 Output:
 
@@ -44,6 +40,9 @@ Name              : MyAnfAccount
 Type              : Microsoft.NetApp/netAppAccounts
 Tags              :
 ProvisioningState : Succeeded
+```
+
+This command gets the account named MyAnfAccount.
 
 ## PARAMETERS
 
@@ -104,37 +103,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
