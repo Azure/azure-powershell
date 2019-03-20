@@ -14,4 +14,8 @@
     <PackageReference Include="Microsoft.Azure.Management.PrivateDns" Version="0.8.0-preview" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Network\Network\Network.csproj" />
+  </ItemGroup>
+
 </Project>
