@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The identifier of the diagnostic.")]
         public String DiagnosticId { get; set; }
 
