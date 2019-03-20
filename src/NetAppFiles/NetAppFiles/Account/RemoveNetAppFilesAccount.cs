@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
 
         [Parameter(
             ParameterSetName = ObjectParameterSet,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The account object to remove")]
         [ValidateNotNullOrEmpty]

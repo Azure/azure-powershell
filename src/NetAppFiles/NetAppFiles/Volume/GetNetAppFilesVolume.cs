@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
     [Cmdlet(
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolume",
-        SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesVolume))]
     [Alias("Get-AnfVolume")]
     public class GetAzureRmNetAppFilesVolume : AzureNetAppFilesCmdletBase

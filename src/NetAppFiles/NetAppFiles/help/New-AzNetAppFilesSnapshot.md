@@ -33,9 +33,6 @@ The **New-AzNetAppFilesSnapshot** cmdlet creates an ANF snapshot.
 ### Example 1
 ```
 PS C:\>New-AzNetAppFilesSnapshot -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -SnapshotName "MyAnfSnapshot" -FileSystemId "3e2773a7-2a72-d003-0637-1a8b1fa3eaaf"
-```
-
-This command creates the new ANF snapshot "MyAnfSnapshot" within the volume "MyAnfVolume".
 
 Output:
 
@@ -48,6 +45,9 @@ SnapshotId        : ca7c4ebd-91cb-0e30-91f5-9154050033df
 FileSystemId      : 3e2773a7-2a72-d003-0637-1a8b1fa3eaaf
 CreationDate      :
 ProvisioningState : Succeeded
+```
+
+This command creates the new ANF snapshot "MyAnfSnapshot" within the volume "MyAnfVolume".
 
 ## PARAMETERS
 

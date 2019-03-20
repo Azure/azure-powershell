@@ -40,9 +40,6 @@ The **Update-AzNetAppFilesPool** cmdlet modifies an ANF pool.
 ### Example 1: Modify an ANF pool
 ```
 PS C:\>Update-AzNetAppFilesPool -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -PoolSize 4398046511104 -ServiceLevel "Standard"
-```
-
-This command changes the ANF pool "MyAnfPool" to have the given size and ServiceLevel.
 
 Output:
 
@@ -55,6 +52,9 @@ PoolId            : 9fa2ca6d-1e48-4439-30e3-7de056e44e5a
 Size              : 4398046511104
 ServiceLevel      : Standard
 ProvisioningState : Succeeded
+```
+
+This command changes the ANF pool "MyAnfPool" to have the given size and ServiceLevel.
 
 ## PARAMETERS
 

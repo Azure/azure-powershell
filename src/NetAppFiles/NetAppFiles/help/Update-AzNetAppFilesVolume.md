@@ -41,9 +41,6 @@ The **Update-AzNetAppFilesVolume** cmdlet updates an ANF volume.
 ### Example 1: Update an ANF volume
 ```
 PS C:\>Update-AzNetAppFilesVolume -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -UsageThreshold Size
-```
-
-This command updates the ANF volume "MyAnfVolume" with the new UsageThreshold size.
 
 Output:
 
@@ -58,6 +55,9 @@ ServiceLevel      : Premium
 UsageThreshold    : 2199023255552
 ProvisioningState : Succeeded
 SubnetId          : /subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyRG-vnet/subnets/default
+```
+
+This command updates the ANF volume "MyAnfVolume" with the new UsageThreshold size.
 
 ## PARAMETERS
 

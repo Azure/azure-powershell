@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
 
         [Parameter(
             ParameterSetName = ObjectParameterSet,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The snapshot object to remove")]
         [ValidateNotNullOrEmpty]
