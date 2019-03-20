@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiDiagnostic")]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiDiagnostic")]
     [OutputType(typeof(PsApiManagementLogger))]
     public class RemoveAzureApiManagementApiDiagnostic : AzureApiManagementCmdletBase
     {
@@ -39,13 +39,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Identifier of existing Logger. This parameter is required.")]
-        [ValidateNotNullOrEmpty]
-        public String LoggerId { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
             HelpMessage = "Identifier of the diagnostic. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String DiagnosticId { get; set; }
@@ -60,7 +53,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            Client.RemoveLoggerFromDiagnosticApi(Context, ApiId, LoggerId, DiagnosticId);
+            Client.DisableDiagnosticApi(Context, ApiId, DiagnosticId);
 
             if (PassThru.IsPresent)
             {

@@ -2392,7 +2392,7 @@ function ApiDiagnosticLogger-CrudTest {
     $loggerId = getAssetName
     $appInsightsLoggerId = getAssetName
 	$diagnosticId = "applicationinsights"
-    $instrumentationKey = "8a0a9a1e-6a70-455d-83ff-0c4947cbad6c";
+    $instrumentationKey = "7276c91e-db3b-47c2-bd2c-cfc4f1519f72";
     try {        
         # create an Application Insights Logger
         $appInsightsLoggerDescription = getAssetName
@@ -2406,7 +2406,7 @@ function ApiDiagnosticLogger-CrudTest {
 		$apis = Get-AzApiManagementApi -Context $context
 		$apiId = $apis[0].ApiId
 
-		$apiLogger = Set-AzApiManagementApiDiagnostic -Context $context -ApiId $apiId -LoggerId $appInsightsLoggerId -DiagnosticId $diagnosticId -PassThru
+		$apiLogger = Attach-AzApiManagementApiDiagnosticLogger -Context $context -ApiId $apiId -LoggerId $appInsightsLoggerId -DiagnosticId $diagnosticId -PassThru
 		Assert-NotNull $apiLogger
 
 		$diagnosticLoggers = Get-AzApiManagementApiLoggers -Context $context -ApiId $apiId -DiagnosticId $diagnosticId
@@ -2415,7 +2415,7 @@ function ApiDiagnosticLogger-CrudTest {
         Assert-AreEqual 1 $diagnosticLoggers.Count
     }
     finally {
-        $removed = Remove-AzApiManagementApiDiagnostic -Context $context -ApiId $apiId -LoggerId $appInsightsLoggerId -DiagnosticId $diagnosticId -PassThru
+        $removed = Disable-AzApiManagementApiDiagnostic -Context $context -ApiId $apiId -DiagnosticId $diagnosticId -PassThru
         Assert-True {$removed}
     }
 }

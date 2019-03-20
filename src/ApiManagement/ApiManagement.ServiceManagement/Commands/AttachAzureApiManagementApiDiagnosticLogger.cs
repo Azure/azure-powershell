@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiDiagnostic")]
+    [Cmdlet("Attach", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiDiagnosticLogger")]
     [OutputType(typeof(PsApiManagementLogger))]
-    public class SetAzureApiManagementApiDiagnostic : AzureApiManagementCmdletBase
+    public class AttachAzureApiManagementApiDiagnosticLogger : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            Client.SetLoggerToDiagnosticApi(Context, ApiId, LoggerId, DiagnosticId);
+            Client.AttachApiDiagnosticLogger(Context, ApiId, LoggerId, DiagnosticId);
 
             if (PassThru)
             {

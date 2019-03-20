@@ -2239,7 +2239,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 "*");
         }
 
-        public PsApiManagementLogger SetLoggerToDiagnosticApi(PsApiManagementContext context,
+        public PsApiManagementLogger AttachApiDiagnosticLogger(PsApiManagementContext context,
                                 string apiId,
                                 string loggerId,
                                 string diagnosticId)
@@ -2261,9 +2261,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         }
 
-        public void RemoveLoggerFromDiagnosticApi(PsApiManagementContext context,
+        public void DisableDiagnosticApi(PsApiManagementContext context,
                         string apiId,
-                        string loggerId,
                         string diagnosticId)
         {
             var ifmatch = "*";
