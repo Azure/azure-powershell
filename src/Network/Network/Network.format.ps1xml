@@ -3207,6 +3207,10 @@
                 <Label>NetworkRuleCollections</Label>
                 <PropertyName>NetworkRuleCollectionsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ThreatIntelMode</Label>
+                <PropertyName>ThreatIntelMode</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
