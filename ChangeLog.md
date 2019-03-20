@@ -1,4 +1,13 @@
 ## 1.6.0 - March 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added wildcard support to Get cmdlets for Az.Compute and Az.Network
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+* Az.LogicApp: New cmdlets for Integration Account Assemblies and Batch Configuration
+
 #### Az.Automation
 * Azure automation update management change to support the following new features :
     * Dynamic grouping
