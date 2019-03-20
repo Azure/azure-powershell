@@ -23,8 +23,18 @@ In some cases, users will need to install modules from a different repository th
 Below is an example of registering a new repository from a local folder containing `.nupkg` files:
 
 ```
-Register-PSRepository -Name "{{repository_name}}" -SourceLocation "{{folder_with_nupkg_files}}" -PackageManagementProvider NuGet -Installation
+Register-PSRepository -Name "{{repository_name}}" -SourceLocation "{{folder_with_nupkg_files}}" -PackageManagementProvider NuGet -InstallationPolicy Trusted
 ```
+
+### Registering the Test Gallery
+
+Before a module is published to the PowerShell Gallery, it must first be published to the [Test Gallery](https://www.poshtestgallery.com/) to ensure there are no problems during the publishing and installation process. If you ever need to use this gallery for testing an installation, first register it by running the following command:
+
+```
+Register-PSRepository -Name TestGallery -SourceLocation https://poshtestgallery.com/api/v2 -PackageManagementProvider NuGet -InstallationPolicy
+```
+
+Modules can then be installed from this gallery by providing "TestGallery" to the `-Repository` parameter for the `Install-Module` cmdlet.
 
 ## Installing Modules
 
