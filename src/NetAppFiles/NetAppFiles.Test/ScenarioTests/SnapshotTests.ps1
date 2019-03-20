@@ -41,53 +41,53 @@ function Test-SnapshotCrud
     try
     {
         # create the resource group
-        New-AzureRmResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
 		
         # create virtual network
-        $virtualNetwork = New-AzureRmVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
-        $delegation = New-AzureRmDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
-        Add-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzureRmVirtualNetwork
+        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
+        $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
+        Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
         # create the resource group
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation
 
         # create account, pool and volume
-        $retrievedAcc = New-AzureRmNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName
 
-        $retrievedPool = New-AzureRmNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -PoolSize $standardPoolSize -ServiceLevel $serviceLevel
+        $retrievedPool = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -PoolSize $standardPoolSize -ServiceLevel $serviceLevel
 		
-        $retrievedVolume = New-AzureRmNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -CreationToken $volName -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -CreationToken $volName -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId
         Assert-AreEqual "$accName/$poolName/$volName" $retrievedVolume.Name
         Assert-AreEqual $serviceLevel $retrievedVolume.ServiceLevel
 
         # create two snapshots and check
-        $retrieveSn = New-AzureRmNetAppFilesSnapshot -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName1 -FileSystemId $retrievedVolume.FileSystemId
+        $retrieveSn = New-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName1 -FileSystemId $retrievedVolume.FileSystemId
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrieveSn.Name
 
-        $retrieveSn = New-AzureRmNetAppFilesSnapshot -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName2 -FileSystemId $retrievedVolume.FileSystemId
+        $retrieveSn = New-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName2 -FileSystemId $retrievedVolume.FileSystemId
         Assert-AreEqual "$accName/$poolName/$volName/$snName2" $retrieveSn.Name
 
         # get and check snapshots by group (list)
-        $retrievedSnapshot = Get-AzureRmNetAppFilesSnapshot -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName
+        $retrievedSnapshot = Get-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrievedSnapshot[0].Name
         Assert-AreEqual "$accName/$poolName/$volName/$snName2" $retrievedSnapshot[1].Name
         Assert-AreEqual 2 $retrievedSnapshot.Length
 
         # get and check a snapshot by name
-        $retrievedSnapshot = Get-AzureRmNetAppFilesSnapshot -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName1
+        $retrievedSnapshot = Get-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName1
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrievedSnapshot.Name
 		
         # get and check the snapshot again using the resource id just obtained
-        $retrievedSnapshotById = Get-AzureRmNetAppFilesSnapshot -ResourceId $retrievedSnapshot.Id
+        $retrievedSnapshotById = Get-AzNetAppFilesSnapshot -ResourceId $retrievedSnapshot.Id
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrievedSnapshotById.Name
 
         # no update/set (patch/put) possible for snapshot
 
         # delete one snapshot retrieved by id and one by name and check removed
         # temporary fix. Deletion returns 200 until upcoming swagger change
-        Assert-ThrowsContains -script { Remove-AzureRmNetAppFilesSnapshot -ResourceId $retrievedSnapshotById.Id } -message "invalid status code 'OK'"
-        Assert-ThrowsContains -script { Remove-AzureRmNetAppFilesSnapshot -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName2 } -message "invalid status code 'OK'"
-        $retrievedSnapshot = Get-AzureRmNetAppFilesSnapshot -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName
+        Assert-ThrowsContains -script { Remove-AzNetAppFilesSnapshot -ResourceId $retrievedSnapshotById.Id } -message "invalid status code 'OK'"
+        Assert-ThrowsContains -script { Remove-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName2 } -message "invalid status code 'OK'"
+        $retrievedSnapshot = Get-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName
         Assert-AreEqual 0 $retrievedSnapshot.Length
     }
     finally
@@ -126,12 +126,12 @@ function Test-SnapshotPipelines
     try
     {
         # create the resource group
-        New-AzureRmResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
 		
         # create virtual network
-        $virtualNetwork = New-AzureRmVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
-        $delegation = New-AzureRmDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
-        Add-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzureRmVirtualNetwork
+        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
+        $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
+        Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
         # create an account, pool and volume
         $retrievedAcc = New-AnfAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName 

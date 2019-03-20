@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
     [Cmdlet(
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesAccount",
-        SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesAccount))]
     [Alias("Get-AnfAccount")]
     public class GetAzureRmNetAppFilesAccount : AzureNetAppFilesCmdletBase

@@ -15,20 +15,19 @@ Gets details of an Azure NetApp Files (ANF) snapshot.
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzNetAppFilesSnapshot -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -VolumeName <String> [-Name <String> | -SnapshotName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -VolumeName <String> [-Name <String> | -SnapshotName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzNetAppFilesSnapshot -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzNetAppFilesSnapshot -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzNetAppFilesSnapshot [-Name <String> | -SnapshotName <String>] [-VolumeInputObject <PSNetAppFilesPool>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,9 +38,6 @@ The **Get-AzNetAppFilesSnapshot** cmdlet gets details of an ANF snapshot.
 ### Example 1: Get an ANF snapshot
 ```
 PS C:\>Get-AzNetAppFilesSnapshot -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfSnapshot"
-```
-
-This command gets the snapshot named MyAnfSnapshot from the volume "MyAnfVolume".
 
 Output:
 
@@ -55,6 +51,9 @@ FileSystemId      : 3e2773a7-2a72-d003-0637-1a8b1fa3eaaf
 SnapshotId        : ca7c4ebd-91cb-0e30-91f5-9154050033df
 CreationDate      :
 ProvisioningState : Succeeded
+```
+
+This command gets the snapshot named MyAnfSnapshot from the volume "MyAnfVolume".
 
 ## PARAMETERS
 
@@ -172,37 +171,6 @@ Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

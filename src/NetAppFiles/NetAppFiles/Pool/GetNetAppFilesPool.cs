@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
     [Cmdlet(
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesPool",
-        SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesPool))]
     [Alias("Get-AnfPool")]
     public class GetAzureRmNetAppFilesPool : AzureNetAppFilesCmdletBase

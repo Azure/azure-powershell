@@ -34,9 +34,6 @@ The **New-AzNetAppFilesPool** cmdlet creates an ANF pool.
 ### Example 1: Create an ANF pool
 ```
 PS C:\>New-AzNetAppFilesPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfPool" -l "westus2" -PoolSize 4398046511104 -ServiceLevel "Premium"
-```
-
-This command creates the new ANF pool "MyAnfPool" within the account "MyAnfAccount".
 
 Output:
 
@@ -49,6 +46,9 @@ PoolId            : a3a53a09-fd70-37ab-39dc-392a04cba525
 Size              : 4398046511104
 ServiceLevel      : Premium
 ProvisioningState : Succeeded
+```
+
+This command creates the new ANF pool "MyAnfPool" within the account "MyAnfAccount".
 
 ## PARAMETERS
 

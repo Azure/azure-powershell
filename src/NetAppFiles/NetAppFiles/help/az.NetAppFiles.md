@@ -6,11 +6,11 @@ Help Version: 0.9.0.0
 Locale: en-US
 ---
 
-# az.NetAppFiles Module
+# Az.NetAppFiles Module
 ## Description
 The topics in this section document the Azure PowerShell cmdlets for Azure NetApp Files in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.NetAppFiles namespace.
 
-## az.NetAppFiles Cmdlets
+## Az.NetAppFiles Cmdlets
 ### [Get-AzNetAppFilesAccount](Get-AzNetAppFilesAccount.md)
 Gets details of an Azure NetApp Files (ANF) account.
 
