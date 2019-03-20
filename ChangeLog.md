@@ -1,3 +1,44 @@
+## 1.6.0 - March 2019
+#### Az.Automation
+* Azure automation update management change to support the following new features :
+    * Dynamic grouping
+    * Pre-Post script
+    * Reboot Setting
+
+#### Az.Compute
+* Fix issue with path resolution in Get-AzVmBootDiagnosticsData
+* Update Compute client library to 25.0.0.
+
+#### Az.KeyVault
+* Added wildcard support to KeyVault cmdlets
+
+#### Az.Network
+* Add Threat Intelligence support for Azure Firewall
+* Add Application Gateway Firewall Policy top level resource and Custom Rules
+
+#### Az.RecoveryServices
+* Added SnapshotRetentionInDays in Azure VM policy to support Instant RP
+* Added pipe support for unregister container
+
+#### Az.Resources
+* Update wildcard support for Get-AzResource and Get-AzResourceGroup
+* Update credentials used when making generic calls to ARM
+
+#### Az.Sql
+* changed Threat Detection's cmdlets param (ExcludeDetectionType) from DetectionType to string[] to make it future proof when new DetectionTypes are added and to support autocomplete as well.
+
+#### Az.Storage
+* Support Get/Set/Remove Management Policy on a Storage account
+    - Set-AzStorageAccountManagementPolicy
+    - Get-AzStorageAccountManagementPolicy
+    - Remove-AzStorageAccountManagementPolicy
+    - Add-AzStorageAccountManagementPolicyAction
+    - New-AzStorageAccountManagementPolicyFilter
+    - New-AzStorageAccountManagementPolicyRule
+
+#### Az.Websites
+* Fix ARM template bug that breaks cloning all slots using 'New-AzWebApp -IncludeSourceWebAppSlots' 
+
 ## 1.5.0 - March 2019
 ### Highlights since the last major release
 * General availability of `Az` module

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.0
 * Support Get/Set/Remove Management Policy on a Storage account
     - Set-AzStorageAccountManagementPolicy
     - Get-AzStorageAccountManagementPolicy
