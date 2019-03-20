@@ -18,7 +18,7 @@ Get-AzApiManagementApiLoggers [-Context] <PsApiManagementContext> [-ApiId] <Stri
 ```
 
 ## DESCRIPTION
-The **Add-AzApiManagementApiToProduct** cmdlet gets attached logger of an Azure API Management API.
+The **Get-AzApiManagementApiLoggers** cmdlet gets attached logger of an Azure API Management API.
  
 
 ## EXAMPLES
@@ -112,4 +112,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Attach-AzApiManagementApiDiagnosticLogger](./Attach-AzApiManagementApiDiagnosticLogger.md)
+
 [Disable-AzApiManagementApiDiagnostic](./Disable-AzApiManagementApiDiagnostic.md)

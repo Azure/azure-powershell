@@ -147,5 +147,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Disable-AzApiManagementApiDiagnostic](./Disable-AzApiManagementApiDiagnostic.md)
+
 [Get-AzApiManagementApiLoggers](./Get-AzApiManagementApiLoggers.md)
 
