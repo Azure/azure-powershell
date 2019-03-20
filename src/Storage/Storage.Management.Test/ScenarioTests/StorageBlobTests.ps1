@@ -210,7 +210,7 @@ function Test-StorageBlobContainerImmutabilityPolicy
 		
         $policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName 		
 		Assert-AreEqual 0 $policy.ImmutabilityPeriodSinceCreationInDays
-		Assert-AreEqual Unlocked $policy.State
+		Assert-AreEqual Deleted $policy.State
 		Assert-AreEqual "" $policy.Etag
 
 		$immutabilityPeriod =3
@@ -252,9 +252,7 @@ function Test-StorageBlobContainerImmutabilityPolicy
 		Assert-AreEqual "" $policy.Etag
 		$container = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName		
 		Assert-AreEqual $containerName $container.Name
-		Assert-AreEqual 0 $container.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays
-		Assert-AreEqual Deleted $container.ImmutabilityPolicy.State
-		Assert-AreEqual 0 $container.ImmutabilityPolicy.UpdateHistory.Count
+		Assert-AreEqual $null $container.ImmutabilityPolicy
 		
 		$immutabilityPeriod =7
         Set-AzRmStorageContainerImmutabilityPolicy -inputObject $policy -ImmutabilityPeriod $immutabilityPeriod
