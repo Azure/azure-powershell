@@ -63,23 +63,6 @@
     "Export-AzAnalysisServicesInstanceLog": "Export-AzureAnalysisServicesInstanceLog",
     "Sync-AzAnalysisServicesInstance": "Sync-AzureAnalysisServicesInstance"
   },
-  "Az.NetAppFiles": {
-    "New-AzNetAppFilesAccount": "New-AzureRmNetAppFilesAccount",
-    "Remove-AzNetAppFilesAccount": "Remove-AzureRmNetAppFilesAccount",
-    "Get-AzNetAppFilesAccount": "Get-AzureRmNetAppFilesAccount",
-    "New-AzNetAppFilesPool": "New-AzureRmNetAppFilesPool",
-    "Update-AzNetAppFilesPool": "Update-AzureRmNetAppFilesPool",
-    "Remove-AzNetAppFilesPool": "Remove-AzureRmNetAppFilesPool",
-    "Get-AzNetAppFilesPool": "Get-AzureRmNetAppFilesPool",
-    "New-AzNetAppFilesVolume": "New-AzureRmNetAppFilesVolume",
-    "Update-AzNetAppFilesVolume": "Update-AzureRmNetAppFilesVolume",
-    "Remove-AzNetAppFilesVolume": "Remove-AzureRmNetAppFilesVolume",
-    "Get-AzNetAppFilesVolume": "Get-AzureRmNetAppFilesVolume",
-    "Get-AzNetAppFilesMountTarget": "Get-AzureRmNetAppFilesMountTarget",
-    "New-AzNetAppFilesSnapshot": "New-AzureRmNetAppFilesSnapshot",
-    "Remove-AzNetAppFilesSnapshot": "Remove-AzureRmNetAppFilesSnapshot",
-    "Get-AzNetAppFilesSnapshot": "Get-AzureRmNetAppFilesSnapshot"
-  },
   "Az.ApiManagement": {
     "Add-AzApiManagementRegion": "Add-AzureRmApiManagementRegion",
     "Get-AzApiManagementSsoToken": "Get-AzureRmApiManagementSsoToken",

@@ -34,9 +34,6 @@ The **New-AzNetAppFilesVolume** cmdlet creates an ANF volume.
 ### Example 1: Create an ANF volume
 ```
 PS C:\>New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -l "westus2" -CreationToken "MyAnfVolume" -UsageThreshold 1099511627776 -ServiceLevel "Premium" -SubnetId "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName"
-```
-
-This command creates the new ANF volume "MyAnfVolume" within the pool "MyAnfPool".
 
 Output:
 
@@ -51,6 +48,9 @@ ServiceLevel      : Premium
 UsageThreshold    : 1099511627776
 ProvisioningState : Succeeded
 SubnetId          : /subscriptions/f557b96d-2308-4a18-aae1-b8f7e7e70cc7/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/default
+```
+
+This command creates the new ANF volume "MyAnfVolume" within the pool "MyAnfPool".
 
 ## PARAMETERS
 
