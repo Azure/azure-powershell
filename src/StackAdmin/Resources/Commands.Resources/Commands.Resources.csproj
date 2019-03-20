@@ -50,7 +50,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.ManagementGroups, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ManagementGroups.1.1.1-preview\lib\net452\Microsoft.Azure.Management.ManagementGroups.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.Management.ManagementGroups.1.1.1-preview\lib\net452\Microsoft.Azure.Management.ManagementGroups.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.Management.ResourceManager.1.9.1-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>

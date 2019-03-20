@@ -57,17 +57,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
-        //public LegacyRMClient.ResourceManagementClient LegacyResourceManagementClient { get; private set; }
-
-        //public LegacyRMSubscription.SubscriptionClient LegacySubscriptionClient { get; private set; }
-
         public FeatureClient FeatureClient { get; private set; }
 
         public Internal.Subscriptions.SubscriptionClient SubscriptionClient { get; private set; }
-
-        //public GalleryClient GalleryClient { get; private set; }
-
-        //public InsightsClient InsightsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
@@ -246,20 +238,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
         private void SetupManagementClients(MockContext context)
         {
-            //LegacyResourceManagementClient = GetLegacyResourceManagementClient();
-            //LegacySubscriptionClient = GetLegacySubscriptionClient();
             ResourceManagementClient = GetResourceManagementClient(context);
             SubscriptionClient = GetSubscriptionClient(context);
-            //GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient(context);
             GraphClient = GetGraphClient(context);
-            //InsightsClient = GetInsightsClient();
             ManagementGroupsApiClient = GetManagementGroupsApiClient(context);			
             this.FeatureClient = this.GetFeatureClient(context);
-            //var testEnvironment = this.csmTestFactory.GetTestEnvironment();
-            //var credentials = new SubscriptionCredentialsAdapter(
-            //    testEnvironment.AuthorizationContext.TokenCredentials[Microsoft.Azure.Test.TokenAudience.Management],
-            //    testEnvironment.SubscriptionId);
             var testEnvironment = TestEnvironmentFactory.GetTestEnvironment();
             var credentials = new SubscriptionCloudCredentialsAdapter(
     testEnvironment.TokenInfo[TokenAudience.Management],
@@ -268,13 +252,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(credentials);
 
             helper.SetupManagementClients(ResourceManagementClient,
-                //LegacyResourceManagementClient,
-                //LegacySubscriptionClient,
                 SubscriptionClient,
-                //GalleryClient,
                 AuthorizationManagementClient,
                 GraphClient,
-                //InsightsClient,
                 this.FeatureClient,
 				ManagementGroupsApiClient);
         }
