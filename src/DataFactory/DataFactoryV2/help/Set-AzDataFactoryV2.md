@@ -14,42 +14,43 @@ Creates a data factory.
 
 ### ByFactoryName (Default)
 ```
-Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> -Location <String> [-Tag <Hashtable>]
+Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [[-Tag] <Hashtable>]
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzDataFactoryV2 [-ResourceId] <String> -Location <String> [-Tag <Hashtable>] [-Force]
+Set-AzDataFactoryV2 [-ResourceId] <String> [-Location] <String> [[-Tag] <Hashtable>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdFactoryRepoVstsConfig
 ```
-Set-AzDataFactoryV2 [-ResourceId] <String> -Location <String> [-Tag <Hashtable>] [-Force] -AccountName <String>
- -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String> [-LastCommitId <String>]
- -ProjectName <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzDataFactoryV2 [-ResourceId] <String> [-Location] <String> [[-Tag] <Hashtable>] [-Force]
+ -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
+ [-LastCommitId <String>] -ProjectName <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdFactoryRepoGitConfig
 ```
-Set-AzDataFactoryV2 [-ResourceId] <String> -Location <String> [-Tag <Hashtable>] [-Force] -AccountName <String>
- -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String> [-LastCommitId <String>]
- -HostName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzDataFactoryV2 [-ResourceId] <String> [-Location] <String> [[-Tag] <Hashtable>] [-Force]
+ -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
+ [-LastCommitId <String>] -HostName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByFactoryNameFactoryRepoGitConfig
 ```
-Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> -InputObject <PSDataFactory>
- -Location <String> [-Tag <Hashtable>] [-Force] -AccountName <String> -RepositoryName <String>
- -CollaborationBranch <String> -RootFolder <String> [-LastCommitId <String>] -HostName <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [[-Tag] <Hashtable>]
+ [-Force] -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
+ [-LastCommitId <String>] -HostName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByFactoryNameFactoryRepoVstsConfig
 ```
-Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> -Location <String> [-Tag <Hashtable>]
+Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [[-Tag] <Hashtable>]
  [-Force] -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
  [-LastCommitId <String>] -ProjectName <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -57,13 +58,13 @@ Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> -Location <St
 
 ### ByInputObject
 ```
-Set-AzDataFactoryV2 -InputObject <PSDataFactory> [-Location <String>] [-Tag <Hashtable>] [-Force]
+Set-AzDataFactoryV2 -InputObject <PSDataFactory> [[-Location] <String>] [[-Tag] <Hashtable>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObjectFactoryRepoVstsConfig
 ```
-Set-AzDataFactoryV2 -InputObject <PSDataFactory> [-Location <String>] [-Tag <Hashtable>] [-Force]
+Set-AzDataFactoryV2 -InputObject <PSDataFactory> [[-Location] <String>] [[-Tag] <Hashtable>] [-Force]
  [-AccountName <String>] [-RepositoryName <String>] [-CollaborationBranch <String>] [-RootFolder <String>]
  [-LastCommitId <String>] -ProjectName <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -71,9 +72,10 @@ Set-AzDataFactoryV2 -InputObject <PSDataFactory> [-Location <String>] [-Tag <Has
 
 ### ByInputObjectFactoryRepoGitConfig
 ```
-Set-AzDataFactoryV2 [-Location <String>] [-Tag <Hashtable>] [-Force] [-AccountName <String>]
- [-RepositoryName <String>] [-CollaborationBranch <String>] [-RootFolder <String>] [-LastCommitId <String>]
- -HostName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzDataFactoryV2 -InputObject <PSDataFactory> [[-Location] <String>] [[-Tag] <Hashtable>] [-Force]
+ [-AccountName <String>] [-RepositoryName <String>] [-CollaborationBranch <String>] [-RootFolder <String>]
+ [-LastCommitId <String>] -HostName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -207,7 +209,7 @@ The data factory object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
-Parameter Sets: ByFactoryNameFactoryRepoGitConfig, ByInputObject, ByInputObjectFactoryRepoVstsConfig
+Parameter Sets: ByInputObject, ByInputObjectFactoryRepoVstsConfig, ByInputObjectFactoryRepoGitConfig
 Aliases:
 
 Required: True
@@ -241,7 +243,7 @@ Parameter Sets: ByFactoryName, ByResourceId, ByResourceIdFactoryRepoVstsConfig, 
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -253,7 +255,7 @@ Parameter Sets: ByInputObject, ByInputObjectFactoryRepoVstsConfig, ByInputObject
 Aliases:
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -382,7 +384,7 @@ Parameter Sets: ByFactoryName, ByResourceId, ByResourceIdFactoryRepoVstsConfig, 
 Aliases:
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -394,7 +396,7 @@ Parameter Sets: ByInputObject, ByInputObjectFactoryRepoVstsConfig, ByInputObject
 Aliases:
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

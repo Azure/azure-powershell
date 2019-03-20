@@ -119,6 +119,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         #region Attributes
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByFactoryName,
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpFactoryLocation)]
+        [Parameter(
             ParameterSetName = ParameterSetNames.ByInputObject,
             Mandatory = false,
             HelpMessage = Constants.HelpFactoryLocation)]
@@ -129,12 +135,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByInputObjectFactoryRepoGitConfig,
             Mandatory = false,
-            HelpMessage = Constants.HelpFactoryLocation)]
-        [Parameter(
-            ParameterSetName = ParameterSetNames.ByFactoryName,
-            Position = 2,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpFactoryLocation)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryNameFactoryRepoGitConfig,
@@ -173,6 +173,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         #region Attributes
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByFactoryName,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = Constants.HelpTagsForFactory)]
+        [Parameter(
             ParameterSetName = ParameterSetNames.ByInputObject,
             Mandatory = false,
             HelpMessage = Constants.HelpTagsForFactory)]
@@ -182,12 +188,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpTagsForFactory)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByInputObjectFactoryRepoGitConfig,
-            Mandatory = false,
-            HelpMessage = Constants.HelpTagsForFactory)]
-        [Parameter(
-            ParameterSetName = ParameterSetNames.ByFactoryName,
-            Position = 3,
-            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = Constants.HelpTagsForFactory)]
         [Parameter(
