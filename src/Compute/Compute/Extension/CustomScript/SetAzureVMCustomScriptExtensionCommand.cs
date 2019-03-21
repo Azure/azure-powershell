@@ -328,10 +328,14 @@ namespace Microsoft.Azure.Commands.Compute
                         this.FileUri = (this.FileUri == null || !this.FileUri.Any()) ? this.InputObject.Uri : this.FileUri;
 
                         string cmdToExe = this.InputObject.CommandToExecute;
-                        string cmdToExeFinal = cmdToExe.Substring(cmdToExe.IndexOf("-file ") + 6);
-                        string[] splits = cmdToExeFinal.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-                        this.Run = string.IsNullOrEmpty(this.Run) ? splits[0] : this.Run;
-                        this.Argument = string.IsNullOrEmpty(this.Argument) ? string.Join(" ", splits.Skip(1)) : this.Argument;
+                        int startIndexFile = cmdToExe.IndexOf("-file ");
+                        if (startIndexFile > 0)
+                        {
+                            string cmdToExeFinal = cmdToExe.Substring(startIndexFile + 6);
+                            string[] splits = cmdToExeFinal.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+                            this.Run = string.IsNullOrEmpty(this.Run) ? splits[0] : this.Run;
+                            this.Argument = string.IsNullOrEmpty(this.Argument) ? string.Join(" ", splits.Skip(1)) : this.Argument;
+                        }
                     }
 
                     if (!string.IsNullOrEmpty(this.ResourceId))
