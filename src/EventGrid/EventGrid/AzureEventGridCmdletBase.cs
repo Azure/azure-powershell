@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         protected const string EventSubscriptionDomainTopicInputObjectParameterSet = "EventSubscriptionDomainTopicInputObjectParameterSet";
 
         protected const string DomainInputObjectParameterSet = "DomainInputObjectParameterSet";
+        protected const string DomainTopicInputObjectParameterSet = "DomainTopicInputObjectParameterSet";
         protected const string DomainKeyInputObjectParameterSet = "DomainKeyInputObjectParameterSet";
 
         protected const string DomainEventSubscriptionParameterSet = "DomainEventSubscriptionParameterSet";
@@ -44,14 +45,20 @@ namespace Microsoft.Azure.Commands.EventGrid
         protected const string ResourceGroupNameParameterSet = "ResourceGroupNameParameterSet";
         protected const string CustomTopicEventSubscriptionParameterSet = "CustomTopicEventSubscriptionParameterSet";
         protected const string SubscriptionAndResourceGroupEventSubscriptionParameterSet = "SubscriptionAndResourceGroupEventSubscriptionParameterSet";
+        protected const string ResourceIdDomainParameterSet = "ResourceIdDomainParameterSet";
+        protected const string ResourceIdDomainTopicParameterSet = "ResourceIdDomainTopicParameterSet";
         protected const string ResourceIdEventSubscriptionParameterSet = "ResourceIdEventSubscriptionParameterSet";
         protected const string EventSubscriptionNameParameterSet = "EventSubscriptionNameParameterSet";
+        protected const string NextLinkParameterSet = "NextLinkParameterSet";
 
         protected const string EventSubscriptionTopicNameParameterSet = "EventSubscriptionTopicNameParameterSet";
         protected const string EventSubscriptionTopicTypeNameParameterSet = "EventSubscriptionTopicTypeNameParameterSet";
         protected const string EventSubscriptionFullUrlInResponseHelp = "If specified, include the full endpoint URL of the event subscription destination in the response.";
 
         protected const string AliasResourceGroup = "ResourceGroup";
+        protected const string AliasDomain = "Domain";
+        protected const string AliasDomainName = "DomainName";
+        protected const string AliasDomainTopicName = "DomainTopicName";
 
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
 

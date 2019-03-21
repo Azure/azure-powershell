@@ -40,14 +40,14 @@ Removes an Azure Event Grid Domain.
 PS C:\> Remove-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1
 ```
 
-Removes the Event Grid topic \`Domain1\` in resource group \`MyResourceGroupName\`.
+Removes the Event Grid Domain \`Domain1\` in resource group \`MyResourceGroupName\`.
 
 ### Example 2
-```
+```powershell
 PS C:\> Get-AzResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/Domains/Domain1" | Remove-AzEventGridDomain
 ```
 
-Removes the Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+Removes the Event Grid Domain \`Domain1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 
@@ -55,7 +55,7 @@ Removes the Event Grid domain \`Domain1\` in resource group \`MyResourceGroupNam
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 EventGrid Domain object.
 
 ```yaml
-Type: PSDomain
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
 Parameter Sets: DomainInputObjectParameterSet
 Aliases:
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 EventGrid domain name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainNameParameterSet
 Aliases: DomainName
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 {{Fill PassThru Description}}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainNameParameterSet
 Aliases: ResourceGroup
 
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 Resource Identifier representing the Event Grid Domain.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdEventSubscriptionParameterSet
 Aliases:
 
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -161,7 +161,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -173,8 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

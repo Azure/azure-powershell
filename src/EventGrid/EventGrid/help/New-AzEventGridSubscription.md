@@ -103,28 +103,28 @@ To create an event subscription to a supported Azure resource, specify the full 
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> New-AzEventGridSubscription -ResourceGroup MyResourceGroup -TopicName Topic1 -Endpoint https://requestb.in/19qlscd1 -EventSubscriptionName EventSubscription1
 ```
 
 Creates a new event subscription \`EventSubscription1\` to an Azure Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\` with the webhook destination endpoint https://requestb.in/19qlscd1. This event subscription uses default filters.
 
 ### Example 2
-```
+```powershell
 PS C:\> New-AzEventGridSubscription -ResourceGroup MyResourceGroupName -Endpoint https://requestb.in/19qlscd1 -EventSubscriptionName EventSubscription1
 ```
 
 Creates a new event subscription \`EventSubscription1\` to a resource group \`MyResourceGroupName\` with the webhook destination endpoint https://requestb.in/19qlscd1. This event subscription uses default filters.
 
 ### Example 3
-```
+```powershell
 PS C:\> New-AzEventGridSubscription -Endpoint https://requestb.in/19qlscd1 -EventSubscriptionName EventSubscription1
 ```
 
 Creates a new event subscription \`EventSubscription1\` to the currently selected Azure subscription with the webhook destination endpoint https://requestb.in/19qlscd1. This event subscription uses default filters.
 
 ### Example 4
-```
+```powershell
 PS C:\> $includedEventTypes = "Microsoft.Resources.ResourceWriteFailure", "Microsoft.Resources.ResourceWriteSuccess"
 PS C:\> $labels = "Finance", "HR"
 PS C:\> New-AzEventGridSubscription -Endpoint https://requestb.in/19qlscd1 -EventSubscriptionName EventSubscription1 -SubjectBeginsWith "TestPrefix" -SubjectEndsWith "TestSuffix" -IncludedEventType $includedEventTypes -Label $labels
@@ -133,14 +133,14 @@ PS C:\> New-AzEventGridSubscription -Endpoint https://requestb.in/19qlscd1 -Even
 Creates a new event subscription \`EventSubscription1\` to the currently selected Azure subscription with the webhook destination endpoint https://requestb.in/19qlscd1. This event subscription specifies the additional filters for event types and subject, and only events matching those filters will be delivered to the destination endpoint.
 
 ### Example 5
-```
+```powershell
 PS C:\> New-AzEventGridSubscription -EventSubscriptionName EventSubscription1 -EndpointType "eventhub" -Endpoint "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1"
 ```
 
 Creates a new event subscription \`EventSubscription1\` to the currently selected Azure subscription with the specified event hub as the destination for events. This event subscription uses default filters.
 
 ### Example 6
-```
+```powershell
 PS C:\> New-AzEventGridSubscription -ResourceId "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace" -Endpoint https://requestb.in/19qlscd1 -EventSubscriptionName EventSubscription1
 ```
 
@@ -345,7 +345,7 @@ This can be webhook or eventhub
 Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
-Accepted values: webhook, eventhub, storagequeue, hybridconnection
+Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue
 
 Required: False
 Position: Named
@@ -358,7 +358,7 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
-Accepted values: webhook, eventhub, storagequeue, hybridconnection
+Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue
 
 Required: False
 Position: Named

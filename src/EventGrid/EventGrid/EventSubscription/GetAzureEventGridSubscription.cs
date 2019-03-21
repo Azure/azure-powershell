@@ -22,7 +22,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSubscription",DefaultParameterSetName = EventSubscriptionTopicNameParameterSet),OutputType(typeof(PSEventSubscription))]
+    [Cmdlet("Get",
+            ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSubscription",
+            DefaultParameterSetName = EventSubscriptionTopicNameParameterSet),
+     OutputType(typeof(PSEventSubscription))]
+
     public class GetAzureRmEventGridSubscription : AzureEventGridCmdletBase
     {
         [Parameter(
@@ -154,10 +158,96 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         public SwitchParameter IncludeFullEndpointUrl { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = EventSubscriptionTopicNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = EventSubscriptionDomainNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = EventSubscriptionCustomTopicInputObjectParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = EventSubscriptionDomainInputObjectParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = EventSubscriptionDomainTopicInputObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ODataQuery { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = EventSubscriptionTopicNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = EventSubscriptionDomainNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = EventSubscriptionTopicTypeNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = EventSubscriptionCustomTopicInputObjectParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = EventSubscriptionDomainInputObjectParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = EventSubscriptionDomainTopicInputObjectParameterSet)]
+        [ValidateRange(1, 100)]
+        public int? Top { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.NextLinkHelp,
+            ParameterSetName = NextLinkParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string NextLink { get; set; }
+
         public override void ExecuteCmdlet()
         {
             string scope;
             bool includeFullEndpointUrl = this.IncludeFullEndpointUrl.IsPresent;
+            string nextLink = this.NextLink;
+            string newNextLink = null;
 
             if (!string.IsNullOrEmpty(this.EventSubscriptionName))
             {
@@ -205,24 +295,28 @@ namespace Microsoft.Azure.Commands.EventGrid
                 // event subscriptions based on the provided parameters.
                 IEnumerable<EventSubscription> eventSubscriptionsList = null;
 
-                if (this.CustomTopicInputObject != null)
+                if (!string.IsNullOrEmpty(nextLink))
+                {
+                    (eventSubscriptionsList, newNextLink) = this.Client.ListEventSubscriptionsNext(nextLink);
+                }
+                else if (this.CustomTopicInputObject != null)
                 {
                     // Retrieve all the event subscriptions based on the ID of the specified topic object
-                    eventSubscriptionsList = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.CustomTopicInputObject.Id);
+                    (eventSubscriptionsList, newNextLink) = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.CustomTopicInputObject.Id, this.ODataQuery, this.Top);
                 }
                 else if (this.DomainInputObject != null)
                 {
                     // Retrieve all the event subscriptions based on the ID of the specified domain object
-                    eventSubscriptionsList = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.DomainInputObject.Id);
+                    (eventSubscriptionsList, newNextLink) = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.DomainInputObject.Id, this.ODataQuery, this.Top);
                 }
                 else if (this.DomainTopicInputObject != null)
                 {
                     // Retrieve all the event subscriptions based on the ID of the specified domain topic object
-                    eventSubscriptionsList = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.DomainTopicInputObject.Id);
+                    (eventSubscriptionsList, newNextLink) = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.DomainTopicInputObject.Id, this.ODataQuery, this.Top);
                 }
                 else if (!string.IsNullOrEmpty(this.ResourceId))
                 {
-                    eventSubscriptionsList = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.ResourceId);
+                    (eventSubscriptionsList, newNextLink) = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.ResourceId, this.ODataQuery, this.Top);
                 }
                 else if (!string.IsNullOrEmpty(this.TopicName))
                 {
@@ -233,7 +327,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                     }
 
                     // Get all event subscriptions for this topic
-                    eventSubscriptionsList = this.Client.ListByResource(this.ResourceGroupName, "Microsoft.EventGrid", "topics", this.TopicName);
+                    (eventSubscriptionsList, newNextLink) = this.Client.ListByResource(this.ResourceGroupName, "Microsoft.EventGrid", "topics", this.TopicName, this.ODataQuery, this.Top);
                 }
                 else if (!string.IsNullOrEmpty(this.DomainName))
                 {
@@ -246,12 +340,12 @@ namespace Microsoft.Azure.Commands.EventGrid
                     // Get all event subscriptions for this domain if no domain topic name is specified.
                     if (string.IsNullOrEmpty(this.DomainTopicName))
                     {
-                        eventSubscriptionsList = this.Client.ListByResource(this.ResourceGroupName, "Microsoft.EventGrid", "domains", this.DomainName);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListByResource(this.ResourceGroupName, "Microsoft.EventGrid", "domains", this.DomainName, this.ODataQuery, this.Top);
                     }
                     else
                     {
                         // Get all event subscriptions for this domain topic under the domain.
-                        eventSubscriptionsList = this.Client.ListByDomainTopic(this.ResourceGroupName, this.DomainName, this.DomainTopicName);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListByDomainTopic(this.ResourceGroupName, this.DomainName, this.DomainTopicName, this.ODataQuery, this.Top);
                     }
                 }
                 else if (!string.IsNullOrEmpty(this.ResourceGroupName))
@@ -259,20 +353,20 @@ namespace Microsoft.Azure.Commands.EventGrid
                     if (string.IsNullOrEmpty(this.Location) && string.IsNullOrEmpty(this.TopicTypeName))
                     {
                         // List all global Event Grid subscriptions in the given resource group
-                        eventSubscriptionsList = this.Client.ListGlobalEventSubscriptionsByResourceGroup(this.ResourceGroupName);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListGlobalEventSubscriptionsByResourceGroup(this.ResourceGroupName, this.ODataQuery, this.Top);
                     }
                     else if (string.IsNullOrEmpty(this.Location) && !string.IsNullOrEmpty(this.TopicTypeName))
                     {
-                        eventSubscriptionsList = this.Client.ListGlobalEventSubscriptionsByResourceGroupForTopicType(this.ResourceGroupName, this.TopicTypeName);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListGlobalEventSubscriptionsByResourceGroupForTopicType(this.ResourceGroupName, this.TopicTypeName, this.ODataQuery, this.Top);
                     }
                     else if (!string.IsNullOrEmpty(this.Location) && string.IsNullOrEmpty(this.TopicTypeName))
                     {
                         // List all regional Event Grid subscriptions in the given resource group
-                        eventSubscriptionsList = this.Client.ListRegionalEventSubscriptionsByResourceGroup(this.ResourceGroupName, this.Location);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListRegionalEventSubscriptionsByResourceGroup(this.ResourceGroupName, this.Location, this.ODataQuery, this.Top);
                     }
                     else if (!string.IsNullOrEmpty(this.Location) && !string.IsNullOrEmpty(this.TopicTypeName))
                     {
-                        eventSubscriptionsList = this.Client.ListRegionalEventSubscriptionsByResourceGroupForTopicType(this.ResourceGroupName, this.Location, this.TopicTypeName);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListRegionalEventSubscriptionsByResourceGroupForTopicType(this.ResourceGroupName, this.Location, this.TopicTypeName, this.ODataQuery, this.Top);
                     }
                 }
                 else
@@ -281,24 +375,24 @@ namespace Microsoft.Azure.Commands.EventGrid
                     if (string.IsNullOrEmpty(this.Location) && string.IsNullOrEmpty(this.TopicTypeName))
                     {
                         // List all global Event Grid subscriptions in the given resource group
-                        eventSubscriptionsList = this.Client.ListGlobalEventSubscriptionsBySubscription();
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListGlobalEventSubscriptionsBySubscription(this.ODataQuery, this.Top);
                     }
                     else if (string.IsNullOrEmpty(this.Location) && !string.IsNullOrEmpty(this.TopicTypeName))
                     {
-                        eventSubscriptionsList = this.Client.ListGlobalEventSubscriptionsBySubscriptionForTopicType(this.TopicTypeName);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListGlobalEventSubscriptionsBySubscriptionForTopicType(this.TopicTypeName, this.ODataQuery, this.Top);
                     }
                     else if (!string.IsNullOrEmpty(this.Location) && string.IsNullOrEmpty(this.TopicTypeName))
                     {
                         // List all regional Event Grid subscriptions in the given resource group
-                        eventSubscriptionsList = this.Client.ListRegionalEventSubscriptionsBySubscription(this.Location);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListRegionalEventSubscriptionsBySubscription(this.Location, this.ODataQuery, this.Top);
                     }
                     else if (!string.IsNullOrEmpty(this.Location) && !string.IsNullOrEmpty(this.TopicTypeName))
                     {
-                        eventSubscriptionsList = this.Client.ListRegionalEventSubscriptionsBySubscriptionForTopicType(this.Location, this.TopicTypeName);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListRegionalEventSubscriptionsBySubscriptionForTopicType(this.Location, this.TopicTypeName, this.ODataQuery, this.Top);
                     }
                 }
 
-                this.WritePSEventSubscriptionsList(eventSubscriptionsList, includeFullEndpointUrl);
+                this.WritePSEventSubscriptionsList(eventSubscriptionsList, includeFullEndpointUrl, newNextLink);
             }
         }
 
@@ -321,34 +415,15 @@ namespace Microsoft.Azure.Commands.EventGrid
             this.WriteObject(psEventSubscription);
         }
 
-        void WritePSEventSubscriptionsList(IEnumerable<EventSubscription> eventSubscriptionsList, bool includeFullEndpointUrl)
+        void WritePSEventSubscriptionsList(IEnumerable<EventSubscription> eventSubscriptionsList, bool includeFullEndpointUrl, string nextLink)
         {
-            var psEventSubscriptionsList = new List<PSEventSubscription>();
-
             if (eventSubscriptionsList == null)
             {
                 return;
             }
 
-            foreach (EventSubscription eventSubscription in eventSubscriptionsList)
-            {
-                PSEventSubscriptionListInstance psEventSubscription;
-
-                if (includeFullEndpointUrl &&
-                    eventSubscription.Destination is WebHookEventSubscriptionDestination)
-                {
-                    EventSubscriptionFullUrl fullUrl = this.Client.GetEventSubscriptionFullUrl(eventSubscription.Topic, eventSubscription.Name);
-                    psEventSubscription = new PSEventSubscriptionListInstance(eventSubscription, fullUrl.EndpointUrl);
-                }
-                else
-                {
-                    psEventSubscription = new PSEventSubscriptionListInstance(eventSubscription);
-                }
-
-                psEventSubscriptionsList.Add(psEventSubscription);
-            }
-
-            this.WriteObject(psEventSubscriptionsList, true);
+            PSEventSubscriptionListPagedInstance pSTopicListPagedInstance = new PSEventSubscriptionListPagedInstance(eventSubscriptionsList, this.Client, includeFullEndpointUrl, nextLink);
+            this.WriteObject(pSTopicListPagedInstance, true);
         }
     }
 }

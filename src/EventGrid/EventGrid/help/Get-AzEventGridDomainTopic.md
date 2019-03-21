@@ -14,50 +14,67 @@ Gets the details of an Event Grid domain topic, or gets a list of all Event Grid
 
 ### DomainTopicNameParameterSet (Default)
 ```
-Get-AzEventGridDomainTopic [-ResourceGroupName] <String> [-DomainName] <String> [-DomainTopicName <String>]
+Get-AzEventGridDomainTopic [-ResourceGroupName] <String> [-DomainName] <String> [-Name <String>]
+ [-ODataQuery <String>] [-Top <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdDomainTopicParameterSet
+```
+Get-AzEventGridDomainTopic [-ResourceId] <String> [-ODataQuery <String>] [-Top <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ResourceIdEventSubscriptionParameterSet
+### NextLinkParameterSet
 ```
-Get-AzEventGridDomainTopic [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzEventGridDomainTopic [-NextLink <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The Get-AzEventGridDomainTopic cmdlet gets either the details of a specified Event Grid domain topic, or a list of all Event Grid domain topics under a specific domain in the current Azure subscription.
-If the domain topic name is provided, the details of a single Event Grid domain topic is returned. 
-If the domain topic name is not provided, a list of domain topics under the specified domain name is returned.
+If the domain topic name is provided, the details of a single Event Grid domain topic is returned.
+If the domain topic name is not provided, a list of domain topics under the specified domain name is returned. The number of elements returned in this list is controlled by the Top parameter. If the Top value is not specified or $null, the list will contain all the domain topics items. Otherwise, Top will indicate the maximum number of elements to be returned in the list.
+If more domain topics are still available, the value in NextLink should be used in the next call to get the next page of domain topics.
+Finally, ODataQuery parameter is used to perform filtering for the search results. The filtering query follows OData syntax using the Name property only. The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
+
 
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> Get-AzEventGridDomainTopic -ResourceGroup MyResourceGroupName -DomainName Domain1 -DomainTopicName DomainTopic1
 ```
 
 Gets the details of Event Grid domain topic \`DomainTopic1\` under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
 
 ### Example 2
-```
+```powershell
 PS C:\> Get-AzEventGridDomainTopic -ResourceGroup MyResourceGroupName -DomainName Domain1
 ```
 
 List all the Event Grid domain topics under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
 
 ### Example 3
-```
-PS C:\> Get-AzEventGridDomain -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic1"
+```powershell
+PS C:\> Get-AzEventGridDomainTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic1"
 ```
 
 Gets the details of Event Grid domain topic \`DomainTopic1\` under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
 
 ### Example 4
-```
-PS C:\> Get-AzEventGridDomain -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1"
+```powershell
+PS C:\> Get-AzEventGridDomainTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1"
 ```
 
-List all the Event Grid domain topics under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+List all the Event Grid domain topics under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` without pagination.
+
+### Example 5
+```powershell
+$odataFilter = "Name ne 'ABCD'"
+PS C:\> $result = Get-AzEventGridDomainTopic -ResourceGroup MyResourceGroupName -DomainName Domain1 -Top 10 -ODataQuery $odataFilter
+PS C:\> Get-AzEventGridDomainTopic $result.NextLink
+```
+List the first 10 Event Grid domain topics (if any) under domain \`Domain1\` in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of domain topics, user is expected to re-call Get-AzEventGridDomainTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
+
 
 ## PARAMETERS
 
@@ -65,7 +82,7 @@ List all the Event Grid domain topics under Event Grid domain \`Domain1\` in res
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -80,9 +97,9 @@ Accept wildcard characters: False
 EventGrid domain name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainTopicNameParameterSet
-Aliases:
+Aliases: Domain
 
 Required: True
 Position: 1
@@ -91,12 +108,42 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DomainTopicName
+### -Name
 EventGrid domain topic name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainTopicNameParameterSet
+Aliases: DomainTopicName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NextLink
+The link for the next page of resources to be obtained. This value is obtained with the first Get-AzEventGrid cmdlet call when more resources are still available to be queried.
+
+```yaml
+Type: System.String
+Parameter Sets: NextLinkParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ODataQuery
+The OData query used for filtering the list results. Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
+
+```yaml
+Type: System.String
+Parameter Sets: DomainTopicNameParameterSet, ResourceIdDomainTopicParameterSet
 Aliases:
 
 Required: False
@@ -110,7 +157,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DomainTopicNameParameterSet
 Aliases: ResourceGroup
 
@@ -125,8 +172,8 @@ Accept wildcard characters: False
 Resource Identifier representing the Event Grid Domain or Grid Domain Topic.
 
 ```yaml
-Type: String
-Parameter Sets: ResourceIdEventSubscriptionParameterSet
+Type: System.String
+Parameter Sets: ResourceIdDomainTopicParameterSet
 Aliases:
 
 Required: True
@@ -136,9 +183,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Top
+The OData query used for filtering the list results. Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: DomainTopicNameParameterSet, ResourceIdDomainTopicParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

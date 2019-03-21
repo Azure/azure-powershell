@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string EventSubscriptionInputObjectHelp = "EventGridSubscription object.";
 
         // Help text
-        public const string IncludedEventTypesHelp = "Filter that specifies a list of event types to include. If not specified, all event types will be included.";
+        public const string IncludedEventTypesHelp = "Filter that specifies a list of event types to include. If not specified, all event types (for the custom topics and domains) or default event types (for other topic types) will be included.";
         public const string SubjectBeginsWithHelp = "Filter that specifies that only events matching the specified subject prefix will be included. If not specified, events with all subject prefixes will be included.";
         public const string SubjectEndsWithHelp = "Filter that specifies that only events matching the specified subject suffix will be included. If not specified, events with all subject suffixes will be included.";
         public const string SubjectCaseSensitiveHelp = "Filter that specifies that the subject field should be compared in a case sensitive manner. If not specified, subject will be compared in a case insensitive manner.";
@@ -47,6 +47,10 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string DomainLocationHelp = "The location of the domain.";
         public const string TagsHelp = "Hashtable which represents resource Tags.";
         public const string ResourceIdNameHelp = "The identifier of the resource to which the event subscription should be created.";
+
+        public const string ODataQueryHelp = "The OData query used for filtering the list results. Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.";
+        public const string TopHelp = "The maximum number of resources to be obtained. Valid value is between 1 and 100. If top value is specified and more results are still available, the result will contain a link to the next page to be queried in NextLink. If the Top value is null or not specified, the full list of resources will be returned at once.";
+        public const string NextLinkHelp = "The link for the next page of resources to be obtained. This value is obtained with the first Get-AzEventGrid cmdlet call when more resources are still available to be queried.";
 
         public const string TopicNameOfTheEventSubscriptionHelp = "The name of the topic to which the event subscription should be created.";
         public const string DomainNameOfTheEventSubscriptionHelp = "The name of the domain to which the event subscription should be created.";
@@ -71,6 +75,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string KeyNameHelp = "The name of the key that needs to be regenerated";
         public const string TopicResourceIdHelp = "Resource Identifier representing the Event Grid Topic.";
         public const string DomainResourceIdHelp = "Resource Identifier representing the Event Grid Domain.";
+        public const string DomainTopicResourceIdHelp = "Resource Identifier representing the Event Grid Domain Topic.";
         public const string DomainOrDomainTopicResourceIdHelp = "Resource Identifier representing the Event Grid Domain or Grid Domain Topic.";
 
         public const string EventSubscriptionFullUrlHelp = "Include the full endpoint URL of the event subscription destination.";
@@ -81,11 +86,16 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string EventHub = "eventhub";
         public const string StorageQueue = "storagequeue";
         public const string HybridConnection = "hybridconnection";
+        public const string ServiceBusQueue = "servicebusqueue";
 
         public const string EventSubscriptionHandshakeValidationMessage = "If the provided endpoint doesn't support subscription validation " +
                                                                           "handshake, navigate to the validation URL that you receive in the " +
                                                                           "subscription validation event, in order to complete the event " +
                                                                           "subscription creation or update. For more details, please visit http://aka.ms/esvalidation";
+
+        public const string IncludedEventTypeDeprecationMessage = "The usage of \"All\" is not allowed starting from api-version 2019-02-01-preview. However, the call here " +
+                                                                  "is performed by replacing \"All\" with $null in order to return all the event types (for the custom topics " +
+                                                                  "and domains case) or default event types (for other topic types case). Please consider using $null in any future calls.";
 
         // Input mapping keys
         public const string InputMappingId = "id";

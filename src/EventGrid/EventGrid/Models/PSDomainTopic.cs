@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
@@ -23,18 +24,24 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
         public PSDomainTopic(DomainTopic domainTopic)
         {
             this.Id = domainTopic.Id;
+            this.DomainName = this.GetDomainNameFromDomainTopic(domainTopic);
             this.DomainTopicName = domainTopic.Name;
             this.Type = domainTopic.Type;
             this.ResourceGroupName = EventGridUtils.ParseResourceGroupFromId(domainTopic.Id);
+            this.ProvisioningState = domainTopic.ProvisioningState;
         }
 
         public string ResourceGroupName { get; set; }
+
+        public string DomainName { get; set; }
 
         public string DomainTopicName { get; set; }
 
         public string Id { get; set; }
 
         public string Type { get; set; }
+
+        public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Return a string representation of this domain
@@ -43,6 +50,19 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
         public override string ToString()
         {
             return null;
+        }
+
+        string GetDomainNameFromDomainTopic(DomainTopic domainTopic)
+        {
+            string[] tokens = domainTopic.Id.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length == 10)
+            {
+                return tokens[7];
+            }
+            else
+            {
+                throw new ArgumentException("Unsupported value for domainTopic Id.");
+            }
         }
     }
 }

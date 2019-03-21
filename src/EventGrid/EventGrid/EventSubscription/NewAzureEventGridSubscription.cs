@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = false,
             HelpMessage = EventGridConstants.EndpointTypeHelp,
             ParameterSetName = EventSubscriptionDomainTopicInputObjectParameterSet)]
-        [ValidateSet(EventGridConstants.Webhook, EventGridConstants.EventHub, EventGridConstants.StorageQueue, EventGridConstants.HybridConnection, IgnoreCase = true)]
+        [ValidateSet(EventGridConstants.Webhook, EventGridConstants.EventHub, EventGridConstants.StorageQueue, EventGridConstants.HybridConnection, EventGridConstants.ServiceBusQueue, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string EndpointType { get; set; } = EventGridConstants.Webhook;
 
@@ -781,6 +781,13 @@ namespace Microsoft.Azure.Commands.EventGrid
                 if (EventGridUtils.ShouldShowEventSubscriptionWarningMessage(this.Endpoint, this.EndpointType))
                 {
                     WriteWarning(EventGridConstants.EventSubscriptionHandshakeValidationMessage);
+                }
+
+                if (this.IncludedEventType != null && this.IncludedEventType.Length == 1 && string.Equals(this.IncludedEventType[0], "All", StringComparison.OrdinalIgnoreCase))
+                {
+                    // Show Warning message for user
+                    this.IncludedEventType = null;
+                    WriteWarning(EventGridConstants.IncludedEventTypeDeprecationMessage);
                 }
 
                 EventSubscription eventSubscription = this.Client.CreateEventSubscription(

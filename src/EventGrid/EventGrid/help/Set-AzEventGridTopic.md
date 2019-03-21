@@ -36,7 +36,7 @@ Sets the properties of an Event Grid topic. This can be used to replace the tags
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> Set-AzEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic1 -Tag @{ Department="Finance"; Environment="Test" }
 ```
 

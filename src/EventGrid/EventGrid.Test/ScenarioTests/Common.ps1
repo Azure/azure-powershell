@@ -46,7 +46,7 @@ Get EventSubscription Webhook Endpoint
 #>
 function Get-EventSubscriptionWebhookEndpoint
 {
-    return "https://devexpfuncappdestination.azurewebsites.net/runtime/webhooks/EventGrid?functionName=EventGridTrigger1&code=A8ZhLmbJz2DWI5fcdRJnQU57yID4ZRanNZhMGdrLkpBCQLalud2INw=="
+    return "https://devexpfuncappdestination.azurewebsites.net/runtime/webhooks/EventGrid?functionName=EventGridTrigger1&code=<HIDDEN>"
 }
 
 <#
@@ -55,7 +55,7 @@ Get Hybrid Connection ResourceId
 #>
 function Get-HybridConnectionResourceId
 {
-    return "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/Microsoft.Relay/namespaces/<NameSpace>/hybridConnections/<HybridConnectionName>"
+    return "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/DevExpRg/providers/Microsoft.Relay/namespaces/DevExpRelayNamespace/hybridConnections/hydbridconnectiondestination"
 }
 
 <#
@@ -64,7 +64,16 @@ Get Storage Destination ResourceId
 #>
 function Get-StorageDestinationResourceId
 {
-    return "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>/queueServices/default/queues/<QueueName>"
+    return "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/DevExpRg/providers/Microsoft.Storage/storageAccounts/devexpstg/queueServices/default/queues/stogqueuedestination"
+}
+
+<#
+.SYNOPSIS
+Get ServiceBus Queue ResourceId
+#>
+function Get-ServiceBusQueueResourceId
+{
+    return "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/DevExpRg/providers/Microsoft.ServiceBus/namespaces/devexpservicebus/queues/devexpdestination"
 }
 
 <#
@@ -82,7 +91,7 @@ Get Deadletter ResourceId
 #>
 function Get-DeadletterResourceId
 {
-    return "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/microsoft.Storage/storageAccounts/<StorageAccountName>/blobServices/default/containers/<ContainerName>"
+    return "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/DevExpRg/providers/Microsoft.Storage/storageAccounts/devexpstg/blobServices/default/containers/dlq"
 }
 
 <#
@@ -118,7 +127,7 @@ Get location
 #>
 function Get-LocationForEventGrid
 {
-    return "westus2"
+    return "centraluseuap"
 }
 
 <#
