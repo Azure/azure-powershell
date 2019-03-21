@@ -19,11 +19,5 @@
 -->
 ## Current Release
 
-## Version 0.9.2-preview
-* Fix ArtifactSource command bug
- 
-## Version 0.9.1-preview
-* Enhance the discoverability of information provided by `Get-AzureRmDeploymentManagerRollout` when using the `-Verbose` and `-Error` switch parameters
-
 ## Version 0.9.0-preview
-* Add support for creating and managing rollouts and other supporting scenarios.
+* First release of 'Az.DeploymentManager' module. Parity with AzureRM.DeploymentManager module.
