@@ -20,30 +20,19 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSApplicationGatewayRewriteRule
+    public partial class PSApplicationGatewayRewriteRuleCondition
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public string ProvisioningState { get; set; }
+        public string Variable { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public string Name { get; set; }
+        public string Pattern { get; set; }
 
-        public int? RuleSequence { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? IgnoreCase { get; set; }
 
-        public List<PSApplicationGatewayRewriteRuleCondition> Conditions { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? Negate { get; set; }
 
-        public PSApplicationGatewayRewriteRuleActionSet ActionSet { get; set; }
-
-        [JsonIgnore]
-        public string ActionSetText
-        {
-            get { return JsonConvert.SerializeObject(ActionSet, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string ConditionsText
-        {
-            get { return JsonConvert.SerializeObject(Conditions, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
     }
 }
