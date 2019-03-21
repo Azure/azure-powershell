@@ -1,54 +1,68 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.storage/remove-Azstorageaccountmanagementpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/enable-azstorageblobdeleteretentionpolicy
 schema: 2.0.0
 ---
 
-# Remove-AzStorageAccountManagementPolicy
+# Enable-AzStorageBlobDeleteRetentionPolicy
 
 ## SYNOPSIS
-Removes the management policy of an Azure Storage account.
+Enable delete retention policy for the Azure Storage Blob service.
 
 ## SYNTAX
 
 ### AccountName (Default)
 ```
-Remove-AzStorageAccountManagementPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzStorageBlobDeleteRetentionPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
+ -RetentionDays <Int32> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Remove-AzStorageAccountManagementPolicy -StorageAccount <PSStorageAccount> [-PassThru]
+Enable-AzStorageBlobDeleteRetentionPolicy -StorageAccount <PSStorageAccount> -RetentionDays <Int32> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### AccountResourceId
+### BlobServicePropertiesResourceId
 ```
-Remove-AzStorageAccountManagementPolicy [-StorageAccountResourceId] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### PolicyObject
-```
-Remove-AzStorageAccountManagementPolicy [-InputObject] <PSManagementPolicy> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzStorageBlobDeleteRetentionPolicy [-BlobServicePropertyResourceId] <String> -RetentionDays <Int32>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzStorageAccountManagementPolicy** cmdlet removes the management policy of an Azure Storage account.
+The **Enable-AzStorageBlobDeleteRetentionPolicy** cmdlet enables delete retention policy for the Azure Storage Blob service.
 
 ## EXAMPLES
 
-### Example 1: Remove the management policy of a Storage account.
+### Example 1: Enable delete retention policy for the Blob service
 ```
-PS C:\>Remove-AzStorageAccountManagementPolicy -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount"
+C:\PS>Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -PassThru -RetentionDays 4
+
+Enabled Days
+------- ----
+   True    4
 ```
 
-This command removes the management policy of a Storage account.
+This command enables delete retention policy for the Blob service, and set deleted blob retention days to 4.
 
 ## PARAMETERS
+
+### -BlobServicePropertyResourceId
+Blob Service Properties Resource Id.
+
+```yaml
+Type: System.String
+Parameter Sets: BlobServicePropertiesResourceId
+Aliases: ResourceId
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -65,24 +79,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Management Object to Remove
-
-```yaml
-Type: Microsoft.Azure.Commands.Management.Storage.Models.PSManagementPolicy
-Parameter Sets: PolicyObject
-Aliases: ManagementPolicy
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PassThru
-Indicates that this cmdlet returns a **Boolean** that reflects the success of the operation.
-By default, this cmdlet does not return a value.
+Display ServiceProperties
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -106,6 +104,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RetentionDays
+Sets the number of retention days for the DeleteRetentionPolicy.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases: Days
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -138,21 +151,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageAccountResourceId
-Storage Account Resource Id.
-
-```yaml
-Type: System.String
-Parameter Sets: AccountResourceId
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -192,11 +190,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
+
 ### System.String
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.Management.Storage.Models.PSBlobServiceProperties
 
 ## NOTES
 
