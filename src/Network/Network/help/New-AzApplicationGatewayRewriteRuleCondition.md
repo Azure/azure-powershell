@@ -25,6 +25,18 @@ New-AzApplicationGatewayRewriteRuleCondition -Variable <String> [-Pattern <Strin
 ### Example 1
 ```powershell
 PS C:\> $condition = New-AzApplicationGatewayRewriteRuleCondition -Variable "var_request_uri" -Pattern "http" -IgnoreCase
+PS C:\> $condition
+
+Variable   : var_request_uri
+Pattern    : http
+IgnoreCase : True
+Negate     : False
+
+PS C:\> $condition | Format-Table
+
+Variable        Pattern IgnoreCase Negate
+--------        ------- ---------- ------
+var_request_uri http          True  False
 ```
 This command creates a condition in a rewrite rule and stores the result in the variable named $condition.
 
