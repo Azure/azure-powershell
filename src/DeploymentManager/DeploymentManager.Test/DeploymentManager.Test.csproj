@@ -15,7 +15,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Storage\Storage.Management\Storage.Management.csproj" />
+    <ProjectReference Include="..\..\Storage\Storage\Storage.csproj" />
     <ProjectReference Include="..\DeploymentManager\DeploymentManager.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ScenarioTests\CreateRollout.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ScenarioTests\CreateRollout_FailureRollout.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
