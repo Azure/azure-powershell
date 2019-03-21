@@ -42,7 +42,6 @@ If the topic name is not provided, a list of topics is returned. The number of e
 If more topics are still available, the value in NextLink should be used in the next call to get the next page of topics.
 Finally, ODataQuery parameter is used to perform filtering for the search results. The filtering query follows OData syntax using the Name property only. The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
 
-
 ## EXAMPLES
 
 ### Example 1
@@ -72,8 +71,8 @@ $odataFilter = "Name ne 'ABCD'"
 PS C:\> $result = Get-AzEventGridTopic -ResourceGroup MyResourceGroupName -Top 10 -ODataQuery $odataFilter
 PS C:\> Get-AzEventGridTopic $result.NextLink
 ```
-List the first 10 Event Grid topics (if any) in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of topics, user is expected to re-call Get-AzEventGridTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
 
+List the first 10 Event Grid topics (if any) in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of topics, user is expected to re-call Get-AzEventGridTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
 
 ### Example 5
 ```powershell
@@ -88,8 +87,8 @@ $odataFilter = "Name ne 'ABCD'"
 PS C:\> $result = Get-AzEventGridTopic -Top 10 -ODataQuery $odataFilter
 PS C:\> Get-AzEventGridTopic $result.NextLink
 ```
-List the first 10 Event Grid topics (if any) in the subscription that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of topics, user is expected to re-call Get-AzEventGridTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
 
+List the first 10 Event Grid topics (if any) in the subscription that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of topics, user is expected to re-call Get-AzEventGridTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
 
 ## PARAMETERS
 

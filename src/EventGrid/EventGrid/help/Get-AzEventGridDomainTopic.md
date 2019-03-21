@@ -36,7 +36,6 @@ If the domain topic name is not provided, a list of domain topics under the spec
 If more domain topics are still available, the value in NextLink should be used in the next call to get the next page of domain topics.
 Finally, ODataQuery parameter is used to perform filtering for the search results. The filtering query follows OData syntax using the Name property only. The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
 
-
 ## EXAMPLES
 
 ### Example 1
@@ -73,8 +72,8 @@ $odataFilter = "Name ne 'ABCD'"
 PS C:\> $result = Get-AzEventGridDomainTopic -ResourceGroup MyResourceGroupName -DomainName Domain1 -Top 10 -ODataQuery $odataFilter
 PS C:\> Get-AzEventGridDomainTopic $result.NextLink
 ```
-List the first 10 Event Grid domain topics (if any) under domain \`Domain1\` in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of domain topics, user is expected to re-call Get-AzEventGridDomainTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
 
+List the first 10 Event Grid domain topics (if any) under domain \`Domain1\` in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of domain topics, user is expected to re-call Get-AzEventGridDomainTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
 
 ## PARAMETERS
 
