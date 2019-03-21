@@ -27,9 +27,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Core
     public class ProtectedFileTokenCache : IAzureTokenCache
     {
         private static readonly string CacheFileName = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-                Resources.AzureDirectoryName,
-                 "TokenCache.dat");
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "msal.cache");
 
         private static readonly object fileLock = new object();
 

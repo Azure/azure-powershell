@@ -63,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                         .WithRedirectUri(replyUrl)
                         .Build();
 
-                    var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".Azure", "TokenCache.dat");
+                    var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "msal.cache");
                     if (!AzureSession.Instance.DataStore.FileExists(filePath))
                     {
                         AzureSession.Instance.DataStore.WriteFile(filePath, new byte[] { });

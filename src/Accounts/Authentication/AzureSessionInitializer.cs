@@ -118,12 +118,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         static ContextAutosaveSettings InitializeSessionSettings(IDataStore store, string profileDirectory, string settingsFile, bool migrated = false)
         {
+            return InitializeSessionSettings(store, profileDirectory, profileDirectory, settingsFile, migrated);
+        }
+
+        static ContextAutosaveSettings InitializeSessionSettings(IDataStore store, string cacheDirectory, string profileDirectory, string settingsFile, bool migrated = false)
+        {
             var result = new ContextAutosaveSettings
             {
-                CacheDirectory = profileDirectory,
+                CacheDirectory = cacheDirectory,
                 ContextDirectory = profileDirectory,
                 Mode = ContextSaveMode.Process,
-                CacheFile = "TokenCache.dat",
+                CacheFile = "msal.cache",
                 ContextFile = "AzureRmContext.json"
             };
 
@@ -135,8 +140,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 {
                     var settingsText = store.ReadFileAsText(settingsPath);
                     ContextAutosaveSettings settings = JsonConvert.DeserializeObject<ContextAutosaveSettings>(settingsText);
-                    result.CacheDirectory = migrated ? profileDirectory : settings.CacheDirectory ?? result.CacheDirectory;
-                    result.CacheFile = settings.CacheFile ?? result.CacheFile;
+                    result.CacheDirectory = migrated ? cacheDirectory : settings.CacheDirectory == null ? cacheDirectory : string.Equals(settings.CacheDirectory, profileDirectory) ? cacheDirectory : settings.CacheDirectory;
+                    result.CacheFile = settings.CacheFile == null ? result.CacheFile : string.Equals(settings.CacheFile, "TokenCache.dat") ? result.CacheFile : settings.CacheFile;
                     result.ContextDirectory = migrated ? profileDirectory : settings.ContextDirectory ?? result.ContextDirectory;
                     result.Mode = settings.Mode;
                     result.ContextFile = settings.ContextFile ?? result.ContextFile;
@@ -184,6 +189,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     Resources.OldAzureDirectoryName);
             dataStore = dataStore ?? new DiskDataStore();
 
+            string cachePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             var session = new AdalSession
             {
                 ClientFactory = new ClientFactory(),
@@ -201,7 +207,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #else
                 MigrateSettings(dataStore, oldProfilePath, profilePath);
 #endif
-            var autoSave = InitializeSessionSettings(dataStore, profilePath, ContextAutosaveSettings.AutoSaveSettingsFile, migrated);
+            var autoSave = InitializeSessionSettings(dataStore, cachePath, profilePath, ContextAutosaveSettings.AutoSaveSettingsFile, migrated);
             session.ARMContextSaveMode = autoSave.Mode;
             session.ARMProfileDirectory = autoSave.ContextDirectory;
             session.ARMProfileFile = autoSave.ContextFile;
