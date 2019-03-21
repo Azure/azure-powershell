@@ -18,6 +18,8 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+
+## Version 1.5.0
 * Add Threat Intelligence support for Azure Firewall
 * Add Application Gateway Firewall Policy top level resource and Custom Rules
 
