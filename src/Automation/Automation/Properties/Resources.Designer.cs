@@ -808,6 +808,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Tag format is invalid. Valid Tag format is hashtable with string key and value of String or array of string..
+        /// </summary>
+        internal static string SoftwareUpdateConfigurationInvalidTagFormat {
+            get {
+                return ResourceManager.GetString("SoftwareUpdateConfigurationInvalidTagFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Azure Automation Software Update Configuration..
         /// </summary>
         internal static string SoftwareUpdateConfigurationRemoveOperation {

@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 createParameters.CustomDomain = new CustomDomain()
                 {
                     Name = CustomDomainName,
-                    UseSubDomain = UseSubDomain
+                    UseSubDomainName = UseSubDomain
                 };
             }
             else if (UseSubDomain != null)
