@@ -12,20 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Batch;
-using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.Azure.Commands.Cdn.Common;
+using Microsoft.Azure.Commands.Cdn.Helpers;
+using Microsoft.Azure.Commands.Cdn.Properties;
+using Microsoft.Azure.Management.Cdn;
+using System.Linq;
+using Microsoft.Azure.Commands.Cdn.EdgeNodes;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
-namespace Microsoft.Azure.Commands.Batch
+namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchPoolStatistics"), OutputType(typeof(PSPoolStatistics))]
-    public class GetBatchPoolStatisticsCommand : BatchObjectModelCmdletBase
+    [GenericBreakingChange("Get-AzCdnEdgeNodes alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnEdgeNode"), OutputType(typeof(PSEdgeNode))]
+    [Alias("Get-AzCdnEdgeNodes")]
+    public class GetAzureRmCdnEdgeNode : AzureCdnCmdletBase
     {
+
         public override void ExecuteCmdlet()
         {
-            PSPoolStatistics poolStatistics = BatchClient.GetAllPoolsLifetimeStatistics(this.BatchContext, this.AdditionalBehaviors);
-            WriteObject(poolStatistics);
+            var resourceUsages = CdnManagementClient.EdgeNodes.List().Select(e => e.ToPsEdgeNode());
+
+            WriteVerbose(Resources.Success);
+            WriteObject(resourceUsages);
         }
     }
 }

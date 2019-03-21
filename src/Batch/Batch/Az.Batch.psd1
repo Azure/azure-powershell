@@ -80,9 +80,9 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Remove-AzBatchAccount', 'Get-AzBatchAccount', 
-               'Get-AzBatchAccountKeys', 'New-AzBatchAccount', 
+               'Get-AzBatchAccountKey', 'New-AzBatchAccount', 
                'New-AzBatchAccountKey', 'Set-AzBatchAccount', 
-               'New-AzBatchApplicationPackage', 'Get-AzBatchJobStatistics', 
+               'New-AzBatchApplicationPackage', 'Get-AzBatchJobStatistic', 
                'Remove-AzBatchApplication', 'Remove-AzBatchApplicationPackage', 
                'Get-AzBatchApplicationPackage', 'Get-AzBatchApplication', 
                'Set-AzBatchApplication', 'New-AzBatchApplication', 
@@ -90,7 +90,7 @@ CmdletsToExport = 'Remove-AzBatchAccount', 'Get-AzBatchAccount',
                'New-AzBatchCertificate', 'Stop-AzBatchCertificateDeletion', 
                'Disable-AzBatchComputeNodeScheduling', 
                'Enable-AzBatchComputeNodeScheduling', 
-               'Get-AzBatchRemoteLoginSettings', 'Remove-AzBatchComputeNode', 
+               'Get-AzBatchRemoteLoginSetting', 'Remove-AzBatchComputeNode', 
                'Reset-AzBatchComputeNode', 'Restart-AzBatchComputeNode', 
                'Set-AzBatchComputeNodeUser', 'Get-AzBatchNodeFile', 
                'Get-AzBatchNodeFileContent', 
@@ -101,25 +101,26 @@ CmdletsToExport = 'Remove-AzBatchAccount', 'Get-AzBatchAccount',
                'Remove-AzBatchJob', 'Set-AzBatchJob', 'Stop-AzBatchJob', 
                'Get-AzBatchJob', 'Get-AzBatchJobPreparationAndReleaseTaskStatus', 
                'Disable-AzBatchAutoScale', 'Enable-AzBatchAutoScale', 
-               'Get-AzBatchPoolStatistics', 'Get-AzBatchPoolUsageMetrics', 
+               'Get-AzBatchPoolStatistic', 'Get-AzBatchPoolUsageMetric', 
                'Get-AzBatchPool', 'Get-AzBatchNodeAgentSku', 'New-AzBatchPool', 
                'Remove-AzBatchPool', 'Set-AzBatchPool', 'Set-AzBatchPoolOSVersion', 
                'Start-AzBatchPoolResize', 'Stop-AzBatchPoolResize', 
-               'Test-AzBatchAutoScale', 'Get-AzBatchLocationQuotas', 
+               'Test-AzBatchAutoScale', 'Get-AzBatchLocationQuota', 
                'Get-AzBatchSubtask', 'Get-AzBatchTask', 'New-AzBatchTask', 
                'Remove-AzBatchTask', 'New-AzBatchComputeNodeUser', 
                'Remove-AzBatchComputeNodeUser', 'Enable-AzBatchTask', 
                'Set-AzBatchTask', 'Stop-AzBatchTask', 'Get-AzBatchComputeNode', 
                'Get-AzBatchJobSchedule', 'New-AzBatchJobSchedule', 
-               'Remove-AzBatchJobSchedule', 'Get-AzBatchTaskCounts', 
-               'Get-AzBatchPoolNodeCounts', 
+               'Remove-AzBatchJobSchedule', 'Get-AzBatchTaskCount', 
+               'Get-AzBatchPoolNodeCount', 
                'Start-AzBatchComputeNodeServiceLogUpload'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Reactivate-AzBatchTask', 'Get-AzBatchSubscriptionQuotas'
+AliasesToExport = 'Reactivate-AzBatchTask', 'Get-AzBatchSubscriptionQuotas', 'Get-AzBatchAccountKeys', 'Get-AzBatchJobStatistics', 'Get-AzBatchLocationQuotas',
+                'Get-AzBatchPoolNodeCounts', 'Get-AzBatchPoolStatistics', 'Get-AzBatchPoolUsageMetrics', 'Get-AzBatchRemoteLoginSettings', 'Get-AzBatchTaskCounts'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

@@ -13,13 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchAccountKeys"), OutputType(typeof(BatchAccountContext))]
-    public class GetBatchAccountKeysCommand : BatchCmdletBase
+    [GenericBreakingChange("Get-AzBatchAccountKeys alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchAccountKey"), OutputType(typeof(BatchAccountContext))]
+    [Alias("Get-AzBatchAccountKeys")]
+    public class GetBatchAccountKeyCommand : BatchCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Batch service account to query keys for.")]

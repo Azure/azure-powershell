@@ -12,42 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchPoolUsageMetrics"), OutputType(typeof(PSPoolUsageMetrics))]
-    public class GetBatchPoolUsageMetrics : BatchObjectModelCmdletBase
+    [GenericBreakingChange("Get-AzBatchTaskCounts alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchTaskCount"),OutputType(typeof(PSTaskCounts))]
+    [Alias("Get-AzBatchTaskCounts")]
+    public class GetBatchTaskCountCommand : BatchObjectModelCmdletBase
     {
-        [Parameter]
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job for which to get task counts.")]
         [ValidateNotNullOrEmpty]
-        public DateTime? StartTime { get; set; }
+        public string JobId { get; set; }
 
-        [Parameter]
+        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public DateTime? EndTime { get; set; }
-
-        [Parameter]
-        [ValidateNotNullOrEmpty]
-        public string Filter { get; set; }
+        public PSCloudJob Job { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ListPoolUsageOptions options = new ListPoolUsageOptions(this.BatchContext, this.AdditionalBehaviors)
-            {
-                StartTime = this.StartTime,
-                EndTime = this.EndTime,
-                Filter = this.Filter,
-            };
+            GetTaskCountsOptions options = new GetTaskCountsOptions(this.BatchContext, this.JobId, this.Job, this.AdditionalBehaviors);
 
-            foreach (PSPoolUsageMetrics poolUsageMetrics in BatchClient.ListPoolUsageMetrics(options))
-            {
-                WriteObject(poolUsageMetrics);
-            }
+            PSTaskCounts taskCounts = BatchClient.GetTaskCounts(options);
+
+            WriteObject(taskCounts);
         }
     }
 }

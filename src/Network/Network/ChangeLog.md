@@ -18,6 +18,7 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
 
 ## Version 1.4.0
 * Add ResourceId parameter to Get-AzNetworkInterface

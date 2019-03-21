@@ -12,32 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.OperationalInsights.Models;
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
+using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
-namespace Microsoft.Azure.Commands.OperationalInsights
+namespace Microsoft.Azure.Commands.Batch
 {
-    [GenericBreakingChange("Get-AzOperationalInsightsWorkspaceSharedKeys alias will be removed in an upcoming breaking change release", "2.0.0")]
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsWorkspaceSharedKey"), OutputType(typeof(PSWorkspaceKeys))]
-    [Alias("Get-AzOperationalInsightsWorkspaceSharedKeys")]
-    public class GetAzureOperationalInsightsWorkspaceSharedKeysCommand : OperationalInsightsBaseCmdlet
+    [GenericBreakingChange("Get-AzBatchLocationQuotas alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchLocationQuota"), OutputType(typeof(PSBatchLocationQuotas))]
+    // This alias was added in 10/2016 for backwards compatibility
+    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchSubscriptionQuotas", "Get-AzBatchLocationQuotas")]
+    public class GetBatchLocationQuotaCommand : BatchCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+            HelpMessage = "The region to get the quotas of the subscription in the Batch Service from.")]
+        [LocationCompleter("Microsoft.Batch/locations/quotas")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The workspace name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string Location { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(OperationalInsightsClient.GetWorkspaceKeys(ResourceGroupName, Name));
+            PSBatchLocationQuotas quotas = BatchClient.GetLocationQuotas(this.Location);
+            WriteObject(quotas);
         }
     }
 }
