@@ -14,6 +14,7 @@
 //
 
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -21,12 +22,16 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public partial class PSApplicationGatewayRewriteRuleCondition
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Variable { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Pattern { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? IgnoreCase { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? Negate { get; set; }
 
     }
