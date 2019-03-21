@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
     [Cmdlet(
         VerbsCommon.New, 
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerServiceTopology",
+        ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerServiceTopology",
         SupportsShouldProcess = true), 
      OutputType(typeof(PSServiceTopologyResource))]
     public class NewServiceTopology : DeploymentManagerBaseCmdlet

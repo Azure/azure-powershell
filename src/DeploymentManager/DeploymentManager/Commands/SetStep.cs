@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
     [Cmdlet(
         VerbsCommon.Set,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerStep",
+        ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerStep",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName),
      OutputType(typeof(PSStepResource))]

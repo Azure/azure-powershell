@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
     [Cmdlet(
         VerbsCommon.
-        New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerService",
+        New, ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerService",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName), 
      OutputType(typeof(PSServiceResource))]

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
     [Cmdlet(
         VerbsCommon.Set,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerArtifactSource",
+        ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerArtifactSource",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName),
      OutputType(typeof(PSArtifactSource))]

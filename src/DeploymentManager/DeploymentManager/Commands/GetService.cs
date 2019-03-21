@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
     [Cmdlet(
         VerbsCommon.Get, 
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerService",
+        ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerService",
         DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName),
      OutputType(typeof(PSServiceResource))]
     public class GetService : DeploymentManagerBaseCmdlet

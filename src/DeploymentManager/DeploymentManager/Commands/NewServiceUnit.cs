@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
     [Cmdlet(
         VerbsCommon.New, 
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerServiceUnit",
+        ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerServiceUnit",
         DefaultParameterSetName = NewServiceUnit.ByTopologyAndServiceNamesParameterSet,
         SupportsShouldProcess = true), 
      OutputType(typeof(PSServiceUnitResource))]

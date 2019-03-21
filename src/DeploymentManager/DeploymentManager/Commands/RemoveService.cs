@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
     [Cmdlet(
         VerbsCommon.Remove, 
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerService", 
+        ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerService", 
         SupportsShouldProcess = true,
         DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName), 
      OutputType(typeof(bool))]

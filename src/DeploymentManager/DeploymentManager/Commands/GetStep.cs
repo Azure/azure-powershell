@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
     [Cmdlet(
         VerbsCommon.Get,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerStep",
+        ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerStep",
         DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName),
         OutputType(typeof(PSStepResource))]
     public class GetStep : DeploymentManagerBaseCmdlet
