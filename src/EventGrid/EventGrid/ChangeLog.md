@@ -32,7 +32,7 @@
         - Add new enum for servicebusqueue as destination.
         - Disllow usage of "All" in IncludesEventTypes option and replace it with $null
     - Get-AzEventGridTopic, Get-AzEventGridDomain, Get-AzEventGridDomainTopic, Get-AzEventGridSubscription:
-        - Add new optional parameters (Top, ODataQuery and NextLink) to support pagination.
+        - Add new optional parameters (Top, ODataQuery and NextLink) to support results pagination.
 
 ## Version 1.1.0
 * Updated to use the 2019-01-01 API version.
