@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
     [Cmdlet(
         VerbsCommon.New, 
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerArtifactSource",
+        ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerArtifactSource",
         SupportsShouldProcess = true), 
      OutputType(typeof(PSArtifactSource))]
     public class NewArtifactSource : DeploymentManagerBaseCmdlet

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
     [Cmdlet(
         VerbsCommon.Get, 
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerServiceTopology",
+        ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerServiceTopology",
         DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName), 
         OutputType(typeof(PSServiceTopologyResource))]
     public class GetServiceTopology : DeploymentManagerBaseCmdlet

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
     [Cmdlet(
         VerbsCommon.Remove, 
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerArtifactSource", 
+        ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerArtifactSource", 
         SupportsShouldProcess = true,
         DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName), 
      OutputType(typeof(bool))]

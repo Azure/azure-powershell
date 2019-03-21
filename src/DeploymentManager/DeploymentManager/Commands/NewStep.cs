@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
     [Cmdlet(
         VerbsCommon.New,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerStep",
+        ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerStep",
         DefaultParameterSetName = WaitParamSet,
         SupportsShouldProcess = true),
      OutputType(typeof(PSStepResource))]

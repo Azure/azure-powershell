@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
     [Cmdlet(
         VerbsCommon.Get, 
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerServiceUnit",
+        ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerServiceUnit",
         DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName), 
      OutputType(typeof(PSServiceUnitResource))]
     public class GetServiceUnit : DeploymentManagerBaseCmdlet

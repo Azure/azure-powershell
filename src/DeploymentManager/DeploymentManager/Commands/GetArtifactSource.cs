@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
     [Cmdlet(
         VerbsCommon.Get, 
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerArtifactSource",
+        ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerArtifactSource",
         DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName), 
         OutputType(typeof(PSArtifactSource))]
     public class GetArtifactSource : DeploymentManagerBaseCmdlet

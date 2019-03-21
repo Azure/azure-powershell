@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
     [Cmdlet(
         VerbsCommon.Get, 
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerRollout",
+        ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerRollout",
         DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName), 
      OutputType(typeof(PSRollout))]
     public class GetRollout : RolloutCmdletBase
