@@ -1,74 +1,59 @@
 ---
-external help file: Microsoft.Azure.Commands.DeploymentManager.dll-Help.xml
-Module Name: AzureRM.DeploymentManager
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
+Module Name: Az.DeploymentManager
 online version:
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDeploymentManagerService
+# Remove-AzDeploymentManagerService
 
 ## SYNOPSIS
-Deletes a service in a service topology.
+Deletes the service.. All service units created under a service need to be deleted before deleting the service.
 
 ## SYNTAX
 
 ### Interactive (Default)
 ```
-Remove-AzureRmDeploymentManagerService [-ResourceGroupName] <String> [-ServiceTopologyName] <String>
+Remove-AzDeploymentManagerService [-ResourceGroupName] <String> [-ServiceTopologyName] <String>
  [-Name] <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByServiceTopologyObject
 ```
-Remove-AzureRmDeploymentManagerService [-Name] <String> [-ServiceTopology] <PSServiceTopologyResource> [-Force]
+Remove-AzDeploymentManagerService [-Name] <String> [-ServiceTopology] <PSServiceTopologyResource> [-Force]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByServiceTopologyResourceId
 ```
-Remove-AzureRmDeploymentManagerService [-Name] <String> [-ServiceTopologyResourceId] <String> [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzDeploymentManagerService [-Name] <String> [-ServiceTopologyResourceId] <String> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Remove-AzureRmDeploymentManagerService [-ResourceId] <String> [-Force] [-PassThru]
+Remove-AzDeploymentManagerService [-ResourceId] <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzureRmDeploymentManagerService [-Service] <PSServiceResource> [-Force] [-PassThru]
+Remove-AzDeploymentManagerService [-Service] <PSServiceResource> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDeploymentManagerService** cmdlet deletes a service under a service topology.
-Specify the service by its name, service topology it is in and the resource group name. Alternately, you can provide the Service object or the ResourceId.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzureRmDeploymentManagerService -ResourceGroupName ContosoResourceGroup -ServiceTopologyName ContosoServiceTopology -Name ContosoService1
+PS C:\> {{ Add example code here }}
 ```
 
-This command deletes a service named ContosoService1 in a service topology named ContosoServiceTopology in the ContosoResourceGroup.
-
-### Example 2: Delete a service using the resource identifier.
-```powershell
-PS C:\> Remove-AzureRmDeploymentManagerService -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/serviceTopologies/ContosoServiceTopology/services/ContosoService1"
-```
-
-This command deletes a service named ContosoService1 in a service topology named ContosoServiceTopology in the ContosoResourceGroup.
-
-### Example 3: Delete a service using the service object.
-```powershell
-PS C:\> Remove-AzureRmDeploymentManagerService -Service $serviceObject
-```
-
-This command deletes a service whose name, service topology name and ResourceGroup match the Name, ServiceTopologyName and ResourceGroupName properties of the $serviceObject, respectively.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -76,9 +61,9 @@ This command deletes a service whose name, service topology name and ResourceGro
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -163,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -Service
-The resource to be removed.
+Service object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource
@@ -193,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceTopologyName
-The name of the service topology the service belongs to.
+The name of the service topology.
 
 ```yaml
 Type: System.String
@@ -254,9 +239,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.String
 
 ### Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource
 
@@ -267,9 +255,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzureRmDeploymentManagerService](./New-AzureRmDeploymentManagerService.md)
-
-[Get-AzureRmDeploymentManagerService](./Get-AzureRmDeploymentManagerService.md)
-
-[Set-AzureRmDeploymentManagerService](./Set-AzureRmDeploymentManagerService.md)

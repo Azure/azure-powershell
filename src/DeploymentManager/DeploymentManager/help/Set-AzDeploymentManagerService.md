@@ -1,35 +1,33 @@
 ---
-external help file: Microsoft.Azure.Commands.DeploymentManager.dll-Help.xml
-Module Name: AzureRM.DeploymentManager
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
+Module Name: Az.DeploymentManager
 online version:
 schema: 2.0.0
 ---
 
-# Set-AzureRmDeploymentManagerStep
+# Set-AzDeploymentManagerService
 
 ## SYNOPSIS
-Updates a step.
+Updates the service.
 
 ## SYNTAX
 
 ```
-Set-AzureRmDeploymentManagerStep [-Step] <PSStepResource> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzDeploymentManagerService [-Service] <PSServiceResource> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmDeploymentManagerStep** cmdlet updates a step with the specified step object.
-The cmdlet returns the updated step object.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzureRmDeploymentManagerStep -Step $stepObject
+PS C:\> {{ Add example code here }}
 ```
 
-This command updates a step whose name and ResourceGroup match the Name and ResourceGroupName properties of the $stepObject, respectively.
-The step would be updated to the properties set in the $stepObject.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -37,9 +35,9 @@ The step would be updated to the properties set in the $stepObject.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -48,11 +46,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Step
-The step object.
+### -Service
+The service object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource
 Parameter Sets: (All)
 Aliases:
 
@@ -100,11 +98,11 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource
+### Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource
+### Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource
 
 ## NOTES
 

@@ -1,64 +1,46 @@
 ---
-external help file: Microsoft.Azure.Commands.DeploymentManager.dll-Help.xml
-Module Name: AzureRM.DeploymentManager
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
+Module Name: Az.DeploymentManager
 online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmDeploymentManagerStep
+# Get-AzDeploymentManagerStep
 
 ## SYNOPSIS
-Gets the deployment step.
+Gets the step.
 
 ## SYNTAX
 
 ### Interactive (Default)
 ```
-Get-AzureRmDeploymentManagerStep [-ResourceGroupName] <String> [-Name] <String>
+Get-AzDeploymentManagerStep [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzureRmDeploymentManagerStep [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDeploymentManagerStep [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Get-AzureRmDeploymentManagerStep [-Step] <PSStepResource> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDeploymentManagerStep [-Step] <PSStepResource> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDeploymentManagerStep** cmdlet gets a step, and returns an object that represents that step.
-Specify the step by its name and resource group name. Alternately, you can provide the Step object or the ResourceId.
-
-You can modify this object locally, and then apply changes to the artifact source by using the Set-AzureRmDeploymentManagerStep cmdlet.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
-### Example 1: Get a step
+### Example 1
 ```powershell
-PS C:\> New-AzureRmDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Name ContosoService1WaitStep
+PS C:\> {{ Add example code here }}
 ```
 
-This command gets a step named ContosoService1WaitStep in ContosoResourceGroup.
-
-### Example 2: Get a step using the resource identifier
-```powershell
-PS C:\> Get-AzureRmDeploymentManagerStep -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/steps/ContosoService1WaitStep"
-```
-
-This command gets a step named ContosoService1WaitStep in ContosoResourceGroup.
-
-### Example 3: Get a step using an object returned by New-AzureRmDeploymentManagerStep
-```powershell
-PS C:\> Get-AzureRmDeploymentManagerStep -Step $stepObject
-```
-
- This command gets a step whose name and ResourceGroup match the Name and ResourceGroupName properties of the $stepObject, respectively.
-
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -66,9 +48,9 @@ PS C:\> Get-AzureRmDeploymentManagerStep -Step $stepObject
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

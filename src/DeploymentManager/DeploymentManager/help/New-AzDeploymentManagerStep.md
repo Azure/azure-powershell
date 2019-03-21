@@ -1,37 +1,33 @@
 ---
-external help file: Microsoft.Azure.Commands.DeploymentManager.dll-Help.xml
-Module Name: AzureRM.DeploymentManager
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
+Module Name: Az.DeploymentManager
 online version:
 schema: 2.0.0
 ---
 
-# New-AzureRmDeploymentManagerStep
+# New-AzDeploymentManagerStep
 
 ## SYNOPSIS
-Creates a new deployment step.
+Creates a step.
 
 ## SYNTAX
 
 ```
-New-AzureRmDeploymentManagerStep -ResourceGroupName <String> -Name <String> -Location <String>
- -Duration <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzDeploymentManagerStep -ResourceGroupName <String> -Name <String> -Location <String> -Duration <String>
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmDeploymentManagerStep** cmdlet creates a deployment step that can be referenced in rollouts.
-Specify the *Name*, *ResourceGroupName* and required properties.
-
-You can modify the returned object locally and then apply the changes to the step by using the Set-AzureRmDeploymentManagerStep cmdlet.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Name ContosoService1WaitStep -Location "Central US" -Duration PT20M
+PS C:\> {{ Add example code here }}
 ```
 
-Creates a step in the ContosoResourceGroup with the name ContosoService1WaitStep with Central US as the location of the resource. The Duration property provides the duration the rollout will wait before running the next step.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -39,9 +35,9 @@ Creates a step in the ContosoResourceGroup with the name ContosoService1WaitStep
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

@@ -1,60 +1,46 @@
 ---
-external help file: Microsoft.Azure.Commands.DeploymentManager.dll-Help.xml
-Module Name: AzureRM.DeploymentManager
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
+Module Name: Az.DeploymentManager
 online version:
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDeploymentManagerStep
+# Remove-AzDeploymentManagerRollout
 
 ## SYNOPSIS
-Deletes a step.
+Deletes the rollout.
 
 ## SYNTAX
 
 ### Interactive (Default)
 ```
-Remove-AzureRmDeploymentManagerStep [-ResourceGroupName] <String> [-Name] <String> [-Force] [-PassThru]
+Remove-AzDeploymentManagerRollout [-ResourceGroupName] <String> [-Name] <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Remove-AzureRmDeploymentManagerStep [-ResourceId] <String> [-Force] [-PassThru]
+Remove-AzDeploymentManagerRollout [-ResourceId] <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzureRmDeploymentManagerStep [-Step] <PSStepResource> [-Force] [-PassThru]
+Remove-AzDeploymentManagerRollout [-Rollout] <PSRollout> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDeploymentManagerStep** cmdlet deletes a step.
-Specify the step by its name and the resource group name. Alternately, you can provide the Step object or the ResourceId.
+{{Fill in the Description}}
 
 ## EXAMPLES
-### Example 1: Remove a step
+
+### Example 1
 ```powershell
-PS C:\> Remove-AzureRmDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Name ContosoService1WaitStep
+PS C:\> {{ Add example code here }}
 ```
 
-This command deletes a step named ContosoService1WaitStep in ContosoResourceGroup.
-
-### Example 2: Remove a step using the resource identifier
-```powershell
-PS C:\> Remove-AzureRmDeploymentManagerStep -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/steps/ContosoService1WaitStep"
-```
-
-This command deletes a step named ContosoService1WaitStep in ContosoResourceGroup.
-
-### Example 3: Remove a step using an object returned by New-AzureRmDeploymentManagerStep
-```powershell
-PS C:\> Remove-AzureRmDeploymentManagerStep -Step $stepObject
-```
-
- This command deletes a step whose name and ResourceGroup match the Name and ResourceGroupName properties of the $stepObject, respectively.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -62,9 +48,9 @@ PS C:\> Remove-AzureRmDeploymentManagerStep -Step $stepObject
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -89,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the step.
+The name of the rollout.
 
 ```yaml
 Type: System.String
@@ -148,11 +134,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Step
-The step to be removed.
+### -Rollout
+The resource to be removed.
 
 ```yaml
-Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout
 Parameter Sets: InputObject
 Aliases:
 
@@ -202,7 +188,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.String
 
-### Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource
+### Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout
 
 ## OUTPUTS
 

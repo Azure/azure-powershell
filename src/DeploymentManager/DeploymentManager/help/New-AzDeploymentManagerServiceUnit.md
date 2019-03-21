@@ -1,20 +1,20 @@
 ---
-external help file: Microsoft.Azure.Commands.DeploymentManager.dll-Help.xml
-Module Name: AzureRM.DeploymentManager
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
+Module Name: Az.DeploymentManager
 online version:
 schema: 2.0.0
 ---
 
-# New-AzureRmDeploymentManagerServiceUnit
+# New-AzDeploymentManagerServiceUnit
 
 ## SYNOPSIS
-Creates a new service unit under a service in a service topology.
+Creates a service unit under the specified service and service topology.
 
 ## SYNTAX
 
 ### ByTopologyAndServiceNames (Default)
 ```
-New-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceTopologyName] <String>
+New-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceTopologyName] <String>
  [-ServiceName] <String> [-Name] <String> -Location <String> -TargetResourceGroup <String>
  -DeploymentMode <String> [-ParametersUri <String>] [-TemplateUri <String>]
  [-TemplateArtifactSourceRelativePath <String>] [-ParametersArtifactSourceRelativePath <String>]
@@ -24,7 +24,7 @@ New-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceT
 
 ### ByTopologyObjectAndServiceName
 ```
-New-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
+New-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
  -Location <String> -TargetResourceGroup <String> -DeploymentMode <String> [-ParametersUri <String>]
  [-TemplateUri <String>] [-TemplateArtifactSourceRelativePath <String>]
  [-ParametersArtifactSourceRelativePath <String>] [-Tag <Hashtable>]
@@ -34,7 +34,7 @@ New-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceN
 
 ### ByTopologyResourceAndServiceName
 ```
-New-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
+New-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
  -Location <String> -TargetResourceGroup <String> -DeploymentMode <String> [-ParametersUri <String>]
  [-TemplateUri <String>] [-TemplateArtifactSourceRelativePath <String>]
  [-ParametersArtifactSourceRelativePath <String>] [-Tag <Hashtable>] [-ServiceTopologyResourceId] <String>
@@ -43,7 +43,7 @@ New-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceN
 
 ### ByServiceObject
 ```
-New-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String> -Location <String>
+New-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String> -Location <String>
  -TargetResourceGroup <String> -DeploymentMode <String> [-ParametersUri <String>] [-TemplateUri <String>]
  [-TemplateArtifactSourceRelativePath <String>] [-ParametersArtifactSourceRelativePath <String>]
  [-Tag <Hashtable>] [-Service] <PSServiceResource> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
@@ -52,7 +52,7 @@ New-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <S
 
 ### ByServiceResourceId
 ```
-New-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String> -Location <String>
+New-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String> -Location <String>
  -TargetResourceGroup <String> -DeploymentMode <String> [-ParametersUri <String>] [-TemplateUri <String>]
  [-TemplateArtifactSourceRelativePath <String>] [-ParametersArtifactSourceRelativePath <String>]
  [-Tag <Hashtable>] [-ServiceResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -60,26 +60,16 @@ New-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <S
 ```
 
 ## DESCRIPTION
-The **New-AzureRmDeploymentManagerServiceUnit** cmdlet creates a service under a service in a service topology, and returns an object that represents that service unit.
-Specify the service unit by its name, service name, service topology it is in and the resource group name. 
-
-The cmdlet returns a ServiceUnit object. You can modify this object locally, and then apply changes to the service by using the Set-AzureRmDeploymentManagerService cmdlet.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmDeploymentManagerServiceUnit -ResourceGroupName ContosoResourceGroup -ServiceTopologyName ContosoServiceTopology -ServiceName ContosoService2 -Name ContosoService2Storage -Location "Central US" -TargetResourceGroup service2ResourceGroup -DeploymentMode Incremental -TemplateArtifactSourceRelativePath "Templates/Service2.Storage.json" -ParametersArtifactSourceRelativePath "Parameters/Service2Storage.Parameters.json"
+PS C:\> {{ Add example code here }}
 ```
 
-This cmdlet creates a new service unit with name ContosoService2Storage in the ContosoResourceGroup under the service ContosoService2 in topology ContosoServiceTopology, in the location Central US. The Template and parameters files are defined as relative paths into the artifact source location referenced in the Service Topology ContosoServiceTopology. The resources defined in this template are to be deployed into the target resource group service2ResourceGroup with the deployment mode set to Incremental.
-
-### Example 2
-```powershell
-PS C:\> New-AzureRmDeploymentManagerServiceUnit -ResourceGroupName ContosoResourceGroup -ServiceTopologyName ContosoServiceTopology1 -ServiceName ContosoService2 -Name ContosoService2Storage -Location "Central US" -TargetResourceGroup service2ResourceGroup -DeploymentMode Complete -TemplateUri "https://ContosoStorage.blob.core.windows.net/ContosoArtifacts/Templates/Service2.Storage.json?sasParameters" -ParametersUri "https://ContosoStorage.blob.core.windows.net/ContosoArtifacts/Parameters/Service2Storage.Parameters.json?sasParameters"
-```
-
-This cmdlet creates a new service unit with name ContosoService2Storage in the ContosoResourceGroup under the service ContosoService2 in topology ContosoServiceTopology, in the location Central US. The Template and parameters references are provided as SAS Uri's as artifact source ResourceId was not provided in the Service Topology ContosoServiceTopology1. The resources defined in this template are to be deployed into the target resource group service2ResourceGroup with the deployment mode set to Complete.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -102,9 +92,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -160,7 +150,8 @@ Accept wildcard characters: False
 ```
 
 ### -ParametersArtifactSourceRelativePath
-The deployment mode to use when deploying the resources in the service unit.
+The path to the parameters file relative to the artifact source.
+Requires ArtifactSource to be referenced in ServiceTopology.
 
 ```yaml
 Type: System.String
@@ -175,7 +166,8 @@ Accept wildcard characters: False
 ```
 
 ### -ParametersUri
-The deployment mode to use when deploying the resources in the service unit.
+The SAS Uri to the parameters file.
+If ArtifactSourceId was referenced in the ServiceTopology, specify relative path using ParametersArtifactSourceRelativePath.
 
 ```yaml
 Type: System.String
@@ -325,7 +317,8 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateArtifactSourceRelativePath
-The deployment mode to use when deploying the resources in the service unit.
+The path to the template file relative to the artifact source.
+Requires ArtifactSource to be referenced in ServiceTopology.
 
 ```yaml
 Type: System.String
@@ -340,7 +333,8 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateUri
-The deployment mode to use when deploying the resources in the service unit.
+The SAS Uri to the template file.
+If ArtifactSourceId was referenced in the ServiceTopology, specify relative path using TemplateArtifactSourceRelativePath.
 
 ```yaml
 Type: System.String
@@ -370,7 +364,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -385,11 +380,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### None
+### System.Collections.Hashtable
 
 ## OUTPUTS
 
@@ -398,9 +394,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzureRmDeploymentManagerServiceUnit](./Get-AzureRmDeploymentManagerServiceUnit.md)
-
-[Remove-AzureRmDeploymentManagerServiceUnit](./Remove-AzureRmDeploymentManagerServiceUnit.md)
-
-[Set-AzureRmDeploymentManagerServiceUnit](./Set-AzureRmDeploymentManagerServiceUnit.md)
