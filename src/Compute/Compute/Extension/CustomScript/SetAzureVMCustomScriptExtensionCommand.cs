@@ -70,11 +70,13 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = ByNameWithContainerParameterSet,
             Mandatory = true,
             Position = 0,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [Parameter(
             ParameterSetName = ByNameWithUrisParameterSet,
             Mandatory = true,
             Position = 0,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -85,10 +87,14 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = ByNameWithContainerParameterSet,
             Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
         [Parameter(
             ParameterSetName = ByNameWithUrisParameterSet,
             Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
@@ -97,23 +103,21 @@ namespace Microsoft.Azure.Commands.Compute
         [Alias("ExtensionName")]
         [Parameter(
             ParameterSetName = ByNameWithContainerParameterSet,
-            Mandatory = true,
-            Position = 1,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name.")]
         [Parameter(
             ParameterSetName = ByNameWithUrisParameterSet,
-            Mandatory = true,
-            Position = 1,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name.")]
         [Parameter(
             ParameterSetName = ByParentObjectWithContainerParameterSet,
             Mandatory = true,
-            Position = 1,
             HelpMessage = "The extension name.")]
         [Parameter(
             ParameterSetName = ByParentObjectWithUrisParameterSet,
             Mandatory = true,
-            Position = 1,
             HelpMessage = "The extension name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
         [ValidateNotNullOrEmpty]
@@ -123,13 +127,11 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = ByParentObjectWithContainerParameterSet,
             Mandatory = true,
-            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "VM object.")]
         [Parameter(
             ParameterSetName = ByParentObjectWithUrisParameterSet,
             Mandatory = true,
-            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "VM object.")]
         [ValidateNotNullOrEmpty]
@@ -138,13 +140,11 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = ByResourceIdWithContainerParameterSet,
             Mandatory = true,
-            Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "VM extension ResourceID.")]
         [Parameter(
             ParameterSetName = ByResourceIdWithUrisParameterSet,
             Mandatory = true,
-            Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "VM extension ResourceID.")]
         [ValidateNotNullOrEmpty]
@@ -153,13 +153,11 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = ByInputObjectWithContainerParameterSet,
             Mandatory = true,
-            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "VM extension object.")]
         [Parameter(
             ParameterSetName = ByInputObjectWithUrisParameterSet,
             Mandatory = true,
-            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "VM extension object.")]
         [ValidateNotNullOrEmpty]
@@ -168,6 +166,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = ByNameWithContainerParameterSet,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Name of the Container.")]
         [Parameter(
             ParameterSetName = ByParentObjectWithContainerParameterSet,
@@ -187,6 +186,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = ByNameWithContainerParameterSet,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Blob Files in the Container.")]
         [Parameter(
             ParameterSetName = ByParentObjectWithContainerParameterSet,
@@ -206,6 +206,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
              ParameterSetName = ByNameWithContainerParameterSet,
              Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
              HelpMessage = "The Storage Account Name.")]
         [Parameter(
              ParameterSetName = ByParentObjectWithContainerParameterSet,
@@ -225,6 +226,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = ByNameWithContainerParameterSet,
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Storage Endpoint Suffix.")]
         [Parameter(
             ParameterSetName = ByParentObjectWithContainerParameterSet,
@@ -244,6 +246,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = ByNameWithContainerParameterSet,
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Storage Account Key.")]
         [Parameter(
             ParameterSetName = ByParentObjectWithContainerParameterSet,
@@ -263,6 +266,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = ByNameWithUrisParameterSet,
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The File URIs.")]
         [Parameter(
             ParameterSetName = ByParentObjectWithUrisParameterSet,
@@ -281,6 +285,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Run File to Execute in PowerShell on the VM.")]
         [ValidateNotNullOrEmpty]
         [Alias("RunFile", "Command")]
@@ -288,11 +293,13 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Argument String for the Run File.")]
         [ValidateNotNullOrEmpty]
         public string Argument { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Set command to execute in private config.")]
         public SwitchParameter SecureExecution { get; set; }
 
