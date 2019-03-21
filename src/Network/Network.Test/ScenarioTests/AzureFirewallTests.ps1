@@ -36,7 +36,7 @@ function Test-AzureFirewallCRUD
     # AzureFirewallApplicationRuleCollection 2
     $appRc2Name = "appRc2"
     $appRc2Priority = 101
-    $appRc2ActionType = "Alert"
+    $appRc2ActionType = "Deny"
 
     # AzureFirewallApplicationRule 1
     $appRule1Name = "appRule"
