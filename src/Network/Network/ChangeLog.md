@@ -18,6 +18,8 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Add Threat Intelligence support for Azure Firewall
+* Add Application Gateway Firewall Policy top level resource and Custom Rules
 
 ## Version 1.4.0
 * Add ResourceId parameter to Get-AzNetworkInterface
