@@ -99,7 +99,7 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'Save-AzVMImage', 'Set-AzVM', 'Add-AzVMAdditionalUnattendContent', 
                'Add-AzVMSshPublicKey', 'Add-AzVMSecret', 'Remove-AzVMSecret', 
                'Remove-AzVMNetworkInterface', 'Remove-AzVMDataDisk', 
-               'Set-AzVMBootDiagnostics', 'Set-AzVMDataDisk', 'Set-AzVMPlan', 
+               'Set-AzVMBootDiagnostic', 'Set-AzVMDataDisk', 'Set-AzVMPlan', 
                'Set-AzVMSourceImage', 'Set-AzVMOSDisk', 
                'Get-AzVMBootDiagnosticsData', 'Get-AzVM', 'Update-AzVM', 
                'Restart-AzVM', 'New-AzVM', 'Start-AzVM', 'Stop-AzVM', 'Remove-AzVM', 
@@ -152,7 +152,7 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'Set-AzVmssDiskEncryptionExtension', 'Disable-AzVmssDiskEncryption', 
                'Get-AzVmssDiskEncryption', 'Get-AzVmssVMDiskEncryption', 
                'Export-AzLogAnalyticRequestRateByInterval', 
-               'Export-AzLogAnalyticThrottledRequests', 
+               'Export-AzLogAnalyticThrottledRequest', 
                'Repair-AzVmssServiceFabricUpdateDomain', 'New-AzVMDataDisk', 
                'Update-AzVmssVM', 'New-AzVmssIpTagConfig', 
                'Invoke-AzVmssVMRunCommand', 'New-AzGallery', 'Update-AzGallery', 
@@ -168,7 +168,7 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzVmssDiskEncryptionStatus', 
-               'Get-AzVmssVMDiskEncryptionStatus', 'Repair-AzVmssServiceFabricUD'
+               'Get-AzVmssVMDiskEncryptionStatus', 'Repair-AzVmssServiceFabricUD', 'Export-AzLogAnalyticThrottledRequests', 'Set-AzVMBootDiagnostics'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

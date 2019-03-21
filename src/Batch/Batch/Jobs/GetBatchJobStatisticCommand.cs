@@ -14,30 +14,21 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchTaskCounts"),OutputType(typeof(PSTaskCounts))]
-    public class GetBatchTaskCountsCommand : BatchObjectModelCmdletBase
+    [GenericBreakingChange("Get-AzBatchJobStatistics alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchJobStatistic"), OutputType(typeof(PSJobStatistics))]
+    [Alias("Get-AzBatchJobStatistics")]
+    public class GetBatchJobStatisticCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
-            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job for which to get task counts.")]
-        [ValidateNotNullOrEmpty]
-        public string JobId { get; set; }
-
-        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public PSCloudJob Job { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            GetTaskCountsOptions options = new GetTaskCountsOptions(this.BatchContext, this.JobId, this.Job, this.AdditionalBehaviors);
-
-            PSTaskCounts taskCounts = BatchClient.GetTaskCounts(options);
-
-            WriteObject(taskCounts);
+            PSJobStatistics jobStatistics = BatchClient.GetAllJobsLifetimeStatistics(this.BatchContext, this.AdditionalBehaviors);
+            WriteObject(jobStatistics);
         }
     }
 }

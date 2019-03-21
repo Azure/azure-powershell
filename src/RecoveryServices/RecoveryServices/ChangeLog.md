@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Added SnapshotRetentionInDays in Azure VM policy to support Instant RP
 * Added pipe support for unregister container
  

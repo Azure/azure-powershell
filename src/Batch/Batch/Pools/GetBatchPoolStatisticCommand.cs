@@ -12,28 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchLocationQuotas"), OutputType(typeof(PSBatchLocationQuotas))]
-    // This alias was added in 10/2016 for backwards compatibility
-    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchSubscriptionQuotas")]
-    public class GetBatchLocationQuotasCommand : BatchCmdletBase
+    [GenericBreakingChange("Get-AzBatchPoolStatistics alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchPoolStatistic"), OutputType(typeof(PSPoolStatistics))]
+    [Alias("Get-AzBatchPoolStatistics")]
+    public class GetBatchPoolStatisticCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The region to get the quotas of the subscription in the Batch Service from.")]
-        [LocationCompleter("Microsoft.Batch/locations/quotas")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            PSBatchLocationQuotas quotas = BatchClient.GetLocationQuotas(this.Location);
-            WriteObject(quotas);
+            PSPoolStatistics poolStatistics = BatchClient.GetAllPoolsLifetimeStatistics(this.BatchContext, this.AdditionalBehaviors);
+            WriteObject(poolStatistics);
         }
     }
 }

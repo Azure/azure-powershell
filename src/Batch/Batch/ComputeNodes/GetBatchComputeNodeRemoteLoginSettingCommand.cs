@@ -14,13 +14,16 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchRemoteLoginSettings", DefaultParameterSetName = Constants.IdParameterSet),OutputType(typeof(PSRemoteLoginSettings))]
-    public class GetBatchComputeNodeRemoteLoginSettingsCommand : BatchObjectModelCmdletBase
+    [GenericBreakingChange("Get-AzBatchRemoteLoginSettings alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchRemoteLoginSetting", DefaultParameterSetName = Constants.IdParameterSet),OutputType(typeof(PSRemoteLoginSettings))]
+    [Alias("Get-AzBatchRemoteLoginSettings")]
+    public class GetBatchComputeNodeRemoteLoginSettingCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             HelpMessage = "The id of the pool containing the compute node for which to get remote login settings.")]

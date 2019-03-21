@@ -19,14 +19,17 @@ using Microsoft.Azure.Commands.Management.CognitiveServices.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices
 {
     /// <summary>
     /// Get Available Skus for Cognitive Services Account
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountSkus", DefaultParameterSetName = GetSkusWithFilterParamSetName),
+    [GenericBreakingChange("Get-AzCognitiveServicesAccountSkus alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountSku", DefaultParameterSetName = GetSkusWithFilterParamSetName),
         OutputType(typeof(ResourceSku))]
+    [Alias("Get-AzCognitiveServicesAccountSkus")]
     public class GetAzureCognitiveServicesAccountSkusCommand : CognitiveServicesAccountBaseCmdlet
     {
         protected const string GetSkusWithFilterParamSetName = "GetSkusWithFilter";
