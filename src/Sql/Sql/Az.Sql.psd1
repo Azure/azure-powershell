@@ -203,7 +203,14 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Get-AzSqlInstanceDatabaseGeoBackup', 
                'Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy', 
                'Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy', 
-               'Get-AzSqlDeletedInstanceDatabaseBackup'
+               'Get-AzSqlDeletedInstanceDatabaseBackup',
+               'Update-AzSqlInstanceVulnerabilityAssessmentSettings', 
+               'Get-AzSqlInstanceVulnerabilityAssessmentSettings', 
+               'Clear-AzSqlInstanceVulnerabilityAssessmentSettings',
+			         'Update-AzSqlServerVulnerabilityAssessmentSettings', 
+               'Get-AzSqlServerVulnerabilityAssessmentSettings', 
+               'Clear-AzSqlServerVulnerabilityAssessmentSettings',
+               'Get-AzSqlInstanceDatabaseGeoBackup'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add Vulnerability Assessment cmdlets on Server and Managed Instance
 
 ## Version 1.6.0
 * changed Threat Detection's cmdlets param (ExcludeDetectionType) from DetectionType to string[] to make it future proof when new DetectionTypes are added and to support autocomplete as well.
@@ -25,6 +26,7 @@
 ## Version 1.5.0
 * Updating AuditingEndpointsCommunicator.
     - Fixing the behavior of an edge case while creating new diagnostic settings.
+    
 ## Version 1.4.0
 * Add support for restore an instance database from geo-redundant backups
 * Add support for backup short term retention on Managed Instance
