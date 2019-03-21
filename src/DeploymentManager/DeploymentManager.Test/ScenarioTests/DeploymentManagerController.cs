@@ -20,11 +20,11 @@ using System;
 using System.IO;
 using System.Linq;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Microsoft.Azure.Management.DeploymentManager;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Management.DeploymentManager;
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests
 {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests
     {
         private readonly EnvironmentSetupHelper _helper;
 
-        public Management.Internal.Resources.ResourceManagementClient ResourceManagementClient { get; private set; }
+        public Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public AzureDeploymentManagerClient DeploymentManagerClient { get; private set; }
 
@@ -84,7 +84,8 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
                     "AzureRM.Storage.ps1",
-                    _helper.GetRMModulePath(@"AzureRM.DeploymentManager.psd1"),
+                    _helper.GetRMModulePath(@"Az.Storage.psd1"),
+                    _helper.GetRMModulePath(@"Az.DeploymentManager.psd1"),
                     "AzureRM.Resources.ps1");
 
                 if (scripts != null)
@@ -104,9 +105,9 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests
             return context.GetServiceClient<AzureDeploymentManagerClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private static Management.Internal.Resources.ResourceManagementClient GetResourceManagementClient(MockContext context)
+        private static Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return context.GetServiceClient<Management.Internal.Resources.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
