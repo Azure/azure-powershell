@@ -15,50 +15,48 @@
 using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureApplicationGatewayRewriteRuleBase : NetworkBaseCmdlet
+    public class AzureApplicationGatewayRewriteRuleConditionBase : NetworkBaseCmdlet
     {
         [Parameter(
-                Mandatory = true,
-                HelpMessage = "The name of the RewriteRule")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
             Mandatory = true,
-            HelpMessage = "ActionSet of the rewrite rule")]
+            HelpMessage = "Name of the Header to set condition on it")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayRewriteRuleActionSet ActionSet { get; set; }
-
-        [Parameter(
-        Mandatory = false,
-        HelpMessage = "The rule ordering of this rewrite rule in the rewrite rule set")]
-        public int RuleSequence { get; set; }
+        public string Variable  { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Condition for the rewrite rule to execute")]
-        public PSApplicationGatewayRewriteRuleCondition[] Condition { get; set; }
+            HelpMessage = "Pattern to look for in the Variable Header")]
+        public string Pattern  { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Set this flag to ignore case on the pattern")]
+        public SwitchParameter IgnoreCase { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Set this flag to negate the condition validation")]
+        public SwitchParameter Negate { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
         }
 
-        public PSApplicationGatewayRewriteRule NewObject()
+        public PSApplicationGatewayRewriteRuleCondition NewObject()
         {
-            var rewriteRule = new PSApplicationGatewayRewriteRule
+            var rewriteRuleCondition = new PSApplicationGatewayRewriteRuleCondition
             {
-                Name = this.Name,
-                ActionSet = this.ActionSet,
-                RuleSequence = (this.RuleSequence == 0) ? 100 : this.RuleSequence,
-                Conditions = this.Condition?.ToList()
+                Variable = this.Variable,
+                Pattern = this.Pattern,
+                IgnoreCase = this.IgnoreCase.IsPresent,
+                Negate = this.Negate.IsPresent
             };
-            return rewriteRule;
+            return rewriteRuleCondition;
         }
     }
 }
