@@ -168,6 +168,35 @@ function Test-LinkAlreadyExistsCreateThrow
 
 <#
 .SYNOPSIS
+Test link creation with virtual network object
+#>
+function Test-CreateLinkWithVirtualNetworkObject
+{
+	$zoneName = Get-RandomZoneName
+	$linkName = Get-RandomLinkName
+    $resourceGroup = TestSetup-CreateResourceGroup
+
+	$createdZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"}
+	$createdVirtualNetwork = TestSetup-CreateVirtualNetwork $resourceGroup
+	$createdLink = New-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Name $linkName -Tag @{tag1="value1"} -VirtualNetwork $createdVirtualNetwork -EnableRegistration
+
+	Assert-NotNull $createdLink
+	Assert-NotNull $createdLink.Etag
+	Assert-NotNull $createdLink.Name
+	Assert-NotNull $createdLink.ZoneName
+	Assert-NotNull $createdLink.ResourceGroupName
+	Assert-AreEqual 1 $createdLink.Tags.Count
+	Assert-AreEqual $true $createdLink.RegistrationEnabled
+	Assert-AreEqual $createdLink.VirtualNetworkId $createdVirtualNetwork.Id
+	Assert-AreEqual $createdLink.ProvisioningState "Succeeded"
+	Assert-Null $createdLink.Type
+
+	Remove-AzResourceGroup -Name $createdLink.ResourceGroupName -Force
+
+}
+
+<#
+.SYNOPSIS
 Test link update
 #>
 function Test-UpdateLinkRegistrationStatusWithPiping

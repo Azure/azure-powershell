@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
 {
     using System.Collections;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.PrivateDns.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Network.Common;
     using ProjectResources = Microsoft.Azure.Commands.PrivateDns.Properties.Resources;
 
     /// <summary>
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
 
         [Parameter(Mandatory = true, HelpMessage = "The resource object of the virtual network associated with the link.", ParameterSetName = ObjectParameterSetName)]
         [ValidateNotNullOrEmpty]
-        public PSVirtualNetwork VirtualNetwork { get; set; }
+        public IVirtualNetworkLinkVirtualNetwork VirtualNetwork { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Switch parameter that represents if the virtual network link is registration enabled or not.")]
         [ValidateNotNullOrEmpty]

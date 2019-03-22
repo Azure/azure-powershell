@@ -10,7 +10,7 @@
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Compute" Version="1.1.17-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Graph.Rbac" Version="1.1.17-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.KeyVault" Version="1.1.17-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Network" Version="1.1.17-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Network" Version="1.0.313-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.ResourceManager" Version="1.1.17-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Storage" Version="1.1.17-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Storage.Management" Version="1.1.17-preview"/>
