@@ -15,7 +15,7 @@ Adds a custom script extension to a virtual machine.
 
 ### ByNameWithContainerAndFileNamesParameterSet (Default)
 ```
-Set-AzVMCustomScriptExtension [-ResourceGroupName] <String> -VMName <String> [[-Name] <String>]
+Set-AzVMCustomScriptExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
  -ContainerName <String> -FileName <String[]> [-StorageAccountName <String>] [-StorageEndpointSuffix <String>]
  [-StorageAccountKey <String>] [-Run <String>] [-Argument <String>] [-SecureExecution]
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
@@ -24,7 +24,7 @@ Set-AzVMCustomScriptExtension [-ResourceGroupName] <String> -VMName <String> [[-
 
 ### ByNameWithFileUriParameterSet
 ```
-Set-AzVMCustomScriptExtension [-ResourceGroupName] <String> -VMName <String> [[-Name] <String>]
+Set-AzVMCustomScriptExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
  [-FileUri <String[]>] [-Run <String>] [-Argument <String>] [-SecureExecution] [-TypeHandlerVersion <String>]
  [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -32,7 +32,7 @@ Set-AzVMCustomScriptExtension [-ResourceGroupName] <String> -VMName <String> [[-
 
 ### ByParentObjectWithContainerAndFileNamesParameterSet
 ```
-Set-AzVMCustomScriptExtension [-Name] <String> [-VMObject] <PSVirtualMachine> -ContainerName <String>
+Set-AzVMCustomScriptExtension -Name <String> -VMObject <PSVirtualMachine> -ContainerName <String>
  -FileName <String[]> [-StorageAccountName <String>] [-StorageEndpointSuffix <String>]
  [-StorageAccountKey <String>] [-Run <String>] [-Argument <String>] [-SecureExecution]
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
@@ -41,15 +41,15 @@ Set-AzVMCustomScriptExtension [-Name] <String> [-VMObject] <PSVirtualMachine> -C
 
 ### ByParentObjectWithFileUriParameterSet
 ```
-Set-AzVMCustomScriptExtension [-Name] <String> [-VMObject] <PSVirtualMachine> [-FileUri <String[]>]
- [-Run <String>] [-Argument <String>] [-SecureExecution] [-TypeHandlerVersion <String>] [-Location <String>]
+Set-AzVMCustomScriptExtension -Name <String> -VMObject <PSVirtualMachine> [-FileUri <String[]>] [-Run <String>]
+ [-Argument <String>] [-SecureExecution] [-TypeHandlerVersion <String>] [-Location <String>]
  [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdWithContainerAndFileNamesParameterSet
 ```
-Set-AzVMCustomScriptExtension [-ResourceId] <String> -ContainerName <String> -FileName <String[]>
+Set-AzVMCustomScriptExtension -ResourceId <String> -ContainerName <String> -FileName <String[]>
  [-StorageAccountName <String>] [-StorageEndpointSuffix <String>] [-StorageAccountKey <String>] [-Run <String>]
  [-Argument <String>] [-SecureExecution] [-TypeHandlerVersion <String>] [-Location <String>]
  [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -58,15 +58,15 @@ Set-AzVMCustomScriptExtension [-ResourceId] <String> -ContainerName <String> -Fi
 
 ### ByResourceIdWithFileUriParameterSet
 ```
-Set-AzVMCustomScriptExtension [-ResourceId] <String> [-FileUri <String[]>] [-Run <String>] [-Argument <String>]
+Set-AzVMCustomScriptExtension -ResourceId <String> [-FileUri <String[]>] [-Run <String>] [-Argument <String>]
  [-SecureExecution] [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion]
  [-ForceRerun <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObjectWithContainerAndFileNamesParameterSet
 ```
-Set-AzVMCustomScriptExtension [-InputObject] <VirtualMachineCustomScriptExtensionContext>
- -ContainerName <String> -FileName <String[]> [-StorageAccountName <String>] [-StorageEndpointSuffix <String>]
+Set-AzVMCustomScriptExtension -InputObject <VirtualMachineCustomScriptExtensionContext> -ContainerName <String>
+ -FileName <String[]> [-StorageAccountName <String>] [-StorageEndpointSuffix <String>]
  [-StorageAccountKey <String>] [-Run <String>] [-Argument <String>] [-SecureExecution]
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -74,7 +74,7 @@ Set-AzVMCustomScriptExtension [-InputObject] <VirtualMachineCustomScriptExtensio
 
 ### ByInputObjectWithFileUriParameterSet
 ```
-Set-AzVMCustomScriptExtension [-InputObject] <VirtualMachineCustomScriptExtensionContext> [-FileUri <String[]>]
+Set-AzVMCustomScriptExtension -InputObject <VirtualMachineCustomScriptExtensionContext> [-FileUri <String[]>]
  [-Run <String>] [-Argument <String>] [-SecureExecution] [-TypeHandlerVersion <String>] [-Location <String>]
  [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -247,7 +247,7 @@ Parameter Sets: ByInputObjectWithContainerAndFileNamesParameterSet, ByInputObjec
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -277,7 +277,7 @@ Parameter Sets: ByNameWithContainerAndFileNamesParameterSet, ByNameWithFileUriPa
 Aliases: ExtensionName
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -289,7 +289,7 @@ Parameter Sets: ByParentObjectWithContainerAndFileNamesParameterSet, ByParentObj
 Aliases: ExtensionName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -319,7 +319,7 @@ Parameter Sets: ByResourceIdWithContainerAndFileNamesParameterSet, ByResourceIdW
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -463,7 +463,7 @@ Parameter Sets: ByNameWithContainerAndFileNamesParameterSet, ByNameWithFileUriPa
 Aliases: ResourceName
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -478,7 +478,7 @@ Parameter Sets: ByParentObjectWithContainerAndFileNamesParameterSet, ByParentObj
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
