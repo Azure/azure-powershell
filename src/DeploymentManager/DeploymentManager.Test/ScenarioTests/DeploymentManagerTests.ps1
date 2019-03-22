@@ -66,7 +66,7 @@ function Test-ServiceTopology
 	$updatedServiceTopology = Set-AzDeploymentManagerServiceTopology $getResponse
 	Validate-Topology $updatedServiceTopology $resourceGroupName $location $serviceTopologyName $updatedArtifactSource.Id
 
-	# Test Set-ServiceTopology 
+	# Test Remove-ServiceTopology 
 	Remove-AzDeploymentManagerServiceTopology -ResourceGroupName $resourceGroupName -Name $serviceTopologyName -Force
 	$getResponse = $null
 	try
@@ -391,9 +391,6 @@ function Test-Rollout
 
 	$Error.Clear()
 	Assert-AreEqual "Failed" $failedRollout.Status
-	# Validate-Rollout $failedRollout $failedRolloutName $location $failedRolloutName @('Failed') $serviceTopology $artifactSource
-
-	# Write-Verbose "Completed assert on failed rollout. Restarting rollout"
 
 	$restartRollout = Restart-AzDeploymentManagerRollout -ResourceGroupName $failedRolloutName -Name $failedRolloutName -SkipSucceeded
 	Validate-Rollout $restartRollout $failedRolloutName $location $failedRolloutName @('Running') $serviceTopology $artifactSource $true 1

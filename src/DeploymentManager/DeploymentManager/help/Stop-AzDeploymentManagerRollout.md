@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
 Module Name: Az.DeploymentManager
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.deploymentmanager/stop-azdeploymentmanagerrollout
 schema: 2.0.0
 ---
 
