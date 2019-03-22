@@ -26,13 +26,13 @@ Adds a Transparent Data Encryption Certificate for the given SQL Server instance
 ### [Clear-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline](Clear-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Clears the vulnerability assessment rule baseline.
 
-### [Clear-AzSqlDatabaseVulnerabilityAssessmentSettings](Clear-AzSqlDatabaseVulnerabilityAssessmentSettings.md)
+### [Clear-AzSqlDatabaseVulnerabilityAssessmentSetting](Clear-AzSqlDatabaseVulnerabilityAssessmentSetting.md)
 Clears the vulnerability assessment settings of a database.
 
 ### [Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Clears the vulnerability assessment rule baseline.
 
-### [Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings](Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings.md)
+### [Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting](Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting.md)
 Clears the vulnerability assessment settings of a managed database.
 
 ### [Convert-AzSqlDatabaseVulnerabilityAssessmentScan](Convert-AzSqlDatabaseVulnerabilityAssessmentScan.md)
@@ -95,7 +95,7 @@ Gets a database geo backup policy.
 ### [Get-AzSqlDatabaseImportExportStatus](Get-AzSqlDatabaseImportExportStatus.md)
 Gets the details of an import or export of an Azure SQL Database.
 
-### [Get-AzSqlDatabaseIndexRecommendations](Get-AzSqlDatabaseIndexRecommendations.md)
+### [Get-AzSqlDatabaseIndexRecommendation](Get-AzSqlDatabaseIndexRecommendation.md)
 Gets the recommended index operations for a server or database.
 
 ### [Get-AzSqlDatabaseLongTermRetentionBackup](Get-AzSqlDatabaseLongTermRetentionBackup.md)
@@ -107,7 +107,7 @@ Gets one or more recommended actions for an Azure SQL Database Advisor.
 ### [Get-AzSqlDatabaseReplicationLink](Get-AzSqlDatabaseReplicationLink.md)
 Gets the geo-replication links between an Azure SQL Database and a resource group or SQL Server.
 
-### [Get-AzSqlDatabaseRestorePoints](Get-AzSqlDatabaseRestorePoints.md)
+### [Get-AzSqlDatabaseRestorePoint](Get-AzSqlDatabaseRestorePoint.md)
 Retrieves the distinct restore points from which a SQL Data Warehouse can be restored.
 
 ### [Get-AzSqlDatabaseSecureConnectionPolicy](Get-AzSqlDatabaseSecureConnectionPolicy.md)
@@ -131,7 +131,7 @@ Gets the vulnerability assessment rule baseline.
 ### [Get-AzSqlDatabaseVulnerabilityAssessmentScanRecord](Get-AzSqlDatabaseVulnerabilityAssessmentScanRecord.md)
 Gets all vulnerability assessment scan record(s) associated with a given database.
 
-### [Get-AzSqlDatabaseVulnerabilityAssessmentSettings](Get-AzSqlDatabaseVulnerabilityAssessmentSettings.md)
+### [Get-AzSqlDatabaseVulnerabilityAssessmentSetting](Get-AzSqlDatabaseVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a database.
 
 ### [Get-AzSqlDeletedDatabaseBackup](Get-AzSqlDeletedDatabaseBackup.md)
@@ -179,7 +179,7 @@ Gets the vulnerability assessment rule baseline.
 ### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentScanRecord](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentScanRecord.md)
 Gets all vulnerability assessment scan record(s) associated with a given managed database.
 
-### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings.md)
+### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a managed database.
 
 ### [Get-AzSqlServer](Get-AzSqlServer.md)
@@ -515,10 +515,10 @@ Suspends a SQL Data Warehouse database.
 ### [Switch-AzSqlDatabaseFailoverGroup](Switch-AzSqlDatabaseFailoverGroup.md)
 Executes a failover of an Azure SQL Database Failover Group.
 
-### [Update-AzSqlDatabaseVulnerabilityAssessmentSettings](Update-AzSqlDatabaseVulnerabilityAssessmentSettings.md)
+### [Update-AzSqlDatabaseVulnerabilityAssessmentSetting](Update-AzSqlDatabaseVulnerabilityAssessmentSetting.md)
 Updates the vulnerability assessment settings of a database.
 
-### [Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings](Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings.md)
+### [Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting](Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting.md)
 Updates the vulnerability assessment settings of a managed database.
 
 ### [Update-AzSqlSyncGroup](Update-AzSqlSyncGroup.md)
