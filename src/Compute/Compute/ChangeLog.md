@@ -20,6 +20,7 @@
 -->
 ## Upcoming Release
 * Fix issue with path resolution in Get-AzVmBootDiagnosticsData
+* Update Compute client library to 25.0.0.
 
 ## Version 1.5.0
 * Add wildcard support to Get cmdlets
