@@ -26,6 +26,7 @@ using System.IO;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using StorageBlob = Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
@@ -500,6 +501,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
         }
 
+
+        protected override void ProcessRecord()
+        {
+            try
+            {
+                base.ProcessRecord();
+                ResolvedFileName = this.GetUnresolvedProviderPathFromPSPath(
+                     string.IsNullOrWhiteSpace(this.FileName) ? "." : this.FileName);
+                this.ExecuteSynchronouslyOrAsJob();
+            }
+            catch (Exception ex) when (!IsTerminatingError(ex))
+            {
+                WriteExceptionError(ex);
+            }
+        }
+
         /// <summary>
         /// execute command
         /// </summary>
@@ -510,11 +527,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 BeginProcessingImplement();
             }
 
-            if (AsJob.IsPresent && !Path.IsPathRooted(FileName))
-            {
-                throw new ArgumentException(String.Format(Resources.InvalidPathForAsJob, "File", FileName), "File");
-            }
-            FileName = ResolveUserPath(FileName);
+            //if (AsJob.IsPresent && !Path.IsPathRooted(FileName))
+            //{
+            //    throw new ArgumentException(String.Format(Resources.InvalidPathForAsJob, "File", FileName), "File");
+            //}
+            //FileName = ResolveUserPath(FileName);
 
             ValidateBlobTier(string.Equals(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase)? StorageBlob.BlobType.PageBlob : StorageBlob.BlobType.Unspecified, 
                 pageBlobTier);
@@ -537,7 +554,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 case ContainerParameterSet:
                     if (ShouldProcess(BlobName, VerbsCommon.Set))
                     {
-                        SetAzureBlobContent(FileName, BlobName);
+                        SetAzureBlobContent(ResolvedFileName, BlobName);
                         containerName = CloudBlobContainer.Name;
                         UploadRequests.SetDestinationContainer(Channel, containerName);
                     }
@@ -547,7 +564,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 case BlobParameterSet:
                     if (ShouldProcess(CloudBlob.Name, VerbsCommon.Set))
                     {
-                        SetAzureBlobContent(FileName, CloudBlob.Name);
+                        SetAzureBlobContent(ResolvedFileName, CloudBlob.Name);
                         containerName = CloudBlob.Container.Name;
                         UploadRequests.SetDestinationContainer(Channel, containerName);
                     }
@@ -558,7 +575,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 default:
                     if (ShouldProcess(BlobName, VerbsCommon.Set))
                     {
-                        SetAzureBlobContent(FileName, BlobName);
+                        SetAzureBlobContent(ResolvedFileName, BlobName);
                         containerName = ContainerName;
                         UploadRequests.SetDestinationContainer(Channel, containerName);
                     }

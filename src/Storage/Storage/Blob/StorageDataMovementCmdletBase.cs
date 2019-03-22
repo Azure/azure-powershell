@@ -46,6 +46,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public virtual SwitchParameter AsJob { get; set; }
 
+        public string ResolvedFileName { get; set; }
+
         /// <summary>
         /// Confirm the overwrite operation
         /// </summary>
@@ -94,7 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
             this.TransferManager = TransferManagerFactory.CreateTransferManager(this.GetCmdletConcurrency());
         }
-
+        
         protected SingleTransferContext GetTransferContext(DataMovementUserData userData)
         {
             SingleTransferContext transferContext = new SingleTransferContext();
