@@ -15,7 +15,7 @@
 
 namespace Microsoft.Azure.Management.Internal.Network.Common
 {
-    public interface IVirtualNetworkLinkVirtualNetwork
+    public interface IVirtualNetwork
     {
         string Id { get; set; }
     }
