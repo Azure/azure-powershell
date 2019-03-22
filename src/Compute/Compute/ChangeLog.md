@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.6.0
 * Fix issue with path resolution in Get-AzVmBootDiagnosticsData
 * Update Compute client library to 25.0.0.
 * Add new parameter sets to Set-AzVMCustomScriptExtension
