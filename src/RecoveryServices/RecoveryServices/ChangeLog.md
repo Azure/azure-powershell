@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Added SnapshotRetentionInDays in Azure VM policy to support Instant RP
 * Added pipe support for unregister container
  
