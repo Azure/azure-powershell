@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
 
         [Parameter(Mandatory = true, HelpMessage = "The resource object of the virtual network associated with the link.", ParameterSetName = ObjectParameterSetName)]
         [ValidateNotNullOrEmpty]
-        public IVirtualNetworkLinkVirtualNetwork VirtualNetwork { get; set; }
+        public IVirtualNetwork VirtualNetwork { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Switch parameter that represents if the virtual network link is registration enabled or not.")]
         [ValidateNotNullOrEmpty]
