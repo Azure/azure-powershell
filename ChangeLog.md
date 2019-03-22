@@ -24,6 +24,12 @@
 #### Az.Network
 * Add Threat Intelligence support for Azure Firewall
 * Add Application Gateway Firewall Policy top level resource and Custom Rules
+* Add Alert action type for Azure Firewall Network and Application Rule Collections
+* Added support for conditions in RewriteRules in the Application Gateway
+    - New cmdlets added:
+        - New-AzApplicationGatewayRewriteRuleCondition
+    - Cmdlets updated with optional parameter - RuleSequence and Condition
+        - New-AzApplicationGatewayRewriteRule
 
 #### Az.RecoveryServices
 * Added SnapshotRetentionInDays in Azure VM policy to support Instant RP
@@ -35,6 +41,7 @@
 
 #### Az.Sql
 * changed Threat Detection's cmdlets param (ExcludeDetectionType) from DetectionType to string[] to make it future proof when new DetectionTypes are added and to support autocomplete as well.
+* Add Vulnerability Assessment cmdlets on Server and Managed Instance
 
 #### Az.Storage
 * Support Get/Set/Remove Management Policy on a Storage account
