@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSAzureFirewallNetworkRuleCollection> NetworkRuleCollections { get; set; }
 
+        public string ThreatIntelMode { get; set; }
+
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
