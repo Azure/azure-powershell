@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Allow VM creation with galley image from other tenants. 
 * Fix issue with path resolution in Get-AzVmBootDiagnosticsData
 * Update Compute client library to 25.0.0.
 
