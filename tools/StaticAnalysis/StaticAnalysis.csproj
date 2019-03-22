@@ -54,10 +54,10 @@
       <HintPath>..\..\src\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\Microsoft.Azure.PowerShell.Authentication.Abstractions.1.0.25-preview\lib\net452\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll</HintPath>
+      <HintPath>..\..\src\packages\Microsoft.Azure.PowerShell.Authentication.Abstractions.1.0.27-preview\lib\net452\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Commands.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\Microsoft.Azure.PowerShell.Common.1.0.25-preview\lib\net452\Microsoft.WindowsAzure.Commands.Common.dll</HintPath>
+      <HintPath>..\..\src\packages\Microsoft.Azure.PowerShell.Common.1.0.27-preview\lib\net452\Microsoft.WindowsAzure.Commands.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\src\packages\Microsoft.Rest.ClientRuntime.2.3.19\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
