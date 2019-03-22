@@ -41,6 +41,7 @@
 
 #### Az.Sql
 * changed Threat Detection's cmdlets param (ExcludeDetectionType) from DetectionType to string[] to make it future proof when new DetectionTypes are added and to support autocomplete as well.
+* Add Vulnerability Assessment cmdlets on Server and Managed Instance
 
 #### Az.Storage
 * Support Get/Set/Remove Management Policy on a Storage account
@@ -104,7 +105,6 @@
 #### Az.Sql
 * Updating AuditingEndpointsCommunicator.
     - Fixing the behavior of an edge case while creating new diagnostic settings.
-* Add Vulnerability Assessment cmdlets on Server and Managed Instance
 
 #### Az.Storage
 * Support Kind BlockBlobStorage when create Storage account
