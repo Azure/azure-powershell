@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Position = 1,
             ParameterSetName = TopicNameParameterSet,
             HelpMessage = EventGridConstants.TopicNameHelp)]
+        [ResourceNameCompleter("Microsoft.EventGrid/topics", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string TopicName { get; set; }
 

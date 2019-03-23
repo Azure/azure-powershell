@@ -80,6 +80,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = EventSubscriptionTopicNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/topics", nameof(ResourceGroupName))]
         public string TopicName { get; set; }
 
         [Parameter(
@@ -87,6 +88,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.DomainNameHelp,
             ParameterSetName = EventSubscriptionDomainNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/domains", nameof(ResourceGroupName))]
         public string DomainName { get; set; }
 
         [Parameter(
@@ -94,6 +96,7 @@ namespace Microsoft.Azure.Commands.EventGrid
           ValueFromPipelineByPropertyName = true,
           HelpMessage = EventGridConstants.DomainTopicNameHelp,
           ParameterSetName = EventSubscriptionDomainNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/domains/topics", nameof(ResourceGroupName), nameof(DomainName))]
         public string DomainTopicName { get; set; }
 
         [Parameter(
@@ -246,7 +249,6 @@ namespace Microsoft.Azure.Commands.EventGrid
         {
             string scope;
             bool includeFullEndpointUrl = this.IncludeFullEndpointUrl.IsPresent;
-            string nextLink = this.NextLink;
             string newNextLink = null;
 
             if (!string.IsNullOrEmpty(this.EventSubscriptionName))
@@ -295,9 +297,10 @@ namespace Microsoft.Azure.Commands.EventGrid
                 // event subscriptions based on the provided parameters.
                 IEnumerable<EventSubscription> eventSubscriptionsList = null;
 
-                if (!string.IsNullOrEmpty(nextLink))
+                // Other parameters should be null or ignored if this.NextLink is specified.
+                if (!string.IsNullOrEmpty(this.NextLink))
                 {
-                    (eventSubscriptionsList, newNextLink) = this.Client.ListEventSubscriptionsNext(nextLink);
+                    (eventSubscriptionsList, newNextLink) = this.Client.ListEventSubscriptionsNext(this.NextLink);
                 }
                 else if (this.CustomTopicInputObject != null)
                 {

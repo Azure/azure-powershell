@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Position = 1,
             HelpMessage = EventGridConstants.DomainNameHelp,
             ParameterSetName = DomainTopicNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/domains", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         [Alias(AliasDomain)]
         public string DomainName { get; set; }
@@ -62,6 +63,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.DomainTopicNameHelp,
             ParameterSetName = DomainTopicNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/domains/topics", nameof(ResourceGroupName), nameof(DomainName))]
         [ValidateNotNullOrEmpty]
         [Alias(AliasDomainTopicName)]
         public string Name { get; set; }
@@ -114,7 +116,6 @@ namespace Microsoft.Azure.Commands.EventGrid
             string resourceGroupName = string.Empty;
             string domainName = string.Empty;
             string domainTopicName = string.Empty;
-            string nextLink = this.NextLink;
             string newNextLink = null;
             IEnumerable<DomainTopic> domainTopicsList;
             List <PSDomainTopicListInstance> psDomainTopicsList = new List<PSDomainTopicListInstance>();
@@ -130,10 +131,11 @@ namespace Microsoft.Azure.Commands.EventGrid
                 domainTopicName = this.Name;
             }
 
-            if (!string.IsNullOrEmpty(nextLink))
+            // Other parameters should be null or ignored if this.NextLink is specified.
+            if (!string.IsNullOrEmpty(this.NextLink))
             {
                 // Get Next page of domain topics.
-                (domainTopicsList, newNextLink) = this.Client.ListDomainTopicsByDomainNext(nextLink);
+                (domainTopicsList, newNextLink) = this.Client.ListDomainTopicsByDomainNext(this.NextLink);
 
                 PSDomainTopicListPagedInstance pSDomainTopicListPagedInstance = new PSDomainTopicListPagedInstance(domainTopicsList, newNextLink);
                 this.WriteObject(pSDomainTopicListPagedInstance, true);

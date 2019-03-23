@@ -41,19 +41,21 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 1,
             HelpMessage = EventGridConstants.DomainNameHelp,
             ParameterSetName = DomainTopicNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/domains", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string DomainName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 2,
             HelpMessage = EventGridConstants.DomainTopicNameHelp,
             ParameterSetName = DomainTopicNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/domains/topics", nameof(ResourceGroupName), nameof(DomainName))]
         [ValidateNotNullOrEmpty]
         [Alias("DomainTopicName")]
         public string Name { get; set; }

@@ -59,6 +59,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Position = 1,
             HelpMessage = EventGridConstants.DomainNameHelp,
             ParameterSetName = DomainNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/domains", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         [Alias("DomainName")]
         public string Name { get; set; }
@@ -121,7 +122,6 @@ namespace Microsoft.Azure.Commands.EventGrid
             string resourceGroupName = string.Empty;
             string domainName = string.Empty;
             IEnumerable<Domain> domainsList;
-            string nextLink = null;
             string newNextLink = null;
 
             if (!string.IsNullOrEmpty(this.ResourceId))
@@ -138,25 +138,21 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 resourceGroupName = this.ResourceGroupName;
             }
-            else if (!string.IsNullOrEmpty(this.NextLink))
-            {
-                // Other parameters should be null or ignored if nextLink is specified.
-                nextLink = this.NextLink;
-            }
 
-            if (!string.IsNullOrEmpty(nextLink))
+            // Other parameters should be null or ignored if this.NextLink is specified.
+            if (!string.IsNullOrEmpty(this.NextLink))
             {
                 // Get Next page of domains. Get the proper next API to be called based on the nextLink.
-                Uri uri = new Uri(nextLink);
+                Uri uri = new Uri(this.NextLink);
                 string path = uri.AbsolutePath;
 
                 if (path.IndexOf("/resourceGroups/", StringComparison.OrdinalIgnoreCase) != -1)
                 {
-                    (domainsList, newNextLink) = this.Client.ListDomainsByResourceGroupNext(nextLink);
+                    (domainsList, newNextLink) = this.Client.ListDomainsByResourceGroupNext(this.NextLink);
                 }
                 else
                 {
-                    (domainsList, newNextLink) = this.Client.ListDomainBySubscriptionNext(nextLink);
+                    (domainsList, newNextLink) = this.Client.ListDomainBySubscriptionNext(this.NextLink);
                 }
 
                 PSDomainListPagedInstance pSDomainListPagedInstance = new PSDomainListPagedInstance(domainsList, newNextLink);

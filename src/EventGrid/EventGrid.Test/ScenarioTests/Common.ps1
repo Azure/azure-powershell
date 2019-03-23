@@ -51,6 +51,15 @@ function Get-EventSubscriptionWebhookEndpoint
 
 <#
 .SYNOPSIS
+Get EventSubscription Webhook Endpoint
+#>
+function Get-EventSubscriptionWebhookBaseEndpoint
+{
+    return "https://devexpfuncappdestination.azurewebsites.net/runtime/webhooks/EventGrid"
+}
+
+<#
+.SYNOPSIS
 Get Hybrid Connection ResourceId
 #>
 function Get-HybridConnectionResourceId
@@ -74,15 +83,6 @@ Get ServiceBus Queue ResourceId
 function Get-ServiceBusQueueResourceId
 {
     return "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/DevExpRg/providers/Microsoft.ServiceBus/namespaces/devexpservicebus/queues/devexpdestination"
-}
-
-<#
-.SYNOPSIS
-Get EventSubscription Webhook Endpoint
-#>
-function Get-EventSubscriptionWebhookBaseEndpoint
-{
-    return "https://devexpfuncappdestination.azurewebsites.net/runtime/webhooks/EventGrid"
 }
 
 <#

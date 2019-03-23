@@ -94,9 +94,9 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
                                                                           "subscription validation event, in order to complete the event " +
                                                                           "subscription creation or update. For more details, please visit http://aka.ms/esvalidation";
 
-        public const string IncludedEventTypeDeprecationMessage = "The usage of \"All\" is not allowed starting from api-version 2019-02-01-preview. However, the call here " +
-                                                                  "is performed by replacing \"All\" with $null in order to return all the event types (for the custom topics " +
-                                                                  "and domains case) or default event types (for other topic types case). Please consider using $null in any future calls.";
+        public const string IncludedEventTypeDeprecationMessage = "The usage of \"All\" for -IncludedEventType is not allowed starting from api-version 2019-02-01-preview. However, the call here " +
+                                                                  "is still permitted by replacing \"All\" with $null in order to return all the event types (for the custom topics " +
+                                                                  "and domains case) or default event types (for other topic types case). In any future calls, please consider leaving -IncludedEventType unspecified or use $null instead.";
 
         // Input mapping keys
         public const string InputMappingId = "id";
