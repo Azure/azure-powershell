@@ -74,21 +74,29 @@ NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzFrontDoor', 'Get-AzFrontDoor', 'Set-AzFrontDoor', 
-               'Remove-AzFrontDoor', 'New-AzFrontDoorRoutingRuleObject', 
-               'New-AzFrontDoorBackendObject', 'New-AzFrontDoorBackendPoolObject', 
-               'New-AzFrontDoorFrontendEndpointObject', 
-               'New-AzFrontDoorHealthProbeSettingObject', 
-               'New-AzFrontDoorLoadBalancingSettingObject', 
-               'New-AzFrontDoorMatchConditionObject', 
-               'New-AzFrontDoorCustomRuleObject', 
-               'New-AzFrontDoorManagedRuleObject', 'New-AzFrontDoorFireWallPolicy', 
-               'Get-AzFrontDoorFireWallPolicy', 'Set-AzFrontDoorFireWallPolicy', 
-               'Remove-AzFrontDoorFireWallPolicy', 
-               'New-AzFrontDoorRuleGroupOverrideObject', 
-               'Remove-AzFrontDoorContent', 'Enable-AzFrontDoorCustomDomainHttps', 
-               'Disable-AzFrontDoorCustomDomainHttps', 
-               'Get-AzFrontDoorFrontendEndpoint'
+CmdletsToExport = 'New-AzFrontDoor',
+    'Get-AzFrontDoor',
+    'Set-AzFrontDoor',
+    'Remove-AzFrontDoor',
+    'New-AzFrontDoorRoutingRuleObject',
+    'New-AzFrontDoorBackendObject',
+    'New-AzFrontDoorBackendPoolObject',
+    'New-AzFrontDoorFrontendEndpointObject',
+    'New-AzFrontDoorHealthProbeSettingObject',
+    'New-AzFrontDoorLoadBalancingSettingObject',
+    'New-AzFrontDoorMatchConditionObject',
+    'New-AzFrontDoorCustomRuleObject',
+    'New-AzFrontDoorManagedRuleObject',
+    'New-AzFrontDoorFireWallPolicy',
+    'Get-AzFrontDoorFireWallPolicy',
+    'Set-AzFrontDoorFireWallPolicy',
+    'Remove-AzFrontDoorFireWallPolicy',
+    'New-AzFrontDoorRuleGroupOverrideObject',
+    'Remove-AzFrontDoorContent',
+    'Enable-AzFrontDoorCustomDomainHttps',
+    'Disable-AzFrontDoorCustomDomainHttps',
+    'Get-AzFrontDoorFrontendEndpoint',
+    'New-AzFrontDoorManagedRuleOverrideObject'
 
 # Variables to export from this module
 # VariablesToExport = @()

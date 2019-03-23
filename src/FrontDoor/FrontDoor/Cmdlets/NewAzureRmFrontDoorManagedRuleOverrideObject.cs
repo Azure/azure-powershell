@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
@@ -20,39 +19,39 @@ using Microsoft.Azure.Commands.FrontDoor.Models;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzFrontDoorManagedRuleObject cmdlet.
+    /// Defines the New-AzFrontDoorManagedRuleOverrideObject cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorManagedRuleObject"), OutputType(typeof(PSAzureManagedRule))]
-    public class NewAzureRmFrontDoorManagedRuleObject : AzureFrontDoorCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorManagedRuleOverrideObject"), OutputType(typeof(PSAzureManagedRuleOverride))]
+    public class NewAzureRmFrontDoorManagedRuleOverrideObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
-        /// Type of the ruleset (e.g.: DefaultRuleSet)
+        /// Rule ID
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Type of the ruleset")]
-        public string Type { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = "Rule ID")]
+        public string RuleId { get; set; }
 
         /// <summary>
-        /// Version of the ruleset (e.g.: preview-0.1)
+        /// Override Action
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Version of the ruleset")]
-        public string Version { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Override Action")]
+        public PSAction? Action { get; set; }
 
         /// <summary>
-        /// List of azure managed provider override configuration
+        /// Enabled State
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "List of azure managed provider override configuration")]
-        public PSAzureRuleGroupOverride[] RuleGroupOverride { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Enabled State")]
+        public PSEnabledState? EnabledState { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var rule = new PSAzureManagedRule
+            var managedRuleOverride = new PSAzureManagedRuleOverride
             {
-               RuleSetType = Type,
-               RuleSetVersion = Version,
-               RuleGroupOverrides = RuleGroupOverride?.ToList()
+                RuleId = RuleId,
+                Action = Action,
+                EnabledState = EnabledState
             };
-            WriteObject(rule);
+            WriteObject(managedRuleOverride);
         }
-        
+
     }
 }
