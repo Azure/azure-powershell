@@ -12,15 +12,8 @@ Returns information about Azure SQL Managed Database Instance.
 
 ## SYNTAX
 
-### GetInstanceByResourceGroup (Default)
 ```
-Get-AzSqlInstance [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### GetInstanceByNameAndResourceGroup
-```
-Get-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSqlInstance [[-Name] <String>] [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -109,10 +102,10 @@ SQL instance name.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetInstanceByNameAndResourceGroup
+Parameter Sets: (All)
 Aliases: InstanceName
 
-Required: True
+Required: False
 Position: 0
 Default value: None
 Accept pipeline input: False
@@ -124,22 +117,10 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetInstanceByResourceGroup
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: GetInstanceByNameAndResourceGroup
-Aliases:
-
-Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False

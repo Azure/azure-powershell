@@ -107,7 +107,7 @@ function Test-GetVirtualNetworkRule
 		Assert-AreEqual $resp.VirtualNetworkSubnetId $virtualNetworkSubnetId1
 
 		# Get list of rules
-		$resp = Get-AzSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		$resp = Get-AzSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName *
 		Assert-AreEqual $resp.Count 2
 	}
 	finally
