@@ -3951,7 +3951,7 @@
               },
               "Mandatory": true,
               "Position": 1,
-              "ValueFromPipeline": false,
+              "ValueFromPipeline": true,
               "ValueFromPipelineByPropertyName": false
             },
             {

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.1
 * Update wildcard support for Get-AzResource and Get-AzResourceGroup
 * Update credentials used when making generic calls to ARM
 
