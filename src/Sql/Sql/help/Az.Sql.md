@@ -116,7 +116,7 @@ Gets the secure connection policy for a database.
 ### [Get-AzSqlDatabaseSensitivityClassification](Get-AzSqlDatabaseSensitivityClassification.md)
 Gets the sensitivity classification of a database, or a column in the database.
 
-### [Get-AzSqlDatabaseSensitivityRecommendations](Get-AzSqlDatabaseSensitivityRecommendations.md)
+### [Get-AzSqlDatabaseSensitivityRecommendation](Get-AzSqlDatabaseSensitivityRecommendation.md)
 Gets the sensitivity recommendations of a database.
 
 ### [Get-AzSqlDatabaseThreatDetectionPolicy](Get-AzSqlDatabaseThreatDetectionPolicy.md)
@@ -182,7 +182,7 @@ Returns information about Azure SQL Managed Instance database redundant backup.
 ### [Get-AzSqlInstanceDatabaseSensitivityClassification](Get-AzSqlInstanceDatabaseSensitivityClassification.md)
 Gets the sensitivity classification of a managed database, or a column in the database.
 
-### [Get-AzSqlInstanceDatabaseSensitivityRecommendations](Get-AzSqlInstanceDatabaseSensitivityRecommendations.md)
+### [Get-AzSqlInstanceDatabaseSensitivityRecommendation](Get-AzSqlInstanceDatabaseSensitivityRecommendation.md)
 Gets the sensitivity recommendations of a managed database.
 
 ### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)

@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 {
     [Cmdlet(
         VerbsCommon.Get,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseSensitivityRecommendations",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseSensitivityRecommendation",
         DefaultParameterSetName = DataClassificationCommon.DatabaseObjectParameterSet),
         OutputType(typeof(ManagedDatabaseSensitivityClassificationModel))]
-    public class GetAzSqlInstanceDatabaseSensitivityRecommendations : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
+    public class GetAzSqlInstanceDatabaseSensitivityRecommendation : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
     {
         [Parameter(
             ParameterSetName = DataClassificationCommon.DatabaseParameterSet,
