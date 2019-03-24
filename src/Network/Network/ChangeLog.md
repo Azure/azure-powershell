@@ -18,8 +18,20 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+
+## Version 1.6.0
+* Add Alert action type for Azure Firewall Network and Application Rule Collections
+
+* Added support for conditions in RewriteRules in the Application Gateway
+    - New cmdlets added:
+        - New-AzApplicationGatewayRewriteRuleCondition
+    - Cmdlets updated with optional parameter - RuleSequence and Condition
+        - New-AzApplicationGatewayRewriteRule
+        
+## Version 1.5.0
 * Add Threat Intelligence support for Azure Firewall
 * Add Application Gateway Firewall Policy top level resource and Custom Rules
+
 
 ## Version 1.4.0
 * Add ResourceId parameter to Get-AzNetworkInterface

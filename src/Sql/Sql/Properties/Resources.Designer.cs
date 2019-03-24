@@ -340,11 +340,11 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Managed Instance Advanced Threat Protection is not defined. Please run Enable-AzSqlInstanceAdvancedDataSecurityPolicy first..
+        ///   Looks up a localized string similar to Managed Instance Advanced Data Security is not defined. Please run Enable-AzSqlInstanceAdvancedDataSecurityPolicy first..
         /// </summary>
-        internal static string ManagedInstanceAdvancedThreatProtectionIsNotDefined {
+        internal static string ManagedInstanceAdvancedDataSecurityIsNotDefined {
             get {
-                return ResourceManager.GetString("ManagedInstanceAdvancedThreatProtectionIsNotDefined", resourceCulture);
+                return ResourceManager.GetString("ManagedInstanceAdvancedDataSecurityIsNotDefined", resourceCulture);
             }
         }
         
@@ -727,7 +727,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings first..
+        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceVulnerabilityAssessmentSettings first..
         /// </summary>
         internal static string RunSetManagedDatabaseVulnerabilityAssemenSettings {
             get {
@@ -736,7 +736,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlDatabaseVulnerabilityAssessmentSettings first..
+        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlServerVulnerabilityAssessmentSettings first..
         /// </summary>
         internal static string RunSetVulnerabilityAssemenSettings {
             get {
@@ -1056,6 +1056,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase {
             get {
                 return ResourceManager.GetString("VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requested type is not supported by Vulnerability Assessment..
+        /// </summary>
+        internal static string VulnerabilityAssessmentTypeNotSupported {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentTypeNotSupported", resourceCulture);
             }
         }
         
