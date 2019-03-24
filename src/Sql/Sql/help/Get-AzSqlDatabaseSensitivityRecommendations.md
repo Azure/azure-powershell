@@ -2,11 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendations
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/Get-AzSqlDatabaseSensitivityRecommendation
 schema: 2.0.0
 ---
 
-# Get-AzSqlDatabaseSensitivityRecommendations
+# Get-AzSqlDatabaseSensitivityRecommendation
 
 ## SYNOPSIS
 Gets the recommended information types and sensitivity labels of columns in the database.
@@ -15,24 +15,24 @@ Gets the recommended information types and sensitivity labels of columns in the 
 
 ### DatabaseObjectParameterSet (Default)
 ```
-Get-AzSqlDatabaseSensitivityRecommendations -DatabaseObject <AzureSqlDatabaseModel> [-AsJob]
+Get-AzSqlDatabaseSensitivityRecommendation -DatabaseObject <AzureSqlDatabaseModel> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DatabaseParameterSet
 ```
-Get-AzSqlDatabaseSensitivityRecommendations [-ResourceGroupName] <String> [-ServerName] <String>
+Get-AzSqlDatabaseSensitivityRecommendation [-ResourceGroupName] <String> [-ServerName] <String>
  [-DatabaseName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzSqlDatabaseSensitivityRecommendations cmdlet returns the recommended information types and sensitivity labels of columns in the database.
+The Get-AzSqlDatabaseSensitivityRecommendation cmdlet returns the recommended information types and sensitivity labels of columns in the database.
 
 ## EXAMPLES
 
 ### Example 1: Get recommended information types and sensitivity labels of an Azure SQL database.
 ```powershell
-PS C:\> Get-AzSqlDatabaseSensitivityRecommendations -ResourceGroupName resourceGroup -ServerName server -DatabaseName database
+PS C:\> Get-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName resourceGroup -ServerName server -DatabaseName database
 
 ResourceGroupName : resourceGroup
 ServerName        : server
@@ -58,7 +58,7 @@ SensitivityLabels : {{
 
 ### Example 2: Get recommended information types and sensitivity labels of an Azure SQL database using Piping.
 ```powershell
-PS C:\> Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Get-AzSqlDatabaseSensitivityRecommendations
+PS C:\> Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Get-AzSqlDatabaseSensitivityRecommendation
 
 ResourceGroupName : resourceGroup
 ServerName        : server

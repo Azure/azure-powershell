@@ -47,7 +47,7 @@ PS C:\> Set-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName re
 
 ### Example 2: Set recommended information types and sensitivity labels of columns in an Azure SQL managed instance database.
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabaseSensitivityRecommendations -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database | Set-AzSqlInstanceDatabaseSensitivityClassification
+PS C:\> Get-AzSqlInstanceDatabaseSensitivityRecommendation -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database | Set-AzSqlInstanceDatabaseSensitivityClassification
 ```
 
 ### Example 3: Set information type and sensitivity label of a column in an Azure SQL managed instance database, using piping.

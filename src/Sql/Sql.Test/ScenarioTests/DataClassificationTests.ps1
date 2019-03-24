@@ -26,14 +26,14 @@ function Test-BasicDataClassificationOnSqlManagedDatabase
 	try
 	{
 		# Get recommended sensitivity labels, and verify.
-		$recommendations = Get-AzSqlInstanceDatabaseSensitivityRecommendations -ResourceGroupName $params.rgname -InstanceName $params.serverName -DatabaseName $params.databaseName
+		$recommendations = Get-AzSqlInstanceDatabaseSensitivityRecommendation -ResourceGroupName $params.rgname -InstanceName $params.serverName -DatabaseName $params.databaseName
 		Assert-AreEqual 0 ($recommendations.SensitivityLabels).count
 		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
 		Assert-AreEqual $params.serverName $recommendations.InstanceName
 		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
 
 		# Get, using pipeline, recommended sensitivity labels, and verify.
-		$recommendations = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendations 
+		$recommendations = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendation 
 		Assert-AreEqual 0 ($recommendations.SensitivityLabels).count
 		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
 		Assert-AreEqual $params.serverName $recommendations.InstanceName
@@ -54,7 +54,7 @@ function Test-BasicDataClassificationOnSqlManagedDatabase
 		Assert-AreEqual $params.databaseName $allClassifications.DatabaseName
 
 		# Classify as recommended and verify.
-		Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendations | Set-AzSqlInstanceDatabaseSensitivityClassification
+		Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendation | Set-AzSqlInstanceDatabaseSensitivityClassification
 		
 		# Remove classified columns.
 		Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityClassification | Remove-AzSqlInstanceDatabaseSensitivityClassification
@@ -80,7 +80,7 @@ function Test-DataClassificationOnSqlManagedDatabase
 	try
 	{
 		# Get recommended sensitivity labels, and verify.
-		$recommendations = Get-AzSqlInstanceDatabaseSensitivityRecommendations -ResourceGroupName $params.rgname -InstanceName $params.ServerName -DatabaseName $params.databaseName
+		$recommendations = Get-AzSqlInstanceDatabaseSensitivityRecommendation -ResourceGroupName $params.rgname -InstanceName $params.ServerName -DatabaseName $params.databaseName
 		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
 		Assert-AreEqual $params.ServerName $recommendations.InstanceName
 		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
@@ -145,7 +145,7 @@ function Test-DataClassificationOnSqlManagedDatabase
 		Assert-AreEqual $secondSensitivityLabel $classification.SensitivityLabel
 		
 		# Get, using pipeline, recommended sensitivity labels, and verify.
-		$recommendations = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendations
+		$recommendations = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendation
 		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
 		Assert-AreEqual $params.ServerName $recommendations.InstanceName
 		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
@@ -162,16 +162,16 @@ function Test-DataClassificationOnSqlManagedDatabase
 		Assert-AreEqual $params.databaseName $allClassifications.DatabaseName
 		 
 		# Get, using pipeline, recommended sensitivity labels, and verify.
-		$recommendations = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendations
+		$recommendations = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendation
 		Assert-AreEqual 3 ($recommendations.SensitivityLabels).count
 		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
 		Assert-AreEqual $params.ServerName $recommendations.InstanceName
 		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
 		
 		# Classify, using pipeline, all recommended columns, and verify.
-		Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendations | Set-AzSqlInstanceDatabaseSensitivityClassification
+		Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendation | Set-AzSqlInstanceDatabaseSensitivityClassification
 		
-		$recommendations = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendations
+		$recommendations = Get-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.ServerName -Name $params.databaseName | Get-AzSqlInstanceDatabaseSensitivityRecommendation
 		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
 		Assert-AreEqual $params.ServerName $recommendations.InstanceName
 		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
@@ -224,7 +224,7 @@ function Test-DataClassificationOnSqlDatabase
 	try
 	{
 		# Get recommended sensitivity labels, and verify.
-		$recommendations = Get-AzSqlDatabaseSensitivityRecommendations -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$recommendations = Get-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
 		Assert-AreEqual $params.serverName $recommendations.ServerName
 		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
@@ -289,7 +289,7 @@ function Test-DataClassificationOnSqlDatabase
 		Assert-AreEqual $secondSensitivityLabel $classification.SensitivityLabel
 
 		# Get, using pipeline, recommended sensitivity labels, and verify.
-		$recommendations = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendations
+		$recommendations = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation
 		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
 		Assert-AreEqual $params.serverName $recommendations.ServerName
 		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
@@ -306,16 +306,16 @@ function Test-DataClassificationOnSqlDatabase
 		Assert-AreEqual $params.databaseName $allClassifications.DatabaseName
 
 		# Get, using pipeline, recommended sensitivity labels, and verify.
-		$recommendations = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendations
+		$recommendations = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation
 		Assert-AreEqual 3 ($recommendations.SensitivityLabels).count
 		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
 		Assert-AreEqual $params.serverName $recommendations.ServerName
 		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
 
 		# Classify, using pipeline, all recommended columns, and verify.
-		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendations | Set-AzSqlDatabaseSensitivityClassification
+		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation | Set-AzSqlDatabaseSensitivityClassification
 		
-		$recommendations = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendations
+		$recommendations = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation
 		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
 		Assert-AreEqual $params.serverName $recommendations.ServerName
 		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
@@ -368,7 +368,7 @@ function Test-ErrorIsThrownWhenInvalidClassificationIsSet
 	try
 	{
 		# Get recommended sensitivity labels, and verify.
-		$recommendations = Get-AzSqlDatabaseSensitivityRecommendations -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$recommendations = Get-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		
 		$recommendation = ($recommendations.SensitivityLabels)[0]
 		$schemaName = $recommendation.SchemaName
