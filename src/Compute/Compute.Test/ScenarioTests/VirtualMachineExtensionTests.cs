@@ -47,6 +47,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCustomScriptExtensionPiping()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtensionWrongStorage()
         {
             TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionWrongStorage");
