@@ -209,7 +209,7 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Clear-AzSqlInstanceVulnerabilityAssessmentSettings', 
                'Update-AzSqlServerVulnerabilityAssessmentSettings', 
                'Get-AzSqlServerVulnerabilityAssessmentSettings', 
-               'Clear-AzSqlServerVulnerabilityAssessmentSettings'
+               'Clear-AzSqlServerVulnerabilityAssessmentSettings',
                'Get-AzSqlDatabaseSensitivityClassification',
                'Get-AzSqlInstanceDatabaseSensitivityClassification',
                'Set-AzSqlDatabaseSensitivityClassification',
