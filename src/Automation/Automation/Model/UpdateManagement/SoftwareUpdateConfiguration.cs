@@ -100,15 +100,18 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
                 foreach (var query in suc.UpdateConfiguration.Targets.AzureQueries)
                 {
                     var tags = new Dictionary<string, List<string>>();
-                    foreach (var tag in query.TagSettings.Tags)
+                    if (query.TagSettings != null)
                     {
-                        tags.Add(tag.Key, new List<string>(tag.Value));
+                        foreach (var tag in query.TagSettings.Tags)
+                        {
+                            tags.Add(tag.Key, new List<string>(tag.Value));
+                        }
                     }
 
                     var azureQueryProperty = new AzureQueryProperties
                     {
-                        Locations = query.Locations.ToArray(),
-                        Scope = query.Scope.ToArray(),
+                        Locations = query.Locations == null ? null : query.Locations.ToArray(),
+                        Scope = query.Scope == null ? null : query.Scope.ToArray(),
                         TagSettings = new TagSettings
                         {
                             Tags = tags,
