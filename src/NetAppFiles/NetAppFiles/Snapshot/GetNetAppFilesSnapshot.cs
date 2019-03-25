@@ -90,11 +90,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
         
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The pool object containing the volume to return")]
+            HelpMessage = "The volume object containing the snapshot to return")]
         [ValidateNotNullOrEmpty]
-        public PSNetAppFilesPool VolumeInputObject { get; set; }
+        public PSNetAppFilesVolume VolumeObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -110,8 +110,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
             }
             else if (ParameterSetName == ParentObjectParameterSet)
             {
-                ResourceGroupName = VolumeInputObject.ResourceGroupName;
-                var NameParts = VolumeInputObject.Name.Split('/');
+                ResourceGroupName = VolumeObject.ResourceGroupName;
+                var NameParts = VolumeObject.Name.Split('/');
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 VolumeName = NameParts[1];

@@ -112,19 +112,19 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The pool for the new volume object")]
         [ValidateNotNullOrEmpty]
-        public PSNetAppFilesPool InputObject { get; set; }
+        public PSNetAppFilesPool PoolObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ParentObjectParameterSet)
             {
-                ResourceGroupName = InputObject.ResourceGroupName;
-                Location = InputObject.Location;
-                var NameParts = InputObject.Name.Split('/');
+                ResourceGroupName = PoolObject.ResourceGroupName;
+                Location = PoolObject.Location;
+                var NameParts = PoolObject.Name.Split('/');
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }

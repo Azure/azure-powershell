@@ -64,12 +64,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
         public string ResourceId { get; set; }
 
         [Parameter(
-            ParameterSetName = ObjectParameterSet,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The account object containing the pool to return")]
+            HelpMessage = "The account object containing the pool to return",
+            ParameterSetName = ObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public PSNetAppFilesAccount AccountInputObject { get; set; }
+        public PSNetAppFilesAccount AccountObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -83,8 +83,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             }
             else if (ParameterSetName == ObjectParameterSet)
             {
-                ResourceGroupName = AccountInputObject.ResourceGroupName;
-                AccountName = AccountInputObject.Name;
+                ResourceGroupName = AccountObject.ResourceGroupName;
+                AccountName = AccountObject.Name;
             }
 
             if (Name != null)

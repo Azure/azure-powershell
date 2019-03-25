@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
         ("Remove",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesSnapshot",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesSnapshot))]
+        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
     [Alias("Remove-AnfSnapshot")]
     public class RemoveAzureRmNetAppFilesSnapshot : AzureNetAppFilesCmdletBase
     {
@@ -94,11 +94,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The volume object containing the snapshot to remove")]
         [ValidateNotNullOrEmpty]
-        public PSNetAppFilesVolume VolumeInputObject { get; set; }
+        public PSNetAppFilesVolume VolumeObject { get; set; }
 
         [Parameter(
             ParameterSetName = ObjectParameterSet,
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
             ValueFromPipeline = true,
             HelpMessage = "The snapshot object to remove")]
         [ValidateNotNullOrEmpty]
-        public PSNetAppFilesSnapshot SnapshotInputObject { get; set; }
+        public PSNetAppFilesSnapshot InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -129,8 +129,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
             }
             else if (ParameterSetName == ObjectParameterSet)
             {
-                ResourceGroupName = SnapshotInputObject.ResourceGroupName;
-                var NameParts = SnapshotInputObject.Name.Split('/');
+                ResourceGroupName = InputObject.ResourceGroupName;
+                var NameParts =InputObject.Name.Split('/');
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 VolumeName = NameParts[2];
@@ -138,8 +138,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
             }
             else if (ParameterSetName == ParentObjectParameterSet)
             {
-                ResourceGroupName = VolumeInputObject.ResourceGroupName;
-                var NameParts = VolumeInputObject.Name.Split('/');
+                ResourceGroupName = VolumeObject.ResourceGroupName;
+                var NameParts = VolumeObject.Name.Split('/');
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 VolumeName = NameParts[2];
