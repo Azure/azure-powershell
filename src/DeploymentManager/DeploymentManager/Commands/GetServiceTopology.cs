@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 0,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -41,9 +40,9 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 1,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service topology.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.DeploymentManager/serviceTopologies", nameof(ResourceGroupName))]
         public string Name { get; set; }
 
         [Parameter(
@@ -62,14 +61,14 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true,
             HelpMessage = "Service topology resource object.")]
         [ValidateNotNullOrEmpty]
-        public PSServiceTopologyResource ServiceTopology { get; set; }
+        public PSServiceTopologyResource ServiceTopologyObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.ServiceTopology != null)
+            if (this.ServiceTopologyObject != null)
             {
-                this.ResourceGroupName = this.ServiceTopology.ResourceGroupName;
-                this.Name = this.ServiceTopology.Name;
+                this.ResourceGroupName = this.ServiceTopologyObject.ResourceGroupName;
+                this.Name = this.ServiceTopologyObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {

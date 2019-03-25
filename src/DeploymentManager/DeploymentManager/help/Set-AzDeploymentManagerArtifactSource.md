@@ -18,16 +18,18 @@ Set-AzDeploymentManagerArtifactSource [-ArtifactSource] <PSArtifactSource>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzDeploymentManagerArtifactSource** cmdlet updates an artifact source with the specified artifact source object.
+The cmdlet returns the updated ArtifactSource object.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDeploymentManagerArtifactSource -ArtifactSource $artifactSourceObject
 ```
 
-{{ Add example description here }}
+This command updates an artifact source whose name and ResourceGroup match the Name and ResourceGroupName properties of the $artifactSourceObject, respectively.
+The artifact source would be updated to the properties set in the $artifactSourceObject.
 
 ## PARAMETERS
 
@@ -52,7 +54,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzContext, AzureCredential
 
 Required: False
 Position: Named

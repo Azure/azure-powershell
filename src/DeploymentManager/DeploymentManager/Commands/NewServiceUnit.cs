@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ParameterSetName = NewServiceUnit.ByTopologyAndServiceNamesParameterSet,
             HelpMessage = "The name of the serivce topology this service unit is a part of.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.DeploymentManager/serviceTopologies", nameof(ResourceGroupName))]
         public string ServiceTopologyName { get; set; }
 
         [Parameter(
@@ -71,6 +72,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ParameterSetName = NewServiceUnit.ByTopologyResourceIdAndServiceNameParameterSet,
             HelpMessage = "The name of the service this service unit is a part of.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.DeploymentManager/serviceTopologies/services", nameof(ResourceGroupName), nameof(ServiceTopologyName))]
         public string ServiceName { get; set; }
 
         [Parameter(
@@ -78,13 +80,14 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Mandatory = true, 
             HelpMessage = "The name of the service unit.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.DeploymentManager/serviceTopologies/services/serviceUnits", nameof(ResourceGroupName), nameof(ServiceTopologyName), nameof(ServiceName))]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true, 
             HelpMessage = "The location of the service unit resource.")]
         [ValidateNotNullOrEmpty]
-        [LocationCompleter]
+        [LocationCompleter("Microsoft.DeploymentManager/serviceTopologies")]
         public string Location { get; set; }
 
         [Parameter(

@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true, 
             HelpMessage = "The service topology object.")]
         [ValidateNotNullOrEmpty]
-        public PSServiceTopologyResource ServiceTopology { get; set; }
+        public PSServiceTopologyResource InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.ServiceTopology.Name, Messages.UpdateServiceTopology))
+            if (this.ShouldProcess(this.InputObject.Name, Messages.UpdateServiceTopology))
             {
-                var topologyResource = this.DeploymentManagerClient.PutServiceTopology(this.ServiceTopology);
+                var topologyResource = this.DeploymentManagerClient.PutServiceTopology(this.InputObject);
                 this.WriteObject(topologyResource);
             }
         }

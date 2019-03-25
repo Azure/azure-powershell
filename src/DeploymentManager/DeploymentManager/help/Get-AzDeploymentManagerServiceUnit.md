@@ -55,16 +55,34 @@ Get-AzDeploymentManagerServiceUnit [-ServiceUnit] <PSServiceUnitResource>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzDeploymentManagerServiceUnit** cmdlet gets a service unit in a service.
+
+Specify the service unit by its name, the service under which it was defined, the service topology name and the resource group name. Alternately, you can provide the ServiceUnit object or the ResourceId.
+
+You can modify this object locally, and then apply changes to the service unit by using the Set-AzDeploymentManagerServiceUnit cmdlet.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDeploymentManagerServiceUnit -ResourceGroupName ContosoResourceGroup -ServiceTopologyName ContosoServiceTopology -ServiceName ContosoService1  -Name ContosoService1Storage
 ```
 
-{{ Add example description here }}
+This command gets a service unit named ContosoService1Storage under a service ContosoService1 in a service topology named ContosoServiceTopology in the ContosoResourceGroup.
+
+### Example 2: Get a service unit using the resource identifier.
+```powershell
+PS C:\> Get-AzDeploymentManagerServiceUnit -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/serviceTopologies/ContosoServiceTopology/services/ContosoService1/serviceUnits/ContosoService1Storage"
+```
+
+This command gets a service unit named ContosoService1Storage under a service ContosoService1 in a service topology named ContosoServiceTopology in the ContosoResourceGroup.
+
+### Example 3: Get a service unit using the service unit object.
+```powershell
+PS C:\> Get-AzDeploymentManagerServiceUnit -ServiceUnit $serviceUnitObject
+```
+
+This command gets a service unit whose name, service name, service topology name and ResourceGroup match the Name, ServiceName, ServiceTopologyName and ResourceGroupName properties of the $serviceUnitObject, respectively.
 
 ## PARAMETERS
 
@@ -74,7 +92,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzContext, AzureCredential
 
 Required: False
 Position: Named

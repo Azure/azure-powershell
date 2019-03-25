@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the service topology this service belongs to.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.DeploymentManager/serviceTopologies", nameof(ResourceGroupName))]
         public string ServiceTopologyName { get; set; }
 
         [Parameter(
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Mandatory = true, 
             HelpMessage = "The location of the service resource.")]
         [ValidateNotNullOrEmpty]
-        [LocationCompleter]
+        [LocationCompleter("Microsoft.DeploymentManager/serviceTopologies")]
         public string Location { get; set; }
 
         [Parameter(
@@ -91,7 +92,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
 

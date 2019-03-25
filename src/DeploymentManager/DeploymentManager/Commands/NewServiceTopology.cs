@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Mandatory = true, 
             HelpMessage = "The location of the topology.")]
         [ValidateNotNullOrEmpty]
-        [LocationCompleter]
+        [LocationCompleter("Microsoft.DeploymentManager/serviceTopologies")]
         public string Location { get; set; }
 
         [Parameter(

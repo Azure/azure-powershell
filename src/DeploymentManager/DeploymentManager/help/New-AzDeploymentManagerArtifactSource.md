@@ -19,16 +19,21 @@ New-AzDeploymentManagerArtifactSource -ResourceGroupName <String> -Name <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzDeploymentManagerArtifactSource** cmdlet creates an artifact source.
+Specify the *Name*, *ResourceGroupName* and required properties.
+
+You can modify the returned object locally and then apply the changes to the artifact source by using the Set-AzDeploymentManagerArtifactSource cmdlet.
+
+The cmdlet returns an ArtifactSource object that has a ResourceId which can be referenced in the New-AzDeloymentManagerServiceTopology cmdlet so that artifacts required for a ServiceUnit resource, the Template and Parameters files, can be referenced from this location.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzDeploymentManagerArtifactSource -ResourceGroupName ContosoResourceGroup -Name ContosoArtifactSource -Location "Central US" -SasUri "https://ContosoStorage.blob.core.windows.net/ContosoArtifacts?sasParameters"
 ```
 
-{{ Add example description here }}
+Creates an artifact source in the ContosoResourceGroup with the name ContosoArtifactSource with Central US as the location of the resource. The SasUri property provides an Azure Storage SAS Uri to the storage container where the artifacts are stored.
 
 ## PARAMETERS
 
@@ -53,7 +58,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzContext, AzureCredential
 
 Required: False
 Position: Named

@@ -18,16 +18,18 @@ Set-AzDeploymentManagerStep [-Step] <PSStepResource> [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzDeploymentManagerStep** cmdlet updates a step with the specified step object.
+The cmdlet returns the updated step object.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzDeploymentManagerStep -Step $stepObject
 ```
 
-{{ Add example description here }}
+This command updates a step whose name and ResourceGroup match the Name and ResourceGroupName properties of the $stepObject, respectively.
+The step would be updated to the properties set in the $stepObject.
 
 ## PARAMETERS
 
@@ -37,7 +39,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzContext, AzureCredential
 
 Required: False
 Position: Named

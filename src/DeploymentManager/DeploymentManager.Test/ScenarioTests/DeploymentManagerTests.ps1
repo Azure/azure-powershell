@@ -364,7 +364,7 @@ function Test-Rollout
 	Validate-Rollout $getResponse $rolloutName $location $rolloutName @('Running') $serviceTopology $artifactSource
 
 	# Test Stop-Rollout
-	$canceledRollout = Stop-AzDeploymentManagerRollout -Rollout $getResponse -Force
+	$canceledRollout = Stop-AzDeploymentManagerRollout -InputObject $getResponse -Force
 	Validate-Rollout $canceledRollout $rolloutName $location $rolloutName @('Canceling', 'Canceled') $serviceTopology $artifactSource
 
 	# Wait for rollout to finish

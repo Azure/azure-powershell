@@ -33,13 +33,13 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true,
             ParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName)]
         [ValidateNotNullOrEmpty]
-        public PSArtifactSource ArtifactSource { get; set; }
+        public PSArtifactSource InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.ArtifactSource.Name, Messages.UpdateArtifactSource))
+            if (this.ShouldProcess(this.InputObject.Name, Messages.UpdateArtifactSource))
             {
-                var artifactSource = this.DeploymentManagerClient.PutArtifactSource(this.ArtifactSource);
+                var artifactSource = this.DeploymentManagerClient.PutArtifactSource(this.InputObject);
                 this.WriteObject(artifactSource);
             }
         }

@@ -31,16 +31,32 @@ Restart-AzDeploymentManagerRollout [-Rollout] <PSRollout> [-SkipSucceeded]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Restart-AzDeploymentManagerRollout** cmdlet restarts a failed rollout, and returns an object that represents that rollout with all the detailed information on the progress of the rollout.
+Specify the rollout by its name and resource group name. Alternately, you can provide the Rollout object or the ResourceId.
+Optional parameter SkipSucceeded allows you to skip all the succeeded steps in the previous run of the rollout.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Restart-AzDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout -SkipSucceeded
 ```
 
-{{ Add example description here }}
+This command restarts a rollout named ContosoRollout in the ContosoResourceGroup. The SkipSucceeded flag indicates that all the steps that already ran successfully should be skipped and the rollout should continue execution from where it last failed.
+
+### Example 2: Restart a rollout using the resource identifier
+```powershell
+PS C:\> Restart-AzDeploymentManagerRollout -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/rollouts/ContosoRollout"
+```
+
+This command restarts a rollout named ContosoRollout in the ContosoResourceGroup.
+
+### Example 3: Restart a rollout using the rollout object.
+```powershell
+PS C:\> Get-AzDeploymentManagerRollout -Rollout $rolloutObject
+```
+
+This command restarts a rollout whose name and ResourceGroup match the Name and ResourceGroupName properties of the $rolloutObject, respectively.
 
 ## PARAMETERS
 
@@ -50,7 +66,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzContext, AzureCredential
 
 Required: False
 Position: Named

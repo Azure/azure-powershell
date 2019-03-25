@@ -31,16 +31,31 @@ Get-AzDeploymentManagerArtifactSource [-ArtifactSource] <PSArtifactSource>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzDeploymentManagerArtifactSource** cmdlet gets an artifact source, and returns an object that represents that artifact source.
+Specify the artifact source by its name and resource group name. Alternately, you can provide the ArtifactSource object or the ResourceId.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get an artifact source
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDeploymentManagerArtifactSource -ResourceGroupName "ContosoResourceGroup" -Name "ContosoArtifactSource"
 ```
 
-{{ Add example description here }}
+This command gets an artifact source named ContosoArtifactSource in ContosoResourceGroup.
+
+### Example 2: Get an artifact source using the resource identifier
+```powershell
+PS C:\> Get-AzDeploymentManagerArtifactSource -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/artifactSources/ContosoArtifactSource"
+```
+
+This command gets an artifact source named ContosoArtifactSource in ContosoResourceGroup.
+
+### Example 3: Get an artifact source using an object returned by New-AzDeploymentManagerArtifactSource
+```powershell
+PS C:\> Get-AzDeploymentManagerArtifactSource -ArtifactSource $artifactSourceObject
+```
+
+This command gets an artifact source whose name and ResourceGroup match the Name and ResourceGroupName properties of the $artifactSourceObject, respectively.
 
 ## PARAMETERS
 

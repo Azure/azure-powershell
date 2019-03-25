@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 0,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -48,63 +47,57 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 1,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service topology the service unit is part of.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.DeploymentManager/serviceTopologies", nameof(ResourceGroupName))]
         public string ServiceTopologyName { get; set; }
 
         [Parameter(
             Position = 2,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service the service unit is part of.")]
         [Parameter(
             Position = 2,
             Mandatory = true, 
             ParameterSetName = RemoveServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service the service unit is part of.")]
         [Parameter(
             Position = 2,
             Mandatory = true, 
             ParameterSetName = RemoveServiceUnit.ByTopologyResourceIdAndServiceNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service the service unit is part of.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.DeploymentManager/serviceTopologies/services", nameof(ResourceGroupName), nameof(ServiceTopologyName))]
         public string ServiceName { get; set; }
 
         [Parameter(
             Position = 3,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
             Position = 2,
             Mandatory = true, 
             ParameterSetName = RemoveServiceUnit.ByServiceObjectParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
             Position = 2,
             Mandatory = true, 
             ParameterSetName = RemoveServiceUnit.ByServiceResourceIdParamSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
             Position = 3,
             Mandatory = true, 
             ParameterSetName = RemoveServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
             Position = 3,
             Mandatory = true, 
             ParameterSetName = RemoveServiceUnit.ByTopologyResourceIdAndServiceNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service unit.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.DeploymentManager/serviceTopologies/services/serviceUnits", nameof(ResourceGroupName), nameof(ServiceTopologyName), nameof(ServiceName))]
         public string Name { get; set; }
 
         [Parameter(
@@ -123,7 +116,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true,
             HelpMessage = "Service unit resource object.")]
         [ValidateNotNullOrEmpty]
-        public PSServiceUnitResource ServiceUnit { get; set; }
+        public PSServiceUnitResource InputObject { get; set; }
 
         [Parameter(
             Position = 1,
@@ -131,7 +124,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ParameterSetName = RemoveServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
             HelpMessage = "The service topology object in which the service unit should be created.")]
         [ValidateNotNullOrEmpty]
-        public PSServiceTopologyResource ServiceTopology { get; set; }
+        public PSServiceTopologyResource ServiceTopologyObject { get; set; }
 
         [Parameter(
             Position = 1,
@@ -147,7 +140,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ParameterSetName = RemoveServiceUnit.ByServiceObjectParameterSet,
             HelpMessage = "The service object in which the service unit should be created.")]
         [ValidateNotNullOrEmpty]
-        public PSServiceResource Service { get; set; }
+        public PSServiceResource ServiceObject { get; set; }
 
         [Parameter(
             Position = 1,
@@ -156,7 +149,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             HelpMessage = "The service resource identifier in which the service unit should be created.")]
         [ValidateNotNullOrEmpty]
         public string ServiceResourceId { get; set; }
-
 
         [Parameter(
             Mandatory = false, 
@@ -184,7 +176,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
                     if (this.PassThru)
                     {
-                        this.WriteObject(result);
+                        this.WriteObject(true);
                     }
                 });
         }
@@ -204,12 +196,12 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         private void ResolveParameters()
         {
-            if (this.ServiceUnit != null)
+            if (this.InputObject != null)
             {
-                this.ResourceGroupName = this.ServiceUnit.ResourceGroupName;
-                this.ServiceTopologyName = this.ServiceUnit.ServiceTopologyName;
-                this.ServiceName = this.ServiceUnit.ServiceName;
-                this.Name = this.ServiceUnit.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.ServiceTopologyName = this.InputObject.ServiceTopologyName;
+                this.ServiceName = this.InputObject.ServiceName;
+                this.Name = this.InputObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {
@@ -226,11 +218,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 this.ServiceTopologyName = tokens[1];
                 this.ServiceName = tokens[3]; 
             }
-            else if (this.Service != null)
+            else if (this.ServiceObject != null)
             {
-                this.ResourceGroupName = this.Service.ResourceGroupName;
-                this.ServiceTopologyName = this.Service.ServiceTopologyName;
-                this.ServiceName = this.Service.Name;
+                this.ResourceGroupName = this.ServiceObject.ResourceGroupName;
+                this.ServiceTopologyName = this.ServiceObject.ServiceTopologyName;
+                this.ServiceName = this.ServiceObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ServiceResourceId))
             {
@@ -245,10 +237,10 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
                 this.ServiceTopologyName = tokens[1];
             }
-            else if (this.ServiceTopology != null)
+            else if (this.ServiceTopologyObject != null)
             {
-                this.ResourceGroupName = this.ServiceTopology.ResourceGroupName;
-                this.ServiceTopologyName = this.ServiceTopology.Name;
+                this.ResourceGroupName = this.ServiceTopologyObject.ResourceGroupName;
+                this.ServiceTopologyName = this.ServiceTopologyObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ServiceTopologyResourceId))
             {

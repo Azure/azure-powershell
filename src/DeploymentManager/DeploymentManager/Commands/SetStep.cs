@@ -33,13 +33,13 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true,
             ParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName)]
         [ValidateNotNullOrEmpty]
-        public PSStepResource Step { get; set; }
+        public PSStepResource InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Step.Name, Messages.UpdateStep))
+            if (this.ShouldProcess(this.InputObject.Name, Messages.UpdateStep))
             {
-                var psStepResource = this.DeploymentManagerClient.PutStep(this.Step);
+                var psStepResource = this.DeploymentManagerClient.PutStep(this.InputObject);
                 this.WriteObject(psStepResource);
             }
         }

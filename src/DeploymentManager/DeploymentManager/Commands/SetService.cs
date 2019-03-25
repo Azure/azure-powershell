@@ -33,13 +33,13 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true,
             ParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName)]
         [ValidateNotNullOrEmpty]
-        public PSServiceResource Service { get; set; }
+        public PSServiceResource InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Service.Name, Messages.UpdateService))
+            if (this.ShouldProcess(this.InputObject.Name, Messages.UpdateService))
             {
-                var serviceResource = this.DeploymentManagerClient.PutService(this.Service);
+                var serviceResource = this.DeploymentManagerClient.PutService(this.InputObject);
                 this.WriteObject(serviceResource);
             }
         }
