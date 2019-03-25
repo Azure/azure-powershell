@@ -31,16 +31,42 @@ Get-AzDeploymentManagerRollout [-Rollout] <PSRollout> [-DefaultProfile <IAzureCo
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzDeploymentManagerRollout** cmdlet gets a rollout, and returns an object that represents that rollout with all the detailed information on the progress of the rollout.
+Specify the rollout by its name and resource group name. Alternately, you can provide the Rollout object or the ResourceId.
+
+The returned rollout object contains the services, service units and steps that have been deployed and the ones in progress. Those that are yet to be deployed are not in the response.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Get the rollout
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout 
 ```
 
-{{ Add example description here }}
+This command gets a rollout named ContosoRollout in the ContosoResourceGroup. 
+
+### Example 2 Get and display the rollout details
+```powershell
+PS C:\> Get-AzDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout -Verbose
+```
+
+This command gets a rollout named ContosoRollout in the ContosoResourceGroup. 
+The -Verbose switch displays all the rollout details hierarchically; showing the Services, the ServiceUnits and the steps under each ServiceUnit and contextual information for each step for a holistic view of the rollout.
+
+### Example 3: Get a rollout using the resource identifier
+```powershell
+PS C:\> Get-AzDeploymentManagerRollout -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/rollouts/ContosoRollout"
+```
+
+This command gets a rollout named ContosoRollout in the ContosoResourceGroup.
+
+### Example 4: Get a rollout using the rollout object.
+```powershell
+PS C:\> Get-AzDeploymentManagerRollout -Rollout $rolloutObject
+```
+
+This command gets a rollout whose name and ResourceGroup match the Name and ResourceGroupName properties of the $rolloutObject, respectively.
+
 
 ## PARAMETERS
 
@@ -50,7 +76,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzContext, AzureCredential
 
 Required: False
 Position: Named

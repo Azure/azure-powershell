@@ -19,5 +19,5 @@
 -->
 ## Current Release
 
-## Version 0.9.0-preview
+## Version 0.1.0
 * First release of 'Az.DeploymentManager' module. Parity with AzureRM.DeploymentManager module.

@@ -43,16 +43,37 @@ Get-AzDeploymentManagerService [-Service] <PSServiceResource> [-DefaultProfile <
 ```
 
 ## DESCRIPTION
+The **Get-AzDeploymentManagerService** cmdlet gets a service under a service topology, and returns an object that represents that service.
+Specify the service by its name, service topology it is in and the resource group name. Alternately, you can provide the Service object or the ResourceId.
+
+You can modify this object locally, and then apply changes to the service by using the Set-AzDeploymentManagerService cmdlet.
 {{Fill in the Description}}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
+PS C:\> Get-AzDeploymentManagerService -ResourceGroupName ContosoResourceGroup -ServiceTopologyName ContosoServiceTopology -Name ContosoService1
+```
+
+This command gets a service named ContosoService1 in a service topology named ContosoServiceTopology in the ContosoResourceGroup.
+
+### Example 2: Get a service using the resource identifier.
+```powershell
+PS C:\> Get-AzDeploymentManagerService -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/serviceTopologies/ContosoServiceTopology/services/ContosoService1"
+```
+
+This command gets a service named ContosoService1 in a service topology named ContosoServiceTopology in the ContosoResourceGroup.
+
+### Example 3: Get a service using the service object.
+```powershell
+PS C:\> Get-AzDeploymentManagerService -Service $serviceObject
 PS C:\> {{ Add example code here }}
 ```
 
+This command gets a service whose name, service topology name and ResourceGroup match the Name, ServiceTopologyName and ResourceGroupName properties of the $serviceObject, respectively.
 {{ Add example description here }}
+ 
 
 ## PARAMETERS
 
@@ -62,7 +83,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzContext, AzureCredential
 
 Required: False
 Position: Named

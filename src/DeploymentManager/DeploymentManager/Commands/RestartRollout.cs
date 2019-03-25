@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 0,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName, 
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -42,9 +41,9 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 1,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName, 
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the rollout.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.DeploymentManager/rollouts", nameof(ResourceGroupName))]
         public string Name { get; set; }
 
         [Parameter(
@@ -63,7 +62,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true, 
             HelpMessage = "The resource to be removed.")]
         [ValidateNotNullOrEmpty]
-        public PSRollout Rollout { get; set; }
+        public PSRollout InputObject { get; set; }
 
         [Parameter(
             Mandatory = false, 
@@ -88,10 +87,10 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         private PSRollout Restart()
         {
-            if (this.Rollout != null)
+            if (this.InputObject != null)
             {
-                this.ResourceGroupName = this.Rollout.ResourceGroupName;
-                this.Name = this.Rollout.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {

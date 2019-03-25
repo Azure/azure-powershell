@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 0,
             Mandatory = true,
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -41,9 +40,9 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 1,
             Mandatory = true,
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the step.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.DeploymentManager/steps", nameof(ResourceGroupName))]
         public string Name { get; set; }
 
         [Parameter(
@@ -62,14 +61,14 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true,
             HelpMessage = "The step resource object.")]
         [ValidateNotNullOrEmpty]
-        public PSStepResource Step { get; set; }
+        public PSStepResource InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.Step != null)
+            if (this.InputObject != null)
             {
-                this.ResourceGroupName = this.Step.ResourceGroupName;
-                this.Name = this.Step.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {

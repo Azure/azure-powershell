@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 0,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName, 
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 1,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName, 
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the artifact source.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -63,7 +61,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true, 
             HelpMessage = "The artifact source to be removed.")]
         [ValidateNotNullOrEmpty]
-        public PSArtifactSource ArtifactSource { get; set; }
+        public PSArtifactSource InputObject { get; set; }
 
         [Parameter(
             Mandatory = false, 
@@ -97,10 +95,10 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         private bool Delete()
         {
-            if (this.ArtifactSource != null)
+            if (this.InputObject != null)
             {
-                this.ResourceGroupName = this.ArtifactSource.ResourceGroupName;
-                this.Name = this.ArtifactSource.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {

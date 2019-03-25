@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 0,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName, 
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -42,9 +41,9 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 1,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName, 
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service topology.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.DeploymentManager/serviceTopologies", nameof(ResourceGroupName))]
         public string Name { get; set; }
 
         [Parameter(
@@ -63,7 +62,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true, 
             HelpMessage = "The resource to be removed.")]
         [ValidateNotNullOrEmpty]
-        public PSServiceTopologyResource ServiceTopology { get; set; }
+        public PSServiceTopologyResource InputObject { get; set; }
 
         [Parameter(
             Mandatory = false, 
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
                     if (this.PassThru)
                     {
-                        this.WriteObject(result);
+                        this.WriteObject(true);
                     }
                 });
         }
@@ -109,10 +108,10 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         private void ResolveParams()
         {
-            if (this.ServiceTopology != null)
+            if (this.InputObject != null)
             {
-                this.ResourceGroupName = this.ServiceTopology.ResourceGroupName;
-                this.Name = this.ServiceTopology.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {

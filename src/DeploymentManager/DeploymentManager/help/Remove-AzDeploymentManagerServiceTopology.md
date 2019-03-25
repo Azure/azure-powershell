@@ -31,16 +31,33 @@ Remove-AzDeploymentManagerServiceTopology [-ServiceTopology] <PSServiceTopologyR
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzDeploymentManagerServiceTopology** cmdlet deletes a service topology.
+
+Specify the service topology by its name and the resource group name. Alternately, you can provide the ServiceTopology object or the ResourceId.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzDeploymentManagerServiceTopology -ResourceGroupName ContosoResourceGroup -Name ContosoServiceTopology
 ```
 
-{{ Add example description here }}
+This command deletes a service topology named ContosoServiceTopology in the ContosoResourceGroup.
+
+### Example 2: Delete a service topology using the resource identifier.
+```powershell
+PS C:\> Remove-AzDeploymentManagerServiceTopology -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/serviceTopologies/ContosoServiceTopology"
+```
+
+This command deletes a service topology named ContosoServiceTopology in the ContosoResourceGroup.
+
+### Example 3: Delete a service topology using the service topology object.
+```powershell
+PS C:\> Remove-AzDeploymentManagerService -ServiceTopology $serviceTopologyObject
+```
+
+This command deletes a service topology whose name and ResourceGroup match the Name and ResourceGroupName properties of the $serviceTopologyObject, respectively.
+
 
 ## PARAMETERS
 
@@ -50,7 +67,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzContext, AzureCredential
 
 Required: False
 Position: Named

@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 0,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -41,18 +40,17 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 1,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the rollout.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.DeploymentManager/rollouts", nameof(ResourceGroupName))]
         public string Name { get; set; }
 
         [Parameter(
-            Position = 2,
             Mandatory = false, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The retry attempt of the rollout.")]
         [ValidateNotNullOrEmpty]
+        [ValidateRange(0, 32)]
         public int? RetryAttempt { get; set; }
 
         [Parameter(
@@ -71,14 +69,14 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true,
             HelpMessage = "Rollout object.")]
         [ValidateNotNullOrEmpty]
-        public PSRollout Rollout { get; set; }
+        public PSRollout RolloutObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.Rollout != null)
+            if (this.RolloutObject != null)
             {
-                this.ResourceGroupName = this.Rollout.ResourceGroupName;
-                this.Name = this.Rollout.Name;
+                this.ResourceGroupName = this.RolloutObject.ResourceGroupName;
+                this.Name = this.RolloutObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {

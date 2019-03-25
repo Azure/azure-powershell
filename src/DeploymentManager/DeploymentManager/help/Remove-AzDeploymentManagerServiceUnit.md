@@ -58,16 +58,32 @@ Remove-AzDeploymentManagerServiceUnit [-ServiceUnit] <PSServiceUnitResource> [-F
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzDeploymentManagerServiceUnit** cmdlet deletes a service unit in a service.
+
+Specify the service unit by its name, the service under which it was defined, the service topology name and the resource group name. Alternately, you can provide the ServiceUnit object or the ResourceId.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzDeploymentManagerServiceUnit -ResourceGroupName ContosoResourceGroup -ServiceTopologyName ContosoServiceTopology -ServiceName ContosoService1  -Name ContosoService1Storage
 ```
 
-{{ Add example description here }}
+This command deletes a service unit named ContosoService1Storage under a service ContosoService1 in a service topology named ContosoServiceTopology in the ContosoResourceGroup.
+
+### Example 2: Delete a service unit using the resource identifier.
+```powershell
+PS C:\> Remove-AzDeploymentManagerServiceUnit -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/serviceTopologies/ContosoServiceTopology/services/ContosoService1/serviceUnits/ContosoService1Storage"
+```
+
+This command gets a service unit named ContosoService1Storage under a service ContosoService1 in a service topology named ContosoServiceTopology in the ContosoResourceGroup.
+
+### Example 3: Delete a service unit using the service unit object.
+```powershell
+PS C:\> Remove-AzDeploymentManagerServiceUnit -ServiceUnit $serviceUnitObject
+```
+
+This command deletes a service unit whose name, service name, service topology name and ResourceGroup match the Name, ServiceName, ServiceTopologyName and ResourceGroupName properties of the $serviceUnitObject, respectively.
 
 ## PARAMETERS
 
@@ -77,7 +93,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzContext, AzureCredential
 
 Required: False
 Position: Named

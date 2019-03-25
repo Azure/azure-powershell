@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 0,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -41,9 +40,9 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 1,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the artifact source.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.DeploymentManager/artifactSources", nameof(ResourceGroupName))]
         public string Name { get; set; }
 
         [Parameter(
@@ -62,14 +61,14 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true, 
             HelpMessage = "Artifact Source object.")]
         [ValidateNotNullOrEmpty]
-        public PSArtifactSource ArtifactSource { get; set; }
+        public PSArtifactSource ArtifactSourceObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.ArtifactSource != null)
+            if (this.ArtifactSourceObject != null)
             {
-                this.ResourceGroupName = this.ArtifactSource.ResourceGroupName;
-                this.Name = this.ArtifactSource.Name;
+                this.ResourceGroupName = this.ArtifactSourceObject.ResourceGroupName;
+                this.Name = this.ArtifactSourceObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {

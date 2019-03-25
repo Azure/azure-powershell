@@ -18,16 +18,18 @@ Set-AzDeploymentManagerService [-Service] <PSServiceResource> [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzDeploymentManagerService** cmdlet updates a service with the specified service object.
+The cmdlet returns the updated service object.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzDeploymentManagerService -Service $serviceObject
 ```
 
-{{ Add example description here }}
+This command updates a service whose name, service topology name and ResourceGroup match the Name, ServiceTopologyName and ResourceGroupName properties of the $serviceObject, respectively.
+The service would be updated to the properties set in the $serviceObject.
 
 ## PARAMETERS
 
@@ -37,7 +39,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzContext, AzureCredential
 
 Required: False
 Position: Named

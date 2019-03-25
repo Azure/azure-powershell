@@ -31,16 +31,34 @@ Get-AzDeploymentManagerStep [-Step] <PSStepResource> [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzDeploymentManagerStep** cmdlet gets a step, and returns an object that represents that step.
+Specify the step by its name and resource group name. Alternately, you can provide the Step object or the ResourceId.
+
+You can modify this object locally, and then apply changes to the artifact source by using the Set-AzDeploymentManagerStep cmdlet.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get a step
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Name ContosoService1WaitStep
 ```
 
-{{ Add example description here }}
+This command gets a step named ContosoService1WaitStep in ContosoResourceGroup.
+
+### Example 2: Get a step using the resource identifier
+### Example 1
+```powershell
+PS C:\> Get-AzDeploymentManagerStep -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/steps/ContosoService1WaitStep"
+```
+
+This command gets a step named ContosoService1WaitStep in ContosoResourceGroup.
+
+### Example 3: Get a step using an object returned by New-AzDeploymentManagerStep
+```powershell
+PS C:\> Get-AzDeploymentManagerStep -Step $stepObject
+```
+
+ This command gets a step whose name and ResourceGroup match the Name and ResourceGroupName properties of the $stepObject, respectively.
 
 ## PARAMETERS
 
@@ -50,7 +68,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzContext, AzureCredential
 
 Required: False
 Position: Named

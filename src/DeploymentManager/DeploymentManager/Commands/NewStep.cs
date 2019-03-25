@@ -61,7 +61,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
 

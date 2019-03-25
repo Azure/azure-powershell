@@ -34,16 +34,19 @@ New-AzDeploymentManagerService [-ResourceGroupName] <String> -Name <String> -Loc
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzDeploymentManagerService** cmdlet creates a service under a service topology, and returns an object that represents that service.
+Specify the service by its name, service topology it is in and the resource group name. 
+
+The cmdlet returns a Service object. You can modify this object locally, and then apply changes to the service by using the Set-AzDeploymentManagerService cmdlet.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzDeploymentManagerService -ResourceGroupName ContosoResourceGroup -ServiceTopologyName ContosoServiceTopology -Name ContosoService1 -Location "Central US" -TargetLocation "East US" -TargetSubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ```
 
-{{ Add example description here }}
+Creates a new service with name ContosoService1 under service topology ContosoServiceTopology in Resource Group ContosoResourceGroup, in the location Central US. The TargetLocation property indicates that the service ContosoService1 should be deployed to the East US region in the subscription specified.
 
 ## PARAMETERS
 
@@ -53,7 +56,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzContext, AzureCredential
 
 Required: False
 Position: Named

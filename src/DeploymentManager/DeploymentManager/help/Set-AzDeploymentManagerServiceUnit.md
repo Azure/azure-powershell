@@ -18,16 +18,18 @@ Set-AzDeploymentManagerServiceUnit [-ServiceUnit] <PSServiceUnitResource>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzDeploymentManagerServiceUnit** cmdlet updates a service unit with the specified service unit object.
+The cmdlet returns the updated service unit object.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzDeploymentManagerServiceUnit -ServiceUnit $serviceUnitObject
 ```
 
-{{ Add example description here }}
+This command updates a service unit whose name, service name, service topology name and ResourceGroup match the Name, ServiceName, ServiceTopologyName and ResourceGroupName properties of the $serviceUnitObject, respectively.
+The command returns the updated service unit object.
 
 ## PARAMETERS
 
@@ -37,7 +39,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzContext, AzureCredential
 
 Required: False
 Position: Named

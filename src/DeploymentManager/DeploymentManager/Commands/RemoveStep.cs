@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 0,
             Mandatory = true,
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -42,9 +41,9 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 1,
             Mandatory = true,
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the step.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.DeploymentManager/steps", nameof(ResourceGroupName))]
         public string Name { get; set; }
 
         [Parameter(
@@ -63,7 +62,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true,
             HelpMessage = "The step to be removed.")]
         [ValidateNotNullOrEmpty]
-        public PSStepResource Step { get; set; }
+        public PSStepResource InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -90,17 +89,17 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
                     if (this.PassThru)
                     {
-                        this.WriteObject(result);
+                        this.WriteObject(true);
                     }
                 });
         }
 
         private bool Delete()
         {
-            if (this.Step != null)
+            if (this.InputObject != null)
             {
-                this.ResourceGroupName = this.Step.ResourceGroupName;
-                this.Name = this.Step.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {

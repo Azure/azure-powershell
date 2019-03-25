@@ -18,16 +18,18 @@ Set-AzDeploymentManagerServiceTopology [-ServiceTopology] <PSServiceTopologyReso
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzDeploymentManagerServiceTopology** cmdlet updates a service topology with the specified service topology object.
+The cmdlet returns the updated service topology object.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzDeploymentManagerService -ServiceTopology $serviceTopologyObject
 ```
 
-{{ Add example description here }}
+This command updates a service topology whose name and ResourceGroup match the Name and ResourceGroupName properties of the $serviceTopologyObject, respectively.
+The command returns the updated service topology object.
 
 ## PARAMETERS
 
@@ -37,7 +39,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzContext, AzureCredential
 
 Required: False
 Position: Named

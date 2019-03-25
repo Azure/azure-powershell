@@ -31,16 +31,32 @@ Remove-AzDeploymentManagerArtifactSource [-ArtifactSource] <PSArtifactSource> [-
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzDeploymentManagerArtifactSource** cmdlet deletes an artifact source
+Specify the artifact source by its name and resource group name. Alternately, you can provide the ArtifactSource object or the ResourceId.
 
 ## EXAMPLES
 
+### Example 1: Delete an artifact source
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzDeploymentManagerArtifactSource -ResourceGroupName "ContosoResourceGroup" -Name "ContosoArtifactSource"
 ```
 
-{{ Add example description here }}
+This command deletes an artifact source named ContosoArtifactSource in ContosoResourceGroup.
+
+### Example 2: Delete an artifact source using the resource identifier
+```powershell
+PS C:\> Remove-AzDeploymentManagerArtifactSource -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/artifactSources/ContosoArtifactSource"
+```
+
+This command deletes an artifact source named ContosoArtifactSource in ContosoResourceGroup.
+
+### Example 3: Delete an artifact source using an object
+```powershell
+PS C:\> Remove-AzDeploymentManagerArtifactSource -ArtifactSource $artifactSourceObject
+```
+
+This command deletes an artifact source whose name and ResourceGroup match the Name and ResourceGroupName properties of the $artifactSourceObject, respectively.
 
 ## PARAMETERS
 
@@ -65,7 +81,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzContext, AzureCredential
 
 Required: False
 Position: Named

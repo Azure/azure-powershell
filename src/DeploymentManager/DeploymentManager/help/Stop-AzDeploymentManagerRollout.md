@@ -31,16 +31,33 @@ Stop-AzDeploymentManagerRollout [-Rollout] <PSRollout> [-Force] [-DefaultProfile
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Stop-AzDeploymentManagerRollout** cmdlet stops a rollout in progress and returns an object that represents the current state of the rollout.
+Specify the rollout by its name and resource group name. Alternately, you can provide the Rollout object or the ResourceId.
+
+Note that once a rollout is stopped, it cannot be resumed or restarted. You can only create a new rollout.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Stop-AzDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout -SkipSucceeded
 ```
 
-{{ Add example description here }}
+This command stops a rollout named ContosoRollout in the ContosoResourceGroup. 
+
+### Example 2: Stop a rollout using the resource identifier
+```powershell
+PS C:\> Restart-AzDeploymentManagerRollout -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/rollouts/ContosoRollout"
+```
+
+This command stops a rollout named ContosoRollout in the ContosoResourceGroup.
+
+### Example 3: Stop a rollout using the rollout object.
+```powershell
+PS C:\> Get-AzDeploymentManagerRollout -Rollout $rolloutObject
+```
+
+This command stops a rollout whose name and ResourceGroup match the Name and ResourceGroupName properties of the $rolloutObject, respectively.
 
 ## PARAMETERS
 
@@ -50,7 +67,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzContext, AzureCredential
 
 Required: False
 Position: Named
