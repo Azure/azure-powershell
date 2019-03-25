@@ -21,7 +21,7 @@ function Test-VolumeCrud
     $currentSub = (Get-AzureRmContext).Subscription	
     $subsid = $currentSub.SubscriptionId
 
-    $resourceGroup = "pws-sdk-tests-rg-1"
+    $resourceGroup = "pws-sdk-tests-rg-2"
     $accName = "pws-sdk-acc-1"
     $poolName = "pws-sdk-pool-1"
     $volName1 = "pws-sdk-vol-1"
@@ -30,7 +30,7 @@ function Test-VolumeCrud
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = "westus2"
+    $resourceLocation = "eastus"
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -118,14 +118,14 @@ function Test-VolumePipelines
     $currentSub = (Get-AzureRmContext).Subscription	
     $subsid = $currentSub.SubscriptionId
 
-    $resourceGroup = "pws-sdk-tests-rg-1"
+    $resourceGroup = "pws-sdk-tests-rg-2"
     $accName = "pws-sdk-acc-1"
     $poolName = "pws-sdk-pool-1"
     $volName1 = "pws-sdk-vol-1"
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = "westus2"
+    $resourceLocation = "eastus"
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -154,9 +154,10 @@ function Test-VolumePipelines
         Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
         
         # modify volume by piping from volume
-        $retrievedVolume = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -Name $volName1 | Update-AnfVolume -ServiceLevel "Standard"
-        Assert-AreEqual "Standard" $retrievedVolume.ServiceLevel
-		
+        $retrievedVolume = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -Name $volName1 | Update-AnfVolume -UsageThreshold $doubleUsage
+        Assert-AreEqual "Premium" $retrievedVolume.ServiceLevel  # unchanged/not part of the patch
+		Assert-AreEqual $doubleUsage $retrievedVolume.usageThreshold
+
         # delete the volumes by piping from volume get
         Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -Name $volName1 | Remove-AnfVolume
 

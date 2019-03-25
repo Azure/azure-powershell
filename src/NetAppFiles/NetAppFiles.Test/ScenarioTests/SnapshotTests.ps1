@@ -21,7 +21,7 @@ function Test-SnapshotCrud
     $currentSub = (Get-AzureRmContext).Subscription	
     $subsid = $currentSub.SubscriptionId
 
-    $resourceGroup = "pws-sdk-tests-rg-1"
+    $resourceGroup = "pws-sdk-tests-rg-2"
     $accName = "pws-sdk-acc-2"
     $poolName = "pws-sdk-pool-1"
     $volName = "pws-sdk-vol-1"
@@ -30,7 +30,7 @@ function Test-SnapshotCrud
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = "westus2"
+    $resourceLocation = "eastus"
     $subnetName = "default"
     $standardPoolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -115,7 +115,7 @@ function Test-SnapshotPipelines
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = "westus2"
+    $resourceLocation = "eastus"
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"

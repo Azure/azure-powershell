@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         "Remove",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolume",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesVolume))]
+        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
     [Alias("Remove-AnfVolume")]
     public class RemoveAzureRmNetAppFilesVolume : AzureNetAppFilesCmdletBase
     {
@@ -85,11 +85,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The pool object containing the volume to remove")]
         [ValidateNotNullOrEmpty]
-        public PSNetAppFilesPool PoolInputObject { get; set; }
+        public PSNetAppFilesPool PoolObject { get; set; }
 
         [Parameter(
             ParameterSetName = ObjectParameterSet,
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             ValueFromPipeline = true,
             HelpMessage = "The volume object to remove")]
         [ValidateNotNullOrEmpty]
-        public PSNetAppFilesVolume VolumeInputObject { get; set; }
+        public PSNetAppFilesVolume InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -119,16 +119,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             else if (ParameterSetName == ObjectParameterSet)
             {
-                ResourceGroupName = VolumeInputObject.ResourceGroupName;
-                var NameParts = VolumeInputObject.Name.Split('/');
+                ResourceGroupName = InputObject.ResourceGroupName;
+                var NameParts = InputObject.Name.Split('/');
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 Name = NameParts[2];
             }
             else if (ParameterSetName == ParentObjectParameterSet)
             {
-                ResourceGroupName = PoolInputObject.ResourceGroupName;
-                var NameParts = PoolInputObject.Name.Split('/');
+                ResourceGroupName = PoolObject.ResourceGroupName;
+                var NameParts = PoolObject.Name.Split('/');
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }

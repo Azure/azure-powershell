@@ -105,11 +105,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The pool object containing the volume to update")]
         [ValidateNotNullOrEmpty]
-        public PSNetAppFilesAccount PoolInputObject { get; set; }
+        public PSNetAppFilesPool PoolObject { get; set; }
 
         [Parameter(
             ParameterSetName = ObjectParameterSet,
@@ -132,8 +132,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             else if (ParameterSetName == ParentObjectParameterSet)
             {
-                ResourceGroupName = PoolInputObject.ResourceGroupName;
-                Location = PoolInputObject.Location;
+                ResourceGroupName = PoolObject.ResourceGroupName;
+                Location = PoolObject.Location;
                 var NameParts = InputObject.Name.Split('/');
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
