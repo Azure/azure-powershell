@@ -257,6 +257,156 @@ $query1Scope = @(
    
  }
 
+ function Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutTags
+{
+    $name = "DG-suc-04"
+    $startTime = ([DateTime]::Now).AddMinutes(10)
+    $s = New-AzAutomationSchedule -ResourceGroupName $rg `
+                                       -AutomationAccountName $aa `
+                                       -Name $name `
+                                       -Description test-OneTime `
+                                       -OneTime `
+                                       -StartTime $startTime `
+                                       -ForUpdate
+
+$query1Scope = @(
+        "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-wcus"
+    )
+
+    $query1Location =@("Japan East", "UK South")
+    $query1FilterOperator = "All"
+
+    $azq = New-AzAutomationUpdateManagementAzureQuery -ResourceGroupName $rg `
+                                       -AutomationAccountName $aa `
+                                       -Scope $query1Scope `
+                                       -Locaton $query1Location `
+                                       -FilterOperator $query1FilterOperator
+
+   $AzureQueries = @($azq)
+
+    $suc = New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg `
+                                                             -AutomationAccountName $aa `
+                                                             -Schedule $s `
+                                                             -Window `
+                                                             -Duration (New-TimeSpan -Hours 2) `
+                                                             -AzureQuery $AzureQueries `
+                                                             -IncludedUpdateClassification Security,Critical 
+
+
+    Assert-NotNull $suc "New-AzureRmAutomationSoftwareUpdateConfiguration returned null"
+    Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
+
+    $sucGet = Get-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName $rg `
+                                                                -AutomationAccountName $aa `
+                                                                -Name $name
+  
+    Assert-NotNull $sucGet "Get-AzureRmAutomationSoftwareUpdateConfiguration returned null"
+    Assert-AreEqual $sucGet.Name $name "Name of created software update configuration didn't match given name"
+    Assert-NotNull $sucGet.UpdateConfiguration "UpdateConfiguration of the software update configuration object is null"
+    Assert-NotNull $sucGet.UpdateConfiguration.Targets "Update targets object is null"
+    Assert-NotNull $sucGet.UpdateConfiguration.Targets.AzureQueries "Update targets  azureQueries list  null"	
+    Assert-AreEqual $sucGet.UpdateConfiguration.Targets.AzureQueries.Count  1 "Update targets  doesn't have the correct number of azure queries"
+   
+ }
+
+ function Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutLocations
+{
+    $name = "DG-suc-04"
+    $startTime = ([DateTime]::Now).AddMinutes(10)
+    $s = New-AzAutomationSchedule -ResourceGroupName $rg `
+                                       -AutomationAccountName $aa `
+                                       -Name $name `
+                                       -Description test-OneTime `
+                                       -OneTime `
+                                       -StartTime $startTime `
+                                       -ForUpdate
+
+$query1Scope = @(
+        "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-wcus"
+    )
+
+    $query1FilterOperator = "All"
+    $tag1 = @{"tag1"= @("tag1Value1", "tag1Value2")}
+    $tag1.add("tag2", "tag2Value")
+    $azq = New-AzAutomationUpdateManagementAzureQuery -ResourceGroupName $rg `
+                                       -AutomationAccountName $aa `
+                                       -Scope $query1Scope `
+                                       -FilterOperator $query1FilterOperator `
+                                       -Tag $tag1
+
+   $AzureQueries = @($azq)
+
+    $suc = New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg `
+                                                             -AutomationAccountName $aa `
+                                                             -Schedule $s `
+                                                             -Window `
+                                                             -Duration (New-TimeSpan -Hours 2) `
+                                                             -AzureQuery $AzureQueries `
+                                                             -IncludedUpdateClassification Security,Critical 
+
+
+    Assert-NotNull $suc "New-AzureRmAutomationSoftwareUpdateConfiguration returned null"
+    Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
+
+    $sucGet = Get-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName $rg `
+                                                                -AutomationAccountName $aa `
+                                                                -Name $name
+  
+    Assert-NotNull $sucGet "Get-AzureRmAutomationSoftwareUpdateConfiguration returned null"
+    Assert-AreEqual $sucGet.Name $name "Name of created software update configuration didn't match given name"
+    Assert-NotNull $sucGet.UpdateConfiguration "UpdateConfiguration of the software update configuration object is null"
+    Assert-NotNull $sucGet.UpdateConfiguration.Targets "Update targets object is null"
+    Assert-NotNull $sucGet.UpdateConfiguration.Targets.AzureQueries "Update targets  azureQueries list  null"
+    Assert-AreEqual $sucGet.UpdateConfiguration.Targets.AzureQueries.Count  1 "Update targets  doesn't have the correct number of azure queries"
+   
+ }
+
+ function Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutLocationsAndTags
+{
+    $name = "DG-suc-04"
+    $startTime = ([DateTime]::Now).AddMinutes(10)
+    $s = New-AzAutomationSchedule -ResourceGroupName $rg `
+                                       -AutomationAccountName $aa `
+                                       -Name $name `
+                                       -Description test-OneTime `
+                                       -OneTime `
+                                       -StartTime $startTime `
+                                       -ForUpdate
+
+$query1Scope = @(
+        "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-wcus"
+    )
+    $azq = New-AzAutomationUpdateManagementAzureQuery -ResourceGroupName $rg `
+                                       -AutomationAccountName $aa `
+                                       -Scope $query1Scope `
+
+   $AzureQueries = @($azq)
+
+    $suc = New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg `
+                                                             -AutomationAccountName $aa `
+                                                             -Schedule $s `
+                                                             -Window `
+                                                             -Duration (New-TimeSpan -Hours 2) `
+                                                             -AzureQuery $AzureQueries `
+                                                             -IncludedUpdateClassification Security,Critical 
+
+
+    Assert-NotNull $suc "New-AzureRmAutomationSoftwareUpdateConfiguration returned null"
+    Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
+
+    $sucGet = Get-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName $rg `
+                                                                -AutomationAccountName $aa `
+                                                                -Name $name
+  
+    Assert-NotNull $sucGet "Get-AzureRmAutomationSoftwareUpdateConfiguration returned null"
+    Assert-AreEqual $sucGet.Name $name "Name of created software update configuration didn't match given name"
+    Assert-NotNull $sucGet.UpdateConfiguration "UpdateConfiguration of the software update configuration object is null"
+    Assert-NotNull $sucGet.UpdateConfiguration.Targets "Update targets object is null"
+    Assert-NotNull $sucGet.UpdateConfiguration.Targets.AzureQueries "Update targets  azureQueries list  null"
+    Assert-AreEqual $sucGet.UpdateConfiguration.Targets.AzureQueries.Count  1 "Update targets  doesn't have the correct number of azure queries"
+   
+ }
+
  <#
 .SYNOPSIS
 Tests create new automation variable with string value.

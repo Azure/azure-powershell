@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
                             source = this.PreTaskRunbookName,
                             parameters = TagsConversionHelper.CreateTagDictionary(this.PreTaskRunbookParameter, true)
                         },
-                        PostTask = this.PreTaskRunbookName == null ? null : new Task
+                        PostTask = this.PostTaskRunbookName == null ? null : new Task
                         {
                             source = this.PostTaskRunbookName,
                             parameters = TagsConversionHelper.CreateTagDictionary(this.PostTaskRunbookParameter, true)
