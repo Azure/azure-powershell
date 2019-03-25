@@ -21,19 +21,19 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridDomain",
-        DefaultParameterSetName = DomainNameParameterSet,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridDomainTopic",
+        DefaultParameterSetName = DomainTopicNameParameterSet,
         SupportsShouldProcess = true),
     OutputType(typeof(bool))]
 
-    public class RemoveAzureEventGridDomain : AzureEventGridCmdletBase
+    public class RemoveAzureEventGridDomainTopic : AzureEventGridCmdletBase
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = DomainNameParameterSet)]
+            ParameterSetName = DomainTopicNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
@@ -41,21 +41,31 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 1,
             HelpMessage = EventGridConstants.DomainNameHelp,
-            ParameterSetName = DomainNameParameterSet)]
+            ParameterSetName = DomainTopicNameParameterSet)]
         [ResourceNameCompleter("Microsoft.EventGrid/domains", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
-        [Alias("DomainName")]
+        public string DomainName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = false,
+            Position = 2,
+            HelpMessage = EventGridConstants.DomainTopicNameHelp,
+            ParameterSetName = DomainTopicNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/domains/topics", nameof(ResourceGroupName), nameof(DomainName))]
+        [ValidateNotNullOrEmpty]
+        [Alias("DomainTopicName")]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = EventGridConstants.DomainResourceIdHelp,
-            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+            HelpMessage = EventGridConstants.DomainTopicResourceIdHelp,
+            ParameterSetName = ResourceIdDomainTopicParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -63,37 +73,40 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = EventGridConstants.DomainInputObjectHelp,
-            ParameterSetName = DomainInputObjectParameterSet)]
+            HelpMessage = EventGridConstants.DomainTopicInputObjectHelp,
+            ParameterSetName = DomainTopicInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public PSDomain InputObject { get; set; }
+        public PSDomainTopic InputObject { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, $"Remove domain {this.Name} in resource group {this.ResourceGroupName}"))
+            if (this.ShouldProcess(this.Name, $"Remove domain topic {this.Name} under domain {this.DomainName} in resource group {this.ResourceGroupName}"))
             {
                 string resourceGroupName = string.Empty;
                 string domainName = string.Empty;
+                string domainTopicName = string.Empty;
 
-                if (!string.IsNullOrEmpty(this.Name))
+                if (!string.IsNullOrEmpty(this.DomainName) && !string.IsNullOrEmpty(this.Name))
                 {
                     resourceGroupName = this.ResourceGroupName;
-                    domainName = this.Name;
+                    domainName = this.DomainName;
+                    domainTopicName = this.Name;
                 }
                 else if (!string.IsNullOrEmpty(this.ResourceId))
                 {
-                    EventGridUtils.GetResourceGroupNameAndDomainName(this.ResourceId, out resourceGroupName, out domainName);
+                    EventGridUtils.GetResourceGroupNameAndDomainNameAndDomainTopicName(this.ResourceId, out resourceGroupName, out domainName, out domainTopicName);
                 }
                 else if (this.InputObject != null)
                 {
                     resourceGroupName = this.InputObject.ResourceGroupName;
                     domainName = this.InputObject.DomainName;
+                    domainTopicName = this.InputObject.DomainTopicName;
                 }
 
-                this.Client.DeleteDomain(resourceGroupName, domainName);
+                this.Client.DeleteDomainTopic(resourceGroupName, domainName, domainTopicName);
                 if (this.PassThru)
                 {
                     this.WriteObject(true);

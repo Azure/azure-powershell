@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
@@ -31,7 +32,8 @@ namespace Microsoft.Azure.Commands.EventGrid
         VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridDomain",
         DefaultParameterSetName = ResourceGroupNameParameterSet),
-    OutputType(typeof(PSDomain), typeof(PSDomainListInstance))]
+    OutputType(typeof(PSDomain),
+    typeof(PSDomainListInstance))]
 
     public class GetAzureEventGridDomain : AzureEventGridCmdletBase
     {
@@ -57,6 +59,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Position = 1,
             HelpMessage = EventGridConstants.DomainNameHelp,
             ParameterSetName = DomainNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/domains", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         [Alias("DomainName")]
         public string Name { get; set; }
@@ -70,10 +73,62 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = DomainNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ODataQuery { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.TopHelp,
+            ParameterSetName = DomainNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.TopHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.TopHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [ValidateRange(1, 100)]
+        public int Top { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.NextLinkHelp,
+            ParameterSetName = NextLinkParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string NextLink { get; set; }
+
         public override void ExecuteCmdlet()
         {
             string resourceGroupName = string.Empty;
             string domainName = string.Empty;
+            IEnumerable<Domain> domainsList;
+            string newNextLink = null;
+            int? providedTop = null;
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(this.Top)))
+            {
+                providedTop = this.Top;
+            }
 
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
@@ -90,7 +145,26 @@ namespace Microsoft.Azure.Commands.EventGrid
                 resourceGroupName = this.ResourceGroupName;
             }
 
-            if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(domainName))
+            // Other parameters should be null or ignored if this.NextLink is specified.
+            if (!string.IsNullOrEmpty(this.NextLink))
+            {
+                // Get Next page of domains. Get the proper next API to be called based on the nextLink.
+                Uri uri = new Uri(this.NextLink);
+                string path = uri.AbsolutePath;
+
+                if (path.IndexOf("/resourceGroups/", StringComparison.OrdinalIgnoreCase) != -1)
+                {
+                    (domainsList, newNextLink) = this.Client.ListDomainsByResourceGroupNext(this.NextLink);
+                }
+                else
+                {
+                    (domainsList, newNextLink) = this.Client.ListDomainBySubscriptionNext(this.NextLink);
+                }
+
+                PSDomainListPagedInstance pSDomainListPagedInstance = new PSDomainListPagedInstance(domainsList, newNextLink);
+                this.WriteObject(pSDomainListPagedInstance, true);
+            }
+            else if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(domainName))
             {
                 // Get details of the Event Grid domain
                 Domain domain = this.Client.GetDomain(resourceGroupName, domainName);
@@ -100,28 +174,16 @@ namespace Microsoft.Azure.Commands.EventGrid
             else if (!string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(domainName))
             {
                 // List all Event Grid domains in the given resource group
-                IEnumerable<Domain> domainsList = this.Client.ListDomainsByResourceGroup(resourceGroupName);
-
-                List<PSDomainListInstance> psDomainsList = new List<PSDomainListInstance>();
-                foreach (Domain domain in domainsList)
-                {
-                    psDomainsList.Add(new PSDomainListInstance(domain));
-                }
-
-                this.WriteObject(psDomainsList, true);
+                (domainsList, newNextLink) = this.Client.ListDomainsByResourceGroup(resourceGroupName, this.ODataQuery, providedTop);
+                PSDomainListPagedInstance pSDomainListPagedInstance = new PSDomainListPagedInstance(domainsList, newNextLink);
+                this.WriteObject(pSDomainListPagedInstance, true);
             }
-            else
+            else if (string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(domainName))
             {
                 // List all Event Grid domains in the given subscription
-                IEnumerable<Domain> domainsList = this.Client.ListDomainsBySubscription();
-
-                List<PSDomainListInstance> psDomainsList = new List<PSDomainListInstance>();
-                foreach (Domain domain in domainsList)
-                {
-                    psDomainsList.Add(new PSDomainListInstance(domain));
-                }
-
-                this.WriteObject(psDomainsList, true);
+                (domainsList, newNextLink) = this.Client.ListDomainsBySubscription(this.ODataQuery, providedTop);
+                PSDomainListPagedInstance pSDomainListPagedInstance = new PSDomainListPagedInstance(domainsList, newNextLink);
+                this.WriteObject(pSDomainListPagedInstance, true);
             }
         }
     }

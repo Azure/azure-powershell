@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Commands.EventGrid
         VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridDomainTopic",
         DefaultParameterSetName = DomainTopicNameParameterSet),
-    OutputType(typeof(PSDomainTopic), typeof(PSDomainTopicListInstance))]
+    OutputType(typeof(PSDomainTopic),
+    typeof(PSDomainTopicListInstance))]
 
     public class GetAzureEventGridDomainTopic : AzureEventGridCmdletBase
     {
@@ -51,7 +53,9 @@ namespace Microsoft.Azure.Commands.EventGrid
             Position = 1,
             HelpMessage = EventGridConstants.DomainNameHelp,
             ParameterSetName = DomainTopicNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/domains", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
+        [Alias(AliasDomain)]
         public string DomainName { get; set; }
 
         [Parameter(
@@ -59,52 +63,90 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.DomainTopicNameHelp,
             ParameterSetName = DomainTopicNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/domains/topics", nameof(ResourceGroupName), nameof(DomainName))]
         [ValidateNotNullOrEmpty]
-        public string DomainTopicName { get; set; }
+        [Alias(AliasDomainTopicName)]
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.DomainOrDomainTopicResourceIdHelp,
-            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+            ParameterSetName = ResourceIdDomainTopicParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = DomainTopicNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = ResourceIdDomainTopicParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ODataQuery { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = DomainTopicNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ODataQueryHelp,
+            ParameterSetName = ResourceIdDomainTopicParameterSet)]
+        [ValidateRange(1, 100)]
+        public int Top { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.NextLinkHelp,
+            ParameterSetName = NextLinkParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string NextLink { get; set; }
 
         public override void ExecuteCmdlet()
         {
             string resourceGroupName = string.Empty;
             string domainName = string.Empty;
             string domainTopicName = string.Empty;
+            string newNextLink = null;
+            IEnumerable<DomainTopic> domainTopicsList;
+            List <PSDomainTopicListInstance> psDomainTopicsList = new List<PSDomainTopicListInstance>();
+            int? providedTop = null;
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(this.Top)))
+            {
+                providedTop = this.Top;
+            }
 
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
                 EventGridUtils.GetResourceGroupNameAndDomainNameAndDomainTopicName(this.ResourceId, out resourceGroupName, out domainName, out domainTopicName);
             }
-            else if (!string.IsNullOrEmpty(this.DomainName))
+            else
             {
-                // If Domain name is provided, ResourceGroup should be non-empty as well
                 resourceGroupName = this.ResourceGroupName;
                 domainName = this.DomainName;
-
-                if (!string.IsNullOrEmpty(this.DomainTopicName))
-                {
-                    domainTopicName = this.DomainTopicName;
-                }
-            }
-            else if (!string.IsNullOrEmpty(this.DomainTopicName))
-            {
-                // If Domain topic name is provided, ResourceGroup and domain name should be non-empty as well
-                resourceGroupName = this.ResourceGroupName;
-                domainName = this.DomainName;
-                domainTopicName = this.DomainTopicName;
-            }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
-            {
-                resourceGroupName = this.ResourceGroupName;
+                domainTopicName = this.Name;
             }
 
-            if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(domainName))
+            // Other parameters should be null or ignored if this.NextLink is specified.
+            if (!string.IsNullOrEmpty(this.NextLink))
+            {
+                // Get Next page of domain topics.
+                (domainTopicsList, newNextLink) = this.Client.ListDomainTopicsByDomainNext(this.NextLink);
+
+                PSDomainTopicListPagedInstance pSDomainTopicListPagedInstance = new PSDomainTopicListPagedInstance(domainTopicsList, newNextLink);
+                this.WriteObject(pSDomainTopicListPagedInstance, true);
+            }
+            else if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(domainName))
             {
                 if (!string.IsNullOrEmpty(domainTopicName))
                 {
@@ -116,15 +158,9 @@ namespace Microsoft.Azure.Commands.EventGrid
                 else
                 {
                     // List all Event Grid domain topics in the given resource group/domain
-                    IEnumerable<DomainTopic> domainTopicsList = this.Client.ListDomainTopicsByDomain(resourceGroupName, domainName);
-
-                    List<PSDomainTopicListInstance> psDomainTopicsList = new List<PSDomainTopicListInstance>();
-                    foreach (DomainTopic domainTopic in domainTopicsList)
-                    {
-                        psDomainTopicsList.Add(new PSDomainTopicListInstance(domainTopic));
-                    }
-
-                    this.WriteObject(psDomainTopicsList, true);
+                    (domainTopicsList, newNextLink) = this.Client.ListDomainTopicsByDomain(resourceGroupName, domainName, this.ODataQuery, providedTop);
+                    PSDomainTopicListPagedInstance pSDomainTopicListPagedInstance = new PSDomainTopicListPagedInstance(domainTopicsList, newNextLink);
+                    this.WriteObject(pSDomainTopicListPagedInstance, true);
                 }
             }
         }

@@ -19,6 +19,20 @@
 -->
 ## Upcoming Release
 
+* Updated to use the 2019-02-01-preview API version.
+* New commands:
+    - New-AzureRmEventGridDomainTopic:
+        - Creates a new Azure Event Grid Domain Topic.
+    - Remove-AzureRmEventGridDomainTopic:
+        - Removes an existing Azure Event Grid Domain Topic.
+
+* Update the following cmdlets to support new scenarios in 2019-02-01-preview API version
+    - New-AzureRmEventGridSubscription/Update-AzureRmEventGridSubscription:
+        - Add new enum for servicebusqueue as destination.
+        - Disallow usage of "All" in -IncludedEventType option and replace it with $null
+    - Get-AzEventGridTopic, Get-AzEventGridDomain, Get-AzEventGridDomainTopic, Get-AzEventGridSubscription:
+        - Add new optional parameters (Top, ODataQuery and NextLink) to support results pagination.
+
 ## Version 1.1.0
 * Updated to use the 2019-01-01 API version.
 * Update the following cmdlets to support new scenario in 2019-01-01 API version

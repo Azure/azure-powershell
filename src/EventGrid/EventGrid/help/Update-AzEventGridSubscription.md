@@ -77,28 +77,28 @@ Update the properties of an Event Grid event subscription. This can be used to u
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> Update-AzEventGridSubscription -EventSubscriptionName ES1 -TopicName Topic1 -ResourceGroup MyResourceGroupName -Endpoint https://requestb.in/1kxxoui1
 ```
 
 Updates the endpoint of the event subscription \`ES1\` for topic \`Topic1\` in resource group \`MyResourceGroupName\` to \`https://requestb.in/1kxxoui1\`
 
 ### Example 2
-```
+```powershell
 PS C:\> Get-AzEventGridSubscription -EventSubscriptionName ES1 -TopicName Topic1 -ResourceGroup MyResourceGroupName | Update-AzEventGridSubscription -Endpoint https://requestb.in/1kxxoui1
 ```
 
 Updates the endpoint of the event subscription \`ES1\` for topic \`Topic1\` in resource group \`MyResourceGroupName\` to \`https://requestb.in/1kxxoui1\`
 
 ### Example 3
-```
+```powershell
 PS C:\> Update-AzEventGridSubscription -EventSubscriptionName ES1 -ResourceId "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace" -Endpoint https://requestb.in/1kxxoui1 -SubjectEndsWith "jpg"
 ```
 
 Updates the properties of the event subscription \`ES1\` for the EventHub namespace ContosoNamespace with the new endpoint as \`https://requestb.in/1kxxoui1\` and the new SubjectEndsWith filter as \`jpg\`
 
 ### Example 4
-```
+```powershell
 PS C:\> $labels = "Finance", "HR"
 PS C:\> Update-AzEventGridSubscription -EventSubscriptionName ES1 -ResourceGroup MyResourceGroupName -Label $labels
 ```
@@ -206,7 +206,7 @@ This can be webhook or eventhub
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: webhook, eventhub, storagequeue, hybridconnection
+Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue
 
 Required: False
 Position: Named

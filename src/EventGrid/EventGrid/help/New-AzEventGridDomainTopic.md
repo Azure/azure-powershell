@@ -1,53 +1,40 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/remove-azeventgriddomain
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/new-azeventgriddomaintopic
 schema: 2.0.0
 ---
 
-# Remove-AzEventGridDomain
+# New-AzEventGridDomainTopic
 
 ## SYNOPSIS
-Removes an Azure Event Grid Domain.
+Creates a new Azure Event Grid Domain Topic.
 
 ## SYNTAX
 
-### DomainNameParameterSet (Default)
 ```
-Remove-AzEventGridDomain [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
+New-AzEventGridDomainTopic [-ResourceGroupName] <String> [-DomainName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceIdEventSubscriptionParameterSet
-```
-Remove-AzEventGridDomain [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DomainInputObjectParameterSet
-```
-Remove-AzEventGridDomain [-InputObject] <PSDomain> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Removes an Azure Event Grid Domain.
+Creates a new Azure Event Grid Domain Topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1
+PS C:\> New-AzEventGridDomainTopic -ResourceGroupName MyResourceGroupName -DomainName Domain1 -Name Topic1
 ```
 
-Removes the Event Grid Domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+Creates an Event Grid Domain Topic \`Topic1\` in Domain \`Domain1\` under resource group \`MyResourceGroupName\`.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/Domains/Domain1" | Remove-AzEventGridDomain
+PS C:\> New-AzEventGridDomainTopic -ResourceGroupName MyResourceGroupName -DomainName Domain1 -Name Topic1
 ```
 
-Removes the Event Grid Domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+Creates an Event Grid topic \`Topic1\` in Domain \`Domain1\` under resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 
@@ -66,28 +53,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-EventGrid Domain object.
-
-```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
-Parameter Sets: DomainInputObjectParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
+### -DomainName
 EventGrid domain name.
 
 ```yaml
 Type: System.String
-Parameter Sets: DomainNameParameterSet
-Aliases: DomainName
+Parameter Sets: (All)
+Aliases: Domain
 
 Required: True
 Position: 1
@@ -96,18 +68,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-{{Fill PassThru Description}}
+### -Name
+EventGrid domain topic name.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: DomainTopicName
 
-Required: False
-Position: Named
+Required: True
+Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -116,26 +88,11 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: DomainNameParameterSet
+Parameter Sets: (All)
 Aliases: ResourceGroup
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Resource Identifier representing the Event Grid Domain.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceIdEventSubscriptionParameterSet
-Aliases:
-
-Required: True
-Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -179,11 +136,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSDomain
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.EventGrid.Models.PSDomainTopic
 
 ## NOTES
 

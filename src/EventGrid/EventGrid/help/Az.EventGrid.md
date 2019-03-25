@@ -38,6 +38,9 @@ Creates a new Azure Event Grid Domain.
 ### [New-AzEventGridDomainKey](New-AzEventGridDomainKey.md)
 Regenerates the shared access key for an Azure Event Grid Domain.
 
+### [New-AzEventGridDomainTopic](New-AzEventGridDomainTopic.md)
+Creates a new Azure Event Grid Domain Topic.
+
 ### [New-AzEventGridSubscription](New-AzEventGridSubscription.md)
 Creates a new Azure Event Grid Event Subscription to a topic, Azure resource, Azure subscription or Resource Group.
 
@@ -49,6 +52,9 @@ Regenerates the shared access key for an Azure Event Grid Topic.
 
 ### [Remove-AzEventGridDomain](Remove-AzEventGridDomain.md)
 Removes an Azure Event Grid Domain.
+
+### [Remove-AzEventGridDomainTopic](Remove-AzEventGridDomainTopic.md)
+Removes an Azure Event Grid Domain Topic.
 
 ### [Remove-AzEventGridSubscription](Remove-AzEventGridSubscription.md)
 Removes an Azure Event Grid event subscription.

@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Position = 1,
             ParameterSetName = DomainNameParameterSet,
             HelpMessage = EventGridConstants.DomainNameHelp)]
+        [ResourceNameCompleter("Microsoft.EventGrid/domains", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         [Alias("DomainName")]
         public string Name { get; set; }

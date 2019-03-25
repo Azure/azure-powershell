@@ -1,60 +1,53 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/new-azeventgriddomainkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/remove-azeventgriddomaintopic
 schema: 2.0.0
 ---
 
-# New-AzEventGridDomainKey
+# Remove-AzEventGridDomainTopic
 
 ## SYNOPSIS
-Regenerates the shared access key for an Azure Event Grid Domain.
+Removes an Azure Event Grid Domain Topic.
 
 ## SYNTAX
 
-### DomainNameParameterSet (Default)
+### DomainTopicNameParameterSet (Default)
 ```
-New-AzEventGridDomainKey [-ResourceGroupName] <String> [-DomainName] <String> [-KeyName] <String>
+Remove-AzEventGridDomainTopic [-ResourceGroupName] <String> [-DomainName] <String> [-Name] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DomainInputObjectParameterSet
+### ResourceIdDomainTopicParameterSet
 ```
-New-AzEventGridDomainKey [-KeyName] <String> [-InputObject] <PSDomain>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceIdEventSubscriptionParameterSet
-```
-New-AzEventGridDomainKey [-KeyName] <String> [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Remove-AzEventGridDomainTopic [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DomainTopicInputObjectParameterSet
+```
+Remove-AzEventGridDomainTopic [-InputObject] <PSDomainTopic> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Regenerates the shared access key for an Azure Event Grid Domain.
+Removes an Azure Event Grid Domain Topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzEventGridDomainKey -ResourceGroup MyResourceGroupName -DomainName Domain1 -KeyName key1
+PS C:\> Remove-AzEventGridDomainTopic -ResourceGroupName MyResourceGroupName -DomainName Domain1 -Name Topic1
 ```
 
-Regenerate the key corresponding to key \'key1'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+Removes the Event Grid Domain Topic \`Topic1\` under Domain \`Domain1\` in resource group \`MyResourceGroupName\`.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzEventGridDomain -ResourceGroup MyResourceGroupName -Name Domain1 | New-AzEventGridTopicKey -KeyName "key1"
+PS C:\> Get-AzResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/Topic1" | Remove-AzEventGridDomainTopic
 ```
 
-Regenerate the key corresponding to key \'key1'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
-
-### Example 3
-```powershell
-PS C:\> New-AzEventGridDomainKey -ResourceId /subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1 -KeyName Key2
-```
-
-Regenerate the key corresponding to key \'key2'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` using its full resource Id.
+Removes the Event Grid Domain Topic \`Topic1\` under Domain \`Domain1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 
@@ -78,22 +71,22 @@ EventGrid domain name.
 
 ```yaml
 Type: System.String
-Parameter Sets: DomainNameParameterSet
+Parameter Sets: DomainTopicNameParameterSet
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -InputObject
-EventGrid Domain object.
+EventGrid Domain Topic object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
-Parameter Sets: DomainInputObjectParameterSet
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomainTopic
+Parameter Sets: DomainTopicInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -103,18 +96,33 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -KeyName
-The name of the key that needs to be regenerated
+### -Name
+EventGrid domain topic name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: DomainTopicNameParameterSet
+Aliases: DomainTopicName
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+{{Fill PassThru Description}}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -123,26 +131,26 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: DomainNameParameterSet
+Parameter Sets: DomainTopicNameParameterSet
 Aliases: ResourceGroup
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource Identifier representing the Event Grid Domain.
+Resource Identifier representing the Event Grid Domain Topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdEventSubscriptionParameterSet
+Parameter Sets: ResourceIdDomainTopicParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -186,11 +194,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSDomain
+### Microsoft.Azure.Commands.EventGrid.Models.PSDomainTopic
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.EventGrid.Models.DomainSharedAccessKeys
+### System.Boolean
 
 ## NOTES
 

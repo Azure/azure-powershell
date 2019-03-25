@@ -38,7 +38,7 @@ PS C:\> New-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domai
 Creates an Event Grid domain \`Domain1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\` with the specified tags "Department" and "Environment".
 
 ### Example 2
-```
+```powershell
 PS C:\> New-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2 --Tag @{ Department="Finance"; Environment="Test" } -InputSchema customeventschema -InputMappingField @{id="CustomIdField"; topic="CustomTopicField"; eventtime="CustomEventTimeField"; subject="CustomSubjectField"; eventtype="CustomEventTypeField"; dataversion="CustomDataVersionField"} -InputMappingDefaultValue @{subject="CustomSubjectDefaultValue"; eventtype="CustomEventTypeDefaultValue"; dataversion="CustomDataVersionDefaultValue"}
 ```
 
@@ -50,7 +50,7 @@ Creates an Event Grid domain \`Domain1\` in the specified geographic location \`
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -67,7 +67,7 @@ Allowed key names are: subject, eventtype, and dataversion.
 This is used when InputSchemaHelp is customeventschema only.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +84,7 @@ Allowed key names are: id, topic, eventtime, subject, eventtype, and dataversion
 This is used when InputSchemaHelp is customeventschema only.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +102,7 @@ Default value is eventgridschema.
 Note that if customeventschema is specified, then InputMappingField or/and InputMappingDefaultValue parameters need to be specified as well.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: EventGridSchema, CustomEventSchema, CloudEventV01Schema
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 The location of the domain.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 EventGrid domain name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: DomainName
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 Hashtable which represents resource Tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -194,7 +194,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -206,8 +206,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

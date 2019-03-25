@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.EventGrid;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -64,14 +65,75 @@ namespace Microsoft.Azure.Commands.EventGrid
             return topic;
         }
 
-        public IEnumerable<Topic> ListTopicsByResourceGroup(string resourceGroupName)
+        public (IEnumerable<Topic>, string) ListTopicsByResourceGroup(string resourceGroupName, string oDataQuery, int? top)
         {
-            return this.Client.Topics.ListByResourceGroup(resourceGroupName);
+            List<Topic> topicsList = new List<Topic>();
+            IPage<Topic> topicsPage = this.Client.Topics.ListByResourceGroup(resourceGroupName, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (topicsPage != null)
+            {
+                topicsList.AddRange(topicsPage);
+                nextLink = topicsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<Topic> newTopicsList;
+                    (newTopicsList, nextLink) = this.ListTopicsByResourceGroupNext(nextLink);
+                    topicsList.AddRange(newTopicsList);
+                }
+            }
+
+            return (topicsList, nextLink);
         }
 
-        public IEnumerable<Topic> ListTopicsBySubscription()
+        public (IEnumerable<Topic>, string) ListTopicsByResourceGroupNext(string nextLink)
         {
-            return this.Client.Topics.ListBySubscription();
+            List<Topic> topicsList = new List<Topic>();
+            string newNextLink = null;
+            IPage<Topic> topicsPage = this.Client.Topics.ListByResourceGroupNext(nextLink);
+            if (topicsPage != null)
+            {
+                topicsList.AddRange(topicsPage);
+                newNextLink = topicsPage.NextPageLink;
+            }
+
+            return (topicsList, newNextLink);
+        }
+
+        public (IEnumerable<Topic>, string) ListTopicsBySubscription(string oDataQuery, int? top)
+        {
+            List<Topic> topicsList = new List<Topic>();
+            IPage<Topic> topicsPage = this.Client.Topics.ListBySubscription(oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+
+            if (topicsPage != null)
+            {
+                topicsList.AddRange(topicsPage);
+                nextLink = topicsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<Topic> newTopicsList;
+                    (newTopicsList, nextLink) = this.ListTopicBySubscriptionNext(nextLink);
+                    topicsList.AddRange(newTopicsList);
+                }
+            }
+
+            return (topicsList, nextLink);
+        }
+
+        public (IEnumerable<Topic>, string) ListTopicBySubscriptionNext(string nextLink)
+        {
+            List<Topic> topicsList = new List<Topic>();
+            string newNextLink = null;
+            IPage<Topic> topicsPage = this.Client.Topics.ListBySubscriptionNext(nextLink);
+            if (topicsPage != null)
+            {
+                topicsList.AddRange(topicsPage);
+                newNextLink = topicsPage.NextPageLink;
+            }
+
+            return (topicsList, newNextLink);
         }
 
         public Topic CreateTopic(
@@ -147,14 +209,76 @@ namespace Microsoft.Azure.Commands.EventGrid
             return domain;
         }
 
-        public IEnumerable<Domain> ListDomainsByResourceGroup(string resourceGroupName)
+        public (IEnumerable<Domain>, string) ListDomainsByResourceGroup(string resourceGroupName, string oDataQuery, int? top)
         {
-            return this.Client.Domains.ListByResourceGroup(resourceGroupName);
+            List<Domain> domainsList = new List<Domain>();
+            IPage<Domain> domainsPage = this.Client.Domains.ListByResourceGroup(resourceGroupName, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+
+            if (domainsPage != null)
+            {
+                domainsList.AddRange(domainsPage);
+                nextLink = domainsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<Domain> newDomainsList;
+                    (newDomainsList, nextLink) = this.ListDomainsByResourceGroupNext(nextLink);
+                    domainsList.AddRange(newDomainsList);
+                }
+            }
+
+            return (domainsList, nextLink);
         }
 
-        public IEnumerable<Domain> ListDomainsBySubscription()
+        public (IEnumerable<Domain>, string) ListDomainsByResourceGroupNext(string nextLink)
         {
-            return this.Client.Domains.ListBySubscription();
+            List<Domain> domainsList = new List<Domain>();
+            string newNextLink = null;
+            IPage<Domain> domainsPage = this.Client.Domains.ListByResourceGroupNext(nextLink);
+            if (domainsPage != null)
+            {
+                domainsList.AddRange(domainsPage);
+                newNextLink = domainsPage.NextPageLink;
+            }
+
+            return (domainsList, newNextLink);
+        }
+
+        public (IEnumerable<Domain>, string) ListDomainsBySubscription(string oDataQuery, int? top)
+        {
+            List<Domain> domainsList = new List<Domain>();
+            IPage<Domain> domainsPage = this.Client.Domains.ListBySubscription(oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+
+            if (domainsPage != null)
+            {
+                domainsList.AddRange(domainsPage);
+                nextLink = domainsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<Domain> newDomainsList;
+                    (newDomainsList, nextLink) = this.ListDomainBySubscriptionNext(nextLink);
+                    domainsList.AddRange(newDomainsList);
+                }
+            }
+
+            return (domainsList, nextLink);
+        }
+
+        public (IEnumerable<Domain>, string) ListDomainBySubscriptionNext(string nextLink)
+        {
+            List<Domain> domainsList = new List<Domain>();
+            string newNextLink = null;
+            IPage<Domain> domainsPage = this.Client.Domains.ListBySubscriptionNext(nextLink);
+            if (domainsPage != null)
+            {
+                domainsList.AddRange(domainsPage);
+                newNextLink = domainsPage.NextPageLink;
+            }
+
+            return (domainsList, newNextLink);
         }
 
         public Domain CreateDomain(
@@ -225,14 +349,59 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         #region domainTopic
 
+        public DomainTopic CreateDomainTopic(string resourceGroupName, string domainName, string domainTopicName)
+        {
+            return this.Client.DomainTopics.CreateOrUpdate(resourceGroupName, domainName, domainTopicName);
+        }
+
+        public DomainTopic ReplaceDomainTopic(string resourceGroupName, string domainName, string domainTopicName)
+        {
+            return this.Client.DomainTopics.CreateOrUpdate(resourceGroupName, domainName, domainTopicName);
+        }
+
+        public void DeleteDomainTopic(string resourceGroupName, string domainName, string domainTopicName)
+        {
+            this.Client.DomainTopics.Delete(resourceGroupName, domainName, domainTopicName);
+        }
+
         public DomainTopic GetDomainTopic(string resourceGroupName, string domainName, string domainTopicName)
         {
             return this.Client.DomainTopics.Get(resourceGroupName, domainName, domainTopicName);
         }
 
-        public IEnumerable<DomainTopic> ListDomainTopicsByDomain(string resourceGroupName, string domainName)
+        public (IEnumerable<DomainTopic>, string) ListDomainTopicsByDomain(string resourceGroupName, string domainName, string oDataQuery, int? top)
         {
-            return this.Client.DomainTopics.ListByDomain(resourceGroupName, domainName);
+            List<DomainTopic> domainTopicsList = new List<DomainTopic>();
+            IPage<DomainTopic> domainTopicsPage = this.Client.DomainTopics.ListByDomain(resourceGroupName, domainName, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (domainTopicsPage != null)
+            {
+                domainTopicsList.AddRange(domainTopicsPage);
+                nextLink = domainTopicsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<DomainTopic> newDomainTopicsList;
+                    (newDomainTopicsList, nextLink) = this.ListDomainTopicsByDomainNext(nextLink);
+                    domainTopicsList.AddRange(newDomainTopicsList);
+                }
+            }
+
+            return (domainTopicsList, nextLink);
+        }
+
+        public (IEnumerable<DomainTopic>, string) ListDomainTopicsByDomainNext(string nextLink)
+        {
+            List<DomainTopic> domianTopicsList = new List<DomainTopic>();
+            string newNextLink = null;
+            IPage<DomainTopic> domainTopicsPage = this.Client.DomainTopics.ListByDomainNext(nextLink);
+            if (domainTopicsPage != null)
+            {
+                domianTopicsList.AddRange(domainTopicsPage);
+                newNextLink = domainTopicsPage.NextPageLink;
+            }
+
+            return (domianTopicsList, newNextLink);
         }
 
         #endregion
@@ -282,15 +451,16 @@ namespace Microsoft.Azure.Commands.EventGrid
                     ResourceId = endpoint
                 };
             }
+            else if (string.Equals(endpointType, EventGridConstants.ServiceBusQueue, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = new ServiceBusQueueEventSubscriptionDestination()
+                {
+                    ResourceId = endpoint
+                };
+            }
             else
             {
-                throw new ArgumentNullException(nameof(endpointType), "Invalid EndpointType. Allowed values are WebHook, EventHub, StorageQueue or HybridConnection");
-            }
-
-            if (includedEventTypes == null)
-            {
-                includedEventTypes = new string[1];
-                includedEventTypes[0] = "All";
+                throw new ArgumentNullException(nameof(endpointType), "Invalid EndpointType. Allowed values are WebHook, EventHub, StorageQueue, HybridConnection or ServiceBusQueue.");
             }
 
             eventSubscription.Destination = destination;
@@ -299,9 +469,13 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 SubjectBeginsWith = subjectBeginsWith,
                 SubjectEndsWith = subjectEndsWith,
-                IsSubjectCaseSensitive = isSubjectCaseSensitive,
-                IncludedEventTypes = new List<string>(includedEventTypes)
+                IsSubjectCaseSensitive = isSubjectCaseSensitive
             };
+
+            if (includedEventTypes != null)
+            {
+                filter.IncludedEventTypes = new List<string>(includedEventTypes);
+            }
 
             eventSubscription.Filter = filter;
 
@@ -382,25 +556,30 @@ namespace Microsoft.Azure.Commands.EventGrid
                         ResourceId = endpoint
                     };
                 }
+                else if (string.Equals(endpointType, EventGridConstants.ServiceBusQueue, StringComparison.OrdinalIgnoreCase))
+                {
+                    eventSubscriptionUpdateParameters.Destination = new ServiceBusQueueEventSubscriptionDestination()
+                    {
+                        ResourceId = endpoint
+                    };
+                }
                 else
                 {
-                    throw new ArgumentNullException(nameof(endpointType), "EndpointType should be WebHook, EventHub, storage queue, or hybrid connection");
+                    throw new ArgumentNullException(nameof(endpointType), "EndpointType should be WebHook, EventHub, Storage Queue, HybridConnection or ServiceBusQueue.");
                 }
-            }
-
-            if (includedEventTypes == null)
-            {
-                includedEventTypes = new string[1];
-                includedEventTypes[0] = "All";
             }
 
             eventSubscriptionUpdateParameters.Filter = new EventSubscriptionFilter()
             {
                 SubjectBeginsWith = subjectBeginsWith,
                 SubjectEndsWith = subjectEndsWith,
-                IsSubjectCaseSensitive = isSubjectCaseSensitive,
-                IncludedEventTypes = new List<string>(includedEventTypes)
+                IsSubjectCaseSensitive = isSubjectCaseSensitive
             };
+
+            if (includedEventTypes != null)
+            {
+                eventSubscriptionUpdateParameters.Filter.IncludedEventTypes = new List<string>(includedEventTypes);
+            }
 
             if (labels != null)
             {
@@ -445,52 +624,323 @@ namespace Microsoft.Azure.Commands.EventGrid
             return this.Client.EventSubscriptions.GetFullUrl(scope, eventSubscriptionName);
         }
 
-        public IEnumerable<EventSubscription> ListRegionalEventSubscriptionsByResourceGroup(string resourceGroupName, string location)
+        public (IEnumerable<EventSubscription>, string) ListRegionalEventSubscriptionsByResourceGroup(string resourceGroupName, string location, string oDataQuery, int? top)
         {
-            return this.Client.EventSubscriptions.ListRegionalByResourceGroup(resourceGroupName, location);
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListRegionalByResourceGroup(resourceGroupName, location, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                nextLink = eventSubscriptionsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<EventSubscription> newEventSubscriptionsList;
+                    (newEventSubscriptionsList, nextLink) = this.ListRegionalEventSubscriptionsByResourceGroupNext(nextLink);
+                    eventSubscriptionsList.AddRange(newEventSubscriptionsList);
+                }
+            }
+
+            return (eventSubscriptionsList, nextLink);
         }
 
-        public IEnumerable<EventSubscription> ListRegionalEventSubscriptionsBySubscription(string location)
+        public (IEnumerable<EventSubscription>, string) ListRegionalEventSubscriptionsByResourceGroupNext(string nextLink)
         {
-            return this.Client.EventSubscriptions.ListRegionalBySubscription(location);
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            string newNextLink = null;
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListRegionalByResourceGroupNext(nextLink);
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                newNextLink = eventSubscriptionsPage.NextPageLink;
+            }
+
+            return (eventSubscriptionsList, newNextLink);
         }
 
-        public IEnumerable<EventSubscription> ListGlobalEventSubscriptionsByResourceGroup(string resourceGroupName)
+        public (IEnumerable<EventSubscription>, string) ListRegionalEventSubscriptionsBySubscription(string location, string oDataQuery, int? top)
         {
-            return this.Client.EventSubscriptions.ListGlobalByResourceGroup(resourceGroupName);
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListRegionalBySubscription(location, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                nextLink = eventSubscriptionsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<EventSubscription> newEventSubscriptionsList;
+                    (newEventSubscriptionsList, nextLink) = this.ListRegionalEventSubscriptionsBySubscriptionNext(nextLink);
+                    eventSubscriptionsList.AddRange(newEventSubscriptionsList);
+                }
+            }
+
+            return (eventSubscriptionsList, nextLink);
         }
 
-        public IEnumerable<EventSubscription> ListGlobalEventSubscriptionsBySubscription()
+        public (IEnumerable<EventSubscription>, string) ListRegionalEventSubscriptionsBySubscriptionNext(string nextLink)
         {
-            return this.Client.EventSubscriptions.ListGlobalBySubscription();
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            string newNextLink = null;
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListRegionalBySubscriptionNext(nextLink);
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                newNextLink = eventSubscriptionsPage.NextPageLink;
+            }
+
+            return (eventSubscriptionsList, newNextLink);
         }
 
-        public IEnumerable<EventSubscription> ListRegionalEventSubscriptionsByResourceGroupForTopicType(string resourceGroupName, string location, string topicType)
+        public (IEnumerable<EventSubscription>, string) ListGlobalEventSubscriptionsByResourceGroup(string resourceGroupName, string oDataQuery, int? top)
         {
-            return this.Client.EventSubscriptions.ListRegionalByResourceGroupForTopicType(resourceGroupName, location, topicType);
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListGlobalByResourceGroup(resourceGroupName, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                nextLink = eventSubscriptionsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<EventSubscription> newEventSubscriptionsList;
+                    (newEventSubscriptionsList, nextLink) = this.ListGlobalEventSubscriptionsByResourceGroupNext(nextLink);
+                    eventSubscriptionsList.AddRange(newEventSubscriptionsList);
+                }
+            }
+
+            return (eventSubscriptionsList, nextLink);
         }
 
-        public IEnumerable<EventSubscription> ListRegionalEventSubscriptionsBySubscriptionForTopicType(string location, string topicType)
+        public (IEnumerable<EventSubscription>, string) ListGlobalEventSubscriptionsByResourceGroupNext(string nextLink)
         {
-            return this.Client.EventSubscriptions.ListRegionalBySubscriptionForTopicType(location, topicType);
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            string newNextLink = null;
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListGlobalByResourceGroupNext(nextLink);
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                newNextLink = eventSubscriptionsPage.NextPageLink;
+            }
+
+            return (eventSubscriptionsList, newNextLink);
         }
 
-        public IEnumerable<EventSubscription> ListGlobalEventSubscriptionsByResourceGroupForTopicType(string resourceGroupName, string topicType)
+        public (IEnumerable<EventSubscription>, string) ListGlobalEventSubscriptionsBySubscription(string oDataQuery, int? top)
         {
-            return this.Client.EventSubscriptions.ListGlobalByResourceGroupForTopicType(resourceGroupName, topicType);
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListGlobalBySubscription(oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                nextLink = eventSubscriptionsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<EventSubscription> newEventSubscriptionsList;
+                    (newEventSubscriptionsList, nextLink) = this.ListGlobalEventSubscriptionsBySubscriptionNext(nextLink);
+                    eventSubscriptionsList.AddRange(newEventSubscriptionsList);
+                }
+            }
+
+            return (eventSubscriptionsList, nextLink);
         }
 
-        public IEnumerable<EventSubscription> ListGlobalEventSubscriptionsBySubscriptionForTopicType(string topicType)
+        public (IEnumerable<EventSubscription>, string) ListGlobalEventSubscriptionsBySubscriptionNext(string nextLink)
         {
-            return this.Client.EventSubscriptions.ListGlobalBySubscriptionForTopicType(topicType);
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListGlobalBySubscriptionNext(nextLink);
+            string newNextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                newNextLink = eventSubscriptionsPage.NextPageLink;
+            }
+
+            return (eventSubscriptionsList, newNextLink);
         }
 
-        public IEnumerable<EventSubscription> ListByResource(string resourceGroupName, string providerNamespace, string resourceType, string resourceName)
+        public (IEnumerable<EventSubscription>, string) ListRegionalEventSubscriptionsByResourceGroupForTopicType(string resourceGroupName, string location, string topicType, string oDataQuery, int? top)
         {
-            return this.Client.EventSubscriptions.ListByResource(resourceGroupName, providerNamespace, resourceType, resourceName);
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListRegionalByResourceGroupForTopicType(resourceGroupName, location, topicType, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                nextLink = eventSubscriptionsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<EventSubscription> newEventSubscriptionsList;
+                    (newEventSubscriptionsList, nextLink) = this.ListRegionalEventSubscriptionsByResourceGroupForTopicTypeNext(nextLink);
+                    eventSubscriptionsList.AddRange(newEventSubscriptionsList);
+                }
+            }
+
+            return (eventSubscriptionsList, nextLink);
         }
 
-        public IEnumerable<EventSubscription> ListByResourceId(string currentSubscriptionId, string resourceId)
+        public (IEnumerable<EventSubscription>, string) ListRegionalEventSubscriptionsByResourceGroupForTopicTypeNext(string nextLink)
+        {
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListRegionalByResourceGroupForTopicTypeNext(nextLink);
+            string newNextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                newNextLink = eventSubscriptionsPage.NextPageLink;
+            }
+
+            return (eventSubscriptionsList, newNextLink);
+        }
+
+
+        public (IEnumerable<EventSubscription>, string) ListRegionalEventSubscriptionsBySubscriptionForTopicType(string location, string topicType, string oDataQuery, int? top)
+        {
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListRegionalBySubscriptionForTopicType(location, topicType, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                nextLink = eventSubscriptionsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<EventSubscription> newEventSubscriptionsList;
+                    (newEventSubscriptionsList, nextLink) = this.ListRegionalEventSubscriptionsBySubscriptionForTopicTypeNext(nextLink);
+                    eventSubscriptionsList.AddRange(newEventSubscriptionsList);
+                }
+            }
+
+            return (eventSubscriptionsList, nextLink);
+        }
+
+        public (IEnumerable<EventSubscription>, string) ListRegionalEventSubscriptionsBySubscriptionForTopicTypeNext(string nextLink)
+        {
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListRegionalBySubscriptionForTopicTypeNext(nextLink);
+            string newNextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                newNextLink = eventSubscriptionsPage.NextPageLink;
+            }
+
+            return (eventSubscriptionsList, newNextLink);
+        }
+
+        public (IEnumerable<EventSubscription>, string) ListGlobalEventSubscriptionsByResourceGroupForTopicType(string resourceGroupName, string topicType, string oDataQuery, int? top)
+        {
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListGlobalByResourceGroupForTopicType(resourceGroupName, topicType, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                nextLink = eventSubscriptionsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<EventSubscription> newEventSubscriptionsList;
+                    (newEventSubscriptionsList, nextLink) = this.ListGlobalEventSubscriptionsByResourceGroupForTopicTypeNext(nextLink);
+                    eventSubscriptionsList.AddRange(newEventSubscriptionsList);
+                }
+            }
+
+            return (eventSubscriptionsList, nextLink);
+        }
+
+        public (IEnumerable<EventSubscription>, string) ListGlobalEventSubscriptionsByResourceGroupForTopicTypeNext(string nextLink)
+        {
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListGlobalByResourceGroupForTopicTypeNext(nextLink);
+            string newNextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                newNextLink = eventSubscriptionsPage.NextPageLink;
+            }
+
+            return (eventSubscriptionsList, newNextLink);
+        }
+
+        public (IEnumerable<EventSubscription>, string) ListGlobalEventSubscriptionsBySubscriptionForTopicType(string topicType, string oDataQuery, int? top)
+        {
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListGlobalBySubscriptionForTopicType(topicType, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                nextLink = eventSubscriptionsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<EventSubscription> newEventSubscriptionsList;
+                    (newEventSubscriptionsList, nextLink) = this.ListGlobalEventSubscriptionsBySubscriptionForTopicTypeNext(nextLink);
+                    eventSubscriptionsList.AddRange(newEventSubscriptionsList);
+                }
+            }
+
+            return (eventSubscriptionsList, nextLink);
+        }
+
+        public (IEnumerable<EventSubscription>, string) ListGlobalEventSubscriptionsBySubscriptionForTopicTypeNext(string nextLink)
+        {
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListGlobalBySubscriptionForTopicTypeNext(nextLink);
+            string newNextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                newNextLink = eventSubscriptionsPage.NextPageLink;
+            }
+
+            return (eventSubscriptionsList, newNextLink);
+        }
+
+        public (IEnumerable<EventSubscription>, string) ListByResource(string resourceGroupName, string providerNamespace, string resourceType, string resourceName, string oDataQuery, int? top)
+        {
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListByResource(resourceGroupName, providerNamespace, resourceType, resourceName, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                nextLink = eventSubscriptionsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<EventSubscription> newEventSubscriptionsList;
+                    (newEventSubscriptionsList, nextLink) = this.ListByResourceNext(nextLink);
+                    eventSubscriptionsList.AddRange(newEventSubscriptionsList);
+                }
+            }
+
+            return (eventSubscriptionsList, nextLink);
+        }
+
+        public (IEnumerable<EventSubscription>, string) ListByResourceNext(string nextLink)
+        {
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListByResourceNext(nextLink);
+            string newNextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                newNextLink = eventSubscriptionsPage.NextPageLink;
+            }
+
+            return (eventSubscriptionsList, newNextLink);
+        }
+
+        public (IEnumerable<EventSubscription>, string) ListByResourceId(string currentSubscriptionId, string resourceId, string oDataQuery, int? top)
         {
             string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
             if (tokens.Length == 2)
@@ -499,7 +949,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 string providedSubscriptionId = tokens[1];
                 this.ValidateSubscription(providedSubscriptionId, currentSubscriptionId);
 
-                return this.ListGlobalEventSubscriptionsBySubscription();
+                return this.ListGlobalEventSubscriptionsBySubscription(oDataQuery, top);
             }
             else if (tokens.Length == 4)
             {
@@ -508,7 +958,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
                 // Resource Group scope
                 string resourceGroupName = tokens[3];
-                return this.ListGlobalEventSubscriptionsByResourceGroup(resourceGroupName);
+                return this.ListGlobalEventSubscriptionsByResourceGroup(resourceGroupName, oDataQuery, top);
             }
             else if (tokens.Length == 8)
             {
@@ -520,7 +970,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 string providerNamespace = tokens[5];
                 string resourceType = tokens[6];
                 string resourceName = tokens[7];
-                return this.Client.EventSubscriptions.ListByResource(resourceGroupName, providerNamespace, resourceType, resourceName);
+                return this.ListByResource(resourceGroupName, providerNamespace, resourceType, resourceName, oDataQuery, top);
             }
             else if (tokens.Length == 10)
             {
@@ -533,7 +983,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 string resourceType = tokens[6];
                 string resourceName = tokens[7];
                 string nestedResourceName = tokens[9];
-                return this.ListByDomainTopic(resourceGroupName, resourceName, nestedResourceName);
+                return this.ListByDomainTopic(resourceGroupName, resourceName, nestedResourceName, oDataQuery, top);
             }
             else
             {
@@ -541,9 +991,76 @@ namespace Microsoft.Azure.Commands.EventGrid
             }
         }
 
-        public IEnumerable<EventSubscription> ListByDomainTopic(string resourceGroupName, string domainName, string domainTopicName)
+        public (IEnumerable<EventSubscription>, string) ListByDomainTopic(string resourceGroupName, string domainName, string domainTopicName, string oDataQuery, int? top)
         {
-            return this.Client.EventSubscriptions.ListByDomainTopic(resourceGroupName, domainName, domainTopicName);
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListByDomainTopic(resourceGroupName, domainName, domainTopicName, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                nextLink = eventSubscriptionsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<EventSubscription> newEventSubscriptionsList;
+                    (newEventSubscriptionsList, nextLink) = this.ListByDomainTopicNext(nextLink);
+                    eventSubscriptionsList.AddRange(newEventSubscriptionsList);
+                }
+            }
+
+            return (eventSubscriptionsList, nextLink);
+        }
+
+        public (IEnumerable<EventSubscription>, string) ListByDomainTopicNext(string nextLink)
+        {
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            IPage<EventSubscription> eventSubscriptionsPage = this.Client.EventSubscriptions.ListByDomainTopicNext(nextLink);
+            string newNextLink = null;
+            if (eventSubscriptionsPage != null)
+            {
+                eventSubscriptionsList.AddRange(eventSubscriptionsPage);
+                newNextLink = eventSubscriptionsPage.NextPageLink;
+            }
+
+            return (eventSubscriptionsList, newNextLink);
+        }
+
+        public (IEnumerable<EventSubscription>, string) ListEventSubscriptionsNext(string nextLink)
+        {
+            List<EventSubscription> eventSubscriptionsList = new List<EventSubscription>();
+            // Get Next page of event subscriptions. Get the proper next API to be called based on the nextLink.
+            Uri uri = new Uri(nextLink);
+            string path = uri.AbsolutePath;
+
+            path = path.Substring(0, path.LastIndexOf("/providers/Microsoft.EventGrid/eventSubscriptions", StringComparison.OrdinalIgnoreCase));
+
+            // /subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/DevExpRg/providers/Microsoft.EventGrid/domains/PwrShellTestDomain6/providers/Microsoft.EventGrid/eventSubscriptions
+            string[] tokens = path.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length == 2)
+            {
+                // subscription scope
+                return this.ListGlobalEventSubscriptionsBySubscriptionNext(nextLink);
+            }
+            else if (tokens.Length == 4)
+            {
+                // Resource Group scope
+                return this.ListGlobalEventSubscriptionsByResourceGroupNext(nextLink);
+            }
+            else if (tokens.Length == 8)
+            {
+                // Resource scope
+                return this.ListByResourceNext(nextLink);
+            }
+            else if (tokens.Length == 10)
+            {
+                // Resource scope
+                return this.ListByDomainTopicNext(nextLink);
+            }
+            else
+            {
+                throw new ArgumentException("Unsupported value for nextLink", nameof(path));
+            }
         }
 
         void ValidateSubscription(string providedSubscriptionId, string subscriptionIdFromContext)
