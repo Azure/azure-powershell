@@ -89,19 +89,19 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The account for the new pool object")]
         [ValidateNotNullOrEmpty]
-        public PSNetAppFilesAccount InputObject { get; set; }
+        public PSNetAppFilesAccount AccountObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ParentObjectParameterSet)
             {
-                ResourceGroupName = InputObject.ResourceGroupName;
-                AccountName = InputObject.Name;
-                Location = InputObject.Location;
+                ResourceGroupName = AccountObject.ResourceGroupName;
+                AccountName = AccountObject.Name;
+                Location = AccountObject.Location;
             }
 
             var capacityPoolBody = new CapacityPool()

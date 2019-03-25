@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
         "Remove",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesPool",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesPool))]
+        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
     [Alias("Remove-AnfPool")]
     public class RemoveAzureRmNetAppFilesPool : AzureNetAppFilesCmdletBase
     {
@@ -67,17 +67,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
         public string ResourceId { get; set; }
 
         [Parameter(
-            ParameterSetName = ParentObjectParameterSet,
-            Mandatory = false,
-            ValueFromPipeline = true,
-            HelpMessage = "The account object containing the pool to remove")]
-        [ValidateNotNullOrEmpty]
-        public PSNetAppFilesAccount AccountInputObject { get; set; }
-
-        [Parameter(
-            ParameterSetName = ObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
+            ParameterSetName = ParentObjectParameterSet,
+            HelpMessage = "The account object containing the pool to remove")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesAccount AccountObject { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = ObjectParameterSet,
             HelpMessage = "The pool object to remove")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesPool InputObject { get; set; }
@@ -108,8 +108,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             }
             else if (ParameterSetName == ParentObjectParameterSet)
             {
-                ResourceGroupName = AccountInputObject.ResourceGroupName;
-                AccountName = AccountInputObject.Name;
+                ResourceGroupName = AccountObject.ResourceGroupName;
+                AccountName = AccountObject.Name;
             }
 
             if (ShouldProcess(Name, "Remove the pool"))

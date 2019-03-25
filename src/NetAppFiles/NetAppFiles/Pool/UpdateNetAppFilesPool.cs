@@ -85,11 +85,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The account object containing the pool to update")]
         [ValidateNotNullOrEmpty]
-        public PSNetAppFilesAccount AccountInputObject { get; set; }
+        public PSNetAppFilesAccount AccountObject { get; set; }
 
         [Parameter(
             ParameterSetName = ObjectParameterSet,
@@ -111,9 +111,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             }
             else if (ParameterSetName == ParentObjectParameterSet)
             {
-                ResourceGroupName = AccountInputObject.ResourceGroupName;
-                Location = AccountInputObject.Location;
-                AccountName = AccountInputObject.Name;
+                ResourceGroupName = AccountObject.ResourceGroupName;
+                Location = AccountObject.Location;
+                AccountName = AccountObject.Name;
             }
 
             var capacityPoolBody = new CapacityPool()

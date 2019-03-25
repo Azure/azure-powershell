@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Azure.Management.Network;
+using SDKNetwork = Microsoft.Azure.Management.Network;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
-        public NetworkManagementClient NetworkClient { get; private set; }
+        public SDKNetwork.NetworkManagementClient SDKNetworkClient { get; private set; }
 
         public AzureNetAppFilesManagementClient NetAppFilesManagementClient { get; private set; }
 
@@ -50,11 +50,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         {
             ResourceManagementClient = GetResourceManagementClient(context);
             NetAppFilesManagementClient = GetNetAppFilesManagementClient(context);
-            NetworkClient = GetNetworkClient(context);
+            SDKNetworkClient = GetSDKNetworkClient(context);
 
             _helper.SetupManagementClients(
                 ResourceManagementClient,
-                NetworkClient,
+                SDKNetworkClient,
                 NetAppFilesManagementClient);
         }
 
@@ -125,14 +125,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
             }
         }
 
+        protected SDKNetwork.NetworkManagementClient GetSDKNetworkClient(MockContext context)
+        {
+            return context.GetServiceClient<SDKNetwork.NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
         protected ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        protected NetworkManagementClient GetNetworkClient(MockContext context)
-        {
-            return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static AzureNetAppFilesManagementClient GetNetAppFilesManagementClient(MockContext context)

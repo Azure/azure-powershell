@@ -81,12 +81,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         public string ResourceId { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = ParentObjectParameterSet,
             HelpMessage = "The pool object containing the volume to return")]
         [ValidateNotNullOrEmpty]
-        public PSNetAppFilesPool PoolInputObject { get; set; }
+        public PSNetAppFilesPool PoolObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -101,8 +101,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             else if (ParameterSetName == ParentObjectParameterSet)
             {
-                ResourceGroupName = PoolInputObject.ResourceGroupName;
-                var NameParts = PoolInputObject.Name.Split('/');
+                ResourceGroupName = PoolObject.ResourceGroupName;
+                var NameParts = PoolObject.Name.Split('/');
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }

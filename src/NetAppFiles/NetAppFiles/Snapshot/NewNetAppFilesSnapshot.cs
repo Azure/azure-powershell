@@ -107,23 +107,23 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The volume for the new snapshot object")]
         [ValidateNotNullOrEmpty]
-        public PSNetAppFilesVolume InputObject { get; set; }
+        public PSNetAppFilesVolume VolumeObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ParentObjectParameterSet)
             {
-                ResourceGroupName = InputObject.ResourceGroupName;
-                Location = InputObject.Location;
-                var NameParts = InputObject.Name.Split('/');
+                ResourceGroupName = VolumeObject.ResourceGroupName;
+                Location = VolumeObject.Location;
+                var NameParts = VolumeObject.Name.Split('/');
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 VolumeName = NameParts[2];
-                FileSystemId = InputObject.FileSystemId;
+                FileSystemId = VolumeObject.FileSystemId;
             }
 
             var snapshotBody = new Management.NetApp.Models.Snapshot()

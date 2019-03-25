@@ -66,13 +66,5 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Common
             }
             set { _defaultRequestHeaders = value; }
         }
-
-        public void ConfirmAction(bool force, string actionMessage, Action action)
-        {
-            if (force || ShouldContinue(actionMessage, ""))
-            {
-                action();
-            }
-        }
     }
 }
